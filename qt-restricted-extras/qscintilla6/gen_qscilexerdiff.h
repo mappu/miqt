@@ -34,8 +34,9 @@ typedef struct QsciLexerDiff QsciLexerDiff;
 typedef struct QsciScintilla QsciScintilla;
 #endif
 
-void QsciLexerDiff_new(QsciLexerDiff** outptr_QsciLexerDiff, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
-void QsciLexerDiff_new2(QObject* parent, QsciLexerDiff** outptr_QsciLexerDiff, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+QsciLexerDiff* QsciLexerDiff_new();
+QsciLexerDiff* QsciLexerDiff_new2(QObject* parent);
+void QsciLexerDiff_virtbase(QsciLexerDiff* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerDiff_MetaObject(const QsciLexerDiff* self);
 void* QsciLexerDiff_Metacast(QsciLexerDiff* self, const char* param1);
 struct miqt_string QsciLexerDiff_Tr(const char* s);

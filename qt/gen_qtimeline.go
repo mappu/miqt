@@ -61,59 +61,48 @@ func (this *QTimeLine) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTimeLine constructs the type using only CGO pointers.
-func newQTimeLine(h *C.QTimeLine, h_QObject *C.QObject) *QTimeLine {
+func newQTimeLine(h *C.QTimeLine) *QTimeLine {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QTimeLine_virtbase(h, &outptr_QObject)
+
 	return &QTimeLine{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQTimeLine constructs the type using only unsafe pointers.
-func UnsafeNewQTimeLine(h unsafe.Pointer, h_QObject unsafe.Pointer) *QTimeLine {
-	if h == nil {
-		return nil
-	}
-
-	return &QTimeLine{h: (*C.QTimeLine)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQTimeLine(h unsafe.Pointer) *QTimeLine {
+	return newQTimeLine((*C.QTimeLine)(h))
 }
 
 // NewQTimeLine constructs a new QTimeLine object.
 func NewQTimeLine() *QTimeLine {
-	var outptr_QTimeLine *C.QTimeLine = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTimeLine_new(&outptr_QTimeLine, &outptr_QObject)
-	ret := newQTimeLine(outptr_QTimeLine, outptr_QObject)
+	ret := newQTimeLine(C.QTimeLine_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTimeLine2 constructs a new QTimeLine object.
 func NewQTimeLine2(duration int) *QTimeLine {
-	var outptr_QTimeLine *C.QTimeLine = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTimeLine_new2((C.int)(duration), &outptr_QTimeLine, &outptr_QObject)
-	ret := newQTimeLine(outptr_QTimeLine, outptr_QObject)
+	ret := newQTimeLine(C.QTimeLine_new2((C.int)(duration)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTimeLine3 constructs a new QTimeLine object.
 func NewQTimeLine3(duration int, parent *QObject) *QTimeLine {
-	var outptr_QTimeLine *C.QTimeLine = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QTimeLine_new3((C.int)(duration), parent.cPointer(), &outptr_QTimeLine, &outptr_QObject)
-	ret := newQTimeLine(outptr_QTimeLine, outptr_QObject)
+	ret := newQTimeLine(C.QTimeLine_new3((C.int)(duration), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QTimeLine) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTimeLine_MetaObject(this.h)))
+	return newQMetaObject(C.QTimeLine_MetaObject(this.h))
 }
 
 func (this *QTimeLine) Metacast(param1 string) unsafe.Pointer {
@@ -205,8 +194,7 @@ func (this *QTimeLine) SetCurveShape(shape QTimeLine__CurveShape) {
 }
 
 func (this *QTimeLine) EasingCurve() *QEasingCurve {
-	_ret := C.QTimeLine_EasingCurve(this.h)
-	_goptr := newQEasingCurve(_ret)
+	_goptr := newQEasingCurve(C.QTimeLine_EasingCurve(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -309,6 +297,9 @@ func (this *QTimeLine) callVirtualBase_ValueForTime(msec int) float64 {
 
 }
 func (this *QTimeLine) OnValueForTime(slot func(super func(msec int) float64, msec int) float64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTimeLine_override_virtual_ValueForTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -334,6 +325,9 @@ func (this *QTimeLine) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QTimeLine) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTimeLine_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -345,7 +339,7 @@ func miqt_exec_callback_QTimeLine_TimerEvent(self *C.QTimeLine, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QTimeLine{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -357,6 +351,9 @@ func (this *QTimeLine) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QTimeLine) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTimeLine_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -368,7 +365,7 @@ func miqt_exec_callback_QTimeLine_Event(self *C.QTimeLine, cb C.intptr_t, event 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QTimeLine{h: self}).callVirtualBase_Event, slotval1)
 
@@ -382,6 +379,9 @@ func (this *QTimeLine) callVirtualBase_EventFilter(watched *QObject, event *QEve
 
 }
 func (this *QTimeLine) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTimeLine_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -393,8 +393,9 @@ func miqt_exec_callback_QTimeLine_EventFilter(self *C.QTimeLine, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QTimeLine{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -408,6 +409,9 @@ func (this *QTimeLine) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QTimeLine) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTimeLine_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -419,7 +423,7 @@ func miqt_exec_callback_QTimeLine_ChildEvent(self *C.QTimeLine, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QTimeLine{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -431,6 +435,9 @@ func (this *QTimeLine) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QTimeLine) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTimeLine_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -442,7 +449,7 @@ func miqt_exec_callback_QTimeLine_CustomEvent(self *C.QTimeLine, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QTimeLine{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -454,6 +461,9 @@ func (this *QTimeLine) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QTimeLine) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTimeLine_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -465,7 +475,7 @@ func miqt_exec_callback_QTimeLine_ConnectNotify(self *C.QTimeLine, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QTimeLine{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -477,6 +487,9 @@ func (this *QTimeLine) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QTimeLine) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTimeLine_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -488,7 +501,7 @@ func miqt_exec_callback_QTimeLine_DisconnectNotify(self *C.QTimeLine, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QTimeLine{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

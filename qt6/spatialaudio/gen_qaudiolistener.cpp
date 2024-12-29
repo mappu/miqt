@@ -9,6 +9,10 @@
 #include <QVector3D>
 #include <qaudiolistener.h>
 #include "gen_qaudiolistener.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAudioListener : public virtual QAudioListener {
@@ -191,10 +195,12 @@ public:
 
 };
 
-void QAudioListener_new(QAudioEngine* engine, QAudioListener** outptr_QAudioListener, QObject** outptr_QObject) {
-	MiqtVirtualQAudioListener* ret = new MiqtVirtualQAudioListener(engine);
-	*outptr_QAudioListener = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAudioListener* QAudioListener_new(QAudioEngine* engine) {
+	return new MiqtVirtualQAudioListener(engine);
+}
+
+void QAudioListener_virtbase(QAudioListener* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 void QAudioListener_SetPosition(QAudioListener* self, QVector3D* pos) {

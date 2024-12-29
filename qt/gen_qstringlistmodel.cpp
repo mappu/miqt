@@ -13,6 +13,10 @@
 #include <QVariant>
 #include <qstringlistmodel.h>
 #include "gen_qstringlistmodel.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQStringListModel : public virtual QStringListModel {
@@ -442,15 +446,11 @@ public:
 
 };
 
-void QStringListModel_new(QStringListModel** outptr_QStringListModel, QAbstractListModel** outptr_QAbstractListModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
-	MiqtVirtualQStringListModel* ret = new MiqtVirtualQStringListModel();
-	*outptr_QStringListModel = ret;
-	*outptr_QAbstractListModel = static_cast<QAbstractListModel*>(ret);
-	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QStringListModel* QStringListModel_new() {
+	return new MiqtVirtualQStringListModel();
 }
 
-void QStringListModel_new2(struct miqt_array /* of struct miqt_string */  strings, QStringListModel** outptr_QStringListModel, QAbstractListModel** outptr_QAbstractListModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
+QStringListModel* QStringListModel_new2(struct miqt_array /* of struct miqt_string */  strings) {
 	QStringList strings_QList;
 	strings_QList.reserve(strings.len);
 	struct miqt_string* strings_arr = static_cast<struct miqt_string*>(strings.data);
@@ -458,22 +458,14 @@ void QStringListModel_new2(struct miqt_array /* of struct miqt_string */  string
 		QString strings_arr_i_QString = QString::fromUtf8(strings_arr[i].data, strings_arr[i].len);
 		strings_QList.push_back(strings_arr_i_QString);
 	}
-	MiqtVirtualQStringListModel* ret = new MiqtVirtualQStringListModel(strings_QList);
-	*outptr_QStringListModel = ret;
-	*outptr_QAbstractListModel = static_cast<QAbstractListModel*>(ret);
-	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQStringListModel(strings_QList);
 }
 
-void QStringListModel_new3(QObject* parent, QStringListModel** outptr_QStringListModel, QAbstractListModel** outptr_QAbstractListModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
-	MiqtVirtualQStringListModel* ret = new MiqtVirtualQStringListModel(parent);
-	*outptr_QStringListModel = ret;
-	*outptr_QAbstractListModel = static_cast<QAbstractListModel*>(ret);
-	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QStringListModel* QStringListModel_new3(QObject* parent) {
+	return new MiqtVirtualQStringListModel(parent);
 }
 
-void QStringListModel_new4(struct miqt_array /* of struct miqt_string */  strings, QObject* parent, QStringListModel** outptr_QStringListModel, QAbstractListModel** outptr_QAbstractListModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
+QStringListModel* QStringListModel_new4(struct miqt_array /* of struct miqt_string */  strings, QObject* parent) {
 	QStringList strings_QList;
 	strings_QList.reserve(strings.len);
 	struct miqt_string* strings_arr = static_cast<struct miqt_string*>(strings.data);
@@ -481,11 +473,11 @@ void QStringListModel_new4(struct miqt_array /* of struct miqt_string */  string
 		QString strings_arr_i_QString = QString::fromUtf8(strings_arr[i].data, strings_arr[i].len);
 		strings_QList.push_back(strings_arr_i_QString);
 	}
-	MiqtVirtualQStringListModel* ret = new MiqtVirtualQStringListModel(strings_QList, parent);
-	*outptr_QStringListModel = ret;
-	*outptr_QAbstractListModel = static_cast<QAbstractListModel*>(ret);
-	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQStringListModel(strings_QList, parent);
+}
+
+void QStringListModel_virtbase(QStringListModel* src, QAbstractListModel** outptr_QAbstractListModel) {
+	*outptr_QAbstractListModel = static_cast<QAbstractListModel*>(src);
 }
 
 QMetaObject* QStringListModel_MetaObject(const QStringListModel* self) {

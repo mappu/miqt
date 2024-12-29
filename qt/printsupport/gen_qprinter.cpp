@@ -14,6 +14,10 @@
 #include <cstring>
 #include <qprinter.h>
 #include "gen_qprinter.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQPrinter : public virtual QPrinter {
@@ -195,32 +199,24 @@ public:
 
 };
 
-void QPrinter_new(QPrinter** outptr_QPrinter, QPagedPaintDevice** outptr_QPagedPaintDevice, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPrinter* ret = new MiqtVirtualQPrinter();
-	*outptr_QPrinter = ret;
-	*outptr_QPagedPaintDevice = static_cast<QPagedPaintDevice*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPrinter* QPrinter_new() {
+	return new MiqtVirtualQPrinter();
 }
 
-void QPrinter_new2(QPrinterInfo* printer, QPrinter** outptr_QPrinter, QPagedPaintDevice** outptr_QPagedPaintDevice, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPrinter* ret = new MiqtVirtualQPrinter(*printer);
-	*outptr_QPrinter = ret;
-	*outptr_QPagedPaintDevice = static_cast<QPagedPaintDevice*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPrinter* QPrinter_new2(QPrinterInfo* printer) {
+	return new MiqtVirtualQPrinter(*printer);
 }
 
-void QPrinter_new3(int mode, QPrinter** outptr_QPrinter, QPagedPaintDevice** outptr_QPagedPaintDevice, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPrinter* ret = new MiqtVirtualQPrinter(static_cast<QPrinter::PrinterMode>(mode));
-	*outptr_QPrinter = ret;
-	*outptr_QPagedPaintDevice = static_cast<QPagedPaintDevice*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPrinter* QPrinter_new3(int mode) {
+	return new MiqtVirtualQPrinter(static_cast<QPrinter::PrinterMode>(mode));
 }
 
-void QPrinter_new4(QPrinterInfo* printer, int mode, QPrinter** outptr_QPrinter, QPagedPaintDevice** outptr_QPagedPaintDevice, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPrinter* ret = new MiqtVirtualQPrinter(*printer, static_cast<QPrinter::PrinterMode>(mode));
-	*outptr_QPrinter = ret;
-	*outptr_QPagedPaintDevice = static_cast<QPagedPaintDevice*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPrinter* QPrinter_new4(QPrinterInfo* printer, int mode) {
+	return new MiqtVirtualQPrinter(*printer, static_cast<QPrinter::PrinterMode>(mode));
+}
+
+void QPrinter_virtbase(QPrinter* src, QPagedPaintDevice** outptr_QPagedPaintDevice) {
+	*outptr_QPagedPaintDevice = static_cast<QPagedPaintDevice*>(src);
 }
 
 int QPrinter_DevType(const QPrinter* self) {

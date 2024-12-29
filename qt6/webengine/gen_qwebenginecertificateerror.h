@@ -24,7 +24,7 @@ typedef struct QUrl QUrl;
 typedef struct QWebEngineCertificateError QWebEngineCertificateError;
 #endif
 
-void QWebEngineCertificateError_new(QWebEngineCertificateError* other, QWebEngineCertificateError** outptr_QWebEngineCertificateError);
+QWebEngineCertificateError* QWebEngineCertificateError_new(QWebEngineCertificateError* other);
 void QWebEngineCertificateError_OperatorAssign(QWebEngineCertificateError* self, QWebEngineCertificateError* other);
 int QWebEngineCertificateError_Type(const QWebEngineCertificateError* self);
 QUrl* QWebEngineCertificateError_Url(const QWebEngineCertificateError* self);

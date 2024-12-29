@@ -54,12 +54,13 @@ typedef struct QUrl QUrl;
 typedef struct QWidget QWidget;
 #endif
 
-void QFileDialog_new(QWidget* parent, QFileDialog** outptr_QFileDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QFileDialog_new2(QWidget* parent, int f, QFileDialog** outptr_QFileDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QFileDialog_new3(QFileDialog** outptr_QFileDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QFileDialog_new4(QWidget* parent, struct miqt_string caption, QFileDialog** outptr_QFileDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QFileDialog_new5(QWidget* parent, struct miqt_string caption, struct miqt_string directory, QFileDialog** outptr_QFileDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QFileDialog_new6(QWidget* parent, struct miqt_string caption, struct miqt_string directory, struct miqt_string filter, QFileDialog** outptr_QFileDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QFileDialog* QFileDialog_new(QWidget* parent);
+QFileDialog* QFileDialog_new2(QWidget* parent, int f);
+QFileDialog* QFileDialog_new3();
+QFileDialog* QFileDialog_new4(QWidget* parent, struct miqt_string caption);
+QFileDialog* QFileDialog_new5(QWidget* parent, struct miqt_string caption, struct miqt_string directory);
+QFileDialog* QFileDialog_new6(QWidget* parent, struct miqt_string caption, struct miqt_string directory, struct miqt_string filter);
+void QFileDialog_virtbase(QFileDialog* src, QDialog** outptr_QDialog);
 QMetaObject* QFileDialog_MetaObject(const QFileDialog* self);
 void* QFileDialog_Metacast(QFileDialog* self, const char* param1);
 struct miqt_string QFileDialog_Tr(const char* s);

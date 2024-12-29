@@ -9,6 +9,10 @@
 #include <QVariant>
 #include <qtcpsocket.h>
 #include "gen_qtcpsocket.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQTcpSocket : public virtual QTcpSocket {
@@ -538,20 +542,16 @@ public:
 
 };
 
-void QTcpSocket_new(QTcpSocket** outptr_QTcpSocket, QAbstractSocket** outptr_QAbstractSocket, QIODevice** outptr_QIODevice, QObject** outptr_QObject) {
-	MiqtVirtualQTcpSocket* ret = new MiqtVirtualQTcpSocket();
-	*outptr_QTcpSocket = ret;
-	*outptr_QAbstractSocket = static_cast<QAbstractSocket*>(ret);
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QTcpSocket* QTcpSocket_new() {
+	return new MiqtVirtualQTcpSocket();
 }
 
-void QTcpSocket_new2(QObject* parent, QTcpSocket** outptr_QTcpSocket, QAbstractSocket** outptr_QAbstractSocket, QIODevice** outptr_QIODevice, QObject** outptr_QObject) {
-	MiqtVirtualQTcpSocket* ret = new MiqtVirtualQTcpSocket(parent);
-	*outptr_QTcpSocket = ret;
-	*outptr_QAbstractSocket = static_cast<QAbstractSocket*>(ret);
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QTcpSocket* QTcpSocket_new2(QObject* parent) {
+	return new MiqtVirtualQTcpSocket(parent);
+}
+
+void QTcpSocket_virtbase(QTcpSocket* src, QAbstractSocket** outptr_QAbstractSocket) {
+	*outptr_QAbstractSocket = static_cast<QAbstractSocket*>(src);
 }
 
 QMetaObject* QTcpSocket_MetaObject(const QTcpSocket* self) {

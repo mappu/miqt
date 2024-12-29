@@ -20,8 +20,8 @@ class QAudioFormat;
 typedef struct QAudioFormat QAudioFormat;
 #endif
 
-void QAudioFormat_new(QAudioFormat** outptr_QAudioFormat);
-void QAudioFormat_new2(QAudioFormat* param1, QAudioFormat** outptr_QAudioFormat);
+QAudioFormat* QAudioFormat_new();
+QAudioFormat* QAudioFormat_new2(QAudioFormat* param1);
 bool QAudioFormat_IsValid(const QAudioFormat* self);
 void QAudioFormat_SetSampleRate(QAudioFormat* self, int sampleRate);
 int QAudioFormat_SampleRate(const QAudioFormat* self);

@@ -1,6 +1,10 @@
 #include <QRunnable>
 #include <qrunnable.h>
 #include "gen_qrunnable.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQRunnable : public virtual QRunnable {
@@ -27,9 +31,8 @@ public:
 
 };
 
-void QRunnable_new(QRunnable** outptr_QRunnable) {
-	MiqtVirtualQRunnable* ret = new MiqtVirtualQRunnable();
-	*outptr_QRunnable = ret;
+QRunnable* QRunnable_new() {
+	return new MiqtVirtualQRunnable();
 }
 
 void QRunnable_Run(QRunnable* self) {

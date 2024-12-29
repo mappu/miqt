@@ -36,46 +36,34 @@ func (this *QsciLexerIDL) UnsafePointer() unsafe.Pointer {
 }
 
 // newQsciLexerIDL constructs the type using only CGO pointers.
-func newQsciLexerIDL(h *C.QsciLexerIDL, h_QsciLexerCPP *C.QsciLexerCPP, h_QsciLexer *C.QsciLexer, h_QObject *C.QObject) *QsciLexerIDL {
+func newQsciLexerIDL(h *C.QsciLexerIDL) *QsciLexerIDL {
 	if h == nil {
 		return nil
 	}
+	var outptr_QsciLexerCPP *C.QsciLexerCPP = nil
+	C.QsciLexerIDL_virtbase(h, &outptr_QsciLexerCPP)
+
 	return &QsciLexerIDL{h: h,
-		QsciLexerCPP: newQsciLexerCPP(h_QsciLexerCPP, h_QsciLexer, h_QObject)}
+		QsciLexerCPP: newQsciLexerCPP(outptr_QsciLexerCPP)}
 }
 
 // UnsafeNewQsciLexerIDL constructs the type using only unsafe pointers.
-func UnsafeNewQsciLexerIDL(h unsafe.Pointer, h_QsciLexerCPP unsafe.Pointer, h_QsciLexer unsafe.Pointer, h_QObject unsafe.Pointer) *QsciLexerIDL {
-	if h == nil {
-		return nil
-	}
-
-	return &QsciLexerIDL{h: (*C.QsciLexerIDL)(h),
-		QsciLexerCPP: UnsafeNewQsciLexerCPP(h_QsciLexerCPP, h_QsciLexer, h_QObject)}
+func UnsafeNewQsciLexerIDL(h unsafe.Pointer) *QsciLexerIDL {
+	return newQsciLexerIDL((*C.QsciLexerIDL)(h))
 }
 
 // NewQsciLexerIDL constructs a new QsciLexerIDL object.
 func NewQsciLexerIDL() *QsciLexerIDL {
-	var outptr_QsciLexerIDL *C.QsciLexerIDL = nil
-	var outptr_QsciLexerCPP *C.QsciLexerCPP = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerIDL_new(&outptr_QsciLexerIDL, &outptr_QsciLexerCPP, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerIDL(outptr_QsciLexerIDL, outptr_QsciLexerCPP, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerIDL(C.QsciLexerIDL_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQsciLexerIDL2 constructs a new QsciLexerIDL object.
 func NewQsciLexerIDL2(parent *qt.QObject) *QsciLexerIDL {
-	var outptr_QsciLexerIDL *C.QsciLexerIDL = nil
-	var outptr_QsciLexerCPP *C.QsciLexerCPP = nil
-	var outptr_QsciLexer *C.QsciLexer = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciLexerIDL_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QsciLexerIDL, &outptr_QsciLexerCPP, &outptr_QsciLexer, &outptr_QObject)
-	ret := newQsciLexerIDL(outptr_QsciLexerIDL, outptr_QsciLexerCPP, outptr_QsciLexer, outptr_QObject)
+	ret := newQsciLexerIDL(C.QsciLexerIDL_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -114,8 +102,7 @@ func (this *QsciLexerIDL) Language() string {
 }
 
 func (this *QsciLexerIDL) DefaultColor(style int) *qt.QColor {
-	_ret := C.QsciLexerIDL_DefaultColor(this.h, (C.int)(style))
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerIDL_DefaultColor(this.h, (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -182,6 +169,9 @@ func (this *QsciLexerIDL) callVirtualBase_SetFoldAtElse(fold bool) {
 
 }
 func (this *QsciLexerIDL) OnSetFoldAtElse(slot func(super func(fold bool), fold bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerIDL_override_virtual_SetFoldAtElse(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -205,6 +195,9 @@ func (this *QsciLexerIDL) callVirtualBase_SetFoldComments(fold bool) {
 
 }
 func (this *QsciLexerIDL) OnSetFoldComments(slot func(super func(fold bool), fold bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerIDL_override_virtual_SetFoldComments(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -228,6 +221,9 @@ func (this *QsciLexerIDL) callVirtualBase_SetFoldCompact(fold bool) {
 
 }
 func (this *QsciLexerIDL) OnSetFoldCompact(slot func(super func(fold bool), fold bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerIDL_override_virtual_SetFoldCompact(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -251,6 +247,9 @@ func (this *QsciLexerIDL) callVirtualBase_SetFoldPreprocessor(fold bool) {
 
 }
 func (this *QsciLexerIDL) OnSetFoldPreprocessor(slot func(super func(fold bool), fold bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerIDL_override_virtual_SetFoldPreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -274,6 +273,9 @@ func (this *QsciLexerIDL) callVirtualBase_SetStylePreprocessor(style bool) {
 
 }
 func (this *QsciLexerIDL) OnSetStylePreprocessor(slot func(super func(style bool), style bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciLexerIDL_override_virtual_SetStylePreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

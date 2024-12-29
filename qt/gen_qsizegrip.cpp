@@ -33,6 +33,10 @@
 #include <QWidget>
 #include <qsizegrip.h>
 #include "gen_qsizegrip.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSizeGrip : public virtual QSizeGrip {
@@ -1043,12 +1047,12 @@ public:
 
 };
 
-void QSizeGrip_new(QWidget* parent, QSizeGrip** outptr_QSizeGrip, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQSizeGrip* ret = new MiqtVirtualQSizeGrip(parent);
-	*outptr_QSizeGrip = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QSizeGrip* QSizeGrip_new(QWidget* parent) {
+	return new MiqtVirtualQSizeGrip(parent);
+}
+
+void QSizeGrip_virtbase(QSizeGrip* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QSizeGrip_MetaObject(const QSizeGrip* self) {

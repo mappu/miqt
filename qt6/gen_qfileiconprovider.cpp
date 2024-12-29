@@ -7,6 +7,10 @@
 #include <cstring>
 #include <qfileiconprovider.h>
 #include "gen_qfileiconprovider.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQFileIconProvider : public virtual QFileIconProvider {
@@ -148,10 +152,12 @@ public:
 
 };
 
-void QFileIconProvider_new(QFileIconProvider** outptr_QFileIconProvider, QAbstractFileIconProvider** outptr_QAbstractFileIconProvider) {
-	MiqtVirtualQFileIconProvider* ret = new MiqtVirtualQFileIconProvider();
-	*outptr_QFileIconProvider = ret;
-	*outptr_QAbstractFileIconProvider = static_cast<QAbstractFileIconProvider*>(ret);
+QFileIconProvider* QFileIconProvider_new() {
+	return new MiqtVirtualQFileIconProvider();
+}
+
+void QFileIconProvider_virtbase(QFileIconProvider* src, QAbstractFileIconProvider** outptr_QAbstractFileIconProvider) {
+	*outptr_QAbstractFileIconProvider = static_cast<QAbstractFileIconProvider*>(src);
 }
 
 QIcon* QFileIconProvider_Icon(const QFileIconProvider* self, int typeVal) {

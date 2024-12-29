@@ -28,10 +28,11 @@ typedef struct QObject QObject;
 typedef struct QPauseAnimation QPauseAnimation;
 #endif
 
-void QPauseAnimation_new(QPauseAnimation** outptr_QPauseAnimation, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject);
-void QPauseAnimation_new2(int msecs, QPauseAnimation** outptr_QPauseAnimation, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject);
-void QPauseAnimation_new3(QObject* parent, QPauseAnimation** outptr_QPauseAnimation, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject);
-void QPauseAnimation_new4(int msecs, QObject* parent, QPauseAnimation** outptr_QPauseAnimation, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject);
+QPauseAnimation* QPauseAnimation_new();
+QPauseAnimation* QPauseAnimation_new2(int msecs);
+QPauseAnimation* QPauseAnimation_new3(QObject* parent);
+QPauseAnimation* QPauseAnimation_new4(int msecs, QObject* parent);
+void QPauseAnimation_virtbase(QPauseAnimation* src, QAbstractAnimation** outptr_QAbstractAnimation);
 QMetaObject* QPauseAnimation_MetaObject(const QPauseAnimation* self);
 void* QPauseAnimation_Metacast(QPauseAnimation* self, const char* param1);
 struct miqt_string QPauseAnimation_Tr(const char* s);

@@ -37,24 +37,19 @@ func newQVersionNumber(h *C.QVersionNumber) *QVersionNumber {
 	if h == nil {
 		return nil
 	}
+
 	return &QVersionNumber{h: h}
 }
 
 // UnsafeNewQVersionNumber constructs the type using only unsafe pointers.
 func UnsafeNewQVersionNumber(h unsafe.Pointer) *QVersionNumber {
-	if h == nil {
-		return nil
-	}
-
-	return &QVersionNumber{h: (*C.QVersionNumber)(h)}
+	return newQVersionNumber((*C.QVersionNumber)(h))
 }
 
 // NewQVersionNumber constructs a new QVersionNumber object.
 func NewQVersionNumber() *QVersionNumber {
-	var outptr_QVersionNumber *C.QVersionNumber = nil
 
-	C.QVersionNumber_new(&outptr_QVersionNumber)
-	ret := newQVersionNumber(outptr_QVersionNumber)
+	ret := newQVersionNumber(C.QVersionNumber_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -67,50 +62,40 @@ func NewQVersionNumber2(seg []int) *QVersionNumber {
 		seg_CArray[i] = (C.int)(seg[i])
 	}
 	seg_ma := C.struct_miqt_array{len: C.size_t(len(seg)), data: unsafe.Pointer(seg_CArray)}
-	var outptr_QVersionNumber *C.QVersionNumber = nil
 
-	C.QVersionNumber_new2(seg_ma, &outptr_QVersionNumber)
-	ret := newQVersionNumber(outptr_QVersionNumber)
+	ret := newQVersionNumber(C.QVersionNumber_new2(seg_ma))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVersionNumber3 constructs a new QVersionNumber object.
 func NewQVersionNumber3(maj int) *QVersionNumber {
-	var outptr_QVersionNumber *C.QVersionNumber = nil
 
-	C.QVersionNumber_new3((C.int)(maj), &outptr_QVersionNumber)
-	ret := newQVersionNumber(outptr_QVersionNumber)
+	ret := newQVersionNumber(C.QVersionNumber_new3((C.int)(maj)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVersionNumber4 constructs a new QVersionNumber object.
 func NewQVersionNumber4(maj int, min int) *QVersionNumber {
-	var outptr_QVersionNumber *C.QVersionNumber = nil
 
-	C.QVersionNumber_new4((C.int)(maj), (C.int)(min), &outptr_QVersionNumber)
-	ret := newQVersionNumber(outptr_QVersionNumber)
+	ret := newQVersionNumber(C.QVersionNumber_new4((C.int)(maj), (C.int)(min)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVersionNumber5 constructs a new QVersionNumber object.
 func NewQVersionNumber5(maj int, min int, mic int) *QVersionNumber {
-	var outptr_QVersionNumber *C.QVersionNumber = nil
 
-	C.QVersionNumber_new5((C.int)(maj), (C.int)(min), (C.int)(mic), &outptr_QVersionNumber)
-	ret := newQVersionNumber(outptr_QVersionNumber)
+	ret := newQVersionNumber(C.QVersionNumber_new5((C.int)(maj), (C.int)(min), (C.int)(mic)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVersionNumber6 constructs a new QVersionNumber object.
 func NewQVersionNumber6(param1 *QVersionNumber) *QVersionNumber {
-	var outptr_QVersionNumber *C.QVersionNumber = nil
 
-	C.QVersionNumber_new6(param1.cPointer(), &outptr_QVersionNumber)
-	ret := newQVersionNumber(outptr_QVersionNumber)
+	ret := newQVersionNumber(C.QVersionNumber_new6(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -136,8 +121,7 @@ func (this *QVersionNumber) MicroVersion() int {
 }
 
 func (this *QVersionNumber) Normalized() *QVersionNumber {
-	_ret := C.QVersionNumber_Normalized(this.h)
-	_goptr := newQVersionNumber(_ret)
+	_goptr := newQVersionNumber(C.QVersionNumber_Normalized(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -169,8 +153,7 @@ func QVersionNumber_Compare(v1 *QVersionNumber, v2 *QVersionNumber) int {
 }
 
 func QVersionNumber_CommonPrefix(v1 *QVersionNumber, v2 *QVersionNumber) *QVersionNumber {
-	_ret := C.QVersionNumber_CommonPrefix(v1.cPointer(), v2.cPointer())
-	_goptr := newQVersionNumber(_ret)
+	_goptr := newQVersionNumber(C.QVersionNumber_CommonPrefix(v1.cPointer(), v2.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -183,15 +166,13 @@ func (this *QVersionNumber) ToString() string {
 }
 
 func QVersionNumber_FromString(stringVal QAnyStringView) *QVersionNumber {
-	_ret := C.QVersionNumber_FromString(stringVal.cPointer())
-	_goptr := newQVersionNumber(_ret)
+	_goptr := newQVersionNumber(C.QVersionNumber_FromString(stringVal.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QVersionNumber_FromString2(stringVal QAnyStringView, suffixIndex *int64) *QVersionNumber {
-	_ret := C.QVersionNumber_FromString2(stringVal.cPointer(), (*C.ptrdiff_t)(unsafe.Pointer(suffixIndex)))
-	_goptr := newQVersionNumber(_ret)
+	_goptr := newQVersionNumber(C.QVersionNumber_FromString2(stringVal.cPointer(), (*C.ptrdiff_t)(unsafe.Pointer(suffixIndex))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -234,41 +215,33 @@ func newQTypeRevision(h *C.QTypeRevision) *QTypeRevision {
 	if h == nil {
 		return nil
 	}
+
 	return &QTypeRevision{h: h}
 }
 
 // UnsafeNewQTypeRevision constructs the type using only unsafe pointers.
 func UnsafeNewQTypeRevision(h unsafe.Pointer) *QTypeRevision {
-	if h == nil {
-		return nil
-	}
-
-	return &QTypeRevision{h: (*C.QTypeRevision)(h)}
+	return newQTypeRevision((*C.QTypeRevision)(h))
 }
 
 // NewQTypeRevision constructs a new QTypeRevision object.
 func NewQTypeRevision() *QTypeRevision {
-	var outptr_QTypeRevision *C.QTypeRevision = nil
 
-	C.QTypeRevision_new(&outptr_QTypeRevision)
-	ret := newQTypeRevision(outptr_QTypeRevision)
+	ret := newQTypeRevision(C.QTypeRevision_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTypeRevision2 constructs a new QTypeRevision object.
 func NewQTypeRevision2(param1 *QTypeRevision) *QTypeRevision {
-	var outptr_QTypeRevision *C.QTypeRevision = nil
 
-	C.QTypeRevision_new2(param1.cPointer(), &outptr_QTypeRevision)
-	ret := newQTypeRevision(outptr_QTypeRevision)
+	ret := newQTypeRevision(C.QTypeRevision_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func QTypeRevision_Zero() *QTypeRevision {
-	_ret := C.QTypeRevision_Zero()
-	_goptr := newQTypeRevision(_ret)
+	_goptr := newQTypeRevision(C.QTypeRevision_Zero())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

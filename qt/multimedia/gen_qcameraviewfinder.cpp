@@ -18,6 +18,10 @@
 #include <QWidget>
 #include <qcameraviewfinder.h>
 #include "gen_qcameraviewfinder.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQCameraViewfinder : public virtual QCameraViewfinder {
@@ -240,24 +244,16 @@ public:
 
 };
 
-void QCameraViewfinder_new(QWidget* parent, QCameraViewfinder** outptr_QCameraViewfinder, QVideoWidget** outptr_QVideoWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice, QMediaBindableInterface** outptr_QMediaBindableInterface) {
-	MiqtVirtualQCameraViewfinder* ret = new MiqtVirtualQCameraViewfinder(parent);
-	*outptr_QCameraViewfinder = ret;
-	*outptr_QVideoWidget = static_cast<QVideoWidget*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
-	*outptr_QMediaBindableInterface = static_cast<QMediaBindableInterface*>(ret);
+QCameraViewfinder* QCameraViewfinder_new(QWidget* parent) {
+	return new MiqtVirtualQCameraViewfinder(parent);
 }
 
-void QCameraViewfinder_new2(QCameraViewfinder** outptr_QCameraViewfinder, QVideoWidget** outptr_QVideoWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice, QMediaBindableInterface** outptr_QMediaBindableInterface) {
-	MiqtVirtualQCameraViewfinder* ret = new MiqtVirtualQCameraViewfinder();
-	*outptr_QCameraViewfinder = ret;
-	*outptr_QVideoWidget = static_cast<QVideoWidget*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
-	*outptr_QMediaBindableInterface = static_cast<QMediaBindableInterface*>(ret);
+QCameraViewfinder* QCameraViewfinder_new2() {
+	return new MiqtVirtualQCameraViewfinder();
+}
+
+void QCameraViewfinder_virtbase(QCameraViewfinder* src, QVideoWidget** outptr_QVideoWidget) {
+	*outptr_QVideoWidget = static_cast<QVideoWidget*>(src);
 }
 
 QMetaObject* QCameraViewfinder_MetaObject(const QCameraViewfinder* self) {

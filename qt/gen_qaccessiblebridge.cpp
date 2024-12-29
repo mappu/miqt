@@ -13,6 +13,10 @@
 #include <QTimerEvent>
 #include <qaccessiblebridge.h>
 #include "gen_qaccessiblebridge.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QAccessibleBridge_SetRootObject(QAccessibleBridge* self, QAccessibleInterface* rootObject) {
@@ -239,16 +243,16 @@ public:
 
 };
 
-void QAccessibleBridgePlugin_new(QAccessibleBridgePlugin** outptr_QAccessibleBridgePlugin, QObject** outptr_QObject) {
-	MiqtVirtualQAccessibleBridgePlugin* ret = new MiqtVirtualQAccessibleBridgePlugin();
-	*outptr_QAccessibleBridgePlugin = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAccessibleBridgePlugin* QAccessibleBridgePlugin_new() {
+	return new MiqtVirtualQAccessibleBridgePlugin();
 }
 
-void QAccessibleBridgePlugin_new2(QObject* parent, QAccessibleBridgePlugin** outptr_QAccessibleBridgePlugin, QObject** outptr_QObject) {
-	MiqtVirtualQAccessibleBridgePlugin* ret = new MiqtVirtualQAccessibleBridgePlugin(parent);
-	*outptr_QAccessibleBridgePlugin = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAccessibleBridgePlugin* QAccessibleBridgePlugin_new2(QObject* parent) {
+	return new MiqtVirtualQAccessibleBridgePlugin(parent);
+}
+
+void QAccessibleBridgePlugin_virtbase(QAccessibleBridgePlugin* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QAccessibleBridgePlugin_MetaObject(const QAccessibleBridgePlugin* self) {

@@ -8,16 +8,18 @@
 #include <cstring>
 #include <qcalendar.h>
 #include "gen_qcalendar.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QCalendar_new(QCalendar** outptr_QCalendar) {
-	QCalendar* ret = new QCalendar();
-	*outptr_QCalendar = ret;
+QCalendar* QCalendar_new() {
+	return new QCalendar();
 }
 
-void QCalendar_new2(int system, QCalendar** outptr_QCalendar) {
-	QCalendar* ret = new QCalendar(static_cast<QCalendar::System>(system));
-	*outptr_QCalendar = ret;
+QCalendar* QCalendar_new2(int system) {
+	return new QCalendar(static_cast<QCalendar::System>(system));
 }
 
 bool QCalendar_IsValid(const QCalendar* self) {
@@ -249,24 +251,20 @@ void QCalendar_Delete(QCalendar* self, bool isSubclass) {
 	}
 }
 
-void QCalendar__YearMonthDay_new(QCalendar__YearMonthDay** outptr_QCalendar__YearMonthDay) {
-	QCalendar::YearMonthDay* ret = new QCalendar::YearMonthDay();
-	*outptr_QCalendar__YearMonthDay = ret;
+QCalendar__YearMonthDay* QCalendar__YearMonthDay_new() {
+	return new QCalendar::YearMonthDay();
 }
 
-void QCalendar__YearMonthDay_new2(int y, QCalendar__YearMonthDay** outptr_QCalendar__YearMonthDay) {
-	QCalendar::YearMonthDay* ret = new QCalendar::YearMonthDay(static_cast<int>(y));
-	*outptr_QCalendar__YearMonthDay = ret;
+QCalendar__YearMonthDay* QCalendar__YearMonthDay_new2(int y) {
+	return new QCalendar::YearMonthDay(static_cast<int>(y));
 }
 
-void QCalendar__YearMonthDay_new3(int y, int m, QCalendar__YearMonthDay** outptr_QCalendar__YearMonthDay) {
-	QCalendar::YearMonthDay* ret = new QCalendar::YearMonthDay(static_cast<int>(y), static_cast<int>(m));
-	*outptr_QCalendar__YearMonthDay = ret;
+QCalendar__YearMonthDay* QCalendar__YearMonthDay_new3(int y, int m) {
+	return new QCalendar::YearMonthDay(static_cast<int>(y), static_cast<int>(m));
 }
 
-void QCalendar__YearMonthDay_new4(int y, int m, int d, QCalendar__YearMonthDay** outptr_QCalendar__YearMonthDay) {
-	QCalendar::YearMonthDay* ret = new QCalendar::YearMonthDay(static_cast<int>(y), static_cast<int>(m), static_cast<int>(d));
-	*outptr_QCalendar__YearMonthDay = ret;
+QCalendar__YearMonthDay* QCalendar__YearMonthDay_new4(int y, int m, int d) {
+	return new QCalendar::YearMonthDay(static_cast<int>(y), static_cast<int>(m), static_cast<int>(d));
 }
 
 bool QCalendar__YearMonthDay_IsValid(const QCalendar__YearMonthDay* self) {

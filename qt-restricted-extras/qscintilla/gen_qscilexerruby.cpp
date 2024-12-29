@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexerruby.h>
 #include "gen_qscilexerruby.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerRuby : public virtual QsciLexerRuby {
@@ -839,18 +843,16 @@ public:
 
 };
 
-void QsciLexerRuby_new(QsciLexerRuby** outptr_QsciLexerRuby, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerRuby* ret = new MiqtVirtualQsciLexerRuby();
-	*outptr_QsciLexerRuby = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerRuby* QsciLexerRuby_new() {
+	return new MiqtVirtualQsciLexerRuby();
 }
 
-void QsciLexerRuby_new2(QObject* parent, QsciLexerRuby** outptr_QsciLexerRuby, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerRuby* ret = new MiqtVirtualQsciLexerRuby(parent);
-	*outptr_QsciLexerRuby = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerRuby* QsciLexerRuby_new2(QObject* parent) {
+	return new MiqtVirtualQsciLexerRuby(parent);
+}
+
+void QsciLexerRuby_virtbase(QsciLexerRuby* src, QsciLexer** outptr_QsciLexer) {
+	*outptr_QsciLexer = static_cast<QsciLexer*>(src);
 }
 
 QMetaObject* QsciLexerRuby_MetaObject(const QsciLexerRuby* self) {

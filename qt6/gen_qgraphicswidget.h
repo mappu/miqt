@@ -78,9 +78,10 @@ typedef struct QVariant QVariant;
 typedef struct QWidget QWidget;
 #endif
 
-void QGraphicsWidget_new(QGraphicsWidget** outptr_QGraphicsWidget, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem);
-void QGraphicsWidget_new2(QGraphicsItem* parent, QGraphicsWidget** outptr_QGraphicsWidget, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem);
-void QGraphicsWidget_new3(QGraphicsItem* parent, int wFlags, QGraphicsWidget** outptr_QGraphicsWidget, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem);
+QGraphicsWidget* QGraphicsWidget_new();
+QGraphicsWidget* QGraphicsWidget_new2(QGraphicsItem* parent);
+QGraphicsWidget* QGraphicsWidget_new3(QGraphicsItem* parent, int wFlags);
+void QGraphicsWidget_virtbase(QGraphicsWidget* src, QGraphicsObject** outptr_QGraphicsObject, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem);
 QMetaObject* QGraphicsWidget_MetaObject(const QGraphicsWidget* self);
 void* QGraphicsWidget_Metacast(QGraphicsWidget* self, const char* param1);
 struct miqt_string QGraphicsWidget_Tr(const char* s);

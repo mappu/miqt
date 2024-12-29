@@ -24,9 +24,9 @@ typedef struct QLocale QLocale;
 typedef struct QResource QResource;
 #endif
 
-void QResource_new(QResource** outptr_QResource);
-void QResource_new2(struct miqt_string file, QResource** outptr_QResource);
-void QResource_new3(struct miqt_string file, QLocale* locale, QResource** outptr_QResource);
+QResource* QResource_new();
+QResource* QResource_new2(struct miqt_string file);
+QResource* QResource_new3(struct miqt_string file, QLocale* locale);
 void QResource_SetFileName(QResource* self, struct miqt_string file);
 struct miqt_string QResource_FileName(const QResource* self);
 struct miqt_string QResource_AbsoluteFilePath(const QResource* self);

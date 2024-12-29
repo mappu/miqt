@@ -15,6 +15,10 @@
 #include <QWidget>
 #include <qboxlayout.h>
 #include "gen_qboxlayout.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQBoxLayout : public virtual QBoxLayout {
@@ -533,20 +537,16 @@ public:
 
 };
 
-void QBoxLayout_new(int param1, QBoxLayout** outptr_QBoxLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem) {
-	MiqtVirtualQBoxLayout* ret = new MiqtVirtualQBoxLayout(static_cast<QBoxLayout::Direction>(param1));
-	*outptr_QBoxLayout = ret;
-	*outptr_QLayout = static_cast<QLayout*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QLayoutItem = static_cast<QLayoutItem*>(ret);
+QBoxLayout* QBoxLayout_new(int param1) {
+	return new MiqtVirtualQBoxLayout(static_cast<QBoxLayout::Direction>(param1));
 }
 
-void QBoxLayout_new2(int param1, QWidget* parent, QBoxLayout** outptr_QBoxLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem) {
-	MiqtVirtualQBoxLayout* ret = new MiqtVirtualQBoxLayout(static_cast<QBoxLayout::Direction>(param1), parent);
-	*outptr_QBoxLayout = ret;
-	*outptr_QLayout = static_cast<QLayout*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QLayoutItem = static_cast<QLayoutItem*>(ret);
+QBoxLayout* QBoxLayout_new2(int param1, QWidget* parent) {
+	return new MiqtVirtualQBoxLayout(static_cast<QBoxLayout::Direction>(param1), parent);
+}
+
+void QBoxLayout_virtbase(QBoxLayout* src, QLayout** outptr_QLayout) {
+	*outptr_QLayout = static_cast<QLayout*>(src);
 }
 
 QMetaObject* QBoxLayout_MetaObject(const QBoxLayout* self) {
@@ -1294,22 +1294,16 @@ public:
 
 };
 
-void QHBoxLayout_new(QWidget* parent, QHBoxLayout** outptr_QHBoxLayout, QBoxLayout** outptr_QBoxLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem) {
-	MiqtVirtualQHBoxLayout* ret = new MiqtVirtualQHBoxLayout(parent);
-	*outptr_QHBoxLayout = ret;
-	*outptr_QBoxLayout = static_cast<QBoxLayout*>(ret);
-	*outptr_QLayout = static_cast<QLayout*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QLayoutItem = static_cast<QLayoutItem*>(ret);
+QHBoxLayout* QHBoxLayout_new(QWidget* parent) {
+	return new MiqtVirtualQHBoxLayout(parent);
 }
 
-void QHBoxLayout_new2(QHBoxLayout** outptr_QHBoxLayout, QBoxLayout** outptr_QBoxLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem) {
-	MiqtVirtualQHBoxLayout* ret = new MiqtVirtualQHBoxLayout();
-	*outptr_QHBoxLayout = ret;
-	*outptr_QBoxLayout = static_cast<QBoxLayout*>(ret);
-	*outptr_QLayout = static_cast<QLayout*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QLayoutItem = static_cast<QLayoutItem*>(ret);
+QHBoxLayout* QHBoxLayout_new2() {
+	return new MiqtVirtualQHBoxLayout();
+}
+
+void QHBoxLayout_virtbase(QHBoxLayout* src, QBoxLayout** outptr_QBoxLayout) {
+	*outptr_QBoxLayout = static_cast<QBoxLayout*>(src);
 }
 
 QMetaObject* QHBoxLayout_MetaObject(const QHBoxLayout* self) {
@@ -1835,22 +1829,16 @@ public:
 
 };
 
-void QVBoxLayout_new(QWidget* parent, QVBoxLayout** outptr_QVBoxLayout, QBoxLayout** outptr_QBoxLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem) {
-	MiqtVirtualQVBoxLayout* ret = new MiqtVirtualQVBoxLayout(parent);
-	*outptr_QVBoxLayout = ret;
-	*outptr_QBoxLayout = static_cast<QBoxLayout*>(ret);
-	*outptr_QLayout = static_cast<QLayout*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QLayoutItem = static_cast<QLayoutItem*>(ret);
+QVBoxLayout* QVBoxLayout_new(QWidget* parent) {
+	return new MiqtVirtualQVBoxLayout(parent);
 }
 
-void QVBoxLayout_new2(QVBoxLayout** outptr_QVBoxLayout, QBoxLayout** outptr_QBoxLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem) {
-	MiqtVirtualQVBoxLayout* ret = new MiqtVirtualQVBoxLayout();
-	*outptr_QVBoxLayout = ret;
-	*outptr_QBoxLayout = static_cast<QBoxLayout*>(ret);
-	*outptr_QLayout = static_cast<QLayout*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QLayoutItem = static_cast<QLayoutItem*>(ret);
+QVBoxLayout* QVBoxLayout_new2() {
+	return new MiqtVirtualQVBoxLayout();
+}
+
+void QVBoxLayout_virtbase(QVBoxLayout* src, QBoxLayout** outptr_QBoxLayout) {
+	*outptr_QBoxLayout = static_cast<QBoxLayout*>(src);
 }
 
 QMetaObject* QVBoxLayout_MetaObject(const QVBoxLayout* self) {

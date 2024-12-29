@@ -28,6 +28,7 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif
 
+void QFutureWatcherBase_virtbase(QFutureWatcherBase* src, QObject** outptr_QObject);
 QMetaObject* QFutureWatcherBase_MetaObject(const QFutureWatcherBase* self);
 void* QFutureWatcherBase_Metacast(QFutureWatcherBase* self, const char* param1);
 struct miqt_string QFutureWatcherBase_Tr(const char* s);

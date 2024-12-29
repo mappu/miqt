@@ -36,6 +36,10 @@
 #include <QWidget>
 #include <qheaderview.h>
 #include "gen_qheaderview.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQHeaderView : public virtual QHeaderView {
@@ -1653,26 +1657,16 @@ public:
 
 };
 
-void QHeaderView_new(int orientation, QHeaderView** outptr_QHeaderView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQHeaderView* ret = new MiqtVirtualQHeaderView(static_cast<Qt::Orientation>(orientation));
-	*outptr_QHeaderView = ret;
-	*outptr_QAbstractItemView = static_cast<QAbstractItemView*>(ret);
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QHeaderView* QHeaderView_new(int orientation) {
+	return new MiqtVirtualQHeaderView(static_cast<Qt::Orientation>(orientation));
 }
 
-void QHeaderView_new2(int orientation, QWidget* parent, QHeaderView** outptr_QHeaderView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQHeaderView* ret = new MiqtVirtualQHeaderView(static_cast<Qt::Orientation>(orientation), parent);
-	*outptr_QHeaderView = ret;
-	*outptr_QAbstractItemView = static_cast<QAbstractItemView*>(ret);
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QHeaderView* QHeaderView_new2(int orientation, QWidget* parent) {
+	return new MiqtVirtualQHeaderView(static_cast<Qt::Orientation>(orientation), parent);
+}
+
+void QHeaderView_virtbase(QHeaderView* src, QAbstractItemView** outptr_QAbstractItemView) {
+	*outptr_QAbstractItemView = static_cast<QAbstractItemView*>(src);
 }
 
 QMetaObject* QHeaderView_MetaObject(const QHeaderView* self) {

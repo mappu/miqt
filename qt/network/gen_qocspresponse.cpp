@@ -2,16 +2,18 @@
 #include <QSslCertificate>
 #include <qocspresponse.h>
 #include "gen_qocspresponse.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QOcspResponse_new(QOcspResponse** outptr_QOcspResponse) {
-	QOcspResponse* ret = new QOcspResponse();
-	*outptr_QOcspResponse = ret;
+QOcspResponse* QOcspResponse_new() {
+	return new QOcspResponse();
 }
 
-void QOcspResponse_new2(QOcspResponse* other, QOcspResponse** outptr_QOcspResponse) {
-	QOcspResponse* ret = new QOcspResponse(*other);
-	*outptr_QOcspResponse = ret;
+QOcspResponse* QOcspResponse_new2(QOcspResponse* other) {
+	return new QOcspResponse(*other);
 }
 
 void QOcspResponse_OperatorAssign(QOcspResponse* self, QOcspResponse* other) {

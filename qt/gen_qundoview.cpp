@@ -32,6 +32,10 @@
 #include <QWidget>
 #include <qundoview.h>
 #include "gen_qundoview.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQUndoView : public virtual QUndoView {
@@ -898,76 +902,32 @@ public:
 
 };
 
-void QUndoView_new(QWidget* parent, QUndoView** outptr_QUndoView, QListView** outptr_QListView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQUndoView* ret = new MiqtVirtualQUndoView(parent);
-	*outptr_QUndoView = ret;
-	*outptr_QListView = static_cast<QListView*>(ret);
-	*outptr_QAbstractItemView = static_cast<QAbstractItemView*>(ret);
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QUndoView* QUndoView_new(QWidget* parent) {
+	return new MiqtVirtualQUndoView(parent);
 }
 
-void QUndoView_new2(QUndoView** outptr_QUndoView, QListView** outptr_QListView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQUndoView* ret = new MiqtVirtualQUndoView();
-	*outptr_QUndoView = ret;
-	*outptr_QListView = static_cast<QListView*>(ret);
-	*outptr_QAbstractItemView = static_cast<QAbstractItemView*>(ret);
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QUndoView* QUndoView_new2() {
+	return new MiqtVirtualQUndoView();
 }
 
-void QUndoView_new3(QUndoStack* stack, QUndoView** outptr_QUndoView, QListView** outptr_QListView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQUndoView* ret = new MiqtVirtualQUndoView(stack);
-	*outptr_QUndoView = ret;
-	*outptr_QListView = static_cast<QListView*>(ret);
-	*outptr_QAbstractItemView = static_cast<QAbstractItemView*>(ret);
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QUndoView* QUndoView_new3(QUndoStack* stack) {
+	return new MiqtVirtualQUndoView(stack);
 }
 
-void QUndoView_new4(QUndoGroup* group, QUndoView** outptr_QUndoView, QListView** outptr_QListView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQUndoView* ret = new MiqtVirtualQUndoView(group);
-	*outptr_QUndoView = ret;
-	*outptr_QListView = static_cast<QListView*>(ret);
-	*outptr_QAbstractItemView = static_cast<QAbstractItemView*>(ret);
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QUndoView* QUndoView_new4(QUndoGroup* group) {
+	return new MiqtVirtualQUndoView(group);
 }
 
-void QUndoView_new5(QUndoStack* stack, QWidget* parent, QUndoView** outptr_QUndoView, QListView** outptr_QListView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQUndoView* ret = new MiqtVirtualQUndoView(stack, parent);
-	*outptr_QUndoView = ret;
-	*outptr_QListView = static_cast<QListView*>(ret);
-	*outptr_QAbstractItemView = static_cast<QAbstractItemView*>(ret);
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QUndoView* QUndoView_new5(QUndoStack* stack, QWidget* parent) {
+	return new MiqtVirtualQUndoView(stack, parent);
 }
 
-void QUndoView_new6(QUndoGroup* group, QWidget* parent, QUndoView** outptr_QUndoView, QListView** outptr_QListView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQUndoView* ret = new MiqtVirtualQUndoView(group, parent);
-	*outptr_QUndoView = ret;
-	*outptr_QListView = static_cast<QListView*>(ret);
-	*outptr_QAbstractItemView = static_cast<QAbstractItemView*>(ret);
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QUndoView* QUndoView_new6(QUndoGroup* group, QWidget* parent) {
+	return new MiqtVirtualQUndoView(group, parent);
+}
+
+void QUndoView_virtbase(QUndoView* src, QListView** outptr_QListView) {
+	*outptr_QListView = static_cast<QListView*>(src);
 }
 
 QMetaObject* QUndoView_MetaObject(const QUndoView* self) {

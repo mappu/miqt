@@ -20,8 +20,8 @@ class QHashSeed;
 typedef struct QHashSeed QHashSeed;
 #endif
 
-void QHashSeed_new(QHashSeed** outptr_QHashSeed);
-void QHashSeed_new2(size_t d, QHashSeed** outptr_QHashSeed);
+QHashSeed* QHashSeed_new();
+QHashSeed* QHashSeed_new2(size_t d);
 QHashSeed* QHashSeed_GlobalSeed();
 void QHashSeed_SetDeterministicGlobalSeed();
 void QHashSeed_ResetRandomGlobalSeed();

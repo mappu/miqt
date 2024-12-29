@@ -658,37 +658,32 @@ func (this *QStyle) UnsafePointer() unsafe.Pointer {
 }
 
 // newQStyle constructs the type using only CGO pointers.
-func newQStyle(h *C.QStyle, h_QObject *C.QObject) *QStyle {
+func newQStyle(h *C.QStyle) *QStyle {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QStyle_virtbase(h, &outptr_QObject)
+
 	return &QStyle{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQStyle constructs the type using only unsafe pointers.
-func UnsafeNewQStyle(h unsafe.Pointer, h_QObject unsafe.Pointer) *QStyle {
-	if h == nil {
-		return nil
-	}
-
-	return &QStyle{h: (*C.QStyle)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQStyle(h unsafe.Pointer) *QStyle {
+	return newQStyle((*C.QStyle)(h))
 }
 
 // NewQStyle constructs a new QStyle object.
 func NewQStyle() *QStyle {
-	var outptr_QStyle *C.QStyle = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QStyle_new(&outptr_QStyle, &outptr_QObject)
-	ret := newQStyle(outptr_QStyle, outptr_QObject)
+	ret := newQStyle(C.QStyle_new())
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QStyle) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QStyle_MetaObject(this.h)))
+	return newQMetaObject(C.QStyle_MetaObject(this.h))
 }
 
 func (this *QStyle) Metacast(param1 string) unsafe.Pointer {
@@ -740,15 +735,13 @@ func (this *QStyle) ItemTextRect(fm *QFontMetrics, r *QRect, flags int, enabled 
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	_ret := C.QStyle_ItemTextRect(this.h, fm.cPointer(), r.cPointer(), (C.int)(flags), (C.bool)(enabled), text_ms)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QStyle_ItemTextRect(this.h, fm.cPointer(), r.cPointer(), (C.int)(flags), (C.bool)(enabled), text_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStyle) ItemPixmapRect(r *QRect, flags int, pixmap *QPixmap) *QRect {
-	_ret := C.QStyle_ItemPixmapRect(this.h, r.cPointer(), (C.int)(flags), pixmap.cPointer())
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QStyle_ItemPixmapRect(this.h, r.cPointer(), (C.int)(flags), pixmap.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -766,8 +759,7 @@ func (this *QStyle) DrawItemPixmap(painter *QPainter, rect *QRect, alignment int
 }
 
 func (this *QStyle) StandardPalette() *QPalette {
-	_ret := C.QStyle_StandardPalette(this.h)
-	_goptr := newQPalette(_ret)
+	_goptr := newQPalette(C.QStyle_StandardPalette(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -781,8 +773,7 @@ func (this *QStyle) DrawControl(element QStyle__ControlElement, opt *QStyleOptio
 }
 
 func (this *QStyle) SubElementRect(subElement QStyle__SubElement, option *QStyleOption, widget *QWidget) *QRect {
-	_ret := C.QStyle_SubElementRect(this.h, (C.int)(subElement), option.cPointer(), widget.cPointer())
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QStyle_SubElementRect(this.h, (C.int)(subElement), option.cPointer(), widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -796,8 +787,7 @@ func (this *QStyle) HitTestComplexControl(cc QStyle__ComplexControl, opt *QStyle
 }
 
 func (this *QStyle) SubControlRect(cc QStyle__ComplexControl, opt *QStyleOptionComplex, sc QStyle__SubControl, widget *QWidget) *QRect {
-	_ret := C.QStyle_SubControlRect(this.h, (C.int)(cc), opt.cPointer(), (C.int)(sc), widget.cPointer())
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QStyle_SubControlRect(this.h, (C.int)(cc), opt.cPointer(), (C.int)(sc), widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -807,8 +797,7 @@ func (this *QStyle) PixelMetric(metric QStyle__PixelMetric, option *QStyleOption
 }
 
 func (this *QStyle) SizeFromContents(ct QStyle__ContentsType, opt *QStyleOption, contentsSize *QSize, w *QWidget) *QSize {
-	_ret := C.QStyle_SizeFromContents(this.h, (C.int)(ct), opt.cPointer(), contentsSize.cPointer(), w.cPointer())
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QStyle_SizeFromContents(this.h, (C.int)(ct), opt.cPointer(), contentsSize.cPointer(), w.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -818,36 +807,31 @@ func (this *QStyle) StyleHint(stylehint QStyle__StyleHint, opt *QStyleOption, wi
 }
 
 func (this *QStyle) StandardPixmap(standardPixmap QStyle__StandardPixmap, opt *QStyleOption, widget *QWidget) *QPixmap {
-	_ret := C.QStyle_StandardPixmap(this.h, (C.int)(standardPixmap), opt.cPointer(), widget.cPointer())
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QStyle_StandardPixmap(this.h, (C.int)(standardPixmap), opt.cPointer(), widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStyle) StandardIcon(standardIcon QStyle__StandardPixmap, option *QStyleOption, widget *QWidget) *QIcon {
-	_ret := C.QStyle_StandardIcon(this.h, (C.int)(standardIcon), option.cPointer(), widget.cPointer())
-	_goptr := newQIcon(_ret)
+	_goptr := newQIcon(C.QStyle_StandardIcon(this.h, (C.int)(standardIcon), option.cPointer(), widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStyle) GeneratedIconPixmap(iconMode QIcon__Mode, pixmap *QPixmap, opt *QStyleOption) *QPixmap {
-	_ret := C.QStyle_GeneratedIconPixmap(this.h, (C.int)(iconMode), pixmap.cPointer(), opt.cPointer())
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QStyle_GeneratedIconPixmap(this.h, (C.int)(iconMode), pixmap.cPointer(), opt.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QStyle_VisualRect(direction LayoutDirection, boundingRect *QRect, logicalRect *QRect) *QRect {
-	_ret := C.QStyle_VisualRect((C.int)(direction), boundingRect.cPointer(), logicalRect.cPointer())
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QStyle_VisualRect((C.int)(direction), boundingRect.cPointer(), logicalRect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QStyle_VisualPos(direction LayoutDirection, boundingRect *QRect, logicalPos *QPoint) *QPoint {
-	_ret := C.QStyle_VisualPos((C.int)(direction), boundingRect.cPointer(), logicalPos.cPointer())
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QStyle_VisualPos((C.int)(direction), boundingRect.cPointer(), logicalPos.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -865,8 +849,7 @@ func QStyle_VisualAlignment(direction LayoutDirection, alignment AlignmentFlag) 
 }
 
 func QStyle_AlignedRect(direction LayoutDirection, alignment AlignmentFlag, size *QSize, rectangle *QRect) *QRect {
-	_ret := C.QStyle_AlignedRect((C.int)(direction), (C.int)(alignment), size.cPointer(), rectangle.cPointer())
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QStyle_AlignedRect((C.int)(direction), (C.int)(alignment), size.cPointer(), rectangle.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -880,7 +863,7 @@ func (this *QStyle) CombinedLayoutSpacing(controls1 QSizePolicy__ControlType, co
 }
 
 func (this *QStyle) Proxy() *QStyle {
-	return UnsafeNewQStyle(unsafe.Pointer(C.QStyle_Proxy(this.h)), nil)
+	return newQStyle(C.QStyle_Proxy(this.h))
 }
 
 func QStyle_Tr2(s string, c string) string {
@@ -949,6 +932,9 @@ func (this *QStyle) callVirtualBase_Polish(widget *QWidget) {
 
 }
 func (this *QStyle) OnPolish(slot func(super func(widget *QWidget), widget *QWidget)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_Polish(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -960,7 +946,7 @@ func miqt_exec_callback_QStyle_Polish(self *C.QStyle, cb C.intptr_t, widget *C.Q
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval1 := newQWidget(widget)
 
 	gofunc((&QStyle{h: self}).callVirtualBase_Polish, slotval1)
 
@@ -972,6 +958,9 @@ func (this *QStyle) callVirtualBase_Unpolish(widget *QWidget) {
 
 }
 func (this *QStyle) OnUnpolish(slot func(super func(widget *QWidget), widget *QWidget)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_Unpolish(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -983,7 +972,7 @@ func miqt_exec_callback_QStyle_Unpolish(self *C.QStyle, cb C.intptr_t, widget *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval1 := newQWidget(widget)
 
 	gofunc((&QStyle{h: self}).callVirtualBase_Unpolish, slotval1)
 
@@ -995,6 +984,9 @@ func (this *QStyle) callVirtualBase_PolishWithApplication(application *QApplicat
 
 }
 func (this *QStyle) OnPolishWithApplication(slot func(super func(application *QApplication), application *QApplication)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_PolishWithApplication(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1006,7 +998,7 @@ func miqt_exec_callback_QStyle_PolishWithApplication(self *C.QStyle, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQApplication(unsafe.Pointer(application), nil, nil, nil)
+	slotval1 := newQApplication(application)
 
 	gofunc((&QStyle{h: self}).callVirtualBase_PolishWithApplication, slotval1)
 
@@ -1018,6 +1010,9 @@ func (this *QStyle) callVirtualBase_UnpolishWithApplication(application *QApplic
 
 }
 func (this *QStyle) OnUnpolishWithApplication(slot func(super func(application *QApplication), application *QApplication)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_UnpolishWithApplication(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1029,7 +1024,7 @@ func miqt_exec_callback_QStyle_UnpolishWithApplication(self *C.QStyle, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQApplication(unsafe.Pointer(application), nil, nil, nil)
+	slotval1 := newQApplication(application)
 
 	gofunc((&QStyle{h: self}).callVirtualBase_UnpolishWithApplication, slotval1)
 
@@ -1041,6 +1036,9 @@ func (this *QStyle) callVirtualBase_PolishWithPalette(palette *QPalette) {
 
 }
 func (this *QStyle) OnPolishWithPalette(slot func(super func(palette *QPalette), palette *QPalette)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_PolishWithPalette(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1052,7 +1050,7 @@ func miqt_exec_callback_QStyle_PolishWithPalette(self *C.QStyle, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPalette(unsafe.Pointer(palette))
+	slotval1 := newQPalette(palette)
 
 	gofunc((&QStyle{h: self}).callVirtualBase_PolishWithPalette, slotval1)
 
@@ -1064,13 +1062,15 @@ func (this *QStyle) callVirtualBase_ItemTextRect(fm *QFontMetrics, r *QRect, fla
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	_ret := C.QStyle_virtualbase_ItemTextRect(unsafe.Pointer(this.h), fm.cPointer(), r.cPointer(), (C.int)(flags), (C.bool)(enabled), text_ms)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QStyle_virtualbase_ItemTextRect(unsafe.Pointer(this.h), fm.cPointer(), r.cPointer(), (C.int)(flags), (C.bool)(enabled), text_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QStyle) OnItemTextRect(slot func(super func(fm *QFontMetrics, r *QRect, flags int, enabled bool, text string) *QRect, fm *QFontMetrics, r *QRect, flags int, enabled bool, text string) *QRect) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_ItemTextRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1082,8 +1082,10 @@ func miqt_exec_callback_QStyle_ItemTextRect(self *C.QStyle, cb C.intptr_t, fm *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFontMetrics(unsafe.Pointer(fm))
-	slotval2 := UnsafeNewQRect(unsafe.Pointer(r))
+	slotval1 := newQFontMetrics(fm)
+
+	slotval2 := newQRect(r)
+
 	slotval3 := (int)(flags)
 
 	slotval4 := (bool)(enabled)
@@ -1101,13 +1103,15 @@ func miqt_exec_callback_QStyle_ItemTextRect(self *C.QStyle, cb C.intptr_t, fm *C
 
 func (this *QStyle) callVirtualBase_ItemPixmapRect(r *QRect, flags int, pixmap *QPixmap) *QRect {
 
-	_ret := C.QStyle_virtualbase_ItemPixmapRect(unsafe.Pointer(this.h), r.cPointer(), (C.int)(flags), pixmap.cPointer())
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QStyle_virtualbase_ItemPixmapRect(unsafe.Pointer(this.h), r.cPointer(), (C.int)(flags), pixmap.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QStyle) OnItemPixmapRect(slot func(super func(r *QRect, flags int, pixmap *QPixmap) *QRect, r *QRect, flags int, pixmap *QPixmap) *QRect) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_ItemPixmapRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1119,10 +1123,11 @@ func miqt_exec_callback_QStyle_ItemPixmapRect(self *C.QStyle, cb C.intptr_t, r *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRect(unsafe.Pointer(r))
+	slotval1 := newQRect(r)
+
 	slotval2 := (int)(flags)
 
-	slotval3 := UnsafeNewQPixmap(unsafe.Pointer(pixmap), nil)
+	slotval3 := newQPixmap(pixmap)
 
 	virtualReturn := gofunc((&QStyle{h: self}).callVirtualBase_ItemPixmapRect, slotval1, slotval2, slotval3)
 
@@ -1140,6 +1145,9 @@ func (this *QStyle) callVirtualBase_DrawItemText(painter *QPainter, rect *QRect,
 
 }
 func (this *QStyle) OnDrawItemText(slot func(super func(painter *QPainter, rect *QRect, flags int, pal *QPalette, enabled bool, text string, textRole QPalette__ColorRole), painter *QPainter, rect *QRect, flags int, pal *QPalette, enabled bool, text string, textRole QPalette__ColorRole)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_DrawItemText(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1151,11 +1159,14 @@ func miqt_exec_callback_QStyle_DrawItemText(self *C.QStyle, cb C.intptr_t, paint
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQRect(unsafe.Pointer(rect))
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQRect(rect)
+
 	slotval3 := (int)(flags)
 
-	slotval4 := UnsafeNewQPalette(unsafe.Pointer(pal))
+	slotval4 := newQPalette(pal)
+
 	slotval5 := (bool)(enabled)
 
 	var text_ms C.struct_miqt_string = text
@@ -1174,6 +1185,9 @@ func (this *QStyle) callVirtualBase_DrawItemPixmap(painter *QPainter, rect *QRec
 
 }
 func (this *QStyle) OnDrawItemPixmap(slot func(super func(painter *QPainter, rect *QRect, alignment int, pixmap *QPixmap), painter *QPainter, rect *QRect, alignment int, pixmap *QPixmap)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_DrawItemPixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1185,11 +1199,13 @@ func miqt_exec_callback_QStyle_DrawItemPixmap(self *C.QStyle, cb C.intptr_t, pai
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQRect(unsafe.Pointer(rect))
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQRect(rect)
+
 	slotval3 := (int)(alignment)
 
-	slotval4 := UnsafeNewQPixmap(unsafe.Pointer(pixmap), nil)
+	slotval4 := newQPixmap(pixmap)
 
 	gofunc((&QStyle{h: self}).callVirtualBase_DrawItemPixmap, slotval1, slotval2, slotval3, slotval4)
 
@@ -1197,13 +1213,15 @@ func miqt_exec_callback_QStyle_DrawItemPixmap(self *C.QStyle, cb C.intptr_t, pai
 
 func (this *QStyle) callVirtualBase_StandardPalette() *QPalette {
 
-	_ret := C.QStyle_virtualbase_StandardPalette(unsafe.Pointer(this.h))
-	_goptr := newQPalette(_ret)
+	_goptr := newQPalette(C.QStyle_virtualbase_StandardPalette(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QStyle) OnStandardPalette(slot func(super func() *QPalette) *QPalette) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_StandardPalette(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1220,6 +1238,9 @@ func miqt_exec_callback_QStyle_StandardPalette(self *C.QStyle, cb C.intptr_t) *C
 
 }
 func (this *QStyle) OnDrawPrimitive(slot func(pe QStyle__PrimitiveElement, opt *QStyleOption, p *QPainter, w *QWidget)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_DrawPrimitive(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1233,14 +1254,19 @@ func miqt_exec_callback_QStyle_DrawPrimitive(self *C.QStyle, cb C.intptr_t, pe C
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QStyle__PrimitiveElement)(pe)
 
-	slotval2 := UnsafeNewQStyleOption(unsafe.Pointer(opt))
-	slotval3 := UnsafeNewQPainter(unsafe.Pointer(p))
-	slotval4 := UnsafeNewQWidget(unsafe.Pointer(w), nil, nil)
+	slotval2 := newQStyleOption(opt)
+
+	slotval3 := newQPainter(p)
+
+	slotval4 := newQWidget(w)
 
 	gofunc(slotval1, slotval2, slotval3, slotval4)
 
 }
 func (this *QStyle) OnDrawControl(slot func(element QStyle__ControlElement, opt *QStyleOption, p *QPainter, w *QWidget)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_DrawControl(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1254,14 +1280,19 @@ func miqt_exec_callback_QStyle_DrawControl(self *C.QStyle, cb C.intptr_t, elemen
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QStyle__ControlElement)(element)
 
-	slotval2 := UnsafeNewQStyleOption(unsafe.Pointer(opt))
-	slotval3 := UnsafeNewQPainter(unsafe.Pointer(p))
-	slotval4 := UnsafeNewQWidget(unsafe.Pointer(w), nil, nil)
+	slotval2 := newQStyleOption(opt)
+
+	slotval3 := newQPainter(p)
+
+	slotval4 := newQWidget(w)
 
 	gofunc(slotval1, slotval2, slotval3, slotval4)
 
 }
 func (this *QStyle) OnSubElementRect(slot func(subElement QStyle__SubElement, option *QStyleOption, widget *QWidget) *QRect) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_SubElementRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1275,8 +1306,9 @@ func miqt_exec_callback_QStyle_SubElementRect(self *C.QStyle, cb C.intptr_t, sub
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QStyle__SubElement)(subElement)
 
-	slotval2 := UnsafeNewQStyleOption(unsafe.Pointer(option))
-	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval2 := newQStyleOption(option)
+
+	slotval3 := newQWidget(widget)
 
 	virtualReturn := gofunc(slotval1, slotval2, slotval3)
 
@@ -1284,6 +1316,9 @@ func miqt_exec_callback_QStyle_SubElementRect(self *C.QStyle, cb C.intptr_t, sub
 
 }
 func (this *QStyle) OnDrawComplexControl(slot func(cc QStyle__ComplexControl, opt *QStyleOptionComplex, p *QPainter, widget *QWidget)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_DrawComplexControl(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1297,14 +1332,19 @@ func miqt_exec_callback_QStyle_DrawComplexControl(self *C.QStyle, cb C.intptr_t,
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QStyle__ComplexControl)(cc)
 
-	slotval2 := UnsafeNewQStyleOptionComplex(unsafe.Pointer(opt), nil)
-	slotval3 := UnsafeNewQPainter(unsafe.Pointer(p))
-	slotval4 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval2 := newQStyleOptionComplex(opt)
+
+	slotval3 := newQPainter(p)
+
+	slotval4 := newQWidget(widget)
 
 	gofunc(slotval1, slotval2, slotval3, slotval4)
 
 }
 func (this *QStyle) OnHitTestComplexControl(slot func(cc QStyle__ComplexControl, opt *QStyleOptionComplex, pt *QPoint, widget *QWidget) QStyle__SubControl) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_HitTestComplexControl(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1318,9 +1358,11 @@ func miqt_exec_callback_QStyle_HitTestComplexControl(self *C.QStyle, cb C.intptr
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QStyle__ComplexControl)(cc)
 
-	slotval2 := UnsafeNewQStyleOptionComplex(unsafe.Pointer(opt), nil)
-	slotval3 := UnsafeNewQPoint(unsafe.Pointer(pt))
-	slotval4 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval2 := newQStyleOptionComplex(opt)
+
+	slotval3 := newQPoint(pt)
+
+	slotval4 := newQWidget(widget)
 
 	virtualReturn := gofunc(slotval1, slotval2, slotval3, slotval4)
 
@@ -1328,6 +1370,9 @@ func miqt_exec_callback_QStyle_HitTestComplexControl(self *C.QStyle, cb C.intptr
 
 }
 func (this *QStyle) OnSubControlRect(slot func(cc QStyle__ComplexControl, opt *QStyleOptionComplex, sc QStyle__SubControl, widget *QWidget) *QRect) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_SubControlRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1341,10 +1386,11 @@ func miqt_exec_callback_QStyle_SubControlRect(self *C.QStyle, cb C.intptr_t, cc 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QStyle__ComplexControl)(cc)
 
-	slotval2 := UnsafeNewQStyleOptionComplex(unsafe.Pointer(opt), nil)
+	slotval2 := newQStyleOptionComplex(opt)
+
 	slotval3 := (QStyle__SubControl)(sc)
 
-	slotval4 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval4 := newQWidget(widget)
 
 	virtualReturn := gofunc(slotval1, slotval2, slotval3, slotval4)
 
@@ -1352,6 +1398,9 @@ func miqt_exec_callback_QStyle_SubControlRect(self *C.QStyle, cb C.intptr_t, cc 
 
 }
 func (this *QStyle) OnPixelMetric(slot func(metric QStyle__PixelMetric, option *QStyleOption, widget *QWidget) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_PixelMetric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1365,8 +1414,9 @@ func miqt_exec_callback_QStyle_PixelMetric(self *C.QStyle, cb C.intptr_t, metric
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QStyle__PixelMetric)(metric)
 
-	slotval2 := UnsafeNewQStyleOption(unsafe.Pointer(option))
-	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval2 := newQStyleOption(option)
+
+	slotval3 := newQWidget(widget)
 
 	virtualReturn := gofunc(slotval1, slotval2, slotval3)
 
@@ -1374,6 +1424,9 @@ func miqt_exec_callback_QStyle_PixelMetric(self *C.QStyle, cb C.intptr_t, metric
 
 }
 func (this *QStyle) OnSizeFromContents(slot func(ct QStyle__ContentsType, opt *QStyleOption, contentsSize *QSize, w *QWidget) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_SizeFromContents(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1387,9 +1440,11 @@ func miqt_exec_callback_QStyle_SizeFromContents(self *C.QStyle, cb C.intptr_t, c
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QStyle__ContentsType)(ct)
 
-	slotval2 := UnsafeNewQStyleOption(unsafe.Pointer(opt))
-	slotval3 := UnsafeNewQSize(unsafe.Pointer(contentsSize))
-	slotval4 := UnsafeNewQWidget(unsafe.Pointer(w), nil, nil)
+	slotval2 := newQStyleOption(opt)
+
+	slotval3 := newQSize(contentsSize)
+
+	slotval4 := newQWidget(w)
 
 	virtualReturn := gofunc(slotval1, slotval2, slotval3, slotval4)
 
@@ -1397,6 +1452,9 @@ func miqt_exec_callback_QStyle_SizeFromContents(self *C.QStyle, cb C.intptr_t, c
 
 }
 func (this *QStyle) OnStyleHint(slot func(stylehint QStyle__StyleHint, opt *QStyleOption, widget *QWidget, returnData *QStyleHintReturn) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_StyleHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1410,9 +1468,11 @@ func miqt_exec_callback_QStyle_StyleHint(self *C.QStyle, cb C.intptr_t, stylehin
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QStyle__StyleHint)(stylehint)
 
-	slotval2 := UnsafeNewQStyleOption(unsafe.Pointer(opt))
-	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
-	slotval4 := UnsafeNewQStyleHintReturn(unsafe.Pointer(returnData))
+	slotval2 := newQStyleOption(opt)
+
+	slotval3 := newQWidget(widget)
+
+	slotval4 := newQStyleHintReturn(returnData)
 
 	virtualReturn := gofunc(slotval1, slotval2, slotval3, slotval4)
 
@@ -1420,6 +1480,9 @@ func miqt_exec_callback_QStyle_StyleHint(self *C.QStyle, cb C.intptr_t, stylehin
 
 }
 func (this *QStyle) OnStandardPixmap(slot func(standardPixmap QStyle__StandardPixmap, opt *QStyleOption, widget *QWidget) *QPixmap) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_StandardPixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1433,8 +1496,9 @@ func miqt_exec_callback_QStyle_StandardPixmap(self *C.QStyle, cb C.intptr_t, sta
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QStyle__StandardPixmap)(standardPixmap)
 
-	slotval2 := UnsafeNewQStyleOption(unsafe.Pointer(opt))
-	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval2 := newQStyleOption(opt)
+
+	slotval3 := newQWidget(widget)
 
 	virtualReturn := gofunc(slotval1, slotval2, slotval3)
 
@@ -1442,6 +1506,9 @@ func miqt_exec_callback_QStyle_StandardPixmap(self *C.QStyle, cb C.intptr_t, sta
 
 }
 func (this *QStyle) OnStandardIcon(slot func(standardIcon QStyle__StandardPixmap, option *QStyleOption, widget *QWidget) *QIcon) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_StandardIcon(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1455,8 +1522,9 @@ func miqt_exec_callback_QStyle_StandardIcon(self *C.QStyle, cb C.intptr_t, stand
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QStyle__StandardPixmap)(standardIcon)
 
-	slotval2 := UnsafeNewQStyleOption(unsafe.Pointer(option))
-	slotval3 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval2 := newQStyleOption(option)
+
+	slotval3 := newQWidget(widget)
 
 	virtualReturn := gofunc(slotval1, slotval2, slotval3)
 
@@ -1464,6 +1532,9 @@ func miqt_exec_callback_QStyle_StandardIcon(self *C.QStyle, cb C.intptr_t, stand
 
 }
 func (this *QStyle) OnGeneratedIconPixmap(slot func(iconMode QIcon__Mode, pixmap *QPixmap, opt *QStyleOption) *QPixmap) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_GeneratedIconPixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1477,8 +1548,9 @@ func miqt_exec_callback_QStyle_GeneratedIconPixmap(self *C.QStyle, cb C.intptr_t
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (QIcon__Mode)(iconMode)
 
-	slotval2 := UnsafeNewQPixmap(unsafe.Pointer(pixmap), nil)
-	slotval3 := UnsafeNewQStyleOption(unsafe.Pointer(opt))
+	slotval2 := newQPixmap(pixmap)
+
+	slotval3 := newQStyleOption(opt)
 
 	virtualReturn := gofunc(slotval1, slotval2, slotval3)
 
@@ -1486,6 +1558,9 @@ func miqt_exec_callback_QStyle_GeneratedIconPixmap(self *C.QStyle, cb C.intptr_t
 
 }
 func (this *QStyle) OnLayoutSpacing(slot func(control1 QSizePolicy__ControlType, control2 QSizePolicy__ControlType, orientation Orientation, option *QStyleOption, widget *QWidget) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_LayoutSpacing(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1503,8 +1578,9 @@ func miqt_exec_callback_QStyle_LayoutSpacing(self *C.QStyle, cb C.intptr_t, cont
 
 	slotval3 := (Orientation)(orientation)
 
-	slotval4 := UnsafeNewQStyleOption(unsafe.Pointer(option))
-	slotval5 := UnsafeNewQWidget(unsafe.Pointer(widget), nil, nil)
+	slotval4 := newQStyleOption(option)
+
+	slotval5 := newQWidget(widget)
 
 	virtualReturn := gofunc(slotval1, slotval2, slotval3, slotval4, slotval5)
 
@@ -1518,6 +1594,9 @@ func (this *QStyle) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QStyle) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1529,7 +1608,7 @@ func miqt_exec_callback_QStyle_Event(self *C.QStyle, cb C.intptr_t, event *C.QEv
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QStyle{h: self}).callVirtualBase_Event, slotval1)
 
@@ -1543,6 +1622,9 @@ func (this *QStyle) callVirtualBase_EventFilter(watched *QObject, event *QEvent)
 
 }
 func (this *QStyle) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1554,8 +1636,9 @@ func miqt_exec_callback_QStyle_EventFilter(self *C.QStyle, cb C.intptr_t, watche
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QStyle{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -1569,6 +1652,9 @@ func (this *QStyle) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QStyle) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1580,7 +1666,7 @@ func miqt_exec_callback_QStyle_TimerEvent(self *C.QStyle, cb C.intptr_t, event *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QStyle{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -1592,6 +1678,9 @@ func (this *QStyle) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QStyle) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1603,7 +1692,7 @@ func miqt_exec_callback_QStyle_ChildEvent(self *C.QStyle, cb C.intptr_t, event *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QStyle{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -1615,6 +1704,9 @@ func (this *QStyle) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QStyle) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1626,7 +1718,7 @@ func miqt_exec_callback_QStyle_CustomEvent(self *C.QStyle, cb C.intptr_t, event 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QStyle{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -1638,6 +1730,9 @@ func (this *QStyle) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QStyle) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1649,7 +1744,7 @@ func miqt_exec_callback_QStyle_ConnectNotify(self *C.QStyle, cb C.intptr_t, sign
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QStyle{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -1661,6 +1756,9 @@ func (this *QStyle) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QStyle) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QStyle_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1672,7 +1770,7 @@ func miqt_exec_callback_QStyle_DisconnectNotify(self *C.QStyle, cb C.intptr_t, s
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QStyle{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

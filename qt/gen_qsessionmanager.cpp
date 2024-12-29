@@ -7,7 +7,15 @@
 #include <cstring>
 #include <qsessionmanager.h>
 #include "gen_qsessionmanager.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
+
+void QSessionManager_virtbase(QSessionManager* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
 
 QMetaObject* QSessionManager_MetaObject(const QSessionManager* self) {
 	return (QMetaObject*) self->metaObject();

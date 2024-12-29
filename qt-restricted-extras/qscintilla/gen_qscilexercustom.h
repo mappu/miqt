@@ -36,8 +36,9 @@ typedef struct QsciScintilla QsciScintilla;
 typedef struct QsciStyle QsciStyle;
 #endif
 
-void QsciLexerCustom_new(QsciLexerCustom** outptr_QsciLexerCustom, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
-void QsciLexerCustom_new2(QObject* parent, QsciLexerCustom** outptr_QsciLexerCustom, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+QsciLexerCustom* QsciLexerCustom_new();
+QsciLexerCustom* QsciLexerCustom_new2(QObject* parent);
+void QsciLexerCustom_virtbase(QsciLexerCustom* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerCustom_MetaObject(const QsciLexerCustom* self);
 void* QsciLexerCustom_Metacast(QsciLexerCustom* self, const char* param1);
 struct miqt_string QsciLexerCustom_Tr(const char* s);

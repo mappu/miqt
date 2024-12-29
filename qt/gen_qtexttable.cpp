@@ -14,16 +14,18 @@
 #include <QTextTableFormat>
 #include <qtexttable.h>
 #include "gen_qtexttable.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QTextTableCell_new(QTextTableCell** outptr_QTextTableCell) {
-	QTextTableCell* ret = new QTextTableCell();
-	*outptr_QTextTableCell = ret;
+QTextTableCell* QTextTableCell_new() {
+	return new QTextTableCell();
 }
 
-void QTextTableCell_new2(QTextTableCell* o, QTextTableCell** outptr_QTextTableCell) {
-	QTextTableCell* ret = new QTextTableCell(*o);
-	*outptr_QTextTableCell = ret;
+QTextTableCell* QTextTableCell_new2(QTextTableCell* o) {
+	return new QTextTableCell(*o);
 }
 
 void QTextTableCell_OperatorAssign(QTextTableCell* self, QTextTableCell* o) {
@@ -102,12 +104,12 @@ void QTextTableCell_Delete(QTextTableCell* self, bool isSubclass) {
 	}
 }
 
-void QTextTable_new(QTextDocument* doc, QTextTable** outptr_QTextTable, QTextFrame** outptr_QTextFrame, QTextObject** outptr_QTextObject, QObject** outptr_QObject) {
-	QTextTable* ret = new QTextTable(doc);
-	*outptr_QTextTable = ret;
-	*outptr_QTextFrame = static_cast<QTextFrame*>(ret);
-	*outptr_QTextObject = static_cast<QTextObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QTextTable* QTextTable_new(QTextDocument* doc) {
+	return new QTextTable(doc);
+}
+
+void QTextTable_virtbase(QTextTable* src, QTextFrame** outptr_QTextFrame) {
+	*outptr_QTextFrame = static_cast<QTextFrame*>(src);
 }
 
 QMetaObject* QTextTable_MetaObject(const QTextTable* self) {

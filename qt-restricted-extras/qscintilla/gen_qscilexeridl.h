@@ -30,8 +30,9 @@ typedef struct QsciLexerCPP QsciLexerCPP;
 typedef struct QsciLexerIDL QsciLexerIDL;
 #endif
 
-void QsciLexerIDL_new(QsciLexerIDL** outptr_QsciLexerIDL, QsciLexerCPP** outptr_QsciLexerCPP, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
-void QsciLexerIDL_new2(QObject* parent, QsciLexerIDL** outptr_QsciLexerIDL, QsciLexerCPP** outptr_QsciLexerCPP, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+QsciLexerIDL* QsciLexerIDL_new();
+QsciLexerIDL* QsciLexerIDL_new2(QObject* parent);
+void QsciLexerIDL_virtbase(QsciLexerIDL* src, QsciLexerCPP** outptr_QsciLexerCPP);
 QMetaObject* QsciLexerIDL_MetaObject(const QsciLexerIDL* self);
 void* QsciLexerIDL_Metacast(QsciLexerIDL* self, const char* param1);
 struct miqt_string QsciLexerIDL_Tr(const char* s);

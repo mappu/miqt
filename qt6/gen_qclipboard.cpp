@@ -9,7 +9,15 @@
 #include <cstring>
 #include <qclipboard.h>
 #include "gen_qclipboard.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
+
+void QClipboard_virtbase(QClipboard* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
 
 QMetaObject* QClipboard_MetaObject(const QClipboard* self) {
 	return (QMetaObject*) self->metaObject();

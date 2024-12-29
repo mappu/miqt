@@ -33,6 +33,10 @@
 #include <QWidget>
 #include <qstatusbar.h>
 #include "gen_qstatusbar.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQStatusBar : public virtual QStatusBar {
@@ -1020,20 +1024,16 @@ public:
 
 };
 
-void QStatusBar_new(QWidget* parent, QStatusBar** outptr_QStatusBar, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQStatusBar* ret = new MiqtVirtualQStatusBar(parent);
-	*outptr_QStatusBar = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QStatusBar* QStatusBar_new(QWidget* parent) {
+	return new MiqtVirtualQStatusBar(parent);
 }
 
-void QStatusBar_new2(QStatusBar** outptr_QStatusBar, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQStatusBar* ret = new MiqtVirtualQStatusBar();
-	*outptr_QStatusBar = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QStatusBar* QStatusBar_new2() {
+	return new MiqtVirtualQStatusBar();
+}
+
+void QStatusBar_virtbase(QStatusBar* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QStatusBar_MetaObject(const QStatusBar* self) {

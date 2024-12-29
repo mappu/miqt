@@ -20,6 +20,10 @@
 #include <QWidget>
 #include <qitemdelegate.h>
 #include "gen_qitemdelegate.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQItemDelegate : public virtual QItemDelegate {
@@ -486,18 +490,16 @@ public:
 
 };
 
-void QItemDelegate_new(QItemDelegate** outptr_QItemDelegate, QAbstractItemDelegate** outptr_QAbstractItemDelegate, QObject** outptr_QObject) {
-	MiqtVirtualQItemDelegate* ret = new MiqtVirtualQItemDelegate();
-	*outptr_QItemDelegate = ret;
-	*outptr_QAbstractItemDelegate = static_cast<QAbstractItemDelegate*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QItemDelegate* QItemDelegate_new() {
+	return new MiqtVirtualQItemDelegate();
 }
 
-void QItemDelegate_new2(QObject* parent, QItemDelegate** outptr_QItemDelegate, QAbstractItemDelegate** outptr_QAbstractItemDelegate, QObject** outptr_QObject) {
-	MiqtVirtualQItemDelegate* ret = new MiqtVirtualQItemDelegate(parent);
-	*outptr_QItemDelegate = ret;
-	*outptr_QAbstractItemDelegate = static_cast<QAbstractItemDelegate*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QItemDelegate* QItemDelegate_new2(QObject* parent) {
+	return new MiqtVirtualQItemDelegate(parent);
+}
+
+void QItemDelegate_virtbase(QItemDelegate* src, QAbstractItemDelegate** outptr_QAbstractItemDelegate) {
+	*outptr_QAbstractItemDelegate = static_cast<QAbstractItemDelegate*>(src);
 }
 
 QMetaObject* QItemDelegate_MetaObject(const QItemDelegate* self) {

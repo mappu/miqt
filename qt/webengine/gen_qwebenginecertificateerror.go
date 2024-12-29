@@ -60,16 +60,13 @@ func newQWebEngineCertificateError(h *C.QWebEngineCertificateError) *QWebEngineC
 	if h == nil {
 		return nil
 	}
+
 	return &QWebEngineCertificateError{h: h}
 }
 
 // UnsafeNewQWebEngineCertificateError constructs the type using only unsafe pointers.
 func UnsafeNewQWebEngineCertificateError(h unsafe.Pointer) *QWebEngineCertificateError {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineCertificateError{h: (*C.QWebEngineCertificateError)(h)}
+	return newQWebEngineCertificateError((*C.QWebEngineCertificateError)(h))
 }
 
 // NewQWebEngineCertificateError constructs a new QWebEngineCertificateError object.
@@ -78,20 +75,16 @@ func NewQWebEngineCertificateError(error int, url qt.QUrl, overridable bool, err
 	errorDescription_ms.data = C.CString(errorDescription)
 	errorDescription_ms.len = C.size_t(len(errorDescription))
 	defer C.free(unsafe.Pointer(errorDescription_ms.data))
-	var outptr_QWebEngineCertificateError *C.QWebEngineCertificateError = nil
 
-	C.QWebEngineCertificateError_new((C.int)(error), (*C.QUrl)(url.UnsafePointer()), (C.bool)(overridable), errorDescription_ms, &outptr_QWebEngineCertificateError)
-	ret := newQWebEngineCertificateError(outptr_QWebEngineCertificateError)
+	ret := newQWebEngineCertificateError(C.QWebEngineCertificateError_new((C.int)(error), (*C.QUrl)(url.UnsafePointer()), (C.bool)(overridable), errorDescription_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebEngineCertificateError2 constructs a new QWebEngineCertificateError object.
 func NewQWebEngineCertificateError2(other *QWebEngineCertificateError) *QWebEngineCertificateError {
-	var outptr_QWebEngineCertificateError *C.QWebEngineCertificateError = nil
 
-	C.QWebEngineCertificateError_new2(other.cPointer(), &outptr_QWebEngineCertificateError)
-	ret := newQWebEngineCertificateError(outptr_QWebEngineCertificateError)
+	ret := newQWebEngineCertificateError(C.QWebEngineCertificateError_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -101,8 +94,7 @@ func (this *QWebEngineCertificateError) Error() QWebEngineCertificateError__Erro
 }
 
 func (this *QWebEngineCertificateError) Url() *qt.QUrl {
-	_ret := C.QWebEngineCertificateError_Url(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineCertificateError_Url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -147,8 +139,7 @@ func (this *QWebEngineCertificateError) CertificateChain() []network.QSslCertifi
 	_ret := make([]network.QSslCertificate, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSslCertificate)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := network.UnsafeNewQSslCertificate(unsafe.Pointer(_lv_ret))
+		_lv_goptr := network.UnsafeNewQSslCertificate(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}

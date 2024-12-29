@@ -4,16 +4,18 @@
 #include <cstring>
 #include <qaudioformat.h>
 #include "gen_qaudioformat.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QAudioFormat_new(QAudioFormat** outptr_QAudioFormat) {
-	QAudioFormat* ret = new QAudioFormat();
-	*outptr_QAudioFormat = ret;
+QAudioFormat* QAudioFormat_new() {
+	return new QAudioFormat();
 }
 
-void QAudioFormat_new2(QAudioFormat* other, QAudioFormat** outptr_QAudioFormat) {
-	QAudioFormat* ret = new QAudioFormat(*other);
-	*outptr_QAudioFormat = ret;
+QAudioFormat* QAudioFormat_new2(QAudioFormat* other) {
+	return new QAudioFormat(*other);
 }
 
 void QAudioFormat_OperatorAssign(QAudioFormat* self, QAudioFormat* other) {

@@ -42,8 +42,9 @@ typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
-void QFormLayout_new(QWidget* parent, QFormLayout** outptr_QFormLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem);
-void QFormLayout_new2(QFormLayout** outptr_QFormLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem);
+QFormLayout* QFormLayout_new(QWidget* parent);
+QFormLayout* QFormLayout_new2();
+void QFormLayout_virtbase(QFormLayout* src, QLayout** outptr_QLayout);
 QMetaObject* QFormLayout_MetaObject(const QFormLayout* self);
 void* QFormLayout_Metacast(QFormLayout* self, const char* param1);
 struct miqt_string QFormLayout_Tr(const char* s);

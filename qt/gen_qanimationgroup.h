@@ -28,8 +28,9 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif
 
-void QAnimationGroup_new(QAnimationGroup** outptr_QAnimationGroup, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject);
-void QAnimationGroup_new2(QObject* parent, QAnimationGroup** outptr_QAnimationGroup, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject);
+QAnimationGroup* QAnimationGroup_new();
+QAnimationGroup* QAnimationGroup_new2(QObject* parent);
+void QAnimationGroup_virtbase(QAnimationGroup* src, QAbstractAnimation** outptr_QAbstractAnimation);
 QMetaObject* QAnimationGroup_MetaObject(const QAnimationGroup* self);
 void* QAnimationGroup_Metacast(QAnimationGroup* self, const char* param1);
 struct miqt_string QAnimationGroup_Tr(const char* s);

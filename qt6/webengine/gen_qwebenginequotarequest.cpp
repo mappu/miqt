@@ -2,16 +2,18 @@
 #include <QWebEngineQuotaRequest>
 #include <qwebenginequotarequest.h>
 #include "gen_qwebenginequotarequest.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QWebEngineQuotaRequest_new(QWebEngineQuotaRequest** outptr_QWebEngineQuotaRequest) {
-	QWebEngineQuotaRequest* ret = new QWebEngineQuotaRequest();
-	*outptr_QWebEngineQuotaRequest = ret;
+QWebEngineQuotaRequest* QWebEngineQuotaRequest_new() {
+	return new QWebEngineQuotaRequest();
 }
 
-void QWebEngineQuotaRequest_new2(QWebEngineQuotaRequest* param1, QWebEngineQuotaRequest** outptr_QWebEngineQuotaRequest) {
-	QWebEngineQuotaRequest* ret = new QWebEngineQuotaRequest(*param1);
-	*outptr_QWebEngineQuotaRequest = ret;
+QWebEngineQuotaRequest* QWebEngineQuotaRequest_new2(QWebEngineQuotaRequest* param1) {
+	return new QWebEngineQuotaRequest(*param1);
 }
 
 void QWebEngineQuotaRequest_Accept(QWebEngineQuotaRequest* self) {

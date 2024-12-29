@@ -37,34 +37,27 @@ func newQByteArrayView(h *C.QByteArrayView) *QByteArrayView {
 	if h == nil {
 		return nil
 	}
+
 	return &QByteArrayView{h: h}
 }
 
 // UnsafeNewQByteArrayView constructs the type using only unsafe pointers.
 func UnsafeNewQByteArrayView(h unsafe.Pointer) *QByteArrayView {
-	if h == nil {
-		return nil
-	}
-
-	return &QByteArrayView{h: (*C.QByteArrayView)(h)}
+	return newQByteArrayView((*C.QByteArrayView)(h))
 }
 
 // NewQByteArrayView constructs a new QByteArrayView object.
 func NewQByteArrayView() *QByteArrayView {
-	var outptr_QByteArrayView *C.QByteArrayView = nil
 
-	C.QByteArrayView_new(&outptr_QByteArrayView)
-	ret := newQByteArrayView(outptr_QByteArrayView)
+	ret := newQByteArrayView(C.QByteArrayView_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQByteArrayView2 constructs a new QByteArrayView object.
 func NewQByteArrayView2(param1 *QByteArrayView) *QByteArrayView {
-	var outptr_QByteArrayView *C.QByteArrayView = nil
 
-	C.QByteArrayView_new2(param1.cPointer(), &outptr_QByteArrayView)
-	ret := newQByteArrayView(outptr_QByteArrayView)
+	ret := newQByteArrayView(C.QByteArrayView_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -99,36 +92,31 @@ func (this *QByteArrayView) At(n int64) int8 {
 }
 
 func (this *QByteArrayView) First(n int64) *QByteArrayView {
-	_ret := C.QByteArrayView_First(this.h, (C.ptrdiff_t)(n))
-	_goptr := newQByteArrayView(_ret)
+	_goptr := newQByteArrayView(C.QByteArrayView_First(this.h, (C.ptrdiff_t)(n)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QByteArrayView) Last(n int64) *QByteArrayView {
-	_ret := C.QByteArrayView_Last(this.h, (C.ptrdiff_t)(n))
-	_goptr := newQByteArrayView(_ret)
+	_goptr := newQByteArrayView(C.QByteArrayView_Last(this.h, (C.ptrdiff_t)(n)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QByteArrayView) Sliced(pos int64) *QByteArrayView {
-	_ret := C.QByteArrayView_Sliced(this.h, (C.ptrdiff_t)(pos))
-	_goptr := newQByteArrayView(_ret)
+	_goptr := newQByteArrayView(C.QByteArrayView_Sliced(this.h, (C.ptrdiff_t)(pos)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QByteArrayView) Sliced2(pos int64, n int64) *QByteArrayView {
-	_ret := C.QByteArrayView_Sliced2(this.h, (C.ptrdiff_t)(pos), (C.ptrdiff_t)(n))
-	_goptr := newQByteArrayView(_ret)
+	_goptr := newQByteArrayView(C.QByteArrayView_Sliced2(this.h, (C.ptrdiff_t)(pos), (C.ptrdiff_t)(n)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QByteArrayView) Chopped(lenVal int64) *QByteArrayView {
-	_ret := C.QByteArrayView_Chopped(this.h, (C.ptrdiff_t)(lenVal))
-	_goptr := newQByteArrayView(_ret)
+	_goptr := newQByteArrayView(C.QByteArrayView_Chopped(this.h, (C.ptrdiff_t)(lenVal)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -142,8 +130,7 @@ func (this *QByteArrayView) Chop(n int64) {
 }
 
 func (this *QByteArrayView) Trimmed() *QByteArrayView {
-	_ret := C.QByteArrayView_Trimmed(this.h)
-	_goptr := newQByteArrayView(_ret)
+	_goptr := newQByteArrayView(C.QByteArrayView_Trimmed(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

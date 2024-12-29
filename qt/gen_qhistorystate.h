@@ -32,10 +32,11 @@ typedef struct QObject QObject;
 typedef struct QState QState;
 #endif
 
-void QHistoryState_new(QHistoryState** outptr_QHistoryState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject);
-void QHistoryState_new2(int typeVal, QHistoryState** outptr_QHistoryState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject);
-void QHistoryState_new3(QState* parent, QHistoryState** outptr_QHistoryState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject);
-void QHistoryState_new4(int typeVal, QState* parent, QHistoryState** outptr_QHistoryState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject);
+QHistoryState* QHistoryState_new();
+QHistoryState* QHistoryState_new2(int typeVal);
+QHistoryState* QHistoryState_new3(QState* parent);
+QHistoryState* QHistoryState_new4(int typeVal, QState* parent);
+void QHistoryState_virtbase(QHistoryState* src, QAbstractState** outptr_QAbstractState);
 QMetaObject* QHistoryState_MetaObject(const QHistoryState* self);
 void* QHistoryState_Metacast(QHistoryState* self, const char* param1);
 struct miqt_string QHistoryState_Tr(const char* s);

@@ -36,6 +36,10 @@
 #include <QWidget>
 #include <qgroupbox.h>
 #include "gen_qgroupbox.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGroupBox : public virtual QGroupBox {
@@ -1074,38 +1078,26 @@ public:
 
 };
 
-void QGroupBox_new(QWidget* parent, QGroupBox** outptr_QGroupBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQGroupBox* ret = new MiqtVirtualQGroupBox(parent);
-	*outptr_QGroupBox = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QGroupBox* QGroupBox_new(QWidget* parent) {
+	return new MiqtVirtualQGroupBox(parent);
 }
 
-void QGroupBox_new2(QGroupBox** outptr_QGroupBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQGroupBox* ret = new MiqtVirtualQGroupBox();
-	*outptr_QGroupBox = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QGroupBox* QGroupBox_new2() {
+	return new MiqtVirtualQGroupBox();
 }
 
-void QGroupBox_new3(struct miqt_string title, QGroupBox** outptr_QGroupBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QGroupBox* QGroupBox_new3(struct miqt_string title) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
-	MiqtVirtualQGroupBox* ret = new MiqtVirtualQGroupBox(title_QString);
-	*outptr_QGroupBox = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQGroupBox(title_QString);
 }
 
-void QGroupBox_new4(struct miqt_string title, QWidget* parent, QGroupBox** outptr_QGroupBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QGroupBox* QGroupBox_new4(struct miqt_string title, QWidget* parent) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
-	MiqtVirtualQGroupBox* ret = new MiqtVirtualQGroupBox(title_QString, parent);
-	*outptr_QGroupBox = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQGroupBox(title_QString, parent);
+}
+
+void QGroupBox_virtbase(QGroupBox* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QGroupBox_MetaObject(const QGroupBox* self) {

@@ -35,54 +35,40 @@ func (this *QErrorMessage) UnsafePointer() unsafe.Pointer {
 }
 
 // newQErrorMessage constructs the type using only CGO pointers.
-func newQErrorMessage(h *C.QErrorMessage, h_QDialog *C.QDialog, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QErrorMessage {
+func newQErrorMessage(h *C.QErrorMessage) *QErrorMessage {
 	if h == nil {
 		return nil
 	}
+	var outptr_QDialog *C.QDialog = nil
+	C.QErrorMessage_virtbase(h, &outptr_QDialog)
+
 	return &QErrorMessage{h: h,
-		QDialog: newQDialog(h_QDialog, h_QWidget, h_QObject, h_QPaintDevice)}
+		QDialog: newQDialog(outptr_QDialog)}
 }
 
 // UnsafeNewQErrorMessage constructs the type using only unsafe pointers.
-func UnsafeNewQErrorMessage(h unsafe.Pointer, h_QDialog unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QErrorMessage {
-	if h == nil {
-		return nil
-	}
-
-	return &QErrorMessage{h: (*C.QErrorMessage)(h),
-		QDialog: UnsafeNewQDialog(h_QDialog, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQErrorMessage(h unsafe.Pointer) *QErrorMessage {
+	return newQErrorMessage((*C.QErrorMessage)(h))
 }
 
 // NewQErrorMessage constructs a new QErrorMessage object.
 func NewQErrorMessage(parent *QWidget) *QErrorMessage {
-	var outptr_QErrorMessage *C.QErrorMessage = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QErrorMessage_new(parent.cPointer(), &outptr_QErrorMessage, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQErrorMessage(outptr_QErrorMessage, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQErrorMessage(C.QErrorMessage_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQErrorMessage2 constructs a new QErrorMessage object.
 func NewQErrorMessage2() *QErrorMessage {
-	var outptr_QErrorMessage *C.QErrorMessage = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QErrorMessage_new2(&outptr_QErrorMessage, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQErrorMessage(outptr_QErrorMessage, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQErrorMessage(C.QErrorMessage_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QErrorMessage) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QErrorMessage_MetaObject(this.h)))
+	return newQMetaObject(C.QErrorMessage_MetaObject(this.h))
 }
 
 func (this *QErrorMessage) Metacast(param1 string) unsafe.Pointer {
@@ -101,7 +87,7 @@ func QErrorMessage_Tr(s string) string {
 }
 
 func QErrorMessage_QtHandler() *QErrorMessage {
-	return UnsafeNewQErrorMessage(unsafe.Pointer(C.QErrorMessage_QtHandler()), nil, nil, nil, nil)
+	return newQErrorMessage(C.QErrorMessage_QtHandler())
 }
 
 func (this *QErrorMessage) ShowMessage(message string) {
@@ -152,6 +138,9 @@ func (this *QErrorMessage) callVirtualBase_Done(param1 int) {
 
 }
 func (this *QErrorMessage) OnDone(slot func(super func(param1 int), param1 int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_Done(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -175,6 +164,9 @@ func (this *QErrorMessage) callVirtualBase_ChangeEvent(e *QEvent) {
 
 }
 func (this *QErrorMessage) OnChangeEvent(slot func(super func(e *QEvent), e *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -186,7 +178,7 @@ func miqt_exec_callback_QErrorMessage_ChangeEvent(self *C.QErrorMessage, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	gofunc((&QErrorMessage{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -198,6 +190,9 @@ func (this *QErrorMessage) callVirtualBase_SetVisible(visible bool) {
 
 }
 func (this *QErrorMessage) OnSetVisible(slot func(super func(visible bool), visible bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -217,13 +212,15 @@ func miqt_exec_callback_QErrorMessage_SetVisible(self *C.QErrorMessage, cb C.int
 
 func (this *QErrorMessage) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QErrorMessage_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QErrorMessage_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QErrorMessage) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -242,13 +239,15 @@ func miqt_exec_callback_QErrorMessage_SizeHint(self *C.QErrorMessage, cb C.intpt
 
 func (this *QErrorMessage) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QErrorMessage_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QErrorMessage_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QErrorMessage) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -271,6 +270,9 @@ func (this *QErrorMessage) callVirtualBase_Open() {
 
 }
 func (this *QErrorMessage) OnOpen(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -291,6 +293,9 @@ func (this *QErrorMessage) callVirtualBase_Exec() int {
 
 }
 func (this *QErrorMessage) OnExec(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_Exec(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -313,6 +318,9 @@ func (this *QErrorMessage) callVirtualBase_Accept() {
 
 }
 func (this *QErrorMessage) OnAccept(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_Accept(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -333,6 +341,9 @@ func (this *QErrorMessage) callVirtualBase_Reject() {
 
 }
 func (this *QErrorMessage) OnReject(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_Reject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -353,6 +364,9 @@ func (this *QErrorMessage) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
 
 }
 func (this *QErrorMessage) OnKeyPressEvent(slot func(super func(param1 *QKeyEvent), param1 *QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -364,7 +378,7 @@ func miqt_exec_callback_QErrorMessage_KeyPressEvent(self *C.QErrorMessage, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQKeyEvent(param1)
 
 	gofunc((&QErrorMessage{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -376,6 +390,9 @@ func (this *QErrorMessage) callVirtualBase_CloseEvent(param1 *QCloseEvent) {
 
 }
 func (this *QErrorMessage) OnCloseEvent(slot func(super func(param1 *QCloseEvent), param1 *QCloseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -387,7 +404,7 @@ func miqt_exec_callback_QErrorMessage_CloseEvent(self *C.QErrorMessage, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQCloseEvent(param1)
 
 	gofunc((&QErrorMessage{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -399,6 +416,9 @@ func (this *QErrorMessage) callVirtualBase_ShowEvent(param1 *QShowEvent) {
 
 }
 func (this *QErrorMessage) OnShowEvent(slot func(super func(param1 *QShowEvent), param1 *QShowEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -410,7 +430,7 @@ func miqt_exec_callback_QErrorMessage_ShowEvent(self *C.QErrorMessage, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQShowEvent(param1)
 
 	gofunc((&QErrorMessage{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -422,6 +442,9 @@ func (this *QErrorMessage) callVirtualBase_ResizeEvent(param1 *QResizeEvent) {
 
 }
 func (this *QErrorMessage) OnResizeEvent(slot func(super func(param1 *QResizeEvent), param1 *QResizeEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -433,7 +456,7 @@ func miqt_exec_callback_QErrorMessage_ResizeEvent(self *C.QErrorMessage, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQResizeEvent(param1)
 
 	gofunc((&QErrorMessage{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -445,6 +468,9 @@ func (this *QErrorMessage) callVirtualBase_ContextMenuEvent(param1 *QContextMenu
 
 }
 func (this *QErrorMessage) OnContextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -456,7 +482,7 @@ func miqt_exec_callback_QErrorMessage_ContextMenuEvent(self *C.QErrorMessage, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQContextMenuEvent(param1)
 
 	gofunc((&QErrorMessage{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -468,6 +494,9 @@ func (this *QErrorMessage) callVirtualBase_EventFilter(param1 *QObject, param2 *
 
 }
 func (this *QErrorMessage) OnEventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QErrorMessage_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -479,8 +508,9 @@ func miqt_exec_callback_QErrorMessage_EventFilter(self *C.QErrorMessage, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(param1))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(param2))
+	slotval1 := newQObject(param1)
+
+	slotval2 := newQEvent(param2)
 
 	virtualReturn := gofunc((&QErrorMessage{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 

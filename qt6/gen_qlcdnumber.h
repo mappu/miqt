@@ -38,10 +38,11 @@ typedef struct QStyleOptionFrame QStyleOptionFrame;
 typedef struct QWidget QWidget;
 #endif
 
-void QLCDNumber_new(QWidget* parent, QLCDNumber** outptr_QLCDNumber, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QLCDNumber_new2(QLCDNumber** outptr_QLCDNumber, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QLCDNumber_new3(unsigned int numDigits, QLCDNumber** outptr_QLCDNumber, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QLCDNumber_new4(unsigned int numDigits, QWidget* parent, QLCDNumber** outptr_QLCDNumber, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QLCDNumber* QLCDNumber_new(QWidget* parent);
+QLCDNumber* QLCDNumber_new2();
+QLCDNumber* QLCDNumber_new3(unsigned int numDigits);
+QLCDNumber* QLCDNumber_new4(unsigned int numDigits, QWidget* parent);
+void QLCDNumber_virtbase(QLCDNumber* src, QFrame** outptr_QFrame);
 QMetaObject* QLCDNumber_MetaObject(const QLCDNumber* self);
 void* QLCDNumber_Metacast(QLCDNumber* self, const char* param1);
 struct miqt_string QLCDNumber_Tr(const char* s);

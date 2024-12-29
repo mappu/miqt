@@ -6,16 +6,18 @@
 #include <QVariant>
 #include <qmediametadata.h>
 #include "gen_qmediametadata.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QMediaMetaData_new(QMediaMetaData* param1, QMediaMetaData** outptr_QMediaMetaData) {
-	QMediaMetaData* ret = new QMediaMetaData(*param1);
-	*outptr_QMediaMetaData = ret;
+QMediaMetaData* QMediaMetaData_new(QMediaMetaData* param1) {
+	return new QMediaMetaData(*param1);
 }
 
-void QMediaMetaData_new2(QMediaMetaData** outptr_QMediaMetaData) {
-	QMediaMetaData* ret = new QMediaMetaData();
-	*outptr_QMediaMetaData = ret;
+QMediaMetaData* QMediaMetaData_new2() {
+	return new QMediaMetaData();
 }
 
 QVariant* QMediaMetaData_Value(const QMediaMetaData* self, int k) {

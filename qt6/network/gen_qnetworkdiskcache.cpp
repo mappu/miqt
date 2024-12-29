@@ -10,6 +10,10 @@
 #include <QUrl>
 #include <qnetworkdiskcache.h>
 #include "gen_qnetworkdiskcache.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQNetworkDiskCache : public virtual QNetworkDiskCache {
@@ -241,18 +245,16 @@ public:
 
 };
 
-void QNetworkDiskCache_new(QNetworkDiskCache** outptr_QNetworkDiskCache, QAbstractNetworkCache** outptr_QAbstractNetworkCache, QObject** outptr_QObject) {
-	MiqtVirtualQNetworkDiskCache* ret = new MiqtVirtualQNetworkDiskCache();
-	*outptr_QNetworkDiskCache = ret;
-	*outptr_QAbstractNetworkCache = static_cast<QAbstractNetworkCache*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QNetworkDiskCache* QNetworkDiskCache_new() {
+	return new MiqtVirtualQNetworkDiskCache();
 }
 
-void QNetworkDiskCache_new2(QObject* parent, QNetworkDiskCache** outptr_QNetworkDiskCache, QAbstractNetworkCache** outptr_QAbstractNetworkCache, QObject** outptr_QObject) {
-	MiqtVirtualQNetworkDiskCache* ret = new MiqtVirtualQNetworkDiskCache(parent);
-	*outptr_QNetworkDiskCache = ret;
-	*outptr_QAbstractNetworkCache = static_cast<QAbstractNetworkCache*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QNetworkDiskCache* QNetworkDiskCache_new2(QObject* parent) {
+	return new MiqtVirtualQNetworkDiskCache(parent);
+}
+
+void QNetworkDiskCache_virtbase(QNetworkDiskCache* src, QAbstractNetworkCache** outptr_QAbstractNetworkCache) {
+	*outptr_QAbstractNetworkCache = static_cast<QAbstractNetworkCache*>(src);
 }
 
 QMetaObject* QNetworkDiskCache_MetaObject(const QNetworkDiskCache* self) {

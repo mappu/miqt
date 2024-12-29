@@ -36,72 +36,50 @@ func (this *QWaveDecoder) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWaveDecoder constructs the type using only CGO pointers.
-func newQWaveDecoder(h *C.QWaveDecoder, h_QIODevice *C.QIODevice, h_QObject *C.QObject, h_QIODeviceBase *C.QIODeviceBase) *QWaveDecoder {
+func newQWaveDecoder(h *C.QWaveDecoder) *QWaveDecoder {
 	if h == nil {
 		return nil
 	}
+	var outptr_QIODevice *C.QIODevice = nil
+	C.QWaveDecoder_virtbase(h, &outptr_QIODevice)
+
 	return &QWaveDecoder{h: h,
-		QIODevice: qt6.UnsafeNewQIODevice(unsafe.Pointer(h_QIODevice), unsafe.Pointer(h_QObject), unsafe.Pointer(h_QIODeviceBase))}
+		QIODevice: qt6.UnsafeNewQIODevice(unsafe.Pointer(outptr_QIODevice))}
 }
 
 // UnsafeNewQWaveDecoder constructs the type using only unsafe pointers.
-func UnsafeNewQWaveDecoder(h unsafe.Pointer, h_QIODevice unsafe.Pointer, h_QObject unsafe.Pointer, h_QIODeviceBase unsafe.Pointer) *QWaveDecoder {
-	if h == nil {
-		return nil
-	}
-
-	return &QWaveDecoder{h: (*C.QWaveDecoder)(h),
-		QIODevice: qt6.UnsafeNewQIODevice(h_QIODevice, h_QObject, h_QIODeviceBase)}
+func UnsafeNewQWaveDecoder(h unsafe.Pointer) *QWaveDecoder {
+	return newQWaveDecoder((*C.QWaveDecoder)(h))
 }
 
 // NewQWaveDecoder constructs a new QWaveDecoder object.
 func NewQWaveDecoder(device *qt6.QIODevice) *QWaveDecoder {
-	var outptr_QWaveDecoder *C.QWaveDecoder = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QIODeviceBase *C.QIODeviceBase = nil
 
-	C.QWaveDecoder_new((*C.QIODevice)(device.UnsafePointer()), &outptr_QWaveDecoder, &outptr_QIODevice, &outptr_QObject, &outptr_QIODeviceBase)
-	ret := newQWaveDecoder(outptr_QWaveDecoder, outptr_QIODevice, outptr_QObject, outptr_QIODeviceBase)
+	ret := newQWaveDecoder(C.QWaveDecoder_new((*C.QIODevice)(device.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWaveDecoder2 constructs a new QWaveDecoder object.
 func NewQWaveDecoder2(device *qt6.QIODevice, format *QAudioFormat) *QWaveDecoder {
-	var outptr_QWaveDecoder *C.QWaveDecoder = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QIODeviceBase *C.QIODeviceBase = nil
 
-	C.QWaveDecoder_new2((*C.QIODevice)(device.UnsafePointer()), format.cPointer(), &outptr_QWaveDecoder, &outptr_QIODevice, &outptr_QObject, &outptr_QIODeviceBase)
-	ret := newQWaveDecoder(outptr_QWaveDecoder, outptr_QIODevice, outptr_QObject, outptr_QIODeviceBase)
+	ret := newQWaveDecoder(C.QWaveDecoder_new2((*C.QIODevice)(device.UnsafePointer()), format.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWaveDecoder3 constructs a new QWaveDecoder object.
 func NewQWaveDecoder3(device *qt6.QIODevice, parent *qt6.QObject) *QWaveDecoder {
-	var outptr_QWaveDecoder *C.QWaveDecoder = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QIODeviceBase *C.QIODeviceBase = nil
 
-	C.QWaveDecoder_new3((*C.QIODevice)(device.UnsafePointer()), (*C.QObject)(parent.UnsafePointer()), &outptr_QWaveDecoder, &outptr_QIODevice, &outptr_QObject, &outptr_QIODeviceBase)
-	ret := newQWaveDecoder(outptr_QWaveDecoder, outptr_QIODevice, outptr_QObject, outptr_QIODeviceBase)
+	ret := newQWaveDecoder(C.QWaveDecoder_new3((*C.QIODevice)(device.UnsafePointer()), (*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWaveDecoder4 constructs a new QWaveDecoder object.
 func NewQWaveDecoder4(device *qt6.QIODevice, format *QAudioFormat, parent *qt6.QObject) *QWaveDecoder {
-	var outptr_QWaveDecoder *C.QWaveDecoder = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QIODeviceBase *C.QIODeviceBase = nil
 
-	C.QWaveDecoder_new4((*C.QIODevice)(device.UnsafePointer()), format.cPointer(), (*C.QObject)(parent.UnsafePointer()), &outptr_QWaveDecoder, &outptr_QIODevice, &outptr_QObject, &outptr_QIODeviceBase)
-	ret := newQWaveDecoder(outptr_QWaveDecoder, outptr_QIODevice, outptr_QObject, outptr_QIODeviceBase)
+	ret := newQWaveDecoder(C.QWaveDecoder_new4((*C.QIODevice)(device.UnsafePointer()), format.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -126,14 +104,13 @@ func QWaveDecoder_Tr(s string) string {
 }
 
 func (this *QWaveDecoder) AudioFormat() *QAudioFormat {
-	_ret := C.QWaveDecoder_AudioFormat(this.h)
-	_goptr := newQAudioFormat(_ret)
+	_goptr := newQAudioFormat(C.QWaveDecoder_AudioFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWaveDecoder) GetDevice() *qt6.QIODevice {
-	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QWaveDecoder_GetDevice(this.h)), nil, nil)
+	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QWaveDecoder_GetDevice(this.h)))
 }
 
 func (this *QWaveDecoder) Duration() int {
@@ -234,6 +211,9 @@ func (this *QWaveDecoder) callVirtualBase_Open(mode qt6.QIODeviceBase__OpenModeF
 
 }
 func (this *QWaveDecoder) OnOpen(slot func(super func(mode qt6.QIODeviceBase__OpenModeFlag) bool, mode qt6.QIODeviceBase__OpenModeFlag) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWaveDecoder_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -259,6 +239,9 @@ func (this *QWaveDecoder) callVirtualBase_Close() {
 
 }
 func (this *QWaveDecoder) OnClose(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWaveDecoder_override_virtual_Close(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -279,6 +262,9 @@ func (this *QWaveDecoder) callVirtualBase_Seek(pos int64) bool {
 
 }
 func (this *QWaveDecoder) OnSeek(slot func(super func(pos int64) bool, pos int64) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWaveDecoder_override_virtual_Seek(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -304,6 +290,9 @@ func (this *QWaveDecoder) callVirtualBase_Pos() int64 {
 
 }
 func (this *QWaveDecoder) OnPos(slot func(super func() int64) int64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWaveDecoder_override_virtual_Pos(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -326,6 +315,9 @@ func (this *QWaveDecoder) callVirtualBase_Size() int64 {
 
 }
 func (this *QWaveDecoder) OnSize(slot func(super func() int64) int64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWaveDecoder_override_virtual_Size(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -348,6 +340,9 @@ func (this *QWaveDecoder) callVirtualBase_IsSequential() bool {
 
 }
 func (this *QWaveDecoder) OnIsSequential(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWaveDecoder_override_virtual_IsSequential(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -370,6 +365,9 @@ func (this *QWaveDecoder) callVirtualBase_BytesAvailable() int64 {
 
 }
 func (this *QWaveDecoder) OnBytesAvailable(slot func(super func() int64) int64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWaveDecoder_override_virtual_BytesAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -392,6 +390,9 @@ func (this *QWaveDecoder) callVirtualBase_AtEnd() bool {
 
 }
 func (this *QWaveDecoder) OnAtEnd(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWaveDecoder_override_virtual_AtEnd(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -414,6 +415,9 @@ func (this *QWaveDecoder) callVirtualBase_Reset() bool {
 
 }
 func (this *QWaveDecoder) OnReset(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWaveDecoder_override_virtual_Reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -436,6 +440,9 @@ func (this *QWaveDecoder) callVirtualBase_BytesToWrite() int64 {
 
 }
 func (this *QWaveDecoder) OnBytesToWrite(slot func(super func() int64) int64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWaveDecoder_override_virtual_BytesToWrite(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -458,6 +465,9 @@ func (this *QWaveDecoder) callVirtualBase_CanReadLine() bool {
 
 }
 func (this *QWaveDecoder) OnCanReadLine(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWaveDecoder_override_virtual_CanReadLine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -480,6 +490,9 @@ func (this *QWaveDecoder) callVirtualBase_WaitForReadyRead(msecs int) bool {
 
 }
 func (this *QWaveDecoder) OnWaitForReadyRead(slot func(super func(msecs int) bool, msecs int) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWaveDecoder_override_virtual_WaitForReadyRead(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -505,6 +518,9 @@ func (this *QWaveDecoder) callVirtualBase_WaitForBytesWritten(msecs int) bool {
 
 }
 func (this *QWaveDecoder) OnWaitForBytesWritten(slot func(super func(msecs int) bool, msecs int) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWaveDecoder_override_virtual_WaitForBytesWritten(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -532,6 +548,9 @@ func (this *QWaveDecoder) callVirtualBase_ReadLineData(data string, maxlen int64
 
 }
 func (this *QWaveDecoder) OnReadLineData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWaveDecoder_override_virtual_ReadLineData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -560,6 +579,9 @@ func (this *QWaveDecoder) callVirtualBase_SkipData(maxSize int64) int64 {
 
 }
 func (this *QWaveDecoder) OnSkipData(slot func(super func(maxSize int64) int64, maxSize int64) int64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWaveDecoder_override_virtual_SkipData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

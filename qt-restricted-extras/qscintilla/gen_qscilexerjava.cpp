@@ -5,6 +5,10 @@
 #include <cstring>
 #include <qscilexerjava.h>
 #include "gen_qscilexerjava.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerJava : public virtual QsciLexerJava {
@@ -137,20 +141,16 @@ public:
 
 };
 
-void QsciLexerJava_new(QsciLexerJava** outptr_QsciLexerJava, QsciLexerCPP** outptr_QsciLexerCPP, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerJava* ret = new MiqtVirtualQsciLexerJava();
-	*outptr_QsciLexerJava = ret;
-	*outptr_QsciLexerCPP = static_cast<QsciLexerCPP*>(ret);
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerJava* QsciLexerJava_new() {
+	return new MiqtVirtualQsciLexerJava();
 }
 
-void QsciLexerJava_new2(QObject* parent, QsciLexerJava** outptr_QsciLexerJava, QsciLexerCPP** outptr_QsciLexerCPP, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerJava* ret = new MiqtVirtualQsciLexerJava(parent);
-	*outptr_QsciLexerJava = ret;
-	*outptr_QsciLexerCPP = static_cast<QsciLexerCPP*>(ret);
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerJava* QsciLexerJava_new2(QObject* parent) {
+	return new MiqtVirtualQsciLexerJava(parent);
+}
+
+void QsciLexerJava_virtbase(QsciLexerJava* src, QsciLexerCPP** outptr_QsciLexerCPP) {
+	*outptr_QsciLexerCPP = static_cast<QsciLexerCPP*>(src);
 }
 
 QMetaObject* QsciLexerJava_MetaObject(const QsciLexerJava* self) {

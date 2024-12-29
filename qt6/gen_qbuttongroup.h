@@ -34,8 +34,9 @@ typedef struct QObject QObject;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QButtonGroup_new(QButtonGroup** outptr_QButtonGroup, QObject** outptr_QObject);
-void QButtonGroup_new2(QObject* parent, QButtonGroup** outptr_QButtonGroup, QObject** outptr_QObject);
+QButtonGroup* QButtonGroup_new();
+QButtonGroup* QButtonGroup_new2(QObject* parent);
+void QButtonGroup_virtbase(QButtonGroup* src, QObject** outptr_QObject);
 QMetaObject* QButtonGroup_MetaObject(const QButtonGroup* self);
 void* QButtonGroup_Metacast(QButtonGroup* self, const char* param1);
 struct miqt_string QButtonGroup_Tr(const char* s);

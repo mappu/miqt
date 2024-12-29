@@ -13,16 +13,18 @@
 #include <QVariant>
 #include <qmetaobject.h>
 #include "gen_qmetaobject.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QMetaMethod_new(QMetaMethod** outptr_QMetaMethod) {
-	QMetaMethod* ret = new QMetaMethod();
-	*outptr_QMetaMethod = ret;
+QMetaMethod* QMetaMethod_new() {
+	return new QMetaMethod();
 }
 
-void QMetaMethod_new2(QMetaMethod* param1, QMetaMethod** outptr_QMetaMethod) {
-	QMetaMethod* ret = new QMetaMethod(*param1);
-	*outptr_QMetaMethod = ret;
+QMetaMethod* QMetaMethod_new2(QMetaMethod* param1) {
+	return new QMetaMethod(*param1);
 }
 
 struct miqt_string QMetaMethod_MethodSignature(const QMetaMethod* self) {
@@ -430,14 +432,12 @@ void QMetaMethod_Delete(QMetaMethod* self, bool isSubclass) {
 	}
 }
 
-void QMetaEnum_new(QMetaEnum** outptr_QMetaEnum) {
-	QMetaEnum* ret = new QMetaEnum();
-	*outptr_QMetaEnum = ret;
+QMetaEnum* QMetaEnum_new() {
+	return new QMetaEnum();
 }
 
-void QMetaEnum_new2(QMetaEnum* param1, QMetaEnum** outptr_QMetaEnum) {
-	QMetaEnum* ret = new QMetaEnum(*param1);
-	*outptr_QMetaEnum = ret;
+QMetaEnum* QMetaEnum_new2(QMetaEnum* param1) {
+	return new QMetaEnum(*param1);
 }
 
 const char* QMetaEnum_Name(const QMetaEnum* self) {
@@ -517,9 +517,8 @@ void QMetaEnum_Delete(QMetaEnum* self, bool isSubclass) {
 	}
 }
 
-void QMetaProperty_new(QMetaProperty** outptr_QMetaProperty) {
-	QMetaProperty* ret = new QMetaProperty();
-	*outptr_QMetaProperty = ret;
+QMetaProperty* QMetaProperty_new() {
+	return new QMetaProperty();
 }
 
 const char* QMetaProperty_Name(const QMetaProperty* self) {
@@ -679,9 +678,8 @@ void QMetaProperty_Delete(QMetaProperty* self, bool isSubclass) {
 	}
 }
 
-void QMetaClassInfo_new(QMetaClassInfo** outptr_QMetaClassInfo) {
-	QMetaClassInfo* ret = new QMetaClassInfo();
-	*outptr_QMetaClassInfo = ret;
+QMetaClassInfo* QMetaClassInfo_new() {
+	return new QMetaClassInfo();
 }
 
 const char* QMetaClassInfo_Name(const QMetaClassInfo* self) {

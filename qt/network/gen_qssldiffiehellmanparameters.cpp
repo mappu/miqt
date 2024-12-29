@@ -6,16 +6,18 @@
 #include <cstring>
 #include <qssldiffiehellmanparameters.h>
 #include "gen_qssldiffiehellmanparameters.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QSslDiffieHellmanParameters_new(QSslDiffieHellmanParameters** outptr_QSslDiffieHellmanParameters) {
-	QSslDiffieHellmanParameters* ret = new QSslDiffieHellmanParameters();
-	*outptr_QSslDiffieHellmanParameters = ret;
+QSslDiffieHellmanParameters* QSslDiffieHellmanParameters_new() {
+	return new QSslDiffieHellmanParameters();
 }
 
-void QSslDiffieHellmanParameters_new2(QSslDiffieHellmanParameters* other, QSslDiffieHellmanParameters** outptr_QSslDiffieHellmanParameters) {
-	QSslDiffieHellmanParameters* ret = new QSslDiffieHellmanParameters(*other);
-	*outptr_QSslDiffieHellmanParameters = ret;
+QSslDiffieHellmanParameters* QSslDiffieHellmanParameters_new2(QSslDiffieHellmanParameters* other) {
+	return new QSslDiffieHellmanParameters(*other);
 }
 
 QSslDiffieHellmanParameters* QSslDiffieHellmanParameters_DefaultParameters() {

@@ -13,6 +13,10 @@
 #include <QUrl>
 #include <qnetworkcookiejar.h>
 #include "gen_qnetworkcookiejar.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQNetworkCookieJar : public virtual QNetworkCookieJar {
@@ -380,16 +384,16 @@ public:
 
 };
 
-void QNetworkCookieJar_new(QNetworkCookieJar** outptr_QNetworkCookieJar, QObject** outptr_QObject) {
-	MiqtVirtualQNetworkCookieJar* ret = new MiqtVirtualQNetworkCookieJar();
-	*outptr_QNetworkCookieJar = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QNetworkCookieJar* QNetworkCookieJar_new() {
+	return new MiqtVirtualQNetworkCookieJar();
 }
 
-void QNetworkCookieJar_new2(QObject* parent, QNetworkCookieJar** outptr_QNetworkCookieJar, QObject** outptr_QObject) {
-	MiqtVirtualQNetworkCookieJar* ret = new MiqtVirtualQNetworkCookieJar(parent);
-	*outptr_QNetworkCookieJar = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QNetworkCookieJar* QNetworkCookieJar_new2(QObject* parent) {
+	return new MiqtVirtualQNetworkCookieJar(parent);
+}
+
+void QNetworkCookieJar_virtbase(QNetworkCookieJar* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QNetworkCookieJar_MetaObject(const QNetworkCookieJar* self) {

@@ -28,8 +28,9 @@ typedef struct QsciLexerFortran QsciLexerFortran;
 typedef struct QsciLexerFortran77 QsciLexerFortran77;
 #endif
 
-void QsciLexerFortran_new(QsciLexerFortran** outptr_QsciLexerFortran, QsciLexerFortran77** outptr_QsciLexerFortran77, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
-void QsciLexerFortran_new2(QObject* parent, QsciLexerFortran** outptr_QsciLexerFortran, QsciLexerFortran77** outptr_QsciLexerFortran77, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+QsciLexerFortran* QsciLexerFortran_new();
+QsciLexerFortran* QsciLexerFortran_new2(QObject* parent);
+void QsciLexerFortran_virtbase(QsciLexerFortran* src, QsciLexerFortran77** outptr_QsciLexerFortran77);
 QMetaObject* QsciLexerFortran_MetaObject(const QsciLexerFortran* self);
 void* QsciLexerFortran_Metacast(QsciLexerFortran* self, const char* param1);
 struct miqt_string QsciLexerFortran_Tr(const char* s);

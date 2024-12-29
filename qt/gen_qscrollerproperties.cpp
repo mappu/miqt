@@ -2,16 +2,18 @@
 #include <QVariant>
 #include <qscrollerproperties.h>
 #include "gen_qscrollerproperties.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QScrollerProperties_new(QScrollerProperties** outptr_QScrollerProperties) {
-	QScrollerProperties* ret = new QScrollerProperties();
-	*outptr_QScrollerProperties = ret;
+QScrollerProperties* QScrollerProperties_new() {
+	return new QScrollerProperties();
 }
 
-void QScrollerProperties_new2(QScrollerProperties* sp, QScrollerProperties** outptr_QScrollerProperties) {
-	QScrollerProperties* ret = new QScrollerProperties(*sp);
-	*outptr_QScrollerProperties = ret;
+QScrollerProperties* QScrollerProperties_new2(QScrollerProperties* sp) {
+	return new QScrollerProperties(*sp);
 }
 
 void QScrollerProperties_OperatorAssign(QScrollerProperties* self, QScrollerProperties* sp) {

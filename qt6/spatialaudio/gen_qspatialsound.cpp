@@ -14,6 +14,10 @@
 #include <QVector3D>
 #include <qspatialsound.h>
 #include "gen_qspatialsound.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSpatialSound : public virtual QSpatialSound {
@@ -196,10 +200,12 @@ public:
 
 };
 
-void QSpatialSound_new(QAudioEngine* engine, QSpatialSound** outptr_QSpatialSound, QObject** outptr_QObject) {
-	MiqtVirtualQSpatialSound* ret = new MiqtVirtualQSpatialSound(engine);
-	*outptr_QSpatialSound = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSpatialSound* QSpatialSound_new(QAudioEngine* engine) {
+	return new MiqtVirtualQSpatialSound(engine);
+}
+
+void QSpatialSound_virtbase(QSpatialSound* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QSpatialSound_MetaObject(const QSpatialSound* self) {

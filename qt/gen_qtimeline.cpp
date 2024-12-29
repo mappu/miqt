@@ -11,6 +11,10 @@
 #include <QTimerEvent>
 #include <qtimeline.h>
 #include "gen_qtimeline.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQTimeLine : public virtual QTimeLine {
@@ -219,22 +223,20 @@ public:
 
 };
 
-void QTimeLine_new(QTimeLine** outptr_QTimeLine, QObject** outptr_QObject) {
-	MiqtVirtualQTimeLine* ret = new MiqtVirtualQTimeLine();
-	*outptr_QTimeLine = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QTimeLine* QTimeLine_new() {
+	return new MiqtVirtualQTimeLine();
 }
 
-void QTimeLine_new2(int duration, QTimeLine** outptr_QTimeLine, QObject** outptr_QObject) {
-	MiqtVirtualQTimeLine* ret = new MiqtVirtualQTimeLine(static_cast<int>(duration));
-	*outptr_QTimeLine = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QTimeLine* QTimeLine_new2(int duration) {
+	return new MiqtVirtualQTimeLine(static_cast<int>(duration));
 }
 
-void QTimeLine_new3(int duration, QObject* parent, QTimeLine** outptr_QTimeLine, QObject** outptr_QObject) {
-	MiqtVirtualQTimeLine* ret = new MiqtVirtualQTimeLine(static_cast<int>(duration), parent);
-	*outptr_QTimeLine = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QTimeLine* QTimeLine_new3(int duration, QObject* parent) {
+	return new MiqtVirtualQTimeLine(static_cast<int>(duration), parent);
+}
+
+void QTimeLine_virtbase(QTimeLine* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QTimeLine_MetaObject(const QTimeLine* self) {

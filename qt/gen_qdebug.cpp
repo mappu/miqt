@@ -9,16 +9,18 @@
 #include <cstring>
 #include <qdebug.h>
 #include "gen_qdebug.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QDebug_new(QIODevice* device, QDebug** outptr_QDebug) {
-	QDebug* ret = new QDebug(device);
-	*outptr_QDebug = ret;
+QDebug* QDebug_new(QIODevice* device) {
+	return new QDebug(device);
 }
 
-void QDebug_new2(QDebug* o, QDebug** outptr_QDebug) {
-	QDebug* ret = new QDebug(*o);
-	*outptr_QDebug = ret;
+QDebug* QDebug_new2(QDebug* o) {
+	return new QDebug(*o);
 }
 
 void QDebug_OperatorAssign(QDebug* self, QDebug* other) {
@@ -211,9 +213,8 @@ void QDebug_Delete(QDebug* self, bool isSubclass) {
 	}
 }
 
-void QDebugStateSaver_new(QDebug* dbg, QDebugStateSaver** outptr_QDebugStateSaver) {
-	QDebugStateSaver* ret = new QDebugStateSaver(*dbg);
-	*outptr_QDebugStateSaver = ret;
+QDebugStateSaver* QDebugStateSaver_new(QDebug* dbg) {
+	return new QDebugStateSaver(*dbg);
 }
 
 void QDebugStateSaver_Delete(QDebugStateSaver* self, bool isSubclass) {

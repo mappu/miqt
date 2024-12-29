@@ -33,6 +33,10 @@
 #include <QWidget>
 #include <qcolumnview.h>
 #include "gen_qcolumnview.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQColumnView : public virtual QColumnView {
@@ -1576,26 +1580,16 @@ public:
 
 };
 
-void QColumnView_new(QWidget* parent, QColumnView** outptr_QColumnView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQColumnView* ret = new MiqtVirtualQColumnView(parent);
-	*outptr_QColumnView = ret;
-	*outptr_QAbstractItemView = static_cast<QAbstractItemView*>(ret);
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QColumnView* QColumnView_new(QWidget* parent) {
+	return new MiqtVirtualQColumnView(parent);
 }
 
-void QColumnView_new2(QColumnView** outptr_QColumnView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQColumnView* ret = new MiqtVirtualQColumnView();
-	*outptr_QColumnView = ret;
-	*outptr_QAbstractItemView = static_cast<QAbstractItemView*>(ret);
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QColumnView* QColumnView_new2() {
+	return new MiqtVirtualQColumnView();
+}
+
+void QColumnView_virtbase(QColumnView* src, QAbstractItemView** outptr_QAbstractItemView) {
+	*outptr_QAbstractItemView = static_cast<QAbstractItemView*>(src);
 }
 
 QMetaObject* QColumnView_MetaObject(const QColumnView* self) {

@@ -36,22 +36,20 @@ func (this *QMediaAudioProbeControl) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMediaAudioProbeControl constructs the type using only CGO pointers.
-func newQMediaAudioProbeControl(h *C.QMediaAudioProbeControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QMediaAudioProbeControl {
+func newQMediaAudioProbeControl(h *C.QMediaAudioProbeControl) *QMediaAudioProbeControl {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMediaControl *C.QMediaControl = nil
+	C.QMediaAudioProbeControl_virtbase(h, &outptr_QMediaControl)
+
 	return &QMediaAudioProbeControl{h: h,
-		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
+		QMediaControl: newQMediaControl(outptr_QMediaControl)}
 }
 
 // UnsafeNewQMediaAudioProbeControl constructs the type using only unsafe pointers.
-func UnsafeNewQMediaAudioProbeControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QMediaAudioProbeControl {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaAudioProbeControl{h: (*C.QMediaAudioProbeControl)(h),
-		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
+func UnsafeNewQMediaAudioProbeControl(h unsafe.Pointer) *QMediaAudioProbeControl {
+	return newQMediaAudioProbeControl((*C.QMediaAudioProbeControl)(h))
 }
 
 func (this *QMediaAudioProbeControl) MetaObject() *qt.QMetaObject {
@@ -97,7 +95,7 @@ func miqt_exec_callback_QMediaAudioProbeControl_AudioBufferProbed(cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAudioBuffer(unsafe.Pointer(buffer))
+	slotval1 := newQAudioBuffer(buffer)
 
 	gofunc(slotval1)
 }

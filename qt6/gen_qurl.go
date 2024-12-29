@@ -90,34 +90,27 @@ func newQUrl(h *C.QUrl) *QUrl {
 	if h == nil {
 		return nil
 	}
+
 	return &QUrl{h: h}
 }
 
 // UnsafeNewQUrl constructs the type using only unsafe pointers.
 func UnsafeNewQUrl(h unsafe.Pointer) *QUrl {
-	if h == nil {
-		return nil
-	}
-
-	return &QUrl{h: (*C.QUrl)(h)}
+	return newQUrl((*C.QUrl)(h))
 }
 
 // NewQUrl constructs a new QUrl object.
 func NewQUrl() *QUrl {
-	var outptr_QUrl *C.QUrl = nil
 
-	C.QUrl_new(&outptr_QUrl)
-	ret := newQUrl(outptr_QUrl)
+	ret := newQUrl(C.QUrl_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQUrl2 constructs a new QUrl object.
 func NewQUrl2(copyVal *QUrl) *QUrl {
-	var outptr_QUrl *C.QUrl = nil
 
-	C.QUrl_new2(copyVal.cPointer(), &outptr_QUrl)
-	ret := newQUrl(outptr_QUrl)
+	ret := newQUrl(C.QUrl_new2(copyVal.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -128,10 +121,8 @@ func NewQUrl3(url string) *QUrl {
 	url_ms.data = C.CString(url)
 	url_ms.len = C.size_t(len(url))
 	defer C.free(unsafe.Pointer(url_ms.data))
-	var outptr_QUrl *C.QUrl = nil
 
-	C.QUrl_new3(url_ms, &outptr_QUrl)
-	ret := newQUrl(outptr_QUrl)
+	ret := newQUrl(C.QUrl_new3(url_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -142,10 +133,8 @@ func NewQUrl4(url string, mode QUrl__ParsingMode) *QUrl {
 	url_ms.data = C.CString(url)
 	url_ms.len = C.size_t(len(url))
 	defer C.free(unsafe.Pointer(url_ms.data))
-	var outptr_QUrl *C.QUrl = nil
 
-	C.QUrl_new4(url_ms, (C.int)(mode), &outptr_QUrl)
-	ret := newQUrl(outptr_QUrl)
+	ret := newQUrl(C.QUrl_new4(url_ms, (C.int)(mode)))
 	ret.isSubclass = true
 	return ret
 }
@@ -206,8 +195,7 @@ func QUrl_FromEncoded(url []byte) *QUrl {
 	url_alias := C.struct_miqt_string{}
 	url_alias.data = (*C.char)(unsafe.Pointer(&url[0]))
 	url_alias.len = C.size_t(len(url))
-	_ret := C.QUrl_FromEncoded(url_alias)
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QUrl_FromEncoded(url_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -217,8 +205,7 @@ func QUrl_FromUserInput(userInput string) *QUrl {
 	userInput_ms.data = C.CString(userInput)
 	userInput_ms.len = C.size_t(len(userInput))
 	defer C.free(unsafe.Pointer(userInput_ms.data))
-	_ret := C.QUrl_FromUserInput(userInput_ms)
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QUrl_FromUserInput(userInput_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -405,8 +392,7 @@ func (this *QUrl) SetFragment(fragment string) {
 }
 
 func (this *QUrl) Resolved(relative *QUrl) *QUrl {
-	_ret := C.QUrl_Resolved(this.h, relative.cPointer())
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QUrl_Resolved(this.h, relative.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -428,8 +414,7 @@ func QUrl_FromLocalFile(localfile string) *QUrl {
 	localfile_ms.data = C.CString(localfile)
 	localfile_ms.len = C.size_t(len(localfile))
 	defer C.free(unsafe.Pointer(localfile_ms.data))
-	_ret := C.QUrl_FromLocalFile(localfile_ms)
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QUrl_FromLocalFile(localfile_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -550,8 +535,7 @@ func QUrl_FromStringList(uris []string) []QUrl {
 	_ret := make([]QUrl, int(_ma.len))
 	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQUrl(_lv_ret)
+		_lv_goptr := newQUrl(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -584,8 +568,7 @@ func QUrl_FromEncoded2(url []byte, mode QUrl__ParsingMode) *QUrl {
 	url_alias := C.struct_miqt_string{}
 	url_alias.data = (*C.char)(unsafe.Pointer(&url[0]))
 	url_alias.len = C.size_t(len(url))
-	_ret := C.QUrl_FromEncoded2(url_alias, (C.int)(mode))
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QUrl_FromEncoded2(url_alias, (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -599,8 +582,7 @@ func QUrl_FromUserInput2(userInput string, workingDirectory string) *QUrl {
 	workingDirectory_ms.data = C.CString(workingDirectory)
 	workingDirectory_ms.len = C.size_t(len(workingDirectory))
 	defer C.free(unsafe.Pointer(workingDirectory_ms.data))
-	_ret := C.QUrl_FromUserInput2(userInput_ms, workingDirectory_ms)
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QUrl_FromUserInput2(userInput_ms, workingDirectory_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -614,8 +596,7 @@ func QUrl_FromUserInput3(userInput string, workingDirectory string, options QUrl
 	workingDirectory_ms.data = C.CString(workingDirectory)
 	workingDirectory_ms.len = C.size_t(len(workingDirectory))
 	defer C.free(unsafe.Pointer(workingDirectory_ms.data))
-	_ret := C.QUrl_FromUserInput3(userInput_ms, workingDirectory_ms, (C.int)(options))
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QUrl_FromUserInput3(userInput_ms, workingDirectory_ms, (C.int)(options)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -818,8 +799,7 @@ func QUrl_FromStringList2(uris []string, mode QUrl__ParsingMode) []QUrl {
 	_ret := make([]QUrl, int(_ma.len))
 	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQUrl(_lv_ret)
+		_lv_goptr := newQUrl(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}

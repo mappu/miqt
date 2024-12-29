@@ -2,6 +2,10 @@
 #include <QPair>
 #include <qarraydata.h>
 #include "gen_qarraydata.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 ptrdiff_t QArrayData_AllocatedCapacity(QArrayData* self) {

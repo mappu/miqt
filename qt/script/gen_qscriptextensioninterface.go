@@ -36,31 +36,26 @@ func (this *QScriptExtensionInterface) UnsafePointer() unsafe.Pointer {
 }
 
 // newQScriptExtensionInterface constructs the type using only CGO pointers.
-func newQScriptExtensionInterface(h *C.QScriptExtensionInterface, h_QFactoryInterface *C.QFactoryInterface) *QScriptExtensionInterface {
+func newQScriptExtensionInterface(h *C.QScriptExtensionInterface) *QScriptExtensionInterface {
 	if h == nil {
 		return nil
 	}
+	var outptr_QFactoryInterface *C.QFactoryInterface = nil
+	C.QScriptExtensionInterface_virtbase(h, &outptr_QFactoryInterface)
+
 	return &QScriptExtensionInterface{h: h,
-		QFactoryInterface: qt.UnsafeNewQFactoryInterface(unsafe.Pointer(h_QFactoryInterface))}
+		QFactoryInterface: qt.UnsafeNewQFactoryInterface(unsafe.Pointer(outptr_QFactoryInterface))}
 }
 
 // UnsafeNewQScriptExtensionInterface constructs the type using only unsafe pointers.
-func UnsafeNewQScriptExtensionInterface(h unsafe.Pointer, h_QFactoryInterface unsafe.Pointer) *QScriptExtensionInterface {
-	if h == nil {
-		return nil
-	}
-
-	return &QScriptExtensionInterface{h: (*C.QScriptExtensionInterface)(h),
-		QFactoryInterface: qt.UnsafeNewQFactoryInterface(h_QFactoryInterface)}
+func UnsafeNewQScriptExtensionInterface(h unsafe.Pointer) *QScriptExtensionInterface {
+	return newQScriptExtensionInterface((*C.QScriptExtensionInterface)(h))
 }
 
 // NewQScriptExtensionInterface constructs a new QScriptExtensionInterface object.
 func NewQScriptExtensionInterface(param1 *QScriptExtensionInterface) *QScriptExtensionInterface {
-	var outptr_QScriptExtensionInterface *C.QScriptExtensionInterface = nil
-	var outptr_QFactoryInterface *C.QFactoryInterface = nil
 
-	C.QScriptExtensionInterface_new(param1.cPointer(), &outptr_QScriptExtensionInterface, &outptr_QFactoryInterface)
-	ret := newQScriptExtensionInterface(outptr_QScriptExtensionInterface, outptr_QFactoryInterface)
+	ret := newQScriptExtensionInterface(C.QScriptExtensionInterface_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -77,6 +72,9 @@ func (this *QScriptExtensionInterface) OperatorAssign(param1 *QScriptExtensionIn
 	C.QScriptExtensionInterface_OperatorAssign(this.h, param1.cPointer())
 }
 func (this *QScriptExtensionInterface) OnInitialize(slot func(key string, engine *QScriptEngine)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QScriptExtensionInterface_override_virtual_Initialize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -92,12 +90,15 @@ func miqt_exec_callback_QScriptExtensionInterface_Initialize(self *C.QScriptExte
 	key_ret := C.GoStringN(key_ms.data, C.int(int64(key_ms.len)))
 	C.free(unsafe.Pointer(key_ms.data))
 	slotval1 := key_ret
-	slotval2 := UnsafeNewQScriptEngine(unsafe.Pointer(engine), nil)
+	slotval2 := newQScriptEngine(engine)
 
 	gofunc(slotval1, slotval2)
 
 }
 func (this *QScriptExtensionInterface) OnKeys(slot func() []string) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QScriptExtensionInterface_override_virtual_Keys(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

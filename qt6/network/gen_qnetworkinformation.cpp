@@ -7,7 +7,15 @@
 #include <cstring>
 #include <qnetworkinformation.h>
 #include "gen_qnetworkinformation.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
+
+void QNetworkInformation_virtbase(QNetworkInformation* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
 
 QMetaObject* QNetworkInformation_MetaObject(const QNetworkInformation* self) {
 	return (QMetaObject*) self->metaObject();

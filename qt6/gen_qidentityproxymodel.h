@@ -38,8 +38,9 @@ typedef struct QSize QSize;
 typedef struct QVariant QVariant;
 #endif
 
-void QIdentityProxyModel_new(QIdentityProxyModel** outptr_QIdentityProxyModel, QAbstractProxyModel** outptr_QAbstractProxyModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject);
-void QIdentityProxyModel_new2(QObject* parent, QIdentityProxyModel** outptr_QIdentityProxyModel, QAbstractProxyModel** outptr_QAbstractProxyModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject);
+QIdentityProxyModel* QIdentityProxyModel_new();
+QIdentityProxyModel* QIdentityProxyModel_new2(QObject* parent);
+void QIdentityProxyModel_virtbase(QIdentityProxyModel* src, QAbstractProxyModel** outptr_QAbstractProxyModel);
 QMetaObject* QIdentityProxyModel_MetaObject(const QIdentityProxyModel* self);
 void* QIdentityProxyModel_Metacast(QIdentityProxyModel* self, const char* param1);
 struct miqt_string QIdentityProxyModel_Tr(const char* s);

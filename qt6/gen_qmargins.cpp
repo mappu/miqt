@@ -2,21 +2,22 @@
 #include <QMarginsF>
 #include <qmargins.h>
 #include "gen_qmargins.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QMargins_new(QMargins** outptr_QMargins) {
-	QMargins* ret = new QMargins();
-	*outptr_QMargins = ret;
+QMargins* QMargins_new() {
+	return new QMargins();
 }
 
-void QMargins_new2(int left, int top, int right, int bottom, QMargins** outptr_QMargins) {
-	QMargins* ret = new QMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
-	*outptr_QMargins = ret;
+QMargins* QMargins_new2(int left, int top, int right, int bottom) {
+	return new QMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
 }
 
-void QMargins_new3(QMargins* param1, QMargins** outptr_QMargins) {
-	QMargins* ret = new QMargins(*param1);
-	*outptr_QMargins = ret;
+QMargins* QMargins_new3(QMargins* param1) {
+	return new QMargins(*param1);
 }
 
 bool QMargins_IsNull(const QMargins* self) {
@@ -115,24 +116,20 @@ void QMargins_Delete(QMargins* self, bool isSubclass) {
 	}
 }
 
-void QMarginsF_new(QMarginsF** outptr_QMarginsF) {
-	QMarginsF* ret = new QMarginsF();
-	*outptr_QMarginsF = ret;
+QMarginsF* QMarginsF_new() {
+	return new QMarginsF();
 }
 
-void QMarginsF_new2(double left, double top, double right, double bottom, QMarginsF** outptr_QMarginsF) {
-	QMarginsF* ret = new QMarginsF(static_cast<qreal>(left), static_cast<qreal>(top), static_cast<qreal>(right), static_cast<qreal>(bottom));
-	*outptr_QMarginsF = ret;
+QMarginsF* QMarginsF_new2(double left, double top, double right, double bottom) {
+	return new QMarginsF(static_cast<qreal>(left), static_cast<qreal>(top), static_cast<qreal>(right), static_cast<qreal>(bottom));
 }
 
-void QMarginsF_new3(QMargins* margins, QMarginsF** outptr_QMarginsF) {
-	QMarginsF* ret = new QMarginsF(*margins);
-	*outptr_QMarginsF = ret;
+QMarginsF* QMarginsF_new3(QMargins* margins) {
+	return new QMarginsF(*margins);
 }
 
-void QMarginsF_new4(QMarginsF* param1, QMarginsF** outptr_QMarginsF) {
-	QMarginsF* ret = new QMarginsF(*param1);
-	*outptr_QMarginsF = ret;
+QMarginsF* QMarginsF_new4(QMarginsF* param1) {
+	return new QMarginsF(*param1);
 }
 
 bool QMarginsF_IsNull(const QMarginsF* self) {

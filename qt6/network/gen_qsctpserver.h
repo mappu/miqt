@@ -30,8 +30,9 @@ typedef struct QTcpServer QTcpServer;
 typedef struct QTcpSocket QTcpSocket;
 #endif
 
-void QSctpServer_new(QSctpServer** outptr_QSctpServer, QTcpServer** outptr_QTcpServer, QObject** outptr_QObject);
-void QSctpServer_new2(QObject* parent, QSctpServer** outptr_QSctpServer, QTcpServer** outptr_QTcpServer, QObject** outptr_QObject);
+QSctpServer* QSctpServer_new();
+QSctpServer* QSctpServer_new2(QObject* parent);
+void QSctpServer_virtbase(QSctpServer* src, QTcpServer** outptr_QTcpServer);
 QMetaObject* QSctpServer_MetaObject(const QSctpServer* self);
 void* QSctpServer_Metacast(QSctpServer* self, const char* param1);
 struct miqt_string QSctpServer_Tr(const char* s);

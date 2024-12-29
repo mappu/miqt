@@ -30,16 +30,18 @@
 #include <QTransform>
 #include <qpainter.h>
 #include "gen_qpainter.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QPainter_new(QPainter** outptr_QPainter) {
-	QPainter* ret = new QPainter();
-	*outptr_QPainter = ret;
+QPainter* QPainter_new() {
+	return new QPainter();
 }
 
-void QPainter_new2(QPaintDevice* param1, QPainter** outptr_QPainter) {
-	QPainter* ret = new QPainter(param1);
-	*outptr_QPainter = ret;
+QPainter* QPainter_new2(QPaintDevice* param1) {
+	return new QPainter(param1);
 }
 
 QPaintDevice* QPainter_Device(const QPainter* self) {

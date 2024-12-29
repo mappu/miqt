@@ -11,6 +11,10 @@
 #include <QWebEngineUrlSchemeHandler>
 #include <qwebengineurlschemehandler.h>
 #include "gen_qwebengineurlschemehandler.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQWebEngineUrlSchemeHandler : public virtual QWebEngineUrlSchemeHandler {
@@ -210,16 +214,16 @@ public:
 
 };
 
-void QWebEngineUrlSchemeHandler_new(QWebEngineUrlSchemeHandler** outptr_QWebEngineUrlSchemeHandler, QObject** outptr_QObject) {
-	MiqtVirtualQWebEngineUrlSchemeHandler* ret = new MiqtVirtualQWebEngineUrlSchemeHandler();
-	*outptr_QWebEngineUrlSchemeHandler = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QWebEngineUrlSchemeHandler* QWebEngineUrlSchemeHandler_new() {
+	return new MiqtVirtualQWebEngineUrlSchemeHandler();
 }
 
-void QWebEngineUrlSchemeHandler_new2(QObject* parent, QWebEngineUrlSchemeHandler** outptr_QWebEngineUrlSchemeHandler, QObject** outptr_QObject) {
-	MiqtVirtualQWebEngineUrlSchemeHandler* ret = new MiqtVirtualQWebEngineUrlSchemeHandler(parent);
-	*outptr_QWebEngineUrlSchemeHandler = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QWebEngineUrlSchemeHandler* QWebEngineUrlSchemeHandler_new2(QObject* parent) {
+	return new MiqtVirtualQWebEngineUrlSchemeHandler(parent);
+}
+
+void QWebEngineUrlSchemeHandler_virtbase(QWebEngineUrlSchemeHandler* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QWebEngineUrlSchemeHandler_MetaObject(const QWebEngineUrlSchemeHandler* self) {

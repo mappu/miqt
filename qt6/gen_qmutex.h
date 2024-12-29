@@ -24,19 +24,20 @@ typedef struct QMutex QMutex;
 typedef struct QRecursiveMutex QRecursiveMutex;
 #endif
 
-void QBasicMutex_new(QBasicMutex** outptr_QBasicMutex);
+QBasicMutex* QBasicMutex_new();
 void QBasicMutex_Lock(QBasicMutex* self);
 void QBasicMutex_Unlock(QBasicMutex* self);
 bool QBasicMutex_TryLock(QBasicMutex* self);
 bool QBasicMutex_TryLock2(QBasicMutex* self);
 void QBasicMutex_Delete(QBasicMutex* self, bool isSubclass);
 
-void QMutex_new(QMutex** outptr_QMutex, QBasicMutex** outptr_QBasicMutex);
+QMutex* QMutex_new();
+void QMutex_virtbase(QMutex* src, QBasicMutex** outptr_QBasicMutex);
 bool QMutex_TryLock(QMutex* self);
 bool QMutex_TryLockWithTimeout(QMutex* self, int timeout);
 void QMutex_Delete(QMutex* self, bool isSubclass);
 
-void QRecursiveMutex_new(QRecursiveMutex** outptr_QRecursiveMutex);
+QRecursiveMutex* QRecursiveMutex_new();
 void QRecursiveMutex_Lock(QRecursiveMutex* self);
 bool QRecursiveMutex_TryLock(QRecursiveMutex* self);
 void QRecursiveMutex_Unlock(QRecursiveMutex* self);

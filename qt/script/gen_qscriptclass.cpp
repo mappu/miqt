@@ -9,6 +9,10 @@
 #include <QVariant>
 #include <qscriptclass.h>
 #include "gen_qscriptclass.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQScriptClass : public virtual QScriptClass {
@@ -276,9 +280,8 @@ public:
 
 };
 
-void QScriptClass_new(QScriptEngine* engine, QScriptClass** outptr_QScriptClass) {
-	MiqtVirtualQScriptClass* ret = new MiqtVirtualQScriptClass(engine);
-	*outptr_QScriptClass = ret;
+QScriptClass* QScriptClass_new(QScriptEngine* engine) {
+	return new MiqtVirtualQScriptClass(engine);
 }
 
 QScriptEngine* QScriptClass_Engine(const QScriptClass* self) {

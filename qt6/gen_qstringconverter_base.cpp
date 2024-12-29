@@ -3,16 +3,22 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QStringConverterBase__State
 #include <qstringconverter_base.h>
 #include "gen_qstringconverter_base.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QStringConverterBase_new(QStringConverterBase* param1, QStringConverterBase** outptr_QStringConverterBase) {
-	QStringConverterBase* ret = new QStringConverterBase(*param1);
-	*outptr_QStringConverterBase = ret;
+QStringConverterBase* QStringConverterBase_new(QStringConverterBase* param1) {
+	return new QStringConverterBase(*param1);
 }
 
-void QStringConverterBase_new2(QStringConverterBase** outptr_QStringConverterBase) {
-	QStringConverterBase* ret = new QStringConverterBase();
-	*outptr_QStringConverterBase = ret;
+QStringConverterBase* QStringConverterBase_new2() {
+	return new QStringConverterBase();
+}
+
+void QStringConverter_virtbase(QStringConverter* src, QStringConverterBase** outptr_QStringConverterBase) {
+	*outptr_QStringConverterBase = static_cast<QStringConverterBase*>(src);
 }
 
 bool QStringConverter_IsValid(const QStringConverter* self) {
@@ -35,14 +41,12 @@ const char* QStringConverter_NameForEncoding(int e) {
 	return (const char*) QStringConverter::nameForEncoding(static_cast<QStringConverter::Encoding>(e));
 }
 
-void QStringConverterBase__State_new(QStringConverterBase__State** outptr_QStringConverterBase__State) {
-	QStringConverterBase::State* ret = new QStringConverterBase::State();
-	*outptr_QStringConverterBase__State = ret;
+QStringConverterBase__State* QStringConverterBase__State_new() {
+	return new QStringConverterBase::State();
 }
 
-void QStringConverterBase__State_new2(int f, QStringConverterBase__State** outptr_QStringConverterBase__State) {
-	QStringConverterBase::State* ret = new QStringConverterBase::State(static_cast<QStringConverterBase::Flags>(f));
-	*outptr_QStringConverterBase__State = ret;
+QStringConverterBase__State* QStringConverterBase__State_new2(int f) {
+	return new QStringConverterBase::State(static_cast<QStringConverterBase::Flags>(f));
 }
 
 void QStringConverterBase__State_Clear(QStringConverterBase__State* self) {

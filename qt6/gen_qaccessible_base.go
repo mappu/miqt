@@ -239,16 +239,13 @@ func newQAccessible(h *C.QAccessible) *QAccessible {
 	if h == nil {
 		return nil
 	}
+
 	return &QAccessible{h: h}
 }
 
 // UnsafeNewQAccessible constructs the type using only unsafe pointers.
 func UnsafeNewQAccessible(h unsafe.Pointer) *QAccessible {
-	if h == nil {
-		return nil
-	}
-
-	return &QAccessible{h: (*C.QAccessible)(h)}
+	return newQAccessible((*C.QAccessible)(h))
 }
 
 func QAccessible_InstallActivationObserver(param1 *QAccessible__ActivationObserver) {
@@ -260,7 +257,7 @@ func QAccessible_RemoveActivationObserver(param1 *QAccessible__ActivationObserve
 }
 
 func QAccessible_QueryAccessibleInterface(param1 *QObject) *QAccessibleInterface {
-	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessible_QueryAccessibleInterface(param1.cPointer())))
+	return newQAccessibleInterface(C.QAccessible_QueryAccessibleInterface(param1.cPointer()))
 }
 
 func QAccessible_UniqueId(iface *QAccessibleInterface) uint {
@@ -268,7 +265,7 @@ func QAccessible_UniqueId(iface *QAccessibleInterface) uint {
 }
 
 func QAccessible_AccessibleInterface(uniqueId uint) *QAccessibleInterface {
-	return UnsafeNewQAccessibleInterface(unsafe.Pointer(C.QAccessible_AccessibleInterface((C.uint)(uniqueId))))
+	return newQAccessibleInterface(C.QAccessible_AccessibleInterface((C.uint)(uniqueId)))
 }
 
 func QAccessible_RegisterAccessibleInterface(iface *QAccessibleInterface) uint {
@@ -354,24 +351,19 @@ func newQAccessible__State(h *C.QAccessible__State) *QAccessible__State {
 	if h == nil {
 		return nil
 	}
+
 	return &QAccessible__State{h: h}
 }
 
 // UnsafeNewQAccessible__State constructs the type using only unsafe pointers.
 func UnsafeNewQAccessible__State(h unsafe.Pointer) *QAccessible__State {
-	if h == nil {
-		return nil
-	}
-
-	return &QAccessible__State{h: (*C.QAccessible__State)(h)}
+	return newQAccessible__State((*C.QAccessible__State)(h))
 }
 
 // NewQAccessible__State constructs a new QAccessible::State object.
 func NewQAccessible__State() *QAccessible__State {
-	var outptr_QAccessible__State *C.QAccessible__State = nil
 
-	C.QAccessible__State_new(&outptr_QAccessible__State)
-	ret := newQAccessible__State(outptr_QAccessible__State)
+	ret := newQAccessible__State(C.QAccessible__State_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -414,16 +406,13 @@ func newQAccessible__ActivationObserver(h *C.QAccessible__ActivationObserver) *Q
 	if h == nil {
 		return nil
 	}
+
 	return &QAccessible__ActivationObserver{h: h}
 }
 
 // UnsafeNewQAccessible__ActivationObserver constructs the type using only unsafe pointers.
 func UnsafeNewQAccessible__ActivationObserver(h unsafe.Pointer) *QAccessible__ActivationObserver {
-	if h == nil {
-		return nil
-	}
-
-	return &QAccessible__ActivationObserver{h: (*C.QAccessible__ActivationObserver)(h)}
+	return newQAccessible__ActivationObserver((*C.QAccessible__ActivationObserver)(h))
 }
 
 func (this *QAccessible__ActivationObserver) AccessibilityActiveChanged(active bool) {

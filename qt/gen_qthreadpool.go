@@ -35,48 +35,40 @@ func (this *QThreadPool) UnsafePointer() unsafe.Pointer {
 }
 
 // newQThreadPool constructs the type using only CGO pointers.
-func newQThreadPool(h *C.QThreadPool, h_QObject *C.QObject) *QThreadPool {
+func newQThreadPool(h *C.QThreadPool) *QThreadPool {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QThreadPool_virtbase(h, &outptr_QObject)
+
 	return &QThreadPool{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQThreadPool constructs the type using only unsafe pointers.
-func UnsafeNewQThreadPool(h unsafe.Pointer, h_QObject unsafe.Pointer) *QThreadPool {
-	if h == nil {
-		return nil
-	}
-
-	return &QThreadPool{h: (*C.QThreadPool)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQThreadPool(h unsafe.Pointer) *QThreadPool {
+	return newQThreadPool((*C.QThreadPool)(h))
 }
 
 // NewQThreadPool constructs a new QThreadPool object.
 func NewQThreadPool() *QThreadPool {
-	var outptr_QThreadPool *C.QThreadPool = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QThreadPool_new(&outptr_QThreadPool, &outptr_QObject)
-	ret := newQThreadPool(outptr_QThreadPool, outptr_QObject)
+	ret := newQThreadPool(C.QThreadPool_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQThreadPool2 constructs a new QThreadPool object.
 func NewQThreadPool2(parent *QObject) *QThreadPool {
-	var outptr_QThreadPool *C.QThreadPool = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QThreadPool_new2(parent.cPointer(), &outptr_QThreadPool, &outptr_QObject)
-	ret := newQThreadPool(outptr_QThreadPool, outptr_QObject)
+	ret := newQThreadPool(C.QThreadPool_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QThreadPool) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QThreadPool_MetaObject(this.h)))
+	return newQMetaObject(C.QThreadPool_MetaObject(this.h))
 }
 
 func (this *QThreadPool) Metacast(param1 string) unsafe.Pointer {
@@ -104,7 +96,7 @@ func QThreadPool_TrUtf8(s string) string {
 }
 
 func QThreadPool_GlobalInstance() *QThreadPool {
-	return UnsafeNewQThreadPool(unsafe.Pointer(C.QThreadPool_GlobalInstance()), nil)
+	return newQThreadPool(C.QThreadPool_GlobalInstance())
 }
 
 func (this *QThreadPool) Start(runnable *QRunnable) {
@@ -229,6 +221,9 @@ func (this *QThreadPool) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QThreadPool) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QThreadPool_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -240,7 +235,7 @@ func miqt_exec_callback_QThreadPool_Event(self *C.QThreadPool, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QThreadPool{h: self}).callVirtualBase_Event, slotval1)
 
@@ -254,6 +249,9 @@ func (this *QThreadPool) callVirtualBase_EventFilter(watched *QObject, event *QE
 
 }
 func (this *QThreadPool) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QThreadPool_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -265,8 +263,9 @@ func miqt_exec_callback_QThreadPool_EventFilter(self *C.QThreadPool, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QThreadPool{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -280,6 +279,9 @@ func (this *QThreadPool) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QThreadPool) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QThreadPool_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -291,7 +293,7 @@ func miqt_exec_callback_QThreadPool_TimerEvent(self *C.QThreadPool, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QThreadPool{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -303,6 +305,9 @@ func (this *QThreadPool) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QThreadPool) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QThreadPool_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -314,7 +319,7 @@ func miqt_exec_callback_QThreadPool_ChildEvent(self *C.QThreadPool, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QThreadPool{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -326,6 +331,9 @@ func (this *QThreadPool) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QThreadPool) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QThreadPool_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -337,7 +345,7 @@ func miqt_exec_callback_QThreadPool_CustomEvent(self *C.QThreadPool, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QThreadPool{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -349,6 +357,9 @@ func (this *QThreadPool) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QThreadPool) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QThreadPool_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -360,7 +371,7 @@ func miqt_exec_callback_QThreadPool_ConnectNotify(self *C.QThreadPool, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QThreadPool{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -372,6 +383,9 @@ func (this *QThreadPool) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QThreadPool) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QThreadPool_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -383,7 +397,7 @@ func miqt_exec_callback_QThreadPool_DisconnectNotify(self *C.QThreadPool, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QThreadPool{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

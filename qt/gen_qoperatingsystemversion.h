@@ -20,9 +20,9 @@ class QOperatingSystemVersion;
 typedef struct QOperatingSystemVersion QOperatingSystemVersion;
 #endif
 
-void QOperatingSystemVersion_new(int osType, int vmajor, QOperatingSystemVersion** outptr_QOperatingSystemVersion);
-void QOperatingSystemVersion_new2(int osType, int vmajor, int vminor, QOperatingSystemVersion** outptr_QOperatingSystemVersion);
-void QOperatingSystemVersion_new3(int osType, int vmajor, int vminor, int vmicro, QOperatingSystemVersion** outptr_QOperatingSystemVersion);
+QOperatingSystemVersion* QOperatingSystemVersion_new(int osType, int vmajor);
+QOperatingSystemVersion* QOperatingSystemVersion_new2(int osType, int vmajor, int vminor);
+QOperatingSystemVersion* QOperatingSystemVersion_new3(int osType, int vmajor, int vminor, int vmicro);
 QOperatingSystemVersion* QOperatingSystemVersion_Current();
 int QOperatingSystemVersion_CurrentType();
 int QOperatingSystemVersion_MajorVersion(const QOperatingSystemVersion* self);

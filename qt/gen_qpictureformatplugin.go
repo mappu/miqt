@@ -35,48 +35,40 @@ func (this *QPictureFormatPlugin) UnsafePointer() unsafe.Pointer {
 }
 
 // newQPictureFormatPlugin constructs the type using only CGO pointers.
-func newQPictureFormatPlugin(h *C.QPictureFormatPlugin, h_QObject *C.QObject) *QPictureFormatPlugin {
+func newQPictureFormatPlugin(h *C.QPictureFormatPlugin) *QPictureFormatPlugin {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QPictureFormatPlugin_virtbase(h, &outptr_QObject)
+
 	return &QPictureFormatPlugin{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQPictureFormatPlugin constructs the type using only unsafe pointers.
-func UnsafeNewQPictureFormatPlugin(h unsafe.Pointer, h_QObject unsafe.Pointer) *QPictureFormatPlugin {
-	if h == nil {
-		return nil
-	}
-
-	return &QPictureFormatPlugin{h: (*C.QPictureFormatPlugin)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQPictureFormatPlugin(h unsafe.Pointer) *QPictureFormatPlugin {
+	return newQPictureFormatPlugin((*C.QPictureFormatPlugin)(h))
 }
 
 // NewQPictureFormatPlugin constructs a new QPictureFormatPlugin object.
 func NewQPictureFormatPlugin() *QPictureFormatPlugin {
-	var outptr_QPictureFormatPlugin *C.QPictureFormatPlugin = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QPictureFormatPlugin_new(&outptr_QPictureFormatPlugin, &outptr_QObject)
-	ret := newQPictureFormatPlugin(outptr_QPictureFormatPlugin, outptr_QObject)
+	ret := newQPictureFormatPlugin(C.QPictureFormatPlugin_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPictureFormatPlugin2 constructs a new QPictureFormatPlugin object.
 func NewQPictureFormatPlugin2(parent *QObject) *QPictureFormatPlugin {
-	var outptr_QPictureFormatPlugin *C.QPictureFormatPlugin = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QPictureFormatPlugin_new2(parent.cPointer(), &outptr_QPictureFormatPlugin, &outptr_QObject)
-	ret := newQPictureFormatPlugin(outptr_QPictureFormatPlugin, outptr_QObject)
+	ret := newQPictureFormatPlugin(C.QPictureFormatPlugin_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QPictureFormatPlugin) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QPictureFormatPlugin_MetaObject(this.h)))
+	return newQMetaObject(C.QPictureFormatPlugin_MetaObject(this.h))
 }
 
 func (this *QPictureFormatPlugin) Metacast(param1 string) unsafe.Pointer {
@@ -193,6 +185,9 @@ func (this *QPictureFormatPlugin) callVirtualBase_LoadPicture(format string, fil
 
 }
 func (this *QPictureFormatPlugin) OnLoadPicture(slot func(super func(format string, filename string, pic *QPicture) bool, format string, filename string, pic *QPicture) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPictureFormatPlugin_override_virtual_LoadPicture(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -212,7 +207,7 @@ func miqt_exec_callback_QPictureFormatPlugin_LoadPicture(self *C.QPictureFormatP
 	filename_ret := C.GoStringN(filename_ms.data, C.int(int64(filename_ms.len)))
 	C.free(unsafe.Pointer(filename_ms.data))
 	slotval2 := filename_ret
-	slotval3 := UnsafeNewQPicture(unsafe.Pointer(pic), nil)
+	slotval3 := newQPicture(pic)
 
 	virtualReturn := gofunc((&QPictureFormatPlugin{h: self}).callVirtualBase_LoadPicture, slotval1, slotval2, slotval3)
 
@@ -234,6 +229,9 @@ func (this *QPictureFormatPlugin) callVirtualBase_SavePicture(format string, fil
 
 }
 func (this *QPictureFormatPlugin) OnSavePicture(slot func(super func(format string, filename string, pic *QPicture) bool, format string, filename string, pic *QPicture) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPictureFormatPlugin_override_virtual_SavePicture(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -253,7 +251,7 @@ func miqt_exec_callback_QPictureFormatPlugin_SavePicture(self *C.QPictureFormatP
 	filename_ret := C.GoStringN(filename_ms.data, C.int(int64(filename_ms.len)))
 	C.free(unsafe.Pointer(filename_ms.data))
 	slotval2 := filename_ret
-	slotval3 := UnsafeNewQPicture(unsafe.Pointer(pic), nil)
+	slotval3 := newQPicture(pic)
 
 	virtualReturn := gofunc((&QPictureFormatPlugin{h: self}).callVirtualBase_SavePicture, slotval1, slotval2, slotval3)
 
@@ -261,6 +259,9 @@ func miqt_exec_callback_QPictureFormatPlugin_SavePicture(self *C.QPictureFormatP
 
 }
 func (this *QPictureFormatPlugin) OnInstallIOHandler(slot func(format string) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPictureFormatPlugin_override_virtual_InstallIOHandler(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -289,6 +290,9 @@ func (this *QPictureFormatPlugin) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QPictureFormatPlugin) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPictureFormatPlugin_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -300,7 +304,7 @@ func miqt_exec_callback_QPictureFormatPlugin_Event(self *C.QPictureFormatPlugin,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QPictureFormatPlugin{h: self}).callVirtualBase_Event, slotval1)
 
@@ -314,6 +318,9 @@ func (this *QPictureFormatPlugin) callVirtualBase_EventFilter(watched *QObject, 
 
 }
 func (this *QPictureFormatPlugin) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPictureFormatPlugin_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -325,8 +332,9 @@ func miqt_exec_callback_QPictureFormatPlugin_EventFilter(self *C.QPictureFormatP
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QPictureFormatPlugin{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -340,6 +348,9 @@ func (this *QPictureFormatPlugin) callVirtualBase_TimerEvent(event *QTimerEvent)
 
 }
 func (this *QPictureFormatPlugin) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPictureFormatPlugin_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -351,7 +362,7 @@ func miqt_exec_callback_QPictureFormatPlugin_TimerEvent(self *C.QPictureFormatPl
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QPictureFormatPlugin{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -363,6 +374,9 @@ func (this *QPictureFormatPlugin) callVirtualBase_ChildEvent(event *QChildEvent)
 
 }
 func (this *QPictureFormatPlugin) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPictureFormatPlugin_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -374,7 +388,7 @@ func miqt_exec_callback_QPictureFormatPlugin_ChildEvent(self *C.QPictureFormatPl
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QPictureFormatPlugin{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -386,6 +400,9 @@ func (this *QPictureFormatPlugin) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QPictureFormatPlugin) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPictureFormatPlugin_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -397,7 +414,7 @@ func miqt_exec_callback_QPictureFormatPlugin_CustomEvent(self *C.QPictureFormatP
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QPictureFormatPlugin{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -409,6 +426,9 @@ func (this *QPictureFormatPlugin) callVirtualBase_ConnectNotify(signal *QMetaMet
 
 }
 func (this *QPictureFormatPlugin) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPictureFormatPlugin_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -420,7 +440,7 @@ func miqt_exec_callback_QPictureFormatPlugin_ConnectNotify(self *C.QPictureForma
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QPictureFormatPlugin{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -432,6 +452,9 @@ func (this *QPictureFormatPlugin) callVirtualBase_DisconnectNotify(signal *QMeta
 
 }
 func (this *QPictureFormatPlugin) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPictureFormatPlugin_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -443,7 +466,7 @@ func miqt_exec_callback_QPictureFormatPlugin_DisconnectNotify(self *C.QPictureFo
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QPictureFormatPlugin{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

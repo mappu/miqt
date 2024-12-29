@@ -36,22 +36,20 @@ func (this *QVideoWindowControl) UnsafePointer() unsafe.Pointer {
 }
 
 // newQVideoWindowControl constructs the type using only CGO pointers.
-func newQVideoWindowControl(h *C.QVideoWindowControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QVideoWindowControl {
+func newQVideoWindowControl(h *C.QVideoWindowControl) *QVideoWindowControl {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMediaControl *C.QMediaControl = nil
+	C.QVideoWindowControl_virtbase(h, &outptr_QMediaControl)
+
 	return &QVideoWindowControl{h: h,
-		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
+		QMediaControl: newQMediaControl(outptr_QMediaControl)}
 }
 
 // UnsafeNewQVideoWindowControl constructs the type using only unsafe pointers.
-func UnsafeNewQVideoWindowControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QVideoWindowControl {
-	if h == nil {
-		return nil
-	}
-
-	return &QVideoWindowControl{h: (*C.QVideoWindowControl)(h),
-		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
+func UnsafeNewQVideoWindowControl(h unsafe.Pointer) *QVideoWindowControl {
+	return newQVideoWindowControl((*C.QVideoWindowControl)(h))
 }
 
 func (this *QVideoWindowControl) MetaObject() *qt.QMetaObject {
@@ -91,8 +89,7 @@ func (this *QVideoWindowControl) SetWinId(id uintptr) {
 }
 
 func (this *QVideoWindowControl) DisplayRect() *qt.QRect {
-	_ret := C.QVideoWindowControl_DisplayRect(this.h)
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QVideoWindowControl_DisplayRect(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -114,8 +111,7 @@ func (this *QVideoWindowControl) Repaint() {
 }
 
 func (this *QVideoWindowControl) NativeSize() *qt.QSize {
-	_ret := C.QVideoWindowControl_NativeSize(this.h)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoWindowControl_NativeSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

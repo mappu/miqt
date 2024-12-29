@@ -34,10 +34,11 @@ typedef struct QObject QObject;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QAudioEngine_new(QAudioEngine** outptr_QAudioEngine, QObject** outptr_QObject);
-void QAudioEngine_new2(QObject* parent, QAudioEngine** outptr_QAudioEngine, QObject** outptr_QObject);
-void QAudioEngine_new3(int sampleRate, QAudioEngine** outptr_QAudioEngine, QObject** outptr_QObject);
-void QAudioEngine_new4(int sampleRate, QObject* parent, QAudioEngine** outptr_QAudioEngine, QObject** outptr_QObject);
+QAudioEngine* QAudioEngine_new();
+QAudioEngine* QAudioEngine_new2(QObject* parent);
+QAudioEngine* QAudioEngine_new3(int sampleRate);
+QAudioEngine* QAudioEngine_new4(int sampleRate, QObject* parent);
+void QAudioEngine_virtbase(QAudioEngine* src, QObject** outptr_QObject);
 QMetaObject* QAudioEngine_MetaObject(const QAudioEngine* self);
 void* QAudioEngine_Metacast(QAudioEngine* self, const char* param1);
 struct miqt_string QAudioEngine_Tr(const char* s);

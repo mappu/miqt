@@ -52,22 +52,20 @@ func (this *QCameraExposureControl) UnsafePointer() unsafe.Pointer {
 }
 
 // newQCameraExposureControl constructs the type using only CGO pointers.
-func newQCameraExposureControl(h *C.QCameraExposureControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QCameraExposureControl {
+func newQCameraExposureControl(h *C.QCameraExposureControl) *QCameraExposureControl {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMediaControl *C.QMediaControl = nil
+	C.QCameraExposureControl_virtbase(h, &outptr_QMediaControl)
+
 	return &QCameraExposureControl{h: h,
-		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
+		QMediaControl: newQMediaControl(outptr_QMediaControl)}
 }
 
 // UnsafeNewQCameraExposureControl constructs the type using only unsafe pointers.
-func UnsafeNewQCameraExposureControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QCameraExposureControl {
-	if h == nil {
-		return nil
-	}
-
-	return &QCameraExposureControl{h: (*C.QCameraExposureControl)(h),
-		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
+func UnsafeNewQCameraExposureControl(h unsafe.Pointer) *QCameraExposureControl {
+	return newQCameraExposureControl((*C.QCameraExposureControl)(h))
 }
 
 func (this *QCameraExposureControl) MetaObject() *qt.QMetaObject {
@@ -103,15 +101,13 @@ func (this *QCameraExposureControl) IsParameterSupported(parameter QCameraExposu
 }
 
 func (this *QCameraExposureControl) RequestedValue(parameter QCameraExposureControl__ExposureParameter) *qt.QVariant {
-	_ret := C.QCameraExposureControl_RequestedValue(this.h, (C.int)(parameter))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QCameraExposureControl_RequestedValue(this.h, (C.int)(parameter))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCameraExposureControl) ActualValue(parameter QCameraExposureControl__ExposureParameter) *qt.QVariant {
-	_ret := C.QCameraExposureControl_ActualValue(this.h, (C.int)(parameter))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QCameraExposureControl_ActualValue(this.h, (C.int)(parameter))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

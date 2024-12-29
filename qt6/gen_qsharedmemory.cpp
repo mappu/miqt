@@ -10,6 +10,10 @@
 #include <QTimerEvent>
 #include <qsharedmemory.h>
 #include "gen_qsharedmemory.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSharedMemory : public virtual QSharedMemory {
@@ -195,30 +199,26 @@ public:
 
 };
 
-void QSharedMemory_new(QSharedMemory** outptr_QSharedMemory, QObject** outptr_QObject) {
-	MiqtVirtualQSharedMemory* ret = new MiqtVirtualQSharedMemory();
-	*outptr_QSharedMemory = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSharedMemory* QSharedMemory_new() {
+	return new MiqtVirtualQSharedMemory();
 }
 
-void QSharedMemory_new2(struct miqt_string key, QSharedMemory** outptr_QSharedMemory, QObject** outptr_QObject) {
+QSharedMemory* QSharedMemory_new2(struct miqt_string key) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
-	MiqtVirtualQSharedMemory* ret = new MiqtVirtualQSharedMemory(key_QString);
-	*outptr_QSharedMemory = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQSharedMemory(key_QString);
 }
 
-void QSharedMemory_new3(QObject* parent, QSharedMemory** outptr_QSharedMemory, QObject** outptr_QObject) {
-	MiqtVirtualQSharedMemory* ret = new MiqtVirtualQSharedMemory(parent);
-	*outptr_QSharedMemory = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSharedMemory* QSharedMemory_new3(QObject* parent) {
+	return new MiqtVirtualQSharedMemory(parent);
 }
 
-void QSharedMemory_new4(struct miqt_string key, QObject* parent, QSharedMemory** outptr_QSharedMemory, QObject** outptr_QObject) {
+QSharedMemory* QSharedMemory_new4(struct miqt_string key, QObject* parent) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
-	MiqtVirtualQSharedMemory* ret = new MiqtVirtualQSharedMemory(key_QString, parent);
-	*outptr_QSharedMemory = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQSharedMemory(key_QString, parent);
+}
+
+void QSharedMemory_virtbase(QSharedMemory* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QSharedMemory_MetaObject(const QSharedMemory* self) {

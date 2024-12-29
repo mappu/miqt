@@ -35,58 +35,40 @@ func (this *QTextBrowser) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTextBrowser constructs the type using only CGO pointers.
-func newQTextBrowser(h *C.QTextBrowser, h_QTextEdit *C.QTextEdit, h_QAbstractScrollArea *C.QAbstractScrollArea, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QTextBrowser {
+func newQTextBrowser(h *C.QTextBrowser) *QTextBrowser {
 	if h == nil {
 		return nil
 	}
+	var outptr_QTextEdit *C.QTextEdit = nil
+	C.QTextBrowser_virtbase(h, &outptr_QTextEdit)
+
 	return &QTextBrowser{h: h,
-		QTextEdit: newQTextEdit(h_QTextEdit, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+		QTextEdit: newQTextEdit(outptr_QTextEdit)}
 }
 
 // UnsafeNewQTextBrowser constructs the type using only unsafe pointers.
-func UnsafeNewQTextBrowser(h unsafe.Pointer, h_QTextEdit unsafe.Pointer, h_QAbstractScrollArea unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QTextBrowser {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextBrowser{h: (*C.QTextBrowser)(h),
-		QTextEdit: UnsafeNewQTextEdit(h_QTextEdit, h_QAbstractScrollArea, h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQTextBrowser(h unsafe.Pointer) *QTextBrowser {
+	return newQTextBrowser((*C.QTextBrowser)(h))
 }
 
 // NewQTextBrowser constructs a new QTextBrowser object.
 func NewQTextBrowser(parent *QWidget) *QTextBrowser {
-	var outptr_QTextBrowser *C.QTextBrowser = nil
-	var outptr_QTextEdit *C.QTextEdit = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QTextBrowser_new(parent.cPointer(), &outptr_QTextBrowser, &outptr_QTextEdit, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQTextBrowser(outptr_QTextBrowser, outptr_QTextEdit, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQTextBrowser(C.QTextBrowser_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextBrowser2 constructs a new QTextBrowser object.
 func NewQTextBrowser2() *QTextBrowser {
-	var outptr_QTextBrowser *C.QTextBrowser = nil
-	var outptr_QTextEdit *C.QTextEdit = nil
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QTextBrowser_new2(&outptr_QTextBrowser, &outptr_QTextEdit, &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQTextBrowser(outptr_QTextBrowser, outptr_QTextEdit, outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQTextBrowser(C.QTextBrowser_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QTextBrowser) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QTextBrowser_MetaObject(this.h)))
+	return newQMetaObject(C.QTextBrowser_MetaObject(this.h))
 }
 
 func (this *QTextBrowser) Metacast(param1 string) unsafe.Pointer {
@@ -105,8 +87,7 @@ func QTextBrowser_Tr(s string) string {
 }
 
 func (this *QTextBrowser) Source() *QUrl {
-	_ret := C.QTextBrowser_Source(this.h)
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QTextBrowser_Source(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -143,8 +124,7 @@ func (this *QTextBrowser) SetSearchPaths(paths []string) {
 }
 
 func (this *QTextBrowser) LoadResource(typeVal int, name *QUrl) *QVariant {
-	_ret := C.QTextBrowser_LoadResource(this.h, (C.int)(typeVal), name.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QTextBrowser_LoadResource(this.h, (C.int)(typeVal), name.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -169,8 +149,7 @@ func (this *QTextBrowser) HistoryTitle(param1 int) string {
 }
 
 func (this *QTextBrowser) HistoryUrl(param1 int) *QUrl {
-	_ret := C.QTextBrowser_HistoryUrl(this.h, (C.int)(param1))
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QTextBrowser_HistoryUrl(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -291,7 +270,7 @@ func miqt_exec_callback_QTextBrowser_SourceChanged(cb C.intptr_t, param1 *C.QUrl
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQUrl(unsafe.Pointer(param1))
+	slotval1 := newQUrl(param1)
 
 	gofunc(slotval1)
 }
@@ -311,7 +290,7 @@ func miqt_exec_callback_QTextBrowser_Highlighted(cb C.intptr_t, param1 *C.QUrl) 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQUrl(unsafe.Pointer(param1))
+	slotval1 := newQUrl(param1)
 
 	gofunc(slotval1)
 }
@@ -331,7 +310,7 @@ func miqt_exec_callback_QTextBrowser_AnchorClicked(cb C.intptr_t, param1 *C.QUrl
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQUrl(unsafe.Pointer(param1))
+	slotval1 := newQUrl(param1)
 
 	gofunc(slotval1)
 }
@@ -364,13 +343,15 @@ func (this *QTextBrowser) SetSource2(name *QUrl, typeVal QTextDocument__Resource
 
 func (this *QTextBrowser) callVirtualBase_LoadResource(typeVal int, name *QUrl) *QVariant {
 
-	_ret := C.QTextBrowser_virtualbase_LoadResource(unsafe.Pointer(this.h), (C.int)(typeVal), name.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QTextBrowser_virtualbase_LoadResource(unsafe.Pointer(this.h), (C.int)(typeVal), name.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QTextBrowser) OnLoadResource(slot func(super func(typeVal int, name *QUrl) *QVariant, typeVal int, name *QUrl) *QVariant) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_LoadResource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -384,7 +365,7 @@ func miqt_exec_callback_QTextBrowser_LoadResource(self *C.QTextBrowser, cb C.int
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (int)(typeVal)
 
-	slotval2 := UnsafeNewQUrl(unsafe.Pointer(name))
+	slotval2 := newQUrl(name)
 
 	virtualReturn := gofunc((&QTextBrowser{h: self}).callVirtualBase_LoadResource, slotval1, slotval2)
 
@@ -398,6 +379,9 @@ func (this *QTextBrowser) callVirtualBase_Backward() {
 
 }
 func (this *QTextBrowser) OnBackward(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_Backward(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -418,6 +402,9 @@ func (this *QTextBrowser) callVirtualBase_Forward() {
 
 }
 func (this *QTextBrowser) OnForward(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_Forward(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -438,6 +425,9 @@ func (this *QTextBrowser) callVirtualBase_Home() {
 
 }
 func (this *QTextBrowser) OnHome(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_Home(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -458,6 +448,9 @@ func (this *QTextBrowser) callVirtualBase_Reload() {
 
 }
 func (this *QTextBrowser) OnReload(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_Reload(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -478,6 +471,9 @@ func (this *QTextBrowser) callVirtualBase_Event(e *QEvent) bool {
 
 }
 func (this *QTextBrowser) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -489,7 +485,7 @@ func miqt_exec_callback_QTextBrowser_Event(self *C.QTextBrowser, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QTextBrowser{h: self}).callVirtualBase_Event, slotval1)
 
@@ -503,6 +499,9 @@ func (this *QTextBrowser) callVirtualBase_KeyPressEvent(ev *QKeyEvent) {
 
 }
 func (this *QTextBrowser) OnKeyPressEvent(slot func(super func(ev *QKeyEvent), ev *QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -514,7 +513,7 @@ func miqt_exec_callback_QTextBrowser_KeyPressEvent(self *C.QTextBrowser, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(ev), nil, nil)
+	slotval1 := newQKeyEvent(ev)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -526,6 +525,9 @@ func (this *QTextBrowser) callVirtualBase_MouseMoveEvent(ev *QMouseEvent) {
 
 }
 func (this *QTextBrowser) OnMouseMoveEvent(slot func(super func(ev *QMouseEvent), ev *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -537,7 +539,7 @@ func miqt_exec_callback_QTextBrowser_MouseMoveEvent(self *C.QTextBrowser, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(ev), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(ev)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -549,6 +551,9 @@ func (this *QTextBrowser) callVirtualBase_MousePressEvent(ev *QMouseEvent) {
 
 }
 func (this *QTextBrowser) OnMousePressEvent(slot func(super func(ev *QMouseEvent), ev *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -560,7 +565,7 @@ func miqt_exec_callback_QTextBrowser_MousePressEvent(self *C.QTextBrowser, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(ev), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(ev)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -572,6 +577,9 @@ func (this *QTextBrowser) callVirtualBase_MouseReleaseEvent(ev *QMouseEvent) {
 
 }
 func (this *QTextBrowser) OnMouseReleaseEvent(slot func(super func(ev *QMouseEvent), ev *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -583,7 +591,7 @@ func miqt_exec_callback_QTextBrowser_MouseReleaseEvent(self *C.QTextBrowser, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(ev), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(ev)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -595,6 +603,9 @@ func (this *QTextBrowser) callVirtualBase_FocusOutEvent(ev *QFocusEvent) {
 
 }
 func (this *QTextBrowser) OnFocusOutEvent(slot func(super func(ev *QFocusEvent), ev *QFocusEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -606,7 +617,7 @@ func miqt_exec_callback_QTextBrowser_FocusOutEvent(self *C.QTextBrowser, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(ev), nil)
+	slotval1 := newQFocusEvent(ev)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -618,6 +629,9 @@ func (this *QTextBrowser) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
 }
 func (this *QTextBrowser) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -643,6 +657,9 @@ func (this *QTextBrowser) callVirtualBase_PaintEvent(e *QPaintEvent) {
 
 }
 func (this *QTextBrowser) OnPaintEvent(slot func(super func(e *QPaintEvent), e *QPaintEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -654,7 +671,7 @@ func miqt_exec_callback_QTextBrowser_PaintEvent(self *C.QTextBrowser, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQPaintEvent(e)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -666,6 +683,9 @@ func (this *QTextBrowser) callVirtualBase_DoSetSource(name *QUrl, typeVal QTextD
 
 }
 func (this *QTextBrowser) OnDoSetSource(slot func(super func(name *QUrl, typeVal QTextDocument__ResourceType), name *QUrl, typeVal QTextDocument__ResourceType)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_DoSetSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -677,7 +697,8 @@ func miqt_exec_callback_QTextBrowser_DoSetSource(self *C.QTextBrowser, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQUrl(unsafe.Pointer(name))
+	slotval1 := newQUrl(name)
+
 	slotval2 := (QTextDocument__ResourceType)(typeVal)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_DoSetSource, slotval1, slotval2)
@@ -686,13 +707,15 @@ func miqt_exec_callback_QTextBrowser_DoSetSource(self *C.QTextBrowser, cb C.intp
 
 func (this *QTextBrowser) callVirtualBase_InputMethodQuery(property InputMethodQuery) *QVariant {
 
-	_ret := C.QTextBrowser_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(property))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QTextBrowser_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(property)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QTextBrowser) OnInputMethodQuery(slot func(super func(property InputMethodQuery) *QVariant, property InputMethodQuery) *QVariant) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -718,6 +741,9 @@ func (this *QTextBrowser) callVirtualBase_TimerEvent(e *QTimerEvent) {
 
 }
 func (this *QTextBrowser) OnTimerEvent(slot func(super func(e *QTimerEvent), e *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -729,7 +755,7 @@ func miqt_exec_callback_QTextBrowser_TimerEvent(self *C.QTextBrowser, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQTimerEvent(e)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -741,6 +767,9 @@ func (this *QTextBrowser) callVirtualBase_KeyReleaseEvent(e *QKeyEvent) {
 
 }
 func (this *QTextBrowser) OnKeyReleaseEvent(slot func(super func(e *QKeyEvent), e *QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -752,7 +781,7 @@ func miqt_exec_callback_QTextBrowser_KeyReleaseEvent(self *C.QTextBrowser, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQKeyEvent(e)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -764,6 +793,9 @@ func (this *QTextBrowser) callVirtualBase_ResizeEvent(e *QResizeEvent) {
 
 }
 func (this *QTextBrowser) OnResizeEvent(slot func(super func(e *QResizeEvent), e *QResizeEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -775,7 +807,7 @@ func miqt_exec_callback_QTextBrowser_ResizeEvent(self *C.QTextBrowser, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQResizeEvent(e)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -787,6 +819,9 @@ func (this *QTextBrowser) callVirtualBase_MouseDoubleClickEvent(e *QMouseEvent) 
 
 }
 func (this *QTextBrowser) OnMouseDoubleClickEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -798,7 +833,7 @@ func miqt_exec_callback_QTextBrowser_MouseDoubleClickEvent(self *C.QTextBrowser,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(e), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(e)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -810,6 +845,9 @@ func (this *QTextBrowser) callVirtualBase_ContextMenuEvent(e *QContextMenuEvent)
 
 }
 func (this *QTextBrowser) OnContextMenuEvent(slot func(super func(e *QContextMenuEvent), e *QContextMenuEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -821,7 +859,7 @@ func miqt_exec_callback_QTextBrowser_ContextMenuEvent(self *C.QTextBrowser, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQContextMenuEvent(e)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -833,6 +871,9 @@ func (this *QTextBrowser) callVirtualBase_DragEnterEvent(e *QDragEnterEvent) {
 
 }
 func (this *QTextBrowser) OnDragEnterEvent(slot func(super func(e *QDragEnterEvent), e *QDragEnterEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -844,7 +885,7 @@ func miqt_exec_callback_QTextBrowser_DragEnterEvent(self *C.QTextBrowser, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragEnterEvent(unsafe.Pointer(e), nil, nil, nil)
+	slotval1 := newQDragEnterEvent(e)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -856,6 +897,9 @@ func (this *QTextBrowser) callVirtualBase_DragLeaveEvent(e *QDragLeaveEvent) {
 
 }
 func (this *QTextBrowser) OnDragLeaveEvent(slot func(super func(e *QDragLeaveEvent), e *QDragLeaveEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -867,7 +911,7 @@ func miqt_exec_callback_QTextBrowser_DragLeaveEvent(self *C.QTextBrowser, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragLeaveEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQDragLeaveEvent(e)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -879,6 +923,9 @@ func (this *QTextBrowser) callVirtualBase_DragMoveEvent(e *QDragMoveEvent) {
 
 }
 func (this *QTextBrowser) OnDragMoveEvent(slot func(super func(e *QDragMoveEvent), e *QDragMoveEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -890,7 +937,7 @@ func miqt_exec_callback_QTextBrowser_DragMoveEvent(self *C.QTextBrowser, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragMoveEvent(unsafe.Pointer(e), nil, nil)
+	slotval1 := newQDragMoveEvent(e)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -902,6 +949,9 @@ func (this *QTextBrowser) callVirtualBase_DropEvent(e *QDropEvent) {
 
 }
 func (this *QTextBrowser) OnDropEvent(slot func(super func(e *QDropEvent), e *QDropEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -913,7 +963,7 @@ func miqt_exec_callback_QTextBrowser_DropEvent(self *C.QTextBrowser, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDropEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQDropEvent(e)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -925,6 +975,9 @@ func (this *QTextBrowser) callVirtualBase_FocusInEvent(e *QFocusEvent) {
 
 }
 func (this *QTextBrowser) OnFocusInEvent(slot func(super func(e *QFocusEvent), e *QFocusEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -936,7 +989,7 @@ func miqt_exec_callback_QTextBrowser_FocusInEvent(self *C.QTextBrowser, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQFocusEvent(e)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -948,6 +1001,9 @@ func (this *QTextBrowser) callVirtualBase_ShowEvent(param1 *QShowEvent) {
 
 }
 func (this *QTextBrowser) OnShowEvent(slot func(super func(param1 *QShowEvent), param1 *QShowEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -959,7 +1015,7 @@ func miqt_exec_callback_QTextBrowser_ShowEvent(self *C.QTextBrowser, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQShowEvent(param1)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -971,6 +1027,9 @@ func (this *QTextBrowser) callVirtualBase_ChangeEvent(e *QEvent) {
 
 }
 func (this *QTextBrowser) OnChangeEvent(slot func(super func(e *QEvent), e *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -982,7 +1041,7 @@ func miqt_exec_callback_QTextBrowser_ChangeEvent(self *C.QTextBrowser, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -994,6 +1053,9 @@ func (this *QTextBrowser) callVirtualBase_WheelEvent(e *QWheelEvent) {
 
 }
 func (this *QTextBrowser) OnWheelEvent(slot func(super func(e *QWheelEvent), e *QWheelEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1005,7 +1067,7 @@ func miqt_exec_callback_QTextBrowser_WheelEvent(self *C.QTextBrowser, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(e), nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(e)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -1013,9 +1075,13 @@ func miqt_exec_callback_QTextBrowser_WheelEvent(self *C.QTextBrowser, cb C.intpt
 
 func (this *QTextBrowser) callVirtualBase_CreateMimeDataFromSelection() *QMimeData {
 
-	return UnsafeNewQMimeData(unsafe.Pointer(C.QTextBrowser_virtualbase_CreateMimeDataFromSelection(unsafe.Pointer(this.h))), nil)
+	return newQMimeData(C.QTextBrowser_virtualbase_CreateMimeDataFromSelection(unsafe.Pointer(this.h)))
+
 }
 func (this *QTextBrowser) OnCreateMimeDataFromSelection(slot func(super func() *QMimeData) *QMimeData) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_CreateMimeDataFromSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1038,6 +1104,9 @@ func (this *QTextBrowser) callVirtualBase_CanInsertFromMimeData(source *QMimeDat
 
 }
 func (this *QTextBrowser) OnCanInsertFromMimeData(slot func(super func(source *QMimeData) bool, source *QMimeData) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_CanInsertFromMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1049,7 +1118,7 @@ func miqt_exec_callback_QTextBrowser_CanInsertFromMimeData(self *C.QTextBrowser,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMimeData(unsafe.Pointer(source), nil)
+	slotval1 := newQMimeData(source)
 
 	virtualReturn := gofunc((&QTextBrowser{h: self}).callVirtualBase_CanInsertFromMimeData, slotval1)
 
@@ -1063,6 +1132,9 @@ func (this *QTextBrowser) callVirtualBase_InsertFromMimeData(source *QMimeData) 
 
 }
 func (this *QTextBrowser) OnInsertFromMimeData(slot func(super func(source *QMimeData), source *QMimeData)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_InsertFromMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1074,7 +1146,7 @@ func miqt_exec_callback_QTextBrowser_InsertFromMimeData(self *C.QTextBrowser, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMimeData(unsafe.Pointer(source), nil)
+	slotval1 := newQMimeData(source)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_InsertFromMimeData, slotval1)
 
@@ -1086,6 +1158,9 @@ func (this *QTextBrowser) callVirtualBase_InputMethodEvent(param1 *QInputMethodE
 
 }
 func (this *QTextBrowser) OnInputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1097,7 +1172,7 @@ func miqt_exec_callback_QTextBrowser_InputMethodEvent(self *C.QTextBrowser, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQInputMethodEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQInputMethodEvent(param1)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -1109,6 +1184,9 @@ func (this *QTextBrowser) callVirtualBase_ScrollContentsBy(dx int, dy int) {
 
 }
 func (this *QTextBrowser) OnScrollContentsBy(slot func(super func(dx int, dy int), dx int, dy int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_ScrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1134,6 +1212,9 @@ func (this *QTextBrowser) callVirtualBase_DoSetTextCursor(cursor *QTextCursor) {
 
 }
 func (this *QTextBrowser) OnDoSetTextCursor(slot func(super func(cursor *QTextCursor), cursor *QTextCursor)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTextBrowser_override_virtual_DoSetTextCursor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1145,7 +1226,7 @@ func miqt_exec_callback_QTextBrowser_DoSetTextCursor(self *C.QTextBrowser, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTextCursor(unsafe.Pointer(cursor))
+	slotval1 := newQTextCursor(cursor)
 
 	gofunc((&QTextBrowser{h: self}).callVirtualBase_DoSetTextCursor, slotval1)
 

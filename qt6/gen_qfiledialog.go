@@ -80,62 +80,42 @@ func (this *QFileDialog) UnsafePointer() unsafe.Pointer {
 }
 
 // newQFileDialog constructs the type using only CGO pointers.
-func newQFileDialog(h *C.QFileDialog, h_QDialog *C.QDialog, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QFileDialog {
+func newQFileDialog(h *C.QFileDialog) *QFileDialog {
 	if h == nil {
 		return nil
 	}
+	var outptr_QDialog *C.QDialog = nil
+	C.QFileDialog_virtbase(h, &outptr_QDialog)
+
 	return &QFileDialog{h: h,
-		QDialog: newQDialog(h_QDialog, h_QWidget, h_QObject, h_QPaintDevice)}
+		QDialog: newQDialog(outptr_QDialog)}
 }
 
 // UnsafeNewQFileDialog constructs the type using only unsafe pointers.
-func UnsafeNewQFileDialog(h unsafe.Pointer, h_QDialog unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QFileDialog {
-	if h == nil {
-		return nil
-	}
-
-	return &QFileDialog{h: (*C.QFileDialog)(h),
-		QDialog: UnsafeNewQDialog(h_QDialog, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQFileDialog(h unsafe.Pointer) *QFileDialog {
+	return newQFileDialog((*C.QFileDialog)(h))
 }
 
 // NewQFileDialog constructs a new QFileDialog object.
 func NewQFileDialog(parent *QWidget) *QFileDialog {
-	var outptr_QFileDialog *C.QFileDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QFileDialog_new(parent.cPointer(), &outptr_QFileDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQFileDialog(outptr_QFileDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQFileDialog(C.QFileDialog_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFileDialog2 constructs a new QFileDialog object.
 func NewQFileDialog2(parent *QWidget, f WindowType) *QFileDialog {
-	var outptr_QFileDialog *C.QFileDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QFileDialog_new2(parent.cPointer(), (C.int)(f), &outptr_QFileDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQFileDialog(outptr_QFileDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQFileDialog(C.QFileDialog_new2(parent.cPointer(), (C.int)(f)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFileDialog3 constructs a new QFileDialog object.
 func NewQFileDialog3() *QFileDialog {
-	var outptr_QFileDialog *C.QFileDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QFileDialog_new3(&outptr_QFileDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQFileDialog(outptr_QFileDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQFileDialog(C.QFileDialog_new3())
 	ret.isSubclass = true
 	return ret
 }
@@ -146,14 +126,8 @@ func NewQFileDialog4(parent *QWidget, caption string) *QFileDialog {
 	caption_ms.data = C.CString(caption)
 	caption_ms.len = C.size_t(len(caption))
 	defer C.free(unsafe.Pointer(caption_ms.data))
-	var outptr_QFileDialog *C.QFileDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QFileDialog_new4(parent.cPointer(), caption_ms, &outptr_QFileDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQFileDialog(outptr_QFileDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQFileDialog(C.QFileDialog_new4(parent.cPointer(), caption_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -168,14 +142,8 @@ func NewQFileDialog5(parent *QWidget, caption string, directory string) *QFileDi
 	directory_ms.data = C.CString(directory)
 	directory_ms.len = C.size_t(len(directory))
 	defer C.free(unsafe.Pointer(directory_ms.data))
-	var outptr_QFileDialog *C.QFileDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QFileDialog_new5(parent.cPointer(), caption_ms, directory_ms, &outptr_QFileDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQFileDialog(outptr_QFileDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQFileDialog(C.QFileDialog_new5(parent.cPointer(), caption_ms, directory_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -194,20 +162,14 @@ func NewQFileDialog6(parent *QWidget, caption string, directory string, filter s
 	filter_ms.data = C.CString(filter)
 	filter_ms.len = C.size_t(len(filter))
 	defer C.free(unsafe.Pointer(filter_ms.data))
-	var outptr_QFileDialog *C.QFileDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QFileDialog_new6(parent.cPointer(), caption_ms, directory_ms, filter_ms, &outptr_QFileDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQFileDialog(outptr_QFileDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQFileDialog(C.QFileDialog_new6(parent.cPointer(), caption_ms, directory_ms, filter_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QFileDialog) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QFileDialog_MetaObject(this.h)))
+	return newQMetaObject(C.QFileDialog_MetaObject(this.h))
 }
 
 func (this *QFileDialog) Metacast(param1 string) unsafe.Pointer {
@@ -238,8 +200,7 @@ func (this *QFileDialog) SetDirectoryWithDirectory(directory *QDir) {
 }
 
 func (this *QFileDialog) Directory() *QDir {
-	_ret := C.QFileDialog_Directory(this.h)
-	_goptr := newQDir(_ret)
+	_goptr := newQDir(C.QFileDialog_Directory(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -249,8 +210,7 @@ func (this *QFileDialog) SetDirectoryUrl(directory *QUrl) {
 }
 
 func (this *QFileDialog) DirectoryUrl() *QUrl {
-	_ret := C.QFileDialog_DirectoryUrl(this.h)
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QFileDialog_DirectoryUrl(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -285,8 +245,7 @@ func (this *QFileDialog) SelectedUrls() []QUrl {
 	_ret := make([]QUrl, int(_ma.len))
 	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQUrl(_lv_ret)
+		_lv_goptr := newQUrl(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -432,8 +391,7 @@ func (this *QFileDialog) SidebarUrls() []QUrl {
 	_ret := make([]QUrl, int(_ma.len))
 	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQUrl(_lv_ret)
+		_lv_goptr := newQUrl(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -501,7 +459,7 @@ func (this *QFileDialog) SetItemDelegate(delegate *QAbstractItemDelegate) {
 }
 
 func (this *QFileDialog) ItemDelegate() *QAbstractItemDelegate {
-	return UnsafeNewQAbstractItemDelegate(unsafe.Pointer(C.QFileDialog_ItemDelegate(this.h)), nil)
+	return newQAbstractItemDelegate(C.QFileDialog_ItemDelegate(this.h))
 }
 
 func (this *QFileDialog) SetIconProvider(provider *QAbstractFileIconProvider) {
@@ -509,7 +467,7 @@ func (this *QFileDialog) SetIconProvider(provider *QAbstractFileIconProvider) {
 }
 
 func (this *QFileDialog) IconProvider() *QAbstractFileIconProvider {
-	return UnsafeNewQAbstractFileIconProvider(unsafe.Pointer(C.QFileDialog_IconProvider(this.h)))
+	return newQAbstractFileIconProvider(C.QFileDialog_IconProvider(this.h))
 }
 
 func (this *QFileDialog) SetLabelText(label QFileDialog__DialogLabel, text string) {
@@ -559,7 +517,7 @@ func (this *QFileDialog) SetProxyModel(model *QAbstractProxyModel) {
 }
 
 func (this *QFileDialog) ProxyModel() *QAbstractProxyModel {
-	return UnsafeNewQAbstractProxyModel(unsafe.Pointer(C.QFileDialog_ProxyModel(this.h)), nil, nil)
+	return newQAbstractProxyModel(C.QFileDialog_ProxyModel(this.h))
 }
 
 func (this *QFileDialog) SetOption(option QFileDialog__Option) {
@@ -717,7 +675,7 @@ func miqt_exec_callback_QFileDialog_UrlSelected(cb C.intptr_t, url *C.QUrl) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQUrl(unsafe.Pointer(url))
+	slotval1 := newQUrl(url)
 
 	gofunc(slotval1)
 }
@@ -747,8 +705,7 @@ func miqt_exec_callback_QFileDialog_UrlsSelected(cb C.intptr_t, urls C.struct_mi
 	urls_ret := make([]QUrl, int(urls_ma.len))
 	urls_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(urls_ma.data)) // hey ya
 	for i := 0; i < int(urls_ma.len); i++ {
-		urls_lv_ret := urls_outCast[i]
-		urls_lv_goptr := newQUrl(urls_lv_ret)
+		urls_lv_goptr := newQUrl(urls_outCast[i])
 		urls_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		urls_ret[i] = *urls_lv_goptr
 	}
@@ -772,7 +729,7 @@ func miqt_exec_callback_QFileDialog_CurrentUrlChanged(cb C.intptr_t, url *C.QUrl
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQUrl(unsafe.Pointer(url))
+	slotval1 := newQUrl(url)
 
 	gofunc(slotval1)
 }
@@ -792,7 +749,7 @@ func miqt_exec_callback_QFileDialog_DirectoryUrlEntered(cb C.intptr_t, directory
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQUrl(unsafe.Pointer(directory))
+	slotval1 := newQUrl(directory)
 
 	gofunc(slotval1)
 }
@@ -832,8 +789,7 @@ func QFileDialog_GetOpenFileName() string {
 }
 
 func QFileDialog_GetOpenFileUrl() *QUrl {
-	_ret := C.QFileDialog_GetOpenFileUrl()
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QFileDialog_GetOpenFileUrl())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -846,8 +802,7 @@ func QFileDialog_GetSaveFileName() string {
 }
 
 func QFileDialog_GetSaveFileUrl() *QUrl {
-	_ret := C.QFileDialog_GetSaveFileUrl()
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QFileDialog_GetSaveFileUrl())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -860,8 +815,7 @@ func QFileDialog_GetExistingDirectory() string {
 }
 
 func QFileDialog_GetExistingDirectoryUrl() *QUrl {
-	_ret := C.QFileDialog_GetExistingDirectoryUrl()
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QFileDialog_GetExistingDirectoryUrl())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -884,8 +838,7 @@ func QFileDialog_GetOpenFileUrls() []QUrl {
 	_ret := make([]QUrl, int(_ma.len))
 	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQUrl(_lv_ret)
+		_lv_goptr := newQUrl(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -982,8 +935,7 @@ func QFileDialog_GetOpenFileName4(parent *QWidget, caption string, dir string, f
 }
 
 func QFileDialog_GetOpenFileUrl1(parent *QWidget) *QUrl {
-	_ret := C.QFileDialog_GetOpenFileUrl1(parent.cPointer())
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QFileDialog_GetOpenFileUrl1(parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -993,8 +945,7 @@ func QFileDialog_GetOpenFileUrl2(parent *QWidget, caption string) *QUrl {
 	caption_ms.data = C.CString(caption)
 	caption_ms.len = C.size_t(len(caption))
 	defer C.free(unsafe.Pointer(caption_ms.data))
-	_ret := C.QFileDialog_GetOpenFileUrl2(parent.cPointer(), caption_ms)
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QFileDialog_GetOpenFileUrl2(parent.cPointer(), caption_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1004,8 +955,7 @@ func QFileDialog_GetOpenFileUrl3(parent *QWidget, caption string, dir *QUrl) *QU
 	caption_ms.data = C.CString(caption)
 	caption_ms.len = C.size_t(len(caption))
 	defer C.free(unsafe.Pointer(caption_ms.data))
-	_ret := C.QFileDialog_GetOpenFileUrl3(parent.cPointer(), caption_ms, dir.cPointer())
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QFileDialog_GetOpenFileUrl3(parent.cPointer(), caption_ms, dir.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1019,8 +969,7 @@ func QFileDialog_GetOpenFileUrl4(parent *QWidget, caption string, dir *QUrl, fil
 	filter_ms.data = C.CString(filter)
 	filter_ms.len = C.size_t(len(filter))
 	defer C.free(unsafe.Pointer(filter_ms.data))
-	_ret := C.QFileDialog_GetOpenFileUrl4(parent.cPointer(), caption_ms, dir.cPointer(), filter_ms)
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QFileDialog_GetOpenFileUrl4(parent.cPointer(), caption_ms, dir.cPointer(), filter_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1078,8 +1027,7 @@ func QFileDialog_GetSaveFileName4(parent *QWidget, caption string, dir string, f
 }
 
 func QFileDialog_GetSaveFileUrl1(parent *QWidget) *QUrl {
-	_ret := C.QFileDialog_GetSaveFileUrl1(parent.cPointer())
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QFileDialog_GetSaveFileUrl1(parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1089,8 +1037,7 @@ func QFileDialog_GetSaveFileUrl2(parent *QWidget, caption string) *QUrl {
 	caption_ms.data = C.CString(caption)
 	caption_ms.len = C.size_t(len(caption))
 	defer C.free(unsafe.Pointer(caption_ms.data))
-	_ret := C.QFileDialog_GetSaveFileUrl2(parent.cPointer(), caption_ms)
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QFileDialog_GetSaveFileUrl2(parent.cPointer(), caption_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1100,8 +1047,7 @@ func QFileDialog_GetSaveFileUrl3(parent *QWidget, caption string, dir *QUrl) *QU
 	caption_ms.data = C.CString(caption)
 	caption_ms.len = C.size_t(len(caption))
 	defer C.free(unsafe.Pointer(caption_ms.data))
-	_ret := C.QFileDialog_GetSaveFileUrl3(parent.cPointer(), caption_ms, dir.cPointer())
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QFileDialog_GetSaveFileUrl3(parent.cPointer(), caption_ms, dir.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1115,8 +1061,7 @@ func QFileDialog_GetSaveFileUrl4(parent *QWidget, caption string, dir *QUrl, fil
 	filter_ms.data = C.CString(filter)
 	filter_ms.len = C.size_t(len(filter))
 	defer C.free(unsafe.Pointer(filter_ms.data))
-	_ret := C.QFileDialog_GetSaveFileUrl4(parent.cPointer(), caption_ms, dir.cPointer(), filter_ms)
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QFileDialog_GetSaveFileUrl4(parent.cPointer(), caption_ms, dir.cPointer(), filter_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1170,8 +1115,7 @@ func QFileDialog_GetExistingDirectory4(parent *QWidget, caption string, dir stri
 }
 
 func QFileDialog_GetExistingDirectoryUrl1(parent *QWidget) *QUrl {
-	_ret := C.QFileDialog_GetExistingDirectoryUrl1(parent.cPointer())
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QFileDialog_GetExistingDirectoryUrl1(parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1181,8 +1125,7 @@ func QFileDialog_GetExistingDirectoryUrl2(parent *QWidget, caption string) *QUrl
 	caption_ms.data = C.CString(caption)
 	caption_ms.len = C.size_t(len(caption))
 	defer C.free(unsafe.Pointer(caption_ms.data))
-	_ret := C.QFileDialog_GetExistingDirectoryUrl2(parent.cPointer(), caption_ms)
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QFileDialog_GetExistingDirectoryUrl2(parent.cPointer(), caption_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1192,8 +1135,7 @@ func QFileDialog_GetExistingDirectoryUrl3(parent *QWidget, caption string, dir *
 	caption_ms.data = C.CString(caption)
 	caption_ms.len = C.size_t(len(caption))
 	defer C.free(unsafe.Pointer(caption_ms.data))
-	_ret := C.QFileDialog_GetExistingDirectoryUrl3(parent.cPointer(), caption_ms, dir.cPointer())
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QFileDialog_GetExistingDirectoryUrl3(parent.cPointer(), caption_ms, dir.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1203,8 +1145,7 @@ func QFileDialog_GetExistingDirectoryUrl4(parent *QWidget, caption string, dir *
 	caption_ms.data = C.CString(caption)
 	caption_ms.len = C.size_t(len(caption))
 	defer C.free(unsafe.Pointer(caption_ms.data))
-	_ret := C.QFileDialog_GetExistingDirectoryUrl4(parent.cPointer(), caption_ms, dir.cPointer(), (C.int)(options))
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QFileDialog_GetExistingDirectoryUrl4(parent.cPointer(), caption_ms, dir.cPointer(), (C.int)(options)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1224,8 +1165,7 @@ func QFileDialog_GetExistingDirectoryUrl5(parent *QWidget, caption string, dir *
 		supportedSchemes_CArray[i] = supportedSchemes_i_ms
 	}
 	supportedSchemes_ma := C.struct_miqt_array{len: C.size_t(len(supportedSchemes)), data: unsafe.Pointer(supportedSchemes_CArray)}
-	_ret := C.QFileDialog_GetExistingDirectoryUrl5(parent.cPointer(), caption_ms, dir.cPointer(), (C.int)(options), supportedSchemes_ma)
-	_goptr := newQUrl(_ret)
+	_goptr := newQUrl(C.QFileDialog_GetExistingDirectoryUrl5(parent.cPointer(), caption_ms, dir.cPointer(), (C.int)(options), supportedSchemes_ma))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1311,8 +1251,7 @@ func QFileDialog_GetOpenFileUrls1(parent *QWidget) []QUrl {
 	_ret := make([]QUrl, int(_ma.len))
 	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQUrl(_lv_ret)
+		_lv_goptr := newQUrl(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -1328,8 +1267,7 @@ func QFileDialog_GetOpenFileUrls2(parent *QWidget, caption string) []QUrl {
 	_ret := make([]QUrl, int(_ma.len))
 	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQUrl(_lv_ret)
+		_lv_goptr := newQUrl(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -1345,8 +1283,7 @@ func QFileDialog_GetOpenFileUrls3(parent *QWidget, caption string, dir *QUrl) []
 	_ret := make([]QUrl, int(_ma.len))
 	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQUrl(_lv_ret)
+		_lv_goptr := newQUrl(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -1366,8 +1303,7 @@ func QFileDialog_GetOpenFileUrls4(parent *QWidget, caption string, dir *QUrl, fi
 	_ret := make([]QUrl, int(_ma.len))
 	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQUrl(_lv_ret)
+		_lv_goptr := newQUrl(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -1380,6 +1316,9 @@ func (this *QFileDialog) callVirtualBase_SetVisible(visible bool) {
 
 }
 func (this *QFileDialog) OnSetVisible(slot func(super func(visible bool), visible bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileDialog_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1403,6 +1342,9 @@ func (this *QFileDialog) callVirtualBase_Done(result int) {
 
 }
 func (this *QFileDialog) OnDone(slot func(super func(result int), result int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileDialog_override_virtual_Done(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1426,6 +1368,9 @@ func (this *QFileDialog) callVirtualBase_Accept() {
 
 }
 func (this *QFileDialog) OnAccept(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileDialog_override_virtual_Accept(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1446,6 +1391,9 @@ func (this *QFileDialog) callVirtualBase_ChangeEvent(e *QEvent) {
 
 }
 func (this *QFileDialog) OnChangeEvent(slot func(super func(e *QEvent), e *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileDialog_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1457,7 +1405,7 @@ func miqt_exec_callback_QFileDialog_ChangeEvent(self *C.QFileDialog, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	gofunc((&QFileDialog{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -1465,13 +1413,15 @@ func miqt_exec_callback_QFileDialog_ChangeEvent(self *C.QFileDialog, cb C.intptr
 
 func (this *QFileDialog) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QFileDialog_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QFileDialog_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QFileDialog) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileDialog_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1490,13 +1440,15 @@ func miqt_exec_callback_QFileDialog_SizeHint(self *C.QFileDialog, cb C.intptr_t)
 
 func (this *QFileDialog) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QFileDialog_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QFileDialog_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QFileDialog) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileDialog_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1519,6 +1471,9 @@ func (this *QFileDialog) callVirtualBase_Open() {
 
 }
 func (this *QFileDialog) OnOpen(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileDialog_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1539,6 +1494,9 @@ func (this *QFileDialog) callVirtualBase_Exec() int {
 
 }
 func (this *QFileDialog) OnExec(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileDialog_override_virtual_Exec(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1561,6 +1519,9 @@ func (this *QFileDialog) callVirtualBase_Reject() {
 
 }
 func (this *QFileDialog) OnReject(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileDialog_override_virtual_Reject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1581,6 +1542,9 @@ func (this *QFileDialog) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
 
 }
 func (this *QFileDialog) OnKeyPressEvent(slot func(super func(param1 *QKeyEvent), param1 *QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileDialog_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1592,7 +1556,7 @@ func miqt_exec_callback_QFileDialog_KeyPressEvent(self *C.QFileDialog, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQKeyEvent(param1)
 
 	gofunc((&QFileDialog{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -1604,6 +1568,9 @@ func (this *QFileDialog) callVirtualBase_CloseEvent(param1 *QCloseEvent) {
 
 }
 func (this *QFileDialog) OnCloseEvent(slot func(super func(param1 *QCloseEvent), param1 *QCloseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileDialog_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1615,7 +1582,7 @@ func miqt_exec_callback_QFileDialog_CloseEvent(self *C.QFileDialog, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQCloseEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQCloseEvent(param1)
 
 	gofunc((&QFileDialog{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -1627,6 +1594,9 @@ func (this *QFileDialog) callVirtualBase_ShowEvent(param1 *QShowEvent) {
 
 }
 func (this *QFileDialog) OnShowEvent(slot func(super func(param1 *QShowEvent), param1 *QShowEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileDialog_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1638,7 +1608,7 @@ func miqt_exec_callback_QFileDialog_ShowEvent(self *C.QFileDialog, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQShowEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQShowEvent(param1)
 
 	gofunc((&QFileDialog{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1650,6 +1620,9 @@ func (this *QFileDialog) callVirtualBase_ResizeEvent(param1 *QResizeEvent) {
 
 }
 func (this *QFileDialog) OnResizeEvent(slot func(super func(param1 *QResizeEvent), param1 *QResizeEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileDialog_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1661,7 +1634,7 @@ func miqt_exec_callback_QFileDialog_ResizeEvent(self *C.QFileDialog, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQResizeEvent(param1)
 
 	gofunc((&QFileDialog{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -1673,6 +1646,9 @@ func (this *QFileDialog) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEv
 
 }
 func (this *QFileDialog) OnContextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileDialog_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1684,7 +1660,7 @@ func miqt_exec_callback_QFileDialog_ContextMenuEvent(self *C.QFileDialog, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQContextMenuEvent(param1)
 
 	gofunc((&QFileDialog{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -1696,6 +1672,9 @@ func (this *QFileDialog) callVirtualBase_EventFilter(param1 *QObject, param2 *QE
 
 }
 func (this *QFileDialog) OnEventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileDialog_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1707,8 +1686,9 @@ func miqt_exec_callback_QFileDialog_EventFilter(self *C.QFileDialog, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(param1))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(param2))
+	slotval1 := newQObject(param1)
+
+	slotval2 := newQEvent(param2)
 
 	virtualReturn := gofunc((&QFileDialog{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 

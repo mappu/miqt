@@ -52,8 +52,9 @@ typedef struct QVariant QVariant;
 typedef struct QWidget QWidget;
 #endif
 
-void QGraphicsVideoItem_new(QGraphicsVideoItem** outptr_QGraphicsVideoItem, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem, QMediaBindableInterface** outptr_QMediaBindableInterface);
-void QGraphicsVideoItem_new2(QGraphicsItem* parent, QGraphicsVideoItem** outptr_QGraphicsVideoItem, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem, QMediaBindableInterface** outptr_QMediaBindableInterface);
+QGraphicsVideoItem* QGraphicsVideoItem_new();
+QGraphicsVideoItem* QGraphicsVideoItem_new2(QGraphicsItem* parent);
+void QGraphicsVideoItem_virtbase(QGraphicsVideoItem* src, QGraphicsObject** outptr_QGraphicsObject, QMediaBindableInterface** outptr_QMediaBindableInterface);
 QMetaObject* QGraphicsVideoItem_MetaObject(const QGraphicsVideoItem* self);
 void* QGraphicsVideoItem_Metacast(QGraphicsVideoItem* self, const char* param1);
 struct miqt_string QGraphicsVideoItem_Tr(const char* s);

@@ -26,13 +26,13 @@ typedef struct QRect QRect;
 typedef struct QRegion QRegion;
 #endif
 
-void QRegion_new(QRegion** outptr_QRegion);
-void QRegion_new2(int x, int y, int w, int h, QRegion** outptr_QRegion);
-void QRegion_new3(QRect* r, QRegion** outptr_QRegion);
-void QRegion_new4(QRegion* region, QRegion** outptr_QRegion);
-void QRegion_new5(QBitmap* bitmap, QRegion** outptr_QRegion);
-void QRegion_new6(int x, int y, int w, int h, int t, QRegion** outptr_QRegion);
-void QRegion_new7(QRect* r, int t, QRegion** outptr_QRegion);
+QRegion* QRegion_new();
+QRegion* QRegion_new2(int x, int y, int w, int h);
+QRegion* QRegion_new3(QRect* r);
+QRegion* QRegion_new4(QRegion* region);
+QRegion* QRegion_new5(QBitmap* bitmap);
+QRegion* QRegion_new6(int x, int y, int w, int h, int t);
+QRegion* QRegion_new7(QRect* r, int t);
 void QRegion_OperatorAssign(QRegion* self, QRegion* param1);
 void QRegion_Swap(QRegion* self, QRegion* other);
 bool QRegion_IsEmpty(const QRegion* self);

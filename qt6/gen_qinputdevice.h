@@ -34,11 +34,12 @@ typedef struct QRect QRect;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QInputDevice_new(QInputDevice** outptr_QInputDevice, QObject** outptr_QObject);
-void QInputDevice_new2(struct miqt_string name, long long systemId, int typeVal, QInputDevice** outptr_QInputDevice, QObject** outptr_QObject);
-void QInputDevice_new3(QObject* parent, QInputDevice** outptr_QInputDevice, QObject** outptr_QObject);
-void QInputDevice_new4(struct miqt_string name, long long systemId, int typeVal, struct miqt_string seatName, QInputDevice** outptr_QInputDevice, QObject** outptr_QObject);
-void QInputDevice_new5(struct miqt_string name, long long systemId, int typeVal, struct miqt_string seatName, QObject* parent, QInputDevice** outptr_QInputDevice, QObject** outptr_QObject);
+QInputDevice* QInputDevice_new();
+QInputDevice* QInputDevice_new2(struct miqt_string name, long long systemId, int typeVal);
+QInputDevice* QInputDevice_new3(QObject* parent);
+QInputDevice* QInputDevice_new4(struct miqt_string name, long long systemId, int typeVal, struct miqt_string seatName);
+QInputDevice* QInputDevice_new5(struct miqt_string name, long long systemId, int typeVal, struct miqt_string seatName, QObject* parent);
+void QInputDevice_virtbase(QInputDevice* src, QObject** outptr_QObject);
 QMetaObject* QInputDevice_MetaObject(const QInputDevice* self);
 void* QInputDevice_Metacast(QInputDevice* self, const char* param1);
 struct miqt_string QInputDevice_Tr(const char* s);

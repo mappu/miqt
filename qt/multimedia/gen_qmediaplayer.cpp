@@ -16,6 +16,10 @@
 #include <QVideoWidget>
 #include <qmediaplayer.h>
 #include "gen_qmediaplayer.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQMediaPlayer : public virtual QMediaPlayer {
@@ -143,25 +147,20 @@ public:
 
 };
 
-void QMediaPlayer_new(QMediaPlayer** outptr_QMediaPlayer, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject) {
-	MiqtVirtualQMediaPlayer* ret = new MiqtVirtualQMediaPlayer();
-	*outptr_QMediaPlayer = ret;
-	*outptr_QMediaObject = static_cast<QMediaObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QMediaPlayer* QMediaPlayer_new() {
+	return new MiqtVirtualQMediaPlayer();
 }
 
-void QMediaPlayer_new2(QObject* parent, QMediaPlayer** outptr_QMediaPlayer, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject) {
-	MiqtVirtualQMediaPlayer* ret = new MiqtVirtualQMediaPlayer(parent);
-	*outptr_QMediaPlayer = ret;
-	*outptr_QMediaObject = static_cast<QMediaObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QMediaPlayer* QMediaPlayer_new2(QObject* parent) {
+	return new MiqtVirtualQMediaPlayer(parent);
 }
 
-void QMediaPlayer_new3(QObject* parent, int flags, QMediaPlayer** outptr_QMediaPlayer, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject) {
-	MiqtVirtualQMediaPlayer* ret = new MiqtVirtualQMediaPlayer(parent, static_cast<QMediaPlayer::Flags>(flags));
-	*outptr_QMediaPlayer = ret;
-	*outptr_QMediaObject = static_cast<QMediaObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QMediaPlayer* QMediaPlayer_new3(QObject* parent, int flags) {
+	return new MiqtVirtualQMediaPlayer(parent, static_cast<QMediaPlayer::Flags>(flags));
+}
+
+void QMediaPlayer_virtbase(QMediaPlayer* src, QMediaObject** outptr_QMediaObject) {
+	*outptr_QMediaObject = static_cast<QMediaObject*>(src);
 }
 
 QMetaObject* QMediaPlayer_MetaObject(const QMediaPlayer* self) {

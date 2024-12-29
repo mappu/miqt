@@ -576,7 +576,6 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 
 	} else if rt.QtClassType() {
 		// Construct our Go type based on this inner CABI type
-		shouldReturn = "" + namePrefix + "_ret := "
 
 		crossPackage := ""
 		pkg, ok := KnownClassnames[rt.ParameterType]
@@ -589,39 +588,41 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 			gfs.imports[importPathForQtPackage(pkg.PackageName)] = struct{}{}
 		}
 
-		// FIXME This needs to somehow figure out the real child pointers
-		extraConstructArgs := strings.Repeat(", nil", len(pkg.Class.AllInherits()))
+		// We can only reference the rvalue once, in case it is a complex
+		// expression
 
-		if rt.Pointer || rt.ByRef {
-			gfs.imports["unsafe"] = struct{}{}
-			return assignExpr + " " + crossPackage + "UnsafeNew" + cabiClassName(rt.ParameterType) + "(unsafe.Pointer(" + rvalue + ")" + extraConstructArgs + ")"
-
+		if crossPackage == "" {
+			rvalue = "new" + cabiClassName(rt.ParameterType) + "(" + rvalue + ")"
 		} else {
+			gfs.imports["unsafe"] = struct{}{}
+			rvalue = crossPackage + "UnsafeNew" + cabiClassName(rt.ParameterType) + "(unsafe.Pointer(" + rvalue + "))"
+		}
+
+		if !(rt.Pointer || rt.ByRef) {
 			// This is return by value, but CABI has new'd it into a
 			// heap type for us
 			// To preserve Qt's approximate semantics, add a runtime
 			// finalizer to automatically Delete once the type goes out
 			// of Go scope
-
-			if crossPackage == "" {
-				afterword += namePrefix + "_goptr := new" + cabiClassName(rt.ParameterType) + "(" + namePrefix + "_ret" + extraConstructArgs + ")\n"
-			} else {
-				gfs.imports["unsafe"] = struct{}{}
-				afterword += namePrefix + "_goptr := " + crossPackage + "UnsafeNew" + cabiClassName(rt.ParameterType) + "(unsafe.Pointer(" + namePrefix + "_ret)" + extraConstructArgs + ")\n"
-
-			}
+			afterword += namePrefix + "_goptr := " + rvalue + "\n"
 			afterword += namePrefix + "_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer\n"
 
 			// If this is a function return, we have converted value-returned Qt types to pointers
 			// If this is a slot return, we haven't
 			// TODO standardize this
+			// e.g. QStringListModel::ItemData
 			if strings.Contains(assignExpr, `return`) {
 				afterword += assignExpr + "" + namePrefix + "_goptr\n"
 			} else {
 				afterword += assignExpr + " *" + namePrefix + "_goptr\n"
 			}
+
+		} else {
+			// No need for temporary _goptr variable
+			afterword += assignExpr + "" + rvalue + "\n"
 		}
-		return shouldReturn + " " + rvalue + "\n" + afterword
+
+		return afterword
 
 	} else if rt.IntType() || rt.IsKnownEnum() || rt.IsFlagType() || rt.ParameterType == "bool" || rt.QtCppOriginalType != nil {
 
@@ -783,57 +784,47 @@ import "C"
 		gfs.imports["unsafe"] = struct{}{}
 
 		localInit := "h: h"
-		unsafeInit := "h: (*C." + goClassName + ")(h)"
-		extraCArgs := ""
-		extraUnsafeArgs := ""
-
-		// We require arguments for all inherits, but we only embed the direct inherits
-		// Any recursive inherits will be owned by the base
-		for _, base := range c.AllInherits() {
-
-			extraCArgs += ", h_" + cabiClassName(base) + " *C." + cabiClassName(base)
-			extraUnsafeArgs += ", h_" + cabiClassName(base) + " unsafe.Pointer"
-		}
-
-		for _, pkg := range c.DirectInheritClassInfo() {
-			ctorPrefix := ""
-			base := pkg.Class.ClassName
-
-			constructRequiresParams := pkg.Class.AllInherits()
-			var ixxParams []string = make([]string, 0, len(constructRequiresParams)+1)
-			ixxParams = append(ixxParams, "h_"+cabiClassName(base))
-			for _, grandchildInheritedClass := range constructRequiresParams {
-				ixxParams = append(ixxParams, "h_"+cabiClassName(grandchildInheritedClass))
-			}
-
-			if pkg.PackageName != gfs.currentPackageName {
-				ctorPrefix = path.Base(pkg.PackageName) + "."
-
-				localInit += ",\n" + cabiClassName(base) + ": " + ctorPrefix + "UnsafeNew" + cabiClassName(base) + "(unsafe.Pointer(" + strings.Join(ixxParams, "), unsafe.Pointer(") + "))"
-			} else {
-				localInit += ",\n" + cabiClassName(base) + ": new" + cabiClassName(base) + "(" + strings.Join(ixxParams, ", ") + ")"
-
-			}
-
-			unsafeInit += ",\n" + cabiClassName(base) + ": " + ctorPrefix + "UnsafeNew" + cabiClassName(base) + "(" + strings.Join(ixxParams, ", ") + ")"
-		}
 
 		ret.WriteString(`
 			// new` + goClassName + ` constructs the type using only CGO pointers.
-			func new` + goClassName + `(h *C.` + goClassName + extraCArgs + `) *` + goClassName + ` {
+			func new` + goClassName + `(h *C.` + goClassName + `) *` + goClassName + ` {
 				if h == nil {
 					return nil
 				}
+		`)
+
+		if len(c.DirectInheritClassInfo()) > 0 {
+			xbaseParams := ""
+			for _, pkg := range c.DirectInheritClassInfo() {
+
+				base := pkg.Class.ClassName
+
+				// Make extra CGO call to get base pointers from C++ space
+				outptrVar := "outptr_" + cabiClassName(base)
+				ret.WriteString("var " + outptrVar + " *C." + cabiClassName(base) + " = nil\n")
+				xbaseParams += ", &" + outptrVar
+
+				// Set up how we would pass the pointer to its own make function
+				if pkg.PackageName != gfs.currentPackageName {
+					localInit += ",\n" + cabiClassName(base) + ": " + path.Base(pkg.PackageName) + "." + "UnsafeNew" + cabiClassName(base) + "(unsafe.Pointer(" + outptrVar + "))"
+				} else {
+					localInit += ",\n" + cabiClassName(base) + ": new" + cabiClassName(base) + "(" + outptrVar + ")"
+				}
+
+			}
+
+			// Populate outptr pointers
+			ret.WriteString("C." + cabiClassName(c.ClassName) + "_virtbase(h" + xbaseParams + ")\n")
+
+		}
+
+		ret.WriteString(`
 				return &` + goClassName + `{` + localInit + `}
 			}
 			
 			// UnsafeNew` + goClassName + ` constructs the type using only unsafe pointers.
-			func UnsafeNew` + goClassName + `(h unsafe.Pointer` + extraUnsafeArgs + `) *` + goClassName + ` {				
-				if h == nil {
-					return nil
-				}
-				
-				return &` + goClassName + `{` + unsafeInit + `}
+			func UnsafeNew` + goClassName + `(h unsafe.Pointer) *` + goClassName + ` {
+				return new` + goClassName + `( (*C.` + goClassName + `)(h) )
 			}
 			
 		`)
@@ -860,26 +851,10 @@ import "C"
 
 			ret.WriteString(preamble)
 
-			// Outptr management
-
-			outptrs := make([]string, 0, len(c.AllInherits())+1)
-			ret.WriteString(`var outptr_` + cabiClassName(c.ClassName) + ` *C.` + goClassName + " = nil\n")
-			outptrs = append(outptrs, "outptr_"+cabiClassName(c.ClassName))
-			for _, baseClass := range c.AllInherits() {
-				ret.WriteString(`var outptr_` + cabiClassName(baseClass) + ` *C.` + cabiClassName(baseClass) + " = nil\n")
-				outptrs = append(outptrs, "outptr_"+cabiClassName(baseClass))
-			}
-
-			if len(forwarding) > 0 {
-				forwarding += ", "
-			}
-			forwarding += "&" + strings.Join(outptrs, ", &")
-
 			// Call Cgo constructor
 
-			ret.WriteString(`
-				C.` + goClassName + `_new` + maybeSuffix(i) + `(` + forwarding + `)
-				ret := new` + goClassName + `(` + strings.Join(outptrs, `, `) + `)
+			ret.WriteString(`				
+				ret := new` + goClassName + `(C.` + goClassName + `_new` + maybeSuffix(i) + `(` + forwarding + `))
 				ret.isSubclass = true
 				return ret
 			}
@@ -1028,6 +1003,9 @@ import "C"
 				goCbType += `) ` + m.ReturnType.renderReturnTypeGo(&gfs)
 
 				ret.WriteString(`func (this *` + goClassName + `) On` + m.SafeMethodName() + `(slot ` + goCbType + `) {
+					if ! this.isSubclass {
+						panic("miqt: can only override virtual methods for directly constructed types")
+					}
 					C.` + goClassName + `_override_virtual_` + m.SafeMethodName() + `(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)) )
 				}
 				

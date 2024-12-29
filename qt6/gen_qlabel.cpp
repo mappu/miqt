@@ -20,6 +20,10 @@
 #include <QWidget>
 #include <qlabel.h>
 #include "gen_qlabel.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQLabel : public virtual QLabel {
@@ -389,61 +393,35 @@ public:
 
 };
 
-void QLabel_new(QWidget* parent, QLabel** outptr_QLabel, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQLabel* ret = new MiqtVirtualQLabel(parent);
-	*outptr_QLabel = ret;
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QLabel* QLabel_new(QWidget* parent) {
+	return new MiqtVirtualQLabel(parent);
 }
 
-void QLabel_new2(QLabel** outptr_QLabel, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQLabel* ret = new MiqtVirtualQLabel();
-	*outptr_QLabel = ret;
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QLabel* QLabel_new2() {
+	return new MiqtVirtualQLabel();
 }
 
-void QLabel_new3(struct miqt_string text, QLabel** outptr_QLabel, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QLabel* QLabel_new3(struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQLabel* ret = new MiqtVirtualQLabel(text_QString);
-	*outptr_QLabel = ret;
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQLabel(text_QString);
 }
 
-void QLabel_new4(QWidget* parent, int f, QLabel** outptr_QLabel, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQLabel* ret = new MiqtVirtualQLabel(parent, static_cast<Qt::WindowFlags>(f));
-	*outptr_QLabel = ret;
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QLabel* QLabel_new4(QWidget* parent, int f) {
+	return new MiqtVirtualQLabel(parent, static_cast<Qt::WindowFlags>(f));
 }
 
-void QLabel_new5(struct miqt_string text, QWidget* parent, QLabel** outptr_QLabel, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QLabel* QLabel_new5(struct miqt_string text, QWidget* parent) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQLabel* ret = new MiqtVirtualQLabel(text_QString, parent);
-	*outptr_QLabel = ret;
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQLabel(text_QString, parent);
 }
 
-void QLabel_new6(struct miqt_string text, QWidget* parent, int f, QLabel** outptr_QLabel, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QLabel* QLabel_new6(struct miqt_string text, QWidget* parent, int f) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQLabel* ret = new MiqtVirtualQLabel(text_QString, parent, static_cast<Qt::WindowFlags>(f));
-	*outptr_QLabel = ret;
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQLabel(text_QString, parent, static_cast<Qt::WindowFlags>(f));
+}
+
+void QLabel_virtbase(QLabel* src, QFrame** outptr_QFrame) {
+	*outptr_QFrame = static_cast<QFrame*>(src);
 }
 
 QMetaObject* QLabel_MetaObject(const QLabel* self) {

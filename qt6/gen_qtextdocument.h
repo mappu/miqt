@@ -71,10 +71,11 @@ void QAbstractUndoItem_Redo(QAbstractUndoItem* self);
 void QAbstractUndoItem_OperatorAssign(QAbstractUndoItem* self, QAbstractUndoItem* param1);
 void QAbstractUndoItem_Delete(QAbstractUndoItem* self, bool isSubclass);
 
-void QTextDocument_new(QTextDocument** outptr_QTextDocument, QObject** outptr_QObject);
-void QTextDocument_new2(struct miqt_string text, QTextDocument** outptr_QTextDocument, QObject** outptr_QObject);
-void QTextDocument_new3(QObject* parent, QTextDocument** outptr_QTextDocument, QObject** outptr_QObject);
-void QTextDocument_new4(struct miqt_string text, QObject* parent, QTextDocument** outptr_QTextDocument, QObject** outptr_QObject);
+QTextDocument* QTextDocument_new();
+QTextDocument* QTextDocument_new2(struct miqt_string text);
+QTextDocument* QTextDocument_new3(QObject* parent);
+QTextDocument* QTextDocument_new4(struct miqt_string text, QObject* parent);
+void QTextDocument_virtbase(QTextDocument* src, QObject** outptr_QObject);
 QMetaObject* QTextDocument_MetaObject(const QTextDocument* self);
 void* QTextDocument_Metacast(QTextDocument* self, const char* param1);
 struct miqt_string QTextDocument_Tr(const char* s);

@@ -43,37 +43,32 @@ func (this *QActionGroup) UnsafePointer() unsafe.Pointer {
 }
 
 // newQActionGroup constructs the type using only CGO pointers.
-func newQActionGroup(h *C.QActionGroup, h_QObject *C.QObject) *QActionGroup {
+func newQActionGroup(h *C.QActionGroup) *QActionGroup {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QActionGroup_virtbase(h, &outptr_QObject)
+
 	return &QActionGroup{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQActionGroup constructs the type using only unsafe pointers.
-func UnsafeNewQActionGroup(h unsafe.Pointer, h_QObject unsafe.Pointer) *QActionGroup {
-	if h == nil {
-		return nil
-	}
-
-	return &QActionGroup{h: (*C.QActionGroup)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQActionGroup(h unsafe.Pointer) *QActionGroup {
+	return newQActionGroup((*C.QActionGroup)(h))
 }
 
 // NewQActionGroup constructs a new QActionGroup object.
 func NewQActionGroup(parent *QObject) *QActionGroup {
-	var outptr_QActionGroup *C.QActionGroup = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QActionGroup_new(parent.cPointer(), &outptr_QActionGroup, &outptr_QObject)
-	ret := newQActionGroup(outptr_QActionGroup, outptr_QObject)
+	ret := newQActionGroup(C.QActionGroup_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QActionGroup) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QActionGroup_MetaObject(this.h)))
+	return newQMetaObject(C.QActionGroup_MetaObject(this.h))
 }
 
 func (this *QActionGroup) Metacast(param1 string) unsafe.Pointer {
@@ -101,7 +96,7 @@ func QActionGroup_TrUtf8(s string) string {
 }
 
 func (this *QActionGroup) AddAction(a *QAction) *QAction {
-	return UnsafeNewQAction(unsafe.Pointer(C.QActionGroup_AddAction(this.h, a.cPointer())), nil)
+	return newQAction(C.QActionGroup_AddAction(this.h, a.cPointer()))
 }
 
 func (this *QActionGroup) AddActionWithText(text string) *QAction {
@@ -109,7 +104,7 @@ func (this *QActionGroup) AddActionWithText(text string) *QAction {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return UnsafeNewQAction(unsafe.Pointer(C.QActionGroup_AddActionWithText(this.h, text_ms)), nil)
+	return newQAction(C.QActionGroup_AddActionWithText(this.h, text_ms))
 }
 
 func (this *QActionGroup) AddAction2(icon *QIcon, text string) *QAction {
@@ -117,7 +112,7 @@ func (this *QActionGroup) AddAction2(icon *QIcon, text string) *QAction {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return UnsafeNewQAction(unsafe.Pointer(C.QActionGroup_AddAction2(this.h, icon.cPointer(), text_ms)), nil)
+	return newQAction(C.QActionGroup_AddAction2(this.h, icon.cPointer(), text_ms))
 }
 
 func (this *QActionGroup) RemoveAction(a *QAction) {
@@ -129,13 +124,13 @@ func (this *QActionGroup) Actions() []*QAction {
 	_ret := make([]*QAction, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAction)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQAction(unsafe.Pointer(_outCast[i]), nil)
+		_ret[i] = newQAction(_outCast[i])
 	}
 	return _ret
 }
 
 func (this *QActionGroup) CheckedAction() *QAction {
-	return UnsafeNewQAction(unsafe.Pointer(C.QActionGroup_CheckedAction(this.h)), nil)
+	return newQAction(C.QActionGroup_CheckedAction(this.h))
 }
 
 func (this *QActionGroup) IsExclusive() bool {
@@ -189,7 +184,7 @@ func miqt_exec_callback_QActionGroup_Triggered(cb C.intptr_t, param1 *C.QAction)
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAction(unsafe.Pointer(param1), nil)
+	slotval1 := newQAction(param1)
 
 	gofunc(slotval1)
 }
@@ -209,7 +204,7 @@ func miqt_exec_callback_QActionGroup_Hovered(cb C.intptr_t, param1 *C.QAction) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAction(unsafe.Pointer(param1), nil)
+	slotval1 := newQAction(param1)
 
 	gofunc(slotval1)
 }
@@ -264,6 +259,9 @@ func (this *QActionGroup) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QActionGroup) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QActionGroup_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -275,7 +273,7 @@ func miqt_exec_callback_QActionGroup_Event(self *C.QActionGroup, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QActionGroup{h: self}).callVirtualBase_Event, slotval1)
 
@@ -289,6 +287,9 @@ func (this *QActionGroup) callVirtualBase_EventFilter(watched *QObject, event *Q
 
 }
 func (this *QActionGroup) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QActionGroup_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -300,8 +301,9 @@ func miqt_exec_callback_QActionGroup_EventFilter(self *C.QActionGroup, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QActionGroup{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -315,6 +317,9 @@ func (this *QActionGroup) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QActionGroup) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QActionGroup_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -326,7 +331,7 @@ func miqt_exec_callback_QActionGroup_TimerEvent(self *C.QActionGroup, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QActionGroup{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -338,6 +343,9 @@ func (this *QActionGroup) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QActionGroup) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QActionGroup_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -349,7 +357,7 @@ func miqt_exec_callback_QActionGroup_ChildEvent(self *C.QActionGroup, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QActionGroup{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -361,6 +369,9 @@ func (this *QActionGroup) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QActionGroup) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QActionGroup_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -372,7 +383,7 @@ func miqt_exec_callback_QActionGroup_CustomEvent(self *C.QActionGroup, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QActionGroup{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -384,6 +395,9 @@ func (this *QActionGroup) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QActionGroup) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QActionGroup_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -395,7 +409,7 @@ func miqt_exec_callback_QActionGroup_ConnectNotify(self *C.QActionGroup, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QActionGroup{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -407,6 +421,9 @@ func (this *QActionGroup) callVirtualBase_DisconnectNotify(signal *QMetaMethod) 
 
 }
 func (this *QActionGroup) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QActionGroup_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -418,7 +435,7 @@ func miqt_exec_callback_QActionGroup_DisconnectNotify(self *C.QActionGroup, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QActionGroup{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

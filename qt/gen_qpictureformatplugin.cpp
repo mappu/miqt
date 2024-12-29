@@ -11,6 +11,10 @@
 #include <QTimerEvent>
 #include <qpictureformatplugin.h>
 #include "gen_qpictureformatplugin.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQPictureFormatPlugin : public virtual QPictureFormatPlugin {
@@ -301,16 +305,16 @@ public:
 
 };
 
-void QPictureFormatPlugin_new(QPictureFormatPlugin** outptr_QPictureFormatPlugin, QObject** outptr_QObject) {
-	MiqtVirtualQPictureFormatPlugin* ret = new MiqtVirtualQPictureFormatPlugin();
-	*outptr_QPictureFormatPlugin = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QPictureFormatPlugin* QPictureFormatPlugin_new() {
+	return new MiqtVirtualQPictureFormatPlugin();
 }
 
-void QPictureFormatPlugin_new2(QObject* parent, QPictureFormatPlugin** outptr_QPictureFormatPlugin, QObject** outptr_QObject) {
-	MiqtVirtualQPictureFormatPlugin* ret = new MiqtVirtualQPictureFormatPlugin(parent);
-	*outptr_QPictureFormatPlugin = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QPictureFormatPlugin* QPictureFormatPlugin_new2(QObject* parent) {
+	return new MiqtVirtualQPictureFormatPlugin(parent);
+}
+
+void QPictureFormatPlugin_virtbase(QPictureFormatPlugin* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QPictureFormatPlugin_MetaObject(const QPictureFormatPlugin* self) {

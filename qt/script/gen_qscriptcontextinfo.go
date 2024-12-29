@@ -46,44 +46,35 @@ func newQScriptContextInfo(h *C.QScriptContextInfo) *QScriptContextInfo {
 	if h == nil {
 		return nil
 	}
+
 	return &QScriptContextInfo{h: h}
 }
 
 // UnsafeNewQScriptContextInfo constructs the type using only unsafe pointers.
 func UnsafeNewQScriptContextInfo(h unsafe.Pointer) *QScriptContextInfo {
-	if h == nil {
-		return nil
-	}
-
-	return &QScriptContextInfo{h: (*C.QScriptContextInfo)(h)}
+	return newQScriptContextInfo((*C.QScriptContextInfo)(h))
 }
 
 // NewQScriptContextInfo constructs a new QScriptContextInfo object.
 func NewQScriptContextInfo(context *QScriptContext) *QScriptContextInfo {
-	var outptr_QScriptContextInfo *C.QScriptContextInfo = nil
 
-	C.QScriptContextInfo_new(context.cPointer(), &outptr_QScriptContextInfo)
-	ret := newQScriptContextInfo(outptr_QScriptContextInfo)
+	ret := newQScriptContextInfo(C.QScriptContextInfo_new(context.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScriptContextInfo2 constructs a new QScriptContextInfo object.
 func NewQScriptContextInfo2(other *QScriptContextInfo) *QScriptContextInfo {
-	var outptr_QScriptContextInfo *C.QScriptContextInfo = nil
 
-	C.QScriptContextInfo_new2(other.cPointer(), &outptr_QScriptContextInfo)
-	ret := newQScriptContextInfo(outptr_QScriptContextInfo)
+	ret := newQScriptContextInfo(C.QScriptContextInfo_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScriptContextInfo3 constructs a new QScriptContextInfo object.
 func NewQScriptContextInfo3() *QScriptContextInfo {
-	var outptr_QScriptContextInfo *C.QScriptContextInfo = nil
 
-	C.QScriptContextInfo_new3(&outptr_QScriptContextInfo)
-	ret := newQScriptContextInfo(outptr_QScriptContextInfo)
+	ret := newQScriptContextInfo(C.QScriptContextInfo_new3())
 	ret.isSubclass = true
 	return ret
 }

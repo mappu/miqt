@@ -7,11 +7,14 @@
 #include <cstring>
 #include <qcommandlineparser.h>
 #include "gen_qcommandlineparser.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QCommandLineParser_new(QCommandLineParser** outptr_QCommandLineParser) {
-	QCommandLineParser* ret = new QCommandLineParser();
-	*outptr_QCommandLineParser = ret;
+QCommandLineParser* QCommandLineParser_new() {
+	return new QCommandLineParser();
 }
 
 struct miqt_string QCommandLineParser_Tr(const char* sourceText) {

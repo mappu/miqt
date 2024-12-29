@@ -44,14 +44,15 @@ typedef struct QSize QSize;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QMovie_new(QMovie** outptr_QMovie, QObject** outptr_QObject);
-void QMovie_new2(QIODevice* device, QMovie** outptr_QMovie, QObject** outptr_QObject);
-void QMovie_new3(struct miqt_string fileName, QMovie** outptr_QMovie, QObject** outptr_QObject);
-void QMovie_new4(QObject* parent, QMovie** outptr_QMovie, QObject** outptr_QObject);
-void QMovie_new5(QIODevice* device, struct miqt_string format, QMovie** outptr_QMovie, QObject** outptr_QObject);
-void QMovie_new6(QIODevice* device, struct miqt_string format, QObject* parent, QMovie** outptr_QMovie, QObject** outptr_QObject);
-void QMovie_new7(struct miqt_string fileName, struct miqt_string format, QMovie** outptr_QMovie, QObject** outptr_QObject);
-void QMovie_new8(struct miqt_string fileName, struct miqt_string format, QObject* parent, QMovie** outptr_QMovie, QObject** outptr_QObject);
+QMovie* QMovie_new();
+QMovie* QMovie_new2(QIODevice* device);
+QMovie* QMovie_new3(struct miqt_string fileName);
+QMovie* QMovie_new4(QObject* parent);
+QMovie* QMovie_new5(QIODevice* device, struct miqt_string format);
+QMovie* QMovie_new6(QIODevice* device, struct miqt_string format, QObject* parent);
+QMovie* QMovie_new7(struct miqt_string fileName, struct miqt_string format);
+QMovie* QMovie_new8(struct miqt_string fileName, struct miqt_string format, QObject* parent);
+void QMovie_virtbase(QMovie* src, QObject** outptr_QObject);
 QMetaObject* QMovie_MetaObject(const QMovie* self);
 void* QMovie_Metacast(QMovie* self, const char* param1);
 struct miqt_string QMovie_Tr(const char* s);

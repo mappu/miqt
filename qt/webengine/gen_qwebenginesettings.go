@@ -101,24 +101,21 @@ func newQWebEngineSettings(h *C.QWebEngineSettings) *QWebEngineSettings {
 	if h == nil {
 		return nil
 	}
+
 	return &QWebEngineSettings{h: h}
 }
 
 // UnsafeNewQWebEngineSettings constructs the type using only unsafe pointers.
 func UnsafeNewQWebEngineSettings(h unsafe.Pointer) *QWebEngineSettings {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineSettings{h: (*C.QWebEngineSettings)(h)}
+	return newQWebEngineSettings((*C.QWebEngineSettings)(h))
 }
 
 func QWebEngineSettings_GlobalSettings() *QWebEngineSettings {
-	return UnsafeNewQWebEngineSettings(unsafe.Pointer(C.QWebEngineSettings_GlobalSettings()))
+	return newQWebEngineSettings(C.QWebEngineSettings_GlobalSettings())
 }
 
 func QWebEngineSettings_DefaultSettings() *QWebEngineSettings {
-	return UnsafeNewQWebEngineSettings(unsafe.Pointer(C.QWebEngineSettings_DefaultSettings()))
+	return newQWebEngineSettings(C.QWebEngineSettings_DefaultSettings())
 }
 
 func (this *QWebEngineSettings) SetFontFamily(which QWebEngineSettings__FontFamily, family string) {

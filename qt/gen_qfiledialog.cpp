@@ -23,6 +23,10 @@
 #include <QWidget>
 #include <qfiledialog.h>
 #include "gen_qfiledialog.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQFileDialog : public virtual QFileDialog {
@@ -390,64 +394,38 @@ public:
 
 };
 
-void QFileDialog_new(QWidget* parent, QFileDialog** outptr_QFileDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQFileDialog* ret = new MiqtVirtualQFileDialog(parent);
-	*outptr_QFileDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QFileDialog* QFileDialog_new(QWidget* parent) {
+	return new MiqtVirtualQFileDialog(parent);
 }
 
-void QFileDialog_new2(QWidget* parent, int f, QFileDialog** outptr_QFileDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQFileDialog* ret = new MiqtVirtualQFileDialog(parent, static_cast<Qt::WindowFlags>(f));
-	*outptr_QFileDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QFileDialog* QFileDialog_new2(QWidget* parent, int f) {
+	return new MiqtVirtualQFileDialog(parent, static_cast<Qt::WindowFlags>(f));
 }
 
-void QFileDialog_new3(QFileDialog** outptr_QFileDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQFileDialog* ret = new MiqtVirtualQFileDialog();
-	*outptr_QFileDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QFileDialog* QFileDialog_new3() {
+	return new MiqtVirtualQFileDialog();
 }
 
-void QFileDialog_new4(QWidget* parent, struct miqt_string caption, QFileDialog** outptr_QFileDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QFileDialog* QFileDialog_new4(QWidget* parent, struct miqt_string caption) {
 	QString caption_QString = QString::fromUtf8(caption.data, caption.len);
-	MiqtVirtualQFileDialog* ret = new MiqtVirtualQFileDialog(parent, caption_QString);
-	*outptr_QFileDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQFileDialog(parent, caption_QString);
 }
 
-void QFileDialog_new5(QWidget* parent, struct miqt_string caption, struct miqt_string directory, QFileDialog** outptr_QFileDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QFileDialog* QFileDialog_new5(QWidget* parent, struct miqt_string caption, struct miqt_string directory) {
 	QString caption_QString = QString::fromUtf8(caption.data, caption.len);
 	QString directory_QString = QString::fromUtf8(directory.data, directory.len);
-	MiqtVirtualQFileDialog* ret = new MiqtVirtualQFileDialog(parent, caption_QString, directory_QString);
-	*outptr_QFileDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQFileDialog(parent, caption_QString, directory_QString);
 }
 
-void QFileDialog_new6(QWidget* parent, struct miqt_string caption, struct miqt_string directory, struct miqt_string filter, QFileDialog** outptr_QFileDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QFileDialog* QFileDialog_new6(QWidget* parent, struct miqt_string caption, struct miqt_string directory, struct miqt_string filter) {
 	QString caption_QString = QString::fromUtf8(caption.data, caption.len);
 	QString directory_QString = QString::fromUtf8(directory.data, directory.len);
 	QString filter_QString = QString::fromUtf8(filter.data, filter.len);
-	MiqtVirtualQFileDialog* ret = new MiqtVirtualQFileDialog(parent, caption_QString, directory_QString, filter_QString);
-	*outptr_QFileDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQFileDialog(parent, caption_QString, directory_QString, filter_QString);
+}
+
+void QFileDialog_virtbase(QFileDialog* src, QDialog** outptr_QDialog) {
+	*outptr_QDialog = static_cast<QDialog*>(src);
 }
 
 QMetaObject* QFileDialog_MetaObject(const QFileDialog* self) {

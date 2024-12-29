@@ -35,6 +35,10 @@
 #include <QWidget>
 #include <qprogressbar.h>
 #include "gen_qprogressbar.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQProgressBar : public virtual QProgressBar {
@@ -1077,20 +1081,16 @@ public:
 
 };
 
-void QProgressBar_new(QWidget* parent, QProgressBar** outptr_QProgressBar, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQProgressBar* ret = new MiqtVirtualQProgressBar(parent);
-	*outptr_QProgressBar = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QProgressBar* QProgressBar_new(QWidget* parent) {
+	return new MiqtVirtualQProgressBar(parent);
 }
 
-void QProgressBar_new2(QProgressBar** outptr_QProgressBar, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQProgressBar* ret = new MiqtVirtualQProgressBar();
-	*outptr_QProgressBar = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QProgressBar* QProgressBar_new2() {
+	return new MiqtVirtualQProgressBar();
+}
+
+void QProgressBar_virtbase(QProgressBar* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QProgressBar_MetaObject(const QProgressBar* self) {

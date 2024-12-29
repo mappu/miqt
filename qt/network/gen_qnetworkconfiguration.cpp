@@ -5,16 +5,18 @@
 #include <cstring>
 #include <qnetworkconfiguration.h>
 #include "gen_qnetworkconfiguration.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QNetworkConfiguration_new(QNetworkConfiguration** outptr_QNetworkConfiguration) {
-	QNetworkConfiguration* ret = new QNetworkConfiguration();
-	*outptr_QNetworkConfiguration = ret;
+QNetworkConfiguration* QNetworkConfiguration_new() {
+	return new QNetworkConfiguration();
 }
 
-void QNetworkConfiguration_new2(QNetworkConfiguration* other, QNetworkConfiguration** outptr_QNetworkConfiguration) {
-	QNetworkConfiguration* ret = new QNetworkConfiguration(*other);
-	*outptr_QNetworkConfiguration = ret;
+QNetworkConfiguration* QNetworkConfiguration_new2(QNetworkConfiguration* other) {
+	return new QNetworkConfiguration(*other);
 }
 
 void QNetworkConfiguration_OperatorAssign(QNetworkConfiguration* self, QNetworkConfiguration* other) {

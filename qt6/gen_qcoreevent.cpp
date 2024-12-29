@@ -6,6 +6,10 @@
 #include <QTimerEvent>
 #include <qcoreevent.h>
 #include "gen_qcoreevent.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQEvent : public virtual QEvent {
@@ -63,9 +67,8 @@ public:
 
 };
 
-void QEvent_new(int typeVal, QEvent** outptr_QEvent) {
-	MiqtVirtualQEvent* ret = new MiqtVirtualQEvent(static_cast<QEvent::Type>(typeVal));
-	*outptr_QEvent = ret;
+QEvent* QEvent_new(int typeVal) {
+	return new MiqtVirtualQEvent(static_cast<QEvent::Type>(typeVal));
 }
 
 int QEvent_Type(const QEvent* self) {
@@ -196,10 +199,12 @@ public:
 
 };
 
-void QTimerEvent_new(int timerId, QTimerEvent** outptr_QTimerEvent, QEvent** outptr_QEvent) {
-	MiqtVirtualQTimerEvent* ret = new MiqtVirtualQTimerEvent(static_cast<int>(timerId));
-	*outptr_QTimerEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QTimerEvent* QTimerEvent_new(int timerId) {
+	return new MiqtVirtualQTimerEvent(static_cast<int>(timerId));
+}
+
+void QTimerEvent_virtbase(QTimerEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 QTimerEvent* QTimerEvent_Clone(const QTimerEvent* self) {
@@ -289,10 +294,12 @@ public:
 
 };
 
-void QChildEvent_new(int typeVal, QObject* child, QChildEvent** outptr_QChildEvent, QEvent** outptr_QEvent) {
-	MiqtVirtualQChildEvent* ret = new MiqtVirtualQChildEvent(static_cast<QEvent::Type>(typeVal), child);
-	*outptr_QChildEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QChildEvent* QChildEvent_new(int typeVal, QObject* child) {
+	return new MiqtVirtualQChildEvent(static_cast<QEvent::Type>(typeVal), child);
+}
+
+void QChildEvent_virtbase(QChildEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 QChildEvent* QChildEvent_Clone(const QChildEvent* self) {
@@ -394,11 +401,13 @@ public:
 
 };
 
-void QDynamicPropertyChangeEvent_new(struct miqt_string name, QDynamicPropertyChangeEvent** outptr_QDynamicPropertyChangeEvent, QEvent** outptr_QEvent) {
+QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_new(struct miqt_string name) {
 	QByteArray name_QByteArray(name.data, name.len);
-	MiqtVirtualQDynamicPropertyChangeEvent* ret = new MiqtVirtualQDynamicPropertyChangeEvent(name_QByteArray);
-	*outptr_QDynamicPropertyChangeEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+	return new MiqtVirtualQDynamicPropertyChangeEvent(name_QByteArray);
+}
+
+void QDynamicPropertyChangeEvent_virtbase(QDynamicPropertyChangeEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_Clone(const QDynamicPropertyChangeEvent* self) {

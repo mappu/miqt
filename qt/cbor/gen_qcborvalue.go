@@ -78,16 +78,13 @@ func newQCborParserError(h *C.QCborParserError) *QCborParserError {
 	if h == nil {
 		return nil
 	}
+
 	return &QCborParserError{h: h}
 }
 
 // UnsafeNewQCborParserError constructs the type using only unsafe pointers.
 func UnsafeNewQCborParserError(h unsafe.Pointer) *QCborParserError {
-	if h == nil {
-		return nil
-	}
-
-	return &QCborParserError{h: (*C.QCborParserError)(h)}
+	return newQCborParserError((*C.QCborParserError)(h))
 }
 
 func (this *QCborParserError) ErrorString() string {
@@ -135,94 +132,75 @@ func newQCborValue(h *C.QCborValue) *QCborValue {
 	if h == nil {
 		return nil
 	}
+
 	return &QCborValue{h: h}
 }
 
 // UnsafeNewQCborValue constructs the type using only unsafe pointers.
 func UnsafeNewQCborValue(h unsafe.Pointer) *QCborValue {
-	if h == nil {
-		return nil
-	}
-
-	return &QCborValue{h: (*C.QCborValue)(h)}
+	return newQCborValue((*C.QCborValue)(h))
 }
 
 // NewQCborValue constructs a new QCborValue object.
 func NewQCborValue() *QCborValue {
-	var outptr_QCborValue *C.QCborValue = nil
 
-	C.QCborValue_new(&outptr_QCborValue)
-	ret := newQCborValue(outptr_QCborValue)
+	ret := newQCborValue(C.QCborValue_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCborValue2 constructs a new QCborValue object.
 func NewQCborValue2(t_ QCborValue__Type) *QCborValue {
-	var outptr_QCborValue *C.QCborValue = nil
 
-	C.QCborValue_new2((C.int)(t_), &outptr_QCborValue)
-	ret := newQCborValue(outptr_QCborValue)
+	ret := newQCborValue(C.QCborValue_new2((C.int)(t_)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCborValue3 constructs a new QCborValue object.
 func NewQCborValue3(b_ bool) *QCborValue {
-	var outptr_QCborValue *C.QCborValue = nil
 
-	C.QCborValue_new3((C.bool)(b_), &outptr_QCborValue)
-	ret := newQCborValue(outptr_QCborValue)
+	ret := newQCborValue(C.QCborValue_new3((C.bool)(b_)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCborValue4 constructs a new QCborValue object.
 func NewQCborValue4(i int) *QCborValue {
-	var outptr_QCborValue *C.QCborValue = nil
 
-	C.QCborValue_new4((C.int)(i), &outptr_QCborValue)
-	ret := newQCborValue(outptr_QCborValue)
+	ret := newQCborValue(C.QCborValue_new4((C.int)(i)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCborValue5 constructs a new QCborValue object.
 func NewQCborValue5(u uint) *QCborValue {
-	var outptr_QCborValue *C.QCborValue = nil
 
-	C.QCborValue_new5((C.uint)(u), &outptr_QCborValue)
-	ret := newQCborValue(outptr_QCborValue)
+	ret := newQCborValue(C.QCborValue_new5((C.uint)(u)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCborValue6 constructs a new QCborValue object.
 func NewQCborValue6(i int64) *QCborValue {
-	var outptr_QCborValue *C.QCborValue = nil
 
-	C.QCborValue_new6((C.longlong)(i), &outptr_QCborValue)
-	ret := newQCborValue(outptr_QCborValue)
+	ret := newQCborValue(C.QCborValue_new6((C.longlong)(i)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCborValue7 constructs a new QCborValue object.
 func NewQCborValue7(v float64) *QCborValue {
-	var outptr_QCborValue *C.QCborValue = nil
 
-	C.QCborValue_new7((C.double)(v), &outptr_QCborValue)
-	ret := newQCborValue(outptr_QCborValue)
+	ret := newQCborValue(C.QCborValue_new7((C.double)(v)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCborValue8 constructs a new QCborValue object.
 func NewQCborValue8(st QCborSimpleType) *QCborValue {
-	var outptr_QCborValue *C.QCborValue = nil
 
-	C.QCborValue_new8((C.uint8_t)(st), &outptr_QCborValue)
-	ret := newQCborValue(outptr_QCborValue)
+	ret := newQCborValue(C.QCborValue_new8((C.uint8_t)(st)))
 	ret.isSubclass = true
 	return ret
 }
@@ -232,10 +210,8 @@ func NewQCborValue9(ba []byte) *QCborValue {
 	ba_alias := C.struct_miqt_string{}
 	ba_alias.data = (*C.char)(unsafe.Pointer(&ba[0]))
 	ba_alias.len = C.size_t(len(ba))
-	var outptr_QCborValue *C.QCborValue = nil
 
-	C.QCborValue_new9(ba_alias, &outptr_QCborValue)
-	ret := newQCborValue(outptr_QCborValue)
+	ret := newQCborValue(C.QCborValue_new9(ba_alias))
 	ret.isSubclass = true
 	return ret
 }
@@ -246,10 +222,8 @@ func NewQCborValue10(s string) *QCborValue {
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
 	defer C.free(unsafe.Pointer(s_ms.data))
-	var outptr_QCborValue *C.QCborValue = nil
 
-	C.QCborValue_new10(s_ms, &outptr_QCborValue)
-	ret := newQCborValue(outptr_QCborValue)
+	ret := newQCborValue(C.QCborValue_new10(s_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -258,120 +232,96 @@ func NewQCborValue10(s string) *QCborValue {
 func NewQCborValue11(s string) *QCborValue {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var outptr_QCborValue *C.QCborValue = nil
 
-	C.QCborValue_new11(s_Cstring, &outptr_QCborValue)
-	ret := newQCborValue(outptr_QCborValue)
+	ret := newQCborValue(C.QCborValue_new11(s_Cstring))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCborValue12 constructs a new QCborValue object.
 func NewQCborValue12(a *QCborArray) *QCborValue {
-	var outptr_QCborValue *C.QCborValue = nil
 
-	C.QCborValue_new12(a.cPointer(), &outptr_QCborValue)
-	ret := newQCborValue(outptr_QCborValue)
+	ret := newQCborValue(C.QCborValue_new12(a.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCborValue13 constructs a new QCborValue object.
 func NewQCborValue13(m *QCborMap) *QCborValue {
-	var outptr_QCborValue *C.QCborValue = nil
 
-	C.QCborValue_new13(m.cPointer(), &outptr_QCborValue)
-	ret := newQCborValue(outptr_QCborValue)
+	ret := newQCborValue(C.QCborValue_new13(m.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCborValue14 constructs a new QCborValue object.
 func NewQCborValue14(tag QCborTag) *QCborValue {
-	var outptr_QCborValue *C.QCborValue = nil
 
-	C.QCborValue_new14((C.uint64_t)(tag), &outptr_QCborValue)
-	ret := newQCborValue(outptr_QCborValue)
+	ret := newQCborValue(C.QCborValue_new14((C.uint64_t)(tag)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCborValue15 constructs a new QCborValue object.
 func NewQCborValue15(t_ QCborKnownTags) *QCborValue {
-	var outptr_QCborValue *C.QCborValue = nil
 
-	C.QCborValue_new15((C.int)(t_), &outptr_QCborValue)
-	ret := newQCborValue(outptr_QCborValue)
+	ret := newQCborValue(C.QCborValue_new15((C.int)(t_)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCborValue16 constructs a new QCborValue object.
 func NewQCborValue16(dt *qt.QDateTime) *QCborValue {
-	var outptr_QCborValue *C.QCborValue = nil
 
-	C.QCborValue_new16((*C.QDateTime)(dt.UnsafePointer()), &outptr_QCborValue)
-	ret := newQCborValue(outptr_QCborValue)
+	ret := newQCborValue(C.QCborValue_new16((*C.QDateTime)(dt.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCborValue17 constructs a new QCborValue object.
 func NewQCborValue17(url *qt.QUrl) *QCborValue {
-	var outptr_QCborValue *C.QCborValue = nil
 
-	C.QCborValue_new17((*C.QUrl)(url.UnsafePointer()), &outptr_QCborValue)
-	ret := newQCborValue(outptr_QCborValue)
+	ret := newQCborValue(C.QCborValue_new17((*C.QUrl)(url.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCborValue18 constructs a new QCborValue object.
 func NewQCborValue18(rx *qt.QRegularExpression) *QCborValue {
-	var outptr_QCborValue *C.QCborValue = nil
 
-	C.QCborValue_new18((*C.QRegularExpression)(rx.UnsafePointer()), &outptr_QCborValue)
-	ret := newQCborValue(outptr_QCborValue)
+	ret := newQCborValue(C.QCborValue_new18((*C.QRegularExpression)(rx.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCborValue19 constructs a new QCborValue object.
 func NewQCborValue19(uuid *qt.QUuid) *QCborValue {
-	var outptr_QCborValue *C.QCborValue = nil
 
-	C.QCborValue_new19((*C.QUuid)(uuid.UnsafePointer()), &outptr_QCborValue)
-	ret := newQCborValue(outptr_QCborValue)
+	ret := newQCborValue(C.QCborValue_new19((*C.QUuid)(uuid.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCborValue20 constructs a new QCborValue object.
 func NewQCborValue20(other *QCborValue) *QCborValue {
-	var outptr_QCborValue *C.QCborValue = nil
 
-	C.QCborValue_new20(other.cPointer(), &outptr_QCborValue)
-	ret := newQCborValue(outptr_QCborValue)
+	ret := newQCborValue(C.QCborValue_new20(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCborValue21 constructs a new QCborValue object.
 func NewQCborValue21(tag QCborTag, taggedValue *QCborValue) *QCborValue {
-	var outptr_QCborValue *C.QCborValue = nil
 
-	C.QCborValue_new21((C.uint64_t)(tag), taggedValue.cPointer(), &outptr_QCborValue)
-	ret := newQCborValue(outptr_QCborValue)
+	ret := newQCborValue(C.QCborValue_new21((C.uint64_t)(tag), taggedValue.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCborValue22 constructs a new QCborValue object.
 func NewQCborValue22(t_ QCborKnownTags, tv *QCborValue) *QCborValue {
-	var outptr_QCborValue *C.QCborValue = nil
 
-	C.QCborValue_new22((C.int)(t_), tv.cPointer(), &outptr_QCborValue)
-	ret := newQCborValue(outptr_QCborValue)
+	ret := newQCborValue(C.QCborValue_new22((C.int)(t_), tv.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -489,8 +439,7 @@ func (this *QCborValue) Tag() QCborTag {
 }
 
 func (this *QCborValue) TaggedValue() *QCborValue {
-	_ret := C.QCborValue_TaggedValue(this.h)
-	_goptr := newQCborValue(_ret)
+	_goptr := newQCborValue(C.QCborValue_TaggedValue(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -510,57 +459,49 @@ func (this *QCborValue) ToString() string {
 }
 
 func (this *QCborValue) ToDateTime() *qt.QDateTime {
-	_ret := C.QCborValue_ToDateTime(this.h)
-	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(C.QCborValue_ToDateTime(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValue) ToUrl() *qt.QUrl {
-	_ret := C.QCborValue_ToUrl(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QCborValue_ToUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValue) ToRegularExpression() *qt.QRegularExpression {
-	_ret := C.QCborValue_ToRegularExpression(this.h)
-	_goptr := qt.UnsafeNewQRegularExpression(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQRegularExpression(unsafe.Pointer(C.QCborValue_ToRegularExpression(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValue) ToUuid() *qt.QUuid {
-	_ret := C.QCborValue_ToUuid(this.h)
-	_goptr := qt.UnsafeNewQUuid(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUuid(unsafe.Pointer(C.QCborValue_ToUuid(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValue) ToArray() *QCborArray {
-	_ret := C.QCborValue_ToArray(this.h)
-	_goptr := newQCborArray(_ret)
+	_goptr := newQCborArray(C.QCborValue_ToArray(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValue) ToArrayWithDefaultValue(defaultValue *QCborArray) *QCborArray {
-	_ret := C.QCborValue_ToArrayWithDefaultValue(this.h, defaultValue.cPointer())
-	_goptr := newQCborArray(_ret)
+	_goptr := newQCborArray(C.QCborValue_ToArrayWithDefaultValue(this.h, defaultValue.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValue) ToMap() *QCborMap {
-	_ret := C.QCborValue_ToMap(this.h)
-	_goptr := newQCborMap(_ret)
+	_goptr := newQCborMap(C.QCborValue_ToMap(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValue) ToMapWithDefaultValue(defaultValue *QCborMap) *QCborMap {
-	_ret := C.QCborValue_ToMapWithDefaultValue(this.h, defaultValue.cPointer())
-	_goptr := newQCborMap(_ret)
+	_goptr := newQCborMap(C.QCborValue_ToMapWithDefaultValue(this.h, defaultValue.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -570,22 +511,19 @@ func (this *QCborValue) OperatorSubscript(key string) *QCborValue {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	_ret := C.QCborValue_OperatorSubscript(this.h, key_ms)
-	_goptr := newQCborValue(_ret)
+	_goptr := newQCborValue(C.QCborValue_OperatorSubscript(this.h, key_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValue) OperatorSubscript2(key int64) *QCborValue {
-	_ret := C.QCborValue_OperatorSubscript2(this.h, (C.longlong)(key))
-	_goptr := newQCborValue(_ret)
+	_goptr := newQCborValue(C.QCborValue_OperatorSubscript2(this.h, (C.longlong)(key)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValue) OperatorSubscript3(key int64) *QCborValueRef {
-	_ret := C.QCborValue_OperatorSubscript3(this.h, (C.longlong)(key))
-	_goptr := newQCborValueRef(_ret)
+	_goptr := newQCborValueRef(C.QCborValue_OperatorSubscript3(this.h, (C.longlong)(key)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -595,8 +533,7 @@ func (this *QCborValue) OperatorSubscript5(key string) *QCborValueRef {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	_ret := C.QCborValue_OperatorSubscript5(this.h, key_ms)
-	_goptr := newQCborValueRef(_ret)
+	_goptr := newQCborValueRef(C.QCborValue_OperatorSubscript5(this.h, key_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -618,36 +555,31 @@ func (this *QCborValue) OperatorLesser(other *QCborValue) bool {
 }
 
 func QCborValue_FromVariant(variant *qt.QVariant) *QCborValue {
-	_ret := C.QCborValue_FromVariant((*C.QVariant)(variant.UnsafePointer()))
-	_goptr := newQCborValue(_ret)
+	_goptr := newQCborValue(C.QCborValue_FromVariant((*C.QVariant)(variant.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValue) ToVariant() *qt.QVariant {
-	_ret := C.QCborValue_ToVariant(this.h)
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QCborValue_ToVariant(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QCborValue_FromJsonValue(v *qt.QJsonValue) *QCborValue {
-	_ret := C.QCborValue_FromJsonValue((*C.QJsonValue)(v.UnsafePointer()))
-	_goptr := newQCborValue(_ret)
+	_goptr := newQCborValue(C.QCborValue_FromJsonValue((*C.QJsonValue)(v.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValue) ToJsonValue() *qt.QJsonValue {
-	_ret := C.QCborValue_ToJsonValue(this.h)
-	_goptr := qt.UnsafeNewQJsonValue(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQJsonValue(unsafe.Pointer(C.QCborValue_ToJsonValue(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QCborValue_FromCbor(reader *QCborStreamReader) *QCborValue {
-	_ret := C.QCborValue_FromCbor(reader.cPointer())
-	_goptr := newQCborValue(_ret)
+	_goptr := newQCborValue(C.QCborValue_FromCbor(reader.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -656,8 +588,7 @@ func QCborValue_FromCborWithBa(ba []byte) *QCborValue {
 	ba_alias := C.struct_miqt_string{}
 	ba_alias.data = (*C.char)(unsafe.Pointer(&ba[0]))
 	ba_alias.len = C.size_t(len(ba))
-	_ret := C.QCborValue_FromCborWithBa(ba_alias)
-	_goptr := newQCborValue(_ret)
+	_goptr := newQCborValue(C.QCborValue_FromCborWithBa(ba_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -665,15 +596,13 @@ func QCborValue_FromCborWithBa(ba []byte) *QCborValue {
 func QCborValue_FromCbor2(data string, lenVal int64) *QCborValue {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	_ret := C.QCborValue_FromCbor2(data_Cstring, (C.ptrdiff_t)(lenVal))
-	_goptr := newQCborValue(_ret)
+	_goptr := newQCborValue(C.QCborValue_FromCbor2(data_Cstring, (C.ptrdiff_t)(lenVal)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QCborValue_FromCbor3(data *byte, lenVal int64) *QCborValue {
-	_ret := C.QCborValue_FromCbor3((*C.uchar)(unsafe.Pointer(data)), (C.ptrdiff_t)(lenVal))
-	_goptr := newQCborValue(_ret)
+	_goptr := newQCborValue(C.QCborValue_FromCbor3((*C.uchar)(unsafe.Pointer(data)), (C.ptrdiff_t)(lenVal)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -717,8 +646,7 @@ func (this *QCborValue) Tag1(defaultValue QCborTag) QCborTag {
 }
 
 func (this *QCborValue) TaggedValue1(defaultValue *QCborValue) *QCborValue {
-	_ret := C.QCborValue_TaggedValue1(this.h, defaultValue.cPointer())
-	_goptr := newQCborValue(_ret)
+	_goptr := newQCborValue(C.QCborValue_TaggedValue1(this.h, defaultValue.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -745,29 +673,25 @@ func (this *QCborValue) ToString1(defaultValue string) string {
 }
 
 func (this *QCborValue) ToDateTime1(defaultValue *qt.QDateTime) *qt.QDateTime {
-	_ret := C.QCborValue_ToDateTime1(this.h, (*C.QDateTime)(defaultValue.UnsafePointer()))
-	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(C.QCborValue_ToDateTime1(this.h, (*C.QDateTime)(defaultValue.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValue) ToUrl1(defaultValue *qt.QUrl) *qt.QUrl {
-	_ret := C.QCborValue_ToUrl1(this.h, (*C.QUrl)(defaultValue.UnsafePointer()))
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QCborValue_ToUrl1(this.h, (*C.QUrl)(defaultValue.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValue) ToRegularExpression1(defaultValue *qt.QRegularExpression) *qt.QRegularExpression {
-	_ret := C.QCborValue_ToRegularExpression1(this.h, (*C.QRegularExpression)(defaultValue.UnsafePointer()))
-	_goptr := qt.UnsafeNewQRegularExpression(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQRegularExpression(unsafe.Pointer(C.QCborValue_ToRegularExpression1(this.h, (*C.QRegularExpression)(defaultValue.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValue) ToUuid1(defaultValue *qt.QUuid) *qt.QUuid {
-	_ret := C.QCborValue_ToUuid1(this.h, (*C.QUuid)(defaultValue.UnsafePointer()))
-	_goptr := qt.UnsafeNewQUuid(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUuid(unsafe.Pointer(C.QCborValue_ToUuid1(this.h, (*C.QUuid)(defaultValue.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -776,8 +700,7 @@ func QCborValue_FromCbor22(ba []byte, error *QCborParserError) *QCborValue {
 	ba_alias := C.struct_miqt_string{}
 	ba_alias.data = (*C.char)(unsafe.Pointer(&ba[0]))
 	ba_alias.len = C.size_t(len(ba))
-	_ret := C.QCborValue_FromCbor22(ba_alias, error.cPointer())
-	_goptr := newQCborValue(_ret)
+	_goptr := newQCborValue(C.QCborValue_FromCbor22(ba_alias, error.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -785,15 +708,13 @@ func QCborValue_FromCbor22(ba []byte, error *QCborParserError) *QCborValue {
 func QCborValue_FromCbor32(data string, lenVal int64, error *QCborParserError) *QCborValue {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	_ret := C.QCborValue_FromCbor32(data_Cstring, (C.ptrdiff_t)(lenVal), error.cPointer())
-	_goptr := newQCborValue(_ret)
+	_goptr := newQCborValue(C.QCborValue_FromCbor32(data_Cstring, (C.ptrdiff_t)(lenVal), error.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QCborValue_FromCbor33(data *byte, lenVal int64, error *QCborParserError) *QCborValue {
-	_ret := C.QCborValue_FromCbor33((*C.uchar)(unsafe.Pointer(data)), (C.ptrdiff_t)(lenVal), error.cPointer())
-	_goptr := newQCborValue(_ret)
+	_goptr := newQCborValue(C.QCborValue_FromCbor33((*C.uchar)(unsafe.Pointer(data)), (C.ptrdiff_t)(lenVal), error.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -854,24 +775,19 @@ func newQCborValueRef(h *C.QCborValueRef) *QCborValueRef {
 	if h == nil {
 		return nil
 	}
+
 	return &QCborValueRef{h: h}
 }
 
 // UnsafeNewQCborValueRef constructs the type using only unsafe pointers.
 func UnsafeNewQCborValueRef(h unsafe.Pointer) *QCborValueRef {
-	if h == nil {
-		return nil
-	}
-
-	return &QCborValueRef{h: (*C.QCborValueRef)(h)}
+	return newQCborValueRef((*C.QCborValueRef)(h))
 }
 
 // NewQCborValueRef constructs a new QCborValueRef object.
 func NewQCborValueRef(param1 *QCborValueRef) *QCborValueRef {
-	var outptr_QCborValueRef *C.QCborValueRef = nil
 
-	C.QCborValueRef_new(param1.cPointer(), &outptr_QCborValueRef)
-	ret := newQCborValueRef(outptr_QCborValueRef)
+	ret := newQCborValueRef(C.QCborValueRef_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -973,8 +889,7 @@ func (this *QCborValueRef) Tag() QCborTag {
 }
 
 func (this *QCborValueRef) TaggedValue() *QCborValue {
-	_ret := C.QCborValueRef_TaggedValue(this.h)
-	_goptr := newQCborValue(_ret)
+	_goptr := newQCborValue(C.QCborValueRef_TaggedValue(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1006,57 +921,49 @@ func (this *QCborValueRef) ToString() string {
 }
 
 func (this *QCborValueRef) ToDateTime() *qt.QDateTime {
-	_ret := C.QCborValueRef_ToDateTime(this.h)
-	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(C.QCborValueRef_ToDateTime(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValueRef) ToUrl() *qt.QUrl {
-	_ret := C.QCborValueRef_ToUrl(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QCborValueRef_ToUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValueRef) ToRegularExpression() *qt.QRegularExpression {
-	_ret := C.QCborValueRef_ToRegularExpression(this.h)
-	_goptr := qt.UnsafeNewQRegularExpression(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQRegularExpression(unsafe.Pointer(C.QCborValueRef_ToRegularExpression(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValueRef) ToUuid() *qt.QUuid {
-	_ret := C.QCborValueRef_ToUuid(this.h)
-	_goptr := qt.UnsafeNewQUuid(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUuid(unsafe.Pointer(C.QCborValueRef_ToUuid(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValueRef) ToArray() *QCborArray {
-	_ret := C.QCborValueRef_ToArray(this.h)
-	_goptr := newQCborArray(_ret)
+	_goptr := newQCborArray(C.QCborValueRef_ToArray(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValueRef) ToArrayWithQCborArray(a *QCborArray) *QCborArray {
-	_ret := C.QCborValueRef_ToArrayWithQCborArray(this.h, a.cPointer())
-	_goptr := newQCborArray(_ret)
+	_goptr := newQCborArray(C.QCborValueRef_ToArrayWithQCborArray(this.h, a.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValueRef) ToMap() *QCborMap {
-	_ret := C.QCborValueRef_ToMap(this.h)
-	_goptr := newQCborMap(_ret)
+	_goptr := newQCborMap(C.QCborValueRef_ToMap(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValueRef) ToMapWithQCborMap(m *QCborMap) *QCborMap {
-	_ret := C.QCborValueRef_ToMapWithQCborMap(this.h, m.cPointer())
-	_goptr := newQCborMap(_ret)
+	_goptr := newQCborMap(C.QCborValueRef_ToMapWithQCborMap(this.h, m.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1066,22 +973,19 @@ func (this *QCborValueRef) OperatorSubscript(key string) *QCborValue {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	_ret := C.QCborValueRef_OperatorSubscript(this.h, key_ms)
-	_goptr := newQCborValue(_ret)
+	_goptr := newQCborValue(C.QCborValueRef_OperatorSubscript(this.h, key_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValueRef) OperatorSubscript2(key int64) *QCborValue {
-	_ret := C.QCborValueRef_OperatorSubscript2(this.h, (C.longlong)(key))
-	_goptr := newQCborValue(_ret)
+	_goptr := newQCborValue(C.QCborValueRef_OperatorSubscript2(this.h, (C.longlong)(key)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValueRef) OperatorSubscript3(key int64) *QCborValueRef {
-	_ret := C.QCborValueRef_OperatorSubscript3(this.h, (C.longlong)(key))
-	_goptr := newQCborValueRef(_ret)
+	_goptr := newQCborValueRef(C.QCborValueRef_OperatorSubscript3(this.h, (C.longlong)(key)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1091,8 +995,7 @@ func (this *QCborValueRef) OperatorSubscript5(key string) *QCborValueRef {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	_ret := C.QCborValueRef_OperatorSubscript5(this.h, key_ms)
-	_goptr := newQCborValueRef(_ret)
+	_goptr := newQCborValueRef(C.QCborValueRef_OperatorSubscript5(this.h, key_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1114,15 +1017,13 @@ func (this *QCborValueRef) OperatorLesser(other *QCborValue) bool {
 }
 
 func (this *QCborValueRef) ToVariant() *qt.QVariant {
-	_ret := C.QCborValueRef_ToVariant(this.h)
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QCborValueRef_ToVariant(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValueRef) ToJsonValue() *qt.QJsonValue {
-	_ret := C.QCborValueRef_ToJsonValue(this.h)
-	_goptr := qt.UnsafeNewQJsonValue(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQJsonValue(unsafe.Pointer(C.QCborValueRef_ToJsonValue(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1150,8 +1051,7 @@ func (this *QCborValueRef) Tag1(defaultValue QCborTag) QCborTag {
 }
 
 func (this *QCborValueRef) TaggedValue1(defaultValue *QCborValue) *QCborValue {
-	_ret := C.QCborValueRef_TaggedValue1(this.h, defaultValue.cPointer())
-	_goptr := newQCborValue(_ret)
+	_goptr := newQCborValue(C.QCborValueRef_TaggedValue1(this.h, defaultValue.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1190,29 +1090,25 @@ func (this *QCborValueRef) ToString1(defaultValue string) string {
 }
 
 func (this *QCborValueRef) ToDateTime1(defaultValue *qt.QDateTime) *qt.QDateTime {
-	_ret := C.QCborValueRef_ToDateTime1(this.h, (*C.QDateTime)(defaultValue.UnsafePointer()))
-	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(C.QCborValueRef_ToDateTime1(this.h, (*C.QDateTime)(defaultValue.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValueRef) ToUrl1(defaultValue *qt.QUrl) *qt.QUrl {
-	_ret := C.QCborValueRef_ToUrl1(this.h, (*C.QUrl)(defaultValue.UnsafePointer()))
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QCborValueRef_ToUrl1(this.h, (*C.QUrl)(defaultValue.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValueRef) ToRegularExpression1(defaultValue *qt.QRegularExpression) *qt.QRegularExpression {
-	_ret := C.QCborValueRef_ToRegularExpression1(this.h, (*C.QRegularExpression)(defaultValue.UnsafePointer()))
-	_goptr := qt.UnsafeNewQRegularExpression(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQRegularExpression(unsafe.Pointer(C.QCborValueRef_ToRegularExpression1(this.h, (*C.QRegularExpression)(defaultValue.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborValueRef) ToUuid1(defaultValue *qt.QUuid) *qt.QUuid {
-	_ret := C.QCborValueRef_ToUuid1(this.h, (*C.QUuid)(defaultValue.UnsafePointer()))
-	_goptr := qt.UnsafeNewQUuid(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUuid(unsafe.Pointer(C.QCborValueRef_ToUuid1(this.h, (*C.QUuid)(defaultValue.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -32,8 +32,9 @@ typedef struct QObject QObject;
 typedef struct QUrl QUrl;
 #endif
 
-void QNetworkDiskCache_new(QNetworkDiskCache** outptr_QNetworkDiskCache, QAbstractNetworkCache** outptr_QAbstractNetworkCache, QObject** outptr_QObject);
-void QNetworkDiskCache_new2(QObject* parent, QNetworkDiskCache** outptr_QNetworkDiskCache, QAbstractNetworkCache** outptr_QAbstractNetworkCache, QObject** outptr_QObject);
+QNetworkDiskCache* QNetworkDiskCache_new();
+QNetworkDiskCache* QNetworkDiskCache_new2(QObject* parent);
+void QNetworkDiskCache_virtbase(QNetworkDiskCache* src, QAbstractNetworkCache** outptr_QAbstractNetworkCache);
 QMetaObject* QNetworkDiskCache_MetaObject(const QNetworkDiskCache* self);
 void* QNetworkDiskCache_Metacast(QNetworkDiskCache* self, const char* param1);
 struct miqt_string QNetworkDiskCache_Tr(const char* s);

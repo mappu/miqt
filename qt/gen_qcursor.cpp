@@ -5,51 +5,46 @@
 #include <QScreen>
 #include <qcursor.h>
 #include "gen_qcursor.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QCursor_new(QCursor** outptr_QCursor) {
-	QCursor* ret = new QCursor();
-	*outptr_QCursor = ret;
+QCursor* QCursor_new() {
+	return new QCursor();
 }
 
-void QCursor_new2(int shape, QCursor** outptr_QCursor) {
-	QCursor* ret = new QCursor(static_cast<Qt::CursorShape>(shape));
-	*outptr_QCursor = ret;
+QCursor* QCursor_new2(int shape) {
+	return new QCursor(static_cast<Qt::CursorShape>(shape));
 }
 
-void QCursor_new3(QBitmap* bitmap, QBitmap* mask, QCursor** outptr_QCursor) {
-	QCursor* ret = new QCursor(*bitmap, *mask);
-	*outptr_QCursor = ret;
+QCursor* QCursor_new3(QBitmap* bitmap, QBitmap* mask) {
+	return new QCursor(*bitmap, *mask);
 }
 
-void QCursor_new4(QPixmap* pixmap, QCursor** outptr_QCursor) {
-	QCursor* ret = new QCursor(*pixmap);
-	*outptr_QCursor = ret;
+QCursor* QCursor_new4(QPixmap* pixmap) {
+	return new QCursor(*pixmap);
 }
 
-void QCursor_new5(QCursor* cursor, QCursor** outptr_QCursor) {
-	QCursor* ret = new QCursor(*cursor);
-	*outptr_QCursor = ret;
+QCursor* QCursor_new5(QCursor* cursor) {
+	return new QCursor(*cursor);
 }
 
-void QCursor_new6(QBitmap* bitmap, QBitmap* mask, int hotX, QCursor** outptr_QCursor) {
-	QCursor* ret = new QCursor(*bitmap, *mask, static_cast<int>(hotX));
-	*outptr_QCursor = ret;
+QCursor* QCursor_new6(QBitmap* bitmap, QBitmap* mask, int hotX) {
+	return new QCursor(*bitmap, *mask, static_cast<int>(hotX));
 }
 
-void QCursor_new7(QBitmap* bitmap, QBitmap* mask, int hotX, int hotY, QCursor** outptr_QCursor) {
-	QCursor* ret = new QCursor(*bitmap, *mask, static_cast<int>(hotX), static_cast<int>(hotY));
-	*outptr_QCursor = ret;
+QCursor* QCursor_new7(QBitmap* bitmap, QBitmap* mask, int hotX, int hotY) {
+	return new QCursor(*bitmap, *mask, static_cast<int>(hotX), static_cast<int>(hotY));
 }
 
-void QCursor_new8(QPixmap* pixmap, int hotX, QCursor** outptr_QCursor) {
-	QCursor* ret = new QCursor(*pixmap, static_cast<int>(hotX));
-	*outptr_QCursor = ret;
+QCursor* QCursor_new8(QPixmap* pixmap, int hotX) {
+	return new QCursor(*pixmap, static_cast<int>(hotX));
 }
 
-void QCursor_new9(QPixmap* pixmap, int hotX, int hotY, QCursor** outptr_QCursor) {
-	QCursor* ret = new QCursor(*pixmap, static_cast<int>(hotX), static_cast<int>(hotY));
-	*outptr_QCursor = ret;
+QCursor* QCursor_new9(QPixmap* pixmap, int hotX, int hotY) {
+	return new QCursor(*pixmap, static_cast<int>(hotX), static_cast<int>(hotY));
 }
 
 void QCursor_OperatorAssign(QCursor* self, QCursor* cursor) {

@@ -22,10 +22,10 @@ typedef struct QDir QDir;
 typedef struct QStorageInfo QStorageInfo;
 #endif
 
-void QStorageInfo_new(QStorageInfo** outptr_QStorageInfo);
-void QStorageInfo_new2(struct miqt_string path, QStorageInfo** outptr_QStorageInfo);
-void QStorageInfo_new3(QDir* dir, QStorageInfo** outptr_QStorageInfo);
-void QStorageInfo_new4(QStorageInfo* other, QStorageInfo** outptr_QStorageInfo);
+QStorageInfo* QStorageInfo_new();
+QStorageInfo* QStorageInfo_new2(struct miqt_string path);
+QStorageInfo* QStorageInfo_new3(QDir* dir);
+QStorageInfo* QStorageInfo_new4(QStorageInfo* other);
 void QStorageInfo_OperatorAssign(QStorageInfo* self, QStorageInfo* other);
 void QStorageInfo_Swap(QStorageInfo* self, QStorageInfo* other);
 void QStorageInfo_SetPath(QStorageInfo* self, struct miqt_string path);

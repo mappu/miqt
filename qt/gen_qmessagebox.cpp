@@ -21,6 +21,10 @@
 #include <QWidget>
 #include <qmessagebox.h>
 #include "gen_qmessagebox.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQMessageBox : public virtual QMessageBox {
@@ -414,99 +418,58 @@ public:
 
 };
 
-void QMessageBox_new(QWidget* parent, QMessageBox** outptr_QMessageBox, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQMessageBox* ret = new MiqtVirtualQMessageBox(parent);
-	*outptr_QMessageBox = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QMessageBox* QMessageBox_new(QWidget* parent) {
+	return new MiqtVirtualQMessageBox(parent);
 }
 
-void QMessageBox_new2(QMessageBox** outptr_QMessageBox, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQMessageBox* ret = new MiqtVirtualQMessageBox();
-	*outptr_QMessageBox = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QMessageBox* QMessageBox_new2() {
+	return new MiqtVirtualQMessageBox();
 }
 
-void QMessageBox_new3(int icon, struct miqt_string title, struct miqt_string text, QMessageBox** outptr_QMessageBox, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QMessageBox* QMessageBox_new3(int icon, struct miqt_string title, struct miqt_string text) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQMessageBox* ret = new MiqtVirtualQMessageBox(static_cast<QMessageBox::Icon>(icon), title_QString, text_QString);
-	*outptr_QMessageBox = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQMessageBox(static_cast<QMessageBox::Icon>(icon), title_QString, text_QString);
 }
 
-void QMessageBox_new4(struct miqt_string title, struct miqt_string text, int icon, int button0, int button1, int button2, QMessageBox** outptr_QMessageBox, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QMessageBox* QMessageBox_new4(struct miqt_string title, struct miqt_string text, int icon, int button0, int button1, int button2) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQMessageBox* ret = new MiqtVirtualQMessageBox(title_QString, text_QString, static_cast<QMessageBox::Icon>(icon), static_cast<int>(button0), static_cast<int>(button1), static_cast<int>(button2));
-	*outptr_QMessageBox = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQMessageBox(title_QString, text_QString, static_cast<QMessageBox::Icon>(icon), static_cast<int>(button0), static_cast<int>(button1), static_cast<int>(button2));
 }
 
-void QMessageBox_new5(int icon, struct miqt_string title, struct miqt_string text, int buttons, QMessageBox** outptr_QMessageBox, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QMessageBox* QMessageBox_new5(int icon, struct miqt_string title, struct miqt_string text, int buttons) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQMessageBox* ret = new MiqtVirtualQMessageBox(static_cast<QMessageBox::Icon>(icon), title_QString, text_QString, static_cast<QMessageBox::StandardButtons>(buttons));
-	*outptr_QMessageBox = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQMessageBox(static_cast<QMessageBox::Icon>(icon), title_QString, text_QString, static_cast<QMessageBox::StandardButtons>(buttons));
 }
 
-void QMessageBox_new6(int icon, struct miqt_string title, struct miqt_string text, int buttons, QWidget* parent, QMessageBox** outptr_QMessageBox, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QMessageBox* QMessageBox_new6(int icon, struct miqt_string title, struct miqt_string text, int buttons, QWidget* parent) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQMessageBox* ret = new MiqtVirtualQMessageBox(static_cast<QMessageBox::Icon>(icon), title_QString, text_QString, static_cast<QMessageBox::StandardButtons>(buttons), parent);
-	*outptr_QMessageBox = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQMessageBox(static_cast<QMessageBox::Icon>(icon), title_QString, text_QString, static_cast<QMessageBox::StandardButtons>(buttons), parent);
 }
 
-void QMessageBox_new7(int icon, struct miqt_string title, struct miqt_string text, int buttons, QWidget* parent, int flags, QMessageBox** outptr_QMessageBox, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QMessageBox* QMessageBox_new7(int icon, struct miqt_string title, struct miqt_string text, int buttons, QWidget* parent, int flags) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQMessageBox* ret = new MiqtVirtualQMessageBox(static_cast<QMessageBox::Icon>(icon), title_QString, text_QString, static_cast<QMessageBox::StandardButtons>(buttons), parent, static_cast<Qt::WindowFlags>(flags));
-	*outptr_QMessageBox = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQMessageBox(static_cast<QMessageBox::Icon>(icon), title_QString, text_QString, static_cast<QMessageBox::StandardButtons>(buttons), parent, static_cast<Qt::WindowFlags>(flags));
 }
 
-void QMessageBox_new8(struct miqt_string title, struct miqt_string text, int icon, int button0, int button1, int button2, QWidget* parent, QMessageBox** outptr_QMessageBox, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QMessageBox* QMessageBox_new8(struct miqt_string title, struct miqt_string text, int icon, int button0, int button1, int button2, QWidget* parent) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQMessageBox* ret = new MiqtVirtualQMessageBox(title_QString, text_QString, static_cast<QMessageBox::Icon>(icon), static_cast<int>(button0), static_cast<int>(button1), static_cast<int>(button2), parent);
-	*outptr_QMessageBox = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQMessageBox(title_QString, text_QString, static_cast<QMessageBox::Icon>(icon), static_cast<int>(button0), static_cast<int>(button1), static_cast<int>(button2), parent);
 }
 
-void QMessageBox_new9(struct miqt_string title, struct miqt_string text, int icon, int button0, int button1, int button2, QWidget* parent, int f, QMessageBox** outptr_QMessageBox, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QMessageBox* QMessageBox_new9(struct miqt_string title, struct miqt_string text, int icon, int button0, int button1, int button2, QWidget* parent, int f) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQMessageBox* ret = new MiqtVirtualQMessageBox(title_QString, text_QString, static_cast<QMessageBox::Icon>(icon), static_cast<int>(button0), static_cast<int>(button1), static_cast<int>(button2), parent, static_cast<Qt::WindowFlags>(f));
-	*outptr_QMessageBox = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQMessageBox(title_QString, text_QString, static_cast<QMessageBox::Icon>(icon), static_cast<int>(button0), static_cast<int>(button1), static_cast<int>(button2), parent, static_cast<Qt::WindowFlags>(f));
+}
+
+void QMessageBox_virtbase(QMessageBox* src, QDialog** outptr_QDialog) {
+	*outptr_QDialog = static_cast<QDialog*>(src);
 }
 
 QMetaObject* QMessageBox_MetaObject(const QMessageBox* self) {

@@ -28,7 +28,7 @@ typedef struct QMimeType QMimeType;
 typedef struct QUrl QUrl;
 #endif
 
-void QMimeDatabase_new(QMimeDatabase** outptr_QMimeDatabase);
+QMimeDatabase* QMimeDatabase_new();
 QMimeType* QMimeDatabase_MimeTypeForName(const QMimeDatabase* self, struct miqt_string nameOrAlias);
 QMimeType* QMimeDatabase_MimeTypeForFile(const QMimeDatabase* self, struct miqt_string fileName);
 QMimeType* QMimeDatabase_MimeTypeForFileWithFileInfo(const QMimeDatabase* self, QFileInfo* fileInfo);

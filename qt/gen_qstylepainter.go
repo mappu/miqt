@@ -34,53 +34,42 @@ func (this *QStylePainter) UnsafePointer() unsafe.Pointer {
 }
 
 // newQStylePainter constructs the type using only CGO pointers.
-func newQStylePainter(h *C.QStylePainter, h_QPainter *C.QPainter) *QStylePainter {
+func newQStylePainter(h *C.QStylePainter) *QStylePainter {
 	if h == nil {
 		return nil
 	}
+	var outptr_QPainter *C.QPainter = nil
+	C.QStylePainter_virtbase(h, &outptr_QPainter)
+
 	return &QStylePainter{h: h,
-		QPainter: newQPainter(h_QPainter)}
+		QPainter: newQPainter(outptr_QPainter)}
 }
 
 // UnsafeNewQStylePainter constructs the type using only unsafe pointers.
-func UnsafeNewQStylePainter(h unsafe.Pointer, h_QPainter unsafe.Pointer) *QStylePainter {
-	if h == nil {
-		return nil
-	}
-
-	return &QStylePainter{h: (*C.QStylePainter)(h),
-		QPainter: UnsafeNewQPainter(h_QPainter)}
+func UnsafeNewQStylePainter(h unsafe.Pointer) *QStylePainter {
+	return newQStylePainter((*C.QStylePainter)(h))
 }
 
 // NewQStylePainter constructs a new QStylePainter object.
 func NewQStylePainter(w *QWidget) *QStylePainter {
-	var outptr_QStylePainter *C.QStylePainter = nil
-	var outptr_QPainter *C.QPainter = nil
 
-	C.QStylePainter_new(w.cPointer(), &outptr_QStylePainter, &outptr_QPainter)
-	ret := newQStylePainter(outptr_QStylePainter, outptr_QPainter)
+	ret := newQStylePainter(C.QStylePainter_new(w.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQStylePainter2 constructs a new QStylePainter object.
 func NewQStylePainter2() *QStylePainter {
-	var outptr_QStylePainter *C.QStylePainter = nil
-	var outptr_QPainter *C.QPainter = nil
 
-	C.QStylePainter_new2(&outptr_QStylePainter, &outptr_QPainter)
-	ret := newQStylePainter(outptr_QStylePainter, outptr_QPainter)
+	ret := newQStylePainter(C.QStylePainter_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQStylePainter3 constructs a new QStylePainter object.
 func NewQStylePainter3(pd *QPaintDevice, w *QWidget) *QStylePainter {
-	var outptr_QStylePainter *C.QStylePainter = nil
-	var outptr_QPainter *C.QPainter = nil
 
-	C.QStylePainter_new3(pd.cPointer(), w.cPointer(), &outptr_QStylePainter, &outptr_QPainter)
-	ret := newQStylePainter(outptr_QStylePainter, outptr_QPainter)
+	ret := newQStylePainter(C.QStylePainter_new3(pd.cPointer(), w.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -118,7 +107,7 @@ func (this *QStylePainter) DrawItemPixmap(r *QRect, flags int, pixmap *QPixmap) 
 }
 
 func (this *QStylePainter) Style() *QStyle {
-	return UnsafeNewQStyle(unsafe.Pointer(C.QStylePainter_Style(this.h)), nil)
+	return newQStyle(C.QStylePainter_Style(this.h))
 }
 
 func (this *QStylePainter) DrawItemText6(r *QRect, flags int, pal *QPalette, enabled bool, text string, textRole QPalette__ColorRole) {

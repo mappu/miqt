@@ -28,15 +28,15 @@ typedef struct QPoint QPoint;
 typedef struct QScreen QScreen;
 #endif
 
-void QCursor_new(QCursor** outptr_QCursor);
-void QCursor_new2(int shape, QCursor** outptr_QCursor);
-void QCursor_new3(QBitmap* bitmap, QBitmap* mask, QCursor** outptr_QCursor);
-void QCursor_new4(QPixmap* pixmap, QCursor** outptr_QCursor);
-void QCursor_new5(QCursor* cursor, QCursor** outptr_QCursor);
-void QCursor_new6(QBitmap* bitmap, QBitmap* mask, int hotX, QCursor** outptr_QCursor);
-void QCursor_new7(QBitmap* bitmap, QBitmap* mask, int hotX, int hotY, QCursor** outptr_QCursor);
-void QCursor_new8(QPixmap* pixmap, int hotX, QCursor** outptr_QCursor);
-void QCursor_new9(QPixmap* pixmap, int hotX, int hotY, QCursor** outptr_QCursor);
+QCursor* QCursor_new();
+QCursor* QCursor_new2(int shape);
+QCursor* QCursor_new3(QBitmap* bitmap, QBitmap* mask);
+QCursor* QCursor_new4(QPixmap* pixmap);
+QCursor* QCursor_new5(QCursor* cursor);
+QCursor* QCursor_new6(QBitmap* bitmap, QBitmap* mask, int hotX);
+QCursor* QCursor_new7(QBitmap* bitmap, QBitmap* mask, int hotX, int hotY);
+QCursor* QCursor_new8(QPixmap* pixmap, int hotX);
+QCursor* QCursor_new9(QPixmap* pixmap, int hotX, int hotY);
 void QCursor_OperatorAssign(QCursor* self, QCursor* cursor);
 void QCursor_Swap(QCursor* self, QCursor* other);
 int QCursor_Shape(const QCursor* self);

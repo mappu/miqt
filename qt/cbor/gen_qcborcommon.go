@@ -98,16 +98,13 @@ func newQCborError(h *C.QCborError) *QCborError {
 	if h == nil {
 		return nil
 	}
+
 	return &QCborError{h: h}
 }
 
 // UnsafeNewQCborError constructs the type using only unsafe pointers.
 func UnsafeNewQCborError(h unsafe.Pointer) *QCborError {
-	if h == nil {
-		return nil
-	}
-
-	return &QCborError{h: (*C.QCborError)(h)}
+	return newQCborError((*C.QCborError)(h))
 }
 
 func (this *QCborError) ToString() string {

@@ -12,6 +12,10 @@
 #include <QWidget>
 #include <qgridlayout.h>
 #include "gen_qgridlayout.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGridLayout : public virtual QGridLayout {
@@ -458,20 +462,16 @@ public:
 
 };
 
-void QGridLayout_new(QWidget* parent, QGridLayout** outptr_QGridLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem) {
-	MiqtVirtualQGridLayout* ret = new MiqtVirtualQGridLayout(parent);
-	*outptr_QGridLayout = ret;
-	*outptr_QLayout = static_cast<QLayout*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QLayoutItem = static_cast<QLayoutItem*>(ret);
+QGridLayout* QGridLayout_new(QWidget* parent) {
+	return new MiqtVirtualQGridLayout(parent);
 }
 
-void QGridLayout_new2(QGridLayout** outptr_QGridLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem) {
-	MiqtVirtualQGridLayout* ret = new MiqtVirtualQGridLayout();
-	*outptr_QGridLayout = ret;
-	*outptr_QLayout = static_cast<QLayout*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QLayoutItem = static_cast<QLayoutItem*>(ret);
+QGridLayout* QGridLayout_new2() {
+	return new MiqtVirtualQGridLayout();
+}
+
+void QGridLayout_virtbase(QGridLayout* src, QLayout** outptr_QLayout) {
+	*outptr_QLayout = static_cast<QLayout*>(src);
 }
 
 QMetaObject* QGridLayout_MetaObject(const QGridLayout* self) {

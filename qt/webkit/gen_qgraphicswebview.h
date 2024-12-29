@@ -92,8 +92,9 @@ typedef struct QWebSettings QWebSettings;
 typedef struct QWidget QWidget;
 #endif
 
-void QGraphicsWebView_new(QGraphicsWebView** outptr_QGraphicsWebView, QGraphicsWidget** outptr_QGraphicsWidget, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem);
-void QGraphicsWebView_new2(QGraphicsItem* parent, QGraphicsWebView** outptr_QGraphicsWebView, QGraphicsWidget** outptr_QGraphicsWidget, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem);
+QGraphicsWebView* QGraphicsWebView_new();
+QGraphicsWebView* QGraphicsWebView_new2(QGraphicsItem* parent);
+void QGraphicsWebView_virtbase(QGraphicsWebView* src, QGraphicsWidget** outptr_QGraphicsWidget);
 QMetaObject* QGraphicsWebView_MetaObject(const QGraphicsWebView* self);
 void* QGraphicsWebView_Metacast(QGraphicsWebView* self, const char* param1);
 struct miqt_string QGraphicsWebView_Tr(const char* s);

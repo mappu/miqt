@@ -51,7 +51,7 @@ Yes. You must also meet your Qt license obligations: either use Qt dynamically-l
 
 ### Q3. Why does it take so long to compile?
 
-The first time MIQT is used, your `go build` would take about 10 minutes. But after that, any `go build` is very fast.
+The first time MIQT is used, your `go build` would take [about 10 minutes](https://github.com/mappu/miqt/discussions/65). But after that, any `go build` is very fast.
 
 If you are compiling your app within a Dockerfile, you could cache the build step by running `go install github.com/mappu/miqt/qt`.
 
@@ -160,7 +160,7 @@ $env:CGO_ENABLED = 1
 $env:CC = 'C:\dev\rootfs\bin\clang.exe'
 $env:CXX = 'C:\dev\rootfs\bin\clang++.exe'
 $env:PKG_CONFIG = 'C:\dev\rootfs\bin\pkg-config.exe'
-$env:CGO_CXXFLAGS = '-Wno-ignored-attributes -D_Bool=bool' # Clang 18 recommendation
+$env:CGO_CXXFLAGS = '-Wno-ignored-attributes' # Clang 18 recommendation
 ```
 
 4. Run `go build -ldflags "-s -w -H windowsgui"`
@@ -179,8 +179,9 @@ pacman -S mingw-w64-ucrt-x86_64-{go,gcc,pkg-config}
 export GOROOT=/ucrt64/lib/go # Needed only if this is the first time installing Go in MSYS2. Otherwise it would be automatically applied when opening a new Bash terminal.
 
 # Install Qt
-pacman -S mingw-w64-ucrt-x86_64-qt5-base # For Qt 5
-pacman -S mingw-w64-ucrt-x86_64-qt6-base # For Qt 6
+pacman -S mingw-w64-ucrt-x86_64-qt5-base # For Qt 5 (UCRT64 GCC toolchain)
+pacman -S mingw-w64-ucrt-x86_64-qt6-base # For Qt 6 (UCRT64 GCC toolchain)
+pacman -S mingw-w64-clang-x86_64-qt6-base # For Qt 6 (CLANG64 toolchain)
 
 go build -ldflags "-s -w -H windowsgui"
 ```

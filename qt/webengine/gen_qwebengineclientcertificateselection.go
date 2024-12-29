@@ -39,24 +39,19 @@ func newQWebEngineClientCertificateSelection(h *C.QWebEngineClientCertificateSel
 	if h == nil {
 		return nil
 	}
+
 	return &QWebEngineClientCertificateSelection{h: h}
 }
 
 // UnsafeNewQWebEngineClientCertificateSelection constructs the type using only unsafe pointers.
 func UnsafeNewQWebEngineClientCertificateSelection(h unsafe.Pointer) *QWebEngineClientCertificateSelection {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineClientCertificateSelection{h: (*C.QWebEngineClientCertificateSelection)(h)}
+	return newQWebEngineClientCertificateSelection((*C.QWebEngineClientCertificateSelection)(h))
 }
 
 // NewQWebEngineClientCertificateSelection constructs a new QWebEngineClientCertificateSelection object.
 func NewQWebEngineClientCertificateSelection(param1 *QWebEngineClientCertificateSelection) *QWebEngineClientCertificateSelection {
-	var outptr_QWebEngineClientCertificateSelection *C.QWebEngineClientCertificateSelection = nil
 
-	C.QWebEngineClientCertificateSelection_new(param1.cPointer(), &outptr_QWebEngineClientCertificateSelection)
-	ret := newQWebEngineClientCertificateSelection(outptr_QWebEngineClientCertificateSelection)
+	ret := newQWebEngineClientCertificateSelection(C.QWebEngineClientCertificateSelection_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -66,8 +61,7 @@ func (this *QWebEngineClientCertificateSelection) OperatorAssign(param1 *QWebEng
 }
 
 func (this *QWebEngineClientCertificateSelection) Host() *qt.QUrl {
-	_ret := C.QWebEngineClientCertificateSelection_Host(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineClientCertificateSelection_Host(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -85,8 +79,7 @@ func (this *QWebEngineClientCertificateSelection) Certificates() []network.QSslC
 	_ret := make([]network.QSslCertificate, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSslCertificate)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_vv_ret := _outCast[i]
-		_vv_goptr := network.UnsafeNewQSslCertificate(unsafe.Pointer(_vv_ret))
+		_vv_goptr := network.UnsafeNewQSslCertificate(unsafe.Pointer(_outCast[i]))
 		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_vv_goptr
 	}

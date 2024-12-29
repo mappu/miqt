@@ -34,8 +34,9 @@ typedef struct QObject QObject;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QAccessiblePlugin_new(QAccessiblePlugin** outptr_QAccessiblePlugin, QObject** outptr_QObject);
-void QAccessiblePlugin_new2(QObject* parent, QAccessiblePlugin** outptr_QAccessiblePlugin, QObject** outptr_QObject);
+QAccessiblePlugin* QAccessiblePlugin_new();
+QAccessiblePlugin* QAccessiblePlugin_new2(QObject* parent);
+void QAccessiblePlugin_virtbase(QAccessiblePlugin* src, QObject** outptr_QObject);
 QMetaObject* QAccessiblePlugin_MetaObject(const QAccessiblePlugin* self);
 void* QAccessiblePlugin_Metacast(QAccessiblePlugin* self, const char* param1);
 struct miqt_string QAccessiblePlugin_Tr(const char* s);

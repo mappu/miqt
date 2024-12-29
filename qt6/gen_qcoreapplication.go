@@ -41,22 +41,20 @@ func (this *QCoreApplication) UnsafePointer() unsafe.Pointer {
 }
 
 // newQCoreApplication constructs the type using only CGO pointers.
-func newQCoreApplication(h *C.QCoreApplication, h_QObject *C.QObject) *QCoreApplication {
+func newQCoreApplication(h *C.QCoreApplication) *QCoreApplication {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QCoreApplication_virtbase(h, &outptr_QObject)
+
 	return &QCoreApplication{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQCoreApplication constructs the type using only unsafe pointers.
-func UnsafeNewQCoreApplication(h unsafe.Pointer, h_QObject unsafe.Pointer) *QCoreApplication {
-	if h == nil {
-		return nil
-	}
-
-	return &QCoreApplication{h: (*C.QCoreApplication)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQCoreApplication(h unsafe.Pointer) *QCoreApplication {
+	return newQCoreApplication((*C.QCoreApplication)(h))
 }
 
 // NewQCoreApplication constructs a new QCoreApplication object.
@@ -71,11 +69,7 @@ func NewQCoreApplication(args []string) *QCoreApplication {
 
 	runtime.LockOSThread() // Prevent Go from migrating the main Qt thread
 
-	var outptr_QCoreApplication *C.QCoreApplication = nil
-	var outptr_QObject *C.QObject = nil
-
-	C.QCoreApplication_new(argc, &argv[0], &outptr_QCoreApplication, &outptr_QObject)
-	ret := newQCoreApplication(outptr_QCoreApplication, outptr_QObject)
+	ret := newQCoreApplication(C.QCoreApplication_new(argc, &argv[0]))
 	ret.isSubclass = true
 	return ret
 }
@@ -92,17 +86,13 @@ func NewQCoreApplication2(args []string, param3 int) *QCoreApplication {
 
 	runtime.LockOSThread() // Prevent Go from migrating the main Qt thread
 
-	var outptr_QCoreApplication *C.QCoreApplication = nil
-	var outptr_QObject *C.QObject = nil
-
-	C.QCoreApplication_new2(argc, &argv[0], (C.int)(param3), &outptr_QCoreApplication, &outptr_QObject)
-	ret := newQCoreApplication(outptr_QCoreApplication, outptr_QObject)
+	ret := newQCoreApplication(C.QCoreApplication_new2(argc, &argv[0], (C.int)(param3)))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QCoreApplication) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QCoreApplication_MetaObject(this.h)))
+	return newQMetaObject(C.QCoreApplication_MetaObject(this.h))
 }
 
 func (this *QCoreApplication) Metacast(param1 string) unsafe.Pointer {
@@ -210,7 +200,7 @@ func QCoreApplication_IsSetuidAllowed() bool {
 }
 
 func QCoreApplication_Instance() *QCoreApplication {
-	return UnsafeNewQCoreApplication(unsafe.Pointer(C.QCoreApplication_Instance()), nil)
+	return newQCoreApplication(C.QCoreApplication_Instance())
 }
 
 func QCoreApplication_Exec() int {
@@ -242,7 +232,7 @@ func QCoreApplication_RemovePostedEvents(receiver *QObject) {
 }
 
 func QCoreApplication_EventDispatcher() *QAbstractEventDispatcher {
-	return UnsafeNewQAbstractEventDispatcher(unsafe.Pointer(C.QCoreApplication_EventDispatcher()), nil)
+	return newQAbstractEventDispatcher(C.QCoreApplication_EventDispatcher())
 }
 
 func QCoreApplication_SetEventDispatcher(eventDispatcher *QAbstractEventDispatcher) {
@@ -356,7 +346,7 @@ func miqt_exec_callback_QCoreApplication_InstallNativeEventFilter(cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAbstractNativeEventFilter(unsafe.Pointer(filterObj))
+	slotval1 := newQAbstractNativeEventFilter(filterObj)
 
 	gofunc(slotval1)
 }
@@ -376,7 +366,7 @@ func miqt_exec_callback_QCoreApplication_RemoveNativeEventFilter(cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAbstractNativeEventFilter(unsafe.Pointer(filterObj))
+	slotval1 := newQAbstractNativeEventFilter(filterObj)
 
 	gofunc(slotval1)
 }
@@ -547,6 +537,9 @@ func (this *QCoreApplication) callVirtualBase_Notify(param1 *QObject, param2 *QE
 
 }
 func (this *QCoreApplication) OnNotify(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCoreApplication_override_virtual_Notify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -558,8 +551,9 @@ func miqt_exec_callback_QCoreApplication_Notify(self *C.QCoreApplication, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(param1))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(param2))
+	slotval1 := newQObject(param1)
+
+	slotval2 := newQEvent(param2)
 
 	virtualReturn := gofunc((&QCoreApplication{h: self}).callVirtualBase_Notify, slotval1, slotval2)
 
@@ -573,6 +567,9 @@ func (this *QCoreApplication) callVirtualBase_Event(param1 *QEvent) bool {
 
 }
 func (this *QCoreApplication) OnEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCoreApplication_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -584,7 +581,7 @@ func miqt_exec_callback_QCoreApplication_Event(self *C.QCoreApplication, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	virtualReturn := gofunc((&QCoreApplication{h: self}).callVirtualBase_Event, slotval1)
 
@@ -598,6 +595,9 @@ func (this *QCoreApplication) callVirtualBase_EventFilter(watched *QObject, even
 
 }
 func (this *QCoreApplication) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCoreApplication_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -609,8 +609,9 @@ func miqt_exec_callback_QCoreApplication_EventFilter(self *C.QCoreApplication, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QCoreApplication{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -624,6 +625,9 @@ func (this *QCoreApplication) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QCoreApplication) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCoreApplication_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -635,7 +639,7 @@ func miqt_exec_callback_QCoreApplication_TimerEvent(self *C.QCoreApplication, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QCoreApplication{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -647,6 +651,9 @@ func (this *QCoreApplication) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QCoreApplication) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCoreApplication_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -658,7 +665,7 @@ func miqt_exec_callback_QCoreApplication_ChildEvent(self *C.QCoreApplication, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QCoreApplication{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -670,6 +677,9 @@ func (this *QCoreApplication) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QCoreApplication) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCoreApplication_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -681,7 +691,7 @@ func miqt_exec_callback_QCoreApplication_CustomEvent(self *C.QCoreApplication, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QCoreApplication{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -693,6 +703,9 @@ func (this *QCoreApplication) callVirtualBase_ConnectNotify(signal *QMetaMethod)
 
 }
 func (this *QCoreApplication) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCoreApplication_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -704,7 +717,7 @@ func miqt_exec_callback_QCoreApplication_ConnectNotify(self *C.QCoreApplication,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QCoreApplication{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -716,6 +729,9 @@ func (this *QCoreApplication) callVirtualBase_DisconnectNotify(signal *QMetaMeth
 
 }
 func (this *QCoreApplication) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCoreApplication_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -727,7 +743,7 @@ func miqt_exec_callback_QCoreApplication_DisconnectNotify(self *C.QCoreApplicati
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QCoreApplication{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

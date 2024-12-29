@@ -36,42 +36,34 @@ func (this *QWebEngineUrlSchemeHandler) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebEngineUrlSchemeHandler constructs the type using only CGO pointers.
-func newQWebEngineUrlSchemeHandler(h *C.QWebEngineUrlSchemeHandler, h_QObject *C.QObject) *QWebEngineUrlSchemeHandler {
+func newQWebEngineUrlSchemeHandler(h *C.QWebEngineUrlSchemeHandler) *QWebEngineUrlSchemeHandler {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QWebEngineUrlSchemeHandler_virtbase(h, &outptr_QObject)
+
 	return &QWebEngineUrlSchemeHandler{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQWebEngineUrlSchemeHandler constructs the type using only unsafe pointers.
-func UnsafeNewQWebEngineUrlSchemeHandler(h unsafe.Pointer, h_QObject unsafe.Pointer) *QWebEngineUrlSchemeHandler {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineUrlSchemeHandler{h: (*C.QWebEngineUrlSchemeHandler)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQWebEngineUrlSchemeHandler(h unsafe.Pointer) *QWebEngineUrlSchemeHandler {
+	return newQWebEngineUrlSchemeHandler((*C.QWebEngineUrlSchemeHandler)(h))
 }
 
 // NewQWebEngineUrlSchemeHandler constructs a new QWebEngineUrlSchemeHandler object.
 func NewQWebEngineUrlSchemeHandler() *QWebEngineUrlSchemeHandler {
-	var outptr_QWebEngineUrlSchemeHandler *C.QWebEngineUrlSchemeHandler = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWebEngineUrlSchemeHandler_new(&outptr_QWebEngineUrlSchemeHandler, &outptr_QObject)
-	ret := newQWebEngineUrlSchemeHandler(outptr_QWebEngineUrlSchemeHandler, outptr_QObject)
+	ret := newQWebEngineUrlSchemeHandler(C.QWebEngineUrlSchemeHandler_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebEngineUrlSchemeHandler2 constructs a new QWebEngineUrlSchemeHandler object.
 func NewQWebEngineUrlSchemeHandler2(parent *qt6.QObject) *QWebEngineUrlSchemeHandler {
-	var outptr_QWebEngineUrlSchemeHandler *C.QWebEngineUrlSchemeHandler = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QWebEngineUrlSchemeHandler_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QWebEngineUrlSchemeHandler, &outptr_QObject)
-	ret := newQWebEngineUrlSchemeHandler(outptr_QWebEngineUrlSchemeHandler, outptr_QObject)
+	ret := newQWebEngineUrlSchemeHandler(C.QWebEngineUrlSchemeHandler_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -121,6 +113,9 @@ func QWebEngineUrlSchemeHandler_Tr3(s string, c string, n int) string {
 	return _ret
 }
 func (this *QWebEngineUrlSchemeHandler) OnRequestStarted(slot func(param1 *QWebEngineUrlRequestJob)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebEngineUrlSchemeHandler_override_virtual_RequestStarted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -132,7 +127,7 @@ func miqt_exec_callback_QWebEngineUrlSchemeHandler_RequestStarted(self *C.QWebEn
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWebEngineUrlRequestJob(unsafe.Pointer(param1), nil)
+	slotval1 := newQWebEngineUrlRequestJob(param1)
 
 	gofunc(slotval1)
 
@@ -144,6 +139,9 @@ func (this *QWebEngineUrlSchemeHandler) callVirtualBase_Event(event *qt6.QEvent)
 
 }
 func (this *QWebEngineUrlSchemeHandler) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebEngineUrlSchemeHandler_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -169,6 +167,9 @@ func (this *QWebEngineUrlSchemeHandler) callVirtualBase_EventFilter(watched *qt6
 
 }
 func (this *QWebEngineUrlSchemeHandler) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebEngineUrlSchemeHandler_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -181,6 +182,7 @@ func miqt_exec_callback_QWebEngineUrlSchemeHandler_EventFilter(self *C.QWebEngin
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QWebEngineUrlSchemeHandler{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
@@ -195,6 +197,9 @@ func (this *QWebEngineUrlSchemeHandler) callVirtualBase_TimerEvent(event *qt6.QT
 
 }
 func (this *QWebEngineUrlSchemeHandler) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebEngineUrlSchemeHandler_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -206,7 +211,7 @@ func miqt_exec_callback_QWebEngineUrlSchemeHandler_TimerEvent(self *C.QWebEngine
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebEngineUrlSchemeHandler{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -218,6 +223,9 @@ func (this *QWebEngineUrlSchemeHandler) callVirtualBase_ChildEvent(event *qt6.QC
 
 }
 func (this *QWebEngineUrlSchemeHandler) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebEngineUrlSchemeHandler_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -229,7 +237,7 @@ func miqt_exec_callback_QWebEngineUrlSchemeHandler_ChildEvent(self *C.QWebEngine
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebEngineUrlSchemeHandler{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -241,6 +249,9 @@ func (this *QWebEngineUrlSchemeHandler) callVirtualBase_CustomEvent(event *qt6.Q
 
 }
 func (this *QWebEngineUrlSchemeHandler) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebEngineUrlSchemeHandler_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -264,6 +275,9 @@ func (this *QWebEngineUrlSchemeHandler) callVirtualBase_ConnectNotify(signal *qt
 
 }
 func (this *QWebEngineUrlSchemeHandler) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebEngineUrlSchemeHandler_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -287,6 +301,9 @@ func (this *QWebEngineUrlSchemeHandler) callVirtualBase_DisconnectNotify(signal 
 
 }
 func (this *QWebEngineUrlSchemeHandler) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebEngineUrlSchemeHandler_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

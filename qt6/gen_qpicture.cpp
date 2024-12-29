@@ -10,6 +10,10 @@
 #include <cstring>
 #include <qpicture.h>
 #include "gen_qpicture.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQPicture : public virtual QPicture {
@@ -186,22 +190,20 @@ public:
 
 };
 
-void QPicture_new(QPicture** outptr_QPicture, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPicture* ret = new MiqtVirtualQPicture();
-	*outptr_QPicture = ret;
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPicture* QPicture_new() {
+	return new MiqtVirtualQPicture();
 }
 
-void QPicture_new2(QPicture* param1, QPicture** outptr_QPicture, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPicture* ret = new MiqtVirtualQPicture(*param1);
-	*outptr_QPicture = ret;
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPicture* QPicture_new2(QPicture* param1) {
+	return new MiqtVirtualQPicture(*param1);
 }
 
-void QPicture_new3(int formatVersion, QPicture** outptr_QPicture, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPicture* ret = new MiqtVirtualQPicture(static_cast<int>(formatVersion));
-	*outptr_QPicture = ret;
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPicture* QPicture_new3(int formatVersion) {
+	return new MiqtVirtualQPicture(static_cast<int>(formatVersion));
+}
+
+void QPicture_virtbase(QPicture* src, QPaintDevice** outptr_QPaintDevice) {
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(src);
 }
 
 bool QPicture_IsNull(const QPicture* self) {

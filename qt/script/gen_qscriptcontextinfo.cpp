@@ -6,21 +6,22 @@
 #include <cstring>
 #include <qscriptcontextinfo.h>
 #include "gen_qscriptcontextinfo.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QScriptContextInfo_new(QScriptContext* context, QScriptContextInfo** outptr_QScriptContextInfo) {
-	QScriptContextInfo* ret = new QScriptContextInfo(context);
-	*outptr_QScriptContextInfo = ret;
+QScriptContextInfo* QScriptContextInfo_new(QScriptContext* context) {
+	return new QScriptContextInfo(context);
 }
 
-void QScriptContextInfo_new2(QScriptContextInfo* other, QScriptContextInfo** outptr_QScriptContextInfo) {
-	QScriptContextInfo* ret = new QScriptContextInfo(*other);
-	*outptr_QScriptContextInfo = ret;
+QScriptContextInfo* QScriptContextInfo_new2(QScriptContextInfo* other) {
+	return new QScriptContextInfo(*other);
 }
 
-void QScriptContextInfo_new3(QScriptContextInfo** outptr_QScriptContextInfo) {
-	QScriptContextInfo* ret = new QScriptContextInfo();
-	*outptr_QScriptContextInfo = ret;
+QScriptContextInfo* QScriptContextInfo_new3() {
+	return new QScriptContextInfo();
 }
 
 void QScriptContextInfo_OperatorAssign(QScriptContextInfo* self, QScriptContextInfo* other) {

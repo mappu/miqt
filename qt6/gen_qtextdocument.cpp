@@ -28,6 +28,10 @@
 #include <QVariant>
 #include <qtextdocument.h>
 #include "gen_qtextdocument.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QAbstractUndoItem_Undo(QAbstractUndoItem* self) {
@@ -307,30 +311,26 @@ public:
 
 };
 
-void QTextDocument_new(QTextDocument** outptr_QTextDocument, QObject** outptr_QObject) {
-	MiqtVirtualQTextDocument* ret = new MiqtVirtualQTextDocument();
-	*outptr_QTextDocument = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QTextDocument* QTextDocument_new() {
+	return new MiqtVirtualQTextDocument();
 }
 
-void QTextDocument_new2(struct miqt_string text, QTextDocument** outptr_QTextDocument, QObject** outptr_QObject) {
+QTextDocument* QTextDocument_new2(struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQTextDocument* ret = new MiqtVirtualQTextDocument(text_QString);
-	*outptr_QTextDocument = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQTextDocument(text_QString);
 }
 
-void QTextDocument_new3(QObject* parent, QTextDocument** outptr_QTextDocument, QObject** outptr_QObject) {
-	MiqtVirtualQTextDocument* ret = new MiqtVirtualQTextDocument(parent);
-	*outptr_QTextDocument = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QTextDocument* QTextDocument_new3(QObject* parent) {
+	return new MiqtVirtualQTextDocument(parent);
 }
 
-void QTextDocument_new4(struct miqt_string text, QObject* parent, QTextDocument** outptr_QTextDocument, QObject** outptr_QObject) {
+QTextDocument* QTextDocument_new4(struct miqt_string text, QObject* parent) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQTextDocument* ret = new MiqtVirtualQTextDocument(text_QString, parent);
-	*outptr_QTextDocument = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQTextDocument(text_QString, parent);
+}
+
+void QTextDocument_virtbase(QTextDocument* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QTextDocument_MetaObject(const QTextDocument* self) {

@@ -5,6 +5,10 @@
 #include <QSizePolicy>
 #include <qgraphicslayoutitem.h>
 #include "gen_qgraphicslayoutitem.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGraphicsLayoutItem : public virtual QGraphicsLayoutItem {
@@ -118,19 +122,16 @@ public:
 
 };
 
-void QGraphicsLayoutItem_new(QGraphicsLayoutItem** outptr_QGraphicsLayoutItem) {
-	MiqtVirtualQGraphicsLayoutItem* ret = new MiqtVirtualQGraphicsLayoutItem();
-	*outptr_QGraphicsLayoutItem = ret;
+QGraphicsLayoutItem* QGraphicsLayoutItem_new() {
+	return new MiqtVirtualQGraphicsLayoutItem();
 }
 
-void QGraphicsLayoutItem_new2(QGraphicsLayoutItem* parent, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem) {
-	MiqtVirtualQGraphicsLayoutItem* ret = new MiqtVirtualQGraphicsLayoutItem(parent);
-	*outptr_QGraphicsLayoutItem = ret;
+QGraphicsLayoutItem* QGraphicsLayoutItem_new2(QGraphicsLayoutItem* parent) {
+	return new MiqtVirtualQGraphicsLayoutItem(parent);
 }
 
-void QGraphicsLayoutItem_new3(QGraphicsLayoutItem* parent, bool isLayout, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem) {
-	MiqtVirtualQGraphicsLayoutItem* ret = new MiqtVirtualQGraphicsLayoutItem(parent, isLayout);
-	*outptr_QGraphicsLayoutItem = ret;
+QGraphicsLayoutItem* QGraphicsLayoutItem_new3(QGraphicsLayoutItem* parent, bool isLayout) {
+	return new MiqtVirtualQGraphicsLayoutItem(parent, isLayout);
 }
 
 void QGraphicsLayoutItem_SetSizePolicy(QGraphicsLayoutItem* self, QSizePolicy* policy) {

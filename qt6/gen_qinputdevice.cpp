@@ -12,6 +12,10 @@
 #include <QTimerEvent>
 #include <qinputdevice.h>
 #include "gen_qinputdevice.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQInputDevice : public virtual QInputDevice {
@@ -198,39 +202,33 @@ public:
 
 };
 
-void QInputDevice_new(QInputDevice** outptr_QInputDevice, QObject** outptr_QObject) {
-	MiqtVirtualQInputDevice* ret = new MiqtVirtualQInputDevice();
-	*outptr_QInputDevice = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QInputDevice* QInputDevice_new() {
+	return new MiqtVirtualQInputDevice();
 }
 
-void QInputDevice_new2(struct miqt_string name, long long systemId, int typeVal, QInputDevice** outptr_QInputDevice, QObject** outptr_QObject) {
+QInputDevice* QInputDevice_new2(struct miqt_string name, long long systemId, int typeVal) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	MiqtVirtualQInputDevice* ret = new MiqtVirtualQInputDevice(name_QString, static_cast<qint64>(systemId), static_cast<QInputDevice::DeviceType>(typeVal));
-	*outptr_QInputDevice = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQInputDevice(name_QString, static_cast<qint64>(systemId), static_cast<QInputDevice::DeviceType>(typeVal));
 }
 
-void QInputDevice_new3(QObject* parent, QInputDevice** outptr_QInputDevice, QObject** outptr_QObject) {
-	MiqtVirtualQInputDevice* ret = new MiqtVirtualQInputDevice(parent);
-	*outptr_QInputDevice = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QInputDevice* QInputDevice_new3(QObject* parent) {
+	return new MiqtVirtualQInputDevice(parent);
 }
 
-void QInputDevice_new4(struct miqt_string name, long long systemId, int typeVal, struct miqt_string seatName, QInputDevice** outptr_QInputDevice, QObject** outptr_QObject) {
+QInputDevice* QInputDevice_new4(struct miqt_string name, long long systemId, int typeVal, struct miqt_string seatName) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	QString seatName_QString = QString::fromUtf8(seatName.data, seatName.len);
-	MiqtVirtualQInputDevice* ret = new MiqtVirtualQInputDevice(name_QString, static_cast<qint64>(systemId), static_cast<QInputDevice::DeviceType>(typeVal), seatName_QString);
-	*outptr_QInputDevice = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQInputDevice(name_QString, static_cast<qint64>(systemId), static_cast<QInputDevice::DeviceType>(typeVal), seatName_QString);
 }
 
-void QInputDevice_new5(struct miqt_string name, long long systemId, int typeVal, struct miqt_string seatName, QObject* parent, QInputDevice** outptr_QInputDevice, QObject** outptr_QObject) {
+QInputDevice* QInputDevice_new5(struct miqt_string name, long long systemId, int typeVal, struct miqt_string seatName, QObject* parent) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	QString seatName_QString = QString::fromUtf8(seatName.data, seatName.len);
-	MiqtVirtualQInputDevice* ret = new MiqtVirtualQInputDevice(name_QString, static_cast<qint64>(systemId), static_cast<QInputDevice::DeviceType>(typeVal), seatName_QString, parent);
-	*outptr_QInputDevice = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQInputDevice(name_QString, static_cast<qint64>(systemId), static_cast<QInputDevice::DeviceType>(typeVal), seatName_QString, parent);
+}
+
+void QInputDevice_virtbase(QInputDevice* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QInputDevice_MetaObject(const QInputDevice* self) {

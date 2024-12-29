@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexeryaml.h>
 #include "gen_qscilexeryaml.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerYAML : public virtual QsciLexerYAML {
@@ -863,18 +867,16 @@ public:
 
 };
 
-void QsciLexerYAML_new(QsciLexerYAML** outptr_QsciLexerYAML, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerYAML* ret = new MiqtVirtualQsciLexerYAML();
-	*outptr_QsciLexerYAML = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerYAML* QsciLexerYAML_new() {
+	return new MiqtVirtualQsciLexerYAML();
 }
 
-void QsciLexerYAML_new2(QObject* parent, QsciLexerYAML** outptr_QsciLexerYAML, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerYAML* ret = new MiqtVirtualQsciLexerYAML(parent);
-	*outptr_QsciLexerYAML = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerYAML* QsciLexerYAML_new2(QObject* parent) {
+	return new MiqtVirtualQsciLexerYAML(parent);
+}
+
+void QsciLexerYAML_virtbase(QsciLexerYAML* src, QsciLexer** outptr_QsciLexer) {
+	*outptr_QsciLexer = static_cast<QsciLexer*>(src);
 }
 
 QMetaObject* QsciLexerYAML_MetaObject(const QsciLexerYAML* self) {

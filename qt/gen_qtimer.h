@@ -32,8 +32,9 @@ typedef struct QTimer QTimer;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QTimer_new(QTimer** outptr_QTimer, QObject** outptr_QObject);
-void QTimer_new2(QObject* parent, QTimer** outptr_QTimer, QObject** outptr_QObject);
+QTimer* QTimer_new();
+QTimer* QTimer_new2(QObject* parent);
+void QTimer_virtbase(QTimer* src, QObject** outptr_QObject);
 QMetaObject* QTimer_MetaObject(const QTimer* self);
 void* QTimer_Metacast(QTimer* self, const char* param1);
 struct miqt_string QTimer_Tr(const char* s);

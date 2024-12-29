@@ -11,6 +11,10 @@
 #include <QTimerEvent>
 #include <qiconengineplugin.h>
 #include "gen_qiconengineplugin.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQIconEnginePlugin : public virtual QIconEnginePlugin {
@@ -217,16 +221,16 @@ public:
 
 };
 
-void QIconEnginePlugin_new(QIconEnginePlugin** outptr_QIconEnginePlugin, QObject** outptr_QObject) {
-	MiqtVirtualQIconEnginePlugin* ret = new MiqtVirtualQIconEnginePlugin();
-	*outptr_QIconEnginePlugin = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QIconEnginePlugin* QIconEnginePlugin_new() {
+	return new MiqtVirtualQIconEnginePlugin();
 }
 
-void QIconEnginePlugin_new2(QObject* parent, QIconEnginePlugin** outptr_QIconEnginePlugin, QObject** outptr_QObject) {
-	MiqtVirtualQIconEnginePlugin* ret = new MiqtVirtualQIconEnginePlugin(parent);
-	*outptr_QIconEnginePlugin = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QIconEnginePlugin* QIconEnginePlugin_new2(QObject* parent) {
+	return new MiqtVirtualQIconEnginePlugin(parent);
+}
+
+void QIconEnginePlugin_virtbase(QIconEnginePlugin* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QIconEnginePlugin_MetaObject(const QIconEnginePlugin* self) {

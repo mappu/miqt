@@ -36,9 +36,10 @@ typedef struct QStackedLayout QStackedLayout;
 typedef struct QWidget QWidget;
 #endif
 
-void QStackedLayout_new(QWidget* parent, QStackedLayout** outptr_QStackedLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem);
-void QStackedLayout_new2(QStackedLayout** outptr_QStackedLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem);
-void QStackedLayout_new3(QLayout* parentLayout, QStackedLayout** outptr_QStackedLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem);
+QStackedLayout* QStackedLayout_new(QWidget* parent);
+QStackedLayout* QStackedLayout_new2();
+QStackedLayout* QStackedLayout_new3(QLayout* parentLayout);
+void QStackedLayout_virtbase(QStackedLayout* src, QLayout** outptr_QLayout);
 QMetaObject* QStackedLayout_MetaObject(const QStackedLayout* self);
 void* QStackedLayout_Metacast(QStackedLayout* self, const char* param1);
 struct miqt_string QStackedLayout_Tr(const char* s);

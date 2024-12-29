@@ -1,11 +1,14 @@
 #include <QPartialOrdering>
 #include <qcompare.h>
 #include "gen_qcompare.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QPartialOrdering_new(QPartialOrdering* param1, QPartialOrdering** outptr_QPartialOrdering) {
-	QPartialOrdering* ret = new QPartialOrdering(*param1);
-	*outptr_QPartialOrdering = ret;
+QPartialOrdering* QPartialOrdering_new(QPartialOrdering* param1) {
+	return new QPartialOrdering(*param1);
 }
 
 void QPartialOrdering_Delete(QPartialOrdering* self, bool isSubclass) {

@@ -13,6 +13,10 @@
 #include <QVideoSurfaceFormat>
 #include <qabstractvideofilter.h>
 #include "gen_qabstractvideofilter.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QVideoFrame* QVideoFilterRunnable_Run(QVideoFilterRunnable* self, QVideoFrame* input, QVideoSurfaceFormat* surfaceFormat, int flags) {
@@ -227,16 +231,16 @@ public:
 
 };
 
-void QAbstractVideoFilter_new(QAbstractVideoFilter** outptr_QAbstractVideoFilter, QObject** outptr_QObject) {
-	MiqtVirtualQAbstractVideoFilter* ret = new MiqtVirtualQAbstractVideoFilter();
-	*outptr_QAbstractVideoFilter = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAbstractVideoFilter* QAbstractVideoFilter_new() {
+	return new MiqtVirtualQAbstractVideoFilter();
 }
 
-void QAbstractVideoFilter_new2(QObject* parent, QAbstractVideoFilter** outptr_QAbstractVideoFilter, QObject** outptr_QObject) {
-	MiqtVirtualQAbstractVideoFilter* ret = new MiqtVirtualQAbstractVideoFilter(parent);
-	*outptr_QAbstractVideoFilter = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAbstractVideoFilter* QAbstractVideoFilter_new2(QObject* parent) {
+	return new MiqtVirtualQAbstractVideoFilter(parent);
+}
+
+void QAbstractVideoFilter_virtbase(QAbstractVideoFilter* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QAbstractVideoFilter_MetaObject(const QAbstractVideoFilter* self) {

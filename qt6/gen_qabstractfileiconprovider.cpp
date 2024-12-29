@@ -6,6 +6,10 @@
 #include <cstring>
 #include <qabstractfileiconprovider.h>
 #include "gen_qabstractfileiconprovider.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAbstractFileIconProvider : public virtual QAbstractFileIconProvider {
@@ -147,9 +151,8 @@ public:
 
 };
 
-void QAbstractFileIconProvider_new(QAbstractFileIconProvider** outptr_QAbstractFileIconProvider) {
-	MiqtVirtualQAbstractFileIconProvider* ret = new MiqtVirtualQAbstractFileIconProvider();
-	*outptr_QAbstractFileIconProvider = ret;
+QAbstractFileIconProvider* QAbstractFileIconProvider_new() {
+	return new MiqtVirtualQAbstractFileIconProvider();
 }
 
 QIcon* QAbstractFileIconProvider_Icon(const QAbstractFileIconProvider* self, int param1) {

@@ -13,6 +13,10 @@
 #include <QVector3D>
 #include <qaudioroom.h>
 #include "gen_qaudioroom.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAudioRoom : public virtual QAudioRoom {
@@ -195,10 +199,12 @@ public:
 
 };
 
-void QAudioRoom_new(QAudioEngine* engine, QAudioRoom** outptr_QAudioRoom, QObject** outptr_QObject) {
-	MiqtVirtualQAudioRoom* ret = new MiqtVirtualQAudioRoom(engine);
-	*outptr_QAudioRoom = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAudioRoom* QAudioRoom_new(QAudioEngine* engine) {
+	return new MiqtVirtualQAudioRoom(engine);
+}
+
+void QAudioRoom_virtbase(QAudioRoom* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QAudioRoom_MetaObject(const QAudioRoom* self) {

@@ -30,7 +30,7 @@ typedef struct QScriptValue QScriptValue;
 typedef struct QVariant QVariant;
 #endif
 
-void QScriptClass_new(QScriptEngine* engine, QScriptClass** outptr_QScriptClass);
+QScriptClass* QScriptClass_new(QScriptEngine* engine);
 QScriptEngine* QScriptClass_Engine(const QScriptClass* self);
 int QScriptClass_QueryProperty(QScriptClass* self, QScriptValue* object, QScriptString* name, int flags, unsigned int* id);
 QScriptValue* QScriptClass_Property(QScriptClass* self, QScriptValue* object, QScriptString* name, unsigned int id);

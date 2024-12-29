@@ -3,16 +3,18 @@
 #include <QWebFullScreenRequest>
 #include <qwebfullscreenrequest.h>
 #include "gen_qwebfullscreenrequest.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QWebFullScreenRequest_new(QWebFullScreenRequest** outptr_QWebFullScreenRequest) {
-	QWebFullScreenRequest* ret = new QWebFullScreenRequest();
-	*outptr_QWebFullScreenRequest = ret;
+QWebFullScreenRequest* QWebFullScreenRequest_new() {
+	return new QWebFullScreenRequest();
 }
 
-void QWebFullScreenRequest_new2(QWebFullScreenRequest* param1, QWebFullScreenRequest** outptr_QWebFullScreenRequest) {
-	QWebFullScreenRequest* ret = new QWebFullScreenRequest(*param1);
-	*outptr_QWebFullScreenRequest = ret;
+QWebFullScreenRequest* QWebFullScreenRequest_new2(QWebFullScreenRequest* param1) {
+	return new QWebFullScreenRequest(*param1);
 }
 
 void QWebFullScreenRequest_Accept(QWebFullScreenRequest* self) {

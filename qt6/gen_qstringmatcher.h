@@ -22,12 +22,12 @@ typedef struct QChar QChar;
 typedef struct QStringMatcher QStringMatcher;
 #endif
 
-void QStringMatcher_new(QStringMatcher** outptr_QStringMatcher);
-void QStringMatcher_new2(struct miqt_string pattern, QStringMatcher** outptr_QStringMatcher);
-void QStringMatcher_new3(QChar* uc, ptrdiff_t lenVal, QStringMatcher** outptr_QStringMatcher);
-void QStringMatcher_new4(QStringMatcher* other, QStringMatcher** outptr_QStringMatcher);
-void QStringMatcher_new5(struct miqt_string pattern, int cs, QStringMatcher** outptr_QStringMatcher);
-void QStringMatcher_new6(QChar* uc, ptrdiff_t lenVal, int cs, QStringMatcher** outptr_QStringMatcher);
+QStringMatcher* QStringMatcher_new();
+QStringMatcher* QStringMatcher_new2(struct miqt_string pattern);
+QStringMatcher* QStringMatcher_new3(QChar* uc, ptrdiff_t lenVal);
+QStringMatcher* QStringMatcher_new4(QStringMatcher* other);
+QStringMatcher* QStringMatcher_new5(struct miqt_string pattern, int cs);
+QStringMatcher* QStringMatcher_new6(QChar* uc, ptrdiff_t lenVal, int cs);
 void QStringMatcher_OperatorAssign(QStringMatcher* self, QStringMatcher* other);
 void QStringMatcher_SetPattern(QStringMatcher* self, struct miqt_string pattern);
 void QStringMatcher_SetCaseSensitivity(QStringMatcher* self, int cs);

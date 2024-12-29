@@ -36,31 +36,26 @@ func (this *QSvgGenerator) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSvgGenerator constructs the type using only CGO pointers.
-func newQSvgGenerator(h *C.QSvgGenerator, h_QPaintDevice *C.QPaintDevice) *QSvgGenerator {
+func newQSvgGenerator(h *C.QSvgGenerator) *QSvgGenerator {
 	if h == nil {
 		return nil
 	}
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+	C.QSvgGenerator_virtbase(h, &outptr_QPaintDevice)
+
 	return &QSvgGenerator{h: h,
-		QPaintDevice: qt6.UnsafeNewQPaintDevice(unsafe.Pointer(h_QPaintDevice))}
+		QPaintDevice: qt6.UnsafeNewQPaintDevice(unsafe.Pointer(outptr_QPaintDevice))}
 }
 
 // UnsafeNewQSvgGenerator constructs the type using only unsafe pointers.
-func UnsafeNewQSvgGenerator(h unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QSvgGenerator {
-	if h == nil {
-		return nil
-	}
-
-	return &QSvgGenerator{h: (*C.QSvgGenerator)(h),
-		QPaintDevice: qt6.UnsafeNewQPaintDevice(h_QPaintDevice)}
+func UnsafeNewQSvgGenerator(h unsafe.Pointer) *QSvgGenerator {
+	return newQSvgGenerator((*C.QSvgGenerator)(h))
 }
 
 // NewQSvgGenerator constructs a new QSvgGenerator object.
 func NewQSvgGenerator() *QSvgGenerator {
-	var outptr_QSvgGenerator *C.QSvgGenerator = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QSvgGenerator_new(&outptr_QSvgGenerator, &outptr_QPaintDevice)
-	ret := newQSvgGenerator(outptr_QSvgGenerator, outptr_QPaintDevice)
+	ret := newQSvgGenerator(C.QSvgGenerator_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -96,8 +91,7 @@ func (this *QSvgGenerator) SetDescription(description string) {
 }
 
 func (this *QSvgGenerator) Size() *qt6.QSize {
-	_ret := C.QSvgGenerator_Size(this.h)
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QSvgGenerator_Size(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -107,15 +101,13 @@ func (this *QSvgGenerator) SetSize(size *qt6.QSize) {
 }
 
 func (this *QSvgGenerator) ViewBox() *qt6.QRect {
-	_ret := C.QSvgGenerator_ViewBox(this.h)
-	_goptr := qt6.UnsafeNewQRect(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQRect(unsafe.Pointer(C.QSvgGenerator_ViewBox(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSvgGenerator) ViewBoxF() *qt6.QRectF {
-	_ret := C.QSvgGenerator_ViewBoxF(this.h)
-	_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(C.QSvgGenerator_ViewBoxF(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -144,7 +136,7 @@ func (this *QSvgGenerator) SetFileName(fileName string) {
 }
 
 func (this *QSvgGenerator) OutputDevice() *qt6.QIODevice {
-	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QSvgGenerator_OutputDevice(this.h)), nil, nil)
+	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QSvgGenerator_OutputDevice(this.h)))
 }
 
 func (this *QSvgGenerator) SetOutputDevice(outputDevice *qt6.QIODevice) {
@@ -162,8 +154,12 @@ func (this *QSvgGenerator) Resolution() int {
 func (this *QSvgGenerator) callVirtualBase_PaintEngine() *qt6.QPaintEngine {
 
 	return qt6.UnsafeNewQPaintEngine(unsafe.Pointer(C.QSvgGenerator_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+
 }
 func (this *QSvgGenerator) OnPaintEngine(slot func(super func() *qt6.QPaintEngine) *qt6.QPaintEngine) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSvgGenerator_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -186,6 +182,9 @@ func (this *QSvgGenerator) callVirtualBase_Metric(metric qt6.QPaintDevice__Paint
 
 }
 func (this *QSvgGenerator) OnMetric(slot func(super func(metric qt6.QPaintDevice__PaintDeviceMetric) int, metric qt6.QPaintDevice__PaintDeviceMetric) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSvgGenerator_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -211,6 +210,9 @@ func (this *QSvgGenerator) callVirtualBase_DevType() int {
 
 }
 func (this *QSvgGenerator) OnDevType(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSvgGenerator_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -233,6 +235,9 @@ func (this *QSvgGenerator) callVirtualBase_InitPainter(painter *qt6.QPainter) {
 
 }
 func (this *QSvgGenerator) OnInitPainter(slot func(super func(painter *qt6.QPainter), painter *qt6.QPainter)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSvgGenerator_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -253,8 +258,12 @@ func miqt_exec_callback_QSvgGenerator_InitPainter(self *C.QSvgGenerator, cb C.in
 func (this *QSvgGenerator) callVirtualBase_Redirected(offset *qt6.QPoint) *qt6.QPaintDevice {
 
 	return qt6.UnsafeNewQPaintDevice(unsafe.Pointer(C.QSvgGenerator_virtualbase_Redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
+
 }
 func (this *QSvgGenerator) OnRedirected(slot func(super func(offset *qt6.QPoint) *qt6.QPaintDevice, offset *qt6.QPoint) *qt6.QPaintDevice) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSvgGenerator_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -277,8 +286,12 @@ func miqt_exec_callback_QSvgGenerator_Redirected(self *C.QSvgGenerator, cb C.int
 func (this *QSvgGenerator) callVirtualBase_SharedPainter() *qt6.QPainter {
 
 	return qt6.UnsafeNewQPainter(unsafe.Pointer(C.QSvgGenerator_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+
 }
 func (this *QSvgGenerator) OnSharedPainter(slot func(super func() *qt6.QPainter) *qt6.QPainter) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSvgGenerator_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

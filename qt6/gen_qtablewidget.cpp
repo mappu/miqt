@@ -33,16 +33,18 @@
 #include <QWidget>
 #include <qtablewidget.h>
 #include "gen_qtablewidget.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QTableWidgetSelectionRange_new(QTableWidgetSelectionRange** outptr_QTableWidgetSelectionRange) {
-	QTableWidgetSelectionRange* ret = new QTableWidgetSelectionRange();
-	*outptr_QTableWidgetSelectionRange = ret;
+QTableWidgetSelectionRange* QTableWidgetSelectionRange_new() {
+	return new QTableWidgetSelectionRange();
 }
 
-void QTableWidgetSelectionRange_new2(int top, int left, int bottom, int right, QTableWidgetSelectionRange** outptr_QTableWidgetSelectionRange) {
-	QTableWidgetSelectionRange* ret = new QTableWidgetSelectionRange(static_cast<int>(top), static_cast<int>(left), static_cast<int>(bottom), static_cast<int>(right));
-	*outptr_QTableWidgetSelectionRange = ret;
+QTableWidgetSelectionRange* QTableWidgetSelectionRange_new2(int top, int left, int bottom, int right) {
+	return new QTableWidgetSelectionRange(static_cast<int>(top), static_cast<int>(left), static_cast<int>(bottom), static_cast<int>(right));
 }
 
 int QTableWidgetSelectionRange_TopRow(const QTableWidgetSelectionRange* self) {
@@ -241,43 +243,36 @@ public:
 
 };
 
-void QTableWidgetItem_new(QTableWidgetItem** outptr_QTableWidgetItem) {
-	MiqtVirtualQTableWidgetItem* ret = new MiqtVirtualQTableWidgetItem();
-	*outptr_QTableWidgetItem = ret;
+QTableWidgetItem* QTableWidgetItem_new() {
+	return new MiqtVirtualQTableWidgetItem();
 }
 
-void QTableWidgetItem_new2(struct miqt_string text, QTableWidgetItem** outptr_QTableWidgetItem) {
+QTableWidgetItem* QTableWidgetItem_new2(struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQTableWidgetItem* ret = new MiqtVirtualQTableWidgetItem(text_QString);
-	*outptr_QTableWidgetItem = ret;
+	return new MiqtVirtualQTableWidgetItem(text_QString);
 }
 
-void QTableWidgetItem_new3(QIcon* icon, struct miqt_string text, QTableWidgetItem** outptr_QTableWidgetItem) {
+QTableWidgetItem* QTableWidgetItem_new3(QIcon* icon, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQTableWidgetItem* ret = new MiqtVirtualQTableWidgetItem(*icon, text_QString);
-	*outptr_QTableWidgetItem = ret;
+	return new MiqtVirtualQTableWidgetItem(*icon, text_QString);
 }
 
-void QTableWidgetItem_new4(QTableWidgetItem* other, QTableWidgetItem** outptr_QTableWidgetItem) {
-	MiqtVirtualQTableWidgetItem* ret = new MiqtVirtualQTableWidgetItem(*other);
-	*outptr_QTableWidgetItem = ret;
+QTableWidgetItem* QTableWidgetItem_new4(QTableWidgetItem* other) {
+	return new MiqtVirtualQTableWidgetItem(*other);
 }
 
-void QTableWidgetItem_new5(int typeVal, QTableWidgetItem** outptr_QTableWidgetItem) {
-	MiqtVirtualQTableWidgetItem* ret = new MiqtVirtualQTableWidgetItem(static_cast<int>(typeVal));
-	*outptr_QTableWidgetItem = ret;
+QTableWidgetItem* QTableWidgetItem_new5(int typeVal) {
+	return new MiqtVirtualQTableWidgetItem(static_cast<int>(typeVal));
 }
 
-void QTableWidgetItem_new6(struct miqt_string text, int typeVal, QTableWidgetItem** outptr_QTableWidgetItem) {
+QTableWidgetItem* QTableWidgetItem_new6(struct miqt_string text, int typeVal) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQTableWidgetItem* ret = new MiqtVirtualQTableWidgetItem(text_QString, static_cast<int>(typeVal));
-	*outptr_QTableWidgetItem = ret;
+	return new MiqtVirtualQTableWidgetItem(text_QString, static_cast<int>(typeVal));
 }
 
-void QTableWidgetItem_new7(QIcon* icon, struct miqt_string text, int typeVal, QTableWidgetItem** outptr_QTableWidgetItem) {
+QTableWidgetItem* QTableWidgetItem_new7(QIcon* icon, struct miqt_string text, int typeVal) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQTableWidgetItem* ret = new MiqtVirtualQTableWidgetItem(*icon, text_QString, static_cast<int>(typeVal));
-	*outptr_QTableWidgetItem = ret;
+	return new MiqtVirtualQTableWidgetItem(*icon, text_QString, static_cast<int>(typeVal));
 }
 
 QTableWidgetItem* QTableWidgetItem_Clone(const QTableWidgetItem* self) {
@@ -1348,52 +1343,24 @@ public:
 
 };
 
-void QTableWidget_new(QWidget* parent, QTableWidget** outptr_QTableWidget, QTableView** outptr_QTableView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQTableWidget* ret = new MiqtVirtualQTableWidget(parent);
-	*outptr_QTableWidget = ret;
-	*outptr_QTableView = static_cast<QTableView*>(ret);
-	*outptr_QAbstractItemView = static_cast<QAbstractItemView*>(ret);
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QTableWidget* QTableWidget_new(QWidget* parent) {
+	return new MiqtVirtualQTableWidget(parent);
 }
 
-void QTableWidget_new2(QTableWidget** outptr_QTableWidget, QTableView** outptr_QTableView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQTableWidget* ret = new MiqtVirtualQTableWidget();
-	*outptr_QTableWidget = ret;
-	*outptr_QTableView = static_cast<QTableView*>(ret);
-	*outptr_QAbstractItemView = static_cast<QAbstractItemView*>(ret);
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QTableWidget* QTableWidget_new2() {
+	return new MiqtVirtualQTableWidget();
 }
 
-void QTableWidget_new3(int rows, int columns, QTableWidget** outptr_QTableWidget, QTableView** outptr_QTableView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQTableWidget* ret = new MiqtVirtualQTableWidget(static_cast<int>(rows), static_cast<int>(columns));
-	*outptr_QTableWidget = ret;
-	*outptr_QTableView = static_cast<QTableView*>(ret);
-	*outptr_QAbstractItemView = static_cast<QAbstractItemView*>(ret);
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QTableWidget* QTableWidget_new3(int rows, int columns) {
+	return new MiqtVirtualQTableWidget(static_cast<int>(rows), static_cast<int>(columns));
 }
 
-void QTableWidget_new4(int rows, int columns, QWidget* parent, QTableWidget** outptr_QTableWidget, QTableView** outptr_QTableView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQTableWidget* ret = new MiqtVirtualQTableWidget(static_cast<int>(rows), static_cast<int>(columns), parent);
-	*outptr_QTableWidget = ret;
-	*outptr_QTableView = static_cast<QTableView*>(ret);
-	*outptr_QAbstractItemView = static_cast<QAbstractItemView*>(ret);
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QTableWidget* QTableWidget_new4(int rows, int columns, QWidget* parent) {
+	return new MiqtVirtualQTableWidget(static_cast<int>(rows), static_cast<int>(columns), parent);
+}
+
+void QTableWidget_virtbase(QTableWidget* src, QTableView** outptr_QTableView) {
+	*outptr_QTableView = static_cast<QTableView*>(src);
 }
 
 QMetaObject* QTableWidget_MetaObject(const QTableWidget* self) {

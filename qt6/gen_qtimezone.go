@@ -61,24 +61,19 @@ func newQTimeZone(h *C.QTimeZone) *QTimeZone {
 	if h == nil {
 		return nil
 	}
+
 	return &QTimeZone{h: h}
 }
 
 // UnsafeNewQTimeZone constructs the type using only unsafe pointers.
 func UnsafeNewQTimeZone(h unsafe.Pointer) *QTimeZone {
-	if h == nil {
-		return nil
-	}
-
-	return &QTimeZone{h: (*C.QTimeZone)(h)}
+	return newQTimeZone((*C.QTimeZone)(h))
 }
 
 // NewQTimeZone constructs a new QTimeZone object.
 func NewQTimeZone() *QTimeZone {
-	var outptr_QTimeZone *C.QTimeZone = nil
 
-	C.QTimeZone_new(&outptr_QTimeZone)
-	ret := newQTimeZone(outptr_QTimeZone)
+	ret := newQTimeZone(C.QTimeZone_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -88,20 +83,16 @@ func NewQTimeZone2(ianaId []byte) *QTimeZone {
 	ianaId_alias := C.struct_miqt_string{}
 	ianaId_alias.data = (*C.char)(unsafe.Pointer(&ianaId[0]))
 	ianaId_alias.len = C.size_t(len(ianaId))
-	var outptr_QTimeZone *C.QTimeZone = nil
 
-	C.QTimeZone_new2(ianaId_alias, &outptr_QTimeZone)
-	ret := newQTimeZone(outptr_QTimeZone)
+	ret := newQTimeZone(C.QTimeZone_new2(ianaId_alias))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTimeZone3 constructs a new QTimeZone object.
 func NewQTimeZone3(offsetSeconds int) *QTimeZone {
-	var outptr_QTimeZone *C.QTimeZone = nil
 
-	C.QTimeZone_new3((C.int)(offsetSeconds), &outptr_QTimeZone)
-	ret := newQTimeZone(outptr_QTimeZone)
+	ret := newQTimeZone(C.QTimeZone_new3((C.int)(offsetSeconds)))
 	ret.isSubclass = true
 	return ret
 }
@@ -119,20 +110,16 @@ func NewQTimeZone4(zoneId []byte, offsetSeconds int, name string, abbreviation s
 	abbreviation_ms.data = C.CString(abbreviation)
 	abbreviation_ms.len = C.size_t(len(abbreviation))
 	defer C.free(unsafe.Pointer(abbreviation_ms.data))
-	var outptr_QTimeZone *C.QTimeZone = nil
 
-	C.QTimeZone_new4(zoneId_alias, (C.int)(offsetSeconds), name_ms, abbreviation_ms, &outptr_QTimeZone)
-	ret := newQTimeZone(outptr_QTimeZone)
+	ret := newQTimeZone(C.QTimeZone_new4(zoneId_alias, (C.int)(offsetSeconds), name_ms, abbreviation_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTimeZone5 constructs a new QTimeZone object.
 func NewQTimeZone5(other *QTimeZone) *QTimeZone {
-	var outptr_QTimeZone *C.QTimeZone = nil
 
-	C.QTimeZone_new5(other.cPointer(), &outptr_QTimeZone)
-	ret := newQTimeZone(outptr_QTimeZone)
+	ret := newQTimeZone(C.QTimeZone_new5(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -150,10 +137,8 @@ func NewQTimeZone6(zoneId []byte, offsetSeconds int, name string, abbreviation s
 	abbreviation_ms.data = C.CString(abbreviation)
 	abbreviation_ms.len = C.size_t(len(abbreviation))
 	defer C.free(unsafe.Pointer(abbreviation_ms.data))
-	var outptr_QTimeZone *C.QTimeZone = nil
 
-	C.QTimeZone_new6(zoneId_alias, (C.int)(offsetSeconds), name_ms, abbreviation_ms, (C.uint16_t)(territory), &outptr_QTimeZone)
-	ret := newQTimeZone(outptr_QTimeZone)
+	ret := newQTimeZone(C.QTimeZone_new6(zoneId_alias, (C.int)(offsetSeconds), name_ms, abbreviation_ms, (C.uint16_t)(territory)))
 	ret.isSubclass = true
 	return ret
 }
@@ -175,10 +160,8 @@ func NewQTimeZone7(zoneId []byte, offsetSeconds int, name string, abbreviation s
 	comment_ms.data = C.CString(comment)
 	comment_ms.len = C.size_t(len(comment))
 	defer C.free(unsafe.Pointer(comment_ms.data))
-	var outptr_QTimeZone *C.QTimeZone = nil
 
-	C.QTimeZone_new7(zoneId_alias, (C.int)(offsetSeconds), name_ms, abbreviation_ms, (C.uint16_t)(territory), comment_ms, &outptr_QTimeZone)
-	ret := newQTimeZone(outptr_QTimeZone)
+	ret := newQTimeZone(C.QTimeZone_new7(zoneId_alias, (C.int)(offsetSeconds), name_ms, abbreviation_ms, (C.uint16_t)(territory), comment_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -259,8 +242,7 @@ func (this *QTimeZone) IsDaylightTime(atDateTime *QDateTime) bool {
 }
 
 func (this *QTimeZone) OffsetData(forDateTime *QDateTime) *QTimeZone__OffsetData {
-	_ret := C.QTimeZone_OffsetData(this.h, forDateTime.cPointer())
-	_goptr := newQTimeZone__OffsetData(_ret)
+	_goptr := newQTimeZone__OffsetData(C.QTimeZone_OffsetData(this.h, forDateTime.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -270,15 +252,13 @@ func (this *QTimeZone) HasTransitions() bool {
 }
 
 func (this *QTimeZone) NextTransition(afterDateTime *QDateTime) *QTimeZone__OffsetData {
-	_ret := C.QTimeZone_NextTransition(this.h, afterDateTime.cPointer())
-	_goptr := newQTimeZone__OffsetData(_ret)
+	_goptr := newQTimeZone__OffsetData(C.QTimeZone_NextTransition(this.h, afterDateTime.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTimeZone) PreviousTransition(beforeDateTime *QDateTime) *QTimeZone__OffsetData {
-	_ret := C.QTimeZone_PreviousTransition(this.h, beforeDateTime.cPointer())
-	_goptr := newQTimeZone__OffsetData(_ret)
+	_goptr := newQTimeZone__OffsetData(C.QTimeZone_PreviousTransition(this.h, beforeDateTime.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -288,8 +268,7 @@ func (this *QTimeZone) Transitions(fromDateTime *QDateTime, toDateTime *QDateTim
 	_ret := make([]QTimeZone__OffsetData, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTimeZone__OffsetData)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQTimeZone__OffsetData(_lv_ret)
+		_lv_goptr := newQTimeZone__OffsetData(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -304,15 +283,13 @@ func QTimeZone_SystemTimeZoneId() []byte {
 }
 
 func QTimeZone_SystemTimeZone() *QTimeZone {
-	_ret := C.QTimeZone_SystemTimeZone()
-	_goptr := newQTimeZone(_ret)
+	_goptr := newQTimeZone(C.QTimeZone_SystemTimeZone())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QTimeZone_Utc() *QTimeZone {
-	_ret := C.QTimeZone_Utc()
-	_goptr := newQTimeZone(_ret)
+	_goptr := newQTimeZone(C.QTimeZone_Utc())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -491,24 +468,19 @@ func newQTimeZone__OffsetData(h *C.QTimeZone__OffsetData) *QTimeZone__OffsetData
 	if h == nil {
 		return nil
 	}
+
 	return &QTimeZone__OffsetData{h: h}
 }
 
 // UnsafeNewQTimeZone__OffsetData constructs the type using only unsafe pointers.
 func UnsafeNewQTimeZone__OffsetData(h unsafe.Pointer) *QTimeZone__OffsetData {
-	if h == nil {
-		return nil
-	}
-
-	return &QTimeZone__OffsetData{h: (*C.QTimeZone__OffsetData)(h)}
+	return newQTimeZone__OffsetData((*C.QTimeZone__OffsetData)(h))
 }
 
 // NewQTimeZone__OffsetData constructs a new QTimeZone::OffsetData object.
 func NewQTimeZone__OffsetData(param1 *QTimeZone__OffsetData) *QTimeZone__OffsetData {
-	var outptr_QTimeZone__OffsetData *C.QTimeZone__OffsetData = nil
 
-	C.QTimeZone__OffsetData_new(param1.cPointer(), &outptr_QTimeZone__OffsetData)
-	ret := newQTimeZone__OffsetData(outptr_QTimeZone__OffsetData)
+	ret := newQTimeZone__OffsetData(C.QTimeZone__OffsetData_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

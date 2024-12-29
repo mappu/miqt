@@ -11,6 +11,10 @@
 #include <cstring>
 #include <qmouseeventtransition.h>
 #include "gen_qmouseeventtransition.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQMouseEventTransition : public virtual QMouseEventTransition {
@@ -95,36 +99,24 @@ public:
 
 };
 
-void QMouseEventTransition_new(QMouseEventTransition** outptr_QMouseEventTransition, QEventTransition** outptr_QEventTransition, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject) {
-	MiqtVirtualQMouseEventTransition* ret = new MiqtVirtualQMouseEventTransition();
-	*outptr_QMouseEventTransition = ret;
-	*outptr_QEventTransition = static_cast<QEventTransition*>(ret);
-	*outptr_QAbstractTransition = static_cast<QAbstractTransition*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QMouseEventTransition* QMouseEventTransition_new() {
+	return new MiqtVirtualQMouseEventTransition();
 }
 
-void QMouseEventTransition_new2(QObject* object, int typeVal, int button, QMouseEventTransition** outptr_QMouseEventTransition, QEventTransition** outptr_QEventTransition, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject) {
-	MiqtVirtualQMouseEventTransition* ret = new MiqtVirtualQMouseEventTransition(object, static_cast<QEvent::Type>(typeVal), static_cast<Qt::MouseButton>(button));
-	*outptr_QMouseEventTransition = ret;
-	*outptr_QEventTransition = static_cast<QEventTransition*>(ret);
-	*outptr_QAbstractTransition = static_cast<QAbstractTransition*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QMouseEventTransition* QMouseEventTransition_new2(QObject* object, int typeVal, int button) {
+	return new MiqtVirtualQMouseEventTransition(object, static_cast<QEvent::Type>(typeVal), static_cast<Qt::MouseButton>(button));
 }
 
-void QMouseEventTransition_new3(QState* sourceState, QMouseEventTransition** outptr_QMouseEventTransition, QEventTransition** outptr_QEventTransition, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject) {
-	MiqtVirtualQMouseEventTransition* ret = new MiqtVirtualQMouseEventTransition(sourceState);
-	*outptr_QMouseEventTransition = ret;
-	*outptr_QEventTransition = static_cast<QEventTransition*>(ret);
-	*outptr_QAbstractTransition = static_cast<QAbstractTransition*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QMouseEventTransition* QMouseEventTransition_new3(QState* sourceState) {
+	return new MiqtVirtualQMouseEventTransition(sourceState);
 }
 
-void QMouseEventTransition_new4(QObject* object, int typeVal, int button, QState* sourceState, QMouseEventTransition** outptr_QMouseEventTransition, QEventTransition** outptr_QEventTransition, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject) {
-	MiqtVirtualQMouseEventTransition* ret = new MiqtVirtualQMouseEventTransition(object, static_cast<QEvent::Type>(typeVal), static_cast<Qt::MouseButton>(button), sourceState);
-	*outptr_QMouseEventTransition = ret;
-	*outptr_QEventTransition = static_cast<QEventTransition*>(ret);
-	*outptr_QAbstractTransition = static_cast<QAbstractTransition*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QMouseEventTransition* QMouseEventTransition_new4(QObject* object, int typeVal, int button, QState* sourceState) {
+	return new MiqtVirtualQMouseEventTransition(object, static_cast<QEvent::Type>(typeVal), static_cast<Qt::MouseButton>(button), sourceState);
+}
+
+void QMouseEventTransition_virtbase(QMouseEventTransition* src, QEventTransition** outptr_QEventTransition) {
+	*outptr_QEventTransition = static_cast<QEventTransition*>(src);
 }
 
 QMetaObject* QMouseEventTransition_MetaObject(const QMouseEventTransition* self) {

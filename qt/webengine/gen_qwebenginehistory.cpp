@@ -8,11 +8,14 @@
 #include <QWebEngineHistoryItem>
 #include <qwebenginehistory.h>
 #include "gen_qwebenginehistory.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QWebEngineHistoryItem_new(QWebEngineHistoryItem* other, QWebEngineHistoryItem** outptr_QWebEngineHistoryItem) {
-	QWebEngineHistoryItem* ret = new QWebEngineHistoryItem(*other);
-	*outptr_QWebEngineHistoryItem = ret;
+QWebEngineHistoryItem* QWebEngineHistoryItem_new(QWebEngineHistoryItem* other) {
+	return new QWebEngineHistoryItem(*other);
 }
 
 void QWebEngineHistoryItem_OperatorAssign(QWebEngineHistoryItem* self, QWebEngineHistoryItem* other) {

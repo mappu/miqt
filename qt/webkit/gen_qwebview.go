@@ -38,46 +38,34 @@ func (this *QWebView) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebView constructs the type using only CGO pointers.
-func newQWebView(h *C.QWebView, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QWebView {
+func newQWebView(h *C.QWebView) *QWebView {
 	if h == nil {
 		return nil
 	}
+	var outptr_QWidget *C.QWidget = nil
+	C.QWebView_virtbase(h, &outptr_QWidget)
+
 	return &QWebView{h: h,
-		QWidget: qt.UnsafeNewQWidget(unsafe.Pointer(h_QWidget), unsafe.Pointer(h_QObject), unsafe.Pointer(h_QPaintDevice))}
+		QWidget: qt.UnsafeNewQWidget(unsafe.Pointer(outptr_QWidget))}
 }
 
 // UnsafeNewQWebView constructs the type using only unsafe pointers.
-func UnsafeNewQWebView(h unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QWebView {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebView{h: (*C.QWebView)(h),
-		QWidget: qt.UnsafeNewQWidget(h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQWebView(h unsafe.Pointer) *QWebView {
+	return newQWebView((*C.QWebView)(h))
 }
 
 // NewQWebView constructs a new QWebView object.
 func NewQWebView(parent *qt.QWidget) *QWebView {
-	var outptr_QWebView *C.QWebView = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QWebView_new((*C.QWidget)(parent.UnsafePointer()), &outptr_QWebView, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQWebView(outptr_QWebView, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQWebView(C.QWebView_new((*C.QWidget)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebView2 constructs a new QWebView object.
 func NewQWebView2() *QWebView {
-	var outptr_QWebView *C.QWebView = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QWebView_new2(&outptr_QWebView, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQWebView(outptr_QWebView, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQWebView(C.QWebView_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -111,7 +99,7 @@ func QWebView_TrUtf8(s string) string {
 }
 
 func (this *QWebView) Page() *QWebPage {
-	return UnsafeNewQWebPage(unsafe.Pointer(C.QWebView_Page(this.h)), nil)
+	return newQWebPage(C.QWebView_Page(this.h))
 }
 
 func (this *QWebView) SetPage(page *QWebPage) {
@@ -142,11 +130,11 @@ func (this *QWebView) SetContent(data []byte) {
 }
 
 func (this *QWebView) History() *QWebHistory {
-	return UnsafeNewQWebHistory(unsafe.Pointer(C.QWebView_History(this.h)))
+	return newQWebHistory(C.QWebView_History(this.h))
 }
 
 func (this *QWebView) Settings() *QWebSettings {
-	return UnsafeNewQWebSettings(unsafe.Pointer(C.QWebView_Settings(this.h)))
+	return newQWebSettings(C.QWebView_Settings(this.h))
 }
 
 func (this *QWebView) Title() string {
@@ -161,15 +149,13 @@ func (this *QWebView) SetUrl(url *qt.QUrl) {
 }
 
 func (this *QWebView) Url() *qt.QUrl {
-	_ret := C.QWebView_Url(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebView_Url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebView) Icon() *qt.QIcon {
-	_ret := C.QWebView_Icon(this.h)
-	_goptr := qt.UnsafeNewQIcon(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQIcon(unsafe.Pointer(C.QWebView_Icon(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -193,7 +179,7 @@ func (this *QWebView) SelectedHtml() string {
 }
 
 func (this *QWebView) PageAction(action QWebPage__WebAction) *qt.QAction {
-	return qt.UnsafeNewQAction(unsafe.Pointer(C.QWebView_PageAction(this.h, (C.int)(action))), nil)
+	return qt.UnsafeNewQAction(unsafe.Pointer(C.QWebView_PageAction(this.h, (C.int)(action))))
 }
 
 func (this *QWebView) TriggerPageAction(action QWebPage__WebAction) {
@@ -205,15 +191,13 @@ func (this *QWebView) IsModified() bool {
 }
 
 func (this *QWebView) InputMethodQuery(property qt.InputMethodQuery) *qt.QVariant {
-	_ret := C.QWebView_InputMethodQuery(this.h, (C.int)(property))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QWebView_InputMethodQuery(this.h, (C.int)(property))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebView) SizeHint() *qt.QSize {
-	_ret := C.QWebView_SizeHint(this.h)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebView_SizeHint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -566,13 +550,15 @@ func (this *QWebView) FindText2(subString string, options QWebPage__FindFlag) bo
 
 func (this *QWebView) callVirtualBase_InputMethodQuery(property qt.InputMethodQuery) *qt.QVariant {
 
-	_ret := C.QWebView_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(property))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QWebView_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(property))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QWebView) OnInputMethodQuery(slot func(super func(property qt.InputMethodQuery) *qt.QVariant, property qt.InputMethodQuery) *qt.QVariant) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -594,13 +580,15 @@ func miqt_exec_callback_QWebView_InputMethodQuery(self *C.QWebView, cb C.intptr_
 
 func (this *QWebView) callVirtualBase_SizeHint() *qt.QSize {
 
-	_ret := C.QWebView_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebView_virtualbase_SizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QWebView) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -623,6 +611,9 @@ func (this *QWebView) callVirtualBase_Event(param1 *qt.QEvent) bool {
 
 }
 func (this *QWebView) OnEvent(slot func(super func(param1 *qt.QEvent) bool, param1 *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -648,6 +639,9 @@ func (this *QWebView) callVirtualBase_ResizeEvent(param1 *qt.QResizeEvent) {
 
 }
 func (this *QWebView) OnResizeEvent(slot func(super func(param1 *qt.QResizeEvent), param1 *qt.QResizeEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -659,7 +653,7 @@ func miqt_exec_callback_QWebView_ResizeEvent(self *C.QWebView, cb C.intptr_t, pa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQResizeEvent(unsafe.Pointer(param1), nil)
+	slotval1 := qt.UnsafeNewQResizeEvent(unsafe.Pointer(param1))
 
 	gofunc((&QWebView{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -671,6 +665,9 @@ func (this *QWebView) callVirtualBase_PaintEvent(param1 *qt.QPaintEvent) {
 
 }
 func (this *QWebView) OnPaintEvent(slot func(super func(param1 *qt.QPaintEvent), param1 *qt.QPaintEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -682,7 +679,7 @@ func miqt_exec_callback_QWebView_PaintEvent(self *C.QWebView, cb C.intptr_t, par
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQPaintEvent(unsafe.Pointer(param1), nil)
+	slotval1 := qt.UnsafeNewQPaintEvent(unsafe.Pointer(param1))
 
 	gofunc((&QWebView{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -690,9 +687,13 @@ func miqt_exec_callback_QWebView_PaintEvent(self *C.QWebView, cb C.intptr_t, par
 
 func (this *QWebView) callVirtualBase_CreateWindow(typeVal QWebPage__WebWindowType) *QWebView {
 
-	return UnsafeNewQWebView(unsafe.Pointer(C.QWebView_virtualbase_CreateWindow(unsafe.Pointer(this.h), (C.int)(typeVal))), nil, nil, nil)
+	return newQWebView(C.QWebView_virtualbase_CreateWindow(unsafe.Pointer(this.h), (C.int)(typeVal)))
+
 }
 func (this *QWebView) OnCreateWindow(slot func(super func(typeVal QWebPage__WebWindowType) *QWebView, typeVal QWebPage__WebWindowType) *QWebView) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_CreateWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -718,6 +719,9 @@ func (this *QWebView) callVirtualBase_ChangeEvent(param1 *qt.QEvent) {
 
 }
 func (this *QWebView) OnChangeEvent(slot func(super func(param1 *qt.QEvent), param1 *qt.QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -741,6 +745,9 @@ func (this *QWebView) callVirtualBase_MouseMoveEvent(param1 *qt.QMouseEvent) {
 
 }
 func (this *QWebView) OnMouseMoveEvent(slot func(super func(param1 *qt.QMouseEvent), param1 *qt.QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -752,7 +759,7 @@ func miqt_exec_callback_QWebView_MouseMoveEvent(self *C.QWebView, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(param1))
 
 	gofunc((&QWebView{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -764,6 +771,9 @@ func (this *QWebView) callVirtualBase_MousePressEvent(param1 *qt.QMouseEvent) {
 
 }
 func (this *QWebView) OnMousePressEvent(slot func(super func(param1 *qt.QMouseEvent), param1 *qt.QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -775,7 +785,7 @@ func miqt_exec_callback_QWebView_MousePressEvent(self *C.QWebView, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(param1))
 
 	gofunc((&QWebView{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -787,6 +797,9 @@ func (this *QWebView) callVirtualBase_MouseDoubleClickEvent(param1 *qt.QMouseEve
 
 }
 func (this *QWebView) OnMouseDoubleClickEvent(slot func(super func(param1 *qt.QMouseEvent), param1 *qt.QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -798,7 +811,7 @@ func miqt_exec_callback_QWebView_MouseDoubleClickEvent(self *C.QWebView, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(param1))
 
 	gofunc((&QWebView{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -810,6 +823,9 @@ func (this *QWebView) callVirtualBase_MouseReleaseEvent(param1 *qt.QMouseEvent) 
 
 }
 func (this *QWebView) OnMouseReleaseEvent(slot func(super func(param1 *qt.QMouseEvent), param1 *qt.QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -821,7 +837,7 @@ func miqt_exec_callback_QWebView_MouseReleaseEvent(self *C.QWebView, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt.UnsafeNewQMouseEvent(unsafe.Pointer(param1))
 
 	gofunc((&QWebView{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -833,6 +849,9 @@ func (this *QWebView) callVirtualBase_ContextMenuEvent(param1 *qt.QContextMenuEv
 
 }
 func (this *QWebView) OnContextMenuEvent(slot func(super func(param1 *qt.QContextMenuEvent), param1 *qt.QContextMenuEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -844,7 +863,7 @@ func miqt_exec_callback_QWebView_ContextMenuEvent(self *C.QWebView, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQContextMenuEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt.UnsafeNewQContextMenuEvent(unsafe.Pointer(param1))
 
 	gofunc((&QWebView{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -856,6 +875,9 @@ func (this *QWebView) callVirtualBase_WheelEvent(param1 *qt.QWheelEvent) {
 
 }
 func (this *QWebView) OnWheelEvent(slot func(super func(param1 *qt.QWheelEvent), param1 *qt.QWheelEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -867,7 +889,7 @@ func miqt_exec_callback_QWebView_WheelEvent(self *C.QWebView, cb C.intptr_t, par
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQWheelEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt.UnsafeNewQWheelEvent(unsafe.Pointer(param1))
 
 	gofunc((&QWebView{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -879,6 +901,9 @@ func (this *QWebView) callVirtualBase_KeyPressEvent(param1 *qt.QKeyEvent) {
 
 }
 func (this *QWebView) OnKeyPressEvent(slot func(super func(param1 *qt.QKeyEvent), param1 *qt.QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -890,7 +915,7 @@ func miqt_exec_callback_QWebView_KeyPressEvent(self *C.QWebView, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(param1))
 
 	gofunc((&QWebView{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -902,6 +927,9 @@ func (this *QWebView) callVirtualBase_KeyReleaseEvent(param1 *qt.QKeyEvent) {
 
 }
 func (this *QWebView) OnKeyReleaseEvent(slot func(super func(param1 *qt.QKeyEvent), param1 *qt.QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -913,7 +941,7 @@ func miqt_exec_callback_QWebView_KeyReleaseEvent(self *C.QWebView, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(param1))
 
 	gofunc((&QWebView{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
 
@@ -925,6 +953,9 @@ func (this *QWebView) callVirtualBase_DragEnterEvent(param1 *qt.QDragEnterEvent)
 
 }
 func (this *QWebView) OnDragEnterEvent(slot func(super func(param1 *qt.QDragEnterEvent), param1 *qt.QDragEnterEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -936,7 +967,7 @@ func miqt_exec_callback_QWebView_DragEnterEvent(self *C.QWebView, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQDragEnterEvent(unsafe.Pointer(param1), nil, nil, nil)
+	slotval1 := qt.UnsafeNewQDragEnterEvent(unsafe.Pointer(param1))
 
 	gofunc((&QWebView{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -948,6 +979,9 @@ func (this *QWebView) callVirtualBase_DragLeaveEvent(param1 *qt.QDragLeaveEvent)
 
 }
 func (this *QWebView) OnDragLeaveEvent(slot func(super func(param1 *qt.QDragLeaveEvent), param1 *qt.QDragLeaveEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -959,7 +993,7 @@ func miqt_exec_callback_QWebView_DragLeaveEvent(self *C.QWebView, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQDragLeaveEvent(unsafe.Pointer(param1), nil)
+	slotval1 := qt.UnsafeNewQDragLeaveEvent(unsafe.Pointer(param1))
 
 	gofunc((&QWebView{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -971,6 +1005,9 @@ func (this *QWebView) callVirtualBase_DragMoveEvent(param1 *qt.QDragMoveEvent) {
 
 }
 func (this *QWebView) OnDragMoveEvent(slot func(super func(param1 *qt.QDragMoveEvent), param1 *qt.QDragMoveEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -982,7 +1019,7 @@ func miqt_exec_callback_QWebView_DragMoveEvent(self *C.QWebView, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQDragMoveEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt.UnsafeNewQDragMoveEvent(unsafe.Pointer(param1))
 
 	gofunc((&QWebView{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -994,6 +1031,9 @@ func (this *QWebView) callVirtualBase_DropEvent(param1 *qt.QDropEvent) {
 
 }
 func (this *QWebView) OnDropEvent(slot func(super func(param1 *qt.QDropEvent), param1 *qt.QDropEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1005,7 +1045,7 @@ func miqt_exec_callback_QWebView_DropEvent(self *C.QWebView, cb C.intptr_t, para
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQDropEvent(unsafe.Pointer(param1), nil)
+	slotval1 := qt.UnsafeNewQDropEvent(unsafe.Pointer(param1))
 
 	gofunc((&QWebView{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -1017,6 +1057,9 @@ func (this *QWebView) callVirtualBase_FocusInEvent(param1 *qt.QFocusEvent) {
 
 }
 func (this *QWebView) OnFocusInEvent(slot func(super func(param1 *qt.QFocusEvent), param1 *qt.QFocusEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1028,7 +1071,7 @@ func miqt_exec_callback_QWebView_FocusInEvent(self *C.QWebView, cb C.intptr_t, p
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQFocusEvent(unsafe.Pointer(param1), nil)
+	slotval1 := qt.UnsafeNewQFocusEvent(unsafe.Pointer(param1))
 
 	gofunc((&QWebView{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -1040,6 +1083,9 @@ func (this *QWebView) callVirtualBase_FocusOutEvent(param1 *qt.QFocusEvent) {
 
 }
 func (this *QWebView) OnFocusOutEvent(slot func(super func(param1 *qt.QFocusEvent), param1 *qt.QFocusEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1051,7 +1097,7 @@ func miqt_exec_callback_QWebView_FocusOutEvent(self *C.QWebView, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQFocusEvent(unsafe.Pointer(param1), nil)
+	slotval1 := qt.UnsafeNewQFocusEvent(unsafe.Pointer(param1))
 
 	gofunc((&QWebView{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -1063,6 +1109,9 @@ func (this *QWebView) callVirtualBase_InputMethodEvent(param1 *qt.QInputMethodEv
 
 }
 func (this *QWebView) OnInputMethodEvent(slot func(super func(param1 *qt.QInputMethodEvent), param1 *qt.QInputMethodEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1074,7 +1123,7 @@ func miqt_exec_callback_QWebView_InputMethodEvent(self *C.QWebView, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQInputMethodEvent(unsafe.Pointer(param1), nil)
+	slotval1 := qt.UnsafeNewQInputMethodEvent(unsafe.Pointer(param1))
 
 	gofunc((&QWebView{h: self}).callVirtualBase_InputMethodEvent, slotval1)
 
@@ -1086,6 +1135,9 @@ func (this *QWebView) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
 }
 func (this *QWebView) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1111,6 +1163,9 @@ func (this *QWebView) callVirtualBase_DevType() int {
 
 }
 func (this *QWebView) OnDevType(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1133,6 +1188,9 @@ func (this *QWebView) callVirtualBase_SetVisible(visible bool) {
 
 }
 func (this *QWebView) OnSetVisible(slot func(super func(visible bool), visible bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1152,13 +1210,15 @@ func miqt_exec_callback_QWebView_SetVisible(self *C.QWebView, cb C.intptr_t, vis
 
 func (this *QWebView) callVirtualBase_MinimumSizeHint() *qt.QSize {
 
-	_ret := C.QWebView_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebView_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QWebView) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1181,6 +1241,9 @@ func (this *QWebView) callVirtualBase_HeightForWidth(param1 int) int {
 
 }
 func (this *QWebView) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1206,6 +1269,9 @@ func (this *QWebView) callVirtualBase_HasHeightForWidth() bool {
 
 }
 func (this *QWebView) OnHasHeightForWidth(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1225,8 +1291,12 @@ func miqt_exec_callback_QWebView_HasHeightForWidth(self *C.QWebView, cb C.intptr
 func (this *QWebView) callVirtualBase_PaintEngine() *qt.QPaintEngine {
 
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QWebView_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+
 }
 func (this *QWebView) OnPaintEngine(slot func(super func() *qt.QPaintEngine) *qt.QPaintEngine) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1249,6 +1319,9 @@ func (this *QWebView) callVirtualBase_EnterEvent(event *qt.QEvent) {
 
 }
 func (this *QWebView) OnEnterEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1272,6 +1345,9 @@ func (this *QWebView) callVirtualBase_LeaveEvent(event *qt.QEvent) {
 
 }
 func (this *QWebView) OnLeaveEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1295,6 +1371,9 @@ func (this *QWebView) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
 
 }
 func (this *QWebView) OnMoveEvent(slot func(super func(event *qt.QMoveEvent), event *qt.QMoveEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1306,7 +1385,7 @@ func miqt_exec_callback_QWebView_MoveEvent(self *C.QWebView, cb C.intptr_t, even
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQMoveEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQMoveEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebView{h: self}).callVirtualBase_MoveEvent, slotval1)
 
@@ -1318,6 +1397,9 @@ func (this *QWebView) callVirtualBase_CloseEvent(event *qt.QCloseEvent) {
 
 }
 func (this *QWebView) OnCloseEvent(slot func(super func(event *qt.QCloseEvent), event *qt.QCloseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1329,7 +1411,7 @@ func miqt_exec_callback_QWebView_CloseEvent(self *C.QWebView, cb C.intptr_t, eve
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQCloseEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQCloseEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebView{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -1341,6 +1423,9 @@ func (this *QWebView) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
 
 }
 func (this *QWebView) OnTabletEvent(slot func(super func(event *qt.QTabletEvent), event *qt.QTabletEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1352,7 +1437,7 @@ func miqt_exec_callback_QWebView_TabletEvent(self *C.QWebView, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTabletEvent(unsafe.Pointer(event), nil, nil)
+	slotval1 := qt.UnsafeNewQTabletEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebView{h: self}).callVirtualBase_TabletEvent, slotval1)
 
@@ -1364,6 +1449,9 @@ func (this *QWebView) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
 
 }
 func (this *QWebView) OnActionEvent(slot func(super func(event *qt.QActionEvent), event *qt.QActionEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1375,7 +1463,7 @@ func miqt_exec_callback_QWebView_ActionEvent(self *C.QWebView, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQActionEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQActionEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebView{h: self}).callVirtualBase_ActionEvent, slotval1)
 
@@ -1387,6 +1475,9 @@ func (this *QWebView) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
 
 }
 func (this *QWebView) OnShowEvent(slot func(super func(event *qt.QShowEvent), event *qt.QShowEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1398,7 +1489,7 @@ func miqt_exec_callback_QWebView_ShowEvent(self *C.QWebView, cb C.intptr_t, even
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQShowEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQShowEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebView{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -1410,6 +1501,9 @@ func (this *QWebView) callVirtualBase_HideEvent(event *qt.QHideEvent) {
 
 }
 func (this *QWebView) OnHideEvent(slot func(super func(event *qt.QHideEvent), event *qt.QHideEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1421,7 +1515,7 @@ func miqt_exec_callback_QWebView_HideEvent(self *C.QWebView, cb C.intptr_t, even
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQHideEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQHideEvent(unsafe.Pointer(event))
 
 	gofunc((&QWebView{h: self}).callVirtualBase_HideEvent, slotval1)
 
@@ -1436,6 +1530,9 @@ func (this *QWebView) callVirtualBase_NativeEvent(eventType []byte, message unsa
 
 }
 func (this *QWebView) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1467,6 +1564,9 @@ func (this *QWebView) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDevice
 
 }
 func (this *QWebView) OnMetric(slot func(super func(param1 qt.QPaintDevice__PaintDeviceMetric) int, param1 qt.QPaintDevice__PaintDeviceMetric) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1492,6 +1592,9 @@ func (this *QWebView) callVirtualBase_InitPainter(painter *qt.QPainter) {
 
 }
 func (this *QWebView) OnInitPainter(slot func(super func(painter *qt.QPainter), painter *qt.QPainter)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1512,8 +1615,12 @@ func miqt_exec_callback_QWebView_InitPainter(self *C.QWebView, cb C.intptr_t, pa
 func (this *QWebView) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
 
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QWebView_virtualbase_Redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
+
 }
 func (this *QWebView) OnRedirected(slot func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1536,8 +1643,12 @@ func miqt_exec_callback_QWebView_Redirected(self *C.QWebView, cb C.intptr_t, off
 func (this *QWebView) callVirtualBase_SharedPainter() *qt.QPainter {
 
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QWebView_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+
 }
 func (this *QWebView) OnSharedPainter(slot func(super func() *qt.QPainter) *qt.QPainter) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QWebView_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

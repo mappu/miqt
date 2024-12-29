@@ -7,7 +7,15 @@
 #include <cstring>
 #include <qcameraflashcontrol.h>
 #include "gen_qcameraflashcontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
+
+void QCameraFlashControl_virtbase(QCameraFlashControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
 
 QMetaObject* QCameraFlashControl_MetaObject(const QCameraFlashControl* self) {
 	return (QMetaObject*) self->metaObject();

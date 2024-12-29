@@ -4,12 +4,15 @@
 #include <cstring>
 #include <qlockfile.h>
 #include "gen_qlockfile.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QLockFile_new(struct miqt_string fileName, QLockFile** outptr_QLockFile) {
+QLockFile* QLockFile_new(struct miqt_string fileName) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	QLockFile* ret = new QLockFile(fileName_QString);
-	*outptr_QLockFile = ret;
+	return new QLockFile(fileName_QString);
 }
 
 struct miqt_string QLockFile_FileName(const QLockFile* self) {

@@ -8,7 +8,15 @@
 #include <cstring>
 #include <qfuturewatcher.h>
 #include "gen_qfuturewatcher.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
+
+void QFutureWatcherBase_virtbase(QFutureWatcherBase* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
 
 QMetaObject* QFutureWatcherBase_MetaObject(const QFutureWatcherBase* self) {
 	return (QMetaObject*) self->metaObject();

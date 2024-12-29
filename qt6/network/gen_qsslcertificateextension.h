@@ -22,8 +22,8 @@ typedef struct QSslCertificateExtension QSslCertificateExtension;
 typedef struct QVariant QVariant;
 #endif
 
-void QSslCertificateExtension_new(QSslCertificateExtension** outptr_QSslCertificateExtension);
-void QSslCertificateExtension_new2(QSslCertificateExtension* other, QSslCertificateExtension** outptr_QSslCertificateExtension);
+QSslCertificateExtension* QSslCertificateExtension_new();
+QSslCertificateExtension* QSslCertificateExtension_new2(QSslCertificateExtension* other);
 void QSslCertificateExtension_OperatorAssign(QSslCertificateExtension* self, QSslCertificateExtension* other);
 void QSslCertificateExtension_Swap(QSslCertificateExtension* self, QSslCertificateExtension* other);
 struct miqt_string QSslCertificateExtension_Oid(const QSslCertificateExtension* self);

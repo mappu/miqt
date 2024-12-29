@@ -40,12 +40,12 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif
 
-void QMediaServiceProviderHint_new(QMediaServiceProviderHint** outptr_QMediaServiceProviderHint);
-void QMediaServiceProviderHint_new2(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs, QMediaServiceProviderHint** outptr_QMediaServiceProviderHint);
-void QMediaServiceProviderHint_new3(struct miqt_string device, QMediaServiceProviderHint** outptr_QMediaServiceProviderHint);
-void QMediaServiceProviderHint_new4(int position, QMediaServiceProviderHint** outptr_QMediaServiceProviderHint);
-void QMediaServiceProviderHint_new5(int features, QMediaServiceProviderHint** outptr_QMediaServiceProviderHint);
-void QMediaServiceProviderHint_new6(QMediaServiceProviderHint* other, QMediaServiceProviderHint** outptr_QMediaServiceProviderHint);
+QMediaServiceProviderHint* QMediaServiceProviderHint_new();
+QMediaServiceProviderHint* QMediaServiceProviderHint_new2(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs);
+QMediaServiceProviderHint* QMediaServiceProviderHint_new3(struct miqt_string device);
+QMediaServiceProviderHint* QMediaServiceProviderHint_new4(int position);
+QMediaServiceProviderHint* QMediaServiceProviderHint_new5(int features);
+QMediaServiceProviderHint* QMediaServiceProviderHint_new6(QMediaServiceProviderHint* other);
 void QMediaServiceProviderHint_OperatorAssign(QMediaServiceProviderHint* self, QMediaServiceProviderHint* other);
 bool QMediaServiceProviderHint_OperatorEqual(const QMediaServiceProviderHint* self, QMediaServiceProviderHint* other);
 bool QMediaServiceProviderHint_OperatorNotEqual(const QMediaServiceProviderHint* self, QMediaServiceProviderHint* other);
@@ -86,6 +86,7 @@ int QMediaServiceFeaturesInterface_SupportedFeatures(const QMediaServiceFeatures
 void QMediaServiceFeaturesInterface_OperatorAssign(QMediaServiceFeaturesInterface* self, QMediaServiceFeaturesInterface* param1);
 void QMediaServiceFeaturesInterface_Delete(QMediaServiceFeaturesInterface* self, bool isSubclass);
 
+void QMediaServiceProviderPlugin_virtbase(QMediaServiceProviderPlugin* src, QObject** outptr_QObject, QMediaServiceProviderFactoryInterface** outptr_QMediaServiceProviderFactoryInterface);
 QMetaObject* QMediaServiceProviderPlugin_MetaObject(const QMediaServiceProviderPlugin* self);
 void* QMediaServiceProviderPlugin_Metacast(QMediaServiceProviderPlugin* self, const char* param1);
 struct miqt_string QMediaServiceProviderPlugin_Tr(const char* s);

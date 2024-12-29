@@ -36,42 +36,34 @@ func (this *QVideoProbe) UnsafePointer() unsafe.Pointer {
 }
 
 // newQVideoProbe constructs the type using only CGO pointers.
-func newQVideoProbe(h *C.QVideoProbe, h_QObject *C.QObject) *QVideoProbe {
+func newQVideoProbe(h *C.QVideoProbe) *QVideoProbe {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QVideoProbe_virtbase(h, &outptr_QObject)
+
 	return &QVideoProbe{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQVideoProbe constructs the type using only unsafe pointers.
-func UnsafeNewQVideoProbe(h unsafe.Pointer, h_QObject unsafe.Pointer) *QVideoProbe {
-	if h == nil {
-		return nil
-	}
-
-	return &QVideoProbe{h: (*C.QVideoProbe)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQVideoProbe(h unsafe.Pointer) *QVideoProbe {
+	return newQVideoProbe((*C.QVideoProbe)(h))
 }
 
 // NewQVideoProbe constructs a new QVideoProbe object.
 func NewQVideoProbe() *QVideoProbe {
-	var outptr_QVideoProbe *C.QVideoProbe = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QVideoProbe_new(&outptr_QVideoProbe, &outptr_QObject)
-	ret := newQVideoProbe(outptr_QVideoProbe, outptr_QObject)
+	ret := newQVideoProbe(C.QVideoProbe_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVideoProbe2 constructs a new QVideoProbe object.
 func NewQVideoProbe2(parent *qt.QObject) *QVideoProbe {
-	var outptr_QVideoProbe *C.QVideoProbe = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QVideoProbe_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QVideoProbe, &outptr_QObject)
-	ret := newQVideoProbe(outptr_QVideoProbe, outptr_QObject)
+	ret := newQVideoProbe(C.QVideoProbe_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -131,7 +123,7 @@ func miqt_exec_callback_QVideoProbe_VideoFrameProbed(cb C.intptr_t, frame *C.QVi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQVideoFrame(unsafe.Pointer(frame))
+	slotval1 := newQVideoFrame(frame)
 
 	gofunc(slotval1)
 }
@@ -203,6 +195,9 @@ func (this *QVideoProbe) callVirtualBase_Event(event *qt.QEvent) bool {
 
 }
 func (this *QVideoProbe) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QVideoProbe_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -228,6 +223,9 @@ func (this *QVideoProbe) callVirtualBase_EventFilter(watched *qt.QObject, event 
 
 }
 func (this *QVideoProbe) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QVideoProbe_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -240,6 +238,7 @@ func miqt_exec_callback_QVideoProbe_EventFilter(self *C.QVideoProbe, cb C.intptr
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QVideoProbe{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
@@ -254,6 +253,9 @@ func (this *QVideoProbe) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
 }
 func (this *QVideoProbe) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QVideoProbe_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -265,7 +267,7 @@ func miqt_exec_callback_QVideoProbe_TimerEvent(self *C.QVideoProbe, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoProbe{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -277,6 +279,9 @@ func (this *QVideoProbe) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
 }
 func (this *QVideoProbe) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QVideoProbe_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -288,7 +293,7 @@ func miqt_exec_callback_QVideoProbe_ChildEvent(self *C.QVideoProbe, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QVideoProbe{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -300,6 +305,9 @@ func (this *QVideoProbe) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
 }
 func (this *QVideoProbe) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QVideoProbe_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -323,6 +331,9 @@ func (this *QVideoProbe) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 
 }
 func (this *QVideoProbe) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QVideoProbe_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -346,6 +357,9 @@ func (this *QVideoProbe) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod
 
 }
 func (this *QVideoProbe) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QVideoProbe_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

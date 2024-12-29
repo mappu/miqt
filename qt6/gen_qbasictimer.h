@@ -22,7 +22,7 @@ typedef struct QBasicTimer QBasicTimer;
 typedef struct QObject QObject;
 #endif
 
-void QBasicTimer_new(QBasicTimer** outptr_QBasicTimer);
+QBasicTimer* QBasicTimer_new();
 void QBasicTimer_Swap(QBasicTimer* self, QBasicTimer* other);
 bool QBasicTimer_IsActive(const QBasicTimer* self);
 int QBasicTimer_TimerId(const QBasicTimer* self);

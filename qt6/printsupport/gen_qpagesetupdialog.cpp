@@ -17,6 +17,10 @@
 #include <QWidget>
 #include <qpagesetupdialog.h>
 #include "gen_qpagesetupdialog.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQPageSetupDialog : public virtual QPageSetupDialog {
@@ -358,40 +362,24 @@ public:
 
 };
 
-void QPageSetupDialog_new(QWidget* parent, QPageSetupDialog** outptr_QPageSetupDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPageSetupDialog* ret = new MiqtVirtualQPageSetupDialog(parent);
-	*outptr_QPageSetupDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPageSetupDialog* QPageSetupDialog_new(QWidget* parent) {
+	return new MiqtVirtualQPageSetupDialog(parent);
 }
 
-void QPageSetupDialog_new2(QPrinter* printer, QPageSetupDialog** outptr_QPageSetupDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPageSetupDialog* ret = new MiqtVirtualQPageSetupDialog(printer);
-	*outptr_QPageSetupDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPageSetupDialog* QPageSetupDialog_new2(QPrinter* printer) {
+	return new MiqtVirtualQPageSetupDialog(printer);
 }
 
-void QPageSetupDialog_new3(QPageSetupDialog** outptr_QPageSetupDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPageSetupDialog* ret = new MiqtVirtualQPageSetupDialog();
-	*outptr_QPageSetupDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPageSetupDialog* QPageSetupDialog_new3() {
+	return new MiqtVirtualQPageSetupDialog();
 }
 
-void QPageSetupDialog_new4(QPrinter* printer, QWidget* parent, QPageSetupDialog** outptr_QPageSetupDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPageSetupDialog* ret = new MiqtVirtualQPageSetupDialog(printer, parent);
-	*outptr_QPageSetupDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPageSetupDialog* QPageSetupDialog_new4(QPrinter* printer, QWidget* parent) {
+	return new MiqtVirtualQPageSetupDialog(printer, parent);
+}
+
+void QPageSetupDialog_virtbase(QPageSetupDialog* src, QDialog** outptr_QDialog) {
+	*outptr_QDialog = static_cast<QDialog*>(src);
 }
 
 QMetaObject* QPageSetupDialog_MetaObject(const QPageSetupDialog* self) {

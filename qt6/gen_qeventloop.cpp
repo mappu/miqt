@@ -12,6 +12,10 @@
 #include <QTimerEvent>
 #include <qeventloop.h>
 #include "gen_qeventloop.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQEventLoop : public virtual QEventLoop {
@@ -195,16 +199,16 @@ public:
 
 };
 
-void QEventLoop_new(QEventLoop** outptr_QEventLoop, QObject** outptr_QObject) {
-	MiqtVirtualQEventLoop* ret = new MiqtVirtualQEventLoop();
-	*outptr_QEventLoop = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QEventLoop* QEventLoop_new() {
+	return new MiqtVirtualQEventLoop();
 }
 
-void QEventLoop_new2(QObject* parent, QEventLoop** outptr_QEventLoop, QObject** outptr_QObject) {
-	MiqtVirtualQEventLoop* ret = new MiqtVirtualQEventLoop(parent);
-	*outptr_QEventLoop = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QEventLoop* QEventLoop_new2(QObject* parent) {
+	return new MiqtVirtualQEventLoop(parent);
+}
+
+void QEventLoop_virtbase(QEventLoop* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QEventLoop_MetaObject(const QEventLoop* self) {
@@ -356,19 +360,16 @@ void QEventLoop_Delete(QEventLoop* self, bool isSubclass) {
 	}
 }
 
-void QEventLoopLocker_new(QEventLoopLocker** outptr_QEventLoopLocker) {
-	QEventLoopLocker* ret = new QEventLoopLocker();
-	*outptr_QEventLoopLocker = ret;
+QEventLoopLocker* QEventLoopLocker_new() {
+	return new QEventLoopLocker();
 }
 
-void QEventLoopLocker_new2(QEventLoop* loop, QEventLoopLocker** outptr_QEventLoopLocker) {
-	QEventLoopLocker* ret = new QEventLoopLocker(loop);
-	*outptr_QEventLoopLocker = ret;
+QEventLoopLocker* QEventLoopLocker_new2(QEventLoop* loop) {
+	return new QEventLoopLocker(loop);
 }
 
-void QEventLoopLocker_new3(QThread* thread, QEventLoopLocker** outptr_QEventLoopLocker) {
-	QEventLoopLocker* ret = new QEventLoopLocker(thread);
-	*outptr_QEventLoopLocker = ret;
+QEventLoopLocker* QEventLoopLocker_new3(QThread* thread) {
+	return new QEventLoopLocker(thread);
 }
 
 void QEventLoopLocker_Delete(QEventLoopLocker* self, bool isSubclass) {

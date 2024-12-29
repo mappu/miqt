@@ -144,8 +144,9 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWindowStateChangeEvent QWindowStateChangeEvent;
 #endif
 
-void QInputEvent_new(int typeVal, QInputDevice* m_dev, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QInputEvent_new2(int typeVal, QInputDevice* m_dev, int modifiers, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
+QInputEvent* QInputEvent_new(int typeVal, QInputDevice* m_dev);
+QInputEvent* QInputEvent_new2(int typeVal, QInputDevice* m_dev, int modifiers);
+void QInputEvent_virtbase(QInputEvent* src, QEvent** outptr_QEvent);
 QInputEvent* QInputEvent_Clone(const QInputEvent* self);
 QInputDevice* QInputEvent_Device(const QInputEvent* self);
 int QInputEvent_DeviceType(const QInputEvent* self);
@@ -161,9 +162,10 @@ void QInputEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QInputEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QInputEvent_Delete(QInputEvent* self, bool isSubclass);
 
-void QPointerEvent_new(int typeVal, QPointingDevice* dev, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QPointerEvent_new2(int typeVal, QPointingDevice* dev, int modifiers, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QPointerEvent_new3(int typeVal, QPointingDevice* dev, int modifiers, struct miqt_array /* of QEventPoint* */  points, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
+QPointerEvent* QPointerEvent_new(int typeVal, QPointingDevice* dev);
+QPointerEvent* QPointerEvent_new2(int typeVal, QPointingDevice* dev, int modifiers);
+QPointerEvent* QPointerEvent_new3(int typeVal, QPointingDevice* dev, int modifiers, struct miqt_array /* of QEventPoint* */  points);
+void QPointerEvent_virtbase(QPointerEvent* src, QInputEvent** outptr_QInputEvent);
 QPointerEvent* QPointerEvent_Clone(const QPointerEvent* self);
 QPointingDevice* QPointerEvent_PointingDevice(const QPointerEvent* self);
 int QPointerEvent_PointerType(const QPointerEvent* self);
@@ -197,6 +199,7 @@ void QPointerEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QPointerEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QPointerEvent_Delete(QPointerEvent* self, bool isSubclass);
 
+void QSinglePointEvent_virtbase(QSinglePointEvent* src, QPointerEvent** outptr_QPointerEvent);
 QSinglePointEvent* QSinglePointEvent_Clone(const QSinglePointEvent* self);
 int QSinglePointEvent_Button(const QSinglePointEvent* self);
 int QSinglePointEvent_Buttons(const QSinglePointEvent* self);
@@ -210,8 +213,9 @@ QObject* QSinglePointEvent_ExclusivePointGrabber(const QSinglePointEvent* self);
 void QSinglePointEvent_SetExclusivePointGrabber(QSinglePointEvent* self, QObject* exclusiveGrabber);
 void QSinglePointEvent_Delete(QSinglePointEvent* self, bool isSubclass);
 
-void QEnterEvent_new(QPointF* localPos, QPointF* scenePos, QPointF* globalPos, QEnterEvent** outptr_QEnterEvent, QSinglePointEvent** outptr_QSinglePointEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QEnterEvent_new2(QPointF* localPos, QPointF* scenePos, QPointF* globalPos, QPointingDevice* device, QEnterEvent** outptr_QEnterEvent, QSinglePointEvent** outptr_QSinglePointEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
+QEnterEvent* QEnterEvent_new(QPointF* localPos, QPointF* scenePos, QPointF* globalPos);
+QEnterEvent* QEnterEvent_new2(QPointF* localPos, QPointF* scenePos, QPointF* globalPos, QPointingDevice* device);
+void QEnterEvent_virtbase(QEnterEvent* src, QSinglePointEvent** outptr_QSinglePointEvent);
 QEnterEvent* QEnterEvent_Clone(const QEnterEvent* self);
 QPoint* QEnterEvent_Pos(const QEnterEvent* self);
 QPoint* QEnterEvent_GlobalPos(const QEnterEvent* self);
@@ -232,14 +236,15 @@ void QEnterEvent_override_virtual_IsEndEvent(void* self, intptr_t slot);
 bool QEnterEvent_virtualbase_IsEndEvent(const void* self);
 void QEnterEvent_Delete(QEnterEvent* self, bool isSubclass);
 
-void QMouseEvent_new(int typeVal, QPointF* localPos, int button, int buttons, int modifiers, QMouseEvent** outptr_QMouseEvent, QSinglePointEvent** outptr_QSinglePointEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QMouseEvent_new2(int typeVal, QPointF* localPos, QPointF* globalPos, int button, int buttons, int modifiers, QMouseEvent** outptr_QMouseEvent, QSinglePointEvent** outptr_QSinglePointEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QMouseEvent_new3(int typeVal, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, int button, int buttons, int modifiers, QMouseEvent** outptr_QMouseEvent, QSinglePointEvent** outptr_QSinglePointEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QMouseEvent_new4(int typeVal, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, int button, int buttons, int modifiers, int source, QMouseEvent** outptr_QMouseEvent, QSinglePointEvent** outptr_QSinglePointEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QMouseEvent_new5(int typeVal, QPointF* localPos, int button, int buttons, int modifiers, QPointingDevice* device, QMouseEvent** outptr_QMouseEvent, QSinglePointEvent** outptr_QSinglePointEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QMouseEvent_new6(int typeVal, QPointF* localPos, QPointF* globalPos, int button, int buttons, int modifiers, QPointingDevice* device, QMouseEvent** outptr_QMouseEvent, QSinglePointEvent** outptr_QSinglePointEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QMouseEvent_new7(int typeVal, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, int button, int buttons, int modifiers, QPointingDevice* device, QMouseEvent** outptr_QMouseEvent, QSinglePointEvent** outptr_QSinglePointEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QMouseEvent_new8(int typeVal, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, int button, int buttons, int modifiers, int source, QPointingDevice* device, QMouseEvent** outptr_QMouseEvent, QSinglePointEvent** outptr_QSinglePointEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
+QMouseEvent* QMouseEvent_new(int typeVal, QPointF* localPos, int button, int buttons, int modifiers);
+QMouseEvent* QMouseEvent_new2(int typeVal, QPointF* localPos, QPointF* globalPos, int button, int buttons, int modifiers);
+QMouseEvent* QMouseEvent_new3(int typeVal, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, int button, int buttons, int modifiers);
+QMouseEvent* QMouseEvent_new4(int typeVal, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, int button, int buttons, int modifiers, int source);
+QMouseEvent* QMouseEvent_new5(int typeVal, QPointF* localPos, int button, int buttons, int modifiers, QPointingDevice* device);
+QMouseEvent* QMouseEvent_new6(int typeVal, QPointF* localPos, QPointF* globalPos, int button, int buttons, int modifiers, QPointingDevice* device);
+QMouseEvent* QMouseEvent_new7(int typeVal, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, int button, int buttons, int modifiers, QPointingDevice* device);
+QMouseEvent* QMouseEvent_new8(int typeVal, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, int button, int buttons, int modifiers, int source, QPointingDevice* device);
+void QMouseEvent_virtbase(QMouseEvent* src, QSinglePointEvent** outptr_QSinglePointEvent);
 QMouseEvent* QMouseEvent_Clone(const QMouseEvent* self);
 QPoint* QMouseEvent_Pos(const QMouseEvent* self);
 QPoint* QMouseEvent_GlobalPos(const QMouseEvent* self);
@@ -262,12 +267,13 @@ void QMouseEvent_override_virtual_IsEndEvent(void* self, intptr_t slot);
 bool QMouseEvent_virtualbase_IsEndEvent(const void* self);
 void QMouseEvent_Delete(QMouseEvent* self, bool isSubclass);
 
-void QHoverEvent_new(int typeVal, QPointF* scenePos, QPointF* globalPos, QPointF* oldPos, QHoverEvent** outptr_QHoverEvent, QSinglePointEvent** outptr_QSinglePointEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QHoverEvent_new2(int typeVal, QPointF* pos, QPointF* oldPos, QHoverEvent** outptr_QHoverEvent, QSinglePointEvent** outptr_QSinglePointEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QHoverEvent_new3(int typeVal, QPointF* scenePos, QPointF* globalPos, QPointF* oldPos, int modifiers, QHoverEvent** outptr_QHoverEvent, QSinglePointEvent** outptr_QSinglePointEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QHoverEvent_new4(int typeVal, QPointF* scenePos, QPointF* globalPos, QPointF* oldPos, int modifiers, QPointingDevice* device, QHoverEvent** outptr_QHoverEvent, QSinglePointEvent** outptr_QSinglePointEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QHoverEvent_new5(int typeVal, QPointF* pos, QPointF* oldPos, int modifiers, QHoverEvent** outptr_QHoverEvent, QSinglePointEvent** outptr_QSinglePointEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QHoverEvent_new6(int typeVal, QPointF* pos, QPointF* oldPos, int modifiers, QPointingDevice* device, QHoverEvent** outptr_QHoverEvent, QSinglePointEvent** outptr_QSinglePointEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
+QHoverEvent* QHoverEvent_new(int typeVal, QPointF* scenePos, QPointF* globalPos, QPointF* oldPos);
+QHoverEvent* QHoverEvent_new2(int typeVal, QPointF* pos, QPointF* oldPos);
+QHoverEvent* QHoverEvent_new3(int typeVal, QPointF* scenePos, QPointF* globalPos, QPointF* oldPos, int modifiers);
+QHoverEvent* QHoverEvent_new4(int typeVal, QPointF* scenePos, QPointF* globalPos, QPointF* oldPos, int modifiers, QPointingDevice* device);
+QHoverEvent* QHoverEvent_new5(int typeVal, QPointF* pos, QPointF* oldPos, int modifiers);
+QHoverEvent* QHoverEvent_new6(int typeVal, QPointF* pos, QPointF* oldPos, int modifiers, QPointingDevice* device);
+void QHoverEvent_virtbase(QHoverEvent* src, QSinglePointEvent** outptr_QSinglePointEvent);
 QHoverEvent* QHoverEvent_Clone(const QHoverEvent* self);
 QPoint* QHoverEvent_Pos(const QHoverEvent* self);
 QPointF* QHoverEvent_PosF(const QHoverEvent* self);
@@ -284,9 +290,10 @@ void QHoverEvent_override_virtual_IsEndEvent(void* self, intptr_t slot);
 bool QHoverEvent_virtualbase_IsEndEvent(const void* self);
 void QHoverEvent_Delete(QHoverEvent* self, bool isSubclass);
 
-void QWheelEvent_new(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int buttons, int modifiers, int phase, bool inverted, QWheelEvent** outptr_QWheelEvent, QSinglePointEvent** outptr_QSinglePointEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QWheelEvent_new2(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int buttons, int modifiers, int phase, bool inverted, int source, QWheelEvent** outptr_QWheelEvent, QSinglePointEvent** outptr_QSinglePointEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QWheelEvent_new3(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int buttons, int modifiers, int phase, bool inverted, int source, QPointingDevice* device, QWheelEvent** outptr_QWheelEvent, QSinglePointEvent** outptr_QSinglePointEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
+QWheelEvent* QWheelEvent_new(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int buttons, int modifiers, int phase, bool inverted);
+QWheelEvent* QWheelEvent_new2(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int buttons, int modifiers, int phase, bool inverted, int source);
+QWheelEvent* QWheelEvent_new3(QPointF* pos, QPointF* globalPos, QPoint* pixelDelta, QPoint* angleDelta, int buttons, int modifiers, int phase, bool inverted, int source, QPointingDevice* device);
+void QWheelEvent_virtbase(QWheelEvent* src, QSinglePointEvent** outptr_QSinglePointEvent);
 QWheelEvent* QWheelEvent_Clone(const QWheelEvent* self);
 QPoint* QWheelEvent_PixelDelta(const QWheelEvent* self);
 QPoint* QWheelEvent_AngleDelta(const QWheelEvent* self);
@@ -308,7 +315,8 @@ void QWheelEvent_override_virtual_IsEndEvent(void* self, intptr_t slot);
 bool QWheelEvent_virtualbase_IsEndEvent(const void* self);
 void QWheelEvent_Delete(QWheelEvent* self, bool isSubclass);
 
-void QTabletEvent_new(int t, QPointingDevice* device, QPointF* pos, QPointF* globalPos, double pressure, float xTilt, float yTilt, float tangentialPressure, double rotation, float z, int keyState, int button, int buttons, QTabletEvent** outptr_QTabletEvent, QSinglePointEvent** outptr_QSinglePointEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
+QTabletEvent* QTabletEvent_new(int t, QPointingDevice* device, QPointF* pos, QPointF* globalPos, double pressure, float xTilt, float yTilt, float tangentialPressure, double rotation, float z, int keyState, int button, int buttons);
+void QTabletEvent_virtbase(QTabletEvent* src, QSinglePointEvent** outptr_QSinglePointEvent);
 QTabletEvent* QTabletEvent_Clone(const QTabletEvent* self);
 QPoint* QTabletEvent_Pos(const QTabletEvent* self);
 QPoint* QTabletEvent_GlobalPos(const QTabletEvent* self);
@@ -337,9 +345,10 @@ void QTabletEvent_override_virtual_IsEndEvent(void* self, intptr_t slot);
 bool QTabletEvent_virtualbase_IsEndEvent(const void* self);
 void QTabletEvent_Delete(QTabletEvent* self, bool isSubclass);
 
-void QNativeGestureEvent_new(int typeVal, QPointingDevice* dev, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, double value, unsigned long long sequenceId, unsigned long long intArgument, QNativeGestureEvent** outptr_QNativeGestureEvent, QSinglePointEvent** outptr_QSinglePointEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QNativeGestureEvent_new2(int typeVal, QPointingDevice* dev, int fingerCount, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, double value, QPointF* delta, QNativeGestureEvent** outptr_QNativeGestureEvent, QSinglePointEvent** outptr_QSinglePointEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QNativeGestureEvent_new3(int typeVal, QPointingDevice* dev, int fingerCount, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, double value, QPointF* delta, unsigned long long sequenceId, QNativeGestureEvent** outptr_QNativeGestureEvent, QSinglePointEvent** outptr_QSinglePointEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
+QNativeGestureEvent* QNativeGestureEvent_new(int typeVal, QPointingDevice* dev, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, double value, unsigned long long sequenceId, unsigned long long intArgument);
+QNativeGestureEvent* QNativeGestureEvent_new2(int typeVal, QPointingDevice* dev, int fingerCount, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, double value, QPointF* delta);
+QNativeGestureEvent* QNativeGestureEvent_new3(int typeVal, QPointingDevice* dev, int fingerCount, QPointF* localPos, QPointF* scenePos, QPointF* globalPos, double value, QPointF* delta, unsigned long long sequenceId);
+void QNativeGestureEvent_virtbase(QNativeGestureEvent* src, QSinglePointEvent** outptr_QSinglePointEvent);
 QNativeGestureEvent* QNativeGestureEvent_Clone(const QNativeGestureEvent* self);
 int QNativeGestureEvent_GestureType(const QNativeGestureEvent* self);
 int QNativeGestureEvent_FingerCount(const QNativeGestureEvent* self);
@@ -360,15 +369,16 @@ void QNativeGestureEvent_override_virtual_IsEndEvent(void* self, intptr_t slot);
 bool QNativeGestureEvent_virtualbase_IsEndEvent(const void* self);
 void QNativeGestureEvent_Delete(QNativeGestureEvent* self, bool isSubclass);
 
-void QKeyEvent_new(int typeVal, int key, int modifiers, QKeyEvent** outptr_QKeyEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QKeyEvent_new2(int typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, QKeyEvent** outptr_QKeyEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QKeyEvent_new3(int typeVal, int key, int modifiers, struct miqt_string text, QKeyEvent** outptr_QKeyEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QKeyEvent_new4(int typeVal, int key, int modifiers, struct miqt_string text, bool autorep, QKeyEvent** outptr_QKeyEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QKeyEvent_new5(int typeVal, int key, int modifiers, struct miqt_string text, bool autorep, uint16_t count, QKeyEvent** outptr_QKeyEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QKeyEvent_new6(int typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text, QKeyEvent** outptr_QKeyEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QKeyEvent_new7(int typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text, bool autorep, QKeyEvent** outptr_QKeyEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QKeyEvent_new8(int typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text, bool autorep, uint16_t count, QKeyEvent** outptr_QKeyEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QKeyEvent_new9(int typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text, bool autorep, uint16_t count, QInputDevice* device, QKeyEvent** outptr_QKeyEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
+QKeyEvent* QKeyEvent_new(int typeVal, int key, int modifiers);
+QKeyEvent* QKeyEvent_new2(int typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers);
+QKeyEvent* QKeyEvent_new3(int typeVal, int key, int modifiers, struct miqt_string text);
+QKeyEvent* QKeyEvent_new4(int typeVal, int key, int modifiers, struct miqt_string text, bool autorep);
+QKeyEvent* QKeyEvent_new5(int typeVal, int key, int modifiers, struct miqt_string text, bool autorep, uint16_t count);
+QKeyEvent* QKeyEvent_new6(int typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text);
+QKeyEvent* QKeyEvent_new7(int typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text, bool autorep);
+QKeyEvent* QKeyEvent_new8(int typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text, bool autorep, uint16_t count);
+QKeyEvent* QKeyEvent_new9(int typeVal, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text, bool autorep, uint16_t count, QInputDevice* device);
+void QKeyEvent_virtbase(QKeyEvent* src, QInputEvent** outptr_QInputEvent);
 QKeyEvent* QKeyEvent_Clone(const QKeyEvent* self);
 int QKeyEvent_Key(const QKeyEvent* self);
 bool QKeyEvent_Matches(const QKeyEvent* self, int key);
@@ -386,8 +396,9 @@ void QKeyEvent_override_virtual_SetTimestamp(void* self, intptr_t slot);
 void QKeyEvent_virtualbase_SetTimestamp(void* self, unsigned long long timestamp);
 void QKeyEvent_Delete(QKeyEvent* self, bool isSubclass);
 
-void QFocusEvent_new(int typeVal, QFocusEvent** outptr_QFocusEvent, QEvent** outptr_QEvent);
-void QFocusEvent_new2(int typeVal, int reason, QFocusEvent** outptr_QFocusEvent, QEvent** outptr_QEvent);
+QFocusEvent* QFocusEvent_new(int typeVal);
+QFocusEvent* QFocusEvent_new2(int typeVal, int reason);
+void QFocusEvent_virtbase(QFocusEvent* src, QEvent** outptr_QEvent);
 QFocusEvent* QFocusEvent_Clone(const QFocusEvent* self);
 bool QFocusEvent_GotFocus(const QFocusEvent* self);
 bool QFocusEvent_LostFocus(const QFocusEvent* self);
@@ -398,8 +409,9 @@ void QFocusEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QFocusEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QFocusEvent_Delete(QFocusEvent* self, bool isSubclass);
 
-void QPaintEvent_new(QRegion* paintRegion, QPaintEvent** outptr_QPaintEvent, QEvent** outptr_QEvent);
-void QPaintEvent_new2(QRect* paintRect, QPaintEvent** outptr_QPaintEvent, QEvent** outptr_QEvent);
+QPaintEvent* QPaintEvent_new(QRegion* paintRegion);
+QPaintEvent* QPaintEvent_new2(QRect* paintRect);
+void QPaintEvent_virtbase(QPaintEvent* src, QEvent** outptr_QEvent);
 QPaintEvent* QPaintEvent_Clone(const QPaintEvent* self);
 QRect* QPaintEvent_Rect(const QPaintEvent* self);
 QRegion* QPaintEvent_Region(const QPaintEvent* self);
@@ -409,7 +421,8 @@ void QPaintEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QPaintEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QPaintEvent_Delete(QPaintEvent* self, bool isSubclass);
 
-void QMoveEvent_new(QPoint* pos, QPoint* oldPos, QMoveEvent** outptr_QMoveEvent, QEvent** outptr_QEvent);
+QMoveEvent* QMoveEvent_new(QPoint* pos, QPoint* oldPos);
+void QMoveEvent_virtbase(QMoveEvent* src, QEvent** outptr_QEvent);
 QMoveEvent* QMoveEvent_Clone(const QMoveEvent* self);
 QPoint* QMoveEvent_Pos(const QMoveEvent* self);
 QPoint* QMoveEvent_OldPos(const QMoveEvent* self);
@@ -419,7 +432,8 @@ void QMoveEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QMoveEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QMoveEvent_Delete(QMoveEvent* self, bool isSubclass);
 
-void QExposeEvent_new(QRegion* m_region, QExposeEvent** outptr_QExposeEvent, QEvent** outptr_QEvent);
+QExposeEvent* QExposeEvent_new(QRegion* m_region);
+void QExposeEvent_virtbase(QExposeEvent* src, QEvent** outptr_QEvent);
 QExposeEvent* QExposeEvent_Clone(const QExposeEvent* self);
 QRegion* QExposeEvent_Region(const QExposeEvent* self);
 void QExposeEvent_override_virtual_Clone(void* self, intptr_t slot);
@@ -428,7 +442,8 @@ void QExposeEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QExposeEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QExposeEvent_Delete(QExposeEvent* self, bool isSubclass);
 
-void QPlatformSurfaceEvent_new(int surfaceEventType, QPlatformSurfaceEvent** outptr_QPlatformSurfaceEvent, QEvent** outptr_QEvent);
+QPlatformSurfaceEvent* QPlatformSurfaceEvent_new(int surfaceEventType);
+void QPlatformSurfaceEvent_virtbase(QPlatformSurfaceEvent* src, QEvent** outptr_QEvent);
 QPlatformSurfaceEvent* QPlatformSurfaceEvent_Clone(const QPlatformSurfaceEvent* self);
 int QPlatformSurfaceEvent_SurfaceEventType(const QPlatformSurfaceEvent* self);
 void QPlatformSurfaceEvent_override_virtual_Clone(void* self, intptr_t slot);
@@ -437,7 +452,8 @@ void QPlatformSurfaceEvent_override_virtual_SetAccepted(void* self, intptr_t slo
 void QPlatformSurfaceEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QPlatformSurfaceEvent_Delete(QPlatformSurfaceEvent* self, bool isSubclass);
 
-void QResizeEvent_new(QSize* size, QSize* oldSize, QResizeEvent** outptr_QResizeEvent, QEvent** outptr_QEvent);
+QResizeEvent* QResizeEvent_new(QSize* size, QSize* oldSize);
+void QResizeEvent_virtbase(QResizeEvent* src, QEvent** outptr_QEvent);
 QResizeEvent* QResizeEvent_Clone(const QResizeEvent* self);
 QSize* QResizeEvent_Size(const QResizeEvent* self);
 QSize* QResizeEvent_OldSize(const QResizeEvent* self);
@@ -447,7 +463,8 @@ void QResizeEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QResizeEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QResizeEvent_Delete(QResizeEvent* self, bool isSubclass);
 
-void QCloseEvent_new(QCloseEvent** outptr_QCloseEvent, QEvent** outptr_QEvent);
+QCloseEvent* QCloseEvent_new();
+void QCloseEvent_virtbase(QCloseEvent* src, QEvent** outptr_QEvent);
 QCloseEvent* QCloseEvent_Clone(const QCloseEvent* self);
 void QCloseEvent_override_virtual_Clone(void* self, intptr_t slot);
 QCloseEvent* QCloseEvent_virtualbase_Clone(const void* self);
@@ -455,7 +472,8 @@ void QCloseEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QCloseEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QCloseEvent_Delete(QCloseEvent* self, bool isSubclass);
 
-void QIconDragEvent_new(QIconDragEvent** outptr_QIconDragEvent, QEvent** outptr_QEvent);
+QIconDragEvent* QIconDragEvent_new();
+void QIconDragEvent_virtbase(QIconDragEvent* src, QEvent** outptr_QEvent);
 QIconDragEvent* QIconDragEvent_Clone(const QIconDragEvent* self);
 void QIconDragEvent_override_virtual_Clone(void* self, intptr_t slot);
 QIconDragEvent* QIconDragEvent_virtualbase_Clone(const void* self);
@@ -463,7 +481,8 @@ void QIconDragEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QIconDragEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QIconDragEvent_Delete(QIconDragEvent* self, bool isSubclass);
 
-void QShowEvent_new(QShowEvent** outptr_QShowEvent, QEvent** outptr_QEvent);
+QShowEvent* QShowEvent_new();
+void QShowEvent_virtbase(QShowEvent* src, QEvent** outptr_QEvent);
 QShowEvent* QShowEvent_Clone(const QShowEvent* self);
 void QShowEvent_override_virtual_Clone(void* self, intptr_t slot);
 QShowEvent* QShowEvent_virtualbase_Clone(const void* self);
@@ -471,7 +490,8 @@ void QShowEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QShowEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QShowEvent_Delete(QShowEvent* self, bool isSubclass);
 
-void QHideEvent_new(QHideEvent** outptr_QHideEvent, QEvent** outptr_QEvent);
+QHideEvent* QHideEvent_new();
+void QHideEvent_virtbase(QHideEvent* src, QEvent** outptr_QEvent);
 QHideEvent* QHideEvent_Clone(const QHideEvent* self);
 void QHideEvent_override_virtual_Clone(void* self, intptr_t slot);
 QHideEvent* QHideEvent_virtualbase_Clone(const void* self);
@@ -479,9 +499,10 @@ void QHideEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QHideEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QHideEvent_Delete(QHideEvent* self, bool isSubclass);
 
-void QContextMenuEvent_new(int reason, QPoint* pos, QPoint* globalPos, QContextMenuEvent** outptr_QContextMenuEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QContextMenuEvent_new2(int reason, QPoint* pos, QContextMenuEvent** outptr_QContextMenuEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QContextMenuEvent_new3(int reason, QPoint* pos, QPoint* globalPos, int modifiers, QContextMenuEvent** outptr_QContextMenuEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
+QContextMenuEvent* QContextMenuEvent_new(int reason, QPoint* pos, QPoint* globalPos);
+QContextMenuEvent* QContextMenuEvent_new2(int reason, QPoint* pos);
+QContextMenuEvent* QContextMenuEvent_new3(int reason, QPoint* pos, QPoint* globalPos, int modifiers);
+void QContextMenuEvent_virtbase(QContextMenuEvent* src, QInputEvent** outptr_QInputEvent);
 QContextMenuEvent* QContextMenuEvent_Clone(const QContextMenuEvent* self);
 int QContextMenuEvent_X(const QContextMenuEvent* self);
 int QContextMenuEvent_Y(const QContextMenuEvent* self);
@@ -496,8 +517,9 @@ void QContextMenuEvent_override_virtual_SetTimestamp(void* self, intptr_t slot);
 void QContextMenuEvent_virtualbase_SetTimestamp(void* self, unsigned long long timestamp);
 void QContextMenuEvent_Delete(QContextMenuEvent* self, bool isSubclass);
 
-void QInputMethodEvent_new(QInputMethodEvent** outptr_QInputMethodEvent, QEvent** outptr_QEvent);
-void QInputMethodEvent_new2(struct miqt_string preeditText, struct miqt_array /* of QInputMethodEvent__Attribute* */  attributes, QInputMethodEvent** outptr_QInputMethodEvent, QEvent** outptr_QEvent);
+QInputMethodEvent* QInputMethodEvent_new();
+QInputMethodEvent* QInputMethodEvent_new2(struct miqt_string preeditText, struct miqt_array /* of QInputMethodEvent__Attribute* */  attributes);
+void QInputMethodEvent_virtbase(QInputMethodEvent* src, QEvent** outptr_QEvent);
 QInputMethodEvent* QInputMethodEvent_Clone(const QInputMethodEvent* self);
 void QInputMethodEvent_SetCommitString(QInputMethodEvent* self, struct miqt_string commitString);
 struct miqt_array /* of QInputMethodEvent__Attribute* */  QInputMethodEvent_Attributes(const QInputMethodEvent* self);
@@ -513,7 +535,8 @@ void QInputMethodEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QInputMethodEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QInputMethodEvent_Delete(QInputMethodEvent* self, bool isSubclass);
 
-void QInputMethodQueryEvent_new(int queries, QInputMethodQueryEvent** outptr_QInputMethodQueryEvent, QEvent** outptr_QEvent);
+QInputMethodQueryEvent* QInputMethodQueryEvent_new(int queries);
+void QInputMethodQueryEvent_virtbase(QInputMethodQueryEvent* src, QEvent** outptr_QEvent);
 QInputMethodQueryEvent* QInputMethodQueryEvent_Clone(const QInputMethodQueryEvent* self);
 int QInputMethodQueryEvent_Queries(const QInputMethodQueryEvent* self);
 void QInputMethodQueryEvent_SetValue(QInputMethodQueryEvent* self, int query, QVariant* value);
@@ -524,8 +547,9 @@ void QInputMethodQueryEvent_override_virtual_SetAccepted(void* self, intptr_t sl
 void QInputMethodQueryEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QInputMethodQueryEvent_Delete(QInputMethodQueryEvent* self, bool isSubclass);
 
-void QDropEvent_new(QPointF* pos, int actions, QMimeData* data, int buttons, int modifiers, QDropEvent** outptr_QDropEvent, QEvent** outptr_QEvent);
-void QDropEvent_new2(QPointF* pos, int actions, QMimeData* data, int buttons, int modifiers, int typeVal, QDropEvent** outptr_QDropEvent, QEvent** outptr_QEvent);
+QDropEvent* QDropEvent_new(QPointF* pos, int actions, QMimeData* data, int buttons, int modifiers);
+QDropEvent* QDropEvent_new2(QPointF* pos, int actions, QMimeData* data, int buttons, int modifiers, int typeVal);
+void QDropEvent_virtbase(QDropEvent* src, QEvent** outptr_QEvent);
 QDropEvent* QDropEvent_Clone(const QDropEvent* self);
 QPoint* QDropEvent_Pos(const QDropEvent* self);
 QPointF* QDropEvent_PosF(const QDropEvent* self);
@@ -547,8 +571,9 @@ void QDropEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QDropEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QDropEvent_Delete(QDropEvent* self, bool isSubclass);
 
-void QDragMoveEvent_new(QPoint* pos, int actions, QMimeData* data, int buttons, int modifiers, QDragMoveEvent** outptr_QDragMoveEvent, QDropEvent** outptr_QDropEvent, QEvent** outptr_QEvent);
-void QDragMoveEvent_new2(QPoint* pos, int actions, QMimeData* data, int buttons, int modifiers, int typeVal, QDragMoveEvent** outptr_QDragMoveEvent, QDropEvent** outptr_QDropEvent, QEvent** outptr_QEvent);
+QDragMoveEvent* QDragMoveEvent_new(QPoint* pos, int actions, QMimeData* data, int buttons, int modifiers);
+QDragMoveEvent* QDragMoveEvent_new2(QPoint* pos, int actions, QMimeData* data, int buttons, int modifiers, int typeVal);
+void QDragMoveEvent_virtbase(QDragMoveEvent* src, QDropEvent** outptr_QDropEvent);
 QDragMoveEvent* QDragMoveEvent_Clone(const QDragMoveEvent* self);
 QRect* QDragMoveEvent_AnswerRect(const QDragMoveEvent* self);
 void QDragMoveEvent_Accept(QDragMoveEvent* self);
@@ -559,13 +584,15 @@ void QDragMoveEvent_override_virtual_Clone(void* self, intptr_t slot);
 QDragMoveEvent* QDragMoveEvent_virtualbase_Clone(const void* self);
 void QDragMoveEvent_Delete(QDragMoveEvent* self, bool isSubclass);
 
-void QDragEnterEvent_new(QPoint* pos, int actions, QMimeData* data, int buttons, int modifiers, QDragEnterEvent** outptr_QDragEnterEvent, QDragMoveEvent** outptr_QDragMoveEvent, QDropEvent** outptr_QDropEvent, QEvent** outptr_QEvent);
+QDragEnterEvent* QDragEnterEvent_new(QPoint* pos, int actions, QMimeData* data, int buttons, int modifiers);
+void QDragEnterEvent_virtbase(QDragEnterEvent* src, QDragMoveEvent** outptr_QDragMoveEvent);
 QDragEnterEvent* QDragEnterEvent_Clone(const QDragEnterEvent* self);
 void QDragEnterEvent_override_virtual_Clone(void* self, intptr_t slot);
 QDragEnterEvent* QDragEnterEvent_virtualbase_Clone(const void* self);
 void QDragEnterEvent_Delete(QDragEnterEvent* self, bool isSubclass);
 
-void QDragLeaveEvent_new(QDragLeaveEvent** outptr_QDragLeaveEvent, QEvent** outptr_QEvent);
+QDragLeaveEvent* QDragLeaveEvent_new();
+void QDragLeaveEvent_virtbase(QDragLeaveEvent* src, QEvent** outptr_QEvent);
 QDragLeaveEvent* QDragLeaveEvent_Clone(const QDragLeaveEvent* self);
 void QDragLeaveEvent_override_virtual_Clone(void* self, intptr_t slot);
 QDragLeaveEvent* QDragLeaveEvent_virtualbase_Clone(const void* self);
@@ -573,7 +600,8 @@ void QDragLeaveEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QDragLeaveEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QDragLeaveEvent_Delete(QDragLeaveEvent* self, bool isSubclass);
 
-void QHelpEvent_new(int typeVal, QPoint* pos, QPoint* globalPos, QHelpEvent** outptr_QHelpEvent, QEvent** outptr_QEvent);
+QHelpEvent* QHelpEvent_new(int typeVal, QPoint* pos, QPoint* globalPos);
+void QHelpEvent_virtbase(QHelpEvent* src, QEvent** outptr_QEvent);
 QHelpEvent* QHelpEvent_Clone(const QHelpEvent* self);
 int QHelpEvent_X(const QHelpEvent* self);
 int QHelpEvent_Y(const QHelpEvent* self);
@@ -587,7 +615,8 @@ void QHelpEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QHelpEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QHelpEvent_Delete(QHelpEvent* self, bool isSubclass);
 
-void QStatusTipEvent_new(struct miqt_string tip, QStatusTipEvent** outptr_QStatusTipEvent, QEvent** outptr_QEvent);
+QStatusTipEvent* QStatusTipEvent_new(struct miqt_string tip);
+void QStatusTipEvent_virtbase(QStatusTipEvent* src, QEvent** outptr_QEvent);
 QStatusTipEvent* QStatusTipEvent_Clone(const QStatusTipEvent* self);
 struct miqt_string QStatusTipEvent_Tip(const QStatusTipEvent* self);
 void QStatusTipEvent_override_virtual_Clone(void* self, intptr_t slot);
@@ -596,7 +625,8 @@ void QStatusTipEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QStatusTipEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QStatusTipEvent_Delete(QStatusTipEvent* self, bool isSubclass);
 
-void QWhatsThisClickedEvent_new(struct miqt_string href, QWhatsThisClickedEvent** outptr_QWhatsThisClickedEvent, QEvent** outptr_QEvent);
+QWhatsThisClickedEvent* QWhatsThisClickedEvent_new(struct miqt_string href);
+void QWhatsThisClickedEvent_virtbase(QWhatsThisClickedEvent* src, QEvent** outptr_QEvent);
 QWhatsThisClickedEvent* QWhatsThisClickedEvent_Clone(const QWhatsThisClickedEvent* self);
 struct miqt_string QWhatsThisClickedEvent_Href(const QWhatsThisClickedEvent* self);
 void QWhatsThisClickedEvent_override_virtual_Clone(void* self, intptr_t slot);
@@ -605,8 +635,9 @@ void QWhatsThisClickedEvent_override_virtual_SetAccepted(void* self, intptr_t sl
 void QWhatsThisClickedEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QWhatsThisClickedEvent_Delete(QWhatsThisClickedEvent* self, bool isSubclass);
 
-void QActionEvent_new(int typeVal, QAction* action, QActionEvent** outptr_QActionEvent, QEvent** outptr_QEvent);
-void QActionEvent_new2(int typeVal, QAction* action, QAction* before, QActionEvent** outptr_QActionEvent, QEvent** outptr_QEvent);
+QActionEvent* QActionEvent_new(int typeVal, QAction* action);
+QActionEvent* QActionEvent_new2(int typeVal, QAction* action, QAction* before);
+void QActionEvent_virtbase(QActionEvent* src, QEvent** outptr_QEvent);
 QActionEvent* QActionEvent_Clone(const QActionEvent* self);
 QAction* QActionEvent_Action(const QActionEvent* self);
 QAction* QActionEvent_Before(const QActionEvent* self);
@@ -616,8 +647,9 @@ void QActionEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QActionEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QActionEvent_Delete(QActionEvent* self, bool isSubclass);
 
-void QFileOpenEvent_new(struct miqt_string file, QFileOpenEvent** outptr_QFileOpenEvent, QEvent** outptr_QEvent);
-void QFileOpenEvent_new2(QUrl* url, QFileOpenEvent** outptr_QFileOpenEvent, QEvent** outptr_QEvent);
+QFileOpenEvent* QFileOpenEvent_new(struct miqt_string file);
+QFileOpenEvent* QFileOpenEvent_new2(QUrl* url);
+void QFileOpenEvent_virtbase(QFileOpenEvent* src, QEvent** outptr_QEvent);
 QFileOpenEvent* QFileOpenEvent_Clone(const QFileOpenEvent* self);
 struct miqt_string QFileOpenEvent_File(const QFileOpenEvent* self);
 QUrl* QFileOpenEvent_Url(const QFileOpenEvent* self);
@@ -628,7 +660,8 @@ void QFileOpenEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QFileOpenEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QFileOpenEvent_Delete(QFileOpenEvent* self, bool isSubclass);
 
-void QToolBarChangeEvent_new(bool t, QToolBarChangeEvent** outptr_QToolBarChangeEvent, QEvent** outptr_QEvent);
+QToolBarChangeEvent* QToolBarChangeEvent_new(bool t);
+void QToolBarChangeEvent_virtbase(QToolBarChangeEvent* src, QEvent** outptr_QEvent);
 QToolBarChangeEvent* QToolBarChangeEvent_Clone(const QToolBarChangeEvent* self);
 bool QToolBarChangeEvent_Toggle(const QToolBarChangeEvent* self);
 void QToolBarChangeEvent_override_virtual_Clone(void* self, intptr_t slot);
@@ -637,8 +670,9 @@ void QToolBarChangeEvent_override_virtual_SetAccepted(void* self, intptr_t slot)
 void QToolBarChangeEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QToolBarChangeEvent_Delete(QToolBarChangeEvent* self, bool isSubclass);
 
-void QShortcutEvent_new(QKeySequence* key, int id, QShortcutEvent** outptr_QShortcutEvent, QEvent** outptr_QEvent);
-void QShortcutEvent_new2(QKeySequence* key, int id, bool ambiguous, QShortcutEvent** outptr_QShortcutEvent, QEvent** outptr_QEvent);
+QShortcutEvent* QShortcutEvent_new(QKeySequence* key, int id);
+QShortcutEvent* QShortcutEvent_new2(QKeySequence* key, int id, bool ambiguous);
+void QShortcutEvent_virtbase(QShortcutEvent* src, QEvent** outptr_QEvent);
 QShortcutEvent* QShortcutEvent_Clone(const QShortcutEvent* self);
 QKeySequence* QShortcutEvent_Key(const QShortcutEvent* self);
 int QShortcutEvent_ShortcutId(const QShortcutEvent* self);
@@ -649,8 +683,9 @@ void QShortcutEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QShortcutEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QShortcutEvent_Delete(QShortcutEvent* self, bool isSubclass);
 
-void QWindowStateChangeEvent_new(int oldState, QWindowStateChangeEvent** outptr_QWindowStateChangeEvent, QEvent** outptr_QEvent);
-void QWindowStateChangeEvent_new2(int oldState, bool isOverride, QWindowStateChangeEvent** outptr_QWindowStateChangeEvent, QEvent** outptr_QEvent);
+QWindowStateChangeEvent* QWindowStateChangeEvent_new(int oldState);
+QWindowStateChangeEvent* QWindowStateChangeEvent_new2(int oldState, bool isOverride);
+void QWindowStateChangeEvent_virtbase(QWindowStateChangeEvent* src, QEvent** outptr_QEvent);
 QWindowStateChangeEvent* QWindowStateChangeEvent_Clone(const QWindowStateChangeEvent* self);
 int QWindowStateChangeEvent_OldState(const QWindowStateChangeEvent* self);
 bool QWindowStateChangeEvent_IsOverride(const QWindowStateChangeEvent* self);
@@ -660,12 +695,13 @@ void QWindowStateChangeEvent_override_virtual_SetAccepted(void* self, intptr_t s
 void QWindowStateChangeEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QWindowStateChangeEvent_Delete(QWindowStateChangeEvent* self, bool isSubclass);
 
-void QTouchEvent_new(int eventType, QTouchEvent** outptr_QTouchEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QTouchEvent_new2(int eventType, QPointingDevice* device, int modifiers, uint8_t touchPointStates, QTouchEvent** outptr_QTouchEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QTouchEvent_new3(int eventType, QPointingDevice* device, QTouchEvent** outptr_QTouchEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QTouchEvent_new4(int eventType, QPointingDevice* device, int modifiers, QTouchEvent** outptr_QTouchEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QTouchEvent_new5(int eventType, QPointingDevice* device, int modifiers, struct miqt_array /* of QEventPoint* */  touchPoints, QTouchEvent** outptr_QTouchEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
-void QTouchEvent_new6(int eventType, QPointingDevice* device, int modifiers, uint8_t touchPointStates, struct miqt_array /* of QEventPoint* */  touchPoints, QTouchEvent** outptr_QTouchEvent, QPointerEvent** outptr_QPointerEvent, QInputEvent** outptr_QInputEvent, QEvent** outptr_QEvent);
+QTouchEvent* QTouchEvent_new(int eventType);
+QTouchEvent* QTouchEvent_new2(int eventType, QPointingDevice* device, int modifiers, uint8_t touchPointStates);
+QTouchEvent* QTouchEvent_new3(int eventType, QPointingDevice* device);
+QTouchEvent* QTouchEvent_new4(int eventType, QPointingDevice* device, int modifiers);
+QTouchEvent* QTouchEvent_new5(int eventType, QPointingDevice* device, int modifiers, struct miqt_array /* of QEventPoint* */  touchPoints);
+QTouchEvent* QTouchEvent_new6(int eventType, QPointingDevice* device, int modifiers, uint8_t touchPointStates, struct miqt_array /* of QEventPoint* */  touchPoints);
+void QTouchEvent_virtbase(QTouchEvent* src, QPointerEvent** outptr_QPointerEvent);
 QTouchEvent* QTouchEvent_Clone(const QTouchEvent* self);
 QObject* QTouchEvent_Target(const QTouchEvent* self);
 uint8_t QTouchEvent_TouchPointStates(const QTouchEvent* self);
@@ -687,7 +723,8 @@ void QTouchEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QTouchEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QTouchEvent_Delete(QTouchEvent* self, bool isSubclass);
 
-void QScrollPrepareEvent_new(QPointF* startPos, QScrollPrepareEvent** outptr_QScrollPrepareEvent, QEvent** outptr_QEvent);
+QScrollPrepareEvent* QScrollPrepareEvent_new(QPointF* startPos);
+void QScrollPrepareEvent_virtbase(QScrollPrepareEvent* src, QEvent** outptr_QEvent);
 QScrollPrepareEvent* QScrollPrepareEvent_Clone(const QScrollPrepareEvent* self);
 QPointF* QScrollPrepareEvent_StartPos(const QScrollPrepareEvent* self);
 QSizeF* QScrollPrepareEvent_ViewportSize(const QScrollPrepareEvent* self);
@@ -702,7 +739,8 @@ void QScrollPrepareEvent_override_virtual_SetAccepted(void* self, intptr_t slot)
 void QScrollPrepareEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QScrollPrepareEvent_Delete(QScrollPrepareEvent* self, bool isSubclass);
 
-void QScrollEvent_new(QPointF* contentPos, QPointF* overshoot, int scrollState, QScrollEvent** outptr_QScrollEvent, QEvent** outptr_QEvent);
+QScrollEvent* QScrollEvent_new(QPointF* contentPos, QPointF* overshoot, int scrollState);
+void QScrollEvent_virtbase(QScrollEvent* src, QEvent** outptr_QEvent);
 QScrollEvent* QScrollEvent_Clone(const QScrollEvent* self);
 QPointF* QScrollEvent_ContentPos(const QScrollEvent* self);
 QPointF* QScrollEvent_OvershootDistance(const QScrollEvent* self);
@@ -713,7 +751,8 @@ void QScrollEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QScrollEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QScrollEvent_Delete(QScrollEvent* self, bool isSubclass);
 
-void QScreenOrientationChangeEvent_new(QScreen* screen, int orientation, QScreenOrientationChangeEvent** outptr_QScreenOrientationChangeEvent, QEvent** outptr_QEvent);
+QScreenOrientationChangeEvent* QScreenOrientationChangeEvent_new(QScreen* screen, int orientation);
+void QScreenOrientationChangeEvent_virtbase(QScreenOrientationChangeEvent* src, QEvent** outptr_QEvent);
 QScreenOrientationChangeEvent* QScreenOrientationChangeEvent_Clone(const QScreenOrientationChangeEvent* self);
 QScreen* QScreenOrientationChangeEvent_Screen(const QScreenOrientationChangeEvent* self);
 int QScreenOrientationChangeEvent_Orientation(const QScreenOrientationChangeEvent* self);
@@ -723,7 +762,8 @@ void QScreenOrientationChangeEvent_override_virtual_SetAccepted(void* self, intp
 void QScreenOrientationChangeEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QScreenOrientationChangeEvent_Delete(QScreenOrientationChangeEvent* self, bool isSubclass);
 
-void QApplicationStateChangeEvent_new(int state, QApplicationStateChangeEvent** outptr_QApplicationStateChangeEvent, QEvent** outptr_QEvent);
+QApplicationStateChangeEvent* QApplicationStateChangeEvent_new(int state);
+void QApplicationStateChangeEvent_virtbase(QApplicationStateChangeEvent* src, QEvent** outptr_QEvent);
 QApplicationStateChangeEvent* QApplicationStateChangeEvent_Clone(const QApplicationStateChangeEvent* self);
 int QApplicationStateChangeEvent_ApplicationState(const QApplicationStateChangeEvent* self);
 void QApplicationStateChangeEvent_override_virtual_Clone(void* self, intptr_t slot);
@@ -732,9 +772,9 @@ void QApplicationStateChangeEvent_override_virtual_SetAccepted(void* self, intpt
 void QApplicationStateChangeEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QApplicationStateChangeEvent_Delete(QApplicationStateChangeEvent* self, bool isSubclass);
 
-void QInputMethodEvent__Attribute_new(int typ, int s, int l, QVariant* val, QInputMethodEvent__Attribute** outptr_QInputMethodEvent__Attribute);
-void QInputMethodEvent__Attribute_new2(int typ, int s, int l, QInputMethodEvent__Attribute** outptr_QInputMethodEvent__Attribute);
-void QInputMethodEvent__Attribute_new3(QInputMethodEvent__Attribute* param1, QInputMethodEvent__Attribute** outptr_QInputMethodEvent__Attribute);
+QInputMethodEvent__Attribute* QInputMethodEvent__Attribute_new(int typ, int s, int l, QVariant* val);
+QInputMethodEvent__Attribute* QInputMethodEvent__Attribute_new2(int typ, int s, int l);
+QInputMethodEvent__Attribute* QInputMethodEvent__Attribute_new3(QInputMethodEvent__Attribute* param1);
 void QInputMethodEvent__Attribute_OperatorAssign(QInputMethodEvent__Attribute* self, QInputMethodEvent__Attribute* param1);
 void QInputMethodEvent__Attribute_Delete(QInputMethodEvent__Attribute* self, bool isSubclass);
 

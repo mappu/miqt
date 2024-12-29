@@ -34,8 +34,8 @@ typedef struct QUrl QUrl;
 typedef struct QVariant QVariant;
 #endif
 
-void QNetworkCacheMetaData_new(QNetworkCacheMetaData** outptr_QNetworkCacheMetaData);
-void QNetworkCacheMetaData_new2(QNetworkCacheMetaData* other, QNetworkCacheMetaData** outptr_QNetworkCacheMetaData);
+QNetworkCacheMetaData* QNetworkCacheMetaData_new();
+QNetworkCacheMetaData* QNetworkCacheMetaData_new2(QNetworkCacheMetaData* other);
 void QNetworkCacheMetaData_OperatorAssign(QNetworkCacheMetaData* self, QNetworkCacheMetaData* other);
 void QNetworkCacheMetaData_Swap(QNetworkCacheMetaData* self, QNetworkCacheMetaData* other);
 bool QNetworkCacheMetaData_OperatorEqual(const QNetworkCacheMetaData* self, QNetworkCacheMetaData* other);
@@ -55,6 +55,7 @@ struct miqt_map /* of int to QVariant* */  QNetworkCacheMetaData_Attributes(cons
 void QNetworkCacheMetaData_SetAttributes(QNetworkCacheMetaData* self, struct miqt_map /* of int to QVariant* */  attributes);
 void QNetworkCacheMetaData_Delete(QNetworkCacheMetaData* self, bool isSubclass);
 
+void QAbstractNetworkCache_virtbase(QAbstractNetworkCache* src, QObject** outptr_QObject);
 QMetaObject* QAbstractNetworkCache_MetaObject(const QAbstractNetworkCache* self);
 void* QAbstractNetworkCache_Metacast(QAbstractNetworkCache* self, const char* param1);
 struct miqt_string QAbstractNetworkCache_Tr(const char* s);

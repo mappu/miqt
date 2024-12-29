@@ -76,8 +76,9 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QStatusBar_new(QWidget* parent, QStatusBar** outptr_QStatusBar, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QStatusBar_new2(QStatusBar** outptr_QStatusBar, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QStatusBar* QStatusBar_new(QWidget* parent);
+QStatusBar* QStatusBar_new2();
+void QStatusBar_virtbase(QStatusBar* src, QWidget** outptr_QWidget);
 QMetaObject* QStatusBar_MetaObject(const QStatusBar* self);
 void* QStatusBar_Metacast(QStatusBar* self, const char* param1);
 struct miqt_string QStatusBar_Tr(const char* s);

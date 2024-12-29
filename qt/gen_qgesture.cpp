@@ -19,6 +19,10 @@
 #include <QWidget>
 #include <qgesture.h>
 #include "gen_qgesture.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGesture : public virtual QGesture {
@@ -202,16 +206,16 @@ public:
 
 };
 
-void QGesture_new(QGesture** outptr_QGesture, QObject** outptr_QObject) {
-	MiqtVirtualQGesture* ret = new MiqtVirtualQGesture();
-	*outptr_QGesture = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGesture* QGesture_new() {
+	return new MiqtVirtualQGesture();
 }
 
-void QGesture_new2(QObject* parent, QGesture** outptr_QGesture, QObject** outptr_QObject) {
-	MiqtVirtualQGesture* ret = new MiqtVirtualQGesture(parent);
-	*outptr_QGesture = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGesture* QGesture_new2(QObject* parent) {
+	return new MiqtVirtualQGesture(parent);
+}
+
+void QGesture_virtbase(QGesture* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QGesture_MetaObject(const QGesture* self) {
@@ -387,18 +391,16 @@ void QGesture_Delete(QGesture* self, bool isSubclass) {
 	}
 }
 
-void QPanGesture_new(QPanGesture** outptr_QPanGesture, QGesture** outptr_QGesture, QObject** outptr_QObject) {
-	QPanGesture* ret = new QPanGesture();
-	*outptr_QPanGesture = ret;
-	*outptr_QGesture = static_cast<QGesture*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QPanGesture* QPanGesture_new() {
+	return new QPanGesture();
 }
 
-void QPanGesture_new2(QObject* parent, QPanGesture** outptr_QPanGesture, QGesture** outptr_QGesture, QObject** outptr_QObject) {
-	QPanGesture* ret = new QPanGesture(parent);
-	*outptr_QPanGesture = ret;
-	*outptr_QGesture = static_cast<QGesture*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QPanGesture* QPanGesture_new2(QObject* parent) {
+	return new QPanGesture(parent);
+}
+
+void QPanGesture_virtbase(QPanGesture* src, QGesture** outptr_QGesture) {
+	*outptr_QGesture = static_cast<QGesture*>(src);
 }
 
 QMetaObject* QPanGesture_MetaObject(const QPanGesture* self) {
@@ -512,18 +514,16 @@ void QPanGesture_Delete(QPanGesture* self, bool isSubclass) {
 	}
 }
 
-void QPinchGesture_new(QPinchGesture** outptr_QPinchGesture, QGesture** outptr_QGesture, QObject** outptr_QObject) {
-	QPinchGesture* ret = new QPinchGesture();
-	*outptr_QPinchGesture = ret;
-	*outptr_QGesture = static_cast<QGesture*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QPinchGesture* QPinchGesture_new() {
+	return new QPinchGesture();
 }
 
-void QPinchGesture_new2(QObject* parent, QPinchGesture** outptr_QPinchGesture, QGesture** outptr_QGesture, QObject** outptr_QObject) {
-	QPinchGesture* ret = new QPinchGesture(parent);
-	*outptr_QPinchGesture = ret;
-	*outptr_QGesture = static_cast<QGesture*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QPinchGesture* QPinchGesture_new2(QObject* parent) {
+	return new QPinchGesture(parent);
+}
+
+void QPinchGesture_virtbase(QPinchGesture* src, QGesture** outptr_QGesture) {
+	*outptr_QGesture = static_cast<QGesture*>(src);
 }
 
 QMetaObject* QPinchGesture_MetaObject(const QPinchGesture* self) {
@@ -704,18 +704,16 @@ void QPinchGesture_Delete(QPinchGesture* self, bool isSubclass) {
 	}
 }
 
-void QSwipeGesture_new(QSwipeGesture** outptr_QSwipeGesture, QGesture** outptr_QGesture, QObject** outptr_QObject) {
-	QSwipeGesture* ret = new QSwipeGesture();
-	*outptr_QSwipeGesture = ret;
-	*outptr_QGesture = static_cast<QGesture*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSwipeGesture* QSwipeGesture_new() {
+	return new QSwipeGesture();
 }
 
-void QSwipeGesture_new2(QObject* parent, QSwipeGesture** outptr_QSwipeGesture, QGesture** outptr_QGesture, QObject** outptr_QObject) {
-	QSwipeGesture* ret = new QSwipeGesture(parent);
-	*outptr_QSwipeGesture = ret;
-	*outptr_QGesture = static_cast<QGesture*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSwipeGesture* QSwipeGesture_new2(QObject* parent) {
+	return new QSwipeGesture(parent);
+}
+
+void QSwipeGesture_virtbase(QSwipeGesture* src, QGesture** outptr_QGesture) {
+	*outptr_QGesture = static_cast<QGesture*>(src);
 }
 
 QMetaObject* QSwipeGesture_MetaObject(const QSwipeGesture* self) {
@@ -819,18 +817,16 @@ void QSwipeGesture_Delete(QSwipeGesture* self, bool isSubclass) {
 	}
 }
 
-void QTapGesture_new(QTapGesture** outptr_QTapGesture, QGesture** outptr_QGesture, QObject** outptr_QObject) {
-	QTapGesture* ret = new QTapGesture();
-	*outptr_QTapGesture = ret;
-	*outptr_QGesture = static_cast<QGesture*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QTapGesture* QTapGesture_new() {
+	return new QTapGesture();
 }
 
-void QTapGesture_new2(QObject* parent, QTapGesture** outptr_QTapGesture, QGesture** outptr_QGesture, QObject** outptr_QObject) {
-	QTapGesture* ret = new QTapGesture(parent);
-	*outptr_QTapGesture = ret;
-	*outptr_QGesture = static_cast<QGesture*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QTapGesture* QTapGesture_new2(QObject* parent) {
+	return new QTapGesture(parent);
+}
+
+void QTapGesture_virtbase(QTapGesture* src, QGesture** outptr_QGesture) {
+	*outptr_QGesture = static_cast<QGesture*>(src);
 }
 
 QMetaObject* QTapGesture_MetaObject(const QTapGesture* self) {
@@ -923,18 +919,16 @@ void QTapGesture_Delete(QTapGesture* self, bool isSubclass) {
 	}
 }
 
-void QTapAndHoldGesture_new(QTapAndHoldGesture** outptr_QTapAndHoldGesture, QGesture** outptr_QGesture, QObject** outptr_QObject) {
-	QTapAndHoldGesture* ret = new QTapAndHoldGesture();
-	*outptr_QTapAndHoldGesture = ret;
-	*outptr_QGesture = static_cast<QGesture*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QTapAndHoldGesture* QTapAndHoldGesture_new() {
+	return new QTapAndHoldGesture();
 }
 
-void QTapAndHoldGesture_new2(QObject* parent, QTapAndHoldGesture** outptr_QTapAndHoldGesture, QGesture** outptr_QGesture, QObject** outptr_QObject) {
-	QTapAndHoldGesture* ret = new QTapAndHoldGesture(parent);
-	*outptr_QTapAndHoldGesture = ret;
-	*outptr_QGesture = static_cast<QGesture*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QTapAndHoldGesture* QTapAndHoldGesture_new2(QObject* parent) {
+	return new QTapAndHoldGesture(parent);
+}
+
+void QTapAndHoldGesture_virtbase(QTapAndHoldGesture* src, QGesture** outptr_QGesture) {
+	*outptr_QGesture = static_cast<QGesture*>(src);
 }
 
 QMetaObject* QTapAndHoldGesture_MetaObject(const QTapAndHoldGesture* self) {
@@ -1035,22 +1029,22 @@ void QTapAndHoldGesture_Delete(QTapAndHoldGesture* self, bool isSubclass) {
 	}
 }
 
-void QGestureEvent_new(struct miqt_array /* of QGesture* */  gestures, QGestureEvent** outptr_QGestureEvent, QEvent** outptr_QEvent) {
+QGestureEvent* QGestureEvent_new(struct miqt_array /* of QGesture* */  gestures) {
 	QList<QGesture *> gestures_QList;
 	gestures_QList.reserve(gestures.len);
 	QGesture** gestures_arr = static_cast<QGesture**>(gestures.data);
 	for(size_t i = 0; i < gestures.len; ++i) {
 		gestures_QList.push_back(gestures_arr[i]);
 	}
-	QGestureEvent* ret = new QGestureEvent(gestures_QList);
-	*outptr_QGestureEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+	return new QGestureEvent(gestures_QList);
 }
 
-void QGestureEvent_new2(QGestureEvent* param1, QGestureEvent** outptr_QGestureEvent, QEvent** outptr_QEvent) {
-	QGestureEvent* ret = new QGestureEvent(*param1);
-	*outptr_QGestureEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QGestureEvent* QGestureEvent_new2(QGestureEvent* param1) {
+	return new QGestureEvent(*param1);
+}
+
+void QGestureEvent_virtbase(QGestureEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 struct miqt_array /* of QGesture* */  QGestureEvent_Gestures(const QGestureEvent* self) {

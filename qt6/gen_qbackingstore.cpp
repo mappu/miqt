@@ -6,11 +6,14 @@
 #include <QWindow>
 #include <qbackingstore.h>
 #include "gen_qbackingstore.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QBackingStore_new(QWindow* window, QBackingStore** outptr_QBackingStore) {
-	QBackingStore* ret = new QBackingStore(window);
-	*outptr_QBackingStore = ret;
+QBackingStore* QBackingStore_new(QWindow* window) {
+	return new QBackingStore(window);
 }
 
 QWindow* QBackingStore_Window(const QBackingStore* self) {

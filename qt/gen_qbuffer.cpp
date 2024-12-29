@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qbuffer.h>
 #include "gen_qbuffer.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQBuffer : public virtual QBuffer {
@@ -448,18 +452,16 @@ public:
 
 };
 
-void QBuffer_new(QBuffer** outptr_QBuffer, QIODevice** outptr_QIODevice, QObject** outptr_QObject) {
-	MiqtVirtualQBuffer* ret = new MiqtVirtualQBuffer();
-	*outptr_QBuffer = ret;
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QBuffer* QBuffer_new() {
+	return new MiqtVirtualQBuffer();
 }
 
-void QBuffer_new2(QObject* parent, QBuffer** outptr_QBuffer, QIODevice** outptr_QIODevice, QObject** outptr_QObject) {
-	MiqtVirtualQBuffer* ret = new MiqtVirtualQBuffer(parent);
-	*outptr_QBuffer = ret;
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QBuffer* QBuffer_new2(QObject* parent) {
+	return new MiqtVirtualQBuffer(parent);
+}
+
+void QBuffer_virtbase(QBuffer* src, QIODevice** outptr_QIODevice) {
+	*outptr_QIODevice = static_cast<QIODevice*>(src);
 }
 
 QMetaObject* QBuffer_MetaObject(const QBuffer* self) {

@@ -11,6 +11,10 @@
 #include <QTranslator>
 #include <qtranslator.h>
 #include "gen_qtranslator.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQTranslator : public virtual QTranslator {
@@ -250,16 +254,16 @@ public:
 
 };
 
-void QTranslator_new(QTranslator** outptr_QTranslator, QObject** outptr_QObject) {
-	MiqtVirtualQTranslator* ret = new MiqtVirtualQTranslator();
-	*outptr_QTranslator = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QTranslator* QTranslator_new() {
+	return new MiqtVirtualQTranslator();
 }
 
-void QTranslator_new2(QObject* parent, QTranslator** outptr_QTranslator, QObject** outptr_QObject) {
-	MiqtVirtualQTranslator* ret = new MiqtVirtualQTranslator(parent);
-	*outptr_QTranslator = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QTranslator* QTranslator_new2(QObject* parent) {
+	return new MiqtVirtualQTranslator(parent);
+}
+
+void QTranslator_virtbase(QTranslator* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QTranslator_MetaObject(const QTranslator* self) {

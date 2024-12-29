@@ -19,6 +19,10 @@
 #include <QTimerEvent>
 #include <qgraphicseffect.h>
 #include "gen_qgraphicseffect.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGraphicsEffect : public virtual QGraphicsEffect {
@@ -268,16 +272,16 @@ public:
 
 };
 
-void QGraphicsEffect_new(QGraphicsEffect** outptr_QGraphicsEffect, QObject** outptr_QObject) {
-	MiqtVirtualQGraphicsEffect* ret = new MiqtVirtualQGraphicsEffect();
-	*outptr_QGraphicsEffect = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGraphicsEffect* QGraphicsEffect_new() {
+	return new MiqtVirtualQGraphicsEffect();
 }
 
-void QGraphicsEffect_new2(QObject* parent, QGraphicsEffect** outptr_QGraphicsEffect, QObject** outptr_QObject) {
-	MiqtVirtualQGraphicsEffect* ret = new MiqtVirtualQGraphicsEffect(parent);
-	*outptr_QGraphicsEffect = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGraphicsEffect* QGraphicsEffect_new2(QObject* parent) {
+	return new MiqtVirtualQGraphicsEffect(parent);
+}
+
+void QGraphicsEffect_virtbase(QGraphicsEffect* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QGraphicsEffect_MetaObject(const QGraphicsEffect* self) {
@@ -520,18 +524,16 @@ public:
 
 };
 
-void QGraphicsColorizeEffect_new(QGraphicsColorizeEffect** outptr_QGraphicsColorizeEffect, QGraphicsEffect** outptr_QGraphicsEffect, QObject** outptr_QObject) {
-	MiqtVirtualQGraphicsColorizeEffect* ret = new MiqtVirtualQGraphicsColorizeEffect();
-	*outptr_QGraphicsColorizeEffect = ret;
-	*outptr_QGraphicsEffect = static_cast<QGraphicsEffect*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGraphicsColorizeEffect* QGraphicsColorizeEffect_new() {
+	return new MiqtVirtualQGraphicsColorizeEffect();
 }
 
-void QGraphicsColorizeEffect_new2(QObject* parent, QGraphicsColorizeEffect** outptr_QGraphicsColorizeEffect, QGraphicsEffect** outptr_QGraphicsEffect, QObject** outptr_QObject) {
-	MiqtVirtualQGraphicsColorizeEffect* ret = new MiqtVirtualQGraphicsColorizeEffect(parent);
-	*outptr_QGraphicsColorizeEffect = ret;
-	*outptr_QGraphicsEffect = static_cast<QGraphicsEffect*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGraphicsColorizeEffect* QGraphicsColorizeEffect_new2(QObject* parent) {
+	return new MiqtVirtualQGraphicsColorizeEffect(parent);
+}
+
+void QGraphicsColorizeEffect_virtbase(QGraphicsColorizeEffect* src, QGraphicsEffect** outptr_QGraphicsEffect) {
+	*outptr_QGraphicsEffect = static_cast<QGraphicsEffect*>(src);
 }
 
 QMetaObject* QGraphicsColorizeEffect_MetaObject(const QGraphicsColorizeEffect* self) {
@@ -733,18 +735,16 @@ public:
 
 };
 
-void QGraphicsBlurEffect_new(QGraphicsBlurEffect** outptr_QGraphicsBlurEffect, QGraphicsEffect** outptr_QGraphicsEffect, QObject** outptr_QObject) {
-	MiqtVirtualQGraphicsBlurEffect* ret = new MiqtVirtualQGraphicsBlurEffect();
-	*outptr_QGraphicsBlurEffect = ret;
-	*outptr_QGraphicsEffect = static_cast<QGraphicsEffect*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGraphicsBlurEffect* QGraphicsBlurEffect_new() {
+	return new MiqtVirtualQGraphicsBlurEffect();
 }
 
-void QGraphicsBlurEffect_new2(QObject* parent, QGraphicsBlurEffect** outptr_QGraphicsBlurEffect, QGraphicsEffect** outptr_QGraphicsEffect, QObject** outptr_QObject) {
-	MiqtVirtualQGraphicsBlurEffect* ret = new MiqtVirtualQGraphicsBlurEffect(parent);
-	*outptr_QGraphicsBlurEffect = ret;
-	*outptr_QGraphicsEffect = static_cast<QGraphicsEffect*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGraphicsBlurEffect* QGraphicsBlurEffect_new2(QObject* parent) {
+	return new MiqtVirtualQGraphicsBlurEffect(parent);
+}
+
+void QGraphicsBlurEffect_virtbase(QGraphicsBlurEffect* src, QGraphicsEffect** outptr_QGraphicsEffect) {
+	*outptr_QGraphicsEffect = static_cast<QGraphicsEffect*>(src);
 }
 
 QMetaObject* QGraphicsBlurEffect_MetaObject(const QGraphicsBlurEffect* self) {
@@ -950,18 +950,16 @@ public:
 
 };
 
-void QGraphicsDropShadowEffect_new(QGraphicsDropShadowEffect** outptr_QGraphicsDropShadowEffect, QGraphicsEffect** outptr_QGraphicsEffect, QObject** outptr_QObject) {
-	MiqtVirtualQGraphicsDropShadowEffect* ret = new MiqtVirtualQGraphicsDropShadowEffect();
-	*outptr_QGraphicsDropShadowEffect = ret;
-	*outptr_QGraphicsEffect = static_cast<QGraphicsEffect*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGraphicsDropShadowEffect* QGraphicsDropShadowEffect_new() {
+	return new MiqtVirtualQGraphicsDropShadowEffect();
 }
 
-void QGraphicsDropShadowEffect_new2(QObject* parent, QGraphicsDropShadowEffect** outptr_QGraphicsDropShadowEffect, QGraphicsEffect** outptr_QGraphicsEffect, QObject** outptr_QObject) {
-	MiqtVirtualQGraphicsDropShadowEffect* ret = new MiqtVirtualQGraphicsDropShadowEffect(parent);
-	*outptr_QGraphicsDropShadowEffect = ret;
-	*outptr_QGraphicsEffect = static_cast<QGraphicsEffect*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGraphicsDropShadowEffect* QGraphicsDropShadowEffect_new2(QObject* parent) {
+	return new MiqtVirtualQGraphicsDropShadowEffect(parent);
+}
+
+void QGraphicsDropShadowEffect_virtbase(QGraphicsDropShadowEffect* src, QGraphicsEffect** outptr_QGraphicsEffect) {
+	*outptr_QGraphicsEffect = static_cast<QGraphicsEffect*>(src);
 }
 
 QMetaObject* QGraphicsDropShadowEffect_MetaObject(const QGraphicsDropShadowEffect* self) {
@@ -1214,18 +1212,16 @@ public:
 
 };
 
-void QGraphicsOpacityEffect_new(QGraphicsOpacityEffect** outptr_QGraphicsOpacityEffect, QGraphicsEffect** outptr_QGraphicsEffect, QObject** outptr_QObject) {
-	MiqtVirtualQGraphicsOpacityEffect* ret = new MiqtVirtualQGraphicsOpacityEffect();
-	*outptr_QGraphicsOpacityEffect = ret;
-	*outptr_QGraphicsEffect = static_cast<QGraphicsEffect*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGraphicsOpacityEffect* QGraphicsOpacityEffect_new() {
+	return new MiqtVirtualQGraphicsOpacityEffect();
 }
 
-void QGraphicsOpacityEffect_new2(QObject* parent, QGraphicsOpacityEffect** outptr_QGraphicsOpacityEffect, QGraphicsEffect** outptr_QGraphicsEffect, QObject** outptr_QObject) {
-	MiqtVirtualQGraphicsOpacityEffect* ret = new MiqtVirtualQGraphicsOpacityEffect(parent);
-	*outptr_QGraphicsOpacityEffect = ret;
-	*outptr_QGraphicsEffect = static_cast<QGraphicsEffect*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGraphicsOpacityEffect* QGraphicsOpacityEffect_new2(QObject* parent) {
+	return new MiqtVirtualQGraphicsOpacityEffect(parent);
+}
+
+void QGraphicsOpacityEffect_virtbase(QGraphicsOpacityEffect* src, QGraphicsEffect** outptr_QGraphicsEffect) {
+	*outptr_QGraphicsEffect = static_cast<QGraphicsEffect*>(src);
 }
 
 QMetaObject* QGraphicsOpacityEffect_MetaObject(const QGraphicsOpacityEffect* self) {

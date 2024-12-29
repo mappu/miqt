@@ -9,42 +9,39 @@
 #include <QTime>
 #include <qlocale.h>
 #include "gen_qlocale.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QLocale_new(QLocale** outptr_QLocale) {
-	QLocale* ret = new QLocale();
-	*outptr_QLocale = ret;
+QLocale* QLocale_new() {
+	return new QLocale();
 }
 
-void QLocale_new2(struct miqt_string name, QLocale** outptr_QLocale) {
+QLocale* QLocale_new2(struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	QLocale* ret = new QLocale(name_QString);
-	*outptr_QLocale = ret;
+	return new QLocale(name_QString);
 }
 
-void QLocale_new3(uint16_t language, uint16_t territory, QLocale** outptr_QLocale) {
-	QLocale* ret = new QLocale(static_cast<QLocale::Language>(language), static_cast<QLocale::Territory>(territory));
-	*outptr_QLocale = ret;
+QLocale* QLocale_new3(uint16_t language, uint16_t territory) {
+	return new QLocale(static_cast<QLocale::Language>(language), static_cast<QLocale::Territory>(territory));
 }
 
-void QLocale_new4(uint16_t language, QLocale** outptr_QLocale) {
-	QLocale* ret = new QLocale(static_cast<QLocale::Language>(language));
-	*outptr_QLocale = ret;
+QLocale* QLocale_new4(uint16_t language) {
+	return new QLocale(static_cast<QLocale::Language>(language));
 }
 
-void QLocale_new5(QLocale* other, QLocale** outptr_QLocale) {
-	QLocale* ret = new QLocale(*other);
-	*outptr_QLocale = ret;
+QLocale* QLocale_new5(QLocale* other) {
+	return new QLocale(*other);
 }
 
-void QLocale_new6(uint16_t language, uint16_t script, QLocale** outptr_QLocale) {
-	QLocale* ret = new QLocale(static_cast<QLocale::Language>(language), static_cast<QLocale::Script>(script));
-	*outptr_QLocale = ret;
+QLocale* QLocale_new6(uint16_t language, uint16_t script) {
+	return new QLocale(static_cast<QLocale::Language>(language), static_cast<QLocale::Script>(script));
 }
 
-void QLocale_new7(uint16_t language, uint16_t script, uint16_t territory, QLocale** outptr_QLocale) {
-	QLocale* ret = new QLocale(static_cast<QLocale::Language>(language), static_cast<QLocale::Script>(script), static_cast<QLocale::Territory>(territory));
-	*outptr_QLocale = ret;
+QLocale* QLocale_new7(uint16_t language, uint16_t script, uint16_t territory) {
+	return new QLocale(static_cast<QLocale::Language>(language), static_cast<QLocale::Script>(script), static_cast<QLocale::Territory>(territory));
 }
 
 void QLocale_OperatorAssign(QLocale* self, QLocale* other) {

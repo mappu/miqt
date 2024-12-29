@@ -4,11 +4,14 @@
 #include <QScriptable>
 #include <qscriptable.h>
 #include "gen_qscriptable.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QScriptable_new(QScriptable** outptr_QScriptable) {
-	QScriptable* ret = new QScriptable();
-	*outptr_QScriptable = ret;
+QScriptable* QScriptable_new() {
+	return new QScriptable();
 }
 
 QScriptEngine* QScriptable_Engine(const QScriptable* self) {

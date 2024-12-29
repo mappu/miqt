@@ -36,6 +36,10 @@
 #include <QWidget>
 #include <qvideowidget.h>
 #include "gen_qvideowidget.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQVideoWidget : public virtual QVideoWidget {
@@ -1068,22 +1072,17 @@ public:
 
 };
 
-void QVideoWidget_new(QWidget* parent, QVideoWidget** outptr_QVideoWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice, QMediaBindableInterface** outptr_QMediaBindableInterface) {
-	MiqtVirtualQVideoWidget* ret = new MiqtVirtualQVideoWidget(parent);
-	*outptr_QVideoWidget = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
-	*outptr_QMediaBindableInterface = static_cast<QMediaBindableInterface*>(ret);
+QVideoWidget* QVideoWidget_new(QWidget* parent) {
+	return new MiqtVirtualQVideoWidget(parent);
 }
 
-void QVideoWidget_new2(QVideoWidget** outptr_QVideoWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice, QMediaBindableInterface** outptr_QMediaBindableInterface) {
-	MiqtVirtualQVideoWidget* ret = new MiqtVirtualQVideoWidget();
-	*outptr_QVideoWidget = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
-	*outptr_QMediaBindableInterface = static_cast<QMediaBindableInterface*>(ret);
+QVideoWidget* QVideoWidget_new2() {
+	return new MiqtVirtualQVideoWidget();
+}
+
+void QVideoWidget_virtbase(QVideoWidget* src, QWidget** outptr_QWidget, QMediaBindableInterface** outptr_QMediaBindableInterface) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
+	*outptr_QMediaBindableInterface = static_cast<QMediaBindableInterface*>(src);
 }
 
 QMetaObject* QVideoWidget_MetaObject(const QVideoWidget* self) {

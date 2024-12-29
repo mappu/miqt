@@ -39,6 +39,10 @@
 #include <QWebEngineUrlRequestInterceptor>
 #include <qwebenginepage.h>
 #include "gen_qwebenginepage.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQWebEnginePage : public virtual QWebEnginePage {
@@ -510,28 +514,24 @@ public:
 
 };
 
-void QWebEnginePage_new(QWebEnginePage** outptr_QWebEnginePage, QObject** outptr_QObject) {
-	MiqtVirtualQWebEnginePage* ret = new MiqtVirtualQWebEnginePage();
-	*outptr_QWebEnginePage = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QWebEnginePage* QWebEnginePage_new() {
+	return new MiqtVirtualQWebEnginePage();
 }
 
-void QWebEnginePage_new2(QWebEngineProfile* profile, QWebEnginePage** outptr_QWebEnginePage, QObject** outptr_QObject) {
-	MiqtVirtualQWebEnginePage* ret = new MiqtVirtualQWebEnginePage(profile);
-	*outptr_QWebEnginePage = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QWebEnginePage* QWebEnginePage_new2(QWebEngineProfile* profile) {
+	return new MiqtVirtualQWebEnginePage(profile);
 }
 
-void QWebEnginePage_new3(QObject* parent, QWebEnginePage** outptr_QWebEnginePage, QObject** outptr_QObject) {
-	MiqtVirtualQWebEnginePage* ret = new MiqtVirtualQWebEnginePage(parent);
-	*outptr_QWebEnginePage = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QWebEnginePage* QWebEnginePage_new3(QObject* parent) {
+	return new MiqtVirtualQWebEnginePage(parent);
 }
 
-void QWebEnginePage_new4(QWebEngineProfile* profile, QObject* parent, QWebEnginePage** outptr_QWebEnginePage, QObject** outptr_QObject) {
-	MiqtVirtualQWebEnginePage* ret = new MiqtVirtualQWebEnginePage(profile, parent);
-	*outptr_QWebEnginePage = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QWebEnginePage* QWebEnginePage_new4(QWebEngineProfile* profile, QObject* parent) {
+	return new MiqtVirtualQWebEnginePage(profile, parent);
+}
+
+void QWebEnginePage_virtbase(QWebEnginePage* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QWebEnginePage_MetaObject(const QWebEnginePage* self) {

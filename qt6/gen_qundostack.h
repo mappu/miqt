@@ -36,10 +36,10 @@ typedef struct QUndoCommand QUndoCommand;
 typedef struct QUndoStack QUndoStack;
 #endif
 
-void QUndoCommand_new(QUndoCommand** outptr_QUndoCommand);
-void QUndoCommand_new2(struct miqt_string text, QUndoCommand** outptr_QUndoCommand);
-void QUndoCommand_new3(QUndoCommand* parent, QUndoCommand** outptr_QUndoCommand);
-void QUndoCommand_new4(struct miqt_string text, QUndoCommand* parent, QUndoCommand** outptr_QUndoCommand);
+QUndoCommand* QUndoCommand_new();
+QUndoCommand* QUndoCommand_new2(struct miqt_string text);
+QUndoCommand* QUndoCommand_new3(QUndoCommand* parent);
+QUndoCommand* QUndoCommand_new4(struct miqt_string text, QUndoCommand* parent);
 void QUndoCommand_Undo(QUndoCommand* self);
 void QUndoCommand_Redo(QUndoCommand* self);
 struct miqt_string QUndoCommand_Text(const QUndoCommand* self);
@@ -61,8 +61,9 @@ void QUndoCommand_override_virtual_MergeWith(void* self, intptr_t slot);
 bool QUndoCommand_virtualbase_MergeWith(void* self, QUndoCommand* other);
 void QUndoCommand_Delete(QUndoCommand* self, bool isSubclass);
 
-void QUndoStack_new(QUndoStack** outptr_QUndoStack, QObject** outptr_QObject);
-void QUndoStack_new2(QObject* parent, QUndoStack** outptr_QUndoStack, QObject** outptr_QObject);
+QUndoStack* QUndoStack_new();
+QUndoStack* QUndoStack_new2(QObject* parent);
+void QUndoStack_virtbase(QUndoStack* src, QObject** outptr_QObject);
 QMetaObject* QUndoStack_MetaObject(const QUndoStack* self);
 void* QUndoStack_Metacast(QUndoStack* self, const char* param1);
 struct miqt_string QUndoStack_Tr(const char* s);

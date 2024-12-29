@@ -34,7 +34,8 @@ typedef struct QTest__QTouchEventWidgetSequence QTest__QTouchEventWidgetSequence
 typedef struct QWidget QWidget;
 #endif
 
-void QTest__QTouchEventWidgetSequence_new(QTest__QTouchEventWidgetSequence* param1, QTest__QTouchEventWidgetSequence** outptr_QTest__QTouchEventWidgetSequence, QTest__QTouchEventSequence** outptr_QTest__QTouchEventSequence);
+QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_new(QTest__QTouchEventWidgetSequence* param1);
+void QTest__QTouchEventWidgetSequence_virtbase(QTest__QTouchEventWidgetSequence* src, QTest__QTouchEventSequence** outptr_QTest__QTouchEventSequence);
 QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_Press(QTest__QTouchEventWidgetSequence* self, int touchId, QPoint* pt);
 QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_Move(QTest__QTouchEventWidgetSequence* self, int touchId, QPoint* pt);
 QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_Release(QTest__QTouchEventWidgetSequence* self, int touchId, QPoint* pt);

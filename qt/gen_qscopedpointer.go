@@ -37,16 +37,13 @@ func newQScopedPointerPodDeleter(h *C.QScopedPointerPodDeleter) *QScopedPointerP
 	if h == nil {
 		return nil
 	}
+
 	return &QScopedPointerPodDeleter{h: h}
 }
 
 // UnsafeNewQScopedPointerPodDeleter constructs the type using only unsafe pointers.
 func UnsafeNewQScopedPointerPodDeleter(h unsafe.Pointer) *QScopedPointerPodDeleter {
-	if h == nil {
-		return nil
-	}
-
-	return &QScopedPointerPodDeleter{h: (*C.QScopedPointerPodDeleter)(h)}
+	return newQScopedPointerPodDeleter((*C.QScopedPointerPodDeleter)(h))
 }
 
 func QScopedPointerPodDeleter_Cleanup(pointer unsafe.Pointer) {

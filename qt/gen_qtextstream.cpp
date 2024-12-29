@@ -9,28 +9,28 @@
 #include <QTextStream>
 #include <qtextstream.h>
 #include "gen_qtextstream.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QTextStream_new(QTextStream** outptr_QTextStream) {
-	QTextStream* ret = new QTextStream();
-	*outptr_QTextStream = ret;
+QTextStream* QTextStream_new() {
+	return new QTextStream();
 }
 
-void QTextStream_new2(QIODevice* device, QTextStream** outptr_QTextStream) {
-	QTextStream* ret = new QTextStream(device);
-	*outptr_QTextStream = ret;
+QTextStream* QTextStream_new2(QIODevice* device) {
+	return new QTextStream(device);
 }
 
-void QTextStream_new3(struct miqt_string array, QTextStream** outptr_QTextStream) {
+QTextStream* QTextStream_new3(struct miqt_string array) {
 	QByteArray array_QByteArray(array.data, array.len);
-	QTextStream* ret = new QTextStream(array_QByteArray);
-	*outptr_QTextStream = ret;
+	return new QTextStream(array_QByteArray);
 }
 
-void QTextStream_new4(struct miqt_string array, int openMode, QTextStream** outptr_QTextStream) {
+QTextStream* QTextStream_new4(struct miqt_string array, int openMode) {
 	QByteArray array_QByteArray(array.data, array.len);
-	QTextStream* ret = new QTextStream(array_QByteArray, static_cast<QIODevice::OpenMode>(openMode));
-	*outptr_QTextStream = ret;
+	return new QTextStream(array_QByteArray, static_cast<QIODevice::OpenMode>(openMode));
 }
 
 void QTextStream_SetCodec(QTextStream* self, QTextCodec* codec) {

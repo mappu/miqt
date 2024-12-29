@@ -12,6 +12,10 @@
 #include <QTimerEvent>
 #include <qbuttongroup.h>
 #include "gen_qbuttongroup.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQButtonGroup : public virtual QButtonGroup {
@@ -195,16 +199,16 @@ public:
 
 };
 
-void QButtonGroup_new(QButtonGroup** outptr_QButtonGroup, QObject** outptr_QObject) {
-	MiqtVirtualQButtonGroup* ret = new MiqtVirtualQButtonGroup();
-	*outptr_QButtonGroup = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QButtonGroup* QButtonGroup_new() {
+	return new MiqtVirtualQButtonGroup();
 }
 
-void QButtonGroup_new2(QObject* parent, QButtonGroup** outptr_QButtonGroup, QObject** outptr_QObject) {
-	MiqtVirtualQButtonGroup* ret = new MiqtVirtualQButtonGroup(parent);
-	*outptr_QButtonGroup = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QButtonGroup* QButtonGroup_new2(QObject* parent) {
+	return new MiqtVirtualQButtonGroup(parent);
+}
+
+void QButtonGroup_virtbase(QButtonGroup* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QButtonGroup_MetaObject(const QButtonGroup* self) {

@@ -16,6 +16,10 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QWebPluginFactory__Plugin
 #include <qwebpluginfactory.h>
 #include "gen_qwebpluginfactory.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQWebPluginFactory : public virtual QWebPluginFactory {
@@ -353,16 +357,16 @@ public:
 
 };
 
-void QWebPluginFactory_new(QWebPluginFactory** outptr_QWebPluginFactory, QObject** outptr_QObject) {
-	MiqtVirtualQWebPluginFactory* ret = new MiqtVirtualQWebPluginFactory();
-	*outptr_QWebPluginFactory = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QWebPluginFactory* QWebPluginFactory_new() {
+	return new MiqtVirtualQWebPluginFactory();
 }
 
-void QWebPluginFactory_new2(QObject* parent, QWebPluginFactory** outptr_QWebPluginFactory, QObject** outptr_QObject) {
-	MiqtVirtualQWebPluginFactory* ret = new MiqtVirtualQWebPluginFactory(parent);
-	*outptr_QWebPluginFactory = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QWebPluginFactory* QWebPluginFactory_new2(QObject* parent) {
+	return new MiqtVirtualQWebPluginFactory(parent);
+}
+
+void QWebPluginFactory_virtbase(QWebPluginFactory* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QWebPluginFactory_MetaObject(const QWebPluginFactory* self) {
@@ -579,9 +583,8 @@ void QWebPluginFactory_Delete(QWebPluginFactory* self, bool isSubclass) {
 	}
 }
 
-void QWebPluginFactory__MimeType_new(QWebPluginFactory__MimeType* param1, QWebPluginFactory__MimeType** outptr_QWebPluginFactory__MimeType) {
-	QWebPluginFactory::MimeType* ret = new QWebPluginFactory::MimeType(*param1);
-	*outptr_QWebPluginFactory__MimeType = ret;
+QWebPluginFactory__MimeType* QWebPluginFactory__MimeType_new(QWebPluginFactory__MimeType* param1) {
+	return new QWebPluginFactory::MimeType(*param1);
 }
 
 bool QWebPluginFactory__MimeType_OperatorEqual(const QWebPluginFactory__MimeType* self, QWebPluginFactory__MimeType* other) {
@@ -604,9 +607,8 @@ void QWebPluginFactory__MimeType_Delete(QWebPluginFactory__MimeType* self, bool 
 	}
 }
 
-void QWebPluginFactory__Plugin_new(QWebPluginFactory__Plugin* param1, QWebPluginFactory__Plugin** outptr_QWebPluginFactory__Plugin) {
-	QWebPluginFactory::Plugin* ret = new QWebPluginFactory::Plugin(*param1);
-	*outptr_QWebPluginFactory__Plugin = ret;
+QWebPluginFactory__Plugin* QWebPluginFactory__Plugin_new(QWebPluginFactory__Plugin* param1) {
+	return new QWebPluginFactory::Plugin(*param1);
 }
 
 void QWebPluginFactory__Plugin_OperatorAssign(QWebPluginFactory__Plugin* self, QWebPluginFactory__Plugin* param1) {

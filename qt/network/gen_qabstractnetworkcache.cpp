@@ -15,16 +15,18 @@
 #include <QVariant>
 #include <qabstractnetworkcache.h>
 #include "gen_qabstractnetworkcache.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QNetworkCacheMetaData_new(QNetworkCacheMetaData** outptr_QNetworkCacheMetaData) {
-	QNetworkCacheMetaData* ret = new QNetworkCacheMetaData();
-	*outptr_QNetworkCacheMetaData = ret;
+QNetworkCacheMetaData* QNetworkCacheMetaData_new() {
+	return new QNetworkCacheMetaData();
 }
 
-void QNetworkCacheMetaData_new2(QNetworkCacheMetaData* other, QNetworkCacheMetaData** outptr_QNetworkCacheMetaData) {
-	QNetworkCacheMetaData* ret = new QNetworkCacheMetaData(*other);
-	*outptr_QNetworkCacheMetaData = ret;
+QNetworkCacheMetaData* QNetworkCacheMetaData_new2(QNetworkCacheMetaData* other) {
+	return new QNetworkCacheMetaData(*other);
 }
 
 void QNetworkCacheMetaData_OperatorAssign(QNetworkCacheMetaData* self, QNetworkCacheMetaData* other) {
@@ -165,6 +167,10 @@ void QNetworkCacheMetaData_Delete(QNetworkCacheMetaData* self, bool isSubclass) 
 	} else {
 		delete self;
 	}
+}
+
+void QAbstractNetworkCache_virtbase(QAbstractNetworkCache* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QAbstractNetworkCache_MetaObject(const QAbstractNetworkCache* self) {

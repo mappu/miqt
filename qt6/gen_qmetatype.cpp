@@ -7,21 +7,22 @@
 #include <QPartialOrdering>
 #include <qmetatype.h>
 #include "gen_qmetatype.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QMetaType_new(int typeVal, QMetaType** outptr_QMetaType) {
-	QMetaType* ret = new QMetaType(static_cast<int>(typeVal));
-	*outptr_QMetaType = ret;
+QMetaType* QMetaType_new(int typeVal) {
+	return new QMetaType(static_cast<int>(typeVal));
 }
 
-void QMetaType_new2(QMetaType** outptr_QMetaType) {
-	QMetaType* ret = new QMetaType();
-	*outptr_QMetaType = ret;
+QMetaType* QMetaType_new2() {
+	return new QMetaType();
 }
 
-void QMetaType_new3(QMetaType* param1, QMetaType** outptr_QMetaType) {
-	QMetaType* ret = new QMetaType(*param1);
-	*outptr_QMetaType = ret;
+QMetaType* QMetaType_new3(QMetaType* param1) {
+	return new QMetaType(*param1);
 }
 
 void QMetaType_RegisterNormalizedTypedef(struct miqt_string normalizedTypeName, QMetaType* typeVal) {

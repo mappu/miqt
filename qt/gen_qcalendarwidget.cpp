@@ -38,6 +38,10 @@
 #include <QWidget>
 #include <qcalendarwidget.h>
 #include "gen_qcalendarwidget.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQCalendarWidget : public virtual QCalendarWidget {
@@ -1079,20 +1083,16 @@ public:
 
 };
 
-void QCalendarWidget_new(QWidget* parent, QCalendarWidget** outptr_QCalendarWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQCalendarWidget* ret = new MiqtVirtualQCalendarWidget(parent);
-	*outptr_QCalendarWidget = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QCalendarWidget* QCalendarWidget_new(QWidget* parent) {
+	return new MiqtVirtualQCalendarWidget(parent);
 }
 
-void QCalendarWidget_new2(QCalendarWidget** outptr_QCalendarWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQCalendarWidget* ret = new MiqtVirtualQCalendarWidget();
-	*outptr_QCalendarWidget = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QCalendarWidget* QCalendarWidget_new2() {
+	return new MiqtVirtualQCalendarWidget();
+}
+
+void QCalendarWidget_virtbase(QCalendarWidget* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QCalendarWidget_MetaObject(const QCalendarWidget* self) {

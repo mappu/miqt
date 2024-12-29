@@ -32,11 +32,11 @@ typedef struct QSize QSize;
 typedef struct QWindow QWindow;
 #endif
 
-void QIcon_new(QIcon** outptr_QIcon);
-void QIcon_new2(QPixmap* pixmap, QIcon** outptr_QIcon);
-void QIcon_new3(QIcon* other, QIcon** outptr_QIcon);
-void QIcon_new4(struct miqt_string fileName, QIcon** outptr_QIcon);
-void QIcon_new5(QIconEngine* engine, QIcon** outptr_QIcon);
+QIcon* QIcon_new();
+QIcon* QIcon_new2(QPixmap* pixmap);
+QIcon* QIcon_new3(QIcon* other);
+QIcon* QIcon_new4(struct miqt_string fileName);
+QIcon* QIcon_new5(QIconEngine* engine);
 void QIcon_OperatorAssign(QIcon* self, QIcon* other);
 void QIcon_Swap(QIcon* self, QIcon* other);
 QPixmap* QIcon_Pixmap(const QIcon* self, QSize* size);

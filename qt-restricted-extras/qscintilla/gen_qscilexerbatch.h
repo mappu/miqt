@@ -34,8 +34,9 @@ typedef struct QsciLexerBatch QsciLexerBatch;
 typedef struct QsciScintilla QsciScintilla;
 #endif
 
-void QsciLexerBatch_new(QsciLexerBatch** outptr_QsciLexerBatch, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
-void QsciLexerBatch_new2(QObject* parent, QsciLexerBatch** outptr_QsciLexerBatch, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+QsciLexerBatch* QsciLexerBatch_new();
+QsciLexerBatch* QsciLexerBatch_new2(QObject* parent);
+void QsciLexerBatch_virtbase(QsciLexerBatch* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerBatch_MetaObject(const QsciLexerBatch* self);
 void* QsciLexerBatch_Metacast(QsciLexerBatch* self, const char* param1);
 struct miqt_string QsciLexerBatch_Tr(const char* s);

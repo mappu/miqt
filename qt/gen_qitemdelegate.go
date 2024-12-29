@@ -35,50 +35,40 @@ func (this *QItemDelegate) UnsafePointer() unsafe.Pointer {
 }
 
 // newQItemDelegate constructs the type using only CGO pointers.
-func newQItemDelegate(h *C.QItemDelegate, h_QAbstractItemDelegate *C.QAbstractItemDelegate, h_QObject *C.QObject) *QItemDelegate {
+func newQItemDelegate(h *C.QItemDelegate) *QItemDelegate {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractItemDelegate *C.QAbstractItemDelegate = nil
+	C.QItemDelegate_virtbase(h, &outptr_QAbstractItemDelegate)
+
 	return &QItemDelegate{h: h,
-		QAbstractItemDelegate: newQAbstractItemDelegate(h_QAbstractItemDelegate, h_QObject)}
+		QAbstractItemDelegate: newQAbstractItemDelegate(outptr_QAbstractItemDelegate)}
 }
 
 // UnsafeNewQItemDelegate constructs the type using only unsafe pointers.
-func UnsafeNewQItemDelegate(h unsafe.Pointer, h_QAbstractItemDelegate unsafe.Pointer, h_QObject unsafe.Pointer) *QItemDelegate {
-	if h == nil {
-		return nil
-	}
-
-	return &QItemDelegate{h: (*C.QItemDelegate)(h),
-		QAbstractItemDelegate: UnsafeNewQAbstractItemDelegate(h_QAbstractItemDelegate, h_QObject)}
+func UnsafeNewQItemDelegate(h unsafe.Pointer) *QItemDelegate {
+	return newQItemDelegate((*C.QItemDelegate)(h))
 }
 
 // NewQItemDelegate constructs a new QItemDelegate object.
 func NewQItemDelegate() *QItemDelegate {
-	var outptr_QItemDelegate *C.QItemDelegate = nil
-	var outptr_QAbstractItemDelegate *C.QAbstractItemDelegate = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QItemDelegate_new(&outptr_QItemDelegate, &outptr_QAbstractItemDelegate, &outptr_QObject)
-	ret := newQItemDelegate(outptr_QItemDelegate, outptr_QAbstractItemDelegate, outptr_QObject)
+	ret := newQItemDelegate(C.QItemDelegate_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQItemDelegate2 constructs a new QItemDelegate object.
 func NewQItemDelegate2(parent *QObject) *QItemDelegate {
-	var outptr_QItemDelegate *C.QItemDelegate = nil
-	var outptr_QAbstractItemDelegate *C.QAbstractItemDelegate = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QItemDelegate_new2(parent.cPointer(), &outptr_QItemDelegate, &outptr_QAbstractItemDelegate, &outptr_QObject)
-	ret := newQItemDelegate(outptr_QItemDelegate, outptr_QAbstractItemDelegate, outptr_QObject)
+	ret := newQItemDelegate(C.QItemDelegate_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QItemDelegate) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QItemDelegate_MetaObject(this.h)))
+	return newQMetaObject(C.QItemDelegate_MetaObject(this.h))
 }
 
 func (this *QItemDelegate) Metacast(param1 string) unsafe.Pointer {
@@ -118,14 +108,13 @@ func (this *QItemDelegate) Paint(painter *QPainter, option *QStyleOptionViewItem
 }
 
 func (this *QItemDelegate) SizeHint(option *QStyleOptionViewItem, index *QModelIndex) *QSize {
-	_ret := C.QItemDelegate_SizeHint(this.h, option.cPointer(), index.cPointer())
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QItemDelegate_SizeHint(this.h, option.cPointer(), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QItemDelegate) CreateEditor(parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QItemDelegate_CreateEditor(this.h, parent.cPointer(), option.cPointer(), index.cPointer())), nil, nil)
+	return newQWidget(C.QItemDelegate_CreateEditor(this.h, parent.cPointer(), option.cPointer(), index.cPointer()))
 }
 
 func (this *QItemDelegate) SetEditorData(editor *QWidget, index *QModelIndex) {
@@ -141,7 +130,7 @@ func (this *QItemDelegate) UpdateEditorGeometry(editor *QWidget, option *QStyleO
 }
 
 func (this *QItemDelegate) ItemEditorFactory() *QItemEditorFactory {
-	return UnsafeNewQItemEditorFactory(unsafe.Pointer(C.QItemDelegate_ItemEditorFactory(this.h)))
+	return newQItemEditorFactory(C.QItemDelegate_ItemEditorFactory(this.h))
 }
 
 func (this *QItemDelegate) SetItemEditorFactory(factory *QItemEditorFactory) {
@@ -198,6 +187,9 @@ func (this *QItemDelegate) callVirtualBase_Paint(painter *QPainter, option *QSty
 
 }
 func (this *QItemDelegate) OnPaint(slot func(super func(painter *QPainter, option *QStyleOptionViewItem, index *QModelIndex), painter *QPainter, option *QStyleOptionViewItem, index *QModelIndex)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemDelegate_override_virtual_Paint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -209,9 +201,11 @@ func miqt_exec_callback_QItemDelegate_Paint(self *C.QItemDelegate, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQStyleOptionViewItem(unsafe.Pointer(option), nil)
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQStyleOptionViewItem(option)
+
+	slotval3 := newQModelIndex(index)
 
 	gofunc((&QItemDelegate{h: self}).callVirtualBase_Paint, slotval1, slotval2, slotval3)
 
@@ -219,13 +213,15 @@ func miqt_exec_callback_QItemDelegate_Paint(self *C.QItemDelegate, cb C.intptr_t
 
 func (this *QItemDelegate) callVirtualBase_SizeHint(option *QStyleOptionViewItem, index *QModelIndex) *QSize {
 
-	_ret := C.QItemDelegate_virtualbase_SizeHint(unsafe.Pointer(this.h), option.cPointer(), index.cPointer())
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QItemDelegate_virtualbase_SizeHint(unsafe.Pointer(this.h), option.cPointer(), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QItemDelegate) OnSizeHint(slot func(super func(option *QStyleOptionViewItem, index *QModelIndex) *QSize, option *QStyleOptionViewItem, index *QModelIndex) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemDelegate_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -237,8 +233,9 @@ func miqt_exec_callback_QItemDelegate_SizeHint(self *C.QItemDelegate, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQStyleOptionViewItem(unsafe.Pointer(option), nil)
-	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQStyleOptionViewItem(option)
+
+	slotval2 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QItemDelegate{h: self}).callVirtualBase_SizeHint, slotval1, slotval2)
 
@@ -248,9 +245,13 @@ func miqt_exec_callback_QItemDelegate_SizeHint(self *C.QItemDelegate, cb C.intpt
 
 func (this *QItemDelegate) callVirtualBase_CreateEditor(parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget {
 
-	return UnsafeNewQWidget(unsafe.Pointer(C.QItemDelegate_virtualbase_CreateEditor(unsafe.Pointer(this.h), parent.cPointer(), option.cPointer(), index.cPointer())), nil, nil)
+	return newQWidget(C.QItemDelegate_virtualbase_CreateEditor(unsafe.Pointer(this.h), parent.cPointer(), option.cPointer(), index.cPointer()))
+
 }
 func (this *QItemDelegate) OnCreateEditor(slot func(super func(parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget, parent *QWidget, option *QStyleOptionViewItem, index *QModelIndex) *QWidget) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemDelegate_override_virtual_CreateEditor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -262,9 +263,11 @@ func miqt_exec_callback_QItemDelegate_CreateEditor(self *C.QItemDelegate, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(parent), nil, nil)
-	slotval2 := UnsafeNewQStyleOptionViewItem(unsafe.Pointer(option), nil)
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQWidget(parent)
+
+	slotval2 := newQStyleOptionViewItem(option)
+
+	slotval3 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QItemDelegate{h: self}).callVirtualBase_CreateEditor, slotval1, slotval2, slotval3)
 
@@ -278,6 +281,9 @@ func (this *QItemDelegate) callVirtualBase_SetEditorData(editor *QWidget, index 
 
 }
 func (this *QItemDelegate) OnSetEditorData(slot func(super func(editor *QWidget, index *QModelIndex), editor *QWidget, index *QModelIndex)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemDelegate_override_virtual_SetEditorData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -289,8 +295,9 @@ func miqt_exec_callback_QItemDelegate_SetEditorData(self *C.QItemDelegate, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(editor), nil, nil)
-	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQWidget(editor)
+
+	slotval2 := newQModelIndex(index)
 
 	gofunc((&QItemDelegate{h: self}).callVirtualBase_SetEditorData, slotval1, slotval2)
 
@@ -302,6 +309,9 @@ func (this *QItemDelegate) callVirtualBase_SetModelData(editor *QWidget, model *
 
 }
 func (this *QItemDelegate) OnSetModelData(slot func(super func(editor *QWidget, model *QAbstractItemModel, index *QModelIndex), editor *QWidget, model *QAbstractItemModel, index *QModelIndex)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemDelegate_override_virtual_SetModelData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -313,9 +323,11 @@ func miqt_exec_callback_QItemDelegate_SetModelData(self *C.QItemDelegate, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(editor), nil, nil)
-	slotval2 := UnsafeNewQAbstractItemModel(unsafe.Pointer(model), nil)
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQWidget(editor)
+
+	slotval2 := newQAbstractItemModel(model)
+
+	slotval3 := newQModelIndex(index)
 
 	gofunc((&QItemDelegate{h: self}).callVirtualBase_SetModelData, slotval1, slotval2, slotval3)
 
@@ -327,6 +339,9 @@ func (this *QItemDelegate) callVirtualBase_UpdateEditorGeometry(editor *QWidget,
 
 }
 func (this *QItemDelegate) OnUpdateEditorGeometry(slot func(super func(editor *QWidget, option *QStyleOptionViewItem, index *QModelIndex), editor *QWidget, option *QStyleOptionViewItem, index *QModelIndex)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemDelegate_override_virtual_UpdateEditorGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -338,9 +353,11 @@ func miqt_exec_callback_QItemDelegate_UpdateEditorGeometry(self *C.QItemDelegate
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(editor), nil, nil)
-	slotval2 := UnsafeNewQStyleOptionViewItem(unsafe.Pointer(option), nil)
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQWidget(editor)
+
+	slotval2 := newQStyleOptionViewItem(option)
+
+	slotval3 := newQModelIndex(index)
 
 	gofunc((&QItemDelegate{h: self}).callVirtualBase_UpdateEditorGeometry, slotval1, slotval2, slotval3)
 
@@ -356,6 +373,9 @@ func (this *QItemDelegate) callVirtualBase_DrawDisplay(painter *QPainter, option
 
 }
 func (this *QItemDelegate) OnDrawDisplay(slot func(super func(painter *QPainter, option *QStyleOptionViewItem, rect *QRect, text string), painter *QPainter, option *QStyleOptionViewItem, rect *QRect, text string)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemDelegate_override_virtual_DrawDisplay(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -367,9 +387,12 @@ func miqt_exec_callback_QItemDelegate_DrawDisplay(self *C.QItemDelegate, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQStyleOptionViewItem(unsafe.Pointer(option), nil)
-	slotval3 := UnsafeNewQRect(unsafe.Pointer(rect))
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQStyleOptionViewItem(option)
+
+	slotval3 := newQRect(rect)
+
 	var text_ms C.struct_miqt_string = text
 	text_ret := C.GoStringN(text_ms.data, C.int(int64(text_ms.len)))
 	C.free(unsafe.Pointer(text_ms.data))
@@ -385,6 +408,9 @@ func (this *QItemDelegate) callVirtualBase_DrawDecoration(painter *QPainter, opt
 
 }
 func (this *QItemDelegate) OnDrawDecoration(slot func(super func(painter *QPainter, option *QStyleOptionViewItem, rect *QRect, pixmap *QPixmap), painter *QPainter, option *QStyleOptionViewItem, rect *QRect, pixmap *QPixmap)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemDelegate_override_virtual_DrawDecoration(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -396,10 +422,13 @@ func miqt_exec_callback_QItemDelegate_DrawDecoration(self *C.QItemDelegate, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQStyleOptionViewItem(unsafe.Pointer(option), nil)
-	slotval3 := UnsafeNewQRect(unsafe.Pointer(rect))
-	slotval4 := UnsafeNewQPixmap(unsafe.Pointer(pixmap), nil)
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQStyleOptionViewItem(option)
+
+	slotval3 := newQRect(rect)
+
+	slotval4 := newQPixmap(pixmap)
 
 	gofunc((&QItemDelegate{h: self}).callVirtualBase_DrawDecoration, slotval1, slotval2, slotval3, slotval4)
 
@@ -411,6 +440,9 @@ func (this *QItemDelegate) callVirtualBase_DrawFocus(painter *QPainter, option *
 
 }
 func (this *QItemDelegate) OnDrawFocus(slot func(super func(painter *QPainter, option *QStyleOptionViewItem, rect *QRect), painter *QPainter, option *QStyleOptionViewItem, rect *QRect)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemDelegate_override_virtual_DrawFocus(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -422,9 +454,11 @@ func miqt_exec_callback_QItemDelegate_DrawFocus(self *C.QItemDelegate, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQStyleOptionViewItem(unsafe.Pointer(option), nil)
-	slotval3 := UnsafeNewQRect(unsafe.Pointer(rect))
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQStyleOptionViewItem(option)
+
+	slotval3 := newQRect(rect)
 
 	gofunc((&QItemDelegate{h: self}).callVirtualBase_DrawFocus, slotval1, slotval2, slotval3)
 
@@ -436,6 +470,9 @@ func (this *QItemDelegate) callVirtualBase_DrawCheck(painter *QPainter, option *
 
 }
 func (this *QItemDelegate) OnDrawCheck(slot func(super func(painter *QPainter, option *QStyleOptionViewItem, rect *QRect, state CheckState), painter *QPainter, option *QStyleOptionViewItem, rect *QRect, state CheckState)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemDelegate_override_virtual_DrawCheck(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -447,9 +484,12 @@ func miqt_exec_callback_QItemDelegate_DrawCheck(self *C.QItemDelegate, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
-	slotval2 := UnsafeNewQStyleOptionViewItem(unsafe.Pointer(option), nil)
-	slotval3 := UnsafeNewQRect(unsafe.Pointer(rect))
+	slotval1 := newQPainter(painter)
+
+	slotval2 := newQStyleOptionViewItem(option)
+
+	slotval3 := newQRect(rect)
+
 	slotval4 := (CheckState)(state)
 
 	gofunc((&QItemDelegate{h: self}).callVirtualBase_DrawCheck, slotval1, slotval2, slotval3, slotval4)
@@ -462,6 +502,9 @@ func (this *QItemDelegate) callVirtualBase_EventFilter(object *QObject, event *Q
 
 }
 func (this *QItemDelegate) OnEventFilter(slot func(super func(object *QObject, event *QEvent) bool, object *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemDelegate_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -473,8 +516,9 @@ func miqt_exec_callback_QItemDelegate_EventFilter(self *C.QItemDelegate, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(object))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(object)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QItemDelegate{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -488,6 +532,9 @@ func (this *QItemDelegate) callVirtualBase_EditorEvent(event *QEvent, model *QAb
 
 }
 func (this *QItemDelegate) OnEditorEvent(slot func(super func(event *QEvent, model *QAbstractItemModel, option *QStyleOptionViewItem, index *QModelIndex) bool, event *QEvent, model *QAbstractItemModel, option *QStyleOptionViewItem, index *QModelIndex) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemDelegate_override_virtual_EditorEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -499,10 +546,13 @@ func miqt_exec_callback_QItemDelegate_EditorEvent(self *C.QItemDelegate, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
-	slotval2 := UnsafeNewQAbstractItemModel(unsafe.Pointer(model), nil)
-	slotval3 := UnsafeNewQStyleOptionViewItem(unsafe.Pointer(option), nil)
-	slotval4 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQEvent(event)
+
+	slotval2 := newQAbstractItemModel(model)
+
+	slotval3 := newQStyleOptionViewItem(option)
+
+	slotval4 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QItemDelegate{h: self}).callVirtualBase_EditorEvent, slotval1, slotval2, slotval3, slotval4)
 
@@ -516,6 +566,9 @@ func (this *QItemDelegate) callVirtualBase_DestroyEditor(editor *QWidget, index 
 
 }
 func (this *QItemDelegate) OnDestroyEditor(slot func(super func(editor *QWidget, index *QModelIndex), editor *QWidget, index *QModelIndex)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemDelegate_override_virtual_DestroyEditor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -527,8 +580,9 @@ func miqt_exec_callback_QItemDelegate_DestroyEditor(self *C.QItemDelegate, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(editor), nil, nil)
-	slotval2 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQWidget(editor)
+
+	slotval2 := newQModelIndex(index)
 
 	gofunc((&QItemDelegate{h: self}).callVirtualBase_DestroyEditor, slotval1, slotval2)
 
@@ -540,6 +594,9 @@ func (this *QItemDelegate) callVirtualBase_HelpEvent(event *QHelpEvent, view *QA
 
 }
 func (this *QItemDelegate) OnHelpEvent(slot func(super func(event *QHelpEvent, view *QAbstractItemView, option *QStyleOptionViewItem, index *QModelIndex) bool, event *QHelpEvent, view *QAbstractItemView, option *QStyleOptionViewItem, index *QModelIndex) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemDelegate_override_virtual_HelpEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -551,10 +608,13 @@ func miqt_exec_callback_QItemDelegate_HelpEvent(self *C.QItemDelegate, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHelpEvent(unsafe.Pointer(event), nil)
-	slotval2 := UnsafeNewQAbstractItemView(unsafe.Pointer(view), nil, nil, nil, nil, nil)
-	slotval3 := UnsafeNewQStyleOptionViewItem(unsafe.Pointer(option), nil)
-	slotval4 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQHelpEvent(event)
+
+	slotval2 := newQAbstractItemView(view)
+
+	slotval3 := newQStyleOptionViewItem(option)
+
+	slotval4 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QItemDelegate{h: self}).callVirtualBase_HelpEvent, slotval1, slotval2, slotval3, slotval4)
 
@@ -574,6 +634,9 @@ func (this *QItemDelegate) callVirtualBase_PaintingRoles() []int {
 
 }
 func (this *QItemDelegate) OnPaintingRoles(slot func(super func() []int) []int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemDelegate_override_virtual_PaintingRoles(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

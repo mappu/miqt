@@ -8,6 +8,10 @@
 #include <cstring>
 #include <qanimationgroup.h>
 #include "gen_qanimationgroup.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAnimationGroup : public virtual QAnimationGroup {
@@ -126,18 +130,16 @@ public:
 
 };
 
-void QAnimationGroup_new(QAnimationGroup** outptr_QAnimationGroup, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject) {
-	MiqtVirtualQAnimationGroup* ret = new MiqtVirtualQAnimationGroup();
-	*outptr_QAnimationGroup = ret;
-	*outptr_QAbstractAnimation = static_cast<QAbstractAnimation*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAnimationGroup* QAnimationGroup_new() {
+	return new MiqtVirtualQAnimationGroup();
 }
 
-void QAnimationGroup_new2(QObject* parent, QAnimationGroup** outptr_QAnimationGroup, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject) {
-	MiqtVirtualQAnimationGroup* ret = new MiqtVirtualQAnimationGroup(parent);
-	*outptr_QAnimationGroup = ret;
-	*outptr_QAbstractAnimation = static_cast<QAbstractAnimation*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAnimationGroup* QAnimationGroup_new2(QObject* parent) {
+	return new MiqtVirtualQAnimationGroup(parent);
+}
+
+void QAnimationGroup_virtbase(QAnimationGroup* src, QAbstractAnimation** outptr_QAbstractAnimation) {
+	*outptr_QAbstractAnimation = static_cast<QAbstractAnimation*>(src);
 }
 
 QMetaObject* QAnimationGroup_MetaObject(const QAnimationGroup* self) {

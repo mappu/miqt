@@ -18,6 +18,10 @@
 #include <QTimerEvent>
 #include <qmovie.h>
 #include "gen_qmovie.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQMovie : public virtual QMovie {
@@ -207,59 +211,47 @@ public:
 
 };
 
-void QMovie_new(QMovie** outptr_QMovie, QObject** outptr_QObject) {
-	MiqtVirtualQMovie* ret = new MiqtVirtualQMovie();
-	*outptr_QMovie = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QMovie* QMovie_new() {
+	return new MiqtVirtualQMovie();
 }
 
-void QMovie_new2(QIODevice* device, QMovie** outptr_QMovie, QObject** outptr_QObject) {
-	MiqtVirtualQMovie* ret = new MiqtVirtualQMovie(device);
-	*outptr_QMovie = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QMovie* QMovie_new2(QIODevice* device) {
+	return new MiqtVirtualQMovie(device);
 }
 
-void QMovie_new3(struct miqt_string fileName, QMovie** outptr_QMovie, QObject** outptr_QObject) {
+QMovie* QMovie_new3(struct miqt_string fileName) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	MiqtVirtualQMovie* ret = new MiqtVirtualQMovie(fileName_QString);
-	*outptr_QMovie = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQMovie(fileName_QString);
 }
 
-void QMovie_new4(QObject* parent, QMovie** outptr_QMovie, QObject** outptr_QObject) {
-	MiqtVirtualQMovie* ret = new MiqtVirtualQMovie(parent);
-	*outptr_QMovie = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QMovie* QMovie_new4(QObject* parent) {
+	return new MiqtVirtualQMovie(parent);
 }
 
-void QMovie_new5(QIODevice* device, struct miqt_string format, QMovie** outptr_QMovie, QObject** outptr_QObject) {
+QMovie* QMovie_new5(QIODevice* device, struct miqt_string format) {
 	QByteArray format_QByteArray(format.data, format.len);
-	MiqtVirtualQMovie* ret = new MiqtVirtualQMovie(device, format_QByteArray);
-	*outptr_QMovie = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQMovie(device, format_QByteArray);
 }
 
-void QMovie_new6(QIODevice* device, struct miqt_string format, QObject* parent, QMovie** outptr_QMovie, QObject** outptr_QObject) {
+QMovie* QMovie_new6(QIODevice* device, struct miqt_string format, QObject* parent) {
 	QByteArray format_QByteArray(format.data, format.len);
-	MiqtVirtualQMovie* ret = new MiqtVirtualQMovie(device, format_QByteArray, parent);
-	*outptr_QMovie = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQMovie(device, format_QByteArray, parent);
 }
 
-void QMovie_new7(struct miqt_string fileName, struct miqt_string format, QMovie** outptr_QMovie, QObject** outptr_QObject) {
+QMovie* QMovie_new7(struct miqt_string fileName, struct miqt_string format) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	QByteArray format_QByteArray(format.data, format.len);
-	MiqtVirtualQMovie* ret = new MiqtVirtualQMovie(fileName_QString, format_QByteArray);
-	*outptr_QMovie = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQMovie(fileName_QString, format_QByteArray);
 }
 
-void QMovie_new8(struct miqt_string fileName, struct miqt_string format, QObject* parent, QMovie** outptr_QMovie, QObject** outptr_QObject) {
+QMovie* QMovie_new8(struct miqt_string fileName, struct miqt_string format, QObject* parent) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	QByteArray format_QByteArray(format.data, format.len);
-	MiqtVirtualQMovie* ret = new MiqtVirtualQMovie(fileName_QString, format_QByteArray, parent);
-	*outptr_QMovie = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQMovie(fileName_QString, format_QByteArray, parent);
+}
+
+void QMovie_virtbase(QMovie* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QMovie_MetaObject(const QMovie* self) {

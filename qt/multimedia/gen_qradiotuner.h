@@ -30,8 +30,9 @@ typedef struct QRadioData QRadioData;
 typedef struct QRadioTuner QRadioTuner;
 #endif
 
-void QRadioTuner_new(QRadioTuner** outptr_QRadioTuner, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject);
-void QRadioTuner_new2(QObject* parent, QRadioTuner** outptr_QRadioTuner, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject);
+QRadioTuner* QRadioTuner_new();
+QRadioTuner* QRadioTuner_new2(QObject* parent);
+void QRadioTuner_virtbase(QRadioTuner* src, QMediaObject** outptr_QMediaObject);
 QMetaObject* QRadioTuner_MetaObject(const QRadioTuner* self);
 void* QRadioTuner_Metacast(QRadioTuner* self, const char* param1);
 struct miqt_string QRadioTuner_Tr(const char* s);

@@ -37,54 +37,43 @@ func newQBitArray(h *C.QBitArray) *QBitArray {
 	if h == nil {
 		return nil
 	}
+
 	return &QBitArray{h: h}
 }
 
 // UnsafeNewQBitArray constructs the type using only unsafe pointers.
 func UnsafeNewQBitArray(h unsafe.Pointer) *QBitArray {
-	if h == nil {
-		return nil
-	}
-
-	return &QBitArray{h: (*C.QBitArray)(h)}
+	return newQBitArray((*C.QBitArray)(h))
 }
 
 // NewQBitArray constructs a new QBitArray object.
 func NewQBitArray() *QBitArray {
-	var outptr_QBitArray *C.QBitArray = nil
 
-	C.QBitArray_new(&outptr_QBitArray)
-	ret := newQBitArray(outptr_QBitArray)
+	ret := newQBitArray(C.QBitArray_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQBitArray2 constructs a new QBitArray object.
 func NewQBitArray2(size int) *QBitArray {
-	var outptr_QBitArray *C.QBitArray = nil
 
-	C.QBitArray_new2((C.int)(size), &outptr_QBitArray)
-	ret := newQBitArray(outptr_QBitArray)
+	ret := newQBitArray(C.QBitArray_new2((C.int)(size)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQBitArray3 constructs a new QBitArray object.
 func NewQBitArray3(other *QBitArray) *QBitArray {
-	var outptr_QBitArray *C.QBitArray = nil
 
-	C.QBitArray_new3(other.cPointer(), &outptr_QBitArray)
-	ret := newQBitArray(outptr_QBitArray)
+	ret := newQBitArray(C.QBitArray_new3(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQBitArray4 constructs a new QBitArray object.
 func NewQBitArray4(size int, val bool) *QBitArray {
-	var outptr_QBitArray *C.QBitArray = nil
 
-	C.QBitArray_new4((C.int)(size), (C.bool)(val), &outptr_QBitArray)
-	ret := newQBitArray(outptr_QBitArray)
+	ret := newQBitArray(C.QBitArray_new4((C.int)(size), (C.bool)(val)))
 	ret.isSubclass = true
 	return ret
 }
@@ -158,8 +147,7 @@ func (this *QBitArray) At(i int) bool {
 }
 
 func (this *QBitArray) OperatorSubscript(i int) *QBitRef {
-	_ret := C.QBitArray_OperatorSubscript(this.h, (C.int)(i))
-	_goptr := newQBitRef(_ret)
+	_goptr := newQBitRef(C.QBitArray_OperatorSubscript(this.h, (C.int)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -169,8 +157,7 @@ func (this *QBitArray) OperatorSubscriptWithInt(i int) bool {
 }
 
 func (this *QBitArray) OperatorSubscriptWithUint(i uint) *QBitRef {
-	_ret := C.QBitArray_OperatorSubscriptWithUint(this.h, (C.uint)(i))
-	_goptr := newQBitRef(_ret)
+	_goptr := newQBitRef(C.QBitArray_OperatorSubscriptWithUint(this.h, (C.uint)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -219,8 +206,7 @@ func (this *QBitArray) Bits() string {
 func QBitArray_FromBits(data string, lenVal int64) *QBitArray {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	_ret := C.QBitArray_FromBits(data_Cstring, (C.ptrdiff_t)(lenVal))
-	_goptr := newQBitArray(_ret)
+	_goptr := newQBitArray(C.QBitArray_FromBits(data_Cstring, (C.ptrdiff_t)(lenVal)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -267,24 +253,19 @@ func newQBitRef(h *C.QBitRef) *QBitRef {
 	if h == nil {
 		return nil
 	}
+
 	return &QBitRef{h: h}
 }
 
 // UnsafeNewQBitRef constructs the type using only unsafe pointers.
 func UnsafeNewQBitRef(h unsafe.Pointer) *QBitRef {
-	if h == nil {
-		return nil
-	}
-
-	return &QBitRef{h: (*C.QBitRef)(h)}
+	return newQBitRef((*C.QBitRef)(h))
 }
 
 // NewQBitRef constructs a new QBitRef object.
 func NewQBitRef(param1 *QBitRef) *QBitRef {
-	var outptr_QBitRef *C.QBitRef = nil
 
-	C.QBitRef_new(param1.cPointer(), &outptr_QBitRef)
-	ret := newQBitRef(outptr_QBitRef)
+	ret := newQBitRef(C.QBitRef_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

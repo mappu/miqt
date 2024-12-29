@@ -78,7 +78,8 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QSizeGrip_new(QWidget* parent, QSizeGrip** outptr_QSizeGrip, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QSizeGrip* QSizeGrip_new(QWidget* parent);
+void QSizeGrip_virtbase(QSizeGrip* src, QWidget** outptr_QWidget);
 QMetaObject* QSizeGrip_MetaObject(const QSizeGrip* self);
 void* QSizeGrip_Metacast(QSizeGrip* self, const char* param1);
 struct miqt_string QSizeGrip_Tr(const char* s);

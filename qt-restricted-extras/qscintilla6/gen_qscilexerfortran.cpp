@@ -5,6 +5,10 @@
 #include <cstring>
 #include <qscilexerfortran.h>
 #include "gen_qscilexerfortran.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerFortran : public virtual QsciLexerFortran {
@@ -41,20 +45,16 @@ public:
 
 };
 
-void QsciLexerFortran_new(QsciLexerFortran** outptr_QsciLexerFortran, QsciLexerFortran77** outptr_QsciLexerFortran77, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerFortran* ret = new MiqtVirtualQsciLexerFortran();
-	*outptr_QsciLexerFortran = ret;
-	*outptr_QsciLexerFortran77 = static_cast<QsciLexerFortran77*>(ret);
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerFortran* QsciLexerFortran_new() {
+	return new MiqtVirtualQsciLexerFortran();
 }
 
-void QsciLexerFortran_new2(QObject* parent, QsciLexerFortran** outptr_QsciLexerFortran, QsciLexerFortran77** outptr_QsciLexerFortran77, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerFortran* ret = new MiqtVirtualQsciLexerFortran(parent);
-	*outptr_QsciLexerFortran = ret;
-	*outptr_QsciLexerFortran77 = static_cast<QsciLexerFortran77*>(ret);
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerFortran* QsciLexerFortran_new2(QObject* parent) {
+	return new MiqtVirtualQsciLexerFortran(parent);
+}
+
+void QsciLexerFortran_virtbase(QsciLexerFortran* src, QsciLexerFortran77** outptr_QsciLexerFortran77) {
+	*outptr_QsciLexerFortran77 = static_cast<QsciLexerFortran77*>(src);
 }
 
 QMetaObject* QsciLexerFortran_MetaObject(const QsciLexerFortran* self) {

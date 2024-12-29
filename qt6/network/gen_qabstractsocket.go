@@ -124,33 +124,26 @@ func (this *QAbstractSocket) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAbstractSocket constructs the type using only CGO pointers.
-func newQAbstractSocket(h *C.QAbstractSocket, h_QIODevice *C.QIODevice, h_QObject *C.QObject, h_QIODeviceBase *C.QIODeviceBase) *QAbstractSocket {
+func newQAbstractSocket(h *C.QAbstractSocket) *QAbstractSocket {
 	if h == nil {
 		return nil
 	}
+	var outptr_QIODevice *C.QIODevice = nil
+	C.QAbstractSocket_virtbase(h, &outptr_QIODevice)
+
 	return &QAbstractSocket{h: h,
-		QIODevice: qt6.UnsafeNewQIODevice(unsafe.Pointer(h_QIODevice), unsafe.Pointer(h_QObject), unsafe.Pointer(h_QIODeviceBase))}
+		QIODevice: qt6.UnsafeNewQIODevice(unsafe.Pointer(outptr_QIODevice))}
 }
 
 // UnsafeNewQAbstractSocket constructs the type using only unsafe pointers.
-func UnsafeNewQAbstractSocket(h unsafe.Pointer, h_QIODevice unsafe.Pointer, h_QObject unsafe.Pointer, h_QIODeviceBase unsafe.Pointer) *QAbstractSocket {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractSocket{h: (*C.QAbstractSocket)(h),
-		QIODevice: qt6.UnsafeNewQIODevice(h_QIODevice, h_QObject, h_QIODeviceBase)}
+func UnsafeNewQAbstractSocket(h unsafe.Pointer) *QAbstractSocket {
+	return newQAbstractSocket((*C.QAbstractSocket)(h))
 }
 
 // NewQAbstractSocket constructs a new QAbstractSocket object.
 func NewQAbstractSocket(socketType QAbstractSocket__SocketType, parent *qt6.QObject) *QAbstractSocket {
-	var outptr_QAbstractSocket *C.QAbstractSocket = nil
-	var outptr_QIODevice *C.QIODevice = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QIODeviceBase *C.QIODeviceBase = nil
 
-	C.QAbstractSocket_new((C.int)(socketType), (*C.QObject)(parent.UnsafePointer()), &outptr_QAbstractSocket, &outptr_QIODevice, &outptr_QObject, &outptr_QIODeviceBase)
-	ret := newQAbstractSocket(outptr_QAbstractSocket, outptr_QIODevice, outptr_QObject, outptr_QIODeviceBase)
+	ret := newQAbstractSocket(C.QAbstractSocket_new((C.int)(socketType), (*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -227,8 +220,7 @@ func (this *QAbstractSocket) LocalPort() uint16 {
 }
 
 func (this *QAbstractSocket) LocalAddress() *QHostAddress {
-	_ret := C.QAbstractSocket_LocalAddress(this.h)
-	_goptr := newQHostAddress(_ret)
+	_goptr := newQHostAddress(C.QAbstractSocket_LocalAddress(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -238,8 +230,7 @@ func (this *QAbstractSocket) PeerPort() uint16 {
 }
 
 func (this *QAbstractSocket) PeerAddress() *QHostAddress {
-	_ret := C.QAbstractSocket_PeerAddress(this.h)
-	_goptr := newQHostAddress(_ret)
+	_goptr := newQHostAddress(C.QAbstractSocket_PeerAddress(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -276,8 +267,7 @@ func (this *QAbstractSocket) SetSocketOption(option QAbstractSocket__SocketOptio
 }
 
 func (this *QAbstractSocket) SocketOption(option QAbstractSocket__SocketOption) *qt6.QVariant {
-	_ret := C.QAbstractSocket_SocketOption(this.h, (C.int)(option))
-	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QAbstractSocket_SocketOption(this.h, (C.int)(option))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -327,8 +317,7 @@ func (this *QAbstractSocket) SetProxy(networkProxy *QNetworkProxy) {
 }
 
 func (this *QAbstractSocket) Proxy() *QNetworkProxy {
-	_ret := C.QAbstractSocket_Proxy(this.h)
-	_goptr := newQNetworkProxy(_ret)
+	_goptr := newQNetworkProxy(C.QAbstractSocket_Proxy(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -454,8 +443,9 @@ func miqt_exec_callback_QAbstractSocket_ProxyAuthenticationRequired(cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQNetworkProxy(unsafe.Pointer(proxy))
-	slotval2 := UnsafeNewQAuthenticator(unsafe.Pointer(authenticator))
+	slotval1 := newQNetworkProxy(proxy)
+
+	slotval2 := newQAuthenticator(authenticator)
 
 	gofunc(slotval1, slotval2)
 }
@@ -500,6 +490,9 @@ func (this *QAbstractSocket) callVirtualBase_Resume() {
 
 }
 func (this *QAbstractSocket) OnResume(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractSocket_override_virtual_Resume(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -520,6 +513,9 @@ func (this *QAbstractSocket) callVirtualBase_Bind(address *QHostAddress, port ui
 
 }
 func (this *QAbstractSocket) OnBind(slot func(super func(address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool, address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractSocket_override_virtual_Bind(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -531,7 +527,8 @@ func miqt_exec_callback_QAbstractSocket_Bind(self *C.QAbstractSocket, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHostAddress(unsafe.Pointer(address))
+	slotval1 := newQHostAddress(address)
+
 	slotval2 := (uint16)(port)
 
 	slotval3 := (QAbstractSocket__BindFlag)(mode)
@@ -552,6 +549,9 @@ func (this *QAbstractSocket) callVirtualBase_ConnectToHost(hostName string, port
 
 }
 func (this *QAbstractSocket) OnConnectToHost(slot func(super func(hostName string, port uint16, mode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol), hostName string, port uint16, mode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractSocket_override_virtual_ConnectToHost(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -583,6 +583,9 @@ func (this *QAbstractSocket) callVirtualBase_DisconnectFromHost() {
 
 }
 func (this *QAbstractSocket) OnDisconnectFromHost(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractSocket_override_virtual_DisconnectFromHost(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -603,6 +606,9 @@ func (this *QAbstractSocket) callVirtualBase_BytesAvailable() int64 {
 
 }
 func (this *QAbstractSocket) OnBytesAvailable(slot func(super func() int64) int64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractSocket_override_virtual_BytesAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -625,6 +631,9 @@ func (this *QAbstractSocket) callVirtualBase_BytesToWrite() int64 {
 
 }
 func (this *QAbstractSocket) OnBytesToWrite(slot func(super func() int64) int64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractSocket_override_virtual_BytesToWrite(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -647,6 +656,9 @@ func (this *QAbstractSocket) callVirtualBase_SetReadBufferSize(size int64) {
 
 }
 func (this *QAbstractSocket) OnSetReadBufferSize(slot func(super func(size int64), size int64)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractSocket_override_virtual_SetReadBufferSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -670,6 +682,9 @@ func (this *QAbstractSocket) callVirtualBase_SocketDescriptor() uintptr {
 
 }
 func (this *QAbstractSocket) OnSocketDescriptor(slot func(super func() uintptr) uintptr) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractSocket_override_virtual_SocketDescriptor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -692,6 +707,9 @@ func (this *QAbstractSocket) callVirtualBase_SetSocketDescriptor(socketDescripto
 
 }
 func (this *QAbstractSocket) OnSetSocketDescriptor(slot func(super func(socketDescriptor uintptr, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool, socketDescriptor uintptr, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractSocket_override_virtual_SetSocketDescriptor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -721,6 +739,9 @@ func (this *QAbstractSocket) callVirtualBase_SetSocketOption(option QAbstractSoc
 
 }
 func (this *QAbstractSocket) OnSetSocketOption(slot func(super func(option QAbstractSocket__SocketOption, value *qt6.QVariant), option QAbstractSocket__SocketOption, value *qt6.QVariant)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractSocket_override_virtual_SetSocketOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -742,13 +763,15 @@ func miqt_exec_callback_QAbstractSocket_SetSocketOption(self *C.QAbstractSocket,
 
 func (this *QAbstractSocket) callVirtualBase_SocketOption(option QAbstractSocket__SocketOption) *qt6.QVariant {
 
-	_ret := C.QAbstractSocket_virtualbase_SocketOption(unsafe.Pointer(this.h), (C.int)(option))
-	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QAbstractSocket_virtualbase_SocketOption(unsafe.Pointer(this.h), (C.int)(option))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QAbstractSocket) OnSocketOption(slot func(super func(option QAbstractSocket__SocketOption) *qt6.QVariant, option QAbstractSocket__SocketOption) *qt6.QVariant) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractSocket_override_virtual_SocketOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -774,6 +797,9 @@ func (this *QAbstractSocket) callVirtualBase_Close() {
 
 }
 func (this *QAbstractSocket) OnClose(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractSocket_override_virtual_Close(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -794,6 +820,9 @@ func (this *QAbstractSocket) callVirtualBase_IsSequential() bool {
 
 }
 func (this *QAbstractSocket) OnIsSequential(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractSocket_override_virtual_IsSequential(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -816,6 +845,9 @@ func (this *QAbstractSocket) callVirtualBase_WaitForConnected(msecs int) bool {
 
 }
 func (this *QAbstractSocket) OnWaitForConnected(slot func(super func(msecs int) bool, msecs int) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractSocket_override_virtual_WaitForConnected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -841,6 +873,9 @@ func (this *QAbstractSocket) callVirtualBase_WaitForReadyRead(msecs int) bool {
 
 }
 func (this *QAbstractSocket) OnWaitForReadyRead(slot func(super func(msecs int) bool, msecs int) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractSocket_override_virtual_WaitForReadyRead(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -866,6 +901,9 @@ func (this *QAbstractSocket) callVirtualBase_WaitForBytesWritten(msecs int) bool
 
 }
 func (this *QAbstractSocket) OnWaitForBytesWritten(slot func(super func(msecs int) bool, msecs int) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractSocket_override_virtual_WaitForBytesWritten(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -891,6 +929,9 @@ func (this *QAbstractSocket) callVirtualBase_WaitForDisconnected(msecs int) bool
 
 }
 func (this *QAbstractSocket) OnWaitForDisconnected(slot func(super func(msecs int) bool, msecs int) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractSocket_override_virtual_WaitForDisconnected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -918,6 +959,9 @@ func (this *QAbstractSocket) callVirtualBase_ReadData(data string, maxlen int64)
 
 }
 func (this *QAbstractSocket) OnReadData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractSocket_override_virtual_ReadData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -948,6 +992,9 @@ func (this *QAbstractSocket) callVirtualBase_ReadLineData(data string, maxlen in
 
 }
 func (this *QAbstractSocket) OnReadLineData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractSocket_override_virtual_ReadLineData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -976,6 +1023,9 @@ func (this *QAbstractSocket) callVirtualBase_SkipData(maxSize int64) int64 {
 
 }
 func (this *QAbstractSocket) OnSkipData(slot func(super func(maxSize int64) int64, maxSize int64) int64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractSocket_override_virtual_SkipData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1003,6 +1053,9 @@ func (this *QAbstractSocket) callVirtualBase_WriteData(data string, lenVal int64
 
 }
 func (this *QAbstractSocket) OnWriteData(slot func(super func(data string, lenVal int64) int64, data string, lenVal int64) int64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractSocket_override_virtual_WriteData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1031,6 +1084,9 @@ func (this *QAbstractSocket) callVirtualBase_Open(mode qt6.QIODeviceBase__OpenMo
 
 }
 func (this *QAbstractSocket) OnOpen(slot func(super func(mode qt6.QIODeviceBase__OpenModeFlag) bool, mode qt6.QIODeviceBase__OpenModeFlag) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractSocket_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1056,6 +1112,9 @@ func (this *QAbstractSocket) callVirtualBase_Pos() int64 {
 
 }
 func (this *QAbstractSocket) OnPos(slot func(super func() int64) int64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractSocket_override_virtual_Pos(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1078,6 +1137,9 @@ func (this *QAbstractSocket) callVirtualBase_Size() int64 {
 
 }
 func (this *QAbstractSocket) OnSize(slot func(super func() int64) int64) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractSocket_override_virtual_Size(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1100,6 +1162,9 @@ func (this *QAbstractSocket) callVirtualBase_Seek(pos int64) bool {
 
 }
 func (this *QAbstractSocket) OnSeek(slot func(super func(pos int64) bool, pos int64) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractSocket_override_virtual_Seek(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1125,6 +1190,9 @@ func (this *QAbstractSocket) callVirtualBase_AtEnd() bool {
 
 }
 func (this *QAbstractSocket) OnAtEnd(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractSocket_override_virtual_AtEnd(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1147,6 +1215,9 @@ func (this *QAbstractSocket) callVirtualBase_Reset() bool {
 
 }
 func (this *QAbstractSocket) OnReset(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractSocket_override_virtual_Reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1169,6 +1240,9 @@ func (this *QAbstractSocket) callVirtualBase_CanReadLine() bool {
 
 }
 func (this *QAbstractSocket) OnCanReadLine(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractSocket_override_virtual_CanReadLine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

@@ -7,6 +7,10 @@
 #include <cstring>
 #include <qlocalsocket.h>
 #include "gen_qlocalsocket.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQLocalSocket : public virtual QLocalSocket {
@@ -394,18 +398,16 @@ public:
 
 };
 
-void QLocalSocket_new(QLocalSocket** outptr_QLocalSocket, QIODevice** outptr_QIODevice, QObject** outptr_QObject) {
-	MiqtVirtualQLocalSocket* ret = new MiqtVirtualQLocalSocket();
-	*outptr_QLocalSocket = ret;
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QLocalSocket* QLocalSocket_new() {
+	return new MiqtVirtualQLocalSocket();
 }
 
-void QLocalSocket_new2(QObject* parent, QLocalSocket** outptr_QLocalSocket, QIODevice** outptr_QIODevice, QObject** outptr_QObject) {
-	MiqtVirtualQLocalSocket* ret = new MiqtVirtualQLocalSocket(parent);
-	*outptr_QLocalSocket = ret;
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QLocalSocket* QLocalSocket_new2(QObject* parent) {
+	return new MiqtVirtualQLocalSocket(parent);
+}
+
+void QLocalSocket_virtbase(QLocalSocket* src, QIODevice** outptr_QIODevice) {
+	*outptr_QIODevice = static_cast<QIODevice*>(src);
 }
 
 QMetaObject* QLocalSocket_MetaObject(const QLocalSocket* self) {

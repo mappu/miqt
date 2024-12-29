@@ -35,37 +35,32 @@ func (this *QDrag) UnsafePointer() unsafe.Pointer {
 }
 
 // newQDrag constructs the type using only CGO pointers.
-func newQDrag(h *C.QDrag, h_QObject *C.QObject) *QDrag {
+func newQDrag(h *C.QDrag) *QDrag {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QDrag_virtbase(h, &outptr_QObject)
+
 	return &QDrag{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQDrag constructs the type using only unsafe pointers.
-func UnsafeNewQDrag(h unsafe.Pointer, h_QObject unsafe.Pointer) *QDrag {
-	if h == nil {
-		return nil
-	}
-
-	return &QDrag{h: (*C.QDrag)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQDrag(h unsafe.Pointer) *QDrag {
+	return newQDrag((*C.QDrag)(h))
 }
 
 // NewQDrag constructs a new QDrag object.
 func NewQDrag(dragSource *QObject) *QDrag {
-	var outptr_QDrag *C.QDrag = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QDrag_new(dragSource.cPointer(), &outptr_QDrag, &outptr_QObject)
-	ret := newQDrag(outptr_QDrag, outptr_QObject)
+	ret := newQDrag(C.QDrag_new(dragSource.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QDrag) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QDrag_MetaObject(this.h)))
+	return newQMetaObject(C.QDrag_MetaObject(this.h))
 }
 
 func (this *QDrag) Metacast(param1 string) unsafe.Pointer {
@@ -97,7 +92,7 @@ func (this *QDrag) SetMimeData(data *QMimeData) {
 }
 
 func (this *QDrag) MimeData() *QMimeData {
-	return UnsafeNewQMimeData(unsafe.Pointer(C.QDrag_MimeData(this.h)), nil)
+	return newQMimeData(C.QDrag_MimeData(this.h))
 }
 
 func (this *QDrag) SetPixmap(pixmap *QPixmap) {
@@ -105,8 +100,7 @@ func (this *QDrag) SetPixmap(pixmap *QPixmap) {
 }
 
 func (this *QDrag) Pixmap() *QPixmap {
-	_ret := C.QDrag_Pixmap(this.h)
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QDrag_Pixmap(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -116,18 +110,17 @@ func (this *QDrag) SetHotSpot(hotspot *QPoint) {
 }
 
 func (this *QDrag) HotSpot() *QPoint {
-	_ret := C.QDrag_HotSpot(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QDrag_HotSpot(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDrag) Source() *QObject {
-	return UnsafeNewQObject(unsafe.Pointer(C.QDrag_Source(this.h)))
+	return newQObject(C.QDrag_Source(this.h))
 }
 
 func (this *QDrag) Target() *QObject {
-	return UnsafeNewQObject(unsafe.Pointer(C.QDrag_Target(this.h)))
+	return newQObject(C.QDrag_Target(this.h))
 }
 
 func (this *QDrag) Start() DropAction {
@@ -147,8 +140,7 @@ func (this *QDrag) SetDragCursor(cursor *QPixmap, action DropAction) {
 }
 
 func (this *QDrag) DragCursor(action DropAction) *QPixmap {
-	_ret := C.QDrag_DragCursor(this.h, (C.int)(action))
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QDrag_DragCursor(this.h, (C.int)(action)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -200,7 +192,7 @@ func miqt_exec_callback_QDrag_TargetChanged(cb C.intptr_t, newTarget *C.QObject)
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(newTarget))
+	slotval1 := newQObject(newTarget)
 
 	gofunc(slotval1)
 }
@@ -263,6 +255,9 @@ func (this *QDrag) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QDrag) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDrag_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -274,7 +269,7 @@ func miqt_exec_callback_QDrag_Event(self *C.QDrag, cb C.intptr_t, event *C.QEven
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QDrag{h: self}).callVirtualBase_Event, slotval1)
 
@@ -288,6 +283,9 @@ func (this *QDrag) callVirtualBase_EventFilter(watched *QObject, event *QEvent) 
 
 }
 func (this *QDrag) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDrag_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -299,8 +297,9 @@ func miqt_exec_callback_QDrag_EventFilter(self *C.QDrag, cb C.intptr_t, watched 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QDrag{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -314,6 +313,9 @@ func (this *QDrag) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QDrag) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDrag_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -325,7 +327,7 @@ func miqt_exec_callback_QDrag_TimerEvent(self *C.QDrag, cb C.intptr_t, event *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QDrag{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -337,6 +339,9 @@ func (this *QDrag) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QDrag) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDrag_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -348,7 +353,7 @@ func miqt_exec_callback_QDrag_ChildEvent(self *C.QDrag, cb C.intptr_t, event *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QDrag{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -360,6 +365,9 @@ func (this *QDrag) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QDrag) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDrag_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -371,7 +379,7 @@ func miqt_exec_callback_QDrag_CustomEvent(self *C.QDrag, cb C.intptr_t, event *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QDrag{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -383,6 +391,9 @@ func (this *QDrag) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QDrag) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDrag_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -394,7 +405,7 @@ func miqt_exec_callback_QDrag_ConnectNotify(self *C.QDrag, cb C.intptr_t, signal
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QDrag{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -406,6 +417,9 @@ func (this *QDrag) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QDrag) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDrag_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -417,7 +431,7 @@ func miqt_exec_callback_QDrag_DisconnectNotify(self *C.QDrag, cb C.intptr_t, sig
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QDrag{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

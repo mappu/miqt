@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qparallelanimationgroup.h>
 #include "gen_qparallelanimationgroup.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQParallelAnimationGroup : public virtual QParallelAnimationGroup {
@@ -142,20 +146,16 @@ public:
 
 };
 
-void QParallelAnimationGroup_new(QParallelAnimationGroup** outptr_QParallelAnimationGroup, QAnimationGroup** outptr_QAnimationGroup, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject) {
-	MiqtVirtualQParallelAnimationGroup* ret = new MiqtVirtualQParallelAnimationGroup();
-	*outptr_QParallelAnimationGroup = ret;
-	*outptr_QAnimationGroup = static_cast<QAnimationGroup*>(ret);
-	*outptr_QAbstractAnimation = static_cast<QAbstractAnimation*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QParallelAnimationGroup* QParallelAnimationGroup_new() {
+	return new MiqtVirtualQParallelAnimationGroup();
 }
 
-void QParallelAnimationGroup_new2(QObject* parent, QParallelAnimationGroup** outptr_QParallelAnimationGroup, QAnimationGroup** outptr_QAnimationGroup, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject) {
-	MiqtVirtualQParallelAnimationGroup* ret = new MiqtVirtualQParallelAnimationGroup(parent);
-	*outptr_QParallelAnimationGroup = ret;
-	*outptr_QAnimationGroup = static_cast<QAnimationGroup*>(ret);
-	*outptr_QAbstractAnimation = static_cast<QAbstractAnimation*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QParallelAnimationGroup* QParallelAnimationGroup_new2(QObject* parent) {
+	return new MiqtVirtualQParallelAnimationGroup(parent);
+}
+
+void QParallelAnimationGroup_virtbase(QParallelAnimationGroup* src, QAnimationGroup** outptr_QAnimationGroup) {
+	*outptr_QAnimationGroup = static_cast<QAnimationGroup*>(src);
 }
 
 QMetaObject* QParallelAnimationGroup_MetaObject(const QParallelAnimationGroup* self) {

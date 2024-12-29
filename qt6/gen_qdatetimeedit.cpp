@@ -31,6 +31,10 @@
 #include <QWidget>
 #include <qdatetimeedit.h>
 #include "gen_qdatetimeedit.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQDateTimeEdit : public virtual QDateTimeEdit {
@@ -770,76 +774,40 @@ public:
 
 };
 
-void QDateTimeEdit_new(QWidget* parent, QDateTimeEdit** outptr_QDateTimeEdit, QAbstractSpinBox** outptr_QAbstractSpinBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDateTimeEdit* ret = new MiqtVirtualQDateTimeEdit(parent);
-	*outptr_QDateTimeEdit = ret;
-	*outptr_QAbstractSpinBox = static_cast<QAbstractSpinBox*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDateTimeEdit* QDateTimeEdit_new(QWidget* parent) {
+	return new MiqtVirtualQDateTimeEdit(parent);
 }
 
-void QDateTimeEdit_new2(QDateTimeEdit** outptr_QDateTimeEdit, QAbstractSpinBox** outptr_QAbstractSpinBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDateTimeEdit* ret = new MiqtVirtualQDateTimeEdit();
-	*outptr_QDateTimeEdit = ret;
-	*outptr_QAbstractSpinBox = static_cast<QAbstractSpinBox*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDateTimeEdit* QDateTimeEdit_new2() {
+	return new MiqtVirtualQDateTimeEdit();
 }
 
-void QDateTimeEdit_new3(QDateTime* dt, QDateTimeEdit** outptr_QDateTimeEdit, QAbstractSpinBox** outptr_QAbstractSpinBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDateTimeEdit* ret = new MiqtVirtualQDateTimeEdit(*dt);
-	*outptr_QDateTimeEdit = ret;
-	*outptr_QAbstractSpinBox = static_cast<QAbstractSpinBox*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDateTimeEdit* QDateTimeEdit_new3(QDateTime* dt) {
+	return new MiqtVirtualQDateTimeEdit(*dt);
 }
 
-void QDateTimeEdit_new4(QDate* d, QDateTimeEdit** outptr_QDateTimeEdit, QAbstractSpinBox** outptr_QAbstractSpinBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDateTimeEdit* ret = new MiqtVirtualQDateTimeEdit(*d);
-	*outptr_QDateTimeEdit = ret;
-	*outptr_QAbstractSpinBox = static_cast<QAbstractSpinBox*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDateTimeEdit* QDateTimeEdit_new4(QDate* d) {
+	return new MiqtVirtualQDateTimeEdit(*d);
 }
 
-void QDateTimeEdit_new5(QTime* t, QDateTimeEdit** outptr_QDateTimeEdit, QAbstractSpinBox** outptr_QAbstractSpinBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDateTimeEdit* ret = new MiqtVirtualQDateTimeEdit(*t);
-	*outptr_QDateTimeEdit = ret;
-	*outptr_QAbstractSpinBox = static_cast<QAbstractSpinBox*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDateTimeEdit* QDateTimeEdit_new5(QTime* t) {
+	return new MiqtVirtualQDateTimeEdit(*t);
 }
 
-void QDateTimeEdit_new6(QDateTime* dt, QWidget* parent, QDateTimeEdit** outptr_QDateTimeEdit, QAbstractSpinBox** outptr_QAbstractSpinBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDateTimeEdit* ret = new MiqtVirtualQDateTimeEdit(*dt, parent);
-	*outptr_QDateTimeEdit = ret;
-	*outptr_QAbstractSpinBox = static_cast<QAbstractSpinBox*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDateTimeEdit* QDateTimeEdit_new6(QDateTime* dt, QWidget* parent) {
+	return new MiqtVirtualQDateTimeEdit(*dt, parent);
 }
 
-void QDateTimeEdit_new7(QDate* d, QWidget* parent, QDateTimeEdit** outptr_QDateTimeEdit, QAbstractSpinBox** outptr_QAbstractSpinBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDateTimeEdit* ret = new MiqtVirtualQDateTimeEdit(*d, parent);
-	*outptr_QDateTimeEdit = ret;
-	*outptr_QAbstractSpinBox = static_cast<QAbstractSpinBox*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDateTimeEdit* QDateTimeEdit_new7(QDate* d, QWidget* parent) {
+	return new MiqtVirtualQDateTimeEdit(*d, parent);
 }
 
-void QDateTimeEdit_new8(QTime* t, QWidget* parent, QDateTimeEdit** outptr_QDateTimeEdit, QAbstractSpinBox** outptr_QAbstractSpinBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDateTimeEdit* ret = new MiqtVirtualQDateTimeEdit(*t, parent);
-	*outptr_QDateTimeEdit = ret;
-	*outptr_QAbstractSpinBox = static_cast<QAbstractSpinBox*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDateTimeEdit* QDateTimeEdit_new8(QTime* t, QWidget* parent) {
+	return new MiqtVirtualQDateTimeEdit(*t, parent);
+}
+
+void QDateTimeEdit_virtbase(QDateTimeEdit* src, QAbstractSpinBox** outptr_QAbstractSpinBox) {
+	*outptr_QAbstractSpinBox = static_cast<QAbstractSpinBox*>(src);
 }
 
 QMetaObject* QDateTimeEdit_MetaObject(const QDateTimeEdit* self) {
@@ -1800,44 +1768,24 @@ public:
 
 };
 
-void QTimeEdit_new(QWidget* parent, QTimeEdit** outptr_QTimeEdit, QDateTimeEdit** outptr_QDateTimeEdit, QAbstractSpinBox** outptr_QAbstractSpinBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQTimeEdit* ret = new MiqtVirtualQTimeEdit(parent);
-	*outptr_QTimeEdit = ret;
-	*outptr_QDateTimeEdit = static_cast<QDateTimeEdit*>(ret);
-	*outptr_QAbstractSpinBox = static_cast<QAbstractSpinBox*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QTimeEdit* QTimeEdit_new(QWidget* parent) {
+	return new MiqtVirtualQTimeEdit(parent);
 }
 
-void QTimeEdit_new2(QTimeEdit** outptr_QTimeEdit, QDateTimeEdit** outptr_QDateTimeEdit, QAbstractSpinBox** outptr_QAbstractSpinBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQTimeEdit* ret = new MiqtVirtualQTimeEdit();
-	*outptr_QTimeEdit = ret;
-	*outptr_QDateTimeEdit = static_cast<QDateTimeEdit*>(ret);
-	*outptr_QAbstractSpinBox = static_cast<QAbstractSpinBox*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QTimeEdit* QTimeEdit_new2() {
+	return new MiqtVirtualQTimeEdit();
 }
 
-void QTimeEdit_new3(QTime* time, QTimeEdit** outptr_QTimeEdit, QDateTimeEdit** outptr_QDateTimeEdit, QAbstractSpinBox** outptr_QAbstractSpinBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQTimeEdit* ret = new MiqtVirtualQTimeEdit(*time);
-	*outptr_QTimeEdit = ret;
-	*outptr_QDateTimeEdit = static_cast<QDateTimeEdit*>(ret);
-	*outptr_QAbstractSpinBox = static_cast<QAbstractSpinBox*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QTimeEdit* QTimeEdit_new3(QTime* time) {
+	return new MiqtVirtualQTimeEdit(*time);
 }
 
-void QTimeEdit_new4(QTime* time, QWidget* parent, QTimeEdit** outptr_QTimeEdit, QDateTimeEdit** outptr_QDateTimeEdit, QAbstractSpinBox** outptr_QAbstractSpinBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQTimeEdit* ret = new MiqtVirtualQTimeEdit(*time, parent);
-	*outptr_QTimeEdit = ret;
-	*outptr_QDateTimeEdit = static_cast<QDateTimeEdit*>(ret);
-	*outptr_QAbstractSpinBox = static_cast<QAbstractSpinBox*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QTimeEdit* QTimeEdit_new4(QTime* time, QWidget* parent) {
+	return new MiqtVirtualQTimeEdit(*time, parent);
+}
+
+void QTimeEdit_virtbase(QTimeEdit* src, QDateTimeEdit** outptr_QDateTimeEdit) {
+	*outptr_QDateTimeEdit = static_cast<QDateTimeEdit*>(src);
 }
 
 QMetaObject* QTimeEdit_MetaObject(const QTimeEdit* self) {
@@ -2451,44 +2399,24 @@ public:
 
 };
 
-void QDateEdit_new(QWidget* parent, QDateEdit** outptr_QDateEdit, QDateTimeEdit** outptr_QDateTimeEdit, QAbstractSpinBox** outptr_QAbstractSpinBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDateEdit* ret = new MiqtVirtualQDateEdit(parent);
-	*outptr_QDateEdit = ret;
-	*outptr_QDateTimeEdit = static_cast<QDateTimeEdit*>(ret);
-	*outptr_QAbstractSpinBox = static_cast<QAbstractSpinBox*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDateEdit* QDateEdit_new(QWidget* parent) {
+	return new MiqtVirtualQDateEdit(parent);
 }
 
-void QDateEdit_new2(QDateEdit** outptr_QDateEdit, QDateTimeEdit** outptr_QDateTimeEdit, QAbstractSpinBox** outptr_QAbstractSpinBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDateEdit* ret = new MiqtVirtualQDateEdit();
-	*outptr_QDateEdit = ret;
-	*outptr_QDateTimeEdit = static_cast<QDateTimeEdit*>(ret);
-	*outptr_QAbstractSpinBox = static_cast<QAbstractSpinBox*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDateEdit* QDateEdit_new2() {
+	return new MiqtVirtualQDateEdit();
 }
 
-void QDateEdit_new3(QDate* date, QDateEdit** outptr_QDateEdit, QDateTimeEdit** outptr_QDateTimeEdit, QAbstractSpinBox** outptr_QAbstractSpinBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDateEdit* ret = new MiqtVirtualQDateEdit(*date);
-	*outptr_QDateEdit = ret;
-	*outptr_QDateTimeEdit = static_cast<QDateTimeEdit*>(ret);
-	*outptr_QAbstractSpinBox = static_cast<QAbstractSpinBox*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDateEdit* QDateEdit_new3(QDate* date) {
+	return new MiqtVirtualQDateEdit(*date);
 }
 
-void QDateEdit_new4(QDate* date, QWidget* parent, QDateEdit** outptr_QDateEdit, QDateTimeEdit** outptr_QDateTimeEdit, QAbstractSpinBox** outptr_QAbstractSpinBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDateEdit* ret = new MiqtVirtualQDateEdit(*date, parent);
-	*outptr_QDateEdit = ret;
-	*outptr_QDateTimeEdit = static_cast<QDateTimeEdit*>(ret);
-	*outptr_QAbstractSpinBox = static_cast<QAbstractSpinBox*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDateEdit* QDateEdit_new4(QDate* date, QWidget* parent) {
+	return new MiqtVirtualQDateEdit(*date, parent);
+}
+
+void QDateEdit_virtbase(QDateEdit* src, QDateTimeEdit** outptr_QDateTimeEdit) {
+	*outptr_QDateTimeEdit = static_cast<QDateTimeEdit*>(src);
 }
 
 QMetaObject* QDateEdit_MetaObject(const QDateEdit* self) {

@@ -24,8 +24,8 @@ typedef struct QUrl QUrl;
 typedef struct QWebEngineContextMenuData QWebEngineContextMenuData;
 #endif
 
-void QWebEngineContextMenuData_new(QWebEngineContextMenuData** outptr_QWebEngineContextMenuData);
-void QWebEngineContextMenuData_new2(QWebEngineContextMenuData* other, QWebEngineContextMenuData** outptr_QWebEngineContextMenuData);
+QWebEngineContextMenuData* QWebEngineContextMenuData_new();
+QWebEngineContextMenuData* QWebEngineContextMenuData_new2(QWebEngineContextMenuData* other);
 void QWebEngineContextMenuData_OperatorAssign(QWebEngineContextMenuData* self, QWebEngineContextMenuData* other);
 bool QWebEngineContextMenuData_IsValid(const QWebEngineContextMenuData* self);
 QPoint* QWebEngineContextMenuData_Position(const QWebEngineContextMenuData* self);

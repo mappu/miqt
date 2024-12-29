@@ -4,11 +4,14 @@
 #include <QIODevice>
 #include <qcryptographichash.h>
 #include "gen_qcryptographichash.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QCryptographicHash_new(int method, QCryptographicHash** outptr_QCryptographicHash) {
-	QCryptographicHash* ret = new QCryptographicHash(static_cast<QCryptographicHash::Algorithm>(method));
-	*outptr_QCryptographicHash = ret;
+QCryptographicHash* QCryptographicHash_new(int method) {
+	return new QCryptographicHash(static_cast<QCryptographicHash::Algorithm>(method));
 }
 
 void QCryptographicHash_Reset(QCryptographicHash* self) {

@@ -42,9 +42,10 @@ typedef struct QToolBox QToolBox;
 typedef struct QWidget QWidget;
 #endif
 
-void QToolBox_new(QWidget* parent, QToolBox** outptr_QToolBox, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QToolBox_new2(QToolBox** outptr_QToolBox, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QToolBox_new3(QWidget* parent, int f, QToolBox** outptr_QToolBox, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QToolBox* QToolBox_new(QWidget* parent);
+QToolBox* QToolBox_new2();
+QToolBox* QToolBox_new3(QWidget* parent, int f);
+void QToolBox_virtbase(QToolBox* src, QFrame** outptr_QFrame);
 QMetaObject* QToolBox_MetaObject(const QToolBox* self);
 void* QToolBox_Metacast(QToolBox* self, const char* param1);
 struct miqt_string QToolBox_Tr(const char* s);

@@ -24,13 +24,13 @@ typedef struct QColor QColor;
 typedef struct QPalette QPalette;
 #endif
 
-void QPalette_new(QPalette** outptr_QPalette);
-void QPalette_new2(QColor* button, QPalette** outptr_QPalette);
-void QPalette_new3(int button, QPalette** outptr_QPalette);
-void QPalette_new4(QColor* button, QColor* window, QPalette** outptr_QPalette);
-void QPalette_new5(QBrush* windowText, QBrush* button, QBrush* light, QBrush* dark, QBrush* mid, QBrush* text, QBrush* bright_text, QBrush* base, QBrush* window, QPalette** outptr_QPalette);
-void QPalette_new6(QColor* windowText, QColor* window, QColor* light, QColor* dark, QColor* mid, QColor* text, QColor* base, QPalette** outptr_QPalette);
-void QPalette_new7(QPalette* palette, QPalette** outptr_QPalette);
+QPalette* QPalette_new();
+QPalette* QPalette_new2(QColor* button);
+QPalette* QPalette_new3(int button);
+QPalette* QPalette_new4(QColor* button, QColor* window);
+QPalette* QPalette_new5(QBrush* windowText, QBrush* button, QBrush* light, QBrush* dark, QBrush* mid, QBrush* text, QBrush* bright_text, QBrush* base, QBrush* window);
+QPalette* QPalette_new6(QColor* windowText, QColor* window, QColor* light, QColor* dark, QColor* mid, QColor* text, QColor* base);
+QPalette* QPalette_new7(QPalette* palette);
 void QPalette_OperatorAssign(QPalette* self, QPalette* palette);
 void QPalette_Swap(QPalette* self, QPalette* other);
 int QPalette_CurrentColorGroup(const QPalette* self);

@@ -38,20 +38,17 @@ func newQItemEditorCreatorBase(h *C.QItemEditorCreatorBase) *QItemEditorCreatorB
 	if h == nil {
 		return nil
 	}
+
 	return &QItemEditorCreatorBase{h: h}
 }
 
 // UnsafeNewQItemEditorCreatorBase constructs the type using only unsafe pointers.
 func UnsafeNewQItemEditorCreatorBase(h unsafe.Pointer) *QItemEditorCreatorBase {
-	if h == nil {
-		return nil
-	}
-
-	return &QItemEditorCreatorBase{h: (*C.QItemEditorCreatorBase)(h)}
+	return newQItemEditorCreatorBase((*C.QItemEditorCreatorBase)(h))
 }
 
 func (this *QItemEditorCreatorBase) CreateWidget(parent *QWidget) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QItemEditorCreatorBase_CreateWidget(this.h, parent.cPointer())), nil, nil)
+	return newQWidget(C.QItemEditorCreatorBase_CreateWidget(this.h, parent.cPointer()))
 }
 
 func (this *QItemEditorCreatorBase) ValuePropertyName() []byte {
@@ -103,40 +100,33 @@ func newQItemEditorFactory(h *C.QItemEditorFactory) *QItemEditorFactory {
 	if h == nil {
 		return nil
 	}
+
 	return &QItemEditorFactory{h: h}
 }
 
 // UnsafeNewQItemEditorFactory constructs the type using only unsafe pointers.
 func UnsafeNewQItemEditorFactory(h unsafe.Pointer) *QItemEditorFactory {
-	if h == nil {
-		return nil
-	}
-
-	return &QItemEditorFactory{h: (*C.QItemEditorFactory)(h)}
+	return newQItemEditorFactory((*C.QItemEditorFactory)(h))
 }
 
 // NewQItemEditorFactory constructs a new QItemEditorFactory object.
 func NewQItemEditorFactory() *QItemEditorFactory {
-	var outptr_QItemEditorFactory *C.QItemEditorFactory = nil
 
-	C.QItemEditorFactory_new(&outptr_QItemEditorFactory)
-	ret := newQItemEditorFactory(outptr_QItemEditorFactory)
+	ret := newQItemEditorFactory(C.QItemEditorFactory_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQItemEditorFactory2 constructs a new QItemEditorFactory object.
 func NewQItemEditorFactory2(param1 *QItemEditorFactory) *QItemEditorFactory {
-	var outptr_QItemEditorFactory *C.QItemEditorFactory = nil
 
-	C.QItemEditorFactory_new2(param1.cPointer(), &outptr_QItemEditorFactory)
-	ret := newQItemEditorFactory(outptr_QItemEditorFactory)
+	ret := newQItemEditorFactory(C.QItemEditorFactory_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QItemEditorFactory) CreateEditor(userType int, parent *QWidget) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QItemEditorFactory_CreateEditor(this.h, (C.int)(userType), parent.cPointer())), nil, nil)
+	return newQWidget(C.QItemEditorFactory_CreateEditor(this.h, (C.int)(userType), parent.cPointer()))
 }
 
 func (this *QItemEditorFactory) ValuePropertyName(userType int) []byte {
@@ -151,7 +141,7 @@ func (this *QItemEditorFactory) RegisterEditor(userType int, creator *QItemEdito
 }
 
 func QItemEditorFactory_DefaultFactory() *QItemEditorFactory {
-	return UnsafeNewQItemEditorFactory(unsafe.Pointer(C.QItemEditorFactory_DefaultFactory()))
+	return newQItemEditorFactory(C.QItemEditorFactory_DefaultFactory())
 }
 
 func QItemEditorFactory_SetDefaultFactory(factory *QItemEditorFactory) {
@@ -160,9 +150,13 @@ func QItemEditorFactory_SetDefaultFactory(factory *QItemEditorFactory) {
 
 func (this *QItemEditorFactory) callVirtualBase_CreateEditor(userType int, parent *QWidget) *QWidget {
 
-	return UnsafeNewQWidget(unsafe.Pointer(C.QItemEditorFactory_virtualbase_CreateEditor(unsafe.Pointer(this.h), (C.int)(userType), parent.cPointer())), nil, nil)
+	return newQWidget(C.QItemEditorFactory_virtualbase_CreateEditor(unsafe.Pointer(this.h), (C.int)(userType), parent.cPointer()))
+
 }
 func (this *QItemEditorFactory) OnCreateEditor(slot func(super func(userType int, parent *QWidget) *QWidget, userType int, parent *QWidget) *QWidget) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemEditorFactory_override_virtual_CreateEditor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -176,7 +170,7 @@ func miqt_exec_callback_QItemEditorFactory_CreateEditor(self *C.QItemEditorFacto
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (int)(userType)
 
-	slotval2 := UnsafeNewQWidget(unsafe.Pointer(parent), nil, nil)
+	slotval2 := newQWidget(parent)
 
 	virtualReturn := gofunc((&QItemEditorFactory{h: self}).callVirtualBase_CreateEditor, slotval1, slotval2)
 
@@ -192,6 +186,9 @@ func (this *QItemEditorFactory) callVirtualBase_ValuePropertyName(userType int) 
 	return _ret
 }
 func (this *QItemEditorFactory) OnValuePropertyName(slot func(super func(userType int) []byte, userType int) []byte) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QItemEditorFactory_override_virtual_ValuePropertyName(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

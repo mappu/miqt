@@ -35,26 +35,24 @@ func (this *QAbstractEventDispatcher) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAbstractEventDispatcher constructs the type using only CGO pointers.
-func newQAbstractEventDispatcher(h *C.QAbstractEventDispatcher, h_QObject *C.QObject) *QAbstractEventDispatcher {
+func newQAbstractEventDispatcher(h *C.QAbstractEventDispatcher) *QAbstractEventDispatcher {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QAbstractEventDispatcher_virtbase(h, &outptr_QObject)
+
 	return &QAbstractEventDispatcher{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQAbstractEventDispatcher constructs the type using only unsafe pointers.
-func UnsafeNewQAbstractEventDispatcher(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractEventDispatcher {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractEventDispatcher{h: (*C.QAbstractEventDispatcher)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQAbstractEventDispatcher(h unsafe.Pointer) *QAbstractEventDispatcher {
+	return newQAbstractEventDispatcher((*C.QAbstractEventDispatcher)(h))
 }
 
 func (this *QAbstractEventDispatcher) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractEventDispatcher_MetaObject(this.h)))
+	return newQMetaObject(C.QAbstractEventDispatcher_MetaObject(this.h))
 }
 
 func (this *QAbstractEventDispatcher) Metacast(param1 string) unsafe.Pointer {
@@ -82,7 +80,7 @@ func QAbstractEventDispatcher_TrUtf8(s string) string {
 }
 
 func QAbstractEventDispatcher_Instance() *QAbstractEventDispatcher {
-	return UnsafeNewQAbstractEventDispatcher(unsafe.Pointer(C.QAbstractEventDispatcher_Instance()), nil)
+	return newQAbstractEventDispatcher(C.QAbstractEventDispatcher_Instance())
 }
 
 func (this *QAbstractEventDispatcher) ProcessEvents(flags QEventLoop__ProcessEventsFlag) bool {
@@ -122,8 +120,7 @@ func (this *QAbstractEventDispatcher) RegisteredTimers(object *QObject) []QAbstr
 	_ret := make([]QAbstractEventDispatcher__TimerInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractEventDispatcher__TimerInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQAbstractEventDispatcher__TimerInfo(_lv_ret)
+		_lv_goptr := newQAbstractEventDispatcher__TimerInfo(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -248,7 +245,7 @@ func QAbstractEventDispatcher_TrUtf83(s string, c string, n int) string {
 }
 
 func QAbstractEventDispatcher_Instance1(thread *QThread) *QAbstractEventDispatcher {
-	return UnsafeNewQAbstractEventDispatcher(unsafe.Pointer(C.QAbstractEventDispatcher_Instance1(thread.cPointer())), nil)
+	return newQAbstractEventDispatcher(C.QAbstractEventDispatcher_Instance1(thread.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -289,24 +286,19 @@ func newQAbstractEventDispatcher__TimerInfo(h *C.QAbstractEventDispatcher__Timer
 	if h == nil {
 		return nil
 	}
+
 	return &QAbstractEventDispatcher__TimerInfo{h: h}
 }
 
 // UnsafeNewQAbstractEventDispatcher__TimerInfo constructs the type using only unsafe pointers.
 func UnsafeNewQAbstractEventDispatcher__TimerInfo(h unsafe.Pointer) *QAbstractEventDispatcher__TimerInfo {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractEventDispatcher__TimerInfo{h: (*C.QAbstractEventDispatcher__TimerInfo)(h)}
+	return newQAbstractEventDispatcher__TimerInfo((*C.QAbstractEventDispatcher__TimerInfo)(h))
 }
 
 // NewQAbstractEventDispatcher__TimerInfo constructs a new QAbstractEventDispatcher::TimerInfo object.
 func NewQAbstractEventDispatcher__TimerInfo(id int, i int, t TimerType) *QAbstractEventDispatcher__TimerInfo {
-	var outptr_QAbstractEventDispatcher__TimerInfo *C.QAbstractEventDispatcher__TimerInfo = nil
 
-	C.QAbstractEventDispatcher__TimerInfo_new((C.int)(id), (C.int)(i), (C.int)(t), &outptr_QAbstractEventDispatcher__TimerInfo)
-	ret := newQAbstractEventDispatcher__TimerInfo(outptr_QAbstractEventDispatcher__TimerInfo)
+	ret := newQAbstractEventDispatcher__TimerInfo(C.QAbstractEventDispatcher__TimerInfo_new((C.int)(id), (C.int)(i), (C.int)(t)))
 	ret.isSubclass = true
 	return ret
 }

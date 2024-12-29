@@ -9,7 +9,15 @@
 #include <QWebEnginePage>
 #include <qwebenginenewwindowrequest.h>
 #include "gen_qwebenginenewwindowrequest.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
+
+void QWebEngineNewWindowRequest_virtbase(QWebEngineNewWindowRequest* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
 
 QMetaObject* QWebEngineNewWindowRequest_MetaObject(const QWebEngineNewWindowRequest* self) {
 	return (QMetaObject*) self->metaObject();

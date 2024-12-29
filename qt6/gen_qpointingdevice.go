@@ -62,41 +62,33 @@ func newQPointingDeviceUniqueId(h *C.QPointingDeviceUniqueId) *QPointingDeviceUn
 	if h == nil {
 		return nil
 	}
+
 	return &QPointingDeviceUniqueId{h: h}
 }
 
 // UnsafeNewQPointingDeviceUniqueId constructs the type using only unsafe pointers.
 func UnsafeNewQPointingDeviceUniqueId(h unsafe.Pointer) *QPointingDeviceUniqueId {
-	if h == nil {
-		return nil
-	}
-
-	return &QPointingDeviceUniqueId{h: (*C.QPointingDeviceUniqueId)(h)}
+	return newQPointingDeviceUniqueId((*C.QPointingDeviceUniqueId)(h))
 }
 
 // NewQPointingDeviceUniqueId constructs a new QPointingDeviceUniqueId object.
 func NewQPointingDeviceUniqueId() *QPointingDeviceUniqueId {
-	var outptr_QPointingDeviceUniqueId *C.QPointingDeviceUniqueId = nil
 
-	C.QPointingDeviceUniqueId_new(&outptr_QPointingDeviceUniqueId)
-	ret := newQPointingDeviceUniqueId(outptr_QPointingDeviceUniqueId)
+	ret := newQPointingDeviceUniqueId(C.QPointingDeviceUniqueId_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPointingDeviceUniqueId2 constructs a new QPointingDeviceUniqueId object.
 func NewQPointingDeviceUniqueId2(param1 *QPointingDeviceUniqueId) *QPointingDeviceUniqueId {
-	var outptr_QPointingDeviceUniqueId *C.QPointingDeviceUniqueId = nil
 
-	C.QPointingDeviceUniqueId_new2(param1.cPointer(), &outptr_QPointingDeviceUniqueId)
-	ret := newQPointingDeviceUniqueId(outptr_QPointingDeviceUniqueId)
+	ret := newQPointingDeviceUniqueId(C.QPointingDeviceUniqueId_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func QPointingDeviceUniqueId_FromNumericId(id int64) *QPointingDeviceUniqueId {
-	_ret := C.QPointingDeviceUniqueId_FromNumericId((C.longlong)(id))
-	_goptr := newQPointingDeviceUniqueId(_ret)
+	_goptr := newQPointingDeviceUniqueId(C.QPointingDeviceUniqueId_FromNumericId((C.longlong)(id)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -144,32 +136,26 @@ func (this *QPointingDevice) UnsafePointer() unsafe.Pointer {
 }
 
 // newQPointingDevice constructs the type using only CGO pointers.
-func newQPointingDevice(h *C.QPointingDevice, h_QInputDevice *C.QInputDevice, h_QObject *C.QObject) *QPointingDevice {
+func newQPointingDevice(h *C.QPointingDevice) *QPointingDevice {
 	if h == nil {
 		return nil
 	}
+	var outptr_QInputDevice *C.QInputDevice = nil
+	C.QPointingDevice_virtbase(h, &outptr_QInputDevice)
+
 	return &QPointingDevice{h: h,
-		QInputDevice: newQInputDevice(h_QInputDevice, h_QObject)}
+		QInputDevice: newQInputDevice(outptr_QInputDevice)}
 }
 
 // UnsafeNewQPointingDevice constructs the type using only unsafe pointers.
-func UnsafeNewQPointingDevice(h unsafe.Pointer, h_QInputDevice unsafe.Pointer, h_QObject unsafe.Pointer) *QPointingDevice {
-	if h == nil {
-		return nil
-	}
-
-	return &QPointingDevice{h: (*C.QPointingDevice)(h),
-		QInputDevice: UnsafeNewQInputDevice(h_QInputDevice, h_QObject)}
+func UnsafeNewQPointingDevice(h unsafe.Pointer) *QPointingDevice {
+	return newQPointingDevice((*C.QPointingDevice)(h))
 }
 
 // NewQPointingDevice constructs a new QPointingDevice object.
 func NewQPointingDevice() *QPointingDevice {
-	var outptr_QPointingDevice *C.QPointingDevice = nil
-	var outptr_QInputDevice *C.QInputDevice = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QPointingDevice_new(&outptr_QPointingDevice, &outptr_QInputDevice, &outptr_QObject)
-	ret := newQPointingDevice(outptr_QPointingDevice, outptr_QInputDevice, outptr_QObject)
+	ret := newQPointingDevice(C.QPointingDevice_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -180,24 +166,16 @@ func NewQPointingDevice2(name string, systemId int64, devType QInputDevice__Devi
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	var outptr_QPointingDevice *C.QPointingDevice = nil
-	var outptr_QInputDevice *C.QInputDevice = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QPointingDevice_new2(name_ms, (C.longlong)(systemId), (C.int)(devType), (C.int)(pType), (C.int)(caps), (C.int)(maxPoints), (C.int)(buttonCount), &outptr_QPointingDevice, &outptr_QInputDevice, &outptr_QObject)
-	ret := newQPointingDevice(outptr_QPointingDevice, outptr_QInputDevice, outptr_QObject)
+	ret := newQPointingDevice(C.QPointingDevice_new2(name_ms, (C.longlong)(systemId), (C.int)(devType), (C.int)(pType), (C.int)(caps), (C.int)(maxPoints), (C.int)(buttonCount)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPointingDevice3 constructs a new QPointingDevice object.
 func NewQPointingDevice3(parent *QObject) *QPointingDevice {
-	var outptr_QPointingDevice *C.QPointingDevice = nil
-	var outptr_QInputDevice *C.QInputDevice = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QPointingDevice_new3(parent.cPointer(), &outptr_QPointingDevice, &outptr_QInputDevice, &outptr_QObject)
-	ret := newQPointingDevice(outptr_QPointingDevice, outptr_QInputDevice, outptr_QObject)
+	ret := newQPointingDevice(C.QPointingDevice_new3(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -212,12 +190,8 @@ func NewQPointingDevice4(name string, systemId int64, devType QInputDevice__Devi
 	seatName_ms.data = C.CString(seatName)
 	seatName_ms.len = C.size_t(len(seatName))
 	defer C.free(unsafe.Pointer(seatName_ms.data))
-	var outptr_QPointingDevice *C.QPointingDevice = nil
-	var outptr_QInputDevice *C.QInputDevice = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QPointingDevice_new4(name_ms, (C.longlong)(systemId), (C.int)(devType), (C.int)(pType), (C.int)(caps), (C.int)(maxPoints), (C.int)(buttonCount), seatName_ms, &outptr_QPointingDevice, &outptr_QInputDevice, &outptr_QObject)
-	ret := newQPointingDevice(outptr_QPointingDevice, outptr_QInputDevice, outptr_QObject)
+	ret := newQPointingDevice(C.QPointingDevice_new4(name_ms, (C.longlong)(systemId), (C.int)(devType), (C.int)(pType), (C.int)(caps), (C.int)(maxPoints), (C.int)(buttonCount), seatName_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -232,12 +206,8 @@ func NewQPointingDevice5(name string, systemId int64, devType QInputDevice__Devi
 	seatName_ms.data = C.CString(seatName)
 	seatName_ms.len = C.size_t(len(seatName))
 	defer C.free(unsafe.Pointer(seatName_ms.data))
-	var outptr_QPointingDevice *C.QPointingDevice = nil
-	var outptr_QInputDevice *C.QInputDevice = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QPointingDevice_new5(name_ms, (C.longlong)(systemId), (C.int)(devType), (C.int)(pType), (C.int)(caps), (C.int)(maxPoints), (C.int)(buttonCount), seatName_ms, uniqueId.cPointer(), &outptr_QPointingDevice, &outptr_QInputDevice, &outptr_QObject)
-	ret := newQPointingDevice(outptr_QPointingDevice, outptr_QInputDevice, outptr_QObject)
+	ret := newQPointingDevice(C.QPointingDevice_new5(name_ms, (C.longlong)(systemId), (C.int)(devType), (C.int)(pType), (C.int)(caps), (C.int)(maxPoints), (C.int)(buttonCount), seatName_ms, uniqueId.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -252,18 +222,14 @@ func NewQPointingDevice6(name string, systemId int64, devType QInputDevice__Devi
 	seatName_ms.data = C.CString(seatName)
 	seatName_ms.len = C.size_t(len(seatName))
 	defer C.free(unsafe.Pointer(seatName_ms.data))
-	var outptr_QPointingDevice *C.QPointingDevice = nil
-	var outptr_QInputDevice *C.QInputDevice = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QPointingDevice_new6(name_ms, (C.longlong)(systemId), (C.int)(devType), (C.int)(pType), (C.int)(caps), (C.int)(maxPoints), (C.int)(buttonCount), seatName_ms, uniqueId.cPointer(), parent.cPointer(), &outptr_QPointingDevice, &outptr_QInputDevice, &outptr_QObject)
-	ret := newQPointingDevice(outptr_QPointingDevice, outptr_QInputDevice, outptr_QObject)
+	ret := newQPointingDevice(C.QPointingDevice_new6(name_ms, (C.longlong)(systemId), (C.int)(devType), (C.int)(pType), (C.int)(caps), (C.int)(maxPoints), (C.int)(buttonCount), seatName_ms, uniqueId.cPointer(), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QPointingDevice) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QPointingDevice_MetaObject(this.h)))
+	return newQMetaObject(C.QPointingDevice_MetaObject(this.h))
 }
 
 func (this *QPointingDevice) Metacast(param1 string) unsafe.Pointer {
@@ -306,14 +272,13 @@ func (this *QPointingDevice) ButtonCount() int {
 }
 
 func (this *QPointingDevice) UniqueId() *QPointingDeviceUniqueId {
-	_ret := C.QPointingDevice_UniqueId(this.h)
-	_goptr := newQPointingDeviceUniqueId(_ret)
+	_goptr := newQPointingDeviceUniqueId(C.QPointingDevice_UniqueId(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QPointingDevice_PrimaryPointingDevice() *QPointingDevice {
-	return UnsafeNewQPointingDevice(unsafe.Pointer(C.QPointingDevice_PrimaryPointingDevice()), nil, nil)
+	return newQPointingDevice(C.QPointingDevice_PrimaryPointingDevice())
 }
 
 func (this *QPointingDevice) OperatorEqual(other *QPointingDevice) bool {
@@ -335,11 +300,13 @@ func miqt_exec_callback_QPointingDevice_GrabChanged(cb C.intptr_t, grabber *C.QO
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(grabber))
+	slotval1 := newQObject(grabber)
+
 	slotval2 := (QPointingDevice__GrabTransition)(transition)
 
-	slotval3 := UnsafeNewQPointerEvent(unsafe.Pointer(event), nil, nil)
-	slotval4 := UnsafeNewQEventPoint(unsafe.Pointer(point))
+	slotval3 := newQPointerEvent(event)
+
+	slotval4 := newQEventPoint(point)
 
 	gofunc(slotval1, slotval2, slotval3, slotval4)
 }
@@ -371,7 +338,7 @@ func QPointingDevice_PrimaryPointingDevice1(seatName string) *QPointingDevice {
 	seatName_ms.data = C.CString(seatName)
 	seatName_ms.len = C.size_t(len(seatName))
 	defer C.free(unsafe.Pointer(seatName_ms.data))
-	return UnsafeNewQPointingDevice(unsafe.Pointer(C.QPointingDevice_PrimaryPointingDevice1(seatName_ms)), nil, nil)
+	return newQPointingDevice(C.QPointingDevice_PrimaryPointingDevice1(seatName_ms))
 }
 
 // Delete this object from C++ memory.

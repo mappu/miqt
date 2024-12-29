@@ -5,34 +5,33 @@
 #include <cstring>
 #include <qregexp.h>
 #include "gen_qregexp.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QRegExp_new(QRegExp** outptr_QRegExp) {
-	QRegExp* ret = new QRegExp();
-	*outptr_QRegExp = ret;
+QRegExp* QRegExp_new() {
+	return new QRegExp();
 }
 
-void QRegExp_new2(struct miqt_string pattern, QRegExp** outptr_QRegExp) {
+QRegExp* QRegExp_new2(struct miqt_string pattern) {
 	QString pattern_QString = QString::fromUtf8(pattern.data, pattern.len);
-	QRegExp* ret = new QRegExp(pattern_QString);
-	*outptr_QRegExp = ret;
+	return new QRegExp(pattern_QString);
 }
 
-void QRegExp_new3(QRegExp* rx, QRegExp** outptr_QRegExp) {
-	QRegExp* ret = new QRegExp(*rx);
-	*outptr_QRegExp = ret;
+QRegExp* QRegExp_new3(QRegExp* rx) {
+	return new QRegExp(*rx);
 }
 
-void QRegExp_new4(struct miqt_string pattern, int cs, QRegExp** outptr_QRegExp) {
+QRegExp* QRegExp_new4(struct miqt_string pattern, int cs) {
 	QString pattern_QString = QString::fromUtf8(pattern.data, pattern.len);
-	QRegExp* ret = new QRegExp(pattern_QString, static_cast<Qt::CaseSensitivity>(cs));
-	*outptr_QRegExp = ret;
+	return new QRegExp(pattern_QString, static_cast<Qt::CaseSensitivity>(cs));
 }
 
-void QRegExp_new5(struct miqt_string pattern, int cs, int syntax, QRegExp** outptr_QRegExp) {
+QRegExp* QRegExp_new5(struct miqt_string pattern, int cs, int syntax) {
 	QString pattern_QString = QString::fromUtf8(pattern.data, pattern.len);
-	QRegExp* ret = new QRegExp(pattern_QString, static_cast<Qt::CaseSensitivity>(cs), static_cast<QRegExp::PatternSyntax>(syntax));
-	*outptr_QRegExp = ret;
+	return new QRegExp(pattern_QString, static_cast<Qt::CaseSensitivity>(cs), static_cast<QRegExp::PatternSyntax>(syntax));
 }
 
 void QRegExp_OperatorAssign(QRegExp* self, QRegExp* rx) {

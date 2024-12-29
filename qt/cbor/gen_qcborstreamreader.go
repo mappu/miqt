@@ -66,24 +66,19 @@ func newQCborStreamReader(h *C.QCborStreamReader) *QCborStreamReader {
 	if h == nil {
 		return nil
 	}
+
 	return &QCborStreamReader{h: h}
 }
 
 // UnsafeNewQCborStreamReader constructs the type using only unsafe pointers.
 func UnsafeNewQCborStreamReader(h unsafe.Pointer) *QCborStreamReader {
-	if h == nil {
-		return nil
-	}
-
-	return &QCborStreamReader{h: (*C.QCborStreamReader)(h)}
+	return newQCborStreamReader((*C.QCborStreamReader)(h))
 }
 
 // NewQCborStreamReader constructs a new QCborStreamReader object.
 func NewQCborStreamReader() *QCborStreamReader {
-	var outptr_QCborStreamReader *C.QCborStreamReader = nil
 
-	C.QCborStreamReader_new(&outptr_QCborStreamReader)
-	ret := newQCborStreamReader(outptr_QCborStreamReader)
+	ret := newQCborStreamReader(C.QCborStreamReader_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -92,20 +87,16 @@ func NewQCborStreamReader() *QCborStreamReader {
 func NewQCborStreamReader2(data string, lenVal int64) *QCborStreamReader {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	var outptr_QCborStreamReader *C.QCborStreamReader = nil
 
-	C.QCborStreamReader_new2(data_Cstring, (C.ptrdiff_t)(lenVal), &outptr_QCborStreamReader)
-	ret := newQCborStreamReader(outptr_QCborStreamReader)
+	ret := newQCborStreamReader(C.QCborStreamReader_new2(data_Cstring, (C.ptrdiff_t)(lenVal)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCborStreamReader3 constructs a new QCborStreamReader object.
 func NewQCborStreamReader3(data *byte, lenVal int64) *QCborStreamReader {
-	var outptr_QCborStreamReader *C.QCborStreamReader = nil
 
-	C.QCborStreamReader_new3((*C.uchar)(unsafe.Pointer(data)), (C.ptrdiff_t)(lenVal), &outptr_QCborStreamReader)
-	ret := newQCborStreamReader(outptr_QCborStreamReader)
+	ret := newQCborStreamReader(C.QCborStreamReader_new3((*C.uchar)(unsafe.Pointer(data)), (C.ptrdiff_t)(lenVal)))
 	ret.isSubclass = true
 	return ret
 }
@@ -115,20 +106,16 @@ func NewQCborStreamReader4(data []byte) *QCborStreamReader {
 	data_alias := C.struct_miqt_string{}
 	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
 	data_alias.len = C.size_t(len(data))
-	var outptr_QCborStreamReader *C.QCborStreamReader = nil
 
-	C.QCborStreamReader_new4(data_alias, &outptr_QCborStreamReader)
-	ret := newQCborStreamReader(outptr_QCborStreamReader)
+	ret := newQCborStreamReader(C.QCborStreamReader_new4(data_alias))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCborStreamReader5 constructs a new QCborStreamReader object.
 func NewQCborStreamReader5(device *qt.QIODevice) *QCborStreamReader {
-	var outptr_QCborStreamReader *C.QCborStreamReader = nil
 
-	C.QCborStreamReader_new5((*C.QIODevice)(device.UnsafePointer()), &outptr_QCborStreamReader)
-	ret := newQCborStreamReader(outptr_QCborStreamReader)
+	ret := newQCborStreamReader(C.QCborStreamReader_new5((*C.QIODevice)(device.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -138,7 +125,7 @@ func (this *QCborStreamReader) SetDevice(device *qt.QIODevice) {
 }
 
 func (this *QCborStreamReader) Device() *qt.QIODevice {
-	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QCborStreamReader_Device(this.h)), nil)
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QCborStreamReader_Device(this.h)))
 }
 
 func (this *QCborStreamReader) AddData(data []byte) {
@@ -171,8 +158,7 @@ func (this *QCborStreamReader) Reset() {
 }
 
 func (this *QCborStreamReader) LastError() *QCborError {
-	_ret := C.QCborStreamReader_LastError(this.h)
-	_goptr := newQCborError(_ret)
+	_goptr := newQCborError(C.QCborStreamReader_LastError(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

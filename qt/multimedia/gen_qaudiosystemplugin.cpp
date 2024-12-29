@@ -16,6 +16,10 @@
 #include <QTimerEvent>
 #include <qaudiosystemplugin.h>
 #include "gen_qaudiosystemplugin.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 struct miqt_array /* of struct miqt_string */  QAudioSystemFactoryInterface_AvailableDevices(const QAudioSystemFactoryInterface* self, int param1) {
@@ -333,18 +337,17 @@ public:
 
 };
 
-void QAudioSystemPlugin_new(QAudioSystemPlugin** outptr_QAudioSystemPlugin, QObject** outptr_QObject, QAudioSystemFactoryInterface** outptr_QAudioSystemFactoryInterface) {
-	MiqtVirtualQAudioSystemPlugin* ret = new MiqtVirtualQAudioSystemPlugin();
-	*outptr_QAudioSystemPlugin = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QAudioSystemFactoryInterface = static_cast<QAudioSystemFactoryInterface*>(ret);
+QAudioSystemPlugin* QAudioSystemPlugin_new() {
+	return new MiqtVirtualQAudioSystemPlugin();
 }
 
-void QAudioSystemPlugin_new2(QObject* parent, QAudioSystemPlugin** outptr_QAudioSystemPlugin, QObject** outptr_QObject, QAudioSystemFactoryInterface** outptr_QAudioSystemFactoryInterface) {
-	MiqtVirtualQAudioSystemPlugin* ret = new MiqtVirtualQAudioSystemPlugin(parent);
-	*outptr_QAudioSystemPlugin = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QAudioSystemFactoryInterface = static_cast<QAudioSystemFactoryInterface*>(ret);
+QAudioSystemPlugin* QAudioSystemPlugin_new2(QObject* parent) {
+	return new MiqtVirtualQAudioSystemPlugin(parent);
+}
+
+void QAudioSystemPlugin_virtbase(QAudioSystemPlugin* src, QObject** outptr_QObject, QAudioSystemFactoryInterface** outptr_QAudioSystemFactoryInterface) {
+	*outptr_QObject = static_cast<QObject*>(src);
+	*outptr_QAudioSystemFactoryInterface = static_cast<QAudioSystemFactoryInterface*>(src);
 }
 
 QMetaObject* QAudioSystemPlugin_MetaObject(const QAudioSystemPlugin* self) {

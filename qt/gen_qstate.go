@@ -49,74 +49,56 @@ func (this *QState) UnsafePointer() unsafe.Pointer {
 }
 
 // newQState constructs the type using only CGO pointers.
-func newQState(h *C.QState, h_QAbstractState *C.QAbstractState, h_QObject *C.QObject) *QState {
+func newQState(h *C.QState) *QState {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractState *C.QAbstractState = nil
+	C.QState_virtbase(h, &outptr_QAbstractState)
+
 	return &QState{h: h,
-		QAbstractState: newQAbstractState(h_QAbstractState, h_QObject)}
+		QAbstractState: newQAbstractState(outptr_QAbstractState)}
 }
 
 // UnsafeNewQState constructs the type using only unsafe pointers.
-func UnsafeNewQState(h unsafe.Pointer, h_QAbstractState unsafe.Pointer, h_QObject unsafe.Pointer) *QState {
-	if h == nil {
-		return nil
-	}
-
-	return &QState{h: (*C.QState)(h),
-		QAbstractState: UnsafeNewQAbstractState(h_QAbstractState, h_QObject)}
+func UnsafeNewQState(h unsafe.Pointer) *QState {
+	return newQState((*C.QState)(h))
 }
 
 // NewQState constructs a new QState object.
 func NewQState() *QState {
-	var outptr_QState *C.QState = nil
-	var outptr_QAbstractState *C.QAbstractState = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QState_new(&outptr_QState, &outptr_QAbstractState, &outptr_QObject)
-	ret := newQState(outptr_QState, outptr_QAbstractState, outptr_QObject)
+	ret := newQState(C.QState_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQState2 constructs a new QState object.
 func NewQState2(childMode QState__ChildMode) *QState {
-	var outptr_QState *C.QState = nil
-	var outptr_QAbstractState *C.QAbstractState = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QState_new2((C.int)(childMode), &outptr_QState, &outptr_QAbstractState, &outptr_QObject)
-	ret := newQState(outptr_QState, outptr_QAbstractState, outptr_QObject)
+	ret := newQState(C.QState_new2((C.int)(childMode)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQState3 constructs a new QState object.
 func NewQState3(parent *QState) *QState {
-	var outptr_QState *C.QState = nil
-	var outptr_QAbstractState *C.QAbstractState = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QState_new3(parent.cPointer(), &outptr_QState, &outptr_QAbstractState, &outptr_QObject)
-	ret := newQState(outptr_QState, outptr_QAbstractState, outptr_QObject)
+	ret := newQState(C.QState_new3(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQState4 constructs a new QState object.
 func NewQState4(childMode QState__ChildMode, parent *QState) *QState {
-	var outptr_QState *C.QState = nil
-	var outptr_QAbstractState *C.QAbstractState = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QState_new4((C.int)(childMode), parent.cPointer(), &outptr_QState, &outptr_QAbstractState, &outptr_QObject)
-	ret := newQState(outptr_QState, outptr_QAbstractState, outptr_QObject)
+	ret := newQState(C.QState_new4((C.int)(childMode), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QState) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QState_MetaObject(this.h)))
+	return newQMetaObject(C.QState_MetaObject(this.h))
 }
 
 func (this *QState) Metacast(param1 string) unsafe.Pointer {
@@ -144,7 +126,7 @@ func QState_TrUtf8(s string) string {
 }
 
 func (this *QState) ErrorState() *QAbstractState {
-	return UnsafeNewQAbstractState(unsafe.Pointer(C.QState_ErrorState(this.h)), nil)
+	return newQAbstractState(C.QState_ErrorState(this.h))
 }
 
 func (this *QState) SetErrorState(state *QAbstractState) {
@@ -158,11 +140,11 @@ func (this *QState) AddTransition(transition *QAbstractTransition) {
 func (this *QState) AddTransition2(sender *QObject, signal string, target *QAbstractState) *QSignalTransition {
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
-	return UnsafeNewQSignalTransition(unsafe.Pointer(C.QState_AddTransition2(this.h, sender.cPointer(), signal_Cstring, target.cPointer())), nil, nil)
+	return newQSignalTransition(C.QState_AddTransition2(this.h, sender.cPointer(), signal_Cstring, target.cPointer()))
 }
 
 func (this *QState) AddTransitionWithTarget(target *QAbstractState) *QAbstractTransition {
-	return UnsafeNewQAbstractTransition(unsafe.Pointer(C.QState_AddTransitionWithTarget(this.h, target.cPointer())), nil)
+	return newQAbstractTransition(C.QState_AddTransitionWithTarget(this.h, target.cPointer()))
 }
 
 func (this *QState) RemoveTransition(transition *QAbstractTransition) {
@@ -174,13 +156,13 @@ func (this *QState) Transitions() []*QAbstractTransition {
 	_ret := make([]*QAbstractTransition, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractTransition)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQAbstractTransition(unsafe.Pointer(_outCast[i]), nil)
+		_ret[i] = newQAbstractTransition(_outCast[i])
 	}
 	return _ret
 }
 
 func (this *QState) InitialState() *QAbstractState {
-	return UnsafeNewQAbstractState(unsafe.Pointer(C.QState_InitialState(this.h)), nil)
+	return newQAbstractState(C.QState_InitialState(this.h))
 }
 
 func (this *QState) SetInitialState(state *QAbstractState) {
@@ -251,6 +233,9 @@ func (this *QState) callVirtualBase_OnEntry(event *QEvent) {
 
 }
 func (this *QState) OnOnEntry(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QState_override_virtual_OnEntry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -262,7 +247,7 @@ func miqt_exec_callback_QState_OnEntry(self *C.QState, cb C.intptr_t, event *C.Q
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QState{h: self}).callVirtualBase_OnEntry, slotval1)
 
@@ -274,6 +259,9 @@ func (this *QState) callVirtualBase_OnExit(event *QEvent) {
 
 }
 func (this *QState) OnOnExit(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QState_override_virtual_OnExit(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -285,7 +273,7 @@ func miqt_exec_callback_QState_OnExit(self *C.QState, cb C.intptr_t, event *C.QE
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QState{h: self}).callVirtualBase_OnExit, slotval1)
 
@@ -297,6 +285,9 @@ func (this *QState) callVirtualBase_Event(e *QEvent) bool {
 
 }
 func (this *QState) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QState_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -308,7 +299,7 @@ func miqt_exec_callback_QState_Event(self *C.QState, cb C.intptr_t, e *C.QEvent)
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QState{h: self}).callVirtualBase_Event, slotval1)
 

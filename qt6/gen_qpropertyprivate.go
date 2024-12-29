@@ -37,16 +37,13 @@ func newQUntypedPropertyData(h *C.QUntypedPropertyData) *QUntypedPropertyData {
 	if h == nil {
 		return nil
 	}
+
 	return &QUntypedPropertyData{h: h}
 }
 
 // UnsafeNewQUntypedPropertyData constructs the type using only unsafe pointers.
 func UnsafeNewQUntypedPropertyData(h unsafe.Pointer) *QUntypedPropertyData {
-	if h == nil {
-		return nil
-	}
-
-	return &QUntypedPropertyData{h: (*C.QUntypedPropertyData)(h)}
+	return newQUntypedPropertyData((*C.QUntypedPropertyData)(h))
 }
 
 // Delete this object from C++ memory.
@@ -87,16 +84,13 @@ func newQPropertyProxyBindingData(h *C.QPropertyProxyBindingData) *QPropertyProx
 	if h == nil {
 		return nil
 	}
+
 	return &QPropertyProxyBindingData{h: h}
 }
 
 // UnsafeNewQPropertyProxyBindingData constructs the type using only unsafe pointers.
 func UnsafeNewQPropertyProxyBindingData(h unsafe.Pointer) *QPropertyProxyBindingData {
-	if h == nil {
-		return nil
-	}
-
-	return &QPropertyProxyBindingData{h: (*C.QPropertyProxyBindingData)(h)}
+	return newQPropertyProxyBindingData((*C.QPropertyProxyBindingData)(h))
 }
 
 // Delete this object from C++ memory.

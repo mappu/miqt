@@ -9,6 +9,10 @@
 #include <QWidgetItemV2>
 #include <qlayoutitem.h>
 #include "gen_qlayoutitem.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQLayoutItem : public virtual QLayoutItem {
@@ -310,19 +314,16 @@ public:
 
 };
 
-void QLayoutItem_new(QLayoutItem** outptr_QLayoutItem) {
-	MiqtVirtualQLayoutItem* ret = new MiqtVirtualQLayoutItem();
-	*outptr_QLayoutItem = ret;
+QLayoutItem* QLayoutItem_new() {
+	return new MiqtVirtualQLayoutItem();
 }
 
-void QLayoutItem_new2(QLayoutItem* param1, QLayoutItem** outptr_QLayoutItem) {
-	MiqtVirtualQLayoutItem* ret = new MiqtVirtualQLayoutItem(*param1);
-	*outptr_QLayoutItem = ret;
+QLayoutItem* QLayoutItem_new2(QLayoutItem* param1) {
+	return new MiqtVirtualQLayoutItem(*param1);
 }
 
-void QLayoutItem_new3(int alignment, QLayoutItem** outptr_QLayoutItem) {
-	MiqtVirtualQLayoutItem* ret = new MiqtVirtualQLayoutItem(static_cast<Qt::Alignment>(alignment));
-	*outptr_QLayoutItem = ret;
+QLayoutItem* QLayoutItem_new3(int alignment) {
+	return new MiqtVirtualQLayoutItem(static_cast<Qt::Alignment>(alignment));
 }
 
 QSize* QLayoutItem_SizeHint(const QLayoutItem* self) {
@@ -847,28 +848,24 @@ public:
 
 };
 
-void QSpacerItem_new(int w, int h, QSpacerItem** outptr_QSpacerItem, QLayoutItem** outptr_QLayoutItem) {
-	MiqtVirtualQSpacerItem* ret = new MiqtVirtualQSpacerItem(static_cast<int>(w), static_cast<int>(h));
-	*outptr_QSpacerItem = ret;
-	*outptr_QLayoutItem = static_cast<QLayoutItem*>(ret);
+QSpacerItem* QSpacerItem_new(int w, int h) {
+	return new MiqtVirtualQSpacerItem(static_cast<int>(w), static_cast<int>(h));
 }
 
-void QSpacerItem_new2(QSpacerItem* param1, QSpacerItem** outptr_QSpacerItem, QLayoutItem** outptr_QLayoutItem) {
-	MiqtVirtualQSpacerItem* ret = new MiqtVirtualQSpacerItem(*param1);
-	*outptr_QSpacerItem = ret;
-	*outptr_QLayoutItem = static_cast<QLayoutItem*>(ret);
+QSpacerItem* QSpacerItem_new2(QSpacerItem* param1) {
+	return new MiqtVirtualQSpacerItem(*param1);
 }
 
-void QSpacerItem_new3(int w, int h, int hData, QSpacerItem** outptr_QSpacerItem, QLayoutItem** outptr_QLayoutItem) {
-	MiqtVirtualQSpacerItem* ret = new MiqtVirtualQSpacerItem(static_cast<int>(w), static_cast<int>(h), static_cast<QSizePolicy::Policy>(hData));
-	*outptr_QSpacerItem = ret;
-	*outptr_QLayoutItem = static_cast<QLayoutItem*>(ret);
+QSpacerItem* QSpacerItem_new3(int w, int h, int hData) {
+	return new MiqtVirtualQSpacerItem(static_cast<int>(w), static_cast<int>(h), static_cast<QSizePolicy::Policy>(hData));
 }
 
-void QSpacerItem_new4(int w, int h, int hData, int vData, QSpacerItem** outptr_QSpacerItem, QLayoutItem** outptr_QLayoutItem) {
-	MiqtVirtualQSpacerItem* ret = new MiqtVirtualQSpacerItem(static_cast<int>(w), static_cast<int>(h), static_cast<QSizePolicy::Policy>(hData), static_cast<QSizePolicy::Policy>(vData));
-	*outptr_QSpacerItem = ret;
-	*outptr_QLayoutItem = static_cast<QLayoutItem*>(ret);
+QSpacerItem* QSpacerItem_new4(int w, int h, int hData, int vData) {
+	return new MiqtVirtualQSpacerItem(static_cast<int>(w), static_cast<int>(h), static_cast<QSizePolicy::Policy>(hData), static_cast<QSizePolicy::Policy>(vData));
+}
+
+void QSpacerItem_virtbase(QSpacerItem* src, QLayoutItem** outptr_QLayoutItem) {
+	*outptr_QLayoutItem = static_cast<QLayoutItem*>(src);
 }
 
 void QSpacerItem_ChangeSize(QSpacerItem* self, int w, int h) {
@@ -1396,10 +1393,12 @@ public:
 
 };
 
-void QWidgetItem_new(QWidget* w, QWidgetItem** outptr_QWidgetItem, QLayoutItem** outptr_QLayoutItem) {
-	MiqtVirtualQWidgetItem* ret = new MiqtVirtualQWidgetItem(w);
-	*outptr_QWidgetItem = ret;
-	*outptr_QLayoutItem = static_cast<QLayoutItem*>(ret);
+QWidgetItem* QWidgetItem_new(QWidget* w) {
+	return new MiqtVirtualQWidgetItem(w);
+}
+
+void QWidgetItem_virtbase(QWidgetItem* src, QLayoutItem** outptr_QLayoutItem) {
+	*outptr_QLayoutItem = static_cast<QLayoutItem*>(src);
 }
 
 QSize* QWidgetItem_SizeHint(const QWidgetItem* self) {
@@ -1834,11 +1833,12 @@ public:
 
 };
 
-void QWidgetItemV2_new(QWidget* widget, QWidgetItemV2** outptr_QWidgetItemV2, QWidgetItem** outptr_QWidgetItem, QLayoutItem** outptr_QLayoutItem) {
-	MiqtVirtualQWidgetItemV2* ret = new MiqtVirtualQWidgetItemV2(widget);
-	*outptr_QWidgetItemV2 = ret;
-	*outptr_QWidgetItem = static_cast<QWidgetItem*>(ret);
-	*outptr_QLayoutItem = static_cast<QLayoutItem*>(ret);
+QWidgetItemV2* QWidgetItemV2_new(QWidget* widget) {
+	return new MiqtVirtualQWidgetItemV2(widget);
+}
+
+void QWidgetItemV2_virtbase(QWidgetItemV2* src, QWidgetItem** outptr_QWidgetItem) {
+	*outptr_QWidgetItem = static_cast<QWidgetItem*>(src);
 }
 
 QSize* QWidgetItemV2_SizeHint(const QWidgetItemV2* self) {

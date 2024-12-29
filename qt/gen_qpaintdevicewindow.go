@@ -35,28 +35,26 @@ func (this *QPaintDeviceWindow) UnsafePointer() unsafe.Pointer {
 }
 
 // newQPaintDeviceWindow constructs the type using only CGO pointers.
-func newQPaintDeviceWindow(h *C.QPaintDeviceWindow, h_QWindow *C.QWindow, h_QObject *C.QObject, h_QSurface *C.QSurface, h_QPaintDevice *C.QPaintDevice) *QPaintDeviceWindow {
+func newQPaintDeviceWindow(h *C.QPaintDeviceWindow) *QPaintDeviceWindow {
 	if h == nil {
 		return nil
 	}
+	var outptr_QWindow *C.QWindow = nil
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+	C.QPaintDeviceWindow_virtbase(h, &outptr_QWindow, &outptr_QPaintDevice)
+
 	return &QPaintDeviceWindow{h: h,
-		QWindow:      newQWindow(h_QWindow, h_QObject, h_QSurface),
-		QPaintDevice: newQPaintDevice(h_QPaintDevice)}
+		QWindow:      newQWindow(outptr_QWindow),
+		QPaintDevice: newQPaintDevice(outptr_QPaintDevice)}
 }
 
 // UnsafeNewQPaintDeviceWindow constructs the type using only unsafe pointers.
-func UnsafeNewQPaintDeviceWindow(h unsafe.Pointer, h_QWindow unsafe.Pointer, h_QObject unsafe.Pointer, h_QSurface unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QPaintDeviceWindow {
-	if h == nil {
-		return nil
-	}
-
-	return &QPaintDeviceWindow{h: (*C.QPaintDeviceWindow)(h),
-		QWindow:      UnsafeNewQWindow(h_QWindow, h_QObject, h_QSurface),
-		QPaintDevice: UnsafeNewQPaintDevice(h_QPaintDevice)}
+func UnsafeNewQPaintDeviceWindow(h unsafe.Pointer) *QPaintDeviceWindow {
+	return newQPaintDeviceWindow((*C.QPaintDeviceWindow)(h))
 }
 
 func (this *QPaintDeviceWindow) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QPaintDeviceWindow_MetaObject(this.h)))
+	return newQMetaObject(C.QPaintDeviceWindow_MetaObject(this.h))
 }
 
 func (this *QPaintDeviceWindow) Metacast(param1 string) unsafe.Pointer {

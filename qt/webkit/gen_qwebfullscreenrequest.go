@@ -38,34 +38,27 @@ func newQWebFullScreenRequest(h *C.QWebFullScreenRequest) *QWebFullScreenRequest
 	if h == nil {
 		return nil
 	}
+
 	return &QWebFullScreenRequest{h: h}
 }
 
 // UnsafeNewQWebFullScreenRequest constructs the type using only unsafe pointers.
 func UnsafeNewQWebFullScreenRequest(h unsafe.Pointer) *QWebFullScreenRequest {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebFullScreenRequest{h: (*C.QWebFullScreenRequest)(h)}
+	return newQWebFullScreenRequest((*C.QWebFullScreenRequest)(h))
 }
 
 // NewQWebFullScreenRequest constructs a new QWebFullScreenRequest object.
 func NewQWebFullScreenRequest() *QWebFullScreenRequest {
-	var outptr_QWebFullScreenRequest *C.QWebFullScreenRequest = nil
 
-	C.QWebFullScreenRequest_new(&outptr_QWebFullScreenRequest)
-	ret := newQWebFullScreenRequest(outptr_QWebFullScreenRequest)
+	ret := newQWebFullScreenRequest(C.QWebFullScreenRequest_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebFullScreenRequest2 constructs a new QWebFullScreenRequest object.
 func NewQWebFullScreenRequest2(param1 *QWebFullScreenRequest) *QWebFullScreenRequest {
-	var outptr_QWebFullScreenRequest *C.QWebFullScreenRequest = nil
 
-	C.QWebFullScreenRequest_new2(param1.cPointer(), &outptr_QWebFullScreenRequest)
-	ret := newQWebFullScreenRequest(outptr_QWebFullScreenRequest)
+	ret := newQWebFullScreenRequest(C.QWebFullScreenRequest_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -83,14 +76,13 @@ func (this *QWebFullScreenRequest) ToggleOn() bool {
 }
 
 func (this *QWebFullScreenRequest) Origin() *qt.QUrl {
-	_ret := C.QWebFullScreenRequest_Origin(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebFullScreenRequest_Origin(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebFullScreenRequest) Element() *QWebElement {
-	return UnsafeNewQWebElement(unsafe.Pointer(C.QWebFullScreenRequest_Element(this.h)))
+	return newQWebElement(C.QWebFullScreenRequest_Element(this.h))
 }
 
 // Delete this object from C++ memory.

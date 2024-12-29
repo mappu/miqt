@@ -3,23 +3,24 @@
 #include <cstring>
 #include <qscistyledtext.h>
 #include "gen_qscistyledtext.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QsciStyledText_new(struct miqt_string text, int style, QsciStyledText** outptr_QsciStyledText) {
+QsciStyledText* QsciStyledText_new(struct miqt_string text, int style) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	QsciStyledText* ret = new QsciStyledText(text_QString, static_cast<int>(style));
-	*outptr_QsciStyledText = ret;
+	return new QsciStyledText(text_QString, static_cast<int>(style));
 }
 
-void QsciStyledText_new2(struct miqt_string text, QsciStyle* style, QsciStyledText** outptr_QsciStyledText) {
+QsciStyledText* QsciStyledText_new2(struct miqt_string text, QsciStyle* style) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	QsciStyledText* ret = new QsciStyledText(text_QString, *style);
-	*outptr_QsciStyledText = ret;
+	return new QsciStyledText(text_QString, *style);
 }
 
-void QsciStyledText_new3(QsciStyledText* param1, QsciStyledText** outptr_QsciStyledText) {
-	QsciStyledText* ret = new QsciStyledText(*param1);
-	*outptr_QsciStyledText = ret;
+QsciStyledText* QsciStyledText_new3(QsciStyledText* param1) {
+	return new QsciStyledText(*param1);
 }
 
 void QsciStyledText_Apply(const QsciStyledText* self, QsciScintillaBase* sci) {

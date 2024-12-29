@@ -9,7 +9,15 @@
 #include <QVariant>
 #include <qmediaobject.h>
 #include "gen_qmediaobject.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
+
+void QMediaObject_virtbase(QMediaObject* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
 
 QMetaObject* QMediaObject_MetaObject(const QMediaObject* self) {
 	return (QMetaObject*) self->metaObject();

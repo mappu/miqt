@@ -36,42 +36,34 @@ func (this *QMediaDevices) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMediaDevices constructs the type using only CGO pointers.
-func newQMediaDevices(h *C.QMediaDevices, h_QObject *C.QObject) *QMediaDevices {
+func newQMediaDevices(h *C.QMediaDevices) *QMediaDevices {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QMediaDevices_virtbase(h, &outptr_QObject)
+
 	return &QMediaDevices{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQMediaDevices constructs the type using only unsafe pointers.
-func UnsafeNewQMediaDevices(h unsafe.Pointer, h_QObject unsafe.Pointer) *QMediaDevices {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaDevices{h: (*C.QMediaDevices)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQMediaDevices(h unsafe.Pointer) *QMediaDevices {
+	return newQMediaDevices((*C.QMediaDevices)(h))
 }
 
 // NewQMediaDevices constructs a new QMediaDevices object.
 func NewQMediaDevices() *QMediaDevices {
-	var outptr_QMediaDevices *C.QMediaDevices = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMediaDevices_new(&outptr_QMediaDevices, &outptr_QObject)
-	ret := newQMediaDevices(outptr_QMediaDevices, outptr_QObject)
+	ret := newQMediaDevices(C.QMediaDevices_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaDevices2 constructs a new QMediaDevices object.
 func NewQMediaDevices2(parent *qt6.QObject) *QMediaDevices {
-	var outptr_QMediaDevices *C.QMediaDevices = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMediaDevices_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QMediaDevices, &outptr_QObject)
-	ret := newQMediaDevices(outptr_QMediaDevices, outptr_QObject)
+	ret := newQMediaDevices(C.QMediaDevices_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -100,8 +92,7 @@ func QMediaDevices_AudioInputs() []QAudioDevice {
 	_ret := make([]QAudioDevice, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAudioDevice)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQAudioDevice(_lv_ret)
+		_lv_goptr := newQAudioDevice(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -113,8 +104,7 @@ func QMediaDevices_AudioOutputs() []QAudioDevice {
 	_ret := make([]QAudioDevice, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAudioDevice)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQAudioDevice(_lv_ret)
+		_lv_goptr := newQAudioDevice(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -126,8 +116,7 @@ func QMediaDevices_VideoInputs() []QCameraDevice {
 	_ret := make([]QCameraDevice, int(_ma.len))
 	_outCast := (*[0xffff]*C.QCameraDevice)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQCameraDevice(_lv_ret)
+		_lv_goptr := newQCameraDevice(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -135,22 +124,19 @@ func QMediaDevices_VideoInputs() []QCameraDevice {
 }
 
 func QMediaDevices_DefaultAudioInput() *QAudioDevice {
-	_ret := C.QMediaDevices_DefaultAudioInput()
-	_goptr := newQAudioDevice(_ret)
+	_goptr := newQAudioDevice(C.QMediaDevices_DefaultAudioInput())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QMediaDevices_DefaultAudioOutput() *QAudioDevice {
-	_ret := C.QMediaDevices_DefaultAudioOutput()
-	_goptr := newQAudioDevice(_ret)
+	_goptr := newQAudioDevice(C.QMediaDevices_DefaultAudioOutput())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QMediaDevices_DefaultVideoInput() *QCameraDevice {
-	_ret := C.QMediaDevices_DefaultVideoInput()
-	_goptr := newQCameraDevice(_ret)
+	_goptr := newQCameraDevice(C.QMediaDevices_DefaultVideoInput())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -234,6 +220,9 @@ func (this *QMediaDevices) callVirtualBase_Event(event *qt6.QEvent) bool {
 
 }
 func (this *QMediaDevices) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaDevices_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -259,6 +248,9 @@ func (this *QMediaDevices) callVirtualBase_EventFilter(watched *qt6.QObject, eve
 
 }
 func (this *QMediaDevices) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaDevices_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -271,6 +263,7 @@ func miqt_exec_callback_QMediaDevices_EventFilter(self *C.QMediaDevices, cb C.in
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QMediaDevices{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
@@ -285,6 +278,9 @@ func (this *QMediaDevices) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
 
 }
 func (this *QMediaDevices) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaDevices_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -296,7 +292,7 @@ func miqt_exec_callback_QMediaDevices_TimerEvent(self *C.QMediaDevices, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QMediaDevices{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -308,6 +304,9 @@ func (this *QMediaDevices) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
 
 }
 func (this *QMediaDevices) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaDevices_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -319,7 +318,7 @@ func miqt_exec_callback_QMediaDevices_ChildEvent(self *C.QMediaDevices, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QMediaDevices{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -331,6 +330,9 @@ func (this *QMediaDevices) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 
 }
 func (this *QMediaDevices) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaDevices_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -354,6 +356,9 @@ func (this *QMediaDevices) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod
 
 }
 func (this *QMediaDevices) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaDevices_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -377,6 +382,9 @@ func (this *QMediaDevices) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMet
 
 }
 func (this *QMediaDevices) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaDevices_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

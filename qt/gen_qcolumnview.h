@@ -76,8 +76,9 @@ typedef struct QVariant QVariant;
 typedef struct QWidget QWidget;
 #endif
 
-void QColumnView_new(QWidget* parent, QColumnView** outptr_QColumnView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QColumnView_new2(QColumnView** outptr_QColumnView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QColumnView* QColumnView_new(QWidget* parent);
+QColumnView* QColumnView_new2();
+void QColumnView_virtbase(QColumnView* src, QAbstractItemView** outptr_QAbstractItemView);
 QMetaObject* QColumnView_MetaObject(const QColumnView* self);
 void* QColumnView_Metacast(QColumnView* self, const char* param1);
 struct miqt_string QColumnView_Tr(const char* s);

@@ -46,11 +46,11 @@ typedef struct QTextTable QTextTable;
 typedef struct QTextTableFormat QTextTableFormat;
 #endif
 
-void QTextCursor_new(QTextCursor** outptr_QTextCursor);
-void QTextCursor_new2(QTextDocument* document, QTextCursor** outptr_QTextCursor);
-void QTextCursor_new3(QTextFrame* frame, QTextCursor** outptr_QTextCursor);
-void QTextCursor_new4(QTextBlock* block, QTextCursor** outptr_QTextCursor);
-void QTextCursor_new5(QTextCursor* cursor, QTextCursor** outptr_QTextCursor);
+QTextCursor* QTextCursor_new();
+QTextCursor* QTextCursor_new2(QTextDocument* document);
+QTextCursor* QTextCursor_new3(QTextFrame* frame);
+QTextCursor* QTextCursor_new4(QTextBlock* block);
+QTextCursor* QTextCursor_new5(QTextCursor* cursor);
 void QTextCursor_OperatorAssign(QTextCursor* self, QTextCursor* other);
 void QTextCursor_Swap(QTextCursor* self, QTextCursor* other);
 bool QTextCursor_IsNull(const QTextCursor* self);

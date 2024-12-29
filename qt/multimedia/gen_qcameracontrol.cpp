@@ -7,7 +7,15 @@
 #include <cstring>
 #include <qcameracontrol.h>
 #include "gen_qcameracontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
+
+void QCameraControl_virtbase(QCameraControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
 
 QMetaObject* QCameraControl_MetaObject(const QCameraControl* self) {
 	return (QMetaObject*) self->metaObject();

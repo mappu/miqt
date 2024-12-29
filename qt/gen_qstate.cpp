@@ -12,6 +12,10 @@
 #include <QVariant>
 #include <qstate.h>
 #include "gen_qstate.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQState : public virtual QState {
@@ -97,32 +101,24 @@ public:
 
 };
 
-void QState_new(QState** outptr_QState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject) {
-	MiqtVirtualQState* ret = new MiqtVirtualQState();
-	*outptr_QState = ret;
-	*outptr_QAbstractState = static_cast<QAbstractState*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QState* QState_new() {
+	return new MiqtVirtualQState();
 }
 
-void QState_new2(int childMode, QState** outptr_QState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject) {
-	MiqtVirtualQState* ret = new MiqtVirtualQState(static_cast<QState::ChildMode>(childMode));
-	*outptr_QState = ret;
-	*outptr_QAbstractState = static_cast<QAbstractState*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QState* QState_new2(int childMode) {
+	return new MiqtVirtualQState(static_cast<QState::ChildMode>(childMode));
 }
 
-void QState_new3(QState* parent, QState** outptr_QState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject) {
-	MiqtVirtualQState* ret = new MiqtVirtualQState(parent);
-	*outptr_QState = ret;
-	*outptr_QAbstractState = static_cast<QAbstractState*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QState* QState_new3(QState* parent) {
+	return new MiqtVirtualQState(parent);
 }
 
-void QState_new4(int childMode, QState* parent, QState** outptr_QState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject) {
-	MiqtVirtualQState* ret = new MiqtVirtualQState(static_cast<QState::ChildMode>(childMode), parent);
-	*outptr_QState = ret;
-	*outptr_QAbstractState = static_cast<QAbstractState*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QState* QState_new4(int childMode, QState* parent) {
+	return new MiqtVirtualQState(static_cast<QState::ChildMode>(childMode), parent);
+}
+
+void QState_virtbase(QState* src, QAbstractState** outptr_QAbstractState) {
+	*outptr_QAbstractState = static_cast<QAbstractState*>(src);
 }
 
 QMetaObject* QState_MetaObject(const QState* self) {

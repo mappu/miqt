@@ -46,42 +46,34 @@ func (this *QAudioDecoder) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAudioDecoder constructs the type using only CGO pointers.
-func newQAudioDecoder(h *C.QAudioDecoder, h_QObject *C.QObject) *QAudioDecoder {
+func newQAudioDecoder(h *C.QAudioDecoder) *QAudioDecoder {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QAudioDecoder_virtbase(h, &outptr_QObject)
+
 	return &QAudioDecoder{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQAudioDecoder constructs the type using only unsafe pointers.
-func UnsafeNewQAudioDecoder(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAudioDecoder {
-	if h == nil {
-		return nil
-	}
-
-	return &QAudioDecoder{h: (*C.QAudioDecoder)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQAudioDecoder(h unsafe.Pointer) *QAudioDecoder {
+	return newQAudioDecoder((*C.QAudioDecoder)(h))
 }
 
 // NewQAudioDecoder constructs a new QAudioDecoder object.
 func NewQAudioDecoder() *QAudioDecoder {
-	var outptr_QAudioDecoder *C.QAudioDecoder = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAudioDecoder_new(&outptr_QAudioDecoder, &outptr_QObject)
-	ret := newQAudioDecoder(outptr_QAudioDecoder, outptr_QObject)
+	ret := newQAudioDecoder(C.QAudioDecoder_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAudioDecoder2 constructs a new QAudioDecoder object.
 func NewQAudioDecoder2(parent *qt6.QObject) *QAudioDecoder {
-	var outptr_QAudioDecoder *C.QAudioDecoder = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAudioDecoder_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QAudioDecoder, &outptr_QObject)
-	ret := newQAudioDecoder(outptr_QAudioDecoder, outptr_QObject)
+	ret := newQAudioDecoder(C.QAudioDecoder_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -114,8 +106,7 @@ func (this *QAudioDecoder) IsDecoding() bool {
 }
 
 func (this *QAudioDecoder) Source() *qt6.QUrl {
-	_ret := C.QAudioDecoder_Source(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QAudioDecoder_Source(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -125,7 +116,7 @@ func (this *QAudioDecoder) SetSource(fileName *qt6.QUrl) {
 }
 
 func (this *QAudioDecoder) SourceDevice() *qt6.QIODevice {
-	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QAudioDecoder_SourceDevice(this.h)), nil, nil)
+	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QAudioDecoder_SourceDevice(this.h)))
 }
 
 func (this *QAudioDecoder) SetSourceDevice(device *qt6.QIODevice) {
@@ -133,8 +124,7 @@ func (this *QAudioDecoder) SetSourceDevice(device *qt6.QIODevice) {
 }
 
 func (this *QAudioDecoder) AudioFormat() *QAudioFormat {
-	_ret := C.QAudioDecoder_AudioFormat(this.h)
-	_goptr := newQAudioFormat(_ret)
+	_goptr := newQAudioFormat(C.QAudioDecoder_AudioFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -155,8 +145,7 @@ func (this *QAudioDecoder) ErrorString() string {
 }
 
 func (this *QAudioDecoder) Read() *QAudioBuffer {
-	_ret := C.QAudioDecoder_Read(this.h)
-	_goptr := newQAudioBuffer(_ret)
+	_goptr := newQAudioBuffer(C.QAudioDecoder_Read(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -270,7 +259,7 @@ func miqt_exec_callback_QAudioDecoder_FormatChanged(cb C.intptr_t, format *C.QAu
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQAudioFormat(unsafe.Pointer(format))
+	slotval1 := newQAudioFormat(format)
 
 	gofunc(slotval1)
 }
@@ -380,6 +369,9 @@ func (this *QAudioDecoder) callVirtualBase_Event(event *qt6.QEvent) bool {
 
 }
 func (this *QAudioDecoder) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAudioDecoder_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -405,6 +397,9 @@ func (this *QAudioDecoder) callVirtualBase_EventFilter(watched *qt6.QObject, eve
 
 }
 func (this *QAudioDecoder) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAudioDecoder_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -417,6 +412,7 @@ func miqt_exec_callback_QAudioDecoder_EventFilter(self *C.QAudioDecoder, cb C.in
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QAudioDecoder{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
@@ -431,6 +427,9 @@ func (this *QAudioDecoder) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
 
 }
 func (this *QAudioDecoder) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAudioDecoder_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -442,7 +441,7 @@ func miqt_exec_callback_QAudioDecoder_TimerEvent(self *C.QAudioDecoder, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QAudioDecoder{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -454,6 +453,9 @@ func (this *QAudioDecoder) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
 
 }
 func (this *QAudioDecoder) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAudioDecoder_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -465,7 +467,7 @@ func miqt_exec_callback_QAudioDecoder_ChildEvent(self *C.QAudioDecoder, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QAudioDecoder{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -477,6 +479,9 @@ func (this *QAudioDecoder) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 
 }
 func (this *QAudioDecoder) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAudioDecoder_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -500,6 +505,9 @@ func (this *QAudioDecoder) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod
 
 }
 func (this *QAudioDecoder) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAudioDecoder_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -523,6 +531,9 @@ func (this *QAudioDecoder) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMet
 
 }
 func (this *QAudioDecoder) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAudioDecoder_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

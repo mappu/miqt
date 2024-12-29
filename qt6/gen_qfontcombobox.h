@@ -62,8 +62,9 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QFontComboBox_new(QWidget* parent, QFontComboBox** outptr_QFontComboBox, QComboBox** outptr_QComboBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QFontComboBox_new2(QFontComboBox** outptr_QFontComboBox, QComboBox** outptr_QComboBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QFontComboBox* QFontComboBox_new(QWidget* parent);
+QFontComboBox* QFontComboBox_new2();
+void QFontComboBox_virtbase(QFontComboBox* src, QComboBox** outptr_QComboBox);
 QMetaObject* QFontComboBox_MetaObject(const QFontComboBox* self);
 void* QFontComboBox_Metacast(QFontComboBox* self, const char* param1);
 struct miqt_string QFontComboBox_Tr(const char* s);

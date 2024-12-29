@@ -11,6 +11,10 @@
 #include <QTimerEvent>
 #include <qaudioinput.h>
 #include "gen_qaudioinput.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAudioInput : public virtual QAudioInput {
@@ -196,28 +200,24 @@ public:
 
 };
 
-void QAudioInput_new(QAudioInput** outptr_QAudioInput, QObject** outptr_QObject) {
-	MiqtVirtualQAudioInput* ret = new MiqtVirtualQAudioInput();
-	*outptr_QAudioInput = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAudioInput* QAudioInput_new() {
+	return new MiqtVirtualQAudioInput();
 }
 
-void QAudioInput_new2(QAudioDevice* deviceInfo, QAudioInput** outptr_QAudioInput, QObject** outptr_QObject) {
-	MiqtVirtualQAudioInput* ret = new MiqtVirtualQAudioInput(*deviceInfo);
-	*outptr_QAudioInput = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAudioInput* QAudioInput_new2(QAudioDevice* deviceInfo) {
+	return new MiqtVirtualQAudioInput(*deviceInfo);
 }
 
-void QAudioInput_new3(QObject* parent, QAudioInput** outptr_QAudioInput, QObject** outptr_QObject) {
-	MiqtVirtualQAudioInput* ret = new MiqtVirtualQAudioInput(parent);
-	*outptr_QAudioInput = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAudioInput* QAudioInput_new3(QObject* parent) {
+	return new MiqtVirtualQAudioInput(parent);
 }
 
-void QAudioInput_new4(QAudioDevice* deviceInfo, QObject* parent, QAudioInput** outptr_QAudioInput, QObject** outptr_QObject) {
-	MiqtVirtualQAudioInput* ret = new MiqtVirtualQAudioInput(*deviceInfo, parent);
-	*outptr_QAudioInput = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAudioInput* QAudioInput_new4(QAudioDevice* deviceInfo, QObject* parent) {
+	return new MiqtVirtualQAudioInput(*deviceInfo, parent);
+}
+
+void QAudioInput_virtbase(QAudioInput* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QAudioInput_MetaObject(const QAudioInput* self) {

@@ -62,34 +62,27 @@ func newQMetaMethod(h *C.QMetaMethod) *QMetaMethod {
 	if h == nil {
 		return nil
 	}
+
 	return &QMetaMethod{h: h}
 }
 
 // UnsafeNewQMetaMethod constructs the type using only unsafe pointers.
 func UnsafeNewQMetaMethod(h unsafe.Pointer) *QMetaMethod {
-	if h == nil {
-		return nil
-	}
-
-	return &QMetaMethod{h: (*C.QMetaMethod)(h)}
+	return newQMetaMethod((*C.QMetaMethod)(h))
 }
 
 // NewQMetaMethod constructs a new QMetaMethod object.
 func NewQMetaMethod() *QMetaMethod {
-	var outptr_QMetaMethod *C.QMetaMethod = nil
 
-	C.QMetaMethod_new(&outptr_QMetaMethod)
-	ret := newQMetaMethod(outptr_QMetaMethod)
+	ret := newQMetaMethod(C.QMetaMethod_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMetaMethod2 constructs a new QMetaMethod object.
 func NewQMetaMethod2(param1 *QMetaMethod) *QMetaMethod {
-	var outptr_QMetaMethod *C.QMetaMethod = nil
 
-	C.QMetaMethod_new2(param1.cPointer(), &outptr_QMetaMethod)
-	ret := newQMetaMethod(outptr_QMetaMethod)
+	ret := newQMetaMethod(C.QMetaMethod_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -118,8 +111,7 @@ func (this *QMetaMethod) ReturnType() int {
 }
 
 func (this *QMetaMethod) ReturnMetaType() *QMetaType {
-	_ret := C.QMetaMethod_ReturnMetaType(this.h)
-	_goptr := newQMetaType(_ret)
+	_goptr := newQMetaType(C.QMetaMethod_ReturnMetaType(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -133,8 +125,7 @@ func (this *QMetaMethod) ParameterType(index int) int {
 }
 
 func (this *QMetaMethod) ParameterMetaType(index int) *QMetaType {
-	_ret := C.QMetaMethod_ParameterMetaType(this.h, (C.int)(index))
-	_goptr := newQMetaType(_ret)
+	_goptr := newQMetaType(C.QMetaMethod_ParameterMetaType(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -210,7 +201,7 @@ func (this *QMetaMethod) IsConst() bool {
 }
 
 func (this *QMetaMethod) EnclosingMetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMetaMethod_EnclosingMetaObject(this.h)))
+	return newQMetaObject(C.QMetaMethod_EnclosingMetaObject(this.h))
 }
 
 func (this *QMetaMethod) Invoke(object *QObject, connectionType ConnectionType, returnValue QGenericReturnArgument) bool {
@@ -519,34 +510,27 @@ func newQMetaEnum(h *C.QMetaEnum) *QMetaEnum {
 	if h == nil {
 		return nil
 	}
+
 	return &QMetaEnum{h: h}
 }
 
 // UnsafeNewQMetaEnum constructs the type using only unsafe pointers.
 func UnsafeNewQMetaEnum(h unsafe.Pointer) *QMetaEnum {
-	if h == nil {
-		return nil
-	}
-
-	return &QMetaEnum{h: (*C.QMetaEnum)(h)}
+	return newQMetaEnum((*C.QMetaEnum)(h))
 }
 
 // NewQMetaEnum constructs a new QMetaEnum object.
 func NewQMetaEnum() *QMetaEnum {
-	var outptr_QMetaEnum *C.QMetaEnum = nil
 
-	C.QMetaEnum_new(&outptr_QMetaEnum)
-	ret := newQMetaEnum(outptr_QMetaEnum)
+	ret := newQMetaEnum(C.QMetaEnum_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMetaEnum2 constructs a new QMetaEnum object.
 func NewQMetaEnum2(param1 *QMetaEnum) *QMetaEnum {
-	var outptr_QMetaEnum *C.QMetaEnum = nil
 
-	C.QMetaEnum_new2(param1.cPointer(), &outptr_QMetaEnum)
-	ret := newQMetaEnum(outptr_QMetaEnum)
+	ret := newQMetaEnum(C.QMetaEnum_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -612,7 +596,7 @@ func (this *QMetaEnum) ValueToKeys(value int) []byte {
 }
 
 func (this *QMetaEnum) EnclosingMetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMetaEnum_EnclosingMetaObject(this.h)))
+	return newQMetaObject(C.QMetaEnum_EnclosingMetaObject(this.h))
 }
 
 func (this *QMetaEnum) IsValid() bool {
@@ -669,24 +653,19 @@ func newQMetaProperty(h *C.QMetaProperty) *QMetaProperty {
 	if h == nil {
 		return nil
 	}
+
 	return &QMetaProperty{h: h}
 }
 
 // UnsafeNewQMetaProperty constructs the type using only unsafe pointers.
 func UnsafeNewQMetaProperty(h unsafe.Pointer) *QMetaProperty {
-	if h == nil {
-		return nil
-	}
-
-	return &QMetaProperty{h: (*C.QMetaProperty)(h)}
+	return newQMetaProperty((*C.QMetaProperty)(h))
 }
 
 // NewQMetaProperty constructs a new QMetaProperty object.
 func NewQMetaProperty() *QMetaProperty {
-	var outptr_QMetaProperty *C.QMetaProperty = nil
 
-	C.QMetaProperty_new(&outptr_QMetaProperty)
-	ret := newQMetaProperty(outptr_QMetaProperty)
+	ret := newQMetaProperty(C.QMetaProperty_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -714,8 +693,7 @@ func (this *QMetaProperty) TypeId() int {
 }
 
 func (this *QMetaProperty) MetaType() *QMetaType {
-	_ret := C.QMetaProperty_MetaType(this.h)
-	_goptr := newQMetaType(_ret)
+	_goptr := newQMetaType(C.QMetaProperty_MetaType(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -781,8 +759,7 @@ func (this *QMetaProperty) IsEnumType() bool {
 }
 
 func (this *QMetaProperty) Enumerator() *QMetaEnum {
-	_ret := C.QMetaProperty_Enumerator(this.h)
-	_goptr := newQMetaEnum(_ret)
+	_goptr := newQMetaEnum(C.QMetaProperty_Enumerator(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -792,8 +769,7 @@ func (this *QMetaProperty) HasNotifySignal() bool {
 }
 
 func (this *QMetaProperty) NotifySignal() *QMetaMethod {
-	_ret := C.QMetaProperty_NotifySignal(this.h)
-	_goptr := newQMetaMethod(_ret)
+	_goptr := newQMetaMethod(C.QMetaProperty_NotifySignal(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -807,8 +783,7 @@ func (this *QMetaProperty) Revision() int {
 }
 
 func (this *QMetaProperty) Read(obj *QObject) *QVariant {
-	_ret := C.QMetaProperty_Read(this.h, obj.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QMetaProperty_Read(this.h, obj.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -822,15 +797,13 @@ func (this *QMetaProperty) Reset(obj *QObject) bool {
 }
 
 func (this *QMetaProperty) Bindable(object *QObject) *QUntypedBindable {
-	_ret := C.QMetaProperty_Bindable(this.h, object.cPointer())
-	_goptr := newQUntypedBindable(_ret)
+	_goptr := newQUntypedBindable(C.QMetaProperty_Bindable(this.h, object.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMetaProperty) ReadOnGadget(gadget unsafe.Pointer) *QVariant {
-	_ret := C.QMetaProperty_ReadOnGadget(this.h, gadget)
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QMetaProperty_ReadOnGadget(this.h, gadget))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -856,7 +829,7 @@ func (this *QMetaProperty) IsValid() bool {
 }
 
 func (this *QMetaProperty) EnclosingMetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMetaProperty_EnclosingMetaObject(this.h)))
+	return newQMetaObject(C.QMetaProperty_EnclosingMetaObject(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -897,24 +870,19 @@ func newQMetaClassInfo(h *C.QMetaClassInfo) *QMetaClassInfo {
 	if h == nil {
 		return nil
 	}
+
 	return &QMetaClassInfo{h: h}
 }
 
 // UnsafeNewQMetaClassInfo constructs the type using only unsafe pointers.
 func UnsafeNewQMetaClassInfo(h unsafe.Pointer) *QMetaClassInfo {
-	if h == nil {
-		return nil
-	}
-
-	return &QMetaClassInfo{h: (*C.QMetaClassInfo)(h)}
+	return newQMetaClassInfo((*C.QMetaClassInfo)(h))
 }
 
 // NewQMetaClassInfo constructs a new QMetaClassInfo object.
 func NewQMetaClassInfo() *QMetaClassInfo {
-	var outptr_QMetaClassInfo *C.QMetaClassInfo = nil
 
-	C.QMetaClassInfo_new(&outptr_QMetaClassInfo)
-	ret := newQMetaClassInfo(outptr_QMetaClassInfo)
+	ret := newQMetaClassInfo(C.QMetaClassInfo_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -930,7 +898,7 @@ func (this *QMetaClassInfo) Value() string {
 }
 
 func (this *QMetaClassInfo) EnclosingMetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMetaClassInfo_EnclosingMetaObject(this.h)))
+	return newQMetaObject(C.QMetaClassInfo_EnclosingMetaObject(this.h))
 }
 
 // Delete this object from C++ memory.

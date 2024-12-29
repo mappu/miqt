@@ -35,48 +35,40 @@ func (this *QGenericPlugin) UnsafePointer() unsafe.Pointer {
 }
 
 // newQGenericPlugin constructs the type using only CGO pointers.
-func newQGenericPlugin(h *C.QGenericPlugin, h_QObject *C.QObject) *QGenericPlugin {
+func newQGenericPlugin(h *C.QGenericPlugin) *QGenericPlugin {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QGenericPlugin_virtbase(h, &outptr_QObject)
+
 	return &QGenericPlugin{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQGenericPlugin constructs the type using only unsafe pointers.
-func UnsafeNewQGenericPlugin(h unsafe.Pointer, h_QObject unsafe.Pointer) *QGenericPlugin {
-	if h == nil {
-		return nil
-	}
-
-	return &QGenericPlugin{h: (*C.QGenericPlugin)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQGenericPlugin(h unsafe.Pointer) *QGenericPlugin {
+	return newQGenericPlugin((*C.QGenericPlugin)(h))
 }
 
 // NewQGenericPlugin constructs a new QGenericPlugin object.
 func NewQGenericPlugin() *QGenericPlugin {
-	var outptr_QGenericPlugin *C.QGenericPlugin = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QGenericPlugin_new(&outptr_QGenericPlugin, &outptr_QObject)
-	ret := newQGenericPlugin(outptr_QGenericPlugin, outptr_QObject)
+	ret := newQGenericPlugin(C.QGenericPlugin_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGenericPlugin2 constructs a new QGenericPlugin object.
 func NewQGenericPlugin2(parent *QObject) *QGenericPlugin {
-	var outptr_QGenericPlugin *C.QGenericPlugin = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QGenericPlugin_new2(parent.cPointer(), &outptr_QGenericPlugin, &outptr_QObject)
-	ret := newQGenericPlugin(outptr_QGenericPlugin, outptr_QObject)
+	ret := newQGenericPlugin(C.QGenericPlugin_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QGenericPlugin) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGenericPlugin_MetaObject(this.h)))
+	return newQMetaObject(C.QGenericPlugin_MetaObject(this.h))
 }
 
 func (this *QGenericPlugin) Metacast(param1 string) unsafe.Pointer {
@@ -103,7 +95,7 @@ func (this *QGenericPlugin) Create(name string, spec string) *QObject {
 	spec_ms.data = C.CString(spec)
 	spec_ms.len = C.size_t(len(spec))
 	defer C.free(unsafe.Pointer(spec_ms.data))
-	return UnsafeNewQObject(unsafe.Pointer(C.QGenericPlugin_Create(this.h, name_ms, spec_ms)))
+	return newQObject(C.QGenericPlugin_Create(this.h, name_ms, spec_ms))
 }
 
 func QGenericPlugin_Tr2(s string, c string) string {
@@ -128,6 +120,9 @@ func QGenericPlugin_Tr3(s string, c string, n int) string {
 	return _ret
 }
 func (this *QGenericPlugin) OnCreate(slot func(name string, spec string) *QObject) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGenericPlugin_override_virtual_Create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -160,6 +155,9 @@ func (this *QGenericPlugin) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QGenericPlugin) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGenericPlugin_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -171,7 +169,7 @@ func miqt_exec_callback_QGenericPlugin_Event(self *C.QGenericPlugin, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGenericPlugin{h: self}).callVirtualBase_Event, slotval1)
 
@@ -185,6 +183,9 @@ func (this *QGenericPlugin) callVirtualBase_EventFilter(watched *QObject, event 
 
 }
 func (this *QGenericPlugin) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGenericPlugin_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -196,8 +197,9 @@ func miqt_exec_callback_QGenericPlugin_EventFilter(self *C.QGenericPlugin, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGenericPlugin{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -211,6 +213,9 @@ func (this *QGenericPlugin) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QGenericPlugin) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGenericPlugin_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -222,7 +227,7 @@ func miqt_exec_callback_QGenericPlugin_TimerEvent(self *C.QGenericPlugin, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QGenericPlugin{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -234,6 +239,9 @@ func (this *QGenericPlugin) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QGenericPlugin) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGenericPlugin_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -245,7 +253,7 @@ func miqt_exec_callback_QGenericPlugin_ChildEvent(self *C.QGenericPlugin, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QGenericPlugin{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -257,6 +265,9 @@ func (this *QGenericPlugin) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QGenericPlugin) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGenericPlugin_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -268,7 +279,7 @@ func miqt_exec_callback_QGenericPlugin_CustomEvent(self *C.QGenericPlugin, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QGenericPlugin{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -280,6 +291,9 @@ func (this *QGenericPlugin) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QGenericPlugin) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGenericPlugin_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -291,7 +305,7 @@ func miqt_exec_callback_QGenericPlugin_ConnectNotify(self *C.QGenericPlugin, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QGenericPlugin{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -303,6 +317,9 @@ func (this *QGenericPlugin) callVirtualBase_DisconnectNotify(signal *QMetaMethod
 
 }
 func (this *QGenericPlugin) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGenericPlugin_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -314,7 +331,7 @@ func miqt_exec_callback_QGenericPlugin_DisconnectNotify(self *C.QGenericPlugin, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QGenericPlugin{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

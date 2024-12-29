@@ -86,10 +86,11 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QSplitter_new(QWidget* parent, QSplitter** outptr_QSplitter, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QSplitter_new2(QSplitter** outptr_QSplitter, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QSplitter_new3(int param1, QSplitter** outptr_QSplitter, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QSplitter_new4(int param1, QWidget* parent, QSplitter** outptr_QSplitter, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QSplitter* QSplitter_new(QWidget* parent);
+QSplitter* QSplitter_new2();
+QSplitter* QSplitter_new3(int param1);
+QSplitter* QSplitter_new4(int param1, QWidget* parent);
+void QSplitter_virtbase(QSplitter* src, QFrame** outptr_QFrame);
 QMetaObject* QSplitter_MetaObject(const QSplitter* self);
 void* QSplitter_Metacast(QSplitter* self, const char* param1);
 struct miqt_string QSplitter_Tr(const char* s);
@@ -149,7 +150,8 @@ void QSplitter_override_virtual_InitStyleOption(void* self, intptr_t slot);
 void QSplitter_virtualbase_InitStyleOption(const void* self, QStyleOptionFrame* option);
 void QSplitter_Delete(QSplitter* self, bool isSubclass);
 
-void QSplitterHandle_new(int o, QSplitter* parent, QSplitterHandle** outptr_QSplitterHandle, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QSplitterHandle* QSplitterHandle_new(int o, QSplitter* parent);
+void QSplitterHandle_virtbase(QSplitterHandle* src, QWidget** outptr_QWidget);
 QMetaObject* QSplitterHandle_MetaObject(const QSplitterHandle* self);
 void* QSplitterHandle_Metacast(QSplitterHandle* self, const char* param1);
 struct miqt_string QSplitterHandle_Tr(const char* s);

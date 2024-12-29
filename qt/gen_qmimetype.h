@@ -20,8 +20,8 @@ class QMimeType;
 typedef struct QMimeType QMimeType;
 #endif
 
-void QMimeType_new(QMimeType** outptr_QMimeType);
-void QMimeType_new2(QMimeType* other, QMimeType** outptr_QMimeType);
+QMimeType* QMimeType_new();
+QMimeType* QMimeType_new2(QMimeType* other);
 void QMimeType_OperatorAssign(QMimeType* self, QMimeType* other);
 void QMimeType_Swap(QMimeType* self, QMimeType* other);
 bool QMimeType_OperatorEqual(const QMimeType* self, QMimeType* other);

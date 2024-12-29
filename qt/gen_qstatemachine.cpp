@@ -14,6 +14,10 @@
 #include <cstring>
 #include <qstatemachine.h>
 #include "gen_qstatemachine.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQStateMachine : public virtual QStateMachine {
@@ -219,36 +223,24 @@ public:
 
 };
 
-void QStateMachine_new(QStateMachine** outptr_QStateMachine, QState** outptr_QState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject) {
-	MiqtVirtualQStateMachine* ret = new MiqtVirtualQStateMachine();
-	*outptr_QStateMachine = ret;
-	*outptr_QState = static_cast<QState*>(ret);
-	*outptr_QAbstractState = static_cast<QAbstractState*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QStateMachine* QStateMachine_new() {
+	return new MiqtVirtualQStateMachine();
 }
 
-void QStateMachine_new2(int childMode, QStateMachine** outptr_QStateMachine, QState** outptr_QState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject) {
-	MiqtVirtualQStateMachine* ret = new MiqtVirtualQStateMachine(static_cast<QState::ChildMode>(childMode));
-	*outptr_QStateMachine = ret;
-	*outptr_QState = static_cast<QState*>(ret);
-	*outptr_QAbstractState = static_cast<QAbstractState*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QStateMachine* QStateMachine_new2(int childMode) {
+	return new MiqtVirtualQStateMachine(static_cast<QState::ChildMode>(childMode));
 }
 
-void QStateMachine_new3(QObject* parent, QStateMachine** outptr_QStateMachine, QState** outptr_QState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject) {
-	MiqtVirtualQStateMachine* ret = new MiqtVirtualQStateMachine(parent);
-	*outptr_QStateMachine = ret;
-	*outptr_QState = static_cast<QState*>(ret);
-	*outptr_QAbstractState = static_cast<QAbstractState*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QStateMachine* QStateMachine_new3(QObject* parent) {
+	return new MiqtVirtualQStateMachine(parent);
 }
 
-void QStateMachine_new4(int childMode, QObject* parent, QStateMachine** outptr_QStateMachine, QState** outptr_QState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject) {
-	MiqtVirtualQStateMachine* ret = new MiqtVirtualQStateMachine(static_cast<QState::ChildMode>(childMode), parent);
-	*outptr_QStateMachine = ret;
-	*outptr_QState = static_cast<QState*>(ret);
-	*outptr_QAbstractState = static_cast<QAbstractState*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QStateMachine* QStateMachine_new4(int childMode, QObject* parent) {
+	return new MiqtVirtualQStateMachine(static_cast<QState::ChildMode>(childMode), parent);
+}
+
+void QStateMachine_virtbase(QStateMachine* src, QState** outptr_QState) {
+	*outptr_QState = static_cast<QState*>(src);
 }
 
 QMetaObject* QStateMachine_MetaObject(const QStateMachine* self) {
@@ -525,10 +517,12 @@ void QStateMachine_Delete(QStateMachine* self, bool isSubclass) {
 	}
 }
 
-void QStateMachine__SignalEvent_new(QStateMachine__SignalEvent* param1, QStateMachine__SignalEvent** outptr_QStateMachine__SignalEvent, QEvent** outptr_QEvent) {
-	QStateMachine::SignalEvent* ret = new QStateMachine::SignalEvent(*param1);
-	*outptr_QStateMachine__SignalEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QStateMachine__SignalEvent* QStateMachine__SignalEvent_new(QStateMachine__SignalEvent* param1) {
+	return new QStateMachine::SignalEvent(*param1);
+}
+
+void QStateMachine__SignalEvent_virtbase(QStateMachine__SignalEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 QObject* QStateMachine__SignalEvent_Sender(const QStateMachine__SignalEvent* self) {
@@ -547,16 +541,16 @@ void QStateMachine__SignalEvent_Delete(QStateMachine__SignalEvent* self, bool is
 	}
 }
 
-void QStateMachine__WrappedEvent_new(QObject* object, QEvent* event, QStateMachine__WrappedEvent** outptr_QStateMachine__WrappedEvent, QEvent** outptr_QEvent) {
-	QStateMachine::WrappedEvent* ret = new QStateMachine::WrappedEvent(object, event);
-	*outptr_QStateMachine__WrappedEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QStateMachine__WrappedEvent* QStateMachine__WrappedEvent_new(QObject* object, QEvent* event) {
+	return new QStateMachine::WrappedEvent(object, event);
 }
 
-void QStateMachine__WrappedEvent_new2(QStateMachine__WrappedEvent* param1, QStateMachine__WrappedEvent** outptr_QStateMachine__WrappedEvent, QEvent** outptr_QEvent) {
-	QStateMachine::WrappedEvent* ret = new QStateMachine::WrappedEvent(*param1);
-	*outptr_QStateMachine__WrappedEvent = ret;
-	*outptr_QEvent = static_cast<QEvent*>(ret);
+QStateMachine__WrappedEvent* QStateMachine__WrappedEvent_new2(QStateMachine__WrappedEvent* param1) {
+	return new QStateMachine::WrappedEvent(*param1);
+}
+
+void QStateMachine__WrappedEvent_virtbase(QStateMachine__WrappedEvent* src, QEvent** outptr_QEvent) {
+	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
 QObject* QStateMachine__WrappedEvent_Object(const QStateMachine__WrappedEvent* self) {

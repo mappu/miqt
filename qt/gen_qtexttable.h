@@ -44,8 +44,8 @@ typedef struct QTextTableCell QTextTableCell;
 typedef struct QTextTableFormat QTextTableFormat;
 #endif
 
-void QTextTableCell_new(QTextTableCell** outptr_QTextTableCell);
-void QTextTableCell_new2(QTextTableCell* o, QTextTableCell** outptr_QTextTableCell);
+QTextTableCell* QTextTableCell_new();
+QTextTableCell* QTextTableCell_new2(QTextTableCell* o);
 void QTextTableCell_OperatorAssign(QTextTableCell* self, QTextTableCell* o);
 void QTextTableCell_SetFormat(QTextTableCell* self, QTextCharFormat* format);
 QTextCharFormat* QTextTableCell_Format(const QTextTableCell* self);
@@ -65,7 +65,8 @@ QTextFrame__iterator* QTextTableCell_End(const QTextTableCell* self);
 int QTextTableCell_TableCellFormatIndex(const QTextTableCell* self);
 void QTextTableCell_Delete(QTextTableCell* self, bool isSubclass);
 
-void QTextTable_new(QTextDocument* doc, QTextTable** outptr_QTextTable, QTextFrame** outptr_QTextFrame, QTextObject** outptr_QTextObject, QObject** outptr_QObject);
+QTextTable* QTextTable_new(QTextDocument* doc);
+void QTextTable_virtbase(QTextTable* src, QTextFrame** outptr_QTextFrame);
 QMetaObject* QTextTable_MetaObject(const QTextTable* self);
 void* QTextTable_Metacast(QTextTable* self, const char* param1);
 struct miqt_string QTextTable_Tr(const char* s);

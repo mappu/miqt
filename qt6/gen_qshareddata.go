@@ -37,34 +37,27 @@ func newQSharedData(h *C.QSharedData) *QSharedData {
 	if h == nil {
 		return nil
 	}
+
 	return &QSharedData{h: h}
 }
 
 // UnsafeNewQSharedData constructs the type using only unsafe pointers.
 func UnsafeNewQSharedData(h unsafe.Pointer) *QSharedData {
-	if h == nil {
-		return nil
-	}
-
-	return &QSharedData{h: (*C.QSharedData)(h)}
+	return newQSharedData((*C.QSharedData)(h))
 }
 
 // NewQSharedData constructs a new QSharedData object.
 func NewQSharedData() *QSharedData {
-	var outptr_QSharedData *C.QSharedData = nil
 
-	C.QSharedData_new(&outptr_QSharedData)
-	ret := newQSharedData(outptr_QSharedData)
+	ret := newQSharedData(C.QSharedData_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSharedData2 constructs a new QSharedData object.
 func NewQSharedData2(param1 *QSharedData) *QSharedData {
-	var outptr_QSharedData *C.QSharedData = nil
 
-	C.QSharedData_new2(param1.cPointer(), &outptr_QSharedData)
-	ret := newQSharedData(outptr_QSharedData)
+	ret := newQSharedData(C.QSharedData_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -107,24 +100,19 @@ func newQAdoptSharedDataTag(h *C.QAdoptSharedDataTag) *QAdoptSharedDataTag {
 	if h == nil {
 		return nil
 	}
+
 	return &QAdoptSharedDataTag{h: h}
 }
 
 // UnsafeNewQAdoptSharedDataTag constructs the type using only unsafe pointers.
 func UnsafeNewQAdoptSharedDataTag(h unsafe.Pointer) *QAdoptSharedDataTag {
-	if h == nil {
-		return nil
-	}
-
-	return &QAdoptSharedDataTag{h: (*C.QAdoptSharedDataTag)(h)}
+	return newQAdoptSharedDataTag((*C.QAdoptSharedDataTag)(h))
 }
 
 // NewQAdoptSharedDataTag constructs a new QAdoptSharedDataTag object.
 func NewQAdoptSharedDataTag() *QAdoptSharedDataTag {
-	var outptr_QAdoptSharedDataTag *C.QAdoptSharedDataTag = nil
 
-	C.QAdoptSharedDataTag_new(&outptr_QAdoptSharedDataTag)
-	ret := newQAdoptSharedDataTag(outptr_QAdoptSharedDataTag)
+	ret := newQAdoptSharedDataTag(C.QAdoptSharedDataTag_new())
 	ret.isSubclass = true
 	return ret
 }

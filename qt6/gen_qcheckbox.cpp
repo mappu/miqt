@@ -18,6 +18,10 @@
 #include <QWidget>
 #include <qcheckbox.h>
 #include "gen_qcheckbox.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQCheckBox : public virtual QCheckBox {
@@ -434,42 +438,26 @@ public:
 
 };
 
-void QCheckBox_new(QWidget* parent, QCheckBox** outptr_QCheckBox, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQCheckBox* ret = new MiqtVirtualQCheckBox(parent);
-	*outptr_QCheckBox = ret;
-	*outptr_QAbstractButton = static_cast<QAbstractButton*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QCheckBox* QCheckBox_new(QWidget* parent) {
+	return new MiqtVirtualQCheckBox(parent);
 }
 
-void QCheckBox_new2(QCheckBox** outptr_QCheckBox, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQCheckBox* ret = new MiqtVirtualQCheckBox();
-	*outptr_QCheckBox = ret;
-	*outptr_QAbstractButton = static_cast<QAbstractButton*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QCheckBox* QCheckBox_new2() {
+	return new MiqtVirtualQCheckBox();
 }
 
-void QCheckBox_new3(struct miqt_string text, QCheckBox** outptr_QCheckBox, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QCheckBox* QCheckBox_new3(struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQCheckBox* ret = new MiqtVirtualQCheckBox(text_QString);
-	*outptr_QCheckBox = ret;
-	*outptr_QAbstractButton = static_cast<QAbstractButton*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQCheckBox(text_QString);
 }
 
-void QCheckBox_new4(struct miqt_string text, QWidget* parent, QCheckBox** outptr_QCheckBox, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QCheckBox* QCheckBox_new4(struct miqt_string text, QWidget* parent) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQCheckBox* ret = new MiqtVirtualQCheckBox(text_QString, parent);
-	*outptr_QCheckBox = ret;
-	*outptr_QAbstractButton = static_cast<QAbstractButton*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQCheckBox(text_QString, parent);
+}
+
+void QCheckBox_virtbase(QCheckBox* src, QAbstractButton** outptr_QAbstractButton) {
+	*outptr_QAbstractButton = static_cast<QAbstractButton*>(src);
 }
 
 QMetaObject* QCheckBox_MetaObject(const QCheckBox* self) {

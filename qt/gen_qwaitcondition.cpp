@@ -4,11 +4,14 @@
 #include <QWaitCondition>
 #include <qwaitcondition.h>
 #include "gen_qwaitcondition.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QWaitCondition_new(QWaitCondition** outptr_QWaitCondition) {
-	QWaitCondition* ret = new QWaitCondition();
-	*outptr_QWaitCondition = ret;
+QWaitCondition* QWaitCondition_new() {
+	return new QWaitCondition();
 }
 
 bool QWaitCondition_Wait(QWaitCondition* self, QMutex* lockedMutex) {

@@ -35,49 +35,44 @@ func (this *QTest__QTouchEventWidgetSequence) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTest__QTouchEventWidgetSequence constructs the type using only CGO pointers.
-func newQTest__QTouchEventWidgetSequence(h *C.QTest__QTouchEventWidgetSequence, h_QTest__QTouchEventSequence *C.QTest__QTouchEventSequence) *QTest__QTouchEventWidgetSequence {
+func newQTest__QTouchEventWidgetSequence(h *C.QTest__QTouchEventWidgetSequence) *QTest__QTouchEventWidgetSequence {
 	if h == nil {
 		return nil
 	}
+	var outptr_QTest__QTouchEventSequence *C.QTest__QTouchEventSequence = nil
+	C.QTest__QTouchEventWidgetSequence_virtbase(h, &outptr_QTest__QTouchEventSequence)
+
 	return &QTest__QTouchEventWidgetSequence{h: h,
-		QTest__QTouchEventSequence: newQTest__QTouchEventSequence(h_QTest__QTouchEventSequence)}
+		QTest__QTouchEventSequence: newQTest__QTouchEventSequence(outptr_QTest__QTouchEventSequence)}
 }
 
 // UnsafeNewQTest__QTouchEventWidgetSequence constructs the type using only unsafe pointers.
-func UnsafeNewQTest__QTouchEventWidgetSequence(h unsafe.Pointer, h_QTest__QTouchEventSequence unsafe.Pointer) *QTest__QTouchEventWidgetSequence {
-	if h == nil {
-		return nil
-	}
-
-	return &QTest__QTouchEventWidgetSequence{h: (*C.QTest__QTouchEventWidgetSequence)(h),
-		QTest__QTouchEventSequence: UnsafeNewQTest__QTouchEventSequence(h_QTest__QTouchEventSequence)}
+func UnsafeNewQTest__QTouchEventWidgetSequence(h unsafe.Pointer) *QTest__QTouchEventWidgetSequence {
+	return newQTest__QTouchEventWidgetSequence((*C.QTest__QTouchEventWidgetSequence)(h))
 }
 
 // NewQTest__QTouchEventWidgetSequence constructs a new QTest::QTouchEventWidgetSequence object.
 func NewQTest__QTouchEventWidgetSequence(param1 *QTest__QTouchEventWidgetSequence) *QTest__QTouchEventWidgetSequence {
-	var outptr_QTest__QTouchEventWidgetSequence *C.QTest__QTouchEventWidgetSequence = nil
-	var outptr_QTest__QTouchEventSequence *C.QTest__QTouchEventSequence = nil
 
-	C.QTest__QTouchEventWidgetSequence_new(param1.cPointer(), &outptr_QTest__QTouchEventWidgetSequence, &outptr_QTest__QTouchEventSequence)
-	ret := newQTest__QTouchEventWidgetSequence(outptr_QTest__QTouchEventWidgetSequence, outptr_QTest__QTouchEventSequence)
+	ret := newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QTest__QTouchEventWidgetSequence) Press(touchId int, pt *QPoint) *QTest__QTouchEventWidgetSequence {
-	return UnsafeNewQTest__QTouchEventWidgetSequence(unsafe.Pointer(C.QTest__QTouchEventWidgetSequence_Press(this.h, (C.int)(touchId), pt.cPointer())), nil)
+	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_Press(this.h, (C.int)(touchId), pt.cPointer()))
 }
 
 func (this *QTest__QTouchEventWidgetSequence) Move(touchId int, pt *QPoint) *QTest__QTouchEventWidgetSequence {
-	return UnsafeNewQTest__QTouchEventWidgetSequence(unsafe.Pointer(C.QTest__QTouchEventWidgetSequence_Move(this.h, (C.int)(touchId), pt.cPointer())), nil)
+	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_Move(this.h, (C.int)(touchId), pt.cPointer()))
 }
 
 func (this *QTest__QTouchEventWidgetSequence) Release(touchId int, pt *QPoint) *QTest__QTouchEventWidgetSequence {
-	return UnsafeNewQTest__QTouchEventWidgetSequence(unsafe.Pointer(C.QTest__QTouchEventWidgetSequence_Release(this.h, (C.int)(touchId), pt.cPointer())), nil)
+	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_Release(this.h, (C.int)(touchId), pt.cPointer()))
 }
 
 func (this *QTest__QTouchEventWidgetSequence) Stationary(touchId int) *QTest__QTouchEventWidgetSequence {
-	return UnsafeNewQTest__QTouchEventWidgetSequence(unsafe.Pointer(C.QTest__QTouchEventWidgetSequence_Stationary(this.h, (C.int)(touchId))), nil)
+	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_Stationary(this.h, (C.int)(touchId)))
 }
 
 func (this *QTest__QTouchEventWidgetSequence) Commit(processEvents bool) bool {
@@ -85,22 +80,26 @@ func (this *QTest__QTouchEventWidgetSequence) Commit(processEvents bool) bool {
 }
 
 func (this *QTest__QTouchEventWidgetSequence) Press3(touchId int, pt *QPoint, widget *QWidget) *QTest__QTouchEventWidgetSequence {
-	return UnsafeNewQTest__QTouchEventWidgetSequence(unsafe.Pointer(C.QTest__QTouchEventWidgetSequence_Press3(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer())), nil)
+	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_Press3(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer()))
 }
 
 func (this *QTest__QTouchEventWidgetSequence) Move3(touchId int, pt *QPoint, widget *QWidget) *QTest__QTouchEventWidgetSequence {
-	return UnsafeNewQTest__QTouchEventWidgetSequence(unsafe.Pointer(C.QTest__QTouchEventWidgetSequence_Move3(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer())), nil)
+	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_Move3(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer()))
 }
 
 func (this *QTest__QTouchEventWidgetSequence) Release3(touchId int, pt *QPoint, widget *QWidget) *QTest__QTouchEventWidgetSequence {
-	return UnsafeNewQTest__QTouchEventWidgetSequence(unsafe.Pointer(C.QTest__QTouchEventWidgetSequence_Release3(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer())), nil)
+	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_Release3(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer()))
 }
 
 func (this *QTest__QTouchEventWidgetSequence) callVirtualBase_Stationary(touchId int) *QTest__QTouchEventWidgetSequence {
 
-	return UnsafeNewQTest__QTouchEventWidgetSequence(unsafe.Pointer(C.QTest__QTouchEventWidgetSequence_virtualbase_Stationary(unsafe.Pointer(this.h), (C.int)(touchId))), nil)
+	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_virtualbase_Stationary(unsafe.Pointer(this.h), (C.int)(touchId)))
+
 }
 func (this *QTest__QTouchEventWidgetSequence) OnStationary(slot func(super func(touchId int) *QTest__QTouchEventWidgetSequence, touchId int) *QTest__QTouchEventWidgetSequence) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTest__QTouchEventWidgetSequence_override_virtual_Stationary(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -126,6 +125,9 @@ func (this *QTest__QTouchEventWidgetSequence) callVirtualBase_Commit(processEven
 
 }
 func (this *QTest__QTouchEventWidgetSequence) OnCommit(slot func(super func(processEvents bool) bool, processEvents bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QTest__QTouchEventWidgetSequence_override_virtual_Commit(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

@@ -20,6 +20,10 @@
 #include <QVideoWidget>
 #include <qcamera.h>
 #include "gen_qcamera.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQCamera : public virtual QCamera {
@@ -152,62 +156,42 @@ public:
 
 };
 
-void QCamera_new(QCamera** outptr_QCamera, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject) {
-	MiqtVirtualQCamera* ret = new MiqtVirtualQCamera();
-	*outptr_QCamera = ret;
-	*outptr_QMediaObject = static_cast<QMediaObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QCamera* QCamera_new() {
+	return new MiqtVirtualQCamera();
 }
 
-void QCamera_new2(struct miqt_string deviceName, QCamera** outptr_QCamera, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject) {
+QCamera* QCamera_new2(struct miqt_string deviceName) {
 	QByteArray deviceName_QByteArray(deviceName.data, deviceName.len);
-	MiqtVirtualQCamera* ret = new MiqtVirtualQCamera(deviceName_QByteArray);
-	*outptr_QCamera = ret;
-	*outptr_QMediaObject = static_cast<QMediaObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQCamera(deviceName_QByteArray);
 }
 
-void QCamera_new3(QCameraInfo* cameraInfo, QCamera** outptr_QCamera, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject) {
-	MiqtVirtualQCamera* ret = new MiqtVirtualQCamera(*cameraInfo);
-	*outptr_QCamera = ret;
-	*outptr_QMediaObject = static_cast<QMediaObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QCamera* QCamera_new3(QCameraInfo* cameraInfo) {
+	return new MiqtVirtualQCamera(*cameraInfo);
 }
 
-void QCamera_new4(int position, QCamera** outptr_QCamera, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject) {
-	MiqtVirtualQCamera* ret = new MiqtVirtualQCamera(static_cast<QCamera::Position>(position));
-	*outptr_QCamera = ret;
-	*outptr_QMediaObject = static_cast<QMediaObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QCamera* QCamera_new4(int position) {
+	return new MiqtVirtualQCamera(static_cast<QCamera::Position>(position));
 }
 
-void QCamera_new5(QObject* parent, QCamera** outptr_QCamera, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject) {
-	MiqtVirtualQCamera* ret = new MiqtVirtualQCamera(parent);
-	*outptr_QCamera = ret;
-	*outptr_QMediaObject = static_cast<QMediaObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QCamera* QCamera_new5(QObject* parent) {
+	return new MiqtVirtualQCamera(parent);
 }
 
-void QCamera_new6(struct miqt_string deviceName, QObject* parent, QCamera** outptr_QCamera, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject) {
+QCamera* QCamera_new6(struct miqt_string deviceName, QObject* parent) {
 	QByteArray deviceName_QByteArray(deviceName.data, deviceName.len);
-	MiqtVirtualQCamera* ret = new MiqtVirtualQCamera(deviceName_QByteArray, parent);
-	*outptr_QCamera = ret;
-	*outptr_QMediaObject = static_cast<QMediaObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQCamera(deviceName_QByteArray, parent);
 }
 
-void QCamera_new7(QCameraInfo* cameraInfo, QObject* parent, QCamera** outptr_QCamera, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject) {
-	MiqtVirtualQCamera* ret = new MiqtVirtualQCamera(*cameraInfo, parent);
-	*outptr_QCamera = ret;
-	*outptr_QMediaObject = static_cast<QMediaObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QCamera* QCamera_new7(QCameraInfo* cameraInfo, QObject* parent) {
+	return new MiqtVirtualQCamera(*cameraInfo, parent);
 }
 
-void QCamera_new8(int position, QObject* parent, QCamera** outptr_QCamera, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject) {
-	MiqtVirtualQCamera* ret = new MiqtVirtualQCamera(static_cast<QCamera::Position>(position), parent);
-	*outptr_QCamera = ret;
-	*outptr_QMediaObject = static_cast<QMediaObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QCamera* QCamera_new8(int position, QObject* parent) {
+	return new MiqtVirtualQCamera(static_cast<QCamera::Position>(position), parent);
+}
+
+void QCamera_virtbase(QCamera* src, QMediaObject** outptr_QMediaObject) {
+	*outptr_QMediaObject = static_cast<QMediaObject*>(src);
 }
 
 QMetaObject* QCamera_MetaObject(const QCamera* self) {
@@ -706,19 +690,16 @@ void QCamera_Delete(QCamera* self, bool isSubclass) {
 	}
 }
 
-void QCamera__FrameRateRange_new(QCamera__FrameRateRange** outptr_QCamera__FrameRateRange) {
-	QCamera::FrameRateRange* ret = new QCamera::FrameRateRange();
-	*outptr_QCamera__FrameRateRange = ret;
+QCamera__FrameRateRange* QCamera__FrameRateRange_new() {
+	return new QCamera::FrameRateRange();
 }
 
-void QCamera__FrameRateRange_new2(double minimum, double maximum, QCamera__FrameRateRange** outptr_QCamera__FrameRateRange) {
-	QCamera::FrameRateRange* ret = new QCamera::FrameRateRange(static_cast<qreal>(minimum), static_cast<qreal>(maximum));
-	*outptr_QCamera__FrameRateRange = ret;
+QCamera__FrameRateRange* QCamera__FrameRateRange_new2(double minimum, double maximum) {
+	return new QCamera::FrameRateRange(static_cast<qreal>(minimum), static_cast<qreal>(maximum));
 }
 
-void QCamera__FrameRateRange_new3(QCamera__FrameRateRange* param1, QCamera__FrameRateRange** outptr_QCamera__FrameRateRange) {
-	QCamera::FrameRateRange* ret = new QCamera::FrameRateRange(*param1);
-	*outptr_QCamera__FrameRateRange = ret;
+QCamera__FrameRateRange* QCamera__FrameRateRange_new3(QCamera__FrameRateRange* param1) {
+	return new QCamera::FrameRateRange(*param1);
 }
 
 void QCamera__FrameRateRange_Delete(QCamera__FrameRateRange* self, bool isSubclass) {

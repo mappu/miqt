@@ -10,7 +10,15 @@
 #include <QVariant>
 #include <qinputmethod.h>
 #include "gen_qinputmethod.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
+
+void QInputMethod_virtbase(QInputMethod* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
 
 QMetaObject* QInputMethod_MetaObject(const QInputMethod* self) {
 	return (QMetaObject*) self->metaObject();

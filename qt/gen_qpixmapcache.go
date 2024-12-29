@@ -37,16 +37,13 @@ func newQPixmapCache(h *C.QPixmapCache) *QPixmapCache {
 	if h == nil {
 		return nil
 	}
+
 	return &QPixmapCache{h: h}
 }
 
 // UnsafeNewQPixmapCache constructs the type using only unsafe pointers.
 func UnsafeNewQPixmapCache(h unsafe.Pointer) *QPixmapCache {
-	if h == nil {
-		return nil
-	}
-
-	return &QPixmapCache{h: (*C.QPixmapCache)(h)}
+	return newQPixmapCache((*C.QPixmapCache)(h))
 }
 
 func QPixmapCache_CacheLimit() int {
@@ -62,7 +59,7 @@ func QPixmapCache_Find(key string) *QPixmap {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	return UnsafeNewQPixmap(unsafe.Pointer(C.QPixmapCache_Find(key_ms)), nil)
+	return newQPixmap(C.QPixmapCache_Find(key_ms))
 }
 
 func QPixmapCache_Find2(key string, pixmap *QPixmap) bool {
@@ -94,8 +91,7 @@ func QPixmapCache_Insert(key string, pixmap *QPixmap) bool {
 }
 
 func QPixmapCache_InsertWithPixmap(pixmap *QPixmap) *QPixmapCache__Key {
-	_ret := C.QPixmapCache_InsertWithPixmap(pixmap.cPointer())
-	_goptr := newQPixmapCache__Key(_ret)
+	_goptr := newQPixmapCache__Key(C.QPixmapCache_InsertWithPixmap(pixmap.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -158,34 +154,27 @@ func newQPixmapCache__Key(h *C.QPixmapCache__Key) *QPixmapCache__Key {
 	if h == nil {
 		return nil
 	}
+
 	return &QPixmapCache__Key{h: h}
 }
 
 // UnsafeNewQPixmapCache__Key constructs the type using only unsafe pointers.
 func UnsafeNewQPixmapCache__Key(h unsafe.Pointer) *QPixmapCache__Key {
-	if h == nil {
-		return nil
-	}
-
-	return &QPixmapCache__Key{h: (*C.QPixmapCache__Key)(h)}
+	return newQPixmapCache__Key((*C.QPixmapCache__Key)(h))
 }
 
 // NewQPixmapCache__Key constructs a new QPixmapCache::Key object.
 func NewQPixmapCache__Key() *QPixmapCache__Key {
-	var outptr_QPixmapCache__Key *C.QPixmapCache__Key = nil
 
-	C.QPixmapCache__Key_new(&outptr_QPixmapCache__Key)
-	ret := newQPixmapCache__Key(outptr_QPixmapCache__Key)
+	ret := newQPixmapCache__Key(C.QPixmapCache__Key_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPixmapCache__Key2 constructs a new QPixmapCache::Key object.
 func NewQPixmapCache__Key2(other *QPixmapCache__Key) *QPixmapCache__Key {
-	var outptr_QPixmapCache__Key *C.QPixmapCache__Key = nil
 
-	C.QPixmapCache__Key_new2(other.cPointer(), &outptr_QPixmapCache__Key)
-	ret := newQPixmapCache__Key(outptr_QPixmapCache__Key)
+	ret := newQPixmapCache__Key(C.QPixmapCache__Key_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

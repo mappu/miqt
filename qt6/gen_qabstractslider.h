@@ -80,8 +80,9 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QAbstractSlider_new(QWidget* parent, QAbstractSlider** outptr_QAbstractSlider, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QAbstractSlider_new2(QAbstractSlider** outptr_QAbstractSlider, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QAbstractSlider* QAbstractSlider_new(QWidget* parent);
+QAbstractSlider* QAbstractSlider_new2();
+void QAbstractSlider_virtbase(QAbstractSlider* src, QWidget** outptr_QWidget);
 QMetaObject* QAbstractSlider_MetaObject(const QAbstractSlider* self);
 void* QAbstractSlider_Metacast(QAbstractSlider* self, const char* param1);
 struct miqt_string QAbstractSlider_Tr(const char* s);

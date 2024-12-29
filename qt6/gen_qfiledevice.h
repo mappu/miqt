@@ -30,6 +30,7 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif
 
+void QFileDevice_virtbase(QFileDevice* src, QIODevice** outptr_QIODevice);
 QMetaObject* QFileDevice_MetaObject(const QFileDevice* self);
 void* QFileDevice_Metacast(QFileDevice* self, const char* param1);
 struct miqt_string QFileDevice_Tr(const char* s);

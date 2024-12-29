@@ -30,6 +30,7 @@ typedef struct QObject QObject;
 typedef struct QPointF QPointF;
 #endif
 
+void QCameraFocusControl_virtbase(QCameraFocusControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QCameraFocusControl_MetaObject(const QCameraFocusControl* self);
 void* QCameraFocusControl_Metacast(QCameraFocusControl* self, const char* param1);
 struct miqt_string QCameraFocusControl_Tr(const char* s);

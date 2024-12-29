@@ -4,17 +4,19 @@
 #include <QTemporaryDir>
 #include <qtemporarydir.h>
 #include "gen_qtemporarydir.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QTemporaryDir_new(QTemporaryDir** outptr_QTemporaryDir) {
-	QTemporaryDir* ret = new QTemporaryDir();
-	*outptr_QTemporaryDir = ret;
+QTemporaryDir* QTemporaryDir_new() {
+	return new QTemporaryDir();
 }
 
-void QTemporaryDir_new2(struct miqt_string templateName, QTemporaryDir** outptr_QTemporaryDir) {
+QTemporaryDir* QTemporaryDir_new2(struct miqt_string templateName) {
 	QString templateName_QString = QString::fromUtf8(templateName.data, templateName.len);
-	QTemporaryDir* ret = new QTemporaryDir(templateName_QString);
-	*outptr_QTemporaryDir = ret;
+	return new QTemporaryDir(templateName_QString);
 }
 
 bool QTemporaryDir_IsValid(const QTemporaryDir* self) {

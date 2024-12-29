@@ -34,9 +34,10 @@ typedef struct QPoint QPoint;
 typedef struct QRect QRect;
 #endif
 
-void QPicture_new(QPicture** outptr_QPicture, QPaintDevice** outptr_QPaintDevice);
-void QPicture_new2(QPicture* param1, QPicture** outptr_QPicture, QPaintDevice** outptr_QPaintDevice);
-void QPicture_new3(int formatVersion, QPicture** outptr_QPicture, QPaintDevice** outptr_QPaintDevice);
+QPicture* QPicture_new();
+QPicture* QPicture_new2(QPicture* param1);
+QPicture* QPicture_new3(int formatVersion);
+void QPicture_virtbase(QPicture* src, QPaintDevice** outptr_QPaintDevice);
 bool QPicture_IsNull(const QPicture* self);
 int QPicture_DevType(const QPicture* self);
 unsigned int QPicture_Size(const QPicture* self);
@@ -80,9 +81,9 @@ void QPicture_override_virtual_SharedPainter(void* self, intptr_t slot);
 QPainter* QPicture_virtualbase_SharedPainter(const void* self);
 void QPicture_Delete(QPicture* self, bool isSubclass);
 
-void QPictureIO_new(QPictureIO** outptr_QPictureIO);
-void QPictureIO_new2(QIODevice* ioDevice, const char* format, QPictureIO** outptr_QPictureIO);
-void QPictureIO_new3(struct miqt_string fileName, const char* format, QPictureIO** outptr_QPictureIO);
+QPictureIO* QPictureIO_new();
+QPictureIO* QPictureIO_new2(QIODevice* ioDevice, const char* format);
+QPictureIO* QPictureIO_new3(struct miqt_string fileName, const char* format);
 QPicture* QPictureIO_Picture(const QPictureIO* self);
 int QPictureIO_Status(const QPictureIO* self);
 const char* QPictureIO_Format(const QPictureIO* self);

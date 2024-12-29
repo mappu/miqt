@@ -36,6 +36,10 @@
 #include <QWidget>
 #include <qdockwidget.h>
 #include "gen_qdockwidget.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQDockWidget : public virtual QDockWidget {
@@ -1052,55 +1056,35 @@ public:
 
 };
 
-void QDockWidget_new(QWidget* parent, QDockWidget** outptr_QDockWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDockWidget* ret = new MiqtVirtualQDockWidget(parent);
-	*outptr_QDockWidget = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDockWidget* QDockWidget_new(QWidget* parent) {
+	return new MiqtVirtualQDockWidget(parent);
 }
 
-void QDockWidget_new2(struct miqt_string title, QDockWidget** outptr_QDockWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QDockWidget* QDockWidget_new2(struct miqt_string title) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
-	MiqtVirtualQDockWidget* ret = new MiqtVirtualQDockWidget(title_QString);
-	*outptr_QDockWidget = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQDockWidget(title_QString);
 }
 
-void QDockWidget_new3(QDockWidget** outptr_QDockWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDockWidget* ret = new MiqtVirtualQDockWidget();
-	*outptr_QDockWidget = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDockWidget* QDockWidget_new3() {
+	return new MiqtVirtualQDockWidget();
 }
 
-void QDockWidget_new4(struct miqt_string title, QWidget* parent, QDockWidget** outptr_QDockWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QDockWidget* QDockWidget_new4(struct miqt_string title, QWidget* parent) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
-	MiqtVirtualQDockWidget* ret = new MiqtVirtualQDockWidget(title_QString, parent);
-	*outptr_QDockWidget = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQDockWidget(title_QString, parent);
 }
 
-void QDockWidget_new5(struct miqt_string title, QWidget* parent, int flags, QDockWidget** outptr_QDockWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QDockWidget* QDockWidget_new5(struct miqt_string title, QWidget* parent, int flags) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
-	MiqtVirtualQDockWidget* ret = new MiqtVirtualQDockWidget(title_QString, parent, static_cast<Qt::WindowFlags>(flags));
-	*outptr_QDockWidget = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQDockWidget(title_QString, parent, static_cast<Qt::WindowFlags>(flags));
 }
 
-void QDockWidget_new6(QWidget* parent, int flags, QDockWidget** outptr_QDockWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDockWidget* ret = new MiqtVirtualQDockWidget(parent, static_cast<Qt::WindowFlags>(flags));
-	*outptr_QDockWidget = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDockWidget* QDockWidget_new6(QWidget* parent, int flags) {
+	return new MiqtVirtualQDockWidget(parent, static_cast<Qt::WindowFlags>(flags));
+}
+
+void QDockWidget_virtbase(QDockWidget* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QDockWidget_MetaObject(const QDockWidget* self) {

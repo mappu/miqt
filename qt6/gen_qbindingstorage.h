@@ -26,7 +26,7 @@ typedef struct QUntypedPropertyData QUntypedPropertyData;
 
 void QBindingStatus_Delete(QBindingStatus* self, bool isSubclass);
 
-void QBindingStorage_new(QBindingStorage** outptr_QBindingStorage);
+QBindingStorage* QBindingStorage_new();
 bool QBindingStorage_IsEmpty(QBindingStorage* self);
 bool QBindingStorage_IsValid(const QBindingStorage* self);
 void QBindingStorage_RegisterDependency(const QBindingStorage* self, QUntypedPropertyData* data);

@@ -2,16 +2,18 @@
 #include <QSize>
 #include <qcameraviewfindersettings.h>
 #include "gen_qcameraviewfindersettings.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QCameraViewfinderSettings_new(QCameraViewfinderSettings** outptr_QCameraViewfinderSettings) {
-	QCameraViewfinderSettings* ret = new QCameraViewfinderSettings();
-	*outptr_QCameraViewfinderSettings = ret;
+QCameraViewfinderSettings* QCameraViewfinderSettings_new() {
+	return new QCameraViewfinderSettings();
 }
 
-void QCameraViewfinderSettings_new2(QCameraViewfinderSettings* other, QCameraViewfinderSettings** outptr_QCameraViewfinderSettings) {
-	QCameraViewfinderSettings* ret = new QCameraViewfinderSettings(*other);
-	*outptr_QCameraViewfinderSettings = ret;
+QCameraViewfinderSettings* QCameraViewfinderSettings_new2(QCameraViewfinderSettings* other) {
+	return new QCameraViewfinderSettings(*other);
 }
 
 void QCameraViewfinderSettings_OperatorAssign(QCameraViewfinderSettings* self, QCameraViewfinderSettings* other) {

@@ -34,10 +34,11 @@ typedef struct QPainterPath QPainterPath;
 typedef struct QState QState;
 #endif
 
-void QMouseEventTransition_new(QMouseEventTransition** outptr_QMouseEventTransition, QEventTransition** outptr_QEventTransition, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject);
-void QMouseEventTransition_new2(QObject* object, int typeVal, int button, QMouseEventTransition** outptr_QMouseEventTransition, QEventTransition** outptr_QEventTransition, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject);
-void QMouseEventTransition_new3(QState* sourceState, QMouseEventTransition** outptr_QMouseEventTransition, QEventTransition** outptr_QEventTransition, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject);
-void QMouseEventTransition_new4(QObject* object, int typeVal, int button, QState* sourceState, QMouseEventTransition** outptr_QMouseEventTransition, QEventTransition** outptr_QEventTransition, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject);
+QMouseEventTransition* QMouseEventTransition_new();
+QMouseEventTransition* QMouseEventTransition_new2(QObject* object, int typeVal, int button);
+QMouseEventTransition* QMouseEventTransition_new3(QState* sourceState);
+QMouseEventTransition* QMouseEventTransition_new4(QObject* object, int typeVal, int button, QState* sourceState);
+void QMouseEventTransition_virtbase(QMouseEventTransition* src, QEventTransition** outptr_QEventTransition);
 QMetaObject* QMouseEventTransition_MetaObject(const QMouseEventTransition* self);
 void* QMouseEventTransition_Metacast(QMouseEventTransition* self, const char* param1);
 struct miqt_string QMouseEventTransition_Tr(const char* s);

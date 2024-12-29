@@ -22,10 +22,10 @@ typedef struct QCamera QCamera;
 typedef struct QCameraInfo QCameraInfo;
 #endif
 
-void QCameraInfo_new(QCameraInfo** outptr_QCameraInfo);
-void QCameraInfo_new2(QCamera* camera, QCameraInfo** outptr_QCameraInfo);
-void QCameraInfo_new3(QCameraInfo* other, QCameraInfo** outptr_QCameraInfo);
-void QCameraInfo_new4(struct miqt_string name, QCameraInfo** outptr_QCameraInfo);
+QCameraInfo* QCameraInfo_new();
+QCameraInfo* QCameraInfo_new2(QCamera* camera);
+QCameraInfo* QCameraInfo_new3(QCameraInfo* other);
+QCameraInfo* QCameraInfo_new4(struct miqt_string name);
 void QCameraInfo_OperatorAssign(QCameraInfo* self, QCameraInfo* other);
 bool QCameraInfo_OperatorEqual(const QCameraInfo* self, QCameraInfo* other);
 bool QCameraInfo_OperatorNotEqual(const QCameraInfo* self, QCameraInfo* other);

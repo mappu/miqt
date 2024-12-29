@@ -44,8 +44,9 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QVideoSink QVideoSink;
 #endif
 
-void QMediaCaptureSession_new(QMediaCaptureSession** outptr_QMediaCaptureSession, QObject** outptr_QObject);
-void QMediaCaptureSession_new2(QObject* parent, QMediaCaptureSession** outptr_QMediaCaptureSession, QObject** outptr_QObject);
+QMediaCaptureSession* QMediaCaptureSession_new();
+QMediaCaptureSession* QMediaCaptureSession_new2(QObject* parent);
+void QMediaCaptureSession_virtbase(QMediaCaptureSession* src, QObject** outptr_QObject);
 QMetaObject* QMediaCaptureSession_MetaObject(const QMediaCaptureSession* self);
 void* QMediaCaptureSession_Metacast(QMediaCaptureSession* self, const char* param1);
 struct miqt_string QMediaCaptureSession_Tr(const char* s);

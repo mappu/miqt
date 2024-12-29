@@ -59,34 +59,27 @@ func newQOcspResponse(h *C.QOcspResponse) *QOcspResponse {
 	if h == nil {
 		return nil
 	}
+
 	return &QOcspResponse{h: h}
 }
 
 // UnsafeNewQOcspResponse constructs the type using only unsafe pointers.
 func UnsafeNewQOcspResponse(h unsafe.Pointer) *QOcspResponse {
-	if h == nil {
-		return nil
-	}
-
-	return &QOcspResponse{h: (*C.QOcspResponse)(h)}
+	return newQOcspResponse((*C.QOcspResponse)(h))
 }
 
 // NewQOcspResponse constructs a new QOcspResponse object.
 func NewQOcspResponse() *QOcspResponse {
-	var outptr_QOcspResponse *C.QOcspResponse = nil
 
-	C.QOcspResponse_new(&outptr_QOcspResponse)
-	ret := newQOcspResponse(outptr_QOcspResponse)
+	ret := newQOcspResponse(C.QOcspResponse_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQOcspResponse2 constructs a new QOcspResponse object.
 func NewQOcspResponse2(other *QOcspResponse) *QOcspResponse {
-	var outptr_QOcspResponse *C.QOcspResponse = nil
 
-	C.QOcspResponse_new2(other.cPointer(), &outptr_QOcspResponse)
-	ret := newQOcspResponse(outptr_QOcspResponse)
+	ret := newQOcspResponse(C.QOcspResponse_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -104,15 +97,13 @@ func (this *QOcspResponse) RevocationReason() QOcspRevocationReason {
 }
 
 func (this *QOcspResponse) Responder() *QSslCertificate {
-	_ret := C.QOcspResponse_Responder(this.h)
-	_goptr := newQSslCertificate(_ret)
+	_goptr := newQSslCertificate(C.QOcspResponse_Responder(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QOcspResponse) Subject() *QSslCertificate {
-	_ret := C.QOcspResponse_Subject(this.h)
-	_goptr := newQSslCertificate(_ret)
+	_goptr := newQSslCertificate(C.QOcspResponse_Subject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -19,6 +19,10 @@
 #include <QWidget>
 #include <qscrollbar.h>
 #include "gen_qscrollbar.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQScrollBar : public virtual QScrollBar {
@@ -367,40 +371,24 @@ public:
 
 };
 
-void QScrollBar_new(QWidget* parent, QScrollBar** outptr_QScrollBar, QAbstractSlider** outptr_QAbstractSlider, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQScrollBar* ret = new MiqtVirtualQScrollBar(parent);
-	*outptr_QScrollBar = ret;
-	*outptr_QAbstractSlider = static_cast<QAbstractSlider*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QScrollBar* QScrollBar_new(QWidget* parent) {
+	return new MiqtVirtualQScrollBar(parent);
 }
 
-void QScrollBar_new2(QScrollBar** outptr_QScrollBar, QAbstractSlider** outptr_QAbstractSlider, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQScrollBar* ret = new MiqtVirtualQScrollBar();
-	*outptr_QScrollBar = ret;
-	*outptr_QAbstractSlider = static_cast<QAbstractSlider*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QScrollBar* QScrollBar_new2() {
+	return new MiqtVirtualQScrollBar();
 }
 
-void QScrollBar_new3(int param1, QScrollBar** outptr_QScrollBar, QAbstractSlider** outptr_QAbstractSlider, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQScrollBar* ret = new MiqtVirtualQScrollBar(static_cast<Qt::Orientation>(param1));
-	*outptr_QScrollBar = ret;
-	*outptr_QAbstractSlider = static_cast<QAbstractSlider*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QScrollBar* QScrollBar_new3(int param1) {
+	return new MiqtVirtualQScrollBar(static_cast<Qt::Orientation>(param1));
 }
 
-void QScrollBar_new4(int param1, QWidget* parent, QScrollBar** outptr_QScrollBar, QAbstractSlider** outptr_QAbstractSlider, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQScrollBar* ret = new MiqtVirtualQScrollBar(static_cast<Qt::Orientation>(param1), parent);
-	*outptr_QScrollBar = ret;
-	*outptr_QAbstractSlider = static_cast<QAbstractSlider*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QScrollBar* QScrollBar_new4(int param1, QWidget* parent) {
+	return new MiqtVirtualQScrollBar(static_cast<Qt::Orientation>(param1), parent);
+}
+
+void QScrollBar_virtbase(QScrollBar* src, QAbstractSlider** outptr_QAbstractSlider) {
+	*outptr_QAbstractSlider = static_cast<QAbstractSlider*>(src);
 }
 
 QMetaObject* QScrollBar_MetaObject(const QScrollBar* self) {

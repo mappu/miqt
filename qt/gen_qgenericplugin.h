@@ -32,8 +32,9 @@ typedef struct QObject QObject;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QGenericPlugin_new(QGenericPlugin** outptr_QGenericPlugin, QObject** outptr_QObject);
-void QGenericPlugin_new2(QObject* parent, QGenericPlugin** outptr_QGenericPlugin, QObject** outptr_QObject);
+QGenericPlugin* QGenericPlugin_new();
+QGenericPlugin* QGenericPlugin_new2(QObject* parent);
+void QGenericPlugin_virtbase(QGenericPlugin* src, QObject** outptr_QObject);
 QMetaObject* QGenericPlugin_MetaObject(const QGenericPlugin* self);
 void* QGenericPlugin_Metacast(QGenericPlugin* self, const char* param1);
 struct miqt_string QGenericPlugin_Tr(const char* s);

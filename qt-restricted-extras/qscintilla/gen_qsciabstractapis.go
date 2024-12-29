@@ -36,31 +36,26 @@ func (this *QsciAbstractAPIs) UnsafePointer() unsafe.Pointer {
 }
 
 // newQsciAbstractAPIs constructs the type using only CGO pointers.
-func newQsciAbstractAPIs(h *C.QsciAbstractAPIs, h_QObject *C.QObject) *QsciAbstractAPIs {
+func newQsciAbstractAPIs(h *C.QsciAbstractAPIs) *QsciAbstractAPIs {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QsciAbstractAPIs_virtbase(h, &outptr_QObject)
+
 	return &QsciAbstractAPIs{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQsciAbstractAPIs constructs the type using only unsafe pointers.
-func UnsafeNewQsciAbstractAPIs(h unsafe.Pointer, h_QObject unsafe.Pointer) *QsciAbstractAPIs {
-	if h == nil {
-		return nil
-	}
-
-	return &QsciAbstractAPIs{h: (*C.QsciAbstractAPIs)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQsciAbstractAPIs(h unsafe.Pointer) *QsciAbstractAPIs {
+	return newQsciAbstractAPIs((*C.QsciAbstractAPIs)(h))
 }
 
 // NewQsciAbstractAPIs constructs a new QsciAbstractAPIs object.
 func NewQsciAbstractAPIs(lexer *QsciLexer) *QsciAbstractAPIs {
-	var outptr_QsciAbstractAPIs *C.QsciAbstractAPIs = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QsciAbstractAPIs_new(lexer.cPointer(), &outptr_QsciAbstractAPIs, &outptr_QObject)
-	ret := newQsciAbstractAPIs(outptr_QsciAbstractAPIs, outptr_QObject)
+	ret := newQsciAbstractAPIs(C.QsciAbstractAPIs_new(lexer.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -94,7 +89,7 @@ func QsciAbstractAPIs_TrUtf8(s string) string {
 }
 
 func (this *QsciAbstractAPIs) Lexer() *QsciLexer {
-	return UnsafeNewQsciLexer(unsafe.Pointer(C.QsciAbstractAPIs_Lexer(this.h)), nil)
+	return newQsciLexer(C.QsciAbstractAPIs_Lexer(this.h))
 }
 
 func (this *QsciAbstractAPIs) UpdateAutoCompletionList(context []string, list []string) {
@@ -202,6 +197,9 @@ func QsciAbstractAPIs_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 func (this *QsciAbstractAPIs) OnUpdateAutoCompletionList(slot func(context []string, list []string)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciAbstractAPIs_override_virtual_UpdateAutoCompletionList(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -249,6 +247,9 @@ func (this *QsciAbstractAPIs) callVirtualBase_AutoCompletionSelected(selection s
 
 }
 func (this *QsciAbstractAPIs) OnAutoCompletionSelected(slot func(super func(selection string), selection string)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciAbstractAPIs_override_virtual_AutoCompletionSelected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -269,6 +270,9 @@ func miqt_exec_callback_QsciAbstractAPIs_AutoCompletionSelected(self *C.QsciAbst
 
 }
 func (this *QsciAbstractAPIs) OnCallTips(slot func(context []string, commas int, style QsciScintilla__CallTipsStyle, shifts []int) []string) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciAbstractAPIs_override_virtual_CallTips(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -325,6 +329,9 @@ func (this *QsciAbstractAPIs) callVirtualBase_Event(event *qt.QEvent) bool {
 
 }
 func (this *QsciAbstractAPIs) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciAbstractAPIs_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -350,6 +357,9 @@ func (this *QsciAbstractAPIs) callVirtualBase_EventFilter(watched *qt.QObject, e
 
 }
 func (this *QsciAbstractAPIs) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciAbstractAPIs_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -362,6 +372,7 @@ func miqt_exec_callback_QsciAbstractAPIs_EventFilter(self *C.QsciAbstractAPIs, c
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QsciAbstractAPIs{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
@@ -376,6 +387,9 @@ func (this *QsciAbstractAPIs) callVirtualBase_TimerEvent(event *qt.QTimerEvent) 
 
 }
 func (this *QsciAbstractAPIs) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciAbstractAPIs_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -387,7 +401,7 @@ func miqt_exec_callback_QsciAbstractAPIs_TimerEvent(self *C.QsciAbstractAPIs, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QsciAbstractAPIs{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -399,6 +413,9 @@ func (this *QsciAbstractAPIs) callVirtualBase_ChildEvent(event *qt.QChildEvent) 
 
 }
 func (this *QsciAbstractAPIs) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciAbstractAPIs_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -410,7 +427,7 @@ func miqt_exec_callback_QsciAbstractAPIs_ChildEvent(self *C.QsciAbstractAPIs, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QsciAbstractAPIs{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -422,6 +439,9 @@ func (this *QsciAbstractAPIs) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
 }
 func (this *QsciAbstractAPIs) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciAbstractAPIs_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -445,6 +465,9 @@ func (this *QsciAbstractAPIs) callVirtualBase_ConnectNotify(signal *qt.QMetaMeth
 
 }
 func (this *QsciAbstractAPIs) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciAbstractAPIs_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -468,6 +491,9 @@ func (this *QsciAbstractAPIs) callVirtualBase_DisconnectNotify(signal *qt.QMetaM
 
 }
 func (this *QsciAbstractAPIs) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QsciAbstractAPIs_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

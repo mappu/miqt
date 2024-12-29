@@ -10,6 +10,10 @@
 #include <QWebHistoryInterface>
 #include <qwebhistoryinterface.h>
 #include "gen_qwebhistoryinterface.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQWebHistoryInterface : public virtual QWebHistoryInterface {
@@ -239,16 +243,16 @@ public:
 
 };
 
-void QWebHistoryInterface_new(QWebHistoryInterface** outptr_QWebHistoryInterface, QObject** outptr_QObject) {
-	MiqtVirtualQWebHistoryInterface* ret = new MiqtVirtualQWebHistoryInterface();
-	*outptr_QWebHistoryInterface = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QWebHistoryInterface* QWebHistoryInterface_new() {
+	return new MiqtVirtualQWebHistoryInterface();
 }
 
-void QWebHistoryInterface_new2(QObject* parent, QWebHistoryInterface** outptr_QWebHistoryInterface, QObject** outptr_QObject) {
-	MiqtVirtualQWebHistoryInterface* ret = new MiqtVirtualQWebHistoryInterface(parent);
-	*outptr_QWebHistoryInterface = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QWebHistoryInterface* QWebHistoryInterface_new2(QObject* parent) {
+	return new MiqtVirtualQWebHistoryInterface(parent);
+}
+
+void QWebHistoryInterface_virtbase(QWebHistoryInterface* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QWebHistoryInterface_MetaObject(const QWebHistoryInterface* self) {

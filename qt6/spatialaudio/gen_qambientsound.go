@@ -43,31 +43,26 @@ func (this *QAmbientSound) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAmbientSound constructs the type using only CGO pointers.
-func newQAmbientSound(h *C.QAmbientSound, h_QObject *C.QObject) *QAmbientSound {
+func newQAmbientSound(h *C.QAmbientSound) *QAmbientSound {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QAmbientSound_virtbase(h, &outptr_QObject)
+
 	return &QAmbientSound{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQAmbientSound constructs the type using only unsafe pointers.
-func UnsafeNewQAmbientSound(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAmbientSound {
-	if h == nil {
-		return nil
-	}
-
-	return &QAmbientSound{h: (*C.QAmbientSound)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQAmbientSound(h unsafe.Pointer) *QAmbientSound {
+	return newQAmbientSound((*C.QAmbientSound)(h))
 }
 
 // NewQAmbientSound constructs a new QAmbientSound object.
 func NewQAmbientSound(engine *QAudioEngine) *QAmbientSound {
-	var outptr_QAmbientSound *C.QAmbientSound = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QAmbientSound_new(engine.cPointer(), &outptr_QAmbientSound, &outptr_QObject)
-	ret := newQAmbientSound(outptr_QAmbientSound, outptr_QObject)
+	ret := newQAmbientSound(C.QAmbientSound_new(engine.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -96,8 +91,7 @@ func (this *QAmbientSound) SetSource(url *qt6.QUrl) {
 }
 
 func (this *QAmbientSound) Source() *qt6.QUrl {
-	_ret := C.QAmbientSound_Source(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QAmbientSound_Source(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -127,7 +121,7 @@ func (this *QAmbientSound) Volume() float32 {
 }
 
 func (this *QAmbientSound) Engine() *QAudioEngine {
-	return UnsafeNewQAudioEngine(unsafe.Pointer(C.QAmbientSound_Engine(this.h)), nil)
+	return newQAudioEngine(C.QAmbientSound_Engine(this.h))
 }
 
 func (this *QAmbientSound) SourceChanged() {
@@ -238,6 +232,9 @@ func (this *QAmbientSound) callVirtualBase_Event(event *qt6.QEvent) bool {
 
 }
 func (this *QAmbientSound) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAmbientSound_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -263,6 +260,9 @@ func (this *QAmbientSound) callVirtualBase_EventFilter(watched *qt6.QObject, eve
 
 }
 func (this *QAmbientSound) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAmbientSound_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -275,6 +275,7 @@ func miqt_exec_callback_QAmbientSound_EventFilter(self *C.QAmbientSound, cb C.in
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QAmbientSound{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
@@ -289,6 +290,9 @@ func (this *QAmbientSound) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
 
 }
 func (this *QAmbientSound) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAmbientSound_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -300,7 +304,7 @@ func miqt_exec_callback_QAmbientSound_TimerEvent(self *C.QAmbientSound, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QAmbientSound{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -312,6 +316,9 @@ func (this *QAmbientSound) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
 
 }
 func (this *QAmbientSound) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAmbientSound_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -323,7 +330,7 @@ func miqt_exec_callback_QAmbientSound_ChildEvent(self *C.QAmbientSound, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QAmbientSound{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -335,6 +342,9 @@ func (this *QAmbientSound) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 
 }
 func (this *QAmbientSound) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAmbientSound_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -358,6 +368,9 @@ func (this *QAmbientSound) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod
 
 }
 func (this *QAmbientSound) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAmbientSound_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -381,6 +394,9 @@ func (this *QAmbientSound) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMet
 
 }
 func (this *QAmbientSound) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAmbientSound_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

@@ -37,6 +37,10 @@
 #include <QWidget>
 #include <qlistwidget.h>
 #include "gen_qlistwidget.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQListWidgetItem : public virtual QListWidgetItem {
@@ -206,60 +210,50 @@ public:
 
 };
 
-void QListWidgetItem_new(QListWidgetItem** outptr_QListWidgetItem) {
-	MiqtVirtualQListWidgetItem* ret = new MiqtVirtualQListWidgetItem();
-	*outptr_QListWidgetItem = ret;
+QListWidgetItem* QListWidgetItem_new() {
+	return new MiqtVirtualQListWidgetItem();
 }
 
-void QListWidgetItem_new2(struct miqt_string text, QListWidgetItem** outptr_QListWidgetItem) {
+QListWidgetItem* QListWidgetItem_new2(struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQListWidgetItem* ret = new MiqtVirtualQListWidgetItem(text_QString);
-	*outptr_QListWidgetItem = ret;
+	return new MiqtVirtualQListWidgetItem(text_QString);
 }
 
-void QListWidgetItem_new3(QIcon* icon, struct miqt_string text, QListWidgetItem** outptr_QListWidgetItem) {
+QListWidgetItem* QListWidgetItem_new3(QIcon* icon, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQListWidgetItem* ret = new MiqtVirtualQListWidgetItem(*icon, text_QString);
-	*outptr_QListWidgetItem = ret;
+	return new MiqtVirtualQListWidgetItem(*icon, text_QString);
 }
 
-void QListWidgetItem_new4(QListWidgetItem* other, QListWidgetItem** outptr_QListWidgetItem) {
-	MiqtVirtualQListWidgetItem* ret = new MiqtVirtualQListWidgetItem(*other);
-	*outptr_QListWidgetItem = ret;
+QListWidgetItem* QListWidgetItem_new4(QListWidgetItem* other) {
+	return new MiqtVirtualQListWidgetItem(*other);
 }
 
-void QListWidgetItem_new5(QListWidget* listview, QListWidgetItem** outptr_QListWidgetItem) {
-	MiqtVirtualQListWidgetItem* ret = new MiqtVirtualQListWidgetItem(listview);
-	*outptr_QListWidgetItem = ret;
+QListWidgetItem* QListWidgetItem_new5(QListWidget* listview) {
+	return new MiqtVirtualQListWidgetItem(listview);
 }
 
-void QListWidgetItem_new6(QListWidget* listview, int typeVal, QListWidgetItem** outptr_QListWidgetItem) {
-	MiqtVirtualQListWidgetItem* ret = new MiqtVirtualQListWidgetItem(listview, static_cast<int>(typeVal));
-	*outptr_QListWidgetItem = ret;
+QListWidgetItem* QListWidgetItem_new6(QListWidget* listview, int typeVal) {
+	return new MiqtVirtualQListWidgetItem(listview, static_cast<int>(typeVal));
 }
 
-void QListWidgetItem_new7(struct miqt_string text, QListWidget* listview, QListWidgetItem** outptr_QListWidgetItem) {
+QListWidgetItem* QListWidgetItem_new7(struct miqt_string text, QListWidget* listview) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQListWidgetItem* ret = new MiqtVirtualQListWidgetItem(text_QString, listview);
-	*outptr_QListWidgetItem = ret;
+	return new MiqtVirtualQListWidgetItem(text_QString, listview);
 }
 
-void QListWidgetItem_new8(struct miqt_string text, QListWidget* listview, int typeVal, QListWidgetItem** outptr_QListWidgetItem) {
+QListWidgetItem* QListWidgetItem_new8(struct miqt_string text, QListWidget* listview, int typeVal) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQListWidgetItem* ret = new MiqtVirtualQListWidgetItem(text_QString, listview, static_cast<int>(typeVal));
-	*outptr_QListWidgetItem = ret;
+	return new MiqtVirtualQListWidgetItem(text_QString, listview, static_cast<int>(typeVal));
 }
 
-void QListWidgetItem_new9(QIcon* icon, struct miqt_string text, QListWidget* listview, QListWidgetItem** outptr_QListWidgetItem) {
+QListWidgetItem* QListWidgetItem_new9(QIcon* icon, struct miqt_string text, QListWidget* listview) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQListWidgetItem* ret = new MiqtVirtualQListWidgetItem(*icon, text_QString, listview);
-	*outptr_QListWidgetItem = ret;
+	return new MiqtVirtualQListWidgetItem(*icon, text_QString, listview);
 }
 
-void QListWidgetItem_new10(QIcon* icon, struct miqt_string text, QListWidget* listview, int typeVal, QListWidgetItem** outptr_QListWidgetItem) {
+QListWidgetItem* QListWidgetItem_new10(QIcon* icon, struct miqt_string text, QListWidget* listview, int typeVal) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQListWidgetItem* ret = new MiqtVirtualQListWidgetItem(*icon, text_QString, listview, static_cast<int>(typeVal));
-	*outptr_QListWidgetItem = ret;
+	return new MiqtVirtualQListWidgetItem(*icon, text_QString, listview, static_cast<int>(typeVal));
 }
 
 QListWidgetItem* QListWidgetItem_Clone(const QListWidgetItem* self) {
@@ -1526,28 +1520,16 @@ public:
 
 };
 
-void QListWidget_new(QWidget* parent, QListWidget** outptr_QListWidget, QListView** outptr_QListView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQListWidget* ret = new MiqtVirtualQListWidget(parent);
-	*outptr_QListWidget = ret;
-	*outptr_QListView = static_cast<QListView*>(ret);
-	*outptr_QAbstractItemView = static_cast<QAbstractItemView*>(ret);
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QListWidget* QListWidget_new(QWidget* parent) {
+	return new MiqtVirtualQListWidget(parent);
 }
 
-void QListWidget_new2(QListWidget** outptr_QListWidget, QListView** outptr_QListView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQListWidget* ret = new MiqtVirtualQListWidget();
-	*outptr_QListWidget = ret;
-	*outptr_QListView = static_cast<QListView*>(ret);
-	*outptr_QAbstractItemView = static_cast<QAbstractItemView*>(ret);
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QListWidget* QListWidget_new2() {
+	return new MiqtVirtualQListWidget();
+}
+
+void QListWidget_virtbase(QListWidget* src, QListView** outptr_QListView) {
+	*outptr_QListView = static_cast<QListView*>(src);
 }
 
 QMetaObject* QListWidget_MetaObject(const QListWidget* self) {

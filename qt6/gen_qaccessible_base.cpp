@@ -8,6 +8,10 @@
 #include <QTextCursor>
 #include <qaccessible_base.h>
 #include "gen_qaccessible_base.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QAccessible_InstallActivationObserver(QAccessible__ActivationObserver* param1) {
@@ -82,9 +86,8 @@ void QAccessible_Delete(QAccessible* self, bool isSubclass) {
 	}
 }
 
-void QAccessible__State_new(QAccessible__State** outptr_QAccessible__State) {
-	QAccessible::State* ret = new QAccessible::State();
-	*outptr_QAccessible__State = ret;
+QAccessible__State* QAccessible__State_new() {
+	return new QAccessible::State();
 }
 
 void QAccessible__State_Delete(QAccessible__State* self, bool isSubclass) {

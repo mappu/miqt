@@ -72,6 +72,7 @@ typedef struct QTextList QTextList;
 typedef struct QTextObject QTextObject;
 #endif
 
+void QTextObject_virtbase(QTextObject* src, QObject** outptr_QObject);
 QMetaObject* QTextObject_MetaObject(const QTextObject* self);
 void* QTextObject_Metacast(QTextObject* self, const char* param1);
 struct miqt_string QTextObject_Tr(const char* s);
@@ -82,6 +83,7 @@ int QTextObject_ObjectIndex(const QTextObject* self);
 struct miqt_string QTextObject_Tr2(const char* s, const char* c);
 struct miqt_string QTextObject_Tr3(const char* s, const char* c, int n);
 
+void QTextBlockGroup_virtbase(QTextBlockGroup* src, QTextObject** outptr_QTextObject);
 QMetaObject* QTextBlockGroup_MetaObject(const QTextBlockGroup* self);
 void* QTextBlockGroup_Metacast(QTextBlockGroup* self, const char* param1);
 struct miqt_string QTextBlockGroup_Tr(const char* s);
@@ -94,7 +96,8 @@ struct miqt_string QTextBlockGroup_Tr3(const char* s, const char* c, int n);
 void QTextFrameLayoutData_OperatorAssign(QTextFrameLayoutData* self, QTextFrameLayoutData* param1);
 void QTextFrameLayoutData_Delete(QTextFrameLayoutData* self, bool isSubclass);
 
-void QTextFrame_new(QTextDocument* doc, QTextFrame** outptr_QTextFrame, QTextObject** outptr_QTextObject, QObject** outptr_QObject);
+QTextFrame* QTextFrame_new(QTextDocument* doc);
+void QTextFrame_virtbase(QTextFrame* src, QTextObject** outptr_QTextObject);
 QMetaObject* QTextFrame_MetaObject(const QTextFrame* self);
 void* QTextFrame_Metacast(QTextFrame* self, const char* param1);
 struct miqt_string QTextFrame_Tr(const char* s);
@@ -117,8 +120,8 @@ void QTextFrame_Delete(QTextFrame* self, bool isSubclass);
 void QTextBlockUserData_OperatorAssign(QTextBlockUserData* self, QTextBlockUserData* param1);
 void QTextBlockUserData_Delete(QTextBlockUserData* self, bool isSubclass);
 
-void QTextBlock_new(QTextBlock** outptr_QTextBlock);
-void QTextBlock_new2(QTextBlock* o, QTextBlock** outptr_QTextBlock);
+QTextBlock* QTextBlock_new();
+QTextBlock* QTextBlock_new2(QTextBlock* o);
 void QTextBlock_OperatorAssign(QTextBlock* self, QTextBlock* o);
 bool QTextBlock_IsValid(const QTextBlock* self);
 bool QTextBlock_OperatorEqual(const QTextBlock* self, QTextBlock* o);
@@ -157,8 +160,8 @@ QTextBlock* QTextBlock_Previous(const QTextBlock* self);
 int QTextBlock_FragmentIndex(const QTextBlock* self);
 void QTextBlock_Delete(QTextBlock* self, bool isSubclass);
 
-void QTextFragment_new(QTextFragment** outptr_QTextFragment);
-void QTextFragment_new2(QTextFragment* o, QTextFragment** outptr_QTextFragment);
+QTextFragment* QTextFragment_new();
+QTextFragment* QTextFragment_new2(QTextFragment* o);
 void QTextFragment_OperatorAssign(QTextFragment* self, QTextFragment* o);
 bool QTextFragment_IsValid(const QTextFragment* self);
 bool QTextFragment_OperatorEqual(const QTextFragment* self, QTextFragment* o);
@@ -175,8 +178,8 @@ struct miqt_array /* of QGlyphRun* */  QTextFragment_GlyphRuns1(const QTextFragm
 struct miqt_array /* of QGlyphRun* */  QTextFragment_GlyphRuns2(const QTextFragment* self, int from, int length);
 void QTextFragment_Delete(QTextFragment* self, bool isSubclass);
 
-void QTextFrame__iterator_new(QTextFrame__iterator** outptr_QTextFrame__iterator);
-void QTextFrame__iterator_new2(QTextFrame__iterator* param1, QTextFrame__iterator** outptr_QTextFrame__iterator);
+QTextFrame__iterator* QTextFrame__iterator_new();
+QTextFrame__iterator* QTextFrame__iterator_new2(QTextFrame__iterator* param1);
 QTextFrame* QTextFrame__iterator_ParentFrame(const QTextFrame__iterator* self);
 QTextFrame* QTextFrame__iterator_CurrentFrame(const QTextFrame__iterator* self);
 QTextBlock* QTextFrame__iterator_CurrentBlock(const QTextFrame__iterator* self);
@@ -189,8 +192,8 @@ QTextFrame__iterator* QTextFrame__iterator_OperatorMinusMinus(QTextFrame__iterat
 QTextFrame__iterator* QTextFrame__iterator_OperatorMinusMinusWithInt(QTextFrame__iterator* self, int param1);
 void QTextFrame__iterator_Delete(QTextFrame__iterator* self, bool isSubclass);
 
-void QTextBlock__iterator_new(QTextBlock__iterator** outptr_QTextBlock__iterator);
-void QTextBlock__iterator_new2(QTextBlock__iterator* param1, QTextBlock__iterator** outptr_QTextBlock__iterator);
+QTextBlock__iterator* QTextBlock__iterator_new();
+QTextBlock__iterator* QTextBlock__iterator_new2(QTextBlock__iterator* param1);
 QTextFragment* QTextBlock__iterator_Fragment(const QTextBlock__iterator* self);
 bool QTextBlock__iterator_AtEnd(const QTextBlock__iterator* self);
 bool QTextBlock__iterator_OperatorEqual(const QTextBlock__iterator* self, QTextBlock__iterator* o);

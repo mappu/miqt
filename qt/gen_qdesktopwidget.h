@@ -78,7 +78,8 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QDesktopWidget_new(QDesktopWidget** outptr_QDesktopWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QDesktopWidget* QDesktopWidget_new();
+void QDesktopWidget_virtbase(QDesktopWidget* src, QWidget** outptr_QWidget);
 QMetaObject* QDesktopWidget_MetaObject(const QDesktopWidget* self);
 void* QDesktopWidget_Metacast(QDesktopWidget* self, const char* param1);
 struct miqt_string QDesktopWidget_Tr(const char* s);

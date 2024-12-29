@@ -34,8 +34,9 @@ typedef struct QPictureFormatPlugin QPictureFormatPlugin;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QPictureFormatPlugin_new(QPictureFormatPlugin** outptr_QPictureFormatPlugin, QObject** outptr_QObject);
-void QPictureFormatPlugin_new2(QObject* parent, QPictureFormatPlugin** outptr_QPictureFormatPlugin, QObject** outptr_QObject);
+QPictureFormatPlugin* QPictureFormatPlugin_new();
+QPictureFormatPlugin* QPictureFormatPlugin_new2(QObject* parent);
+void QPictureFormatPlugin_virtbase(QPictureFormatPlugin* src, QObject** outptr_QObject);
 QMetaObject* QPictureFormatPlugin_MetaObject(const QPictureFormatPlugin* self);
 void* QPictureFormatPlugin_Metacast(QPictureFormatPlugin* self, const char* param1);
 struct miqt_string QPictureFormatPlugin_Tr(const char* s);

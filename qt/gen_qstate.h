@@ -34,10 +34,11 @@ typedef struct QState QState;
 typedef struct QVariant QVariant;
 #endif
 
-void QState_new(QState** outptr_QState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject);
-void QState_new2(int childMode, QState** outptr_QState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject);
-void QState_new3(QState* parent, QState** outptr_QState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject);
-void QState_new4(int childMode, QState* parent, QState** outptr_QState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject);
+QState* QState_new();
+QState* QState_new2(int childMode);
+QState* QState_new3(QState* parent);
+QState* QState_new4(int childMode, QState* parent);
+void QState_virtbase(QState* src, QAbstractState** outptr_QAbstractState);
 QMetaObject* QState_MetaObject(const QState* self);
 void* QState_Metacast(QState* self, const char* param1);
 struct miqt_string QState_Tr(const char* s);

@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexerdiff.h>
 #include "gen_qscilexerdiff.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerDiff : public virtual QsciLexerDiff {
@@ -839,18 +843,16 @@ public:
 
 };
 
-void QsciLexerDiff_new(QsciLexerDiff** outptr_QsciLexerDiff, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerDiff* ret = new MiqtVirtualQsciLexerDiff();
-	*outptr_QsciLexerDiff = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerDiff* QsciLexerDiff_new() {
+	return new MiqtVirtualQsciLexerDiff();
 }
 
-void QsciLexerDiff_new2(QObject* parent, QsciLexerDiff** outptr_QsciLexerDiff, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerDiff* ret = new MiqtVirtualQsciLexerDiff(parent);
-	*outptr_QsciLexerDiff = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerDiff* QsciLexerDiff_new2(QObject* parent) {
+	return new MiqtVirtualQsciLexerDiff(parent);
+}
+
+void QsciLexerDiff_virtbase(QsciLexerDiff* src, QsciLexer** outptr_QsciLexer) {
+	*outptr_QsciLexer = static_cast<QsciLexer*>(src);
 }
 
 QMetaObject* QsciLexerDiff_MetaObject(const QsciLexerDiff* self) {

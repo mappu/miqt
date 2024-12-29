@@ -10,6 +10,10 @@
 #include <QTimerEvent>
 #include <qobjectcleanuphandler.h>
 #include "gen_qobjectcleanuphandler.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQObjectCleanupHandler : public virtual QObjectCleanupHandler {
@@ -192,10 +196,12 @@ public:
 
 };
 
-void QObjectCleanupHandler_new(QObjectCleanupHandler** outptr_QObjectCleanupHandler, QObject** outptr_QObject) {
-	MiqtVirtualQObjectCleanupHandler* ret = new MiqtVirtualQObjectCleanupHandler();
-	*outptr_QObjectCleanupHandler = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QObjectCleanupHandler* QObjectCleanupHandler_new() {
+	return new MiqtVirtualQObjectCleanupHandler();
+}
+
+void QObjectCleanupHandler_virtbase(QObjectCleanupHandler* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QObjectCleanupHandler_MetaObject(const QObjectCleanupHandler* self) {

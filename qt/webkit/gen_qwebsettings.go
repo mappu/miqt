@@ -124,20 +124,17 @@ func newQWebSettings(h *C.QWebSettings) *QWebSettings {
 	if h == nil {
 		return nil
 	}
+
 	return &QWebSettings{h: h}
 }
 
 // UnsafeNewQWebSettings constructs the type using only unsafe pointers.
 func UnsafeNewQWebSettings(h unsafe.Pointer) *QWebSettings {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebSettings{h: (*C.QWebSettings)(h)}
+	return newQWebSettings((*C.QWebSettings)(h))
 }
 
 func QWebSettings_GlobalSettings() *QWebSettings {
-	return UnsafeNewQWebSettings(unsafe.Pointer(C.QWebSettings_GlobalSettings()))
+	return newQWebSettings(C.QWebSettings_GlobalSettings())
 }
 
 func (this *QWebSettings) SetFontFamily(which QWebSettings__FontFamily, family string) {
@@ -188,8 +185,7 @@ func (this *QWebSettings) SetUserStyleSheetUrl(location *qt.QUrl) {
 }
 
 func (this *QWebSettings) UserStyleSheetUrl() *qt.QUrl {
-	_ret := C.QWebSettings_UserStyleSheetUrl(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebSettings_UserStyleSheetUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -229,8 +225,7 @@ func QWebSettings_ClearIconDatabase() {
 }
 
 func QWebSettings_IconForUrl(url *qt.QUrl) *qt.QIcon {
-	_ret := C.QWebSettings_IconForUrl((*C.QUrl)(url.UnsafePointer()))
-	_goptr := qt.UnsafeNewQIcon(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQIcon(unsafe.Pointer(C.QWebSettings_IconForUrl((*C.QUrl)(url.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -267,8 +262,7 @@ func QWebSettings_SetWebGraphic(typeVal QWebSettings__WebGraphic, graphic *qt.QP
 }
 
 func QWebSettings_WebGraphic(typeVal QWebSettings__WebGraphic) *qt.QPixmap {
-	_ret := C.QWebSettings_WebGraphic((C.int)(typeVal))
-	_goptr := qt.UnsafeNewQPixmap(unsafe.Pointer(_ret), nil)
+	_goptr := qt.UnsafeNewQPixmap(unsafe.Pointer(C.QWebSettings_WebGraphic((C.int)(typeVal))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

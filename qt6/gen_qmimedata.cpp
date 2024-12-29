@@ -15,6 +15,10 @@
 #include <QVariant>
 #include <qmimedata.h>
 #include "gen_qmimedata.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQMimeData : public virtual QMimeData {
@@ -305,10 +309,12 @@ public:
 
 };
 
-void QMimeData_new(QMimeData** outptr_QMimeData, QObject** outptr_QObject) {
-	MiqtVirtualQMimeData* ret = new MiqtVirtualQMimeData();
-	*outptr_QMimeData = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QMimeData* QMimeData_new() {
+	return new MiqtVirtualQMimeData();
+}
+
+void QMimeData_virtbase(QMimeData* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QMimeData_MetaObject(const QMimeData* self) {

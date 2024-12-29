@@ -91,44 +91,35 @@ func newQEasingCurve(h *C.QEasingCurve) *QEasingCurve {
 	if h == nil {
 		return nil
 	}
+
 	return &QEasingCurve{h: h}
 }
 
 // UnsafeNewQEasingCurve constructs the type using only unsafe pointers.
 func UnsafeNewQEasingCurve(h unsafe.Pointer) *QEasingCurve {
-	if h == nil {
-		return nil
-	}
-
-	return &QEasingCurve{h: (*C.QEasingCurve)(h)}
+	return newQEasingCurve((*C.QEasingCurve)(h))
 }
 
 // NewQEasingCurve constructs a new QEasingCurve object.
 func NewQEasingCurve() *QEasingCurve {
-	var outptr_QEasingCurve *C.QEasingCurve = nil
 
-	C.QEasingCurve_new(&outptr_QEasingCurve)
-	ret := newQEasingCurve(outptr_QEasingCurve)
+	ret := newQEasingCurve(C.QEasingCurve_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQEasingCurve2 constructs a new QEasingCurve object.
 func NewQEasingCurve2(other *QEasingCurve) *QEasingCurve {
-	var outptr_QEasingCurve *C.QEasingCurve = nil
 
-	C.QEasingCurve_new2(other.cPointer(), &outptr_QEasingCurve)
-	ret := newQEasingCurve(outptr_QEasingCurve)
+	ret := newQEasingCurve(C.QEasingCurve_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQEasingCurve3 constructs a new QEasingCurve object.
 func NewQEasingCurve3(typeVal QEasingCurve__Type) *QEasingCurve {
-	var outptr_QEasingCurve *C.QEasingCurve = nil
 
-	C.QEasingCurve_new3((C.int)(typeVal), &outptr_QEasingCurve)
-	ret := newQEasingCurve(outptr_QEasingCurve)
+	ret := newQEasingCurve(C.QEasingCurve_new3((C.int)(typeVal)))
 	ret.isSubclass = true
 	return ret
 }
@@ -186,8 +177,7 @@ func (this *QEasingCurve) ToCubicSpline() []QPointF {
 	_ret := make([]QPointF, int(_ma.len))
 	_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQPointF(_lv_ret)
+		_lv_goptr := newQPointF(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}

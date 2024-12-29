@@ -22,16 +22,18 @@
 #include <QVariant>
 #include <qabstractitemmodel.h>
 #include "gen_qabstractitemmodel.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QModelRoleData_new(int role, QModelRoleData** outptr_QModelRoleData) {
-	QModelRoleData* ret = new QModelRoleData(static_cast<int>(role));
-	*outptr_QModelRoleData = ret;
+QModelRoleData* QModelRoleData_new(int role) {
+	return new QModelRoleData(static_cast<int>(role));
 }
 
-void QModelRoleData_new2(QModelRoleData* param1, QModelRoleData** outptr_QModelRoleData) {
-	QModelRoleData* ret = new QModelRoleData(*param1);
-	*outptr_QModelRoleData = ret;
+QModelRoleData* QModelRoleData_new2(QModelRoleData* param1) {
+	return new QModelRoleData(*param1);
 }
 
 int QModelRoleData_Role(const QModelRoleData* self) {
@@ -66,24 +68,20 @@ void QModelRoleData_Delete(QModelRoleData* self, bool isSubclass) {
 	}
 }
 
-void QModelRoleDataSpan_new(QModelRoleDataSpan** outptr_QModelRoleDataSpan) {
-	QModelRoleDataSpan* ret = new QModelRoleDataSpan();
-	*outptr_QModelRoleDataSpan = ret;
+QModelRoleDataSpan* QModelRoleDataSpan_new() {
+	return new QModelRoleDataSpan();
 }
 
-void QModelRoleDataSpan_new2(QModelRoleData* modelRoleData, QModelRoleDataSpan** outptr_QModelRoleDataSpan) {
-	QModelRoleDataSpan* ret = new QModelRoleDataSpan(*modelRoleData);
-	*outptr_QModelRoleDataSpan = ret;
+QModelRoleDataSpan* QModelRoleDataSpan_new2(QModelRoleData* modelRoleData) {
+	return new QModelRoleDataSpan(*modelRoleData);
 }
 
-void QModelRoleDataSpan_new3(QModelRoleData* modelRoleData, ptrdiff_t lenVal, QModelRoleDataSpan** outptr_QModelRoleDataSpan) {
-	QModelRoleDataSpan* ret = new QModelRoleDataSpan(modelRoleData, (qsizetype)(lenVal));
-	*outptr_QModelRoleDataSpan = ret;
+QModelRoleDataSpan* QModelRoleDataSpan_new3(QModelRoleData* modelRoleData, ptrdiff_t lenVal) {
+	return new QModelRoleDataSpan(modelRoleData, (qsizetype)(lenVal));
 }
 
-void QModelRoleDataSpan_new4(QModelRoleDataSpan* param1, QModelRoleDataSpan** outptr_QModelRoleDataSpan) {
-	QModelRoleDataSpan* ret = new QModelRoleDataSpan(*param1);
-	*outptr_QModelRoleDataSpan = ret;
+QModelRoleDataSpan* QModelRoleDataSpan_new4(QModelRoleDataSpan* param1) {
+	return new QModelRoleDataSpan(*param1);
 }
 
 ptrdiff_t QModelRoleDataSpan_Size(const QModelRoleDataSpan* self) {
@@ -126,14 +124,12 @@ void QModelRoleDataSpan_Delete(QModelRoleDataSpan* self, bool isSubclass) {
 	}
 }
 
-void QModelIndex_new(QModelIndex** outptr_QModelIndex) {
-	QModelIndex* ret = new QModelIndex();
-	*outptr_QModelIndex = ret;
+QModelIndex* QModelIndex_new() {
+	return new QModelIndex();
 }
 
-void QModelIndex_new2(QModelIndex* param1, QModelIndex** outptr_QModelIndex) {
-	QModelIndex* ret = new QModelIndex(*param1);
-	*outptr_QModelIndex = ret;
+QModelIndex* QModelIndex_new2(QModelIndex* param1) {
+	return new QModelIndex(*param1);
 }
 
 int QModelIndex_Row(const QModelIndex* self) {
@@ -218,19 +214,16 @@ void QModelIndex_Delete(QModelIndex* self, bool isSubclass) {
 	}
 }
 
-void QPersistentModelIndex_new(QPersistentModelIndex** outptr_QPersistentModelIndex) {
-	QPersistentModelIndex* ret = new QPersistentModelIndex();
-	*outptr_QPersistentModelIndex = ret;
+QPersistentModelIndex* QPersistentModelIndex_new() {
+	return new QPersistentModelIndex();
 }
 
-void QPersistentModelIndex_new2(QModelIndex* index, QPersistentModelIndex** outptr_QPersistentModelIndex) {
-	QPersistentModelIndex* ret = new QPersistentModelIndex(*index);
-	*outptr_QPersistentModelIndex = ret;
+QPersistentModelIndex* QPersistentModelIndex_new2(QModelIndex* index) {
+	return new QPersistentModelIndex(*index);
 }
 
-void QPersistentModelIndex_new3(QPersistentModelIndex* other, QPersistentModelIndex** outptr_QPersistentModelIndex) {
-	QPersistentModelIndex* ret = new QPersistentModelIndex(*other);
-	*outptr_QPersistentModelIndex = ret;
+QPersistentModelIndex* QPersistentModelIndex_new3(QPersistentModelIndex* other) {
+	return new QPersistentModelIndex(*other);
 }
 
 bool QPersistentModelIndex_OperatorLesser(const QPersistentModelIndex* self, QPersistentModelIndex* other) {
@@ -1556,16 +1549,16 @@ public:
 
 };
 
-void QAbstractItemModel_new(QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
-	MiqtVirtualQAbstractItemModel* ret = new MiqtVirtualQAbstractItemModel();
-	*outptr_QAbstractItemModel = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAbstractItemModel* QAbstractItemModel_new() {
+	return new MiqtVirtualQAbstractItemModel();
 }
 
-void QAbstractItemModel_new2(QObject* parent, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
-	MiqtVirtualQAbstractItemModel* ret = new MiqtVirtualQAbstractItemModel(parent);
-	*outptr_QAbstractItemModel = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAbstractItemModel* QAbstractItemModel_new2(QObject* parent) {
+	return new MiqtVirtualQAbstractItemModel(parent);
+}
+
+void QAbstractItemModel_virtbase(QAbstractItemModel* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QAbstractItemModel_MetaObject(const QAbstractItemModel* self) {
@@ -3434,18 +3427,16 @@ public:
 
 };
 
-void QAbstractTableModel_new(QAbstractTableModel** outptr_QAbstractTableModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
-	MiqtVirtualQAbstractTableModel* ret = new MiqtVirtualQAbstractTableModel();
-	*outptr_QAbstractTableModel = ret;
-	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAbstractTableModel* QAbstractTableModel_new() {
+	return new MiqtVirtualQAbstractTableModel();
 }
 
-void QAbstractTableModel_new2(QObject* parent, QAbstractTableModel** outptr_QAbstractTableModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
-	MiqtVirtualQAbstractTableModel* ret = new MiqtVirtualQAbstractTableModel(parent);
-	*outptr_QAbstractTableModel = ret;
-	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAbstractTableModel* QAbstractTableModel_new2(QObject* parent) {
+	return new MiqtVirtualQAbstractTableModel(parent);
+}
+
+void QAbstractTableModel_virtbase(QAbstractTableModel* src, QAbstractItemModel** outptr_QAbstractItemModel) {
+	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(src);
 }
 
 QMetaObject* QAbstractTableModel_MetaObject(const QAbstractTableModel* self) {
@@ -4786,18 +4777,16 @@ public:
 
 };
 
-void QAbstractListModel_new(QAbstractListModel** outptr_QAbstractListModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
-	MiqtVirtualQAbstractListModel* ret = new MiqtVirtualQAbstractListModel();
-	*outptr_QAbstractListModel = ret;
-	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAbstractListModel* QAbstractListModel_new() {
+	return new MiqtVirtualQAbstractListModel();
 }
 
-void QAbstractListModel_new2(QObject* parent, QAbstractListModel** outptr_QAbstractListModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
-	MiqtVirtualQAbstractListModel* ret = new MiqtVirtualQAbstractListModel(parent);
-	*outptr_QAbstractListModel = ret;
-	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAbstractListModel* QAbstractListModel_new2(QObject* parent) {
+	return new MiqtVirtualQAbstractListModel(parent);
+}
+
+void QAbstractListModel_virtbase(QAbstractListModel* src, QAbstractItemModel** outptr_QAbstractItemModel) {
+	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(src);
 }
 
 QMetaObject* QAbstractListModel_MetaObject(const QAbstractListModel* self) {

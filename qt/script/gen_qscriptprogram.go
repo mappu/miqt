@@ -37,24 +37,19 @@ func newQScriptProgram(h *C.QScriptProgram) *QScriptProgram {
 	if h == nil {
 		return nil
 	}
+
 	return &QScriptProgram{h: h}
 }
 
 // UnsafeNewQScriptProgram constructs the type using only unsafe pointers.
 func UnsafeNewQScriptProgram(h unsafe.Pointer) *QScriptProgram {
-	if h == nil {
-		return nil
-	}
-
-	return &QScriptProgram{h: (*C.QScriptProgram)(h)}
+	return newQScriptProgram((*C.QScriptProgram)(h))
 }
 
 // NewQScriptProgram constructs a new QScriptProgram object.
 func NewQScriptProgram() *QScriptProgram {
-	var outptr_QScriptProgram *C.QScriptProgram = nil
 
-	C.QScriptProgram_new(&outptr_QScriptProgram)
-	ret := newQScriptProgram(outptr_QScriptProgram)
+	ret := newQScriptProgram(C.QScriptProgram_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -65,20 +60,16 @@ func NewQScriptProgram2(sourceCode string) *QScriptProgram {
 	sourceCode_ms.data = C.CString(sourceCode)
 	sourceCode_ms.len = C.size_t(len(sourceCode))
 	defer C.free(unsafe.Pointer(sourceCode_ms.data))
-	var outptr_QScriptProgram *C.QScriptProgram = nil
 
-	C.QScriptProgram_new2(sourceCode_ms, &outptr_QScriptProgram)
-	ret := newQScriptProgram(outptr_QScriptProgram)
+	ret := newQScriptProgram(C.QScriptProgram_new2(sourceCode_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQScriptProgram3 constructs a new QScriptProgram object.
 func NewQScriptProgram3(other *QScriptProgram) *QScriptProgram {
-	var outptr_QScriptProgram *C.QScriptProgram = nil
 
-	C.QScriptProgram_new3(other.cPointer(), &outptr_QScriptProgram)
-	ret := newQScriptProgram(outptr_QScriptProgram)
+	ret := newQScriptProgram(C.QScriptProgram_new3(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -93,10 +84,8 @@ func NewQScriptProgram4(sourceCode string, fileName string) *QScriptProgram {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var outptr_QScriptProgram *C.QScriptProgram = nil
 
-	C.QScriptProgram_new4(sourceCode_ms, fileName_ms, &outptr_QScriptProgram)
-	ret := newQScriptProgram(outptr_QScriptProgram)
+	ret := newQScriptProgram(C.QScriptProgram_new4(sourceCode_ms, fileName_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -111,10 +100,8 @@ func NewQScriptProgram5(sourceCode string, fileName string, firstLineNumber int)
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var outptr_QScriptProgram *C.QScriptProgram = nil
 
-	C.QScriptProgram_new5(sourceCode_ms, fileName_ms, (C.int)(firstLineNumber), &outptr_QScriptProgram)
-	ret := newQScriptProgram(outptr_QScriptProgram)
+	ret := newQScriptProgram(C.QScriptProgram_new5(sourceCode_ms, fileName_ms, (C.int)(firstLineNumber)))
 	ret.isSubclass = true
 	return ret
 }

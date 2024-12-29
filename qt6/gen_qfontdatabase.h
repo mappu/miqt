@@ -24,7 +24,7 @@ typedef struct QFontDatabase QFontDatabase;
 typedef struct QFontInfo QFontInfo;
 #endif
 
-void QFontDatabase_new(QFontDatabase** outptr_QFontDatabase);
+QFontDatabase* QFontDatabase_new();
 struct miqt_array /* of int */  QFontDatabase_StandardSizes();
 struct miqt_array /* of int */  QFontDatabase_WritingSystems();
 struct miqt_array /* of int */  QFontDatabase_WritingSystemsWithFamily(struct miqt_string family);

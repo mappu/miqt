@@ -3,26 +3,26 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QMediaTimeRange__Interval
 #include <qmediatimerange.h>
 #include "gen_qmediatimerange.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QMediaTimeRange_new(QMediaTimeRange** outptr_QMediaTimeRange) {
-	QMediaTimeRange* ret = new QMediaTimeRange();
-	*outptr_QMediaTimeRange = ret;
+QMediaTimeRange* QMediaTimeRange_new() {
+	return new QMediaTimeRange();
 }
 
-void QMediaTimeRange_new2(long long start, long long end, QMediaTimeRange** outptr_QMediaTimeRange) {
-	QMediaTimeRange* ret = new QMediaTimeRange(static_cast<qint64>(start), static_cast<qint64>(end));
-	*outptr_QMediaTimeRange = ret;
+QMediaTimeRange* QMediaTimeRange_new2(long long start, long long end) {
+	return new QMediaTimeRange(static_cast<qint64>(start), static_cast<qint64>(end));
 }
 
-void QMediaTimeRange_new3(QMediaTimeRange__Interval* param1, QMediaTimeRange** outptr_QMediaTimeRange) {
-	QMediaTimeRange* ret = new QMediaTimeRange(*param1);
-	*outptr_QMediaTimeRange = ret;
+QMediaTimeRange* QMediaTimeRange_new3(QMediaTimeRange__Interval* param1) {
+	return new QMediaTimeRange(*param1);
 }
 
-void QMediaTimeRange_new4(QMediaTimeRange* rangeVal, QMediaTimeRange** outptr_QMediaTimeRange) {
-	QMediaTimeRange* ret = new QMediaTimeRange(*rangeVal);
-	*outptr_QMediaTimeRange = ret;
+QMediaTimeRange* QMediaTimeRange_new4(QMediaTimeRange* rangeVal) {
+	return new QMediaTimeRange(*rangeVal);
 }
 
 void QMediaTimeRange_OperatorAssign(QMediaTimeRange* self, QMediaTimeRange* param1) {
@@ -136,19 +136,16 @@ void QMediaTimeRange_Delete(QMediaTimeRange* self, bool isSubclass) {
 	}
 }
 
-void QMediaTimeRange__Interval_new(QMediaTimeRange__Interval** outptr_QMediaTimeRange__Interval) {
-	QMediaTimeRange::Interval* ret = new QMediaTimeRange::Interval();
-	*outptr_QMediaTimeRange__Interval = ret;
+QMediaTimeRange__Interval* QMediaTimeRange__Interval_new() {
+	return new QMediaTimeRange::Interval();
 }
 
-void QMediaTimeRange__Interval_new2(long long start, long long end, QMediaTimeRange__Interval** outptr_QMediaTimeRange__Interval) {
-	QMediaTimeRange::Interval* ret = new QMediaTimeRange::Interval(static_cast<qint64>(start), static_cast<qint64>(end));
-	*outptr_QMediaTimeRange__Interval = ret;
+QMediaTimeRange__Interval* QMediaTimeRange__Interval_new2(long long start, long long end) {
+	return new QMediaTimeRange::Interval(static_cast<qint64>(start), static_cast<qint64>(end));
 }
 
-void QMediaTimeRange__Interval_new3(QMediaTimeRange__Interval* param1, QMediaTimeRange__Interval** outptr_QMediaTimeRange__Interval) {
-	QMediaTimeRange::Interval* ret = new QMediaTimeRange::Interval(*param1);
-	*outptr_QMediaTimeRange__Interval = ret;
+QMediaTimeRange__Interval* QMediaTimeRange__Interval_new3(QMediaTimeRange__Interval* param1) {
+	return new QMediaTimeRange::Interval(*param1);
 }
 
 long long QMediaTimeRange__Interval_Start(const QMediaTimeRange__Interval* self) {

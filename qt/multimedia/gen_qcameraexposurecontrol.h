@@ -28,6 +28,7 @@ typedef struct QObject QObject;
 typedef struct QVariant QVariant;
 #endif
 
+void QCameraExposureControl_virtbase(QCameraExposureControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QCameraExposureControl_MetaObject(const QCameraExposureControl* self);
 void* QCameraExposureControl_Metacast(QCameraExposureControl* self, const char* param1);
 struct miqt_string QCameraExposureControl_Tr(const char* s);

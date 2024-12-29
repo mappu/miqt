@@ -55,24 +55,21 @@ func newQScriptContext(h *C.QScriptContext) *QScriptContext {
 	if h == nil {
 		return nil
 	}
+
 	return &QScriptContext{h: h}
 }
 
 // UnsafeNewQScriptContext constructs the type using only unsafe pointers.
 func UnsafeNewQScriptContext(h unsafe.Pointer) *QScriptContext {
-	if h == nil {
-		return nil
-	}
-
-	return &QScriptContext{h: (*C.QScriptContext)(h)}
+	return newQScriptContext((*C.QScriptContext)(h))
 }
 
 func (this *QScriptContext) ParentContext() *QScriptContext {
-	return UnsafeNewQScriptContext(unsafe.Pointer(C.QScriptContext_ParentContext(this.h)))
+	return newQScriptContext(C.QScriptContext_ParentContext(this.h))
 }
 
 func (this *QScriptContext) Engine() *QScriptEngine {
-	return UnsafeNewQScriptEngine(unsafe.Pointer(C.QScriptContext_Engine(this.h)), nil)
+	return newQScriptEngine(C.QScriptContext_Engine(this.h))
 }
 
 func (this *QScriptContext) State() QScriptContext__ExecutionState {
@@ -80,8 +77,7 @@ func (this *QScriptContext) State() QScriptContext__ExecutionState {
 }
 
 func (this *QScriptContext) Callee() *QScriptValue {
-	_ret := C.QScriptContext_Callee(this.h)
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptContext_Callee(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -91,15 +87,13 @@ func (this *QScriptContext) ArgumentCount() int {
 }
 
 func (this *QScriptContext) Argument(index int) *QScriptValue {
-	_ret := C.QScriptContext_Argument(this.h, (C.int)(index))
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptContext_Argument(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptContext) ArgumentsObject() *QScriptValue {
-	_ret := C.QScriptContext_ArgumentsObject(this.h)
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptContext_ArgumentsObject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -109,8 +103,7 @@ func (this *QScriptContext) ScopeChain() []QScriptValue {
 	_ret := make([]QScriptValue, int(_ma.len))
 	_outCast := (*[0xffff]*C.QScriptValue)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQScriptValue(_lv_ret)
+		_lv_goptr := newQScriptValue(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -122,15 +115,13 @@ func (this *QScriptContext) PushScope(object *QScriptValue) {
 }
 
 func (this *QScriptContext) PopScope() *QScriptValue {
-	_ret := C.QScriptContext_PopScope(this.h)
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptContext_PopScope(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptContext) ReturnValue() *QScriptValue {
-	_ret := C.QScriptContext_ReturnValue(this.h)
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptContext_ReturnValue(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -140,8 +131,7 @@ func (this *QScriptContext) SetReturnValue(result *QScriptValue) {
 }
 
 func (this *QScriptContext) ActivationObject() *QScriptValue {
-	_ret := C.QScriptContext_ActivationObject(this.h)
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptContext_ActivationObject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -151,8 +141,7 @@ func (this *QScriptContext) SetActivationObject(activation *QScriptValue) {
 }
 
 func (this *QScriptContext) ThisObject() *QScriptValue {
-	_ret := C.QScriptContext_ThisObject(this.h)
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptContext_ThisObject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -166,8 +155,7 @@ func (this *QScriptContext) IsCalledAsConstructor() bool {
 }
 
 func (this *QScriptContext) ThrowValue(value *QScriptValue) *QScriptValue {
-	_ret := C.QScriptContext_ThrowValue(this.h, value.cPointer())
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptContext_ThrowValue(this.h, value.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -177,8 +165,7 @@ func (this *QScriptContext) ThrowError(error QScriptContext__Error, text string)
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	_ret := C.QScriptContext_ThrowError(this.h, (C.int)(error), text_ms)
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptContext_ThrowError(this.h, (C.int)(error), text_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -188,8 +175,7 @@ func (this *QScriptContext) ThrowErrorWithText(text string) *QScriptValue {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	_ret := C.QScriptContext_ThrowErrorWithText(this.h, text_ms)
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptContext_ThrowErrorWithText(this.h, text_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

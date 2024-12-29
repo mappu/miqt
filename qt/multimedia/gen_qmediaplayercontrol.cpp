@@ -10,7 +10,15 @@
 #include <cstring>
 #include <qmediaplayercontrol.h>
 #include "gen_qmediaplayercontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
+
+void QMediaPlayerControl_virtbase(QMediaPlayerControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
 
 QMetaObject* QMediaPlayerControl_MetaObject(const QMediaPlayerControl* self) {
 	return (QMetaObject*) self->metaObject();

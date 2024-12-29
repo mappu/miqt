@@ -14,6 +14,10 @@
 #include <QTimerEvent>
 #include <qcamera.h>
 #include "gen_qcamera.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQCamera : public virtual QCamera {
@@ -201,40 +205,32 @@ public:
 
 };
 
-void QCamera_new(QCamera** outptr_QCamera, QObject** outptr_QObject) {
-	MiqtVirtualQCamera* ret = new MiqtVirtualQCamera();
-	*outptr_QCamera = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QCamera* QCamera_new() {
+	return new MiqtVirtualQCamera();
 }
 
-void QCamera_new2(QCameraDevice* cameraDevice, QCamera** outptr_QCamera, QObject** outptr_QObject) {
-	MiqtVirtualQCamera* ret = new MiqtVirtualQCamera(*cameraDevice);
-	*outptr_QCamera = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QCamera* QCamera_new2(QCameraDevice* cameraDevice) {
+	return new MiqtVirtualQCamera(*cameraDevice);
 }
 
-void QCamera_new3(int position, QCamera** outptr_QCamera, QObject** outptr_QObject) {
-	MiqtVirtualQCamera* ret = new MiqtVirtualQCamera(static_cast<QCameraDevice::Position>(position));
-	*outptr_QCamera = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QCamera* QCamera_new3(int position) {
+	return new MiqtVirtualQCamera(static_cast<QCameraDevice::Position>(position));
 }
 
-void QCamera_new4(QObject* parent, QCamera** outptr_QCamera, QObject** outptr_QObject) {
-	MiqtVirtualQCamera* ret = new MiqtVirtualQCamera(parent);
-	*outptr_QCamera = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QCamera* QCamera_new4(QObject* parent) {
+	return new MiqtVirtualQCamera(parent);
 }
 
-void QCamera_new5(QCameraDevice* cameraDevice, QObject* parent, QCamera** outptr_QCamera, QObject** outptr_QObject) {
-	MiqtVirtualQCamera* ret = new MiqtVirtualQCamera(*cameraDevice, parent);
-	*outptr_QCamera = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QCamera* QCamera_new5(QCameraDevice* cameraDevice, QObject* parent) {
+	return new MiqtVirtualQCamera(*cameraDevice, parent);
 }
 
-void QCamera_new6(int position, QObject* parent, QCamera** outptr_QCamera, QObject** outptr_QObject) {
-	MiqtVirtualQCamera* ret = new MiqtVirtualQCamera(static_cast<QCameraDevice::Position>(position), parent);
-	*outptr_QCamera = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QCamera* QCamera_new6(int position, QObject* parent) {
+	return new MiqtVirtualQCamera(static_cast<QCameraDevice::Position>(position), parent);
+}
+
+void QCamera_virtbase(QCamera* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QCamera_MetaObject(const QCamera* self) {

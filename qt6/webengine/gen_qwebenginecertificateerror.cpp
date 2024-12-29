@@ -7,11 +7,14 @@
 #include <QWebEngineCertificateError>
 #include <qwebenginecertificateerror.h>
 #include "gen_qwebenginecertificateerror.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QWebEngineCertificateError_new(QWebEngineCertificateError* other, QWebEngineCertificateError** outptr_QWebEngineCertificateError) {
-	QWebEngineCertificateError* ret = new QWebEngineCertificateError(*other);
-	*outptr_QWebEngineCertificateError = ret;
+QWebEngineCertificateError* QWebEngineCertificateError_new(QWebEngineCertificateError* other) {
+	return new QWebEngineCertificateError(*other);
 }
 
 void QWebEngineCertificateError_OperatorAssign(QWebEngineCertificateError* self, QWebEngineCertificateError* other) {

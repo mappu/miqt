@@ -37,44 +37,35 @@ func newQCameraInfo(h *C.QCameraInfo) *QCameraInfo {
 	if h == nil {
 		return nil
 	}
+
 	return &QCameraInfo{h: h}
 }
 
 // UnsafeNewQCameraInfo constructs the type using only unsafe pointers.
 func UnsafeNewQCameraInfo(h unsafe.Pointer) *QCameraInfo {
-	if h == nil {
-		return nil
-	}
-
-	return &QCameraInfo{h: (*C.QCameraInfo)(h)}
+	return newQCameraInfo((*C.QCameraInfo)(h))
 }
 
 // NewQCameraInfo constructs a new QCameraInfo object.
 func NewQCameraInfo() *QCameraInfo {
-	var outptr_QCameraInfo *C.QCameraInfo = nil
 
-	C.QCameraInfo_new(&outptr_QCameraInfo)
-	ret := newQCameraInfo(outptr_QCameraInfo)
+	ret := newQCameraInfo(C.QCameraInfo_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCameraInfo2 constructs a new QCameraInfo object.
 func NewQCameraInfo2(camera *QCamera) *QCameraInfo {
-	var outptr_QCameraInfo *C.QCameraInfo = nil
 
-	C.QCameraInfo_new2(camera.cPointer(), &outptr_QCameraInfo)
-	ret := newQCameraInfo(outptr_QCameraInfo)
+	ret := newQCameraInfo(C.QCameraInfo_new2(camera.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCameraInfo3 constructs a new QCameraInfo object.
 func NewQCameraInfo3(other *QCameraInfo) *QCameraInfo {
-	var outptr_QCameraInfo *C.QCameraInfo = nil
 
-	C.QCameraInfo_new3(other.cPointer(), &outptr_QCameraInfo)
-	ret := newQCameraInfo(outptr_QCameraInfo)
+	ret := newQCameraInfo(C.QCameraInfo_new3(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -84,10 +75,8 @@ func NewQCameraInfo4(name []byte) *QCameraInfo {
 	name_alias := C.struct_miqt_string{}
 	name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
 	name_alias.len = C.size_t(len(name))
-	var outptr_QCameraInfo *C.QCameraInfo = nil
 
-	C.QCameraInfo_new4(name_alias, &outptr_QCameraInfo)
-	ret := newQCameraInfo(outptr_QCameraInfo)
+	ret := newQCameraInfo(C.QCameraInfo_new4(name_alias))
 	ret.isSubclass = true
 	return ret
 }
@@ -131,8 +120,7 @@ func (this *QCameraInfo) Orientation() int {
 }
 
 func QCameraInfo_DefaultCamera() *QCameraInfo {
-	_ret := C.QCameraInfo_DefaultCamera()
-	_goptr := newQCameraInfo(_ret)
+	_goptr := newQCameraInfo(C.QCameraInfo_DefaultCamera())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -142,8 +130,7 @@ func QCameraInfo_AvailableCameras() []QCameraInfo {
 	_ret := make([]QCameraInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QCameraInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQCameraInfo(_lv_ret)
+		_lv_goptr := newQCameraInfo(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -155,8 +142,7 @@ func QCameraInfo_AvailableCameras1(position QCamera__Position) []QCameraInfo {
 	_ret := make([]QCameraInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QCameraInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQCameraInfo(_lv_ret)
+		_lv_goptr := newQCameraInfo(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}

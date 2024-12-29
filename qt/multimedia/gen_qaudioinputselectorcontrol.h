@@ -26,6 +26,7 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif
 
+void QAudioInputSelectorControl_virtbase(QAudioInputSelectorControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QAudioInputSelectorControl_MetaObject(const QAudioInputSelectorControl* self);
 void* QAudioInputSelectorControl_Metacast(QAudioInputSelectorControl* self, const char* param1);
 struct miqt_string QAudioInputSelectorControl_Tr(const char* s);

@@ -20,8 +20,8 @@ class QSslEllipticCurve;
 typedef struct QSslEllipticCurve QSslEllipticCurve;
 #endif
 
-void QSslEllipticCurve_new(QSslEllipticCurve** outptr_QSslEllipticCurve);
-void QSslEllipticCurve_new2(QSslEllipticCurve* param1, QSslEllipticCurve** outptr_QSslEllipticCurve);
+QSslEllipticCurve* QSslEllipticCurve_new();
+QSslEllipticCurve* QSslEllipticCurve_new2(QSslEllipticCurve* param1);
 QSslEllipticCurve* QSslEllipticCurve_FromShortName(struct miqt_string name);
 QSslEllipticCurve* QSslEllipticCurve_FromLongName(struct miqt_string name);
 struct miqt_string QSslEllipticCurve_ShortName(const QSslEllipticCurve* self);

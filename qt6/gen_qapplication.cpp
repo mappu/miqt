@@ -16,6 +16,10 @@
 #include <QWidget>
 #include <qapplication.h>
 #include "gen_qapplication.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQApplication : public virtual QApplication {
@@ -75,20 +79,16 @@ public:
 
 };
 
-void QApplication_new(int* argc, char** argv, QApplication** outptr_QApplication, QGuiApplication** outptr_QGuiApplication, QCoreApplication** outptr_QCoreApplication, QObject** outptr_QObject) {
-	MiqtVirtualQApplication* ret = new MiqtVirtualQApplication(static_cast<int&>(*argc), argv);
-	*outptr_QApplication = ret;
-	*outptr_QGuiApplication = static_cast<QGuiApplication*>(ret);
-	*outptr_QCoreApplication = static_cast<QCoreApplication*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QApplication* QApplication_new(int* argc, char** argv) {
+	return new MiqtVirtualQApplication(static_cast<int&>(*argc), argv);
 }
 
-void QApplication_new2(int* argc, char** argv, int param3, QApplication** outptr_QApplication, QGuiApplication** outptr_QGuiApplication, QCoreApplication** outptr_QCoreApplication, QObject** outptr_QObject) {
-	MiqtVirtualQApplication* ret = new MiqtVirtualQApplication(static_cast<int&>(*argc), argv, static_cast<int>(param3));
-	*outptr_QApplication = ret;
-	*outptr_QGuiApplication = static_cast<QGuiApplication*>(ret);
-	*outptr_QCoreApplication = static_cast<QCoreApplication*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QApplication* QApplication_new2(int* argc, char** argv, int param3) {
+	return new MiqtVirtualQApplication(static_cast<int&>(*argc), argv, static_cast<int>(param3));
+}
+
+void QApplication_virtbase(QApplication* src, QGuiApplication** outptr_QGuiApplication) {
+	*outptr_QGuiApplication = static_cast<QGuiApplication*>(src);
 }
 
 QMetaObject* QApplication_MetaObject(const QApplication* self) {

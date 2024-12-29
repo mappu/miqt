@@ -36,7 +36,8 @@ typedef struct QObject QObject;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QActionGroup_new(QObject* parent, QActionGroup** outptr_QActionGroup, QObject** outptr_QObject);
+QActionGroup* QActionGroup_new(QObject* parent);
+void QActionGroup_virtbase(QActionGroup* src, QObject** outptr_QObject);
 QMetaObject* QActionGroup_MetaObject(const QActionGroup* self);
 void* QActionGroup_Metacast(QActionGroup* self, const char* param1);
 struct miqt_string QActionGroup_Tr(const char* s);

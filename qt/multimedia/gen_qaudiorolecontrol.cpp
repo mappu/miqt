@@ -8,7 +8,15 @@
 #include <cstring>
 #include <qaudiorolecontrol.h>
 #include "gen_qaudiorolecontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
+
+void QAudioRoleControl_virtbase(QAudioRoleControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
 
 QMetaObject* QAudioRoleControl_MetaObject(const QAudioRoleControl* self) {
 	return (QMetaObject*) self->metaObject();

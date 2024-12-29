@@ -21,11 +21,14 @@
 #include <QVariant>
 #include <qscriptengine.h>
 #include "gen_qscriptengine.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QScriptSyntaxCheckResult_new(QScriptSyntaxCheckResult* other, QScriptSyntaxCheckResult** outptr_QScriptSyntaxCheckResult) {
-	QScriptSyntaxCheckResult* ret = new QScriptSyntaxCheckResult(*other);
-	*outptr_QScriptSyntaxCheckResult = ret;
+QScriptSyntaxCheckResult* QScriptSyntaxCheckResult_new(QScriptSyntaxCheckResult* other) {
+	return new QScriptSyntaxCheckResult(*other);
 }
 
 int QScriptSyntaxCheckResult_State(const QScriptSyntaxCheckResult* self) {
@@ -245,16 +248,16 @@ public:
 
 };
 
-void QScriptEngine_new(QScriptEngine** outptr_QScriptEngine, QObject** outptr_QObject) {
-	MiqtVirtualQScriptEngine* ret = new MiqtVirtualQScriptEngine();
-	*outptr_QScriptEngine = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QScriptEngine* QScriptEngine_new() {
+	return new MiqtVirtualQScriptEngine();
 }
 
-void QScriptEngine_new2(QObject* parent, QScriptEngine** outptr_QScriptEngine, QObject** outptr_QObject) {
-	MiqtVirtualQScriptEngine* ret = new MiqtVirtualQScriptEngine(parent);
-	*outptr_QScriptEngine = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QScriptEngine* QScriptEngine_new2(QObject* parent) {
+	return new MiqtVirtualQScriptEngine(parent);
+}
+
+void QScriptEngine_virtbase(QScriptEngine* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QScriptEngine_MetaObject(const QScriptEngine* self) {

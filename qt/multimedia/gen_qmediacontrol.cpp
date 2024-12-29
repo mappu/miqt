@@ -6,7 +6,15 @@
 #include <cstring>
 #include <qmediacontrol.h>
 #include "gen_qmediacontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
+
+void QMediaControl_virtbase(QMediaControl* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
 
 QMetaObject* QMediaControl_MetaObject(const QMediaControl* self) {
 	return (QMetaObject*) self->metaObject();

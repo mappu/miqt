@@ -8,7 +8,15 @@
 #include <QWidget>
 #include <qvideowidgetcontrol.h>
 #include "gen_qvideowidgetcontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
+
+void QVideoWidgetControl_virtbase(QVideoWidgetControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
 
 QMetaObject* QVideoWidgetControl_MetaObject(const QVideoWidgetControl* self) {
 	return (QMetaObject*) self->metaObject();

@@ -5,16 +5,18 @@
 #include <QVariant>
 #include <qsslcertificateextension.h>
 #include "gen_qsslcertificateextension.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QSslCertificateExtension_new(QSslCertificateExtension** outptr_QSslCertificateExtension) {
-	QSslCertificateExtension* ret = new QSslCertificateExtension();
-	*outptr_QSslCertificateExtension = ret;
+QSslCertificateExtension* QSslCertificateExtension_new() {
+	return new QSslCertificateExtension();
 }
 
-void QSslCertificateExtension_new2(QSslCertificateExtension* other, QSslCertificateExtension** outptr_QSslCertificateExtension) {
-	QSslCertificateExtension* ret = new QSslCertificateExtension(*other);
-	*outptr_QSslCertificateExtension = ret;
+QSslCertificateExtension* QSslCertificateExtension_new2(QSslCertificateExtension* other) {
+	return new QSslCertificateExtension(*other);
 }
 
 void QSslCertificateExtension_OperatorAssign(QSslCertificateExtension* self, QSslCertificateExtension* other) {

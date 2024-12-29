@@ -11,7 +11,15 @@
 #include <cstring>
 #include <qaudiosystem.h>
 #include "gen_qaudiosystem.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
+
+void QAbstractAudioDeviceInfo_virtbase(QAbstractAudioDeviceInfo* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
 
 QMetaObject* QAbstractAudioDeviceInfo_MetaObject(const QAbstractAudioDeviceInfo* self) {
 	return (QMetaObject*) self->metaObject();
@@ -199,6 +207,10 @@ void QAbstractAudioDeviceInfo_Delete(QAbstractAudioDeviceInfo* self, bool isSubc
 	} else {
 		delete self;
 	}
+}
+
+void QAbstractAudioOutput_virtbase(QAbstractAudioOutput* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QAbstractAudioOutput_MetaObject(const QAbstractAudioOutput* self) {
@@ -416,6 +428,10 @@ void QAbstractAudioOutput_Delete(QAbstractAudioOutput* self, bool isSubclass) {
 	} else {
 		delete self;
 	}
+}
+
+void QAbstractAudioInput_virtbase(QAbstractAudioInput* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QAbstractAudioInput_MetaObject(const QAbstractAudioInput* self) {

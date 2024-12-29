@@ -37,6 +37,10 @@
 #include <QWidget>
 #include <qtoolbar.h>
 #include "gen_qtoolbar.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQToolBar : public virtual QToolBar {
@@ -1051,38 +1055,26 @@ public:
 
 };
 
-void QToolBar_new(QWidget* parent, QToolBar** outptr_QToolBar, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQToolBar* ret = new MiqtVirtualQToolBar(parent);
-	*outptr_QToolBar = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QToolBar* QToolBar_new(QWidget* parent) {
+	return new MiqtVirtualQToolBar(parent);
 }
 
-void QToolBar_new2(struct miqt_string title, QToolBar** outptr_QToolBar, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QToolBar* QToolBar_new2(struct miqt_string title) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
-	MiqtVirtualQToolBar* ret = new MiqtVirtualQToolBar(title_QString);
-	*outptr_QToolBar = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQToolBar(title_QString);
 }
 
-void QToolBar_new3(QToolBar** outptr_QToolBar, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQToolBar* ret = new MiqtVirtualQToolBar();
-	*outptr_QToolBar = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QToolBar* QToolBar_new3() {
+	return new MiqtVirtualQToolBar();
 }
 
-void QToolBar_new4(struct miqt_string title, QWidget* parent, QToolBar** outptr_QToolBar, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QToolBar* QToolBar_new4(struct miqt_string title, QWidget* parent) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
-	MiqtVirtualQToolBar* ret = new MiqtVirtualQToolBar(title_QString, parent);
-	*outptr_QToolBar = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQToolBar(title_QString, parent);
+}
+
+void QToolBar_virtbase(QToolBar* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QToolBar_MetaObject(const QToolBar* self) {

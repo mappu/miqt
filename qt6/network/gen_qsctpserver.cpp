@@ -9,6 +9,10 @@
 #include <QTcpSocket>
 #include <qsctpserver.h>
 #include "gen_qsctpserver.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSctpServer : public virtual QSctpServer {
@@ -90,18 +94,16 @@ public:
 
 };
 
-void QSctpServer_new(QSctpServer** outptr_QSctpServer, QTcpServer** outptr_QTcpServer, QObject** outptr_QObject) {
-	MiqtVirtualQSctpServer* ret = new MiqtVirtualQSctpServer();
-	*outptr_QSctpServer = ret;
-	*outptr_QTcpServer = static_cast<QTcpServer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSctpServer* QSctpServer_new() {
+	return new MiqtVirtualQSctpServer();
 }
 
-void QSctpServer_new2(QObject* parent, QSctpServer** outptr_QSctpServer, QTcpServer** outptr_QTcpServer, QObject** outptr_QObject) {
-	MiqtVirtualQSctpServer* ret = new MiqtVirtualQSctpServer(parent);
-	*outptr_QSctpServer = ret;
-	*outptr_QTcpServer = static_cast<QTcpServer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSctpServer* QSctpServer_new2(QObject* parent) {
+	return new MiqtVirtualQSctpServer(parent);
+}
+
+void QSctpServer_virtbase(QSctpServer* src, QTcpServer** outptr_QTcpServer) {
+	*outptr_QTcpServer = static_cast<QTcpServer*>(src);
 }
 
 QMetaObject* QSctpServer_MetaObject(const QSctpServer* self) {

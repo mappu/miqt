@@ -84,9 +84,10 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QMdiSubWindow_new(QWidget* parent, QMdiSubWindow** outptr_QMdiSubWindow, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QMdiSubWindow_new2(QMdiSubWindow** outptr_QMdiSubWindow, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QMdiSubWindow_new3(QWidget* parent, int flags, QMdiSubWindow** outptr_QMdiSubWindow, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QMdiSubWindow* QMdiSubWindow_new(QWidget* parent);
+QMdiSubWindow* QMdiSubWindow_new2();
+QMdiSubWindow* QMdiSubWindow_new3(QWidget* parent, int flags);
+void QMdiSubWindow_virtbase(QMdiSubWindow* src, QWidget** outptr_QWidget);
 QMetaObject* QMdiSubWindow_MetaObject(const QMdiSubWindow* self);
 void* QMdiSubWindow_Metacast(QMdiSubWindow* self, const char* param1);
 struct miqt_string QMdiSubWindow_Tr(const char* s);

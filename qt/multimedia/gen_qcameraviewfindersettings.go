@@ -38,34 +38,27 @@ func newQCameraViewfinderSettings(h *C.QCameraViewfinderSettings) *QCameraViewfi
 	if h == nil {
 		return nil
 	}
+
 	return &QCameraViewfinderSettings{h: h}
 }
 
 // UnsafeNewQCameraViewfinderSettings constructs the type using only unsafe pointers.
 func UnsafeNewQCameraViewfinderSettings(h unsafe.Pointer) *QCameraViewfinderSettings {
-	if h == nil {
-		return nil
-	}
-
-	return &QCameraViewfinderSettings{h: (*C.QCameraViewfinderSettings)(h)}
+	return newQCameraViewfinderSettings((*C.QCameraViewfinderSettings)(h))
 }
 
 // NewQCameraViewfinderSettings constructs a new QCameraViewfinderSettings object.
 func NewQCameraViewfinderSettings() *QCameraViewfinderSettings {
-	var outptr_QCameraViewfinderSettings *C.QCameraViewfinderSettings = nil
 
-	C.QCameraViewfinderSettings_new(&outptr_QCameraViewfinderSettings)
-	ret := newQCameraViewfinderSettings(outptr_QCameraViewfinderSettings)
+	ret := newQCameraViewfinderSettings(C.QCameraViewfinderSettings_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCameraViewfinderSettings2 constructs a new QCameraViewfinderSettings object.
 func NewQCameraViewfinderSettings2(other *QCameraViewfinderSettings) *QCameraViewfinderSettings {
-	var outptr_QCameraViewfinderSettings *C.QCameraViewfinderSettings = nil
 
-	C.QCameraViewfinderSettings_new2(other.cPointer(), &outptr_QCameraViewfinderSettings)
-	ret := newQCameraViewfinderSettings(outptr_QCameraViewfinderSettings)
+	ret := newQCameraViewfinderSettings(C.QCameraViewfinderSettings_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -83,8 +76,7 @@ func (this *QCameraViewfinderSettings) IsNull() bool {
 }
 
 func (this *QCameraViewfinderSettings) Resolution() *qt.QSize {
-	_ret := C.QCameraViewfinderSettings_Resolution(this.h)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QCameraViewfinderSettings_Resolution(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -122,8 +114,7 @@ func (this *QCameraViewfinderSettings) SetPixelFormat(format QVideoFrame__PixelF
 }
 
 func (this *QCameraViewfinderSettings) PixelAspectRatio() *qt.QSize {
-	_ret := C.QCameraViewfinderSettings_PixelAspectRatio(this.h)
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QCameraViewfinderSettings_PixelAspectRatio(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -4,6 +4,10 @@
 #include <QObject>
 #include <qgesturerecognizer.h>
 #include "gen_qgesturerecognizer.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGestureRecognizer : public virtual QGestureRecognizer {
@@ -80,9 +84,8 @@ public:
 
 };
 
-void QGestureRecognizer_new(QGestureRecognizer** outptr_QGestureRecognizer) {
-	MiqtVirtualQGestureRecognizer* ret = new MiqtVirtualQGestureRecognizer();
-	*outptr_QGestureRecognizer = ret;
+QGestureRecognizer* QGestureRecognizer_new() {
+	return new MiqtVirtualQGestureRecognizer();
 }
 
 QGesture* QGestureRecognizer_Create(QGestureRecognizer* self, QObject* target) {

@@ -8,27 +8,27 @@
 #include <QUrlQuery>
 #include <qurlquery.h>
 #include "gen_qurlquery.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QUrlQuery_new(QUrlQuery** outptr_QUrlQuery) {
-	QUrlQuery* ret = new QUrlQuery();
-	*outptr_QUrlQuery = ret;
+QUrlQuery* QUrlQuery_new() {
+	return new QUrlQuery();
 }
 
-void QUrlQuery_new2(QUrl* url, QUrlQuery** outptr_QUrlQuery) {
-	QUrlQuery* ret = new QUrlQuery(*url);
-	*outptr_QUrlQuery = ret;
+QUrlQuery* QUrlQuery_new2(QUrl* url) {
+	return new QUrlQuery(*url);
 }
 
-void QUrlQuery_new3(struct miqt_string queryString, QUrlQuery** outptr_QUrlQuery) {
+QUrlQuery* QUrlQuery_new3(struct miqt_string queryString) {
 	QString queryString_QString = QString::fromUtf8(queryString.data, queryString.len);
-	QUrlQuery* ret = new QUrlQuery(queryString_QString);
-	*outptr_QUrlQuery = ret;
+	return new QUrlQuery(queryString_QString);
 }
 
-void QUrlQuery_new4(QUrlQuery* other, QUrlQuery** outptr_QUrlQuery) {
-	QUrlQuery* ret = new QUrlQuery(*other);
-	*outptr_QUrlQuery = ret;
+QUrlQuery* QUrlQuery_new4(QUrlQuery* other) {
+	return new QUrlQuery(*other);
 }
 
 void QUrlQuery_OperatorAssign(QUrlQuery* self, QUrlQuery* other) {

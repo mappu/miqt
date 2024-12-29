@@ -3,16 +3,18 @@
 #include <QRgba64>
 #include <qcolortransform.h>
 #include "gen_qcolortransform.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QColorTransform_new(QColorTransform** outptr_QColorTransform) {
-	QColorTransform* ret = new QColorTransform();
-	*outptr_QColorTransform = ret;
+QColorTransform* QColorTransform_new() {
+	return new QColorTransform();
 }
 
-void QColorTransform_new2(QColorTransform* colorTransform, QColorTransform** outptr_QColorTransform) {
-	QColorTransform* ret = new QColorTransform(*colorTransform);
-	*outptr_QColorTransform = ret;
+QColorTransform* QColorTransform_new2(QColorTransform* colorTransform) {
+	return new QColorTransform(*colorTransform);
 }
 
 void QColorTransform_OperatorAssign(QColorTransform* self, QColorTransform* other) {

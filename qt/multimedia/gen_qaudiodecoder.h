@@ -34,8 +34,9 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif
 
-void QAudioDecoder_new(QAudioDecoder** outptr_QAudioDecoder, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject);
-void QAudioDecoder_new2(QObject* parent, QAudioDecoder** outptr_QAudioDecoder, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject);
+QAudioDecoder* QAudioDecoder_new();
+QAudioDecoder* QAudioDecoder_new2(QObject* parent);
+void QAudioDecoder_virtbase(QAudioDecoder* src, QMediaObject** outptr_QMediaObject);
 QMetaObject* QAudioDecoder_MetaObject(const QAudioDecoder* self);
 void* QAudioDecoder_Metacast(QAudioDecoder* self, const char* param1);
 struct miqt_string QAudioDecoder_Tr(const char* s);

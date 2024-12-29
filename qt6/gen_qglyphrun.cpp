@@ -5,16 +5,18 @@
 #include <QRectF>
 #include <qglyphrun.h>
 #include "gen_qglyphrun.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QGlyphRun_new(QGlyphRun** outptr_QGlyphRun) {
-	QGlyphRun* ret = new QGlyphRun();
-	*outptr_QGlyphRun = ret;
+QGlyphRun* QGlyphRun_new() {
+	return new QGlyphRun();
 }
 
-void QGlyphRun_new2(QGlyphRun* other, QGlyphRun** outptr_QGlyphRun) {
-	QGlyphRun* ret = new QGlyphRun(*other);
-	*outptr_QGlyphRun = ret;
+QGlyphRun* QGlyphRun_new2(QGlyphRun* other) {
+	return new QGlyphRun(*other);
 }
 
 void QGlyphRun_OperatorAssign(QGlyphRun* self, QGlyphRun* other) {

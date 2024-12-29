@@ -39,6 +39,10 @@
 #include <QWidget>
 #include <qmainwindow.h>
 #include "gen_qmainwindow.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQMainWindow : public virtual QMainWindow {
@@ -1049,28 +1053,20 @@ public:
 
 };
 
-void QMainWindow_new(QWidget* parent, QMainWindow** outptr_QMainWindow, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQMainWindow* ret = new MiqtVirtualQMainWindow(parent);
-	*outptr_QMainWindow = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QMainWindow* QMainWindow_new(QWidget* parent) {
+	return new MiqtVirtualQMainWindow(parent);
 }
 
-void QMainWindow_new2(QMainWindow** outptr_QMainWindow, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQMainWindow* ret = new MiqtVirtualQMainWindow();
-	*outptr_QMainWindow = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QMainWindow* QMainWindow_new2() {
+	return new MiqtVirtualQMainWindow();
 }
 
-void QMainWindow_new3(QWidget* parent, int flags, QMainWindow** outptr_QMainWindow, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQMainWindow* ret = new MiqtVirtualQMainWindow(parent, static_cast<Qt::WindowFlags>(flags));
-	*outptr_QMainWindow = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QMainWindow* QMainWindow_new3(QWidget* parent, int flags) {
+	return new MiqtVirtualQMainWindow(parent, static_cast<Qt::WindowFlags>(flags));
+}
+
+void QMainWindow_virtbase(QMainWindow* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QMainWindow_MetaObject(const QMainWindow* self) {

@@ -37,24 +37,19 @@ func newQStringView(h *C.QStringView) *QStringView {
 	if h == nil {
 		return nil
 	}
+
 	return &QStringView{h: h}
 }
 
 // UnsafeNewQStringView constructs the type using only unsafe pointers.
 func UnsafeNewQStringView(h unsafe.Pointer) *QStringView {
-	if h == nil {
-		return nil
-	}
-
-	return &QStringView{h: (*C.QStringView)(h)}
+	return newQStringView((*C.QStringView)(h))
 }
 
 // NewQStringView constructs a new QStringView object.
 func NewQStringView() *QStringView {
-	var outptr_QStringView *C.QStringView = nil
 
-	C.QStringView_new(&outptr_QStringView)
-	ret := newQStringView(outptr_QStringView)
+	ret := newQStringView(C.QStringView_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -71,12 +66,11 @@ func (this *QStringView) Size() int64 {
 }
 
 func (this *QStringView) Data() *QChar {
-	return UnsafeNewQChar(unsafe.Pointer(C.QStringView_Data(this.h)))
+	return newQChar(C.QStringView_Data(this.h))
 }
 
 func (this *QStringView) OperatorSubscript(n int64) *QChar {
-	_ret := C.QStringView_OperatorSubscript(this.h, (C.ptrdiff_t)(n))
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QStringView_OperatorSubscript(this.h, (C.ptrdiff_t)(n)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -113,8 +107,7 @@ func (this *QStringView) ToUcs4() []uint {
 }
 
 func (this *QStringView) At(n int64) *QChar {
-	_ret := C.QStringView_At(this.h, (C.ptrdiff_t)(n))
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QStringView_At(this.h, (C.ptrdiff_t)(n)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -216,19 +209,19 @@ func (this *QStringView) ToDouble() float64 {
 }
 
 func (this *QStringView) Begin() *QChar {
-	return UnsafeNewQChar(unsafe.Pointer(C.QStringView_Begin(this.h)))
+	return newQChar(C.QStringView_Begin(this.h))
 }
 
 func (this *QStringView) End() *QChar {
-	return UnsafeNewQChar(unsafe.Pointer(C.QStringView_End(this.h)))
+	return newQChar(C.QStringView_End(this.h))
 }
 
 func (this *QStringView) Cbegin() *QChar {
-	return UnsafeNewQChar(unsafe.Pointer(C.QStringView_Cbegin(this.h)))
+	return newQChar(C.QStringView_Cbegin(this.h))
 }
 
 func (this *QStringView) Cend() *QChar {
-	return UnsafeNewQChar(unsafe.Pointer(C.QStringView_Cend(this.h)))
+	return newQChar(C.QStringView_Cend(this.h))
 }
 
 func (this *QStringView) Empty() bool {
@@ -236,15 +229,13 @@ func (this *QStringView) Empty() bool {
 }
 
 func (this *QStringView) Front() *QChar {
-	_ret := C.QStringView_Front(this.h)
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QStringView_Front(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStringView) Back() *QChar {
-	_ret := C.QStringView_Back(this.h)
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QStringView_Back(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -262,15 +253,13 @@ func (this *QStringView) Length() int {
 }
 
 func (this *QStringView) First() *QChar {
-	_ret := C.QStringView_First(this.h)
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QStringView_First(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStringView) Last() *QChar {
-	_ret := C.QStringView_Last(this.h)
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QStringView_Last(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

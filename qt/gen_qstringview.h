@@ -22,7 +22,7 @@ typedef struct QChar QChar;
 typedef struct QStringView QStringView;
 #endif
 
-void QStringView_new(QStringView** outptr_QStringView);
+QStringView* QStringView_new();
 struct miqt_string QStringView_ToString(const QStringView* self);
 ptrdiff_t QStringView_Size(const QStringView* self);
 QChar* QStringView_Data(const QStringView* self);

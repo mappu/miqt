@@ -34,8 +34,9 @@ typedef struct QsciLexerRuby QsciLexerRuby;
 typedef struct QsciScintilla QsciScintilla;
 #endif
 
-void QsciLexerRuby_new(QsciLexerRuby** outptr_QsciLexerRuby, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
-void QsciLexerRuby_new2(QObject* parent, QsciLexerRuby** outptr_QsciLexerRuby, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+QsciLexerRuby* QsciLexerRuby_new();
+QsciLexerRuby* QsciLexerRuby_new2(QObject* parent);
+void QsciLexerRuby_virtbase(QsciLexerRuby* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerRuby_MetaObject(const QsciLexerRuby* self);
 void* QsciLexerRuby_Metacast(QsciLexerRuby* self, const char* param1);
 struct miqt_string QsciLexerRuby_Tr(const char* s);

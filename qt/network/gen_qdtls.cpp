@@ -20,6 +20,10 @@
 #include <QUdpSocket>
 #include <qdtls.h>
 #include "gen_qdtls.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQDtlsClientVerifier : public virtual QDtlsClientVerifier {
@@ -203,16 +207,16 @@ public:
 
 };
 
-void QDtlsClientVerifier_new(QDtlsClientVerifier** outptr_QDtlsClientVerifier, QObject** outptr_QObject) {
-	MiqtVirtualQDtlsClientVerifier* ret = new MiqtVirtualQDtlsClientVerifier();
-	*outptr_QDtlsClientVerifier = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QDtlsClientVerifier* QDtlsClientVerifier_new() {
+	return new MiqtVirtualQDtlsClientVerifier();
 }
 
-void QDtlsClientVerifier_new2(QObject* parent, QDtlsClientVerifier** outptr_QDtlsClientVerifier, QObject** outptr_QObject) {
-	MiqtVirtualQDtlsClientVerifier* ret = new MiqtVirtualQDtlsClientVerifier(parent);
-	*outptr_QDtlsClientVerifier = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QDtlsClientVerifier* QDtlsClientVerifier_new2(QObject* parent) {
+	return new MiqtVirtualQDtlsClientVerifier(parent);
+}
+
+void QDtlsClientVerifier_virtbase(QDtlsClientVerifier* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QDtlsClientVerifier_MetaObject(const QDtlsClientVerifier* self) {
@@ -572,16 +576,16 @@ public:
 
 };
 
-void QDtls_new(int mode, QDtls** outptr_QDtls, QObject** outptr_QObject) {
-	MiqtVirtualQDtls* ret = new MiqtVirtualQDtls(static_cast<QSslSocket::SslMode>(mode));
-	*outptr_QDtls = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QDtls* QDtls_new(int mode) {
+	return new MiqtVirtualQDtls(static_cast<QSslSocket::SslMode>(mode));
 }
 
-void QDtls_new2(int mode, QObject* parent, QDtls** outptr_QDtls, QObject** outptr_QObject) {
-	MiqtVirtualQDtls* ret = new MiqtVirtualQDtls(static_cast<QSslSocket::SslMode>(mode), parent);
-	*outptr_QDtls = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QDtls* QDtls_new2(int mode, QObject* parent) {
+	return new MiqtVirtualQDtls(static_cast<QSslSocket::SslMode>(mode), parent);
+}
+
+void QDtls_virtbase(QDtls* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QDtls_MetaObject(const QDtls* self) {
@@ -905,20 +909,17 @@ void QDtls_Delete(QDtls* self, bool isSubclass) {
 	}
 }
 
-void QDtlsClientVerifier__GeneratorParameters_new(QDtlsClientVerifier__GeneratorParameters** outptr_QDtlsClientVerifier__GeneratorParameters) {
-	QDtlsClientVerifier::GeneratorParameters* ret = new QDtlsClientVerifier::GeneratorParameters();
-	*outptr_QDtlsClientVerifier__GeneratorParameters = ret;
+QDtlsClientVerifier__GeneratorParameters* QDtlsClientVerifier__GeneratorParameters_new() {
+	return new QDtlsClientVerifier::GeneratorParameters();
 }
 
-void QDtlsClientVerifier__GeneratorParameters_new2(int a, struct miqt_string s, QDtlsClientVerifier__GeneratorParameters** outptr_QDtlsClientVerifier__GeneratorParameters) {
+QDtlsClientVerifier__GeneratorParameters* QDtlsClientVerifier__GeneratorParameters_new2(int a, struct miqt_string s) {
 	QByteArray s_QByteArray(s.data, s.len);
-	QDtlsClientVerifier::GeneratorParameters* ret = new QDtlsClientVerifier::GeneratorParameters(static_cast<QCryptographicHash::Algorithm>(a), s_QByteArray);
-	*outptr_QDtlsClientVerifier__GeneratorParameters = ret;
+	return new QDtlsClientVerifier::GeneratorParameters(static_cast<QCryptographicHash::Algorithm>(a), s_QByteArray);
 }
 
-void QDtlsClientVerifier__GeneratorParameters_new3(QDtlsClientVerifier__GeneratorParameters* param1, QDtlsClientVerifier__GeneratorParameters** outptr_QDtlsClientVerifier__GeneratorParameters) {
-	QDtlsClientVerifier::GeneratorParameters* ret = new QDtlsClientVerifier::GeneratorParameters(*param1);
-	*outptr_QDtlsClientVerifier__GeneratorParameters = ret;
+QDtlsClientVerifier__GeneratorParameters* QDtlsClientVerifier__GeneratorParameters_new3(QDtlsClientVerifier__GeneratorParameters* param1) {
+	return new QDtlsClientVerifier::GeneratorParameters(*param1);
 }
 
 void QDtlsClientVerifier__GeneratorParameters_OperatorAssign(QDtlsClientVerifier__GeneratorParameters* self, QDtlsClientVerifier__GeneratorParameters* param1) {

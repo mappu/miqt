@@ -35,48 +35,40 @@ func (this *QGraphicsItemAnimation) UnsafePointer() unsafe.Pointer {
 }
 
 // newQGraphicsItemAnimation constructs the type using only CGO pointers.
-func newQGraphicsItemAnimation(h *C.QGraphicsItemAnimation, h_QObject *C.QObject) *QGraphicsItemAnimation {
+func newQGraphicsItemAnimation(h *C.QGraphicsItemAnimation) *QGraphicsItemAnimation {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QGraphicsItemAnimation_virtbase(h, &outptr_QObject)
+
 	return &QGraphicsItemAnimation{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQGraphicsItemAnimation constructs the type using only unsafe pointers.
-func UnsafeNewQGraphicsItemAnimation(h unsafe.Pointer, h_QObject unsafe.Pointer) *QGraphicsItemAnimation {
-	if h == nil {
-		return nil
-	}
-
-	return &QGraphicsItemAnimation{h: (*C.QGraphicsItemAnimation)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQGraphicsItemAnimation(h unsafe.Pointer) *QGraphicsItemAnimation {
+	return newQGraphicsItemAnimation((*C.QGraphicsItemAnimation)(h))
 }
 
 // NewQGraphicsItemAnimation constructs a new QGraphicsItemAnimation object.
 func NewQGraphicsItemAnimation() *QGraphicsItemAnimation {
-	var outptr_QGraphicsItemAnimation *C.QGraphicsItemAnimation = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QGraphicsItemAnimation_new(&outptr_QGraphicsItemAnimation, &outptr_QObject)
-	ret := newQGraphicsItemAnimation(outptr_QGraphicsItemAnimation, outptr_QObject)
+	ret := newQGraphicsItemAnimation(C.QGraphicsItemAnimation_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGraphicsItemAnimation2 constructs a new QGraphicsItemAnimation object.
 func NewQGraphicsItemAnimation2(parent *QObject) *QGraphicsItemAnimation {
-	var outptr_QGraphicsItemAnimation *C.QGraphicsItemAnimation = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QGraphicsItemAnimation_new2(parent.cPointer(), &outptr_QGraphicsItemAnimation, &outptr_QObject)
-	ret := newQGraphicsItemAnimation(outptr_QGraphicsItemAnimation, outptr_QObject)
+	ret := newQGraphicsItemAnimation(C.QGraphicsItemAnimation_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QGraphicsItemAnimation) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGraphicsItemAnimation_MetaObject(this.h)))
+	return newQMetaObject(C.QGraphicsItemAnimation_MetaObject(this.h))
 }
 
 func (this *QGraphicsItemAnimation) Metacast(param1 string) unsafe.Pointer {
@@ -95,7 +87,7 @@ func QGraphicsItemAnimation_Tr(s string) string {
 }
 
 func (this *QGraphicsItemAnimation) Item() *QGraphicsItem {
-	return UnsafeNewQGraphicsItem(unsafe.Pointer(C.QGraphicsItemAnimation_Item(this.h)))
+	return newQGraphicsItem(C.QGraphicsItemAnimation_Item(this.h))
 }
 
 func (this *QGraphicsItemAnimation) SetItem(item *QGraphicsItem) {
@@ -103,7 +95,7 @@ func (this *QGraphicsItemAnimation) SetItem(item *QGraphicsItem) {
 }
 
 func (this *QGraphicsItemAnimation) TimeLine() *QTimeLine {
-	return UnsafeNewQTimeLine(unsafe.Pointer(C.QGraphicsItemAnimation_TimeLine(this.h)), nil)
+	return newQTimeLine(C.QGraphicsItemAnimation_TimeLine(this.h))
 }
 
 func (this *QGraphicsItemAnimation) SetTimeLine(timeLine *QTimeLine) {
@@ -111,8 +103,7 @@ func (this *QGraphicsItemAnimation) SetTimeLine(timeLine *QTimeLine) {
 }
 
 func (this *QGraphicsItemAnimation) PosAt(step float64) *QPointF {
-	_ret := C.QGraphicsItemAnimation_PosAt(this.h, (C.double)(step))
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QGraphicsItemAnimation_PosAt(this.h, (C.double)(step)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -133,8 +124,7 @@ func (this *QGraphicsItemAnimation) PosList() []struct {
 		_lv_Second_CArray := (*[0xffff]*C.QPointF)(unsafe.Pointer(_lv_mm.values))
 		_lv_entry_First := (float64)(_lv_First_CArray[0])
 
-		_lv_second_ret := _lv_Second_CArray[0]
-		_lv_second_goptr := newQPointF(_lv_second_ret)
+		_lv_second_goptr := newQPointF(_lv_Second_CArray[0])
 		_lv_second_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_lv_entry_Second := *_lv_second_goptr
 
@@ -151,8 +141,7 @@ func (this *QGraphicsItemAnimation) SetPosAt(step float64, pos *QPointF) {
 }
 
 func (this *QGraphicsItemAnimation) TransformAt(step float64) *QTransform {
-	_ret := C.QGraphicsItemAnimation_TransformAt(this.h, (C.double)(step))
-	_goptr := newQTransform(_ret)
+	_goptr := newQTransform(C.QGraphicsItemAnimation_TransformAt(this.h, (C.double)(step)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -215,8 +204,7 @@ func (this *QGraphicsItemAnimation) TranslationList() []struct {
 		_lv_Second_CArray := (*[0xffff]*C.QPointF)(unsafe.Pointer(_lv_mm.values))
 		_lv_entry_First := (float64)(_lv_First_CArray[0])
 
-		_lv_second_ret := _lv_Second_CArray[0]
-		_lv_second_goptr := newQPointF(_lv_second_ret)
+		_lv_second_goptr := newQPointF(_lv_Second_CArray[0])
 		_lv_second_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_lv_entry_Second := *_lv_second_goptr
 
@@ -256,8 +244,7 @@ func (this *QGraphicsItemAnimation) ScaleList() []struct {
 		_lv_Second_CArray := (*[0xffff]*C.QPointF)(unsafe.Pointer(_lv_mm.values))
 		_lv_entry_First := (float64)(_lv_First_CArray[0])
 
-		_lv_second_ret := _lv_Second_CArray[0]
-		_lv_second_goptr := newQPointF(_lv_second_ret)
+		_lv_second_goptr := newQPointF(_lv_Second_CArray[0])
 		_lv_second_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_lv_entry_Second := *_lv_second_goptr
 
@@ -297,8 +284,7 @@ func (this *QGraphicsItemAnimation) ShearList() []struct {
 		_lv_Second_CArray := (*[0xffff]*C.QPointF)(unsafe.Pointer(_lv_mm.values))
 		_lv_entry_First := (float64)(_lv_First_CArray[0])
 
-		_lv_second_ret := _lv_Second_CArray[0]
-		_lv_second_goptr := newQPointF(_lv_second_ret)
+		_lv_second_goptr := newQPointF(_lv_Second_CArray[0])
 		_lv_second_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_lv_entry_Second := *_lv_second_goptr
 
@@ -350,6 +336,9 @@ func (this *QGraphicsItemAnimation) callVirtualBase_BeforeAnimationStep(step flo
 
 }
 func (this *QGraphicsItemAnimation) OnBeforeAnimationStep(slot func(super func(step float64), step float64)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsItemAnimation_override_virtual_BeforeAnimationStep(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -373,6 +362,9 @@ func (this *QGraphicsItemAnimation) callVirtualBase_AfterAnimationStep(step floa
 
 }
 func (this *QGraphicsItemAnimation) OnAfterAnimationStep(slot func(super func(step float64), step float64)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsItemAnimation_override_virtual_AfterAnimationStep(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -396,6 +388,9 @@ func (this *QGraphicsItemAnimation) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QGraphicsItemAnimation) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsItemAnimation_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -407,7 +402,7 @@ func miqt_exec_callback_QGraphicsItemAnimation_Event(self *C.QGraphicsItemAnimat
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGraphicsItemAnimation{h: self}).callVirtualBase_Event, slotval1)
 
@@ -421,6 +416,9 @@ func (this *QGraphicsItemAnimation) callVirtualBase_EventFilter(watched *QObject
 
 }
 func (this *QGraphicsItemAnimation) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsItemAnimation_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -432,8 +430,9 @@ func miqt_exec_callback_QGraphicsItemAnimation_EventFilter(self *C.QGraphicsItem
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QGraphicsItemAnimation{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -447,6 +446,9 @@ func (this *QGraphicsItemAnimation) callVirtualBase_TimerEvent(event *QTimerEven
 
 }
 func (this *QGraphicsItemAnimation) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsItemAnimation_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -458,7 +460,7 @@ func miqt_exec_callback_QGraphicsItemAnimation_TimerEvent(self *C.QGraphicsItemA
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QGraphicsItemAnimation{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -470,6 +472,9 @@ func (this *QGraphicsItemAnimation) callVirtualBase_ChildEvent(event *QChildEven
 
 }
 func (this *QGraphicsItemAnimation) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsItemAnimation_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -481,7 +486,7 @@ func miqt_exec_callback_QGraphicsItemAnimation_ChildEvent(self *C.QGraphicsItemA
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QGraphicsItemAnimation{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -493,6 +498,9 @@ func (this *QGraphicsItemAnimation) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QGraphicsItemAnimation) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsItemAnimation_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -504,7 +512,7 @@ func miqt_exec_callback_QGraphicsItemAnimation_CustomEvent(self *C.QGraphicsItem
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QGraphicsItemAnimation{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -516,6 +524,9 @@ func (this *QGraphicsItemAnimation) callVirtualBase_ConnectNotify(signal *QMetaM
 
 }
 func (this *QGraphicsItemAnimation) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsItemAnimation_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -527,7 +538,7 @@ func miqt_exec_callback_QGraphicsItemAnimation_ConnectNotify(self *C.QGraphicsIt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QGraphicsItemAnimation{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -539,6 +550,9 @@ func (this *QGraphicsItemAnimation) callVirtualBase_DisconnectNotify(signal *QMe
 
 }
 func (this *QGraphicsItemAnimation) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGraphicsItemAnimation_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -550,7 +564,7 @@ func miqt_exec_callback_QGraphicsItemAnimation_DisconnectNotify(self *C.QGraphic
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QGraphicsItemAnimation{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

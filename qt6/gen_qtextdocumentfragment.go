@@ -37,54 +37,43 @@ func newQTextDocumentFragment(h *C.QTextDocumentFragment) *QTextDocumentFragment
 	if h == nil {
 		return nil
 	}
+
 	return &QTextDocumentFragment{h: h}
 }
 
 // UnsafeNewQTextDocumentFragment constructs the type using only unsafe pointers.
 func UnsafeNewQTextDocumentFragment(h unsafe.Pointer) *QTextDocumentFragment {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextDocumentFragment{h: (*C.QTextDocumentFragment)(h)}
+	return newQTextDocumentFragment((*C.QTextDocumentFragment)(h))
 }
 
 // NewQTextDocumentFragment constructs a new QTextDocumentFragment object.
 func NewQTextDocumentFragment() *QTextDocumentFragment {
-	var outptr_QTextDocumentFragment *C.QTextDocumentFragment = nil
 
-	C.QTextDocumentFragment_new(&outptr_QTextDocumentFragment)
-	ret := newQTextDocumentFragment(outptr_QTextDocumentFragment)
+	ret := newQTextDocumentFragment(C.QTextDocumentFragment_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextDocumentFragment2 constructs a new QTextDocumentFragment object.
 func NewQTextDocumentFragment2(document *QTextDocument) *QTextDocumentFragment {
-	var outptr_QTextDocumentFragment *C.QTextDocumentFragment = nil
 
-	C.QTextDocumentFragment_new2(document.cPointer(), &outptr_QTextDocumentFragment)
-	ret := newQTextDocumentFragment(outptr_QTextDocumentFragment)
+	ret := newQTextDocumentFragment(C.QTextDocumentFragment_new2(document.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextDocumentFragment3 constructs a new QTextDocumentFragment object.
 func NewQTextDocumentFragment3(rangeVal *QTextCursor) *QTextDocumentFragment {
-	var outptr_QTextDocumentFragment *C.QTextDocumentFragment = nil
 
-	C.QTextDocumentFragment_new3(rangeVal.cPointer(), &outptr_QTextDocumentFragment)
-	ret := newQTextDocumentFragment(outptr_QTextDocumentFragment)
+	ret := newQTextDocumentFragment(C.QTextDocumentFragment_new3(rangeVal.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTextDocumentFragment4 constructs a new QTextDocumentFragment object.
 func NewQTextDocumentFragment4(rhs *QTextDocumentFragment) *QTextDocumentFragment {
-	var outptr_QTextDocumentFragment *C.QTextDocumentFragment = nil
 
-	C.QTextDocumentFragment_new4(rhs.cPointer(), &outptr_QTextDocumentFragment)
-	ret := newQTextDocumentFragment(outptr_QTextDocumentFragment)
+	ret := newQTextDocumentFragment(C.QTextDocumentFragment_new4(rhs.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -130,8 +119,7 @@ func QTextDocumentFragment_FromPlainText(plainText string) *QTextDocumentFragmen
 	plainText_ms.data = C.CString(plainText)
 	plainText_ms.len = C.size_t(len(plainText))
 	defer C.free(unsafe.Pointer(plainText_ms.data))
-	_ret := C.QTextDocumentFragment_FromPlainText(plainText_ms)
-	_goptr := newQTextDocumentFragment(_ret)
+	_goptr := newQTextDocumentFragment(C.QTextDocumentFragment_FromPlainText(plainText_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -141,8 +129,7 @@ func QTextDocumentFragment_FromHtml(html string) *QTextDocumentFragment {
 	html_ms.data = C.CString(html)
 	html_ms.len = C.size_t(len(html))
 	defer C.free(unsafe.Pointer(html_ms.data))
-	_ret := C.QTextDocumentFragment_FromHtml(html_ms)
-	_goptr := newQTextDocumentFragment(_ret)
+	_goptr := newQTextDocumentFragment(C.QTextDocumentFragment_FromHtml(html_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -152,8 +139,7 @@ func QTextDocumentFragment_FromMarkdown(markdown string) *QTextDocumentFragment 
 	markdown_ms.data = C.CString(markdown)
 	markdown_ms.len = C.size_t(len(markdown))
 	defer C.free(unsafe.Pointer(markdown_ms.data))
-	_ret := C.QTextDocumentFragment_FromMarkdown(markdown_ms)
-	_goptr := newQTextDocumentFragment(_ret)
+	_goptr := newQTextDocumentFragment(C.QTextDocumentFragment_FromMarkdown(markdown_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -170,8 +156,7 @@ func QTextDocumentFragment_FromHtml2(html string, resourceProvider *QTextDocumen
 	html_ms.data = C.CString(html)
 	html_ms.len = C.size_t(len(html))
 	defer C.free(unsafe.Pointer(html_ms.data))
-	_ret := C.QTextDocumentFragment_FromHtml2(html_ms, resourceProvider.cPointer())
-	_goptr := newQTextDocumentFragment(_ret)
+	_goptr := newQTextDocumentFragment(C.QTextDocumentFragment_FromHtml2(html_ms, resourceProvider.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -181,8 +166,7 @@ func QTextDocumentFragment_FromMarkdown2(markdown string, features QTextDocument
 	markdown_ms.data = C.CString(markdown)
 	markdown_ms.len = C.size_t(len(markdown))
 	defer C.free(unsafe.Pointer(markdown_ms.data))
-	_ret := C.QTextDocumentFragment_FromMarkdown2(markdown_ms, (C.int)(features))
-	_goptr := newQTextDocumentFragment(_ret)
+	_goptr := newQTextDocumentFragment(C.QTextDocumentFragment_FromMarkdown2(markdown_ms, (C.int)(features)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

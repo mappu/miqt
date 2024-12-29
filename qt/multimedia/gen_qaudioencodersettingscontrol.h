@@ -28,6 +28,7 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif
 
+void QAudioEncoderSettingsControl_virtbase(QAudioEncoderSettingsControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QAudioEncoderSettingsControl_MetaObject(const QAudioEncoderSettingsControl* self);
 void* QAudioEncoderSettingsControl_Metacast(QAudioEncoderSettingsControl* self, const char* param1);
 struct miqt_string QAudioEncoderSettingsControl_Tr(const char* s);

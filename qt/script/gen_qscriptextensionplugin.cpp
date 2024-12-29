@@ -15,6 +15,10 @@
 #include <QTimerEvent>
 #include <qscriptextensionplugin.h>
 #include "gen_qscriptextensionplugin.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQScriptExtensionPlugin : public virtual QScriptExtensionPlugin {
@@ -244,20 +248,17 @@ public:
 
 };
 
-void QScriptExtensionPlugin_new(QScriptExtensionPlugin** outptr_QScriptExtensionPlugin, QObject** outptr_QObject, QScriptExtensionInterface** outptr_QScriptExtensionInterface, QFactoryInterface** outptr_QFactoryInterface) {
-	MiqtVirtualQScriptExtensionPlugin* ret = new MiqtVirtualQScriptExtensionPlugin();
-	*outptr_QScriptExtensionPlugin = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QScriptExtensionInterface = static_cast<QScriptExtensionInterface*>(ret);
-	*outptr_QFactoryInterface = static_cast<QFactoryInterface*>(ret);
+QScriptExtensionPlugin* QScriptExtensionPlugin_new() {
+	return new MiqtVirtualQScriptExtensionPlugin();
 }
 
-void QScriptExtensionPlugin_new2(QObject* parent, QScriptExtensionPlugin** outptr_QScriptExtensionPlugin, QObject** outptr_QObject, QScriptExtensionInterface** outptr_QScriptExtensionInterface, QFactoryInterface** outptr_QFactoryInterface) {
-	MiqtVirtualQScriptExtensionPlugin* ret = new MiqtVirtualQScriptExtensionPlugin(parent);
-	*outptr_QScriptExtensionPlugin = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QScriptExtensionInterface = static_cast<QScriptExtensionInterface*>(ret);
-	*outptr_QFactoryInterface = static_cast<QFactoryInterface*>(ret);
+QScriptExtensionPlugin* QScriptExtensionPlugin_new2(QObject* parent) {
+	return new MiqtVirtualQScriptExtensionPlugin(parent);
+}
+
+void QScriptExtensionPlugin_virtbase(QScriptExtensionPlugin* src, QObject** outptr_QObject, QScriptExtensionInterface** outptr_QScriptExtensionInterface) {
+	*outptr_QObject = static_cast<QObject*>(src);
+	*outptr_QScriptExtensionInterface = static_cast<QScriptExtensionInterface*>(src);
 }
 
 QMetaObject* QScriptExtensionPlugin_MetaObject(const QScriptExtensionPlugin* self) {

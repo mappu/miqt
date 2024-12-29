@@ -32,10 +32,11 @@ typedef struct QObject QObject;
 typedef struct QTemporaryFile QTemporaryFile;
 #endif
 
-void QTemporaryFile_new(QTemporaryFile** outptr_QTemporaryFile, QFile** outptr_QFile, QFileDevice** outptr_QFileDevice, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
-void QTemporaryFile_new2(struct miqt_string templateName, QTemporaryFile** outptr_QTemporaryFile, QFile** outptr_QFile, QFileDevice** outptr_QFileDevice, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
-void QTemporaryFile_new3(QObject* parent, QTemporaryFile** outptr_QTemporaryFile, QFile** outptr_QFile, QFileDevice** outptr_QFileDevice, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
-void QTemporaryFile_new4(struct miqt_string templateName, QObject* parent, QTemporaryFile** outptr_QTemporaryFile, QFile** outptr_QFile, QFileDevice** outptr_QFileDevice, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
+QTemporaryFile* QTemporaryFile_new();
+QTemporaryFile* QTemporaryFile_new2(struct miqt_string templateName);
+QTemporaryFile* QTemporaryFile_new3(QObject* parent);
+QTemporaryFile* QTemporaryFile_new4(struct miqt_string templateName, QObject* parent);
+void QTemporaryFile_virtbase(QTemporaryFile* src, QFile** outptr_QFile);
 QMetaObject* QTemporaryFile_MetaObject(const QTemporaryFile* self);
 void* QTemporaryFile_Metacast(QTemporaryFile* self, const char* param1);
 struct miqt_string QTemporaryFile_Tr(const char* s);

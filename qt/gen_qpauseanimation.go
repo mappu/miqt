@@ -35,74 +35,56 @@ func (this *QPauseAnimation) UnsafePointer() unsafe.Pointer {
 }
 
 // newQPauseAnimation constructs the type using only CGO pointers.
-func newQPauseAnimation(h *C.QPauseAnimation, h_QAbstractAnimation *C.QAbstractAnimation, h_QObject *C.QObject) *QPauseAnimation {
+func newQPauseAnimation(h *C.QPauseAnimation) *QPauseAnimation {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
+	C.QPauseAnimation_virtbase(h, &outptr_QAbstractAnimation)
+
 	return &QPauseAnimation{h: h,
-		QAbstractAnimation: newQAbstractAnimation(h_QAbstractAnimation, h_QObject)}
+		QAbstractAnimation: newQAbstractAnimation(outptr_QAbstractAnimation)}
 }
 
 // UnsafeNewQPauseAnimation constructs the type using only unsafe pointers.
-func UnsafeNewQPauseAnimation(h unsafe.Pointer, h_QAbstractAnimation unsafe.Pointer, h_QObject unsafe.Pointer) *QPauseAnimation {
-	if h == nil {
-		return nil
-	}
-
-	return &QPauseAnimation{h: (*C.QPauseAnimation)(h),
-		QAbstractAnimation: UnsafeNewQAbstractAnimation(h_QAbstractAnimation, h_QObject)}
+func UnsafeNewQPauseAnimation(h unsafe.Pointer) *QPauseAnimation {
+	return newQPauseAnimation((*C.QPauseAnimation)(h))
 }
 
 // NewQPauseAnimation constructs a new QPauseAnimation object.
 func NewQPauseAnimation() *QPauseAnimation {
-	var outptr_QPauseAnimation *C.QPauseAnimation = nil
-	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QPauseAnimation_new(&outptr_QPauseAnimation, &outptr_QAbstractAnimation, &outptr_QObject)
-	ret := newQPauseAnimation(outptr_QPauseAnimation, outptr_QAbstractAnimation, outptr_QObject)
+	ret := newQPauseAnimation(C.QPauseAnimation_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPauseAnimation2 constructs a new QPauseAnimation object.
 func NewQPauseAnimation2(msecs int) *QPauseAnimation {
-	var outptr_QPauseAnimation *C.QPauseAnimation = nil
-	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QPauseAnimation_new2((C.int)(msecs), &outptr_QPauseAnimation, &outptr_QAbstractAnimation, &outptr_QObject)
-	ret := newQPauseAnimation(outptr_QPauseAnimation, outptr_QAbstractAnimation, outptr_QObject)
+	ret := newQPauseAnimation(C.QPauseAnimation_new2((C.int)(msecs)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPauseAnimation3 constructs a new QPauseAnimation object.
 func NewQPauseAnimation3(parent *QObject) *QPauseAnimation {
-	var outptr_QPauseAnimation *C.QPauseAnimation = nil
-	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QPauseAnimation_new3(parent.cPointer(), &outptr_QPauseAnimation, &outptr_QAbstractAnimation, &outptr_QObject)
-	ret := newQPauseAnimation(outptr_QPauseAnimation, outptr_QAbstractAnimation, outptr_QObject)
+	ret := newQPauseAnimation(C.QPauseAnimation_new3(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPauseAnimation4 constructs a new QPauseAnimation object.
 func NewQPauseAnimation4(msecs int, parent *QObject) *QPauseAnimation {
-	var outptr_QPauseAnimation *C.QPauseAnimation = nil
-	var outptr_QAbstractAnimation *C.QAbstractAnimation = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QPauseAnimation_new4((C.int)(msecs), parent.cPointer(), &outptr_QPauseAnimation, &outptr_QAbstractAnimation, &outptr_QObject)
-	ret := newQPauseAnimation(outptr_QPauseAnimation, outptr_QAbstractAnimation, outptr_QObject)
+	ret := newQPauseAnimation(C.QPauseAnimation_new4((C.int)(msecs), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QPauseAnimation) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QPauseAnimation_MetaObject(this.h)))
+	return newQMetaObject(C.QPauseAnimation_MetaObject(this.h))
 }
 
 func (this *QPauseAnimation) Metacast(param1 string) unsafe.Pointer {
@@ -187,6 +169,9 @@ func (this *QPauseAnimation) callVirtualBase_Duration() int {
 
 }
 func (this *QPauseAnimation) OnDuration(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPauseAnimation_override_virtual_Duration(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -209,6 +194,9 @@ func (this *QPauseAnimation) callVirtualBase_Event(e *QEvent) bool {
 
 }
 func (this *QPauseAnimation) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPauseAnimation_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -220,7 +208,7 @@ func miqt_exec_callback_QPauseAnimation_Event(self *C.QPauseAnimation, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QPauseAnimation{h: self}).callVirtualBase_Event, slotval1)
 
@@ -234,6 +222,9 @@ func (this *QPauseAnimation) callVirtualBase_UpdateCurrentTime(param1 int) {
 
 }
 func (this *QPauseAnimation) OnUpdateCurrentTime(slot func(super func(param1 int), param1 int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPauseAnimation_override_virtual_UpdateCurrentTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -257,6 +248,9 @@ func (this *QPauseAnimation) callVirtualBase_UpdateState(newState QAbstractAnima
 
 }
 func (this *QPauseAnimation) OnUpdateState(slot func(super func(newState QAbstractAnimation__State, oldState QAbstractAnimation__State), newState QAbstractAnimation__State, oldState QAbstractAnimation__State)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPauseAnimation_override_virtual_UpdateState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -282,6 +276,9 @@ func (this *QPauseAnimation) callVirtualBase_UpdateDirection(direction QAbstract
 
 }
 func (this *QPauseAnimation) OnUpdateDirection(slot func(super func(direction QAbstractAnimation__Direction), direction QAbstractAnimation__Direction)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPauseAnimation_override_virtual_UpdateDirection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

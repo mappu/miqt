@@ -17,6 +17,10 @@
 #include <QVariant>
 #include <qimageiohandler.h>
 #include "gen_qimageiohandler.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQImageIOHandler : public virtual QImageIOHandler {
@@ -315,9 +319,8 @@ public:
 
 };
 
-void QImageIOHandler_new(QImageIOHandler** outptr_QImageIOHandler) {
-	MiqtVirtualQImageIOHandler* ret = new MiqtVirtualQImageIOHandler();
-	*outptr_QImageIOHandler = ret;
+QImageIOHandler* QImageIOHandler_new() {
+	return new MiqtVirtualQImageIOHandler();
 }
 
 void QImageIOHandler_SetDevice(QImageIOHandler* self, QIODevice* device) {
@@ -732,16 +735,16 @@ public:
 
 };
 
-void QImageIOPlugin_new(QImageIOPlugin** outptr_QImageIOPlugin, QObject** outptr_QObject) {
-	MiqtVirtualQImageIOPlugin* ret = new MiqtVirtualQImageIOPlugin();
-	*outptr_QImageIOPlugin = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QImageIOPlugin* QImageIOPlugin_new() {
+	return new MiqtVirtualQImageIOPlugin();
 }
 
-void QImageIOPlugin_new2(QObject* parent, QImageIOPlugin** outptr_QImageIOPlugin, QObject** outptr_QObject) {
-	MiqtVirtualQImageIOPlugin* ret = new MiqtVirtualQImageIOPlugin(parent);
-	*outptr_QImageIOPlugin = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QImageIOPlugin* QImageIOPlugin_new2(QObject* parent) {
+	return new MiqtVirtualQImageIOPlugin(parent);
+}
+
+void QImageIOPlugin_virtbase(QImageIOPlugin* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QImageIOPlugin_MetaObject(const QImageIOPlugin* self) {

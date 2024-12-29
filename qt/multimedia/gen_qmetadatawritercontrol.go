@@ -36,22 +36,20 @@ func (this *QMetaDataWriterControl) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMetaDataWriterControl constructs the type using only CGO pointers.
-func newQMetaDataWriterControl(h *C.QMetaDataWriterControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QMetaDataWriterControl {
+func newQMetaDataWriterControl(h *C.QMetaDataWriterControl) *QMetaDataWriterControl {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMediaControl *C.QMediaControl = nil
+	C.QMetaDataWriterControl_virtbase(h, &outptr_QMediaControl)
+
 	return &QMetaDataWriterControl{h: h,
-		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
+		QMediaControl: newQMediaControl(outptr_QMediaControl)}
 }
 
 // UnsafeNewQMetaDataWriterControl constructs the type using only unsafe pointers.
-func UnsafeNewQMetaDataWriterControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QMetaDataWriterControl {
-	if h == nil {
-		return nil
-	}
-
-	return &QMetaDataWriterControl{h: (*C.QMetaDataWriterControl)(h),
-		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
+func UnsafeNewQMetaDataWriterControl(h unsafe.Pointer) *QMetaDataWriterControl {
+	return newQMetaDataWriterControl((*C.QMetaDataWriterControl)(h))
 }
 
 func (this *QMetaDataWriterControl) MetaObject() *qt.QMetaObject {
@@ -95,8 +93,7 @@ func (this *QMetaDataWriterControl) MetaData(key string) *qt.QVariant {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	_ret := C.QMetaDataWriterControl_MetaData(this.h, key_ms)
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QMetaDataWriterControl_MetaData(this.h, key_ms)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

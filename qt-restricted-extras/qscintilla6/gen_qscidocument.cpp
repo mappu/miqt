@@ -1,15 +1,17 @@
 #include <qscidocument.h>
 #include "gen_qscidocument.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QsciDocument_new(QsciDocument** outptr_QsciDocument) {
-	QsciDocument* ret = new QsciDocument();
-	*outptr_QsciDocument = ret;
+QsciDocument* QsciDocument_new() {
+	return new QsciDocument();
 }
 
-void QsciDocument_new2(QsciDocument* param1, QsciDocument** outptr_QsciDocument) {
-	QsciDocument* ret = new QsciDocument(*param1);
-	*outptr_QsciDocument = ret;
+QsciDocument* QsciDocument_new2(QsciDocument* param1) {
+	return new QsciDocument(*param1);
 }
 
 void QsciDocument_OperatorAssign(QsciDocument* self, QsciDocument* param1) {

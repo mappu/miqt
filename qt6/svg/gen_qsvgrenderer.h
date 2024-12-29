@@ -44,14 +44,15 @@ typedef struct QTransform QTransform;
 typedef struct QXmlStreamReader QXmlStreamReader;
 #endif
 
-void QSvgRenderer_new(QSvgRenderer** outptr_QSvgRenderer, QObject** outptr_QObject);
-void QSvgRenderer_new2(struct miqt_string filename, QSvgRenderer** outptr_QSvgRenderer, QObject** outptr_QObject);
-void QSvgRenderer_new3(struct miqt_string contents, QSvgRenderer** outptr_QSvgRenderer, QObject** outptr_QObject);
-void QSvgRenderer_new4(QXmlStreamReader* contents, QSvgRenderer** outptr_QSvgRenderer, QObject** outptr_QObject);
-void QSvgRenderer_new5(QObject* parent, QSvgRenderer** outptr_QSvgRenderer, QObject** outptr_QObject);
-void QSvgRenderer_new6(struct miqt_string filename, QObject* parent, QSvgRenderer** outptr_QSvgRenderer, QObject** outptr_QObject);
-void QSvgRenderer_new7(struct miqt_string contents, QObject* parent, QSvgRenderer** outptr_QSvgRenderer, QObject** outptr_QObject);
-void QSvgRenderer_new8(QXmlStreamReader* contents, QObject* parent, QSvgRenderer** outptr_QSvgRenderer, QObject** outptr_QObject);
+QSvgRenderer* QSvgRenderer_new();
+QSvgRenderer* QSvgRenderer_new2(struct miqt_string filename);
+QSvgRenderer* QSvgRenderer_new3(struct miqt_string contents);
+QSvgRenderer* QSvgRenderer_new4(QXmlStreamReader* contents);
+QSvgRenderer* QSvgRenderer_new5(QObject* parent);
+QSvgRenderer* QSvgRenderer_new6(struct miqt_string filename, QObject* parent);
+QSvgRenderer* QSvgRenderer_new7(struct miqt_string contents, QObject* parent);
+QSvgRenderer* QSvgRenderer_new8(QXmlStreamReader* contents, QObject* parent);
+void QSvgRenderer_virtbase(QSvgRenderer* src, QObject** outptr_QObject);
 QMetaObject* QSvgRenderer_MetaObject(const QSvgRenderer* self);
 void* QSvgRenderer_Metacast(QSvgRenderer* self, const char* param1);
 struct miqt_string QSvgRenderer_Tr(const char* s);

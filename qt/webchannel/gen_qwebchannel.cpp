@@ -12,6 +12,10 @@
 #include <QWebChannelAbstractTransport>
 #include <qwebchannel.h>
 #include "gen_qwebchannel.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQWebChannel : public virtual QWebChannel {
@@ -195,16 +199,16 @@ public:
 
 };
 
-void QWebChannel_new(QWebChannel** outptr_QWebChannel, QObject** outptr_QObject) {
-	MiqtVirtualQWebChannel* ret = new MiqtVirtualQWebChannel();
-	*outptr_QWebChannel = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QWebChannel* QWebChannel_new() {
+	return new MiqtVirtualQWebChannel();
 }
 
-void QWebChannel_new2(QObject* parent, QWebChannel** outptr_QWebChannel, QObject** outptr_QObject) {
-	MiqtVirtualQWebChannel* ret = new MiqtVirtualQWebChannel(parent);
-	*outptr_QWebChannel = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QWebChannel* QWebChannel_new2(QObject* parent) {
+	return new MiqtVirtualQWebChannel(parent);
+}
+
+void QWebChannel_virtbase(QWebChannel* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QWebChannel_MetaObject(const QWebChannel* self) {

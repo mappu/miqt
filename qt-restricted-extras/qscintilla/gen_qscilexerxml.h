@@ -32,8 +32,9 @@ typedef struct QsciLexerHTML QsciLexerHTML;
 typedef struct QsciLexerXML QsciLexerXML;
 #endif
 
-void QsciLexerXML_new(QsciLexerXML** outptr_QsciLexerXML, QsciLexerHTML** outptr_QsciLexerHTML, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
-void QsciLexerXML_new2(QObject* parent, QsciLexerXML** outptr_QsciLexerXML, QsciLexerHTML** outptr_QsciLexerHTML, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+QsciLexerXML* QsciLexerXML_new();
+QsciLexerXML* QsciLexerXML_new2(QObject* parent);
+void QsciLexerXML_virtbase(QsciLexerXML* src, QsciLexerHTML** outptr_QsciLexerHTML);
 QMetaObject* QsciLexerXML_MetaObject(const QsciLexerXML* self);
 void* QsciLexerXML_Metacast(QsciLexerXML* self, const char* param1);
 struct miqt_string QsciLexerXML_Tr(const char* s);

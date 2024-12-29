@@ -84,22 +84,20 @@ func (this *QWebEngineDownloadRequest) UnsafePointer() unsafe.Pointer {
 }
 
 // newQWebEngineDownloadRequest constructs the type using only CGO pointers.
-func newQWebEngineDownloadRequest(h *C.QWebEngineDownloadRequest, h_QObject *C.QObject) *QWebEngineDownloadRequest {
+func newQWebEngineDownloadRequest(h *C.QWebEngineDownloadRequest) *QWebEngineDownloadRequest {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QWebEngineDownloadRequest_virtbase(h, &outptr_QObject)
+
 	return &QWebEngineDownloadRequest{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQWebEngineDownloadRequest constructs the type using only unsafe pointers.
-func UnsafeNewQWebEngineDownloadRequest(h unsafe.Pointer, h_QObject unsafe.Pointer) *QWebEngineDownloadRequest {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineDownloadRequest{h: (*C.QWebEngineDownloadRequest)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQWebEngineDownloadRequest(h unsafe.Pointer) *QWebEngineDownloadRequest {
+	return newQWebEngineDownloadRequest((*C.QWebEngineDownloadRequest)(h))
 }
 
 func (this *QWebEngineDownloadRequest) MetaObject() *qt6.QMetaObject {
@@ -138,8 +136,7 @@ func (this *QWebEngineDownloadRequest) ReceivedBytes() int64 {
 }
 
 func (this *QWebEngineDownloadRequest) Url() *qt6.QUrl {
-	_ret := C.QWebEngineDownloadRequest_Url(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineDownloadRequest_Url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -220,7 +217,7 @@ func (this *QWebEngineDownloadRequest) SetDownloadFileName(fileName string) {
 }
 
 func (this *QWebEngineDownloadRequest) Page() *QWebEnginePage {
-	return UnsafeNewQWebEnginePage(unsafe.Pointer(C.QWebEngineDownloadRequest_Page(this.h)), nil)
+	return newQWebEnginePage(C.QWebEngineDownloadRequest_Page(this.h))
 }
 
 func (this *QWebEngineDownloadRequest) Accept() {

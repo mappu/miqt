@@ -42,12 +42,13 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 #endif
 
-void QAction_new(QAction** outptr_QAction, QObject** outptr_QObject);
-void QAction_new2(struct miqt_string text, QAction** outptr_QAction, QObject** outptr_QObject);
-void QAction_new3(QIcon* icon, struct miqt_string text, QAction** outptr_QAction, QObject** outptr_QObject);
-void QAction_new4(QObject* parent, QAction** outptr_QAction, QObject** outptr_QObject);
-void QAction_new5(struct miqt_string text, QObject* parent, QAction** outptr_QAction, QObject** outptr_QObject);
-void QAction_new6(QIcon* icon, struct miqt_string text, QObject* parent, QAction** outptr_QAction, QObject** outptr_QObject);
+QAction* QAction_new();
+QAction* QAction_new2(struct miqt_string text);
+QAction* QAction_new3(QIcon* icon, struct miqt_string text);
+QAction* QAction_new4(QObject* parent);
+QAction* QAction_new5(struct miqt_string text, QObject* parent);
+QAction* QAction_new6(QIcon* icon, struct miqt_string text, QObject* parent);
+void QAction_virtbase(QAction* src, QObject** outptr_QObject);
 QMetaObject* QAction_MetaObject(const QAction* self);
 void* QAction_Metacast(QAction* self, const char* param1);
 struct miqt_string QAction_Tr(const char* s);

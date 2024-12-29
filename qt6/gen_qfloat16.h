@@ -20,9 +20,9 @@ class qfloat16;
 typedef struct qfloat16 qfloat16;
 #endif
 
-void qfloat16_new(qfloat16** outptr_qfloat16);
-void qfloat16_new2(int param1, qfloat16** outptr_qfloat16);
-void qfloat16_new3(float f, qfloat16** outptr_qfloat16);
+qfloat16* qfloat16_new();
+qfloat16* qfloat16_new2(int param1);
+qfloat16* qfloat16_new3(float f);
 bool qfloat16_IsInf(const qfloat16* self);
 bool qfloat16_IsNaN(const qfloat16* self);
 bool qfloat16_IsFinite(const qfloat16* self);

@@ -10,21 +10,22 @@
 #include <QVideoFrameFormat>
 #include <qvideoframe.h>
 #include "gen_qvideoframe.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QVideoFrame_new(QVideoFrame** outptr_QVideoFrame) {
-	QVideoFrame* ret = new QVideoFrame();
-	*outptr_QVideoFrame = ret;
+QVideoFrame* QVideoFrame_new() {
+	return new QVideoFrame();
 }
 
-void QVideoFrame_new2(QVideoFrameFormat* format, QVideoFrame** outptr_QVideoFrame) {
-	QVideoFrame* ret = new QVideoFrame(*format);
-	*outptr_QVideoFrame = ret;
+QVideoFrame* QVideoFrame_new2(QVideoFrameFormat* format) {
+	return new QVideoFrame(*format);
 }
 
-void QVideoFrame_new3(QVideoFrame* other, QVideoFrame** outptr_QVideoFrame) {
-	QVideoFrame* ret = new QVideoFrame(*other);
-	*outptr_QVideoFrame = ret;
+QVideoFrame* QVideoFrame_new3(QVideoFrame* other) {
+	return new QVideoFrame(*other);
 }
 
 void QVideoFrame_Swap(QVideoFrame* self, QVideoFrame* other) {

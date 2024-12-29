@@ -38,6 +38,10 @@
 #include <QWidget>
 #include <qmdisubwindow.h>
 #include "gen_qmdisubwindow.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQMdiSubWindow : public virtual QMdiSubWindow {
@@ -1099,28 +1103,20 @@ public:
 
 };
 
-void QMdiSubWindow_new(QWidget* parent, QMdiSubWindow** outptr_QMdiSubWindow, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQMdiSubWindow* ret = new MiqtVirtualQMdiSubWindow(parent);
-	*outptr_QMdiSubWindow = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QMdiSubWindow* QMdiSubWindow_new(QWidget* parent) {
+	return new MiqtVirtualQMdiSubWindow(parent);
 }
 
-void QMdiSubWindow_new2(QMdiSubWindow** outptr_QMdiSubWindow, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQMdiSubWindow* ret = new MiqtVirtualQMdiSubWindow();
-	*outptr_QMdiSubWindow = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QMdiSubWindow* QMdiSubWindow_new2() {
+	return new MiqtVirtualQMdiSubWindow();
 }
 
-void QMdiSubWindow_new3(QWidget* parent, int flags, QMdiSubWindow** outptr_QMdiSubWindow, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQMdiSubWindow* ret = new MiqtVirtualQMdiSubWindow(parent, static_cast<Qt::WindowFlags>(flags));
-	*outptr_QMdiSubWindow = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QMdiSubWindow* QMdiSubWindow_new3(QWidget* parent, int flags) {
+	return new MiqtVirtualQMdiSubWindow(parent, static_cast<Qt::WindowFlags>(flags));
+}
+
+void QMdiSubWindow_virtbase(QMdiSubWindow* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QMdiSubWindow_MetaObject(const QMdiSubWindow* self) {

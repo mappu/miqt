@@ -5,11 +5,14 @@
 #include <QWebSecurityOrigin>
 #include <qwebdatabase.h>
 #include "gen_qwebdatabase.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QWebDatabase_new(QWebDatabase* other, QWebDatabase** outptr_QWebDatabase) {
-	QWebDatabase* ret = new QWebDatabase(*other);
-	*outptr_QWebDatabase = ret;
+QWebDatabase* QWebDatabase_new(QWebDatabase* other) {
+	return new QWebDatabase(*other);
 }
 
 void QWebDatabase_OperatorAssign(QWebDatabase* self, QWebDatabase* other) {

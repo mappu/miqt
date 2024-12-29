@@ -43,22 +43,20 @@ func (this *QApplication) UnsafePointer() unsafe.Pointer {
 }
 
 // newQApplication constructs the type using only CGO pointers.
-func newQApplication(h *C.QApplication, h_QGuiApplication *C.QGuiApplication, h_QCoreApplication *C.QCoreApplication, h_QObject *C.QObject) *QApplication {
+func newQApplication(h *C.QApplication) *QApplication {
 	if h == nil {
 		return nil
 	}
+	var outptr_QGuiApplication *C.QGuiApplication = nil
+	C.QApplication_virtbase(h, &outptr_QGuiApplication)
+
 	return &QApplication{h: h,
-		QGuiApplication: newQGuiApplication(h_QGuiApplication, h_QCoreApplication, h_QObject)}
+		QGuiApplication: newQGuiApplication(outptr_QGuiApplication)}
 }
 
 // UnsafeNewQApplication constructs the type using only unsafe pointers.
-func UnsafeNewQApplication(h unsafe.Pointer, h_QGuiApplication unsafe.Pointer, h_QCoreApplication unsafe.Pointer, h_QObject unsafe.Pointer) *QApplication {
-	if h == nil {
-		return nil
-	}
-
-	return &QApplication{h: (*C.QApplication)(h),
-		QGuiApplication: UnsafeNewQGuiApplication(h_QGuiApplication, h_QCoreApplication, h_QObject)}
+func UnsafeNewQApplication(h unsafe.Pointer) *QApplication {
+	return newQApplication((*C.QApplication)(h))
 }
 
 // NewQApplication constructs a new QApplication object.
@@ -73,13 +71,7 @@ func NewQApplication(args []string) *QApplication {
 
 	runtime.LockOSThread() // Prevent Go from migrating the main Qt thread
 
-	var outptr_QApplication *C.QApplication = nil
-	var outptr_QGuiApplication *C.QGuiApplication = nil
-	var outptr_QCoreApplication *C.QCoreApplication = nil
-	var outptr_QObject *C.QObject = nil
-
-	C.QApplication_new(argc, &argv[0], &outptr_QApplication, &outptr_QGuiApplication, &outptr_QCoreApplication, &outptr_QObject)
-	ret := newQApplication(outptr_QApplication, outptr_QGuiApplication, outptr_QCoreApplication, outptr_QObject)
+	ret := newQApplication(C.QApplication_new(argc, &argv[0]))
 	ret.isSubclass = true
 	return ret
 }
@@ -96,19 +88,13 @@ func NewQApplication2(args []string, param3 int) *QApplication {
 
 	runtime.LockOSThread() // Prevent Go from migrating the main Qt thread
 
-	var outptr_QApplication *C.QApplication = nil
-	var outptr_QGuiApplication *C.QGuiApplication = nil
-	var outptr_QCoreApplication *C.QCoreApplication = nil
-	var outptr_QObject *C.QObject = nil
-
-	C.QApplication_new2(argc, &argv[0], (C.int)(param3), &outptr_QApplication, &outptr_QGuiApplication, &outptr_QCoreApplication, &outptr_QObject)
-	ret := newQApplication(outptr_QApplication, outptr_QGuiApplication, outptr_QCoreApplication, outptr_QObject)
+	ret := newQApplication(C.QApplication_new2(argc, &argv[0], (C.int)(param3)))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QApplication) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QApplication_MetaObject(this.h)))
+	return newQMetaObject(C.QApplication_MetaObject(this.h))
 }
 
 func (this *QApplication) Metacast(param1 string) unsafe.Pointer {
@@ -136,7 +122,7 @@ func QApplication_TrUtf8(s string) string {
 }
 
 func QApplication_Style() *QStyle {
-	return UnsafeNewQStyle(unsafe.Pointer(C.QApplication_Style()), nil)
+	return newQStyle(C.QApplication_Style())
 }
 
 func QApplication_SetStyle(style *QStyle) {
@@ -148,7 +134,7 @@ func QApplication_SetStyleWithStyle(style string) *QStyle {
 	style_ms.data = C.CString(style)
 	style_ms.len = C.size_t(len(style))
 	defer C.free(unsafe.Pointer(style_ms.data))
-	return UnsafeNewQStyle(unsafe.Pointer(C.QApplication_SetStyleWithStyle(style_ms)), nil)
+	return newQStyle(C.QApplication_SetStyleWithStyle(style_ms))
 }
 
 func QApplication_ColorSpec() int {
@@ -160,8 +146,7 @@ func QApplication_SetColorSpec(colorSpec int) {
 }
 
 func QApplication_Palette(param1 *QWidget) *QPalette {
-	_ret := C.QApplication_Palette(param1.cPointer())
-	_goptr := newQPalette(_ret)
+	_goptr := newQPalette(C.QApplication_Palette(param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -169,8 +154,7 @@ func QApplication_Palette(param1 *QWidget) *QPalette {
 func QApplication_PaletteWithClassName(className string) *QPalette {
 	className_Cstring := C.CString(className)
 	defer C.free(unsafe.Pointer(className_Cstring))
-	_ret := C.QApplication_PaletteWithClassName(className_Cstring)
-	_goptr := newQPalette(_ret)
+	_goptr := newQPalette(C.QApplication_PaletteWithClassName(className_Cstring))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -180,15 +164,13 @@ func QApplication_SetPalette(param1 *QPalette) {
 }
 
 func QApplication_Font() *QFont {
-	_ret := C.QApplication_Font()
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QApplication_Font())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QApplication_FontWithQWidget(param1 *QWidget) *QFont {
-	_ret := C.QApplication_FontWithQWidget(param1.cPointer())
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QApplication_FontWithQWidget(param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -196,8 +178,7 @@ func QApplication_FontWithQWidget(param1 *QWidget) *QFont {
 func QApplication_FontWithClassName(className string) *QFont {
 	className_Cstring := C.CString(className)
 	defer C.free(unsafe.Pointer(className_Cstring))
-	_ret := C.QApplication_FontWithClassName(className_Cstring)
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QApplication_FontWithClassName(className_Cstring))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -207,8 +188,7 @@ func QApplication_SetFont(param1 *QFont) {
 }
 
 func QApplication_FontMetrics() *QFontMetrics {
-	_ret := C.QApplication_FontMetrics()
-	_goptr := newQFontMetrics(_ret)
+	_goptr := newQFontMetrics(C.QApplication_FontMetrics())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -218,8 +198,7 @@ func QApplication_SetWindowIcon(icon *QIcon) {
 }
 
 func QApplication_WindowIcon() *QIcon {
-	_ret := C.QApplication_WindowIcon()
-	_goptr := newQIcon(_ret)
+	_goptr := newQIcon(C.QApplication_WindowIcon())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -229,7 +208,7 @@ func QApplication_AllWidgets() []*QWidget {
 	_ret := make([]*QWidget, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQWidget(unsafe.Pointer(_outCast[i]), nil, nil)
+		_ret[i] = newQWidget(_outCast[i])
 	}
 	return _ret
 }
@@ -239,29 +218,29 @@ func QApplication_TopLevelWidgets() []*QWidget {
 	_ret := make([]*QWidget, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQWidget(unsafe.Pointer(_outCast[i]), nil, nil)
+		_ret[i] = newQWidget(_outCast[i])
 	}
 	return _ret
 }
 
 func QApplication_Desktop() *QDesktopWidget {
-	return UnsafeNewQDesktopWidget(unsafe.Pointer(C.QApplication_Desktop()), nil, nil, nil)
+	return newQDesktopWidget(C.QApplication_Desktop())
 }
 
 func QApplication_ActivePopupWidget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_ActivePopupWidget()), nil, nil)
+	return newQWidget(C.QApplication_ActivePopupWidget())
 }
 
 func QApplication_ActiveModalWidget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_ActiveModalWidget()), nil, nil)
+	return newQWidget(C.QApplication_ActiveModalWidget())
 }
 
 func QApplication_FocusWidget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_FocusWidget()), nil, nil)
+	return newQWidget(C.QApplication_FocusWidget())
 }
 
 func QApplication_ActiveWindow() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_ActiveWindow()), nil, nil)
+	return newQWidget(C.QApplication_ActiveWindow())
 }
 
 func QApplication_SetActiveWindow(act *QWidget) {
@@ -269,19 +248,19 @@ func QApplication_SetActiveWindow(act *QWidget) {
 }
 
 func QApplication_WidgetAt(p *QPoint) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_WidgetAt(p.cPointer())), nil, nil)
+	return newQWidget(C.QApplication_WidgetAt(p.cPointer()))
 }
 
 func QApplication_WidgetAt2(x int, y int) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_WidgetAt2((C.int)(x), (C.int)(y))), nil, nil)
+	return newQWidget(C.QApplication_WidgetAt2((C.int)(x), (C.int)(y)))
 }
 
 func QApplication_TopLevelAt(p *QPoint) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_TopLevelAt(p.cPointer())), nil, nil)
+	return newQWidget(C.QApplication_TopLevelAt(p.cPointer()))
 }
 
 func QApplication_TopLevelAt2(x int, y int) *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QApplication_TopLevelAt2((C.int)(x), (C.int)(y))), nil, nil)
+	return newQWidget(C.QApplication_TopLevelAt2((C.int)(x), (C.int)(y)))
 }
 
 func QApplication_Beep() {
@@ -329,8 +308,7 @@ func QApplication_SetGlobalStrut(globalStrut *QSize) {
 }
 
 func QApplication_GlobalStrut() *QSize {
-	_ret := C.QApplication_GlobalStrut()
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QApplication_GlobalStrut())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -382,8 +360,9 @@ func miqt_exec_callback_QApplication_FocusChanged(cb C.intptr_t, old *C.QWidget,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(old), nil, nil)
-	slotval2 := UnsafeNewQWidget(unsafe.Pointer(now), nil, nil)
+	slotval1 := newQWidget(old)
+
+	slotval2 := newQWidget(now)
 
 	gofunc(slotval1, slotval2)
 }
@@ -489,6 +468,9 @@ func (this *QApplication) callVirtualBase_Notify(param1 *QObject, param2 *QEvent
 
 }
 func (this *QApplication) OnNotify(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QApplication_override_virtual_Notify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -500,8 +482,9 @@ func miqt_exec_callback_QApplication_Notify(self *C.QApplication, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(param1))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(param2))
+	slotval1 := newQObject(param1)
+
+	slotval2 := newQEvent(param2)
 
 	virtualReturn := gofunc((&QApplication{h: self}).callVirtualBase_Notify, slotval1, slotval2)
 
@@ -515,6 +498,9 @@ func (this *QApplication) callVirtualBase_Event(param1 *QEvent) bool {
 
 }
 func (this *QApplication) OnEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QApplication_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -526,7 +512,7 @@ func miqt_exec_callback_QApplication_Event(self *C.QApplication, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	virtualReturn := gofunc((&QApplication{h: self}).callVirtualBase_Event, slotval1)
 

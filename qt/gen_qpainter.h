@@ -76,8 +76,8 @@ typedef struct QTextOption QTextOption;
 typedef struct QTransform QTransform;
 #endif
 
-void QPainter_new(QPainter** outptr_QPainter);
-void QPainter_new2(QPaintDevice* param1, QPainter** outptr_QPainter);
+QPainter* QPainter_new();
+QPainter* QPainter_new2(QPaintDevice* param1);
 QPaintDevice* QPainter_Device(const QPainter* self);
 bool QPainter_Begin(QPainter* self, QPaintDevice* param1);
 bool QPainter_End(QPainter* self);

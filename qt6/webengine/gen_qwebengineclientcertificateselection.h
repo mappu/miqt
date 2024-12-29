@@ -24,7 +24,7 @@ typedef struct QUrl QUrl;
 typedef struct QWebEngineClientCertificateSelection QWebEngineClientCertificateSelection;
 #endif
 
-void QWebEngineClientCertificateSelection_new(QWebEngineClientCertificateSelection* param1, QWebEngineClientCertificateSelection** outptr_QWebEngineClientCertificateSelection);
+QWebEngineClientCertificateSelection* QWebEngineClientCertificateSelection_new(QWebEngineClientCertificateSelection* param1);
 void QWebEngineClientCertificateSelection_OperatorAssign(QWebEngineClientCertificateSelection* self, QWebEngineClientCertificateSelection* param1);
 QUrl* QWebEngineClientCertificateSelection_Host(const QWebEngineClientCertificateSelection* self);
 void QWebEngineClientCertificateSelection_Select(QWebEngineClientCertificateSelection* self, QSslCertificate* certificate);

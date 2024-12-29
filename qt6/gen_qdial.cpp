@@ -18,6 +18,10 @@
 #include <QWidget>
 #include <qdial.h>
 #include "gen_qdial.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQDial : public virtual QDial {
@@ -362,22 +366,16 @@ public:
 
 };
 
-void QDial_new(QWidget* parent, QDial** outptr_QDial, QAbstractSlider** outptr_QAbstractSlider, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDial* ret = new MiqtVirtualQDial(parent);
-	*outptr_QDial = ret;
-	*outptr_QAbstractSlider = static_cast<QAbstractSlider*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDial* QDial_new(QWidget* parent) {
+	return new MiqtVirtualQDial(parent);
 }
 
-void QDial_new2(QDial** outptr_QDial, QAbstractSlider** outptr_QAbstractSlider, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDial* ret = new MiqtVirtualQDial();
-	*outptr_QDial = ret;
-	*outptr_QAbstractSlider = static_cast<QAbstractSlider*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDial* QDial_new2() {
+	return new MiqtVirtualQDial();
+}
+
+void QDial_virtbase(QDial* src, QAbstractSlider** outptr_QAbstractSlider) {
+	*outptr_QAbstractSlider = static_cast<QAbstractSlider*>(src);
 }
 
 QMetaObject* QDial_MetaObject(const QDial* self) {

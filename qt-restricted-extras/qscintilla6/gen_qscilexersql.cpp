@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexersql.h>
 #include "gen_qscilexersql.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerSQL : public virtual QsciLexerSQL {
@@ -911,18 +915,16 @@ public:
 
 };
 
-void QsciLexerSQL_new(QsciLexerSQL** outptr_QsciLexerSQL, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerSQL* ret = new MiqtVirtualQsciLexerSQL();
-	*outptr_QsciLexerSQL = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerSQL* QsciLexerSQL_new() {
+	return new MiqtVirtualQsciLexerSQL();
 }
 
-void QsciLexerSQL_new2(QObject* parent, QsciLexerSQL** outptr_QsciLexerSQL, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerSQL* ret = new MiqtVirtualQsciLexerSQL(parent);
-	*outptr_QsciLexerSQL = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerSQL* QsciLexerSQL_new2(QObject* parent) {
+	return new MiqtVirtualQsciLexerSQL(parent);
+}
+
+void QsciLexerSQL_virtbase(QsciLexerSQL* src, QsciLexer** outptr_QsciLexer) {
+	*outptr_QsciLexer = static_cast<QsciLexer*>(src);
 }
 
 QMetaObject* QsciLexerSQL_MetaObject(const QsciLexerSQL* self) {

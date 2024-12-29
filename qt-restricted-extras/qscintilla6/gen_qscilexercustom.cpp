@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexercustom.h>
 #include "gen_qscilexercustom.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerCustom : public virtual QsciLexerCustom {
@@ -856,18 +860,16 @@ public:
 
 };
 
-void QsciLexerCustom_new(QsciLexerCustom** outptr_QsciLexerCustom, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerCustom* ret = new MiqtVirtualQsciLexerCustom();
-	*outptr_QsciLexerCustom = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerCustom* QsciLexerCustom_new() {
+	return new MiqtVirtualQsciLexerCustom();
 }
 
-void QsciLexerCustom_new2(QObject* parent, QsciLexerCustom** outptr_QsciLexerCustom, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerCustom* ret = new MiqtVirtualQsciLexerCustom(parent);
-	*outptr_QsciLexerCustom = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerCustom* QsciLexerCustom_new2(QObject* parent) {
+	return new MiqtVirtualQsciLexerCustom(parent);
+}
+
+void QsciLexerCustom_virtbase(QsciLexerCustom* src, QsciLexer** outptr_QsciLexer) {
+	*outptr_QsciLexer = static_cast<QsciLexer*>(src);
 }
 
 QMetaObject* QsciLexerCustom_MetaObject(const QsciLexerCustom* self) {

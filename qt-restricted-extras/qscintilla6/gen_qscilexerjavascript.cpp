@@ -7,6 +7,10 @@
 #include <cstring>
 #include <qscilexerjavascript.h>
 #include "gen_qscilexerjavascript.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerJavaScript : public virtual QsciLexerJavaScript {
@@ -139,20 +143,16 @@ public:
 
 };
 
-void QsciLexerJavaScript_new(QsciLexerJavaScript** outptr_QsciLexerJavaScript, QsciLexerCPP** outptr_QsciLexerCPP, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerJavaScript* ret = new MiqtVirtualQsciLexerJavaScript();
-	*outptr_QsciLexerJavaScript = ret;
-	*outptr_QsciLexerCPP = static_cast<QsciLexerCPP*>(ret);
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerJavaScript* QsciLexerJavaScript_new() {
+	return new MiqtVirtualQsciLexerJavaScript();
 }
 
-void QsciLexerJavaScript_new2(QObject* parent, QsciLexerJavaScript** outptr_QsciLexerJavaScript, QsciLexerCPP** outptr_QsciLexerCPP, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerJavaScript* ret = new MiqtVirtualQsciLexerJavaScript(parent);
-	*outptr_QsciLexerJavaScript = ret;
-	*outptr_QsciLexerCPP = static_cast<QsciLexerCPP*>(ret);
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerJavaScript* QsciLexerJavaScript_new2(QObject* parent) {
+	return new MiqtVirtualQsciLexerJavaScript(parent);
+}
+
+void QsciLexerJavaScript_virtbase(QsciLexerJavaScript* src, QsciLexerCPP** outptr_QsciLexerCPP) {
+	*outptr_QsciLexerCPP = static_cast<QsciLexerCPP*>(src);
 }
 
 QMetaObject* QsciLexerJavaScript_MetaObject(const QsciLexerJavaScript* self) {

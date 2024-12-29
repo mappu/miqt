@@ -37,16 +37,13 @@ func newQBindingStatus(h *C.QBindingStatus) *QBindingStatus {
 	if h == nil {
 		return nil
 	}
+
 	return &QBindingStatus{h: h}
 }
 
 // UnsafeNewQBindingStatus constructs the type using only unsafe pointers.
 func UnsafeNewQBindingStatus(h unsafe.Pointer) *QBindingStatus {
-	if h == nil {
-		return nil
-	}
-
-	return &QBindingStatus{h: (*C.QBindingStatus)(h)}
+	return newQBindingStatus((*C.QBindingStatus)(h))
 }
 
 // Delete this object from C++ memory.
@@ -87,24 +84,19 @@ func newQBindingStorage(h *C.QBindingStorage) *QBindingStorage {
 	if h == nil {
 		return nil
 	}
+
 	return &QBindingStorage{h: h}
 }
 
 // UnsafeNewQBindingStorage constructs the type using only unsafe pointers.
 func UnsafeNewQBindingStorage(h unsafe.Pointer) *QBindingStorage {
-	if h == nil {
-		return nil
-	}
-
-	return &QBindingStorage{h: (*C.QBindingStorage)(h)}
+	return newQBindingStorage((*C.QBindingStorage)(h))
 }
 
 // NewQBindingStorage constructs a new QBindingStorage object.
 func NewQBindingStorage() *QBindingStorage {
-	var outptr_QBindingStorage *C.QBindingStorage = nil
 
-	C.QBindingStorage_new(&outptr_QBindingStorage)
-	ret := newQBindingStorage(outptr_QBindingStorage)
+	ret := newQBindingStorage(C.QBindingStorage_new())
 	ret.isSubclass = true
 	return ret
 }

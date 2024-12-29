@@ -17,11 +17,14 @@
 #include <QWebEngineHistoryModel>
 #include <qwebenginehistory.h>
 #include "gen_qwebenginehistory.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QWebEngineHistoryItem_new(QWebEngineHistoryItem* other, QWebEngineHistoryItem** outptr_QWebEngineHistoryItem) {
-	QWebEngineHistoryItem* ret = new QWebEngineHistoryItem(*other);
-	*outptr_QWebEngineHistoryItem = ret;
+QWebEngineHistoryItem* QWebEngineHistoryItem_new(QWebEngineHistoryItem* other) {
+	return new QWebEngineHistoryItem(*other);
 }
 
 void QWebEngineHistoryItem_OperatorAssign(QWebEngineHistoryItem* self, QWebEngineHistoryItem* other) {
@@ -69,6 +72,10 @@ void QWebEngineHistoryItem_Delete(QWebEngineHistoryItem* self, bool isSubclass) 
 	} else {
 		delete self;
 	}
+}
+
+void QWebEngineHistoryModel_virtbase(QWebEngineHistoryModel* src, QAbstractListModel** outptr_QAbstractListModel) {
+	*outptr_QAbstractListModel = static_cast<QAbstractListModel*>(src);
 }
 
 QMetaObject* QWebEngineHistoryModel_MetaObject(const QWebEngineHistoryModel* self) {
@@ -145,6 +152,10 @@ struct miqt_string QWebEngineHistoryModel_Tr3(const char* s, const char* c, int 
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+void QWebEngineHistory_virtbase(QWebEngineHistory* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QWebEngineHistory_MetaObject(const QWebEngineHistory* self) {

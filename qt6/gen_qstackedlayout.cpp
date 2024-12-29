@@ -12,6 +12,10 @@
 #include <QWidget>
 #include <qstackedlayout.h>
 #include "gen_qstackedlayout.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQStackedLayout : public virtual QStackedLayout {
@@ -508,28 +512,20 @@ public:
 
 };
 
-void QStackedLayout_new(QWidget* parent, QStackedLayout** outptr_QStackedLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem) {
-	MiqtVirtualQStackedLayout* ret = new MiqtVirtualQStackedLayout(parent);
-	*outptr_QStackedLayout = ret;
-	*outptr_QLayout = static_cast<QLayout*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QLayoutItem = static_cast<QLayoutItem*>(ret);
+QStackedLayout* QStackedLayout_new(QWidget* parent) {
+	return new MiqtVirtualQStackedLayout(parent);
 }
 
-void QStackedLayout_new2(QStackedLayout** outptr_QStackedLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem) {
-	MiqtVirtualQStackedLayout* ret = new MiqtVirtualQStackedLayout();
-	*outptr_QStackedLayout = ret;
-	*outptr_QLayout = static_cast<QLayout*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QLayoutItem = static_cast<QLayoutItem*>(ret);
+QStackedLayout* QStackedLayout_new2() {
+	return new MiqtVirtualQStackedLayout();
 }
 
-void QStackedLayout_new3(QLayout* parentLayout, QStackedLayout** outptr_QStackedLayout, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem) {
-	MiqtVirtualQStackedLayout* ret = new MiqtVirtualQStackedLayout(parentLayout);
-	*outptr_QStackedLayout = ret;
-	*outptr_QLayout = static_cast<QLayout*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QLayoutItem = static_cast<QLayoutItem*>(ret);
+QStackedLayout* QStackedLayout_new3(QLayout* parentLayout) {
+	return new MiqtVirtualQStackedLayout(parentLayout);
+}
+
+void QStackedLayout_virtbase(QStackedLayout* src, QLayout** outptr_QLayout) {
+	*outptr_QLayout = static_cast<QLayout*>(src);
 }
 
 QMetaObject* QStackedLayout_MetaObject(const QStackedLayout* self) {

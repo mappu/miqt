@@ -7,11 +7,14 @@
 #include <cstring>
 #include <qcollator.h>
 #include "gen_qcollator.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QCollatorSortKey_new(QCollatorSortKey* other, QCollatorSortKey** outptr_QCollatorSortKey) {
-	QCollatorSortKey* ret = new QCollatorSortKey(*other);
-	*outptr_QCollatorSortKey = ret;
+QCollatorSortKey* QCollatorSortKey_new(QCollatorSortKey* other) {
+	return new QCollatorSortKey(*other);
 }
 
 void QCollatorSortKey_OperatorAssign(QCollatorSortKey* self, QCollatorSortKey* other) {
@@ -34,19 +37,16 @@ void QCollatorSortKey_Delete(QCollatorSortKey* self, bool isSubclass) {
 	}
 }
 
-void QCollator_new(QCollator** outptr_QCollator) {
-	QCollator* ret = new QCollator();
-	*outptr_QCollator = ret;
+QCollator* QCollator_new() {
+	return new QCollator();
 }
 
-void QCollator_new2(QLocale* locale, QCollator** outptr_QCollator) {
-	QCollator* ret = new QCollator(*locale);
-	*outptr_QCollator = ret;
+QCollator* QCollator_new2(QLocale* locale) {
+	return new QCollator(*locale);
 }
 
-void QCollator_new3(QCollator* param1, QCollator** outptr_QCollator) {
-	QCollator* ret = new QCollator(*param1);
-	*outptr_QCollator = ret;
+QCollator* QCollator_new3(QCollator* param1) {
+	return new QCollator(*param1);
 }
 
 void QCollator_OperatorAssign(QCollator* self, QCollator* param1) {

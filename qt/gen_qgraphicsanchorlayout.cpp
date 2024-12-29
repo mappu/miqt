@@ -12,7 +12,15 @@
 #include <cstring>
 #include <qgraphicsanchorlayout.h>
 #include "gen_qgraphicsanchorlayout.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
+
+void QGraphicsAnchor_virtbase(QGraphicsAnchor* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
 
 QMetaObject* QGraphicsAnchor_MetaObject(const QGraphicsAnchor* self) {
 	return (QMetaObject*) self->metaObject();
@@ -351,18 +359,16 @@ public:
 
 };
 
-void QGraphicsAnchorLayout_new(QGraphicsAnchorLayout** outptr_QGraphicsAnchorLayout, QGraphicsLayout** outptr_QGraphicsLayout, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem) {
-	MiqtVirtualQGraphicsAnchorLayout* ret = new MiqtVirtualQGraphicsAnchorLayout();
-	*outptr_QGraphicsAnchorLayout = ret;
-	*outptr_QGraphicsLayout = static_cast<QGraphicsLayout*>(ret);
-	*outptr_QGraphicsLayoutItem = static_cast<QGraphicsLayoutItem*>(ret);
+QGraphicsAnchorLayout* QGraphicsAnchorLayout_new() {
+	return new MiqtVirtualQGraphicsAnchorLayout();
 }
 
-void QGraphicsAnchorLayout_new2(QGraphicsLayoutItem* parent, QGraphicsAnchorLayout** outptr_QGraphicsAnchorLayout, QGraphicsLayout** outptr_QGraphicsLayout, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem) {
-	MiqtVirtualQGraphicsAnchorLayout* ret = new MiqtVirtualQGraphicsAnchorLayout(parent);
-	*outptr_QGraphicsAnchorLayout = ret;
-	*outptr_QGraphicsLayout = static_cast<QGraphicsLayout*>(ret);
-	*outptr_QGraphicsLayoutItem = static_cast<QGraphicsLayoutItem*>(ret);
+QGraphicsAnchorLayout* QGraphicsAnchorLayout_new2(QGraphicsLayoutItem* parent) {
+	return new MiqtVirtualQGraphicsAnchorLayout(parent);
+}
+
+void QGraphicsAnchorLayout_virtbase(QGraphicsAnchorLayout* src, QGraphicsLayout** outptr_QGraphicsLayout) {
+	*outptr_QGraphicsLayout = static_cast<QGraphicsLayout*>(src);
 }
 
 QGraphicsAnchor* QGraphicsAnchorLayout_AddAnchor(QGraphicsAnchorLayout* self, QGraphicsLayoutItem* firstItem, int firstEdge, QGraphicsLayoutItem* secondItem, int secondEdge) {

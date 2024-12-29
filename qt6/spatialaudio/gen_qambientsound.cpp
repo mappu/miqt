@@ -12,6 +12,10 @@
 #include <QUrl>
 #include <qambientsound.h>
 #include "gen_qambientsound.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAmbientSound : public virtual QAmbientSound {
@@ -194,10 +198,12 @@ public:
 
 };
 
-void QAmbientSound_new(QAudioEngine* engine, QAmbientSound** outptr_QAmbientSound, QObject** outptr_QObject) {
-	MiqtVirtualQAmbientSound* ret = new MiqtVirtualQAmbientSound(engine);
-	*outptr_QAmbientSound = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAmbientSound* QAmbientSound_new(QAudioEngine* engine) {
+	return new MiqtVirtualQAmbientSound(engine);
+}
+
+void QAmbientSound_virtbase(QAmbientSound* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QAmbientSound_MetaObject(const QAmbientSound* self) {

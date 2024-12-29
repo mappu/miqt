@@ -28,6 +28,10 @@
 #include <QWidget>
 #include <qmdiarea.h>
 #include "gen_qmdiarea.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQMdiArea : public virtual QMdiArea {
@@ -609,24 +613,16 @@ public:
 
 };
 
-void QMdiArea_new(QWidget* parent, QMdiArea** outptr_QMdiArea, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQMdiArea* ret = new MiqtVirtualQMdiArea(parent);
-	*outptr_QMdiArea = ret;
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QMdiArea* QMdiArea_new(QWidget* parent) {
+	return new MiqtVirtualQMdiArea(parent);
 }
 
-void QMdiArea_new2(QMdiArea** outptr_QMdiArea, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQMdiArea* ret = new MiqtVirtualQMdiArea();
-	*outptr_QMdiArea = ret;
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QMdiArea* QMdiArea_new2() {
+	return new MiqtVirtualQMdiArea();
+}
+
+void QMdiArea_virtbase(QMdiArea* src, QAbstractScrollArea** outptr_QAbstractScrollArea) {
+	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(src);
 }
 
 QMetaObject* QMdiArea_MetaObject(const QMdiArea* self) {

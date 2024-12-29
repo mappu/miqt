@@ -24,8 +24,8 @@ typedef struct QReadWriteLock QReadWriteLock;
 typedef struct QWriteLocker QWriteLocker;
 #endif
 
-void QReadWriteLock_new(QReadWriteLock** outptr_QReadWriteLock);
-void QReadWriteLock_new2(int recursionMode, QReadWriteLock** outptr_QReadWriteLock);
+QReadWriteLock* QReadWriteLock_new();
+QReadWriteLock* QReadWriteLock_new2(int recursionMode);
 void QReadWriteLock_LockForRead(QReadWriteLock* self);
 bool QReadWriteLock_TryLockForRead(QReadWriteLock* self);
 bool QReadWriteLock_TryLockForReadWithTimeout(QReadWriteLock* self, int timeout);
@@ -35,13 +35,13 @@ bool QReadWriteLock_TryLockForWriteWithTimeout(QReadWriteLock* self, int timeout
 void QReadWriteLock_Unlock(QReadWriteLock* self);
 void QReadWriteLock_Delete(QReadWriteLock* self, bool isSubclass);
 
-void QReadLocker_new(QReadWriteLock* readWriteLock, QReadLocker** outptr_QReadLocker);
+QReadLocker* QReadLocker_new(QReadWriteLock* readWriteLock);
 void QReadLocker_Unlock(QReadLocker* self);
 void QReadLocker_Relock(QReadLocker* self);
 QReadWriteLock* QReadLocker_ReadWriteLock(const QReadLocker* self);
 void QReadLocker_Delete(QReadLocker* self, bool isSubclass);
 
-void QWriteLocker_new(QReadWriteLock* readWriteLock, QWriteLocker** outptr_QWriteLocker);
+QWriteLocker* QWriteLocker_new(QReadWriteLock* readWriteLock);
 void QWriteLocker_Unlock(QWriteLocker* self);
 void QWriteLocker_Relock(QWriteLocker* self);
 QReadWriteLock* QWriteLocker_ReadWriteLock(const QWriteLocker* self);

@@ -30,10 +30,11 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif
 
-void QFile_new(QFile** outptr_QFile, QFileDevice** outptr_QFileDevice, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
-void QFile_new2(struct miqt_string name, QFile** outptr_QFile, QFileDevice** outptr_QFileDevice, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
-void QFile_new3(QObject* parent, QFile** outptr_QFile, QFileDevice** outptr_QFileDevice, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
-void QFile_new4(struct miqt_string name, QObject* parent, QFile** outptr_QFile, QFileDevice** outptr_QFileDevice, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
+QFile* QFile_new();
+QFile* QFile_new2(struct miqt_string name);
+QFile* QFile_new3(QObject* parent);
+QFile* QFile_new4(struct miqt_string name, QObject* parent);
+void QFile_virtbase(QFile* src, QFileDevice** outptr_QFileDevice);
 QMetaObject* QFile_MetaObject(const QFile* self);
 void* QFile_Metacast(QFile* self, const char* param1);
 struct miqt_string QFile_Tr(const char* s);

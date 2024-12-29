@@ -1,10 +1,13 @@
 #include <QStringTokenizerBaseBase>
 #include <qstringtokenizer.h>
 #include "gen_qstringtokenizer.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QStringTokenizerBaseBase_new(QStringTokenizerBaseBase* param1, QStringTokenizerBaseBase** outptr_QStringTokenizerBaseBase) {
-	QStringTokenizerBaseBase* ret = new QStringTokenizerBaseBase(*param1);
-	*outptr_QStringTokenizerBaseBase = ret;
+QStringTokenizerBaseBase* QStringTokenizerBaseBase_new(QStringTokenizerBaseBase* param1) {
+	return new QStringTokenizerBaseBase(*param1);
 }
 

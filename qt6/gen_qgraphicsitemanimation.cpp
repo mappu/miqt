@@ -16,6 +16,10 @@
 #include <QTransform>
 #include <qgraphicsitemanimation.h>
 #include "gen_qgraphicsitemanimation.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGraphicsItemAnimation : public virtual QGraphicsItemAnimation {
@@ -249,16 +253,16 @@ public:
 
 };
 
-void QGraphicsItemAnimation_new(QGraphicsItemAnimation** outptr_QGraphicsItemAnimation, QObject** outptr_QObject) {
-	MiqtVirtualQGraphicsItemAnimation* ret = new MiqtVirtualQGraphicsItemAnimation();
-	*outptr_QGraphicsItemAnimation = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGraphicsItemAnimation* QGraphicsItemAnimation_new() {
+	return new MiqtVirtualQGraphicsItemAnimation();
 }
 
-void QGraphicsItemAnimation_new2(QObject* parent, QGraphicsItemAnimation** outptr_QGraphicsItemAnimation, QObject** outptr_QObject) {
-	MiqtVirtualQGraphicsItemAnimation* ret = new MiqtVirtualQGraphicsItemAnimation(parent);
-	*outptr_QGraphicsItemAnimation = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGraphicsItemAnimation* QGraphicsItemAnimation_new2(QObject* parent) {
+	return new MiqtVirtualQGraphicsItemAnimation(parent);
+}
+
+void QGraphicsItemAnimation_virtbase(QGraphicsItemAnimation* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QGraphicsItemAnimation_MetaObject(const QGraphicsItemAnimation* self) {

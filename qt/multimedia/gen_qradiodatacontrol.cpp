@@ -7,7 +7,15 @@
 #include <cstring>
 #include <qradiodatacontrol.h>
 #include "gen_qradiodatacontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
+
+void QRadioDataControl_virtbase(QRadioDataControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
 
 QMetaObject* QRadioDataControl_MetaObject(const QRadioDataControl* self) {
 	return (QMetaObject*) self->metaObject();

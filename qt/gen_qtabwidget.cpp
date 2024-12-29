@@ -35,6 +35,10 @@
 #include <QWidget>
 #include <qtabwidget.h>
 #include "gen_qtabwidget.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQTabWidget : public virtual QTabWidget {
@@ -1070,20 +1074,16 @@ public:
 
 };
 
-void QTabWidget_new(QWidget* parent, QTabWidget** outptr_QTabWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQTabWidget* ret = new MiqtVirtualQTabWidget(parent);
-	*outptr_QTabWidget = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QTabWidget* QTabWidget_new(QWidget* parent) {
+	return new MiqtVirtualQTabWidget(parent);
 }
 
-void QTabWidget_new2(QTabWidget** outptr_QTabWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQTabWidget* ret = new MiqtVirtualQTabWidget();
-	*outptr_QTabWidget = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QTabWidget* QTabWidget_new2() {
+	return new MiqtVirtualQTabWidget();
+}
+
+void QTabWidget_virtbase(QTabWidget* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QTabWidget_MetaObject(const QTabWidget* self) {

@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qfinalstate.h>
 #include "gen_qfinalstate.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQFinalState : public virtual QFinalState {
@@ -92,18 +96,16 @@ public:
 
 };
 
-void QFinalState_new(QFinalState** outptr_QFinalState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject) {
-	MiqtVirtualQFinalState* ret = new MiqtVirtualQFinalState();
-	*outptr_QFinalState = ret;
-	*outptr_QAbstractState = static_cast<QAbstractState*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QFinalState* QFinalState_new() {
+	return new MiqtVirtualQFinalState();
 }
 
-void QFinalState_new2(QState* parent, QFinalState** outptr_QFinalState, QAbstractState** outptr_QAbstractState, QObject** outptr_QObject) {
-	MiqtVirtualQFinalState* ret = new MiqtVirtualQFinalState(parent);
-	*outptr_QFinalState = ret;
-	*outptr_QAbstractState = static_cast<QAbstractState*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QFinalState* QFinalState_new2(QState* parent) {
+	return new MiqtVirtualQFinalState(parent);
+}
+
+void QFinalState_virtbase(QFinalState* src, QAbstractState** outptr_QAbstractState) {
+	*outptr_QAbstractState = static_cast<QAbstractState*>(src);
 }
 
 QMetaObject* QFinalState_MetaObject(const QFinalState* self) {

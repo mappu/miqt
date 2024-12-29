@@ -37,41 +37,33 @@ func newQHashSeed(h *C.QHashSeed) *QHashSeed {
 	if h == nil {
 		return nil
 	}
+
 	return &QHashSeed{h: h}
 }
 
 // UnsafeNewQHashSeed constructs the type using only unsafe pointers.
 func UnsafeNewQHashSeed(h unsafe.Pointer) *QHashSeed {
-	if h == nil {
-		return nil
-	}
-
-	return &QHashSeed{h: (*C.QHashSeed)(h)}
+	return newQHashSeed((*C.QHashSeed)(h))
 }
 
 // NewQHashSeed constructs a new QHashSeed object.
 func NewQHashSeed() *QHashSeed {
-	var outptr_QHashSeed *C.QHashSeed = nil
 
-	C.QHashSeed_new(&outptr_QHashSeed)
-	ret := newQHashSeed(outptr_QHashSeed)
+	ret := newQHashSeed(C.QHashSeed_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQHashSeed2 constructs a new QHashSeed object.
 func NewQHashSeed2(d uint64) *QHashSeed {
-	var outptr_QHashSeed *C.QHashSeed = nil
 
-	C.QHashSeed_new2((C.size_t)(d), &outptr_QHashSeed)
-	ret := newQHashSeed(outptr_QHashSeed)
+	ret := newQHashSeed(C.QHashSeed_new2((C.size_t)(d)))
 	ret.isSubclass = true
 	return ret
 }
 
 func QHashSeed_GlobalSeed() *QHashSeed {
-	_ret := C.QHashSeed_GlobalSeed()
-	_goptr := newQHashSeed(_ret)
+	_goptr := newQHashSeed(C.QHashSeed_GlobalSeed())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

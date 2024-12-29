@@ -12,6 +12,10 @@
 #include <QVariant>
 #include <qabstractsocket.h>
 #include "gen_qabstractsocket.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAbstractSocket : public virtual QAbstractSocket {
@@ -710,12 +714,12 @@ public:
 
 };
 
-void QAbstractSocket_new(int socketType, QObject* parent, QAbstractSocket** outptr_QAbstractSocket, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase) {
-	MiqtVirtualQAbstractSocket* ret = new MiqtVirtualQAbstractSocket(static_cast<QAbstractSocket::SocketType>(socketType), parent);
-	*outptr_QAbstractSocket = ret;
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QIODeviceBase = static_cast<QIODeviceBase*>(ret);
+QAbstractSocket* QAbstractSocket_new(int socketType, QObject* parent) {
+	return new MiqtVirtualQAbstractSocket(static_cast<QAbstractSocket::SocketType>(socketType), parent);
+}
+
+void QAbstractSocket_virtbase(QAbstractSocket* src, QIODevice** outptr_QIODevice) {
+	*outptr_QIODevice = static_cast<QIODevice*>(src);
 }
 
 QMetaObject* QAbstractSocket_MetaObject(const QAbstractSocket* self) {

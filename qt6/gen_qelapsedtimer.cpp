@@ -1,11 +1,14 @@
 #include <QElapsedTimer>
 #include <qelapsedtimer.h>
 #include "gen_qelapsedtimer.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QElapsedTimer_new(QElapsedTimer** outptr_QElapsedTimer) {
-	QElapsedTimer* ret = new QElapsedTimer();
-	*outptr_QElapsedTimer = ret;
+QElapsedTimer* QElapsedTimer_new() {
+	return new QElapsedTimer();
 }
 
 int QElapsedTimer_ClockType() {

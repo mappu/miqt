@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2024-12-16 v0.7.1
+
+- Fix an issue with methods returning Qt types having incomplete subclass information (#97, #98, #101, #110)
+- Fix an issue with segfaults when trying to call subclass methods on a Qt type that MIQT didn't construct (#101)
+- Fix an issue with requiring `-D_Bool=bool` on some compilers (#102, #103)
+
 ## 2024-11-27 v0.7.0
 
 - **BREAKING:** Reorder `QVariant` constructors for new `QMap<>` support (#13)
@@ -19,7 +25,7 @@
 - Add `QPair<>` bindings (#81)
 - Add automatic goroutine thread affinity with `runtime.LockOSThread` (#72, #83)
 - Optimize C ABI allocations for `miqt_array` / `QList<>` (#56)
-- Fix lint warnings (#77 vy @rcalixte)
+- Fix lint warnings (#77 by @rcalixte)
 - Fix an issue with virtual parent pointers (#80, #78)
 - Fix an issue with typedefs in `QMap<>` (#81)
 - Examples: Add `trivialwizard6` and `mdoutliner6` (#66 by @rcalixte, #67 by @rcalixte)

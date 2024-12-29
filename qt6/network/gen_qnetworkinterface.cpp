@@ -8,16 +8,18 @@
 #include <cstring>
 #include <qnetworkinterface.h>
 #include "gen_qnetworkinterface.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QNetworkAddressEntry_new(QNetworkAddressEntry** outptr_QNetworkAddressEntry) {
-	QNetworkAddressEntry* ret = new QNetworkAddressEntry();
-	*outptr_QNetworkAddressEntry = ret;
+QNetworkAddressEntry* QNetworkAddressEntry_new() {
+	return new QNetworkAddressEntry();
 }
 
-void QNetworkAddressEntry_new2(QNetworkAddressEntry* other, QNetworkAddressEntry** outptr_QNetworkAddressEntry) {
-	QNetworkAddressEntry* ret = new QNetworkAddressEntry(*other);
-	*outptr_QNetworkAddressEntry = ret;
+QNetworkAddressEntry* QNetworkAddressEntry_new2(QNetworkAddressEntry* other) {
+	return new QNetworkAddressEntry(*other);
 }
 
 void QNetworkAddressEntry_OperatorAssign(QNetworkAddressEntry* self, QNetworkAddressEntry* other) {
@@ -113,14 +115,12 @@ void QNetworkAddressEntry_Delete(QNetworkAddressEntry* self, bool isSubclass) {
 	}
 }
 
-void QNetworkInterface_new(QNetworkInterface** outptr_QNetworkInterface) {
-	QNetworkInterface* ret = new QNetworkInterface();
-	*outptr_QNetworkInterface = ret;
+QNetworkInterface* QNetworkInterface_new() {
+	return new QNetworkInterface();
 }
 
-void QNetworkInterface_new2(QNetworkInterface* other, QNetworkInterface** outptr_QNetworkInterface) {
-	QNetworkInterface* ret = new QNetworkInterface(*other);
-	*outptr_QNetworkInterface = ret;
+QNetworkInterface* QNetworkInterface_new2(QNetworkInterface* other) {
+	return new QNetworkInterface(*other);
 }
 
 void QNetworkInterface_OperatorAssign(QNetworkInterface* self, QNetworkInterface* other) {

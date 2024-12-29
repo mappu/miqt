@@ -34,6 +34,10 @@
 #include <QWidget>
 #include <qdialog.h>
 #include "gen_qdialog.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQDialog : public virtual QDialog {
@@ -1162,28 +1166,20 @@ public:
 
 };
 
-void QDialog_new(QWidget* parent, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDialog* ret = new MiqtVirtualQDialog(parent);
-	*outptr_QDialog = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDialog* QDialog_new(QWidget* parent) {
+	return new MiqtVirtualQDialog(parent);
 }
 
-void QDialog_new2(QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDialog* ret = new MiqtVirtualQDialog();
-	*outptr_QDialog = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDialog* QDialog_new2() {
+	return new MiqtVirtualQDialog();
 }
 
-void QDialog_new3(QWidget* parent, int f, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDialog* ret = new MiqtVirtualQDialog(parent, static_cast<Qt::WindowFlags>(f));
-	*outptr_QDialog = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDialog* QDialog_new3(QWidget* parent, int f) {
+	return new MiqtVirtualQDialog(parent, static_cast<Qt::WindowFlags>(f));
+}
+
+void QDialog_virtbase(QDialog* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QDialog_MetaObject(const QDialog* self) {

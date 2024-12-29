@@ -9,20 +9,22 @@
 #include <QWebChannel>
 #include <qqmlwebchannel.h>
 #include "gen_qqmlwebchannel.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QQmlWebChannel_new(QQmlWebChannel** outptr_QQmlWebChannel, QWebChannel** outptr_QWebChannel, QObject** outptr_QObject) {
-	QQmlWebChannel* ret = new QQmlWebChannel();
-	*outptr_QQmlWebChannel = ret;
-	*outptr_QWebChannel = static_cast<QWebChannel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QQmlWebChannel* QQmlWebChannel_new() {
+	return new QQmlWebChannel();
 }
 
-void QQmlWebChannel_new2(QObject* parent, QQmlWebChannel** outptr_QQmlWebChannel, QWebChannel** outptr_QWebChannel, QObject** outptr_QObject) {
-	QQmlWebChannel* ret = new QQmlWebChannel(parent);
-	*outptr_QQmlWebChannel = ret;
-	*outptr_QWebChannel = static_cast<QWebChannel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QQmlWebChannel* QQmlWebChannel_new2(QObject* parent) {
+	return new QQmlWebChannel(parent);
+}
+
+void QQmlWebChannel_virtbase(QQmlWebChannel* src, QWebChannel** outptr_QWebChannel) {
+	*outptr_QWebChannel = static_cast<QWebChannel*>(src);
 }
 
 QMetaObject* QQmlWebChannel_MetaObject(const QQmlWebChannel* self) {

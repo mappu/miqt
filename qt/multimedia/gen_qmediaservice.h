@@ -26,6 +26,7 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif
 
+void QMediaService_virtbase(QMediaService* src, QObject** outptr_QObject);
 QMetaObject* QMediaService_MetaObject(const QMediaService* self);
 void* QMediaService_Metacast(QMediaService* self, const char* param1);
 struct miqt_string QMediaService_Tr(const char* s);

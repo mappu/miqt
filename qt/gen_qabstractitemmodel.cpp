@@ -20,16 +20,18 @@
 #include <QVariant>
 #include <qabstractitemmodel.h>
 #include "gen_qabstractitemmodel.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QModelIndex_new(QModelIndex** outptr_QModelIndex) {
-	QModelIndex* ret = new QModelIndex();
-	*outptr_QModelIndex = ret;
+QModelIndex* QModelIndex_new() {
+	return new QModelIndex();
 }
 
-void QModelIndex_new2(QModelIndex* param1, QModelIndex** outptr_QModelIndex) {
-	QModelIndex* ret = new QModelIndex(*param1);
-	*outptr_QModelIndex = ret;
+QModelIndex* QModelIndex_new2(QModelIndex* param1) {
+	return new QModelIndex(*param1);
 }
 
 int QModelIndex_Row(const QModelIndex* self) {
@@ -110,19 +112,16 @@ void QModelIndex_Delete(QModelIndex* self, bool isSubclass) {
 	}
 }
 
-void QPersistentModelIndex_new(QPersistentModelIndex** outptr_QPersistentModelIndex) {
-	QPersistentModelIndex* ret = new QPersistentModelIndex();
-	*outptr_QPersistentModelIndex = ret;
+QPersistentModelIndex* QPersistentModelIndex_new() {
+	return new QPersistentModelIndex();
 }
 
-void QPersistentModelIndex_new2(QModelIndex* index, QPersistentModelIndex** outptr_QPersistentModelIndex) {
-	QPersistentModelIndex* ret = new QPersistentModelIndex(*index);
-	*outptr_QPersistentModelIndex = ret;
+QPersistentModelIndex* QPersistentModelIndex_new2(QModelIndex* index) {
+	return new QPersistentModelIndex(*index);
 }
 
-void QPersistentModelIndex_new3(QPersistentModelIndex* other, QPersistentModelIndex** outptr_QPersistentModelIndex) {
-	QPersistentModelIndex* ret = new QPersistentModelIndex(*other);
-	*outptr_QPersistentModelIndex = ret;
+QPersistentModelIndex* QPersistentModelIndex_new3(QPersistentModelIndex* other) {
+	return new QPersistentModelIndex(*other);
 }
 
 bool QPersistentModelIndex_OperatorLesser(const QPersistentModelIndex* self, QPersistentModelIndex* other) {
@@ -1369,16 +1368,16 @@ public:
 
 };
 
-void QAbstractItemModel_new(QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
-	MiqtVirtualQAbstractItemModel* ret = new MiqtVirtualQAbstractItemModel();
-	*outptr_QAbstractItemModel = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAbstractItemModel* QAbstractItemModel_new() {
+	return new MiqtVirtualQAbstractItemModel();
 }
 
-void QAbstractItemModel_new2(QObject* parent, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
-	MiqtVirtualQAbstractItemModel* ret = new MiqtVirtualQAbstractItemModel(parent);
-	*outptr_QAbstractItemModel = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAbstractItemModel* QAbstractItemModel_new2(QObject* parent) {
+	return new MiqtVirtualQAbstractItemModel(parent);
+}
+
+void QAbstractItemModel_virtbase(QAbstractItemModel* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QAbstractItemModel_MetaObject(const QAbstractItemModel* self) {
@@ -3173,18 +3172,16 @@ public:
 
 };
 
-void QAbstractTableModel_new(QAbstractTableModel** outptr_QAbstractTableModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
-	MiqtVirtualQAbstractTableModel* ret = new MiqtVirtualQAbstractTableModel();
-	*outptr_QAbstractTableModel = ret;
-	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAbstractTableModel* QAbstractTableModel_new() {
+	return new MiqtVirtualQAbstractTableModel();
 }
 
-void QAbstractTableModel_new2(QObject* parent, QAbstractTableModel** outptr_QAbstractTableModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
-	MiqtVirtualQAbstractTableModel* ret = new MiqtVirtualQAbstractTableModel(parent);
-	*outptr_QAbstractTableModel = ret;
-	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAbstractTableModel* QAbstractTableModel_new2(QObject* parent) {
+	return new MiqtVirtualQAbstractTableModel(parent);
+}
+
+void QAbstractTableModel_virtbase(QAbstractTableModel* src, QAbstractItemModel** outptr_QAbstractItemModel) {
+	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(src);
 }
 
 QMetaObject* QAbstractTableModel_MetaObject(const QAbstractTableModel* self) {
@@ -4459,18 +4456,16 @@ public:
 
 };
 
-void QAbstractListModel_new(QAbstractListModel** outptr_QAbstractListModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
-	MiqtVirtualQAbstractListModel* ret = new MiqtVirtualQAbstractListModel();
-	*outptr_QAbstractListModel = ret;
-	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAbstractListModel* QAbstractListModel_new() {
+	return new MiqtVirtualQAbstractListModel();
 }
 
-void QAbstractListModel_new2(QObject* parent, QAbstractListModel** outptr_QAbstractListModel, QAbstractItemModel** outptr_QAbstractItemModel, QObject** outptr_QObject) {
-	MiqtVirtualQAbstractListModel* ret = new MiqtVirtualQAbstractListModel(parent);
-	*outptr_QAbstractListModel = ret;
-	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAbstractListModel* QAbstractListModel_new2(QObject* parent) {
+	return new MiqtVirtualQAbstractListModel(parent);
+}
+
+void QAbstractListModel_virtbase(QAbstractListModel* src, QAbstractItemModel** outptr_QAbstractItemModel) {
+	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(src);
 }
 
 QMetaObject* QAbstractListModel_MetaObject(const QAbstractListModel* self) {

@@ -56,24 +56,19 @@ func newQRegExp(h *C.QRegExp) *QRegExp {
 	if h == nil {
 		return nil
 	}
+
 	return &QRegExp{h: h}
 }
 
 // UnsafeNewQRegExp constructs the type using only unsafe pointers.
 func UnsafeNewQRegExp(h unsafe.Pointer) *QRegExp {
-	if h == nil {
-		return nil
-	}
-
-	return &QRegExp{h: (*C.QRegExp)(h)}
+	return newQRegExp((*C.QRegExp)(h))
 }
 
 // NewQRegExp constructs a new QRegExp object.
 func NewQRegExp() *QRegExp {
-	var outptr_QRegExp *C.QRegExp = nil
 
-	C.QRegExp_new(&outptr_QRegExp)
-	ret := newQRegExp(outptr_QRegExp)
+	ret := newQRegExp(C.QRegExp_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -84,20 +79,16 @@ func NewQRegExp2(pattern string) *QRegExp {
 	pattern_ms.data = C.CString(pattern)
 	pattern_ms.len = C.size_t(len(pattern))
 	defer C.free(unsafe.Pointer(pattern_ms.data))
-	var outptr_QRegExp *C.QRegExp = nil
 
-	C.QRegExp_new2(pattern_ms, &outptr_QRegExp)
-	ret := newQRegExp(outptr_QRegExp)
+	ret := newQRegExp(C.QRegExp_new2(pattern_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQRegExp3 constructs a new QRegExp object.
 func NewQRegExp3(rx *QRegExp) *QRegExp {
-	var outptr_QRegExp *C.QRegExp = nil
 
-	C.QRegExp_new3(rx.cPointer(), &outptr_QRegExp)
-	ret := newQRegExp(outptr_QRegExp)
+	ret := newQRegExp(C.QRegExp_new3(rx.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -108,10 +99,8 @@ func NewQRegExp4(pattern string, cs CaseSensitivity) *QRegExp {
 	pattern_ms.data = C.CString(pattern)
 	pattern_ms.len = C.size_t(len(pattern))
 	defer C.free(unsafe.Pointer(pattern_ms.data))
-	var outptr_QRegExp *C.QRegExp = nil
 
-	C.QRegExp_new4(pattern_ms, (C.int)(cs), &outptr_QRegExp)
-	ret := newQRegExp(outptr_QRegExp)
+	ret := newQRegExp(C.QRegExp_new4(pattern_ms, (C.int)(cs)))
 	ret.isSubclass = true
 	return ret
 }
@@ -122,10 +111,8 @@ func NewQRegExp5(pattern string, cs CaseSensitivity, syntax QRegExp__PatternSynt
 	pattern_ms.data = C.CString(pattern)
 	pattern_ms.len = C.size_t(len(pattern))
 	defer C.free(unsafe.Pointer(pattern_ms.data))
-	var outptr_QRegExp *C.QRegExp = nil
 
-	C.QRegExp_new5(pattern_ms, (C.int)(cs), (C.int)(syntax), &outptr_QRegExp)
-	ret := newQRegExp(outptr_QRegExp)
+	ret := newQRegExp(C.QRegExp_new5(pattern_ms, (C.int)(cs), (C.int)(syntax)))
 	ret.isSubclass = true
 	return ret
 }

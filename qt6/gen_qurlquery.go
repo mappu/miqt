@@ -37,34 +37,27 @@ func newQUrlQuery(h *C.QUrlQuery) *QUrlQuery {
 	if h == nil {
 		return nil
 	}
+
 	return &QUrlQuery{h: h}
 }
 
 // UnsafeNewQUrlQuery constructs the type using only unsafe pointers.
 func UnsafeNewQUrlQuery(h unsafe.Pointer) *QUrlQuery {
-	if h == nil {
-		return nil
-	}
-
-	return &QUrlQuery{h: (*C.QUrlQuery)(h)}
+	return newQUrlQuery((*C.QUrlQuery)(h))
 }
 
 // NewQUrlQuery constructs a new QUrlQuery object.
 func NewQUrlQuery() *QUrlQuery {
-	var outptr_QUrlQuery *C.QUrlQuery = nil
 
-	C.QUrlQuery_new(&outptr_QUrlQuery)
-	ret := newQUrlQuery(outptr_QUrlQuery)
+	ret := newQUrlQuery(C.QUrlQuery_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQUrlQuery2 constructs a new QUrlQuery object.
 func NewQUrlQuery2(url *QUrl) *QUrlQuery {
-	var outptr_QUrlQuery *C.QUrlQuery = nil
 
-	C.QUrlQuery_new2(url.cPointer(), &outptr_QUrlQuery)
-	ret := newQUrlQuery(outptr_QUrlQuery)
+	ret := newQUrlQuery(C.QUrlQuery_new2(url.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -75,20 +68,16 @@ func NewQUrlQuery3(queryString string) *QUrlQuery {
 	queryString_ms.data = C.CString(queryString)
 	queryString_ms.len = C.size_t(len(queryString))
 	defer C.free(unsafe.Pointer(queryString_ms.data))
-	var outptr_QUrlQuery *C.QUrlQuery = nil
 
-	C.QUrlQuery_new3(queryString_ms, &outptr_QUrlQuery)
-	ret := newQUrlQuery(outptr_QUrlQuery)
+	ret := newQUrlQuery(C.QUrlQuery_new3(queryString_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQUrlQuery4 constructs a new QUrlQuery object.
 func NewQUrlQuery4(other *QUrlQuery) *QUrlQuery {
-	var outptr_QUrlQuery *C.QUrlQuery = nil
 
-	C.QUrlQuery_new4(other.cPointer(), &outptr_QUrlQuery)
-	ret := newQUrlQuery(outptr_QUrlQuery)
+	ret := newQUrlQuery(C.QUrlQuery_new4(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -148,15 +137,13 @@ func (this *QUrlQuery) SetQueryDelimiters(valueDelimiter QChar, pairDelimiter QC
 }
 
 func (this *QUrlQuery) QueryValueDelimiter() *QChar {
-	_ret := C.QUrlQuery_QueryValueDelimiter(this.h)
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QUrlQuery_QueryValueDelimiter(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QUrlQuery) QueryPairDelimiter() *QChar {
-	_ret := C.QUrlQuery_QueryPairDelimiter(this.h)
-	_goptr := newQChar(_ret)
+	_goptr := newQChar(C.QUrlQuery_QueryPairDelimiter(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

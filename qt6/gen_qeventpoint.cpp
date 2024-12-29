@@ -6,31 +6,30 @@
 #include <QVector2D>
 #include <qeventpoint.h>
 #include "gen_qeventpoint.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QEventPoint_new(QEventPoint** outptr_QEventPoint) {
-	QEventPoint* ret = new QEventPoint();
-	*outptr_QEventPoint = ret;
+QEventPoint* QEventPoint_new() {
+	return new QEventPoint();
 }
 
-void QEventPoint_new2(int pointId, uint8_t state, QPointF* scenePosition, QPointF* globalPosition, QEventPoint** outptr_QEventPoint) {
-	QEventPoint* ret = new QEventPoint(static_cast<int>(pointId), static_cast<QEventPoint::State>(state), *scenePosition, *globalPosition);
-	*outptr_QEventPoint = ret;
+QEventPoint* QEventPoint_new2(int pointId, uint8_t state, QPointF* scenePosition, QPointF* globalPosition) {
+	return new QEventPoint(static_cast<int>(pointId), static_cast<QEventPoint::State>(state), *scenePosition, *globalPosition);
 }
 
-void QEventPoint_new3(QEventPoint* other, QEventPoint** outptr_QEventPoint) {
-	QEventPoint* ret = new QEventPoint(*other);
-	*outptr_QEventPoint = ret;
+QEventPoint* QEventPoint_new3(QEventPoint* other) {
+	return new QEventPoint(*other);
 }
 
-void QEventPoint_new4(int id, QEventPoint** outptr_QEventPoint) {
-	QEventPoint* ret = new QEventPoint(static_cast<int>(id));
-	*outptr_QEventPoint = ret;
+QEventPoint* QEventPoint_new4(int id) {
+	return new QEventPoint(static_cast<int>(id));
 }
 
-void QEventPoint_new5(int id, QPointingDevice* device, QEventPoint** outptr_QEventPoint) {
-	QEventPoint* ret = new QEventPoint(static_cast<int>(id), device);
-	*outptr_QEventPoint = ret;
+QEventPoint* QEventPoint_new5(int id, QPointingDevice* device) {
+	return new QEventPoint(static_cast<int>(id), device);
 }
 
 void QEventPoint_OperatorAssign(QEventPoint* self, QEventPoint* other) {

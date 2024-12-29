@@ -73,42 +73,34 @@ func (this *QMediaRecorder) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMediaRecorder constructs the type using only CGO pointers.
-func newQMediaRecorder(h *C.QMediaRecorder, h_QObject *C.QObject) *QMediaRecorder {
+func newQMediaRecorder(h *C.QMediaRecorder) *QMediaRecorder {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QMediaRecorder_virtbase(h, &outptr_QObject)
+
 	return &QMediaRecorder{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQMediaRecorder constructs the type using only unsafe pointers.
-func UnsafeNewQMediaRecorder(h unsafe.Pointer, h_QObject unsafe.Pointer) *QMediaRecorder {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaRecorder{h: (*C.QMediaRecorder)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQMediaRecorder(h unsafe.Pointer) *QMediaRecorder {
+	return newQMediaRecorder((*C.QMediaRecorder)(h))
 }
 
 // NewQMediaRecorder constructs a new QMediaRecorder object.
 func NewQMediaRecorder() *QMediaRecorder {
-	var outptr_QMediaRecorder *C.QMediaRecorder = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMediaRecorder_new(&outptr_QMediaRecorder, &outptr_QObject)
-	ret := newQMediaRecorder(outptr_QMediaRecorder, outptr_QObject)
+	ret := newQMediaRecorder(C.QMediaRecorder_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaRecorder2 constructs a new QMediaRecorder object.
 func NewQMediaRecorder2(parent *qt6.QObject) *QMediaRecorder {
-	var outptr_QMediaRecorder *C.QMediaRecorder = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMediaRecorder_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QMediaRecorder, &outptr_QObject)
-	ret := newQMediaRecorder(outptr_QMediaRecorder, outptr_QObject)
+	ret := newQMediaRecorder(C.QMediaRecorder_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -137,8 +129,7 @@ func (this *QMediaRecorder) IsAvailable() bool {
 }
 
 func (this *QMediaRecorder) OutputLocation() *qt6.QUrl {
-	_ret := C.QMediaRecorder_OutputLocation(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QMediaRecorder_OutputLocation(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -148,8 +139,7 @@ func (this *QMediaRecorder) SetOutputLocation(location *qt6.QUrl) {
 }
 
 func (this *QMediaRecorder) ActualLocation() *qt6.QUrl {
-	_ret := C.QMediaRecorder_ActualLocation(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QMediaRecorder_ActualLocation(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -174,8 +164,7 @@ func (this *QMediaRecorder) Duration() int64 {
 }
 
 func (this *QMediaRecorder) MediaFormat() *QMediaFormat {
-	_ret := C.QMediaRecorder_MediaFormat(this.h)
-	_goptr := newQMediaFormat(_ret)
+	_goptr := newQMediaFormat(C.QMediaRecorder_MediaFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -201,8 +190,7 @@ func (this *QMediaRecorder) SetQuality(quality QMediaRecorder__Quality) {
 }
 
 func (this *QMediaRecorder) VideoResolution() *qt6.QSize {
-	_ret := C.QMediaRecorder_VideoResolution(this.h)
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QMediaRecorder_VideoResolution(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -256,8 +244,7 @@ func (this *QMediaRecorder) SetAudioSampleRate(sampleRate int) {
 }
 
 func (this *QMediaRecorder) MetaData() *QMediaMetaData {
-	_ret := C.QMediaRecorder_MetaData(this.h)
-	_goptr := newQMediaMetaData(_ret)
+	_goptr := newQMediaMetaData(C.QMediaRecorder_MetaData(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -271,7 +258,7 @@ func (this *QMediaRecorder) AddMetaData(metaData *QMediaMetaData) {
 }
 
 func (this *QMediaRecorder) CaptureSession() *QMediaCaptureSession {
-	return UnsafeNewQMediaCaptureSession(unsafe.Pointer(C.QMediaRecorder_CaptureSession(this.h)), nil)
+	return newQMediaCaptureSession(C.QMediaRecorder_CaptureSession(this.h))
 }
 
 func (this *QMediaRecorder) Record() {
@@ -607,6 +594,9 @@ func (this *QMediaRecorder) callVirtualBase_Event(event *qt6.QEvent) bool {
 
 }
 func (this *QMediaRecorder) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaRecorder_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -632,6 +622,9 @@ func (this *QMediaRecorder) callVirtualBase_EventFilter(watched *qt6.QObject, ev
 
 }
 func (this *QMediaRecorder) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaRecorder_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -644,6 +637,7 @@ func miqt_exec_callback_QMediaRecorder_EventFilter(self *C.QMediaRecorder, cb C.
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QMediaRecorder{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
@@ -658,6 +652,9 @@ func (this *QMediaRecorder) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
 
 }
 func (this *QMediaRecorder) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaRecorder_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -669,7 +666,7 @@ func miqt_exec_callback_QMediaRecorder_TimerEvent(self *C.QMediaRecorder, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QMediaRecorder{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -681,6 +678,9 @@ func (this *QMediaRecorder) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
 
 }
 func (this *QMediaRecorder) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaRecorder_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -692,7 +692,7 @@ func miqt_exec_callback_QMediaRecorder_ChildEvent(self *C.QMediaRecorder, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QMediaRecorder{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -704,6 +704,9 @@ func (this *QMediaRecorder) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 
 }
 func (this *QMediaRecorder) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaRecorder_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -727,6 +730,9 @@ func (this *QMediaRecorder) callVirtualBase_ConnectNotify(signal *qt6.QMetaMetho
 
 }
 func (this *QMediaRecorder) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaRecorder_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -750,6 +756,9 @@ func (this *QMediaRecorder) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMe
 
 }
 func (this *QMediaRecorder) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaRecorder_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

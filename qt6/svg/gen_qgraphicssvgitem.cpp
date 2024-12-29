@@ -15,6 +15,10 @@
 #include <QWidget>
 #include <qgraphicssvgitem.h>
 #include "gen_qgraphicssvgitem.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGraphicsSvgItem : public virtual QGraphicsSvgItem {
@@ -122,38 +126,26 @@ public:
 
 };
 
-void QGraphicsSvgItem_new(QGraphicsSvgItem** outptr_QGraphicsSvgItem, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsSvgItem* ret = new MiqtVirtualQGraphicsSvgItem();
-	*outptr_QGraphicsSvgItem = ret;
-	*outptr_QGraphicsObject = static_cast<QGraphicsObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsSvgItem* QGraphicsSvgItem_new() {
+	return new MiqtVirtualQGraphicsSvgItem();
 }
 
-void QGraphicsSvgItem_new2(struct miqt_string fileName, QGraphicsSvgItem** outptr_QGraphicsSvgItem, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem) {
+QGraphicsSvgItem* QGraphicsSvgItem_new2(struct miqt_string fileName) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	MiqtVirtualQGraphicsSvgItem* ret = new MiqtVirtualQGraphicsSvgItem(fileName_QString);
-	*outptr_QGraphicsSvgItem = ret;
-	*outptr_QGraphicsObject = static_cast<QGraphicsObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+	return new MiqtVirtualQGraphicsSvgItem(fileName_QString);
 }
 
-void QGraphicsSvgItem_new3(QGraphicsItem* parentItem, QGraphicsSvgItem** outptr_QGraphicsSvgItem, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem) {
-	MiqtVirtualQGraphicsSvgItem* ret = new MiqtVirtualQGraphicsSvgItem(parentItem);
-	*outptr_QGraphicsSvgItem = ret;
-	*outptr_QGraphicsObject = static_cast<QGraphicsObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+QGraphicsSvgItem* QGraphicsSvgItem_new3(QGraphicsItem* parentItem) {
+	return new MiqtVirtualQGraphicsSvgItem(parentItem);
 }
 
-void QGraphicsSvgItem_new4(struct miqt_string fileName, QGraphicsItem* parentItem, QGraphicsSvgItem** outptr_QGraphicsSvgItem, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem) {
+QGraphicsSvgItem* QGraphicsSvgItem_new4(struct miqt_string fileName, QGraphicsItem* parentItem) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	MiqtVirtualQGraphicsSvgItem* ret = new MiqtVirtualQGraphicsSvgItem(fileName_QString, parentItem);
-	*outptr_QGraphicsSvgItem = ret;
-	*outptr_QGraphicsObject = static_cast<QGraphicsObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
+	return new MiqtVirtualQGraphicsSvgItem(fileName_QString, parentItem);
+}
+
+void QGraphicsSvgItem_virtbase(QGraphicsSvgItem* src, QGraphicsObject** outptr_QGraphicsObject) {
+	*outptr_QGraphicsObject = static_cast<QGraphicsObject*>(src);
 }
 
 QMetaObject* QGraphicsSvgItem_MetaObject(const QGraphicsSvgItem* self) {

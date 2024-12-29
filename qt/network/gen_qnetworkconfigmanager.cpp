@@ -12,6 +12,10 @@
 #include <QTimerEvent>
 #include <qnetworkconfigmanager.h>
 #include "gen_qnetworkconfigmanager.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQNetworkConfigurationManager : public virtual QNetworkConfigurationManager {
@@ -195,16 +199,16 @@ public:
 
 };
 
-void QNetworkConfigurationManager_new(QNetworkConfigurationManager** outptr_QNetworkConfigurationManager, QObject** outptr_QObject) {
-	MiqtVirtualQNetworkConfigurationManager* ret = new MiqtVirtualQNetworkConfigurationManager();
-	*outptr_QNetworkConfigurationManager = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QNetworkConfigurationManager* QNetworkConfigurationManager_new() {
+	return new MiqtVirtualQNetworkConfigurationManager();
 }
 
-void QNetworkConfigurationManager_new2(QObject* parent, QNetworkConfigurationManager** outptr_QNetworkConfigurationManager, QObject** outptr_QObject) {
-	MiqtVirtualQNetworkConfigurationManager* ret = new MiqtVirtualQNetworkConfigurationManager(parent);
-	*outptr_QNetworkConfigurationManager = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QNetworkConfigurationManager* QNetworkConfigurationManager_new2(QObject* parent) {
+	return new MiqtVirtualQNetworkConfigurationManager(parent);
+}
+
+void QNetworkConfigurationManager_virtbase(QNetworkConfigurationManager* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QNetworkConfigurationManager_MetaObject(const QNetworkConfigurationManager* self) {

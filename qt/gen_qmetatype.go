@@ -171,34 +171,27 @@ func newQMetaType(h *C.QMetaType) *QMetaType {
 	if h == nil {
 		return nil
 	}
+
 	return &QMetaType{h: h}
 }
 
 // UnsafeNewQMetaType constructs the type using only unsafe pointers.
 func UnsafeNewQMetaType(h unsafe.Pointer) *QMetaType {
-	if h == nil {
-		return nil
-	}
-
-	return &QMetaType{h: (*C.QMetaType)(h)}
+	return newQMetaType((*C.QMetaType)(h))
 }
 
 // NewQMetaType constructs a new QMetaType object.
 func NewQMetaType() *QMetaType {
-	var outptr_QMetaType *C.QMetaType = nil
 
-	C.QMetaType_new(&outptr_QMetaType)
-	ret := newQMetaType(outptr_QMetaType)
+	ret := newQMetaType(C.QMetaType_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMetaType2 constructs a new QMetaType object.
 func NewQMetaType2(typeVal int) *QMetaType {
-	var outptr_QMetaType *C.QMetaType = nil
 
-	C.QMetaType_new2((C.int)(typeVal), &outptr_QMetaType)
-	ret := newQMetaType(outptr_QMetaType)
+	ret := newQMetaType(C.QMetaType_new2((C.int)(typeVal)))
 	ret.isSubclass = true
 	return ret
 }
@@ -247,7 +240,7 @@ func QMetaType_TypeFlags(typeVal int) QMetaType__TypeFlag {
 }
 
 func QMetaType_MetaObjectForType(typeVal int) *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMetaType_MetaObjectForType((C.int)(typeVal))))
+	return newQMetaObject(C.QMetaType_MetaObjectForType((C.int)(typeVal)))
 }
 
 func QMetaType_IsRegistered(typeVal int) bool {
@@ -299,7 +292,7 @@ func (this *QMetaType) Flags() QMetaType__TypeFlag {
 }
 
 func (this *QMetaType) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMetaType_MetaObject(this.h)))
+	return newQMetaObject(C.QMetaType_MetaObject(this.h))
 }
 
 func (this *QMetaType) Name() []byte {

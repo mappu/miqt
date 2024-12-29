@@ -40,9 +40,10 @@ typedef struct QWidget QWidget;
 typedef struct QWindow QWindow;
 #endif
 
-void QAccessibleWidget_new(QWidget* o, QAccessibleWidget** outptr_QAccessibleWidget, QAccessibleObject** outptr_QAccessibleObject, QAccessibleInterface** outptr_QAccessibleInterface, QAccessibleActionInterface** outptr_QAccessibleActionInterface);
-void QAccessibleWidget_new2(QWidget* o, int r, QAccessibleWidget** outptr_QAccessibleWidget, QAccessibleObject** outptr_QAccessibleObject, QAccessibleInterface** outptr_QAccessibleInterface, QAccessibleActionInterface** outptr_QAccessibleActionInterface);
-void QAccessibleWidget_new3(QWidget* o, int r, struct miqt_string name, QAccessibleWidget** outptr_QAccessibleWidget, QAccessibleObject** outptr_QAccessibleObject, QAccessibleInterface** outptr_QAccessibleInterface, QAccessibleActionInterface** outptr_QAccessibleActionInterface);
+QAccessibleWidget* QAccessibleWidget_new(QWidget* o);
+QAccessibleWidget* QAccessibleWidget_new2(QWidget* o, int r);
+QAccessibleWidget* QAccessibleWidget_new3(QWidget* o, int r, struct miqt_string name);
+void QAccessibleWidget_virtbase(QAccessibleWidget* src, QAccessibleObject** outptr_QAccessibleObject, QAccessibleActionInterface** outptr_QAccessibleActionInterface);
 bool QAccessibleWidget_IsValid(const QAccessibleWidget* self);
 QWindow* QAccessibleWidget_Window(const QAccessibleWidget* self);
 int QAccessibleWidget_ChildCount(const QAccessibleWidget* self);

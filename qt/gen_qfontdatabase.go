@@ -87,24 +87,19 @@ func newQFontDatabase(h *C.QFontDatabase) *QFontDatabase {
 	if h == nil {
 		return nil
 	}
+
 	return &QFontDatabase{h: h}
 }
 
 // UnsafeNewQFontDatabase constructs the type using only unsafe pointers.
 func UnsafeNewQFontDatabase(h unsafe.Pointer) *QFontDatabase {
-	if h == nil {
-		return nil
-	}
-
-	return &QFontDatabase{h: (*C.QFontDatabase)(h)}
+	return newQFontDatabase((*C.QFontDatabase)(h))
 }
 
 // NewQFontDatabase constructs a new QFontDatabase object.
 func NewQFontDatabase() *QFontDatabase {
-	var outptr_QFontDatabase *C.QFontDatabase = nil
 
-	C.QFontDatabase_new(&outptr_QFontDatabase)
-	ret := newQFontDatabase(outptr_QFontDatabase)
+	ret := newQFontDatabase(C.QFontDatabase_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -228,8 +223,7 @@ func (this *QFontDatabase) Font(family string, style string, pointSize int) *QFo
 	style_ms.data = C.CString(style)
 	style_ms.len = C.size_t(len(style))
 	defer C.free(unsafe.Pointer(style_ms.data))
-	_ret := C.QFontDatabase_Font(this.h, family_ms, style_ms, (C.int)(pointSize))
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QFontDatabase_Font(this.h, family_ms, style_ms, (C.int)(pointSize)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -373,8 +367,7 @@ func QFontDatabase_SupportsThreadedFontRendering() bool {
 }
 
 func QFontDatabase_SystemFont(typeVal QFontDatabase__SystemFont) *QFont {
-	_ret := C.QFontDatabase_SystemFont((C.int)(typeVal))
-	_goptr := newQFont(_ret)
+	_goptr := newQFont(C.QFontDatabase_SystemFont((C.int)(typeVal)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

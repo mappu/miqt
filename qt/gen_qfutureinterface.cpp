@@ -7,21 +7,22 @@
 #include <QThreadPool>
 #include <qfutureinterface.h>
 #include "gen_qfutureinterface.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QFutureInterfaceBase_new(QFutureInterfaceBase** outptr_QFutureInterfaceBase) {
-	QFutureInterfaceBase* ret = new QFutureInterfaceBase();
-	*outptr_QFutureInterfaceBase = ret;
+QFutureInterfaceBase* QFutureInterfaceBase_new() {
+	return new QFutureInterfaceBase();
 }
 
-void QFutureInterfaceBase_new2(QFutureInterfaceBase* other, QFutureInterfaceBase** outptr_QFutureInterfaceBase) {
-	QFutureInterfaceBase* ret = new QFutureInterfaceBase(*other);
-	*outptr_QFutureInterfaceBase = ret;
+QFutureInterfaceBase* QFutureInterfaceBase_new2(QFutureInterfaceBase* other) {
+	return new QFutureInterfaceBase(*other);
 }
 
-void QFutureInterfaceBase_new3(int initialState, QFutureInterfaceBase** outptr_QFutureInterfaceBase) {
-	QFutureInterfaceBase* ret = new QFutureInterfaceBase(static_cast<QFutureInterfaceBase::State>(initialState));
-	*outptr_QFutureInterfaceBase = ret;
+QFutureInterfaceBase* QFutureInterfaceBase_new3(int initialState) {
+	return new QFutureInterfaceBase(static_cast<QFutureInterfaceBase::State>(initialState));
 }
 
 void QFutureInterfaceBase_ReportStarted(QFutureInterfaceBase* self) {

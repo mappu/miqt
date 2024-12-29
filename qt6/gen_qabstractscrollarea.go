@@ -43,54 +43,40 @@ func (this *QAbstractScrollArea) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAbstractScrollArea constructs the type using only CGO pointers.
-func newQAbstractScrollArea(h *C.QAbstractScrollArea, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QAbstractScrollArea {
+func newQAbstractScrollArea(h *C.QAbstractScrollArea) *QAbstractScrollArea {
 	if h == nil {
 		return nil
 	}
+	var outptr_QFrame *C.QFrame = nil
+	C.QAbstractScrollArea_virtbase(h, &outptr_QFrame)
+
 	return &QAbstractScrollArea{h: h,
-		QFrame: newQFrame(h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+		QFrame: newQFrame(outptr_QFrame)}
 }
 
 // UnsafeNewQAbstractScrollArea constructs the type using only unsafe pointers.
-func UnsafeNewQAbstractScrollArea(h unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QAbstractScrollArea {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractScrollArea{h: (*C.QAbstractScrollArea)(h),
-		QFrame: UnsafeNewQFrame(h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQAbstractScrollArea(h unsafe.Pointer) *QAbstractScrollArea {
+	return newQAbstractScrollArea((*C.QAbstractScrollArea)(h))
 }
 
 // NewQAbstractScrollArea constructs a new QAbstractScrollArea object.
 func NewQAbstractScrollArea(parent *QWidget) *QAbstractScrollArea {
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QAbstractScrollArea_new(parent.cPointer(), &outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQAbstractScrollArea(outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQAbstractScrollArea(C.QAbstractScrollArea_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAbstractScrollArea2 constructs a new QAbstractScrollArea object.
 func NewQAbstractScrollArea2() *QAbstractScrollArea {
-	var outptr_QAbstractScrollArea *C.QAbstractScrollArea = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QAbstractScrollArea_new2(&outptr_QAbstractScrollArea, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQAbstractScrollArea(outptr_QAbstractScrollArea, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQAbstractScrollArea(C.QAbstractScrollArea_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QAbstractScrollArea) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractScrollArea_MetaObject(this.h)))
+	return newQMetaObject(C.QAbstractScrollArea_MetaObject(this.h))
 }
 
 func (this *QAbstractScrollArea) Metacast(param1 string) unsafe.Pointer {
@@ -117,7 +103,7 @@ func (this *QAbstractScrollArea) SetVerticalScrollBarPolicy(verticalScrollBarPol
 }
 
 func (this *QAbstractScrollArea) VerticalScrollBar() *QScrollBar {
-	return UnsafeNewQScrollBar(unsafe.Pointer(C.QAbstractScrollArea_VerticalScrollBar(this.h)), nil, nil, nil, nil)
+	return newQScrollBar(C.QAbstractScrollArea_VerticalScrollBar(this.h))
 }
 
 func (this *QAbstractScrollArea) SetVerticalScrollBar(scrollbar *QScrollBar) {
@@ -133,7 +119,7 @@ func (this *QAbstractScrollArea) SetHorizontalScrollBarPolicy(horizontalScrollBa
 }
 
 func (this *QAbstractScrollArea) HorizontalScrollBar() *QScrollBar {
-	return UnsafeNewQScrollBar(unsafe.Pointer(C.QAbstractScrollArea_HorizontalScrollBar(this.h)), nil, nil, nil, nil)
+	return newQScrollBar(C.QAbstractScrollArea_HorizontalScrollBar(this.h))
 }
 
 func (this *QAbstractScrollArea) SetHorizontalScrollBar(scrollbar *QScrollBar) {
@@ -141,7 +127,7 @@ func (this *QAbstractScrollArea) SetHorizontalScrollBar(scrollbar *QScrollBar) {
 }
 
 func (this *QAbstractScrollArea) CornerWidget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QAbstractScrollArea_CornerWidget(this.h)), nil, nil)
+	return newQWidget(C.QAbstractScrollArea_CornerWidget(this.h))
 }
 
 func (this *QAbstractScrollArea) SetCornerWidget(widget *QWidget) {
@@ -157,13 +143,13 @@ func (this *QAbstractScrollArea) ScrollBarWidgets(alignment AlignmentFlag) []*QW
 	_ret := make([]*QWidget, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQWidget(unsafe.Pointer(_outCast[i]), nil, nil)
+		_ret[i] = newQWidget(_outCast[i])
 	}
 	return _ret
 }
 
 func (this *QAbstractScrollArea) Viewport() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QAbstractScrollArea_Viewport(this.h)), nil, nil)
+	return newQWidget(C.QAbstractScrollArea_Viewport(this.h))
 }
 
 func (this *QAbstractScrollArea) SetViewport(widget *QWidget) {
@@ -171,22 +157,19 @@ func (this *QAbstractScrollArea) SetViewport(widget *QWidget) {
 }
 
 func (this *QAbstractScrollArea) MaximumViewportSize() *QSize {
-	_ret := C.QAbstractScrollArea_MaximumViewportSize(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QAbstractScrollArea_MaximumViewportSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractScrollArea) MinimumSizeHint() *QSize {
-	_ret := C.QAbstractScrollArea_MinimumSizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QAbstractScrollArea_MinimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractScrollArea) SizeHint() *QSize {
-	_ret := C.QAbstractScrollArea_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QAbstractScrollArea_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -227,13 +210,15 @@ func QAbstractScrollArea_Tr3(s string, c string, n int) string {
 
 func (this *QAbstractScrollArea) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QAbstractScrollArea_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QAbstractScrollArea_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QAbstractScrollArea) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractScrollArea_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -252,13 +237,15 @@ func miqt_exec_callback_QAbstractScrollArea_MinimumSizeHint(self *C.QAbstractScr
 
 func (this *QAbstractScrollArea) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QAbstractScrollArea_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QAbstractScrollArea_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QAbstractScrollArea) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractScrollArea_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -281,6 +268,9 @@ func (this *QAbstractScrollArea) callVirtualBase_SetupViewport(viewport *QWidget
 
 }
 func (this *QAbstractScrollArea) OnSetupViewport(slot func(super func(viewport *QWidget), viewport *QWidget)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractScrollArea_override_virtual_SetupViewport(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -292,7 +282,7 @@ func miqt_exec_callback_QAbstractScrollArea_SetupViewport(self *C.QAbstractScrol
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(viewport), nil, nil)
+	slotval1 := newQWidget(viewport)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_SetupViewport, slotval1)
 
@@ -304,6 +294,9 @@ func (this *QAbstractScrollArea) callVirtualBase_EventFilter(param1 *QObject, pa
 
 }
 func (this *QAbstractScrollArea) OnEventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractScrollArea_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -315,8 +308,9 @@ func miqt_exec_callback_QAbstractScrollArea_EventFilter(self *C.QAbstractScrollA
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(param1))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(param2))
+	slotval1 := newQObject(param1)
+
+	slotval2 := newQEvent(param2)
 
 	virtualReturn := gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -330,6 +324,9 @@ func (this *QAbstractScrollArea) callVirtualBase_Event(param1 *QEvent) bool {
 
 }
 func (this *QAbstractScrollArea) OnEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractScrollArea_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -341,7 +338,7 @@ func miqt_exec_callback_QAbstractScrollArea_Event(self *C.QAbstractScrollArea, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	virtualReturn := gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_Event, slotval1)
 
@@ -355,6 +352,9 @@ func (this *QAbstractScrollArea) callVirtualBase_ViewportEvent(param1 *QEvent) b
 
 }
 func (this *QAbstractScrollArea) OnViewportEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractScrollArea_override_virtual_ViewportEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -366,7 +366,7 @@ func miqt_exec_callback_QAbstractScrollArea_ViewportEvent(self *C.QAbstractScrol
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	virtualReturn := gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_ViewportEvent, slotval1)
 
@@ -380,6 +380,9 @@ func (this *QAbstractScrollArea) callVirtualBase_ResizeEvent(param1 *QResizeEven
 
 }
 func (this *QAbstractScrollArea) OnResizeEvent(slot func(super func(param1 *QResizeEvent), param1 *QResizeEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractScrollArea_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -391,7 +394,7 @@ func miqt_exec_callback_QAbstractScrollArea_ResizeEvent(self *C.QAbstractScrollA
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQResizeEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQResizeEvent(param1)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -403,6 +406,9 @@ func (this *QAbstractScrollArea) callVirtualBase_PaintEvent(param1 *QPaintEvent)
 
 }
 func (this *QAbstractScrollArea) OnPaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractScrollArea_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -414,7 +420,7 @@ func miqt_exec_callback_QAbstractScrollArea_PaintEvent(self *C.QAbstractScrollAr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQPaintEvent(param1)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -426,6 +432,9 @@ func (this *QAbstractScrollArea) callVirtualBase_MousePressEvent(param1 *QMouseE
 
 }
 func (this *QAbstractScrollArea) OnMousePressEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractScrollArea_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -437,7 +446,7 @@ func miqt_exec_callback_QAbstractScrollArea_MousePressEvent(self *C.QAbstractScr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(param1)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -449,6 +458,9 @@ func (this *QAbstractScrollArea) callVirtualBase_MouseReleaseEvent(param1 *QMous
 
 }
 func (this *QAbstractScrollArea) OnMouseReleaseEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractScrollArea_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -460,7 +472,7 @@ func miqt_exec_callback_QAbstractScrollArea_MouseReleaseEvent(self *C.QAbstractS
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(param1)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -472,6 +484,9 @@ func (this *QAbstractScrollArea) callVirtualBase_MouseDoubleClickEvent(param1 *Q
 
 }
 func (this *QAbstractScrollArea) OnMouseDoubleClickEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractScrollArea_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -483,7 +498,7 @@ func miqt_exec_callback_QAbstractScrollArea_MouseDoubleClickEvent(self *C.QAbstr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(param1)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
 
@@ -495,6 +510,9 @@ func (this *QAbstractScrollArea) callVirtualBase_MouseMoveEvent(param1 *QMouseEv
 
 }
 func (this *QAbstractScrollArea) OnMouseMoveEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractScrollArea_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -506,7 +524,7 @@ func miqt_exec_callback_QAbstractScrollArea_MouseMoveEvent(self *C.QAbstractScro
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(param1), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(param1)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -518,6 +536,9 @@ func (this *QAbstractScrollArea) callVirtualBase_WheelEvent(param1 *QWheelEvent)
 
 }
 func (this *QAbstractScrollArea) OnWheelEvent(slot func(super func(param1 *QWheelEvent), param1 *QWheelEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractScrollArea_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -529,7 +550,7 @@ func miqt_exec_callback_QAbstractScrollArea_WheelEvent(self *C.QAbstractScrollAr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWheelEvent(unsafe.Pointer(param1), nil, nil, nil, nil)
+	slotval1 := newQWheelEvent(param1)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_WheelEvent, slotval1)
 
@@ -541,6 +562,9 @@ func (this *QAbstractScrollArea) callVirtualBase_ContextMenuEvent(param1 *QConte
 
 }
 func (this *QAbstractScrollArea) OnContextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractScrollArea_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -552,7 +576,7 @@ func miqt_exec_callback_QAbstractScrollArea_ContextMenuEvent(self *C.QAbstractSc
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQContextMenuEvent(param1)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -564,6 +588,9 @@ func (this *QAbstractScrollArea) callVirtualBase_DragEnterEvent(param1 *QDragEnt
 
 }
 func (this *QAbstractScrollArea) OnDragEnterEvent(slot func(super func(param1 *QDragEnterEvent), param1 *QDragEnterEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractScrollArea_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -575,7 +602,7 @@ func miqt_exec_callback_QAbstractScrollArea_DragEnterEvent(self *C.QAbstractScro
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragEnterEvent(unsafe.Pointer(param1), nil, nil, nil)
+	slotval1 := newQDragEnterEvent(param1)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_DragEnterEvent, slotval1)
 
@@ -587,6 +614,9 @@ func (this *QAbstractScrollArea) callVirtualBase_DragMoveEvent(param1 *QDragMove
 
 }
 func (this *QAbstractScrollArea) OnDragMoveEvent(slot func(super func(param1 *QDragMoveEvent), param1 *QDragMoveEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractScrollArea_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -598,7 +628,7 @@ func miqt_exec_callback_QAbstractScrollArea_DragMoveEvent(self *C.QAbstractScrol
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragMoveEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQDragMoveEvent(param1)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_DragMoveEvent, slotval1)
 
@@ -610,6 +640,9 @@ func (this *QAbstractScrollArea) callVirtualBase_DragLeaveEvent(param1 *QDragLea
 
 }
 func (this *QAbstractScrollArea) OnDragLeaveEvent(slot func(super func(param1 *QDragLeaveEvent), param1 *QDragLeaveEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractScrollArea_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -621,7 +654,7 @@ func miqt_exec_callback_QAbstractScrollArea_DragLeaveEvent(self *C.QAbstractScro
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDragLeaveEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQDragLeaveEvent(param1)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
 
@@ -633,6 +666,9 @@ func (this *QAbstractScrollArea) callVirtualBase_DropEvent(param1 *QDropEvent) {
 
 }
 func (this *QAbstractScrollArea) OnDropEvent(slot func(super func(param1 *QDropEvent), param1 *QDropEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractScrollArea_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -644,7 +680,7 @@ func miqt_exec_callback_QAbstractScrollArea_DropEvent(self *C.QAbstractScrollAre
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQDropEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQDropEvent(param1)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_DropEvent, slotval1)
 
@@ -656,6 +692,9 @@ func (this *QAbstractScrollArea) callVirtualBase_KeyPressEvent(param1 *QKeyEvent
 
 }
 func (this *QAbstractScrollArea) OnKeyPressEvent(slot func(super func(param1 *QKeyEvent), param1 *QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractScrollArea_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -667,7 +706,7 @@ func miqt_exec_callback_QAbstractScrollArea_KeyPressEvent(self *C.QAbstractScrol
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQKeyEvent(param1)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -679,6 +718,9 @@ func (this *QAbstractScrollArea) callVirtualBase_ScrollContentsBy(dx int, dy int
 
 }
 func (this *QAbstractScrollArea) OnScrollContentsBy(slot func(super func(dx int, dy int), dx int, dy int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractScrollArea_override_virtual_ScrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -700,13 +742,15 @@ func miqt_exec_callback_QAbstractScrollArea_ScrollContentsBy(self *C.QAbstractSc
 
 func (this *QAbstractScrollArea) callVirtualBase_ViewportSizeHint() *QSize {
 
-	_ret := C.QAbstractScrollArea_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QAbstractScrollArea_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QAbstractScrollArea) OnViewportSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractScrollArea_override_virtual_ViewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -729,6 +773,9 @@ func (this *QAbstractScrollArea) callVirtualBase_ChangeEvent(param1 *QEvent) {
 
 }
 func (this *QAbstractScrollArea) OnChangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractScrollArea_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -740,7 +787,7 @@ func miqt_exec_callback_QAbstractScrollArea_ChangeEvent(self *C.QAbstractScrollA
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -752,6 +799,9 @@ func (this *QAbstractScrollArea) callVirtualBase_InitStyleOption(option *QStyleO
 
 }
 func (this *QAbstractScrollArea) OnInitStyleOption(slot func(super func(option *QStyleOptionFrame), option *QStyleOptionFrame)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractScrollArea_override_virtual_InitStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -763,7 +813,7 @@ func miqt_exec_callback_QAbstractScrollArea_InitStyleOption(self *C.QAbstractScr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQStyleOptionFrame(unsafe.Pointer(option), nil)
+	slotval1 := newQStyleOptionFrame(option)
 
 	gofunc((&QAbstractScrollArea{h: self}).callVirtualBase_InitStyleOption, slotval1)
 

@@ -37,20 +37,17 @@ func newQContiguousCacheData(h *C.QContiguousCacheData) *QContiguousCacheData {
 	if h == nil {
 		return nil
 	}
+
 	return &QContiguousCacheData{h: h}
 }
 
 // UnsafeNewQContiguousCacheData constructs the type using only unsafe pointers.
 func UnsafeNewQContiguousCacheData(h unsafe.Pointer) *QContiguousCacheData {
-	if h == nil {
-		return nil
-	}
-
-	return &QContiguousCacheData{h: (*C.QContiguousCacheData)(h)}
+	return newQContiguousCacheData((*C.QContiguousCacheData)(h))
 }
 
 func QContiguousCacheData_AllocateData(size int64, alignment int64) *QContiguousCacheData {
-	return UnsafeNewQContiguousCacheData(unsafe.Pointer(C.QContiguousCacheData_AllocateData((C.ptrdiff_t)(size), (C.ptrdiff_t)(alignment))))
+	return newQContiguousCacheData(C.QContiguousCacheData_AllocateData((C.ptrdiff_t)(size), (C.ptrdiff_t)(alignment)))
 }
 
 func QContiguousCacheData_FreeData(data *QContiguousCacheData) {

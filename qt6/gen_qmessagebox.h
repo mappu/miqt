@@ -52,15 +52,16 @@ typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
-void QMessageBox_new(QWidget* parent, QMessageBox** outptr_QMessageBox, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QMessageBox_new2(QMessageBox** outptr_QMessageBox, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QMessageBox_new3(int icon, struct miqt_string title, struct miqt_string text, QMessageBox** outptr_QMessageBox, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QMessageBox_new4(struct miqt_string title, struct miqt_string text, int icon, int button0, int button1, int button2, QMessageBox** outptr_QMessageBox, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QMessageBox_new5(int icon, struct miqt_string title, struct miqt_string text, int buttons, QMessageBox** outptr_QMessageBox, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QMessageBox_new6(int icon, struct miqt_string title, struct miqt_string text, int buttons, QWidget* parent, QMessageBox** outptr_QMessageBox, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QMessageBox_new7(int icon, struct miqt_string title, struct miqt_string text, int buttons, QWidget* parent, int flags, QMessageBox** outptr_QMessageBox, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QMessageBox_new8(struct miqt_string title, struct miqt_string text, int icon, int button0, int button1, int button2, QWidget* parent, QMessageBox** outptr_QMessageBox, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QMessageBox_new9(struct miqt_string title, struct miqt_string text, int icon, int button0, int button1, int button2, QWidget* parent, int f, QMessageBox** outptr_QMessageBox, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QMessageBox* QMessageBox_new(QWidget* parent);
+QMessageBox* QMessageBox_new2();
+QMessageBox* QMessageBox_new3(int icon, struct miqt_string title, struct miqt_string text);
+QMessageBox* QMessageBox_new4(struct miqt_string title, struct miqt_string text, int icon, int button0, int button1, int button2);
+QMessageBox* QMessageBox_new5(int icon, struct miqt_string title, struct miqt_string text, int buttons);
+QMessageBox* QMessageBox_new6(int icon, struct miqt_string title, struct miqt_string text, int buttons, QWidget* parent);
+QMessageBox* QMessageBox_new7(int icon, struct miqt_string title, struct miqt_string text, int buttons, QWidget* parent, int flags);
+QMessageBox* QMessageBox_new8(struct miqt_string title, struct miqt_string text, int icon, int button0, int button1, int button2, QWidget* parent);
+QMessageBox* QMessageBox_new9(struct miqt_string title, struct miqt_string text, int icon, int button0, int button1, int button2, QWidget* parent, int f);
+void QMessageBox_virtbase(QMessageBox* src, QDialog** outptr_QDialog);
 QMetaObject* QMessageBox_MetaObject(const QMessageBox* self);
 void* QMessageBox_Metacast(QMessageBox* self, const char* param1);
 struct miqt_string QMessageBox_Tr(const char* s);

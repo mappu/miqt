@@ -34,8 +34,9 @@ typedef struct QsciMacro QsciMacro;
 typedef struct QsciScintilla QsciScintilla;
 #endif
 
-void QsciMacro_new(QsciScintilla* parent, QsciMacro** outptr_QsciMacro, QObject** outptr_QObject);
-void QsciMacro_new2(struct miqt_string asc, QsciScintilla* parent, QsciMacro** outptr_QsciMacro, QObject** outptr_QObject);
+QsciMacro* QsciMacro_new(QsciScintilla* parent);
+QsciMacro* QsciMacro_new2(struct miqt_string asc, QsciScintilla* parent);
+void QsciMacro_virtbase(QsciMacro* src, QObject** outptr_QObject);
 QMetaObject* QsciMacro_MetaObject(const QsciMacro* self);
 void* QsciMacro_Metacast(QsciMacro* self, const char* param1);
 struct miqt_string QsciMacro_Tr(const char* s);

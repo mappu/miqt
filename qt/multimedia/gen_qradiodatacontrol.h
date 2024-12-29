@@ -26,6 +26,7 @@ typedef struct QObject QObject;
 typedef struct QRadioDataControl QRadioDataControl;
 #endif
 
+void QRadioDataControl_virtbase(QRadioDataControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QRadioDataControl_MetaObject(const QRadioDataControl* self);
 void* QRadioDataControl_Metacast(QRadioDataControl* self, const char* param1);
 struct miqt_string QRadioDataControl_Tr(const char* s);

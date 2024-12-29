@@ -35,37 +35,32 @@ func (this *QMimeData) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMimeData constructs the type using only CGO pointers.
-func newQMimeData(h *C.QMimeData, h_QObject *C.QObject) *QMimeData {
+func newQMimeData(h *C.QMimeData) *QMimeData {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QMimeData_virtbase(h, &outptr_QObject)
+
 	return &QMimeData{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQMimeData constructs the type using only unsafe pointers.
-func UnsafeNewQMimeData(h unsafe.Pointer, h_QObject unsafe.Pointer) *QMimeData {
-	if h == nil {
-		return nil
-	}
-
-	return &QMimeData{h: (*C.QMimeData)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQMimeData(h unsafe.Pointer) *QMimeData {
+	return newQMimeData((*C.QMimeData)(h))
 }
 
 // NewQMimeData constructs a new QMimeData object.
 func NewQMimeData() *QMimeData {
-	var outptr_QMimeData *C.QMimeData = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QMimeData_new(&outptr_QMimeData, &outptr_QObject)
-	ret := newQMimeData(outptr_QMimeData, outptr_QObject)
+	ret := newQMimeData(C.QMimeData_new())
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QMimeData) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QMimeData_MetaObject(this.h)))
+	return newQMetaObject(C.QMimeData_MetaObject(this.h))
 }
 
 func (this *QMimeData) Metacast(param1 string) unsafe.Pointer {
@@ -88,8 +83,7 @@ func (this *QMimeData) Urls() []QUrl {
 	_ret := make([]QUrl, int(_ma.len))
 	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQUrl(_lv_ret)
+		_lv_goptr := newQUrl(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -149,8 +143,7 @@ func (this *QMimeData) HasHtml() bool {
 }
 
 func (this *QMimeData) ImageData() *QVariant {
-	_ret := C.QMimeData_ImageData(this.h)
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QMimeData_ImageData(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -164,8 +157,7 @@ func (this *QMimeData) HasImage() bool {
 }
 
 func (this *QMimeData) ColorData() *QVariant {
-	_ret := C.QMimeData_ColorData(this.h)
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QMimeData_ColorData(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -265,6 +257,9 @@ func (this *QMimeData) callVirtualBase_HasFormat(mimetype string) bool {
 
 }
 func (this *QMimeData) OnHasFormat(slot func(super func(mimetype string) bool, mimetype string) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMimeData_override_virtual_HasFormat(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -302,6 +297,9 @@ func (this *QMimeData) callVirtualBase_Formats() []string {
 
 }
 func (this *QMimeData) OnFormats(slot func(super func() []string) []string) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMimeData_override_virtual_Formats(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -334,13 +332,15 @@ func (this *QMimeData) callVirtualBase_RetrieveData(mimetype string, preferredTy
 	mimetype_ms.len = C.size_t(len(mimetype))
 	defer C.free(unsafe.Pointer(mimetype_ms.data))
 
-	_ret := C.QMimeData_virtualbase_RetrieveData(unsafe.Pointer(this.h), mimetype_ms, preferredType.cPointer())
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QMimeData_virtualbase_RetrieveData(unsafe.Pointer(this.h), mimetype_ms, preferredType.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QMimeData) OnRetrieveData(slot func(super func(mimetype string, preferredType QMetaType) *QVariant, mimetype string, preferredType QMetaType) *QVariant) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMimeData_override_virtual_RetrieveData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -356,8 +356,7 @@ func miqt_exec_callback_QMimeData_RetrieveData(self *C.QMimeData, cb C.intptr_t,
 	mimetype_ret := C.GoStringN(mimetype_ms.data, C.int(int64(mimetype_ms.len)))
 	C.free(unsafe.Pointer(mimetype_ms.data))
 	slotval1 := mimetype_ret
-	preferredType_ret := preferredType
-	preferredType_goptr := newQMetaType(preferredType_ret)
+	preferredType_goptr := newQMetaType(preferredType)
 	preferredType_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval2 := *preferredType_goptr
 
@@ -373,6 +372,9 @@ func (this *QMimeData) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QMimeData) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMimeData_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -384,7 +386,7 @@ func miqt_exec_callback_QMimeData_Event(self *C.QMimeData, cb C.intptr_t, event 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QMimeData{h: self}).callVirtualBase_Event, slotval1)
 
@@ -398,6 +400,9 @@ func (this *QMimeData) callVirtualBase_EventFilter(watched *QObject, event *QEve
 
 }
 func (this *QMimeData) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMimeData_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -409,8 +414,9 @@ func miqt_exec_callback_QMimeData_EventFilter(self *C.QMimeData, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QMimeData{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -424,6 +430,9 @@ func (this *QMimeData) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QMimeData) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMimeData_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -435,7 +444,7 @@ func miqt_exec_callback_QMimeData_TimerEvent(self *C.QMimeData, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QMimeData{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -447,6 +456,9 @@ func (this *QMimeData) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QMimeData) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMimeData_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -458,7 +470,7 @@ func miqt_exec_callback_QMimeData_ChildEvent(self *C.QMimeData, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QMimeData{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -470,6 +482,9 @@ func (this *QMimeData) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QMimeData) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMimeData_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -481,7 +496,7 @@ func miqt_exec_callback_QMimeData_CustomEvent(self *C.QMimeData, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QMimeData{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -493,6 +508,9 @@ func (this *QMimeData) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QMimeData) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMimeData_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -504,7 +522,7 @@ func miqt_exec_callback_QMimeData_ConnectNotify(self *C.QMimeData, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QMimeData{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -516,6 +534,9 @@ func (this *QMimeData) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QMimeData) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMimeData_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -527,7 +548,7 @@ func miqt_exec_callback_QMimeData_DisconnectNotify(self *C.QMimeData, cb C.intpt
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QMimeData{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

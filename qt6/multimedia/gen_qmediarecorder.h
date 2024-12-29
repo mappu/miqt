@@ -42,8 +42,9 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QUrl QUrl;
 #endif
 
-void QMediaRecorder_new(QMediaRecorder** outptr_QMediaRecorder, QObject** outptr_QObject);
-void QMediaRecorder_new2(QObject* parent, QMediaRecorder** outptr_QMediaRecorder, QObject** outptr_QObject);
+QMediaRecorder* QMediaRecorder_new();
+QMediaRecorder* QMediaRecorder_new2(QObject* parent);
+void QMediaRecorder_virtbase(QMediaRecorder* src, QObject** outptr_QObject);
 QMetaObject* QMediaRecorder_MetaObject(const QMediaRecorder* self);
 void* QMediaRecorder_Metacast(QMediaRecorder* self, const char* param1);
 struct miqt_string QMediaRecorder_Tr(const char* s);

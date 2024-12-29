@@ -40,7 +40,7 @@ typedef struct QWebEngineHistoryItem QWebEngineHistoryItem;
 typedef struct QWebEngineHistoryModel QWebEngineHistoryModel;
 #endif
 
-void QWebEngineHistoryItem_new(QWebEngineHistoryItem* other, QWebEngineHistoryItem** outptr_QWebEngineHistoryItem);
+QWebEngineHistoryItem* QWebEngineHistoryItem_new(QWebEngineHistoryItem* other);
 void QWebEngineHistoryItem_OperatorAssign(QWebEngineHistoryItem* self, QWebEngineHistoryItem* other);
 QUrl* QWebEngineHistoryItem_OriginalUrl(const QWebEngineHistoryItem* self);
 QUrl* QWebEngineHistoryItem_Url(const QWebEngineHistoryItem* self);
@@ -51,6 +51,7 @@ bool QWebEngineHistoryItem_IsValid(const QWebEngineHistoryItem* self);
 void QWebEngineHistoryItem_Swap(QWebEngineHistoryItem* self, QWebEngineHistoryItem* other);
 void QWebEngineHistoryItem_Delete(QWebEngineHistoryItem* self, bool isSubclass);
 
+void QWebEngineHistoryModel_virtbase(QWebEngineHistoryModel* src, QAbstractListModel** outptr_QAbstractListModel);
 QMetaObject* QWebEngineHistoryModel_MetaObject(const QWebEngineHistoryModel* self);
 void* QWebEngineHistoryModel_Metacast(QWebEngineHistoryModel* self, const char* param1);
 struct miqt_string QWebEngineHistoryModel_Tr(const char* s);
@@ -61,6 +62,7 @@ void QWebEngineHistoryModel_Reset(QWebEngineHistoryModel* self);
 struct miqt_string QWebEngineHistoryModel_Tr2(const char* s, const char* c);
 struct miqt_string QWebEngineHistoryModel_Tr3(const char* s, const char* c, int n);
 
+void QWebEngineHistory_virtbase(QWebEngineHistory* src, QObject** outptr_QObject);
 QMetaObject* QWebEngineHistory_MetaObject(const QWebEngineHistory* self);
 void* QWebEngineHistory_Metacast(QWebEngineHistory* self, const char* param1);
 struct miqt_string QWebEngineHistory_Tr(const char* s);

@@ -40,9 +40,10 @@ typedef struct QSurfaceFormat QSurfaceFormat;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QOffscreenSurface_new(QScreen* screen, QObject* parent, QOffscreenSurface** outptr_QOffscreenSurface, QObject** outptr_QObject, QSurface** outptr_QSurface);
-void QOffscreenSurface_new2(QOffscreenSurface** outptr_QOffscreenSurface, QObject** outptr_QObject, QSurface** outptr_QSurface);
-void QOffscreenSurface_new3(QScreen* screen, QOffscreenSurface** outptr_QOffscreenSurface, QObject** outptr_QObject, QSurface** outptr_QSurface);
+QOffscreenSurface* QOffscreenSurface_new(QScreen* screen, QObject* parent);
+QOffscreenSurface* QOffscreenSurface_new2();
+QOffscreenSurface* QOffscreenSurface_new3(QScreen* screen);
+void QOffscreenSurface_virtbase(QOffscreenSurface* src, QObject** outptr_QObject, QSurface** outptr_QSurface);
 QMetaObject* QOffscreenSurface_MetaObject(const QOffscreenSurface* self);
 void* QOffscreenSurface_Metacast(QOffscreenSurface* self, const char* param1);
 struct miqt_string QOffscreenSurface_Tr(const char* s);

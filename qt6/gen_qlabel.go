@@ -35,48 +35,34 @@ func (this *QLabel) UnsafePointer() unsafe.Pointer {
 }
 
 // newQLabel constructs the type using only CGO pointers.
-func newQLabel(h *C.QLabel, h_QFrame *C.QFrame, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QLabel {
+func newQLabel(h *C.QLabel) *QLabel {
 	if h == nil {
 		return nil
 	}
+	var outptr_QFrame *C.QFrame = nil
+	C.QLabel_virtbase(h, &outptr_QFrame)
+
 	return &QLabel{h: h,
-		QFrame: newQFrame(h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+		QFrame: newQFrame(outptr_QFrame)}
 }
 
 // UnsafeNewQLabel constructs the type using only unsafe pointers.
-func UnsafeNewQLabel(h unsafe.Pointer, h_QFrame unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QLabel {
-	if h == nil {
-		return nil
-	}
-
-	return &QLabel{h: (*C.QLabel)(h),
-		QFrame: UnsafeNewQFrame(h_QFrame, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQLabel(h unsafe.Pointer) *QLabel {
+	return newQLabel((*C.QLabel)(h))
 }
 
 // NewQLabel constructs a new QLabel object.
 func NewQLabel(parent *QWidget) *QLabel {
-	var outptr_QLabel *C.QLabel = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QLabel_new(parent.cPointer(), &outptr_QLabel, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQLabel(outptr_QLabel, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQLabel(C.QLabel_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQLabel2 constructs a new QLabel object.
 func NewQLabel2() *QLabel {
-	var outptr_QLabel *C.QLabel = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QLabel_new2(&outptr_QLabel, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQLabel(outptr_QLabel, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQLabel(C.QLabel_new2())
 	ret.isSubclass = true
 	return ret
 }
@@ -87,28 +73,16 @@ func NewQLabel3(text string) *QLabel {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QLabel *C.QLabel = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QLabel_new3(text_ms, &outptr_QLabel, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQLabel(outptr_QLabel, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQLabel(C.QLabel_new3(text_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQLabel4 constructs a new QLabel object.
 func NewQLabel4(parent *QWidget, f WindowType) *QLabel {
-	var outptr_QLabel *C.QLabel = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QLabel_new4(parent.cPointer(), (C.int)(f), &outptr_QLabel, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQLabel(outptr_QLabel, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQLabel(C.QLabel_new4(parent.cPointer(), (C.int)(f)))
 	ret.isSubclass = true
 	return ret
 }
@@ -119,14 +93,8 @@ func NewQLabel5(text string, parent *QWidget) *QLabel {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QLabel *C.QLabel = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QLabel_new5(text_ms, parent.cPointer(), &outptr_QLabel, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQLabel(outptr_QLabel, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQLabel(C.QLabel_new5(text_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -137,20 +105,14 @@ func NewQLabel6(text string, parent *QWidget, f WindowType) *QLabel {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var outptr_QLabel *C.QLabel = nil
-	var outptr_QFrame *C.QFrame = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QLabel_new6(text_ms, parent.cPointer(), (C.int)(f), &outptr_QLabel, &outptr_QFrame, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQLabel(outptr_QLabel, outptr_QFrame, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQLabel(C.QLabel_new6(text_ms, parent.cPointer(), (C.int)(f)))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QLabel) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QLabel_MetaObject(this.h)))
+	return newQMetaObject(C.QLabel_MetaObject(this.h))
 }
 
 func (this *QLabel) Metacast(param1 string) unsafe.Pointer {
@@ -176,35 +138,31 @@ func (this *QLabel) Text() string {
 }
 
 func (this *QLabel) Pixmap(param1 ReturnByValueConstant) *QPixmap {
-	_ret := C.QLabel_Pixmap(this.h, (C.int)(param1))
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QLabel_Pixmap(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLabel) Pixmap2() *QPixmap {
-	_ret := C.QLabel_Pixmap2(this.h)
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QLabel_Pixmap2(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLabel) Picture(param1 ReturnByValueConstant) *QPicture {
-	_ret := C.QLabel_Picture(this.h, (C.int)(param1))
-	_goptr := newQPicture(_ret, nil)
+	_goptr := newQPicture(C.QLabel_Picture(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLabel) Picture2() *QPicture {
-	_ret := C.QLabel_Picture2(this.h)
-	_goptr := newQPicture(_ret, nil)
+	_goptr := newQPicture(C.QLabel_Picture2(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLabel) Movie() *QMovie {
-	return UnsafeNewQMovie(unsafe.Pointer(C.QLabel_Movie(this.h)), nil)
+	return newQMovie(C.QLabel_Movie(this.h))
 }
 
 func (this *QLabel) TextFormat() TextFormat {
@@ -256,15 +214,13 @@ func (this *QLabel) SetScaledContents(scaledContents bool) {
 }
 
 func (this *QLabel) SizeHint() *QSize {
-	_ret := C.QLabel_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QLabel_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLabel) MinimumSizeHint() *QSize {
-	_ret := C.QLabel_MinimumSizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QLabel_MinimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -274,7 +230,7 @@ func (this *QLabel) SetBuddy(buddy *QWidget) {
 }
 
 func (this *QLabel) Buddy() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QLabel_Buddy(this.h)), nil, nil)
+	return newQWidget(C.QLabel_Buddy(this.h))
 }
 
 func (this *QLabel) HeightForWidth(param1 int) int {
@@ -426,13 +382,15 @@ func QLabel_Tr3(s string, c string, n int) string {
 
 func (this *QLabel) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QLabel_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QLabel_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QLabel) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QLabel_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -451,13 +409,15 @@ func miqt_exec_callback_QLabel_SizeHint(self *C.QLabel, cb C.intptr_t) *C.QSize 
 
 func (this *QLabel) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_ret := C.QLabel_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QLabel_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QLabel) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QLabel_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -480,6 +440,9 @@ func (this *QLabel) callVirtualBase_HeightForWidth(param1 int) int {
 
 }
 func (this *QLabel) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QLabel_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -505,6 +468,9 @@ func (this *QLabel) callVirtualBase_Event(e *QEvent) bool {
 
 }
 func (this *QLabel) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QLabel_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -516,7 +482,7 @@ func miqt_exec_callback_QLabel_Event(self *C.QLabel, cb C.intptr_t, e *C.QEvent)
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQEvent(e)
 
 	virtualReturn := gofunc((&QLabel{h: self}).callVirtualBase_Event, slotval1)
 
@@ -530,6 +496,9 @@ func (this *QLabel) callVirtualBase_KeyPressEvent(ev *QKeyEvent) {
 
 }
 func (this *QLabel) OnKeyPressEvent(slot func(super func(ev *QKeyEvent), ev *QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QLabel_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -541,7 +510,7 @@ func miqt_exec_callback_QLabel_KeyPressEvent(self *C.QLabel, cb C.intptr_t, ev *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQKeyEvent(unsafe.Pointer(ev), nil, nil)
+	slotval1 := newQKeyEvent(ev)
 
 	gofunc((&QLabel{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -553,6 +522,9 @@ func (this *QLabel) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
 
 }
 func (this *QLabel) OnPaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QLabel_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -564,7 +536,7 @@ func miqt_exec_callback_QLabel_PaintEvent(self *C.QLabel, cb C.intptr_t, param1 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPaintEvent(unsafe.Pointer(param1), nil)
+	slotval1 := newQPaintEvent(param1)
 
 	gofunc((&QLabel{h: self}).callVirtualBase_PaintEvent, slotval1)
 
@@ -576,6 +548,9 @@ func (this *QLabel) callVirtualBase_ChangeEvent(param1 *QEvent) {
 
 }
 func (this *QLabel) OnChangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QLabel_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -587,7 +562,7 @@ func miqt_exec_callback_QLabel_ChangeEvent(self *C.QLabel, cb C.intptr_t, param1
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	gofunc((&QLabel{h: self}).callVirtualBase_ChangeEvent, slotval1)
 
@@ -599,6 +574,9 @@ func (this *QLabel) callVirtualBase_MousePressEvent(ev *QMouseEvent) {
 
 }
 func (this *QLabel) OnMousePressEvent(slot func(super func(ev *QMouseEvent), ev *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QLabel_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -610,7 +588,7 @@ func miqt_exec_callback_QLabel_MousePressEvent(self *C.QLabel, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(ev), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(ev)
 
 	gofunc((&QLabel{h: self}).callVirtualBase_MousePressEvent, slotval1)
 
@@ -622,6 +600,9 @@ func (this *QLabel) callVirtualBase_MouseMoveEvent(ev *QMouseEvent) {
 
 }
 func (this *QLabel) OnMouseMoveEvent(slot func(super func(ev *QMouseEvent), ev *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QLabel_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -633,7 +614,7 @@ func miqt_exec_callback_QLabel_MouseMoveEvent(self *C.QLabel, cb C.intptr_t, ev 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(ev), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(ev)
 
 	gofunc((&QLabel{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
 
@@ -645,6 +626,9 @@ func (this *QLabel) callVirtualBase_MouseReleaseEvent(ev *QMouseEvent) {
 
 }
 func (this *QLabel) OnMouseReleaseEvent(slot func(super func(ev *QMouseEvent), ev *QMouseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QLabel_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -656,7 +640,7 @@ func miqt_exec_callback_QLabel_MouseReleaseEvent(self *C.QLabel, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMouseEvent(unsafe.Pointer(ev), nil, nil, nil, nil)
+	slotval1 := newQMouseEvent(ev)
 
 	gofunc((&QLabel{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
 
@@ -668,6 +652,9 @@ func (this *QLabel) callVirtualBase_ContextMenuEvent(ev *QContextMenuEvent) {
 
 }
 func (this *QLabel) OnContextMenuEvent(slot func(super func(ev *QContextMenuEvent), ev *QContextMenuEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QLabel_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -679,7 +666,7 @@ func miqt_exec_callback_QLabel_ContextMenuEvent(self *C.QLabel, cb C.intptr_t, e
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQContextMenuEvent(unsafe.Pointer(ev), nil, nil)
+	slotval1 := newQContextMenuEvent(ev)
 
 	gofunc((&QLabel{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -691,6 +678,9 @@ func (this *QLabel) callVirtualBase_FocusInEvent(ev *QFocusEvent) {
 
 }
 func (this *QLabel) OnFocusInEvent(slot func(super func(ev *QFocusEvent), ev *QFocusEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QLabel_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -702,7 +692,7 @@ func miqt_exec_callback_QLabel_FocusInEvent(self *C.QLabel, cb C.intptr_t, ev *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(ev), nil)
+	slotval1 := newQFocusEvent(ev)
 
 	gofunc((&QLabel{h: self}).callVirtualBase_FocusInEvent, slotval1)
 
@@ -714,6 +704,9 @@ func (this *QLabel) callVirtualBase_FocusOutEvent(ev *QFocusEvent) {
 
 }
 func (this *QLabel) OnFocusOutEvent(slot func(super func(ev *QFocusEvent), ev *QFocusEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QLabel_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -725,7 +718,7 @@ func miqt_exec_callback_QLabel_FocusOutEvent(self *C.QLabel, cb C.intptr_t, ev *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFocusEvent(unsafe.Pointer(ev), nil)
+	slotval1 := newQFocusEvent(ev)
 
 	gofunc((&QLabel{h: self}).callVirtualBase_FocusOutEvent, slotval1)
 
@@ -737,6 +730,9 @@ func (this *QLabel) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
 }
 func (this *QLabel) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QLabel_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -762,6 +758,9 @@ func (this *QLabel) callVirtualBase_InitStyleOption(option *QStyleOptionFrame) {
 
 }
 func (this *QLabel) OnInitStyleOption(slot func(super func(option *QStyleOptionFrame), option *QStyleOptionFrame)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QLabel_override_virtual_InitStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -773,7 +772,7 @@ func miqt_exec_callback_QLabel_InitStyleOption(self *C.QLabel, cb C.intptr_t, op
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQStyleOptionFrame(unsafe.Pointer(option), nil)
+	slotval1 := newQStyleOptionFrame(option)
 
 	gofunc((&QLabel{h: self}).callVirtualBase_InitStyleOption, slotval1)
 

@@ -13,7 +13,15 @@
 #include <QTransform>
 #include <qscreen.h>
 #include "gen_qscreen.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
+
+void QScreen_virtbase(QScreen* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
 
 QMetaObject* QScreen_MetaObject(const QScreen* self) {
 	return (QMetaObject*) self->metaObject();

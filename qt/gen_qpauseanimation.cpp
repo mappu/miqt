@@ -8,6 +8,10 @@
 #include <cstring>
 #include <qpauseanimation.h>
 #include "gen_qpauseanimation.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQPauseAnimation : public virtual QPauseAnimation {
@@ -143,32 +147,24 @@ public:
 
 };
 
-void QPauseAnimation_new(QPauseAnimation** outptr_QPauseAnimation, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject) {
-	MiqtVirtualQPauseAnimation* ret = new MiqtVirtualQPauseAnimation();
-	*outptr_QPauseAnimation = ret;
-	*outptr_QAbstractAnimation = static_cast<QAbstractAnimation*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QPauseAnimation* QPauseAnimation_new() {
+	return new MiqtVirtualQPauseAnimation();
 }
 
-void QPauseAnimation_new2(int msecs, QPauseAnimation** outptr_QPauseAnimation, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject) {
-	MiqtVirtualQPauseAnimation* ret = new MiqtVirtualQPauseAnimation(static_cast<int>(msecs));
-	*outptr_QPauseAnimation = ret;
-	*outptr_QAbstractAnimation = static_cast<QAbstractAnimation*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QPauseAnimation* QPauseAnimation_new2(int msecs) {
+	return new MiqtVirtualQPauseAnimation(static_cast<int>(msecs));
 }
 
-void QPauseAnimation_new3(QObject* parent, QPauseAnimation** outptr_QPauseAnimation, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject) {
-	MiqtVirtualQPauseAnimation* ret = new MiqtVirtualQPauseAnimation(parent);
-	*outptr_QPauseAnimation = ret;
-	*outptr_QAbstractAnimation = static_cast<QAbstractAnimation*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QPauseAnimation* QPauseAnimation_new3(QObject* parent) {
+	return new MiqtVirtualQPauseAnimation(parent);
 }
 
-void QPauseAnimation_new4(int msecs, QObject* parent, QPauseAnimation** outptr_QPauseAnimation, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject) {
-	MiqtVirtualQPauseAnimation* ret = new MiqtVirtualQPauseAnimation(static_cast<int>(msecs), parent);
-	*outptr_QPauseAnimation = ret;
-	*outptr_QAbstractAnimation = static_cast<QAbstractAnimation*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QPauseAnimation* QPauseAnimation_new4(int msecs, QObject* parent) {
+	return new MiqtVirtualQPauseAnimation(static_cast<int>(msecs), parent);
+}
+
+void QPauseAnimation_virtbase(QPauseAnimation* src, QAbstractAnimation** outptr_QAbstractAnimation) {
+	*outptr_QAbstractAnimation = static_cast<QAbstractAnimation*>(src);
 }
 
 QMetaObject* QPauseAnimation_MetaObject(const QPauseAnimation* self) {

@@ -67,34 +67,27 @@ func newQUuid(h *C.QUuid) *QUuid {
 	if h == nil {
 		return nil
 	}
+
 	return &QUuid{h: h}
 }
 
 // UnsafeNewQUuid constructs the type using only unsafe pointers.
 func UnsafeNewQUuid(h unsafe.Pointer) *QUuid {
-	if h == nil {
-		return nil
-	}
-
-	return &QUuid{h: (*C.QUuid)(h)}
+	return newQUuid((*C.QUuid)(h))
 }
 
 // NewQUuid constructs a new QUuid object.
 func NewQUuid() *QUuid {
-	var outptr_QUuid *C.QUuid = nil
 
-	C.QUuid_new(&outptr_QUuid)
-	ret := newQUuid(outptr_QUuid)
+	ret := newQUuid(C.QUuid_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQUuid2 constructs a new QUuid object.
 func NewQUuid2(l uint, w1 uint16, w2 uint16, b1 byte, b2 byte, b3 byte, b4 byte, b5 byte, b6 byte, b7 byte, b8 byte) *QUuid {
-	var outptr_QUuid *C.QUuid = nil
 
-	C.QUuid_new2((C.uint)(l), (C.uint16_t)(w1), (C.uint16_t)(w2), (C.uchar)(b1), (C.uchar)(b2), (C.uchar)(b3), (C.uchar)(b4), (C.uchar)(b5), (C.uchar)(b6), (C.uchar)(b7), (C.uchar)(b8), &outptr_QUuid)
-	ret := newQUuid(outptr_QUuid)
+	ret := newQUuid(C.QUuid_new2((C.uint)(l), (C.uint16_t)(w1), (C.uint16_t)(w2), (C.uchar)(b1), (C.uchar)(b2), (C.uchar)(b3), (C.uchar)(b4), (C.uchar)(b5), (C.uchar)(b6), (C.uchar)(b7), (C.uchar)(b8)))
 	ret.isSubclass = true
 	return ret
 }
@@ -105,10 +98,8 @@ func NewQUuid3(param1 string) *QUuid {
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
 	defer C.free(unsafe.Pointer(param1_ms.data))
-	var outptr_QUuid *C.QUuid = nil
 
-	C.QUuid_new3(param1_ms, &outptr_QUuid)
-	ret := newQUuid(outptr_QUuid)
+	ret := newQUuid(C.QUuid_new3(param1_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -117,10 +108,8 @@ func NewQUuid3(param1 string) *QUuid {
 func NewQUuid4(param1 string) *QUuid {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	var outptr_QUuid *C.QUuid = nil
 
-	C.QUuid_new4(param1_Cstring, &outptr_QUuid)
-	ret := newQUuid(outptr_QUuid)
+	ret := newQUuid(C.QUuid_new4(param1_Cstring))
 	ret.isSubclass = true
 	return ret
 }
@@ -130,20 +119,16 @@ func NewQUuid5(param1 []byte) *QUuid {
 	param1_alias := C.struct_miqt_string{}
 	param1_alias.data = (*C.char)(unsafe.Pointer(&param1[0]))
 	param1_alias.len = C.size_t(len(param1))
-	var outptr_QUuid *C.QUuid = nil
 
-	C.QUuid_new5(param1_alias, &outptr_QUuid)
-	ret := newQUuid(outptr_QUuid)
+	ret := newQUuid(C.QUuid_new5(param1_alias))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQUuid6 constructs a new QUuid object.
 func NewQUuid6(param1 *QUuid) *QUuid {
-	var outptr_QUuid *C.QUuid = nil
 
-	C.QUuid_new6(param1.cPointer(), &outptr_QUuid)
-	ret := newQUuid(outptr_QUuid)
+	ret := newQUuid(C.QUuid_new6(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -187,8 +172,7 @@ func QUuid_FromRfc4122(param1 []byte) *QUuid {
 	param1_alias := C.struct_miqt_string{}
 	param1_alias.data = (*C.char)(unsafe.Pointer(&param1[0]))
 	param1_alias.len = C.size_t(len(param1))
-	_ret := C.QUuid_FromRfc4122(param1_alias)
-	_goptr := newQUuid(_ret)
+	_goptr := newQUuid(C.QUuid_FromRfc4122(param1_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -214,8 +198,7 @@ func (this *QUuid) OperatorGreater(other *QUuid) bool {
 }
 
 func QUuid_CreateUuid() *QUuid {
-	_ret := C.QUuid_CreateUuid()
-	_goptr := newQUuid(_ret)
+	_goptr := newQUuid(C.QUuid_CreateUuid())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -224,8 +207,7 @@ func QUuid_CreateUuidV3(ns *QUuid, baseData []byte) *QUuid {
 	baseData_alias := C.struct_miqt_string{}
 	baseData_alias.data = (*C.char)(unsafe.Pointer(&baseData[0]))
 	baseData_alias.len = C.size_t(len(baseData))
-	_ret := C.QUuid_CreateUuidV3(ns.cPointer(), baseData_alias)
-	_goptr := newQUuid(_ret)
+	_goptr := newQUuid(C.QUuid_CreateUuidV3(ns.cPointer(), baseData_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -234,8 +216,7 @@ func QUuid_CreateUuidV5(ns *QUuid, baseData []byte) *QUuid {
 	baseData_alias := C.struct_miqt_string{}
 	baseData_alias.data = (*C.char)(unsafe.Pointer(&baseData[0]))
 	baseData_alias.len = C.size_t(len(baseData))
-	_ret := C.QUuid_CreateUuidV5(ns.cPointer(), baseData_alias)
-	_goptr := newQUuid(_ret)
+	_goptr := newQUuid(C.QUuid_CreateUuidV5(ns.cPointer(), baseData_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -245,8 +226,7 @@ func QUuid_CreateUuidV32(ns *QUuid, baseData string) *QUuid {
 	baseData_ms.data = C.CString(baseData)
 	baseData_ms.len = C.size_t(len(baseData))
 	defer C.free(unsafe.Pointer(baseData_ms.data))
-	_ret := C.QUuid_CreateUuidV32(ns.cPointer(), baseData_ms)
-	_goptr := newQUuid(_ret)
+	_goptr := newQUuid(C.QUuid_CreateUuidV32(ns.cPointer(), baseData_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -256,8 +236,7 @@ func QUuid_CreateUuidV52(ns *QUuid, baseData string) *QUuid {
 	baseData_ms.data = C.CString(baseData)
 	baseData_ms.len = C.size_t(len(baseData))
 	defer C.free(unsafe.Pointer(baseData_ms.data))
-	_ret := C.QUuid_CreateUuidV52(ns.cPointer(), baseData_ms)
-	_goptr := newQUuid(_ret)
+	_goptr := newQUuid(C.QUuid_CreateUuidV52(ns.cPointer(), baseData_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

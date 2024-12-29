@@ -58,46 +58,36 @@ func (this *QMediaPlaylist) UnsafePointer() unsafe.Pointer {
 }
 
 // newQMediaPlaylist constructs the type using only CGO pointers.
-func newQMediaPlaylist(h *C.QMediaPlaylist, h_QObject *C.QObject, h_QMediaBindableInterface *C.QMediaBindableInterface) *QMediaPlaylist {
+func newQMediaPlaylist(h *C.QMediaPlaylist) *QMediaPlaylist {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	var outptr_QMediaBindableInterface *C.QMediaBindableInterface = nil
+	C.QMediaPlaylist_virtbase(h, &outptr_QObject, &outptr_QMediaBindableInterface)
+
 	return &QMediaPlaylist{h: h,
-		QObject:                 qt.UnsafeNewQObject(unsafe.Pointer(h_QObject)),
-		QMediaBindableInterface: newQMediaBindableInterface(h_QMediaBindableInterface)}
+		QObject:                 qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject)),
+		QMediaBindableInterface: newQMediaBindableInterface(outptr_QMediaBindableInterface)}
 }
 
 // UnsafeNewQMediaPlaylist constructs the type using only unsafe pointers.
-func UnsafeNewQMediaPlaylist(h unsafe.Pointer, h_QObject unsafe.Pointer, h_QMediaBindableInterface unsafe.Pointer) *QMediaPlaylist {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaPlaylist{h: (*C.QMediaPlaylist)(h),
-		QObject:                 qt.UnsafeNewQObject(h_QObject),
-		QMediaBindableInterface: UnsafeNewQMediaBindableInterface(h_QMediaBindableInterface)}
+func UnsafeNewQMediaPlaylist(h unsafe.Pointer) *QMediaPlaylist {
+	return newQMediaPlaylist((*C.QMediaPlaylist)(h))
 }
 
 // NewQMediaPlaylist constructs a new QMediaPlaylist object.
 func NewQMediaPlaylist() *QMediaPlaylist {
-	var outptr_QMediaPlaylist *C.QMediaPlaylist = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QMediaBindableInterface *C.QMediaBindableInterface = nil
 
-	C.QMediaPlaylist_new(&outptr_QMediaPlaylist, &outptr_QObject, &outptr_QMediaBindableInterface)
-	ret := newQMediaPlaylist(outptr_QMediaPlaylist, outptr_QObject, outptr_QMediaBindableInterface)
+	ret := newQMediaPlaylist(C.QMediaPlaylist_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQMediaPlaylist2 constructs a new QMediaPlaylist object.
 func NewQMediaPlaylist2(parent *qt.QObject) *QMediaPlaylist {
-	var outptr_QMediaPlaylist *C.QMediaPlaylist = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QMediaBindableInterface *C.QMediaBindableInterface = nil
 
-	C.QMediaPlaylist_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QMediaPlaylist, &outptr_QObject, &outptr_QMediaBindableInterface)
-	ret := newQMediaPlaylist(outptr_QMediaPlaylist, outptr_QObject, outptr_QMediaBindableInterface)
+	ret := newQMediaPlaylist(C.QMediaPlaylist_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -131,7 +121,7 @@ func QMediaPlaylist_TrUtf8(s string) string {
 }
 
 func (this *QMediaPlaylist) MediaObject() *QMediaObject {
-	return UnsafeNewQMediaObject(unsafe.Pointer(C.QMediaPlaylist_MediaObject(this.h)), nil)
+	return newQMediaObject(C.QMediaPlaylist_MediaObject(this.h))
 }
 
 func (this *QMediaPlaylist) PlaybackMode() QMediaPlaylist__PlaybackMode {
@@ -147,8 +137,7 @@ func (this *QMediaPlaylist) CurrentIndex() int {
 }
 
 func (this *QMediaPlaylist) CurrentMedia() *QMediaContent {
-	_ret := C.QMediaPlaylist_CurrentMedia(this.h)
-	_goptr := newQMediaContent(_ret)
+	_goptr := newQMediaContent(C.QMediaPlaylist_CurrentMedia(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -162,8 +151,7 @@ func (this *QMediaPlaylist) PreviousIndex() int {
 }
 
 func (this *QMediaPlaylist) Media(index int) *QMediaContent {
-	_ret := C.QMediaPlaylist_Media(this.h, (C.int)(index))
-	_goptr := newQMediaContent(_ret)
+	_goptr := newQMediaContent(C.QMediaPlaylist_Media(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -328,7 +316,7 @@ func miqt_exec_callback_QMediaPlaylist_CurrentMediaChanged(cb C.intptr_t, param1
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMediaContent(unsafe.Pointer(param1))
+	slotval1 := newQMediaContent(param1)
 
 	gofunc(slotval1)
 }
@@ -555,9 +543,13 @@ func (this *QMediaPlaylist) Save22(location *qt.QUrl, format string) bool {
 
 func (this *QMediaPlaylist) callVirtualBase_MediaObject() *QMediaObject {
 
-	return UnsafeNewQMediaObject(unsafe.Pointer(C.QMediaPlaylist_virtualbase_MediaObject(unsafe.Pointer(this.h))), nil)
+	return newQMediaObject(C.QMediaPlaylist_virtualbase_MediaObject(unsafe.Pointer(this.h)))
+
 }
 func (this *QMediaPlaylist) OnMediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaPlaylist_override_virtual_MediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -580,6 +572,9 @@ func (this *QMediaPlaylist) callVirtualBase_SetMediaObject(object *QMediaObject)
 
 }
 func (this *QMediaPlaylist) OnSetMediaObject(slot func(super func(object *QMediaObject) bool, object *QMediaObject) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaPlaylist_override_virtual_SetMediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -591,7 +586,7 @@ func miqt_exec_callback_QMediaPlaylist_SetMediaObject(self *C.QMediaPlaylist, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMediaObject(unsafe.Pointer(object), nil)
+	slotval1 := newQMediaObject(object)
 
 	virtualReturn := gofunc((&QMediaPlaylist{h: self}).callVirtualBase_SetMediaObject, slotval1)
 
@@ -605,6 +600,9 @@ func (this *QMediaPlaylist) callVirtualBase_Event(event *qt.QEvent) bool {
 
 }
 func (this *QMediaPlaylist) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaPlaylist_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -630,6 +628,9 @@ func (this *QMediaPlaylist) callVirtualBase_EventFilter(watched *qt.QObject, eve
 
 }
 func (this *QMediaPlaylist) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaPlaylist_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -642,6 +643,7 @@ func miqt_exec_callback_QMediaPlaylist_EventFilter(self *C.QMediaPlaylist, cb C.
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QMediaPlaylist{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
@@ -656,6 +658,9 @@ func (this *QMediaPlaylist) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
 }
 func (this *QMediaPlaylist) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaPlaylist_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -667,7 +672,7 @@ func miqt_exec_callback_QMediaPlaylist_TimerEvent(self *C.QMediaPlaylist, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QMediaPlaylist{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -679,6 +684,9 @@ func (this *QMediaPlaylist) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
 }
 func (this *QMediaPlaylist) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaPlaylist_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -690,7 +698,7 @@ func miqt_exec_callback_QMediaPlaylist_ChildEvent(self *C.QMediaPlaylist, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QMediaPlaylist{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -702,6 +710,9 @@ func (this *QMediaPlaylist) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
 }
 func (this *QMediaPlaylist) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaPlaylist_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -725,6 +736,9 @@ func (this *QMediaPlaylist) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod
 
 }
 func (this *QMediaPlaylist) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaPlaylist_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -748,6 +762,9 @@ func (this *QMediaPlaylist) callVirtualBase_DisconnectNotify(signal *qt.QMetaMet
 
 }
 func (this *QMediaPlaylist) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QMediaPlaylist_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

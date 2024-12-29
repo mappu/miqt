@@ -34,6 +34,10 @@
 #include <QWidget>
 #include <qdesktopwidget.h>
 #include "gen_qdesktopwidget.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQDesktopWidget : public virtual QDesktopWidget {
@@ -1020,12 +1024,12 @@ public:
 
 };
 
-void QDesktopWidget_new(QDesktopWidget** outptr_QDesktopWidget, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDesktopWidget* ret = new MiqtVirtualQDesktopWidget();
-	*outptr_QDesktopWidget = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDesktopWidget* QDesktopWidget_new() {
+	return new MiqtVirtualQDesktopWidget();
+}
+
+void QDesktopWidget_virtbase(QDesktopWidget* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QDesktopWidget_MetaObject(const QDesktopWidget* self) {

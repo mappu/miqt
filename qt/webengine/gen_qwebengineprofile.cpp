@@ -20,6 +20,10 @@
 #include <QWebEngineUrlSchemeHandler>
 #include <qwebengineprofile.h>
 #include "gen_qwebengineprofile.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQWebEngineProfile : public virtual QWebEngineProfile {
@@ -205,30 +209,26 @@ public:
 
 };
 
-void QWebEngineProfile_new(QWebEngineProfile** outptr_QWebEngineProfile, QObject** outptr_QObject) {
-	MiqtVirtualQWebEngineProfile* ret = new MiqtVirtualQWebEngineProfile();
-	*outptr_QWebEngineProfile = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QWebEngineProfile* QWebEngineProfile_new() {
+	return new MiqtVirtualQWebEngineProfile();
 }
 
-void QWebEngineProfile_new2(struct miqt_string name, QWebEngineProfile** outptr_QWebEngineProfile, QObject** outptr_QObject) {
+QWebEngineProfile* QWebEngineProfile_new2(struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	MiqtVirtualQWebEngineProfile* ret = new MiqtVirtualQWebEngineProfile(name_QString);
-	*outptr_QWebEngineProfile = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQWebEngineProfile(name_QString);
 }
 
-void QWebEngineProfile_new3(QObject* parent, QWebEngineProfile** outptr_QWebEngineProfile, QObject** outptr_QObject) {
-	MiqtVirtualQWebEngineProfile* ret = new MiqtVirtualQWebEngineProfile(parent);
-	*outptr_QWebEngineProfile = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QWebEngineProfile* QWebEngineProfile_new3(QObject* parent) {
+	return new MiqtVirtualQWebEngineProfile(parent);
 }
 
-void QWebEngineProfile_new4(struct miqt_string name, QObject* parent, QWebEngineProfile** outptr_QWebEngineProfile, QObject** outptr_QObject) {
+QWebEngineProfile* QWebEngineProfile_new4(struct miqt_string name, QObject* parent) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	MiqtVirtualQWebEngineProfile* ret = new MiqtVirtualQWebEngineProfile(name_QString, parent);
-	*outptr_QWebEngineProfile = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQWebEngineProfile(name_QString, parent);
+}
+
+void QWebEngineProfile_virtbase(QWebEngineProfile* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QWebEngineProfile_MetaObject(const QWebEngineProfile* self) {

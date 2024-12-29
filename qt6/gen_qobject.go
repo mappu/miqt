@@ -44,20 +44,17 @@ func newQObjectData(h *C.QObjectData) *QObjectData {
 	if h == nil {
 		return nil
 	}
+
 	return &QObjectData{h: h}
 }
 
 // UnsafeNewQObjectData constructs the type using only unsafe pointers.
 func UnsafeNewQObjectData(h unsafe.Pointer) *QObjectData {
-	if h == nil {
-		return nil
-	}
-
-	return &QObjectData{h: (*C.QObjectData)(h)}
+	return newQObjectData((*C.QObjectData)(h))
 }
 
 func (this *QObjectData) DynamicMetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QObjectData_DynamicMetaObject(this.h)))
+	return newQMetaObject(C.QObjectData_DynamicMetaObject(this.h))
 }
 
 // Delete this object from C++ memory.
@@ -98,40 +95,33 @@ func newQObject(h *C.QObject) *QObject {
 	if h == nil {
 		return nil
 	}
+
 	return &QObject{h: h}
 }
 
 // UnsafeNewQObject constructs the type using only unsafe pointers.
 func UnsafeNewQObject(h unsafe.Pointer) *QObject {
-	if h == nil {
-		return nil
-	}
-
-	return &QObject{h: (*C.QObject)(h)}
+	return newQObject((*C.QObject)(h))
 }
 
 // NewQObject constructs a new QObject object.
 func NewQObject() *QObject {
-	var outptr_QObject *C.QObject = nil
 
-	C.QObject_new(&outptr_QObject)
-	ret := newQObject(outptr_QObject)
+	ret := newQObject(C.QObject_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQObject2 constructs a new QObject object.
 func NewQObject2(parent *QObject) *QObject {
-	var outptr_QObject *C.QObject = nil
 
-	C.QObject_new2(parent.cPointer(), &outptr_QObject)
-	ret := newQObject(outptr_QObject)
+	ret := newQObject(C.QObject_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QObject) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QObject_MetaObject(this.h)))
+	return newQMetaObject(C.QObject_MetaObject(this.h))
 }
 
 func (this *QObject) Metacast(param1 string) unsafe.Pointer {
@@ -189,7 +179,7 @@ func (this *QObject) BlockSignals(b bool) bool {
 }
 
 func (this *QObject) Thread() *QThread {
-	return UnsafeNewQThread(unsafe.Pointer(C.QObject_Thread(this.h)), nil)
+	return newQThread(C.QObject_Thread(this.h))
 }
 
 func (this *QObject) MoveToThread(thread *QThread) {
@@ -209,7 +199,7 @@ func (this *QObject) Children() []*QObject {
 	_ret := make([]*QObject, int(_ma.len))
 	_outCast := (*[0xffff]*C.QObject)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_ret[i] = UnsafeNewQObject(unsafe.Pointer(_outCast[i]))
+		_ret[i] = newQObject(_outCast[i])
 	}
 	return _ret
 }
@@ -227,8 +217,7 @@ func (this *QObject) RemoveEventFilter(obj *QObject) {
 }
 
 func QObject_Connect(sender *QObject, signal *QMetaMethod, receiver *QObject, method *QMetaMethod) *QMetaObject__Connection {
-	_ret := C.QObject_Connect(sender.cPointer(), signal.cPointer(), receiver.cPointer(), method.cPointer())
-	_goptr := newQMetaObject__Connection(_ret)
+	_goptr := newQMetaObject__Connection(C.QObject_Connect(sender.cPointer(), signal.cPointer(), receiver.cPointer(), method.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -238,8 +227,7 @@ func (this *QObject) Connect2(sender *QObject, signal string, member string) *QM
 	defer C.free(unsafe.Pointer(signal_Cstring))
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
-	_ret := C.QObject_Connect2(this.h, sender.cPointer(), signal_Cstring, member_Cstring)
-	_goptr := newQMetaObject__Connection(_ret)
+	_goptr := newQMetaObject__Connection(C.QObject_Connect2(this.h, sender.cPointer(), signal_Cstring, member_Cstring))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -269,8 +257,7 @@ func (this *QObject) SetProperty(name string, value *QVariant) bool {
 func (this *QObject) Property(name string) *QVariant {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	_ret := C.QObject_Property(this.h, name_Cstring)
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QObject_Property(this.h, name_Cstring))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -289,11 +276,11 @@ func (this *QObject) DynamicPropertyNames() [][]byte {
 }
 
 func (this *QObject) BindingStorage() *QBindingStorage {
-	return UnsafeNewQBindingStorage(unsafe.Pointer(C.QObject_BindingStorage(this.h)))
+	return newQBindingStorage(C.QObject_BindingStorage(this.h))
 }
 
 func (this *QObject) BindingStorage2() *QBindingStorage {
-	return UnsafeNewQBindingStorage(unsafe.Pointer(C.QObject_BindingStorage2(this.h)))
+	return newQBindingStorage(C.QObject_BindingStorage2(this.h))
 }
 
 func (this *QObject) Destroyed() {
@@ -314,7 +301,7 @@ func miqt_exec_callback_QObject_Destroyed(cb C.intptr_t) {
 }
 
 func (this *QObject) Parent() *QObject {
-	return UnsafeNewQObject(unsafe.Pointer(C.QObject_Parent(this.h)))
+	return newQObject(C.QObject_Parent(this.h))
 }
 
 func (this *QObject) Inherits(classname string) bool {
@@ -354,8 +341,7 @@ func (this *QObject) StartTimer2(interval int, timerType TimerType) int {
 }
 
 func QObject_Connect5(sender *QObject, signal *QMetaMethod, receiver *QObject, method *QMetaMethod, typeVal ConnectionType) *QMetaObject__Connection {
-	_ret := C.QObject_Connect5(sender.cPointer(), signal.cPointer(), receiver.cPointer(), method.cPointer(), (C.int)(typeVal))
-	_goptr := newQMetaObject__Connection(_ret)
+	_goptr := newQMetaObject__Connection(C.QObject_Connect5(sender.cPointer(), signal.cPointer(), receiver.cPointer(), method.cPointer(), (C.int)(typeVal)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -365,8 +351,7 @@ func (this *QObject) Connect4(sender *QObject, signal string, member string, typ
 	defer C.free(unsafe.Pointer(signal_Cstring))
 	member_Cstring := C.CString(member)
 	defer C.free(unsafe.Pointer(member_Cstring))
-	_ret := C.QObject_Connect4(this.h, sender.cPointer(), signal_Cstring, member_Cstring, (C.int)(typeVal))
-	_goptr := newQMetaObject__Connection(_ret)
+	_goptr := newQMetaObject__Connection(C.QObject_Connect4(this.h, sender.cPointer(), signal_Cstring, member_Cstring, (C.int)(typeVal)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -386,7 +371,7 @@ func miqt_exec_callback_QObject_Destroyed1(cb C.intptr_t, param1 *C.QObject) {
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(param1))
+	slotval1 := newQObject(param1)
 
 	gofunc(slotval1)
 }
@@ -397,6 +382,9 @@ func (this *QObject) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QObject) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QObject_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -408,7 +396,7 @@ func miqt_exec_callback_QObject_Event(self *C.QObject, cb C.intptr_t, event *C.Q
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QObject{h: self}).callVirtualBase_Event, slotval1)
 
@@ -422,6 +410,9 @@ func (this *QObject) callVirtualBase_EventFilter(watched *QObject, event *QEvent
 
 }
 func (this *QObject) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QObject_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -433,8 +424,9 @@ func miqt_exec_callback_QObject_EventFilter(self *C.QObject, cb C.intptr_t, watc
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QObject{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -448,6 +440,9 @@ func (this *QObject) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QObject) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QObject_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -459,7 +454,7 @@ func miqt_exec_callback_QObject_TimerEvent(self *C.QObject, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QObject{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -471,6 +466,9 @@ func (this *QObject) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QObject) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QObject_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -482,7 +480,7 @@ func miqt_exec_callback_QObject_ChildEvent(self *C.QObject, cb C.intptr_t, event
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QObject{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -494,6 +492,9 @@ func (this *QObject) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QObject) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QObject_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -505,7 +506,7 @@ func miqt_exec_callback_QObject_CustomEvent(self *C.QObject, cb C.intptr_t, even
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QObject{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -517,6 +518,9 @@ func (this *QObject) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QObject) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QObject_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -528,7 +532,7 @@ func miqt_exec_callback_QObject_ConnectNotify(self *C.QObject, cb C.intptr_t, si
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QObject{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -540,6 +544,9 @@ func (this *QObject) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QObject) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QObject_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -551,7 +558,7 @@ func miqt_exec_callback_QObject_DisconnectNotify(self *C.QObject, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QObject{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 
@@ -595,34 +602,27 @@ func newQSignalBlocker(h *C.QSignalBlocker) *QSignalBlocker {
 	if h == nil {
 		return nil
 	}
+
 	return &QSignalBlocker{h: h}
 }
 
 // UnsafeNewQSignalBlocker constructs the type using only unsafe pointers.
 func UnsafeNewQSignalBlocker(h unsafe.Pointer) *QSignalBlocker {
-	if h == nil {
-		return nil
-	}
-
-	return &QSignalBlocker{h: (*C.QSignalBlocker)(h)}
+	return newQSignalBlocker((*C.QSignalBlocker)(h))
 }
 
 // NewQSignalBlocker constructs a new QSignalBlocker object.
 func NewQSignalBlocker(o *QObject) *QSignalBlocker {
-	var outptr_QSignalBlocker *C.QSignalBlocker = nil
 
-	C.QSignalBlocker_new(o.cPointer(), &outptr_QSignalBlocker)
-	ret := newQSignalBlocker(outptr_QSignalBlocker)
+	ret := newQSignalBlocker(C.QSignalBlocker_new(o.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSignalBlocker2 constructs a new QSignalBlocker object.
 func NewQSignalBlocker2(o *QObject) *QSignalBlocker {
-	var outptr_QSignalBlocker *C.QSignalBlocker = nil
 
-	C.QSignalBlocker_new2(o.cPointer(), &outptr_QSignalBlocker)
-	ret := newQSignalBlocker(outptr_QSignalBlocker)
+	ret := newQSignalBlocker(C.QSignalBlocker_new2(o.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

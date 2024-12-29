@@ -14,6 +14,10 @@
 #include <QWindow>
 #include <qrasterwindow.h>
 #include "gen_qrasterwindow.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQRasterWindow : public virtual QRasterWindow {
@@ -144,24 +148,16 @@ public:
 
 };
 
-void QRasterWindow_new(QRasterWindow** outptr_QRasterWindow, QPaintDeviceWindow** outptr_QPaintDeviceWindow, QWindow** outptr_QWindow, QObject** outptr_QObject, QSurface** outptr_QSurface, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQRasterWindow* ret = new MiqtVirtualQRasterWindow();
-	*outptr_QRasterWindow = ret;
-	*outptr_QPaintDeviceWindow = static_cast<QPaintDeviceWindow*>(ret);
-	*outptr_QWindow = static_cast<QWindow*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QSurface = static_cast<QSurface*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QRasterWindow* QRasterWindow_new() {
+	return new MiqtVirtualQRasterWindow();
 }
 
-void QRasterWindow_new2(QWindow* parent, QRasterWindow** outptr_QRasterWindow, QPaintDeviceWindow** outptr_QPaintDeviceWindow, QWindow** outptr_QWindow, QObject** outptr_QObject, QSurface** outptr_QSurface, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQRasterWindow* ret = new MiqtVirtualQRasterWindow(parent);
-	*outptr_QRasterWindow = ret;
-	*outptr_QPaintDeviceWindow = static_cast<QPaintDeviceWindow*>(ret);
-	*outptr_QWindow = static_cast<QWindow*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QSurface = static_cast<QSurface*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QRasterWindow* QRasterWindow_new2(QWindow* parent) {
+	return new MiqtVirtualQRasterWindow(parent);
+}
+
+void QRasterWindow_virtbase(QRasterWindow* src, QPaintDeviceWindow** outptr_QPaintDeviceWindow) {
+	*outptr_QPaintDeviceWindow = static_cast<QPaintDeviceWindow*>(src);
 }
 
 QMetaObject* QRasterWindow_MetaObject(const QRasterWindow* self) {

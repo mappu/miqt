@@ -30,6 +30,7 @@ typedef struct QObject QObject;
 typedef struct QSize QSize;
 #endif
 
+void QImageEncoderControl_virtbase(QImageEncoderControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QImageEncoderControl_MetaObject(const QImageEncoderControl* self);
 void* QImageEncoderControl_Metacast(QImageEncoderControl* self, const char* param1);
 struct miqt_string QImageEncoderControl_Tr(const char* s);

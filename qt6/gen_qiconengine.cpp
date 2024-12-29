@@ -11,6 +11,10 @@
 #include <cstring>
 #include <qiconengine.h>
 #include "gen_qiconengine.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQIconEngine : public virtual QIconEngine {
@@ -416,9 +420,8 @@ public:
 
 };
 
-void QIconEngine_new(QIconEngine** outptr_QIconEngine) {
-	MiqtVirtualQIconEngine* ret = new MiqtVirtualQIconEngine();
-	*outptr_QIconEngine = ret;
+QIconEngine* QIconEngine_new() {
+	return new MiqtVirtualQIconEngine();
 }
 
 void QIconEngine_Paint(QIconEngine* self, QPainter* painter, QRect* rect, int mode, int state) {
@@ -613,9 +616,8 @@ void QIconEngine_Delete(QIconEngine* self, bool isSubclass) {
 	}
 }
 
-void QIconEngine__ScaledPixmapArgument_new(QIconEngine__ScaledPixmapArgument* param1, QIconEngine__ScaledPixmapArgument** outptr_QIconEngine__ScaledPixmapArgument) {
-	QIconEngine::ScaledPixmapArgument* ret = new QIconEngine::ScaledPixmapArgument(*param1);
-	*outptr_QIconEngine__ScaledPixmapArgument = ret;
+QIconEngine__ScaledPixmapArgument* QIconEngine__ScaledPixmapArgument_new(QIconEngine__ScaledPixmapArgument* param1) {
+	return new QIconEngine::ScaledPixmapArgument(*param1);
 }
 
 void QIconEngine__ScaledPixmapArgument_OperatorAssign(QIconEngine__ScaledPixmapArgument* self, QIconEngine__ScaledPixmapArgument* param1) {

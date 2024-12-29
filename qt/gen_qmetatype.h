@@ -26,8 +26,8 @@ typedef struct QMetaObject QMetaObject;
 typedef struct QMetaType QMetaType;
 #endif
 
-void QMetaType_new(QMetaType** outptr_QMetaType);
-void QMetaType_new2(const int typeVal, QMetaType** outptr_QMetaType);
+QMetaType* QMetaType_new();
+QMetaType* QMetaType_new2(const int typeVal);
 bool QMetaType_UnregisterType(int typeVal);
 int QMetaType_RegisterTypedef(const char* typeName, int aliasId);
 int QMetaType_RegisterNormalizedTypedef(struct miqt_string normalizedTypeName, int aliasId);

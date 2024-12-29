@@ -42,22 +42,20 @@ func (this *QPagedPaintDevice) UnsafePointer() unsafe.Pointer {
 }
 
 // newQPagedPaintDevice constructs the type using only CGO pointers.
-func newQPagedPaintDevice(h *C.QPagedPaintDevice, h_QPaintDevice *C.QPaintDevice) *QPagedPaintDevice {
+func newQPagedPaintDevice(h *C.QPagedPaintDevice) *QPagedPaintDevice {
 	if h == nil {
 		return nil
 	}
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+	C.QPagedPaintDevice_virtbase(h, &outptr_QPaintDevice)
+
 	return &QPagedPaintDevice{h: h,
-		QPaintDevice: newQPaintDevice(h_QPaintDevice)}
+		QPaintDevice: newQPaintDevice(outptr_QPaintDevice)}
 }
 
 // UnsafeNewQPagedPaintDevice constructs the type using only unsafe pointers.
-func UnsafeNewQPagedPaintDevice(h unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QPagedPaintDevice {
-	if h == nil {
-		return nil
-	}
-
-	return &QPagedPaintDevice{h: (*C.QPagedPaintDevice)(h),
-		QPaintDevice: UnsafeNewQPaintDevice(h_QPaintDevice)}
+func UnsafeNewQPagedPaintDevice(h unsafe.Pointer) *QPagedPaintDevice {
+	return newQPagedPaintDevice((*C.QPagedPaintDevice)(h))
 }
 
 func (this *QPagedPaintDevice) NewPage() bool {
@@ -81,8 +79,7 @@ func (this *QPagedPaintDevice) SetPageMargins(margins *QMarginsF, units QPageLay
 }
 
 func (this *QPagedPaintDevice) PageLayout() *QPageLayout {
-	_ret := C.QPagedPaintDevice_PageLayout(this.h)
-	_goptr := newQPageLayout(_ret)
+	_goptr := newQPageLayout(C.QPagedPaintDevice_PageLayout(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -92,8 +89,7 @@ func (this *QPagedPaintDevice) SetPageRanges(ranges *QPageRanges) {
 }
 
 func (this *QPagedPaintDevice) PageRanges() *QPageRanges {
-	_ret := C.QPagedPaintDevice_PageRanges(this.h)
-	_goptr := newQPageRanges(_ret)
+	_goptr := newQPageRanges(C.QPagedPaintDevice_PageRanges(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -52,12 +52,13 @@ typedef struct QStyleOptionFrame QStyleOptionFrame;
 typedef struct QWidget QWidget;
 #endif
 
-void QLabel_new(QWidget* parent, QLabel** outptr_QLabel, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QLabel_new2(QLabel** outptr_QLabel, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QLabel_new3(struct miqt_string text, QLabel** outptr_QLabel, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QLabel_new4(QWidget* parent, int f, QLabel** outptr_QLabel, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QLabel_new5(struct miqt_string text, QWidget* parent, QLabel** outptr_QLabel, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QLabel_new6(struct miqt_string text, QWidget* parent, int f, QLabel** outptr_QLabel, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QLabel* QLabel_new(QWidget* parent);
+QLabel* QLabel_new2();
+QLabel* QLabel_new3(struct miqt_string text);
+QLabel* QLabel_new4(QWidget* parent, int f);
+QLabel* QLabel_new5(struct miqt_string text, QWidget* parent);
+QLabel* QLabel_new6(struct miqt_string text, QWidget* parent, int f);
+void QLabel_virtbase(QLabel* src, QFrame** outptr_QFrame);
 QMetaObject* QLabel_MetaObject(const QLabel* self);
 void* QLabel_Metacast(QLabel* self, const char* param1);
 struct miqt_string QLabel_Tr(const char* s);

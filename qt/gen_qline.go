@@ -45,54 +45,43 @@ func newQLine(h *C.QLine) *QLine {
 	if h == nil {
 		return nil
 	}
+
 	return &QLine{h: h}
 }
 
 // UnsafeNewQLine constructs the type using only unsafe pointers.
 func UnsafeNewQLine(h unsafe.Pointer) *QLine {
-	if h == nil {
-		return nil
-	}
-
-	return &QLine{h: (*C.QLine)(h)}
+	return newQLine((*C.QLine)(h))
 }
 
 // NewQLine constructs a new QLine object.
 func NewQLine() *QLine {
-	var outptr_QLine *C.QLine = nil
 
-	C.QLine_new(&outptr_QLine)
-	ret := newQLine(outptr_QLine)
+	ret := newQLine(C.QLine_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQLine2 constructs a new QLine object.
 func NewQLine2(pt1 *QPoint, pt2 *QPoint) *QLine {
-	var outptr_QLine *C.QLine = nil
 
-	C.QLine_new2(pt1.cPointer(), pt2.cPointer(), &outptr_QLine)
-	ret := newQLine(outptr_QLine)
+	ret := newQLine(C.QLine_new2(pt1.cPointer(), pt2.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQLine3 constructs a new QLine object.
 func NewQLine3(x1 int, y1 int, x2 int, y2 int) *QLine {
-	var outptr_QLine *C.QLine = nil
 
-	C.QLine_new3((C.int)(x1), (C.int)(y1), (C.int)(x2), (C.int)(y2), &outptr_QLine)
-	ret := newQLine(outptr_QLine)
+	ret := newQLine(C.QLine_new3((C.int)(x1), (C.int)(y1), (C.int)(x2), (C.int)(y2)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQLine4 constructs a new QLine object.
 func NewQLine4(param1 *QLine) *QLine {
-	var outptr_QLine *C.QLine = nil
 
-	C.QLine_new4(param1.cPointer(), &outptr_QLine)
-	ret := newQLine(outptr_QLine)
+	ret := newQLine(C.QLine_new4(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -102,15 +91,13 @@ func (this *QLine) IsNull() bool {
 }
 
 func (this *QLine) P1() *QPoint {
-	_ret := C.QLine_P1(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QLine_P1(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLine) P2() *QPoint {
-	_ret := C.QLine_P2(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QLine_P2(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -148,22 +135,19 @@ func (this *QLine) Translate2(dx int, dy int) {
 }
 
 func (this *QLine) Translated(p *QPoint) *QLine {
-	_ret := C.QLine_Translated(this.h, p.cPointer())
-	_goptr := newQLine(_ret)
+	_goptr := newQLine(C.QLine_Translated(this.h, p.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLine) Translated2(dx int, dy int) *QLine {
-	_ret := C.QLine_Translated2(this.h, (C.int)(dx), (C.int)(dy))
-	_goptr := newQLine(_ret)
+	_goptr := newQLine(C.QLine_Translated2(this.h, (C.int)(dx), (C.int)(dy)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLine) Center() *QPoint {
-	_ret := C.QLine_Center(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QLine_Center(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -230,71 +214,57 @@ func newQLineF(h *C.QLineF) *QLineF {
 	if h == nil {
 		return nil
 	}
+
 	return &QLineF{h: h}
 }
 
 // UnsafeNewQLineF constructs the type using only unsafe pointers.
 func UnsafeNewQLineF(h unsafe.Pointer) *QLineF {
-	if h == nil {
-		return nil
-	}
-
-	return &QLineF{h: (*C.QLineF)(h)}
+	return newQLineF((*C.QLineF)(h))
 }
 
 // NewQLineF constructs a new QLineF object.
 func NewQLineF() *QLineF {
-	var outptr_QLineF *C.QLineF = nil
 
-	C.QLineF_new(&outptr_QLineF)
-	ret := newQLineF(outptr_QLineF)
+	ret := newQLineF(C.QLineF_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQLineF2 constructs a new QLineF object.
 func NewQLineF2(pt1 *QPointF, pt2 *QPointF) *QLineF {
-	var outptr_QLineF *C.QLineF = nil
 
-	C.QLineF_new2(pt1.cPointer(), pt2.cPointer(), &outptr_QLineF)
-	ret := newQLineF(outptr_QLineF)
+	ret := newQLineF(C.QLineF_new2(pt1.cPointer(), pt2.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQLineF3 constructs a new QLineF object.
 func NewQLineF3(x1 float64, y1 float64, x2 float64, y2 float64) *QLineF {
-	var outptr_QLineF *C.QLineF = nil
 
-	C.QLineF_new3((C.double)(x1), (C.double)(y1), (C.double)(x2), (C.double)(y2), &outptr_QLineF)
-	ret := newQLineF(outptr_QLineF)
+	ret := newQLineF(C.QLineF_new3((C.double)(x1), (C.double)(y1), (C.double)(x2), (C.double)(y2)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQLineF4 constructs a new QLineF object.
 func NewQLineF4(line *QLine) *QLineF {
-	var outptr_QLineF *C.QLineF = nil
 
-	C.QLineF_new4(line.cPointer(), &outptr_QLineF)
-	ret := newQLineF(outptr_QLineF)
+	ret := newQLineF(C.QLineF_new4(line.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQLineF5 constructs a new QLineF object.
 func NewQLineF5(param1 *QLineF) *QLineF {
-	var outptr_QLineF *C.QLineF = nil
 
-	C.QLineF_new5(param1.cPointer(), &outptr_QLineF)
-	ret := newQLineF(outptr_QLineF)
+	ret := newQLineF(C.QLineF_new5(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func QLineF_FromPolar(length float64, angle float64) *QLineF {
-	_ret := C.QLineF_FromPolar((C.double)(length), (C.double)(angle))
-	_goptr := newQLineF(_ret)
+	_goptr := newQLineF(C.QLineF_FromPolar((C.double)(length), (C.double)(angle)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -304,15 +274,13 @@ func (this *QLineF) IsNull() bool {
 }
 
 func (this *QLineF) P1() *QPointF {
-	_ret := C.QLineF_P1(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QLineF_P1(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLineF) P2() *QPointF {
-	_ret := C.QLineF_P2(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QLineF_P2(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -362,15 +330,13 @@ func (this *QLineF) AngleTo(l *QLineF) float64 {
 }
 
 func (this *QLineF) UnitVector() *QLineF {
-	_ret := C.QLineF_UnitVector(this.h)
-	_goptr := newQLineF(_ret)
+	_goptr := newQLineF(C.QLineF_UnitVector(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLineF) NormalVector() *QLineF {
-	_ret := C.QLineF_NormalVector(this.h)
-	_goptr := newQLineF(_ret)
+	_goptr := newQLineF(C.QLineF_NormalVector(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -388,8 +354,7 @@ func (this *QLineF) AngleWithQLineF(l *QLineF) float64 {
 }
 
 func (this *QLineF) PointAt(t float64) *QPointF {
-	_ret := C.QLineF_PointAt(this.h, (C.double)(t))
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QLineF_PointAt(this.h, (C.double)(t)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -403,22 +368,19 @@ func (this *QLineF) Translate2(dx float64, dy float64) {
 }
 
 func (this *QLineF) Translated(p *QPointF) *QLineF {
-	_ret := C.QLineF_Translated(this.h, p.cPointer())
-	_goptr := newQLineF(_ret)
+	_goptr := newQLineF(C.QLineF_Translated(this.h, p.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLineF) Translated2(dx float64, dy float64) *QLineF {
-	_ret := C.QLineF_Translated2(this.h, (C.double)(dx), (C.double)(dy))
-	_goptr := newQLineF(_ret)
+	_goptr := newQLineF(C.QLineF_Translated2(this.h, (C.double)(dx), (C.double)(dy)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLineF) Center() *QPointF {
-	_ret := C.QLineF_Center(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QLineF_Center(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -448,8 +410,7 @@ func (this *QLineF) OperatorNotEqual(d *QLineF) bool {
 }
 
 func (this *QLineF) ToLine() *QLine {
-	_ret := C.QLineF_ToLine(this.h)
-	_goptr := newQLine(_ret)
+	_goptr := newQLine(C.QLineF_ToLine(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

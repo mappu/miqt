@@ -6,21 +6,22 @@
 #include <QVideoFrameFormat>
 #include <qvideoframeformat.h>
 #include "gen_qvideoframeformat.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QVideoFrameFormat_new(QVideoFrameFormat** outptr_QVideoFrameFormat) {
-	QVideoFrameFormat* ret = new QVideoFrameFormat();
-	*outptr_QVideoFrameFormat = ret;
+QVideoFrameFormat* QVideoFrameFormat_new() {
+	return new QVideoFrameFormat();
 }
 
-void QVideoFrameFormat_new2(QSize* size, int pixelFormat, QVideoFrameFormat** outptr_QVideoFrameFormat) {
-	QVideoFrameFormat* ret = new QVideoFrameFormat(*size, static_cast<QVideoFrameFormat::PixelFormat>(pixelFormat));
-	*outptr_QVideoFrameFormat = ret;
+QVideoFrameFormat* QVideoFrameFormat_new2(QSize* size, int pixelFormat) {
+	return new QVideoFrameFormat(*size, static_cast<QVideoFrameFormat::PixelFormat>(pixelFormat));
 }
 
-void QVideoFrameFormat_new3(QVideoFrameFormat* format, QVideoFrameFormat** outptr_QVideoFrameFormat) {
-	QVideoFrameFormat* ret = new QVideoFrameFormat(*format);
-	*outptr_QVideoFrameFormat = ret;
+QVideoFrameFormat* QVideoFrameFormat_new3(QVideoFrameFormat* format) {
+	return new QVideoFrameFormat(*format);
 }
 
 void QVideoFrameFormat_Swap(QVideoFrameFormat* self, QVideoFrameFormat* other) {

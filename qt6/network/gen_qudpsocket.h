@@ -38,8 +38,9 @@ typedef struct QUdpSocket QUdpSocket;
 typedef struct QVariant QVariant;
 #endif
 
-void QUdpSocket_new(QUdpSocket** outptr_QUdpSocket, QAbstractSocket** outptr_QAbstractSocket, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
-void QUdpSocket_new2(QObject* parent, QUdpSocket** outptr_QUdpSocket, QAbstractSocket** outptr_QAbstractSocket, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase);
+QUdpSocket* QUdpSocket_new();
+QUdpSocket* QUdpSocket_new2(QObject* parent);
+void QUdpSocket_virtbase(QUdpSocket* src, QAbstractSocket** outptr_QAbstractSocket);
 QMetaObject* QUdpSocket_MetaObject(const QUdpSocket* self);
 void* QUdpSocket_Metacast(QUdpSocket* self, const char* param1);
 struct miqt_string QUdpSocket_Tr(const char* s);

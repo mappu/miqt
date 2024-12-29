@@ -53,30 +53,25 @@ func newQScriptClass(h *C.QScriptClass) *QScriptClass {
 	if h == nil {
 		return nil
 	}
+
 	return &QScriptClass{h: h}
 }
 
 // UnsafeNewQScriptClass constructs the type using only unsafe pointers.
 func UnsafeNewQScriptClass(h unsafe.Pointer) *QScriptClass {
-	if h == nil {
-		return nil
-	}
-
-	return &QScriptClass{h: (*C.QScriptClass)(h)}
+	return newQScriptClass((*C.QScriptClass)(h))
 }
 
 // NewQScriptClass constructs a new QScriptClass object.
 func NewQScriptClass(engine *QScriptEngine) *QScriptClass {
-	var outptr_QScriptClass *C.QScriptClass = nil
 
-	C.QScriptClass_new(engine.cPointer(), &outptr_QScriptClass)
-	ret := newQScriptClass(outptr_QScriptClass)
+	ret := newQScriptClass(C.QScriptClass_new(engine.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QScriptClass) Engine() *QScriptEngine {
-	return UnsafeNewQScriptEngine(unsafe.Pointer(C.QScriptClass_Engine(this.h)), nil)
+	return newQScriptEngine(C.QScriptClass_Engine(this.h))
 }
 
 func (this *QScriptClass) QueryProperty(object *QScriptValue, name *QScriptString, flags QScriptClass__QueryFlag, id *uint) QScriptClass__QueryFlag {
@@ -84,8 +79,7 @@ func (this *QScriptClass) QueryProperty(object *QScriptValue, name *QScriptStrin
 }
 
 func (this *QScriptClass) Property(object *QScriptValue, name *QScriptString, id uint) *QScriptValue {
-	_ret := C.QScriptClass_Property(this.h, object.cPointer(), name.cPointer(), (C.uint)(id))
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptClass_Property(this.h, object.cPointer(), name.cPointer(), (C.uint)(id)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -99,12 +93,11 @@ func (this *QScriptClass) PropertyFlags(object *QScriptValue, name *QScriptStrin
 }
 
 func (this *QScriptClass) NewIterator(object *QScriptValue) *QScriptClassPropertyIterator {
-	return UnsafeNewQScriptClassPropertyIterator(unsafe.Pointer(C.QScriptClass_NewIterator(this.h, object.cPointer())))
+	return newQScriptClassPropertyIterator(C.QScriptClass_NewIterator(this.h, object.cPointer()))
 }
 
 func (this *QScriptClass) Prototype() *QScriptValue {
-	_ret := C.QScriptClass_Prototype(this.h)
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptClass_Prototype(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -121,8 +114,7 @@ func (this *QScriptClass) SupportsExtension(extension QScriptClass__Extension) b
 }
 
 func (this *QScriptClass) Extension(extension QScriptClass__Extension, argument *qt.QVariant) *qt.QVariant {
-	_ret := C.QScriptClass_Extension(this.h, (C.int)(extension), (*C.QVariant)(argument.UnsafePointer()))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QScriptClass_Extension(this.h, (C.int)(extension), (*C.QVariant)(argument.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -133,6 +125,9 @@ func (this *QScriptClass) callVirtualBase_QueryProperty(object *QScriptValue, na
 
 }
 func (this *QScriptClass) OnQueryProperty(slot func(super func(object *QScriptValue, name *QScriptString, flags QScriptClass__QueryFlag, id *uint) QScriptClass__QueryFlag, object *QScriptValue, name *QScriptString, flags QScriptClass__QueryFlag, id *uint) QScriptClass__QueryFlag) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QScriptClass_override_virtual_QueryProperty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -144,8 +139,10 @@ func miqt_exec_callback_QScriptClass_QueryProperty(self *C.QScriptClass, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQScriptValue(unsafe.Pointer(object))
-	slotval2 := UnsafeNewQScriptString(unsafe.Pointer(name))
+	slotval1 := newQScriptValue(object)
+
+	slotval2 := newQScriptString(name)
+
 	slotval3 := (QScriptClass__QueryFlag)(flags)
 
 	slotval4 := (*uint)(unsafe.Pointer(id))
@@ -158,13 +155,15 @@ func miqt_exec_callback_QScriptClass_QueryProperty(self *C.QScriptClass, cb C.in
 
 func (this *QScriptClass) callVirtualBase_Property(object *QScriptValue, name *QScriptString, id uint) *QScriptValue {
 
-	_ret := C.QScriptClass_virtualbase_Property(unsafe.Pointer(this.h), object.cPointer(), name.cPointer(), (C.uint)(id))
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptClass_virtualbase_Property(unsafe.Pointer(this.h), object.cPointer(), name.cPointer(), (C.uint)(id)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QScriptClass) OnProperty(slot func(super func(object *QScriptValue, name *QScriptString, id uint) *QScriptValue, object *QScriptValue, name *QScriptString, id uint) *QScriptValue) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QScriptClass_override_virtual_Property(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -176,8 +175,10 @@ func miqt_exec_callback_QScriptClass_Property(self *C.QScriptClass, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQScriptValue(unsafe.Pointer(object))
-	slotval2 := UnsafeNewQScriptString(unsafe.Pointer(name))
+	slotval1 := newQScriptValue(object)
+
+	slotval2 := newQScriptString(name)
+
 	slotval3 := (uint)(id)
 
 	virtualReturn := gofunc((&QScriptClass{h: self}).callVirtualBase_Property, slotval1, slotval2, slotval3)
@@ -192,6 +193,9 @@ func (this *QScriptClass) callVirtualBase_SetProperty(object *QScriptValue, name
 
 }
 func (this *QScriptClass) OnSetProperty(slot func(super func(object *QScriptValue, name *QScriptString, id uint, value *QScriptValue), object *QScriptValue, name *QScriptString, id uint, value *QScriptValue)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QScriptClass_override_virtual_SetProperty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -203,11 +207,13 @@ func miqt_exec_callback_QScriptClass_SetProperty(self *C.QScriptClass, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQScriptValue(unsafe.Pointer(object))
-	slotval2 := UnsafeNewQScriptString(unsafe.Pointer(name))
+	slotval1 := newQScriptValue(object)
+
+	slotval2 := newQScriptString(name)
+
 	slotval3 := (uint)(id)
 
-	slotval4 := UnsafeNewQScriptValue(unsafe.Pointer(value))
+	slotval4 := newQScriptValue(value)
 
 	gofunc((&QScriptClass{h: self}).callVirtualBase_SetProperty, slotval1, slotval2, slotval3, slotval4)
 
@@ -219,6 +225,9 @@ func (this *QScriptClass) callVirtualBase_PropertyFlags(object *QScriptValue, na
 
 }
 func (this *QScriptClass) OnPropertyFlags(slot func(super func(object *QScriptValue, name *QScriptString, id uint) QScriptValue__PropertyFlag, object *QScriptValue, name *QScriptString, id uint) QScriptValue__PropertyFlag) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QScriptClass_override_virtual_PropertyFlags(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -230,8 +239,10 @@ func miqt_exec_callback_QScriptClass_PropertyFlags(self *C.QScriptClass, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQScriptValue(unsafe.Pointer(object))
-	slotval2 := UnsafeNewQScriptString(unsafe.Pointer(name))
+	slotval1 := newQScriptValue(object)
+
+	slotval2 := newQScriptString(name)
+
 	slotval3 := (uint)(id)
 
 	virtualReturn := gofunc((&QScriptClass{h: self}).callVirtualBase_PropertyFlags, slotval1, slotval2, slotval3)
@@ -242,9 +253,13 @@ func miqt_exec_callback_QScriptClass_PropertyFlags(self *C.QScriptClass, cb C.in
 
 func (this *QScriptClass) callVirtualBase_NewIterator(object *QScriptValue) *QScriptClassPropertyIterator {
 
-	return UnsafeNewQScriptClassPropertyIterator(unsafe.Pointer(C.QScriptClass_virtualbase_NewIterator(unsafe.Pointer(this.h), object.cPointer())))
+	return newQScriptClassPropertyIterator(C.QScriptClass_virtualbase_NewIterator(unsafe.Pointer(this.h), object.cPointer()))
+
 }
 func (this *QScriptClass) OnNewIterator(slot func(super func(object *QScriptValue) *QScriptClassPropertyIterator, object *QScriptValue) *QScriptClassPropertyIterator) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QScriptClass_override_virtual_NewIterator(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -256,7 +271,7 @@ func miqt_exec_callback_QScriptClass_NewIterator(self *C.QScriptClass, cb C.intp
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQScriptValue(unsafe.Pointer(object))
+	slotval1 := newQScriptValue(object)
 
 	virtualReturn := gofunc((&QScriptClass{h: self}).callVirtualBase_NewIterator, slotval1)
 
@@ -266,13 +281,15 @@ func miqt_exec_callback_QScriptClass_NewIterator(self *C.QScriptClass, cb C.intp
 
 func (this *QScriptClass) callVirtualBase_Prototype() *QScriptValue {
 
-	_ret := C.QScriptClass_virtualbase_Prototype(unsafe.Pointer(this.h))
-	_goptr := newQScriptValue(_ret)
+	_goptr := newQScriptValue(C.QScriptClass_virtualbase_Prototype(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QScriptClass) OnPrototype(slot func(super func() *QScriptValue) *QScriptValue) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QScriptClass_override_virtual_Prototype(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -297,6 +314,9 @@ func (this *QScriptClass) callVirtualBase_Name() string {
 	return _ret
 }
 func (this *QScriptClass) OnName(slot func(super func() string) string) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QScriptClass_override_virtual_Name(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -323,6 +343,9 @@ func (this *QScriptClass) callVirtualBase_SupportsExtension(extension QScriptCla
 
 }
 func (this *QScriptClass) OnSupportsExtension(slot func(super func(extension QScriptClass__Extension) bool, extension QScriptClass__Extension) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QScriptClass_override_virtual_SupportsExtension(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -344,13 +367,15 @@ func miqt_exec_callback_QScriptClass_SupportsExtension(self *C.QScriptClass, cb 
 
 func (this *QScriptClass) callVirtualBase_Extension(extension QScriptClass__Extension, argument *qt.QVariant) *qt.QVariant {
 
-	_ret := C.QScriptClass_virtualbase_Extension(unsafe.Pointer(this.h), (C.int)(extension), (*C.QVariant)(argument.UnsafePointer()))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QScriptClass_virtualbase_Extension(unsafe.Pointer(this.h), (C.int)(extension), (*C.QVariant)(argument.UnsafePointer()))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QScriptClass) OnExtension(slot func(super func(extension QScriptClass__Extension, argument *qt.QVariant) *qt.QVariant, extension QScriptClass__Extension, argument *qt.QVariant) *qt.QVariant) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QScriptClass_override_virtual_Extension(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

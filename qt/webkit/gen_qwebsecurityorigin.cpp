@@ -7,16 +7,18 @@
 #include <QWebSecurityOrigin>
 #include <qwebsecurityorigin.h>
 #include "gen_qwebsecurityorigin.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QWebSecurityOrigin_new(QUrl* url, QWebSecurityOrigin** outptr_QWebSecurityOrigin) {
-	QWebSecurityOrigin* ret = new QWebSecurityOrigin(*url);
-	*outptr_QWebSecurityOrigin = ret;
+QWebSecurityOrigin* QWebSecurityOrigin_new(QUrl* url) {
+	return new QWebSecurityOrigin(*url);
 }
 
-void QWebSecurityOrigin_new2(QWebSecurityOrigin* other, QWebSecurityOrigin** outptr_QWebSecurityOrigin) {
-	QWebSecurityOrigin* ret = new QWebSecurityOrigin(*other);
-	*outptr_QWebSecurityOrigin = ret;
+QWebSecurityOrigin* QWebSecurityOrigin_new2(QWebSecurityOrigin* other) {
+	return new QWebSecurityOrigin(*other);
 }
 
 struct miqt_array /* of QWebSecurityOrigin* */  QWebSecurityOrigin_AllOrigins() {

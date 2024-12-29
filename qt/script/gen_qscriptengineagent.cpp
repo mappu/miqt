@@ -7,6 +7,10 @@
 #include <QVariant>
 #include <qscriptengineagent.h>
 #include "gen_qscriptengineagent.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQScriptEngineAgent : public virtual QScriptEngineAgent {
@@ -321,9 +325,8 @@ public:
 
 };
 
-void QScriptEngineAgent_new(QScriptEngine* engine, QScriptEngineAgent** outptr_QScriptEngineAgent) {
-	MiqtVirtualQScriptEngineAgent* ret = new MiqtVirtualQScriptEngineAgent(engine);
-	*outptr_QScriptEngineAgent = ret;
+QScriptEngineAgent* QScriptEngineAgent_new(QScriptEngine* engine) {
+	return new MiqtVirtualQScriptEngineAgent(engine);
 }
 
 void QScriptEngineAgent_ScriptLoad(QScriptEngineAgent* self, long long id, struct miqt_string program, struct miqt_string fileName, int baseLineNumber) {

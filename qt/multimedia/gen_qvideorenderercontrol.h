@@ -28,6 +28,7 @@ typedef struct QObject QObject;
 typedef struct QVideoRendererControl QVideoRendererControl;
 #endif
 
+void QVideoRendererControl_virtbase(QVideoRendererControl* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QVideoRendererControl_MetaObject(const QVideoRendererControl* self);
 void* QVideoRendererControl_Metacast(QVideoRendererControl* self, const char* param1);
 struct miqt_string QVideoRendererControl_Tr(const char* s);

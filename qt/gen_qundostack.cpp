@@ -12,6 +12,10 @@
 #include <QUndoStack>
 #include <qundostack.h>
 #include "gen_qundostack.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQUndoCommand : public virtual QUndoCommand {
@@ -117,26 +121,22 @@ public:
 
 };
 
-void QUndoCommand_new(QUndoCommand** outptr_QUndoCommand) {
-	MiqtVirtualQUndoCommand* ret = new MiqtVirtualQUndoCommand();
-	*outptr_QUndoCommand = ret;
+QUndoCommand* QUndoCommand_new() {
+	return new MiqtVirtualQUndoCommand();
 }
 
-void QUndoCommand_new2(struct miqt_string text, QUndoCommand** outptr_QUndoCommand) {
+QUndoCommand* QUndoCommand_new2(struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQUndoCommand* ret = new MiqtVirtualQUndoCommand(text_QString);
-	*outptr_QUndoCommand = ret;
+	return new MiqtVirtualQUndoCommand(text_QString);
 }
 
-void QUndoCommand_new3(QUndoCommand* parent, QUndoCommand** outptr_QUndoCommand) {
-	MiqtVirtualQUndoCommand* ret = new MiqtVirtualQUndoCommand(parent);
-	*outptr_QUndoCommand = ret;
+QUndoCommand* QUndoCommand_new3(QUndoCommand* parent) {
+	return new MiqtVirtualQUndoCommand(parent);
 }
 
-void QUndoCommand_new4(struct miqt_string text, QUndoCommand* parent, QUndoCommand** outptr_QUndoCommand) {
+QUndoCommand* QUndoCommand_new4(struct miqt_string text, QUndoCommand* parent) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQUndoCommand* ret = new MiqtVirtualQUndoCommand(text_QString, parent);
-	*outptr_QUndoCommand = ret;
+	return new MiqtVirtualQUndoCommand(text_QString, parent);
 }
 
 void QUndoCommand_Undo(QUndoCommand* self) {
@@ -419,16 +419,16 @@ public:
 
 };
 
-void QUndoStack_new(QUndoStack** outptr_QUndoStack, QObject** outptr_QObject) {
-	MiqtVirtualQUndoStack* ret = new MiqtVirtualQUndoStack();
-	*outptr_QUndoStack = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QUndoStack* QUndoStack_new() {
+	return new MiqtVirtualQUndoStack();
 }
 
-void QUndoStack_new2(QObject* parent, QUndoStack** outptr_QUndoStack, QObject** outptr_QObject) {
-	MiqtVirtualQUndoStack* ret = new MiqtVirtualQUndoStack(parent);
-	*outptr_QUndoStack = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QUndoStack* QUndoStack_new2(QObject* parent) {
+	return new MiqtVirtualQUndoStack(parent);
+}
+
+void QUndoStack_virtbase(QUndoStack* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QUndoStack_MetaObject(const QUndoStack* self) {

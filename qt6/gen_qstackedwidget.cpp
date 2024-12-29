@@ -13,6 +13,10 @@
 #include <QWidget>
 #include <qstackedwidget.h>
 #include "gen_qstackedwidget.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQStackedWidget : public virtual QStackedWidget {
@@ -142,22 +146,16 @@ public:
 
 };
 
-void QStackedWidget_new(QWidget* parent, QStackedWidget** outptr_QStackedWidget, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQStackedWidget* ret = new MiqtVirtualQStackedWidget(parent);
-	*outptr_QStackedWidget = ret;
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QStackedWidget* QStackedWidget_new(QWidget* parent) {
+	return new MiqtVirtualQStackedWidget(parent);
 }
 
-void QStackedWidget_new2(QStackedWidget** outptr_QStackedWidget, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQStackedWidget* ret = new MiqtVirtualQStackedWidget();
-	*outptr_QStackedWidget = ret;
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QStackedWidget* QStackedWidget_new2() {
+	return new MiqtVirtualQStackedWidget();
+}
+
+void QStackedWidget_virtbase(QStackedWidget* src, QFrame** outptr_QFrame) {
+	*outptr_QFrame = static_cast<QFrame*>(src);
 }
 
 QMetaObject* QStackedWidget_MetaObject(const QStackedWidget* self) {

@@ -2,11 +2,14 @@
 #include <QObject>
 #include <qbasictimer.h>
 #include "gen_qbasictimer.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QBasicTimer_new(QBasicTimer** outptr_QBasicTimer) {
-	QBasicTimer* ret = new QBasicTimer();
-	*outptr_QBasicTimer = ret;
+QBasicTimer* QBasicTimer_new() {
+	return new QBasicTimer();
 }
 
 void QBasicTimer_Swap(QBasicTimer* self, QBasicTimer* other) {

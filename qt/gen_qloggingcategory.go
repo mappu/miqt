@@ -37,26 +37,21 @@ func newQLoggingCategory(h *C.QLoggingCategory) *QLoggingCategory {
 	if h == nil {
 		return nil
 	}
+
 	return &QLoggingCategory{h: h}
 }
 
 // UnsafeNewQLoggingCategory constructs the type using only unsafe pointers.
 func UnsafeNewQLoggingCategory(h unsafe.Pointer) *QLoggingCategory {
-	if h == nil {
-		return nil
-	}
-
-	return &QLoggingCategory{h: (*C.QLoggingCategory)(h)}
+	return newQLoggingCategory((*C.QLoggingCategory)(h))
 }
 
 // NewQLoggingCategory constructs a new QLoggingCategory object.
 func NewQLoggingCategory(category string) *QLoggingCategory {
 	category_Cstring := C.CString(category)
 	defer C.free(unsafe.Pointer(category_Cstring))
-	var outptr_QLoggingCategory *C.QLoggingCategory = nil
 
-	C.QLoggingCategory_new(category_Cstring, &outptr_QLoggingCategory)
-	ret := newQLoggingCategory(outptr_QLoggingCategory)
+	ret := newQLoggingCategory(C.QLoggingCategory_new(category_Cstring))
 	ret.isSubclass = true
 	return ret
 }
@@ -83,15 +78,15 @@ func (this *QLoggingCategory) CategoryName() string {
 }
 
 func (this *QLoggingCategory) OperatorCall() *QLoggingCategory {
-	return UnsafeNewQLoggingCategory(unsafe.Pointer(C.QLoggingCategory_OperatorCall(this.h)))
+	return newQLoggingCategory(C.QLoggingCategory_OperatorCall(this.h))
 }
 
 func (this *QLoggingCategory) OperatorCall2() *QLoggingCategory {
-	return UnsafeNewQLoggingCategory(unsafe.Pointer(C.QLoggingCategory_OperatorCall2(this.h)))
+	return newQLoggingCategory(C.QLoggingCategory_OperatorCall2(this.h))
 }
 
 func QLoggingCategory_DefaultCategory() *QLoggingCategory {
-	return UnsafeNewQLoggingCategory(unsafe.Pointer(C.QLoggingCategory_DefaultCategory()))
+	return newQLoggingCategory(C.QLoggingCategory_DefaultCategory())
 }
 
 func QLoggingCategory_SetFilterRules(rules string) {

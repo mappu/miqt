@@ -6,16 +6,18 @@
 #include <cstring>
 #include <qpageranges.h>
 #include "gen_qpageranges.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QPageRanges_new(QPageRanges** outptr_QPageRanges) {
-	QPageRanges* ret = new QPageRanges();
-	*outptr_QPageRanges = ret;
+QPageRanges* QPageRanges_new() {
+	return new QPageRanges();
 }
 
-void QPageRanges_new2(QPageRanges* other, QPageRanges** outptr_QPageRanges) {
-	QPageRanges* ret = new QPageRanges(*other);
-	*outptr_QPageRanges = ret;
+QPageRanges* QPageRanges_new2(QPageRanges* other) {
+	return new QPageRanges(*other);
 }
 
 void QPageRanges_OperatorAssign(QPageRanges* self, QPageRanges* other) {
@@ -95,14 +97,12 @@ void QPageRanges_Delete(QPageRanges* self, bool isSubclass) {
 	}
 }
 
-void QPageRanges__Range_new(QPageRanges__Range** outptr_QPageRanges__Range) {
-	QPageRanges::Range* ret = new QPageRanges::Range();
-	*outptr_QPageRanges__Range = ret;
+QPageRanges__Range* QPageRanges__Range_new() {
+	return new QPageRanges::Range();
 }
 
-void QPageRanges__Range_new2(QPageRanges__Range* param1, QPageRanges__Range** outptr_QPageRanges__Range) {
-	QPageRanges::Range* ret = new QPageRanges::Range(*param1);
-	*outptr_QPageRanges__Range = ret;
+QPageRanges__Range* QPageRanges__Range_new2(QPageRanges__Range* param1) {
+	return new QPageRanges::Range(*param1);
 }
 
 bool QPageRanges__Range_Contains(const QPageRanges__Range* self, int pageNumber) {

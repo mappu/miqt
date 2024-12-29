@@ -36,6 +36,10 @@
 #include <QWindow>
 #include <qwindow.h>
 #include "gen_qwindow.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQWindow : public virtual QWindow {
@@ -795,25 +799,21 @@ public:
 
 };
 
-void QWindow_new(QWindow** outptr_QWindow, QObject** outptr_QObject, QSurface** outptr_QSurface) {
-	MiqtVirtualQWindow* ret = new MiqtVirtualQWindow();
-	*outptr_QWindow = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QSurface = static_cast<QSurface*>(ret);
+QWindow* QWindow_new() {
+	return new MiqtVirtualQWindow();
 }
 
-void QWindow_new2(QWindow* parent, QWindow** outptr_QWindow, QObject** outptr_QObject, QSurface** outptr_QSurface) {
-	MiqtVirtualQWindow* ret = new MiqtVirtualQWindow(parent);
-	*outptr_QWindow = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QSurface = static_cast<QSurface*>(ret);
+QWindow* QWindow_new2(QWindow* parent) {
+	return new MiqtVirtualQWindow(parent);
 }
 
-void QWindow_new3(QScreen* screen, QWindow** outptr_QWindow, QObject** outptr_QObject, QSurface** outptr_QSurface) {
-	MiqtVirtualQWindow* ret = new MiqtVirtualQWindow(screen);
-	*outptr_QWindow = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QSurface = static_cast<QSurface*>(ret);
+QWindow* QWindow_new3(QScreen* screen) {
+	return new MiqtVirtualQWindow(screen);
+}
+
+void QWindow_virtbase(QWindow* src, QObject** outptr_QObject, QSurface** outptr_QSurface) {
+	*outptr_QObject = static_cast<QObject*>(src);
+	*outptr_QSurface = static_cast<QSurface*>(src);
 }
 
 QMetaObject* QWindow_MetaObject(const QWindow* self) {

@@ -9,7 +9,15 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QWebEngineCookieStore__FilterRequest
 #include <qwebenginecookiestore.h>
 #include "gen_qwebenginecookiestore.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
+
+void QWebEngineCookieStore_virtbase(QWebEngineCookieStore* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
 
 QMetaObject* QWebEngineCookieStore_MetaObject(const QWebEngineCookieStore* self) {
 	return (QMetaObject*) self->metaObject();
@@ -147,9 +155,8 @@ void QWebEngineCookieStore_Delete(QWebEngineCookieStore* self, bool isSubclass) 
 	}
 }
 
-void QWebEngineCookieStore__FilterRequest_new(QWebEngineCookieStore__FilterRequest* param1, QWebEngineCookieStore__FilterRequest** outptr_QWebEngineCookieStore__FilterRequest) {
-	QWebEngineCookieStore::FilterRequest* ret = new QWebEngineCookieStore::FilterRequest(*param1);
-	*outptr_QWebEngineCookieStore__FilterRequest = ret;
+QWebEngineCookieStore__FilterRequest* QWebEngineCookieStore__FilterRequest_new(QWebEngineCookieStore__FilterRequest* param1) {
+	return new QWebEngineCookieStore::FilterRequest(*param1);
 }
 
 void QWebEngineCookieStore__FilterRequest_OperatorAssign(QWebEngineCookieStore__FilterRequest* self, QWebEngineCookieStore__FilterRequest* param1) {

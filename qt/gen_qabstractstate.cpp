@@ -9,7 +9,15 @@
 #include <cstring>
 #include <qabstractstate.h>
 #include "gen_qabstractstate.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
+
+void QAbstractState_virtbase(QAbstractState* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
 
 QMetaObject* QAbstractState_MetaObject(const QAbstractState* self) {
 	return (QMetaObject*) self->metaObject();

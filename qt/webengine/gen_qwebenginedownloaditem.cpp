@@ -8,7 +8,15 @@
 #include <QWebEnginePage>
 #include <qwebenginedownloaditem.h>
 #include "gen_qwebenginedownloaditem.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
+
+void QWebEngineDownloadItem_virtbase(QWebEngineDownloadItem* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
 
 QMetaObject* QWebEngineDownloadItem_MetaObject(const QWebEngineDownloadItem* self) {
 	return (QMetaObject*) self->metaObject();

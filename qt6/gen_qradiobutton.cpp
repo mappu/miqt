@@ -18,6 +18,10 @@
 #include <QWidget>
 #include <qradiobutton.h>
 #include "gen_qradiobutton.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQRadioButton : public virtual QRadioButton {
@@ -434,42 +438,26 @@ public:
 
 };
 
-void QRadioButton_new(QWidget* parent, QRadioButton** outptr_QRadioButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQRadioButton* ret = new MiqtVirtualQRadioButton(parent);
-	*outptr_QRadioButton = ret;
-	*outptr_QAbstractButton = static_cast<QAbstractButton*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QRadioButton* QRadioButton_new(QWidget* parent) {
+	return new MiqtVirtualQRadioButton(parent);
 }
 
-void QRadioButton_new2(QRadioButton** outptr_QRadioButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQRadioButton* ret = new MiqtVirtualQRadioButton();
-	*outptr_QRadioButton = ret;
-	*outptr_QAbstractButton = static_cast<QAbstractButton*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QRadioButton* QRadioButton_new2() {
+	return new MiqtVirtualQRadioButton();
 }
 
-void QRadioButton_new3(struct miqt_string text, QRadioButton** outptr_QRadioButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QRadioButton* QRadioButton_new3(struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQRadioButton* ret = new MiqtVirtualQRadioButton(text_QString);
-	*outptr_QRadioButton = ret;
-	*outptr_QAbstractButton = static_cast<QAbstractButton*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQRadioButton(text_QString);
 }
 
-void QRadioButton_new4(struct miqt_string text, QWidget* parent, QRadioButton** outptr_QRadioButton, QAbstractButton** outptr_QAbstractButton, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QRadioButton* QRadioButton_new4(struct miqt_string text, QWidget* parent) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	MiqtVirtualQRadioButton* ret = new MiqtVirtualQRadioButton(text_QString, parent);
-	*outptr_QRadioButton = ret;
-	*outptr_QAbstractButton = static_cast<QAbstractButton*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQRadioButton(text_QString, parent);
+}
+
+void QRadioButton_virtbase(QRadioButton* src, QAbstractButton** outptr_QAbstractButton) {
+	*outptr_QAbstractButton = static_cast<QAbstractButton*>(src);
 }
 
 QMetaObject* QRadioButton_MetaObject(const QRadioButton* self) {

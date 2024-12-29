@@ -38,6 +38,10 @@
 #include <QWidget>
 #include <qgraphicsview.h>
 #include "gen_qgraphicsview.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGraphicsView : public virtual QGraphicsView {
@@ -770,44 +774,24 @@ public:
 
 };
 
-void QGraphicsView_new(QWidget* parent, QGraphicsView** outptr_QGraphicsView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQGraphicsView* ret = new MiqtVirtualQGraphicsView(parent);
-	*outptr_QGraphicsView = ret;
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QGraphicsView* QGraphicsView_new(QWidget* parent) {
+	return new MiqtVirtualQGraphicsView(parent);
 }
 
-void QGraphicsView_new2(QGraphicsView** outptr_QGraphicsView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQGraphicsView* ret = new MiqtVirtualQGraphicsView();
-	*outptr_QGraphicsView = ret;
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QGraphicsView* QGraphicsView_new2() {
+	return new MiqtVirtualQGraphicsView();
 }
 
-void QGraphicsView_new3(QGraphicsScene* scene, QGraphicsView** outptr_QGraphicsView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQGraphicsView* ret = new MiqtVirtualQGraphicsView(scene);
-	*outptr_QGraphicsView = ret;
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QGraphicsView* QGraphicsView_new3(QGraphicsScene* scene) {
+	return new MiqtVirtualQGraphicsView(scene);
 }
 
-void QGraphicsView_new4(QGraphicsScene* scene, QWidget* parent, QGraphicsView** outptr_QGraphicsView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQGraphicsView* ret = new MiqtVirtualQGraphicsView(scene, parent);
-	*outptr_QGraphicsView = ret;
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QGraphicsView* QGraphicsView_new4(QGraphicsScene* scene, QWidget* parent) {
+	return new MiqtVirtualQGraphicsView(scene, parent);
+}
+
+void QGraphicsView_virtbase(QGraphicsView* src, QAbstractScrollArea** outptr_QAbstractScrollArea) {
+	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(src);
 }
 
 QMetaObject* QGraphicsView_MetaObject(const QGraphicsView* self) {

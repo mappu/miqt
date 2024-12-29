@@ -38,8 +38,9 @@ typedef struct QObject QObject;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QAudioProbe_new(QAudioProbe** outptr_QAudioProbe, QObject** outptr_QObject);
-void QAudioProbe_new2(QObject* parent, QAudioProbe** outptr_QAudioProbe, QObject** outptr_QObject);
+QAudioProbe* QAudioProbe_new();
+QAudioProbe* QAudioProbe_new2(QObject* parent);
+void QAudioProbe_virtbase(QAudioProbe* src, QObject** outptr_QObject);
 QMetaObject* QAudioProbe_MetaObject(const QAudioProbe* self);
 void* QAudioProbe_Metacast(QAudioProbe* self, const char* param1);
 struct miqt_string QAudioProbe_Tr(const char* s);

@@ -120,8 +120,9 @@ typedef struct QWebSettings QWebSettings;
 typedef struct QWidget QWidget;
 #endif
 
-void QWebPage_new(QWebPage** outptr_QWebPage, QObject** outptr_QObject);
-void QWebPage_new2(QObject* parent, QWebPage** outptr_QWebPage, QObject** outptr_QObject);
+QWebPage* QWebPage_new();
+QWebPage* QWebPage_new2(QObject* parent);
+void QWebPage_virtbase(QWebPage* src, QObject** outptr_QObject);
 QMetaObject* QWebPage_MetaObject(const QWebPage* self);
 void* QWebPage_Metacast(QWebPage* self, const char* param1);
 struct miqt_string QWebPage_Tr(const char* s);
@@ -295,8 +296,8 @@ void QWebPage_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QWebPage_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QWebPage_Delete(QWebPage* self, bool isSubclass);
 
-void QWebPage__ViewportAttributes_new(QWebPage__ViewportAttributes** outptr_QWebPage__ViewportAttributes);
-void QWebPage__ViewportAttributes_new2(QWebPage__ViewportAttributes* other, QWebPage__ViewportAttributes** outptr_QWebPage__ViewportAttributes);
+QWebPage__ViewportAttributes* QWebPage__ViewportAttributes_new();
+QWebPage__ViewportAttributes* QWebPage__ViewportAttributes_new2(QWebPage__ViewportAttributes* other);
 void QWebPage__ViewportAttributes_OperatorAssign(QWebPage__ViewportAttributes* self, QWebPage__ViewportAttributes* other);
 double QWebPage__ViewportAttributes_InitialScaleFactor(const QWebPage__ViewportAttributes* self);
 double QWebPage__ViewportAttributes_MinimumScaleFactor(const QWebPage__ViewportAttributes* self);
@@ -307,23 +308,27 @@ bool QWebPage__ViewportAttributes_IsValid(const QWebPage__ViewportAttributes* se
 QSizeF* QWebPage__ViewportAttributes_Size(const QWebPage__ViewportAttributes* self);
 void QWebPage__ViewportAttributes_Delete(QWebPage__ViewportAttributes* self, bool isSubclass);
 
-void QWebPage__ExtensionOption_new(QWebPage__ExtensionOption* param1, QWebPage__ExtensionOption** outptr_QWebPage__ExtensionOption);
+QWebPage__ExtensionOption* QWebPage__ExtensionOption_new(QWebPage__ExtensionOption* param1);
 void QWebPage__ExtensionOption_Delete(QWebPage__ExtensionOption* self, bool isSubclass);
 
-void QWebPage__ExtensionReturn_new(QWebPage__ExtensionReturn* param1, QWebPage__ExtensionReturn** outptr_QWebPage__ExtensionReturn);
-void QWebPage__ExtensionReturn_new2(QWebPage__ExtensionReturn** outptr_QWebPage__ExtensionReturn);
+QWebPage__ExtensionReturn* QWebPage__ExtensionReturn_new(QWebPage__ExtensionReturn* param1);
+QWebPage__ExtensionReturn* QWebPage__ExtensionReturn_new2();
 void QWebPage__ExtensionReturn_Delete(QWebPage__ExtensionReturn* self, bool isSubclass);
 
+void QWebPage__ChooseMultipleFilesExtensionOption_virtbase(QWebPage__ChooseMultipleFilesExtensionOption* src, QWebPage__ExtensionOption** outptr_QWebPage__ExtensionOption);
 void QWebPage__ChooseMultipleFilesExtensionOption_Delete(QWebPage__ChooseMultipleFilesExtensionOption* self, bool isSubclass);
 
+void QWebPage__ChooseMultipleFilesExtensionReturn_virtbase(QWebPage__ChooseMultipleFilesExtensionReturn* src, QWebPage__ExtensionReturn** outptr_QWebPage__ExtensionReturn);
 void QWebPage__ChooseMultipleFilesExtensionReturn_Delete(QWebPage__ChooseMultipleFilesExtensionReturn* self, bool isSubclass);
 
-void QWebPage__ErrorPageExtensionOption_new(QWebPage__ErrorPageExtensionOption* param1, QWebPage__ErrorPageExtensionOption** outptr_QWebPage__ErrorPageExtensionOption, QWebPage__ExtensionOption** outptr_QWebPage__ExtensionOption);
+QWebPage__ErrorPageExtensionOption* QWebPage__ErrorPageExtensionOption_new(QWebPage__ErrorPageExtensionOption* param1);
+void QWebPage__ErrorPageExtensionOption_virtbase(QWebPage__ErrorPageExtensionOption* src, QWebPage__ExtensionOption** outptr_QWebPage__ExtensionOption);
 void QWebPage__ErrorPageExtensionOption_OperatorAssign(QWebPage__ErrorPageExtensionOption* self, QWebPage__ErrorPageExtensionOption* param1);
 void QWebPage__ErrorPageExtensionOption_Delete(QWebPage__ErrorPageExtensionOption* self, bool isSubclass);
 
-void QWebPage__ErrorPageExtensionReturn_new(QWebPage__ErrorPageExtensionReturn** outptr_QWebPage__ErrorPageExtensionReturn, QWebPage__ExtensionReturn** outptr_QWebPage__ExtensionReturn);
-void QWebPage__ErrorPageExtensionReturn_new2(QWebPage__ErrorPageExtensionReturn* param1, QWebPage__ErrorPageExtensionReturn** outptr_QWebPage__ErrorPageExtensionReturn, QWebPage__ExtensionReturn** outptr_QWebPage__ExtensionReturn);
+QWebPage__ErrorPageExtensionReturn* QWebPage__ErrorPageExtensionReturn_new();
+QWebPage__ErrorPageExtensionReturn* QWebPage__ErrorPageExtensionReturn_new2(QWebPage__ErrorPageExtensionReturn* param1);
+void QWebPage__ErrorPageExtensionReturn_virtbase(QWebPage__ErrorPageExtensionReturn* src, QWebPage__ExtensionReturn** outptr_QWebPage__ExtensionReturn);
 void QWebPage__ErrorPageExtensionReturn_OperatorAssign(QWebPage__ErrorPageExtensionReturn* self, QWebPage__ErrorPageExtensionReturn* param1);
 void QWebPage__ErrorPageExtensionReturn_Delete(QWebPage__ErrorPageExtensionReturn* self, bool isSubclass);
 

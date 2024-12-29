@@ -38,34 +38,27 @@ func newQWebEngineRegisterProtocolHandlerRequest(h *C.QWebEngineRegisterProtocol
 	if h == nil {
 		return nil
 	}
+
 	return &QWebEngineRegisterProtocolHandlerRequest{h: h}
 }
 
 // UnsafeNewQWebEngineRegisterProtocolHandlerRequest constructs the type using only unsafe pointers.
 func UnsafeNewQWebEngineRegisterProtocolHandlerRequest(h unsafe.Pointer) *QWebEngineRegisterProtocolHandlerRequest {
-	if h == nil {
-		return nil
-	}
-
-	return &QWebEngineRegisterProtocolHandlerRequest{h: (*C.QWebEngineRegisterProtocolHandlerRequest)(h)}
+	return newQWebEngineRegisterProtocolHandlerRequest((*C.QWebEngineRegisterProtocolHandlerRequest)(h))
 }
 
 // NewQWebEngineRegisterProtocolHandlerRequest constructs a new QWebEngineRegisterProtocolHandlerRequest object.
 func NewQWebEngineRegisterProtocolHandlerRequest() *QWebEngineRegisterProtocolHandlerRequest {
-	var outptr_QWebEngineRegisterProtocolHandlerRequest *C.QWebEngineRegisterProtocolHandlerRequest = nil
 
-	C.QWebEngineRegisterProtocolHandlerRequest_new(&outptr_QWebEngineRegisterProtocolHandlerRequest)
-	ret := newQWebEngineRegisterProtocolHandlerRequest(outptr_QWebEngineRegisterProtocolHandlerRequest)
+	ret := newQWebEngineRegisterProtocolHandlerRequest(C.QWebEngineRegisterProtocolHandlerRequest_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQWebEngineRegisterProtocolHandlerRequest2 constructs a new QWebEngineRegisterProtocolHandlerRequest object.
 func NewQWebEngineRegisterProtocolHandlerRequest2(param1 *QWebEngineRegisterProtocolHandlerRequest) *QWebEngineRegisterProtocolHandlerRequest {
-	var outptr_QWebEngineRegisterProtocolHandlerRequest *C.QWebEngineRegisterProtocolHandlerRequest = nil
 
-	C.QWebEngineRegisterProtocolHandlerRequest_new2(param1.cPointer(), &outptr_QWebEngineRegisterProtocolHandlerRequest)
-	ret := newQWebEngineRegisterProtocolHandlerRequest(outptr_QWebEngineRegisterProtocolHandlerRequest)
+	ret := newQWebEngineRegisterProtocolHandlerRequest(C.QWebEngineRegisterProtocolHandlerRequest_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -79,8 +72,7 @@ func (this *QWebEngineRegisterProtocolHandlerRequest) Reject() {
 }
 
 func (this *QWebEngineRegisterProtocolHandlerRequest) Origin() *qt.QUrl {
-	_ret := C.QWebEngineRegisterProtocolHandlerRequest_Origin(this.h)
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineRegisterProtocolHandlerRequest_Origin(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

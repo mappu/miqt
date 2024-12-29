@@ -45,31 +45,26 @@ func (this *QLibrary) UnsafePointer() unsafe.Pointer {
 }
 
 // newQLibrary constructs the type using only CGO pointers.
-func newQLibrary(h *C.QLibrary, h_QObject *C.QObject) *QLibrary {
+func newQLibrary(h *C.QLibrary) *QLibrary {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QLibrary_virtbase(h, &outptr_QObject)
+
 	return &QLibrary{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQLibrary constructs the type using only unsafe pointers.
-func UnsafeNewQLibrary(h unsafe.Pointer, h_QObject unsafe.Pointer) *QLibrary {
-	if h == nil {
-		return nil
-	}
-
-	return &QLibrary{h: (*C.QLibrary)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQLibrary(h unsafe.Pointer) *QLibrary {
+	return newQLibrary((*C.QLibrary)(h))
 }
 
 // NewQLibrary constructs a new QLibrary object.
 func NewQLibrary() *QLibrary {
-	var outptr_QLibrary *C.QLibrary = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QLibrary_new(&outptr_QLibrary, &outptr_QObject)
-	ret := newQLibrary(outptr_QLibrary, outptr_QObject)
+	ret := newQLibrary(C.QLibrary_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -80,11 +75,8 @@ func NewQLibrary2(fileName string) *QLibrary {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var outptr_QLibrary *C.QLibrary = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QLibrary_new2(fileName_ms, &outptr_QLibrary, &outptr_QObject)
-	ret := newQLibrary(outptr_QLibrary, outptr_QObject)
+	ret := newQLibrary(C.QLibrary_new2(fileName_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -95,11 +87,8 @@ func NewQLibrary3(fileName string, verNum int) *QLibrary {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var outptr_QLibrary *C.QLibrary = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QLibrary_new3(fileName_ms, (C.int)(verNum), &outptr_QLibrary, &outptr_QObject)
-	ret := newQLibrary(outptr_QLibrary, outptr_QObject)
+	ret := newQLibrary(C.QLibrary_new3(fileName_ms, (C.int)(verNum)))
 	ret.isSubclass = true
 	return ret
 }
@@ -114,22 +103,16 @@ func NewQLibrary4(fileName string, version string) *QLibrary {
 	version_ms.data = C.CString(version)
 	version_ms.len = C.size_t(len(version))
 	defer C.free(unsafe.Pointer(version_ms.data))
-	var outptr_QLibrary *C.QLibrary = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QLibrary_new4(fileName_ms, version_ms, &outptr_QLibrary, &outptr_QObject)
-	ret := newQLibrary(outptr_QLibrary, outptr_QObject)
+	ret := newQLibrary(C.QLibrary_new4(fileName_ms, version_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQLibrary5 constructs a new QLibrary object.
 func NewQLibrary5(parent *QObject) *QLibrary {
-	var outptr_QLibrary *C.QLibrary = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QLibrary_new5(parent.cPointer(), &outptr_QLibrary, &outptr_QObject)
-	ret := newQLibrary(outptr_QLibrary, outptr_QObject)
+	ret := newQLibrary(C.QLibrary_new5(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -140,11 +123,8 @@ func NewQLibrary6(fileName string, parent *QObject) *QLibrary {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var outptr_QLibrary *C.QLibrary = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QLibrary_new6(fileName_ms, parent.cPointer(), &outptr_QLibrary, &outptr_QObject)
-	ret := newQLibrary(outptr_QLibrary, outptr_QObject)
+	ret := newQLibrary(C.QLibrary_new6(fileName_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -155,11 +135,8 @@ func NewQLibrary7(fileName string, verNum int, parent *QObject) *QLibrary {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var outptr_QLibrary *C.QLibrary = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QLibrary_new7(fileName_ms, (C.int)(verNum), parent.cPointer(), &outptr_QLibrary, &outptr_QObject)
-	ret := newQLibrary(outptr_QLibrary, outptr_QObject)
+	ret := newQLibrary(C.QLibrary_new7(fileName_ms, (C.int)(verNum), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -174,17 +151,14 @@ func NewQLibrary8(fileName string, version string, parent *QObject) *QLibrary {
 	version_ms.data = C.CString(version)
 	version_ms.len = C.size_t(len(version))
 	defer C.free(unsafe.Pointer(version_ms.data))
-	var outptr_QLibrary *C.QLibrary = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QLibrary_new8(fileName_ms, version_ms, parent.cPointer(), &outptr_QLibrary, &outptr_QObject)
-	ret := newQLibrary(outptr_QLibrary, outptr_QObject)
+	ret := newQLibrary(C.QLibrary_new8(fileName_ms, version_ms, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QLibrary) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QLibrary_MetaObject(this.h)))
+	return newQMetaObject(C.QLibrary_MetaObject(this.h))
 }
 
 func (this *QLibrary) Metacast(param1 string) unsafe.Pointer {
@@ -331,6 +305,9 @@ func (this *QLibrary) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QLibrary) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QLibrary_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -342,7 +319,7 @@ func miqt_exec_callback_QLibrary_Event(self *C.QLibrary, cb C.intptr_t, event *C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QLibrary{h: self}).callVirtualBase_Event, slotval1)
 
@@ -356,6 +333,9 @@ func (this *QLibrary) callVirtualBase_EventFilter(watched *QObject, event *QEven
 
 }
 func (this *QLibrary) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QLibrary_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -367,8 +347,9 @@ func miqt_exec_callback_QLibrary_EventFilter(self *C.QLibrary, cb C.intptr_t, wa
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QLibrary{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -382,6 +363,9 @@ func (this *QLibrary) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QLibrary) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QLibrary_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -393,7 +377,7 @@ func miqt_exec_callback_QLibrary_TimerEvent(self *C.QLibrary, cb C.intptr_t, eve
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QLibrary{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -405,6 +389,9 @@ func (this *QLibrary) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QLibrary) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QLibrary_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -416,7 +403,7 @@ func miqt_exec_callback_QLibrary_ChildEvent(self *C.QLibrary, cb C.intptr_t, eve
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QLibrary{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -428,6 +415,9 @@ func (this *QLibrary) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QLibrary) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QLibrary_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -439,7 +429,7 @@ func miqt_exec_callback_QLibrary_CustomEvent(self *C.QLibrary, cb C.intptr_t, ev
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QLibrary{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -451,6 +441,9 @@ func (this *QLibrary) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QLibrary) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QLibrary_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -462,7 +455,7 @@ func miqt_exec_callback_QLibrary_ConnectNotify(self *C.QLibrary, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QLibrary{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -474,6 +467,9 @@ func (this *QLibrary) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QLibrary) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QLibrary_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -485,7 +481,7 @@ func miqt_exec_callback_QLibrary_DisconnectNotify(self *C.QLibrary, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QLibrary{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

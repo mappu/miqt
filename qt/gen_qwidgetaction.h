@@ -30,7 +30,8 @@ typedef struct QWidget QWidget;
 typedef struct QWidgetAction QWidgetAction;
 #endif
 
-void QWidgetAction_new(QObject* parent, QWidgetAction** outptr_QWidgetAction, QAction** outptr_QAction, QObject** outptr_QObject);
+QWidgetAction* QWidgetAction_new(QObject* parent);
+void QWidgetAction_virtbase(QWidgetAction* src, QAction** outptr_QAction);
 QMetaObject* QWidgetAction_MetaObject(const QWidgetAction* self);
 void* QWidgetAction_Metacast(QWidgetAction* self, const char* param1);
 struct miqt_string QWidgetAction_Tr(const char* s);

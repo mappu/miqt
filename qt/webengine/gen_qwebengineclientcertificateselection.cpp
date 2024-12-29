@@ -4,11 +4,14 @@
 #include <QWebEngineClientCertificateSelection>
 #include <qwebengineclientcertificateselection.h>
 #include "gen_qwebengineclientcertificateselection.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QWebEngineClientCertificateSelection_new(QWebEngineClientCertificateSelection* param1, QWebEngineClientCertificateSelection** outptr_QWebEngineClientCertificateSelection) {
-	QWebEngineClientCertificateSelection* ret = new QWebEngineClientCertificateSelection(*param1);
-	*outptr_QWebEngineClientCertificateSelection = ret;
+QWebEngineClientCertificateSelection* QWebEngineClientCertificateSelection_new(QWebEngineClientCertificateSelection* param1) {
+	return new QWebEngineClientCertificateSelection(*param1);
 }
 
 void QWebEngineClientCertificateSelection_OperatorAssign(QWebEngineClientCertificateSelection* self, QWebEngineClientCertificateSelection* param1) {

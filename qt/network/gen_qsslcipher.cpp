@@ -4,28 +4,28 @@
 #include <cstring>
 #include <qsslcipher.h>
 #include "gen_qsslcipher.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QSslCipher_new(QSslCipher** outptr_QSslCipher) {
-	QSslCipher* ret = new QSslCipher();
-	*outptr_QSslCipher = ret;
+QSslCipher* QSslCipher_new() {
+	return new QSslCipher();
 }
 
-void QSslCipher_new2(struct miqt_string name, QSslCipher** outptr_QSslCipher) {
+QSslCipher* QSslCipher_new2(struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	QSslCipher* ret = new QSslCipher(name_QString);
-	*outptr_QSslCipher = ret;
+	return new QSslCipher(name_QString);
 }
 
-void QSslCipher_new3(struct miqt_string name, int protocol, QSslCipher** outptr_QSslCipher) {
+QSslCipher* QSslCipher_new3(struct miqt_string name, int protocol) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	QSslCipher* ret = new QSslCipher(name_QString, static_cast<QSsl::SslProtocol>(protocol));
-	*outptr_QSslCipher = ret;
+	return new QSslCipher(name_QString, static_cast<QSsl::SslProtocol>(protocol));
 }
 
-void QSslCipher_new4(QSslCipher* other, QSslCipher** outptr_QSslCipher) {
-	QSslCipher* ret = new QSslCipher(*other);
-	*outptr_QSslCipher = ret;
+QSslCipher* QSslCipher_new4(QSslCipher* other) {
+	return new QSslCipher(*other);
 }
 
 void QSslCipher_OperatorAssign(QSslCipher* self, QSslCipher* other) {

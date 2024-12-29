@@ -12,6 +12,10 @@
 #include <QTimerEvent>
 #include <qthread.h>
 #include "gen_qthread.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQThread : public virtual QThread {
@@ -218,16 +222,16 @@ public:
 
 };
 
-void QThread_new(QThread** outptr_QThread, QObject** outptr_QObject) {
-	MiqtVirtualQThread* ret = new MiqtVirtualQThread();
-	*outptr_QThread = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QThread* QThread_new() {
+	return new MiqtVirtualQThread();
 }
 
-void QThread_new2(QObject* parent, QThread** outptr_QThread, QObject** outptr_QObject) {
-	MiqtVirtualQThread* ret = new MiqtVirtualQThread(parent);
-	*outptr_QThread = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QThread* QThread_new2(QObject* parent) {
+	return new MiqtVirtualQThread(parent);
+}
+
+void QThread_virtbase(QThread* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QThread_MetaObject(const QThread* self) {

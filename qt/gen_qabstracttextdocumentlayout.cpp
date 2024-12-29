@@ -23,6 +23,10 @@
 #include <QTimerEvent>
 #include <qabstracttextdocumentlayout.h>
 #include "gen_qabstracttextdocumentlayout.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAbstractTextDocumentLayout : public virtual QAbstractTextDocumentLayout {
@@ -414,10 +418,12 @@ public:
 
 };
 
-void QAbstractTextDocumentLayout_new(QTextDocument* doc, QAbstractTextDocumentLayout** outptr_QAbstractTextDocumentLayout, QObject** outptr_QObject) {
-	MiqtVirtualQAbstractTextDocumentLayout* ret = new MiqtVirtualQAbstractTextDocumentLayout(doc);
-	*outptr_QAbstractTextDocumentLayout = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAbstractTextDocumentLayout* QAbstractTextDocumentLayout_new(QTextDocument* doc) {
+	return new MiqtVirtualQAbstractTextDocumentLayout(doc);
+}
+
+void QAbstractTextDocumentLayout_virtbase(QAbstractTextDocumentLayout* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QAbstractTextDocumentLayout_MetaObject(const QAbstractTextDocumentLayout* self) {
@@ -772,9 +778,8 @@ void QTextObjectInterface_Delete(QTextObjectInterface* self, bool isSubclass) {
 	}
 }
 
-void QAbstractTextDocumentLayout__Selection_new(QAbstractTextDocumentLayout__Selection* param1, QAbstractTextDocumentLayout__Selection** outptr_QAbstractTextDocumentLayout__Selection) {
-	QAbstractTextDocumentLayout::Selection* ret = new QAbstractTextDocumentLayout::Selection(*param1);
-	*outptr_QAbstractTextDocumentLayout__Selection = ret;
+QAbstractTextDocumentLayout__Selection* QAbstractTextDocumentLayout__Selection_new(QAbstractTextDocumentLayout__Selection* param1) {
+	return new QAbstractTextDocumentLayout::Selection(*param1);
 }
 
 void QAbstractTextDocumentLayout__Selection_OperatorAssign(QAbstractTextDocumentLayout__Selection* self, QAbstractTextDocumentLayout__Selection* param1) {
@@ -789,14 +794,12 @@ void QAbstractTextDocumentLayout__Selection_Delete(QAbstractTextDocumentLayout__
 	}
 }
 
-void QAbstractTextDocumentLayout__PaintContext_new(QAbstractTextDocumentLayout__PaintContext** outptr_QAbstractTextDocumentLayout__PaintContext) {
-	QAbstractTextDocumentLayout::PaintContext* ret = new QAbstractTextDocumentLayout::PaintContext();
-	*outptr_QAbstractTextDocumentLayout__PaintContext = ret;
+QAbstractTextDocumentLayout__PaintContext* QAbstractTextDocumentLayout__PaintContext_new() {
+	return new QAbstractTextDocumentLayout::PaintContext();
 }
 
-void QAbstractTextDocumentLayout__PaintContext_new2(QAbstractTextDocumentLayout__PaintContext* param1, QAbstractTextDocumentLayout__PaintContext** outptr_QAbstractTextDocumentLayout__PaintContext) {
-	QAbstractTextDocumentLayout::PaintContext* ret = new QAbstractTextDocumentLayout::PaintContext(*param1);
-	*outptr_QAbstractTextDocumentLayout__PaintContext = ret;
+QAbstractTextDocumentLayout__PaintContext* QAbstractTextDocumentLayout__PaintContext_new2(QAbstractTextDocumentLayout__PaintContext* param1) {
+	return new QAbstractTextDocumentLayout::PaintContext(*param1);
 }
 
 void QAbstractTextDocumentLayout__PaintContext_OperatorAssign(QAbstractTextDocumentLayout__PaintContext* self, QAbstractTextDocumentLayout__PaintContext* param1) {

@@ -44,8 +44,9 @@ typedef struct QSize QSize;
 typedef struct QWidget QWidget;
 #endif
 
-void QErrorMessage_new(QWidget* parent, QErrorMessage** outptr_QErrorMessage, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QErrorMessage_new2(QErrorMessage** outptr_QErrorMessage, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QErrorMessage* QErrorMessage_new(QWidget* parent);
+QErrorMessage* QErrorMessage_new2();
+void QErrorMessage_virtbase(QErrorMessage* src, QDialog** outptr_QDialog);
 QMetaObject* QErrorMessage_MetaObject(const QErrorMessage* self);
 void* QErrorMessage_Metacast(QErrorMessage* self, const char* param1);
 struct miqt_string QErrorMessage_Tr(const char* s);

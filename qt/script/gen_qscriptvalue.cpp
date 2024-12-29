@@ -13,88 +13,76 @@
 #include <QVariant>
 #include <qscriptvalue.h>
 #include "gen_qscriptvalue.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QScriptValue_new(QScriptValue** outptr_QScriptValue) {
-	QScriptValue* ret = new QScriptValue();
-	*outptr_QScriptValue = ret;
+QScriptValue* QScriptValue_new() {
+	return new QScriptValue();
 }
 
-void QScriptValue_new2(QScriptValue* other, QScriptValue** outptr_QScriptValue) {
-	QScriptValue* ret = new QScriptValue(*other);
-	*outptr_QScriptValue = ret;
+QScriptValue* QScriptValue_new2(QScriptValue* other) {
+	return new QScriptValue(*other);
 }
 
-void QScriptValue_new3(QScriptEngine* engine, int val, QScriptValue** outptr_QScriptValue) {
-	QScriptValue* ret = new QScriptValue(engine, static_cast<QScriptValue::SpecialValue>(val));
-	*outptr_QScriptValue = ret;
+QScriptValue* QScriptValue_new3(QScriptEngine* engine, int val) {
+	return new QScriptValue(engine, static_cast<QScriptValue::SpecialValue>(val));
 }
 
-void QScriptValue_new4(QScriptEngine* engine, bool val, QScriptValue** outptr_QScriptValue) {
-	QScriptValue* ret = new QScriptValue(engine, val);
-	*outptr_QScriptValue = ret;
+QScriptValue* QScriptValue_new4(QScriptEngine* engine, bool val) {
+	return new QScriptValue(engine, val);
 }
 
-void QScriptValue_new5(QScriptEngine* engine, int val, QScriptValue** outptr_QScriptValue) {
-	QScriptValue* ret = new QScriptValue(engine, static_cast<int>(val));
-	*outptr_QScriptValue = ret;
+QScriptValue* QScriptValue_new5(QScriptEngine* engine, int val) {
+	return new QScriptValue(engine, static_cast<int>(val));
 }
 
-void QScriptValue_new6(QScriptEngine* engine, unsigned int val, QScriptValue** outptr_QScriptValue) {
-	QScriptValue* ret = new QScriptValue(engine, static_cast<uint>(val));
-	*outptr_QScriptValue = ret;
+QScriptValue* QScriptValue_new6(QScriptEngine* engine, unsigned int val) {
+	return new QScriptValue(engine, static_cast<uint>(val));
 }
 
-void QScriptValue_new7(QScriptEngine* engine, double val, QScriptValue** outptr_QScriptValue) {
-	QScriptValue* ret = new QScriptValue(engine, static_cast<qsreal>(val));
-	*outptr_QScriptValue = ret;
+QScriptValue* QScriptValue_new7(QScriptEngine* engine, double val) {
+	return new QScriptValue(engine, static_cast<qsreal>(val));
 }
 
-void QScriptValue_new8(QScriptEngine* engine, struct miqt_string val, QScriptValue** outptr_QScriptValue) {
+QScriptValue* QScriptValue_new8(QScriptEngine* engine, struct miqt_string val) {
 	QString val_QString = QString::fromUtf8(val.data, val.len);
-	QScriptValue* ret = new QScriptValue(engine, val_QString);
-	*outptr_QScriptValue = ret;
+	return new QScriptValue(engine, val_QString);
 }
 
-void QScriptValue_new9(QScriptEngine* engine, const char* val, QScriptValue** outptr_QScriptValue) {
-	QScriptValue* ret = new QScriptValue(engine, val);
-	*outptr_QScriptValue = ret;
+QScriptValue* QScriptValue_new9(QScriptEngine* engine, const char* val) {
+	return new QScriptValue(engine, val);
 }
 
-void QScriptValue_new10(int value, QScriptValue** outptr_QScriptValue) {
-	QScriptValue* ret = new QScriptValue(static_cast<QScriptValue::SpecialValue>(value));
-	*outptr_QScriptValue = ret;
+QScriptValue* QScriptValue_new10(int value) {
+	return new QScriptValue(static_cast<QScriptValue::SpecialValue>(value));
 }
 
-void QScriptValue_new11(bool value, QScriptValue** outptr_QScriptValue) {
-	QScriptValue* ret = new QScriptValue(value);
-	*outptr_QScriptValue = ret;
+QScriptValue* QScriptValue_new11(bool value) {
+	return new QScriptValue(value);
 }
 
-void QScriptValue_new12(int value, QScriptValue** outptr_QScriptValue) {
-	QScriptValue* ret = new QScriptValue(static_cast<int>(value));
-	*outptr_QScriptValue = ret;
+QScriptValue* QScriptValue_new12(int value) {
+	return new QScriptValue(static_cast<int>(value));
 }
 
-void QScriptValue_new13(unsigned int value, QScriptValue** outptr_QScriptValue) {
-	QScriptValue* ret = new QScriptValue(static_cast<uint>(value));
-	*outptr_QScriptValue = ret;
+QScriptValue* QScriptValue_new13(unsigned int value) {
+	return new QScriptValue(static_cast<uint>(value));
 }
 
-void QScriptValue_new14(double value, QScriptValue** outptr_QScriptValue) {
-	QScriptValue* ret = new QScriptValue(static_cast<qsreal>(value));
-	*outptr_QScriptValue = ret;
+QScriptValue* QScriptValue_new14(double value) {
+	return new QScriptValue(static_cast<qsreal>(value));
 }
 
-void QScriptValue_new15(struct miqt_string value, QScriptValue** outptr_QScriptValue) {
+QScriptValue* QScriptValue_new15(struct miqt_string value) {
 	QString value_QString = QString::fromUtf8(value.data, value.len);
-	QScriptValue* ret = new QScriptValue(value_QString);
-	*outptr_QScriptValue = ret;
+	return new QScriptValue(value_QString);
 }
 
-void QScriptValue_new16(const char* value, QScriptValue** outptr_QScriptValue) {
-	QScriptValue* ret = new QScriptValue(value);
-	*outptr_QScriptValue = ret;
+QScriptValue* QScriptValue_new16(const char* value) {
+	return new QScriptValue(value);
 }
 
 void QScriptValue_OperatorAssign(QScriptValue* self, QScriptValue* other) {

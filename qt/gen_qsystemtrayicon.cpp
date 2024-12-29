@@ -13,6 +13,10 @@
 #include <QTimerEvent>
 #include <qsystemtrayicon.h>
 #include "gen_qsystemtrayicon.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSystemTrayIcon : public virtual QSystemTrayIcon {
@@ -198,28 +202,24 @@ public:
 
 };
 
-void QSystemTrayIcon_new(QSystemTrayIcon** outptr_QSystemTrayIcon, QObject** outptr_QObject) {
-	MiqtVirtualQSystemTrayIcon* ret = new MiqtVirtualQSystemTrayIcon();
-	*outptr_QSystemTrayIcon = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSystemTrayIcon* QSystemTrayIcon_new() {
+	return new MiqtVirtualQSystemTrayIcon();
 }
 
-void QSystemTrayIcon_new2(QIcon* icon, QSystemTrayIcon** outptr_QSystemTrayIcon, QObject** outptr_QObject) {
-	MiqtVirtualQSystemTrayIcon* ret = new MiqtVirtualQSystemTrayIcon(*icon);
-	*outptr_QSystemTrayIcon = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSystemTrayIcon* QSystemTrayIcon_new2(QIcon* icon) {
+	return new MiqtVirtualQSystemTrayIcon(*icon);
 }
 
-void QSystemTrayIcon_new3(QObject* parent, QSystemTrayIcon** outptr_QSystemTrayIcon, QObject** outptr_QObject) {
-	MiqtVirtualQSystemTrayIcon* ret = new MiqtVirtualQSystemTrayIcon(parent);
-	*outptr_QSystemTrayIcon = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSystemTrayIcon* QSystemTrayIcon_new3(QObject* parent) {
+	return new MiqtVirtualQSystemTrayIcon(parent);
 }
 
-void QSystemTrayIcon_new4(QIcon* icon, QObject* parent, QSystemTrayIcon** outptr_QSystemTrayIcon, QObject** outptr_QObject) {
-	MiqtVirtualQSystemTrayIcon* ret = new MiqtVirtualQSystemTrayIcon(*icon, parent);
-	*outptr_QSystemTrayIcon = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSystemTrayIcon* QSystemTrayIcon_new4(QIcon* icon, QObject* parent) {
+	return new MiqtVirtualQSystemTrayIcon(*icon, parent);
+}
+
+void QSystemTrayIcon_virtbase(QSystemTrayIcon* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QSystemTrayIcon_MetaObject(const QSystemTrayIcon* self) {

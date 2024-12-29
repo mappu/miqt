@@ -20,6 +20,10 @@
 #include <QTransform>
 #include <qimage.h>
 #include "gen_qimage.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQImage : public virtual QImage {
@@ -177,66 +181,50 @@ public:
 
 };
 
-void QImage_new(QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQImage* ret = new MiqtVirtualQImage();
-	*outptr_QImage = ret;
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QImage* QImage_new() {
+	return new MiqtVirtualQImage();
 }
 
-void QImage_new2(QSize* size, int format, QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQImage* ret = new MiqtVirtualQImage(*size, static_cast<QImage::Format>(format));
-	*outptr_QImage = ret;
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QImage* QImage_new2(QSize* size, int format) {
+	return new MiqtVirtualQImage(*size, static_cast<QImage::Format>(format));
 }
 
-void QImage_new3(int width, int height, int format, QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQImage* ret = new MiqtVirtualQImage(static_cast<int>(width), static_cast<int>(height), static_cast<QImage::Format>(format));
-	*outptr_QImage = ret;
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QImage* QImage_new3(int width, int height, int format) {
+	return new MiqtVirtualQImage(static_cast<int>(width), static_cast<int>(height), static_cast<QImage::Format>(format));
 }
 
-void QImage_new4(unsigned char* data, int width, int height, int format, QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQImage* ret = new MiqtVirtualQImage(static_cast<uchar*>(data), static_cast<int>(width), static_cast<int>(height), static_cast<QImage::Format>(format));
-	*outptr_QImage = ret;
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QImage* QImage_new4(unsigned char* data, int width, int height, int format) {
+	return new MiqtVirtualQImage(static_cast<uchar*>(data), static_cast<int>(width), static_cast<int>(height), static_cast<QImage::Format>(format));
 }
 
-void QImage_new5(const unsigned char* data, int width, int height, int format, QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQImage* ret = new MiqtVirtualQImage(static_cast<const uchar*>(data), static_cast<int>(width), static_cast<int>(height), static_cast<QImage::Format>(format));
-	*outptr_QImage = ret;
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QImage* QImage_new5(const unsigned char* data, int width, int height, int format) {
+	return new MiqtVirtualQImage(static_cast<const uchar*>(data), static_cast<int>(width), static_cast<int>(height), static_cast<QImage::Format>(format));
 }
 
-void QImage_new6(unsigned char* data, int width, int height, ptrdiff_t bytesPerLine, int format, QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQImage* ret = new MiqtVirtualQImage(static_cast<uchar*>(data), static_cast<int>(width), static_cast<int>(height), (qsizetype)(bytesPerLine), static_cast<QImage::Format>(format));
-	*outptr_QImage = ret;
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QImage* QImage_new6(unsigned char* data, int width, int height, ptrdiff_t bytesPerLine, int format) {
+	return new MiqtVirtualQImage(static_cast<uchar*>(data), static_cast<int>(width), static_cast<int>(height), (qsizetype)(bytesPerLine), static_cast<QImage::Format>(format));
 }
 
-void QImage_new7(const unsigned char* data, int width, int height, ptrdiff_t bytesPerLine, int format, QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQImage* ret = new MiqtVirtualQImage(static_cast<const uchar*>(data), static_cast<int>(width), static_cast<int>(height), (qsizetype)(bytesPerLine), static_cast<QImage::Format>(format));
-	*outptr_QImage = ret;
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QImage* QImage_new7(const unsigned char* data, int width, int height, ptrdiff_t bytesPerLine, int format) {
+	return new MiqtVirtualQImage(static_cast<const uchar*>(data), static_cast<int>(width), static_cast<int>(height), (qsizetype)(bytesPerLine), static_cast<QImage::Format>(format));
 }
 
-void QImage_new8(struct miqt_string fileName, QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice) {
+QImage* QImage_new8(struct miqt_string fileName) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	MiqtVirtualQImage* ret = new MiqtVirtualQImage(fileName_QString);
-	*outptr_QImage = ret;
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQImage(fileName_QString);
 }
 
-void QImage_new9(QImage* param1, QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQImage* ret = new MiqtVirtualQImage(*param1);
-	*outptr_QImage = ret;
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QImage* QImage_new9(QImage* param1) {
+	return new MiqtVirtualQImage(*param1);
 }
 
-void QImage_new10(struct miqt_string fileName, const char* format, QImage** outptr_QImage, QPaintDevice** outptr_QPaintDevice) {
+QImage* QImage_new10(struct miqt_string fileName, const char* format) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	MiqtVirtualQImage* ret = new MiqtVirtualQImage(fileName_QString, format);
-	*outptr_QImage = ret;
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQImage(fileName_QString, format);
+}
+
+void QImage_virtbase(QImage* src, QPaintDevice** outptr_QPaintDevice) {
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(src);
 }
 
 void QImage_OperatorAssign(QImage* self, QImage* param1) {

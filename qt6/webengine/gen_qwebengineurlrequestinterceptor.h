@@ -34,8 +34,9 @@ typedef struct QWebEngineUrlRequestInfo QWebEngineUrlRequestInfo;
 typedef struct QWebEngineUrlRequestInterceptor QWebEngineUrlRequestInterceptor;
 #endif
 
-void QWebEngineUrlRequestInterceptor_new(QWebEngineUrlRequestInterceptor** outptr_QWebEngineUrlRequestInterceptor, QObject** outptr_QObject);
-void QWebEngineUrlRequestInterceptor_new2(QObject* p, QWebEngineUrlRequestInterceptor** outptr_QWebEngineUrlRequestInterceptor, QObject** outptr_QObject);
+QWebEngineUrlRequestInterceptor* QWebEngineUrlRequestInterceptor_new();
+QWebEngineUrlRequestInterceptor* QWebEngineUrlRequestInterceptor_new2(QObject* p);
+void QWebEngineUrlRequestInterceptor_virtbase(QWebEngineUrlRequestInterceptor* src, QObject** outptr_QObject);
 QMetaObject* QWebEngineUrlRequestInterceptor_MetaObject(const QWebEngineUrlRequestInterceptor* self);
 void* QWebEngineUrlRequestInterceptor_Metacast(QWebEngineUrlRequestInterceptor* self, const char* param1);
 struct miqt_string QWebEngineUrlRequestInterceptor_Tr(const char* s);

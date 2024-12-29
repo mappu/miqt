@@ -15,6 +15,10 @@
 #include <QWidget>
 #include <qdatawidgetmapper.h>
 #include "gen_qdatawidgetmapper.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQDataWidgetMapper : public virtual QDataWidgetMapper {
@@ -222,16 +226,16 @@ public:
 
 };
 
-void QDataWidgetMapper_new(QDataWidgetMapper** outptr_QDataWidgetMapper, QObject** outptr_QObject) {
-	MiqtVirtualQDataWidgetMapper* ret = new MiqtVirtualQDataWidgetMapper();
-	*outptr_QDataWidgetMapper = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QDataWidgetMapper* QDataWidgetMapper_new() {
+	return new MiqtVirtualQDataWidgetMapper();
 }
 
-void QDataWidgetMapper_new2(QObject* parent, QDataWidgetMapper** outptr_QDataWidgetMapper, QObject** outptr_QObject) {
-	MiqtVirtualQDataWidgetMapper* ret = new MiqtVirtualQDataWidgetMapper(parent);
-	*outptr_QDataWidgetMapper = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QDataWidgetMapper* QDataWidgetMapper_new2(QObject* parent) {
+	return new MiqtVirtualQDataWidgetMapper(parent);
+}
+
+void QDataWidgetMapper_virtbase(QDataWidgetMapper* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QDataWidgetMapper_MetaObject(const QDataWidgetMapper* self) {

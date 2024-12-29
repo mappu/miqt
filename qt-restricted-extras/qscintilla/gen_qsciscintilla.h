@@ -88,8 +88,9 @@ typedef struct QsciStyle QsciStyle;
 typedef struct QsciStyledText QsciStyledText;
 #endif
 
-void QsciScintilla_new(QWidget* parent, QsciScintilla** outptr_QsciScintilla, QsciScintillaBase** outptr_QsciScintillaBase, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QsciScintilla_new2(QsciScintilla** outptr_QsciScintilla, QsciScintillaBase** outptr_QsciScintillaBase, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QsciScintilla* QsciScintilla_new(QWidget* parent);
+QsciScintilla* QsciScintilla_new2();
+void QsciScintilla_virtbase(QsciScintilla* src, QsciScintillaBase** outptr_QsciScintillaBase);
 QMetaObject* QsciScintilla_MetaObject(const QsciScintilla* self);
 void* QsciScintilla_Metacast(QsciScintilla* self, const char* param1);
 struct miqt_string QsciScintilla_Tr(const char* s);

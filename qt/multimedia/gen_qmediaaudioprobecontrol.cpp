@@ -8,7 +8,15 @@
 #include <cstring>
 #include <qmediaaudioprobecontrol.h>
 #include "gen_qmediaaudioprobecontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
+
+void QMediaAudioProbeControl_virtbase(QMediaAudioProbeControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
 
 QMetaObject* QMediaAudioProbeControl_MetaObject(const QMediaAudioProbeControl* self) {
 	return (QMetaObject*) self->metaObject();

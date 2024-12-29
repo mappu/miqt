@@ -66,8 +66,8 @@ struct miqt_string QTextItem_Text(const QTextItem* self);
 QFont* QTextItem_Font(const QTextItem* self);
 void QTextItem_Delete(QTextItem* self, bool isSubclass);
 
-void QPaintEngine_new(QPaintEngine** outptr_QPaintEngine);
-void QPaintEngine_new2(int features, QPaintEngine** outptr_QPaintEngine);
+QPaintEngine* QPaintEngine_new();
+QPaintEngine* QPaintEngine_new2(int features);
 bool QPaintEngine_IsActive(const QPaintEngine* self);
 void QPaintEngine_SetActive(QPaintEngine* self, bool newState);
 bool QPaintEngine_Begin(QPaintEngine* self, QPaintDevice* pdev);

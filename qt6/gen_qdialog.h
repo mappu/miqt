@@ -78,9 +78,10 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QDialog_new(QWidget* parent, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QDialog_new2(QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QDialog_new3(QWidget* parent, int f, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QDialog* QDialog_new(QWidget* parent);
+QDialog* QDialog_new2();
+QDialog* QDialog_new3(QWidget* parent, int f);
+void QDialog_virtbase(QDialog* src, QWidget** outptr_QWidget);
 QMetaObject* QDialog_MetaObject(const QDialog* self);
 void* QDialog_Metacast(QDialog* self, const char* param1);
 struct miqt_string QDialog_Tr(const char* s);

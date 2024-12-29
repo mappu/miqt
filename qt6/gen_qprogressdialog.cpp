@@ -19,6 +19,10 @@
 #include <QWidget>
 #include <qprogressdialog.h>
 #include "gen_qprogressdialog.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQProgressDialog : public virtual QProgressDialog {
@@ -386,64 +390,38 @@ public:
 
 };
 
-void QProgressDialog_new(QWidget* parent, QProgressDialog** outptr_QProgressDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQProgressDialog* ret = new MiqtVirtualQProgressDialog(parent);
-	*outptr_QProgressDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QProgressDialog* QProgressDialog_new(QWidget* parent) {
+	return new MiqtVirtualQProgressDialog(parent);
 }
 
-void QProgressDialog_new2(QProgressDialog** outptr_QProgressDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQProgressDialog* ret = new MiqtVirtualQProgressDialog();
-	*outptr_QProgressDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QProgressDialog* QProgressDialog_new2() {
+	return new MiqtVirtualQProgressDialog();
 }
 
-void QProgressDialog_new3(struct miqt_string labelText, struct miqt_string cancelButtonText, int minimum, int maximum, QProgressDialog** outptr_QProgressDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QProgressDialog* QProgressDialog_new3(struct miqt_string labelText, struct miqt_string cancelButtonText, int minimum, int maximum) {
 	QString labelText_QString = QString::fromUtf8(labelText.data, labelText.len);
 	QString cancelButtonText_QString = QString::fromUtf8(cancelButtonText.data, cancelButtonText.len);
-	MiqtVirtualQProgressDialog* ret = new MiqtVirtualQProgressDialog(labelText_QString, cancelButtonText_QString, static_cast<int>(minimum), static_cast<int>(maximum));
-	*outptr_QProgressDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQProgressDialog(labelText_QString, cancelButtonText_QString, static_cast<int>(minimum), static_cast<int>(maximum));
 }
 
-void QProgressDialog_new4(QWidget* parent, int flags, QProgressDialog** outptr_QProgressDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQProgressDialog* ret = new MiqtVirtualQProgressDialog(parent, static_cast<Qt::WindowFlags>(flags));
-	*outptr_QProgressDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QProgressDialog* QProgressDialog_new4(QWidget* parent, int flags) {
+	return new MiqtVirtualQProgressDialog(parent, static_cast<Qt::WindowFlags>(flags));
 }
 
-void QProgressDialog_new5(struct miqt_string labelText, struct miqt_string cancelButtonText, int minimum, int maximum, QWidget* parent, QProgressDialog** outptr_QProgressDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QProgressDialog* QProgressDialog_new5(struct miqt_string labelText, struct miqt_string cancelButtonText, int minimum, int maximum, QWidget* parent) {
 	QString labelText_QString = QString::fromUtf8(labelText.data, labelText.len);
 	QString cancelButtonText_QString = QString::fromUtf8(cancelButtonText.data, cancelButtonText.len);
-	MiqtVirtualQProgressDialog* ret = new MiqtVirtualQProgressDialog(labelText_QString, cancelButtonText_QString, static_cast<int>(minimum), static_cast<int>(maximum), parent);
-	*outptr_QProgressDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQProgressDialog(labelText_QString, cancelButtonText_QString, static_cast<int>(minimum), static_cast<int>(maximum), parent);
 }
 
-void QProgressDialog_new6(struct miqt_string labelText, struct miqt_string cancelButtonText, int minimum, int maximum, QWidget* parent, int flags, QProgressDialog** outptr_QProgressDialog, QDialog** outptr_QDialog, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
+QProgressDialog* QProgressDialog_new6(struct miqt_string labelText, struct miqt_string cancelButtonText, int minimum, int maximum, QWidget* parent, int flags) {
 	QString labelText_QString = QString::fromUtf8(labelText.data, labelText.len);
 	QString cancelButtonText_QString = QString::fromUtf8(cancelButtonText.data, cancelButtonText.len);
-	MiqtVirtualQProgressDialog* ret = new MiqtVirtualQProgressDialog(labelText_QString, cancelButtonText_QString, static_cast<int>(minimum), static_cast<int>(maximum), parent, static_cast<Qt::WindowFlags>(flags));
-	*outptr_QProgressDialog = ret;
-	*outptr_QDialog = static_cast<QDialog*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQProgressDialog(labelText_QString, cancelButtonText_QString, static_cast<int>(minimum), static_cast<int>(maximum), parent, static_cast<Qt::WindowFlags>(flags));
+}
+
+void QProgressDialog_virtbase(QProgressDialog* src, QDialog** outptr_QDialog) {
+	*outptr_QDialog = static_cast<QDialog*>(src);
 }
 
 QMetaObject* QProgressDialog_MetaObject(const QProgressDialog* self) {

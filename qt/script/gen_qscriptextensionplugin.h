@@ -40,8 +40,9 @@ typedef struct QScriptValue QScriptValue;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QScriptExtensionPlugin_new(QScriptExtensionPlugin** outptr_QScriptExtensionPlugin, QObject** outptr_QObject, QScriptExtensionInterface** outptr_QScriptExtensionInterface, QFactoryInterface** outptr_QFactoryInterface);
-void QScriptExtensionPlugin_new2(QObject* parent, QScriptExtensionPlugin** outptr_QScriptExtensionPlugin, QObject** outptr_QObject, QScriptExtensionInterface** outptr_QScriptExtensionInterface, QFactoryInterface** outptr_QFactoryInterface);
+QScriptExtensionPlugin* QScriptExtensionPlugin_new();
+QScriptExtensionPlugin* QScriptExtensionPlugin_new2(QObject* parent);
+void QScriptExtensionPlugin_virtbase(QScriptExtensionPlugin* src, QObject** outptr_QObject, QScriptExtensionInterface** outptr_QScriptExtensionInterface);
 QMetaObject* QScriptExtensionPlugin_MetaObject(const QScriptExtensionPlugin* self);
 void* QScriptExtensionPlugin_Metacast(QScriptExtensionPlugin* self, const char* param1);
 struct miqt_string QScriptExtensionPlugin_Tr(const char* s);

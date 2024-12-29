@@ -20,8 +20,8 @@ class QByteArrayView;
 typedef struct QByteArrayView QByteArrayView;
 #endif
 
-void QByteArrayView_new(QByteArrayView** outptr_QByteArrayView);
-void QByteArrayView_new2(QByteArrayView* param1, QByteArrayView** outptr_QByteArrayView);
+QByteArrayView* QByteArrayView_new();
+QByteArrayView* QByteArrayView_new2(QByteArrayView* param1);
 struct miqt_string QByteArrayView_ToByteArray(const QByteArrayView* self);
 ptrdiff_t QByteArrayView_Size(const QByteArrayView* self);
 const char* QByteArrayView_Data(const QByteArrayView* self);

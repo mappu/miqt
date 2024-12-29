@@ -36,22 +36,20 @@ func (this *QVideoDeviceSelectorControl) UnsafePointer() unsafe.Pointer {
 }
 
 // newQVideoDeviceSelectorControl constructs the type using only CGO pointers.
-func newQVideoDeviceSelectorControl(h *C.QVideoDeviceSelectorControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QVideoDeviceSelectorControl {
+func newQVideoDeviceSelectorControl(h *C.QVideoDeviceSelectorControl) *QVideoDeviceSelectorControl {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMediaControl *C.QMediaControl = nil
+	C.QVideoDeviceSelectorControl_virtbase(h, &outptr_QMediaControl)
+
 	return &QVideoDeviceSelectorControl{h: h,
-		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
+		QMediaControl: newQMediaControl(outptr_QMediaControl)}
 }
 
 // UnsafeNewQVideoDeviceSelectorControl constructs the type using only unsafe pointers.
-func UnsafeNewQVideoDeviceSelectorControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QVideoDeviceSelectorControl {
-	if h == nil {
-		return nil
-	}
-
-	return &QVideoDeviceSelectorControl{h: (*C.QVideoDeviceSelectorControl)(h),
-		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
+func UnsafeNewQVideoDeviceSelectorControl(h unsafe.Pointer) *QVideoDeviceSelectorControl {
+	return newQVideoDeviceSelectorControl((*C.QVideoDeviceSelectorControl)(h))
 }
 
 func (this *QVideoDeviceSelectorControl) MetaObject() *qt.QMetaObject {

@@ -24,8 +24,8 @@ typedef struct QCameraFormat QCameraFormat;
 typedef struct QSize QSize;
 #endif
 
-void QCameraFormat_new(QCameraFormat** outptr_QCameraFormat);
-void QCameraFormat_new2(QCameraFormat* other, QCameraFormat** outptr_QCameraFormat);
+QCameraFormat* QCameraFormat_new();
+QCameraFormat* QCameraFormat_new2(QCameraFormat* other);
 void QCameraFormat_OperatorAssign(QCameraFormat* self, QCameraFormat* other);
 int QCameraFormat_PixelFormat(const QCameraFormat* self);
 QSize* QCameraFormat_Resolution(const QCameraFormat* self);
@@ -36,8 +36,8 @@ bool QCameraFormat_OperatorEqual(const QCameraFormat* self, QCameraFormat* other
 bool QCameraFormat_OperatorNotEqual(const QCameraFormat* self, QCameraFormat* other);
 void QCameraFormat_Delete(QCameraFormat* self, bool isSubclass);
 
-void QCameraDevice_new(QCameraDevice** outptr_QCameraDevice);
-void QCameraDevice_new2(QCameraDevice* other, QCameraDevice** outptr_QCameraDevice);
+QCameraDevice* QCameraDevice_new();
+QCameraDevice* QCameraDevice_new2(QCameraDevice* other);
 void QCameraDevice_OperatorAssign(QCameraDevice* self, QCameraDevice* other);
 bool QCameraDevice_OperatorEqual(const QCameraDevice* self, QCameraDevice* other);
 bool QCameraDevice_OperatorNotEqual(const QCameraDevice* self, QCameraDevice* other);

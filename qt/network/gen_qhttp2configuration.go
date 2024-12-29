@@ -37,34 +37,27 @@ func newQHttp2Configuration(h *C.QHttp2Configuration) *QHttp2Configuration {
 	if h == nil {
 		return nil
 	}
+
 	return &QHttp2Configuration{h: h}
 }
 
 // UnsafeNewQHttp2Configuration constructs the type using only unsafe pointers.
 func UnsafeNewQHttp2Configuration(h unsafe.Pointer) *QHttp2Configuration {
-	if h == nil {
-		return nil
-	}
-
-	return &QHttp2Configuration{h: (*C.QHttp2Configuration)(h)}
+	return newQHttp2Configuration((*C.QHttp2Configuration)(h))
 }
 
 // NewQHttp2Configuration constructs a new QHttp2Configuration object.
 func NewQHttp2Configuration() *QHttp2Configuration {
-	var outptr_QHttp2Configuration *C.QHttp2Configuration = nil
 
-	C.QHttp2Configuration_new(&outptr_QHttp2Configuration)
-	ret := newQHttp2Configuration(outptr_QHttp2Configuration)
+	ret := newQHttp2Configuration(C.QHttp2Configuration_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQHttp2Configuration2 constructs a new QHttp2Configuration object.
 func NewQHttp2Configuration2(other *QHttp2Configuration) *QHttp2Configuration {
-	var outptr_QHttp2Configuration *C.QHttp2Configuration = nil
 
-	C.QHttp2Configuration_new2(other.cPointer(), &outptr_QHttp2Configuration)
-	ret := newQHttp2Configuration(outptr_QHttp2Configuration)
+	ret := newQHttp2Configuration(C.QHttp2Configuration_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

@@ -7,17 +7,19 @@
 #include <QWebEngineCertificateError>
 #include <qwebenginecertificateerror.h>
 #include "gen_qwebenginecertificateerror.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QWebEngineCertificateError_new(int error, QUrl* url, bool overridable, struct miqt_string errorDescription, QWebEngineCertificateError** outptr_QWebEngineCertificateError) {
+QWebEngineCertificateError* QWebEngineCertificateError_new(int error, QUrl* url, bool overridable, struct miqt_string errorDescription) {
 	QString errorDescription_QString = QString::fromUtf8(errorDescription.data, errorDescription.len);
-	QWebEngineCertificateError* ret = new QWebEngineCertificateError(static_cast<int>(error), *url, overridable, errorDescription_QString);
-	*outptr_QWebEngineCertificateError = ret;
+	return new QWebEngineCertificateError(static_cast<int>(error), *url, overridable, errorDescription_QString);
 }
 
-void QWebEngineCertificateError_new2(QWebEngineCertificateError* other, QWebEngineCertificateError** outptr_QWebEngineCertificateError) {
-	QWebEngineCertificateError* ret = new QWebEngineCertificateError(*other);
-	*outptr_QWebEngineCertificateError = ret;
+QWebEngineCertificateError* QWebEngineCertificateError_new2(QWebEngineCertificateError* other) {
+	return new QWebEngineCertificateError(*other);
 }
 
 int QWebEngineCertificateError_Error(const QWebEngineCertificateError* self) {

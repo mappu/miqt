@@ -18,6 +18,10 @@
 #include <QVariant>
 #include <qobject.h>
 #include "gen_qobject.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QMetaObject* QObjectData_DynamicMetaObject(const QObjectData* self) {
@@ -213,14 +217,12 @@ public:
 
 };
 
-void QObject_new(QObject** outptr_QObject) {
-	MiqtVirtualQObject* ret = new MiqtVirtualQObject();
-	*outptr_QObject = ret;
+QObject* QObject_new() {
+	return new MiqtVirtualQObject();
 }
 
-void QObject_new2(QObject* parent, QObject** outptr_QObject) {
-	MiqtVirtualQObject* ret = new MiqtVirtualQObject(parent);
-	*outptr_QObject = ret;
+QObject* QObject_new2(QObject* parent) {
+	return new MiqtVirtualQObject(parent);
 }
 
 QMetaObject* QObject_MetaObject(const QObject* self) {
@@ -515,14 +517,12 @@ void QObject_Delete(QObject* self, bool isSubclass) {
 	}
 }
 
-void QSignalBlocker_new(QObject* o, QSignalBlocker** outptr_QSignalBlocker) {
-	QSignalBlocker* ret = new QSignalBlocker(o);
-	*outptr_QSignalBlocker = ret;
+QSignalBlocker* QSignalBlocker_new(QObject* o) {
+	return new QSignalBlocker(o);
 }
 
-void QSignalBlocker_new2(QObject* o, QSignalBlocker** outptr_QSignalBlocker) {
-	QSignalBlocker* ret = new QSignalBlocker(*o);
-	*outptr_QSignalBlocker = ret;
+QSignalBlocker* QSignalBlocker_new2(QObject* o) {
+	return new QSignalBlocker(*o);
 }
 
 void QSignalBlocker_Reblock(QSignalBlocker* self) {

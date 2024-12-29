@@ -28,10 +28,10 @@ typedef struct QTextCodec QTextCodec;
 typedef struct QTextStream QTextStream;
 #endif
 
-void QTextStream_new(QTextStream** outptr_QTextStream);
-void QTextStream_new2(QIODevice* device, QTextStream** outptr_QTextStream);
-void QTextStream_new3(struct miqt_string array, QTextStream** outptr_QTextStream);
-void QTextStream_new4(struct miqt_string array, int openMode, QTextStream** outptr_QTextStream);
+QTextStream* QTextStream_new();
+QTextStream* QTextStream_new2(QIODevice* device);
+QTextStream* QTextStream_new3(struct miqt_string array);
+QTextStream* QTextStream_new4(struct miqt_string array, int openMode);
 void QTextStream_SetCodec(QTextStream* self, QTextCodec* codec);
 void QTextStream_SetCodecWithCodecName(QTextStream* self, const char* codecName);
 QTextCodec* QTextStream_Codec(const QTextStream* self);

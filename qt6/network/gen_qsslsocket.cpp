@@ -20,6 +20,10 @@
 #include <QVariant>
 #include <qsslsocket.h>
 #include "gen_qsslsocket.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSslSocket : public virtual QSslSocket {
@@ -503,24 +507,16 @@ public:
 
 };
 
-void QSslSocket_new(QSslSocket** outptr_QSslSocket, QTcpSocket** outptr_QTcpSocket, QAbstractSocket** outptr_QAbstractSocket, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase) {
-	MiqtVirtualQSslSocket* ret = new MiqtVirtualQSslSocket();
-	*outptr_QSslSocket = ret;
-	*outptr_QTcpSocket = static_cast<QTcpSocket*>(ret);
-	*outptr_QAbstractSocket = static_cast<QAbstractSocket*>(ret);
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QIODeviceBase = static_cast<QIODeviceBase*>(ret);
+QSslSocket* QSslSocket_new() {
+	return new MiqtVirtualQSslSocket();
 }
 
-void QSslSocket_new2(QObject* parent, QSslSocket** outptr_QSslSocket, QTcpSocket** outptr_QTcpSocket, QAbstractSocket** outptr_QAbstractSocket, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase) {
-	MiqtVirtualQSslSocket* ret = new MiqtVirtualQSslSocket(parent);
-	*outptr_QSslSocket = ret;
-	*outptr_QTcpSocket = static_cast<QTcpSocket*>(ret);
-	*outptr_QAbstractSocket = static_cast<QAbstractSocket*>(ret);
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QIODeviceBase = static_cast<QIODeviceBase*>(ret);
+QSslSocket* QSslSocket_new2(QObject* parent) {
+	return new MiqtVirtualQSslSocket(parent);
+}
+
+void QSslSocket_virtbase(QSslSocket* src, QTcpSocket** outptr_QTcpSocket) {
+	*outptr_QTcpSocket = static_cast<QTcpSocket*>(src);
 }
 
 QMetaObject* QSslSocket_MetaObject(const QSslSocket* self) {

@@ -3,6 +3,10 @@
 #include <QUntypedPropertyData>
 #include <qbindingstorage.h>
 #include "gen_qbindingstorage.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 void QBindingStatus_Delete(QBindingStatus* self, bool isSubclass) {
@@ -13,9 +17,8 @@ void QBindingStatus_Delete(QBindingStatus* self, bool isSubclass) {
 	}
 }
 
-void QBindingStorage_new(QBindingStorage** outptr_QBindingStorage) {
-	QBindingStorage* ret = new QBindingStorage();
-	*outptr_QBindingStorage = ret;
+QBindingStorage* QBindingStorage_new() {
+	return new QBindingStorage();
 }
 
 bool QBindingStorage_IsEmpty(QBindingStorage* self) {

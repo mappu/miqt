@@ -10,6 +10,10 @@
 #include <QTimerEvent>
 #include <qgenericplugin.h>
 #include "gen_qgenericplugin.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGenericPlugin : public virtual QGenericPlugin {
@@ -224,16 +228,16 @@ public:
 
 };
 
-void QGenericPlugin_new(QGenericPlugin** outptr_QGenericPlugin, QObject** outptr_QObject) {
-	MiqtVirtualQGenericPlugin* ret = new MiqtVirtualQGenericPlugin();
-	*outptr_QGenericPlugin = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGenericPlugin* QGenericPlugin_new() {
+	return new MiqtVirtualQGenericPlugin();
 }
 
-void QGenericPlugin_new2(QObject* parent, QGenericPlugin** outptr_QGenericPlugin, QObject** outptr_QObject) {
-	MiqtVirtualQGenericPlugin* ret = new MiqtVirtualQGenericPlugin(parent);
-	*outptr_QGenericPlugin = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QGenericPlugin* QGenericPlugin_new2(QObject* parent) {
+	return new MiqtVirtualQGenericPlugin(parent);
+}
+
+void QGenericPlugin_virtbase(QGenericPlugin* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QGenericPlugin_MetaObject(const QGenericPlugin* self) {

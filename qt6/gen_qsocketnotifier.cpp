@@ -11,6 +11,10 @@
 #include <QTimerEvent>
 #include <qsocketnotifier.h>
 #include "gen_qsocketnotifier.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSocketNotifier : public virtual QSocketNotifier {
@@ -196,28 +200,24 @@ public:
 
 };
 
-void QSocketNotifier_new(int param1, QSocketNotifier** outptr_QSocketNotifier, QObject** outptr_QObject) {
-	MiqtVirtualQSocketNotifier* ret = new MiqtVirtualQSocketNotifier(static_cast<QSocketNotifier::Type>(param1));
-	*outptr_QSocketNotifier = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSocketNotifier* QSocketNotifier_new(int param1) {
+	return new MiqtVirtualQSocketNotifier(static_cast<QSocketNotifier::Type>(param1));
 }
 
-void QSocketNotifier_new2(intptr_t socket, int param2, QSocketNotifier** outptr_QSocketNotifier, QObject** outptr_QObject) {
-	MiqtVirtualQSocketNotifier* ret = new MiqtVirtualQSocketNotifier((qintptr)(socket), static_cast<QSocketNotifier::Type>(param2));
-	*outptr_QSocketNotifier = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSocketNotifier* QSocketNotifier_new2(intptr_t socket, int param2) {
+	return new MiqtVirtualQSocketNotifier((qintptr)(socket), static_cast<QSocketNotifier::Type>(param2));
 }
 
-void QSocketNotifier_new3(int param1, QObject* parent, QSocketNotifier** outptr_QSocketNotifier, QObject** outptr_QObject) {
-	MiqtVirtualQSocketNotifier* ret = new MiqtVirtualQSocketNotifier(static_cast<QSocketNotifier::Type>(param1), parent);
-	*outptr_QSocketNotifier = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSocketNotifier* QSocketNotifier_new3(int param1, QObject* parent) {
+	return new MiqtVirtualQSocketNotifier(static_cast<QSocketNotifier::Type>(param1), parent);
 }
 
-void QSocketNotifier_new4(intptr_t socket, int param2, QObject* parent, QSocketNotifier** outptr_QSocketNotifier, QObject** outptr_QObject) {
-	MiqtVirtualQSocketNotifier* ret = new MiqtVirtualQSocketNotifier((qintptr)(socket), static_cast<QSocketNotifier::Type>(param2), parent);
-	*outptr_QSocketNotifier = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QSocketNotifier* QSocketNotifier_new4(intptr_t socket, int param2, QObject* parent) {
+	return new MiqtVirtualQSocketNotifier((qintptr)(socket), static_cast<QSocketNotifier::Type>(param2), parent);
+}
+
+void QSocketNotifier_virtbase(QSocketNotifier* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QSocketNotifier_MetaObject(const QSocketNotifier* self) {
@@ -351,22 +351,19 @@ void QSocketNotifier_Delete(QSocketNotifier* self, bool isSubclass) {
 	}
 }
 
-void QSocketDescriptor_new(QSocketDescriptor** outptr_QSocketDescriptor) {
-	QSocketDescriptor* ret = new QSocketDescriptor();
-	*outptr_QSocketDescriptor = ret;
+QSocketDescriptor* QSocketDescriptor_new() {
+	return new QSocketDescriptor();
 }
 
-void QSocketDescriptor_new2(QSocketDescriptor* param1, QSocketDescriptor** outptr_QSocketDescriptor) {
-	QSocketDescriptor* ret = new QSocketDescriptor(*param1);
-	*outptr_QSocketDescriptor = ret;
+QSocketDescriptor* QSocketDescriptor_new2(QSocketDescriptor* param1) {
+	return new QSocketDescriptor(*param1);
 }
 
-void QSocketDescriptor_new3(int descriptor, QSocketDescriptor** outptr_QSocketDescriptor) {
+QSocketDescriptor* QSocketDescriptor_new3(int descriptor) {
 #ifndef Q_OS_LINUX
-	return;
+	return nullptr;
 #else
-	QSocketDescriptor* ret = new QSocketDescriptor(static_cast<QSocketDescriptor::DescriptorType>(descriptor));
-	*outptr_QSocketDescriptor = ret;
+	return new QSocketDescriptor(static_cast<QSocketDescriptor::DescriptorType>(descriptor));
 #endif
 }
 

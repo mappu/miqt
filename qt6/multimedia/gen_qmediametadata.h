@@ -22,8 +22,8 @@ typedef struct QMediaMetaData QMediaMetaData;
 typedef struct QVariant QVariant;
 #endif
 
-void QMediaMetaData_new(QMediaMetaData* param1, QMediaMetaData** outptr_QMediaMetaData);
-void QMediaMetaData_new2(QMediaMetaData** outptr_QMediaMetaData);
+QMediaMetaData* QMediaMetaData_new(QMediaMetaData* param1);
+QMediaMetaData* QMediaMetaData_new2();
 QVariant* QMediaMetaData_Value(const QMediaMetaData* self, int k);
 void QMediaMetaData_Insert(QMediaMetaData* self, int k, QVariant* value);
 void QMediaMetaData_Remove(QMediaMetaData* self, int k);

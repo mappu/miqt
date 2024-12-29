@@ -40,6 +40,7 @@ typedef struct QUrl QUrl;
 typedef struct QVariant QVariant;
 #endif
 
+void QNetworkReply_virtbase(QNetworkReply* src, QIODevice** outptr_QIODevice);
 QMetaObject* QNetworkReply_MetaObject(const QNetworkReply* self);
 void* QNetworkReply_Metacast(QNetworkReply* self, const char* param1);
 struct miqt_string QNetworkReply_Tr(const char* s);

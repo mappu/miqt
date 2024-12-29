@@ -5,11 +5,14 @@
 #include <QTouchDevice>
 #include <qtouchdevice.h>
 #include "gen_qtouchdevice.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QTouchDevice_new(QTouchDevice** outptr_QTouchDevice) {
-	QTouchDevice* ret = new QTouchDevice();
-	*outptr_QTouchDevice = ret;
+QTouchDevice* QTouchDevice_new() {
+	return new QTouchDevice();
 }
 
 struct miqt_array /* of QTouchDevice* */  QTouchDevice_Devices() {

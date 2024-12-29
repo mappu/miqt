@@ -36,6 +36,10 @@
 #include <QWidget>
 #include <qdialogbuttonbox.h>
 #include "gen_qdialogbuttonbox.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQDialogButtonBox : public virtual QDialogButtonBox {
@@ -1029,68 +1033,40 @@ public:
 
 };
 
-void QDialogButtonBox_new(QWidget* parent, QDialogButtonBox** outptr_QDialogButtonBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDialogButtonBox* ret = new MiqtVirtualQDialogButtonBox(parent);
-	*outptr_QDialogButtonBox = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDialogButtonBox* QDialogButtonBox_new(QWidget* parent) {
+	return new MiqtVirtualQDialogButtonBox(parent);
 }
 
-void QDialogButtonBox_new2(QDialogButtonBox** outptr_QDialogButtonBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDialogButtonBox* ret = new MiqtVirtualQDialogButtonBox();
-	*outptr_QDialogButtonBox = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDialogButtonBox* QDialogButtonBox_new2() {
+	return new MiqtVirtualQDialogButtonBox();
 }
 
-void QDialogButtonBox_new3(int orientation, QDialogButtonBox** outptr_QDialogButtonBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDialogButtonBox* ret = new MiqtVirtualQDialogButtonBox(static_cast<Qt::Orientation>(orientation));
-	*outptr_QDialogButtonBox = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDialogButtonBox* QDialogButtonBox_new3(int orientation) {
+	return new MiqtVirtualQDialogButtonBox(static_cast<Qt::Orientation>(orientation));
 }
 
-void QDialogButtonBox_new4(int buttons, QDialogButtonBox** outptr_QDialogButtonBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDialogButtonBox* ret = new MiqtVirtualQDialogButtonBox(static_cast<QDialogButtonBox::StandardButtons>(buttons));
-	*outptr_QDialogButtonBox = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDialogButtonBox* QDialogButtonBox_new4(int buttons) {
+	return new MiqtVirtualQDialogButtonBox(static_cast<QDialogButtonBox::StandardButtons>(buttons));
 }
 
-void QDialogButtonBox_new5(int buttons, int orientation, QDialogButtonBox** outptr_QDialogButtonBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDialogButtonBox* ret = new MiqtVirtualQDialogButtonBox(static_cast<QDialogButtonBox::StandardButtons>(buttons), static_cast<Qt::Orientation>(orientation));
-	*outptr_QDialogButtonBox = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDialogButtonBox* QDialogButtonBox_new5(int buttons, int orientation) {
+	return new MiqtVirtualQDialogButtonBox(static_cast<QDialogButtonBox::StandardButtons>(buttons), static_cast<Qt::Orientation>(orientation));
 }
 
-void QDialogButtonBox_new6(int orientation, QWidget* parent, QDialogButtonBox** outptr_QDialogButtonBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDialogButtonBox* ret = new MiqtVirtualQDialogButtonBox(static_cast<Qt::Orientation>(orientation), parent);
-	*outptr_QDialogButtonBox = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDialogButtonBox* QDialogButtonBox_new6(int orientation, QWidget* parent) {
+	return new MiqtVirtualQDialogButtonBox(static_cast<Qt::Orientation>(orientation), parent);
 }
 
-void QDialogButtonBox_new7(int buttons, QWidget* parent, QDialogButtonBox** outptr_QDialogButtonBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDialogButtonBox* ret = new MiqtVirtualQDialogButtonBox(static_cast<QDialogButtonBox::StandardButtons>(buttons), parent);
-	*outptr_QDialogButtonBox = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDialogButtonBox* QDialogButtonBox_new7(int buttons, QWidget* parent) {
+	return new MiqtVirtualQDialogButtonBox(static_cast<QDialogButtonBox::StandardButtons>(buttons), parent);
 }
 
-void QDialogButtonBox_new8(int buttons, int orientation, QWidget* parent, QDialogButtonBox** outptr_QDialogButtonBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDialogButtonBox* ret = new MiqtVirtualQDialogButtonBox(static_cast<QDialogButtonBox::StandardButtons>(buttons), static_cast<Qt::Orientation>(orientation), parent);
-	*outptr_QDialogButtonBox = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDialogButtonBox* QDialogButtonBox_new8(int buttons, int orientation, QWidget* parent) {
+	return new MiqtVirtualQDialogButtonBox(static_cast<QDialogButtonBox::StandardButtons>(buttons), static_cast<Qt::Orientation>(orientation), parent);
+}
+
+void QDialogButtonBox_virtbase(QDialogButtonBox* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QDialogButtonBox_MetaObject(const QDialogButtonBox* self) {

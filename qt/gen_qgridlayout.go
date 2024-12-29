@@ -35,52 +35,40 @@ func (this *QGridLayout) UnsafePointer() unsafe.Pointer {
 }
 
 // newQGridLayout constructs the type using only CGO pointers.
-func newQGridLayout(h *C.QGridLayout, h_QLayout *C.QLayout, h_QObject *C.QObject, h_QLayoutItem *C.QLayoutItem) *QGridLayout {
+func newQGridLayout(h *C.QGridLayout) *QGridLayout {
 	if h == nil {
 		return nil
 	}
+	var outptr_QLayout *C.QLayout = nil
+	C.QGridLayout_virtbase(h, &outptr_QLayout)
+
 	return &QGridLayout{h: h,
-		QLayout: newQLayout(h_QLayout, h_QObject, h_QLayoutItem)}
+		QLayout: newQLayout(outptr_QLayout)}
 }
 
 // UnsafeNewQGridLayout constructs the type using only unsafe pointers.
-func UnsafeNewQGridLayout(h unsafe.Pointer, h_QLayout unsafe.Pointer, h_QObject unsafe.Pointer, h_QLayoutItem unsafe.Pointer) *QGridLayout {
-	if h == nil {
-		return nil
-	}
-
-	return &QGridLayout{h: (*C.QGridLayout)(h),
-		QLayout: UnsafeNewQLayout(h_QLayout, h_QObject, h_QLayoutItem)}
+func UnsafeNewQGridLayout(h unsafe.Pointer) *QGridLayout {
+	return newQGridLayout((*C.QGridLayout)(h))
 }
 
 // NewQGridLayout constructs a new QGridLayout object.
 func NewQGridLayout(parent *QWidget) *QGridLayout {
-	var outptr_QGridLayout *C.QGridLayout = nil
-	var outptr_QLayout *C.QLayout = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QLayoutItem *C.QLayoutItem = nil
 
-	C.QGridLayout_new(parent.cPointer(), &outptr_QGridLayout, &outptr_QLayout, &outptr_QObject, &outptr_QLayoutItem)
-	ret := newQGridLayout(outptr_QGridLayout, outptr_QLayout, outptr_QObject, outptr_QLayoutItem)
+	ret := newQGridLayout(C.QGridLayout_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQGridLayout2 constructs a new QGridLayout object.
 func NewQGridLayout2() *QGridLayout {
-	var outptr_QGridLayout *C.QGridLayout = nil
-	var outptr_QLayout *C.QLayout = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QLayoutItem *C.QLayoutItem = nil
 
-	C.QGridLayout_new2(&outptr_QGridLayout, &outptr_QLayout, &outptr_QObject, &outptr_QLayoutItem)
-	ret := newQGridLayout(outptr_QGridLayout, outptr_QLayout, outptr_QObject, outptr_QLayoutItem)
+	ret := newQGridLayout(C.QGridLayout_new2())
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QGridLayout) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QGridLayout_MetaObject(this.h)))
+	return newQMetaObject(C.QGridLayout_MetaObject(this.h))
 }
 
 func (this *QGridLayout) Metacast(param1 string) unsafe.Pointer {
@@ -108,22 +96,19 @@ func QGridLayout_TrUtf8(s string) string {
 }
 
 func (this *QGridLayout) SizeHint() *QSize {
-	_ret := C.QGridLayout_SizeHint(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QGridLayout_SizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGridLayout) MinimumSize() *QSize {
-	_ret := C.QGridLayout_MinimumSize(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QGridLayout_MinimumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGridLayout) MaximumSize() *QSize {
-	_ret := C.QGridLayout_MaximumSize(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QGridLayout_MaximumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -193,8 +178,7 @@ func (this *QGridLayout) RowCount() int {
 }
 
 func (this *QGridLayout) CellRect(row int, column int) *QRect {
-	_ret := C.QGridLayout_CellRect(this.h, (C.int)(row), (C.int)(column))
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QGridLayout_CellRect(this.h, (C.int)(row), (C.int)(column)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -248,15 +232,15 @@ func (this *QGridLayout) OriginCorner() Corner {
 }
 
 func (this *QGridLayout) ItemAt(index int) *QLayoutItem {
-	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QGridLayout_ItemAt(this.h, (C.int)(index))))
+	return newQLayoutItem(C.QGridLayout_ItemAt(this.h, (C.int)(index)))
 }
 
 func (this *QGridLayout) ItemAtPosition(row int, column int) *QLayoutItem {
-	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QGridLayout_ItemAtPosition(this.h, (C.int)(row), (C.int)(column))))
+	return newQLayoutItem(C.QGridLayout_ItemAtPosition(this.h, (C.int)(row), (C.int)(column)))
 }
 
 func (this *QGridLayout) TakeAt(index int) *QLayoutItem {
-	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QGridLayout_TakeAt(this.h, (C.int)(index))))
+	return newQLayoutItem(C.QGridLayout_TakeAt(this.h, (C.int)(index)))
 }
 
 func (this *QGridLayout) Count() int {
@@ -353,13 +337,15 @@ func (this *QGridLayout) AddItem6(item *QLayoutItem, row int, column int, rowSpa
 
 func (this *QGridLayout) callVirtualBase_SizeHint() *QSize {
 
-	_ret := C.QGridLayout_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QGridLayout_virtualbase_SizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QGridLayout) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGridLayout_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -378,13 +364,15 @@ func miqt_exec_callback_QGridLayout_SizeHint(self *C.QGridLayout, cb C.intptr_t)
 
 func (this *QGridLayout) callVirtualBase_MinimumSize() *QSize {
 
-	_ret := C.QGridLayout_virtualbase_MinimumSize(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QGridLayout_virtualbase_MinimumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QGridLayout) OnMinimumSize(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGridLayout_override_virtual_MinimumSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -403,13 +391,15 @@ func miqt_exec_callback_QGridLayout_MinimumSize(self *C.QGridLayout, cb C.intptr
 
 func (this *QGridLayout) callVirtualBase_MaximumSize() *QSize {
 
-	_ret := C.QGridLayout_virtualbase_MaximumSize(unsafe.Pointer(this.h))
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QGridLayout_virtualbase_MaximumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QGridLayout) OnMaximumSize(slot func(super func() *QSize) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGridLayout_override_virtual_MaximumSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -432,6 +422,9 @@ func (this *QGridLayout) callVirtualBase_HasHeightForWidth() bool {
 
 }
 func (this *QGridLayout) OnHasHeightForWidth(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGridLayout_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -454,6 +447,9 @@ func (this *QGridLayout) callVirtualBase_HeightForWidth(param1 int) int {
 
 }
 func (this *QGridLayout) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGridLayout_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -479,6 +475,9 @@ func (this *QGridLayout) callVirtualBase_MinimumHeightForWidth(param1 int) int {
 
 }
 func (this *QGridLayout) OnMinimumHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGridLayout_override_virtual_MinimumHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -504,6 +503,9 @@ func (this *QGridLayout) callVirtualBase_ExpandingDirections() Orientation {
 
 }
 func (this *QGridLayout) OnExpandingDirections(slot func(super func() Orientation) Orientation) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGridLayout_override_virtual_ExpandingDirections(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -526,6 +528,9 @@ func (this *QGridLayout) callVirtualBase_Invalidate() {
 
 }
 func (this *QGridLayout) OnInvalidate(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGridLayout_override_virtual_Invalidate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -542,9 +547,13 @@ func miqt_exec_callback_QGridLayout_Invalidate(self *C.QGridLayout, cb C.intptr_
 
 func (this *QGridLayout) callVirtualBase_ItemAt(index int) *QLayoutItem {
 
-	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QGridLayout_virtualbase_ItemAt(unsafe.Pointer(this.h), (C.int)(index))))
+	return newQLayoutItem(C.QGridLayout_virtualbase_ItemAt(unsafe.Pointer(this.h), (C.int)(index)))
+
 }
 func (this *QGridLayout) OnItemAt(slot func(super func(index int) *QLayoutItem, index int) *QLayoutItem) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGridLayout_override_virtual_ItemAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -566,9 +575,13 @@ func miqt_exec_callback_QGridLayout_ItemAt(self *C.QGridLayout, cb C.intptr_t, i
 
 func (this *QGridLayout) callVirtualBase_TakeAt(index int) *QLayoutItem {
 
-	return UnsafeNewQLayoutItem(unsafe.Pointer(C.QGridLayout_virtualbase_TakeAt(unsafe.Pointer(this.h), (C.int)(index))))
+	return newQLayoutItem(C.QGridLayout_virtualbase_TakeAt(unsafe.Pointer(this.h), (C.int)(index)))
+
 }
 func (this *QGridLayout) OnTakeAt(slot func(super func(index int) *QLayoutItem, index int) *QLayoutItem) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGridLayout_override_virtual_TakeAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -594,6 +607,9 @@ func (this *QGridLayout) callVirtualBase_Count() int {
 
 }
 func (this *QGridLayout) OnCount(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGridLayout_override_virtual_Count(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -616,6 +632,9 @@ func (this *QGridLayout) callVirtualBase_SetGeometry(geometry *QRect) {
 
 }
 func (this *QGridLayout) OnSetGeometry(slot func(super func(geometry *QRect), geometry *QRect)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGridLayout_override_virtual_SetGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -627,7 +646,7 @@ func miqt_exec_callback_QGridLayout_SetGeometry(self *C.QGridLayout, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQRect(unsafe.Pointer(geometry))
+	slotval1 := newQRect(geometry)
 
 	gofunc((&QGridLayout{h: self}).callVirtualBase_SetGeometry, slotval1)
 
@@ -639,6 +658,9 @@ func (this *QGridLayout) callVirtualBase_AddItemWithQLayoutItem(param1 *QLayoutI
 
 }
 func (this *QGridLayout) OnAddItemWithQLayoutItem(slot func(super func(param1 *QLayoutItem), param1 *QLayoutItem)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGridLayout_override_virtual_AddItemWithQLayoutItem(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -650,7 +672,7 @@ func miqt_exec_callback_QGridLayout_AddItemWithQLayoutItem(self *C.QGridLayout, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQLayoutItem(unsafe.Pointer(param1))
+	slotval1 := newQLayoutItem(param1)
 
 	gofunc((&QGridLayout{h: self}).callVirtualBase_AddItemWithQLayoutItem, slotval1)
 
@@ -658,13 +680,15 @@ func miqt_exec_callback_QGridLayout_AddItemWithQLayoutItem(self *C.QGridLayout, 
 
 func (this *QGridLayout) callVirtualBase_Geometry() *QRect {
 
-	_ret := C.QGridLayout_virtualbase_Geometry(unsafe.Pointer(this.h))
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QGridLayout_virtualbase_Geometry(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QGridLayout) OnGeometry(slot func(super func() *QRect) *QRect) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGridLayout_override_virtual_Geometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -687,6 +711,9 @@ func (this *QGridLayout) callVirtualBase_IndexOf(param1 *QWidget) int {
 
 }
 func (this *QGridLayout) OnIndexOf(slot func(super func(param1 *QWidget) int, param1 *QWidget) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGridLayout_override_virtual_IndexOf(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -698,7 +725,7 @@ func miqt_exec_callback_QGridLayout_IndexOf(self *C.QGridLayout, cb C.intptr_t, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQWidget(unsafe.Pointer(param1), nil, nil)
+	slotval1 := newQWidget(param1)
 
 	virtualReturn := gofunc((&QGridLayout{h: self}).callVirtualBase_IndexOf, slotval1)
 
@@ -712,6 +739,9 @@ func (this *QGridLayout) callVirtualBase_IsEmpty() bool {
 
 }
 func (this *QGridLayout) OnIsEmpty(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGridLayout_override_virtual_IsEmpty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -734,6 +764,9 @@ func (this *QGridLayout) callVirtualBase_ControlTypes() QSizePolicy__ControlType
 
 }
 func (this *QGridLayout) OnControlTypes(slot func(super func() QSizePolicy__ControlType) QSizePolicy__ControlType) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGridLayout_override_virtual_ControlTypes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -752,9 +785,13 @@ func miqt_exec_callback_QGridLayout_ControlTypes(self *C.QGridLayout, cb C.intpt
 
 func (this *QGridLayout) callVirtualBase_Layout() *QLayout {
 
-	return UnsafeNewQLayout(unsafe.Pointer(C.QGridLayout_virtualbase_Layout(unsafe.Pointer(this.h))), nil, nil)
+	return newQLayout(C.QGridLayout_virtualbase_Layout(unsafe.Pointer(this.h)))
+
 }
 func (this *QGridLayout) OnLayout(slot func(super func() *QLayout) *QLayout) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGridLayout_override_virtual_Layout(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -777,6 +814,9 @@ func (this *QGridLayout) callVirtualBase_ChildEvent(e *QChildEvent) {
 
 }
 func (this *QGridLayout) OnChildEvent(slot func(super func(e *QChildEvent), e *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QGridLayout_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -788,7 +828,7 @@ func miqt_exec_callback_QGridLayout_ChildEvent(self *C.QGridLayout, cb C.intptr_
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(e), nil)
+	slotval1 := newQChildEvent(e)
 
 	gofunc((&QGridLayout{h: self}).callVirtualBase_ChildEvent, slotval1)
 

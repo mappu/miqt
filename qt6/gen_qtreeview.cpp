@@ -37,6 +37,10 @@
 #include <QWidget>
 #include <qtreeview.h>
 #include "gen_qtreeview.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQTreeView : public virtual QTreeView {
@@ -1668,26 +1672,16 @@ public:
 
 };
 
-void QTreeView_new(QWidget* parent, QTreeView** outptr_QTreeView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQTreeView* ret = new MiqtVirtualQTreeView(parent);
-	*outptr_QTreeView = ret;
-	*outptr_QAbstractItemView = static_cast<QAbstractItemView*>(ret);
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QTreeView* QTreeView_new(QWidget* parent) {
+	return new MiqtVirtualQTreeView(parent);
 }
 
-void QTreeView_new2(QTreeView** outptr_QTreeView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQTreeView* ret = new MiqtVirtualQTreeView();
-	*outptr_QTreeView = ret;
-	*outptr_QAbstractItemView = static_cast<QAbstractItemView*>(ret);
-	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(ret);
-	*outptr_QFrame = static_cast<QFrame*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QTreeView* QTreeView_new2() {
+	return new MiqtVirtualQTreeView();
+}
+
+void QTreeView_virtbase(QTreeView* src, QAbstractItemView** outptr_QAbstractItemView) {
+	*outptr_QAbstractItemView = static_cast<QAbstractItemView*>(src);
 }
 
 QMetaObject* QTreeView_MetaObject(const QTreeView* self) {

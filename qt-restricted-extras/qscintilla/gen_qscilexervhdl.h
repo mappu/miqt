@@ -34,8 +34,9 @@ typedef struct QsciLexerVHDL QsciLexerVHDL;
 typedef struct QsciScintilla QsciScintilla;
 #endif
 
-void QsciLexerVHDL_new(QsciLexerVHDL** outptr_QsciLexerVHDL, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
-void QsciLexerVHDL_new2(QObject* parent, QsciLexerVHDL** outptr_QsciLexerVHDL, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+QsciLexerVHDL* QsciLexerVHDL_new();
+QsciLexerVHDL* QsciLexerVHDL_new2(QObject* parent);
+void QsciLexerVHDL_virtbase(QsciLexerVHDL* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerVHDL_MetaObject(const QsciLexerVHDL* self);
 void* QsciLexerVHDL_Metacast(QsciLexerVHDL* self, const char* param1);
 struct miqt_string QsciLexerVHDL_Tr(const char* s);

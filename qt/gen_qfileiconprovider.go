@@ -56,38 +56,31 @@ func newQFileIconProvider(h *C.QFileIconProvider) *QFileIconProvider {
 	if h == nil {
 		return nil
 	}
+
 	return &QFileIconProvider{h: h}
 }
 
 // UnsafeNewQFileIconProvider constructs the type using only unsafe pointers.
 func UnsafeNewQFileIconProvider(h unsafe.Pointer) *QFileIconProvider {
-	if h == nil {
-		return nil
-	}
-
-	return &QFileIconProvider{h: (*C.QFileIconProvider)(h)}
+	return newQFileIconProvider((*C.QFileIconProvider)(h))
 }
 
 // NewQFileIconProvider constructs a new QFileIconProvider object.
 func NewQFileIconProvider() *QFileIconProvider {
-	var outptr_QFileIconProvider *C.QFileIconProvider = nil
 
-	C.QFileIconProvider_new(&outptr_QFileIconProvider)
-	ret := newQFileIconProvider(outptr_QFileIconProvider)
+	ret := newQFileIconProvider(C.QFileIconProvider_new())
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QFileIconProvider) Icon(typeVal QFileIconProvider__IconType) *QIcon {
-	_ret := C.QFileIconProvider_Icon(this.h, (C.int)(typeVal))
-	_goptr := newQIcon(_ret)
+	_goptr := newQIcon(C.QFileIconProvider_Icon(this.h, (C.int)(typeVal)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileIconProvider) IconWithInfo(info *QFileInfo) *QIcon {
-	_ret := C.QFileIconProvider_IconWithInfo(this.h, info.cPointer())
-	_goptr := newQIcon(_ret)
+	_goptr := newQIcon(C.QFileIconProvider_IconWithInfo(this.h, info.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -109,13 +102,15 @@ func (this *QFileIconProvider) Options() QFileIconProvider__Option {
 
 func (this *QFileIconProvider) callVirtualBase_Icon(typeVal QFileIconProvider__IconType) *QIcon {
 
-	_ret := C.QFileIconProvider_virtualbase_Icon(unsafe.Pointer(this.h), (C.int)(typeVal))
-	_goptr := newQIcon(_ret)
+	_goptr := newQIcon(C.QFileIconProvider_virtualbase_Icon(unsafe.Pointer(this.h), (C.int)(typeVal)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QFileIconProvider) OnIcon(slot func(super func(typeVal QFileIconProvider__IconType) *QIcon, typeVal QFileIconProvider__IconType) *QIcon) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileIconProvider_override_virtual_Icon(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -137,13 +132,15 @@ func miqt_exec_callback_QFileIconProvider_Icon(self *C.QFileIconProvider, cb C.i
 
 func (this *QFileIconProvider) callVirtualBase_IconWithInfo(info *QFileInfo) *QIcon {
 
-	_ret := C.QFileIconProvider_virtualbase_IconWithInfo(unsafe.Pointer(this.h), info.cPointer())
-	_goptr := newQIcon(_ret)
+	_goptr := newQIcon(C.QFileIconProvider_virtualbase_IconWithInfo(unsafe.Pointer(this.h), info.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QFileIconProvider) OnIconWithInfo(slot func(super func(info *QFileInfo) *QIcon, info *QFileInfo) *QIcon) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileIconProvider_override_virtual_IconWithInfo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -155,7 +152,7 @@ func miqt_exec_callback_QFileIconProvider_IconWithInfo(self *C.QFileIconProvider
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFileInfo(unsafe.Pointer(info))
+	slotval1 := newQFileInfo(info)
 
 	virtualReturn := gofunc((&QFileIconProvider{h: self}).callVirtualBase_IconWithInfo, slotval1)
 
@@ -171,6 +168,9 @@ func (this *QFileIconProvider) callVirtualBase_Type(info *QFileInfo) string {
 	return _ret
 }
 func (this *QFileIconProvider) OnType(slot func(super func(info *QFileInfo) string, info *QFileInfo) string) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileIconProvider_override_virtual_Type(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -182,7 +182,7 @@ func miqt_exec_callback_QFileIconProvider_Type(self *C.QFileIconProvider, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQFileInfo(unsafe.Pointer(info))
+	slotval1 := newQFileInfo(info)
 
 	virtualReturn := gofunc((&QFileIconProvider{h: self}).callVirtualBase_Type, slotval1)
 	virtualReturn_ms := C.struct_miqt_string{}

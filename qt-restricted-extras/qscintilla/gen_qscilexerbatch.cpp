@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexerbatch.h>
 #include "gen_qscilexerbatch.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerBatch : public virtual QsciLexerBatch {
@@ -839,18 +843,16 @@ public:
 
 };
 
-void QsciLexerBatch_new(QsciLexerBatch** outptr_QsciLexerBatch, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerBatch* ret = new MiqtVirtualQsciLexerBatch();
-	*outptr_QsciLexerBatch = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerBatch* QsciLexerBatch_new() {
+	return new MiqtVirtualQsciLexerBatch();
 }
 
-void QsciLexerBatch_new2(QObject* parent, QsciLexerBatch** outptr_QsciLexerBatch, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerBatch* ret = new MiqtVirtualQsciLexerBatch(parent);
-	*outptr_QsciLexerBatch = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerBatch* QsciLexerBatch_new2(QObject* parent) {
+	return new MiqtVirtualQsciLexerBatch(parent);
+}
+
+void QsciLexerBatch_virtbase(QsciLexerBatch* src, QsciLexer** outptr_QsciLexer) {
+	*outptr_QsciLexer = static_cast<QsciLexer*>(src);
 }
 
 QMetaObject* QsciLexerBatch_MetaObject(const QsciLexerBatch* self) {

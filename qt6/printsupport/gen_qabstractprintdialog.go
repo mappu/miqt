@@ -56,48 +56,34 @@ func (this *QAbstractPrintDialog) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAbstractPrintDialog constructs the type using only CGO pointers.
-func newQAbstractPrintDialog(h *C.QAbstractPrintDialog, h_QDialog *C.QDialog, h_QWidget *C.QWidget, h_QObject *C.QObject, h_QPaintDevice *C.QPaintDevice) *QAbstractPrintDialog {
+func newQAbstractPrintDialog(h *C.QAbstractPrintDialog) *QAbstractPrintDialog {
 	if h == nil {
 		return nil
 	}
+	var outptr_QDialog *C.QDialog = nil
+	C.QAbstractPrintDialog_virtbase(h, &outptr_QDialog)
+
 	return &QAbstractPrintDialog{h: h,
-		QDialog: qt6.UnsafeNewQDialog(unsafe.Pointer(h_QDialog), unsafe.Pointer(h_QWidget), unsafe.Pointer(h_QObject), unsafe.Pointer(h_QPaintDevice))}
+		QDialog: qt6.UnsafeNewQDialog(unsafe.Pointer(outptr_QDialog))}
 }
 
 // UnsafeNewQAbstractPrintDialog constructs the type using only unsafe pointers.
-func UnsafeNewQAbstractPrintDialog(h unsafe.Pointer, h_QDialog unsafe.Pointer, h_QWidget unsafe.Pointer, h_QObject unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QAbstractPrintDialog {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractPrintDialog{h: (*C.QAbstractPrintDialog)(h),
-		QDialog: qt6.UnsafeNewQDialog(h_QDialog, h_QWidget, h_QObject, h_QPaintDevice)}
+func UnsafeNewQAbstractPrintDialog(h unsafe.Pointer) *QAbstractPrintDialog {
+	return newQAbstractPrintDialog((*C.QAbstractPrintDialog)(h))
 }
 
 // NewQAbstractPrintDialog constructs a new QAbstractPrintDialog object.
 func NewQAbstractPrintDialog(printer *QPrinter) *QAbstractPrintDialog {
-	var outptr_QAbstractPrintDialog *C.QAbstractPrintDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QAbstractPrintDialog_new(printer.cPointer(), &outptr_QAbstractPrintDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQAbstractPrintDialog(outptr_QAbstractPrintDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQAbstractPrintDialog(C.QAbstractPrintDialog_new(printer.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQAbstractPrintDialog2 constructs a new QAbstractPrintDialog object.
 func NewQAbstractPrintDialog2(printer *QPrinter, parent *qt6.QWidget) *QAbstractPrintDialog {
-	var outptr_QAbstractPrintDialog *C.QAbstractPrintDialog = nil
-	var outptr_QDialog *C.QDialog = nil
-	var outptr_QWidget *C.QWidget = nil
-	var outptr_QObject *C.QObject = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QAbstractPrintDialog_new2(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer()), &outptr_QAbstractPrintDialog, &outptr_QDialog, &outptr_QWidget, &outptr_QObject, &outptr_QPaintDevice)
-	ret := newQAbstractPrintDialog(outptr_QAbstractPrintDialog, outptr_QDialog, outptr_QWidget, outptr_QObject, outptr_QPaintDevice)
+	ret := newQAbstractPrintDialog(C.QAbstractPrintDialog_new2(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -164,7 +150,7 @@ func (this *QAbstractPrintDialog) ToPage() int {
 }
 
 func (this *QAbstractPrintDialog) Printer() *QPrinter {
-	return UnsafeNewQPrinter(unsafe.Pointer(C.QAbstractPrintDialog_Printer(this.h)), nil, nil)
+	return newQPrinter(C.QAbstractPrintDialog_Printer(this.h))
 }
 
 func QAbstractPrintDialog_Tr2(s string, c string) string {
@@ -195,6 +181,9 @@ func (this *QAbstractPrintDialog) callVirtualBase_SetVisible(visible bool) {
 
 }
 func (this *QAbstractPrintDialog) OnSetVisible(slot func(super func(visible bool), visible bool)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractPrintDialog_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -214,13 +203,15 @@ func miqt_exec_callback_QAbstractPrintDialog_SetVisible(self *C.QAbstractPrintDi
 
 func (this *QAbstractPrintDialog) callVirtualBase_SizeHint() *qt6.QSize {
 
-	_ret := C.QAbstractPrintDialog_virtualbase_SizeHint(unsafe.Pointer(this.h))
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QAbstractPrintDialog_virtualbase_SizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QAbstractPrintDialog) OnSizeHint(slot func(super func() *qt6.QSize) *qt6.QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractPrintDialog_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -239,13 +230,15 @@ func miqt_exec_callback_QAbstractPrintDialog_SizeHint(self *C.QAbstractPrintDial
 
 func (this *QAbstractPrintDialog) callVirtualBase_MinimumSizeHint() *qt6.QSize {
 
-	_ret := C.QAbstractPrintDialog_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QAbstractPrintDialog_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QAbstractPrintDialog) OnMinimumSizeHint(slot func(super func() *qt6.QSize) *qt6.QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractPrintDialog_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -268,6 +261,9 @@ func (this *QAbstractPrintDialog) callVirtualBase_Open() {
 
 }
 func (this *QAbstractPrintDialog) OnOpen(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractPrintDialog_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -288,6 +284,9 @@ func (this *QAbstractPrintDialog) callVirtualBase_Exec() int {
 
 }
 func (this *QAbstractPrintDialog) OnExec(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractPrintDialog_override_virtual_Exec(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -310,6 +309,9 @@ func (this *QAbstractPrintDialog) callVirtualBase_Done(param1 int) {
 
 }
 func (this *QAbstractPrintDialog) OnDone(slot func(super func(param1 int), param1 int)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractPrintDialog_override_virtual_Done(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -333,6 +335,9 @@ func (this *QAbstractPrintDialog) callVirtualBase_Accept() {
 
 }
 func (this *QAbstractPrintDialog) OnAccept(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractPrintDialog_override_virtual_Accept(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -353,6 +358,9 @@ func (this *QAbstractPrintDialog) callVirtualBase_Reject() {
 
 }
 func (this *QAbstractPrintDialog) OnReject(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractPrintDialog_override_virtual_Reject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -373,6 +381,9 @@ func (this *QAbstractPrintDialog) callVirtualBase_KeyPressEvent(param1 *qt6.QKey
 
 }
 func (this *QAbstractPrintDialog) OnKeyPressEvent(slot func(super func(param1 *qt6.QKeyEvent), param1 *qt6.QKeyEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractPrintDialog_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -384,7 +395,7 @@ func miqt_exec_callback_QAbstractPrintDialog_KeyPressEvent(self *C.QAbstractPrin
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQKeyEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt6.UnsafeNewQKeyEvent(unsafe.Pointer(param1))
 
 	gofunc((&QAbstractPrintDialog{h: self}).callVirtualBase_KeyPressEvent, slotval1)
 
@@ -396,6 +407,9 @@ func (this *QAbstractPrintDialog) callVirtualBase_CloseEvent(param1 *qt6.QCloseE
 
 }
 func (this *QAbstractPrintDialog) OnCloseEvent(slot func(super func(param1 *qt6.QCloseEvent), param1 *qt6.QCloseEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractPrintDialog_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -407,7 +421,7 @@ func miqt_exec_callback_QAbstractPrintDialog_CloseEvent(self *C.QAbstractPrintDi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQCloseEvent(unsafe.Pointer(param1), nil)
+	slotval1 := qt6.UnsafeNewQCloseEvent(unsafe.Pointer(param1))
 
 	gofunc((&QAbstractPrintDialog{h: self}).callVirtualBase_CloseEvent, slotval1)
 
@@ -419,6 +433,9 @@ func (this *QAbstractPrintDialog) callVirtualBase_ShowEvent(param1 *qt6.QShowEve
 
 }
 func (this *QAbstractPrintDialog) OnShowEvent(slot func(super func(param1 *qt6.QShowEvent), param1 *qt6.QShowEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractPrintDialog_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -430,7 +447,7 @@ func miqt_exec_callback_QAbstractPrintDialog_ShowEvent(self *C.QAbstractPrintDia
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQShowEvent(unsafe.Pointer(param1), nil)
+	slotval1 := qt6.UnsafeNewQShowEvent(unsafe.Pointer(param1))
 
 	gofunc((&QAbstractPrintDialog{h: self}).callVirtualBase_ShowEvent, slotval1)
 
@@ -442,6 +459,9 @@ func (this *QAbstractPrintDialog) callVirtualBase_ResizeEvent(param1 *qt6.QResiz
 
 }
 func (this *QAbstractPrintDialog) OnResizeEvent(slot func(super func(param1 *qt6.QResizeEvent), param1 *qt6.QResizeEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractPrintDialog_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -453,7 +473,7 @@ func miqt_exec_callback_QAbstractPrintDialog_ResizeEvent(self *C.QAbstractPrintD
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQResizeEvent(unsafe.Pointer(param1), nil)
+	slotval1 := qt6.UnsafeNewQResizeEvent(unsafe.Pointer(param1))
 
 	gofunc((&QAbstractPrintDialog{h: self}).callVirtualBase_ResizeEvent, slotval1)
 
@@ -465,6 +485,9 @@ func (this *QAbstractPrintDialog) callVirtualBase_ContextMenuEvent(param1 *qt6.Q
 
 }
 func (this *QAbstractPrintDialog) OnContextMenuEvent(slot func(super func(param1 *qt6.QContextMenuEvent), param1 *qt6.QContextMenuEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractPrintDialog_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -476,7 +499,7 @@ func miqt_exec_callback_QAbstractPrintDialog_ContextMenuEvent(self *C.QAbstractP
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQContextMenuEvent(unsafe.Pointer(param1), nil, nil)
+	slotval1 := qt6.UnsafeNewQContextMenuEvent(unsafe.Pointer(param1))
 
 	gofunc((&QAbstractPrintDialog{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
 
@@ -488,6 +511,9 @@ func (this *QAbstractPrintDialog) callVirtualBase_EventFilter(param1 *qt6.QObjec
 
 }
 func (this *QAbstractPrintDialog) OnEventFilter(slot func(super func(param1 *qt6.QObject, param2 *qt6.QEvent) bool, param1 *qt6.QObject, param2 *qt6.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QAbstractPrintDialog_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -500,6 +526,7 @@ func miqt_exec_callback_QAbstractPrintDialog_EventFilter(self *C.QAbstractPrintD
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(param1))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(param2))
 
 	virtualReturn := gofunc((&QAbstractPrintDialog{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)

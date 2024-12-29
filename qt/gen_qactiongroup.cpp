@@ -13,6 +13,10 @@
 #include <QTimerEvent>
 #include <qactiongroup.h>
 #include "gen_qactiongroup.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQActionGroup : public virtual QActionGroup {
@@ -195,10 +199,12 @@ public:
 
 };
 
-void QActionGroup_new(QObject* parent, QActionGroup** outptr_QActionGroup, QObject** outptr_QObject) {
-	MiqtVirtualQActionGroup* ret = new MiqtVirtualQActionGroup(parent);
-	*outptr_QActionGroup = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QActionGroup* QActionGroup_new(QObject* parent) {
+	return new MiqtVirtualQActionGroup(parent);
+}
+
+void QActionGroup_virtbase(QActionGroup* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QActionGroup_MetaObject(const QActionGroup* self) {

@@ -32,10 +32,11 @@ typedef struct QObject QObject;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QFileSystemWatcher_new(QFileSystemWatcher** outptr_QFileSystemWatcher, QObject** outptr_QObject);
-void QFileSystemWatcher_new2(struct miqt_array /* of struct miqt_string */  paths, QFileSystemWatcher** outptr_QFileSystemWatcher, QObject** outptr_QObject);
-void QFileSystemWatcher_new3(QObject* parent, QFileSystemWatcher** outptr_QFileSystemWatcher, QObject** outptr_QObject);
-void QFileSystemWatcher_new4(struct miqt_array /* of struct miqt_string */  paths, QObject* parent, QFileSystemWatcher** outptr_QFileSystemWatcher, QObject** outptr_QObject);
+QFileSystemWatcher* QFileSystemWatcher_new();
+QFileSystemWatcher* QFileSystemWatcher_new2(struct miqt_array /* of struct miqt_string */  paths);
+QFileSystemWatcher* QFileSystemWatcher_new3(QObject* parent);
+QFileSystemWatcher* QFileSystemWatcher_new4(struct miqt_array /* of struct miqt_string */  paths, QObject* parent);
+void QFileSystemWatcher_virtbase(QFileSystemWatcher* src, QObject** outptr_QObject);
 QMetaObject* QFileSystemWatcher_MetaObject(const QFileSystemWatcher* self);
 void* QFileSystemWatcher_Metacast(QFileSystemWatcher* self, const char* param1);
 struct miqt_string QFileSystemWatcher_Tr(const char* s);

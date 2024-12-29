@@ -38,8 +38,9 @@ typedef struct QVideoFrame QVideoFrame;
 typedef struct QVideoSurfaceFormat QVideoSurfaceFormat;
 #endif
 
-void QAbstractVideoSurface_new(QAbstractVideoSurface** outptr_QAbstractVideoSurface, QObject** outptr_QObject);
-void QAbstractVideoSurface_new2(QObject* parent, QAbstractVideoSurface** outptr_QAbstractVideoSurface, QObject** outptr_QObject);
+QAbstractVideoSurface* QAbstractVideoSurface_new();
+QAbstractVideoSurface* QAbstractVideoSurface_new2(QObject* parent);
+void QAbstractVideoSurface_virtbase(QAbstractVideoSurface* src, QObject** outptr_QObject);
 QMetaObject* QAbstractVideoSurface_MetaObject(const QAbstractVideoSurface* self);
 void* QAbstractVideoSurface_Metacast(QAbstractVideoSurface* self, const char* param1);
 struct miqt_string QAbstractVideoSurface_Tr(const char* s);

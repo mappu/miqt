@@ -42,10 +42,11 @@ typedef struct QRectF QRectF;
 typedef struct QSizeF QSizeF;
 #endif
 
-void QPrinter_new(QPrinter** outptr_QPrinter, QPagedPaintDevice** outptr_QPagedPaintDevice, QPaintDevice** outptr_QPaintDevice);
-void QPrinter_new2(QPrinterInfo* printer, QPrinter** outptr_QPrinter, QPagedPaintDevice** outptr_QPagedPaintDevice, QPaintDevice** outptr_QPaintDevice);
-void QPrinter_new3(int mode, QPrinter** outptr_QPrinter, QPagedPaintDevice** outptr_QPagedPaintDevice, QPaintDevice** outptr_QPaintDevice);
-void QPrinter_new4(QPrinterInfo* printer, int mode, QPrinter** outptr_QPrinter, QPagedPaintDevice** outptr_QPagedPaintDevice, QPaintDevice** outptr_QPaintDevice);
+QPrinter* QPrinter_new();
+QPrinter* QPrinter_new2(QPrinterInfo* printer);
+QPrinter* QPrinter_new3(int mode);
+QPrinter* QPrinter_new4(QPrinterInfo* printer, int mode);
+void QPrinter_virtbase(QPrinter* src, QPagedPaintDevice** outptr_QPagedPaintDevice);
 int QPrinter_DevType(const QPrinter* self);
 void QPrinter_SetOutputFormat(QPrinter* self, int format);
 int QPrinter_OutputFormat(const QPrinter* self);

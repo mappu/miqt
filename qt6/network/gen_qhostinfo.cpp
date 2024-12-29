@@ -6,21 +6,22 @@
 #include <cstring>
 #include <qhostinfo.h>
 #include "gen_qhostinfo.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QHostInfo_new(QHostInfo** outptr_QHostInfo) {
-	QHostInfo* ret = new QHostInfo();
-	*outptr_QHostInfo = ret;
+QHostInfo* QHostInfo_new() {
+	return new QHostInfo();
 }
 
-void QHostInfo_new2(QHostInfo* d, QHostInfo** outptr_QHostInfo) {
-	QHostInfo* ret = new QHostInfo(*d);
-	*outptr_QHostInfo = ret;
+QHostInfo* QHostInfo_new2(QHostInfo* d) {
+	return new QHostInfo(*d);
 }
 
-void QHostInfo_new3(int lookupId, QHostInfo** outptr_QHostInfo) {
-	QHostInfo* ret = new QHostInfo(static_cast<int>(lookupId));
-	*outptr_QHostInfo = ret;
+QHostInfo* QHostInfo_new3(int lookupId) {
+	return new QHostInfo(static_cast<int>(lookupId));
 }
 
 void QHostInfo_OperatorAssign(QHostInfo* self, QHostInfo* d) {

@@ -14,6 +14,10 @@
 #include <QUrl>
 #include <qaudiodecoder.h>
 #include "gen_qaudiodecoder.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAudioDecoder : public virtual QAudioDecoder {
@@ -197,16 +201,16 @@ public:
 
 };
 
-void QAudioDecoder_new(QAudioDecoder** outptr_QAudioDecoder, QObject** outptr_QObject) {
-	MiqtVirtualQAudioDecoder* ret = new MiqtVirtualQAudioDecoder();
-	*outptr_QAudioDecoder = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAudioDecoder* QAudioDecoder_new() {
+	return new MiqtVirtualQAudioDecoder();
 }
 
-void QAudioDecoder_new2(QObject* parent, QAudioDecoder** outptr_QAudioDecoder, QObject** outptr_QObject) {
-	MiqtVirtualQAudioDecoder* ret = new MiqtVirtualQAudioDecoder(parent);
-	*outptr_QAudioDecoder = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAudioDecoder* QAudioDecoder_new2(QObject* parent) {
+	return new MiqtVirtualQAudioDecoder(parent);
+}
+
+void QAudioDecoder_virtbase(QAudioDecoder* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QAudioDecoder_MetaObject(const QAudioDecoder* self) {

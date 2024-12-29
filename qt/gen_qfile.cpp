@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qfile.h>
 #include "gen_qfile.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQFile : public virtual QFile {
@@ -363,38 +367,26 @@ public:
 
 };
 
-void QFile_new(QFile** outptr_QFile, QFileDevice** outptr_QFileDevice, QIODevice** outptr_QIODevice, QObject** outptr_QObject) {
-	MiqtVirtualQFile* ret = new MiqtVirtualQFile();
-	*outptr_QFile = ret;
-	*outptr_QFileDevice = static_cast<QFileDevice*>(ret);
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QFile* QFile_new() {
+	return new MiqtVirtualQFile();
 }
 
-void QFile_new2(struct miqt_string name, QFile** outptr_QFile, QFileDevice** outptr_QFileDevice, QIODevice** outptr_QIODevice, QObject** outptr_QObject) {
+QFile* QFile_new2(struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	MiqtVirtualQFile* ret = new MiqtVirtualQFile(name_QString);
-	*outptr_QFile = ret;
-	*outptr_QFileDevice = static_cast<QFileDevice*>(ret);
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQFile(name_QString);
 }
 
-void QFile_new3(QObject* parent, QFile** outptr_QFile, QFileDevice** outptr_QFileDevice, QIODevice** outptr_QIODevice, QObject** outptr_QObject) {
-	MiqtVirtualQFile* ret = new MiqtVirtualQFile(parent);
-	*outptr_QFile = ret;
-	*outptr_QFileDevice = static_cast<QFileDevice*>(ret);
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QFile* QFile_new3(QObject* parent) {
+	return new MiqtVirtualQFile(parent);
 }
 
-void QFile_new4(struct miqt_string name, QObject* parent, QFile** outptr_QFile, QFileDevice** outptr_QFileDevice, QIODevice** outptr_QIODevice, QObject** outptr_QObject) {
+QFile* QFile_new4(struct miqt_string name, QObject* parent) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	MiqtVirtualQFile* ret = new MiqtVirtualQFile(name_QString, parent);
-	*outptr_QFile = ret;
-	*outptr_QFileDevice = static_cast<QFileDevice*>(ret);
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQFile(name_QString, parent);
+}
+
+void QFile_virtbase(QFile* src, QFileDevice** outptr_QFileDevice) {
+	*outptr_QFileDevice = static_cast<QFileDevice*>(src);
 }
 
 QMetaObject* QFile_MetaObject(const QFile* self) {

@@ -8,7 +8,15 @@
 #include <cstring>
 #include <qfiledevice.h>
 #include "gen_qfiledevice.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
+
+void QFileDevice_virtbase(QFileDevice* src, QIODevice** outptr_QIODevice) {
+	*outptr_QIODevice = static_cast<QIODevice*>(src);
+}
 
 QMetaObject* QFileDevice_MetaObject(const QFileDevice* self) {
 	return (QMetaObject*) self->metaObject();

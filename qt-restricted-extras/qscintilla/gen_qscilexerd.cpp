@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexerd.h>
 #include "gen_qscilexerd.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerD : public virtual QsciLexerD {
@@ -911,18 +915,16 @@ public:
 
 };
 
-void QsciLexerD_new(QsciLexerD** outptr_QsciLexerD, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerD* ret = new MiqtVirtualQsciLexerD();
-	*outptr_QsciLexerD = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerD* QsciLexerD_new() {
+	return new MiqtVirtualQsciLexerD();
 }
 
-void QsciLexerD_new2(QObject* parent, QsciLexerD** outptr_QsciLexerD, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerD* ret = new MiqtVirtualQsciLexerD(parent);
-	*outptr_QsciLexerD = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerD* QsciLexerD_new2(QObject* parent) {
+	return new MiqtVirtualQsciLexerD(parent);
+}
+
+void QsciLexerD_virtbase(QsciLexerD* src, QsciLexer** outptr_QsciLexer) {
+	*outptr_QsciLexer = static_cast<QsciLexer*>(src);
 }
 
 QMetaObject* QsciLexerD_MetaObject(const QsciLexerD* self) {

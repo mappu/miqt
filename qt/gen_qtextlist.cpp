@@ -11,6 +11,10 @@
 #include <QTextObject>
 #include <qtextlist.h>
 #include "gen_qtextlist.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQTextList : public virtual QTextList {
@@ -100,12 +104,12 @@ public:
 
 };
 
-void QTextList_new(QTextDocument* doc, QTextList** outptr_QTextList, QTextBlockGroup** outptr_QTextBlockGroup, QTextObject** outptr_QTextObject, QObject** outptr_QObject) {
-	MiqtVirtualQTextList* ret = new MiqtVirtualQTextList(doc);
-	*outptr_QTextList = ret;
-	*outptr_QTextBlockGroup = static_cast<QTextBlockGroup*>(ret);
-	*outptr_QTextObject = static_cast<QTextObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QTextList* QTextList_new(QTextDocument* doc) {
+	return new MiqtVirtualQTextList(doc);
+}
+
+void QTextList_virtbase(QTextList* src, QTextBlockGroup** outptr_QTextBlockGroup) {
+	*outptr_QTextBlockGroup = static_cast<QTextBlockGroup*>(src);
 }
 
 QMetaObject* QTextList_MetaObject(const QTextList* self) {

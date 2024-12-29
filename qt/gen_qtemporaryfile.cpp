@@ -9,6 +9,10 @@
 #include <QTemporaryFile>
 #include <qtemporaryfile.h>
 #include "gen_qtemporaryfile.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQTemporaryFile : public virtual QTemporaryFile {
@@ -171,42 +175,26 @@ public:
 
 };
 
-void QTemporaryFile_new(QTemporaryFile** outptr_QTemporaryFile, QFile** outptr_QFile, QFileDevice** outptr_QFileDevice, QIODevice** outptr_QIODevice, QObject** outptr_QObject) {
-	MiqtVirtualQTemporaryFile* ret = new MiqtVirtualQTemporaryFile();
-	*outptr_QTemporaryFile = ret;
-	*outptr_QFile = static_cast<QFile*>(ret);
-	*outptr_QFileDevice = static_cast<QFileDevice*>(ret);
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QTemporaryFile* QTemporaryFile_new() {
+	return new MiqtVirtualQTemporaryFile();
 }
 
-void QTemporaryFile_new2(struct miqt_string templateName, QTemporaryFile** outptr_QTemporaryFile, QFile** outptr_QFile, QFileDevice** outptr_QFileDevice, QIODevice** outptr_QIODevice, QObject** outptr_QObject) {
+QTemporaryFile* QTemporaryFile_new2(struct miqt_string templateName) {
 	QString templateName_QString = QString::fromUtf8(templateName.data, templateName.len);
-	MiqtVirtualQTemporaryFile* ret = new MiqtVirtualQTemporaryFile(templateName_QString);
-	*outptr_QTemporaryFile = ret;
-	*outptr_QFile = static_cast<QFile*>(ret);
-	*outptr_QFileDevice = static_cast<QFileDevice*>(ret);
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQTemporaryFile(templateName_QString);
 }
 
-void QTemporaryFile_new3(QObject* parent, QTemporaryFile** outptr_QTemporaryFile, QFile** outptr_QFile, QFileDevice** outptr_QFileDevice, QIODevice** outptr_QIODevice, QObject** outptr_QObject) {
-	MiqtVirtualQTemporaryFile* ret = new MiqtVirtualQTemporaryFile(parent);
-	*outptr_QTemporaryFile = ret;
-	*outptr_QFile = static_cast<QFile*>(ret);
-	*outptr_QFileDevice = static_cast<QFileDevice*>(ret);
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QTemporaryFile* QTemporaryFile_new3(QObject* parent) {
+	return new MiqtVirtualQTemporaryFile(parent);
 }
 
-void QTemporaryFile_new4(struct miqt_string templateName, QObject* parent, QTemporaryFile** outptr_QTemporaryFile, QFile** outptr_QFile, QFileDevice** outptr_QFileDevice, QIODevice** outptr_QIODevice, QObject** outptr_QObject) {
+QTemporaryFile* QTemporaryFile_new4(struct miqt_string templateName, QObject* parent) {
 	QString templateName_QString = QString::fromUtf8(templateName.data, templateName.len);
-	MiqtVirtualQTemporaryFile* ret = new MiqtVirtualQTemporaryFile(templateName_QString, parent);
-	*outptr_QTemporaryFile = ret;
-	*outptr_QFile = static_cast<QFile*>(ret);
-	*outptr_QFileDevice = static_cast<QFileDevice*>(ret);
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQTemporaryFile(templateName_QString, parent);
+}
+
+void QTemporaryFile_virtbase(QTemporaryFile* src, QFile** outptr_QFile) {
+	*outptr_QFile = static_cast<QFile*>(src);
 }
 
 QMetaObject* QTemporaryFile_MetaObject(const QTemporaryFile* self) {

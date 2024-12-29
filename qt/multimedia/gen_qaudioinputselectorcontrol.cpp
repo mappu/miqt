@@ -8,7 +8,15 @@
 #include <cstring>
 #include <qaudioinputselectorcontrol.h>
 #include "gen_qaudioinputselectorcontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
+
+void QAudioInputSelectorControl_virtbase(QAudioInputSelectorControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
 
 QMetaObject* QAudioInputSelectorControl_MetaObject(const QAudioInputSelectorControl* self) {
 	return (QMetaObject*) self->metaObject();

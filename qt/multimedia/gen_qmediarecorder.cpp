@@ -18,6 +18,10 @@
 #include <QVideoEncoderSettings>
 #include <qmediarecorder.h>
 #include "gen_qmediarecorder.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQMediaRecorder : public virtual QMediaRecorder {
@@ -246,18 +250,17 @@ public:
 
 };
 
-void QMediaRecorder_new(QMediaObject* mediaObject, QMediaRecorder** outptr_QMediaRecorder, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface) {
-	MiqtVirtualQMediaRecorder* ret = new MiqtVirtualQMediaRecorder(mediaObject);
-	*outptr_QMediaRecorder = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QMediaBindableInterface = static_cast<QMediaBindableInterface*>(ret);
+QMediaRecorder* QMediaRecorder_new(QMediaObject* mediaObject) {
+	return new MiqtVirtualQMediaRecorder(mediaObject);
 }
 
-void QMediaRecorder_new2(QMediaObject* mediaObject, QObject* parent, QMediaRecorder** outptr_QMediaRecorder, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface) {
-	MiqtVirtualQMediaRecorder* ret = new MiqtVirtualQMediaRecorder(mediaObject, parent);
-	*outptr_QMediaRecorder = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QMediaBindableInterface = static_cast<QMediaBindableInterface*>(ret);
+QMediaRecorder* QMediaRecorder_new2(QMediaObject* mediaObject, QObject* parent) {
+	return new MiqtVirtualQMediaRecorder(mediaObject, parent);
+}
+
+void QMediaRecorder_virtbase(QMediaRecorder* src, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface) {
+	*outptr_QObject = static_cast<QObject*>(src);
+	*outptr_QMediaBindableInterface = static_cast<QMediaBindableInterface*>(src);
 }
 
 QMetaObject* QMediaRecorder_MetaObject(const QMediaRecorder* self) {

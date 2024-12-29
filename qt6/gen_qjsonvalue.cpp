@@ -9,62 +9,55 @@
 #include <QVariant>
 #include <qjsonvalue.h>
 #include "gen_qjsonvalue.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QJsonValue_new(QJsonValue** outptr_QJsonValue) {
-	QJsonValue* ret = new QJsonValue();
-	*outptr_QJsonValue = ret;
+QJsonValue* QJsonValue_new() {
+	return new QJsonValue();
 }
 
-void QJsonValue_new2(bool b, QJsonValue** outptr_QJsonValue) {
-	QJsonValue* ret = new QJsonValue(b);
-	*outptr_QJsonValue = ret;
+QJsonValue* QJsonValue_new2(bool b) {
+	return new QJsonValue(b);
 }
 
-void QJsonValue_new3(double n, QJsonValue** outptr_QJsonValue) {
-	QJsonValue* ret = new QJsonValue(static_cast<double>(n));
-	*outptr_QJsonValue = ret;
+QJsonValue* QJsonValue_new3(double n) {
+	return new QJsonValue(static_cast<double>(n));
 }
 
-void QJsonValue_new4(int n, QJsonValue** outptr_QJsonValue) {
-	QJsonValue* ret = new QJsonValue(static_cast<int>(n));
-	*outptr_QJsonValue = ret;
+QJsonValue* QJsonValue_new4(int n) {
+	return new QJsonValue(static_cast<int>(n));
 }
 
-void QJsonValue_new5(long long v, QJsonValue** outptr_QJsonValue) {
-	QJsonValue* ret = new QJsonValue(static_cast<qint64>(v));
-	*outptr_QJsonValue = ret;
+QJsonValue* QJsonValue_new5(long long v) {
+	return new QJsonValue(static_cast<qint64>(v));
 }
 
-void QJsonValue_new6(struct miqt_string s, QJsonValue** outptr_QJsonValue) {
+QJsonValue* QJsonValue_new6(struct miqt_string s) {
 	QString s_QString = QString::fromUtf8(s.data, s.len);
-	QJsonValue* ret = new QJsonValue(s_QString);
-	*outptr_QJsonValue = ret;
+	return new QJsonValue(s_QString);
 }
 
-void QJsonValue_new7(const char* s, QJsonValue** outptr_QJsonValue) {
-	QJsonValue* ret = new QJsonValue(s);
-	*outptr_QJsonValue = ret;
+QJsonValue* QJsonValue_new7(const char* s) {
+	return new QJsonValue(s);
 }
 
-void QJsonValue_new8(QJsonArray* a, QJsonValue** outptr_QJsonValue) {
-	QJsonValue* ret = new QJsonValue(*a);
-	*outptr_QJsonValue = ret;
+QJsonValue* QJsonValue_new8(QJsonArray* a) {
+	return new QJsonValue(*a);
 }
 
-void QJsonValue_new9(QJsonObject* o, QJsonValue** outptr_QJsonValue) {
-	QJsonValue* ret = new QJsonValue(*o);
-	*outptr_QJsonValue = ret;
+QJsonValue* QJsonValue_new9(QJsonObject* o) {
+	return new QJsonValue(*o);
 }
 
-void QJsonValue_new10(QJsonValue* other, QJsonValue** outptr_QJsonValue) {
-	QJsonValue* ret = new QJsonValue(*other);
-	*outptr_QJsonValue = ret;
+QJsonValue* QJsonValue_new10(QJsonValue* other) {
+	return new QJsonValue(*other);
 }
 
-void QJsonValue_new11(int param1, QJsonValue** outptr_QJsonValue) {
-	QJsonValue* ret = new QJsonValue(static_cast<QJsonValue::Type>(param1));
-	*outptr_QJsonValue = ret;
+QJsonValue* QJsonValue_new11(int param1) {
+	return new QJsonValue(static_cast<QJsonValue::Type>(param1));
 }
 
 void QJsonValue_OperatorAssign(QJsonValue* self, QJsonValue* other) {
@@ -214,9 +207,8 @@ void QJsonValue_Delete(QJsonValue* self, bool isSubclass) {
 	}
 }
 
-void QJsonValueConstRef_new(QJsonValueConstRef* param1, QJsonValueConstRef** outptr_QJsonValueConstRef) {
-	QJsonValueConstRef* ret = new QJsonValueConstRef(*param1);
-	*outptr_QJsonValueConstRef = ret;
+QJsonValueConstRef* QJsonValueConstRef_new(QJsonValueConstRef* param1) {
+	return new QJsonValueConstRef(*param1);
 }
 
 QVariant* QJsonValueConstRef_ToVariant(const QJsonValueConstRef* self) {
@@ -341,22 +333,20 @@ void QJsonValueConstRef_Delete(QJsonValueConstRef* self, bool isSubclass) {
 	}
 }
 
-void QJsonValueRef_new(QJsonValueRef* param1, QJsonValueRef** outptr_QJsonValueRef, QJsonValueConstRef** outptr_QJsonValueConstRef) {
-	QJsonValueRef* ret = new QJsonValueRef(*param1);
-	*outptr_QJsonValueRef = ret;
-	*outptr_QJsonValueConstRef = static_cast<QJsonValueConstRef*>(ret);
+QJsonValueRef* QJsonValueRef_new(QJsonValueRef* param1) {
+	return new QJsonValueRef(*param1);
 }
 
-void QJsonValueRef_new2(QJsonArray* array, ptrdiff_t idx, QJsonValueRef** outptr_QJsonValueRef, QJsonValueConstRef** outptr_QJsonValueConstRef) {
-	QJsonValueRef* ret = new QJsonValueRef(array, (qsizetype)(idx));
-	*outptr_QJsonValueRef = ret;
-	*outptr_QJsonValueConstRef = static_cast<QJsonValueConstRef*>(ret);
+QJsonValueRef* QJsonValueRef_new2(QJsonArray* array, ptrdiff_t idx) {
+	return new QJsonValueRef(array, (qsizetype)(idx));
 }
 
-void QJsonValueRef_new3(QJsonObject* object, ptrdiff_t idx, QJsonValueRef** outptr_QJsonValueRef, QJsonValueConstRef** outptr_QJsonValueConstRef) {
-	QJsonValueRef* ret = new QJsonValueRef(object, (qsizetype)(idx));
-	*outptr_QJsonValueRef = ret;
-	*outptr_QJsonValueConstRef = static_cast<QJsonValueConstRef*>(ret);
+QJsonValueRef* QJsonValueRef_new3(QJsonObject* object, ptrdiff_t idx) {
+	return new QJsonValueRef(object, (qsizetype)(idx));
+}
+
+void QJsonValueRef_virtbase(QJsonValueRef* src, QJsonValueConstRef** outptr_QJsonValueConstRef) {
+	*outptr_QJsonValueConstRef = static_cast<QJsonValueConstRef*>(src);
 }
 
 void QJsonValueRef_OperatorAssign(QJsonValueRef* self, QJsonValue* val) {

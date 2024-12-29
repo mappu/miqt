@@ -78,10 +78,11 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QGroupBox_new(QWidget* parent, QGroupBox** outptr_QGroupBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QGroupBox_new2(QGroupBox** outptr_QGroupBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QGroupBox_new3(struct miqt_string title, QGroupBox** outptr_QGroupBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QGroupBox_new4(struct miqt_string title, QWidget* parent, QGroupBox** outptr_QGroupBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QGroupBox* QGroupBox_new(QWidget* parent);
+QGroupBox* QGroupBox_new2();
+QGroupBox* QGroupBox_new3(struct miqt_string title);
+QGroupBox* QGroupBox_new4(struct miqt_string title, QWidget* parent);
+void QGroupBox_virtbase(QGroupBox* src, QWidget** outptr_QWidget);
 QMetaObject* QGroupBox_MetaObject(const QGroupBox* self);
 void* QGroupBox_Metacast(QGroupBox* self, const char* param1);
 struct miqt_string QGroupBox_Tr(const char* s);

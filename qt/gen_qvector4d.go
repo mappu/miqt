@@ -37,114 +37,91 @@ func newQVector4D(h *C.QVector4D) *QVector4D {
 	if h == nil {
 		return nil
 	}
+
 	return &QVector4D{h: h}
 }
 
 // UnsafeNewQVector4D constructs the type using only unsafe pointers.
 func UnsafeNewQVector4D(h unsafe.Pointer) *QVector4D {
-	if h == nil {
-		return nil
-	}
-
-	return &QVector4D{h: (*C.QVector4D)(h)}
+	return newQVector4D((*C.QVector4D)(h))
 }
 
 // NewQVector4D constructs a new QVector4D object.
 func NewQVector4D() *QVector4D {
-	var outptr_QVector4D *C.QVector4D = nil
 
-	C.QVector4D_new(&outptr_QVector4D)
-	ret := newQVector4D(outptr_QVector4D)
+	ret := newQVector4D(C.QVector4D_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVector4D2 constructs a new QVector4D object.
 func NewQVector4D2(param1 Initialization) *QVector4D {
-	var outptr_QVector4D *C.QVector4D = nil
 
-	C.QVector4D_new2((C.int)(param1), &outptr_QVector4D)
-	ret := newQVector4D(outptr_QVector4D)
+	ret := newQVector4D(C.QVector4D_new2((C.int)(param1)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVector4D3 constructs a new QVector4D object.
 func NewQVector4D3(xpos float32, ypos float32, zpos float32, wpos float32) *QVector4D {
-	var outptr_QVector4D *C.QVector4D = nil
 
-	C.QVector4D_new3((C.float)(xpos), (C.float)(ypos), (C.float)(zpos), (C.float)(wpos), &outptr_QVector4D)
-	ret := newQVector4D(outptr_QVector4D)
+	ret := newQVector4D(C.QVector4D_new3((C.float)(xpos), (C.float)(ypos), (C.float)(zpos), (C.float)(wpos)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVector4D4 constructs a new QVector4D object.
 func NewQVector4D4(point *QPoint) *QVector4D {
-	var outptr_QVector4D *C.QVector4D = nil
 
-	C.QVector4D_new4(point.cPointer(), &outptr_QVector4D)
-	ret := newQVector4D(outptr_QVector4D)
+	ret := newQVector4D(C.QVector4D_new4(point.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVector4D5 constructs a new QVector4D object.
 func NewQVector4D5(point *QPointF) *QVector4D {
-	var outptr_QVector4D *C.QVector4D = nil
 
-	C.QVector4D_new5(point.cPointer(), &outptr_QVector4D)
-	ret := newQVector4D(outptr_QVector4D)
+	ret := newQVector4D(C.QVector4D_new5(point.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVector4D6 constructs a new QVector4D object.
 func NewQVector4D6(vector *QVector2D) *QVector4D {
-	var outptr_QVector4D *C.QVector4D = nil
 
-	C.QVector4D_new6(vector.cPointer(), &outptr_QVector4D)
-	ret := newQVector4D(outptr_QVector4D)
+	ret := newQVector4D(C.QVector4D_new6(vector.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVector4D7 constructs a new QVector4D object.
 func NewQVector4D7(vector *QVector2D, zpos float32, wpos float32) *QVector4D {
-	var outptr_QVector4D *C.QVector4D = nil
 
-	C.QVector4D_new7(vector.cPointer(), (C.float)(zpos), (C.float)(wpos), &outptr_QVector4D)
-	ret := newQVector4D(outptr_QVector4D)
+	ret := newQVector4D(C.QVector4D_new7(vector.cPointer(), (C.float)(zpos), (C.float)(wpos)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVector4D8 constructs a new QVector4D object.
 func NewQVector4D8(vector *QVector3D) *QVector4D {
-	var outptr_QVector4D *C.QVector4D = nil
 
-	C.QVector4D_new8(vector.cPointer(), &outptr_QVector4D)
-	ret := newQVector4D(outptr_QVector4D)
+	ret := newQVector4D(C.QVector4D_new8(vector.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVector4D9 constructs a new QVector4D object.
 func NewQVector4D9(vector *QVector3D, wpos float32) *QVector4D {
-	var outptr_QVector4D *C.QVector4D = nil
 
-	C.QVector4D_new9(vector.cPointer(), (C.float)(wpos), &outptr_QVector4D)
-	ret := newQVector4D(outptr_QVector4D)
+	ret := newQVector4D(C.QVector4D_new9(vector.cPointer(), (C.float)(wpos)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVector4D10 constructs a new QVector4D object.
 func NewQVector4D10(param1 *QVector4D) *QVector4D {
-	var outptr_QVector4D *C.QVector4D = nil
 
-	C.QVector4D_new10(param1.cPointer(), &outptr_QVector4D)
-	ret := newQVector4D(outptr_QVector4D)
+	ret := newQVector4D(C.QVector4D_new10(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -198,8 +175,7 @@ func (this *QVector4D) LengthSquared() float32 {
 }
 
 func (this *QVector4D) Normalized() *QVector4D {
-	_ret := C.QVector4D_Normalized(this.h)
-	_goptr := newQVector4D(_ret)
+	_goptr := newQVector4D(C.QVector4D_Normalized(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -209,27 +185,27 @@ func (this *QVector4D) Normalize() {
 }
 
 func (this *QVector4D) OperatorPlusAssign(vector *QVector4D) *QVector4D {
-	return UnsafeNewQVector4D(unsafe.Pointer(C.QVector4D_OperatorPlusAssign(this.h, vector.cPointer())))
+	return newQVector4D(C.QVector4D_OperatorPlusAssign(this.h, vector.cPointer()))
 }
 
 func (this *QVector4D) OperatorMinusAssign(vector *QVector4D) *QVector4D {
-	return UnsafeNewQVector4D(unsafe.Pointer(C.QVector4D_OperatorMinusAssign(this.h, vector.cPointer())))
+	return newQVector4D(C.QVector4D_OperatorMinusAssign(this.h, vector.cPointer()))
 }
 
 func (this *QVector4D) OperatorMultiplyAssign(factor float32) *QVector4D {
-	return UnsafeNewQVector4D(unsafe.Pointer(C.QVector4D_OperatorMultiplyAssign(this.h, (C.float)(factor))))
+	return newQVector4D(C.QVector4D_OperatorMultiplyAssign(this.h, (C.float)(factor)))
 }
 
 func (this *QVector4D) OperatorMultiplyAssignWithVector(vector *QVector4D) *QVector4D {
-	return UnsafeNewQVector4D(unsafe.Pointer(C.QVector4D_OperatorMultiplyAssignWithVector(this.h, vector.cPointer())))
+	return newQVector4D(C.QVector4D_OperatorMultiplyAssignWithVector(this.h, vector.cPointer()))
 }
 
 func (this *QVector4D) OperatorDivideAssign(divisor float32) *QVector4D {
-	return UnsafeNewQVector4D(unsafe.Pointer(C.QVector4D_OperatorDivideAssign(this.h, (C.float)(divisor))))
+	return newQVector4D(C.QVector4D_OperatorDivideAssign(this.h, (C.float)(divisor)))
 }
 
 func (this *QVector4D) OperatorDivideAssignWithVector(vector *QVector4D) *QVector4D {
-	return UnsafeNewQVector4D(unsafe.Pointer(C.QVector4D_OperatorDivideAssignWithVector(this.h, vector.cPointer())))
+	return newQVector4D(C.QVector4D_OperatorDivideAssignWithVector(this.h, vector.cPointer()))
 }
 
 func QVector4D_DotProduct(v1 *QVector4D, v2 *QVector4D) float32 {
@@ -237,43 +213,37 @@ func QVector4D_DotProduct(v1 *QVector4D, v2 *QVector4D) float32 {
 }
 
 func (this *QVector4D) ToVector2D() *QVector2D {
-	_ret := C.QVector4D_ToVector2D(this.h)
-	_goptr := newQVector2D(_ret)
+	_goptr := newQVector2D(C.QVector4D_ToVector2D(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVector4D) ToVector2DAffine() *QVector2D {
-	_ret := C.QVector4D_ToVector2DAffine(this.h)
-	_goptr := newQVector2D(_ret)
+	_goptr := newQVector2D(C.QVector4D_ToVector2DAffine(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVector4D) ToVector3D() *QVector3D {
-	_ret := C.QVector4D_ToVector3D(this.h)
-	_goptr := newQVector3D(_ret)
+	_goptr := newQVector3D(C.QVector4D_ToVector3D(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVector4D) ToVector3DAffine() *QVector3D {
-	_ret := C.QVector4D_ToVector3DAffine(this.h)
-	_goptr := newQVector3D(_ret)
+	_goptr := newQVector3D(C.QVector4D_ToVector3DAffine(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVector4D) ToPoint() *QPoint {
-	_ret := C.QVector4D_ToPoint(this.h)
-	_goptr := newQPoint(_ret)
+	_goptr := newQPoint(C.QVector4D_ToPoint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVector4D) ToPointF() *QPointF {
-	_ret := C.QVector4D_ToPointF(this.h)
-	_goptr := newQPointF(_ret)
+	_goptr := newQPointF(C.QVector4D_ToPointF(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

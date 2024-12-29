@@ -2,16 +2,18 @@
 #include <QByteArrayView>
 #include <qbytearrayview.h>
 #include "gen_qbytearrayview.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QByteArrayView_new(QByteArrayView** outptr_QByteArrayView) {
-	QByteArrayView* ret = new QByteArrayView();
-	*outptr_QByteArrayView = ret;
+QByteArrayView* QByteArrayView_new() {
+	return new QByteArrayView();
 }
 
-void QByteArrayView_new2(QByteArrayView* param1, QByteArrayView** outptr_QByteArrayView) {
-	QByteArrayView* ret = new QByteArrayView(*param1);
-	*outptr_QByteArrayView = ret;
+QByteArrayView* QByteArrayView_new2(QByteArrayView* param1) {
+	return new QByteArrayView(*param1);
 }
 
 struct miqt_string QByteArrayView_ToByteArray(const QByteArrayView* self) {

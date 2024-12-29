@@ -3,31 +3,30 @@
 #include <QTreeWidgetItemIterator>
 #include <qtreewidgetitemiterator.h>
 #include "gen_qtreewidgetitemiterator.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QTreeWidgetItemIterator_new(QTreeWidgetItemIterator* it, QTreeWidgetItemIterator** outptr_QTreeWidgetItemIterator) {
-	QTreeWidgetItemIterator* ret = new QTreeWidgetItemIterator(*it);
-	*outptr_QTreeWidgetItemIterator = ret;
+QTreeWidgetItemIterator* QTreeWidgetItemIterator_new(QTreeWidgetItemIterator* it) {
+	return new QTreeWidgetItemIterator(*it);
 }
 
-void QTreeWidgetItemIterator_new2(QTreeWidget* widget, QTreeWidgetItemIterator** outptr_QTreeWidgetItemIterator) {
-	QTreeWidgetItemIterator* ret = new QTreeWidgetItemIterator(widget);
-	*outptr_QTreeWidgetItemIterator = ret;
+QTreeWidgetItemIterator* QTreeWidgetItemIterator_new2(QTreeWidget* widget) {
+	return new QTreeWidgetItemIterator(widget);
 }
 
-void QTreeWidgetItemIterator_new3(QTreeWidgetItem* item, QTreeWidgetItemIterator** outptr_QTreeWidgetItemIterator) {
-	QTreeWidgetItemIterator* ret = new QTreeWidgetItemIterator(item);
-	*outptr_QTreeWidgetItemIterator = ret;
+QTreeWidgetItemIterator* QTreeWidgetItemIterator_new3(QTreeWidgetItem* item) {
+	return new QTreeWidgetItemIterator(item);
 }
 
-void QTreeWidgetItemIterator_new4(QTreeWidget* widget, int flags, QTreeWidgetItemIterator** outptr_QTreeWidgetItemIterator) {
-	QTreeWidgetItemIterator* ret = new QTreeWidgetItemIterator(widget, static_cast<QTreeWidgetItemIterator::IteratorFlags>(flags));
-	*outptr_QTreeWidgetItemIterator = ret;
+QTreeWidgetItemIterator* QTreeWidgetItemIterator_new4(QTreeWidget* widget, int flags) {
+	return new QTreeWidgetItemIterator(widget, static_cast<QTreeWidgetItemIterator::IteratorFlags>(flags));
 }
 
-void QTreeWidgetItemIterator_new5(QTreeWidgetItem* item, int flags, QTreeWidgetItemIterator** outptr_QTreeWidgetItemIterator) {
-	QTreeWidgetItemIterator* ret = new QTreeWidgetItemIterator(item, static_cast<QTreeWidgetItemIterator::IteratorFlags>(flags));
-	*outptr_QTreeWidgetItemIterator = ret;
+QTreeWidgetItemIterator* QTreeWidgetItemIterator_new5(QTreeWidgetItem* item, int flags) {
+	return new QTreeWidgetItemIterator(item, static_cast<QTreeWidgetItemIterator::IteratorFlags>(flags));
 }
 
 void QTreeWidgetItemIterator_OperatorAssign(QTreeWidgetItemIterator* self, QTreeWidgetItemIterator* it) {

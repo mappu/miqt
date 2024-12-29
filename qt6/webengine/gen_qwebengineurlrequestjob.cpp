@@ -9,7 +9,15 @@
 #include <QWebEngineUrlRequestJob>
 #include <qwebengineurlrequestjob.h>
 #include "gen_qwebengineurlrequestjob.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
+
+void QWebEngineUrlRequestJob_virtbase(QWebEngineUrlRequestJob* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
 
 QMetaObject* QWebEngineUrlRequestJob_MetaObject(const QWebEngineUrlRequestJob* self) {
 	return (QMetaObject*) self->metaObject();

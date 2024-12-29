@@ -35,22 +35,20 @@ func (this *QVideoRendererControl) UnsafePointer() unsafe.Pointer {
 }
 
 // newQVideoRendererControl constructs the type using only CGO pointers.
-func newQVideoRendererControl(h *C.QVideoRendererControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QVideoRendererControl {
+func newQVideoRendererControl(h *C.QVideoRendererControl) *QVideoRendererControl {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMediaControl *C.QMediaControl = nil
+	C.QVideoRendererControl_virtbase(h, &outptr_QMediaControl)
+
 	return &QVideoRendererControl{h: h,
-		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
+		QMediaControl: newQMediaControl(outptr_QMediaControl)}
 }
 
 // UnsafeNewQVideoRendererControl constructs the type using only unsafe pointers.
-func UnsafeNewQVideoRendererControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QVideoRendererControl {
-	if h == nil {
-		return nil
-	}
-
-	return &QVideoRendererControl{h: (*C.QVideoRendererControl)(h),
-		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
+func UnsafeNewQVideoRendererControl(h unsafe.Pointer) *QVideoRendererControl {
+	return newQVideoRendererControl((*C.QVideoRendererControl)(h))
 }
 
 func (this *QVideoRendererControl) MetaObject() *qt.QMetaObject {
@@ -82,7 +80,7 @@ func QVideoRendererControl_TrUtf8(s string) string {
 }
 
 func (this *QVideoRendererControl) Surface() *QAbstractVideoSurface {
-	return UnsafeNewQAbstractVideoSurface(unsafe.Pointer(C.QVideoRendererControl_Surface(this.h)), nil)
+	return newQAbstractVideoSurface(C.QVideoRendererControl_Surface(this.h))
 }
 
 func (this *QVideoRendererControl) SetSurface(surface *QAbstractVideoSurface) {

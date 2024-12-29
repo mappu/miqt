@@ -32,10 +32,11 @@ typedef struct QSharedMemory QSharedMemory;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QSharedMemory_new(QSharedMemory** outptr_QSharedMemory, QObject** outptr_QObject);
-void QSharedMemory_new2(struct miqt_string key, QSharedMemory** outptr_QSharedMemory, QObject** outptr_QObject);
-void QSharedMemory_new3(QObject* parent, QSharedMemory** outptr_QSharedMemory, QObject** outptr_QObject);
-void QSharedMemory_new4(struct miqt_string key, QObject* parent, QSharedMemory** outptr_QSharedMemory, QObject** outptr_QObject);
+QSharedMemory* QSharedMemory_new();
+QSharedMemory* QSharedMemory_new2(struct miqt_string key);
+QSharedMemory* QSharedMemory_new3(QObject* parent);
+QSharedMemory* QSharedMemory_new4(struct miqt_string key, QObject* parent);
+void QSharedMemory_virtbase(QSharedMemory* src, QObject** outptr_QObject);
 QMetaObject* QSharedMemory_MetaObject(const QSharedMemory* self);
 void* QSharedMemory_Metacast(QSharedMemory* self, const char* param1);
 struct miqt_string QSharedMemory_Tr(const char* s);

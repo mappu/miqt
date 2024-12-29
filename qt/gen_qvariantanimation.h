@@ -32,8 +32,9 @@ typedef struct QVariant QVariant;
 typedef struct QVariantAnimation QVariantAnimation;
 #endif
 
-void QVariantAnimation_new(QVariantAnimation** outptr_QVariantAnimation, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject);
-void QVariantAnimation_new2(QObject* parent, QVariantAnimation** outptr_QVariantAnimation, QAbstractAnimation** outptr_QAbstractAnimation, QObject** outptr_QObject);
+QVariantAnimation* QVariantAnimation_new();
+QVariantAnimation* QVariantAnimation_new2(QObject* parent);
+void QVariantAnimation_virtbase(QVariantAnimation* src, QAbstractAnimation** outptr_QAbstractAnimation);
 QMetaObject* QVariantAnimation_MetaObject(const QVariantAnimation* self);
 void* QVariantAnimation_Metacast(QVariantAnimation* self, const char* param1);
 struct miqt_string QVariantAnimation_Tr(const char* s);

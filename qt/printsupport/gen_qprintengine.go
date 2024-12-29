@@ -75,16 +75,13 @@ func newQPrintEngine(h *C.QPrintEngine) *QPrintEngine {
 	if h == nil {
 		return nil
 	}
+
 	return &QPrintEngine{h: h}
 }
 
 // UnsafeNewQPrintEngine constructs the type using only unsafe pointers.
 func UnsafeNewQPrintEngine(h unsafe.Pointer) *QPrintEngine {
-	if h == nil {
-		return nil
-	}
-
-	return &QPrintEngine{h: (*C.QPrintEngine)(h)}
+	return newQPrintEngine((*C.QPrintEngine)(h))
 }
 
 func (this *QPrintEngine) SetProperty(key QPrintEngine__PrintEnginePropertyKey, value *qt.QVariant) {
@@ -92,8 +89,7 @@ func (this *QPrintEngine) SetProperty(key QPrintEngine__PrintEnginePropertyKey, 
 }
 
 func (this *QPrintEngine) Property(key QPrintEngine__PrintEnginePropertyKey) *qt.QVariant {
-	_ret := C.QPrintEngine_Property(this.h, (C.int)(key))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QPrintEngine_Property(this.h, (C.int)(key))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

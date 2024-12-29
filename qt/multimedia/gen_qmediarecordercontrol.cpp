@@ -8,7 +8,15 @@
 #include <QUrl>
 #include <qmediarecordercontrol.h>
 #include "gen_qmediarecordercontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
+
+void QMediaRecorderControl_virtbase(QMediaRecorderControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
 
 QMetaObject* QMediaRecorderControl_MetaObject(const QMediaRecorderControl* self) {
 	return (QMetaObject*) self->metaObject();

@@ -36,22 +36,20 @@ func (this *QCameraImageCaptureControl) UnsafePointer() unsafe.Pointer {
 }
 
 // newQCameraImageCaptureControl constructs the type using only CGO pointers.
-func newQCameraImageCaptureControl(h *C.QCameraImageCaptureControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QCameraImageCaptureControl {
+func newQCameraImageCaptureControl(h *C.QCameraImageCaptureControl) *QCameraImageCaptureControl {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMediaControl *C.QMediaControl = nil
+	C.QCameraImageCaptureControl_virtbase(h, &outptr_QMediaControl)
+
 	return &QCameraImageCaptureControl{h: h,
-		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
+		QMediaControl: newQMediaControl(outptr_QMediaControl)}
 }
 
 // UnsafeNewQCameraImageCaptureControl constructs the type using only unsafe pointers.
-func UnsafeNewQCameraImageCaptureControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QCameraImageCaptureControl {
-	if h == nil {
-		return nil
-	}
-
-	return &QCameraImageCaptureControl{h: (*C.QCameraImageCaptureControl)(h),
-		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
+func UnsafeNewQCameraImageCaptureControl(h unsafe.Pointer) *QCameraImageCaptureControl {
+	return newQCameraImageCaptureControl((*C.QCameraImageCaptureControl)(h))
 }
 
 func (this *QCameraImageCaptureControl) MetaObject() *qt.QMetaObject {
@@ -163,7 +161,7 @@ func miqt_exec_callback_QCameraImageCaptureControl_ImageCaptured(cb C.intptr_t, 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (int)(requestId)
 
-	slotval2 := qt.UnsafeNewQImage(unsafe.Pointer(preview), nil)
+	slotval2 := qt.UnsafeNewQImage(unsafe.Pointer(preview))
 
 	gofunc(slotval1, slotval2)
 }
@@ -215,7 +213,7 @@ func miqt_exec_callback_QCameraImageCaptureControl_ImageAvailable(cb C.intptr_t,
 	// Convert all CABI parameters to Go parameters
 	slotval1 := (int)(requestId)
 
-	slotval2 := UnsafeNewQVideoFrame(unsafe.Pointer(buffer))
+	slotval2 := newQVideoFrame(buffer)
 
 	gofunc(slotval1, slotval2)
 }

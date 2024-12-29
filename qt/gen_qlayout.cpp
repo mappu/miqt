@@ -16,6 +16,10 @@
 #include <QWidget>
 #include <qlayout.h>
 #include "gen_qlayout.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQLayout : public virtual QLayout {
@@ -617,18 +621,17 @@ public:
 
 };
 
-void QLayout_new(QWidget* parent, QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem) {
-	MiqtVirtualQLayout* ret = new MiqtVirtualQLayout(parent);
-	*outptr_QLayout = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QLayoutItem = static_cast<QLayoutItem*>(ret);
+QLayout* QLayout_new(QWidget* parent) {
+	return new MiqtVirtualQLayout(parent);
 }
 
-void QLayout_new2(QLayout** outptr_QLayout, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem) {
-	MiqtVirtualQLayout* ret = new MiqtVirtualQLayout();
-	*outptr_QLayout = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QLayoutItem = static_cast<QLayoutItem*>(ret);
+QLayout* QLayout_new2() {
+	return new MiqtVirtualQLayout();
+}
+
+void QLayout_virtbase(QLayout* src, QObject** outptr_QObject, QLayoutItem** outptr_QLayoutItem) {
+	*outptr_QObject = static_cast<QObject*>(src);
+	*outptr_QLayoutItem = static_cast<QLayoutItem*>(src);
 }
 
 QMetaObject* QLayout_MetaObject(const QLayout* self) {

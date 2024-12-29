@@ -13,6 +13,10 @@
 #include <QTimerEvent>
 #include <qaudiosource.h>
 #include "gen_qaudiosource.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQAudioSource : public virtual QAudioSource {
@@ -200,40 +204,32 @@ public:
 
 };
 
-void QAudioSource_new(QAudioSource** outptr_QAudioSource, QObject** outptr_QObject) {
-	MiqtVirtualQAudioSource* ret = new MiqtVirtualQAudioSource();
-	*outptr_QAudioSource = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAudioSource* QAudioSource_new() {
+	return new MiqtVirtualQAudioSource();
 }
 
-void QAudioSource_new2(QAudioDevice* audioDeviceInfo, QAudioSource** outptr_QAudioSource, QObject** outptr_QObject) {
-	MiqtVirtualQAudioSource* ret = new MiqtVirtualQAudioSource(*audioDeviceInfo);
-	*outptr_QAudioSource = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAudioSource* QAudioSource_new2(QAudioDevice* audioDeviceInfo) {
+	return new MiqtVirtualQAudioSource(*audioDeviceInfo);
 }
 
-void QAudioSource_new3(QAudioFormat* format, QAudioSource** outptr_QAudioSource, QObject** outptr_QObject) {
-	MiqtVirtualQAudioSource* ret = new MiqtVirtualQAudioSource(*format);
-	*outptr_QAudioSource = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAudioSource* QAudioSource_new3(QAudioFormat* format) {
+	return new MiqtVirtualQAudioSource(*format);
 }
 
-void QAudioSource_new4(QAudioFormat* format, QObject* parent, QAudioSource** outptr_QAudioSource, QObject** outptr_QObject) {
-	MiqtVirtualQAudioSource* ret = new MiqtVirtualQAudioSource(*format, parent);
-	*outptr_QAudioSource = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAudioSource* QAudioSource_new4(QAudioFormat* format, QObject* parent) {
+	return new MiqtVirtualQAudioSource(*format, parent);
 }
 
-void QAudioSource_new5(QAudioDevice* audioDeviceInfo, QAudioFormat* format, QAudioSource** outptr_QAudioSource, QObject** outptr_QObject) {
-	MiqtVirtualQAudioSource* ret = new MiqtVirtualQAudioSource(*audioDeviceInfo, *format);
-	*outptr_QAudioSource = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAudioSource* QAudioSource_new5(QAudioDevice* audioDeviceInfo, QAudioFormat* format) {
+	return new MiqtVirtualQAudioSource(*audioDeviceInfo, *format);
 }
 
-void QAudioSource_new6(QAudioDevice* audioDeviceInfo, QAudioFormat* format, QObject* parent, QAudioSource** outptr_QAudioSource, QObject** outptr_QObject) {
-	MiqtVirtualQAudioSource* ret = new MiqtVirtualQAudioSource(*audioDeviceInfo, *format, parent);
-	*outptr_QAudioSource = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QAudioSource* QAudioSource_new6(QAudioDevice* audioDeviceInfo, QAudioFormat* format, QObject* parent) {
+	return new MiqtVirtualQAudioSource(*audioDeviceInfo, *format, parent);
+}
+
+void QAudioSource_virtbase(QAudioSource* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QAudioSource_MetaObject(const QAudioSource* self) {

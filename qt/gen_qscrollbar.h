@@ -48,10 +48,11 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QScrollBar_new(QWidget* parent, QScrollBar** outptr_QScrollBar, QAbstractSlider** outptr_QAbstractSlider, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QScrollBar_new2(QScrollBar** outptr_QScrollBar, QAbstractSlider** outptr_QAbstractSlider, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QScrollBar_new3(int param1, QScrollBar** outptr_QScrollBar, QAbstractSlider** outptr_QAbstractSlider, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QScrollBar_new4(int param1, QWidget* parent, QScrollBar** outptr_QScrollBar, QAbstractSlider** outptr_QAbstractSlider, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QScrollBar* QScrollBar_new(QWidget* parent);
+QScrollBar* QScrollBar_new2();
+QScrollBar* QScrollBar_new3(int param1);
+QScrollBar* QScrollBar_new4(int param1, QWidget* parent);
+void QScrollBar_virtbase(QScrollBar* src, QAbstractSlider** outptr_QAbstractSlider);
 QMetaObject* QScrollBar_MetaObject(const QScrollBar* self);
 void* QScrollBar_Metacast(QScrollBar* self, const char* param1);
 struct miqt_string QScrollBar_Tr(const char* s);

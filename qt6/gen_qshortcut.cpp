@@ -12,6 +12,10 @@
 #include <QTimerEvent>
 #include <qshortcut.h>
 #include "gen_qshortcut.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQShortcut : public virtual QShortcut {
@@ -202,58 +206,44 @@ public:
 
 };
 
-void QShortcut_new(QObject* parent, QShortcut** outptr_QShortcut, QObject** outptr_QObject) {
-	MiqtVirtualQShortcut* ret = new MiqtVirtualQShortcut(parent);
-	*outptr_QShortcut = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QShortcut* QShortcut_new(QObject* parent) {
+	return new MiqtVirtualQShortcut(parent);
 }
 
-void QShortcut_new2(QKeySequence* key, QObject* parent, QShortcut** outptr_QShortcut, QObject** outptr_QObject) {
-	MiqtVirtualQShortcut* ret = new MiqtVirtualQShortcut(*key, parent);
-	*outptr_QShortcut = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QShortcut* QShortcut_new2(QKeySequence* key, QObject* parent) {
+	return new MiqtVirtualQShortcut(*key, parent);
 }
 
-void QShortcut_new3(int key, QObject* parent, QShortcut** outptr_QShortcut, QObject** outptr_QObject) {
-	MiqtVirtualQShortcut* ret = new MiqtVirtualQShortcut(static_cast<QKeySequence::StandardKey>(key), parent);
-	*outptr_QShortcut = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QShortcut* QShortcut_new3(int key, QObject* parent) {
+	return new MiqtVirtualQShortcut(static_cast<QKeySequence::StandardKey>(key), parent);
 }
 
-void QShortcut_new4(QKeySequence* key, QObject* parent, const char* member, QShortcut** outptr_QShortcut, QObject** outptr_QObject) {
-	MiqtVirtualQShortcut* ret = new MiqtVirtualQShortcut(*key, parent, member);
-	*outptr_QShortcut = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QShortcut* QShortcut_new4(QKeySequence* key, QObject* parent, const char* member) {
+	return new MiqtVirtualQShortcut(*key, parent, member);
 }
 
-void QShortcut_new5(QKeySequence* key, QObject* parent, const char* member, const char* ambiguousMember, QShortcut** outptr_QShortcut, QObject** outptr_QObject) {
-	MiqtVirtualQShortcut* ret = new MiqtVirtualQShortcut(*key, parent, member, ambiguousMember);
-	*outptr_QShortcut = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QShortcut* QShortcut_new5(QKeySequence* key, QObject* parent, const char* member, const char* ambiguousMember) {
+	return new MiqtVirtualQShortcut(*key, parent, member, ambiguousMember);
 }
 
-void QShortcut_new6(QKeySequence* key, QObject* parent, const char* member, const char* ambiguousMember, int context, QShortcut** outptr_QShortcut, QObject** outptr_QObject) {
-	MiqtVirtualQShortcut* ret = new MiqtVirtualQShortcut(*key, parent, member, ambiguousMember, static_cast<Qt::ShortcutContext>(context));
-	*outptr_QShortcut = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QShortcut* QShortcut_new6(QKeySequence* key, QObject* parent, const char* member, const char* ambiguousMember, int context) {
+	return new MiqtVirtualQShortcut(*key, parent, member, ambiguousMember, static_cast<Qt::ShortcutContext>(context));
 }
 
-void QShortcut_new7(int key, QObject* parent, const char* member, QShortcut** outptr_QShortcut, QObject** outptr_QObject) {
-	MiqtVirtualQShortcut* ret = new MiqtVirtualQShortcut(static_cast<QKeySequence::StandardKey>(key), parent, member);
-	*outptr_QShortcut = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QShortcut* QShortcut_new7(int key, QObject* parent, const char* member) {
+	return new MiqtVirtualQShortcut(static_cast<QKeySequence::StandardKey>(key), parent, member);
 }
 
-void QShortcut_new8(int key, QObject* parent, const char* member, const char* ambiguousMember, QShortcut** outptr_QShortcut, QObject** outptr_QObject) {
-	MiqtVirtualQShortcut* ret = new MiqtVirtualQShortcut(static_cast<QKeySequence::StandardKey>(key), parent, member, ambiguousMember);
-	*outptr_QShortcut = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QShortcut* QShortcut_new8(int key, QObject* parent, const char* member, const char* ambiguousMember) {
+	return new MiqtVirtualQShortcut(static_cast<QKeySequence::StandardKey>(key), parent, member, ambiguousMember);
 }
 
-void QShortcut_new9(int key, QObject* parent, const char* member, const char* ambiguousMember, int context, QShortcut** outptr_QShortcut, QObject** outptr_QObject) {
-	MiqtVirtualQShortcut* ret = new MiqtVirtualQShortcut(static_cast<QKeySequence::StandardKey>(key), parent, member, ambiguousMember, static_cast<Qt::ShortcutContext>(context));
-	*outptr_QShortcut = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QShortcut* QShortcut_new9(int key, QObject* parent, const char* member, const char* ambiguousMember, int context) {
+	return new MiqtVirtualQShortcut(static_cast<QKeySequence::StandardKey>(key), parent, member, ambiguousMember, static_cast<Qt::ShortcutContext>(context));
+}
+
+void QShortcut_virtbase(QShortcut* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QShortcut_MetaObject(const QShortcut* self) {

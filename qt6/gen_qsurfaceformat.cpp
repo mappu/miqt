@@ -3,21 +3,22 @@
 #include <QSurfaceFormat>
 #include <qsurfaceformat.h>
 #include "gen_qsurfaceformat.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QSurfaceFormat_new(QSurfaceFormat** outptr_QSurfaceFormat) {
-	QSurfaceFormat* ret = new QSurfaceFormat();
-	*outptr_QSurfaceFormat = ret;
+QSurfaceFormat* QSurfaceFormat_new() {
+	return new QSurfaceFormat();
 }
 
-void QSurfaceFormat_new2(int options, QSurfaceFormat** outptr_QSurfaceFormat) {
-	QSurfaceFormat* ret = new QSurfaceFormat(static_cast<QSurfaceFormat::FormatOptions>(options));
-	*outptr_QSurfaceFormat = ret;
+QSurfaceFormat* QSurfaceFormat_new2(int options) {
+	return new QSurfaceFormat(static_cast<QSurfaceFormat::FormatOptions>(options));
 }
 
-void QSurfaceFormat_new3(QSurfaceFormat* other, QSurfaceFormat** outptr_QSurfaceFormat) {
-	QSurfaceFormat* ret = new QSurfaceFormat(*other);
-	*outptr_QSurfaceFormat = ret;
+QSurfaceFormat* QSurfaceFormat_new3(QSurfaceFormat* other) {
+	return new QSurfaceFormat(*other);
 }
 
 void QSurfaceFormat_OperatorAssign(QSurfaceFormat* self, QSurfaceFormat* other) {

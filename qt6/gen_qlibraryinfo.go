@@ -57,16 +57,13 @@ func newQLibraryInfo(h *C.QLibraryInfo) *QLibraryInfo {
 	if h == nil {
 		return nil
 	}
+
 	return &QLibraryInfo{h: h}
 }
 
 // UnsafeNewQLibraryInfo constructs the type using only unsafe pointers.
 func UnsafeNewQLibraryInfo(h unsafe.Pointer) *QLibraryInfo {
-	if h == nil {
-		return nil
-	}
-
-	return &QLibraryInfo{h: (*C.QLibraryInfo)(h)}
+	return newQLibraryInfo((*C.QLibraryInfo)(h))
 }
 
 func QLibraryInfo_Build() string {
@@ -79,8 +76,7 @@ func QLibraryInfo_IsDebugBuild() bool {
 }
 
 func QLibraryInfo_Version() *QVersionNumber {
-	_ret := C.QLibraryInfo_Version()
-	_goptr := newQVersionNumber(_ret)
+	_goptr := newQVersionNumber(C.QLibraryInfo_Version())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

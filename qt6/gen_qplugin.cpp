@@ -6,6 +6,10 @@
 #include <QStaticPlugin>
 #include <qplugin.h>
 #include "gen_qplugin.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 unsigned char QPluginMetaData_ArchRequirements() {
@@ -33,9 +37,8 @@ void QStaticPlugin_Delete(QStaticPlugin* self, bool isSubclass) {
 	}
 }
 
-void QPluginMetaData__Header_new(QPluginMetaData__Header* param1, QPluginMetaData__Header** outptr_QPluginMetaData__Header) {
-	QPluginMetaData::Header* ret = new QPluginMetaData::Header(*param1);
-	*outptr_QPluginMetaData__Header = ret;
+QPluginMetaData__Header* QPluginMetaData__Header_new(QPluginMetaData__Header* param1) {
+	return new QPluginMetaData::Header(*param1);
 }
 
 void QPluginMetaData__Header_Delete(QPluginMetaData__Header* self, bool isSubclass) {
@@ -46,9 +49,8 @@ void QPluginMetaData__Header_Delete(QPluginMetaData__Header* self, bool isSubcla
 	}
 }
 
-void QPluginMetaData__MagicHeader_new(QPluginMetaData__MagicHeader** outptr_QPluginMetaData__MagicHeader) {
-	QPluginMetaData::MagicHeader* ret = new QPluginMetaData::MagicHeader();
-	*outptr_QPluginMetaData__MagicHeader = ret;
+QPluginMetaData__MagicHeader* QPluginMetaData__MagicHeader_new() {
+	return new QPluginMetaData::MagicHeader();
 }
 
 void QPluginMetaData__MagicHeader_Delete(QPluginMetaData__MagicHeader* self, bool isSubclass) {
@@ -59,14 +61,12 @@ void QPluginMetaData__MagicHeader_Delete(QPluginMetaData__MagicHeader* self, boo
 	}
 }
 
-void QPluginMetaData__ElfNoteHeader_new(unsigned int payloadSize, QPluginMetaData__ElfNoteHeader** outptr_QPluginMetaData__ElfNoteHeader) {
-	QPluginMetaData::ElfNoteHeader* ret = new QPluginMetaData::ElfNoteHeader(static_cast<quint32>(payloadSize));
-	*outptr_QPluginMetaData__ElfNoteHeader = ret;
+QPluginMetaData__ElfNoteHeader* QPluginMetaData__ElfNoteHeader_new(unsigned int payloadSize) {
+	return new QPluginMetaData::ElfNoteHeader(static_cast<quint32>(payloadSize));
 }
 
-void QPluginMetaData__ElfNoteHeader_new2(QPluginMetaData__ElfNoteHeader* param1, QPluginMetaData__ElfNoteHeader** outptr_QPluginMetaData__ElfNoteHeader) {
-	QPluginMetaData::ElfNoteHeader* ret = new QPluginMetaData::ElfNoteHeader(*param1);
-	*outptr_QPluginMetaData__ElfNoteHeader = ret;
+QPluginMetaData__ElfNoteHeader* QPluginMetaData__ElfNoteHeader_new2(QPluginMetaData__ElfNoteHeader* param1) {
+	return new QPluginMetaData::ElfNoteHeader(*param1);
 }
 
 void QPluginMetaData__ElfNoteHeader_Delete(QPluginMetaData__ElfNoteHeader* self, bool isSubclass) {

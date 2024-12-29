@@ -52,50 +52,40 @@ func (this *QFileSystemModel) UnsafePointer() unsafe.Pointer {
 }
 
 // newQFileSystemModel constructs the type using only CGO pointers.
-func newQFileSystemModel(h *C.QFileSystemModel, h_QAbstractItemModel *C.QAbstractItemModel, h_QObject *C.QObject) *QFileSystemModel {
+func newQFileSystemModel(h *C.QFileSystemModel) *QFileSystemModel {
 	if h == nil {
 		return nil
 	}
+	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
+	C.QFileSystemModel_virtbase(h, &outptr_QAbstractItemModel)
+
 	return &QFileSystemModel{h: h,
-		QAbstractItemModel: newQAbstractItemModel(h_QAbstractItemModel, h_QObject)}
+		QAbstractItemModel: newQAbstractItemModel(outptr_QAbstractItemModel)}
 }
 
 // UnsafeNewQFileSystemModel constructs the type using only unsafe pointers.
-func UnsafeNewQFileSystemModel(h unsafe.Pointer, h_QAbstractItemModel unsafe.Pointer, h_QObject unsafe.Pointer) *QFileSystemModel {
-	if h == nil {
-		return nil
-	}
-
-	return &QFileSystemModel{h: (*C.QFileSystemModel)(h),
-		QAbstractItemModel: UnsafeNewQAbstractItemModel(h_QAbstractItemModel, h_QObject)}
+func UnsafeNewQFileSystemModel(h unsafe.Pointer) *QFileSystemModel {
+	return newQFileSystemModel((*C.QFileSystemModel)(h))
 }
 
 // NewQFileSystemModel constructs a new QFileSystemModel object.
 func NewQFileSystemModel() *QFileSystemModel {
-	var outptr_QFileSystemModel *C.QFileSystemModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QFileSystemModel_new(&outptr_QFileSystemModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQFileSystemModel(outptr_QFileSystemModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQFileSystemModel(C.QFileSystemModel_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQFileSystemModel2 constructs a new QFileSystemModel object.
 func NewQFileSystemModel2(parent *QObject) *QFileSystemModel {
-	var outptr_QFileSystemModel *C.QFileSystemModel = nil
-	var outptr_QAbstractItemModel *C.QAbstractItemModel = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QFileSystemModel_new2(parent.cPointer(), &outptr_QFileSystemModel, &outptr_QAbstractItemModel, &outptr_QObject)
-	ret := newQFileSystemModel(outptr_QFileSystemModel, outptr_QAbstractItemModel, outptr_QObject)
+	ret := newQFileSystemModel(C.QFileSystemModel_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QFileSystemModel) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QFileSystemModel_MetaObject(this.h)))
+	return newQMetaObject(C.QFileSystemModel_MetaObject(this.h))
 }
 
 func (this *QFileSystemModel) Metacast(param1 string) unsafe.Pointer {
@@ -211,8 +201,7 @@ func miqt_exec_callback_QFileSystemModel_DirectoryLoaded(cb C.intptr_t, path C.s
 }
 
 func (this *QFileSystemModel) Index(row int, column int, parent *QModelIndex) *QModelIndex {
-	_ret := C.QFileSystemModel_Index(this.h, (C.int)(row), (C.int)(column), parent.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QFileSystemModel_Index(this.h, (C.int)(row), (C.int)(column), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -222,22 +211,19 @@ func (this *QFileSystemModel) IndexWithPath(path string) *QModelIndex {
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	_ret := C.QFileSystemModel_IndexWithPath(this.h, path_ms)
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QFileSystemModel_IndexWithPath(this.h, path_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileSystemModel) Parent(child *QModelIndex) *QModelIndex {
-	_ret := C.QFileSystemModel_Parent(this.h, child.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QFileSystemModel_Parent(this.h, child.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileSystemModel) Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
-	_ret := C.QFileSystemModel_Sibling(this.h, (C.int)(row), (C.int)(column), idx.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QFileSystemModel_Sibling(this.h, (C.int)(row), (C.int)(column), idx.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -263,15 +249,13 @@ func (this *QFileSystemModel) ColumnCount(parent *QModelIndex) int {
 }
 
 func (this *QFileSystemModel) MyComputer() *QVariant {
-	_ret := C.QFileSystemModel_MyComputer(this.h)
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QFileSystemModel_MyComputer(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileSystemModel) Data(index *QModelIndex, role int) *QVariant {
-	_ret := C.QFileSystemModel_Data(this.h, index.cPointer(), (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QFileSystemModel_Data(this.h, index.cPointer(), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -281,8 +265,7 @@ func (this *QFileSystemModel) SetData(index *QModelIndex, value *QVariant, role 
 }
 
 func (this *QFileSystemModel) HeaderData(section int, orientation Orientation, role int) *QVariant {
-	_ret := C.QFileSystemModel_HeaderData(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QFileSystemModel_HeaderData(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -315,7 +298,7 @@ func (this *QFileSystemModel) MimeData(indexes []QModelIndex) *QMimeData {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
-	return UnsafeNewQMimeData(unsafe.Pointer(C.QFileSystemModel_MimeData(this.h, indexes_ma)), nil)
+	return newQMimeData(C.QFileSystemModel_MimeData(this.h, indexes_ma))
 }
 
 func (this *QFileSystemModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
@@ -348,8 +331,7 @@ func (this *QFileSystemModel) SetRootPath(path string) *QModelIndex {
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	_ret := C.QFileSystemModel_SetRootPath(this.h, path_ms)
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QFileSystemModel_SetRootPath(this.h, path_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -362,8 +344,7 @@ func (this *QFileSystemModel) RootPath() string {
 }
 
 func (this *QFileSystemModel) RootDirectory() *QDir {
-	_ret := C.QFileSystemModel_RootDirectory(this.h)
-	_goptr := newQDir(_ret)
+	_goptr := newQDir(C.QFileSystemModel_RootDirectory(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -373,7 +354,7 @@ func (this *QFileSystemModel) SetIconProvider(provider *QAbstractFileIconProvide
 }
 
 func (this *QFileSystemModel) IconProvider() *QAbstractFileIconProvider {
-	return UnsafeNewQAbstractFileIconProvider(unsafe.Pointer(C.QFileSystemModel_IconProvider(this.h)))
+	return newQAbstractFileIconProvider(C.QFileSystemModel_IconProvider(this.h))
 }
 
 func (this *QFileSystemModel) SetFilter(filters QDir__Filter) {
@@ -474,8 +455,7 @@ func (this *QFileSystemModel) Type(index *QModelIndex) string {
 }
 
 func (this *QFileSystemModel) LastModified(index *QModelIndex) *QDateTime {
-	_ret := C.QFileSystemModel_LastModified(this.h, index.cPointer())
-	_goptr := newQDateTime(_ret)
+	_goptr := newQDateTime(C.QFileSystemModel_LastModified(this.h, index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -485,8 +465,7 @@ func (this *QFileSystemModel) Mkdir(parent *QModelIndex, name string) *QModelInd
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	_ret := C.QFileSystemModel_Mkdir(this.h, parent.cPointer(), name_ms)
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QFileSystemModel_Mkdir(this.h, parent.cPointer(), name_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -503,8 +482,7 @@ func (this *QFileSystemModel) FileName(index *QModelIndex) string {
 }
 
 func (this *QFileSystemModel) FileIcon(index *QModelIndex) *QIcon {
-	_ret := C.QFileSystemModel_FileIcon(this.h, index.cPointer())
-	_goptr := newQIcon(_ret)
+	_goptr := newQIcon(C.QFileSystemModel_FileIcon(this.h, index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -514,8 +492,7 @@ func (this *QFileSystemModel) Permissions(index *QModelIndex) QFileDevice__Permi
 }
 
 func (this *QFileSystemModel) FileInfo(index *QModelIndex) *QFileInfo {
-	_ret := C.QFileSystemModel_FileInfo(this.h, index.cPointer())
-	_goptr := newQFileInfo(_ret)
+	_goptr := newQFileInfo(C.QFileSystemModel_FileInfo(this.h, index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -551,15 +528,13 @@ func (this *QFileSystemModel) Index2(path string, column int) *QModelIndex {
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	_ret := C.QFileSystemModel_Index2(this.h, path_ms, (C.int)(column))
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QFileSystemModel_Index2(this.h, path_ms, (C.int)(column)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileSystemModel) MyComputer1(role int) *QVariant {
-	_ret := C.QFileSystemModel_MyComputer1(this.h, (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QFileSystemModel_MyComputer1(this.h, (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -570,13 +545,15 @@ func (this *QFileSystemModel) SetOption2(option QFileSystemModel__Option, on boo
 
 func (this *QFileSystemModel) callVirtualBase_Index(row int, column int, parent *QModelIndex) *QModelIndex {
 
-	_ret := C.QFileSystemModel_virtualbase_Index(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), parent.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QFileSystemModel_virtualbase_Index(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QFileSystemModel) OnIndex(slot func(super func(row int, column int, parent *QModelIndex) *QModelIndex, row int, column int, parent *QModelIndex) *QModelIndex) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_Index(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -592,7 +569,7 @@ func miqt_exec_callback_QFileSystemModel_Index(self *C.QFileSystemModel, cb C.in
 
 	slotval2 := (int)(column)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_Index, slotval1, slotval2, slotval3)
 
@@ -602,13 +579,15 @@ func miqt_exec_callback_QFileSystemModel_Index(self *C.QFileSystemModel, cb C.in
 
 func (this *QFileSystemModel) callVirtualBase_Parent(child *QModelIndex) *QModelIndex {
 
-	_ret := C.QFileSystemModel_virtualbase_Parent(unsafe.Pointer(this.h), child.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QFileSystemModel_virtualbase_Parent(unsafe.Pointer(this.h), child.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QFileSystemModel) OnParent(slot func(super func(child *QModelIndex) *QModelIndex, child *QModelIndex) *QModelIndex) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_Parent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -620,7 +599,7 @@ func miqt_exec_callback_QFileSystemModel_Parent(self *C.QFileSystemModel, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(child))
+	slotval1 := newQModelIndex(child)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_Parent, slotval1)
 
@@ -630,13 +609,15 @@ func miqt_exec_callback_QFileSystemModel_Parent(self *C.QFileSystemModel, cb C.i
 
 func (this *QFileSystemModel) callVirtualBase_Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
 
-	_ret := C.QFileSystemModel_virtualbase_Sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), idx.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QFileSystemModel_virtualbase_Sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), idx.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QFileSystemModel) OnSibling(slot func(super func(row int, column int, idx *QModelIndex) *QModelIndex, row int, column int, idx *QModelIndex) *QModelIndex) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_Sibling(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -652,7 +633,7 @@ func miqt_exec_callback_QFileSystemModel_Sibling(self *C.QFileSystemModel, cb C.
 
 	slotval2 := (int)(column)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(idx))
+	slotval3 := newQModelIndex(idx)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_Sibling, slotval1, slotval2, slotval3)
 
@@ -666,6 +647,9 @@ func (this *QFileSystemModel) callVirtualBase_HasChildren(parent *QModelIndex) b
 
 }
 func (this *QFileSystemModel) OnHasChildren(slot func(super func(parent *QModelIndex) bool, parent *QModelIndex) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_HasChildren(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -677,7 +661,7 @@ func miqt_exec_callback_QFileSystemModel_HasChildren(self *C.QFileSystemModel, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_HasChildren, slotval1)
 
@@ -691,6 +675,9 @@ func (this *QFileSystemModel) callVirtualBase_CanFetchMore(parent *QModelIndex) 
 
 }
 func (this *QFileSystemModel) OnCanFetchMore(slot func(super func(parent *QModelIndex) bool, parent *QModelIndex) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_CanFetchMore(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -702,7 +689,7 @@ func miqt_exec_callback_QFileSystemModel_CanFetchMore(self *C.QFileSystemModel, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_CanFetchMore, slotval1)
 
@@ -716,6 +703,9 @@ func (this *QFileSystemModel) callVirtualBase_FetchMore(parent *QModelIndex) {
 
 }
 func (this *QFileSystemModel) OnFetchMore(slot func(super func(parent *QModelIndex), parent *QModelIndex)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_FetchMore(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -727,7 +717,7 @@ func miqt_exec_callback_QFileSystemModel_FetchMore(self *C.QFileSystemModel, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	gofunc((&QFileSystemModel{h: self}).callVirtualBase_FetchMore, slotval1)
 
@@ -739,6 +729,9 @@ func (this *QFileSystemModel) callVirtualBase_RowCount(parent *QModelIndex) int 
 
 }
 func (this *QFileSystemModel) OnRowCount(slot func(super func(parent *QModelIndex) int, parent *QModelIndex) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_RowCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -750,7 +743,7 @@ func miqt_exec_callback_QFileSystemModel_RowCount(self *C.QFileSystemModel, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_RowCount, slotval1)
 
@@ -764,6 +757,9 @@ func (this *QFileSystemModel) callVirtualBase_ColumnCount(parent *QModelIndex) i
 
 }
 func (this *QFileSystemModel) OnColumnCount(slot func(super func(parent *QModelIndex) int, parent *QModelIndex) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_ColumnCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -775,7 +771,7 @@ func miqt_exec_callback_QFileSystemModel_ColumnCount(self *C.QFileSystemModel, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval1 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_ColumnCount, slotval1)
 
@@ -785,13 +781,15 @@ func miqt_exec_callback_QFileSystemModel_ColumnCount(self *C.QFileSystemModel, c
 
 func (this *QFileSystemModel) callVirtualBase_Data(index *QModelIndex, role int) *QVariant {
 
-	_ret := C.QFileSystemModel_virtualbase_Data(unsafe.Pointer(this.h), index.cPointer(), (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QFileSystemModel_virtualbase_Data(unsafe.Pointer(this.h), index.cPointer(), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QFileSystemModel) OnData(slot func(super func(index *QModelIndex, role int) *QVariant, index *QModelIndex, role int) *QVariant) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_Data(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -803,7 +801,8 @@ func miqt_exec_callback_QFileSystemModel_Data(self *C.QFileSystemModel, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
+
 	slotval2 := (int)(role)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_Data, slotval1, slotval2)
@@ -818,6 +817,9 @@ func (this *QFileSystemModel) callVirtualBase_SetData(index *QModelIndex, value 
 
 }
 func (this *QFileSystemModel) OnSetData(slot func(super func(index *QModelIndex, value *QVariant, role int) bool, index *QModelIndex, value *QVariant, role int) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_SetData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -829,8 +831,10 @@ func miqt_exec_callback_QFileSystemModel_SetData(self *C.QFileSystemModel, cb C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
-	slotval2 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval1 := newQModelIndex(index)
+
+	slotval2 := newQVariant(value)
+
 	slotval3 := (int)(role)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_SetData, slotval1, slotval2, slotval3)
@@ -841,13 +845,15 @@ func miqt_exec_callback_QFileSystemModel_SetData(self *C.QFileSystemModel, cb C.
 
 func (this *QFileSystemModel) callVirtualBase_HeaderData(section int, orientation Orientation, role int) *QVariant {
 
-	_ret := C.QFileSystemModel_virtualbase_HeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (C.int)(role))
-	_goptr := newQVariant(_ret)
+	_goptr := newQVariant(C.QFileSystemModel_virtualbase_HeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QFileSystemModel) OnHeaderData(slot func(super func(section int, orientation Orientation, role int) *QVariant, section int, orientation Orientation, role int) *QVariant) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_HeaderData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -877,6 +883,9 @@ func (this *QFileSystemModel) callVirtualBase_Flags(index *QModelIndex) ItemFlag
 
 }
 func (this *QFileSystemModel) OnFlags(slot func(super func(index *QModelIndex) ItemFlag, index *QModelIndex) ItemFlag) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_Flags(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -888,7 +897,7 @@ func miqt_exec_callback_QFileSystemModel_Flags(self *C.QFileSystemModel, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_Flags, slotval1)
 
@@ -902,6 +911,9 @@ func (this *QFileSystemModel) callVirtualBase_Sort(column int, order SortOrder) 
 
 }
 func (this *QFileSystemModel) OnSort(slot func(super func(column int, order SortOrder), column int, order SortOrder)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_Sort(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -936,6 +948,9 @@ func (this *QFileSystemModel) callVirtualBase_MimeTypes() []string {
 
 }
 func (this *QFileSystemModel) OnMimeTypes(slot func(super func() []string) []string) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_MimeTypes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -970,9 +985,13 @@ func (this *QFileSystemModel) callVirtualBase_MimeData(indexes []QModelIndex) *Q
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 
-	return UnsafeNewQMimeData(unsafe.Pointer(C.QFileSystemModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma)), nil)
+	return newQMimeData(C.QFileSystemModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma))
+
 }
 func (this *QFileSystemModel) OnMimeData(slot func(super func(indexes []QModelIndex) *QMimeData, indexes []QModelIndex) *QMimeData) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_MimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -988,8 +1007,7 @@ func miqt_exec_callback_QFileSystemModel_MimeData(self *C.QFileSystemModel, cb C
 	indexes_ret := make([]QModelIndex, int(indexes_ma.len))
 	indexes_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(indexes_ma.data)) // hey ya
 	for i := 0; i < int(indexes_ma.len); i++ {
-		indexes_lv_ret := indexes_outCast[i]
-		indexes_lv_goptr := newQModelIndex(indexes_lv_ret)
+		indexes_lv_goptr := newQModelIndex(indexes_outCast[i])
 		indexes_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		indexes_ret[i] = *indexes_lv_goptr
 	}
@@ -1007,6 +1025,9 @@ func (this *QFileSystemModel) callVirtualBase_DropMimeData(data *QMimeData, acti
 
 }
 func (this *QFileSystemModel) OnDropMimeData(slot func(super func(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool, data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_DropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1018,14 +1039,15 @@ func miqt_exec_callback_QFileSystemModel_DropMimeData(self *C.QFileSystemModel, 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMimeData(unsafe.Pointer(data), nil)
+	slotval1 := newQMimeData(data)
+
 	slotval2 := (DropAction)(action)
 
 	slotval3 := (int)(row)
 
 	slotval4 := (int)(column)
 
-	slotval5 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval5 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_DropMimeData, slotval1, slotval2, slotval3, slotval4, slotval5)
 
@@ -1039,6 +1061,9 @@ func (this *QFileSystemModel) callVirtualBase_SupportedDropActions() DropAction 
 
 }
 func (this *QFileSystemModel) OnSupportedDropActions(slot func(super func() DropAction) DropAction) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_SupportedDropActions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1074,6 +1099,9 @@ func (this *QFileSystemModel) callVirtualBase_RoleNames() map[int][]byte {
 
 }
 func (this *QFileSystemModel) OnRoleNames(slot func(super func() map[int][]byte) map[int][]byte) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_RoleNames(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1114,6 +1142,9 @@ func (this *QFileSystemModel) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QFileSystemModel) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1125,7 +1156,7 @@ func miqt_exec_callback_QFileSystemModel_TimerEvent(self *C.QFileSystemModel, cb
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QFileSystemModel{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -1137,6 +1168,9 @@ func (this *QFileSystemModel) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QFileSystemModel) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1148,7 +1182,7 @@ func miqt_exec_callback_QFileSystemModel_Event(self *C.QFileSystemModel, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_Event, slotval1)
 
@@ -1162,6 +1196,9 @@ func (this *QFileSystemModel) callVirtualBase_SetHeaderData(section int, orienta
 
 }
 func (this *QFileSystemModel) OnSetHeaderData(slot func(super func(section int, orientation Orientation, value *QVariant, role int) bool, section int, orientation Orientation, value *QVariant, role int) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_SetHeaderData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1177,7 +1214,8 @@ func miqt_exec_callback_QFileSystemModel_SetHeaderData(self *C.QFileSystemModel,
 
 	slotval2 := (Orientation)(orientation)
 
-	slotval3 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval3 := newQVariant(value)
+
 	slotval4 := (int)(role)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_SetHeaderData, slotval1, slotval2, slotval3, slotval4)
@@ -1195,8 +1233,7 @@ func (this *QFileSystemModel) callVirtualBase_ItemData(index *QModelIndex) map[i
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (int)(_Keys[i])
 
-		_mapval_ret := _Values[i]
-		_mapval_goptr := newQVariant(_mapval_ret)
+		_mapval_goptr := newQVariant(_Values[i])
 		_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_entry_Value := *_mapval_goptr
 
@@ -1206,6 +1243,9 @@ func (this *QFileSystemModel) callVirtualBase_ItemData(index *QModelIndex) map[i
 
 }
 func (this *QFileSystemModel) OnItemData(slot func(super func(index *QModelIndex) map[int]QVariant, index *QModelIndex) map[int]QVariant) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_ItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1217,7 +1257,7 @@ func miqt_exec_callback_QFileSystemModel_ItemData(self *C.QFileSystemModel, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_ItemData, slotval1)
 	virtualReturn_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
@@ -1261,6 +1301,9 @@ func (this *QFileSystemModel) callVirtualBase_SetItemData(index *QModelIndex, ro
 
 }
 func (this *QFileSystemModel) OnSetItemData(slot func(super func(index *QModelIndex, roles map[int]QVariant) bool, index *QModelIndex, roles map[int]QVariant) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_SetItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1272,7 +1315,8 @@ func miqt_exec_callback_QFileSystemModel_SetItemData(self *C.QFileSystemModel, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
+
 	var roles_mm C.struct_miqt_map = roles
 	roles_ret := make(map[int]QVariant, int(roles_mm.len))
 	roles_Keys := (*[0xffff]C.int)(unsafe.Pointer(roles_mm.keys))
@@ -1280,8 +1324,7 @@ func miqt_exec_callback_QFileSystemModel_SetItemData(self *C.QFileSystemModel, c
 	for i := 0; i < int(roles_mm.len); i++ {
 		roles_entry_Key := (int)(roles_Keys[i])
 
-		roles_mapval_ret := roles_Values[i]
-		roles_mapval_goptr := newQVariant(roles_mapval_ret)
+		roles_mapval_goptr := newQVariant(roles_Values[i])
 		roles_mapval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		roles_entry_Value := *roles_mapval_goptr
 
@@ -1301,6 +1344,9 @@ func (this *QFileSystemModel) callVirtualBase_ClearItemData(index *QModelIndex) 
 
 }
 func (this *QFileSystemModel) OnClearItemData(slot func(super func(index *QModelIndex) bool, index *QModelIndex) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_ClearItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1312,7 +1358,7 @@ func miqt_exec_callback_QFileSystemModel_ClearItemData(self *C.QFileSystemModel,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_ClearItemData, slotval1)
 
@@ -1326,6 +1372,9 @@ func (this *QFileSystemModel) callVirtualBase_CanDropMimeData(data *QMimeData, a
 
 }
 func (this *QFileSystemModel) OnCanDropMimeData(slot func(super func(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool, data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_CanDropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1337,14 +1386,15 @@ func miqt_exec_callback_QFileSystemModel_CanDropMimeData(self *C.QFileSystemMode
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMimeData(unsafe.Pointer(data), nil)
+	slotval1 := newQMimeData(data)
+
 	slotval2 := (DropAction)(action)
 
 	slotval3 := (int)(row)
 
 	slotval4 := (int)(column)
 
-	slotval5 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval5 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_CanDropMimeData, slotval1, slotval2, slotval3, slotval4, slotval5)
 
@@ -1358,6 +1408,9 @@ func (this *QFileSystemModel) callVirtualBase_SupportedDragActions() DropAction 
 
 }
 func (this *QFileSystemModel) OnSupportedDragActions(slot func(super func() DropAction) DropAction) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_SupportedDragActions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1380,6 +1433,9 @@ func (this *QFileSystemModel) callVirtualBase_InsertRows(row int, count int, par
 
 }
 func (this *QFileSystemModel) OnInsertRows(slot func(super func(row int, count int, parent *QModelIndex) bool, row int, count int, parent *QModelIndex) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_InsertRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1395,7 +1451,7 @@ func miqt_exec_callback_QFileSystemModel_InsertRows(self *C.QFileSystemModel, cb
 
 	slotval2 := (int)(count)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_InsertRows, slotval1, slotval2, slotval3)
 
@@ -1409,6 +1465,9 @@ func (this *QFileSystemModel) callVirtualBase_InsertColumns(column int, count in
 
 }
 func (this *QFileSystemModel) OnInsertColumns(slot func(super func(column int, count int, parent *QModelIndex) bool, column int, count int, parent *QModelIndex) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_InsertColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1424,7 +1483,7 @@ func miqt_exec_callback_QFileSystemModel_InsertColumns(self *C.QFileSystemModel,
 
 	slotval2 := (int)(count)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_InsertColumns, slotval1, slotval2, slotval3)
 
@@ -1438,6 +1497,9 @@ func (this *QFileSystemModel) callVirtualBase_RemoveRows(row int, count int, par
 
 }
 func (this *QFileSystemModel) OnRemoveRows(slot func(super func(row int, count int, parent *QModelIndex) bool, row int, count int, parent *QModelIndex) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_RemoveRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1453,7 +1515,7 @@ func miqt_exec_callback_QFileSystemModel_RemoveRows(self *C.QFileSystemModel, cb
 
 	slotval2 := (int)(count)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_RemoveRows, slotval1, slotval2, slotval3)
 
@@ -1467,6 +1529,9 @@ func (this *QFileSystemModel) callVirtualBase_RemoveColumns(column int, count in
 
 }
 func (this *QFileSystemModel) OnRemoveColumns(slot func(super func(column int, count int, parent *QModelIndex) bool, column int, count int, parent *QModelIndex) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_RemoveColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1482,7 +1547,7 @@ func miqt_exec_callback_QFileSystemModel_RemoveColumns(self *C.QFileSystemModel,
 
 	slotval2 := (int)(count)
 
-	slotval3 := UnsafeNewQModelIndex(unsafe.Pointer(parent))
+	slotval3 := newQModelIndex(parent)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_RemoveColumns, slotval1, slotval2, slotval3)
 
@@ -1496,6 +1561,9 @@ func (this *QFileSystemModel) callVirtualBase_MoveRows(sourceParent *QModelIndex
 
 }
 func (this *QFileSystemModel) OnMoveRows(slot func(super func(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool, sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_MoveRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1507,12 +1575,14 @@ func miqt_exec_callback_QFileSystemModel_MoveRows(self *C.QFileSystemModel, cb C
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(sourceParent))
+	slotval1 := newQModelIndex(sourceParent)
+
 	slotval2 := (int)(sourceRow)
 
 	slotval3 := (int)(count)
 
-	slotval4 := UnsafeNewQModelIndex(unsafe.Pointer(destinationParent))
+	slotval4 := newQModelIndex(destinationParent)
+
 	slotval5 := (int)(destinationChild)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_MoveRows, slotval1, slotval2, slotval3, slotval4, slotval5)
@@ -1527,6 +1597,9 @@ func (this *QFileSystemModel) callVirtualBase_MoveColumns(sourceParent *QModelIn
 
 }
 func (this *QFileSystemModel) OnMoveColumns(slot func(super func(sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool, sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_MoveColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1538,12 +1611,14 @@ func miqt_exec_callback_QFileSystemModel_MoveColumns(self *C.QFileSystemModel, c
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(sourceParent))
+	slotval1 := newQModelIndex(sourceParent)
+
 	slotval2 := (int)(sourceColumn)
 
 	slotval3 := (int)(count)
 
-	slotval4 := UnsafeNewQModelIndex(unsafe.Pointer(destinationParent))
+	slotval4 := newQModelIndex(destinationParent)
+
 	slotval5 := (int)(destinationChild)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_MoveColumns, slotval1, slotval2, slotval3, slotval4, slotval5)
@@ -1554,13 +1629,15 @@ func miqt_exec_callback_QFileSystemModel_MoveColumns(self *C.QFileSystemModel, c
 
 func (this *QFileSystemModel) callVirtualBase_Buddy(index *QModelIndex) *QModelIndex {
 
-	_ret := C.QFileSystemModel_virtualbase_Buddy(unsafe.Pointer(this.h), index.cPointer())
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QFileSystemModel_virtualbase_Buddy(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QFileSystemModel) OnBuddy(slot func(super func(index *QModelIndex) *QModelIndex, index *QModelIndex) *QModelIndex) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_Buddy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1572,7 +1649,7 @@ func miqt_exec_callback_QFileSystemModel_Buddy(self *C.QFileSystemModel, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_Buddy, slotval1)
 
@@ -1586,8 +1663,7 @@ func (this *QFileSystemModel) callVirtualBase_Match(start *QModelIndex, role int
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQModelIndex(_lv_ret)
+		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -1595,6 +1671,9 @@ func (this *QFileSystemModel) callVirtualBase_Match(start *QModelIndex, role int
 
 }
 func (this *QFileSystemModel) OnMatch(slot func(super func(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex, start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_Match(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1606,10 +1685,12 @@ func miqt_exec_callback_QFileSystemModel_Match(self *C.QFileSystemModel, cb C.in
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(start))
+	slotval1 := newQModelIndex(start)
+
 	slotval2 := (int)(role)
 
-	slotval3 := UnsafeNewQVariant(unsafe.Pointer(value))
+	slotval3 := newQVariant(value)
+
 	slotval4 := (int)(hits)
 
 	slotval5 := (MatchFlag)(flags)
@@ -1628,13 +1709,15 @@ func miqt_exec_callback_QFileSystemModel_Match(self *C.QFileSystemModel, cb C.in
 
 func (this *QFileSystemModel) callVirtualBase_Span(index *QModelIndex) *QSize {
 
-	_ret := C.QFileSystemModel_virtualbase_Span(unsafe.Pointer(this.h), index.cPointer())
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QFileSystemModel_virtualbase_Span(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
 func (this *QFileSystemModel) OnSpan(slot func(super func(index *QModelIndex) *QSize, index *QModelIndex) *QSize) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_Span(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1646,7 +1729,7 @@ func miqt_exec_callback_QFileSystemModel_Span(self *C.QFileSystemModel, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QFileSystemModel{h: self}).callVirtualBase_Span, slotval1)
 
@@ -1660,6 +1743,9 @@ func (this *QFileSystemModel) callVirtualBase_MultiData(index *QModelIndex, role
 
 }
 func (this *QFileSystemModel) OnMultiData(slot func(super func(index *QModelIndex, roleDataSpan QModelRoleDataSpan), index *QModelIndex, roleDataSpan QModelRoleDataSpan)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_MultiData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1671,9 +1757,9 @@ func miqt_exec_callback_QFileSystemModel_MultiData(self *C.QFileSystemModel, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
-	roleDataSpan_ret := roleDataSpan
-	roleDataSpan_goptr := newQModelRoleDataSpan(roleDataSpan_ret)
+	slotval1 := newQModelIndex(index)
+
+	roleDataSpan_goptr := newQModelRoleDataSpan(roleDataSpan)
 	roleDataSpan_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	slotval2 := *roleDataSpan_goptr
 
@@ -1687,6 +1773,9 @@ func (this *QFileSystemModel) callVirtualBase_Submit() bool {
 
 }
 func (this *QFileSystemModel) OnSubmit(slot func(super func() bool) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_Submit(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1709,6 +1798,9 @@ func (this *QFileSystemModel) callVirtualBase_Revert() {
 
 }
 func (this *QFileSystemModel) OnRevert(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_Revert(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1729,6 +1821,9 @@ func (this *QFileSystemModel) callVirtualBase_ResetInternalData() {
 
 }
 func (this *QFileSystemModel) OnResetInternalData(slot func(super func())) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QFileSystemModel_override_virtual_ResetInternalData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

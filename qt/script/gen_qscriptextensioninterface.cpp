@@ -7,6 +7,10 @@
 #include <cstring>
 #include <qscriptextensioninterface.h>
 #include "gen_qscriptextensioninterface.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQScriptExtensionInterface : public virtual QScriptExtensionInterface {
@@ -64,10 +68,12 @@ public:
 
 };
 
-void QScriptExtensionInterface_new(QScriptExtensionInterface* param1, QScriptExtensionInterface** outptr_QScriptExtensionInterface, QFactoryInterface** outptr_QFactoryInterface) {
-	MiqtVirtualQScriptExtensionInterface* ret = new MiqtVirtualQScriptExtensionInterface(*param1);
-	*outptr_QScriptExtensionInterface = ret;
-	*outptr_QFactoryInterface = static_cast<QFactoryInterface*>(ret);
+QScriptExtensionInterface* QScriptExtensionInterface_new(QScriptExtensionInterface* param1) {
+	return new MiqtVirtualQScriptExtensionInterface(*param1);
+}
+
+void QScriptExtensionInterface_virtbase(QScriptExtensionInterface* src, QFactoryInterface** outptr_QFactoryInterface) {
+	*outptr_QFactoryInterface = static_cast<QFactoryInterface*>(src);
 }
 
 void QScriptExtensionInterface_Initialize(QScriptExtensionInterface* self, struct miqt_string key, QScriptEngine* engine) {

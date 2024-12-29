@@ -48,34 +48,27 @@ func newQHttpPart(h *C.QHttpPart) *QHttpPart {
 	if h == nil {
 		return nil
 	}
+
 	return &QHttpPart{h: h}
 }
 
 // UnsafeNewQHttpPart constructs the type using only unsafe pointers.
 func UnsafeNewQHttpPart(h unsafe.Pointer) *QHttpPart {
-	if h == nil {
-		return nil
-	}
-
-	return &QHttpPart{h: (*C.QHttpPart)(h)}
+	return newQHttpPart((*C.QHttpPart)(h))
 }
 
 // NewQHttpPart constructs a new QHttpPart object.
 func NewQHttpPart() *QHttpPart {
-	var outptr_QHttpPart *C.QHttpPart = nil
 
-	C.QHttpPart_new(&outptr_QHttpPart)
-	ret := newQHttpPart(outptr_QHttpPart)
+	ret := newQHttpPart(C.QHttpPart_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQHttpPart2 constructs a new QHttpPart object.
 func NewQHttpPart2(other *QHttpPart) *QHttpPart {
-	var outptr_QHttpPart *C.QHttpPart = nil
 
-	C.QHttpPart_new2(other.cPointer(), &outptr_QHttpPart)
-	ret := newQHttpPart(outptr_QHttpPart)
+	ret := newQHttpPart(C.QHttpPart_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -156,64 +149,50 @@ func (this *QHttpMultiPart) UnsafePointer() unsafe.Pointer {
 }
 
 // newQHttpMultiPart constructs the type using only CGO pointers.
-func newQHttpMultiPart(h *C.QHttpMultiPart, h_QObject *C.QObject) *QHttpMultiPart {
+func newQHttpMultiPart(h *C.QHttpMultiPart) *QHttpMultiPart {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QHttpMultiPart_virtbase(h, &outptr_QObject)
+
 	return &QHttpMultiPart{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQHttpMultiPart constructs the type using only unsafe pointers.
-func UnsafeNewQHttpMultiPart(h unsafe.Pointer, h_QObject unsafe.Pointer) *QHttpMultiPart {
-	if h == nil {
-		return nil
-	}
-
-	return &QHttpMultiPart{h: (*C.QHttpMultiPart)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQHttpMultiPart(h unsafe.Pointer) *QHttpMultiPart {
+	return newQHttpMultiPart((*C.QHttpMultiPart)(h))
 }
 
 // NewQHttpMultiPart constructs a new QHttpMultiPart object.
 func NewQHttpMultiPart() *QHttpMultiPart {
-	var outptr_QHttpMultiPart *C.QHttpMultiPart = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QHttpMultiPart_new(&outptr_QHttpMultiPart, &outptr_QObject)
-	ret := newQHttpMultiPart(outptr_QHttpMultiPart, outptr_QObject)
+	ret := newQHttpMultiPart(C.QHttpMultiPart_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQHttpMultiPart2 constructs a new QHttpMultiPart object.
 func NewQHttpMultiPart2(contentType QHttpMultiPart__ContentType) *QHttpMultiPart {
-	var outptr_QHttpMultiPart *C.QHttpMultiPart = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QHttpMultiPart_new2((C.int)(contentType), &outptr_QHttpMultiPart, &outptr_QObject)
-	ret := newQHttpMultiPart(outptr_QHttpMultiPart, outptr_QObject)
+	ret := newQHttpMultiPart(C.QHttpMultiPart_new2((C.int)(contentType)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQHttpMultiPart3 constructs a new QHttpMultiPart object.
 func NewQHttpMultiPart3(parent *qt6.QObject) *QHttpMultiPart {
-	var outptr_QHttpMultiPart *C.QHttpMultiPart = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QHttpMultiPart_new3((*C.QObject)(parent.UnsafePointer()), &outptr_QHttpMultiPart, &outptr_QObject)
-	ret := newQHttpMultiPart(outptr_QHttpMultiPart, outptr_QObject)
+	ret := newQHttpMultiPart(C.QHttpMultiPart_new3((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQHttpMultiPart4 constructs a new QHttpMultiPart object.
 func NewQHttpMultiPart4(contentType QHttpMultiPart__ContentType, parent *qt6.QObject) *QHttpMultiPart {
-	var outptr_QHttpMultiPart *C.QHttpMultiPart = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QHttpMultiPart_new4((C.int)(contentType), (*C.QObject)(parent.UnsafePointer()), &outptr_QHttpMultiPart, &outptr_QObject)
-	ret := newQHttpMultiPart(outptr_QHttpMultiPart, outptr_QObject)
+	ret := newQHttpMultiPart(C.QHttpMultiPart_new4((C.int)(contentType), (*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -287,6 +266,9 @@ func (this *QHttpMultiPart) callVirtualBase_Event(event *qt6.QEvent) bool {
 
 }
 func (this *QHttpMultiPart) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QHttpMultiPart_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -312,6 +294,9 @@ func (this *QHttpMultiPart) callVirtualBase_EventFilter(watched *qt6.QObject, ev
 
 }
 func (this *QHttpMultiPart) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QHttpMultiPart_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -324,6 +309,7 @@ func miqt_exec_callback_QHttpMultiPart_EventFilter(self *C.QHttpMultiPart, cb C.
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QHttpMultiPart{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
@@ -338,6 +324,9 @@ func (this *QHttpMultiPart) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
 
 }
 func (this *QHttpMultiPart) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QHttpMultiPart_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -349,7 +338,7 @@ func miqt_exec_callback_QHttpMultiPart_TimerEvent(self *C.QHttpMultiPart, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QHttpMultiPart{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -361,6 +350,9 @@ func (this *QHttpMultiPart) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
 
 }
 func (this *QHttpMultiPart) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QHttpMultiPart_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -372,7 +364,7 @@ func miqt_exec_callback_QHttpMultiPart_ChildEvent(self *C.QHttpMultiPart, cb C.i
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QHttpMultiPart{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -384,6 +376,9 @@ func (this *QHttpMultiPart) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 
 }
 func (this *QHttpMultiPart) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QHttpMultiPart_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -407,6 +402,9 @@ func (this *QHttpMultiPart) callVirtualBase_ConnectNotify(signal *qt6.QMetaMetho
 
 }
 func (this *QHttpMultiPart) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QHttpMultiPart_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -430,6 +428,9 @@ func (this *QHttpMultiPart) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMe
 
 }
 func (this *QHttpMultiPart) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QHttpMultiPart_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

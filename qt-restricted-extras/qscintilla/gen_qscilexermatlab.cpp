@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexermatlab.h>
 #include "gen_qscilexermatlab.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerMatlab : public virtual QsciLexerMatlab {
@@ -839,18 +843,16 @@ public:
 
 };
 
-void QsciLexerMatlab_new(QsciLexerMatlab** outptr_QsciLexerMatlab, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerMatlab* ret = new MiqtVirtualQsciLexerMatlab();
-	*outptr_QsciLexerMatlab = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerMatlab* QsciLexerMatlab_new() {
+	return new MiqtVirtualQsciLexerMatlab();
 }
 
-void QsciLexerMatlab_new2(QObject* parent, QsciLexerMatlab** outptr_QsciLexerMatlab, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerMatlab* ret = new MiqtVirtualQsciLexerMatlab(parent);
-	*outptr_QsciLexerMatlab = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerMatlab* QsciLexerMatlab_new2(QObject* parent) {
+	return new MiqtVirtualQsciLexerMatlab(parent);
+}
+
+void QsciLexerMatlab_virtbase(QsciLexerMatlab* src, QsciLexer** outptr_QsciLexer) {
+	*outptr_QsciLexer = static_cast<QsciLexer*>(src);
 }
 
 QMetaObject* QsciLexerMatlab_MetaObject(const QsciLexerMatlab* self) {

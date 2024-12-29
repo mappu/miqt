@@ -51,42 +51,34 @@ func (this *QCompleter) UnsafePointer() unsafe.Pointer {
 }
 
 // newQCompleter constructs the type using only CGO pointers.
-func newQCompleter(h *C.QCompleter, h_QObject *C.QObject) *QCompleter {
+func newQCompleter(h *C.QCompleter) *QCompleter {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QCompleter_virtbase(h, &outptr_QObject)
+
 	return &QCompleter{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQCompleter constructs the type using only unsafe pointers.
-func UnsafeNewQCompleter(h unsafe.Pointer, h_QObject unsafe.Pointer) *QCompleter {
-	if h == nil {
-		return nil
-	}
-
-	return &QCompleter{h: (*C.QCompleter)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQCompleter(h unsafe.Pointer) *QCompleter {
+	return newQCompleter((*C.QCompleter)(h))
 }
 
 // NewQCompleter constructs a new QCompleter object.
 func NewQCompleter() *QCompleter {
-	var outptr_QCompleter *C.QCompleter = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QCompleter_new(&outptr_QCompleter, &outptr_QObject)
-	ret := newQCompleter(outptr_QCompleter, outptr_QObject)
+	ret := newQCompleter(C.QCompleter_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCompleter2 constructs a new QCompleter object.
 func NewQCompleter2(model *QAbstractItemModel) *QCompleter {
-	var outptr_QCompleter *C.QCompleter = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QCompleter_new2(model.cPointer(), &outptr_QCompleter, &outptr_QObject)
-	ret := newQCompleter(outptr_QCompleter, outptr_QObject)
+	ret := newQCompleter(C.QCompleter_new2(model.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -103,33 +95,24 @@ func NewQCompleter3(completions []string) *QCompleter {
 		completions_CArray[i] = completions_i_ms
 	}
 	completions_ma := C.struct_miqt_array{len: C.size_t(len(completions)), data: unsafe.Pointer(completions_CArray)}
-	var outptr_QCompleter *C.QCompleter = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QCompleter_new3(completions_ma, &outptr_QCompleter, &outptr_QObject)
-	ret := newQCompleter(outptr_QCompleter, outptr_QObject)
+	ret := newQCompleter(C.QCompleter_new3(completions_ma))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCompleter4 constructs a new QCompleter object.
 func NewQCompleter4(parent *QObject) *QCompleter {
-	var outptr_QCompleter *C.QCompleter = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QCompleter_new4(parent.cPointer(), &outptr_QCompleter, &outptr_QObject)
-	ret := newQCompleter(outptr_QCompleter, outptr_QObject)
+	ret := newQCompleter(C.QCompleter_new4(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQCompleter5 constructs a new QCompleter object.
 func NewQCompleter5(model *QAbstractItemModel, parent *QObject) *QCompleter {
-	var outptr_QCompleter *C.QCompleter = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QCompleter_new5(model.cPointer(), parent.cPointer(), &outptr_QCompleter, &outptr_QObject)
-	ret := newQCompleter(outptr_QCompleter, outptr_QObject)
+	ret := newQCompleter(C.QCompleter_new5(model.cPointer(), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -146,17 +129,14 @@ func NewQCompleter6(completions []string, parent *QObject) *QCompleter {
 		completions_CArray[i] = completions_i_ms
 	}
 	completions_ma := C.struct_miqt_array{len: C.size_t(len(completions)), data: unsafe.Pointer(completions_CArray)}
-	var outptr_QCompleter *C.QCompleter = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QCompleter_new6(completions_ma, parent.cPointer(), &outptr_QCompleter, &outptr_QObject)
-	ret := newQCompleter(outptr_QCompleter, outptr_QObject)
+	ret := newQCompleter(C.QCompleter_new6(completions_ma, parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QCompleter) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QCompleter_MetaObject(this.h)))
+	return newQMetaObject(C.QCompleter_MetaObject(this.h))
 }
 
 func (this *QCompleter) Metacast(param1 string) unsafe.Pointer {
@@ -188,7 +168,7 @@ func (this *QCompleter) SetWidget(widget *QWidget) {
 }
 
 func (this *QCompleter) Widget() *QWidget {
-	return UnsafeNewQWidget(unsafe.Pointer(C.QCompleter_Widget(this.h)), nil, nil)
+	return newQWidget(C.QCompleter_Widget(this.h))
 }
 
 func (this *QCompleter) SetModel(c *QAbstractItemModel) {
@@ -196,7 +176,7 @@ func (this *QCompleter) SetModel(c *QAbstractItemModel) {
 }
 
 func (this *QCompleter) Model() *QAbstractItemModel {
-	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QCompleter_Model(this.h)), nil)
+	return newQAbstractItemModel(C.QCompleter_Model(this.h))
 }
 
 func (this *QCompleter) SetCompletionMode(mode QCompleter__CompletionMode) {
@@ -216,7 +196,7 @@ func (this *QCompleter) FilterMode() MatchFlag {
 }
 
 func (this *QCompleter) Popup() *QAbstractItemView {
-	return UnsafeNewQAbstractItemView(unsafe.Pointer(C.QCompleter_Popup(this.h)), nil, nil, nil, nil, nil)
+	return newQAbstractItemView(C.QCompleter_Popup(this.h))
 }
 
 func (this *QCompleter) SetPopup(popup *QAbstractItemView) {
@@ -280,8 +260,7 @@ func (this *QCompleter) CurrentRow() int {
 }
 
 func (this *QCompleter) CurrentIndex() *QModelIndex {
-	_ret := C.QCompleter_CurrentIndex(this.h)
-	_goptr := newQModelIndex(_ret)
+	_goptr := newQModelIndex(C.QCompleter_CurrentIndex(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -294,7 +273,7 @@ func (this *QCompleter) CurrentCompletion() string {
 }
 
 func (this *QCompleter) CompletionModel() *QAbstractItemModel {
-	return UnsafeNewQAbstractItemModel(unsafe.Pointer(C.QCompleter_CompletionModel(this.h)), nil)
+	return newQAbstractItemModel(C.QCompleter_CompletionModel(this.h))
 }
 
 func (this *QCompleter) CompletionPrefix() string {
@@ -386,7 +365,7 @@ func miqt_exec_callback_QCompleter_ActivatedWithIndex(cb C.intptr_t, index *C.QM
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	gofunc(slotval1)
 }
@@ -433,7 +412,7 @@ func miqt_exec_callback_QCompleter_HighlightedWithIndex(cb C.intptr_t, index *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	gofunc(slotval1)
 }
@@ -494,6 +473,9 @@ func (this *QCompleter) callVirtualBase_PathFromIndex(index *QModelIndex) string
 	return _ret
 }
 func (this *QCompleter) OnPathFromIndex(slot func(super func(index *QModelIndex) string, index *QModelIndex) string) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCompleter_override_virtual_PathFromIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -505,7 +487,7 @@ func miqt_exec_callback_QCompleter_PathFromIndex(self *C.QCompleter, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQModelIndex(unsafe.Pointer(index))
+	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QCompleter{h: self}).callVirtualBase_PathFromIndex, slotval1)
 	virtualReturn_ms := C.struct_miqt_string{}
@@ -536,6 +518,9 @@ func (this *QCompleter) callVirtualBase_SplitPath(path string) []string {
 
 }
 func (this *QCompleter) OnSplitPath(slot func(super func(path string) []string, path string) []string) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCompleter_override_virtual_SplitPath(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -574,6 +559,9 @@ func (this *QCompleter) callVirtualBase_EventFilter(o *QObject, e *QEvent) bool 
 
 }
 func (this *QCompleter) OnEventFilter(slot func(super func(o *QObject, e *QEvent) bool, o *QObject, e *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCompleter_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -585,8 +573,9 @@ func miqt_exec_callback_QCompleter_EventFilter(self *C.QCompleter, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(o))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(e))
+	slotval1 := newQObject(o)
+
+	slotval2 := newQEvent(e)
 
 	virtualReturn := gofunc((&QCompleter{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -600,6 +589,9 @@ func (this *QCompleter) callVirtualBase_Event(param1 *QEvent) bool {
 
 }
 func (this *QCompleter) OnEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCompleter_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -611,7 +603,7 @@ func miqt_exec_callback_QCompleter_Event(self *C.QCompleter, cb C.intptr_t, para
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(param1))
+	slotval1 := newQEvent(param1)
 
 	virtualReturn := gofunc((&QCompleter{h: self}).callVirtualBase_Event, slotval1)
 
@@ -625,6 +617,9 @@ func (this *QCompleter) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QCompleter) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCompleter_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -636,7 +631,7 @@ func miqt_exec_callback_QCompleter_TimerEvent(self *C.QCompleter, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QCompleter{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -648,6 +643,9 @@ func (this *QCompleter) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QCompleter) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCompleter_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -659,7 +657,7 @@ func miqt_exec_callback_QCompleter_ChildEvent(self *C.QCompleter, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QCompleter{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -671,6 +669,9 @@ func (this *QCompleter) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QCompleter) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCompleter_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -682,7 +683,7 @@ func miqt_exec_callback_QCompleter_CustomEvent(self *C.QCompleter, cb C.intptr_t
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QCompleter{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -694,6 +695,9 @@ func (this *QCompleter) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QCompleter) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCompleter_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -705,7 +709,7 @@ func miqt_exec_callback_QCompleter_ConnectNotify(self *C.QCompleter, cb C.intptr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QCompleter{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -717,6 +721,9 @@ func (this *QCompleter) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QCompleter) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QCompleter_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -728,7 +735,7 @@ func miqt_exec_callback_QCompleter_DisconnectNotify(self *C.QCompleter, cb C.int
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QCompleter{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

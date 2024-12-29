@@ -37,94 +37,75 @@ func newQPen(h *C.QPen) *QPen {
 	if h == nil {
 		return nil
 	}
+
 	return &QPen{h: h}
 }
 
 // UnsafeNewQPen constructs the type using only unsafe pointers.
 func UnsafeNewQPen(h unsafe.Pointer) *QPen {
-	if h == nil {
-		return nil
-	}
-
-	return &QPen{h: (*C.QPen)(h)}
+	return newQPen((*C.QPen)(h))
 }
 
 // NewQPen constructs a new QPen object.
 func NewQPen() *QPen {
-	var outptr_QPen *C.QPen = nil
 
-	C.QPen_new(&outptr_QPen)
-	ret := newQPen(outptr_QPen)
+	ret := newQPen(C.QPen_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPen2 constructs a new QPen object.
 func NewQPen2(param1 PenStyle) *QPen {
-	var outptr_QPen *C.QPen = nil
 
-	C.QPen_new2((C.int)(param1), &outptr_QPen)
-	ret := newQPen(outptr_QPen)
+	ret := newQPen(C.QPen_new2((C.int)(param1)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPen3 constructs a new QPen object.
 func NewQPen3(color *QColor) *QPen {
-	var outptr_QPen *C.QPen = nil
 
-	C.QPen_new3(color.cPointer(), &outptr_QPen)
-	ret := newQPen(outptr_QPen)
+	ret := newQPen(C.QPen_new3(color.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPen4 constructs a new QPen object.
 func NewQPen4(brush *QBrush, width float64) *QPen {
-	var outptr_QPen *C.QPen = nil
 
-	C.QPen_new4(brush.cPointer(), (C.double)(width), &outptr_QPen)
-	ret := newQPen(outptr_QPen)
+	ret := newQPen(C.QPen_new4(brush.cPointer(), (C.double)(width)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPen5 constructs a new QPen object.
 func NewQPen5(pen *QPen) *QPen {
-	var outptr_QPen *C.QPen = nil
 
-	C.QPen_new5(pen.cPointer(), &outptr_QPen)
-	ret := newQPen(outptr_QPen)
+	ret := newQPen(C.QPen_new5(pen.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPen6 constructs a new QPen object.
 func NewQPen6(brush *QBrush, width float64, s PenStyle) *QPen {
-	var outptr_QPen *C.QPen = nil
 
-	C.QPen_new6(brush.cPointer(), (C.double)(width), (C.int)(s), &outptr_QPen)
-	ret := newQPen(outptr_QPen)
+	ret := newQPen(C.QPen_new6(brush.cPointer(), (C.double)(width), (C.int)(s)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPen7 constructs a new QPen object.
 func NewQPen7(brush *QBrush, width float64, s PenStyle, c PenCapStyle) *QPen {
-	var outptr_QPen *C.QPen = nil
 
-	C.QPen_new7(brush.cPointer(), (C.double)(width), (C.int)(s), (C.int)(c), &outptr_QPen)
-	ret := newQPen(outptr_QPen)
+	ret := newQPen(C.QPen_new7(brush.cPointer(), (C.double)(width), (C.int)(s), (C.int)(c)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPen8 constructs a new QPen object.
 func NewQPen8(brush *QBrush, width float64, s PenStyle, c PenCapStyle, j PenJoinStyle) *QPen {
-	var outptr_QPen *C.QPen = nil
 
-	C.QPen_new8(brush.cPointer(), (C.double)(width), (C.int)(s), (C.int)(c), (C.int)(j), &outptr_QPen)
-	ret := newQPen(outptr_QPen)
+	ret := newQPen(C.QPen_new8(brush.cPointer(), (C.double)(width), (C.int)(s), (C.int)(c), (C.int)(j)))
 	ret.isSubclass = true
 	return ret
 }
@@ -198,8 +179,7 @@ func (this *QPen) SetWidth(width int) {
 }
 
 func (this *QPen) Color() *QColor {
-	_ret := C.QPen_Color(this.h)
-	_goptr := newQColor(_ret)
+	_goptr := newQColor(C.QPen_Color(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -209,8 +189,7 @@ func (this *QPen) SetColor(color *QColor) {
 }
 
 func (this *QPen) Brush() *QBrush {
-	_ret := C.QPen_Brush(this.h)
-	_goptr := newQBrush(_ret)
+	_goptr := newQBrush(C.QPen_Brush(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

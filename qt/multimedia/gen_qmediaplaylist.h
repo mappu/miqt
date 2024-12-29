@@ -44,8 +44,9 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QUrl QUrl;
 #endif
 
-void QMediaPlaylist_new(QMediaPlaylist** outptr_QMediaPlaylist, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface);
-void QMediaPlaylist_new2(QObject* parent, QMediaPlaylist** outptr_QMediaPlaylist, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface);
+QMediaPlaylist* QMediaPlaylist_new();
+QMediaPlaylist* QMediaPlaylist_new2(QObject* parent);
+void QMediaPlaylist_virtbase(QMediaPlaylist* src, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface);
 QMetaObject* QMediaPlaylist_MetaObject(const QMediaPlaylist* self);
 void* QMediaPlaylist_Metacast(QMediaPlaylist* self, const char* param1);
 struct miqt_string QMediaPlaylist_Tr(const char* s);

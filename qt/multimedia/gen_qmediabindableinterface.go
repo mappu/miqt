@@ -37,20 +37,17 @@ func newQMediaBindableInterface(h *C.QMediaBindableInterface) *QMediaBindableInt
 	if h == nil {
 		return nil
 	}
+
 	return &QMediaBindableInterface{h: h}
 }
 
 // UnsafeNewQMediaBindableInterface constructs the type using only unsafe pointers.
 func UnsafeNewQMediaBindableInterface(h unsafe.Pointer) *QMediaBindableInterface {
-	if h == nil {
-		return nil
-	}
-
-	return &QMediaBindableInterface{h: (*C.QMediaBindableInterface)(h)}
+	return newQMediaBindableInterface((*C.QMediaBindableInterface)(h))
 }
 
 func (this *QMediaBindableInterface) MediaObject() *QMediaObject {
-	return UnsafeNewQMediaObject(unsafe.Pointer(C.QMediaBindableInterface_MediaObject(this.h)), nil)
+	return newQMediaObject(C.QMediaBindableInterface_MediaObject(this.h))
 }
 
 // Delete this object from C++ memory.

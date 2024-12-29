@@ -12,6 +12,10 @@
 #include <QSvgGenerator>
 #include <qsvggenerator.h>
 #include "gen_qsvggenerator.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSvgGenerator : public virtual QSvgGenerator {
@@ -160,10 +164,12 @@ public:
 
 };
 
-void QSvgGenerator_new(QSvgGenerator** outptr_QSvgGenerator, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQSvgGenerator* ret = new MiqtVirtualQSvgGenerator();
-	*outptr_QSvgGenerator = ret;
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QSvgGenerator* QSvgGenerator_new() {
+	return new MiqtVirtualQSvgGenerator();
+}
+
+void QSvgGenerator_virtbase(QSvgGenerator* src, QPaintDevice** outptr_QPaintDevice) {
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(src);
 }
 
 struct miqt_string QSvgGenerator_Title(const QSvgGenerator* self) {

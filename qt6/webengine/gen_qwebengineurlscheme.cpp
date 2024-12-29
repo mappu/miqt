@@ -2,22 +2,23 @@
 #include <QWebEngineUrlScheme>
 #include <qwebengineurlscheme.h>
 #include "gen_qwebengineurlscheme.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QWebEngineUrlScheme_new(QWebEngineUrlScheme** outptr_QWebEngineUrlScheme) {
-	QWebEngineUrlScheme* ret = new QWebEngineUrlScheme();
-	*outptr_QWebEngineUrlScheme = ret;
+QWebEngineUrlScheme* QWebEngineUrlScheme_new() {
+	return new QWebEngineUrlScheme();
 }
 
-void QWebEngineUrlScheme_new2(struct miqt_string name, QWebEngineUrlScheme** outptr_QWebEngineUrlScheme) {
+QWebEngineUrlScheme* QWebEngineUrlScheme_new2(struct miqt_string name) {
 	QByteArray name_QByteArray(name.data, name.len);
-	QWebEngineUrlScheme* ret = new QWebEngineUrlScheme(name_QByteArray);
-	*outptr_QWebEngineUrlScheme = ret;
+	return new QWebEngineUrlScheme(name_QByteArray);
 }
 
-void QWebEngineUrlScheme_new3(QWebEngineUrlScheme* that, QWebEngineUrlScheme** outptr_QWebEngineUrlScheme) {
-	QWebEngineUrlScheme* ret = new QWebEngineUrlScheme(*that);
-	*outptr_QWebEngineUrlScheme = ret;
+QWebEngineUrlScheme* QWebEngineUrlScheme_new3(QWebEngineUrlScheme* that) {
+	return new QWebEngineUrlScheme(*that);
 }
 
 void QWebEngineUrlScheme_OperatorAssign(QWebEngineUrlScheme* self, QWebEngineUrlScheme* that) {

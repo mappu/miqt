@@ -88,8 +88,9 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QTabBar_new(QWidget* parent, QTabBar** outptr_QTabBar, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QTabBar_new2(QTabBar** outptr_QTabBar, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QTabBar* QTabBar_new(QWidget* parent);
+QTabBar* QTabBar_new2();
+void QTabBar_virtbase(QTabBar* src, QWidget** outptr_QWidget);
 QMetaObject* QTabBar_MetaObject(const QTabBar* self);
 void* QTabBar_Metacast(QTabBar* self, const char* param1);
 struct miqt_string QTabBar_Tr(const char* s);

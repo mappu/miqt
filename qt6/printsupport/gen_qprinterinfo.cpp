@@ -7,21 +7,22 @@
 #include <cstring>
 #include <qprinterinfo.h>
 #include "gen_qprinterinfo.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QPrinterInfo_new(QPrinterInfo** outptr_QPrinterInfo) {
-	QPrinterInfo* ret = new QPrinterInfo();
-	*outptr_QPrinterInfo = ret;
+QPrinterInfo* QPrinterInfo_new() {
+	return new QPrinterInfo();
 }
 
-void QPrinterInfo_new2(QPrinterInfo* other, QPrinterInfo** outptr_QPrinterInfo) {
-	QPrinterInfo* ret = new QPrinterInfo(*other);
-	*outptr_QPrinterInfo = ret;
+QPrinterInfo* QPrinterInfo_new2(QPrinterInfo* other) {
+	return new QPrinterInfo(*other);
 }
 
-void QPrinterInfo_new3(QPrinter* printer, QPrinterInfo** outptr_QPrinterInfo) {
-	QPrinterInfo* ret = new QPrinterInfo(*printer);
-	*outptr_QPrinterInfo = ret;
+QPrinterInfo* QPrinterInfo_new3(QPrinter* printer) {
+	return new QPrinterInfo(*printer);
 }
 
 void QPrinterInfo_OperatorAssign(QPrinterInfo* self, QPrinterInfo* other) {

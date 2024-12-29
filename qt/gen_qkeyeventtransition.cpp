@@ -10,6 +10,10 @@
 #include <cstring>
 #include <qkeyeventtransition.h>
 #include "gen_qkeyeventtransition.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQKeyEventTransition : public virtual QKeyEventTransition {
@@ -94,36 +98,24 @@ public:
 
 };
 
-void QKeyEventTransition_new(QKeyEventTransition** outptr_QKeyEventTransition, QEventTransition** outptr_QEventTransition, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject) {
-	MiqtVirtualQKeyEventTransition* ret = new MiqtVirtualQKeyEventTransition();
-	*outptr_QKeyEventTransition = ret;
-	*outptr_QEventTransition = static_cast<QEventTransition*>(ret);
-	*outptr_QAbstractTransition = static_cast<QAbstractTransition*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QKeyEventTransition* QKeyEventTransition_new() {
+	return new MiqtVirtualQKeyEventTransition();
 }
 
-void QKeyEventTransition_new2(QObject* object, int typeVal, int key, QKeyEventTransition** outptr_QKeyEventTransition, QEventTransition** outptr_QEventTransition, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject) {
-	MiqtVirtualQKeyEventTransition* ret = new MiqtVirtualQKeyEventTransition(object, static_cast<QEvent::Type>(typeVal), static_cast<int>(key));
-	*outptr_QKeyEventTransition = ret;
-	*outptr_QEventTransition = static_cast<QEventTransition*>(ret);
-	*outptr_QAbstractTransition = static_cast<QAbstractTransition*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QKeyEventTransition* QKeyEventTransition_new2(QObject* object, int typeVal, int key) {
+	return new MiqtVirtualQKeyEventTransition(object, static_cast<QEvent::Type>(typeVal), static_cast<int>(key));
 }
 
-void QKeyEventTransition_new3(QState* sourceState, QKeyEventTransition** outptr_QKeyEventTransition, QEventTransition** outptr_QEventTransition, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject) {
-	MiqtVirtualQKeyEventTransition* ret = new MiqtVirtualQKeyEventTransition(sourceState);
-	*outptr_QKeyEventTransition = ret;
-	*outptr_QEventTransition = static_cast<QEventTransition*>(ret);
-	*outptr_QAbstractTransition = static_cast<QAbstractTransition*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QKeyEventTransition* QKeyEventTransition_new3(QState* sourceState) {
+	return new MiqtVirtualQKeyEventTransition(sourceState);
 }
 
-void QKeyEventTransition_new4(QObject* object, int typeVal, int key, QState* sourceState, QKeyEventTransition** outptr_QKeyEventTransition, QEventTransition** outptr_QEventTransition, QAbstractTransition** outptr_QAbstractTransition, QObject** outptr_QObject) {
-	MiqtVirtualQKeyEventTransition* ret = new MiqtVirtualQKeyEventTransition(object, static_cast<QEvent::Type>(typeVal), static_cast<int>(key), sourceState);
-	*outptr_QKeyEventTransition = ret;
-	*outptr_QEventTransition = static_cast<QEventTransition*>(ret);
-	*outptr_QAbstractTransition = static_cast<QAbstractTransition*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QKeyEventTransition* QKeyEventTransition_new4(QObject* object, int typeVal, int key, QState* sourceState) {
+	return new MiqtVirtualQKeyEventTransition(object, static_cast<QEvent::Type>(typeVal), static_cast<int>(key), sourceState);
+}
+
+void QKeyEventTransition_virtbase(QKeyEventTransition* src, QEventTransition** outptr_QEventTransition) {
+	*outptr_QEventTransition = static_cast<QEventTransition*>(src);
 }
 
 QMetaObject* QKeyEventTransition_MetaObject(const QKeyEventTransition* self) {

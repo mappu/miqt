@@ -20,7 +20,7 @@ class QRunnable;
 typedef struct QRunnable QRunnable;
 #endif
 
-void QRunnable_new(QRunnable** outptr_QRunnable);
+QRunnable* QRunnable_new();
 void QRunnable_Run(QRunnable* self);
 bool QRunnable_AutoDelete(const QRunnable* self);
 void QRunnable_SetAutoDelete(QRunnable* self, bool _autoDelete);

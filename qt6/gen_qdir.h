@@ -24,12 +24,12 @@ typedef struct QDir QDir;
 typedef struct QFileInfo QFileInfo;
 #endif
 
-void QDir_new(QDir* param1, QDir** outptr_QDir);
-void QDir_new2(QDir** outptr_QDir);
-void QDir_new3(struct miqt_string path, struct miqt_string nameFilter, QDir** outptr_QDir);
-void QDir_new4(struct miqt_string path, QDir** outptr_QDir);
-void QDir_new5(struct miqt_string path, struct miqt_string nameFilter, int sort, QDir** outptr_QDir);
-void QDir_new6(struct miqt_string path, struct miqt_string nameFilter, int sort, int filter, QDir** outptr_QDir);
+QDir* QDir_new(QDir* param1);
+QDir* QDir_new2();
+QDir* QDir_new3(struct miqt_string path, struct miqt_string nameFilter);
+QDir* QDir_new4(struct miqt_string path);
+QDir* QDir_new5(struct miqt_string path, struct miqt_string nameFilter, int sort);
+QDir* QDir_new6(struct miqt_string path, struct miqt_string nameFilter, int sort, int filter);
 void QDir_OperatorAssign(QDir* self, QDir* param1);
 void QDir_Swap(QDir* self, QDir* other);
 void QDir_SetPath(QDir* self, struct miqt_string path);

@@ -37,16 +37,13 @@ func newQDesktopServices(h *C.QDesktopServices) *QDesktopServices {
 	if h == nil {
 		return nil
 	}
+
 	return &QDesktopServices{h: h}
 }
 
 // UnsafeNewQDesktopServices constructs the type using only unsafe pointers.
 func UnsafeNewQDesktopServices(h unsafe.Pointer) *QDesktopServices {
-	if h == nil {
-		return nil
-	}
-
-	return &QDesktopServices{h: (*C.QDesktopServices)(h)}
+	return newQDesktopServices((*C.QDesktopServices)(h))
 }
 
 func QDesktopServices_OpenUrl(url *QUrl) bool {

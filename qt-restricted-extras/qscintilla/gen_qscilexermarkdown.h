@@ -34,8 +34,9 @@ typedef struct QsciLexerMarkdown QsciLexerMarkdown;
 typedef struct QsciScintilla QsciScintilla;
 #endif
 
-void QsciLexerMarkdown_new(QsciLexerMarkdown** outptr_QsciLexerMarkdown, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
-void QsciLexerMarkdown_new2(QObject* parent, QsciLexerMarkdown** outptr_QsciLexerMarkdown, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject);
+QsciLexerMarkdown* QsciLexerMarkdown_new();
+QsciLexerMarkdown* QsciLexerMarkdown_new2(QObject* parent);
+void QsciLexerMarkdown_virtbase(QsciLexerMarkdown* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerMarkdown_MetaObject(const QsciLexerMarkdown* self);
 void* QsciLexerMarkdown_Metacast(QsciLexerMarkdown* self, const char* param1);
 struct miqt_string QsciLexerMarkdown_Tr(const char* s);

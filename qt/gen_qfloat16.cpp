@@ -1,15 +1,17 @@
 #include <qfloat16.h>
 #include "gen_qfloat16.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void qfloat16_new(qfloat16** outptr_qfloat16) {
-	qfloat16* ret = new qfloat16();
-	*outptr_qfloat16 = ret;
+qfloat16* qfloat16_new() {
+	return new qfloat16();
 }
 
-void qfloat16_new2(float f, qfloat16** outptr_qfloat16) {
-	qfloat16* ret = new qfloat16(static_cast<float>(f));
-	*outptr_qfloat16 = ret;
+qfloat16* qfloat16_new2(float f) {
+	return new qfloat16(static_cast<float>(f));
 }
 
 bool qfloat16_IsInf(const qfloat16* self) {

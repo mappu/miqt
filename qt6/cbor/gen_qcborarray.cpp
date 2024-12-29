@@ -11,16 +11,18 @@
 #include <cstring>
 #include <qcborarray.h>
 #include "gen_qcborarray.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QCborArray_new(QCborArray** outptr_QCborArray) {
-	QCborArray* ret = new QCborArray();
-	*outptr_QCborArray = ret;
+QCborArray* QCborArray_new() {
+	return new QCborArray();
 }
 
-void QCborArray_new2(QCborArray* other, QCborArray** outptr_QCborArray) {
-	QCborArray* ret = new QCborArray(*other);
-	*outptr_QCborArray = ret;
+QCborArray* QCborArray_new2(QCborArray* other) {
+	return new QCborArray(*other);
 }
 
 void QCborArray_OperatorAssign(QCborArray* self, QCborArray* other) {
@@ -251,14 +253,12 @@ void QCborArray_Delete(QCborArray* self, bool isSubclass) {
 	}
 }
 
-void QCborArray__Iterator_new(QCborArray__Iterator** outptr_QCborArray__Iterator) {
-	QCborArray::Iterator* ret = new QCborArray::Iterator();
-	*outptr_QCborArray__Iterator = ret;
+QCborArray__Iterator* QCborArray__Iterator_new() {
+	return new QCborArray::Iterator();
 }
 
-void QCborArray__Iterator_new2(QCborArray__Iterator* param1, QCborArray__Iterator** outptr_QCborArray__Iterator) {
-	QCborArray::Iterator* ret = new QCborArray::Iterator(*param1);
-	*outptr_QCborArray__Iterator = ret;
+QCborArray__Iterator* QCborArray__Iterator_new2(QCborArray__Iterator* param1) {
+	return new QCborArray::Iterator(*param1);
 }
 
 void QCborArray__Iterator_OperatorAssign(QCborArray__Iterator* self, QCborArray__Iterator* other) {
@@ -382,14 +382,12 @@ void QCborArray__Iterator_Delete(QCborArray__Iterator* self, bool isSubclass) {
 	}
 }
 
-void QCborArray__ConstIterator_new(QCborArray__ConstIterator** outptr_QCborArray__ConstIterator) {
-	QCborArray::ConstIterator* ret = new QCborArray::ConstIterator();
-	*outptr_QCborArray__ConstIterator = ret;
+QCborArray__ConstIterator* QCborArray__ConstIterator_new() {
+	return new QCborArray::ConstIterator();
 }
 
-void QCborArray__ConstIterator_new2(QCborArray__ConstIterator* param1, QCborArray__ConstIterator** outptr_QCborArray__ConstIterator) {
-	QCborArray::ConstIterator* ret = new QCborArray::ConstIterator(*param1);
-	*outptr_QCborArray__ConstIterator = ret;
+QCborArray__ConstIterator* QCborArray__ConstIterator_new2(QCborArray__ConstIterator* param1) {
+	return new QCborArray::ConstIterator(*param1);
 }
 
 void QCborArray__ConstIterator_OperatorAssign(QCborArray__ConstIterator* self, QCborArray__ConstIterator* other) {

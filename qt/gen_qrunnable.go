@@ -38,24 +38,19 @@ func newQRunnable(h *C.QRunnable) *QRunnable {
 	if h == nil {
 		return nil
 	}
+
 	return &QRunnable{h: h}
 }
 
 // UnsafeNewQRunnable constructs the type using only unsafe pointers.
 func UnsafeNewQRunnable(h unsafe.Pointer) *QRunnable {
-	if h == nil {
-		return nil
-	}
-
-	return &QRunnable{h: (*C.QRunnable)(h)}
+	return newQRunnable((*C.QRunnable)(h))
 }
 
 // NewQRunnable constructs a new QRunnable object.
 func NewQRunnable() *QRunnable {
-	var outptr_QRunnable *C.QRunnable = nil
 
-	C.QRunnable_new(&outptr_QRunnable)
-	ret := newQRunnable(outptr_QRunnable)
+	ret := newQRunnable(C.QRunnable_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -76,6 +71,9 @@ func (this *QRunnable) OperatorAssign(param1 *QRunnable) {
 	C.QRunnable_OperatorAssign(this.h, param1.cPointer())
 }
 func (this *QRunnable) OnRun(slot func()) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QRunnable_override_virtual_Run(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

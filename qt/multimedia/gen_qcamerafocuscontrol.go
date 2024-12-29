@@ -36,22 +36,20 @@ func (this *QCameraFocusControl) UnsafePointer() unsafe.Pointer {
 }
 
 // newQCameraFocusControl constructs the type using only CGO pointers.
-func newQCameraFocusControl(h *C.QCameraFocusControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QCameraFocusControl {
+func newQCameraFocusControl(h *C.QCameraFocusControl) *QCameraFocusControl {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMediaControl *C.QMediaControl = nil
+	C.QCameraFocusControl_virtbase(h, &outptr_QMediaControl)
+
 	return &QCameraFocusControl{h: h,
-		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
+		QMediaControl: newQMediaControl(outptr_QMediaControl)}
 }
 
 // UnsafeNewQCameraFocusControl constructs the type using only unsafe pointers.
-func UnsafeNewQCameraFocusControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QCameraFocusControl {
-	if h == nil {
-		return nil
-	}
-
-	return &QCameraFocusControl{h: (*C.QCameraFocusControl)(h),
-		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
+func UnsafeNewQCameraFocusControl(h unsafe.Pointer) *QCameraFocusControl {
+	return newQCameraFocusControl((*C.QCameraFocusControl)(h))
 }
 
 func (this *QCameraFocusControl) MetaObject() *qt.QMetaObject {
@@ -107,8 +105,7 @@ func (this *QCameraFocusControl) IsFocusPointModeSupported(mode QCameraFocus__Fo
 }
 
 func (this *QCameraFocusControl) CustomFocusPoint() *qt.QPointF {
-	_ret := C.QCameraFocusControl_CustomFocusPoint(this.h)
-	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(_ret))
+	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QCameraFocusControl_CustomFocusPoint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -122,8 +119,7 @@ func (this *QCameraFocusControl) FocusZones() []QCameraFocusZone {
 	_ret := make([]QCameraFocusZone, int(_ma.len))
 	_outCast := (*[0xffff]*C.QCameraFocusZone)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQCameraFocusZone(_lv_ret)
+		_lv_goptr := newQCameraFocusZone(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}

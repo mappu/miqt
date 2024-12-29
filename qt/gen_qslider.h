@@ -44,10 +44,11 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QSlider_new(QWidget* parent, QSlider** outptr_QSlider, QAbstractSlider** outptr_QAbstractSlider, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QSlider_new2(QSlider** outptr_QSlider, QAbstractSlider** outptr_QAbstractSlider, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QSlider_new3(int orientation, QSlider** outptr_QSlider, QAbstractSlider** outptr_QAbstractSlider, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QSlider_new4(int orientation, QWidget* parent, QSlider** outptr_QSlider, QAbstractSlider** outptr_QAbstractSlider, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QSlider* QSlider_new(QWidget* parent);
+QSlider* QSlider_new2();
+QSlider* QSlider_new3(int orientation);
+QSlider* QSlider_new4(int orientation, QWidget* parent);
+void QSlider_virtbase(QSlider* src, QAbstractSlider** outptr_QAbstractSlider);
 QMetaObject* QSlider_MetaObject(const QSlider* self);
 void* QSlider_Metacast(QSlider* self, const char* param1);
 struct miqt_string QSlider_Tr(const char* s);

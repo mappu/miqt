@@ -56,8 +56,9 @@ typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
 #endif
 
-void QAbstractScrollArea_new(QWidget* parent, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QAbstractScrollArea_new2(QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QAbstractScrollArea* QAbstractScrollArea_new(QWidget* parent);
+QAbstractScrollArea* QAbstractScrollArea_new2();
+void QAbstractScrollArea_virtbase(QAbstractScrollArea* src, QFrame** outptr_QFrame);
 QMetaObject* QAbstractScrollArea_MetaObject(const QAbstractScrollArea* self);
 void* QAbstractScrollArea_Metacast(QAbstractScrollArea* self, const char* param1);
 struct miqt_string QAbstractScrollArea_Tr(const char* s);

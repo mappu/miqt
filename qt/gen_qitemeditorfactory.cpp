@@ -4,6 +4,10 @@
 #include <QWidget>
 #include <qitemeditorfactory.h>
 #include "gen_qitemeditorfactory.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 QWidget* QItemEditorCreatorBase_CreateWidget(const QItemEditorCreatorBase* self, QWidget* parent) {
@@ -94,14 +98,12 @@ public:
 
 };
 
-void QItemEditorFactory_new(QItemEditorFactory** outptr_QItemEditorFactory) {
-	MiqtVirtualQItemEditorFactory* ret = new MiqtVirtualQItemEditorFactory();
-	*outptr_QItemEditorFactory = ret;
+QItemEditorFactory* QItemEditorFactory_new() {
+	return new MiqtVirtualQItemEditorFactory();
 }
 
-void QItemEditorFactory_new2(QItemEditorFactory* param1, QItemEditorFactory** outptr_QItemEditorFactory) {
-	MiqtVirtualQItemEditorFactory* ret = new MiqtVirtualQItemEditorFactory(*param1);
-	*outptr_QItemEditorFactory = ret;
+QItemEditorFactory* QItemEditorFactory_new2(QItemEditorFactory* param1) {
+	return new MiqtVirtualQItemEditorFactory(*param1);
 }
 
 QWidget* QItemEditorFactory_CreateEditor(const QItemEditorFactory* self, int userType, QWidget* parent) {

@@ -24,7 +24,8 @@ typedef struct QScriptEngine QScriptEngine;
 typedef struct QScriptExtensionInterface QScriptExtensionInterface;
 #endif
 
-void QScriptExtensionInterface_new(QScriptExtensionInterface* param1, QScriptExtensionInterface** outptr_QScriptExtensionInterface, QFactoryInterface** outptr_QFactoryInterface);
+QScriptExtensionInterface* QScriptExtensionInterface_new(QScriptExtensionInterface* param1);
+void QScriptExtensionInterface_virtbase(QScriptExtensionInterface* src, QFactoryInterface** outptr_QFactoryInterface);
 void QScriptExtensionInterface_Initialize(QScriptExtensionInterface* self, struct miqt_string key, QScriptEngine* engine);
 void QScriptExtensionInterface_OperatorAssign(QScriptExtensionInterface* self, QScriptExtensionInterface* param1);
 void QScriptExtensionInterface_override_virtual_Initialize(void* self, intptr_t slot);

@@ -25,6 +25,10 @@
 #include <QWidget>
 #include <qspinbox.h>
 #include "gen_qspinbox.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSpinBox : public virtual QSpinBox {
@@ -733,22 +737,16 @@ public:
 
 };
 
-void QSpinBox_new(QWidget* parent, QSpinBox** outptr_QSpinBox, QAbstractSpinBox** outptr_QAbstractSpinBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQSpinBox* ret = new MiqtVirtualQSpinBox(parent);
-	*outptr_QSpinBox = ret;
-	*outptr_QAbstractSpinBox = static_cast<QAbstractSpinBox*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QSpinBox* QSpinBox_new(QWidget* parent) {
+	return new MiqtVirtualQSpinBox(parent);
 }
 
-void QSpinBox_new2(QSpinBox** outptr_QSpinBox, QAbstractSpinBox** outptr_QAbstractSpinBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQSpinBox* ret = new MiqtVirtualQSpinBox();
-	*outptr_QSpinBox = ret;
-	*outptr_QAbstractSpinBox = static_cast<QAbstractSpinBox*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QSpinBox* QSpinBox_new2() {
+	return new MiqtVirtualQSpinBox();
+}
+
+void QSpinBox_virtbase(QSpinBox* src, QAbstractSpinBox** outptr_QAbstractSpinBox) {
+	*outptr_QAbstractSpinBox = static_cast<QAbstractSpinBox*>(src);
 }
 
 QMetaObject* QSpinBox_MetaObject(const QSpinBox* self) {
@@ -1856,22 +1854,16 @@ public:
 
 };
 
-void QDoubleSpinBox_new(QWidget* parent, QDoubleSpinBox** outptr_QDoubleSpinBox, QAbstractSpinBox** outptr_QAbstractSpinBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDoubleSpinBox* ret = new MiqtVirtualQDoubleSpinBox(parent);
-	*outptr_QDoubleSpinBox = ret;
-	*outptr_QAbstractSpinBox = static_cast<QAbstractSpinBox*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDoubleSpinBox* QDoubleSpinBox_new(QWidget* parent) {
+	return new MiqtVirtualQDoubleSpinBox(parent);
 }
 
-void QDoubleSpinBox_new2(QDoubleSpinBox** outptr_QDoubleSpinBox, QAbstractSpinBox** outptr_QAbstractSpinBox, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQDoubleSpinBox* ret = new MiqtVirtualQDoubleSpinBox();
-	*outptr_QDoubleSpinBox = ret;
-	*outptr_QAbstractSpinBox = static_cast<QAbstractSpinBox*>(ret);
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QDoubleSpinBox* QDoubleSpinBox_new2() {
+	return new MiqtVirtualQDoubleSpinBox();
+}
+
+void QDoubleSpinBox_virtbase(QDoubleSpinBox* src, QAbstractSpinBox** outptr_QAbstractSpinBox) {
+	*outptr_QAbstractSpinBox = static_cast<QAbstractSpinBox*>(src);
 }
 
 QMetaObject* QDoubleSpinBox_MetaObject(const QDoubleSpinBox* self) {

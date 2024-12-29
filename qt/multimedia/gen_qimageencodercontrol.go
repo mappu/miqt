@@ -35,22 +35,20 @@ func (this *QImageEncoderControl) UnsafePointer() unsafe.Pointer {
 }
 
 // newQImageEncoderControl constructs the type using only CGO pointers.
-func newQImageEncoderControl(h *C.QImageEncoderControl, h_QMediaControl *C.QMediaControl, h_QObject *C.QObject) *QImageEncoderControl {
+func newQImageEncoderControl(h *C.QImageEncoderControl) *QImageEncoderControl {
 	if h == nil {
 		return nil
 	}
+	var outptr_QMediaControl *C.QMediaControl = nil
+	C.QImageEncoderControl_virtbase(h, &outptr_QMediaControl)
+
 	return &QImageEncoderControl{h: h,
-		QMediaControl: newQMediaControl(h_QMediaControl, h_QObject)}
+		QMediaControl: newQMediaControl(outptr_QMediaControl)}
 }
 
 // UnsafeNewQImageEncoderControl constructs the type using only unsafe pointers.
-func UnsafeNewQImageEncoderControl(h unsafe.Pointer, h_QMediaControl unsafe.Pointer, h_QObject unsafe.Pointer) *QImageEncoderControl {
-	if h == nil {
-		return nil
-	}
-
-	return &QImageEncoderControl{h: (*C.QImageEncoderControl)(h),
-		QMediaControl: UnsafeNewQMediaControl(h_QMediaControl, h_QObject)}
+func UnsafeNewQImageEncoderControl(h unsafe.Pointer) *QImageEncoderControl {
+	return newQImageEncoderControl((*C.QImageEncoderControl)(h))
 }
 
 func (this *QImageEncoderControl) MetaObject() *qt.QMetaObject {
@@ -110,8 +108,7 @@ func (this *QImageEncoderControl) SupportedResolutions(settings *QImageEncoderSe
 	_ret := make([]qt.QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_lv_ret))
+		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -119,8 +116,7 @@ func (this *QImageEncoderControl) SupportedResolutions(settings *QImageEncoderSe
 }
 
 func (this *QImageEncoderControl) ImageSettings() *QImageEncoderSettings {
-	_ret := C.QImageEncoderControl_ImageSettings(this.h)
-	_goptr := newQImageEncoderSettings(_ret)
+	_goptr := newQImageEncoderSettings(C.QImageEncoderControl_ImageSettings(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

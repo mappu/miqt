@@ -7,11 +7,14 @@
 #include <QStringView>
 #include <qstringview.h>
 #include "gen_qstringview.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QStringView_new(QStringView** outptr_QStringView) {
-	QStringView* ret = new QStringView();
-	*outptr_QStringView = ret;
+QStringView* QStringView_new() {
+	return new QStringView();
 }
 
 struct miqt_string QStringView_ToString(const QStringView* self) {

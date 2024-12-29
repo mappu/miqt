@@ -33,6 +33,10 @@
 #include <QWidget>
 #include <qfocusframe.h>
 #include "gen_qfocusframe.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQFocusFrame : public virtual QFocusFrame {
@@ -1044,20 +1048,16 @@ public:
 
 };
 
-void QFocusFrame_new(QWidget* parent, QFocusFrame** outptr_QFocusFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQFocusFrame* ret = new MiqtVirtualQFocusFrame(parent);
-	*outptr_QFocusFrame = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QFocusFrame* QFocusFrame_new(QWidget* parent) {
+	return new MiqtVirtualQFocusFrame(parent);
 }
 
-void QFocusFrame_new2(QFocusFrame** outptr_QFocusFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQFocusFrame* ret = new MiqtVirtualQFocusFrame();
-	*outptr_QFocusFrame = ret;
-	*outptr_QWidget = static_cast<QWidget*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QFocusFrame* QFocusFrame_new2() {
+	return new MiqtVirtualQFocusFrame();
+}
+
+void QFocusFrame_virtbase(QFocusFrame* src, QWidget** outptr_QWidget) {
+	*outptr_QWidget = static_cast<QWidget*>(src);
 }
 
 QMetaObject* QFocusFrame_MetaObject(const QFocusFrame* self) {

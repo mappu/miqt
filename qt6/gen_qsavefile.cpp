@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qsavefile.h>
 #include "gen_qsavefile.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQSaveFile : public virtual QSaveFile {
@@ -340,42 +344,26 @@ public:
 
 };
 
-void QSaveFile_new(struct miqt_string name, QSaveFile** outptr_QSaveFile, QFileDevice** outptr_QFileDevice, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase) {
+QSaveFile* QSaveFile_new(struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	MiqtVirtualQSaveFile* ret = new MiqtVirtualQSaveFile(name_QString);
-	*outptr_QSaveFile = ret;
-	*outptr_QFileDevice = static_cast<QFileDevice*>(ret);
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QIODeviceBase = static_cast<QIODeviceBase*>(ret);
+	return new MiqtVirtualQSaveFile(name_QString);
 }
 
-void QSaveFile_new2(QSaveFile** outptr_QSaveFile, QFileDevice** outptr_QFileDevice, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase) {
-	MiqtVirtualQSaveFile* ret = new MiqtVirtualQSaveFile();
-	*outptr_QSaveFile = ret;
-	*outptr_QFileDevice = static_cast<QFileDevice*>(ret);
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QIODeviceBase = static_cast<QIODeviceBase*>(ret);
+QSaveFile* QSaveFile_new2() {
+	return new MiqtVirtualQSaveFile();
 }
 
-void QSaveFile_new3(struct miqt_string name, QObject* parent, QSaveFile** outptr_QSaveFile, QFileDevice** outptr_QFileDevice, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase) {
+QSaveFile* QSaveFile_new3(struct miqt_string name, QObject* parent) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	MiqtVirtualQSaveFile* ret = new MiqtVirtualQSaveFile(name_QString, parent);
-	*outptr_QSaveFile = ret;
-	*outptr_QFileDevice = static_cast<QFileDevice*>(ret);
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QIODeviceBase = static_cast<QIODeviceBase*>(ret);
+	return new MiqtVirtualQSaveFile(name_QString, parent);
 }
 
-void QSaveFile_new4(QObject* parent, QSaveFile** outptr_QSaveFile, QFileDevice** outptr_QFileDevice, QIODevice** outptr_QIODevice, QObject** outptr_QObject, QIODeviceBase** outptr_QIODeviceBase) {
-	MiqtVirtualQSaveFile* ret = new MiqtVirtualQSaveFile(parent);
-	*outptr_QSaveFile = ret;
-	*outptr_QFileDevice = static_cast<QFileDevice*>(ret);
-	*outptr_QIODevice = static_cast<QIODevice*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QIODeviceBase = static_cast<QIODeviceBase*>(ret);
+QSaveFile* QSaveFile_new4(QObject* parent) {
+	return new MiqtVirtualQSaveFile(parent);
+}
+
+void QSaveFile_virtbase(QSaveFile* src, QFileDevice** outptr_QFileDevice) {
+	*outptr_QFileDevice = static_cast<QFileDevice*>(src);
 }
 
 QMetaObject* QSaveFile_MetaObject(const QSaveFile* self) {

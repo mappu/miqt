@@ -10,6 +10,10 @@
 #include <cstring>
 #include <qradiotuner.h>
 #include "gen_qradiotuner.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQRadioTuner : public virtual QRadioTuner {
@@ -136,18 +140,16 @@ public:
 
 };
 
-void QRadioTuner_new(QRadioTuner** outptr_QRadioTuner, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject) {
-	MiqtVirtualQRadioTuner* ret = new MiqtVirtualQRadioTuner();
-	*outptr_QRadioTuner = ret;
-	*outptr_QMediaObject = static_cast<QMediaObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QRadioTuner* QRadioTuner_new() {
+	return new MiqtVirtualQRadioTuner();
 }
 
-void QRadioTuner_new2(QObject* parent, QRadioTuner** outptr_QRadioTuner, QMediaObject** outptr_QMediaObject, QObject** outptr_QObject) {
-	MiqtVirtualQRadioTuner* ret = new MiqtVirtualQRadioTuner(parent);
-	*outptr_QRadioTuner = ret;
-	*outptr_QMediaObject = static_cast<QMediaObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QRadioTuner* QRadioTuner_new2(QObject* parent) {
+	return new MiqtVirtualQRadioTuner(parent);
+}
+
+void QRadioTuner_virtbase(QRadioTuner* src, QMediaObject** outptr_QMediaObject) {
+	*outptr_QMediaObject = static_cast<QMediaObject*>(src);
 }
 
 QMetaObject* QRadioTuner_MetaObject(const QRadioTuner* self) {

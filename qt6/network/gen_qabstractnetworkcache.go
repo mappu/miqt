@@ -38,34 +38,27 @@ func newQNetworkCacheMetaData(h *C.QNetworkCacheMetaData) *QNetworkCacheMetaData
 	if h == nil {
 		return nil
 	}
+
 	return &QNetworkCacheMetaData{h: h}
 }
 
 // UnsafeNewQNetworkCacheMetaData constructs the type using only unsafe pointers.
 func UnsafeNewQNetworkCacheMetaData(h unsafe.Pointer) *QNetworkCacheMetaData {
-	if h == nil {
-		return nil
-	}
-
-	return &QNetworkCacheMetaData{h: (*C.QNetworkCacheMetaData)(h)}
+	return newQNetworkCacheMetaData((*C.QNetworkCacheMetaData)(h))
 }
 
 // NewQNetworkCacheMetaData constructs a new QNetworkCacheMetaData object.
 func NewQNetworkCacheMetaData() *QNetworkCacheMetaData {
-	var outptr_QNetworkCacheMetaData *C.QNetworkCacheMetaData = nil
 
-	C.QNetworkCacheMetaData_new(&outptr_QNetworkCacheMetaData)
-	ret := newQNetworkCacheMetaData(outptr_QNetworkCacheMetaData)
+	ret := newQNetworkCacheMetaData(C.QNetworkCacheMetaData_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQNetworkCacheMetaData2 constructs a new QNetworkCacheMetaData object.
 func NewQNetworkCacheMetaData2(other *QNetworkCacheMetaData) *QNetworkCacheMetaData {
-	var outptr_QNetworkCacheMetaData *C.QNetworkCacheMetaData = nil
 
-	C.QNetworkCacheMetaData_new2(other.cPointer(), &outptr_QNetworkCacheMetaData)
-	ret := newQNetworkCacheMetaData(outptr_QNetworkCacheMetaData)
+	ret := newQNetworkCacheMetaData(C.QNetworkCacheMetaData_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -91,8 +84,7 @@ func (this *QNetworkCacheMetaData) IsValid() bool {
 }
 
 func (this *QNetworkCacheMetaData) Url() *qt6.QUrl {
-	_ret := C.QNetworkCacheMetaData_Url(this.h)
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QNetworkCacheMetaData_Url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -162,8 +154,7 @@ func (this *QNetworkCacheMetaData) SetRawHeaders(headers []struct {
 }
 
 func (this *QNetworkCacheMetaData) LastModified() *qt6.QDateTime {
-	_ret := C.QNetworkCacheMetaData_LastModified(this.h)
-	_goptr := qt6.UnsafeNewQDateTime(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQDateTime(unsafe.Pointer(C.QNetworkCacheMetaData_LastModified(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -173,8 +164,7 @@ func (this *QNetworkCacheMetaData) SetLastModified(dateTime *qt6.QDateTime) {
 }
 
 func (this *QNetworkCacheMetaData) ExpirationDate() *qt6.QDateTime {
-	_ret := C.QNetworkCacheMetaData_ExpirationDate(this.h)
-	_goptr := qt6.UnsafeNewQDateTime(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQDateTime(unsafe.Pointer(C.QNetworkCacheMetaData_ExpirationDate(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -199,8 +189,7 @@ func (this *QNetworkCacheMetaData) Attributes() map[QNetworkRequest__Attribute]q
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (QNetworkRequest__Attribute)(_Keys[i])
 
-		_hashval_ret := _Values[i]
-		_hashval_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(_hashval_ret))
+		_hashval_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(_Values[i]))
 		_hashval_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_entry_Value := *_hashval_goptr
 
@@ -263,22 +252,20 @@ func (this *QAbstractNetworkCache) UnsafePointer() unsafe.Pointer {
 }
 
 // newQAbstractNetworkCache constructs the type using only CGO pointers.
-func newQAbstractNetworkCache(h *C.QAbstractNetworkCache, h_QObject *C.QObject) *QAbstractNetworkCache {
+func newQAbstractNetworkCache(h *C.QAbstractNetworkCache) *QAbstractNetworkCache {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QAbstractNetworkCache_virtbase(h, &outptr_QObject)
+
 	return &QAbstractNetworkCache{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQAbstractNetworkCache constructs the type using only unsafe pointers.
-func UnsafeNewQAbstractNetworkCache(h unsafe.Pointer, h_QObject unsafe.Pointer) *QAbstractNetworkCache {
-	if h == nil {
-		return nil
-	}
-
-	return &QAbstractNetworkCache{h: (*C.QAbstractNetworkCache)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQAbstractNetworkCache(h unsafe.Pointer) *QAbstractNetworkCache {
+	return newQAbstractNetworkCache((*C.QAbstractNetworkCache)(h))
 }
 
 func (this *QAbstractNetworkCache) MetaObject() *qt6.QMetaObject {
@@ -301,8 +288,7 @@ func QAbstractNetworkCache_Tr(s string) string {
 }
 
 func (this *QAbstractNetworkCache) MetaData(url *qt6.QUrl) *QNetworkCacheMetaData {
-	_ret := C.QAbstractNetworkCache_MetaData(this.h, (*C.QUrl)(url.UnsafePointer()))
-	_goptr := newQNetworkCacheMetaData(_ret)
+	_goptr := newQNetworkCacheMetaData(C.QAbstractNetworkCache_MetaData(this.h, (*C.QUrl)(url.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -312,7 +298,7 @@ func (this *QAbstractNetworkCache) UpdateMetaData(metaData *QNetworkCacheMetaDat
 }
 
 func (this *QAbstractNetworkCache) Data(url *qt6.QUrl) *qt6.QIODevice {
-	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractNetworkCache_Data(this.h, (*C.QUrl)(url.UnsafePointer()))), nil, nil)
+	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractNetworkCache_Data(this.h, (*C.QUrl)(url.UnsafePointer()))))
 }
 
 func (this *QAbstractNetworkCache) Remove(url *qt6.QUrl) bool {
@@ -324,7 +310,7 @@ func (this *QAbstractNetworkCache) CacheSize() int64 {
 }
 
 func (this *QAbstractNetworkCache) Prepare(metaData *QNetworkCacheMetaData) *qt6.QIODevice {
-	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractNetworkCache_Prepare(this.h, metaData.cPointer())), nil, nil)
+	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractNetworkCache_Prepare(this.h, metaData.cPointer())))
 }
 
 func (this *QAbstractNetworkCache) Insert(device *qt6.QIODevice) {

@@ -25,16 +25,18 @@
 #include <QWebSecurityOrigin>
 #include <qwebframe.h>
 #include "gen_qwebframe.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QWebHitTestResult_new(QWebHitTestResult** outptr_QWebHitTestResult) {
-	QWebHitTestResult* ret = new QWebHitTestResult();
-	*outptr_QWebHitTestResult = ret;
+QWebHitTestResult* QWebHitTestResult_new() {
+	return new QWebHitTestResult();
 }
 
-void QWebHitTestResult_new2(QWebHitTestResult* other, QWebHitTestResult** outptr_QWebHitTestResult) {
-	QWebHitTestResult* ret = new QWebHitTestResult(*other);
-	*outptr_QWebHitTestResult = ret;
+QWebHitTestResult* QWebHitTestResult_new2(QWebHitTestResult* other) {
+	return new QWebHitTestResult(*other);
 }
 
 void QWebHitTestResult_OperatorAssign(QWebHitTestResult* self, QWebHitTestResult* other) {
@@ -151,6 +153,10 @@ void QWebHitTestResult_Delete(QWebHitTestResult* self, bool isSubclass) {
 	} else {
 		delete self;
 	}
+}
+
+void QWebFrame_virtbase(QWebFrame* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QWebFrame_MetaObject(const QWebFrame* self) {

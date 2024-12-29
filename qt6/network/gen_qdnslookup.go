@@ -66,34 +66,27 @@ func newQDnsDomainNameRecord(h *C.QDnsDomainNameRecord) *QDnsDomainNameRecord {
 	if h == nil {
 		return nil
 	}
+
 	return &QDnsDomainNameRecord{h: h}
 }
 
 // UnsafeNewQDnsDomainNameRecord constructs the type using only unsafe pointers.
 func UnsafeNewQDnsDomainNameRecord(h unsafe.Pointer) *QDnsDomainNameRecord {
-	if h == nil {
-		return nil
-	}
-
-	return &QDnsDomainNameRecord{h: (*C.QDnsDomainNameRecord)(h)}
+	return newQDnsDomainNameRecord((*C.QDnsDomainNameRecord)(h))
 }
 
 // NewQDnsDomainNameRecord constructs a new QDnsDomainNameRecord object.
 func NewQDnsDomainNameRecord() *QDnsDomainNameRecord {
-	var outptr_QDnsDomainNameRecord *C.QDnsDomainNameRecord = nil
 
-	C.QDnsDomainNameRecord_new(&outptr_QDnsDomainNameRecord)
-	ret := newQDnsDomainNameRecord(outptr_QDnsDomainNameRecord)
+	ret := newQDnsDomainNameRecord(C.QDnsDomainNameRecord_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDnsDomainNameRecord2 constructs a new QDnsDomainNameRecord object.
 func NewQDnsDomainNameRecord2(other *QDnsDomainNameRecord) *QDnsDomainNameRecord {
-	var outptr_QDnsDomainNameRecord *C.QDnsDomainNameRecord = nil
 
-	C.QDnsDomainNameRecord_new2(other.cPointer(), &outptr_QDnsDomainNameRecord)
-	ret := newQDnsDomainNameRecord(outptr_QDnsDomainNameRecord)
+	ret := newQDnsDomainNameRecord(C.QDnsDomainNameRecord_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -162,34 +155,27 @@ func newQDnsHostAddressRecord(h *C.QDnsHostAddressRecord) *QDnsHostAddressRecord
 	if h == nil {
 		return nil
 	}
+
 	return &QDnsHostAddressRecord{h: h}
 }
 
 // UnsafeNewQDnsHostAddressRecord constructs the type using only unsafe pointers.
 func UnsafeNewQDnsHostAddressRecord(h unsafe.Pointer) *QDnsHostAddressRecord {
-	if h == nil {
-		return nil
-	}
-
-	return &QDnsHostAddressRecord{h: (*C.QDnsHostAddressRecord)(h)}
+	return newQDnsHostAddressRecord((*C.QDnsHostAddressRecord)(h))
 }
 
 // NewQDnsHostAddressRecord constructs a new QDnsHostAddressRecord object.
 func NewQDnsHostAddressRecord() *QDnsHostAddressRecord {
-	var outptr_QDnsHostAddressRecord *C.QDnsHostAddressRecord = nil
 
-	C.QDnsHostAddressRecord_new(&outptr_QDnsHostAddressRecord)
-	ret := newQDnsHostAddressRecord(outptr_QDnsHostAddressRecord)
+	ret := newQDnsHostAddressRecord(C.QDnsHostAddressRecord_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDnsHostAddressRecord2 constructs a new QDnsHostAddressRecord object.
 func NewQDnsHostAddressRecord2(other *QDnsHostAddressRecord) *QDnsHostAddressRecord {
-	var outptr_QDnsHostAddressRecord *C.QDnsHostAddressRecord = nil
 
-	C.QDnsHostAddressRecord_new2(other.cPointer(), &outptr_QDnsHostAddressRecord)
-	ret := newQDnsHostAddressRecord(outptr_QDnsHostAddressRecord)
+	ret := newQDnsHostAddressRecord(C.QDnsHostAddressRecord_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -214,8 +200,7 @@ func (this *QDnsHostAddressRecord) TimeToLive() uint {
 }
 
 func (this *QDnsHostAddressRecord) Value() *QHostAddress {
-	_ret := C.QDnsHostAddressRecord_Value(this.h)
-	_goptr := newQHostAddress(_ret)
+	_goptr := newQHostAddress(C.QDnsHostAddressRecord_Value(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -258,34 +243,27 @@ func newQDnsMailExchangeRecord(h *C.QDnsMailExchangeRecord) *QDnsMailExchangeRec
 	if h == nil {
 		return nil
 	}
+
 	return &QDnsMailExchangeRecord{h: h}
 }
 
 // UnsafeNewQDnsMailExchangeRecord constructs the type using only unsafe pointers.
 func UnsafeNewQDnsMailExchangeRecord(h unsafe.Pointer) *QDnsMailExchangeRecord {
-	if h == nil {
-		return nil
-	}
-
-	return &QDnsMailExchangeRecord{h: (*C.QDnsMailExchangeRecord)(h)}
+	return newQDnsMailExchangeRecord((*C.QDnsMailExchangeRecord)(h))
 }
 
 // NewQDnsMailExchangeRecord constructs a new QDnsMailExchangeRecord object.
 func NewQDnsMailExchangeRecord() *QDnsMailExchangeRecord {
-	var outptr_QDnsMailExchangeRecord *C.QDnsMailExchangeRecord = nil
 
-	C.QDnsMailExchangeRecord_new(&outptr_QDnsMailExchangeRecord)
-	ret := newQDnsMailExchangeRecord(outptr_QDnsMailExchangeRecord)
+	ret := newQDnsMailExchangeRecord(C.QDnsMailExchangeRecord_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDnsMailExchangeRecord2 constructs a new QDnsMailExchangeRecord object.
 func NewQDnsMailExchangeRecord2(other *QDnsMailExchangeRecord) *QDnsMailExchangeRecord {
-	var outptr_QDnsMailExchangeRecord *C.QDnsMailExchangeRecord = nil
 
-	C.QDnsMailExchangeRecord_new2(other.cPointer(), &outptr_QDnsMailExchangeRecord)
-	ret := newQDnsMailExchangeRecord(outptr_QDnsMailExchangeRecord)
+	ret := newQDnsMailExchangeRecord(C.QDnsMailExchangeRecord_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -358,34 +336,27 @@ func newQDnsServiceRecord(h *C.QDnsServiceRecord) *QDnsServiceRecord {
 	if h == nil {
 		return nil
 	}
+
 	return &QDnsServiceRecord{h: h}
 }
 
 // UnsafeNewQDnsServiceRecord constructs the type using only unsafe pointers.
 func UnsafeNewQDnsServiceRecord(h unsafe.Pointer) *QDnsServiceRecord {
-	if h == nil {
-		return nil
-	}
-
-	return &QDnsServiceRecord{h: (*C.QDnsServiceRecord)(h)}
+	return newQDnsServiceRecord((*C.QDnsServiceRecord)(h))
 }
 
 // NewQDnsServiceRecord constructs a new QDnsServiceRecord object.
 func NewQDnsServiceRecord() *QDnsServiceRecord {
-	var outptr_QDnsServiceRecord *C.QDnsServiceRecord = nil
 
-	C.QDnsServiceRecord_new(&outptr_QDnsServiceRecord)
-	ret := newQDnsServiceRecord(outptr_QDnsServiceRecord)
+	ret := newQDnsServiceRecord(C.QDnsServiceRecord_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDnsServiceRecord2 constructs a new QDnsServiceRecord object.
 func NewQDnsServiceRecord2(other *QDnsServiceRecord) *QDnsServiceRecord {
-	var outptr_QDnsServiceRecord *C.QDnsServiceRecord = nil
 
-	C.QDnsServiceRecord_new2(other.cPointer(), &outptr_QDnsServiceRecord)
-	ret := newQDnsServiceRecord(outptr_QDnsServiceRecord)
+	ret := newQDnsServiceRecord(C.QDnsServiceRecord_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -466,34 +437,27 @@ func newQDnsTextRecord(h *C.QDnsTextRecord) *QDnsTextRecord {
 	if h == nil {
 		return nil
 	}
+
 	return &QDnsTextRecord{h: h}
 }
 
 // UnsafeNewQDnsTextRecord constructs the type using only unsafe pointers.
 func UnsafeNewQDnsTextRecord(h unsafe.Pointer) *QDnsTextRecord {
-	if h == nil {
-		return nil
-	}
-
-	return &QDnsTextRecord{h: (*C.QDnsTextRecord)(h)}
+	return newQDnsTextRecord((*C.QDnsTextRecord)(h))
 }
 
 // NewQDnsTextRecord constructs a new QDnsTextRecord object.
 func NewQDnsTextRecord() *QDnsTextRecord {
-	var outptr_QDnsTextRecord *C.QDnsTextRecord = nil
 
-	C.QDnsTextRecord_new(&outptr_QDnsTextRecord)
-	ret := newQDnsTextRecord(outptr_QDnsTextRecord)
+	ret := newQDnsTextRecord(C.QDnsTextRecord_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDnsTextRecord2 constructs a new QDnsTextRecord object.
 func NewQDnsTextRecord2(other *QDnsTextRecord) *QDnsTextRecord {
-	var outptr_QDnsTextRecord *C.QDnsTextRecord = nil
 
-	C.QDnsTextRecord_new2(other.cPointer(), &outptr_QDnsTextRecord)
-	ret := newQDnsTextRecord(outptr_QDnsTextRecord)
+	ret := newQDnsTextRecord(C.QDnsTextRecord_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -565,31 +529,26 @@ func (this *QDnsLookup) UnsafePointer() unsafe.Pointer {
 }
 
 // newQDnsLookup constructs the type using only CGO pointers.
-func newQDnsLookup(h *C.QDnsLookup, h_QObject *C.QObject) *QDnsLookup {
+func newQDnsLookup(h *C.QDnsLookup) *QDnsLookup {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QDnsLookup_virtbase(h, &outptr_QObject)
+
 	return &QDnsLookup{h: h,
-		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt6.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQDnsLookup constructs the type using only unsafe pointers.
-func UnsafeNewQDnsLookup(h unsafe.Pointer, h_QObject unsafe.Pointer) *QDnsLookup {
-	if h == nil {
-		return nil
-	}
-
-	return &QDnsLookup{h: (*C.QDnsLookup)(h),
-		QObject: qt6.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQDnsLookup(h unsafe.Pointer) *QDnsLookup {
+	return newQDnsLookup((*C.QDnsLookup)(h))
 }
 
 // NewQDnsLookup constructs a new QDnsLookup object.
 func NewQDnsLookup() *QDnsLookup {
-	var outptr_QDnsLookup *C.QDnsLookup = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QDnsLookup_new(&outptr_QDnsLookup, &outptr_QObject)
-	ret := newQDnsLookup(outptr_QDnsLookup, outptr_QObject)
+	ret := newQDnsLookup(C.QDnsLookup_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -600,11 +559,8 @@ func NewQDnsLookup2(typeVal QDnsLookup__Type, name string) *QDnsLookup {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	var outptr_QDnsLookup *C.QDnsLookup = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QDnsLookup_new2((C.int)(typeVal), name_ms, &outptr_QDnsLookup, &outptr_QObject)
-	ret := newQDnsLookup(outptr_QDnsLookup, outptr_QObject)
+	ret := newQDnsLookup(C.QDnsLookup_new2((C.int)(typeVal), name_ms))
 	ret.isSubclass = true
 	return ret
 }
@@ -615,22 +571,16 @@ func NewQDnsLookup3(typeVal QDnsLookup__Type, name string, nameserver *QHostAddr
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	var outptr_QDnsLookup *C.QDnsLookup = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QDnsLookup_new3((C.int)(typeVal), name_ms, nameserver.cPointer(), &outptr_QDnsLookup, &outptr_QObject)
-	ret := newQDnsLookup(outptr_QDnsLookup, outptr_QObject)
+	ret := newQDnsLookup(C.QDnsLookup_new3((C.int)(typeVal), name_ms, nameserver.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDnsLookup4 constructs a new QDnsLookup object.
 func NewQDnsLookup4(parent *qt6.QObject) *QDnsLookup {
-	var outptr_QDnsLookup *C.QDnsLookup = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QDnsLookup_new4((*C.QObject)(parent.UnsafePointer()), &outptr_QDnsLookup, &outptr_QObject)
-	ret := newQDnsLookup(outptr_QDnsLookup, outptr_QObject)
+	ret := newQDnsLookup(C.QDnsLookup_new4((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -641,11 +591,8 @@ func NewQDnsLookup5(typeVal QDnsLookup__Type, name string, parent *qt6.QObject) 
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	var outptr_QDnsLookup *C.QDnsLookup = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QDnsLookup_new5((C.int)(typeVal), name_ms, (*C.QObject)(parent.UnsafePointer()), &outptr_QDnsLookup, &outptr_QObject)
-	ret := newQDnsLookup(outptr_QDnsLookup, outptr_QObject)
+	ret := newQDnsLookup(C.QDnsLookup_new5((C.int)(typeVal), name_ms, (*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -656,11 +603,8 @@ func NewQDnsLookup6(typeVal QDnsLookup__Type, name string, nameserver *QHostAddr
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	var outptr_QDnsLookup *C.QDnsLookup = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QDnsLookup_new6((C.int)(typeVal), name_ms, nameserver.cPointer(), (*C.QObject)(parent.UnsafePointer()), &outptr_QDnsLookup, &outptr_QObject)
-	ret := newQDnsLookup(outptr_QDnsLookup, outptr_QObject)
+	ret := newQDnsLookup(C.QDnsLookup_new6((C.int)(typeVal), name_ms, nameserver.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -723,8 +667,7 @@ func (this *QDnsLookup) SetType(typeVal QDnsLookup__Type) {
 }
 
 func (this *QDnsLookup) Nameserver() *QHostAddress {
-	_ret := C.QDnsLookup_Nameserver(this.h)
-	_goptr := newQHostAddress(_ret)
+	_goptr := newQHostAddress(C.QDnsLookup_Nameserver(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -738,8 +681,7 @@ func (this *QDnsLookup) CanonicalNameRecords() []QDnsDomainNameRecord {
 	_ret := make([]QDnsDomainNameRecord, int(_ma.len))
 	_outCast := (*[0xffff]*C.QDnsDomainNameRecord)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQDnsDomainNameRecord(_lv_ret)
+		_lv_goptr := newQDnsDomainNameRecord(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -751,8 +693,7 @@ func (this *QDnsLookup) HostAddressRecords() []QDnsHostAddressRecord {
 	_ret := make([]QDnsHostAddressRecord, int(_ma.len))
 	_outCast := (*[0xffff]*C.QDnsHostAddressRecord)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQDnsHostAddressRecord(_lv_ret)
+		_lv_goptr := newQDnsHostAddressRecord(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -764,8 +705,7 @@ func (this *QDnsLookup) MailExchangeRecords() []QDnsMailExchangeRecord {
 	_ret := make([]QDnsMailExchangeRecord, int(_ma.len))
 	_outCast := (*[0xffff]*C.QDnsMailExchangeRecord)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQDnsMailExchangeRecord(_lv_ret)
+		_lv_goptr := newQDnsMailExchangeRecord(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -777,8 +717,7 @@ func (this *QDnsLookup) NameServerRecords() []QDnsDomainNameRecord {
 	_ret := make([]QDnsDomainNameRecord, int(_ma.len))
 	_outCast := (*[0xffff]*C.QDnsDomainNameRecord)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQDnsDomainNameRecord(_lv_ret)
+		_lv_goptr := newQDnsDomainNameRecord(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -790,8 +729,7 @@ func (this *QDnsLookup) PointerRecords() []QDnsDomainNameRecord {
 	_ret := make([]QDnsDomainNameRecord, int(_ma.len))
 	_outCast := (*[0xffff]*C.QDnsDomainNameRecord)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQDnsDomainNameRecord(_lv_ret)
+		_lv_goptr := newQDnsDomainNameRecord(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -803,8 +741,7 @@ func (this *QDnsLookup) ServiceRecords() []QDnsServiceRecord {
 	_ret := make([]QDnsServiceRecord, int(_ma.len))
 	_outCast := (*[0xffff]*C.QDnsServiceRecord)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQDnsServiceRecord(_lv_ret)
+		_lv_goptr := newQDnsServiceRecord(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -816,8 +753,7 @@ func (this *QDnsLookup) TextRecords() []QDnsTextRecord {
 	_ret := make([]QDnsTextRecord, int(_ma.len))
 	_outCast := (*[0xffff]*C.QDnsTextRecord)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_lv_ret := _outCast[i]
-		_lv_goptr := newQDnsTextRecord(_lv_ret)
+		_lv_goptr := newQDnsTextRecord(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_lv_goptr
 	}
@@ -911,7 +847,7 @@ func miqt_exec_callback_QDnsLookup_NameserverChanged(cb C.intptr_t, nameserver *
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQHostAddress(unsafe.Pointer(nameserver))
+	slotval1 := newQHostAddress(nameserver)
 
 	gofunc(slotval1)
 }
@@ -944,6 +880,9 @@ func (this *QDnsLookup) callVirtualBase_Event(event *qt6.QEvent) bool {
 
 }
 func (this *QDnsLookup) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDnsLookup_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -969,6 +908,9 @@ func (this *QDnsLookup) callVirtualBase_EventFilter(watched *qt6.QObject, event 
 
 }
 func (this *QDnsLookup) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDnsLookup_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -981,6 +923,7 @@ func miqt_exec_callback_QDnsLookup_EventFilter(self *C.QDnsLookup, cb C.intptr_t
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QDnsLookup{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
@@ -995,6 +938,9 @@ func (this *QDnsLookup) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
 
 }
 func (this *QDnsLookup) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDnsLookup_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1006,7 +952,7 @@ func miqt_exec_callback_QDnsLookup_TimerEvent(self *C.QDnsLookup, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QDnsLookup{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -1018,6 +964,9 @@ func (this *QDnsLookup) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
 
 }
 func (this *QDnsLookup) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDnsLookup_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1029,7 +978,7 @@ func miqt_exec_callback_QDnsLookup_ChildEvent(self *C.QDnsLookup, cb C.intptr_t,
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QDnsLookup{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -1041,6 +990,9 @@ func (this *QDnsLookup) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 
 }
 func (this *QDnsLookup) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDnsLookup_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1064,6 +1016,9 @@ func (this *QDnsLookup) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
 
 }
 func (this *QDnsLookup) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDnsLookup_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -1087,6 +1042,9 @@ func (this *QDnsLookup) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod
 
 }
 func (this *QDnsLookup) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDnsLookup_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

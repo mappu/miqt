@@ -9,41 +9,38 @@
 #include <QVector4D>
 #include <qmatrix4x4.h>
 #include "gen_qmatrix4x4.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QMatrix4x4_new(QMatrix4x4** outptr_QMatrix4x4) {
-	QMatrix4x4* ret = new QMatrix4x4();
-	*outptr_QMatrix4x4 = ret;
+QMatrix4x4* QMatrix4x4_new() {
+	return new QMatrix4x4();
 }
 
-void QMatrix4x4_new2(int param1, QMatrix4x4** outptr_QMatrix4x4) {
-	QMatrix4x4* ret = new QMatrix4x4(static_cast<Qt::Initialization>(param1));
-	*outptr_QMatrix4x4 = ret;
+QMatrix4x4* QMatrix4x4_new2(int param1) {
+	return new QMatrix4x4(static_cast<Qt::Initialization>(param1));
 }
 
-void QMatrix4x4_new3(const float* values, QMatrix4x4** outptr_QMatrix4x4) {
-	QMatrix4x4* ret = new QMatrix4x4(static_cast<const float*>(values));
-	*outptr_QMatrix4x4 = ret;
+QMatrix4x4* QMatrix4x4_new3(const float* values) {
+	return new QMatrix4x4(static_cast<const float*>(values));
 }
 
-void QMatrix4x4_new4(float m11, float m12, float m13, float m14, float m21, float m22, float m23, float m24, float m31, float m32, float m33, float m34, float m41, float m42, float m43, float m44, QMatrix4x4** outptr_QMatrix4x4) {
-	QMatrix4x4* ret = new QMatrix4x4(static_cast<float>(m11), static_cast<float>(m12), static_cast<float>(m13), static_cast<float>(m14), static_cast<float>(m21), static_cast<float>(m22), static_cast<float>(m23), static_cast<float>(m24), static_cast<float>(m31), static_cast<float>(m32), static_cast<float>(m33), static_cast<float>(m34), static_cast<float>(m41), static_cast<float>(m42), static_cast<float>(m43), static_cast<float>(m44));
-	*outptr_QMatrix4x4 = ret;
+QMatrix4x4* QMatrix4x4_new4(float m11, float m12, float m13, float m14, float m21, float m22, float m23, float m24, float m31, float m32, float m33, float m34, float m41, float m42, float m43, float m44) {
+	return new QMatrix4x4(static_cast<float>(m11), static_cast<float>(m12), static_cast<float>(m13), static_cast<float>(m14), static_cast<float>(m21), static_cast<float>(m22), static_cast<float>(m23), static_cast<float>(m24), static_cast<float>(m31), static_cast<float>(m32), static_cast<float>(m33), static_cast<float>(m34), static_cast<float>(m41), static_cast<float>(m42), static_cast<float>(m43), static_cast<float>(m44));
 }
 
-void QMatrix4x4_new5(const float* values, int cols, int rows, QMatrix4x4** outptr_QMatrix4x4) {
-	QMatrix4x4* ret = new QMatrix4x4(static_cast<const float*>(values), static_cast<int>(cols), static_cast<int>(rows));
-	*outptr_QMatrix4x4 = ret;
+QMatrix4x4* QMatrix4x4_new5(const float* values, int cols, int rows) {
+	return new QMatrix4x4(static_cast<const float*>(values), static_cast<int>(cols), static_cast<int>(rows));
 }
 
-void QMatrix4x4_new6(QTransform* transform, QMatrix4x4** outptr_QMatrix4x4) {
-	QMatrix4x4* ret = new QMatrix4x4(*transform);
-	*outptr_QMatrix4x4 = ret;
+QMatrix4x4* QMatrix4x4_new6(QTransform* transform) {
+	return new QMatrix4x4(*transform);
 }
 
-void QMatrix4x4_new7(QMatrix4x4* param1, QMatrix4x4** outptr_QMatrix4x4) {
-	QMatrix4x4* ret = new QMatrix4x4(*param1);
-	*outptr_QMatrix4x4 = ret;
+QMatrix4x4* QMatrix4x4_new7(QMatrix4x4* param1) {
+	return new QMatrix4x4(*param1);
 }
 
 QVector4D* QMatrix4x4_Column(const QMatrix4x4* self, int index) {

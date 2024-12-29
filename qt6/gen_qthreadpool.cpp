@@ -12,6 +12,10 @@
 #include <QTimerEvent>
 #include <qthreadpool.h>
 #include "gen_qthreadpool.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQThreadPool : public virtual QThreadPool {
@@ -195,16 +199,16 @@ public:
 
 };
 
-void QThreadPool_new(QThreadPool** outptr_QThreadPool, QObject** outptr_QObject) {
-	MiqtVirtualQThreadPool* ret = new MiqtVirtualQThreadPool();
-	*outptr_QThreadPool = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QThreadPool* QThreadPool_new() {
+	return new MiqtVirtualQThreadPool();
 }
 
-void QThreadPool_new2(QObject* parent, QThreadPool** outptr_QThreadPool, QObject** outptr_QObject) {
-	MiqtVirtualQThreadPool* ret = new MiqtVirtualQThreadPool(parent);
-	*outptr_QThreadPool = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QThreadPool* QThreadPool_new2(QObject* parent) {
+	return new MiqtVirtualQThreadPool(parent);
+}
+
+void QThreadPool_virtbase(QThreadPool* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QThreadPool_MetaObject(const QThreadPool* self) {

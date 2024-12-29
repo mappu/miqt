@@ -9,6 +9,10 @@
 #include <cstring>
 #include <qscilexerpostscript.h>
 #include "gen_qscilexerpostscript.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQsciLexerPostScript : public virtual QsciLexerPostScript {
@@ -935,18 +939,16 @@ public:
 
 };
 
-void QsciLexerPostScript_new(QsciLexerPostScript** outptr_QsciLexerPostScript, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerPostScript* ret = new MiqtVirtualQsciLexerPostScript();
-	*outptr_QsciLexerPostScript = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerPostScript* QsciLexerPostScript_new() {
+	return new MiqtVirtualQsciLexerPostScript();
 }
 
-void QsciLexerPostScript_new2(QObject* parent, QsciLexerPostScript** outptr_QsciLexerPostScript, QsciLexer** outptr_QsciLexer, QObject** outptr_QObject) {
-	MiqtVirtualQsciLexerPostScript* ret = new MiqtVirtualQsciLexerPostScript(parent);
-	*outptr_QsciLexerPostScript = ret;
-	*outptr_QsciLexer = static_cast<QsciLexer*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
+QsciLexerPostScript* QsciLexerPostScript_new2(QObject* parent) {
+	return new MiqtVirtualQsciLexerPostScript(parent);
+}
+
+void QsciLexerPostScript_virtbase(QsciLexerPostScript* src, QsciLexer** outptr_QsciLexer) {
+	*outptr_QsciLexer = static_cast<QsciLexer*>(src);
 }
 
 QMetaObject* QsciLexerPostScript_MetaObject(const QsciLexerPostScript* self) {

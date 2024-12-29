@@ -13,6 +13,10 @@
 #include <QTimerEvent>
 #include <qmediadevices.h>
 #include "gen_qmediadevices.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQMediaDevices : public virtual QMediaDevices {
@@ -196,16 +200,16 @@ public:
 
 };
 
-void QMediaDevices_new(QMediaDevices** outptr_QMediaDevices, QObject** outptr_QObject) {
-	MiqtVirtualQMediaDevices* ret = new MiqtVirtualQMediaDevices();
-	*outptr_QMediaDevices = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QMediaDevices* QMediaDevices_new() {
+	return new MiqtVirtualQMediaDevices();
 }
 
-void QMediaDevices_new2(QObject* parent, QMediaDevices** outptr_QMediaDevices, QObject** outptr_QObject) {
-	MiqtVirtualQMediaDevices* ret = new MiqtVirtualQMediaDevices(parent);
-	*outptr_QMediaDevices = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QMediaDevices* QMediaDevices_new2(QObject* parent) {
+	return new MiqtVirtualQMediaDevices(parent);
+}
+
+void QMediaDevices_virtbase(QMediaDevices* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QMediaDevices_MetaObject(const QMediaDevices* self) {

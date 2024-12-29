@@ -26,12 +26,12 @@ typedef struct QSize QSize;
 typedef struct QUrl QUrl;
 #endif
 
-void QMediaResource_new(QMediaResource** outptr_QMediaResource);
-void QMediaResource_new2(QUrl* url, QMediaResource** outptr_QMediaResource);
-void QMediaResource_new3(QNetworkRequest* request, QMediaResource** outptr_QMediaResource);
-void QMediaResource_new4(QMediaResource* other, QMediaResource** outptr_QMediaResource);
-void QMediaResource_new5(QUrl* url, struct miqt_string mimeType, QMediaResource** outptr_QMediaResource);
-void QMediaResource_new6(QNetworkRequest* request, struct miqt_string mimeType, QMediaResource** outptr_QMediaResource);
+QMediaResource* QMediaResource_new();
+QMediaResource* QMediaResource_new2(QUrl* url);
+QMediaResource* QMediaResource_new3(QNetworkRequest* request);
+QMediaResource* QMediaResource_new4(QMediaResource* other);
+QMediaResource* QMediaResource_new5(QUrl* url, struct miqt_string mimeType);
+QMediaResource* QMediaResource_new6(QNetworkRequest* request, struct miqt_string mimeType);
 void QMediaResource_OperatorAssign(QMediaResource* self, QMediaResource* other);
 bool QMediaResource_IsNull(const QMediaResource* self);
 bool QMediaResource_OperatorEqual(const QMediaResource* self, QMediaResource* other);

@@ -18,16 +18,18 @@
 #include <QTimerEvent>
 #include <qdnslookup.h>
 #include "gen_qdnslookup.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QDnsDomainNameRecord_new(QDnsDomainNameRecord** outptr_QDnsDomainNameRecord) {
-	QDnsDomainNameRecord* ret = new QDnsDomainNameRecord();
-	*outptr_QDnsDomainNameRecord = ret;
+QDnsDomainNameRecord* QDnsDomainNameRecord_new() {
+	return new QDnsDomainNameRecord();
 }
 
-void QDnsDomainNameRecord_new2(QDnsDomainNameRecord* other, QDnsDomainNameRecord** outptr_QDnsDomainNameRecord) {
-	QDnsDomainNameRecord* ret = new QDnsDomainNameRecord(*other);
-	*outptr_QDnsDomainNameRecord = ret;
+QDnsDomainNameRecord* QDnsDomainNameRecord_new2(QDnsDomainNameRecord* other) {
+	return new QDnsDomainNameRecord(*other);
 }
 
 void QDnsDomainNameRecord_OperatorAssign(QDnsDomainNameRecord* self, QDnsDomainNameRecord* other) {
@@ -73,14 +75,12 @@ void QDnsDomainNameRecord_Delete(QDnsDomainNameRecord* self, bool isSubclass) {
 	}
 }
 
-void QDnsHostAddressRecord_new(QDnsHostAddressRecord** outptr_QDnsHostAddressRecord) {
-	QDnsHostAddressRecord* ret = new QDnsHostAddressRecord();
-	*outptr_QDnsHostAddressRecord = ret;
+QDnsHostAddressRecord* QDnsHostAddressRecord_new() {
+	return new QDnsHostAddressRecord();
 }
 
-void QDnsHostAddressRecord_new2(QDnsHostAddressRecord* other, QDnsHostAddressRecord** outptr_QDnsHostAddressRecord) {
-	QDnsHostAddressRecord* ret = new QDnsHostAddressRecord(*other);
-	*outptr_QDnsHostAddressRecord = ret;
+QDnsHostAddressRecord* QDnsHostAddressRecord_new2(QDnsHostAddressRecord* other) {
+	return new QDnsHostAddressRecord(*other);
 }
 
 void QDnsHostAddressRecord_OperatorAssign(QDnsHostAddressRecord* self, QDnsHostAddressRecord* other) {
@@ -119,14 +119,12 @@ void QDnsHostAddressRecord_Delete(QDnsHostAddressRecord* self, bool isSubclass) 
 	}
 }
 
-void QDnsMailExchangeRecord_new(QDnsMailExchangeRecord** outptr_QDnsMailExchangeRecord) {
-	QDnsMailExchangeRecord* ret = new QDnsMailExchangeRecord();
-	*outptr_QDnsMailExchangeRecord = ret;
+QDnsMailExchangeRecord* QDnsMailExchangeRecord_new() {
+	return new QDnsMailExchangeRecord();
 }
 
-void QDnsMailExchangeRecord_new2(QDnsMailExchangeRecord* other, QDnsMailExchangeRecord** outptr_QDnsMailExchangeRecord) {
-	QDnsMailExchangeRecord* ret = new QDnsMailExchangeRecord(*other);
-	*outptr_QDnsMailExchangeRecord = ret;
+QDnsMailExchangeRecord* QDnsMailExchangeRecord_new2(QDnsMailExchangeRecord* other) {
+	return new QDnsMailExchangeRecord(*other);
 }
 
 void QDnsMailExchangeRecord_OperatorAssign(QDnsMailExchangeRecord* self, QDnsMailExchangeRecord* other) {
@@ -177,14 +175,12 @@ void QDnsMailExchangeRecord_Delete(QDnsMailExchangeRecord* self, bool isSubclass
 	}
 }
 
-void QDnsServiceRecord_new(QDnsServiceRecord** outptr_QDnsServiceRecord) {
-	QDnsServiceRecord* ret = new QDnsServiceRecord();
-	*outptr_QDnsServiceRecord = ret;
+QDnsServiceRecord* QDnsServiceRecord_new() {
+	return new QDnsServiceRecord();
 }
 
-void QDnsServiceRecord_new2(QDnsServiceRecord* other, QDnsServiceRecord** outptr_QDnsServiceRecord) {
-	QDnsServiceRecord* ret = new QDnsServiceRecord(*other);
-	*outptr_QDnsServiceRecord = ret;
+QDnsServiceRecord* QDnsServiceRecord_new2(QDnsServiceRecord* other) {
+	return new QDnsServiceRecord(*other);
 }
 
 void QDnsServiceRecord_OperatorAssign(QDnsServiceRecord* self, QDnsServiceRecord* other) {
@@ -245,14 +241,12 @@ void QDnsServiceRecord_Delete(QDnsServiceRecord* self, bool isSubclass) {
 	}
 }
 
-void QDnsTextRecord_new(QDnsTextRecord** outptr_QDnsTextRecord) {
-	QDnsTextRecord* ret = new QDnsTextRecord();
-	*outptr_QDnsTextRecord = ret;
+QDnsTextRecord* QDnsTextRecord_new() {
+	return new QDnsTextRecord();
 }
 
-void QDnsTextRecord_new2(QDnsTextRecord* other, QDnsTextRecord** outptr_QDnsTextRecord) {
-	QDnsTextRecord* ret = new QDnsTextRecord(*other);
-	*outptr_QDnsTextRecord = ret;
+QDnsTextRecord* QDnsTextRecord_new2(QDnsTextRecord* other) {
+	return new QDnsTextRecord(*other);
 }
 
 void QDnsTextRecord_OperatorAssign(QDnsTextRecord* self, QDnsTextRecord* other) {
@@ -490,44 +484,36 @@ public:
 
 };
 
-void QDnsLookup_new(QDnsLookup** outptr_QDnsLookup, QObject** outptr_QObject) {
-	MiqtVirtualQDnsLookup* ret = new MiqtVirtualQDnsLookup();
-	*outptr_QDnsLookup = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QDnsLookup* QDnsLookup_new() {
+	return new MiqtVirtualQDnsLookup();
 }
 
-void QDnsLookup_new2(int typeVal, struct miqt_string name, QDnsLookup** outptr_QDnsLookup, QObject** outptr_QObject) {
+QDnsLookup* QDnsLookup_new2(int typeVal, struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	MiqtVirtualQDnsLookup* ret = new MiqtVirtualQDnsLookup(static_cast<QDnsLookup::Type>(typeVal), name_QString);
-	*outptr_QDnsLookup = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQDnsLookup(static_cast<QDnsLookup::Type>(typeVal), name_QString);
 }
 
-void QDnsLookup_new3(int typeVal, struct miqt_string name, QHostAddress* nameserver, QDnsLookup** outptr_QDnsLookup, QObject** outptr_QObject) {
+QDnsLookup* QDnsLookup_new3(int typeVal, struct miqt_string name, QHostAddress* nameserver) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	MiqtVirtualQDnsLookup* ret = new MiqtVirtualQDnsLookup(static_cast<QDnsLookup::Type>(typeVal), name_QString, *nameserver);
-	*outptr_QDnsLookup = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQDnsLookup(static_cast<QDnsLookup::Type>(typeVal), name_QString, *nameserver);
 }
 
-void QDnsLookup_new4(QObject* parent, QDnsLookup** outptr_QDnsLookup, QObject** outptr_QObject) {
-	MiqtVirtualQDnsLookup* ret = new MiqtVirtualQDnsLookup(parent);
-	*outptr_QDnsLookup = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QDnsLookup* QDnsLookup_new4(QObject* parent) {
+	return new MiqtVirtualQDnsLookup(parent);
 }
 
-void QDnsLookup_new5(int typeVal, struct miqt_string name, QObject* parent, QDnsLookup** outptr_QDnsLookup, QObject** outptr_QObject) {
+QDnsLookup* QDnsLookup_new5(int typeVal, struct miqt_string name, QObject* parent) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	MiqtVirtualQDnsLookup* ret = new MiqtVirtualQDnsLookup(static_cast<QDnsLookup::Type>(typeVal), name_QString, parent);
-	*outptr_QDnsLookup = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQDnsLookup(static_cast<QDnsLookup::Type>(typeVal), name_QString, parent);
 }
 
-void QDnsLookup_new6(int typeVal, struct miqt_string name, QHostAddress* nameserver, QObject* parent, QDnsLookup** outptr_QDnsLookup, QObject** outptr_QObject) {
+QDnsLookup* QDnsLookup_new6(int typeVal, struct miqt_string name, QHostAddress* nameserver, QObject* parent) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	MiqtVirtualQDnsLookup* ret = new MiqtVirtualQDnsLookup(static_cast<QDnsLookup::Type>(typeVal), name_QString, *nameserver, parent);
-	*outptr_QDnsLookup = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQDnsLookup(static_cast<QDnsLookup::Type>(typeVal), name_QString, *nameserver, parent);
+}
+
+void QDnsLookup_virtbase(QDnsLookup* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QDnsLookup_MetaObject(const QDnsLookup* self) {

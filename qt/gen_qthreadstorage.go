@@ -37,24 +37,19 @@ func newQThreadStorageData(h *C.QThreadStorageData) *QThreadStorageData {
 	if h == nil {
 		return nil
 	}
+
 	return &QThreadStorageData{h: h}
 }
 
 // UnsafeNewQThreadStorageData constructs the type using only unsafe pointers.
 func UnsafeNewQThreadStorageData(h unsafe.Pointer) *QThreadStorageData {
-	if h == nil {
-		return nil
-	}
-
-	return &QThreadStorageData{h: (*C.QThreadStorageData)(h)}
+	return newQThreadStorageData((*C.QThreadStorageData)(h))
 }
 
 // NewQThreadStorageData constructs a new QThreadStorageData object.
 func NewQThreadStorageData(param1 *QThreadStorageData) *QThreadStorageData {
-	var outptr_QThreadStorageData *C.QThreadStorageData = nil
 
-	C.QThreadStorageData_new(param1.cPointer(), &outptr_QThreadStorageData)
-	ret := newQThreadStorageData(outptr_QThreadStorageData)
+	ret := newQThreadStorageData(C.QThreadStorageData_new(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

@@ -35,53 +35,42 @@ func (this *QPixmap) UnsafePointer() unsafe.Pointer {
 }
 
 // newQPixmap constructs the type using only CGO pointers.
-func newQPixmap(h *C.QPixmap, h_QPaintDevice *C.QPaintDevice) *QPixmap {
+func newQPixmap(h *C.QPixmap) *QPixmap {
 	if h == nil {
 		return nil
 	}
+	var outptr_QPaintDevice *C.QPaintDevice = nil
+	C.QPixmap_virtbase(h, &outptr_QPaintDevice)
+
 	return &QPixmap{h: h,
-		QPaintDevice: newQPaintDevice(h_QPaintDevice)}
+		QPaintDevice: newQPaintDevice(outptr_QPaintDevice)}
 }
 
 // UnsafeNewQPixmap constructs the type using only unsafe pointers.
-func UnsafeNewQPixmap(h unsafe.Pointer, h_QPaintDevice unsafe.Pointer) *QPixmap {
-	if h == nil {
-		return nil
-	}
-
-	return &QPixmap{h: (*C.QPixmap)(h),
-		QPaintDevice: UnsafeNewQPaintDevice(h_QPaintDevice)}
+func UnsafeNewQPixmap(h unsafe.Pointer) *QPixmap {
+	return newQPixmap((*C.QPixmap)(h))
 }
 
 // NewQPixmap constructs a new QPixmap object.
 func NewQPixmap() *QPixmap {
-	var outptr_QPixmap *C.QPixmap = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPixmap_new(&outptr_QPixmap, &outptr_QPaintDevice)
-	ret := newQPixmap(outptr_QPixmap, outptr_QPaintDevice)
+	ret := newQPixmap(C.QPixmap_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPixmap2 constructs a new QPixmap object.
 func NewQPixmap2(w int, h int) *QPixmap {
-	var outptr_QPixmap *C.QPixmap = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPixmap_new2((C.int)(w), (C.int)(h), &outptr_QPixmap, &outptr_QPaintDevice)
-	ret := newQPixmap(outptr_QPixmap, outptr_QPaintDevice)
+	ret := newQPixmap(C.QPixmap_new2((C.int)(w), (C.int)(h)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPixmap3 constructs a new QPixmap object.
 func NewQPixmap3(param1 *QSize) *QPixmap {
-	var outptr_QPixmap *C.QPixmap = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPixmap_new3(param1.cPointer(), &outptr_QPixmap, &outptr_QPaintDevice)
-	ret := newQPixmap(outptr_QPixmap, outptr_QPaintDevice)
+	ret := newQPixmap(C.QPixmap_new3(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -92,22 +81,16 @@ func NewQPixmap4(fileName string) *QPixmap {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var outptr_QPixmap *C.QPixmap = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPixmap_new4(fileName_ms, &outptr_QPixmap, &outptr_QPaintDevice)
-	ret := newQPixmap(outptr_QPixmap, outptr_QPaintDevice)
+	ret := newQPixmap(C.QPixmap_new4(fileName_ms))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQPixmap5 constructs a new QPixmap object.
 func NewQPixmap5(param1 *QPixmap) *QPixmap {
-	var outptr_QPixmap *C.QPixmap = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPixmap_new5(param1.cPointer(), &outptr_QPixmap, &outptr_QPaintDevice)
-	ret := newQPixmap(outptr_QPixmap, outptr_QPaintDevice)
+	ret := newQPixmap(C.QPixmap_new5(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -120,11 +103,8 @@ func NewQPixmap6(fileName string, format string) *QPixmap {
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	var outptr_QPixmap *C.QPixmap = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPixmap_new6(fileName_ms, format_Cstring, &outptr_QPixmap, &outptr_QPaintDevice)
-	ret := newQPixmap(outptr_QPixmap, outptr_QPaintDevice)
+	ret := newQPixmap(C.QPixmap_new6(fileName_ms, format_Cstring))
 	ret.isSubclass = true
 	return ret
 }
@@ -137,11 +117,8 @@ func NewQPixmap7(fileName string, format string, flags ImageConversionFlag) *QPi
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	var outptr_QPixmap *C.QPixmap = nil
-	var outptr_QPaintDevice *C.QPaintDevice = nil
 
-	C.QPixmap_new7(fileName_ms, format_Cstring, (C.int)(flags), &outptr_QPixmap, &outptr_QPaintDevice)
-	ret := newQPixmap(outptr_QPixmap, outptr_QPaintDevice)
+	ret := newQPixmap(C.QPixmap_new7(fileName_ms, format_Cstring, (C.int)(flags)))
 	ret.isSubclass = true
 	return ret
 }
@@ -171,15 +148,13 @@ func (this *QPixmap) Height() int {
 }
 
 func (this *QPixmap) Size() *QSize {
-	_ret := C.QPixmap_Size(this.h)
-	_goptr := newQSize(_ret)
+	_goptr := newQSize(C.QPixmap_Size(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) Rect() *QRect {
-	_ret := C.QPixmap_Rect(this.h)
-	_goptr := newQRect(_ret)
+	_goptr := newQRect(C.QPixmap_Rect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -197,8 +172,7 @@ func (this *QPixmap) Fill() {
 }
 
 func (this *QPixmap) Mask() *QBitmap {
-	_ret := C.QPixmap_Mask(this.h)
-	_goptr := newQBitmap(_ret, nil, nil)
+	_goptr := newQBitmap(C.QPixmap_Mask(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -216,8 +190,7 @@ func (this *QPixmap) SetDevicePixelRatio(scaleFactor float64) {
 }
 
 func (this *QPixmap) DeviceIndependentSize() *QSizeF {
-	_ret := C.QPixmap_DeviceIndependentSize(this.h)
-	_goptr := newQSizeF(_ret)
+	_goptr := newQSizeF(C.QPixmap_DeviceIndependentSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -231,78 +204,67 @@ func (this *QPixmap) HasAlphaChannel() bool {
 }
 
 func (this *QPixmap) CreateHeuristicMask() *QBitmap {
-	_ret := C.QPixmap_CreateHeuristicMask(this.h)
-	_goptr := newQBitmap(_ret, nil, nil)
+	_goptr := newQBitmap(C.QPixmap_CreateHeuristicMask(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) CreateMaskFromColor(maskColor *QColor) *QBitmap {
-	_ret := C.QPixmap_CreateMaskFromColor(this.h, maskColor.cPointer())
-	_goptr := newQBitmap(_ret, nil, nil)
+	_goptr := newQBitmap(C.QPixmap_CreateMaskFromColor(this.h, maskColor.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) Scaled(w int, h int) *QPixmap {
-	_ret := C.QPixmap_Scaled(this.h, (C.int)(w), (C.int)(h))
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QPixmap_Scaled(this.h, (C.int)(w), (C.int)(h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) ScaledWithQSize(s *QSize) *QPixmap {
-	_ret := C.QPixmap_ScaledWithQSize(this.h, s.cPointer())
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QPixmap_ScaledWithQSize(this.h, s.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) ScaledToWidth(w int) *QPixmap {
-	_ret := C.QPixmap_ScaledToWidth(this.h, (C.int)(w))
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QPixmap_ScaledToWidth(this.h, (C.int)(w)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) ScaledToHeight(h int) *QPixmap {
-	_ret := C.QPixmap_ScaledToHeight(this.h, (C.int)(h))
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QPixmap_ScaledToHeight(this.h, (C.int)(h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) Transformed(param1 *QTransform) *QPixmap {
-	_ret := C.QPixmap_Transformed(this.h, param1.cPointer())
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QPixmap_Transformed(this.h, param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QPixmap_TrueMatrix(m *QTransform, w int, h int) *QTransform {
-	_ret := C.QPixmap_TrueMatrix(m.cPointer(), (C.int)(w), (C.int)(h))
-	_goptr := newQTransform(_ret)
+	_goptr := newQTransform(C.QPixmap_TrueMatrix(m.cPointer(), (C.int)(w), (C.int)(h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) ToImage() *QImage {
-	_ret := C.QPixmap_ToImage(this.h)
-	_goptr := newQImage(_ret, nil)
+	_goptr := newQImage(C.QPixmap_ToImage(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QPixmap_FromImage(image *QImage) *QPixmap {
-	_ret := C.QPixmap_FromImage(image.cPointer())
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QPixmap_FromImage(image.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QPixmap_FromImageReader(imageReader *QImageReader) *QPixmap {
-	_ret := C.QPixmap_FromImageReader(imageReader.cPointer())
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QPixmap_FromImageReader(imageReader.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -343,15 +305,13 @@ func (this *QPixmap) ConvertFromImage(img *QImage) bool {
 }
 
 func (this *QPixmap) Copy(x int, y int, width int, height int) *QPixmap {
-	_ret := C.QPixmap_Copy(this.h, (C.int)(x), (C.int)(y), (C.int)(width), (C.int)(height))
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QPixmap_Copy(this.h, (C.int)(x), (C.int)(y), (C.int)(width), (C.int)(height)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) Copy2() *QPixmap {
-	_ret := C.QPixmap_Copy2(this.h)
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QPixmap_Copy2(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -381,7 +341,7 @@ func (this *QPixmap) IsQBitmap() bool {
 }
 
 func (this *QPixmap) PaintEngine() *QPaintEngine {
-	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QPixmap_PaintEngine(this.h)))
+	return newQPaintEngine(C.QPixmap_PaintEngine(this.h))
 }
 
 func (this *QPixmap) OperatorNot() bool {
@@ -393,78 +353,67 @@ func (this *QPixmap) Fill1(fillColor *QColor) {
 }
 
 func (this *QPixmap) CreateHeuristicMask1(clipTight bool) *QBitmap {
-	_ret := C.QPixmap_CreateHeuristicMask1(this.h, (C.bool)(clipTight))
-	_goptr := newQBitmap(_ret, nil, nil)
+	_goptr := newQBitmap(C.QPixmap_CreateHeuristicMask1(this.h, (C.bool)(clipTight)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) CreateMaskFromColor2(maskColor *QColor, mode MaskMode) *QBitmap {
-	_ret := C.QPixmap_CreateMaskFromColor2(this.h, maskColor.cPointer(), (C.int)(mode))
-	_goptr := newQBitmap(_ret, nil, nil)
+	_goptr := newQBitmap(C.QPixmap_CreateMaskFromColor2(this.h, maskColor.cPointer(), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) Scaled3(w int, h int, aspectMode AspectRatioMode) *QPixmap {
-	_ret := C.QPixmap_Scaled3(this.h, (C.int)(w), (C.int)(h), (C.int)(aspectMode))
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QPixmap_Scaled3(this.h, (C.int)(w), (C.int)(h), (C.int)(aspectMode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) Scaled4(w int, h int, aspectMode AspectRatioMode, mode TransformationMode) *QPixmap {
-	_ret := C.QPixmap_Scaled4(this.h, (C.int)(w), (C.int)(h), (C.int)(aspectMode), (C.int)(mode))
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QPixmap_Scaled4(this.h, (C.int)(w), (C.int)(h), (C.int)(aspectMode), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) Scaled2(s *QSize, aspectMode AspectRatioMode) *QPixmap {
-	_ret := C.QPixmap_Scaled2(this.h, s.cPointer(), (C.int)(aspectMode))
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QPixmap_Scaled2(this.h, s.cPointer(), (C.int)(aspectMode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) Scaled32(s *QSize, aspectMode AspectRatioMode, mode TransformationMode) *QPixmap {
-	_ret := C.QPixmap_Scaled32(this.h, s.cPointer(), (C.int)(aspectMode), (C.int)(mode))
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QPixmap_Scaled32(this.h, s.cPointer(), (C.int)(aspectMode), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) ScaledToWidth2(w int, mode TransformationMode) *QPixmap {
-	_ret := C.QPixmap_ScaledToWidth2(this.h, (C.int)(w), (C.int)(mode))
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QPixmap_ScaledToWidth2(this.h, (C.int)(w), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) ScaledToHeight2(h int, mode TransformationMode) *QPixmap {
-	_ret := C.QPixmap_ScaledToHeight2(this.h, (C.int)(h), (C.int)(mode))
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QPixmap_ScaledToHeight2(this.h, (C.int)(h), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPixmap) Transformed2(param1 *QTransform, mode TransformationMode) *QPixmap {
-	_ret := C.QPixmap_Transformed2(this.h, param1.cPointer(), (C.int)(mode))
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QPixmap_Transformed2(this.h, param1.cPointer(), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QPixmap_FromImage2(image *QImage, flags ImageConversionFlag) *QPixmap {
-	_ret := C.QPixmap_FromImage2(image.cPointer(), (C.int)(flags))
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QPixmap_FromImage2(image.cPointer(), (C.int)(flags)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QPixmap_FromImageReader2(imageReader *QImageReader, flags ImageConversionFlag) *QPixmap {
-	_ret := C.QPixmap_FromImageReader2(imageReader.cPointer(), (C.int)(flags))
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QPixmap_FromImageReader2(imageReader.cPointer(), (C.int)(flags)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -556,8 +505,7 @@ func (this *QPixmap) ConvertFromImage2(img *QImage, flags ImageConversionFlag) b
 }
 
 func (this *QPixmap) Copy1(rect *QRect) *QPixmap {
-	_ret := C.QPixmap_Copy1(this.h, rect.cPointer())
-	_goptr := newQPixmap(_ret, nil)
+	_goptr := newQPixmap(C.QPixmap_Copy1(this.h, rect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -576,6 +524,9 @@ func (this *QPixmap) callVirtualBase_DevType() int {
 
 }
 func (this *QPixmap) OnDevType(slot func(super func() int) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPixmap_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -594,9 +545,13 @@ func miqt_exec_callback_QPixmap_DevType(self *C.QPixmap, cb C.intptr_t) C.int {
 
 func (this *QPixmap) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return UnsafeNewQPaintEngine(unsafe.Pointer(C.QPixmap_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+	return newQPaintEngine(C.QPixmap_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+
 }
 func (this *QPixmap) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPixmap_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -619,6 +574,9 @@ func (this *QPixmap) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetr
 
 }
 func (this *QPixmap) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPixmap_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -644,6 +602,9 @@ func (this *QPixmap) callVirtualBase_InitPainter(painter *QPainter) {
 
 }
 func (this *QPixmap) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPixmap_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -655,7 +616,7 @@ func miqt_exec_callback_QPixmap_InitPainter(self *C.QPixmap, cb C.intptr_t, pain
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPainter(unsafe.Pointer(painter))
+	slotval1 := newQPainter(painter)
 
 	gofunc((&QPixmap{h: self}).callVirtualBase_InitPainter, slotval1)
 
@@ -663,9 +624,13 @@ func miqt_exec_callback_QPixmap_InitPainter(self *C.QPixmap, cb C.intptr_t, pain
 
 func (this *QPixmap) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return UnsafeNewQPaintDevice(unsafe.Pointer(C.QPixmap_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer())))
+	return newQPaintDevice(C.QPixmap_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+
 }
 func (this *QPixmap) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPixmap_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -677,7 +642,7 @@ func miqt_exec_callback_QPixmap_Redirected(self *C.QPixmap, cb C.intptr_t, offse
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQPoint(unsafe.Pointer(offset))
+	slotval1 := newQPoint(offset)
 
 	virtualReturn := gofunc((&QPixmap{h: self}).callVirtualBase_Redirected, slotval1)
 
@@ -687,9 +652,13 @@ func miqt_exec_callback_QPixmap_Redirected(self *C.QPixmap, cb C.intptr_t, offse
 
 func (this *QPixmap) callVirtualBase_SharedPainter() *QPainter {
 
-	return UnsafeNewQPainter(unsafe.Pointer(C.QPixmap_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+	return newQPainter(C.QPixmap_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+
 }
 func (this *QPixmap) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QPixmap_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 

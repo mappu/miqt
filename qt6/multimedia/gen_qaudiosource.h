@@ -38,12 +38,13 @@ typedef struct QObject QObject;
 typedef struct QTimerEvent QTimerEvent;
 #endif
 
-void QAudioSource_new(QAudioSource** outptr_QAudioSource, QObject** outptr_QObject);
-void QAudioSource_new2(QAudioDevice* audioDeviceInfo, QAudioSource** outptr_QAudioSource, QObject** outptr_QObject);
-void QAudioSource_new3(QAudioFormat* format, QAudioSource** outptr_QAudioSource, QObject** outptr_QObject);
-void QAudioSource_new4(QAudioFormat* format, QObject* parent, QAudioSource** outptr_QAudioSource, QObject** outptr_QObject);
-void QAudioSource_new5(QAudioDevice* audioDeviceInfo, QAudioFormat* format, QAudioSource** outptr_QAudioSource, QObject** outptr_QObject);
-void QAudioSource_new6(QAudioDevice* audioDeviceInfo, QAudioFormat* format, QObject* parent, QAudioSource** outptr_QAudioSource, QObject** outptr_QObject);
+QAudioSource* QAudioSource_new();
+QAudioSource* QAudioSource_new2(QAudioDevice* audioDeviceInfo);
+QAudioSource* QAudioSource_new3(QAudioFormat* format);
+QAudioSource* QAudioSource_new4(QAudioFormat* format, QObject* parent);
+QAudioSource* QAudioSource_new5(QAudioDevice* audioDeviceInfo, QAudioFormat* format);
+QAudioSource* QAudioSource_new6(QAudioDevice* audioDeviceInfo, QAudioFormat* format, QObject* parent);
+void QAudioSource_virtbase(QAudioSource* src, QObject** outptr_QObject);
 QMetaObject* QAudioSource_MetaObject(const QAudioSource* self);
 void* QAudioSource_Metacast(QAudioSource* self, const char* param1);
 struct miqt_string QAudioSource_Tr(const char* s);

@@ -20,6 +20,10 @@
 #include <QTransform>
 #include <qpixmap.h>
 #include "gen_qpixmap.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQPixmap : public virtual QPixmap {
@@ -174,49 +178,39 @@ public:
 
 };
 
-void QPixmap_new(QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPixmap* ret = new MiqtVirtualQPixmap();
-	*outptr_QPixmap = ret;
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPixmap* QPixmap_new() {
+	return new MiqtVirtualQPixmap();
 }
 
-void QPixmap_new2(int w, int h, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPixmap* ret = new MiqtVirtualQPixmap(static_cast<int>(w), static_cast<int>(h));
-	*outptr_QPixmap = ret;
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPixmap* QPixmap_new2(int w, int h) {
+	return new MiqtVirtualQPixmap(static_cast<int>(w), static_cast<int>(h));
 }
 
-void QPixmap_new3(QSize* param1, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPixmap* ret = new MiqtVirtualQPixmap(*param1);
-	*outptr_QPixmap = ret;
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPixmap* QPixmap_new3(QSize* param1) {
+	return new MiqtVirtualQPixmap(*param1);
 }
 
-void QPixmap_new4(struct miqt_string fileName, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice) {
+QPixmap* QPixmap_new4(struct miqt_string fileName) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	MiqtVirtualQPixmap* ret = new MiqtVirtualQPixmap(fileName_QString);
-	*outptr_QPixmap = ret;
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQPixmap(fileName_QString);
 }
 
-void QPixmap_new5(QPixmap* param1, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice) {
-	MiqtVirtualQPixmap* ret = new MiqtVirtualQPixmap(*param1);
-	*outptr_QPixmap = ret;
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+QPixmap* QPixmap_new5(QPixmap* param1) {
+	return new MiqtVirtualQPixmap(*param1);
 }
 
-void QPixmap_new6(struct miqt_string fileName, const char* format, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice) {
+QPixmap* QPixmap_new6(struct miqt_string fileName, const char* format) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	MiqtVirtualQPixmap* ret = new MiqtVirtualQPixmap(fileName_QString, format);
-	*outptr_QPixmap = ret;
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQPixmap(fileName_QString, format);
 }
 
-void QPixmap_new7(struct miqt_string fileName, const char* format, int flags, QPixmap** outptr_QPixmap, QPaintDevice** outptr_QPaintDevice) {
+QPixmap* QPixmap_new7(struct miqt_string fileName, const char* format, int flags) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	MiqtVirtualQPixmap* ret = new MiqtVirtualQPixmap(fileName_QString, format, static_cast<Qt::ImageConversionFlags>(flags));
-	*outptr_QPixmap = ret;
-	*outptr_QPaintDevice = static_cast<QPaintDevice*>(ret);
+	return new MiqtVirtualQPixmap(fileName_QString, format, static_cast<Qt::ImageConversionFlags>(flags));
+}
+
+void QPixmap_virtbase(QPixmap* src, QPaintDevice** outptr_QPaintDevice) {
+	*outptr_QPaintDevice = static_cast<QPaintDevice*>(src);
 }
 
 void QPixmap_OperatorAssign(QPixmap* self, QPixmap* param1) {

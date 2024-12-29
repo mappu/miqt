@@ -125,44 +125,35 @@ func newQVideoFrameFormat(h *C.QVideoFrameFormat) *QVideoFrameFormat {
 	if h == nil {
 		return nil
 	}
+
 	return &QVideoFrameFormat{h: h}
 }
 
 // UnsafeNewQVideoFrameFormat constructs the type using only unsafe pointers.
 func UnsafeNewQVideoFrameFormat(h unsafe.Pointer) *QVideoFrameFormat {
-	if h == nil {
-		return nil
-	}
-
-	return &QVideoFrameFormat{h: (*C.QVideoFrameFormat)(h)}
+	return newQVideoFrameFormat((*C.QVideoFrameFormat)(h))
 }
 
 // NewQVideoFrameFormat constructs a new QVideoFrameFormat object.
 func NewQVideoFrameFormat() *QVideoFrameFormat {
-	var outptr_QVideoFrameFormat *C.QVideoFrameFormat = nil
 
-	C.QVideoFrameFormat_new(&outptr_QVideoFrameFormat)
-	ret := newQVideoFrameFormat(outptr_QVideoFrameFormat)
+	ret := newQVideoFrameFormat(C.QVideoFrameFormat_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVideoFrameFormat2 constructs a new QVideoFrameFormat object.
 func NewQVideoFrameFormat2(size *qt6.QSize, pixelFormat QVideoFrameFormat__PixelFormat) *QVideoFrameFormat {
-	var outptr_QVideoFrameFormat *C.QVideoFrameFormat = nil
 
-	C.QVideoFrameFormat_new2((*C.QSize)(size.UnsafePointer()), (C.int)(pixelFormat), &outptr_QVideoFrameFormat)
-	ret := newQVideoFrameFormat(outptr_QVideoFrameFormat)
+	ret := newQVideoFrameFormat(C.QVideoFrameFormat_new2((*C.QSize)(size.UnsafePointer()), (C.int)(pixelFormat)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQVideoFrameFormat3 constructs a new QVideoFrameFormat object.
 func NewQVideoFrameFormat3(format *QVideoFrameFormat) *QVideoFrameFormat {
-	var outptr_QVideoFrameFormat *C.QVideoFrameFormat = nil
 
-	C.QVideoFrameFormat_new3(format.cPointer(), &outptr_QVideoFrameFormat)
-	ret := newQVideoFrameFormat(outptr_QVideoFrameFormat)
+	ret := newQVideoFrameFormat(C.QVideoFrameFormat_new3(format.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -196,8 +187,7 @@ func (this *QVideoFrameFormat) PixelFormat() QVideoFrameFormat__PixelFormat {
 }
 
 func (this *QVideoFrameFormat) FrameSize() *qt6.QSize {
-	_ret := C.QVideoFrameFormat_FrameSize(this.h)
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QVideoFrameFormat_FrameSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -223,8 +213,7 @@ func (this *QVideoFrameFormat) PlaneCount() int {
 }
 
 func (this *QVideoFrameFormat) Viewport() *qt6.QRect {
-	_ret := C.QVideoFrameFormat_Viewport(this.h)
-	_goptr := qt6.UnsafeNewQRect(unsafe.Pointer(_ret))
+	_goptr := qt6.UnsafeNewQRect(unsafe.Pointer(C.QVideoFrameFormat_Viewport(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

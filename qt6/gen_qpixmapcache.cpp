@@ -6,6 +6,10 @@
 #include <cstring>
 #include <qpixmapcache.h>
 #include "gen_qpixmapcache.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 int QPixmapCache_CacheLimit() {
@@ -59,14 +63,12 @@ void QPixmapCache_Delete(QPixmapCache* self, bool isSubclass) {
 	}
 }
 
-void QPixmapCache__Key_new(QPixmapCache__Key** outptr_QPixmapCache__Key) {
-	QPixmapCache::Key* ret = new QPixmapCache::Key();
-	*outptr_QPixmapCache__Key = ret;
+QPixmapCache__Key* QPixmapCache__Key_new() {
+	return new QPixmapCache::Key();
 }
 
-void QPixmapCache__Key_new2(QPixmapCache__Key* other, QPixmapCache__Key** outptr_QPixmapCache__Key) {
-	QPixmapCache::Key* ret = new QPixmapCache::Key(*other);
-	*outptr_QPixmapCache__Key = ret;
+QPixmapCache__Key* QPixmapCache__Key_new2(QPixmapCache__Key* other) {
+	return new QPixmapCache::Key(*other);
 }
 
 bool QPixmapCache__Key_OperatorEqual(const QPixmapCache__Key* self, QPixmapCache__Key* key) {

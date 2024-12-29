@@ -36,13 +36,15 @@ typedef struct QRect QRect;
 typedef struct QWindow QWindow;
 #endif
 
+void QAccessibleObject_virtbase(QAccessibleObject* src, QAccessibleInterface** outptr_QAccessibleInterface);
 bool QAccessibleObject_IsValid(const QAccessibleObject* self);
 QObject* QAccessibleObject_Object(const QAccessibleObject* self);
 QRect* QAccessibleObject_Rect(const QAccessibleObject* self);
 void QAccessibleObject_SetText(QAccessibleObject* self, int t, struct miqt_string text);
 QAccessibleInterface* QAccessibleObject_ChildAt(const QAccessibleObject* self, int x, int y);
 
-void QAccessibleApplication_new(QAccessibleApplication** outptr_QAccessibleApplication, QAccessibleObject** outptr_QAccessibleObject, QAccessibleInterface** outptr_QAccessibleInterface);
+QAccessibleApplication* QAccessibleApplication_new();
+void QAccessibleApplication_virtbase(QAccessibleApplication* src, QAccessibleObject** outptr_QAccessibleObject);
 QWindow* QAccessibleApplication_Window(const QAccessibleApplication* self);
 int QAccessibleApplication_ChildCount(const QAccessibleApplication* self);
 int QAccessibleApplication_IndexOfChild(const QAccessibleApplication* self, QAccessibleInterface* param1);

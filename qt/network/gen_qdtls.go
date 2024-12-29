@@ -59,42 +59,34 @@ func (this *QDtlsClientVerifier) UnsafePointer() unsafe.Pointer {
 }
 
 // newQDtlsClientVerifier constructs the type using only CGO pointers.
-func newQDtlsClientVerifier(h *C.QDtlsClientVerifier, h_QObject *C.QObject) *QDtlsClientVerifier {
+func newQDtlsClientVerifier(h *C.QDtlsClientVerifier) *QDtlsClientVerifier {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QDtlsClientVerifier_virtbase(h, &outptr_QObject)
+
 	return &QDtlsClientVerifier{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQDtlsClientVerifier constructs the type using only unsafe pointers.
-func UnsafeNewQDtlsClientVerifier(h unsafe.Pointer, h_QObject unsafe.Pointer) *QDtlsClientVerifier {
-	if h == nil {
-		return nil
-	}
-
-	return &QDtlsClientVerifier{h: (*C.QDtlsClientVerifier)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQDtlsClientVerifier(h unsafe.Pointer) *QDtlsClientVerifier {
+	return newQDtlsClientVerifier((*C.QDtlsClientVerifier)(h))
 }
 
 // NewQDtlsClientVerifier constructs a new QDtlsClientVerifier object.
 func NewQDtlsClientVerifier() *QDtlsClientVerifier {
-	var outptr_QDtlsClientVerifier *C.QDtlsClientVerifier = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QDtlsClientVerifier_new(&outptr_QDtlsClientVerifier, &outptr_QObject)
-	ret := newQDtlsClientVerifier(outptr_QDtlsClientVerifier, outptr_QObject)
+	ret := newQDtlsClientVerifier(C.QDtlsClientVerifier_new())
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDtlsClientVerifier2 constructs a new QDtlsClientVerifier object.
 func NewQDtlsClientVerifier2(parent *qt.QObject) *QDtlsClientVerifier {
-	var outptr_QDtlsClientVerifier *C.QDtlsClientVerifier = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QDtlsClientVerifier_new2((*C.QObject)(parent.UnsafePointer()), &outptr_QDtlsClientVerifier, &outptr_QObject)
-	ret := newQDtlsClientVerifier(outptr_QDtlsClientVerifier, outptr_QObject)
+	ret := newQDtlsClientVerifier(C.QDtlsClientVerifier_new2((*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -132,8 +124,7 @@ func (this *QDtlsClientVerifier) SetCookieGeneratorParameters(params *QDtlsClien
 }
 
 func (this *QDtlsClientVerifier) CookieGeneratorParameters() *QDtlsClientVerifier__GeneratorParameters {
-	_ret := C.QDtlsClientVerifier_CookieGeneratorParameters(this.h)
-	_goptr := newQDtlsClientVerifier__GeneratorParameters(_ret)
+	_goptr := newQDtlsClientVerifier__GeneratorParameters(C.QDtlsClientVerifier_CookieGeneratorParameters(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -213,6 +204,9 @@ func (this *QDtlsClientVerifier) callVirtualBase_Event(event *qt.QEvent) bool {
 
 }
 func (this *QDtlsClientVerifier) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDtlsClientVerifier_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -238,6 +232,9 @@ func (this *QDtlsClientVerifier) callVirtualBase_EventFilter(watched *qt.QObject
 
 }
 func (this *QDtlsClientVerifier) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDtlsClientVerifier_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -250,6 +247,7 @@ func miqt_exec_callback_QDtlsClientVerifier_EventFilter(self *C.QDtlsClientVerif
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QDtlsClientVerifier{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
@@ -264,6 +262,9 @@ func (this *QDtlsClientVerifier) callVirtualBase_TimerEvent(event *qt.QTimerEven
 
 }
 func (this *QDtlsClientVerifier) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDtlsClientVerifier_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -275,7 +276,7 @@ func miqt_exec_callback_QDtlsClientVerifier_TimerEvent(self *C.QDtlsClientVerifi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QDtlsClientVerifier{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -287,6 +288,9 @@ func (this *QDtlsClientVerifier) callVirtualBase_ChildEvent(event *qt.QChildEven
 
 }
 func (this *QDtlsClientVerifier) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDtlsClientVerifier_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -298,7 +302,7 @@ func miqt_exec_callback_QDtlsClientVerifier_ChildEvent(self *C.QDtlsClientVerifi
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QDtlsClientVerifier{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -310,6 +314,9 @@ func (this *QDtlsClientVerifier) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
 }
 func (this *QDtlsClientVerifier) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDtlsClientVerifier_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -333,6 +340,9 @@ func (this *QDtlsClientVerifier) callVirtualBase_ConnectNotify(signal *qt.QMetaM
 
 }
 func (this *QDtlsClientVerifier) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDtlsClientVerifier_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -356,6 +366,9 @@ func (this *QDtlsClientVerifier) callVirtualBase_DisconnectNotify(signal *qt.QMe
 
 }
 func (this *QDtlsClientVerifier) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDtlsClientVerifier_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -408,42 +421,34 @@ func (this *QDtls) UnsafePointer() unsafe.Pointer {
 }
 
 // newQDtls constructs the type using only CGO pointers.
-func newQDtls(h *C.QDtls, h_QObject *C.QObject) *QDtls {
+func newQDtls(h *C.QDtls) *QDtls {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QDtls_virtbase(h, &outptr_QObject)
+
 	return &QDtls{h: h,
-		QObject: qt.UnsafeNewQObject(unsafe.Pointer(h_QObject))}
+		QObject: qt.UnsafeNewQObject(unsafe.Pointer(outptr_QObject))}
 }
 
 // UnsafeNewQDtls constructs the type using only unsafe pointers.
-func UnsafeNewQDtls(h unsafe.Pointer, h_QObject unsafe.Pointer) *QDtls {
-	if h == nil {
-		return nil
-	}
-
-	return &QDtls{h: (*C.QDtls)(h),
-		QObject: qt.UnsafeNewQObject(h_QObject)}
+func UnsafeNewQDtls(h unsafe.Pointer) *QDtls {
+	return newQDtls((*C.QDtls)(h))
 }
 
 // NewQDtls constructs a new QDtls object.
 func NewQDtls(mode QSslSocket__SslMode) *QDtls {
-	var outptr_QDtls *C.QDtls = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QDtls_new((C.int)(mode), &outptr_QDtls, &outptr_QObject)
-	ret := newQDtls(outptr_QDtls, outptr_QObject)
+	ret := newQDtls(C.QDtls_new((C.int)(mode)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDtls2 constructs a new QDtls object.
 func NewQDtls2(mode QSslSocket__SslMode, parent *qt.QObject) *QDtls {
-	var outptr_QDtls *C.QDtls = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QDtls_new2((C.int)(mode), (*C.QObject)(parent.UnsafePointer()), &outptr_QDtls, &outptr_QObject)
-	ret := newQDtls(outptr_QDtls, outptr_QObject)
+	ret := newQDtls(C.QDtls_new2((C.int)(mode), (*C.QObject)(parent.UnsafePointer())))
 	ret.isSubclass = true
 	return ret
 }
@@ -489,8 +494,7 @@ func (this *QDtls) SetPeerVerificationName(name string) bool {
 }
 
 func (this *QDtls) PeerAddress() *QHostAddress {
-	_ret := C.QDtls_PeerAddress(this.h)
-	_goptr := newQHostAddress(_ret)
+	_goptr := newQHostAddress(C.QDtls_PeerAddress(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -523,8 +527,7 @@ func (this *QDtls) SetCookieGeneratorParameters(params *QDtlsClientVerifier__Gen
 }
 
 func (this *QDtls) CookieGeneratorParameters() *QDtlsClientVerifier__GeneratorParameters {
-	_ret := C.QDtls_CookieGeneratorParameters(this.h)
-	_goptr := newQDtlsClientVerifier__GeneratorParameters(_ret)
+	_goptr := newQDtlsClientVerifier__GeneratorParameters(C.QDtls_CookieGeneratorParameters(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -534,8 +537,7 @@ func (this *QDtls) SetDtlsConfiguration(configuration *QSslConfiguration) bool {
 }
 
 func (this *QDtls) DtlsConfiguration() *QSslConfiguration {
-	_ret := C.QDtls_DtlsConfiguration(this.h)
-	_goptr := newQSslConfiguration(_ret)
+	_goptr := newQSslConfiguration(C.QDtls_DtlsConfiguration(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -569,8 +571,7 @@ func (this *QDtls) IsConnectionEncrypted() bool {
 }
 
 func (this *QDtls) SessionCipher() *QSslCipher {
-	_ret := C.QDtls_SessionCipher(this.h)
-	_goptr := newQSslCipher(_ret)
+	_goptr := newQSslCipher(C.QDtls_SessionCipher(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -612,8 +613,7 @@ func (this *QDtls) PeerVerificationErrors() []QSslError {
 	_ret := make([]QSslError, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSslError)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
-		_vv_ret := _outCast[i]
-		_vv_goptr := newQSslError(_vv_ret)
+		_vv_goptr := newQSslError(_outCast[i])
 		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 		_ret[i] = *_vv_goptr
 	}
@@ -645,7 +645,7 @@ func miqt_exec_callback_QDtls_PskRequired(cb C.intptr_t, authenticator *C.QSslPr
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQSslPreSharedKeyAuthenticator(unsafe.Pointer(authenticator))
+	slotval1 := newQSslPreSharedKeyAuthenticator(authenticator)
 
 	gofunc(slotval1)
 }
@@ -732,6 +732,9 @@ func (this *QDtls) callVirtualBase_Event(event *qt.QEvent) bool {
 
 }
 func (this *QDtls) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDtls_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -757,6 +760,9 @@ func (this *QDtls) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QE
 
 }
 func (this *QDtls) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDtls_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -769,6 +775,7 @@ func miqt_exec_callback_QDtls_EventFilter(self *C.QDtls, cb C.intptr_t, watched 
 
 	// Convert all CABI parameters to Go parameters
 	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
 	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
 
 	virtualReturn := gofunc((&QDtls{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
@@ -783,6 +790,9 @@ func (this *QDtls) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
 }
 func (this *QDtls) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDtls_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -794,7 +804,7 @@ func miqt_exec_callback_QDtls_TimerEvent(self *C.QDtls, cb C.intptr_t, event *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
 
 	gofunc((&QDtls{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -806,6 +816,9 @@ func (this *QDtls) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
 }
 func (this *QDtls) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDtls_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -817,7 +830,7 @@ func miqt_exec_callback_QDtls_ChildEvent(self *C.QDtls, cb C.intptr_t, event *C.
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
 
 	gofunc((&QDtls{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -829,6 +842,9 @@ func (this *QDtls) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
 }
 func (this *QDtls) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDtls_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -852,6 +868,9 @@ func (this *QDtls) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 
 }
 func (this *QDtls) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDtls_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -875,6 +894,9 @@ func (this *QDtls) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
 
 }
 func (this *QDtls) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QDtls_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -930,24 +952,19 @@ func newQDtlsClientVerifier__GeneratorParameters(h *C.QDtlsClientVerifier__Gener
 	if h == nil {
 		return nil
 	}
+
 	return &QDtlsClientVerifier__GeneratorParameters{h: h}
 }
 
 // UnsafeNewQDtlsClientVerifier__GeneratorParameters constructs the type using only unsafe pointers.
 func UnsafeNewQDtlsClientVerifier__GeneratorParameters(h unsafe.Pointer) *QDtlsClientVerifier__GeneratorParameters {
-	if h == nil {
-		return nil
-	}
-
-	return &QDtlsClientVerifier__GeneratorParameters{h: (*C.QDtlsClientVerifier__GeneratorParameters)(h)}
+	return newQDtlsClientVerifier__GeneratorParameters((*C.QDtlsClientVerifier__GeneratorParameters)(h))
 }
 
 // NewQDtlsClientVerifier__GeneratorParameters constructs a new QDtlsClientVerifier::GeneratorParameters object.
 func NewQDtlsClientVerifier__GeneratorParameters() *QDtlsClientVerifier__GeneratorParameters {
-	var outptr_QDtlsClientVerifier__GeneratorParameters *C.QDtlsClientVerifier__GeneratorParameters = nil
 
-	C.QDtlsClientVerifier__GeneratorParameters_new(&outptr_QDtlsClientVerifier__GeneratorParameters)
-	ret := newQDtlsClientVerifier__GeneratorParameters(outptr_QDtlsClientVerifier__GeneratorParameters)
+	ret := newQDtlsClientVerifier__GeneratorParameters(C.QDtlsClientVerifier__GeneratorParameters_new())
 	ret.isSubclass = true
 	return ret
 }
@@ -957,20 +974,16 @@ func NewQDtlsClientVerifier__GeneratorParameters2(a qt.QCryptographicHash__Algor
 	s_alias := C.struct_miqt_string{}
 	s_alias.data = (*C.char)(unsafe.Pointer(&s[0]))
 	s_alias.len = C.size_t(len(s))
-	var outptr_QDtlsClientVerifier__GeneratorParameters *C.QDtlsClientVerifier__GeneratorParameters = nil
 
-	C.QDtlsClientVerifier__GeneratorParameters_new2((C.int)(a), s_alias, &outptr_QDtlsClientVerifier__GeneratorParameters)
-	ret := newQDtlsClientVerifier__GeneratorParameters(outptr_QDtlsClientVerifier__GeneratorParameters)
+	ret := newQDtlsClientVerifier__GeneratorParameters(C.QDtlsClientVerifier__GeneratorParameters_new2((C.int)(a), s_alias))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDtlsClientVerifier__GeneratorParameters3 constructs a new QDtlsClientVerifier::GeneratorParameters object.
 func NewQDtlsClientVerifier__GeneratorParameters3(param1 *QDtlsClientVerifier__GeneratorParameters) *QDtlsClientVerifier__GeneratorParameters {
-	var outptr_QDtlsClientVerifier__GeneratorParameters *C.QDtlsClientVerifier__GeneratorParameters = nil
 
-	C.QDtlsClientVerifier__GeneratorParameters_new3(param1.cPointer(), &outptr_QDtlsClientVerifier__GeneratorParameters)
-	ret := newQDtlsClientVerifier__GeneratorParameters(outptr_QDtlsClientVerifier__GeneratorParameters)
+	ret := newQDtlsClientVerifier__GeneratorParameters(C.QDtlsClientVerifier__GeneratorParameters_new3(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

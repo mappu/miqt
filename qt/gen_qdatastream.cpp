@@ -3,22 +3,23 @@
 #include <QIODevice>
 #include <qdatastream.h>
 #include "gen_qdatastream.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QDataStream_new(QDataStream** outptr_QDataStream) {
-	QDataStream* ret = new QDataStream();
-	*outptr_QDataStream = ret;
+QDataStream* QDataStream_new() {
+	return new QDataStream();
 }
 
-void QDataStream_new2(QIODevice* param1, QDataStream** outptr_QDataStream) {
-	QDataStream* ret = new QDataStream(param1);
-	*outptr_QDataStream = ret;
+QDataStream* QDataStream_new2(QIODevice* param1) {
+	return new QDataStream(param1);
 }
 
-void QDataStream_new3(struct miqt_string param1, QDataStream** outptr_QDataStream) {
+QDataStream* QDataStream_new3(struct miqt_string param1) {
 	QByteArray param1_QByteArray(param1.data, param1.len);
-	QDataStream* ret = new QDataStream(param1_QByteArray);
-	*outptr_QDataStream = ret;
+	return new QDataStream(param1_QByteArray);
 }
 
 QIODevice* QDataStream_Device(const QDataStream* self) {

@@ -24,10 +24,10 @@ typedef struct QTextDocument QTextDocument;
 typedef struct QTextDocumentFragment QTextDocumentFragment;
 #endif
 
-void QTextDocumentFragment_new(QTextDocumentFragment** outptr_QTextDocumentFragment);
-void QTextDocumentFragment_new2(QTextDocument* document, QTextDocumentFragment** outptr_QTextDocumentFragment);
-void QTextDocumentFragment_new3(QTextCursor* rangeVal, QTextDocumentFragment** outptr_QTextDocumentFragment);
-void QTextDocumentFragment_new4(QTextDocumentFragment* rhs, QTextDocumentFragment** outptr_QTextDocumentFragment);
+QTextDocumentFragment* QTextDocumentFragment_new();
+QTextDocumentFragment* QTextDocumentFragment_new2(QTextDocument* document);
+QTextDocumentFragment* QTextDocumentFragment_new3(QTextCursor* rangeVal);
+QTextDocumentFragment* QTextDocumentFragment_new4(QTextDocumentFragment* rhs);
 void QTextDocumentFragment_OperatorAssign(QTextDocumentFragment* self, QTextDocumentFragment* rhs);
 bool QTextDocumentFragment_IsEmpty(const QTextDocumentFragment* self);
 struct miqt_string QTextDocumentFragment_ToPlainText(const QTextDocumentFragment* self);

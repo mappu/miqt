@@ -3,16 +3,18 @@
 #include <QWriteLocker>
 #include <qreadwritelock.h>
 #include "gen_qreadwritelock.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QReadWriteLock_new(QReadWriteLock** outptr_QReadWriteLock) {
-	QReadWriteLock* ret = new QReadWriteLock();
-	*outptr_QReadWriteLock = ret;
+QReadWriteLock* QReadWriteLock_new() {
+	return new QReadWriteLock();
 }
 
-void QReadWriteLock_new2(int recursionMode, QReadWriteLock** outptr_QReadWriteLock) {
-	QReadWriteLock* ret = new QReadWriteLock(static_cast<QReadWriteLock::RecursionMode>(recursionMode));
-	*outptr_QReadWriteLock = ret;
+QReadWriteLock* QReadWriteLock_new2(int recursionMode) {
+	return new QReadWriteLock(static_cast<QReadWriteLock::RecursionMode>(recursionMode));
 }
 
 void QReadWriteLock_LockForRead(QReadWriteLock* self) {
@@ -51,9 +53,8 @@ void QReadWriteLock_Delete(QReadWriteLock* self, bool isSubclass) {
 	}
 }
 
-void QReadLocker_new(QReadWriteLock* readWriteLock, QReadLocker** outptr_QReadLocker) {
-	QReadLocker* ret = new QReadLocker(readWriteLock);
-	*outptr_QReadLocker = ret;
+QReadLocker* QReadLocker_new(QReadWriteLock* readWriteLock) {
+	return new QReadLocker(readWriteLock);
 }
 
 void QReadLocker_Unlock(QReadLocker* self) {
@@ -76,9 +77,8 @@ void QReadLocker_Delete(QReadLocker* self, bool isSubclass) {
 	}
 }
 
-void QWriteLocker_new(QReadWriteLock* readWriteLock, QWriteLocker** outptr_QWriteLocker) {
-	QWriteLocker* ret = new QWriteLocker(readWriteLock);
-	*outptr_QWriteLocker = ret;
+QWriteLocker* QWriteLocker_new(QReadWriteLock* readWriteLock) {
+	return new QWriteLocker(readWriteLock);
 }
 
 void QWriteLocker_Unlock(QWriteLocker* self) {

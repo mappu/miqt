@@ -10,6 +10,10 @@
 #include <QTimerEvent>
 #include <qlibrary.h>
 #include "gen_qlibrary.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQLibrary : public virtual QLibrary {
@@ -199,60 +203,48 @@ public:
 
 };
 
-void QLibrary_new(QLibrary** outptr_QLibrary, QObject** outptr_QObject) {
-	MiqtVirtualQLibrary* ret = new MiqtVirtualQLibrary();
-	*outptr_QLibrary = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QLibrary* QLibrary_new() {
+	return new MiqtVirtualQLibrary();
 }
 
-void QLibrary_new2(struct miqt_string fileName, QLibrary** outptr_QLibrary, QObject** outptr_QObject) {
+QLibrary* QLibrary_new2(struct miqt_string fileName) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	MiqtVirtualQLibrary* ret = new MiqtVirtualQLibrary(fileName_QString);
-	*outptr_QLibrary = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQLibrary(fileName_QString);
 }
 
-void QLibrary_new3(struct miqt_string fileName, int verNum, QLibrary** outptr_QLibrary, QObject** outptr_QObject) {
+QLibrary* QLibrary_new3(struct miqt_string fileName, int verNum) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	MiqtVirtualQLibrary* ret = new MiqtVirtualQLibrary(fileName_QString, static_cast<int>(verNum));
-	*outptr_QLibrary = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQLibrary(fileName_QString, static_cast<int>(verNum));
 }
 
-void QLibrary_new4(struct miqt_string fileName, struct miqt_string version, QLibrary** outptr_QLibrary, QObject** outptr_QObject) {
+QLibrary* QLibrary_new4(struct miqt_string fileName, struct miqt_string version) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	QString version_QString = QString::fromUtf8(version.data, version.len);
-	MiqtVirtualQLibrary* ret = new MiqtVirtualQLibrary(fileName_QString, version_QString);
-	*outptr_QLibrary = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQLibrary(fileName_QString, version_QString);
 }
 
-void QLibrary_new5(QObject* parent, QLibrary** outptr_QLibrary, QObject** outptr_QObject) {
-	MiqtVirtualQLibrary* ret = new MiqtVirtualQLibrary(parent);
-	*outptr_QLibrary = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QLibrary* QLibrary_new5(QObject* parent) {
+	return new MiqtVirtualQLibrary(parent);
 }
 
-void QLibrary_new6(struct miqt_string fileName, QObject* parent, QLibrary** outptr_QLibrary, QObject** outptr_QObject) {
+QLibrary* QLibrary_new6(struct miqt_string fileName, QObject* parent) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	MiqtVirtualQLibrary* ret = new MiqtVirtualQLibrary(fileName_QString, parent);
-	*outptr_QLibrary = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQLibrary(fileName_QString, parent);
 }
 
-void QLibrary_new7(struct miqt_string fileName, int verNum, QObject* parent, QLibrary** outptr_QLibrary, QObject** outptr_QObject) {
+QLibrary* QLibrary_new7(struct miqt_string fileName, int verNum, QObject* parent) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	MiqtVirtualQLibrary* ret = new MiqtVirtualQLibrary(fileName_QString, static_cast<int>(verNum), parent);
-	*outptr_QLibrary = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQLibrary(fileName_QString, static_cast<int>(verNum), parent);
 }
 
-void QLibrary_new8(struct miqt_string fileName, struct miqt_string version, QObject* parent, QLibrary** outptr_QLibrary, QObject** outptr_QObject) {
+QLibrary* QLibrary_new8(struct miqt_string fileName, struct miqt_string version, QObject* parent) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	QString version_QString = QString::fromUtf8(version.data, version.len);
-	MiqtVirtualQLibrary* ret = new MiqtVirtualQLibrary(fileName_QString, version_QString, parent);
-	*outptr_QLibrary = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQLibrary(fileName_QString, version_QString, parent);
+}
+
+void QLibrary_virtbase(QLibrary* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QLibrary_MetaObject(const QLibrary* self) {

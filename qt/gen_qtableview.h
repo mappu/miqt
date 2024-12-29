@@ -80,8 +80,9 @@ typedef struct QVariant QVariant;
 typedef struct QWidget QWidget;
 #endif
 
-void QTableView_new(QWidget* parent, QTableView** outptr_QTableView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
-void QTableView_new2(QTableView** outptr_QTableView, QAbstractItemView** outptr_QAbstractItemView, QAbstractScrollArea** outptr_QAbstractScrollArea, QFrame** outptr_QFrame, QWidget** outptr_QWidget, QObject** outptr_QObject, QPaintDevice** outptr_QPaintDevice);
+QTableView* QTableView_new(QWidget* parent);
+QTableView* QTableView_new2();
+void QTableView_virtbase(QTableView* src, QAbstractItemView** outptr_QAbstractItemView);
 QMetaObject* QTableView_MetaObject(const QTableView* self);
 void* QTableView_Metacast(QTableView* self, const char* param1);
 struct miqt_string QTableView_Tr(const char* s);

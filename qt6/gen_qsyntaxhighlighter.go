@@ -35,48 +35,40 @@ func (this *QSyntaxHighlighter) UnsafePointer() unsafe.Pointer {
 }
 
 // newQSyntaxHighlighter constructs the type using only CGO pointers.
-func newQSyntaxHighlighter(h *C.QSyntaxHighlighter, h_QObject *C.QObject) *QSyntaxHighlighter {
+func newQSyntaxHighlighter(h *C.QSyntaxHighlighter) *QSyntaxHighlighter {
 	if h == nil {
 		return nil
 	}
+	var outptr_QObject *C.QObject = nil
+	C.QSyntaxHighlighter_virtbase(h, &outptr_QObject)
+
 	return &QSyntaxHighlighter{h: h,
-		QObject: newQObject(h_QObject)}
+		QObject: newQObject(outptr_QObject)}
 }
 
 // UnsafeNewQSyntaxHighlighter constructs the type using only unsafe pointers.
-func UnsafeNewQSyntaxHighlighter(h unsafe.Pointer, h_QObject unsafe.Pointer) *QSyntaxHighlighter {
-	if h == nil {
-		return nil
-	}
-
-	return &QSyntaxHighlighter{h: (*C.QSyntaxHighlighter)(h),
-		QObject: UnsafeNewQObject(h_QObject)}
+func UnsafeNewQSyntaxHighlighter(h unsafe.Pointer) *QSyntaxHighlighter {
+	return newQSyntaxHighlighter((*C.QSyntaxHighlighter)(h))
 }
 
 // NewQSyntaxHighlighter constructs a new QSyntaxHighlighter object.
 func NewQSyntaxHighlighter(parent *QObject) *QSyntaxHighlighter {
-	var outptr_QSyntaxHighlighter *C.QSyntaxHighlighter = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSyntaxHighlighter_new(parent.cPointer(), &outptr_QSyntaxHighlighter, &outptr_QObject)
-	ret := newQSyntaxHighlighter(outptr_QSyntaxHighlighter, outptr_QObject)
+	ret := newQSyntaxHighlighter(C.QSyntaxHighlighter_new(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSyntaxHighlighter2 constructs a new QSyntaxHighlighter object.
 func NewQSyntaxHighlighter2(parent *QTextDocument) *QSyntaxHighlighter {
-	var outptr_QSyntaxHighlighter *C.QSyntaxHighlighter = nil
-	var outptr_QObject *C.QObject = nil
 
-	C.QSyntaxHighlighter_new2(parent.cPointer(), &outptr_QSyntaxHighlighter, &outptr_QObject)
-	ret := newQSyntaxHighlighter(outptr_QSyntaxHighlighter, outptr_QObject)
+	ret := newQSyntaxHighlighter(C.QSyntaxHighlighter_new2(parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QSyntaxHighlighter) MetaObject() *QMetaObject {
-	return UnsafeNewQMetaObject(unsafe.Pointer(C.QSyntaxHighlighter_MetaObject(this.h)))
+	return newQMetaObject(C.QSyntaxHighlighter_MetaObject(this.h))
 }
 
 func (this *QSyntaxHighlighter) Metacast(param1 string) unsafe.Pointer {
@@ -99,7 +91,7 @@ func (this *QSyntaxHighlighter) SetDocument(doc *QTextDocument) {
 }
 
 func (this *QSyntaxHighlighter) Document() *QTextDocument {
-	return UnsafeNewQTextDocument(unsafe.Pointer(C.QSyntaxHighlighter_Document(this.h)), nil)
+	return newQTextDocument(C.QSyntaxHighlighter_Document(this.h))
 }
 
 func (this *QSyntaxHighlighter) Rehighlight() {
@@ -132,6 +124,9 @@ func QSyntaxHighlighter_Tr3(s string, c string, n int) string {
 	return _ret
 }
 func (this *QSyntaxHighlighter) OnHighlightBlock(slot func(text string)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSyntaxHighlighter_override_virtual_HighlightBlock(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -158,6 +153,9 @@ func (this *QSyntaxHighlighter) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QSyntaxHighlighter) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSyntaxHighlighter_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -169,7 +167,7 @@ func miqt_exec_callback_QSyntaxHighlighter_Event(self *C.QSyntaxHighlighter, cb 
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	virtualReturn := gofunc((&QSyntaxHighlighter{h: self}).callVirtualBase_Event, slotval1)
 
@@ -183,6 +181,9 @@ func (this *QSyntaxHighlighter) callVirtualBase_EventFilter(watched *QObject, ev
 
 }
 func (this *QSyntaxHighlighter) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSyntaxHighlighter_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -194,8 +195,9 @@ func miqt_exec_callback_QSyntaxHighlighter_EventFilter(self *C.QSyntaxHighlighte
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQObject(unsafe.Pointer(watched))
-	slotval2 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
 
 	virtualReturn := gofunc((&QSyntaxHighlighter{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
 
@@ -209,6 +211,9 @@ func (this *QSyntaxHighlighter) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QSyntaxHighlighter) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSyntaxHighlighter_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -220,7 +225,7 @@ func miqt_exec_callback_QSyntaxHighlighter_TimerEvent(self *C.QSyntaxHighlighter
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQTimerEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQTimerEvent(event)
 
 	gofunc((&QSyntaxHighlighter{h: self}).callVirtualBase_TimerEvent, slotval1)
 
@@ -232,6 +237,9 @@ func (this *QSyntaxHighlighter) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QSyntaxHighlighter) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSyntaxHighlighter_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -243,7 +251,7 @@ func miqt_exec_callback_QSyntaxHighlighter_ChildEvent(self *C.QSyntaxHighlighter
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQChildEvent(unsafe.Pointer(event), nil)
+	slotval1 := newQChildEvent(event)
 
 	gofunc((&QSyntaxHighlighter{h: self}).callVirtualBase_ChildEvent, slotval1)
 
@@ -255,6 +263,9 @@ func (this *QSyntaxHighlighter) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QSyntaxHighlighter) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSyntaxHighlighter_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -266,7 +277,7 @@ func miqt_exec_callback_QSyntaxHighlighter_CustomEvent(self *C.QSyntaxHighlighte
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQEvent(unsafe.Pointer(event))
+	slotval1 := newQEvent(event)
 
 	gofunc((&QSyntaxHighlighter{h: self}).callVirtualBase_CustomEvent, slotval1)
 
@@ -278,6 +289,9 @@ func (this *QSyntaxHighlighter) callVirtualBase_ConnectNotify(signal *QMetaMetho
 
 }
 func (this *QSyntaxHighlighter) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSyntaxHighlighter_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -289,7 +303,7 @@ func miqt_exec_callback_QSyntaxHighlighter_ConnectNotify(self *C.QSyntaxHighligh
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QSyntaxHighlighter{h: self}).callVirtualBase_ConnectNotify, slotval1)
 
@@ -301,6 +315,9 @@ func (this *QSyntaxHighlighter) callVirtualBase_DisconnectNotify(signal *QMetaMe
 
 }
 func (this *QSyntaxHighlighter) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	if !this.isSubclass {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
 	C.QSyntaxHighlighter_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
@@ -312,7 +329,7 @@ func miqt_exec_callback_QSyntaxHighlighter_DisconnectNotify(self *C.QSyntaxHighl
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+	slotval1 := newQMetaMethod(signal)
 
 	gofunc((&QSyntaxHighlighter{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 

@@ -12,7 +12,15 @@
 #include <QThread>
 #include <qabstracteventdispatcher.h>
 #include "gen_qabstracteventdispatcher.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
+
+void QAbstractEventDispatcher_virtbase(QAbstractEventDispatcher* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
+}
 
 QMetaObject* QAbstractEventDispatcher_MetaObject(const QAbstractEventDispatcher* self) {
 	return (QMetaObject*) self->metaObject();
@@ -165,9 +173,8 @@ void QAbstractEventDispatcher_Delete(QAbstractEventDispatcher* self, bool isSubc
 	}
 }
 
-void QAbstractEventDispatcher__TimerInfo_new(int id, int i, int t, QAbstractEventDispatcher__TimerInfo** outptr_QAbstractEventDispatcher__TimerInfo) {
-	QAbstractEventDispatcher::TimerInfo* ret = new QAbstractEventDispatcher::TimerInfo(static_cast<int>(id), static_cast<int>(i), static_cast<Qt::TimerType>(t));
-	*outptr_QAbstractEventDispatcher__TimerInfo = ret;
+QAbstractEventDispatcher__TimerInfo* QAbstractEventDispatcher__TimerInfo_new(int id, int i, int t) {
+	return new QAbstractEventDispatcher::TimerInfo(static_cast<int>(id), static_cast<int>(i), static_cast<Qt::TimerType>(t));
 }
 
 void QAbstractEventDispatcher__TimerInfo_Delete(QAbstractEventDispatcher__TimerInfo* self, bool isSubclass) {

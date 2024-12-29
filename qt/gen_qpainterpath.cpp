@@ -12,21 +12,22 @@
 #include <cstring>
 #include <qpainterpath.h>
 #include "gen_qpainterpath.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QPainterPath_new(QPainterPath** outptr_QPainterPath) {
-	QPainterPath* ret = new QPainterPath();
-	*outptr_QPainterPath = ret;
+QPainterPath* QPainterPath_new() {
+	return new QPainterPath();
 }
 
-void QPainterPath_new2(QPointF* startPoint, QPainterPath** outptr_QPainterPath) {
-	QPainterPath* ret = new QPainterPath(*startPoint);
-	*outptr_QPainterPath = ret;
+QPainterPath* QPainterPath_new2(QPointF* startPoint) {
+	return new QPainterPath(*startPoint);
 }
 
-void QPainterPath_new3(QPainterPath* other, QPainterPath** outptr_QPainterPath) {
-	QPainterPath* ret = new QPainterPath(*other);
-	*outptr_QPainterPath = ret;
+QPainterPath* QPainterPath_new3(QPainterPath* other) {
+	return new QPainterPath(*other);
 }
 
 void QPainterPath_OperatorAssign(QPainterPath* self, QPainterPath* other) {
@@ -348,14 +349,12 @@ void QPainterPath_Delete(QPainterPath* self, bool isSubclass) {
 	}
 }
 
-void QPainterPathStroker_new(QPainterPathStroker** outptr_QPainterPathStroker) {
-	QPainterPathStroker* ret = new QPainterPathStroker();
-	*outptr_QPainterPathStroker = ret;
+QPainterPathStroker* QPainterPathStroker_new() {
+	return new QPainterPathStroker();
 }
 
-void QPainterPathStroker_new2(QPen* pen, QPainterPathStroker** outptr_QPainterPathStroker) {
-	QPainterPathStroker* ret = new QPainterPathStroker(*pen);
-	*outptr_QPainterPathStroker = ret;
+QPainterPathStroker* QPainterPathStroker_new2(QPen* pen) {
+	return new QPainterPathStroker(*pen);
 }
 
 void QPainterPathStroker_SetWidth(QPainterPathStroker* self, double width) {

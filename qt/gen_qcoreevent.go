@@ -214,34 +214,27 @@ func newQEvent(h *C.QEvent) *QEvent {
 	if h == nil {
 		return nil
 	}
+
 	return &QEvent{h: h}
 }
 
 // UnsafeNewQEvent constructs the type using only unsafe pointers.
 func UnsafeNewQEvent(h unsafe.Pointer) *QEvent {
-	if h == nil {
-		return nil
-	}
-
-	return &QEvent{h: (*C.QEvent)(h)}
+	return newQEvent((*C.QEvent)(h))
 }
 
 // NewQEvent constructs a new QEvent object.
 func NewQEvent(typeVal QEvent__Type) *QEvent {
-	var outptr_QEvent *C.QEvent = nil
 
-	C.QEvent_new((C.int)(typeVal), &outptr_QEvent)
-	ret := newQEvent(outptr_QEvent)
+	ret := newQEvent(C.QEvent_new((C.int)(typeVal)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQEvent2 constructs a new QEvent object.
 func NewQEvent2(other *QEvent) *QEvent {
-	var outptr_QEvent *C.QEvent = nil
 
-	C.QEvent_new2(other.cPointer(), &outptr_QEvent)
-	ret := newQEvent(outptr_QEvent)
+	ret := newQEvent(C.QEvent_new2(other.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -317,42 +310,34 @@ func (this *QTimerEvent) UnsafePointer() unsafe.Pointer {
 }
 
 // newQTimerEvent constructs the type using only CGO pointers.
-func newQTimerEvent(h *C.QTimerEvent, h_QEvent *C.QEvent) *QTimerEvent {
+func newQTimerEvent(h *C.QTimerEvent) *QTimerEvent {
 	if h == nil {
 		return nil
 	}
+	var outptr_QEvent *C.QEvent = nil
+	C.QTimerEvent_virtbase(h, &outptr_QEvent)
+
 	return &QTimerEvent{h: h,
-		QEvent: newQEvent(h_QEvent)}
+		QEvent: newQEvent(outptr_QEvent)}
 }
 
 // UnsafeNewQTimerEvent constructs the type using only unsafe pointers.
-func UnsafeNewQTimerEvent(h unsafe.Pointer, h_QEvent unsafe.Pointer) *QTimerEvent {
-	if h == nil {
-		return nil
-	}
-
-	return &QTimerEvent{h: (*C.QTimerEvent)(h),
-		QEvent: UnsafeNewQEvent(h_QEvent)}
+func UnsafeNewQTimerEvent(h unsafe.Pointer) *QTimerEvent {
+	return newQTimerEvent((*C.QTimerEvent)(h))
 }
 
 // NewQTimerEvent constructs a new QTimerEvent object.
 func NewQTimerEvent(timerId int) *QTimerEvent {
-	var outptr_QTimerEvent *C.QTimerEvent = nil
-	var outptr_QEvent *C.QEvent = nil
 
-	C.QTimerEvent_new((C.int)(timerId), &outptr_QTimerEvent, &outptr_QEvent)
-	ret := newQTimerEvent(outptr_QTimerEvent, outptr_QEvent)
+	ret := newQTimerEvent(C.QTimerEvent_new((C.int)(timerId)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQTimerEvent2 constructs a new QTimerEvent object.
 func NewQTimerEvent2(param1 *QTimerEvent) *QTimerEvent {
-	var outptr_QTimerEvent *C.QTimerEvent = nil
-	var outptr_QEvent *C.QEvent = nil
 
-	C.QTimerEvent_new2(param1.cPointer(), &outptr_QTimerEvent, &outptr_QEvent)
-	ret := newQTimerEvent(outptr_QTimerEvent, outptr_QEvent)
+	ret := newQTimerEvent(C.QTimerEvent_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -396,48 +381,40 @@ func (this *QChildEvent) UnsafePointer() unsafe.Pointer {
 }
 
 // newQChildEvent constructs the type using only CGO pointers.
-func newQChildEvent(h *C.QChildEvent, h_QEvent *C.QEvent) *QChildEvent {
+func newQChildEvent(h *C.QChildEvent) *QChildEvent {
 	if h == nil {
 		return nil
 	}
+	var outptr_QEvent *C.QEvent = nil
+	C.QChildEvent_virtbase(h, &outptr_QEvent)
+
 	return &QChildEvent{h: h,
-		QEvent: newQEvent(h_QEvent)}
+		QEvent: newQEvent(outptr_QEvent)}
 }
 
 // UnsafeNewQChildEvent constructs the type using only unsafe pointers.
-func UnsafeNewQChildEvent(h unsafe.Pointer, h_QEvent unsafe.Pointer) *QChildEvent {
-	if h == nil {
-		return nil
-	}
-
-	return &QChildEvent{h: (*C.QChildEvent)(h),
-		QEvent: UnsafeNewQEvent(h_QEvent)}
+func UnsafeNewQChildEvent(h unsafe.Pointer) *QChildEvent {
+	return newQChildEvent((*C.QChildEvent)(h))
 }
 
 // NewQChildEvent constructs a new QChildEvent object.
 func NewQChildEvent(typeVal QEvent__Type, child *QObject) *QChildEvent {
-	var outptr_QChildEvent *C.QChildEvent = nil
-	var outptr_QEvent *C.QEvent = nil
 
-	C.QChildEvent_new((C.int)(typeVal), child.cPointer(), &outptr_QChildEvent, &outptr_QEvent)
-	ret := newQChildEvent(outptr_QChildEvent, outptr_QEvent)
+	ret := newQChildEvent(C.QChildEvent_new((C.int)(typeVal), child.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQChildEvent2 constructs a new QChildEvent object.
 func NewQChildEvent2(param1 *QChildEvent) *QChildEvent {
-	var outptr_QChildEvent *C.QChildEvent = nil
-	var outptr_QEvent *C.QEvent = nil
 
-	C.QChildEvent_new2(param1.cPointer(), &outptr_QChildEvent, &outptr_QEvent)
-	ret := newQChildEvent(outptr_QChildEvent, outptr_QEvent)
+	ret := newQChildEvent(C.QChildEvent_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
 
 func (this *QChildEvent) Child() *QObject {
-	return UnsafeNewQObject(unsafe.Pointer(C.QChildEvent_Child(this.h)))
+	return newQObject(C.QChildEvent_Child(this.h))
 }
 
 func (this *QChildEvent) Added() bool {
@@ -487,22 +464,20 @@ func (this *QDynamicPropertyChangeEvent) UnsafePointer() unsafe.Pointer {
 }
 
 // newQDynamicPropertyChangeEvent constructs the type using only CGO pointers.
-func newQDynamicPropertyChangeEvent(h *C.QDynamicPropertyChangeEvent, h_QEvent *C.QEvent) *QDynamicPropertyChangeEvent {
+func newQDynamicPropertyChangeEvent(h *C.QDynamicPropertyChangeEvent) *QDynamicPropertyChangeEvent {
 	if h == nil {
 		return nil
 	}
+	var outptr_QEvent *C.QEvent = nil
+	C.QDynamicPropertyChangeEvent_virtbase(h, &outptr_QEvent)
+
 	return &QDynamicPropertyChangeEvent{h: h,
-		QEvent: newQEvent(h_QEvent)}
+		QEvent: newQEvent(outptr_QEvent)}
 }
 
 // UnsafeNewQDynamicPropertyChangeEvent constructs the type using only unsafe pointers.
-func UnsafeNewQDynamicPropertyChangeEvent(h unsafe.Pointer, h_QEvent unsafe.Pointer) *QDynamicPropertyChangeEvent {
-	if h == nil {
-		return nil
-	}
-
-	return &QDynamicPropertyChangeEvent{h: (*C.QDynamicPropertyChangeEvent)(h),
-		QEvent: UnsafeNewQEvent(h_QEvent)}
+func UnsafeNewQDynamicPropertyChangeEvent(h unsafe.Pointer) *QDynamicPropertyChangeEvent {
+	return newQDynamicPropertyChangeEvent((*C.QDynamicPropertyChangeEvent)(h))
 }
 
 // NewQDynamicPropertyChangeEvent constructs a new QDynamicPropertyChangeEvent object.
@@ -510,22 +485,16 @@ func NewQDynamicPropertyChangeEvent(name []byte) *QDynamicPropertyChangeEvent {
 	name_alias := C.struct_miqt_string{}
 	name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
 	name_alias.len = C.size_t(len(name))
-	var outptr_QDynamicPropertyChangeEvent *C.QDynamicPropertyChangeEvent = nil
-	var outptr_QEvent *C.QEvent = nil
 
-	C.QDynamicPropertyChangeEvent_new(name_alias, &outptr_QDynamicPropertyChangeEvent, &outptr_QEvent)
-	ret := newQDynamicPropertyChangeEvent(outptr_QDynamicPropertyChangeEvent, outptr_QEvent)
+	ret := newQDynamicPropertyChangeEvent(C.QDynamicPropertyChangeEvent_new(name_alias))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQDynamicPropertyChangeEvent2 constructs a new QDynamicPropertyChangeEvent object.
 func NewQDynamicPropertyChangeEvent2(param1 *QDynamicPropertyChangeEvent) *QDynamicPropertyChangeEvent {
-	var outptr_QDynamicPropertyChangeEvent *C.QDynamicPropertyChangeEvent = nil
-	var outptr_QEvent *C.QEvent = nil
 
-	C.QDynamicPropertyChangeEvent_new2(param1.cPointer(), &outptr_QDynamicPropertyChangeEvent, &outptr_QEvent)
-	ret := newQDynamicPropertyChangeEvent(outptr_QDynamicPropertyChangeEvent, outptr_QEvent)
+	ret := newQDynamicPropertyChangeEvent(C.QDynamicPropertyChangeEvent_new2(param1.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

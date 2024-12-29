@@ -20,12 +20,12 @@ class QUuid;
 typedef struct QUuid QUuid;
 #endif
 
-void QUuid_new(QUuid** outptr_QUuid);
-void QUuid_new2(unsigned int l, uint16_t w1, uint16_t w2, unsigned char b1, unsigned char b2, unsigned char b3, unsigned char b4, unsigned char b5, unsigned char b6, unsigned char b7, unsigned char b8, QUuid** outptr_QUuid);
-void QUuid_new3(struct miqt_string param1, QUuid** outptr_QUuid);
-void QUuid_new4(const char* param1, QUuid** outptr_QUuid);
-void QUuid_new5(struct miqt_string param1, QUuid** outptr_QUuid);
-void QUuid_new6(QUuid* param1, QUuid** outptr_QUuid);
+QUuid* QUuid_new();
+QUuid* QUuid_new2(unsigned int l, uint16_t w1, uint16_t w2, unsigned char b1, unsigned char b2, unsigned char b3, unsigned char b4, unsigned char b5, unsigned char b6, unsigned char b7, unsigned char b8);
+QUuid* QUuid_new3(struct miqt_string param1);
+QUuid* QUuid_new4(const char* param1);
+QUuid* QUuid_new5(struct miqt_string param1);
+QUuid* QUuid_new6(QUuid* param1);
 struct miqt_string QUuid_ToString(const QUuid* self);
 struct miqt_string QUuid_ToStringWithMode(const QUuid* self, int mode);
 struct miqt_string QUuid_ToByteArray(const QUuid* self);

@@ -34,6 +34,10 @@
 #include <QWidget>
 #include <qgraphicswidget.h>
 #include "gen_qgraphicswidget.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQGraphicsWidget : public virtual QGraphicsWidget {
@@ -834,31 +838,21 @@ public:
 
 };
 
-void QGraphicsWidget_new(QGraphicsWidget** outptr_QGraphicsWidget, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem) {
-	MiqtVirtualQGraphicsWidget* ret = new MiqtVirtualQGraphicsWidget();
-	*outptr_QGraphicsWidget = ret;
-	*outptr_QGraphicsObject = static_cast<QGraphicsObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
-	*outptr_QGraphicsLayoutItem = static_cast<QGraphicsLayoutItem*>(ret);
+QGraphicsWidget* QGraphicsWidget_new() {
+	return new MiqtVirtualQGraphicsWidget();
 }
 
-void QGraphicsWidget_new2(QGraphicsItem* parent, QGraphicsWidget** outptr_QGraphicsWidget, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem) {
-	MiqtVirtualQGraphicsWidget* ret = new MiqtVirtualQGraphicsWidget(parent);
-	*outptr_QGraphicsWidget = ret;
-	*outptr_QGraphicsObject = static_cast<QGraphicsObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
-	*outptr_QGraphicsLayoutItem = static_cast<QGraphicsLayoutItem*>(ret);
+QGraphicsWidget* QGraphicsWidget_new2(QGraphicsItem* parent) {
+	return new MiqtVirtualQGraphicsWidget(parent);
 }
 
-void QGraphicsWidget_new3(QGraphicsItem* parent, int wFlags, QGraphicsWidget** outptr_QGraphicsWidget, QGraphicsObject** outptr_QGraphicsObject, QObject** outptr_QObject, QGraphicsItem** outptr_QGraphicsItem, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem) {
-	MiqtVirtualQGraphicsWidget* ret = new MiqtVirtualQGraphicsWidget(parent, static_cast<Qt::WindowFlags>(wFlags));
-	*outptr_QGraphicsWidget = ret;
-	*outptr_QGraphicsObject = static_cast<QGraphicsObject*>(ret);
-	*outptr_QObject = static_cast<QObject*>(ret);
-	*outptr_QGraphicsItem = static_cast<QGraphicsItem*>(ret);
-	*outptr_QGraphicsLayoutItem = static_cast<QGraphicsLayoutItem*>(ret);
+QGraphicsWidget* QGraphicsWidget_new3(QGraphicsItem* parent, int wFlags) {
+	return new MiqtVirtualQGraphicsWidget(parent, static_cast<Qt::WindowFlags>(wFlags));
+}
+
+void QGraphicsWidget_virtbase(QGraphicsWidget* src, QGraphicsObject** outptr_QGraphicsObject, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem) {
+	*outptr_QGraphicsObject = static_cast<QGraphicsObject*>(src);
+	*outptr_QGraphicsLayoutItem = static_cast<QGraphicsLayoutItem*>(src);
 }
 
 QMetaObject* QGraphicsWidget_MetaObject(const QGraphicsWidget* self) {

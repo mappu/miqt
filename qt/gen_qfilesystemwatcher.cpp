@@ -11,6 +11,10 @@
 #include <QTimerEvent>
 #include <qfilesystemwatcher.h>
 #include "gen_qfilesystemwatcher.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
 class MiqtVirtualQFileSystemWatcher : public virtual QFileSystemWatcher {
@@ -196,13 +200,11 @@ public:
 
 };
 
-void QFileSystemWatcher_new(QFileSystemWatcher** outptr_QFileSystemWatcher, QObject** outptr_QObject) {
-	MiqtVirtualQFileSystemWatcher* ret = new MiqtVirtualQFileSystemWatcher();
-	*outptr_QFileSystemWatcher = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QFileSystemWatcher* QFileSystemWatcher_new() {
+	return new MiqtVirtualQFileSystemWatcher();
 }
 
-void QFileSystemWatcher_new2(struct miqt_array /* of struct miqt_string */  paths, QFileSystemWatcher** outptr_QFileSystemWatcher, QObject** outptr_QObject) {
+QFileSystemWatcher* QFileSystemWatcher_new2(struct miqt_array /* of struct miqt_string */  paths) {
 	QStringList paths_QList;
 	paths_QList.reserve(paths.len);
 	struct miqt_string* paths_arr = static_cast<struct miqt_string*>(paths.data);
@@ -210,18 +212,14 @@ void QFileSystemWatcher_new2(struct miqt_array /* of struct miqt_string */  path
 		QString paths_arr_i_QString = QString::fromUtf8(paths_arr[i].data, paths_arr[i].len);
 		paths_QList.push_back(paths_arr_i_QString);
 	}
-	MiqtVirtualQFileSystemWatcher* ret = new MiqtVirtualQFileSystemWatcher(paths_QList);
-	*outptr_QFileSystemWatcher = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQFileSystemWatcher(paths_QList);
 }
 
-void QFileSystemWatcher_new3(QObject* parent, QFileSystemWatcher** outptr_QFileSystemWatcher, QObject** outptr_QObject) {
-	MiqtVirtualQFileSystemWatcher* ret = new MiqtVirtualQFileSystemWatcher(parent);
-	*outptr_QFileSystemWatcher = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+QFileSystemWatcher* QFileSystemWatcher_new3(QObject* parent) {
+	return new MiqtVirtualQFileSystemWatcher(parent);
 }
 
-void QFileSystemWatcher_new4(struct miqt_array /* of struct miqt_string */  paths, QObject* parent, QFileSystemWatcher** outptr_QFileSystemWatcher, QObject** outptr_QObject) {
+QFileSystemWatcher* QFileSystemWatcher_new4(struct miqt_array /* of struct miqt_string */  paths, QObject* parent) {
 	QStringList paths_QList;
 	paths_QList.reserve(paths.len);
 	struct miqt_string* paths_arr = static_cast<struct miqt_string*>(paths.data);
@@ -229,9 +227,11 @@ void QFileSystemWatcher_new4(struct miqt_array /* of struct miqt_string */  path
 		QString paths_arr_i_QString = QString::fromUtf8(paths_arr[i].data, paths_arr[i].len);
 		paths_QList.push_back(paths_arr_i_QString);
 	}
-	MiqtVirtualQFileSystemWatcher* ret = new MiqtVirtualQFileSystemWatcher(paths_QList, parent);
-	*outptr_QFileSystemWatcher = ret;
-	*outptr_QObject = static_cast<QObject*>(ret);
+	return new MiqtVirtualQFileSystemWatcher(paths_QList, parent);
+}
+
+void QFileSystemWatcher_virtbase(QFileSystemWatcher* src, QObject** outptr_QObject) {
+	*outptr_QObject = static_cast<QObject*>(src);
 }
 
 QMetaObject* QFileSystemWatcher_MetaObject(const QFileSystemWatcher* self) {

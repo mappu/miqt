@@ -12,16 +12,18 @@
 #include <QWebFrame>
 #include <qwebelement.h>
 #include "gen_qwebelement.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
 
-void QWebElement_new(QWebElement** outptr_QWebElement) {
-	QWebElement* ret = new QWebElement();
-	*outptr_QWebElement = ret;
+QWebElement* QWebElement_new() {
+	return new QWebElement();
 }
 
-void QWebElement_new2(QWebElement* param1, QWebElement** outptr_QWebElement) {
-	QWebElement* ret = new QWebElement(*param1);
-	*outptr_QWebElement = ret;
+QWebElement* QWebElement_new2(QWebElement* param1) {
+	return new QWebElement(*param1);
 }
 
 void QWebElement_OperatorAssign(QWebElement* self, QWebElement* param1) {
@@ -474,20 +476,17 @@ void QWebElement_Delete(QWebElement* self, bool isSubclass) {
 	}
 }
 
-void QWebElementCollection_new(QWebElementCollection** outptr_QWebElementCollection) {
-	QWebElementCollection* ret = new QWebElementCollection();
-	*outptr_QWebElementCollection = ret;
+QWebElementCollection* QWebElementCollection_new() {
+	return new QWebElementCollection();
 }
 
-void QWebElementCollection_new2(QWebElement* contextElement, struct miqt_string query, QWebElementCollection** outptr_QWebElementCollection) {
+QWebElementCollection* QWebElementCollection_new2(QWebElement* contextElement, struct miqt_string query) {
 	QString query_QString = QString::fromUtf8(query.data, query.len);
-	QWebElementCollection* ret = new QWebElementCollection(*contextElement, query_QString);
-	*outptr_QWebElementCollection = ret;
+	return new QWebElementCollection(*contextElement, query_QString);
 }
 
-void QWebElementCollection_new3(QWebElementCollection* param1, QWebElementCollection** outptr_QWebElementCollection) {
-	QWebElementCollection* ret = new QWebElementCollection(*param1);
-	*outptr_QWebElementCollection = ret;
+QWebElementCollection* QWebElementCollection_new3(QWebElementCollection* param1) {
+	return new QWebElementCollection(*param1);
 }
 
 void QWebElementCollection_OperatorAssign(QWebElementCollection* self, QWebElementCollection* param1) {
@@ -573,14 +572,12 @@ void QWebElementCollection_Delete(QWebElementCollection* self, bool isSubclass) 
 	}
 }
 
-void QWebElementCollection__const_iterator_new(QWebElementCollection* collection_, int index, QWebElementCollection__const_iterator** outptr_QWebElementCollection__const_iterator) {
-	QWebElementCollection::const_iterator* ret = new QWebElementCollection::const_iterator(collection_, static_cast<int>(index));
-	*outptr_QWebElementCollection__const_iterator = ret;
+QWebElementCollection__const_iterator* QWebElementCollection__const_iterator_new(QWebElementCollection* collection_, int index) {
+	return new QWebElementCollection::const_iterator(collection_, static_cast<int>(index));
 }
 
-void QWebElementCollection__const_iterator_new2(QWebElementCollection__const_iterator* o, QWebElementCollection__const_iterator** outptr_QWebElementCollection__const_iterator) {
-	QWebElementCollection::const_iterator* ret = new QWebElementCollection::const_iterator(*o);
-	*outptr_QWebElementCollection__const_iterator = ret;
+QWebElementCollection__const_iterator* QWebElementCollection__const_iterator_new2(QWebElementCollection__const_iterator* o) {
+	return new QWebElementCollection::const_iterator(*o);
 }
 
 QWebElement* QWebElementCollection__const_iterator_OperatorMultiply(const QWebElementCollection__const_iterator* self) {
@@ -663,14 +660,12 @@ void QWebElementCollection__const_iterator_Delete(QWebElementCollection__const_i
 	}
 }
 
-void QWebElementCollection__iterator_new(QWebElementCollection* collection_, int index, QWebElementCollection__iterator** outptr_QWebElementCollection__iterator) {
-	QWebElementCollection::iterator* ret = new QWebElementCollection::iterator(collection_, static_cast<int>(index));
-	*outptr_QWebElementCollection__iterator = ret;
+QWebElementCollection__iterator* QWebElementCollection__iterator_new(QWebElementCollection* collection_, int index) {
+	return new QWebElementCollection::iterator(collection_, static_cast<int>(index));
 }
 
-void QWebElementCollection__iterator_new2(QWebElementCollection__iterator* o, QWebElementCollection__iterator** outptr_QWebElementCollection__iterator) {
-	QWebElementCollection::iterator* ret = new QWebElementCollection::iterator(*o);
-	*outptr_QWebElementCollection__iterator = ret;
+QWebElementCollection__iterator* QWebElementCollection__iterator_new2(QWebElementCollection__iterator* o) {
+	return new QWebElementCollection::iterator(*o);
 }
 
 QWebElement* QWebElementCollection__iterator_OperatorMultiply(const QWebElementCollection__iterator* self) {

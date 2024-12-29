@@ -22,10 +22,10 @@ typedef struct QBitArray QBitArray;
 typedef struct QBitRef QBitRef;
 #endif
 
-void QBitArray_new(QBitArray** outptr_QBitArray);
-void QBitArray_new2(int size, QBitArray** outptr_QBitArray);
-void QBitArray_new3(QBitArray* other, QBitArray** outptr_QBitArray);
-void QBitArray_new4(int size, bool val, QBitArray** outptr_QBitArray);
+QBitArray* QBitArray_new();
+QBitArray* QBitArray_new2(int size);
+QBitArray* QBitArray_new3(QBitArray* other);
+QBitArray* QBitArray_new4(int size, bool val);
 void QBitArray_OperatorAssign(QBitArray* self, QBitArray* other);
 void QBitArray_Swap(QBitArray* self, QBitArray* other);
 int QBitArray_Size(const QBitArray* self);
@@ -60,7 +60,7 @@ QBitArray* QBitArray_FromBits(const char* data, ptrdiff_t lenVal);
 bool QBitArray_Fill22(QBitArray* self, bool val, int size);
 void QBitArray_Delete(QBitArray* self, bool isSubclass);
 
-void QBitRef_new(QBitRef* param1, QBitRef** outptr_QBitRef);
+QBitRef* QBitRef_new(QBitRef* param1);
 bool QBitRef_OperatorNot(const QBitRef* self);
 void QBitRef_OperatorAssign(QBitRef* self, QBitRef* val);
 void QBitRef_OperatorAssignWithVal(QBitRef* self, bool val);

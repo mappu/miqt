@@ -9,7 +9,15 @@
 #include <QVideoWindowControl>
 #include <qvideowindowcontrol.h>
 #include "gen_qvideowindowcontrol.h"
+
+#ifndef _Bool
+#define _Bool bool
+#endif
 #include "_cgo_export.h"
+
+void QVideoWindowControl_virtbase(QVideoWindowControl* src, QMediaControl** outptr_QMediaControl) {
+	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
+}
 
 QMetaObject* QVideoWindowControl_MetaObject(const QVideoWindowControl* self) {
 	return (QMetaObject*) self->metaObject();
