@@ -20,7 +20,7 @@ func main() {
 
 	widget := qt.NewQWidget(window.QWidget)
 	var layout = qt.NewQVBoxLayout2()
-	widget.SetLayout(layout.QBoxLayout.QLayout)
+	widget.SetLayout(layout.QLayout)
 	window.SetCentralWidget(widget)
 
 	labels := make([]*qt.QLabel, threadcount)
@@ -45,7 +45,7 @@ func main() {
 			}(i, label)
 		}
 	})
-	widget.Layout().AddWidget(button.QAbstractButton.QWidget)
+	widget.Layout().AddWidget(button.QWidget)
 
 	window.Show()
 
