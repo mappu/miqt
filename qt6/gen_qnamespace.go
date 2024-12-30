@@ -41,42 +41,41 @@ const (
 type MouseButton int
 
 const (
-	NoButton        MouseButton = 0
-	LeftButton      MouseButton = 1
-	RightButton     MouseButton = 2
-	MiddleButton    MouseButton = 4
-	BackButton      MouseButton = 8
-	XButton1        MouseButton = 8
-	ExtraButton1    MouseButton = 8
-	ForwardButton   MouseButton = 16
-	XButton2        MouseButton = 16
-	ExtraButton2    MouseButton = 16
-	TaskButton      MouseButton = 32
-	ExtraButton3    MouseButton = 32
-	ExtraButton4    MouseButton = 64
-	ExtraButton5    MouseButton = 128
-	ExtraButton6    MouseButton = 256
-	ExtraButton7    MouseButton = 512
-	ExtraButton8    MouseButton = 1024
-	ExtraButton9    MouseButton = 2048
-	ExtraButton10   MouseButton = 4096
-	ExtraButton11   MouseButton = 8192
-	ExtraButton12   MouseButton = 16384
-	ExtraButton13   MouseButton = 32768
-	ExtraButton14   MouseButton = 65536
-	ExtraButton15   MouseButton = 131072
-	ExtraButton16   MouseButton = 262144
-	ExtraButton17   MouseButton = 524288
-	ExtraButton18   MouseButton = 1048576
-	ExtraButton19   MouseButton = 2097152
-	ExtraButton20   MouseButton = 4194304
-	ExtraButton21   MouseButton = 8388608
-	ExtraButton22   MouseButton = 16777216
-	ExtraButton23   MouseButton = 33554432
-	ExtraButton24   MouseButton = 67108864
-	AllButtons      MouseButton = 134217727
-	MaxMouseButton  MouseButton = 67108864
-	MouseButtonMask MouseButton = 4294967295
+	NoButton       MouseButton = 0
+	LeftButton     MouseButton = 1
+	RightButton    MouseButton = 2
+	MiddleButton   MouseButton = 4
+	BackButton     MouseButton = 8
+	XButton1       MouseButton = 8
+	ExtraButton1   MouseButton = 8
+	ForwardButton  MouseButton = 16
+	XButton2       MouseButton = 16
+	ExtraButton2   MouseButton = 16
+	TaskButton     MouseButton = 32
+	ExtraButton3   MouseButton = 32
+	ExtraButton4   MouseButton = 64
+	ExtraButton5   MouseButton = 128
+	ExtraButton6   MouseButton = 256
+	ExtraButton7   MouseButton = 512
+	ExtraButton8   MouseButton = 1024
+	ExtraButton9   MouseButton = 2048
+	ExtraButton10  MouseButton = 4096
+	ExtraButton11  MouseButton = 8192
+	ExtraButton12  MouseButton = 16384
+	ExtraButton13  MouseButton = 32768
+	ExtraButton14  MouseButton = 65536
+	ExtraButton15  MouseButton = 131072
+	ExtraButton16  MouseButton = 262144
+	ExtraButton17  MouseButton = 524288
+	ExtraButton18  MouseButton = 1048576
+	ExtraButton19  MouseButton = 2097152
+	ExtraButton20  MouseButton = 4194304
+	ExtraButton21  MouseButton = 8388608
+	ExtraButton22  MouseButton = 16777216
+	ExtraButton23  MouseButton = 33554432
+	ExtraButton24  MouseButton = 67108864
+	AllButtons     MouseButton = 134217727
+	MaxMouseButton MouseButton = 67108864
 )
 
 type Orientation int
@@ -229,7 +228,6 @@ const (
 	MacWindowToolBarButtonHint          WindowType = 268435456
 	BypassGraphicsProxyWidget           WindowType = 536870912
 	NoDropShadowWindowHint              WindowType = 1073741824
-	WindowFullscreenButtonHint          WindowType = 2147483648
 )
 
 type WindowState int
@@ -911,24 +909,22 @@ const (
 type KeyboardModifier int
 
 const (
-	NoModifier           KeyboardModifier = 0
-	ShiftModifier        KeyboardModifier = 33554432
-	ControlModifier      KeyboardModifier = 67108864
-	AltModifier          KeyboardModifier = 134217728
-	MetaModifier         KeyboardModifier = 268435456
-	KeypadModifier       KeyboardModifier = 536870912
-	GroupSwitchModifier  KeyboardModifier = 1073741824
-	KeyboardModifierMask KeyboardModifier = 4261412864
+	NoModifier          KeyboardModifier = 0
+	ShiftModifier       KeyboardModifier = 33554432
+	ControlModifier     KeyboardModifier = 67108864
+	AltModifier         KeyboardModifier = 134217728
+	MetaModifier        KeyboardModifier = 268435456
+	KeypadModifier      KeyboardModifier = 536870912
+	GroupSwitchModifier KeyboardModifier = 1073741824
 )
 
 type Modifier int
 
 const (
-	META          Modifier = 268435456
-	SHIFT         Modifier = 33554432
-	CTRL          Modifier = 67108864
-	ALT           Modifier = 134217728
-	MODIFIER_MASK Modifier = 4261412864
+	META  Modifier = 268435456
+	SHIFT Modifier = 33554432
+	CTRL  Modifier = 67108864
+	ALT   Modifier = 134217728
 )
 
 type ArrowType int
@@ -1279,9 +1275,7 @@ const (
 	ImAnchorRectangle        InputMethodQuery = 16384
 	ImInputItemClipRectangle InputMethodQuery = 32768
 	ImReadOnly               InputMethodQuery = 65536
-	ImPlatformData           InputMethodQuery = 2147483648
 	ImQueryInput             InputMethodQuery = 16570
-	ImQueryAll               InputMethodQuery = 4294967295
 )
 
 type InputMethodHint int
@@ -1309,7 +1303,6 @@ const (
 	ImhEmailCharactersOnly    InputMethodHint = 2097152
 	ImhUrlCharactersOnly      InputMethodHint = 4194304
 	ImhLatinOnly              InputMethodHint = 8388608
-	ImhExclusiveInputMask     InputMethodHint = 4294901760
 )
 
 type EnterKeyType int
@@ -1533,7 +1526,6 @@ const (
 	PinchGesture      GestureType = 4
 	SwipeGesture      GestureType = 5
 	CustomGesture     GestureType = 256
-	LastGestureType   GestureType = 4294967295
 )
 
 type GestureFlag int
