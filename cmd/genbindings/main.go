@@ -222,7 +222,7 @@ func generate(packageName string, srcDirs []string, allowHeaderFn func(string) b
 			counter++
 		}
 
-		goSrc, err := emitGo(parsed, filepath.Base(parsed.Filename), packageName)
+		goSrc, go64Src, err := emitGo(parsed, filepath.Base(parsed.Filename), packageName)
 		if err != nil {
 			panic(err)
 		}
@@ -230,6 +230,13 @@ func generate(packageName string, srcDirs []string, allowHeaderFn func(string) b
 		err = os.WriteFile(outputName+".go", []byte(goSrc), 0644)
 		if err != nil {
 			panic(err)
+		}
+
+		if len(go64Src) > 0 {
+			err = os.WriteFile(outputName+"_64bit.go", []byte(go64Src), 0644)
+			if err != nil {
+				panic(err)
+			}
 		}
 
 		bindingCppSrc, err := emitBindingCpp(parsed, filepath.Base(parsed.Filename))
