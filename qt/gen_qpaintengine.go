@@ -21,7 +21,6 @@ const (
 	QTextItem__Overline    QTextItem__RenderFlag = 16
 	QTextItem__Underline   QTextItem__RenderFlag = 32
 	QTextItem__StrikeOut   QTextItem__RenderFlag = 64
-	QTextItem__Dummy       QTextItem__RenderFlag = 4294967295
 )
 
 type QPaintEngine__PaintEngineFeature int
@@ -46,7 +45,6 @@ const (
 	QPaintEngine__ObjectBoundingModeGradients QPaintEngine__PaintEngineFeature = 65536
 	QPaintEngine__RasterOpModes               QPaintEngine__PaintEngineFeature = 131072
 	QPaintEngine__PaintOutsidePaintEvent      QPaintEngine__PaintEngineFeature = 536870912
-	QPaintEngine__AllFeatures                 QPaintEngine__PaintEngineFeature = 4294967295
 )
 
 type QPaintEngine__DirtyFlag int

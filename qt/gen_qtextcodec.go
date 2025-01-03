@@ -16,10 +16,9 @@ import (
 type QTextCodec__ConversionFlag int
 
 const (
-	QTextCodec__DefaultConversion    QTextCodec__ConversionFlag = 0
-	QTextCodec__ConvertInvalidToNull QTextCodec__ConversionFlag = 2147483648
-	QTextCodec__IgnoreHeader         QTextCodec__ConversionFlag = 1
-	QTextCodec__FreeFunction         QTextCodec__ConversionFlag = 2
+	QTextCodec__DefaultConversion QTextCodec__ConversionFlag = 0
+	QTextCodec__IgnoreHeader      QTextCodec__ConversionFlag = 1
+	QTextCodec__FreeFunction      QTextCodec__ConversionFlag = 2
 )
 
 type QTextCodec struct {

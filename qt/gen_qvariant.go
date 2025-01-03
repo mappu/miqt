@@ -77,7 +77,6 @@ const (
 	QVariant__LastGuiType          QVariant__Type = 87
 	QVariant__SizePolicy           QVariant__Type = 121
 	QVariant__UserType             QVariant__Type = 1024
-	QVariant__LastType             QVariant__Type = 4294967295
 )
 
 type QVariant struct {

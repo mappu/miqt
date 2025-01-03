@@ -94,6 +94,8 @@ Qt class inherited types are projected as a Go embedded struct. For example, to 
 
 The Go runtime migrates goroutines between OS threads, but Qt expects fixed OS threads to be used for each QObject. When you first call `qt.NewQApplication` in MIQT, that will be considered the [Qt main thread](https://doc.qt.io/qt-6/thread-basics.html#gui-thread-and-worker-thread) and will automatically signal the Go runtime to bind to a fixed OS thread using `runtime.LockOSThread()`.
 
+- When accessing Qt objects from inside another goroutine, it's safest to use `(qt6/mainthread).Wait()` to access the Qt objects from Qt's main thread.
+
 Some C++ idioms that were difficult to project were omitted from the binding. But, this can be improved in the future.
 
 ### Q6. Can I use Qt Designer and the Qt Resource system?
