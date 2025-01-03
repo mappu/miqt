@@ -16,8 +16,10 @@ extern "C" {
 
 #ifdef __cplusplus
 class QSizePolicy;
+class QVariant;
 #else
 typedef struct QSizePolicy QSizePolicy;
+typedef struct QVariant QVariant;
 #endif
 
 QSizePolicy* QSizePolicy_new();
@@ -37,6 +39,7 @@ void QSizePolicy_SetWidthForHeight(QSizePolicy* self, bool b);
 bool QSizePolicy_HasWidthForHeight(const QSizePolicy* self);
 bool QSizePolicy_OperatorEqual(const QSizePolicy* self, QSizePolicy* s);
 bool QSizePolicy_OperatorNotEqual(const QSizePolicy* self, QSizePolicy* s);
+QVariant* QSizePolicy_ToQVariant(const QSizePolicy* self);
 int QSizePolicy_HorizontalStretch(const QSizePolicy* self);
 int QSizePolicy_VerticalStretch(const QSizePolicy* self);
 void QSizePolicy_SetHorizontalStretch(QSizePolicy* self, int stretchFactor);

@@ -5,6 +5,7 @@
 #include <QRect>
 #include <QRectF>
 #include <QTransform>
+#include <QVariant>
 #include <QVector3D>
 #include <QVector4D>
 #include <qmatrix4x4.h>
@@ -255,6 +256,10 @@ const float* QMatrix4x4_ConstData(const QMatrix4x4* self) {
 
 void QMatrix4x4_Optimize(QMatrix4x4* self) {
 	self->optimize();
+}
+
+QVariant* QMatrix4x4_ToQVariant(const QMatrix4x4* self) {
+	return new QVariant(self->operator QVariant());
 }
 
 void QMatrix4x4_ProjectedRotate(QMatrix4x4* self, float angle, float x, float y, float z) {

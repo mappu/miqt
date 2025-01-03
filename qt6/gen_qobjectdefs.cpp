@@ -551,6 +551,10 @@ QMetaObject* QMetaObject__SuperData_OperatorMinusGreater(const QMetaObject__Supe
 	return (QMetaObject*) self->operator->();
 }
 
+QMetaObject* QMetaObject__SuperData_ToConstQMetaObjectMultiply(const QMetaObject__SuperData* self) {
+	return (QMetaObject*) self->operator const QMetaObject *();
+}
+
 void QMetaObject__SuperData_OperatorAssign(QMetaObject__SuperData* self, QMetaObject__SuperData* param1) {
 	self->operator=(*param1);
 }

@@ -346,6 +346,12 @@ func (this *QMatrix4x4) Optimize() {
 	C.QMatrix4x4_Optimize(this.h)
 }
 
+func (this *QMatrix4x4) ToQVariant() *QVariant {
+	_goptr := newQVariant(C.QMatrix4x4_ToQVariant(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 func (this *QMatrix4x4) Inverted1(invertible *bool) *QMatrix4x4 {
 	_goptr := newQMatrix4x4(C.QMatrix4x4_Inverted1(this.h, (*C.bool)(unsafe.Pointer(invertible))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

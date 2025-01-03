@@ -6,6 +6,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QVariant>
 #include <qcolorspace.h>
 #include "gen_qcolorspace.h"
 
@@ -230,6 +231,10 @@ struct miqt_string QColorSpace_IccProfile(const QColorSpace* self) {
 
 QColorTransform* QColorSpace_TransformationToColorSpace(const QColorSpace* self, QColorSpace* colorspace) {
 	return new QColorTransform(self->transformationToColorSpace(*colorspace));
+}
+
+QVariant* QColorSpace_ToQVariant(const QColorSpace* self) {
+	return new QVariant(self->operator QVariant());
 }
 
 void QColorSpace_SetTransferFunction2(QColorSpace* self, int transferFunction, float gamma) {

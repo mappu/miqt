@@ -234,6 +234,12 @@ func (this *QPen) OperatorNotEqual(p *QPen) bool {
 	return (bool)(C.QPen_OperatorNotEqual(this.h, p.cPointer()))
 }
 
+func (this *QPen) ToQVariant() *QVariant {
+	_goptr := newQVariant(C.QPen_ToQVariant(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 func (this *QPen) IsDetached() bool {
 	return (bool)(C.QPen_IsDetached(this.h))
 }

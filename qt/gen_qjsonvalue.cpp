@@ -210,6 +210,10 @@ QJsonValueRef* QJsonValueRef_new3(QJsonObject* object, int idx) {
 	return new QJsonValueRef(object, static_cast<int>(idx));
 }
 
+QJsonValue* QJsonValueRef_ToQJsonValue(const QJsonValueRef* self) {
+	return new QJsonValue(self->operator QJsonValue());
+}
+
 void QJsonValueRef_OperatorAssign(QJsonValueRef* self, QJsonValue* val) {
 	self->operator=(*val);
 }

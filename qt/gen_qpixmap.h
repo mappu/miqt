@@ -31,6 +31,7 @@ class QRect;
 class QRegion;
 class QSize;
 class QTransform;
+class QVariant;
 #else
 typedef struct QBitmap QBitmap;
 typedef struct QColor QColor;
@@ -48,6 +49,7 @@ typedef struct QRect QRect;
 typedef struct QRegion QRegion;
 typedef struct QSize QSize;
 typedef struct QTransform QTransform;
+typedef struct QVariant QVariant;
 #endif
 
 QPixmap* QPixmap_new();
@@ -60,6 +62,7 @@ QPixmap* QPixmap_new7(struct miqt_string fileName, const char* format, int flags
 void QPixmap_virtbase(QPixmap* src, QPaintDevice** outptr_QPaintDevice);
 void QPixmap_OperatorAssign(QPixmap* self, QPixmap* param1);
 void QPixmap_Swap(QPixmap* self, QPixmap* other);
+QVariant* QPixmap_ToQVariant(const QPixmap* self);
 bool QPixmap_IsNull(const QPixmap* self);
 int QPixmap_DevType(const QPixmap* self);
 int QPixmap_Width(const QPixmap* self);

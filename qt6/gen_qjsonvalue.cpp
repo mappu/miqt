@@ -211,6 +211,10 @@ QJsonValueConstRef* QJsonValueConstRef_new(QJsonValueConstRef* param1) {
 	return new QJsonValueConstRef(*param1);
 }
 
+QJsonValue* QJsonValueConstRef_ToQJsonValue(const QJsonValueConstRef* self) {
+	return new QJsonValue(self->operator QJsonValue());
+}
+
 QVariant* QJsonValueConstRef_ToVariant(const QJsonValueConstRef* self) {
 	return new QVariant(self->toVariant());
 }
@@ -355,6 +359,10 @@ void QJsonValueRef_OperatorAssign(QJsonValueRef* self, QJsonValue* val) {
 
 void QJsonValueRef_OperatorAssignWithVal(QJsonValueRef* self, QJsonValueRef* val) {
 	self->operator=(*val);
+}
+
+QJsonValue* QJsonValueRef_ToQJsonValue(const QJsonValueRef* self) {
+	return new QJsonValue(self->operator QJsonValue());
 }
 
 QVariant* QJsonValueRef_ToVariant(const QJsonValueRef* self) {

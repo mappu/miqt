@@ -23,6 +23,7 @@ class QPaintEngine;
 class QPixmap;
 class QSize;
 class QTransform;
+class QVariant;
 #else
 typedef struct QBitmap QBitmap;
 typedef struct QImage QImage;
@@ -32,6 +33,7 @@ typedef struct QPaintEngine QPaintEngine;
 typedef struct QPixmap QPixmap;
 typedef struct QSize QSize;
 typedef struct QTransform QTransform;
+typedef struct QVariant QVariant;
 #endif
 
 QBitmap* QBitmap_new();
@@ -45,6 +47,7 @@ void QBitmap_virtbase(QBitmap* src, QPixmap** outptr_QPixmap);
 void QBitmap_OperatorAssign(QBitmap* self, QBitmap* other);
 void QBitmap_OperatorAssignWithQPixmap(QBitmap* self, QPixmap* param1);
 void QBitmap_Swap(QBitmap* self, QBitmap* other);
+QVariant* QBitmap_ToQVariant(const QBitmap* self);
 void QBitmap_Clear(QBitmap* self);
 QBitmap* QBitmap_FromImage(QImage* image);
 QBitmap* QBitmap_FromData(QSize* size, const unsigned char* bits);

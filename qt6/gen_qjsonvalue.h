@@ -74,6 +74,7 @@ double QJsonValue_ToDouble1(const QJsonValue* self, double defaultValue);
 void QJsonValue_Delete(QJsonValue* self, bool isSubclass);
 
 QJsonValueConstRef* QJsonValueConstRef_new(QJsonValueConstRef* param1);
+QJsonValue* QJsonValueConstRef_ToQJsonValue(const QJsonValueConstRef* self);
 QVariant* QJsonValueConstRef_ToVariant(const QJsonValueConstRef* self);
 int QJsonValueConstRef_Type(const QJsonValueConstRef* self);
 bool QJsonValueConstRef_IsNull(const QJsonValueConstRef* self);
@@ -106,6 +107,7 @@ QJsonValueRef* QJsonValueRef_new3(QJsonObject* object, ptrdiff_t idx);
 void QJsonValueRef_virtbase(QJsonValueRef* src, QJsonValueConstRef** outptr_QJsonValueConstRef);
 void QJsonValueRef_OperatorAssign(QJsonValueRef* self, QJsonValue* val);
 void QJsonValueRef_OperatorAssignWithVal(QJsonValueRef* self, QJsonValueRef* val);
+QJsonValue* QJsonValueRef_ToQJsonValue(const QJsonValueRef* self);
 QVariant* QJsonValueRef_ToVariant(const QJsonValueRef* self);
 int QJsonValueRef_Type(const QJsonValueRef* self);
 bool QJsonValueRef_IsNull(const QJsonValueRef* self);

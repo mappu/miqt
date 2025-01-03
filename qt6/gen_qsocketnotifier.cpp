@@ -367,6 +367,16 @@ QSocketDescriptor* QSocketDescriptor_new3(int descriptor) {
 #endif
 }
 
+int QSocketDescriptor_ToInt(const QSocketDescriptor* self) {
+#ifdef Q_OS_LINUX
+	QSocketDescriptor::DescriptorType _ret = self->operator int();
+	return static_cast<int>(_ret);
+#else
+	int _ret_invalidOS;
+	return _ret_invalidOS;
+#endif
+}
+
 bool QSocketDescriptor_IsValid(const QSocketDescriptor* self) {
 	return self->isValid();
 }

@@ -76,6 +76,7 @@ void QJsonValue_Delete(QJsonValue* self, bool isSubclass);
 QJsonValueRef* QJsonValueRef_new(QJsonValueRef* param1);
 QJsonValueRef* QJsonValueRef_new2(QJsonArray* array, int idx);
 QJsonValueRef* QJsonValueRef_new3(QJsonObject* object, int idx);
+QJsonValue* QJsonValueRef_ToQJsonValue(const QJsonValueRef* self);
 void QJsonValueRef_OperatorAssign(QJsonValueRef* self, QJsonValue* val);
 void QJsonValueRef_OperatorAssignWithVal(QJsonValueRef* self, QJsonValueRef* val);
 QVariant* QJsonValueRef_ToVariant(const QJsonValueRef* self);

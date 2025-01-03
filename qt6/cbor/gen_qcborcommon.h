@@ -20,6 +20,7 @@ class QCborError;
 typedef struct QCborError QCborError;
 #endif
 
+int QCborError_ToQCborError__Code(const QCborError* self);
 struct miqt_string QCborError_ToString(const QCborError* self);
 void QCborError_Delete(QCborError* self, bool isSubclass);
 

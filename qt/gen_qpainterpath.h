@@ -141,6 +141,7 @@ void QPainterPathStroker_Delete(QPainterPathStroker* self, bool isSubclass);
 bool QPainterPath__Element_IsMoveTo(const QPainterPath__Element* self);
 bool QPainterPath__Element_IsLineTo(const QPainterPath__Element* self);
 bool QPainterPath__Element_IsCurveTo(const QPainterPath__Element* self);
+QPointF* QPainterPath__Element_ToQPointF(const QPainterPath__Element* self);
 bool QPainterPath__Element_OperatorEqual(const QPainterPath__Element* self, QPainterPath__Element* e);
 bool QPainterPath__Element_OperatorNotEqual(const QPainterPath__Element* self, QPainterPath__Element* e);
 void QPainterPath__Element_Delete(QPainterPath__Element* self, bool isSubclass);

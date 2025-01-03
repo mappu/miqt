@@ -1,4 +1,5 @@
 #include <QQuaternion>
+#include <QVariant>
 #include <QVector3D>
 #include <QVector4D>
 #include <qquaternion.h>
@@ -149,6 +150,10 @@ QQuaternion* QQuaternion_OperatorDivideAssign(QQuaternion* self, float divisor) 
 
 QVector4D* QQuaternion_ToVector4D(const QQuaternion* self) {
 	return new QVector4D(self->toVector4D());
+}
+
+QVariant* QQuaternion_ToQVariant(const QQuaternion* self) {
+	return new QVariant(self->operator QVariant());
 }
 
 void QQuaternion_GetAxisAndAngle(const QQuaternion* self, QVector3D* axis, float* angle) {

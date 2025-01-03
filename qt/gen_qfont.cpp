@@ -4,6 +4,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QVariant>
 #include <qfont.h>
 #include "gen_qfont.h"
 
@@ -306,6 +307,10 @@ bool QFont_OperatorNotEqual(const QFont* self, QFont* param1) {
 
 bool QFont_OperatorLesser(const QFont* self, QFont* param1) {
 	return (*self < *param1);
+}
+
+QVariant* QFont_ToQVariant(const QFont* self) {
+	return new QVariant(self->operator QVariant());
 }
 
 bool QFont_IsCopyOf(const QFont* self, QFont* param1) {

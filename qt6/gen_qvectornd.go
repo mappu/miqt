@@ -212,6 +212,12 @@ func (this *QVector2D) ToPointF() *QPointF {
 	return _goptr
 }
 
+func (this *QVector2D) ToQVariant() *QVariant {
+	_goptr := newQVariant(C.QVector2D_ToQVariant(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 // Delete this object from C++ memory.
 func (this *QVector2D) Delete() {
 	C.QVector2D_Delete(this.h, C.bool(this.isSubclass))
@@ -479,6 +485,12 @@ func (this *QVector3D) ToPointF() *QPointF {
 	return _goptr
 }
 
+func (this *QVector3D) ToQVariant() *QVariant {
+	_goptr := newQVariant(C.QVector3D_ToQVariant(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 // Delete this object from C++ memory.
 func (this *QVector3D) Delete() {
 	C.QVector3D_Delete(this.h, C.bool(this.isSubclass))
@@ -724,6 +736,12 @@ func (this *QVector4D) ToPoint() *QPoint {
 
 func (this *QVector4D) ToPointF() *QPointF {
 	_goptr := newQPointF(C.QVector4D_ToPointF(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func (this *QVector4D) ToQVariant() *QVariant {
+	_goptr := newQVariant(C.QVector4D_ToQVariant(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -1,6 +1,7 @@
 #include <QBrush>
 #include <QColor>
 #include <QPalette>
+#include <QVariant>
 #include <qpalette.h>
 #include "gen_qpalette.h"
 
@@ -43,6 +44,10 @@ void QPalette_OperatorAssign(QPalette* self, QPalette* palette) {
 
 void QPalette_Swap(QPalette* self, QPalette* other) {
 	self->swap(*other);
+}
+
+QVariant* QPalette_ToQVariant(const QPalette* self) {
+	return new QVariant(self->operator QVariant());
 }
 
 int QPalette_CurrentColorGroup(const QPalette* self) {

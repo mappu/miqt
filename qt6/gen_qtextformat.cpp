@@ -61,6 +61,10 @@ bool QTextLength_OperatorNotEqual(const QTextLength* self, QTextLength* other) {
 	return (*self != *other);
 }
 
+QVariant* QTextLength_ToQVariant(const QTextLength* self) {
+	return new QVariant(self->operator QVariant());
+}
+
 void QTextLength_Delete(QTextLength* self, bool isSubclass) {
 	if (isSubclass) {
 		delete dynamic_cast<QTextLength*>( self );
@@ -284,6 +288,10 @@ bool QTextFormat_OperatorEqual(const QTextFormat* self, QTextFormat* rhs) {
 
 bool QTextFormat_OperatorNotEqual(const QTextFormat* self, QTextFormat* rhs) {
 	return (*self != *rhs);
+}
+
+QVariant* QTextFormat_ToQVariant(const QTextFormat* self) {
+	return new QVariant(self->operator QVariant());
 }
 
 void QTextFormat_SetLayoutDirection(QTextFormat* self, int direction) {

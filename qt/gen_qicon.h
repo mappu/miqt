@@ -21,6 +21,7 @@ class QPainter;
 class QPixmap;
 class QRect;
 class QSize;
+class QVariant;
 class QWindow;
 #else
 typedef struct QIcon QIcon;
@@ -29,6 +30,7 @@ typedef struct QPainter QPainter;
 typedef struct QPixmap QPixmap;
 typedef struct QRect QRect;
 typedef struct QSize QSize;
+typedef struct QVariant QVariant;
 typedef struct QWindow QWindow;
 #endif
 
@@ -39,6 +41,7 @@ QIcon* QIcon_new4(struct miqt_string fileName);
 QIcon* QIcon_new5(QIconEngine* engine);
 void QIcon_OperatorAssign(QIcon* self, QIcon* other);
 void QIcon_Swap(QIcon* self, QIcon* other);
+QVariant* QIcon_ToQVariant(const QIcon* self);
 QPixmap* QIcon_Pixmap(const QIcon* self, QSize* size);
 QPixmap* QIcon_Pixmap2(const QIcon* self, int w, int h);
 QPixmap* QIcon_PixmapWithExtent(const QIcon* self, int extent);

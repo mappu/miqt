@@ -164,6 +164,10 @@ QBitRef* QBitRef_new(QBitRef* param1) {
 	return new QBitRef(*param1);
 }
 
+bool QBitRef_ToBool(const QBitRef* self) {
+	return self->operator bool();
+}
+
 bool QBitRef_OperatorNot(const QBitRef* self) {
 	return self->operator!();
 }

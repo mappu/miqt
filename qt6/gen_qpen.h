@@ -18,10 +18,12 @@ extern "C" {
 class QBrush;
 class QColor;
 class QPen;
+class QVariant;
 #else
 typedef struct QBrush QBrush;
 typedef struct QColor QColor;
 typedef struct QPen QPen;
+typedef struct QVariant QVariant;
 #endif
 
 QPen* QPen_new();
@@ -59,6 +61,7 @@ bool QPen_IsCosmetic(const QPen* self);
 void QPen_SetCosmetic(QPen* self, bool cosmetic);
 bool QPen_OperatorEqual(const QPen* self, QPen* p);
 bool QPen_OperatorNotEqual(const QPen* self, QPen* p);
+QVariant* QPen_ToQVariant(const QPen* self);
 bool QPen_IsDetached(QPen* self);
 void QPen_Delete(QPen* self, bool isSubclass);
 

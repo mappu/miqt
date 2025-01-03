@@ -248,6 +248,12 @@ func (this *QVector4D) ToPointF() *QPointF {
 	return _goptr
 }
 
+func (this *QVector4D) ToQVariant() *QVariant {
+	_goptr := newQVariant(C.QVector4D_ToQVariant(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 // Delete this object from C++ memory.
 func (this *QVector4D) Delete() {
 	C.QVector4D_Delete(this.h, C.bool(this.isSubclass))

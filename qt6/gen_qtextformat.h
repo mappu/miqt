@@ -60,6 +60,7 @@ double QTextLength_Value(const QTextLength* self, double maximumLength);
 double QTextLength_RawValue(const QTextLength* self);
 bool QTextLength_OperatorEqual(const QTextLength* self, QTextLength* other);
 bool QTextLength_OperatorNotEqual(const QTextLength* self, QTextLength* other);
+QVariant* QTextLength_ToQVariant(const QTextLength* self);
 void QTextLength_Delete(QTextLength* self, bool isSubclass);
 
 QTextFormat* QTextFormat_new();
@@ -107,6 +108,7 @@ QTextImageFormat* QTextFormat_ToImageFormat(const QTextFormat* self);
 QTextTableCellFormat* QTextFormat_ToTableCellFormat(const QTextFormat* self);
 bool QTextFormat_OperatorEqual(const QTextFormat* self, QTextFormat* rhs);
 bool QTextFormat_OperatorNotEqual(const QTextFormat* self, QTextFormat* rhs);
+QVariant* QTextFormat_ToQVariant(const QTextFormat* self);
 void QTextFormat_SetLayoutDirection(QTextFormat* self, int direction);
 int QTextFormat_LayoutDirection(const QTextFormat* self);
 void QTextFormat_SetBackground(QTextFormat* self, QBrush* brush);

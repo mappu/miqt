@@ -1,4 +1,5 @@
 #include <QSizePolicy>
+#include <QVariant>
 #include <qsizepolicy.h>
 #include "gen_qsizepolicy.h"
 
@@ -77,6 +78,10 @@ bool QSizePolicy_OperatorEqual(const QSizePolicy* self, QSizePolicy* s) {
 
 bool QSizePolicy_OperatorNotEqual(const QSizePolicy* self, QSizePolicy* s) {
 	return (*self != *s);
+}
+
+QVariant* QSizePolicy_ToQVariant(const QSizePolicy* self) {
+	return new QVariant(self->operator QVariant());
 }
 
 int QSizePolicy_HorizontalStretch(const QSizePolicy* self) {

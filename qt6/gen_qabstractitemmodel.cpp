@@ -258,6 +258,10 @@ void QPersistentModelIndex_OperatorAssignWithOther(QPersistentModelIndex* self, 
 	self->operator=(*other);
 }
 
+QModelIndex* QPersistentModelIndex_ToQModelIndex(const QPersistentModelIndex* self) {
+	return new QModelIndex(self->operator QModelIndex());
+}
+
 int QPersistentModelIndex_Row(const QPersistentModelIndex* self) {
 	return self->row();
 }

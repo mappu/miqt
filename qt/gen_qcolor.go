@@ -615,6 +615,12 @@ func (this *QColor) OperatorNotEqual(c *QColor) bool {
 	return (bool)(C.QColor_OperatorNotEqual(this.h, c.cPointer()))
 }
 
+func (this *QColor) ToQVariant() *QVariant {
+	_goptr := newQVariant(C.QColor_ToQVariant(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 func QColor_IsValidColor(name string) bool {
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)

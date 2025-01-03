@@ -19,6 +19,7 @@ class QMatrix4x4;
 class QPoint;
 class QPointF;
 class QRect;
+class QVariant;
 class QVector2D;
 class QVector3D;
 class QVector4D;
@@ -27,6 +28,7 @@ typedef struct QMatrix4x4 QMatrix4x4;
 typedef struct QPoint QPoint;
 typedef struct QPointF QPointF;
 typedef struct QRect QRect;
+typedef struct QVariant QVariant;
 typedef struct QVector2D QVector2D;
 typedef struct QVector3D QVector3D;
 typedef struct QVector4D QVector4D;
@@ -63,6 +65,7 @@ QVector3D* QVector2D_ToVector3D(const QVector2D* self);
 QVector4D* QVector2D_ToVector4D(const QVector2D* self);
 QPoint* QVector2D_ToPoint(const QVector2D* self);
 QPointF* QVector2D_ToPointF(const QVector2D* self);
+QVariant* QVector2D_ToQVariant(const QVector2D* self);
 void QVector2D_Delete(QVector2D* self, bool isSubclass);
 
 QVector3D* QVector3D_new();
@@ -106,6 +109,7 @@ QVector2D* QVector3D_ToVector2D(const QVector3D* self);
 QVector4D* QVector3D_ToVector4D(const QVector3D* self);
 QPoint* QVector3D_ToPoint(const QVector3D* self);
 QPointF* QVector3D_ToPointF(const QVector3D* self);
+QVariant* QVector3D_ToQVariant(const QVector3D* self);
 void QVector3D_Delete(QVector3D* self, bool isSubclass);
 
 QVector4D* QVector4D_new();
@@ -145,6 +149,7 @@ QVector3D* QVector4D_ToVector3D(const QVector4D* self);
 QVector3D* QVector4D_ToVector3DAffine(const QVector4D* self);
 QPoint* QVector4D_ToPoint(const QVector4D* self);
 QPointF* QVector4D_ToPointF(const QVector4D* self);
+QVariant* QVector4D_ToQVariant(const QVector4D* self);
 void QVector4D_Delete(QVector4D* self, bool isSubclass);
 
 #ifdef __cplusplus

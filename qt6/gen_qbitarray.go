@@ -268,6 +268,10 @@ func NewQBitRef(param1 *QBitRef) *QBitRef {
 	return ret
 }
 
+func (this *QBitRef) ToBool() bool {
+	return (bool)(C.QBitRef_ToBool(this.h))
+}
+
 func (this *QBitRef) OperatorNot() bool {
 	return (bool)(C.QBitRef_OperatorNot(this.h))
 }

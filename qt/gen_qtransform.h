@@ -25,6 +25,7 @@ class QRect;
 class QRectF;
 class QRegion;
 class QTransform;
+class QVariant;
 #else
 typedef struct QLine QLine;
 typedef struct QLineF QLineF;
@@ -36,6 +37,7 @@ typedef struct QRect QRect;
 typedef struct QRectF QRectF;
 typedef struct QRegion QRegion;
 typedef struct QTransform QTransform;
+typedef struct QVariant QVariant;
 #endif
 
 QTransform* QTransform_new(int param1);
@@ -79,6 +81,7 @@ bool QTransform_OperatorEqual(const QTransform* self, QTransform* param1);
 bool QTransform_OperatorNotEqual(const QTransform* self, QTransform* param1);
 QTransform* QTransform_OperatorMultiplyAssign(QTransform* self, QTransform* param1);
 QTransform* QTransform_OperatorMultiply(const QTransform* self, QTransform* o);
+QVariant* QTransform_ToQVariant(const QTransform* self);
 void QTransform_Reset(QTransform* self);
 QPoint* QTransform_Map(const QTransform* self, QPoint* p);
 QPointF* QTransform_MapWithQPointF(const QTransform* self, QPointF* p);

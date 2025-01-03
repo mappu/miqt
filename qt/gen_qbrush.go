@@ -357,6 +357,12 @@ func (this *QBrush) Swap(other *QBrush) {
 	C.QBrush_Swap(this.h, other.cPointer())
 }
 
+func (this *QBrush) ToQVariant() *QVariant {
+	_goptr := newQVariant(C.QBrush_ToQVariant(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 func (this *QBrush) Style() BrushStyle {
 	return (BrushStyle)(C.QBrush_Style(this.h))
 }

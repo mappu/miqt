@@ -18,10 +18,12 @@ extern "C" {
 class QColorSpace;
 class QColorTransform;
 class QPointF;
+class QVariant;
 #else
 typedef struct QColorSpace QColorSpace;
 typedef struct QColorTransform QColorTransform;
 typedef struct QPointF QPointF;
+typedef struct QVariant QVariant;
 #endif
 
 QColorSpace* QColorSpace_new();
@@ -55,6 +57,7 @@ bool QColorSpace_IsValid(const QColorSpace* self);
 QColorSpace* QColorSpace_FromIccProfile(struct miqt_string iccProfile);
 struct miqt_string QColorSpace_IccProfile(const QColorSpace* self);
 QColorTransform* QColorSpace_TransformationToColorSpace(const QColorSpace* self, QColorSpace* colorspace);
+QVariant* QColorSpace_ToQVariant(const QColorSpace* self);
 void QColorSpace_SetTransferFunction2(QColorSpace* self, int transferFunction, float gamma);
 QColorSpace* QColorSpace_WithTransferFunction2(const QColorSpace* self, int transferFunction, float gamma);
 void QColorSpace_Delete(QColorSpace* self, bool isSubclass);

@@ -365,6 +365,12 @@ func NewQJsonValueRef3(object *QJsonObject, idx int) *QJsonValueRef {
 	return ret
 }
 
+func (this *QJsonValueRef) ToQJsonValue() *QJsonValue {
+	_goptr := newQJsonValue(C.QJsonValueRef_ToQJsonValue(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 func (this *QJsonValueRef) OperatorAssign(val *QJsonValue) {
 	C.QJsonValueRef_OperatorAssign(this.h, val.cPointer())
 }

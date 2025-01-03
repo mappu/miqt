@@ -16,10 +16,12 @@ extern "C" {
 
 #ifdef __cplusplus
 class QQuaternion;
+class QVariant;
 class QVector3D;
 class QVector4D;
 #else
 typedef struct QQuaternion QQuaternion;
+typedef struct QVariant QVariant;
 typedef struct QVector3D QVector3D;
 typedef struct QVector4D QVector4D;
 #endif
@@ -57,6 +59,7 @@ QQuaternion* QQuaternion_OperatorMultiplyAssign(QQuaternion* self, float factor)
 QQuaternion* QQuaternion_OperatorMultiplyAssignWithQuaternion(QQuaternion* self, QQuaternion* quaternion);
 QQuaternion* QQuaternion_OperatorDivideAssign(QQuaternion* self, float divisor);
 QVector4D* QQuaternion_ToVector4D(const QQuaternion* self);
+QVariant* QQuaternion_ToQVariant(const QQuaternion* self);
 void QQuaternion_GetAxisAndAngle(const QQuaternion* self, QVector3D* axis, float* angle);
 QQuaternion* QQuaternion_FromAxisAndAngle(QVector3D* axis, float angle);
 void QQuaternion_GetAxisAndAngle2(const QQuaternion* self, float* x, float* y, float* z, float* angle);

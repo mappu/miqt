@@ -222,6 +222,12 @@ func (this *QMatrix) OperatorMultiply(o *QMatrix) *QMatrix {
 	return _goptr
 }
 
+func (this *QMatrix) ToQVariant() *QVariant {
+	_goptr := newQVariant(C.QMatrix_ToQVariant(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 func (this *QMatrix) Inverted1(invertible *bool) *QMatrix {
 	_goptr := newQMatrix(C.QMatrix_Inverted1(this.h, (*C.bool)(unsafe.Pointer(invertible))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

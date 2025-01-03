@@ -297,6 +297,12 @@ func QKeySequence_KeyBindings(key QKeySequence__StandardKey) []QKeySequence {
 	return _ret
 }
 
+func (this *QKeySequence) ToQVariant() *QVariant {
+	_goptr := newQVariant(C.QKeySequence_ToQVariant(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 func (this *QKeySequence) OperatorSubscript(i uint) int {
 	return (int)(C.QKeySequence_OperatorSubscript(this.h, (C.uint)(i)))
 }

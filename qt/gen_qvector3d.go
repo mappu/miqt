@@ -266,6 +266,12 @@ func (this *QVector3D) ToPointF() *QPointF {
 	return _goptr
 }
 
+func (this *QVector3D) ToQVariant() *QVariant {
+	_goptr := newQVariant(C.QVector3D_ToQVariant(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 // Delete this object from C++ memory.
 func (this *QVector3D) Delete() {
 	C.QVector3D_Delete(this.h, C.bool(this.isSubclass))

@@ -317,6 +317,12 @@ func (this *QRegion) OperatorNotEqual(r *QRegion) bool {
 	return (bool)(C.QRegion_OperatorNotEqual(this.h, r.cPointer()))
 }
 
+func (this *QRegion) ToQVariant() *QVariant {
+	_goptr := newQVariant(C.QRegion_ToQVariant(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 // Delete this object from C++ memory.
 func (this *QRegion) Delete() {
 	C.QRegion_Delete(this.h, C.bool(this.isSubclass))

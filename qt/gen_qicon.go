@@ -114,6 +114,12 @@ func (this *QIcon) Swap(other *QIcon) {
 	C.QIcon_Swap(this.h, other.cPointer())
 }
 
+func (this *QIcon) ToQVariant() *QVariant {
+	_goptr := newQVariant(C.QIcon_ToQVariant(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 func (this *QIcon) Pixmap(size *QSize) *QPixmap {
 	_goptr := newQPixmap(C.QIcon_Pixmap(this.h, size.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

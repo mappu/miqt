@@ -2,6 +2,7 @@
 #include <QPoint>
 #include <QPointF>
 #include <QRect>
+#include <QVariant>
 #include <QVector2D>
 #include <QVector3D>
 #include <QVector4D>
@@ -187,6 +188,10 @@ QPoint* QVector3D_ToPoint(const QVector3D* self) {
 
 QPointF* QVector3D_ToPointF(const QVector3D* self) {
 	return new QPointF(self->toPointF());
+}
+
+QVariant* QVector3D_ToQVariant(const QVector3D* self) {
+	return new QVariant(self->operator QVariant());
 }
 
 void QVector3D_Delete(QVector3D* self, bool isSubclass) {

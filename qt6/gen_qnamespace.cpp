@@ -79,6 +79,10 @@ int QKeyCombination_ToCombined(const QKeyCombination* self) {
 	return self->toCombined();
 }
 
+int QKeyCombination_ToInt(const QKeyCombination* self) {
+	return self->operator int();
+}
+
 void QKeyCombination_Delete(QKeyCombination* self, bool isSubclass) {
 	if (isSubclass) {
 		delete dynamic_cast<QKeyCombination*>( self );

@@ -156,6 +156,12 @@ void QPersistentModelIndex_OperatorAssignWithOther(QPersistentModelIndex* self, 
 	self->operator=(*other);
 }
 
+QModelIndex* QPersistentModelIndex_ToConstQModelIndexBitwiseAnd(const QPersistentModelIndex* self) {
+	const QModelIndex& _ret = self->operator const QModelIndex &();
+	// Cast returned reference into pointer
+	return const_cast<QModelIndex*>(&_ret);
+}
+
 int QPersistentModelIndex_Row(const QPersistentModelIndex* self) {
 	return self->row();
 }

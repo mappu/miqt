@@ -24,6 +24,7 @@ class QPointF;
 class QRect;
 class QRectF;
 class QRegion;
+class QVariant;
 #else
 typedef struct QLine QLine;
 typedef struct QLineF QLineF;
@@ -34,6 +35,7 @@ typedef struct QPointF QPointF;
 typedef struct QRect QRect;
 typedef struct QRectF QRectF;
 typedef struct QRegion QRegion;
+typedef struct QVariant QVariant;
 #endif
 
 QMatrix* QMatrix_new(int param1);
@@ -71,6 +73,7 @@ bool QMatrix_OperatorEqual(const QMatrix* self, QMatrix* param1);
 bool QMatrix_OperatorNotEqual(const QMatrix* self, QMatrix* param1);
 QMatrix* QMatrix_OperatorMultiplyAssign(QMatrix* self, QMatrix* param1);
 QMatrix* QMatrix_OperatorMultiply(const QMatrix* self, QMatrix* o);
+QVariant* QMatrix_ToQVariant(const QMatrix* self);
 QMatrix* QMatrix_Inverted1(const QMatrix* self, bool* invertible);
 void QMatrix_Delete(QMatrix* self, bool isSubclass);
 

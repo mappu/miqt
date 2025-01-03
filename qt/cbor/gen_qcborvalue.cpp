@@ -509,6 +509,10 @@ QCborValueRef* QCborValueRef_new(QCborValueRef* param1) {
 	return new QCborValueRef(*param1);
 }
 
+QCborValue* QCborValueRef_ToQCborValue(const QCborValueRef* self) {
+	return new QCborValue(self->operator QCborValue());
+}
+
 void QCborValueRef_OperatorAssign(QCborValueRef* self, QCborValue* other) {
 	self->operator=(*other);
 }

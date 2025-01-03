@@ -419,6 +419,14 @@ func NewQSocketDescriptor3(descriptor int) *QSocketDescriptor {
 	return ret
 }
 
+func (this *QSocketDescriptor) ToInt() int {
+	if runtime.GOOS != "linux" {
+		panic("Unsupported OS")
+	}
+
+	return (int)(C.QSocketDescriptor_ToInt(this.h))
+}
+
 func (this *QSocketDescriptor) IsValid() bool {
 	return (bool)(C.QSocketDescriptor_IsValid(this.h))
 }

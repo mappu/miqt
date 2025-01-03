@@ -3,6 +3,7 @@
 #include <QPoint>
 #include <QRect>
 #include <QRegion>
+#include <QVariant>
 #include <qregion.h>
 #include "gen_qregion.h"
 
@@ -224,6 +225,10 @@ bool QRegion_OperatorEqual(const QRegion* self, QRegion* r) {
 
 bool QRegion_OperatorNotEqual(const QRegion* self, QRegion* r) {
 	return (*self != *r);
+}
+
+QVariant* QRegion_ToQVariant(const QRegion* self) {
+	return new QVariant(self->operator QVariant());
 }
 
 void QRegion_Delete(QRegion* self, bool isSubclass) {

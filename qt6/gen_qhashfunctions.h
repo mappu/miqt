@@ -22,6 +22,7 @@ typedef struct QHashSeed QHashSeed;
 
 QHashSeed* QHashSeed_new();
 QHashSeed* QHashSeed_new2(size_t d);
+size_t QHashSeed_ToUnsignedLong(const QHashSeed* self);
 QHashSeed* QHashSeed_GlobalSeed();
 void QHashSeed_SetDeterministicGlobalSeed();
 void QHashSeed_ResetRandomGlobalSeed();

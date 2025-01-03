@@ -1882,6 +1882,10 @@ func (this *QKeyCombination) ToCombined() int {
 	return (int)(C.QKeyCombination_ToCombined(this.h))
 }
 
+func (this *QKeyCombination) ToInt() int {
+	return (int)(C.QKeyCombination_ToInt(this.h))
+}
+
 // Delete this object from C++ memory.
 func (this *QKeyCombination) Delete() {
 	C.QKeyCombination_Delete(this.h, C.bool(this.isSubclass))

@@ -442,6 +442,10 @@ bool QPainterPath__Element_IsCurveTo(const QPainterPath__Element* self) {
 	return self->isCurveTo();
 }
 
+QPointF* QPainterPath__Element_ToQPointF(const QPainterPath__Element* self) {
+	return new QPointF(self->operator QPointF());
+}
+
 bool QPainterPath__Element_OperatorEqual(const QPainterPath__Element* self, QPainterPath__Element* e) {
 	return (*self == *e);
 }

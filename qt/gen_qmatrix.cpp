@@ -7,6 +7,7 @@
 #include <QRect>
 #include <QRectF>
 #include <QRegion>
+#include <QVariant>
 #include <qmatrix.h>
 #include "gen_qmatrix.h"
 
@@ -170,6 +171,10 @@ QMatrix* QMatrix_OperatorMultiplyAssign(QMatrix* self, QMatrix* param1) {
 
 QMatrix* QMatrix_OperatorMultiply(const QMatrix* self, QMatrix* o) {
 	return new QMatrix(self->operator*(*o));
+}
+
+QVariant* QMatrix_ToQVariant(const QMatrix* self) {
+	return new QVariant(self->operator QVariant());
 }
 
 QMatrix* QMatrix_Inverted1(const QMatrix* self, bool* invertible) {

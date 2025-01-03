@@ -12,6 +12,7 @@
 #include <QPointF>
 #include <QRadialGradient>
 #include <QTransform>
+#include <QVariant>
 #include <qbrush.h>
 #include "gen_qbrush.h"
 
@@ -74,6 +75,10 @@ void QBrush_OperatorAssign(QBrush* self, QBrush* brush) {
 
 void QBrush_Swap(QBrush* self, QBrush* other) {
 	self->swap(*other);
+}
+
+QVariant* QBrush_ToQVariant(const QBrush* self) {
+	return new QVariant(self->operator QVariant());
 }
 
 int QBrush_Style(const QBrush* self) {
