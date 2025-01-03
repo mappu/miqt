@@ -30,6 +30,7 @@ examples/uidesigner/uidesigner
 examples/trivialwizard6/trivialwizard6
 examples/subclass/subclass
 examples/modelview/modelview
+examples/modelview_color6/modelview_color6
 examples/libraries/extras-scintillaedit/extras-scintillaedit
 examples/libraries/qt-multimedia/qt-multimedia
 examples/libraries/qt-network/qt-network
