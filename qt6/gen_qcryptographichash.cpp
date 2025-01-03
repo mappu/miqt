@@ -18,7 +18,7 @@ void QCryptographicHash_Reset(QCryptographicHash* self) {
 	self->reset();
 }
 
-void QCryptographicHash_AddData(QCryptographicHash* self, const char* data, ptrdiff_t length) {
+void QCryptographicHash_AddData(QCryptographicHash* self, const char* data, long long length) {
 	self->addData(data, (qsizetype)(length));
 }
 

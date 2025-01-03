@@ -174,7 +174,15 @@ func processTypedef(node map[string]interface{}, addNamePrefix string) (CppTyped
 	}
 
 	if typ, ok := node["type"].(map[string]interface{}); ok {
-		if qualType, ok := typ["qualType"].(string); ok {
+		// Try desugaredQualType first
+		var qualType string
+		if desugared, ok := typ["desugaredQualType"].(string); ok {
+			qualType = desugared
+		} else if qt, ok := typ["qualType"].(string); ok {
+			qualType = qt
+		}
+
+		if qualType != "" {
 			return CppTypedef{
 				Alias:          addNamePrefix + nodename,
 				UnderlyingType: parseSingleTypeString(qualType),
@@ -264,7 +272,13 @@ func processClassType(node map[string]interface{}, addNamePrefix string) (CppCla
 			}
 
 			if typ, ok := base["type"].(map[string]interface{}); ok {
-				if qualType, ok := typ["qualType"].(string); ok {
+				var qualType string
+				if desugared, ok := typ["desugaredQualType"].(string); ok {
+					qualType = desugared
+				} else if qt, ok := typ["qualType"].(string); ok {
+					qualType = qt
+				}
+				if qualType != "" {
 					ret.DirectInherits = append(ret.DirectInherits, qualType)
 				}
 			}
@@ -511,8 +525,14 @@ func processEnum(node map[string]interface{}, addNamePrefix string) (CppEnum, er
 	// Underlying type
 	ret.UnderlyingType = parseSingleTypeString("int")
 	if nodefut, ok := node["fixedUnderlyingType"].(map[string]interface{}); ok {
-		if nodequal, ok := nodefut["qualType"].(string); ok {
-			ret.UnderlyingType = parseSingleTypeString(nodequal)
+		var qualType string
+		if desugared, ok := nodefut["desugaredQualType"].(string); ok {
+			qualType = desugared
+		} else if qt, ok := nodefut["qualType"].(string); ok {
+			qualType = qt
+		}
+		if qualType != "" {
+			ret.UnderlyingType = parseSingleTypeString(qualType)
 		}
 	}
 
@@ -649,18 +669,20 @@ nextEnumEntry:
 
 // parseMethod parses a Clang method into our CppMethod intermediate format.
 func parseMethod(node map[string]interface{}, mm *CppMethod) error {
-
 	if typobj, ok := node["type"].(map[string]interface{}); ok {
-		if qualType, ok := typobj["qualType"].(string); ok {
-			// The qualType is the whole type of the method, including its parameter types
-			// If anything here is too complicated, skip the whole method
+		var qualType string
+		if desugared, ok := typobj["desugaredQualType"].(string); ok {
+			qualType = desugared
+		} else if qt, ok := typobj["qualType"].(string); ok {
+			qualType = qt
+		}
 
-			var err error = nil
+		if qualType != "" {
+			var err error
 			mm.ReturnType, mm.Parameters, mm.IsConst, err = parseTypeString(qualType)
 			if err != nil {
 				return err
 			}
-
 		}
 	}
 
@@ -689,6 +711,14 @@ func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 				// Parameter variable
 				parmName, _ := methodObj["name"].(string) // n.b. may be unnamed
 				if parmName == "" {
+
+					// Get the precise parameter type if available
+					if typ, ok := methodObj["type"].(map[string]interface{}); ok {
+						if desugared, ok := typ["desugaredQualType"].(string); ok {
+							// Update the parameter type with the more precise desugared version
+							mm.Parameters[paramCounter].ParameterType = desugared
+						}
+					}
 
 					// Generate a default parameter name
 					// Super nice autogen names if this is a Q_PROPERTY setter:

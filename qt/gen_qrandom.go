@@ -57,7 +57,7 @@ func NewQRandomGenerator() *QRandomGenerator {
 // NewQRandomGenerator2 constructs a new QRandomGenerator object.
 func NewQRandomGenerator2(seedBuffer *uint, lenVal int64) *QRandomGenerator {
 
-	ret := newQRandomGenerator(C.QRandomGenerator_new2((*C.uint)(unsafe.Pointer(seedBuffer)), (C.ptrdiff_t)(lenVal)))
+	ret := newQRandomGenerator(C.QRandomGenerator_new2((*C.uint)(unsafe.Pointer(seedBuffer)), (C.longlong)(lenVal)))
 	ret.isSubclass = true
 	return ret
 }
@@ -226,7 +226,7 @@ func NewQRandomGenerator64() *QRandomGenerator64 {
 // NewQRandomGenerator642 constructs a new QRandomGenerator64 object.
 func NewQRandomGenerator642(seedBuffer *uint, lenVal int64) *QRandomGenerator64 {
 
-	ret := newQRandomGenerator64(C.QRandomGenerator64_new2((*C.uint)(unsafe.Pointer(seedBuffer)), (C.ptrdiff_t)(lenVal)))
+	ret := newQRandomGenerator64(C.QRandomGenerator64_new2((*C.uint)(unsafe.Pointer(seedBuffer)), (C.longlong)(lenVal)))
 	ret.isSubclass = true
 	return ret
 }

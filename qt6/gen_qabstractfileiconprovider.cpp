@@ -105,13 +105,13 @@ public:
 	intptr_t handle__SetOptions = 0;
 
 	// Subclass to allow providing a Go implementation
-	virtual void setOptions(QAbstractFileIconProvider::Options options) override {
+	virtual void setOptions(QFlags<QAbstractFileIconProvider::Option> options) override {
 		if (handle__SetOptions == 0) {
 			QAbstractFileIconProvider::setOptions(options);
 			return;
 		}
 		
-		QAbstractFileIconProvider::Options options_ret = options;
+		QFlags<QAbstractFileIconProvider::Option> options_ret = options;
 		int sigval1 = static_cast<int>(options_ret);
 
 		miqt_exec_callback_QAbstractFileIconProvider_SetOptions(this, handle__SetOptions, sigval1);
@@ -122,7 +122,7 @@ public:
 	// Wrapper to allow calling protected method
 	void virtualbase_SetOptions(int options) {
 
-		QAbstractFileIconProvider::setOptions(static_cast<QAbstractFileIconProvider::Options>(options));
+		QAbstractFileIconProvider::setOptions(static_cast<QFlags<QAbstractFileIconProvider::Option>>(options));
 
 	}
 
@@ -175,7 +175,7 @@ struct miqt_string QAbstractFileIconProvider_Type(const QAbstractFileIconProvide
 }
 
 void QAbstractFileIconProvider_SetOptions(QAbstractFileIconProvider* self, int options) {
-	self->setOptions(static_cast<QAbstractFileIconProvider::Options>(options));
+	self->setOptions(static_cast<QFlags<QAbstractFileIconProvider::Option>>(options));
 }
 
 int QAbstractFileIconProvider_Options(const QAbstractFileIconProvider* self) {

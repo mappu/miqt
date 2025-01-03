@@ -57,7 +57,7 @@ func NewQBitArray() *QBitArray {
 // NewQBitArray2 constructs a new QBitArray object.
 func NewQBitArray2(size int64) *QBitArray {
 
-	ret := newQBitArray(C.QBitArray_new2((C.ptrdiff_t)(size)))
+	ret := newQBitArray(C.QBitArray_new2((C.longlong)(size)))
 	ret.isSubclass = true
 	return ret
 }
@@ -73,7 +73,7 @@ func NewQBitArray3(other *QBitArray) *QBitArray {
 // NewQBitArray4 constructs a new QBitArray object.
 func NewQBitArray4(size int64, val bool) *QBitArray {
 
-	ret := newQBitArray(C.QBitArray_new4((C.ptrdiff_t)(size), (C.bool)(val)))
+	ret := newQBitArray(C.QBitArray_new4((C.longlong)(size), (C.bool)(val)))
 	ret.isSubclass = true
 	return ret
 }
@@ -107,7 +107,7 @@ func (this *QBitArray) IsNull() bool {
 }
 
 func (this *QBitArray) Resize(size int64) {
-	C.QBitArray_Resize(this.h, (C.ptrdiff_t)(size))
+	C.QBitArray_Resize(this.h, (C.longlong)(size))
 }
 
 func (this *QBitArray) Detach() {
@@ -123,37 +123,37 @@ func (this *QBitArray) Clear() {
 }
 
 func (this *QBitArray) TestBit(i int64) bool {
-	return (bool)(C.QBitArray_TestBit(this.h, (C.ptrdiff_t)(i)))
+	return (bool)(C.QBitArray_TestBit(this.h, (C.longlong)(i)))
 }
 
 func (this *QBitArray) SetBit(i int64) {
-	C.QBitArray_SetBit(this.h, (C.ptrdiff_t)(i))
+	C.QBitArray_SetBit(this.h, (C.longlong)(i))
 }
 
 func (this *QBitArray) SetBit2(i int64, val bool) {
-	C.QBitArray_SetBit2(this.h, (C.ptrdiff_t)(i), (C.bool)(val))
+	C.QBitArray_SetBit2(this.h, (C.longlong)(i), (C.bool)(val))
 }
 
 func (this *QBitArray) ClearBit(i int64) {
-	C.QBitArray_ClearBit(this.h, (C.ptrdiff_t)(i))
+	C.QBitArray_ClearBit(this.h, (C.longlong)(i))
 }
 
 func (this *QBitArray) ToggleBit(i int64) bool {
-	return (bool)(C.QBitArray_ToggleBit(this.h, (C.ptrdiff_t)(i)))
+	return (bool)(C.QBitArray_ToggleBit(this.h, (C.longlong)(i)))
 }
 
 func (this *QBitArray) At(i int64) bool {
-	return (bool)(C.QBitArray_At(this.h, (C.ptrdiff_t)(i)))
+	return (bool)(C.QBitArray_At(this.h, (C.longlong)(i)))
 }
 
 func (this *QBitArray) OperatorSubscript(i int64) *QBitRef {
-	_goptr := newQBitRef(C.QBitArray_OperatorSubscript(this.h, (C.ptrdiff_t)(i)))
+	_goptr := newQBitRef(C.QBitArray_OperatorSubscript(this.h, (C.longlong)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBitArray) OperatorSubscriptWithQsizetype(i int64) bool {
-	return (bool)(C.QBitArray_OperatorSubscriptWithQsizetype(this.h, (C.ptrdiff_t)(i)))
+	return (bool)(C.QBitArray_OperatorSubscriptWithQsizetype(this.h, (C.longlong)(i)))
 }
 
 func (this *QBitArray) OperatorBitwiseAndAssign(param1 *QBitArray) {
@@ -181,11 +181,11 @@ func (this *QBitArray) Fill(val bool) bool {
 }
 
 func (this *QBitArray) Fill2(val bool, first int64, last int64) {
-	C.QBitArray_Fill2(this.h, (C.bool)(val), (C.ptrdiff_t)(first), (C.ptrdiff_t)(last))
+	C.QBitArray_Fill2(this.h, (C.bool)(val), (C.longlong)(first), (C.longlong)(last))
 }
 
 func (this *QBitArray) Truncate(pos int64) {
-	C.QBitArray_Truncate(this.h, (C.ptrdiff_t)(pos))
+	C.QBitArray_Truncate(this.h, (C.longlong)(pos))
 }
 
 func (this *QBitArray) Bits() string {
@@ -196,7 +196,7 @@ func (this *QBitArray) Bits() string {
 func QBitArray_FromBits(data string, lenVal int64) *QBitArray {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	_goptr := newQBitArray(C.QBitArray_FromBits(data_Cstring, (C.ptrdiff_t)(lenVal)))
+	_goptr := newQBitArray(C.QBitArray_FromBits(data_Cstring, (C.longlong)(lenVal)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -206,7 +206,7 @@ func (this *QBitArray) ToUInt32(endianness QSysInfo__Endian) uint {
 }
 
 func (this *QBitArray) Fill22(val bool, size int64) bool {
-	return (bool)(C.QBitArray_Fill22(this.h, (C.bool)(val), (C.ptrdiff_t)(size)))
+	return (bool)(C.QBitArray_Fill22(this.h, (C.bool)(val), (C.longlong)(size)))
 }
 
 func (this *QBitArray) ToUInt322(endianness QSysInfo__Endian, ok *bool) uint {

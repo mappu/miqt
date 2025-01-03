@@ -413,12 +413,12 @@ void QPointerEvent_SetTimestamp(QPointerEvent* self, unsigned long long timestam
 	self->setTimestamp(static_cast<quint64>(timestamp));
 }
 
-ptrdiff_t QPointerEvent_PointCount(const QPointerEvent* self) {
+long long QPointerEvent_PointCount(const QPointerEvent* self) {
 	qsizetype _ret = self->pointCount();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
-QEventPoint* QPointerEvent_Point(QPointerEvent* self, ptrdiff_t i) {
+QEventPoint* QPointerEvent_Point(QPointerEvent* self, long long i) {
 	QEventPoint& _ret = self->point((qsizetype)(i));
 	// Cast returned reference into pointer
 	return &_ret;
@@ -4810,7 +4810,7 @@ QTouchEvent* QTouchEvent_new(int eventType) {
 	return new MiqtVirtualQTouchEvent(static_cast<QEvent::Type>(eventType));
 }
 
-QTouchEvent* QTouchEvent_new2(int eventType, QPointingDevice* device, int modifiers, uint8_t touchPointStates) {
+QTouchEvent* QTouchEvent_new2(int eventType, QPointingDevice* device, int modifiers, unsigned char touchPointStates) {
 	return new MiqtVirtualQTouchEvent(static_cast<QEvent::Type>(eventType), device, static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<QEventPoint::States>(touchPointStates));
 }
 
@@ -4832,7 +4832,7 @@ QTouchEvent* QTouchEvent_new5(int eventType, QPointingDevice* device, int modifi
 	return new MiqtVirtualQTouchEvent(static_cast<QEvent::Type>(eventType), device, static_cast<Qt::KeyboardModifiers>(modifiers), touchPoints_QList);
 }
 
-QTouchEvent* QTouchEvent_new6(int eventType, QPointingDevice* device, int modifiers, uint8_t touchPointStates, struct miqt_array /* of QEventPoint* */  touchPoints) {
+QTouchEvent* QTouchEvent_new6(int eventType, QPointingDevice* device, int modifiers, unsigned char touchPointStates, struct miqt_array /* of QEventPoint* */  touchPoints) {
 	QList<QEventPoint> touchPoints_QList;
 	touchPoints_QList.reserve(touchPoints.len);
 	QEventPoint** touchPoints_arr = static_cast<QEventPoint**>(touchPoints.data);
@@ -4854,9 +4854,9 @@ QObject* QTouchEvent_Target(const QTouchEvent* self) {
 	return self->target();
 }
 
-uint8_t QTouchEvent_TouchPointStates(const QTouchEvent* self) {
+unsigned char QTouchEvent_TouchPointStates(const QTouchEvent* self) {
 	QEventPoint::States _ret = self->touchPointStates();
-	return static_cast<uint8_t>(_ret);
+	return static_cast<unsigned char>(_ret);
 }
 
 struct miqt_array /* of QEventPoint* */  QTouchEvent_TouchPoints(const QTouchEvent* self) {

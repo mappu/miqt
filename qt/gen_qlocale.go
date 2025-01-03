@@ -1555,8 +1555,8 @@ func (this *QLocale) ToCurrencyString(param1 int64) string {
 	return _ret
 }
 
-func (this *QLocale) ToCurrencyStringWithQulonglong(param1 uint64) string {
-	var _ms C.struct_miqt_string = C.QLocale_ToCurrencyStringWithQulonglong(this.h, (C.ulonglong)(param1))
+func (this *QLocale) ToCurrencyStringWithUnsignedlonglong(param1 uint64) string {
+	var _ms C.struct_miqt_string = C.QLocale_ToCurrencyStringWithUnsignedlonglong(this.h, (C.ulonglong)(param1))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1569,8 +1569,8 @@ func (this *QLocale) ToCurrencyStringWithShort(param1 int16) string {
 	return _ret
 }
 
-func (this *QLocale) ToCurrencyStringWithUshort(param1 uint16) string {
-	var _ms C.struct_miqt_string = C.QLocale_ToCurrencyStringWithUshort(this.h, (C.uint16_t)(param1))
+func (this *QLocale) ToCurrencyStringWithUnsignedshort(param1 uint16) string {
+	var _ms C.struct_miqt_string = C.QLocale_ToCurrencyStringWithUnsignedshort(this.h, (C.uint16_t)(param1))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1583,8 +1583,8 @@ func (this *QLocale) ToCurrencyStringWithInt(param1 int) string {
 	return _ret
 }
 
-func (this *QLocale) ToCurrencyStringWithUint(param1 uint) string {
-	var _ms C.struct_miqt_string = C.QLocale_ToCurrencyStringWithUint(this.h, (C.uint)(param1))
+func (this *QLocale) ToCurrencyStringWithUnsignedint(param1 uint) string {
+	var _ms C.struct_miqt_string = C.QLocale_ToCurrencyStringWithUnsignedint(this.h, (C.uint)(param1))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret

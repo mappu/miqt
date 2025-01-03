@@ -127,19 +127,19 @@ struct miqt_array /* of struct miqt_string */  QJsonObject_Keys(const QJsonObjec
 	return _out;
 }
 
-ptrdiff_t QJsonObject_Size(const QJsonObject* self) {
+long long QJsonObject_Size(const QJsonObject* self) {
 	qsizetype _ret = self->size();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
-ptrdiff_t QJsonObject_Count(const QJsonObject* self) {
+long long QJsonObject_Count(const QJsonObject* self) {
 	qsizetype _ret = self->count();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
-ptrdiff_t QJsonObject_Length(const QJsonObject* self) {
+long long QJsonObject_Length(const QJsonObject* self) {
 	qsizetype _ret = self->length();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 bool QJsonObject_IsEmpty(const QJsonObject* self) {
@@ -248,7 +248,7 @@ QJsonObject__iterator* QJsonObject__iterator_new() {
 	return new QJsonObject::iterator();
 }
 
-QJsonObject__iterator* QJsonObject__iterator_new2(QJsonObject* obj, ptrdiff_t index) {
+QJsonObject__iterator* QJsonObject__iterator_new2(QJsonObject* obj, long long index) {
 	return new QJsonObject::iterator(obj, (qsizetype)(index));
 }
 
@@ -287,7 +287,7 @@ QJsonValueRef* QJsonObject__iterator_OperatorMinusGreater2(QJsonObject__iterator
 	return self->operator->();
 }
 
-QJsonValueRef* QJsonObject__iterator_OperatorSubscript(const QJsonObject__iterator* self, ptrdiff_t j) {
+QJsonValueRef* QJsonObject__iterator_OperatorSubscript(const QJsonObject__iterator* self, long long j) {
 	return new QJsonValueRef(self->operator[]((qsizetype)(j)));
 }
 
@@ -335,29 +335,29 @@ QJsonObject__iterator* QJsonObject__iterator_OperatorMinusMinusWithInt(QJsonObje
 	return new QJsonObject::iterator(self->operator--(static_cast<int>(param1)));
 }
 
-QJsonObject__iterator* QJsonObject__iterator_OperatorPlus(const QJsonObject__iterator* self, ptrdiff_t j) {
+QJsonObject__iterator* QJsonObject__iterator_OperatorPlus(const QJsonObject__iterator* self, long long j) {
 	return new QJsonObject::iterator(self->operator+((qsizetype)(j)));
 }
 
-QJsonObject__iterator* QJsonObject__iterator_OperatorMinus(const QJsonObject__iterator* self, ptrdiff_t j) {
+QJsonObject__iterator* QJsonObject__iterator_OperatorMinus(const QJsonObject__iterator* self, long long j) {
 	return new QJsonObject::iterator(self->operator-((qsizetype)(j)));
 }
 
-QJsonObject__iterator* QJsonObject__iterator_OperatorPlusAssign(QJsonObject__iterator* self, ptrdiff_t j) {
+QJsonObject__iterator* QJsonObject__iterator_OperatorPlusAssign(QJsonObject__iterator* self, long long j) {
 	QJsonObject::iterator& _ret = self->operator+=((qsizetype)(j));
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QJsonObject__iterator* QJsonObject__iterator_OperatorMinusAssign(QJsonObject__iterator* self, ptrdiff_t j) {
+QJsonObject__iterator* QJsonObject__iterator_OperatorMinusAssign(QJsonObject__iterator* self, long long j) {
 	QJsonObject::iterator& _ret = self->operator-=((qsizetype)(j));
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-ptrdiff_t QJsonObject__iterator_OperatorMinusWithQJsonObjectiterator(const QJsonObject__iterator* self, QJsonObject__iterator* j) {
+long long QJsonObject__iterator_OperatorMinusWithQJsonObjectiterator(const QJsonObject__iterator* self, QJsonObject__iterator* j) {
 	qsizetype _ret = self->operator-(*j);
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 bool QJsonObject__iterator_OperatorEqualWithOther(const QJsonObject__iterator* self, QJsonObject__const_iterator* other) {
@@ -396,7 +396,7 @@ QJsonObject__const_iterator* QJsonObject__const_iterator_new() {
 	return new QJsonObject::const_iterator();
 }
 
-QJsonObject__const_iterator* QJsonObject__const_iterator_new2(QJsonObject* obj, ptrdiff_t index) {
+QJsonObject__const_iterator* QJsonObject__const_iterator_new2(QJsonObject* obj, long long index) {
 	return new QJsonObject::const_iterator(obj, (qsizetype)(index));
 }
 
@@ -435,7 +435,7 @@ QJsonValueConstRef* QJsonObject__const_iterator_OperatorMinusGreater(const QJson
 	return (QJsonValueConstRef*) self->operator->();
 }
 
-QJsonValueConstRef* QJsonObject__const_iterator_OperatorSubscript(const QJsonObject__const_iterator* self, ptrdiff_t j) {
+QJsonValueConstRef* QJsonObject__const_iterator_OperatorSubscript(const QJsonObject__const_iterator* self, long long j) {
 	return new QJsonValueConstRef(self->operator[]((qsizetype)(j)));
 }
 
@@ -483,29 +483,29 @@ QJsonObject__const_iterator* QJsonObject__const_iterator_OperatorMinusMinusWithI
 	return new QJsonObject::const_iterator(self->operator--(static_cast<int>(param1)));
 }
 
-QJsonObject__const_iterator* QJsonObject__const_iterator_OperatorPlus(const QJsonObject__const_iterator* self, ptrdiff_t j) {
+QJsonObject__const_iterator* QJsonObject__const_iterator_OperatorPlus(const QJsonObject__const_iterator* self, long long j) {
 	return new QJsonObject::const_iterator(self->operator+((qsizetype)(j)));
 }
 
-QJsonObject__const_iterator* QJsonObject__const_iterator_OperatorMinus(const QJsonObject__const_iterator* self, ptrdiff_t j) {
+QJsonObject__const_iterator* QJsonObject__const_iterator_OperatorMinus(const QJsonObject__const_iterator* self, long long j) {
 	return new QJsonObject::const_iterator(self->operator-((qsizetype)(j)));
 }
 
-QJsonObject__const_iterator* QJsonObject__const_iterator_OperatorPlusAssign(QJsonObject__const_iterator* self, ptrdiff_t j) {
+QJsonObject__const_iterator* QJsonObject__const_iterator_OperatorPlusAssign(QJsonObject__const_iterator* self, long long j) {
 	QJsonObject::const_iterator& _ret = self->operator+=((qsizetype)(j));
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QJsonObject__const_iterator* QJsonObject__const_iterator_OperatorMinusAssign(QJsonObject__const_iterator* self, ptrdiff_t j) {
+QJsonObject__const_iterator* QJsonObject__const_iterator_OperatorMinusAssign(QJsonObject__const_iterator* self, long long j) {
 	QJsonObject::const_iterator& _ret = self->operator-=((qsizetype)(j));
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-ptrdiff_t QJsonObject__const_iterator_OperatorMinusWithQJsonObjectconstIterator(const QJsonObject__const_iterator* self, QJsonObject__const_iterator* j) {
+long long QJsonObject__const_iterator_OperatorMinusWithQJsonObjectconstIterator(const QJsonObject__const_iterator* self, QJsonObject__const_iterator* j) {
 	qsizetype _ret = self->operator-(*j);
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 bool QJsonObject__const_iterator_OperatorEqualWithOther(const QJsonObject__const_iterator* self, QJsonObject__iterator* other) {

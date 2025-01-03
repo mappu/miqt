@@ -61,7 +61,6 @@ QVariant* QNetworkReply_Header(const QNetworkReply* self, int header);
 bool QNetworkReply_HasRawHeader(const QNetworkReply* self, struct miqt_string headerName);
 struct miqt_array /* of struct miqt_string */  QNetworkReply_RawHeaderList(const QNetworkReply* self);
 struct miqt_string QNetworkReply_RawHeader(const QNetworkReply* self, struct miqt_string headerName);
-struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct miqt_string   */  QNetworkReply_RawHeaderPairs(const QNetworkReply* self);
 QVariant* QNetworkReply_Attribute(const QNetworkReply* self, int code);
 QSslConfiguration* QNetworkReply_SslConfiguration(const QNetworkReply* self);
 void QNetworkReply_SetSslConfiguration(QNetworkReply* self, QSslConfiguration* configuration);

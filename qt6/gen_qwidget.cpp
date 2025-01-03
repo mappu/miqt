@@ -865,7 +865,7 @@ public:
 		struct miqt_string sigval1 = eventType_ms;
 		void* sigval2 = message;
 		qintptr* result_ret = result;
-		intptr_t* sigval3 = (intptr_t*)(result_ret);
+		long long* sigval3 = (long long*)(result_ret);
 
 		bool callback_return_value = miqt_exec_callback_QWidget_NativeEvent(this, handle__NativeEvent, sigval1, sigval2, sigval3);
 
@@ -873,7 +873,7 @@ public:
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_NativeEvent(struct miqt_string eventType, void* message, intptr_t* result) {
+	bool virtualbase_NativeEvent(struct miqt_string eventType, void* message, long long* result) {
 		QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
 		return QWidget::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
@@ -1258,23 +1258,23 @@ int QWidget_DevType(const QWidget* self) {
 	return self->devType();
 }
 
-uintptr_t QWidget_WinId(const QWidget* self) {
+unsigned long long QWidget_WinId(const QWidget* self) {
 	WId _ret = self->winId();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<unsigned long long>(_ret);
 }
 
 void QWidget_CreateWinId(QWidget* self) {
 	self->createWinId();
 }
 
-uintptr_t QWidget_InternalWinId(const QWidget* self) {
+unsigned long long QWidget_InternalWinId(const QWidget* self) {
 	WId _ret = self->internalWinId();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<unsigned long long>(_ret);
 }
 
-uintptr_t QWidget_EffectiveWinId(const QWidget* self) {
+unsigned long long QWidget_EffectiveWinId(const QWidget* self) {
 	WId _ret = self->effectiveWinId();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<unsigned long long>(_ret);
 }
 
 QStyle* QWidget_Style(const QWidget* self) {
@@ -2336,8 +2336,8 @@ int QWidget_WindowType(const QWidget* self) {
 	return static_cast<int>(_ret);
 }
 
-QWidget* QWidget_Find(uintptr_t param1) {
-	return QWidget::find(static_cast<WId>(param1));
+QWidget* QWidget_Find(unsigned long long param1) {
+	return QWidget::find(static_cast<unsigned long long>(param1));
 }
 
 QWidget* QWidget_ChildAt(const QWidget* self, int x, int y) {
@@ -2815,7 +2815,7 @@ void QWidget_override_virtual_NativeEvent(void* self, intptr_t slot) {
 	dynamic_cast<MiqtVirtualQWidget*>( (QWidget*)(self) )->handle__NativeEvent = slot;
 }
 
-bool QWidget_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
+bool QWidget_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long long* result) {
 	return ( (MiqtVirtualQWidget*)(self) )->virtualbase_NativeEvent(eventType, message, result);
 }
 

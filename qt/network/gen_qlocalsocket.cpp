@@ -208,14 +208,13 @@ public:
 	intptr_t handle__ReadData = 0;
 
 	// Subclass to allow providing a Go implementation
-	virtual qint64 readData(char* param1, qint64 param2) override {
+	virtual qint64 readData(char* param1, long long param2) override {
 		if (handle__ReadData == 0) {
 			return QLocalSocket::readData(param1, param2);
 		}
 		
 		char* sigval1 = param1;
-		qint64 param2_ret = param2;
-		long long sigval2 = static_cast<long long>(param2_ret);
+		long long sigval2 = param2;
 
 		long long callback_return_value = miqt_exec_callback_QLocalSocket_ReadData(this, handle__ReadData, sigval1, sigval2);
 
@@ -225,7 +224,7 @@ public:
 	// Wrapper to allow calling protected method
 	long long virtualbase_ReadData(char* param1, long long param2) {
 
-		qint64 _ret = QLocalSocket::readData(param1, static_cast<qint64>(param2));
+		qint64 _ret = QLocalSocket::readData(param1, static_cast<long long>(param2));
 		return static_cast<long long>(_ret);
 
 	}
@@ -234,14 +233,13 @@ public:
 	intptr_t handle__WriteData = 0;
 
 	// Subclass to allow providing a Go implementation
-	virtual qint64 writeData(const char* param1, qint64 param2) override {
+	virtual qint64 writeData(const char* param1, long long param2) override {
 		if (handle__WriteData == 0) {
 			return QLocalSocket::writeData(param1, param2);
 		}
 		
 		const char* sigval1 = (const char*) param1;
-		qint64 param2_ret = param2;
-		long long sigval2 = static_cast<long long>(param2_ret);
+		long long sigval2 = param2;
 
 		long long callback_return_value = miqt_exec_callback_QLocalSocket_WriteData(this, handle__WriteData, sigval1, sigval2);
 
@@ -251,7 +249,7 @@ public:
 	// Wrapper to allow calling protected method
 	long long virtualbase_WriteData(const char* param1, long long param2) {
 
-		qint64 _ret = QLocalSocket::writeData(param1, static_cast<qint64>(param2));
+		qint64 _ret = QLocalSocket::writeData(param1, static_cast<long long>(param2));
 		return static_cast<long long>(_ret);
 
 	}
@@ -532,13 +530,13 @@ void QLocalSocket_SetReadBufferSize(QLocalSocket* self, long long size) {
 	self->setReadBufferSize(static_cast<qint64>(size));
 }
 
-bool QLocalSocket_SetSocketDescriptor(QLocalSocket* self, intptr_t socketDescriptor) {
+bool QLocalSocket_SetSocketDescriptor(QLocalSocket* self, long long socketDescriptor) {
 	return self->setSocketDescriptor((qintptr)(socketDescriptor));
 }
 
-intptr_t QLocalSocket_SocketDescriptor(const QLocalSocket* self) {
+long long QLocalSocket_SocketDescriptor(const QLocalSocket* self) {
 	qintptr _ret = self->socketDescriptor();
-	return (intptr_t)(_ret);
+	return (long long)(_ret);
 }
 
 int QLocalSocket_State(const QLocalSocket* self) {
@@ -671,11 +669,11 @@ void QLocalSocket_ConnectToServer2(QLocalSocket* self, struct miqt_string name, 
 	self->connectToServer(name_QString, static_cast<QIODevice::OpenMode>(openMode));
 }
 
-bool QLocalSocket_SetSocketDescriptor2(QLocalSocket* self, intptr_t socketDescriptor, int socketState) {
+bool QLocalSocket_SetSocketDescriptor2(QLocalSocket* self, long long socketDescriptor, int socketState) {
 	return self->setSocketDescriptor((qintptr)(socketDescriptor), static_cast<QLocalSocket::LocalSocketState>(socketState));
 }
 
-bool QLocalSocket_SetSocketDescriptor3(QLocalSocket* self, intptr_t socketDescriptor, int socketState, int openMode) {
+bool QLocalSocket_SetSocketDescriptor3(QLocalSocket* self, long long socketDescriptor, int socketState, int openMode) {
 	return self->setSocketDescriptor((qintptr)(socketDescriptor), static_cast<QLocalSocket::LocalSocketState>(socketState), static_cast<QIODevice::OpenMode>(openMode));
 }
 

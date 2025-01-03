@@ -872,7 +872,7 @@ public:
 		struct miqt_string sigval1 = eventType_ms;
 		void* sigval2 = message;
 		qintptr* result_ret = result;
-		intptr_t* sigval3 = (intptr_t*)(result_ret);
+		long long* sigval3 = (long long*)(result_ret);
 
 		bool callback_return_value = miqt_exec_callback_QFrame_NativeEvent(this, handle__NativeEvent, sigval1, sigval2, sigval3);
 
@@ -880,7 +880,7 @@ public:
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_NativeEvent(struct miqt_string eventType, void* message, intptr_t* result) {
+	bool virtualbase_NativeEvent(struct miqt_string eventType, void* message, long long* result) {
 		QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
 		return QFrame::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
@@ -1444,7 +1444,7 @@ void QFrame_override_virtual_NativeEvent(void* self, intptr_t slot) {
 	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__NativeEvent = slot;
 }
 
-bool QFrame_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
+bool QFrame_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long long* result) {
 	return ( (MiqtVirtualQFrame*)(self) )->virtualbase_NativeEvent(eventType, message, result);
 }
 

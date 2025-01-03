@@ -88,14 +88,14 @@ int QMetaType_Id(const QMetaType* self) {
 	return self->id();
 }
 
-ptrdiff_t QMetaType_SizeOf2(const QMetaType* self) {
+long long QMetaType_SizeOf2(const QMetaType* self) {
 	qsizetype _ret = self->sizeOf();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
-ptrdiff_t QMetaType_AlignOf(const QMetaType* self) {
+long long QMetaType_AlignOf(const QMetaType* self) {
 	qsizetype _ret = self->alignOf();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 int QMetaType_Flags(const QMetaType* self) {

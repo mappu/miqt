@@ -421,7 +421,7 @@ double QGraphicsScale_XScale(const QGraphicsScale* self) {
 }
 
 void QGraphicsScale_SetXScale(QGraphicsScale* self, double xScale) {
-	self->setXScale(static_cast<qreal>(xScale));
+	self->setXScale(static_cast<double>(xScale));
 }
 
 double QGraphicsScale_YScale(const QGraphicsScale* self) {
@@ -430,7 +430,7 @@ double QGraphicsScale_YScale(const QGraphicsScale* self) {
 }
 
 void QGraphicsScale_SetYScale(QGraphicsScale* self, double yScale) {
-	self->setYScale(static_cast<qreal>(yScale));
+	self->setYScale(static_cast<double>(yScale));
 }
 
 double QGraphicsScale_ZScale(const QGraphicsScale* self) {
@@ -439,7 +439,7 @@ double QGraphicsScale_ZScale(const QGraphicsScale* self) {
 }
 
 void QGraphicsScale_SetZScale(QGraphicsScale* self, double zScale) {
-	self->setZScale(static_cast<qreal>(zScale));
+	self->setZScale(static_cast<double>(zScale));
 }
 
 void QGraphicsScale_ApplyTo(const QGraphicsScale* self, QMatrix4x4* matrix) {
@@ -613,7 +613,7 @@ double QGraphicsRotation_Angle(const QGraphicsRotation* self) {
 }
 
 void QGraphicsRotation_SetAngle(QGraphicsRotation* self, double angle) {
-	self->setAngle(static_cast<qreal>(angle));
+	self->setAngle(static_cast<double>(angle));
 }
 
 QVector3D* QGraphicsRotation_Axis(const QGraphicsRotation* self) {

@@ -143,7 +143,7 @@ func NewQImage5(data *byte, width int, height int, format QImage__Format) *QImag
 // NewQImage6 constructs a new QImage object.
 func NewQImage6(data *byte, width int, height int, bytesPerLine int64, format QImage__Format) *QImage {
 
-	ret := newQImage(C.QImage_new6((*C.uchar)(unsafe.Pointer(data)), (C.int)(width), (C.int)(height), (C.ptrdiff_t)(bytesPerLine), (C.int)(format)))
+	ret := newQImage(C.QImage_new6((*C.uchar)(unsafe.Pointer(data)), (C.int)(width), (C.int)(height), (C.longlong)(bytesPerLine), (C.int)(format)))
 	ret.isSubclass = true
 	return ret
 }
@@ -151,7 +151,7 @@ func NewQImage6(data *byte, width int, height int, bytesPerLine int64, format QI
 // NewQImage7 constructs a new QImage object.
 func NewQImage7(data *byte, width int, height int, bytesPerLine int64, format QImage__Format) *QImage {
 
-	ret := newQImage(C.QImage_new7((*C.uchar)(unsafe.Pointer(data)), (C.int)(width), (C.int)(height), (C.ptrdiff_t)(bytesPerLine), (C.int)(format)))
+	ret := newQImage(C.QImage_new7((*C.uchar)(unsafe.Pointer(data)), (C.int)(width), (C.int)(height), (C.longlong)(bytesPerLine), (C.int)(format)))
 	ret.isSubclass = true
 	return ret
 }

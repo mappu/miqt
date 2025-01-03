@@ -313,7 +313,7 @@ func (this *QPointerEvent) PointCount() int64 {
 }
 
 func (this *QPointerEvent) Point(i int64) *QEventPoint {
-	return newQEventPoint(C.QPointerEvent_Point(this.h, (C.ptrdiff_t)(i)))
+	return newQEventPoint(C.QPointerEvent_Point(this.h, (C.longlong)(i)))
 }
 
 func (this *QPointerEvent) Points() []QEventPoint {
@@ -5575,7 +5575,7 @@ func NewQTouchEvent(eventType QEvent__Type) *QTouchEvent {
 // NewQTouchEvent2 constructs a new QTouchEvent object.
 func NewQTouchEvent2(eventType QEvent__Type, device *QPointingDevice, modifiers KeyboardModifier, touchPointStates QEventPoint__State) *QTouchEvent {
 
-	ret := newQTouchEvent(C.QTouchEvent_new2((C.int)(eventType), device.cPointer(), (C.int)(modifiers), (C.uint8_t)(touchPointStates)))
+	ret := newQTouchEvent(C.QTouchEvent_new2((C.int)(eventType), device.cPointer(), (C.int)(modifiers), (C.uchar)(touchPointStates)))
 	ret.isSubclass = true
 	return ret
 }
@@ -5619,7 +5619,7 @@ func NewQTouchEvent6(eventType QEvent__Type, device *QPointingDevice, modifiers 
 	}
 	touchPoints_ma := C.struct_miqt_array{len: C.size_t(len(touchPoints)), data: unsafe.Pointer(touchPoints_CArray)}
 
-	ret := newQTouchEvent(C.QTouchEvent_new6((C.int)(eventType), device.cPointer(), (C.int)(modifiers), (C.uint8_t)(touchPointStates), touchPoints_ma))
+	ret := newQTouchEvent(C.QTouchEvent_new6((C.int)(eventType), device.cPointer(), (C.int)(modifiers), (C.uchar)(touchPointStates), touchPoints_ma))
 	ret.isSubclass = true
 	return ret
 }

@@ -92,14 +92,14 @@ QMargins* QMargins_OperatorDivideAssign(QMargins* self, int param1) {
 	return &_ret;
 }
 
-QMargins* QMargins_OperatorMultiplyAssignWithQreal(QMargins* self, double param1) {
-	QMargins& _ret = self->operator*=(static_cast<qreal>(param1));
+QMargins* QMargins_OperatorMultiplyAssignWithDouble(QMargins* self, double param1) {
+	QMargins& _ret = self->operator*=(static_cast<double>(param1));
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QMargins* QMargins_OperatorDivideAssignWithQreal(QMargins* self, double param1) {
-	QMargins& _ret = self->operator/=(static_cast<qreal>(param1));
+QMargins* QMargins_OperatorDivideAssignWithDouble(QMargins* self, double param1) {
+	QMargins& _ret = self->operator/=(static_cast<double>(param1));
 	// Cast returned reference into pointer
 	return &_ret;
 }

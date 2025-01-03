@@ -217,8 +217,8 @@ func (this *QPixmap) CreateMaskFromColor(maskColor *QColor) *QBitmap {
 	return _goptr
 }
 
-func QPixmap_GrabWindow(param1 uintptr) *QPixmap {
-	_goptr := newQPixmap(C.QPixmap_GrabWindow((C.uintptr_t)(param1)))
+func QPixmap_GrabWindow(param1 uint64) *QPixmap {
+	_goptr := newQPixmap(C.QPixmap_GrabWindow((C.ulonglong)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -396,26 +396,26 @@ func (this *QPixmap) CreateMaskFromColor2(maskColor *QColor, mode MaskMode) *QBi
 	return _goptr
 }
 
-func QPixmap_GrabWindow2(param1 uintptr, x int) *QPixmap {
-	_goptr := newQPixmap(C.QPixmap_GrabWindow2((C.uintptr_t)(param1), (C.int)(x)))
+func QPixmap_GrabWindow2(param1 uint64, x int) *QPixmap {
+	_goptr := newQPixmap(C.QPixmap_GrabWindow2((C.ulonglong)(param1), (C.int)(x)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func QPixmap_GrabWindow3(param1 uintptr, x int, y int) *QPixmap {
-	_goptr := newQPixmap(C.QPixmap_GrabWindow3((C.uintptr_t)(param1), (C.int)(x), (C.int)(y)))
+func QPixmap_GrabWindow3(param1 uint64, x int, y int) *QPixmap {
+	_goptr := newQPixmap(C.QPixmap_GrabWindow3((C.ulonglong)(param1), (C.int)(x), (C.int)(y)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func QPixmap_GrabWindow4(param1 uintptr, x int, y int, w int) *QPixmap {
-	_goptr := newQPixmap(C.QPixmap_GrabWindow4((C.uintptr_t)(param1), (C.int)(x), (C.int)(y), (C.int)(w)))
+func QPixmap_GrabWindow4(param1 uint64, x int, y int, w int) *QPixmap {
+	_goptr := newQPixmap(C.QPixmap_GrabWindow4((C.ulonglong)(param1), (C.int)(x), (C.int)(y), (C.int)(w)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func QPixmap_GrabWindow5(param1 uintptr, x int, y int, w int, h int) *QPixmap {
-	_goptr := newQPixmap(C.QPixmap_GrabWindow5((C.uintptr_t)(param1), (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h)))
+func QPixmap_GrabWindow5(param1 uint64, x int, y int, w int, h int) *QPixmap {
+	_goptr := newQPixmap(C.QPixmap_GrabWindow5((C.ulonglong)(param1), (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

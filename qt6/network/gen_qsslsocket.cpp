@@ -67,7 +67,7 @@ public:
 		}
 		
 		qintptr socketDescriptor_ret = socketDescriptor;
-		intptr_t sigval1 = (intptr_t)(socketDescriptor_ret);
+		long long sigval1 = (long long)(socketDescriptor_ret);
 		QAbstractSocket::SocketState state_ret = state;
 		int sigval2 = static_cast<int>(state_ret);
 		QIODeviceBase::OpenMode openMode_ret = openMode;
@@ -79,7 +79,7 @@ public:
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_SetSocketDescriptor(intptr_t socketDescriptor, int state, int openMode) {
+	bool virtualbase_SetSocketDescriptor(long long socketDescriptor, int state, int openMode) {
 
 		return QSslSocket::setSocketDescriptor((qintptr)(socketDescriptor), static_cast<QAbstractSocket::SocketState>(state), static_cast<QIODeviceBase::OpenMode>(openMode));
 
@@ -553,7 +553,7 @@ void QSslSocket_ConnectToHostEncrypted2(QSslSocket* self, struct miqt_string hos
 	self->connectToHostEncrypted(hostName_QString, static_cast<quint16>(port), sslPeerName_QString);
 }
 
-bool QSslSocket_SetSocketDescriptor(QSslSocket* self, intptr_t socketDescriptor, int state, int openMode) {
+bool QSslSocket_SetSocketDescriptor(QSslSocket* self, long long socketDescriptor, int state, int openMode) {
 	return self->setSocketDescriptor((qintptr)(socketDescriptor), static_cast<QAbstractSocket::SocketState>(state), static_cast<QIODeviceBase::OpenMode>(openMode));
 }
 
@@ -1234,7 +1234,7 @@ void QSslSocket_override_virtual_SetSocketDescriptor(void* self, intptr_t slot) 
 	dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) )->handle__SetSocketDescriptor = slot;
 }
 
-bool QSslSocket_virtualbase_SetSocketDescriptor(void* self, intptr_t socketDescriptor, int state, int openMode) {
+bool QSslSocket_virtualbase_SetSocketDescriptor(void* self, long long socketDescriptor, int state, int openMode) {
 	return ( (MiqtVirtualQSslSocket*)(self) )->virtualbase_SetSocketDescriptor(socketDescriptor, state, openMode);
 }
 

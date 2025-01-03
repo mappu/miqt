@@ -40,8 +40,8 @@ QMargins* QMargins_OperatorPlusAssignWithInt(QMargins* self, int param1);
 QMargins* QMargins_OperatorMinusAssignWithInt(QMargins* self, int param1);
 QMargins* QMargins_OperatorMultiplyAssign(QMargins* self, int param1);
 QMargins* QMargins_OperatorDivideAssign(QMargins* self, int param1);
-QMargins* QMargins_OperatorMultiplyAssignWithQreal(QMargins* self, double param1);
-QMargins* QMargins_OperatorDivideAssignWithQreal(QMargins* self, double param1);
+QMargins* QMargins_OperatorMultiplyAssignWithDouble(QMargins* self, double param1);
+QMargins* QMargins_OperatorDivideAssignWithDouble(QMargins* self, double param1);
 void QMargins_Delete(QMargins* self, bool isSubclass);
 
 QMarginsF* QMarginsF_new();

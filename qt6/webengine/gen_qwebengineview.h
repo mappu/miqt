@@ -252,7 +252,7 @@ void QWebEngineView_virtualbase_TabletEvent(void* self, QTabletEvent* event);
 void QWebEngineView_override_virtual_ActionEvent(void* self, intptr_t slot);
 void QWebEngineView_virtualbase_ActionEvent(void* self, QActionEvent* event);
 void QWebEngineView_override_virtual_NativeEvent(void* self, intptr_t slot);
-bool QWebEngineView_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
+bool QWebEngineView_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long long* result);
 void QWebEngineView_override_virtual_ChangeEvent(void* self, intptr_t slot);
 void QWebEngineView_virtualbase_ChangeEvent(void* self, QEvent* param1);
 void QWebEngineView_override_virtual_Metric(void* self, intptr_t slot);

@@ -142,11 +142,11 @@ func (this *QAbstractEventDispatcher) RemoveNativeEventFilter(filterObj *QAbstra
 	C.QAbstractEventDispatcher_RemoveNativeEventFilter(this.h, filterObj.cPointer())
 }
 
-func (this *QAbstractEventDispatcher) FilterNativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
+func (this *QAbstractEventDispatcher) FilterNativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
 	eventType_alias := C.struct_miqt_string{}
 	eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
 	eventType_alias.len = C.size_t(len(eventType))
-	return (bool)(C.QAbstractEventDispatcher_FilterNativeEvent(this.h, eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
+	return (bool)(C.QAbstractEventDispatcher_FilterNativeEvent(this.h, eventType_alias, message, (*C.longlong)(unsafe.Pointer(result))))
 }
 
 func (this *QAbstractEventDispatcher) AboutToBlock() {

@@ -76,7 +76,7 @@ QModelRoleDataSpan* QModelRoleDataSpan_new2(QModelRoleData* modelRoleData) {
 	return new QModelRoleDataSpan(*modelRoleData);
 }
 
-QModelRoleDataSpan* QModelRoleDataSpan_new3(QModelRoleData* modelRoleData, ptrdiff_t lenVal) {
+QModelRoleDataSpan* QModelRoleDataSpan_new3(QModelRoleData* modelRoleData, long long lenVal) {
 	return new QModelRoleDataSpan(modelRoleData, (qsizetype)(lenVal));
 }
 
@@ -84,14 +84,14 @@ QModelRoleDataSpan* QModelRoleDataSpan_new4(QModelRoleDataSpan* param1) {
 	return new QModelRoleDataSpan(*param1);
 }
 
-ptrdiff_t QModelRoleDataSpan_Size(const QModelRoleDataSpan* self) {
+long long QModelRoleDataSpan_Size(const QModelRoleDataSpan* self) {
 	qsizetype _ret = self->size();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
-ptrdiff_t QModelRoleDataSpan_Length(const QModelRoleDataSpan* self) {
+long long QModelRoleDataSpan_Length(const QModelRoleDataSpan* self) {
 	qsizetype _ret = self->length();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 QModelRoleData* QModelRoleDataSpan_Data(const QModelRoleDataSpan* self) {
@@ -106,7 +106,7 @@ QModelRoleData* QModelRoleDataSpan_End(const QModelRoleDataSpan* self) {
 	return self->end();
 }
 
-QModelRoleData* QModelRoleDataSpan_OperatorSubscript(const QModelRoleDataSpan* self, ptrdiff_t index) {
+QModelRoleData* QModelRoleDataSpan_OperatorSubscript(const QModelRoleDataSpan* self, long long index) {
 	QModelRoleData& _ret = self->operator[]((qsizetype)(index));
 	// Cast returned reference into pointer
 	return &_ret;
@@ -140,9 +140,9 @@ int QModelIndex_Column(const QModelIndex* self) {
 	return self->column();
 }
 
-uintptr_t QModelIndex_InternalId(const QModelIndex* self) {
+unsigned long long QModelIndex_InternalId(const QModelIndex* self) {
 	quintptr _ret = self->internalId();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<unsigned long long>(_ret);
 }
 
 void* QModelIndex_InternalPointer(const QModelIndex* self) {
@@ -274,9 +274,9 @@ const void* QPersistentModelIndex_ConstInternalPointer(const QPersistentModelInd
 	return (const void*) self->constInternalPointer();
 }
 
-uintptr_t QPersistentModelIndex_InternalId(const QPersistentModelIndex* self) {
+unsigned long long QPersistentModelIndex_InternalId(const QPersistentModelIndex* self) {
 	quintptr _ret = self->internalId();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<unsigned long long>(_ret);
 }
 
 QModelIndex* QPersistentModelIndex_Parent(const QPersistentModelIndex* self) {

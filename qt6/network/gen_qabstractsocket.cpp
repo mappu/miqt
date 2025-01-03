@@ -219,16 +219,16 @@ public:
 		}
 		
 
-		intptr_t callback_return_value = miqt_exec_callback_QAbstractSocket_SocketDescriptor(const_cast<MiqtVirtualQAbstractSocket*>(this), handle__SocketDescriptor);
+		long long callback_return_value = miqt_exec_callback_QAbstractSocket_SocketDescriptor(const_cast<MiqtVirtualQAbstractSocket*>(this), handle__SocketDescriptor);
 
 		return (qintptr)(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	intptr_t virtualbase_SocketDescriptor() const {
+	long long virtualbase_SocketDescriptor() const {
 
 		qintptr _ret = QAbstractSocket::socketDescriptor();
-		return (intptr_t)(_ret);
+		return (long long)(_ret);
 
 	}
 
@@ -242,7 +242,7 @@ public:
 		}
 		
 		qintptr socketDescriptor_ret = socketDescriptor;
-		intptr_t sigval1 = (intptr_t)(socketDescriptor_ret);
+		long long sigval1 = (long long)(socketDescriptor_ret);
 		QAbstractSocket::SocketState state_ret = state;
 		int sigval2 = static_cast<int>(state_ret);
 		QIODeviceBase::OpenMode openMode_ret = openMode;
@@ -254,7 +254,7 @@ public:
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_SetSocketDescriptor(intptr_t socketDescriptor, int state, int openMode) {
+	bool virtualbase_SetSocketDescriptor(long long socketDescriptor, int state, int openMode) {
 
 		return QAbstractSocket::setSocketDescriptor((qintptr)(socketDescriptor), static_cast<QAbstractSocket::SocketState>(state), static_cast<QIODeviceBase::OpenMode>(openMode));
 
@@ -831,12 +831,12 @@ void QAbstractSocket_Abort(QAbstractSocket* self) {
 	self->abort();
 }
 
-intptr_t QAbstractSocket_SocketDescriptor(const QAbstractSocket* self) {
+long long QAbstractSocket_SocketDescriptor(const QAbstractSocket* self) {
 	qintptr _ret = self->socketDescriptor();
-	return (intptr_t)(_ret);
+	return (long long)(_ret);
 }
 
-bool QAbstractSocket_SetSocketDescriptor(QAbstractSocket* self, intptr_t socketDescriptor, int state, int openMode) {
+bool QAbstractSocket_SetSocketDescriptor(QAbstractSocket* self, long long socketDescriptor, int state, int openMode) {
 	return self->setSocketDescriptor((qintptr)(socketDescriptor), static_cast<QAbstractSocket::SocketState>(state), static_cast<QIODeviceBase::OpenMode>(openMode));
 }
 
@@ -1077,7 +1077,7 @@ void QAbstractSocket_override_virtual_SocketDescriptor(void* self, intptr_t slot
 	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__SocketDescriptor = slot;
 }
 
-intptr_t QAbstractSocket_virtualbase_SocketDescriptor(const void* self) {
+long long QAbstractSocket_virtualbase_SocketDescriptor(const void* self) {
 	return ( (const MiqtVirtualQAbstractSocket*)(self) )->virtualbase_SocketDescriptor();
 }
 
@@ -1085,7 +1085,7 @@ void QAbstractSocket_override_virtual_SetSocketDescriptor(void* self, intptr_t s
 	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__SetSocketDescriptor = slot;
 }
 
-bool QAbstractSocket_virtualbase_SetSocketDescriptor(void* self, intptr_t socketDescriptor, int state, int openMode) {
+bool QAbstractSocket_virtualbase_SetSocketDescriptor(void* self, long long socketDescriptor, int state, int openMode) {
 	return ( (MiqtVirtualQAbstractSocket*)(self) )->virtualbase_SetSocketDescriptor(socketDescriptor, state, openMode);
 }
 

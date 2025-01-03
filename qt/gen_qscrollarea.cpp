@@ -634,7 +634,7 @@ int QScrollArea_Alignment(const QScrollArea* self) {
 }
 
 void QScrollArea_SetAlignment(QScrollArea* self, int alignment) {
-	self->setAlignment(static_cast<Qt::Alignment>(alignment));
+	self->setAlignment(static_cast<QFlags<Qt::AlignmentFlag>>(alignment));
 }
 
 void QScrollArea_EnsureVisible(QScrollArea* self, int x, int y) {

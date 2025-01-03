@@ -12,7 +12,7 @@ QBitArray* QBitArray_new() {
 	return new QBitArray();
 }
 
-QBitArray* QBitArray_new2(ptrdiff_t size) {
+QBitArray* QBitArray_new2(long long size) {
 	return new QBitArray((qsizetype)(size));
 }
 
@@ -20,7 +20,7 @@ QBitArray* QBitArray_new3(QBitArray* other) {
 	return new QBitArray(*other);
 }
 
-QBitArray* QBitArray_new4(ptrdiff_t size, bool val) {
+QBitArray* QBitArray_new4(long long size, bool val) {
 	return new QBitArray((qsizetype)(size), val);
 }
 
@@ -32,19 +32,19 @@ void QBitArray_Swap(QBitArray* self, QBitArray* other) {
 	self->swap(*other);
 }
 
-ptrdiff_t QBitArray_Size(const QBitArray* self) {
+long long QBitArray_Size(const QBitArray* self) {
 	qsizetype _ret = self->size();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
-ptrdiff_t QBitArray_Count(const QBitArray* self) {
+long long QBitArray_Count(const QBitArray* self) {
 	qsizetype _ret = self->count();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
-ptrdiff_t QBitArray_CountWithOn(const QBitArray* self, bool on) {
+long long QBitArray_CountWithOn(const QBitArray* self, bool on) {
 	qsizetype _ret = self->count(on);
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 bool QBitArray_IsEmpty(const QBitArray* self) {
@@ -55,7 +55,7 @@ bool QBitArray_IsNull(const QBitArray* self) {
 	return self->isNull();
 }
 
-void QBitArray_Resize(QBitArray* self, ptrdiff_t size) {
+void QBitArray_Resize(QBitArray* self, long long size) {
 	self->resize((qsizetype)(size));
 }
 
@@ -71,35 +71,35 @@ void QBitArray_Clear(QBitArray* self) {
 	self->clear();
 }
 
-bool QBitArray_TestBit(const QBitArray* self, ptrdiff_t i) {
+bool QBitArray_TestBit(const QBitArray* self, long long i) {
 	return self->testBit((qsizetype)(i));
 }
 
-void QBitArray_SetBit(QBitArray* self, ptrdiff_t i) {
+void QBitArray_SetBit(QBitArray* self, long long i) {
 	self->setBit((qsizetype)(i));
 }
 
-void QBitArray_SetBit2(QBitArray* self, ptrdiff_t i, bool val) {
+void QBitArray_SetBit2(QBitArray* self, long long i, bool val) {
 	self->setBit((qsizetype)(i), val);
 }
 
-void QBitArray_ClearBit(QBitArray* self, ptrdiff_t i) {
+void QBitArray_ClearBit(QBitArray* self, long long i) {
 	self->clearBit((qsizetype)(i));
 }
 
-bool QBitArray_ToggleBit(QBitArray* self, ptrdiff_t i) {
+bool QBitArray_ToggleBit(QBitArray* self, long long i) {
 	return self->toggleBit((qsizetype)(i));
 }
 
-bool QBitArray_At(const QBitArray* self, ptrdiff_t i) {
+bool QBitArray_At(const QBitArray* self, long long i) {
 	return self->at((qsizetype)(i));
 }
 
-QBitRef* QBitArray_OperatorSubscript(QBitArray* self, ptrdiff_t i) {
+QBitRef* QBitArray_OperatorSubscript(QBitArray* self, long long i) {
 	return new QBitRef(self->operator[]((qsizetype)(i)));
 }
 
-bool QBitArray_OperatorSubscriptWithQsizetype(const QBitArray* self, ptrdiff_t i) {
+bool QBitArray_OperatorSubscriptWithQsizetype(const QBitArray* self, long long i) {
 	return self->operator[]((qsizetype)(i));
 }
 
@@ -127,11 +127,11 @@ bool QBitArray_Fill(QBitArray* self, bool val) {
 	return self->fill(val);
 }
 
-void QBitArray_Fill2(QBitArray* self, bool val, ptrdiff_t first, ptrdiff_t last) {
+void QBitArray_Fill2(QBitArray* self, bool val, long long first, long long last) {
 	self->fill(val, (qsizetype)(first), (qsizetype)(last));
 }
 
-void QBitArray_Truncate(QBitArray* self, ptrdiff_t pos) {
+void QBitArray_Truncate(QBitArray* self, long long pos) {
 	self->truncate((qsizetype)(pos));
 }
 
@@ -139,7 +139,7 @@ const char* QBitArray_Bits(const QBitArray* self) {
 	return (const char*) self->bits();
 }
 
-QBitArray* QBitArray_FromBits(const char* data, ptrdiff_t lenVal) {
+QBitArray* QBitArray_FromBits(const char* data, long long lenVal) {
 	return new QBitArray(QBitArray::fromBits(data, (qsizetype)(lenVal)));
 }
 
@@ -148,7 +148,7 @@ unsigned int QBitArray_ToUInt32(const QBitArray* self, int endianness) {
 	return static_cast<unsigned int>(_ret);
 }
 
-bool QBitArray_Fill22(QBitArray* self, bool val, ptrdiff_t size) {
+bool QBitArray_Fill22(QBitArray* self, bool val, long long size) {
 	return self->fill(val, (qsizetype)(size));
 }
 

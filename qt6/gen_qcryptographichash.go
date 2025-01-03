@@ -93,7 +93,7 @@ func (this *QCryptographicHash) Reset() {
 func (this *QCryptographicHash) AddData(data string, length int64) {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	C.QCryptographicHash_AddData(this.h, data_Cstring, (C.ptrdiff_t)(length))
+	C.QCryptographicHash_AddData(this.h, data_Cstring, (C.longlong)(length))
 }
 
 func (this *QCryptographicHash) AddDataWithData(data QByteArrayView) {

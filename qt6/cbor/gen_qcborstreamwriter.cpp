@@ -29,7 +29,7 @@ void QCborStreamWriter_AppendWithQint64(QCborStreamWriter* self, long long i) {
 	self->append(static_cast<qint64>(i));
 }
 
-void QCborStreamWriter_AppendWithQCborNegativeInteger(QCborStreamWriter* self, uint64_t n) {
+void QCborStreamWriter_AppendWithQCborNegativeInteger(QCborStreamWriter* self, unsigned long long n) {
 	self->append(static_cast<QCborNegativeInteger>(n));
 }
 
@@ -38,7 +38,7 @@ void QCborStreamWriter_AppendWithBa(QCborStreamWriter* self, struct miqt_string 
 	self->append(ba_QByteArray);
 }
 
-void QCborStreamWriter_AppendWithTag(QCborStreamWriter* self, uint64_t tag) {
+void QCborStreamWriter_AppendWithTag(QCborStreamWriter* self, unsigned long long tag) {
 	self->append(static_cast<QCborTag>(tag));
 }
 
@@ -46,7 +46,7 @@ void QCborStreamWriter_Append3(QCborStreamWriter* self, int tag) {
 	self->append(static_cast<QCborKnownTags>(tag));
 }
 
-void QCborStreamWriter_AppendWithSt(QCborStreamWriter* self, uint8_t st) {
+void QCborStreamWriter_AppendWithSt(QCborStreamWriter* self, unsigned char st) {
 	self->append(static_cast<QCborSimpleType>(st));
 }
 
@@ -58,11 +58,11 @@ void QCborStreamWriter_AppendWithDouble(QCborStreamWriter* self, double d) {
 	self->append(static_cast<double>(d));
 }
 
-void QCborStreamWriter_AppendByteString(QCborStreamWriter* self, const char* data, ptrdiff_t lenVal) {
+void QCborStreamWriter_AppendByteString(QCborStreamWriter* self, const char* data, long long lenVal) {
 	self->appendByteString(data, (qsizetype)(lenVal));
 }
 
-void QCborStreamWriter_AppendTextString(QCborStreamWriter* self, const char* utf8, ptrdiff_t lenVal) {
+void QCborStreamWriter_AppendTextString(QCborStreamWriter* self, const char* utf8, long long lenVal) {
 	self->appendTextString(utf8, (qsizetype)(lenVal));
 }
 
@@ -114,7 +114,7 @@ bool QCborStreamWriter_EndMap(QCborStreamWriter* self) {
 	return self->endMap();
 }
 
-void QCborStreamWriter_Append22(QCborStreamWriter* self, const char* str, ptrdiff_t size) {
+void QCborStreamWriter_Append22(QCborStreamWriter* self, const char* str, long long size) {
 	self->append(str, (qsizetype)(size));
 }
 

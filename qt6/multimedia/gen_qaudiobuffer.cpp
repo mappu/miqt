@@ -55,19 +55,19 @@ QAudioFormat* QAudioBuffer_Format(const QAudioBuffer* self) {
 	return new QAudioFormat(self->format());
 }
 
-ptrdiff_t QAudioBuffer_FrameCount(const QAudioBuffer* self) {
+long long QAudioBuffer_FrameCount(const QAudioBuffer* self) {
 	qsizetype _ret = self->frameCount();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
-ptrdiff_t QAudioBuffer_SampleCount(const QAudioBuffer* self) {
+long long QAudioBuffer_SampleCount(const QAudioBuffer* self) {
 	qsizetype _ret = self->sampleCount();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
-ptrdiff_t QAudioBuffer_ByteCount(const QAudioBuffer* self) {
+long long QAudioBuffer_ByteCount(const QAudioBuffer* self) {
 	qsizetype _ret = self->byteCount();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 long long QAudioBuffer_Duration(const QAudioBuffer* self) {

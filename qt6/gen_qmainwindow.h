@@ -227,7 +227,7 @@ void QMainWindow_virtualbase_ShowEvent(void* self, QShowEvent* event);
 void QMainWindow_override_virtual_HideEvent(void* self, intptr_t slot);
 void QMainWindow_virtualbase_HideEvent(void* self, QHideEvent* event);
 void QMainWindow_override_virtual_NativeEvent(void* self, intptr_t slot);
-bool QMainWindow_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
+bool QMainWindow_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long long* result);
 void QMainWindow_override_virtual_ChangeEvent(void* self, intptr_t slot);
 void QMainWindow_virtualbase_ChangeEvent(void* self, QEvent* param1);
 void QMainWindow_override_virtual_Metric(void* self, intptr_t slot);

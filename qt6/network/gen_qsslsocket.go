@@ -128,8 +128,8 @@ func (this *QSslSocket) ConnectToHostEncrypted2(hostName string, port uint16, ss
 	C.QSslSocket_ConnectToHostEncrypted2(this.h, hostName_ms, (C.uint16_t)(port), sslPeerName_ms)
 }
 
-func (this *QSslSocket) SetSocketDescriptor(socketDescriptor uintptr, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool {
-	return (bool)(C.QSslSocket_SetSocketDescriptor(this.h, (C.intptr_t)(socketDescriptor), (C.int)(state), (C.int)(openMode)))
+func (this *QSslSocket) SetSocketDescriptor(socketDescriptor int64, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool {
+	return (bool)(C.QSslSocket_SetSocketDescriptor(this.h, (C.longlong)(socketDescriptor), (C.int)(state), (C.int)(openMode)))
 }
 
 func (this *QSslSocket) ConnectToHost(hostName string, port uint16, openMode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol) {
@@ -915,12 +915,12 @@ func miqt_exec_callback_QSslSocket_Resume(self *C.QSslSocket, cb C.intptr_t) {
 
 }
 
-func (this *QSslSocket) callVirtualBase_SetSocketDescriptor(socketDescriptor uintptr, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool {
+func (this *QSslSocket) callVirtualBase_SetSocketDescriptor(socketDescriptor int64, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool {
 
-	return (bool)(C.QSslSocket_virtualbase_SetSocketDescriptor(unsafe.Pointer(this.h), (C.intptr_t)(socketDescriptor), (C.int)(state), (C.int)(openMode)))
+	return (bool)(C.QSslSocket_virtualbase_SetSocketDescriptor(unsafe.Pointer(this.h), (C.longlong)(socketDescriptor), (C.int)(state), (C.int)(openMode)))
 
 }
-func (this *QSslSocket) OnSetSocketDescriptor(slot func(super func(socketDescriptor uintptr, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool, socketDescriptor uintptr, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool) {
+func (this *QSslSocket) OnSetSocketDescriptor(slot func(super func(socketDescriptor int64, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool, socketDescriptor int64, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool) {
 	if !this.isSubclass {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
@@ -928,14 +928,14 @@ func (this *QSslSocket) OnSetSocketDescriptor(slot func(super func(socketDescrip
 }
 
 //export miqt_exec_callback_QSslSocket_SetSocketDescriptor
-func miqt_exec_callback_QSslSocket_SetSocketDescriptor(self *C.QSslSocket, cb C.intptr_t, socketDescriptor C.intptr_t, state C.int, openMode C.int) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(socketDescriptor uintptr, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool, socketDescriptor uintptr, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool)
+func miqt_exec_callback_QSslSocket_SetSocketDescriptor(self *C.QSslSocket, cb C.intptr_t, socketDescriptor C.longlong, state C.int, openMode C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(socketDescriptor int64, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool, socketDescriptor int64, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := (uintptr)(socketDescriptor)
+	slotval1 := (int64)(socketDescriptor)
 
 	slotval2 := (QAbstractSocket__SocketState)(state)
 

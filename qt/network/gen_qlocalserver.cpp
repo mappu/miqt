@@ -80,7 +80,7 @@ public:
 		}
 		
 		quintptr socketDescriptor_ret = socketDescriptor;
-		uintptr_t sigval1 = static_cast<uintptr_t>(socketDescriptor_ret);
+		unsigned long long sigval1 = static_cast<unsigned long long>(socketDescriptor_ret);
 
 		miqt_exec_callback_QLocalServer_IncomingConnection(this, handle__IncomingConnection, sigval1);
 
@@ -88,7 +88,7 @@ public:
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_IncomingConnection(uintptr_t socketDescriptor) {
+	void virtualbase_IncomingConnection(unsigned long long socketDescriptor) {
 
 		QLocalServer::incomingConnection(static_cast<quintptr>(socketDescriptor));
 
@@ -347,7 +347,7 @@ bool QLocalServer_Listen(QLocalServer* self, struct miqt_string name) {
 	return self->listen(name_QString);
 }
 
-bool QLocalServer_ListenWithSocketDescriptor(QLocalServer* self, intptr_t socketDescriptor) {
+bool QLocalServer_ListenWithSocketDescriptor(QLocalServer* self, long long socketDescriptor) {
 	return self->listen((qintptr)(socketDescriptor));
 }
 
@@ -408,9 +408,9 @@ int QLocalServer_SocketOptions(const QLocalServer* self) {
 	return static_cast<int>(_ret);
 }
 
-intptr_t QLocalServer_SocketDescriptor(const QLocalServer* self) {
+long long QLocalServer_SocketDescriptor(const QLocalServer* self) {
 	qintptr _ret = self->socketDescriptor();
-	return (intptr_t)(_ret);
+	return (long long)(_ret);
 }
 
 struct miqt_string QLocalServer_Tr2(const char* s, const char* c) {
@@ -485,7 +485,7 @@ void QLocalServer_override_virtual_IncomingConnection(void* self, intptr_t slot)
 	dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) )->handle__IncomingConnection = slot;
 }
 
-void QLocalServer_virtualbase_IncomingConnection(void* self, uintptr_t socketDescriptor) {
+void QLocalServer_virtualbase_IncomingConnection(void* self, unsigned long long socketDescriptor) {
 	( (MiqtVirtualQLocalServer*)(self) )->virtualbase_IncomingConnection(socketDescriptor);
 }
 

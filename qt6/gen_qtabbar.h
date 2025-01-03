@@ -263,7 +263,7 @@ void QTabBar_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* event);
 void QTabBar_override_virtual_DropEvent(void* self, intptr_t slot);
 void QTabBar_virtualbase_DropEvent(void* self, QDropEvent* event);
 void QTabBar_override_virtual_NativeEvent(void* self, intptr_t slot);
-bool QTabBar_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
+bool QTabBar_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long long* result);
 void QTabBar_override_virtual_Metric(void* self, intptr_t slot);
 int QTabBar_virtualbase_Metric(const void* self, int param1);
 void QTabBar_override_virtual_InitPainter(void* self, intptr_t slot);

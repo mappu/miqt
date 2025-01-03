@@ -154,7 +154,7 @@ func (this *QAudioSink) Resume() {
 }
 
 func (this *QAudioSink) SetBufferSize(bytes int64) {
-	C.QAudioSink_SetBufferSize(this.h, (C.ptrdiff_t)(bytes))
+	C.QAudioSink_SetBufferSize(this.h, (C.longlong)(bytes))
 }
 
 func (this *QAudioSink) BufferSize() int64 {

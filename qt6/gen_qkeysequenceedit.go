@@ -1044,15 +1044,15 @@ func miqt_exec_callback_QKeySequenceEdit_HideEvent(self *C.QKeySequenceEdit, cb 
 
 }
 
-func (this *QKeySequenceEdit) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
+func (this *QKeySequenceEdit) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
 	eventType_alias := C.struct_miqt_string{}
 	eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
 	eventType_alias.len = C.size_t(len(eventType))
 
-	return (bool)(C.QKeySequenceEdit_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
+	return (bool)(C.QKeySequenceEdit_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.longlong)(unsafe.Pointer(result))))
 
 }
-func (this *QKeySequenceEdit) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
+func (this *QKeySequenceEdit) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
 	if !this.isSubclass {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
@@ -1060,8 +1060,8 @@ func (this *QKeySequenceEdit) OnNativeEvent(slot func(super func(eventType []byt
 }
 
 //export miqt_exec_callback_QKeySequenceEdit_NativeEvent
-func miqt_exec_callback_QKeySequenceEdit_NativeEvent(self *C.QKeySequenceEdit, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.intptr_t) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool)
+func miqt_exec_callback_QKeySequenceEdit_NativeEvent(self *C.QKeySequenceEdit, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.longlong) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1073,7 +1073,7 @@ func miqt_exec_callback_QKeySequenceEdit_NativeEvent(self *C.QKeySequenceEdit, c
 	slotval1 := eventType_ret
 	slotval2 := (unsafe.Pointer)(message)
 
-	slotval3 := (*uintptr)(unsafe.Pointer(result))
+	slotval3 := (*int64)(unsafe.Pointer(result))
 
 	virtualReturn := gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_NativeEvent, slotval1, slotval2, slotval3)
 

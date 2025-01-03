@@ -67,7 +67,7 @@ int QCameraControl_CaptureMode(const QCameraControl* self) {
 }
 
 void QCameraControl_SetCaptureMode(QCameraControl* self, int captureMode) {
-	self->setCaptureMode(static_cast<QCamera::CaptureModes>(captureMode));
+	self->setCaptureMode(static_cast<QFlags<QCamera::CaptureMode>>(captureMode));
 }
 
 bool QCameraControl_IsCaptureModeSupported(const QCameraControl* self, int mode) {

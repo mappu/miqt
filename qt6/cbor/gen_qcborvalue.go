@@ -200,7 +200,7 @@ func NewQCborValue7(v float64) *QCborValue {
 // NewQCborValue8 constructs a new QCborValue object.
 func NewQCborValue8(st QCborSimpleType) *QCborValue {
 
-	ret := newQCborValue(C.QCborValue_new8((C.uint8_t)(st)))
+	ret := newQCborValue(C.QCborValue_new8((C.uchar)(st)))
 	ret.isSubclass = true
 	return ret
 }
@@ -257,7 +257,7 @@ func NewQCborValue13(m *QCborMap) *QCborValue {
 // NewQCborValue14 constructs a new QCborValue object.
 func NewQCborValue14(tag QCborTag) *QCborValue {
 
-	ret := newQCborValue(C.QCborValue_new14((C.uint64_t)(tag)))
+	ret := newQCborValue(C.QCborValue_new14((C.ulonglong)(tag)))
 	ret.isSubclass = true
 	return ret
 }
@@ -313,7 +313,7 @@ func NewQCborValue20(other *QCborValue) *QCborValue {
 // NewQCborValue21 constructs a new QCborValue object.
 func NewQCborValue21(tag QCborTag, taggedValue *QCborValue) *QCborValue {
 
-	ret := newQCborValue(C.QCborValue_new21((C.uint64_t)(tag), taggedValue.cPointer()))
+	ret := newQCborValue(C.QCborValue_new21((C.ulonglong)(tag), taggedValue.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -415,7 +415,7 @@ func (this *QCborValue) IsSimpleType() bool {
 }
 
 func (this *QCborValue) IsSimpleTypeWithSt(st QCborSimpleType) bool {
-	return (bool)(C.QCborValue_IsSimpleTypeWithSt(this.h, (C.uint8_t)(st)))
+	return (bool)(C.QCborValue_IsSimpleTypeWithSt(this.h, (C.uchar)(st)))
 }
 
 func (this *QCborValue) ToSimpleType() QCborSimpleType {
@@ -596,13 +596,13 @@ func QCborValue_FromCborWithBa(ba []byte) *QCborValue {
 func QCborValue_FromCbor2(data string, lenVal int64) *QCborValue {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	_goptr := newQCborValue(C.QCborValue_FromCbor2(data_Cstring, (C.ptrdiff_t)(lenVal)))
+	_goptr := newQCborValue(C.QCborValue_FromCbor2(data_Cstring, (C.longlong)(lenVal)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QCborValue_FromCbor3(data *byte, lenVal int64) *QCborValue {
-	_goptr := newQCborValue(C.QCborValue_FromCbor3((*C.uchar)(unsafe.Pointer(data)), (C.ptrdiff_t)(lenVal)))
+	_goptr := newQCborValue(C.QCborValue_FromCbor3((*C.uchar)(unsafe.Pointer(data)), (C.longlong)(lenVal)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -626,7 +626,7 @@ func (this *QCborValue) ToDiagnosticNotation() string {
 }
 
 func (this *QCborValue) ToSimpleType1(defaultValue QCborSimpleType) QCborSimpleType {
-	return (QCborSimpleType)(C.QCborValue_ToSimpleType1(this.h, (C.uint8_t)(defaultValue)))
+	return (QCborSimpleType)(C.QCborValue_ToSimpleType1(this.h, (C.uchar)(defaultValue)))
 }
 
 func (this *QCborValue) ToInteger1(defaultValue int64) int64 {
@@ -642,7 +642,7 @@ func (this *QCborValue) ToDouble1(defaultValue float64) float64 {
 }
 
 func (this *QCborValue) Tag1(defaultValue QCborTag) QCborTag {
-	return (QCborTag)(C.QCborValue_Tag1(this.h, (C.uint64_t)(defaultValue)))
+	return (QCborTag)(C.QCborValue_Tag1(this.h, (C.ulonglong)(defaultValue)))
 }
 
 func (this *QCborValue) TaggedValue1(defaultValue *QCborValue) *QCborValue {
@@ -708,13 +708,13 @@ func QCborValue_FromCbor22(ba []byte, error *QCborParserError) *QCborValue {
 func QCborValue_FromCbor32(data string, lenVal int64, error *QCborParserError) *QCborValue {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	_goptr := newQCborValue(C.QCborValue_FromCbor32(data_Cstring, (C.ptrdiff_t)(lenVal), error.cPointer()))
+	_goptr := newQCborValue(C.QCborValue_FromCbor32(data_Cstring, (C.longlong)(lenVal), error.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QCborValue_FromCbor33(data *byte, lenVal int64, error *QCborParserError) *QCborValue {
-	_goptr := newQCborValue(C.QCborValue_FromCbor33((*C.uchar)(unsafe.Pointer(data)), (C.ptrdiff_t)(lenVal), error.cPointer()))
+	_goptr := newQCborValue(C.QCborValue_FromCbor33((*C.uchar)(unsafe.Pointer(data)), (C.longlong)(lenVal), error.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -873,7 +873,7 @@ func (this *QCborValueConstRef) IsSimpleType() bool {
 }
 
 func (this *QCborValueConstRef) IsSimpleTypeWithSt(st QCborSimpleType) bool {
-	return (bool)(C.QCborValueConstRef_IsSimpleTypeWithSt(this.h, (C.uint8_t)(st)))
+	return (bool)(C.QCborValueConstRef_IsSimpleTypeWithSt(this.h, (C.uchar)(st)))
 }
 
 func (this *QCborValueConstRef) ToSimpleType() QCborSimpleType {
@@ -1027,11 +1027,11 @@ func (this *QCborValueConstRef) ToDiagnosticNotation() string {
 }
 
 func (this *QCborValueConstRef) ToSimpleType1(defaultValue QCborSimpleType) QCborSimpleType {
-	return (QCborSimpleType)(C.QCborValueConstRef_ToSimpleType1(this.h, (C.uint8_t)(defaultValue)))
+	return (QCborSimpleType)(C.QCborValueConstRef_ToSimpleType1(this.h, (C.uchar)(defaultValue)))
 }
 
 func (this *QCborValueConstRef) Tag1(defaultValue QCborTag) QCborTag {
-	return (QCborTag)(C.QCborValueConstRef_Tag1(this.h, (C.uint64_t)(defaultValue)))
+	return (QCborTag)(C.QCborValueConstRef_Tag1(this.h, (C.ulonglong)(defaultValue)))
 }
 
 func (this *QCborValueConstRef) TaggedValue1(defaultValue *QCborValue) *QCborValue {
@@ -1279,7 +1279,7 @@ func (this *QCborValueRef) IsSimpleType() bool {
 }
 
 func (this *QCborValueRef) IsSimpleTypeWithSt(st QCborSimpleType) bool {
-	return (bool)(C.QCborValueRef_IsSimpleTypeWithSt(this.h, (C.uint8_t)(st)))
+	return (bool)(C.QCborValueRef_IsSimpleTypeWithSt(this.h, (C.uchar)(st)))
 }
 
 func (this *QCborValueRef) ToSimpleType() QCborSimpleType {
@@ -1433,11 +1433,11 @@ func (this *QCborValueRef) ToDiagnosticNotation() string {
 }
 
 func (this *QCborValueRef) ToSimpleType1(defaultValue QCborSimpleType) QCborSimpleType {
-	return (QCborSimpleType)(C.QCborValueRef_ToSimpleType1(this.h, (C.uint8_t)(defaultValue)))
+	return (QCborSimpleType)(C.QCborValueRef_ToSimpleType1(this.h, (C.uchar)(defaultValue)))
 }
 
 func (this *QCborValueRef) Tag1(defaultValue QCborTag) QCborTag {
-	return (QCborTag)(C.QCborValueRef_Tag1(this.h, (C.uint64_t)(defaultValue)))
+	return (QCborTag)(C.QCborValueRef_Tag1(this.h, (C.ulonglong)(defaultValue)))
 }
 
 func (this *QCborValueRef) TaggedValue1(defaultValue *QCborValue) *QCborValue {

@@ -233,7 +233,7 @@ void QSplitterHandle_virtualbase_ShowEvent(void* self, QShowEvent* event);
 void QSplitterHandle_override_virtual_HideEvent(void* self, intptr_t slot);
 void QSplitterHandle_virtualbase_HideEvent(void* self, QHideEvent* event);
 void QSplitterHandle_override_virtual_NativeEvent(void* self, intptr_t slot);
-bool QSplitterHandle_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
+bool QSplitterHandle_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long long* result);
 void QSplitterHandle_override_virtual_ChangeEvent(void* self, intptr_t slot);
 void QSplitterHandle_virtualbase_ChangeEvent(void* self, QEvent* param1);
 void QSplitterHandle_override_virtual_Metric(void* self, intptr_t slot);

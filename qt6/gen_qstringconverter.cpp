@@ -36,9 +36,9 @@ void QStringEncoder_virtbase(QStringEncoder* src, QStringConverter** outptr_QStr
 	*outptr_QStringConverter = static_cast<QStringConverter*>(src);
 }
 
-ptrdiff_t QStringEncoder_RequiredSpace(const QStringEncoder* self, ptrdiff_t inputLength) {
+long long QStringEncoder_RequiredSpace(const QStringEncoder* self, long long inputLength) {
 	qsizetype _ret = self->requiredSpace((qsizetype)(inputLength));
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 void QStringEncoder_Delete(QStringEncoder* self, bool isSubclass) {
@@ -73,9 +73,9 @@ void QStringDecoder_virtbase(QStringDecoder* src, QStringConverter** outptr_QStr
 	*outptr_QStringConverter = static_cast<QStringConverter*>(src);
 }
 
-ptrdiff_t QStringDecoder_RequiredSpace(const QStringDecoder* self, ptrdiff_t inputLength) {
+long long QStringDecoder_RequiredSpace(const QStringDecoder* self, long long inputLength) {
 	qsizetype _ret = self->requiredSpace((qsizetype)(inputLength));
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 QChar* QStringDecoder_AppendToBuffer(QStringDecoder* self, QChar* out, QByteArrayView* ba) {

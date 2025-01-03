@@ -24,19 +24,19 @@ typedef struct QStringMatcher QStringMatcher;
 
 QStringMatcher* QStringMatcher_new();
 QStringMatcher* QStringMatcher_new2(struct miqt_string pattern);
-QStringMatcher* QStringMatcher_new3(QChar* uc, ptrdiff_t lenVal);
+QStringMatcher* QStringMatcher_new3(QChar* uc, long long lenVal);
 QStringMatcher* QStringMatcher_new4(QStringMatcher* other);
 QStringMatcher* QStringMatcher_new5(struct miqt_string pattern, int cs);
-QStringMatcher* QStringMatcher_new6(QChar* uc, ptrdiff_t lenVal, int cs);
+QStringMatcher* QStringMatcher_new6(QChar* uc, long long lenVal, int cs);
 void QStringMatcher_OperatorAssign(QStringMatcher* self, QStringMatcher* other);
 void QStringMatcher_SetPattern(QStringMatcher* self, struct miqt_string pattern);
 void QStringMatcher_SetCaseSensitivity(QStringMatcher* self, int cs);
-ptrdiff_t QStringMatcher_IndexIn(const QStringMatcher* self, struct miqt_string str);
-ptrdiff_t QStringMatcher_IndexIn2(const QStringMatcher* self, QChar* str, ptrdiff_t length);
+long long QStringMatcher_IndexIn(const QStringMatcher* self, struct miqt_string str);
+long long QStringMatcher_IndexIn2(const QStringMatcher* self, QChar* str, long long length);
 struct miqt_string QStringMatcher_Pattern(const QStringMatcher* self);
 int QStringMatcher_CaseSensitivity(const QStringMatcher* self);
-ptrdiff_t QStringMatcher_IndexIn22(const QStringMatcher* self, struct miqt_string str, ptrdiff_t from);
-ptrdiff_t QStringMatcher_IndexIn3(const QStringMatcher* self, QChar* str, ptrdiff_t length, ptrdiff_t from);
+long long QStringMatcher_IndexIn22(const QStringMatcher* self, struct miqt_string str, long long from);
+long long QStringMatcher_IndexIn3(const QStringMatcher* self, QChar* str, long long length, long long from);
 void QStringMatcher_Delete(QStringMatcher* self, bool isSubclass);
 
 #ifdef __cplusplus

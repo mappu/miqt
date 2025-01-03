@@ -361,9 +361,9 @@ int QImage_ByteCount(const QImage* self) {
 	return self->byteCount();
 }
 
-ptrdiff_t QImage_SizeInBytes(const QImage* self) {
+long long QImage_SizeInBytes(const QImage* self) {
 	qsizetype _ret = self->sizeInBytes();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 unsigned char* QImage_ScanLine(QImage* self, int param1) {

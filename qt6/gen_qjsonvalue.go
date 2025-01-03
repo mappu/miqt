@@ -273,7 +273,7 @@ func (this *QJsonValue) OperatorSubscript(key string) *QJsonValue {
 }
 
 func (this *QJsonValue) OperatorSubscriptWithQsizetype(i int64) *QJsonValue {
-	_goptr := newQJsonValue(C.QJsonValue_OperatorSubscriptWithQsizetype(this.h, (C.ptrdiff_t)(i)))
+	_goptr := newQJsonValue(C.QJsonValue_OperatorSubscriptWithQsizetype(this.h, (C.longlong)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -431,7 +431,7 @@ func (this *QJsonValueConstRef) ToObject() *QJsonObject {
 }
 
 func (this *QJsonValueConstRef) OperatorSubscriptWithQsizetype(i int64) *QJsonValue {
-	_goptr := newQJsonValue(C.QJsonValueConstRef_OperatorSubscriptWithQsizetype(this.h, (C.ptrdiff_t)(i)))
+	_goptr := newQJsonValue(C.QJsonValueConstRef_OperatorSubscriptWithQsizetype(this.h, (C.longlong)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -533,7 +533,7 @@ func NewQJsonValueRef(param1 *QJsonValueRef) *QJsonValueRef {
 // NewQJsonValueRef2 constructs a new QJsonValueRef object.
 func NewQJsonValueRef2(array *QJsonArray, idx int64) *QJsonValueRef {
 
-	ret := newQJsonValueRef(C.QJsonValueRef_new2(array.cPointer(), (C.ptrdiff_t)(idx)))
+	ret := newQJsonValueRef(C.QJsonValueRef_new2(array.cPointer(), (C.longlong)(idx)))
 	ret.isSubclass = true
 	return ret
 }
@@ -541,7 +541,7 @@ func NewQJsonValueRef2(array *QJsonArray, idx int64) *QJsonValueRef {
 // NewQJsonValueRef3 constructs a new QJsonValueRef object.
 func NewQJsonValueRef3(object *QJsonObject, idx int64) *QJsonValueRef {
 
-	ret := newQJsonValueRef(C.QJsonValueRef_new3(object.cPointer(), (C.ptrdiff_t)(idx)))
+	ret := newQJsonValueRef(C.QJsonValueRef_new3(object.cPointer(), (C.longlong)(idx)))
 	ret.isSubclass = true
 	return ret
 }
@@ -628,7 +628,7 @@ func (this *QJsonValueRef) ToObject() *QJsonObject {
 }
 
 func (this *QJsonValueRef) OperatorSubscriptWithQsizetype(i int64) *QJsonValue {
-	_goptr := newQJsonValue(C.QJsonValueRef_OperatorSubscriptWithQsizetype(this.h, (C.ptrdiff_t)(i)))
+	_goptr := newQJsonValue(C.QJsonValueRef_OperatorSubscriptWithQsizetype(this.h, (C.longlong)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -320,7 +320,7 @@ QAudioFormat* QAbstractAudioOutput_Format(const QAbstractAudioOutput* self) {
 }
 
 void QAbstractAudioOutput_SetVolume(QAbstractAudioOutput* self, double volume) {
-	self->setVolume(static_cast<qreal>(volume));
+	self->setVolume(static_cast<double>(volume));
 }
 
 double QAbstractAudioOutput_Volume(const QAbstractAudioOutput* self) {
@@ -541,7 +541,7 @@ QAudioFormat* QAbstractAudioInput_Format(const QAbstractAudioInput* self) {
 }
 
 void QAbstractAudioInput_SetVolume(QAbstractAudioInput* self, double volume) {
-	self->setVolume(static_cast<qreal>(volume));
+	self->setVolume(static_cast<double>(volume));
 }
 
 double QAbstractAudioInput_Volume(const QAbstractAudioInput* self) {

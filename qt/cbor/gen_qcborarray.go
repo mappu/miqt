@@ -90,7 +90,7 @@ func (this *QCborArray) Clear() {
 }
 
 func (this *QCborArray) At(i int64) *QCborValue {
-	_goptr := newQCborValue(C.QCborArray_At(this.h, (C.ptrdiff_t)(i)))
+	_goptr := newQCborValue(C.QCborArray_At(this.h, (C.longlong)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -108,7 +108,7 @@ func (this *QCborArray) Last() *QCborValue {
 }
 
 func (this *QCborArray) OperatorSubscript(i int64) *QCborValue {
-	_goptr := newQCborValue(C.QCborArray_OperatorSubscript(this.h, (C.ptrdiff_t)(i)))
+	_goptr := newQCborValue(C.QCborArray_OperatorSubscript(this.h, (C.longlong)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -126,13 +126,13 @@ func (this *QCborArray) Last2() *QCborValueRef {
 }
 
 func (this *QCborArray) OperatorSubscriptWithQsizetype(i int64) *QCborValueRef {
-	_goptr := newQCborValueRef(C.QCborArray_OperatorSubscriptWithQsizetype(this.h, (C.ptrdiff_t)(i)))
+	_goptr := newQCborValueRef(C.QCborArray_OperatorSubscriptWithQsizetype(this.h, (C.longlong)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborArray) Insert(i int64, value *QCborValue) {
-	C.QCborArray_Insert(this.h, (C.ptrdiff_t)(i), value.cPointer())
+	C.QCborArray_Insert(this.h, (C.longlong)(i), value.cPointer())
 }
 
 func (this *QCborArray) Prepend(value *QCborValue) {
@@ -156,11 +156,11 @@ func (this *QCborArray) ExtractWithIt(it QCborArray__Iterator) *QCborValue {
 }
 
 func (this *QCborArray) RemoveAt(i int64) {
-	C.QCborArray_RemoveAt(this.h, (C.ptrdiff_t)(i))
+	C.QCborArray_RemoveAt(this.h, (C.longlong)(i))
 }
 
 func (this *QCborArray) TakeAt(i int64) *QCborValue {
-	_goptr := newQCborValue(C.QCborArray_TakeAt(this.h, (C.ptrdiff_t)(i)))
+	_goptr := newQCborValue(C.QCborArray_TakeAt(this.h, (C.longlong)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -417,7 +417,7 @@ func (this *QCborArray__Iterator) OperatorMinusGreater() *QCborValueRef {
 }
 
 func (this *QCborArray__Iterator) OperatorSubscript(j int64) *QCborValueRef {
-	_goptr := newQCborValueRef(C.QCborArray__Iterator_OperatorSubscript(this.h, (C.ptrdiff_t)(j)))
+	_goptr := newQCborValueRef(C.QCborArray__Iterator_OperatorSubscript(this.h, (C.longlong)(j)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -491,21 +491,21 @@ func (this *QCborArray__Iterator) OperatorMinusMinusWithInt(param1 int) *QCborAr
 }
 
 func (this *QCborArray__Iterator) OperatorPlusAssign(j int64) *QCborArray__Iterator {
-	return newQCborArray__Iterator(C.QCborArray__Iterator_OperatorPlusAssign(this.h, (C.ptrdiff_t)(j)))
+	return newQCborArray__Iterator(C.QCborArray__Iterator_OperatorPlusAssign(this.h, (C.longlong)(j)))
 }
 
 func (this *QCborArray__Iterator) OperatorMinusAssign(j int64) *QCborArray__Iterator {
-	return newQCborArray__Iterator(C.QCborArray__Iterator_OperatorMinusAssign(this.h, (C.ptrdiff_t)(j)))
+	return newQCborArray__Iterator(C.QCborArray__Iterator_OperatorMinusAssign(this.h, (C.longlong)(j)))
 }
 
 func (this *QCborArray__Iterator) OperatorPlus(j int64) *QCborArray__Iterator {
-	_goptr := newQCborArray__Iterator(C.QCborArray__Iterator_OperatorPlus(this.h, (C.ptrdiff_t)(j)))
+	_goptr := newQCborArray__Iterator(C.QCborArray__Iterator_OperatorPlus(this.h, (C.longlong)(j)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborArray__Iterator) OperatorMinus(j int64) *QCborArray__Iterator {
-	_goptr := newQCborArray__Iterator(C.QCborArray__Iterator_OperatorMinus(this.h, (C.ptrdiff_t)(j)))
+	_goptr := newQCborArray__Iterator(C.QCborArray__Iterator_OperatorMinus(this.h, (C.longlong)(j)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -592,7 +592,7 @@ func (this *QCborArray__ConstIterator) OperatorMinusGreater() *QCborValueRef {
 }
 
 func (this *QCborArray__ConstIterator) OperatorSubscript(j int64) *QCborValueRef {
-	_goptr := newQCborValueRef(C.QCborArray__ConstIterator_OperatorSubscript(this.h, (C.ptrdiff_t)(j)))
+	_goptr := newQCborValueRef(C.QCborArray__ConstIterator_OperatorSubscript(this.h, (C.longlong)(j)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -666,21 +666,21 @@ func (this *QCborArray__ConstIterator) OperatorMinusMinusWithInt(param1 int) *QC
 }
 
 func (this *QCborArray__ConstIterator) OperatorPlusAssign(j int64) *QCborArray__ConstIterator {
-	return newQCborArray__ConstIterator(C.QCborArray__ConstIterator_OperatorPlusAssign(this.h, (C.ptrdiff_t)(j)))
+	return newQCborArray__ConstIterator(C.QCborArray__ConstIterator_OperatorPlusAssign(this.h, (C.longlong)(j)))
 }
 
 func (this *QCborArray__ConstIterator) OperatorMinusAssign(j int64) *QCborArray__ConstIterator {
-	return newQCborArray__ConstIterator(C.QCborArray__ConstIterator_OperatorMinusAssign(this.h, (C.ptrdiff_t)(j)))
+	return newQCborArray__ConstIterator(C.QCborArray__ConstIterator_OperatorMinusAssign(this.h, (C.longlong)(j)))
 }
 
 func (this *QCborArray__ConstIterator) OperatorPlus(j int64) *QCborArray__ConstIterator {
-	_goptr := newQCborArray__ConstIterator(C.QCborArray__ConstIterator_OperatorPlus(this.h, (C.ptrdiff_t)(j)))
+	_goptr := newQCborArray__ConstIterator(C.QCborArray__ConstIterator_OperatorPlus(this.h, (C.longlong)(j)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCborArray__ConstIterator) OperatorMinus(j int64) *QCborArray__ConstIterator {
-	_goptr := newQCborArray__ConstIterator(C.QCborArray__ConstIterator_OperatorMinus(this.h, (C.ptrdiff_t)(j)))
+	_goptr := newQCborArray__ConstIterator(C.QCborArray__ConstIterator_OperatorMinus(this.h, (C.longlong)(j)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

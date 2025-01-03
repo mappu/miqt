@@ -227,7 +227,7 @@ void QAbstractSpinBox_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* ev
 void QAbstractSpinBox_override_virtual_DropEvent(void* self, intptr_t slot);
 void QAbstractSpinBox_virtualbase_DropEvent(void* self, QDropEvent* event);
 void QAbstractSpinBox_override_virtual_NativeEvent(void* self, intptr_t slot);
-bool QAbstractSpinBox_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
+bool QAbstractSpinBox_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long long* result);
 void QAbstractSpinBox_override_virtual_Metric(void* self, intptr_t slot);
 int QAbstractSpinBox_virtualbase_Metric(const void* self, int param1);
 void QAbstractSpinBox_override_virtual_InitPainter(void* self, intptr_t slot);

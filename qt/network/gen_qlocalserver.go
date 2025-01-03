@@ -150,8 +150,8 @@ func (this *QLocalServer) Listen(name string) bool {
 	return (bool)(C.QLocalServer_Listen(this.h, name_ms))
 }
 
-func (this *QLocalServer) ListenWithSocketDescriptor(socketDescriptor uintptr) bool {
-	return (bool)(C.QLocalServer_ListenWithSocketDescriptor(this.h, (C.intptr_t)(socketDescriptor)))
+func (this *QLocalServer) ListenWithSocketDescriptor(socketDescriptor int64) bool {
+	return (bool)(C.QLocalServer_ListenWithSocketDescriptor(this.h, (C.longlong)(socketDescriptor)))
 }
 
 func (this *QLocalServer) MaxPendingConnections() int {
@@ -204,8 +204,8 @@ func (this *QLocalServer) SocketOptions() QLocalServer__SocketOption {
 	return (QLocalServer__SocketOption)(C.QLocalServer_SocketOptions(this.h))
 }
 
-func (this *QLocalServer) SocketDescriptor() uintptr {
-	return (uintptr)(C.QLocalServer_SocketDescriptor(this.h))
+func (this *QLocalServer) SocketDescriptor() int64 {
+	return (int64)(C.QLocalServer_SocketDescriptor(this.h))
 }
 
 func QLocalServer_Tr2(s string, c string) string {
@@ -310,12 +310,12 @@ func miqt_exec_callback_QLocalServer_NextPendingConnection(self *C.QLocalServer,
 
 }
 
-func (this *QLocalServer) callVirtualBase_IncomingConnection(socketDescriptor uintptr) {
+func (this *QLocalServer) callVirtualBase_IncomingConnection(socketDescriptor uint64) {
 
-	C.QLocalServer_virtualbase_IncomingConnection(unsafe.Pointer(this.h), (C.uintptr_t)(socketDescriptor))
+	C.QLocalServer_virtualbase_IncomingConnection(unsafe.Pointer(this.h), (C.ulonglong)(socketDescriptor))
 
 }
-func (this *QLocalServer) OnIncomingConnection(slot func(super func(socketDescriptor uintptr), socketDescriptor uintptr)) {
+func (this *QLocalServer) OnIncomingConnection(slot func(super func(socketDescriptor uint64), socketDescriptor uint64)) {
 	if !this.isSubclass {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
@@ -323,14 +323,14 @@ func (this *QLocalServer) OnIncomingConnection(slot func(super func(socketDescri
 }
 
 //export miqt_exec_callback_QLocalServer_IncomingConnection
-func miqt_exec_callback_QLocalServer_IncomingConnection(self *C.QLocalServer, cb C.intptr_t, socketDescriptor C.uintptr_t) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(socketDescriptor uintptr), socketDescriptor uintptr))
+func miqt_exec_callback_QLocalServer_IncomingConnection(self *C.QLocalServer, cb C.intptr_t, socketDescriptor C.ulonglong) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(socketDescriptor uint64), socketDescriptor uint64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := (uintptr)(socketDescriptor)
+	slotval1 := (uint64)(socketDescriptor)
 
 	gofunc((&QLocalServer{h: self}).callVirtualBase_IncomingConnection, slotval1)
 

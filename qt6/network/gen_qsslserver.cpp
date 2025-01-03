@@ -38,7 +38,7 @@ public:
 		}
 		
 		qintptr socket_ret = socket;
-		intptr_t sigval1 = (intptr_t)(socket_ret);
+		long long sigval1 = (long long)(socket_ret);
 
 		miqt_exec_callback_QSslServer_IncomingConnection(this, handle__IncomingConnection, sigval1);
 
@@ -46,7 +46,7 @@ public:
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_IncomingConnection(intptr_t socket) {
+	void virtualbase_IncomingConnection(long long socket) {
 
 		QSslServer::incomingConnection((qintptr)(socket));
 
@@ -310,7 +310,7 @@ void QSslServer_override_virtual_IncomingConnection(void* self, intptr_t slot) {
 	dynamic_cast<MiqtVirtualQSslServer*>( (QSslServer*)(self) )->handle__IncomingConnection = slot;
 }
 
-void QSslServer_virtualbase_IncomingConnection(void* self, intptr_t socket) {
+void QSslServer_virtualbase_IncomingConnection(void* self, long long socket) {
 	( (MiqtVirtualQSslServer*)(self) )->virtualbase_IncomingConnection(socket);
 }
 

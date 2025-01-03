@@ -8,14 +8,14 @@
 #endif
 #include "_cgo_export.h"
 
-ptrdiff_t QArrayData_AllocatedCapacity(QArrayData* self) {
+long long QArrayData_AllocatedCapacity(QArrayData* self) {
 	qsizetype _ret = self->allocatedCapacity();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
-ptrdiff_t QArrayData_ConstAllocatedCapacity(const QArrayData* self) {
+long long QArrayData_ConstAllocatedCapacity(const QArrayData* self) {
 	qsizetype _ret = self->constAllocatedCapacity();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 bool QArrayData_Ref(QArrayData* self) {
@@ -40,12 +40,12 @@ bool QArrayData_NeedsDetach(const QArrayData* self) {
 #endif
 }
 
-ptrdiff_t QArrayData_DetachCapacity(const QArrayData* self, ptrdiff_t newSize) {
+long long QArrayData_DetachCapacity(const QArrayData* self, long long newSize) {
 	qsizetype _ret = self->detachCapacity((qsizetype)(newSize));
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
-struct miqt_map /* tuple of QArrayData* and void* */  QArrayData_ReallocateUnaligned(QArrayData* data, void* dataPointer, ptrdiff_t objectSize, ptrdiff_t newCapacity, int option) {
+struct miqt_map /* tuple of QArrayData* and void* */  QArrayData_ReallocateUnaligned(QArrayData* data, void* dataPointer, long long objectSize, long long newCapacity, int option) {
 	QPair<QArrayData *, void *> _ret = QArrayData::reallocateUnaligned(data, dataPointer, (qsizetype)(objectSize), (qsizetype)(newCapacity), static_cast<QArrayData::AllocationOption>(option));
 	// Convert QPair<> from C++ memory to manually-managed C memory
 	QArrayData** _first_arr = static_cast<QArrayData**>(malloc(sizeof(QArrayData*)));
@@ -59,7 +59,7 @@ struct miqt_map /* tuple of QArrayData* and void* */  QArrayData_ReallocateUnali
 	return _out;
 }
 
-void QArrayData_Deallocate(QArrayData* data, ptrdiff_t objectSize, ptrdiff_t alignment) {
+void QArrayData_Deallocate(QArrayData* data, long long objectSize, long long alignment) {
 	QArrayData::deallocate(data, (qsizetype)(objectSize), (qsizetype)(alignment));
 }
 

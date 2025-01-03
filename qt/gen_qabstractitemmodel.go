@@ -88,8 +88,8 @@ func (this *QModelIndex) Column() int {
 	return (int)(C.QModelIndex_Column(this.h))
 }
 
-func (this *QModelIndex) InternalId() uintptr {
-	return (uintptr)(C.QModelIndex_InternalId(this.h))
+func (this *QModelIndex) InternalId() uint64 {
+	return (uint64)(C.QModelIndex_InternalId(this.h))
 }
 
 func (this *QModelIndex) InternalPointer() unsafe.Pointer {
@@ -277,8 +277,8 @@ func (this *QPersistentModelIndex) InternalPointer() unsafe.Pointer {
 	return (unsafe.Pointer)(C.QPersistentModelIndex_InternalPointer(this.h))
 }
 
-func (this *QPersistentModelIndex) InternalId() uintptr {
-	return (uintptr)(C.QPersistentModelIndex_InternalId(this.h))
+func (this *QPersistentModelIndex) InternalId() uint64 {
+	return (uint64)(C.QPersistentModelIndex_InternalId(this.h))
 }
 
 func (this *QPersistentModelIndex) Parent() *QModelIndex {

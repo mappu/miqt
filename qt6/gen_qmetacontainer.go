@@ -145,7 +145,7 @@ func (this *QMetaContainer) CopyIterator(target unsafe.Pointer, source unsafe.Po
 }
 
 func (this *QMetaContainer) AdvanceIterator(iterator unsafe.Pointer, step int64) {
-	C.QMetaContainer_AdvanceIterator(this.h, iterator, (C.ptrdiff_t)(step))
+	C.QMetaContainer_AdvanceIterator(this.h, iterator, (C.longlong)(step))
 }
 
 func (this *QMetaContainer) DiffIterator(i unsafe.Pointer, j unsafe.Pointer) int64 {
@@ -177,7 +177,7 @@ func (this *QMetaContainer) CopyConstIterator(target unsafe.Pointer, source unsa
 }
 
 func (this *QMetaContainer) AdvanceConstIterator(iterator unsafe.Pointer, step int64) {
-	C.QMetaContainer_AdvanceConstIterator(this.h, iterator, (C.ptrdiff_t)(step))
+	C.QMetaContainer_AdvanceConstIterator(this.h, iterator, (C.longlong)(step))
 }
 
 func (this *QMetaContainer) DiffConstIterator(i unsafe.Pointer, j unsafe.Pointer) int64 {
@@ -290,7 +290,7 @@ func (this *QMetaSequence) CanGetValueAtIndex() bool {
 }
 
 func (this *QMetaSequence) ValueAtIndex(container unsafe.Pointer, index int64, result unsafe.Pointer) {
-	C.QMetaSequence_ValueAtIndex(this.h, container, (C.ptrdiff_t)(index), result)
+	C.QMetaSequence_ValueAtIndex(this.h, container, (C.longlong)(index), result)
 }
 
 func (this *QMetaSequence) CanSetValueAtIndex() bool {
@@ -298,7 +298,7 @@ func (this *QMetaSequence) CanSetValueAtIndex() bool {
 }
 
 func (this *QMetaSequence) SetValueAtIndex(container unsafe.Pointer, index int64, value unsafe.Pointer) {
-	C.QMetaSequence_SetValueAtIndex(this.h, container, (C.ptrdiff_t)(index), value)
+	C.QMetaSequence_SetValueAtIndex(this.h, container, (C.longlong)(index), value)
 }
 
 func (this *QMetaSequence) CanAddValue() bool {

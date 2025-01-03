@@ -45,9 +45,9 @@ struct miqt_string QAnyStringView_ToString(const QAnyStringView* self) {
 	return _ms;
 }
 
-ptrdiff_t QAnyStringView_Size(const QAnyStringView* self) {
+long long QAnyStringView_Size(const QAnyStringView* self) {
 	qsizetype _ret = self->size();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 const void* QAnyStringView_Data(const QAnyStringView* self) {
@@ -74,9 +74,9 @@ bool QAnyStringView_Empty(const QAnyStringView* self) {
 	return self->empty();
 }
 
-ptrdiff_t QAnyStringView_SizeBytes(const QAnyStringView* self) {
+long long QAnyStringView_SizeBytes(const QAnyStringView* self) {
 	qsizetype _ret = self->size_bytes();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 bool QAnyStringView_IsNull(const QAnyStringView* self) {
@@ -87,9 +87,9 @@ bool QAnyStringView_IsEmpty(const QAnyStringView* self) {
 	return self->isEmpty();
 }
 
-ptrdiff_t QAnyStringView_Length(const QAnyStringView* self) {
+long long QAnyStringView_Length(const QAnyStringView* self) {
 	qsizetype _ret = self->length();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 int QAnyStringView_Compare3(QAnyStringView* lhs, QAnyStringView* rhs, int cs) {

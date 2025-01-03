@@ -201,11 +201,11 @@ QImage* QImage_new5(const unsigned char* data, int width, int height, int format
 	return new MiqtVirtualQImage(static_cast<const uchar*>(data), static_cast<int>(width), static_cast<int>(height), static_cast<QImage::Format>(format));
 }
 
-QImage* QImage_new6(unsigned char* data, int width, int height, ptrdiff_t bytesPerLine, int format) {
+QImage* QImage_new6(unsigned char* data, int width, int height, long long bytesPerLine, int format) {
 	return new MiqtVirtualQImage(static_cast<uchar*>(data), static_cast<int>(width), static_cast<int>(height), (qsizetype)(bytesPerLine), static_cast<QImage::Format>(format));
 }
 
-QImage* QImage_new7(const unsigned char* data, int width, int height, ptrdiff_t bytesPerLine, int format) {
+QImage* QImage_new7(const unsigned char* data, int width, int height, long long bytesPerLine, int format) {
 	return new MiqtVirtualQImage(static_cast<const uchar*>(data), static_cast<int>(width), static_cast<int>(height), (qsizetype)(bytesPerLine), static_cast<QImage::Format>(format));
 }
 
@@ -362,9 +362,9 @@ const unsigned char* QImage_ConstBits(const QImage* self) {
 	return static_cast<const unsigned char*>(_ret);
 }
 
-ptrdiff_t QImage_SizeInBytes(const QImage* self) {
+long long QImage_SizeInBytes(const QImage* self) {
 	qsizetype _ret = self->sizeInBytes();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 unsigned char* QImage_ScanLine(QImage* self, int param1) {
@@ -382,9 +382,9 @@ const unsigned char* QImage_ConstScanLine(const QImage* self, int param1) {
 	return static_cast<const unsigned char*>(_ret);
 }
 
-ptrdiff_t QImage_BytesPerLine(const QImage* self) {
+long long QImage_BytesPerLine(const QImage* self) {
 	qsizetype _ret = self->bytesPerLine();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 bool QImage_Valid(const QImage* self, int x, int y) {

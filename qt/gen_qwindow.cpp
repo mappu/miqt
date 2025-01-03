@@ -820,9 +820,9 @@ void QWindow_Create(QWindow* self) {
 	self->create();
 }
 
-uintptr_t QWindow_WinId(const QWindow* self) {
+unsigned long long QWindow_WinId(const QWindow* self) {
 	WId _ret = self->winId();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<unsigned long long>(_ret);
 }
 
 QWindow* QWindow_Parent(const QWindow* self, int mode) {
@@ -1144,7 +1144,7 @@ void QWindow_UnsetCursor(QWindow* self) {
 	self->unsetCursor();
 }
 
-QWindow* QWindow_FromWinId(uintptr_t id) {
+QWindow* QWindow_FromWinId(unsigned long long id) {
 	return QWindow::fromWinId(static_cast<WId>(id));
 }
 

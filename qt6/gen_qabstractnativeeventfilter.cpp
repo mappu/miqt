@@ -32,7 +32,7 @@ public:
 		struct miqt_string sigval1 = eventType_ms;
 		void* sigval2 = message;
 		qintptr* result_ret = result;
-		intptr_t* sigval3 = (intptr_t*)(result_ret);
+		long long* sigval3 = (long long*)(result_ret);
 
 		bool callback_return_value = miqt_exec_callback_QAbstractNativeEventFilter_NativeEventFilter(this, handle__NativeEventFilter, sigval1, sigval2, sigval3);
 
@@ -45,7 +45,7 @@ QAbstractNativeEventFilter* QAbstractNativeEventFilter_new() {
 	return new MiqtVirtualQAbstractNativeEventFilter();
 }
 
-bool QAbstractNativeEventFilter_NativeEventFilter(QAbstractNativeEventFilter* self, struct miqt_string eventType, void* message, intptr_t* result) {
+bool QAbstractNativeEventFilter_NativeEventFilter(QAbstractNativeEventFilter* self, struct miqt_string eventType, void* message, long long* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 	return self->nativeEventFilter(eventType_QByteArray, message, (qintptr*)(result));
 }

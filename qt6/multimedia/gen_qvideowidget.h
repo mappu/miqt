@@ -167,7 +167,7 @@ void QVideoWidget_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* event)
 void QVideoWidget_override_virtual_DropEvent(void* self, intptr_t slot);
 void QVideoWidget_virtualbase_DropEvent(void* self, QDropEvent* event);
 void QVideoWidget_override_virtual_NativeEvent(void* self, intptr_t slot);
-bool QVideoWidget_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
+bool QVideoWidget_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long long* result);
 void QVideoWidget_override_virtual_ChangeEvent(void* self, intptr_t slot);
 void QVideoWidget_virtualbase_ChangeEvent(void* self, QEvent* param1);
 void QVideoWidget_override_virtual_Metric(void* self, intptr_t slot);

@@ -95,7 +95,7 @@ func NewQStringEncoder5(name string, flags QStringConverterBase__Flag) *QStringE
 }
 
 func (this *QStringEncoder) RequiredSpace(inputLength int64) int64 {
-	return (int64)(C.QStringEncoder_RequiredSpace(this.h, (C.ptrdiff_t)(inputLength)))
+	return (int64)(C.QStringEncoder_RequiredSpace(this.h, (C.longlong)(inputLength)))
 }
 
 // Delete this object from C++ memory.
@@ -194,7 +194,7 @@ func NewQStringDecoder5(name string, f QStringConverterBase__Flag) *QStringDecod
 }
 
 func (this *QStringDecoder) RequiredSpace(inputLength int64) int64 {
-	return (int64)(C.QStringDecoder_RequiredSpace(this.h, (C.ptrdiff_t)(inputLength)))
+	return (int64)(C.QStringDecoder_RequiredSpace(this.h, (C.longlong)(inputLength)))
 }
 
 func (this *QStringDecoder) AppendToBuffer(out *QChar, ba QByteArrayView) *QChar {

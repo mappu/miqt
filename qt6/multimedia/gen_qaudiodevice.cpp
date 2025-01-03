@@ -108,9 +108,9 @@ struct miqt_array /* of uint16_t */  QAudioDevice_SupportedSampleFormats(const Q
 	return _out;
 }
 
-uint32_t QAudioDevice_ChannelConfiguration(const QAudioDevice* self) {
+unsigned int QAudioDevice_ChannelConfiguration(const QAudioDevice* self) {
 	QAudioFormat::ChannelConfig _ret = self->channelConfiguration();
-	return static_cast<uint32_t>(_ret);
+	return static_cast<unsigned int>(_ret);
 }
 
 void QAudioDevice_Delete(QAudioDevice* self, bool isSubclass) {

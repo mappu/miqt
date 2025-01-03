@@ -475,7 +475,7 @@ int QLabel_Alignment(const QLabel* self) {
 }
 
 void QLabel_SetAlignment(QLabel* self, int alignment) {
-	self->setAlignment(static_cast<Qt::Alignment>(alignment));
+	self->setAlignment(static_cast<QFlags<Qt::AlignmentFlag>>(alignment));
 }
 
 void QLabel_SetWordWrap(QLabel* self, bool on) {

@@ -1259,7 +1259,7 @@ double QGraphicsWebView_ZoomFactor(const QGraphicsWebView* self) {
 }
 
 void QGraphicsWebView_SetZoomFactor(QGraphicsWebView* self, double zoomFactor) {
-	self->setZoomFactor(static_cast<qreal>(zoomFactor));
+	self->setZoomFactor(static_cast<double>(zoomFactor));
 }
 
 bool QGraphicsWebView_IsModified(const QGraphicsWebView* self) {
@@ -1355,7 +1355,7 @@ int QGraphicsWebView_RenderHints(const QGraphicsWebView* self) {
 }
 
 void QGraphicsWebView_SetRenderHints(QGraphicsWebView* self, int renderHints) {
-	self->setRenderHints(static_cast<QPainter::RenderHints>(renderHints));
+	self->setRenderHints(static_cast<QFlags<QPainter::RenderHint>>(renderHints));
 }
 
 void QGraphicsWebView_SetRenderHint(QGraphicsWebView* self, int param1) {

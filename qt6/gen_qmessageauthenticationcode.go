@@ -79,7 +79,7 @@ func (this *QMessageAuthenticationCode) SetKey(key []byte) {
 func (this *QMessageAuthenticationCode) AddData(data string, length int64) {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	C.QMessageAuthenticationCode_AddData(this.h, data_Cstring, (C.ptrdiff_t)(length))
+	C.QMessageAuthenticationCode_AddData(this.h, data_Cstring, (C.longlong)(length))
 }
 
 func (this *QMessageAuthenticationCode) AddDataWithData(data []byte) {

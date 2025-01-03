@@ -25,9 +25,9 @@ struct miqt_string QByteArrayView_ToByteArray(const QByteArrayView* self) {
 	return _ms;
 }
 
-ptrdiff_t QByteArrayView_Size(const QByteArrayView* self) {
+long long QByteArrayView_Size(const QByteArrayView* self) {
 	qsizetype _ret = self->size();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 const char* QByteArrayView_Data(const QByteArrayView* self) {
@@ -40,39 +40,39 @@ const char* QByteArrayView_ConstData(const QByteArrayView* self) {
 	return const_cast<const char*>(static_cast<const char*>(_ret));
 }
 
-char QByteArrayView_OperatorSubscript(const QByteArrayView* self, ptrdiff_t n) {
+char QByteArrayView_OperatorSubscript(const QByteArrayView* self, long long n) {
 	return self->operator[]((qsizetype)(n));
 }
 
-char QByteArrayView_At(const QByteArrayView* self, ptrdiff_t n) {
+char QByteArrayView_At(const QByteArrayView* self, long long n) {
 	return self->at((qsizetype)(n));
 }
 
-QByteArrayView* QByteArrayView_First(const QByteArrayView* self, ptrdiff_t n) {
+QByteArrayView* QByteArrayView_First(const QByteArrayView* self, long long n) {
 	return new QByteArrayView(self->first((qsizetype)(n)));
 }
 
-QByteArrayView* QByteArrayView_Last(const QByteArrayView* self, ptrdiff_t n) {
+QByteArrayView* QByteArrayView_Last(const QByteArrayView* self, long long n) {
 	return new QByteArrayView(self->last((qsizetype)(n)));
 }
 
-QByteArrayView* QByteArrayView_Sliced(const QByteArrayView* self, ptrdiff_t pos) {
+QByteArrayView* QByteArrayView_Sliced(const QByteArrayView* self, long long pos) {
 	return new QByteArrayView(self->sliced((qsizetype)(pos)));
 }
 
-QByteArrayView* QByteArrayView_Sliced2(const QByteArrayView* self, ptrdiff_t pos, ptrdiff_t n) {
+QByteArrayView* QByteArrayView_Sliced2(const QByteArrayView* self, long long pos, long long n) {
 	return new QByteArrayView(self->sliced((qsizetype)(pos), (qsizetype)(n)));
 }
 
-QByteArrayView* QByteArrayView_Chopped(const QByteArrayView* self, ptrdiff_t lenVal) {
+QByteArrayView* QByteArrayView_Chopped(const QByteArrayView* self, long long lenVal) {
 	return new QByteArrayView(self->chopped((qsizetype)(lenVal)));
 }
 
-void QByteArrayView_Truncate(QByteArrayView* self, ptrdiff_t n) {
+void QByteArrayView_Truncate(QByteArrayView* self, long long n) {
 	self->truncate((qsizetype)(n));
 }
 
-void QByteArrayView_Chop(QByteArrayView* self, ptrdiff_t n) {
+void QByteArrayView_Chop(QByteArrayView* self, long long n) {
 	self->chop((qsizetype)(n));
 }
 
@@ -141,14 +141,14 @@ bool QByteArrayView_EndsWithWithChar(const QByteArrayView* self, char c) {
 	return self->endsWith(static_cast<char>(c));
 }
 
-ptrdiff_t QByteArrayView_IndexOf(const QByteArrayView* self, QByteArrayView* a) {
+long long QByteArrayView_IndexOf(const QByteArrayView* self, QByteArrayView* a) {
 	qsizetype _ret = self->indexOf(*a);
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
-ptrdiff_t QByteArrayView_IndexOfWithCh(const QByteArrayView* self, char ch) {
+long long QByteArrayView_IndexOfWithCh(const QByteArrayView* self, char ch) {
 	qsizetype _ret = self->indexOf(static_cast<char>(ch));
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 bool QByteArrayView_Contains(const QByteArrayView* self, QByteArrayView* a) {
@@ -159,29 +159,29 @@ bool QByteArrayView_ContainsWithChar(const QByteArrayView* self, char c) {
 	return self->contains(static_cast<char>(c));
 }
 
-ptrdiff_t QByteArrayView_LastIndexOf(const QByteArrayView* self, QByteArrayView* a) {
+long long QByteArrayView_LastIndexOf(const QByteArrayView* self, QByteArrayView* a) {
 	qsizetype _ret = self->lastIndexOf(*a);
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
-ptrdiff_t QByteArrayView_LastIndexOf2(const QByteArrayView* self, QByteArrayView* a, ptrdiff_t from) {
+long long QByteArrayView_LastIndexOf2(const QByteArrayView* self, QByteArrayView* a, long long from) {
 	qsizetype _ret = self->lastIndexOf(*a, (qsizetype)(from));
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
-ptrdiff_t QByteArrayView_LastIndexOfWithCh(const QByteArrayView* self, char ch) {
+long long QByteArrayView_LastIndexOfWithCh(const QByteArrayView* self, char ch) {
 	qsizetype _ret = self->lastIndexOf(static_cast<char>(ch));
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
-ptrdiff_t QByteArrayView_Count(const QByteArrayView* self, QByteArrayView* a) {
+long long QByteArrayView_Count(const QByteArrayView* self, QByteArrayView* a) {
 	qsizetype _ret = self->count(*a);
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
-ptrdiff_t QByteArrayView_CountWithCh(const QByteArrayView* self, char ch) {
+long long QByteArrayView_CountWithCh(const QByteArrayView* self, char ch) {
 	qsizetype _ret = self->count(static_cast<char>(ch));
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 int QByteArrayView_Compare(const QByteArrayView* self, QByteArrayView* a) {
@@ -232,9 +232,9 @@ bool QByteArrayView_IsEmpty(const QByteArrayView* self) {
 	return self->isEmpty();
 }
 
-ptrdiff_t QByteArrayView_Length(const QByteArrayView* self) {
+long long QByteArrayView_Length(const QByteArrayView* self) {
 	qsizetype _ret = self->length();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 char QByteArrayView_First2(const QByteArrayView* self) {
@@ -327,19 +327,19 @@ double QByteArrayView_ToDouble1(const QByteArrayView* self, bool* ok) {
 	return self->toDouble(ok);
 }
 
-ptrdiff_t QByteArrayView_IndexOf2(const QByteArrayView* self, QByteArrayView* a, ptrdiff_t from) {
+long long QByteArrayView_IndexOf2(const QByteArrayView* self, QByteArrayView* a, long long from) {
 	qsizetype _ret = self->indexOf(*a, (qsizetype)(from));
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
-ptrdiff_t QByteArrayView_IndexOf22(const QByteArrayView* self, char ch, ptrdiff_t from) {
+long long QByteArrayView_IndexOf22(const QByteArrayView* self, char ch, long long from) {
 	qsizetype _ret = self->indexOf(static_cast<char>(ch), (qsizetype)(from));
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
-ptrdiff_t QByteArrayView_LastIndexOf22(const QByteArrayView* self, char ch, ptrdiff_t from) {
+long long QByteArrayView_LastIndexOf22(const QByteArrayView* self, char ch, long long from) {
 	qsizetype _ret = self->lastIndexOf(static_cast<char>(ch), (qsizetype)(from));
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 int QByteArrayView_Compare2(const QByteArrayView* self, QByteArrayView* a, int cs) {

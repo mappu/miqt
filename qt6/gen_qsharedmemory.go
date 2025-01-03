@@ -162,7 +162,7 @@ func (this *QSharedMemory) NativeKey() string {
 }
 
 func (this *QSharedMemory) Create(size int64) bool {
-	return (bool)(C.QSharedMemory_Create(this.h, (C.ptrdiff_t)(size)))
+	return (bool)(C.QSharedMemory_Create(this.h, (C.longlong)(size)))
 }
 
 func (this *QSharedMemory) Size() int64 {
@@ -235,7 +235,7 @@ func QSharedMemory_Tr3(s string, c string, n int) string {
 }
 
 func (this *QSharedMemory) Create2(size int64, mode QSharedMemory__AccessMode) bool {
-	return (bool)(C.QSharedMemory_Create2(this.h, (C.ptrdiff_t)(size), (C.int)(mode)))
+	return (bool)(C.QSharedMemory_Create2(this.h, (C.longlong)(size), (C.int)(mode)))
 }
 
 func (this *QSharedMemory) Attach1(mode QSharedMemory__AccessMode) bool {

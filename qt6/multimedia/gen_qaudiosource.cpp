@@ -283,18 +283,18 @@ void QAudioSource_Resume(QAudioSource* self) {
 	self->resume();
 }
 
-void QAudioSource_SetBufferSize(QAudioSource* self, ptrdiff_t bytes) {
+void QAudioSource_SetBufferSize(QAudioSource* self, long long bytes) {
 	self->setBufferSize((qsizetype)(bytes));
 }
 
-ptrdiff_t QAudioSource_BufferSize(const QAudioSource* self) {
+long long QAudioSource_BufferSize(const QAudioSource* self) {
 	qsizetype _ret = self->bufferSize();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
-ptrdiff_t QAudioSource_BytesAvailable(const QAudioSource* self) {
+long long QAudioSource_BytesAvailable(const QAudioSource* self) {
 	qsizetype _ret = self->bytesAvailable();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 void QAudioSource_SetVolume(QAudioSource* self, double volume) {

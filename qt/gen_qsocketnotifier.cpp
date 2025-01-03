@@ -198,11 +198,11 @@ public:
 
 };
 
-QSocketNotifier* QSocketNotifier_new(intptr_t socket, int param2) {
+QSocketNotifier* QSocketNotifier_new(long long socket, int param2) {
 	return new MiqtVirtualQSocketNotifier((qintptr)(socket), static_cast<QSocketNotifier::Type>(param2));
 }
 
-QSocketNotifier* QSocketNotifier_new2(intptr_t socket, int param2, QObject* parent) {
+QSocketNotifier* QSocketNotifier_new2(long long socket, int param2, QObject* parent) {
 	return new MiqtVirtualQSocketNotifier((qintptr)(socket), static_cast<QSocketNotifier::Type>(param2), parent);
 }
 
@@ -240,9 +240,9 @@ struct miqt_string QSocketNotifier_TrUtf8(const char* s) {
 	return _ms;
 }
 
-intptr_t QSocketNotifier_Socket(const QSocketNotifier* self) {
+long long QSocketNotifier_Socket(const QSocketNotifier* self) {
 	qintptr _ret = self->socket();
-	return (intptr_t)(_ret);
+	return (long long)(_ret);
 }
 
 int QSocketNotifier_Type(const QSocketNotifier* self) {

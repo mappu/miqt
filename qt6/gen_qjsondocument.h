@@ -51,7 +51,7 @@ QJsonArray* QJsonDocument_Array(const QJsonDocument* self);
 void QJsonDocument_SetObject(QJsonDocument* self, QJsonObject* object);
 void QJsonDocument_SetArray(QJsonDocument* self, QJsonArray* array);
 QJsonValue* QJsonDocument_OperatorSubscript(const QJsonDocument* self, struct miqt_string key);
-QJsonValue* QJsonDocument_OperatorSubscriptWithQsizetype(const QJsonDocument* self, ptrdiff_t i);
+QJsonValue* QJsonDocument_OperatorSubscriptWithQsizetype(const QJsonDocument* self, long long i);
 bool QJsonDocument_OperatorEqual(const QJsonDocument* self, QJsonDocument* other);
 bool QJsonDocument_OperatorNotEqual(const QJsonDocument* self, QJsonDocument* other);
 bool QJsonDocument_IsNull(const QJsonDocument* self);

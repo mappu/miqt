@@ -26,7 +26,7 @@ QMessageAuthenticationCode* QMessageAuthenticationCode_new(int method);
 QMessageAuthenticationCode* QMessageAuthenticationCode_new2(int method, struct miqt_string key);
 void QMessageAuthenticationCode_Reset(QMessageAuthenticationCode* self);
 void QMessageAuthenticationCode_SetKey(QMessageAuthenticationCode* self, struct miqt_string key);
-void QMessageAuthenticationCode_AddData(QMessageAuthenticationCode* self, const char* data, ptrdiff_t length);
+void QMessageAuthenticationCode_AddData(QMessageAuthenticationCode* self, const char* data, long long length);
 void QMessageAuthenticationCode_AddDataWithData(QMessageAuthenticationCode* self, struct miqt_string data);
 bool QMessageAuthenticationCode_AddDataWithDevice(QMessageAuthenticationCode* self, QIODevice* device);
 struct miqt_string QMessageAuthenticationCode_Result(const QMessageAuthenticationCode* self);

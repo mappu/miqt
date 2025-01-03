@@ -190,7 +190,7 @@ void QDockWidget_virtualbase_ShowEvent(void* self, QShowEvent* event);
 void QDockWidget_override_virtual_HideEvent(void* self, intptr_t slot);
 void QDockWidget_virtualbase_HideEvent(void* self, QHideEvent* event);
 void QDockWidget_override_virtual_NativeEvent(void* self, intptr_t slot);
-bool QDockWidget_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
+bool QDockWidget_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long long* result);
 void QDockWidget_override_virtual_Metric(void* self, intptr_t slot);
 int QDockWidget_virtualbase_Metric(const void* self, int param1);
 void QDockWidget_override_virtual_InitPainter(void* self, intptr_t slot);

@@ -114,7 +114,7 @@ void QAbstractEventDispatcher_RemoveNativeEventFilter(QAbstractEventDispatcher* 
 	self->removeNativeEventFilter(filterObj);
 }
 
-bool QAbstractEventDispatcher_FilterNativeEvent(QAbstractEventDispatcher* self, struct miqt_string eventType, void* message, intptr_t* result) {
+bool QAbstractEventDispatcher_FilterNativeEvent(QAbstractEventDispatcher* self, struct miqt_string eventType, void* message, long long* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 	return self->filterNativeEvent(eventType_QByteArray, message, (qintptr*)(result));
 }

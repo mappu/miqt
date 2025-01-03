@@ -67,7 +67,7 @@ func NewQEventPoint() *QEventPoint {
 // NewQEventPoint2 constructs a new QEventPoint object.
 func NewQEventPoint2(pointId int, state QEventPoint__State, scenePosition *QPointF, globalPosition *QPointF) *QEventPoint {
 
-	ret := newQEventPoint(C.QEventPoint_new2((C.int)(pointId), (C.uint8_t)(state), scenePosition.cPointer(), globalPosition.cPointer()))
+	ret := newQEventPoint(C.QEventPoint_new2((C.int)(pointId), (C.uchar)(state), scenePosition.cPointer(), globalPosition.cPointer()))
 	ret.isSubclass = true
 	return ret
 }

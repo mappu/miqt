@@ -82,25 +82,23 @@ void QCameraZoomControl_ZoomTo(QCameraZoomControl* self, double optical, double 
 }
 
 void QCameraZoomControl_MaximumOpticalZoomChanged(QCameraZoomControl* self, double param1) {
-	self->maximumOpticalZoomChanged(static_cast<qreal>(param1));
+	self->maximumOpticalZoomChanged(static_cast<double>(param1));
 }
 
 void QCameraZoomControl_connect_MaximumOpticalZoomChanged(QCameraZoomControl* self, intptr_t slot) {
-	QCameraZoomControl::connect(self, static_cast<void (QCameraZoomControl::*)(qreal)>(&QCameraZoomControl::maximumOpticalZoomChanged), self, [=](qreal param1) {
-		qreal param1_ret = param1;
-		double sigval1 = static_cast<double>(param1_ret);
+	QCameraZoomControl::connect(self, static_cast<void (QCameraZoomControl::*)(double)>(&QCameraZoomControl::maximumOpticalZoomChanged), self, [=](double param1) {
+		double sigval1 = param1;
 		miqt_exec_callback_QCameraZoomControl_MaximumOpticalZoomChanged(slot, sigval1);
 	});
 }
 
 void QCameraZoomControl_MaximumDigitalZoomChanged(QCameraZoomControl* self, double param1) {
-	self->maximumDigitalZoomChanged(static_cast<qreal>(param1));
+	self->maximumDigitalZoomChanged(static_cast<double>(param1));
 }
 
 void QCameraZoomControl_connect_MaximumDigitalZoomChanged(QCameraZoomControl* self, intptr_t slot) {
-	QCameraZoomControl::connect(self, static_cast<void (QCameraZoomControl::*)(qreal)>(&QCameraZoomControl::maximumDigitalZoomChanged), self, [=](qreal param1) {
-		qreal param1_ret = param1;
-		double sigval1 = static_cast<double>(param1_ret);
+	QCameraZoomControl::connect(self, static_cast<void (QCameraZoomControl::*)(double)>(&QCameraZoomControl::maximumDigitalZoomChanged), self, [=](double param1) {
+		double sigval1 = param1;
 		miqt_exec_callback_QCameraZoomControl_MaximumDigitalZoomChanged(slot, sigval1);
 	});
 }

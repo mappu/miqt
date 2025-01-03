@@ -220,7 +220,7 @@ void QCalendarWidget_virtualbase_ShowEvent(void* self, QShowEvent* event);
 void QCalendarWidget_override_virtual_HideEvent(void* self, intptr_t slot);
 void QCalendarWidget_virtualbase_HideEvent(void* self, QHideEvent* event);
 void QCalendarWidget_override_virtual_NativeEvent(void* self, intptr_t slot);
-bool QCalendarWidget_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
+bool QCalendarWidget_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long long* result);
 void QCalendarWidget_override_virtual_ChangeEvent(void* self, intptr_t slot);
 void QCalendarWidget_virtualbase_ChangeEvent(void* self, QEvent* param1);
 void QCalendarWidget_override_virtual_Metric(void* self, intptr_t slot);

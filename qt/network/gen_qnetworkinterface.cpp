@@ -38,12 +38,12 @@ bool QNetworkAddressEntry_OperatorNotEqual(const QNetworkAddressEntry* self, QNe
 	return (*self != *other);
 }
 
-int8_t QNetworkAddressEntry_DnsEligibility(const QNetworkAddressEntry* self) {
+signed char QNetworkAddressEntry_DnsEligibility(const QNetworkAddressEntry* self) {
 	QNetworkAddressEntry::DnsEligibilityStatus _ret = self->dnsEligibility();
-	return static_cast<int8_t>(_ret);
+	return static_cast<signed char>(_ret);
 }
 
-void QNetworkAddressEntry_SetDnsEligibility(QNetworkAddressEntry* self, int8_t status) {
+void QNetworkAddressEntry_SetDnsEligibility(QNetworkAddressEntry* self, signed char status) {
 	self->setDnsEligibility(static_cast<QNetworkAddressEntry::DnsEligibilityStatus>(status));
 }
 

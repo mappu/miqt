@@ -335,7 +335,7 @@ int QAudioOutput_State(const QAudioOutput* self) {
 }
 
 void QAudioOutput_SetVolume(QAudioOutput* self, double volume) {
-	self->setVolume(static_cast<qreal>(volume));
+	self->setVolume(static_cast<double>(volume));
 }
 
 double QAudioOutput_Volume(const QAudioOutput* self) {

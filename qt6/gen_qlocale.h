@@ -109,7 +109,7 @@ struct miqt_string QLocale_ToUpper(const QLocale* self, struct miqt_string str);
 struct miqt_string QLocale_ToLower(const QLocale* self, struct miqt_string str);
 struct miqt_string QLocale_CurrencySymbol(const QLocale* self);
 struct miqt_string QLocale_ToCurrencyString(const QLocale* self, long long param1);
-struct miqt_string QLocale_ToCurrencyStringWithQulonglong(const QLocale* self, unsigned long long param1);
+struct miqt_string QLocale_ToCurrencyStringWithUnsignedlonglong(const QLocale* self, unsigned long long param1);
 struct miqt_string QLocale_ToCurrencyStringWithShort(const QLocale* self, int16_t i);
 struct miqt_string QLocale_ToCurrencyStringWithUshort(const QLocale* self, uint16_t i);
 struct miqt_string QLocale_ToCurrencyStringWithInt(const QLocale* self, int i);

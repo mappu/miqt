@@ -96,7 +96,7 @@ func NewQByteArrayMatcher6(pattern string, length int64) *QByteArrayMatcher {
 	pattern_Cstring := C.CString(pattern)
 	defer C.free(unsafe.Pointer(pattern_Cstring))
 
-	ret := newQByteArrayMatcher(C.QByteArrayMatcher_new6(pattern_Cstring, (C.ptrdiff_t)(length)))
+	ret := newQByteArrayMatcher(C.QByteArrayMatcher_new6(pattern_Cstring, (C.longlong)(length)))
 	ret.isSubclass = true
 	return ret
 }
@@ -115,7 +115,7 @@ func (this *QByteArrayMatcher) SetPattern(pattern []byte) {
 func (this *QByteArrayMatcher) IndexIn(str string, lenVal int64) int64 {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	return (int64)(C.QByteArrayMatcher_IndexIn(this.h, str_Cstring, (C.ptrdiff_t)(lenVal)))
+	return (int64)(C.QByteArrayMatcher_IndexIn(this.h, str_Cstring, (C.longlong)(lenVal)))
 }
 
 func (this *QByteArrayMatcher) IndexInWithData(data QByteArrayView) int64 {
@@ -132,11 +132,11 @@ func (this *QByteArrayMatcher) Pattern() []byte {
 func (this *QByteArrayMatcher) IndexIn3(str string, lenVal int64, from int64) int64 {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	return (int64)(C.QByteArrayMatcher_IndexIn3(this.h, str_Cstring, (C.ptrdiff_t)(lenVal), (C.ptrdiff_t)(from)))
+	return (int64)(C.QByteArrayMatcher_IndexIn3(this.h, str_Cstring, (C.longlong)(lenVal), (C.longlong)(from)))
 }
 
 func (this *QByteArrayMatcher) IndexIn2(data QByteArrayView, from int64) int64 {
-	return (int64)(C.QByteArrayMatcher_IndexIn2(this.h, data.cPointer(), (C.ptrdiff_t)(from)))
+	return (int64)(C.QByteArrayMatcher_IndexIn2(this.h, data.cPointer(), (C.longlong)(from)))
 }
 
 // Delete this object from C++ memory.

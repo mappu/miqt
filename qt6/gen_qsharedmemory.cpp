@@ -272,13 +272,13 @@ struct miqt_string QSharedMemory_NativeKey(const QSharedMemory* self) {
 	return _ms;
 }
 
-bool QSharedMemory_Create(QSharedMemory* self, ptrdiff_t size) {
+bool QSharedMemory_Create(QSharedMemory* self, long long size) {
 	return self->create((qsizetype)(size));
 }
 
-ptrdiff_t QSharedMemory_Size(const QSharedMemory* self) {
+long long QSharedMemory_Size(const QSharedMemory* self) {
 	qsizetype _ret = self->size();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 bool QSharedMemory_Attach(QSharedMemory* self) {
@@ -351,7 +351,7 @@ struct miqt_string QSharedMemory_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QSharedMemory_Create2(QSharedMemory* self, ptrdiff_t size, int mode) {
+bool QSharedMemory_Create2(QSharedMemory* self, long long size, int mode) {
 	return self->create((qsizetype)(size), static_cast<QSharedMemory::AccessMode>(mode));
 }
 

@@ -208,7 +208,7 @@ void QToolBar_virtualbase_ShowEvent(void* self, QShowEvent* event);
 void QToolBar_override_virtual_HideEvent(void* self, intptr_t slot);
 void QToolBar_virtualbase_HideEvent(void* self, QHideEvent* event);
 void QToolBar_override_virtual_NativeEvent(void* self, intptr_t slot);
-bool QToolBar_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
+bool QToolBar_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long long* result);
 void QToolBar_override_virtual_Metric(void* self, intptr_t slot);
 int QToolBar_virtualbase_Metric(const void* self, int param1);
 void QToolBar_override_virtual_InitPainter(void* self, intptr_t slot);

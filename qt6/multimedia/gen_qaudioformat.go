@@ -131,7 +131,7 @@ func (this *QAudioFormat) SampleRate() int {
 }
 
 func (this *QAudioFormat) SetChannelConfig(config QAudioFormat__ChannelConfig) {
-	C.QAudioFormat_SetChannelConfig(this.h, (C.uint32_t)(config))
+	C.QAudioFormat_SetChannelConfig(this.h, (C.uint)(config))
 }
 
 func (this *QAudioFormat) ChannelConfig() QAudioFormat__ChannelConfig {

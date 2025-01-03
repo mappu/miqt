@@ -12,7 +12,7 @@ QRandomGenerator* QRandomGenerator_new() {
 	return new QRandomGenerator();
 }
 
-QRandomGenerator* QRandomGenerator_new2(const unsigned int* seedBuffer, ptrdiff_t lenVal) {
+QRandomGenerator* QRandomGenerator_new2(const unsigned int* seedBuffer, long long lenVal) {
 	return new QRandomGenerator(static_cast<const quint32*>(seedBuffer), (qsizetype)(lenVal));
 }
 
@@ -163,7 +163,7 @@ QRandomGenerator64* QRandomGenerator64_new() {
 	return new QRandomGenerator64();
 }
 
-QRandomGenerator64* QRandomGenerator64_new2(const unsigned int* seedBuffer, ptrdiff_t lenVal) {
+QRandomGenerator64* QRandomGenerator64_new2(const unsigned int* seedBuffer, long long lenVal) {
 	return new QRandomGenerator64(static_cast<const quint32*>(seedBuffer), (qsizetype)(lenVal));
 }
 

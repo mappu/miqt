@@ -160,7 +160,7 @@ void QSvgWidget_virtualbase_ShowEvent(void* self, QShowEvent* event);
 void QSvgWidget_override_virtual_HideEvent(void* self, intptr_t slot);
 void QSvgWidget_virtualbase_HideEvent(void* self, QHideEvent* event);
 void QSvgWidget_override_virtual_NativeEvent(void* self, intptr_t slot);
-bool QSvgWidget_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
+bool QSvgWidget_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long long* result);
 void QSvgWidget_override_virtual_ChangeEvent(void* self, intptr_t slot);
 void QSvgWidget_virtualbase_ChangeEvent(void* self, QEvent* param1);
 void QSvgWidget_override_virtual_Metric(void* self, intptr_t slot);

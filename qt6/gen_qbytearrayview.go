@@ -84,49 +84,49 @@ func (this *QByteArrayView) ConstData() string {
 }
 
 func (this *QByteArrayView) OperatorSubscript(n int64) int8 {
-	return (int8)(C.QByteArrayView_OperatorSubscript(this.h, (C.ptrdiff_t)(n)))
+	return (int8)(C.QByteArrayView_OperatorSubscript(this.h, (C.longlong)(n)))
 }
 
 func (this *QByteArrayView) At(n int64) int8 {
-	return (int8)(C.QByteArrayView_At(this.h, (C.ptrdiff_t)(n)))
+	return (int8)(C.QByteArrayView_At(this.h, (C.longlong)(n)))
 }
 
 func (this *QByteArrayView) First(n int64) *QByteArrayView {
-	_goptr := newQByteArrayView(C.QByteArrayView_First(this.h, (C.ptrdiff_t)(n)))
+	_goptr := newQByteArrayView(C.QByteArrayView_First(this.h, (C.longlong)(n)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QByteArrayView) Last(n int64) *QByteArrayView {
-	_goptr := newQByteArrayView(C.QByteArrayView_Last(this.h, (C.ptrdiff_t)(n)))
+	_goptr := newQByteArrayView(C.QByteArrayView_Last(this.h, (C.longlong)(n)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QByteArrayView) Sliced(pos int64) *QByteArrayView {
-	_goptr := newQByteArrayView(C.QByteArrayView_Sliced(this.h, (C.ptrdiff_t)(pos)))
+	_goptr := newQByteArrayView(C.QByteArrayView_Sliced(this.h, (C.longlong)(pos)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QByteArrayView) Sliced2(pos int64, n int64) *QByteArrayView {
-	_goptr := newQByteArrayView(C.QByteArrayView_Sliced2(this.h, (C.ptrdiff_t)(pos), (C.ptrdiff_t)(n)))
+	_goptr := newQByteArrayView(C.QByteArrayView_Sliced2(this.h, (C.longlong)(pos), (C.longlong)(n)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QByteArrayView) Chopped(lenVal int64) *QByteArrayView {
-	_goptr := newQByteArrayView(C.QByteArrayView_Chopped(this.h, (C.ptrdiff_t)(lenVal)))
+	_goptr := newQByteArrayView(C.QByteArrayView_Chopped(this.h, (C.longlong)(lenVal)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QByteArrayView) Truncate(n int64) {
-	C.QByteArrayView_Truncate(this.h, (C.ptrdiff_t)(n))
+	C.QByteArrayView_Truncate(this.h, (C.longlong)(n))
 }
 
 func (this *QByteArrayView) Chop(n int64) {
-	C.QByteArrayView_Chop(this.h, (C.ptrdiff_t)(n))
+	C.QByteArrayView_Chop(this.h, (C.longlong)(n))
 }
 
 func (this *QByteArrayView) Trimmed() *QByteArrayView {
@@ -212,7 +212,7 @@ func (this *QByteArrayView) LastIndexOf(a QByteArrayView) int64 {
 }
 
 func (this *QByteArrayView) LastIndexOf2(a QByteArrayView, from int64) int64 {
-	return (int64)(C.QByteArrayView_LastIndexOf2(this.h, a.cPointer(), (C.ptrdiff_t)(from)))
+	return (int64)(C.QByteArrayView_LastIndexOf2(this.h, a.cPointer(), (C.longlong)(from)))
 }
 
 func (this *QByteArrayView) LastIndexOfWithCh(ch int8) int64 {
@@ -360,15 +360,15 @@ func (this *QByteArrayView) ToDouble1(ok *bool) float64 {
 }
 
 func (this *QByteArrayView) IndexOf2(a QByteArrayView, from int64) int64 {
-	return (int64)(C.QByteArrayView_IndexOf2(this.h, a.cPointer(), (C.ptrdiff_t)(from)))
+	return (int64)(C.QByteArrayView_IndexOf2(this.h, a.cPointer(), (C.longlong)(from)))
 }
 
 func (this *QByteArrayView) IndexOf22(ch int8, from int64) int64 {
-	return (int64)(C.QByteArrayView_IndexOf22(this.h, (C.char)(ch), (C.ptrdiff_t)(from)))
+	return (int64)(C.QByteArrayView_IndexOf22(this.h, (C.char)(ch), (C.longlong)(from)))
 }
 
 func (this *QByteArrayView) LastIndexOf22(ch int8, from int64) int64 {
-	return (int64)(C.QByteArrayView_LastIndexOf22(this.h, (C.char)(ch), (C.ptrdiff_t)(from)))
+	return (int64)(C.QByteArrayView_LastIndexOf22(this.h, (C.char)(ch), (C.longlong)(from)))
 }
 
 func (this *QByteArrayView) Compare2(a QByteArrayView, cs CaseSensitivity) int {

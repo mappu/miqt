@@ -80,13 +80,13 @@ struct miqt_array /* of int */  QVersionNumber_Segments(const QVersionNumber* se
 	return _out;
 }
 
-int QVersionNumber_SegmentAt(const QVersionNumber* self, ptrdiff_t index) {
+int QVersionNumber_SegmentAt(const QVersionNumber* self, long long index) {
 	return self->segmentAt((qsizetype)(index));
 }
 
-ptrdiff_t QVersionNumber_SegmentCount(const QVersionNumber* self) {
+long long QVersionNumber_SegmentCount(const QVersionNumber* self) {
 	qsizetype _ret = self->segmentCount();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 bool QVersionNumber_IsPrefixOf(const QVersionNumber* self, QVersionNumber* other) {
@@ -116,7 +116,7 @@ QVersionNumber* QVersionNumber_FromString(QAnyStringView* stringVal) {
 	return new QVersionNumber(QVersionNumber::fromString(*stringVal));
 }
 
-QVersionNumber* QVersionNumber_FromString2(QAnyStringView* stringVal, ptrdiff_t* suffixIndex) {
+QVersionNumber* QVersionNumber_FromString2(QAnyStringView* stringVal, long long* suffixIndex) {
 	return new QVersionNumber(QVersionNumber::fromString(*stringVal, (qsizetype*)(suffixIndex)));
 }
 

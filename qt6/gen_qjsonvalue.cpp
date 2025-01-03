@@ -170,7 +170,7 @@ QJsonValue* QJsonValue_OperatorSubscript(const QJsonValue* self, struct miqt_str
 	return new QJsonValue(self->operator[](key_QString));
 }
 
-QJsonValue* QJsonValue_OperatorSubscriptWithQsizetype(const QJsonValue* self, ptrdiff_t i) {
+QJsonValue* QJsonValue_OperatorSubscriptWithQsizetype(const QJsonValue* self, long long i) {
 	return new QJsonValue(self->operator[]((qsizetype)(i)));
 }
 
@@ -284,7 +284,7 @@ QJsonObject* QJsonValueConstRef_ToObject(const QJsonValueConstRef* self) {
 	return new QJsonObject(self->toObject());
 }
 
-QJsonValue* QJsonValueConstRef_OperatorSubscriptWithQsizetype(const QJsonValueConstRef* self, ptrdiff_t i) {
+QJsonValue* QJsonValueConstRef_OperatorSubscriptWithQsizetype(const QJsonValueConstRef* self, long long i) {
 	return new QJsonValue(self->operator[]((qsizetype)(i)));
 }
 
@@ -337,11 +337,11 @@ QJsonValueRef* QJsonValueRef_new(QJsonValueRef* param1) {
 	return new QJsonValueRef(*param1);
 }
 
-QJsonValueRef* QJsonValueRef_new2(QJsonArray* array, ptrdiff_t idx) {
+QJsonValueRef* QJsonValueRef_new2(QJsonArray* array, long long idx) {
 	return new QJsonValueRef(array, (qsizetype)(idx));
 }
 
-QJsonValueRef* QJsonValueRef_new3(QJsonObject* object, ptrdiff_t idx) {
+QJsonValueRef* QJsonValueRef_new3(QJsonObject* object, long long idx) {
 	return new QJsonValueRef(object, (qsizetype)(idx));
 }
 
@@ -430,7 +430,7 @@ QJsonObject* QJsonValueRef_ToObject(const QJsonValueRef* self) {
 	return new QJsonObject(self->toObject());
 }
 
-QJsonValue* QJsonValueRef_OperatorSubscriptWithQsizetype(const QJsonValueRef* self, ptrdiff_t i) {
+QJsonValue* QJsonValueRef_OperatorSubscriptWithQsizetype(const QJsonValueRef* self, long long i) {
 	return new QJsonValue(self->operator[]((qsizetype)(i)));
 }
 

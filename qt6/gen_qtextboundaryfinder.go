@@ -97,7 +97,7 @@ func NewQTextBoundaryFinder3(typeVal QTextBoundaryFinder__BoundaryType, stringVa
 // NewQTextBoundaryFinder4 constructs a new QTextBoundaryFinder object.
 func NewQTextBoundaryFinder4(typeVal QTextBoundaryFinder__BoundaryType, chars *QChar, length int64) *QTextBoundaryFinder {
 
-	ret := newQTextBoundaryFinder(C.QTextBoundaryFinder_new4((C.int)(typeVal), chars.cPointer(), (C.ptrdiff_t)(length)))
+	ret := newQTextBoundaryFinder(C.QTextBoundaryFinder_new4((C.int)(typeVal), chars.cPointer(), (C.longlong)(length)))
 	ret.isSubclass = true
 	return ret
 }
@@ -105,7 +105,7 @@ func NewQTextBoundaryFinder4(typeVal QTextBoundaryFinder__BoundaryType, chars *Q
 // NewQTextBoundaryFinder5 constructs a new QTextBoundaryFinder object.
 func NewQTextBoundaryFinder5(typeVal QTextBoundaryFinder__BoundaryType, chars *QChar, length int64, buffer *byte) *QTextBoundaryFinder {
 
-	ret := newQTextBoundaryFinder(C.QTextBoundaryFinder_new5((C.int)(typeVal), chars.cPointer(), (C.ptrdiff_t)(length), (*C.uchar)(unsafe.Pointer(buffer))))
+	ret := newQTextBoundaryFinder(C.QTextBoundaryFinder_new5((C.int)(typeVal), chars.cPointer(), (C.longlong)(length), (*C.uchar)(unsafe.Pointer(buffer))))
 	ret.isSubclass = true
 	return ret
 }
@@ -113,7 +113,7 @@ func NewQTextBoundaryFinder5(typeVal QTextBoundaryFinder__BoundaryType, chars *Q
 // NewQTextBoundaryFinder6 constructs a new QTextBoundaryFinder object.
 func NewQTextBoundaryFinder6(typeVal QTextBoundaryFinder__BoundaryType, chars *QChar, length int64, buffer *byte, bufferSize int64) *QTextBoundaryFinder {
 
-	ret := newQTextBoundaryFinder(C.QTextBoundaryFinder_new6((C.int)(typeVal), chars.cPointer(), (C.ptrdiff_t)(length), (*C.uchar)(unsafe.Pointer(buffer)), (C.ptrdiff_t)(bufferSize)))
+	ret := newQTextBoundaryFinder(C.QTextBoundaryFinder_new6((C.int)(typeVal), chars.cPointer(), (C.longlong)(length), (*C.uchar)(unsafe.Pointer(buffer)), (C.longlong)(bufferSize)))
 	ret.isSubclass = true
 	return ret
 }
@@ -150,7 +150,7 @@ func (this *QTextBoundaryFinder) Position() int64 {
 }
 
 func (this *QTextBoundaryFinder) SetPosition(position int64) {
-	C.QTextBoundaryFinder_SetPosition(this.h, (C.ptrdiff_t)(position))
+	C.QTextBoundaryFinder_SetPosition(this.h, (C.longlong)(position))
 }
 
 func (this *QTextBoundaryFinder) ToNextBoundary() int64 {

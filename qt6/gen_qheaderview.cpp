@@ -686,14 +686,14 @@ public:
 	intptr_t handle__MoveCursor = 0;
 
 	// Subclass to allow providing a Go implementation
-	virtual QModelIndex moveCursor(QAbstractItemView::CursorAction param1, Qt::KeyboardModifiers param2) override {
+	virtual QModelIndex moveCursor(QAbstractItemView::CursorAction param1, QFlags<Qt::KeyboardModifier> param2) override {
 		if (handle__MoveCursor == 0) {
 			return QHeaderView::moveCursor(param1, param2);
 		}
 		
 		QAbstractItemView::CursorAction param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-		Qt::KeyboardModifiers param2_ret = param2;
+		QFlags<Qt::KeyboardModifier> param2_ret = param2;
 		int sigval2 = static_cast<int>(param2_ret);
 
 		QModelIndex* callback_return_value = miqt_exec_callback_QHeaderView_MoveCursor(this, handle__MoveCursor, sigval1, sigval2);
@@ -704,7 +704,7 @@ public:
 	// Wrapper to allow calling protected method
 	QModelIndex* virtualbase_MoveCursor(int param1, int param2) {
 
-		return new QModelIndex(QHeaderView::moveCursor(static_cast<QAbstractItemView::CursorAction>(param1), static_cast<Qt::KeyboardModifiers>(param2)));
+		return new QModelIndex(QHeaderView::moveCursor(static_cast<QAbstractItemView::CursorAction>(param1), static_cast<QFlags<Qt::KeyboardModifier>>(param2)));
 
 	}
 
