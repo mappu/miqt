@@ -67,12 +67,14 @@ func clangExec(ctx context.Context, clangBin, inputHeader string, cflags []strin
 		inner, innerErr = clangStripUpToFile(pr, matcher)
 	}()
 
+	// Go documentation says: only call cmd.Wait once all reads from the
+	// StdoutPipe have completed
+	wg.Wait()
+
 	err = cmd.Wait()
 	if err != nil {
 		return nil, fmt.Errorf("Command: %w", err)
 	}
-
-	wg.Wait()
 
 	return inner, innerErr
 }
