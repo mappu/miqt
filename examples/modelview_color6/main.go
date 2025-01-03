@@ -23,16 +23,16 @@ func main() {
 
 		switch qt.ItemDataRole(role) {
 		case qt.ForegroundRole:
-			if idx.Row() % 2 == 0 {
-				return qt.NewQVariant4099(qt.NewQColor3(0, 0, 0))
+			if idx.Row()%2 == 0 {
+				return qt.NewQColor3(0, 0, 0).ToQVariant()
 			} else {
-				return qt.NewQVariant4099(qt.NewQColor3(255, 0, 0))
+				return qt.NewQColor3(255, 0, 0).ToQVariant()
 			}
 		case qt.BackgroundRole:
-			if idx.Row() % 2 == 0 {
-				return qt.NewQVariant4099(qt.NewQColor3(255, 255, 255))
+			if idx.Row()%2 == 0 {
+				return qt.NewQColor3(255, 255, 255).ToQVariant()
 			} else {
-				return qt.NewQVariant4099(qt.NewQColor3(80, 80, 80))
+				return qt.NewQColor3(80, 80, 80).ToQVariant()
 			}
 		case qt.DisplayRole:
 			return qt.NewQVariant14(fmt.Sprintf("this is row %d", idx.Row()))
