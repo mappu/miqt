@@ -89,6 +89,13 @@ func (this *QScriptString) ToString() string {
 	return _ret
 }
 
+func (this *QScriptString) ToQString() string {
+	var _ms C.struct_miqt_string = C.QScriptString_ToQString(this.h)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
+	return _ret
+}
+
 func (this *QScriptString) ToArrayIndex1(ok *bool) uint {
 	return (uint)(C.QScriptString_ToArrayIndex1(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }

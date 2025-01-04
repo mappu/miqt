@@ -171,6 +171,12 @@ func (this *QSizePolicy) OperatorNotEqual(s *QSizePolicy) bool {
 	return (bool)(C.QSizePolicy_OperatorNotEqual(this.h, s.cPointer()))
 }
 
+func (this *QSizePolicy) ToQVariant() *QVariant {
+	_goptr := newQVariant(C.QSizePolicy_ToQVariant(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 func (this *QSizePolicy) HorizontalStretch() int {
 	return (int)(C.QSizePolicy_HorizontalStretch(this.h))
 }

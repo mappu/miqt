@@ -113,6 +113,11 @@ QRgba64* QRgba64_Unpremultiplied(const QRgba64* self) {
 	return new QRgba64(self->unpremultiplied());
 }
 
+unsigned long long QRgba64_ToUnsignedLongLong(const QRgba64* self) {
+	quint64 _ret = self->operator unsigned long long();
+	return static_cast<unsigned long long>(_ret);
+}
+
 void QRgba64_OperatorAssign(QRgba64* self, unsigned long long _rgba) {
 	self->operator=(static_cast<quint64>(_rgba));
 }

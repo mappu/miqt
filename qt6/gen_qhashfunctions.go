@@ -62,6 +62,10 @@ func NewQHashSeed2(d uint64) *QHashSeed {
 	return ret
 }
 
+func (this *QHashSeed) ToUnsignedLong() uint64 {
+	return (uint64)(C.QHashSeed_ToUnsignedLong(this.h))
+}
+
 func QHashSeed_GlobalSeed() *QHashSeed {
 	_goptr := newQHashSeed(C.QHashSeed_GlobalSeed())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

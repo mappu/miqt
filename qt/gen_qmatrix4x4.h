@@ -23,6 +23,7 @@ class QQuaternion;
 class QRect;
 class QRectF;
 class QTransform;
+class QVariant;
 class QVector3D;
 class QVector4D;
 #else
@@ -34,6 +35,7 @@ typedef struct QQuaternion QQuaternion;
 typedef struct QRect QRect;
 typedef struct QRectF QRectF;
 typedef struct QTransform QTransform;
+typedef struct QVariant QVariant;
 typedef struct QVector3D QVector3D;
 typedef struct QVector4D QVector4D;
 #endif
@@ -98,6 +100,7 @@ float* QMatrix4x4_Data(QMatrix4x4* self);
 const float* QMatrix4x4_Data2(const QMatrix4x4* self);
 const float* QMatrix4x4_ConstData(const QMatrix4x4* self);
 void QMatrix4x4_Optimize(QMatrix4x4* self);
+QVariant* QMatrix4x4_ToQVariant(const QMatrix4x4* self);
 QMatrix4x4* QMatrix4x4_Inverted1(const QMatrix4x4* self, bool* invertible);
 void QMatrix4x4_Rotate4(QMatrix4x4* self, float angle, float x, float y, float z);
 void QMatrix4x4_Viewport5(QMatrix4x4* self, float left, float bottom, float width, float height, float nearPlane);

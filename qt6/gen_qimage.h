@@ -30,6 +30,7 @@ class QRect;
 class QSize;
 class QSizeF;
 class QTransform;
+class QVariant;
 #else
 typedef struct QByteArrayView QByteArrayView;
 typedef struct QColor QColor;
@@ -46,6 +47,7 @@ typedef struct QRect QRect;
 typedef struct QSize QSize;
 typedef struct QSizeF QSizeF;
 typedef struct QTransform QTransform;
+typedef struct QVariant QVariant;
 #endif
 
 QImage* QImage_new();
@@ -65,6 +67,7 @@ bool QImage_IsNull(const QImage* self);
 int QImage_DevType(const QImage* self);
 bool QImage_OperatorEqual(const QImage* self, QImage* param1);
 bool QImage_OperatorNotEqual(const QImage* self, QImage* param1);
+QVariant* QImage_ToQVariant(const QImage* self);
 void QImage_Detach(QImage* self);
 bool QImage_IsDetached(const QImage* self);
 QImage* QImage_Copy(const QImage* self);

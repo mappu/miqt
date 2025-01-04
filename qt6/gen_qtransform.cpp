@@ -7,6 +7,7 @@
 #include <QRectF>
 #include <QRegion>
 #include <QTransform>
+#include <QVariant>
 #include <qtransform.h>
 #include "gen_qtransform.h"
 
@@ -190,6 +191,10 @@ QTransform* QTransform_OperatorMultiplyAssign(QTransform* self, QTransform* para
 
 QTransform* QTransform_OperatorMultiply(const QTransform* self, QTransform* o) {
 	return new QTransform(self->operator*(*o));
+}
+
+QVariant* QTransform_ToQVariant(const QTransform* self) {
+	return new QVariant(self->operator QVariant());
 }
 
 void QTransform_Reset(QTransform* self) {

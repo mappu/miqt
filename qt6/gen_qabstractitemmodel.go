@@ -457,6 +457,12 @@ func (this *QPersistentModelIndex) OperatorAssignWithOther(other *QModelIndex) {
 	C.QPersistentModelIndex_OperatorAssignWithOther(this.h, other.cPointer())
 }
 
+func (this *QPersistentModelIndex) ToQModelIndex() *QModelIndex {
+	_goptr := newQModelIndex(C.QPersistentModelIndex_ToQModelIndex(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 func (this *QPersistentModelIndex) Row() int {
 	return (int)(C.QPersistentModelIndex_Row(this.h))
 }

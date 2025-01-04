@@ -148,6 +148,7 @@ struct miqt_string QCborValue_ToDiagnosticNotation1(const QCborValue* self, int 
 void QCborValue_Delete(QCborValue* self, bool isSubclass);
 
 QCborValueRef* QCborValueRef_new(QCborValueRef* param1);
+QCborValue* QCborValueRef_ToQCborValue(const QCborValueRef* self);
 void QCborValueRef_OperatorAssign(QCborValueRef* self, QCborValue* other);
 void QCborValueRef_OperatorAssignWithOther(QCborValueRef* self, QCborValueRef* other);
 int QCborValueRef_Type(const QCborValueRef* self);

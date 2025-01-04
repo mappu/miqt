@@ -357,6 +357,12 @@ func NewQJsonValueConstRef(param1 *QJsonValueConstRef) *QJsonValueConstRef {
 	return ret
 }
 
+func (this *QJsonValueConstRef) ToQJsonValue() *QJsonValue {
+	_goptr := newQJsonValue(C.QJsonValueConstRef_ToQJsonValue(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 func (this *QJsonValueConstRef) ToVariant() *QVariant {
 	_goptr := newQVariant(C.QJsonValueConstRef_ToVariant(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -552,6 +558,12 @@ func (this *QJsonValueRef) OperatorAssign(val *QJsonValue) {
 
 func (this *QJsonValueRef) OperatorAssignWithVal(val *QJsonValueRef) {
 	C.QJsonValueRef_OperatorAssignWithVal(this.h, val.cPointer())
+}
+
+func (this *QJsonValueRef) ToQJsonValue() *QJsonValue {
+	_goptr := newQJsonValue(C.QJsonValueRef_ToQJsonValue(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QJsonValueRef) ToVariant() *QVariant {

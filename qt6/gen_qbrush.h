@@ -31,6 +31,7 @@ class QPixmap;
 class QPointF;
 class QRadialGradient;
 class QTransform;
+class QVariant;
 #else
 typedef struct QBrush QBrush;
 typedef struct QBrushData QBrushData;
@@ -44,6 +45,7 @@ typedef struct QPixmap QPixmap;
 typedef struct QPointF QPointF;
 typedef struct QRadialGradient QRadialGradient;
 typedef struct QTransform QTransform;
+typedef struct QVariant QVariant;
 #endif
 
 QBrush* QBrush_new();
@@ -60,6 +62,7 @@ QBrush* QBrush_new11(QColor* color, int bs);
 QBrush* QBrush_new12(int color, int bs);
 void QBrush_OperatorAssign(QBrush* self, QBrush* brush);
 void QBrush_Swap(QBrush* self, QBrush* other);
+QVariant* QBrush_ToQVariant(const QBrush* self);
 int QBrush_Style(const QBrush* self);
 void QBrush_SetStyle(QBrush* self, int style);
 QTransform* QBrush_Transform(const QBrush* self);

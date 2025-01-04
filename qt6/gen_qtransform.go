@@ -237,6 +237,12 @@ func (this *QTransform) OperatorMultiply(o *QTransform) *QTransform {
 	return _goptr
 }
 
+func (this *QTransform) ToQVariant() *QVariant {
+	_goptr := newQVariant(C.QTransform_ToQVariant(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 func (this *QTransform) Reset() {
 	C.QTransform_Reset(this.h)
 }

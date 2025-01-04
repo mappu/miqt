@@ -332,6 +332,12 @@ func (this *QTextLength) OperatorNotEqual(other *QTextLength) bool {
 	return (bool)(C.QTextLength_OperatorNotEqual(this.h, other.cPointer()))
 }
 
+func (this *QTextLength) ToQVariant() *QVariant {
+	_goptr := newQVariant(C.QTextLength_ToQVariant(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 // Delete this object from C++ memory.
 func (this *QTextLength) Delete() {
 	C.QTextLength_Delete(this.h, C.bool(this.isSubclass))
@@ -623,6 +629,12 @@ func (this *QTextFormat) OperatorEqual(rhs *QTextFormat) bool {
 
 func (this *QTextFormat) OperatorNotEqual(rhs *QTextFormat) bool {
 	return (bool)(C.QTextFormat_OperatorNotEqual(this.h, rhs.cPointer()))
+}
+
+func (this *QTextFormat) ToQVariant() *QVariant {
+	_goptr := newQVariant(C.QTextFormat_ToQVariant(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
 }
 
 func (this *QTextFormat) SetLayoutDirection(direction LayoutDirection) {

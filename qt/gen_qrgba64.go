@@ -162,6 +162,10 @@ func (this *QRgba64) Unpremultiplied() *QRgba64 {
 	return _goptr
 }
 
+func (this *QRgba64) ToUnsignedLongLong() uint64 {
+	return (uint64)(C.QRgba64_ToUnsignedLongLong(this.h))
+}
+
 func (this *QRgba64) OperatorAssign(_rgba uint64) {
 	C.QRgba64_OperatorAssign(this.h, (C.ulonglong)(_rgba))
 }

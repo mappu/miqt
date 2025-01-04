@@ -3,6 +3,7 @@
 #include <QPixmap>
 #include <QPoint>
 #include <QScreen>
+#include <QVariant>
 #include <qcursor.h>
 #include "gen_qcursor.h"
 
@@ -53,6 +54,10 @@ void QCursor_OperatorAssign(QCursor* self, QCursor* cursor) {
 
 void QCursor_Swap(QCursor* self, QCursor* other) {
 	self->swap(*other);
+}
+
+QVariant* QCursor_ToQVariant(const QCursor* self) {
+	return new QVariant(self->operator QVariant());
 }
 
 int QCursor_Shape(const QCursor* self) {

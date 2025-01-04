@@ -550,6 +550,12 @@ func (this *QFont) OperatorLesser(param1 *QFont) bool {
 	return (bool)(C.QFont_OperatorLesser(this.h, param1.cPointer()))
 }
 
+func (this *QFont) ToQVariant() *QVariant {
+	_goptr := newQVariant(C.QFont_ToQVariant(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 func (this *QFont) IsCopyOf(param1 *QFont) bool {
 	return (bool)(C.QFont_IsCopyOf(this.h, param1.cPointer()))
 }

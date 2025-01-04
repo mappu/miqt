@@ -150,6 +150,7 @@ struct miqt_string QCborValue_ToDiagnosticNotation1(const QCborValue* self, int 
 void QCborValue_Delete(QCborValue* self, bool isSubclass);
 
 QCborValueConstRef* QCborValueConstRef_new(QCborValueConstRef* param1);
+QCborValue* QCborValueConstRef_ToQCborValue(const QCborValueConstRef* self);
 int QCborValueConstRef_Type(const QCborValueConstRef* self);
 bool QCborValueConstRef_IsInteger(const QCborValueConstRef* self);
 bool QCborValueConstRef_IsByteArray(const QCborValueConstRef* self);
@@ -221,6 +222,7 @@ void QCborValueRef_OperatorAssign(QCborValueRef* self, QCborValue* other);
 void QCborValueRef_OperatorAssignWithOther(QCborValueRef* self, QCborValueRef* other);
 QCborValueRef* QCborValueRef_OperatorSubscript(QCborValueRef* self, long long key);
 QCborValueRef* QCborValueRef_OperatorSubscript2(QCborValueRef* self, struct miqt_string key);
+QCborValue* QCborValueRef_ToQCborValue(const QCborValueRef* self);
 int QCborValueRef_Type(const QCborValueRef* self);
 bool QCborValueRef_IsInteger(const QCborValueRef* self);
 bool QCborValueRef_IsByteArray(const QCborValueRef* self);

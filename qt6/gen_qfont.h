@@ -17,9 +17,11 @@ extern "C" {
 #ifdef __cplusplus
 class QFont;
 class QPaintDevice;
+class QVariant;
 #else
 typedef struct QFont QFont;
 typedef struct QPaintDevice QPaintDevice;
+typedef struct QVariant QVariant;
 #endif
 
 QFont* QFont_new();
@@ -84,6 +86,7 @@ void QFont_OperatorAssign(QFont* self, QFont* param1);
 bool QFont_OperatorEqual(const QFont* self, QFont* param1);
 bool QFont_OperatorNotEqual(const QFont* self, QFont* param1);
 bool QFont_OperatorLesser(const QFont* self, QFont* param1);
+QVariant* QFont_ToQVariant(const QFont* self);
 bool QFont_IsCopyOf(const QFont* self, QFont* param1);
 struct miqt_string QFont_Key(const QFont* self);
 struct miqt_string QFont_ToString(const QFont* self);

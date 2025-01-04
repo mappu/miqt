@@ -8,6 +8,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QVariant>
 #include <QWindow>
 #include <qicon.h>
 #include "gen_qicon.h"
@@ -44,6 +45,10 @@ void QIcon_OperatorAssign(QIcon* self, QIcon* other) {
 
 void QIcon_Swap(QIcon* self, QIcon* other) {
 	self->swap(*other);
+}
+
+QVariant* QIcon_ToQVariant(const QIcon* self) {
+	return new QVariant(self->operator QVariant());
 }
 
 QPixmap* QIcon_Pixmap(const QIcon* self, QSize* size) {

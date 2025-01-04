@@ -19,11 +19,13 @@ class QBitmap;
 class QPoint;
 class QRect;
 class QRegion;
+class QVariant;
 #else
 typedef struct QBitmap QBitmap;
 typedef struct QPoint QPoint;
 typedef struct QRect QRect;
 typedef struct QRegion QRegion;
+typedef struct QVariant QVariant;
 #endif
 
 QRegion* QRegion_new();
@@ -75,6 +77,7 @@ QRegion* QRegion_OperatorMinusAssign(QRegion* self, QRegion* r);
 void QRegion_OperatorBitwiseNotAssign(QRegion* self, QRegion* r);
 bool QRegion_OperatorEqual(const QRegion* self, QRegion* r);
 bool QRegion_OperatorNotEqual(const QRegion* self, QRegion* r);
+QVariant* QRegion_ToQVariant(const QRegion* self);
 void QRegion_Delete(QRegion* self, bool isSubclass);
 
 #ifdef __cplusplus

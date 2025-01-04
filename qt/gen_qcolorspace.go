@@ -204,6 +204,12 @@ func (this *QColorSpace) TransformationToColorSpace(colorspace *QColorSpace) *QC
 	return _goptr
 }
 
+func (this *QColorSpace) ToQVariant() *QVariant {
+	_goptr := newQVariant(C.QColorSpace_ToQVariant(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 func (this *QColorSpace) SetTransferFunction2(transferFunction QColorSpace__TransferFunction, gamma float32) {
 	C.QColorSpace_SetTransferFunction2(this.h, (C.int)(transferFunction), (C.float)(gamma))
 }

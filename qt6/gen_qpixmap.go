@@ -131,6 +131,12 @@ func (this *QPixmap) Swap(other *QPixmap) {
 	C.QPixmap_Swap(this.h, other.cPointer())
 }
 
+func (this *QPixmap) ToQVariant() *QVariant {
+	_goptr := newQVariant(C.QPixmap_ToQVariant(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 func (this *QPixmap) IsNull() bool {
 	return (bool)(C.QPixmap_IsNull(this.h))
 }

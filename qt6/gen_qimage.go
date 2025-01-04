@@ -214,6 +214,12 @@ func (this *QImage) OperatorNotEqual(param1 *QImage) bool {
 	return (bool)(C.QImage_OperatorNotEqual(this.h, param1.cPointer()))
 }
 
+func (this *QImage) ToQVariant() *QVariant {
+	_goptr := newQVariant(C.QImage_ToQVariant(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 func (this *QImage) Detach() {
 	C.QImage_Detach(this.h)
 }

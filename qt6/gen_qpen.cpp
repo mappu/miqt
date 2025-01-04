@@ -2,6 +2,7 @@
 #include <QColor>
 #include <QList>
 #include <QPen>
+#include <QVariant>
 #include <qpen.h>
 #include "gen_qpen.h"
 
@@ -169,6 +170,10 @@ bool QPen_OperatorEqual(const QPen* self, QPen* p) {
 
 bool QPen_OperatorNotEqual(const QPen* self, QPen* p) {
 	return (*self != *p);
+}
+
+QVariant* QPen_ToQVariant(const QPen* self) {
+	return new QVariant(self->operator QVariant());
 }
 
 bool QPen_IsDetached(QPen* self) {

@@ -1,5 +1,6 @@
 #include <QPoint>
 #include <QPointF>
+#include <QVariant>
 #include <QVector2D>
 #include <QVector3D>
 #include <QVector4D>
@@ -169,6 +170,10 @@ QPoint* QVector4D_ToPoint(const QVector4D* self) {
 
 QPointF* QVector4D_ToPointF(const QVector4D* self) {
 	return new QPointF(self->toPointF());
+}
+
+QVariant* QVector4D_ToQVariant(const QVector4D* self) {
+	return new QVariant(self->operator QVariant());
 }
 
 void QVector4D_Delete(QVector4D* self, bool isSubclass) {

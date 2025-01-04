@@ -4,6 +4,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QVariant>
 #include <qkeysequence.h>
 #include "gen_qkeysequence.h"
 
@@ -142,6 +143,10 @@ struct miqt_array /* of QKeySequence* */  QKeySequence_KeyBindings(int key) {
 	_out.len = _ret.length();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
+}
+
+QVariant* QKeySequence_ToQVariant(const QKeySequence* self) {
+	return new QVariant(self->operator QVariant());
 }
 
 QKeyCombination* QKeySequence_OperatorSubscript(const QKeySequence* self, unsigned int i) {

@@ -792,6 +792,12 @@ func NewQCborValueRef(param1 *QCborValueRef) *QCborValueRef {
 	return ret
 }
 
+func (this *QCborValueRef) ToQCborValue() *QCborValue {
+	_goptr := newQCborValue(C.QCborValueRef_ToQCborValue(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 func (this *QCborValueRef) OperatorAssign(other *QCborValue) {
 	C.QCborValueRef_OperatorAssign(this.h, other.cPointer())
 }

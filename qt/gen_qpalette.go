@@ -151,6 +151,12 @@ func (this *QPalette) Swap(other *QPalette) {
 	C.QPalette_Swap(this.h, other.cPointer())
 }
 
+func (this *QPalette) ToQVariant() *QVariant {
+	_goptr := newQVariant(C.QPalette_ToQVariant(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 func (this *QPalette) CurrentColorGroup() QPalette__ColorGroup {
 	return (QPalette__ColorGroup)(C.QPalette_CurrentColorGroup(this.h))
 }

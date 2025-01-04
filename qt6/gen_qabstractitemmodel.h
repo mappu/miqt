@@ -105,6 +105,7 @@ void QPersistentModelIndex_Swap(QPersistentModelIndex* self, QPersistentModelInd
 bool QPersistentModelIndex_OperatorEqualWithOther(const QPersistentModelIndex* self, QModelIndex* other);
 bool QPersistentModelIndex_OperatorNotEqualWithOther(const QPersistentModelIndex* self, QModelIndex* other);
 void QPersistentModelIndex_OperatorAssignWithOther(QPersistentModelIndex* self, QModelIndex* other);
+QModelIndex* QPersistentModelIndex_ToQModelIndex(const QPersistentModelIndex* self);
 int QPersistentModelIndex_Row(const QPersistentModelIndex* self);
 int QPersistentModelIndex_Column(const QPersistentModelIndex* self);
 void* QPersistentModelIndex_InternalPointer(const QPersistentModelIndex* self);

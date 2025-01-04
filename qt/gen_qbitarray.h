@@ -61,6 +61,7 @@ bool QBitArray_Fill22(QBitArray* self, bool val, int size);
 void QBitArray_Delete(QBitArray* self, bool isSubclass);
 
 QBitRef* QBitRef_new(QBitRef* param1);
+bool QBitRef_ToBool(const QBitRef* self);
 bool QBitRef_OperatorNot(const QBitRef* self);
 void QBitRef_OperatorAssign(QBitRef* self, QBitRef* val);
 void QBitRef_OperatorAssignWithVal(QBitRef* self, bool val);

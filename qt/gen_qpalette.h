@@ -18,10 +18,12 @@ extern "C" {
 class QBrush;
 class QColor;
 class QPalette;
+class QVariant;
 #else
 typedef struct QBrush QBrush;
 typedef struct QColor QColor;
 typedef struct QPalette QPalette;
+typedef struct QVariant QVariant;
 #endif
 
 QPalette* QPalette_new();
@@ -33,6 +35,7 @@ QPalette* QPalette_new6(QColor* windowText, QColor* window, QColor* light, QColo
 QPalette* QPalette_new7(QPalette* palette);
 void QPalette_OperatorAssign(QPalette* self, QPalette* palette);
 void QPalette_Swap(QPalette* self, QPalette* other);
+QVariant* QPalette_ToQVariant(const QPalette* self);
 int QPalette_CurrentColorGroup(const QPalette* self);
 void QPalette_SetCurrentColorGroup(QPalette* self, int cg);
 QColor* QPalette_Color(const QPalette* self, int cg, int cr);

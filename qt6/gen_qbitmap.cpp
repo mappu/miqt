@@ -8,6 +8,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QTransform>
+#include <QVariant>
 #include <qbitmap.h>
 #include "gen_qbitmap.h"
 
@@ -139,6 +140,10 @@ void QBitmap_OperatorAssign(QBitmap* self, QPixmap* param1) {
 
 void QBitmap_Swap(QBitmap* self, QBitmap* other) {
 	self->swap(*other);
+}
+
+QVariant* QBitmap_ToQVariant(const QBitmap* self) {
+	return new QVariant(self->operator QVariant());
 }
 
 void QBitmap_Clear(QBitmap* self) {

@@ -4,6 +4,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QVariant>
 #include <qcolor.h>
 #include "gen_qcolor.h"
 
@@ -493,6 +494,10 @@ bool QColor_OperatorEqual(const QColor* self, QColor* c) {
 
 bool QColor_OperatorNotEqual(const QColor* self, QColor* c) {
 	return (*self != *c);
+}
+
+QVariant* QColor_ToQVariant(const QColor* self) {
+	return new QVariant(self->operator QVariant());
 }
 
 bool QColor_IsValidColor(struct miqt_string name) {

@@ -421,7 +421,8 @@ nextMethod:
 				continue
 			}
 
-		case "CXXMethodDecl":
+		case "CXXMethodDecl",
+			"CXXConversionDecl": // e.g. `QColor::operator QVariant()`
 
 			// Method
 			methodName, ok := node["name"].(string)

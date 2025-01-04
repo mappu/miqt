@@ -168,6 +168,7 @@ QMetaObject__SuperData* QMetaObject__SuperData_new();
 QMetaObject__SuperData* QMetaObject__SuperData_new2(QMetaObject* mo);
 QMetaObject__SuperData* QMetaObject__SuperData_new3(QMetaObject__SuperData* param1);
 QMetaObject* QMetaObject__SuperData_OperatorMinusGreater(const QMetaObject__SuperData* self);
+QMetaObject* QMetaObject__SuperData_ToConstQMetaObjectMultiply(const QMetaObject__SuperData* self);
 void QMetaObject__SuperData_OperatorAssign(QMetaObject__SuperData* self, QMetaObject__SuperData* param1);
 void QMetaObject__SuperData_Delete(QMetaObject__SuperData* self, bool isSubclass);
 

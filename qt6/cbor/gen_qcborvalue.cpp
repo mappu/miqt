@@ -510,6 +510,10 @@ QCborValueConstRef* QCborValueConstRef_new(QCborValueConstRef* param1) {
 	return new QCborValueConstRef(*param1);
 }
 
+QCborValue* QCborValueConstRef_ToQCborValue(const QCborValueConstRef* self) {
+	return new QCborValue(self->operator QCborValue());
+}
+
 int QCborValueConstRef_Type(const QCborValueConstRef* self) {
 	QCborValue::Type _ret = self->type();
 	return static_cast<int>(_ret);
@@ -851,6 +855,10 @@ QCborValueRef* QCborValueRef_OperatorSubscript(QCborValueRef* self, long long ke
 QCborValueRef* QCborValueRef_OperatorSubscript2(QCborValueRef* self, struct miqt_string key) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QCborValueRef(self->operator[](key_QString));
+}
+
+QCborValue* QCborValueRef_ToQCborValue(const QCborValueRef* self) {
+	return new QCborValue(self->operator QCborValue());
 }
 
 int QCborValueRef_Type(const QCborValueRef* self) {

@@ -17,12 +17,14 @@ extern "C" {
 #ifdef __cplusplus
 class QPoint;
 class QPointF;
+class QVariant;
 class QVector2D;
 class QVector3D;
 class QVector4D;
 #else
 typedef struct QPoint QPoint;
 typedef struct QPointF QPointF;
+typedef struct QVariant QVariant;
 typedef struct QVector2D QVector2D;
 typedef struct QVector3D QVector3D;
 typedef struct QVector4D QVector4D;
@@ -59,6 +61,7 @@ QVector3D* QVector2D_ToVector3D(const QVector2D* self);
 QVector4D* QVector2D_ToVector4D(const QVector2D* self);
 QPoint* QVector2D_ToPoint(const QVector2D* self);
 QPointF* QVector2D_ToPointF(const QVector2D* self);
+QVariant* QVector2D_ToQVariant(const QVector2D* self);
 void QVector2D_Delete(QVector2D* self, bool isSubclass);
 
 #ifdef __cplusplus

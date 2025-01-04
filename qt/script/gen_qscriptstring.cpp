@@ -50,6 +50,17 @@ struct miqt_string QScriptString_ToString(const QScriptString* self) {
 	return _ms;
 }
 
+struct miqt_string QScriptString_ToQString(const QScriptString* self) {
+	QString _ret = self->operator QString();
+	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+	QByteArray _b = _ret.toUtf8();
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
+}
+
 unsigned int QScriptString_ToArrayIndex1(const QScriptString* self, bool* ok) {
 	quint32 _ret = self->toArrayIndex(ok);
 	return static_cast<unsigned int>(_ret);

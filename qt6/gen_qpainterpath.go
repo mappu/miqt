@@ -599,6 +599,12 @@ func (this *QPainterPath__Element) IsCurveTo() bool {
 	return (bool)(C.QPainterPath__Element_IsCurveTo(this.h))
 }
 
+func (this *QPainterPath__Element) ToQPointF() *QPointF {
+	_goptr := newQPointF(C.QPainterPath__Element_ToQPointF(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 func (this *QPainterPath__Element) OperatorEqual(e *QPainterPath__Element) bool {
 	return (bool)(C.QPainterPath__Element_OperatorEqual(this.h, e.cPointer()))
 }

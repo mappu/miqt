@@ -792,6 +792,12 @@ func NewQCborValueConstRef(param1 *QCborValueConstRef) *QCborValueConstRef {
 	return ret
 }
 
+func (this *QCborValueConstRef) ToQCborValue() *QCborValue {
+	_goptr := newQCborValue(C.QCborValueConstRef_ToQCborValue(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 func (this *QCborValueConstRef) Type() QCborValue__Type {
 	return (QCborValue__Type)(C.QCborValueConstRef_Type(this.h))
 }
@@ -1194,6 +1200,12 @@ func (this *QCborValueRef) OperatorSubscript2(key string) *QCborValueRef {
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
 	_goptr := newQCborValueRef(C.QCborValueRef_OperatorSubscript2(this.h, key_ms))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func (this *QCborValueRef) ToQCborValue() *QCborValue {
+	_goptr := newQCborValue(C.QCborValueRef_ToQCborValue(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

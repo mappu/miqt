@@ -17,9 +17,11 @@ extern "C" {
 #ifdef __cplusplus
 class QColor;
 class QRgba64;
+class QVariant;
 #else
 typedef struct QColor QColor;
 typedef struct QRgba64 QRgba64;
+typedef struct QVariant QVariant;
 #endif
 
 QColor* QColor_new();
@@ -130,6 +132,7 @@ QColor* QColor_Lighter(const QColor* self);
 QColor* QColor_Darker(const QColor* self);
 bool QColor_OperatorEqual(const QColor* self, QColor* c);
 bool QColor_OperatorNotEqual(const QColor* self, QColor* c);
+QVariant* QColor_ToQVariant(const QColor* self);
 bool QColor_IsValidColor(struct miqt_string name);
 void QColor_GetRgb4(const QColor* self, int* r, int* g, int* b, int* a);
 void QColor_SetRgb4(QColor* self, int r, int g, int b, int a);

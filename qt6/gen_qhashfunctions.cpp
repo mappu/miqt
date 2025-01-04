@@ -15,6 +15,10 @@ QHashSeed* QHashSeed_new2(size_t d) {
 	return new QHashSeed(static_cast<size_t>(d));
 }
 
+size_t QHashSeed_ToUnsignedLong(const QHashSeed* self) {
+	return self->operator unsigned long();
+}
+
 QHashSeed* QHashSeed_GlobalSeed() {
 	return new QHashSeed(QHashSeed::globalSeed());
 }

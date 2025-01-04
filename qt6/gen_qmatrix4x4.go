@@ -344,6 +344,12 @@ func (this *QMatrix4x4) Optimize() {
 	C.QMatrix4x4_Optimize(this.h)
 }
 
+func (this *QMatrix4x4) ToQVariant() *QVariant {
+	_goptr := newQVariant(C.QMatrix4x4_ToQVariant(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 func (this *QMatrix4x4) ProjectedRotate(angle float32, x float32, y float32, z float32) {
 	C.QMatrix4x4_ProjectedRotate(this.h, (C.float)(angle), (C.float)(x), (C.float)(y), (C.float)(z))
 }

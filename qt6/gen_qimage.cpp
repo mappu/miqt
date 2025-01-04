@@ -18,6 +18,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QTransform>
+#include <QVariant>
 #include <qimage.h>
 #include "gen_qimage.h"
 
@@ -249,6 +250,10 @@ bool QImage_OperatorEqual(const QImage* self, QImage* param1) {
 
 bool QImage_OperatorNotEqual(const QImage* self, QImage* param1) {
 	return (*self != *param1);
+}
+
+QVariant* QImage_ToQVariant(const QImage* self) {
+	return new QVariant(self->operator QVariant());
 }
 
 void QImage_Detach(QImage* self) {

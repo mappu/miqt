@@ -980,6 +980,10 @@ func (this *QMetaObject__SuperData) OperatorMinusGreater() *QMetaObject {
 	return newQMetaObject(C.QMetaObject__SuperData_OperatorMinusGreater(this.h))
 }
 
+func (this *QMetaObject__SuperData) ToConstQMetaObjectMultiply() *QMetaObject {
+	return newQMetaObject(C.QMetaObject__SuperData_ToConstQMetaObjectMultiply(this.h))
+}
+
 func (this *QMetaObject__SuperData) OperatorAssign(param1 *QMetaObject__SuperData) {
 	C.QMetaObject__SuperData_OperatorAssign(this.h, param1.cPointer())
 }

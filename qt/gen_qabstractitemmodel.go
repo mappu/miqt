@@ -265,6 +265,10 @@ func (this *QPersistentModelIndex) OperatorAssignWithOther(other *QModelIndex) {
 	C.QPersistentModelIndex_OperatorAssignWithOther(this.h, other.cPointer())
 }
 
+func (this *QPersistentModelIndex) ToConstQModelIndexBitwiseAnd() *QModelIndex {
+	return newQModelIndex(C.QPersistentModelIndex_ToConstQModelIndexBitwiseAnd(this.h))
+}
+
 func (this *QPersistentModelIndex) Row() int {
 	return (int)(C.QPersistentModelIndex_Row(this.h))
 }

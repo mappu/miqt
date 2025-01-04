@@ -18,10 +18,12 @@ extern "C" {
 class QAnyStringView;
 class QColor;
 class QRgba64;
+class QVariant;
 #else
 typedef struct QAnyStringView QAnyStringView;
 typedef struct QColor QColor;
 typedef struct QRgba64 QRgba64;
+typedef struct QVariant QVariant;
 #endif
 
 QColor* QColor_new();
@@ -127,6 +129,7 @@ QColor* QColor_Lighter(const QColor* self);
 QColor* QColor_Darker(const QColor* self);
 bool QColor_OperatorEqual(const QColor* self, QColor* c);
 bool QColor_OperatorNotEqual(const QColor* self, QColor* c);
+QVariant* QColor_ToQVariant(const QColor* self);
 bool QColor_IsValidColor(struct miqt_string name);
 bool QColor_IsValidColorName(QAnyStringView* param1);
 struct miqt_string QColor_Name1(const QColor* self, int format);

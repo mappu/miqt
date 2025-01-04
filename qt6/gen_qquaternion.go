@@ -214,6 +214,12 @@ func (this *QQuaternion) ToVector4D() *QVector4D {
 	return _goptr
 }
 
+func (this *QQuaternion) ToQVariant() *QVariant {
+	_goptr := newQVariant(C.QQuaternion_ToQVariant(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 func (this *QQuaternion) GetAxisAndAngle(axis *QVector3D, angle *float32) {
 	C.QQuaternion_GetAxisAndAngle(this.h, axis.cPointer(), (*C.float)(unsafe.Pointer(angle)))
 }

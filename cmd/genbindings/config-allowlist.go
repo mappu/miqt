@@ -293,6 +293,14 @@ func AllowMethod(className string, mm CppMethod) error {
 		return ErrTooComplex
 	}
 
+	if className == "qfloat16" && mm.MethodName == "operator float" {
+		// Present in Qt 5 and Qt 6.4, but in 6.5++ the declaration is conditional on QFLOAT16_IS_NATIVE
+		// In that case it becomes `operator std::float16_t` or `operator _Float16` depending on your
+		// compiler
+		// A proper fix here would be to reproject qfloat16 as std::float16_t (?) in all cases
+		return ErrTooComplex
+	}
+
 	return nil // OK, allow
 }
 

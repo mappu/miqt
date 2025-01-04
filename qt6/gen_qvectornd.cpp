@@ -2,6 +2,7 @@
 #include <QPoint>
 #include <QPointF>
 #include <QRect>
+#include <QVariant>
 #include <QVector2D>
 #include <QVector3D>
 #include <QVector4D>
@@ -147,6 +148,10 @@ QPoint* QVector2D_ToPoint(const QVector2D* self) {
 
 QPointF* QVector2D_ToPointF(const QVector2D* self) {
 	return new QPointF(self->toPointF());
+}
+
+QVariant* QVector2D_ToQVariant(const QVector2D* self) {
+	return new QVariant(self->operator QVariant());
 }
 
 void QVector2D_Delete(QVector2D* self, bool isSubclass) {
@@ -333,6 +338,10 @@ QPointF* QVector3D_ToPointF(const QVector3D* self) {
 	return new QPointF(self->toPointF());
 }
 
+QVariant* QVector3D_ToQVariant(const QVector3D* self) {
+	return new QVariant(self->operator QVariant());
+}
+
 void QVector3D_Delete(QVector3D* self, bool isSubclass) {
 	if (isSubclass) {
 		delete dynamic_cast<QVector3D*>( self );
@@ -499,6 +508,10 @@ QPoint* QVector4D_ToPoint(const QVector4D* self) {
 
 QPointF* QVector4D_ToPointF(const QVector4D* self) {
 	return new QPointF(self->toPointF());
+}
+
+QVariant* QVector4D_ToQVariant(const QVector4D* self) {
+	return new QVariant(self->operator QVariant());
 }
 
 void QVector4D_Delete(QVector4D* self, bool isSubclass) {

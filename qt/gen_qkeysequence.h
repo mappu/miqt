@@ -16,8 +16,10 @@ extern "C" {
 
 #ifdef __cplusplus
 class QKeySequence;
+class QVariant;
 #else
 typedef struct QKeySequence QKeySequence;
+typedef struct QVariant QVariant;
 #endif
 
 QKeySequence* QKeySequence_new();
@@ -38,6 +40,7 @@ struct miqt_string QKeySequence_ListToString(struct miqt_array /* of QKeySequenc
 int QKeySequence_Matches(const QKeySequence* self, QKeySequence* seq);
 QKeySequence* QKeySequence_Mnemonic(struct miqt_string text);
 struct miqt_array /* of QKeySequence* */  QKeySequence_KeyBindings(int key);
+QVariant* QKeySequence_ToQVariant(const QKeySequence* self);
 int QKeySequence_OperatorSubscript(const QKeySequence* self, unsigned int i);
 void QKeySequence_OperatorAssign(QKeySequence* self, QKeySequence* other);
 void QKeySequence_Swap(QKeySequence* self, QKeySequence* other);

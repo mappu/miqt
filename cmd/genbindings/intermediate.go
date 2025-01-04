@@ -308,6 +308,11 @@ func (nm CppMethod) SafeMethodName() string {
 	// languages. Replace more specific cases first
 	replacer := strings.NewReplacer(
 
+		// `operator ` with a trailing space only occurs in conversion operators
+		// Add a fake _ here, but it will be replaced with camelcase in the regex below
+		`operator `, `To `,
+		`::`, `__`, // e.g. `operator QCborError::Code`
+
 		`==`, `Equal`,
 		`!=`, `NotEqual`,
 		`>=`, `GreaterOrEqual`,
@@ -342,7 +347,12 @@ func (nm CppMethod) SafeMethodName() string {
 	// Also make the first letter uppercase so it becomes public in Go
 	tmp = titleCase(tmp)
 
+	// Replace spaces (e.g. `operator long long` with CamelCase
+	tmp = regexp.MustCompile(` ([a-zA-Z])`).ReplaceAllStringFunc(tmp, func(match string) string { return strings.ToUpper(match[1:]) })
+
 	// Also replace any underscore_case with CamelCase
+	// Only catch lowercase letters in this one, not uppercase, as it causes a
+	// lot of churn for Scintilla
 	tmp = regexp.MustCompile(`_([a-z])`).ReplaceAllStringFunc(tmp, func(match string) string { return strings.ToUpper(match[1:]) })
 
 	return tmp

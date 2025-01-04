@@ -126,6 +126,12 @@ func (this *QCursor) Swap(other *QCursor) {
 	C.QCursor_Swap(this.h, other.cPointer())
 }
 
+func (this *QCursor) ToQVariant() *QVariant {
+	_goptr := newQVariant(C.QCursor_ToQVariant(this.h))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 func (this *QCursor) Shape() CursorShape {
 	return (CursorShape)(C.QCursor_Shape(this.h))
 }

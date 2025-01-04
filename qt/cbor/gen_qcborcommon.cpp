@@ -10,6 +10,11 @@
 #endif
 #include "_cgo_export.h"
 
+int QCborError_ToQCborError__Code(const QCborError* self) {
+	QCborError::Code _ret = self->operator QCborError::Code();
+	return static_cast<int>(_ret);
+}
+
 struct miqt_string QCborError_ToString(const QCborError* self) {
 	QString _ret = self->toString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

@@ -28,6 +28,7 @@ bool QScriptString_OperatorEqual(const QScriptString* self, QScriptString* other
 bool QScriptString_OperatorNotEqual(const QScriptString* self, QScriptString* other);
 unsigned int QScriptString_ToArrayIndex(const QScriptString* self);
 struct miqt_string QScriptString_ToString(const QScriptString* self);
+struct miqt_string QScriptString_ToQString(const QScriptString* self);
 unsigned int QScriptString_ToArrayIndex1(const QScriptString* self, bool* ok);
 void QScriptString_Delete(QScriptString* self, bool isSubclass);
 
