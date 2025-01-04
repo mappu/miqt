@@ -35,7 +35,7 @@ void QRegularExpression_Swap(QRegularExpression* self, QRegularExpression* other
 struct miqt_string QRegularExpression_Pattern(const QRegularExpression* self);
 void QRegularExpression_SetPattern(QRegularExpression* self, struct miqt_string pattern);
 bool QRegularExpression_IsValid(const QRegularExpression* self);
-ptrdiff_t QRegularExpression_PatternErrorOffset(const QRegularExpression* self);
+long long QRegularExpression_PatternErrorOffset(const QRegularExpression* self);
 struct miqt_string QRegularExpression_ErrorString(const QRegularExpression* self);
 int QRegularExpression_CaptureCount(const QRegularExpression* self);
 struct miqt_array /* of struct miqt_string */  QRegularExpression_NamedCaptureGroups(const QRegularExpression* self);
@@ -47,12 +47,12 @@ struct miqt_string QRegularExpression_WildcardToRegularExpression(struct miqt_st
 struct miqt_string QRegularExpression_AnchoredPattern(struct miqt_string expression);
 bool QRegularExpression_OperatorEqual(const QRegularExpression* self, QRegularExpression* re);
 bool QRegularExpression_OperatorNotEqual(const QRegularExpression* self, QRegularExpression* re);
-QRegularExpressionMatch* QRegularExpression_Match2(const QRegularExpression* self, struct miqt_string subject, ptrdiff_t offset);
-QRegularExpressionMatch* QRegularExpression_Match3(const QRegularExpression* self, struct miqt_string subject, ptrdiff_t offset, int matchType);
-QRegularExpressionMatch* QRegularExpression_Match4(const QRegularExpression* self, struct miqt_string subject, ptrdiff_t offset, int matchType, int matchOptions);
-QRegularExpressionMatchIterator* QRegularExpression_GlobalMatch2(const QRegularExpression* self, struct miqt_string subject, ptrdiff_t offset);
-QRegularExpressionMatchIterator* QRegularExpression_GlobalMatch3(const QRegularExpression* self, struct miqt_string subject, ptrdiff_t offset, int matchType);
-QRegularExpressionMatchIterator* QRegularExpression_GlobalMatch4(const QRegularExpression* self, struct miqt_string subject, ptrdiff_t offset, int matchType, int matchOptions);
+QRegularExpressionMatch* QRegularExpression_Match2(const QRegularExpression* self, struct miqt_string subject, long long offset);
+QRegularExpressionMatch* QRegularExpression_Match3(const QRegularExpression* self, struct miqt_string subject, long long offset, int matchType);
+QRegularExpressionMatch* QRegularExpression_Match4(const QRegularExpression* self, struct miqt_string subject, long long offset, int matchType, int matchOptions);
+QRegularExpressionMatchIterator* QRegularExpression_GlobalMatch2(const QRegularExpression* self, struct miqt_string subject, long long offset);
+QRegularExpressionMatchIterator* QRegularExpression_GlobalMatch3(const QRegularExpression* self, struct miqt_string subject, long long offset, int matchType);
+QRegularExpressionMatchIterator* QRegularExpression_GlobalMatch4(const QRegularExpression* self, struct miqt_string subject, long long offset, int matchType, int matchOptions);
 struct miqt_string QRegularExpression_WildcardToRegularExpression2(struct miqt_string str, int options);
 void QRegularExpression_Delete(QRegularExpression* self, bool isSubclass);
 
@@ -72,16 +72,16 @@ bool QRegularExpressionMatch_HasCapturedWithNth(const QRegularExpressionMatch* s
 struct miqt_string QRegularExpressionMatch_Captured(const QRegularExpressionMatch* self);
 struct miqt_string QRegularExpressionMatch_CapturedWithName(const QRegularExpressionMatch* self, struct miqt_string name);
 struct miqt_array /* of struct miqt_string */  QRegularExpressionMatch_CapturedTexts(const QRegularExpressionMatch* self);
-ptrdiff_t QRegularExpressionMatch_CapturedStart(const QRegularExpressionMatch* self);
-ptrdiff_t QRegularExpressionMatch_CapturedLength(const QRegularExpressionMatch* self);
-ptrdiff_t QRegularExpressionMatch_CapturedEnd(const QRegularExpressionMatch* self);
-ptrdiff_t QRegularExpressionMatch_CapturedStartWithName(const QRegularExpressionMatch* self, struct miqt_string name);
-ptrdiff_t QRegularExpressionMatch_CapturedLengthWithName(const QRegularExpressionMatch* self, struct miqt_string name);
-ptrdiff_t QRegularExpressionMatch_CapturedEndWithName(const QRegularExpressionMatch* self, struct miqt_string name);
+long long QRegularExpressionMatch_CapturedStart(const QRegularExpressionMatch* self);
+long long QRegularExpressionMatch_CapturedLength(const QRegularExpressionMatch* self);
+long long QRegularExpressionMatch_CapturedEnd(const QRegularExpressionMatch* self);
+long long QRegularExpressionMatch_CapturedStartWithName(const QRegularExpressionMatch* self, struct miqt_string name);
+long long QRegularExpressionMatch_CapturedLengthWithName(const QRegularExpressionMatch* self, struct miqt_string name);
+long long QRegularExpressionMatch_CapturedEndWithName(const QRegularExpressionMatch* self, struct miqt_string name);
 struct miqt_string QRegularExpressionMatch_Captured1(const QRegularExpressionMatch* self, int nth);
-ptrdiff_t QRegularExpressionMatch_CapturedStart1(const QRegularExpressionMatch* self, int nth);
-ptrdiff_t QRegularExpressionMatch_CapturedLength1(const QRegularExpressionMatch* self, int nth);
-ptrdiff_t QRegularExpressionMatch_CapturedEnd1(const QRegularExpressionMatch* self, int nth);
+long long QRegularExpressionMatch_CapturedStart1(const QRegularExpressionMatch* self, int nth);
+long long QRegularExpressionMatch_CapturedLength1(const QRegularExpressionMatch* self, int nth);
+long long QRegularExpressionMatch_CapturedEnd1(const QRegularExpressionMatch* self, int nth);
 void QRegularExpressionMatch_Delete(QRegularExpressionMatch* self, bool isSubclass);
 
 QRegularExpressionMatchIterator* QRegularExpressionMatchIterator_new();

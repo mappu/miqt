@@ -448,12 +448,12 @@ void QCamera_connect_StateChanged(QCamera* self, intptr_t slot) {
 }
 
 void QCamera_CaptureModeChanged(QCamera* self, int param1) {
-	self->captureModeChanged(static_cast<QCamera::CaptureModes>(param1));
+	self->captureModeChanged(static_cast<QFlags<QCamera::CaptureMode>>(param1));
 }
 
 void QCamera_connect_CaptureModeChanged(QCamera* self, intptr_t slot) {
-	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(QCamera::CaptureModes)>(&QCamera::captureModeChanged), self, [=](QCamera::CaptureModes param1) {
-		QCamera::CaptureModes param1_ret = param1;
+	MiqtVirtualQCamera::connect(self, static_cast<void (QCamera::*)(QFlags<QCamera::CaptureMode>)>(&QCamera::captureModeChanged), self, [=](QFlags<QCamera::CaptureMode> param1) {
+		QFlags<QCamera::CaptureMode> param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 		miqt_exec_callback_QCamera_CaptureModeChanged(slot, sigval1);
 	});

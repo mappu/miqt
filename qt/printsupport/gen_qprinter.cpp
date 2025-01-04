@@ -348,7 +348,7 @@ void QPrinter_SetPageSizeMM(QPrinter* self, QSizeF* size) {
 }
 
 void QPrinter_SetPaperSize(QPrinter* self, int paperSize) {
-	self->setPaperSize(static_cast<QPrinter::PaperSize>(paperSize));
+	self->setPaperSize(static_cast<QPagedPaintDevice::PageSize>(paperSize));
 }
 
 int QPrinter_PaperSize(const QPrinter* self) {

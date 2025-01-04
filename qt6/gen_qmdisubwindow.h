@@ -211,7 +211,7 @@ void QMdiSubWindow_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* event
 void QMdiSubWindow_override_virtual_DropEvent(void* self, intptr_t slot);
 void QMdiSubWindow_virtualbase_DropEvent(void* self, QDropEvent* event);
 void QMdiSubWindow_override_virtual_NativeEvent(void* self, intptr_t slot);
-bool QMdiSubWindow_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
+bool QMdiSubWindow_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long long* result);
 void QMdiSubWindow_override_virtual_Metric(void* self, intptr_t slot);
 int QMdiSubWindow_virtualbase_Metric(const void* self, int param1);
 void QMdiSubWindow_override_virtual_InitPainter(void* self, intptr_t slot);

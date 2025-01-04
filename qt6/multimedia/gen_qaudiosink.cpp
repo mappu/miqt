@@ -283,18 +283,18 @@ void QAudioSink_Resume(QAudioSink* self) {
 	self->resume();
 }
 
-void QAudioSink_SetBufferSize(QAudioSink* self, ptrdiff_t bytes) {
+void QAudioSink_SetBufferSize(QAudioSink* self, long long bytes) {
 	self->setBufferSize((qsizetype)(bytes));
 }
 
-ptrdiff_t QAudioSink_BufferSize(const QAudioSink* self) {
+long long QAudioSink_BufferSize(const QAudioSink* self) {
 	qsizetype _ret = self->bufferSize();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
-ptrdiff_t QAudioSink_BytesFree(const QAudioSink* self) {
+long long QAudioSink_BytesFree(const QAudioSink* self) {
 	qsizetype _ret = self->bytesFree();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 long long QAudioSink_ProcessedUSecs(const QAudioSink* self) {
@@ -318,7 +318,7 @@ int QAudioSink_State(const QAudioSink* self) {
 }
 
 void QAudioSink_SetVolume(QAudioSink* self, double volume) {
-	self->setVolume(static_cast<qreal>(volume));
+	self->setVolume(static_cast<double>(volume));
 }
 
 double QAudioSink_Volume(const QAudioSink* self) {

@@ -137,7 +137,7 @@ func (this *QVersionNumber) Segments() []int {
 }
 
 func (this *QVersionNumber) SegmentAt(index int64) int {
-	return (int)(C.QVersionNumber_SegmentAt(this.h, (C.ptrdiff_t)(index)))
+	return (int)(C.QVersionNumber_SegmentAt(this.h, (C.longlong)(index)))
 }
 
 func (this *QVersionNumber) SegmentCount() int64 {
@@ -172,7 +172,7 @@ func QVersionNumber_FromString(stringVal QAnyStringView) *QVersionNumber {
 }
 
 func QVersionNumber_FromString2(stringVal QAnyStringView, suffixIndex *int64) *QVersionNumber {
-	_goptr := newQVersionNumber(C.QVersionNumber_FromString2(stringVal.cPointer(), (*C.ptrdiff_t)(unsafe.Pointer(suffixIndex))))
+	_goptr := newQVersionNumber(C.QVersionNumber_FromString2(stringVal.cPointer(), (*C.longlong)(unsafe.Pointer(suffixIndex))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

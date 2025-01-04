@@ -172,7 +172,7 @@ void QStatusBar_virtualbase_DropEvent(void* self, QDropEvent* event);
 void QStatusBar_override_virtual_HideEvent(void* self, intptr_t slot);
 void QStatusBar_virtualbase_HideEvent(void* self, QHideEvent* event);
 void QStatusBar_override_virtual_NativeEvent(void* self, intptr_t slot);
-bool QStatusBar_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
+bool QStatusBar_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long long* result);
 void QStatusBar_override_virtual_ChangeEvent(void* self, intptr_t slot);
 void QStatusBar_virtualbase_ChangeEvent(void* self, QEvent* param1);
 void QStatusBar_override_virtual_Metric(void* self, intptr_t slot);

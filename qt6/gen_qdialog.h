@@ -189,7 +189,7 @@ void QDialog_virtualbase_DropEvent(void* self, QDropEvent* event);
 void QDialog_override_virtual_HideEvent(void* self, intptr_t slot);
 void QDialog_virtualbase_HideEvent(void* self, QHideEvent* event);
 void QDialog_override_virtual_NativeEvent(void* self, intptr_t slot);
-bool QDialog_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
+bool QDialog_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long long* result);
 void QDialog_override_virtual_ChangeEvent(void* self, intptr_t slot);
 void QDialog_virtualbase_ChangeEvent(void* self, QEvent* param1);
 void QDialog_override_virtual_Metric(void* self, intptr_t slot);

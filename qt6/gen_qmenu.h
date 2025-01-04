@@ -238,7 +238,7 @@ void QMenu_virtualbase_DropEvent(void* self, QDropEvent* event);
 void QMenu_override_virtual_ShowEvent(void* self, intptr_t slot);
 void QMenu_virtualbase_ShowEvent(void* self, QShowEvent* event);
 void QMenu_override_virtual_NativeEvent(void* self, intptr_t slot);
-bool QMenu_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
+bool QMenu_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long long* result);
 void QMenu_override_virtual_Metric(void* self, intptr_t slot);
 int QMenu_virtualbase_Metric(const void* self, int param1);
 void QMenu_override_virtual_InitPainter(void* self, intptr_t slot);

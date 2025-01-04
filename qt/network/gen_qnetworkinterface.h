@@ -32,8 +32,8 @@ void QNetworkAddressEntry_OperatorAssign(QNetworkAddressEntry* self, QNetworkAdd
 void QNetworkAddressEntry_Swap(QNetworkAddressEntry* self, QNetworkAddressEntry* other);
 bool QNetworkAddressEntry_OperatorEqual(const QNetworkAddressEntry* self, QNetworkAddressEntry* other);
 bool QNetworkAddressEntry_OperatorNotEqual(const QNetworkAddressEntry* self, QNetworkAddressEntry* other);
-int8_t QNetworkAddressEntry_DnsEligibility(const QNetworkAddressEntry* self);
-void QNetworkAddressEntry_SetDnsEligibility(QNetworkAddressEntry* self, int8_t status);
+signed char QNetworkAddressEntry_DnsEligibility(const QNetworkAddressEntry* self);
+void QNetworkAddressEntry_SetDnsEligibility(QNetworkAddressEntry* self, signed char status);
 QHostAddress* QNetworkAddressEntry_Ip(const QNetworkAddressEntry* self);
 void QNetworkAddressEntry_SetIp(QNetworkAddressEntry* self, QHostAddress* newIp);
 QHostAddress* QNetworkAddressEntry_Netmask(const QNetworkAddressEntry* self);

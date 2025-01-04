@@ -82,7 +82,7 @@ public:
 		}
 		
 		qintptr handle_ret = handle;
-		intptr_t sigval1 = (intptr_t)(handle_ret);
+		long long sigval1 = (long long)(handle_ret);
 
 		miqt_exec_callback_QTcpServer_IncomingConnection(this, handle__IncomingConnection, sigval1);
 
@@ -90,7 +90,7 @@ public:
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_IncomingConnection(intptr_t handle) {
+	void virtualbase_IncomingConnection(long long handle) {
 
 		QTcpServer::incomingConnection((qintptr)(handle));
 
@@ -340,12 +340,12 @@ QHostAddress* QTcpServer_ServerAddress(const QTcpServer* self) {
 	return new QHostAddress(self->serverAddress());
 }
 
-intptr_t QTcpServer_SocketDescriptor(const QTcpServer* self) {
+long long QTcpServer_SocketDescriptor(const QTcpServer* self) {
 	qintptr _ret = self->socketDescriptor();
-	return (intptr_t)(_ret);
+	return (long long)(_ret);
 }
 
-bool QTcpServer_SetSocketDescriptor(QTcpServer* self, intptr_t socketDescriptor) {
+bool QTcpServer_SetSocketDescriptor(QTcpServer* self, long long socketDescriptor) {
 	return self->setSocketDescriptor((qintptr)(socketDescriptor));
 }
 
@@ -495,7 +495,7 @@ void QTcpServer_override_virtual_IncomingConnection(void* self, intptr_t slot) {
 	dynamic_cast<MiqtVirtualQTcpServer*>( (QTcpServer*)(self) )->handle__IncomingConnection = slot;
 }
 
-void QTcpServer_virtualbase_IncomingConnection(void* self, intptr_t handle) {
+void QTcpServer_virtualbase_IncomingConnection(void* self, long long handle) {
 	( (MiqtVirtualQTcpServer*)(self) )->virtualbase_IncomingConnection(handle);
 }
 

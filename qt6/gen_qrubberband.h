@@ -173,7 +173,7 @@ void QRubberBand_virtualbase_DropEvent(void* self, QDropEvent* event);
 void QRubberBand_override_virtual_HideEvent(void* self, intptr_t slot);
 void QRubberBand_virtualbase_HideEvent(void* self, QHideEvent* event);
 void QRubberBand_override_virtual_NativeEvent(void* self, intptr_t slot);
-bool QRubberBand_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
+bool QRubberBand_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long long* result);
 void QRubberBand_override_virtual_Metric(void* self, intptr_t slot);
 int QRubberBand_virtualbase_Metric(const void* self, int param1);
 void QRubberBand_override_virtual_InitPainter(void* self, intptr_t slot);

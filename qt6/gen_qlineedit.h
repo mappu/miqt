@@ -282,7 +282,7 @@ void QLineEdit_virtualbase_ShowEvent(void* self, QShowEvent* event);
 void QLineEdit_override_virtual_HideEvent(void* self, intptr_t slot);
 void QLineEdit_virtualbase_HideEvent(void* self, QHideEvent* event);
 void QLineEdit_override_virtual_NativeEvent(void* self, intptr_t slot);
-bool QLineEdit_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
+bool QLineEdit_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long long* result);
 void QLineEdit_override_virtual_Metric(void* self, intptr_t slot);
 int QLineEdit_virtualbase_Metric(const void* self, int param1);
 void QLineEdit_override_virtual_InitPainter(void* self, intptr_t slot);

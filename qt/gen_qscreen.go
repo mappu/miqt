@@ -251,8 +251,8 @@ func (this *QScreen) IsLandscape(orientation ScreenOrientation) bool {
 	return (bool)(C.QScreen_IsLandscape(this.h, (C.int)(orientation)))
 }
 
-func (this *QScreen) GrabWindow(window uintptr) *QPixmap {
-	_goptr := newQPixmap(C.QScreen_GrabWindow(this.h, (C.uintptr_t)(window)))
+func (this *QScreen) GrabWindow(window uint64) *QPixmap {
+	_goptr := newQPixmap(C.QScreen_GrabWindow(this.h, (C.ulonglong)(window)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -485,26 +485,26 @@ func QScreen_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QScreen) GrabWindow2(window uintptr, x int) *QPixmap {
-	_goptr := newQPixmap(C.QScreen_GrabWindow2(this.h, (C.uintptr_t)(window), (C.int)(x)))
+func (this *QScreen) GrabWindow2(window uint64, x int) *QPixmap {
+	_goptr := newQPixmap(C.QScreen_GrabWindow2(this.h, (C.ulonglong)(window), (C.int)(x)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QScreen) GrabWindow3(window uintptr, x int, y int) *QPixmap {
-	_goptr := newQPixmap(C.QScreen_GrabWindow3(this.h, (C.uintptr_t)(window), (C.int)(x), (C.int)(y)))
+func (this *QScreen) GrabWindow3(window uint64, x int, y int) *QPixmap {
+	_goptr := newQPixmap(C.QScreen_GrabWindow3(this.h, (C.ulonglong)(window), (C.int)(x), (C.int)(y)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QScreen) GrabWindow4(window uintptr, x int, y int, w int) *QPixmap {
-	_goptr := newQPixmap(C.QScreen_GrabWindow4(this.h, (C.uintptr_t)(window), (C.int)(x), (C.int)(y), (C.int)(w)))
+func (this *QScreen) GrabWindow4(window uint64, x int, y int, w int) *QPixmap {
+	_goptr := newQPixmap(C.QScreen_GrabWindow4(this.h, (C.ulonglong)(window), (C.int)(x), (C.int)(y), (C.int)(w)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QScreen) GrabWindow5(window uintptr, x int, y int, w int, h int) *QPixmap {
-	_goptr := newQPixmap(C.QScreen_GrabWindow5(this.h, (C.uintptr_t)(window), (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h)))
+func (this *QScreen) GrabWindow5(window uint64, x int, y int, w int, h int) *QPixmap {
+	_goptr := newQPixmap(C.QScreen_GrabWindow5(this.h, (C.ulonglong)(window), (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

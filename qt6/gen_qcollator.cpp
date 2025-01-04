@@ -96,7 +96,7 @@ int QCollator_Compare(const QCollator* self, struct miqt_string s1, struct miqt_
 	return self->compare(s1_QString, s2_QString);
 }
 
-int QCollator_Compare2(const QCollator* self, QChar* s1, ptrdiff_t len1, QChar* s2, ptrdiff_t len2) {
+int QCollator_Compare2(const QCollator* self, QChar* s1, long long len1, QChar* s2, long long len2) {
 	return self->compare(s1, (qsizetype)(len1), s2, (qsizetype)(len2));
 }
 

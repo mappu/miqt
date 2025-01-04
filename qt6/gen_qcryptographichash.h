@@ -26,7 +26,7 @@ typedef struct QIODevice QIODevice;
 
 QCryptographicHash* QCryptographicHash_new(int method);
 void QCryptographicHash_Reset(QCryptographicHash* self);
-void QCryptographicHash_AddData(QCryptographicHash* self, const char* data, ptrdiff_t length);
+void QCryptographicHash_AddData(QCryptographicHash* self, const char* data, long long length);
 void QCryptographicHash_AddDataWithData(QCryptographicHash* self, QByteArrayView* data);
 bool QCryptographicHash_AddDataWithDevice(QCryptographicHash* self, QIODevice* device);
 struct miqt_string QCryptographicHash_Result(const QCryptographicHash* self);

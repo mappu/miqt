@@ -74,7 +74,7 @@ QTransform* QScreen_TransformBetween(const QScreen* self, int a, int b, QRect* t
 QRect* QScreen_MapBetween(const QScreen* self, int a, int b, QRect* rect);
 bool QScreen_IsPortrait(const QScreen* self, int orientation);
 bool QScreen_IsLandscape(const QScreen* self, int orientation);
-QPixmap* QScreen_GrabWindow(QScreen* self, uintptr_t window);
+QPixmap* QScreen_GrabWindow(QScreen* self, unsigned long long window);
 double QScreen_RefreshRate(const QScreen* self);
 void QScreen_GeometryChanged(QScreen* self, QRect* geometry);
 void QScreen_connect_GeometryChanged(QScreen* self, intptr_t slot);
@@ -98,10 +98,10 @@ struct miqt_string QScreen_Tr2(const char* s, const char* c);
 struct miqt_string QScreen_Tr3(const char* s, const char* c, int n);
 struct miqt_string QScreen_TrUtf82(const char* s, const char* c);
 struct miqt_string QScreen_TrUtf83(const char* s, const char* c, int n);
-QPixmap* QScreen_GrabWindow2(QScreen* self, uintptr_t window, int x);
-QPixmap* QScreen_GrabWindow3(QScreen* self, uintptr_t window, int x, int y);
-QPixmap* QScreen_GrabWindow4(QScreen* self, uintptr_t window, int x, int y, int w);
-QPixmap* QScreen_GrabWindow5(QScreen* self, uintptr_t window, int x, int y, int w, int h);
+QPixmap* QScreen_GrabWindow2(QScreen* self, unsigned long long window, int x);
+QPixmap* QScreen_GrabWindow3(QScreen* self, unsigned long long window, int x, int y);
+QPixmap* QScreen_GrabWindow4(QScreen* self, unsigned long long window, int x, int y, int w);
+QPixmap* QScreen_GrabWindow5(QScreen* self, unsigned long long window, int x, int y, int w, int h);
 void QScreen_Delete(QScreen* self, bool isSubclass);
 
 #ifdef __cplusplus

@@ -337,12 +337,12 @@ func QSslServer_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QSslServer) callVirtualBase_IncomingConnection(socket uintptr) {
+func (this *QSslServer) callVirtualBase_IncomingConnection(socket int64) {
 
-	C.QSslServer_virtualbase_IncomingConnection(unsafe.Pointer(this.h), (C.intptr_t)(socket))
+	C.QSslServer_virtualbase_IncomingConnection(unsafe.Pointer(this.h), (C.longlong)(socket))
 
 }
-func (this *QSslServer) OnIncomingConnection(slot func(super func(socket uintptr), socket uintptr)) {
+func (this *QSslServer) OnIncomingConnection(slot func(super func(socket int64), socket int64)) {
 	if !this.isSubclass {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
@@ -350,14 +350,14 @@ func (this *QSslServer) OnIncomingConnection(slot func(super func(socket uintptr
 }
 
 //export miqt_exec_callback_QSslServer_IncomingConnection
-func miqt_exec_callback_QSslServer_IncomingConnection(self *C.QSslServer, cb C.intptr_t, socket C.intptr_t) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(socket uintptr), socket uintptr))
+func miqt_exec_callback_QSslServer_IncomingConnection(self *C.QSslServer, cb C.intptr_t, socket C.longlong) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(socket int64), socket int64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	// Convert all CABI parameters to Go parameters
-	slotval1 := (uintptr)(socket)
+	slotval1 := (int64)(socket)
 
 	gofunc((&QSslServer{h: self}).callVirtualBase_IncomingConnection, slotval1)
 

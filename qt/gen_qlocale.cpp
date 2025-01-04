@@ -626,7 +626,7 @@ struct miqt_string QLocale_CurrencySymbol(const QLocale* self) {
 }
 
 struct miqt_string QLocale_ToCurrencyString(const QLocale* self, long long param1) {
-	QString _ret = self->toCurrencyString(static_cast<qlonglong>(param1));
+	QString _ret = self->toCurrencyString(static_cast<long long>(param1));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -636,8 +636,8 @@ struct miqt_string QLocale_ToCurrencyString(const QLocale* self, long long param
 	return _ms;
 }
 
-struct miqt_string QLocale_ToCurrencyStringWithQulonglong(const QLocale* self, unsigned long long param1) {
-	QString _ret = self->toCurrencyString(static_cast<qulonglong>(param1));
+struct miqt_string QLocale_ToCurrencyStringWithUnsignedlonglong(const QLocale* self, unsigned long long param1) {
+	QString _ret = self->toCurrencyString(static_cast<unsigned long long>(param1));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -658,8 +658,8 @@ struct miqt_string QLocale_ToCurrencyStringWithShort(const QLocale* self, int16_
 	return _ms;
 }
 
-struct miqt_string QLocale_ToCurrencyStringWithUshort(const QLocale* self, uint16_t param1) {
-	QString _ret = self->toCurrencyString(static_cast<ushort>(param1));
+struct miqt_string QLocale_ToCurrencyStringWithUnsignedshort(const QLocale* self, uint16_t param1) {
+	QString _ret = self->toCurrencyString(static_cast<unsigned short>(param1));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -680,8 +680,8 @@ struct miqt_string QLocale_ToCurrencyStringWithInt(const QLocale* self, int para
 	return _ms;
 }
 
-struct miqt_string QLocale_ToCurrencyStringWithUint(const QLocale* self, unsigned int param1) {
-	QString _ret = self->toCurrencyString(static_cast<uint>(param1));
+struct miqt_string QLocale_ToCurrencyStringWithUnsignedint(const QLocale* self, unsigned int param1) {
+	QString _ret = self->toCurrencyString(static_cast<unsigned int>(param1));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -1135,7 +1135,7 @@ struct miqt_string QLocale_CurrencySymbol1(const QLocale* self, int param1) {
 
 struct miqt_string QLocale_ToCurrencyString22(const QLocale* self, long long param1, struct miqt_string symbol) {
 	QString symbol_QString = QString::fromUtf8(symbol.data, symbol.len);
-	QString _ret = self->toCurrencyString(static_cast<qlonglong>(param1), symbol_QString);
+	QString _ret = self->toCurrencyString(static_cast<long long>(param1), symbol_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -1147,7 +1147,7 @@ struct miqt_string QLocale_ToCurrencyString22(const QLocale* self, long long par
 
 struct miqt_string QLocale_ToCurrencyString23(const QLocale* self, unsigned long long param1, struct miqt_string symbol) {
 	QString symbol_QString = QString::fromUtf8(symbol.data, symbol.len);
-	QString _ret = self->toCurrencyString(static_cast<qulonglong>(param1), symbol_QString);
+	QString _ret = self->toCurrencyString(static_cast<unsigned long long>(param1), symbol_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -1171,7 +1171,7 @@ struct miqt_string QLocale_ToCurrencyString24(const QLocale* self, int16_t param
 
 struct miqt_string QLocale_ToCurrencyString25(const QLocale* self, uint16_t param1, struct miqt_string symbol) {
 	QString symbol_QString = QString::fromUtf8(symbol.data, symbol.len);
-	QString _ret = self->toCurrencyString(static_cast<ushort>(param1), symbol_QString);
+	QString _ret = self->toCurrencyString(static_cast<unsigned short>(param1), symbol_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -1195,7 +1195,7 @@ struct miqt_string QLocale_ToCurrencyString26(const QLocale* self, int param1, s
 
 struct miqt_string QLocale_ToCurrencyString27(const QLocale* self, unsigned int param1, struct miqt_string symbol) {
 	QString symbol_QString = QString::fromUtf8(symbol.data, symbol.len);
-	QString _ret = self->toCurrencyString(static_cast<uint>(param1), symbol_QString);
+	QString _ret = self->toCurrencyString(static_cast<unsigned int>(param1), symbol_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;

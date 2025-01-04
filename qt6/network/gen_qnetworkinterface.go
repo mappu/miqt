@@ -123,7 +123,7 @@ func (this *QNetworkAddressEntry) DnsEligibility() QNetworkAddressEntry__DnsElig
 }
 
 func (this *QNetworkAddressEntry) SetDnsEligibility(status QNetworkAddressEntry__DnsEligibilityStatus) {
-	C.QNetworkAddressEntry_SetDnsEligibility(this.h, (C.int8_t)(status))
+	C.QNetworkAddressEntry_SetDnsEligibility(this.h, (C.schar)(status))
 }
 
 func (this *QNetworkAddressEntry) Ip() *QHostAddress {

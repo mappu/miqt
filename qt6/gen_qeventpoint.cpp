@@ -16,7 +16,7 @@ QEventPoint* QEventPoint_new() {
 	return new QEventPoint();
 }
 
-QEventPoint* QEventPoint_new2(int pointId, uint8_t state, QPointF* scenePosition, QPointF* globalPosition) {
+QEventPoint* QEventPoint_new2(int pointId, unsigned char state, QPointF* scenePosition, QPointF* globalPosition) {
 	return new QEventPoint(static_cast<int>(pointId), static_cast<QEventPoint::State>(state), *scenePosition, *globalPosition);
 }
 
@@ -152,9 +152,9 @@ QVector2D* QEventPoint_Velocity(const QEventPoint* self) {
 	return new QVector2D(self->velocity());
 }
 
-uint8_t QEventPoint_State(const QEventPoint* self) {
+unsigned char QEventPoint_State(const QEventPoint* self) {
 	QEventPoint::State _ret = self->state();
-	return static_cast<uint8_t>(_ret);
+	return static_cast<unsigned char>(_ret);
 }
 
 QPointingDevice* QEventPoint_Device(const QEventPoint* self) {

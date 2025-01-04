@@ -49,12 +49,12 @@ struct miqt_string QVideoWindowControl_TrUtf8(const char* s) {
 	return _ms;
 }
 
-uintptr_t QVideoWindowControl_WinId(const QVideoWindowControl* self) {
+unsigned long long QVideoWindowControl_WinId(const QVideoWindowControl* self) {
 	WId _ret = self->winId();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<unsigned long long>(_ret);
 }
 
-void QVideoWindowControl_SetWinId(QVideoWindowControl* self, uintptr_t id) {
+void QVideoWindowControl_SetWinId(QVideoWindowControl* self, unsigned long long id) {
 	self->setWinId(static_cast<WId>(id));
 }
 

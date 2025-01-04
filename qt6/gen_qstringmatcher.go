@@ -69,7 +69,7 @@ func NewQStringMatcher2(pattern string) *QStringMatcher {
 // NewQStringMatcher3 constructs a new QStringMatcher object.
 func NewQStringMatcher3(uc *QChar, lenVal int64) *QStringMatcher {
 
-	ret := newQStringMatcher(C.QStringMatcher_new3(uc.cPointer(), (C.ptrdiff_t)(lenVal)))
+	ret := newQStringMatcher(C.QStringMatcher_new3(uc.cPointer(), (C.longlong)(lenVal)))
 	ret.isSubclass = true
 	return ret
 }
@@ -97,7 +97,7 @@ func NewQStringMatcher5(pattern string, cs CaseSensitivity) *QStringMatcher {
 // NewQStringMatcher6 constructs a new QStringMatcher object.
 func NewQStringMatcher6(uc *QChar, lenVal int64, cs CaseSensitivity) *QStringMatcher {
 
-	ret := newQStringMatcher(C.QStringMatcher_new6(uc.cPointer(), (C.ptrdiff_t)(lenVal), (C.int)(cs)))
+	ret := newQStringMatcher(C.QStringMatcher_new6(uc.cPointer(), (C.longlong)(lenVal), (C.int)(cs)))
 	ret.isSubclass = true
 	return ret
 }
@@ -127,7 +127,7 @@ func (this *QStringMatcher) IndexIn(str string) int64 {
 }
 
 func (this *QStringMatcher) IndexIn2(str *QChar, length int64) int64 {
-	return (int64)(C.QStringMatcher_IndexIn2(this.h, str.cPointer(), (C.ptrdiff_t)(length)))
+	return (int64)(C.QStringMatcher_IndexIn2(this.h, str.cPointer(), (C.longlong)(length)))
 }
 
 func (this *QStringMatcher) Pattern() string {
@@ -146,11 +146,11 @@ func (this *QStringMatcher) IndexIn22(str string, from int64) int64 {
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
 	defer C.free(unsafe.Pointer(str_ms.data))
-	return (int64)(C.QStringMatcher_IndexIn22(this.h, str_ms, (C.ptrdiff_t)(from)))
+	return (int64)(C.QStringMatcher_IndexIn22(this.h, str_ms, (C.longlong)(from)))
 }
 
 func (this *QStringMatcher) IndexIn3(str *QChar, length int64, from int64) int64 {
-	return (int64)(C.QStringMatcher_IndexIn3(this.h, str.cPointer(), (C.ptrdiff_t)(length), (C.ptrdiff_t)(from)))
+	return (int64)(C.QStringMatcher_IndexIn3(this.h, str.cPointer(), (C.longlong)(length), (C.longlong)(from)))
 }
 
 // Delete this object from C++ memory.

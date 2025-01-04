@@ -139,8 +139,8 @@ func (this *QWindow) Create() {
 	C.QWindow_Create(this.h)
 }
 
-func (this *QWindow) WinId() uintptr {
-	return (uintptr)(C.QWindow_WinId(this.h))
+func (this *QWindow) WinId() uint64 {
+	return (uint64)(C.QWindow_WinId(this.h))
 }
 
 func (this *QWindow) Parent() *QWindow {
@@ -491,8 +491,8 @@ func (this *QWindow) UnsetCursor() {
 	C.QWindow_UnsetCursor(this.h)
 }
 
-func QWindow_FromWinId(id uintptr) *QWindow {
-	return newQWindow(C.QWindow_FromWinId((C.uintptr_t)(id)))
+func QWindow_FromWinId(id uint64) *QWindow {
+	return newQWindow(C.QWindow_FromWinId((C.ulonglong)(id)))
 }
 
 func (this *QWindow) RequestActivate() {
@@ -1646,15 +1646,15 @@ func miqt_exec_callback_QWindow_TabletEvent(self *C.QWindow, cb C.intptr_t, para
 
 }
 
-func (this *QWindow) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
+func (this *QWindow) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
 	eventType_alias := C.struct_miqt_string{}
 	eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
 	eventType_alias.len = C.size_t(len(eventType))
 
-	return (bool)(C.QWindow_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
+	return (bool)(C.QWindow_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.longlong)(unsafe.Pointer(result))))
 
 }
-func (this *QWindow) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
+func (this *QWindow) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
 	if !this.isSubclass {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
@@ -1662,8 +1662,8 @@ func (this *QWindow) OnNativeEvent(slot func(super func(eventType []byte, messag
 }
 
 //export miqt_exec_callback_QWindow_NativeEvent
-func miqt_exec_callback_QWindow_NativeEvent(self *C.QWindow, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.intptr_t) C.bool {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool)
+func miqt_exec_callback_QWindow_NativeEvent(self *C.QWindow, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.longlong) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
@@ -1675,7 +1675,7 @@ func miqt_exec_callback_QWindow_NativeEvent(self *C.QWindow, cb C.intptr_t, even
 	slotval1 := eventType_ret
 	slotval2 := (unsafe.Pointer)(message)
 
-	slotval3 := (*uintptr)(unsafe.Pointer(result))
+	slotval3 := (*int64)(unsafe.Pointer(result))
 
 	virtualReturn := gofunc((&QWindow{h: self}).callVirtualBase_NativeEvent, slotval1, slotval2, slotval3)
 

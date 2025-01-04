@@ -192,7 +192,7 @@ func (this *QCollator) Compare(s1 string, s2 string) int {
 }
 
 func (this *QCollator) Compare2(s1 *QChar, len1 int64, s2 *QChar, len2 int64) int {
-	return (int)(C.QCollator_Compare2(this.h, s1.cPointer(), (C.ptrdiff_t)(len1), s2.cPointer(), (C.ptrdiff_t)(len2)))
+	return (int)(C.QCollator_Compare2(this.h, s1.cPointer(), (C.longlong)(len1), s2.cPointer(), (C.longlong)(len2)))
 }
 
 func (this *QCollator) OperatorCall(s1 string, s2 string) bool {

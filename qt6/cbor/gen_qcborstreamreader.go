@@ -88,7 +88,7 @@ func NewQCborStreamReader2(data string, lenVal int64) *QCborStreamReader {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
-	ret := newQCborStreamReader(C.QCborStreamReader_new2(data_Cstring, (C.ptrdiff_t)(lenVal)))
+	ret := newQCborStreamReader(C.QCborStreamReader_new2(data_Cstring, (C.longlong)(lenVal)))
 	ret.isSubclass = true
 	return ret
 }
@@ -96,7 +96,7 @@ func NewQCborStreamReader2(data string, lenVal int64) *QCborStreamReader {
 // NewQCborStreamReader3 constructs a new QCborStreamReader object.
 func NewQCborStreamReader3(data *byte, lenVal int64) *QCborStreamReader {
 
-	ret := newQCborStreamReader(C.QCborStreamReader_new3((*C.uchar)(unsafe.Pointer(data)), (C.ptrdiff_t)(lenVal)))
+	ret := newQCborStreamReader(C.QCborStreamReader_new3((*C.uchar)(unsafe.Pointer(data)), (C.longlong)(lenVal)))
 	ret.isSubclass = true
 	return ret
 }
@@ -138,11 +138,11 @@ func (this *QCborStreamReader) AddData(data []byte) {
 func (this *QCborStreamReader) AddData2(data string, lenVal int64) {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	C.QCborStreamReader_AddData2(this.h, data_Cstring, (C.ptrdiff_t)(lenVal))
+	C.QCborStreamReader_AddData2(this.h, data_Cstring, (C.longlong)(lenVal))
 }
 
 func (this *QCborStreamReader) AddData3(data *byte, lenVal int64) {
-	C.QCborStreamReader_AddData3(this.h, (*C.uchar)(unsafe.Pointer(data)), (C.ptrdiff_t)(lenVal))
+	C.QCborStreamReader_AddData3(this.h, (*C.uchar)(unsafe.Pointer(data)), (C.longlong)(lenVal))
 }
 
 func (this *QCborStreamReader) Reparse() {
@@ -244,7 +244,7 @@ func (this *QCborStreamReader) IsInvalid() bool {
 }
 
 func (this *QCborStreamReader) IsSimpleTypeWithSt(st QCborSimpleType) bool {
-	return (bool)(C.QCborStreamReader_IsSimpleTypeWithSt(this.h, (C.uint8_t)(st)))
+	return (bool)(C.QCborStreamReader_IsSimpleTypeWithSt(this.h, (C.uchar)(st)))
 }
 
 func (this *QCborStreamReader) IsFalse() bool {

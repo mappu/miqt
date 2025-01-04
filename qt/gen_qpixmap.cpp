@@ -303,8 +303,8 @@ QBitmap* QPixmap_CreateMaskFromColor(const QPixmap* self, QColor* maskColor) {
 	return new QBitmap(self->createMaskFromColor(*maskColor));
 }
 
-QPixmap* QPixmap_GrabWindow(uintptr_t param1) {
-	return new QPixmap(QPixmap::grabWindow(static_cast<WId>(param1)));
+QPixmap* QPixmap_GrabWindow(unsigned long long param1) {
+	return new QPixmap(QPixmap::grabWindow(static_cast<unsigned long long>(param1)));
 }
 
 QPixmap* QPixmap_GrabWidget(QObject* widget, QRect* rect) {
@@ -439,20 +439,20 @@ QBitmap* QPixmap_CreateMaskFromColor2(const QPixmap* self, QColor* maskColor, in
 	return new QBitmap(self->createMaskFromColor(*maskColor, static_cast<Qt::MaskMode>(mode)));
 }
 
-QPixmap* QPixmap_GrabWindow2(uintptr_t param1, int x) {
-	return new QPixmap(QPixmap::grabWindow(static_cast<WId>(param1), static_cast<int>(x)));
+QPixmap* QPixmap_GrabWindow2(unsigned long long param1, int x) {
+	return new QPixmap(QPixmap::grabWindow(static_cast<unsigned long long>(param1), static_cast<int>(x)));
 }
 
-QPixmap* QPixmap_GrabWindow3(uintptr_t param1, int x, int y) {
-	return new QPixmap(QPixmap::grabWindow(static_cast<WId>(param1), static_cast<int>(x), static_cast<int>(y)));
+QPixmap* QPixmap_GrabWindow3(unsigned long long param1, int x, int y) {
+	return new QPixmap(QPixmap::grabWindow(static_cast<unsigned long long>(param1), static_cast<int>(x), static_cast<int>(y)));
 }
 
-QPixmap* QPixmap_GrabWindow4(uintptr_t param1, int x, int y, int w) {
-	return new QPixmap(QPixmap::grabWindow(static_cast<WId>(param1), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w)));
+QPixmap* QPixmap_GrabWindow4(unsigned long long param1, int x, int y, int w) {
+	return new QPixmap(QPixmap::grabWindow(static_cast<unsigned long long>(param1), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w)));
 }
 
-QPixmap* QPixmap_GrabWindow5(uintptr_t param1, int x, int y, int w, int h) {
-	return new QPixmap(QPixmap::grabWindow(static_cast<WId>(param1), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h)));
+QPixmap* QPixmap_GrabWindow5(unsigned long long param1, int x, int y, int w, int h) {
+	return new QPixmap(QPixmap::grabWindow(static_cast<unsigned long long>(param1), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h)));
 }
 
 QPixmap* QPixmap_GrabWidget2(QObject* widget, int x) {

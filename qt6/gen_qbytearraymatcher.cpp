@@ -31,7 +31,7 @@ QByteArrayMatcher* QByteArrayMatcher_new5(QByteArrayMatcher* other) {
 	return new QByteArrayMatcher(*other);
 }
 
-QByteArrayMatcher* QByteArrayMatcher_new6(const char* pattern, ptrdiff_t length) {
+QByteArrayMatcher* QByteArrayMatcher_new6(const char* pattern, long long length) {
 	return new QByteArrayMatcher(pattern, (qsizetype)(length));
 }
 
@@ -44,14 +44,14 @@ void QByteArrayMatcher_SetPattern(QByteArrayMatcher* self, struct miqt_string pa
 	self->setPattern(pattern_QByteArray);
 }
 
-ptrdiff_t QByteArrayMatcher_IndexIn(const QByteArrayMatcher* self, const char* str, ptrdiff_t lenVal) {
+long long QByteArrayMatcher_IndexIn(const QByteArrayMatcher* self, const char* str, long long lenVal) {
 	qsizetype _ret = self->indexIn(str, (qsizetype)(lenVal));
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
-ptrdiff_t QByteArrayMatcher_IndexInWithData(const QByteArrayMatcher* self, QByteArrayView* data) {
+long long QByteArrayMatcher_IndexInWithData(const QByteArrayMatcher* self, QByteArrayView* data) {
 	qsizetype _ret = self->indexIn(*data);
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 struct miqt_string QByteArrayMatcher_Pattern(const QByteArrayMatcher* self) {
@@ -63,14 +63,14 @@ struct miqt_string QByteArrayMatcher_Pattern(const QByteArrayMatcher* self) {
 	return _ms;
 }
 
-ptrdiff_t QByteArrayMatcher_IndexIn3(const QByteArrayMatcher* self, const char* str, ptrdiff_t lenVal, ptrdiff_t from) {
+long long QByteArrayMatcher_IndexIn3(const QByteArrayMatcher* self, const char* str, long long lenVal, long long from) {
 	qsizetype _ret = self->indexIn(str, (qsizetype)(lenVal), (qsizetype)(from));
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
-ptrdiff_t QByteArrayMatcher_IndexIn2(const QByteArrayMatcher* self, QByteArrayView* data, ptrdiff_t from) {
+long long QByteArrayMatcher_IndexIn2(const QByteArrayMatcher* self, QByteArrayView* data, long long from) {
 	qsizetype _ret = self->indexIn(*data, (qsizetype)(from));
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 void QByteArrayMatcher_Delete(QByteArrayMatcher* self, bool isSubclass) {

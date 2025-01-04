@@ -130,12 +130,12 @@ func (this *QMargins) OperatorDivideAssign(param1 int) *QMargins {
 	return newQMargins(C.QMargins_OperatorDivideAssign(this.h, (C.int)(param1)))
 }
 
-func (this *QMargins) OperatorMultiplyAssignWithQreal(param1 float64) *QMargins {
-	return newQMargins(C.QMargins_OperatorMultiplyAssignWithQreal(this.h, (C.double)(param1)))
+func (this *QMargins) OperatorMultiplyAssignWithDouble(param1 float64) *QMargins {
+	return newQMargins(C.QMargins_OperatorMultiplyAssignWithDouble(this.h, (C.double)(param1)))
 }
 
-func (this *QMargins) OperatorDivideAssignWithQreal(param1 float64) *QMargins {
-	return newQMargins(C.QMargins_OperatorDivideAssignWithQreal(this.h, (C.double)(param1)))
+func (this *QMargins) OperatorDivideAssignWithDouble(param1 float64) *QMargins {
+	return newQMargins(C.QMargins_OperatorDivideAssignWithDouble(this.h, (C.double)(param1)))
 }
 
 // Delete this object from C++ memory.

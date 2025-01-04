@@ -177,20 +177,20 @@ func (this *QWidget) DevType() int {
 	return (int)(C.QWidget_DevType(this.h))
 }
 
-func (this *QWidget) WinId() uintptr {
-	return (uintptr)(C.QWidget_WinId(this.h))
+func (this *QWidget) WinId() uint64 {
+	return (uint64)(C.QWidget_WinId(this.h))
 }
 
 func (this *QWidget) CreateWinId() {
 	C.QWidget_CreateWinId(this.h)
 }
 
-func (this *QWidget) InternalWinId() uintptr {
-	return (uintptr)(C.QWidget_InternalWinId(this.h))
+func (this *QWidget) InternalWinId() uint64 {
+	return (uint64)(C.QWidget_InternalWinId(this.h))
 }
 
-func (this *QWidget) EffectiveWinId() uintptr {
-	return (uintptr)(C.QWidget_EffectiveWinId(this.h))
+func (this *QWidget) EffectiveWinId() uint64 {
+	return (uint64)(C.QWidget_EffectiveWinId(this.h))
 }
 
 func (this *QWidget) Style() *QStyle {
@@ -1249,8 +1249,8 @@ func (this *QWidget) WindowType() WindowType {
 	return (WindowType)(C.QWidget_WindowType(this.h))
 }
 
-func QWidget_Find(param1 uintptr) *QWidget {
-	return newQWidget(C.QWidget_Find((C.uintptr_t)(param1)))
+func QWidget_Find(param1 uint64) *QWidget {
+	return newQWidget(C.QWidget_Find((C.ulonglong)(param1)))
 }
 
 func (this *QWidget) ChildAt(x int, y int) *QWidget {

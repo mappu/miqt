@@ -50,7 +50,7 @@ QModelIndex* QModelIndex_new();
 QModelIndex* QModelIndex_new2(QModelIndex* param1);
 int QModelIndex_Row(const QModelIndex* self);
 int QModelIndex_Column(const QModelIndex* self);
-uintptr_t QModelIndex_InternalId(const QModelIndex* self);
+unsigned long long QModelIndex_InternalId(const QModelIndex* self);
 void* QModelIndex_InternalPointer(const QModelIndex* self);
 QModelIndex* QModelIndex_Parent(const QModelIndex* self);
 QModelIndex* QModelIndex_Sibling(const QModelIndex* self, int row, int column);
@@ -82,7 +82,7 @@ QModelIndex* QPersistentModelIndex_ToConstQModelIndexBitwiseAnd(const QPersisten
 int QPersistentModelIndex_Row(const QPersistentModelIndex* self);
 int QPersistentModelIndex_Column(const QPersistentModelIndex* self);
 void* QPersistentModelIndex_InternalPointer(const QPersistentModelIndex* self);
-uintptr_t QPersistentModelIndex_InternalId(const QPersistentModelIndex* self);
+unsigned long long QPersistentModelIndex_InternalId(const QPersistentModelIndex* self);
 QModelIndex* QPersistentModelIndex_Parent(const QPersistentModelIndex* self);
 QModelIndex* QPersistentModelIndex_Sibling(const QPersistentModelIndex* self, int row, int column);
 QModelIndex* QPersistentModelIndex_Child(const QPersistentModelIndex* self, int row, int column);

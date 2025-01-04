@@ -93,11 +93,11 @@ void QScreen_RefreshRateChanged(QScreen* self, double refreshRate);
 void QScreen_connect_RefreshRateChanged(QScreen* self, intptr_t slot);
 struct miqt_string QScreen_Tr2(const char* s, const char* c);
 struct miqt_string QScreen_Tr3(const char* s, const char* c, int n);
-QPixmap* QScreen_GrabWindow1(QScreen* self, uintptr_t window);
-QPixmap* QScreen_GrabWindow2(QScreen* self, uintptr_t window, int x);
-QPixmap* QScreen_GrabWindow3(QScreen* self, uintptr_t window, int x, int y);
-QPixmap* QScreen_GrabWindow4(QScreen* self, uintptr_t window, int x, int y, int w);
-QPixmap* QScreen_GrabWindow5(QScreen* self, uintptr_t window, int x, int y, int w, int h);
+QPixmap* QScreen_GrabWindow1(QScreen* self, unsigned long long window);
+QPixmap* QScreen_GrabWindow2(QScreen* self, unsigned long long window, int x);
+QPixmap* QScreen_GrabWindow3(QScreen* self, unsigned long long window, int x, int y);
+QPixmap* QScreen_GrabWindow4(QScreen* self, unsigned long long window, int x, int y, int w);
+QPixmap* QScreen_GrabWindow5(QScreen* self, unsigned long long window, int x, int y, int w, int h);
 void QScreen_Delete(QScreen* self, bool isSubclass);
 
 #ifdef __cplusplus

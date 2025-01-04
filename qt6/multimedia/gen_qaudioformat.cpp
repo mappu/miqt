@@ -27,13 +27,13 @@ int QAudioFormat_SampleRate(const QAudioFormat* self) {
 	return self->sampleRate();
 }
 
-void QAudioFormat_SetChannelConfig(QAudioFormat* self, uint32_t config) {
+void QAudioFormat_SetChannelConfig(QAudioFormat* self, unsigned int config) {
 	self->setChannelConfig(static_cast<QAudioFormat::ChannelConfig>(config));
 }
 
-uint32_t QAudioFormat_ChannelConfig(const QAudioFormat* self) {
+unsigned int QAudioFormat_ChannelConfig(const QAudioFormat* self) {
 	QAudioFormat::ChannelConfig _ret = self->channelConfig();
-	return static_cast<uint32_t>(_ret);
+	return static_cast<unsigned int>(_ret);
 }
 
 void QAudioFormat_SetChannelCount(QAudioFormat* self, int channelCount) {
@@ -99,9 +99,9 @@ float QAudioFormat_NormalizedSampleValue(const QAudioFormat* self, const void* s
 	return self->normalizedSampleValue(sample);
 }
 
-uint32_t QAudioFormat_DefaultChannelConfigForChannelCount(int channelCount) {
+unsigned int QAudioFormat_DefaultChannelConfigForChannelCount(int channelCount) {
 	QAudioFormat::ChannelConfig _ret = QAudioFormat::defaultChannelConfigForChannelCount(static_cast<int>(channelCount));
-	return static_cast<uint32_t>(_ret);
+	return static_cast<unsigned int>(_ret);
 }
 
 void QAudioFormat_Delete(QAudioFormat* self, bool isSubclass) {

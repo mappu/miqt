@@ -173,7 +173,7 @@ void QKeySequenceEdit_virtualbase_ShowEvent(void* self, QShowEvent* event);
 void QKeySequenceEdit_override_virtual_HideEvent(void* self, intptr_t slot);
 void QKeySequenceEdit_virtualbase_HideEvent(void* self, QHideEvent* event);
 void QKeySequenceEdit_override_virtual_NativeEvent(void* self, intptr_t slot);
-bool QKeySequenceEdit_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
+bool QKeySequenceEdit_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long long* result);
 void QKeySequenceEdit_override_virtual_ChangeEvent(void* self, intptr_t slot);
 void QKeySequenceEdit_virtualbase_ChangeEvent(void* self, QEvent* param1);
 void QKeySequenceEdit_override_virtual_Metric(void* self, intptr_t slot);

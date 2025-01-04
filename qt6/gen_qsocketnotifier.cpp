@@ -204,7 +204,7 @@ QSocketNotifier* QSocketNotifier_new(int param1) {
 	return new MiqtVirtualQSocketNotifier(static_cast<QSocketNotifier::Type>(param1));
 }
 
-QSocketNotifier* QSocketNotifier_new2(intptr_t socket, int param2) {
+QSocketNotifier* QSocketNotifier_new2(long long socket, int param2) {
 	return new MiqtVirtualQSocketNotifier((qintptr)(socket), static_cast<QSocketNotifier::Type>(param2));
 }
 
@@ -212,7 +212,7 @@ QSocketNotifier* QSocketNotifier_new3(int param1, QObject* parent) {
 	return new MiqtVirtualQSocketNotifier(static_cast<QSocketNotifier::Type>(param1), parent);
 }
 
-QSocketNotifier* QSocketNotifier_new4(intptr_t socket, int param2, QObject* parent) {
+QSocketNotifier* QSocketNotifier_new4(long long socket, int param2, QObject* parent) {
 	return new MiqtVirtualQSocketNotifier((qintptr)(socket), static_cast<QSocketNotifier::Type>(param2), parent);
 }
 
@@ -239,13 +239,13 @@ struct miqt_string QSocketNotifier_Tr(const char* s) {
 	return _ms;
 }
 
-void QSocketNotifier_SetSocket(QSocketNotifier* self, intptr_t socket) {
+void QSocketNotifier_SetSocket(QSocketNotifier* self, long long socket) {
 	self->setSocket((qintptr)(socket));
 }
 
-intptr_t QSocketNotifier_Socket(const QSocketNotifier* self) {
+long long QSocketNotifier_Socket(const QSocketNotifier* self) {
 	qintptr _ret = self->socket();
-	return (intptr_t)(_ret);
+	return (long long)(_ret);
 }
 
 int QSocketNotifier_Type(const QSocketNotifier* self) {

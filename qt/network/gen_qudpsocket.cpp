@@ -214,16 +214,16 @@ public:
 		}
 		
 
-		intptr_t callback_return_value = miqt_exec_callback_QUdpSocket_SocketDescriptor(const_cast<MiqtVirtualQUdpSocket*>(this), handle__SocketDescriptor);
+		long long callback_return_value = miqt_exec_callback_QUdpSocket_SocketDescriptor(const_cast<MiqtVirtualQUdpSocket*>(this), handle__SocketDescriptor);
 
 		return (qintptr)(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	intptr_t virtualbase_SocketDescriptor() const {
+	long long virtualbase_SocketDescriptor() const {
 
 		qintptr _ret = QUdpSocket::socketDescriptor();
-		return (intptr_t)(_ret);
+		return (long long)(_ret);
 
 	}
 
@@ -237,7 +237,7 @@ public:
 		}
 		
 		qintptr socketDescriptor_ret = socketDescriptor;
-		intptr_t sigval1 = (intptr_t)(socketDescriptor_ret);
+		long long sigval1 = (long long)(socketDescriptor_ret);
 		QAbstractSocket::SocketState state_ret = state;
 		int sigval2 = static_cast<int>(state_ret);
 		QIODevice::OpenMode openMode_ret = openMode;
@@ -249,7 +249,7 @@ public:
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_SetSocketDescriptor(intptr_t socketDescriptor, int state, int openMode) {
+	bool virtualbase_SetSocketDescriptor(long long socketDescriptor, int state, int openMode) {
 
 		return QUdpSocket::setSocketDescriptor((qintptr)(socketDescriptor), static_cast<QAbstractSocket::SocketState>(state), static_cast<QIODevice::OpenMode>(openMode));
 
@@ -764,7 +764,7 @@ void QUdpSocket_override_virtual_SocketDescriptor(void* self, intptr_t slot) {
 	dynamic_cast<MiqtVirtualQUdpSocket*>( (QUdpSocket*)(self) )->handle__SocketDescriptor = slot;
 }
 
-intptr_t QUdpSocket_virtualbase_SocketDescriptor(const void* self) {
+long long QUdpSocket_virtualbase_SocketDescriptor(const void* self) {
 	return ( (const MiqtVirtualQUdpSocket*)(self) )->virtualbase_SocketDescriptor();
 }
 
@@ -772,7 +772,7 @@ void QUdpSocket_override_virtual_SetSocketDescriptor(void* self, intptr_t slot) 
 	dynamic_cast<MiqtVirtualQUdpSocket*>( (QUdpSocket*)(self) )->handle__SetSocketDescriptor = slot;
 }
 
-bool QUdpSocket_virtualbase_SetSocketDescriptor(void* self, intptr_t socketDescriptor, int state, int openMode) {
+bool QUdpSocket_virtualbase_SetSocketDescriptor(void* self, long long socketDescriptor, int state, int openMode) {
 	return ( (MiqtVirtualQUdpSocket*)(self) )->virtualbase_SetSocketDescriptor(socketDescriptor, state, openMode);
 }
 

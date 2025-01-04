@@ -238,7 +238,7 @@ func (this *QJsonDocument) OperatorSubscript(key string) *QJsonValue {
 }
 
 func (this *QJsonDocument) OperatorSubscriptWithQsizetype(i int64) *QJsonValue {
-	_goptr := newQJsonValue(C.QJsonDocument_OperatorSubscriptWithQsizetype(this.h, (C.ptrdiff_t)(i)))
+	_goptr := newQJsonValue(C.QJsonDocument_OperatorSubscriptWithQsizetype(this.h, (C.longlong)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

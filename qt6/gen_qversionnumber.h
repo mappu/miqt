@@ -37,14 +37,14 @@ int QVersionNumber_MinorVersion(const QVersionNumber* self);
 int QVersionNumber_MicroVersion(const QVersionNumber* self);
 QVersionNumber* QVersionNumber_Normalized(const QVersionNumber* self);
 struct miqt_array /* of int */  QVersionNumber_Segments(const QVersionNumber* self);
-int QVersionNumber_SegmentAt(const QVersionNumber* self, ptrdiff_t index);
-ptrdiff_t QVersionNumber_SegmentCount(const QVersionNumber* self);
+int QVersionNumber_SegmentAt(const QVersionNumber* self, long long index);
+long long QVersionNumber_SegmentCount(const QVersionNumber* self);
 bool QVersionNumber_IsPrefixOf(const QVersionNumber* self, QVersionNumber* other);
 int QVersionNumber_Compare(QVersionNumber* v1, QVersionNumber* v2);
 QVersionNumber* QVersionNumber_CommonPrefix(QVersionNumber* v1, QVersionNumber* v2);
 struct miqt_string QVersionNumber_ToString(const QVersionNumber* self);
 QVersionNumber* QVersionNumber_FromString(QAnyStringView* stringVal);
-QVersionNumber* QVersionNumber_FromString2(QAnyStringView* stringVal, ptrdiff_t* suffixIndex);
+QVersionNumber* QVersionNumber_FromString2(QAnyStringView* stringVal, long long* suffixIndex);
 void QVersionNumber_Delete(QVersionNumber* self, bool isSubclass);
 
 QTypeRevision* QTypeRevision_new();

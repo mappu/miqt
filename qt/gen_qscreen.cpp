@@ -233,7 +233,7 @@ bool QScreen_IsLandscape(const QScreen* self, int orientation) {
 	return self->isLandscape(static_cast<Qt::ScreenOrientation>(orientation));
 }
 
-QPixmap* QScreen_GrabWindow(QScreen* self, uintptr_t window) {
+QPixmap* QScreen_GrabWindow(QScreen* self, unsigned long long window) {
 	return new QPixmap(self->grabWindow(static_cast<WId>(window)));
 }
 
@@ -398,19 +398,19 @@ struct miqt_string QScreen_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-QPixmap* QScreen_GrabWindow2(QScreen* self, uintptr_t window, int x) {
+QPixmap* QScreen_GrabWindow2(QScreen* self, unsigned long long window, int x) {
 	return new QPixmap(self->grabWindow(static_cast<WId>(window), static_cast<int>(x)));
 }
 
-QPixmap* QScreen_GrabWindow3(QScreen* self, uintptr_t window, int x, int y) {
+QPixmap* QScreen_GrabWindow3(QScreen* self, unsigned long long window, int x, int y) {
 	return new QPixmap(self->grabWindow(static_cast<WId>(window), static_cast<int>(x), static_cast<int>(y)));
 }
 
-QPixmap* QScreen_GrabWindow4(QScreen* self, uintptr_t window, int x, int y, int w) {
+QPixmap* QScreen_GrabWindow4(QScreen* self, unsigned long long window, int x, int y, int w) {
 	return new QPixmap(self->grabWindow(static_cast<WId>(window), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w)));
 }
 
-QPixmap* QScreen_GrabWindow5(QScreen* self, uintptr_t window, int x, int y, int w, int h) {
+QPixmap* QScreen_GrabWindow5(QScreen* self, unsigned long long window, int x, int y, int w, int h) {
 	return new QPixmap(self->grabWindow(static_cast<WId>(window), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h)));
 }
 

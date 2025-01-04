@@ -56,7 +56,7 @@ void QAbstractEventDispatcher_StartingUp(QAbstractEventDispatcher* self);
 void QAbstractEventDispatcher_ClosingDown(QAbstractEventDispatcher* self);
 void QAbstractEventDispatcher_InstallNativeEventFilter(QAbstractEventDispatcher* self, QAbstractNativeEventFilter* filterObj);
 void QAbstractEventDispatcher_RemoveNativeEventFilter(QAbstractEventDispatcher* self, QAbstractNativeEventFilter* filterObj);
-bool QAbstractEventDispatcher_FilterNativeEvent(QAbstractEventDispatcher* self, struct miqt_string eventType, void* message, intptr_t* result);
+bool QAbstractEventDispatcher_FilterNativeEvent(QAbstractEventDispatcher* self, struct miqt_string eventType, void* message, long long* result);
 void QAbstractEventDispatcher_AboutToBlock(QAbstractEventDispatcher* self);
 void QAbstractEventDispatcher_connect_AboutToBlock(QAbstractEventDispatcher* self, intptr_t slot);
 void QAbstractEventDispatcher_Awake(QAbstractEventDispatcher* self);

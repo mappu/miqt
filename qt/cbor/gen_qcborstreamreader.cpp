@@ -14,11 +14,11 @@ QCborStreamReader* QCborStreamReader_new() {
 	return new QCborStreamReader();
 }
 
-QCborStreamReader* QCborStreamReader_new2(const char* data, ptrdiff_t lenVal) {
+QCborStreamReader* QCborStreamReader_new2(const char* data, long long lenVal) {
 	return new QCborStreamReader(data, (qsizetype)(lenVal));
 }
 
-QCborStreamReader* QCborStreamReader_new3(const unsigned char* data, ptrdiff_t lenVal) {
+QCborStreamReader* QCborStreamReader_new3(const unsigned char* data, long long lenVal) {
 	return new QCborStreamReader(static_cast<const quint8*>(data), (qsizetype)(lenVal));
 }
 
@@ -44,11 +44,11 @@ void QCborStreamReader_AddData(QCborStreamReader* self, struct miqt_string data)
 	self->addData(data_QByteArray);
 }
 
-void QCborStreamReader_AddData2(QCborStreamReader* self, const char* data, ptrdiff_t lenVal) {
+void QCborStreamReader_AddData2(QCborStreamReader* self, const char* data, long long lenVal) {
 	self->addData(data, (qsizetype)(lenVal));
 }
 
-void QCborStreamReader_AddData3(QCborStreamReader* self, const unsigned char* data, ptrdiff_t lenVal) {
+void QCborStreamReader_AddData3(QCborStreamReader* self, const unsigned char* data, long long lenVal) {
 	self->addData(static_cast<const quint8*>(data), (qsizetype)(lenVal));
 }
 
@@ -81,9 +81,9 @@ int QCborStreamReader_ContainerDepth(const QCborStreamReader* self) {
 	return self->containerDepth();
 }
 
-uint8_t QCborStreamReader_ParentContainerType(const QCborStreamReader* self) {
+unsigned char QCborStreamReader_ParentContainerType(const QCborStreamReader* self) {
 	QCborStreamReader::Type _ret = self->parentContainerType();
-	return static_cast<uint8_t>(_ret);
+	return static_cast<unsigned char>(_ret);
 }
 
 bool QCborStreamReader_HasNext(const QCborStreamReader* self) {
@@ -94,9 +94,9 @@ bool QCborStreamReader_Next(QCborStreamReader* self) {
 	return self->next();
 }
 
-uint8_t QCborStreamReader_Type(const QCborStreamReader* self) {
+unsigned char QCborStreamReader_Type(const QCborStreamReader* self) {
 	QCborStreamReader::Type _ret = self->type();
-	return static_cast<uint8_t>(_ret);
+	return static_cast<unsigned char>(_ret);
 }
 
 bool QCborStreamReader_IsUnsignedInteger(const QCborStreamReader* self) {
@@ -151,7 +151,7 @@ bool QCborStreamReader_IsInvalid(const QCborStreamReader* self) {
 	return self->isInvalid();
 }
 
-bool QCborStreamReader_IsSimpleTypeWithSt(const QCborStreamReader* self, uint8_t st) {
+bool QCborStreamReader_IsSimpleTypeWithSt(const QCborStreamReader* self, unsigned char st) {
 	return self->isSimpleType(static_cast<QCborSimpleType>(st));
 }
 
@@ -196,18 +196,18 @@ bool QCborStreamReader_LeaveContainer(QCborStreamReader* self) {
 	return self->leaveContainer();
 }
 
-ptrdiff_t QCborStreamReader_CurrentStringChunkSize(const QCborStreamReader* self) {
+long long QCborStreamReader_CurrentStringChunkSize(const QCborStreamReader* self) {
 	qsizetype _ret = self->currentStringChunkSize();
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 bool QCborStreamReader_ToBool(const QCborStreamReader* self) {
 	return self->toBool();
 }
 
-uint64_t QCborStreamReader_ToTag(const QCborStreamReader* self) {
+unsigned long long QCborStreamReader_ToTag(const QCborStreamReader* self) {
 	QCborTag _ret = self->toTag();
-	return static_cast<uint64_t>(_ret);
+	return static_cast<unsigned long long>(_ret);
 }
 
 unsigned long long QCborStreamReader_ToUnsignedInteger(const QCborStreamReader* self) {
@@ -215,14 +215,14 @@ unsigned long long QCborStreamReader_ToUnsignedInteger(const QCborStreamReader* 
 	return static_cast<unsigned long long>(_ret);
 }
 
-uint64_t QCborStreamReader_ToNegativeInteger(const QCborStreamReader* self) {
+unsigned long long QCborStreamReader_ToNegativeInteger(const QCborStreamReader* self) {
 	QCborNegativeInteger _ret = self->toNegativeInteger();
-	return static_cast<uint64_t>(_ret);
+	return static_cast<unsigned long long>(_ret);
 }
 
-uint8_t QCborStreamReader_ToSimpleType(const QCborStreamReader* self) {
+unsigned char QCborStreamReader_ToSimpleType(const QCborStreamReader* self) {
 	QCborSimpleType _ret = self->toSimpleType();
-	return static_cast<uint8_t>(_ret);
+	return static_cast<unsigned char>(_ret);
 }
 
 float QCborStreamReader_ToFloat(const QCborStreamReader* self) {

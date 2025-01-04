@@ -34,7 +34,7 @@ public:
 		}
 		
 		qintptr handle_ret = handle;
-		intptr_t sigval1 = (intptr_t)(handle_ret);
+		long long sigval1 = (long long)(handle_ret);
 
 		miqt_exec_callback_QSctpServer_IncomingConnection(this, handle__IncomingConnection, sigval1);
 
@@ -42,7 +42,7 @@ public:
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_IncomingConnection(intptr_t handle) {
+	void virtualbase_IncomingConnection(long long handle) {
 
 		QSctpServer::incomingConnection((qintptr)(handle));
 
@@ -163,7 +163,7 @@ void QSctpServer_override_virtual_IncomingConnection(void* self, intptr_t slot) 
 	dynamic_cast<MiqtVirtualQSctpServer*>( (QSctpServer*)(self) )->handle__IncomingConnection = slot;
 }
 
-void QSctpServer_virtualbase_IncomingConnection(void* self, intptr_t handle) {
+void QSctpServer_virtualbase_IncomingConnection(void* self, long long handle) {
 	( (MiqtVirtualQSctpServer*)(self) )->virtualbase_IncomingConnection(handle);
 }
 

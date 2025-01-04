@@ -114,7 +114,7 @@ QJsonValue* QJsonDocument_OperatorSubscript(const QJsonDocument* self, struct mi
 	return new QJsonValue(self->operator[](key_QString));
 }
 
-QJsonValue* QJsonDocument_OperatorSubscriptWithQsizetype(const QJsonDocument* self, ptrdiff_t i) {
+QJsonValue* QJsonDocument_OperatorSubscriptWithQsizetype(const QJsonDocument* self, long long i) {
 	return new QJsonValue(self->operator[]((qsizetype)(i)));
 }
 

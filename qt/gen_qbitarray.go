@@ -206,7 +206,7 @@ func (this *QBitArray) Bits() string {
 func QBitArray_FromBits(data string, lenVal int64) *QBitArray {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	_goptr := newQBitArray(C.QBitArray_FromBits(data_Cstring, (C.ptrdiff_t)(lenVal)))
+	_goptr := newQBitArray(C.QBitArray_FromBits(data_Cstring, (C.longlong)(lenVal)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

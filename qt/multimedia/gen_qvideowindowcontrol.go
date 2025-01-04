@@ -80,12 +80,12 @@ func QVideoWindowControl_TrUtf8(s string) string {
 	return _ret
 }
 
-func (this *QVideoWindowControl) WinId() uintptr {
-	return (uintptr)(C.QVideoWindowControl_WinId(this.h))
+func (this *QVideoWindowControl) WinId() uint64 {
+	return (uint64)(C.QVideoWindowControl_WinId(this.h))
 }
 
-func (this *QVideoWindowControl) SetWinId(id uintptr) {
-	C.QVideoWindowControl_SetWinId(this.h, (C.uintptr_t)(id))
+func (this *QVideoWindowControl) SetWinId(id uint64) {
+	C.QVideoWindowControl_SetWinId(this.h, (C.ulonglong)(id))
 }
 
 func (this *QVideoWindowControl) DisplayRect() *qt.QRect {

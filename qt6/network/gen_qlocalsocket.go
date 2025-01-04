@@ -205,12 +205,12 @@ func (this *QLocalSocket) SetReadBufferSize(size int64) {
 	C.QLocalSocket_SetReadBufferSize(this.h, (C.longlong)(size))
 }
 
-func (this *QLocalSocket) SetSocketDescriptor(socketDescriptor uintptr) bool {
-	return (bool)(C.QLocalSocket_SetSocketDescriptor(this.h, (C.intptr_t)(socketDescriptor)))
+func (this *QLocalSocket) SetSocketDescriptor(socketDescriptor int64) bool {
+	return (bool)(C.QLocalSocket_SetSocketDescriptor(this.h, (C.longlong)(socketDescriptor)))
 }
 
-func (this *QLocalSocket) SocketDescriptor() uintptr {
-	return (uintptr)(C.QLocalSocket_SocketDescriptor(this.h))
+func (this *QLocalSocket) SocketDescriptor() int64 {
+	return (int64)(C.QLocalSocket_SocketDescriptor(this.h))
 }
 
 func (this *QLocalSocket) SetSocketOptions(option QLocalSocket__SocketOption) {
@@ -349,12 +349,12 @@ func (this *QLocalSocket) ConnectToServer2(name string, openMode qt6.QIODeviceBa
 	C.QLocalSocket_ConnectToServer2(this.h, name_ms, (C.int)(openMode))
 }
 
-func (this *QLocalSocket) SetSocketDescriptor2(socketDescriptor uintptr, socketState QLocalSocket__LocalSocketState) bool {
-	return (bool)(C.QLocalSocket_SetSocketDescriptor2(this.h, (C.intptr_t)(socketDescriptor), (C.int)(socketState)))
+func (this *QLocalSocket) SetSocketDescriptor2(socketDescriptor int64, socketState QLocalSocket__LocalSocketState) bool {
+	return (bool)(C.QLocalSocket_SetSocketDescriptor2(this.h, (C.longlong)(socketDescriptor), (C.int)(socketState)))
 }
 
-func (this *QLocalSocket) SetSocketDescriptor3(socketDescriptor uintptr, socketState QLocalSocket__LocalSocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool {
-	return (bool)(C.QLocalSocket_SetSocketDescriptor3(this.h, (C.intptr_t)(socketDescriptor), (C.int)(socketState), (C.int)(openMode)))
+func (this *QLocalSocket) SetSocketDescriptor3(socketDescriptor int64, socketState QLocalSocket__LocalSocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool {
+	return (bool)(C.QLocalSocket_SetSocketDescriptor3(this.h, (C.longlong)(socketDescriptor), (C.int)(socketState), (C.int)(openMode)))
 }
 
 func (this *QLocalSocket) WaitForConnected1(msecs int) bool {

@@ -215,13 +215,12 @@ void QCameraExposure_connect_FlashReady(QCameraExposure* self, intptr_t slot) {
 }
 
 void QCameraExposure_ApertureChanged(QCameraExposure* self, double param1) {
-	self->apertureChanged(static_cast<qreal>(param1));
+	self->apertureChanged(static_cast<double>(param1));
 }
 
 void QCameraExposure_connect_ApertureChanged(QCameraExposure* self, intptr_t slot) {
-	QCameraExposure::connect(self, static_cast<void (QCameraExposure::*)(qreal)>(&QCameraExposure::apertureChanged), self, [=](qreal param1) {
-		qreal param1_ret = param1;
-		double sigval1 = static_cast<double>(param1_ret);
+	QCameraExposure::connect(self, static_cast<void (QCameraExposure::*)(double)>(&QCameraExposure::apertureChanged), self, [=](double param1) {
+		double sigval1 = param1;
 		miqt_exec_callback_QCameraExposure_ApertureChanged(slot, sigval1);
 	});
 }
@@ -270,13 +269,12 @@ void QCameraExposure_connect_IsoSensitivityChanged(QCameraExposure* self, intptr
 }
 
 void QCameraExposure_ExposureCompensationChanged(QCameraExposure* self, double param1) {
-	self->exposureCompensationChanged(static_cast<qreal>(param1));
+	self->exposureCompensationChanged(static_cast<double>(param1));
 }
 
 void QCameraExposure_connect_ExposureCompensationChanged(QCameraExposure* self, intptr_t slot) {
-	QCameraExposure::connect(self, static_cast<void (QCameraExposure::*)(qreal)>(&QCameraExposure::exposureCompensationChanged), self, [=](qreal param1) {
-		qreal param1_ret = param1;
-		double sigval1 = static_cast<double>(param1_ret);
+	QCameraExposure::connect(self, static_cast<void (QCameraExposure::*)(double)>(&QCameraExposure::exposureCompensationChanged), self, [=](double param1) {
+		double sigval1 = param1;
 		miqt_exec_callback_QCameraExposure_ExposureCompensationChanged(slot, sigval1);
 	});
 }

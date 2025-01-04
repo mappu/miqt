@@ -171,7 +171,7 @@ int QGraphicsSceneMouseEvent_Flags(const QGraphicsSceneMouseEvent* self) {
 }
 
 void QGraphicsSceneMouseEvent_SetFlags(QGraphicsSceneMouseEvent* self, int flags) {
-	self->setFlags(static_cast<Qt::MouseEventFlags>(flags));
+	self->setFlags(static_cast<QFlags<Qt::MouseEventFlag>>(flags));
 }
 
 void QGraphicsSceneMouseEvent_Delete(QGraphicsSceneMouseEvent* self, bool isSubclass) {

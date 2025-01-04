@@ -634,7 +634,7 @@ public:
 		struct miqt_string sigval1 = eventType_ms;
 		void* sigval2 = message;
 		qintptr* result_ret = result;
-		intptr_t* sigval3 = (intptr_t*)(result_ret);
+		long long* sigval3 = (long long*)(result_ret);
 
 		bool callback_return_value = miqt_exec_callback_QWindow_NativeEvent(this, handle__NativeEvent, sigval1, sigval2, sigval3);
 
@@ -642,7 +642,7 @@ public:
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_NativeEvent(struct miqt_string eventType, void* message, intptr_t* result) {
+	bool virtualbase_NativeEvent(struct miqt_string eventType, void* message, long long* result) {
 		QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
 		return QWindow::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
@@ -861,9 +861,9 @@ void QWindow_Create(QWindow* self) {
 	self->create();
 }
 
-uintptr_t QWindow_WinId(const QWindow* self) {
+unsigned long long QWindow_WinId(const QWindow* self) {
 	WId _ret = self->winId();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<unsigned long long>(_ret);
 }
 
 QWindow* QWindow_Parent(const QWindow* self) {
@@ -1189,7 +1189,7 @@ void QWindow_UnsetCursor(QWindow* self) {
 	self->unsetCursor();
 }
 
-QWindow* QWindow_FromWinId(uintptr_t id) {
+QWindow* QWindow_FromWinId(unsigned long long id) {
 	return QWindow::fromWinId(static_cast<WId>(id));
 }
 
@@ -1749,7 +1749,7 @@ void QWindow_override_virtual_NativeEvent(void* self, intptr_t slot) {
 	dynamic_cast<MiqtVirtualQWindow*>( (QWindow*)(self) )->handle__NativeEvent = slot;
 }
 
-bool QWindow_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
+bool QWindow_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long long* result) {
 	return ( (MiqtVirtualQWindow*)(self) )->virtualbase_NativeEvent(eventType, message, result);
 }
 

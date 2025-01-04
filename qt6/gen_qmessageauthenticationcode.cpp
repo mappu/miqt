@@ -27,7 +27,7 @@ void QMessageAuthenticationCode_SetKey(QMessageAuthenticationCode* self, struct 
 	self->setKey(key_QByteArray);
 }
 
-void QMessageAuthenticationCode_AddData(QMessageAuthenticationCode* self, const char* data, ptrdiff_t length) {
+void QMessageAuthenticationCode_AddData(QMessageAuthenticationCode* self, const char* data, long long length) {
 	self->addData(data, (qsizetype)(length));
 }
 

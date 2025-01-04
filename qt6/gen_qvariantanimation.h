@@ -44,8 +44,6 @@ QVariant* QVariantAnimation_EndValue(const QVariantAnimation* self);
 void QVariantAnimation_SetEndValue(QVariantAnimation* self, QVariant* value);
 QVariant* QVariantAnimation_KeyValueAt(const QVariantAnimation* self, double step);
 void QVariantAnimation_SetKeyValueAt(QVariantAnimation* self, double step, QVariant* value);
-struct miqt_array /* of struct miqt_map  tuple of double and QVariant*   */  QVariantAnimation_KeyValues(const QVariantAnimation* self);
-void QVariantAnimation_SetKeyValues(QVariantAnimation* self, struct miqt_array /* of struct miqt_map  tuple of double and QVariant*   */  values);
 QVariant* QVariantAnimation_CurrentValue(const QVariantAnimation* self);
 int QVariantAnimation_Duration(const QVariantAnimation* self);
 void QVariantAnimation_SetDuration(QVariantAnimation* self, int msecs);

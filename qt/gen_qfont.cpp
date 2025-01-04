@@ -130,7 +130,7 @@ double QFont_PointSizeF(const QFont* self) {
 }
 
 void QFont_SetPointSizeF(QFont* self, double pointSizeF) {
-	self->setPointSizeF(static_cast<qreal>(pointSizeF));
+	self->setPointSizeF(static_cast<double>(pointSizeF));
 }
 
 int QFont_PixelSize(const QFont* self) {

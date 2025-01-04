@@ -148,8 +148,8 @@ func (this *QWindow) Create() {
 	C.QWindow_Create(this.h)
 }
 
-func (this *QWindow) WinId() uintptr {
-	return (uintptr)(C.QWindow_WinId(this.h))
+func (this *QWindow) WinId() uint64 {
+	return (uint64)(C.QWindow_WinId(this.h))
 }
 
 func (this *QWindow) Parent(mode QWindow__AncestorMode) *QWindow {
@@ -492,8 +492,8 @@ func (this *QWindow) UnsetCursor() {
 	C.QWindow_UnsetCursor(this.h)
 }
 
-func QWindow_FromWinId(id uintptr) *QWindow {
-	return newQWindow(C.QWindow_FromWinId((C.uintptr_t)(id)))
+func QWindow_FromWinId(id uint64) *QWindow {
+	return newQWindow(C.QWindow_FromWinId((C.ulonglong)(id)))
 }
 
 func (this *QWindow) RequestActivate() {

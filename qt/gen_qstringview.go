@@ -70,7 +70,7 @@ func (this *QStringView) Data() *QChar {
 }
 
 func (this *QStringView) OperatorSubscript(n int64) *QChar {
-	_goptr := newQChar(C.QStringView_OperatorSubscript(this.h, (C.ptrdiff_t)(n)))
+	_goptr := newQChar(C.QStringView_OperatorSubscript(this.h, (C.longlong)(n)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -107,17 +107,17 @@ func (this *QStringView) ToUcs4() []uint {
 }
 
 func (this *QStringView) At(n int64) *QChar {
-	_goptr := newQChar(C.QStringView_At(this.h, (C.ptrdiff_t)(n)))
+	_goptr := newQChar(C.QStringView_At(this.h, (C.longlong)(n)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QStringView) Truncate(n int64) {
-	C.QStringView_Truncate(this.h, (C.ptrdiff_t)(n))
+	C.QStringView_Truncate(this.h, (C.longlong)(n))
 }
 
 func (this *QStringView) Chop(n int64) {
-	C.QStringView_Chop(this.h, (C.ptrdiff_t)(n))
+	C.QStringView_Chop(this.h, (C.longlong)(n))
 }
 
 func (this *QStringView) CompareWithQChar(c QChar) int {
@@ -265,11 +265,11 @@ func (this *QStringView) Last() *QChar {
 }
 
 func (this *QStringView) IndexOf2(c QChar, from int64) int64 {
-	return (int64)(C.QStringView_IndexOf2(this.h, c.cPointer(), (C.ptrdiff_t)(from)))
+	return (int64)(C.QStringView_IndexOf2(this.h, c.cPointer(), (C.longlong)(from)))
 }
 
 func (this *QStringView) IndexOf3(c QChar, from int64, cs CaseSensitivity) int64 {
-	return (int64)(C.QStringView_IndexOf3(this.h, c.cPointer(), (C.ptrdiff_t)(from), (C.int)(cs)))
+	return (int64)(C.QStringView_IndexOf3(this.h, c.cPointer(), (C.longlong)(from), (C.int)(cs)))
 }
 
 func (this *QStringView) Contains2(c QChar, cs CaseSensitivity) bool {
@@ -281,11 +281,11 @@ func (this *QStringView) Count2(c QChar, cs CaseSensitivity) int64 {
 }
 
 func (this *QStringView) LastIndexOf2(c QChar, from int64) int64 {
-	return (int64)(C.QStringView_LastIndexOf2(this.h, c.cPointer(), (C.ptrdiff_t)(from)))
+	return (int64)(C.QStringView_LastIndexOf2(this.h, c.cPointer(), (C.longlong)(from)))
 }
 
 func (this *QStringView) LastIndexOf3(c QChar, from int64, cs CaseSensitivity) int64 {
-	return (int64)(C.QStringView_LastIndexOf3(this.h, c.cPointer(), (C.ptrdiff_t)(from), (C.int)(cs)))
+	return (int64)(C.QStringView_LastIndexOf3(this.h, c.cPointer(), (C.longlong)(from), (C.int)(cs)))
 }
 
 func (this *QStringView) ToShort1(ok *bool) int16 {

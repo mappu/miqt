@@ -154,7 +154,7 @@ func (this *QAudioSource) Resume() {
 }
 
 func (this *QAudioSource) SetBufferSize(bytes int64) {
-	C.QAudioSource_SetBufferSize(this.h, (C.ptrdiff_t)(bytes))
+	C.QAudioSource_SetBufferSize(this.h, (C.longlong)(bytes))
 }
 
 func (this *QAudioSource) BufferSize() int64 {

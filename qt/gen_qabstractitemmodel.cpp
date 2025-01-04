@@ -42,9 +42,9 @@ int QModelIndex_Column(const QModelIndex* self) {
 	return self->column();
 }
 
-uintptr_t QModelIndex_InternalId(const QModelIndex* self) {
+unsigned long long QModelIndex_InternalId(const QModelIndex* self) {
 	quintptr _ret = self->internalId();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<unsigned long long>(_ret);
 }
 
 void* QModelIndex_InternalPointer(const QModelIndex* self) {
@@ -174,9 +174,9 @@ void* QPersistentModelIndex_InternalPointer(const QPersistentModelIndex* self) {
 	return self->internalPointer();
 }
 
-uintptr_t QPersistentModelIndex_InternalId(const QPersistentModelIndex* self) {
+unsigned long long QPersistentModelIndex_InternalId(const QPersistentModelIndex* self) {
 	quintptr _ret = self->internalId();
-	return static_cast<uintptr_t>(_ret);
+	return static_cast<unsigned long long>(_ret);
 }
 
 QModelIndex* QPersistentModelIndex_Parent(const QPersistentModelIndex* self) {

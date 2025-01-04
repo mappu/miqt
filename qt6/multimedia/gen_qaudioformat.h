@@ -25,8 +25,8 @@ QAudioFormat* QAudioFormat_new2(QAudioFormat* param1);
 bool QAudioFormat_IsValid(const QAudioFormat* self);
 void QAudioFormat_SetSampleRate(QAudioFormat* self, int sampleRate);
 int QAudioFormat_SampleRate(const QAudioFormat* self);
-void QAudioFormat_SetChannelConfig(QAudioFormat* self, uint32_t config);
-uint32_t QAudioFormat_ChannelConfig(const QAudioFormat* self);
+void QAudioFormat_SetChannelConfig(QAudioFormat* self, unsigned int config);
+unsigned int QAudioFormat_ChannelConfig(const QAudioFormat* self);
 void QAudioFormat_SetChannelCount(QAudioFormat* self, int channelCount);
 int QAudioFormat_ChannelCount(const QAudioFormat* self);
 int QAudioFormat_ChannelOffset(const QAudioFormat* self, int channel);
@@ -41,7 +41,7 @@ long long QAudioFormat_DurationForFrames(const QAudioFormat* self, int frameCoun
 int QAudioFormat_BytesPerFrame(const QAudioFormat* self);
 int QAudioFormat_BytesPerSample(const QAudioFormat* self);
 float QAudioFormat_NormalizedSampleValue(const QAudioFormat* self, const void* sample);
-uint32_t QAudioFormat_DefaultChannelConfigForChannelCount(int channelCount);
+unsigned int QAudioFormat_DefaultChannelConfigForChannelCount(int channelCount);
 void QAudioFormat_Delete(QAudioFormat* self, bool isSubclass);
 
 #ifdef __cplusplus

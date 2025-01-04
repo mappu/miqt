@@ -60,17 +60,17 @@ func UnsafeNewQSocketNotifier(h unsafe.Pointer) *QSocketNotifier {
 }
 
 // NewQSocketNotifier constructs a new QSocketNotifier object.
-func NewQSocketNotifier(socket uintptr, param2 QSocketNotifier__Type) *QSocketNotifier {
+func NewQSocketNotifier(socket int64, param2 QSocketNotifier__Type) *QSocketNotifier {
 
-	ret := newQSocketNotifier(C.QSocketNotifier_new((C.intptr_t)(socket), (C.int)(param2)))
+	ret := newQSocketNotifier(C.QSocketNotifier_new((C.longlong)(socket), (C.int)(param2)))
 	ret.isSubclass = true
 	return ret
 }
 
 // NewQSocketNotifier2 constructs a new QSocketNotifier object.
-func NewQSocketNotifier2(socket uintptr, param2 QSocketNotifier__Type, parent *QObject) *QSocketNotifier {
+func NewQSocketNotifier2(socket int64, param2 QSocketNotifier__Type, parent *QObject) *QSocketNotifier {
 
-	ret := newQSocketNotifier(C.QSocketNotifier_new2((C.intptr_t)(socket), (C.int)(param2), parent.cPointer()))
+	ret := newQSocketNotifier(C.QSocketNotifier_new2((C.longlong)(socket), (C.int)(param2), parent.cPointer()))
 	ret.isSubclass = true
 	return ret
 }
@@ -103,8 +103,8 @@ func QSocketNotifier_TrUtf8(s string) string {
 	return _ret
 }
 
-func (this *QSocketNotifier) Socket() uintptr {
-	return (uintptr)(C.QSocketNotifier_Socket(this.h))
+func (this *QSocketNotifier) Socket() int64 {
+	return (int64)(C.QSocketNotifier_Socket(this.h))
 }
 
 func (this *QSocketNotifier) Type() QSocketNotifier__Type {

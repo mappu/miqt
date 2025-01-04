@@ -38,9 +38,9 @@ bool QMetaContainer_HasSize(const QMetaContainer* self) {
 	return self->hasSize();
 }
 
-ptrdiff_t QMetaContainer_Size(const QMetaContainer* self, const void* container) {
+long long QMetaContainer_Size(const QMetaContainer* self, const void* container) {
 	qsizetype _ret = self->size(container);
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 bool QMetaContainer_CanClear(const QMetaContainer* self) {
@@ -75,13 +75,13 @@ void QMetaContainer_CopyIterator(const QMetaContainer* self, void* target, const
 	self->copyIterator(target, source);
 }
 
-void QMetaContainer_AdvanceIterator(const QMetaContainer* self, void* iterator, ptrdiff_t step) {
+void QMetaContainer_AdvanceIterator(const QMetaContainer* self, void* iterator, long long step) {
 	self->advanceIterator(iterator, (qsizetype)(step));
 }
 
-ptrdiff_t QMetaContainer_DiffIterator(const QMetaContainer* self, const void* i, const void* j) {
+long long QMetaContainer_DiffIterator(const QMetaContainer* self, const void* i, const void* j) {
 	qsizetype _ret = self->diffIterator(i, j);
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 bool QMetaContainer_HasConstIterator(const QMetaContainer* self) {
@@ -108,13 +108,13 @@ void QMetaContainer_CopyConstIterator(const QMetaContainer* self, void* target, 
 	self->copyConstIterator(target, source);
 }
 
-void QMetaContainer_AdvanceConstIterator(const QMetaContainer* self, void* iterator, ptrdiff_t step) {
+void QMetaContainer_AdvanceConstIterator(const QMetaContainer* self, void* iterator, long long step) {
 	self->advanceConstIterator(iterator, (qsizetype)(step));
 }
 
-ptrdiff_t QMetaContainer_DiffConstIterator(const QMetaContainer* self, const void* i, const void* j) {
+long long QMetaContainer_DiffConstIterator(const QMetaContainer* self, const void* i, const void* j) {
 	qsizetype _ret = self->diffConstIterator(i, j);
-	return static_cast<ptrdiff_t>(_ret);
+	return static_cast<long long>(_ret);
 }
 
 void QMetaContainer_Delete(QMetaContainer* self, bool isSubclass) {
@@ -177,7 +177,7 @@ bool QMetaSequence_CanGetValueAtIndex(const QMetaSequence* self) {
 	return self->canGetValueAtIndex();
 }
 
-void QMetaSequence_ValueAtIndex(const QMetaSequence* self, const void* container, ptrdiff_t index, void* result) {
+void QMetaSequence_ValueAtIndex(const QMetaSequence* self, const void* container, long long index, void* result) {
 	self->valueAtIndex(container, (qsizetype)(index), result);
 }
 
@@ -185,7 +185,7 @@ bool QMetaSequence_CanSetValueAtIndex(const QMetaSequence* self) {
 	return self->canSetValueAtIndex();
 }
 
-void QMetaSequence_SetValueAtIndex(const QMetaSequence* self, void* container, ptrdiff_t index, const void* value) {
+void QMetaSequence_SetValueAtIndex(const QMetaSequence* self, void* container, long long index, const void* value) {
 	self->setValueAtIndex(container, (qsizetype)(index), value);
 }
 

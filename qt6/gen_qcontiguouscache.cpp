@@ -7,7 +7,7 @@
 #endif
 #include "_cgo_export.h"
 
-QContiguousCacheData* QContiguousCacheData_AllocateData(ptrdiff_t size, ptrdiff_t alignment) {
+QContiguousCacheData* QContiguousCacheData_AllocateData(long long size, long long alignment) {
 	return QContiguousCacheData::allocateData((qsizetype)(size), (qsizetype)(alignment));
 }
 

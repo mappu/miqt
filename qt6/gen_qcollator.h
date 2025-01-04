@@ -46,7 +46,7 @@ bool QCollator_NumericMode(const QCollator* self);
 void QCollator_SetIgnorePunctuation(QCollator* self, bool on);
 bool QCollator_IgnorePunctuation(const QCollator* self);
 int QCollator_Compare(const QCollator* self, struct miqt_string s1, struct miqt_string s2);
-int QCollator_Compare2(const QCollator* self, QChar* s1, ptrdiff_t len1, QChar* s2, ptrdiff_t len2);
+int QCollator_Compare2(const QCollator* self, QChar* s1, long long len1, QChar* s2, long long len2);
 bool QCollator_OperatorCall(const QCollator* self, struct miqt_string s1, struct miqt_string s2);
 QCollatorSortKey* QCollator_SortKey(const QCollator* self, struct miqt_string stringVal);
 void QCollator_Delete(QCollator* self, bool isSubclass);
