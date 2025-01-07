@@ -9,10 +9,14 @@
 #include <qwebenginenotification.h>
 #include "gen_qwebenginenotification.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QWebEngineNotification_Closed(intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QWebEngineNotification_virtbase(QWebEngineNotification* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);

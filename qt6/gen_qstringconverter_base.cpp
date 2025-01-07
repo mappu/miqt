@@ -4,10 +4,13 @@
 #include <qstringconverter_base.h>
 #include "gen_qstringconverter_base.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QStringConverterBase* QStringConverterBase_new(QStringConverterBase* param1) {
 	return new QStringConverterBase(*param1);

@@ -20,10 +20,29 @@
 #include <qpushbutton.h>
 #include "gen_qpushbutton.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+QSize* miqt_exec_callback_QPushButton_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QPushButton_MinimumSizeHint(void*, intptr_t);
+bool miqt_exec_callback_QPushButton_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QPushButton_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QPushButton_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QPushButton_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QPushButton_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+bool miqt_exec_callback_QPushButton_HitButton(void*, intptr_t, QPoint*);
+void miqt_exec_callback_QPushButton_CheckStateSet(void*, intptr_t);
+void miqt_exec_callback_QPushButton_NextCheckState(void*, intptr_t);
+void miqt_exec_callback_QPushButton_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QPushButton_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QPushButton_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QPushButton_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QPushButton_ChangeEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QPushButton_TimerEvent(void*, intptr_t, QTimerEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQPushButton : public virtual QPushButton {
 public:

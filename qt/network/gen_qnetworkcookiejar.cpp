@@ -14,10 +14,26 @@
 #include <qnetworkcookiejar.h>
 #include "gen_qnetworkcookiejar.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+struct miqt_array /* of QNetworkCookie* */  miqt_exec_callback_QNetworkCookieJar_CookiesForUrl(void*, intptr_t, QUrl*);
+bool miqt_exec_callback_QNetworkCookieJar_SetCookiesFromUrl(void*, intptr_t, struct miqt_array /* of QNetworkCookie* */ , QUrl*);
+bool miqt_exec_callback_QNetworkCookieJar_InsertCookie(void*, intptr_t, QNetworkCookie*);
+bool miqt_exec_callback_QNetworkCookieJar_UpdateCookie(void*, intptr_t, QNetworkCookie*);
+bool miqt_exec_callback_QNetworkCookieJar_DeleteCookie(void*, intptr_t, QNetworkCookie*);
+bool miqt_exec_callback_QNetworkCookieJar_ValidateCookie(void*, intptr_t, QNetworkCookie*, QUrl*);
+bool miqt_exec_callback_QNetworkCookieJar_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QNetworkCookieJar_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QNetworkCookieJar_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QNetworkCookieJar_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QNetworkCookieJar_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QNetworkCookieJar_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QNetworkCookieJar_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQNetworkCookieJar : public virtual QNetworkCookieJar {
 public:

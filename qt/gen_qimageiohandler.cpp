@@ -17,10 +17,36 @@
 #include <qimageiohandler.h>
 #include "gen_qimageiohandler.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+struct miqt_string miqt_exec_callback_QImageIOHandler_Name(void*, intptr_t);
+bool miqt_exec_callback_QImageIOHandler_CanRead(void*, intptr_t);
+bool miqt_exec_callback_QImageIOHandler_Read(void*, intptr_t, QImage*);
+bool miqt_exec_callback_QImageIOHandler_Write(void*, intptr_t, QImage*);
+QVariant* miqt_exec_callback_QImageIOHandler_Option(void*, intptr_t, int);
+void miqt_exec_callback_QImageIOHandler_SetOption(void*, intptr_t, int, QVariant*);
+bool miqt_exec_callback_QImageIOHandler_SupportsOption(void*, intptr_t, int);
+bool miqt_exec_callback_QImageIOHandler_JumpToNextImage(void*, intptr_t);
+bool miqt_exec_callback_QImageIOHandler_JumpToImage(void*, intptr_t, int);
+int miqt_exec_callback_QImageIOHandler_LoopCount(void*, intptr_t);
+int miqt_exec_callback_QImageIOHandler_ImageCount(void*, intptr_t);
+int miqt_exec_callback_QImageIOHandler_NextImageDelay(void*, intptr_t);
+int miqt_exec_callback_QImageIOHandler_CurrentImageNumber(void*, intptr_t);
+QRect* miqt_exec_callback_QImageIOHandler_CurrentImageRect(void*, intptr_t);
+int miqt_exec_callback_QImageIOPlugin_Capabilities(void*, intptr_t, QIODevice*, struct miqt_string);
+QImageIOHandler* miqt_exec_callback_QImageIOPlugin_Create(void*, intptr_t, QIODevice*, struct miqt_string);
+bool miqt_exec_callback_QImageIOPlugin_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QImageIOPlugin_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QImageIOPlugin_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QImageIOPlugin_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QImageIOPlugin_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QImageIOPlugin_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QImageIOPlugin_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQImageIOHandler : public virtual QImageIOHandler {
 public:

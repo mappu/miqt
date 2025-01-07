@@ -5,10 +5,13 @@
 #include <qscriptprogram.h>
 #include "gen_qscriptprogram.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QScriptProgram* QScriptProgram_new() {
 	return new QScriptProgram();

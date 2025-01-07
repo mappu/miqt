@@ -10,10 +10,30 @@
 #include <qwavedecoder.h>
 #include "gen_qwavedecoder.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QWaveDecoder_FormatKnown(intptr_t);
+void miqt_exec_callback_QWaveDecoder_ParsingError(intptr_t);
+bool miqt_exec_callback_QWaveDecoder_Open(void*, intptr_t, int);
+void miqt_exec_callback_QWaveDecoder_Close(void*, intptr_t);
+bool miqt_exec_callback_QWaveDecoder_Seek(void*, intptr_t, long long);
+long long miqt_exec_callback_QWaveDecoder_Pos(void*, intptr_t);
+long long miqt_exec_callback_QWaveDecoder_Size(void*, intptr_t);
+bool miqt_exec_callback_QWaveDecoder_IsSequential(void*, intptr_t);
+long long miqt_exec_callback_QWaveDecoder_BytesAvailable(void*, intptr_t);
+bool miqt_exec_callback_QWaveDecoder_AtEnd(void*, intptr_t);
+bool miqt_exec_callback_QWaveDecoder_Reset(void*, intptr_t);
+long long miqt_exec_callback_QWaveDecoder_BytesToWrite(void*, intptr_t);
+bool miqt_exec_callback_QWaveDecoder_CanReadLine(void*, intptr_t);
+bool miqt_exec_callback_QWaveDecoder_WaitForReadyRead(void*, intptr_t, int);
+bool miqt_exec_callback_QWaveDecoder_WaitForBytesWritten(void*, intptr_t, int);
+long long miqt_exec_callback_QWaveDecoder_ReadLineData(void*, intptr_t, char*, long long);
+long long miqt_exec_callback_QWaveDecoder_SkipData(void*, intptr_t, long long);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQWaveDecoder : public virtual QWaveDecoder {
 public:

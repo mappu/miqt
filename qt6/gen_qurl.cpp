@@ -8,10 +8,13 @@
 #include <qurl.h>
 #include "gen_qurl.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QUrl* QUrl_new() {
 	return new QUrl();

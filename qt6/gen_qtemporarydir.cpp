@@ -5,10 +5,13 @@
 #include <qtemporarydir.h>
 #include "gen_qtemporarydir.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QTemporaryDir* QTemporaryDir_new() {
 	return new QTemporaryDir();

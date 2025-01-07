@@ -10,10 +10,27 @@
 #include <qfile.h>
 #include "gen_qfile.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+struct miqt_string miqt_exec_callback_QFile_FileName(void*, intptr_t);
+bool miqt_exec_callback_QFile_Open(void*, intptr_t, int);
+long long miqt_exec_callback_QFile_Size(void*, intptr_t);
+bool miqt_exec_callback_QFile_Resize(void*, intptr_t, long long);
+int miqt_exec_callback_QFile_Permissions(void*, intptr_t);
+bool miqt_exec_callback_QFile_SetPermissions(void*, intptr_t, int);
+void miqt_exec_callback_QFile_Close(void*, intptr_t);
+bool miqt_exec_callback_QFile_IsSequential(void*, intptr_t);
+long long miqt_exec_callback_QFile_Pos(void*, intptr_t);
+bool miqt_exec_callback_QFile_Seek(void*, intptr_t, long long);
+bool miqt_exec_callback_QFile_AtEnd(void*, intptr_t);
+long long miqt_exec_callback_QFile_ReadData(void*, intptr_t, char*, long long);
+long long miqt_exec_callback_QFile_WriteData(void*, intptr_t, const char*, long long);
+long long miqt_exec_callback_QFile_ReadLineData(void*, intptr_t, char*, long long);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQFile : public virtual QFile {
 public:

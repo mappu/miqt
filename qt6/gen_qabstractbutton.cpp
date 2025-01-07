@@ -39,10 +39,63 @@
 #include <qabstractbutton.h>
 #include "gen_qabstractbutton.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QAbstractButton_Pressed(intptr_t);
+void miqt_exec_callback_QAbstractButton_Released(intptr_t);
+void miqt_exec_callback_QAbstractButton_Clicked(intptr_t);
+void miqt_exec_callback_QAbstractButton_Toggled(intptr_t, bool);
+void miqt_exec_callback_QAbstractButton_Clicked1(intptr_t, bool);
+void miqt_exec_callback_QAbstractButton_PaintEvent(void*, intptr_t, QPaintEvent*);
+bool miqt_exec_callback_QAbstractButton_HitButton(void*, intptr_t, QPoint*);
+void miqt_exec_callback_QAbstractButton_CheckStateSet(void*, intptr_t);
+void miqt_exec_callback_QAbstractButton_NextCheckState(void*, intptr_t);
+bool miqt_exec_callback_QAbstractButton_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractButton_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QAbstractButton_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QAbstractButton_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QAbstractButton_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QAbstractButton_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QAbstractButton_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QAbstractButton_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QAbstractButton_ChangeEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractButton_TimerEvent(void*, intptr_t, QTimerEvent*);
+int miqt_exec_callback_QAbstractButton_DevType(void*, intptr_t);
+void miqt_exec_callback_QAbstractButton_SetVisible(void*, intptr_t, bool);
+QSize* miqt_exec_callback_QAbstractButton_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QAbstractButton_MinimumSizeHint(void*, intptr_t);
+int miqt_exec_callback_QAbstractButton_HeightForWidth(void*, intptr_t, int);
+bool miqt_exec_callback_QAbstractButton_HasHeightForWidth(void*, intptr_t);
+QPaintEngine* miqt_exec_callback_QAbstractButton_PaintEngine(void*, intptr_t);
+void miqt_exec_callback_QAbstractButton_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QAbstractButton_WheelEvent(void*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QAbstractButton_EnterEvent(void*, intptr_t, QEnterEvent*);
+void miqt_exec_callback_QAbstractButton_LeaveEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractButton_MoveEvent(void*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QAbstractButton_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QAbstractButton_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QAbstractButton_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QAbstractButton_TabletEvent(void*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QAbstractButton_ActionEvent(void*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QAbstractButton_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QAbstractButton_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QAbstractButton_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QAbstractButton_DropEvent(void*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QAbstractButton_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QAbstractButton_HideEvent(void*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QAbstractButton_NativeEvent(void*, intptr_t, struct miqt_string, void*, intptr_t*);
+int miqt_exec_callback_QAbstractButton_Metric(void*, intptr_t, int);
+void miqt_exec_callback_QAbstractButton_InitPainter(void*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QAbstractButton_Redirected(void*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QAbstractButton_SharedPainter(void*, intptr_t);
+void miqt_exec_callback_QAbstractButton_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QAbstractButton_InputMethodQuery(void*, intptr_t, int);
+bool miqt_exec_callback_QAbstractButton_FocusNextPrevChild(void*, intptr_t, bool);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQAbstractButton : public virtual QAbstractButton {
 public:

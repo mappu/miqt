@@ -9,10 +9,25 @@
 #include <qsciprinter.h>
 #include "gen_qsciprinter.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QsciPrinter_FormatPage(void*, intptr_t, QPainter*, bool, QRect*, int);
+void miqt_exec_callback_QsciPrinter_SetMagnification(void*, intptr_t, int);
+int miqt_exec_callback_QsciPrinter_PrintRange(void*, intptr_t, QsciScintillaBase*, QPainter*, int, int);
+int miqt_exec_callback_QsciPrinter_PrintRange2(void*, intptr_t, QsciScintillaBase*, int, int);
+void miqt_exec_callback_QsciPrinter_SetWrapMode(void*, intptr_t, int);
+int miqt_exec_callback_QsciPrinter_DevType(void*, intptr_t);
+void miqt_exec_callback_QsciPrinter_SetPageSize(void*, intptr_t, int);
+void miqt_exec_callback_QsciPrinter_SetPageSizeMM(void*, intptr_t, QSizeF*);
+bool miqt_exec_callback_QsciPrinter_NewPage(void*, intptr_t);
+QPaintEngine* miqt_exec_callback_QsciPrinter_PaintEngine(void*, intptr_t);
+void miqt_exec_callback_QsciPrinter_SetMargins(void*, intptr_t, QPagedPaintDevice__Margins*);
+int miqt_exec_callback_QsciPrinter_Metric(void*, intptr_t, int);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQsciPrinter : public virtual QsciPrinter {
 public:

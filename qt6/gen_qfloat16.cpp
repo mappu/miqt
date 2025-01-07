@@ -1,10 +1,13 @@
 #include <qfloat16.h>
 #include "gen_qfloat16.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 qfloat16* qfloat16_new() {
 	return new qfloat16();

@@ -37,10 +37,60 @@
 #include <qdockwidget.h>
 #include "gen_qdockwidget.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QDockWidget_FeaturesChanged(intptr_t, int);
+void miqt_exec_callback_QDockWidget_TopLevelChanged(intptr_t, bool);
+void miqt_exec_callback_QDockWidget_AllowedAreasChanged(intptr_t, int);
+void miqt_exec_callback_QDockWidget_VisibilityChanged(intptr_t, bool);
+void miqt_exec_callback_QDockWidget_DockLocationChanged(intptr_t, int);
+void miqt_exec_callback_QDockWidget_ChangeEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QDockWidget_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QDockWidget_PaintEvent(void*, intptr_t, QPaintEvent*);
+bool miqt_exec_callback_QDockWidget_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QDockWidget_InitStyleOption(void*, intptr_t, QStyleOptionDockWidget*);
+int miqt_exec_callback_QDockWidget_DevType(void*, intptr_t);
+void miqt_exec_callback_QDockWidget_SetVisible(void*, intptr_t, bool);
+QSize* miqt_exec_callback_QDockWidget_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QDockWidget_MinimumSizeHint(void*, intptr_t);
+int miqt_exec_callback_QDockWidget_HeightForWidth(void*, intptr_t, int);
+bool miqt_exec_callback_QDockWidget_HasHeightForWidth(void*, intptr_t);
+QPaintEngine* miqt_exec_callback_QDockWidget_PaintEngine(void*, intptr_t);
+void miqt_exec_callback_QDockWidget_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDockWidget_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDockWidget_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDockWidget_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDockWidget_WheelEvent(void*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QDockWidget_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QDockWidget_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QDockWidget_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QDockWidget_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QDockWidget_EnterEvent(void*, intptr_t, QEnterEvent*);
+void miqt_exec_callback_QDockWidget_LeaveEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QDockWidget_MoveEvent(void*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QDockWidget_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QDockWidget_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QDockWidget_TabletEvent(void*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QDockWidget_ActionEvent(void*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QDockWidget_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QDockWidget_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QDockWidget_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QDockWidget_DropEvent(void*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QDockWidget_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QDockWidget_HideEvent(void*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QDockWidget_NativeEvent(void*, intptr_t, struct miqt_string, void*, intptr_t*);
+int miqt_exec_callback_QDockWidget_Metric(void*, intptr_t, int);
+void miqt_exec_callback_QDockWidget_InitPainter(void*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QDockWidget_Redirected(void*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QDockWidget_SharedPainter(void*, intptr_t);
+void miqt_exec_callback_QDockWidget_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QDockWidget_InputMethodQuery(void*, intptr_t, int);
+bool miqt_exec_callback_QDockWidget_FocusNextPrevChild(void*, intptr_t, bool);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQDockWidget : public virtual QDockWidget {
 public:

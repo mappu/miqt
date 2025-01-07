@@ -16,10 +16,22 @@
 #include <qscriptextensionplugin.h>
 #include "gen_qscriptextensionplugin.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QScriptExtensionPlugin_Keys(void*, intptr_t);
+void miqt_exec_callback_QScriptExtensionPlugin_Initialize(void*, intptr_t, struct miqt_string, QScriptEngine*);
+bool miqt_exec_callback_QScriptExtensionPlugin_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QScriptExtensionPlugin_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QScriptExtensionPlugin_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QScriptExtensionPlugin_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QScriptExtensionPlugin_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QScriptExtensionPlugin_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QScriptExtensionPlugin_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQScriptExtensionPlugin : public virtual QScriptExtensionPlugin {
 public:

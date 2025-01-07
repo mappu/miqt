@@ -3,10 +3,13 @@
 #include <qplugin.h>
 #include "gen_qplugin.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QJsonObject* QStaticPlugin_MetaData(const QStaticPlugin* self) {
 	return new QJsonObject(self->metaData());

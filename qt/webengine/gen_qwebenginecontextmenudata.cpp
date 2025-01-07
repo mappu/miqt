@@ -8,10 +8,13 @@
 #include <qwebenginecontextmenudata.h>
 #include "gen_qwebenginecontextmenudata.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QWebEngineContextMenuData* QWebEngineContextMenuData_new() {
 	return new QWebEngineContextMenuData();

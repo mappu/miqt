@@ -16,10 +16,17 @@
 #include <qgraphicssvgitem.h>
 #include "gen_qgraphicssvgitem.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+QRectF* miqt_exec_callback_QGraphicsSvgItem_BoundingRect(void*, intptr_t);
+void miqt_exec_callback_QGraphicsSvgItem_Paint(void*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
+int miqt_exec_callback_QGraphicsSvgItem_Type(void*, intptr_t);
+bool miqt_exec_callback_QGraphicsSvgItem_Event(void*, intptr_t, QEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQGraphicsSvgItem : public virtual QGraphicsSvgItem {
 public:

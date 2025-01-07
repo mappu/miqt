@@ -11,10 +11,14 @@
 #include <qnetworkproxy.h>
 #include "gen_qnetworkproxy.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+struct miqt_array /* of QNetworkProxy* */  miqt_exec_callback_QNetworkProxyFactory_QueryProxy(void*, intptr_t, QNetworkProxyQuery*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QNetworkProxyQuery* QNetworkProxyQuery_new() {
 	return new QNetworkProxyQuery();

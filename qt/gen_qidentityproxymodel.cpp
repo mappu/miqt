@@ -16,10 +16,51 @@
 #include <qidentityproxymodel.h>
 #include "gen_qidentityproxymodel.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+int miqt_exec_callback_QIdentityProxyModel_ColumnCount(void*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QIdentityProxyModel_Index(void*, intptr_t, int, int, QModelIndex*);
+QModelIndex* miqt_exec_callback_QIdentityProxyModel_MapFromSource(void*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QIdentityProxyModel_MapToSource(void*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QIdentityProxyModel_Parent(void*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QIdentityProxyModel_RowCount(void*, intptr_t, QModelIndex*);
+QVariant* miqt_exec_callback_QIdentityProxyModel_HeaderData(void*, intptr_t, int, int, int);
+bool miqt_exec_callback_QIdentityProxyModel_DropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+QModelIndex* miqt_exec_callback_QIdentityProxyModel_Sibling(void*, intptr_t, int, int, QModelIndex*);
+QItemSelection* miqt_exec_callback_QIdentityProxyModel_MapSelectionFromSource(void*, intptr_t, QItemSelection*);
+QItemSelection* miqt_exec_callback_QIdentityProxyModel_MapSelectionToSource(void*, intptr_t, QItemSelection*);
+struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QIdentityProxyModel_Match(void*, intptr_t, QModelIndex*, int, QVariant*, int, int);
+void miqt_exec_callback_QIdentityProxyModel_SetSourceModel(void*, intptr_t, QAbstractItemModel*);
+bool miqt_exec_callback_QIdentityProxyModel_InsertColumns(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QIdentityProxyModel_InsertRows(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QIdentityProxyModel_RemoveColumns(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QIdentityProxyModel_RemoveRows(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QIdentityProxyModel_MoveRows(void*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+bool miqt_exec_callback_QIdentityProxyModel_MoveColumns(void*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+bool miqt_exec_callback_QIdentityProxyModel_Submit(void*, intptr_t);
+void miqt_exec_callback_QIdentityProxyModel_Revert(void*, intptr_t);
+QVariant* miqt_exec_callback_QIdentityProxyModel_Data(void*, intptr_t, QModelIndex*, int);
+struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QIdentityProxyModel_ItemData(void*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QIdentityProxyModel_Flags(void*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QIdentityProxyModel_SetData(void*, intptr_t, QModelIndex*, QVariant*, int);
+bool miqt_exec_callback_QIdentityProxyModel_SetItemData(void*, intptr_t, QModelIndex*, struct miqt_map /* of int to QVariant* */ );
+bool miqt_exec_callback_QIdentityProxyModel_SetHeaderData(void*, intptr_t, int, int, QVariant*, int);
+QModelIndex* miqt_exec_callback_QIdentityProxyModel_Buddy(void*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QIdentityProxyModel_CanFetchMore(void*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QIdentityProxyModel_FetchMore(void*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QIdentityProxyModel_Sort(void*, intptr_t, int, int);
+QSize* miqt_exec_callback_QIdentityProxyModel_Span(void*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QIdentityProxyModel_HasChildren(void*, intptr_t, QModelIndex*);
+QMimeData* miqt_exec_callback_QIdentityProxyModel_MimeData(void*, intptr_t, struct miqt_array /* of QModelIndex* */ );
+bool miqt_exec_callback_QIdentityProxyModel_CanDropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QIdentityProxyModel_MimeTypes(void*, intptr_t);
+int miqt_exec_callback_QIdentityProxyModel_SupportedDragActions(void*, intptr_t);
+int miqt_exec_callback_QIdentityProxyModel_SupportedDropActions(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQIdentityProxyModel : public virtual QIdentityProxyModel {
 public:

@@ -7,10 +7,13 @@
 #include <qregion.h>
 #include "gen_qregion.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QRegion* QRegion_new() {
 	return new QRegion();

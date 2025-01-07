@@ -20,10 +20,16 @@
 #include <qapplication.h>
 #include "gen_qapplication.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QApplication_FocusChanged(intptr_t, QWidget*, QWidget*);
+bool miqt_exec_callback_QApplication_Notify(void*, intptr_t, QObject*, QEvent*);
+bool miqt_exec_callback_QApplication_Event(void*, intptr_t, QEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQApplication : public virtual QApplication {
 public:

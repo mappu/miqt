@@ -7,10 +7,13 @@
 #include <qhostinfo.h>
 #include "gen_qhostinfo.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QHostInfo* QHostInfo_new() {
 	return new QHostInfo();

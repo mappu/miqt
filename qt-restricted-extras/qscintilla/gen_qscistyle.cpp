@@ -6,10 +6,13 @@
 #include <qscistyle.h>
 #include "gen_qscistyle.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QsciStyle* QsciStyle_new() {
 	return new QsciStyle();

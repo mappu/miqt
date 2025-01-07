@@ -4,10 +4,13 @@
 #include <qwebfullscreenrequest.h>
 #include "gen_qwebfullscreenrequest.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QWebFullScreenRequest* QWebFullScreenRequest_new() {
 	return new QWebFullScreenRequest();

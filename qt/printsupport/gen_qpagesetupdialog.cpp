@@ -18,10 +18,27 @@
 #include <qpagesetupdialog.h>
 #include "gen_qpagesetupdialog.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+int miqt_exec_callback_QPageSetupDialog_Exec(void*, intptr_t);
+void miqt_exec_callback_QPageSetupDialog_Done(void*, intptr_t, int);
+void miqt_exec_callback_QPageSetupDialog_SetVisible(void*, intptr_t, bool);
+QSize* miqt_exec_callback_QPageSetupDialog_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QPageSetupDialog_MinimumSizeHint(void*, intptr_t);
+void miqt_exec_callback_QPageSetupDialog_Open(void*, intptr_t);
+void miqt_exec_callback_QPageSetupDialog_Accept(void*, intptr_t);
+void miqt_exec_callback_QPageSetupDialog_Reject(void*, intptr_t);
+void miqt_exec_callback_QPageSetupDialog_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QPageSetupDialog_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QPageSetupDialog_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QPageSetupDialog_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QPageSetupDialog_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+bool miqt_exec_callback_QPageSetupDialog_EventFilter(void*, intptr_t, QObject*, QEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQPageSetupDialog : public virtual QPageSetupDialog {
 public:

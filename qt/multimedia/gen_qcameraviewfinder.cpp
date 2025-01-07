@@ -19,10 +19,22 @@
 #include <qcameraviewfinder.h>
 #include "gen_qcameraviewfinder.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+QMediaObject* miqt_exec_callback_QCameraViewfinder_MediaObject(void*, intptr_t);
+bool miqt_exec_callback_QCameraViewfinder_SetMediaObject(void*, intptr_t, QMediaObject*);
+QSize* miqt_exec_callback_QCameraViewfinder_SizeHint(void*, intptr_t);
+bool miqt_exec_callback_QCameraViewfinder_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QCameraViewfinder_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QCameraViewfinder_HideEvent(void*, intptr_t, QHideEvent*);
+void miqt_exec_callback_QCameraViewfinder_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QCameraViewfinder_MoveEvent(void*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QCameraViewfinder_PaintEvent(void*, intptr_t, QPaintEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQCameraViewfinder : public virtual QCameraViewfinder {
 public:

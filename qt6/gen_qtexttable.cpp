@@ -15,10 +15,13 @@
 #include <qtexttable.h>
 #include "gen_qtexttable.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QTextTableCell* QTextTableCell_new() {
 	return new QTextTableCell();

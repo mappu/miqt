@@ -8,10 +8,13 @@
 #include <qcommandlineparser.h>
 #include "gen_qcommandlineparser.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QCommandLineParser* QCommandLineParser_new() {
 	return new QCommandLineParser();

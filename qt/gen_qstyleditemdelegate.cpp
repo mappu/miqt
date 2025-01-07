@@ -21,10 +21,26 @@
 #include <qstyleditemdelegate.h>
 #include "gen_qstyleditemdelegate.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QStyledItemDelegate_Paint(void*, intptr_t, QPainter*, QStyleOptionViewItem*, QModelIndex*);
+QSize* miqt_exec_callback_QStyledItemDelegate_SizeHint(void*, intptr_t, QStyleOptionViewItem*, QModelIndex*);
+QWidget* miqt_exec_callback_QStyledItemDelegate_CreateEditor(void*, intptr_t, QWidget*, QStyleOptionViewItem*, QModelIndex*);
+void miqt_exec_callback_QStyledItemDelegate_SetEditorData(void*, intptr_t, QWidget*, QModelIndex*);
+void miqt_exec_callback_QStyledItemDelegate_SetModelData(void*, intptr_t, QWidget*, QAbstractItemModel*, QModelIndex*);
+void miqt_exec_callback_QStyledItemDelegate_UpdateEditorGeometry(void*, intptr_t, QWidget*, QStyleOptionViewItem*, QModelIndex*);
+struct miqt_string miqt_exec_callback_QStyledItemDelegate_DisplayText(void*, intptr_t, QVariant*, QLocale*);
+void miqt_exec_callback_QStyledItemDelegate_InitStyleOption(void*, intptr_t, QStyleOptionViewItem*, QModelIndex*);
+bool miqt_exec_callback_QStyledItemDelegate_EventFilter(void*, intptr_t, QObject*, QEvent*);
+bool miqt_exec_callback_QStyledItemDelegate_EditorEvent(void*, intptr_t, QEvent*, QAbstractItemModel*, QStyleOptionViewItem*, QModelIndex*);
+void miqt_exec_callback_QStyledItemDelegate_DestroyEditor(void*, intptr_t, QWidget*, QModelIndex*);
+bool miqt_exec_callback_QStyledItemDelegate_HelpEvent(void*, intptr_t, QHelpEvent*, QAbstractItemView*, QStyleOptionViewItem*, QModelIndex*);
+struct miqt_array /* of int */  miqt_exec_callback_QStyledItemDelegate_PaintingRoles(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQStyledItemDelegate : public virtual QStyledItemDelegate {
 public:

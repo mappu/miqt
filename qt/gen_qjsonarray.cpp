@@ -12,10 +12,13 @@
 #include <qjsonarray.h>
 #include "gen_qjsonarray.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QJsonArray* QJsonArray_new() {
 	return new QJsonArray();

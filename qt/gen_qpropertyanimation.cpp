@@ -12,10 +12,19 @@
 #include <qpropertyanimation.h>
 #include "gen_qpropertyanimation.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+bool miqt_exec_callback_QPropertyAnimation_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QPropertyAnimation_UpdateCurrentValue(void*, intptr_t, QVariant*);
+void miqt_exec_callback_QPropertyAnimation_UpdateState(void*, intptr_t, int, int);
+int miqt_exec_callback_QPropertyAnimation_Duration(void*, intptr_t);
+void miqt_exec_callback_QPropertyAnimation_UpdateCurrentTime(void*, intptr_t, int);
+QVariant* miqt_exec_callback_QPropertyAnimation_Interpolated(void*, intptr_t, QVariant*, QVariant*, double);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQPropertyAnimation : public virtual QPropertyAnimation {
 public:

@@ -12,10 +12,27 @@
 #include <qiconengine.h>
 #include "gen_qiconengine.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QIconEngine_Paint(void*, intptr_t, QPainter*, QRect*, int, int);
+QSize* miqt_exec_callback_QIconEngine_ActualSize(void*, intptr_t, QSize*, int, int);
+QPixmap* miqt_exec_callback_QIconEngine_Pixmap(void*, intptr_t, QSize*, int, int);
+void miqt_exec_callback_QIconEngine_AddPixmap(void*, intptr_t, QPixmap*, int, int);
+void miqt_exec_callback_QIconEngine_AddFile(void*, intptr_t, struct miqt_string, QSize*, int, int);
+struct miqt_string miqt_exec_callback_QIconEngine_Key(void*, intptr_t);
+QIconEngine* miqt_exec_callback_QIconEngine_Clone(void*, intptr_t);
+bool miqt_exec_callback_QIconEngine_Read(void*, intptr_t, QDataStream*);
+bool miqt_exec_callback_QIconEngine_Write(void*, intptr_t, QDataStream*);
+struct miqt_array /* of QSize* */  miqt_exec_callback_QIconEngine_AvailableSizes(void*, intptr_t, int, int);
+struct miqt_string miqt_exec_callback_QIconEngine_IconName(void*, intptr_t);
+bool miqt_exec_callback_QIconEngine_IsNull(void*, intptr_t);
+QPixmap* miqt_exec_callback_QIconEngine_ScaledPixmap(void*, intptr_t, QSize*, int, int, double);
+void miqt_exec_callback_QIconEngine_VirtualHook(void*, intptr_t, int, void*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQIconEngine : public virtual QIconEngine {
 public:

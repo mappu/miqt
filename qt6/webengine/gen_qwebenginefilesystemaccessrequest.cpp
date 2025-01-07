@@ -3,10 +3,13 @@
 #include <qwebenginefilesystemaccessrequest.h>
 #include "gen_qwebenginefilesystemaccessrequest.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QWebEngineFileSystemAccessRequest* QWebEngineFileSystemAccessRequest_new(QWebEngineFileSystemAccessRequest* other) {
 	return new QWebEngineFileSystemAccessRequest(*other);

@@ -7,10 +7,16 @@
 #include <qfileiconprovider.h>
 #include "gen_qfileiconprovider.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+QIcon* miqt_exec_callback_QFileIconProvider_Icon(void*, intptr_t, int);
+QIcon* miqt_exec_callback_QFileIconProvider_IconWithInfo(void*, intptr_t, QFileInfo*);
+struct miqt_string miqt_exec_callback_QFileIconProvider_Type(void*, intptr_t, QFileInfo*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQFileIconProvider : public virtual QFileIconProvider {
 public:

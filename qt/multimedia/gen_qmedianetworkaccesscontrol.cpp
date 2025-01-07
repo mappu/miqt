@@ -10,10 +10,14 @@
 #include <qmedianetworkaccesscontrol.h>
 #include "gen_qmedianetworkaccesscontrol.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QMediaNetworkAccessControl_ConfigurationChanged(intptr_t, QNetworkConfiguration*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QMediaNetworkAccessControl_virtbase(QMediaNetworkAccessControl* src, QMediaControl** outptr_QMediaControl) {
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);

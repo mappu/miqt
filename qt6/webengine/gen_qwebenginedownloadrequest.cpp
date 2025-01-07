@@ -9,10 +9,22 @@
 #include <qwebenginedownloadrequest.h>
 #include "gen_qwebenginedownloadrequest.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QWebEngineDownloadRequest_StateChanged(intptr_t, int);
+void miqt_exec_callback_QWebEngineDownloadRequest_SavePageFormatChanged(intptr_t);
+void miqt_exec_callback_QWebEngineDownloadRequest_ReceivedBytesChanged(intptr_t);
+void miqt_exec_callback_QWebEngineDownloadRequest_TotalBytesChanged(intptr_t);
+void miqt_exec_callback_QWebEngineDownloadRequest_InterruptReasonChanged(intptr_t);
+void miqt_exec_callback_QWebEngineDownloadRequest_IsFinishedChanged(intptr_t);
+void miqt_exec_callback_QWebEngineDownloadRequest_IsPausedChanged(intptr_t);
+void miqt_exec_callback_QWebEngineDownloadRequest_DownloadDirectoryChanged(intptr_t);
+void miqt_exec_callback_QWebEngineDownloadRequest_DownloadFileNameChanged(intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QWebEngineDownloadRequest_virtbase(QWebEngineDownloadRequest* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);

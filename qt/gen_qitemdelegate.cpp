@@ -21,10 +21,28 @@
 #include <qitemdelegate.h>
 #include "gen_qitemdelegate.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QItemDelegate_Paint(void*, intptr_t, QPainter*, QStyleOptionViewItem*, QModelIndex*);
+QSize* miqt_exec_callback_QItemDelegate_SizeHint(void*, intptr_t, QStyleOptionViewItem*, QModelIndex*);
+QWidget* miqt_exec_callback_QItemDelegate_CreateEditor(void*, intptr_t, QWidget*, QStyleOptionViewItem*, QModelIndex*);
+void miqt_exec_callback_QItemDelegate_SetEditorData(void*, intptr_t, QWidget*, QModelIndex*);
+void miqt_exec_callback_QItemDelegate_SetModelData(void*, intptr_t, QWidget*, QAbstractItemModel*, QModelIndex*);
+void miqt_exec_callback_QItemDelegate_UpdateEditorGeometry(void*, intptr_t, QWidget*, QStyleOptionViewItem*, QModelIndex*);
+void miqt_exec_callback_QItemDelegate_DrawDisplay(void*, intptr_t, QPainter*, QStyleOptionViewItem*, QRect*, struct miqt_string);
+void miqt_exec_callback_QItemDelegate_DrawDecoration(void*, intptr_t, QPainter*, QStyleOptionViewItem*, QRect*, QPixmap*);
+void miqt_exec_callback_QItemDelegate_DrawFocus(void*, intptr_t, QPainter*, QStyleOptionViewItem*, QRect*);
+void miqt_exec_callback_QItemDelegate_DrawCheck(void*, intptr_t, QPainter*, QStyleOptionViewItem*, QRect*, int);
+bool miqt_exec_callback_QItemDelegate_EventFilter(void*, intptr_t, QObject*, QEvent*);
+bool miqt_exec_callback_QItemDelegate_EditorEvent(void*, intptr_t, QEvent*, QAbstractItemModel*, QStyleOptionViewItem*, QModelIndex*);
+void miqt_exec_callback_QItemDelegate_DestroyEditor(void*, intptr_t, QWidget*, QModelIndex*);
+bool miqt_exec_callback_QItemDelegate_HelpEvent(void*, intptr_t, QHelpEvent*, QAbstractItemView*, QStyleOptionViewItem*, QModelIndex*);
+struct miqt_array /* of int */  miqt_exec_callback_QItemDelegate_PaintingRoles(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQItemDelegate : public virtual QItemDelegate {
 public:

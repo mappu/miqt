@@ -5,10 +5,13 @@
 #include <qmetacontainer.h>
 #include "gen_qmetacontainer.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QMetaContainer* QMetaContainer_new() {
 	return new QMetaContainer();

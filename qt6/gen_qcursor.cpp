@@ -7,10 +7,13 @@
 #include <qcursor.h>
 #include "gen_qcursor.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QCursor* QCursor_new() {
 	return new QCursor();

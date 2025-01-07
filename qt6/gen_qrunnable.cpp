@@ -2,10 +2,14 @@
 #include <qrunnable.h>
 #include "gen_qrunnable.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QRunnable_Run(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQRunnable : public virtual QRunnable {
 public:

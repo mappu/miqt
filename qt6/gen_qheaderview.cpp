@@ -39,10 +39,91 @@
 #include <qheaderview.h>
 #include "gen_qheaderview.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QHeaderView_SectionMoved(intptr_t, int, int, int);
+void miqt_exec_callback_QHeaderView_SectionResized(intptr_t, int, int, int);
+void miqt_exec_callback_QHeaderView_SectionPressed(intptr_t, int);
+void miqt_exec_callback_QHeaderView_SectionClicked(intptr_t, int);
+void miqt_exec_callback_QHeaderView_SectionEntered(intptr_t, int);
+void miqt_exec_callback_QHeaderView_SectionDoubleClicked(intptr_t, int);
+void miqt_exec_callback_QHeaderView_SectionCountChanged(intptr_t, int, int);
+void miqt_exec_callback_QHeaderView_SectionHandleDoubleClicked(intptr_t, int);
+void miqt_exec_callback_QHeaderView_GeometriesChanged(intptr_t);
+void miqt_exec_callback_QHeaderView_SortIndicatorChanged(intptr_t, int, int);
+void miqt_exec_callback_QHeaderView_SortIndicatorClearableChanged(intptr_t, bool);
+void miqt_exec_callback_QHeaderView_SetModel(void*, intptr_t, QAbstractItemModel*);
+QSize* miqt_exec_callback_QHeaderView_SizeHint(void*, intptr_t);
+void miqt_exec_callback_QHeaderView_SetVisible(void*, intptr_t, bool);
+void miqt_exec_callback_QHeaderView_DoItemsLayout(void*, intptr_t);
+void miqt_exec_callback_QHeaderView_Reset(void*, intptr_t);
+void miqt_exec_callback_QHeaderView_CurrentChanged(void*, intptr_t, QModelIndex*, QModelIndex*);
+bool miqt_exec_callback_QHeaderView_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QHeaderView_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QHeaderView_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QHeaderView_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QHeaderView_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QHeaderView_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
+bool miqt_exec_callback_QHeaderView_ViewportEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QHeaderView_PaintSection(void*, intptr_t, QPainter*, QRect*, int);
+QSize* miqt_exec_callback_QHeaderView_SectionSizeFromContents(void*, intptr_t, int);
+int miqt_exec_callback_QHeaderView_HorizontalOffset(void*, intptr_t);
+int miqt_exec_callback_QHeaderView_VerticalOffset(void*, intptr_t);
+void miqt_exec_callback_QHeaderView_UpdateGeometries(void*, intptr_t);
+void miqt_exec_callback_QHeaderView_ScrollContentsBy(void*, intptr_t, int, int);
+void miqt_exec_callback_QHeaderView_DataChanged(void*, intptr_t, QModelIndex*, QModelIndex*, struct miqt_array /* of int */ );
+void miqt_exec_callback_QHeaderView_RowsInserted(void*, intptr_t, QModelIndex*, int, int);
+QRect* miqt_exec_callback_QHeaderView_VisualRect(void*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QHeaderView_ScrollTo(void*, intptr_t, QModelIndex*, int);
+QModelIndex* miqt_exec_callback_QHeaderView_IndexAt(void*, intptr_t, QPoint*);
+bool miqt_exec_callback_QHeaderView_IsIndexHidden(void*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QHeaderView_MoveCursor(void*, intptr_t, int, int);
+void miqt_exec_callback_QHeaderView_SetSelection(void*, intptr_t, QRect*, int);
+QRegion* miqt_exec_callback_QHeaderView_VisualRegionForSelection(void*, intptr_t, QItemSelection*);
+void miqt_exec_callback_QHeaderView_InitStyleOptionForIndex(void*, intptr_t, QStyleOptionHeader*, int);
+void miqt_exec_callback_QHeaderView_InitStyleOption(void*, intptr_t, QStyleOptionHeader*);
+void miqt_exec_callback_QHeaderView_SetSelectionModel(void*, intptr_t, QItemSelectionModel*);
+void miqt_exec_callback_QHeaderView_KeyboardSearch(void*, intptr_t, struct miqt_string);
+int miqt_exec_callback_QHeaderView_SizeHintForRow(void*, intptr_t, int);
+int miqt_exec_callback_QHeaderView_SizeHintForColumn(void*, intptr_t, int);
+QAbstractItemDelegate* miqt_exec_callback_QHeaderView_ItemDelegateForIndex(void*, intptr_t, QModelIndex*);
+QVariant* miqt_exec_callback_QHeaderView_InputMethodQuery(void*, intptr_t, int);
+void miqt_exec_callback_QHeaderView_SetRootIndex(void*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QHeaderView_SelectAll(void*, intptr_t);
+void miqt_exec_callback_QHeaderView_RowsAboutToBeRemoved(void*, intptr_t, QModelIndex*, int, int);
+void miqt_exec_callback_QHeaderView_SelectionChanged(void*, intptr_t, QItemSelection*, QItemSelection*);
+void miqt_exec_callback_QHeaderView_UpdateEditorData(void*, intptr_t);
+void miqt_exec_callback_QHeaderView_UpdateEditorGeometries(void*, intptr_t);
+void miqt_exec_callback_QHeaderView_VerticalScrollbarAction(void*, intptr_t, int);
+void miqt_exec_callback_QHeaderView_HorizontalScrollbarAction(void*, intptr_t, int);
+void miqt_exec_callback_QHeaderView_VerticalScrollbarValueChanged(void*, intptr_t, int);
+void miqt_exec_callback_QHeaderView_HorizontalScrollbarValueChanged(void*, intptr_t, int);
+void miqt_exec_callback_QHeaderView_CloseEditor(void*, intptr_t, QWidget*, int);
+void miqt_exec_callback_QHeaderView_CommitData(void*, intptr_t, QWidget*);
+void miqt_exec_callback_QHeaderView_EditorDestroyed(void*, intptr_t, QObject*);
+struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QHeaderView_SelectedIndexes(void*, intptr_t);
+bool miqt_exec_callback_QHeaderView_Edit2(void*, intptr_t, QModelIndex*, int, QEvent*);
+int miqt_exec_callback_QHeaderView_SelectionCommand(void*, intptr_t, QModelIndex*, QEvent*);
+void miqt_exec_callback_QHeaderView_StartDrag(void*, intptr_t, int);
+void miqt_exec_callback_QHeaderView_InitViewItemOption(void*, intptr_t, QStyleOptionViewItem*);
+bool miqt_exec_callback_QHeaderView_FocusNextPrevChild(void*, intptr_t, bool);
+void miqt_exec_callback_QHeaderView_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QHeaderView_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QHeaderView_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QHeaderView_DropEvent(void*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QHeaderView_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QHeaderView_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QHeaderView_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QHeaderView_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QHeaderView_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QHeaderView_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
+bool miqt_exec_callback_QHeaderView_EventFilter(void*, intptr_t, QObject*, QEvent*);
+QSize* miqt_exec_callback_QHeaderView_ViewportSizeHint(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQHeaderView : public virtual QHeaderView {
 public:

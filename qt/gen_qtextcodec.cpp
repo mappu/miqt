@@ -11,10 +11,13 @@
 #include <qtextcodec.h>
 #include "gen_qtextcodec.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QTextCodec* QTextCodec_CodecForName(struct miqt_string name) {
 	QByteArray name_QByteArray(name.data, name.len);

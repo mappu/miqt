@@ -11,10 +11,21 @@
 #include <qgenericplugin.h>
 #include "gen_qgenericplugin.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+QObject* miqt_exec_callback_QGenericPlugin_Create(void*, intptr_t, struct miqt_string, struct miqt_string);
+bool miqt_exec_callback_QGenericPlugin_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGenericPlugin_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QGenericPlugin_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QGenericPlugin_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QGenericPlugin_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QGenericPlugin_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGenericPlugin_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQGenericPlugin : public virtual QGenericPlugin {
 public:

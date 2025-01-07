@@ -13,10 +13,13 @@
 #include <qsslconfiguration.h>
 #include "gen_qsslconfiguration.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QSslConfiguration* QSslConfiguration_new() {
 	return new QSslConfiguration();

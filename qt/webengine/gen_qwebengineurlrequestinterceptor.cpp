@@ -12,10 +12,21 @@
 #include <qwebengineurlrequestinterceptor.h>
 #include "gen_qwebengineurlrequestinterceptor.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QWebEngineUrlRequestInterceptor_InterceptRequest(void*, intptr_t, QWebEngineUrlRequestInfo*);
+bool miqt_exec_callback_QWebEngineUrlRequestInterceptor_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QWebEngineUrlRequestInterceptor_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QWebEngineUrlRequestInterceptor_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QWebEngineUrlRequestInterceptor_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QWebEngineUrlRequestInterceptor_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QWebEngineUrlRequestInterceptor_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QWebEngineUrlRequestInterceptor_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQWebEngineUrlRequestInterceptor : public virtual QWebEngineUrlRequestInterceptor {
 public:

@@ -7,10 +7,13 @@
 #include <qcoreevent.h>
 #include "gen_qcoreevent.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QEvent* QEvent_new(int typeVal) {
 	return new QEvent(static_cast<QEvent::Type>(typeVal));

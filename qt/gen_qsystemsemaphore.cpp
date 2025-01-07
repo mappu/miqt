@@ -5,10 +5,13 @@
 #include <qsystemsemaphore.h>
 #include "gen_qsystemsemaphore.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QSystemSemaphore* QSystemSemaphore_new(struct miqt_string key) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);

@@ -37,10 +37,59 @@
 #include <qgroupbox.h>
 #include "gen_qgroupbox.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QGroupBox_Clicked(intptr_t);
+void miqt_exec_callback_QGroupBox_Toggled(intptr_t, bool);
+void miqt_exec_callback_QGroupBox_Clicked1(intptr_t, bool);
+QSize* miqt_exec_callback_QGroupBox_MinimumSizeHint(void*, intptr_t);
+bool miqt_exec_callback_QGroupBox_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QGroupBox_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QGroupBox_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QGroupBox_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QGroupBox_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QGroupBox_ChangeEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QGroupBox_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QGroupBox_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QGroupBox_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QGroupBox_InitStyleOption(void*, intptr_t, QStyleOptionGroupBox*);
+int miqt_exec_callback_QGroupBox_DevType(void*, intptr_t);
+void miqt_exec_callback_QGroupBox_SetVisible(void*, intptr_t, bool);
+QSize* miqt_exec_callback_QGroupBox_SizeHint(void*, intptr_t);
+int miqt_exec_callback_QGroupBox_HeightForWidth(void*, intptr_t, int);
+bool miqt_exec_callback_QGroupBox_HasHeightForWidth(void*, intptr_t);
+QPaintEngine* miqt_exec_callback_QGroupBox_PaintEngine(void*, intptr_t);
+void miqt_exec_callback_QGroupBox_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QGroupBox_WheelEvent(void*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QGroupBox_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QGroupBox_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QGroupBox_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QGroupBox_EnterEvent(void*, intptr_t, QEnterEvent*);
+void miqt_exec_callback_QGroupBox_LeaveEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QGroupBox_MoveEvent(void*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QGroupBox_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QGroupBox_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QGroupBox_TabletEvent(void*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QGroupBox_ActionEvent(void*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QGroupBox_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QGroupBox_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QGroupBox_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QGroupBox_DropEvent(void*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QGroupBox_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QGroupBox_HideEvent(void*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QGroupBox_NativeEvent(void*, intptr_t, struct miqt_string, void*, intptr_t*);
+int miqt_exec_callback_QGroupBox_Metric(void*, intptr_t, int);
+void miqt_exec_callback_QGroupBox_InitPainter(void*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QGroupBox_Redirected(void*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QGroupBox_SharedPainter(void*, intptr_t);
+void miqt_exec_callback_QGroupBox_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QGroupBox_InputMethodQuery(void*, intptr_t, int);
+bool miqt_exec_callback_QGroupBox_FocusNextPrevChild(void*, intptr_t, bool);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQGroupBox : public virtual QGroupBox {
 public:

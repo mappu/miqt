@@ -7,10 +7,13 @@
 #include <qhostaddress.h>
 #include "gen_qhostaddress.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 unsigned char QIPv6Address_OperatorSubscript(const QIPv6Address* self, int index) {
 	quint8 _ret = self->operator[](static_cast<int>(index));

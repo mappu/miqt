@@ -6,10 +6,13 @@
 #include <qhstspolicy.h>
 #include "gen_qhstspolicy.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QHstsPolicy* QHstsPolicy_new() {
 	return new QHstsPolicy();

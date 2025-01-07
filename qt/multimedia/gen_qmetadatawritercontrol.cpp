@@ -10,10 +10,17 @@
 #include <qmetadatawritercontrol.h>
 #include "gen_qmetadatawritercontrol.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QMetaDataWriterControl_MetaDataChanged(intptr_t);
+void miqt_exec_callback_QMetaDataWriterControl_MetaDataChanged2(intptr_t, struct miqt_string, QVariant*);
+void miqt_exec_callback_QMetaDataWriterControl_WritableChanged(intptr_t, bool);
+void miqt_exec_callback_QMetaDataWriterControl_MetaDataAvailableChanged(intptr_t, bool);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QMetaDataWriterControl_virtbase(QMetaDataWriterControl* src, QMediaControl** outptr_QMediaControl) {
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);

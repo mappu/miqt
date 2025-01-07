@@ -15,10 +15,34 @@
 #include <qspatialsound.h>
 #include "gen_qspatialsound.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QSpatialSound_SourceChanged(intptr_t);
+void miqt_exec_callback_QSpatialSound_LoopsChanged(intptr_t);
+void miqt_exec_callback_QSpatialSound_AutoPlayChanged(intptr_t);
+void miqt_exec_callback_QSpatialSound_PositionChanged(intptr_t);
+void miqt_exec_callback_QSpatialSound_RotationChanged(intptr_t);
+void miqt_exec_callback_QSpatialSound_VolumeChanged(intptr_t);
+void miqt_exec_callback_QSpatialSound_DistanceModelChanged(intptr_t);
+void miqt_exec_callback_QSpatialSound_SizeChanged(intptr_t);
+void miqt_exec_callback_QSpatialSound_DistanceCutoffChanged(intptr_t);
+void miqt_exec_callback_QSpatialSound_ManualAttenuationChanged(intptr_t);
+void miqt_exec_callback_QSpatialSound_OcclusionIntensityChanged(intptr_t);
+void miqt_exec_callback_QSpatialSound_DirectivityChanged(intptr_t);
+void miqt_exec_callback_QSpatialSound_DirectivityOrderChanged(intptr_t);
+void miqt_exec_callback_QSpatialSound_NearFieldGainChanged(intptr_t);
+bool miqt_exec_callback_QSpatialSound_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QSpatialSound_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QSpatialSound_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSpatialSound_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QSpatialSound_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QSpatialSound_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSpatialSound_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQSpatialSound : public virtual QSpatialSound {
 public:

@@ -14,10 +14,22 @@
 #include <qvideoprobe.h>
 #include "gen_qvideoprobe.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QVideoProbe_VideoFrameProbed(intptr_t, QVideoFrame*);
+void miqt_exec_callback_QVideoProbe_Flush(intptr_t);
+bool miqt_exec_callback_QVideoProbe_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QVideoProbe_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QVideoProbe_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QVideoProbe_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QVideoProbe_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QVideoProbe_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QVideoProbe_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQVideoProbe : public virtual QVideoProbe {
 public:

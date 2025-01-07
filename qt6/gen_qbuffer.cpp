@@ -11,10 +11,32 @@
 #include <qbuffer.h>
 #include "gen_qbuffer.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+bool miqt_exec_callback_QBuffer_Open(void*, intptr_t, int);
+void miqt_exec_callback_QBuffer_Close(void*, intptr_t);
+long long miqt_exec_callback_QBuffer_Size(void*, intptr_t);
+long long miqt_exec_callback_QBuffer_Pos(void*, intptr_t);
+bool miqt_exec_callback_QBuffer_Seek(void*, intptr_t, long long);
+bool miqt_exec_callback_QBuffer_AtEnd(void*, intptr_t);
+bool miqt_exec_callback_QBuffer_CanReadLine(void*, intptr_t);
+void miqt_exec_callback_QBuffer_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QBuffer_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+long long miqt_exec_callback_QBuffer_ReadData(void*, intptr_t, char*, long long);
+long long miqt_exec_callback_QBuffer_WriteData(void*, intptr_t, const char*, long long);
+bool miqt_exec_callback_QBuffer_IsSequential(void*, intptr_t);
+bool miqt_exec_callback_QBuffer_Reset(void*, intptr_t);
+long long miqt_exec_callback_QBuffer_BytesAvailable(void*, intptr_t);
+long long miqt_exec_callback_QBuffer_BytesToWrite(void*, intptr_t);
+bool miqt_exec_callback_QBuffer_WaitForReadyRead(void*, intptr_t, int);
+bool miqt_exec_callback_QBuffer_WaitForBytesWritten(void*, intptr_t, int);
+long long miqt_exec_callback_QBuffer_ReadLineData(void*, intptr_t, char*, long long);
+long long miqt_exec_callback_QBuffer_SkipData(void*, intptr_t, long long);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQBuffer : public virtual QBuffer {
 public:

@@ -2,10 +2,13 @@
 #include <qthreadstorage.h>
 #include "gen_qthreadstorage.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QThreadStorageData* QThreadStorageData_new(QThreadStorageData* param1) {
 	return new QThreadStorageData(*param1);

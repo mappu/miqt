@@ -9,10 +9,17 @@
 #include <qwebenginedownloaditem.h>
 #include "gen_qwebenginedownloaditem.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QWebEngineDownloadItem_Finished(intptr_t);
+void miqt_exec_callback_QWebEngineDownloadItem_StateChanged(intptr_t, int);
+void miqt_exec_callback_QWebEngineDownloadItem_DownloadProgress(intptr_t, long long, long long);
+void miqt_exec_callback_QWebEngineDownloadItem_IsPausedChanged(intptr_t, bool);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QWebEngineDownloadItem_virtbase(QWebEngineDownloadItem* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);

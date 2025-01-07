@@ -7,10 +7,13 @@
 #include <qanystringview.h>
 #include "gen_qanystringview.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QAnyStringView* QAnyStringView_new() {
 	return new QAnyStringView();

@@ -6,10 +6,13 @@
 #include <qchar.h>
 #include "gen_qchar.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QLatin1Char* QLatin1Char_new(char c) {
 	return new QLatin1Char(static_cast<char>(c));

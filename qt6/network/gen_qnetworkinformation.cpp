@@ -8,10 +8,17 @@
 #include <qnetworkinformation.h>
 #include "gen_qnetworkinformation.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QNetworkInformation_ReachabilityChanged(intptr_t, int);
+void miqt_exec_callback_QNetworkInformation_IsBehindCaptivePortalChanged(intptr_t, bool);
+void miqt_exec_callback_QNetworkInformation_TransportMediumChanged(intptr_t, int);
+void miqt_exec_callback_QNetworkInformation_IsMeteredChanged(intptr_t, bool);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QNetworkInformation_virtbase(QNetworkInformation* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);

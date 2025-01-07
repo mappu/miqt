@@ -12,10 +12,42 @@
 #include <qiodevice.h>
 #include "gen_qiodevice.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QIODevice_ReadyRead(intptr_t);
+void miqt_exec_callback_QIODevice_ChannelReadyRead(intptr_t, int);
+void miqt_exec_callback_QIODevice_BytesWritten(intptr_t, long long);
+void miqt_exec_callback_QIODevice_ChannelBytesWritten(intptr_t, int, long long);
+void miqt_exec_callback_QIODevice_AboutToClose(intptr_t);
+void miqt_exec_callback_QIODevice_ReadChannelFinished(intptr_t);
+bool miqt_exec_callback_QIODevice_IsSequential(void*, intptr_t);
+bool miqt_exec_callback_QIODevice_Open(void*, intptr_t, int);
+void miqt_exec_callback_QIODevice_Close(void*, intptr_t);
+long long miqt_exec_callback_QIODevice_Pos(void*, intptr_t);
+long long miqt_exec_callback_QIODevice_Size(void*, intptr_t);
+bool miqt_exec_callback_QIODevice_Seek(void*, intptr_t, long long);
+bool miqt_exec_callback_QIODevice_AtEnd(void*, intptr_t);
+bool miqt_exec_callback_QIODevice_Reset(void*, intptr_t);
+long long miqt_exec_callback_QIODevice_BytesAvailable(void*, intptr_t);
+long long miqt_exec_callback_QIODevice_BytesToWrite(void*, intptr_t);
+bool miqt_exec_callback_QIODevice_CanReadLine(void*, intptr_t);
+bool miqt_exec_callback_QIODevice_WaitForReadyRead(void*, intptr_t, int);
+bool miqt_exec_callback_QIODevice_WaitForBytesWritten(void*, intptr_t, int);
+long long miqt_exec_callback_QIODevice_ReadData(void*, intptr_t, char*, long long);
+long long miqt_exec_callback_QIODevice_ReadLineData(void*, intptr_t, char*, long long);
+long long miqt_exec_callback_QIODevice_WriteData(void*, intptr_t, const char*, long long);
+bool miqt_exec_callback_QIODevice_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QIODevice_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QIODevice_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QIODevice_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QIODevice_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QIODevice_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QIODevice_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQIODevice : public virtual QIODevice {
 public:

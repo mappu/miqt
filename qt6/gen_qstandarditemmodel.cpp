@@ -21,10 +21,59 @@
 #include <qstandarditemmodel.h>
 #include "gen_qstandarditemmodel.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+QVariant* miqt_exec_callback_QStandardItem_Data(void*, intptr_t, int);
+void miqt_exec_callback_QStandardItem_MultiData(void*, intptr_t, QModelRoleDataSpan*);
+void miqt_exec_callback_QStandardItem_SetData(void*, intptr_t, QVariant*, int);
+QStandardItem* miqt_exec_callback_QStandardItem_Clone(void*, intptr_t);
+int miqt_exec_callback_QStandardItem_Type(void*, intptr_t);
+void miqt_exec_callback_QStandardItem_Read(void*, intptr_t, QDataStream*);
+void miqt_exec_callback_QStandardItem_Write(void*, intptr_t, QDataStream*);
+bool miqt_exec_callback_QStandardItem_OperatorLesser(void*, intptr_t, QStandardItem*);
+void miqt_exec_callback_QStandardItemModel_ItemChanged(intptr_t, QStandardItem*);
+struct miqt_map /* of int to struct miqt_string */  miqt_exec_callback_QStandardItemModel_RoleNames(void*, intptr_t);
+QModelIndex* miqt_exec_callback_QStandardItemModel_Index(void*, intptr_t, int, int, QModelIndex*);
+QModelIndex* miqt_exec_callback_QStandardItemModel_Parent(void*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QStandardItemModel_RowCount(void*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QStandardItemModel_ColumnCount(void*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QStandardItemModel_HasChildren(void*, intptr_t, QModelIndex*);
+QVariant* miqt_exec_callback_QStandardItemModel_Data(void*, intptr_t, QModelIndex*, int);
+void miqt_exec_callback_QStandardItemModel_MultiData(void*, intptr_t, QModelIndex*, QModelRoleDataSpan*);
+bool miqt_exec_callback_QStandardItemModel_SetData(void*, intptr_t, QModelIndex*, QVariant*, int);
+bool miqt_exec_callback_QStandardItemModel_ClearItemData(void*, intptr_t, QModelIndex*);
+QVariant* miqt_exec_callback_QStandardItemModel_HeaderData(void*, intptr_t, int, int, int);
+bool miqt_exec_callback_QStandardItemModel_SetHeaderData(void*, intptr_t, int, int, QVariant*, int);
+bool miqt_exec_callback_QStandardItemModel_InsertRows(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QStandardItemModel_InsertColumns(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QStandardItemModel_RemoveRows(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QStandardItemModel_RemoveColumns(void*, intptr_t, int, int, QModelIndex*);
+int miqt_exec_callback_QStandardItemModel_Flags(void*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QStandardItemModel_SupportedDropActions(void*, intptr_t);
+struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QStandardItemModel_ItemData(void*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QStandardItemModel_SetItemData(void*, intptr_t, QModelIndex*, struct miqt_map /* of int to QVariant* */ );
+void miqt_exec_callback_QStandardItemModel_Sort(void*, intptr_t, int, int);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QStandardItemModel_MimeTypes(void*, intptr_t);
+QMimeData* miqt_exec_callback_QStandardItemModel_MimeData(void*, intptr_t, struct miqt_array /* of QModelIndex* */ );
+bool miqt_exec_callback_QStandardItemModel_DropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+QModelIndex* miqt_exec_callback_QStandardItemModel_Sibling(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QStandardItemModel_CanDropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+int miqt_exec_callback_QStandardItemModel_SupportedDragActions(void*, intptr_t);
+bool miqt_exec_callback_QStandardItemModel_MoveRows(void*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+bool miqt_exec_callback_QStandardItemModel_MoveColumns(void*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+void miqt_exec_callback_QStandardItemModel_FetchMore(void*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QStandardItemModel_CanFetchMore(void*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QStandardItemModel_Buddy(void*, intptr_t, QModelIndex*);
+struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QStandardItemModel_Match(void*, intptr_t, QModelIndex*, int, QVariant*, int, int);
+QSize* miqt_exec_callback_QStandardItemModel_Span(void*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QStandardItemModel_Submit(void*, intptr_t);
+void miqt_exec_callback_QStandardItemModel_Revert(void*, intptr_t);
+void miqt_exec_callback_QStandardItemModel_ResetInternalData(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQStandardItem : public virtual QStandardItem {
 public:

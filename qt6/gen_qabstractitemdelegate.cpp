@@ -20,10 +20,34 @@
 #include <qabstractitemdelegate.h>
 #include "gen_qabstractitemdelegate.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QAbstractItemDelegate_CommitData(intptr_t, QWidget*);
+void miqt_exec_callback_QAbstractItemDelegate_CloseEditor(intptr_t, QWidget*);
+void miqt_exec_callback_QAbstractItemDelegate_SizeHintChanged(intptr_t, QModelIndex*);
+void miqt_exec_callback_QAbstractItemDelegate_CloseEditor2(intptr_t, QWidget*, int);
+void miqt_exec_callback_QAbstractItemDelegate_Paint(void*, intptr_t, QPainter*, QStyleOptionViewItem*, QModelIndex*);
+QSize* miqt_exec_callback_QAbstractItemDelegate_SizeHint(void*, intptr_t, QStyleOptionViewItem*, QModelIndex*);
+QWidget* miqt_exec_callback_QAbstractItemDelegate_CreateEditor(void*, intptr_t, QWidget*, QStyleOptionViewItem*, QModelIndex*);
+void miqt_exec_callback_QAbstractItemDelegate_DestroyEditor(void*, intptr_t, QWidget*, QModelIndex*);
+void miqt_exec_callback_QAbstractItemDelegate_SetEditorData(void*, intptr_t, QWidget*, QModelIndex*);
+void miqt_exec_callback_QAbstractItemDelegate_SetModelData(void*, intptr_t, QWidget*, QAbstractItemModel*, QModelIndex*);
+void miqt_exec_callback_QAbstractItemDelegate_UpdateEditorGeometry(void*, intptr_t, QWidget*, QStyleOptionViewItem*, QModelIndex*);
+bool miqt_exec_callback_QAbstractItemDelegate_EditorEvent(void*, intptr_t, QEvent*, QAbstractItemModel*, QStyleOptionViewItem*, QModelIndex*);
+bool miqt_exec_callback_QAbstractItemDelegate_HelpEvent(void*, intptr_t, QHelpEvent*, QAbstractItemView*, QStyleOptionViewItem*, QModelIndex*);
+struct miqt_array /* of int */  miqt_exec_callback_QAbstractItemDelegate_PaintingRoles(void*, intptr_t);
+bool miqt_exec_callback_QAbstractItemDelegate_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAbstractItemDelegate_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAbstractItemDelegate_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAbstractItemDelegate_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAbstractItemDelegate_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractItemDelegate_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAbstractItemDelegate_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQAbstractItemDelegate : public virtual QAbstractItemDelegate {
 public:

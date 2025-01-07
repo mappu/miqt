@@ -3,10 +3,13 @@
 #include <qrandom.h>
 #include "gen_qrandom.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QRandomGenerator* QRandomGenerator_new() {
 	return new QRandomGenerator();

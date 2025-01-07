@@ -7,10 +7,13 @@
 #include <qmediacontent.h>
 #include "gen_qmediacontent.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QMediaContent* QMediaContent_new() {
 	return new QMediaContent();

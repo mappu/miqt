@@ -14,10 +14,22 @@
 #include <qsystemtrayicon.h>
 #include "gen_qsystemtrayicon.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QSystemTrayIcon_Activated(intptr_t, int);
+void miqt_exec_callback_QSystemTrayIcon_MessageClicked(intptr_t);
+bool miqt_exec_callback_QSystemTrayIcon_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QSystemTrayIcon_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QSystemTrayIcon_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSystemTrayIcon_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QSystemTrayIcon_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QSystemTrayIcon_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSystemTrayIcon_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQSystemTrayIcon : public virtual QSystemTrayIcon {
 public:

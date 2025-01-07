@@ -9,10 +9,18 @@
 #include <qvideowidgetcontrol.h>
 #include "gen_qvideowidgetcontrol.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QVideoWidgetControl_FullScreenChanged(intptr_t, bool);
+void miqt_exec_callback_QVideoWidgetControl_BrightnessChanged(intptr_t, int);
+void miqt_exec_callback_QVideoWidgetControl_ContrastChanged(intptr_t, int);
+void miqt_exec_callback_QVideoWidgetControl_HueChanged(intptr_t, int);
+void miqt_exec_callback_QVideoWidgetControl_SaturationChanged(intptr_t, int);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QVideoWidgetControl_virtbase(QVideoWidgetControl* src, QMediaControl** outptr_QMediaControl) {
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);

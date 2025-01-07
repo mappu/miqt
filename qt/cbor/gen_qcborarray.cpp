@@ -11,10 +11,13 @@
 #include <qcborarray.h>
 #include "gen_qcborarray.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QCborArray* QCborArray_new() {
 	return new QCborArray();

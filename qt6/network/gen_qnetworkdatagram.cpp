@@ -4,10 +4,13 @@
 #include <qnetworkdatagram.h>
 #include "gen_qnetworkdatagram.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QNetworkDatagram* QNetworkDatagram_new() {
 	return new QNetworkDatagram();

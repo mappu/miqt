@@ -14,6 +14,10 @@ func cppComment(s string) string {
 	return "/* " + uncomment.Replace(s) + " */ "
 }
 
+func cabiCallbackName(c CppClass, m CppMethod) string {
+	return "miqt_exec_callback_" + cabiClassName(c.ClassName) + "_" + m.SafeMethodName()
+}
+
 func (p CppParameter) RenderTypeCabi() string {
 
 	if p.ParameterType == "QString" {
@@ -810,22 +814,44 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 	ret.WriteString(`#include <` + filename + ">\n")
 	ret.WriteString(`#include "gen_` + filename + "\"\n")
 
-	// We need to import the cgo header so that we can call functions exported
-	// from Go code
-	// This header is written in C99 and uses C99 features (_Bool). We are C++
-	// and _Bool is not defined anywhere
-	// There is stdbool.h (<cstdbool>) but that does the opposite (defines 'bool'
-	// in terms of C99's native _Bool type)
-	// This is not required in GCC nor Clang 12, but is required in Clang 16 and
-	// later. In the working compilers, it's likely that the _Bool definition is
-	// automatically applied in some non-strict mode by default.
-	// We have been recommending CGO_CXXFLAGS=-D_Bool=bool . Now that the problem
-	// is more well understood, do the equivalent thing automatically
+	// Write prototypes for functions that the host language bindings should export
+	// for virtual function overrides
+
 	ret.WriteString(`
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+`)
+
+	for _, c := range src.Classes {
+		for _, m := range c.Methods {
+			if m.IsSignal {
+				callback := "void " + cabiCallbackName(c, m) + "(intptr_t"
+
+				for _, p := range m.Parameters {
+					callback += ", " + p.RenderTypeCabi()
+				}
+				callback += ");\n"
+				ret.WriteString(callback)
+			}
+		}
+
+		for _, m := range c.VirtualMethods() {
+			callback := m.ReturnType.RenderTypeCabi() + " " + cabiCallbackName(c, m) + "(void*, intptr_t"
+
+			for _, p := range m.Parameters {
+				callback += ", " + p.RenderTypeCabi()
+			}
+			callback += ");\n"
+			ret.WriteString(callback)
+		}
+	}
+
+	ret.WriteString(
+		`#ifdef __cplusplus
+} /* extern C */
+#endif
 
 `)
 
@@ -932,7 +958,7 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 					ret.WriteString(
 						"\t\t\n" +
 							signalCode + "\n" +
-							"\t\t" + maybeReturn2 + "miqt_exec_callback_" + methodPrefixName + "_" + m.SafeMethodName() + "(" + strings.Join(paramArgs, `, `) + ");\n" +
+							"\t\t" + maybeReturn2 + cabiCallbackName(c, m) + "(" + strings.Join(paramArgs, `, `) + ");\n" +
 							returnTransformP + "\n" +
 							"\t\t" + ifv(maybeReturn == "", "", "return "+returnTransformF+";") + "\n" +
 							"\t}\n" +
@@ -1113,9 +1139,6 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 			}
 
 			if m.IsSignal {
-
-				bindingFunc := "miqt_exec_callback_" + cabiClassName(c.ClassName) + "_" + m.SafeMethodName()
-
 				// If there are hidden parameters, the type of the signal itself
 				// needs to include them
 				exactSignal := `static_cast<void (` + c.ClassName + `::*)(` + emitParameterTypesCpp(m, true) + `)` + ifv(m.IsConst, ` const`, ``) + `>(&` + c.ClassName + `::` + m.CppCallTarget() + `)`
@@ -1131,7 +1154,7 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 					paramArgDefs = append(paramArgDefs, p.RenderTypeCabi()+" "+p.ParameterName)
 				}
 
-				signalCode += "\t\t" + bindingFunc + "(" + strings.Join(paramArgs, `, `) + ");\n"
+				signalCode += "\t\t" + cabiCallbackName(c, m) + "(" + strings.Join(paramArgs, `, `) + ");\n"
 
 				ret.WriteString(
 					`void ` + methodPrefixName + `_connect_` + m.SafeMethodName() + `(` + methodPrefixName + `* self, intptr_t slot) {` + "\n" +

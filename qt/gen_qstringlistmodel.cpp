@@ -14,10 +14,27 @@
 #include <qstringlistmodel.h>
 #include "gen_qstringlistmodel.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+int miqt_exec_callback_QStringListModel_RowCount(void*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QStringListModel_Sibling(void*, intptr_t, int, int, QModelIndex*);
+QVariant* miqt_exec_callback_QStringListModel_Data(void*, intptr_t, QModelIndex*, int);
+bool miqt_exec_callback_QStringListModel_SetData(void*, intptr_t, QModelIndex*, QVariant*, int);
+int miqt_exec_callback_QStringListModel_Flags(void*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QStringListModel_InsertRows(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QStringListModel_RemoveRows(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QStringListModel_MoveRows(void*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QStringListModel_ItemData(void*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QStringListModel_SetItemData(void*, intptr_t, QModelIndex*, struct miqt_map /* of int to QVariant* */ );
+void miqt_exec_callback_QStringListModel_Sort(void*, intptr_t, int, int);
+int miqt_exec_callback_QStringListModel_SupportedDropActions(void*, intptr_t);
+QModelIndex* miqt_exec_callback_QStringListModel_Index(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QStringListModel_DropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQStringListModel : public virtual QStringListModel {
 public:

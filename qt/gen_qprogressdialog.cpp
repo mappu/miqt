@@ -20,10 +20,29 @@
 #include <qprogressdialog.h>
 #include "gen_qprogressdialog.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QProgressDialog_Canceled(intptr_t);
+QSize* miqt_exec_callback_QProgressDialog_SizeHint(void*, intptr_t);
+void miqt_exec_callback_QProgressDialog_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QProgressDialog_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QProgressDialog_ChangeEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QProgressDialog_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QProgressDialog_SetVisible(void*, intptr_t, bool);
+QSize* miqt_exec_callback_QProgressDialog_MinimumSizeHint(void*, intptr_t);
+void miqt_exec_callback_QProgressDialog_Open(void*, intptr_t);
+int miqt_exec_callback_QProgressDialog_Exec(void*, intptr_t);
+void miqt_exec_callback_QProgressDialog_Done(void*, intptr_t, int);
+void miqt_exec_callback_QProgressDialog_Accept(void*, intptr_t);
+void miqt_exec_callback_QProgressDialog_Reject(void*, intptr_t);
+void miqt_exec_callback_QProgressDialog_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QProgressDialog_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+bool miqt_exec_callback_QProgressDialog_EventFilter(void*, intptr_t, QObject*, QEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQProgressDialog : public virtual QProgressDialog {
 public:

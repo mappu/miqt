@@ -6,10 +6,13 @@
 #include <qmimetype.h>
 #include "gen_qmimetype.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QMimeType* QMimeType_new() {
 	return new QMimeType();

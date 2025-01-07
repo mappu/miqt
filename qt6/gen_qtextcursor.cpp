@@ -18,10 +18,13 @@
 #include <qtextcursor.h>
 #include "gen_qtextcursor.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QTextCursor* QTextCursor_new() {
 	return new QTextCursor();

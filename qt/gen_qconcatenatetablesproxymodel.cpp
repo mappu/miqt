@@ -15,10 +15,47 @@
 #include <qconcatenatetablesproxymodel.h>
 #include "gen_qconcatenatetablesproxymodel.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+QVariant* miqt_exec_callback_QConcatenateTablesProxyModel_Data(void*, intptr_t, QModelIndex*, int);
+bool miqt_exec_callback_QConcatenateTablesProxyModel_SetData(void*, intptr_t, QModelIndex*, QVariant*, int);
+struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QConcatenateTablesProxyModel_ItemData(void*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QConcatenateTablesProxyModel_SetItemData(void*, intptr_t, QModelIndex*, struct miqt_map /* of int to QVariant* */ );
+int miqt_exec_callback_QConcatenateTablesProxyModel_Flags(void*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QConcatenateTablesProxyModel_Index(void*, intptr_t, int, int, QModelIndex*);
+QModelIndex* miqt_exec_callback_QConcatenateTablesProxyModel_Parent(void*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QConcatenateTablesProxyModel_RowCount(void*, intptr_t, QModelIndex*);
+QVariant* miqt_exec_callback_QConcatenateTablesProxyModel_HeaderData(void*, intptr_t, int, int, int);
+int miqt_exec_callback_QConcatenateTablesProxyModel_ColumnCount(void*, intptr_t, QModelIndex*);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QConcatenateTablesProxyModel_MimeTypes(void*, intptr_t);
+QMimeData* miqt_exec_callback_QConcatenateTablesProxyModel_MimeData(void*, intptr_t, struct miqt_array /* of QModelIndex* */ );
+bool miqt_exec_callback_QConcatenateTablesProxyModel_CanDropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+bool miqt_exec_callback_QConcatenateTablesProxyModel_DropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+QSize* miqt_exec_callback_QConcatenateTablesProxyModel_Span(void*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QConcatenateTablesProxyModel_Sibling(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QConcatenateTablesProxyModel_HasChildren(void*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QConcatenateTablesProxyModel_SetHeaderData(void*, intptr_t, int, int, QVariant*, int);
+int miqt_exec_callback_QConcatenateTablesProxyModel_SupportedDropActions(void*, intptr_t);
+int miqt_exec_callback_QConcatenateTablesProxyModel_SupportedDragActions(void*, intptr_t);
+bool miqt_exec_callback_QConcatenateTablesProxyModel_InsertRows(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QConcatenateTablesProxyModel_InsertColumns(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QConcatenateTablesProxyModel_RemoveRows(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QConcatenateTablesProxyModel_RemoveColumns(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QConcatenateTablesProxyModel_MoveRows(void*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+bool miqt_exec_callback_QConcatenateTablesProxyModel_MoveColumns(void*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+void miqt_exec_callback_QConcatenateTablesProxyModel_FetchMore(void*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QConcatenateTablesProxyModel_CanFetchMore(void*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QConcatenateTablesProxyModel_Sort(void*, intptr_t, int, int);
+QModelIndex* miqt_exec_callback_QConcatenateTablesProxyModel_Buddy(void*, intptr_t, QModelIndex*);
+struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QConcatenateTablesProxyModel_Match(void*, intptr_t, QModelIndex*, int, QVariant*, int, int);
+struct miqt_map /* of int to struct miqt_string */  miqt_exec_callback_QConcatenateTablesProxyModel_RoleNames(void*, intptr_t);
+bool miqt_exec_callback_QConcatenateTablesProxyModel_Submit(void*, intptr_t);
+void miqt_exec_callback_QConcatenateTablesProxyModel_Revert(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQConcatenateTablesProxyModel : public virtual QConcatenateTablesProxyModel {
 public:

@@ -19,10 +19,27 @@
 #include <qmovie.h>
 #include "gen_qmovie.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QMovie_Started(intptr_t);
+void miqt_exec_callback_QMovie_Resized(intptr_t, QSize*);
+void miqt_exec_callback_QMovie_Updated(intptr_t, QRect*);
+void miqt_exec_callback_QMovie_StateChanged(intptr_t, int);
+void miqt_exec_callback_QMovie_Error(intptr_t, int);
+void miqt_exec_callback_QMovie_Finished(intptr_t);
+void miqt_exec_callback_QMovie_FrameChanged(intptr_t, int);
+bool miqt_exec_callback_QMovie_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QMovie_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QMovie_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QMovie_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QMovie_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QMovie_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QMovie_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQMovie : public virtual QMovie {
 public:

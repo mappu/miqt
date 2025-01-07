@@ -14,10 +14,28 @@
 #include <qaudioroom.h>
 #include "gen_qaudioroom.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QAudioRoom_PositionChanged(intptr_t);
+void miqt_exec_callback_QAudioRoom_DimensionsChanged(intptr_t);
+void miqt_exec_callback_QAudioRoom_RotationChanged(intptr_t);
+void miqt_exec_callback_QAudioRoom_WallsChanged(intptr_t);
+void miqt_exec_callback_QAudioRoom_ReflectionGainChanged(intptr_t);
+void miqt_exec_callback_QAudioRoom_ReverbGainChanged(intptr_t);
+void miqt_exec_callback_QAudioRoom_ReverbTimeChanged(intptr_t);
+void miqt_exec_callback_QAudioRoom_ReverbBrightnessChanged(intptr_t);
+bool miqt_exec_callback_QAudioRoom_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAudioRoom_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAudioRoom_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAudioRoom_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAudioRoom_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QAudioRoom_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAudioRoom_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQAudioRoom : public virtual QAudioRoom {
 public:

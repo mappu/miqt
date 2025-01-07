@@ -14,10 +14,13 @@
 #include <qstylepainter.h>
 #include "gen_qstylepainter.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QStylePainter* QStylePainter_new(QWidget* w) {
 	return new QStylePainter(w);

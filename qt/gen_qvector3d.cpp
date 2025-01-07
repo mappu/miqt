@@ -9,10 +9,13 @@
 #include <qvector3d.h>
 #include "gen_qvector3d.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QVector3D* QVector3D_new() {
 	return new QVector3D();

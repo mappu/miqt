@@ -6,10 +6,13 @@
 #include <qglyphrun.h>
 #include "gen_qglyphrun.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QGlyphRun* QGlyphRun_new() {
 	return new QGlyphRun();

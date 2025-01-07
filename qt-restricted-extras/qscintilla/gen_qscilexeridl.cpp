@@ -7,10 +7,18 @@
 #include <qscilexeridl.h>
 #include "gen_qscilexeridl.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QsciLexerIDL_SetFoldAtElse(void*, intptr_t, bool);
+void miqt_exec_callback_QsciLexerIDL_SetFoldComments(void*, intptr_t, bool);
+void miqt_exec_callback_QsciLexerIDL_SetFoldCompact(void*, intptr_t, bool);
+void miqt_exec_callback_QsciLexerIDL_SetFoldPreprocessor(void*, intptr_t, bool);
+void miqt_exec_callback_QsciLexerIDL_SetStylePreprocessor(void*, intptr_t, bool);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQsciLexerIDL : public virtual QsciLexerIDL {
 public:

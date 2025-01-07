@@ -17,10 +17,25 @@
 #include <qwebpluginfactory.h>
 #include "gen_qwebpluginfactory.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+struct miqt_array /* of QWebPluginFactory__Plugin* */  miqt_exec_callback_QWebPluginFactory_Plugins(void*, intptr_t);
+void miqt_exec_callback_QWebPluginFactory_RefreshPlugins(void*, intptr_t);
+QObject* miqt_exec_callback_QWebPluginFactory_Create(void*, intptr_t, struct miqt_string, QUrl*, struct miqt_array /* of struct miqt_string */ , struct miqt_array /* of struct miqt_string */ );
+bool miqt_exec_callback_QWebPluginFactory_Extension(void*, intptr_t, int, QWebPluginFactory__ExtensionOption*, QWebPluginFactory__ExtensionReturn*);
+bool miqt_exec_callback_QWebPluginFactory_SupportsExtension(void*, intptr_t, int);
+bool miqt_exec_callback_QWebPluginFactory_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QWebPluginFactory_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QWebPluginFactory_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QWebPluginFactory_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QWebPluginFactory_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QWebPluginFactory_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QWebPluginFactory_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQWebPluginFactory : public virtual QWebPluginFactory {
 public:

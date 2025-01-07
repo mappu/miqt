@@ -11,10 +11,27 @@
 #include <qmediaplayercontrol.h>
 #include "gen_qmediaplayercontrol.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QMediaPlayerControl_MediaChanged(intptr_t, QMediaContent*);
+void miqt_exec_callback_QMediaPlayerControl_DurationChanged(intptr_t, long long);
+void miqt_exec_callback_QMediaPlayerControl_PositionChanged(intptr_t, long long);
+void miqt_exec_callback_QMediaPlayerControl_StateChanged(intptr_t, int);
+void miqt_exec_callback_QMediaPlayerControl_MediaStatusChanged(intptr_t, int);
+void miqt_exec_callback_QMediaPlayerControl_VolumeChanged(intptr_t, int);
+void miqt_exec_callback_QMediaPlayerControl_MutedChanged(intptr_t, bool);
+void miqt_exec_callback_QMediaPlayerControl_AudioAvailableChanged(intptr_t, bool);
+void miqt_exec_callback_QMediaPlayerControl_VideoAvailableChanged(intptr_t, bool);
+void miqt_exec_callback_QMediaPlayerControl_BufferStatusChanged(intptr_t, int);
+void miqt_exec_callback_QMediaPlayerControl_SeekableChanged(intptr_t, bool);
+void miqt_exec_callback_QMediaPlayerControl_AvailablePlaybackRangesChanged(intptr_t, QMediaTimeRange*);
+void miqt_exec_callback_QMediaPlayerControl_PlaybackRateChanged(intptr_t, double);
+void miqt_exec_callback_QMediaPlayerControl_Error(intptr_t, int, struct miqt_string);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QMediaPlayerControl_virtbase(QMediaPlayerControl* src, QMediaControl** outptr_QMediaControl) {
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);

@@ -21,10 +21,13 @@
 #include <qtextformat.h>
 #include "gen_qtextformat.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QTextLength* QTextLength_new() {
 	return new QTextLength();

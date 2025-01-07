@@ -16,10 +16,13 @@
 #include <qabstractnetworkcache.h>
 #include "gen_qabstractnetworkcache.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QNetworkCacheMetaData* QNetworkCacheMetaData_new() {
 	return new QNetworkCacheMetaData();

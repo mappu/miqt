@@ -14,10 +14,21 @@
 #include <qaccessiblebridge.h>
 #include "gen_qaccessiblebridge.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+QAccessibleBridge* miqt_exec_callback_QAccessibleBridgePlugin_Create(void*, intptr_t, struct miqt_string);
+bool miqt_exec_callback_QAccessibleBridgePlugin_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAccessibleBridgePlugin_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAccessibleBridgePlugin_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAccessibleBridgePlugin_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAccessibleBridgePlugin_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QAccessibleBridgePlugin_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAccessibleBridgePlugin_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QAccessibleBridge_SetRootObject(QAccessibleBridge* self, QAccessibleInterface* rootObject) {
 	self->setRootObject(rootObject);

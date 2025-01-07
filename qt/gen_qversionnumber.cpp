@@ -6,10 +6,13 @@
 #include <qversionnumber.h>
 #include "gen_qversionnumber.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QVersionNumber* QVersionNumber_new() {
 	return new QVersionNumber();

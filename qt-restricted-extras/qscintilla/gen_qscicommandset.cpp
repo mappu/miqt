@@ -3,10 +3,13 @@
 #include <qscicommandset.h>
 #include "gen_qscicommandset.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 bool QsciCommandSet_ReadSettings(QsciCommandSet* self, QSettings* qs) {
 	return self->readSettings(*qs);

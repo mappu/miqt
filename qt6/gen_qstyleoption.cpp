@@ -31,10 +31,13 @@
 #include <qstyleoption.h>
 #include "gen_qstyleoption.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QStyleOption* QStyleOption_new() {
 	return new QStyleOption();

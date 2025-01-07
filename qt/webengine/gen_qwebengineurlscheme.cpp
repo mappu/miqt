@@ -3,10 +3,13 @@
 #include <qwebengineurlscheme.h>
 #include "gen_qwebengineurlscheme.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QWebEngineUrlScheme* QWebEngineUrlScheme_new() {
 	return new QWebEngineUrlScheme();

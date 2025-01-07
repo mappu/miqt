@@ -16,10 +16,22 @@
 #include <qprinter.h>
 #include "gen_qprinter.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+int miqt_exec_callback_QPrinter_DevType(void*, intptr_t);
+bool miqt_exec_callback_QPrinter_NewPage(void*, intptr_t);
+QPaintEngine* miqt_exec_callback_QPrinter_PaintEngine(void*, intptr_t);
+int miqt_exec_callback_QPrinter_Metric(void*, intptr_t, int);
+bool miqt_exec_callback_QPrinter_SetPageLayout(void*, intptr_t, QPageLayout*);
+bool miqt_exec_callback_QPrinter_SetPageSize(void*, intptr_t, QPageSize*);
+bool miqt_exec_callback_QPrinter_SetPageOrientation(void*, intptr_t, int);
+bool miqt_exec_callback_QPrinter_SetPageMargins(void*, intptr_t, QMarginsF*, int);
+void miqt_exec_callback_QPrinter_SetPageRanges(void*, intptr_t, QPageRanges*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQPrinter : public virtual QPrinter {
 public:

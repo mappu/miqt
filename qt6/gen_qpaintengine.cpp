@@ -24,10 +24,35 @@
 #include <qpaintengine.h>
 #include "gen_qpaintengine.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+bool miqt_exec_callback_QPaintEngine_Begin(void*, intptr_t, QPaintDevice*);
+bool miqt_exec_callback_QPaintEngine_End(void*, intptr_t);
+void miqt_exec_callback_QPaintEngine_UpdateState(void*, intptr_t, QPaintEngineState*);
+void miqt_exec_callback_QPaintEngine_DrawRects(void*, intptr_t, QRect*, int);
+void miqt_exec_callback_QPaintEngine_DrawRects2(void*, intptr_t, QRectF*, int);
+void miqt_exec_callback_QPaintEngine_DrawLines(void*, intptr_t, QLine*, int);
+void miqt_exec_callback_QPaintEngine_DrawLines2(void*, intptr_t, QLineF*, int);
+void miqt_exec_callback_QPaintEngine_DrawEllipse(void*, intptr_t, QRectF*);
+void miqt_exec_callback_QPaintEngine_DrawEllipseWithQRect(void*, intptr_t, QRect*);
+void miqt_exec_callback_QPaintEngine_DrawPath(void*, intptr_t, QPainterPath*);
+void miqt_exec_callback_QPaintEngine_DrawPoints(void*, intptr_t, QPointF*, int);
+void miqt_exec_callback_QPaintEngine_DrawPoints2(void*, intptr_t, QPoint*, int);
+void miqt_exec_callback_QPaintEngine_DrawPolygon(void*, intptr_t, QPointF*, int, int);
+void miqt_exec_callback_QPaintEngine_DrawPolygon2(void*, intptr_t, QPoint*, int, int);
+void miqt_exec_callback_QPaintEngine_DrawPixmap(void*, intptr_t, QRectF*, QPixmap*, QRectF*);
+void miqt_exec_callback_QPaintEngine_DrawTextItem(void*, intptr_t, QPointF*, QTextItem*);
+void miqt_exec_callback_QPaintEngine_DrawTiledPixmap(void*, intptr_t, QRectF*, QPixmap*, QPointF*);
+void miqt_exec_callback_QPaintEngine_DrawImage(void*, intptr_t, QRectF*, QImage*, QRectF*, int);
+QPoint* miqt_exec_callback_QPaintEngine_CoordinateOffset(void*, intptr_t);
+int miqt_exec_callback_QPaintEngine_Type(void*, intptr_t);
+QPixmap* miqt_exec_callback_QPaintEngine_CreatePixmap(void*, intptr_t, QSize*);
+QPixmap* miqt_exec_callback_QPaintEngine_CreatePixmapFromImage(void*, intptr_t, QImage*, int);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 double QTextItem_Descent(const QTextItem* self) {
 	qreal _ret = self->descent();

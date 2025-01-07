@@ -4,10 +4,13 @@
 #include <qsurface.h>
 #include "gen_qsurface.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 int QSurface_SurfaceClass(const QSurface* self) {
 	QSurface::SurfaceClass _ret = self->surfaceClass();

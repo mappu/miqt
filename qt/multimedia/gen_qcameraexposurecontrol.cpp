@@ -9,10 +9,16 @@
 #include <qcameraexposurecontrol.h>
 #include "gen_qcameraexposurecontrol.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QCameraExposureControl_RequestedValueChanged(intptr_t, int);
+void miqt_exec_callback_QCameraExposureControl_ActualValueChanged(intptr_t, int);
+void miqt_exec_callback_QCameraExposureControl_ParameterRangeChanged(intptr_t, int);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QCameraExposureControl_virtbase(QCameraExposureControl* src, QMediaControl** outptr_QMediaControl) {
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);

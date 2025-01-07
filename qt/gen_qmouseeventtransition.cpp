@@ -12,10 +12,16 @@
 #include <qmouseeventtransition.h>
 #include "gen_qmouseeventtransition.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QMouseEventTransition_OnTransition(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QMouseEventTransition_EventTest(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QMouseEventTransition_Event(void*, intptr_t, QEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQMouseEventTransition : public virtual QMouseEventTransition {
 public:

@@ -12,10 +12,16 @@
 #include <qtextlist.h>
 #include "gen_qtextlist.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QTextList_BlockInserted(void*, intptr_t, QTextBlock*);
+void miqt_exec_callback_QTextList_BlockRemoved(void*, intptr_t, QTextBlock*);
+void miqt_exec_callback_QTextList_BlockFormatChanged(void*, intptr_t, QTextBlock*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQTextList : public virtual QTextList {
 public:

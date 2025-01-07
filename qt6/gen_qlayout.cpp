@@ -17,10 +17,44 @@
 #include <qlayout.h>
 #include "gen_qlayout.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+int miqt_exec_callback_QLayout_Spacing(void*, intptr_t);
+void miqt_exec_callback_QLayout_SetSpacing(void*, intptr_t, int);
+void miqt_exec_callback_QLayout_Invalidate(void*, intptr_t);
+QRect* miqt_exec_callback_QLayout_Geometry(void*, intptr_t);
+void miqt_exec_callback_QLayout_AddItem(void*, intptr_t, QLayoutItem*);
+int miqt_exec_callback_QLayout_ExpandingDirections(void*, intptr_t);
+QSize* miqt_exec_callback_QLayout_MinimumSize(void*, intptr_t);
+QSize* miqt_exec_callback_QLayout_MaximumSize(void*, intptr_t);
+void miqt_exec_callback_QLayout_SetGeometry(void*, intptr_t, QRect*);
+QLayoutItem* miqt_exec_callback_QLayout_ItemAt(void*, intptr_t, int);
+QLayoutItem* miqt_exec_callback_QLayout_TakeAt(void*, intptr_t, int);
+int miqt_exec_callback_QLayout_IndexOf(void*, intptr_t, QWidget*);
+int miqt_exec_callback_QLayout_IndexOfWithQLayoutItem(void*, intptr_t, QLayoutItem*);
+int miqt_exec_callback_QLayout_Count(void*, intptr_t);
+bool miqt_exec_callback_QLayout_IsEmpty(void*, intptr_t);
+int miqt_exec_callback_QLayout_ControlTypes(void*, intptr_t);
+QLayoutItem* miqt_exec_callback_QLayout_ReplaceWidget(void*, intptr_t, QWidget*, QWidget*, int);
+QLayout* miqt_exec_callback_QLayout_Layout(void*, intptr_t);
+void miqt_exec_callback_QLayout_ChildEvent(void*, intptr_t, QChildEvent*);
+bool miqt_exec_callback_QLayout_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QLayout_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QLayout_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QLayout_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QLayout_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QLayout_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QSize* miqt_exec_callback_QLayout_SizeHint(void*, intptr_t);
+bool miqt_exec_callback_QLayout_HasHeightForWidth(void*, intptr_t);
+int miqt_exec_callback_QLayout_HeightForWidth(void*, intptr_t, int);
+int miqt_exec_callback_QLayout_MinimumHeightForWidth(void*, intptr_t, int);
+QWidget* miqt_exec_callback_QLayout_Widget(void*, intptr_t);
+QSpacerItem* miqt_exec_callback_QLayout_SpacerItem(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQLayout : public virtual QLayout {
 public:

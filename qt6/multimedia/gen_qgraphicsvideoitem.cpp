@@ -19,10 +19,20 @@
 #include <qgraphicsvideoitem.h>
 #include "gen_qgraphicsvideoitem.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QGraphicsVideoItem_NativeSizeChanged(intptr_t, QSizeF*);
+QRectF* miqt_exec_callback_QGraphicsVideoItem_BoundingRect(void*, intptr_t);
+void miqt_exec_callback_QGraphicsVideoItem_Paint(void*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
+int miqt_exec_callback_QGraphicsVideoItem_Type(void*, intptr_t);
+void miqt_exec_callback_QGraphicsVideoItem_TimerEvent(void*, intptr_t, QTimerEvent*);
+QVariant* miqt_exec_callback_QGraphicsVideoItem_ItemChange(void*, intptr_t, int, QVariant*);
+bool miqt_exec_callback_QGraphicsVideoItem_Event(void*, intptr_t, QEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQGraphicsVideoItem : public virtual QGraphicsVideoItem {
 public:

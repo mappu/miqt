@@ -11,10 +11,17 @@
 #include <qaudiorecorder.h>
 #include "gen_qaudiorecorder.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QAudioRecorder_AudioInputChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QAudioRecorder_AvailableAudioInputsChanged(intptr_t);
+QMediaObject* miqt_exec_callback_QAudioRecorder_MediaObject(void*, intptr_t);
+bool miqt_exec_callback_QAudioRecorder_SetMediaObject(void*, intptr_t, QMediaObject*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQAudioRecorder : public virtual QAudioRecorder {
 public:

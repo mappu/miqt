@@ -42,10 +42,67 @@
 #include <qgraphicswebview.h>
 #include "gen_qgraphicswebview.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QGraphicsWebView_LoadStarted(intptr_t);
+void miqt_exec_callback_QGraphicsWebView_LoadFinished(intptr_t, bool);
+void miqt_exec_callback_QGraphicsWebView_LoadProgress(intptr_t, int);
+void miqt_exec_callback_QGraphicsWebView_UrlChanged(intptr_t, QUrl*);
+void miqt_exec_callback_QGraphicsWebView_TitleChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QGraphicsWebView_IconChanged(intptr_t);
+void miqt_exec_callback_QGraphicsWebView_StatusBarMessage(intptr_t, struct miqt_string);
+void miqt_exec_callback_QGraphicsWebView_LinkClicked(intptr_t, QUrl*);
+void miqt_exec_callback_QGraphicsWebView_SetGeometry(void*, intptr_t, QRectF*);
+void miqt_exec_callback_QGraphicsWebView_UpdateGeometry(void*, intptr_t);
+void miqt_exec_callback_QGraphicsWebView_Paint(void*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
+QVariant* miqt_exec_callback_QGraphicsWebView_ItemChange(void*, intptr_t, int, QVariant*);
+bool miqt_exec_callback_QGraphicsWebView_Event(void*, intptr_t, QEvent*);
+QSizeF* miqt_exec_callback_QGraphicsWebView_SizeHint(void*, intptr_t, int, QSizeF*);
+QVariant* miqt_exec_callback_QGraphicsWebView_InputMethodQuery(void*, intptr_t, int);
+void miqt_exec_callback_QGraphicsWebView_MousePressEvent(void*, intptr_t, QGraphicsSceneMouseEvent*);
+void miqt_exec_callback_QGraphicsWebView_MouseDoubleClickEvent(void*, intptr_t, QGraphicsSceneMouseEvent*);
+void miqt_exec_callback_QGraphicsWebView_MouseReleaseEvent(void*, intptr_t, QGraphicsSceneMouseEvent*);
+void miqt_exec_callback_QGraphicsWebView_MouseMoveEvent(void*, intptr_t, QGraphicsSceneMouseEvent*);
+void miqt_exec_callback_QGraphicsWebView_HoverMoveEvent(void*, intptr_t, QGraphicsSceneHoverEvent*);
+void miqt_exec_callback_QGraphicsWebView_HoverLeaveEvent(void*, intptr_t, QGraphicsSceneHoverEvent*);
+void miqt_exec_callback_QGraphicsWebView_WheelEvent(void*, intptr_t, QGraphicsSceneWheelEvent*);
+void miqt_exec_callback_QGraphicsWebView_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QGraphicsWebView_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QGraphicsWebView_ContextMenuEvent(void*, intptr_t, QGraphicsSceneContextMenuEvent*);
+void miqt_exec_callback_QGraphicsWebView_DragEnterEvent(void*, intptr_t, QGraphicsSceneDragDropEvent*);
+void miqt_exec_callback_QGraphicsWebView_DragLeaveEvent(void*, intptr_t, QGraphicsSceneDragDropEvent*);
+void miqt_exec_callback_QGraphicsWebView_DragMoveEvent(void*, intptr_t, QGraphicsSceneDragDropEvent*);
+void miqt_exec_callback_QGraphicsWebView_DropEvent(void*, intptr_t, QGraphicsSceneDragDropEvent*);
+void miqt_exec_callback_QGraphicsWebView_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QGraphicsWebView_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QGraphicsWebView_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
+bool miqt_exec_callback_QGraphicsWebView_FocusNextPrevChild(void*, intptr_t, bool);
+bool miqt_exec_callback_QGraphicsWebView_SceneEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsWebView_GetContentsMargins(void*, intptr_t, double*, double*, double*, double*);
+int miqt_exec_callback_QGraphicsWebView_Type(void*, intptr_t);
+void miqt_exec_callback_QGraphicsWebView_PaintWindowFrame(void*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
+QRectF* miqt_exec_callback_QGraphicsWebView_BoundingRect(void*, intptr_t);
+QPainterPath* miqt_exec_callback_QGraphicsWebView_Shape(void*, intptr_t);
+void miqt_exec_callback_QGraphicsWebView_InitStyleOption(void*, intptr_t, QStyleOption*);
+QVariant* miqt_exec_callback_QGraphicsWebView_PropertyChange(void*, intptr_t, struct miqt_string, QVariant*);
+bool miqt_exec_callback_QGraphicsWebView_WindowFrameEvent(void*, intptr_t, QEvent*);
+int miqt_exec_callback_QGraphicsWebView_WindowFrameSectionAt(void*, intptr_t, QPointF*);
+void miqt_exec_callback_QGraphicsWebView_ChangeEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsWebView_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QGraphicsWebView_HideEvent(void*, intptr_t, QHideEvent*);
+void miqt_exec_callback_QGraphicsWebView_MoveEvent(void*, intptr_t, QGraphicsSceneMoveEvent*);
+void miqt_exec_callback_QGraphicsWebView_PolishEvent(void*, intptr_t);
+void miqt_exec_callback_QGraphicsWebView_ResizeEvent(void*, intptr_t, QGraphicsSceneResizeEvent*);
+void miqt_exec_callback_QGraphicsWebView_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QGraphicsWebView_GrabMouseEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsWebView_UngrabMouseEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsWebView_GrabKeyboardEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsWebView_UngrabKeyboardEvent(void*, intptr_t, QEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQGraphicsWebView : public virtual QGraphicsWebView {
 public:

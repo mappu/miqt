@@ -5,10 +5,13 @@
 #include <qwebenginesettings.h>
 #include "gen_qwebenginesettings.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QWebEngineSettings_SetFontFamily(QWebEngineSettings* self, int which, struct miqt_string family) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);

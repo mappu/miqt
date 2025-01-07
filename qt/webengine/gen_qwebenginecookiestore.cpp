@@ -10,10 +10,15 @@
 #include <qwebenginecookiestore.h>
 #include "gen_qwebenginecookiestore.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QWebEngineCookieStore_CookieAdded(intptr_t, QNetworkCookie*);
+void miqt_exec_callback_QWebEngineCookieStore_CookieRemoved(intptr_t, QNetworkCookie*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QWebEngineCookieStore_virtbase(QWebEngineCookieStore* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);

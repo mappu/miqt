@@ -9,10 +9,15 @@
 #include <qaudiooutputselectorcontrol.h>
 #include "gen_qaudiooutputselectorcontrol.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QAudioOutputSelectorControl_ActiveOutputChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QAudioOutputSelectorControl_AvailableOutputsChanged(intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QAudioOutputSelectorControl_virtbase(QAudioOutputSelectorControl* src, QMediaControl** outptr_QMediaControl) {
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);

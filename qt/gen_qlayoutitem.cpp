@@ -10,10 +10,69 @@
 #include <qlayoutitem.h>
 #include "gen_qlayoutitem.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+QSize* miqt_exec_callback_QLayoutItem_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QLayoutItem_MinimumSize(void*, intptr_t);
+QSize* miqt_exec_callback_QLayoutItem_MaximumSize(void*, intptr_t);
+int miqt_exec_callback_QLayoutItem_ExpandingDirections(void*, intptr_t);
+void miqt_exec_callback_QLayoutItem_SetGeometry(void*, intptr_t, QRect*);
+QRect* miqt_exec_callback_QLayoutItem_Geometry(void*, intptr_t);
+bool miqt_exec_callback_QLayoutItem_IsEmpty(void*, intptr_t);
+bool miqt_exec_callback_QLayoutItem_HasHeightForWidth(void*, intptr_t);
+int miqt_exec_callback_QLayoutItem_HeightForWidth(void*, intptr_t, int);
+int miqt_exec_callback_QLayoutItem_MinimumHeightForWidth(void*, intptr_t, int);
+void miqt_exec_callback_QLayoutItem_Invalidate(void*, intptr_t);
+QWidget* miqt_exec_callback_QLayoutItem_Widget(void*, intptr_t);
+QLayout* miqt_exec_callback_QLayoutItem_Layout(void*, intptr_t);
+QSpacerItem* miqt_exec_callback_QLayoutItem_SpacerItem(void*, intptr_t);
+int miqt_exec_callback_QLayoutItem_ControlTypes(void*, intptr_t);
+QSize* miqt_exec_callback_QSpacerItem_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QSpacerItem_MinimumSize(void*, intptr_t);
+QSize* miqt_exec_callback_QSpacerItem_MaximumSize(void*, intptr_t);
+int miqt_exec_callback_QSpacerItem_ExpandingDirections(void*, intptr_t);
+bool miqt_exec_callback_QSpacerItem_IsEmpty(void*, intptr_t);
+void miqt_exec_callback_QSpacerItem_SetGeometry(void*, intptr_t, QRect*);
+QRect* miqt_exec_callback_QSpacerItem_Geometry(void*, intptr_t);
+QSpacerItem* miqt_exec_callback_QSpacerItem_SpacerItem(void*, intptr_t);
+bool miqt_exec_callback_QSpacerItem_HasHeightForWidth(void*, intptr_t);
+int miqt_exec_callback_QSpacerItem_HeightForWidth(void*, intptr_t, int);
+int miqt_exec_callback_QSpacerItem_MinimumHeightForWidth(void*, intptr_t, int);
+void miqt_exec_callback_QSpacerItem_Invalidate(void*, intptr_t);
+QWidget* miqt_exec_callback_QSpacerItem_Widget(void*, intptr_t);
+QLayout* miqt_exec_callback_QSpacerItem_Layout(void*, intptr_t);
+int miqt_exec_callback_QSpacerItem_ControlTypes(void*, intptr_t);
+QSize* miqt_exec_callback_QWidgetItem_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QWidgetItem_MinimumSize(void*, intptr_t);
+QSize* miqt_exec_callback_QWidgetItem_MaximumSize(void*, intptr_t);
+int miqt_exec_callback_QWidgetItem_ExpandingDirections(void*, intptr_t);
+bool miqt_exec_callback_QWidgetItem_IsEmpty(void*, intptr_t);
+void miqt_exec_callback_QWidgetItem_SetGeometry(void*, intptr_t, QRect*);
+QRect* miqt_exec_callback_QWidgetItem_Geometry(void*, intptr_t);
+QWidget* miqt_exec_callback_QWidgetItem_Widget(void*, intptr_t);
+bool miqt_exec_callback_QWidgetItem_HasHeightForWidth(void*, intptr_t);
+int miqt_exec_callback_QWidgetItem_HeightForWidth(void*, intptr_t, int);
+int miqt_exec_callback_QWidgetItem_ControlTypes(void*, intptr_t);
+int miqt_exec_callback_QWidgetItem_MinimumHeightForWidth(void*, intptr_t, int);
+void miqt_exec_callback_QWidgetItem_Invalidate(void*, intptr_t);
+QLayout* miqt_exec_callback_QWidgetItem_Layout(void*, intptr_t);
+QSpacerItem* miqt_exec_callback_QWidgetItem_SpacerItem(void*, intptr_t);
+QSize* miqt_exec_callback_QWidgetItemV2_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QWidgetItemV2_MinimumSize(void*, intptr_t);
+QSize* miqt_exec_callback_QWidgetItemV2_MaximumSize(void*, intptr_t);
+int miqt_exec_callback_QWidgetItemV2_HeightForWidth(void*, intptr_t, int);
+int miqt_exec_callback_QWidgetItemV2_ExpandingDirections(void*, intptr_t);
+bool miqt_exec_callback_QWidgetItemV2_IsEmpty(void*, intptr_t);
+void miqt_exec_callback_QWidgetItemV2_SetGeometry(void*, intptr_t, QRect*);
+QRect* miqt_exec_callback_QWidgetItemV2_Geometry(void*, intptr_t);
+QWidget* miqt_exec_callback_QWidgetItemV2_Widget(void*, intptr_t);
+bool miqt_exec_callback_QWidgetItemV2_HasHeightForWidth(void*, intptr_t);
+int miqt_exec_callback_QWidgetItemV2_ControlTypes(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQLayoutItem : public virtual QLayoutItem {
 public:

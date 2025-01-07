@@ -6,10 +6,13 @@
 #include <qscilexeroctave.h>
 #include "gen_qscilexeroctave.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QsciLexerOctave* QsciLexerOctave_new() {
 	return new QsciLexerOctave();

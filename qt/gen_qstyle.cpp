@@ -24,10 +24,43 @@
 #include <qstyle.h>
 #include "gen_qstyle.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QStyle_Polish(void*, intptr_t, QWidget*);
+void miqt_exec_callback_QStyle_Unpolish(void*, intptr_t, QWidget*);
+void miqt_exec_callback_QStyle_PolishWithApplication(void*, intptr_t, QApplication*);
+void miqt_exec_callback_QStyle_UnpolishWithApplication(void*, intptr_t, QApplication*);
+void miqt_exec_callback_QStyle_PolishWithPalette(void*, intptr_t, QPalette*);
+QRect* miqt_exec_callback_QStyle_ItemTextRect(void*, intptr_t, QFontMetrics*, QRect*, int, bool, struct miqt_string);
+QRect* miqt_exec_callback_QStyle_ItemPixmapRect(void*, intptr_t, QRect*, int, QPixmap*);
+void miqt_exec_callback_QStyle_DrawItemText(void*, intptr_t, QPainter*, QRect*, int, QPalette*, bool, struct miqt_string, int);
+void miqt_exec_callback_QStyle_DrawItemPixmap(void*, intptr_t, QPainter*, QRect*, int, QPixmap*);
+QPalette* miqt_exec_callback_QStyle_StandardPalette(void*, intptr_t);
+void miqt_exec_callback_QStyle_DrawPrimitive(void*, intptr_t, int, QStyleOption*, QPainter*, QWidget*);
+void miqt_exec_callback_QStyle_DrawControl(void*, intptr_t, int, QStyleOption*, QPainter*, QWidget*);
+QRect* miqt_exec_callback_QStyle_SubElementRect(void*, intptr_t, int, QStyleOption*, QWidget*);
+void miqt_exec_callback_QStyle_DrawComplexControl(void*, intptr_t, int, QStyleOptionComplex*, QPainter*, QWidget*);
+int miqt_exec_callback_QStyle_HitTestComplexControl(void*, intptr_t, int, QStyleOptionComplex*, QPoint*, QWidget*);
+QRect* miqt_exec_callback_QStyle_SubControlRect(void*, intptr_t, int, QStyleOptionComplex*, int, QWidget*);
+int miqt_exec_callback_QStyle_PixelMetric(void*, intptr_t, int, QStyleOption*, QWidget*);
+QSize* miqt_exec_callback_QStyle_SizeFromContents(void*, intptr_t, int, QStyleOption*, QSize*, QWidget*);
+int miqt_exec_callback_QStyle_StyleHint(void*, intptr_t, int, QStyleOption*, QWidget*, QStyleHintReturn*);
+QPixmap* miqt_exec_callback_QStyle_StandardPixmap(void*, intptr_t, int, QStyleOption*, QWidget*);
+QIcon* miqt_exec_callback_QStyle_StandardIcon(void*, intptr_t, int, QStyleOption*, QWidget*);
+QPixmap* miqt_exec_callback_QStyle_GeneratedIconPixmap(void*, intptr_t, int, QPixmap*, QStyleOption*);
+int miqt_exec_callback_QStyle_LayoutSpacing(void*, intptr_t, int, int, int, QStyleOption*, QWidget*);
+bool miqt_exec_callback_QStyle_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QStyle_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QStyle_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QStyle_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QStyle_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QStyle_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QStyle_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQStyle : public virtual QStyle {
 public:

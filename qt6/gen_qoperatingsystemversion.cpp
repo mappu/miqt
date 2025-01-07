@@ -7,10 +7,13 @@
 #include <qoperatingsystemversion.h>
 #include "gen_qoperatingsystemversion.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QOperatingSystemVersionBase* QOperatingSystemVersionBase_new(int osType, int vmajor) {
 	return new QOperatingSystemVersionBase(static_cast<QOperatingSystemVersionBase::OSType>(osType), static_cast<int>(vmajor));

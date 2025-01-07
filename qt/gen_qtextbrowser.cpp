@@ -32,10 +32,54 @@
 #include <qtextbrowser.h>
 #include "gen_qtextbrowser.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QTextBrowser_BackwardAvailable(intptr_t, bool);
+void miqt_exec_callback_QTextBrowser_ForwardAvailable(intptr_t, bool);
+void miqt_exec_callback_QTextBrowser_HistoryChanged(intptr_t);
+void miqt_exec_callback_QTextBrowser_SourceChanged(intptr_t, QUrl*);
+void miqt_exec_callback_QTextBrowser_Highlighted(intptr_t, QUrl*);
+void miqt_exec_callback_QTextBrowser_HighlightedWithQString(intptr_t, struct miqt_string);
+void miqt_exec_callback_QTextBrowser_AnchorClicked(intptr_t, QUrl*);
+QVariant* miqt_exec_callback_QTextBrowser_LoadResource(void*, intptr_t, int, QUrl*);
+void miqt_exec_callback_QTextBrowser_SetSource(void*, intptr_t, QUrl*);
+void miqt_exec_callback_QTextBrowser_Backward(void*, intptr_t);
+void miqt_exec_callback_QTextBrowser_Forward(void*, intptr_t);
+void miqt_exec_callback_QTextBrowser_Home(void*, intptr_t);
+void miqt_exec_callback_QTextBrowser_Reload(void*, intptr_t);
+bool miqt_exec_callback_QTextBrowser_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QTextBrowser_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QTextBrowser_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTextBrowser_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTextBrowser_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTextBrowser_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+bool miqt_exec_callback_QTextBrowser_FocusNextPrevChild(void*, intptr_t, bool);
+void miqt_exec_callback_QTextBrowser_PaintEvent(void*, intptr_t, QPaintEvent*);
+QVariant* miqt_exec_callback_QTextBrowser_InputMethodQuery(void*, intptr_t, int);
+void miqt_exec_callback_QTextBrowser_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QTextBrowser_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QTextBrowser_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QTextBrowser_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTextBrowser_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QTextBrowser_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QTextBrowser_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QTextBrowser_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QTextBrowser_DropEvent(void*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QTextBrowser_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QTextBrowser_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QTextBrowser_ChangeEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QTextBrowser_WheelEvent(void*, intptr_t, QWheelEvent*);
+QMimeData* miqt_exec_callback_QTextBrowser_CreateMimeDataFromSelection(void*, intptr_t);
+bool miqt_exec_callback_QTextBrowser_CanInsertFromMimeData(void*, intptr_t, QMimeData*);
+void miqt_exec_callback_QTextBrowser_InsertFromMimeData(void*, intptr_t, QMimeData*);
+void miqt_exec_callback_QTextBrowser_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
+void miqt_exec_callback_QTextBrowser_ScrollContentsBy(void*, intptr_t, int, int);
+void miqt_exec_callback_QTextBrowser_DoSetTextCursor(void*, intptr_t, QTextCursor*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQTextBrowser : public virtual QTextBrowser {
 public:

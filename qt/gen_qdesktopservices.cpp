@@ -7,10 +7,13 @@
 #include <qdesktopservices.h>
 #include "gen_qdesktopservices.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 bool QDesktopServices_OpenUrl(QUrl* url) {
 	return QDesktopServices::openUrl(*url);

@@ -12,10 +12,22 @@
 #include <qwebchannelabstracttransport.h>
 #include "gen_qwebchannelabstracttransport.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QWebChannelAbstractTransport_MessageReceived(intptr_t, QJsonObject*, QWebChannelAbstractTransport*);
+void miqt_exec_callback_QWebChannelAbstractTransport_SendMessage(void*, intptr_t, QJsonObject*);
+bool miqt_exec_callback_QWebChannelAbstractTransport_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QWebChannelAbstractTransport_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QWebChannelAbstractTransport_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QWebChannelAbstractTransport_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QWebChannelAbstractTransport_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QWebChannelAbstractTransport_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QWebChannelAbstractTransport_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQWebChannelAbstractTransport : public virtual QWebChannelAbstractTransport {
 public:

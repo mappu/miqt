@@ -8,10 +8,14 @@
 #include <qwebenginenavigationrequest.h>
 #include "gen_qwebenginenavigationrequest.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QWebEngineNavigationRequest_ActionChanged(intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QWebEngineNavigationRequest_virtbase(QWebEngineNavigationRequest* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);

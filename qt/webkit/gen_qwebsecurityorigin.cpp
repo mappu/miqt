@@ -8,10 +8,13 @@
 #include <qwebsecurityorigin.h>
 #include "gen_qwebsecurityorigin.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QWebSecurityOrigin* QWebSecurityOrigin_new(QUrl* url) {
 	return new QWebSecurityOrigin(*url);

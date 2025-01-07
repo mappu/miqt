@@ -9,10 +9,13 @@
 #include <qurlquery.h>
 #include "gen_qurlquery.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QUrlQuery* QUrlQuery_new() {
 	return new QUrlQuery();

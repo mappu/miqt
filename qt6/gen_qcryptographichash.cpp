@@ -5,10 +5,13 @@
 #include <qcryptographichash.h>
 #include "gen_qcryptographichash.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QCryptographicHash* QCryptographicHash_new(int method) {
 	return new QCryptographicHash(static_cast<QCryptographicHash::Algorithm>(method));

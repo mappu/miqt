@@ -21,10 +21,36 @@
 #include <qcommonstyle.h>
 #include "gen_qcommonstyle.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QCommonStyle_DrawPrimitive(void*, intptr_t, int, QStyleOption*, QPainter*, QWidget*);
+void miqt_exec_callback_QCommonStyle_DrawControl(void*, intptr_t, int, QStyleOption*, QPainter*, QWidget*);
+QRect* miqt_exec_callback_QCommonStyle_SubElementRect(void*, intptr_t, int, QStyleOption*, QWidget*);
+void miqt_exec_callback_QCommonStyle_DrawComplexControl(void*, intptr_t, int, QStyleOptionComplex*, QPainter*, QWidget*);
+int miqt_exec_callback_QCommonStyle_HitTestComplexControl(void*, intptr_t, int, QStyleOptionComplex*, QPoint*, QWidget*);
+QRect* miqt_exec_callback_QCommonStyle_SubControlRect(void*, intptr_t, int, QStyleOptionComplex*, int, QWidget*);
+QSize* miqt_exec_callback_QCommonStyle_SizeFromContents(void*, intptr_t, int, QStyleOption*, QSize*, QWidget*);
+int miqt_exec_callback_QCommonStyle_PixelMetric(void*, intptr_t, int, QStyleOption*, QWidget*);
+int miqt_exec_callback_QCommonStyle_StyleHint(void*, intptr_t, int, QStyleOption*, QWidget*, QStyleHintReturn*);
+QIcon* miqt_exec_callback_QCommonStyle_StandardIcon(void*, intptr_t, int, QStyleOption*, QWidget*);
+QPixmap* miqt_exec_callback_QCommonStyle_StandardPixmap(void*, intptr_t, int, QStyleOption*, QWidget*);
+QPixmap* miqt_exec_callback_QCommonStyle_GeneratedIconPixmap(void*, intptr_t, int, QPixmap*, QStyleOption*);
+int miqt_exec_callback_QCommonStyle_LayoutSpacing(void*, intptr_t, int, int, int, QStyleOption*, QWidget*);
+void miqt_exec_callback_QCommonStyle_Polish(void*, intptr_t, QPalette*);
+void miqt_exec_callback_QCommonStyle_PolishWithApp(void*, intptr_t, QApplication*);
+void miqt_exec_callback_QCommonStyle_PolishWithWidget(void*, intptr_t, QWidget*);
+void miqt_exec_callback_QCommonStyle_Unpolish(void*, intptr_t, QWidget*);
+void miqt_exec_callback_QCommonStyle_UnpolishWithApplication(void*, intptr_t, QApplication*);
+QRect* miqt_exec_callback_QCommonStyle_ItemTextRect(void*, intptr_t, QFontMetrics*, QRect*, int, bool, struct miqt_string);
+QRect* miqt_exec_callback_QCommonStyle_ItemPixmapRect(void*, intptr_t, QRect*, int, QPixmap*);
+void miqt_exec_callback_QCommonStyle_DrawItemText(void*, intptr_t, QPainter*, QRect*, int, QPalette*, bool, struct miqt_string, int);
+void miqt_exec_callback_QCommonStyle_DrawItemPixmap(void*, intptr_t, QPainter*, QRect*, int, QPixmap*);
+QPalette* miqt_exec_callback_QCommonStyle_StandardPalette(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQCommonStyle : public virtual QCommonStyle {
 public:

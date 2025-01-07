@@ -4,10 +4,13 @@
 #include <qcolormap.h>
 #include "gen_qcolormap.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QColormap* QColormap_new(QColormap* colormap) {
 	return new QColormap(*colormap);

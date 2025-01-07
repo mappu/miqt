@@ -10,10 +10,17 @@
 #include <qwidgetaction.h>
 #include "gen_qwidgetaction.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+bool miqt_exec_callback_QWidgetAction_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QWidgetAction_EventFilter(void*, intptr_t, QObject*, QEvent*);
+QWidget* miqt_exec_callback_QWidgetAction_CreateWidget(void*, intptr_t, QWidget*);
+void miqt_exec_callback_QWidgetAction_DeleteWidget(void*, intptr_t, QWidget*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQWidgetAction : public virtual QWidgetAction {
 public:

@@ -13,10 +13,35 @@
 #include <qgridlayout.h>
 #include "gen_qgridlayout.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+QSize* miqt_exec_callback_QGridLayout_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QGridLayout_MinimumSize(void*, intptr_t);
+QSize* miqt_exec_callback_QGridLayout_MaximumSize(void*, intptr_t);
+void miqt_exec_callback_QGridLayout_SetSpacing(void*, intptr_t, int);
+int miqt_exec_callback_QGridLayout_Spacing(void*, intptr_t);
+bool miqt_exec_callback_QGridLayout_HasHeightForWidth(void*, intptr_t);
+int miqt_exec_callback_QGridLayout_HeightForWidth(void*, intptr_t, int);
+int miqt_exec_callback_QGridLayout_MinimumHeightForWidth(void*, intptr_t, int);
+int miqt_exec_callback_QGridLayout_ExpandingDirections(void*, intptr_t);
+void miqt_exec_callback_QGridLayout_Invalidate(void*, intptr_t);
+QLayoutItem* miqt_exec_callback_QGridLayout_ItemAt(void*, intptr_t, int);
+QLayoutItem* miqt_exec_callback_QGridLayout_TakeAt(void*, intptr_t, int);
+int miqt_exec_callback_QGridLayout_Count(void*, intptr_t);
+void miqt_exec_callback_QGridLayout_SetGeometry(void*, intptr_t, QRect*);
+void miqt_exec_callback_QGridLayout_AddItemWithQLayoutItem(void*, intptr_t, QLayoutItem*);
+QRect* miqt_exec_callback_QGridLayout_Geometry(void*, intptr_t);
+int miqt_exec_callback_QGridLayout_IndexOf(void*, intptr_t, QWidget*);
+bool miqt_exec_callback_QGridLayout_IsEmpty(void*, intptr_t);
+int miqt_exec_callback_QGridLayout_ControlTypes(void*, intptr_t);
+QLayoutItem* miqt_exec_callback_QGridLayout_ReplaceWidget(void*, intptr_t, QWidget*, QWidget*, int);
+QLayout* miqt_exec_callback_QGridLayout_Layout(void*, intptr_t);
+void miqt_exec_callback_QGridLayout_ChildEvent(void*, intptr_t, QChildEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQGridLayout : public virtual QGridLayout {
 public:

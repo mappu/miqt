@@ -10,10 +10,13 @@
 #include <qtooltip.h>
 #include "gen_qtooltip.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QToolTip_ShowText(QPoint* pos, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);

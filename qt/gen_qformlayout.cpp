@@ -14,10 +14,31 @@
 #include <qformlayout.h>
 #include "gen_qformlayout.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QFormLayout_AddItem(void*, intptr_t, QLayoutItem*);
+QLayoutItem* miqt_exec_callback_QFormLayout_ItemAtWithIndex(void*, intptr_t, int);
+QLayoutItem* miqt_exec_callback_QFormLayout_TakeAt(void*, intptr_t, int);
+void miqt_exec_callback_QFormLayout_SetGeometry(void*, intptr_t, QRect*);
+QSize* miqt_exec_callback_QFormLayout_MinimumSize(void*, intptr_t);
+QSize* miqt_exec_callback_QFormLayout_SizeHint(void*, intptr_t);
+void miqt_exec_callback_QFormLayout_Invalidate(void*, intptr_t);
+bool miqt_exec_callback_QFormLayout_HasHeightForWidth(void*, intptr_t);
+int miqt_exec_callback_QFormLayout_HeightForWidth(void*, intptr_t, int);
+int miqt_exec_callback_QFormLayout_ExpandingDirections(void*, intptr_t);
+int miqt_exec_callback_QFormLayout_Count(void*, intptr_t);
+QRect* miqt_exec_callback_QFormLayout_Geometry(void*, intptr_t);
+QSize* miqt_exec_callback_QFormLayout_MaximumSize(void*, intptr_t);
+int miqt_exec_callback_QFormLayout_IndexOf(void*, intptr_t, QWidget*);
+bool miqt_exec_callback_QFormLayout_IsEmpty(void*, intptr_t);
+int miqt_exec_callback_QFormLayout_ControlTypes(void*, intptr_t);
+QLayout* miqt_exec_callback_QFormLayout_Layout(void*, intptr_t);
+void miqt_exec_callback_QFormLayout_ChildEvent(void*, intptr_t, QChildEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQFormLayout : public virtual QFormLayout {
 public:

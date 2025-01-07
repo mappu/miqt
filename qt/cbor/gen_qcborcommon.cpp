@@ -5,10 +5,13 @@
 #include <qcborcommon.h>
 #include "gen_qcborcommon.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 int QCborError_ToQCborError__Code(const QCborError* self) {
 	QCborError::Code _ret = self->operator QCborError::Code();

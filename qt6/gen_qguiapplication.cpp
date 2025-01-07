@@ -21,10 +21,29 @@
 #include <qguiapplication.h>
 #include "gen_qguiapplication.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QGuiApplication_FontDatabaseChanged(intptr_t);
+void miqt_exec_callback_QGuiApplication_ScreenAdded(intptr_t, QScreen*);
+void miqt_exec_callback_QGuiApplication_ScreenRemoved(intptr_t, QScreen*);
+void miqt_exec_callback_QGuiApplication_PrimaryScreenChanged(intptr_t, QScreen*);
+void miqt_exec_callback_QGuiApplication_LastWindowClosed(intptr_t);
+void miqt_exec_callback_QGuiApplication_FocusObjectChanged(intptr_t, QObject*);
+void miqt_exec_callback_QGuiApplication_FocusWindowChanged(intptr_t, QWindow*);
+void miqt_exec_callback_QGuiApplication_ApplicationStateChanged(intptr_t, int);
+void miqt_exec_callback_QGuiApplication_LayoutDirectionChanged(intptr_t, int);
+void miqt_exec_callback_QGuiApplication_CommitDataRequest(intptr_t, QSessionManager*);
+void miqt_exec_callback_QGuiApplication_SaveStateRequest(intptr_t, QSessionManager*);
+void miqt_exec_callback_QGuiApplication_ApplicationDisplayNameChanged(intptr_t);
+void miqt_exec_callback_QGuiApplication_PaletteChanged(intptr_t, QPalette*);
+void miqt_exec_callback_QGuiApplication_FontChanged(intptr_t, QFont*);
+bool miqt_exec_callback_QGuiApplication_Notify(void*, intptr_t, QObject*, QEvent*);
+bool miqt_exec_callback_QGuiApplication_Event(void*, intptr_t, QEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQGuiApplication : public virtual QGuiApplication {
 public:

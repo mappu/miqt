@@ -9,10 +9,16 @@
 #include <qmediagaplessplaybackcontrol.h>
 #include "gen_qmediagaplessplaybackcontrol.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QMediaGaplessPlaybackControl_CrossfadeTimeChanged(intptr_t, double);
+void miqt_exec_callback_QMediaGaplessPlaybackControl_NextMediaChanged(intptr_t, QMediaContent*);
+void miqt_exec_callback_QMediaGaplessPlaybackControl_AdvancedToNextMedia(intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QMediaGaplessPlaybackControl_virtbase(QMediaGaplessPlaybackControl* src, QMediaControl** outptr_QMediaControl) {
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);

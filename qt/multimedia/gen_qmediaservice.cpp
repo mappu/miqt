@@ -8,10 +8,13 @@
 #include <qmediaservice.h>
 #include "gen_qmediaservice.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QMediaService_virtbase(QMediaService* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);

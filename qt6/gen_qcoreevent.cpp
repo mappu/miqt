@@ -7,10 +7,21 @@
 #include <qcoreevent.h>
 #include "gen_qcoreevent.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QEvent_SetAccepted(void*, intptr_t, bool);
+QEvent* miqt_exec_callback_QEvent_Clone(void*, intptr_t);
+QTimerEvent* miqt_exec_callback_QTimerEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QTimerEvent_SetAccepted(void*, intptr_t, bool);
+QChildEvent* miqt_exec_callback_QChildEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QChildEvent_SetAccepted(void*, intptr_t, bool);
+QDynamicPropertyChangeEvent* miqt_exec_callback_QDynamicPropertyChangeEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QDynamicPropertyChangeEvent_SetAccepted(void*, intptr_t, bool);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQEvent : public virtual QEvent {
 public:

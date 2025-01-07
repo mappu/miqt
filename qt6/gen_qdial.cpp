@@ -19,10 +19,27 @@
 #include <qdial.h>
 #include "gen_qdial.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+QSize* miqt_exec_callback_QDial_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QDial_MinimumSizeHint(void*, intptr_t);
+bool miqt_exec_callback_QDial_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QDial_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QDial_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QDial_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDial_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDial_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDial_SliderChange(void*, intptr_t, int);
+void miqt_exec_callback_QDial_InitStyleOption(void*, intptr_t, QStyleOptionSlider*);
+void miqt_exec_callback_QDial_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QDial_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QDial_WheelEvent(void*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QDial_ChangeEvent(void*, intptr_t, QEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQDial : public virtual QDial {
 public:

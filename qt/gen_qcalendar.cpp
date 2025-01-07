@@ -9,10 +9,13 @@
 #include <qcalendar.h>
 #include "gen_qcalendar.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QCalendar* QCalendar_new() {
 	return new QCalendar();

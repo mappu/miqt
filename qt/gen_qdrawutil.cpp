@@ -2,10 +2,13 @@
 #include <qdrawutil.h>
 #include "gen_qdrawutil.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QTileRules* QTileRules_new(int horizontalRule, int verticalRule) {
 	return new QTileRules(static_cast<Qt::TileRule>(horizontalRule), static_cast<Qt::TileRule>(verticalRule));

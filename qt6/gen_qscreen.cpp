@@ -14,10 +14,22 @@
 #include <qscreen.h>
 #include "gen_qscreen.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QScreen_GeometryChanged(intptr_t, QRect*);
+void miqt_exec_callback_QScreen_AvailableGeometryChanged(intptr_t, QRect*);
+void miqt_exec_callback_QScreen_PhysicalSizeChanged(intptr_t, QSizeF*);
+void miqt_exec_callback_QScreen_PhysicalDotsPerInchChanged(intptr_t, double);
+void miqt_exec_callback_QScreen_LogicalDotsPerInchChanged(intptr_t, double);
+void miqt_exec_callback_QScreen_VirtualGeometryChanged(intptr_t, QRect*);
+void miqt_exec_callback_QScreen_PrimaryOrientationChanged(intptr_t, int);
+void miqt_exec_callback_QScreen_OrientationChanged(intptr_t, int);
+void miqt_exec_callback_QScreen_RefreshRateChanged(intptr_t, double);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QScreen_virtbase(QScreen* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);

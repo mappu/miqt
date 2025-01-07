@@ -4,10 +4,13 @@
 #include <qwebengineurlrequestinfo.h>
 #include "gen_qwebengineurlrequestinfo.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 int QWebEngineUrlRequestInfo_ResourceType(const QWebEngineUrlRequestInfo* self) {
 	QWebEngineUrlRequestInfo::ResourceType _ret = self->resourceType();

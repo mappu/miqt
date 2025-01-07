@@ -35,10 +35,61 @@
 #include <qabstractspinbox.h>
 #include "gen_qabstractspinbox.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QAbstractSpinBox_EditingFinished(intptr_t);
+QSize* miqt_exec_callback_QAbstractSpinBox_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QAbstractSpinBox_MinimumSizeHint(void*, intptr_t);
+bool miqt_exec_callback_QAbstractSpinBox_Event(void*, intptr_t, QEvent*);
+QVariant* miqt_exec_callback_QAbstractSpinBox_InputMethodQuery(void*, intptr_t, int);
+int miqt_exec_callback_QAbstractSpinBox_Validate(void*, intptr_t, struct miqt_string, int*);
+void miqt_exec_callback_QAbstractSpinBox_Fixup(void*, intptr_t, struct miqt_string);
+void miqt_exec_callback_QAbstractSpinBox_StepBy(void*, intptr_t, int);
+void miqt_exec_callback_QAbstractSpinBox_Clear(void*, intptr_t);
+void miqt_exec_callback_QAbstractSpinBox_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QAbstractSpinBox_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QAbstractSpinBox_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QAbstractSpinBox_WheelEvent(void*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QAbstractSpinBox_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QAbstractSpinBox_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QAbstractSpinBox_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QAbstractSpinBox_ChangeEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractSpinBox_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QAbstractSpinBox_HideEvent(void*, intptr_t, QHideEvent*);
+void miqt_exec_callback_QAbstractSpinBox_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QAbstractSpinBox_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QAbstractSpinBox_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QAbstractSpinBox_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAbstractSpinBox_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QAbstractSpinBox_ShowEvent(void*, intptr_t, QShowEvent*);
+int miqt_exec_callback_QAbstractSpinBox_StepEnabled(void*, intptr_t);
+int miqt_exec_callback_QAbstractSpinBox_DevType(void*, intptr_t);
+void miqt_exec_callback_QAbstractSpinBox_SetVisible(void*, intptr_t, bool);
+int miqt_exec_callback_QAbstractSpinBox_HeightForWidth(void*, intptr_t, int);
+bool miqt_exec_callback_QAbstractSpinBox_HasHeightForWidth(void*, intptr_t);
+QPaintEngine* miqt_exec_callback_QAbstractSpinBox_PaintEngine(void*, intptr_t);
+void miqt_exec_callback_QAbstractSpinBox_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QAbstractSpinBox_EnterEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractSpinBox_LeaveEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractSpinBox_MoveEvent(void*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QAbstractSpinBox_TabletEvent(void*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QAbstractSpinBox_ActionEvent(void*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QAbstractSpinBox_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QAbstractSpinBox_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QAbstractSpinBox_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QAbstractSpinBox_DropEvent(void*, intptr_t, QDropEvent*);
+bool miqt_exec_callback_QAbstractSpinBox_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
+int miqt_exec_callback_QAbstractSpinBox_Metric(void*, intptr_t, int);
+void miqt_exec_callback_QAbstractSpinBox_InitPainter(void*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QAbstractSpinBox_Redirected(void*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QAbstractSpinBox_SharedPainter(void*, intptr_t);
+void miqt_exec_callback_QAbstractSpinBox_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
+bool miqt_exec_callback_QAbstractSpinBox_FocusNextPrevChild(void*, intptr_t, bool);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQAbstractSpinBox : public virtual QAbstractSpinBox {
 public:

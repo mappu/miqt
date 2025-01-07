@@ -18,10 +18,38 @@
 #include <qmediaplayer.h>
 #include "gen_qmediaplayer.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QMediaPlayer_SourceChanged(intptr_t, QUrl*);
+void miqt_exec_callback_QMediaPlayer_PlaybackStateChanged(intptr_t, int);
+void miqt_exec_callback_QMediaPlayer_MediaStatusChanged(intptr_t, int);
+void miqt_exec_callback_QMediaPlayer_DurationChanged(intptr_t, long long);
+void miqt_exec_callback_QMediaPlayer_PositionChanged(intptr_t, long long);
+void miqt_exec_callback_QMediaPlayer_HasAudioChanged(intptr_t, bool);
+void miqt_exec_callback_QMediaPlayer_HasVideoChanged(intptr_t, bool);
+void miqt_exec_callback_QMediaPlayer_BufferProgressChanged(intptr_t, float);
+void miqt_exec_callback_QMediaPlayer_SeekableChanged(intptr_t, bool);
+void miqt_exec_callback_QMediaPlayer_PlaybackRateChanged(intptr_t, double);
+void miqt_exec_callback_QMediaPlayer_LoopsChanged(intptr_t);
+void miqt_exec_callback_QMediaPlayer_MetaDataChanged(intptr_t);
+void miqt_exec_callback_QMediaPlayer_VideoOutputChanged(intptr_t);
+void miqt_exec_callback_QMediaPlayer_AudioOutputChanged(intptr_t);
+void miqt_exec_callback_QMediaPlayer_TracksChanged(intptr_t);
+void miqt_exec_callback_QMediaPlayer_ActiveTracksChanged(intptr_t);
+void miqt_exec_callback_QMediaPlayer_ErrorChanged(intptr_t);
+void miqt_exec_callback_QMediaPlayer_ErrorOccurred(intptr_t, int, struct miqt_string);
+bool miqt_exec_callback_QMediaPlayer_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QMediaPlayer_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QMediaPlayer_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QMediaPlayer_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QMediaPlayer_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QMediaPlayer_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QMediaPlayer_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQMediaPlayer : public virtual QMediaPlayer {
 public:

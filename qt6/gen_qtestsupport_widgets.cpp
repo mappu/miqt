@@ -5,10 +5,15 @@
 #include <qtestsupport_widgets.h>
 #include "gen_qtestsupport_widgets.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+QTest__QTouchEventWidgetSequence* miqt_exec_callback_QTest__QTouchEventWidgetSequence_Stationary(void*, intptr_t, int);
+bool miqt_exec_callback_QTest__QTouchEventWidgetSequence_Commit(void*, intptr_t, bool);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQTestQTouchEventWidgetSequence : public virtual QTest::QTouchEventWidgetSequence {
 public:

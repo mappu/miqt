@@ -17,10 +17,13 @@
 #include <qbrush.h>
 #include "gen_qbrush.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QBrush* QBrush_new() {
 	return new QBrush();

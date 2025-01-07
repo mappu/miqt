@@ -24,10 +24,35 @@
 #include <qabstractscrollarea.h>
 #include "gen_qabstractscrollarea.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+QSize* miqt_exec_callback_QAbstractScrollArea_MinimumSizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QAbstractScrollArea_SizeHint(void*, intptr_t);
+void miqt_exec_callback_QAbstractScrollArea_SetupViewport(void*, intptr_t, QWidget*);
+bool miqt_exec_callback_QAbstractScrollArea_EventFilter(void*, intptr_t, QObject*, QEvent*);
+bool miqt_exec_callback_QAbstractScrollArea_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAbstractScrollArea_ViewportEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractScrollArea_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QAbstractScrollArea_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QAbstractScrollArea_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QAbstractScrollArea_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QAbstractScrollArea_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QAbstractScrollArea_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QAbstractScrollArea_WheelEvent(void*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QAbstractScrollArea_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QAbstractScrollArea_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QAbstractScrollArea_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QAbstractScrollArea_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QAbstractScrollArea_DropEvent(void*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QAbstractScrollArea_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QAbstractScrollArea_ScrollContentsBy(void*, intptr_t, int, int);
+QSize* miqt_exec_callback_QAbstractScrollArea_ViewportSizeHint(void*, intptr_t);
+void miqt_exec_callback_QAbstractScrollArea_ChangeEvent(void*, intptr_t, QEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQAbstractScrollArea : public virtual QAbstractScrollArea {
 public:

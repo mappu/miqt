@@ -11,10 +11,20 @@
 #include <qcameraimagecapturecontrol.h>
 #include "gen_qcameraimagecapturecontrol.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QCameraImageCaptureControl_ReadyForCaptureChanged(intptr_t, bool);
+void miqt_exec_callback_QCameraImageCaptureControl_ImageExposed(intptr_t, int);
+void miqt_exec_callback_QCameraImageCaptureControl_ImageCaptured(intptr_t, int, QImage*);
+void miqt_exec_callback_QCameraImageCaptureControl_ImageMetadataAvailable(intptr_t, int, struct miqt_string, QVariant*);
+void miqt_exec_callback_QCameraImageCaptureControl_ImageAvailable(intptr_t, int, QVideoFrame*);
+void miqt_exec_callback_QCameraImageCaptureControl_ImageSaved(intptr_t, int, struct miqt_string);
+void miqt_exec_callback_QCameraImageCaptureControl_Error(intptr_t, int, int, struct miqt_string);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QCameraImageCaptureControl_virtbase(QCameraImageCaptureControl* src, QMediaControl** outptr_QMediaControl) {
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);

@@ -24,10 +24,35 @@
 #include <qabstracttextdocumentlayout.h>
 #include "gen_qabstracttextdocumentlayout.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QAbstractTextDocumentLayout_Update(intptr_t);
+void miqt_exec_callback_QAbstractTextDocumentLayout_UpdateBlock(intptr_t, QTextBlock*);
+void miqt_exec_callback_QAbstractTextDocumentLayout_DocumentSizeChanged(intptr_t, QSizeF*);
+void miqt_exec_callback_QAbstractTextDocumentLayout_PageCountChanged(intptr_t, int);
+void miqt_exec_callback_QAbstractTextDocumentLayout_Update1(intptr_t, QRectF*);
+void miqt_exec_callback_QAbstractTextDocumentLayout_Draw(void*, intptr_t, QPainter*, QAbstractTextDocumentLayout__PaintContext*);
+int miqt_exec_callback_QAbstractTextDocumentLayout_HitTest(void*, intptr_t, QPointF*, int);
+int miqt_exec_callback_QAbstractTextDocumentLayout_PageCount(void*, intptr_t);
+QSizeF* miqt_exec_callback_QAbstractTextDocumentLayout_DocumentSize(void*, intptr_t);
+QRectF* miqt_exec_callback_QAbstractTextDocumentLayout_FrameBoundingRect(void*, intptr_t, QTextFrame*);
+QRectF* miqt_exec_callback_QAbstractTextDocumentLayout_BlockBoundingRect(void*, intptr_t, QTextBlock*);
+void miqt_exec_callback_QAbstractTextDocumentLayout_DocumentChanged(void*, intptr_t, int, int, int);
+void miqt_exec_callback_QAbstractTextDocumentLayout_ResizeInlineObject(void*, intptr_t, QTextInlineObject*, int, QTextFormat*);
+void miqt_exec_callback_QAbstractTextDocumentLayout_PositionInlineObject(void*, intptr_t, QTextInlineObject*, int, QTextFormat*);
+void miqt_exec_callback_QAbstractTextDocumentLayout_DrawInlineObject(void*, intptr_t, QPainter*, QRectF*, QTextInlineObject*, int, QTextFormat*);
+bool miqt_exec_callback_QAbstractTextDocumentLayout_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAbstractTextDocumentLayout_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAbstractTextDocumentLayout_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAbstractTextDocumentLayout_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAbstractTextDocumentLayout_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractTextDocumentLayout_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAbstractTextDocumentLayout_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQAbstractTextDocumentLayout : public virtual QAbstractTextDocumentLayout {
 public:

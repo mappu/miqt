@@ -11,10 +11,23 @@
 #include <qpagedpaintdevice.h>
 #include "gen_qpagedpaintdevice.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+bool miqt_exec_callback_QPagedPaintDevice_NewPage(void*, intptr_t);
+void miqt_exec_callback_QPagedPaintDevice_SetPageSizeWithSize(void*, intptr_t, int);
+void miqt_exec_callback_QPagedPaintDevice_SetPageSizeMM(void*, intptr_t, QSizeF*);
+void miqt_exec_callback_QPagedPaintDevice_SetMargins(void*, intptr_t, QPagedPaintDevice__Margins*);
+int miqt_exec_callback_QPagedPaintDevice_DevType(void*, intptr_t);
+QPaintEngine* miqt_exec_callback_QPagedPaintDevice_PaintEngine(void*, intptr_t);
+int miqt_exec_callback_QPagedPaintDevice_Metric(void*, intptr_t, int);
+void miqt_exec_callback_QPagedPaintDevice_InitPainter(void*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QPagedPaintDevice_Redirected(void*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QPagedPaintDevice_SharedPainter(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQPagedPaintDevice : public virtual QPagedPaintDevice {
 public:

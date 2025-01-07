@@ -6,10 +6,13 @@
 #include <qwebengineloadinginfo.h>
 #include "gen_qwebengineloadinginfo.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QWebEngineLoadingInfo* QWebEngineLoadingInfo_new(QWebEngineLoadingInfo* other) {
 	return new QWebEngineLoadingInfo(*other);

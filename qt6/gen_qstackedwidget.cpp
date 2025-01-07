@@ -14,10 +14,20 @@
 #include <qstackedwidget.h>
 #include "gen_qstackedwidget.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QStackedWidget_CurrentChanged(intptr_t, int);
+void miqt_exec_callback_QStackedWidget_WidgetRemoved(intptr_t, int);
+bool miqt_exec_callback_QStackedWidget_Event(void*, intptr_t, QEvent*);
+QSize* miqt_exec_callback_QStackedWidget_SizeHint(void*, intptr_t);
+void miqt_exec_callback_QStackedWidget_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QStackedWidget_ChangeEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QStackedWidget_InitStyleOption(void*, intptr_t, QStyleOptionFrame*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQStackedWidget : public virtual QStackedWidget {
 public:

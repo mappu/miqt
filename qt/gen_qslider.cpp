@@ -17,10 +17,25 @@
 #include <qslider.h>
 #include "gen_qslider.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+QSize* miqt_exec_callback_QSlider_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QSlider_MinimumSizeHint(void*, intptr_t);
+bool miqt_exec_callback_QSlider_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QSlider_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QSlider_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSlider_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSlider_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSlider_SliderChange(void*, intptr_t, int);
+void miqt_exec_callback_QSlider_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QSlider_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSlider_WheelEvent(void*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QSlider_ChangeEvent(void*, intptr_t, QEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQSlider : public virtual QSlider {
 public:

@@ -3,10 +3,14 @@
 #include <qabstractnativeeventfilter.h>
 #include "gen_qabstractnativeeventfilter.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+bool miqt_exec_callback_QAbstractNativeEventFilter_NativeEventFilter(void*, intptr_t, struct miqt_string, void*, intptr_t*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQAbstractNativeEventFilter : public virtual QAbstractNativeEventFilter {
 public:

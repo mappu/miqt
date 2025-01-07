@@ -3,10 +3,13 @@
 #include <qbasictimer.h>
 #include "gen_qbasictimer.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QBasicTimer* QBasicTimer_new() {
 	return new QBasicTimer();

@@ -3,10 +3,13 @@
 #include <qprintengine.h>
 #include "gen_qprintengine.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QPrintEngine_SetProperty(QPrintEngine* self, int key, QVariant* value) {
 	self->setProperty(static_cast<QPrintEngine::PrintEnginePropertyKey>(key), *value);

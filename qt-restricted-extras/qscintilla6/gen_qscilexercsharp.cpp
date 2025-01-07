@@ -8,10 +8,18 @@
 #include <qscilexercsharp.h>
 #include "gen_qscilexercsharp.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QsciLexerCSharp_SetFoldAtElse(void*, intptr_t, bool);
+void miqt_exec_callback_QsciLexerCSharp_SetFoldComments(void*, intptr_t, bool);
+void miqt_exec_callback_QsciLexerCSharp_SetFoldCompact(void*, intptr_t, bool);
+void miqt_exec_callback_QsciLexerCSharp_SetFoldPreprocessor(void*, intptr_t, bool);
+void miqt_exec_callback_QsciLexerCSharp_SetStylePreprocessor(void*, intptr_t, bool);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQsciLexerCSharp : public virtual QsciLexerCSharp {
 public:

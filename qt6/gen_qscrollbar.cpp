@@ -20,10 +20,27 @@
 #include <qscrollbar.h>
 #include "gen_qscrollbar.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+QSize* miqt_exec_callback_QScrollBar_SizeHint(void*, intptr_t);
+bool miqt_exec_callback_QScrollBar_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QScrollBar_WheelEvent(void*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QScrollBar_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QScrollBar_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QScrollBar_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QScrollBar_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QScrollBar_HideEvent(void*, intptr_t, QHideEvent*);
+void miqt_exec_callback_QScrollBar_SliderChange(void*, intptr_t, int);
+void miqt_exec_callback_QScrollBar_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QScrollBar_InitStyleOption(void*, intptr_t, QStyleOptionSlider*);
+void miqt_exec_callback_QScrollBar_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QScrollBar_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QScrollBar_ChangeEvent(void*, intptr_t, QEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQScrollBar : public virtual QScrollBar {
 public:

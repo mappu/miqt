@@ -13,10 +13,32 @@
 #include <qbuttongroup.h>
 #include "gen_qbuttongroup.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QButtonGroup_ButtonClicked(intptr_t, QAbstractButton*);
+void miqt_exec_callback_QButtonGroup_ButtonPressed(intptr_t, QAbstractButton*);
+void miqt_exec_callback_QButtonGroup_ButtonReleased(intptr_t, QAbstractButton*);
+void miqt_exec_callback_QButtonGroup_ButtonToggled(intptr_t, QAbstractButton*, bool);
+void miqt_exec_callback_QButtonGroup_IdClicked(intptr_t, int);
+void miqt_exec_callback_QButtonGroup_IdPressed(intptr_t, int);
+void miqt_exec_callback_QButtonGroup_IdReleased(intptr_t, int);
+void miqt_exec_callback_QButtonGroup_IdToggled(intptr_t, int, bool);
+void miqt_exec_callback_QButtonGroup_ButtonClickedWithInt(intptr_t, int);
+void miqt_exec_callback_QButtonGroup_ButtonPressedWithInt(intptr_t, int);
+void miqt_exec_callback_QButtonGroup_ButtonReleasedWithInt(intptr_t, int);
+void miqt_exec_callback_QButtonGroup_ButtonToggled2(intptr_t, int, bool);
+bool miqt_exec_callback_QButtonGroup_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QButtonGroup_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QButtonGroup_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QButtonGroup_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QButtonGroup_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QButtonGroup_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QButtonGroup_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQButtonGroup : public virtual QButtonGroup {
 public:

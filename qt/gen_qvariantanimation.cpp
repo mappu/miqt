@@ -13,10 +13,21 @@
 #include <qvariantanimation.h>
 #include "gen_qvariantanimation.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QVariantAnimation_ValueChanged(intptr_t, QVariant*);
+int miqt_exec_callback_QVariantAnimation_Duration(void*, intptr_t);
+bool miqt_exec_callback_QVariantAnimation_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QVariantAnimation_UpdateCurrentTime(void*, intptr_t, int);
+void miqt_exec_callback_QVariantAnimation_UpdateState(void*, intptr_t, int, int);
+void miqt_exec_callback_QVariantAnimation_UpdateCurrentValue(void*, intptr_t, QVariant*);
+QVariant* miqt_exec_callback_QVariantAnimation_Interpolated(void*, intptr_t, QVariant*, QVariant*, double);
+void miqt_exec_callback_QVariantAnimation_UpdateDirection(void*, intptr_t, int);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQVariantAnimation : public virtual QVariantAnimation {
 public:

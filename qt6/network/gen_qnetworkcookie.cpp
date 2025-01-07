@@ -9,10 +9,13 @@
 #include <qnetworkcookie.h>
 #include "gen_qnetworkcookie.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QNetworkCookie* QNetworkCookie_new() {
 	return new QNetworkCookie();

@@ -17,10 +17,13 @@
 #include <qmediaserviceproviderplugin.h>
 #include "gen_qmediaserviceproviderplugin.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QMediaServiceProviderHint* QMediaServiceProviderHint_new() {
 	return new QMediaServiceProviderHint();

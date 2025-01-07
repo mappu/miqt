@@ -11,10 +11,16 @@
 #include <qsignaltransition.h>
 #include "gen_qsignaltransition.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+bool miqt_exec_callback_QSignalTransition_EventTest(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QSignalTransition_OnTransition(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QSignalTransition_Event(void*, intptr_t, QEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQSignalTransition : public virtual QSignalTransition {
 public:

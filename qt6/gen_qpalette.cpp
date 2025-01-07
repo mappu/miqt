@@ -5,10 +5,13 @@
 #include <qpalette.h>
 #include "gen_qpalette.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QPalette* QPalette_new() {
 	return new QPalette();

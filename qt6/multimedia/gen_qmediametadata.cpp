@@ -7,10 +7,13 @@
 #include <qmediametadata.h>
 #include "gen_qmediametadata.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QMediaMetaData* QMediaMetaData_new(QMediaMetaData* param1) {
 	return new QMediaMetaData(*param1);

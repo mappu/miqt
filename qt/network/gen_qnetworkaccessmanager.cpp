@@ -27,10 +27,29 @@
 #include <qnetworkaccessmanager.h>
 #include "gen_qnetworkaccessmanager.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QNetworkAccessManager_ProxyAuthenticationRequired(intptr_t, QNetworkProxy*, QAuthenticator*);
+void miqt_exec_callback_QNetworkAccessManager_AuthenticationRequired(intptr_t, QNetworkReply*, QAuthenticator*);
+void miqt_exec_callback_QNetworkAccessManager_Finished(intptr_t, QNetworkReply*);
+void miqt_exec_callback_QNetworkAccessManager_Encrypted(intptr_t, QNetworkReply*);
+void miqt_exec_callback_QNetworkAccessManager_SslErrors(intptr_t, QNetworkReply*, struct miqt_array /* of QSslError* */ );
+void miqt_exec_callback_QNetworkAccessManager_PreSharedKeyAuthenticationRequired(intptr_t, QNetworkReply*, QSslPreSharedKeyAuthenticator*);
+void miqt_exec_callback_QNetworkAccessManager_NetworkSessionConnected(intptr_t);
+void miqt_exec_callback_QNetworkAccessManager_NetworkAccessibleChanged(intptr_t, int);
+QNetworkReply* miqt_exec_callback_QNetworkAccessManager_CreateRequest(void*, intptr_t, int, QNetworkRequest*, QIODevice*);
+bool miqt_exec_callback_QNetworkAccessManager_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QNetworkAccessManager_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QNetworkAccessManager_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QNetworkAccessManager_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QNetworkAccessManager_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QNetworkAccessManager_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QNetworkAccessManager_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQNetworkAccessManager : public virtual QNetworkAccessManager {
 public:

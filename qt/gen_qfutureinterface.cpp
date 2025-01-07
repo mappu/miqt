@@ -8,10 +8,13 @@
 #include <qfutureinterface.h>
 #include "gen_qfutureinterface.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QFutureInterfaceBase* QFutureInterfaceBase_new() {
 	return new QFutureInterfaceBase();

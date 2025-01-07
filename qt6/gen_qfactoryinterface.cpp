@@ -6,10 +6,13 @@
 #include <qfactoryinterface.h>
 #include "gen_qfactoryinterface.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 struct miqt_array /* of struct miqt_string */  QFactoryInterface_Keys(const QFactoryInterface* self) {
 	QStringList _ret = self->keys();

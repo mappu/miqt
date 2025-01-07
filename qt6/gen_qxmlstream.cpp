@@ -14,10 +14,13 @@
 #include <qxmlstream.h>
 #include "gen_qxmlstream.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QXmlStreamAttribute* QXmlStreamAttribute_new() {
 	return new QXmlStreamAttribute();

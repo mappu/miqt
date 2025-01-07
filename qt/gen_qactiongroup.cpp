@@ -14,10 +14,22 @@
 #include <qactiongroup.h>
 #include "gen_qactiongroup.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QActionGroup_Triggered(intptr_t, QAction*);
+void miqt_exec_callback_QActionGroup_Hovered(intptr_t, QAction*);
+bool miqt_exec_callback_QActionGroup_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QActionGroup_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QActionGroup_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QActionGroup_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QActionGroup_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QActionGroup_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QActionGroup_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQActionGroup : public virtual QActionGroup {
 public:

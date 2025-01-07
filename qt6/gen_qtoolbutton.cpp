@@ -23,10 +23,34 @@
 #include <qtoolbutton.h>
 #include "gen_qtoolbutton.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QToolButton_Triggered(intptr_t, QAction*);
+QSize* miqt_exec_callback_QToolButton_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QToolButton_MinimumSizeHint(void*, intptr_t);
+bool miqt_exec_callback_QToolButton_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QToolButton_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QToolButton_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QToolButton_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QToolButton_ActionEvent(void*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QToolButton_EnterEvent(void*, intptr_t, QEnterEvent*);
+void miqt_exec_callback_QToolButton_LeaveEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QToolButton_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QToolButton_ChangeEvent(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QToolButton_HitButton(void*, intptr_t, QPoint*);
+void miqt_exec_callback_QToolButton_CheckStateSet(void*, intptr_t);
+void miqt_exec_callback_QToolButton_NextCheckState(void*, intptr_t);
+void miqt_exec_callback_QToolButton_InitStyleOption(void*, intptr_t, QStyleOptionToolButton*);
+void miqt_exec_callback_QToolButton_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QToolButton_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QToolButton_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QToolButton_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QToolButton_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQToolButton : public virtual QToolButton {
 public:

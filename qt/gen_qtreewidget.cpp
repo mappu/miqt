@@ -38,10 +38,73 @@
 #include <qtreewidget.h>
 #include "gen_qtreewidget.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+QTreeWidgetItem* miqt_exec_callback_QTreeWidgetItem_Clone(void*, intptr_t);
+QVariant* miqt_exec_callback_QTreeWidgetItem_Data(void*, intptr_t, int, int);
+void miqt_exec_callback_QTreeWidgetItem_SetData(void*, intptr_t, int, int, QVariant*);
+bool miqt_exec_callback_QTreeWidgetItem_OperatorLesser(void*, intptr_t, QTreeWidgetItem*);
+void miqt_exec_callback_QTreeWidgetItem_Read(void*, intptr_t, QDataStream*);
+void miqt_exec_callback_QTreeWidgetItem_Write(void*, intptr_t, QDataStream*);
+void miqt_exec_callback_QTreeWidget_ItemPressed(intptr_t, QTreeWidgetItem*, int);
+void miqt_exec_callback_QTreeWidget_ItemClicked(intptr_t, QTreeWidgetItem*, int);
+void miqt_exec_callback_QTreeWidget_ItemDoubleClicked(intptr_t, QTreeWidgetItem*, int);
+void miqt_exec_callback_QTreeWidget_ItemActivated(intptr_t, QTreeWidgetItem*, int);
+void miqt_exec_callback_QTreeWidget_ItemEntered(intptr_t, QTreeWidgetItem*, int);
+void miqt_exec_callback_QTreeWidget_ItemChanged(intptr_t, QTreeWidgetItem*, int);
+void miqt_exec_callback_QTreeWidget_ItemExpanded(intptr_t, QTreeWidgetItem*);
+void miqt_exec_callback_QTreeWidget_ItemCollapsed(intptr_t, QTreeWidgetItem*);
+void miqt_exec_callback_QTreeWidget_CurrentItemChanged(intptr_t, QTreeWidgetItem*, QTreeWidgetItem*);
+void miqt_exec_callback_QTreeWidget_ItemSelectionChanged(intptr_t);
+void miqt_exec_callback_QTreeWidget_SetSelectionModel(void*, intptr_t, QItemSelectionModel*);
+bool miqt_exec_callback_QTreeWidget_Event(void*, intptr_t, QEvent*);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QTreeWidget_MimeTypes(void*, intptr_t);
+QMimeData* miqt_exec_callback_QTreeWidget_MimeData(void*, intptr_t, struct miqt_array /* of QTreeWidgetItem* */ );
+bool miqt_exec_callback_QTreeWidget_DropMimeData(void*, intptr_t, QTreeWidgetItem*, int, QMimeData*, int);
+int miqt_exec_callback_QTreeWidget_SupportedDropActions(void*, intptr_t);
+void miqt_exec_callback_QTreeWidget_DropEvent(void*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QTreeWidget_SetRootIndex(void*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QTreeWidget_KeyboardSearch(void*, intptr_t, struct miqt_string);
+QRect* miqt_exec_callback_QTreeWidget_VisualRect(void*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QTreeWidget_ScrollTo(void*, intptr_t, QModelIndex*, int);
+QModelIndex* miqt_exec_callback_QTreeWidget_IndexAt(void*, intptr_t, QPoint*);
+void miqt_exec_callback_QTreeWidget_DoItemsLayout(void*, intptr_t);
+void miqt_exec_callback_QTreeWidget_Reset(void*, intptr_t);
+void miqt_exec_callback_QTreeWidget_DataChanged(void*, intptr_t, QModelIndex*, QModelIndex*, struct miqt_array /* of int */ );
+void miqt_exec_callback_QTreeWidget_SelectAll(void*, intptr_t);
+void miqt_exec_callback_QTreeWidget_VerticalScrollbarValueChanged(void*, intptr_t, int);
+void miqt_exec_callback_QTreeWidget_ScrollContentsBy(void*, intptr_t, int, int);
+void miqt_exec_callback_QTreeWidget_RowsInserted(void*, intptr_t, QModelIndex*, int, int);
+void miqt_exec_callback_QTreeWidget_RowsAboutToBeRemoved(void*, intptr_t, QModelIndex*, int, int);
+QModelIndex* miqt_exec_callback_QTreeWidget_MoveCursor(void*, intptr_t, int, int);
+int miqt_exec_callback_QTreeWidget_HorizontalOffset(void*, intptr_t);
+int miqt_exec_callback_QTreeWidget_VerticalOffset(void*, intptr_t);
+void miqt_exec_callback_QTreeWidget_SetSelection(void*, intptr_t, QRect*, int);
+QRegion* miqt_exec_callback_QTreeWidget_VisualRegionForSelection(void*, intptr_t, QItemSelection*);
+struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QTreeWidget_SelectedIndexes(void*, intptr_t);
+void miqt_exec_callback_QTreeWidget_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QTreeWidget_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QTreeWidget_DrawRow(void*, intptr_t, QPainter*, QStyleOptionViewItem*, QModelIndex*);
+void miqt_exec_callback_QTreeWidget_DrawBranches(void*, intptr_t, QPainter*, QRect*, QModelIndex*);
+void miqt_exec_callback_QTreeWidget_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTreeWidget_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTreeWidget_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTreeWidget_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTreeWidget_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QTreeWidget_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
+bool miqt_exec_callback_QTreeWidget_ViewportEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QTreeWidget_UpdateGeometries(void*, intptr_t);
+QSize* miqt_exec_callback_QTreeWidget_ViewportSizeHint(void*, intptr_t);
+int miqt_exec_callback_QTreeWidget_SizeHintForColumn(void*, intptr_t, int);
+void miqt_exec_callback_QTreeWidget_HorizontalScrollbarAction(void*, intptr_t, int);
+bool miqt_exec_callback_QTreeWidget_IsIndexHidden(void*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QTreeWidget_SelectionChanged(void*, intptr_t, QItemSelection*, QItemSelection*);
+void miqt_exec_callback_QTreeWidget_CurrentChanged(void*, intptr_t, QModelIndex*, QModelIndex*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQTreeWidgetItem : public virtual QTreeWidgetItem {
 public:

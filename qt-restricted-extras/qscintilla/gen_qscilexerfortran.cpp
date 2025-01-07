@@ -6,10 +6,14 @@
 #include <qscilexerfortran.h>
 #include "gen_qscilexerfortran.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QsciLexerFortran_SetFoldCompact(void*, intptr_t, bool);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQsciLexerFortran : public virtual QsciLexerFortran {
 public:

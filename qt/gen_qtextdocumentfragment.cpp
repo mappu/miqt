@@ -8,10 +8,13 @@
 #include <qtextdocumentfragment.h>
 #include "gen_qtextdocumentfragment.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QTextDocumentFragment* QTextDocumentFragment_new() {
 	return new QTextDocumentFragment();

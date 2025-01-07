@@ -11,10 +11,13 @@
 #include <qaccessibleobject.h>
 #include "gen_qaccessibleobject.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QAccessibleObject_virtbase(QAccessibleObject* src, QAccessibleInterface** outptr_QAccessibleInterface) {
 	*outptr_QAccessibleInterface = static_cast<QAccessibleInterface*>(src);

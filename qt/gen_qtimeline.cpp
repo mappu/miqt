@@ -12,10 +12,21 @@
 #include <qtimeline.h>
 #include "gen_qtimeline.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+double miqt_exec_callback_QTimeLine_ValueForTime(void*, intptr_t, int);
+void miqt_exec_callback_QTimeLine_TimerEvent(void*, intptr_t, QTimerEvent*);
+bool miqt_exec_callback_QTimeLine_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QTimeLine_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QTimeLine_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QTimeLine_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QTimeLine_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QTimeLine_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQTimeLine : public virtual QTimeLine {
 public:

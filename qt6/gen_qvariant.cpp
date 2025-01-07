@@ -36,10 +36,13 @@
 #include <qvariant.h>
 #include "gen_qvariant.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QVariant* QVariant_new() {
 	return new QVariant();

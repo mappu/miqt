@@ -7,10 +7,13 @@
 #include <qaudiodeviceinfo.h>
 #include "gen_qaudiodeviceinfo.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QAudioDeviceInfo* QAudioDeviceInfo_new() {
 	return new QAudioDeviceInfo();

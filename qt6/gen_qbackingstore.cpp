@@ -7,10 +7,13 @@
 #include <qbackingstore.h>
 #include "gen_qbackingstore.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QBackingStore* QBackingStore_new(QWindow* window) {
 	return new QBackingStore(window);

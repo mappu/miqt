@@ -5,10 +5,13 @@
 #include <qwebenginesettings.h>
 #include "gen_qwebenginesettings.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QWebEngineSettings* QWebEngineSettings_GlobalSettings() {
 	return QWebEngineSettings::globalSettings();

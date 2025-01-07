@@ -15,10 +15,48 @@
 #include <qcamera.h>
 #include "gen_qcamera.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QCamera_ActiveChanged(intptr_t, bool);
+void miqt_exec_callback_QCamera_ErrorChanged(intptr_t);
+void miqt_exec_callback_QCamera_ErrorOccurred(intptr_t, int, struct miqt_string);
+void miqt_exec_callback_QCamera_CameraDeviceChanged(intptr_t);
+void miqt_exec_callback_QCamera_CameraFormatChanged(intptr_t);
+void miqt_exec_callback_QCamera_SupportedFeaturesChanged(intptr_t);
+void miqt_exec_callback_QCamera_FocusModeChanged(intptr_t);
+void miqt_exec_callback_QCamera_ZoomFactorChanged(intptr_t, float);
+void miqt_exec_callback_QCamera_MinimumZoomFactorChanged(intptr_t, float);
+void miqt_exec_callback_QCamera_MaximumZoomFactorChanged(intptr_t, float);
+void miqt_exec_callback_QCamera_FocusDistanceChanged(intptr_t, float);
+void miqt_exec_callback_QCamera_FocusPointChanged(intptr_t);
+void miqt_exec_callback_QCamera_CustomFocusPointChanged(intptr_t);
+void miqt_exec_callback_QCamera_FlashReady(intptr_t, bool);
+void miqt_exec_callback_QCamera_FlashModeChanged(intptr_t);
+void miqt_exec_callback_QCamera_TorchModeChanged(intptr_t);
+void miqt_exec_callback_QCamera_ExposureTimeChanged(intptr_t, float);
+void miqt_exec_callback_QCamera_ManualExposureTimeChanged(intptr_t, float);
+void miqt_exec_callback_QCamera_IsoSensitivityChanged(intptr_t, int);
+void miqt_exec_callback_QCamera_ManualIsoSensitivityChanged(intptr_t, int);
+void miqt_exec_callback_QCamera_ExposureCompensationChanged(intptr_t, float);
+void miqt_exec_callback_QCamera_ExposureModeChanged(intptr_t);
+void miqt_exec_callback_QCamera_WhiteBalanceModeChanged(intptr_t);
+void miqt_exec_callback_QCamera_ColorTemperatureChanged(intptr_t);
+void miqt_exec_callback_QCamera_BrightnessChanged(intptr_t);
+void miqt_exec_callback_QCamera_ContrastChanged(intptr_t);
+void miqt_exec_callback_QCamera_SaturationChanged(intptr_t);
+void miqt_exec_callback_QCamera_HueChanged(intptr_t);
+bool miqt_exec_callback_QCamera_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QCamera_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QCamera_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QCamera_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QCamera_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QCamera_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QCamera_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQCamera : public virtual QCamera {
 public:

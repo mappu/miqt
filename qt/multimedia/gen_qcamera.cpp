@@ -21,10 +21,27 @@
 #include <qcamera.h>
 #include "gen_qcamera.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QCamera_StateChanged(intptr_t, int);
+void miqt_exec_callback_QCamera_CaptureModeChanged(intptr_t, int);
+void miqt_exec_callback_QCamera_StatusChanged(intptr_t, int);
+void miqt_exec_callback_QCamera_Locked(intptr_t);
+void miqt_exec_callback_QCamera_LockFailed(intptr_t);
+void miqt_exec_callback_QCamera_LockStatusChanged(intptr_t, int, int);
+void miqt_exec_callback_QCamera_LockStatusChanged2(intptr_t, int, int, int);
+void miqt_exec_callback_QCamera_ErrorWithQCameraError(intptr_t, int);
+void miqt_exec_callback_QCamera_ErrorOccurred(intptr_t, int);
+int miqt_exec_callback_QCamera_Availability(void*, intptr_t);
+bool miqt_exec_callback_QCamera_IsAvailable(void*, intptr_t);
+QMediaService* miqt_exec_callback_QCamera_Service(void*, intptr_t);
+bool miqt_exec_callback_QCamera_Bind(void*, intptr_t, QObject*);
+void miqt_exec_callback_QCamera_Unbind(void*, intptr_t, QObject*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQCamera : public virtual QCamera {
 public:

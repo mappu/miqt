@@ -6,10 +6,23 @@
 #include <qgraphicslayout.h>
 #include "gen_qgraphicslayout.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QGraphicsLayout_GetContentsMargins(void*, intptr_t, double*, double*, double*, double*);
+void miqt_exec_callback_QGraphicsLayout_Invalidate(void*, intptr_t);
+void miqt_exec_callback_QGraphicsLayout_UpdateGeometry(void*, intptr_t);
+void miqt_exec_callback_QGraphicsLayout_WidgetEvent(void*, intptr_t, QEvent*);
+int miqt_exec_callback_QGraphicsLayout_Count(void*, intptr_t);
+QGraphicsLayoutItem* miqt_exec_callback_QGraphicsLayout_ItemAt(void*, intptr_t, int);
+void miqt_exec_callback_QGraphicsLayout_RemoveAt(void*, intptr_t, int);
+void miqt_exec_callback_QGraphicsLayout_SetGeometry(void*, intptr_t, QRectF*);
+bool miqt_exec_callback_QGraphicsLayout_IsEmpty(void*, intptr_t);
+QSizeF* miqt_exec_callback_QGraphicsLayout_SizeHint(void*, intptr_t, int, QSizeF*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQGraphicsLayout : public virtual QGraphicsLayout {
 public:

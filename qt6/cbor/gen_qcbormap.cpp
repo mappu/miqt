@@ -15,10 +15,13 @@
 #include <qcbormap.h>
 #include "gen_qcbormap.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QCborMap* QCborMap_new() {
 	return new QCborMap();

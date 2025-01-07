@@ -4,10 +4,13 @@
 #include <qscistyledtext.h>
 #include "gen_qscistyledtext.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QsciStyledText* QsciStyledText_new(struct miqt_string text, int style) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);

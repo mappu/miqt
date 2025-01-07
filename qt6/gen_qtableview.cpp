@@ -37,10 +37,74 @@
 #include <qtableview.h>
 #include "gen_qtableview.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QTableView_SetModel(void*, intptr_t, QAbstractItemModel*);
+void miqt_exec_callback_QTableView_SetRootIndex(void*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QTableView_SetSelectionModel(void*, intptr_t, QItemSelectionModel*);
+void miqt_exec_callback_QTableView_DoItemsLayout(void*, intptr_t);
+QRect* miqt_exec_callback_QTableView_VisualRect(void*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QTableView_ScrollTo(void*, intptr_t, QModelIndex*, int);
+QModelIndex* miqt_exec_callback_QTableView_IndexAt(void*, intptr_t, QPoint*);
+void miqt_exec_callback_QTableView_ScrollContentsBy(void*, intptr_t, int, int);
+void miqt_exec_callback_QTableView_InitViewItemOption(void*, intptr_t, QStyleOptionViewItem*);
+void miqt_exec_callback_QTableView_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QTableView_TimerEvent(void*, intptr_t, QTimerEvent*);
+int miqt_exec_callback_QTableView_HorizontalOffset(void*, intptr_t);
+int miqt_exec_callback_QTableView_VerticalOffset(void*, intptr_t);
+QModelIndex* miqt_exec_callback_QTableView_MoveCursor(void*, intptr_t, int, int);
+void miqt_exec_callback_QTableView_SetSelection(void*, intptr_t, QRect*, int);
+QRegion* miqt_exec_callback_QTableView_VisualRegionForSelection(void*, intptr_t, QItemSelection*);
+struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QTableView_SelectedIndexes(void*, intptr_t);
+void miqt_exec_callback_QTableView_UpdateGeometries(void*, intptr_t);
+QSize* miqt_exec_callback_QTableView_ViewportSizeHint(void*, intptr_t);
+int miqt_exec_callback_QTableView_SizeHintForRow(void*, intptr_t, int);
+int miqt_exec_callback_QTableView_SizeHintForColumn(void*, intptr_t, int);
+void miqt_exec_callback_QTableView_VerticalScrollbarAction(void*, intptr_t, int);
+void miqt_exec_callback_QTableView_HorizontalScrollbarAction(void*, intptr_t, int);
+bool miqt_exec_callback_QTableView_IsIndexHidden(void*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QTableView_SelectionChanged(void*, intptr_t, QItemSelection*, QItemSelection*);
+void miqt_exec_callback_QTableView_CurrentChanged(void*, intptr_t, QModelIndex*, QModelIndex*);
+void miqt_exec_callback_QTableView_KeyboardSearch(void*, intptr_t, struct miqt_string);
+QAbstractItemDelegate* miqt_exec_callback_QTableView_ItemDelegateForIndex(void*, intptr_t, QModelIndex*);
+QVariant* miqt_exec_callback_QTableView_InputMethodQuery(void*, intptr_t, int);
+void miqt_exec_callback_QTableView_Reset(void*, intptr_t);
+void miqt_exec_callback_QTableView_SelectAll(void*, intptr_t);
+void miqt_exec_callback_QTableView_DataChanged(void*, intptr_t, QModelIndex*, QModelIndex*, struct miqt_array /* of int */ );
+void miqt_exec_callback_QTableView_RowsInserted(void*, intptr_t, QModelIndex*, int, int);
+void miqt_exec_callback_QTableView_RowsAboutToBeRemoved(void*, intptr_t, QModelIndex*, int, int);
+void miqt_exec_callback_QTableView_UpdateEditorData(void*, intptr_t);
+void miqt_exec_callback_QTableView_UpdateEditorGeometries(void*, intptr_t);
+void miqt_exec_callback_QTableView_VerticalScrollbarValueChanged(void*, intptr_t, int);
+void miqt_exec_callback_QTableView_HorizontalScrollbarValueChanged(void*, intptr_t, int);
+void miqt_exec_callback_QTableView_CloseEditor(void*, intptr_t, QWidget*, int);
+void miqt_exec_callback_QTableView_CommitData(void*, intptr_t, QWidget*);
+void miqt_exec_callback_QTableView_EditorDestroyed(void*, intptr_t, QObject*);
+bool miqt_exec_callback_QTableView_Edit2(void*, intptr_t, QModelIndex*, int, QEvent*);
+int miqt_exec_callback_QTableView_SelectionCommand(void*, intptr_t, QModelIndex*, QEvent*);
+void miqt_exec_callback_QTableView_StartDrag(void*, intptr_t, int);
+bool miqt_exec_callback_QTableView_FocusNextPrevChild(void*, intptr_t, bool);
+bool miqt_exec_callback_QTableView_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QTableView_ViewportEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QTableView_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTableView_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTableView_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTableView_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTableView_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QTableView_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QTableView_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QTableView_DropEvent(void*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QTableView_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QTableView_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QTableView_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QTableView_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QTableView_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
+bool miqt_exec_callback_QTableView_EventFilter(void*, intptr_t, QObject*, QEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQTableView : public virtual QTableView {
 public:

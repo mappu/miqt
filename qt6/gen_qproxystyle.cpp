@@ -23,10 +23,37 @@
 #include <qproxystyle.h>
 #include "gen_qproxystyle.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QProxyStyle_DrawPrimitive(void*, intptr_t, int, QStyleOption*, QPainter*, QWidget*);
+void miqt_exec_callback_QProxyStyle_DrawControl(void*, intptr_t, int, QStyleOption*, QPainter*, QWidget*);
+void miqt_exec_callback_QProxyStyle_DrawComplexControl(void*, intptr_t, int, QStyleOptionComplex*, QPainter*, QWidget*);
+void miqt_exec_callback_QProxyStyle_DrawItemText(void*, intptr_t, QPainter*, QRect*, int, QPalette*, bool, struct miqt_string, int);
+void miqt_exec_callback_QProxyStyle_DrawItemPixmap(void*, intptr_t, QPainter*, QRect*, int, QPixmap*);
+QSize* miqt_exec_callback_QProxyStyle_SizeFromContents(void*, intptr_t, int, QStyleOption*, QSize*, QWidget*);
+QRect* miqt_exec_callback_QProxyStyle_SubElementRect(void*, intptr_t, int, QStyleOption*, QWidget*);
+QRect* miqt_exec_callback_QProxyStyle_SubControlRect(void*, intptr_t, int, QStyleOptionComplex*, int, QWidget*);
+QRect* miqt_exec_callback_QProxyStyle_ItemTextRect(void*, intptr_t, QFontMetrics*, QRect*, int, bool, struct miqt_string);
+QRect* miqt_exec_callback_QProxyStyle_ItemPixmapRect(void*, intptr_t, QRect*, int, QPixmap*);
+int miqt_exec_callback_QProxyStyle_HitTestComplexControl(void*, intptr_t, int, QStyleOptionComplex*, QPoint*, QWidget*);
+int miqt_exec_callback_QProxyStyle_StyleHint(void*, intptr_t, int, QStyleOption*, QWidget*, QStyleHintReturn*);
+int miqt_exec_callback_QProxyStyle_PixelMetric(void*, intptr_t, int, QStyleOption*, QWidget*);
+int miqt_exec_callback_QProxyStyle_LayoutSpacing(void*, intptr_t, int, int, int, QStyleOption*, QWidget*);
+QIcon* miqt_exec_callback_QProxyStyle_StandardIcon(void*, intptr_t, int, QStyleOption*, QWidget*);
+QPixmap* miqt_exec_callback_QProxyStyle_StandardPixmap(void*, intptr_t, int, QStyleOption*, QWidget*);
+QPixmap* miqt_exec_callback_QProxyStyle_GeneratedIconPixmap(void*, intptr_t, int, QPixmap*, QStyleOption*);
+QPalette* miqt_exec_callback_QProxyStyle_StandardPalette(void*, intptr_t);
+void miqt_exec_callback_QProxyStyle_Polish(void*, intptr_t, QWidget*);
+void miqt_exec_callback_QProxyStyle_PolishWithPal(void*, intptr_t, QPalette*);
+void miqt_exec_callback_QProxyStyle_PolishWithApp(void*, intptr_t, QApplication*);
+void miqt_exec_callback_QProxyStyle_Unpolish(void*, intptr_t, QWidget*);
+void miqt_exec_callback_QProxyStyle_UnpolishWithApp(void*, intptr_t, QApplication*);
+bool miqt_exec_callback_QProxyStyle_Event(void*, intptr_t, QEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQProxyStyle : public virtual QProxyStyle {
 public:

@@ -7,10 +7,13 @@
 #include <qstylefactory.h>
 #include "gen_qstylefactory.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 struct miqt_array /* of struct miqt_string */  QStyleFactory_Keys() {
 	QStringList _ret = QStyleFactory::keys();

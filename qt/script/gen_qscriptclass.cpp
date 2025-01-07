@@ -10,10 +10,22 @@
 #include <qscriptclass.h>
 #include "gen_qscriptclass.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+int miqt_exec_callback_QScriptClass_QueryProperty(void*, intptr_t, QScriptValue*, QScriptString*, int, unsigned int*);
+QScriptValue* miqt_exec_callback_QScriptClass_Property(void*, intptr_t, QScriptValue*, QScriptString*, unsigned int);
+void miqt_exec_callback_QScriptClass_SetProperty(void*, intptr_t, QScriptValue*, QScriptString*, unsigned int, QScriptValue*);
+int miqt_exec_callback_QScriptClass_PropertyFlags(void*, intptr_t, QScriptValue*, QScriptString*, unsigned int);
+QScriptClassPropertyIterator* miqt_exec_callback_QScriptClass_NewIterator(void*, intptr_t, QScriptValue*);
+QScriptValue* miqt_exec_callback_QScriptClass_Prototype(void*, intptr_t);
+struct miqt_string miqt_exec_callback_QScriptClass_Name(void*, intptr_t);
+bool miqt_exec_callback_QScriptClass_SupportsExtension(void*, intptr_t, int);
+QVariant* miqt_exec_callback_QScriptClass_Extension(void*, intptr_t, int, QVariant*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQScriptClass : public virtual QScriptClass {
 public:

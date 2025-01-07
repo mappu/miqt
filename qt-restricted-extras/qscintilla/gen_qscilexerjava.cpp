@@ -6,10 +6,18 @@
 #include <qscilexerjava.h>
 #include "gen_qscilexerjava.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QsciLexerJava_SetFoldAtElse(void*, intptr_t, bool);
+void miqt_exec_callback_QsciLexerJava_SetFoldComments(void*, intptr_t, bool);
+void miqt_exec_callback_QsciLexerJava_SetFoldCompact(void*, intptr_t, bool);
+void miqt_exec_callback_QsciLexerJava_SetFoldPreprocessor(void*, intptr_t, bool);
+void miqt_exec_callback_QsciLexerJava_SetStylePreprocessor(void*, intptr_t, bool);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQsciLexerJava : public virtual QsciLexerJava {
 public:

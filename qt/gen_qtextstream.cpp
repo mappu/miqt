@@ -10,10 +10,13 @@
 #include <qtextstream.h>
 #include "gen_qtextstream.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QTextStream* QTextStream_new() {
 	return new QTextStream();

@@ -7,10 +7,13 @@
 #include <qmediaformat.h>
 #include "gen_qmediaformat.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QMediaFormat* QMediaFormat_new() {
 	return new QMediaFormat();

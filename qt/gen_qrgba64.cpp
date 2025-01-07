@@ -2,10 +2,13 @@
 #include <qrgba64.h>
 #include "gen_qrgba64.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QRgba64* QRgba64_new() {
 	return new QRgba64();

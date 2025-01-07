@@ -10,10 +10,13 @@
 #include <qmediaencodersettings.h>
 #include "gen_qmediaencodersettings.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QAudioEncoderSettings* QAudioEncoderSettings_new() {
 	return new QAudioEncoderSettings();

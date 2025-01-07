@@ -2,10 +2,13 @@
 #include <qwebenginefindtextresult.h>
 #include "gen_qwebenginefindtextresult.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QWebEngineFindTextResult* QWebEngineFindTextResult_new() {
 	return new QWebEngineFindTextResult();

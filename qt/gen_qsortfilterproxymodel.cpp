@@ -18,10 +18,59 @@
 #include <qsortfilterproxymodel.h>
 #include "gen_qsortfilterproxymodel.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QSortFilterProxyModel_DynamicSortFilterChanged(intptr_t, bool);
+void miqt_exec_callback_QSortFilterProxyModel_FilterCaseSensitivityChanged(intptr_t, int);
+void miqt_exec_callback_QSortFilterProxyModel_SortCaseSensitivityChanged(intptr_t, int);
+void miqt_exec_callback_QSortFilterProxyModel_SortLocaleAwareChanged(intptr_t, bool);
+void miqt_exec_callback_QSortFilterProxyModel_SortRoleChanged(intptr_t, int);
+void miqt_exec_callback_QSortFilterProxyModel_FilterRoleChanged(intptr_t, int);
+void miqt_exec_callback_QSortFilterProxyModel_RecursiveFilteringEnabledChanged(intptr_t, bool);
+void miqt_exec_callback_QSortFilterProxyModel_SetSourceModel(void*, intptr_t, QAbstractItemModel*);
+QModelIndex* miqt_exec_callback_QSortFilterProxyModel_MapToSource(void*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QSortFilterProxyModel_MapFromSource(void*, intptr_t, QModelIndex*);
+QItemSelection* miqt_exec_callback_QSortFilterProxyModel_MapSelectionToSource(void*, intptr_t, QItemSelection*);
+QItemSelection* miqt_exec_callback_QSortFilterProxyModel_MapSelectionFromSource(void*, intptr_t, QItemSelection*);
+bool miqt_exec_callback_QSortFilterProxyModel_FilterAcceptsRow(void*, intptr_t, int, QModelIndex*);
+bool miqt_exec_callback_QSortFilterProxyModel_FilterAcceptsColumn(void*, intptr_t, int, QModelIndex*);
+bool miqt_exec_callback_QSortFilterProxyModel_LessThan(void*, intptr_t, QModelIndex*, QModelIndex*);
+QModelIndex* miqt_exec_callback_QSortFilterProxyModel_Index(void*, intptr_t, int, int, QModelIndex*);
+QModelIndex* miqt_exec_callback_QSortFilterProxyModel_Parent(void*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QSortFilterProxyModel_Sibling(void*, intptr_t, int, int, QModelIndex*);
+int miqt_exec_callback_QSortFilterProxyModel_RowCount(void*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QSortFilterProxyModel_ColumnCount(void*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QSortFilterProxyModel_HasChildren(void*, intptr_t, QModelIndex*);
+QVariant* miqt_exec_callback_QSortFilterProxyModel_Data(void*, intptr_t, QModelIndex*, int);
+bool miqt_exec_callback_QSortFilterProxyModel_SetData(void*, intptr_t, QModelIndex*, QVariant*, int);
+QVariant* miqt_exec_callback_QSortFilterProxyModel_HeaderData(void*, intptr_t, int, int, int);
+bool miqt_exec_callback_QSortFilterProxyModel_SetHeaderData(void*, intptr_t, int, int, QVariant*, int);
+QMimeData* miqt_exec_callback_QSortFilterProxyModel_MimeData(void*, intptr_t, struct miqt_array /* of QModelIndex* */ );
+bool miqt_exec_callback_QSortFilterProxyModel_DropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+bool miqt_exec_callback_QSortFilterProxyModel_InsertRows(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QSortFilterProxyModel_InsertColumns(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QSortFilterProxyModel_RemoveRows(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QSortFilterProxyModel_RemoveColumns(void*, intptr_t, int, int, QModelIndex*);
+void miqt_exec_callback_QSortFilterProxyModel_FetchMore(void*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QSortFilterProxyModel_CanFetchMore(void*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QSortFilterProxyModel_Flags(void*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QSortFilterProxyModel_Buddy(void*, intptr_t, QModelIndex*);
+struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QSortFilterProxyModel_Match(void*, intptr_t, QModelIndex*, int, QVariant*, int, int);
+QSize* miqt_exec_callback_QSortFilterProxyModel_Span(void*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QSortFilterProxyModel_Sort(void*, intptr_t, int, int);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QSortFilterProxyModel_MimeTypes(void*, intptr_t);
+int miqt_exec_callback_QSortFilterProxyModel_SupportedDropActions(void*, intptr_t);
+bool miqt_exec_callback_QSortFilterProxyModel_Submit(void*, intptr_t);
+void miqt_exec_callback_QSortFilterProxyModel_Revert(void*, intptr_t);
+struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QSortFilterProxyModel_ItemData(void*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QSortFilterProxyModel_SetItemData(void*, intptr_t, QModelIndex*, struct miqt_map /* of int to QVariant* */ );
+bool miqt_exec_callback_QSortFilterProxyModel_CanDropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+int miqt_exec_callback_QSortFilterProxyModel_SupportedDragActions(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQSortFilterProxyModel : public virtual QSortFilterProxyModel {
 public:

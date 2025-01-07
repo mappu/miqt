@@ -11,10 +11,19 @@
 #include <qsequentialanimationgroup.h>
 #include "gen_qsequentialanimationgroup.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QSequentialAnimationGroup_CurrentAnimationChanged(intptr_t, QAbstractAnimation*);
+int miqt_exec_callback_QSequentialAnimationGroup_Duration(void*, intptr_t);
+bool miqt_exec_callback_QSequentialAnimationGroup_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QSequentialAnimationGroup_UpdateCurrentTime(void*, intptr_t, int);
+void miqt_exec_callback_QSequentialAnimationGroup_UpdateState(void*, intptr_t, int, int);
+void miqt_exec_callback_QSequentialAnimationGroup_UpdateDirection(void*, intptr_t, int);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQSequentialAnimationGroup : public virtual QSequentialAnimationGroup {
 public:

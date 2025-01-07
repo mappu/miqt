@@ -8,10 +8,13 @@
 #include <qaudiodevice.h>
 #include "gen_qaudiodevice.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QAudioDevice* QAudioDevice_new() {
 	return new QAudioDevice();

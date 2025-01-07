@@ -9,10 +9,13 @@
 #include <qstatictext.h>
 #include "gen_qstatictext.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QStaticText* QStaticText_new() {
 	return new QStaticText();

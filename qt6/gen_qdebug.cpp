@@ -12,10 +12,13 @@
 #include <qdebug.h>
 #include "gen_qdebug.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QDebug* QDebug_new(QIODevice* device) {
 	return new QDebug(device);

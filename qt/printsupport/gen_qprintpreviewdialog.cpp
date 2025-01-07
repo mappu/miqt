@@ -18,10 +18,28 @@
 #include <qprintpreviewdialog.h>
 #include "gen_qprintpreviewdialog.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QPrintPreviewDialog_PaintRequested(intptr_t, QPrinter*);
+void miqt_exec_callback_QPrintPreviewDialog_SetVisible(void*, intptr_t, bool);
+void miqt_exec_callback_QPrintPreviewDialog_Done(void*, intptr_t, int);
+QSize* miqt_exec_callback_QPrintPreviewDialog_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QPrintPreviewDialog_MinimumSizeHint(void*, intptr_t);
+void miqt_exec_callback_QPrintPreviewDialog_Open(void*, intptr_t);
+int miqt_exec_callback_QPrintPreviewDialog_Exec(void*, intptr_t);
+void miqt_exec_callback_QPrintPreviewDialog_Accept(void*, intptr_t);
+void miqt_exec_callback_QPrintPreviewDialog_Reject(void*, intptr_t);
+void miqt_exec_callback_QPrintPreviewDialog_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QPrintPreviewDialog_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QPrintPreviewDialog_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QPrintPreviewDialog_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QPrintPreviewDialog_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+bool miqt_exec_callback_QPrintPreviewDialog_EventFilter(void*, intptr_t, QObject*, QEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQPrintPreviewDialog : public virtual QPrintPreviewDialog {
 public:

@@ -12,10 +12,20 @@
 #include <qfilesystemwatcher.h>
 #include "gen_qfilesystemwatcher.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+bool miqt_exec_callback_QFileSystemWatcher_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QFileSystemWatcher_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QFileSystemWatcher_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QFileSystemWatcher_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QFileSystemWatcher_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QFileSystemWatcher_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QFileSystemWatcher_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQFileSystemWatcher : public virtual QFileSystemWatcher {
 public:

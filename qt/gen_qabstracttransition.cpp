@@ -16,10 +16,22 @@
 #include <qabstracttransition.h>
 #include "gen_qabstracttransition.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+bool miqt_exec_callback_QAbstractTransition_EventTest(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractTransition_OnTransition(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAbstractTransition_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAbstractTransition_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAbstractTransition_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAbstractTransition_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAbstractTransition_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractTransition_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAbstractTransition_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQAbstractTransition : public virtual QAbstractTransition {
 public:

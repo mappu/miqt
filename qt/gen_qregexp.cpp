@@ -6,10 +6,13 @@
 #include <qregexp.h>
 #include "gen_qregexp.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QRegExp* QRegExp_new() {
 	return new QRegExp();

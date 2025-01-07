@@ -11,10 +11,13 @@
 #include <qjsondocument.h>
 #include "gen_qjsondocument.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 struct miqt_string QJsonParseError_ErrorString(const QJsonParseError* self) {
 	QString _ret = self->errorString();

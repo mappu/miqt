@@ -8,10 +8,13 @@
 #include <qdiriterator.h>
 #include "gen_qdiriterator.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QDirIterator* QDirIterator_new(QDir* dir) {
 	return new QDirIterator(*dir);

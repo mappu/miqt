@@ -12,10 +12,13 @@
 #include <qsslcertificate.h>
 #include "gen_qsslcertificate.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QSslCertificate* QSslCertificate_new(QIODevice* device) {
 	return new QSslCertificate(device);

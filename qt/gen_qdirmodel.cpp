@@ -18,10 +18,47 @@
 #include <qdirmodel.h>
 #include "gen_qdirmodel.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+QModelIndex* miqt_exec_callback_QDirModel_Index(void*, intptr_t, int, int, QModelIndex*);
+QModelIndex* miqt_exec_callback_QDirModel_Parent(void*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QDirModel_RowCount(void*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QDirModel_ColumnCount(void*, intptr_t, QModelIndex*);
+QVariant* miqt_exec_callback_QDirModel_Data(void*, intptr_t, QModelIndex*, int);
+bool miqt_exec_callback_QDirModel_SetData(void*, intptr_t, QModelIndex*, QVariant*, int);
+QVariant* miqt_exec_callback_QDirModel_HeaderData(void*, intptr_t, int, int, int);
+bool miqt_exec_callback_QDirModel_HasChildren(void*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QDirModel_Flags(void*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QDirModel_Sort(void*, intptr_t, int, int);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QDirModel_MimeTypes(void*, intptr_t);
+QMimeData* miqt_exec_callback_QDirModel_MimeData(void*, intptr_t, struct miqt_array /* of QModelIndex* */ );
+bool miqt_exec_callback_QDirModel_DropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+int miqt_exec_callback_QDirModel_SupportedDropActions(void*, intptr_t);
+QModelIndex* miqt_exec_callback_QDirModel_Sibling(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QDirModel_SetHeaderData(void*, intptr_t, int, int, QVariant*, int);
+struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QDirModel_ItemData(void*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QDirModel_SetItemData(void*, intptr_t, QModelIndex*, struct miqt_map /* of int to QVariant* */ );
+bool miqt_exec_callback_QDirModel_CanDropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+int miqt_exec_callback_QDirModel_SupportedDragActions(void*, intptr_t);
+bool miqt_exec_callback_QDirModel_InsertRows(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QDirModel_InsertColumns(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QDirModel_RemoveRows(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QDirModel_RemoveColumns(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QDirModel_MoveRows(void*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+bool miqt_exec_callback_QDirModel_MoveColumns(void*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+void miqt_exec_callback_QDirModel_FetchMore(void*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QDirModel_CanFetchMore(void*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QDirModel_Buddy(void*, intptr_t, QModelIndex*);
+struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QDirModel_Match(void*, intptr_t, QModelIndex*, int, QVariant*, int, int);
+QSize* miqt_exec_callback_QDirModel_Span(void*, intptr_t, QModelIndex*);
+struct miqt_map /* of int to struct miqt_string */  miqt_exec_callback_QDirModel_RoleNames(void*, intptr_t);
+bool miqt_exec_callback_QDirModel_Submit(void*, intptr_t);
+void miqt_exec_callback_QDirModel_Revert(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQDirModel : public virtual QDirModel {
 public:

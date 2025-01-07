@@ -12,10 +12,24 @@
 #include <qlocalserver.h>
 #include "gen_qlocalserver.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QLocalServer_NewConnection(intptr_t);
+bool miqt_exec_callback_QLocalServer_HasPendingConnections(void*, intptr_t);
+QLocalSocket* miqt_exec_callback_QLocalServer_NextPendingConnection(void*, intptr_t);
+void miqt_exec_callback_QLocalServer_IncomingConnection(void*, intptr_t, uintptr_t);
+bool miqt_exec_callback_QLocalServer_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QLocalServer_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QLocalServer_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QLocalServer_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QLocalServer_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QLocalServer_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QLocalServer_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQLocalServer : public virtual QLocalServer {
 public:

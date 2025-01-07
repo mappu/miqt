@@ -7,10 +7,18 @@
 #include <qabstractfileiconprovider.h>
 #include "gen_qabstractfileiconprovider.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+QIcon* miqt_exec_callback_QAbstractFileIconProvider_Icon(void*, intptr_t, int);
+QIcon* miqt_exec_callback_QAbstractFileIconProvider_IconWithQFileInfo(void*, intptr_t, QFileInfo*);
+struct miqt_string miqt_exec_callback_QAbstractFileIconProvider_Type(void*, intptr_t, QFileInfo*);
+void miqt_exec_callback_QAbstractFileIconProvider_SetOptions(void*, intptr_t, int);
+int miqt_exec_callback_QAbstractFileIconProvider_Options(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQAbstractFileIconProvider : public virtual QAbstractFileIconProvider {
 public:

@@ -5,10 +5,13 @@
 #include <qquaternion.h>
 #include "gen_qquaternion.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QQuaternion* QQuaternion_new() {
 	return new QQuaternion();

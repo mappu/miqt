@@ -3,10 +3,13 @@
 #include <qwebenginefullscreenrequest.h>
 #include "gen_qwebenginefullscreenrequest.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QWebEngineFullScreenRequest* QWebEngineFullScreenRequest_new(QWebEngineFullScreenRequest* param1) {
 	return new QWebEngineFullScreenRequest(*param1);

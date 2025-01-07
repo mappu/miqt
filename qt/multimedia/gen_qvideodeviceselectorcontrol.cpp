@@ -8,10 +8,16 @@
 #include <qvideodeviceselectorcontrol.h>
 #include "gen_qvideodeviceselectorcontrol.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QVideoDeviceSelectorControl_SelectedDeviceChanged(intptr_t, int);
+void miqt_exec_callback_QVideoDeviceSelectorControl_SelectedDeviceChangedWithName(intptr_t, struct miqt_string);
+void miqt_exec_callback_QVideoDeviceSelectorControl_DevicesChanged(intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QVideoDeviceSelectorControl_virtbase(QVideoDeviceSelectorControl* src, QMediaControl** outptr_QMediaControl) {
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);

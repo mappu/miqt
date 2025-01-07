@@ -11,10 +11,29 @@
 #include <qradiotuner.h>
 #include "gen_qradiotuner.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QRadioTuner_StateChanged(intptr_t, int);
+void miqt_exec_callback_QRadioTuner_BandChanged(intptr_t, int);
+void miqt_exec_callback_QRadioTuner_FrequencyChanged(intptr_t, int);
+void miqt_exec_callback_QRadioTuner_StereoStatusChanged(intptr_t, bool);
+void miqt_exec_callback_QRadioTuner_SearchingChanged(intptr_t, bool);
+void miqt_exec_callback_QRadioTuner_SignalStrengthChanged(intptr_t, int);
+void miqt_exec_callback_QRadioTuner_VolumeChanged(intptr_t, int);
+void miqt_exec_callback_QRadioTuner_MutedChanged(intptr_t, bool);
+void miqt_exec_callback_QRadioTuner_StationFound(intptr_t, int, struct miqt_string);
+void miqt_exec_callback_QRadioTuner_AntennaConnectedChanged(intptr_t, bool);
+void miqt_exec_callback_QRadioTuner_ErrorWithError(intptr_t, int);
+int miqt_exec_callback_QRadioTuner_Availability(void*, intptr_t);
+bool miqt_exec_callback_QRadioTuner_IsAvailable(void*, intptr_t);
+QMediaService* miqt_exec_callback_QRadioTuner_Service(void*, intptr_t);
+bool miqt_exec_callback_QRadioTuner_Bind(void*, intptr_t, QObject*);
+void miqt_exec_callback_QRadioTuner_Unbind(void*, intptr_t, QObject*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQRadioTuner : public virtual QRadioTuner {
 public:

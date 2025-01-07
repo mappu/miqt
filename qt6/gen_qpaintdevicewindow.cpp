@@ -15,10 +15,13 @@
 #include <qpaintdevicewindow.h>
 #include "gen_qpaintdevicewindow.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QPaintDeviceWindow_virtbase(QPaintDeviceWindow* src, QWindow** outptr_QWindow, QPaintDevice** outptr_QPaintDevice) {
 	*outptr_QWindow = static_cast<QWindow*>(src);
