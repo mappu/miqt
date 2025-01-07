@@ -376,7 +376,7 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 			afterCall += indent + "QByteArray " + namePrefix + "_b = " + namePrefix + "_ret->toUtf8();\n"
 
 		} else {
-			shouldReturn = ifv(p.Const, "const ", "") + "QString " + p.ParameterName + "_ret = "
+			shouldReturn = ifv(p.Const, "const ", "") + "QString " + namePrefix + "_ret = "
 			afterCall = indent + "// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory\n"
 			afterCall += indent + "QByteArray " + namePrefix + "_b = " + namePrefix + "_ret.toUtf8();\n"
 		}
@@ -392,7 +392,7 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		// C++ has given us a QByteArray. CABI needs this as a struct miqt_string
 		// Do not free the data, the caller will free it
 
-		shouldReturn = ifv(p.Const, "const ", "") + "QByteArray " + p.ParameterName + "_qb = "
+		shouldReturn = ifv(p.Const, "const ", "") + "QByteArray " + namePrefix + "_qb = "
 
 		afterCall += indent + "struct miqt_string " + namePrefix + "_ms;\n"
 		afterCall += indent + namePrefix + "_ms.len = " + namePrefix + "_qb.length();\n"

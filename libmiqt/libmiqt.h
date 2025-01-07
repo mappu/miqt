@@ -3,7 +3,6 @@
 #define MIQT_LIBMIQT_LIBMIQT_H
 
 #include <string.h>
-#include <stdlib.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -24,8 +23,6 @@ struct miqt_map {
     void* keys;
     void* values;
 };
-
-struct miqt_string* miqt_strdup(const char* src, size_t len);
 
 typedef const char const_char;
 
