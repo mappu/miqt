@@ -301,6 +301,14 @@ func AllowMethod(className string, mm CppMethod) error {
 		return ErrTooComplex
 	}
 
+	if className == "QHashSeed" && mm.MethodName == "operator unsigned long" {
+		// Not present in Qt 5, is present in Qt 6.4 and 6.8, but in the C++
+		// header file it is written as `operator size_t()`
+		// Clang is early-converting size_t to unsigned long, which is invalid for mingw-w64-x86_64 platforms
+		// A proper fix here would be to avoid evaluating typedefs
+		return ErrTooComplex
+	}
+
 	return nil // OK, allow
 }
 
