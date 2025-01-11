@@ -1,10 +1,11 @@
 #include <QMetaObject>
 #include <QCoreApplication>
 
-#ifndef _Bool
-#define _Bool bool
-#endif
-#include "_cgo_export.h"
+#include "mainthread.h"
+
+extern "C" {
+    void mainthread_exec_handle(intptr_t);
+}
 
 void mainthread_exec(intptr_t cb) {
     QMetaObject::invokeMethod(qApp, [=]{
