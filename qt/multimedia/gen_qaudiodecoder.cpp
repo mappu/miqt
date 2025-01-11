@@ -13,10 +13,27 @@
 #include <qaudiodecoder.h>
 #include "gen_qaudiodecoder.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QAudioDecoder_BufferAvailableChanged(intptr_t, bool);
+void miqt_exec_callback_QAudioDecoder_BufferReady(intptr_t);
+void miqt_exec_callback_QAudioDecoder_Finished(intptr_t);
+void miqt_exec_callback_QAudioDecoder_StateChanged(intptr_t, int);
+void miqt_exec_callback_QAudioDecoder_FormatChanged(intptr_t, QAudioFormat*);
+void miqt_exec_callback_QAudioDecoder_ErrorWithError(intptr_t, int);
+void miqt_exec_callback_QAudioDecoder_SourceChanged(intptr_t);
+void miqt_exec_callback_QAudioDecoder_PositionChanged(intptr_t, long long);
+void miqt_exec_callback_QAudioDecoder_DurationChanged(intptr_t, long long);
+bool miqt_exec_callback_QAudioDecoder_Bind(void*, intptr_t, QObject*);
+void miqt_exec_callback_QAudioDecoder_Unbind(void*, intptr_t, QObject*);
+bool miqt_exec_callback_QAudioDecoder_IsAvailable(void*, intptr_t);
+int miqt_exec_callback_QAudioDecoder_Availability(void*, intptr_t);
+QMediaService* miqt_exec_callback_QAudioDecoder_Service(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQAudioDecoder : public virtual QAudioDecoder {
 public:

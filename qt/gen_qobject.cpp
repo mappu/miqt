@@ -18,10 +18,22 @@
 #include <qobject.h>
 #include "gen_qobject.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QObject_Destroyed(intptr_t);
+void miqt_exec_callback_QObject_Destroyed1(intptr_t, QObject*);
+bool miqt_exec_callback_QObject_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QObject_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QObject_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QObject_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QObject_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QObject_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QObject_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QMetaObject* QObjectData_DynamicMetaObject(const QObjectData* self) {
 	return self->dynamicMetaObject();

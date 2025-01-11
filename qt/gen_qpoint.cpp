@@ -3,10 +3,13 @@
 #include <qpoint.h>
 #include "gen_qpoint.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QPoint* QPoint_new() {
 	return new QPoint();

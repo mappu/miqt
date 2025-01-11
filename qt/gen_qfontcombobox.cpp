@@ -24,10 +24,34 @@
 #include <qfontcombobox.h>
 #include "gen_qfontcombobox.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QFontComboBox_CurrentFontChanged(intptr_t, QFont*);
+QSize* miqt_exec_callback_QFontComboBox_SizeHint(void*, intptr_t);
+bool miqt_exec_callback_QFontComboBox_Event(void*, intptr_t, QEvent*);
+QSize* miqt_exec_callback_QFontComboBox_MinimumSizeHint(void*, intptr_t);
+void miqt_exec_callback_QFontComboBox_ShowPopup(void*, intptr_t);
+void miqt_exec_callback_QFontComboBox_HidePopup(void*, intptr_t);
+QVariant* miqt_exec_callback_QFontComboBox_InputMethodQuery(void*, intptr_t, int);
+void miqt_exec_callback_QFontComboBox_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QFontComboBox_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QFontComboBox_ChangeEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QFontComboBox_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QFontComboBox_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QFontComboBox_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QFontComboBox_HideEvent(void*, intptr_t, QHideEvent*);
+void miqt_exec_callback_QFontComboBox_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QFontComboBox_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QFontComboBox_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QFontComboBox_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QFontComboBox_WheelEvent(void*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QFontComboBox_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QFontComboBox_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQFontComboBox : public virtual QFontComboBox {
 public:

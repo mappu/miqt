@@ -7,10 +7,13 @@
 #include <qstringconverter.h>
 #include "gen_qstringconverter.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QStringEncoder* QStringEncoder_new() {
 	return new QStringEncoder();

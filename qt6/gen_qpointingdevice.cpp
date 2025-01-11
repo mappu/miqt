@@ -11,10 +11,14 @@
 #include <qpointingdevice.h>
 #include "gen_qpointingdevice.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QPointingDevice_GrabChanged(intptr_t, QObject*, int, QPointerEvent*, QEventPoint*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QPointingDeviceUniqueId* QPointingDeviceUniqueId_new() {
 	return new QPointingDeviceUniqueId();

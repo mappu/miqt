@@ -9,10 +9,13 @@
 #include <qaccessible_base.h>
 #include "gen_qaccessible_base.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QAccessible_InstallActivationObserver(QAccessible__ActivationObserver* param1) {
 	QAccessible::installActivationObserver(param1);

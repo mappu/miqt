@@ -4,10 +4,13 @@
 #include <qreadwritelock.h>
 #include "gen_qreadwritelock.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QReadWriteLock* QReadWriteLock_new() {
 	return new QReadWriteLock();

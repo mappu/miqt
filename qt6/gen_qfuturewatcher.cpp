@@ -9,10 +9,25 @@
 #include <qfuturewatcher.h>
 #include "gen_qfuturewatcher.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QFutureWatcherBase_Started(intptr_t);
+void miqt_exec_callback_QFutureWatcherBase_Finished(intptr_t);
+void miqt_exec_callback_QFutureWatcherBase_Canceled(intptr_t);
+void miqt_exec_callback_QFutureWatcherBase_Paused(intptr_t);
+void miqt_exec_callback_QFutureWatcherBase_Suspending(intptr_t);
+void miqt_exec_callback_QFutureWatcherBase_Suspended(intptr_t);
+void miqt_exec_callback_QFutureWatcherBase_Resumed(intptr_t);
+void miqt_exec_callback_QFutureWatcherBase_ResultReadyAt(intptr_t, int);
+void miqt_exec_callback_QFutureWatcherBase_ResultsReadyAt(intptr_t, int, int);
+void miqt_exec_callback_QFutureWatcherBase_ProgressRangeChanged(intptr_t, int, int);
+void miqt_exec_callback_QFutureWatcherBase_ProgressValueChanged(intptr_t, int);
+void miqt_exec_callback_QFutureWatcherBase_ProgressTextChanged(intptr_t, struct miqt_string);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QFutureWatcherBase_virtbase(QFutureWatcherBase* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);

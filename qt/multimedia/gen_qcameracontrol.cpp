@@ -8,10 +8,17 @@
 #include <qcameracontrol.h>
 #include "gen_qcameracontrol.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QCameraControl_StateChanged(intptr_t, int);
+void miqt_exec_callback_QCameraControl_StatusChanged(intptr_t, int);
+void miqt_exec_callback_QCameraControl_Error(intptr_t, int, struct miqt_string);
+void miqt_exec_callback_QCameraControl_CaptureModeChanged(intptr_t, int);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QCameraControl_virtbase(QCameraControl* src, QMediaControl** outptr_QMediaControl) {
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);

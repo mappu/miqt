@@ -37,10 +37,63 @@
 #include <qwindow.h>
 #include "gen_qwindow.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QWindow_ScreenChanged(intptr_t, QScreen*);
+void miqt_exec_callback_QWindow_ModalityChanged(intptr_t, int);
+void miqt_exec_callback_QWindow_WindowStateChanged(intptr_t, int);
+void miqt_exec_callback_QWindow_WindowTitleChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QWindow_XChanged(intptr_t, int);
+void miqt_exec_callback_QWindow_YChanged(intptr_t, int);
+void miqt_exec_callback_QWindow_WidthChanged(intptr_t, int);
+void miqt_exec_callback_QWindow_HeightChanged(intptr_t, int);
+void miqt_exec_callback_QWindow_MinimumWidthChanged(intptr_t, int);
+void miqt_exec_callback_QWindow_MinimumHeightChanged(intptr_t, int);
+void miqt_exec_callback_QWindow_MaximumWidthChanged(intptr_t, int);
+void miqt_exec_callback_QWindow_MaximumHeightChanged(intptr_t, int);
+void miqt_exec_callback_QWindow_VisibleChanged(intptr_t, bool);
+void miqt_exec_callback_QWindow_VisibilityChanged(intptr_t, int);
+void miqt_exec_callback_QWindow_ActiveChanged(intptr_t);
+void miqt_exec_callback_QWindow_ContentOrientationChanged(intptr_t, int);
+void miqt_exec_callback_QWindow_FocusObjectChanged(intptr_t, QObject*);
+void miqt_exec_callback_QWindow_OpacityChanged(intptr_t, double);
+void miqt_exec_callback_QWindow_TransientParentChanged(intptr_t, QWindow*);
+int miqt_exec_callback_QWindow_SurfaceType(void*, intptr_t);
+QSurfaceFormat* miqt_exec_callback_QWindow_Format(void*, intptr_t);
+QSize* miqt_exec_callback_QWindow_Size(void*, intptr_t);
+QAccessibleInterface* miqt_exec_callback_QWindow_AccessibleRoot(void*, intptr_t);
+QObject* miqt_exec_callback_QWindow_FocusObject(void*, intptr_t);
+void miqt_exec_callback_QWindow_ExposeEvent(void*, intptr_t, QExposeEvent*);
+void miqt_exec_callback_QWindow_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QWindow_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QWindow_MoveEvent(void*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QWindow_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QWindow_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QWindow_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QWindow_HideEvent(void*, intptr_t, QHideEvent*);
+void miqt_exec_callback_QWindow_CloseEvent(void*, intptr_t, QCloseEvent*);
+bool miqt_exec_callback_QWindow_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QWindow_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QWindow_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QWindow_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QWindow_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QWindow_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QWindow_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QWindow_WheelEvent(void*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QWindow_TouchEvent(void*, intptr_t, QTouchEvent*);
+void miqt_exec_callback_QWindow_TabletEvent(void*, intptr_t, QTabletEvent*);
+bool miqt_exec_callback_QWindow_NativeEvent(void*, intptr_t, struct miqt_string, void*, intptr_t*);
+bool miqt_exec_callback_QWindow_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QWindow_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QWindow_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QWindow_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QWindow_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QWindow_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQWindow : public virtual QWindow {
 public:

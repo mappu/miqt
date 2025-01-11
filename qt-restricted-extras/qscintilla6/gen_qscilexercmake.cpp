@@ -10,10 +10,48 @@
 #include <qscilexercmake.h>
 #include "gen_qscilexercmake.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QsciLexerCMake_SetFoldAtElse(void*, intptr_t, bool);
+const char* miqt_exec_callback_QsciLexerCMake_Language(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerCMake_Lexer(void*, intptr_t);
+int miqt_exec_callback_QsciLexerCMake_LexerId(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerCMake_AutoCompletionFillups(void*, intptr_t);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QsciLexerCMake_AutoCompletionWordSeparators(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerCMake_BlockEnd(void*, intptr_t, int*);
+int miqt_exec_callback_QsciLexerCMake_BlockLookback(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerCMake_BlockStart(void*, intptr_t, int*);
+const char* miqt_exec_callback_QsciLexerCMake_BlockStartKeyword(void*, intptr_t, int*);
+int miqt_exec_callback_QsciLexerCMake_BraceStyle(void*, intptr_t);
+bool miqt_exec_callback_QsciLexerCMake_CaseSensitive(void*, intptr_t);
+QColor* miqt_exec_callback_QsciLexerCMake_Color(void*, intptr_t, int);
+bool miqt_exec_callback_QsciLexerCMake_EolFill(void*, intptr_t, int);
+QFont* miqt_exec_callback_QsciLexerCMake_Font(void*, intptr_t, int);
+int miqt_exec_callback_QsciLexerCMake_IndentationGuideView(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerCMake_Keywords(void*, intptr_t, int);
+int miqt_exec_callback_QsciLexerCMake_DefaultStyle(void*, intptr_t);
+struct miqt_string miqt_exec_callback_QsciLexerCMake_Description(void*, intptr_t, int);
+QColor* miqt_exec_callback_QsciLexerCMake_Paper(void*, intptr_t, int);
+QColor* miqt_exec_callback_QsciLexerCMake_DefaultColorWithStyle(void*, intptr_t, int);
+bool miqt_exec_callback_QsciLexerCMake_DefaultEolFill(void*, intptr_t, int);
+QFont* miqt_exec_callback_QsciLexerCMake_DefaultFontWithStyle(void*, intptr_t, int);
+QColor* miqt_exec_callback_QsciLexerCMake_DefaultPaperWithStyle(void*, intptr_t, int);
+void miqt_exec_callback_QsciLexerCMake_SetEditor(void*, intptr_t, QsciScintilla*);
+void miqt_exec_callback_QsciLexerCMake_RefreshProperties(void*, intptr_t);
+int miqt_exec_callback_QsciLexerCMake_StyleBitsNeeded(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerCMake_WordCharacters(void*, intptr_t);
+void miqt_exec_callback_QsciLexerCMake_SetAutoIndentStyle(void*, intptr_t, int);
+void miqt_exec_callback_QsciLexerCMake_SetColor(void*, intptr_t, QColor*, int);
+void miqt_exec_callback_QsciLexerCMake_SetEolFill(void*, intptr_t, bool, int);
+void miqt_exec_callback_QsciLexerCMake_SetFont(void*, intptr_t, QFont*, int);
+void miqt_exec_callback_QsciLexerCMake_SetPaper(void*, intptr_t, QColor*, int);
+bool miqt_exec_callback_QsciLexerCMake_ReadProperties(void*, intptr_t, QSettings*, struct miqt_string);
+bool miqt_exec_callback_QsciLexerCMake_WriteProperties(void*, intptr_t, QSettings*, struct miqt_string);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQsciLexerCMake : public virtual QsciLexerCMake {
 public:

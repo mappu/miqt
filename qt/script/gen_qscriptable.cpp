@@ -5,10 +5,13 @@
 #include <qscriptable.h>
 #include "gen_qscriptable.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QScriptable* QScriptable_new() {
 	return new QScriptable();

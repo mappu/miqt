@@ -20,10 +20,29 @@
 #include <qlabel.h>
 #include "gen_qlabel.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QLabel_LinkActivated(intptr_t, struct miqt_string);
+void miqt_exec_callback_QLabel_LinkHovered(intptr_t, struct miqt_string);
+QSize* miqt_exec_callback_QLabel_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QLabel_MinimumSizeHint(void*, intptr_t);
+int miqt_exec_callback_QLabel_HeightForWidth(void*, intptr_t, int);
+bool miqt_exec_callback_QLabel_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QLabel_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QLabel_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QLabel_ChangeEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QLabel_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QLabel_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QLabel_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QLabel_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QLabel_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QLabel_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+bool miqt_exec_callback_QLabel_FocusNextPrevChild(void*, intptr_t, bool);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQLabel : public virtual QLabel {
 public:

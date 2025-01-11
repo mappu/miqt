@@ -9,10 +9,13 @@
 #include <qvideorenderercontrol.h>
 #include "gen_qvideorenderercontrol.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QVideoRendererControl_virtbase(QVideoRendererControl* src, QMediaControl** outptr_QMediaControl) {
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);

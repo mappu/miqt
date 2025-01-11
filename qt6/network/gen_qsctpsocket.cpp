@@ -12,10 +12,17 @@
 #include <qsctpsocket.h>
 #include "gen_qsctpsocket.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QSctpSocket_Close(void*, intptr_t);
+void miqt_exec_callback_QSctpSocket_DisconnectFromHost(void*, intptr_t);
+long long miqt_exec_callback_QSctpSocket_ReadData(void*, intptr_t, char*, long long);
+long long miqt_exec_callback_QSctpSocket_ReadLineData(void*, intptr_t, char*, long long);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQSctpSocket : public virtual QSctpSocket {
 public:

@@ -8,10 +8,13 @@
 #include <qwebenginecertificateerror.h>
 #include "gen_qwebenginecertificateerror.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QWebEngineCertificateError* QWebEngineCertificateError_new(QWebEngineCertificateError* other) {
 	return new QWebEngineCertificateError(*other);

@@ -8,10 +8,24 @@
 #include <qstylehints.h>
 #include "gen_qstylehints.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QStyleHints_CursorFlashTimeChanged(intptr_t, int);
+void miqt_exec_callback_QStyleHints_KeyboardInputIntervalChanged(intptr_t, int);
+void miqt_exec_callback_QStyleHints_MouseDoubleClickIntervalChanged(intptr_t, int);
+void miqt_exec_callback_QStyleHints_MousePressAndHoldIntervalChanged(intptr_t, int);
+void miqt_exec_callback_QStyleHints_StartDragDistanceChanged(intptr_t, int);
+void miqt_exec_callback_QStyleHints_StartDragTimeChanged(intptr_t, int);
+void miqt_exec_callback_QStyleHints_TabFocusBehaviorChanged(intptr_t, int);
+void miqt_exec_callback_QStyleHints_UseHoverEffectsChanged(intptr_t, bool);
+void miqt_exec_callback_QStyleHints_ShowShortcutsInContextMenusChanged(intptr_t, bool);
+void miqt_exec_callback_QStyleHints_WheelScrollLinesChanged(intptr_t, int);
+void miqt_exec_callback_QStyleHints_MouseQuickSelectionThresholdChanged(intptr_t, int);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QStyleHints_virtbase(QStyleHints* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);

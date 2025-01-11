@@ -2,10 +2,13 @@
 #include <qcompare.h>
 #include "gen_qcompare.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QPartialOrdering* QPartialOrdering_new(QPartialOrdering* param1) {
 	return new QPartialOrdering(*param1);

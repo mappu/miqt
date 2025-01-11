@@ -13,10 +13,24 @@
 #include <qambientsound.h>
 #include "gen_qambientsound.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QAmbientSound_SourceChanged(intptr_t);
+void miqt_exec_callback_QAmbientSound_LoopsChanged(intptr_t);
+void miqt_exec_callback_QAmbientSound_AutoPlayChanged(intptr_t);
+void miqt_exec_callback_QAmbientSound_VolumeChanged(intptr_t);
+bool miqt_exec_callback_QAmbientSound_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAmbientSound_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAmbientSound_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAmbientSound_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAmbientSound_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QAmbientSound_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAmbientSound_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQAmbientSound : public virtual QAmbientSound {
 public:

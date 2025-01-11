@@ -4,10 +4,13 @@
 #include <qsurfaceformat.h>
 #include "gen_qsurfaceformat.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QSurfaceFormat* QSurfaceFormat_new() {
 	return new QSurfaceFormat();

@@ -13,10 +13,33 @@
 #include <qstackedlayout.h>
 #include "gen_qstackedlayout.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QStackedLayout_WidgetRemoved(intptr_t, int);
+void miqt_exec_callback_QStackedLayout_CurrentChanged(intptr_t, int);
+int miqt_exec_callback_QStackedLayout_Count(void*, intptr_t);
+void miqt_exec_callback_QStackedLayout_AddItem(void*, intptr_t, QLayoutItem*);
+QSize* miqt_exec_callback_QStackedLayout_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QStackedLayout_MinimumSize(void*, intptr_t);
+QLayoutItem* miqt_exec_callback_QStackedLayout_ItemAt(void*, intptr_t, int);
+QLayoutItem* miqt_exec_callback_QStackedLayout_TakeAt(void*, intptr_t, int);
+void miqt_exec_callback_QStackedLayout_SetGeometry(void*, intptr_t, QRect*);
+bool miqt_exec_callback_QStackedLayout_HasHeightForWidth(void*, intptr_t);
+int miqt_exec_callback_QStackedLayout_HeightForWidth(void*, intptr_t, int);
+void miqt_exec_callback_QStackedLayout_Invalidate(void*, intptr_t);
+QRect* miqt_exec_callback_QStackedLayout_Geometry(void*, intptr_t);
+int miqt_exec_callback_QStackedLayout_ExpandingDirections(void*, intptr_t);
+QSize* miqt_exec_callback_QStackedLayout_MaximumSize(void*, intptr_t);
+int miqt_exec_callback_QStackedLayout_IndexOf(void*, intptr_t, QWidget*);
+bool miqt_exec_callback_QStackedLayout_IsEmpty(void*, intptr_t);
+int miqt_exec_callback_QStackedLayout_ControlTypes(void*, intptr_t);
+QLayout* miqt_exec_callback_QStackedLayout_Layout(void*, intptr_t);
+void miqt_exec_callback_QStackedLayout_ChildEvent(void*, intptr_t, QChildEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQStackedLayout : public virtual QStackedLayout {
 public:

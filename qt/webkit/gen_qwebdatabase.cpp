@@ -6,10 +6,13 @@
 #include <qwebdatabase.h>
 #include "gen_qwebdatabase.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QWebDatabase* QWebDatabase_new(QWebDatabase* other) {
 	return new QWebDatabase(*other);

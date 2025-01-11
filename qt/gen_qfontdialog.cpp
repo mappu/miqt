@@ -18,10 +18,30 @@
 #include <qfontdialog.h>
 #include "gen_qfontdialog.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QFontDialog_CurrentFontChanged(intptr_t, QFont*);
+void miqt_exec_callback_QFontDialog_FontSelected(intptr_t, QFont*);
+void miqt_exec_callback_QFontDialog_SetVisible(void*, intptr_t, bool);
+void miqt_exec_callback_QFontDialog_ChangeEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QFontDialog_Done(void*, intptr_t, int);
+bool miqt_exec_callback_QFontDialog_EventFilter(void*, intptr_t, QObject*, QEvent*);
+QSize* miqt_exec_callback_QFontDialog_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QFontDialog_MinimumSizeHint(void*, intptr_t);
+void miqt_exec_callback_QFontDialog_Open(void*, intptr_t);
+int miqt_exec_callback_QFontDialog_Exec(void*, intptr_t);
+void miqt_exec_callback_QFontDialog_Accept(void*, intptr_t);
+void miqt_exec_callback_QFontDialog_Reject(void*, intptr_t);
+void miqt_exec_callback_QFontDialog_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QFontDialog_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QFontDialog_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QFontDialog_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QFontDialog_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQFontDialog : public virtual QFontDialog {
 public:

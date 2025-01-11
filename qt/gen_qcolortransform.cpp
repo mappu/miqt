@@ -4,10 +4,13 @@
 #include <qcolortransform.h>
 #include "gen_qcolortransform.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QColorTransform* QColorTransform_new() {
 	return new QColorTransform();

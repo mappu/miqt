@@ -10,10 +10,13 @@
 #include <qcolorspace.h>
 #include "gen_qcolorspace.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QColorSpace* QColorSpace_new() {
 	return new QColorSpace();

@@ -18,10 +18,30 @@
 #include <qcheckbox.h>
 #include "gen_qcheckbox.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QCheckBox_StateChanged(intptr_t, int);
+QSize* miqt_exec_callback_QCheckBox_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QCheckBox_MinimumSizeHint(void*, intptr_t);
+bool miqt_exec_callback_QCheckBox_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QCheckBox_HitButton(void*, intptr_t, QPoint*);
+void miqt_exec_callback_QCheckBox_CheckStateSet(void*, intptr_t);
+void miqt_exec_callback_QCheckBox_NextCheckState(void*, intptr_t);
+void miqt_exec_callback_QCheckBox_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QCheckBox_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QCheckBox_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QCheckBox_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QCheckBox_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QCheckBox_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QCheckBox_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QCheckBox_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QCheckBox_ChangeEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QCheckBox_TimerEvent(void*, intptr_t, QTimerEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQCheckBox : public virtual QCheckBox {
 public:

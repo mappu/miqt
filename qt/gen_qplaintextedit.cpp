@@ -52,10 +52,67 @@
 #include <qplaintextedit.h>
 #include "gen_qplaintextedit.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QPlainTextEdit_TextChanged(intptr_t);
+void miqt_exec_callback_QPlainTextEdit_UndoAvailable(intptr_t, bool);
+void miqt_exec_callback_QPlainTextEdit_RedoAvailable(intptr_t, bool);
+void miqt_exec_callback_QPlainTextEdit_CopyAvailable(intptr_t, bool);
+void miqt_exec_callback_QPlainTextEdit_SelectionChanged(intptr_t);
+void miqt_exec_callback_QPlainTextEdit_CursorPositionChanged(intptr_t);
+void miqt_exec_callback_QPlainTextEdit_UpdateRequest(intptr_t, QRect*, int);
+void miqt_exec_callback_QPlainTextEdit_BlockCountChanged(intptr_t, int);
+void miqt_exec_callback_QPlainTextEdit_ModificationChanged(intptr_t, bool);
+QVariant* miqt_exec_callback_QPlainTextEdit_LoadResource(void*, intptr_t, int, QUrl*);
+QVariant* miqt_exec_callback_QPlainTextEdit_InputMethodQuery(void*, intptr_t, int);
+bool miqt_exec_callback_QPlainTextEdit_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QPlainTextEdit_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QPlainTextEdit_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QPlainTextEdit_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QPlainTextEdit_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QPlainTextEdit_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QPlainTextEdit_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QPlainTextEdit_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QPlainTextEdit_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QPlainTextEdit_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
+bool miqt_exec_callback_QPlainTextEdit_FocusNextPrevChild(void*, intptr_t, bool);
+void miqt_exec_callback_QPlainTextEdit_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QPlainTextEdit_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QPlainTextEdit_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QPlainTextEdit_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QPlainTextEdit_DropEvent(void*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QPlainTextEdit_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QPlainTextEdit_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QPlainTextEdit_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QPlainTextEdit_ChangeEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QPlainTextEdit_WheelEvent(void*, intptr_t, QWheelEvent*);
+QMimeData* miqt_exec_callback_QPlainTextEdit_CreateMimeDataFromSelection(void*, intptr_t);
+bool miqt_exec_callback_QPlainTextEdit_CanInsertFromMimeData(void*, intptr_t, QMimeData*);
+void miqt_exec_callback_QPlainTextEdit_InsertFromMimeData(void*, intptr_t, QMimeData*);
+void miqt_exec_callback_QPlainTextEdit_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
+void miqt_exec_callback_QPlainTextEdit_ScrollContentsBy(void*, intptr_t, int, int);
+void miqt_exec_callback_QPlainTextEdit_DoSetTextCursor(void*, intptr_t, QTextCursor*);
+QSize* miqt_exec_callback_QPlainTextEdit_MinimumSizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QPlainTextEdit_SizeHint(void*, intptr_t);
+void miqt_exec_callback_QPlainTextEdit_SetupViewport(void*, intptr_t, QWidget*);
+bool miqt_exec_callback_QPlainTextEdit_EventFilter(void*, intptr_t, QObject*, QEvent*);
+bool miqt_exec_callback_QPlainTextEdit_ViewportEvent(void*, intptr_t, QEvent*);
+QSize* miqt_exec_callback_QPlainTextEdit_ViewportSizeHint(void*, intptr_t);
+void miqt_exec_callback_QPlainTextDocumentLayout_Draw(void*, intptr_t, QPainter*, QAbstractTextDocumentLayout__PaintContext*);
+int miqt_exec_callback_QPlainTextDocumentLayout_HitTest(void*, intptr_t, QPointF*, int);
+int miqt_exec_callback_QPlainTextDocumentLayout_PageCount(void*, intptr_t);
+QSizeF* miqt_exec_callback_QPlainTextDocumentLayout_DocumentSize(void*, intptr_t);
+QRectF* miqt_exec_callback_QPlainTextDocumentLayout_FrameBoundingRect(void*, intptr_t, QTextFrame*);
+QRectF* miqt_exec_callback_QPlainTextDocumentLayout_BlockBoundingRect(void*, intptr_t, QTextBlock*);
+void miqt_exec_callback_QPlainTextDocumentLayout_DocumentChanged(void*, intptr_t, int, int, int);
+void miqt_exec_callback_QPlainTextDocumentLayout_ResizeInlineObject(void*, intptr_t, QTextInlineObject*, int, QTextFormat*);
+void miqt_exec_callback_QPlainTextDocumentLayout_PositionInlineObject(void*, intptr_t, QTextInlineObject*, int, QTextFormat*);
+void miqt_exec_callback_QPlainTextDocumentLayout_DrawInlineObject(void*, intptr_t, QPainter*, QRectF*, QTextInlineObject*, int, QTextFormat*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQPlainTextEdit : public virtual QPlainTextEdit {
 public:

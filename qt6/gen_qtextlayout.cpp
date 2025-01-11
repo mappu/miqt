@@ -19,10 +19,13 @@
 #include <qtextlayout.h>
 #include "gen_qtextlayout.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QTextInlineObject* QTextInlineObject_new() {
 	return new QTextInlineObject();

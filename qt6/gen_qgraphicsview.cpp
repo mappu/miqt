@@ -38,10 +38,44 @@
 #include <qgraphicsview.h>
 #include "gen_qgraphicsview.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QGraphicsView_RubberBandChanged(intptr_t, QRect*, QPointF*, QPointF*);
+QSize* miqt_exec_callback_QGraphicsView_SizeHint(void*, intptr_t);
+QVariant* miqt_exec_callback_QGraphicsView_InputMethodQuery(void*, intptr_t, int);
+void miqt_exec_callback_QGraphicsView_SetupViewport(void*, intptr_t, QWidget*);
+bool miqt_exec_callback_QGraphicsView_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGraphicsView_ViewportEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsView_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QGraphicsView_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QGraphicsView_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QGraphicsView_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QGraphicsView_DropEvent(void*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QGraphicsView_FocusInEvent(void*, intptr_t, QFocusEvent*);
+bool miqt_exec_callback_QGraphicsView_FocusNextPrevChild(void*, intptr_t, bool);
+void miqt_exec_callback_QGraphicsView_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QGraphicsView_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QGraphicsView_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QGraphicsView_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QGraphicsView_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QGraphicsView_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QGraphicsView_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QGraphicsView_WheelEvent(void*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QGraphicsView_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QGraphicsView_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QGraphicsView_ScrollContentsBy(void*, intptr_t, int, int);
+void miqt_exec_callback_QGraphicsView_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QGraphicsView_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
+void miqt_exec_callback_QGraphicsView_DrawBackground(void*, intptr_t, QPainter*, QRectF*);
+void miqt_exec_callback_QGraphicsView_DrawForeground(void*, intptr_t, QPainter*, QRectF*);
+QSize* miqt_exec_callback_QGraphicsView_MinimumSizeHint(void*, intptr_t);
+bool miqt_exec_callback_QGraphicsView_EventFilter(void*, intptr_t, QObject*, QEvent*);
+QSize* miqt_exec_callback_QGraphicsView_ViewportSizeHint(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQGraphicsView : public virtual QGraphicsView {
 public:

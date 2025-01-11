@@ -9,10 +9,15 @@
 #include <qmediavideoprobecontrol.h>
 #include "gen_qmediavideoprobecontrol.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QMediaVideoProbeControl_VideoFrameProbed(intptr_t, QVideoFrame*);
+void miqt_exec_callback_QMediaVideoProbeControl_Flush(intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QMediaVideoProbeControl_virtbase(QMediaVideoProbeControl* src, QMediaControl** outptr_QMediaControl) {
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);

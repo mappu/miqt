@@ -9,10 +9,13 @@
 #include <qresource.h>
 #include "gen_qresource.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QResource* QResource_new() {
 	return new QResource();

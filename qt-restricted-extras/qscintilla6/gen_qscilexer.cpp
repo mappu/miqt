@@ -14,10 +14,59 @@
 #include <qscilexer.h>
 #include "gen_qscilexer.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QsciLexer_ColorChanged(intptr_t, QColor*, int);
+void miqt_exec_callback_QsciLexer_EolFillChanged(intptr_t, bool, int);
+void miqt_exec_callback_QsciLexer_FontChanged(intptr_t, QFont*, int);
+void miqt_exec_callback_QsciLexer_PaperChanged(intptr_t, QColor*, int);
+void miqt_exec_callback_QsciLexer_PropertyChanged(intptr_t, const char*, const char*);
+const char* miqt_exec_callback_QsciLexer_Language(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexer_Lexer(void*, intptr_t);
+int miqt_exec_callback_QsciLexer_LexerId(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexer_AutoCompletionFillups(void*, intptr_t);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QsciLexer_AutoCompletionWordSeparators(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexer_BlockEnd(void*, intptr_t, int*);
+int miqt_exec_callback_QsciLexer_BlockLookback(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexer_BlockStart(void*, intptr_t, int*);
+const char* miqt_exec_callback_QsciLexer_BlockStartKeyword(void*, intptr_t, int*);
+int miqt_exec_callback_QsciLexer_BraceStyle(void*, intptr_t);
+bool miqt_exec_callback_QsciLexer_CaseSensitive(void*, intptr_t);
+QColor* miqt_exec_callback_QsciLexer_Color(void*, intptr_t, int);
+bool miqt_exec_callback_QsciLexer_EolFill(void*, intptr_t, int);
+QFont* miqt_exec_callback_QsciLexer_Font(void*, intptr_t, int);
+int miqt_exec_callback_QsciLexer_IndentationGuideView(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexer_Keywords(void*, intptr_t, int);
+int miqt_exec_callback_QsciLexer_DefaultStyle(void*, intptr_t);
+struct miqt_string miqt_exec_callback_QsciLexer_Description(void*, intptr_t, int);
+QColor* miqt_exec_callback_QsciLexer_Paper(void*, intptr_t, int);
+QColor* miqt_exec_callback_QsciLexer_DefaultColorWithStyle(void*, intptr_t, int);
+bool miqt_exec_callback_QsciLexer_DefaultEolFill(void*, intptr_t, int);
+QFont* miqt_exec_callback_QsciLexer_DefaultFontWithStyle(void*, intptr_t, int);
+QColor* miqt_exec_callback_QsciLexer_DefaultPaperWithStyle(void*, intptr_t, int);
+void miqt_exec_callback_QsciLexer_SetEditor(void*, intptr_t, QsciScintilla*);
+void miqt_exec_callback_QsciLexer_RefreshProperties(void*, intptr_t);
+int miqt_exec_callback_QsciLexer_StyleBitsNeeded(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexer_WordCharacters(void*, intptr_t);
+void miqt_exec_callback_QsciLexer_SetAutoIndentStyle(void*, intptr_t, int);
+void miqt_exec_callback_QsciLexer_SetColor(void*, intptr_t, QColor*, int);
+void miqt_exec_callback_QsciLexer_SetEolFill(void*, intptr_t, bool, int);
+void miqt_exec_callback_QsciLexer_SetFont(void*, intptr_t, QFont*, int);
+void miqt_exec_callback_QsciLexer_SetPaper(void*, intptr_t, QColor*, int);
+bool miqt_exec_callback_QsciLexer_ReadProperties(void*, intptr_t, QSettings*, struct miqt_string);
+bool miqt_exec_callback_QsciLexer_WriteProperties(void*, intptr_t, QSettings*, struct miqt_string);
+bool miqt_exec_callback_QsciLexer_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QsciLexer_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QsciLexer_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QsciLexer_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QsciLexer_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QsciLexer_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QsciLexer_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQsciLexer : public virtual QsciLexer {
 public:

@@ -13,10 +13,13 @@
 #include <qwebelement.h>
 #include "gen_qwebelement.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QWebElement* QWebElement_new() {
 	return new QWebElement();

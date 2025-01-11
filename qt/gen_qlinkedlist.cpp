@@ -2,10 +2,13 @@
 #include <qlinkedlist.h>
 #include "gen_qlinkedlist.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QLinkedListData* QLinkedListData_new() {
 	return new QLinkedListData();

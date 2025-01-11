@@ -36,10 +36,57 @@
 #include <qkeysequenceedit.h>
 #include "gen_qkeysequenceedit.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QKeySequenceEdit_EditingFinished(intptr_t);
+void miqt_exec_callback_QKeySequenceEdit_KeySequenceChanged(intptr_t, QKeySequence*);
+bool miqt_exec_callback_QKeySequenceEdit_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QKeySequenceEdit_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QKeySequenceEdit_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QKeySequenceEdit_TimerEvent(void*, intptr_t, QTimerEvent*);
+int miqt_exec_callback_QKeySequenceEdit_DevType(void*, intptr_t);
+void miqt_exec_callback_QKeySequenceEdit_SetVisible(void*, intptr_t, bool);
+QSize* miqt_exec_callback_QKeySequenceEdit_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QKeySequenceEdit_MinimumSizeHint(void*, intptr_t);
+int miqt_exec_callback_QKeySequenceEdit_HeightForWidth(void*, intptr_t, int);
+bool miqt_exec_callback_QKeySequenceEdit_HasHeightForWidth(void*, intptr_t);
+QPaintEngine* miqt_exec_callback_QKeySequenceEdit_PaintEngine(void*, intptr_t);
+void miqt_exec_callback_QKeySequenceEdit_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QKeySequenceEdit_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QKeySequenceEdit_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QKeySequenceEdit_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QKeySequenceEdit_WheelEvent(void*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QKeySequenceEdit_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QKeySequenceEdit_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QKeySequenceEdit_EnterEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QKeySequenceEdit_LeaveEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QKeySequenceEdit_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QKeySequenceEdit_MoveEvent(void*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QKeySequenceEdit_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QKeySequenceEdit_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QKeySequenceEdit_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QKeySequenceEdit_TabletEvent(void*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QKeySequenceEdit_ActionEvent(void*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QKeySequenceEdit_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QKeySequenceEdit_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QKeySequenceEdit_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QKeySequenceEdit_DropEvent(void*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QKeySequenceEdit_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QKeySequenceEdit_HideEvent(void*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QKeySequenceEdit_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
+void miqt_exec_callback_QKeySequenceEdit_ChangeEvent(void*, intptr_t, QEvent*);
+int miqt_exec_callback_QKeySequenceEdit_Metric(void*, intptr_t, int);
+void miqt_exec_callback_QKeySequenceEdit_InitPainter(void*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QKeySequenceEdit_Redirected(void*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QKeySequenceEdit_SharedPainter(void*, intptr_t);
+void miqt_exec_callback_QKeySequenceEdit_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QKeySequenceEdit_InputMethodQuery(void*, intptr_t, int);
+bool miqt_exec_callback_QKeySequenceEdit_FocusNextPrevChild(void*, intptr_t, bool);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQKeySequenceEdit : public virtual QKeySequenceEdit {
 public:

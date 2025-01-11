@@ -10,10 +10,47 @@
 #include <qscilexerruby.h>
 #include "gen_qscilexerruby.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+const char* miqt_exec_callback_QsciLexerRuby_Language(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerRuby_Lexer(void*, intptr_t);
+int miqt_exec_callback_QsciLexerRuby_LexerId(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerRuby_AutoCompletionFillups(void*, intptr_t);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QsciLexerRuby_AutoCompletionWordSeparators(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerRuby_BlockEnd(void*, intptr_t, int*);
+int miqt_exec_callback_QsciLexerRuby_BlockLookback(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerRuby_BlockStart(void*, intptr_t, int*);
+const char* miqt_exec_callback_QsciLexerRuby_BlockStartKeyword(void*, intptr_t, int*);
+int miqt_exec_callback_QsciLexerRuby_BraceStyle(void*, intptr_t);
+bool miqt_exec_callback_QsciLexerRuby_CaseSensitive(void*, intptr_t);
+QColor* miqt_exec_callback_QsciLexerRuby_Color(void*, intptr_t, int);
+bool miqt_exec_callback_QsciLexerRuby_EolFill(void*, intptr_t, int);
+QFont* miqt_exec_callback_QsciLexerRuby_Font(void*, intptr_t, int);
+int miqt_exec_callback_QsciLexerRuby_IndentationGuideView(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerRuby_Keywords(void*, intptr_t, int);
+int miqt_exec_callback_QsciLexerRuby_DefaultStyle(void*, intptr_t);
+struct miqt_string miqt_exec_callback_QsciLexerRuby_Description(void*, intptr_t, int);
+QColor* miqt_exec_callback_QsciLexerRuby_Paper(void*, intptr_t, int);
+QColor* miqt_exec_callback_QsciLexerRuby_DefaultColorWithStyle(void*, intptr_t, int);
+bool miqt_exec_callback_QsciLexerRuby_DefaultEolFill(void*, intptr_t, int);
+QFont* miqt_exec_callback_QsciLexerRuby_DefaultFontWithStyle(void*, intptr_t, int);
+QColor* miqt_exec_callback_QsciLexerRuby_DefaultPaperWithStyle(void*, intptr_t, int);
+void miqt_exec_callback_QsciLexerRuby_SetEditor(void*, intptr_t, QsciScintilla*);
+void miqt_exec_callback_QsciLexerRuby_RefreshProperties(void*, intptr_t);
+int miqt_exec_callback_QsciLexerRuby_StyleBitsNeeded(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerRuby_WordCharacters(void*, intptr_t);
+void miqt_exec_callback_QsciLexerRuby_SetAutoIndentStyle(void*, intptr_t, int);
+void miqt_exec_callback_QsciLexerRuby_SetColor(void*, intptr_t, QColor*, int);
+void miqt_exec_callback_QsciLexerRuby_SetEolFill(void*, intptr_t, bool, int);
+void miqt_exec_callback_QsciLexerRuby_SetFont(void*, intptr_t, QFont*, int);
+void miqt_exec_callback_QsciLexerRuby_SetPaper(void*, intptr_t, QColor*, int);
+bool miqt_exec_callback_QsciLexerRuby_ReadProperties(void*, intptr_t, QSettings*, struct miqt_string);
+bool miqt_exec_callback_QsciLexerRuby_WriteProperties(void*, intptr_t, QSettings*, struct miqt_string);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQsciLexerRuby : public virtual QsciLexerRuby {
 public:

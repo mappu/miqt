@@ -18,10 +18,13 @@
 #include <qwebenginehistory.h>
 #include "gen_qwebenginehistory.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QWebEngineHistoryItem* QWebEngineHistoryItem_new(QWebEngineHistoryItem* other) {
 	return new QWebEngineHistoryItem(*other);

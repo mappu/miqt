@@ -22,10 +22,52 @@
 #include <qfilesystemmodel.h>
 #include "gen_qfilesystemmodel.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QFileSystemModel_RootPathChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QFileSystemModel_FileRenamed(intptr_t, struct miqt_string, struct miqt_string, struct miqt_string);
+void miqt_exec_callback_QFileSystemModel_DirectoryLoaded(intptr_t, struct miqt_string);
+QModelIndex* miqt_exec_callback_QFileSystemModel_Index(void*, intptr_t, int, int, QModelIndex*);
+QModelIndex* miqt_exec_callback_QFileSystemModel_Parent(void*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QFileSystemModel_Sibling(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QFileSystemModel_HasChildren(void*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QFileSystemModel_CanFetchMore(void*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QFileSystemModel_FetchMore(void*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QFileSystemModel_RowCount(void*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QFileSystemModel_ColumnCount(void*, intptr_t, QModelIndex*);
+QVariant* miqt_exec_callback_QFileSystemModel_Data(void*, intptr_t, QModelIndex*, int);
+bool miqt_exec_callback_QFileSystemModel_SetData(void*, intptr_t, QModelIndex*, QVariant*, int);
+QVariant* miqt_exec_callback_QFileSystemModel_HeaderData(void*, intptr_t, int, int, int);
+int miqt_exec_callback_QFileSystemModel_Flags(void*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QFileSystemModel_Sort(void*, intptr_t, int, int);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QFileSystemModel_MimeTypes(void*, intptr_t);
+QMimeData* miqt_exec_callback_QFileSystemModel_MimeData(void*, intptr_t, struct miqt_array /* of QModelIndex* */ );
+bool miqt_exec_callback_QFileSystemModel_DropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+int miqt_exec_callback_QFileSystemModel_SupportedDropActions(void*, intptr_t);
+void miqt_exec_callback_QFileSystemModel_TimerEvent(void*, intptr_t, QTimerEvent*);
+bool miqt_exec_callback_QFileSystemModel_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QFileSystemModel_SetHeaderData(void*, intptr_t, int, int, QVariant*, int);
+struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QFileSystemModel_ItemData(void*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QFileSystemModel_SetItemData(void*, intptr_t, QModelIndex*, struct miqt_map /* of int to QVariant* */ );
+bool miqt_exec_callback_QFileSystemModel_CanDropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+int miqt_exec_callback_QFileSystemModel_SupportedDragActions(void*, intptr_t);
+bool miqt_exec_callback_QFileSystemModel_InsertRows(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QFileSystemModel_InsertColumns(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QFileSystemModel_RemoveRows(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QFileSystemModel_RemoveColumns(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QFileSystemModel_MoveRows(void*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+bool miqt_exec_callback_QFileSystemModel_MoveColumns(void*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+QModelIndex* miqt_exec_callback_QFileSystemModel_Buddy(void*, intptr_t, QModelIndex*);
+struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QFileSystemModel_Match(void*, intptr_t, QModelIndex*, int, QVariant*, int, int);
+QSize* miqt_exec_callback_QFileSystemModel_Span(void*, intptr_t, QModelIndex*);
+struct miqt_map /* of int to struct miqt_string */  miqt_exec_callback_QFileSystemModel_RoleNames(void*, intptr_t);
+bool miqt_exec_callback_QFileSystemModel_Submit(void*, intptr_t);
+void miqt_exec_callback_QFileSystemModel_Revert(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQFileSystemModel : public virtual QFileSystemModel {
 public:

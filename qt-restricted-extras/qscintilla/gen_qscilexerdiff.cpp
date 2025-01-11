@@ -10,10 +10,47 @@
 #include <qscilexerdiff.h>
 #include "gen_qscilexerdiff.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+const char* miqt_exec_callback_QsciLexerDiff_Language(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerDiff_Lexer(void*, intptr_t);
+int miqt_exec_callback_QsciLexerDiff_LexerId(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerDiff_AutoCompletionFillups(void*, intptr_t);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QsciLexerDiff_AutoCompletionWordSeparators(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerDiff_BlockEnd(void*, intptr_t, int*);
+int miqt_exec_callback_QsciLexerDiff_BlockLookback(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerDiff_BlockStart(void*, intptr_t, int*);
+const char* miqt_exec_callback_QsciLexerDiff_BlockStartKeyword(void*, intptr_t, int*);
+int miqt_exec_callback_QsciLexerDiff_BraceStyle(void*, intptr_t);
+bool miqt_exec_callback_QsciLexerDiff_CaseSensitive(void*, intptr_t);
+QColor* miqt_exec_callback_QsciLexerDiff_Color(void*, intptr_t, int);
+bool miqt_exec_callback_QsciLexerDiff_EolFill(void*, intptr_t, int);
+QFont* miqt_exec_callback_QsciLexerDiff_Font(void*, intptr_t, int);
+int miqt_exec_callback_QsciLexerDiff_IndentationGuideView(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerDiff_Keywords(void*, intptr_t, int);
+int miqt_exec_callback_QsciLexerDiff_DefaultStyle(void*, intptr_t);
+struct miqt_string miqt_exec_callback_QsciLexerDiff_Description(void*, intptr_t, int);
+QColor* miqt_exec_callback_QsciLexerDiff_Paper(void*, intptr_t, int);
+QColor* miqt_exec_callback_QsciLexerDiff_DefaultColorWithStyle(void*, intptr_t, int);
+bool miqt_exec_callback_QsciLexerDiff_DefaultEolFill(void*, intptr_t, int);
+QFont* miqt_exec_callback_QsciLexerDiff_DefaultFontWithStyle(void*, intptr_t, int);
+QColor* miqt_exec_callback_QsciLexerDiff_DefaultPaperWithStyle(void*, intptr_t, int);
+void miqt_exec_callback_QsciLexerDiff_SetEditor(void*, intptr_t, QsciScintilla*);
+void miqt_exec_callback_QsciLexerDiff_RefreshProperties(void*, intptr_t);
+int miqt_exec_callback_QsciLexerDiff_StyleBitsNeeded(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerDiff_WordCharacters(void*, intptr_t);
+void miqt_exec_callback_QsciLexerDiff_SetAutoIndentStyle(void*, intptr_t, int);
+void miqt_exec_callback_QsciLexerDiff_SetColor(void*, intptr_t, QColor*, int);
+void miqt_exec_callback_QsciLexerDiff_SetEolFill(void*, intptr_t, bool, int);
+void miqt_exec_callback_QsciLexerDiff_SetFont(void*, intptr_t, QFont*, int);
+void miqt_exec_callback_QsciLexerDiff_SetPaper(void*, intptr_t, QColor*, int);
+bool miqt_exec_callback_QsciLexerDiff_ReadProperties(void*, intptr_t, QSettings*, struct miqt_string);
+bool miqt_exec_callback_QsciLexerDiff_WriteProperties(void*, intptr_t, QSettings*, struct miqt_string);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQsciLexerDiff : public virtual QsciLexerDiff {
 public:

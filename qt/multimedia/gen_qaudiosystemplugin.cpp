@@ -17,10 +17,24 @@
 #include <qaudiosystemplugin.h>
 #include "gen_qaudiosystemplugin.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QAudioSystemPlugin_AvailableDevices(void*, intptr_t, int);
+QAbstractAudioInput* miqt_exec_callback_QAudioSystemPlugin_CreateInput(void*, intptr_t, struct miqt_string);
+QAbstractAudioOutput* miqt_exec_callback_QAudioSystemPlugin_CreateOutput(void*, intptr_t, struct miqt_string);
+QAbstractAudioDeviceInfo* miqt_exec_callback_QAudioSystemPlugin_CreateDeviceInfo(void*, intptr_t, struct miqt_string, int);
+bool miqt_exec_callback_QAudioSystemPlugin_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAudioSystemPlugin_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAudioSystemPlugin_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAudioSystemPlugin_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAudioSystemPlugin_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QAudioSystemPlugin_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAudioSystemPlugin_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 struct miqt_array /* of struct miqt_string */  QAudioSystemFactoryInterface_AvailableDevices(const QAudioSystemFactoryInterface* self, int param1) {
 	QList<QByteArray> _ret = self->availableDevices(static_cast<QAudio::Mode>(param1));

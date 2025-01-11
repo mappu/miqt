@@ -23,10 +23,35 @@
 #include <qscrollarea.h>
 #include "gen_qscrollarea.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+QSize* miqt_exec_callback_QScrollArea_SizeHint(void*, intptr_t);
+bool miqt_exec_callback_QScrollArea_FocusNextPrevChild(void*, intptr_t, bool);
+bool miqt_exec_callback_QScrollArea_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QScrollArea_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QScrollArea_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QScrollArea_ScrollContentsBy(void*, intptr_t, int, int);
+QSize* miqt_exec_callback_QScrollArea_ViewportSizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QScrollArea_MinimumSizeHint(void*, intptr_t);
+void miqt_exec_callback_QScrollArea_SetupViewport(void*, intptr_t, QWidget*);
+bool miqt_exec_callback_QScrollArea_ViewportEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QScrollArea_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QScrollArea_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QScrollArea_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QScrollArea_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QScrollArea_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QScrollArea_WheelEvent(void*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QScrollArea_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QScrollArea_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QScrollArea_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QScrollArea_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QScrollArea_DropEvent(void*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QScrollArea_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQScrollArea : public virtual QScrollArea {
 public:

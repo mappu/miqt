@@ -7,10 +7,13 @@
 #include <qwebenginescriptcollection.h>
 #include "gen_qwebenginescriptcollection.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 bool QWebEngineScriptCollection_IsEmpty(const QWebEngineScriptCollection* self) {
 	return self->isEmpty();

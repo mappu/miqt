@@ -2,10 +2,13 @@
 #include <qstringtokenizer.h>
 #include "gen_qstringtokenizer.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QStringTokenizerBaseBase* QStringTokenizerBaseBase_new(QStringTokenizerBaseBase* param1) {
 	return new QStringTokenizerBaseBase(*param1);

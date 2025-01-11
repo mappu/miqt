@@ -12,10 +12,20 @@
 #include <qsocketnotifier.h>
 #include "gen_qsocketnotifier.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+bool miqt_exec_callback_QSocketNotifier_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QSocketNotifier_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QSocketNotifier_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSocketNotifier_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QSocketNotifier_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QSocketNotifier_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSocketNotifier_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQSocketNotifier : public virtual QSocketNotifier {
 public:

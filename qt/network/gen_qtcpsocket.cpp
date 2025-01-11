@@ -10,10 +10,34 @@
 #include <qtcpsocket.h>
 #include "gen_qtcpsocket.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QTcpSocket_Resume(void*, intptr_t);
+void miqt_exec_callback_QTcpSocket_ConnectToHost(void*, intptr_t, struct miqt_string, uint16_t, int, int);
+void miqt_exec_callback_QTcpSocket_DisconnectFromHost(void*, intptr_t);
+long long miqt_exec_callback_QTcpSocket_BytesAvailable(void*, intptr_t);
+long long miqt_exec_callback_QTcpSocket_BytesToWrite(void*, intptr_t);
+bool miqt_exec_callback_QTcpSocket_CanReadLine(void*, intptr_t);
+void miqt_exec_callback_QTcpSocket_SetReadBufferSize(void*, intptr_t, long long);
+intptr_t miqt_exec_callback_QTcpSocket_SocketDescriptor(void*, intptr_t);
+bool miqt_exec_callback_QTcpSocket_SetSocketDescriptor(void*, intptr_t, intptr_t, int, int);
+void miqt_exec_callback_QTcpSocket_SetSocketOption(void*, intptr_t, int, QVariant*);
+QVariant* miqt_exec_callback_QTcpSocket_SocketOption(void*, intptr_t, int);
+void miqt_exec_callback_QTcpSocket_Close(void*, intptr_t);
+bool miqt_exec_callback_QTcpSocket_IsSequential(void*, intptr_t);
+bool miqt_exec_callback_QTcpSocket_AtEnd(void*, intptr_t);
+bool miqt_exec_callback_QTcpSocket_WaitForConnected(void*, intptr_t, int);
+bool miqt_exec_callback_QTcpSocket_WaitForReadyRead(void*, intptr_t, int);
+bool miqt_exec_callback_QTcpSocket_WaitForBytesWritten(void*, intptr_t, int);
+bool miqt_exec_callback_QTcpSocket_WaitForDisconnected(void*, intptr_t, int);
+long long miqt_exec_callback_QTcpSocket_ReadData(void*, intptr_t, char*, long long);
+long long miqt_exec_callback_QTcpSocket_ReadLineData(void*, intptr_t, char*, long long);
+long long miqt_exec_callback_QTcpSocket_WriteData(void*, intptr_t, const char*, long long);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQTcpSocket : public virtual QTcpSocket {
 public:

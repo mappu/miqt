@@ -32,10 +32,18 @@
 #include <qaccessible.h>
 #include "gen_qaccessible.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+QAccessibleInterface* miqt_exec_callback_QAccessibleEvent_AccessibleInterface(void*, intptr_t);
+QAccessibleInterface* miqt_exec_callback_QAccessibleStateChangeEvent_AccessibleInterface(void*, intptr_t);
+QAccessibleInterface* miqt_exec_callback_QAccessibleTextCursorEvent_AccessibleInterface(void*, intptr_t);
+QAccessibleInterface* miqt_exec_callback_QAccessibleValueChangeEvent_AccessibleInterface(void*, intptr_t);
+QAccessibleInterface* miqt_exec_callback_QAccessibleTableModelChangeEvent_AccessibleInterface(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 bool QAccessibleInterface_IsValid(const QAccessibleInterface* self) {
 	return self->isValid();

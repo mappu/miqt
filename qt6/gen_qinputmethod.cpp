@@ -11,10 +11,21 @@
 #include <qinputmethod.h>
 #include "gen_qinputmethod.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QInputMethod_CursorRectangleChanged(intptr_t);
+void miqt_exec_callback_QInputMethod_AnchorRectangleChanged(intptr_t);
+void miqt_exec_callback_QInputMethod_KeyboardRectangleChanged(intptr_t);
+void miqt_exec_callback_QInputMethod_InputItemClipRectangleChanged(intptr_t);
+void miqt_exec_callback_QInputMethod_VisibleChanged(intptr_t);
+void miqt_exec_callback_QInputMethod_AnimatingChanged(intptr_t);
+void miqt_exec_callback_QInputMethod_LocaleChanged(intptr_t);
+void miqt_exec_callback_QInputMethod_InputDirectionChanged(intptr_t, int);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QInputMethod_virtbase(QInputMethod* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);

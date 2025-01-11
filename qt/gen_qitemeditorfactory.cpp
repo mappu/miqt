@@ -5,10 +5,15 @@
 #include <qitemeditorfactory.h>
 #include "gen_qitemeditorfactory.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+QWidget* miqt_exec_callback_QItemEditorFactory_CreateEditor(void*, intptr_t, int, QWidget*);
+struct miqt_string miqt_exec_callback_QItemEditorFactory_ValuePropertyName(void*, intptr_t, int);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QWidget* QItemEditorCreatorBase_CreateWidget(const QItemEditorCreatorBase* self, QWidget* parent) {
 	return self->createWidget(parent);

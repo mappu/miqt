@@ -10,10 +10,13 @@
 #include <qtimezone.h>
 #include "gen_qtimezone.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QTimeZone* QTimeZone_new() {
 	return new QTimeZone();

@@ -13,10 +13,16 @@
 #include <qstate.h>
 #include "gen_qstate.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QState_OnEntry(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QState_OnExit(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QState_Event(void*, intptr_t, QEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQState : public virtual QState {
 public:

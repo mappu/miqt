@@ -13,10 +13,23 @@
 #include <qvideosink.h>
 #include "gen_qvideosink.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QVideoSink_VideoFrameChanged(intptr_t, QVideoFrame*);
+void miqt_exec_callback_QVideoSink_SubtitleTextChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QVideoSink_VideoSizeChanged(intptr_t);
+bool miqt_exec_callback_QVideoSink_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QVideoSink_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QVideoSink_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QVideoSink_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QVideoSink_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QVideoSink_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QVideoSink_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQVideoSink : public virtual QVideoSink {
 public:

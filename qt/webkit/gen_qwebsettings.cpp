@@ -9,10 +9,13 @@
 #include <qwebsettings.h>
 #include "gen_qwebsettings.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QWebSettings* QWebSettings_GlobalSettings() {
 	return QWebSettings::globalSettings();

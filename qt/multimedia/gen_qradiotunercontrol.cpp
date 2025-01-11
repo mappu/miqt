@@ -9,10 +9,24 @@
 #include <qradiotunercontrol.h>
 #include "gen_qradiotunercontrol.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QRadioTunerControl_StateChanged(intptr_t, int);
+void miqt_exec_callback_QRadioTunerControl_BandChanged(intptr_t, int);
+void miqt_exec_callback_QRadioTunerControl_FrequencyChanged(intptr_t, int);
+void miqt_exec_callback_QRadioTunerControl_StereoStatusChanged(intptr_t, bool);
+void miqt_exec_callback_QRadioTunerControl_SearchingChanged(intptr_t, bool);
+void miqt_exec_callback_QRadioTunerControl_SignalStrengthChanged(intptr_t, int);
+void miqt_exec_callback_QRadioTunerControl_VolumeChanged(intptr_t, int);
+void miqt_exec_callback_QRadioTunerControl_MutedChanged(intptr_t, bool);
+void miqt_exec_callback_QRadioTunerControl_ErrorWithErr(intptr_t, int);
+void miqt_exec_callback_QRadioTunerControl_StationFound(intptr_t, int, struct miqt_string);
+void miqt_exec_callback_QRadioTunerControl_AntennaConnectedChanged(intptr_t, bool);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QRadioTunerControl_virtbase(QRadioTunerControl* src, QMediaControl** outptr_QMediaControl) {
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);

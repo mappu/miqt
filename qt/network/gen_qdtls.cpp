@@ -21,10 +21,29 @@
 #include <qdtls.h>
 #include "gen_qdtls.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+bool miqt_exec_callback_QDtlsClientVerifier_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QDtlsClientVerifier_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QDtlsClientVerifier_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QDtlsClientVerifier_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QDtlsClientVerifier_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QDtlsClientVerifier_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QDtlsClientVerifier_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QDtls_PskRequired(intptr_t, QSslPreSharedKeyAuthenticator*);
+void miqt_exec_callback_QDtls_HandshakeTimeout(intptr_t);
+bool miqt_exec_callback_QDtls_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QDtls_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QDtls_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QDtls_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QDtls_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QDtls_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QDtls_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQDtlsClientVerifier : public virtual QDtlsClientVerifier {
 public:

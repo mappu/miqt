@@ -10,10 +10,19 @@
 #include <qtemporaryfile.h>
 #include "gen_qtemporaryfile.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+struct miqt_string miqt_exec_callback_QTemporaryFile_FileName(void*, intptr_t);
+bool miqt_exec_callback_QTemporaryFile_OpenWithFlags(void*, intptr_t, int);
+long long miqt_exec_callback_QTemporaryFile_Size(void*, intptr_t);
+bool miqt_exec_callback_QTemporaryFile_Resize(void*, intptr_t, long long);
+int miqt_exec_callback_QTemporaryFile_Permissions(void*, intptr_t);
+bool miqt_exec_callback_QTemporaryFile_SetPermissions(void*, intptr_t, int);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQTemporaryFile : public virtual QTemporaryFile {
 public:

@@ -18,10 +18,29 @@
 #include <qradiobutton.h>
 #include "gen_qradiobutton.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+QSize* miqt_exec_callback_QRadioButton_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QRadioButton_MinimumSizeHint(void*, intptr_t);
+bool miqt_exec_callback_QRadioButton_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QRadioButton_HitButton(void*, intptr_t, QPoint*);
+void miqt_exec_callback_QRadioButton_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QRadioButton_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QRadioButton_CheckStateSet(void*, intptr_t);
+void miqt_exec_callback_QRadioButton_NextCheckState(void*, intptr_t);
+void miqt_exec_callback_QRadioButton_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QRadioButton_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QRadioButton_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QRadioButton_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QRadioButton_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QRadioButton_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QRadioButton_ChangeEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QRadioButton_TimerEvent(void*, intptr_t, QTimerEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQRadioButton : public virtual QRadioButton {
 public:

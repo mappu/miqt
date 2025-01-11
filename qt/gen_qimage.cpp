@@ -21,10 +21,19 @@
 #include <qimage.h>
 #include "gen_qimage.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+int miqt_exec_callback_QImage_DevType(void*, intptr_t);
+QPaintEngine* miqt_exec_callback_QImage_PaintEngine(void*, intptr_t);
+int miqt_exec_callback_QImage_Metric(void*, intptr_t, int);
+void miqt_exec_callback_QImage_InitPainter(void*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QImage_Redirected(void*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QImage_SharedPainter(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQImage : public virtual QImage {
 public:

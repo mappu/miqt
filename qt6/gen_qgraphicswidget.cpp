@@ -35,10 +35,48 @@
 #include <qgraphicswidget.h>
 #include "gen_qgraphicswidget.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QGraphicsWidget_GeometryChanged(intptr_t);
+void miqt_exec_callback_QGraphicsWidget_LayoutChanged(intptr_t);
+void miqt_exec_callback_QGraphicsWidget_SetGeometry(void*, intptr_t, QRectF*);
+void miqt_exec_callback_QGraphicsWidget_GetContentsMargins(void*, intptr_t, double*, double*, double*, double*);
+int miqt_exec_callback_QGraphicsWidget_Type(void*, intptr_t);
+void miqt_exec_callback_QGraphicsWidget_Paint(void*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
+void miqt_exec_callback_QGraphicsWidget_PaintWindowFrame(void*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
+QRectF* miqt_exec_callback_QGraphicsWidget_BoundingRect(void*, intptr_t);
+QPainterPath* miqt_exec_callback_QGraphicsWidget_Shape(void*, intptr_t);
+void miqt_exec_callback_QGraphicsWidget_InitStyleOption(void*, intptr_t, QStyleOption*);
+QSizeF* miqt_exec_callback_QGraphicsWidget_SizeHint(void*, intptr_t, int, QSizeF*);
+void miqt_exec_callback_QGraphicsWidget_UpdateGeometry(void*, intptr_t);
+QVariant* miqt_exec_callback_QGraphicsWidget_ItemChange(void*, intptr_t, int, QVariant*);
+QVariant* miqt_exec_callback_QGraphicsWidget_PropertyChange(void*, intptr_t, struct miqt_string, QVariant*);
+bool miqt_exec_callback_QGraphicsWidget_SceneEvent(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGraphicsWidget_WindowFrameEvent(void*, intptr_t, QEvent*);
+int miqt_exec_callback_QGraphicsWidget_WindowFrameSectionAt(void*, intptr_t, QPointF*);
+bool miqt_exec_callback_QGraphicsWidget_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsWidget_ChangeEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsWidget_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QGraphicsWidget_FocusInEvent(void*, intptr_t, QFocusEvent*);
+bool miqt_exec_callback_QGraphicsWidget_FocusNextPrevChild(void*, intptr_t, bool);
+void miqt_exec_callback_QGraphicsWidget_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QGraphicsWidget_HideEvent(void*, intptr_t, QHideEvent*);
+void miqt_exec_callback_QGraphicsWidget_MoveEvent(void*, intptr_t, QGraphicsSceneMoveEvent*);
+void miqt_exec_callback_QGraphicsWidget_PolishEvent(void*, intptr_t);
+void miqt_exec_callback_QGraphicsWidget_ResizeEvent(void*, intptr_t, QGraphicsSceneResizeEvent*);
+void miqt_exec_callback_QGraphicsWidget_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QGraphicsWidget_HoverMoveEvent(void*, intptr_t, QGraphicsSceneHoverEvent*);
+void miqt_exec_callback_QGraphicsWidget_HoverLeaveEvent(void*, intptr_t, QGraphicsSceneHoverEvent*);
+void miqt_exec_callback_QGraphicsWidget_GrabMouseEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsWidget_UngrabMouseEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsWidget_GrabKeyboardEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsWidget_UngrabKeyboardEvent(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGraphicsWidget_IsEmpty(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQGraphicsWidget : public virtual QGraphicsWidget {
 public:

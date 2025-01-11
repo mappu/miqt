@@ -10,10 +10,13 @@
 #include <qwebenginecontextmenurequest.h>
 #include "gen_qwebenginecontextmenurequest.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QWebEngineContextMenuRequest_virtbase(QWebEngineContextMenuRequest* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);

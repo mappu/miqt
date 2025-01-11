@@ -17,10 +17,35 @@
 #include <qmediaplayer.h>
 #include "gen_qmediaplayer.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QMediaPlayer_MediaChanged(intptr_t, QMediaContent*);
+void miqt_exec_callback_QMediaPlayer_CurrentMediaChanged(intptr_t, QMediaContent*);
+void miqt_exec_callback_QMediaPlayer_StateChanged(intptr_t, int);
+void miqt_exec_callback_QMediaPlayer_MediaStatusChanged(intptr_t, int);
+void miqt_exec_callback_QMediaPlayer_DurationChanged(intptr_t, long long);
+void miqt_exec_callback_QMediaPlayer_PositionChanged(intptr_t, long long);
+void miqt_exec_callback_QMediaPlayer_VolumeChanged(intptr_t, int);
+void miqt_exec_callback_QMediaPlayer_MutedChanged(intptr_t, bool);
+void miqt_exec_callback_QMediaPlayer_AudioAvailableChanged(intptr_t, bool);
+void miqt_exec_callback_QMediaPlayer_VideoAvailableChanged(intptr_t, bool);
+void miqt_exec_callback_QMediaPlayer_BufferStatusChanged(intptr_t, int);
+void miqt_exec_callback_QMediaPlayer_SeekableChanged(intptr_t, bool);
+void miqt_exec_callback_QMediaPlayer_PlaybackRateChanged(intptr_t, double);
+void miqt_exec_callback_QMediaPlayer_AudioRoleChanged(intptr_t, int);
+void miqt_exec_callback_QMediaPlayer_CustomAudioRoleChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QMediaPlayer_ErrorWithError(intptr_t, int);
+void miqt_exec_callback_QMediaPlayer_NetworkConfigurationChanged(intptr_t, QNetworkConfiguration*);
+int miqt_exec_callback_QMediaPlayer_Availability(void*, intptr_t);
+bool miqt_exec_callback_QMediaPlayer_Bind(void*, intptr_t, QObject*);
+void miqt_exec_callback_QMediaPlayer_Unbind(void*, intptr_t, QObject*);
+bool miqt_exec_callback_QMediaPlayer_IsAvailable(void*, intptr_t);
+QMediaService* miqt_exec_callback_QMediaPlayer_Service(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQMediaPlayer : public virtual QMediaPlayer {
 public:

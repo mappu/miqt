@@ -17,10 +17,32 @@
 #include <qimagecapture.h>
 #include "gen_qimagecapture.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QImageCapture_ErrorChanged(intptr_t);
+void miqt_exec_callback_QImageCapture_ErrorOccurred(intptr_t, int, int, struct miqt_string);
+void miqt_exec_callback_QImageCapture_ReadyForCaptureChanged(intptr_t, bool);
+void miqt_exec_callback_QImageCapture_MetaDataChanged(intptr_t);
+void miqt_exec_callback_QImageCapture_FileFormatChanged(intptr_t);
+void miqt_exec_callback_QImageCapture_QualityChanged(intptr_t);
+void miqt_exec_callback_QImageCapture_ResolutionChanged(intptr_t);
+void miqt_exec_callback_QImageCapture_ImageExposed(intptr_t, int);
+void miqt_exec_callback_QImageCapture_ImageCaptured(intptr_t, int, QImage*);
+void miqt_exec_callback_QImageCapture_ImageMetadataAvailable(intptr_t, int, QMediaMetaData*);
+void miqt_exec_callback_QImageCapture_ImageAvailable(intptr_t, int, QVideoFrame*);
+void miqt_exec_callback_QImageCapture_ImageSaved(intptr_t, int, struct miqt_string);
+bool miqt_exec_callback_QImageCapture_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QImageCapture_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QImageCapture_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QImageCapture_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QImageCapture_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QImageCapture_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QImageCapture_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQImageCapture : public virtual QImageCapture {
 public:

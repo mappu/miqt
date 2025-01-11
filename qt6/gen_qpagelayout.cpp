@@ -7,10 +7,13 @@
 #include <qpagelayout.h>
 #include "gen_qpagelayout.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QPageLayout* QPageLayout_new() {
 	return new QPageLayout();

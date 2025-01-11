@@ -9,10 +9,14 @@
 #include <qcameracapturebufferformatcontrol.h>
 #include "gen_qcameracapturebufferformatcontrol.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QCameraCaptureBufferFormatControl_BufferFormatChanged(intptr_t, int);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QCameraCaptureBufferFormatControl_virtbase(QCameraCaptureBufferFormatControl* src, QMediaControl** outptr_QMediaControl) {
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);

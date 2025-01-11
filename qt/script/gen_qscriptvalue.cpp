@@ -14,10 +14,13 @@
 #include <qscriptvalue.h>
 #include "gen_qscriptvalue.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QScriptValue* QScriptValue_new() {
 	return new QScriptValue();

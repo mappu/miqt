@@ -32,10 +32,79 @@
 #include <qdatetimeedit.h>
 #include "gen_qdatetimeedit.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QDateTimeEdit_DateTimeChanged(intptr_t, QDateTime*);
+void miqt_exec_callback_QDateTimeEdit_TimeChanged(intptr_t, QTime*);
+void miqt_exec_callback_QDateTimeEdit_DateChanged(intptr_t, QDate*);
+QSize* miqt_exec_callback_QDateTimeEdit_SizeHint(void*, intptr_t);
+void miqt_exec_callback_QDateTimeEdit_Clear(void*, intptr_t);
+void miqt_exec_callback_QDateTimeEdit_StepBy(void*, intptr_t, int);
+bool miqt_exec_callback_QDateTimeEdit_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QDateTimeEdit_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QDateTimeEdit_WheelEvent(void*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QDateTimeEdit_FocusInEvent(void*, intptr_t, QFocusEvent*);
+bool miqt_exec_callback_QDateTimeEdit_FocusNextPrevChild(void*, intptr_t, bool);
+int miqt_exec_callback_QDateTimeEdit_Validate(void*, intptr_t, struct miqt_string, int*);
+void miqt_exec_callback_QDateTimeEdit_Fixup(void*, intptr_t, struct miqt_string);
+QDateTime* miqt_exec_callback_QDateTimeEdit_DateTimeFromText(void*, intptr_t, struct miqt_string);
+struct miqt_string miqt_exec_callback_QDateTimeEdit_TextFromDateTime(void*, intptr_t, QDateTime*);
+int miqt_exec_callback_QDateTimeEdit_StepEnabled(void*, intptr_t);
+void miqt_exec_callback_QDateTimeEdit_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDateTimeEdit_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QDateTimeEdit_InitStyleOption(void*, intptr_t, QStyleOptionSpinBox*);
+QSize* miqt_exec_callback_QDateTimeEdit_MinimumSizeHint(void*, intptr_t);
+QVariant* miqt_exec_callback_QDateTimeEdit_InputMethodQuery(void*, intptr_t, int);
+void miqt_exec_callback_QDateTimeEdit_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QDateTimeEdit_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QDateTimeEdit_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QDateTimeEdit_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QDateTimeEdit_ChangeEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QDateTimeEdit_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QDateTimeEdit_HideEvent(void*, intptr_t, QHideEvent*);
+void miqt_exec_callback_QDateTimeEdit_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDateTimeEdit_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDateTimeEdit_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QDateTimeEdit_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QTimeEdit_UserTimeChanged(intptr_t, QTime*);
+QSize* miqt_exec_callback_QTimeEdit_SizeHint(void*, intptr_t);
+void miqt_exec_callback_QTimeEdit_Clear(void*, intptr_t);
+void miqt_exec_callback_QTimeEdit_StepBy(void*, intptr_t, int);
+bool miqt_exec_callback_QTimeEdit_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QTimeEdit_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QTimeEdit_WheelEvent(void*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QTimeEdit_FocusInEvent(void*, intptr_t, QFocusEvent*);
+bool miqt_exec_callback_QTimeEdit_FocusNextPrevChild(void*, intptr_t, bool);
+int miqt_exec_callback_QTimeEdit_Validate(void*, intptr_t, struct miqt_string, int*);
+void miqt_exec_callback_QTimeEdit_Fixup(void*, intptr_t, struct miqt_string);
+QDateTime* miqt_exec_callback_QTimeEdit_DateTimeFromText(void*, intptr_t, struct miqt_string);
+struct miqt_string miqt_exec_callback_QTimeEdit_TextFromDateTime(void*, intptr_t, QDateTime*);
+int miqt_exec_callback_QTimeEdit_StepEnabled(void*, intptr_t);
+void miqt_exec_callback_QTimeEdit_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTimeEdit_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QTimeEdit_InitStyleOption(void*, intptr_t, QStyleOptionSpinBox*);
+void miqt_exec_callback_QDateEdit_UserDateChanged(intptr_t, QDate*);
+QSize* miqt_exec_callback_QDateEdit_SizeHint(void*, intptr_t);
+void miqt_exec_callback_QDateEdit_Clear(void*, intptr_t);
+void miqt_exec_callback_QDateEdit_StepBy(void*, intptr_t, int);
+bool miqt_exec_callback_QDateEdit_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QDateEdit_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QDateEdit_WheelEvent(void*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QDateEdit_FocusInEvent(void*, intptr_t, QFocusEvent*);
+bool miqt_exec_callback_QDateEdit_FocusNextPrevChild(void*, intptr_t, bool);
+int miqt_exec_callback_QDateEdit_Validate(void*, intptr_t, struct miqt_string, int*);
+void miqt_exec_callback_QDateEdit_Fixup(void*, intptr_t, struct miqt_string);
+QDateTime* miqt_exec_callback_QDateEdit_DateTimeFromText(void*, intptr_t, struct miqt_string);
+struct miqt_string miqt_exec_callback_QDateEdit_TextFromDateTime(void*, intptr_t, QDateTime*);
+int miqt_exec_callback_QDateEdit_StepEnabled(void*, intptr_t);
+void miqt_exec_callback_QDateEdit_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDateEdit_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QDateEdit_InitStyleOption(void*, intptr_t, QStyleOptionSpinBox*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQDateTimeEdit : public virtual QDateTimeEdit {
 public:

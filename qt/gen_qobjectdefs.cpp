@@ -15,10 +15,13 @@
 #include <qobjectdefs.h>
 #include "gen_qobjectdefs.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QGenericArgument* QGenericArgument_new() {
 	return new QGenericArgument();

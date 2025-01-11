@@ -3,10 +3,13 @@
 #include <qarraydata.h>
 #include "gen_qarraydata.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 ptrdiff_t QArrayData_AllocatedCapacity(QArrayData* self) {
 	qsizetype _ret = self->allocatedCapacity();

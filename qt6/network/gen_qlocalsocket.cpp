@@ -9,10 +9,34 @@
 #include <qlocalsocket.h>
 #include "gen_qlocalsocket.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QLocalSocket_Connected(intptr_t);
+void miqt_exec_callback_QLocalSocket_Disconnected(intptr_t);
+void miqt_exec_callback_QLocalSocket_ErrorOccurred(intptr_t, int);
+void miqt_exec_callback_QLocalSocket_StateChanged(intptr_t, int);
+bool miqt_exec_callback_QLocalSocket_IsSequential(void*, intptr_t);
+long long miqt_exec_callback_QLocalSocket_BytesAvailable(void*, intptr_t);
+long long miqt_exec_callback_QLocalSocket_BytesToWrite(void*, intptr_t);
+bool miqt_exec_callback_QLocalSocket_CanReadLine(void*, intptr_t);
+bool miqt_exec_callback_QLocalSocket_Open(void*, intptr_t, int);
+void miqt_exec_callback_QLocalSocket_Close(void*, intptr_t);
+bool miqt_exec_callback_QLocalSocket_WaitForBytesWritten(void*, intptr_t, int);
+bool miqt_exec_callback_QLocalSocket_WaitForReadyRead(void*, intptr_t, int);
+long long miqt_exec_callback_QLocalSocket_ReadData(void*, intptr_t, char*, long long);
+long long miqt_exec_callback_QLocalSocket_ReadLineData(void*, intptr_t, char*, long long);
+long long miqt_exec_callback_QLocalSocket_SkipData(void*, intptr_t, long long);
+long long miqt_exec_callback_QLocalSocket_WriteData(void*, intptr_t, const char*, long long);
+long long miqt_exec_callback_QLocalSocket_Pos(void*, intptr_t);
+long long miqt_exec_callback_QLocalSocket_Size(void*, intptr_t);
+bool miqt_exec_callback_QLocalSocket_Seek(void*, intptr_t, long long);
+bool miqt_exec_callback_QLocalSocket_AtEnd(void*, intptr_t);
+bool miqt_exec_callback_QLocalSocket_Reset(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQLocalSocket : public virtual QLocalSocket {
 public:

@@ -16,10 +16,36 @@
 #include <qvalidator.h>
 #include "gen_qvalidator.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QValidator_Changed(intptr_t);
+int miqt_exec_callback_QValidator_Validate(void*, intptr_t, struct miqt_string, int*);
+void miqt_exec_callback_QValidator_Fixup(void*, intptr_t, struct miqt_string);
+bool miqt_exec_callback_QValidator_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QValidator_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QValidator_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QValidator_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QValidator_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QValidator_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QValidator_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QIntValidator_BottomChanged(intptr_t, int);
+void miqt_exec_callback_QIntValidator_TopChanged(intptr_t, int);
+int miqt_exec_callback_QIntValidator_Validate(void*, intptr_t, struct miqt_string, int*);
+void miqt_exec_callback_QIntValidator_Fixup(void*, intptr_t, struct miqt_string);
+void miqt_exec_callback_QDoubleValidator_BottomChanged(intptr_t, double);
+void miqt_exec_callback_QDoubleValidator_TopChanged(intptr_t, double);
+void miqt_exec_callback_QDoubleValidator_DecimalsChanged(intptr_t, int);
+void miqt_exec_callback_QDoubleValidator_NotationChanged(intptr_t, int);
+int miqt_exec_callback_QDoubleValidator_Validate(void*, intptr_t, struct miqt_string, int*);
+void miqt_exec_callback_QDoubleValidator_Fixup(void*, intptr_t, struct miqt_string);
+void miqt_exec_callback_QRegularExpressionValidator_RegularExpressionChanged(intptr_t, QRegularExpression*);
+int miqt_exec_callback_QRegularExpressionValidator_Validate(void*, intptr_t, struct miqt_string, int*);
+void miqt_exec_callback_QRegularExpressionValidator_Fixup(void*, intptr_t, struct miqt_string);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQValidator : public virtual QValidator {
 public:

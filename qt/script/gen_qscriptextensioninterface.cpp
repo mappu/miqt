@@ -8,10 +8,15 @@
 #include <qscriptextensioninterface.h>
 #include "gen_qscriptextensioninterface.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QScriptExtensionInterface_Initialize(void*, intptr_t, struct miqt_string, QScriptEngine*);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QScriptExtensionInterface_Keys(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQScriptExtensionInterface : public virtual QScriptExtensionInterface {
 public:

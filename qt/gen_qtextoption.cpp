@@ -5,10 +5,13 @@
 #include <qtextoption.h>
 #include "gen_qtextoption.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QTextOption* QTextOption_new() {
 	return new QTextOption();

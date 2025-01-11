@@ -1,10 +1,13 @@
 #include <qscidocument.h>
 #include "gen_qscidocument.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QsciDocument* QsciDocument_new() {
 	return new QsciDocument();

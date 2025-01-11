@@ -26,10 +26,23 @@
 #include <qwebframe.h>
 #include "gen_qwebframe.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QWebFrame_JavaScriptWindowObjectCleared(intptr_t);
+void miqt_exec_callback_QWebFrame_ProvisionalLoad(intptr_t);
+void miqt_exec_callback_QWebFrame_TitleChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QWebFrame_UrlChanged(intptr_t, QUrl*);
+void miqt_exec_callback_QWebFrame_InitialLayoutCompleted(intptr_t);
+void miqt_exec_callback_QWebFrame_IconChanged(intptr_t);
+void miqt_exec_callback_QWebFrame_ContentsSizeChanged(intptr_t, QSize*);
+void miqt_exec_callback_QWebFrame_LoadStarted(intptr_t);
+void miqt_exec_callback_QWebFrame_LoadFinished(intptr_t, bool);
+void miqt_exec_callback_QWebFrame_PageChanged(intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QWebHitTestResult* QWebHitTestResult_new() {
 	return new QWebHitTestResult();

@@ -40,10 +40,60 @@
 #include <qcalendarwidget.h>
 #include "gen_qcalendarwidget.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QCalendarWidget_SelectionChanged(intptr_t);
+void miqt_exec_callback_QCalendarWidget_Clicked(intptr_t, QDate*);
+void miqt_exec_callback_QCalendarWidget_Activated(intptr_t, QDate*);
+void miqt_exec_callback_QCalendarWidget_CurrentPageChanged(intptr_t, int, int);
+QSize* miqt_exec_callback_QCalendarWidget_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QCalendarWidget_MinimumSizeHint(void*, intptr_t);
+bool miqt_exec_callback_QCalendarWidget_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QCalendarWidget_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QCalendarWidget_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QCalendarWidget_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QCalendarWidget_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QCalendarWidget_PaintCell(void*, intptr_t, QPainter*, QRect*, QDate*);
+int miqt_exec_callback_QCalendarWidget_DevType(void*, intptr_t);
+void miqt_exec_callback_QCalendarWidget_SetVisible(void*, intptr_t, bool);
+int miqt_exec_callback_QCalendarWidget_HeightForWidth(void*, intptr_t, int);
+bool miqt_exec_callback_QCalendarWidget_HasHeightForWidth(void*, intptr_t);
+QPaintEngine* miqt_exec_callback_QCalendarWidget_PaintEngine(void*, intptr_t);
+void miqt_exec_callback_QCalendarWidget_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QCalendarWidget_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QCalendarWidget_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QCalendarWidget_WheelEvent(void*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QCalendarWidget_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QCalendarWidget_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QCalendarWidget_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QCalendarWidget_EnterEvent(void*, intptr_t, QEnterEvent*);
+void miqt_exec_callback_QCalendarWidget_LeaveEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QCalendarWidget_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QCalendarWidget_MoveEvent(void*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QCalendarWidget_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QCalendarWidget_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QCalendarWidget_TabletEvent(void*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QCalendarWidget_ActionEvent(void*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QCalendarWidget_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QCalendarWidget_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QCalendarWidget_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QCalendarWidget_DropEvent(void*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QCalendarWidget_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QCalendarWidget_HideEvent(void*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QCalendarWidget_NativeEvent(void*, intptr_t, struct miqt_string, void*, intptr_t*);
+void miqt_exec_callback_QCalendarWidget_ChangeEvent(void*, intptr_t, QEvent*);
+int miqt_exec_callback_QCalendarWidget_Metric(void*, intptr_t, int);
+void miqt_exec_callback_QCalendarWidget_InitPainter(void*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QCalendarWidget_Redirected(void*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QCalendarWidget_SharedPainter(void*, intptr_t);
+void miqt_exec_callback_QCalendarWidget_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QCalendarWidget_InputMethodQuery(void*, intptr_t, int);
+bool miqt_exec_callback_QCalendarWidget_FocusNextPrevChild(void*, intptr_t, bool);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQCalendarWidget : public virtual QCalendarWidget {
 public:

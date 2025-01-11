@@ -4,10 +4,13 @@
 #include <qscicommand.h>
 #include "gen_qscicommand.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 int QsciCommand_Command(const QsciCommand* self) {
 	QsciCommand::Command _ret = self->command();

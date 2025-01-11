@@ -4,10 +4,13 @@
 #include <qsslkey.h>
 #include "gen_qsslkey.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QSslKey* QSslKey_new() {
 	return new QSslKey();

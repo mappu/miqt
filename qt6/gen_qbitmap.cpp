@@ -12,10 +12,16 @@
 #include <qbitmap.h>
 #include "gen_qbitmap.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+int miqt_exec_callback_QBitmap_DevType(void*, intptr_t);
+QPaintEngine* miqt_exec_callback_QBitmap_PaintEngine(void*, intptr_t);
+int miqt_exec_callback_QBitmap_Metric(void*, intptr_t, int);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQBitmap : public virtual QBitmap {
 public:

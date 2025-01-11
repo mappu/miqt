@@ -11,10 +11,13 @@
 #include <qmatrix.h>
 #include "gen_qmatrix.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QMatrix* QMatrix_new(int param1) {
 	return new QMatrix(static_cast<Qt::Initialization>(param1));

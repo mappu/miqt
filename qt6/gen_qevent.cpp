@@ -65,10 +65,110 @@
 #include <qevent.h>
 #include "gen_qevent.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+QInputEvent* miqt_exec_callback_QInputEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QInputEvent_SetTimestamp(void*, intptr_t, unsigned long long);
+void miqt_exec_callback_QInputEvent_SetAccepted(void*, intptr_t, bool);
+QPointerEvent* miqt_exec_callback_QPointerEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QPointerEvent_SetTimestamp(void*, intptr_t, unsigned long long);
+bool miqt_exec_callback_QPointerEvent_IsBeginEvent(void*, intptr_t);
+bool miqt_exec_callback_QPointerEvent_IsUpdateEvent(void*, intptr_t);
+bool miqt_exec_callback_QPointerEvent_IsEndEvent(void*, intptr_t);
+void miqt_exec_callback_QPointerEvent_SetAccepted(void*, intptr_t, bool);
+QEnterEvent* miqt_exec_callback_QEnterEvent_Clone(void*, intptr_t);
+bool miqt_exec_callback_QEnterEvent_IsBeginEvent(void*, intptr_t);
+bool miqt_exec_callback_QEnterEvent_IsUpdateEvent(void*, intptr_t);
+bool miqt_exec_callback_QEnterEvent_IsEndEvent(void*, intptr_t);
+QMouseEvent* miqt_exec_callback_QMouseEvent_Clone(void*, intptr_t);
+bool miqt_exec_callback_QMouseEvent_IsBeginEvent(void*, intptr_t);
+bool miqt_exec_callback_QMouseEvent_IsUpdateEvent(void*, intptr_t);
+bool miqt_exec_callback_QMouseEvent_IsEndEvent(void*, intptr_t);
+QHoverEvent* miqt_exec_callback_QHoverEvent_Clone(void*, intptr_t);
+bool miqt_exec_callback_QHoverEvent_IsUpdateEvent(void*, intptr_t);
+bool miqt_exec_callback_QHoverEvent_IsBeginEvent(void*, intptr_t);
+bool miqt_exec_callback_QHoverEvent_IsEndEvent(void*, intptr_t);
+QWheelEvent* miqt_exec_callback_QWheelEvent_Clone(void*, intptr_t);
+bool miqt_exec_callback_QWheelEvent_IsBeginEvent(void*, intptr_t);
+bool miqt_exec_callback_QWheelEvent_IsUpdateEvent(void*, intptr_t);
+bool miqt_exec_callback_QWheelEvent_IsEndEvent(void*, intptr_t);
+QTabletEvent* miqt_exec_callback_QTabletEvent_Clone(void*, intptr_t);
+bool miqt_exec_callback_QTabletEvent_IsBeginEvent(void*, intptr_t);
+bool miqt_exec_callback_QTabletEvent_IsUpdateEvent(void*, intptr_t);
+bool miqt_exec_callback_QTabletEvent_IsEndEvent(void*, intptr_t);
+QNativeGestureEvent* miqt_exec_callback_QNativeGestureEvent_Clone(void*, intptr_t);
+bool miqt_exec_callback_QNativeGestureEvent_IsBeginEvent(void*, intptr_t);
+bool miqt_exec_callback_QNativeGestureEvent_IsUpdateEvent(void*, intptr_t);
+bool miqt_exec_callback_QNativeGestureEvent_IsEndEvent(void*, intptr_t);
+QKeyEvent* miqt_exec_callback_QKeyEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QKeyEvent_SetTimestamp(void*, intptr_t, unsigned long long);
+QFocusEvent* miqt_exec_callback_QFocusEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QFocusEvent_SetAccepted(void*, intptr_t, bool);
+QPaintEvent* miqt_exec_callback_QPaintEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QPaintEvent_SetAccepted(void*, intptr_t, bool);
+QMoveEvent* miqt_exec_callback_QMoveEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QMoveEvent_SetAccepted(void*, intptr_t, bool);
+QExposeEvent* miqt_exec_callback_QExposeEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QExposeEvent_SetAccepted(void*, intptr_t, bool);
+QPlatformSurfaceEvent* miqt_exec_callback_QPlatformSurfaceEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QPlatformSurfaceEvent_SetAccepted(void*, intptr_t, bool);
+QResizeEvent* miqt_exec_callback_QResizeEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QResizeEvent_SetAccepted(void*, intptr_t, bool);
+QCloseEvent* miqt_exec_callback_QCloseEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QCloseEvent_SetAccepted(void*, intptr_t, bool);
+QIconDragEvent* miqt_exec_callback_QIconDragEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QIconDragEvent_SetAccepted(void*, intptr_t, bool);
+QShowEvent* miqt_exec_callback_QShowEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QShowEvent_SetAccepted(void*, intptr_t, bool);
+QHideEvent* miqt_exec_callback_QHideEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QHideEvent_SetAccepted(void*, intptr_t, bool);
+QContextMenuEvent* miqt_exec_callback_QContextMenuEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QContextMenuEvent_SetTimestamp(void*, intptr_t, unsigned long long);
+QInputMethodEvent* miqt_exec_callback_QInputMethodEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QInputMethodEvent_SetAccepted(void*, intptr_t, bool);
+QInputMethodQueryEvent* miqt_exec_callback_QInputMethodQueryEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QInputMethodQueryEvent_SetAccepted(void*, intptr_t, bool);
+QDropEvent* miqt_exec_callback_QDropEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QDropEvent_SetAccepted(void*, intptr_t, bool);
+QDragMoveEvent* miqt_exec_callback_QDragMoveEvent_Clone(void*, intptr_t);
+QDragEnterEvent* miqt_exec_callback_QDragEnterEvent_Clone(void*, intptr_t);
+QDragLeaveEvent* miqt_exec_callback_QDragLeaveEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QDragLeaveEvent_SetAccepted(void*, intptr_t, bool);
+QHelpEvent* miqt_exec_callback_QHelpEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QHelpEvent_SetAccepted(void*, intptr_t, bool);
+QStatusTipEvent* miqt_exec_callback_QStatusTipEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QStatusTipEvent_SetAccepted(void*, intptr_t, bool);
+QWhatsThisClickedEvent* miqt_exec_callback_QWhatsThisClickedEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QWhatsThisClickedEvent_SetAccepted(void*, intptr_t, bool);
+QActionEvent* miqt_exec_callback_QActionEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QActionEvent_SetAccepted(void*, intptr_t, bool);
+QFileOpenEvent* miqt_exec_callback_QFileOpenEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QFileOpenEvent_SetAccepted(void*, intptr_t, bool);
+QToolBarChangeEvent* miqt_exec_callback_QToolBarChangeEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QToolBarChangeEvent_SetAccepted(void*, intptr_t, bool);
+QShortcutEvent* miqt_exec_callback_QShortcutEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QShortcutEvent_SetAccepted(void*, intptr_t, bool);
+QWindowStateChangeEvent* miqt_exec_callback_QWindowStateChangeEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QWindowStateChangeEvent_SetAccepted(void*, intptr_t, bool);
+QTouchEvent* miqt_exec_callback_QTouchEvent_Clone(void*, intptr_t);
+bool miqt_exec_callback_QTouchEvent_IsBeginEvent(void*, intptr_t);
+bool miqt_exec_callback_QTouchEvent_IsUpdateEvent(void*, intptr_t);
+bool miqt_exec_callback_QTouchEvent_IsEndEvent(void*, intptr_t);
+void miqt_exec_callback_QTouchEvent_SetTimestamp(void*, intptr_t, unsigned long long);
+void miqt_exec_callback_QTouchEvent_SetAccepted(void*, intptr_t, bool);
+QScrollPrepareEvent* miqt_exec_callback_QScrollPrepareEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QScrollPrepareEvent_SetAccepted(void*, intptr_t, bool);
+QScrollEvent* miqt_exec_callback_QScrollEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QScrollEvent_SetAccepted(void*, intptr_t, bool);
+QScreenOrientationChangeEvent* miqt_exec_callback_QScreenOrientationChangeEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QScreenOrientationChangeEvent_SetAccepted(void*, intptr_t, bool);
+QApplicationStateChangeEvent* miqt_exec_callback_QApplicationStateChangeEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QApplicationStateChangeEvent_SetAccepted(void*, intptr_t, bool);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQInputEvent : public virtual QInputEvent {
 public:

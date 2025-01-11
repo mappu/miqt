@@ -9,10 +9,20 @@
 #include <qcameraexposure.h>
 #include "gen_qcameraexposure.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QCameraExposure_FlashReady(intptr_t, bool);
+void miqt_exec_callback_QCameraExposure_ApertureChanged(intptr_t, double);
+void miqt_exec_callback_QCameraExposure_ApertureRangeChanged(intptr_t);
+void miqt_exec_callback_QCameraExposure_ShutterSpeedChanged(intptr_t, double);
+void miqt_exec_callback_QCameraExposure_ShutterSpeedRangeChanged(intptr_t);
+void miqt_exec_callback_QCameraExposure_IsoSensitivityChanged(intptr_t, int);
+void miqt_exec_callback_QCameraExposure_ExposureCompensationChanged(intptr_t, double);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QCameraExposure_virtbase(QCameraExposure* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);

@@ -15,10 +15,23 @@
 #include <qmimedata.h>
 #include "gen_qmimedata.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+bool miqt_exec_callback_QMimeData_HasFormat(void*, intptr_t, struct miqt_string);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QMimeData_Formats(void*, intptr_t);
+QVariant* miqt_exec_callback_QMimeData_RetrieveData(void*, intptr_t, struct miqt_string, int);
+bool miqt_exec_callback_QMimeData_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QMimeData_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QMimeData_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QMimeData_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QMimeData_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QMimeData_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QMimeData_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQMimeData : public virtual QMimeData {
 public:

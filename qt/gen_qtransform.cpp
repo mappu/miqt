@@ -12,10 +12,13 @@
 #include <qtransform.h>
 #include "gen_qtransform.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QTransform* QTransform_new(int param1) {
 	return new QTransform(static_cast<Qt::Initialization>(param1));

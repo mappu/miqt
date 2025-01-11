@@ -3,10 +3,13 @@
 #include <qocspresponse.h>
 #include "gen_qocspresponse.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QOcspResponse* QOcspResponse_new() {
 	return new QOcspResponse();

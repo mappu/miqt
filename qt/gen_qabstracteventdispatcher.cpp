@@ -13,10 +13,15 @@
 #include <qabstracteventdispatcher.h>
 #include "gen_qabstracteventdispatcher.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QAbstractEventDispatcher_AboutToBlock(intptr_t);
+void miqt_exec_callback_QAbstractEventDispatcher_Awake(intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QAbstractEventDispatcher_virtbase(QAbstractEventDispatcher* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);

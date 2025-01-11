@@ -5,10 +5,13 @@
 #include <qloggingcategory.h>
 #include "gen_qloggingcategory.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QLoggingCategory* QLoggingCategory_new(const char* category) {
 	return new QLoggingCategory(category);

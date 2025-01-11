@@ -13,10 +13,13 @@
 #include <qicon.h>
 #include "gen_qicon.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QIcon* QIcon_new() {
 	return new QIcon();

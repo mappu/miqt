@@ -2,10 +2,13 @@
 #include <qhashfunctions.h>
 #include "gen_qhashfunctions.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QHashSeed* QHashSeed_new() {
 	return new QHashSeed();

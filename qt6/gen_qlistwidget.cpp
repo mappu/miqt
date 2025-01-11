@@ -38,10 +38,67 @@
 #include <qlistwidget.h>
 #include "gen_qlistwidget.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+QListWidgetItem* miqt_exec_callback_QListWidgetItem_Clone(void*, intptr_t);
+QVariant* miqt_exec_callback_QListWidgetItem_Data(void*, intptr_t, int);
+void miqt_exec_callback_QListWidgetItem_SetData(void*, intptr_t, int, QVariant*);
+bool miqt_exec_callback_QListWidgetItem_OperatorLesser(void*, intptr_t, QListWidgetItem*);
+void miqt_exec_callback_QListWidgetItem_Read(void*, intptr_t, QDataStream*);
+void miqt_exec_callback_QListWidgetItem_Write(void*, intptr_t, QDataStream*);
+void miqt_exec_callback_QListWidget_ItemPressed(intptr_t, QListWidgetItem*);
+void miqt_exec_callback_QListWidget_ItemClicked(intptr_t, QListWidgetItem*);
+void miqt_exec_callback_QListWidget_ItemDoubleClicked(intptr_t, QListWidgetItem*);
+void miqt_exec_callback_QListWidget_ItemActivated(intptr_t, QListWidgetItem*);
+void miqt_exec_callback_QListWidget_ItemEntered(intptr_t, QListWidgetItem*);
+void miqt_exec_callback_QListWidget_ItemChanged(intptr_t, QListWidgetItem*);
+void miqt_exec_callback_QListWidget_CurrentItemChanged(intptr_t, QListWidgetItem*, QListWidgetItem*);
+void miqt_exec_callback_QListWidget_CurrentTextChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QListWidget_CurrentRowChanged(intptr_t, int);
+void miqt_exec_callback_QListWidget_ItemSelectionChanged(intptr_t);
+void miqt_exec_callback_QListWidget_SetSelectionModel(void*, intptr_t, QItemSelectionModel*);
+void miqt_exec_callback_QListWidget_DropEvent(void*, intptr_t, QDropEvent*);
+bool miqt_exec_callback_QListWidget_Event(void*, intptr_t, QEvent*);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QListWidget_MimeTypes(void*, intptr_t);
+QMimeData* miqt_exec_callback_QListWidget_MimeData(void*, intptr_t, struct miqt_array /* of QListWidgetItem* */ );
+bool miqt_exec_callback_QListWidget_DropMimeData(void*, intptr_t, int, QMimeData*, int);
+int miqt_exec_callback_QListWidget_SupportedDropActions(void*, intptr_t);
+QRect* miqt_exec_callback_QListWidget_VisualRect(void*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QListWidget_ScrollTo(void*, intptr_t, QModelIndex*, int);
+QModelIndex* miqt_exec_callback_QListWidget_IndexAt(void*, intptr_t, QPoint*);
+void miqt_exec_callback_QListWidget_DoItemsLayout(void*, intptr_t);
+void miqt_exec_callback_QListWidget_Reset(void*, intptr_t);
+void miqt_exec_callback_QListWidget_SetRootIndex(void*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QListWidget_ScrollContentsBy(void*, intptr_t, int, int);
+void miqt_exec_callback_QListWidget_DataChanged(void*, intptr_t, QModelIndex*, QModelIndex*, struct miqt_array /* of int */ );
+void miqt_exec_callback_QListWidget_RowsInserted(void*, intptr_t, QModelIndex*, int, int);
+void miqt_exec_callback_QListWidget_RowsAboutToBeRemoved(void*, intptr_t, QModelIndex*, int, int);
+void miqt_exec_callback_QListWidget_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QListWidget_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QListWidget_WheelEvent(void*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QListWidget_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QListWidget_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QListWidget_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QListWidget_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QListWidget_StartDrag(void*, intptr_t, int);
+void miqt_exec_callback_QListWidget_InitViewItemOption(void*, intptr_t, QStyleOptionViewItem*);
+void miqt_exec_callback_QListWidget_PaintEvent(void*, intptr_t, QPaintEvent*);
+int miqt_exec_callback_QListWidget_HorizontalOffset(void*, intptr_t);
+int miqt_exec_callback_QListWidget_VerticalOffset(void*, intptr_t);
+QModelIndex* miqt_exec_callback_QListWidget_MoveCursor(void*, intptr_t, int, int);
+void miqt_exec_callback_QListWidget_SetSelection(void*, intptr_t, QRect*, int);
+QRegion* miqt_exec_callback_QListWidget_VisualRegionForSelection(void*, intptr_t, QItemSelection*);
+struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QListWidget_SelectedIndexes(void*, intptr_t);
+void miqt_exec_callback_QListWidget_UpdateGeometries(void*, intptr_t);
+bool miqt_exec_callback_QListWidget_IsIndexHidden(void*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QListWidget_SelectionChanged(void*, intptr_t, QItemSelection*, QItemSelection*);
+void miqt_exec_callback_QListWidget_CurrentChanged(void*, intptr_t, QModelIndex*, QModelIndex*);
+QSize* miqt_exec_callback_QListWidget_ViewportSizeHint(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQListWidgetItem : public virtual QListWidgetItem {
 public:

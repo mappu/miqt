@@ -9,10 +9,13 @@
 #include <qpagesize.h>
 #include "gen_qpagesize.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QPageSize* QPageSize_new() {
 	return new QPageSize();

@@ -20,10 +20,45 @@
 #include <qgraphicseffect.h>
 #include "gen_qgraphicseffect.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QGraphicsEffect_EnabledChanged(intptr_t, bool);
+QRectF* miqt_exec_callback_QGraphicsEffect_BoundingRectFor(void*, intptr_t, QRectF*);
+void miqt_exec_callback_QGraphicsEffect_Draw(void*, intptr_t, QPainter*);
+void miqt_exec_callback_QGraphicsEffect_SourceChanged(void*, intptr_t, int);
+bool miqt_exec_callback_QGraphicsEffect_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGraphicsEffect_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QGraphicsEffect_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QGraphicsEffect_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QGraphicsEffect_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsEffect_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsEffect_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsColorizeEffect_ColorChanged(intptr_t, QColor*);
+void miqt_exec_callback_QGraphicsColorizeEffect_StrengthChanged(intptr_t, double);
+void miqt_exec_callback_QGraphicsColorizeEffect_Draw(void*, intptr_t, QPainter*);
+QRectF* miqt_exec_callback_QGraphicsColorizeEffect_BoundingRectFor(void*, intptr_t, QRectF*);
+void miqt_exec_callback_QGraphicsColorizeEffect_SourceChanged(void*, intptr_t, int);
+void miqt_exec_callback_QGraphicsBlurEffect_BlurRadiusChanged(intptr_t, double);
+void miqt_exec_callback_QGraphicsBlurEffect_BlurHintsChanged(intptr_t, int);
+QRectF* miqt_exec_callback_QGraphicsBlurEffect_BoundingRectFor(void*, intptr_t, QRectF*);
+void miqt_exec_callback_QGraphicsBlurEffect_Draw(void*, intptr_t, QPainter*);
+void miqt_exec_callback_QGraphicsBlurEffect_SourceChanged(void*, intptr_t, int);
+void miqt_exec_callback_QGraphicsDropShadowEffect_OffsetChanged(intptr_t, QPointF*);
+void miqt_exec_callback_QGraphicsDropShadowEffect_BlurRadiusChanged(intptr_t, double);
+void miqt_exec_callback_QGraphicsDropShadowEffect_ColorChanged(intptr_t, QColor*);
+QRectF* miqt_exec_callback_QGraphicsDropShadowEffect_BoundingRectFor(void*, intptr_t, QRectF*);
+void miqt_exec_callback_QGraphicsDropShadowEffect_Draw(void*, intptr_t, QPainter*);
+void miqt_exec_callback_QGraphicsDropShadowEffect_SourceChanged(void*, intptr_t, int);
+void miqt_exec_callback_QGraphicsOpacityEffect_OpacityChanged(intptr_t, double);
+void miqt_exec_callback_QGraphicsOpacityEffect_OpacityMaskChanged(intptr_t, QBrush*);
+void miqt_exec_callback_QGraphicsOpacityEffect_Draw(void*, intptr_t, QPainter*);
+QRectF* miqt_exec_callback_QGraphicsOpacityEffect_BoundingRectFor(void*, intptr_t, QRectF*);
+void miqt_exec_callback_QGraphicsOpacityEffect_SourceChanged(void*, intptr_t, int);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQGraphicsEffect : public virtual QGraphicsEffect {
 public:

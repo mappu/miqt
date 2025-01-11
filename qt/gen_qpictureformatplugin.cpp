@@ -12,10 +12,23 @@
 #include <qpictureformatplugin.h>
 #include "gen_qpictureformatplugin.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+bool miqt_exec_callback_QPictureFormatPlugin_LoadPicture(void*, intptr_t, struct miqt_string, struct miqt_string, QPicture*);
+bool miqt_exec_callback_QPictureFormatPlugin_SavePicture(void*, intptr_t, struct miqt_string, struct miqt_string, QPicture*);
+bool miqt_exec_callback_QPictureFormatPlugin_InstallIOHandler(void*, intptr_t, struct miqt_string);
+bool miqt_exec_callback_QPictureFormatPlugin_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QPictureFormatPlugin_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QPictureFormatPlugin_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QPictureFormatPlugin_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QPictureFormatPlugin_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QPictureFormatPlugin_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QPictureFormatPlugin_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQPictureFormatPlugin : public virtual QPictureFormatPlugin {
 public:

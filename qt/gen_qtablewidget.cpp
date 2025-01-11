@@ -35,10 +35,65 @@
 #include <qtablewidget.h>
 #include "gen_qtablewidget.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+QTableWidgetItem* miqt_exec_callback_QTableWidgetItem_Clone(void*, intptr_t);
+QVariant* miqt_exec_callback_QTableWidgetItem_Data(void*, intptr_t, int);
+void miqt_exec_callback_QTableWidgetItem_SetData(void*, intptr_t, int, QVariant*);
+bool miqt_exec_callback_QTableWidgetItem_OperatorLesser(void*, intptr_t, QTableWidgetItem*);
+void miqt_exec_callback_QTableWidgetItem_Read(void*, intptr_t, QDataStream*);
+void miqt_exec_callback_QTableWidgetItem_Write(void*, intptr_t, QDataStream*);
+void miqt_exec_callback_QTableWidget_ItemPressed(intptr_t, QTableWidgetItem*);
+void miqt_exec_callback_QTableWidget_ItemClicked(intptr_t, QTableWidgetItem*);
+void miqt_exec_callback_QTableWidget_ItemDoubleClicked(intptr_t, QTableWidgetItem*);
+void miqt_exec_callback_QTableWidget_ItemActivated(intptr_t, QTableWidgetItem*);
+void miqt_exec_callback_QTableWidget_ItemEntered(intptr_t, QTableWidgetItem*);
+void miqt_exec_callback_QTableWidget_ItemChanged(intptr_t, QTableWidgetItem*);
+void miqt_exec_callback_QTableWidget_CurrentItemChanged(intptr_t, QTableWidgetItem*, QTableWidgetItem*);
+void miqt_exec_callback_QTableWidget_ItemSelectionChanged(intptr_t);
+void miqt_exec_callback_QTableWidget_CellPressed(intptr_t, int, int);
+void miqt_exec_callback_QTableWidget_CellClicked(intptr_t, int, int);
+void miqt_exec_callback_QTableWidget_CellDoubleClicked(intptr_t, int, int);
+void miqt_exec_callback_QTableWidget_CellActivated(intptr_t, int, int);
+void miqt_exec_callback_QTableWidget_CellEntered(intptr_t, int, int);
+void miqt_exec_callback_QTableWidget_CellChanged(intptr_t, int, int);
+void miqt_exec_callback_QTableWidget_CurrentCellChanged(intptr_t, int, int, int, int);
+bool miqt_exec_callback_QTableWidget_Event(void*, intptr_t, QEvent*);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QTableWidget_MimeTypes(void*, intptr_t);
+QMimeData* miqt_exec_callback_QTableWidget_MimeData(void*, intptr_t, struct miqt_array /* of QTableWidgetItem* */ );
+bool miqt_exec_callback_QTableWidget_DropMimeData(void*, intptr_t, int, int, QMimeData*, int);
+int miqt_exec_callback_QTableWidget_SupportedDropActions(void*, intptr_t);
+void miqt_exec_callback_QTableWidget_DropEvent(void*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QTableWidget_SetRootIndex(void*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QTableWidget_SetSelectionModel(void*, intptr_t, QItemSelectionModel*);
+void miqt_exec_callback_QTableWidget_DoItemsLayout(void*, intptr_t);
+QRect* miqt_exec_callback_QTableWidget_VisualRect(void*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QTableWidget_ScrollTo(void*, intptr_t, QModelIndex*, int);
+QModelIndex* miqt_exec_callback_QTableWidget_IndexAt(void*, intptr_t, QPoint*);
+void miqt_exec_callback_QTableWidget_ScrollContentsBy(void*, intptr_t, int, int);
+QStyleOptionViewItem* miqt_exec_callback_QTableWidget_ViewOptions(void*, intptr_t);
+void miqt_exec_callback_QTableWidget_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QTableWidget_TimerEvent(void*, intptr_t, QTimerEvent*);
+int miqt_exec_callback_QTableWidget_HorizontalOffset(void*, intptr_t);
+int miqt_exec_callback_QTableWidget_VerticalOffset(void*, intptr_t);
+QModelIndex* miqt_exec_callback_QTableWidget_MoveCursor(void*, intptr_t, int, int);
+void miqt_exec_callback_QTableWidget_SetSelection(void*, intptr_t, QRect*, int);
+QRegion* miqt_exec_callback_QTableWidget_VisualRegionForSelection(void*, intptr_t, QItemSelection*);
+struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QTableWidget_SelectedIndexes(void*, intptr_t);
+void miqt_exec_callback_QTableWidget_UpdateGeometries(void*, intptr_t);
+QSize* miqt_exec_callback_QTableWidget_ViewportSizeHint(void*, intptr_t);
+int miqt_exec_callback_QTableWidget_SizeHintForRow(void*, intptr_t, int);
+int miqt_exec_callback_QTableWidget_SizeHintForColumn(void*, intptr_t, int);
+void miqt_exec_callback_QTableWidget_VerticalScrollbarAction(void*, intptr_t, int);
+void miqt_exec_callback_QTableWidget_HorizontalScrollbarAction(void*, intptr_t, int);
+bool miqt_exec_callback_QTableWidget_IsIndexHidden(void*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QTableWidget_SelectionChanged(void*, intptr_t, QItemSelection*, QItemSelection*);
+void miqt_exec_callback_QTableWidget_CurrentChanged(void*, intptr_t, QModelIndex*, QModelIndex*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QTableWidgetSelectionRange* QTableWidgetSelectionRange_new() {
 	return new QTableWidgetSelectionRange();

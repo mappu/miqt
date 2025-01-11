@@ -10,10 +10,47 @@
 #include <qscilexerjson.h>
 #include "gen_qscilexerjson.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+const char* miqt_exec_callback_QsciLexerJSON_Language(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerJSON_Lexer(void*, intptr_t);
+int miqt_exec_callback_QsciLexerJSON_LexerId(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerJSON_AutoCompletionFillups(void*, intptr_t);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QsciLexerJSON_AutoCompletionWordSeparators(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerJSON_BlockEnd(void*, intptr_t, int*);
+int miqt_exec_callback_QsciLexerJSON_BlockLookback(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerJSON_BlockStart(void*, intptr_t, int*);
+const char* miqt_exec_callback_QsciLexerJSON_BlockStartKeyword(void*, intptr_t, int*);
+int miqt_exec_callback_QsciLexerJSON_BraceStyle(void*, intptr_t);
+bool miqt_exec_callback_QsciLexerJSON_CaseSensitive(void*, intptr_t);
+QColor* miqt_exec_callback_QsciLexerJSON_Color(void*, intptr_t, int);
+bool miqt_exec_callback_QsciLexerJSON_EolFill(void*, intptr_t, int);
+QFont* miqt_exec_callback_QsciLexerJSON_Font(void*, intptr_t, int);
+int miqt_exec_callback_QsciLexerJSON_IndentationGuideView(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerJSON_Keywords(void*, intptr_t, int);
+int miqt_exec_callback_QsciLexerJSON_DefaultStyle(void*, intptr_t);
+struct miqt_string miqt_exec_callback_QsciLexerJSON_Description(void*, intptr_t, int);
+QColor* miqt_exec_callback_QsciLexerJSON_Paper(void*, intptr_t, int);
+QColor* miqt_exec_callback_QsciLexerJSON_DefaultColorWithStyle(void*, intptr_t, int);
+bool miqt_exec_callback_QsciLexerJSON_DefaultEolFill(void*, intptr_t, int);
+QFont* miqt_exec_callback_QsciLexerJSON_DefaultFontWithStyle(void*, intptr_t, int);
+QColor* miqt_exec_callback_QsciLexerJSON_DefaultPaperWithStyle(void*, intptr_t, int);
+void miqt_exec_callback_QsciLexerJSON_SetEditor(void*, intptr_t, QsciScintilla*);
+void miqt_exec_callback_QsciLexerJSON_RefreshProperties(void*, intptr_t);
+int miqt_exec_callback_QsciLexerJSON_StyleBitsNeeded(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerJSON_WordCharacters(void*, intptr_t);
+void miqt_exec_callback_QsciLexerJSON_SetAutoIndentStyle(void*, intptr_t, int);
+void miqt_exec_callback_QsciLexerJSON_SetColor(void*, intptr_t, QColor*, int);
+void miqt_exec_callback_QsciLexerJSON_SetEolFill(void*, intptr_t, bool, int);
+void miqt_exec_callback_QsciLexerJSON_SetFont(void*, intptr_t, QFont*, int);
+void miqt_exec_callback_QsciLexerJSON_SetPaper(void*, intptr_t, QColor*, int);
+bool miqt_exec_callback_QsciLexerJSON_ReadProperties(void*, intptr_t, QSettings*, struct miqt_string);
+bool miqt_exec_callback_QsciLexerJSON_WriteProperties(void*, intptr_t, QSettings*, struct miqt_string);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQsciLexerJSON : public virtual QsciLexerJSON {
 public:

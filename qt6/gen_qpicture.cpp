@@ -11,10 +11,20 @@
 #include <qpicture.h>
 #include "gen_qpicture.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+int miqt_exec_callback_QPicture_DevType(void*, intptr_t);
+void miqt_exec_callback_QPicture_SetData(void*, intptr_t, const char*, unsigned int);
+QPaintEngine* miqt_exec_callback_QPicture_PaintEngine(void*, intptr_t);
+int miqt_exec_callback_QPicture_Metric(void*, intptr_t, int);
+void miqt_exec_callback_QPicture_InitPainter(void*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QPicture_Redirected(void*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QPicture_SharedPainter(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQPicture : public virtual QPicture {
 public:

@@ -4,10 +4,13 @@
 #include <qscriptclasspropertyiterator.h>
 #include "gen_qscriptclasspropertyiterator.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QScriptValue* QScriptClassPropertyIterator_Object(const QScriptClassPropertyIterator* self) {
 	return new QScriptValue(self->object());

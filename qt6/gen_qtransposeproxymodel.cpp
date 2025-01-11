@@ -17,10 +17,52 @@
 #include <qtransposeproxymodel.h>
 #include "gen_qtransposeproxymodel.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QTransposeProxyModel_SetSourceModel(void*, intptr_t, QAbstractItemModel*);
+int miqt_exec_callback_QTransposeProxyModel_RowCount(void*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QTransposeProxyModel_ColumnCount(void*, intptr_t, QModelIndex*);
+QVariant* miqt_exec_callback_QTransposeProxyModel_HeaderData(void*, intptr_t, int, int, int);
+bool miqt_exec_callback_QTransposeProxyModel_SetHeaderData(void*, intptr_t, int, int, QVariant*, int);
+bool miqt_exec_callback_QTransposeProxyModel_SetItemData(void*, intptr_t, QModelIndex*, struct miqt_map /* of int to QVariant* */ );
+QSize* miqt_exec_callback_QTransposeProxyModel_Span(void*, intptr_t, QModelIndex*);
+struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QTransposeProxyModel_ItemData(void*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QTransposeProxyModel_MapFromSource(void*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QTransposeProxyModel_MapToSource(void*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QTransposeProxyModel_Parent(void*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QTransposeProxyModel_Index(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QTransposeProxyModel_InsertRows(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QTransposeProxyModel_RemoveRows(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QTransposeProxyModel_MoveRows(void*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+bool miqt_exec_callback_QTransposeProxyModel_InsertColumns(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QTransposeProxyModel_RemoveColumns(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QTransposeProxyModel_MoveColumns(void*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+void miqt_exec_callback_QTransposeProxyModel_Sort(void*, intptr_t, int, int);
+QItemSelection* miqt_exec_callback_QTransposeProxyModel_MapSelectionToSource(void*, intptr_t, QItemSelection*);
+QItemSelection* miqt_exec_callback_QTransposeProxyModel_MapSelectionFromSource(void*, intptr_t, QItemSelection*);
+bool miqt_exec_callback_QTransposeProxyModel_Submit(void*, intptr_t);
+void miqt_exec_callback_QTransposeProxyModel_Revert(void*, intptr_t);
+QVariant* miqt_exec_callback_QTransposeProxyModel_Data(void*, intptr_t, QModelIndex*, int);
+int miqt_exec_callback_QTransposeProxyModel_Flags(void*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QTransposeProxyModel_SetData(void*, intptr_t, QModelIndex*, QVariant*, int);
+bool miqt_exec_callback_QTransposeProxyModel_ClearItemData(void*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QTransposeProxyModel_Buddy(void*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QTransposeProxyModel_CanFetchMore(void*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QTransposeProxyModel_FetchMore(void*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QTransposeProxyModel_HasChildren(void*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QTransposeProxyModel_Sibling(void*, intptr_t, int, int, QModelIndex*);
+QMimeData* miqt_exec_callback_QTransposeProxyModel_MimeData(void*, intptr_t, struct miqt_array /* of QModelIndex* */ );
+bool miqt_exec_callback_QTransposeProxyModel_CanDropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+bool miqt_exec_callback_QTransposeProxyModel_DropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QTransposeProxyModel_MimeTypes(void*, intptr_t);
+int miqt_exec_callback_QTransposeProxyModel_SupportedDragActions(void*, intptr_t);
+int miqt_exec_callback_QTransposeProxyModel_SupportedDropActions(void*, intptr_t);
+struct miqt_map /* of int to struct miqt_string */  miqt_exec_callback_QTransposeProxyModel_RoleNames(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQTransposeProxyModel : public virtual QTransposeProxyModel {
 public:

@@ -5,10 +5,13 @@
 #include <qpaintdevice.h>
 #include "gen_qpaintdevice.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 int QPaintDevice_DevType(const QPaintDevice* self) {
 	return self->devType();

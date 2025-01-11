@@ -15,10 +15,13 @@
 #include <qaccessiblewidget.h>
 #include "gen_qaccessiblewidget.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QAccessibleWidget* QAccessibleWidget_new(QWidget* o) {
 	return new QAccessibleWidget(o);

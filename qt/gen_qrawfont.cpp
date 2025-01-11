@@ -14,10 +14,13 @@
 #include <qrawfont.h>
 #include "gen_qrawfont.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QRawFont* QRawFont_new() {
 	return new QRawFont();

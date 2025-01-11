@@ -14,10 +14,25 @@
 #include <qtcpserver.h>
 #include "gen_qtcpserver.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QTcpServer_NewConnection(intptr_t);
+void miqt_exec_callback_QTcpServer_AcceptError(intptr_t, int);
+bool miqt_exec_callback_QTcpServer_HasPendingConnections(void*, intptr_t);
+QTcpSocket* miqt_exec_callback_QTcpServer_NextPendingConnection(void*, intptr_t);
+void miqt_exec_callback_QTcpServer_IncomingConnection(void*, intptr_t, intptr_t);
+bool miqt_exec_callback_QTcpServer_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QTcpServer_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QTcpServer_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QTcpServer_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QTcpServer_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QTcpServer_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QTcpServer_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQTcpServer : public virtual QTcpServer {
 public:

@@ -1,10 +1,13 @@
 #include <qvarlengtharray.h>
 #include "gen_qvarlengtharray.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 ptrdiff_t QVLABaseBase_Capacity(const QVLABaseBase* self) {
 	QVLABaseBase::size_type _ret = self->capacity();

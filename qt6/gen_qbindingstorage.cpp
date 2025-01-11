@@ -4,10 +4,13 @@
 #include <qbindingstorage.h>
 #include "gen_qbindingstorage.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QBindingStatus_Delete(QBindingStatus* self, bool isSubclass) {
 	if (isSubclass) {

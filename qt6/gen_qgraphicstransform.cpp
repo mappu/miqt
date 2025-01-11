@@ -15,10 +15,31 @@
 #include <qgraphicstransform.h>
 #include "gen_qgraphicstransform.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QGraphicsTransform_ApplyTo(void*, intptr_t, QMatrix4x4*);
+bool miqt_exec_callback_QGraphicsTransform_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGraphicsTransform_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QGraphicsTransform_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QGraphicsTransform_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QGraphicsTransform_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsTransform_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsTransform_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsScale_OriginChanged(intptr_t);
+void miqt_exec_callback_QGraphicsScale_XScaleChanged(intptr_t);
+void miqt_exec_callback_QGraphicsScale_YScaleChanged(intptr_t);
+void miqt_exec_callback_QGraphicsScale_ZScaleChanged(intptr_t);
+void miqt_exec_callback_QGraphicsScale_ScaleChanged(intptr_t);
+void miqt_exec_callback_QGraphicsScale_ApplyTo(void*, intptr_t, QMatrix4x4*);
+void miqt_exec_callback_QGraphicsRotation_OriginChanged(intptr_t);
+void miqt_exec_callback_QGraphicsRotation_AngleChanged(intptr_t);
+void miqt_exec_callback_QGraphicsRotation_AxisChanged(intptr_t);
+void miqt_exec_callback_QGraphicsRotation_ApplyTo(void*, intptr_t, QMatrix4x4*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQGraphicsTransform : public virtual QGraphicsTransform {
 public:

@@ -24,10 +24,37 @@
 #include <qfiledialog.h>
 #include "gen_qfiledialog.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QFileDialog_FileSelected(intptr_t, struct miqt_string);
+void miqt_exec_callback_QFileDialog_FilesSelected(intptr_t, struct miqt_array /* of struct miqt_string */ );
+void miqt_exec_callback_QFileDialog_CurrentChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QFileDialog_DirectoryEntered(intptr_t, struct miqt_string);
+void miqt_exec_callback_QFileDialog_UrlSelected(intptr_t, QUrl*);
+void miqt_exec_callback_QFileDialog_UrlsSelected(intptr_t, struct miqt_array /* of QUrl* */ );
+void miqt_exec_callback_QFileDialog_CurrentUrlChanged(intptr_t, QUrl*);
+void miqt_exec_callback_QFileDialog_DirectoryUrlEntered(intptr_t, QUrl*);
+void miqt_exec_callback_QFileDialog_FilterSelected(intptr_t, struct miqt_string);
+void miqt_exec_callback_QFileDialog_SetVisible(void*, intptr_t, bool);
+void miqt_exec_callback_QFileDialog_Done(void*, intptr_t, int);
+void miqt_exec_callback_QFileDialog_Accept(void*, intptr_t);
+void miqt_exec_callback_QFileDialog_ChangeEvent(void*, intptr_t, QEvent*);
+QSize* miqt_exec_callback_QFileDialog_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QFileDialog_MinimumSizeHint(void*, intptr_t);
+void miqt_exec_callback_QFileDialog_Open(void*, intptr_t);
+int miqt_exec_callback_QFileDialog_Exec(void*, intptr_t);
+void miqt_exec_callback_QFileDialog_Reject(void*, intptr_t);
+void miqt_exec_callback_QFileDialog_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QFileDialog_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QFileDialog_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QFileDialog_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QFileDialog_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+bool miqt_exec_callback_QFileDialog_EventFilter(void*, intptr_t, QObject*, QEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQFileDialog : public virtual QFileDialog {
 public:

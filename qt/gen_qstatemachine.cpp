@@ -15,10 +15,22 @@
 #include <qstatemachine.h>
 #include "gen_qstatemachine.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QStateMachine_RunningChanged(intptr_t, bool);
+bool miqt_exec_callback_QStateMachine_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QStateMachine_OnEntry(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QStateMachine_OnExit(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QStateMachine_BeginSelectTransitions(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QStateMachine_EndSelectTransitions(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QStateMachine_BeginMicrostep(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QStateMachine_EndMicrostep(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QStateMachine_Event(void*, intptr_t, QEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQStateMachine : public virtual QStateMachine {
 public:

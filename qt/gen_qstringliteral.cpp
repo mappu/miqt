@@ -2,10 +2,13 @@
 #include <qstringliteral.h>
 #include "gen_qstringliteral.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QStringDataPtr_Delete(QStringDataPtr* self, bool isSubclass) {
 	if (isSubclass) {

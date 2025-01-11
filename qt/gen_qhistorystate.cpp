@@ -11,10 +11,16 @@
 #include <qhistorystate.h>
 #include "gen_qhistorystate.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QHistoryState_OnEntry(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QHistoryState_OnExit(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QHistoryState_Event(void*, intptr_t, QEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQHistoryState : public virtual QHistoryState {
 public:

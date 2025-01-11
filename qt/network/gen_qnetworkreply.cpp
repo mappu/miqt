@@ -18,10 +18,24 @@
 #include <qnetworkreply.h>
 #include "gen_qnetworkreply.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QNetworkReply_MetaDataChanged(intptr_t);
+void miqt_exec_callback_QNetworkReply_Finished(intptr_t);
+void miqt_exec_callback_QNetworkReply_ErrorWithQNetworkReplyNetworkError(intptr_t, int);
+void miqt_exec_callback_QNetworkReply_ErrorOccurred(intptr_t, int);
+void miqt_exec_callback_QNetworkReply_Encrypted(intptr_t);
+void miqt_exec_callback_QNetworkReply_SslErrors(intptr_t, struct miqt_array /* of QSslError* */ );
+void miqt_exec_callback_QNetworkReply_PreSharedKeyAuthenticationRequired(intptr_t, QSslPreSharedKeyAuthenticator*);
+void miqt_exec_callback_QNetworkReply_Redirected(intptr_t, QUrl*);
+void miqt_exec_callback_QNetworkReply_RedirectAllowed(intptr_t);
+void miqt_exec_callback_QNetworkReply_UploadProgress(intptr_t, long long, long long);
+void miqt_exec_callback_QNetworkReply_DownloadProgress(intptr_t, long long, long long);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QNetworkReply_virtbase(QNetworkReply* src, QIODevice** outptr_QIODevice) {
 	*outptr_QIODevice = static_cast<QIODevice*>(src);

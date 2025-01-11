@@ -10,10 +10,16 @@
 #include <qsctpserver.h>
 #include "gen_qsctpserver.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QSctpServer_IncomingConnection(void*, intptr_t, intptr_t);
+bool miqt_exec_callback_QSctpServer_HasPendingConnections(void*, intptr_t);
+QTcpSocket* miqt_exec_callback_QSctpServer_NextPendingConnection(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQSctpServer : public virtual QSctpServer {
 public:

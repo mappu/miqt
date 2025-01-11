@@ -7,10 +7,13 @@
 #include <qvideosurfaceformat.h>
 #include "gen_qvideosurfaceformat.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QVideoSurfaceFormat* QVideoSurfaceFormat_new() {
 	return new QVideoSurfaceFormat();

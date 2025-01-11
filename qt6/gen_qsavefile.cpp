@@ -10,10 +10,26 @@
 #include <qsavefile.h>
 #include "gen_qsavefile.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+struct miqt_string miqt_exec_callback_QSaveFile_FileName(void*, intptr_t);
+bool miqt_exec_callback_QSaveFile_Open(void*, intptr_t, int);
+long long miqt_exec_callback_QSaveFile_WriteData(void*, intptr_t, const char*, long long);
+bool miqt_exec_callback_QSaveFile_IsSequential(void*, intptr_t);
+long long miqt_exec_callback_QSaveFile_Pos(void*, intptr_t);
+bool miqt_exec_callback_QSaveFile_Seek(void*, intptr_t, long long);
+bool miqt_exec_callback_QSaveFile_AtEnd(void*, intptr_t);
+long long miqt_exec_callback_QSaveFile_Size(void*, intptr_t);
+bool miqt_exec_callback_QSaveFile_Resize(void*, intptr_t, long long);
+int miqt_exec_callback_QSaveFile_Permissions(void*, intptr_t);
+bool miqt_exec_callback_QSaveFile_SetPermissions(void*, intptr_t, int);
+long long miqt_exec_callback_QSaveFile_ReadData(void*, intptr_t, char*, long long);
+long long miqt_exec_callback_QSaveFile_ReadLineData(void*, intptr_t, char*, long long);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQSaveFile : public virtual QSaveFile {
 public:

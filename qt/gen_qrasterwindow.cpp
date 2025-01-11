@@ -15,10 +15,18 @@
 #include <qrasterwindow.h>
 #include "gen_qrasterwindow.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+int miqt_exec_callback_QRasterWindow_Metric(void*, intptr_t, int);
+QPaintDevice* miqt_exec_callback_QRasterWindow_Redirected(void*, intptr_t, QPoint*);
+void miqt_exec_callback_QRasterWindow_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QRasterWindow_ExposeEvent(void*, intptr_t, QExposeEvent*);
+bool miqt_exec_callback_QRasterWindow_Event(void*, intptr_t, QEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQRasterWindow : public virtual QRasterWindow {
 public:

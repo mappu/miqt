@@ -13,10 +13,18 @@
 #include <qlcdnumber.h>
 #include "gen_qlcdnumber.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QLCDNumber_Overflow(intptr_t);
+QSize* miqt_exec_callback_QLCDNumber_SizeHint(void*, intptr_t);
+bool miqt_exec_callback_QLCDNumber_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QLCDNumber_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QLCDNumber_ChangeEvent(void*, intptr_t, QEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQLCDNumber : public virtual QLCDNumber {
 public:

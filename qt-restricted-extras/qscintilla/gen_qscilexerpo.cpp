@@ -10,10 +10,49 @@
 #include <qscilexerpo.h>
 #include "gen_qscilexerpo.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QsciLexerPO_SetFoldComments(void*, intptr_t, bool);
+void miqt_exec_callback_QsciLexerPO_SetFoldCompact(void*, intptr_t, bool);
+const char* miqt_exec_callback_QsciLexerPO_Language(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerPO_Lexer(void*, intptr_t);
+int miqt_exec_callback_QsciLexerPO_LexerId(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerPO_AutoCompletionFillups(void*, intptr_t);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QsciLexerPO_AutoCompletionWordSeparators(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerPO_BlockEnd(void*, intptr_t, int*);
+int miqt_exec_callback_QsciLexerPO_BlockLookback(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerPO_BlockStart(void*, intptr_t, int*);
+const char* miqt_exec_callback_QsciLexerPO_BlockStartKeyword(void*, intptr_t, int*);
+int miqt_exec_callback_QsciLexerPO_BraceStyle(void*, intptr_t);
+bool miqt_exec_callback_QsciLexerPO_CaseSensitive(void*, intptr_t);
+QColor* miqt_exec_callback_QsciLexerPO_Color(void*, intptr_t, int);
+bool miqt_exec_callback_QsciLexerPO_EolFill(void*, intptr_t, int);
+QFont* miqt_exec_callback_QsciLexerPO_Font(void*, intptr_t, int);
+int miqt_exec_callback_QsciLexerPO_IndentationGuideView(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerPO_Keywords(void*, intptr_t, int);
+int miqt_exec_callback_QsciLexerPO_DefaultStyle(void*, intptr_t);
+struct miqt_string miqt_exec_callback_QsciLexerPO_Description(void*, intptr_t, int);
+QColor* miqt_exec_callback_QsciLexerPO_Paper(void*, intptr_t, int);
+QColor* miqt_exec_callback_QsciLexerPO_DefaultColorWithStyle(void*, intptr_t, int);
+bool miqt_exec_callback_QsciLexerPO_DefaultEolFill(void*, intptr_t, int);
+QFont* miqt_exec_callback_QsciLexerPO_DefaultFontWithStyle(void*, intptr_t, int);
+QColor* miqt_exec_callback_QsciLexerPO_DefaultPaperWithStyle(void*, intptr_t, int);
+void miqt_exec_callback_QsciLexerPO_SetEditor(void*, intptr_t, QsciScintilla*);
+void miqt_exec_callback_QsciLexerPO_RefreshProperties(void*, intptr_t);
+int miqt_exec_callback_QsciLexerPO_StyleBitsNeeded(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerPO_WordCharacters(void*, intptr_t);
+void miqt_exec_callback_QsciLexerPO_SetAutoIndentStyle(void*, intptr_t, int);
+void miqt_exec_callback_QsciLexerPO_SetColor(void*, intptr_t, QColor*, int);
+void miqt_exec_callback_QsciLexerPO_SetEolFill(void*, intptr_t, bool, int);
+void miqt_exec_callback_QsciLexerPO_SetFont(void*, intptr_t, QFont*, int);
+void miqt_exec_callback_QsciLexerPO_SetPaper(void*, intptr_t, QColor*, int);
+bool miqt_exec_callback_QsciLexerPO_ReadProperties(void*, intptr_t, QSettings*, struct miqt_string);
+bool miqt_exec_callback_QsciLexerPO_WriteProperties(void*, intptr_t, QSettings*, struct miqt_string);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQsciLexerPO : public virtual QsciLexerPO {
 public:

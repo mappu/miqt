@@ -18,10 +18,13 @@
 #include <qcborvalue.h>
 #include "gen_qcborvalue.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 struct miqt_string QCborParserError_ErrorString(const QCborParserError* self) {
 	QString _ret = self->errorString();

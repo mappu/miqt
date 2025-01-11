@@ -9,10 +9,15 @@
 #include <qmediastreamscontrol.h>
 #include "gen_qmediastreamscontrol.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QMediaStreamsControl_StreamsChanged(intptr_t);
+void miqt_exec_callback_QMediaStreamsControl_ActiveStreamsChanged(intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QMediaStreamsControl_virtbase(QMediaStreamsControl* src, QMediaControl** outptr_QMediaControl) {
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);

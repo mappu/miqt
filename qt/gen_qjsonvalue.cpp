@@ -11,10 +11,13 @@
 #include <qjsonvalue.h>
 #include "gen_qjsonvalue.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QJsonValue* QJsonValue_new() {
 	return new QJsonValue();

@@ -8,10 +8,20 @@
 #include <qradiodatacontrol.h>
 #include "gen_qradiodatacontrol.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QRadioDataControl_StationIdChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QRadioDataControl_ProgramTypeChanged(intptr_t, int);
+void miqt_exec_callback_QRadioDataControl_ProgramTypeNameChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QRadioDataControl_StationNameChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QRadioDataControl_RadioTextChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QRadioDataControl_AlternativeFrequenciesEnabledChanged(intptr_t, bool);
+void miqt_exec_callback_QRadioDataControl_ErrorWithErr(intptr_t, int);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QRadioDataControl_virtbase(QRadioDataControl* src, QMediaControl** outptr_QMediaControl) {
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);

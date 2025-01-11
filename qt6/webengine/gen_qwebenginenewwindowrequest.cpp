@@ -10,10 +10,13 @@
 #include <qwebenginenewwindowrequest.h>
 #include "gen_qwebenginenewwindowrequest.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QWebEngineNewWindowRequest_virtbase(QWebEngineNewWindowRequest* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);

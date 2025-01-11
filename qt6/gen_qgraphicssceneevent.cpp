@@ -16,10 +16,15 @@
 #include <qgraphicssceneevent.h>
 #include "gen_qgraphicssceneevent.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QGraphicsSceneEvent_SetAccepted(void*, intptr_t, bool);
+QEvent* miqt_exec_callback_QGraphicsSceneEvent_Clone(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQGraphicsSceneEvent : public virtual QGraphicsSceneEvent {
 public:

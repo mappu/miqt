@@ -64,10 +64,13 @@
 #include <qevent.h>
 #include "gen_qevent.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QInputEvent* QInputEvent_new(int typeVal) {
 	return new QInputEvent(static_cast<QEvent::Type>(typeVal));

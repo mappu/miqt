@@ -6,10 +6,13 @@
 #include <qstandardpaths.h>
 #include "gen_qstandardpaths.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 struct miqt_string QStandardPaths_WritableLocation(int typeVal) {
 	QString _ret = QStandardPaths::writableLocation(static_cast<QStandardPaths::StandardLocation>(typeVal));

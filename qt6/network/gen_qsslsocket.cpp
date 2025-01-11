@@ -21,10 +21,42 @@
 #include <qsslsocket.h>
 #include "gen_qsslsocket.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QSslSocket_Encrypted(intptr_t);
+void miqt_exec_callback_QSslSocket_PeerVerifyError(intptr_t, QSslError*);
+void miqt_exec_callback_QSslSocket_SslErrors(intptr_t, struct miqt_array /* of QSslError* */ );
+void miqt_exec_callback_QSslSocket_ModeChanged(intptr_t, int);
+void miqt_exec_callback_QSslSocket_EncryptedBytesWritten(intptr_t, long long);
+void miqt_exec_callback_QSslSocket_PreSharedKeyAuthenticationRequired(intptr_t, QSslPreSharedKeyAuthenticator*);
+void miqt_exec_callback_QSslSocket_NewSessionTicketReceived(intptr_t);
+void miqt_exec_callback_QSslSocket_AlertSent(intptr_t, int, int, struct miqt_string);
+void miqt_exec_callback_QSslSocket_AlertReceived(intptr_t, int, int, struct miqt_string);
+void miqt_exec_callback_QSslSocket_HandshakeInterruptedOnError(intptr_t, QSslError*);
+void miqt_exec_callback_QSslSocket_Resume(void*, intptr_t);
+bool miqt_exec_callback_QSslSocket_SetSocketDescriptor(void*, intptr_t, intptr_t, int, int);
+void miqt_exec_callback_QSslSocket_ConnectToHost(void*, intptr_t, struct miqt_string, uint16_t, int, int);
+void miqt_exec_callback_QSslSocket_DisconnectFromHost(void*, intptr_t);
+void miqt_exec_callback_QSslSocket_SetSocketOption(void*, intptr_t, int, QVariant*);
+QVariant* miqt_exec_callback_QSslSocket_SocketOption(void*, intptr_t, int);
+long long miqt_exec_callback_QSslSocket_BytesAvailable(void*, intptr_t);
+long long miqt_exec_callback_QSslSocket_BytesToWrite(void*, intptr_t);
+bool miqt_exec_callback_QSslSocket_CanReadLine(void*, intptr_t);
+void miqt_exec_callback_QSslSocket_Close(void*, intptr_t);
+bool miqt_exec_callback_QSslSocket_AtEnd(void*, intptr_t);
+void miqt_exec_callback_QSslSocket_SetReadBufferSize(void*, intptr_t, long long);
+bool miqt_exec_callback_QSslSocket_WaitForConnected(void*, intptr_t, int);
+bool miqt_exec_callback_QSslSocket_WaitForReadyRead(void*, intptr_t, int);
+bool miqt_exec_callback_QSslSocket_WaitForBytesWritten(void*, intptr_t, int);
+bool miqt_exec_callback_QSslSocket_WaitForDisconnected(void*, intptr_t, int);
+long long miqt_exec_callback_QSslSocket_ReadData(void*, intptr_t, char*, long long);
+long long miqt_exec_callback_QSslSocket_SkipData(void*, intptr_t, long long);
+long long miqt_exec_callback_QSslSocket_WriteData(void*, intptr_t, const char*, long long);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQSslSocket : public virtual QSslSocket {
 public:

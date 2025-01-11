@@ -15,10 +15,30 @@
 #include <qabstractvideosurface.h>
 #include "gen_qabstractvideosurface.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QAbstractVideoSurface_ActiveChanged(intptr_t, bool);
+void miqt_exec_callback_QAbstractVideoSurface_SurfaceFormatChanged(intptr_t, QVideoSurfaceFormat*);
+void miqt_exec_callback_QAbstractVideoSurface_SupportedFormatsChanged(intptr_t);
+void miqt_exec_callback_QAbstractVideoSurface_NativeResolutionChanged(intptr_t, QSize*);
+struct miqt_array /* of int */  miqt_exec_callback_QAbstractVideoSurface_SupportedPixelFormats(void*, intptr_t, int);
+bool miqt_exec_callback_QAbstractVideoSurface_IsFormatSupported(void*, intptr_t, QVideoSurfaceFormat*);
+QVideoSurfaceFormat* miqt_exec_callback_QAbstractVideoSurface_NearestFormat(void*, intptr_t, QVideoSurfaceFormat*);
+bool miqt_exec_callback_QAbstractVideoSurface_Start(void*, intptr_t, QVideoSurfaceFormat*);
+void miqt_exec_callback_QAbstractVideoSurface_Stop(void*, intptr_t);
+bool miqt_exec_callback_QAbstractVideoSurface_Present(void*, intptr_t, QVideoFrame*);
+bool miqt_exec_callback_QAbstractVideoSurface_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAbstractVideoSurface_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAbstractVideoSurface_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAbstractVideoSurface_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAbstractVideoSurface_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractVideoSurface_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAbstractVideoSurface_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQAbstractVideoSurface : public virtual QAbstractVideoSurface {
 public:

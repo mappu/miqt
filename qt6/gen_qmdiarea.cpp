@@ -29,10 +29,38 @@
 #include <qmdiarea.h>
 #include "gen_qmdiarea.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QMdiArea_SubWindowActivated(intptr_t, QMdiSubWindow*);
+QSize* miqt_exec_callback_QMdiArea_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QMdiArea_MinimumSizeHint(void*, intptr_t);
+void miqt_exec_callback_QMdiArea_SetupViewport(void*, intptr_t, QWidget*);
+bool miqt_exec_callback_QMdiArea_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QMdiArea_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QMdiArea_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QMdiArea_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QMdiArea_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QMdiArea_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QMdiArea_ShowEvent(void*, intptr_t, QShowEvent*);
+bool miqt_exec_callback_QMdiArea_ViewportEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QMdiArea_ScrollContentsBy(void*, intptr_t, int, int);
+void miqt_exec_callback_QMdiArea_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QMdiArea_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QMdiArea_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QMdiArea_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QMdiArea_WheelEvent(void*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QMdiArea_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QMdiArea_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QMdiArea_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QMdiArea_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QMdiArea_DropEvent(void*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QMdiArea_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+QSize* miqt_exec_callback_QMdiArea_ViewportSizeHint(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQMdiArea : public virtual QMdiArea {
 public:

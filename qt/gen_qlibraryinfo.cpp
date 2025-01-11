@@ -8,10 +8,13 @@
 #include <qlibraryinfo.h>
 #include "gen_qlibraryinfo.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 struct miqt_string QLibraryInfo_Licensee() {
 	QString _ret = QLibraryInfo::licensee();

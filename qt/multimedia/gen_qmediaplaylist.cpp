@@ -18,10 +18,32 @@
 #include <qmediaplaylist.h>
 #include "gen_qmediaplaylist.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QMediaPlaylist_CurrentIndexChanged(intptr_t, int);
+void miqt_exec_callback_QMediaPlaylist_PlaybackModeChanged(intptr_t, int);
+void miqt_exec_callback_QMediaPlaylist_CurrentMediaChanged(intptr_t, QMediaContent*);
+void miqt_exec_callback_QMediaPlaylist_MediaAboutToBeInserted(intptr_t, int, int);
+void miqt_exec_callback_QMediaPlaylist_MediaInserted(intptr_t, int, int);
+void miqt_exec_callback_QMediaPlaylist_MediaAboutToBeRemoved(intptr_t, int, int);
+void miqt_exec_callback_QMediaPlaylist_MediaRemoved(intptr_t, int, int);
+void miqt_exec_callback_QMediaPlaylist_MediaChanged(intptr_t, int, int);
+void miqt_exec_callback_QMediaPlaylist_Loaded(intptr_t);
+void miqt_exec_callback_QMediaPlaylist_LoadFailed(intptr_t);
+QMediaObject* miqt_exec_callback_QMediaPlaylist_MediaObject(void*, intptr_t);
+bool miqt_exec_callback_QMediaPlaylist_SetMediaObject(void*, intptr_t, QMediaObject*);
+bool miqt_exec_callback_QMediaPlaylist_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QMediaPlaylist_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QMediaPlaylist_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QMediaPlaylist_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QMediaPlaylist_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QMediaPlaylist_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QMediaPlaylist_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQMediaPlaylist : public virtual QMediaPlaylist {
 public:

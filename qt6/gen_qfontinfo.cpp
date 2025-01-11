@@ -6,10 +6,13 @@
 #include <qfontinfo.h>
 #include "gen_qfontinfo.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QFontInfo* QFontInfo_new(QFont* param1) {
 	return new QFontInfo(*param1);

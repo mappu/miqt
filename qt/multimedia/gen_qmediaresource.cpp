@@ -8,10 +8,13 @@
 #include <qmediaresource.h>
 #include "gen_qmediaresource.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QMediaResource* QMediaResource_new() {
 	return new QMediaResource();

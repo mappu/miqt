@@ -36,10 +36,56 @@
 #include <qfocusframe.h>
 #include "gen_qfocusframe.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+bool miqt_exec_callback_QFocusFrame_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QFocusFrame_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QFocusFrame_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QFocusFrame_InitStyleOption(void*, intptr_t, QStyleOption*);
+int miqt_exec_callback_QFocusFrame_DevType(void*, intptr_t);
+void miqt_exec_callback_QFocusFrame_SetVisible(void*, intptr_t, bool);
+QSize* miqt_exec_callback_QFocusFrame_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QFocusFrame_MinimumSizeHint(void*, intptr_t);
+int miqt_exec_callback_QFocusFrame_HeightForWidth(void*, intptr_t, int);
+bool miqt_exec_callback_QFocusFrame_HasHeightForWidth(void*, intptr_t);
+QPaintEngine* miqt_exec_callback_QFocusFrame_PaintEngine(void*, intptr_t);
+void miqt_exec_callback_QFocusFrame_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QFocusFrame_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QFocusFrame_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QFocusFrame_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QFocusFrame_WheelEvent(void*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QFocusFrame_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QFocusFrame_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QFocusFrame_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QFocusFrame_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QFocusFrame_EnterEvent(void*, intptr_t, QEnterEvent*);
+void miqt_exec_callback_QFocusFrame_LeaveEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QFocusFrame_MoveEvent(void*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QFocusFrame_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QFocusFrame_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QFocusFrame_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QFocusFrame_TabletEvent(void*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QFocusFrame_ActionEvent(void*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QFocusFrame_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QFocusFrame_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QFocusFrame_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QFocusFrame_DropEvent(void*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QFocusFrame_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QFocusFrame_HideEvent(void*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QFocusFrame_NativeEvent(void*, intptr_t, struct miqt_string, void*, intptr_t*);
+void miqt_exec_callback_QFocusFrame_ChangeEvent(void*, intptr_t, QEvent*);
+int miqt_exec_callback_QFocusFrame_Metric(void*, intptr_t, int);
+void miqt_exec_callback_QFocusFrame_InitPainter(void*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QFocusFrame_Redirected(void*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QFocusFrame_SharedPainter(void*, intptr_t);
+void miqt_exec_callback_QFocusFrame_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QFocusFrame_InputMethodQuery(void*, intptr_t, int);
+bool miqt_exec_callback_QFocusFrame_FocusNextPrevChild(void*, intptr_t, bool);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQFocusFrame : public virtual QFocusFrame {
 public:

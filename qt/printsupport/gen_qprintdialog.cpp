@@ -12,10 +12,18 @@
 #include <qprintdialog.h>
 #include "gen_qprintdialog.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QPrintDialog_Accepted(intptr_t, QPrinter*);
+int miqt_exec_callback_QPrintDialog_Exec(void*, intptr_t);
+void miqt_exec_callback_QPrintDialog_Accept(void*, intptr_t);
+void miqt_exec_callback_QPrintDialog_Done(void*, intptr_t, int);
+void miqt_exec_callback_QPrintDialog_SetVisible(void*, intptr_t, bool);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQPrintDialog : public virtual QPrintDialog {
 public:

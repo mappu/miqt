@@ -9,10 +9,13 @@
 #include <qwebenginehttprequest.h>
 #include "gen_qwebenginehttprequest.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QWebEngineHttpRequest* QWebEngineHttpRequest_new() {
 	return new QWebEngineHttpRequest();

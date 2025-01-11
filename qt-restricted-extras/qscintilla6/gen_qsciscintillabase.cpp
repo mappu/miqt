@@ -34,10 +34,79 @@
 #include <qsciscintillabase.h>
 #include "gen_qsciscintillabase.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QsciScintillaBase_QSCN_SELCHANGED(intptr_t, bool);
+void miqt_exec_callback_QsciScintillaBase_SCN_AUTOCCANCELLED(intptr_t);
+void miqt_exec_callback_QsciScintillaBase_SCN_AUTOCCHARDELETED(intptr_t);
+void miqt_exec_callback_QsciScintillaBase_SCN_AUTOCCOMPLETED(intptr_t, const char*, int, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_AUTOCSELECTION(intptr_t, const char*, int, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_AUTOCSELECTION2(intptr_t, const char*, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_AUTOCSELECTIONCHANGE(intptr_t, const char*, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCEN_CHANGE(intptr_t);
+void miqt_exec_callback_QsciScintillaBase_SCN_CALLTIPCLICK(intptr_t, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_CHARADDED(intptr_t, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_DOUBLECLICK(intptr_t, int, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_DWELLEND(intptr_t, int, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_DWELLSTART(intptr_t, int, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_FOCUSIN(intptr_t);
+void miqt_exec_callback_QsciScintillaBase_SCN_FOCUSOUT(intptr_t);
+void miqt_exec_callback_QsciScintillaBase_SCN_HOTSPOTCLICK(intptr_t, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_HOTSPOTDOUBLECLICK(intptr_t, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_HOTSPOTRELEASECLICK(intptr_t, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_INDICATORCLICK(intptr_t, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_INDICATORRELEASE(intptr_t, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_MACRORECORD(intptr_t, unsigned int, unsigned long, void*);
+void miqt_exec_callback_QsciScintillaBase_SCN_MARGINCLICK(intptr_t, int, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_MARGINRIGHTCLICK(intptr_t, int, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_MODIFIED(intptr_t, int, int, const char*, int, int, int, int, int, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_MODIFYATTEMPTRO(intptr_t);
+void miqt_exec_callback_QsciScintillaBase_SCN_NEEDSHOWN(intptr_t, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_PAINTED(intptr_t);
+void miqt_exec_callback_QsciScintillaBase_SCN_SAVEPOINTLEFT(intptr_t);
+void miqt_exec_callback_QsciScintillaBase_SCN_SAVEPOINTREACHED(intptr_t);
+void miqt_exec_callback_QsciScintillaBase_SCN_STYLENEEDED(intptr_t, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_URIDROPPED(intptr_t, QUrl*);
+void miqt_exec_callback_QsciScintillaBase_SCN_UPDATEUI(intptr_t, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_USERLISTSELECTION(intptr_t, const char*, int, int, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_USERLISTSELECTION2(intptr_t, const char*, int, int, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_USERLISTSELECTION3(intptr_t, const char*, int);
+void miqt_exec_callback_QsciScintillaBase_SCN_ZOOM(intptr_t);
+bool miqt_exec_callback_QsciScintillaBase_CanInsertFromMimeData(void*, intptr_t, QMimeData*);
+struct miqt_string miqt_exec_callback_QsciScintillaBase_FromMimeData(void*, intptr_t, QMimeData*, bool*);
+QMimeData* miqt_exec_callback_QsciScintillaBase_ToMimeData(void*, intptr_t, struct miqt_string, bool);
+void miqt_exec_callback_QsciScintillaBase_ChangeEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QsciScintillaBase_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QsciScintillaBase_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QsciScintillaBase_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QsciScintillaBase_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QsciScintillaBase_DropEvent(void*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QsciScintillaBase_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QsciScintillaBase_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+bool miqt_exec_callback_QsciScintillaBase_FocusNextPrevChild(void*, intptr_t, bool);
+void miqt_exec_callback_QsciScintillaBase_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QsciScintillaBase_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QsciScintillaBase_InputMethodQuery(void*, intptr_t, int);
+void miqt_exec_callback_QsciScintillaBase_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QsciScintillaBase_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QsciScintillaBase_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QsciScintillaBase_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QsciScintillaBase_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QsciScintillaBase_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QsciScintillaBase_ScrollContentsBy(void*, intptr_t, int, int);
+QSize* miqt_exec_callback_QsciScintillaBase_MinimumSizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QsciScintillaBase_SizeHint(void*, intptr_t);
+void miqt_exec_callback_QsciScintillaBase_SetupViewport(void*, intptr_t, QWidget*);
+bool miqt_exec_callback_QsciScintillaBase_EventFilter(void*, intptr_t, QObject*, QEvent*);
+bool miqt_exec_callback_QsciScintillaBase_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QsciScintillaBase_ViewportEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QsciScintillaBase_WheelEvent(void*, intptr_t, QWheelEvent*);
+QSize* miqt_exec_callback_QsciScintillaBase_ViewportSizeHint(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQsciScintillaBase : public virtual QsciScintillaBase {
 public:

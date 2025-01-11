@@ -6,10 +6,13 @@
 #include <qpen.h>
 #include "gen_qpen.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QPen* QPen_new() {
 	return new QPen();

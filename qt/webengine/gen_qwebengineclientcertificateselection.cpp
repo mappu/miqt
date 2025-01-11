@@ -5,10 +5,13 @@
 #include <qwebengineclientcertificateselection.h>
 #include "gen_qwebengineclientcertificateselection.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QWebEngineClientCertificateSelection* QWebEngineClientCertificateSelection_new(QWebEngineClientCertificateSelection* param1) {
 	return new QWebEngineClientCertificateSelection(*param1);

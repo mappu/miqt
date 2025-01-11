@@ -12,10 +12,13 @@
 #include <qmetaobject.h>
 #include "gen_qmetaobject.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QMetaMethod* QMetaMethod_new() {
 	return new QMetaMethod();

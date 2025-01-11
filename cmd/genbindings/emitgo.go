@@ -949,13 +949,13 @@ import "C"
 				}
 
 				goCbType := `func(` + gfs.emitParametersGo(m.Parameters) + `)`
-
+				callbackName := cabiCallbackName(c, m)
 				ret.WriteString(`func (this *` + goClassName + `) On` + m.SafeMethodName() + `(slot ` + goCbType + `) {
 					C.` + goClassName + `_connect_` + m.SafeMethodName() + `(this.h, C.intptr_t(cgo.NewHandle(slot)) )
 				}
-				
-				//export miqt_exec_callback_` + goClassName + `_` + m.SafeMethodName() + `
-				func miqt_exec_callback_` + goClassName + `_` + m.SafeMethodName() + `(cb C.intptr_t` + ifv(len(m.Parameters) > 0, ", ", "") + strings.Join(cgoNamedParams, `, `) + `) {
+
+				//export ` + callbackName + `
+				func ` + callbackName + `(cb C.intptr_t` + ifv(len(m.Parameters) > 0, ", ", "") + strings.Join(cgoNamedParams, `, `) + `) {
 					gofunc, ok := cgo.Handle(cb).Value().(` + goCbType + `)
 					if !ok {
 						panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1033,16 +1033,16 @@ import "C"
 				}
 				goCbType += gfs.emitParametersGo(m.Parameters)
 				goCbType += `) ` + m.ReturnType.renderReturnTypeGo(&gfs)
-
+				callbackName := cabiCallbackName(c, m)
 				ret.WriteString(`func (this *` + goClassName + `) On` + m.SafeMethodName() + `(slot ` + goCbType + `) {
 					if ! this.isSubclass {
 						panic("miqt: can only override virtual methods for directly constructed types")
 					}
 					C.` + goClassName + `_override_virtual_` + m.SafeMethodName() + `(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)) )
 				}
-				
-				//export miqt_exec_callback_` + goClassName + `_` + m.SafeMethodName() + `
-				func miqt_exec_callback_` + goClassName + `_` + m.SafeMethodName() + `(self *C.` + goClassName + `, cb C.intptr_t` + ifv(len(m.Parameters) > 0, ", ", "") + strings.Join(cgoNamedParams, `, `) + `) ` + cabiReturnType + `{
+
+				//export ` + callbackName + `
+				func ` + callbackName + `(self *C.` + goClassName + `, cb C.intptr_t` + ifv(len(m.Parameters) > 0, ", ", "") + strings.Join(cgoNamedParams, `, `) + `) ` + cabiReturnType + `{
 					gofunc, ok := cgo.Handle(cb).Value().(` + goCbType + `)
 					if !ok {
 						panic("miqt: callback of non-callback type (heap corruption?)")

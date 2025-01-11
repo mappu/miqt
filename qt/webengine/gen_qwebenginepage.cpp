@@ -38,10 +38,59 @@
 #include <qwebenginepage.h>
 #include "gen_qwebenginepage.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QWebEnginePage_LoadStarted(intptr_t);
+void miqt_exec_callback_QWebEnginePage_LoadProgress(intptr_t, int);
+void miqt_exec_callback_QWebEnginePage_LoadFinished(intptr_t, bool);
+void miqt_exec_callback_QWebEnginePage_LinkHovered(intptr_t, struct miqt_string);
+void miqt_exec_callback_QWebEnginePage_SelectionChanged(intptr_t);
+void miqt_exec_callback_QWebEnginePage_GeometryChangeRequested(intptr_t, QRect*);
+void miqt_exec_callback_QWebEnginePage_WindowCloseRequested(intptr_t);
+void miqt_exec_callback_QWebEnginePage_FeaturePermissionRequested(intptr_t, QUrl*, int);
+void miqt_exec_callback_QWebEnginePage_FeaturePermissionRequestCanceled(intptr_t, QUrl*, int);
+void miqt_exec_callback_QWebEnginePage_FullScreenRequested(intptr_t, QWebEngineFullScreenRequest*);
+void miqt_exec_callback_QWebEnginePage_QuotaRequested(intptr_t, QWebEngineQuotaRequest*);
+void miqt_exec_callback_QWebEnginePage_RegisterProtocolHandlerRequested(intptr_t, QWebEngineRegisterProtocolHandlerRequest*);
+void miqt_exec_callback_QWebEnginePage_SelectClientCertificate(intptr_t, QWebEngineClientCertificateSelection*);
+void miqt_exec_callback_QWebEnginePage_AuthenticationRequired(intptr_t, QUrl*, QAuthenticator*);
+void miqt_exec_callback_QWebEnginePage_ProxyAuthenticationRequired(intptr_t, QUrl*, QAuthenticator*, struct miqt_string);
+void miqt_exec_callback_QWebEnginePage_RenderProcessTerminated(intptr_t, int, int);
+void miqt_exec_callback_QWebEnginePage_TitleChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QWebEnginePage_UrlChanged(intptr_t, QUrl*);
+void miqt_exec_callback_QWebEnginePage_IconUrlChanged(intptr_t, QUrl*);
+void miqt_exec_callback_QWebEnginePage_IconChanged(intptr_t, QIcon*);
+void miqt_exec_callback_QWebEnginePage_ScrollPositionChanged(intptr_t, QPointF*);
+void miqt_exec_callback_QWebEnginePage_ContentsSizeChanged(intptr_t, QSizeF*);
+void miqt_exec_callback_QWebEnginePage_AudioMutedChanged(intptr_t, bool);
+void miqt_exec_callback_QWebEnginePage_RecentlyAudibleChanged(intptr_t, bool);
+void miqt_exec_callback_QWebEnginePage_RenderProcessPidChanged(intptr_t, long long);
+void miqt_exec_callback_QWebEnginePage_PdfPrintingFinished(intptr_t, struct miqt_string, bool);
+void miqt_exec_callback_QWebEnginePage_PrintRequested(intptr_t);
+void miqt_exec_callback_QWebEnginePage_VisibleChanged(intptr_t, bool);
+void miqt_exec_callback_QWebEnginePage_LifecycleStateChanged(intptr_t, int);
+void miqt_exec_callback_QWebEnginePage_RecommendedStateChanged(intptr_t, int);
+void miqt_exec_callback_QWebEnginePage_FindTextFinished(intptr_t, QWebEngineFindTextResult*);
+void miqt_exec_callback_QWebEnginePage_TriggerAction(void*, intptr_t, int, bool);
+bool miqt_exec_callback_QWebEnginePage_Event(void*, intptr_t, QEvent*);
+QWebEnginePage* miqt_exec_callback_QWebEnginePage_CreateWindow(void*, intptr_t, int);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QWebEnginePage_ChooseFiles(void*, intptr_t, int, struct miqt_array /* of struct miqt_string */ , struct miqt_array /* of struct miqt_string */ );
+void miqt_exec_callback_QWebEnginePage_JavaScriptAlert(void*, intptr_t, QUrl*, struct miqt_string);
+bool miqt_exec_callback_QWebEnginePage_JavaScriptConfirm(void*, intptr_t, QUrl*, struct miqt_string);
+void miqt_exec_callback_QWebEnginePage_JavaScriptConsoleMessage(void*, intptr_t, int, struct miqt_string, int, struct miqt_string);
+bool miqt_exec_callback_QWebEnginePage_CertificateError(void*, intptr_t, QWebEngineCertificateError*);
+bool miqt_exec_callback_QWebEnginePage_AcceptNavigationRequest(void*, intptr_t, QUrl*, int, bool);
+bool miqt_exec_callback_QWebEnginePage_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QWebEnginePage_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QWebEnginePage_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QWebEnginePage_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QWebEnginePage_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QWebEnginePage_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQWebEnginePage : public virtual QWebEnginePage {
 public:

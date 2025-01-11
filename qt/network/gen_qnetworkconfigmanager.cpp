@@ -13,10 +13,25 @@
 #include <qnetworkconfigmanager.h>
 #include "gen_qnetworkconfigmanager.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QNetworkConfigurationManager_ConfigurationAdded(intptr_t, QNetworkConfiguration*);
+void miqt_exec_callback_QNetworkConfigurationManager_ConfigurationRemoved(intptr_t, QNetworkConfiguration*);
+void miqt_exec_callback_QNetworkConfigurationManager_ConfigurationChanged(intptr_t, QNetworkConfiguration*);
+void miqt_exec_callback_QNetworkConfigurationManager_OnlineStateChanged(intptr_t, bool);
+void miqt_exec_callback_QNetworkConfigurationManager_UpdateCompleted(intptr_t);
+bool miqt_exec_callback_QNetworkConfigurationManager_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QNetworkConfigurationManager_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QNetworkConfigurationManager_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QNetworkConfigurationManager_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QNetworkConfigurationManager_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QNetworkConfigurationManager_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QNetworkConfigurationManager_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQNetworkConfigurationManager : public virtual QNetworkConfigurationManager {
 public:

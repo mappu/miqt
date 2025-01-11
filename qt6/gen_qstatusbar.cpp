@@ -35,10 +35,55 @@
 #include <qstatusbar.h>
 #include "gen_qstatusbar.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QStatusBar_MessageChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QStatusBar_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QStatusBar_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QStatusBar_ResizeEvent(void*, intptr_t, QResizeEvent*);
+bool miqt_exec_callback_QStatusBar_Event(void*, intptr_t, QEvent*);
+int miqt_exec_callback_QStatusBar_DevType(void*, intptr_t);
+void miqt_exec_callback_QStatusBar_SetVisible(void*, intptr_t, bool);
+QSize* miqt_exec_callback_QStatusBar_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QStatusBar_MinimumSizeHint(void*, intptr_t);
+int miqt_exec_callback_QStatusBar_HeightForWidth(void*, intptr_t, int);
+bool miqt_exec_callback_QStatusBar_HasHeightForWidth(void*, intptr_t);
+QPaintEngine* miqt_exec_callback_QStatusBar_PaintEngine(void*, intptr_t);
+void miqt_exec_callback_QStatusBar_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QStatusBar_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QStatusBar_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QStatusBar_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QStatusBar_WheelEvent(void*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QStatusBar_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QStatusBar_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QStatusBar_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QStatusBar_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QStatusBar_EnterEvent(void*, intptr_t, QEnterEvent*);
+void miqt_exec_callback_QStatusBar_LeaveEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QStatusBar_MoveEvent(void*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QStatusBar_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QStatusBar_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QStatusBar_TabletEvent(void*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QStatusBar_ActionEvent(void*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QStatusBar_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QStatusBar_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QStatusBar_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QStatusBar_DropEvent(void*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QStatusBar_HideEvent(void*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QStatusBar_NativeEvent(void*, intptr_t, struct miqt_string, void*, intptr_t*);
+void miqt_exec_callback_QStatusBar_ChangeEvent(void*, intptr_t, QEvent*);
+int miqt_exec_callback_QStatusBar_Metric(void*, intptr_t, int);
+void miqt_exec_callback_QStatusBar_InitPainter(void*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QStatusBar_Redirected(void*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QStatusBar_SharedPainter(void*, intptr_t);
+void miqt_exec_callback_QStatusBar_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QStatusBar_InputMethodQuery(void*, intptr_t, int);
+bool miqt_exec_callback_QStatusBar_FocusNextPrevChild(void*, intptr_t, bool);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQStatusBar : public virtual QStatusBar {
 public:

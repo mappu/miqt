@@ -8,10 +8,13 @@
 #include <qdir.h>
 #include "gen_qdir.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QDir* QDir_new(QDir* param1) {
 	return new QDir(*param1);

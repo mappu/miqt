@@ -17,10 +17,55 @@
 #include <qabstractproxymodel.h>
 #include "gen_qabstractproxymodel.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QAbstractProxyModel_SetSourceModel(void*, intptr_t, QAbstractItemModel*);
+QModelIndex* miqt_exec_callback_QAbstractProxyModel_MapToSource(void*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QAbstractProxyModel_MapFromSource(void*, intptr_t, QModelIndex*);
+QItemSelection* miqt_exec_callback_QAbstractProxyModel_MapSelectionToSource(void*, intptr_t, QItemSelection*);
+QItemSelection* miqt_exec_callback_QAbstractProxyModel_MapSelectionFromSource(void*, intptr_t, QItemSelection*);
+bool miqt_exec_callback_QAbstractProxyModel_Submit(void*, intptr_t);
+void miqt_exec_callback_QAbstractProxyModel_Revert(void*, intptr_t);
+QVariant* miqt_exec_callback_QAbstractProxyModel_Data(void*, intptr_t, QModelIndex*, int);
+QVariant* miqt_exec_callback_QAbstractProxyModel_HeaderData(void*, intptr_t, int, int, int);
+struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QAbstractProxyModel_ItemData(void*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QAbstractProxyModel_Flags(void*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QAbstractProxyModel_SetData(void*, intptr_t, QModelIndex*, QVariant*, int);
+bool miqt_exec_callback_QAbstractProxyModel_SetItemData(void*, intptr_t, QModelIndex*, struct miqt_map /* of int to QVariant* */ );
+bool miqt_exec_callback_QAbstractProxyModel_SetHeaderData(void*, intptr_t, int, int, QVariant*, int);
+bool miqt_exec_callback_QAbstractProxyModel_ClearItemData(void*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QAbstractProxyModel_Buddy(void*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QAbstractProxyModel_CanFetchMore(void*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QAbstractProxyModel_FetchMore(void*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QAbstractProxyModel_Sort(void*, intptr_t, int, int);
+QSize* miqt_exec_callback_QAbstractProxyModel_Span(void*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QAbstractProxyModel_HasChildren(void*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QAbstractProxyModel_Sibling(void*, intptr_t, int, int, QModelIndex*);
+QMimeData* miqt_exec_callback_QAbstractProxyModel_MimeData(void*, intptr_t, struct miqt_array /* of QModelIndex* */ );
+bool miqt_exec_callback_QAbstractProxyModel_CanDropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+bool miqt_exec_callback_QAbstractProxyModel_DropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QAbstractProxyModel_MimeTypes(void*, intptr_t);
+int miqt_exec_callback_QAbstractProxyModel_SupportedDragActions(void*, intptr_t);
+int miqt_exec_callback_QAbstractProxyModel_SupportedDropActions(void*, intptr_t);
+struct miqt_map /* of int to struct miqt_string */  miqt_exec_callback_QAbstractProxyModel_RoleNames(void*, intptr_t);
+QModelIndex* miqt_exec_callback_QAbstractProxyModel_Index(void*, intptr_t, int, int, QModelIndex*);
+QModelIndex* miqt_exec_callback_QAbstractProxyModel_Parent(void*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QAbstractProxyModel_RowCount(void*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QAbstractProxyModel_ColumnCount(void*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QAbstractProxyModel_InsertRows(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QAbstractProxyModel_InsertColumns(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QAbstractProxyModel_RemoveRows(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QAbstractProxyModel_RemoveColumns(void*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QAbstractProxyModel_MoveRows(void*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+bool miqt_exec_callback_QAbstractProxyModel_MoveColumns(void*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QAbstractProxyModel_Match(void*, intptr_t, QModelIndex*, int, QVariant*, int, int);
+void miqt_exec_callback_QAbstractProxyModel_MultiData(void*, intptr_t, QModelIndex*, QModelRoleDataSpan*);
+void miqt_exec_callback_QAbstractProxyModel_ResetInternalData(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQAbstractProxyModel : public virtual QAbstractProxyModel {
 public:

@@ -10,10 +10,16 @@
 #include <qmetadatareadercontrol.h>
 #include "gen_qmetadatareadercontrol.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QMetaDataReaderControl_MetaDataChanged(intptr_t);
+void miqt_exec_callback_QMetaDataReaderControl_MetaDataChanged2(intptr_t, struct miqt_string, QVariant*);
+void miqt_exec_callback_QMetaDataReaderControl_MetaDataAvailableChanged(intptr_t, bool);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QMetaDataReaderControl_virtbase(QMetaDataReaderControl* src, QMediaControl** outptr_QMediaControl) {
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);

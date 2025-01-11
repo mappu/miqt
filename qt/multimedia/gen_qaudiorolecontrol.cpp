@@ -9,10 +9,14 @@
 #include <qaudiorolecontrol.h>
 #include "gen_qaudiorolecontrol.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QAudioRoleControl_AudioRoleChanged(intptr_t, int);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QAudioRoleControl_virtbase(QAudioRoleControl* src, QMediaControl** outptr_QMediaControl) {
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);

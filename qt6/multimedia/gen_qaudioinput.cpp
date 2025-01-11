@@ -12,10 +12,23 @@
 #include <qaudioinput.h>
 #include "gen_qaudioinput.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QAudioInput_DeviceChanged(intptr_t);
+void miqt_exec_callback_QAudioInput_VolumeChanged(intptr_t, float);
+void miqt_exec_callback_QAudioInput_MutedChanged(intptr_t, bool);
+bool miqt_exec_callback_QAudioInput_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAudioInput_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAudioInput_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAudioInput_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAudioInput_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QAudioInput_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAudioInput_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQAudioInput : public virtual QAudioInput {
 public:

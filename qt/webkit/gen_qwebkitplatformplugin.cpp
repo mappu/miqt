@@ -20,10 +20,17 @@
 #include <qwebkitplatformplugin.h>
 #include "gen_qwebkitplatformplugin.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QWebSelectMethod_SelectItem(intptr_t, int, bool, bool);
+void miqt_exec_callback_QWebSelectMethod_DidHide(intptr_t);
+void miqt_exec_callback_QWebNotificationPresenter_NotificationClosed(intptr_t);
+void miqt_exec_callback_QWebNotificationPresenter_NotificationClicked(intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 int QWebSelectData_ItemType(const QWebSelectData* self, int param1) {
 	QWebSelectData::ItemType _ret = self->itemType(static_cast<int>(param1));

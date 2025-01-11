@@ -34,10 +34,61 @@
 #include <qgraphicsproxywidget.h>
 #include "gen_qgraphicsproxywidget.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QGraphicsProxyWidget_SetGeometry(void*, intptr_t, QRectF*);
+void miqt_exec_callback_QGraphicsProxyWidget_Paint(void*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
+int miqt_exec_callback_QGraphicsProxyWidget_Type(void*, intptr_t);
+QVariant* miqt_exec_callback_QGraphicsProxyWidget_ItemChange(void*, intptr_t, int, QVariant*);
+bool miqt_exec_callback_QGraphicsProxyWidget_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGraphicsProxyWidget_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QGraphicsProxyWidget_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QGraphicsProxyWidget_HideEvent(void*, intptr_t, QHideEvent*);
+void miqt_exec_callback_QGraphicsProxyWidget_ContextMenuEvent(void*, intptr_t, QGraphicsSceneContextMenuEvent*);
+void miqt_exec_callback_QGraphicsProxyWidget_DragEnterEvent(void*, intptr_t, QGraphicsSceneDragDropEvent*);
+void miqt_exec_callback_QGraphicsProxyWidget_DragLeaveEvent(void*, intptr_t, QGraphicsSceneDragDropEvent*);
+void miqt_exec_callback_QGraphicsProxyWidget_DragMoveEvent(void*, intptr_t, QGraphicsSceneDragDropEvent*);
+void miqt_exec_callback_QGraphicsProxyWidget_DropEvent(void*, intptr_t, QGraphicsSceneDragDropEvent*);
+void miqt_exec_callback_QGraphicsProxyWidget_HoverEnterEvent(void*, intptr_t, QGraphicsSceneHoverEvent*);
+void miqt_exec_callback_QGraphicsProxyWidget_HoverLeaveEvent(void*, intptr_t, QGraphicsSceneHoverEvent*);
+void miqt_exec_callback_QGraphicsProxyWidget_HoverMoveEvent(void*, intptr_t, QGraphicsSceneHoverEvent*);
+void miqt_exec_callback_QGraphicsProxyWidget_GrabMouseEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsProxyWidget_UngrabMouseEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsProxyWidget_MouseMoveEvent(void*, intptr_t, QGraphicsSceneMouseEvent*);
+void miqt_exec_callback_QGraphicsProxyWidget_MousePressEvent(void*, intptr_t, QGraphicsSceneMouseEvent*);
+void miqt_exec_callback_QGraphicsProxyWidget_MouseReleaseEvent(void*, intptr_t, QGraphicsSceneMouseEvent*);
+void miqt_exec_callback_QGraphicsProxyWidget_MouseDoubleClickEvent(void*, intptr_t, QGraphicsSceneMouseEvent*);
+void miqt_exec_callback_QGraphicsProxyWidget_WheelEvent(void*, intptr_t, QGraphicsSceneWheelEvent*);
+void miqt_exec_callback_QGraphicsProxyWidget_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QGraphicsProxyWidget_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QGraphicsProxyWidget_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QGraphicsProxyWidget_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+bool miqt_exec_callback_QGraphicsProxyWidget_FocusNextPrevChild(void*, intptr_t, bool);
+QVariant* miqt_exec_callback_QGraphicsProxyWidget_InputMethodQuery(void*, intptr_t, int);
+void miqt_exec_callback_QGraphicsProxyWidget_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
+QSizeF* miqt_exec_callback_QGraphicsProxyWidget_SizeHint(void*, intptr_t, int, QSizeF*);
+void miqt_exec_callback_QGraphicsProxyWidget_ResizeEvent(void*, intptr_t, QGraphicsSceneResizeEvent*);
+void miqt_exec_callback_QGraphicsProxyWidget_GetContentsMargins(void*, intptr_t, double*, double*, double*, double*);
+void miqt_exec_callback_QGraphicsProxyWidget_PaintWindowFrame(void*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
+QRectF* miqt_exec_callback_QGraphicsProxyWidget_BoundingRect(void*, intptr_t);
+QPainterPath* miqt_exec_callback_QGraphicsProxyWidget_Shape(void*, intptr_t);
+void miqt_exec_callback_QGraphicsProxyWidget_InitStyleOption(void*, intptr_t, QStyleOption*);
+void miqt_exec_callback_QGraphicsProxyWidget_UpdateGeometry(void*, intptr_t);
+QVariant* miqt_exec_callback_QGraphicsProxyWidget_PropertyChange(void*, intptr_t, struct miqt_string, QVariant*);
+bool miqt_exec_callback_QGraphicsProxyWidget_SceneEvent(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGraphicsProxyWidget_WindowFrameEvent(void*, intptr_t, QEvent*);
+int miqt_exec_callback_QGraphicsProxyWidget_WindowFrameSectionAt(void*, intptr_t, QPointF*);
+void miqt_exec_callback_QGraphicsProxyWidget_ChangeEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsProxyWidget_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QGraphicsProxyWidget_MoveEvent(void*, intptr_t, QGraphicsSceneMoveEvent*);
+void miqt_exec_callback_QGraphicsProxyWidget_PolishEvent(void*, intptr_t);
+void miqt_exec_callback_QGraphicsProxyWidget_GrabKeyboardEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsProxyWidget_UngrabKeyboardEvent(void*, intptr_t, QEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQGraphicsProxyWidget : public virtual QGraphicsProxyWidget {
 public:

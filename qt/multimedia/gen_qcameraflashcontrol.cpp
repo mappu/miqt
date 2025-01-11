@@ -8,10 +8,14 @@
 #include <qcameraflashcontrol.h>
 #include "gen_qcameraflashcontrol.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QCameraFlashControl_FlashReady(intptr_t, bool);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QCameraFlashControl_virtbase(QCameraFlashControl* src, QMediaControl** outptr_QMediaControl) {
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);

@@ -16,10 +16,22 @@
 #include <qtoolbox.h>
 #include "gen_qtoolbox.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QToolBox_CurrentChanged(intptr_t, int);
+bool miqt_exec_callback_QToolBox_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QToolBox_ItemInserted(void*, intptr_t, int);
+void miqt_exec_callback_QToolBox_ItemRemoved(void*, intptr_t, int);
+void miqt_exec_callback_QToolBox_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QToolBox_ChangeEvent(void*, intptr_t, QEvent*);
+QSize* miqt_exec_callback_QToolBox_SizeHint(void*, intptr_t);
+void miqt_exec_callback_QToolBox_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QToolBox_InitStyleOption(void*, intptr_t, QStyleOptionFrame*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQToolBox : public virtual QToolBox {
 public:

@@ -8,10 +8,14 @@
 #include <qcameralockscontrol.h>
 #include "gen_qcameralockscontrol.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QCameraLocksControl_LockStatusChanged(intptr_t, int, int, int);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QCameraLocksControl_virtbase(QCameraLocksControl* src, QMediaControl** outptr_QMediaControl) {
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);

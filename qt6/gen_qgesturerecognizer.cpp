@@ -5,10 +5,16 @@
 #include <qgesturerecognizer.h>
 #include "gen_qgesturerecognizer.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+QGesture* miqt_exec_callback_QGestureRecognizer_Create(void*, intptr_t, QObject*);
+int miqt_exec_callback_QGestureRecognizer_Recognize(void*, intptr_t, QGesture*, QObject*, QEvent*);
+void miqt_exec_callback_QGestureRecognizer_Reset(void*, intptr_t, QGesture*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQGestureRecognizer : public virtual QGestureRecognizer {
 public:

@@ -13,10 +13,13 @@
 #include <qjsonobject.h>
 #include "gen_qjsonobject.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QJsonObject* QJsonObject_new() {
 	return new QJsonObject();

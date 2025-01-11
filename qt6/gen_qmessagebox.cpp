@@ -22,10 +22,30 @@
 #include <qmessagebox.h>
 #include "gen_qmessagebox.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QMessageBox_ButtonClicked(intptr_t, QAbstractButton*);
+bool miqt_exec_callback_QMessageBox_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QMessageBox_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QMessageBox_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QMessageBox_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QMessageBox_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QMessageBox_ChangeEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QMessageBox_SetVisible(void*, intptr_t, bool);
+QSize* miqt_exec_callback_QMessageBox_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QMessageBox_MinimumSizeHint(void*, intptr_t);
+void miqt_exec_callback_QMessageBox_Open(void*, intptr_t);
+int miqt_exec_callback_QMessageBox_Exec(void*, intptr_t);
+void miqt_exec_callback_QMessageBox_Done(void*, intptr_t, int);
+void miqt_exec_callback_QMessageBox_Accept(void*, intptr_t);
+void miqt_exec_callback_QMessageBox_Reject(void*, intptr_t);
+void miqt_exec_callback_QMessageBox_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+bool miqt_exec_callback_QMessageBox_EventFilter(void*, intptr_t, QObject*, QEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQMessageBox : public virtual QMessageBox {
 public:

@@ -4,10 +4,13 @@
 #include <qmediatimerange.h>
 #include "gen_qmediatimerange.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QMediaTimeInterval* QMediaTimeInterval_new() {
 	return new QMediaTimeInterval();

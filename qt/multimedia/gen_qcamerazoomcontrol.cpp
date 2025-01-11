@@ -8,10 +8,19 @@
 #include <qcamerazoomcontrol.h>
 #include "gen_qcamerazoomcontrol.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QCameraZoomControl_MaximumOpticalZoomChanged(intptr_t, double);
+void miqt_exec_callback_QCameraZoomControl_MaximumDigitalZoomChanged(intptr_t, double);
+void miqt_exec_callback_QCameraZoomControl_RequestedOpticalZoomChanged(intptr_t, double);
+void miqt_exec_callback_QCameraZoomControl_RequestedDigitalZoomChanged(intptr_t, double);
+void miqt_exec_callback_QCameraZoomControl_CurrentOpticalZoomChanged(intptr_t, double);
+void miqt_exec_callback_QCameraZoomControl_CurrentDigitalZoomChanged(intptr_t, double);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QCameraZoomControl_virtbase(QCameraZoomControl* src, QMediaControl** outptr_QMediaControl) {
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);

@@ -7,10 +7,13 @@
 #include <qcameraimageprocessing.h>
 #include "gen_qcameraimageprocessing.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QCameraImageProcessing_virtbase(QCameraImageProcessing* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);

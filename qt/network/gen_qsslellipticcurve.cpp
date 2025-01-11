@@ -5,10 +5,13 @@
 #include <qsslellipticcurve.h>
 #include "gen_qsslellipticcurve.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QSslEllipticCurve* QSslEllipticCurve_new() {
 	return new QSslEllipticCurve();

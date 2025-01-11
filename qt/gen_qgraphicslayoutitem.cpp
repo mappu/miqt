@@ -6,10 +6,17 @@
 #include <qgraphicslayoutitem.h>
 #include "gen_qgraphicslayoutitem.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QGraphicsLayoutItem_SetGeometry(void*, intptr_t, QRectF*);
+void miqt_exec_callback_QGraphicsLayoutItem_GetContentsMargins(void*, intptr_t, double*, double*, double*, double*);
+void miqt_exec_callback_QGraphicsLayoutItem_UpdateGeometry(void*, intptr_t);
+QSizeF* miqt_exec_callback_QGraphicsLayoutItem_SizeHint(void*, intptr_t, int, QSizeF*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQGraphicsLayoutItem : public virtual QGraphicsLayoutItem {
 public:

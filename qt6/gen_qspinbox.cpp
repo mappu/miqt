@@ -26,10 +26,73 @@
 #include <qspinbox.h>
 #include "gen_qspinbox.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QSpinBox_ValueChanged(intptr_t, int);
+void miqt_exec_callback_QSpinBox_TextChanged(intptr_t, struct miqt_string);
+bool miqt_exec_callback_QSpinBox_Event(void*, intptr_t, QEvent*);
+int miqt_exec_callback_QSpinBox_Validate(void*, intptr_t, struct miqt_string, int*);
+int miqt_exec_callback_QSpinBox_ValueFromText(void*, intptr_t, struct miqt_string);
+struct miqt_string miqt_exec_callback_QSpinBox_TextFromValue(void*, intptr_t, int);
+void miqt_exec_callback_QSpinBox_Fixup(void*, intptr_t, struct miqt_string);
+QSize* miqt_exec_callback_QSpinBox_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QSpinBox_MinimumSizeHint(void*, intptr_t);
+QVariant* miqt_exec_callback_QSpinBox_InputMethodQuery(void*, intptr_t, int);
+void miqt_exec_callback_QSpinBox_StepBy(void*, intptr_t, int);
+void miqt_exec_callback_QSpinBox_Clear(void*, intptr_t);
+void miqt_exec_callback_QSpinBox_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QSpinBox_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QSpinBox_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QSpinBox_WheelEvent(void*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QSpinBox_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QSpinBox_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QSpinBox_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QSpinBox_ChangeEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QSpinBox_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QSpinBox_HideEvent(void*, intptr_t, QHideEvent*);
+void miqt_exec_callback_QSpinBox_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSpinBox_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSpinBox_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSpinBox_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSpinBox_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QSpinBox_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QSpinBox_InitStyleOption(void*, intptr_t, QStyleOptionSpinBox*);
+int miqt_exec_callback_QSpinBox_StepEnabled(void*, intptr_t);
+void miqt_exec_callback_QDoubleSpinBox_ValueChanged(intptr_t, double);
+void miqt_exec_callback_QDoubleSpinBox_TextChanged(intptr_t, struct miqt_string);
+int miqt_exec_callback_QDoubleSpinBox_Validate(void*, intptr_t, struct miqt_string, int*);
+double miqt_exec_callback_QDoubleSpinBox_ValueFromText(void*, intptr_t, struct miqt_string);
+struct miqt_string miqt_exec_callback_QDoubleSpinBox_TextFromValue(void*, intptr_t, double);
+void miqt_exec_callback_QDoubleSpinBox_Fixup(void*, intptr_t, struct miqt_string);
+QSize* miqt_exec_callback_QDoubleSpinBox_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QDoubleSpinBox_MinimumSizeHint(void*, intptr_t);
+bool miqt_exec_callback_QDoubleSpinBox_Event(void*, intptr_t, QEvent*);
+QVariant* miqt_exec_callback_QDoubleSpinBox_InputMethodQuery(void*, intptr_t, int);
+void miqt_exec_callback_QDoubleSpinBox_StepBy(void*, intptr_t, int);
+void miqt_exec_callback_QDoubleSpinBox_Clear(void*, intptr_t);
+void miqt_exec_callback_QDoubleSpinBox_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QDoubleSpinBox_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QDoubleSpinBox_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QDoubleSpinBox_WheelEvent(void*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QDoubleSpinBox_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QDoubleSpinBox_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QDoubleSpinBox_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QDoubleSpinBox_ChangeEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QDoubleSpinBox_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QDoubleSpinBox_HideEvent(void*, intptr_t, QHideEvent*);
+void miqt_exec_callback_QDoubleSpinBox_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDoubleSpinBox_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDoubleSpinBox_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDoubleSpinBox_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QDoubleSpinBox_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QDoubleSpinBox_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QDoubleSpinBox_InitStyleOption(void*, intptr_t, QStyleOptionSpinBox*);
+int miqt_exec_callback_QDoubleSpinBox_StepEnabled(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQSpinBox : public virtual QSpinBox {
 public:

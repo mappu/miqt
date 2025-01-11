@@ -9,10 +9,13 @@
 #include <qfiledevice.h>
 #include "gen_qfiledevice.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QFileDevice_virtbase(QFileDevice* src, QIODevice** outptr_QIODevice) {
 	*outptr_QIODevice = static_cast<QIODevice*>(src);

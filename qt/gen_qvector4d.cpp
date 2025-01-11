@@ -7,10 +7,13 @@
 #include <qvector4d.h>
 #include "gen_qvector4d.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QVector4D* QVector4D_new() {
 	return new QVector4D();

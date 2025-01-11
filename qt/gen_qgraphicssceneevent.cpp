@@ -16,10 +16,13 @@
 #include <qgraphicssceneevent.h>
 #include "gen_qgraphicssceneevent.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QGraphicsSceneEvent* QGraphicsSceneEvent_new(int typeVal) {
 	return new QGraphicsSceneEvent(static_cast<QEvent::Type>(typeVal));

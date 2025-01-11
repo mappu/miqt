@@ -5,10 +5,13 @@
 #include <qwaitcondition.h>
 #include "gen_qwaitcondition.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QWaitCondition* QWaitCondition_new() {
 	return new QWaitCondition();

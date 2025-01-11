@@ -12,10 +12,33 @@
 #include <qprocess.h>
 #include "gen_qprocess.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QProcess_Finished(intptr_t, int);
+void miqt_exec_callback_QProcess_ErrorOccurred(intptr_t, int);
+void miqt_exec_callback_QProcess_Finished2(intptr_t, int, int);
+bool miqt_exec_callback_QProcess_Open(void*, intptr_t, int);
+bool miqt_exec_callback_QProcess_WaitForReadyRead(void*, intptr_t, int);
+bool miqt_exec_callback_QProcess_WaitForBytesWritten(void*, intptr_t, int);
+long long miqt_exec_callback_QProcess_BytesToWrite(void*, intptr_t);
+bool miqt_exec_callback_QProcess_IsSequential(void*, intptr_t);
+void miqt_exec_callback_QProcess_Close(void*, intptr_t);
+long long miqt_exec_callback_QProcess_ReadData(void*, intptr_t, char*, long long);
+long long miqt_exec_callback_QProcess_WriteData(void*, intptr_t, const char*, long long);
+long long miqt_exec_callback_QProcess_Pos(void*, intptr_t);
+long long miqt_exec_callback_QProcess_Size(void*, intptr_t);
+bool miqt_exec_callback_QProcess_Seek(void*, intptr_t, long long);
+bool miqt_exec_callback_QProcess_AtEnd(void*, intptr_t);
+bool miqt_exec_callback_QProcess_Reset(void*, intptr_t);
+long long miqt_exec_callback_QProcess_BytesAvailable(void*, intptr_t);
+bool miqt_exec_callback_QProcess_CanReadLine(void*, intptr_t);
+long long miqt_exec_callback_QProcess_ReadLineData(void*, intptr_t, char*, long long);
+long long miqt_exec_callback_QProcess_SkipData(void*, intptr_t, long long);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QProcessEnvironment* QProcessEnvironment_new() {
 	return new QProcessEnvironment();

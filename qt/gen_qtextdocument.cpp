@@ -31,10 +31,33 @@
 #include <qtextdocument.h>
 #include "gen_qtextdocument.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QTextDocument_ContentsChange(intptr_t, int, int, int);
+void miqt_exec_callback_QTextDocument_ContentsChanged(intptr_t);
+void miqt_exec_callback_QTextDocument_UndoAvailable(intptr_t, bool);
+void miqt_exec_callback_QTextDocument_RedoAvailable(intptr_t, bool);
+void miqt_exec_callback_QTextDocument_UndoCommandAdded(intptr_t);
+void miqt_exec_callback_QTextDocument_ModificationChanged(intptr_t, bool);
+void miqt_exec_callback_QTextDocument_CursorPositionChanged(intptr_t, QTextCursor*);
+void miqt_exec_callback_QTextDocument_BlockCountChanged(intptr_t, int);
+void miqt_exec_callback_QTextDocument_BaseUrlChanged(intptr_t, QUrl*);
+void miqt_exec_callback_QTextDocument_DocumentLayoutChanged(intptr_t);
+void miqt_exec_callback_QTextDocument_Clear(void*, intptr_t);
+QTextObject* miqt_exec_callback_QTextDocument_CreateObject(void*, intptr_t, QTextFormat*);
+QVariant* miqt_exec_callback_QTextDocument_LoadResource(void*, intptr_t, int, QUrl*);
+bool miqt_exec_callback_QTextDocument_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QTextDocument_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QTextDocument_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QTextDocument_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QTextDocument_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QTextDocument_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QTextDocument_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QAbstractUndoItem_Undo(QAbstractUndoItem* self) {
 	self->undo();

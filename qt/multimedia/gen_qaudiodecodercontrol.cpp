@@ -11,10 +11,22 @@
 #include <qaudiodecodercontrol.h>
 #include "gen_qaudiodecodercontrol.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QAudioDecoderControl_StateChanged(intptr_t, int);
+void miqt_exec_callback_QAudioDecoderControl_FormatChanged(intptr_t, QAudioFormat*);
+void miqt_exec_callback_QAudioDecoderControl_SourceChanged(intptr_t);
+void miqt_exec_callback_QAudioDecoderControl_Error(intptr_t, int, struct miqt_string);
+void miqt_exec_callback_QAudioDecoderControl_BufferReady(intptr_t);
+void miqt_exec_callback_QAudioDecoderControl_BufferAvailableChanged(intptr_t, bool);
+void miqt_exec_callback_QAudioDecoderControl_Finished(intptr_t);
+void miqt_exec_callback_QAudioDecoderControl_PositionChanged(intptr_t, long long);
+void miqt_exec_callback_QAudioDecoderControl_DurationChanged(intptr_t, long long);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QAudioDecoderControl_virtbase(QAudioDecoderControl* src, QMediaControl** outptr_QMediaControl) {
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);

@@ -38,10 +38,61 @@
 #include <qtabwidget.h>
 #include "gen_qtabwidget.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QTabWidget_CurrentChanged(intptr_t, int);
+void miqt_exec_callback_QTabWidget_TabCloseRequested(intptr_t, int);
+void miqt_exec_callback_QTabWidget_TabBarClicked(intptr_t, int);
+void miqt_exec_callback_QTabWidget_TabBarDoubleClicked(intptr_t, int);
+QSize* miqt_exec_callback_QTabWidget_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QTabWidget_MinimumSizeHint(void*, intptr_t);
+int miqt_exec_callback_QTabWidget_HeightForWidth(void*, intptr_t, int);
+bool miqt_exec_callback_QTabWidget_HasHeightForWidth(void*, intptr_t);
+void miqt_exec_callback_QTabWidget_TabInserted(void*, intptr_t, int);
+void miqt_exec_callback_QTabWidget_TabRemoved(void*, intptr_t, int);
+void miqt_exec_callback_QTabWidget_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QTabWidget_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QTabWidget_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QTabWidget_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QTabWidget_ChangeEvent(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QTabWidget_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QTabWidget_InitStyleOption(void*, intptr_t, QStyleOptionTabWidgetFrame*);
+int miqt_exec_callback_QTabWidget_DevType(void*, intptr_t);
+void miqt_exec_callback_QTabWidget_SetVisible(void*, intptr_t, bool);
+QPaintEngine* miqt_exec_callback_QTabWidget_PaintEngine(void*, intptr_t);
+void miqt_exec_callback_QTabWidget_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTabWidget_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTabWidget_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTabWidget_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTabWidget_WheelEvent(void*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QTabWidget_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QTabWidget_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QTabWidget_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QTabWidget_EnterEvent(void*, intptr_t, QEnterEvent*);
+void miqt_exec_callback_QTabWidget_LeaveEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QTabWidget_MoveEvent(void*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QTabWidget_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QTabWidget_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QTabWidget_TabletEvent(void*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QTabWidget_ActionEvent(void*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QTabWidget_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QTabWidget_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QTabWidget_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QTabWidget_DropEvent(void*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QTabWidget_HideEvent(void*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QTabWidget_NativeEvent(void*, intptr_t, struct miqt_string, void*, intptr_t*);
+int miqt_exec_callback_QTabWidget_Metric(void*, intptr_t, int);
+void miqt_exec_callback_QTabWidget_InitPainter(void*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QTabWidget_Redirected(void*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QTabWidget_SharedPainter(void*, intptr_t);
+void miqt_exec_callback_QTabWidget_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QTabWidget_InputMethodQuery(void*, intptr_t, int);
+bool miqt_exec_callback_QTabWidget_FocusNextPrevChild(void*, intptr_t, bool);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQTabWidget : public virtual QTabWidget {
 public:

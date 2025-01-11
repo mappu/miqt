@@ -14,10 +14,24 @@
 #include <qsslserver.h>
 #include "gen_qsslserver.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QSslServer_SslErrors(intptr_t, QSslSocket*, struct miqt_array /* of QSslError* */ );
+void miqt_exec_callback_QSslServer_PeerVerifyError(intptr_t, QSslSocket*, QSslError*);
+void miqt_exec_callback_QSslServer_ErrorOccurred(intptr_t, QSslSocket*, int);
+void miqt_exec_callback_QSslServer_PreSharedKeyAuthenticationRequired(intptr_t, QSslSocket*, QSslPreSharedKeyAuthenticator*);
+void miqt_exec_callback_QSslServer_AlertSent(intptr_t, QSslSocket*, int, int, struct miqt_string);
+void miqt_exec_callback_QSslServer_AlertReceived(intptr_t, QSslSocket*, int, int, struct miqt_string);
+void miqt_exec_callback_QSslServer_HandshakeInterruptedOnError(intptr_t, QSslSocket*, QSslError*);
+void miqt_exec_callback_QSslServer_StartedEncryptionHandshake(intptr_t, QSslSocket*);
+void miqt_exec_callback_QSslServer_IncomingConnection(void*, intptr_t, intptr_t);
+bool miqt_exec_callback_QSslServer_HasPendingConnections(void*, intptr_t);
+QTcpSocket* miqt_exec_callback_QSslServer_NextPendingConnection(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQSslServer : public virtual QSslServer {
 public:

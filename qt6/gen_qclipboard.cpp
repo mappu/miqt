@@ -10,10 +10,17 @@
 #include <qclipboard.h>
 #include "gen_qclipboard.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QClipboard_Changed(intptr_t, int);
+void miqt_exec_callback_QClipboard_SelectionChanged(intptr_t);
+void miqt_exec_callback_QClipboard_FindBufferChanged(intptr_t);
+void miqt_exec_callback_QClipboard_DataChanged(intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QClipboard_virtbase(QClipboard* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);

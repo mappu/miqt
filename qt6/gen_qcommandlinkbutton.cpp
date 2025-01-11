@@ -19,10 +19,24 @@
 #include <qcommandlinkbutton.h>
 #include "gen_qcommandlinkbutton.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+QSize* miqt_exec_callback_QCommandLinkButton_SizeHint(void*, intptr_t);
+int miqt_exec_callback_QCommandLinkButton_HeightForWidth(void*, intptr_t, int);
+QSize* miqt_exec_callback_QCommandLinkButton_MinimumSizeHint(void*, intptr_t);
+void miqt_exec_callback_QCommandLinkButton_InitStyleOption(void*, intptr_t, QStyleOptionButton*);
+bool miqt_exec_callback_QCommandLinkButton_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QCommandLinkButton_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QCommandLinkButton_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QCommandLinkButton_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QCommandLinkButton_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QCommandLinkButton_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+bool miqt_exec_callback_QCommandLinkButton_HitButton(void*, intptr_t, QPoint*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQCommandLinkButton : public virtual QCommandLinkButton {
 public:

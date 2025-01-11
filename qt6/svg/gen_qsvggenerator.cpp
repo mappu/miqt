@@ -13,10 +13,19 @@
 #include <qsvggenerator.h>
 #include "gen_qsvggenerator.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+QPaintEngine* miqt_exec_callback_QSvgGenerator_PaintEngine(void*, intptr_t);
+int miqt_exec_callback_QSvgGenerator_Metric(void*, intptr_t, int);
+int miqt_exec_callback_QSvgGenerator_DevType(void*, intptr_t);
+void miqt_exec_callback_QSvgGenerator_InitPainter(void*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QSvgGenerator_Redirected(void*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QSvgGenerator_SharedPainter(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQSvgGenerator : public virtual QSvgGenerator {
 public:

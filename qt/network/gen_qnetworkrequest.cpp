@@ -12,10 +12,13 @@
 #include <qnetworkrequest.h>
 #include "gen_qnetworkrequest.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QNetworkRequest* QNetworkRequest_new() {
 	return new QNetworkRequest();

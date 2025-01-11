@@ -4,10 +4,23 @@
 #include <qabstractvideobuffer.h>
 #include "gen_qabstractvideobuffer.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QAbstractVideoBuffer_Release(void*, intptr_t);
+int miqt_exec_callback_QAbstractVideoBuffer_MapMode(void*, intptr_t);
+unsigned char* miqt_exec_callback_QAbstractVideoBuffer_Map(void*, intptr_t, int, int*, int*);
+void miqt_exec_callback_QAbstractVideoBuffer_Unmap(void*, intptr_t);
+QVariant* miqt_exec_callback_QAbstractVideoBuffer_Handle(void*, intptr_t);
+unsigned char* miqt_exec_callback_QAbstractPlanarVideoBuffer_Map(void*, intptr_t, int, int*, int*);
+void miqt_exec_callback_QAbstractPlanarVideoBuffer_Release(void*, intptr_t);
+int miqt_exec_callback_QAbstractPlanarVideoBuffer_MapMode(void*, intptr_t);
+void miqt_exec_callback_QAbstractPlanarVideoBuffer_Unmap(void*, intptr_t);
+QVariant* miqt_exec_callback_QAbstractPlanarVideoBuffer_Handle(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQAbstractVideoBuffer : public virtual QAbstractVideoBuffer {
 public:

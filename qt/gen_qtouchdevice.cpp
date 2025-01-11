@@ -6,10 +6,13 @@
 #include <qtouchdevice.h>
 #include "gen_qtouchdevice.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QTouchDevice* QTouchDevice_new() {
 	return new QTouchDevice();

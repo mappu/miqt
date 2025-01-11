@@ -16,10 +16,65 @@
 #include <qboxlayout.h>
 #include "gen_qboxlayout.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QBoxLayout_AddItem(void*, intptr_t, QLayoutItem*);
+int miqt_exec_callback_QBoxLayout_Spacing(void*, intptr_t);
+void miqt_exec_callback_QBoxLayout_SetSpacing(void*, intptr_t, int);
+QSize* miqt_exec_callback_QBoxLayout_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QBoxLayout_MinimumSize(void*, intptr_t);
+QSize* miqt_exec_callback_QBoxLayout_MaximumSize(void*, intptr_t);
+bool miqt_exec_callback_QBoxLayout_HasHeightForWidth(void*, intptr_t);
+int miqt_exec_callback_QBoxLayout_HeightForWidth(void*, intptr_t, int);
+int miqt_exec_callback_QBoxLayout_MinimumHeightForWidth(void*, intptr_t, int);
+int miqt_exec_callback_QBoxLayout_ExpandingDirections(void*, intptr_t);
+void miqt_exec_callback_QBoxLayout_Invalidate(void*, intptr_t);
+QLayoutItem* miqt_exec_callback_QBoxLayout_ItemAt(void*, intptr_t, int);
+QLayoutItem* miqt_exec_callback_QBoxLayout_TakeAt(void*, intptr_t, int);
+int miqt_exec_callback_QBoxLayout_Count(void*, intptr_t);
+void miqt_exec_callback_QBoxLayout_SetGeometry(void*, intptr_t, QRect*);
+QRect* miqt_exec_callback_QBoxLayout_Geometry(void*, intptr_t);
+int miqt_exec_callback_QBoxLayout_IndexOf(void*, intptr_t, QWidget*);
+bool miqt_exec_callback_QBoxLayout_IsEmpty(void*, intptr_t);
+int miqt_exec_callback_QBoxLayout_ControlTypes(void*, intptr_t);
+QLayoutItem* miqt_exec_callback_QBoxLayout_ReplaceWidget(void*, intptr_t, QWidget*, QWidget*, int);
+QLayout* miqt_exec_callback_QBoxLayout_Layout(void*, intptr_t);
+void miqt_exec_callback_QBoxLayout_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QHBoxLayout_AddItem(void*, intptr_t, QLayoutItem*);
+int miqt_exec_callback_QHBoxLayout_Spacing(void*, intptr_t);
+void miqt_exec_callback_QHBoxLayout_SetSpacing(void*, intptr_t, int);
+QSize* miqt_exec_callback_QHBoxLayout_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QHBoxLayout_MinimumSize(void*, intptr_t);
+QSize* miqt_exec_callback_QHBoxLayout_MaximumSize(void*, intptr_t);
+bool miqt_exec_callback_QHBoxLayout_HasHeightForWidth(void*, intptr_t);
+int miqt_exec_callback_QHBoxLayout_HeightForWidth(void*, intptr_t, int);
+int miqt_exec_callback_QHBoxLayout_MinimumHeightForWidth(void*, intptr_t, int);
+int miqt_exec_callback_QHBoxLayout_ExpandingDirections(void*, intptr_t);
+void miqt_exec_callback_QHBoxLayout_Invalidate(void*, intptr_t);
+QLayoutItem* miqt_exec_callback_QHBoxLayout_ItemAt(void*, intptr_t, int);
+QLayoutItem* miqt_exec_callback_QHBoxLayout_TakeAt(void*, intptr_t, int);
+int miqt_exec_callback_QHBoxLayout_Count(void*, intptr_t);
+void miqt_exec_callback_QHBoxLayout_SetGeometry(void*, intptr_t, QRect*);
+void miqt_exec_callback_QVBoxLayout_AddItem(void*, intptr_t, QLayoutItem*);
+int miqt_exec_callback_QVBoxLayout_Spacing(void*, intptr_t);
+void miqt_exec_callback_QVBoxLayout_SetSpacing(void*, intptr_t, int);
+QSize* miqt_exec_callback_QVBoxLayout_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QVBoxLayout_MinimumSize(void*, intptr_t);
+QSize* miqt_exec_callback_QVBoxLayout_MaximumSize(void*, intptr_t);
+bool miqt_exec_callback_QVBoxLayout_HasHeightForWidth(void*, intptr_t);
+int miqt_exec_callback_QVBoxLayout_HeightForWidth(void*, intptr_t, int);
+int miqt_exec_callback_QVBoxLayout_MinimumHeightForWidth(void*, intptr_t, int);
+int miqt_exec_callback_QVBoxLayout_ExpandingDirections(void*, intptr_t);
+void miqt_exec_callback_QVBoxLayout_Invalidate(void*, intptr_t);
+QLayoutItem* miqt_exec_callback_QVBoxLayout_ItemAt(void*, intptr_t, int);
+QLayoutItem* miqt_exec_callback_QVBoxLayout_TakeAt(void*, intptr_t, int);
+int miqt_exec_callback_QVBoxLayout_Count(void*, intptr_t);
+void miqt_exec_callback_QVBoxLayout_SetGeometry(void*, intptr_t, QRect*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQBoxLayout : public virtual QBoxLayout {
 public:

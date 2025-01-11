@@ -5,10 +5,13 @@
 #include <qsslcipher.h>
 #include "gen_qsslcipher.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QSslCipher* QSslCipher_new() {
 	return new QSslCipher();

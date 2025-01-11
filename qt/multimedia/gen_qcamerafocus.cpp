@@ -11,10 +11,18 @@
 #include <qcamerafocus.h>
 #include "gen_qcamerafocus.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QCameraFocus_OpticalZoomChanged(intptr_t, double);
+void miqt_exec_callback_QCameraFocus_DigitalZoomChanged(intptr_t, double);
+void miqt_exec_callback_QCameraFocus_FocusZonesChanged(intptr_t);
+void miqt_exec_callback_QCameraFocus_MaximumOpticalZoomChanged(intptr_t, double);
+void miqt_exec_callback_QCameraFocus_MaximumDigitalZoomChanged(intptr_t, double);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QCameraFocusZone* QCameraFocusZone_new() {
 	return new QCameraFocusZone();

@@ -13,10 +13,47 @@
 #include <qabstractsocket.h>
 #include "gen_qabstractsocket.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QAbstractSocket_HostFound(intptr_t);
+void miqt_exec_callback_QAbstractSocket_Connected(intptr_t);
+void miqt_exec_callback_QAbstractSocket_Disconnected(intptr_t);
+void miqt_exec_callback_QAbstractSocket_StateChanged(intptr_t, int);
+void miqt_exec_callback_QAbstractSocket_ErrorOccurred(intptr_t, int);
+void miqt_exec_callback_QAbstractSocket_ProxyAuthenticationRequired(intptr_t, QNetworkProxy*, QAuthenticator*);
+void miqt_exec_callback_QAbstractSocket_Resume(void*, intptr_t);
+bool miqt_exec_callback_QAbstractSocket_Bind(void*, intptr_t, QHostAddress*, uint16_t, int);
+void miqt_exec_callback_QAbstractSocket_ConnectToHost(void*, intptr_t, struct miqt_string, uint16_t, int, int);
+void miqt_exec_callback_QAbstractSocket_DisconnectFromHost(void*, intptr_t);
+long long miqt_exec_callback_QAbstractSocket_BytesAvailable(void*, intptr_t);
+long long miqt_exec_callback_QAbstractSocket_BytesToWrite(void*, intptr_t);
+void miqt_exec_callback_QAbstractSocket_SetReadBufferSize(void*, intptr_t, long long);
+intptr_t miqt_exec_callback_QAbstractSocket_SocketDescriptor(void*, intptr_t);
+bool miqt_exec_callback_QAbstractSocket_SetSocketDescriptor(void*, intptr_t, intptr_t, int, int);
+void miqt_exec_callback_QAbstractSocket_SetSocketOption(void*, intptr_t, int, QVariant*);
+QVariant* miqt_exec_callback_QAbstractSocket_SocketOption(void*, intptr_t, int);
+void miqt_exec_callback_QAbstractSocket_Close(void*, intptr_t);
+bool miqt_exec_callback_QAbstractSocket_IsSequential(void*, intptr_t);
+bool miqt_exec_callback_QAbstractSocket_WaitForConnected(void*, intptr_t, int);
+bool miqt_exec_callback_QAbstractSocket_WaitForReadyRead(void*, intptr_t, int);
+bool miqt_exec_callback_QAbstractSocket_WaitForBytesWritten(void*, intptr_t, int);
+bool miqt_exec_callback_QAbstractSocket_WaitForDisconnected(void*, intptr_t, int);
+long long miqt_exec_callback_QAbstractSocket_ReadData(void*, intptr_t, char*, long long);
+long long miqt_exec_callback_QAbstractSocket_ReadLineData(void*, intptr_t, char*, long long);
+long long miqt_exec_callback_QAbstractSocket_SkipData(void*, intptr_t, long long);
+long long miqt_exec_callback_QAbstractSocket_WriteData(void*, intptr_t, const char*, long long);
+bool miqt_exec_callback_QAbstractSocket_Open(void*, intptr_t, int);
+long long miqt_exec_callback_QAbstractSocket_Pos(void*, intptr_t);
+long long miqt_exec_callback_QAbstractSocket_Size(void*, intptr_t);
+bool miqt_exec_callback_QAbstractSocket_Seek(void*, intptr_t, long long);
+bool miqt_exec_callback_QAbstractSocket_AtEnd(void*, intptr_t);
+bool miqt_exec_callback_QAbstractSocket_Reset(void*, intptr_t);
+bool miqt_exec_callback_QAbstractSocket_CanReadLine(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQAbstractSocket : public virtual QAbstractSocket {
 public:

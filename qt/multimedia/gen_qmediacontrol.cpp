@@ -7,10 +7,13 @@
 #include <qmediacontrol.h>
 #include "gen_qmediacontrol.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QMediaControl_virtbase(QMediaControl* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);

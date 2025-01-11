@@ -2,10 +2,13 @@
 #include <qdeadlinetimer.h>
 #include "gen_qdeadlinetimer.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QDeadlineTimer* QDeadlineTimer_new() {
 	return new QDeadlineTimer();

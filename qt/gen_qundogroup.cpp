@@ -14,10 +14,27 @@
 #include <qundogroup.h>
 #include "gen_qundogroup.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QUndoGroup_ActiveStackChanged(intptr_t, QUndoStack*);
+void miqt_exec_callback_QUndoGroup_IndexChanged(intptr_t, int);
+void miqt_exec_callback_QUndoGroup_CleanChanged(intptr_t, bool);
+void miqt_exec_callback_QUndoGroup_CanUndoChanged(intptr_t, bool);
+void miqt_exec_callback_QUndoGroup_CanRedoChanged(intptr_t, bool);
+void miqt_exec_callback_QUndoGroup_UndoTextChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QUndoGroup_RedoTextChanged(intptr_t, struct miqt_string);
+bool miqt_exec_callback_QUndoGroup_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QUndoGroup_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QUndoGroup_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QUndoGroup_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QUndoGroup_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QUndoGroup_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QUndoGroup_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQUndoGroup : public virtual QUndoGroup {
 public:

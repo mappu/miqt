@@ -43,10 +43,55 @@
 #include <qtextedit.h>
 #include "gen_qtextedit.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QTextEdit_TextChanged(intptr_t);
+void miqt_exec_callback_QTextEdit_UndoAvailable(intptr_t, bool);
+void miqt_exec_callback_QTextEdit_RedoAvailable(intptr_t, bool);
+void miqt_exec_callback_QTextEdit_CurrentCharFormatChanged(intptr_t, QTextCharFormat*);
+void miqt_exec_callback_QTextEdit_CopyAvailable(intptr_t, bool);
+void miqt_exec_callback_QTextEdit_SelectionChanged(intptr_t);
+void miqt_exec_callback_QTextEdit_CursorPositionChanged(intptr_t);
+QVariant* miqt_exec_callback_QTextEdit_LoadResource(void*, intptr_t, int, QUrl*);
+QVariant* miqt_exec_callback_QTextEdit_InputMethodQuery(void*, intptr_t, int);
+bool miqt_exec_callback_QTextEdit_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QTextEdit_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QTextEdit_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QTextEdit_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QTextEdit_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QTextEdit_PaintEvent(void*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QTextEdit_MousePressEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTextEdit_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTextEdit_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTextEdit_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
+bool miqt_exec_callback_QTextEdit_FocusNextPrevChild(void*, intptr_t, bool);
+void miqt_exec_callback_QTextEdit_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QTextEdit_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QTextEdit_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QTextEdit_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QTextEdit_DropEvent(void*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QTextEdit_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QTextEdit_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QTextEdit_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QTextEdit_ChangeEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QTextEdit_WheelEvent(void*, intptr_t, QWheelEvent*);
+QMimeData* miqt_exec_callback_QTextEdit_CreateMimeDataFromSelection(void*, intptr_t);
+bool miqt_exec_callback_QTextEdit_CanInsertFromMimeData(void*, intptr_t, QMimeData*);
+void miqt_exec_callback_QTextEdit_InsertFromMimeData(void*, intptr_t, QMimeData*);
+void miqt_exec_callback_QTextEdit_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
+void miqt_exec_callback_QTextEdit_ScrollContentsBy(void*, intptr_t, int, int);
+void miqt_exec_callback_QTextEdit_DoSetTextCursor(void*, intptr_t, QTextCursor*);
+QSize* miqt_exec_callback_QTextEdit_MinimumSizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QTextEdit_SizeHint(void*, intptr_t);
+void miqt_exec_callback_QTextEdit_SetupViewport(void*, intptr_t, QWidget*);
+bool miqt_exec_callback_QTextEdit_EventFilter(void*, intptr_t, QObject*, QEvent*);
+bool miqt_exec_callback_QTextEdit_ViewportEvent(void*, intptr_t, QEvent*);
+QSize* miqt_exec_callback_QTextEdit_ViewportSizeHint(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQTextEdit : public virtual QTextEdit {
 public:

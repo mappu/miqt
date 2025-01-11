@@ -18,10 +18,26 @@
 #include <qpdfwriter.h>
 #include "gen_qpdfwriter.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+bool miqt_exec_callback_QPdfWriter_NewPage(void*, intptr_t);
+void miqt_exec_callback_QPdfWriter_SetPageSize(void*, intptr_t, int);
+void miqt_exec_callback_QPdfWriter_SetPageSizeMM(void*, intptr_t, QSizeF*);
+void miqt_exec_callback_QPdfWriter_SetMargins(void*, intptr_t, QPagedPaintDevice__Margins*);
+QPaintEngine* miqt_exec_callback_QPdfWriter_PaintEngine(void*, intptr_t);
+int miqt_exec_callback_QPdfWriter_Metric(void*, intptr_t, int);
+bool miqt_exec_callback_QPdfWriter_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QPdfWriter_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QPdfWriter_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QPdfWriter_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QPdfWriter_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QPdfWriter_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QPdfWriter_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQPdfWriter : public virtual QPdfWriter {
 public:

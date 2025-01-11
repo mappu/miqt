@@ -19,10 +19,27 @@
 #include <qabstractprintdialog.h>
 #include "gen_qabstractprintdialog.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QAbstractPrintDialog_SetVisible(void*, intptr_t, bool);
+QSize* miqt_exec_callback_QAbstractPrintDialog_SizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QAbstractPrintDialog_MinimumSizeHint(void*, intptr_t);
+void miqt_exec_callback_QAbstractPrintDialog_Open(void*, intptr_t);
+int miqt_exec_callback_QAbstractPrintDialog_Exec(void*, intptr_t);
+void miqt_exec_callback_QAbstractPrintDialog_Done(void*, intptr_t, int);
+void miqt_exec_callback_QAbstractPrintDialog_Accept(void*, intptr_t);
+void miqt_exec_callback_QAbstractPrintDialog_Reject(void*, intptr_t);
+void miqt_exec_callback_QAbstractPrintDialog_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QAbstractPrintDialog_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QAbstractPrintDialog_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QAbstractPrintDialog_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QAbstractPrintDialog_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+bool miqt_exec_callback_QAbstractPrintDialog_EventFilter(void*, intptr_t, QObject*, QEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQAbstractPrintDialog : public virtual QAbstractPrintDialog {
 public:

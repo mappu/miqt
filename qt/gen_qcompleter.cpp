@@ -17,10 +17,26 @@
 #include <qcompleter.h>
 #include "gen_qcompleter.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QCompleter_Activated(intptr_t, struct miqt_string);
+void miqt_exec_callback_QCompleter_ActivatedWithIndex(intptr_t, QModelIndex*);
+void miqt_exec_callback_QCompleter_Highlighted(intptr_t, struct miqt_string);
+void miqt_exec_callback_QCompleter_HighlightedWithIndex(intptr_t, QModelIndex*);
+struct miqt_string miqt_exec_callback_QCompleter_PathFromIndex(void*, intptr_t, QModelIndex*);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QCompleter_SplitPath(void*, intptr_t, struct miqt_string);
+bool miqt_exec_callback_QCompleter_EventFilter(void*, intptr_t, QObject*, QEvent*);
+bool miqt_exec_callback_QCompleter_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QCompleter_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QCompleter_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QCompleter_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QCompleter_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QCompleter_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQCompleter : public virtual QCompleter {
 public:

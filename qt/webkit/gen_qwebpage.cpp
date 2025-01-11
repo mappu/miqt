@@ -42,10 +42,63 @@
 #include <qwebpage.h>
 #include "gen_qwebpage.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QWebPage_LoadStarted(intptr_t);
+void miqt_exec_callback_QWebPage_LoadProgress(intptr_t, int);
+void miqt_exec_callback_QWebPage_LoadFinished(intptr_t, bool);
+void miqt_exec_callback_QWebPage_LinkHovered(intptr_t, struct miqt_string, struct miqt_string, struct miqt_string);
+void miqt_exec_callback_QWebPage_StatusBarMessage(intptr_t, struct miqt_string);
+void miqt_exec_callback_QWebPage_SelectionChanged(intptr_t);
+void miqt_exec_callback_QWebPage_FrameCreated(intptr_t, QWebFrame*);
+void miqt_exec_callback_QWebPage_GeometryChangeRequested(intptr_t, QRect*);
+void miqt_exec_callback_QWebPage_RepaintRequested(intptr_t, QRect*);
+void miqt_exec_callback_QWebPage_ScrollRequested(intptr_t, int, int, QRect*);
+void miqt_exec_callback_QWebPage_WindowCloseRequested(intptr_t);
+void miqt_exec_callback_QWebPage_PrintRequested(intptr_t, QWebFrame*);
+void miqt_exec_callback_QWebPage_LinkClicked(intptr_t, QUrl*);
+void miqt_exec_callback_QWebPage_ToolBarVisibilityChangeRequested(intptr_t, bool);
+void miqt_exec_callback_QWebPage_StatusBarVisibilityChangeRequested(intptr_t, bool);
+void miqt_exec_callback_QWebPage_MenuBarVisibilityChangeRequested(intptr_t, bool);
+void miqt_exec_callback_QWebPage_UnsupportedContent(intptr_t, QNetworkReply*);
+void miqt_exec_callback_QWebPage_DownloadRequested(intptr_t, QNetworkRequest*);
+void miqt_exec_callback_QWebPage_FocusedElementChanged(intptr_t, QWebElement*);
+void miqt_exec_callback_QWebPage_MicroFocusChanged(intptr_t);
+void miqt_exec_callback_QWebPage_ContentsChanged(intptr_t);
+void miqt_exec_callback_QWebPage_DatabaseQuotaExceeded(intptr_t, QWebFrame*, struct miqt_string);
+void miqt_exec_callback_QWebPage_ApplicationCacheQuotaExceeded(intptr_t, QWebSecurityOrigin*, unsigned long long, unsigned long long);
+void miqt_exec_callback_QWebPage_SaveFrameStateRequested(intptr_t, QWebFrame*, QWebHistoryItem*);
+void miqt_exec_callback_QWebPage_RestoreFrameStateRequested(intptr_t, QWebFrame*);
+void miqt_exec_callback_QWebPage_ViewportChangeRequested(intptr_t);
+void miqt_exec_callback_QWebPage_FeaturePermissionRequested(intptr_t, QWebFrame*, int);
+void miqt_exec_callback_QWebPage_FeaturePermissionRequestCanceled(intptr_t, QWebFrame*, int);
+void miqt_exec_callback_QWebPage_FullScreenRequested(intptr_t, QWebFullScreenRequest*);
+void miqt_exec_callback_QWebPage_ConsoleMessageReceived(intptr_t, int, int, struct miqt_string, int, struct miqt_string);
+void miqt_exec_callback_QWebPage_RecentlyAudibleChanged(intptr_t, bool);
+void miqt_exec_callback_QWebPage_TriggerAction(void*, intptr_t, int, bool);
+bool miqt_exec_callback_QWebPage_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QWebPage_Extension(void*, intptr_t, int, QWebPage__ExtensionOption*, QWebPage__ExtensionReturn*);
+bool miqt_exec_callback_QWebPage_SupportsExtension(void*, intptr_t, int);
+bool miqt_exec_callback_QWebPage_ShouldInterruptJavaScript(void*, intptr_t);
+QWebPage* miqt_exec_callback_QWebPage_CreateWindow(void*, intptr_t, int);
+QObject* miqt_exec_callback_QWebPage_CreatePlugin(void*, intptr_t, struct miqt_string, QUrl*, struct miqt_array /* of struct miqt_string */ , struct miqt_array /* of struct miqt_string */ );
+bool miqt_exec_callback_QWebPage_AcceptNavigationRequest(void*, intptr_t, QWebFrame*, QNetworkRequest*, int);
+struct miqt_string miqt_exec_callback_QWebPage_ChooseFile(void*, intptr_t, QWebFrame*, struct miqt_string);
+void miqt_exec_callback_QWebPage_JavaScriptAlert(void*, intptr_t, QWebFrame*, struct miqt_string);
+bool miqt_exec_callback_QWebPage_JavaScriptConfirm(void*, intptr_t, QWebFrame*, struct miqt_string);
+void miqt_exec_callback_QWebPage_JavaScriptConsoleMessage(void*, intptr_t, struct miqt_string, int, struct miqt_string);
+struct miqt_string miqt_exec_callback_QWebPage_UserAgentForUrl(void*, intptr_t, QUrl*);
+bool miqt_exec_callback_QWebPage_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QWebPage_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QWebPage_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QWebPage_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QWebPage_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QWebPage_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQWebPage : public virtual QWebPage {
 public:

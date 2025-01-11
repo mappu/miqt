@@ -19,10 +19,35 @@
 #include <qmediarecorder.h>
 #include "gen_qmediarecorder.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QMediaRecorder_StateChanged(intptr_t, int);
+void miqt_exec_callback_QMediaRecorder_StatusChanged(intptr_t, int);
+void miqt_exec_callback_QMediaRecorder_DurationChanged(intptr_t, long long);
+void miqt_exec_callback_QMediaRecorder_MutedChanged(intptr_t, bool);
+void miqt_exec_callback_QMediaRecorder_VolumeChanged(intptr_t, double);
+void miqt_exec_callback_QMediaRecorder_ActualLocationChanged(intptr_t, QUrl*);
+void miqt_exec_callback_QMediaRecorder_ErrorWithError(intptr_t, int);
+void miqt_exec_callback_QMediaRecorder_MetaDataAvailableChanged(intptr_t, bool);
+void miqt_exec_callback_QMediaRecorder_MetaDataWritableChanged(intptr_t, bool);
+void miqt_exec_callback_QMediaRecorder_MetaDataChanged(intptr_t);
+void miqt_exec_callback_QMediaRecorder_MetaDataChanged2(intptr_t, struct miqt_string, QVariant*);
+void miqt_exec_callback_QMediaRecorder_AvailabilityChanged(intptr_t, bool);
+void miqt_exec_callback_QMediaRecorder_AvailabilityChangedWithAvailability(intptr_t, int);
+QMediaObject* miqt_exec_callback_QMediaRecorder_MediaObject(void*, intptr_t);
+bool miqt_exec_callback_QMediaRecorder_SetMediaObject(void*, intptr_t, QMediaObject*);
+bool miqt_exec_callback_QMediaRecorder_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QMediaRecorder_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QMediaRecorder_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QMediaRecorder_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QMediaRecorder_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QMediaRecorder_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QMediaRecorder_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQMediaRecorder : public virtual QMediaRecorder {
 public:

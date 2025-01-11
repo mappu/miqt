@@ -12,10 +12,13 @@
 #include <qwebhistory.h>
 #include "gen_qwebhistory.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QWebHistoryItem* QWebHistoryItem_new(QWebHistoryItem* other) {
 	return new QWebHistoryItem(*other);

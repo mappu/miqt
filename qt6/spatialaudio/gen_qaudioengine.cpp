@@ -12,10 +12,25 @@
 #include <qaudioengine.h>
 #include "gen_qaudioengine.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QAudioEngine_OutputModeChanged(intptr_t);
+void miqt_exec_callback_QAudioEngine_OutputDeviceChanged(intptr_t);
+void miqt_exec_callback_QAudioEngine_MasterVolumeChanged(intptr_t);
+void miqt_exec_callback_QAudioEngine_PausedChanged(intptr_t);
+void miqt_exec_callback_QAudioEngine_DistanceScaleChanged(intptr_t);
+bool miqt_exec_callback_QAudioEngine_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAudioEngine_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAudioEngine_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAudioEngine_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAudioEngine_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QAudioEngine_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAudioEngine_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQAudioEngine : public virtual QAudioEngine {
 public:

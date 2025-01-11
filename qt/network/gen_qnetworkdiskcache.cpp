@@ -11,10 +11,22 @@
 #include <qnetworkdiskcache.h>
 #include "gen_qnetworkdiskcache.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+long long miqt_exec_callback_QNetworkDiskCache_CacheSize(void*, intptr_t);
+QNetworkCacheMetaData* miqt_exec_callback_QNetworkDiskCache_MetaData(void*, intptr_t, QUrl*);
+void miqt_exec_callback_QNetworkDiskCache_UpdateMetaData(void*, intptr_t, QNetworkCacheMetaData*);
+QIODevice* miqt_exec_callback_QNetworkDiskCache_Data(void*, intptr_t, QUrl*);
+bool miqt_exec_callback_QNetworkDiskCache_Remove(void*, intptr_t, QUrl*);
+QIODevice* miqt_exec_callback_QNetworkDiskCache_Prepare(void*, intptr_t, QNetworkCacheMetaData*);
+void miqt_exec_callback_QNetworkDiskCache_Insert(void*, intptr_t, QIODevice*);
+void miqt_exec_callback_QNetworkDiskCache_Clear(void*, intptr_t);
+long long miqt_exec_callback_QNetworkDiskCache_Expire(void*, intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQNetworkDiskCache : public virtual QNetworkDiskCache {
 public:

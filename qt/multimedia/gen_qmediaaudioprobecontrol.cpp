@@ -9,10 +9,15 @@
 #include <qmediaaudioprobecontrol.h>
 #include "gen_qmediaaudioprobecontrol.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QMediaAudioProbeControl_AudioBufferProbed(intptr_t, QAudioBuffer*);
+void miqt_exec_callback_QMediaAudioProbeControl_Flush(intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QMediaAudioProbeControl_virtbase(QMediaAudioProbeControl* src, QMediaControl** outptr_QMediaControl) {
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);

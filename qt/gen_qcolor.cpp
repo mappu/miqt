@@ -8,10 +8,13 @@
 #include <qcolor.h>
 #include "gen_qcolor.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 QColor* QColor_new() {
 	return new QColor();

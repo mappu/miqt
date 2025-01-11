@@ -2,10 +2,13 @@
 #include <qscopedpointer.h>
 #include "gen_qscopedpointer.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QScopedPointerPodDeleter_Cleanup(void* pointer) {
 	QScopedPointerPodDeleter::cleanup(pointer);

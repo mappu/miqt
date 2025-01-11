@@ -13,10 +13,29 @@
 #include <qradiodata.h>
 #include "gen_qradiodata.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QRadioData_StationIdChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QRadioData_ProgramTypeChanged(intptr_t, int);
+void miqt_exec_callback_QRadioData_ProgramTypeNameChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QRadioData_StationNameChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QRadioData_RadioTextChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QRadioData_AlternativeFrequenciesEnabledChanged(intptr_t, bool);
+void miqt_exec_callback_QRadioData_ErrorWithError(intptr_t, int);
+QMediaObject* miqt_exec_callback_QRadioData_MediaObject(void*, intptr_t);
+bool miqt_exec_callback_QRadioData_SetMediaObject(void*, intptr_t, QMediaObject*);
+bool miqt_exec_callback_QRadioData_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QRadioData_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QRadioData_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QRadioData_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QRadioData_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QRadioData_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QRadioData_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQRadioData : public virtual QRadioData {
 public:

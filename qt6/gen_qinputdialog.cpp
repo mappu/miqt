@@ -18,10 +18,33 @@
 #include <qinputdialog.h>
 #include "gen_qinputdialog.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QInputDialog_TextValueChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QInputDialog_TextValueSelected(intptr_t, struct miqt_string);
+void miqt_exec_callback_QInputDialog_IntValueChanged(intptr_t, int);
+void miqt_exec_callback_QInputDialog_IntValueSelected(intptr_t, int);
+void miqt_exec_callback_QInputDialog_DoubleValueChanged(intptr_t, double);
+void miqt_exec_callback_QInputDialog_DoubleValueSelected(intptr_t, double);
+QSize* miqt_exec_callback_QInputDialog_MinimumSizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QInputDialog_SizeHint(void*, intptr_t);
+void miqt_exec_callback_QInputDialog_SetVisible(void*, intptr_t, bool);
+void miqt_exec_callback_QInputDialog_Done(void*, intptr_t, int);
+void miqt_exec_callback_QInputDialog_Open(void*, intptr_t);
+int miqt_exec_callback_QInputDialog_Exec(void*, intptr_t);
+void miqt_exec_callback_QInputDialog_Accept(void*, intptr_t);
+void miqt_exec_callback_QInputDialog_Reject(void*, intptr_t);
+void miqt_exec_callback_QInputDialog_KeyPressEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QInputDialog_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QInputDialog_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QInputDialog_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QInputDialog_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+bool miqt_exec_callback_QInputDialog_EventFilter(void*, intptr_t, QObject*, QEvent*);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQInputDialog : public virtual QInputDialog {
 public:

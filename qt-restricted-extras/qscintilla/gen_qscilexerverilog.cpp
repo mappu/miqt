@@ -10,10 +10,47 @@
 #include <qscilexerverilog.h>
 #include "gen_qscilexerverilog.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+const char* miqt_exec_callback_QsciLexerVerilog_Language(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerVerilog_Lexer(void*, intptr_t);
+int miqt_exec_callback_QsciLexerVerilog_LexerId(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerVerilog_AutoCompletionFillups(void*, intptr_t);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QsciLexerVerilog_AutoCompletionWordSeparators(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerVerilog_BlockEnd(void*, intptr_t, int*);
+int miqt_exec_callback_QsciLexerVerilog_BlockLookback(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerVerilog_BlockStart(void*, intptr_t, int*);
+const char* miqt_exec_callback_QsciLexerVerilog_BlockStartKeyword(void*, intptr_t, int*);
+int miqt_exec_callback_QsciLexerVerilog_BraceStyle(void*, intptr_t);
+bool miqt_exec_callback_QsciLexerVerilog_CaseSensitive(void*, intptr_t);
+QColor* miqt_exec_callback_QsciLexerVerilog_Color(void*, intptr_t, int);
+bool miqt_exec_callback_QsciLexerVerilog_EolFill(void*, intptr_t, int);
+QFont* miqt_exec_callback_QsciLexerVerilog_Font(void*, intptr_t, int);
+int miqt_exec_callback_QsciLexerVerilog_IndentationGuideView(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerVerilog_Keywords(void*, intptr_t, int);
+int miqt_exec_callback_QsciLexerVerilog_DefaultStyle(void*, intptr_t);
+struct miqt_string miqt_exec_callback_QsciLexerVerilog_Description(void*, intptr_t, int);
+QColor* miqt_exec_callback_QsciLexerVerilog_Paper(void*, intptr_t, int);
+QColor* miqt_exec_callback_QsciLexerVerilog_DefaultColorWithStyle(void*, intptr_t, int);
+bool miqt_exec_callback_QsciLexerVerilog_DefaultEolFill(void*, intptr_t, int);
+QFont* miqt_exec_callback_QsciLexerVerilog_DefaultFontWithStyle(void*, intptr_t, int);
+QColor* miqt_exec_callback_QsciLexerVerilog_DefaultPaperWithStyle(void*, intptr_t, int);
+void miqt_exec_callback_QsciLexerVerilog_SetEditor(void*, intptr_t, QsciScintilla*);
+void miqt_exec_callback_QsciLexerVerilog_RefreshProperties(void*, intptr_t);
+int miqt_exec_callback_QsciLexerVerilog_StyleBitsNeeded(void*, intptr_t);
+const char* miqt_exec_callback_QsciLexerVerilog_WordCharacters(void*, intptr_t);
+void miqt_exec_callback_QsciLexerVerilog_SetAutoIndentStyle(void*, intptr_t, int);
+void miqt_exec_callback_QsciLexerVerilog_SetColor(void*, intptr_t, QColor*, int);
+void miqt_exec_callback_QsciLexerVerilog_SetEolFill(void*, intptr_t, bool, int);
+void miqt_exec_callback_QsciLexerVerilog_SetFont(void*, intptr_t, QFont*, int);
+void miqt_exec_callback_QsciLexerVerilog_SetPaper(void*, intptr_t, QColor*, int);
+bool miqt_exec_callback_QsciLexerVerilog_ReadProperties(void*, intptr_t, QSettings*, struct miqt_string);
+bool miqt_exec_callback_QsciLexerVerilog_WriteProperties(void*, intptr_t, QSettings*, struct miqt_string);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 class MiqtVirtualQsciLexerVerilog : public virtual QsciLexerVerilog {
 public:

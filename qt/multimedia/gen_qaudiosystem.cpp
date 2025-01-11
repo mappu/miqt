@@ -12,10 +12,19 @@
 #include <qaudiosystem.h>
 #include "gen_qaudiosystem.h"
 
-#ifndef _Bool
-#define _Bool bool
+#ifdef __cplusplus
+extern "C" {
 #endif
-#include "_cgo_export.h"
+
+void miqt_exec_callback_QAbstractAudioOutput_ErrorChanged(intptr_t, int);
+void miqt_exec_callback_QAbstractAudioOutput_StateChanged(intptr_t, int);
+void miqt_exec_callback_QAbstractAudioOutput_Notify(intptr_t);
+void miqt_exec_callback_QAbstractAudioInput_ErrorChanged(intptr_t, int);
+void miqt_exec_callback_QAbstractAudioInput_StateChanged(intptr_t, int);
+void miqt_exec_callback_QAbstractAudioInput_Notify(intptr_t);
+#ifdef __cplusplus
+} /* extern C */
+#endif
 
 void QAbstractAudioDeviceInfo_virtbase(QAbstractAudioDeviceInfo* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);
