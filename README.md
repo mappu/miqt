@@ -96,6 +96,8 @@ Qt class inherited types are projected as a Go embedded struct. For example, to 
 
 - When a Qt subclass adds a method overload (e.g. `QMenu::addAction(QString)` vs `QWidget::addAction(QAction*)`), the base class version is shadowed and can only be called via `myQMenu.QWidget.AddAction(QAction*)`.
 
+- A MIQT pointer points to a Go struct, not to the raw C++ Qt widget class. Therefore `QTabWidget.CurrentWidget() == MyTab` will never compare equal because `CurrentWidget()` created a new Go struct wrapping the same C++ pointer. You can compare `QTabWidget.CurrentIndex()`, or, you can use: `QTabWidget.CurrentWidget().UnsafePointer() == MyTab.UnsafePointer()`.
+
 The Go runtime migrates goroutines between OS threads, but Qt expects fixed OS threads to be used for each QObject. When you first call `qt.NewQApplication` in MIQT, that will be considered the [Qt main thread](https://doc.qt.io/qt-6/thread-basics.html#gui-thread-and-worker-thread) and will automatically signal the Go runtime to bind to a fixed OS thread using `runtime.LockOSThread()`.
 
 - When accessing Qt objects from inside another goroutine, it's safest to use `(qt6/mainthread).Wait()` to access the Qt objects from Qt's main thread.
