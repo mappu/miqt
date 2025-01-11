@@ -100,7 +100,7 @@ jobs:
         key: win64-gocache
     
     - name: Win64 docker build
-      run: docker build -t miqt/win64:latest -f docker/win64-cross-go1.23-qt5.15-static.Dockerfile .
+      run: docker build -t miqt/win64:qt5 -f docker/win64-cross-go1.23-qt5.15-static.Dockerfile .
     
     - name: Win64 bindings compile
-      run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src miqt/win64:latest /bin/bash -c 'cd qt && go build'
+      run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src miqt/win64:qt5 /bin/bash -c 'cd qt && go build'
