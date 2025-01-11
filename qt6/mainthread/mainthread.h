@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef QT_MAINTHREAD_H
-#define QT_MAINTHREAD_H
+#ifndef MIQT_QT6_MAINTHREAD_H
+#define MIQT_QT6_MAINTHREAD_H
 
 #include <stdint.h>
 
