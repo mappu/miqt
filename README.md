@@ -34,9 +34,13 @@ You must also meet your Qt license obligations.
 
 ## Made with MIQT
 
+These apps are listed in alphabetical order. Raise an issue or PR to have your app listed here!
+
+- [jqview](https://github.com/rcalixte/jqview), The simplest possible native GUI for inspecting JSON objects with jq
 - [mdoutliner](https://github.com/mappu/miqt/tree/master/examples/mdoutliner), Markdown Outliner sample application
 - [qbolt](https://code.ivysaur.me/qbolt), a graphical database manager for BoltDB
-- Raise an issue or PR to have your app listed here!
+- [qocker-miqt](https://code.ivysaur.me/qocker-miqt), a user-friendly GUI application for managing Docker containers
+- See more users of the [qt5](https://pkg.go.dev/github.com/mappu/miqt/qt?tab=importedby) or [qt6](https://pkg.go.dev/github.com/mappu/miqt/qt6?tab=importedby) packages
 
 ## FAQ
 
