@@ -1,18 +1,20 @@
 package main
 
-func blocklist_MethodAllowed(m *CppMethod) bool {
+import "log"
+
+func blocklist_MethodAllowed(m *CppMethod) error {
 	if err := AllowType(m.ReturnType, true); err != nil {
-		return false
+		return err
 	}
 
 	for _, p := range m.Parameters {
 		if err := AllowType(p, false); err != nil {
-			return false
+			return err
 		}
 	}
 
 	// Nothing was blocked
-	return true
+	return nil
 }
 
 // astTransformBlocklist filters out methods using too-complex parameter types,
@@ -49,7 +51,9 @@ func astTransformBlocklist(parsed *CppParsedHeader) {
 		j := 0
 	nextCtor:
 		for _, m := range c.Ctors {
-			if !blocklist_MethodAllowed(&m) {
+			if err := blocklist_MethodAllowed(&m); err != nil {
+				log.Printf("Blocking constructor %q(%v): %s", m.MethodName, m.Parameters, err)
+
 				continue nextCtor
 			}
 
@@ -64,7 +68,8 @@ func astTransformBlocklist(parsed *CppParsedHeader) {
 		j = 0
 	nextMethod:
 		for _, m := range c.Methods {
-			if !blocklist_MethodAllowed(&m) {
+			if err := blocklist_MethodAllowed(&m); err != nil {
+				log.Printf("Blocking method %q(%v): %s", m.MethodName, m.Parameters, err)
 				continue nextMethod
 			}
 
