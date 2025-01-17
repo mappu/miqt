@@ -46,3 +46,6 @@ examples/libraries/restricted-extras-qscintilla/restricted-extras-qscintilla
 # android temporary build files
 android-build
 deployment-settings.json
+
+*.docker-buildstamp
+compile_flags.txt
