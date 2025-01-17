@@ -329,6 +329,8 @@ func generateClangCaches(includeFiles []string, clangBin string, cflags []string
 }
 
 func main() {
+	// data/time flags make logs hard to compare across runs
+	log.SetFlags(log.Flags() &^ (log.Ldate | log.Ltime))
 	clang := flag.String("clang", "clang", "Custom path to clang")
 	outDir := flag.String("outdir", "../../", "Output directory for generated gen_** files")
 	extraLibsDir := flag.String("extralibs", "/usr/local/src/", "Base directory to find extra library checkouts")

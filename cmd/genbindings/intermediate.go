@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"regexp"
 	"strings"
 )
@@ -15,6 +16,12 @@ type CppParameter struct {
 	Optional      bool
 
 	QtCppOriginalType *CppParameter // If we rewrote QStringList->QList<String>, this field contains the original QStringList. Otherwise, it's blank
+}
+
+func (p CppParameter) String() string {
+	return "Param(" + ifv(p.Const, "const ", "") + p.ParameterType +
+		ifv(p.Pointer, strings.Repeat("*", p.PointerCount), "") + ifv(p.ByRef, "&", "") +
+		ifv(p.Optional, "?", "") + " " + p.ParameterName + ")"
 }
 
 func (p *CppParameter) ApplyTypedef(matchedUnderlyingType CppParameter) {
@@ -479,7 +486,8 @@ func (c *CppClass) VirtualMethods() []CppMethod {
 			// m is copied by value. Mutate it
 			applyTypedefs_Method(&m)
 			// Same with astTransformBlocklist
-			if !blocklist_MethodAllowed(&m) {
+			if err := blocklist_MethodAllowed(&m); err != nil {
+				log.Printf("Blocking method %q(%v): %s", m.MethodName, m.Parameters, err)
 				continue
 			}
 
