@@ -64,21 +64,21 @@ void QGesture_SetGestureCancelPolicy(QGesture* self, int policy);
 int QGesture_GestureCancelPolicy(const QGesture* self);
 struct miqt_string QGesture_Tr2(const char* s, const char* c);
 struct miqt_string QGesture_Tr3(const char* s, const char* c, int n);
-void QGesture_override_virtual_Event(void* self, intptr_t slot);
+bool QGesture_override_virtual_Event(void* self, intptr_t slot);
 bool QGesture_virtualbase_Event(void* self, QEvent* event);
-void QGesture_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QGesture_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QGesture_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QGesture_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QGesture_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QGesture_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QGesture_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QGesture_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QGesture_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QGesture_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QGesture_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QGesture_virtualbase_CustomEvent(void* self, QEvent* event);
-void QGesture_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QGesture_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QGesture_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QGesture_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QGesture_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QGesture_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QGesture_Delete(QGesture* self, bool isSubclass);
+void QGesture_Delete(QGesture* self);
 
 QPanGesture* QPanGesture_new();
 QPanGesture* QPanGesture_new2(QObject* parent);
@@ -95,7 +95,7 @@ void QPanGesture_SetOffset(QPanGesture* self, QPointF* value);
 void QPanGesture_SetAcceleration(QPanGesture* self, double value);
 struct miqt_string QPanGesture_Tr2(const char* s, const char* c);
 struct miqt_string QPanGesture_Tr3(const char* s, const char* c, int n);
-void QPanGesture_Delete(QPanGesture* self, bool isSubclass);
+void QPanGesture_Delete(QPanGesture* self);
 
 QPinchGesture* QPinchGesture_new();
 QPinchGesture* QPinchGesture_new2(QObject* parent);
@@ -127,7 +127,7 @@ void QPinchGesture_SetLastRotationAngle(QPinchGesture* self, double value);
 void QPinchGesture_SetRotationAngle(QPinchGesture* self, double value);
 struct miqt_string QPinchGesture_Tr2(const char* s, const char* c);
 struct miqt_string QPinchGesture_Tr3(const char* s, const char* c, int n);
-void QPinchGesture_Delete(QPinchGesture* self, bool isSubclass);
+void QPinchGesture_Delete(QPinchGesture* self);
 
 QSwipeGesture* QSwipeGesture_new();
 QSwipeGesture* QSwipeGesture_new2(QObject* parent);
@@ -141,7 +141,7 @@ double QSwipeGesture_SwipeAngle(const QSwipeGesture* self);
 void QSwipeGesture_SetSwipeAngle(QSwipeGesture* self, double value);
 struct miqt_string QSwipeGesture_Tr2(const char* s, const char* c);
 struct miqt_string QSwipeGesture_Tr3(const char* s, const char* c, int n);
-void QSwipeGesture_Delete(QSwipeGesture* self, bool isSubclass);
+void QSwipeGesture_Delete(QSwipeGesture* self);
 
 QTapGesture* QTapGesture_new();
 QTapGesture* QTapGesture_new2(QObject* parent);
@@ -153,7 +153,7 @@ QPointF* QTapGesture_Position(const QTapGesture* self);
 void QTapGesture_SetPosition(QTapGesture* self, QPointF* pos);
 struct miqt_string QTapGesture_Tr2(const char* s, const char* c);
 struct miqt_string QTapGesture_Tr3(const char* s, const char* c, int n);
-void QTapGesture_Delete(QTapGesture* self, bool isSubclass);
+void QTapGesture_Delete(QTapGesture* self);
 
 QTapAndHoldGesture* QTapAndHoldGesture_new();
 QTapAndHoldGesture* QTapAndHoldGesture_new2(QObject* parent);
@@ -167,7 +167,7 @@ void QTapAndHoldGesture_SetTimeout(int msecs);
 int QTapAndHoldGesture_Timeout();
 struct miqt_string QTapAndHoldGesture_Tr2(const char* s, const char* c);
 struct miqt_string QTapAndHoldGesture_Tr3(const char* s, const char* c, int n);
-void QTapAndHoldGesture_Delete(QTapAndHoldGesture* self, bool isSubclass);
+void QTapAndHoldGesture_Delete(QTapAndHoldGesture* self);
 
 QGestureEvent* QGestureEvent_new(struct miqt_array /* of QGesture* */  gestures);
 QGestureEvent* QGestureEvent_new2(QGestureEvent* param1);
@@ -187,11 +187,11 @@ bool QGestureEvent_IsAcceptedWithQtGestureType(const QGestureEvent* self, int pa
 void QGestureEvent_SetWidget(QGestureEvent* self, QWidget* widget);
 QWidget* QGestureEvent_Widget(const QGestureEvent* self);
 QPointF* QGestureEvent_MapToGraphicsScene(const QGestureEvent* self, QPointF* gesturePoint);
-void QGestureEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
+bool QGestureEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QGestureEvent_virtualbase_SetAccepted(void* self, bool accepted);
-void QGestureEvent_override_virtual_Clone(void* self, intptr_t slot);
+bool QGestureEvent_override_virtual_Clone(void* self, intptr_t slot);
 QEvent* QGestureEvent_virtualbase_Clone(const void* self);
-void QGestureEvent_Delete(QGestureEvent* self, bool isSubclass);
+void QGestureEvent_Delete(QGestureEvent* self);
 
 #ifdef __cplusplus
 } /* extern C */

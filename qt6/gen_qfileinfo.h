@@ -89,7 +89,7 @@ QDateTime* QFileInfo_FileTime(const QFileInfo* self, int time);
 bool QFileInfo_Caching(const QFileInfo* self);
 void QFileInfo_SetCaching(QFileInfo* self, bool on);
 void QFileInfo_Stat(QFileInfo* self);
-void QFileInfo_Delete(QFileInfo* self, bool isSubclass);
+void QFileInfo_Delete(QFileInfo* self);
 
 #ifdef __cplusplus
 } /* extern C */

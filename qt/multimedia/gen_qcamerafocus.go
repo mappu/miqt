@@ -45,8 +45,7 @@ const (
 )
 
 type QCameraFocusZone struct {
-	h          *C.QCameraFocusZone
-	isSubclass bool
+	h *C.QCameraFocusZone
 }
 
 func (this *QCameraFocusZone) cPointer() *C.QCameraFocusZone {
@@ -80,33 +79,25 @@ func UnsafeNewQCameraFocusZone(h unsafe.Pointer) *QCameraFocusZone {
 // NewQCameraFocusZone constructs a new QCameraFocusZone object.
 func NewQCameraFocusZone() *QCameraFocusZone {
 
-	ret := newQCameraFocusZone(C.QCameraFocusZone_new())
-	ret.isSubclass = true
-	return ret
+	return newQCameraFocusZone(C.QCameraFocusZone_new())
 }
 
 // NewQCameraFocusZone2 constructs a new QCameraFocusZone object.
 func NewQCameraFocusZone2(area *qt.QRectF) *QCameraFocusZone {
 
-	ret := newQCameraFocusZone(C.QCameraFocusZone_new2((*C.QRectF)(area.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQCameraFocusZone(C.QCameraFocusZone_new2((*C.QRectF)(area.UnsafePointer())))
 }
 
 // NewQCameraFocusZone3 constructs a new QCameraFocusZone object.
 func NewQCameraFocusZone3(other *QCameraFocusZone) *QCameraFocusZone {
 
-	ret := newQCameraFocusZone(C.QCameraFocusZone_new3(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQCameraFocusZone(C.QCameraFocusZone_new3(other.cPointer()))
 }
 
 // NewQCameraFocusZone4 constructs a new QCameraFocusZone object.
 func NewQCameraFocusZone4(area *qt.QRectF, status QCameraFocusZone__FocusZoneStatus) *QCameraFocusZone {
 
-	ret := newQCameraFocusZone(C.QCameraFocusZone_new4((*C.QRectF)(area.UnsafePointer()), (C.int)(status)))
-	ret.isSubclass = true
-	return ret
+	return newQCameraFocusZone(C.QCameraFocusZone_new4((*C.QRectF)(area.UnsafePointer()), (C.int)(status)))
 }
 
 func (this *QCameraFocusZone) OperatorAssign(other *QCameraFocusZone) {
@@ -141,7 +132,7 @@ func (this *QCameraFocusZone) SetStatus(status QCameraFocusZone__FocusZoneStatus
 
 // Delete this object from C++ memory.
 func (this *QCameraFocusZone) Delete() {
-	C.QCameraFocusZone_Delete(this.h, C.bool(this.isSubclass))
+	C.QCameraFocusZone_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -154,8 +145,7 @@ func (this *QCameraFocusZone) GoGC() {
 }
 
 type QCameraFocus struct {
-	h          *C.QCameraFocus
-	isSubclass bool
+	h *C.QCameraFocus
 	*qt.QObject
 }
 

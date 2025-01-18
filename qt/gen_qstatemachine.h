@@ -88,36 +88,36 @@ struct miqt_string QStateMachine_Tr3(const char* s, const char* c, int n);
 struct miqt_string QStateMachine_TrUtf82(const char* s, const char* c);
 struct miqt_string QStateMachine_TrUtf83(const char* s, const char* c, int n);
 void QStateMachine_PostEvent2(QStateMachine* self, QEvent* event, int priority);
-void QStateMachine_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QStateMachine_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QStateMachine_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QStateMachine_override_virtual_OnEntry(void* self, intptr_t slot);
+bool QStateMachine_override_virtual_OnEntry(void* self, intptr_t slot);
 void QStateMachine_virtualbase_OnEntry(void* self, QEvent* event);
-void QStateMachine_override_virtual_OnExit(void* self, intptr_t slot);
+bool QStateMachine_override_virtual_OnExit(void* self, intptr_t slot);
 void QStateMachine_virtualbase_OnExit(void* self, QEvent* event);
-void QStateMachine_override_virtual_BeginSelectTransitions(void* self, intptr_t slot);
+bool QStateMachine_override_virtual_BeginSelectTransitions(void* self, intptr_t slot);
 void QStateMachine_virtualbase_BeginSelectTransitions(void* self, QEvent* event);
-void QStateMachine_override_virtual_EndSelectTransitions(void* self, intptr_t slot);
+bool QStateMachine_override_virtual_EndSelectTransitions(void* self, intptr_t slot);
 void QStateMachine_virtualbase_EndSelectTransitions(void* self, QEvent* event);
-void QStateMachine_override_virtual_BeginMicrostep(void* self, intptr_t slot);
+bool QStateMachine_override_virtual_BeginMicrostep(void* self, intptr_t slot);
 void QStateMachine_virtualbase_BeginMicrostep(void* self, QEvent* event);
-void QStateMachine_override_virtual_EndMicrostep(void* self, intptr_t slot);
+bool QStateMachine_override_virtual_EndMicrostep(void* self, intptr_t slot);
 void QStateMachine_virtualbase_EndMicrostep(void* self, QEvent* event);
-void QStateMachine_override_virtual_Event(void* self, intptr_t slot);
+bool QStateMachine_override_virtual_Event(void* self, intptr_t slot);
 bool QStateMachine_virtualbase_Event(void* self, QEvent* e);
-void QStateMachine_Delete(QStateMachine* self, bool isSubclass);
+void QStateMachine_Delete(QStateMachine* self);
 
 QStateMachine__SignalEvent* QStateMachine__SignalEvent_new(QStateMachine__SignalEvent* param1);
 void QStateMachine__SignalEvent_virtbase(QStateMachine__SignalEvent* src, QEvent** outptr_QEvent);
 QObject* QStateMachine__SignalEvent_Sender(const QStateMachine__SignalEvent* self);
 int QStateMachine__SignalEvent_SignalIndex(const QStateMachine__SignalEvent* self);
-void QStateMachine__SignalEvent_Delete(QStateMachine__SignalEvent* self, bool isSubclass);
+void QStateMachine__SignalEvent_Delete(QStateMachine__SignalEvent* self);
 
 QStateMachine__WrappedEvent* QStateMachine__WrappedEvent_new(QObject* object, QEvent* event);
 QStateMachine__WrappedEvent* QStateMachine__WrappedEvent_new2(QStateMachine__WrappedEvent* param1);
 void QStateMachine__WrappedEvent_virtbase(QStateMachine__WrappedEvent* src, QEvent** outptr_QEvent);
 QObject* QStateMachine__WrappedEvent_Object(const QStateMachine__WrappedEvent* self);
 QEvent* QStateMachine__WrappedEvent_Event(const QStateMachine__WrappedEvent* self);
-void QStateMachine__WrappedEvent_Delete(QStateMachine__WrappedEvent* self, bool isSubclass);
+void QStateMachine__WrappedEvent_Delete(QStateMachine__WrappedEvent* self);
 
 #ifdef __cplusplus
 } /* extern C */

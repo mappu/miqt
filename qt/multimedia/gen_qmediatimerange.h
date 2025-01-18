@@ -32,7 +32,7 @@ bool QMediaTimeInterval_Contains(const QMediaTimeInterval* self, long long time)
 bool QMediaTimeInterval_IsNormal(const QMediaTimeInterval* self);
 QMediaTimeInterval* QMediaTimeInterval_Normalized(const QMediaTimeInterval* self);
 QMediaTimeInterval* QMediaTimeInterval_Translated(const QMediaTimeInterval* self, long long offset);
-void QMediaTimeInterval_Delete(QMediaTimeInterval* self, bool isSubclass);
+void QMediaTimeInterval_Delete(QMediaTimeInterval* self);
 
 QMediaTimeRange* QMediaTimeRange_new();
 QMediaTimeRange* QMediaTimeRange_new2(long long start, long long end);
@@ -57,7 +57,7 @@ QMediaTimeRange* QMediaTimeRange_OperatorPlusAssignWithQMediaTimeInterval(QMedia
 QMediaTimeRange* QMediaTimeRange_OperatorMinusAssign(QMediaTimeRange* self, QMediaTimeRange* param1);
 QMediaTimeRange* QMediaTimeRange_OperatorMinusAssignWithQMediaTimeInterval(QMediaTimeRange* self, QMediaTimeInterval* param1);
 void QMediaTimeRange_Clear(QMediaTimeRange* self);
-void QMediaTimeRange_Delete(QMediaTimeRange* self, bool isSubclass);
+void QMediaTimeRange_Delete(QMediaTimeRange* self);
 
 #ifdef __cplusplus
 } /* extern C */

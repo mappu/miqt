@@ -51,13 +51,13 @@ void miqt_exec_callback_QIODevice_DisconnectNotify(void*, intptr_t, QMetaMethod*
 } /* extern C */
 #endif
 
-class MiqtVirtualQIODevice : public virtual QIODevice {
+class MiqtVirtualQIODevice final : public QIODevice {
 public:
 
 	MiqtVirtualQIODevice(): QIODevice() {};
 	MiqtVirtualQIODevice(QObject* parent): QIODevice(parent) {};
 
-	virtual ~MiqtVirtualQIODevice() = default;
+	virtual ~MiqtVirtualQIODevice() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__IsSequential = 0;
@@ -961,195 +961,335 @@ struct miqt_string QIODevice_ReadLine1(QIODevice* self, long long maxlen) {
 	return _ms;
 }
 
-void QIODevice_override_virtual_IsSequential(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) )->handle__IsSequential = slot;
+bool QIODevice_override_virtual_IsSequential(void* self, intptr_t slot) {
+	MiqtVirtualQIODevice* self_cast = dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsSequential = slot;
+	return true;
 }
 
 bool QIODevice_virtualbase_IsSequential(const void* self) {
 	return ( (const MiqtVirtualQIODevice*)(self) )->virtualbase_IsSequential();
 }
 
-void QIODevice_override_virtual_Open(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) )->handle__Open = slot;
+bool QIODevice_override_virtual_Open(void* self, intptr_t slot) {
+	MiqtVirtualQIODevice* self_cast = dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Open = slot;
+	return true;
 }
 
 bool QIODevice_virtualbase_Open(void* self, int mode) {
 	return ( (MiqtVirtualQIODevice*)(self) )->virtualbase_Open(mode);
 }
 
-void QIODevice_override_virtual_Close(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) )->handle__Close = slot;
+bool QIODevice_override_virtual_Close(void* self, intptr_t slot) {
+	MiqtVirtualQIODevice* self_cast = dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Close = slot;
+	return true;
 }
 
 void QIODevice_virtualbase_Close(void* self) {
 	( (MiqtVirtualQIODevice*)(self) )->virtualbase_Close();
 }
 
-void QIODevice_override_virtual_Pos(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) )->handle__Pos = slot;
+bool QIODevice_override_virtual_Pos(void* self, intptr_t slot) {
+	MiqtVirtualQIODevice* self_cast = dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Pos = slot;
+	return true;
 }
 
 long long QIODevice_virtualbase_Pos(const void* self) {
 	return ( (const MiqtVirtualQIODevice*)(self) )->virtualbase_Pos();
 }
 
-void QIODevice_override_virtual_Size(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) )->handle__Size = slot;
+bool QIODevice_override_virtual_Size(void* self, intptr_t slot) {
+	MiqtVirtualQIODevice* self_cast = dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Size = slot;
+	return true;
 }
 
 long long QIODevice_virtualbase_Size(const void* self) {
 	return ( (const MiqtVirtualQIODevice*)(self) )->virtualbase_Size();
 }
 
-void QIODevice_override_virtual_Seek(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) )->handle__Seek = slot;
+bool QIODevice_override_virtual_Seek(void* self, intptr_t slot) {
+	MiqtVirtualQIODevice* self_cast = dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Seek = slot;
+	return true;
 }
 
 bool QIODevice_virtualbase_Seek(void* self, long long pos) {
 	return ( (MiqtVirtualQIODevice*)(self) )->virtualbase_Seek(pos);
 }
 
-void QIODevice_override_virtual_AtEnd(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) )->handle__AtEnd = slot;
+bool QIODevice_override_virtual_AtEnd(void* self, intptr_t slot) {
+	MiqtVirtualQIODevice* self_cast = dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__AtEnd = slot;
+	return true;
 }
 
 bool QIODevice_virtualbase_AtEnd(const void* self) {
 	return ( (const MiqtVirtualQIODevice*)(self) )->virtualbase_AtEnd();
 }
 
-void QIODevice_override_virtual_Reset(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) )->handle__Reset = slot;
+bool QIODevice_override_virtual_Reset(void* self, intptr_t slot) {
+	MiqtVirtualQIODevice* self_cast = dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Reset = slot;
+	return true;
 }
 
 bool QIODevice_virtualbase_Reset(void* self) {
 	return ( (MiqtVirtualQIODevice*)(self) )->virtualbase_Reset();
 }
 
-void QIODevice_override_virtual_BytesAvailable(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) )->handle__BytesAvailable = slot;
+bool QIODevice_override_virtual_BytesAvailable(void* self, intptr_t slot) {
+	MiqtVirtualQIODevice* self_cast = dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BytesAvailable = slot;
+	return true;
 }
 
 long long QIODevice_virtualbase_BytesAvailable(const void* self) {
 	return ( (const MiqtVirtualQIODevice*)(self) )->virtualbase_BytesAvailable();
 }
 
-void QIODevice_override_virtual_BytesToWrite(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) )->handle__BytesToWrite = slot;
+bool QIODevice_override_virtual_BytesToWrite(void* self, intptr_t slot) {
+	MiqtVirtualQIODevice* self_cast = dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BytesToWrite = slot;
+	return true;
 }
 
 long long QIODevice_virtualbase_BytesToWrite(const void* self) {
 	return ( (const MiqtVirtualQIODevice*)(self) )->virtualbase_BytesToWrite();
 }
 
-void QIODevice_override_virtual_CanReadLine(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) )->handle__CanReadLine = slot;
+bool QIODevice_override_virtual_CanReadLine(void* self, intptr_t slot) {
+	MiqtVirtualQIODevice* self_cast = dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CanReadLine = slot;
+	return true;
 }
 
 bool QIODevice_virtualbase_CanReadLine(const void* self) {
 	return ( (const MiqtVirtualQIODevice*)(self) )->virtualbase_CanReadLine();
 }
 
-void QIODevice_override_virtual_WaitForReadyRead(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) )->handle__WaitForReadyRead = slot;
+bool QIODevice_override_virtual_WaitForReadyRead(void* self, intptr_t slot) {
+	MiqtVirtualQIODevice* self_cast = dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WaitForReadyRead = slot;
+	return true;
 }
 
 bool QIODevice_virtualbase_WaitForReadyRead(void* self, int msecs) {
 	return ( (MiqtVirtualQIODevice*)(self) )->virtualbase_WaitForReadyRead(msecs);
 }
 
-void QIODevice_override_virtual_WaitForBytesWritten(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) )->handle__WaitForBytesWritten = slot;
+bool QIODevice_override_virtual_WaitForBytesWritten(void* self, intptr_t slot) {
+	MiqtVirtualQIODevice* self_cast = dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WaitForBytesWritten = slot;
+	return true;
 }
 
 bool QIODevice_virtualbase_WaitForBytesWritten(void* self, int msecs) {
 	return ( (MiqtVirtualQIODevice*)(self) )->virtualbase_WaitForBytesWritten(msecs);
 }
 
-void QIODevice_override_virtual_ReadData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) )->handle__ReadData = slot;
+bool QIODevice_override_virtual_ReadData(void* self, intptr_t slot) {
+	MiqtVirtualQIODevice* self_cast = dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ReadData = slot;
+	return true;
 }
 
-void QIODevice_override_virtual_ReadLineData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) )->handle__ReadLineData = slot;
+bool QIODevice_override_virtual_ReadLineData(void* self, intptr_t slot) {
+	MiqtVirtualQIODevice* self_cast = dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ReadLineData = slot;
+	return true;
 }
 
 long long QIODevice_virtualbase_ReadLineData(void* self, char* data, long long maxlen) {
 	return ( (MiqtVirtualQIODevice*)(self) )->virtualbase_ReadLineData(data, maxlen);
 }
 
-void QIODevice_override_virtual_SkipData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) )->handle__SkipData = slot;
+bool QIODevice_override_virtual_SkipData(void* self, intptr_t slot) {
+	MiqtVirtualQIODevice* self_cast = dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SkipData = slot;
+	return true;
 }
 
 long long QIODevice_virtualbase_SkipData(void* self, long long maxSize) {
 	return ( (MiqtVirtualQIODevice*)(self) )->virtualbase_SkipData(maxSize);
 }
 
-void QIODevice_override_virtual_WriteData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) )->handle__WriteData = slot;
+bool QIODevice_override_virtual_WriteData(void* self, intptr_t slot) {
+	MiqtVirtualQIODevice* self_cast = dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WriteData = slot;
+	return true;
 }
 
-void QIODevice_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) )->handle__Event = slot;
+bool QIODevice_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQIODevice* self_cast = dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QIODevice_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQIODevice*)(self) )->virtualbase_Event(event);
 }
 
-void QIODevice_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) )->handle__EventFilter = slot;
+bool QIODevice_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQIODevice* self_cast = dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QIODevice_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQIODevice*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QIODevice_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) )->handle__TimerEvent = slot;
+bool QIODevice_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQIODevice* self_cast = dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QIODevice_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQIODevice*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QIODevice_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) )->handle__ChildEvent = slot;
+bool QIODevice_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQIODevice* self_cast = dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QIODevice_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQIODevice*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QIODevice_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) )->handle__CustomEvent = slot;
+bool QIODevice_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQIODevice* self_cast = dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QIODevice_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQIODevice*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QIODevice_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) )->handle__ConnectNotify = slot;
+bool QIODevice_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQIODevice* self_cast = dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QIODevice_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQIODevice*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QIODevice_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) )->handle__DisconnectNotify = slot;
+bool QIODevice_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQIODevice* self_cast = dynamic_cast<MiqtVirtualQIODevice*>( (QIODevice*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QIODevice_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQIODevice*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QIODevice_Delete(QIODevice* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQIODevice*>( self );
-	} else {
-		delete self;
-	}
+void QIODevice_Delete(QIODevice* self) {
+	delete self;
 }
 

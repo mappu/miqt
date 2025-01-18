@@ -58,26 +58,26 @@ struct miqt_string QEventLoop_TrUtf83(const char* s, const char* c, int n);
 bool QEventLoop_ProcessEvents1(QEventLoop* self, int flags);
 int QEventLoop_Exec1(QEventLoop* self, int flags);
 void QEventLoop_Exit1(QEventLoop* self, int returnCode);
-void QEventLoop_override_virtual_Event(void* self, intptr_t slot);
+bool QEventLoop_override_virtual_Event(void* self, intptr_t slot);
 bool QEventLoop_virtualbase_Event(void* self, QEvent* event);
-void QEventLoop_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QEventLoop_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QEventLoop_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QEventLoop_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QEventLoop_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QEventLoop_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QEventLoop_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QEventLoop_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QEventLoop_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QEventLoop_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QEventLoop_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QEventLoop_virtualbase_CustomEvent(void* self, QEvent* event);
-void QEventLoop_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QEventLoop_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QEventLoop_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QEventLoop_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QEventLoop_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QEventLoop_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QEventLoop_Delete(QEventLoop* self, bool isSubclass);
+void QEventLoop_Delete(QEventLoop* self);
 
 QEventLoopLocker* QEventLoopLocker_new();
 QEventLoopLocker* QEventLoopLocker_new2(QEventLoop* loop);
 QEventLoopLocker* QEventLoopLocker_new3(QThread* thread);
-void QEventLoopLocker_Delete(QEventLoopLocker* self, bool isSubclass);
+void QEventLoopLocker_Delete(QEventLoopLocker* self);
 
 #ifdef __cplusplus
 } /* extern C */

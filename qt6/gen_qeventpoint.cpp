@@ -218,11 +218,7 @@ void QEventPoint_SetAccepted1(QEventPoint* self, bool accepted) {
 	self->setAccepted(accepted);
 }
 
-void QEventPoint_Delete(QEventPoint* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QEventPoint*>( self );
-	} else {
-		delete self;
-	}
+void QEventPoint_Delete(QEventPoint* self) {
+	delete self;
 }
 

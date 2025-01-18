@@ -119,11 +119,7 @@ QTextDocumentFragment* QTextDocumentFragment_FromMarkdown2(struct miqt_string ma
 	return new QTextDocumentFragment(QTextDocumentFragment::fromMarkdown(markdown_QString, static_cast<QTextDocument::MarkdownFeatures>(features)));
 }
 
-void QTextDocumentFragment_Delete(QTextDocumentFragment* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextDocumentFragment*>( self );
-	} else {
-		delete self;
-	}
+void QTextDocumentFragment_Delete(QTextDocumentFragment* self) {
+	delete self;
 }
 

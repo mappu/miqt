@@ -43,25 +43,25 @@ QGraphicsLayoutItem* QGraphicsLayout_ItemAt(const QGraphicsLayout* self, int i);
 void QGraphicsLayout_RemoveAt(QGraphicsLayout* self, int index);
 void QGraphicsLayout_SetInstantInvalidatePropagation(bool enable);
 bool QGraphicsLayout_InstantInvalidatePropagation();
-void QGraphicsLayout_override_virtual_GetContentsMargins(void* self, intptr_t slot);
+bool QGraphicsLayout_override_virtual_GetContentsMargins(void* self, intptr_t slot);
 void QGraphicsLayout_virtualbase_GetContentsMargins(const void* self, double* left, double* top, double* right, double* bottom);
-void QGraphicsLayout_override_virtual_Invalidate(void* self, intptr_t slot);
+bool QGraphicsLayout_override_virtual_Invalidate(void* self, intptr_t slot);
 void QGraphicsLayout_virtualbase_Invalidate(void* self);
-void QGraphicsLayout_override_virtual_UpdateGeometry(void* self, intptr_t slot);
+bool QGraphicsLayout_override_virtual_UpdateGeometry(void* self, intptr_t slot);
 void QGraphicsLayout_virtualbase_UpdateGeometry(void* self);
-void QGraphicsLayout_override_virtual_WidgetEvent(void* self, intptr_t slot);
+bool QGraphicsLayout_override_virtual_WidgetEvent(void* self, intptr_t slot);
 void QGraphicsLayout_virtualbase_WidgetEvent(void* self, QEvent* e);
-void QGraphicsLayout_override_virtual_Count(void* self, intptr_t slot);
+bool QGraphicsLayout_override_virtual_Count(void* self, intptr_t slot);
 int QGraphicsLayout_virtualbase_Count(const void* self);
-void QGraphicsLayout_override_virtual_ItemAt(void* self, intptr_t slot);
+bool QGraphicsLayout_override_virtual_ItemAt(void* self, intptr_t slot);
 QGraphicsLayoutItem* QGraphicsLayout_virtualbase_ItemAt(const void* self, int i);
-void QGraphicsLayout_override_virtual_RemoveAt(void* self, intptr_t slot);
+bool QGraphicsLayout_override_virtual_RemoveAt(void* self, intptr_t slot);
 void QGraphicsLayout_virtualbase_RemoveAt(void* self, int index);
-void QGraphicsLayout_override_virtual_SetGeometry(void* self, intptr_t slot);
+bool QGraphicsLayout_override_virtual_SetGeometry(void* self, intptr_t slot);
 void QGraphicsLayout_virtualbase_SetGeometry(void* self, QRectF* rect);
-void QGraphicsLayout_override_virtual_SizeHint(void* self, intptr_t slot);
+bool QGraphicsLayout_override_virtual_SizeHint(void* self, intptr_t slot);
 QSizeF* QGraphicsLayout_virtualbase_SizeHint(const void* self, int which, QSizeF* constraint);
-void QGraphicsLayout_Delete(QGraphicsLayout* self, bool isSubclass);
+void QGraphicsLayout_Delete(QGraphicsLayout* self);
 
 #ifdef __cplusplus
 } /* extern C */

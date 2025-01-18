@@ -30,7 +30,7 @@ QUrl* QWebEngineQuotaRequest_Origin(const QWebEngineQuotaRequest* self);
 long long QWebEngineQuotaRequest_RequestedSize(const QWebEngineQuotaRequest* self);
 bool QWebEngineQuotaRequest_OperatorEqual(const QWebEngineQuotaRequest* self, QWebEngineQuotaRequest* that);
 bool QWebEngineQuotaRequest_OperatorNotEqual(const QWebEngineQuotaRequest* self, QWebEngineQuotaRequest* that);
-void QWebEngineQuotaRequest_Delete(QWebEngineQuotaRequest* self, bool isSubclass);
+void QWebEngineQuotaRequest_Delete(QWebEngineQuotaRequest* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -14,8 +14,7 @@ import (
 )
 
 type QAudioDeviceInfo struct {
-	h          *C.QAudioDeviceInfo
-	isSubclass bool
+	h *C.QAudioDeviceInfo
 }
 
 func (this *QAudioDeviceInfo) cPointer() *C.QAudioDeviceInfo {
@@ -49,17 +48,13 @@ func UnsafeNewQAudioDeviceInfo(h unsafe.Pointer) *QAudioDeviceInfo {
 // NewQAudioDeviceInfo constructs a new QAudioDeviceInfo object.
 func NewQAudioDeviceInfo() *QAudioDeviceInfo {
 
-	ret := newQAudioDeviceInfo(C.QAudioDeviceInfo_new())
-	ret.isSubclass = true
-	return ret
+	return newQAudioDeviceInfo(C.QAudioDeviceInfo_new())
 }
 
 // NewQAudioDeviceInfo2 constructs a new QAudioDeviceInfo object.
 func NewQAudioDeviceInfo2(other *QAudioDeviceInfo) *QAudioDeviceInfo {
 
-	ret := newQAudioDeviceInfo(C.QAudioDeviceInfo_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQAudioDeviceInfo(C.QAudioDeviceInfo_new2(other.cPointer()))
 }
 
 func (this *QAudioDeviceInfo) OperatorAssign(other *QAudioDeviceInfo) {
@@ -197,7 +192,7 @@ func QAudioDeviceInfo_AvailableDevices(mode QAudio__Mode) []QAudioDeviceInfo {
 
 // Delete this object from C++ memory.
 func (this *QAudioDeviceInfo) Delete() {
-	C.QAudioDeviceInfo_Delete(this.h, C.bool(this.isSubclass))
+	C.QAudioDeviceInfo_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

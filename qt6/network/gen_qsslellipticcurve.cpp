@@ -61,11 +61,7 @@ bool QSslEllipticCurve_IsTlsNamedCurve(const QSslEllipticCurve* self) {
 	return self->isTlsNamedCurve();
 }
 
-void QSslEllipticCurve_Delete(QSslEllipticCurve* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QSslEllipticCurve*>( self );
-	} else {
-		delete self;
-	}
+void QSslEllipticCurve_Delete(QSslEllipticCurve* self) {
+	delete self;
 }
 

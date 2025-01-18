@@ -36,8 +36,7 @@ const (
 )
 
 type QOcspResponse struct {
-	h          *C.QOcspResponse
-	isSubclass bool
+	h *C.QOcspResponse
 }
 
 func (this *QOcspResponse) cPointer() *C.QOcspResponse {
@@ -71,17 +70,13 @@ func UnsafeNewQOcspResponse(h unsafe.Pointer) *QOcspResponse {
 // NewQOcspResponse constructs a new QOcspResponse object.
 func NewQOcspResponse() *QOcspResponse {
 
-	ret := newQOcspResponse(C.QOcspResponse_new())
-	ret.isSubclass = true
-	return ret
+	return newQOcspResponse(C.QOcspResponse_new())
 }
 
 // NewQOcspResponse2 constructs a new QOcspResponse object.
 func NewQOcspResponse2(other *QOcspResponse) *QOcspResponse {
 
-	ret := newQOcspResponse(C.QOcspResponse_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQOcspResponse(C.QOcspResponse_new2(other.cPointer()))
 }
 
 func (this *QOcspResponse) OperatorAssign(other *QOcspResponse) {
@@ -114,7 +109,7 @@ func (this *QOcspResponse) Swap(other *QOcspResponse) {
 
 // Delete this object from C++ memory.
 func (this *QOcspResponse) Delete() {
-	C.QOcspResponse_Delete(this.h, C.bool(this.isSubclass))
+	C.QOcspResponse_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

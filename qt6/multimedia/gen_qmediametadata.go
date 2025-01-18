@@ -48,8 +48,7 @@ const (
 )
 
 type QMediaMetaData struct {
-	h          *C.QMediaMetaData
-	isSubclass bool
+	h *C.QMediaMetaData
 }
 
 func (this *QMediaMetaData) cPointer() *C.QMediaMetaData {
@@ -83,17 +82,13 @@ func UnsafeNewQMediaMetaData(h unsafe.Pointer) *QMediaMetaData {
 // NewQMediaMetaData constructs a new QMediaMetaData object.
 func NewQMediaMetaData(param1 *QMediaMetaData) *QMediaMetaData {
 
-	ret := newQMediaMetaData(C.QMediaMetaData_new(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQMediaMetaData(C.QMediaMetaData_new(param1.cPointer()))
 }
 
 // NewQMediaMetaData2 constructs a new QMediaMetaData object.
 func NewQMediaMetaData2() *QMediaMetaData {
 
-	ret := newQMediaMetaData(C.QMediaMetaData_new2())
-	ret.isSubclass = true
-	return ret
+	return newQMediaMetaData(C.QMediaMetaData_new2())
 }
 
 func (this *QMediaMetaData) Value(k QMediaMetaData__Key) *qt6.QVariant {
@@ -148,7 +143,7 @@ func QMediaMetaData_MetaDataKeyToString(k QMediaMetaData__Key) string {
 
 // Delete this object from C++ memory.
 func (this *QMediaMetaData) Delete() {
-	C.QMediaMetaData_Delete(this.h, C.bool(this.isSubclass))
+	C.QMediaMetaData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

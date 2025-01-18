@@ -21,7 +21,7 @@ typedef struct QFactoryInterface QFactoryInterface;
 #endif
 
 struct miqt_array /* of struct miqt_string */  QFactoryInterface_Keys(const QFactoryInterface* self);
-void QFactoryInterface_Delete(QFactoryInterface* self, bool isSubclass);
+void QFactoryInterface_Delete(QFactoryInterface* self);
 
 #ifdef __cplusplus
 } /* extern C */

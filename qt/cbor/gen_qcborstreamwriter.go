@@ -15,8 +15,7 @@ import (
 )
 
 type QCborStreamWriter struct {
-	h          *C.QCborStreamWriter
-	isSubclass bool
+	h *C.QCborStreamWriter
 }
 
 func (this *QCborStreamWriter) cPointer() *C.QCborStreamWriter {
@@ -50,9 +49,7 @@ func UnsafeNewQCborStreamWriter(h unsafe.Pointer) *QCborStreamWriter {
 // NewQCborStreamWriter constructs a new QCborStreamWriter object.
 func NewQCborStreamWriter(device *qt.QIODevice) *QCborStreamWriter {
 
-	ret := newQCborStreamWriter(C.QCborStreamWriter_new((*C.QIODevice)(device.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQCborStreamWriter(C.QCborStreamWriter_new((*C.QIODevice)(device.UnsafePointer())))
 }
 
 func (this *QCborStreamWriter) SetDevice(device *qt.QIODevice) {
@@ -172,7 +169,7 @@ func (this *QCborStreamWriter) Append22(str string, size int64) {
 
 // Delete this object from C++ memory.
 func (this *QCborStreamWriter) Delete() {
-	C.QCborStreamWriter_Delete(this.h, C.bool(this.isSubclass))
+	C.QCborStreamWriter_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

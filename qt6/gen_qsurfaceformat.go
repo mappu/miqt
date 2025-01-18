@@ -57,8 +57,7 @@ const (
 )
 
 type QSurfaceFormat struct {
-	h          *C.QSurfaceFormat
-	isSubclass bool
+	h *C.QSurfaceFormat
 }
 
 func (this *QSurfaceFormat) cPointer() *C.QSurfaceFormat {
@@ -92,25 +91,19 @@ func UnsafeNewQSurfaceFormat(h unsafe.Pointer) *QSurfaceFormat {
 // NewQSurfaceFormat constructs a new QSurfaceFormat object.
 func NewQSurfaceFormat() *QSurfaceFormat {
 
-	ret := newQSurfaceFormat(C.QSurfaceFormat_new())
-	ret.isSubclass = true
-	return ret
+	return newQSurfaceFormat(C.QSurfaceFormat_new())
 }
 
 // NewQSurfaceFormat2 constructs a new QSurfaceFormat object.
 func NewQSurfaceFormat2(options QSurfaceFormat__FormatOption) *QSurfaceFormat {
 
-	ret := newQSurfaceFormat(C.QSurfaceFormat_new2((C.int)(options)))
-	ret.isSubclass = true
-	return ret
+	return newQSurfaceFormat(C.QSurfaceFormat_new2((C.int)(options)))
 }
 
 // NewQSurfaceFormat3 constructs a new QSurfaceFormat object.
 func NewQSurfaceFormat3(other *QSurfaceFormat) *QSurfaceFormat {
 
-	ret := newQSurfaceFormat(C.QSurfaceFormat_new3(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSurfaceFormat(C.QSurfaceFormat_new3(other.cPointer()))
 }
 
 func (this *QSurfaceFormat) OperatorAssign(other *QSurfaceFormat) {
@@ -298,7 +291,7 @@ func (this *QSurfaceFormat) SetOption2(option QSurfaceFormat__FormatOption, on b
 
 // Delete this object from C++ memory.
 func (this *QSurfaceFormat) Delete() {
-	C.QSurfaceFormat_Delete(this.h, C.bool(this.isSubclass))
+	C.QSurfaceFormat_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

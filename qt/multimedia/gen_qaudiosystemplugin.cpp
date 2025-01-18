@@ -73,21 +73,17 @@ void QAudioSystemFactoryInterface_OperatorAssign(QAudioSystemFactoryInterface* s
 	self->operator=(*param1);
 }
 
-void QAudioSystemFactoryInterface_Delete(QAudioSystemFactoryInterface* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QAudioSystemFactoryInterface*>( self );
-	} else {
-		delete self;
-	}
+void QAudioSystemFactoryInterface_Delete(QAudioSystemFactoryInterface* self) {
+	delete self;
 }
 
-class MiqtVirtualQAudioSystemPlugin : public virtual QAudioSystemPlugin {
+class MiqtVirtualQAudioSystemPlugin final : public QAudioSystemPlugin {
 public:
 
 	MiqtVirtualQAudioSystemPlugin(): QAudioSystemPlugin() {};
 	MiqtVirtualQAudioSystemPlugin(QObject* parent): QAudioSystemPlugin(parent) {};
 
-	virtual ~MiqtVirtualQAudioSystemPlugin() = default;
+	virtual ~MiqtVirtualQAudioSystemPlugin() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__AvailableDevices = 0;
@@ -471,83 +467,145 @@ struct miqt_string QAudioSystemPlugin_TrUtf83(const char* s, const char* c, int 
 	return _ms;
 }
 
-void QAudioSystemPlugin_override_virtual_AvailableDevices(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioSystemPlugin*>( (QAudioSystemPlugin*)(self) )->handle__AvailableDevices = slot;
+bool QAudioSystemPlugin_override_virtual_AvailableDevices(void* self, intptr_t slot) {
+	MiqtVirtualQAudioSystemPlugin* self_cast = dynamic_cast<MiqtVirtualQAudioSystemPlugin*>( (QAudioSystemPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__AvailableDevices = slot;
+	return true;
 }
 
-void QAudioSystemPlugin_override_virtual_CreateInput(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioSystemPlugin*>( (QAudioSystemPlugin*)(self) )->handle__CreateInput = slot;
+bool QAudioSystemPlugin_override_virtual_CreateInput(void* self, intptr_t slot) {
+	MiqtVirtualQAudioSystemPlugin* self_cast = dynamic_cast<MiqtVirtualQAudioSystemPlugin*>( (QAudioSystemPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CreateInput = slot;
+	return true;
 }
 
-void QAudioSystemPlugin_override_virtual_CreateOutput(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioSystemPlugin*>( (QAudioSystemPlugin*)(self) )->handle__CreateOutput = slot;
+bool QAudioSystemPlugin_override_virtual_CreateOutput(void* self, intptr_t slot) {
+	MiqtVirtualQAudioSystemPlugin* self_cast = dynamic_cast<MiqtVirtualQAudioSystemPlugin*>( (QAudioSystemPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CreateOutput = slot;
+	return true;
 }
 
-void QAudioSystemPlugin_override_virtual_CreateDeviceInfo(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioSystemPlugin*>( (QAudioSystemPlugin*)(self) )->handle__CreateDeviceInfo = slot;
+bool QAudioSystemPlugin_override_virtual_CreateDeviceInfo(void* self, intptr_t slot) {
+	MiqtVirtualQAudioSystemPlugin* self_cast = dynamic_cast<MiqtVirtualQAudioSystemPlugin*>( (QAudioSystemPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CreateDeviceInfo = slot;
+	return true;
 }
 
-void QAudioSystemPlugin_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioSystemPlugin*>( (QAudioSystemPlugin*)(self) )->handle__Event = slot;
+bool QAudioSystemPlugin_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQAudioSystemPlugin* self_cast = dynamic_cast<MiqtVirtualQAudioSystemPlugin*>( (QAudioSystemPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QAudioSystemPlugin_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQAudioSystemPlugin*)(self) )->virtualbase_Event(event);
 }
 
-void QAudioSystemPlugin_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioSystemPlugin*>( (QAudioSystemPlugin*)(self) )->handle__EventFilter = slot;
+bool QAudioSystemPlugin_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQAudioSystemPlugin* self_cast = dynamic_cast<MiqtVirtualQAudioSystemPlugin*>( (QAudioSystemPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QAudioSystemPlugin_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQAudioSystemPlugin*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QAudioSystemPlugin_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioSystemPlugin*>( (QAudioSystemPlugin*)(self) )->handle__TimerEvent = slot;
+bool QAudioSystemPlugin_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAudioSystemPlugin* self_cast = dynamic_cast<MiqtVirtualQAudioSystemPlugin*>( (QAudioSystemPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QAudioSystemPlugin_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQAudioSystemPlugin*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QAudioSystemPlugin_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioSystemPlugin*>( (QAudioSystemPlugin*)(self) )->handle__ChildEvent = slot;
+bool QAudioSystemPlugin_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAudioSystemPlugin* self_cast = dynamic_cast<MiqtVirtualQAudioSystemPlugin*>( (QAudioSystemPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QAudioSystemPlugin_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQAudioSystemPlugin*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QAudioSystemPlugin_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioSystemPlugin*>( (QAudioSystemPlugin*)(self) )->handle__CustomEvent = slot;
+bool QAudioSystemPlugin_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAudioSystemPlugin* self_cast = dynamic_cast<MiqtVirtualQAudioSystemPlugin*>( (QAudioSystemPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QAudioSystemPlugin_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQAudioSystemPlugin*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QAudioSystemPlugin_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioSystemPlugin*>( (QAudioSystemPlugin*)(self) )->handle__ConnectNotify = slot;
+bool QAudioSystemPlugin_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQAudioSystemPlugin* self_cast = dynamic_cast<MiqtVirtualQAudioSystemPlugin*>( (QAudioSystemPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QAudioSystemPlugin_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAudioSystemPlugin*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QAudioSystemPlugin_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioSystemPlugin*>( (QAudioSystemPlugin*)(self) )->handle__DisconnectNotify = slot;
+bool QAudioSystemPlugin_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQAudioSystemPlugin* self_cast = dynamic_cast<MiqtVirtualQAudioSystemPlugin*>( (QAudioSystemPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QAudioSystemPlugin_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAudioSystemPlugin*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QAudioSystemPlugin_Delete(QAudioSystemPlugin* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAudioSystemPlugin*>( self );
-	} else {
-		delete self;
-	}
+void QAudioSystemPlugin_Delete(QAudioSystemPlugin* self) {
+	delete self;
 }
 

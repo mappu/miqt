@@ -83,11 +83,11 @@ bool QBrush_IsOpaque(const QBrush* self);
 bool QBrush_OperatorEqual(const QBrush* self, QBrush* b);
 bool QBrush_OperatorNotEqual(const QBrush* self, QBrush* b);
 bool QBrush_IsDetached(const QBrush* self);
-void QBrush_Delete(QBrush* self, bool isSubclass);
+void QBrush_Delete(QBrush* self);
 
 QBrushData* QBrushData_new(QBrushData* param1);
 void QBrushData_OperatorAssign(QBrushData* self, QBrushData* param1);
-void QBrushData_Delete(QBrushData* self, bool isSubclass);
+void QBrushData_Delete(QBrushData* self);
 
 QGradient* QGradient_new();
 QGradient* QGradient_new2(int param1);
@@ -104,7 +104,7 @@ int QGradient_InterpolationMode(const QGradient* self);
 void QGradient_SetInterpolationMode(QGradient* self, int mode);
 bool QGradient_OperatorEqual(const QGradient* self, QGradient* gradient);
 bool QGradient_OperatorNotEqual(const QGradient* self, QGradient* other);
-void QGradient_Delete(QGradient* self, bool isSubclass);
+void QGradient_Delete(QGradient* self);
 
 QLinearGradient* QLinearGradient_new();
 QLinearGradient* QLinearGradient_new2(QPointF* start, QPointF* finalStop);
@@ -117,7 +117,7 @@ void QLinearGradient_SetStart2(QLinearGradient* self, double x, double y);
 QPointF* QLinearGradient_FinalStop(const QLinearGradient* self);
 void QLinearGradient_SetFinalStop(QLinearGradient* self, QPointF* stop);
 void QLinearGradient_SetFinalStop2(QLinearGradient* self, double x, double y);
-void QLinearGradient_Delete(QLinearGradient* self, bool isSubclass);
+void QLinearGradient_Delete(QLinearGradient* self);
 
 QRadialGradient* QRadialGradient_new();
 QRadialGradient* QRadialGradient_new2(QPointF* center, double radius, QPointF* focalPoint);
@@ -140,7 +140,7 @@ double QRadialGradient_CenterRadius(const QRadialGradient* self);
 void QRadialGradient_SetCenterRadius(QRadialGradient* self, double radius);
 double QRadialGradient_FocalRadius(const QRadialGradient* self);
 void QRadialGradient_SetFocalRadius(QRadialGradient* self, double radius);
-void QRadialGradient_Delete(QRadialGradient* self, bool isSubclass);
+void QRadialGradient_Delete(QRadialGradient* self);
 
 QConicalGradient* QConicalGradient_new();
 QConicalGradient* QConicalGradient_new2(QPointF* center, double startAngle);
@@ -152,11 +152,11 @@ void QConicalGradient_SetCenter(QConicalGradient* self, QPointF* center);
 void QConicalGradient_SetCenter2(QConicalGradient* self, double x, double y);
 double QConicalGradient_Angle(const QConicalGradient* self);
 void QConicalGradient_SetAngle(QConicalGradient* self, double angle);
-void QConicalGradient_Delete(QConicalGradient* self, bool isSubclass);
+void QConicalGradient_Delete(QConicalGradient* self);
 
 QGradient__QGradientData* QGradient__QGradientData_new(QGradient__QGradientData* param1);
 void QGradient__QGradientData_OperatorAssign(QGradient__QGradientData* self, QGradient__QGradientData* param1);
-void QGradient__QGradientData_Delete(QGradient__QGradientData* self, bool isSubclass);
+void QGradient__QGradientData_Delete(QGradient__QGradientData* self);
 
 #ifdef __cplusplus
 } /* extern C */

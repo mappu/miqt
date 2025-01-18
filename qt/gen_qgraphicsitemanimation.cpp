@@ -35,13 +35,13 @@ void miqt_exec_callback_QGraphicsItemAnimation_DisconnectNotify(void*, intptr_t,
 } /* extern C */
 #endif
 
-class MiqtVirtualQGraphicsItemAnimation : public virtual QGraphicsItemAnimation {
+class MiqtVirtualQGraphicsItemAnimation final : public QGraphicsItemAnimation {
 public:
 
 	MiqtVirtualQGraphicsItemAnimation(): QGraphicsItemAnimation() {};
 	MiqtVirtualQGraphicsItemAnimation(QObject* parent): QGraphicsItemAnimation(parent) {};
 
-	virtual ~MiqtVirtualQGraphicsItemAnimation() = default;
+	virtual ~MiqtVirtualQGraphicsItemAnimation() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__BeforeAnimationStep = 0;
@@ -562,83 +562,133 @@ struct miqt_string QGraphicsItemAnimation_TrUtf83(const char* s, const char* c, 
 	return _ms;
 }
 
-void QGraphicsItemAnimation_override_virtual_BeforeAnimationStep(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsItemAnimation*>( (QGraphicsItemAnimation*)(self) )->handle__BeforeAnimationStep = slot;
+bool QGraphicsItemAnimation_override_virtual_BeforeAnimationStep(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsItemAnimation* self_cast = dynamic_cast<MiqtVirtualQGraphicsItemAnimation*>( (QGraphicsItemAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BeforeAnimationStep = slot;
+	return true;
 }
 
 void QGraphicsItemAnimation_virtualbase_BeforeAnimationStep(void* self, double step) {
 	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->virtualbase_BeforeAnimationStep(step);
 }
 
-void QGraphicsItemAnimation_override_virtual_AfterAnimationStep(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsItemAnimation*>( (QGraphicsItemAnimation*)(self) )->handle__AfterAnimationStep = slot;
+bool QGraphicsItemAnimation_override_virtual_AfterAnimationStep(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsItemAnimation* self_cast = dynamic_cast<MiqtVirtualQGraphicsItemAnimation*>( (QGraphicsItemAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__AfterAnimationStep = slot;
+	return true;
 }
 
 void QGraphicsItemAnimation_virtualbase_AfterAnimationStep(void* self, double step) {
 	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->virtualbase_AfterAnimationStep(step);
 }
 
-void QGraphicsItemAnimation_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsItemAnimation*>( (QGraphicsItemAnimation*)(self) )->handle__Event = slot;
+bool QGraphicsItemAnimation_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsItemAnimation* self_cast = dynamic_cast<MiqtVirtualQGraphicsItemAnimation*>( (QGraphicsItemAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QGraphicsItemAnimation_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQGraphicsItemAnimation*)(self) )->virtualbase_Event(event);
 }
 
-void QGraphicsItemAnimation_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsItemAnimation*>( (QGraphicsItemAnimation*)(self) )->handle__EventFilter = slot;
+bool QGraphicsItemAnimation_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsItemAnimation* self_cast = dynamic_cast<MiqtVirtualQGraphicsItemAnimation*>( (QGraphicsItemAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QGraphicsItemAnimation_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQGraphicsItemAnimation*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QGraphicsItemAnimation_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsItemAnimation*>( (QGraphicsItemAnimation*)(self) )->handle__TimerEvent = slot;
+bool QGraphicsItemAnimation_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsItemAnimation* self_cast = dynamic_cast<MiqtVirtualQGraphicsItemAnimation*>( (QGraphicsItemAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QGraphicsItemAnimation_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QGraphicsItemAnimation_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsItemAnimation*>( (QGraphicsItemAnimation*)(self) )->handle__ChildEvent = slot;
+bool QGraphicsItemAnimation_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsItemAnimation* self_cast = dynamic_cast<MiqtVirtualQGraphicsItemAnimation*>( (QGraphicsItemAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QGraphicsItemAnimation_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QGraphicsItemAnimation_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsItemAnimation*>( (QGraphicsItemAnimation*)(self) )->handle__CustomEvent = slot;
+bool QGraphicsItemAnimation_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsItemAnimation* self_cast = dynamic_cast<MiqtVirtualQGraphicsItemAnimation*>( (QGraphicsItemAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QGraphicsItemAnimation_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QGraphicsItemAnimation_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsItemAnimation*>( (QGraphicsItemAnimation*)(self) )->handle__ConnectNotify = slot;
+bool QGraphicsItemAnimation_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsItemAnimation* self_cast = dynamic_cast<MiqtVirtualQGraphicsItemAnimation*>( (QGraphicsItemAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QGraphicsItemAnimation_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QGraphicsItemAnimation_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsItemAnimation*>( (QGraphicsItemAnimation*)(self) )->handle__DisconnectNotify = slot;
+bool QGraphicsItemAnimation_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsItemAnimation* self_cast = dynamic_cast<MiqtVirtualQGraphicsItemAnimation*>( (QGraphicsItemAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QGraphicsItemAnimation_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QGraphicsItemAnimation_Delete(QGraphicsItemAnimation* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsItemAnimation*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsItemAnimation_Delete(QGraphicsItemAnimation* self) {
+	delete self;
 }
 

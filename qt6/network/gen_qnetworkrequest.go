@@ -107,8 +107,7 @@ const (
 )
 
 type QNetworkRequest struct {
-	h          *C.QNetworkRequest
-	isSubclass bool
+	h *C.QNetworkRequest
 }
 
 func (this *QNetworkRequest) cPointer() *C.QNetworkRequest {
@@ -142,25 +141,19 @@ func UnsafeNewQNetworkRequest(h unsafe.Pointer) *QNetworkRequest {
 // NewQNetworkRequest constructs a new QNetworkRequest object.
 func NewQNetworkRequest() *QNetworkRequest {
 
-	ret := newQNetworkRequest(C.QNetworkRequest_new())
-	ret.isSubclass = true
-	return ret
+	return newQNetworkRequest(C.QNetworkRequest_new())
 }
 
 // NewQNetworkRequest2 constructs a new QNetworkRequest object.
 func NewQNetworkRequest2(url *qt6.QUrl) *QNetworkRequest {
 
-	ret := newQNetworkRequest(C.QNetworkRequest_new2((*C.QUrl)(url.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkRequest(C.QNetworkRequest_new2((*C.QUrl)(url.UnsafePointer())))
 }
 
 // NewQNetworkRequest3 constructs a new QNetworkRequest object.
 func NewQNetworkRequest3(other *QNetworkRequest) *QNetworkRequest {
 
-	ret := newQNetworkRequest(C.QNetworkRequest_new3(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkRequest(C.QNetworkRequest_new3(other.cPointer()))
 }
 
 func (this *QNetworkRequest) OperatorAssign(other *QNetworkRequest) {
@@ -336,7 +329,7 @@ func (this *QNetworkRequest) SetTransferTimeout1(timeout int) {
 
 // Delete this object from C++ memory.
 func (this *QNetworkRequest) Delete() {
-	C.QNetworkRequest_Delete(this.h, C.bool(this.isSubclass))
+	C.QNetworkRequest_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

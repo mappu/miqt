@@ -26,8 +26,7 @@ const (
 )
 
 type QFontDialog struct {
-	h          *C.QFontDialog
-	isSubclass bool
+	h *C.QFontDialog
 	*QDialog
 }
 
@@ -65,33 +64,25 @@ func UnsafeNewQFontDialog(h unsafe.Pointer) *QFontDialog {
 // NewQFontDialog constructs a new QFontDialog object.
 func NewQFontDialog(parent *QWidget) *QFontDialog {
 
-	ret := newQFontDialog(C.QFontDialog_new(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQFontDialog(C.QFontDialog_new(parent.cPointer()))
 }
 
 // NewQFontDialog2 constructs a new QFontDialog object.
 func NewQFontDialog2() *QFontDialog {
 
-	ret := newQFontDialog(C.QFontDialog_new2())
-	ret.isSubclass = true
-	return ret
+	return newQFontDialog(C.QFontDialog_new2())
 }
 
 // NewQFontDialog3 constructs a new QFontDialog object.
 func NewQFontDialog3(initial *QFont) *QFontDialog {
 
-	ret := newQFontDialog(C.QFontDialog_new3(initial.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQFontDialog(C.QFontDialog_new3(initial.cPointer()))
 }
 
 // NewQFontDialog4 constructs a new QFontDialog object.
 func NewQFontDialog4(initial *QFont, parent *QWidget) *QFontDialog {
 
-	ret := newQFontDialog(C.QFontDialog_new4(initial.cPointer(), parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQFontDialog(C.QFontDialog_new4(initial.cPointer(), parent.cPointer()))
 }
 
 func (this *QFontDialog) MetaObject() *QMetaObject {
@@ -265,10 +256,10 @@ func (this *QFontDialog) callVirtualBase_SetVisible(visible bool) {
 
 }
 func (this *QFontDialog) OnSetVisible(slot func(super func(visible bool), visible bool)) {
-	if !this.isSubclass {
+	ok := C.QFontDialog_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontDialog_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontDialog_SetVisible
@@ -291,10 +282,10 @@ func (this *QFontDialog) callVirtualBase_ChangeEvent(event *QEvent) {
 
 }
 func (this *QFontDialog) OnChangeEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QFontDialog_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontDialog_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontDialog_ChangeEvent
@@ -317,10 +308,10 @@ func (this *QFontDialog) callVirtualBase_Done(result int) {
 
 }
 func (this *QFontDialog) OnDone(slot func(super func(result int), result int)) {
-	if !this.isSubclass {
+	ok := C.QFontDialog_override_virtual_Done(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontDialog_override_virtual_Done(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontDialog_Done
@@ -343,10 +334,10 @@ func (this *QFontDialog) callVirtualBase_EventFilter(object *QObject, event *QEv
 
 }
 func (this *QFontDialog) OnEventFilter(slot func(super func(object *QObject, event *QEvent) bool, object *QObject, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QFontDialog_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontDialog_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontDialog_EventFilter
@@ -375,10 +366,10 @@ func (this *QFontDialog) callVirtualBase_SizeHint() *QSize {
 
 }
 func (this *QFontDialog) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	if !this.isSubclass {
+	ok := C.QFontDialog_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontDialog_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontDialog_SizeHint
@@ -402,10 +393,10 @@ func (this *QFontDialog) callVirtualBase_MinimumSizeHint() *QSize {
 
 }
 func (this *QFontDialog) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
-	if !this.isSubclass {
+	ok := C.QFontDialog_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontDialog_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontDialog_MinimumSizeHint
@@ -427,10 +418,10 @@ func (this *QFontDialog) callVirtualBase_Open() {
 
 }
 func (this *QFontDialog) OnOpen(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QFontDialog_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontDialog_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontDialog_Open
@@ -450,10 +441,10 @@ func (this *QFontDialog) callVirtualBase_Exec() int {
 
 }
 func (this *QFontDialog) OnExec(slot func(super func() int) int) {
-	if !this.isSubclass {
+	ok := C.QFontDialog_override_virtual_Exec(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontDialog_override_virtual_Exec(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontDialog_Exec
@@ -475,10 +466,10 @@ func (this *QFontDialog) callVirtualBase_Accept() {
 
 }
 func (this *QFontDialog) OnAccept(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QFontDialog_override_virtual_Accept(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontDialog_override_virtual_Accept(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontDialog_Accept
@@ -498,10 +489,10 @@ func (this *QFontDialog) callVirtualBase_Reject() {
 
 }
 func (this *QFontDialog) OnReject(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QFontDialog_override_virtual_Reject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontDialog_override_virtual_Reject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontDialog_Reject
@@ -521,10 +512,10 @@ func (this *QFontDialog) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
 
 }
 func (this *QFontDialog) OnKeyPressEvent(slot func(super func(param1 *QKeyEvent), param1 *QKeyEvent)) {
-	if !this.isSubclass {
+	ok := C.QFontDialog_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontDialog_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontDialog_KeyPressEvent
@@ -547,10 +538,10 @@ func (this *QFontDialog) callVirtualBase_CloseEvent(param1 *QCloseEvent) {
 
 }
 func (this *QFontDialog) OnCloseEvent(slot func(super func(param1 *QCloseEvent), param1 *QCloseEvent)) {
-	if !this.isSubclass {
+	ok := C.QFontDialog_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontDialog_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontDialog_CloseEvent
@@ -573,10 +564,10 @@ func (this *QFontDialog) callVirtualBase_ShowEvent(param1 *QShowEvent) {
 
 }
 func (this *QFontDialog) OnShowEvent(slot func(super func(param1 *QShowEvent), param1 *QShowEvent)) {
-	if !this.isSubclass {
+	ok := C.QFontDialog_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontDialog_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontDialog_ShowEvent
@@ -599,10 +590,10 @@ func (this *QFontDialog) callVirtualBase_ResizeEvent(param1 *QResizeEvent) {
 
 }
 func (this *QFontDialog) OnResizeEvent(slot func(super func(param1 *QResizeEvent), param1 *QResizeEvent)) {
-	if !this.isSubclass {
+	ok := C.QFontDialog_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontDialog_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontDialog_ResizeEvent
@@ -625,10 +616,10 @@ func (this *QFontDialog) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEv
 
 }
 func (this *QFontDialog) OnContextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
-	if !this.isSubclass {
+	ok := C.QFontDialog_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontDialog_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontDialog_ContextMenuEvent
@@ -647,7 +638,7 @@ func miqt_exec_callback_QFontDialog_ContextMenuEvent(self *C.QFontDialog, cb C.i
 
 // Delete this object from C++ memory.
 func (this *QFontDialog) Delete() {
-	C.QFontDialog_Delete(this.h, C.bool(this.isSubclass))
+	C.QFontDialog_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

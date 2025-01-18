@@ -71,21 +71,21 @@ struct miqt_string QSystemTrayIcon_Tr3(const char* s, const char* c, int n);
 void QSystemTrayIcon_ShowMessage4(QSystemTrayIcon* self, struct miqt_string title, struct miqt_string msg, QIcon* icon, int msecs);
 void QSystemTrayIcon_ShowMessage3(QSystemTrayIcon* self, struct miqt_string title, struct miqt_string msg, int icon);
 void QSystemTrayIcon_ShowMessage42(QSystemTrayIcon* self, struct miqt_string title, struct miqt_string msg, int icon, int msecs);
-void QSystemTrayIcon_override_virtual_Event(void* self, intptr_t slot);
+bool QSystemTrayIcon_override_virtual_Event(void* self, intptr_t slot);
 bool QSystemTrayIcon_virtualbase_Event(void* self, QEvent* event);
-void QSystemTrayIcon_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QSystemTrayIcon_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QSystemTrayIcon_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QSystemTrayIcon_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QSystemTrayIcon_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QSystemTrayIcon_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QSystemTrayIcon_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QSystemTrayIcon_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QSystemTrayIcon_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QSystemTrayIcon_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QSystemTrayIcon_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QSystemTrayIcon_virtualbase_CustomEvent(void* self, QEvent* event);
-void QSystemTrayIcon_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QSystemTrayIcon_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QSystemTrayIcon_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QSystemTrayIcon_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QSystemTrayIcon_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QSystemTrayIcon_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QSystemTrayIcon_Delete(QSystemTrayIcon* self, bool isSubclass);
+void QSystemTrayIcon_Delete(QSystemTrayIcon* self);
 
 #ifdef __cplusplus
 } /* extern C */

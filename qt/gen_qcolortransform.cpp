@@ -41,11 +41,7 @@ QColor* QColorTransform_MapWithColor(const QColorTransform* self, QColor* color)
 	return new QColor(self->map(*color));
 }
 
-void QColorTransform_Delete(QColorTransform* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QColorTransform*>( self );
-	} else {
-		delete self;
-	}
+void QColorTransform_Delete(QColorTransform* self) {
+	delete self;
 }
 

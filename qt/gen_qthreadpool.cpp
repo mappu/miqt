@@ -28,13 +28,13 @@ void miqt_exec_callback_QThreadPool_DisconnectNotify(void*, intptr_t, QMetaMetho
 } /* extern C */
 #endif
 
-class MiqtVirtualQThreadPool : public virtual QThreadPool {
+class MiqtVirtualQThreadPool final : public QThreadPool {
 public:
 
 	MiqtVirtualQThreadPool(): QThreadPool() {};
 	MiqtVirtualQThreadPool(QObject* parent): QThreadPool(parent) {};
 
-	virtual ~MiqtVirtualQThreadPool() = default;
+	virtual ~MiqtVirtualQThreadPool() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -372,67 +372,105 @@ bool QThreadPool_WaitForDone1(QThreadPool* self, int msecs) {
 	return self->waitForDone(static_cast<int>(msecs));
 }
 
-void QThreadPool_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQThreadPool*>( (QThreadPool*)(self) )->handle__Event = slot;
+bool QThreadPool_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQThreadPool* self_cast = dynamic_cast<MiqtVirtualQThreadPool*>( (QThreadPool*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QThreadPool_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQThreadPool*)(self) )->virtualbase_Event(event);
 }
 
-void QThreadPool_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQThreadPool*>( (QThreadPool*)(self) )->handle__EventFilter = slot;
+bool QThreadPool_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQThreadPool* self_cast = dynamic_cast<MiqtVirtualQThreadPool*>( (QThreadPool*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QThreadPool_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQThreadPool*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QThreadPool_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQThreadPool*>( (QThreadPool*)(self) )->handle__TimerEvent = slot;
+bool QThreadPool_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQThreadPool* self_cast = dynamic_cast<MiqtVirtualQThreadPool*>( (QThreadPool*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QThreadPool_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQThreadPool*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QThreadPool_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQThreadPool*>( (QThreadPool*)(self) )->handle__ChildEvent = slot;
+bool QThreadPool_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQThreadPool* self_cast = dynamic_cast<MiqtVirtualQThreadPool*>( (QThreadPool*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QThreadPool_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQThreadPool*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QThreadPool_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQThreadPool*>( (QThreadPool*)(self) )->handle__CustomEvent = slot;
+bool QThreadPool_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQThreadPool* self_cast = dynamic_cast<MiqtVirtualQThreadPool*>( (QThreadPool*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QThreadPool_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQThreadPool*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QThreadPool_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQThreadPool*>( (QThreadPool*)(self) )->handle__ConnectNotify = slot;
+bool QThreadPool_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQThreadPool* self_cast = dynamic_cast<MiqtVirtualQThreadPool*>( (QThreadPool*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QThreadPool_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQThreadPool*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QThreadPool_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQThreadPool*>( (QThreadPool*)(self) )->handle__DisconnectNotify = slot;
+bool QThreadPool_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQThreadPool* self_cast = dynamic_cast<MiqtVirtualQThreadPool*>( (QThreadPool*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QThreadPool_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQThreadPool*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QThreadPool_Delete(QThreadPool* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQThreadPool*>( self );
-	} else {
-		delete self;
-	}
+void QThreadPool_Delete(QThreadPool* self) {
+	delete self;
 }
 

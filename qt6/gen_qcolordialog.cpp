@@ -43,7 +43,7 @@ bool miqt_exec_callback_QColorDialog_EventFilter(void*, intptr_t, QObject*, QEve
 } /* extern C */
 #endif
 
-class MiqtVirtualQColorDialog : public virtual QColorDialog {
+class MiqtVirtualQColorDialog final : public QColorDialog {
 public:
 
 	MiqtVirtualQColorDialog(QWidget* parent): QColorDialog(parent) {};
@@ -51,7 +51,7 @@ public:
 	MiqtVirtualQColorDialog(const QColor& initial): QColorDialog(initial) {};
 	MiqtVirtualQColorDialog(const QColor& initial, QWidget* parent): QColorDialog(initial, parent) {};
 
-	virtual ~MiqtVirtualQColorDialog() = default;
+	virtual ~MiqtVirtualQColorDialog() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetVisible = 0;
@@ -572,131 +572,217 @@ QColor* QColorDialog_GetColor4(QColor* initial, QWidget* parent, struct miqt_str
 	return new QColor(QColorDialog::getColor(*initial, parent, title_QString, static_cast<QColorDialog::ColorDialogOptions>(options)));
 }
 
-void QColorDialog_override_virtual_SetVisible(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) )->handle__SetVisible = slot;
+bool QColorDialog_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQColorDialog* self_cast = dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
 }
 
 void QColorDialog_virtualbase_SetVisible(void* self, bool visible) {
 	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_SetVisible(visible);
 }
 
-void QColorDialog_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) )->handle__ChangeEvent = slot;
+bool QColorDialog_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQColorDialog* self_cast = dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QColorDialog_virtualbase_ChangeEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_ChangeEvent(event);
 }
 
-void QColorDialog_override_virtual_Done(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) )->handle__Done = slot;
+bool QColorDialog_override_virtual_Done(void* self, intptr_t slot) {
+	MiqtVirtualQColorDialog* self_cast = dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Done = slot;
+	return true;
 }
 
 void QColorDialog_virtualbase_Done(void* self, int result) {
 	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_Done(result);
 }
 
-void QColorDialog_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) )->handle__SizeHint = slot;
+bool QColorDialog_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQColorDialog* self_cast = dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QColorDialog_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQColorDialog*)(self) )->virtualbase_SizeHint();
 }
 
-void QColorDialog_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) )->handle__MinimumSizeHint = slot;
+bool QColorDialog_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQColorDialog* self_cast = dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QColorDialog_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQColorDialog*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QColorDialog_override_virtual_Open(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) )->handle__Open = slot;
+bool QColorDialog_override_virtual_Open(void* self, intptr_t slot) {
+	MiqtVirtualQColorDialog* self_cast = dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Open = slot;
+	return true;
 }
 
 void QColorDialog_virtualbase_Open(void* self) {
 	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_Open();
 }
 
-void QColorDialog_override_virtual_Exec(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) )->handle__Exec = slot;
+bool QColorDialog_override_virtual_Exec(void* self, intptr_t slot) {
+	MiqtVirtualQColorDialog* self_cast = dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Exec = slot;
+	return true;
 }
 
 int QColorDialog_virtualbase_Exec(void* self) {
 	return ( (MiqtVirtualQColorDialog*)(self) )->virtualbase_Exec();
 }
 
-void QColorDialog_override_virtual_Accept(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) )->handle__Accept = slot;
+bool QColorDialog_override_virtual_Accept(void* self, intptr_t slot) {
+	MiqtVirtualQColorDialog* self_cast = dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Accept = slot;
+	return true;
 }
 
 void QColorDialog_virtualbase_Accept(void* self) {
 	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_Accept();
 }
 
-void QColorDialog_override_virtual_Reject(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) )->handle__Reject = slot;
+bool QColorDialog_override_virtual_Reject(void* self, intptr_t slot) {
+	MiqtVirtualQColorDialog* self_cast = dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Reject = slot;
+	return true;
 }
 
 void QColorDialog_virtualbase_Reject(void* self) {
 	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_Reject();
 }
 
-void QColorDialog_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) )->handle__KeyPressEvent = slot;
+bool QColorDialog_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQColorDialog* self_cast = dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QColorDialog_virtualbase_KeyPressEvent(void* self, QKeyEvent* param1) {
 	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_KeyPressEvent(param1);
 }
 
-void QColorDialog_override_virtual_CloseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) )->handle__CloseEvent = slot;
+bool QColorDialog_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQColorDialog* self_cast = dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
 }
 
 void QColorDialog_virtualbase_CloseEvent(void* self, QCloseEvent* param1) {
 	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_CloseEvent(param1);
 }
 
-void QColorDialog_override_virtual_ShowEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) )->handle__ShowEvent = slot;
+bool QColorDialog_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQColorDialog* self_cast = dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
 }
 
 void QColorDialog_virtualbase_ShowEvent(void* self, QShowEvent* param1) {
 	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_ShowEvent(param1);
 }
 
-void QColorDialog_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) )->handle__ResizeEvent = slot;
+bool QColorDialog_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQColorDialog* self_cast = dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QColorDialog_virtualbase_ResizeEvent(void* self, QResizeEvent* param1) {
 	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_ResizeEvent(param1);
 }
 
-void QColorDialog_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) )->handle__ContextMenuEvent = slot;
+bool QColorDialog_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQColorDialog* self_cast = dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QColorDialog_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* param1) {
 	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_ContextMenuEvent(param1);
 }
 
-void QColorDialog_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) )->handle__EventFilter = slot;
+bool QColorDialog_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQColorDialog* self_cast = dynamic_cast<MiqtVirtualQColorDialog*>( (QColorDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QColorDialog_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2) {
 	return ( (MiqtVirtualQColorDialog*)(self) )->virtualbase_EventFilter(param1, param2);
 }
 
-void QColorDialog_Delete(QColorDialog* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQColorDialog*>( self );
-	} else {
-		delete self;
-	}
+void QColorDialog_Delete(QColorDialog* self) {
+	delete self;
 }
 

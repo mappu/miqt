@@ -36,7 +36,7 @@ typedef struct QUntypedPropertyBinding QUntypedPropertyBinding;
 
 QPropertyBindingSourceLocation* QPropertyBindingSourceLocation_new();
 QPropertyBindingSourceLocation* QPropertyBindingSourceLocation_new2(QPropertyBindingSourceLocation* param1);
-void QPropertyBindingSourceLocation_Delete(QPropertyBindingSourceLocation* self, bool isSubclass);
+void QPropertyBindingSourceLocation_Delete(QPropertyBindingSourceLocation* self);
 
 QPropertyBindingError* QPropertyBindingError_new();
 QPropertyBindingError* QPropertyBindingError_new2(int typeVal);
@@ -46,7 +46,7 @@ void QPropertyBindingError_OperatorAssign(QPropertyBindingError* self, QProperty
 bool QPropertyBindingError_HasError(const QPropertyBindingError* self);
 int QPropertyBindingError_Type(const QPropertyBindingError* self);
 struct miqt_string QPropertyBindingError_Description(const QPropertyBindingError* self);
-void QPropertyBindingError_Delete(QPropertyBindingError* self, bool isSubclass);
+void QPropertyBindingError_Delete(QPropertyBindingError* self);
 
 QUntypedPropertyBinding* QUntypedPropertyBinding_new();
 QUntypedPropertyBinding* QUntypedPropertyBinding_new2(QUntypedPropertyBinding* other);
@@ -54,19 +54,19 @@ void QUntypedPropertyBinding_OperatorAssign(QUntypedPropertyBinding* self, QUnty
 bool QUntypedPropertyBinding_IsNull(const QUntypedPropertyBinding* self);
 QPropertyBindingError* QUntypedPropertyBinding_Error(const QUntypedPropertyBinding* self);
 QMetaType* QUntypedPropertyBinding_ValueMetaType(const QUntypedPropertyBinding* self);
-void QUntypedPropertyBinding_Delete(QUntypedPropertyBinding* self, bool isSubclass);
+void QUntypedPropertyBinding_Delete(QUntypedPropertyBinding* self);
 
 QPropertyObserverBase* QPropertyObserverBase_new();
 QPropertyObserverBase* QPropertyObserverBase_new2(QPropertyObserverBase* param1);
-void QPropertyObserverBase_Delete(QPropertyObserverBase* self, bool isSubclass);
+void QPropertyObserverBase_Delete(QPropertyObserverBase* self);
 
 QPropertyObserver* QPropertyObserver_new();
 void QPropertyObserver_virtbase(QPropertyObserver* src, QPropertyObserverBase** outptr_QPropertyObserverBase);
-void QPropertyObserver_Delete(QPropertyObserver* self, bool isSubclass);
+void QPropertyObserver_Delete(QPropertyObserver* self);
 
 QPropertyNotifier* QPropertyNotifier_new();
 void QPropertyNotifier_virtbase(QPropertyNotifier* src, QPropertyObserver** outptr_QPropertyObserver);
-void QPropertyNotifier_Delete(QPropertyNotifier* self, bool isSubclass);
+void QPropertyNotifier_Delete(QPropertyNotifier* self);
 
 QUntypedBindable* QUntypedBindable_new();
 QUntypedBindable* QUntypedBindable_new2(QUntypedBindable* param1);
@@ -81,7 +81,7 @@ bool QUntypedBindable_SetBinding(QUntypedBindable* self, QUntypedPropertyBinding
 bool QUntypedBindable_HasBinding(const QUntypedBindable* self);
 QMetaType* QUntypedBindable_MetaType(const QUntypedBindable* self);
 QUntypedPropertyBinding* QUntypedBindable_MakeBinding1(const QUntypedBindable* self, QPropertyBindingSourceLocation* location);
-void QUntypedBindable_Delete(QUntypedBindable* self, bool isSubclass);
+void QUntypedBindable_Delete(QUntypedBindable* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -98,7 +98,7 @@ void QNetworkReply_SetSslConfigurationImplementation(QNetworkReply* self, QSslCo
 void QNetworkReply_IgnoreSslErrorsImplementation(QNetworkReply* self, struct miqt_array /* of QSslError* */  param1);
 struct miqt_string QNetworkReply_Tr2(const char* s, const char* c);
 struct miqt_string QNetworkReply_Tr3(const char* s, const char* c, int n);
-void QNetworkReply_Delete(QNetworkReply* self, bool isSubclass);
+void QNetworkReply_Delete(QNetworkReply* self);
 
 #ifdef __cplusplus
 } /* extern C */

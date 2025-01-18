@@ -193,11 +193,7 @@ void QNetworkRequest_SetTransferTimeout1(QNetworkRequest* self, int timeout) {
 	self->setTransferTimeout(static_cast<int>(timeout));
 }
 
-void QNetworkRequest_Delete(QNetworkRequest* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QNetworkRequest*>( self );
-	} else {
-		delete self;
-	}
+void QNetworkRequest_Delete(QNetworkRequest* self) {
+	delete self;
 }
 

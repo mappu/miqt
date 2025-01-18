@@ -38,12 +38,8 @@ struct miqt_string QCborParserError_ErrorString(const QCborParserError* self) {
 	return _ms;
 }
 
-void QCborParserError_Delete(QCborParserError* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCborParserError*>( self );
-	} else {
-		delete self;
-	}
+void QCborParserError_Delete(QCborParserError* self) {
+	delete self;
 }
 
 QCborValue* QCborValue_new() {
@@ -501,12 +497,8 @@ struct miqt_string QCborValue_ToDiagnosticNotation1(const QCborValue* self, int 
 	return _ms;
 }
 
-void QCborValue_Delete(QCborValue* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCborValue*>( self );
-	} else {
-		delete self;
-	}
+void QCborValue_Delete(QCborValue* self) {
+	delete self;
 }
 
 QCborValueConstRef* QCborValueConstRef_new(QCborValueConstRef* param1) {
@@ -827,12 +819,8 @@ struct miqt_string QCborValueConstRef_ToDiagnosticNotation1(const QCborValueCons
 	return _ms;
 }
 
-void QCborValueConstRef_Delete(QCborValueConstRef* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCborValueConstRef*>( self );
-	} else {
-		delete self;
-	}
+void QCborValueConstRef_Delete(QCborValueConstRef* self) {
+	delete self;
 }
 
 QCborValueRef* QCborValueRef_new(QCborValueRef* param1) {
@@ -1174,11 +1162,7 @@ struct miqt_string QCborValueRef_ToDiagnosticNotation1(QCborValueRef* self, int 
 	return _ms;
 }
 
-void QCborValueRef_Delete(QCborValueRef* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCborValueRef*>( self );
-	} else {
-		delete self;
-	}
+void QCborValueRef_Delete(QCborValueRef* self) {
+	delete self;
 }
 

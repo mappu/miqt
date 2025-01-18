@@ -15,8 +15,7 @@ import (
 )
 
 type QColumnView struct {
-	h          *C.QColumnView
-	isSubclass bool
+	h *C.QColumnView
 	*QAbstractItemView
 }
 
@@ -54,17 +53,13 @@ func UnsafeNewQColumnView(h unsafe.Pointer) *QColumnView {
 // NewQColumnView constructs a new QColumnView object.
 func NewQColumnView(parent *QWidget) *QColumnView {
 
-	ret := newQColumnView(C.QColumnView_new(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQColumnView(C.QColumnView_new(parent.cPointer()))
 }
 
 // NewQColumnView2 constructs a new QColumnView object.
 func NewQColumnView2() *QColumnView {
 
-	ret := newQColumnView(C.QColumnView_new2())
-	ret.isSubclass = true
-	return ret
+	return newQColumnView(C.QColumnView_new2())
 }
 
 func (this *QColumnView) MetaObject() *QMetaObject {
@@ -241,10 +236,10 @@ func (this *QColumnView) callVirtualBase_IndexAt(point *QPoint) *QModelIndex {
 
 }
 func (this *QColumnView) OnIndexAt(slot func(super func(point *QPoint) *QModelIndex, point *QPoint) *QModelIndex) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_IndexAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_IndexAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_IndexAt
@@ -269,10 +264,10 @@ func (this *QColumnView) callVirtualBase_ScrollTo(index *QModelIndex, hint QAbst
 
 }
 func (this *QColumnView) OnScrollTo(slot func(super func(index *QModelIndex, hint QAbstractItemView__ScrollHint), index *QModelIndex, hint QAbstractItemView__ScrollHint)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_ScrollTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_ScrollTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_ScrollTo
@@ -299,10 +294,10 @@ func (this *QColumnView) callVirtualBase_SizeHint() *QSize {
 
 }
 func (this *QColumnView) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_SizeHint
@@ -326,10 +321,10 @@ func (this *QColumnView) callVirtualBase_VisualRect(index *QModelIndex) *QRect {
 
 }
 func (this *QColumnView) OnVisualRect(slot func(super func(index *QModelIndex) *QRect, index *QModelIndex) *QRect) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_VisualRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_VisualRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_VisualRect
@@ -354,10 +349,10 @@ func (this *QColumnView) callVirtualBase_SetModel(model *QAbstractItemModel) {
 
 }
 func (this *QColumnView) OnSetModel(slot func(super func(model *QAbstractItemModel), model *QAbstractItemModel)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_SetModel(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_SetModel(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_SetModel
@@ -380,10 +375,10 @@ func (this *QColumnView) callVirtualBase_SetSelectionModel(selectionModel *QItem
 
 }
 func (this *QColumnView) OnSetSelectionModel(slot func(super func(selectionModel *QItemSelectionModel), selectionModel *QItemSelectionModel)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_SetSelectionModel(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_SetSelectionModel(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_SetSelectionModel
@@ -406,10 +401,10 @@ func (this *QColumnView) callVirtualBase_SetRootIndex(index *QModelIndex) {
 
 }
 func (this *QColumnView) OnSetRootIndex(slot func(super func(index *QModelIndex), index *QModelIndex)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_SetRootIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_SetRootIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_SetRootIndex
@@ -432,10 +427,10 @@ func (this *QColumnView) callVirtualBase_SelectAll() {
 
 }
 func (this *QColumnView) OnSelectAll(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_SelectAll(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_SelectAll(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_SelectAll
@@ -455,10 +450,10 @@ func (this *QColumnView) callVirtualBase_IsIndexHidden(index *QModelIndex) bool 
 
 }
 func (this *QColumnView) OnIsIndexHidden(slot func(super func(index *QModelIndex) bool, index *QModelIndex) bool) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_IsIndexHidden(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_IsIndexHidden(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_IsIndexHidden
@@ -485,10 +480,10 @@ func (this *QColumnView) callVirtualBase_MoveCursor(cursorAction QAbstractItemVi
 
 }
 func (this *QColumnView) OnMoveCursor(slot func(super func(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex, cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_MoveCursor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_MoveCursor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_MoveCursor
@@ -515,10 +510,10 @@ func (this *QColumnView) callVirtualBase_ResizeEvent(event *QResizeEvent) {
 
 }
 func (this *QColumnView) OnResizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_ResizeEvent
@@ -541,10 +536,10 @@ func (this *QColumnView) callVirtualBase_SetSelection(rect *QRect, command QItem
 
 }
 func (this *QColumnView) OnSetSelection(slot func(super func(rect *QRect, command QItemSelectionModel__SelectionFlag), rect *QRect, command QItemSelectionModel__SelectionFlag)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_SetSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_SetSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_SetSelection
@@ -571,10 +566,10 @@ func (this *QColumnView) callVirtualBase_VisualRegionForSelection(selection *QIt
 
 }
 func (this *QColumnView) OnVisualRegionForSelection(slot func(super func(selection *QItemSelection) *QRegion, selection *QItemSelection) *QRegion) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_VisualRegionForSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_VisualRegionForSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_VisualRegionForSelection
@@ -599,10 +594,10 @@ func (this *QColumnView) callVirtualBase_HorizontalOffset() int {
 
 }
 func (this *QColumnView) OnHorizontalOffset(slot func(super func() int) int) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_HorizontalOffset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_HorizontalOffset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_HorizontalOffset
@@ -624,10 +619,10 @@ func (this *QColumnView) callVirtualBase_VerticalOffset() int {
 
 }
 func (this *QColumnView) OnVerticalOffset(slot func(super func() int) int) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_VerticalOffset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_VerticalOffset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_VerticalOffset
@@ -649,10 +644,10 @@ func (this *QColumnView) callVirtualBase_RowsInserted(parent *QModelIndex, start
 
 }
 func (this *QColumnView) OnRowsInserted(slot func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_RowsInserted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_RowsInserted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_RowsInserted
@@ -679,10 +674,10 @@ func (this *QColumnView) callVirtualBase_CurrentChanged(current *QModelIndex, pr
 
 }
 func (this *QColumnView) OnCurrentChanged(slot func(super func(current *QModelIndex, previous *QModelIndex), current *QModelIndex, previous *QModelIndex)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_CurrentChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_CurrentChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_CurrentChanged
@@ -707,10 +702,10 @@ func (this *QColumnView) callVirtualBase_ScrollContentsBy(dx int, dy int) {
 
 }
 func (this *QColumnView) OnScrollContentsBy(slot func(super func(dx int, dy int), dx int, dy int)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_ScrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_ScrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_ScrollContentsBy
@@ -735,10 +730,10 @@ func (this *QColumnView) callVirtualBase_CreateColumn(rootIndex *QModelIndex) *Q
 
 }
 func (this *QColumnView) OnCreateColumn(slot func(super func(rootIndex *QModelIndex) *QAbstractItemView, rootIndex *QModelIndex) *QAbstractItemView) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_CreateColumn(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_CreateColumn(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_CreateColumn
@@ -767,10 +762,10 @@ func (this *QColumnView) callVirtualBase_KeyboardSearch(search string) {
 
 }
 func (this *QColumnView) OnKeyboardSearch(slot func(super func(search string), search string)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_KeyboardSearch(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_KeyboardSearch(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_KeyboardSearch
@@ -796,10 +791,10 @@ func (this *QColumnView) callVirtualBase_SizeHintForRow(row int) int {
 
 }
 func (this *QColumnView) OnSizeHintForRow(slot func(super func(row int) int, row int) int) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_SizeHintForRow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_SizeHintForRow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_SizeHintForRow
@@ -824,10 +819,10 @@ func (this *QColumnView) callVirtualBase_SizeHintForColumn(column int) int {
 
 }
 func (this *QColumnView) OnSizeHintForColumn(slot func(super func(column int) int, column int) int) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_SizeHintForColumn(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_SizeHintForColumn(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_SizeHintForColumn
@@ -854,10 +849,10 @@ func (this *QColumnView) callVirtualBase_InputMethodQuery(query InputMethodQuery
 
 }
 func (this *QColumnView) OnInputMethodQuery(slot func(super func(query InputMethodQuery) *QVariant, query InputMethodQuery) *QVariant) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_InputMethodQuery
@@ -882,10 +877,10 @@ func (this *QColumnView) callVirtualBase_Reset() {
 
 }
 func (this *QColumnView) OnReset(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_Reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_Reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_Reset
@@ -905,10 +900,10 @@ func (this *QColumnView) callVirtualBase_DoItemsLayout() {
 
 }
 func (this *QColumnView) OnDoItemsLayout(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_DoItemsLayout(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_DoItemsLayout(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_DoItemsLayout
@@ -934,10 +929,10 @@ func (this *QColumnView) callVirtualBase_DataChanged(topLeft *QModelIndex, botto
 
 }
 func (this *QColumnView) OnDataChanged(slot func(super func(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int), topLeft *QModelIndex, bottomRight *QModelIndex, roles []int)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_DataChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_DataChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_DataChanged
@@ -970,10 +965,10 @@ func (this *QColumnView) callVirtualBase_RowsAboutToBeRemoved(parent *QModelInde
 
 }
 func (this *QColumnView) OnRowsAboutToBeRemoved(slot func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_RowsAboutToBeRemoved(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_RowsAboutToBeRemoved(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_RowsAboutToBeRemoved
@@ -1000,10 +995,10 @@ func (this *QColumnView) callVirtualBase_SelectionChanged(selected *QItemSelecti
 
 }
 func (this *QColumnView) OnSelectionChanged(slot func(super func(selected *QItemSelection, deselected *QItemSelection), selected *QItemSelection, deselected *QItemSelection)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_SelectionChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_SelectionChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_SelectionChanged
@@ -1028,10 +1023,10 @@ func (this *QColumnView) callVirtualBase_UpdateEditorData() {
 
 }
 func (this *QColumnView) OnUpdateEditorData(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_UpdateEditorData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_UpdateEditorData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_UpdateEditorData
@@ -1051,10 +1046,10 @@ func (this *QColumnView) callVirtualBase_UpdateEditorGeometries() {
 
 }
 func (this *QColumnView) OnUpdateEditorGeometries(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_UpdateEditorGeometries(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_UpdateEditorGeometries(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_UpdateEditorGeometries
@@ -1074,10 +1069,10 @@ func (this *QColumnView) callVirtualBase_UpdateGeometries() {
 
 }
 func (this *QColumnView) OnUpdateGeometries(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_UpdateGeometries(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_UpdateGeometries(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_UpdateGeometries
@@ -1097,10 +1092,10 @@ func (this *QColumnView) callVirtualBase_VerticalScrollbarAction(action int) {
 
 }
 func (this *QColumnView) OnVerticalScrollbarAction(slot func(super func(action int), action int)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_VerticalScrollbarAction(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_VerticalScrollbarAction(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_VerticalScrollbarAction
@@ -1123,10 +1118,10 @@ func (this *QColumnView) callVirtualBase_HorizontalScrollbarAction(action int) {
 
 }
 func (this *QColumnView) OnHorizontalScrollbarAction(slot func(super func(action int), action int)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_HorizontalScrollbarAction(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_HorizontalScrollbarAction(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_HorizontalScrollbarAction
@@ -1149,10 +1144,10 @@ func (this *QColumnView) callVirtualBase_VerticalScrollbarValueChanged(value int
 
 }
 func (this *QColumnView) OnVerticalScrollbarValueChanged(slot func(super func(value int), value int)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_VerticalScrollbarValueChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_VerticalScrollbarValueChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_VerticalScrollbarValueChanged
@@ -1175,10 +1170,10 @@ func (this *QColumnView) callVirtualBase_HorizontalScrollbarValueChanged(value i
 
 }
 func (this *QColumnView) OnHorizontalScrollbarValueChanged(slot func(super func(value int), value int)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_HorizontalScrollbarValueChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_HorizontalScrollbarValueChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_HorizontalScrollbarValueChanged
@@ -1201,10 +1196,10 @@ func (this *QColumnView) callVirtualBase_CloseEditor(editor *QWidget, hint QAbst
 
 }
 func (this *QColumnView) OnCloseEditor(slot func(super func(editor *QWidget, hint QAbstractItemDelegate__EndEditHint), editor *QWidget, hint QAbstractItemDelegate__EndEditHint)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_CloseEditor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_CloseEditor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_CloseEditor
@@ -1229,10 +1224,10 @@ func (this *QColumnView) callVirtualBase_CommitData(editor *QWidget) {
 
 }
 func (this *QColumnView) OnCommitData(slot func(super func(editor *QWidget), editor *QWidget)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_CommitData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_CommitData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_CommitData
@@ -1255,10 +1250,10 @@ func (this *QColumnView) callVirtualBase_EditorDestroyed(editor *QObject) {
 
 }
 func (this *QColumnView) OnEditorDestroyed(slot func(super func(editor *QObject), editor *QObject)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_EditorDestroyed(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_EditorDestroyed(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_EditorDestroyed
@@ -1289,10 +1284,10 @@ func (this *QColumnView) callVirtualBase_SelectedIndexes() []QModelIndex {
 
 }
 func (this *QColumnView) OnSelectedIndexes(slot func(super func() []QModelIndex) []QModelIndex) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_SelectedIndexes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_SelectedIndexes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_SelectedIndexes
@@ -1320,10 +1315,10 @@ func (this *QColumnView) callVirtualBase_Edit2(index *QModelIndex, trigger QAbst
 
 }
 func (this *QColumnView) OnEdit2(slot func(super func(index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool, index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_Edit2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_Edit2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_Edit2
@@ -1352,10 +1347,10 @@ func (this *QColumnView) callVirtualBase_SelectionCommand(index *QModelIndex, ev
 
 }
 func (this *QColumnView) OnSelectionCommand(slot func(super func(index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag, index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_SelectionCommand(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_SelectionCommand(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_SelectionCommand
@@ -1382,10 +1377,10 @@ func (this *QColumnView) callVirtualBase_StartDrag(supportedActions DropAction) 
 
 }
 func (this *QColumnView) OnStartDrag(slot func(super func(supportedActions DropAction), supportedActions DropAction)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_StartDrag(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_StartDrag(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_StartDrag
@@ -1410,10 +1405,10 @@ func (this *QColumnView) callVirtualBase_ViewOptions() *QStyleOptionViewItem {
 
 }
 func (this *QColumnView) OnViewOptions(slot func(super func() *QStyleOptionViewItem) *QStyleOptionViewItem) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_ViewOptions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_ViewOptions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_ViewOptions
@@ -1435,10 +1430,10 @@ func (this *QColumnView) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
 }
 func (this *QColumnView) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_FocusNextPrevChild
@@ -1463,10 +1458,10 @@ func (this *QColumnView) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QColumnView) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_Event
@@ -1491,10 +1486,10 @@ func (this *QColumnView) callVirtualBase_ViewportEvent(event *QEvent) bool {
 
 }
 func (this *QColumnView) OnViewportEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_ViewportEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_ViewportEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_ViewportEvent
@@ -1519,10 +1514,10 @@ func (this *QColumnView) callVirtualBase_MousePressEvent(event *QMouseEvent) {
 
 }
 func (this *QColumnView) OnMousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_MousePressEvent
@@ -1545,10 +1540,10 @@ func (this *QColumnView) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
 
 }
 func (this *QColumnView) OnMouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_MouseMoveEvent
@@ -1571,10 +1566,10 @@ func (this *QColumnView) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
 
 }
 func (this *QColumnView) OnMouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_MouseReleaseEvent
@@ -1597,10 +1592,10 @@ func (this *QColumnView) callVirtualBase_MouseDoubleClickEvent(event *QMouseEven
 
 }
 func (this *QColumnView) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_MouseDoubleClickEvent
@@ -1623,10 +1618,10 @@ func (this *QColumnView) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) 
 
 }
 func (this *QColumnView) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_DragEnterEvent
@@ -1649,10 +1644,10 @@ func (this *QColumnView) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
 
 }
 func (this *QColumnView) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_DragMoveEvent
@@ -1675,10 +1670,10 @@ func (this *QColumnView) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) 
 
 }
 func (this *QColumnView) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_DragLeaveEvent
@@ -1701,10 +1696,10 @@ func (this *QColumnView) callVirtualBase_DropEvent(event *QDropEvent) {
 
 }
 func (this *QColumnView) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_DropEvent
@@ -1727,10 +1722,10 @@ func (this *QColumnView) callVirtualBase_FocusInEvent(event *QFocusEvent) {
 
 }
 func (this *QColumnView) OnFocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_FocusInEvent
@@ -1753,10 +1748,10 @@ func (this *QColumnView) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
 
 }
 func (this *QColumnView) OnFocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_FocusOutEvent
@@ -1779,10 +1774,10 @@ func (this *QColumnView) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
 
 }
 func (this *QColumnView) OnKeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_KeyPressEvent
@@ -1805,10 +1800,10 @@ func (this *QColumnView) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QColumnView) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_TimerEvent
@@ -1831,10 +1826,10 @@ func (this *QColumnView) callVirtualBase_InputMethodEvent(event *QInputMethodEve
 
 }
 func (this *QColumnView) OnInputMethodEvent(slot func(super func(event *QInputMethodEvent), event *QInputMethodEvent)) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_InputMethodEvent
@@ -1857,10 +1852,10 @@ func (this *QColumnView) callVirtualBase_EventFilter(object *QObject, event *QEv
 
 }
 func (this *QColumnView) OnEventFilter(slot func(super func(object *QObject, event *QEvent) bool, object *QObject, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_EventFilter
@@ -1889,10 +1884,10 @@ func (this *QColumnView) callVirtualBase_ViewportSizeHint() *QSize {
 
 }
 func (this *QColumnView) OnViewportSizeHint(slot func(super func() *QSize) *QSize) {
-	if !this.isSubclass {
+	ok := C.QColumnView_override_virtual_ViewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QColumnView_override_virtual_ViewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QColumnView_ViewportSizeHint
@@ -1910,7 +1905,7 @@ func miqt_exec_callback_QColumnView_ViewportSizeHint(self *C.QColumnView, cb C.i
 
 // Delete this object from C++ memory.
 func (this *QColumnView) Delete() {
-	C.QColumnView_Delete(this.h, C.bool(this.isSubclass))
+	C.QColumnView_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

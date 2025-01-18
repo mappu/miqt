@@ -71,19 +71,19 @@ void QGraphicsVideoItem_TimerEvent(QGraphicsVideoItem* self, QTimerEvent* event)
 QVariant* QGraphicsVideoItem_ItemChange(QGraphicsVideoItem* self, int change, QVariant* value);
 struct miqt_string QGraphicsVideoItem_Tr2(const char* s, const char* c);
 struct miqt_string QGraphicsVideoItem_Tr3(const char* s, const char* c, int n);
-void QGraphicsVideoItem_override_virtual_BoundingRect(void* self, intptr_t slot);
+bool QGraphicsVideoItem_override_virtual_BoundingRect(void* self, intptr_t slot);
 QRectF* QGraphicsVideoItem_virtualbase_BoundingRect(const void* self);
-void QGraphicsVideoItem_override_virtual_Paint(void* self, intptr_t slot);
+bool QGraphicsVideoItem_override_virtual_Paint(void* self, intptr_t slot);
 void QGraphicsVideoItem_virtualbase_Paint(void* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget);
-void QGraphicsVideoItem_override_virtual_Type(void* self, intptr_t slot);
+bool QGraphicsVideoItem_override_virtual_Type(void* self, intptr_t slot);
 int QGraphicsVideoItem_virtualbase_Type(const void* self);
-void QGraphicsVideoItem_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QGraphicsVideoItem_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QGraphicsVideoItem_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QGraphicsVideoItem_override_virtual_ItemChange(void* self, intptr_t slot);
+bool QGraphicsVideoItem_override_virtual_ItemChange(void* self, intptr_t slot);
 QVariant* QGraphicsVideoItem_virtualbase_ItemChange(void* self, int change, QVariant* value);
-void QGraphicsVideoItem_override_virtual_Event(void* self, intptr_t slot);
+bool QGraphicsVideoItem_override_virtual_Event(void* self, intptr_t slot);
 bool QGraphicsVideoItem_virtualbase_Event(void* self, QEvent* ev);
-void QGraphicsVideoItem_Delete(QGraphicsVideoItem* self, bool isSubclass);
+void QGraphicsVideoItem_Delete(QGraphicsVideoItem* self);
 
 #ifdef __cplusplus
 } /* extern C */

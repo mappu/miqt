@@ -16,8 +16,7 @@ import (
 )
 
 type QWebPluginFactory struct {
-	h          *C.QWebPluginFactory
-	isSubclass bool
+	h *C.QWebPluginFactory
 	*qt.QObject
 }
 
@@ -55,17 +54,13 @@ func UnsafeNewQWebPluginFactory(h unsafe.Pointer) *QWebPluginFactory {
 // NewQWebPluginFactory constructs a new QWebPluginFactory object.
 func NewQWebPluginFactory() *QWebPluginFactory {
 
-	ret := newQWebPluginFactory(C.QWebPluginFactory_new())
-	ret.isSubclass = true
-	return ret
+	return newQWebPluginFactory(C.QWebPluginFactory_new())
 }
 
 // NewQWebPluginFactory2 constructs a new QWebPluginFactory object.
 func NewQWebPluginFactory2(parent *qt.QObject) *QWebPluginFactory {
 
-	ret := newQWebPluginFactory(C.QWebPluginFactory_new2((*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQWebPluginFactory(C.QWebPluginFactory_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QWebPluginFactory) MetaObject() *qt.QMetaObject {
@@ -192,10 +187,10 @@ func QWebPluginFactory_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 func (this *QWebPluginFactory) OnPlugins(slot func() []QWebPluginFactory__Plugin) {
-	if !this.isSubclass {
+	ok := C.QWebPluginFactory_override_virtual_Plugins(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPluginFactory_override_virtual_Plugins(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPluginFactory_Plugins
@@ -223,10 +218,10 @@ func (this *QWebPluginFactory) callVirtualBase_RefreshPlugins() {
 
 }
 func (this *QWebPluginFactory) OnRefreshPlugins(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QWebPluginFactory_override_virtual_RefreshPlugins(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPluginFactory_override_virtual_RefreshPlugins(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPluginFactory_RefreshPlugins
@@ -240,10 +235,10 @@ func miqt_exec_callback_QWebPluginFactory_RefreshPlugins(self *C.QWebPluginFacto
 
 }
 func (this *QWebPluginFactory) OnCreate(slot func(mimeType string, param2 *qt.QUrl, argumentNames []string, argumentValues []string) *qt.QObject) {
-	if !this.isSubclass {
+	ok := C.QWebPluginFactory_override_virtual_Create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPluginFactory_override_virtual_Create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPluginFactory_Create
@@ -294,10 +289,10 @@ func (this *QWebPluginFactory) callVirtualBase_Extension(extension QWebPluginFac
 
 }
 func (this *QWebPluginFactory) OnExtension(slot func(super func(extension QWebPluginFactory__Extension, option *QWebPluginFactory__ExtensionOption, output *QWebPluginFactory__ExtensionReturn) bool, extension QWebPluginFactory__Extension, option *QWebPluginFactory__ExtensionOption, output *QWebPluginFactory__ExtensionReturn) bool) {
-	if !this.isSubclass {
+	ok := C.QWebPluginFactory_override_virtual_Extension(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPluginFactory_override_virtual_Extension(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPluginFactory_Extension
@@ -326,10 +321,10 @@ func (this *QWebPluginFactory) callVirtualBase_SupportsExtension(extension QWebP
 
 }
 func (this *QWebPluginFactory) OnSupportsExtension(slot func(super func(extension QWebPluginFactory__Extension) bool, extension QWebPluginFactory__Extension) bool) {
-	if !this.isSubclass {
+	ok := C.QWebPluginFactory_override_virtual_SupportsExtension(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPluginFactory_override_virtual_SupportsExtension(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPluginFactory_SupportsExtension
@@ -354,10 +349,10 @@ func (this *QWebPluginFactory) callVirtualBase_Event(event *qt.QEvent) bool {
 
 }
 func (this *QWebPluginFactory) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QWebPluginFactory_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPluginFactory_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPluginFactory_Event
@@ -382,10 +377,10 @@ func (this *QWebPluginFactory) callVirtualBase_EventFilter(watched *qt.QObject, 
 
 }
 func (this *QWebPluginFactory) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QWebPluginFactory_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPluginFactory_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPluginFactory_EventFilter
@@ -412,10 +407,10 @@ func (this *QWebPluginFactory) callVirtualBase_TimerEvent(event *qt.QTimerEvent)
 
 }
 func (this *QWebPluginFactory) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebPluginFactory_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPluginFactory_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPluginFactory_TimerEvent
@@ -438,10 +433,10 @@ func (this *QWebPluginFactory) callVirtualBase_ChildEvent(event *qt.QChildEvent)
 
 }
 func (this *QWebPluginFactory) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebPluginFactory_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPluginFactory_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPluginFactory_ChildEvent
@@ -464,10 +459,10 @@ func (this *QWebPluginFactory) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
 }
 func (this *QWebPluginFactory) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebPluginFactory_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPluginFactory_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPluginFactory_CustomEvent
@@ -490,10 +485,10 @@ func (this *QWebPluginFactory) callVirtualBase_ConnectNotify(signal *qt.QMetaMet
 
 }
 func (this *QWebPluginFactory) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QWebPluginFactory_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPluginFactory_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPluginFactory_ConnectNotify
@@ -516,10 +511,10 @@ func (this *QWebPluginFactory) callVirtualBase_DisconnectNotify(signal *qt.QMeta
 
 }
 func (this *QWebPluginFactory) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QWebPluginFactory_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPluginFactory_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPluginFactory_DisconnectNotify
@@ -538,7 +533,7 @@ func miqt_exec_callback_QWebPluginFactory_DisconnectNotify(self *C.QWebPluginFac
 
 // Delete this object from C++ memory.
 func (this *QWebPluginFactory) Delete() {
-	C.QWebPluginFactory_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebPluginFactory_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -551,8 +546,7 @@ func (this *QWebPluginFactory) GoGC() {
 }
 
 type QWebPluginFactory__MimeType struct {
-	h          *C.QWebPluginFactory__MimeType
-	isSubclass bool
+	h *C.QWebPluginFactory__MimeType
 }
 
 func (this *QWebPluginFactory__MimeType) cPointer() *C.QWebPluginFactory__MimeType {
@@ -586,9 +580,7 @@ func UnsafeNewQWebPluginFactory__MimeType(h unsafe.Pointer) *QWebPluginFactory__
 // NewQWebPluginFactory__MimeType constructs a new QWebPluginFactory::MimeType object.
 func NewQWebPluginFactory__MimeType(param1 *QWebPluginFactory__MimeType) *QWebPluginFactory__MimeType {
 
-	ret := newQWebPluginFactory__MimeType(C.QWebPluginFactory__MimeType_new(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebPluginFactory__MimeType(C.QWebPluginFactory__MimeType_new(param1.cPointer()))
 }
 
 func (this *QWebPluginFactory__MimeType) OperatorEqual(other *QWebPluginFactory__MimeType) bool {
@@ -605,7 +597,7 @@ func (this *QWebPluginFactory__MimeType) OperatorAssign(param1 *QWebPluginFactor
 
 // Delete this object from C++ memory.
 func (this *QWebPluginFactory__MimeType) Delete() {
-	C.QWebPluginFactory__MimeType_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebPluginFactory__MimeType_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -618,8 +610,7 @@ func (this *QWebPluginFactory__MimeType) GoGC() {
 }
 
 type QWebPluginFactory__Plugin struct {
-	h          *C.QWebPluginFactory__Plugin
-	isSubclass bool
+	h *C.QWebPluginFactory__Plugin
 }
 
 func (this *QWebPluginFactory__Plugin) cPointer() *C.QWebPluginFactory__Plugin {
@@ -653,9 +644,7 @@ func UnsafeNewQWebPluginFactory__Plugin(h unsafe.Pointer) *QWebPluginFactory__Pl
 // NewQWebPluginFactory__Plugin constructs a new QWebPluginFactory::Plugin object.
 func NewQWebPluginFactory__Plugin(param1 *QWebPluginFactory__Plugin) *QWebPluginFactory__Plugin {
 
-	ret := newQWebPluginFactory__Plugin(C.QWebPluginFactory__Plugin_new(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebPluginFactory__Plugin(C.QWebPluginFactory__Plugin_new(param1.cPointer()))
 }
 
 func (this *QWebPluginFactory__Plugin) OperatorAssign(param1 *QWebPluginFactory__Plugin) {
@@ -664,7 +653,7 @@ func (this *QWebPluginFactory__Plugin) OperatorAssign(param1 *QWebPluginFactory_
 
 // Delete this object from C++ memory.
 func (this *QWebPluginFactory__Plugin) Delete() {
-	C.QWebPluginFactory__Plugin_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebPluginFactory__Plugin_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -677,8 +666,7 @@ func (this *QWebPluginFactory__Plugin) GoGC() {
 }
 
 type QWebPluginFactory__ExtensionOption struct {
-	h          *C.QWebPluginFactory__ExtensionOption
-	isSubclass bool
+	h *C.QWebPluginFactory__ExtensionOption
 }
 
 func (this *QWebPluginFactory__ExtensionOption) cPointer() *C.QWebPluginFactory__ExtensionOption {
@@ -711,7 +699,7 @@ func UnsafeNewQWebPluginFactory__ExtensionOption(h unsafe.Pointer) *QWebPluginFa
 
 // Delete this object from C++ memory.
 func (this *QWebPluginFactory__ExtensionOption) Delete() {
-	C.QWebPluginFactory__ExtensionOption_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebPluginFactory__ExtensionOption_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -724,8 +712,7 @@ func (this *QWebPluginFactory__ExtensionOption) GoGC() {
 }
 
 type QWebPluginFactory__ExtensionReturn struct {
-	h          *C.QWebPluginFactory__ExtensionReturn
-	isSubclass bool
+	h *C.QWebPluginFactory__ExtensionReturn
 }
 
 func (this *QWebPluginFactory__ExtensionReturn) cPointer() *C.QWebPluginFactory__ExtensionReturn {
@@ -758,7 +745,7 @@ func UnsafeNewQWebPluginFactory__ExtensionReturn(h unsafe.Pointer) *QWebPluginFa
 
 // Delete this object from C++ memory.
 func (this *QWebPluginFactory__ExtensionReturn) Delete() {
-	C.QWebPluginFactory__ExtensionReturn_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebPluginFactory__ExtensionReturn_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

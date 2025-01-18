@@ -36,8 +36,7 @@ const (
 )
 
 type QSharedMemory struct {
-	h          *C.QSharedMemory
-	isSubclass bool
+	h *C.QSharedMemory
 	*QObject
 }
 
@@ -75,9 +74,7 @@ func UnsafeNewQSharedMemory(h unsafe.Pointer) *QSharedMemory {
 // NewQSharedMemory constructs a new QSharedMemory object.
 func NewQSharedMemory() *QSharedMemory {
 
-	ret := newQSharedMemory(C.QSharedMemory_new())
-	ret.isSubclass = true
-	return ret
+	return newQSharedMemory(C.QSharedMemory_new())
 }
 
 // NewQSharedMemory2 constructs a new QSharedMemory object.
@@ -87,17 +84,13 @@ func NewQSharedMemory2(key string) *QSharedMemory {
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
 
-	ret := newQSharedMemory(C.QSharedMemory_new2(key_ms))
-	ret.isSubclass = true
-	return ret
+	return newQSharedMemory(C.QSharedMemory_new2(key_ms))
 }
 
 // NewQSharedMemory3 constructs a new QSharedMemory object.
 func NewQSharedMemory3(parent *QObject) *QSharedMemory {
 
-	ret := newQSharedMemory(C.QSharedMemory_new3(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSharedMemory(C.QSharedMemory_new3(parent.cPointer()))
 }
 
 // NewQSharedMemory4 constructs a new QSharedMemory object.
@@ -107,9 +100,7 @@ func NewQSharedMemory4(key string, parent *QObject) *QSharedMemory {
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
 
-	ret := newQSharedMemory(C.QSharedMemory_new4(key_ms, parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSharedMemory(C.QSharedMemory_new4(key_ms, parent.cPointer()))
 }
 
 func (this *QSharedMemory) MetaObject() *QMetaObject {
@@ -248,10 +239,10 @@ func (this *QSharedMemory) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QSharedMemory) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QSharedMemory_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSharedMemory_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSharedMemory_Event
@@ -276,10 +267,10 @@ func (this *QSharedMemory) callVirtualBase_EventFilter(watched *QObject, event *
 
 }
 func (this *QSharedMemory) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QSharedMemory_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSharedMemory_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSharedMemory_EventFilter
@@ -306,10 +297,10 @@ func (this *QSharedMemory) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QSharedMemory) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QSharedMemory_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSharedMemory_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSharedMemory_TimerEvent
@@ -332,10 +323,10 @@ func (this *QSharedMemory) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QSharedMemory) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QSharedMemory_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSharedMemory_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSharedMemory_ChildEvent
@@ -358,10 +349,10 @@ func (this *QSharedMemory) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QSharedMemory) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QSharedMemory_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSharedMemory_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSharedMemory_CustomEvent
@@ -384,10 +375,10 @@ func (this *QSharedMemory) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QSharedMemory) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QSharedMemory_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSharedMemory_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSharedMemory_ConnectNotify
@@ -410,10 +401,10 @@ func (this *QSharedMemory) callVirtualBase_DisconnectNotify(signal *QMetaMethod)
 
 }
 func (this *QSharedMemory) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QSharedMemory_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSharedMemory_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSharedMemory_DisconnectNotify
@@ -432,7 +423,7 @@ func miqt_exec_callback_QSharedMemory_DisconnectNotify(self *C.QSharedMemory, cb
 
 // Delete this object from C++ memory.
 func (this *QSharedMemory) Delete() {
-	C.QSharedMemory_Delete(this.h, C.bool(this.isSubclass))
+	C.QSharedMemory_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

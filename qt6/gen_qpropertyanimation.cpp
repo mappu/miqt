@@ -26,7 +26,7 @@ QVariant* miqt_exec_callback_QPropertyAnimation_Interpolated(void*, intptr_t, QV
 } /* extern C */
 #endif
 
-class MiqtVirtualQPropertyAnimation : public virtual QPropertyAnimation {
+class MiqtVirtualQPropertyAnimation final : public QPropertyAnimation {
 public:
 
 	MiqtVirtualQPropertyAnimation(): QPropertyAnimation() {};
@@ -34,7 +34,7 @@ public:
 	MiqtVirtualQPropertyAnimation(QObject* parent): QPropertyAnimation(parent) {};
 	MiqtVirtualQPropertyAnimation(QObject* target, const QByteArray& propertyName, QObject* parent): QPropertyAnimation(target, propertyName, parent) {};
 
-	virtual ~MiqtVirtualQPropertyAnimation() = default;
+	virtual ~MiqtVirtualQPropertyAnimation() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -275,59 +275,91 @@ struct miqt_string QPropertyAnimation_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QPropertyAnimation_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPropertyAnimation*>( (QPropertyAnimation*)(self) )->handle__Event = slot;
+bool QPropertyAnimation_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQPropertyAnimation* self_cast = dynamic_cast<MiqtVirtualQPropertyAnimation*>( (QPropertyAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QPropertyAnimation_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQPropertyAnimation*)(self) )->virtualbase_Event(event);
 }
 
-void QPropertyAnimation_override_virtual_UpdateCurrentValue(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPropertyAnimation*>( (QPropertyAnimation*)(self) )->handle__UpdateCurrentValue = slot;
+bool QPropertyAnimation_override_virtual_UpdateCurrentValue(void* self, intptr_t slot) {
+	MiqtVirtualQPropertyAnimation* self_cast = dynamic_cast<MiqtVirtualQPropertyAnimation*>( (QPropertyAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateCurrentValue = slot;
+	return true;
 }
 
 void QPropertyAnimation_virtualbase_UpdateCurrentValue(void* self, QVariant* value) {
 	( (MiqtVirtualQPropertyAnimation*)(self) )->virtualbase_UpdateCurrentValue(value);
 }
 
-void QPropertyAnimation_override_virtual_UpdateState(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPropertyAnimation*>( (QPropertyAnimation*)(self) )->handle__UpdateState = slot;
+bool QPropertyAnimation_override_virtual_UpdateState(void* self, intptr_t slot) {
+	MiqtVirtualQPropertyAnimation* self_cast = dynamic_cast<MiqtVirtualQPropertyAnimation*>( (QPropertyAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateState = slot;
+	return true;
 }
 
 void QPropertyAnimation_virtualbase_UpdateState(void* self, int newState, int oldState) {
 	( (MiqtVirtualQPropertyAnimation*)(self) )->virtualbase_UpdateState(newState, oldState);
 }
 
-void QPropertyAnimation_override_virtual_Duration(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPropertyAnimation*>( (QPropertyAnimation*)(self) )->handle__Duration = slot;
+bool QPropertyAnimation_override_virtual_Duration(void* self, intptr_t slot) {
+	MiqtVirtualQPropertyAnimation* self_cast = dynamic_cast<MiqtVirtualQPropertyAnimation*>( (QPropertyAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Duration = slot;
+	return true;
 }
 
 int QPropertyAnimation_virtualbase_Duration(const void* self) {
 	return ( (const MiqtVirtualQPropertyAnimation*)(self) )->virtualbase_Duration();
 }
 
-void QPropertyAnimation_override_virtual_UpdateCurrentTime(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPropertyAnimation*>( (QPropertyAnimation*)(self) )->handle__UpdateCurrentTime = slot;
+bool QPropertyAnimation_override_virtual_UpdateCurrentTime(void* self, intptr_t slot) {
+	MiqtVirtualQPropertyAnimation* self_cast = dynamic_cast<MiqtVirtualQPropertyAnimation*>( (QPropertyAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateCurrentTime = slot;
+	return true;
 }
 
 void QPropertyAnimation_virtualbase_UpdateCurrentTime(void* self, int param1) {
 	( (MiqtVirtualQPropertyAnimation*)(self) )->virtualbase_UpdateCurrentTime(param1);
 }
 
-void QPropertyAnimation_override_virtual_Interpolated(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPropertyAnimation*>( (QPropertyAnimation*)(self) )->handle__Interpolated = slot;
+bool QPropertyAnimation_override_virtual_Interpolated(void* self, intptr_t slot) {
+	MiqtVirtualQPropertyAnimation* self_cast = dynamic_cast<MiqtVirtualQPropertyAnimation*>( (QPropertyAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Interpolated = slot;
+	return true;
 }
 
 QVariant* QPropertyAnimation_virtualbase_Interpolated(const void* self, QVariant* from, QVariant* to, double progress) {
 	return ( (const MiqtVirtualQPropertyAnimation*)(self) )->virtualbase_Interpolated(from, to, progress);
 }
 
-void QPropertyAnimation_Delete(QPropertyAnimation* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQPropertyAnimation*>( self );
-	} else {
-		delete self;
-	}
+void QPropertyAnimation_Delete(QPropertyAnimation* self) {
+	delete self;
 }
 

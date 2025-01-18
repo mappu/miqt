@@ -178,11 +178,7 @@ void QMediaResource_SetResolution2(QMediaResource* self, int width, int height) 
 	self->setResolution(static_cast<int>(width), static_cast<int>(height));
 }
 
-void QMediaResource_Delete(QMediaResource* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMediaResource*>( self );
-	} else {
-		delete self;
-	}
+void QMediaResource_Delete(QMediaResource* self) {
+	delete self;
 }
 

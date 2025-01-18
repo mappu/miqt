@@ -14,8 +14,7 @@ import (
 )
 
 type QWebDatabase struct {
-	h          *C.QWebDatabase
-	isSubclass bool
+	h *C.QWebDatabase
 }
 
 func (this *QWebDatabase) cPointer() *C.QWebDatabase {
@@ -49,9 +48,7 @@ func UnsafeNewQWebDatabase(h unsafe.Pointer) *QWebDatabase {
 // NewQWebDatabase constructs a new QWebDatabase object.
 func NewQWebDatabase(other *QWebDatabase) *QWebDatabase {
 
-	ret := newQWebDatabase(C.QWebDatabase_new(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebDatabase(C.QWebDatabase_new(other.cPointer()))
 }
 
 func (this *QWebDatabase) OperatorAssign(other *QWebDatabase) {
@@ -103,7 +100,7 @@ func QWebDatabase_RemoveAllDatabases() {
 
 // Delete this object from C++ memory.
 func (this *QWebDatabase) Delete() {
-	C.QWebDatabase_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebDatabase_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

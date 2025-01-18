@@ -25,8 +25,7 @@ const (
 )
 
 type QFontComboBox struct {
-	h          *C.QFontComboBox
-	isSubclass bool
+	h *C.QFontComboBox
 	*QComboBox
 }
 
@@ -64,17 +63,13 @@ func UnsafeNewQFontComboBox(h unsafe.Pointer) *QFontComboBox {
 // NewQFontComboBox constructs a new QFontComboBox object.
 func NewQFontComboBox(parent *QWidget) *QFontComboBox {
 
-	ret := newQFontComboBox(C.QFontComboBox_new(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQFontComboBox(C.QFontComboBox_new(parent.cPointer()))
 }
 
 // NewQFontComboBox2 constructs a new QFontComboBox object.
 func NewQFontComboBox2() *QFontComboBox {
 
-	ret := newQFontComboBox(C.QFontComboBox_new2())
-	ret.isSubclass = true
-	return ret
+	return newQFontComboBox(C.QFontComboBox_new2())
 }
 
 func (this *QFontComboBox) MetaObject() *QMetaObject {
@@ -224,10 +219,10 @@ func (this *QFontComboBox) callVirtualBase_SizeHint() *QSize {
 
 }
 func (this *QFontComboBox) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	if !this.isSubclass {
+	ok := C.QFontComboBox_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontComboBox_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontComboBox_SizeHint
@@ -249,10 +244,10 @@ func (this *QFontComboBox) callVirtualBase_Event(e *QEvent) bool {
 
 }
 func (this *QFontComboBox) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QFontComboBox_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontComboBox_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontComboBox_Event
@@ -277,10 +272,10 @@ func (this *QFontComboBox) callVirtualBase_SetModel(model *QAbstractItemModel) {
 
 }
 func (this *QFontComboBox) OnSetModel(slot func(super func(model *QAbstractItemModel), model *QAbstractItemModel)) {
-	if !this.isSubclass {
+	ok := C.QFontComboBox_override_virtual_SetModel(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontComboBox_override_virtual_SetModel(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontComboBox_SetModel
@@ -305,10 +300,10 @@ func (this *QFontComboBox) callVirtualBase_MinimumSizeHint() *QSize {
 
 }
 func (this *QFontComboBox) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
-	if !this.isSubclass {
+	ok := C.QFontComboBox_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontComboBox_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontComboBox_MinimumSizeHint
@@ -330,10 +325,10 @@ func (this *QFontComboBox) callVirtualBase_ShowPopup() {
 
 }
 func (this *QFontComboBox) OnShowPopup(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QFontComboBox_override_virtual_ShowPopup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontComboBox_override_virtual_ShowPopup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontComboBox_ShowPopup
@@ -353,10 +348,10 @@ func (this *QFontComboBox) callVirtualBase_HidePopup() {
 
 }
 func (this *QFontComboBox) OnHidePopup(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QFontComboBox_override_virtual_HidePopup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontComboBox_override_virtual_HidePopup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontComboBox_HidePopup
@@ -378,10 +373,10 @@ func (this *QFontComboBox) callVirtualBase_InputMethodQuery(param1 InputMethodQu
 
 }
 func (this *QFontComboBox) OnInputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
-	if !this.isSubclass {
+	ok := C.QFontComboBox_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontComboBox_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontComboBox_InputMethodQuery
@@ -406,10 +401,10 @@ func (this *QFontComboBox) callVirtualBase_FocusInEvent(e *QFocusEvent) {
 
 }
 func (this *QFontComboBox) OnFocusInEvent(slot func(super func(e *QFocusEvent), e *QFocusEvent)) {
-	if !this.isSubclass {
+	ok := C.QFontComboBox_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontComboBox_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontComboBox_FocusInEvent
@@ -432,10 +427,10 @@ func (this *QFontComboBox) callVirtualBase_FocusOutEvent(e *QFocusEvent) {
 
 }
 func (this *QFontComboBox) OnFocusOutEvent(slot func(super func(e *QFocusEvent), e *QFocusEvent)) {
-	if !this.isSubclass {
+	ok := C.QFontComboBox_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontComboBox_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontComboBox_FocusOutEvent
@@ -458,10 +453,10 @@ func (this *QFontComboBox) callVirtualBase_ChangeEvent(e *QEvent) {
 
 }
 func (this *QFontComboBox) OnChangeEvent(slot func(super func(e *QEvent), e *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QFontComboBox_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontComboBox_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontComboBox_ChangeEvent
@@ -484,10 +479,10 @@ func (this *QFontComboBox) callVirtualBase_ResizeEvent(e *QResizeEvent) {
 
 }
 func (this *QFontComboBox) OnResizeEvent(slot func(super func(e *QResizeEvent), e *QResizeEvent)) {
-	if !this.isSubclass {
+	ok := C.QFontComboBox_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontComboBox_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontComboBox_ResizeEvent
@@ -510,10 +505,10 @@ func (this *QFontComboBox) callVirtualBase_PaintEvent(e *QPaintEvent) {
 
 }
 func (this *QFontComboBox) OnPaintEvent(slot func(super func(e *QPaintEvent), e *QPaintEvent)) {
-	if !this.isSubclass {
+	ok := C.QFontComboBox_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontComboBox_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontComboBox_PaintEvent
@@ -536,10 +531,10 @@ func (this *QFontComboBox) callVirtualBase_ShowEvent(e *QShowEvent) {
 
 }
 func (this *QFontComboBox) OnShowEvent(slot func(super func(e *QShowEvent), e *QShowEvent)) {
-	if !this.isSubclass {
+	ok := C.QFontComboBox_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontComboBox_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontComboBox_ShowEvent
@@ -562,10 +557,10 @@ func (this *QFontComboBox) callVirtualBase_HideEvent(e *QHideEvent) {
 
 }
 func (this *QFontComboBox) OnHideEvent(slot func(super func(e *QHideEvent), e *QHideEvent)) {
-	if !this.isSubclass {
+	ok := C.QFontComboBox_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontComboBox_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontComboBox_HideEvent
@@ -588,10 +583,10 @@ func (this *QFontComboBox) callVirtualBase_MousePressEvent(e *QMouseEvent) {
 
 }
 func (this *QFontComboBox) OnMousePressEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QFontComboBox_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontComboBox_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontComboBox_MousePressEvent
@@ -614,10 +609,10 @@ func (this *QFontComboBox) callVirtualBase_MouseReleaseEvent(e *QMouseEvent) {
 
 }
 func (this *QFontComboBox) OnMouseReleaseEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QFontComboBox_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontComboBox_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontComboBox_MouseReleaseEvent
@@ -640,10 +635,10 @@ func (this *QFontComboBox) callVirtualBase_KeyPressEvent(e *QKeyEvent) {
 
 }
 func (this *QFontComboBox) OnKeyPressEvent(slot func(super func(e *QKeyEvent), e *QKeyEvent)) {
-	if !this.isSubclass {
+	ok := C.QFontComboBox_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontComboBox_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontComboBox_KeyPressEvent
@@ -666,10 +661,10 @@ func (this *QFontComboBox) callVirtualBase_KeyReleaseEvent(e *QKeyEvent) {
 
 }
 func (this *QFontComboBox) OnKeyReleaseEvent(slot func(super func(e *QKeyEvent), e *QKeyEvent)) {
-	if !this.isSubclass {
+	ok := C.QFontComboBox_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontComboBox_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontComboBox_KeyReleaseEvent
@@ -692,10 +687,10 @@ func (this *QFontComboBox) callVirtualBase_WheelEvent(e *QWheelEvent) {
 
 }
 func (this *QFontComboBox) OnWheelEvent(slot func(super func(e *QWheelEvent), e *QWheelEvent)) {
-	if !this.isSubclass {
+	ok := C.QFontComboBox_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontComboBox_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontComboBox_WheelEvent
@@ -718,10 +713,10 @@ func (this *QFontComboBox) callVirtualBase_ContextMenuEvent(e *QContextMenuEvent
 
 }
 func (this *QFontComboBox) OnContextMenuEvent(slot func(super func(e *QContextMenuEvent), e *QContextMenuEvent)) {
-	if !this.isSubclass {
+	ok := C.QFontComboBox_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontComboBox_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontComboBox_ContextMenuEvent
@@ -744,10 +739,10 @@ func (this *QFontComboBox) callVirtualBase_InputMethodEvent(param1 *QInputMethod
 
 }
 func (this *QFontComboBox) OnInputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
-	if !this.isSubclass {
+	ok := C.QFontComboBox_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontComboBox_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontComboBox_InputMethodEvent
@@ -770,10 +765,10 @@ func (this *QFontComboBox) callVirtualBase_InitStyleOption(option *QStyleOptionC
 
 }
 func (this *QFontComboBox) OnInitStyleOption(slot func(super func(option *QStyleOptionComboBox), option *QStyleOptionComboBox)) {
-	if !this.isSubclass {
+	ok := C.QFontComboBox_override_virtual_InitStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFontComboBox_override_virtual_InitStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFontComboBox_InitStyleOption
@@ -792,7 +787,7 @@ func miqt_exec_callback_QFontComboBox_InitStyleOption(self *C.QFontComboBox, cb 
 
 // Delete this object from C++ memory.
 func (this *QFontComboBox) Delete() {
-	C.QFontComboBox_Delete(this.h, C.bool(this.isSubclass))
+	C.QFontComboBox_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

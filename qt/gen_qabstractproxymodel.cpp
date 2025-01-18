@@ -63,13 +63,13 @@ struct miqt_map /* of int to struct miqt_string */  miqt_exec_callback_QAbstract
 } /* extern C */
 #endif
 
-class MiqtVirtualQAbstractProxyModel : public virtual QAbstractProxyModel {
+class MiqtVirtualQAbstractProxyModel final : public QAbstractProxyModel {
 public:
 
 	MiqtVirtualQAbstractProxyModel(): QAbstractProxyModel() {};
 	MiqtVirtualQAbstractProxyModel(QObject* parent): QAbstractProxyModel(parent) {};
 
-	virtual ~MiqtVirtualQAbstractProxyModel() = default;
+	virtual ~MiqtVirtualQAbstractProxyModel() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetSourceModel = 0;
@@ -1406,299 +1406,529 @@ struct miqt_string QAbstractProxyModel_TrUtf83(const char* s, const char* c, int
 	return _ms;
 }
 
-void QAbstractProxyModel_override_virtual_SetSourceModel(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__SetSourceModel = slot;
+bool QAbstractProxyModel_override_virtual_SetSourceModel(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetSourceModel = slot;
+	return true;
 }
 
 void QAbstractProxyModel_virtualbase_SetSourceModel(void* self, QAbstractItemModel* sourceModel) {
 	( (MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_SetSourceModel(sourceModel);
 }
 
-void QAbstractProxyModel_override_virtual_MapToSource(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__MapToSource = slot;
+bool QAbstractProxyModel_override_virtual_MapToSource(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MapToSource = slot;
+	return true;
 }
 
-void QAbstractProxyModel_override_virtual_MapFromSource(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__MapFromSource = slot;
+bool QAbstractProxyModel_override_virtual_MapFromSource(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MapFromSource = slot;
+	return true;
 }
 
-void QAbstractProxyModel_override_virtual_MapSelectionToSource(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__MapSelectionToSource = slot;
+bool QAbstractProxyModel_override_virtual_MapSelectionToSource(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MapSelectionToSource = slot;
+	return true;
 }
 
 QItemSelection* QAbstractProxyModel_virtualbase_MapSelectionToSource(const void* self, QItemSelection* selection) {
 	return ( (const MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_MapSelectionToSource(selection);
 }
 
-void QAbstractProxyModel_override_virtual_MapSelectionFromSource(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__MapSelectionFromSource = slot;
+bool QAbstractProxyModel_override_virtual_MapSelectionFromSource(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MapSelectionFromSource = slot;
+	return true;
 }
 
 QItemSelection* QAbstractProxyModel_virtualbase_MapSelectionFromSource(const void* self, QItemSelection* selection) {
 	return ( (const MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_MapSelectionFromSource(selection);
 }
 
-void QAbstractProxyModel_override_virtual_Submit(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__Submit = slot;
+bool QAbstractProxyModel_override_virtual_Submit(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Submit = slot;
+	return true;
 }
 
 bool QAbstractProxyModel_virtualbase_Submit(void* self) {
 	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_Submit();
 }
 
-void QAbstractProxyModel_override_virtual_Revert(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__Revert = slot;
+bool QAbstractProxyModel_override_virtual_Revert(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Revert = slot;
+	return true;
 }
 
 void QAbstractProxyModel_virtualbase_Revert(void* self) {
 	( (MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_Revert();
 }
 
-void QAbstractProxyModel_override_virtual_Data(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__Data = slot;
+bool QAbstractProxyModel_override_virtual_Data(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Data = slot;
+	return true;
 }
 
 QVariant* QAbstractProxyModel_virtualbase_Data(const void* self, QModelIndex* proxyIndex, int role) {
 	return ( (const MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_Data(proxyIndex, role);
 }
 
-void QAbstractProxyModel_override_virtual_HeaderData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__HeaderData = slot;
+bool QAbstractProxyModel_override_virtual_HeaderData(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeaderData = slot;
+	return true;
 }
 
 QVariant* QAbstractProxyModel_virtualbase_HeaderData(const void* self, int section, int orientation, int role) {
 	return ( (const MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_HeaderData(section, orientation, role);
 }
 
-void QAbstractProxyModel_override_virtual_ItemData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__ItemData = slot;
+bool QAbstractProxyModel_override_virtual_ItemData(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ItemData = slot;
+	return true;
 }
 
 struct miqt_map /* of int to QVariant* */  QAbstractProxyModel_virtualbase_ItemData(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_ItemData(index);
 }
 
-void QAbstractProxyModel_override_virtual_Flags(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__Flags = slot;
+bool QAbstractProxyModel_override_virtual_Flags(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Flags = slot;
+	return true;
 }
 
 int QAbstractProxyModel_virtualbase_Flags(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_Flags(index);
 }
 
-void QAbstractProxyModel_override_virtual_SetData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__SetData = slot;
+bool QAbstractProxyModel_override_virtual_SetData(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetData = slot;
+	return true;
 }
 
 bool QAbstractProxyModel_virtualbase_SetData(void* self, QModelIndex* index, QVariant* value, int role) {
 	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_SetData(index, value, role);
 }
 
-void QAbstractProxyModel_override_virtual_SetItemData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__SetItemData = slot;
+bool QAbstractProxyModel_override_virtual_SetItemData(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetItemData = slot;
+	return true;
 }
 
 bool QAbstractProxyModel_virtualbase_SetItemData(void* self, QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles) {
 	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_SetItemData(index, roles);
 }
 
-void QAbstractProxyModel_override_virtual_SetHeaderData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__SetHeaderData = slot;
+bool QAbstractProxyModel_override_virtual_SetHeaderData(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetHeaderData = slot;
+	return true;
 }
 
 bool QAbstractProxyModel_virtualbase_SetHeaderData(void* self, int section, int orientation, QVariant* value, int role) {
 	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_SetHeaderData(section, orientation, value, role);
 }
 
-void QAbstractProxyModel_override_virtual_Buddy(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__Buddy = slot;
+bool QAbstractProxyModel_override_virtual_Buddy(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Buddy = slot;
+	return true;
 }
 
 QModelIndex* QAbstractProxyModel_virtualbase_Buddy(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_Buddy(index);
 }
 
-void QAbstractProxyModel_override_virtual_CanFetchMore(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__CanFetchMore = slot;
+bool QAbstractProxyModel_override_virtual_CanFetchMore(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CanFetchMore = slot;
+	return true;
 }
 
 bool QAbstractProxyModel_virtualbase_CanFetchMore(const void* self, QModelIndex* parent) {
 	return ( (const MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_CanFetchMore(parent);
 }
 
-void QAbstractProxyModel_override_virtual_FetchMore(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__FetchMore = slot;
+bool QAbstractProxyModel_override_virtual_FetchMore(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FetchMore = slot;
+	return true;
 }
 
 void QAbstractProxyModel_virtualbase_FetchMore(void* self, QModelIndex* parent) {
 	( (MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_FetchMore(parent);
 }
 
-void QAbstractProxyModel_override_virtual_Sort(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__Sort = slot;
+bool QAbstractProxyModel_override_virtual_Sort(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Sort = slot;
+	return true;
 }
 
 void QAbstractProxyModel_virtualbase_Sort(void* self, int column, int order) {
 	( (MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_Sort(column, order);
 }
 
-void QAbstractProxyModel_override_virtual_Span(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__Span = slot;
+bool QAbstractProxyModel_override_virtual_Span(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Span = slot;
+	return true;
 }
 
 QSize* QAbstractProxyModel_virtualbase_Span(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_Span(index);
 }
 
-void QAbstractProxyModel_override_virtual_HasChildren(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__HasChildren = slot;
+bool QAbstractProxyModel_override_virtual_HasChildren(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasChildren = slot;
+	return true;
 }
 
 bool QAbstractProxyModel_virtualbase_HasChildren(const void* self, QModelIndex* parent) {
 	return ( (const MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_HasChildren(parent);
 }
 
-void QAbstractProxyModel_override_virtual_Sibling(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__Sibling = slot;
+bool QAbstractProxyModel_override_virtual_Sibling(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Sibling = slot;
+	return true;
 }
 
 QModelIndex* QAbstractProxyModel_virtualbase_Sibling(const void* self, int row, int column, QModelIndex* idx) {
 	return ( (const MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_Sibling(row, column, idx);
 }
 
-void QAbstractProxyModel_override_virtual_MimeData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__MimeData = slot;
+bool QAbstractProxyModel_override_virtual_MimeData(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MimeData = slot;
+	return true;
 }
 
 QMimeData* QAbstractProxyModel_virtualbase_MimeData(const void* self, struct miqt_array /* of QModelIndex* */  indexes) {
 	return ( (const MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_MimeData(indexes);
 }
 
-void QAbstractProxyModel_override_virtual_CanDropMimeData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__CanDropMimeData = slot;
+bool QAbstractProxyModel_override_virtual_CanDropMimeData(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CanDropMimeData = slot;
+	return true;
 }
 
 bool QAbstractProxyModel_virtualbase_CanDropMimeData(const void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 	return ( (const MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_CanDropMimeData(data, action, row, column, parent);
 }
 
-void QAbstractProxyModel_override_virtual_DropMimeData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__DropMimeData = slot;
+bool QAbstractProxyModel_override_virtual_DropMimeData(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropMimeData = slot;
+	return true;
 }
 
 bool QAbstractProxyModel_virtualbase_DropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_DropMimeData(data, action, row, column, parent);
 }
 
-void QAbstractProxyModel_override_virtual_MimeTypes(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__MimeTypes = slot;
+bool QAbstractProxyModel_override_virtual_MimeTypes(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MimeTypes = slot;
+	return true;
 }
 
 struct miqt_array /* of struct miqt_string */  QAbstractProxyModel_virtualbase_MimeTypes(const void* self) {
 	return ( (const MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_MimeTypes();
 }
 
-void QAbstractProxyModel_override_virtual_SupportedDragActions(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__SupportedDragActions = slot;
+bool QAbstractProxyModel_override_virtual_SupportedDragActions(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SupportedDragActions = slot;
+	return true;
 }
 
 int QAbstractProxyModel_virtualbase_SupportedDragActions(const void* self) {
 	return ( (const MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_SupportedDragActions();
 }
 
-void QAbstractProxyModel_override_virtual_SupportedDropActions(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__SupportedDropActions = slot;
+bool QAbstractProxyModel_override_virtual_SupportedDropActions(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SupportedDropActions = slot;
+	return true;
 }
 
 int QAbstractProxyModel_virtualbase_SupportedDropActions(const void* self) {
 	return ( (const MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_SupportedDropActions();
 }
 
-void QAbstractProxyModel_override_virtual_Index(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__Index = slot;
+bool QAbstractProxyModel_override_virtual_Index(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Index = slot;
+	return true;
 }
 
-void QAbstractProxyModel_override_virtual_Parent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__Parent = slot;
+bool QAbstractProxyModel_override_virtual_Parent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Parent = slot;
+	return true;
 }
 
-void QAbstractProxyModel_override_virtual_RowCount(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__RowCount = slot;
+bool QAbstractProxyModel_override_virtual_RowCount(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RowCount = slot;
+	return true;
 }
 
-void QAbstractProxyModel_override_virtual_ColumnCount(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__ColumnCount = slot;
+bool QAbstractProxyModel_override_virtual_ColumnCount(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ColumnCount = slot;
+	return true;
 }
 
-void QAbstractProxyModel_override_virtual_InsertRows(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__InsertRows = slot;
+bool QAbstractProxyModel_override_virtual_InsertRows(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InsertRows = slot;
+	return true;
 }
 
 bool QAbstractProxyModel_virtualbase_InsertRows(void* self, int row, int count, QModelIndex* parent) {
 	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_InsertRows(row, count, parent);
 }
 
-void QAbstractProxyModel_override_virtual_InsertColumns(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__InsertColumns = slot;
+bool QAbstractProxyModel_override_virtual_InsertColumns(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InsertColumns = slot;
+	return true;
 }
 
 bool QAbstractProxyModel_virtualbase_InsertColumns(void* self, int column, int count, QModelIndex* parent) {
 	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_InsertColumns(column, count, parent);
 }
 
-void QAbstractProxyModel_override_virtual_RemoveRows(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__RemoveRows = slot;
+bool QAbstractProxyModel_override_virtual_RemoveRows(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RemoveRows = slot;
+	return true;
 }
 
 bool QAbstractProxyModel_virtualbase_RemoveRows(void* self, int row, int count, QModelIndex* parent) {
 	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_RemoveRows(row, count, parent);
 }
 
-void QAbstractProxyModel_override_virtual_RemoveColumns(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__RemoveColumns = slot;
+bool QAbstractProxyModel_override_virtual_RemoveColumns(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RemoveColumns = slot;
+	return true;
 }
 
 bool QAbstractProxyModel_virtualbase_RemoveColumns(void* self, int column, int count, QModelIndex* parent) {
 	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_RemoveColumns(column, count, parent);
 }
 
-void QAbstractProxyModel_override_virtual_MoveRows(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__MoveRows = slot;
+bool QAbstractProxyModel_override_virtual_MoveRows(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveRows = slot;
+	return true;
 }
 
 bool QAbstractProxyModel_virtualbase_MoveRows(void* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
 	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_MoveRows(sourceParent, sourceRow, count, destinationParent, destinationChild);
 }
 
-void QAbstractProxyModel_override_virtual_MoveColumns(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__MoveColumns = slot;
+bool QAbstractProxyModel_override_virtual_MoveColumns(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveColumns = slot;
+	return true;
 }
 
 bool QAbstractProxyModel_virtualbase_MoveColumns(void* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
 	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_MoveColumns(sourceParent, sourceColumn, count, destinationParent, destinationChild);
 }
 
-void QAbstractProxyModel_override_virtual_Match(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__Match = slot;
+bool QAbstractProxyModel_override_virtual_Match(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Match = slot;
+	return true;
 }
 
 struct miqt_array /* of QModelIndex* */  QAbstractProxyModel_virtualbase_Match(const void* self, QModelIndex* start, int role, QVariant* value, int hits, int flags) {
 	return ( (const MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_Match(start, role, value, hits, flags);
 }
 
-void QAbstractProxyModel_override_virtual_RoleNames(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) )->handle__RoleNames = slot;
+bool QAbstractProxyModel_override_virtual_RoleNames(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel* self_cast = dynamic_cast<MiqtVirtualQAbstractProxyModel*>( (QAbstractProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RoleNames = slot;
+	return true;
 }
 
 struct miqt_map /* of int to struct miqt_string */  QAbstractProxyModel_virtualbase_RoleNames(const void* self) {
 	return ( (const MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_RoleNames();
 }
 
-void QAbstractProxyModel_Delete(QAbstractProxyModel* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractProxyModel*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractProxyModel_Delete(QAbstractProxyModel* self) {
+	delete self;
 }
 

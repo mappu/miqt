@@ -14,8 +14,7 @@ import (
 )
 
 type QPageRanges struct {
-	h          *C.QPageRanges
-	isSubclass bool
+	h *C.QPageRanges
 }
 
 func (this *QPageRanges) cPointer() *C.QPageRanges {
@@ -49,17 +48,13 @@ func UnsafeNewQPageRanges(h unsafe.Pointer) *QPageRanges {
 // NewQPageRanges constructs a new QPageRanges object.
 func NewQPageRanges() *QPageRanges {
 
-	ret := newQPageRanges(C.QPageRanges_new())
-	ret.isSubclass = true
-	return ret
+	return newQPageRanges(C.QPageRanges_new())
 }
 
 // NewQPageRanges2 constructs a new QPageRanges object.
 func NewQPageRanges2(other *QPageRanges) *QPageRanges {
 
-	ret := newQPageRanges(C.QPageRanges_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPageRanges(C.QPageRanges_new2(other.cPointer()))
 }
 
 func (this *QPageRanges) OperatorAssign(other *QPageRanges) {
@@ -133,7 +128,7 @@ func (this *QPageRanges) Detach() {
 
 // Delete this object from C++ memory.
 func (this *QPageRanges) Delete() {
-	C.QPageRanges_Delete(this.h, C.bool(this.isSubclass))
+	C.QPageRanges_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -146,8 +141,7 @@ func (this *QPageRanges) GoGC() {
 }
 
 type QPageRanges__Range struct {
-	h          *C.QPageRanges__Range
-	isSubclass bool
+	h *C.QPageRanges__Range
 }
 
 func (this *QPageRanges__Range) cPointer() *C.QPageRanges__Range {
@@ -181,17 +175,13 @@ func UnsafeNewQPageRanges__Range(h unsafe.Pointer) *QPageRanges__Range {
 // NewQPageRanges__Range constructs a new QPageRanges::Range object.
 func NewQPageRanges__Range() *QPageRanges__Range {
 
-	ret := newQPageRanges__Range(C.QPageRanges__Range_new())
-	ret.isSubclass = true
-	return ret
+	return newQPageRanges__Range(C.QPageRanges__Range_new())
 }
 
 // NewQPageRanges__Range2 constructs a new QPageRanges::Range object.
 func NewQPageRanges__Range2(param1 *QPageRanges__Range) *QPageRanges__Range {
 
-	ret := newQPageRanges__Range(C.QPageRanges__Range_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPageRanges__Range(C.QPageRanges__Range_new2(param1.cPointer()))
 }
 
 func (this *QPageRanges__Range) Contains(pageNumber int) bool {
@@ -200,7 +190,7 @@ func (this *QPageRanges__Range) Contains(pageNumber int) bool {
 
 // Delete this object from C++ memory.
 func (this *QPageRanges__Range) Delete() {
-	C.QPageRanges__Range_Delete(this.h, C.bool(this.isSubclass))
+	C.QPageRanges__Range_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -14,8 +14,7 @@ import (
 )
 
 type QScriptString struct {
-	h          *C.QScriptString
-	isSubclass bool
+	h *C.QScriptString
 }
 
 func (this *QScriptString) cPointer() *C.QScriptString {
@@ -49,17 +48,13 @@ func UnsafeNewQScriptString(h unsafe.Pointer) *QScriptString {
 // NewQScriptString constructs a new QScriptString object.
 func NewQScriptString() *QScriptString {
 
-	ret := newQScriptString(C.QScriptString_new())
-	ret.isSubclass = true
-	return ret
+	return newQScriptString(C.QScriptString_new())
 }
 
 // NewQScriptString2 constructs a new QScriptString object.
 func NewQScriptString2(other *QScriptString) *QScriptString {
 
-	ret := newQScriptString(C.QScriptString_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQScriptString(C.QScriptString_new2(other.cPointer()))
 }
 
 func (this *QScriptString) OperatorAssign(other *QScriptString) {
@@ -102,7 +97,7 @@ func (this *QScriptString) ToArrayIndex1(ok *bool) uint {
 
 // Delete this object from C++ memory.
 func (this *QScriptString) Delete() {
-	C.QScriptString_Delete(this.h, C.bool(this.isSubclass))
+	C.QScriptString_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

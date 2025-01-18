@@ -30,7 +30,7 @@ QLoggingCategory* QLoggingCategory_OperatorCall(QLoggingCategory* self);
 QLoggingCategory* QLoggingCategory_OperatorCall2(const QLoggingCategory* self);
 QLoggingCategory* QLoggingCategory_DefaultCategory();
 void QLoggingCategory_SetFilterRules(struct miqt_string rules);
-void QLoggingCategory_Delete(QLoggingCategory* self, bool isSubclass);
+void QLoggingCategory_Delete(QLoggingCategory* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -14,8 +14,7 @@ import (
 )
 
 type QsciStyledText struct {
-	h          *C.QsciStyledText
-	isSubclass bool
+	h *C.QsciStyledText
 }
 
 func (this *QsciStyledText) cPointer() *C.QsciStyledText {
@@ -53,9 +52,7 @@ func NewQsciStyledText(text string, style int) *QsciStyledText {
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQsciStyledText(C.QsciStyledText_new(text_ms, (C.int)(style)))
-	ret.isSubclass = true
-	return ret
+	return newQsciStyledText(C.QsciStyledText_new(text_ms, (C.int)(style)))
 }
 
 // NewQsciStyledText2 constructs a new QsciStyledText object.
@@ -65,17 +62,13 @@ func NewQsciStyledText2(text string, style *QsciStyle) *QsciStyledText {
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQsciStyledText(C.QsciStyledText_new2(text_ms, style.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQsciStyledText(C.QsciStyledText_new2(text_ms, style.cPointer()))
 }
 
 // NewQsciStyledText3 constructs a new QsciStyledText object.
 func NewQsciStyledText3(param1 *QsciStyledText) *QsciStyledText {
 
-	ret := newQsciStyledText(C.QsciStyledText_new3(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQsciStyledText(C.QsciStyledText_new3(param1.cPointer()))
 }
 
 func (this *QsciStyledText) Apply(sci *QsciScintillaBase) {
@@ -95,7 +88,7 @@ func (this *QsciStyledText) Style() int {
 
 // Delete this object from C++ memory.
 func (this *QsciStyledText) Delete() {
-	C.QsciStyledText_Delete(this.h, C.bool(this.isSubclass))
+	C.QsciStyledText_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

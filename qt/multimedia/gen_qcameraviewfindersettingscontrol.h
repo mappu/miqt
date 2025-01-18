@@ -44,7 +44,7 @@ struct miqt_string QCameraViewfinderSettingsControl_Tr2(const char* s, const cha
 struct miqt_string QCameraViewfinderSettingsControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QCameraViewfinderSettingsControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QCameraViewfinderSettingsControl_TrUtf83(const char* s, const char* c, int n);
-void QCameraViewfinderSettingsControl_Delete(QCameraViewfinderSettingsControl* self, bool isSubclass);
+void QCameraViewfinderSettingsControl_Delete(QCameraViewfinderSettingsControl* self);
 
 void QCameraViewfinderSettingsControl2_virtbase(QCameraViewfinderSettingsControl2* src, QMediaControl** outptr_QMediaControl);
 QMetaObject* QCameraViewfinderSettingsControl2_MetaObject(const QCameraViewfinderSettingsControl2* self);
@@ -58,7 +58,7 @@ struct miqt_string QCameraViewfinderSettingsControl2_Tr2(const char* s, const ch
 struct miqt_string QCameraViewfinderSettingsControl2_Tr3(const char* s, const char* c, int n);
 struct miqt_string QCameraViewfinderSettingsControl2_TrUtf82(const char* s, const char* c);
 struct miqt_string QCameraViewfinderSettingsControl2_TrUtf83(const char* s, const char* c, int n);
-void QCameraViewfinderSettingsControl2_Delete(QCameraViewfinderSettingsControl2* self, bool isSubclass);
+void QCameraViewfinderSettingsControl2_Delete(QCameraViewfinderSettingsControl2* self);
 
 #ifdef __cplusplus
 } /* extern C */

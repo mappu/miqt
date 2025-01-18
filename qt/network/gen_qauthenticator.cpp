@@ -126,11 +126,7 @@ void QAuthenticator_Detach(QAuthenticator* self) {
 	self->detach();
 }
 
-void QAuthenticator_Delete(QAuthenticator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QAuthenticator*>( self );
-	} else {
-		delete self;
-	}
+void QAuthenticator_Delete(QAuthenticator* self) {
+	delete self;
 }
 

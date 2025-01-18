@@ -30,7 +30,7 @@ QCollatorSortKey* QCollatorSortKey_new(QCollatorSortKey* other);
 void QCollatorSortKey_OperatorAssign(QCollatorSortKey* self, QCollatorSortKey* other);
 void QCollatorSortKey_Swap(QCollatorSortKey* self, QCollatorSortKey* other);
 int QCollatorSortKey_Compare(const QCollatorSortKey* self, QCollatorSortKey* key);
-void QCollatorSortKey_Delete(QCollatorSortKey* self, bool isSubclass);
+void QCollatorSortKey_Delete(QCollatorSortKey* self);
 
 QCollator* QCollator_new();
 QCollator* QCollator_new2(QLocale* locale);
@@ -49,7 +49,7 @@ int QCollator_Compare(const QCollator* self, struct miqt_string s1, struct miqt_
 int QCollator_Compare3(const QCollator* self, QChar* s1, int len1, QChar* s2, int len2);
 bool QCollator_OperatorCall(const QCollator* self, struct miqt_string s1, struct miqt_string s2);
 QCollatorSortKey* QCollator_SortKey(const QCollator* self, struct miqt_string stringVal);
-void QCollator_Delete(QCollator* self, bool isSubclass);
+void QCollator_Delete(QCollator* self);
 
 #ifdef __cplusplus
 } /* extern C */

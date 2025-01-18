@@ -14,8 +14,7 @@ import (
 )
 
 type QAccessibleObject struct {
-	h          *C.QAccessibleObject
-	isSubclass bool
+	h *C.QAccessibleObject
 	*QAccessibleInterface
 }
 
@@ -77,8 +76,7 @@ func (this *QAccessibleObject) ChildAt(x int, y int) *QAccessibleInterface {
 }
 
 type QAccessibleApplication struct {
-	h          *C.QAccessibleApplication
-	isSubclass bool
+	h *C.QAccessibleApplication
 	*QAccessibleObject
 }
 
@@ -116,9 +114,7 @@ func UnsafeNewQAccessibleApplication(h unsafe.Pointer) *QAccessibleApplication {
 // NewQAccessibleApplication constructs a new QAccessibleApplication object.
 func NewQAccessibleApplication() *QAccessibleApplication {
 
-	ret := newQAccessibleApplication(C.QAccessibleApplication_new())
-	ret.isSubclass = true
-	return ret
+	return newQAccessibleApplication(C.QAccessibleApplication_new())
 }
 
 func (this *QAccessibleApplication) Window() *QWindow {
@@ -164,7 +160,7 @@ func (this *QAccessibleApplication) State() *QAccessible__State {
 
 // Delete this object from C++ memory.
 func (this *QAccessibleApplication) Delete() {
-	C.QAccessibleApplication_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessibleApplication_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

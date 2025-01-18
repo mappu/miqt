@@ -28,13 +28,13 @@ void miqt_exec_callback_QStylePlugin_DisconnectNotify(void*, intptr_t, QMetaMeth
 } /* extern C */
 #endif
 
-class MiqtVirtualQStylePlugin : public virtual QStylePlugin {
+class MiqtVirtualQStylePlugin final : public QStylePlugin {
 public:
 
 	MiqtVirtualQStylePlugin(): QStylePlugin() {};
 	MiqtVirtualQStylePlugin(QObject* parent): QStylePlugin(parent) {};
 
-	virtual ~MiqtVirtualQStylePlugin() = default;
+	virtual ~MiqtVirtualQStylePlugin() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Create = 0;
@@ -323,71 +323,115 @@ struct miqt_string QStylePlugin_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QStylePlugin_override_virtual_Create(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStylePlugin*>( (QStylePlugin*)(self) )->handle__Create = slot;
+bool QStylePlugin_override_virtual_Create(void* self, intptr_t slot) {
+	MiqtVirtualQStylePlugin* self_cast = dynamic_cast<MiqtVirtualQStylePlugin*>( (QStylePlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Create = slot;
+	return true;
 }
 
-void QStylePlugin_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStylePlugin*>( (QStylePlugin*)(self) )->handle__Event = slot;
+bool QStylePlugin_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQStylePlugin* self_cast = dynamic_cast<MiqtVirtualQStylePlugin*>( (QStylePlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QStylePlugin_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQStylePlugin*)(self) )->virtualbase_Event(event);
 }
 
-void QStylePlugin_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStylePlugin*>( (QStylePlugin*)(self) )->handle__EventFilter = slot;
+bool QStylePlugin_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQStylePlugin* self_cast = dynamic_cast<MiqtVirtualQStylePlugin*>( (QStylePlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QStylePlugin_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQStylePlugin*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QStylePlugin_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStylePlugin*>( (QStylePlugin*)(self) )->handle__TimerEvent = slot;
+bool QStylePlugin_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStylePlugin* self_cast = dynamic_cast<MiqtVirtualQStylePlugin*>( (QStylePlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QStylePlugin_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQStylePlugin*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QStylePlugin_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStylePlugin*>( (QStylePlugin*)(self) )->handle__ChildEvent = slot;
+bool QStylePlugin_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStylePlugin* self_cast = dynamic_cast<MiqtVirtualQStylePlugin*>( (QStylePlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QStylePlugin_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQStylePlugin*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QStylePlugin_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStylePlugin*>( (QStylePlugin*)(self) )->handle__CustomEvent = slot;
+bool QStylePlugin_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStylePlugin* self_cast = dynamic_cast<MiqtVirtualQStylePlugin*>( (QStylePlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QStylePlugin_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQStylePlugin*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QStylePlugin_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStylePlugin*>( (QStylePlugin*)(self) )->handle__ConnectNotify = slot;
+bool QStylePlugin_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQStylePlugin* self_cast = dynamic_cast<MiqtVirtualQStylePlugin*>( (QStylePlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QStylePlugin_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQStylePlugin*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QStylePlugin_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStylePlugin*>( (QStylePlugin*)(self) )->handle__DisconnectNotify = slot;
+bool QStylePlugin_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQStylePlugin* self_cast = dynamic_cast<MiqtVirtualQStylePlugin*>( (QStylePlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QStylePlugin_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQStylePlugin*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QStylePlugin_Delete(QStylePlugin* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQStylePlugin*>( self );
-	} else {
-		delete self;
-	}
+void QStylePlugin_Delete(QStylePlugin* self) {
+	delete self;
 }
 

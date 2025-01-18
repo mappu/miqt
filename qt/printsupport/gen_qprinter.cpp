@@ -30,7 +30,7 @@ int miqt_exec_callback_QPrinter_Metric(void*, intptr_t, int);
 } /* extern C */
 #endif
 
-class MiqtVirtualQPrinter : public virtual QPrinter {
+class MiqtVirtualQPrinter final : public QPrinter {
 public:
 
 	MiqtVirtualQPrinter(): QPrinter() {};
@@ -38,7 +38,7 @@ public:
 	MiqtVirtualQPrinter(QPrinter::PrinterMode mode): QPrinter(mode) {};
 	MiqtVirtualQPrinter(const QPrinterInfo& printer, QPrinter::PrinterMode mode): QPrinter(printer, mode) {};
 
-	virtual ~MiqtVirtualQPrinter() = default;
+	virtual ~MiqtVirtualQPrinter() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__DevType = 0;
@@ -597,67 +597,105 @@ void QPrinter_GetPageMargins(const QPrinter* self, double* left, double* top, do
 	self->getPageMargins(static_cast<qreal*>(left), static_cast<qreal*>(top), static_cast<qreal*>(right), static_cast<qreal*>(bottom), static_cast<QPrinter::Unit>(unit));
 }
 
-void QPrinter_override_virtual_DevType(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPrinter*>( (QPrinter*)(self) )->handle__DevType = slot;
+bool QPrinter_override_virtual_DevType(void* self, intptr_t slot) {
+	MiqtVirtualQPrinter* self_cast = dynamic_cast<MiqtVirtualQPrinter*>( (QPrinter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DevType = slot;
+	return true;
 }
 
 int QPrinter_virtualbase_DevType(const void* self) {
 	return ( (const MiqtVirtualQPrinter*)(self) )->virtualbase_DevType();
 }
 
-void QPrinter_override_virtual_SetPageSize(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPrinter*>( (QPrinter*)(self) )->handle__SetPageSize = slot;
+bool QPrinter_override_virtual_SetPageSize(void* self, intptr_t slot) {
+	MiqtVirtualQPrinter* self_cast = dynamic_cast<MiqtVirtualQPrinter*>( (QPrinter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetPageSize = slot;
+	return true;
 }
 
 void QPrinter_virtualbase_SetPageSize(void* self, int pageSize) {
 	( (MiqtVirtualQPrinter*)(self) )->virtualbase_SetPageSize(pageSize);
 }
 
-void QPrinter_override_virtual_SetPageSizeMM(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPrinter*>( (QPrinter*)(self) )->handle__SetPageSizeMM = slot;
+bool QPrinter_override_virtual_SetPageSizeMM(void* self, intptr_t slot) {
+	MiqtVirtualQPrinter* self_cast = dynamic_cast<MiqtVirtualQPrinter*>( (QPrinter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetPageSizeMM = slot;
+	return true;
 }
 
 void QPrinter_virtualbase_SetPageSizeMM(void* self, QSizeF* size) {
 	( (MiqtVirtualQPrinter*)(self) )->virtualbase_SetPageSizeMM(size);
 }
 
-void QPrinter_override_virtual_NewPage(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPrinter*>( (QPrinter*)(self) )->handle__NewPage = slot;
+bool QPrinter_override_virtual_NewPage(void* self, intptr_t slot) {
+	MiqtVirtualQPrinter* self_cast = dynamic_cast<MiqtVirtualQPrinter*>( (QPrinter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NewPage = slot;
+	return true;
 }
 
 bool QPrinter_virtualbase_NewPage(void* self) {
 	return ( (MiqtVirtualQPrinter*)(self) )->virtualbase_NewPage();
 }
 
-void QPrinter_override_virtual_PaintEngine(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPrinter*>( (QPrinter*)(self) )->handle__PaintEngine = slot;
+bool QPrinter_override_virtual_PaintEngine(void* self, intptr_t slot) {
+	MiqtVirtualQPrinter* self_cast = dynamic_cast<MiqtVirtualQPrinter*>( (QPrinter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEngine = slot;
+	return true;
 }
 
 QPaintEngine* QPrinter_virtualbase_PaintEngine(const void* self) {
 	return ( (const MiqtVirtualQPrinter*)(self) )->virtualbase_PaintEngine();
 }
 
-void QPrinter_override_virtual_SetMargins(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPrinter*>( (QPrinter*)(self) )->handle__SetMargins = slot;
+bool QPrinter_override_virtual_SetMargins(void* self, intptr_t slot) {
+	MiqtVirtualQPrinter* self_cast = dynamic_cast<MiqtVirtualQPrinter*>( (QPrinter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetMargins = slot;
+	return true;
 }
 
 void QPrinter_virtualbase_SetMargins(void* self, QPagedPaintDevice__Margins* m) {
 	( (MiqtVirtualQPrinter*)(self) )->virtualbase_SetMargins(m);
 }
 
-void QPrinter_override_virtual_Metric(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPrinter*>( (QPrinter*)(self) )->handle__Metric = slot;
+bool QPrinter_override_virtual_Metric(void* self, intptr_t slot) {
+	MiqtVirtualQPrinter* self_cast = dynamic_cast<MiqtVirtualQPrinter*>( (QPrinter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Metric = slot;
+	return true;
 }
 
 int QPrinter_virtualbase_Metric(const void* self, int param1) {
 	return ( (const MiqtVirtualQPrinter*)(self) )->virtualbase_Metric(param1);
 }
 
-void QPrinter_Delete(QPrinter* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQPrinter*>( self );
-	} else {
-		delete self;
-	}
+void QPrinter_Delete(QPrinter* self) {
+	delete self;
 }
 

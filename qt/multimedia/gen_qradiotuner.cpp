@@ -35,13 +35,13 @@ void miqt_exec_callback_QRadioTuner_Unbind(void*, intptr_t, QObject*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQRadioTuner : public virtual QRadioTuner {
+class MiqtVirtualQRadioTuner final : public QRadioTuner {
 public:
 
 	MiqtVirtualQRadioTuner(): QRadioTuner() {};
 	MiqtVirtualQRadioTuner(QObject* parent): QRadioTuner(parent) {};
 
-	virtual ~MiqtVirtualQRadioTuner() = default;
+	virtual ~MiqtVirtualQRadioTuner() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Availability = 0;
@@ -516,51 +516,77 @@ void QRadioTuner_SearchAllStations1(QRadioTuner* self, int searchMode) {
 	self->searchAllStations(static_cast<QRadioTuner::SearchMode>(searchMode));
 }
 
-void QRadioTuner_override_virtual_Availability(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioTuner*>( (QRadioTuner*)(self) )->handle__Availability = slot;
+bool QRadioTuner_override_virtual_Availability(void* self, intptr_t slot) {
+	MiqtVirtualQRadioTuner* self_cast = dynamic_cast<MiqtVirtualQRadioTuner*>( (QRadioTuner*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Availability = slot;
+	return true;
 }
 
 int QRadioTuner_virtualbase_Availability(const void* self) {
 	return ( (const MiqtVirtualQRadioTuner*)(self) )->virtualbase_Availability();
 }
 
-void QRadioTuner_override_virtual_IsAvailable(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioTuner*>( (QRadioTuner*)(self) )->handle__IsAvailable = slot;
+bool QRadioTuner_override_virtual_IsAvailable(void* self, intptr_t slot) {
+	MiqtVirtualQRadioTuner* self_cast = dynamic_cast<MiqtVirtualQRadioTuner*>( (QRadioTuner*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsAvailable = slot;
+	return true;
 }
 
 bool QRadioTuner_virtualbase_IsAvailable(const void* self) {
 	return ( (const MiqtVirtualQRadioTuner*)(self) )->virtualbase_IsAvailable();
 }
 
-void QRadioTuner_override_virtual_Service(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioTuner*>( (QRadioTuner*)(self) )->handle__Service = slot;
+bool QRadioTuner_override_virtual_Service(void* self, intptr_t slot) {
+	MiqtVirtualQRadioTuner* self_cast = dynamic_cast<MiqtVirtualQRadioTuner*>( (QRadioTuner*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Service = slot;
+	return true;
 }
 
 QMediaService* QRadioTuner_virtualbase_Service(const void* self) {
 	return ( (const MiqtVirtualQRadioTuner*)(self) )->virtualbase_Service();
 }
 
-void QRadioTuner_override_virtual_Bind(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioTuner*>( (QRadioTuner*)(self) )->handle__Bind = slot;
+bool QRadioTuner_override_virtual_Bind(void* self, intptr_t slot) {
+	MiqtVirtualQRadioTuner* self_cast = dynamic_cast<MiqtVirtualQRadioTuner*>( (QRadioTuner*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Bind = slot;
+	return true;
 }
 
 bool QRadioTuner_virtualbase_Bind(void* self, QObject* param1) {
 	return ( (MiqtVirtualQRadioTuner*)(self) )->virtualbase_Bind(param1);
 }
 
-void QRadioTuner_override_virtual_Unbind(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioTuner*>( (QRadioTuner*)(self) )->handle__Unbind = slot;
+bool QRadioTuner_override_virtual_Unbind(void* self, intptr_t slot) {
+	MiqtVirtualQRadioTuner* self_cast = dynamic_cast<MiqtVirtualQRadioTuner*>( (QRadioTuner*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Unbind = slot;
+	return true;
 }
 
 void QRadioTuner_virtualbase_Unbind(void* self, QObject* param1) {
 	( (MiqtVirtualQRadioTuner*)(self) )->virtualbase_Unbind(param1);
 }
 
-void QRadioTuner_Delete(QRadioTuner* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQRadioTuner*>( self );
-	} else {
-		delete self;
-	}
+void QRadioTuner_Delete(QRadioTuner* self) {
+	delete self;
 }
 

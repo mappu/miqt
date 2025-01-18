@@ -14,8 +14,7 @@ import (
 )
 
 type QsciCommandSet struct {
-	h          *C.QsciCommandSet
-	isSubclass bool
+	h *C.QsciCommandSet
 }
 
 func (this *QsciCommandSet) cPointer() *C.QsciCommandSet {

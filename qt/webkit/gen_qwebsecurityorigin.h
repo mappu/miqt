@@ -41,7 +41,7 @@ void QWebSecurityOrigin_SetDatabaseQuota(QWebSecurityOrigin* self, long long quo
 void QWebSecurityOrigin_SetApplicationCacheQuota(QWebSecurityOrigin* self, long long quota);
 struct miqt_array /* of QWebDatabase* */  QWebSecurityOrigin_Databases(const QWebSecurityOrigin* self);
 void QWebSecurityOrigin_OperatorAssign(QWebSecurityOrigin* self, QWebSecurityOrigin* other);
-void QWebSecurityOrigin_Delete(QWebSecurityOrigin* self, bool isSubclass);
+void QWebSecurityOrigin_Delete(QWebSecurityOrigin* self);
 
 #ifdef __cplusplus
 } /* extern C */

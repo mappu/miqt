@@ -40,13 +40,13 @@ void miqt_exec_callback_QGridLayout_ChildEvent(void*, intptr_t, QChildEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQGridLayout : public virtual QGridLayout {
+class MiqtVirtualQGridLayout final : public QGridLayout {
 public:
 
 	MiqtVirtualQGridLayout(QWidget* parent): QGridLayout(parent) {};
 	MiqtVirtualQGridLayout(): QGridLayout() {};
 
-	virtual ~MiqtVirtualQGridLayout() = default;
+	virtual ~MiqtVirtualQGridLayout() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -760,163 +760,273 @@ void QGridLayout_AddItem6(QGridLayout* self, QLayoutItem* item, int row, int col
 	self->addItem(item, static_cast<int>(row), static_cast<int>(column), static_cast<int>(rowSpan), static_cast<int>(columnSpan), static_cast<Qt::Alignment>(param6));
 }
 
-void QGridLayout_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__SizeHint = slot;
+bool QGridLayout_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQGridLayout* self_cast = dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QGridLayout_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_SizeHint();
 }
 
-void QGridLayout_override_virtual_MinimumSize(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__MinimumSize = slot;
+bool QGridLayout_override_virtual_MinimumSize(void* self, intptr_t slot) {
+	MiqtVirtualQGridLayout* self_cast = dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSize = slot;
+	return true;
 }
 
 QSize* QGridLayout_virtualbase_MinimumSize(const void* self) {
 	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_MinimumSize();
 }
 
-void QGridLayout_override_virtual_MaximumSize(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__MaximumSize = slot;
+bool QGridLayout_override_virtual_MaximumSize(void* self, intptr_t slot) {
+	MiqtVirtualQGridLayout* self_cast = dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MaximumSize = slot;
+	return true;
 }
 
 QSize* QGridLayout_virtualbase_MaximumSize(const void* self) {
 	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_MaximumSize();
 }
 
-void QGridLayout_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__HasHeightForWidth = slot;
+bool QGridLayout_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQGridLayout* self_cast = dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasHeightForWidth = slot;
+	return true;
 }
 
 bool QGridLayout_virtualbase_HasHeightForWidth(const void* self) {
 	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_HasHeightForWidth();
 }
 
-void QGridLayout_override_virtual_HeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__HeightForWidth = slot;
+bool QGridLayout_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQGridLayout* self_cast = dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeightForWidth = slot;
+	return true;
 }
 
 int QGridLayout_virtualbase_HeightForWidth(const void* self, int param1) {
 	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_HeightForWidth(param1);
 }
 
-void QGridLayout_override_virtual_MinimumHeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__MinimumHeightForWidth = slot;
+bool QGridLayout_override_virtual_MinimumHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQGridLayout* self_cast = dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumHeightForWidth = slot;
+	return true;
 }
 
 int QGridLayout_virtualbase_MinimumHeightForWidth(const void* self, int param1) {
 	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_MinimumHeightForWidth(param1);
 }
 
-void QGridLayout_override_virtual_ExpandingDirections(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__ExpandingDirections = slot;
+bool QGridLayout_override_virtual_ExpandingDirections(void* self, intptr_t slot) {
+	MiqtVirtualQGridLayout* self_cast = dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ExpandingDirections = slot;
+	return true;
 }
 
 int QGridLayout_virtualbase_ExpandingDirections(const void* self) {
 	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_ExpandingDirections();
 }
 
-void QGridLayout_override_virtual_Invalidate(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__Invalidate = slot;
+bool QGridLayout_override_virtual_Invalidate(void* self, intptr_t slot) {
+	MiqtVirtualQGridLayout* self_cast = dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Invalidate = slot;
+	return true;
 }
 
 void QGridLayout_virtualbase_Invalidate(void* self) {
 	( (MiqtVirtualQGridLayout*)(self) )->virtualbase_Invalidate();
 }
 
-void QGridLayout_override_virtual_ItemAt(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__ItemAt = slot;
+bool QGridLayout_override_virtual_ItemAt(void* self, intptr_t slot) {
+	MiqtVirtualQGridLayout* self_cast = dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ItemAt = slot;
+	return true;
 }
 
 QLayoutItem* QGridLayout_virtualbase_ItemAt(const void* self, int index) {
 	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_ItemAt(index);
 }
 
-void QGridLayout_override_virtual_TakeAt(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__TakeAt = slot;
+bool QGridLayout_override_virtual_TakeAt(void* self, intptr_t slot) {
+	MiqtVirtualQGridLayout* self_cast = dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TakeAt = slot;
+	return true;
 }
 
 QLayoutItem* QGridLayout_virtualbase_TakeAt(void* self, int index) {
 	return ( (MiqtVirtualQGridLayout*)(self) )->virtualbase_TakeAt(index);
 }
 
-void QGridLayout_override_virtual_Count(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__Count = slot;
+bool QGridLayout_override_virtual_Count(void* self, intptr_t slot) {
+	MiqtVirtualQGridLayout* self_cast = dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Count = slot;
+	return true;
 }
 
 int QGridLayout_virtualbase_Count(const void* self) {
 	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_Count();
 }
 
-void QGridLayout_override_virtual_SetGeometry(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__SetGeometry = slot;
+bool QGridLayout_override_virtual_SetGeometry(void* self, intptr_t slot) {
+	MiqtVirtualQGridLayout* self_cast = dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetGeometry = slot;
+	return true;
 }
 
 void QGridLayout_virtualbase_SetGeometry(void* self, QRect* geometry) {
 	( (MiqtVirtualQGridLayout*)(self) )->virtualbase_SetGeometry(geometry);
 }
 
-void QGridLayout_override_virtual_AddItemWithQLayoutItem(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__AddItemWithQLayoutItem = slot;
+bool QGridLayout_override_virtual_AddItemWithQLayoutItem(void* self, intptr_t slot) {
+	MiqtVirtualQGridLayout* self_cast = dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__AddItemWithQLayoutItem = slot;
+	return true;
 }
 
 void QGridLayout_virtualbase_AddItemWithQLayoutItem(void* self, QLayoutItem* param1) {
 	( (MiqtVirtualQGridLayout*)(self) )->virtualbase_AddItemWithQLayoutItem(param1);
 }
 
-void QGridLayout_override_virtual_Geometry(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__Geometry = slot;
+bool QGridLayout_override_virtual_Geometry(void* self, intptr_t slot) {
+	MiqtVirtualQGridLayout* self_cast = dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Geometry = slot;
+	return true;
 }
 
 QRect* QGridLayout_virtualbase_Geometry(const void* self) {
 	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_Geometry();
 }
 
-void QGridLayout_override_virtual_IndexOf(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__IndexOf = slot;
+bool QGridLayout_override_virtual_IndexOf(void* self, intptr_t slot) {
+	MiqtVirtualQGridLayout* self_cast = dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IndexOf = slot;
+	return true;
 }
 
 int QGridLayout_virtualbase_IndexOf(const void* self, QWidget* param1) {
 	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_IndexOf(param1);
 }
 
-void QGridLayout_override_virtual_IsEmpty(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__IsEmpty = slot;
+bool QGridLayout_override_virtual_IsEmpty(void* self, intptr_t slot) {
+	MiqtVirtualQGridLayout* self_cast = dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsEmpty = slot;
+	return true;
 }
 
 bool QGridLayout_virtualbase_IsEmpty(const void* self) {
 	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_IsEmpty();
 }
 
-void QGridLayout_override_virtual_ControlTypes(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__ControlTypes = slot;
+bool QGridLayout_override_virtual_ControlTypes(void* self, intptr_t slot) {
+	MiqtVirtualQGridLayout* self_cast = dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ControlTypes = slot;
+	return true;
 }
 
 int QGridLayout_virtualbase_ControlTypes(const void* self) {
 	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_ControlTypes();
 }
 
-void QGridLayout_override_virtual_Layout(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__Layout = slot;
+bool QGridLayout_override_virtual_Layout(void* self, intptr_t slot) {
+	MiqtVirtualQGridLayout* self_cast = dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Layout = slot;
+	return true;
 }
 
 QLayout* QGridLayout_virtualbase_Layout(void* self) {
 	return ( (MiqtVirtualQGridLayout*)(self) )->virtualbase_Layout();
 }
 
-void QGridLayout_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) )->handle__ChildEvent = slot;
+bool QGridLayout_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGridLayout* self_cast = dynamic_cast<MiqtVirtualQGridLayout*>( (QGridLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QGridLayout_virtualbase_ChildEvent(void* self, QChildEvent* e) {
 	( (MiqtVirtualQGridLayout*)(self) )->virtualbase_ChildEvent(e);
 }
 
-void QGridLayout_Delete(QGridLayout* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGridLayout*>( self );
-	} else {
-		delete self;
-	}
+void QGridLayout_Delete(QGridLayout* self) {
+	delete self;
 }
 

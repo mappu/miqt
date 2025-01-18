@@ -215,8 +215,7 @@ const (
 )
 
 type QAccessible struct {
-	h          *C.QAccessible
-	isSubclass bool
+	h *C.QAccessible
 }
 
 func (this *QAccessible) cPointer() *C.QAccessible {
@@ -314,7 +313,7 @@ func QAccessible_QAccessibleTextBoundaryHelper(cursor *QTextCursor, boundaryType
 
 // Delete this object from C++ memory.
 func (this *QAccessible) Delete() {
-	C.QAccessible_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessible_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -327,8 +326,7 @@ func (this *QAccessible) GoGC() {
 }
 
 type QAccessible__State struct {
-	h          *C.QAccessible__State
-	isSubclass bool
+	h *C.QAccessible__State
 }
 
 func (this *QAccessible__State) cPointer() *C.QAccessible__State {
@@ -362,14 +360,12 @@ func UnsafeNewQAccessible__State(h unsafe.Pointer) *QAccessible__State {
 // NewQAccessible__State constructs a new QAccessible::State object.
 func NewQAccessible__State() *QAccessible__State {
 
-	ret := newQAccessible__State(C.QAccessible__State_new())
-	ret.isSubclass = true
-	return ret
+	return newQAccessible__State(C.QAccessible__State_new())
 }
 
 // Delete this object from C++ memory.
 func (this *QAccessible__State) Delete() {
-	C.QAccessible__State_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessible__State_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -382,8 +378,7 @@ func (this *QAccessible__State) GoGC() {
 }
 
 type QAccessible__ActivationObserver struct {
-	h          *C.QAccessible__ActivationObserver
-	isSubclass bool
+	h *C.QAccessible__ActivationObserver
 }
 
 func (this *QAccessible__ActivationObserver) cPointer() *C.QAccessible__ActivationObserver {
@@ -424,7 +419,7 @@ func (this *QAccessible__ActivationObserver) OperatorAssign(param1 *QAccessible_
 
 // Delete this object from C++ memory.
 func (this *QAccessible__ActivationObserver) Delete() {
-	C.QAccessible__ActivationObserver_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessible__ActivationObserver_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

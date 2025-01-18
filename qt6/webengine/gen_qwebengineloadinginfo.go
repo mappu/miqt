@@ -37,8 +37,7 @@ const (
 )
 
 type QWebEngineLoadingInfo struct {
-	h          *C.QWebEngineLoadingInfo
-	isSubclass bool
+	h *C.QWebEngineLoadingInfo
 }
 
 func (this *QWebEngineLoadingInfo) cPointer() *C.QWebEngineLoadingInfo {
@@ -72,9 +71,7 @@ func UnsafeNewQWebEngineLoadingInfo(h unsafe.Pointer) *QWebEngineLoadingInfo {
 // NewQWebEngineLoadingInfo constructs a new QWebEngineLoadingInfo object.
 func NewQWebEngineLoadingInfo(other *QWebEngineLoadingInfo) *QWebEngineLoadingInfo {
 
-	ret := newQWebEngineLoadingInfo(C.QWebEngineLoadingInfo_new(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineLoadingInfo(C.QWebEngineLoadingInfo_new(other.cPointer()))
 }
 
 func (this *QWebEngineLoadingInfo) OperatorAssign(other *QWebEngineLoadingInfo) {
@@ -112,7 +109,7 @@ func (this *QWebEngineLoadingInfo) ErrorCode() int {
 
 // Delete this object from C++ memory.
 func (this *QWebEngineLoadingInfo) Delete() {
-	C.QWebEngineLoadingInfo_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebEngineLoadingInfo_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

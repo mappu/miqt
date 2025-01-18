@@ -179,11 +179,7 @@ QVariant* QVector4D_ToQVariant(const QVector4D* self) {
 	return new QVariant(self->operator QVariant());
 }
 
-void QVector4D_Delete(QVector4D* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QVector4D*>( self );
-	} else {
-		delete self;
-	}
+void QVector4D_Delete(QVector4D* self) {
+	delete self;
 }
 

@@ -41,7 +41,7 @@ bool QWebEngineNewWindowRequest_IsUserInitiated(const QWebEngineNewWindowRequest
 void QWebEngineNewWindowRequest_OpenIn(QWebEngineNewWindowRequest* self, QWebEnginePage* param1);
 struct miqt_string QWebEngineNewWindowRequest_Tr2(const char* s, const char* c);
 struct miqt_string QWebEngineNewWindowRequest_Tr3(const char* s, const char* c, int n);
-void QWebEngineNewWindowRequest_Delete(QWebEngineNewWindowRequest* self, bool isSubclass);
+void QWebEngineNewWindowRequest_Delete(QWebEngineNewWindowRequest* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -290,11 +290,7 @@ void QMatrix4x4_Viewport6(QMatrix4x4* self, float left, float bottom, float widt
 	self->viewport(static_cast<float>(left), static_cast<float>(bottom), static_cast<float>(width), static_cast<float>(height), static_cast<float>(nearPlane), static_cast<float>(farPlane));
 }
 
-void QMatrix4x4_Delete(QMatrix4x4* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMatrix4x4*>( self );
-	} else {
-		delete self;
-	}
+void QMatrix4x4_Delete(QMatrix4x4* self) {
+	delete self;
 }
 

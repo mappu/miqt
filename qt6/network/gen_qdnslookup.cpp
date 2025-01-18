@@ -81,12 +81,8 @@ struct miqt_string QDnsDomainNameRecord_Value(const QDnsDomainNameRecord* self) 
 	return _ms;
 }
 
-void QDnsDomainNameRecord_Delete(QDnsDomainNameRecord* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QDnsDomainNameRecord*>( self );
-	} else {
-		delete self;
-	}
+void QDnsDomainNameRecord_Delete(QDnsDomainNameRecord* self) {
+	delete self;
 }
 
 QDnsHostAddressRecord* QDnsHostAddressRecord_new() {
@@ -125,12 +121,8 @@ QHostAddress* QDnsHostAddressRecord_Value(const QDnsHostAddressRecord* self) {
 	return new QHostAddress(self->value());
 }
 
-void QDnsHostAddressRecord_Delete(QDnsHostAddressRecord* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QDnsHostAddressRecord*>( self );
-	} else {
-		delete self;
-	}
+void QDnsHostAddressRecord_Delete(QDnsHostAddressRecord* self) {
+	delete self;
 }
 
 QDnsMailExchangeRecord* QDnsMailExchangeRecord_new() {
@@ -181,12 +173,8 @@ unsigned int QDnsMailExchangeRecord_TimeToLive(const QDnsMailExchangeRecord* sel
 	return static_cast<unsigned int>(_ret);
 }
 
-void QDnsMailExchangeRecord_Delete(QDnsMailExchangeRecord* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QDnsMailExchangeRecord*>( self );
-	} else {
-		delete self;
-	}
+void QDnsMailExchangeRecord_Delete(QDnsMailExchangeRecord* self) {
+	delete self;
 }
 
 QDnsServiceRecord* QDnsServiceRecord_new() {
@@ -247,12 +235,8 @@ uint16_t QDnsServiceRecord_Weight(const QDnsServiceRecord* self) {
 	return static_cast<uint16_t>(_ret);
 }
 
-void QDnsServiceRecord_Delete(QDnsServiceRecord* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QDnsServiceRecord*>( self );
-	} else {
-		delete self;
-	}
+void QDnsServiceRecord_Delete(QDnsServiceRecord* self) {
+	delete self;
 }
 
 QDnsTextRecord* QDnsTextRecord_new() {
@@ -305,15 +289,11 @@ struct miqt_array /* of struct miqt_string */  QDnsTextRecord_Values(const QDnsT
 	return _out;
 }
 
-void QDnsTextRecord_Delete(QDnsTextRecord* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QDnsTextRecord*>( self );
-	} else {
-		delete self;
-	}
+void QDnsTextRecord_Delete(QDnsTextRecord* self) {
+	delete self;
 }
 
-class MiqtVirtualQDnsLookup : public virtual QDnsLookup {
+class MiqtVirtualQDnsLookup final : public QDnsLookup {
 public:
 
 	MiqtVirtualQDnsLookup(): QDnsLookup() {};
@@ -323,7 +303,7 @@ public:
 	MiqtVirtualQDnsLookup(QDnsLookup::Type typeVal, const QString& name, QObject* parent): QDnsLookup(typeVal, name, parent) {};
 	MiqtVirtualQDnsLookup(QDnsLookup::Type typeVal, const QString& name, const QHostAddress& nameserver, QObject* parent): QDnsLookup(typeVal, name, nameserver, parent) {};
 
-	virtual ~MiqtVirtualQDnsLookup() = default;
+	virtual ~MiqtVirtualQDnsLookup() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -777,67 +757,105 @@ struct miqt_string QDnsLookup_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QDnsLookup_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDnsLookup*>( (QDnsLookup*)(self) )->handle__Event = slot;
+bool QDnsLookup_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQDnsLookup* self_cast = dynamic_cast<MiqtVirtualQDnsLookup*>( (QDnsLookup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QDnsLookup_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQDnsLookup*)(self) )->virtualbase_Event(event);
 }
 
-void QDnsLookup_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDnsLookup*>( (QDnsLookup*)(self) )->handle__EventFilter = slot;
+bool QDnsLookup_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQDnsLookup* self_cast = dynamic_cast<MiqtVirtualQDnsLookup*>( (QDnsLookup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QDnsLookup_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQDnsLookup*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QDnsLookup_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDnsLookup*>( (QDnsLookup*)(self) )->handle__TimerEvent = slot;
+bool QDnsLookup_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDnsLookup* self_cast = dynamic_cast<MiqtVirtualQDnsLookup*>( (QDnsLookup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QDnsLookup_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQDnsLookup*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QDnsLookup_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDnsLookup*>( (QDnsLookup*)(self) )->handle__ChildEvent = slot;
+bool QDnsLookup_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDnsLookup* self_cast = dynamic_cast<MiqtVirtualQDnsLookup*>( (QDnsLookup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QDnsLookup_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQDnsLookup*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QDnsLookup_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDnsLookup*>( (QDnsLookup*)(self) )->handle__CustomEvent = slot;
+bool QDnsLookup_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDnsLookup* self_cast = dynamic_cast<MiqtVirtualQDnsLookup*>( (QDnsLookup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QDnsLookup_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQDnsLookup*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QDnsLookup_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDnsLookup*>( (QDnsLookup*)(self) )->handle__ConnectNotify = slot;
+bool QDnsLookup_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQDnsLookup* self_cast = dynamic_cast<MiqtVirtualQDnsLookup*>( (QDnsLookup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QDnsLookup_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDnsLookup*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QDnsLookup_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDnsLookup*>( (QDnsLookup*)(self) )->handle__DisconnectNotify = slot;
+bool QDnsLookup_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQDnsLookup* self_cast = dynamic_cast<MiqtVirtualQDnsLookup*>( (QDnsLookup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QDnsLookup_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDnsLookup*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QDnsLookup_Delete(QDnsLookup* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQDnsLookup*>( self );
-	} else {
-		delete self;
-	}
+void QDnsLookup_Delete(QDnsLookup* self) {
+	delete self;
 }
 

@@ -1106,12 +1106,8 @@ QPaintDevice* QPainter_Redirected2(QPaintDevice* device, QPoint* offset) {
 	return QPainter::redirected(device, offset);
 }
 
-void QPainter_Delete(QPainter* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPainter*>( self );
-	} else {
-		delete self;
-	}
+void QPainter_Delete(QPainter* self) {
+	delete self;
 }
 
 QPainter__PixmapFragment* QPainter__PixmapFragment_Create(QPointF* pos, QRectF* sourceRect) {
@@ -1134,11 +1130,7 @@ QPainter__PixmapFragment* QPainter__PixmapFragment_Create6(QPointF* pos, QRectF*
 	return new QPainter::PixmapFragment(QPainter::PixmapFragment::create(*pos, *sourceRect, static_cast<qreal>(scaleX), static_cast<qreal>(scaleY), static_cast<qreal>(rotation), static_cast<qreal>(opacity)));
 }
 
-void QPainter__PixmapFragment_Delete(QPainter__PixmapFragment* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPainter::PixmapFragment*>( self );
-	} else {
-		delete self;
-	}
+void QPainter__PixmapFragment_Delete(QPainter__PixmapFragment* self) {
+	delete self;
 }
 

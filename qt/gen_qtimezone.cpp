@@ -364,12 +364,8 @@ struct miqt_string QTimeZone_DisplayName32(const QTimeZone* self, int timeType, 
 	return _ms;
 }
 
-void QTimeZone_Delete(QTimeZone* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTimeZone*>( self );
-	} else {
-		delete self;
-	}
+void QTimeZone_Delete(QTimeZone* self) {
+	delete self;
 }
 
 QTimeZone__OffsetData* QTimeZone__OffsetData_new(QTimeZone__OffsetData* param1) {
@@ -380,11 +376,7 @@ void QTimeZone__OffsetData_OperatorAssign(QTimeZone__OffsetData* self, QTimeZone
 	self->operator=(*param1);
 }
 
-void QTimeZone__OffsetData_Delete(QTimeZone__OffsetData* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTimeZone::OffsetData*>( self );
-	} else {
-		delete self;
-	}
+void QTimeZone__OffsetData_Delete(QTimeZone__OffsetData* self) {
+	delete self;
 }
 

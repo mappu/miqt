@@ -11,19 +11,11 @@ extern "C" {
 } /* extern C */
 #endif
 
-void QUntypedPropertyData_Delete(QUntypedPropertyData* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QUntypedPropertyData*>( self );
-	} else {
-		delete self;
-	}
+void QUntypedPropertyData_Delete(QUntypedPropertyData* self) {
+	delete self;
 }
 
-void QPropertyProxyBindingData_Delete(QPropertyProxyBindingData* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPropertyProxyBindingData*>( self );
-	} else {
-		delete self;
-	}
+void QPropertyProxyBindingData_Delete(QPropertyProxyBindingData* self) {
+	delete self;
 }
 

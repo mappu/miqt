@@ -76,11 +76,7 @@ void QStylePainter_DrawItemText6(QStylePainter* self, QRect* r, int flags, QPale
 	self->drawItemText(*r, static_cast<int>(flags), *pal, enabled, text_QString, static_cast<QPalette::ColorRole>(textRole));
 }
 
-void QStylePainter_Delete(QStylePainter* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QStylePainter*>( self );
-	} else {
-		delete self;
-	}
+void QStylePainter_Delete(QStylePainter* self) {
+	delete self;
 }
 

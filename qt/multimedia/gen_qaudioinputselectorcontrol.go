@@ -16,8 +16,7 @@ import (
 )
 
 type QAudioInputSelectorControl struct {
-	h          *C.QAudioInputSelectorControl
-	isSubclass bool
+	h *C.QAudioInputSelectorControl
 	*QMediaControl
 }
 
@@ -216,7 +215,7 @@ func QAudioInputSelectorControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QAudioInputSelectorControl) Delete() {
-	C.QAudioInputSelectorControl_Delete(this.h, C.bool(this.isSubclass))
+	C.QAudioInputSelectorControl_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

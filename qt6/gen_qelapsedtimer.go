@@ -23,8 +23,7 @@ const (
 )
 
 type QElapsedTimer struct {
-	h          *C.QElapsedTimer
-	isSubclass bool
+	h *C.QElapsedTimer
 }
 
 func (this *QElapsedTimer) cPointer() *C.QElapsedTimer {
@@ -58,9 +57,7 @@ func UnsafeNewQElapsedTimer(h unsafe.Pointer) *QElapsedTimer {
 // NewQElapsedTimer constructs a new QElapsedTimer object.
 func NewQElapsedTimer() *QElapsedTimer {
 
-	ret := newQElapsedTimer(C.QElapsedTimer_new())
-	ret.isSubclass = true
-	return ret
+	return newQElapsedTimer(C.QElapsedTimer_new())
 }
 
 func QElapsedTimer_ClockType() QElapsedTimer__ClockType {
@@ -113,7 +110,7 @@ func (this *QElapsedTimer) SecsTo(other *QElapsedTimer) int64 {
 
 // Delete this object from C++ memory.
 func (this *QElapsedTimer) Delete() {
-	C.QElapsedTimer_Delete(this.h, C.bool(this.isSubclass))
+	C.QElapsedTimer_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

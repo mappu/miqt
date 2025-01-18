@@ -14,8 +14,7 @@ import (
 )
 
 type QContiguousCacheData struct {
-	h          *C.QContiguousCacheData
-	isSubclass bool
+	h *C.QContiguousCacheData
 }
 
 func (this *QContiguousCacheData) cPointer() *C.QContiguousCacheData {
@@ -56,7 +55,7 @@ func QContiguousCacheData_FreeData(data *QContiguousCacheData) {
 
 // Delete this object from C++ memory.
 func (this *QContiguousCacheData) Delete() {
-	C.QContiguousCacheData_Delete(this.h, C.bool(this.isSubclass))
+	C.QContiguousCacheData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -42,8 +42,7 @@ const (
 )
 
 type QAction struct {
-	h          *C.QAction
-	isSubclass bool
+	h *C.QAction
 	*QObject
 }
 
@@ -81,9 +80,7 @@ func UnsafeNewQAction(h unsafe.Pointer) *QAction {
 // NewQAction constructs a new QAction object.
 func NewQAction() *QAction {
 
-	ret := newQAction(C.QAction_new())
-	ret.isSubclass = true
-	return ret
+	return newQAction(C.QAction_new())
 }
 
 // NewQAction2 constructs a new QAction object.
@@ -93,9 +90,7 @@ func NewQAction2(text string) *QAction {
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQAction(C.QAction_new2(text_ms))
-	ret.isSubclass = true
-	return ret
+	return newQAction(C.QAction_new2(text_ms))
 }
 
 // NewQAction3 constructs a new QAction object.
@@ -105,17 +100,13 @@ func NewQAction3(icon *QIcon, text string) *QAction {
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQAction(C.QAction_new3(icon.cPointer(), text_ms))
-	ret.isSubclass = true
-	return ret
+	return newQAction(C.QAction_new3(icon.cPointer(), text_ms))
 }
 
 // NewQAction4 constructs a new QAction object.
 func NewQAction4(parent *QObject) *QAction {
 
-	ret := newQAction(C.QAction_new4(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQAction(C.QAction_new4(parent.cPointer()))
 }
 
 // NewQAction5 constructs a new QAction object.
@@ -125,9 +116,7 @@ func NewQAction5(text string, parent *QObject) *QAction {
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQAction(C.QAction_new5(text_ms, parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQAction(C.QAction_new5(text_ms, parent.cPointer()))
 }
 
 // NewQAction6 constructs a new QAction object.
@@ -137,9 +126,7 @@ func NewQAction6(icon *QIcon, text string, parent *QObject) *QAction {
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQAction(C.QAction_new6(icon.cPointer(), text_ms, parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQAction(C.QAction_new6(icon.cPointer(), text_ms, parent.cPointer()))
 }
 
 func (this *QAction) MetaObject() *QMetaObject {
@@ -608,10 +595,10 @@ func (this *QAction) callVirtualBase_Event(param1 *QEvent) bool {
 
 }
 func (this *QAction) OnEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QAction_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAction_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAction_Event
@@ -636,10 +623,10 @@ func (this *QAction) callVirtualBase_EventFilter(watched *QObject, event *QEvent
 
 }
 func (this *QAction) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QAction_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAction_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAction_EventFilter
@@ -666,10 +653,10 @@ func (this *QAction) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QAction) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QAction_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAction_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAction_TimerEvent
@@ -692,10 +679,10 @@ func (this *QAction) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QAction) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QAction_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAction_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAction_ChildEvent
@@ -718,10 +705,10 @@ func (this *QAction) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QAction) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QAction_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAction_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAction_CustomEvent
@@ -744,10 +731,10 @@ func (this *QAction) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QAction) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QAction_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAction_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAction_ConnectNotify
@@ -770,10 +757,10 @@ func (this *QAction) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QAction) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QAction_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAction_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAction_DisconnectNotify
@@ -792,7 +779,7 @@ func miqt_exec_callback_QAction_DisconnectNotify(self *C.QAction, cb C.intptr_t,
 
 // Delete this object from C++ memory.
 func (this *QAction) Delete() {
-	C.QAction_Delete(this.h, C.bool(this.isSubclass))
+	C.QAction_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -163,11 +163,7 @@ struct miqt_string QVideoEncoderSettingsControl_TrUtf83(const char* s, const cha
 	return _ms;
 }
 
-void QVideoEncoderSettingsControl_Delete(QVideoEncoderSettingsControl* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QVideoEncoderSettingsControl*>( self );
-	} else {
-		delete self;
-	}
+void QVideoEncoderSettingsControl_Delete(QVideoEncoderSettingsControl* self) {
+	delete self;
 }
 

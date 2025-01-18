@@ -10,11 +10,7 @@ extern "C" {
 } /* extern C */
 #endif
 
-void QInternal_Delete(QInternal* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QInternal*>( self );
-	} else {
-		delete self;
-	}
+void QInternal_Delete(QInternal* self) {
+	delete self;
 }
 

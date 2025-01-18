@@ -47,14 +47,14 @@ QMediaService* miqt_exec_callback_QMediaPlayer_Service(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQMediaPlayer : public virtual QMediaPlayer {
+class MiqtVirtualQMediaPlayer final : public QMediaPlayer {
 public:
 
 	MiqtVirtualQMediaPlayer(): QMediaPlayer() {};
 	MiqtVirtualQMediaPlayer(QObject* parent): QMediaPlayer(parent) {};
 	MiqtVirtualQMediaPlayer(QObject* parent, QMediaPlayer::Flags flags): QMediaPlayer(parent, flags) {};
 
-	virtual ~MiqtVirtualQMediaPlayer() = default;
+	virtual ~MiqtVirtualQMediaPlayer() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Availability = 0;
@@ -771,51 +771,77 @@ void QMediaPlayer_SetMedia2(QMediaPlayer* self, QMediaContent* media, QIODevice*
 	self->setMedia(*media, stream);
 }
 
-void QMediaPlayer_override_virtual_Availability(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) )->handle__Availability = slot;
+bool QMediaPlayer_override_virtual_Availability(void* self, intptr_t slot) {
+	MiqtVirtualQMediaPlayer* self_cast = dynamic_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Availability = slot;
+	return true;
 }
 
 int QMediaPlayer_virtualbase_Availability(const void* self) {
 	return ( (const MiqtVirtualQMediaPlayer*)(self) )->virtualbase_Availability();
 }
 
-void QMediaPlayer_override_virtual_Bind(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) )->handle__Bind = slot;
+bool QMediaPlayer_override_virtual_Bind(void* self, intptr_t slot) {
+	MiqtVirtualQMediaPlayer* self_cast = dynamic_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Bind = slot;
+	return true;
 }
 
 bool QMediaPlayer_virtualbase_Bind(void* self, QObject* param1) {
 	return ( (MiqtVirtualQMediaPlayer*)(self) )->virtualbase_Bind(param1);
 }
 
-void QMediaPlayer_override_virtual_Unbind(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) )->handle__Unbind = slot;
+bool QMediaPlayer_override_virtual_Unbind(void* self, intptr_t slot) {
+	MiqtVirtualQMediaPlayer* self_cast = dynamic_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Unbind = slot;
+	return true;
 }
 
 void QMediaPlayer_virtualbase_Unbind(void* self, QObject* param1) {
 	( (MiqtVirtualQMediaPlayer*)(self) )->virtualbase_Unbind(param1);
 }
 
-void QMediaPlayer_override_virtual_IsAvailable(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) )->handle__IsAvailable = slot;
+bool QMediaPlayer_override_virtual_IsAvailable(void* self, intptr_t slot) {
+	MiqtVirtualQMediaPlayer* self_cast = dynamic_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsAvailable = slot;
+	return true;
 }
 
 bool QMediaPlayer_virtualbase_IsAvailable(const void* self) {
 	return ( (const MiqtVirtualQMediaPlayer*)(self) )->virtualbase_IsAvailable();
 }
 
-void QMediaPlayer_override_virtual_Service(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) )->handle__Service = slot;
+bool QMediaPlayer_override_virtual_Service(void* self, intptr_t slot) {
+	MiqtVirtualQMediaPlayer* self_cast = dynamic_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Service = slot;
+	return true;
 }
 
 QMediaService* QMediaPlayer_virtualbase_Service(const void* self) {
 	return ( (const MiqtVirtualQMediaPlayer*)(self) )->virtualbase_Service();
 }
 
-void QMediaPlayer_Delete(QMediaPlayer* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQMediaPlayer*>( self );
-	} else {
-		delete self;
-	}
+void QMediaPlayer_Delete(QMediaPlayer* self) {
+	delete self;
 }
 

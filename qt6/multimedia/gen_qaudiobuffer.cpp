@@ -83,11 +83,7 @@ long long QAudioBuffer_StartTime(const QAudioBuffer* self) {
 	return static_cast<long long>(_ret);
 }
 
-void QAudioBuffer_Delete(QAudioBuffer* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QAudioBuffer*>( self );
-	} else {
-		delete self;
-	}
+void QAudioBuffer_Delete(QAudioBuffer* self) {
+	delete self;
 }
 

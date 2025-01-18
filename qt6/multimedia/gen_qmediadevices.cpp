@@ -32,13 +32,13 @@ void miqt_exec_callback_QMediaDevices_DisconnectNotify(void*, intptr_t, QMetaMet
 } /* extern C */
 #endif
 
-class MiqtVirtualQMediaDevices : public virtual QMediaDevices {
+class MiqtVirtualQMediaDevices final : public QMediaDevices {
 public:
 
 	MiqtVirtualQMediaDevices(): QMediaDevices() {};
 	MiqtVirtualQMediaDevices(QObject* parent): QMediaDevices(parent) {};
 
-	virtual ~MiqtVirtualQMediaDevices() = default;
+	virtual ~MiqtVirtualQMediaDevices() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -347,67 +347,105 @@ struct miqt_string QMediaDevices_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QMediaDevices_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMediaDevices*>( (QMediaDevices*)(self) )->handle__Event = slot;
+bool QMediaDevices_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQMediaDevices* self_cast = dynamic_cast<MiqtVirtualQMediaDevices*>( (QMediaDevices*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QMediaDevices_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQMediaDevices*)(self) )->virtualbase_Event(event);
 }
 
-void QMediaDevices_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMediaDevices*>( (QMediaDevices*)(self) )->handle__EventFilter = slot;
+bool QMediaDevices_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQMediaDevices* self_cast = dynamic_cast<MiqtVirtualQMediaDevices*>( (QMediaDevices*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QMediaDevices_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQMediaDevices*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QMediaDevices_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMediaDevices*>( (QMediaDevices*)(self) )->handle__TimerEvent = slot;
+bool QMediaDevices_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMediaDevices* self_cast = dynamic_cast<MiqtVirtualQMediaDevices*>( (QMediaDevices*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QMediaDevices_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQMediaDevices*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QMediaDevices_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMediaDevices*>( (QMediaDevices*)(self) )->handle__ChildEvent = slot;
+bool QMediaDevices_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMediaDevices* self_cast = dynamic_cast<MiqtVirtualQMediaDevices*>( (QMediaDevices*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QMediaDevices_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQMediaDevices*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QMediaDevices_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMediaDevices*>( (QMediaDevices*)(self) )->handle__CustomEvent = slot;
+bool QMediaDevices_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMediaDevices* self_cast = dynamic_cast<MiqtVirtualQMediaDevices*>( (QMediaDevices*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QMediaDevices_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQMediaDevices*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QMediaDevices_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMediaDevices*>( (QMediaDevices*)(self) )->handle__ConnectNotify = slot;
+bool QMediaDevices_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQMediaDevices* self_cast = dynamic_cast<MiqtVirtualQMediaDevices*>( (QMediaDevices*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QMediaDevices_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMediaDevices*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QMediaDevices_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMediaDevices*>( (QMediaDevices*)(self) )->handle__DisconnectNotify = slot;
+bool QMediaDevices_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQMediaDevices* self_cast = dynamic_cast<MiqtVirtualQMediaDevices*>( (QMediaDevices*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QMediaDevices_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMediaDevices*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QMediaDevices_Delete(QMediaDevices* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQMediaDevices*>( self );
-	} else {
-		delete self;
-	}
+void QMediaDevices_Delete(QMediaDevices* self) {
+	delete self;
 }
 

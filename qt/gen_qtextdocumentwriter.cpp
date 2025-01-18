@@ -111,11 +111,7 @@ struct miqt_array /* of struct miqt_string */  QTextDocumentWriter_SupportedDocu
 	return _out;
 }
 
-void QTextDocumentWriter_Delete(QTextDocumentWriter* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextDocumentWriter*>( self );
-	} else {
-		delete self;
-	}
+void QTextDocumentWriter_Delete(QTextDocumentWriter* self) {
+	delete self;
 }
 

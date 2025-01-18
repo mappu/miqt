@@ -68,8 +68,7 @@ const (
 )
 
 type QEasingCurve struct {
-	h          *C.QEasingCurve
-	isSubclass bool
+	h *C.QEasingCurve
 }
 
 func (this *QEasingCurve) cPointer() *C.QEasingCurve {
@@ -103,25 +102,19 @@ func UnsafeNewQEasingCurve(h unsafe.Pointer) *QEasingCurve {
 // NewQEasingCurve constructs a new QEasingCurve object.
 func NewQEasingCurve() *QEasingCurve {
 
-	ret := newQEasingCurve(C.QEasingCurve_new())
-	ret.isSubclass = true
-	return ret
+	return newQEasingCurve(C.QEasingCurve_new())
 }
 
 // NewQEasingCurve2 constructs a new QEasingCurve object.
 func NewQEasingCurve2(other *QEasingCurve) *QEasingCurve {
 
-	ret := newQEasingCurve(C.QEasingCurve_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQEasingCurve(C.QEasingCurve_new2(other.cPointer()))
 }
 
 // NewQEasingCurve3 constructs a new QEasingCurve object.
 func NewQEasingCurve3(typeVal QEasingCurve__Type) *QEasingCurve {
 
-	ret := newQEasingCurve(C.QEasingCurve_new3((C.int)(typeVal)))
-	ret.isSubclass = true
-	return ret
+	return newQEasingCurve(C.QEasingCurve_new3((C.int)(typeVal)))
 }
 
 func (this *QEasingCurve) OperatorAssign(other *QEasingCurve) {
@@ -198,7 +191,7 @@ func (this *QEasingCurve) ValueForProgress(progress float64) float64 {
 
 // Delete this object from C++ memory.
 func (this *QEasingCurve) Delete() {
-	C.QEasingCurve_Delete(this.h, C.bool(this.isSubclass))
+	C.QEasingCurve_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

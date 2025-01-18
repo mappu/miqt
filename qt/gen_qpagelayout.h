@@ -68,7 +68,7 @@ QRectF* QPageLayout_PaintRectWithUnits(const QPageLayout* self, int units);
 QRect* QPageLayout_PaintRectPoints(const QPageLayout* self);
 QRect* QPageLayout_PaintRectPixels(const QPageLayout* self, int resolution);
 void QPageLayout_SetPageSize2(QPageLayout* self, QPageSize* pageSize, QMarginsF* minMargins);
-void QPageLayout_Delete(QPageLayout* self, bool isSubclass);
+void QPageLayout_Delete(QPageLayout* self);
 
 #ifdef __cplusplus
 } /* extern C */

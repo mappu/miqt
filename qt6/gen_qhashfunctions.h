@@ -25,7 +25,7 @@ QHashSeed* QHashSeed_new2(size_t d);
 QHashSeed* QHashSeed_GlobalSeed();
 void QHashSeed_SetDeterministicGlobalSeed();
 void QHashSeed_ResetRandomGlobalSeed();
-void QHashSeed_Delete(QHashSeed* self, bool isSubclass);
+void QHashSeed_Delete(QHashSeed* self);
 
 #ifdef __cplusplus
 } /* extern C */

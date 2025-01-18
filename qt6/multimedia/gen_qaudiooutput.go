@@ -16,8 +16,7 @@ import (
 )
 
 type QAudioOutput struct {
-	h          *C.QAudioOutput
-	isSubclass bool
+	h *C.QAudioOutput
 	*qt6.QObject
 }
 
@@ -55,33 +54,25 @@ func UnsafeNewQAudioOutput(h unsafe.Pointer) *QAudioOutput {
 // NewQAudioOutput constructs a new QAudioOutput object.
 func NewQAudioOutput() *QAudioOutput {
 
-	ret := newQAudioOutput(C.QAudioOutput_new())
-	ret.isSubclass = true
-	return ret
+	return newQAudioOutput(C.QAudioOutput_new())
 }
 
 // NewQAudioOutput2 constructs a new QAudioOutput object.
 func NewQAudioOutput2(device *QAudioDevice) *QAudioOutput {
 
-	ret := newQAudioOutput(C.QAudioOutput_new2(device.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQAudioOutput(C.QAudioOutput_new2(device.cPointer()))
 }
 
 // NewQAudioOutput3 constructs a new QAudioOutput object.
 func NewQAudioOutput3(parent *qt6.QObject) *QAudioOutput {
 
-	ret := newQAudioOutput(C.QAudioOutput_new3((*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQAudioOutput(C.QAudioOutput_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 // NewQAudioOutput4 constructs a new QAudioOutput object.
 func NewQAudioOutput4(device *QAudioDevice, parent *qt6.QObject) *QAudioOutput {
 
-	ret := newQAudioOutput(C.QAudioOutput_new4(device.cPointer(), (*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQAudioOutput(C.QAudioOutput_new4(device.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QAudioOutput) MetaObject() *qt6.QMetaObject {
@@ -214,10 +205,10 @@ func (this *QAudioOutput) callVirtualBase_Event(event *qt6.QEvent) bool {
 
 }
 func (this *QAudioOutput) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QAudioOutput_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAudioOutput_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioOutput_Event
@@ -242,10 +233,10 @@ func (this *QAudioOutput) callVirtualBase_EventFilter(watched *qt6.QObject, even
 
 }
 func (this *QAudioOutput) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QAudioOutput_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAudioOutput_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioOutput_EventFilter
@@ -272,10 +263,10 @@ func (this *QAudioOutput) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
 
 }
 func (this *QAudioOutput) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QAudioOutput_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAudioOutput_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioOutput_TimerEvent
@@ -298,10 +289,10 @@ func (this *QAudioOutput) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
 
 }
 func (this *QAudioOutput) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QAudioOutput_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAudioOutput_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioOutput_ChildEvent
@@ -324,10 +315,10 @@ func (this *QAudioOutput) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 
 }
 func (this *QAudioOutput) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
-	if !this.isSubclass {
+	ok := C.QAudioOutput_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAudioOutput_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioOutput_CustomEvent
@@ -350,10 +341,10 @@ func (this *QAudioOutput) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod)
 
 }
 func (this *QAudioOutput) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QAudioOutput_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAudioOutput_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioOutput_ConnectNotify
@@ -376,10 +367,10 @@ func (this *QAudioOutput) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMeth
 
 }
 func (this *QAudioOutput) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QAudioOutput_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAudioOutput_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioOutput_DisconnectNotify
@@ -398,7 +389,7 @@ func miqt_exec_callback_QAudioOutput_DisconnectNotify(self *C.QAudioOutput, cb C
 
 // Delete this object from C++ memory.
 func (this *QAudioOutput) Delete() {
-	C.QAudioOutput_Delete(this.h, C.bool(this.isSubclass))
+	C.QAudioOutput_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

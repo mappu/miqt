@@ -55,7 +55,7 @@ void QGlyphRun_SetBoundingRect(QGlyphRun* self, QRectF* boundingRect);
 QRectF* QGlyphRun_BoundingRect(const QGlyphRun* self);
 bool QGlyphRun_IsEmpty(const QGlyphRun* self);
 void QGlyphRun_SetFlag2(QGlyphRun* self, int flag, bool enabled);
-void QGlyphRun_Delete(QGlyphRun* self, bool isSubclass);
+void QGlyphRun_Delete(QGlyphRun* self);
 
 #ifdef __cplusplus
 } /* extern C */

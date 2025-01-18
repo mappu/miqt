@@ -14,8 +14,7 @@ import (
 )
 
 type QLoggingCategory struct {
-	h          *C.QLoggingCategory
-	isSubclass bool
+	h *C.QLoggingCategory
 }
 
 func (this *QLoggingCategory) cPointer() *C.QLoggingCategory {
@@ -51,9 +50,7 @@ func NewQLoggingCategory(category string) *QLoggingCategory {
 	category_Cstring := C.CString(category)
 	defer C.free(unsafe.Pointer(category_Cstring))
 
-	ret := newQLoggingCategory(C.QLoggingCategory_new(category_Cstring))
-	ret.isSubclass = true
-	return ret
+	return newQLoggingCategory(C.QLoggingCategory_new(category_Cstring))
 }
 
 func (this *QLoggingCategory) IsDebugEnabled() bool {
@@ -99,7 +96,7 @@ func QLoggingCategory_SetFilterRules(rules string) {
 
 // Delete this object from C++ memory.
 func (this *QLoggingCategory) Delete() {
-	C.QLoggingCategory_Delete(this.h, C.bool(this.isSubclass))
+	C.QLoggingCategory_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

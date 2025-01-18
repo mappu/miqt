@@ -15,8 +15,7 @@ import (
 )
 
 type QUndoCommand struct {
-	h          *C.QUndoCommand
-	isSubclass bool
+	h *C.QUndoCommand
 }
 
 func (this *QUndoCommand) cPointer() *C.QUndoCommand {
@@ -50,9 +49,7 @@ func UnsafeNewQUndoCommand(h unsafe.Pointer) *QUndoCommand {
 // NewQUndoCommand constructs a new QUndoCommand object.
 func NewQUndoCommand() *QUndoCommand {
 
-	ret := newQUndoCommand(C.QUndoCommand_new())
-	ret.isSubclass = true
-	return ret
+	return newQUndoCommand(C.QUndoCommand_new())
 }
 
 // NewQUndoCommand2 constructs a new QUndoCommand object.
@@ -62,17 +59,13 @@ func NewQUndoCommand2(text string) *QUndoCommand {
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQUndoCommand(C.QUndoCommand_new2(text_ms))
-	ret.isSubclass = true
-	return ret
+	return newQUndoCommand(C.QUndoCommand_new2(text_ms))
 }
 
 // NewQUndoCommand3 constructs a new QUndoCommand object.
 func NewQUndoCommand3(parent *QUndoCommand) *QUndoCommand {
 
-	ret := newQUndoCommand(C.QUndoCommand_new3(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQUndoCommand(C.QUndoCommand_new3(parent.cPointer()))
 }
 
 // NewQUndoCommand4 constructs a new QUndoCommand object.
@@ -82,9 +75,7 @@ func NewQUndoCommand4(text string, parent *QUndoCommand) *QUndoCommand {
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQUndoCommand(C.QUndoCommand_new4(text_ms, parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQUndoCommand(C.QUndoCommand_new4(text_ms, parent.cPointer()))
 }
 
 func (this *QUndoCommand) Undo() {
@@ -147,10 +138,10 @@ func (this *QUndoCommand) callVirtualBase_Undo() {
 
 }
 func (this *QUndoCommand) OnUndo(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QUndoCommand_override_virtual_Undo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QUndoCommand_override_virtual_Undo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QUndoCommand_Undo
@@ -170,10 +161,10 @@ func (this *QUndoCommand) callVirtualBase_Redo() {
 
 }
 func (this *QUndoCommand) OnRedo(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QUndoCommand_override_virtual_Redo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QUndoCommand_override_virtual_Redo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QUndoCommand_Redo
@@ -193,10 +184,10 @@ func (this *QUndoCommand) callVirtualBase_Id() int {
 
 }
 func (this *QUndoCommand) OnId(slot func(super func() int) int) {
-	if !this.isSubclass {
+	ok := C.QUndoCommand_override_virtual_Id(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QUndoCommand_override_virtual_Id(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QUndoCommand_Id
@@ -218,10 +209,10 @@ func (this *QUndoCommand) callVirtualBase_MergeWith(other *QUndoCommand) bool {
 
 }
 func (this *QUndoCommand) OnMergeWith(slot func(super func(other *QUndoCommand) bool, other *QUndoCommand) bool) {
-	if !this.isSubclass {
+	ok := C.QUndoCommand_override_virtual_MergeWith(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QUndoCommand_override_virtual_MergeWith(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QUndoCommand_MergeWith
@@ -242,7 +233,7 @@ func miqt_exec_callback_QUndoCommand_MergeWith(self *C.QUndoCommand, cb C.intptr
 
 // Delete this object from C++ memory.
 func (this *QUndoCommand) Delete() {
-	C.QUndoCommand_Delete(this.h, C.bool(this.isSubclass))
+	C.QUndoCommand_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -255,8 +246,7 @@ func (this *QUndoCommand) GoGC() {
 }
 
 type QUndoStack struct {
-	h          *C.QUndoStack
-	isSubclass bool
+	h *C.QUndoStack
 	*QObject
 }
 
@@ -294,17 +284,13 @@ func UnsafeNewQUndoStack(h unsafe.Pointer) *QUndoStack {
 // NewQUndoStack constructs a new QUndoStack object.
 func NewQUndoStack() *QUndoStack {
 
-	ret := newQUndoStack(C.QUndoStack_new())
-	ret.isSubclass = true
-	return ret
+	return newQUndoStack(C.QUndoStack_new())
 }
 
 // NewQUndoStack2 constructs a new QUndoStack object.
 func NewQUndoStack2(parent *QObject) *QUndoStack {
 
-	ret := newQUndoStack(C.QUndoStack_new2(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQUndoStack(C.QUndoStack_new2(parent.cPointer()))
 }
 
 func (this *QUndoStack) MetaObject() *QMetaObject {
@@ -652,10 +638,10 @@ func (this *QUndoStack) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QUndoStack) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QUndoStack_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QUndoStack_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QUndoStack_Event
@@ -680,10 +666,10 @@ func (this *QUndoStack) callVirtualBase_EventFilter(watched *QObject, event *QEv
 
 }
 func (this *QUndoStack) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QUndoStack_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QUndoStack_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QUndoStack_EventFilter
@@ -710,10 +696,10 @@ func (this *QUndoStack) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QUndoStack) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QUndoStack_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QUndoStack_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QUndoStack_TimerEvent
@@ -736,10 +722,10 @@ func (this *QUndoStack) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QUndoStack) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QUndoStack_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QUndoStack_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QUndoStack_ChildEvent
@@ -762,10 +748,10 @@ func (this *QUndoStack) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QUndoStack) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QUndoStack_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QUndoStack_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QUndoStack_CustomEvent
@@ -788,10 +774,10 @@ func (this *QUndoStack) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QUndoStack) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QUndoStack_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QUndoStack_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QUndoStack_ConnectNotify
@@ -814,10 +800,10 @@ func (this *QUndoStack) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QUndoStack) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QUndoStack_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QUndoStack_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QUndoStack_DisconnectNotify
@@ -836,7 +822,7 @@ func miqt_exec_callback_QUndoStack_DisconnectNotify(self *C.QUndoStack, cb C.int
 
 // Delete this object from C++ memory.
 func (this *QUndoStack) Delete() {
-	C.QUndoStack_Delete(this.h, C.bool(this.isSubclass))
+	C.QUndoStack_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

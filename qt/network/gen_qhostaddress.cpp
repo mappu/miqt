@@ -20,12 +20,8 @@ unsigned char QIPv6Address_OperatorSubscript(const QIPv6Address* self, int index
 	return static_cast<unsigned char>(_ret);
 }
 
-void QIPv6Address_Delete(QIPv6Address* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QIPv6Address*>( self );
-	} else {
-		delete self;
-	}
+void QIPv6Address_Delete(QIPv6Address* self) {
+	delete self;
 }
 
 QHostAddress* QHostAddress_new() {
@@ -237,11 +233,7 @@ bool QHostAddress_IsEqual2(const QHostAddress* self, QHostAddress* address, int 
 	return self->isEqual(*address, static_cast<QHostAddress::ConversionMode>(mode));
 }
 
-void QHostAddress_Delete(QHostAddress* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QHostAddress*>( self );
-	} else {
-		delete self;
-	}
+void QHostAddress_Delete(QHostAddress* self) {
+	delete self;
 }
 

@@ -30,7 +30,7 @@ long long miqt_exec_callback_QSaveFile_ReadLineData(void*, intptr_t, char*, long
 } /* extern C */
 #endif
 
-class MiqtVirtualQSaveFile : public virtual QSaveFile {
+class MiqtVirtualQSaveFile final : public QSaveFile {
 public:
 
 	MiqtVirtualQSaveFile(const QString& name): QSaveFile(name) {};
@@ -38,7 +38,7 @@ public:
 	MiqtVirtualQSaveFile(const QString& name, QObject* parent): QSaveFile(name, parent) {};
 	MiqtVirtualQSaveFile(QObject* parent): QSaveFile(parent) {};
 
-	virtual ~MiqtVirtualQSaveFile() = default;
+	virtual ~MiqtVirtualQSaveFile() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__FileName = 0;
@@ -491,115 +491,189 @@ struct miqt_string QSaveFile_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QSaveFile_override_virtual_FileName(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) )->handle__FileName = slot;
+bool QSaveFile_override_virtual_FileName(void* self, intptr_t slot) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FileName = slot;
+	return true;
 }
 
 struct miqt_string QSaveFile_virtualbase_FileName(const void* self) {
 	return ( (const MiqtVirtualQSaveFile*)(self) )->virtualbase_FileName();
 }
 
-void QSaveFile_override_virtual_Open(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) )->handle__Open = slot;
+bool QSaveFile_override_virtual_Open(void* self, intptr_t slot) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Open = slot;
+	return true;
 }
 
 bool QSaveFile_virtualbase_Open(void* self, int flags) {
 	return ( (MiqtVirtualQSaveFile*)(self) )->virtualbase_Open(flags);
 }
 
-void QSaveFile_override_virtual_WriteData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) )->handle__WriteData = slot;
+bool QSaveFile_override_virtual_WriteData(void* self, intptr_t slot) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WriteData = slot;
+	return true;
 }
 
 long long QSaveFile_virtualbase_WriteData(void* self, const char* data, long long lenVal) {
 	return ( (MiqtVirtualQSaveFile*)(self) )->virtualbase_WriteData(data, lenVal);
 }
 
-void QSaveFile_override_virtual_IsSequential(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) )->handle__IsSequential = slot;
+bool QSaveFile_override_virtual_IsSequential(void* self, intptr_t slot) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsSequential = slot;
+	return true;
 }
 
 bool QSaveFile_virtualbase_IsSequential(const void* self) {
 	return ( (const MiqtVirtualQSaveFile*)(self) )->virtualbase_IsSequential();
 }
 
-void QSaveFile_override_virtual_Pos(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) )->handle__Pos = slot;
+bool QSaveFile_override_virtual_Pos(void* self, intptr_t slot) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Pos = slot;
+	return true;
 }
 
 long long QSaveFile_virtualbase_Pos(const void* self) {
 	return ( (const MiqtVirtualQSaveFile*)(self) )->virtualbase_Pos();
 }
 
-void QSaveFile_override_virtual_Seek(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) )->handle__Seek = slot;
+bool QSaveFile_override_virtual_Seek(void* self, intptr_t slot) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Seek = slot;
+	return true;
 }
 
 bool QSaveFile_virtualbase_Seek(void* self, long long offset) {
 	return ( (MiqtVirtualQSaveFile*)(self) )->virtualbase_Seek(offset);
 }
 
-void QSaveFile_override_virtual_AtEnd(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) )->handle__AtEnd = slot;
+bool QSaveFile_override_virtual_AtEnd(void* self, intptr_t slot) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__AtEnd = slot;
+	return true;
 }
 
 bool QSaveFile_virtualbase_AtEnd(const void* self) {
 	return ( (const MiqtVirtualQSaveFile*)(self) )->virtualbase_AtEnd();
 }
 
-void QSaveFile_override_virtual_Size(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) )->handle__Size = slot;
+bool QSaveFile_override_virtual_Size(void* self, intptr_t slot) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Size = slot;
+	return true;
 }
 
 long long QSaveFile_virtualbase_Size(const void* self) {
 	return ( (const MiqtVirtualQSaveFile*)(self) )->virtualbase_Size();
 }
 
-void QSaveFile_override_virtual_Resize(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) )->handle__Resize = slot;
+bool QSaveFile_override_virtual_Resize(void* self, intptr_t slot) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Resize = slot;
+	return true;
 }
 
 bool QSaveFile_virtualbase_Resize(void* self, long long sz) {
 	return ( (MiqtVirtualQSaveFile*)(self) )->virtualbase_Resize(sz);
 }
 
-void QSaveFile_override_virtual_Permissions(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) )->handle__Permissions = slot;
+bool QSaveFile_override_virtual_Permissions(void* self, intptr_t slot) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Permissions = slot;
+	return true;
 }
 
 int QSaveFile_virtualbase_Permissions(const void* self) {
 	return ( (const MiqtVirtualQSaveFile*)(self) )->virtualbase_Permissions();
 }
 
-void QSaveFile_override_virtual_SetPermissions(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) )->handle__SetPermissions = slot;
+bool QSaveFile_override_virtual_SetPermissions(void* self, intptr_t slot) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetPermissions = slot;
+	return true;
 }
 
 bool QSaveFile_virtualbase_SetPermissions(void* self, int permissionSpec) {
 	return ( (MiqtVirtualQSaveFile*)(self) )->virtualbase_SetPermissions(permissionSpec);
 }
 
-void QSaveFile_override_virtual_ReadData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) )->handle__ReadData = slot;
+bool QSaveFile_override_virtual_ReadData(void* self, intptr_t slot) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ReadData = slot;
+	return true;
 }
 
 long long QSaveFile_virtualbase_ReadData(void* self, char* data, long long maxlen) {
 	return ( (MiqtVirtualQSaveFile*)(self) )->virtualbase_ReadData(data, maxlen);
 }
 
-void QSaveFile_override_virtual_ReadLineData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) )->handle__ReadLineData = slot;
+bool QSaveFile_override_virtual_ReadLineData(void* self, intptr_t slot) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ReadLineData = slot;
+	return true;
 }
 
 long long QSaveFile_virtualbase_ReadLineData(void* self, char* data, long long maxlen) {
 	return ( (MiqtVirtualQSaveFile*)(self) )->virtualbase_ReadLineData(data, maxlen);
 }
 
-void QSaveFile_Delete(QSaveFile* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSaveFile*>( self );
-	} else {
-		delete self;
-	}
+void QSaveFile_Delete(QSaveFile* self) {
+	delete self;
 }
 

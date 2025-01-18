@@ -14,8 +14,7 @@ import (
 )
 
 type QStaticPlugin struct {
-	h          *C.QStaticPlugin
-	isSubclass bool
+	h *C.QStaticPlugin
 }
 
 func (this *QStaticPlugin) cPointer() *C.QStaticPlugin {
@@ -54,7 +53,7 @@ func (this *QStaticPlugin) MetaData() *QJsonObject {
 
 // Delete this object from C++ memory.
 func (this *QStaticPlugin) Delete() {
-	C.QStaticPlugin_Delete(this.h, C.bool(this.isSubclass))
+	C.QStaticPlugin_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

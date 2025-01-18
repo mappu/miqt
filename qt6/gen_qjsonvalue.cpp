@@ -202,12 +202,8 @@ double QJsonValue_ToDouble1(const QJsonValue* self, double defaultValue) {
 	return self->toDouble(static_cast<double>(defaultValue));
 }
 
-void QJsonValue_Delete(QJsonValue* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QJsonValue*>( self );
-	} else {
-		delete self;
-	}
+void QJsonValue_Delete(QJsonValue* self) {
+	delete self;
 }
 
 QJsonValueConstRef* QJsonValueConstRef_new(QJsonValueConstRef* param1) {
@@ -332,12 +328,8 @@ struct miqt_string QJsonValueConstRef_ToString1(const QJsonValueConstRef* self, 
 	return _ms;
 }
 
-void QJsonValueConstRef_Delete(QJsonValueConstRef* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QJsonValueConstRef*>( self );
-	} else {
-		delete self;
-	}
+void QJsonValueConstRef_Delete(QJsonValueConstRef* self) {
+	delete self;
 }
 
 QJsonValueRef* QJsonValueRef_new(QJsonValueRef* param1) {
@@ -482,11 +474,7 @@ struct miqt_string QJsonValueRef_ToString1(const QJsonValueRef* self, struct miq
 	return _ms;
 }
 
-void QJsonValueRef_Delete(QJsonValueRef* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QJsonValueRef*>( self );
-	} else {
-		delete self;
-	}
+void QJsonValueRef_Delete(QJsonValueRef* self) {
+	delete self;
 }
 

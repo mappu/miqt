@@ -34,14 +34,14 @@ void miqt_exec_callback_QOffscreenSurface_DisconnectNotify(void*, intptr_t, QMet
 } /* extern C */
 #endif
 
-class MiqtVirtualQOffscreenSurface : public virtual QOffscreenSurface {
+class MiqtVirtualQOffscreenSurface final : public QOffscreenSurface {
 public:
 
 	MiqtVirtualQOffscreenSurface(QScreen* screen, QObject* parent): QOffscreenSurface(screen, parent) {};
 	MiqtVirtualQOffscreenSurface(): QOffscreenSurface() {};
 	MiqtVirtualQOffscreenSurface(QScreen* screen): QOffscreenSurface(screen) {};
 
-	virtual ~MiqtVirtualQOffscreenSurface() = default;
+	virtual ~MiqtVirtualQOffscreenSurface() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SurfaceType = 0;
@@ -434,91 +434,147 @@ struct miqt_string QOffscreenSurface_TrUtf83(const char* s, const char* c, int n
 	return _ms;
 }
 
-void QOffscreenSurface_override_virtual_SurfaceType(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) )->handle__SurfaceType = slot;
+bool QOffscreenSurface_override_virtual_SurfaceType(void* self, intptr_t slot) {
+	MiqtVirtualQOffscreenSurface* self_cast = dynamic_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SurfaceType = slot;
+	return true;
 }
 
 int QOffscreenSurface_virtualbase_SurfaceType(const void* self) {
 	return ( (const MiqtVirtualQOffscreenSurface*)(self) )->virtualbase_SurfaceType();
 }
 
-void QOffscreenSurface_override_virtual_Format(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) )->handle__Format = slot;
+bool QOffscreenSurface_override_virtual_Format(void* self, intptr_t slot) {
+	MiqtVirtualQOffscreenSurface* self_cast = dynamic_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Format = slot;
+	return true;
 }
 
 QSurfaceFormat* QOffscreenSurface_virtualbase_Format(const void* self) {
 	return ( (const MiqtVirtualQOffscreenSurface*)(self) )->virtualbase_Format();
 }
 
-void QOffscreenSurface_override_virtual_Size(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) )->handle__Size = slot;
+bool QOffscreenSurface_override_virtual_Size(void* self, intptr_t slot) {
+	MiqtVirtualQOffscreenSurface* self_cast = dynamic_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Size = slot;
+	return true;
 }
 
 QSize* QOffscreenSurface_virtualbase_Size(const void* self) {
 	return ( (const MiqtVirtualQOffscreenSurface*)(self) )->virtualbase_Size();
 }
 
-void QOffscreenSurface_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) )->handle__Event = slot;
+bool QOffscreenSurface_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQOffscreenSurface* self_cast = dynamic_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QOffscreenSurface_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQOffscreenSurface*)(self) )->virtualbase_Event(event);
 }
 
-void QOffscreenSurface_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) )->handle__EventFilter = slot;
+bool QOffscreenSurface_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQOffscreenSurface* self_cast = dynamic_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QOffscreenSurface_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQOffscreenSurface*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QOffscreenSurface_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) )->handle__TimerEvent = slot;
+bool QOffscreenSurface_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQOffscreenSurface* self_cast = dynamic_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QOffscreenSurface_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQOffscreenSurface*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QOffscreenSurface_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) )->handle__ChildEvent = slot;
+bool QOffscreenSurface_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQOffscreenSurface* self_cast = dynamic_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QOffscreenSurface_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQOffscreenSurface*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QOffscreenSurface_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) )->handle__CustomEvent = slot;
+bool QOffscreenSurface_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQOffscreenSurface* self_cast = dynamic_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QOffscreenSurface_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQOffscreenSurface*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QOffscreenSurface_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) )->handle__ConnectNotify = slot;
+bool QOffscreenSurface_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQOffscreenSurface* self_cast = dynamic_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QOffscreenSurface_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQOffscreenSurface*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QOffscreenSurface_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) )->handle__DisconnectNotify = slot;
+bool QOffscreenSurface_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQOffscreenSurface* self_cast = dynamic_cast<MiqtVirtualQOffscreenSurface*>( (QOffscreenSurface*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QOffscreenSurface_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQOffscreenSurface*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QOffscreenSurface_Delete(QOffscreenSurface* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQOffscreenSurface*>( self );
-	} else {
-		delete self;
-	}
+void QOffscreenSurface_Delete(QOffscreenSurface* self) {
+	delete self;
 }
 

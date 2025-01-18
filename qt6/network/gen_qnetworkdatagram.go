@@ -14,8 +14,7 @@ import (
 )
 
 type QNetworkDatagram struct {
-	h          *C.QNetworkDatagram
-	isSubclass bool
+	h *C.QNetworkDatagram
 }
 
 func (this *QNetworkDatagram) cPointer() *C.QNetworkDatagram {
@@ -49,9 +48,7 @@ func UnsafeNewQNetworkDatagram(h unsafe.Pointer) *QNetworkDatagram {
 // NewQNetworkDatagram constructs a new QNetworkDatagram object.
 func NewQNetworkDatagram() *QNetworkDatagram {
 
-	ret := newQNetworkDatagram(C.QNetworkDatagram_new())
-	ret.isSubclass = true
-	return ret
+	return newQNetworkDatagram(C.QNetworkDatagram_new())
 }
 
 // NewQNetworkDatagram2 constructs a new QNetworkDatagram object.
@@ -60,17 +57,13 @@ func NewQNetworkDatagram2(data []byte) *QNetworkDatagram {
 	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
 	data_alias.len = C.size_t(len(data))
 
-	ret := newQNetworkDatagram(C.QNetworkDatagram_new2(data_alias))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkDatagram(C.QNetworkDatagram_new2(data_alias))
 }
 
 // NewQNetworkDatagram3 constructs a new QNetworkDatagram object.
 func NewQNetworkDatagram3(other *QNetworkDatagram) *QNetworkDatagram {
 
-	ret := newQNetworkDatagram(C.QNetworkDatagram_new3(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkDatagram(C.QNetworkDatagram_new3(other.cPointer()))
 }
 
 // NewQNetworkDatagram4 constructs a new QNetworkDatagram object.
@@ -79,9 +72,7 @@ func NewQNetworkDatagram4(data []byte, destinationAddress *QHostAddress) *QNetwo
 	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
 	data_alias.len = C.size_t(len(data))
 
-	ret := newQNetworkDatagram(C.QNetworkDatagram_new4(data_alias, destinationAddress.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkDatagram(C.QNetworkDatagram_new4(data_alias, destinationAddress.cPointer()))
 }
 
 // NewQNetworkDatagram5 constructs a new QNetworkDatagram object.
@@ -90,9 +81,7 @@ func NewQNetworkDatagram5(data []byte, destinationAddress *QHostAddress, port ui
 	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
 	data_alias.len = C.size_t(len(data))
 
-	ret := newQNetworkDatagram(C.QNetworkDatagram_new5(data_alias, destinationAddress.cPointer(), (C.uint16_t)(port)))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkDatagram(C.QNetworkDatagram_new5(data_alias, destinationAddress.cPointer(), (C.uint16_t)(port)))
 }
 
 func (this *QNetworkDatagram) OperatorAssign(other *QNetworkDatagram) {
@@ -188,7 +177,7 @@ func (this *QNetworkDatagram) SetSender2(address *QHostAddress, port uint16) {
 
 // Delete this object from C++ memory.
 func (this *QNetworkDatagram) Delete() {
-	C.QNetworkDatagram_Delete(this.h, C.bool(this.isSubclass))
+	C.QNetworkDatagram_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -153,8 +153,7 @@ const (
 )
 
 type QWebEnginePage struct {
-	h          *C.QWebEnginePage
-	isSubclass bool
+	h *C.QWebEnginePage
 	*qt6.QObject
 }
 
@@ -192,33 +191,25 @@ func UnsafeNewQWebEnginePage(h unsafe.Pointer) *QWebEnginePage {
 // NewQWebEnginePage constructs a new QWebEnginePage object.
 func NewQWebEnginePage() *QWebEnginePage {
 
-	ret := newQWebEnginePage(C.QWebEnginePage_new())
-	ret.isSubclass = true
-	return ret
+	return newQWebEnginePage(C.QWebEnginePage_new())
 }
 
 // NewQWebEnginePage2 constructs a new QWebEnginePage object.
 func NewQWebEnginePage2(profile *QWebEngineProfile) *QWebEnginePage {
 
-	ret := newQWebEnginePage(C.QWebEnginePage_new2(profile.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebEnginePage(C.QWebEnginePage_new2(profile.cPointer()))
 }
 
 // NewQWebEnginePage3 constructs a new QWebEnginePage object.
 func NewQWebEnginePage3(parent *qt6.QObject) *QWebEnginePage {
 
-	ret := newQWebEnginePage(C.QWebEnginePage_new3((*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQWebEnginePage(C.QWebEnginePage_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 // NewQWebEnginePage4 constructs a new QWebEnginePage object.
 func NewQWebEnginePage4(profile *QWebEngineProfile, parent *qt6.QObject) *QWebEnginePage {
 
-	ret := newQWebEnginePage(C.QWebEnginePage_new4(profile.cPointer(), (*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQWebEnginePage(C.QWebEnginePage_new4(profile.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QWebEnginePage) MetaObject() *qt6.QMetaObject {
@@ -1341,10 +1332,10 @@ func (this *QWebEnginePage) callVirtualBase_TriggerAction(action QWebEnginePage_
 
 }
 func (this *QWebEnginePage) OnTriggerAction(slot func(super func(action QWebEnginePage__WebAction, checked bool), action QWebEnginePage__WebAction, checked bool)) {
-	if !this.isSubclass {
+	ok := C.QWebEnginePage_override_virtual_TriggerAction(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEnginePage_override_virtual_TriggerAction(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEnginePage_TriggerAction
@@ -1369,10 +1360,10 @@ func (this *QWebEnginePage) callVirtualBase_Event(param1 *qt6.QEvent) bool {
 
 }
 func (this *QWebEnginePage) OnEvent(slot func(super func(param1 *qt6.QEvent) bool, param1 *qt6.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QWebEnginePage_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEnginePage_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEnginePage_Event
@@ -1397,10 +1388,10 @@ func (this *QWebEnginePage) callVirtualBase_CreateWindow(typeVal QWebEnginePage_
 
 }
 func (this *QWebEnginePage) OnCreateWindow(slot func(super func(typeVal QWebEnginePage__WebWindowType) *QWebEnginePage, typeVal QWebEnginePage__WebWindowType) *QWebEnginePage) {
-	if !this.isSubclass {
+	ok := C.QWebEnginePage_override_virtual_CreateWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEnginePage_override_virtual_CreateWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEnginePage_CreateWindow
@@ -1454,10 +1445,10 @@ func (this *QWebEnginePage) callVirtualBase_ChooseFiles(mode QWebEnginePage__Fil
 
 }
 func (this *QWebEnginePage) OnChooseFiles(slot func(super func(mode QWebEnginePage__FileSelectionMode, oldFiles []string, acceptedMimeTypes []string) []string, mode QWebEnginePage__FileSelectionMode, oldFiles []string, acceptedMimeTypes []string) []string) {
-	if !this.isSubclass {
+	ok := C.QWebEnginePage_override_virtual_ChooseFiles(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEnginePage_override_virtual_ChooseFiles(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEnginePage_ChooseFiles
@@ -1518,10 +1509,10 @@ func (this *QWebEnginePage) callVirtualBase_JavaScriptAlert(securityOrigin *qt6.
 
 }
 func (this *QWebEnginePage) OnJavaScriptAlert(slot func(super func(securityOrigin *qt6.QUrl, msg string), securityOrigin *qt6.QUrl, msg string)) {
-	if !this.isSubclass {
+	ok := C.QWebEnginePage_override_virtual_JavaScriptAlert(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEnginePage_override_virtual_JavaScriptAlert(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEnginePage_JavaScriptAlert
@@ -1553,10 +1544,10 @@ func (this *QWebEnginePage) callVirtualBase_JavaScriptConfirm(securityOrigin *qt
 
 }
 func (this *QWebEnginePage) OnJavaScriptConfirm(slot func(super func(securityOrigin *qt6.QUrl, msg string) bool, securityOrigin *qt6.QUrl, msg string) bool) {
-	if !this.isSubclass {
+	ok := C.QWebEnginePage_override_virtual_JavaScriptConfirm(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEnginePage_override_virtual_JavaScriptConfirm(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEnginePage_JavaScriptConfirm
@@ -1594,10 +1585,10 @@ func (this *QWebEnginePage) callVirtualBase_JavaScriptConsoleMessage(level QWebE
 
 }
 func (this *QWebEnginePage) OnJavaScriptConsoleMessage(slot func(super func(level QWebEnginePage__JavaScriptConsoleMessageLevel, message string, lineNumber int, sourceID string), level QWebEnginePage__JavaScriptConsoleMessageLevel, message string, lineNumber int, sourceID string)) {
-	if !this.isSubclass {
+	ok := C.QWebEnginePage_override_virtual_JavaScriptConsoleMessage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEnginePage_override_virtual_JavaScriptConsoleMessage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEnginePage_JavaScriptConsoleMessage
@@ -1631,10 +1622,10 @@ func (this *QWebEnginePage) callVirtualBase_AcceptNavigationRequest(url *qt6.QUr
 
 }
 func (this *QWebEnginePage) OnAcceptNavigationRequest(slot func(super func(url *qt6.QUrl, typeVal QWebEnginePage__NavigationType, isMainFrame bool) bool, url *qt6.QUrl, typeVal QWebEnginePage__NavigationType, isMainFrame bool) bool) {
-	if !this.isSubclass {
+	ok := C.QWebEnginePage_override_virtual_AcceptNavigationRequest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEnginePage_override_virtual_AcceptNavigationRequest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEnginePage_AcceptNavigationRequest
@@ -1663,10 +1654,10 @@ func (this *QWebEnginePage) callVirtualBase_EventFilter(watched *qt6.QObject, ev
 
 }
 func (this *QWebEnginePage) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QWebEnginePage_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEnginePage_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEnginePage_EventFilter
@@ -1693,10 +1684,10 @@ func (this *QWebEnginePage) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
 
 }
 func (this *QWebEnginePage) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEnginePage_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEnginePage_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEnginePage_TimerEvent
@@ -1719,10 +1710,10 @@ func (this *QWebEnginePage) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
 
 }
 func (this *QWebEnginePage) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEnginePage_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEnginePage_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEnginePage_ChildEvent
@@ -1745,10 +1736,10 @@ func (this *QWebEnginePage) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 
 }
 func (this *QWebEnginePage) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEnginePage_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEnginePage_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEnginePage_CustomEvent
@@ -1771,10 +1762,10 @@ func (this *QWebEnginePage) callVirtualBase_ConnectNotify(signal *qt6.QMetaMetho
 
 }
 func (this *QWebEnginePage) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QWebEnginePage_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEnginePage_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEnginePage_ConnectNotify
@@ -1797,10 +1788,10 @@ func (this *QWebEnginePage) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMe
 
 }
 func (this *QWebEnginePage) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QWebEnginePage_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEnginePage_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEnginePage_DisconnectNotify
@@ -1819,7 +1810,7 @@ func miqt_exec_callback_QWebEnginePage_DisconnectNotify(self *C.QWebEnginePage, 
 
 // Delete this object from C++ memory.
 func (this *QWebEnginePage) Delete() {
-	C.QWebEnginePage_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebEnginePage_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

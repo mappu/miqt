@@ -139,11 +139,7 @@ struct miqt_string QScriptContext_ToString(const QScriptContext* self) {
 	return _ms;
 }
 
-void QScriptContext_Delete(QScriptContext* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QScriptContext*>( self );
-	} else {
-		delete self;
-	}
+void QScriptContext_Delete(QScriptContext* self) {
+	delete self;
 }
 

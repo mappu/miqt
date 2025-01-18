@@ -65,21 +65,21 @@ void QDrag_connect_TargetChanged(QDrag* self, intptr_t slot);
 struct miqt_string QDrag_Tr2(const char* s, const char* c);
 struct miqt_string QDrag_Tr3(const char* s, const char* c, int n);
 int QDrag_Exec1(QDrag* self, int supportedActions);
-void QDrag_override_virtual_Event(void* self, intptr_t slot);
+bool QDrag_override_virtual_Event(void* self, intptr_t slot);
 bool QDrag_virtualbase_Event(void* self, QEvent* event);
-void QDrag_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QDrag_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QDrag_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QDrag_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QDrag_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QDrag_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QDrag_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QDrag_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QDrag_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QDrag_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QDrag_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QDrag_virtualbase_CustomEvent(void* self, QEvent* event);
-void QDrag_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QDrag_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QDrag_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QDrag_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QDrag_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QDrag_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QDrag_Delete(QDrag* self, bool isSubclass);
+void QDrag_Delete(QDrag* self);
 
 #ifdef __cplusplus
 } /* extern C */

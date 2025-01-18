@@ -98,7 +98,7 @@ QPixmap* QScreen_GrabWindow2(QScreen* self, uintptr_t window, int x);
 QPixmap* QScreen_GrabWindow3(QScreen* self, uintptr_t window, int x, int y);
 QPixmap* QScreen_GrabWindow4(QScreen* self, uintptr_t window, int x, int y, int w);
 QPixmap* QScreen_GrabWindow5(QScreen* self, uintptr_t window, int x, int y, int w, int h);
-void QScreen_Delete(QScreen* self, bool isSubclass);
+void QScreen_Delete(QScreen* self);
 
 #ifdef __cplusplus
 } /* extern C */

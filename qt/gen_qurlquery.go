@@ -14,8 +14,7 @@ import (
 )
 
 type QUrlQuery struct {
-	h          *C.QUrlQuery
-	isSubclass bool
+	h *C.QUrlQuery
 }
 
 func (this *QUrlQuery) cPointer() *C.QUrlQuery {
@@ -49,17 +48,13 @@ func UnsafeNewQUrlQuery(h unsafe.Pointer) *QUrlQuery {
 // NewQUrlQuery constructs a new QUrlQuery object.
 func NewQUrlQuery() *QUrlQuery {
 
-	ret := newQUrlQuery(C.QUrlQuery_new())
-	ret.isSubclass = true
-	return ret
+	return newQUrlQuery(C.QUrlQuery_new())
 }
 
 // NewQUrlQuery2 constructs a new QUrlQuery object.
 func NewQUrlQuery2(url *QUrl) *QUrlQuery {
 
-	ret := newQUrlQuery(C.QUrlQuery_new2(url.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQUrlQuery(C.QUrlQuery_new2(url.cPointer()))
 }
 
 // NewQUrlQuery3 constructs a new QUrlQuery object.
@@ -69,17 +64,13 @@ func NewQUrlQuery3(queryString string) *QUrlQuery {
 	queryString_ms.len = C.size_t(len(queryString))
 	defer C.free(unsafe.Pointer(queryString_ms.data))
 
-	ret := newQUrlQuery(C.QUrlQuery_new3(queryString_ms))
-	ret.isSubclass = true
-	return ret
+	return newQUrlQuery(C.QUrlQuery_new3(queryString_ms))
 }
 
 // NewQUrlQuery4 constructs a new QUrlQuery object.
 func NewQUrlQuery4(other *QUrlQuery) *QUrlQuery {
 
-	ret := newQUrlQuery(C.QUrlQuery_new4(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQUrlQuery(C.QUrlQuery_new4(other.cPointer()))
 }
 
 func (this *QUrlQuery) OperatorAssign(other *QUrlQuery) {
@@ -360,7 +351,7 @@ func (this *QUrlQuery) AllQueryItemValues2(key string, encoding QUrl__ComponentF
 
 // Delete this object from C++ memory.
 func (this *QUrlQuery) Delete() {
-	C.QUrlQuery_Delete(this.h, C.bool(this.isSubclass))
+	C.QUrlQuery_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

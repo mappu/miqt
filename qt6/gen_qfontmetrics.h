@@ -85,7 +85,7 @@ QRect* QFontMetrics_BoundingRect8(const QFontMetrics* self, int x, int y, int w,
 QSize* QFontMetrics_Size3(const QFontMetrics* self, int flags, struct miqt_string str, int tabstops);
 QSize* QFontMetrics_Size4(const QFontMetrics* self, int flags, struct miqt_string str, int tabstops, int* tabarray);
 struct miqt_string QFontMetrics_ElidedText4(const QFontMetrics* self, struct miqt_string text, int mode, int width, int flags);
-void QFontMetrics_Delete(QFontMetrics* self, bool isSubclass);
+void QFontMetrics_Delete(QFontMetrics* self);
 
 QFontMetricsF* QFontMetricsF_new(QFont* font);
 QFontMetricsF* QFontMetricsF_new2(QFont* font, QPaintDevice* pd);
@@ -133,7 +133,7 @@ QRectF* QFontMetricsF_BoundingRect5(const QFontMetricsF* self, QRectF* r, int fl
 QSizeF* QFontMetricsF_Size3(const QFontMetricsF* self, int flags, struct miqt_string str, int tabstops);
 QSizeF* QFontMetricsF_Size4(const QFontMetricsF* self, int flags, struct miqt_string str, int tabstops, int* tabarray);
 struct miqt_string QFontMetricsF_ElidedText4(const QFontMetricsF* self, struct miqt_string text, int mode, double width, int flags);
-void QFontMetricsF_Delete(QFontMetricsF* self, bool isSubclass);
+void QFontMetricsF_Delete(QFontMetricsF* self);
 
 #ifdef __cplusplus
 } /* extern C */

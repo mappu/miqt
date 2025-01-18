@@ -46,23 +46,23 @@ struct miqt_string QAccessiblePlugin_Tr2(const char* s, const char* c);
 struct miqt_string QAccessiblePlugin_Tr3(const char* s, const char* c, int n);
 struct miqt_string QAccessiblePlugin_TrUtf82(const char* s, const char* c);
 struct miqt_string QAccessiblePlugin_TrUtf83(const char* s, const char* c, int n);
-void QAccessiblePlugin_override_virtual_Create(void* self, intptr_t slot);
+bool QAccessiblePlugin_override_virtual_Create(void* self, intptr_t slot);
 QAccessibleInterface* QAccessiblePlugin_virtualbase_Create(void* self, struct miqt_string key, QObject* object);
-void QAccessiblePlugin_override_virtual_Event(void* self, intptr_t slot);
+bool QAccessiblePlugin_override_virtual_Event(void* self, intptr_t slot);
 bool QAccessiblePlugin_virtualbase_Event(void* self, QEvent* event);
-void QAccessiblePlugin_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QAccessiblePlugin_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QAccessiblePlugin_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QAccessiblePlugin_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QAccessiblePlugin_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QAccessiblePlugin_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QAccessiblePlugin_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QAccessiblePlugin_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QAccessiblePlugin_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QAccessiblePlugin_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QAccessiblePlugin_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QAccessiblePlugin_virtualbase_CustomEvent(void* self, QEvent* event);
-void QAccessiblePlugin_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QAccessiblePlugin_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QAccessiblePlugin_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QAccessiblePlugin_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QAccessiblePlugin_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QAccessiblePlugin_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QAccessiblePlugin_Delete(QAccessiblePlugin* self, bool isSubclass);
+void QAccessiblePlugin_Delete(QAccessiblePlugin* self);
 
 #ifdef __cplusplus
 } /* extern C */

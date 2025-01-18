@@ -26,12 +26,12 @@ QEvent* miqt_exec_callback_QGraphicsSceneEvent_Clone(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQGraphicsSceneEvent : public virtual QGraphicsSceneEvent {
+class MiqtVirtualQGraphicsSceneEvent final : public QGraphicsSceneEvent {
 public:
 
 	MiqtVirtualQGraphicsSceneEvent(QEvent::Type typeVal): QGraphicsSceneEvent(typeVal) {};
 
-	virtual ~MiqtVirtualQGraphicsSceneEvent() = default;
+	virtual ~MiqtVirtualQGraphicsSceneEvent() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetAccepted = 0;
@@ -106,28 +106,36 @@ void QGraphicsSceneEvent_SetTimestamp(QGraphicsSceneEvent* self, unsigned long l
 	self->setTimestamp(static_cast<quint64>(ts));
 }
 
-void QGraphicsSceneEvent_override_virtual_SetAccepted(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsSceneEvent*>( (QGraphicsSceneEvent*)(self) )->handle__SetAccepted = slot;
+bool QGraphicsSceneEvent_override_virtual_SetAccepted(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsSceneEvent* self_cast = dynamic_cast<MiqtVirtualQGraphicsSceneEvent*>( (QGraphicsSceneEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetAccepted = slot;
+	return true;
 }
 
 void QGraphicsSceneEvent_virtualbase_SetAccepted(void* self, bool accepted) {
 	( (MiqtVirtualQGraphicsSceneEvent*)(self) )->virtualbase_SetAccepted(accepted);
 }
 
-void QGraphicsSceneEvent_override_virtual_Clone(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsSceneEvent*>( (QGraphicsSceneEvent*)(self) )->handle__Clone = slot;
+bool QGraphicsSceneEvent_override_virtual_Clone(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsSceneEvent* self_cast = dynamic_cast<MiqtVirtualQGraphicsSceneEvent*>( (QGraphicsSceneEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Clone = slot;
+	return true;
 }
 
 QEvent* QGraphicsSceneEvent_virtualbase_Clone(const void* self) {
 	return ( (const MiqtVirtualQGraphicsSceneEvent*)(self) )->virtualbase_Clone();
 }
 
-void QGraphicsSceneEvent_Delete(QGraphicsSceneEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsSceneEvent*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsSceneEvent_Delete(QGraphicsSceneEvent* self) {
+	delete self;
 }
 
 QGraphicsSceneMouseEvent* QGraphicsSceneMouseEvent_new() {
@@ -259,12 +267,8 @@ void QGraphicsSceneMouseEvent_SetFlags(QGraphicsSceneMouseEvent* self, int flags
 	self->setFlags(static_cast<Qt::MouseEventFlags>(flags));
 }
 
-void QGraphicsSceneMouseEvent_Delete(QGraphicsSceneMouseEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QGraphicsSceneMouseEvent*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsSceneMouseEvent_Delete(QGraphicsSceneMouseEvent* self) {
+	delete self;
 }
 
 QGraphicsSceneWheelEvent* QGraphicsSceneWheelEvent_new() {
@@ -363,12 +367,8 @@ void QGraphicsSceneWheelEvent_SetInverted(QGraphicsSceneWheelEvent* self, bool i
 	self->setInverted(inverted);
 }
 
-void QGraphicsSceneWheelEvent_Delete(QGraphicsSceneWheelEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QGraphicsSceneWheelEvent*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsSceneWheelEvent_Delete(QGraphicsSceneWheelEvent* self) {
+	delete self;
 }
 
 QGraphicsSceneContextMenuEvent* QGraphicsSceneContextMenuEvent_new() {
@@ -425,12 +425,8 @@ void QGraphicsSceneContextMenuEvent_SetReason(QGraphicsSceneContextMenuEvent* se
 	self->setReason(static_cast<QGraphicsSceneContextMenuEvent::Reason>(reason));
 }
 
-void QGraphicsSceneContextMenuEvent_Delete(QGraphicsSceneContextMenuEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QGraphicsSceneContextMenuEvent*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsSceneContextMenuEvent_Delete(QGraphicsSceneContextMenuEvent* self) {
+	delete self;
 }
 
 QGraphicsSceneHoverEvent* QGraphicsSceneHoverEvent_new() {
@@ -502,12 +498,8 @@ void QGraphicsSceneHoverEvent_SetModifiers(QGraphicsSceneHoverEvent* self, int m
 	self->setModifiers(static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
-void QGraphicsSceneHoverEvent_Delete(QGraphicsSceneHoverEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QGraphicsSceneHoverEvent*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsSceneHoverEvent_Delete(QGraphicsSceneHoverEvent* self) {
+	delete self;
 }
 
 QGraphicsSceneHelpEvent* QGraphicsSceneHelpEvent_new() {
@@ -538,12 +530,8 @@ void QGraphicsSceneHelpEvent_SetScreenPos(QGraphicsSceneHelpEvent* self, QPoint*
 	self->setScreenPos(*pos);
 }
 
-void QGraphicsSceneHelpEvent_Delete(QGraphicsSceneHelpEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QGraphicsSceneHelpEvent*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsSceneHelpEvent_Delete(QGraphicsSceneHelpEvent* self) {
+	delete self;
 }
 
 QGraphicsSceneDragDropEvent* QGraphicsSceneDragDropEvent_new() {
@@ -647,12 +635,8 @@ void QGraphicsSceneDragDropEvent_SetMimeData(QGraphicsSceneDragDropEvent* self, 
 	self->setMimeData(data);
 }
 
-void QGraphicsSceneDragDropEvent_Delete(QGraphicsSceneDragDropEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QGraphicsSceneDragDropEvent*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsSceneDragDropEvent_Delete(QGraphicsSceneDragDropEvent* self) {
+	delete self;
 }
 
 QGraphicsSceneResizeEvent* QGraphicsSceneResizeEvent_new() {
@@ -679,12 +663,8 @@ void QGraphicsSceneResizeEvent_SetNewSize(QGraphicsSceneResizeEvent* self, QSize
 	self->setNewSize(*size);
 }
 
-void QGraphicsSceneResizeEvent_Delete(QGraphicsSceneResizeEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QGraphicsSceneResizeEvent*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsSceneResizeEvent_Delete(QGraphicsSceneResizeEvent* self) {
+	delete self;
 }
 
 QGraphicsSceneMoveEvent* QGraphicsSceneMoveEvent_new() {
@@ -711,11 +691,7 @@ void QGraphicsSceneMoveEvent_SetNewPos(QGraphicsSceneMoveEvent* self, QPointF* p
 	self->setNewPos(*pos);
 }
 
-void QGraphicsSceneMoveEvent_Delete(QGraphicsSceneMoveEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QGraphicsSceneMoveEvent*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsSceneMoveEvent_Delete(QGraphicsSceneMoveEvent* self) {
+	delete self;
 }
 

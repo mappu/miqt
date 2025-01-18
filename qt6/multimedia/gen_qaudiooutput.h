@@ -56,21 +56,21 @@ void QAudioOutput_MutedChanged(QAudioOutput* self, bool muted);
 void QAudioOutput_connect_MutedChanged(QAudioOutput* self, intptr_t slot);
 struct miqt_string QAudioOutput_Tr2(const char* s, const char* c);
 struct miqt_string QAudioOutput_Tr3(const char* s, const char* c, int n);
-void QAudioOutput_override_virtual_Event(void* self, intptr_t slot);
+bool QAudioOutput_override_virtual_Event(void* self, intptr_t slot);
 bool QAudioOutput_virtualbase_Event(void* self, QEvent* event);
-void QAudioOutput_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QAudioOutput_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QAudioOutput_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QAudioOutput_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QAudioOutput_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QAudioOutput_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QAudioOutput_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QAudioOutput_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QAudioOutput_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QAudioOutput_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QAudioOutput_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QAudioOutput_virtualbase_CustomEvent(void* self, QEvent* event);
-void QAudioOutput_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QAudioOutput_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QAudioOutput_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QAudioOutput_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QAudioOutput_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QAudioOutput_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QAudioOutput_Delete(QAudioOutput* self, bool isSubclass);
+void QAudioOutput_Delete(QAudioOutput* self);
 
 #ifdef __cplusplus
 } /* extern C */

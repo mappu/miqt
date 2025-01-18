@@ -15,8 +15,7 @@ import (
 )
 
 type QConcatenateTablesProxyModel struct {
-	h          *C.QConcatenateTablesProxyModel
-	isSubclass bool
+	h *C.QConcatenateTablesProxyModel
 	*QAbstractItemModel
 }
 
@@ -54,17 +53,13 @@ func UnsafeNewQConcatenateTablesProxyModel(h unsafe.Pointer) *QConcatenateTables
 // NewQConcatenateTablesProxyModel constructs a new QConcatenateTablesProxyModel object.
 func NewQConcatenateTablesProxyModel() *QConcatenateTablesProxyModel {
 
-	ret := newQConcatenateTablesProxyModel(C.QConcatenateTablesProxyModel_new())
-	ret.isSubclass = true
-	return ret
+	return newQConcatenateTablesProxyModel(C.QConcatenateTablesProxyModel_new())
 }
 
 // NewQConcatenateTablesProxyModel2 constructs a new QConcatenateTablesProxyModel object.
 func NewQConcatenateTablesProxyModel2(parent *QObject) *QConcatenateTablesProxyModel {
 
-	ret := newQConcatenateTablesProxyModel(C.QConcatenateTablesProxyModel_new2(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQConcatenateTablesProxyModel(C.QConcatenateTablesProxyModel_new2(parent.cPointer()))
 }
 
 func (this *QConcatenateTablesProxyModel) MetaObject() *QMetaObject {
@@ -290,10 +285,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_Data(index *QModelInde
 
 }
 func (this *QConcatenateTablesProxyModel) OnData(slot func(super func(index *QModelIndex, role int) *QVariant, index *QModelIndex, role int) *QVariant) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_Data(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_Data(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_Data
@@ -320,10 +315,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_SetData(index *QModelI
 
 }
 func (this *QConcatenateTablesProxyModel) OnSetData(slot func(super func(index *QModelIndex, value *QVariant, role int) bool, index *QModelIndex, value *QVariant, role int) bool) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_SetData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_SetData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_SetData
@@ -365,10 +360,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_ItemData(proxyIndex *Q
 
 }
 func (this *QConcatenateTablesProxyModel) OnItemData(slot func(super func(proxyIndex *QModelIndex) map[int]QVariant, proxyIndex *QModelIndex) map[int]QVariant) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_ItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_ItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_ItemData
@@ -423,10 +418,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_SetItemData(index *QMo
 
 }
 func (this *QConcatenateTablesProxyModel) OnSetItemData(slot func(super func(index *QModelIndex, roles map[int]QVariant) bool, index *QModelIndex, roles map[int]QVariant) bool) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_SetItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_SetItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_SetItemData
@@ -466,10 +461,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_Flags(index *QModelInd
 
 }
 func (this *QConcatenateTablesProxyModel) OnFlags(slot func(super func(index *QModelIndex) ItemFlag, index *QModelIndex) ItemFlag) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_Flags(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_Flags(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_Flags
@@ -496,10 +491,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_Index(row int, column 
 
 }
 func (this *QConcatenateTablesProxyModel) OnIndex(slot func(super func(row int, column int, parent *QModelIndex) *QModelIndex, row int, column int, parent *QModelIndex) *QModelIndex) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_Index(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_Index(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_Index
@@ -530,10 +525,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_Parent(index *QModelIn
 
 }
 func (this *QConcatenateTablesProxyModel) OnParent(slot func(super func(index *QModelIndex) *QModelIndex, index *QModelIndex) *QModelIndex) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_Parent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_Parent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_Parent
@@ -558,10 +553,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_RowCount(parent *QMode
 
 }
 func (this *QConcatenateTablesProxyModel) OnRowCount(slot func(super func(parent *QModelIndex) int, parent *QModelIndex) int) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_RowCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_RowCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_RowCount
@@ -588,10 +583,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_HeaderData(section int
 
 }
 func (this *QConcatenateTablesProxyModel) OnHeaderData(slot func(super func(section int, orientation Orientation, role int) *QVariant, section int, orientation Orientation, role int) *QVariant) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_HeaderData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_HeaderData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_HeaderData
@@ -620,10 +615,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_ColumnCount(parent *QM
 
 }
 func (this *QConcatenateTablesProxyModel) OnColumnCount(slot func(super func(parent *QModelIndex) int, parent *QModelIndex) int) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_ColumnCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_ColumnCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_ColumnCount
@@ -657,10 +652,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_MimeTypes() []string {
 
 }
 func (this *QConcatenateTablesProxyModel) OnMimeTypes(slot func(super func() []string) []string) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_MimeTypes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_MimeTypes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_MimeTypes
@@ -698,10 +693,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_MimeData(indexes []QMo
 
 }
 func (this *QConcatenateTablesProxyModel) OnMimeData(slot func(super func(indexes []QModelIndex) *QMimeData, indexes []QModelIndex) *QMimeData) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_MimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_MimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_MimeData
@@ -734,10 +729,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_CanDropMimeData(data *
 
 }
 func (this *QConcatenateTablesProxyModel) OnCanDropMimeData(slot func(super func(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool, data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_CanDropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_CanDropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_CanDropMimeData
@@ -770,10 +765,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_DropMimeData(data *QMi
 
 }
 func (this *QConcatenateTablesProxyModel) OnDropMimeData(slot func(super func(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool, data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_DropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_DropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_DropMimeData
@@ -808,10 +803,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_Span(index *QModelInde
 
 }
 func (this *QConcatenateTablesProxyModel) OnSpan(slot func(super func(index *QModelIndex) *QSize, index *QModelIndex) *QSize) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_Span(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_Span(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_Span
@@ -838,10 +833,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_Sibling(row int, colum
 
 }
 func (this *QConcatenateTablesProxyModel) OnSibling(slot func(super func(row int, column int, idx *QModelIndex) *QModelIndex, row int, column int, idx *QModelIndex) *QModelIndex) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_Sibling(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_Sibling(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_Sibling
@@ -870,10 +865,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_HasChildren(parent *QM
 
 }
 func (this *QConcatenateTablesProxyModel) OnHasChildren(slot func(super func(parent *QModelIndex) bool, parent *QModelIndex) bool) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_HasChildren(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_HasChildren(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_HasChildren
@@ -898,10 +893,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_SetHeaderData(section 
 
 }
 func (this *QConcatenateTablesProxyModel) OnSetHeaderData(slot func(super func(section int, orientation Orientation, value *QVariant, role int) bool, section int, orientation Orientation, value *QVariant, role int) bool) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_SetHeaderData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_SetHeaderData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_SetHeaderData
@@ -932,10 +927,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_SupportedDropActions()
 
 }
 func (this *QConcatenateTablesProxyModel) OnSupportedDropActions(slot func(super func() DropAction) DropAction) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_SupportedDropActions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_SupportedDropActions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_SupportedDropActions
@@ -957,10 +952,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_SupportedDragActions()
 
 }
 func (this *QConcatenateTablesProxyModel) OnSupportedDragActions(slot func(super func() DropAction) DropAction) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_SupportedDragActions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_SupportedDragActions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_SupportedDragActions
@@ -982,10 +977,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_InsertRows(row int, co
 
 }
 func (this *QConcatenateTablesProxyModel) OnInsertRows(slot func(super func(row int, count int, parent *QModelIndex) bool, row int, count int, parent *QModelIndex) bool) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_InsertRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_InsertRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_InsertRows
@@ -1014,10 +1009,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_InsertColumns(column i
 
 }
 func (this *QConcatenateTablesProxyModel) OnInsertColumns(slot func(super func(column int, count int, parent *QModelIndex) bool, column int, count int, parent *QModelIndex) bool) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_InsertColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_InsertColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_InsertColumns
@@ -1046,10 +1041,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_RemoveRows(row int, co
 
 }
 func (this *QConcatenateTablesProxyModel) OnRemoveRows(slot func(super func(row int, count int, parent *QModelIndex) bool, row int, count int, parent *QModelIndex) bool) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_RemoveRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_RemoveRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_RemoveRows
@@ -1078,10 +1073,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_RemoveColumns(column i
 
 }
 func (this *QConcatenateTablesProxyModel) OnRemoveColumns(slot func(super func(column int, count int, parent *QModelIndex) bool, column int, count int, parent *QModelIndex) bool) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_RemoveColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_RemoveColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_RemoveColumns
@@ -1110,10 +1105,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_MoveRows(sourceParent 
 
 }
 func (this *QConcatenateTablesProxyModel) OnMoveRows(slot func(super func(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool, sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_MoveRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_MoveRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_MoveRows
@@ -1146,10 +1141,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_MoveColumns(sourcePare
 
 }
 func (this *QConcatenateTablesProxyModel) OnMoveColumns(slot func(super func(sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool, sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_MoveColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_MoveColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_MoveColumns
@@ -1182,10 +1177,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_FetchMore(parent *QMod
 
 }
 func (this *QConcatenateTablesProxyModel) OnFetchMore(slot func(super func(parent *QModelIndex), parent *QModelIndex)) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_FetchMore(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_FetchMore(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_FetchMore
@@ -1208,10 +1203,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_CanFetchMore(parent *Q
 
 }
 func (this *QConcatenateTablesProxyModel) OnCanFetchMore(slot func(super func(parent *QModelIndex) bool, parent *QModelIndex) bool) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_CanFetchMore(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_CanFetchMore(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_CanFetchMore
@@ -1236,10 +1231,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_Sort(column int, order
 
 }
 func (this *QConcatenateTablesProxyModel) OnSort(slot func(super func(column int, order SortOrder), column int, order SortOrder)) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_Sort(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_Sort(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_Sort
@@ -1266,10 +1261,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_Buddy(index *QModelInd
 
 }
 func (this *QConcatenateTablesProxyModel) OnBuddy(slot func(super func(index *QModelIndex) *QModelIndex, index *QModelIndex) *QModelIndex) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_Buddy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_Buddy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_Buddy
@@ -1302,10 +1297,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_Match(start *QModelInd
 
 }
 func (this *QConcatenateTablesProxyModel) OnMatch(slot func(super func(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex, start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_Match(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_Match(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_Match
@@ -1357,10 +1352,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_RoleNames() map[int][]
 
 }
 func (this *QConcatenateTablesProxyModel) OnRoleNames(slot func(super func() map[int][]byte) map[int][]byte) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_RoleNames(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_RoleNames(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_RoleNames
@@ -1400,10 +1395,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_Submit() bool {
 
 }
 func (this *QConcatenateTablesProxyModel) OnSubmit(slot func(super func() bool) bool) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_Submit(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_Submit(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_Submit
@@ -1425,10 +1420,10 @@ func (this *QConcatenateTablesProxyModel) callVirtualBase_Revert() {
 
 }
 func (this *QConcatenateTablesProxyModel) OnRevert(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_Revert(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QConcatenateTablesProxyModel_override_virtual_Revert(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QConcatenateTablesProxyModel_Revert
@@ -1444,7 +1439,7 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_Revert(self *C.QConcatenate
 
 // Delete this object from C++ memory.
 func (this *QConcatenateTablesProxyModel) Delete() {
-	C.QConcatenateTablesProxyModel_Delete(this.h, C.bool(this.isSubclass))
+	C.QConcatenateTablesProxyModel_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

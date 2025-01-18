@@ -15,8 +15,7 @@ import (
 )
 
 type QSignalTransition struct {
-	h          *C.QSignalTransition
-	isSubclass bool
+	h *C.QSignalTransition
 	*QAbstractTransition
 }
 
@@ -54,9 +53,7 @@ func UnsafeNewQSignalTransition(h unsafe.Pointer) *QSignalTransition {
 // NewQSignalTransition constructs a new QSignalTransition object.
 func NewQSignalTransition() *QSignalTransition {
 
-	ret := newQSignalTransition(C.QSignalTransition_new())
-	ret.isSubclass = true
-	return ret
+	return newQSignalTransition(C.QSignalTransition_new())
 }
 
 // NewQSignalTransition2 constructs a new QSignalTransition object.
@@ -64,17 +61,13 @@ func NewQSignalTransition2(sender *QObject, signal string) *QSignalTransition {
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
-	ret := newQSignalTransition(C.QSignalTransition_new2(sender.cPointer(), signal_Cstring))
-	ret.isSubclass = true
-	return ret
+	return newQSignalTransition(C.QSignalTransition_new2(sender.cPointer(), signal_Cstring))
 }
 
 // NewQSignalTransition3 constructs a new QSignalTransition object.
 func NewQSignalTransition3(sourceState *QState) *QSignalTransition {
 
-	ret := newQSignalTransition(C.QSignalTransition_new3(sourceState.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSignalTransition(C.QSignalTransition_new3(sourceState.cPointer()))
 }
 
 // NewQSignalTransition4 constructs a new QSignalTransition object.
@@ -82,9 +75,7 @@ func NewQSignalTransition4(sender *QObject, signal string, sourceState *QState) 
 	signal_Cstring := C.CString(signal)
 	defer C.free(unsafe.Pointer(signal_Cstring))
 
-	ret := newQSignalTransition(C.QSignalTransition_new4(sender.cPointer(), signal_Cstring, sourceState.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSignalTransition(C.QSignalTransition_new4(sender.cPointer(), signal_Cstring, sourceState.cPointer()))
 }
 
 func (this *QSignalTransition) MetaObject() *QMetaObject {
@@ -187,10 +178,10 @@ func (this *QSignalTransition) callVirtualBase_EventTest(event *QEvent) bool {
 
 }
 func (this *QSignalTransition) OnEventTest(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QSignalTransition_override_virtual_EventTest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSignalTransition_override_virtual_EventTest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSignalTransition_EventTest
@@ -215,10 +206,10 @@ func (this *QSignalTransition) callVirtualBase_OnTransition(event *QEvent) {
 
 }
 func (this *QSignalTransition) OnOnTransition(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QSignalTransition_override_virtual_OnTransition(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSignalTransition_override_virtual_OnTransition(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSignalTransition_OnTransition
@@ -241,10 +232,10 @@ func (this *QSignalTransition) callVirtualBase_Event(e *QEvent) bool {
 
 }
 func (this *QSignalTransition) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QSignalTransition_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSignalTransition_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSignalTransition_Event
@@ -265,7 +256,7 @@ func miqt_exec_callback_QSignalTransition_Event(self *C.QSignalTransition, cb C.
 
 // Delete this object from C++ memory.
 func (this *QSignalTransition) Delete() {
-	C.QSignalTransition_Delete(this.h, C.bool(this.isSubclass))
+	C.QSignalTransition_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

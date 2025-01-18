@@ -40,7 +40,7 @@ QTextDocumentFragment* QTextDocumentFragment_FromMarkdown(struct miqt_string mar
 struct miqt_string QTextDocumentFragment_ToMarkdown1(const QTextDocumentFragment* self, int features);
 QTextDocumentFragment* QTextDocumentFragment_FromHtml2(struct miqt_string html, QTextDocument* resourceProvider);
 QTextDocumentFragment* QTextDocumentFragment_FromMarkdown2(struct miqt_string markdown, int features);
-void QTextDocumentFragment_Delete(QTextDocumentFragment* self, bool isSubclass);
+void QTextDocumentFragment_Delete(QTextDocumentFragment* self);
 
 #ifdef __cplusplus
 } /* extern C */

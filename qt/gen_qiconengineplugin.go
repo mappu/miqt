@@ -15,8 +15,7 @@ import (
 )
 
 type QIconEnginePlugin struct {
-	h          *C.QIconEnginePlugin
-	isSubclass bool
+	h *C.QIconEnginePlugin
 	*QObject
 }
 
@@ -54,17 +53,13 @@ func UnsafeNewQIconEnginePlugin(h unsafe.Pointer) *QIconEnginePlugin {
 // NewQIconEnginePlugin constructs a new QIconEnginePlugin object.
 func NewQIconEnginePlugin() *QIconEnginePlugin {
 
-	ret := newQIconEnginePlugin(C.QIconEnginePlugin_new())
-	ret.isSubclass = true
-	return ret
+	return newQIconEnginePlugin(C.QIconEnginePlugin_new())
 }
 
 // NewQIconEnginePlugin2 constructs a new QIconEnginePlugin object.
 func NewQIconEnginePlugin2(parent *QObject) *QIconEnginePlugin {
 
-	ret := newQIconEnginePlugin(C.QIconEnginePlugin_new2(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQIconEnginePlugin(C.QIconEnginePlugin_new2(parent.cPointer()))
 }
 
 func (this *QIconEnginePlugin) MetaObject() *QMetaObject {
@@ -147,10 +142,10 @@ func QIconEnginePlugin_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 func (this *QIconEnginePlugin) OnCreate(slot func(filename string) *QIconEngine) {
-	if !this.isSubclass {
+	ok := C.QIconEnginePlugin_override_virtual_Create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QIconEnginePlugin_override_virtual_Create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QIconEnginePlugin_Create
@@ -178,10 +173,10 @@ func (this *QIconEnginePlugin) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QIconEnginePlugin) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QIconEnginePlugin_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QIconEnginePlugin_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QIconEnginePlugin_Event
@@ -206,10 +201,10 @@ func (this *QIconEnginePlugin) callVirtualBase_EventFilter(watched *QObject, eve
 
 }
 func (this *QIconEnginePlugin) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QIconEnginePlugin_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QIconEnginePlugin_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QIconEnginePlugin_EventFilter
@@ -236,10 +231,10 @@ func (this *QIconEnginePlugin) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QIconEnginePlugin) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QIconEnginePlugin_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QIconEnginePlugin_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QIconEnginePlugin_TimerEvent
@@ -262,10 +257,10 @@ func (this *QIconEnginePlugin) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QIconEnginePlugin) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QIconEnginePlugin_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QIconEnginePlugin_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QIconEnginePlugin_ChildEvent
@@ -288,10 +283,10 @@ func (this *QIconEnginePlugin) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QIconEnginePlugin) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QIconEnginePlugin_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QIconEnginePlugin_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QIconEnginePlugin_CustomEvent
@@ -314,10 +309,10 @@ func (this *QIconEnginePlugin) callVirtualBase_ConnectNotify(signal *QMetaMethod
 
 }
 func (this *QIconEnginePlugin) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QIconEnginePlugin_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QIconEnginePlugin_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QIconEnginePlugin_ConnectNotify
@@ -340,10 +335,10 @@ func (this *QIconEnginePlugin) callVirtualBase_DisconnectNotify(signal *QMetaMet
 
 }
 func (this *QIconEnginePlugin) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QIconEnginePlugin_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QIconEnginePlugin_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QIconEnginePlugin_DisconnectNotify
@@ -362,7 +357,7 @@ func miqt_exec_callback_QIconEnginePlugin_DisconnectNotify(self *C.QIconEnginePl
 
 // Delete this object from C++ memory.
 func (this *QIconEnginePlugin) Delete() {
-	C.QIconEnginePlugin_Delete(this.h, C.bool(this.isSubclass))
+	C.QIconEnginePlugin_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

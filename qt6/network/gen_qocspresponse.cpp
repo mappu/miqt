@@ -45,11 +45,7 @@ void QOcspResponse_Swap(QOcspResponse* self, QOcspResponse* other) {
 	self->swap(*other);
 }
 
-void QOcspResponse_Delete(QOcspResponse* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QOcspResponse*>( self );
-	} else {
-		delete self;
-	}
+void QOcspResponse_Delete(QOcspResponse* self) {
+	delete self;
 }
 

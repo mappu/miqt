@@ -28,7 +28,7 @@ struct miqt_string QSslEllipticCurve_ShortName(const QSslEllipticCurve* self);
 struct miqt_string QSslEllipticCurve_LongName(const QSslEllipticCurve* self);
 bool QSslEllipticCurve_IsValid(const QSslEllipticCurve* self);
 bool QSslEllipticCurve_IsTlsNamedCurve(const QSslEllipticCurve* self);
-void QSslEllipticCurve_Delete(QSslEllipticCurve* self, bool isSubclass);
+void QSslEllipticCurve_Delete(QSslEllipticCurve* self);
 
 #ifdef __cplusplus
 } /* extern C */

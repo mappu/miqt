@@ -14,8 +14,7 @@ import (
 )
 
 type QGenericPluginFactory struct {
-	h          *C.QGenericPluginFactory
-	isSubclass bool
+	h *C.QGenericPluginFactory
 }
 
 func (this *QGenericPluginFactory) cPointer() *C.QGenericPluginFactory {
@@ -73,7 +72,7 @@ func QGenericPluginFactory_Create(param1 string, param2 string) *QObject {
 
 // Delete this object from C++ memory.
 func (this *QGenericPluginFactory) Delete() {
-	C.QGenericPluginFactory_Delete(this.h, C.bool(this.isSubclass))
+	C.QGenericPluginFactory_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -125,22 +125,22 @@ struct miqt_array /* of QCameraViewfinderSettings* */  QCamera_SupportedViewfind
 struct miqt_array /* of QSize* */  QCamera_SupportedViewfinderResolutions1(const QCamera* self, QCameraViewfinderSettings* settings);
 struct miqt_array /* of QCamera__FrameRateRange* */  QCamera_SupportedViewfinderFrameRateRanges1(const QCamera* self, QCameraViewfinderSettings* settings);
 struct miqt_array /* of int */  QCamera_SupportedViewfinderPixelFormats1(const QCamera* self, QCameraViewfinderSettings* settings);
-void QCamera_override_virtual_Availability(void* self, intptr_t slot);
+bool QCamera_override_virtual_Availability(void* self, intptr_t slot);
 int QCamera_virtualbase_Availability(const void* self);
-void QCamera_override_virtual_IsAvailable(void* self, intptr_t slot);
+bool QCamera_override_virtual_IsAvailable(void* self, intptr_t slot);
 bool QCamera_virtualbase_IsAvailable(const void* self);
-void QCamera_override_virtual_Service(void* self, intptr_t slot);
+bool QCamera_override_virtual_Service(void* self, intptr_t slot);
 QMediaService* QCamera_virtualbase_Service(const void* self);
-void QCamera_override_virtual_Bind(void* self, intptr_t slot);
+bool QCamera_override_virtual_Bind(void* self, intptr_t slot);
 bool QCamera_virtualbase_Bind(void* self, QObject* param1);
-void QCamera_override_virtual_Unbind(void* self, intptr_t slot);
+bool QCamera_override_virtual_Unbind(void* self, intptr_t slot);
 void QCamera_virtualbase_Unbind(void* self, QObject* param1);
-void QCamera_Delete(QCamera* self, bool isSubclass);
+void QCamera_Delete(QCamera* self);
 
 QCamera__FrameRateRange* QCamera__FrameRateRange_new();
 QCamera__FrameRateRange* QCamera__FrameRateRange_new2(double minimum, double maximum);
 QCamera__FrameRateRange* QCamera__FrameRateRange_new3(QCamera__FrameRateRange* param1);
-void QCamera__FrameRateRange_Delete(QCamera__FrameRateRange* self, bool isSubclass);
+void QCamera__FrameRateRange_Delete(QCamera__FrameRateRange* self);
 
 #ifdef __cplusplus
 } /* extern C */

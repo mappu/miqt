@@ -385,11 +385,7 @@ void QFileInfo_SetCaching(QFileInfo* self, bool on) {
 	self->setCaching(on);
 }
 
-void QFileInfo_Delete(QFileInfo* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QFileInfo*>( self );
-	} else {
-		delete self;
-	}
+void QFileInfo_Delete(QFileInfo* self) {
+	delete self;
 }
 

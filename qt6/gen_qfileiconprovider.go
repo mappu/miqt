@@ -15,8 +15,7 @@ import (
 )
 
 type QFileIconProvider struct {
-	h          *C.QFileIconProvider
-	isSubclass bool
+	h *C.QFileIconProvider
 	*QAbstractFileIconProvider
 }
 
@@ -54,9 +53,7 @@ func UnsafeNewQFileIconProvider(h unsafe.Pointer) *QFileIconProvider {
 // NewQFileIconProvider constructs a new QFileIconProvider object.
 func NewQFileIconProvider() *QFileIconProvider {
 
-	ret := newQFileIconProvider(C.QFileIconProvider_new())
-	ret.isSubclass = true
-	return ret
+	return newQFileIconProvider(C.QFileIconProvider_new())
 }
 
 func (this *QFileIconProvider) Icon(typeVal QAbstractFileIconProvider__IconType) *QIcon {
@@ -79,10 +76,10 @@ func (this *QFileIconProvider) callVirtualBase_Icon(typeVal QAbstractFileIconPro
 
 }
 func (this *QFileIconProvider) OnIcon(slot func(super func(typeVal QAbstractFileIconProvider__IconType) *QIcon, typeVal QAbstractFileIconProvider__IconType) *QIcon) {
-	if !this.isSubclass {
+	ok := C.QFileIconProvider_override_virtual_Icon(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileIconProvider_override_virtual_Icon(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileIconProvider_Icon
@@ -109,10 +106,10 @@ func (this *QFileIconProvider) callVirtualBase_IconWithInfo(info *QFileInfo) *QI
 
 }
 func (this *QFileIconProvider) OnIconWithInfo(slot func(super func(info *QFileInfo) *QIcon, info *QFileInfo) *QIcon) {
-	if !this.isSubclass {
+	ok := C.QFileIconProvider_override_virtual_IconWithInfo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileIconProvider_override_virtual_IconWithInfo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileIconProvider_IconWithInfo
@@ -139,10 +136,10 @@ func (this *QFileIconProvider) callVirtualBase_Type(param1 *QFileInfo) string {
 	return _ret
 }
 func (this *QFileIconProvider) OnType(slot func(super func(param1 *QFileInfo) string, param1 *QFileInfo) string) {
-	if !this.isSubclass {
+	ok := C.QFileIconProvider_override_virtual_Type(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileIconProvider_override_virtual_Type(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileIconProvider_Type
@@ -171,10 +168,10 @@ func (this *QFileIconProvider) callVirtualBase_SetOptions(options QAbstractFileI
 
 }
 func (this *QFileIconProvider) OnSetOptions(slot func(super func(options QAbstractFileIconProvider__Option), options QAbstractFileIconProvider__Option)) {
-	if !this.isSubclass {
+	ok := C.QFileIconProvider_override_virtual_SetOptions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileIconProvider_override_virtual_SetOptions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileIconProvider_SetOptions
@@ -197,10 +194,10 @@ func (this *QFileIconProvider) callVirtualBase_Options() QAbstractFileIconProvid
 
 }
 func (this *QFileIconProvider) OnOptions(slot func(super func() QAbstractFileIconProvider__Option) QAbstractFileIconProvider__Option) {
-	if !this.isSubclass {
+	ok := C.QFileIconProvider_override_virtual_Options(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileIconProvider_override_virtual_Options(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileIconProvider_Options
@@ -218,7 +215,7 @@ func miqt_exec_callback_QFileIconProvider_Options(self *C.QFileIconProvider, cb 
 
 // Delete this object from C++ memory.
 func (this *QFileIconProvider) Delete() {
-	C.QFileIconProvider_Delete(this.h, C.bool(this.isSubclass))
+	C.QFileIconProvider_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

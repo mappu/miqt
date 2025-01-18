@@ -52,12 +52,12 @@ QPalette* miqt_exec_callback_QCommonStyle_StandardPalette(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQCommonStyle : public virtual QCommonStyle {
+class MiqtVirtualQCommonStyle final : public QCommonStyle {
 public:
 
 	MiqtVirtualQCommonStyle(): QCommonStyle() {};
 
-	virtual ~MiqtVirtualQCommonStyle() = default;
+	virtual ~MiqtVirtualQCommonStyle() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__DrawPrimitive = 0;
@@ -862,195 +862,329 @@ struct miqt_string QCommonStyle_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QCommonStyle_override_virtual_DrawPrimitive(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) )->handle__DrawPrimitive = slot;
+bool QCommonStyle_override_virtual_DrawPrimitive(void* self, intptr_t slot) {
+	MiqtVirtualQCommonStyle* self_cast = dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DrawPrimitive = slot;
+	return true;
 }
 
 void QCommonStyle_virtualbase_DrawPrimitive(const void* self, int pe, QStyleOption* opt, QPainter* p, QWidget* w) {
 	( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_DrawPrimitive(pe, opt, p, w);
 }
 
-void QCommonStyle_override_virtual_DrawControl(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) )->handle__DrawControl = slot;
+bool QCommonStyle_override_virtual_DrawControl(void* self, intptr_t slot) {
+	MiqtVirtualQCommonStyle* self_cast = dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DrawControl = slot;
+	return true;
 }
 
 void QCommonStyle_virtualbase_DrawControl(const void* self, int element, QStyleOption* opt, QPainter* p, QWidget* w) {
 	( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_DrawControl(element, opt, p, w);
 }
 
-void QCommonStyle_override_virtual_SubElementRect(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) )->handle__SubElementRect = slot;
+bool QCommonStyle_override_virtual_SubElementRect(void* self, intptr_t slot) {
+	MiqtVirtualQCommonStyle* self_cast = dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SubElementRect = slot;
+	return true;
 }
 
 QRect* QCommonStyle_virtualbase_SubElementRect(const void* self, int r, QStyleOption* opt, QWidget* widget) {
 	return ( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_SubElementRect(r, opt, widget);
 }
 
-void QCommonStyle_override_virtual_DrawComplexControl(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) )->handle__DrawComplexControl = slot;
+bool QCommonStyle_override_virtual_DrawComplexControl(void* self, intptr_t slot) {
+	MiqtVirtualQCommonStyle* self_cast = dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DrawComplexControl = slot;
+	return true;
 }
 
 void QCommonStyle_virtualbase_DrawComplexControl(const void* self, int cc, QStyleOptionComplex* opt, QPainter* p, QWidget* w) {
 	( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_DrawComplexControl(cc, opt, p, w);
 }
 
-void QCommonStyle_override_virtual_HitTestComplexControl(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) )->handle__HitTestComplexControl = slot;
+bool QCommonStyle_override_virtual_HitTestComplexControl(void* self, intptr_t slot) {
+	MiqtVirtualQCommonStyle* self_cast = dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HitTestComplexControl = slot;
+	return true;
 }
 
 int QCommonStyle_virtualbase_HitTestComplexControl(const void* self, int cc, QStyleOptionComplex* opt, QPoint* pt, QWidget* w) {
 	return ( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_HitTestComplexControl(cc, opt, pt, w);
 }
 
-void QCommonStyle_override_virtual_SubControlRect(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) )->handle__SubControlRect = slot;
+bool QCommonStyle_override_virtual_SubControlRect(void* self, intptr_t slot) {
+	MiqtVirtualQCommonStyle* self_cast = dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SubControlRect = slot;
+	return true;
 }
 
 QRect* QCommonStyle_virtualbase_SubControlRect(const void* self, int cc, QStyleOptionComplex* opt, int sc, QWidget* w) {
 	return ( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_SubControlRect(cc, opt, sc, w);
 }
 
-void QCommonStyle_override_virtual_SizeFromContents(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) )->handle__SizeFromContents = slot;
+bool QCommonStyle_override_virtual_SizeFromContents(void* self, intptr_t slot) {
+	MiqtVirtualQCommonStyle* self_cast = dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeFromContents = slot;
+	return true;
 }
 
 QSize* QCommonStyle_virtualbase_SizeFromContents(const void* self, int ct, QStyleOption* opt, QSize* contentsSize, QWidget* widget) {
 	return ( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_SizeFromContents(ct, opt, contentsSize, widget);
 }
 
-void QCommonStyle_override_virtual_PixelMetric(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) )->handle__PixelMetric = slot;
+bool QCommonStyle_override_virtual_PixelMetric(void* self, intptr_t slot) {
+	MiqtVirtualQCommonStyle* self_cast = dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PixelMetric = slot;
+	return true;
 }
 
 int QCommonStyle_virtualbase_PixelMetric(const void* self, int m, QStyleOption* opt, QWidget* widget) {
 	return ( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_PixelMetric(m, opt, widget);
 }
 
-void QCommonStyle_override_virtual_StyleHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) )->handle__StyleHint = slot;
+bool QCommonStyle_override_virtual_StyleHint(void* self, intptr_t slot) {
+	MiqtVirtualQCommonStyle* self_cast = dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__StyleHint = slot;
+	return true;
 }
 
 int QCommonStyle_virtualbase_StyleHint(const void* self, int sh, QStyleOption* opt, QWidget* w, QStyleHintReturn* shret) {
 	return ( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_StyleHint(sh, opt, w, shret);
 }
 
-void QCommonStyle_override_virtual_StandardIcon(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) )->handle__StandardIcon = slot;
+bool QCommonStyle_override_virtual_StandardIcon(void* self, intptr_t slot) {
+	MiqtVirtualQCommonStyle* self_cast = dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__StandardIcon = slot;
+	return true;
 }
 
 QIcon* QCommonStyle_virtualbase_StandardIcon(const void* self, int standardIcon, QStyleOption* opt, QWidget* widget) {
 	return ( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_StandardIcon(standardIcon, opt, widget);
 }
 
-void QCommonStyle_override_virtual_StandardPixmap(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) )->handle__StandardPixmap = slot;
+bool QCommonStyle_override_virtual_StandardPixmap(void* self, intptr_t slot) {
+	MiqtVirtualQCommonStyle* self_cast = dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__StandardPixmap = slot;
+	return true;
 }
 
 QPixmap* QCommonStyle_virtualbase_StandardPixmap(const void* self, int sp, QStyleOption* opt, QWidget* widget) {
 	return ( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_StandardPixmap(sp, opt, widget);
 }
 
-void QCommonStyle_override_virtual_GeneratedIconPixmap(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) )->handle__GeneratedIconPixmap = slot;
+bool QCommonStyle_override_virtual_GeneratedIconPixmap(void* self, intptr_t slot) {
+	MiqtVirtualQCommonStyle* self_cast = dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__GeneratedIconPixmap = slot;
+	return true;
 }
 
 QPixmap* QCommonStyle_virtualbase_GeneratedIconPixmap(const void* self, int iconMode, QPixmap* pixmap, QStyleOption* opt) {
 	return ( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_GeneratedIconPixmap(iconMode, pixmap, opt);
 }
 
-void QCommonStyle_override_virtual_LayoutSpacing(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) )->handle__LayoutSpacing = slot;
+bool QCommonStyle_override_virtual_LayoutSpacing(void* self, intptr_t slot) {
+	MiqtVirtualQCommonStyle* self_cast = dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__LayoutSpacing = slot;
+	return true;
 }
 
 int QCommonStyle_virtualbase_LayoutSpacing(const void* self, int control1, int control2, int orientation, QStyleOption* option, QWidget* widget) {
 	return ( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_LayoutSpacing(control1, control2, orientation, option, widget);
 }
 
-void QCommonStyle_override_virtual_Polish(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) )->handle__Polish = slot;
+bool QCommonStyle_override_virtual_Polish(void* self, intptr_t slot) {
+	MiqtVirtualQCommonStyle* self_cast = dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Polish = slot;
+	return true;
 }
 
 void QCommonStyle_virtualbase_Polish(void* self, QPalette* param1) {
 	( (MiqtVirtualQCommonStyle*)(self) )->virtualbase_Polish(param1);
 }
 
-void QCommonStyle_override_virtual_PolishWithApp(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) )->handle__PolishWithApp = slot;
+bool QCommonStyle_override_virtual_PolishWithApp(void* self, intptr_t slot) {
+	MiqtVirtualQCommonStyle* self_cast = dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PolishWithApp = slot;
+	return true;
 }
 
 void QCommonStyle_virtualbase_PolishWithApp(void* self, QApplication* app) {
 	( (MiqtVirtualQCommonStyle*)(self) )->virtualbase_PolishWithApp(app);
 }
 
-void QCommonStyle_override_virtual_PolishWithWidget(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) )->handle__PolishWithWidget = slot;
+bool QCommonStyle_override_virtual_PolishWithWidget(void* self, intptr_t slot) {
+	MiqtVirtualQCommonStyle* self_cast = dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PolishWithWidget = slot;
+	return true;
 }
 
 void QCommonStyle_virtualbase_PolishWithWidget(void* self, QWidget* widget) {
 	( (MiqtVirtualQCommonStyle*)(self) )->virtualbase_PolishWithWidget(widget);
 }
 
-void QCommonStyle_override_virtual_Unpolish(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) )->handle__Unpolish = slot;
+bool QCommonStyle_override_virtual_Unpolish(void* self, intptr_t slot) {
+	MiqtVirtualQCommonStyle* self_cast = dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Unpolish = slot;
+	return true;
 }
 
 void QCommonStyle_virtualbase_Unpolish(void* self, QWidget* widget) {
 	( (MiqtVirtualQCommonStyle*)(self) )->virtualbase_Unpolish(widget);
 }
 
-void QCommonStyle_override_virtual_UnpolishWithApplication(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) )->handle__UnpolishWithApplication = slot;
+bool QCommonStyle_override_virtual_UnpolishWithApplication(void* self, intptr_t slot) {
+	MiqtVirtualQCommonStyle* self_cast = dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UnpolishWithApplication = slot;
+	return true;
 }
 
 void QCommonStyle_virtualbase_UnpolishWithApplication(void* self, QApplication* application) {
 	( (MiqtVirtualQCommonStyle*)(self) )->virtualbase_UnpolishWithApplication(application);
 }
 
-void QCommonStyle_override_virtual_ItemTextRect(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) )->handle__ItemTextRect = slot;
+bool QCommonStyle_override_virtual_ItemTextRect(void* self, intptr_t slot) {
+	MiqtVirtualQCommonStyle* self_cast = dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ItemTextRect = slot;
+	return true;
 }
 
 QRect* QCommonStyle_virtualbase_ItemTextRect(const void* self, QFontMetrics* fm, QRect* r, int flags, bool enabled, struct miqt_string text) {
 	return ( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_ItemTextRect(fm, r, flags, enabled, text);
 }
 
-void QCommonStyle_override_virtual_ItemPixmapRect(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) )->handle__ItemPixmapRect = slot;
+bool QCommonStyle_override_virtual_ItemPixmapRect(void* self, intptr_t slot) {
+	MiqtVirtualQCommonStyle* self_cast = dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ItemPixmapRect = slot;
+	return true;
 }
 
 QRect* QCommonStyle_virtualbase_ItemPixmapRect(const void* self, QRect* r, int flags, QPixmap* pixmap) {
 	return ( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_ItemPixmapRect(r, flags, pixmap);
 }
 
-void QCommonStyle_override_virtual_DrawItemText(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) )->handle__DrawItemText = slot;
+bool QCommonStyle_override_virtual_DrawItemText(void* self, intptr_t slot) {
+	MiqtVirtualQCommonStyle* self_cast = dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DrawItemText = slot;
+	return true;
 }
 
 void QCommonStyle_virtualbase_DrawItemText(const void* self, QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, struct miqt_string text, int textRole) {
 	( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_DrawItemText(painter, rect, flags, pal, enabled, text, textRole);
 }
 
-void QCommonStyle_override_virtual_DrawItemPixmap(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) )->handle__DrawItemPixmap = slot;
+bool QCommonStyle_override_virtual_DrawItemPixmap(void* self, intptr_t slot) {
+	MiqtVirtualQCommonStyle* self_cast = dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DrawItemPixmap = slot;
+	return true;
 }
 
 void QCommonStyle_virtualbase_DrawItemPixmap(const void* self, QPainter* painter, QRect* rect, int alignment, QPixmap* pixmap) {
 	( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_DrawItemPixmap(painter, rect, alignment, pixmap);
 }
 
-void QCommonStyle_override_virtual_StandardPalette(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) )->handle__StandardPalette = slot;
+bool QCommonStyle_override_virtual_StandardPalette(void* self, intptr_t slot) {
+	MiqtVirtualQCommonStyle* self_cast = dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__StandardPalette = slot;
+	return true;
 }
 
 QPalette* QCommonStyle_virtualbase_StandardPalette(const void* self) {
 	return ( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_StandardPalette();
 }
 
-void QCommonStyle_Delete(QCommonStyle* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQCommonStyle*>( self );
-	} else {
-		delete self;
-	}
+void QCommonStyle_Delete(QCommonStyle* self) {
+	delete self;
 }
 

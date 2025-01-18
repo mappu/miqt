@@ -46,7 +46,7 @@ bool QStorageInfo_IsValid(const QStorageInfo* self);
 void QStorageInfo_Refresh(QStorageInfo* self);
 struct miqt_array /* of QStorageInfo* */  QStorageInfo_MountedVolumes();
 QStorageInfo* QStorageInfo_Root();
-void QStorageInfo_Delete(QStorageInfo* self, bool isSubclass);
+void QStorageInfo_Delete(QStorageInfo* self);
 
 #ifdef __cplusplus
 } /* extern C */

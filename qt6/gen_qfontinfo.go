@@ -14,8 +14,7 @@ import (
 )
 
 type QFontInfo struct {
-	h          *C.QFontInfo
-	isSubclass bool
+	h *C.QFontInfo
 }
 
 func (this *QFontInfo) cPointer() *C.QFontInfo {
@@ -49,17 +48,13 @@ func UnsafeNewQFontInfo(h unsafe.Pointer) *QFontInfo {
 // NewQFontInfo constructs a new QFontInfo object.
 func NewQFontInfo(param1 *QFont) *QFontInfo {
 
-	ret := newQFontInfo(C.QFontInfo_new(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQFontInfo(C.QFontInfo_new(param1.cPointer()))
 }
 
 // NewQFontInfo2 constructs a new QFontInfo object.
 func NewQFontInfo2(param1 *QFontInfo) *QFontInfo {
 
-	ret := newQFontInfo(C.QFontInfo_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQFontInfo(C.QFontInfo_new2(param1.cPointer()))
 }
 
 func (this *QFontInfo) OperatorAssign(param1 *QFontInfo) {
@@ -142,7 +137,7 @@ func (this *QFontInfo) ExactMatch() bool {
 
 // Delete this object from C++ memory.
 func (this *QFontInfo) Delete() {
-	C.QFontInfo_Delete(this.h, C.bool(this.isSubclass))
+	C.QFontInfo_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

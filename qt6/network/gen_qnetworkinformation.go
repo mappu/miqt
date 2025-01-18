@@ -44,8 +44,7 @@ const (
 )
 
 type QNetworkInformation struct {
-	h          *C.QNetworkInformation
-	isSubclass bool
+	h *C.QNetworkInformation
 	*qt6.QObject
 }
 

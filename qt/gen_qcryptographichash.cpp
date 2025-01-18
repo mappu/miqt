@@ -56,11 +56,7 @@ int QCryptographicHash_HashLength(int method) {
 	return QCryptographicHash::hashLength(static_cast<QCryptographicHash::Algorithm>(method));
 }
 
-void QCryptographicHash_Delete(QCryptographicHash* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCryptographicHash*>( self );
-	} else {
-		delete self;
-	}
+void QCryptographicHash_Delete(QCryptographicHash* self) {
+	delete self;
 }
 

@@ -41,7 +41,7 @@ bool QCameraFocusZone_IsValid(const QCameraFocusZone* self);
 QRectF* QCameraFocusZone_Area(const QCameraFocusZone* self);
 int QCameraFocusZone_Status(const QCameraFocusZone* self);
 void QCameraFocusZone_SetStatus(QCameraFocusZone* self, int status);
-void QCameraFocusZone_Delete(QCameraFocusZone* self, bool isSubclass);
+void QCameraFocusZone_Delete(QCameraFocusZone* self);
 
 void QCameraFocus_virtbase(QCameraFocus* src, QObject** outptr_QObject);
 QMetaObject* QCameraFocus_MetaObject(const QCameraFocus* self);

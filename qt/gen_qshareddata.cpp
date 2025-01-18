@@ -18,11 +18,7 @@ QSharedData* QSharedData_new2(QSharedData* param1) {
 	return new QSharedData(*param1);
 }
 
-void QSharedData_Delete(QSharedData* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QSharedData*>( self );
-	} else {
-		delete self;
-	}
+void QSharedData_Delete(QSharedData* self) {
+	delete self;
 }
 

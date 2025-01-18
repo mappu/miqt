@@ -77,11 +77,7 @@ bool QElapsedTimer_OperatorNotEqual(const QElapsedTimer* self, QElapsedTimer* ot
 	return (*self != *other);
 }
 
-void QElapsedTimer_Delete(QElapsedTimer* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QElapsedTimer*>( self );
-	} else {
-		delete self;
-	}
+void QElapsedTimer_Delete(QElapsedTimer* self) {
+	delete self;
 }
 

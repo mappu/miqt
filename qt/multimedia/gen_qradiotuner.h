@@ -92,17 +92,17 @@ struct miqt_string QRadioTuner_Tr3(const char* s, const char* c, int n);
 struct miqt_string QRadioTuner_TrUtf82(const char* s, const char* c);
 struct miqt_string QRadioTuner_TrUtf83(const char* s, const char* c, int n);
 void QRadioTuner_SearchAllStations1(QRadioTuner* self, int searchMode);
-void QRadioTuner_override_virtual_Availability(void* self, intptr_t slot);
+bool QRadioTuner_override_virtual_Availability(void* self, intptr_t slot);
 int QRadioTuner_virtualbase_Availability(const void* self);
-void QRadioTuner_override_virtual_IsAvailable(void* self, intptr_t slot);
+bool QRadioTuner_override_virtual_IsAvailable(void* self, intptr_t slot);
 bool QRadioTuner_virtualbase_IsAvailable(const void* self);
-void QRadioTuner_override_virtual_Service(void* self, intptr_t slot);
+bool QRadioTuner_override_virtual_Service(void* self, intptr_t slot);
 QMediaService* QRadioTuner_virtualbase_Service(const void* self);
-void QRadioTuner_override_virtual_Bind(void* self, intptr_t slot);
+bool QRadioTuner_override_virtual_Bind(void* self, intptr_t slot);
 bool QRadioTuner_virtualbase_Bind(void* self, QObject* param1);
-void QRadioTuner_override_virtual_Unbind(void* self, intptr_t slot);
+bool QRadioTuner_override_virtual_Unbind(void* self, intptr_t slot);
 void QRadioTuner_virtualbase_Unbind(void* self, QObject* param1);
-void QRadioTuner_Delete(QRadioTuner* self, bool isSubclass);
+void QRadioTuner_Delete(QRadioTuner* self);
 
 #ifdef __cplusplus
 } /* extern C */

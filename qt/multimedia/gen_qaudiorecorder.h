@@ -50,11 +50,11 @@ struct miqt_string QAudioRecorder_Tr2(const char* s, const char* c);
 struct miqt_string QAudioRecorder_Tr3(const char* s, const char* c, int n);
 struct miqt_string QAudioRecorder_TrUtf82(const char* s, const char* c);
 struct miqt_string QAudioRecorder_TrUtf83(const char* s, const char* c, int n);
-void QAudioRecorder_override_virtual_MediaObject(void* self, intptr_t slot);
+bool QAudioRecorder_override_virtual_MediaObject(void* self, intptr_t slot);
 QMediaObject* QAudioRecorder_virtualbase_MediaObject(const void* self);
-void QAudioRecorder_override_virtual_SetMediaObject(void* self, intptr_t slot);
+bool QAudioRecorder_override_virtual_SetMediaObject(void* self, intptr_t slot);
 bool QAudioRecorder_virtualbase_SetMediaObject(void* self, QMediaObject* object);
-void QAudioRecorder_Delete(QAudioRecorder* self, bool isSubclass);
+void QAudioRecorder_Delete(QAudioRecorder* self);
 
 #ifdef __cplusplus
 } /* extern C */

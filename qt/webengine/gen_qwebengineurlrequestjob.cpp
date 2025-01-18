@@ -126,11 +126,7 @@ struct miqt_string QWebEngineUrlRequestJob_TrUtf83(const char* s, const char* c,
 	return _ms;
 }
 
-void QWebEngineUrlRequestJob_Delete(QWebEngineUrlRequestJob* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebEngineUrlRequestJob*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineUrlRequestJob_Delete(QWebEngineUrlRequestJob* self) {
+	delete self;
 }
 

@@ -49,7 +49,7 @@ bool QStaticText_OperatorEqual(const QStaticText* self, QStaticText* param1);
 bool QStaticText_OperatorNotEqual(const QStaticText* self, QStaticText* param1);
 void QStaticText_Prepare1(QStaticText* self, QTransform* matrix);
 void QStaticText_Prepare2(QStaticText* self, QTransform* matrix, QFont* font);
-void QStaticText_Delete(QStaticText* self, bool isSubclass);
+void QStaticText_Delete(QStaticText* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -15,8 +15,7 @@ import (
 )
 
 type QMediaControl struct {
-	h          *C.QMediaControl
-	isSubclass bool
+	h *C.QMediaControl
 	*qt.QObject
 }
 
@@ -125,7 +124,7 @@ func QMediaControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QMediaControl) Delete() {
-	C.QMediaControl_Delete(this.h, C.bool(this.isSubclass))
+	C.QMediaControl_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

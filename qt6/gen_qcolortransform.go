@@ -14,8 +14,7 @@ import (
 )
 
 type QColorTransform struct {
-	h          *C.QColorTransform
-	isSubclass bool
+	h *C.QColorTransform
 }
 
 func (this *QColorTransform) cPointer() *C.QColorTransform {
@@ -49,17 +48,13 @@ func UnsafeNewQColorTransform(h unsafe.Pointer) *QColorTransform {
 // NewQColorTransform constructs a new QColorTransform object.
 func NewQColorTransform() *QColorTransform {
 
-	ret := newQColorTransform(C.QColorTransform_new())
-	ret.isSubclass = true
-	return ret
+	return newQColorTransform(C.QColorTransform_new())
 }
 
 // NewQColorTransform2 constructs a new QColorTransform object.
 func NewQColorTransform2(colorTransform *QColorTransform) *QColorTransform {
 
-	ret := newQColorTransform(C.QColorTransform_new2(colorTransform.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQColorTransform(C.QColorTransform_new2(colorTransform.cPointer()))
 }
 
 func (this *QColorTransform) OperatorAssign(other *QColorTransform) {
@@ -92,7 +87,7 @@ func (this *QColorTransform) MapWithColor(color *QColor) *QColor {
 
 // Delete this object from C++ memory.
 func (this *QColorTransform) Delete() {
-	C.QColorTransform_Delete(this.h, C.bool(this.isSubclass))
+	C.QColorTransform_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

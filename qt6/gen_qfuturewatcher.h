@@ -82,7 +82,7 @@ void QFutureWatcherBase_ConnectNotify(QFutureWatcherBase* self, QMetaMethod* sig
 void QFutureWatcherBase_DisconnectNotify(QFutureWatcherBase* self, QMetaMethod* signal);
 struct miqt_string QFutureWatcherBase_Tr2(const char* s, const char* c);
 struct miqt_string QFutureWatcherBase_Tr3(const char* s, const char* c, int n);
-void QFutureWatcherBase_Delete(QFutureWatcherBase* self, bool isSubclass);
+void QFutureWatcherBase_Delete(QFutureWatcherBase* self);
 
 #ifdef __cplusplus
 } /* extern C */

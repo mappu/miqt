@@ -49,13 +49,13 @@ void miqt_exec_callback_QAnimationDriver_DisconnectNotify(void*, intptr_t, QMeta
 } /* extern C */
 #endif
 
-class MiqtVirtualQAbstractAnimation : public virtual QAbstractAnimation {
+class MiqtVirtualQAbstractAnimation final : public QAbstractAnimation {
 public:
 
 	MiqtVirtualQAbstractAnimation(): QAbstractAnimation() {};
 	MiqtVirtualQAbstractAnimation(QObject* parent): QAbstractAnimation(parent) {};
 
-	virtual ~MiqtVirtualQAbstractAnimation() = default;
+	virtual ~MiqtVirtualQAbstractAnimation() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Duration = 0;
@@ -487,101 +487,163 @@ void QAbstractAnimation_Start1(QAbstractAnimation* self, int policy) {
 	self->start(static_cast<QAbstractAnimation::DeletionPolicy>(policy));
 }
 
-void QAbstractAnimation_override_virtual_Duration(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractAnimation*>( (QAbstractAnimation*)(self) )->handle__Duration = slot;
+bool QAbstractAnimation_override_virtual_Duration(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractAnimation* self_cast = dynamic_cast<MiqtVirtualQAbstractAnimation*>( (QAbstractAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Duration = slot;
+	return true;
 }
 
-void QAbstractAnimation_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractAnimation*>( (QAbstractAnimation*)(self) )->handle__Event = slot;
+bool QAbstractAnimation_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractAnimation* self_cast = dynamic_cast<MiqtVirtualQAbstractAnimation*>( (QAbstractAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QAbstractAnimation_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQAbstractAnimation*)(self) )->virtualbase_Event(event);
 }
 
-void QAbstractAnimation_override_virtual_UpdateCurrentTime(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractAnimation*>( (QAbstractAnimation*)(self) )->handle__UpdateCurrentTime = slot;
+bool QAbstractAnimation_override_virtual_UpdateCurrentTime(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractAnimation* self_cast = dynamic_cast<MiqtVirtualQAbstractAnimation*>( (QAbstractAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateCurrentTime = slot;
+	return true;
 }
 
-void QAbstractAnimation_override_virtual_UpdateState(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractAnimation*>( (QAbstractAnimation*)(self) )->handle__UpdateState = slot;
+bool QAbstractAnimation_override_virtual_UpdateState(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractAnimation* self_cast = dynamic_cast<MiqtVirtualQAbstractAnimation*>( (QAbstractAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateState = slot;
+	return true;
 }
 
 void QAbstractAnimation_virtualbase_UpdateState(void* self, int newState, int oldState) {
 	( (MiqtVirtualQAbstractAnimation*)(self) )->virtualbase_UpdateState(newState, oldState);
 }
 
-void QAbstractAnimation_override_virtual_UpdateDirection(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractAnimation*>( (QAbstractAnimation*)(self) )->handle__UpdateDirection = slot;
+bool QAbstractAnimation_override_virtual_UpdateDirection(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractAnimation* self_cast = dynamic_cast<MiqtVirtualQAbstractAnimation*>( (QAbstractAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateDirection = slot;
+	return true;
 }
 
 void QAbstractAnimation_virtualbase_UpdateDirection(void* self, int direction) {
 	( (MiqtVirtualQAbstractAnimation*)(self) )->virtualbase_UpdateDirection(direction);
 }
 
-void QAbstractAnimation_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractAnimation*>( (QAbstractAnimation*)(self) )->handle__EventFilter = slot;
+bool QAbstractAnimation_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractAnimation* self_cast = dynamic_cast<MiqtVirtualQAbstractAnimation*>( (QAbstractAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QAbstractAnimation_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQAbstractAnimation*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QAbstractAnimation_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractAnimation*>( (QAbstractAnimation*)(self) )->handle__TimerEvent = slot;
+bool QAbstractAnimation_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractAnimation* self_cast = dynamic_cast<MiqtVirtualQAbstractAnimation*>( (QAbstractAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QAbstractAnimation_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQAbstractAnimation*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QAbstractAnimation_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractAnimation*>( (QAbstractAnimation*)(self) )->handle__ChildEvent = slot;
+bool QAbstractAnimation_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractAnimation* self_cast = dynamic_cast<MiqtVirtualQAbstractAnimation*>( (QAbstractAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QAbstractAnimation_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQAbstractAnimation*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QAbstractAnimation_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractAnimation*>( (QAbstractAnimation*)(self) )->handle__CustomEvent = slot;
+bool QAbstractAnimation_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractAnimation* self_cast = dynamic_cast<MiqtVirtualQAbstractAnimation*>( (QAbstractAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QAbstractAnimation_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQAbstractAnimation*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QAbstractAnimation_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractAnimation*>( (QAbstractAnimation*)(self) )->handle__ConnectNotify = slot;
+bool QAbstractAnimation_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractAnimation* self_cast = dynamic_cast<MiqtVirtualQAbstractAnimation*>( (QAbstractAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QAbstractAnimation_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAbstractAnimation*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QAbstractAnimation_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractAnimation*>( (QAbstractAnimation*)(self) )->handle__DisconnectNotify = slot;
+bool QAbstractAnimation_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractAnimation* self_cast = dynamic_cast<MiqtVirtualQAbstractAnimation*>( (QAbstractAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QAbstractAnimation_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAbstractAnimation*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QAbstractAnimation_Delete(QAbstractAnimation* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractAnimation*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractAnimation_Delete(QAbstractAnimation* self) {
+	delete self;
 }
 
-class MiqtVirtualQAnimationDriver : public virtual QAnimationDriver {
+class MiqtVirtualQAnimationDriver final : public QAnimationDriver {
 public:
 
 	MiqtVirtualQAnimationDriver(): QAnimationDriver() {};
 	MiqtVirtualQAnimationDriver(QObject* parent): QAnimationDriver(parent) {};
 
-	virtual ~MiqtVirtualQAnimationDriver() = default;
+	virtual ~MiqtVirtualQAnimationDriver() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Advance = 0;
@@ -942,99 +1004,161 @@ struct miqt_string QAnimationDriver_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QAnimationDriver_override_virtual_Advance(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) )->handle__Advance = slot;
+bool QAnimationDriver_override_virtual_Advance(void* self, intptr_t slot) {
+	MiqtVirtualQAnimationDriver* self_cast = dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Advance = slot;
+	return true;
 }
 
 void QAnimationDriver_virtualbase_Advance(void* self) {
 	( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_Advance();
 }
 
-void QAnimationDriver_override_virtual_Elapsed(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) )->handle__Elapsed = slot;
+bool QAnimationDriver_override_virtual_Elapsed(void* self, intptr_t slot) {
+	MiqtVirtualQAnimationDriver* self_cast = dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Elapsed = slot;
+	return true;
 }
 
 long long QAnimationDriver_virtualbase_Elapsed(const void* self) {
 	return ( (const MiqtVirtualQAnimationDriver*)(self) )->virtualbase_Elapsed();
 }
 
-void QAnimationDriver_override_virtual_Start(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) )->handle__Start = slot;
+bool QAnimationDriver_override_virtual_Start(void* self, intptr_t slot) {
+	MiqtVirtualQAnimationDriver* self_cast = dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Start = slot;
+	return true;
 }
 
 void QAnimationDriver_virtualbase_Start(void* self) {
 	( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_Start();
 }
 
-void QAnimationDriver_override_virtual_Stop(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) )->handle__Stop = slot;
+bool QAnimationDriver_override_virtual_Stop(void* self, intptr_t slot) {
+	MiqtVirtualQAnimationDriver* self_cast = dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Stop = slot;
+	return true;
 }
 
 void QAnimationDriver_virtualbase_Stop(void* self) {
 	( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_Stop();
 }
 
-void QAnimationDriver_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) )->handle__Event = slot;
+bool QAnimationDriver_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQAnimationDriver* self_cast = dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QAnimationDriver_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_Event(event);
 }
 
-void QAnimationDriver_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) )->handle__EventFilter = slot;
+bool QAnimationDriver_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQAnimationDriver* self_cast = dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QAnimationDriver_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QAnimationDriver_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) )->handle__TimerEvent = slot;
+bool QAnimationDriver_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAnimationDriver* self_cast = dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QAnimationDriver_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QAnimationDriver_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) )->handle__ChildEvent = slot;
+bool QAnimationDriver_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAnimationDriver* self_cast = dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QAnimationDriver_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QAnimationDriver_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) )->handle__CustomEvent = slot;
+bool QAnimationDriver_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAnimationDriver* self_cast = dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QAnimationDriver_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QAnimationDriver_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) )->handle__ConnectNotify = slot;
+bool QAnimationDriver_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQAnimationDriver* self_cast = dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QAnimationDriver_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QAnimationDriver_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) )->handle__DisconnectNotify = slot;
+bool QAnimationDriver_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQAnimationDriver* self_cast = dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QAnimationDriver_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QAnimationDriver_Delete(QAnimationDriver* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAnimationDriver*>( self );
-	} else {
-		delete self;
-	}
+void QAnimationDriver_Delete(QAnimationDriver* self) {
+	delete self;
 }
 

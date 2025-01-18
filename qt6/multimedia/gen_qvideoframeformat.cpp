@@ -201,11 +201,7 @@ struct miqt_string QVideoFrameFormat_PixelFormatToString(int pixelFormat) {
 	return _ms;
 }
 
-void QVideoFrameFormat_Delete(QVideoFrameFormat* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QVideoFrameFormat*>( self );
-	} else {
-		delete self;
-	}
+void QVideoFrameFormat_Delete(QVideoFrameFormat* self) {
+	delete self;
 }
 

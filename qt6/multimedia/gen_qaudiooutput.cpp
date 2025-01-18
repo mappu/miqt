@@ -30,7 +30,7 @@ void miqt_exec_callback_QAudioOutput_DisconnectNotify(void*, intptr_t, QMetaMeth
 } /* extern C */
 #endif
 
-class MiqtVirtualQAudioOutput : public virtual QAudioOutput {
+class MiqtVirtualQAudioOutput final : public QAudioOutput {
 public:
 
 	MiqtVirtualQAudioOutput(): QAudioOutput() {};
@@ -38,7 +38,7 @@ public:
 	MiqtVirtualQAudioOutput(QObject* parent): QAudioOutput(parent) {};
 	MiqtVirtualQAudioOutput(const QAudioDevice& device, QObject* parent): QAudioOutput(device, parent) {};
 
-	virtual ~MiqtVirtualQAudioOutput() = default;
+	virtual ~MiqtVirtualQAudioOutput() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -330,67 +330,105 @@ struct miqt_string QAudioOutput_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QAudioOutput_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioOutput*>( (QAudioOutput*)(self) )->handle__Event = slot;
+bool QAudioOutput_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQAudioOutput* self_cast = dynamic_cast<MiqtVirtualQAudioOutput*>( (QAudioOutput*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QAudioOutput_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQAudioOutput*)(self) )->virtualbase_Event(event);
 }
 
-void QAudioOutput_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioOutput*>( (QAudioOutput*)(self) )->handle__EventFilter = slot;
+bool QAudioOutput_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQAudioOutput* self_cast = dynamic_cast<MiqtVirtualQAudioOutput*>( (QAudioOutput*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QAudioOutput_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQAudioOutput*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QAudioOutput_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioOutput*>( (QAudioOutput*)(self) )->handle__TimerEvent = slot;
+bool QAudioOutput_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAudioOutput* self_cast = dynamic_cast<MiqtVirtualQAudioOutput*>( (QAudioOutput*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QAudioOutput_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQAudioOutput*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QAudioOutput_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioOutput*>( (QAudioOutput*)(self) )->handle__ChildEvent = slot;
+bool QAudioOutput_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAudioOutput* self_cast = dynamic_cast<MiqtVirtualQAudioOutput*>( (QAudioOutput*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QAudioOutput_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQAudioOutput*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QAudioOutput_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioOutput*>( (QAudioOutput*)(self) )->handle__CustomEvent = slot;
+bool QAudioOutput_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAudioOutput* self_cast = dynamic_cast<MiqtVirtualQAudioOutput*>( (QAudioOutput*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QAudioOutput_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQAudioOutput*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QAudioOutput_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioOutput*>( (QAudioOutput*)(self) )->handle__ConnectNotify = slot;
+bool QAudioOutput_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQAudioOutput* self_cast = dynamic_cast<MiqtVirtualQAudioOutput*>( (QAudioOutput*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QAudioOutput_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAudioOutput*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QAudioOutput_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioOutput*>( (QAudioOutput*)(self) )->handle__DisconnectNotify = slot;
+bool QAudioOutput_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQAudioOutput* self_cast = dynamic_cast<MiqtVirtualQAudioOutput*>( (QAudioOutput*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QAudioOutput_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAudioOutput*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QAudioOutput_Delete(QAudioOutput* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAudioOutput*>( self );
-	} else {
-		delete self;
-	}
+void QAudioOutput_Delete(QAudioOutput* self) {
+	delete self;
 }
 

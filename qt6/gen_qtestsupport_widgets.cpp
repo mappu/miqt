@@ -15,12 +15,12 @@ bool miqt_exec_callback_QTest__QTouchEventWidgetSequence_Commit(void*, intptr_t,
 } /* extern C */
 #endif
 
-class MiqtVirtualQTestQTouchEventWidgetSequence : public virtual QTest::QTouchEventWidgetSequence {
+class MiqtVirtualQTestQTouchEventWidgetSequence final : public QTest::QTouchEventWidgetSequence {
 public:
 
 	MiqtVirtualQTestQTouchEventWidgetSequence(const QTest::QTouchEventWidgetSequence& param1): QTest::QTouchEventWidgetSequence(param1) {};
 
-	virtual ~MiqtVirtualQTestQTouchEventWidgetSequence() = default;
+	virtual ~MiqtVirtualQTestQTouchEventWidgetSequence() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Stationary = 0;
@@ -126,27 +126,35 @@ QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_Release3(QTes
 	return &_ret;
 }
 
-void QTest__QTouchEventWidgetSequence_override_virtual_Stationary(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTestQTouchEventWidgetSequence*>( (QTest__QTouchEventWidgetSequence*)(self) )->handle__Stationary = slot;
+bool QTest__QTouchEventWidgetSequence_override_virtual_Stationary(void* self, intptr_t slot) {
+	MiqtVirtualQTestQTouchEventWidgetSequence* self_cast = dynamic_cast<MiqtVirtualQTestQTouchEventWidgetSequence*>( (QTest__QTouchEventWidgetSequence*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Stationary = slot;
+	return true;
 }
 
 QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_virtualbase_Stationary(void* self, int touchId) {
 	return ( (MiqtVirtualQTestQTouchEventWidgetSequence*)(self) )->virtualbase_Stationary(touchId);
 }
 
-void QTest__QTouchEventWidgetSequence_override_virtual_Commit(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTestQTouchEventWidgetSequence*>( (QTest__QTouchEventWidgetSequence*)(self) )->handle__Commit = slot;
+bool QTest__QTouchEventWidgetSequence_override_virtual_Commit(void* self, intptr_t slot) {
+	MiqtVirtualQTestQTouchEventWidgetSequence* self_cast = dynamic_cast<MiqtVirtualQTestQTouchEventWidgetSequence*>( (QTest__QTouchEventWidgetSequence*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Commit = slot;
+	return true;
 }
 
 bool QTest__QTouchEventWidgetSequence_virtualbase_Commit(void* self, bool processEvents) {
 	return ( (MiqtVirtualQTestQTouchEventWidgetSequence*)(self) )->virtualbase_Commit(processEvents);
 }
 
-void QTest__QTouchEventWidgetSequence_Delete(QTest__QTouchEventWidgetSequence* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQTestQTouchEventWidgetSequence*>( self );
-	} else {
-		delete self;
-	}
+void QTest__QTouchEventWidgetSequence_Delete(QTest__QTouchEventWidgetSequence* self) {
+	delete self;
 }
 

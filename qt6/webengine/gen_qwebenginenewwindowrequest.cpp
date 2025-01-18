@@ -84,11 +84,7 @@ struct miqt_string QWebEngineNewWindowRequest_Tr3(const char* s, const char* c, 
 	return _ms;
 }
 
-void QWebEngineNewWindowRequest_Delete(QWebEngineNewWindowRequest* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebEngineNewWindowRequest*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineNewWindowRequest_Delete(QWebEngineNewWindowRequest* self) {
+	delete self;
 }
 

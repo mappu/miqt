@@ -23,8 +23,7 @@ const (
 )
 
 type QApplication struct {
-	h          *C.QApplication
-	isSubclass bool
+	h *C.QApplication
 	*QGuiApplication
 }
 
@@ -71,9 +70,7 @@ func NewQApplication(args []string) *QApplication {
 
 	runtime.LockOSThread() // Prevent Go from migrating the main Qt thread
 
-	ret := newQApplication(C.QApplication_new(argc, &argv[0]))
-	ret.isSubclass = true
-	return ret
+	return newQApplication(C.QApplication_new(argc, &argv[0]))
 }
 
 // NewQApplication2 constructs a new QApplication object.
@@ -88,9 +85,7 @@ func NewQApplication2(args []string, param3 int) *QApplication {
 
 	runtime.LockOSThread() // Prevent Go from migrating the main Qt thread
 
-	ret := newQApplication(C.QApplication_new2(argc, &argv[0], (C.int)(param3)))
-	ret.isSubclass = true
-	return ret
+	return newQApplication(C.QApplication_new2(argc, &argv[0], (C.int)(param3)))
 }
 
 func (this *QApplication) MetaObject() *QMetaObject {
@@ -468,10 +463,10 @@ func (this *QApplication) callVirtualBase_Notify(param1 *QObject, param2 *QEvent
 
 }
 func (this *QApplication) OnNotify(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QApplication_override_virtual_Notify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QApplication_override_virtual_Notify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QApplication_Notify
@@ -498,10 +493,10 @@ func (this *QApplication) callVirtualBase_Event(param1 *QEvent) bool {
 
 }
 func (this *QApplication) OnEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QApplication_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QApplication_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QApplication_Event
@@ -522,7 +517,7 @@ func miqt_exec_callback_QApplication_Event(self *C.QApplication, cb C.intptr_t, 
 
 // Delete this object from C++ memory.
 func (this *QApplication) Delete() {
-	C.QApplication_Delete(this.h, C.bool(this.isSubclass))
+	C.QApplication_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

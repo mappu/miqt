@@ -395,11 +395,7 @@ QScriptValue* QScriptValue_Construct1(QScriptValue* self, struct miqt_array /* o
 	return new QScriptValue(self->construct(args_QList));
 }
 
-void QScriptValue_Delete(QScriptValue* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QScriptValue*>( self );
-	} else {
-		delete self;
-	}
+void QScriptValue_Delete(QScriptValue* self) {
+	delete self;
 }
 

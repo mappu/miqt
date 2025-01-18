@@ -80,11 +80,7 @@ double QPaintDevice_DevicePixelRatioFScale() {
 	return static_cast<double>(_ret);
 }
 
-void QPaintDevice_Delete(QPaintDevice* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPaintDevice*>( self );
-	} else {
-		delete self;
-	}
+void QPaintDevice_Delete(QPaintDevice* self) {
+	delete self;
 }
 

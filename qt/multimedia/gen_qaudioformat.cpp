@@ -129,11 +129,7 @@ int QAudioFormat_BytesPerFrame(const QAudioFormat* self) {
 	return self->bytesPerFrame();
 }
 
-void QAudioFormat_Delete(QAudioFormat* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QAudioFormat*>( self );
-	} else {
-		delete self;
-	}
+void QAudioFormat_Delete(QAudioFormat* self) {
+	delete self;
 }
 

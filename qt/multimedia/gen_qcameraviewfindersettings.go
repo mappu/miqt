@@ -15,8 +15,7 @@ import (
 )
 
 type QCameraViewfinderSettings struct {
-	h          *C.QCameraViewfinderSettings
-	isSubclass bool
+	h *C.QCameraViewfinderSettings
 }
 
 func (this *QCameraViewfinderSettings) cPointer() *C.QCameraViewfinderSettings {
@@ -50,17 +49,13 @@ func UnsafeNewQCameraViewfinderSettings(h unsafe.Pointer) *QCameraViewfinderSett
 // NewQCameraViewfinderSettings constructs a new QCameraViewfinderSettings object.
 func NewQCameraViewfinderSettings() *QCameraViewfinderSettings {
 
-	ret := newQCameraViewfinderSettings(C.QCameraViewfinderSettings_new())
-	ret.isSubclass = true
-	return ret
+	return newQCameraViewfinderSettings(C.QCameraViewfinderSettings_new())
 }
 
 // NewQCameraViewfinderSettings2 constructs a new QCameraViewfinderSettings object.
 func NewQCameraViewfinderSettings2(other *QCameraViewfinderSettings) *QCameraViewfinderSettings {
 
-	ret := newQCameraViewfinderSettings(C.QCameraViewfinderSettings_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQCameraViewfinderSettings(C.QCameraViewfinderSettings_new2(other.cPointer()))
 }
 
 func (this *QCameraViewfinderSettings) OperatorAssign(other *QCameraViewfinderSettings) {
@@ -129,7 +124,7 @@ func (this *QCameraViewfinderSettings) SetPixelAspectRatio2(horizontal int, vert
 
 // Delete this object from C++ memory.
 func (this *QCameraViewfinderSettings) Delete() {
-	C.QCameraViewfinderSettings_Delete(this.h, C.bool(this.isSubclass))
+	C.QCameraViewfinderSettings_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

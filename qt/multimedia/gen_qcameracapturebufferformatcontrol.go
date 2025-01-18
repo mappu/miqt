@@ -16,8 +16,7 @@ import (
 )
 
 type QCameraCaptureBufferFormatControl struct {
-	h          *C.QCameraCaptureBufferFormatControl
-	isSubclass bool
+	h *C.QCameraCaptureBufferFormatControl
 	*QMediaControl
 }
 
@@ -164,7 +163,7 @@ func QCameraCaptureBufferFormatControl_TrUtf83(s string, c string, n int) string
 
 // Delete this object from C++ memory.
 func (this *QCameraCaptureBufferFormatControl) Delete() {
-	C.QCameraCaptureBufferFormatControl_Delete(this.h, C.bool(this.isSubclass))
+	C.QCameraCaptureBufferFormatControl_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

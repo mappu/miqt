@@ -35,7 +35,7 @@ long long miqt_exec_callback_QWaveDecoder_SkipData(void*, intptr_t, long long);
 } /* extern C */
 #endif
 
-class MiqtVirtualQWaveDecoder : public virtual QWaveDecoder {
+class MiqtVirtualQWaveDecoder final : public QWaveDecoder {
 public:
 
 	MiqtVirtualQWaveDecoder(QIODevice* device): QWaveDecoder(device) {};
@@ -43,7 +43,7 @@ public:
 	MiqtVirtualQWaveDecoder(QIODevice* device, QObject* parent): QWaveDecoder(device, parent) {};
 	MiqtVirtualQWaveDecoder(QIODevice* device, const QAudioFormat& format, QObject* parent): QWaveDecoder(device, format, parent) {};
 
-	virtual ~MiqtVirtualQWaveDecoder() = default;
+	virtual ~MiqtVirtualQWaveDecoder() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Open = 0;
@@ -524,131 +524,217 @@ struct miqt_string QWaveDecoder_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QWaveDecoder_override_virtual_Open(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) )->handle__Open = slot;
+bool QWaveDecoder_override_virtual_Open(void* self, intptr_t slot) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Open = slot;
+	return true;
 }
 
 bool QWaveDecoder_virtualbase_Open(void* self, int mode) {
 	return ( (MiqtVirtualQWaveDecoder*)(self) )->virtualbase_Open(mode);
 }
 
-void QWaveDecoder_override_virtual_Close(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) )->handle__Close = slot;
+bool QWaveDecoder_override_virtual_Close(void* self, intptr_t slot) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Close = slot;
+	return true;
 }
 
 void QWaveDecoder_virtualbase_Close(void* self) {
 	( (MiqtVirtualQWaveDecoder*)(self) )->virtualbase_Close();
 }
 
-void QWaveDecoder_override_virtual_Seek(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) )->handle__Seek = slot;
+bool QWaveDecoder_override_virtual_Seek(void* self, intptr_t slot) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Seek = slot;
+	return true;
 }
 
 bool QWaveDecoder_virtualbase_Seek(void* self, long long pos) {
 	return ( (MiqtVirtualQWaveDecoder*)(self) )->virtualbase_Seek(pos);
 }
 
-void QWaveDecoder_override_virtual_Pos(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) )->handle__Pos = slot;
+bool QWaveDecoder_override_virtual_Pos(void* self, intptr_t slot) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Pos = slot;
+	return true;
 }
 
 long long QWaveDecoder_virtualbase_Pos(const void* self) {
 	return ( (const MiqtVirtualQWaveDecoder*)(self) )->virtualbase_Pos();
 }
 
-void QWaveDecoder_override_virtual_Size(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) )->handle__Size = slot;
+bool QWaveDecoder_override_virtual_Size(void* self, intptr_t slot) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Size = slot;
+	return true;
 }
 
 long long QWaveDecoder_virtualbase_Size(const void* self) {
 	return ( (const MiqtVirtualQWaveDecoder*)(self) )->virtualbase_Size();
 }
 
-void QWaveDecoder_override_virtual_IsSequential(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) )->handle__IsSequential = slot;
+bool QWaveDecoder_override_virtual_IsSequential(void* self, intptr_t slot) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsSequential = slot;
+	return true;
 }
 
 bool QWaveDecoder_virtualbase_IsSequential(const void* self) {
 	return ( (const MiqtVirtualQWaveDecoder*)(self) )->virtualbase_IsSequential();
 }
 
-void QWaveDecoder_override_virtual_BytesAvailable(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) )->handle__BytesAvailable = slot;
+bool QWaveDecoder_override_virtual_BytesAvailable(void* self, intptr_t slot) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BytesAvailable = slot;
+	return true;
 }
 
 long long QWaveDecoder_virtualbase_BytesAvailable(const void* self) {
 	return ( (const MiqtVirtualQWaveDecoder*)(self) )->virtualbase_BytesAvailable();
 }
 
-void QWaveDecoder_override_virtual_AtEnd(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) )->handle__AtEnd = slot;
+bool QWaveDecoder_override_virtual_AtEnd(void* self, intptr_t slot) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__AtEnd = slot;
+	return true;
 }
 
 bool QWaveDecoder_virtualbase_AtEnd(const void* self) {
 	return ( (const MiqtVirtualQWaveDecoder*)(self) )->virtualbase_AtEnd();
 }
 
-void QWaveDecoder_override_virtual_Reset(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) )->handle__Reset = slot;
+bool QWaveDecoder_override_virtual_Reset(void* self, intptr_t slot) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Reset = slot;
+	return true;
 }
 
 bool QWaveDecoder_virtualbase_Reset(void* self) {
 	return ( (MiqtVirtualQWaveDecoder*)(self) )->virtualbase_Reset();
 }
 
-void QWaveDecoder_override_virtual_BytesToWrite(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) )->handle__BytesToWrite = slot;
+bool QWaveDecoder_override_virtual_BytesToWrite(void* self, intptr_t slot) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BytesToWrite = slot;
+	return true;
 }
 
 long long QWaveDecoder_virtualbase_BytesToWrite(const void* self) {
 	return ( (const MiqtVirtualQWaveDecoder*)(self) )->virtualbase_BytesToWrite();
 }
 
-void QWaveDecoder_override_virtual_CanReadLine(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) )->handle__CanReadLine = slot;
+bool QWaveDecoder_override_virtual_CanReadLine(void* self, intptr_t slot) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CanReadLine = slot;
+	return true;
 }
 
 bool QWaveDecoder_virtualbase_CanReadLine(const void* self) {
 	return ( (const MiqtVirtualQWaveDecoder*)(self) )->virtualbase_CanReadLine();
 }
 
-void QWaveDecoder_override_virtual_WaitForReadyRead(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) )->handle__WaitForReadyRead = slot;
+bool QWaveDecoder_override_virtual_WaitForReadyRead(void* self, intptr_t slot) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WaitForReadyRead = slot;
+	return true;
 }
 
 bool QWaveDecoder_virtualbase_WaitForReadyRead(void* self, int msecs) {
 	return ( (MiqtVirtualQWaveDecoder*)(self) )->virtualbase_WaitForReadyRead(msecs);
 }
 
-void QWaveDecoder_override_virtual_WaitForBytesWritten(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) )->handle__WaitForBytesWritten = slot;
+bool QWaveDecoder_override_virtual_WaitForBytesWritten(void* self, intptr_t slot) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WaitForBytesWritten = slot;
+	return true;
 }
 
 bool QWaveDecoder_virtualbase_WaitForBytesWritten(void* self, int msecs) {
 	return ( (MiqtVirtualQWaveDecoder*)(self) )->virtualbase_WaitForBytesWritten(msecs);
 }
 
-void QWaveDecoder_override_virtual_ReadLineData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) )->handle__ReadLineData = slot;
+bool QWaveDecoder_override_virtual_ReadLineData(void* self, intptr_t slot) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ReadLineData = slot;
+	return true;
 }
 
 long long QWaveDecoder_virtualbase_ReadLineData(void* self, char* data, long long maxlen) {
 	return ( (MiqtVirtualQWaveDecoder*)(self) )->virtualbase_ReadLineData(data, maxlen);
 }
 
-void QWaveDecoder_override_virtual_SkipData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) )->handle__SkipData = slot;
+bool QWaveDecoder_override_virtual_SkipData(void* self, intptr_t slot) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SkipData = slot;
+	return true;
 }
 
 long long QWaveDecoder_virtualbase_SkipData(void* self, long long maxSize) {
 	return ( (MiqtVirtualQWaveDecoder*)(self) )->virtualbase_SkipData(maxSize);
 }
 
-void QWaveDecoder_Delete(QWaveDecoder* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQWaveDecoder*>( self );
-	} else {
-		delete self;
-	}
+void QWaveDecoder_Delete(QWaveDecoder* self) {
+	delete self;
 }
 

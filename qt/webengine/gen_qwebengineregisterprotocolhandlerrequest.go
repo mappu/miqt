@@ -15,8 +15,7 @@ import (
 )
 
 type QWebEngineRegisterProtocolHandlerRequest struct {
-	h          *C.QWebEngineRegisterProtocolHandlerRequest
-	isSubclass bool
+	h *C.QWebEngineRegisterProtocolHandlerRequest
 }
 
 func (this *QWebEngineRegisterProtocolHandlerRequest) cPointer() *C.QWebEngineRegisterProtocolHandlerRequest {
@@ -50,17 +49,13 @@ func UnsafeNewQWebEngineRegisterProtocolHandlerRequest(h unsafe.Pointer) *QWebEn
 // NewQWebEngineRegisterProtocolHandlerRequest constructs a new QWebEngineRegisterProtocolHandlerRequest object.
 func NewQWebEngineRegisterProtocolHandlerRequest() *QWebEngineRegisterProtocolHandlerRequest {
 
-	ret := newQWebEngineRegisterProtocolHandlerRequest(C.QWebEngineRegisterProtocolHandlerRequest_new())
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineRegisterProtocolHandlerRequest(C.QWebEngineRegisterProtocolHandlerRequest_new())
 }
 
 // NewQWebEngineRegisterProtocolHandlerRequest2 constructs a new QWebEngineRegisterProtocolHandlerRequest object.
 func NewQWebEngineRegisterProtocolHandlerRequest2(param1 *QWebEngineRegisterProtocolHandlerRequest) *QWebEngineRegisterProtocolHandlerRequest {
 
-	ret := newQWebEngineRegisterProtocolHandlerRequest(C.QWebEngineRegisterProtocolHandlerRequest_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineRegisterProtocolHandlerRequest(C.QWebEngineRegisterProtocolHandlerRequest_new2(param1.cPointer()))
 }
 
 func (this *QWebEngineRegisterProtocolHandlerRequest) Accept() {
@@ -94,7 +89,7 @@ func (this *QWebEngineRegisterProtocolHandlerRequest) OperatorNotEqual(that *QWe
 
 // Delete this object from C++ memory.
 func (this *QWebEngineRegisterProtocolHandlerRequest) Delete() {
-	C.QWebEngineRegisterProtocolHandlerRequest_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebEngineRegisterProtocolHandlerRequest_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

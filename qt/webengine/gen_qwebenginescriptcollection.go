@@ -14,8 +14,7 @@ import (
 )
 
 type QWebEngineScriptCollection struct {
-	h          *C.QWebEngineScriptCollection
-	isSubclass bool
+	h *C.QWebEngineScriptCollection
 }
 
 func (this *QWebEngineScriptCollection) cPointer() *C.QWebEngineScriptCollection {
@@ -124,7 +123,7 @@ func (this *QWebEngineScriptCollection) ToList() []QWebEngineScript {
 
 // Delete this object from C++ memory.
 func (this *QWebEngineScriptCollection) Delete() {
-	C.QWebEngineScriptCollection_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebEngineScriptCollection_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

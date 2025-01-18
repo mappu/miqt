@@ -57,21 +57,21 @@ void QLibrary_SetLoadHints(QLibrary* self, int hints);
 int QLibrary_LoadHints(const QLibrary* self);
 struct miqt_string QLibrary_Tr2(const char* s, const char* c);
 struct miqt_string QLibrary_Tr3(const char* s, const char* c, int n);
-void QLibrary_override_virtual_Event(void* self, intptr_t slot);
+bool QLibrary_override_virtual_Event(void* self, intptr_t slot);
 bool QLibrary_virtualbase_Event(void* self, QEvent* event);
-void QLibrary_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QLibrary_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QLibrary_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QLibrary_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QLibrary_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QLibrary_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QLibrary_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QLibrary_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QLibrary_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QLibrary_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QLibrary_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QLibrary_virtualbase_CustomEvent(void* self, QEvent* event);
-void QLibrary_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QLibrary_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QLibrary_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QLibrary_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QLibrary_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QLibrary_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QLibrary_Delete(QLibrary* self, bool isSubclass);
+void QLibrary_Delete(QLibrary* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -28,13 +28,13 @@ bool miqt_exec_callback_QApplication_Event(void*, intptr_t, QEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQApplication : public virtual QApplication {
+class MiqtVirtualQApplication final : public QApplication {
 public:
 
 	MiqtVirtualQApplication(int& argc, char** argv): QApplication(argc, argv) {};
 	MiqtVirtualQApplication(int& argc, char** argv, int param3): QApplication(argc, argv, param3) {};
 
-	virtual ~MiqtVirtualQApplication() = default;
+	virtual ~MiqtVirtualQApplication() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Notify = 0;
@@ -377,27 +377,35 @@ void QApplication_SetEffectEnabled2(int param1, bool enable) {
 	QApplication::setEffectEnabled(static_cast<Qt::UIEffect>(param1), enable);
 }
 
-void QApplication_override_virtual_Notify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQApplication*>( (QApplication*)(self) )->handle__Notify = slot;
+bool QApplication_override_virtual_Notify(void* self, intptr_t slot) {
+	MiqtVirtualQApplication* self_cast = dynamic_cast<MiqtVirtualQApplication*>( (QApplication*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Notify = slot;
+	return true;
 }
 
 bool QApplication_virtualbase_Notify(void* self, QObject* param1, QEvent* param2) {
 	return ( (MiqtVirtualQApplication*)(self) )->virtualbase_Notify(param1, param2);
 }
 
-void QApplication_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQApplication*>( (QApplication*)(self) )->handle__Event = slot;
+bool QApplication_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQApplication* self_cast = dynamic_cast<MiqtVirtualQApplication*>( (QApplication*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QApplication_virtualbase_Event(void* self, QEvent* param1) {
 	return ( (MiqtVirtualQApplication*)(self) )->virtualbase_Event(param1);
 }
 
-void QApplication_Delete(QApplication* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQApplication*>( self );
-	} else {
-		delete self;
-	}
+void QApplication_Delete(QApplication* self) {
+	delete self;
 }
 

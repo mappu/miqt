@@ -50,13 +50,13 @@ void miqt_exec_callback_QAbstractItemDelegate_DisconnectNotify(void*, intptr_t, 
 } /* extern C */
 #endif
 
-class MiqtVirtualQAbstractItemDelegate : public virtual QAbstractItemDelegate {
+class MiqtVirtualQAbstractItemDelegate final : public QAbstractItemDelegate {
 public:
 
 	MiqtVirtualQAbstractItemDelegate(): QAbstractItemDelegate() {};
 	MiqtVirtualQAbstractItemDelegate(QObject* parent): QAbstractItemDelegate(parent) {};
 
-	virtual ~MiqtVirtualQAbstractItemDelegate() = default;
+	virtual ~MiqtVirtualQAbstractItemDelegate() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Paint = 0;
@@ -707,139 +707,237 @@ void QAbstractItemDelegate_connect_CloseEditor2(QAbstractItemDelegate* self, int
 	});
 }
 
-void QAbstractItemDelegate_override_virtual_Paint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) )->handle__Paint = slot;
+bool QAbstractItemDelegate_override_virtual_Paint(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemDelegate* self_cast = dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Paint = slot;
+	return true;
 }
 
-void QAbstractItemDelegate_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) )->handle__SizeHint = slot;
+bool QAbstractItemDelegate_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemDelegate* self_cast = dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
-void QAbstractItemDelegate_override_virtual_CreateEditor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) )->handle__CreateEditor = slot;
+bool QAbstractItemDelegate_override_virtual_CreateEditor(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemDelegate* self_cast = dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CreateEditor = slot;
+	return true;
 }
 
 QWidget* QAbstractItemDelegate_virtualbase_CreateEditor(const void* self, QWidget* parent, QStyleOptionViewItem* option, QModelIndex* index) {
 	return ( (const MiqtVirtualQAbstractItemDelegate*)(self) )->virtualbase_CreateEditor(parent, option, index);
 }
 
-void QAbstractItemDelegate_override_virtual_DestroyEditor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) )->handle__DestroyEditor = slot;
+bool QAbstractItemDelegate_override_virtual_DestroyEditor(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemDelegate* self_cast = dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DestroyEditor = slot;
+	return true;
 }
 
 void QAbstractItemDelegate_virtualbase_DestroyEditor(const void* self, QWidget* editor, QModelIndex* index) {
 	( (const MiqtVirtualQAbstractItemDelegate*)(self) )->virtualbase_DestroyEditor(editor, index);
 }
 
-void QAbstractItemDelegate_override_virtual_SetEditorData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) )->handle__SetEditorData = slot;
+bool QAbstractItemDelegate_override_virtual_SetEditorData(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemDelegate* self_cast = dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetEditorData = slot;
+	return true;
 }
 
 void QAbstractItemDelegate_virtualbase_SetEditorData(const void* self, QWidget* editor, QModelIndex* index) {
 	( (const MiqtVirtualQAbstractItemDelegate*)(self) )->virtualbase_SetEditorData(editor, index);
 }
 
-void QAbstractItemDelegate_override_virtual_SetModelData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) )->handle__SetModelData = slot;
+bool QAbstractItemDelegate_override_virtual_SetModelData(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemDelegate* self_cast = dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetModelData = slot;
+	return true;
 }
 
 void QAbstractItemDelegate_virtualbase_SetModelData(const void* self, QWidget* editor, QAbstractItemModel* model, QModelIndex* index) {
 	( (const MiqtVirtualQAbstractItemDelegate*)(self) )->virtualbase_SetModelData(editor, model, index);
 }
 
-void QAbstractItemDelegate_override_virtual_UpdateEditorGeometry(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) )->handle__UpdateEditorGeometry = slot;
+bool QAbstractItemDelegate_override_virtual_UpdateEditorGeometry(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemDelegate* self_cast = dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateEditorGeometry = slot;
+	return true;
 }
 
 void QAbstractItemDelegate_virtualbase_UpdateEditorGeometry(const void* self, QWidget* editor, QStyleOptionViewItem* option, QModelIndex* index) {
 	( (const MiqtVirtualQAbstractItemDelegate*)(self) )->virtualbase_UpdateEditorGeometry(editor, option, index);
 }
 
-void QAbstractItemDelegate_override_virtual_EditorEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) )->handle__EditorEvent = slot;
+bool QAbstractItemDelegate_override_virtual_EditorEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemDelegate* self_cast = dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EditorEvent = slot;
+	return true;
 }
 
 bool QAbstractItemDelegate_virtualbase_EditorEvent(void* self, QEvent* event, QAbstractItemModel* model, QStyleOptionViewItem* option, QModelIndex* index) {
 	return ( (MiqtVirtualQAbstractItemDelegate*)(self) )->virtualbase_EditorEvent(event, model, option, index);
 }
 
-void QAbstractItemDelegate_override_virtual_HelpEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) )->handle__HelpEvent = slot;
+bool QAbstractItemDelegate_override_virtual_HelpEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemDelegate* self_cast = dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HelpEvent = slot;
+	return true;
 }
 
 bool QAbstractItemDelegate_virtualbase_HelpEvent(void* self, QHelpEvent* event, QAbstractItemView* view, QStyleOptionViewItem* option, QModelIndex* index) {
 	return ( (MiqtVirtualQAbstractItemDelegate*)(self) )->virtualbase_HelpEvent(event, view, option, index);
 }
 
-void QAbstractItemDelegate_override_virtual_PaintingRoles(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) )->handle__PaintingRoles = slot;
+bool QAbstractItemDelegate_override_virtual_PaintingRoles(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemDelegate* self_cast = dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintingRoles = slot;
+	return true;
 }
 
 struct miqt_array /* of int */  QAbstractItemDelegate_virtualbase_PaintingRoles(const void* self) {
 	return ( (const MiqtVirtualQAbstractItemDelegate*)(self) )->virtualbase_PaintingRoles();
 }
 
-void QAbstractItemDelegate_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) )->handle__Event = slot;
+bool QAbstractItemDelegate_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemDelegate* self_cast = dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QAbstractItemDelegate_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQAbstractItemDelegate*)(self) )->virtualbase_Event(event);
 }
 
-void QAbstractItemDelegate_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) )->handle__EventFilter = slot;
+bool QAbstractItemDelegate_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemDelegate* self_cast = dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QAbstractItemDelegate_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQAbstractItemDelegate*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QAbstractItemDelegate_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) )->handle__TimerEvent = slot;
+bool QAbstractItemDelegate_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemDelegate* self_cast = dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QAbstractItemDelegate_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQAbstractItemDelegate*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QAbstractItemDelegate_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) )->handle__ChildEvent = slot;
+bool QAbstractItemDelegate_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemDelegate* self_cast = dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QAbstractItemDelegate_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQAbstractItemDelegate*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QAbstractItemDelegate_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) )->handle__CustomEvent = slot;
+bool QAbstractItemDelegate_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemDelegate* self_cast = dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QAbstractItemDelegate_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQAbstractItemDelegate*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QAbstractItemDelegate_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) )->handle__ConnectNotify = slot;
+bool QAbstractItemDelegate_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemDelegate* self_cast = dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QAbstractItemDelegate_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAbstractItemDelegate*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QAbstractItemDelegate_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) )->handle__DisconnectNotify = slot;
+bool QAbstractItemDelegate_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemDelegate* self_cast = dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( (QAbstractItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QAbstractItemDelegate_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAbstractItemDelegate*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QAbstractItemDelegate_Delete(QAbstractItemDelegate* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractItemDelegate_Delete(QAbstractItemDelegate* self) {
+	delete self;
 }
 

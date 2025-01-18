@@ -54,12 +54,12 @@ bool miqt_exec_callback_QAbstractSocket_Reset(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQAbstractSocket : public virtual QAbstractSocket {
+class MiqtVirtualQAbstractSocket final : public QAbstractSocket {
 public:
 
 	MiqtVirtualQAbstractSocket(QAbstractSocket::SocketType socketType, QObject* parent): QAbstractSocket(socketType, parent) {};
 
-	virtual ~MiqtVirtualQAbstractSocket() = default;
+	virtual ~MiqtVirtualQAbstractSocket() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Resume = 0;
@@ -1086,227 +1086,385 @@ bool QAbstractSocket_Bind23(QAbstractSocket* self, uint16_t port, int mode) {
 	return self->bind(static_cast<quint16>(port), static_cast<QAbstractSocket::BindMode>(mode));
 }
 
-void QAbstractSocket_override_virtual_Resume(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__Resume = slot;
+bool QAbstractSocket_override_virtual_Resume(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSocket* self_cast = dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Resume = slot;
+	return true;
 }
 
 void QAbstractSocket_virtualbase_Resume(void* self) {
 	( (MiqtVirtualQAbstractSocket*)(self) )->virtualbase_Resume();
 }
 
-void QAbstractSocket_override_virtual_ConnectToHost(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__ConnectToHost = slot;
+bool QAbstractSocket_override_virtual_ConnectToHost(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSocket* self_cast = dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectToHost = slot;
+	return true;
 }
 
 void QAbstractSocket_virtualbase_ConnectToHost(void* self, struct miqt_string hostName, uint16_t port, int mode, int protocol) {
 	( (MiqtVirtualQAbstractSocket*)(self) )->virtualbase_ConnectToHost(hostName, port, mode, protocol);
 }
 
-void QAbstractSocket_override_virtual_ConnectToHost2(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__ConnectToHost2 = slot;
+bool QAbstractSocket_override_virtual_ConnectToHost2(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSocket* self_cast = dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectToHost2 = slot;
+	return true;
 }
 
 void QAbstractSocket_virtualbase_ConnectToHost2(void* self, QHostAddress* address, uint16_t port, int mode) {
 	( (MiqtVirtualQAbstractSocket*)(self) )->virtualbase_ConnectToHost2(address, port, mode);
 }
 
-void QAbstractSocket_override_virtual_DisconnectFromHost(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__DisconnectFromHost = slot;
+bool QAbstractSocket_override_virtual_DisconnectFromHost(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSocket* self_cast = dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectFromHost = slot;
+	return true;
 }
 
 void QAbstractSocket_virtualbase_DisconnectFromHost(void* self) {
 	( (MiqtVirtualQAbstractSocket*)(self) )->virtualbase_DisconnectFromHost();
 }
 
-void QAbstractSocket_override_virtual_BytesAvailable(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__BytesAvailable = slot;
+bool QAbstractSocket_override_virtual_BytesAvailable(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSocket* self_cast = dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BytesAvailable = slot;
+	return true;
 }
 
 long long QAbstractSocket_virtualbase_BytesAvailable(const void* self) {
 	return ( (const MiqtVirtualQAbstractSocket*)(self) )->virtualbase_BytesAvailable();
 }
 
-void QAbstractSocket_override_virtual_BytesToWrite(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__BytesToWrite = slot;
+bool QAbstractSocket_override_virtual_BytesToWrite(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSocket* self_cast = dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BytesToWrite = slot;
+	return true;
 }
 
 long long QAbstractSocket_virtualbase_BytesToWrite(const void* self) {
 	return ( (const MiqtVirtualQAbstractSocket*)(self) )->virtualbase_BytesToWrite();
 }
 
-void QAbstractSocket_override_virtual_CanReadLine(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__CanReadLine = slot;
+bool QAbstractSocket_override_virtual_CanReadLine(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSocket* self_cast = dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CanReadLine = slot;
+	return true;
 }
 
 bool QAbstractSocket_virtualbase_CanReadLine(const void* self) {
 	return ( (const MiqtVirtualQAbstractSocket*)(self) )->virtualbase_CanReadLine();
 }
 
-void QAbstractSocket_override_virtual_SetReadBufferSize(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__SetReadBufferSize = slot;
+bool QAbstractSocket_override_virtual_SetReadBufferSize(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSocket* self_cast = dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetReadBufferSize = slot;
+	return true;
 }
 
 void QAbstractSocket_virtualbase_SetReadBufferSize(void* self, long long size) {
 	( (MiqtVirtualQAbstractSocket*)(self) )->virtualbase_SetReadBufferSize(size);
 }
 
-void QAbstractSocket_override_virtual_SocketDescriptor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__SocketDescriptor = slot;
+bool QAbstractSocket_override_virtual_SocketDescriptor(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSocket* self_cast = dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SocketDescriptor = slot;
+	return true;
 }
 
 intptr_t QAbstractSocket_virtualbase_SocketDescriptor(const void* self) {
 	return ( (const MiqtVirtualQAbstractSocket*)(self) )->virtualbase_SocketDescriptor();
 }
 
-void QAbstractSocket_override_virtual_SetSocketDescriptor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__SetSocketDescriptor = slot;
+bool QAbstractSocket_override_virtual_SetSocketDescriptor(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSocket* self_cast = dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetSocketDescriptor = slot;
+	return true;
 }
 
 bool QAbstractSocket_virtualbase_SetSocketDescriptor(void* self, intptr_t socketDescriptor, int state, int openMode) {
 	return ( (MiqtVirtualQAbstractSocket*)(self) )->virtualbase_SetSocketDescriptor(socketDescriptor, state, openMode);
 }
 
-void QAbstractSocket_override_virtual_SetSocketOption(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__SetSocketOption = slot;
+bool QAbstractSocket_override_virtual_SetSocketOption(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSocket* self_cast = dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetSocketOption = slot;
+	return true;
 }
 
 void QAbstractSocket_virtualbase_SetSocketOption(void* self, int option, QVariant* value) {
 	( (MiqtVirtualQAbstractSocket*)(self) )->virtualbase_SetSocketOption(option, value);
 }
 
-void QAbstractSocket_override_virtual_SocketOption(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__SocketOption = slot;
+bool QAbstractSocket_override_virtual_SocketOption(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSocket* self_cast = dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SocketOption = slot;
+	return true;
 }
 
 QVariant* QAbstractSocket_virtualbase_SocketOption(void* self, int option) {
 	return ( (MiqtVirtualQAbstractSocket*)(self) )->virtualbase_SocketOption(option);
 }
 
-void QAbstractSocket_override_virtual_Close(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__Close = slot;
+bool QAbstractSocket_override_virtual_Close(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSocket* self_cast = dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Close = slot;
+	return true;
 }
 
 void QAbstractSocket_virtualbase_Close(void* self) {
 	( (MiqtVirtualQAbstractSocket*)(self) )->virtualbase_Close();
 }
 
-void QAbstractSocket_override_virtual_IsSequential(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__IsSequential = slot;
+bool QAbstractSocket_override_virtual_IsSequential(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSocket* self_cast = dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsSequential = slot;
+	return true;
 }
 
 bool QAbstractSocket_virtualbase_IsSequential(const void* self) {
 	return ( (const MiqtVirtualQAbstractSocket*)(self) )->virtualbase_IsSequential();
 }
 
-void QAbstractSocket_override_virtual_AtEnd(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__AtEnd = slot;
+bool QAbstractSocket_override_virtual_AtEnd(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSocket* self_cast = dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__AtEnd = slot;
+	return true;
 }
 
 bool QAbstractSocket_virtualbase_AtEnd(const void* self) {
 	return ( (const MiqtVirtualQAbstractSocket*)(self) )->virtualbase_AtEnd();
 }
 
-void QAbstractSocket_override_virtual_WaitForConnected(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__WaitForConnected = slot;
+bool QAbstractSocket_override_virtual_WaitForConnected(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSocket* self_cast = dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WaitForConnected = slot;
+	return true;
 }
 
 bool QAbstractSocket_virtualbase_WaitForConnected(void* self, int msecs) {
 	return ( (MiqtVirtualQAbstractSocket*)(self) )->virtualbase_WaitForConnected(msecs);
 }
 
-void QAbstractSocket_override_virtual_WaitForReadyRead(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__WaitForReadyRead = slot;
+bool QAbstractSocket_override_virtual_WaitForReadyRead(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSocket* self_cast = dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WaitForReadyRead = slot;
+	return true;
 }
 
 bool QAbstractSocket_virtualbase_WaitForReadyRead(void* self, int msecs) {
 	return ( (MiqtVirtualQAbstractSocket*)(self) )->virtualbase_WaitForReadyRead(msecs);
 }
 
-void QAbstractSocket_override_virtual_WaitForBytesWritten(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__WaitForBytesWritten = slot;
+bool QAbstractSocket_override_virtual_WaitForBytesWritten(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSocket* self_cast = dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WaitForBytesWritten = slot;
+	return true;
 }
 
 bool QAbstractSocket_virtualbase_WaitForBytesWritten(void* self, int msecs) {
 	return ( (MiqtVirtualQAbstractSocket*)(self) )->virtualbase_WaitForBytesWritten(msecs);
 }
 
-void QAbstractSocket_override_virtual_WaitForDisconnected(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__WaitForDisconnected = slot;
+bool QAbstractSocket_override_virtual_WaitForDisconnected(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSocket* self_cast = dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WaitForDisconnected = slot;
+	return true;
 }
 
 bool QAbstractSocket_virtualbase_WaitForDisconnected(void* self, int msecs) {
 	return ( (MiqtVirtualQAbstractSocket*)(self) )->virtualbase_WaitForDisconnected(msecs);
 }
 
-void QAbstractSocket_override_virtual_ReadData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__ReadData = slot;
+bool QAbstractSocket_override_virtual_ReadData(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSocket* self_cast = dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ReadData = slot;
+	return true;
 }
 
 long long QAbstractSocket_virtualbase_ReadData(void* self, char* data, long long maxlen) {
 	return ( (MiqtVirtualQAbstractSocket*)(self) )->virtualbase_ReadData(data, maxlen);
 }
 
-void QAbstractSocket_override_virtual_ReadLineData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__ReadLineData = slot;
+bool QAbstractSocket_override_virtual_ReadLineData(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSocket* self_cast = dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ReadLineData = slot;
+	return true;
 }
 
 long long QAbstractSocket_virtualbase_ReadLineData(void* self, char* data, long long maxlen) {
 	return ( (MiqtVirtualQAbstractSocket*)(self) )->virtualbase_ReadLineData(data, maxlen);
 }
 
-void QAbstractSocket_override_virtual_WriteData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__WriteData = slot;
+bool QAbstractSocket_override_virtual_WriteData(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSocket* self_cast = dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WriteData = slot;
+	return true;
 }
 
 long long QAbstractSocket_virtualbase_WriteData(void* self, const char* data, long long lenVal) {
 	return ( (MiqtVirtualQAbstractSocket*)(self) )->virtualbase_WriteData(data, lenVal);
 }
 
-void QAbstractSocket_override_virtual_Open(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__Open = slot;
+bool QAbstractSocket_override_virtual_Open(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSocket* self_cast = dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Open = slot;
+	return true;
 }
 
 bool QAbstractSocket_virtualbase_Open(void* self, int mode) {
 	return ( (MiqtVirtualQAbstractSocket*)(self) )->virtualbase_Open(mode);
 }
 
-void QAbstractSocket_override_virtual_Pos(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__Pos = slot;
+bool QAbstractSocket_override_virtual_Pos(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSocket* self_cast = dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Pos = slot;
+	return true;
 }
 
 long long QAbstractSocket_virtualbase_Pos(const void* self) {
 	return ( (const MiqtVirtualQAbstractSocket*)(self) )->virtualbase_Pos();
 }
 
-void QAbstractSocket_override_virtual_Size(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__Size = slot;
+bool QAbstractSocket_override_virtual_Size(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSocket* self_cast = dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Size = slot;
+	return true;
 }
 
 long long QAbstractSocket_virtualbase_Size(const void* self) {
 	return ( (const MiqtVirtualQAbstractSocket*)(self) )->virtualbase_Size();
 }
 
-void QAbstractSocket_override_virtual_Seek(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__Seek = slot;
+bool QAbstractSocket_override_virtual_Seek(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSocket* self_cast = dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Seek = slot;
+	return true;
 }
 
 bool QAbstractSocket_virtualbase_Seek(void* self, long long pos) {
 	return ( (MiqtVirtualQAbstractSocket*)(self) )->virtualbase_Seek(pos);
 }
 
-void QAbstractSocket_override_virtual_Reset(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) )->handle__Reset = slot;
+bool QAbstractSocket_override_virtual_Reset(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSocket* self_cast = dynamic_cast<MiqtVirtualQAbstractSocket*>( (QAbstractSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Reset = slot;
+	return true;
 }
 
 bool QAbstractSocket_virtualbase_Reset(void* self) {
 	return ( (MiqtVirtualQAbstractSocket*)(self) )->virtualbase_Reset();
 }
 
-void QAbstractSocket_Delete(QAbstractSocket* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractSocket*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractSocket_Delete(QAbstractSocket* self) {
+	delete self;
 }
 

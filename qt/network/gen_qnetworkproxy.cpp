@@ -196,12 +196,8 @@ void QNetworkProxyQuery_SetNetworkConfiguration(QNetworkProxyQuery* self, QNetwo
 	self->setNetworkConfiguration(*networkConfiguration);
 }
 
-void QNetworkProxyQuery_Delete(QNetworkProxyQuery* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QNetworkProxyQuery*>( self );
-	} else {
-		delete self;
-	}
+void QNetworkProxyQuery_Delete(QNetworkProxyQuery* self) {
+	delete self;
 }
 
 QNetworkProxy* QNetworkProxy_new() {
@@ -393,20 +389,16 @@ void QNetworkProxy_SetRawHeader(QNetworkProxy* self, struct miqt_string headerNa
 	self->setRawHeader(headerName_QByteArray, value_QByteArray);
 }
 
-void QNetworkProxy_Delete(QNetworkProxy* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QNetworkProxy*>( self );
-	} else {
-		delete self;
-	}
+void QNetworkProxy_Delete(QNetworkProxy* self) {
+	delete self;
 }
 
-class MiqtVirtualQNetworkProxyFactory : public virtual QNetworkProxyFactory {
+class MiqtVirtualQNetworkProxyFactory final : public QNetworkProxyFactory {
 public:
 
 	MiqtVirtualQNetworkProxyFactory(): QNetworkProxyFactory() {};
 
-	virtual ~MiqtVirtualQNetworkProxyFactory() = default;
+	virtual ~MiqtVirtualQNetworkProxyFactory() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__QueryProxy = 0;
@@ -506,15 +498,17 @@ struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_SystemProxyForQu
 	return _out;
 }
 
-void QNetworkProxyFactory_override_virtual_QueryProxy(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQNetworkProxyFactory*>( (QNetworkProxyFactory*)(self) )->handle__QueryProxy = slot;
+bool QNetworkProxyFactory_override_virtual_QueryProxy(void* self, intptr_t slot) {
+	MiqtVirtualQNetworkProxyFactory* self_cast = dynamic_cast<MiqtVirtualQNetworkProxyFactory*>( (QNetworkProxyFactory*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__QueryProxy = slot;
+	return true;
 }
 
-void QNetworkProxyFactory_Delete(QNetworkProxyFactory* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQNetworkProxyFactory*>( self );
-	} else {
-		delete self;
-	}
+void QNetworkProxyFactory_Delete(QNetworkProxyFactory* self) {
+	delete self;
 }
 

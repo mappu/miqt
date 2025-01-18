@@ -46,11 +46,7 @@ struct miqt_array /* of QSslCertificate* */  QWebEngineClientCertificateSelectio
 	return _out;
 }
 
-void QWebEngineClientCertificateSelection_Delete(QWebEngineClientCertificateSelection* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebEngineClientCertificateSelection*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineClientCertificateSelection_Delete(QWebEngineClientCertificateSelection* self) {
+	delete self;
 }
 

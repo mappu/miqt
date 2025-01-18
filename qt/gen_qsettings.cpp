@@ -29,7 +29,7 @@ void miqt_exec_callback_QSettings_DisconnectNotify(void*, intptr_t, QMetaMethod*
 } /* extern C */
 #endif
 
-class MiqtVirtualQSettings : public virtual QSettings {
+class MiqtVirtualQSettings final : public QSettings {
 public:
 
 	MiqtVirtualQSettings(const QString& organization): QSettings(organization) {};
@@ -48,7 +48,7 @@ public:
 	MiqtVirtualQSettings(QObject* parent): QSettings(parent) {};
 	MiqtVirtualQSettings(QSettings::Scope scope, QObject* parent): QSettings(scope, parent) {};
 
-	virtual ~MiqtVirtualQSettings() = default;
+	virtual ~MiqtVirtualQSettings() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -618,67 +618,105 @@ QVariant* QSettings_Value2(const QSettings* self, struct miqt_string key, QVaria
 	return new QVariant(self->value(key_QString, *defaultValue));
 }
 
-void QSettings_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSettings*>( (QSettings*)(self) )->handle__Event = slot;
+bool QSettings_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQSettings* self_cast = dynamic_cast<MiqtVirtualQSettings*>( (QSettings*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QSettings_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQSettings*)(self) )->virtualbase_Event(event);
 }
 
-void QSettings_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSettings*>( (QSettings*)(self) )->handle__EventFilter = slot;
+bool QSettings_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQSettings* self_cast = dynamic_cast<MiqtVirtualQSettings*>( (QSettings*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QSettings_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQSettings*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QSettings_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSettings*>( (QSettings*)(self) )->handle__TimerEvent = slot;
+bool QSettings_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSettings* self_cast = dynamic_cast<MiqtVirtualQSettings*>( (QSettings*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QSettings_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQSettings*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QSettings_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSettings*>( (QSettings*)(self) )->handle__ChildEvent = slot;
+bool QSettings_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSettings* self_cast = dynamic_cast<MiqtVirtualQSettings*>( (QSettings*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QSettings_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQSettings*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QSettings_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSettings*>( (QSettings*)(self) )->handle__CustomEvent = slot;
+bool QSettings_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSettings* self_cast = dynamic_cast<MiqtVirtualQSettings*>( (QSettings*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QSettings_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQSettings*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QSettings_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSettings*>( (QSettings*)(self) )->handle__ConnectNotify = slot;
+bool QSettings_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQSettings* self_cast = dynamic_cast<MiqtVirtualQSettings*>( (QSettings*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QSettings_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSettings*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QSettings_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSettings*>( (QSettings*)(self) )->handle__DisconnectNotify = slot;
+bool QSettings_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQSettings* self_cast = dynamic_cast<MiqtVirtualQSettings*>( (QSettings*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QSettings_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSettings*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QSettings_Delete(QSettings* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSettings*>( self );
-	} else {
-		delete self;
-	}
+void QSettings_Delete(QSettings* self) {
+	delete self;
 }
 

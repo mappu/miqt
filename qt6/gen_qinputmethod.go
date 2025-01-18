@@ -21,8 +21,7 @@ const (
 )
 
 type QInputMethod struct {
-	h          *C.QInputMethod
-	isSubclass bool
+	h *C.QInputMethod
 	*QObject
 }
 

@@ -15,8 +15,7 @@ import (
 )
 
 type QPrinterInfo struct {
-	h          *C.QPrinterInfo
-	isSubclass bool
+	h *C.QPrinterInfo
 }
 
 func (this *QPrinterInfo) cPointer() *C.QPrinterInfo {
@@ -50,25 +49,19 @@ func UnsafeNewQPrinterInfo(h unsafe.Pointer) *QPrinterInfo {
 // NewQPrinterInfo constructs a new QPrinterInfo object.
 func NewQPrinterInfo() *QPrinterInfo {
 
-	ret := newQPrinterInfo(C.QPrinterInfo_new())
-	ret.isSubclass = true
-	return ret
+	return newQPrinterInfo(C.QPrinterInfo_new())
 }
 
 // NewQPrinterInfo2 constructs a new QPrinterInfo object.
 func NewQPrinterInfo2(other *QPrinterInfo) *QPrinterInfo {
 
-	ret := newQPrinterInfo(C.QPrinterInfo_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPrinterInfo(C.QPrinterInfo_new2(other.cPointer()))
 }
 
 // NewQPrinterInfo3 constructs a new QPrinterInfo object.
 func NewQPrinterInfo3(printer *QPrinter) *QPrinterInfo {
 
-	ret := newQPrinterInfo(C.QPrinterInfo_new3(printer.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPrinterInfo(C.QPrinterInfo_new3(printer.cPointer()))
 }
 
 func (this *QPrinterInfo) OperatorAssign(other *QPrinterInfo) {
@@ -241,7 +234,7 @@ func QPrinterInfo_PrinterInfo(printerName string) *QPrinterInfo {
 
 // Delete this object from C++ memory.
 func (this *QPrinterInfo) Delete() {
-	C.QPrinterInfo_Delete(this.h, C.bool(this.isSubclass))
+	C.QPrinterInfo_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

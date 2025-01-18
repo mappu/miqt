@@ -14,8 +14,7 @@ import (
 )
 
 type QSslCipher struct {
-	h          *C.QSslCipher
-	isSubclass bool
+	h *C.QSslCipher
 }
 
 func (this *QSslCipher) cPointer() *C.QSslCipher {
@@ -49,9 +48,7 @@ func UnsafeNewQSslCipher(h unsafe.Pointer) *QSslCipher {
 // NewQSslCipher constructs a new QSslCipher object.
 func NewQSslCipher() *QSslCipher {
 
-	ret := newQSslCipher(C.QSslCipher_new())
-	ret.isSubclass = true
-	return ret
+	return newQSslCipher(C.QSslCipher_new())
 }
 
 // NewQSslCipher2 constructs a new QSslCipher object.
@@ -61,9 +58,7 @@ func NewQSslCipher2(name string) *QSslCipher {
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
 
-	ret := newQSslCipher(C.QSslCipher_new2(name_ms))
-	ret.isSubclass = true
-	return ret
+	return newQSslCipher(C.QSslCipher_new2(name_ms))
 }
 
 // NewQSslCipher3 constructs a new QSslCipher object.
@@ -73,17 +68,13 @@ func NewQSslCipher3(name string, protocol QSsl__SslProtocol) *QSslCipher {
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
 
-	ret := newQSslCipher(C.QSslCipher_new3(name_ms, (C.int)(protocol)))
-	ret.isSubclass = true
-	return ret
+	return newQSslCipher(C.QSslCipher_new3(name_ms, (C.int)(protocol)))
 }
 
 // NewQSslCipher4 constructs a new QSslCipher object.
 func NewQSslCipher4(other *QSslCipher) *QSslCipher {
 
-	ret := newQSslCipher(C.QSslCipher_new4(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSslCipher(C.QSslCipher_new4(other.cPointer()))
 }
 
 func (this *QSslCipher) OperatorAssign(other *QSslCipher) {
@@ -155,7 +146,7 @@ func (this *QSslCipher) Protocol() QSsl__SslProtocol {
 
 // Delete this object from C++ memory.
 func (this *QSslCipher) Delete() {
-	C.QSslCipher_Delete(this.h, C.bool(this.isSubclass))
+	C.QSslCipher_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

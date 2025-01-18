@@ -55,8 +55,7 @@ const (
 )
 
 type QPalette struct {
-	h          *C.QPalette
-	isSubclass bool
+	h *C.QPalette
 }
 
 func (this *QPalette) cPointer() *C.QPalette {
@@ -90,57 +89,43 @@ func UnsafeNewQPalette(h unsafe.Pointer) *QPalette {
 // NewQPalette constructs a new QPalette object.
 func NewQPalette() *QPalette {
 
-	ret := newQPalette(C.QPalette_new())
-	ret.isSubclass = true
-	return ret
+	return newQPalette(C.QPalette_new())
 }
 
 // NewQPalette2 constructs a new QPalette object.
 func NewQPalette2(button *QColor) *QPalette {
 
-	ret := newQPalette(C.QPalette_new2(button.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPalette(C.QPalette_new2(button.cPointer()))
 }
 
 // NewQPalette3 constructs a new QPalette object.
 func NewQPalette3(button GlobalColor) *QPalette {
 
-	ret := newQPalette(C.QPalette_new3((C.int)(button)))
-	ret.isSubclass = true
-	return ret
+	return newQPalette(C.QPalette_new3((C.int)(button)))
 }
 
 // NewQPalette4 constructs a new QPalette object.
 func NewQPalette4(button *QColor, window *QColor) *QPalette {
 
-	ret := newQPalette(C.QPalette_new4(button.cPointer(), window.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPalette(C.QPalette_new4(button.cPointer(), window.cPointer()))
 }
 
 // NewQPalette5 constructs a new QPalette object.
 func NewQPalette5(windowText *QBrush, button *QBrush, light *QBrush, dark *QBrush, mid *QBrush, text *QBrush, bright_text *QBrush, base *QBrush, window *QBrush) *QPalette {
 
-	ret := newQPalette(C.QPalette_new5(windowText.cPointer(), button.cPointer(), light.cPointer(), dark.cPointer(), mid.cPointer(), text.cPointer(), bright_text.cPointer(), base.cPointer(), window.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPalette(C.QPalette_new5(windowText.cPointer(), button.cPointer(), light.cPointer(), dark.cPointer(), mid.cPointer(), text.cPointer(), bright_text.cPointer(), base.cPointer(), window.cPointer()))
 }
 
 // NewQPalette6 constructs a new QPalette object.
 func NewQPalette6(windowText *QColor, window *QColor, light *QColor, dark *QColor, mid *QColor, text *QColor, base *QColor) *QPalette {
 
-	ret := newQPalette(C.QPalette_new6(windowText.cPointer(), window.cPointer(), light.cPointer(), dark.cPointer(), mid.cPointer(), text.cPointer(), base.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPalette(C.QPalette_new6(windowText.cPointer(), window.cPointer(), light.cPointer(), dark.cPointer(), mid.cPointer(), text.cPointer(), base.cPointer()))
 }
 
 // NewQPalette7 constructs a new QPalette object.
 func NewQPalette7(palette *QPalette) *QPalette {
 
-	ret := newQPalette(C.QPalette_new7(palette.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPalette(C.QPalette_new7(palette.cPointer()))
 }
 
 func (this *QPalette) OperatorAssign(palette *QPalette) {
@@ -329,7 +314,7 @@ func (this *QPalette) ResolveWithMask(mask uint) {
 
 // Delete this object from C++ memory.
 func (this *QPalette) Delete() {
-	C.QPalette_Delete(this.h, C.bool(this.isSubclass))
+	C.QPalette_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

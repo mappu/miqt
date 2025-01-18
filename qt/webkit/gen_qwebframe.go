@@ -35,8 +35,7 @@ const (
 )
 
 type QWebHitTestResult struct {
-	h          *C.QWebHitTestResult
-	isSubclass bool
+	h *C.QWebHitTestResult
 }
 
 func (this *QWebHitTestResult) cPointer() *C.QWebHitTestResult {
@@ -70,17 +69,13 @@ func UnsafeNewQWebHitTestResult(h unsafe.Pointer) *QWebHitTestResult {
 // NewQWebHitTestResult constructs a new QWebHitTestResult object.
 func NewQWebHitTestResult() *QWebHitTestResult {
 
-	ret := newQWebHitTestResult(C.QWebHitTestResult_new())
-	ret.isSubclass = true
-	return ret
+	return newQWebHitTestResult(C.QWebHitTestResult_new())
 }
 
 // NewQWebHitTestResult2 constructs a new QWebHitTestResult object.
 func NewQWebHitTestResult2(other *QWebHitTestResult) *QWebHitTestResult {
 
-	ret := newQWebHitTestResult(C.QWebHitTestResult_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebHitTestResult(C.QWebHitTestResult_new2(other.cPointer()))
 }
 
 func (this *QWebHitTestResult) OperatorAssign(other *QWebHitTestResult) {
@@ -197,7 +192,7 @@ func (this *QWebHitTestResult) Frame() *QWebFrame {
 
 // Delete this object from C++ memory.
 func (this *QWebHitTestResult) Delete() {
-	C.QWebHitTestResult_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebHitTestResult_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -210,8 +205,7 @@ func (this *QWebHitTestResult) GoGC() {
 }
 
 type QWebFrame struct {
-	h          *C.QWebFrame
-	isSubclass bool
+	h *C.QWebFrame
 	*qt.QObject
 }
 

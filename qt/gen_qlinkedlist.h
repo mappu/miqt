@@ -21,7 +21,7 @@ typedef struct QLinkedListData QLinkedListData;
 #endif
 
 QLinkedListData* QLinkedListData_new();
-void QLinkedListData_Delete(QLinkedListData* self, bool isSubclass);
+void QLinkedListData_Delete(QLinkedListData* self);
 
 #ifdef __cplusplus
 } /* extern C */

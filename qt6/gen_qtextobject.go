@@ -14,8 +14,7 @@ import (
 )
 
 type QTextObject struct {
-	h          *C.QTextObject
-	isSubclass bool
+	h *C.QTextObject
 	*QObject
 }
 
@@ -110,8 +109,7 @@ func QTextObject_Tr3(s string, c string, n int) string {
 }
 
 type QTextBlockGroup struct {
-	h          *C.QTextBlockGroup
-	isSubclass bool
+	h *C.QTextBlockGroup
 	*QTextObject
 }
 
@@ -188,8 +186,7 @@ func QTextBlockGroup_Tr3(s string, c string, n int) string {
 }
 
 type QTextFrameLayoutData struct {
-	h          *C.QTextFrameLayoutData
-	isSubclass bool
+	h *C.QTextFrameLayoutData
 }
 
 func (this *QTextFrameLayoutData) cPointer() *C.QTextFrameLayoutData {
@@ -226,7 +223,7 @@ func (this *QTextFrameLayoutData) OperatorAssign(param1 *QTextFrameLayoutData) {
 
 // Delete this object from C++ memory.
 func (this *QTextFrameLayoutData) Delete() {
-	C.QTextFrameLayoutData_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextFrameLayoutData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -239,8 +236,7 @@ func (this *QTextFrameLayoutData) GoGC() {
 }
 
 type QTextFrame struct {
-	h          *C.QTextFrame
-	isSubclass bool
+	h *C.QTextFrame
 	*QTextObject
 }
 
@@ -278,9 +274,7 @@ func UnsafeNewQTextFrame(h unsafe.Pointer) *QTextFrame {
 // NewQTextFrame constructs a new QTextFrame object.
 func NewQTextFrame(doc *QTextDocument) *QTextFrame {
 
-	ret := newQTextFrame(C.QTextFrame_new(doc.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTextFrame(C.QTextFrame_new(doc.cPointer()))
 }
 
 func (this *QTextFrame) MetaObject() *QMetaObject {
@@ -390,7 +384,7 @@ func QTextFrame_Tr3(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QTextFrame) Delete() {
-	C.QTextFrame_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextFrame_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -403,8 +397,7 @@ func (this *QTextFrame) GoGC() {
 }
 
 type QTextBlockUserData struct {
-	h          *C.QTextBlockUserData
-	isSubclass bool
+	h *C.QTextBlockUserData
 }
 
 func (this *QTextBlockUserData) cPointer() *C.QTextBlockUserData {
@@ -441,7 +434,7 @@ func (this *QTextBlockUserData) OperatorAssign(param1 *QTextBlockUserData) {
 
 // Delete this object from C++ memory.
 func (this *QTextBlockUserData) Delete() {
-	C.QTextBlockUserData_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextBlockUserData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -454,8 +447,7 @@ func (this *QTextBlockUserData) GoGC() {
 }
 
 type QTextBlock struct {
-	h          *C.QTextBlock
-	isSubclass bool
+	h *C.QTextBlock
 }
 
 func (this *QTextBlock) cPointer() *C.QTextBlock {
@@ -489,17 +481,13 @@ func UnsafeNewQTextBlock(h unsafe.Pointer) *QTextBlock {
 // NewQTextBlock constructs a new QTextBlock object.
 func NewQTextBlock() *QTextBlock {
 
-	ret := newQTextBlock(C.QTextBlock_new())
-	ret.isSubclass = true
-	return ret
+	return newQTextBlock(C.QTextBlock_new())
 }
 
 // NewQTextBlock2 constructs a new QTextBlock object.
 func NewQTextBlock2(o *QTextBlock) *QTextBlock {
 
-	ret := newQTextBlock(C.QTextBlock_new2(o.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTextBlock(C.QTextBlock_new2(o.cPointer()))
 }
 
 func (this *QTextBlock) OperatorAssign(o *QTextBlock) {
@@ -671,7 +659,7 @@ func (this *QTextBlock) FragmentIndex() int {
 
 // Delete this object from C++ memory.
 func (this *QTextBlock) Delete() {
-	C.QTextBlock_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextBlock_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -684,8 +672,7 @@ func (this *QTextBlock) GoGC() {
 }
 
 type QTextFragment struct {
-	h          *C.QTextFragment
-	isSubclass bool
+	h *C.QTextFragment
 }
 
 func (this *QTextFragment) cPointer() *C.QTextFragment {
@@ -719,17 +706,13 @@ func UnsafeNewQTextFragment(h unsafe.Pointer) *QTextFragment {
 // NewQTextFragment constructs a new QTextFragment object.
 func NewQTextFragment() *QTextFragment {
 
-	ret := newQTextFragment(C.QTextFragment_new())
-	ret.isSubclass = true
-	return ret
+	return newQTextFragment(C.QTextFragment_new())
 }
 
 // NewQTextFragment2 constructs a new QTextFragment object.
 func NewQTextFragment2(o *QTextFragment) *QTextFragment {
 
-	ret := newQTextFragment(C.QTextFragment_new2(o.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTextFragment(C.QTextFragment_new2(o.cPointer()))
 }
 
 func (this *QTextFragment) OperatorAssign(o *QTextFragment) {
@@ -819,7 +802,7 @@ func (this *QTextFragment) GlyphRuns2(from int, length int) []QGlyphRun {
 
 // Delete this object from C++ memory.
 func (this *QTextFragment) Delete() {
-	C.QTextFragment_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextFragment_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -832,8 +815,7 @@ func (this *QTextFragment) GoGC() {
 }
 
 type QTextFrame__iterator struct {
-	h          *C.QTextFrame__iterator
-	isSubclass bool
+	h *C.QTextFrame__iterator
 }
 
 func (this *QTextFrame__iterator) cPointer() *C.QTextFrame__iterator {
@@ -867,17 +849,13 @@ func UnsafeNewQTextFrame__iterator(h unsafe.Pointer) *QTextFrame__iterator {
 // NewQTextFrame__iterator constructs a new QTextFrame::iterator object.
 func NewQTextFrame__iterator() *QTextFrame__iterator {
 
-	ret := newQTextFrame__iterator(C.QTextFrame__iterator_new())
-	ret.isSubclass = true
-	return ret
+	return newQTextFrame__iterator(C.QTextFrame__iterator_new())
 }
 
 // NewQTextFrame__iterator2 constructs a new QTextFrame::iterator object.
 func NewQTextFrame__iterator2(param1 *QTextFrame__iterator) *QTextFrame__iterator {
 
-	ret := newQTextFrame__iterator(C.QTextFrame__iterator_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTextFrame__iterator(C.QTextFrame__iterator_new2(param1.cPointer()))
 }
 
 func (this *QTextFrame__iterator) ParentFrame() *QTextFrame {
@@ -928,7 +906,7 @@ func (this *QTextFrame__iterator) OperatorMinusMinusWithInt(param1 int) *QTextFr
 
 // Delete this object from C++ memory.
 func (this *QTextFrame__iterator) Delete() {
-	C.QTextFrame__iterator_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextFrame__iterator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -941,8 +919,7 @@ func (this *QTextFrame__iterator) GoGC() {
 }
 
 type QTextBlock__iterator struct {
-	h          *C.QTextBlock__iterator
-	isSubclass bool
+	h *C.QTextBlock__iterator
 }
 
 func (this *QTextBlock__iterator) cPointer() *C.QTextBlock__iterator {
@@ -976,17 +953,13 @@ func UnsafeNewQTextBlock__iterator(h unsafe.Pointer) *QTextBlock__iterator {
 // NewQTextBlock__iterator constructs a new QTextBlock::iterator object.
 func NewQTextBlock__iterator() *QTextBlock__iterator {
 
-	ret := newQTextBlock__iterator(C.QTextBlock__iterator_new())
-	ret.isSubclass = true
-	return ret
+	return newQTextBlock__iterator(C.QTextBlock__iterator_new())
 }
 
 // NewQTextBlock__iterator2 constructs a new QTextBlock::iterator object.
 func NewQTextBlock__iterator2(param1 *QTextBlock__iterator) *QTextBlock__iterator {
 
-	ret := newQTextBlock__iterator(C.QTextBlock__iterator_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTextBlock__iterator(C.QTextBlock__iterator_new2(param1.cPointer()))
 }
 
 func (this *QTextBlock__iterator) Fragment() *QTextFragment {
@@ -1029,7 +1002,7 @@ func (this *QTextBlock__iterator) OperatorMinusMinusWithInt(param1 int) *QTextBl
 
 // Delete this object from C++ memory.
 func (this *QTextBlock__iterator) Delete() {
-	C.QTextBlock__iterator_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextBlock__iterator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

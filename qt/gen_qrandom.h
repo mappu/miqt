@@ -46,7 +46,7 @@ QRandomGenerator* QRandomGenerator_System();
 QRandomGenerator* QRandomGenerator_Global();
 QRandomGenerator* QRandomGenerator_SecurelySeeded();
 void QRandomGenerator_Seed1(QRandomGenerator* self, unsigned int s);
-void QRandomGenerator_Delete(QRandomGenerator* self, bool isSubclass);
+void QRandomGenerator_Delete(QRandomGenerator* self);
 
 QRandomGenerator64* QRandomGenerator64_new();
 QRandomGenerator64* QRandomGenerator64_new2(const unsigned int* seedBuffer, ptrdiff_t lenVal);
@@ -64,7 +64,7 @@ QRandomGenerator64* QRandomGenerator64_System();
 QRandomGenerator64* QRandomGenerator64_Global();
 QRandomGenerator64* QRandomGenerator64_SecurelySeeded();
 void QRandomGenerator64_OperatorAssign(QRandomGenerator64* self, QRandomGenerator64* param1);
-void QRandomGenerator64_Delete(QRandomGenerator64* self, bool isSubclass);
+void QRandomGenerator64_Delete(QRandomGenerator64* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -119,11 +119,7 @@ void QNetworkDatagram_SetSender2(QNetworkDatagram* self, QHostAddress* address, 
 	self->setSender(*address, static_cast<quint16>(port));
 }
 
-void QNetworkDatagram_Delete(QNetworkDatagram* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QNetworkDatagram*>( self );
-	} else {
-		delete self;
-	}
+void QNetworkDatagram_Delete(QNetworkDatagram* self) {
+	delete self;
 }
 

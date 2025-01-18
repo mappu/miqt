@@ -94,7 +94,7 @@ struct miqt_string QTextBlockGroup_Tr2(const char* s, const char* c);
 struct miqt_string QTextBlockGroup_Tr3(const char* s, const char* c, int n);
 
 void QTextFrameLayoutData_OperatorAssign(QTextFrameLayoutData* self, QTextFrameLayoutData* param1);
-void QTextFrameLayoutData_Delete(QTextFrameLayoutData* self, bool isSubclass);
+void QTextFrameLayoutData_Delete(QTextFrameLayoutData* self);
 
 QTextFrame* QTextFrame_new(QTextDocument* doc);
 void QTextFrame_virtbase(QTextFrame* src, QTextObject** outptr_QTextObject);
@@ -115,10 +115,10 @@ QTextFrame__iterator* QTextFrame_Begin(const QTextFrame* self);
 QTextFrame__iterator* QTextFrame_End(const QTextFrame* self);
 struct miqt_string QTextFrame_Tr2(const char* s, const char* c);
 struct miqt_string QTextFrame_Tr3(const char* s, const char* c, int n);
-void QTextFrame_Delete(QTextFrame* self, bool isSubclass);
+void QTextFrame_Delete(QTextFrame* self);
 
 void QTextBlockUserData_OperatorAssign(QTextBlockUserData* self, QTextBlockUserData* param1);
-void QTextBlockUserData_Delete(QTextBlockUserData* self, bool isSubclass);
+void QTextBlockUserData_Delete(QTextBlockUserData* self);
 
 QTextBlock* QTextBlock_new();
 QTextBlock* QTextBlock_new2(QTextBlock* o);
@@ -158,7 +158,7 @@ QTextBlock__iterator* QTextBlock_End(const QTextBlock* self);
 QTextBlock* QTextBlock_Next(const QTextBlock* self);
 QTextBlock* QTextBlock_Previous(const QTextBlock* self);
 int QTextBlock_FragmentIndex(const QTextBlock* self);
-void QTextBlock_Delete(QTextBlock* self, bool isSubclass);
+void QTextBlock_Delete(QTextBlock* self);
 
 QTextFragment* QTextFragment_new();
 QTextFragment* QTextFragment_new2(QTextFragment* o);
@@ -176,7 +176,7 @@ struct miqt_string QTextFragment_Text(const QTextFragment* self);
 struct miqt_array /* of QGlyphRun* */  QTextFragment_GlyphRuns(const QTextFragment* self);
 struct miqt_array /* of QGlyphRun* */  QTextFragment_GlyphRuns1(const QTextFragment* self, int from);
 struct miqt_array /* of QGlyphRun* */  QTextFragment_GlyphRuns2(const QTextFragment* self, int from, int length);
-void QTextFragment_Delete(QTextFragment* self, bool isSubclass);
+void QTextFragment_Delete(QTextFragment* self);
 
 QTextFrame__iterator* QTextFrame__iterator_new();
 QTextFrame__iterator* QTextFrame__iterator_new2(QTextFrame__iterator* param1);
@@ -190,7 +190,7 @@ QTextFrame__iterator* QTextFrame__iterator_OperatorPlusPlus(QTextFrame__iterator
 QTextFrame__iterator* QTextFrame__iterator_OperatorPlusPlusWithInt(QTextFrame__iterator* self, int param1);
 QTextFrame__iterator* QTextFrame__iterator_OperatorMinusMinus(QTextFrame__iterator* self);
 QTextFrame__iterator* QTextFrame__iterator_OperatorMinusMinusWithInt(QTextFrame__iterator* self, int param1);
-void QTextFrame__iterator_Delete(QTextFrame__iterator* self, bool isSubclass);
+void QTextFrame__iterator_Delete(QTextFrame__iterator* self);
 
 QTextBlock__iterator* QTextBlock__iterator_new();
 QTextBlock__iterator* QTextBlock__iterator_new2(QTextBlock__iterator* param1);
@@ -202,7 +202,7 @@ QTextBlock__iterator* QTextBlock__iterator_OperatorPlusPlus(QTextBlock__iterator
 QTextBlock__iterator* QTextBlock__iterator_OperatorPlusPlusWithInt(QTextBlock__iterator* self, int param1);
 QTextBlock__iterator* QTextBlock__iterator_OperatorMinusMinus(QTextBlock__iterator* self);
 QTextBlock__iterator* QTextBlock__iterator_OperatorMinusMinusWithInt(QTextBlock__iterator* self, int param1);
-void QTextBlock__iterator_Delete(QTextBlock__iterator* self, bool isSubclass);
+void QTextBlock__iterator_Delete(QTextBlock__iterator* self);
 
 #ifdef __cplusplus
 } /* extern C */

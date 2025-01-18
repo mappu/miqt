@@ -193,12 +193,8 @@ double QJsonValue_ToDouble1(const QJsonValue* self, double defaultValue) {
 	return self->toDouble(static_cast<double>(defaultValue));
 }
 
-void QJsonValue_Delete(QJsonValue* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QJsonValue*>( self );
-	} else {
-		delete self;
-	}
+void QJsonValue_Delete(QJsonValue* self) {
+	delete self;
 }
 
 QJsonValueRef* QJsonValueRef_new(QJsonValueRef* param1) {
@@ -325,12 +321,8 @@ bool QJsonValueRef_OperatorNotEqual(const QJsonValueRef* self, QJsonValue* other
 	return (*self != *other);
 }
 
-void QJsonValueRef_Delete(QJsonValueRef* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QJsonValueRef*>( self );
-	} else {
-		delete self;
-	}
+void QJsonValueRef_Delete(QJsonValueRef* self) {
+	delete self;
 }
 
 QJsonValuePtr* QJsonValuePtr_new(QJsonValue* val) {
@@ -355,12 +347,8 @@ void QJsonValuePtr_OperatorAssign(QJsonValuePtr* self, QJsonValuePtr* param1) {
 	self->operator=(*param1);
 }
 
-void QJsonValuePtr_Delete(QJsonValuePtr* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QJsonValuePtr*>( self );
-	} else {
-		delete self;
-	}
+void QJsonValuePtr_Delete(QJsonValuePtr* self) {
+	delete self;
 }
 
 QJsonValueRefPtr* QJsonValueRefPtr_new(QJsonArray* array, int idx) {
@@ -389,11 +377,7 @@ void QJsonValueRefPtr_OperatorAssign(QJsonValueRefPtr* self, QJsonValueRefPtr* p
 	self->operator=(*param1);
 }
 
-void QJsonValueRefPtr_Delete(QJsonValueRefPtr* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QJsonValueRefPtr*>( self );
-	} else {
-		delete self;
-	}
+void QJsonValueRefPtr_Delete(QJsonValueRefPtr* self) {
+	delete self;
 }
 

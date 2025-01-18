@@ -59,8 +59,7 @@ const (
 )
 
 type QMediaPlayer struct {
-	h          *C.QMediaPlayer
-	isSubclass bool
+	h *C.QMediaPlayer
 	*QMediaObject
 }
 
@@ -98,25 +97,19 @@ func UnsafeNewQMediaPlayer(h unsafe.Pointer) *QMediaPlayer {
 // NewQMediaPlayer constructs a new QMediaPlayer object.
 func NewQMediaPlayer() *QMediaPlayer {
 
-	ret := newQMediaPlayer(C.QMediaPlayer_new())
-	ret.isSubclass = true
-	return ret
+	return newQMediaPlayer(C.QMediaPlayer_new())
 }
 
 // NewQMediaPlayer2 constructs a new QMediaPlayer object.
 func NewQMediaPlayer2(parent *qt.QObject) *QMediaPlayer {
 
-	ret := newQMediaPlayer(C.QMediaPlayer_new2((*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQMediaPlayer(C.QMediaPlayer_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 // NewQMediaPlayer3 constructs a new QMediaPlayer object.
 func NewQMediaPlayer3(parent *qt.QObject, flags QMediaPlayer__Flag) *QMediaPlayer {
 
-	ret := newQMediaPlayer(C.QMediaPlayer_new3((*C.QObject)(parent.UnsafePointer()), (C.int)(flags)))
-	ret.isSubclass = true
-	return ret
+	return newQMediaPlayer(C.QMediaPlayer_new3((*C.QObject)(parent.UnsafePointer()), (C.int)(flags)))
 }
 
 func (this *QMediaPlayer) MetaObject() *qt.QMetaObject {
@@ -825,10 +818,10 @@ func (this *QMediaPlayer) callVirtualBase_Availability() QMultimedia__Availabili
 
 }
 func (this *QMediaPlayer) OnAvailability(slot func(super func() QMultimedia__AvailabilityStatus) QMultimedia__AvailabilityStatus) {
-	if !this.isSubclass {
+	ok := C.QMediaPlayer_override_virtual_Availability(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QMediaPlayer_override_virtual_Availability(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMediaPlayer_Availability
@@ -850,10 +843,10 @@ func (this *QMediaPlayer) callVirtualBase_Bind(param1 *qt.QObject) bool {
 
 }
 func (this *QMediaPlayer) OnBind(slot func(super func(param1 *qt.QObject) bool, param1 *qt.QObject) bool) {
-	if !this.isSubclass {
+	ok := C.QMediaPlayer_override_virtual_Bind(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QMediaPlayer_override_virtual_Bind(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMediaPlayer_Bind
@@ -878,10 +871,10 @@ func (this *QMediaPlayer) callVirtualBase_Unbind(param1 *qt.QObject) {
 
 }
 func (this *QMediaPlayer) OnUnbind(slot func(super func(param1 *qt.QObject), param1 *qt.QObject)) {
-	if !this.isSubclass {
+	ok := C.QMediaPlayer_override_virtual_Unbind(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QMediaPlayer_override_virtual_Unbind(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMediaPlayer_Unbind
@@ -904,10 +897,10 @@ func (this *QMediaPlayer) callVirtualBase_IsAvailable() bool {
 
 }
 func (this *QMediaPlayer) OnIsAvailable(slot func(super func() bool) bool) {
-	if !this.isSubclass {
+	ok := C.QMediaPlayer_override_virtual_IsAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QMediaPlayer_override_virtual_IsAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMediaPlayer_IsAvailable
@@ -929,10 +922,10 @@ func (this *QMediaPlayer) callVirtualBase_Service() *QMediaService {
 
 }
 func (this *QMediaPlayer) OnService(slot func(super func() *QMediaService) *QMediaService) {
-	if !this.isSubclass {
+	ok := C.QMediaPlayer_override_virtual_Service(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QMediaPlayer_override_virtual_Service(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMediaPlayer_Service
@@ -950,7 +943,7 @@ func miqt_exec_callback_QMediaPlayer_Service(self *C.QMediaPlayer, cb C.intptr_t
 
 // Delete this object from C++ memory.
 func (this *QMediaPlayer) Delete() {
-	C.QMediaPlayer_Delete(this.h, C.bool(this.isSubclass))
+	C.QMediaPlayer_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

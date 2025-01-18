@@ -51,27 +51,27 @@ struct miqt_string QsciMacro_Tr2(const char* s, const char* c);
 struct miqt_string QsciMacro_Tr3(const char* s, const char* c, int n);
 struct miqt_string QsciMacro_TrUtf82(const char* s, const char* c);
 struct miqt_string QsciMacro_TrUtf83(const char* s, const char* c, int n);
-void QsciMacro_override_virtual_Play(void* self, intptr_t slot);
+bool QsciMacro_override_virtual_Play(void* self, intptr_t slot);
 void QsciMacro_virtualbase_Play(void* self);
-void QsciMacro_override_virtual_StartRecording(void* self, intptr_t slot);
+bool QsciMacro_override_virtual_StartRecording(void* self, intptr_t slot);
 void QsciMacro_virtualbase_StartRecording(void* self);
-void QsciMacro_override_virtual_EndRecording(void* self, intptr_t slot);
+bool QsciMacro_override_virtual_EndRecording(void* self, intptr_t slot);
 void QsciMacro_virtualbase_EndRecording(void* self);
-void QsciMacro_override_virtual_Event(void* self, intptr_t slot);
+bool QsciMacro_override_virtual_Event(void* self, intptr_t slot);
 bool QsciMacro_virtualbase_Event(void* self, QEvent* event);
-void QsciMacro_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QsciMacro_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QsciMacro_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QsciMacro_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QsciMacro_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QsciMacro_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QsciMacro_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QsciMacro_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QsciMacro_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QsciMacro_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QsciMacro_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QsciMacro_virtualbase_CustomEvent(void* self, QEvent* event);
-void QsciMacro_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QsciMacro_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QsciMacro_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QsciMacro_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QsciMacro_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QsciMacro_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QsciMacro_Delete(QsciMacro* self, bool isSubclass);
+void QsciMacro_Delete(QsciMacro* self);
 
 #ifdef __cplusplus
 } /* extern C */

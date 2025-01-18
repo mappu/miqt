@@ -21,7 +21,7 @@ typedef struct QPartialOrdering QPartialOrdering;
 #endif
 
 QPartialOrdering* QPartialOrdering_new(QPartialOrdering* param1);
-void QPartialOrdering_Delete(QPartialOrdering* self, bool isSubclass);
+void QPartialOrdering_Delete(QPartialOrdering* self);
 
 #ifdef __cplusplus
 } /* extern C */

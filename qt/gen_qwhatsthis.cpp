@@ -51,11 +51,7 @@ QAction* QWhatsThis_CreateAction1(QObject* parent) {
 	return QWhatsThis::createAction(parent);
 }
 
-void QWhatsThis_Delete(QWhatsThis* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWhatsThis*>( self );
-	} else {
-		delete self;
-	}
+void QWhatsThis_Delete(QWhatsThis* self) {
+	delete self;
 }
 

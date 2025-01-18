@@ -309,11 +309,7 @@ void QCommandLineParser_ShowHelp1(QCommandLineParser* self, int exitCode) {
 	self->showHelp(static_cast<int>(exitCode));
 }
 
-void QCommandLineParser_Delete(QCommandLineParser* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCommandLineParser*>( self );
-	} else {
-		delete self;
-	}
+void QCommandLineParser_Delete(QCommandLineParser* self) {
+	delete self;
 }
 

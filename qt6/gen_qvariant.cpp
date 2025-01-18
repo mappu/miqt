@@ -596,12 +596,8 @@ double QVariant_ToReal1(const QVariant* self, bool* ok) {
 	return static_cast<double>(_ret);
 }
 
-void QVariant_Delete(QVariant* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QVariant*>( self );
-	} else {
-		delete self;
-	}
+void QVariant_Delete(QVariant* self) {
+	delete self;
 }
 
 QVariantConstPointer* QVariantConstPointer_new(QVariant* variant) {
@@ -624,11 +620,7 @@ void QVariantConstPointer_OperatorAssign(QVariantConstPointer* self, QVariantCon
 	self->operator=(*param1);
 }
 
-void QVariantConstPointer_Delete(QVariantConstPointer* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QVariantConstPointer*>( self );
-	} else {
-		delete self;
-	}
+void QVariantConstPointer_Delete(QVariantConstPointer* self) {
+	delete self;
 }
 

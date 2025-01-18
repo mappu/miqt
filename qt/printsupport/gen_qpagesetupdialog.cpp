@@ -40,7 +40,7 @@ bool miqt_exec_callback_QPageSetupDialog_EventFilter(void*, intptr_t, QObject*, 
 } /* extern C */
 #endif
 
-class MiqtVirtualQPageSetupDialog : public virtual QPageSetupDialog {
+class MiqtVirtualQPageSetupDialog final : public QPageSetupDialog {
 public:
 
 	MiqtVirtualQPageSetupDialog(QWidget* parent): QPageSetupDialog(parent) {};
@@ -48,7 +48,7 @@ public:
 	MiqtVirtualQPageSetupDialog(): QPageSetupDialog() {};
 	MiqtVirtualQPageSetupDialog(QPrinter* printer, QWidget* parent): QPageSetupDialog(printer, parent) {};
 
-	virtual ~MiqtVirtualQPageSetupDialog() = default;
+	virtual ~MiqtVirtualQPageSetupDialog() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Exec = 0;
@@ -485,123 +485,203 @@ struct miqt_string QPageSetupDialog_TrUtf83(const char* s, const char* c, int n)
 	return _ms;
 }
 
-void QPageSetupDialog_override_virtual_Exec(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPageSetupDialog*>( (QPageSetupDialog*)(self) )->handle__Exec = slot;
+bool QPageSetupDialog_override_virtual_Exec(void* self, intptr_t slot) {
+	MiqtVirtualQPageSetupDialog* self_cast = dynamic_cast<MiqtVirtualQPageSetupDialog*>( (QPageSetupDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Exec = slot;
+	return true;
 }
 
 int QPageSetupDialog_virtualbase_Exec(void* self) {
 	return ( (MiqtVirtualQPageSetupDialog*)(self) )->virtualbase_Exec();
 }
 
-void QPageSetupDialog_override_virtual_Done(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPageSetupDialog*>( (QPageSetupDialog*)(self) )->handle__Done = slot;
+bool QPageSetupDialog_override_virtual_Done(void* self, intptr_t slot) {
+	MiqtVirtualQPageSetupDialog* self_cast = dynamic_cast<MiqtVirtualQPageSetupDialog*>( (QPageSetupDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Done = slot;
+	return true;
 }
 
 void QPageSetupDialog_virtualbase_Done(void* self, int result) {
 	( (MiqtVirtualQPageSetupDialog*)(self) )->virtualbase_Done(result);
 }
 
-void QPageSetupDialog_override_virtual_SetVisible(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPageSetupDialog*>( (QPageSetupDialog*)(self) )->handle__SetVisible = slot;
+bool QPageSetupDialog_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQPageSetupDialog* self_cast = dynamic_cast<MiqtVirtualQPageSetupDialog*>( (QPageSetupDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
 }
 
 void QPageSetupDialog_virtualbase_SetVisible(void* self, bool visible) {
 	( (MiqtVirtualQPageSetupDialog*)(self) )->virtualbase_SetVisible(visible);
 }
 
-void QPageSetupDialog_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPageSetupDialog*>( (QPageSetupDialog*)(self) )->handle__SizeHint = slot;
+bool QPageSetupDialog_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQPageSetupDialog* self_cast = dynamic_cast<MiqtVirtualQPageSetupDialog*>( (QPageSetupDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QPageSetupDialog_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQPageSetupDialog*)(self) )->virtualbase_SizeHint();
 }
 
-void QPageSetupDialog_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPageSetupDialog*>( (QPageSetupDialog*)(self) )->handle__MinimumSizeHint = slot;
+bool QPageSetupDialog_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQPageSetupDialog* self_cast = dynamic_cast<MiqtVirtualQPageSetupDialog*>( (QPageSetupDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QPageSetupDialog_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQPageSetupDialog*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QPageSetupDialog_override_virtual_Open(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPageSetupDialog*>( (QPageSetupDialog*)(self) )->handle__Open = slot;
+bool QPageSetupDialog_override_virtual_Open(void* self, intptr_t slot) {
+	MiqtVirtualQPageSetupDialog* self_cast = dynamic_cast<MiqtVirtualQPageSetupDialog*>( (QPageSetupDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Open = slot;
+	return true;
 }
 
 void QPageSetupDialog_virtualbase_Open(void* self) {
 	( (MiqtVirtualQPageSetupDialog*)(self) )->virtualbase_Open();
 }
 
-void QPageSetupDialog_override_virtual_Accept(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPageSetupDialog*>( (QPageSetupDialog*)(self) )->handle__Accept = slot;
+bool QPageSetupDialog_override_virtual_Accept(void* self, intptr_t slot) {
+	MiqtVirtualQPageSetupDialog* self_cast = dynamic_cast<MiqtVirtualQPageSetupDialog*>( (QPageSetupDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Accept = slot;
+	return true;
 }
 
 void QPageSetupDialog_virtualbase_Accept(void* self) {
 	( (MiqtVirtualQPageSetupDialog*)(self) )->virtualbase_Accept();
 }
 
-void QPageSetupDialog_override_virtual_Reject(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPageSetupDialog*>( (QPageSetupDialog*)(self) )->handle__Reject = slot;
+bool QPageSetupDialog_override_virtual_Reject(void* self, intptr_t slot) {
+	MiqtVirtualQPageSetupDialog* self_cast = dynamic_cast<MiqtVirtualQPageSetupDialog*>( (QPageSetupDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Reject = slot;
+	return true;
 }
 
 void QPageSetupDialog_virtualbase_Reject(void* self) {
 	( (MiqtVirtualQPageSetupDialog*)(self) )->virtualbase_Reject();
 }
 
-void QPageSetupDialog_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPageSetupDialog*>( (QPageSetupDialog*)(self) )->handle__KeyPressEvent = slot;
+bool QPageSetupDialog_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPageSetupDialog* self_cast = dynamic_cast<MiqtVirtualQPageSetupDialog*>( (QPageSetupDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QPageSetupDialog_virtualbase_KeyPressEvent(void* self, QKeyEvent* param1) {
 	( (MiqtVirtualQPageSetupDialog*)(self) )->virtualbase_KeyPressEvent(param1);
 }
 
-void QPageSetupDialog_override_virtual_CloseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPageSetupDialog*>( (QPageSetupDialog*)(self) )->handle__CloseEvent = slot;
+bool QPageSetupDialog_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPageSetupDialog* self_cast = dynamic_cast<MiqtVirtualQPageSetupDialog*>( (QPageSetupDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
 }
 
 void QPageSetupDialog_virtualbase_CloseEvent(void* self, QCloseEvent* param1) {
 	( (MiqtVirtualQPageSetupDialog*)(self) )->virtualbase_CloseEvent(param1);
 }
 
-void QPageSetupDialog_override_virtual_ShowEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPageSetupDialog*>( (QPageSetupDialog*)(self) )->handle__ShowEvent = slot;
+bool QPageSetupDialog_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPageSetupDialog* self_cast = dynamic_cast<MiqtVirtualQPageSetupDialog*>( (QPageSetupDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
 }
 
 void QPageSetupDialog_virtualbase_ShowEvent(void* self, QShowEvent* param1) {
 	( (MiqtVirtualQPageSetupDialog*)(self) )->virtualbase_ShowEvent(param1);
 }
 
-void QPageSetupDialog_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPageSetupDialog*>( (QPageSetupDialog*)(self) )->handle__ResizeEvent = slot;
+bool QPageSetupDialog_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPageSetupDialog* self_cast = dynamic_cast<MiqtVirtualQPageSetupDialog*>( (QPageSetupDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QPageSetupDialog_virtualbase_ResizeEvent(void* self, QResizeEvent* param1) {
 	( (MiqtVirtualQPageSetupDialog*)(self) )->virtualbase_ResizeEvent(param1);
 }
 
-void QPageSetupDialog_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPageSetupDialog*>( (QPageSetupDialog*)(self) )->handle__ContextMenuEvent = slot;
+bool QPageSetupDialog_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPageSetupDialog* self_cast = dynamic_cast<MiqtVirtualQPageSetupDialog*>( (QPageSetupDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QPageSetupDialog_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* param1) {
 	( (MiqtVirtualQPageSetupDialog*)(self) )->virtualbase_ContextMenuEvent(param1);
 }
 
-void QPageSetupDialog_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPageSetupDialog*>( (QPageSetupDialog*)(self) )->handle__EventFilter = slot;
+bool QPageSetupDialog_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQPageSetupDialog* self_cast = dynamic_cast<MiqtVirtualQPageSetupDialog*>( (QPageSetupDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QPageSetupDialog_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2) {
 	return ( (MiqtVirtualQPageSetupDialog*)(self) )->virtualbase_EventFilter(param1, param2);
 }
 
-void QPageSetupDialog_Delete(QPageSetupDialog* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQPageSetupDialog*>( self );
-	} else {
-		delete self;
-	}
+void QPageSetupDialog_Delete(QPageSetupDialog* self) {
+	delete self;
 }
 

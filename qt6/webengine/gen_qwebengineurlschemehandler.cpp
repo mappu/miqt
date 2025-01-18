@@ -28,13 +28,13 @@ void miqt_exec_callback_QWebEngineUrlSchemeHandler_DisconnectNotify(void*, intpt
 } /* extern C */
 #endif
 
-class MiqtVirtualQWebEngineUrlSchemeHandler : public virtual QWebEngineUrlSchemeHandler {
+class MiqtVirtualQWebEngineUrlSchemeHandler final : public QWebEngineUrlSchemeHandler {
 public:
 
 	MiqtVirtualQWebEngineUrlSchemeHandler(): QWebEngineUrlSchemeHandler() {};
 	MiqtVirtualQWebEngineUrlSchemeHandler(QObject* parent): QWebEngineUrlSchemeHandler(parent) {};
 
-	virtual ~MiqtVirtualQWebEngineUrlSchemeHandler() = default;
+	virtual ~MiqtVirtualQWebEngineUrlSchemeHandler() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__RequestStarted = 0;
@@ -282,71 +282,115 @@ struct miqt_string QWebEngineUrlSchemeHandler_Tr3(const char* s, const char* c, 
 	return _ms;
 }
 
-void QWebEngineUrlSchemeHandler_override_virtual_RequestStarted(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebEngineUrlSchemeHandler*>( (QWebEngineUrlSchemeHandler*)(self) )->handle__RequestStarted = slot;
+bool QWebEngineUrlSchemeHandler_override_virtual_RequestStarted(void* self, intptr_t slot) {
+	MiqtVirtualQWebEngineUrlSchemeHandler* self_cast = dynamic_cast<MiqtVirtualQWebEngineUrlSchemeHandler*>( (QWebEngineUrlSchemeHandler*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RequestStarted = slot;
+	return true;
 }
 
-void QWebEngineUrlSchemeHandler_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebEngineUrlSchemeHandler*>( (QWebEngineUrlSchemeHandler*)(self) )->handle__Event = slot;
+bool QWebEngineUrlSchemeHandler_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQWebEngineUrlSchemeHandler* self_cast = dynamic_cast<MiqtVirtualQWebEngineUrlSchemeHandler*>( (QWebEngineUrlSchemeHandler*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QWebEngineUrlSchemeHandler_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->virtualbase_Event(event);
 }
 
-void QWebEngineUrlSchemeHandler_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebEngineUrlSchemeHandler*>( (QWebEngineUrlSchemeHandler*)(self) )->handle__EventFilter = slot;
+bool QWebEngineUrlSchemeHandler_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQWebEngineUrlSchemeHandler* self_cast = dynamic_cast<MiqtVirtualQWebEngineUrlSchemeHandler*>( (QWebEngineUrlSchemeHandler*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QWebEngineUrlSchemeHandler_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QWebEngineUrlSchemeHandler_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebEngineUrlSchemeHandler*>( (QWebEngineUrlSchemeHandler*)(self) )->handle__TimerEvent = slot;
+bool QWebEngineUrlSchemeHandler_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebEngineUrlSchemeHandler* self_cast = dynamic_cast<MiqtVirtualQWebEngineUrlSchemeHandler*>( (QWebEngineUrlSchemeHandler*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QWebEngineUrlSchemeHandler_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QWebEngineUrlSchemeHandler_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebEngineUrlSchemeHandler*>( (QWebEngineUrlSchemeHandler*)(self) )->handle__ChildEvent = slot;
+bool QWebEngineUrlSchemeHandler_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebEngineUrlSchemeHandler* self_cast = dynamic_cast<MiqtVirtualQWebEngineUrlSchemeHandler*>( (QWebEngineUrlSchemeHandler*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QWebEngineUrlSchemeHandler_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QWebEngineUrlSchemeHandler_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebEngineUrlSchemeHandler*>( (QWebEngineUrlSchemeHandler*)(self) )->handle__CustomEvent = slot;
+bool QWebEngineUrlSchemeHandler_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebEngineUrlSchemeHandler* self_cast = dynamic_cast<MiqtVirtualQWebEngineUrlSchemeHandler*>( (QWebEngineUrlSchemeHandler*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QWebEngineUrlSchemeHandler_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QWebEngineUrlSchemeHandler_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebEngineUrlSchemeHandler*>( (QWebEngineUrlSchemeHandler*)(self) )->handle__ConnectNotify = slot;
+bool QWebEngineUrlSchemeHandler_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQWebEngineUrlSchemeHandler* self_cast = dynamic_cast<MiqtVirtualQWebEngineUrlSchemeHandler*>( (QWebEngineUrlSchemeHandler*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QWebEngineUrlSchemeHandler_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QWebEngineUrlSchemeHandler_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebEngineUrlSchemeHandler*>( (QWebEngineUrlSchemeHandler*)(self) )->handle__DisconnectNotify = slot;
+bool QWebEngineUrlSchemeHandler_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQWebEngineUrlSchemeHandler* self_cast = dynamic_cast<MiqtVirtualQWebEngineUrlSchemeHandler*>( (QWebEngineUrlSchemeHandler*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QWebEngineUrlSchemeHandler_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QWebEngineUrlSchemeHandler_Delete(QWebEngineUrlSchemeHandler* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQWebEngineUrlSchemeHandler*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineUrlSchemeHandler_Delete(QWebEngineUrlSchemeHandler* self) {
+	delete self;
 }
 

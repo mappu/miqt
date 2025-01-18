@@ -18,12 +18,12 @@ struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QScriptExtensi
 } /* extern C */
 #endif
 
-class MiqtVirtualQScriptExtensionInterface : public virtual QScriptExtensionInterface {
+class MiqtVirtualQScriptExtensionInterface final : public QScriptExtensionInterface {
 public:
 
 	MiqtVirtualQScriptExtensionInterface(const QScriptExtensionInterface& param1): QScriptExtensionInterface(param1) {};
 
-	virtual ~MiqtVirtualQScriptExtensionInterface() = default;
+	virtual ~MiqtVirtualQScriptExtensionInterface() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Initialize = 0;
@@ -90,19 +90,27 @@ void QScriptExtensionInterface_OperatorAssign(QScriptExtensionInterface* self, Q
 	self->operator=(*param1);
 }
 
-void QScriptExtensionInterface_override_virtual_Initialize(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptExtensionInterface*>( (QScriptExtensionInterface*)(self) )->handle__Initialize = slot;
-}
-
-void QScriptExtensionInterface_override_virtual_Keys(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptExtensionInterface*>( (QScriptExtensionInterface*)(self) )->handle__Keys = slot;
-}
-
-void QScriptExtensionInterface_Delete(QScriptExtensionInterface* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQScriptExtensionInterface*>( self );
-	} else {
-		delete self;
+bool QScriptExtensionInterface_override_virtual_Initialize(void* self, intptr_t slot) {
+	MiqtVirtualQScriptExtensionInterface* self_cast = dynamic_cast<MiqtVirtualQScriptExtensionInterface*>( (QScriptExtensionInterface*)(self) );
+	if (self_cast == nullptr) {
+		return false;
 	}
+	
+	self_cast->handle__Initialize = slot;
+	return true;
+}
+
+bool QScriptExtensionInterface_override_virtual_Keys(void* self, intptr_t slot) {
+	MiqtVirtualQScriptExtensionInterface* self_cast = dynamic_cast<MiqtVirtualQScriptExtensionInterface*>( (QScriptExtensionInterface*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Keys = slot;
+	return true;
+}
+
+void QScriptExtensionInterface_Delete(QScriptExtensionInterface* self) {
+	delete self;
 }
 

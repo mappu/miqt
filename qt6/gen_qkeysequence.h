@@ -61,7 +61,7 @@ struct miqt_string QKeySequence_ToString1(const QKeySequence* self, int format);
 QKeySequence* QKeySequence_FromString2(struct miqt_string str, int format);
 struct miqt_array /* of QKeySequence* */  QKeySequence_ListFromString2(struct miqt_string str, int format);
 struct miqt_string QKeySequence_ListToString2(struct miqt_array /* of QKeySequence* */  list, int format);
-void QKeySequence_Delete(QKeySequence* self, bool isSubclass);
+void QKeySequence_Delete(QKeySequence* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -16,8 +16,7 @@ import (
 )
 
 type QsciLexerXML struct {
-	h          *C.QsciLexerXML
-	isSubclass bool
+	h *C.QsciLexerXML
 	*QsciLexerHTML
 }
 
@@ -55,17 +54,13 @@ func UnsafeNewQsciLexerXML(h unsafe.Pointer) *QsciLexerXML {
 // NewQsciLexerXML constructs a new QsciLexerXML object.
 func NewQsciLexerXML() *QsciLexerXML {
 
-	ret := newQsciLexerXML(C.QsciLexerXML_new())
-	ret.isSubclass = true
-	return ret
+	return newQsciLexerXML(C.QsciLexerXML_new())
 }
 
 // NewQsciLexerXML2 constructs a new QsciLexerXML object.
 func NewQsciLexerXML2(parent *qt.QObject) *QsciLexerXML {
 
-	ret := newQsciLexerXML(C.QsciLexerXML_new2((*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQsciLexerXML(C.QsciLexerXML_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerXML) MetaObject() *qt.QMetaObject {
@@ -195,10 +190,10 @@ func (this *QsciLexerXML) callVirtualBase_SetFoldCompact(fold bool) {
 
 }
 func (this *QsciLexerXML) OnSetFoldCompact(slot func(super func(fold bool), fold bool)) {
-	if !this.isSubclass {
+	ok := C.QsciLexerXML_override_virtual_SetFoldCompact(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciLexerXML_override_virtual_SetFoldCompact(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerXML_SetFoldCompact
@@ -221,10 +216,10 @@ func (this *QsciLexerXML) callVirtualBase_SetFoldPreprocessor(fold bool) {
 
 }
 func (this *QsciLexerXML) OnSetFoldPreprocessor(slot func(super func(fold bool), fold bool)) {
-	if !this.isSubclass {
+	ok := C.QsciLexerXML_override_virtual_SetFoldPreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciLexerXML_override_virtual_SetFoldPreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerXML_SetFoldPreprocessor
@@ -247,10 +242,10 @@ func (this *QsciLexerXML) callVirtualBase_SetCaseSensitiveTags(sens bool) {
 
 }
 func (this *QsciLexerXML) OnSetCaseSensitiveTags(slot func(super func(sens bool), sens bool)) {
-	if !this.isSubclass {
+	ok := C.QsciLexerXML_override_virtual_SetCaseSensitiveTags(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciLexerXML_override_virtual_SetCaseSensitiveTags(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerXML_SetCaseSensitiveTags
@@ -269,7 +264,7 @@ func miqt_exec_callback_QsciLexerXML_SetCaseSensitiveTags(self *C.QsciLexerXML, 
 
 // Delete this object from C++ memory.
 func (this *QsciLexerXML) Delete() {
-	C.QsciLexerXML_Delete(this.h, C.bool(this.isSubclass))
+	C.QsciLexerXML_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

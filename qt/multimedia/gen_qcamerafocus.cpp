@@ -69,12 +69,8 @@ void QCameraFocusZone_SetStatus(QCameraFocusZone* self, int status) {
 	self->setStatus(static_cast<QCameraFocusZone::FocusZoneStatus>(status));
 }
 
-void QCameraFocusZone_Delete(QCameraFocusZone* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCameraFocusZone*>( self );
-	} else {
-		delete self;
-	}
+void QCameraFocusZone_Delete(QCameraFocusZone* self) {
+	delete self;
 }
 
 void QCameraFocus_virtbase(QCameraFocus* src, QObject** outptr_QObject) {

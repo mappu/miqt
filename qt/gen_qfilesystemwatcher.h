@@ -51,21 +51,21 @@ struct miqt_string QFileSystemWatcher_Tr2(const char* s, const char* c);
 struct miqt_string QFileSystemWatcher_Tr3(const char* s, const char* c, int n);
 struct miqt_string QFileSystemWatcher_TrUtf82(const char* s, const char* c);
 struct miqt_string QFileSystemWatcher_TrUtf83(const char* s, const char* c, int n);
-void QFileSystemWatcher_override_virtual_Event(void* self, intptr_t slot);
+bool QFileSystemWatcher_override_virtual_Event(void* self, intptr_t slot);
 bool QFileSystemWatcher_virtualbase_Event(void* self, QEvent* event);
-void QFileSystemWatcher_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QFileSystemWatcher_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QFileSystemWatcher_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QFileSystemWatcher_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QFileSystemWatcher_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QFileSystemWatcher_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QFileSystemWatcher_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QFileSystemWatcher_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QFileSystemWatcher_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QFileSystemWatcher_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QFileSystemWatcher_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QFileSystemWatcher_virtualbase_CustomEvent(void* self, QEvent* event);
-void QFileSystemWatcher_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QFileSystemWatcher_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QFileSystemWatcher_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QFileSystemWatcher_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QFileSystemWatcher_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QFileSystemWatcher_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QFileSystemWatcher_Delete(QFileSystemWatcher* self, bool isSubclass);
+void QFileSystemWatcher_Delete(QFileSystemWatcher* self);
 
 #ifdef __cplusplus
 } /* extern C */

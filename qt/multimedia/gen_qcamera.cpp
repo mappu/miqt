@@ -43,7 +43,7 @@ void miqt_exec_callback_QCamera_Unbind(void*, intptr_t, QObject*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQCamera : public virtual QCamera {
+class MiqtVirtualQCamera final : public QCamera {
 public:
 
 	MiqtVirtualQCamera(): QCamera() {};
@@ -55,7 +55,7 @@ public:
 	MiqtVirtualQCamera(const QCameraInfo& cameraInfo, QObject* parent): QCamera(cameraInfo, parent) {};
 	MiqtVirtualQCamera(QCamera::Position position, QObject* parent): QCamera(position, parent) {};
 
-	virtual ~MiqtVirtualQCamera() = default;
+	virtual ~MiqtVirtualQCamera() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Availability = 0;
@@ -659,52 +659,78 @@ struct miqt_array /* of int */  QCamera_SupportedViewfinderPixelFormats1(const Q
 	return _out;
 }
 
-void QCamera_override_virtual_Availability(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) )->handle__Availability = slot;
+bool QCamera_override_virtual_Availability(void* self, intptr_t slot) {
+	MiqtVirtualQCamera* self_cast = dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Availability = slot;
+	return true;
 }
 
 int QCamera_virtualbase_Availability(const void* self) {
 	return ( (const MiqtVirtualQCamera*)(self) )->virtualbase_Availability();
 }
 
-void QCamera_override_virtual_IsAvailable(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) )->handle__IsAvailable = slot;
+bool QCamera_override_virtual_IsAvailable(void* self, intptr_t slot) {
+	MiqtVirtualQCamera* self_cast = dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsAvailable = slot;
+	return true;
 }
 
 bool QCamera_virtualbase_IsAvailable(const void* self) {
 	return ( (const MiqtVirtualQCamera*)(self) )->virtualbase_IsAvailable();
 }
 
-void QCamera_override_virtual_Service(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) )->handle__Service = slot;
+bool QCamera_override_virtual_Service(void* self, intptr_t slot) {
+	MiqtVirtualQCamera* self_cast = dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Service = slot;
+	return true;
 }
 
 QMediaService* QCamera_virtualbase_Service(const void* self) {
 	return ( (const MiqtVirtualQCamera*)(self) )->virtualbase_Service();
 }
 
-void QCamera_override_virtual_Bind(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) )->handle__Bind = slot;
+bool QCamera_override_virtual_Bind(void* self, intptr_t slot) {
+	MiqtVirtualQCamera* self_cast = dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Bind = slot;
+	return true;
 }
 
 bool QCamera_virtualbase_Bind(void* self, QObject* param1) {
 	return ( (MiqtVirtualQCamera*)(self) )->virtualbase_Bind(param1);
 }
 
-void QCamera_override_virtual_Unbind(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) )->handle__Unbind = slot;
+bool QCamera_override_virtual_Unbind(void* self, intptr_t slot) {
+	MiqtVirtualQCamera* self_cast = dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Unbind = slot;
+	return true;
 }
 
 void QCamera_virtualbase_Unbind(void* self, QObject* param1) {
 	( (MiqtVirtualQCamera*)(self) )->virtualbase_Unbind(param1);
 }
 
-void QCamera_Delete(QCamera* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQCamera*>( self );
-	} else {
-		delete self;
-	}
+void QCamera_Delete(QCamera* self) {
+	delete self;
 }
 
 QCamera__FrameRateRange* QCamera__FrameRateRange_new() {
@@ -719,11 +745,7 @@ QCamera__FrameRateRange* QCamera__FrameRateRange_new3(QCamera__FrameRateRange* p
 	return new QCamera::FrameRateRange(*param1);
 }
 
-void QCamera__FrameRateRange_Delete(QCamera__FrameRateRange* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCamera::FrameRateRange*>( self );
-	} else {
-		delete self;
-	}
+void QCamera__FrameRateRange_Delete(QCamera__FrameRateRange* self) {
+	delete self;
 }
 

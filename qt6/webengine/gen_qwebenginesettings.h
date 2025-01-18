@@ -34,7 +34,7 @@ struct miqt_string QWebEngineSettings_DefaultTextEncoding(const QWebEngineSettin
 int QWebEngineSettings_UnknownUrlSchemePolicy(const QWebEngineSettings* self);
 void QWebEngineSettings_SetUnknownUrlSchemePolicy(QWebEngineSettings* self, int policy);
 void QWebEngineSettings_ResetUnknownUrlSchemePolicy(QWebEngineSettings* self);
-void QWebEngineSettings_Delete(QWebEngineSettings* self, bool isSubclass);
+void QWebEngineSettings_Delete(QWebEngineSettings* self);
 
 #ifdef __cplusplus
 } /* extern C */

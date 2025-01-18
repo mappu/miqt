@@ -27,13 +27,13 @@ void miqt_exec_callback_QGenericPlugin_DisconnectNotify(void*, intptr_t, QMetaMe
 } /* extern C */
 #endif
 
-class MiqtVirtualQGenericPlugin : public virtual QGenericPlugin {
+class MiqtVirtualQGenericPlugin final : public QGenericPlugin {
 public:
 
 	MiqtVirtualQGenericPlugin(): QGenericPlugin() {};
 	MiqtVirtualQGenericPlugin(QObject* parent): QGenericPlugin(parent) {};
 
-	virtual ~MiqtVirtualQGenericPlugin() = default;
+	virtual ~MiqtVirtualQGenericPlugin() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Create = 0;
@@ -298,71 +298,115 @@ struct miqt_string QGenericPlugin_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QGenericPlugin_override_virtual_Create(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGenericPlugin*>( (QGenericPlugin*)(self) )->handle__Create = slot;
+bool QGenericPlugin_override_virtual_Create(void* self, intptr_t slot) {
+	MiqtVirtualQGenericPlugin* self_cast = dynamic_cast<MiqtVirtualQGenericPlugin*>( (QGenericPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Create = slot;
+	return true;
 }
 
-void QGenericPlugin_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGenericPlugin*>( (QGenericPlugin*)(self) )->handle__Event = slot;
+bool QGenericPlugin_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQGenericPlugin* self_cast = dynamic_cast<MiqtVirtualQGenericPlugin*>( (QGenericPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QGenericPlugin_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQGenericPlugin*)(self) )->virtualbase_Event(event);
 }
 
-void QGenericPlugin_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGenericPlugin*>( (QGenericPlugin*)(self) )->handle__EventFilter = slot;
+bool QGenericPlugin_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQGenericPlugin* self_cast = dynamic_cast<MiqtVirtualQGenericPlugin*>( (QGenericPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QGenericPlugin_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQGenericPlugin*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QGenericPlugin_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGenericPlugin*>( (QGenericPlugin*)(self) )->handle__TimerEvent = slot;
+bool QGenericPlugin_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGenericPlugin* self_cast = dynamic_cast<MiqtVirtualQGenericPlugin*>( (QGenericPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QGenericPlugin_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQGenericPlugin*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QGenericPlugin_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGenericPlugin*>( (QGenericPlugin*)(self) )->handle__ChildEvent = slot;
+bool QGenericPlugin_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGenericPlugin* self_cast = dynamic_cast<MiqtVirtualQGenericPlugin*>( (QGenericPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QGenericPlugin_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQGenericPlugin*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QGenericPlugin_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGenericPlugin*>( (QGenericPlugin*)(self) )->handle__CustomEvent = slot;
+bool QGenericPlugin_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGenericPlugin* self_cast = dynamic_cast<MiqtVirtualQGenericPlugin*>( (QGenericPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QGenericPlugin_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQGenericPlugin*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QGenericPlugin_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGenericPlugin*>( (QGenericPlugin*)(self) )->handle__ConnectNotify = slot;
+bool QGenericPlugin_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQGenericPlugin* self_cast = dynamic_cast<MiqtVirtualQGenericPlugin*>( (QGenericPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QGenericPlugin_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQGenericPlugin*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QGenericPlugin_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGenericPlugin*>( (QGenericPlugin*)(self) )->handle__DisconnectNotify = slot;
+bool QGenericPlugin_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQGenericPlugin* self_cast = dynamic_cast<MiqtVirtualQGenericPlugin*>( (QGenericPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QGenericPlugin_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQGenericPlugin*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QGenericPlugin_Delete(QGenericPlugin* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGenericPlugin*>( self );
-	} else {
-		delete self;
-	}
+void QGenericPlugin_Delete(QGenericPlugin* self) {
+	delete self;
 }
 

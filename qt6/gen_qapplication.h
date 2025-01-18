@@ -103,11 +103,11 @@ void QApplication_SetPalette2(QPalette* param1, const char* className);
 void QApplication_SetFont2(QFont* param1, const char* className);
 void QApplication_Alert2(QWidget* widget, int duration);
 void QApplication_SetEffectEnabled2(int param1, bool enable);
-void QApplication_override_virtual_Notify(void* self, intptr_t slot);
+bool QApplication_override_virtual_Notify(void* self, intptr_t slot);
 bool QApplication_virtualbase_Notify(void* self, QObject* param1, QEvent* param2);
-void QApplication_override_virtual_Event(void* self, intptr_t slot);
+bool QApplication_override_virtual_Event(void* self, intptr_t slot);
 bool QApplication_virtualbase_Event(void* self, QEvent* param1);
-void QApplication_Delete(QApplication* self, bool isSubclass);
+void QApplication_Delete(QApplication* self);
 
 #ifdef __cplusplus
 } /* extern C */

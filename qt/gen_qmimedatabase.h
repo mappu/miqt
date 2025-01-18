@@ -42,7 +42,7 @@ struct miqt_string QMimeDatabase_SuffixForFileName(const QMimeDatabase* self, st
 struct miqt_array /* of QMimeType* */  QMimeDatabase_AllMimeTypes(const QMimeDatabase* self);
 QMimeType* QMimeDatabase_MimeTypeForFile2(const QMimeDatabase* self, struct miqt_string fileName, int mode);
 QMimeType* QMimeDatabase_MimeTypeForFile22(const QMimeDatabase* self, QFileInfo* fileInfo, int mode);
-void QMimeDatabase_Delete(QMimeDatabase* self, bool isSubclass);
+void QMimeDatabase_Delete(QMimeDatabase* self);
 
 #ifdef __cplusplus
 } /* extern C */

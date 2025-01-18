@@ -85,11 +85,7 @@ QWebEngineUrlScheme* QWebEngineUrlScheme_SchemeByName(struct miqt_string name) {
 	return new QWebEngineUrlScheme(QWebEngineUrlScheme::schemeByName(name_QByteArray));
 }
 
-void QWebEngineUrlScheme_Delete(QWebEngineUrlScheme* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebEngineUrlScheme*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineUrlScheme_Delete(QWebEngineUrlScheme* self) {
+	delete self;
 }
 

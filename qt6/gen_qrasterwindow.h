@@ -50,17 +50,17 @@ int QRasterWindow_Metric(const QRasterWindow* self, int metric);
 QPaintDevice* QRasterWindow_Redirected(const QRasterWindow* self, QPoint* param1);
 struct miqt_string QRasterWindow_Tr2(const char* s, const char* c);
 struct miqt_string QRasterWindow_Tr3(const char* s, const char* c, int n);
-void QRasterWindow_override_virtual_Metric(void* self, intptr_t slot);
+bool QRasterWindow_override_virtual_Metric(void* self, intptr_t slot);
 int QRasterWindow_virtualbase_Metric(const void* self, int metric);
-void QRasterWindow_override_virtual_Redirected(void* self, intptr_t slot);
+bool QRasterWindow_override_virtual_Redirected(void* self, intptr_t slot);
 QPaintDevice* QRasterWindow_virtualbase_Redirected(const void* self, QPoint* param1);
-void QRasterWindow_override_virtual_ExposeEvent(void* self, intptr_t slot);
+bool QRasterWindow_override_virtual_ExposeEvent(void* self, intptr_t slot);
 void QRasterWindow_virtualbase_ExposeEvent(void* self, QExposeEvent* param1);
-void QRasterWindow_override_virtual_PaintEvent(void* self, intptr_t slot);
+bool QRasterWindow_override_virtual_PaintEvent(void* self, intptr_t slot);
 void QRasterWindow_virtualbase_PaintEvent(void* self, QPaintEvent* event);
-void QRasterWindow_override_virtual_Event(void* self, intptr_t slot);
+bool QRasterWindow_override_virtual_Event(void* self, intptr_t slot);
 bool QRasterWindow_virtualbase_Event(void* self, QEvent* event);
-void QRasterWindow_Delete(QRasterWindow* self, bool isSubclass);
+void QRasterWindow_Delete(QRasterWindow* self);
 
 #ifdef __cplusplus
 } /* extern C */

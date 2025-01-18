@@ -171,11 +171,7 @@ struct miqt_string QMetaDataReaderControl_TrUtf83(const char* s, const char* c, 
 	return _ms;
 }
 
-void QMetaDataReaderControl_Delete(QMetaDataReaderControl* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMetaDataReaderControl*>( self );
-	} else {
-		delete self;
-	}
+void QMetaDataReaderControl_Delete(QMetaDataReaderControl* self) {
+	delete self;
 }
 

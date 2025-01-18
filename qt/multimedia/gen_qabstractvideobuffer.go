@@ -38,8 +38,7 @@ const (
 )
 
 type QAbstractVideoBuffer struct {
-	h          *C.QAbstractVideoBuffer
-	isSubclass bool
+	h *C.QAbstractVideoBuffer
 }
 
 func (this *QAbstractVideoBuffer) cPointer() *C.QAbstractVideoBuffer {
@@ -73,9 +72,7 @@ func UnsafeNewQAbstractVideoBuffer(h unsafe.Pointer) *QAbstractVideoBuffer {
 // NewQAbstractVideoBuffer constructs a new QAbstractVideoBuffer object.
 func NewQAbstractVideoBuffer(typeVal QAbstractVideoBuffer__HandleType) *QAbstractVideoBuffer {
 
-	ret := newQAbstractVideoBuffer(C.QAbstractVideoBuffer_new((C.int)(typeVal)))
-	ret.isSubclass = true
-	return ret
+	return newQAbstractVideoBuffer(C.QAbstractVideoBuffer_new((C.int)(typeVal)))
 }
 
 func (this *QAbstractVideoBuffer) Release() {
@@ -110,10 +107,10 @@ func (this *QAbstractVideoBuffer) callVirtualBase_Release() {
 
 }
 func (this *QAbstractVideoBuffer) OnRelease(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QAbstractVideoBuffer_override_virtual_Release(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAbstractVideoBuffer_override_virtual_Release(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractVideoBuffer_Release
@@ -127,10 +124,10 @@ func miqt_exec_callback_QAbstractVideoBuffer_Release(self *C.QAbstractVideoBuffe
 
 }
 func (this *QAbstractVideoBuffer) OnMapMode(slot func() QAbstractVideoBuffer__MapMode) {
-	if !this.isSubclass {
+	ok := C.QAbstractVideoBuffer_override_virtual_MapMode(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAbstractVideoBuffer_override_virtual_MapMode(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractVideoBuffer_MapMode
@@ -146,10 +143,10 @@ func miqt_exec_callback_QAbstractVideoBuffer_MapMode(self *C.QAbstractVideoBuffe
 
 }
 func (this *QAbstractVideoBuffer) OnMap(slot func(mode QAbstractVideoBuffer__MapMode, numBytes *int, bytesPerLine *int) *byte) {
-	if !this.isSubclass {
+	ok := C.QAbstractVideoBuffer_override_virtual_Map(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAbstractVideoBuffer_override_virtual_Map(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractVideoBuffer_Map
@@ -172,10 +169,10 @@ func miqt_exec_callback_QAbstractVideoBuffer_Map(self *C.QAbstractVideoBuffer, c
 
 }
 func (this *QAbstractVideoBuffer) OnUnmap(slot func()) {
-	if !this.isSubclass {
+	ok := C.QAbstractVideoBuffer_override_virtual_Unmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAbstractVideoBuffer_override_virtual_Unmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractVideoBuffer_Unmap
@@ -197,10 +194,10 @@ func (this *QAbstractVideoBuffer) callVirtualBase_Handle() *qt.QVariant {
 
 }
 func (this *QAbstractVideoBuffer) OnHandle(slot func(super func() *qt.QVariant) *qt.QVariant) {
-	if !this.isSubclass {
+	ok := C.QAbstractVideoBuffer_override_virtual_Handle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAbstractVideoBuffer_override_virtual_Handle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractVideoBuffer_Handle
@@ -218,7 +215,7 @@ func miqt_exec_callback_QAbstractVideoBuffer_Handle(self *C.QAbstractVideoBuffer
 
 // Delete this object from C++ memory.
 func (this *QAbstractVideoBuffer) Delete() {
-	C.QAbstractVideoBuffer_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractVideoBuffer_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -231,8 +228,7 @@ func (this *QAbstractVideoBuffer) GoGC() {
 }
 
 type QAbstractPlanarVideoBuffer struct {
-	h          *C.QAbstractPlanarVideoBuffer
-	isSubclass bool
+	h *C.QAbstractPlanarVideoBuffer
 	*QAbstractVideoBuffer
 }
 
@@ -270,9 +266,7 @@ func UnsafeNewQAbstractPlanarVideoBuffer(h unsafe.Pointer) *QAbstractPlanarVideo
 // NewQAbstractPlanarVideoBuffer constructs a new QAbstractPlanarVideoBuffer object.
 func NewQAbstractPlanarVideoBuffer(typeVal QAbstractVideoBuffer__HandleType) *QAbstractPlanarVideoBuffer {
 
-	ret := newQAbstractPlanarVideoBuffer(C.QAbstractPlanarVideoBuffer_new((C.int)(typeVal)))
-	ret.isSubclass = true
-	return ret
+	return newQAbstractPlanarVideoBuffer(C.QAbstractPlanarVideoBuffer_new((C.int)(typeVal)))
 }
 
 func (this *QAbstractPlanarVideoBuffer) Map(mode QAbstractVideoBuffer__MapMode, numBytes *int, bytesPerLine *int) *byte {
@@ -285,10 +279,10 @@ func (this *QAbstractPlanarVideoBuffer) callVirtualBase_Map(mode QAbstractVideoB
 
 }
 func (this *QAbstractPlanarVideoBuffer) OnMap(slot func(super func(mode QAbstractVideoBuffer__MapMode, numBytes *int, bytesPerLine *int) *byte, mode QAbstractVideoBuffer__MapMode, numBytes *int, bytesPerLine *int) *byte) {
-	if !this.isSubclass {
+	ok := C.QAbstractPlanarVideoBuffer_override_virtual_Map(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAbstractPlanarVideoBuffer_override_virtual_Map(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractPlanarVideoBuffer_Map
@@ -317,10 +311,10 @@ func (this *QAbstractPlanarVideoBuffer) callVirtualBase_Release() {
 
 }
 func (this *QAbstractPlanarVideoBuffer) OnRelease(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QAbstractPlanarVideoBuffer_override_virtual_Release(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAbstractPlanarVideoBuffer_override_virtual_Release(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractPlanarVideoBuffer_Release
@@ -334,10 +328,10 @@ func miqt_exec_callback_QAbstractPlanarVideoBuffer_Release(self *C.QAbstractPlan
 
 }
 func (this *QAbstractPlanarVideoBuffer) OnMapMode(slot func() QAbstractVideoBuffer__MapMode) {
-	if !this.isSubclass {
+	ok := C.QAbstractPlanarVideoBuffer_override_virtual_MapMode(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAbstractPlanarVideoBuffer_override_virtual_MapMode(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractPlanarVideoBuffer_MapMode
@@ -353,10 +347,10 @@ func miqt_exec_callback_QAbstractPlanarVideoBuffer_MapMode(self *C.QAbstractPlan
 
 }
 func (this *QAbstractPlanarVideoBuffer) OnUnmap(slot func()) {
-	if !this.isSubclass {
+	ok := C.QAbstractPlanarVideoBuffer_override_virtual_Unmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAbstractPlanarVideoBuffer_override_virtual_Unmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractPlanarVideoBuffer_Unmap
@@ -378,10 +372,10 @@ func (this *QAbstractPlanarVideoBuffer) callVirtualBase_Handle() *qt.QVariant {
 
 }
 func (this *QAbstractPlanarVideoBuffer) OnHandle(slot func(super func() *qt.QVariant) *qt.QVariant) {
-	if !this.isSubclass {
+	ok := C.QAbstractPlanarVideoBuffer_override_virtual_Handle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAbstractPlanarVideoBuffer_override_virtual_Handle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractPlanarVideoBuffer_Handle
@@ -399,7 +393,7 @@ func miqt_exec_callback_QAbstractPlanarVideoBuffer_Handle(self *C.QAbstractPlana
 
 // Delete this object from C++ memory.
 func (this *QAbstractPlanarVideoBuffer) Delete() {
-	C.QAbstractPlanarVideoBuffer_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractPlanarVideoBuffer_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

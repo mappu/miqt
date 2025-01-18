@@ -84,13 +84,13 @@ bool miqt_exec_callback_QRubberBand_FocusNextPrevChild(void*, intptr_t, bool);
 } /* extern C */
 #endif
 
-class MiqtVirtualQRubberBand : public virtual QRubberBand {
+class MiqtVirtualQRubberBand final : public QRubberBand {
 public:
 
 	MiqtVirtualQRubberBand(QRubberBand::Shape param1): QRubberBand(param1) {};
 	MiqtVirtualQRubberBand(QRubberBand::Shape param1, QWidget* param2): QRubberBand(param1, param2) {};
 
-	virtual ~MiqtVirtualQRubberBand() = default;
+	virtual ~MiqtVirtualQRubberBand() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -1184,339 +1184,581 @@ struct miqt_string QRubberBand_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QRubberBand_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__Event = slot;
+bool QRubberBand_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QRubberBand_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQRubberBand*)(self) )->virtualbase_Event(e);
 }
 
-void QRubberBand_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__PaintEvent = slot;
+bool QRubberBand_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QRubberBand_virtualbase_PaintEvent(void* self, QPaintEvent* param1) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_PaintEvent(param1);
 }
 
-void QRubberBand_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__ChangeEvent = slot;
+bool QRubberBand_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QRubberBand_virtualbase_ChangeEvent(void* self, QEvent* param1) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_ChangeEvent(param1);
 }
 
-void QRubberBand_override_virtual_ShowEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__ShowEvent = slot;
+bool QRubberBand_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
 }
 
 void QRubberBand_virtualbase_ShowEvent(void* self, QShowEvent* param1) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_ShowEvent(param1);
 }
 
-void QRubberBand_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__ResizeEvent = slot;
+bool QRubberBand_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QRubberBand_virtualbase_ResizeEvent(void* self, QResizeEvent* param1) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_ResizeEvent(param1);
 }
 
-void QRubberBand_override_virtual_MoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__MoveEvent = slot;
+bool QRubberBand_override_virtual_MoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveEvent = slot;
+	return true;
 }
 
 void QRubberBand_virtualbase_MoveEvent(void* self, QMoveEvent* param1) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_MoveEvent(param1);
 }
 
-void QRubberBand_override_virtual_DevType(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__DevType = slot;
+bool QRubberBand_override_virtual_DevType(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DevType = slot;
+	return true;
 }
 
 int QRubberBand_virtualbase_DevType(const void* self) {
 	return ( (const MiqtVirtualQRubberBand*)(self) )->virtualbase_DevType();
 }
 
-void QRubberBand_override_virtual_SetVisible(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__SetVisible = slot;
+bool QRubberBand_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
 }
 
 void QRubberBand_virtualbase_SetVisible(void* self, bool visible) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_SetVisible(visible);
 }
 
-void QRubberBand_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__SizeHint = slot;
+bool QRubberBand_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QRubberBand_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQRubberBand*)(self) )->virtualbase_SizeHint();
 }
 
-void QRubberBand_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__MinimumSizeHint = slot;
+bool QRubberBand_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QRubberBand_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQRubberBand*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QRubberBand_override_virtual_HeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__HeightForWidth = slot;
+bool QRubberBand_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeightForWidth = slot;
+	return true;
 }
 
 int QRubberBand_virtualbase_HeightForWidth(const void* self, int param1) {
 	return ( (const MiqtVirtualQRubberBand*)(self) )->virtualbase_HeightForWidth(param1);
 }
 
-void QRubberBand_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__HasHeightForWidth = slot;
+bool QRubberBand_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasHeightForWidth = slot;
+	return true;
 }
 
 bool QRubberBand_virtualbase_HasHeightForWidth(const void* self) {
 	return ( (const MiqtVirtualQRubberBand*)(self) )->virtualbase_HasHeightForWidth();
 }
 
-void QRubberBand_override_virtual_PaintEngine(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__PaintEngine = slot;
+bool QRubberBand_override_virtual_PaintEngine(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEngine = slot;
+	return true;
 }
 
 QPaintEngine* QRubberBand_virtualbase_PaintEngine(const void* self) {
 	return ( (const MiqtVirtualQRubberBand*)(self) )->virtualbase_PaintEngine();
 }
 
-void QRubberBand_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__MousePressEvent = slot;
+bool QRubberBand_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QRubberBand_virtualbase_MousePressEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_MousePressEvent(event);
 }
 
-void QRubberBand_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__MouseReleaseEvent = slot;
+bool QRubberBand_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QRubberBand_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_MouseReleaseEvent(event);
 }
 
-void QRubberBand_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__MouseDoubleClickEvent = slot;
+bool QRubberBand_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseDoubleClickEvent = slot;
+	return true;
 }
 
 void QRubberBand_virtualbase_MouseDoubleClickEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_MouseDoubleClickEvent(event);
 }
 
-void QRubberBand_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__MouseMoveEvent = slot;
+bool QRubberBand_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QRubberBand_virtualbase_MouseMoveEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_MouseMoveEvent(event);
 }
 
-void QRubberBand_override_virtual_WheelEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__WheelEvent = slot;
+bool QRubberBand_override_virtual_WheelEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WheelEvent = slot;
+	return true;
 }
 
 void QRubberBand_virtualbase_WheelEvent(void* self, QWheelEvent* event) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_WheelEvent(event);
 }
 
-void QRubberBand_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__KeyPressEvent = slot;
+bool QRubberBand_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QRubberBand_virtualbase_KeyPressEvent(void* self, QKeyEvent* event) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_KeyPressEvent(event);
 }
 
-void QRubberBand_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__KeyReleaseEvent = slot;
+bool QRubberBand_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyReleaseEvent = slot;
+	return true;
 }
 
 void QRubberBand_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* event) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_KeyReleaseEvent(event);
 }
 
-void QRubberBand_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__FocusInEvent = slot;
+bool QRubberBand_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QRubberBand_virtualbase_FocusInEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_FocusInEvent(event);
 }
 
-void QRubberBand_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__FocusOutEvent = slot;
+bool QRubberBand_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
 }
 
 void QRubberBand_virtualbase_FocusOutEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_FocusOutEvent(event);
 }
 
-void QRubberBand_override_virtual_EnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__EnterEvent = slot;
+bool QRubberBand_override_virtual_EnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EnterEvent = slot;
+	return true;
 }
 
 void QRubberBand_virtualbase_EnterEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_EnterEvent(event);
 }
 
-void QRubberBand_override_virtual_LeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__LeaveEvent = slot;
+bool QRubberBand_override_virtual_LeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__LeaveEvent = slot;
+	return true;
 }
 
 void QRubberBand_virtualbase_LeaveEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_LeaveEvent(event);
 }
 
-void QRubberBand_override_virtual_CloseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__CloseEvent = slot;
+bool QRubberBand_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
 }
 
 void QRubberBand_virtualbase_CloseEvent(void* self, QCloseEvent* event) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_CloseEvent(event);
 }
 
-void QRubberBand_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__ContextMenuEvent = slot;
+bool QRubberBand_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QRubberBand_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* event) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_ContextMenuEvent(event);
 }
 
-void QRubberBand_override_virtual_TabletEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__TabletEvent = slot;
+bool QRubberBand_override_virtual_TabletEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TabletEvent = slot;
+	return true;
 }
 
 void QRubberBand_virtualbase_TabletEvent(void* self, QTabletEvent* event) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_TabletEvent(event);
 }
 
-void QRubberBand_override_virtual_ActionEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__ActionEvent = slot;
+bool QRubberBand_override_virtual_ActionEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ActionEvent = slot;
+	return true;
 }
 
 void QRubberBand_virtualbase_ActionEvent(void* self, QActionEvent* event) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_ActionEvent(event);
 }
 
-void QRubberBand_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__DragEnterEvent = slot;
+bool QRubberBand_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragEnterEvent = slot;
+	return true;
 }
 
 void QRubberBand_virtualbase_DragEnterEvent(void* self, QDragEnterEvent* event) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_DragEnterEvent(event);
 }
 
-void QRubberBand_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__DragMoveEvent = slot;
+bool QRubberBand_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragMoveEvent = slot;
+	return true;
 }
 
 void QRubberBand_virtualbase_DragMoveEvent(void* self, QDragMoveEvent* event) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_DragMoveEvent(event);
 }
 
-void QRubberBand_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__DragLeaveEvent = slot;
+bool QRubberBand_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragLeaveEvent = slot;
+	return true;
 }
 
 void QRubberBand_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* event) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_DragLeaveEvent(event);
 }
 
-void QRubberBand_override_virtual_DropEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__DropEvent = slot;
+bool QRubberBand_override_virtual_DropEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropEvent = slot;
+	return true;
 }
 
 void QRubberBand_virtualbase_DropEvent(void* self, QDropEvent* event) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_DropEvent(event);
 }
 
-void QRubberBand_override_virtual_HideEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__HideEvent = slot;
+bool QRubberBand_override_virtual_HideEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HideEvent = slot;
+	return true;
 }
 
 void QRubberBand_virtualbase_HideEvent(void* self, QHideEvent* event) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_HideEvent(event);
 }
 
-void QRubberBand_override_virtual_NativeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__NativeEvent = slot;
+bool QRubberBand_override_virtual_NativeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NativeEvent = slot;
+	return true;
 }
 
 bool QRubberBand_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	return ( (MiqtVirtualQRubberBand*)(self) )->virtualbase_NativeEvent(eventType, message, result);
 }
 
-void QRubberBand_override_virtual_Metric(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__Metric = slot;
+bool QRubberBand_override_virtual_Metric(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Metric = slot;
+	return true;
 }
 
 int QRubberBand_virtualbase_Metric(const void* self, int param1) {
 	return ( (const MiqtVirtualQRubberBand*)(self) )->virtualbase_Metric(param1);
 }
 
-void QRubberBand_override_virtual_InitPainter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__InitPainter = slot;
+bool QRubberBand_override_virtual_InitPainter(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitPainter = slot;
+	return true;
 }
 
 void QRubberBand_virtualbase_InitPainter(const void* self, QPainter* painter) {
 	( (const MiqtVirtualQRubberBand*)(self) )->virtualbase_InitPainter(painter);
 }
 
-void QRubberBand_override_virtual_Redirected(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__Redirected = slot;
+bool QRubberBand_override_virtual_Redirected(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Redirected = slot;
+	return true;
 }
 
 QPaintDevice* QRubberBand_virtualbase_Redirected(const void* self, QPoint* offset) {
 	return ( (const MiqtVirtualQRubberBand*)(self) )->virtualbase_Redirected(offset);
 }
 
-void QRubberBand_override_virtual_SharedPainter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__SharedPainter = slot;
+bool QRubberBand_override_virtual_SharedPainter(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SharedPainter = slot;
+	return true;
 }
 
 QPainter* QRubberBand_virtualbase_SharedPainter(const void* self) {
 	return ( (const MiqtVirtualQRubberBand*)(self) )->virtualbase_SharedPainter();
 }
 
-void QRubberBand_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__InputMethodEvent = slot;
+bool QRubberBand_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodEvent = slot;
+	return true;
 }
 
 void QRubberBand_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* param1) {
 	( (MiqtVirtualQRubberBand*)(self) )->virtualbase_InputMethodEvent(param1);
 }
 
-void QRubberBand_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__InputMethodQuery = slot;
+bool QRubberBand_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodQuery = slot;
+	return true;
 }
 
 QVariant* QRubberBand_virtualbase_InputMethodQuery(const void* self, int param1) {
 	return ( (const MiqtVirtualQRubberBand*)(self) )->virtualbase_InputMethodQuery(param1);
 }
 
-void QRubberBand_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) )->handle__FocusNextPrevChild = slot;
+bool QRubberBand_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+	MiqtVirtualQRubberBand* self_cast = dynamic_cast<MiqtVirtualQRubberBand*>( (QRubberBand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusNextPrevChild = slot;
+	return true;
 }
 
 bool QRubberBand_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQRubberBand*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QRubberBand_Delete(QRubberBand* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQRubberBand*>( self );
-	} else {
-		delete self;
-	}
+void QRubberBand_Delete(QRubberBand* self) {
+	delete self;
 }
 

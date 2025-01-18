@@ -15,8 +15,7 @@ import (
 )
 
 type QFileSelector struct {
-	h          *C.QFileSelector
-	isSubclass bool
+	h *C.QFileSelector
 	*QObject
 }
 
@@ -54,17 +53,13 @@ func UnsafeNewQFileSelector(h unsafe.Pointer) *QFileSelector {
 // NewQFileSelector constructs a new QFileSelector object.
 func NewQFileSelector() *QFileSelector {
 
-	ret := newQFileSelector(C.QFileSelector_new())
-	ret.isSubclass = true
-	return ret
+	return newQFileSelector(C.QFileSelector_new())
 }
 
 // NewQFileSelector2 constructs a new QFileSelector object.
 func NewQFileSelector2(parent *QObject) *QFileSelector {
 
-	ret := newQFileSelector(C.QFileSelector_new2(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQFileSelector(C.QFileSelector_new2(parent.cPointer()))
 }
 
 func (this *QFileSelector) MetaObject() *QMetaObject {
@@ -202,10 +197,10 @@ func (this *QFileSelector) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QFileSelector) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QFileSelector_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileSelector_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileSelector_Event
@@ -230,10 +225,10 @@ func (this *QFileSelector) callVirtualBase_EventFilter(watched *QObject, event *
 
 }
 func (this *QFileSelector) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QFileSelector_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileSelector_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileSelector_EventFilter
@@ -260,10 +255,10 @@ func (this *QFileSelector) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QFileSelector) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QFileSelector_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileSelector_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileSelector_TimerEvent
@@ -286,10 +281,10 @@ func (this *QFileSelector) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QFileSelector) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QFileSelector_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileSelector_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileSelector_ChildEvent
@@ -312,10 +307,10 @@ func (this *QFileSelector) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QFileSelector) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QFileSelector_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileSelector_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileSelector_CustomEvent
@@ -338,10 +333,10 @@ func (this *QFileSelector) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QFileSelector) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QFileSelector_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileSelector_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileSelector_ConnectNotify
@@ -364,10 +359,10 @@ func (this *QFileSelector) callVirtualBase_DisconnectNotify(signal *QMetaMethod)
 
 }
 func (this *QFileSelector) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QFileSelector_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileSelector_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileSelector_DisconnectNotify
@@ -386,7 +381,7 @@ func miqt_exec_callback_QFileSelector_DisconnectNotify(self *C.QFileSelector, cb
 
 // Delete this object from C++ memory.
 func (this *QFileSelector) Delete() {
-	C.QFileSelector_Delete(this.h, C.bool(this.isSubclass))
+	C.QFileSelector_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

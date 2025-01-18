@@ -32,7 +32,7 @@ int QSemaphore_Available(const QSemaphore* self);
 void QSemaphore_Acquire1(QSemaphore* self, int n);
 bool QSemaphore_TryAcquire1(QSemaphore* self, int n);
 void QSemaphore_Release1(QSemaphore* self, int n);
-void QSemaphore_Delete(QSemaphore* self, bool isSubclass);
+void QSemaphore_Delete(QSemaphore* self);
 
 QSemaphoreReleaser* QSemaphoreReleaser_new();
 QSemaphoreReleaser* QSemaphoreReleaser_new2(QSemaphore* sem);
@@ -42,7 +42,7 @@ QSemaphoreReleaser* QSemaphoreReleaser_new5(QSemaphore* sem, int n);
 void QSemaphoreReleaser_Swap(QSemaphoreReleaser* self, QSemaphoreReleaser* other);
 QSemaphore* QSemaphoreReleaser_Semaphore(const QSemaphoreReleaser* self);
 QSemaphore* QSemaphoreReleaser_Cancel(QSemaphoreReleaser* self);
-void QSemaphoreReleaser_Delete(QSemaphoreReleaser* self, bool isSubclass);
+void QSemaphoreReleaser_Delete(QSemaphoreReleaser* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -193,8 +193,7 @@ const (
 )
 
 type QEvent struct {
-	h          *C.QEvent
-	isSubclass bool
+	h *C.QEvent
 }
 
 func (this *QEvent) cPointer() *C.QEvent {
@@ -228,9 +227,7 @@ func UnsafeNewQEvent(h unsafe.Pointer) *QEvent {
 // NewQEvent constructs a new QEvent object.
 func NewQEvent(typeVal QEvent__Type) *QEvent {
 
-	ret := newQEvent(C.QEvent_new((C.int)(typeVal)))
-	ret.isSubclass = true
-	return ret
+	return newQEvent(C.QEvent_new((C.int)(typeVal)))
 }
 
 func (this *QEvent) Type() QEvent__Type {
@@ -287,10 +284,10 @@ func (this *QEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
-	if !this.isSubclass {
+	ok := C.QEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QEvent_SetAccepted
@@ -313,10 +310,10 @@ func (this *QEvent) callVirtualBase_Clone() *QEvent {
 
 }
 func (this *QEvent) OnClone(slot func(super func() *QEvent) *QEvent) {
-	if !this.isSubclass {
+	ok := C.QEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QEvent_Clone
@@ -334,7 +331,7 @@ func miqt_exec_callback_QEvent_Clone(self *C.QEvent, cb C.intptr_t) *C.QEvent {
 
 // Delete this object from C++ memory.
 func (this *QEvent) Delete() {
-	C.QEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -347,8 +344,7 @@ func (this *QEvent) GoGC() {
 }
 
 type QTimerEvent struct {
-	h          *C.QTimerEvent
-	isSubclass bool
+	h *C.QTimerEvent
 	*QEvent
 }
 
@@ -386,9 +382,7 @@ func UnsafeNewQTimerEvent(h unsafe.Pointer) *QTimerEvent {
 // NewQTimerEvent constructs a new QTimerEvent object.
 func NewQTimerEvent(timerId int) *QTimerEvent {
 
-	ret := newQTimerEvent(C.QTimerEvent_new((C.int)(timerId)))
-	ret.isSubclass = true
-	return ret
+	return newQTimerEvent(C.QTimerEvent_new((C.int)(timerId)))
 }
 
 func (this *QTimerEvent) Clone() *QTimerEvent {
@@ -405,10 +399,10 @@ func (this *QTimerEvent) callVirtualBase_Clone() *QTimerEvent {
 
 }
 func (this *QTimerEvent) OnClone(slot func(super func() *QTimerEvent) *QTimerEvent) {
-	if !this.isSubclass {
+	ok := C.QTimerEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTimerEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTimerEvent_Clone
@@ -430,10 +424,10 @@ func (this *QTimerEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QTimerEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
-	if !this.isSubclass {
+	ok := C.QTimerEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTimerEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTimerEvent_SetAccepted
@@ -452,7 +446,7 @@ func miqt_exec_callback_QTimerEvent_SetAccepted(self *C.QTimerEvent, cb C.intptr
 
 // Delete this object from C++ memory.
 func (this *QTimerEvent) Delete() {
-	C.QTimerEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QTimerEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -465,8 +459,7 @@ func (this *QTimerEvent) GoGC() {
 }
 
 type QChildEvent struct {
-	h          *C.QChildEvent
-	isSubclass bool
+	h *C.QChildEvent
 	*QEvent
 }
 
@@ -504,9 +497,7 @@ func UnsafeNewQChildEvent(h unsafe.Pointer) *QChildEvent {
 // NewQChildEvent constructs a new QChildEvent object.
 func NewQChildEvent(typeVal QEvent__Type, child *QObject) *QChildEvent {
 
-	ret := newQChildEvent(C.QChildEvent_new((C.int)(typeVal), child.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQChildEvent(C.QChildEvent_new((C.int)(typeVal), child.cPointer()))
 }
 
 func (this *QChildEvent) Clone() *QChildEvent {
@@ -535,10 +526,10 @@ func (this *QChildEvent) callVirtualBase_Clone() *QChildEvent {
 
 }
 func (this *QChildEvent) OnClone(slot func(super func() *QChildEvent) *QChildEvent) {
-	if !this.isSubclass {
+	ok := C.QChildEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QChildEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QChildEvent_Clone
@@ -560,10 +551,10 @@ func (this *QChildEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QChildEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
-	if !this.isSubclass {
+	ok := C.QChildEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QChildEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QChildEvent_SetAccepted
@@ -582,7 +573,7 @@ func miqt_exec_callback_QChildEvent_SetAccepted(self *C.QChildEvent, cb C.intptr
 
 // Delete this object from C++ memory.
 func (this *QChildEvent) Delete() {
-	C.QChildEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QChildEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -595,8 +586,7 @@ func (this *QChildEvent) GoGC() {
 }
 
 type QDynamicPropertyChangeEvent struct {
-	h          *C.QDynamicPropertyChangeEvent
-	isSubclass bool
+	h *C.QDynamicPropertyChangeEvent
 	*QEvent
 }
 
@@ -637,9 +627,7 @@ func NewQDynamicPropertyChangeEvent(name []byte) *QDynamicPropertyChangeEvent {
 	name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
 	name_alias.len = C.size_t(len(name))
 
-	ret := newQDynamicPropertyChangeEvent(C.QDynamicPropertyChangeEvent_new(name_alias))
-	ret.isSubclass = true
-	return ret
+	return newQDynamicPropertyChangeEvent(C.QDynamicPropertyChangeEvent_new(name_alias))
 }
 
 func (this *QDynamicPropertyChangeEvent) Clone() *QDynamicPropertyChangeEvent {
@@ -659,10 +647,10 @@ func (this *QDynamicPropertyChangeEvent) callVirtualBase_Clone() *QDynamicProper
 
 }
 func (this *QDynamicPropertyChangeEvent) OnClone(slot func(super func() *QDynamicPropertyChangeEvent) *QDynamicPropertyChangeEvent) {
-	if !this.isSubclass {
+	ok := C.QDynamicPropertyChangeEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDynamicPropertyChangeEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDynamicPropertyChangeEvent_Clone
@@ -684,10 +672,10 @@ func (this *QDynamicPropertyChangeEvent) callVirtualBase_SetAccepted(accepted bo
 
 }
 func (this *QDynamicPropertyChangeEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
-	if !this.isSubclass {
+	ok := C.QDynamicPropertyChangeEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDynamicPropertyChangeEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDynamicPropertyChangeEvent_SetAccepted
@@ -706,7 +694,7 @@ func miqt_exec_callback_QDynamicPropertyChangeEvent_SetAccepted(self *C.QDynamic
 
 // Delete this object from C++ memory.
 func (this *QDynamicPropertyChangeEvent) Delete() {
-	C.QDynamicPropertyChangeEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QDynamicPropertyChangeEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -119,12 +119,8 @@ void QWebEngineCookieStore_DeleteCookie2(QWebEngineCookieStore* self, QNetworkCo
 	self->deleteCookie(*cookie, *origin);
 }
 
-void QWebEngineCookieStore_Delete(QWebEngineCookieStore* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebEngineCookieStore*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineCookieStore_Delete(QWebEngineCookieStore* self) {
+	delete self;
 }
 
 QWebEngineCookieStore__FilterRequest* QWebEngineCookieStore__FilterRequest_new(QWebEngineCookieStore__FilterRequest* param1) {
@@ -135,11 +131,7 @@ void QWebEngineCookieStore__FilterRequest_OperatorAssign(QWebEngineCookieStore__
 	self->operator=(*param1);
 }
 
-void QWebEngineCookieStore__FilterRequest_Delete(QWebEngineCookieStore__FilterRequest* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebEngineCookieStore::FilterRequest*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineCookieStore__FilterRequest_Delete(QWebEngineCookieStore__FilterRequest* self) {
+	delete self;
 }
 

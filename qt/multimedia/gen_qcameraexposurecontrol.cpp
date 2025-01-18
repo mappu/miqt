@@ -147,11 +147,7 @@ struct miqt_string QCameraExposureControl_TrUtf83(const char* s, const char* c, 
 	return _ms;
 }
 
-void QCameraExposureControl_Delete(QCameraExposureControl* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCameraExposureControl*>( self );
-	} else {
-		delete self;
-	}
+void QCameraExposureControl_Delete(QCameraExposureControl* self) {
+	delete self;
 }
 

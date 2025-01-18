@@ -60,12 +60,8 @@ void QWebEngineHistoryItem_Swap(QWebEngineHistoryItem* self, QWebEngineHistoryIt
 	self->swap(*other);
 }
 
-void QWebEngineHistoryItem_Delete(QWebEngineHistoryItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebEngineHistoryItem*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineHistoryItem_Delete(QWebEngineHistoryItem* self) {
+	delete self;
 }
 
 void QWebEngineHistory_Clear(QWebEngineHistory* self) {

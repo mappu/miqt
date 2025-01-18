@@ -25,13 +25,13 @@ void miqt_exec_callback_QSequentialAnimationGroup_UpdateDirection(void*, intptr_
 } /* extern C */
 #endif
 
-class MiqtVirtualQSequentialAnimationGroup : public virtual QSequentialAnimationGroup {
+class MiqtVirtualQSequentialAnimationGroup final : public QSequentialAnimationGroup {
 public:
 
 	MiqtVirtualQSequentialAnimationGroup(): QSequentialAnimationGroup() {};
 	MiqtVirtualQSequentialAnimationGroup(QObject* parent): QSequentialAnimationGroup(parent) {};
 
-	virtual ~MiqtVirtualQSequentialAnimationGroup() = default;
+	virtual ~MiqtVirtualQSequentialAnimationGroup() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Duration = 0;
@@ -269,51 +269,77 @@ struct miqt_string QSequentialAnimationGroup_TrUtf83(const char* s, const char* 
 	return _ms;
 }
 
-void QSequentialAnimationGroup_override_virtual_Duration(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSequentialAnimationGroup*>( (QSequentialAnimationGroup*)(self) )->handle__Duration = slot;
+bool QSequentialAnimationGroup_override_virtual_Duration(void* self, intptr_t slot) {
+	MiqtVirtualQSequentialAnimationGroup* self_cast = dynamic_cast<MiqtVirtualQSequentialAnimationGroup*>( (QSequentialAnimationGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Duration = slot;
+	return true;
 }
 
 int QSequentialAnimationGroup_virtualbase_Duration(const void* self) {
 	return ( (const MiqtVirtualQSequentialAnimationGroup*)(self) )->virtualbase_Duration();
 }
 
-void QSequentialAnimationGroup_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSequentialAnimationGroup*>( (QSequentialAnimationGroup*)(self) )->handle__Event = slot;
+bool QSequentialAnimationGroup_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQSequentialAnimationGroup* self_cast = dynamic_cast<MiqtVirtualQSequentialAnimationGroup*>( (QSequentialAnimationGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QSequentialAnimationGroup_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQSequentialAnimationGroup*)(self) )->virtualbase_Event(event);
 }
 
-void QSequentialAnimationGroup_override_virtual_UpdateCurrentTime(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSequentialAnimationGroup*>( (QSequentialAnimationGroup*)(self) )->handle__UpdateCurrentTime = slot;
+bool QSequentialAnimationGroup_override_virtual_UpdateCurrentTime(void* self, intptr_t slot) {
+	MiqtVirtualQSequentialAnimationGroup* self_cast = dynamic_cast<MiqtVirtualQSequentialAnimationGroup*>( (QSequentialAnimationGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateCurrentTime = slot;
+	return true;
 }
 
 void QSequentialAnimationGroup_virtualbase_UpdateCurrentTime(void* self, int param1) {
 	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->virtualbase_UpdateCurrentTime(param1);
 }
 
-void QSequentialAnimationGroup_override_virtual_UpdateState(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSequentialAnimationGroup*>( (QSequentialAnimationGroup*)(self) )->handle__UpdateState = slot;
+bool QSequentialAnimationGroup_override_virtual_UpdateState(void* self, intptr_t slot) {
+	MiqtVirtualQSequentialAnimationGroup* self_cast = dynamic_cast<MiqtVirtualQSequentialAnimationGroup*>( (QSequentialAnimationGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateState = slot;
+	return true;
 }
 
 void QSequentialAnimationGroup_virtualbase_UpdateState(void* self, int newState, int oldState) {
 	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->virtualbase_UpdateState(newState, oldState);
 }
 
-void QSequentialAnimationGroup_override_virtual_UpdateDirection(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSequentialAnimationGroup*>( (QSequentialAnimationGroup*)(self) )->handle__UpdateDirection = slot;
+bool QSequentialAnimationGroup_override_virtual_UpdateDirection(void* self, intptr_t slot) {
+	MiqtVirtualQSequentialAnimationGroup* self_cast = dynamic_cast<MiqtVirtualQSequentialAnimationGroup*>( (QSequentialAnimationGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateDirection = slot;
+	return true;
 }
 
 void QSequentialAnimationGroup_virtualbase_UpdateDirection(void* self, int direction) {
 	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->virtualbase_UpdateDirection(direction);
 }
 
-void QSequentialAnimationGroup_Delete(QSequentialAnimationGroup* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSequentialAnimationGroup*>( self );
-	} else {
-		delete self;
-	}
+void QSequentialAnimationGroup_Delete(QSequentialAnimationGroup* self) {
+	delete self;
 }
 

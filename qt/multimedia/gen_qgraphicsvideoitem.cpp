@@ -37,13 +37,13 @@ bool miqt_exec_callback_QGraphicsVideoItem_Event(void*, intptr_t, QEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQGraphicsVideoItem : public virtual QGraphicsVideoItem {
+class MiqtVirtualQGraphicsVideoItem final : public QGraphicsVideoItem {
 public:
 
 	MiqtVirtualQGraphicsVideoItem(): QGraphicsVideoItem() {};
 	MiqtVirtualQGraphicsVideoItem(QGraphicsItem* parent): QGraphicsVideoItem(parent) {};
 
-	virtual ~MiqtVirtualQGraphicsVideoItem() = default;
+	virtual ~MiqtVirtualQGraphicsVideoItem() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__MediaObject = 0;
@@ -359,67 +359,105 @@ struct miqt_string QGraphicsVideoItem_TrUtf83(const char* s, const char* c, int 
 	return _ms;
 }
 
-void QGraphicsVideoItem_override_virtual_MediaObject(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsVideoItem*>( (QGraphicsVideoItem*)(self) )->handle__MediaObject = slot;
+bool QGraphicsVideoItem_override_virtual_MediaObject(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsVideoItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsVideoItem*>( (QGraphicsVideoItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MediaObject = slot;
+	return true;
 }
 
 QMediaObject* QGraphicsVideoItem_virtualbase_MediaObject(const void* self) {
 	return ( (const MiqtVirtualQGraphicsVideoItem*)(self) )->virtualbase_MediaObject();
 }
 
-void QGraphicsVideoItem_override_virtual_BoundingRect(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsVideoItem*>( (QGraphicsVideoItem*)(self) )->handle__BoundingRect = slot;
+bool QGraphicsVideoItem_override_virtual_BoundingRect(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsVideoItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsVideoItem*>( (QGraphicsVideoItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BoundingRect = slot;
+	return true;
 }
 
 QRectF* QGraphicsVideoItem_virtualbase_BoundingRect(const void* self) {
 	return ( (const MiqtVirtualQGraphicsVideoItem*)(self) )->virtualbase_BoundingRect();
 }
 
-void QGraphicsVideoItem_override_virtual_Paint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsVideoItem*>( (QGraphicsVideoItem*)(self) )->handle__Paint = slot;
+bool QGraphicsVideoItem_override_virtual_Paint(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsVideoItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsVideoItem*>( (QGraphicsVideoItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Paint = slot;
+	return true;
 }
 
 void QGraphicsVideoItem_virtualbase_Paint(void* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {
 	( (MiqtVirtualQGraphicsVideoItem*)(self) )->virtualbase_Paint(painter, option, widget);
 }
 
-void QGraphicsVideoItem_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsVideoItem*>( (QGraphicsVideoItem*)(self) )->handle__TimerEvent = slot;
+bool QGraphicsVideoItem_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsVideoItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsVideoItem*>( (QGraphicsVideoItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QGraphicsVideoItem_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQGraphicsVideoItem*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QGraphicsVideoItem_override_virtual_ItemChange(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsVideoItem*>( (QGraphicsVideoItem*)(self) )->handle__ItemChange = slot;
+bool QGraphicsVideoItem_override_virtual_ItemChange(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsVideoItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsVideoItem*>( (QGraphicsVideoItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ItemChange = slot;
+	return true;
 }
 
 QVariant* QGraphicsVideoItem_virtualbase_ItemChange(void* self, int change, QVariant* value) {
 	return ( (MiqtVirtualQGraphicsVideoItem*)(self) )->virtualbase_ItemChange(change, value);
 }
 
-void QGraphicsVideoItem_override_virtual_SetMediaObject(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsVideoItem*>( (QGraphicsVideoItem*)(self) )->handle__SetMediaObject = slot;
+bool QGraphicsVideoItem_override_virtual_SetMediaObject(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsVideoItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsVideoItem*>( (QGraphicsVideoItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetMediaObject = slot;
+	return true;
 }
 
 bool QGraphicsVideoItem_virtualbase_SetMediaObject(void* self, QMediaObject* object) {
 	return ( (MiqtVirtualQGraphicsVideoItem*)(self) )->virtualbase_SetMediaObject(object);
 }
 
-void QGraphicsVideoItem_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsVideoItem*>( (QGraphicsVideoItem*)(self) )->handle__Event = slot;
+bool QGraphicsVideoItem_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsVideoItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsVideoItem*>( (QGraphicsVideoItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QGraphicsVideoItem_virtualbase_Event(void* self, QEvent* ev) {
 	return ( (MiqtVirtualQGraphicsVideoItem*)(self) )->virtualbase_Event(ev);
 }
 
-void QGraphicsVideoItem_Delete(QGraphicsVideoItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsVideoItem*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsVideoItem_Delete(QGraphicsVideoItem* self) {
+	delete self;
 }
 

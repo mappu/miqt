@@ -62,12 +62,12 @@ void miqt_exec_callback_QStyle_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQStyle : public virtual QStyle {
+class MiqtVirtualQStyle final : public QStyle {
 public:
 
 	MiqtVirtualQStyle(): QStyle() {};
 
-	virtual ~MiqtVirtualQStyle() = default;
+	virtual ~MiqtVirtualQStyle() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Polish = 0;
@@ -1019,199 +1019,375 @@ int QStyle_CombinedLayoutSpacing5(const QStyle* self, int controls1, int control
 	return self->combinedLayoutSpacing(static_cast<QSizePolicy::ControlTypes>(controls1), static_cast<QSizePolicy::ControlTypes>(controls2), static_cast<Qt::Orientation>(orientation), option, widget);
 }
 
-void QStyle_override_virtual_Polish(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__Polish = slot;
+bool QStyle_override_virtual_Polish(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Polish = slot;
+	return true;
 }
 
 void QStyle_virtualbase_Polish(void* self, QWidget* widget) {
 	( (MiqtVirtualQStyle*)(self) )->virtualbase_Polish(widget);
 }
 
-void QStyle_override_virtual_Unpolish(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__Unpolish = slot;
+bool QStyle_override_virtual_Unpolish(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Unpolish = slot;
+	return true;
 }
 
 void QStyle_virtualbase_Unpolish(void* self, QWidget* widget) {
 	( (MiqtVirtualQStyle*)(self) )->virtualbase_Unpolish(widget);
 }
 
-void QStyle_override_virtual_PolishWithApplication(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__PolishWithApplication = slot;
+bool QStyle_override_virtual_PolishWithApplication(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PolishWithApplication = slot;
+	return true;
 }
 
 void QStyle_virtualbase_PolishWithApplication(void* self, QApplication* application) {
 	( (MiqtVirtualQStyle*)(self) )->virtualbase_PolishWithApplication(application);
 }
 
-void QStyle_override_virtual_UnpolishWithApplication(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__UnpolishWithApplication = slot;
+bool QStyle_override_virtual_UnpolishWithApplication(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UnpolishWithApplication = slot;
+	return true;
 }
 
 void QStyle_virtualbase_UnpolishWithApplication(void* self, QApplication* application) {
 	( (MiqtVirtualQStyle*)(self) )->virtualbase_UnpolishWithApplication(application);
 }
 
-void QStyle_override_virtual_PolishWithPalette(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__PolishWithPalette = slot;
+bool QStyle_override_virtual_PolishWithPalette(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PolishWithPalette = slot;
+	return true;
 }
 
 void QStyle_virtualbase_PolishWithPalette(void* self, QPalette* palette) {
 	( (MiqtVirtualQStyle*)(self) )->virtualbase_PolishWithPalette(palette);
 }
 
-void QStyle_override_virtual_ItemTextRect(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__ItemTextRect = slot;
+bool QStyle_override_virtual_ItemTextRect(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ItemTextRect = slot;
+	return true;
 }
 
 QRect* QStyle_virtualbase_ItemTextRect(const void* self, QFontMetrics* fm, QRect* r, int flags, bool enabled, struct miqt_string text) {
 	return ( (const MiqtVirtualQStyle*)(self) )->virtualbase_ItemTextRect(fm, r, flags, enabled, text);
 }
 
-void QStyle_override_virtual_ItemPixmapRect(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__ItemPixmapRect = slot;
+bool QStyle_override_virtual_ItemPixmapRect(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ItemPixmapRect = slot;
+	return true;
 }
 
 QRect* QStyle_virtualbase_ItemPixmapRect(const void* self, QRect* r, int flags, QPixmap* pixmap) {
 	return ( (const MiqtVirtualQStyle*)(self) )->virtualbase_ItemPixmapRect(r, flags, pixmap);
 }
 
-void QStyle_override_virtual_DrawItemText(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__DrawItemText = slot;
+bool QStyle_override_virtual_DrawItemText(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DrawItemText = slot;
+	return true;
 }
 
 void QStyle_virtualbase_DrawItemText(const void* self, QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, struct miqt_string text, int textRole) {
 	( (const MiqtVirtualQStyle*)(self) )->virtualbase_DrawItemText(painter, rect, flags, pal, enabled, text, textRole);
 }
 
-void QStyle_override_virtual_DrawItemPixmap(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__DrawItemPixmap = slot;
+bool QStyle_override_virtual_DrawItemPixmap(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DrawItemPixmap = slot;
+	return true;
 }
 
 void QStyle_virtualbase_DrawItemPixmap(const void* self, QPainter* painter, QRect* rect, int alignment, QPixmap* pixmap) {
 	( (const MiqtVirtualQStyle*)(self) )->virtualbase_DrawItemPixmap(painter, rect, alignment, pixmap);
 }
 
-void QStyle_override_virtual_StandardPalette(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__StandardPalette = slot;
+bool QStyle_override_virtual_StandardPalette(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__StandardPalette = slot;
+	return true;
 }
 
 QPalette* QStyle_virtualbase_StandardPalette(const void* self) {
 	return ( (const MiqtVirtualQStyle*)(self) )->virtualbase_StandardPalette();
 }
 
-void QStyle_override_virtual_DrawPrimitive(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__DrawPrimitive = slot;
+bool QStyle_override_virtual_DrawPrimitive(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DrawPrimitive = slot;
+	return true;
 }
 
-void QStyle_override_virtual_DrawControl(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__DrawControl = slot;
+bool QStyle_override_virtual_DrawControl(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DrawControl = slot;
+	return true;
 }
 
-void QStyle_override_virtual_SubElementRect(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__SubElementRect = slot;
+bool QStyle_override_virtual_SubElementRect(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SubElementRect = slot;
+	return true;
 }
 
-void QStyle_override_virtual_DrawComplexControl(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__DrawComplexControl = slot;
+bool QStyle_override_virtual_DrawComplexControl(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DrawComplexControl = slot;
+	return true;
 }
 
-void QStyle_override_virtual_HitTestComplexControl(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__HitTestComplexControl = slot;
+bool QStyle_override_virtual_HitTestComplexControl(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HitTestComplexControl = slot;
+	return true;
 }
 
-void QStyle_override_virtual_SubControlRect(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__SubControlRect = slot;
+bool QStyle_override_virtual_SubControlRect(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SubControlRect = slot;
+	return true;
 }
 
-void QStyle_override_virtual_PixelMetric(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__PixelMetric = slot;
+bool QStyle_override_virtual_PixelMetric(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PixelMetric = slot;
+	return true;
 }
 
-void QStyle_override_virtual_SizeFromContents(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__SizeFromContents = slot;
+bool QStyle_override_virtual_SizeFromContents(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeFromContents = slot;
+	return true;
 }
 
-void QStyle_override_virtual_StyleHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__StyleHint = slot;
+bool QStyle_override_virtual_StyleHint(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__StyleHint = slot;
+	return true;
 }
 
-void QStyle_override_virtual_StandardPixmap(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__StandardPixmap = slot;
+bool QStyle_override_virtual_StandardPixmap(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__StandardPixmap = slot;
+	return true;
 }
 
-void QStyle_override_virtual_StandardIcon(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__StandardIcon = slot;
+bool QStyle_override_virtual_StandardIcon(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__StandardIcon = slot;
+	return true;
 }
 
-void QStyle_override_virtual_GeneratedIconPixmap(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__GeneratedIconPixmap = slot;
+bool QStyle_override_virtual_GeneratedIconPixmap(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__GeneratedIconPixmap = slot;
+	return true;
 }
 
-void QStyle_override_virtual_LayoutSpacing(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__LayoutSpacing = slot;
+bool QStyle_override_virtual_LayoutSpacing(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__LayoutSpacing = slot;
+	return true;
 }
 
-void QStyle_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__Event = slot;
+bool QStyle_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QStyle_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQStyle*)(self) )->virtualbase_Event(event);
 }
 
-void QStyle_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__EventFilter = slot;
+bool QStyle_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QStyle_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQStyle*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QStyle_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__TimerEvent = slot;
+bool QStyle_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QStyle_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQStyle*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QStyle_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__ChildEvent = slot;
+bool QStyle_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QStyle_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQStyle*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QStyle_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__CustomEvent = slot;
+bool QStyle_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QStyle_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQStyle*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QStyle_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__ConnectNotify = slot;
+bool QStyle_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QStyle_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQStyle*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QStyle_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) )->handle__DisconnectNotify = slot;
+bool QStyle_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQStyle* self_cast = dynamic_cast<MiqtVirtualQStyle*>( (QStyle*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QStyle_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQStyle*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QStyle_Delete(QStyle* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQStyle*>( self );
-	} else {
-		delete self;
-	}
+void QStyle_Delete(QStyle* self) {
+	delete self;
 }
 

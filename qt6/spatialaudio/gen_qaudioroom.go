@@ -56,8 +56,7 @@ const (
 )
 
 type QAudioRoom struct {
-	h          *C.QAudioRoom
-	isSubclass bool
+	h *C.QAudioRoom
 	*qt6.QObject
 }
 
@@ -95,9 +94,7 @@ func UnsafeNewQAudioRoom(h unsafe.Pointer) *QAudioRoom {
 // NewQAudioRoom constructs a new QAudioRoom object.
 func NewQAudioRoom(engine *QAudioEngine) *QAudioRoom {
 
-	ret := newQAudioRoom(C.QAudioRoom_new(engine.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQAudioRoom(C.QAudioRoom_new(engine.cPointer()))
 }
 
 func (this *QAudioRoom) MetaObject() *qt6.QMetaObject {
@@ -353,10 +350,10 @@ func (this *QAudioRoom) callVirtualBase_Event(event *qt6.QEvent) bool {
 
 }
 func (this *QAudioRoom) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QAudioRoom_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAudioRoom_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioRoom_Event
@@ -381,10 +378,10 @@ func (this *QAudioRoom) callVirtualBase_EventFilter(watched *qt6.QObject, event 
 
 }
 func (this *QAudioRoom) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QAudioRoom_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAudioRoom_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioRoom_EventFilter
@@ -411,10 +408,10 @@ func (this *QAudioRoom) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
 
 }
 func (this *QAudioRoom) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QAudioRoom_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAudioRoom_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioRoom_TimerEvent
@@ -437,10 +434,10 @@ func (this *QAudioRoom) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
 
 }
 func (this *QAudioRoom) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QAudioRoom_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAudioRoom_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioRoom_ChildEvent
@@ -463,10 +460,10 @@ func (this *QAudioRoom) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 
 }
 func (this *QAudioRoom) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
-	if !this.isSubclass {
+	ok := C.QAudioRoom_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAudioRoom_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioRoom_CustomEvent
@@ -489,10 +486,10 @@ func (this *QAudioRoom) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
 
 }
 func (this *QAudioRoom) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QAudioRoom_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAudioRoom_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioRoom_ConnectNotify
@@ -515,10 +512,10 @@ func (this *QAudioRoom) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod
 
 }
 func (this *QAudioRoom) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QAudioRoom_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAudioRoom_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioRoom_DisconnectNotify
@@ -537,7 +534,7 @@ func miqt_exec_callback_QAudioRoom_DisconnectNotify(self *C.QAudioRoom, cb C.int
 
 // Delete this object from C++ memory.
 func (this *QAudioRoom) Delete() {
-	C.QAudioRoom_Delete(this.h, C.bool(this.isSubclass))
+	C.QAudioRoom_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

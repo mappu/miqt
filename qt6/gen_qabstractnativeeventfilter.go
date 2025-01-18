@@ -15,8 +15,7 @@ import (
 )
 
 type QAbstractNativeEventFilter struct {
-	h          *C.QAbstractNativeEventFilter
-	isSubclass bool
+	h *C.QAbstractNativeEventFilter
 }
 
 func (this *QAbstractNativeEventFilter) cPointer() *C.QAbstractNativeEventFilter {
@@ -50,9 +49,7 @@ func UnsafeNewQAbstractNativeEventFilter(h unsafe.Pointer) *QAbstractNativeEvent
 // NewQAbstractNativeEventFilter constructs a new QAbstractNativeEventFilter object.
 func NewQAbstractNativeEventFilter() *QAbstractNativeEventFilter {
 
-	ret := newQAbstractNativeEventFilter(C.QAbstractNativeEventFilter_new())
-	ret.isSubclass = true
-	return ret
+	return newQAbstractNativeEventFilter(C.QAbstractNativeEventFilter_new())
 }
 
 func (this *QAbstractNativeEventFilter) NativeEventFilter(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
@@ -62,10 +59,10 @@ func (this *QAbstractNativeEventFilter) NativeEventFilter(eventType []byte, mess
 	return (bool)(C.QAbstractNativeEventFilter_NativeEventFilter(this.h, eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
 }
 func (this *QAbstractNativeEventFilter) OnNativeEventFilter(slot func(eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
-	if !this.isSubclass {
+	ok := C.QAbstractNativeEventFilter_override_virtual_NativeEventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAbstractNativeEventFilter_override_virtual_NativeEventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractNativeEventFilter_NativeEventFilter
@@ -92,7 +89,7 @@ func miqt_exec_callback_QAbstractNativeEventFilter_NativeEventFilter(self *C.QAb
 
 // Delete this object from C++ memory.
 func (this *QAbstractNativeEventFilter) Delete() {
-	C.QAbstractNativeEventFilter_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractNativeEventFilter_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

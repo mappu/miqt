@@ -54,21 +54,21 @@ void QPicture_Detach(QPicture* self);
 bool QPicture_IsDetached(const QPicture* self);
 QPaintEngine* QPicture_PaintEngine(const QPicture* self);
 int QPicture_Metric(const QPicture* self, int m);
-void QPicture_override_virtual_DevType(void* self, intptr_t slot);
+bool QPicture_override_virtual_DevType(void* self, intptr_t slot);
 int QPicture_virtualbase_DevType(const void* self);
-void QPicture_override_virtual_SetData(void* self, intptr_t slot);
+bool QPicture_override_virtual_SetData(void* self, intptr_t slot);
 void QPicture_virtualbase_SetData(void* self, const char* data, unsigned int size);
-void QPicture_override_virtual_PaintEngine(void* self, intptr_t slot);
+bool QPicture_override_virtual_PaintEngine(void* self, intptr_t slot);
 QPaintEngine* QPicture_virtualbase_PaintEngine(const void* self);
-void QPicture_override_virtual_Metric(void* self, intptr_t slot);
+bool QPicture_override_virtual_Metric(void* self, intptr_t slot);
 int QPicture_virtualbase_Metric(const void* self, int m);
-void QPicture_override_virtual_InitPainter(void* self, intptr_t slot);
+bool QPicture_override_virtual_InitPainter(void* self, intptr_t slot);
 void QPicture_virtualbase_InitPainter(const void* self, QPainter* painter);
-void QPicture_override_virtual_Redirected(void* self, intptr_t slot);
+bool QPicture_override_virtual_Redirected(void* self, intptr_t slot);
 QPaintDevice* QPicture_virtualbase_Redirected(const void* self, QPoint* offset);
-void QPicture_override_virtual_SharedPainter(void* self, intptr_t slot);
+bool QPicture_override_virtual_SharedPainter(void* self, intptr_t slot);
 QPainter* QPicture_virtualbase_SharedPainter(const void* self);
-void QPicture_Delete(QPicture* self, bool isSubclass);
+void QPicture_Delete(QPicture* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -50,13 +50,13 @@ void QTextList_SetFormat(QTextList* self, QTextListFormat* format);
 QTextListFormat* QTextList_Format(const QTextList* self);
 struct miqt_string QTextList_Tr2(const char* s, const char* c);
 struct miqt_string QTextList_Tr3(const char* s, const char* c, int n);
-void QTextList_override_virtual_BlockInserted(void* self, intptr_t slot);
+bool QTextList_override_virtual_BlockInserted(void* self, intptr_t slot);
 void QTextList_virtualbase_BlockInserted(void* self, QTextBlock* block);
-void QTextList_override_virtual_BlockRemoved(void* self, intptr_t slot);
+bool QTextList_override_virtual_BlockRemoved(void* self, intptr_t slot);
 void QTextList_virtualbase_BlockRemoved(void* self, QTextBlock* block);
-void QTextList_override_virtual_BlockFormatChanged(void* self, intptr_t slot);
+bool QTextList_override_virtual_BlockFormatChanged(void* self, intptr_t slot);
 void QTextList_virtualbase_BlockFormatChanged(void* self, QTextBlock* block);
-void QTextList_Delete(QTextList* self, bool isSubclass);
+void QTextList_Delete(QTextList* self);
 
 #ifdef __cplusplus
 } /* extern C */

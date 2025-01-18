@@ -40,8 +40,7 @@ const (
 )
 
 type QMetaContainer struct {
-	h          *C.QMetaContainer
-	isSubclass bool
+	h *C.QMetaContainer
 }
 
 func (this *QMetaContainer) cPointer() *C.QMetaContainer {
@@ -75,17 +74,13 @@ func UnsafeNewQMetaContainer(h unsafe.Pointer) *QMetaContainer {
 // NewQMetaContainer constructs a new QMetaContainer object.
 func NewQMetaContainer() *QMetaContainer {
 
-	ret := newQMetaContainer(C.QMetaContainer_new())
-	ret.isSubclass = true
-	return ret
+	return newQMetaContainer(C.QMetaContainer_new())
 }
 
 // NewQMetaContainer2 constructs a new QMetaContainer object.
 func NewQMetaContainer2(param1 *QMetaContainer) *QMetaContainer {
 
-	ret := newQMetaContainer(C.QMetaContainer_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQMetaContainer(C.QMetaContainer_new2(param1.cPointer()))
 }
 
 func (this *QMetaContainer) HasInputIterator() bool {
@@ -186,7 +181,7 @@ func (this *QMetaContainer) DiffConstIterator(i unsafe.Pointer, j unsafe.Pointer
 
 // Delete this object from C++ memory.
 func (this *QMetaContainer) Delete() {
-	C.QMetaContainer_Delete(this.h, C.bool(this.isSubclass))
+	C.QMetaContainer_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -199,8 +194,7 @@ func (this *QMetaContainer) GoGC() {
 }
 
 type QMetaSequence struct {
-	h          *C.QMetaSequence
-	isSubclass bool
+	h *C.QMetaSequence
 	*QMetaContainer
 }
 
@@ -238,9 +232,7 @@ func UnsafeNewQMetaSequence(h unsafe.Pointer) *QMetaSequence {
 // NewQMetaSequence constructs a new QMetaSequence object.
 func NewQMetaSequence() *QMetaSequence {
 
-	ret := newQMetaSequence(C.QMetaSequence_new())
-	ret.isSubclass = true
-	return ret
+	return newQMetaSequence(C.QMetaSequence_new())
 }
 
 func (this *QMetaSequence) ValueMetaType() *QMetaType {
@@ -367,7 +359,7 @@ func (this *QMetaSequence) ValueAtConstIterator(iterator unsafe.Pointer, result 
 
 // Delete this object from C++ memory.
 func (this *QMetaSequence) Delete() {
-	C.QMetaSequence_Delete(this.h, C.bool(this.isSubclass))
+	C.QMetaSequence_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -380,8 +372,7 @@ func (this *QMetaSequence) GoGC() {
 }
 
 type QMetaAssociation struct {
-	h          *C.QMetaAssociation
-	isSubclass bool
+	h *C.QMetaAssociation
 	*QMetaContainer
 }
 
@@ -419,9 +410,7 @@ func UnsafeNewQMetaAssociation(h unsafe.Pointer) *QMetaAssociation {
 // NewQMetaAssociation constructs a new QMetaAssociation object.
 func NewQMetaAssociation() *QMetaAssociation {
 
-	ret := newQMetaAssociation(C.QMetaAssociation_new())
-	ret.isSubclass = true
-	return ret
+	return newQMetaAssociation(C.QMetaAssociation_new())
 }
 
 func (this *QMetaAssociation) KeyMetaType() *QMetaType {
@@ -534,7 +523,7 @@ func (this *QMetaAssociation) CreateConstIteratorAtKey(container unsafe.Pointer,
 
 // Delete this object from C++ memory.
 func (this *QMetaAssociation) Delete() {
-	C.QMetaAssociation_Delete(this.h, C.bool(this.isSubclass))
+	C.QMetaAssociation_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -13,8 +13,7 @@ import (
 )
 
 type QStringTokenizerBaseBase struct {
-	h          *C.QStringTokenizerBaseBase
-	isSubclass bool
+	h *C.QStringTokenizerBaseBase
 }
 
 func (this *QStringTokenizerBaseBase) cPointer() *C.QStringTokenizerBaseBase {
@@ -48,7 +47,5 @@ func UnsafeNewQStringTokenizerBaseBase(h unsafe.Pointer) *QStringTokenizerBaseBa
 // NewQStringTokenizerBaseBase constructs a new QStringTokenizerBaseBase object.
 func NewQStringTokenizerBaseBase(param1 *QStringTokenizerBaseBase) *QStringTokenizerBaseBase {
 
-	ret := newQStringTokenizerBaseBase(C.QStringTokenizerBaseBase_new(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStringTokenizerBaseBase(C.QStringTokenizerBaseBase_new(param1.cPointer()))
 }

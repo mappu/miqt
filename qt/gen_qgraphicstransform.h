@@ -52,23 +52,23 @@ struct miqt_string QGraphicsTransform_Tr2(const char* s, const char* c);
 struct miqt_string QGraphicsTransform_Tr3(const char* s, const char* c, int n);
 struct miqt_string QGraphicsTransform_TrUtf82(const char* s, const char* c);
 struct miqt_string QGraphicsTransform_TrUtf83(const char* s, const char* c, int n);
-void QGraphicsTransform_override_virtual_ApplyTo(void* self, intptr_t slot);
+bool QGraphicsTransform_override_virtual_ApplyTo(void* self, intptr_t slot);
 void QGraphicsTransform_virtualbase_ApplyTo(const void* self, QMatrix4x4* matrix);
-void QGraphicsTransform_override_virtual_Event(void* self, intptr_t slot);
+bool QGraphicsTransform_override_virtual_Event(void* self, intptr_t slot);
 bool QGraphicsTransform_virtualbase_Event(void* self, QEvent* event);
-void QGraphicsTransform_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QGraphicsTransform_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QGraphicsTransform_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QGraphicsTransform_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QGraphicsTransform_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QGraphicsTransform_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QGraphicsTransform_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QGraphicsTransform_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QGraphicsTransform_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QGraphicsTransform_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QGraphicsTransform_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QGraphicsTransform_virtualbase_CustomEvent(void* self, QEvent* event);
-void QGraphicsTransform_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QGraphicsTransform_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QGraphicsTransform_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QGraphicsTransform_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QGraphicsTransform_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QGraphicsTransform_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QGraphicsTransform_Delete(QGraphicsTransform* self, bool isSubclass);
+void QGraphicsTransform_Delete(QGraphicsTransform* self);
 
 QGraphicsScale* QGraphicsScale_new();
 QGraphicsScale* QGraphicsScale_new2(QObject* parent);
@@ -100,9 +100,9 @@ struct miqt_string QGraphicsScale_Tr2(const char* s, const char* c);
 struct miqt_string QGraphicsScale_Tr3(const char* s, const char* c, int n);
 struct miqt_string QGraphicsScale_TrUtf82(const char* s, const char* c);
 struct miqt_string QGraphicsScale_TrUtf83(const char* s, const char* c, int n);
-void QGraphicsScale_override_virtual_ApplyTo(void* self, intptr_t slot);
+bool QGraphicsScale_override_virtual_ApplyTo(void* self, intptr_t slot);
 void QGraphicsScale_virtualbase_ApplyTo(const void* self, QMatrix4x4* matrix);
-void QGraphicsScale_Delete(QGraphicsScale* self, bool isSubclass);
+void QGraphicsScale_Delete(QGraphicsScale* self);
 
 QGraphicsRotation* QGraphicsRotation_new();
 QGraphicsRotation* QGraphicsRotation_new2(QObject* parent);
@@ -129,9 +129,9 @@ struct miqt_string QGraphicsRotation_Tr2(const char* s, const char* c);
 struct miqt_string QGraphicsRotation_Tr3(const char* s, const char* c, int n);
 struct miqt_string QGraphicsRotation_TrUtf82(const char* s, const char* c);
 struct miqt_string QGraphicsRotation_TrUtf83(const char* s, const char* c, int n);
-void QGraphicsRotation_override_virtual_ApplyTo(void* self, intptr_t slot);
+bool QGraphicsRotation_override_virtual_ApplyTo(void* self, intptr_t slot);
 void QGraphicsRotation_virtualbase_ApplyTo(const void* self, QMatrix4x4* matrix);
-void QGraphicsRotation_Delete(QGraphicsRotation* self, bool isSubclass);
+void QGraphicsRotation_Delete(QGraphicsRotation* self);
 
 #ifdef __cplusplus
 } /* extern C */

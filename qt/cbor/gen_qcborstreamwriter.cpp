@@ -121,11 +121,7 @@ void QCborStreamWriter_Append22(QCborStreamWriter* self, const char* str, ptrdif
 	self->append(str, (qsizetype)(size));
 }
 
-void QCborStreamWriter_Delete(QCborStreamWriter* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCborStreamWriter*>( self );
-	} else {
-		delete self;
-	}
+void QCborStreamWriter_Delete(QCborStreamWriter* self) {
+	delete self;
 }
 

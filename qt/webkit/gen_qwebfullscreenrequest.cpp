@@ -42,11 +42,7 @@ QWebElement* QWebFullScreenRequest_Element(const QWebFullScreenRequest* self) {
 	return const_cast<QWebElement*>(&_ret);
 }
 
-void QWebFullScreenRequest_Delete(QWebFullScreenRequest* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebFullScreenRequest*>( self );
-	} else {
-		delete self;
-	}
+void QWebFullScreenRequest_Delete(QWebFullScreenRequest* self) {
+	delete self;
 }
 

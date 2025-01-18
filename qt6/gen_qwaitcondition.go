@@ -14,8 +14,7 @@ import (
 )
 
 type QWaitCondition struct {
-	h          *C.QWaitCondition
-	isSubclass bool
+	h *C.QWaitCondition
 }
 
 func (this *QWaitCondition) cPointer() *C.QWaitCondition {
@@ -49,9 +48,7 @@ func UnsafeNewQWaitCondition(h unsafe.Pointer) *QWaitCondition {
 // NewQWaitCondition constructs a new QWaitCondition object.
 func NewQWaitCondition() *QWaitCondition {
 
-	ret := newQWaitCondition(C.QWaitCondition_new())
-	ret.isSubclass = true
-	return ret
+	return newQWaitCondition(C.QWaitCondition_new())
 }
 
 func (this *QWaitCondition) Wait(lockedMutex *QMutex) bool {
@@ -96,7 +93,7 @@ func (this *QWaitCondition) Wait23(lockedReadWriteLock *QReadWriteLock, deadline
 
 // Delete this object from C++ memory.
 func (this *QWaitCondition) Delete() {
-	C.QWaitCondition_Delete(this.h, C.bool(this.isSubclass))
+	C.QWaitCondition_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

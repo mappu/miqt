@@ -242,11 +242,7 @@ struct miqt_string QMediaRecorderControl_TrUtf83(const char* s, const char* c, i
 	return _ms;
 }
 
-void QMediaRecorderControl_Delete(QMediaRecorderControl* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMediaRecorderControl*>( self );
-	} else {
-		delete self;
-	}
+void QMediaRecorderControl_Delete(QMediaRecorderControl* self) {
+	delete self;
 }
 

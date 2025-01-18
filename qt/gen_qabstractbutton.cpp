@@ -96,13 +96,13 @@ bool miqt_exec_callback_QAbstractButton_FocusNextPrevChild(void*, intptr_t, bool
 } /* extern C */
 #endif
 
-class MiqtVirtualQAbstractButton : public virtual QAbstractButton {
+class MiqtVirtualQAbstractButton final : public QAbstractButton {
 public:
 
 	MiqtVirtualQAbstractButton(QWidget* parent): QAbstractButton(parent) {};
 	MiqtVirtualQAbstractButton(): QAbstractButton() {};
 
-	virtual ~MiqtVirtualQAbstractButton() = default;
+	virtual ~MiqtVirtualQAbstractButton() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__PaintEvent = 0;
@@ -1422,367 +1422,633 @@ void QAbstractButton_connect_Clicked1(QAbstractButton* self, intptr_t slot) {
 	});
 }
 
-void QAbstractButton_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__PaintEvent = slot;
+bool QAbstractButton_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
-void QAbstractButton_override_virtual_HitButton(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__HitButton = slot;
+bool QAbstractButton_override_virtual_HitButton(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HitButton = slot;
+	return true;
 }
 
 bool QAbstractButton_virtualbase_HitButton(const void* self, QPoint* pos) {
 	return ( (const MiqtVirtualQAbstractButton*)(self) )->virtualbase_HitButton(pos);
 }
 
-void QAbstractButton_override_virtual_CheckStateSet(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__CheckStateSet = slot;
+bool QAbstractButton_override_virtual_CheckStateSet(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CheckStateSet = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_CheckStateSet(void* self) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_CheckStateSet();
 }
 
-void QAbstractButton_override_virtual_NextCheckState(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__NextCheckState = slot;
+bool QAbstractButton_override_virtual_NextCheckState(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NextCheckState = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_NextCheckState(void* self) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_NextCheckState();
 }
 
-void QAbstractButton_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__Event = slot;
+bool QAbstractButton_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QAbstractButton_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_Event(e);
 }
 
-void QAbstractButton_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__KeyPressEvent = slot;
+bool QAbstractButton_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_KeyPressEvent(void* self, QKeyEvent* e) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_KeyPressEvent(e);
 }
 
-void QAbstractButton_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__KeyReleaseEvent = slot;
+bool QAbstractButton_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyReleaseEvent = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* e) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_KeyReleaseEvent(e);
 }
 
-void QAbstractButton_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__MousePressEvent = slot;
+bool QAbstractButton_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_MousePressEvent(void* self, QMouseEvent* e) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_MousePressEvent(e);
 }
 
-void QAbstractButton_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__MouseReleaseEvent = slot;
+bool QAbstractButton_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* e) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_MouseReleaseEvent(e);
 }
 
-void QAbstractButton_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__MouseMoveEvent = slot;
+bool QAbstractButton_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_MouseMoveEvent(void* self, QMouseEvent* e) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_MouseMoveEvent(e);
 }
 
-void QAbstractButton_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__FocusInEvent = slot;
+bool QAbstractButton_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_FocusInEvent(void* self, QFocusEvent* e) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_FocusInEvent(e);
 }
 
-void QAbstractButton_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__FocusOutEvent = slot;
+bool QAbstractButton_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_FocusOutEvent(void* self, QFocusEvent* e) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_FocusOutEvent(e);
 }
 
-void QAbstractButton_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__ChangeEvent = slot;
+bool QAbstractButton_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_ChangeEvent(void* self, QEvent* e) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_ChangeEvent(e);
 }
 
-void QAbstractButton_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__TimerEvent = slot;
+bool QAbstractButton_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_TimerEvent(void* self, QTimerEvent* e) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_TimerEvent(e);
 }
 
-void QAbstractButton_override_virtual_DevType(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__DevType = slot;
+bool QAbstractButton_override_virtual_DevType(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DevType = slot;
+	return true;
 }
 
 int QAbstractButton_virtualbase_DevType(const void* self) {
 	return ( (const MiqtVirtualQAbstractButton*)(self) )->virtualbase_DevType();
 }
 
-void QAbstractButton_override_virtual_SetVisible(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__SetVisible = slot;
+bool QAbstractButton_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_SetVisible(void* self, bool visible) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_SetVisible(visible);
 }
 
-void QAbstractButton_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__SizeHint = slot;
+bool QAbstractButton_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QAbstractButton_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQAbstractButton*)(self) )->virtualbase_SizeHint();
 }
 
-void QAbstractButton_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__MinimumSizeHint = slot;
+bool QAbstractButton_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QAbstractButton_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQAbstractButton*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QAbstractButton_override_virtual_HeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__HeightForWidth = slot;
+bool QAbstractButton_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeightForWidth = slot;
+	return true;
 }
 
 int QAbstractButton_virtualbase_HeightForWidth(const void* self, int param1) {
 	return ( (const MiqtVirtualQAbstractButton*)(self) )->virtualbase_HeightForWidth(param1);
 }
 
-void QAbstractButton_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__HasHeightForWidth = slot;
+bool QAbstractButton_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasHeightForWidth = slot;
+	return true;
 }
 
 bool QAbstractButton_virtualbase_HasHeightForWidth(const void* self) {
 	return ( (const MiqtVirtualQAbstractButton*)(self) )->virtualbase_HasHeightForWidth();
 }
 
-void QAbstractButton_override_virtual_PaintEngine(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__PaintEngine = slot;
+bool QAbstractButton_override_virtual_PaintEngine(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEngine = slot;
+	return true;
 }
 
 QPaintEngine* QAbstractButton_virtualbase_PaintEngine(const void* self) {
 	return ( (const MiqtVirtualQAbstractButton*)(self) )->virtualbase_PaintEngine();
 }
 
-void QAbstractButton_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__MouseDoubleClickEvent = slot;
+bool QAbstractButton_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseDoubleClickEvent = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_MouseDoubleClickEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_MouseDoubleClickEvent(event);
 }
 
-void QAbstractButton_override_virtual_WheelEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__WheelEvent = slot;
+bool QAbstractButton_override_virtual_WheelEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WheelEvent = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_WheelEvent(void* self, QWheelEvent* event) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_WheelEvent(event);
 }
 
-void QAbstractButton_override_virtual_EnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__EnterEvent = slot;
+bool QAbstractButton_override_virtual_EnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EnterEvent = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_EnterEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_EnterEvent(event);
 }
 
-void QAbstractButton_override_virtual_LeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__LeaveEvent = slot;
+bool QAbstractButton_override_virtual_LeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__LeaveEvent = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_LeaveEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_LeaveEvent(event);
 }
 
-void QAbstractButton_override_virtual_MoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__MoveEvent = slot;
+bool QAbstractButton_override_virtual_MoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveEvent = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_MoveEvent(void* self, QMoveEvent* event) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_MoveEvent(event);
 }
 
-void QAbstractButton_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__ResizeEvent = slot;
+bool QAbstractButton_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_ResizeEvent(void* self, QResizeEvent* event) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_ResizeEvent(event);
 }
 
-void QAbstractButton_override_virtual_CloseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__CloseEvent = slot;
+bool QAbstractButton_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_CloseEvent(void* self, QCloseEvent* event) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_CloseEvent(event);
 }
 
-void QAbstractButton_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__ContextMenuEvent = slot;
+bool QAbstractButton_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* event) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_ContextMenuEvent(event);
 }
 
-void QAbstractButton_override_virtual_TabletEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__TabletEvent = slot;
+bool QAbstractButton_override_virtual_TabletEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TabletEvent = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_TabletEvent(void* self, QTabletEvent* event) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_TabletEvent(event);
 }
 
-void QAbstractButton_override_virtual_ActionEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__ActionEvent = slot;
+bool QAbstractButton_override_virtual_ActionEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ActionEvent = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_ActionEvent(void* self, QActionEvent* event) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_ActionEvent(event);
 }
 
-void QAbstractButton_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__DragEnterEvent = slot;
+bool QAbstractButton_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragEnterEvent = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_DragEnterEvent(void* self, QDragEnterEvent* event) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_DragEnterEvent(event);
 }
 
-void QAbstractButton_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__DragMoveEvent = slot;
+bool QAbstractButton_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragMoveEvent = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_DragMoveEvent(void* self, QDragMoveEvent* event) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_DragMoveEvent(event);
 }
 
-void QAbstractButton_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__DragLeaveEvent = slot;
+bool QAbstractButton_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragLeaveEvent = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* event) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_DragLeaveEvent(event);
 }
 
-void QAbstractButton_override_virtual_DropEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__DropEvent = slot;
+bool QAbstractButton_override_virtual_DropEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropEvent = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_DropEvent(void* self, QDropEvent* event) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_DropEvent(event);
 }
 
-void QAbstractButton_override_virtual_ShowEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__ShowEvent = slot;
+bool QAbstractButton_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_ShowEvent(void* self, QShowEvent* event) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_ShowEvent(event);
 }
 
-void QAbstractButton_override_virtual_HideEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__HideEvent = slot;
+bool QAbstractButton_override_virtual_HideEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HideEvent = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_HideEvent(void* self, QHideEvent* event) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_HideEvent(event);
 }
 
-void QAbstractButton_override_virtual_NativeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__NativeEvent = slot;
+bool QAbstractButton_override_virtual_NativeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NativeEvent = slot;
+	return true;
 }
 
 bool QAbstractButton_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	return ( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_NativeEvent(eventType, message, result);
 }
 
-void QAbstractButton_override_virtual_Metric(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__Metric = slot;
+bool QAbstractButton_override_virtual_Metric(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Metric = slot;
+	return true;
 }
 
 int QAbstractButton_virtualbase_Metric(const void* self, int param1) {
 	return ( (const MiqtVirtualQAbstractButton*)(self) )->virtualbase_Metric(param1);
 }
 
-void QAbstractButton_override_virtual_InitPainter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__InitPainter = slot;
+bool QAbstractButton_override_virtual_InitPainter(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitPainter = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_InitPainter(const void* self, QPainter* painter) {
 	( (const MiqtVirtualQAbstractButton*)(self) )->virtualbase_InitPainter(painter);
 }
 
-void QAbstractButton_override_virtual_Redirected(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__Redirected = slot;
+bool QAbstractButton_override_virtual_Redirected(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Redirected = slot;
+	return true;
 }
 
 QPaintDevice* QAbstractButton_virtualbase_Redirected(const void* self, QPoint* offset) {
 	return ( (const MiqtVirtualQAbstractButton*)(self) )->virtualbase_Redirected(offset);
 }
 
-void QAbstractButton_override_virtual_SharedPainter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__SharedPainter = slot;
+bool QAbstractButton_override_virtual_SharedPainter(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SharedPainter = slot;
+	return true;
 }
 
 QPainter* QAbstractButton_virtualbase_SharedPainter(const void* self) {
 	return ( (const MiqtVirtualQAbstractButton*)(self) )->virtualbase_SharedPainter();
 }
 
-void QAbstractButton_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__InputMethodEvent = slot;
+bool QAbstractButton_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodEvent = slot;
+	return true;
 }
 
 void QAbstractButton_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* param1) {
 	( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_InputMethodEvent(param1);
 }
 
-void QAbstractButton_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__InputMethodQuery = slot;
+bool QAbstractButton_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodQuery = slot;
+	return true;
 }
 
 QVariant* QAbstractButton_virtualbase_InputMethodQuery(const void* self, int param1) {
 	return ( (const MiqtVirtualQAbstractButton*)(self) )->virtualbase_InputMethodQuery(param1);
 }
 
-void QAbstractButton_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) )->handle__FocusNextPrevChild = slot;
+bool QAbstractButton_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractButton* self_cast = dynamic_cast<MiqtVirtualQAbstractButton*>( (QAbstractButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusNextPrevChild = slot;
+	return true;
 }
 
 bool QAbstractButton_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QAbstractButton_Delete(QAbstractButton* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractButton*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractButton_Delete(QAbstractButton* self) {
+	delete self;
 }
 

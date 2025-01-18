@@ -170,11 +170,7 @@ void QPageLayout_SetPageSize2(QPageLayout* self, QPageSize* pageSize, QMarginsF*
 	self->setPageSize(*pageSize, *minMargins);
 }
 
-void QPageLayout_Delete(QPageLayout* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPageLayout*>( self );
-	} else {
-		delete self;
-	}
+void QPageLayout_Delete(QPageLayout* self) {
+	delete self;
 }
 

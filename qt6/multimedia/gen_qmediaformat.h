@@ -47,7 +47,7 @@ struct miqt_string QMediaFormat_VideoCodecDescription(int codec);
 bool QMediaFormat_OperatorEqual(const QMediaFormat* self, QMediaFormat* other);
 bool QMediaFormat_OperatorNotEqual(const QMediaFormat* self, QMediaFormat* other);
 void QMediaFormat_ResolveForEncoding(QMediaFormat* self, int flags);
-void QMediaFormat_Delete(QMediaFormat* self, bool isSubclass);
+void QMediaFormat_Delete(QMediaFormat* self);
 
 #ifdef __cplusplus
 } /* extern C */

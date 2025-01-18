@@ -40,7 +40,7 @@ typedef struct QVideoSurfaceFormat QVideoSurfaceFormat;
 
 QVideoFrame* QVideoFilterRunnable_Run(QVideoFilterRunnable* self, QVideoFrame* input, QVideoSurfaceFormat* surfaceFormat, int flags);
 void QVideoFilterRunnable_OperatorAssign(QVideoFilterRunnable* self, QVideoFilterRunnable* param1);
-void QVideoFilterRunnable_Delete(QVideoFilterRunnable* self, bool isSubclass);
+void QVideoFilterRunnable_Delete(QVideoFilterRunnable* self);
 
 QAbstractVideoFilter* QAbstractVideoFilter_new();
 QAbstractVideoFilter* QAbstractVideoFilter_new2(QObject* parent);
@@ -58,23 +58,23 @@ struct miqt_string QAbstractVideoFilter_Tr2(const char* s, const char* c);
 struct miqt_string QAbstractVideoFilter_Tr3(const char* s, const char* c, int n);
 struct miqt_string QAbstractVideoFilter_TrUtf82(const char* s, const char* c);
 struct miqt_string QAbstractVideoFilter_TrUtf83(const char* s, const char* c, int n);
-void QAbstractVideoFilter_override_virtual_CreateFilterRunnable(void* self, intptr_t slot);
+bool QAbstractVideoFilter_override_virtual_CreateFilterRunnable(void* self, intptr_t slot);
 QVideoFilterRunnable* QAbstractVideoFilter_virtualbase_CreateFilterRunnable(void* self);
-void QAbstractVideoFilter_override_virtual_Event(void* self, intptr_t slot);
+bool QAbstractVideoFilter_override_virtual_Event(void* self, intptr_t slot);
 bool QAbstractVideoFilter_virtualbase_Event(void* self, QEvent* event);
-void QAbstractVideoFilter_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QAbstractVideoFilter_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QAbstractVideoFilter_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QAbstractVideoFilter_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QAbstractVideoFilter_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QAbstractVideoFilter_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QAbstractVideoFilter_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QAbstractVideoFilter_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QAbstractVideoFilter_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QAbstractVideoFilter_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QAbstractVideoFilter_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QAbstractVideoFilter_virtualbase_CustomEvent(void* self, QEvent* event);
-void QAbstractVideoFilter_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QAbstractVideoFilter_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QAbstractVideoFilter_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QAbstractVideoFilter_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QAbstractVideoFilter_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QAbstractVideoFilter_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QAbstractVideoFilter_Delete(QAbstractVideoFilter* self, bool isSubclass);
+void QAbstractVideoFilter_Delete(QAbstractVideoFilter* self);
 
 #ifdef __cplusplus
 } /* extern C */

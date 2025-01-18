@@ -606,12 +606,8 @@ double QVariant_ToReal1(const QVariant* self, bool* ok) {
 	return static_cast<double>(_ret);
 }
 
-void QVariant_Delete(QVariant* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QVariant*>( self );
-	} else {
-		delete self;
-	}
+void QVariant_Delete(QVariant* self) {
+	delete self;
 }
 
 QVariantComparisonHelper* QVariantComparisonHelper_new(QVariant* varVal) {
@@ -622,20 +618,12 @@ QVariantComparisonHelper* QVariantComparisonHelper_new2(QVariantComparisonHelper
 	return new QVariantComparisonHelper(*param1);
 }
 
-void QVariantComparisonHelper_Delete(QVariantComparisonHelper* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QVariantComparisonHelper*>( self );
-	} else {
-		delete self;
-	}
+void QVariantComparisonHelper_Delete(QVariantComparisonHelper* self) {
+	delete self;
 }
 
-void QVariant__Handler_Delete(QVariant__Handler* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QVariant::Handler*>( self );
-	} else {
-		delete self;
-	}
+void QVariant__Handler_Delete(QVariant__Handler* self) {
+	delete self;
 }
 
 QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_new(QSequentialIterable__const_iterator* other) {
@@ -698,12 +686,8 @@ QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_Operato
 	return new QSequentialIterable::const_iterator(self->operator-(static_cast<int>(j)));
 }
 
-void QSequentialIterable__const_iterator_Delete(QSequentialIterable__const_iterator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QSequentialIterable::const_iterator*>( self );
-	} else {
-		delete self;
-	}
+void QSequentialIterable__const_iterator_Delete(QSequentialIterable__const_iterator* self) {
+	delete self;
 }
 
 QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_new(QAssociativeIterable__const_iterator* other) {
@@ -774,11 +758,7 @@ QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_Opera
 	return new QAssociativeIterable::const_iterator(self->operator-(static_cast<int>(j)));
 }
 
-void QAssociativeIterable__const_iterator_Delete(QAssociativeIterable__const_iterator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QAssociativeIterable::const_iterator*>( self );
-	} else {
-		delete self;
-	}
+void QAssociativeIterable__const_iterator_Delete(QAssociativeIterable__const_iterator* self) {
+	delete self;
 }
 

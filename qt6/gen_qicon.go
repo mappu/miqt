@@ -30,8 +30,7 @@ const (
 )
 
 type QIcon struct {
-	h          *C.QIcon
-	isSubclass bool
+	h *C.QIcon
 }
 
 func (this *QIcon) cPointer() *C.QIcon {
@@ -65,25 +64,19 @@ func UnsafeNewQIcon(h unsafe.Pointer) *QIcon {
 // NewQIcon constructs a new QIcon object.
 func NewQIcon() *QIcon {
 
-	ret := newQIcon(C.QIcon_new())
-	ret.isSubclass = true
-	return ret
+	return newQIcon(C.QIcon_new())
 }
 
 // NewQIcon2 constructs a new QIcon object.
 func NewQIcon2(pixmap *QPixmap) *QIcon {
 
-	ret := newQIcon(C.QIcon_new2(pixmap.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQIcon(C.QIcon_new2(pixmap.cPointer()))
 }
 
 // NewQIcon3 constructs a new QIcon object.
 func NewQIcon3(other *QIcon) *QIcon {
 
-	ret := newQIcon(C.QIcon_new3(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQIcon(C.QIcon_new3(other.cPointer()))
 }
 
 // NewQIcon4 constructs a new QIcon object.
@@ -93,17 +86,13 @@ func NewQIcon4(fileName string) *QIcon {
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 
-	ret := newQIcon(C.QIcon_new4(fileName_ms))
-	ret.isSubclass = true
-	return ret
+	return newQIcon(C.QIcon_new4(fileName_ms))
 }
 
 // NewQIcon5 constructs a new QIcon object.
 func NewQIcon5(engine *QIconEngine) *QIcon {
 
-	ret := newQIcon(C.QIcon_new5(engine.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQIcon(C.QIcon_new5(engine.cPointer()))
 }
 
 func (this *QIcon) OperatorAssign(other *QIcon) {
@@ -503,7 +492,7 @@ func (this *QIcon) AvailableSizes2(mode QIcon__Mode, state QIcon__State) []QSize
 
 // Delete this object from C++ memory.
 func (this *QIcon) Delete() {
-	C.QIcon_Delete(this.h, C.bool(this.isSubclass))
+	C.QIcon_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

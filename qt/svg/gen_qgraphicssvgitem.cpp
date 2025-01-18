@@ -28,7 +28,7 @@ bool miqt_exec_callback_QGraphicsSvgItem_Event(void*, intptr_t, QEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQGraphicsSvgItem : public virtual QGraphicsSvgItem {
+class MiqtVirtualQGraphicsSvgItem final : public QGraphicsSvgItem {
 public:
 
 	MiqtVirtualQGraphicsSvgItem(): QGraphicsSvgItem() {};
@@ -36,7 +36,7 @@ public:
 	MiqtVirtualQGraphicsSvgItem(QGraphicsItem* parentItem): QGraphicsSvgItem(parentItem) {};
 	MiqtVirtualQGraphicsSvgItem(const QString& fileName, QGraphicsItem* parentItem): QGraphicsSvgItem(fileName, parentItem) {};
 
-	virtual ~MiqtVirtualQGraphicsSvgItem() = default;
+	virtual ~MiqtVirtualQGraphicsSvgItem() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__BoundingRect = 0;
@@ -281,43 +281,63 @@ struct miqt_string QGraphicsSvgItem_TrUtf83(const char* s, const char* c, int n)
 	return _ms;
 }
 
-void QGraphicsSvgItem_override_virtual_BoundingRect(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsSvgItem*>( (QGraphicsSvgItem*)(self) )->handle__BoundingRect = slot;
+bool QGraphicsSvgItem_override_virtual_BoundingRect(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsSvgItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsSvgItem*>( (QGraphicsSvgItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BoundingRect = slot;
+	return true;
 }
 
 QRectF* QGraphicsSvgItem_virtualbase_BoundingRect(const void* self) {
 	return ( (const MiqtVirtualQGraphicsSvgItem*)(self) )->virtualbase_BoundingRect();
 }
 
-void QGraphicsSvgItem_override_virtual_Paint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsSvgItem*>( (QGraphicsSvgItem*)(self) )->handle__Paint = slot;
+bool QGraphicsSvgItem_override_virtual_Paint(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsSvgItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsSvgItem*>( (QGraphicsSvgItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Paint = slot;
+	return true;
 }
 
 void QGraphicsSvgItem_virtualbase_Paint(void* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {
 	( (MiqtVirtualQGraphicsSvgItem*)(self) )->virtualbase_Paint(painter, option, widget);
 }
 
-void QGraphicsSvgItem_override_virtual_Type(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsSvgItem*>( (QGraphicsSvgItem*)(self) )->handle__Type = slot;
+bool QGraphicsSvgItem_override_virtual_Type(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsSvgItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsSvgItem*>( (QGraphicsSvgItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Type = slot;
+	return true;
 }
 
 int QGraphicsSvgItem_virtualbase_Type(const void* self) {
 	return ( (const MiqtVirtualQGraphicsSvgItem*)(self) )->virtualbase_Type();
 }
 
-void QGraphicsSvgItem_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsSvgItem*>( (QGraphicsSvgItem*)(self) )->handle__Event = slot;
+bool QGraphicsSvgItem_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsSvgItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsSvgItem*>( (QGraphicsSvgItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QGraphicsSvgItem_virtualbase_Event(void* self, QEvent* ev) {
 	return ( (MiqtVirtualQGraphicsSvgItem*)(self) )->virtualbase_Event(ev);
 }
 
-void QGraphicsSvgItem_Delete(QGraphicsSvgItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsSvgItem*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsSvgItem_Delete(QGraphicsSvgItem* self) {
+	delete self;
 }
 

@@ -14,8 +14,7 @@ import (
 )
 
 type QBitArray struct {
-	h          *C.QBitArray
-	isSubclass bool
+	h *C.QBitArray
 }
 
 func (this *QBitArray) cPointer() *C.QBitArray {
@@ -49,33 +48,25 @@ func UnsafeNewQBitArray(h unsafe.Pointer) *QBitArray {
 // NewQBitArray constructs a new QBitArray object.
 func NewQBitArray() *QBitArray {
 
-	ret := newQBitArray(C.QBitArray_new())
-	ret.isSubclass = true
-	return ret
+	return newQBitArray(C.QBitArray_new())
 }
 
 // NewQBitArray2 constructs a new QBitArray object.
 func NewQBitArray2(size int64) *QBitArray {
 
-	ret := newQBitArray(C.QBitArray_new2((C.ptrdiff_t)(size)))
-	ret.isSubclass = true
-	return ret
+	return newQBitArray(C.QBitArray_new2((C.ptrdiff_t)(size)))
 }
 
 // NewQBitArray3 constructs a new QBitArray object.
 func NewQBitArray3(other *QBitArray) *QBitArray {
 
-	ret := newQBitArray(C.QBitArray_new3(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQBitArray(C.QBitArray_new3(other.cPointer()))
 }
 
 // NewQBitArray4 constructs a new QBitArray object.
 func NewQBitArray4(size int64, val bool) *QBitArray {
 
-	ret := newQBitArray(C.QBitArray_new4((C.ptrdiff_t)(size), (C.bool)(val)))
-	ret.isSubclass = true
-	return ret
+	return newQBitArray(C.QBitArray_new4((C.ptrdiff_t)(size), (C.bool)(val)))
 }
 
 func (this *QBitArray) OperatorAssign(other *QBitArray) {
@@ -215,7 +206,7 @@ func (this *QBitArray) ToUInt322(endianness QSysInfo__Endian, ok *bool) uint {
 
 // Delete this object from C++ memory.
 func (this *QBitArray) Delete() {
-	C.QBitArray_Delete(this.h, C.bool(this.isSubclass))
+	C.QBitArray_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -228,8 +219,7 @@ func (this *QBitArray) GoGC() {
 }
 
 type QBitRef struct {
-	h          *C.QBitRef
-	isSubclass bool
+	h *C.QBitRef
 }
 
 func (this *QBitRef) cPointer() *C.QBitRef {
@@ -263,9 +253,7 @@ func UnsafeNewQBitRef(h unsafe.Pointer) *QBitRef {
 // NewQBitRef constructs a new QBitRef object.
 func NewQBitRef(param1 *QBitRef) *QBitRef {
 
-	ret := newQBitRef(C.QBitRef_new(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQBitRef(C.QBitRef_new(param1.cPointer()))
 }
 
 func (this *QBitRef) ToBool() bool {
@@ -286,7 +274,7 @@ func (this *QBitRef) OperatorAssignWithVal(val bool) {
 
 // Delete this object from C++ memory.
 func (this *QBitRef) Delete() {
-	C.QBitRef_Delete(this.h, C.bool(this.isSubclass))
+	C.QBitRef_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

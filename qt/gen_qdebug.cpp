@@ -208,24 +208,16 @@ QDebug* QDebug_MaybeQuote1(QDebug* self, char c) {
 	return &_ret;
 }
 
-void QDebug_Delete(QDebug* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QDebug*>( self );
-	} else {
-		delete self;
-	}
+void QDebug_Delete(QDebug* self) {
+	delete self;
 }
 
 QDebugStateSaver* QDebugStateSaver_new(QDebug* dbg) {
 	return new QDebugStateSaver(*dbg);
 }
 
-void QDebugStateSaver_Delete(QDebugStateSaver* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QDebugStateSaver*>( self );
-	} else {
-		delete self;
-	}
+void QDebugStateSaver_Delete(QDebugStateSaver* self) {
+	delete self;
 }
 
 QNoDebug* QNoDebug_Space(QNoDebug* self) {
@@ -276,11 +268,7 @@ QNoDebug* QNoDebug_MaybeQuote1(QNoDebug* self, const char param1) {
 	return &_ret;
 }
 
-void QNoDebug_Delete(QNoDebug* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QNoDebug*>( self );
-	} else {
-		delete self;
-	}
+void QNoDebug_Delete(QNoDebug* self) {
+	delete self;
 }
 

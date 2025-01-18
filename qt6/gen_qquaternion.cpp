@@ -215,11 +215,7 @@ QQuaternion* QQuaternion_Nlerp(QQuaternion* q1, QQuaternion* q2, float t) {
 	return new QQuaternion(QQuaternion::nlerp(*q1, *q2, static_cast<float>(t)));
 }
 
-void QQuaternion_Delete(QQuaternion* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QQuaternion*>( self );
-	} else {
-		delete self;
-	}
+void QQuaternion_Delete(QQuaternion* self) {
+	delete self;
 }
 

@@ -42,7 +42,7 @@ bool QFontInfo_FixedPitch(const QFontInfo* self);
 int QFontInfo_StyleHint(const QFontInfo* self);
 int QFontInfo_LegacyWeight(const QFontInfo* self);
 bool QFontInfo_ExactMatch(const QFontInfo* self);
-void QFontInfo_Delete(QFontInfo* self, bool isSubclass);
+void QFontInfo_Delete(QFontInfo* self);
 
 #ifdef __cplusplus
 } /* extern C */

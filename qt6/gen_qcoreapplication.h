@@ -108,23 +108,23 @@ void QCoreApplication_RemovePostedEvents2(QObject* receiver, int eventType);
 struct miqt_string QCoreApplication_Translate3(const char* context, const char* key, const char* disambiguation);
 struct miqt_string QCoreApplication_Translate4(const char* context, const char* key, const char* disambiguation, int n);
 void QCoreApplication_Exit1(int retcode);
-void QCoreApplication_override_virtual_Notify(void* self, intptr_t slot);
+bool QCoreApplication_override_virtual_Notify(void* self, intptr_t slot);
 bool QCoreApplication_virtualbase_Notify(void* self, QObject* param1, QEvent* param2);
-void QCoreApplication_override_virtual_Event(void* self, intptr_t slot);
+bool QCoreApplication_override_virtual_Event(void* self, intptr_t slot);
 bool QCoreApplication_virtualbase_Event(void* self, QEvent* param1);
-void QCoreApplication_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QCoreApplication_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QCoreApplication_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QCoreApplication_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QCoreApplication_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QCoreApplication_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QCoreApplication_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QCoreApplication_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QCoreApplication_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QCoreApplication_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QCoreApplication_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QCoreApplication_virtualbase_CustomEvent(void* self, QEvent* event);
-void QCoreApplication_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QCoreApplication_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QCoreApplication_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QCoreApplication_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QCoreApplication_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QCoreApplication_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QCoreApplication_Delete(QCoreApplication* self, bool isSubclass);
+void QCoreApplication_Delete(QCoreApplication* self);
 
 #ifdef __cplusplus
 } /* extern C */

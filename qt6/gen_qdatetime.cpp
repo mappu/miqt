@@ -263,12 +263,8 @@ QDate* QDate_FromString34(struct miqt_string stringVal, struct miqt_string forma
 	return new QDate(QDate::fromString(stringVal_QString, format_QString, *cal));
 }
 
-void QDate_Delete(QDate* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QDate*>( self );
-	} else {
-		delete self;
-	}
+void QDate_Delete(QDate* self) {
+	delete self;
 }
 
 QTime* QTime_new() {
@@ -409,12 +405,8 @@ bool QTime_IsValid4(int h, int m, int s, int ms) {
 	return QTime::isValid(static_cast<int>(h), static_cast<int>(m), static_cast<int>(s), static_cast<int>(ms));
 }
 
-void QTime_Delete(QTime* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTime*>( self );
-	} else {
-		delete self;
-	}
+void QTime_Delete(QTime* self) {
+	delete self;
 }
 
 QDateTime* QDateTime_new() {
@@ -704,11 +696,7 @@ QDateTime* QDateTime_FromSecsSinceEpoch3(long long secs, int spec, int offsetFro
 	return new QDateTime(QDateTime::fromSecsSinceEpoch(static_cast<qint64>(secs), static_cast<Qt::TimeSpec>(spec), static_cast<int>(offsetFromUtc)));
 }
 
-void QDateTime_Delete(QDateTime* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QDateTime*>( self );
-	} else {
-		delete self;
-	}
+void QDateTime_Delete(QDateTime* self) {
+	delete self;
 }
 

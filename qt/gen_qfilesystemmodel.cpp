@@ -69,13 +69,13 @@ void miqt_exec_callback_QFileSystemModel_Revert(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQFileSystemModel : public virtual QFileSystemModel {
+class MiqtVirtualQFileSystemModel final : public QFileSystemModel {
 public:
 
 	MiqtVirtualQFileSystemModel(): QFileSystemModel() {};
 	MiqtVirtualQFileSystemModel(QObject* parent): QFileSystemModel(parent) {};
 
-	virtual ~MiqtVirtualQFileSystemModel() = default;
+	virtual ~MiqtVirtualQFileSystemModel() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Index = 0;
@@ -1590,299 +1590,511 @@ void QFileSystemModel_SetOption2(QFileSystemModel* self, int option, bool on) {
 	self->setOption(static_cast<QFileSystemModel::Option>(option), on);
 }
 
-void QFileSystemModel_override_virtual_Index(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__Index = slot;
+bool QFileSystemModel_override_virtual_Index(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Index = slot;
+	return true;
 }
 
 QModelIndex* QFileSystemModel_virtualbase_Index(const void* self, int row, int column, QModelIndex* parent) {
 	return ( (const MiqtVirtualQFileSystemModel*)(self) )->virtualbase_Index(row, column, parent);
 }
 
-void QFileSystemModel_override_virtual_Parent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__Parent = slot;
+bool QFileSystemModel_override_virtual_Parent(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Parent = slot;
+	return true;
 }
 
 QModelIndex* QFileSystemModel_virtualbase_Parent(const void* self, QModelIndex* child) {
 	return ( (const MiqtVirtualQFileSystemModel*)(self) )->virtualbase_Parent(child);
 }
 
-void QFileSystemModel_override_virtual_Sibling(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__Sibling = slot;
+bool QFileSystemModel_override_virtual_Sibling(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Sibling = slot;
+	return true;
 }
 
 QModelIndex* QFileSystemModel_virtualbase_Sibling(const void* self, int row, int column, QModelIndex* idx) {
 	return ( (const MiqtVirtualQFileSystemModel*)(self) )->virtualbase_Sibling(row, column, idx);
 }
 
-void QFileSystemModel_override_virtual_HasChildren(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__HasChildren = slot;
+bool QFileSystemModel_override_virtual_HasChildren(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasChildren = slot;
+	return true;
 }
 
 bool QFileSystemModel_virtualbase_HasChildren(const void* self, QModelIndex* parent) {
 	return ( (const MiqtVirtualQFileSystemModel*)(self) )->virtualbase_HasChildren(parent);
 }
 
-void QFileSystemModel_override_virtual_CanFetchMore(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__CanFetchMore = slot;
+bool QFileSystemModel_override_virtual_CanFetchMore(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CanFetchMore = slot;
+	return true;
 }
 
 bool QFileSystemModel_virtualbase_CanFetchMore(const void* self, QModelIndex* parent) {
 	return ( (const MiqtVirtualQFileSystemModel*)(self) )->virtualbase_CanFetchMore(parent);
 }
 
-void QFileSystemModel_override_virtual_FetchMore(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__FetchMore = slot;
+bool QFileSystemModel_override_virtual_FetchMore(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FetchMore = slot;
+	return true;
 }
 
 void QFileSystemModel_virtualbase_FetchMore(void* self, QModelIndex* parent) {
 	( (MiqtVirtualQFileSystemModel*)(self) )->virtualbase_FetchMore(parent);
 }
 
-void QFileSystemModel_override_virtual_RowCount(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__RowCount = slot;
+bool QFileSystemModel_override_virtual_RowCount(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RowCount = slot;
+	return true;
 }
 
 int QFileSystemModel_virtualbase_RowCount(const void* self, QModelIndex* parent) {
 	return ( (const MiqtVirtualQFileSystemModel*)(self) )->virtualbase_RowCount(parent);
 }
 
-void QFileSystemModel_override_virtual_ColumnCount(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__ColumnCount = slot;
+bool QFileSystemModel_override_virtual_ColumnCount(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ColumnCount = slot;
+	return true;
 }
 
 int QFileSystemModel_virtualbase_ColumnCount(const void* self, QModelIndex* parent) {
 	return ( (const MiqtVirtualQFileSystemModel*)(self) )->virtualbase_ColumnCount(parent);
 }
 
-void QFileSystemModel_override_virtual_Data(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__Data = slot;
+bool QFileSystemModel_override_virtual_Data(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Data = slot;
+	return true;
 }
 
 QVariant* QFileSystemModel_virtualbase_Data(const void* self, QModelIndex* index, int role) {
 	return ( (const MiqtVirtualQFileSystemModel*)(self) )->virtualbase_Data(index, role);
 }
 
-void QFileSystemModel_override_virtual_SetData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__SetData = slot;
+bool QFileSystemModel_override_virtual_SetData(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetData = slot;
+	return true;
 }
 
 bool QFileSystemModel_virtualbase_SetData(void* self, QModelIndex* index, QVariant* value, int role) {
 	return ( (MiqtVirtualQFileSystemModel*)(self) )->virtualbase_SetData(index, value, role);
 }
 
-void QFileSystemModel_override_virtual_HeaderData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__HeaderData = slot;
+bool QFileSystemModel_override_virtual_HeaderData(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeaderData = slot;
+	return true;
 }
 
 QVariant* QFileSystemModel_virtualbase_HeaderData(const void* self, int section, int orientation, int role) {
 	return ( (const MiqtVirtualQFileSystemModel*)(self) )->virtualbase_HeaderData(section, orientation, role);
 }
 
-void QFileSystemModel_override_virtual_Flags(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__Flags = slot;
+bool QFileSystemModel_override_virtual_Flags(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Flags = slot;
+	return true;
 }
 
 int QFileSystemModel_virtualbase_Flags(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQFileSystemModel*)(self) )->virtualbase_Flags(index);
 }
 
-void QFileSystemModel_override_virtual_Sort(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__Sort = slot;
+bool QFileSystemModel_override_virtual_Sort(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Sort = slot;
+	return true;
 }
 
 void QFileSystemModel_virtualbase_Sort(void* self, int column, int order) {
 	( (MiqtVirtualQFileSystemModel*)(self) )->virtualbase_Sort(column, order);
 }
 
-void QFileSystemModel_override_virtual_MimeTypes(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__MimeTypes = slot;
+bool QFileSystemModel_override_virtual_MimeTypes(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MimeTypes = slot;
+	return true;
 }
 
 struct miqt_array /* of struct miqt_string */  QFileSystemModel_virtualbase_MimeTypes(const void* self) {
 	return ( (const MiqtVirtualQFileSystemModel*)(self) )->virtualbase_MimeTypes();
 }
 
-void QFileSystemModel_override_virtual_MimeData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__MimeData = slot;
+bool QFileSystemModel_override_virtual_MimeData(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MimeData = slot;
+	return true;
 }
 
 QMimeData* QFileSystemModel_virtualbase_MimeData(const void* self, struct miqt_array /* of QModelIndex* */  indexes) {
 	return ( (const MiqtVirtualQFileSystemModel*)(self) )->virtualbase_MimeData(indexes);
 }
 
-void QFileSystemModel_override_virtual_DropMimeData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__DropMimeData = slot;
+bool QFileSystemModel_override_virtual_DropMimeData(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropMimeData = slot;
+	return true;
 }
 
 bool QFileSystemModel_virtualbase_DropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 	return ( (MiqtVirtualQFileSystemModel*)(self) )->virtualbase_DropMimeData(data, action, row, column, parent);
 }
 
-void QFileSystemModel_override_virtual_SupportedDropActions(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__SupportedDropActions = slot;
+bool QFileSystemModel_override_virtual_SupportedDropActions(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SupportedDropActions = slot;
+	return true;
 }
 
 int QFileSystemModel_virtualbase_SupportedDropActions(const void* self) {
 	return ( (const MiqtVirtualQFileSystemModel*)(self) )->virtualbase_SupportedDropActions();
 }
 
-void QFileSystemModel_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__TimerEvent = slot;
+bool QFileSystemModel_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QFileSystemModel_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQFileSystemModel*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QFileSystemModel_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__Event = slot;
+bool QFileSystemModel_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QFileSystemModel_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQFileSystemModel*)(self) )->virtualbase_Event(event);
 }
 
-void QFileSystemModel_override_virtual_SetHeaderData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__SetHeaderData = slot;
+bool QFileSystemModel_override_virtual_SetHeaderData(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetHeaderData = slot;
+	return true;
 }
 
 bool QFileSystemModel_virtualbase_SetHeaderData(void* self, int section, int orientation, QVariant* value, int role) {
 	return ( (MiqtVirtualQFileSystemModel*)(self) )->virtualbase_SetHeaderData(section, orientation, value, role);
 }
 
-void QFileSystemModel_override_virtual_ItemData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__ItemData = slot;
+bool QFileSystemModel_override_virtual_ItemData(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ItemData = slot;
+	return true;
 }
 
 struct miqt_map /* of int to QVariant* */  QFileSystemModel_virtualbase_ItemData(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQFileSystemModel*)(self) )->virtualbase_ItemData(index);
 }
 
-void QFileSystemModel_override_virtual_SetItemData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__SetItemData = slot;
+bool QFileSystemModel_override_virtual_SetItemData(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetItemData = slot;
+	return true;
 }
 
 bool QFileSystemModel_virtualbase_SetItemData(void* self, QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles) {
 	return ( (MiqtVirtualQFileSystemModel*)(self) )->virtualbase_SetItemData(index, roles);
 }
 
-void QFileSystemModel_override_virtual_CanDropMimeData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__CanDropMimeData = slot;
+bool QFileSystemModel_override_virtual_CanDropMimeData(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CanDropMimeData = slot;
+	return true;
 }
 
 bool QFileSystemModel_virtualbase_CanDropMimeData(const void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 	return ( (const MiqtVirtualQFileSystemModel*)(self) )->virtualbase_CanDropMimeData(data, action, row, column, parent);
 }
 
-void QFileSystemModel_override_virtual_SupportedDragActions(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__SupportedDragActions = slot;
+bool QFileSystemModel_override_virtual_SupportedDragActions(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SupportedDragActions = slot;
+	return true;
 }
 
 int QFileSystemModel_virtualbase_SupportedDragActions(const void* self) {
 	return ( (const MiqtVirtualQFileSystemModel*)(self) )->virtualbase_SupportedDragActions();
 }
 
-void QFileSystemModel_override_virtual_InsertRows(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__InsertRows = slot;
+bool QFileSystemModel_override_virtual_InsertRows(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InsertRows = slot;
+	return true;
 }
 
 bool QFileSystemModel_virtualbase_InsertRows(void* self, int row, int count, QModelIndex* parent) {
 	return ( (MiqtVirtualQFileSystemModel*)(self) )->virtualbase_InsertRows(row, count, parent);
 }
 
-void QFileSystemModel_override_virtual_InsertColumns(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__InsertColumns = slot;
+bool QFileSystemModel_override_virtual_InsertColumns(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InsertColumns = slot;
+	return true;
 }
 
 bool QFileSystemModel_virtualbase_InsertColumns(void* self, int column, int count, QModelIndex* parent) {
 	return ( (MiqtVirtualQFileSystemModel*)(self) )->virtualbase_InsertColumns(column, count, parent);
 }
 
-void QFileSystemModel_override_virtual_RemoveRows(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__RemoveRows = slot;
+bool QFileSystemModel_override_virtual_RemoveRows(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RemoveRows = slot;
+	return true;
 }
 
 bool QFileSystemModel_virtualbase_RemoveRows(void* self, int row, int count, QModelIndex* parent) {
 	return ( (MiqtVirtualQFileSystemModel*)(self) )->virtualbase_RemoveRows(row, count, parent);
 }
 
-void QFileSystemModel_override_virtual_RemoveColumns(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__RemoveColumns = slot;
+bool QFileSystemModel_override_virtual_RemoveColumns(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RemoveColumns = slot;
+	return true;
 }
 
 bool QFileSystemModel_virtualbase_RemoveColumns(void* self, int column, int count, QModelIndex* parent) {
 	return ( (MiqtVirtualQFileSystemModel*)(self) )->virtualbase_RemoveColumns(column, count, parent);
 }
 
-void QFileSystemModel_override_virtual_MoveRows(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__MoveRows = slot;
+bool QFileSystemModel_override_virtual_MoveRows(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveRows = slot;
+	return true;
 }
 
 bool QFileSystemModel_virtualbase_MoveRows(void* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
 	return ( (MiqtVirtualQFileSystemModel*)(self) )->virtualbase_MoveRows(sourceParent, sourceRow, count, destinationParent, destinationChild);
 }
 
-void QFileSystemModel_override_virtual_MoveColumns(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__MoveColumns = slot;
+bool QFileSystemModel_override_virtual_MoveColumns(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveColumns = slot;
+	return true;
 }
 
 bool QFileSystemModel_virtualbase_MoveColumns(void* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
 	return ( (MiqtVirtualQFileSystemModel*)(self) )->virtualbase_MoveColumns(sourceParent, sourceColumn, count, destinationParent, destinationChild);
 }
 
-void QFileSystemModel_override_virtual_Buddy(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__Buddy = slot;
+bool QFileSystemModel_override_virtual_Buddy(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Buddy = slot;
+	return true;
 }
 
 QModelIndex* QFileSystemModel_virtualbase_Buddy(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQFileSystemModel*)(self) )->virtualbase_Buddy(index);
 }
 
-void QFileSystemModel_override_virtual_Match(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__Match = slot;
+bool QFileSystemModel_override_virtual_Match(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Match = slot;
+	return true;
 }
 
 struct miqt_array /* of QModelIndex* */  QFileSystemModel_virtualbase_Match(const void* self, QModelIndex* start, int role, QVariant* value, int hits, int flags) {
 	return ( (const MiqtVirtualQFileSystemModel*)(self) )->virtualbase_Match(start, role, value, hits, flags);
 }
 
-void QFileSystemModel_override_virtual_Span(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__Span = slot;
+bool QFileSystemModel_override_virtual_Span(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Span = slot;
+	return true;
 }
 
 QSize* QFileSystemModel_virtualbase_Span(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQFileSystemModel*)(self) )->virtualbase_Span(index);
 }
 
-void QFileSystemModel_override_virtual_RoleNames(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__RoleNames = slot;
+bool QFileSystemModel_override_virtual_RoleNames(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RoleNames = slot;
+	return true;
 }
 
 struct miqt_map /* of int to struct miqt_string */  QFileSystemModel_virtualbase_RoleNames(const void* self) {
 	return ( (const MiqtVirtualQFileSystemModel*)(self) )->virtualbase_RoleNames();
 }
 
-void QFileSystemModel_override_virtual_Submit(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__Submit = slot;
+bool QFileSystemModel_override_virtual_Submit(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Submit = slot;
+	return true;
 }
 
 bool QFileSystemModel_virtualbase_Submit(void* self) {
 	return ( (MiqtVirtualQFileSystemModel*)(self) )->virtualbase_Submit();
 }
 
-void QFileSystemModel_override_virtual_Revert(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) )->handle__Revert = slot;
+bool QFileSystemModel_override_virtual_Revert(void* self, intptr_t slot) {
+	MiqtVirtualQFileSystemModel* self_cast = dynamic_cast<MiqtVirtualQFileSystemModel*>( (QFileSystemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Revert = slot;
+	return true;
 }
 
 void QFileSystemModel_virtualbase_Revert(void* self) {
 	( (MiqtVirtualQFileSystemModel*)(self) )->virtualbase_Revert();
 }
 
-void QFileSystemModel_Delete(QFileSystemModel* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQFileSystemModel*>( self );
-	} else {
-		delete self;
-	}
+void QFileSystemModel_Delete(QFileSystemModel* self) {
+	delete self;
 }
 

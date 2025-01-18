@@ -16,8 +16,7 @@ import (
 )
 
 type QsciLexerIDL struct {
-	h          *C.QsciLexerIDL
-	isSubclass bool
+	h *C.QsciLexerIDL
 	*QsciLexerCPP
 }
 
@@ -55,17 +54,13 @@ func UnsafeNewQsciLexerIDL(h unsafe.Pointer) *QsciLexerIDL {
 // NewQsciLexerIDL constructs a new QsciLexerIDL object.
 func NewQsciLexerIDL() *QsciLexerIDL {
 
-	ret := newQsciLexerIDL(C.QsciLexerIDL_new())
-	ret.isSubclass = true
-	return ret
+	return newQsciLexerIDL(C.QsciLexerIDL_new())
 }
 
 // NewQsciLexerIDL2 constructs a new QsciLexerIDL object.
 func NewQsciLexerIDL2(parent *qt6.QObject) *QsciLexerIDL {
 
-	ret := newQsciLexerIDL(C.QsciLexerIDL_new2((*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQsciLexerIDL(C.QsciLexerIDL_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerIDL) MetaObject() *qt6.QMetaObject {
@@ -138,10 +133,10 @@ func (this *QsciLexerIDL) callVirtualBase_SetFoldAtElse(fold bool) {
 
 }
 func (this *QsciLexerIDL) OnSetFoldAtElse(slot func(super func(fold bool), fold bool)) {
-	if !this.isSubclass {
+	ok := C.QsciLexerIDL_override_virtual_SetFoldAtElse(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciLexerIDL_override_virtual_SetFoldAtElse(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerIDL_SetFoldAtElse
@@ -164,10 +159,10 @@ func (this *QsciLexerIDL) callVirtualBase_SetFoldComments(fold bool) {
 
 }
 func (this *QsciLexerIDL) OnSetFoldComments(slot func(super func(fold bool), fold bool)) {
-	if !this.isSubclass {
+	ok := C.QsciLexerIDL_override_virtual_SetFoldComments(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciLexerIDL_override_virtual_SetFoldComments(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerIDL_SetFoldComments
@@ -190,10 +185,10 @@ func (this *QsciLexerIDL) callVirtualBase_SetFoldCompact(fold bool) {
 
 }
 func (this *QsciLexerIDL) OnSetFoldCompact(slot func(super func(fold bool), fold bool)) {
-	if !this.isSubclass {
+	ok := C.QsciLexerIDL_override_virtual_SetFoldCompact(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciLexerIDL_override_virtual_SetFoldCompact(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerIDL_SetFoldCompact
@@ -216,10 +211,10 @@ func (this *QsciLexerIDL) callVirtualBase_SetFoldPreprocessor(fold bool) {
 
 }
 func (this *QsciLexerIDL) OnSetFoldPreprocessor(slot func(super func(fold bool), fold bool)) {
-	if !this.isSubclass {
+	ok := C.QsciLexerIDL_override_virtual_SetFoldPreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciLexerIDL_override_virtual_SetFoldPreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerIDL_SetFoldPreprocessor
@@ -242,10 +237,10 @@ func (this *QsciLexerIDL) callVirtualBase_SetStylePreprocessor(style bool) {
 
 }
 func (this *QsciLexerIDL) OnSetStylePreprocessor(slot func(super func(style bool), style bool)) {
-	if !this.isSubclass {
+	ok := C.QsciLexerIDL_override_virtual_SetStylePreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciLexerIDL_override_virtual_SetStylePreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerIDL_SetStylePreprocessor
@@ -264,7 +259,7 @@ func miqt_exec_callback_QsciLexerIDL_SetStylePreprocessor(self *C.QsciLexerIDL, 
 
 // Delete this object from C++ memory.
 func (this *QsciLexerIDL) Delete() {
-	C.QsciLexerIDL_Delete(this.h, C.bool(this.isSubclass))
+	C.QsciLexerIDL_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

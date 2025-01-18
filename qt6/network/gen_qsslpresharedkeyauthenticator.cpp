@@ -72,11 +72,7 @@ int QSslPreSharedKeyAuthenticator_MaximumPreSharedKeyLength(const QSslPreSharedK
 	return self->maximumPreSharedKeyLength();
 }
 
-void QSslPreSharedKeyAuthenticator_Delete(QSslPreSharedKeyAuthenticator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QSslPreSharedKeyAuthenticator*>( self );
-	} else {
-		delete self;
-	}
+void QSslPreSharedKeyAuthenticator_Delete(QSslPreSharedKeyAuthenticator* self) {
+	delete self;
 }
 

@@ -67,8 +67,7 @@ const (
 )
 
 type QUrl struct {
-	h          *C.QUrl
-	isSubclass bool
+	h *C.QUrl
 }
 
 func (this *QUrl) cPointer() *C.QUrl {
@@ -102,17 +101,13 @@ func UnsafeNewQUrl(h unsafe.Pointer) *QUrl {
 // NewQUrl constructs a new QUrl object.
 func NewQUrl() *QUrl {
 
-	ret := newQUrl(C.QUrl_new())
-	ret.isSubclass = true
-	return ret
+	return newQUrl(C.QUrl_new())
 }
 
 // NewQUrl2 constructs a new QUrl object.
 func NewQUrl2(copyVal *QUrl) *QUrl {
 
-	ret := newQUrl(C.QUrl_new2(copyVal.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQUrl(C.QUrl_new2(copyVal.cPointer()))
 }
 
 // NewQUrl3 constructs a new QUrl object.
@@ -122,9 +117,7 @@ func NewQUrl3(url string) *QUrl {
 	url_ms.len = C.size_t(len(url))
 	defer C.free(unsafe.Pointer(url_ms.data))
 
-	ret := newQUrl(C.QUrl_new3(url_ms))
-	ret.isSubclass = true
-	return ret
+	return newQUrl(C.QUrl_new3(url_ms))
 }
 
 // NewQUrl4 constructs a new QUrl object.
@@ -134,9 +127,7 @@ func NewQUrl4(url string, mode QUrl__ParsingMode) *QUrl {
 	url_ms.len = C.size_t(len(url))
 	defer C.free(unsafe.Pointer(url_ms.data))
 
-	ret := newQUrl(C.QUrl_new4(url_ms, (C.int)(mode)))
-	ret.isSubclass = true
-	return ret
+	return newQUrl(C.QUrl_new4(url_ms, (C.int)(mode)))
 }
 
 func (this *QUrl) OperatorAssign(copyVal *QUrl) {
@@ -808,7 +799,7 @@ func QUrl_FromStringList2(uris []string, mode QUrl__ParsingMode) []QUrl {
 
 // Delete this object from C++ memory.
 func (this *QUrl) Delete() {
-	C.QUrl_Delete(this.h, C.bool(this.isSubclass))
+	C.QUrl_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

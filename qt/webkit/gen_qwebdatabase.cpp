@@ -77,11 +77,7 @@ void QWebDatabase_RemoveAllDatabases() {
 	QWebDatabase::removeAllDatabases();
 }
 
-void QWebDatabase_Delete(QWebDatabase* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebDatabase*>( self );
-	} else {
-		delete self;
-	}
+void QWebDatabase_Delete(QWebDatabase* self) {
+	delete self;
 }
 

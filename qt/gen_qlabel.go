@@ -15,8 +15,7 @@ import (
 )
 
 type QLabel struct {
-	h          *C.QLabel
-	isSubclass bool
+	h *C.QLabel
 	*QFrame
 }
 
@@ -54,17 +53,13 @@ func UnsafeNewQLabel(h unsafe.Pointer) *QLabel {
 // NewQLabel constructs a new QLabel object.
 func NewQLabel(parent *QWidget) *QLabel {
 
-	ret := newQLabel(C.QLabel_new(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQLabel(C.QLabel_new(parent.cPointer()))
 }
 
 // NewQLabel2 constructs a new QLabel object.
 func NewQLabel2() *QLabel {
 
-	ret := newQLabel(C.QLabel_new2())
-	ret.isSubclass = true
-	return ret
+	return newQLabel(C.QLabel_new2())
 }
 
 // NewQLabel3 constructs a new QLabel object.
@@ -74,17 +69,13 @@ func NewQLabel3(text string) *QLabel {
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQLabel(C.QLabel_new3(text_ms))
-	ret.isSubclass = true
-	return ret
+	return newQLabel(C.QLabel_new3(text_ms))
 }
 
 // NewQLabel4 constructs a new QLabel object.
 func NewQLabel4(parent *QWidget, f WindowType) *QLabel {
 
-	ret := newQLabel(C.QLabel_new4(parent.cPointer(), (C.int)(f)))
-	ret.isSubclass = true
-	return ret
+	return newQLabel(C.QLabel_new4(parent.cPointer(), (C.int)(f)))
 }
 
 // NewQLabel5 constructs a new QLabel object.
@@ -94,9 +85,7 @@ func NewQLabel5(text string, parent *QWidget) *QLabel {
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQLabel(C.QLabel_new5(text_ms, parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQLabel(C.QLabel_new5(text_ms, parent.cPointer()))
 }
 
 // NewQLabel6 constructs a new QLabel object.
@@ -106,9 +95,7 @@ func NewQLabel6(text string, parent *QWidget, f WindowType) *QLabel {
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQLabel(C.QLabel_new6(text_ms, parent.cPointer(), (C.int)(f)))
-	ret.isSubclass = true
-	return ret
+	return newQLabel(C.QLabel_new6(text_ms, parent.cPointer(), (C.int)(f)))
 }
 
 func (this *QLabel) MetaObject() *QMetaObject {
@@ -415,10 +402,10 @@ func (this *QLabel) callVirtualBase_SizeHint() *QSize {
 
 }
 func (this *QLabel) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	if !this.isSubclass {
+	ok := C.QLabel_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLabel_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLabel_SizeHint
@@ -442,10 +429,10 @@ func (this *QLabel) callVirtualBase_MinimumSizeHint() *QSize {
 
 }
 func (this *QLabel) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
-	if !this.isSubclass {
+	ok := C.QLabel_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLabel_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLabel_MinimumSizeHint
@@ -467,10 +454,10 @@ func (this *QLabel) callVirtualBase_HeightForWidth(param1 int) int {
 
 }
 func (this *QLabel) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
-	if !this.isSubclass {
+	ok := C.QLabel_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLabel_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLabel_HeightForWidth
@@ -495,10 +482,10 @@ func (this *QLabel) callVirtualBase_Event(e *QEvent) bool {
 
 }
 func (this *QLabel) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QLabel_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLabel_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLabel_Event
@@ -523,10 +510,10 @@ func (this *QLabel) callVirtualBase_KeyPressEvent(ev *QKeyEvent) {
 
 }
 func (this *QLabel) OnKeyPressEvent(slot func(super func(ev *QKeyEvent), ev *QKeyEvent)) {
-	if !this.isSubclass {
+	ok := C.QLabel_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLabel_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLabel_KeyPressEvent
@@ -549,10 +536,10 @@ func (this *QLabel) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
 
 }
 func (this *QLabel) OnPaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
-	if !this.isSubclass {
+	ok := C.QLabel_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLabel_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLabel_PaintEvent
@@ -575,10 +562,10 @@ func (this *QLabel) callVirtualBase_ChangeEvent(param1 *QEvent) {
 
 }
 func (this *QLabel) OnChangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QLabel_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLabel_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLabel_ChangeEvent
@@ -601,10 +588,10 @@ func (this *QLabel) callVirtualBase_MousePressEvent(ev *QMouseEvent) {
 
 }
 func (this *QLabel) OnMousePressEvent(slot func(super func(ev *QMouseEvent), ev *QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QLabel_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLabel_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLabel_MousePressEvent
@@ -627,10 +614,10 @@ func (this *QLabel) callVirtualBase_MouseMoveEvent(ev *QMouseEvent) {
 
 }
 func (this *QLabel) OnMouseMoveEvent(slot func(super func(ev *QMouseEvent), ev *QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QLabel_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLabel_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLabel_MouseMoveEvent
@@ -653,10 +640,10 @@ func (this *QLabel) callVirtualBase_MouseReleaseEvent(ev *QMouseEvent) {
 
 }
 func (this *QLabel) OnMouseReleaseEvent(slot func(super func(ev *QMouseEvent), ev *QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QLabel_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLabel_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLabel_MouseReleaseEvent
@@ -679,10 +666,10 @@ func (this *QLabel) callVirtualBase_ContextMenuEvent(ev *QContextMenuEvent) {
 
 }
 func (this *QLabel) OnContextMenuEvent(slot func(super func(ev *QContextMenuEvent), ev *QContextMenuEvent)) {
-	if !this.isSubclass {
+	ok := C.QLabel_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLabel_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLabel_ContextMenuEvent
@@ -705,10 +692,10 @@ func (this *QLabel) callVirtualBase_FocusInEvent(ev *QFocusEvent) {
 
 }
 func (this *QLabel) OnFocusInEvent(slot func(super func(ev *QFocusEvent), ev *QFocusEvent)) {
-	if !this.isSubclass {
+	ok := C.QLabel_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLabel_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLabel_FocusInEvent
@@ -731,10 +718,10 @@ func (this *QLabel) callVirtualBase_FocusOutEvent(ev *QFocusEvent) {
 
 }
 func (this *QLabel) OnFocusOutEvent(slot func(super func(ev *QFocusEvent), ev *QFocusEvent)) {
-	if !this.isSubclass {
+	ok := C.QLabel_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLabel_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLabel_FocusOutEvent
@@ -757,10 +744,10 @@ func (this *QLabel) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
 }
 func (this *QLabel) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
-	if !this.isSubclass {
+	ok := C.QLabel_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLabel_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLabel_FocusNextPrevChild
@@ -781,7 +768,7 @@ func miqt_exec_callback_QLabel_FocusNextPrevChild(self *C.QLabel, cb C.intptr_t,
 
 // Delete this object from C++ memory.
 func (this *QLabel) Delete() {
-	C.QLabel_Delete(this.h, C.bool(this.isSubclass))
+	C.QLabel_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

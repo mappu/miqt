@@ -71,7 +71,7 @@ bool QJsonValue_ToBool1(const QJsonValue* self, bool defaultValue);
 int QJsonValue_ToInt1(const QJsonValue* self, int defaultValue);
 long long QJsonValue_ToInteger1(const QJsonValue* self, long long defaultValue);
 double QJsonValue_ToDouble1(const QJsonValue* self, double defaultValue);
-void QJsonValue_Delete(QJsonValue* self, bool isSubclass);
+void QJsonValue_Delete(QJsonValue* self);
 
 QJsonValueConstRef* QJsonValueConstRef_new(QJsonValueConstRef* param1);
 QJsonValue* QJsonValueConstRef_ToQJsonValue(const QJsonValueConstRef* self);
@@ -99,7 +99,7 @@ int QJsonValueConstRef_ToInt1(const QJsonValueConstRef* self, int defaultValue);
 long long QJsonValueConstRef_ToInteger1(const QJsonValueConstRef* self, long long defaultValue);
 double QJsonValueConstRef_ToDouble1(const QJsonValueConstRef* self, double defaultValue);
 struct miqt_string QJsonValueConstRef_ToString1(const QJsonValueConstRef* self, struct miqt_string defaultValue);
-void QJsonValueConstRef_Delete(QJsonValueConstRef* self, bool isSubclass);
+void QJsonValueConstRef_Delete(QJsonValueConstRef* self);
 
 QJsonValueRef* QJsonValueRef_new(QJsonValueRef* param1);
 QJsonValueRef* QJsonValueRef_new2(QJsonArray* array, ptrdiff_t idx);
@@ -132,7 +132,7 @@ int QJsonValueRef_ToInt1(const QJsonValueRef* self, int defaultValue);
 long long QJsonValueRef_ToInteger1(const QJsonValueRef* self, long long defaultValue);
 double QJsonValueRef_ToDouble1(const QJsonValueRef* self, double defaultValue);
 struct miqt_string QJsonValueRef_ToString1(const QJsonValueRef* self, struct miqt_string defaultValue);
-void QJsonValueRef_Delete(QJsonValueRef* self, bool isSubclass);
+void QJsonValueRef_Delete(QJsonValueRef* self);
 
 #ifdef __cplusplus
 } /* extern C */

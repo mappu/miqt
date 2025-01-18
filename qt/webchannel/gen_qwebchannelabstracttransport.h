@@ -48,23 +48,23 @@ struct miqt_string QWebChannelAbstractTransport_Tr2(const char* s, const char* c
 struct miqt_string QWebChannelAbstractTransport_Tr3(const char* s, const char* c, int n);
 struct miqt_string QWebChannelAbstractTransport_TrUtf82(const char* s, const char* c);
 struct miqt_string QWebChannelAbstractTransport_TrUtf83(const char* s, const char* c, int n);
-void QWebChannelAbstractTransport_override_virtual_SendMessage(void* self, intptr_t slot);
+bool QWebChannelAbstractTransport_override_virtual_SendMessage(void* self, intptr_t slot);
 void QWebChannelAbstractTransport_virtualbase_SendMessage(void* self, QJsonObject* message);
-void QWebChannelAbstractTransport_override_virtual_Event(void* self, intptr_t slot);
+bool QWebChannelAbstractTransport_override_virtual_Event(void* self, intptr_t slot);
 bool QWebChannelAbstractTransport_virtualbase_Event(void* self, QEvent* event);
-void QWebChannelAbstractTransport_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QWebChannelAbstractTransport_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QWebChannelAbstractTransport_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QWebChannelAbstractTransport_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QWebChannelAbstractTransport_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QWebChannelAbstractTransport_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QWebChannelAbstractTransport_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QWebChannelAbstractTransport_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QWebChannelAbstractTransport_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QWebChannelAbstractTransport_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QWebChannelAbstractTransport_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QWebChannelAbstractTransport_virtualbase_CustomEvent(void* self, QEvent* event);
-void QWebChannelAbstractTransport_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QWebChannelAbstractTransport_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QWebChannelAbstractTransport_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QWebChannelAbstractTransport_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QWebChannelAbstractTransport_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QWebChannelAbstractTransport_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QWebChannelAbstractTransport_Delete(QWebChannelAbstractTransport* self, bool isSubclass);
+void QWebChannelAbstractTransport_Delete(QWebChannelAbstractTransport* self);
 
 #ifdef __cplusplus
 } /* extern C */

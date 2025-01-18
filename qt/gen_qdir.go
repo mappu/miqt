@@ -56,8 +56,7 @@ const (
 )
 
 type QDir struct {
-	h          *C.QDir
-	isSubclass bool
+	h *C.QDir
 }
 
 func (this *QDir) cPointer() *C.QDir {
@@ -91,17 +90,13 @@ func UnsafeNewQDir(h unsafe.Pointer) *QDir {
 // NewQDir constructs a new QDir object.
 func NewQDir(param1 *QDir) *QDir {
 
-	ret := newQDir(C.QDir_new(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQDir(C.QDir_new(param1.cPointer()))
 }
 
 // NewQDir2 constructs a new QDir object.
 func NewQDir2() *QDir {
 
-	ret := newQDir(C.QDir_new2())
-	ret.isSubclass = true
-	return ret
+	return newQDir(C.QDir_new2())
 }
 
 // NewQDir3 constructs a new QDir object.
@@ -115,9 +110,7 @@ func NewQDir3(path string, nameFilter string) *QDir {
 	nameFilter_ms.len = C.size_t(len(nameFilter))
 	defer C.free(unsafe.Pointer(nameFilter_ms.data))
 
-	ret := newQDir(C.QDir_new3(path_ms, nameFilter_ms))
-	ret.isSubclass = true
-	return ret
+	return newQDir(C.QDir_new3(path_ms, nameFilter_ms))
 }
 
 // NewQDir4 constructs a new QDir object.
@@ -127,9 +120,7 @@ func NewQDir4(path string) *QDir {
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
 
-	ret := newQDir(C.QDir_new4(path_ms))
-	ret.isSubclass = true
-	return ret
+	return newQDir(C.QDir_new4(path_ms))
 }
 
 // NewQDir5 constructs a new QDir object.
@@ -143,9 +134,7 @@ func NewQDir5(path string, nameFilter string, sort QDir__SortFlag) *QDir {
 	nameFilter_ms.len = C.size_t(len(nameFilter))
 	defer C.free(unsafe.Pointer(nameFilter_ms.data))
 
-	ret := newQDir(C.QDir_new5(path_ms, nameFilter_ms, (C.int)(sort)))
-	ret.isSubclass = true
-	return ret
+	return newQDir(C.QDir_new5(path_ms, nameFilter_ms, (C.int)(sort)))
 }
 
 // NewQDir6 constructs a new QDir object.
@@ -159,9 +148,7 @@ func NewQDir6(path string, nameFilter string, sort QDir__SortFlag, filter QDir__
 	nameFilter_ms.len = C.size_t(len(nameFilter))
 	defer C.free(unsafe.Pointer(nameFilter_ms.data))
 
-	ret := newQDir(C.QDir_new6(path_ms, nameFilter_ms, (C.int)(sort), (C.int)(filter)))
-	ret.isSubclass = true
-	return ret
+	return newQDir(C.QDir_new6(path_ms, nameFilter_ms, (C.int)(sort), (C.int)(filter)))
 }
 
 func (this *QDir) OperatorAssign(param1 *QDir) {
@@ -870,7 +857,7 @@ func (this *QDir) EntryInfoList3(nameFilters []string, filters QDir__Filter, sor
 
 // Delete this object from C++ memory.
 func (this *QDir) Delete() {
-	C.QDir_Delete(this.h, C.bool(this.isSubclass))
+	C.QDir_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -64,7 +64,7 @@ void QTextInlineObject_SetDescent(QTextInlineObject* self, double d);
 int QTextInlineObject_TextPosition(const QTextInlineObject* self);
 int QTextInlineObject_FormatIndex(const QTextInlineObject* self);
 QTextFormat* QTextInlineObject_Format(const QTextInlineObject* self);
-void QTextInlineObject_Delete(QTextInlineObject* self, bool isSubclass);
+void QTextInlineObject_Delete(QTextInlineObject* self);
 
 QTextLayout* QTextLayout_new();
 QTextLayout* QTextLayout_new2(struct miqt_string text);
@@ -116,7 +116,7 @@ void QTextLayout_Draw3(const QTextLayout* self, QPainter* p, QPointF* pos, struc
 void QTextLayout_Draw4(const QTextLayout* self, QPainter* p, QPointF* pos, struct miqt_array /* of QTextLayout__FormatRange* */  selections, QRectF* clip);
 struct miqt_array /* of QGlyphRun* */  QTextLayout_GlyphRuns1(const QTextLayout* self, int from);
 struct miqt_array /* of QGlyphRun* */  QTextLayout_GlyphRuns2(const QTextLayout* self, int from, int length);
-void QTextLayout_Delete(QTextLayout* self, bool isSubclass);
+void QTextLayout_Delete(QTextLayout* self);
 
 QTextLine* QTextLine_new();
 bool QTextLine_IsValid(const QTextLine* self);
@@ -151,11 +151,11 @@ double QTextLine_CursorToX22(const QTextLine* self, int cursorPos, int edge);
 int QTextLine_XToCursor2(const QTextLine* self, double x, int param2);
 struct miqt_array /* of QGlyphRun* */  QTextLine_GlyphRuns1(const QTextLine* self, int from);
 struct miqt_array /* of QGlyphRun* */  QTextLine_GlyphRuns2(const QTextLine* self, int from, int length);
-void QTextLine_Delete(QTextLine* self, bool isSubclass);
+void QTextLine_Delete(QTextLine* self);
 
 QTextLayout__FormatRange* QTextLayout__FormatRange_new(QTextLayout__FormatRange* param1);
 void QTextLayout__FormatRange_OperatorAssign(QTextLayout__FormatRange* self, QTextLayout__FormatRange* param1);
-void QTextLayout__FormatRange_Delete(QTextLayout__FormatRange* self, bool isSubclass);
+void QTextLayout__FormatRange_Delete(QTextLayout__FormatRange* self);
 
 #ifdef __cplusplus
 } /* extern C */

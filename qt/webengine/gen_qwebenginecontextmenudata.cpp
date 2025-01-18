@@ -116,11 +116,7 @@ int QWebEngineContextMenuData_EditFlags(const QWebEngineContextMenuData* self) {
 	return static_cast<int>(_ret);
 }
 
-void QWebEngineContextMenuData_Delete(QWebEngineContextMenuData* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebEngineContextMenuData*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineContextMenuData_Delete(QWebEngineContextMenuData* self) {
+	delete self;
 }
 

@@ -27,8 +27,7 @@ const (
 )
 
 type QEventLoop struct {
-	h          *C.QEventLoop
-	isSubclass bool
+	h *C.QEventLoop
 	*QObject
 }
 
@@ -66,17 +65,13 @@ func UnsafeNewQEventLoop(h unsafe.Pointer) *QEventLoop {
 // NewQEventLoop constructs a new QEventLoop object.
 func NewQEventLoop() *QEventLoop {
 
-	ret := newQEventLoop(C.QEventLoop_new())
-	ret.isSubclass = true
-	return ret
+	return newQEventLoop(C.QEventLoop_new())
 }
 
 // NewQEventLoop2 constructs a new QEventLoop object.
 func NewQEventLoop2(parent *QObject) *QEventLoop {
 
-	ret := newQEventLoop(C.QEventLoop_new2(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQEventLoop(C.QEventLoop_new2(parent.cPointer()))
 }
 
 func (this *QEventLoop) MetaObject() *QMetaObject {
@@ -201,10 +196,10 @@ func (this *QEventLoop) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QEventLoop) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QEventLoop_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QEventLoop_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QEventLoop_Event
@@ -229,10 +224,10 @@ func (this *QEventLoop) callVirtualBase_EventFilter(watched *QObject, event *QEv
 
 }
 func (this *QEventLoop) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QEventLoop_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QEventLoop_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QEventLoop_EventFilter
@@ -259,10 +254,10 @@ func (this *QEventLoop) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QEventLoop) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QEventLoop_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QEventLoop_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QEventLoop_TimerEvent
@@ -285,10 +280,10 @@ func (this *QEventLoop) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QEventLoop) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QEventLoop_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QEventLoop_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QEventLoop_ChildEvent
@@ -311,10 +306,10 @@ func (this *QEventLoop) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QEventLoop) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QEventLoop_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QEventLoop_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QEventLoop_CustomEvent
@@ -337,10 +332,10 @@ func (this *QEventLoop) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QEventLoop) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QEventLoop_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QEventLoop_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QEventLoop_ConnectNotify
@@ -363,10 +358,10 @@ func (this *QEventLoop) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QEventLoop) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QEventLoop_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QEventLoop_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QEventLoop_DisconnectNotify
@@ -385,7 +380,7 @@ func miqt_exec_callback_QEventLoop_DisconnectNotify(self *C.QEventLoop, cb C.int
 
 // Delete this object from C++ memory.
 func (this *QEventLoop) Delete() {
-	C.QEventLoop_Delete(this.h, C.bool(this.isSubclass))
+	C.QEventLoop_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -398,8 +393,7 @@ func (this *QEventLoop) GoGC() {
 }
 
 type QEventLoopLocker struct {
-	h          *C.QEventLoopLocker
-	isSubclass bool
+	h *C.QEventLoopLocker
 }
 
 func (this *QEventLoopLocker) cPointer() *C.QEventLoopLocker {
@@ -433,30 +427,24 @@ func UnsafeNewQEventLoopLocker(h unsafe.Pointer) *QEventLoopLocker {
 // NewQEventLoopLocker constructs a new QEventLoopLocker object.
 func NewQEventLoopLocker() *QEventLoopLocker {
 
-	ret := newQEventLoopLocker(C.QEventLoopLocker_new())
-	ret.isSubclass = true
-	return ret
+	return newQEventLoopLocker(C.QEventLoopLocker_new())
 }
 
 // NewQEventLoopLocker2 constructs a new QEventLoopLocker object.
 func NewQEventLoopLocker2(loop *QEventLoop) *QEventLoopLocker {
 
-	ret := newQEventLoopLocker(C.QEventLoopLocker_new2(loop.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQEventLoopLocker(C.QEventLoopLocker_new2(loop.cPointer()))
 }
 
 // NewQEventLoopLocker3 constructs a new QEventLoopLocker object.
 func NewQEventLoopLocker3(thread *QThread) *QEventLoopLocker {
 
-	ret := newQEventLoopLocker(C.QEventLoopLocker_new3(thread.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQEventLoopLocker(C.QEventLoopLocker_new3(thread.cPointer()))
 }
 
 // Delete this object from C++ memory.
 func (this *QEventLoopLocker) Delete() {
-	C.QEventLoopLocker_Delete(this.h, C.bool(this.isSubclass))
+	C.QEventLoopLocker_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

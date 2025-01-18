@@ -22,8 +22,7 @@ const (
 )
 
 type QWebEngineHttpRequest struct {
-	h          *C.QWebEngineHttpRequest
-	isSubclass bool
+	h *C.QWebEngineHttpRequest
 }
 
 func (this *QWebEngineHttpRequest) cPointer() *C.QWebEngineHttpRequest {
@@ -57,33 +56,25 @@ func UnsafeNewQWebEngineHttpRequest(h unsafe.Pointer) *QWebEngineHttpRequest {
 // NewQWebEngineHttpRequest constructs a new QWebEngineHttpRequest object.
 func NewQWebEngineHttpRequest() *QWebEngineHttpRequest {
 
-	ret := newQWebEngineHttpRequest(C.QWebEngineHttpRequest_new())
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineHttpRequest(C.QWebEngineHttpRequest_new())
 }
 
 // NewQWebEngineHttpRequest2 constructs a new QWebEngineHttpRequest object.
 func NewQWebEngineHttpRequest2(other *QWebEngineHttpRequest) *QWebEngineHttpRequest {
 
-	ret := newQWebEngineHttpRequest(C.QWebEngineHttpRequest_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineHttpRequest(C.QWebEngineHttpRequest_new2(other.cPointer()))
 }
 
 // NewQWebEngineHttpRequest3 constructs a new QWebEngineHttpRequest object.
 func NewQWebEngineHttpRequest3(url *qt6.QUrl) *QWebEngineHttpRequest {
 
-	ret := newQWebEngineHttpRequest(C.QWebEngineHttpRequest_new3((*C.QUrl)(url.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineHttpRequest(C.QWebEngineHttpRequest_new3((*C.QUrl)(url.UnsafePointer())))
 }
 
 // NewQWebEngineHttpRequest4 constructs a new QWebEngineHttpRequest object.
 func NewQWebEngineHttpRequest4(url *qt6.QUrl, method *QWebEngineHttpRequest__Method) *QWebEngineHttpRequest {
 
-	ret := newQWebEngineHttpRequest(C.QWebEngineHttpRequest_new4((*C.QUrl)(url.UnsafePointer()), (*C.int)(unsafe.Pointer(method))))
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineHttpRequest(C.QWebEngineHttpRequest_new4((*C.QUrl)(url.UnsafePointer()), (*C.int)(unsafe.Pointer(method))))
 }
 
 func (this *QWebEngineHttpRequest) OperatorAssign(other *QWebEngineHttpRequest) {
@@ -212,7 +203,7 @@ func (this *QWebEngineHttpRequest) UnsetHeader(headerName []byte) {
 
 // Delete this object from C++ memory.
 func (this *QWebEngineHttpRequest) Delete() {
-	C.QWebEngineHttpRequest_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebEngineHttpRequest_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

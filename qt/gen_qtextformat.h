@@ -61,7 +61,7 @@ double QTextLength_RawValue(const QTextLength* self);
 bool QTextLength_OperatorEqual(const QTextLength* self, QTextLength* other);
 bool QTextLength_OperatorNotEqual(const QTextLength* self, QTextLength* other);
 QVariant* QTextLength_ToQVariant(const QTextLength* self);
-void QTextLength_Delete(QTextLength* self, bool isSubclass);
+void QTextLength_Delete(QTextLength* self);
 
 QTextFormat* QTextFormat_new();
 QTextFormat* QTextFormat_new2(int typeVal);
@@ -117,7 +117,7 @@ void QTextFormat_ClearBackground(QTextFormat* self);
 void QTextFormat_SetForeground(QTextFormat* self, QBrush* brush);
 QBrush* QTextFormat_Foreground(const QTextFormat* self);
 void QTextFormat_ClearForeground(QTextFormat* self);
-void QTextFormat_Delete(QTextFormat* self, bool isSubclass);
+void QTextFormat_Delete(QTextFormat* self);
 
 QTextCharFormat* QTextCharFormat_new();
 QTextCharFormat* QTextCharFormat_new2(QTextCharFormat* param1);
@@ -187,7 +187,7 @@ int QTextCharFormat_TableCellRowSpan(const QTextCharFormat* self);
 void QTextCharFormat_SetTableCellColumnSpan(QTextCharFormat* self, int tableCellColumnSpan);
 int QTextCharFormat_TableCellColumnSpan(const QTextCharFormat* self);
 void QTextCharFormat_SetFontStyleHint2(QTextCharFormat* self, int hint, int strategy);
-void QTextCharFormat_Delete(QTextCharFormat* self, bool isSubclass);
+void QTextCharFormat_Delete(QTextCharFormat* self);
 
 QTextBlockFormat* QTextBlockFormat_new();
 QTextBlockFormat* QTextBlockFormat_new2(QTextBlockFormat* param1);
@@ -221,7 +221,7 @@ void QTextBlockFormat_SetTabPositions(QTextBlockFormat* self, struct miqt_array 
 struct miqt_array /* of QTextOption__Tab* */  QTextBlockFormat_TabPositions(const QTextBlockFormat* self);
 void QTextBlockFormat_SetMarker(QTextBlockFormat* self, int marker);
 int QTextBlockFormat_Marker(const QTextBlockFormat* self);
-void QTextBlockFormat_Delete(QTextBlockFormat* self, bool isSubclass);
+void QTextBlockFormat_Delete(QTextBlockFormat* self);
 
 QTextListFormat* QTextListFormat_new();
 QTextListFormat* QTextListFormat_new2(QTextListFormat* param1);
@@ -235,7 +235,7 @@ void QTextListFormat_SetNumberPrefix(QTextListFormat* self, struct miqt_string n
 struct miqt_string QTextListFormat_NumberPrefix(const QTextListFormat* self);
 void QTextListFormat_SetNumberSuffix(QTextListFormat* self, struct miqt_string numberSuffix);
 struct miqt_string QTextListFormat_NumberSuffix(const QTextListFormat* self);
-void QTextListFormat_Delete(QTextListFormat* self, bool isSubclass);
+void QTextListFormat_Delete(QTextListFormat* self);
 
 QTextImageFormat* QTextImageFormat_new();
 void QTextImageFormat_virtbase(QTextImageFormat* src, QTextCharFormat** outptr_QTextCharFormat);
@@ -249,7 +249,7 @@ double QTextImageFormat_Height(const QTextImageFormat* self);
 void QTextImageFormat_SetQuality(QTextImageFormat* self);
 int QTextImageFormat_Quality(const QTextImageFormat* self);
 void QTextImageFormat_SetQuality1(QTextImageFormat* self, int quality);
-void QTextImageFormat_Delete(QTextImageFormat* self, bool isSubclass);
+void QTextImageFormat_Delete(QTextImageFormat* self);
 
 QTextFrameFormat* QTextFrameFormat_new();
 QTextFrameFormat* QTextFrameFormat_new2(QTextFrameFormat* param1);
@@ -283,7 +283,7 @@ void QTextFrameFormat_SetHeightWithHeight(QTextFrameFormat* self, QTextLength* h
 QTextLength* QTextFrameFormat_Height(const QTextFrameFormat* self);
 void QTextFrameFormat_SetPageBreakPolicy(QTextFrameFormat* self, int flags);
 int QTextFrameFormat_PageBreakPolicy(const QTextFrameFormat* self);
-void QTextFrameFormat_Delete(QTextFrameFormat* self, bool isSubclass);
+void QTextFrameFormat_Delete(QTextFrameFormat* self);
 
 QTextTableFormat* QTextTableFormat_new();
 void QTextTableFormat_virtbase(QTextTableFormat* src, QTextFrameFormat** outptr_QTextFrameFormat);
@@ -303,7 +303,7 @@ void QTextTableFormat_SetHeaderRowCount(QTextTableFormat* self, int count);
 int QTextTableFormat_HeaderRowCount(const QTextTableFormat* self);
 void QTextTableFormat_SetBorderCollapse(QTextTableFormat* self, bool borderCollapse);
 bool QTextTableFormat_BorderCollapse(const QTextTableFormat* self);
-void QTextTableFormat_Delete(QTextTableFormat* self, bool isSubclass);
+void QTextTableFormat_Delete(QTextTableFormat* self);
 
 QTextTableCellFormat* QTextTableCellFormat_new();
 void QTextTableCellFormat_virtbase(QTextTableCellFormat* src, QTextCharFormat** outptr_QTextCharFormat);
@@ -344,7 +344,7 @@ QBrush* QTextTableCellFormat_LeftBorderBrush(const QTextTableCellFormat* self);
 void QTextTableCellFormat_SetRightBorderBrush(QTextTableCellFormat* self, QBrush* brush);
 QBrush* QTextTableCellFormat_RightBorderBrush(const QTextTableCellFormat* self);
 void QTextTableCellFormat_SetBorderBrush(QTextTableCellFormat* self, QBrush* brush);
-void QTextTableCellFormat_Delete(QTextTableCellFormat* self, bool isSubclass);
+void QTextTableCellFormat_Delete(QTextTableCellFormat* self);
 
 #ifdef __cplusplus
 } /* extern C */

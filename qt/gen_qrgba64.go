@@ -14,8 +14,7 @@ import (
 )
 
 type QRgba64 struct {
-	h          *C.QRgba64
-	isSubclass bool
+	h *C.QRgba64
 }
 
 func (this *QRgba64) cPointer() *C.QRgba64 {
@@ -49,17 +48,13 @@ func UnsafeNewQRgba64(h unsafe.Pointer) *QRgba64 {
 // NewQRgba64 constructs a new QRgba64 object.
 func NewQRgba64() *QRgba64 {
 
-	ret := newQRgba64(C.QRgba64_new())
-	ret.isSubclass = true
-	return ret
+	return newQRgba64(C.QRgba64_new())
 }
 
 // NewQRgba642 constructs a new QRgba64 object.
 func NewQRgba642(param1 *QRgba64) *QRgba64 {
 
-	ret := newQRgba64(C.QRgba64_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQRgba64(C.QRgba64_new2(param1.cPointer()))
 }
 
 func QRgba64_FromRgba64(c uint64) *QRgba64 {
@@ -172,7 +167,7 @@ func (this *QRgba64) OperatorAssign(_rgba uint64) {
 
 // Delete this object from C++ memory.
 func (this *QRgba64) Delete() {
-	C.QRgba64_Delete(this.h, C.bool(this.isSubclass))
+	C.QRgba64_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

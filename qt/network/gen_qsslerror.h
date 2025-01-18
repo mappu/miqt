@@ -33,7 +33,7 @@ bool QSslError_OperatorNotEqual(const QSslError* self, QSslError* other);
 int QSslError_Error(const QSslError* self);
 struct miqt_string QSslError_ErrorString(const QSslError* self);
 QSslCertificate* QSslError_Certificate(const QSslError* self);
-void QSslError_Delete(QSslError* self, bool isSubclass);
+void QSslError_Delete(QSslError* self);
 
 #ifdef __cplusplus
 } /* extern C */

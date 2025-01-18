@@ -148,8 +148,7 @@ const (
 )
 
 type QMetaType struct {
-	h          *C.QMetaType
-	isSubclass bool
+	h *C.QMetaType
 }
 
 func (this *QMetaType) cPointer() *C.QMetaType {
@@ -183,17 +182,13 @@ func UnsafeNewQMetaType(h unsafe.Pointer) *QMetaType {
 // NewQMetaType constructs a new QMetaType object.
 func NewQMetaType() *QMetaType {
 
-	ret := newQMetaType(C.QMetaType_new())
-	ret.isSubclass = true
-	return ret
+	return newQMetaType(C.QMetaType_new())
 }
 
 // NewQMetaType2 constructs a new QMetaType object.
 func NewQMetaType2(typeVal int) *QMetaType {
 
-	ret := newQMetaType(C.QMetaType_new2((C.int)(typeVal)))
-	ret.isSubclass = true
-	return ret
+	return newQMetaType(C.QMetaType_new2((C.int)(typeVal)))
 }
 
 func QMetaType_UnregisterType(typeVal int) bool {
@@ -360,7 +355,7 @@ func (this *QMetaType) Construct2(where unsafe.Pointer, copyVal unsafe.Pointer) 
 
 // Delete this object from C++ memory.
 func (this *QMetaType) Delete() {
-	C.QMetaType_Delete(this.h, C.bool(this.isSubclass))
+	C.QMetaType_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

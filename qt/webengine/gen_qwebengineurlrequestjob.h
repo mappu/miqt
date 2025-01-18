@@ -43,7 +43,7 @@ struct miqt_string QWebEngineUrlRequestJob_Tr2(const char* s, const char* c);
 struct miqt_string QWebEngineUrlRequestJob_Tr3(const char* s, const char* c, int n);
 struct miqt_string QWebEngineUrlRequestJob_TrUtf82(const char* s, const char* c);
 struct miqt_string QWebEngineUrlRequestJob_TrUtf83(const char* s, const char* c, int n);
-void QWebEngineUrlRequestJob_Delete(QWebEngineUrlRequestJob* self, bool isSubclass);
+void QWebEngineUrlRequestJob_Delete(QWebEngineUrlRequestJob* self);
 
 #ifdef __cplusplus
 } /* extern C */

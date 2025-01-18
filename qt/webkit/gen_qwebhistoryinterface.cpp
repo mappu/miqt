@@ -28,13 +28,13 @@ void miqt_exec_callback_QWebHistoryInterface_DisconnectNotify(void*, intptr_t, Q
 } /* extern C */
 #endif
 
-class MiqtVirtualQWebHistoryInterface : public virtual QWebHistoryInterface {
+class MiqtVirtualQWebHistoryInterface final : public QWebHistoryInterface {
 public:
 
 	MiqtVirtualQWebHistoryInterface(): QWebHistoryInterface() {};
 	MiqtVirtualQWebHistoryInterface(QObject* parent): QWebHistoryInterface(parent) {};
 
-	virtual ~MiqtVirtualQWebHistoryInterface() = default;
+	virtual ~MiqtVirtualQWebHistoryInterface() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__HistoryContains = 0;
@@ -359,75 +359,125 @@ struct miqt_string QWebHistoryInterface_TrUtf83(const char* s, const char* c, in
 	return _ms;
 }
 
-void QWebHistoryInterface_override_virtual_HistoryContains(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebHistoryInterface*>( (QWebHistoryInterface*)(self) )->handle__HistoryContains = slot;
+bool QWebHistoryInterface_override_virtual_HistoryContains(void* self, intptr_t slot) {
+	MiqtVirtualQWebHistoryInterface* self_cast = dynamic_cast<MiqtVirtualQWebHistoryInterface*>( (QWebHistoryInterface*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HistoryContains = slot;
+	return true;
 }
 
-void QWebHistoryInterface_override_virtual_AddHistoryEntry(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebHistoryInterface*>( (QWebHistoryInterface*)(self) )->handle__AddHistoryEntry = slot;
+bool QWebHistoryInterface_override_virtual_AddHistoryEntry(void* self, intptr_t slot) {
+	MiqtVirtualQWebHistoryInterface* self_cast = dynamic_cast<MiqtVirtualQWebHistoryInterface*>( (QWebHistoryInterface*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__AddHistoryEntry = slot;
+	return true;
 }
 
-void QWebHistoryInterface_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebHistoryInterface*>( (QWebHistoryInterface*)(self) )->handle__Event = slot;
+bool QWebHistoryInterface_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQWebHistoryInterface* self_cast = dynamic_cast<MiqtVirtualQWebHistoryInterface*>( (QWebHistoryInterface*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QWebHistoryInterface_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQWebHistoryInterface*)(self) )->virtualbase_Event(event);
 }
 
-void QWebHistoryInterface_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebHistoryInterface*>( (QWebHistoryInterface*)(self) )->handle__EventFilter = slot;
+bool QWebHistoryInterface_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQWebHistoryInterface* self_cast = dynamic_cast<MiqtVirtualQWebHistoryInterface*>( (QWebHistoryInterface*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QWebHistoryInterface_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQWebHistoryInterface*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QWebHistoryInterface_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebHistoryInterface*>( (QWebHistoryInterface*)(self) )->handle__TimerEvent = slot;
+bool QWebHistoryInterface_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebHistoryInterface* self_cast = dynamic_cast<MiqtVirtualQWebHistoryInterface*>( (QWebHistoryInterface*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QWebHistoryInterface_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQWebHistoryInterface*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QWebHistoryInterface_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebHistoryInterface*>( (QWebHistoryInterface*)(self) )->handle__ChildEvent = slot;
+bool QWebHistoryInterface_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebHistoryInterface* self_cast = dynamic_cast<MiqtVirtualQWebHistoryInterface*>( (QWebHistoryInterface*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QWebHistoryInterface_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQWebHistoryInterface*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QWebHistoryInterface_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebHistoryInterface*>( (QWebHistoryInterface*)(self) )->handle__CustomEvent = slot;
+bool QWebHistoryInterface_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebHistoryInterface* self_cast = dynamic_cast<MiqtVirtualQWebHistoryInterface*>( (QWebHistoryInterface*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QWebHistoryInterface_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQWebHistoryInterface*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QWebHistoryInterface_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebHistoryInterface*>( (QWebHistoryInterface*)(self) )->handle__ConnectNotify = slot;
+bool QWebHistoryInterface_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQWebHistoryInterface* self_cast = dynamic_cast<MiqtVirtualQWebHistoryInterface*>( (QWebHistoryInterface*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QWebHistoryInterface_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWebHistoryInterface*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QWebHistoryInterface_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebHistoryInterface*>( (QWebHistoryInterface*)(self) )->handle__DisconnectNotify = slot;
+bool QWebHistoryInterface_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQWebHistoryInterface* self_cast = dynamic_cast<MiqtVirtualQWebHistoryInterface*>( (QWebHistoryInterface*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QWebHistoryInterface_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWebHistoryInterface*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QWebHistoryInterface_Delete(QWebHistoryInterface* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQWebHistoryInterface*>( self );
-	} else {
-		delete self;
-	}
+void QWebHistoryInterface_Delete(QWebHistoryInterface* self) {
+	delete self;
 }
 

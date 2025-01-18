@@ -47,7 +47,7 @@ void QWebEngineNotification_Closed(QWebEngineNotification* self);
 void QWebEngineNotification_connect_Closed(QWebEngineNotification* self, intptr_t slot);
 struct miqt_string QWebEngineNotification_Tr2(const char* s, const char* c);
 struct miqt_string QWebEngineNotification_Tr3(const char* s, const char* c, int n);
-void QWebEngineNotification_Delete(QWebEngineNotification* self, bool isSubclass);
+void QWebEngineNotification_Delete(QWebEngineNotification* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -39,7 +39,7 @@ void QQmlWebChannel_ConnectTo(QQmlWebChannel* self, QObject* transport);
 void QQmlWebChannel_DisconnectFrom(QQmlWebChannel* self, QObject* transport);
 struct miqt_string QQmlWebChannel_Tr2(const char* s, const char* c);
 struct miqt_string QQmlWebChannel_Tr3(const char* s, const char* c, int n);
-void QQmlWebChannel_Delete(QQmlWebChannel* self, bool isSubclass);
+void QQmlWebChannel_Delete(QQmlWebChannel* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -119,11 +119,7 @@ int QSslCipher_Protocol(const QSslCipher* self) {
 	return static_cast<int>(_ret);
 }
 
-void QSslCipher_Delete(QSslCipher* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QSslCipher*>( self );
-	} else {
-		delete self;
-	}
+void QSslCipher_Delete(QSslCipher* self) {
+	delete self;
 }
 

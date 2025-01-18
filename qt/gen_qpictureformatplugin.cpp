@@ -30,13 +30,13 @@ void miqt_exec_callback_QPictureFormatPlugin_DisconnectNotify(void*, intptr_t, Q
 } /* extern C */
 #endif
 
-class MiqtVirtualQPictureFormatPlugin : public virtual QPictureFormatPlugin {
+class MiqtVirtualQPictureFormatPlugin final : public QPictureFormatPlugin {
 public:
 
 	MiqtVirtualQPictureFormatPlugin(): QPictureFormatPlugin() {};
 	MiqtVirtualQPictureFormatPlugin(QObject* parent): QPictureFormatPlugin(parent) {};
 
-	virtual ~MiqtVirtualQPictureFormatPlugin() = default;
+	virtual ~MiqtVirtualQPictureFormatPlugin() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__LoadPicture = 0;
@@ -421,87 +421,143 @@ struct miqt_string QPictureFormatPlugin_TrUtf83(const char* s, const char* c, in
 	return _ms;
 }
 
-void QPictureFormatPlugin_override_virtual_LoadPicture(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPictureFormatPlugin*>( (QPictureFormatPlugin*)(self) )->handle__LoadPicture = slot;
+bool QPictureFormatPlugin_override_virtual_LoadPicture(void* self, intptr_t slot) {
+	MiqtVirtualQPictureFormatPlugin* self_cast = dynamic_cast<MiqtVirtualQPictureFormatPlugin*>( (QPictureFormatPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__LoadPicture = slot;
+	return true;
 }
 
 bool QPictureFormatPlugin_virtualbase_LoadPicture(void* self, struct miqt_string format, struct miqt_string filename, QPicture* pic) {
 	return ( (MiqtVirtualQPictureFormatPlugin*)(self) )->virtualbase_LoadPicture(format, filename, pic);
 }
 
-void QPictureFormatPlugin_override_virtual_SavePicture(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPictureFormatPlugin*>( (QPictureFormatPlugin*)(self) )->handle__SavePicture = slot;
+bool QPictureFormatPlugin_override_virtual_SavePicture(void* self, intptr_t slot) {
+	MiqtVirtualQPictureFormatPlugin* self_cast = dynamic_cast<MiqtVirtualQPictureFormatPlugin*>( (QPictureFormatPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SavePicture = slot;
+	return true;
 }
 
 bool QPictureFormatPlugin_virtualbase_SavePicture(void* self, struct miqt_string format, struct miqt_string filename, QPicture* pic) {
 	return ( (MiqtVirtualQPictureFormatPlugin*)(self) )->virtualbase_SavePicture(format, filename, pic);
 }
 
-void QPictureFormatPlugin_override_virtual_InstallIOHandler(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPictureFormatPlugin*>( (QPictureFormatPlugin*)(self) )->handle__InstallIOHandler = slot;
+bool QPictureFormatPlugin_override_virtual_InstallIOHandler(void* self, intptr_t slot) {
+	MiqtVirtualQPictureFormatPlugin* self_cast = dynamic_cast<MiqtVirtualQPictureFormatPlugin*>( (QPictureFormatPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InstallIOHandler = slot;
+	return true;
 }
 
-void QPictureFormatPlugin_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPictureFormatPlugin*>( (QPictureFormatPlugin*)(self) )->handle__Event = slot;
+bool QPictureFormatPlugin_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQPictureFormatPlugin* self_cast = dynamic_cast<MiqtVirtualQPictureFormatPlugin*>( (QPictureFormatPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QPictureFormatPlugin_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQPictureFormatPlugin*)(self) )->virtualbase_Event(event);
 }
 
-void QPictureFormatPlugin_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPictureFormatPlugin*>( (QPictureFormatPlugin*)(self) )->handle__EventFilter = slot;
+bool QPictureFormatPlugin_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQPictureFormatPlugin* self_cast = dynamic_cast<MiqtVirtualQPictureFormatPlugin*>( (QPictureFormatPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QPictureFormatPlugin_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQPictureFormatPlugin*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QPictureFormatPlugin_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPictureFormatPlugin*>( (QPictureFormatPlugin*)(self) )->handle__TimerEvent = slot;
+bool QPictureFormatPlugin_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPictureFormatPlugin* self_cast = dynamic_cast<MiqtVirtualQPictureFormatPlugin*>( (QPictureFormatPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QPictureFormatPlugin_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQPictureFormatPlugin*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QPictureFormatPlugin_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPictureFormatPlugin*>( (QPictureFormatPlugin*)(self) )->handle__ChildEvent = slot;
+bool QPictureFormatPlugin_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPictureFormatPlugin* self_cast = dynamic_cast<MiqtVirtualQPictureFormatPlugin*>( (QPictureFormatPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QPictureFormatPlugin_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQPictureFormatPlugin*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QPictureFormatPlugin_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPictureFormatPlugin*>( (QPictureFormatPlugin*)(self) )->handle__CustomEvent = slot;
+bool QPictureFormatPlugin_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPictureFormatPlugin* self_cast = dynamic_cast<MiqtVirtualQPictureFormatPlugin*>( (QPictureFormatPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QPictureFormatPlugin_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQPictureFormatPlugin*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QPictureFormatPlugin_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPictureFormatPlugin*>( (QPictureFormatPlugin*)(self) )->handle__ConnectNotify = slot;
+bool QPictureFormatPlugin_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQPictureFormatPlugin* self_cast = dynamic_cast<MiqtVirtualQPictureFormatPlugin*>( (QPictureFormatPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QPictureFormatPlugin_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQPictureFormatPlugin*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QPictureFormatPlugin_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPictureFormatPlugin*>( (QPictureFormatPlugin*)(self) )->handle__DisconnectNotify = slot;
+bool QPictureFormatPlugin_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQPictureFormatPlugin* self_cast = dynamic_cast<MiqtVirtualQPictureFormatPlugin*>( (QPictureFormatPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QPictureFormatPlugin_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQPictureFormatPlugin*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QPictureFormatPlugin_Delete(QPictureFormatPlugin* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQPictureFormatPlugin*>( self );
-	} else {
-		delete self;
-	}
+void QPictureFormatPlugin_Delete(QPictureFormatPlugin* self) {
+	delete self;
 }
 

@@ -16,8 +16,7 @@ import (
 )
 
 type QAbstractAudioDeviceInfo struct {
-	h          *C.QAbstractAudioDeviceInfo
-	isSubclass bool
+	h *C.QAbstractAudioDeviceInfo
 	*qt.QObject
 }
 
@@ -206,7 +205,7 @@ func QAbstractAudioDeviceInfo_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QAbstractAudioDeviceInfo) Delete() {
-	C.QAbstractAudioDeviceInfo_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractAudioDeviceInfo_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -219,8 +218,7 @@ func (this *QAbstractAudioDeviceInfo) GoGC() {
 }
 
 type QAbstractAudioOutput struct {
-	h          *C.QAbstractAudioOutput
-	isSubclass bool
+	h *C.QAbstractAudioOutput
 	*qt.QObject
 }
 
@@ -483,7 +481,7 @@ func QAbstractAudioOutput_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QAbstractAudioOutput) Delete() {
-	C.QAbstractAudioOutput_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractAudioOutput_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -496,8 +494,7 @@ func (this *QAbstractAudioOutput) GoGC() {
 }
 
 type QAbstractAudioInput struct {
-	h          *C.QAbstractAudioInput
-	isSubclass bool
+	h *C.QAbstractAudioInput
 	*qt.QObject
 }
 
@@ -745,7 +742,7 @@ func QAbstractAudioInput_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QAbstractAudioInput) Delete() {
-	C.QAbstractAudioInput_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractAudioInput_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

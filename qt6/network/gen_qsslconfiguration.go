@@ -23,8 +23,7 @@ const (
 )
 
 type QSslConfiguration struct {
-	h          *C.QSslConfiguration
-	isSubclass bool
+	h *C.QSslConfiguration
 }
 
 func (this *QSslConfiguration) cPointer() *C.QSslConfiguration {
@@ -58,17 +57,13 @@ func UnsafeNewQSslConfiguration(h unsafe.Pointer) *QSslConfiguration {
 // NewQSslConfiguration constructs a new QSslConfiguration object.
 func NewQSslConfiguration() *QSslConfiguration {
 
-	ret := newQSslConfiguration(C.QSslConfiguration_new())
-	ret.isSubclass = true
-	return ret
+	return newQSslConfiguration(C.QSslConfiguration_new())
 }
 
 // NewQSslConfiguration2 constructs a new QSslConfiguration object.
 func NewQSslConfiguration2(other *QSslConfiguration) *QSslConfiguration {
 
-	ret := newQSslConfiguration(C.QSslConfiguration_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSslConfiguration(C.QSslConfiguration_new2(other.cPointer()))
 }
 
 func (this *QSslConfiguration) OperatorAssign(other *QSslConfiguration) {
@@ -491,7 +486,7 @@ func (this *QSslConfiguration) AddCaCertificates3(path string, format QSsl__Enco
 
 // Delete this object from C++ memory.
 func (this *QSslConfiguration) Delete() {
-	C.QSslConfiguration_Delete(this.h, C.bool(this.isSubclass))
+	C.QSslConfiguration_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

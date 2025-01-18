@@ -160,12 +160,8 @@ QWebFrame* QWebHitTestResult_Frame(const QWebHitTestResult* self) {
 	return self->frame();
 }
 
-void QWebHitTestResult_Delete(QWebHitTestResult* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebHitTestResult*>( self );
-	} else {
-		delete self;
-	}
+void QWebHitTestResult_Delete(QWebHitTestResult* self) {
+	delete self;
 }
 
 void QWebFrame_virtbase(QWebFrame* src, QObject** outptr_QObject) {

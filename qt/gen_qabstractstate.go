@@ -15,8 +15,7 @@ import (
 )
 
 type QAbstractState struct {
-	h          *C.QAbstractState
-	isSubclass bool
+	h *C.QAbstractState
 	*QObject
 }
 
@@ -157,7 +156,7 @@ func QAbstractState_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QAbstractState) Delete() {
-	C.QAbstractState_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractState_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

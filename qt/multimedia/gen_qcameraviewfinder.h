@@ -61,25 +61,25 @@ struct miqt_string QCameraViewfinder_Tr2(const char* s, const char* c);
 struct miqt_string QCameraViewfinder_Tr3(const char* s, const char* c, int n);
 struct miqt_string QCameraViewfinder_TrUtf82(const char* s, const char* c);
 struct miqt_string QCameraViewfinder_TrUtf83(const char* s, const char* c, int n);
-void QCameraViewfinder_override_virtual_MediaObject(void* self, intptr_t slot);
+bool QCameraViewfinder_override_virtual_MediaObject(void* self, intptr_t slot);
 QMediaObject* QCameraViewfinder_virtualbase_MediaObject(const void* self);
-void QCameraViewfinder_override_virtual_SetMediaObject(void* self, intptr_t slot);
+bool QCameraViewfinder_override_virtual_SetMediaObject(void* self, intptr_t slot);
 bool QCameraViewfinder_virtualbase_SetMediaObject(void* self, QMediaObject* object);
-void QCameraViewfinder_override_virtual_SizeHint(void* self, intptr_t slot);
+bool QCameraViewfinder_override_virtual_SizeHint(void* self, intptr_t slot);
 QSize* QCameraViewfinder_virtualbase_SizeHint(const void* self);
-void QCameraViewfinder_override_virtual_Event(void* self, intptr_t slot);
+bool QCameraViewfinder_override_virtual_Event(void* self, intptr_t slot);
 bool QCameraViewfinder_virtualbase_Event(void* self, QEvent* event);
-void QCameraViewfinder_override_virtual_ShowEvent(void* self, intptr_t slot);
+bool QCameraViewfinder_override_virtual_ShowEvent(void* self, intptr_t slot);
 void QCameraViewfinder_virtualbase_ShowEvent(void* self, QShowEvent* event);
-void QCameraViewfinder_override_virtual_HideEvent(void* self, intptr_t slot);
+bool QCameraViewfinder_override_virtual_HideEvent(void* self, intptr_t slot);
 void QCameraViewfinder_virtualbase_HideEvent(void* self, QHideEvent* event);
-void QCameraViewfinder_override_virtual_ResizeEvent(void* self, intptr_t slot);
+bool QCameraViewfinder_override_virtual_ResizeEvent(void* self, intptr_t slot);
 void QCameraViewfinder_virtualbase_ResizeEvent(void* self, QResizeEvent* event);
-void QCameraViewfinder_override_virtual_MoveEvent(void* self, intptr_t slot);
+bool QCameraViewfinder_override_virtual_MoveEvent(void* self, intptr_t slot);
 void QCameraViewfinder_virtualbase_MoveEvent(void* self, QMoveEvent* event);
-void QCameraViewfinder_override_virtual_PaintEvent(void* self, intptr_t slot);
+bool QCameraViewfinder_override_virtual_PaintEvent(void* self, intptr_t slot);
 void QCameraViewfinder_virtualbase_PaintEvent(void* self, QPaintEvent* event);
-void QCameraViewfinder_Delete(QCameraViewfinder* self, bool isSubclass);
+void QCameraViewfinder_Delete(QCameraViewfinder* self);
 
 #ifdef __cplusplus
 } /* extern C */

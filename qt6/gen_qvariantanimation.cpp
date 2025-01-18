@@ -29,13 +29,13 @@ void miqt_exec_callback_QVariantAnimation_UpdateDirection(void*, intptr_t, int);
 } /* extern C */
 #endif
 
-class MiqtVirtualQVariantAnimation : public virtual QVariantAnimation {
+class MiqtVirtualQVariantAnimation final : public QVariantAnimation {
 public:
 
 	MiqtVirtualQVariantAnimation(): QVariantAnimation() {};
 	MiqtVirtualQVariantAnimation(QObject* parent): QVariantAnimation(parent) {};
 
-	virtual ~MiqtVirtualQVariantAnimation() = default;
+	virtual ~MiqtVirtualQVariantAnimation() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Duration = 0;
@@ -364,67 +364,105 @@ struct miqt_string QVariantAnimation_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QVariantAnimation_override_virtual_Duration(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQVariantAnimation*>( (QVariantAnimation*)(self) )->handle__Duration = slot;
+bool QVariantAnimation_override_virtual_Duration(void* self, intptr_t slot) {
+	MiqtVirtualQVariantAnimation* self_cast = dynamic_cast<MiqtVirtualQVariantAnimation*>( (QVariantAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Duration = slot;
+	return true;
 }
 
 int QVariantAnimation_virtualbase_Duration(const void* self) {
 	return ( (const MiqtVirtualQVariantAnimation*)(self) )->virtualbase_Duration();
 }
 
-void QVariantAnimation_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQVariantAnimation*>( (QVariantAnimation*)(self) )->handle__Event = slot;
+bool QVariantAnimation_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQVariantAnimation* self_cast = dynamic_cast<MiqtVirtualQVariantAnimation*>( (QVariantAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QVariantAnimation_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQVariantAnimation*)(self) )->virtualbase_Event(event);
 }
 
-void QVariantAnimation_override_virtual_UpdateCurrentTime(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQVariantAnimation*>( (QVariantAnimation*)(self) )->handle__UpdateCurrentTime = slot;
+bool QVariantAnimation_override_virtual_UpdateCurrentTime(void* self, intptr_t slot) {
+	MiqtVirtualQVariantAnimation* self_cast = dynamic_cast<MiqtVirtualQVariantAnimation*>( (QVariantAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateCurrentTime = slot;
+	return true;
 }
 
 void QVariantAnimation_virtualbase_UpdateCurrentTime(void* self, int param1) {
 	( (MiqtVirtualQVariantAnimation*)(self) )->virtualbase_UpdateCurrentTime(param1);
 }
 
-void QVariantAnimation_override_virtual_UpdateState(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQVariantAnimation*>( (QVariantAnimation*)(self) )->handle__UpdateState = slot;
+bool QVariantAnimation_override_virtual_UpdateState(void* self, intptr_t slot) {
+	MiqtVirtualQVariantAnimation* self_cast = dynamic_cast<MiqtVirtualQVariantAnimation*>( (QVariantAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateState = slot;
+	return true;
 }
 
 void QVariantAnimation_virtualbase_UpdateState(void* self, int newState, int oldState) {
 	( (MiqtVirtualQVariantAnimation*)(self) )->virtualbase_UpdateState(newState, oldState);
 }
 
-void QVariantAnimation_override_virtual_UpdateCurrentValue(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQVariantAnimation*>( (QVariantAnimation*)(self) )->handle__UpdateCurrentValue = slot;
+bool QVariantAnimation_override_virtual_UpdateCurrentValue(void* self, intptr_t slot) {
+	MiqtVirtualQVariantAnimation* self_cast = dynamic_cast<MiqtVirtualQVariantAnimation*>( (QVariantAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateCurrentValue = slot;
+	return true;
 }
 
 void QVariantAnimation_virtualbase_UpdateCurrentValue(void* self, QVariant* value) {
 	( (MiqtVirtualQVariantAnimation*)(self) )->virtualbase_UpdateCurrentValue(value);
 }
 
-void QVariantAnimation_override_virtual_Interpolated(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQVariantAnimation*>( (QVariantAnimation*)(self) )->handle__Interpolated = slot;
+bool QVariantAnimation_override_virtual_Interpolated(void* self, intptr_t slot) {
+	MiqtVirtualQVariantAnimation* self_cast = dynamic_cast<MiqtVirtualQVariantAnimation*>( (QVariantAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Interpolated = slot;
+	return true;
 }
 
 QVariant* QVariantAnimation_virtualbase_Interpolated(const void* self, QVariant* from, QVariant* to, double progress) {
 	return ( (const MiqtVirtualQVariantAnimation*)(self) )->virtualbase_Interpolated(from, to, progress);
 }
 
-void QVariantAnimation_override_virtual_UpdateDirection(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQVariantAnimation*>( (QVariantAnimation*)(self) )->handle__UpdateDirection = slot;
+bool QVariantAnimation_override_virtual_UpdateDirection(void* self, intptr_t slot) {
+	MiqtVirtualQVariantAnimation* self_cast = dynamic_cast<MiqtVirtualQVariantAnimation*>( (QVariantAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateDirection = slot;
+	return true;
 }
 
 void QVariantAnimation_virtualbase_UpdateDirection(void* self, int direction) {
 	( (MiqtVirtualQVariantAnimation*)(self) )->virtualbase_UpdateDirection(direction);
 }
 
-void QVariantAnimation_Delete(QVariantAnimation* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQVariantAnimation*>( self );
-	} else {
-		delete self;
-	}
+void QVariantAnimation_Delete(QVariantAnimation* self) {
+	delete self;
 }
 

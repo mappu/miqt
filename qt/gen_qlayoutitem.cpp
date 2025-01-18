@@ -74,14 +74,14 @@ int miqt_exec_callback_QWidgetItemV2_ControlTypes(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQLayoutItem : public virtual QLayoutItem {
+class MiqtVirtualQLayoutItem final : public QLayoutItem {
 public:
 
 	MiqtVirtualQLayoutItem(): QLayoutItem() {};
 	MiqtVirtualQLayoutItem(const QLayoutItem& param1): QLayoutItem(param1) {};
 	MiqtVirtualQLayoutItem(Qt::Alignment alignment): QLayoutItem(alignment) {};
 
-	virtual ~MiqtVirtualQLayoutItem() = default;
+	virtual ~MiqtVirtualQLayoutItem() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -456,107 +456,193 @@ int QLayoutItem_ControlTypes(const QLayoutItem* self) {
 	return static_cast<int>(_ret);
 }
 
-void QLayoutItem_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) )->handle__SizeHint = slot;
+bool QLayoutItem_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQLayoutItem* self_cast = dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
-void QLayoutItem_override_virtual_MinimumSize(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) )->handle__MinimumSize = slot;
+bool QLayoutItem_override_virtual_MinimumSize(void* self, intptr_t slot) {
+	MiqtVirtualQLayoutItem* self_cast = dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSize = slot;
+	return true;
 }
 
-void QLayoutItem_override_virtual_MaximumSize(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) )->handle__MaximumSize = slot;
+bool QLayoutItem_override_virtual_MaximumSize(void* self, intptr_t slot) {
+	MiqtVirtualQLayoutItem* self_cast = dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MaximumSize = slot;
+	return true;
 }
 
-void QLayoutItem_override_virtual_ExpandingDirections(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) )->handle__ExpandingDirections = slot;
+bool QLayoutItem_override_virtual_ExpandingDirections(void* self, intptr_t slot) {
+	MiqtVirtualQLayoutItem* self_cast = dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ExpandingDirections = slot;
+	return true;
 }
 
-void QLayoutItem_override_virtual_SetGeometry(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) )->handle__SetGeometry = slot;
+bool QLayoutItem_override_virtual_SetGeometry(void* self, intptr_t slot) {
+	MiqtVirtualQLayoutItem* self_cast = dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetGeometry = slot;
+	return true;
 }
 
-void QLayoutItem_override_virtual_Geometry(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) )->handle__Geometry = slot;
+bool QLayoutItem_override_virtual_Geometry(void* self, intptr_t slot) {
+	MiqtVirtualQLayoutItem* self_cast = dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Geometry = slot;
+	return true;
 }
 
-void QLayoutItem_override_virtual_IsEmpty(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) )->handle__IsEmpty = slot;
+bool QLayoutItem_override_virtual_IsEmpty(void* self, intptr_t slot) {
+	MiqtVirtualQLayoutItem* self_cast = dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsEmpty = slot;
+	return true;
 }
 
-void QLayoutItem_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) )->handle__HasHeightForWidth = slot;
+bool QLayoutItem_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQLayoutItem* self_cast = dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasHeightForWidth = slot;
+	return true;
 }
 
 bool QLayoutItem_virtualbase_HasHeightForWidth(const void* self) {
 	return ( (const MiqtVirtualQLayoutItem*)(self) )->virtualbase_HasHeightForWidth();
 }
 
-void QLayoutItem_override_virtual_HeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) )->handle__HeightForWidth = slot;
+bool QLayoutItem_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQLayoutItem* self_cast = dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeightForWidth = slot;
+	return true;
 }
 
 int QLayoutItem_virtualbase_HeightForWidth(const void* self, int param1) {
 	return ( (const MiqtVirtualQLayoutItem*)(self) )->virtualbase_HeightForWidth(param1);
 }
 
-void QLayoutItem_override_virtual_MinimumHeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) )->handle__MinimumHeightForWidth = slot;
+bool QLayoutItem_override_virtual_MinimumHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQLayoutItem* self_cast = dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumHeightForWidth = slot;
+	return true;
 }
 
 int QLayoutItem_virtualbase_MinimumHeightForWidth(const void* self, int param1) {
 	return ( (const MiqtVirtualQLayoutItem*)(self) )->virtualbase_MinimumHeightForWidth(param1);
 }
 
-void QLayoutItem_override_virtual_Invalidate(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) )->handle__Invalidate = slot;
+bool QLayoutItem_override_virtual_Invalidate(void* self, intptr_t slot) {
+	MiqtVirtualQLayoutItem* self_cast = dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Invalidate = slot;
+	return true;
 }
 
 void QLayoutItem_virtualbase_Invalidate(void* self) {
 	( (MiqtVirtualQLayoutItem*)(self) )->virtualbase_Invalidate();
 }
 
-void QLayoutItem_override_virtual_Widget(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) )->handle__Widget = slot;
+bool QLayoutItem_override_virtual_Widget(void* self, intptr_t slot) {
+	MiqtVirtualQLayoutItem* self_cast = dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Widget = slot;
+	return true;
 }
 
 QWidget* QLayoutItem_virtualbase_Widget(void* self) {
 	return ( (MiqtVirtualQLayoutItem*)(self) )->virtualbase_Widget();
 }
 
-void QLayoutItem_override_virtual_Layout(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) )->handle__Layout = slot;
+bool QLayoutItem_override_virtual_Layout(void* self, intptr_t slot) {
+	MiqtVirtualQLayoutItem* self_cast = dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Layout = slot;
+	return true;
 }
 
 QLayout* QLayoutItem_virtualbase_Layout(void* self) {
 	return ( (MiqtVirtualQLayoutItem*)(self) )->virtualbase_Layout();
 }
 
-void QLayoutItem_override_virtual_SpacerItem(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) )->handle__SpacerItem = slot;
+bool QLayoutItem_override_virtual_SpacerItem(void* self, intptr_t slot) {
+	MiqtVirtualQLayoutItem* self_cast = dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SpacerItem = slot;
+	return true;
 }
 
 QSpacerItem* QLayoutItem_virtualbase_SpacerItem(void* self) {
 	return ( (MiqtVirtualQLayoutItem*)(self) )->virtualbase_SpacerItem();
 }
 
-void QLayoutItem_override_virtual_ControlTypes(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) )->handle__ControlTypes = slot;
+bool QLayoutItem_override_virtual_ControlTypes(void* self, intptr_t slot) {
+	MiqtVirtualQLayoutItem* self_cast = dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ControlTypes = slot;
+	return true;
 }
 
 int QLayoutItem_virtualbase_ControlTypes(const void* self) {
 	return ( (const MiqtVirtualQLayoutItem*)(self) )->virtualbase_ControlTypes();
 }
 
-void QLayoutItem_Delete(QLayoutItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQLayoutItem*>( self );
-	} else {
-		delete self;
-	}
+void QLayoutItem_Delete(QLayoutItem* self) {
+	delete self;
 }
 
-class MiqtVirtualQSpacerItem : public virtual QSpacerItem {
+class MiqtVirtualQSpacerItem final : public QSpacerItem {
 public:
 
 	MiqtVirtualQSpacerItem(int w, int h): QSpacerItem(w, h) {};
@@ -564,7 +650,7 @@ public:
 	MiqtVirtualQSpacerItem(int w, int h, QSizePolicy::Policy hData): QSpacerItem(w, h, hData) {};
 	MiqtVirtualQSpacerItem(int w, int h, QSizePolicy::Policy hData, QSizePolicy::Policy vData): QSpacerItem(w, h, hData, vData) {};
 
-	virtual ~MiqtVirtualQSpacerItem() = default;
+	virtual ~MiqtVirtualQSpacerItem() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -976,140 +1062,226 @@ void QSpacerItem_ChangeSize4(QSpacerItem* self, int w, int h, int hData, int vDa
 	self->changeSize(static_cast<int>(w), static_cast<int>(h), static_cast<QSizePolicy::Policy>(hData), static_cast<QSizePolicy::Policy>(vData));
 }
 
-void QSpacerItem_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) )->handle__SizeHint = slot;
+bool QSpacerItem_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQSpacerItem* self_cast = dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QSpacerItem_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQSpacerItem*)(self) )->virtualbase_SizeHint();
 }
 
-void QSpacerItem_override_virtual_MinimumSize(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) )->handle__MinimumSize = slot;
+bool QSpacerItem_override_virtual_MinimumSize(void* self, intptr_t slot) {
+	MiqtVirtualQSpacerItem* self_cast = dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSize = slot;
+	return true;
 }
 
 QSize* QSpacerItem_virtualbase_MinimumSize(const void* self) {
 	return ( (const MiqtVirtualQSpacerItem*)(self) )->virtualbase_MinimumSize();
 }
 
-void QSpacerItem_override_virtual_MaximumSize(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) )->handle__MaximumSize = slot;
+bool QSpacerItem_override_virtual_MaximumSize(void* self, intptr_t slot) {
+	MiqtVirtualQSpacerItem* self_cast = dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MaximumSize = slot;
+	return true;
 }
 
 QSize* QSpacerItem_virtualbase_MaximumSize(const void* self) {
 	return ( (const MiqtVirtualQSpacerItem*)(self) )->virtualbase_MaximumSize();
 }
 
-void QSpacerItem_override_virtual_ExpandingDirections(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) )->handle__ExpandingDirections = slot;
+bool QSpacerItem_override_virtual_ExpandingDirections(void* self, intptr_t slot) {
+	MiqtVirtualQSpacerItem* self_cast = dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ExpandingDirections = slot;
+	return true;
 }
 
 int QSpacerItem_virtualbase_ExpandingDirections(const void* self) {
 	return ( (const MiqtVirtualQSpacerItem*)(self) )->virtualbase_ExpandingDirections();
 }
 
-void QSpacerItem_override_virtual_IsEmpty(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) )->handle__IsEmpty = slot;
+bool QSpacerItem_override_virtual_IsEmpty(void* self, intptr_t slot) {
+	MiqtVirtualQSpacerItem* self_cast = dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsEmpty = slot;
+	return true;
 }
 
 bool QSpacerItem_virtualbase_IsEmpty(const void* self) {
 	return ( (const MiqtVirtualQSpacerItem*)(self) )->virtualbase_IsEmpty();
 }
 
-void QSpacerItem_override_virtual_SetGeometry(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) )->handle__SetGeometry = slot;
+bool QSpacerItem_override_virtual_SetGeometry(void* self, intptr_t slot) {
+	MiqtVirtualQSpacerItem* self_cast = dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetGeometry = slot;
+	return true;
 }
 
 void QSpacerItem_virtualbase_SetGeometry(void* self, QRect* geometry) {
 	( (MiqtVirtualQSpacerItem*)(self) )->virtualbase_SetGeometry(geometry);
 }
 
-void QSpacerItem_override_virtual_Geometry(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) )->handle__Geometry = slot;
+bool QSpacerItem_override_virtual_Geometry(void* self, intptr_t slot) {
+	MiqtVirtualQSpacerItem* self_cast = dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Geometry = slot;
+	return true;
 }
 
 QRect* QSpacerItem_virtualbase_Geometry(const void* self) {
 	return ( (const MiqtVirtualQSpacerItem*)(self) )->virtualbase_Geometry();
 }
 
-void QSpacerItem_override_virtual_SpacerItem(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) )->handle__SpacerItem = slot;
+bool QSpacerItem_override_virtual_SpacerItem(void* self, intptr_t slot) {
+	MiqtVirtualQSpacerItem* self_cast = dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SpacerItem = slot;
+	return true;
 }
 
 QSpacerItem* QSpacerItem_virtualbase_SpacerItem(void* self) {
 	return ( (MiqtVirtualQSpacerItem*)(self) )->virtualbase_SpacerItem();
 }
 
-void QSpacerItem_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) )->handle__HasHeightForWidth = slot;
+bool QSpacerItem_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQSpacerItem* self_cast = dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasHeightForWidth = slot;
+	return true;
 }
 
 bool QSpacerItem_virtualbase_HasHeightForWidth(const void* self) {
 	return ( (const MiqtVirtualQSpacerItem*)(self) )->virtualbase_HasHeightForWidth();
 }
 
-void QSpacerItem_override_virtual_HeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) )->handle__HeightForWidth = slot;
+bool QSpacerItem_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQSpacerItem* self_cast = dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeightForWidth = slot;
+	return true;
 }
 
 int QSpacerItem_virtualbase_HeightForWidth(const void* self, int param1) {
 	return ( (const MiqtVirtualQSpacerItem*)(self) )->virtualbase_HeightForWidth(param1);
 }
 
-void QSpacerItem_override_virtual_MinimumHeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) )->handle__MinimumHeightForWidth = slot;
+bool QSpacerItem_override_virtual_MinimumHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQSpacerItem* self_cast = dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumHeightForWidth = slot;
+	return true;
 }
 
 int QSpacerItem_virtualbase_MinimumHeightForWidth(const void* self, int param1) {
 	return ( (const MiqtVirtualQSpacerItem*)(self) )->virtualbase_MinimumHeightForWidth(param1);
 }
 
-void QSpacerItem_override_virtual_Invalidate(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) )->handle__Invalidate = slot;
+bool QSpacerItem_override_virtual_Invalidate(void* self, intptr_t slot) {
+	MiqtVirtualQSpacerItem* self_cast = dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Invalidate = slot;
+	return true;
 }
 
 void QSpacerItem_virtualbase_Invalidate(void* self) {
 	( (MiqtVirtualQSpacerItem*)(self) )->virtualbase_Invalidate();
 }
 
-void QSpacerItem_override_virtual_Widget(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) )->handle__Widget = slot;
+bool QSpacerItem_override_virtual_Widget(void* self, intptr_t slot) {
+	MiqtVirtualQSpacerItem* self_cast = dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Widget = slot;
+	return true;
 }
 
 QWidget* QSpacerItem_virtualbase_Widget(void* self) {
 	return ( (MiqtVirtualQSpacerItem*)(self) )->virtualbase_Widget();
 }
 
-void QSpacerItem_override_virtual_Layout(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) )->handle__Layout = slot;
+bool QSpacerItem_override_virtual_Layout(void* self, intptr_t slot) {
+	MiqtVirtualQSpacerItem* self_cast = dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Layout = slot;
+	return true;
 }
 
 QLayout* QSpacerItem_virtualbase_Layout(void* self) {
 	return ( (MiqtVirtualQSpacerItem*)(self) )->virtualbase_Layout();
 }
 
-void QSpacerItem_override_virtual_ControlTypes(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) )->handle__ControlTypes = slot;
+bool QSpacerItem_override_virtual_ControlTypes(void* self, intptr_t slot) {
+	MiqtVirtualQSpacerItem* self_cast = dynamic_cast<MiqtVirtualQSpacerItem*>( (QSpacerItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ControlTypes = slot;
+	return true;
 }
 
 int QSpacerItem_virtualbase_ControlTypes(const void* self) {
 	return ( (const MiqtVirtualQSpacerItem*)(self) )->virtualbase_ControlTypes();
 }
 
-void QSpacerItem_Delete(QSpacerItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSpacerItem*>( self );
-	} else {
-		delete self;
-	}
+void QSpacerItem_Delete(QSpacerItem* self) {
+	delete self;
 }
 
-class MiqtVirtualQWidgetItem : public virtual QWidgetItem {
+class MiqtVirtualQWidgetItem final : public QWidgetItem {
 public:
 
 	MiqtVirtualQWidgetItem(QWidget* w): QWidgetItem(w) {};
 
-	virtual ~MiqtVirtualQWidgetItem() = default;
+	virtual ~MiqtVirtualQWidgetItem() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -1506,140 +1678,226 @@ int QWidgetItem_ControlTypes(const QWidgetItem* self) {
 	return static_cast<int>(_ret);
 }
 
-void QWidgetItem_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) )->handle__SizeHint = slot;
+bool QWidgetItem_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItem* self_cast = dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QWidgetItem_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQWidgetItem*)(self) )->virtualbase_SizeHint();
 }
 
-void QWidgetItem_override_virtual_MinimumSize(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) )->handle__MinimumSize = slot;
+bool QWidgetItem_override_virtual_MinimumSize(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItem* self_cast = dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSize = slot;
+	return true;
 }
 
 QSize* QWidgetItem_virtualbase_MinimumSize(const void* self) {
 	return ( (const MiqtVirtualQWidgetItem*)(self) )->virtualbase_MinimumSize();
 }
 
-void QWidgetItem_override_virtual_MaximumSize(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) )->handle__MaximumSize = slot;
+bool QWidgetItem_override_virtual_MaximumSize(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItem* self_cast = dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MaximumSize = slot;
+	return true;
 }
 
 QSize* QWidgetItem_virtualbase_MaximumSize(const void* self) {
 	return ( (const MiqtVirtualQWidgetItem*)(self) )->virtualbase_MaximumSize();
 }
 
-void QWidgetItem_override_virtual_ExpandingDirections(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) )->handle__ExpandingDirections = slot;
+bool QWidgetItem_override_virtual_ExpandingDirections(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItem* self_cast = dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ExpandingDirections = slot;
+	return true;
 }
 
 int QWidgetItem_virtualbase_ExpandingDirections(const void* self) {
 	return ( (const MiqtVirtualQWidgetItem*)(self) )->virtualbase_ExpandingDirections();
 }
 
-void QWidgetItem_override_virtual_IsEmpty(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) )->handle__IsEmpty = slot;
+bool QWidgetItem_override_virtual_IsEmpty(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItem* self_cast = dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsEmpty = slot;
+	return true;
 }
 
 bool QWidgetItem_virtualbase_IsEmpty(const void* self) {
 	return ( (const MiqtVirtualQWidgetItem*)(self) )->virtualbase_IsEmpty();
 }
 
-void QWidgetItem_override_virtual_SetGeometry(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) )->handle__SetGeometry = slot;
+bool QWidgetItem_override_virtual_SetGeometry(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItem* self_cast = dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetGeometry = slot;
+	return true;
 }
 
 void QWidgetItem_virtualbase_SetGeometry(void* self, QRect* geometry) {
 	( (MiqtVirtualQWidgetItem*)(self) )->virtualbase_SetGeometry(geometry);
 }
 
-void QWidgetItem_override_virtual_Geometry(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) )->handle__Geometry = slot;
+bool QWidgetItem_override_virtual_Geometry(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItem* self_cast = dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Geometry = slot;
+	return true;
 }
 
 QRect* QWidgetItem_virtualbase_Geometry(const void* self) {
 	return ( (const MiqtVirtualQWidgetItem*)(self) )->virtualbase_Geometry();
 }
 
-void QWidgetItem_override_virtual_Widget(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) )->handle__Widget = slot;
+bool QWidgetItem_override_virtual_Widget(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItem* self_cast = dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Widget = slot;
+	return true;
 }
 
 QWidget* QWidgetItem_virtualbase_Widget(void* self) {
 	return ( (MiqtVirtualQWidgetItem*)(self) )->virtualbase_Widget();
 }
 
-void QWidgetItem_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) )->handle__HasHeightForWidth = slot;
+bool QWidgetItem_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItem* self_cast = dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasHeightForWidth = slot;
+	return true;
 }
 
 bool QWidgetItem_virtualbase_HasHeightForWidth(const void* self) {
 	return ( (const MiqtVirtualQWidgetItem*)(self) )->virtualbase_HasHeightForWidth();
 }
 
-void QWidgetItem_override_virtual_HeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) )->handle__HeightForWidth = slot;
+bool QWidgetItem_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItem* self_cast = dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeightForWidth = slot;
+	return true;
 }
 
 int QWidgetItem_virtualbase_HeightForWidth(const void* self, int param1) {
 	return ( (const MiqtVirtualQWidgetItem*)(self) )->virtualbase_HeightForWidth(param1);
 }
 
-void QWidgetItem_override_virtual_ControlTypes(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) )->handle__ControlTypes = slot;
+bool QWidgetItem_override_virtual_ControlTypes(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItem* self_cast = dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ControlTypes = slot;
+	return true;
 }
 
 int QWidgetItem_virtualbase_ControlTypes(const void* self) {
 	return ( (const MiqtVirtualQWidgetItem*)(self) )->virtualbase_ControlTypes();
 }
 
-void QWidgetItem_override_virtual_MinimumHeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) )->handle__MinimumHeightForWidth = slot;
+bool QWidgetItem_override_virtual_MinimumHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItem* self_cast = dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumHeightForWidth = slot;
+	return true;
 }
 
 int QWidgetItem_virtualbase_MinimumHeightForWidth(const void* self, int param1) {
 	return ( (const MiqtVirtualQWidgetItem*)(self) )->virtualbase_MinimumHeightForWidth(param1);
 }
 
-void QWidgetItem_override_virtual_Invalidate(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) )->handle__Invalidate = slot;
+bool QWidgetItem_override_virtual_Invalidate(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItem* self_cast = dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Invalidate = slot;
+	return true;
 }
 
 void QWidgetItem_virtualbase_Invalidate(void* self) {
 	( (MiqtVirtualQWidgetItem*)(self) )->virtualbase_Invalidate();
 }
 
-void QWidgetItem_override_virtual_Layout(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) )->handle__Layout = slot;
+bool QWidgetItem_override_virtual_Layout(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItem* self_cast = dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Layout = slot;
+	return true;
 }
 
 QLayout* QWidgetItem_virtualbase_Layout(void* self) {
 	return ( (MiqtVirtualQWidgetItem*)(self) )->virtualbase_Layout();
 }
 
-void QWidgetItem_override_virtual_SpacerItem(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) )->handle__SpacerItem = slot;
+bool QWidgetItem_override_virtual_SpacerItem(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItem* self_cast = dynamic_cast<MiqtVirtualQWidgetItem*>( (QWidgetItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SpacerItem = slot;
+	return true;
 }
 
 QSpacerItem* QWidgetItem_virtualbase_SpacerItem(void* self) {
 	return ( (MiqtVirtualQWidgetItem*)(self) )->virtualbase_SpacerItem();
 }
 
-void QWidgetItem_Delete(QWidgetItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQWidgetItem*>( self );
-	} else {
-		delete self;
-	}
+void QWidgetItem_Delete(QWidgetItem* self) {
+	delete self;
 }
 
-class MiqtVirtualQWidgetItemV2 : public virtual QWidgetItemV2 {
+class MiqtVirtualQWidgetItemV2 final : public QWidgetItemV2 {
 public:
 
 	MiqtVirtualQWidgetItemV2(QWidget* widget): QWidgetItemV2(widget) {};
 
-	virtual ~MiqtVirtualQWidgetItemV2() = default;
+	virtual ~MiqtVirtualQWidgetItemV2() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -1916,99 +2174,161 @@ int QWidgetItemV2_HeightForWidth(const QWidgetItemV2* self, int width) {
 	return self->heightForWidth(static_cast<int>(width));
 }
 
-void QWidgetItemV2_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetItemV2*>( (QWidgetItemV2*)(self) )->handle__SizeHint = slot;
+bool QWidgetItemV2_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItemV2* self_cast = dynamic_cast<MiqtVirtualQWidgetItemV2*>( (QWidgetItemV2*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QWidgetItemV2_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_SizeHint();
 }
 
-void QWidgetItemV2_override_virtual_MinimumSize(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetItemV2*>( (QWidgetItemV2*)(self) )->handle__MinimumSize = slot;
+bool QWidgetItemV2_override_virtual_MinimumSize(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItemV2* self_cast = dynamic_cast<MiqtVirtualQWidgetItemV2*>( (QWidgetItemV2*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSize = slot;
+	return true;
 }
 
 QSize* QWidgetItemV2_virtualbase_MinimumSize(const void* self) {
 	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_MinimumSize();
 }
 
-void QWidgetItemV2_override_virtual_MaximumSize(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetItemV2*>( (QWidgetItemV2*)(self) )->handle__MaximumSize = slot;
+bool QWidgetItemV2_override_virtual_MaximumSize(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItemV2* self_cast = dynamic_cast<MiqtVirtualQWidgetItemV2*>( (QWidgetItemV2*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MaximumSize = slot;
+	return true;
 }
 
 QSize* QWidgetItemV2_virtualbase_MaximumSize(const void* self) {
 	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_MaximumSize();
 }
 
-void QWidgetItemV2_override_virtual_HeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetItemV2*>( (QWidgetItemV2*)(self) )->handle__HeightForWidth = slot;
+bool QWidgetItemV2_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItemV2* self_cast = dynamic_cast<MiqtVirtualQWidgetItemV2*>( (QWidgetItemV2*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeightForWidth = slot;
+	return true;
 }
 
 int QWidgetItemV2_virtualbase_HeightForWidth(const void* self, int width) {
 	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_HeightForWidth(width);
 }
 
-void QWidgetItemV2_override_virtual_ExpandingDirections(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetItemV2*>( (QWidgetItemV2*)(self) )->handle__ExpandingDirections = slot;
+bool QWidgetItemV2_override_virtual_ExpandingDirections(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItemV2* self_cast = dynamic_cast<MiqtVirtualQWidgetItemV2*>( (QWidgetItemV2*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ExpandingDirections = slot;
+	return true;
 }
 
 int QWidgetItemV2_virtualbase_ExpandingDirections(const void* self) {
 	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_ExpandingDirections();
 }
 
-void QWidgetItemV2_override_virtual_IsEmpty(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetItemV2*>( (QWidgetItemV2*)(self) )->handle__IsEmpty = slot;
+bool QWidgetItemV2_override_virtual_IsEmpty(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItemV2* self_cast = dynamic_cast<MiqtVirtualQWidgetItemV2*>( (QWidgetItemV2*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsEmpty = slot;
+	return true;
 }
 
 bool QWidgetItemV2_virtualbase_IsEmpty(const void* self) {
 	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_IsEmpty();
 }
 
-void QWidgetItemV2_override_virtual_SetGeometry(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetItemV2*>( (QWidgetItemV2*)(self) )->handle__SetGeometry = slot;
+bool QWidgetItemV2_override_virtual_SetGeometry(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItemV2* self_cast = dynamic_cast<MiqtVirtualQWidgetItemV2*>( (QWidgetItemV2*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetGeometry = slot;
+	return true;
 }
 
 void QWidgetItemV2_virtualbase_SetGeometry(void* self, QRect* geometry) {
 	( (MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_SetGeometry(geometry);
 }
 
-void QWidgetItemV2_override_virtual_Geometry(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetItemV2*>( (QWidgetItemV2*)(self) )->handle__Geometry = slot;
+bool QWidgetItemV2_override_virtual_Geometry(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItemV2* self_cast = dynamic_cast<MiqtVirtualQWidgetItemV2*>( (QWidgetItemV2*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Geometry = slot;
+	return true;
 }
 
 QRect* QWidgetItemV2_virtualbase_Geometry(const void* self) {
 	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_Geometry();
 }
 
-void QWidgetItemV2_override_virtual_Widget(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetItemV2*>( (QWidgetItemV2*)(self) )->handle__Widget = slot;
+bool QWidgetItemV2_override_virtual_Widget(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItemV2* self_cast = dynamic_cast<MiqtVirtualQWidgetItemV2*>( (QWidgetItemV2*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Widget = slot;
+	return true;
 }
 
 QWidget* QWidgetItemV2_virtualbase_Widget(void* self) {
 	return ( (MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_Widget();
 }
 
-void QWidgetItemV2_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetItemV2*>( (QWidgetItemV2*)(self) )->handle__HasHeightForWidth = slot;
+bool QWidgetItemV2_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItemV2* self_cast = dynamic_cast<MiqtVirtualQWidgetItemV2*>( (QWidgetItemV2*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasHeightForWidth = slot;
+	return true;
 }
 
 bool QWidgetItemV2_virtualbase_HasHeightForWidth(const void* self) {
 	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_HasHeightForWidth();
 }
 
-void QWidgetItemV2_override_virtual_ControlTypes(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetItemV2*>( (QWidgetItemV2*)(self) )->handle__ControlTypes = slot;
+bool QWidgetItemV2_override_virtual_ControlTypes(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItemV2* self_cast = dynamic_cast<MiqtVirtualQWidgetItemV2*>( (QWidgetItemV2*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ControlTypes = slot;
+	return true;
 }
 
 int QWidgetItemV2_virtualbase_ControlTypes(const void* self) {
 	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_ControlTypes();
 }
 
-void QWidgetItemV2_Delete(QWidgetItemV2* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQWidgetItemV2*>( self );
-	} else {
-		delete self;
-	}
+void QWidgetItemV2_Delete(QWidgetItemV2* self) {
+	delete self;
 }
 

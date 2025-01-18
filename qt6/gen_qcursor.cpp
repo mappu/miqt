@@ -120,11 +120,7 @@ void QCursor_SetPos3(QScreen* screen, QPoint* p) {
 	QCursor::setPos(screen, *p);
 }
 
-void QCursor_Delete(QCursor* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCursor*>( self );
-	} else {
-		delete self;
-	}
+void QCursor_Delete(QCursor* self) {
+	delete self;
 }
 

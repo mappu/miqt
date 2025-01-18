@@ -90,21 +90,21 @@ struct miqt_string QSvgRenderer_Tr3(const char* s, const char* c, int n);
 struct miqt_string QSvgRenderer_TrUtf82(const char* s, const char* c);
 struct miqt_string QSvgRenderer_TrUtf83(const char* s, const char* c, int n);
 void QSvgRenderer_Render32(QSvgRenderer* self, QPainter* p, struct miqt_string elementId, QRectF* bounds);
-void QSvgRenderer_override_virtual_Event(void* self, intptr_t slot);
+bool QSvgRenderer_override_virtual_Event(void* self, intptr_t slot);
 bool QSvgRenderer_virtualbase_Event(void* self, QEvent* event);
-void QSvgRenderer_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QSvgRenderer_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QSvgRenderer_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QSvgRenderer_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QSvgRenderer_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QSvgRenderer_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QSvgRenderer_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QSvgRenderer_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QSvgRenderer_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QSvgRenderer_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QSvgRenderer_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QSvgRenderer_virtualbase_CustomEvent(void* self, QEvent* event);
-void QSvgRenderer_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QSvgRenderer_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QSvgRenderer_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QSvgRenderer_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QSvgRenderer_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QSvgRenderer_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QSvgRenderer_Delete(QSvgRenderer* self, bool isSubclass);
+void QSvgRenderer_Delete(QSvgRenderer* self);
 
 #ifdef __cplusplus
 } /* extern C */

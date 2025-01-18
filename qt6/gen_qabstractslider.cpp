@@ -93,13 +93,13 @@ bool miqt_exec_callback_QAbstractSlider_FocusNextPrevChild(void*, intptr_t, bool
 } /* extern C */
 #endif
 
-class MiqtVirtualQAbstractSlider : public virtual QAbstractSlider {
+class MiqtVirtualQAbstractSlider final : public QAbstractSlider {
 public:
 
 	MiqtVirtualQAbstractSlider(QWidget* parent): QAbstractSlider(parent) {};
 	MiqtVirtualQAbstractSlider(): QAbstractSlider() {};
 
-	virtual ~MiqtVirtualQAbstractSlider() = default;
+	virtual ~MiqtVirtualQAbstractSlider() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -1343,355 +1343,609 @@ struct miqt_string QAbstractSlider_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QAbstractSlider_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__Event = slot;
+bool QAbstractSlider_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QAbstractSlider_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_Event(e);
 }
 
-void QAbstractSlider_override_virtual_SliderChange(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__SliderChange = slot;
+bool QAbstractSlider_override_virtual_SliderChange(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SliderChange = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_SliderChange(void* self, int change) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_SliderChange(change);
 }
 
-void QAbstractSlider_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__KeyPressEvent = slot;
+bool QAbstractSlider_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_KeyPressEvent(void* self, QKeyEvent* ev) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_KeyPressEvent(ev);
 }
 
-void QAbstractSlider_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__TimerEvent = slot;
+bool QAbstractSlider_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_TimerEvent(void* self, QTimerEvent* param1) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_TimerEvent(param1);
 }
 
-void QAbstractSlider_override_virtual_WheelEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__WheelEvent = slot;
+bool QAbstractSlider_override_virtual_WheelEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WheelEvent = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_WheelEvent(void* self, QWheelEvent* e) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_WheelEvent(e);
 }
 
-void QAbstractSlider_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__ChangeEvent = slot;
+bool QAbstractSlider_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_ChangeEvent(void* self, QEvent* e) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_ChangeEvent(e);
 }
 
-void QAbstractSlider_override_virtual_DevType(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__DevType = slot;
+bool QAbstractSlider_override_virtual_DevType(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DevType = slot;
+	return true;
 }
 
 int QAbstractSlider_virtualbase_DevType(const void* self) {
 	return ( (const MiqtVirtualQAbstractSlider*)(self) )->virtualbase_DevType();
 }
 
-void QAbstractSlider_override_virtual_SetVisible(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__SetVisible = slot;
+bool QAbstractSlider_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_SetVisible(void* self, bool visible) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_SetVisible(visible);
 }
 
-void QAbstractSlider_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__SizeHint = slot;
+bool QAbstractSlider_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QAbstractSlider_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQAbstractSlider*)(self) )->virtualbase_SizeHint();
 }
 
-void QAbstractSlider_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__MinimumSizeHint = slot;
+bool QAbstractSlider_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QAbstractSlider_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQAbstractSlider*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QAbstractSlider_override_virtual_HeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__HeightForWidth = slot;
+bool QAbstractSlider_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeightForWidth = slot;
+	return true;
 }
 
 int QAbstractSlider_virtualbase_HeightForWidth(const void* self, int param1) {
 	return ( (const MiqtVirtualQAbstractSlider*)(self) )->virtualbase_HeightForWidth(param1);
 }
 
-void QAbstractSlider_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__HasHeightForWidth = slot;
+bool QAbstractSlider_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasHeightForWidth = slot;
+	return true;
 }
 
 bool QAbstractSlider_virtualbase_HasHeightForWidth(const void* self) {
 	return ( (const MiqtVirtualQAbstractSlider*)(self) )->virtualbase_HasHeightForWidth();
 }
 
-void QAbstractSlider_override_virtual_PaintEngine(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__PaintEngine = slot;
+bool QAbstractSlider_override_virtual_PaintEngine(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEngine = slot;
+	return true;
 }
 
 QPaintEngine* QAbstractSlider_virtualbase_PaintEngine(const void* self) {
 	return ( (const MiqtVirtualQAbstractSlider*)(self) )->virtualbase_PaintEngine();
 }
 
-void QAbstractSlider_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__MousePressEvent = slot;
+bool QAbstractSlider_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_MousePressEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_MousePressEvent(event);
 }
 
-void QAbstractSlider_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__MouseReleaseEvent = slot;
+bool QAbstractSlider_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_MouseReleaseEvent(event);
 }
 
-void QAbstractSlider_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__MouseDoubleClickEvent = slot;
+bool QAbstractSlider_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseDoubleClickEvent = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_MouseDoubleClickEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_MouseDoubleClickEvent(event);
 }
 
-void QAbstractSlider_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__MouseMoveEvent = slot;
+bool QAbstractSlider_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_MouseMoveEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_MouseMoveEvent(event);
 }
 
-void QAbstractSlider_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__KeyReleaseEvent = slot;
+bool QAbstractSlider_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyReleaseEvent = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* event) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_KeyReleaseEvent(event);
 }
 
-void QAbstractSlider_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__FocusInEvent = slot;
+bool QAbstractSlider_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_FocusInEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_FocusInEvent(event);
 }
 
-void QAbstractSlider_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__FocusOutEvent = slot;
+bool QAbstractSlider_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_FocusOutEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_FocusOutEvent(event);
 }
 
-void QAbstractSlider_override_virtual_EnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__EnterEvent = slot;
+bool QAbstractSlider_override_virtual_EnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EnterEvent = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_EnterEvent(void* self, QEnterEvent* event) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_EnterEvent(event);
 }
 
-void QAbstractSlider_override_virtual_LeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__LeaveEvent = slot;
+bool QAbstractSlider_override_virtual_LeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__LeaveEvent = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_LeaveEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_LeaveEvent(event);
 }
 
-void QAbstractSlider_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__PaintEvent = slot;
+bool QAbstractSlider_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_PaintEvent(void* self, QPaintEvent* event) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_PaintEvent(event);
 }
 
-void QAbstractSlider_override_virtual_MoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__MoveEvent = slot;
+bool QAbstractSlider_override_virtual_MoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveEvent = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_MoveEvent(void* self, QMoveEvent* event) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_MoveEvent(event);
 }
 
-void QAbstractSlider_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__ResizeEvent = slot;
+bool QAbstractSlider_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_ResizeEvent(void* self, QResizeEvent* event) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_ResizeEvent(event);
 }
 
-void QAbstractSlider_override_virtual_CloseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__CloseEvent = slot;
+bool QAbstractSlider_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_CloseEvent(void* self, QCloseEvent* event) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_CloseEvent(event);
 }
 
-void QAbstractSlider_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__ContextMenuEvent = slot;
+bool QAbstractSlider_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* event) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_ContextMenuEvent(event);
 }
 
-void QAbstractSlider_override_virtual_TabletEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__TabletEvent = slot;
+bool QAbstractSlider_override_virtual_TabletEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TabletEvent = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_TabletEvent(void* self, QTabletEvent* event) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_TabletEvent(event);
 }
 
-void QAbstractSlider_override_virtual_ActionEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__ActionEvent = slot;
+bool QAbstractSlider_override_virtual_ActionEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ActionEvent = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_ActionEvent(void* self, QActionEvent* event) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_ActionEvent(event);
 }
 
-void QAbstractSlider_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__DragEnterEvent = slot;
+bool QAbstractSlider_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragEnterEvent = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_DragEnterEvent(void* self, QDragEnterEvent* event) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_DragEnterEvent(event);
 }
 
-void QAbstractSlider_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__DragMoveEvent = slot;
+bool QAbstractSlider_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragMoveEvent = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_DragMoveEvent(void* self, QDragMoveEvent* event) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_DragMoveEvent(event);
 }
 
-void QAbstractSlider_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__DragLeaveEvent = slot;
+bool QAbstractSlider_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragLeaveEvent = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* event) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_DragLeaveEvent(event);
 }
 
-void QAbstractSlider_override_virtual_DropEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__DropEvent = slot;
+bool QAbstractSlider_override_virtual_DropEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropEvent = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_DropEvent(void* self, QDropEvent* event) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_DropEvent(event);
 }
 
-void QAbstractSlider_override_virtual_ShowEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__ShowEvent = slot;
+bool QAbstractSlider_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_ShowEvent(void* self, QShowEvent* event) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_ShowEvent(event);
 }
 
-void QAbstractSlider_override_virtual_HideEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__HideEvent = slot;
+bool QAbstractSlider_override_virtual_HideEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HideEvent = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_HideEvent(void* self, QHideEvent* event) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_HideEvent(event);
 }
 
-void QAbstractSlider_override_virtual_NativeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__NativeEvent = slot;
+bool QAbstractSlider_override_virtual_NativeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NativeEvent = slot;
+	return true;
 }
 
 bool QAbstractSlider_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
 	return ( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_NativeEvent(eventType, message, result);
 }
 
-void QAbstractSlider_override_virtual_Metric(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__Metric = slot;
+bool QAbstractSlider_override_virtual_Metric(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Metric = slot;
+	return true;
 }
 
 int QAbstractSlider_virtualbase_Metric(const void* self, int param1) {
 	return ( (const MiqtVirtualQAbstractSlider*)(self) )->virtualbase_Metric(param1);
 }
 
-void QAbstractSlider_override_virtual_InitPainter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__InitPainter = slot;
+bool QAbstractSlider_override_virtual_InitPainter(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitPainter = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_InitPainter(const void* self, QPainter* painter) {
 	( (const MiqtVirtualQAbstractSlider*)(self) )->virtualbase_InitPainter(painter);
 }
 
-void QAbstractSlider_override_virtual_Redirected(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__Redirected = slot;
+bool QAbstractSlider_override_virtual_Redirected(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Redirected = slot;
+	return true;
 }
 
 QPaintDevice* QAbstractSlider_virtualbase_Redirected(const void* self, QPoint* offset) {
 	return ( (const MiqtVirtualQAbstractSlider*)(self) )->virtualbase_Redirected(offset);
 }
 
-void QAbstractSlider_override_virtual_SharedPainter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__SharedPainter = slot;
+bool QAbstractSlider_override_virtual_SharedPainter(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SharedPainter = slot;
+	return true;
 }
 
 QPainter* QAbstractSlider_virtualbase_SharedPainter(const void* self) {
 	return ( (const MiqtVirtualQAbstractSlider*)(self) )->virtualbase_SharedPainter();
 }
 
-void QAbstractSlider_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__InputMethodEvent = slot;
+bool QAbstractSlider_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodEvent = slot;
+	return true;
 }
 
 void QAbstractSlider_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* param1) {
 	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_InputMethodEvent(param1);
 }
 
-void QAbstractSlider_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__InputMethodQuery = slot;
+bool QAbstractSlider_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodQuery = slot;
+	return true;
 }
 
 QVariant* QAbstractSlider_virtualbase_InputMethodQuery(const void* self, int param1) {
 	return ( (const MiqtVirtualQAbstractSlider*)(self) )->virtualbase_InputMethodQuery(param1);
 }
 
-void QAbstractSlider_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) )->handle__FocusNextPrevChild = slot;
+bool QAbstractSlider_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractSlider* self_cast = dynamic_cast<MiqtVirtualQAbstractSlider*>( (QAbstractSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusNextPrevChild = slot;
+	return true;
 }
 
 bool QAbstractSlider_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QAbstractSlider_Delete(QAbstractSlider* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractSlider*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractSlider_Delete(QAbstractSlider* self) {
+	delete self;
 }
 

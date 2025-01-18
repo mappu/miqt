@@ -29,8 +29,7 @@ const (
 )
 
 type QState struct {
-	h          *C.QState
-	isSubclass bool
+	h *C.QState
 	*QAbstractState
 }
 
@@ -68,33 +67,25 @@ func UnsafeNewQState(h unsafe.Pointer) *QState {
 // NewQState constructs a new QState object.
 func NewQState() *QState {
 
-	ret := newQState(C.QState_new())
-	ret.isSubclass = true
-	return ret
+	return newQState(C.QState_new())
 }
 
 // NewQState2 constructs a new QState object.
 func NewQState2(childMode QState__ChildMode) *QState {
 
-	ret := newQState(C.QState_new2((C.int)(childMode)))
-	ret.isSubclass = true
-	return ret
+	return newQState(C.QState_new2((C.int)(childMode)))
 }
 
 // NewQState3 constructs a new QState object.
 func NewQState3(parent *QState) *QState {
 
-	ret := newQState(C.QState_new3(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQState(C.QState_new3(parent.cPointer()))
 }
 
 // NewQState4 constructs a new QState object.
 func NewQState4(childMode QState__ChildMode, parent *QState) *QState {
 
-	ret := newQState(C.QState_new4((C.int)(childMode), parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQState(C.QState_new4((C.int)(childMode), parent.cPointer()))
 }
 
 func (this *QState) MetaObject() *QMetaObject {
@@ -233,10 +224,10 @@ func (this *QState) callVirtualBase_OnEntry(event *QEvent) {
 
 }
 func (this *QState) OnOnEntry(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QState_override_virtual_OnEntry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QState_override_virtual_OnEntry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QState_OnEntry
@@ -259,10 +250,10 @@ func (this *QState) callVirtualBase_OnExit(event *QEvent) {
 
 }
 func (this *QState) OnOnExit(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QState_override_virtual_OnExit(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QState_override_virtual_OnExit(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QState_OnExit
@@ -285,10 +276,10 @@ func (this *QState) callVirtualBase_Event(e *QEvent) bool {
 
 }
 func (this *QState) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QState_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QState_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QState_Event
@@ -309,7 +300,7 @@ func miqt_exec_callback_QState_Event(self *C.QState, cb C.intptr_t, e *C.QEvent)
 
 // Delete this object from C++ memory.
 func (this *QState) Delete() {
-	C.QState_Delete(this.h, C.bool(this.isSubclass))
+	C.QState_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

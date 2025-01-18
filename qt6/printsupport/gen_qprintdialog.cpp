@@ -25,7 +25,7 @@ void miqt_exec_callback_QPrintDialog_SetVisible(void*, intptr_t, bool);
 } /* extern C */
 #endif
 
-class MiqtVirtualQPrintDialog : public virtual QPrintDialog {
+class MiqtVirtualQPrintDialog final : public QPrintDialog {
 public:
 
 	MiqtVirtualQPrintDialog(QWidget* parent): QPrintDialog(parent) {};
@@ -33,7 +33,7 @@ public:
 	MiqtVirtualQPrintDialog(): QPrintDialog() {};
 	MiqtVirtualQPrintDialog(QPrinter* printer, QWidget* parent): QPrintDialog(printer, parent) {};
 
-	virtual ~MiqtVirtualQPrintDialog() = default;
+	virtual ~MiqtVirtualQPrintDialog() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Exec = 0;
@@ -239,43 +239,63 @@ void QPrintDialog_SetOption2(QPrintDialog* self, int option, bool on) {
 	self->setOption(static_cast<QAbstractPrintDialog::PrintDialogOption>(option), on);
 }
 
-void QPrintDialog_override_virtual_Exec(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPrintDialog*>( (QPrintDialog*)(self) )->handle__Exec = slot;
+bool QPrintDialog_override_virtual_Exec(void* self, intptr_t slot) {
+	MiqtVirtualQPrintDialog* self_cast = dynamic_cast<MiqtVirtualQPrintDialog*>( (QPrintDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Exec = slot;
+	return true;
 }
 
 int QPrintDialog_virtualbase_Exec(void* self) {
 	return ( (MiqtVirtualQPrintDialog*)(self) )->virtualbase_Exec();
 }
 
-void QPrintDialog_override_virtual_Accept(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPrintDialog*>( (QPrintDialog*)(self) )->handle__Accept = slot;
+bool QPrintDialog_override_virtual_Accept(void* self, intptr_t slot) {
+	MiqtVirtualQPrintDialog* self_cast = dynamic_cast<MiqtVirtualQPrintDialog*>( (QPrintDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Accept = slot;
+	return true;
 }
 
 void QPrintDialog_virtualbase_Accept(void* self) {
 	( (MiqtVirtualQPrintDialog*)(self) )->virtualbase_Accept();
 }
 
-void QPrintDialog_override_virtual_Done(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPrintDialog*>( (QPrintDialog*)(self) )->handle__Done = slot;
+bool QPrintDialog_override_virtual_Done(void* self, intptr_t slot) {
+	MiqtVirtualQPrintDialog* self_cast = dynamic_cast<MiqtVirtualQPrintDialog*>( (QPrintDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Done = slot;
+	return true;
 }
 
 void QPrintDialog_virtualbase_Done(void* self, int result) {
 	( (MiqtVirtualQPrintDialog*)(self) )->virtualbase_Done(result);
 }
 
-void QPrintDialog_override_virtual_SetVisible(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPrintDialog*>( (QPrintDialog*)(self) )->handle__SetVisible = slot;
+bool QPrintDialog_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQPrintDialog* self_cast = dynamic_cast<MiqtVirtualQPrintDialog*>( (QPrintDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
 }
 
 void QPrintDialog_virtualbase_SetVisible(void* self, bool visible) {
 	( (MiqtVirtualQPrintDialog*)(self) )->virtualbase_SetVisible(visible);
 }
 
-void QPrintDialog_Delete(QPrintDialog* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQPrintDialog*>( self );
-	} else {
-		delete self;
-	}
+void QPrintDialog_Delete(QPrintDialog* self) {
+	delete self;
 }
 

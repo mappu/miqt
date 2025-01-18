@@ -49,19 +49,19 @@ void QPropertyAnimation_UpdateCurrentValue(QPropertyAnimation* self, QVariant* v
 void QPropertyAnimation_UpdateState(QPropertyAnimation* self, int newState, int oldState);
 struct miqt_string QPropertyAnimation_Tr2(const char* s, const char* c);
 struct miqt_string QPropertyAnimation_Tr3(const char* s, const char* c, int n);
-void QPropertyAnimation_override_virtual_Event(void* self, intptr_t slot);
+bool QPropertyAnimation_override_virtual_Event(void* self, intptr_t slot);
 bool QPropertyAnimation_virtualbase_Event(void* self, QEvent* event);
-void QPropertyAnimation_override_virtual_UpdateCurrentValue(void* self, intptr_t slot);
+bool QPropertyAnimation_override_virtual_UpdateCurrentValue(void* self, intptr_t slot);
 void QPropertyAnimation_virtualbase_UpdateCurrentValue(void* self, QVariant* value);
-void QPropertyAnimation_override_virtual_UpdateState(void* self, intptr_t slot);
+bool QPropertyAnimation_override_virtual_UpdateState(void* self, intptr_t slot);
 void QPropertyAnimation_virtualbase_UpdateState(void* self, int newState, int oldState);
-void QPropertyAnimation_override_virtual_Duration(void* self, intptr_t slot);
+bool QPropertyAnimation_override_virtual_Duration(void* self, intptr_t slot);
 int QPropertyAnimation_virtualbase_Duration(const void* self);
-void QPropertyAnimation_override_virtual_UpdateCurrentTime(void* self, intptr_t slot);
+bool QPropertyAnimation_override_virtual_UpdateCurrentTime(void* self, intptr_t slot);
 void QPropertyAnimation_virtualbase_UpdateCurrentTime(void* self, int param1);
-void QPropertyAnimation_override_virtual_Interpolated(void* self, intptr_t slot);
+bool QPropertyAnimation_override_virtual_Interpolated(void* self, intptr_t slot);
 QVariant* QPropertyAnimation_virtualbase_Interpolated(const void* self, QVariant* from, QVariant* to, double progress);
-void QPropertyAnimation_Delete(QPropertyAnimation* self, bool isSubclass);
+void QPropertyAnimation_Delete(QPropertyAnimation* self);
 
 #ifdef __cplusplus
 } /* extern C */

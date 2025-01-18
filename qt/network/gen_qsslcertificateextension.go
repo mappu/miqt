@@ -15,8 +15,7 @@ import (
 )
 
 type QSslCertificateExtension struct {
-	h          *C.QSslCertificateExtension
-	isSubclass bool
+	h *C.QSslCertificateExtension
 }
 
 func (this *QSslCertificateExtension) cPointer() *C.QSslCertificateExtension {
@@ -50,17 +49,13 @@ func UnsafeNewQSslCertificateExtension(h unsafe.Pointer) *QSslCertificateExtensi
 // NewQSslCertificateExtension constructs a new QSslCertificateExtension object.
 func NewQSslCertificateExtension() *QSslCertificateExtension {
 
-	ret := newQSslCertificateExtension(C.QSslCertificateExtension_new())
-	ret.isSubclass = true
-	return ret
+	return newQSslCertificateExtension(C.QSslCertificateExtension_new())
 }
 
 // NewQSslCertificateExtension2 constructs a new QSslCertificateExtension object.
 func NewQSslCertificateExtension2(other *QSslCertificateExtension) *QSslCertificateExtension {
 
-	ret := newQSslCertificateExtension(C.QSslCertificateExtension_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSslCertificateExtension(C.QSslCertificateExtension_new2(other.cPointer()))
 }
 
 func (this *QSslCertificateExtension) OperatorAssign(other *QSslCertificateExtension) {
@@ -101,7 +96,7 @@ func (this *QSslCertificateExtension) IsSupported() bool {
 
 // Delete this object from C++ memory.
 func (this *QSslCertificateExtension) Delete() {
-	C.QSslCertificateExtension_Delete(this.h, C.bool(this.isSubclass))
+	C.QSslCertificateExtension_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

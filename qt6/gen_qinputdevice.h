@@ -59,21 +59,21 @@ void QInputDevice_connect_AvailableVirtualGeometryChanged(QInputDevice* self, in
 struct miqt_string QInputDevice_Tr2(const char* s, const char* c);
 struct miqt_string QInputDevice_Tr3(const char* s, const char* c, int n);
 QInputDevice* QInputDevice_PrimaryKeyboard1(struct miqt_string seatName);
-void QInputDevice_override_virtual_Event(void* self, intptr_t slot);
+bool QInputDevice_override_virtual_Event(void* self, intptr_t slot);
 bool QInputDevice_virtualbase_Event(void* self, QEvent* event);
-void QInputDevice_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QInputDevice_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QInputDevice_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QInputDevice_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QInputDevice_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QInputDevice_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QInputDevice_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QInputDevice_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QInputDevice_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QInputDevice_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QInputDevice_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QInputDevice_virtualbase_CustomEvent(void* self, QEvent* event);
-void QInputDevice_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QInputDevice_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QInputDevice_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QInputDevice_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QInputDevice_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QInputDevice_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QInputDevice_Delete(QInputDevice* self, bool isSubclass);
+void QInputDevice_Delete(QInputDevice* self);
 
 #ifdef __cplusplus
 } /* extern C */

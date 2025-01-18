@@ -51,7 +51,7 @@ void QDnsDomainNameRecord_Swap(QDnsDomainNameRecord* self, QDnsDomainNameRecord*
 struct miqt_string QDnsDomainNameRecord_Name(const QDnsDomainNameRecord* self);
 unsigned int QDnsDomainNameRecord_TimeToLive(const QDnsDomainNameRecord* self);
 struct miqt_string QDnsDomainNameRecord_Value(const QDnsDomainNameRecord* self);
-void QDnsDomainNameRecord_Delete(QDnsDomainNameRecord* self, bool isSubclass);
+void QDnsDomainNameRecord_Delete(QDnsDomainNameRecord* self);
 
 QDnsHostAddressRecord* QDnsHostAddressRecord_new();
 QDnsHostAddressRecord* QDnsHostAddressRecord_new2(QDnsHostAddressRecord* other);
@@ -60,7 +60,7 @@ void QDnsHostAddressRecord_Swap(QDnsHostAddressRecord* self, QDnsHostAddressReco
 struct miqt_string QDnsHostAddressRecord_Name(const QDnsHostAddressRecord* self);
 unsigned int QDnsHostAddressRecord_TimeToLive(const QDnsHostAddressRecord* self);
 QHostAddress* QDnsHostAddressRecord_Value(const QDnsHostAddressRecord* self);
-void QDnsHostAddressRecord_Delete(QDnsHostAddressRecord* self, bool isSubclass);
+void QDnsHostAddressRecord_Delete(QDnsHostAddressRecord* self);
 
 QDnsMailExchangeRecord* QDnsMailExchangeRecord_new();
 QDnsMailExchangeRecord* QDnsMailExchangeRecord_new2(QDnsMailExchangeRecord* other);
@@ -70,7 +70,7 @@ struct miqt_string QDnsMailExchangeRecord_Exchange(const QDnsMailExchangeRecord*
 struct miqt_string QDnsMailExchangeRecord_Name(const QDnsMailExchangeRecord* self);
 uint16_t QDnsMailExchangeRecord_Preference(const QDnsMailExchangeRecord* self);
 unsigned int QDnsMailExchangeRecord_TimeToLive(const QDnsMailExchangeRecord* self);
-void QDnsMailExchangeRecord_Delete(QDnsMailExchangeRecord* self, bool isSubclass);
+void QDnsMailExchangeRecord_Delete(QDnsMailExchangeRecord* self);
 
 QDnsServiceRecord* QDnsServiceRecord_new();
 QDnsServiceRecord* QDnsServiceRecord_new2(QDnsServiceRecord* other);
@@ -82,7 +82,7 @@ uint16_t QDnsServiceRecord_Priority(const QDnsServiceRecord* self);
 struct miqt_string QDnsServiceRecord_Target(const QDnsServiceRecord* self);
 unsigned int QDnsServiceRecord_TimeToLive(const QDnsServiceRecord* self);
 uint16_t QDnsServiceRecord_Weight(const QDnsServiceRecord* self);
-void QDnsServiceRecord_Delete(QDnsServiceRecord* self, bool isSubclass);
+void QDnsServiceRecord_Delete(QDnsServiceRecord* self);
 
 QDnsTextRecord* QDnsTextRecord_new();
 QDnsTextRecord* QDnsTextRecord_new2(QDnsTextRecord* other);
@@ -91,7 +91,7 @@ void QDnsTextRecord_Swap(QDnsTextRecord* self, QDnsTextRecord* other);
 struct miqt_string QDnsTextRecord_Name(const QDnsTextRecord* self);
 unsigned int QDnsTextRecord_TimeToLive(const QDnsTextRecord* self);
 struct miqt_array /* of struct miqt_string */  QDnsTextRecord_Values(const QDnsTextRecord* self);
-void QDnsTextRecord_Delete(QDnsTextRecord* self, bool isSubclass);
+void QDnsTextRecord_Delete(QDnsTextRecord* self);
 
 QDnsLookup* QDnsLookup_new();
 QDnsLookup* QDnsLookup_new2(int typeVal, struct miqt_string name);
@@ -134,21 +134,21 @@ struct miqt_string QDnsLookup_Tr2(const char* s, const char* c);
 struct miqt_string QDnsLookup_Tr3(const char* s, const char* c, int n);
 struct miqt_string QDnsLookup_TrUtf82(const char* s, const char* c);
 struct miqt_string QDnsLookup_TrUtf83(const char* s, const char* c, int n);
-void QDnsLookup_override_virtual_Event(void* self, intptr_t slot);
+bool QDnsLookup_override_virtual_Event(void* self, intptr_t slot);
 bool QDnsLookup_virtualbase_Event(void* self, QEvent* event);
-void QDnsLookup_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QDnsLookup_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QDnsLookup_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QDnsLookup_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QDnsLookup_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QDnsLookup_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QDnsLookup_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QDnsLookup_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QDnsLookup_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QDnsLookup_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QDnsLookup_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QDnsLookup_virtualbase_CustomEvent(void* self, QEvent* event);
-void QDnsLookup_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QDnsLookup_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QDnsLookup_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QDnsLookup_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QDnsLookup_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QDnsLookup_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QDnsLookup_Delete(QDnsLookup* self, bool isSubclass);
+void QDnsLookup_Delete(QDnsLookup* self);
 
 #ifdef __cplusplus
 } /* extern C */

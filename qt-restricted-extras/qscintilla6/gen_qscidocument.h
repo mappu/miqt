@@ -23,7 +23,7 @@ typedef struct QsciDocument QsciDocument;
 QsciDocument* QsciDocument_new();
 QsciDocument* QsciDocument_new2(QsciDocument* param1);
 void QsciDocument_OperatorAssign(QsciDocument* self, QsciDocument* param1);
-void QsciDocument_Delete(QsciDocument* self, bool isSubclass);
+void QsciDocument_Delete(QsciDocument* self);
 
 #ifdef __cplusplus
 } /* extern C */

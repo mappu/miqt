@@ -28,11 +28,11 @@ QScriptExtensionInterface* QScriptExtensionInterface_new(QScriptExtensionInterfa
 void QScriptExtensionInterface_virtbase(QScriptExtensionInterface* src, QFactoryInterface** outptr_QFactoryInterface);
 void QScriptExtensionInterface_Initialize(QScriptExtensionInterface* self, struct miqt_string key, QScriptEngine* engine);
 void QScriptExtensionInterface_OperatorAssign(QScriptExtensionInterface* self, QScriptExtensionInterface* param1);
-void QScriptExtensionInterface_override_virtual_Initialize(void* self, intptr_t slot);
+bool QScriptExtensionInterface_override_virtual_Initialize(void* self, intptr_t slot);
 void QScriptExtensionInterface_virtualbase_Initialize(void* self, struct miqt_string key, QScriptEngine* engine);
-void QScriptExtensionInterface_override_virtual_Keys(void* self, intptr_t slot);
+bool QScriptExtensionInterface_override_virtual_Keys(void* self, intptr_t slot);
 struct miqt_array /* of struct miqt_string */  QScriptExtensionInterface_virtualbase_Keys(const void* self);
-void QScriptExtensionInterface_Delete(QScriptExtensionInterface* self, bool isSubclass);
+void QScriptExtensionInterface_Delete(QScriptExtensionInterface* self);
 
 #ifdef __cplusplus
 } /* extern C */

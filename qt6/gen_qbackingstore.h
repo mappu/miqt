@@ -44,7 +44,7 @@ QRegion* QBackingStore_StaticContents(const QBackingStore* self);
 bool QBackingStore_HasStaticContents(const QBackingStore* self);
 void QBackingStore_Flush2(QBackingStore* self, QRegion* region, QWindow* window);
 void QBackingStore_Flush3(QBackingStore* self, QRegion* region, QWindow* window, QPoint* offset);
-void QBackingStore_Delete(QBackingStore* self, bool isSubclass);
+void QBackingStore_Delete(QBackingStore* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -68,7 +68,7 @@ bool QItemSelectionRange_OperatorLesser(const QItemSelectionRange* self, QItemSe
 bool QItemSelectionRange_IsValid(const QItemSelectionRange* self);
 bool QItemSelectionRange_IsEmpty(const QItemSelectionRange* self);
 struct miqt_array /* of QModelIndex* */  QItemSelectionRange_Indexes(const QItemSelectionRange* self);
-void QItemSelectionRange_Delete(QItemSelectionRange* self, bool isSubclass);
+void QItemSelectionRange_Delete(QItemSelectionRange* self);
 
 QItemSelectionModel* QItemSelectionModel_new();
 QItemSelectionModel* QItemSelectionModel_new2(QAbstractItemModel* model, QObject* parent);
@@ -119,33 +119,33 @@ bool QItemSelectionModel_RowIntersectsSelection2(const QItemSelectionModel* self
 bool QItemSelectionModel_ColumnIntersectsSelection2(const QItemSelectionModel* self, int column, QModelIndex* parent);
 struct miqt_array /* of QModelIndex* */  QItemSelectionModel_SelectedRows1(const QItemSelectionModel* self, int column);
 struct miqt_array /* of QModelIndex* */  QItemSelectionModel_SelectedColumns1(const QItemSelectionModel* self, int row);
-void QItemSelectionModel_override_virtual_SetCurrentIndex(void* self, intptr_t slot);
+bool QItemSelectionModel_override_virtual_SetCurrentIndex(void* self, intptr_t slot);
 void QItemSelectionModel_virtualbase_SetCurrentIndex(void* self, QModelIndex* index, int command);
-void QItemSelectionModel_override_virtual_Select(void* self, intptr_t slot);
+bool QItemSelectionModel_override_virtual_Select(void* self, intptr_t slot);
 void QItemSelectionModel_virtualbase_Select(void* self, QModelIndex* index, int command);
-void QItemSelectionModel_override_virtual_Select2(void* self, intptr_t slot);
+bool QItemSelectionModel_override_virtual_Select2(void* self, intptr_t slot);
 void QItemSelectionModel_virtualbase_Select2(void* self, QItemSelection* selection, int command);
-void QItemSelectionModel_override_virtual_Clear(void* self, intptr_t slot);
+bool QItemSelectionModel_override_virtual_Clear(void* self, intptr_t slot);
 void QItemSelectionModel_virtualbase_Clear(void* self);
-void QItemSelectionModel_override_virtual_Reset(void* self, intptr_t slot);
+bool QItemSelectionModel_override_virtual_Reset(void* self, intptr_t slot);
 void QItemSelectionModel_virtualbase_Reset(void* self);
-void QItemSelectionModel_override_virtual_ClearCurrentIndex(void* self, intptr_t slot);
+bool QItemSelectionModel_override_virtual_ClearCurrentIndex(void* self, intptr_t slot);
 void QItemSelectionModel_virtualbase_ClearCurrentIndex(void* self);
-void QItemSelectionModel_override_virtual_Event(void* self, intptr_t slot);
+bool QItemSelectionModel_override_virtual_Event(void* self, intptr_t slot);
 bool QItemSelectionModel_virtualbase_Event(void* self, QEvent* event);
-void QItemSelectionModel_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QItemSelectionModel_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QItemSelectionModel_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QItemSelectionModel_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QItemSelectionModel_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QItemSelectionModel_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QItemSelectionModel_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QItemSelectionModel_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QItemSelectionModel_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QItemSelectionModel_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QItemSelectionModel_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QItemSelectionModel_virtualbase_CustomEvent(void* self, QEvent* event);
-void QItemSelectionModel_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QItemSelectionModel_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QItemSelectionModel_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QItemSelectionModel_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QItemSelectionModel_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QItemSelectionModel_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QItemSelectionModel_Delete(QItemSelectionModel* self, bool isSubclass);
+void QItemSelectionModel_Delete(QItemSelectionModel* self);
 
 QItemSelection* QItemSelection_new();
 QItemSelection* QItemSelection_new2(QModelIndex* topLeft, QModelIndex* bottomRight);
@@ -155,7 +155,7 @@ struct miqt_array /* of QModelIndex* */  QItemSelection_Indexes(const QItemSelec
 void QItemSelection_Merge(QItemSelection* self, QItemSelection* other, int command);
 void QItemSelection_Split(QItemSelectionRange* rangeVal, QItemSelectionRange* other, QItemSelection* result);
 void QItemSelection_OperatorAssign(QItemSelection* self, QItemSelection* param1);
-void QItemSelection_Delete(QItemSelection* self, bool isSubclass);
+void QItemSelection_Delete(QItemSelection* self);
 
 #ifdef __cplusplus
 } /* extern C */

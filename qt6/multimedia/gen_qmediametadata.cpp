@@ -85,11 +85,7 @@ struct miqt_string QMediaMetaData_MetaDataKeyToString(int k) {
 	return _ms;
 }
 
-void QMediaMetaData_Delete(QMediaMetaData* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMediaMetaData*>( self );
-	} else {
-		delete self;
-	}
+void QMediaMetaData_Delete(QMediaMetaData* self) {
+	delete self;
 }
 

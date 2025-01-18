@@ -81,8 +81,7 @@ const (
 )
 
 type QWebEngineSettings struct {
-	h          *C.QWebEngineSettings
-	isSubclass bool
+	h *C.QWebEngineSettings
 }
 
 func (this *QWebEngineSettings) cPointer() *C.QWebEngineSettings {
@@ -185,7 +184,7 @@ func (this *QWebEngineSettings) ResetUnknownUrlSchemePolicy() {
 
 // Delete this object from C++ memory.
 func (this *QWebEngineSettings) Delete() {
-	C.QWebEngineSettings_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebEngineSettings_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

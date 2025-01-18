@@ -79,21 +79,21 @@ struct miqt_string QToolBox_Tr2(const char* s, const char* c);
 struct miqt_string QToolBox_Tr3(const char* s, const char* c, int n);
 struct miqt_string QToolBox_TrUtf82(const char* s, const char* c);
 struct miqt_string QToolBox_TrUtf83(const char* s, const char* c, int n);
-void QToolBox_override_virtual_Event(void* self, intptr_t slot);
+bool QToolBox_override_virtual_Event(void* self, intptr_t slot);
 bool QToolBox_virtualbase_Event(void* self, QEvent* e);
-void QToolBox_override_virtual_ItemInserted(void* self, intptr_t slot);
+bool QToolBox_override_virtual_ItemInserted(void* self, intptr_t slot);
 void QToolBox_virtualbase_ItemInserted(void* self, int index);
-void QToolBox_override_virtual_ItemRemoved(void* self, intptr_t slot);
+bool QToolBox_override_virtual_ItemRemoved(void* self, intptr_t slot);
 void QToolBox_virtualbase_ItemRemoved(void* self, int index);
-void QToolBox_override_virtual_ShowEvent(void* self, intptr_t slot);
+bool QToolBox_override_virtual_ShowEvent(void* self, intptr_t slot);
 void QToolBox_virtualbase_ShowEvent(void* self, QShowEvent* e);
-void QToolBox_override_virtual_ChangeEvent(void* self, intptr_t slot);
+bool QToolBox_override_virtual_ChangeEvent(void* self, intptr_t slot);
 void QToolBox_virtualbase_ChangeEvent(void* self, QEvent* param1);
-void QToolBox_override_virtual_SizeHint(void* self, intptr_t slot);
+bool QToolBox_override_virtual_SizeHint(void* self, intptr_t slot);
 QSize* QToolBox_virtualbase_SizeHint(const void* self);
-void QToolBox_override_virtual_PaintEvent(void* self, intptr_t slot);
+bool QToolBox_override_virtual_PaintEvent(void* self, intptr_t slot);
 void QToolBox_virtualbase_PaintEvent(void* self, QPaintEvent* param1);
-void QToolBox_Delete(QToolBox* self, bool isSubclass);
+void QToolBox_Delete(QToolBox* self);
 
 #ifdef __cplusplus
 } /* extern C */

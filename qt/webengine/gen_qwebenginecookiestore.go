@@ -17,8 +17,7 @@ import (
 )
 
 type QWebEngineCookieStore struct {
-	h          *C.QWebEngineCookieStore
-	isSubclass bool
+	h *C.QWebEngineCookieStore
 	*qt.QObject
 }
 
@@ -195,7 +194,7 @@ func (this *QWebEngineCookieStore) DeleteCookie2(cookie *network.QNetworkCookie,
 
 // Delete this object from C++ memory.
 func (this *QWebEngineCookieStore) Delete() {
-	C.QWebEngineCookieStore_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebEngineCookieStore_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -208,8 +207,7 @@ func (this *QWebEngineCookieStore) GoGC() {
 }
 
 type QWebEngineCookieStore__FilterRequest struct {
-	h          *C.QWebEngineCookieStore__FilterRequest
-	isSubclass bool
+	h *C.QWebEngineCookieStore__FilterRequest
 }
 
 func (this *QWebEngineCookieStore__FilterRequest) cPointer() *C.QWebEngineCookieStore__FilterRequest {
@@ -243,9 +241,7 @@ func UnsafeNewQWebEngineCookieStore__FilterRequest(h unsafe.Pointer) *QWebEngine
 // NewQWebEngineCookieStore__FilterRequest constructs a new QWebEngineCookieStore::FilterRequest object.
 func NewQWebEngineCookieStore__FilterRequest(param1 *QWebEngineCookieStore__FilterRequest) *QWebEngineCookieStore__FilterRequest {
 
-	ret := newQWebEngineCookieStore__FilterRequest(C.QWebEngineCookieStore__FilterRequest_new(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineCookieStore__FilterRequest(C.QWebEngineCookieStore__FilterRequest_new(param1.cPointer()))
 }
 
 func (this *QWebEngineCookieStore__FilterRequest) OperatorAssign(param1 *QWebEngineCookieStore__FilterRequest) {
@@ -254,7 +250,7 @@ func (this *QWebEngineCookieStore__FilterRequest) OperatorAssign(param1 *QWebEng
 
 // Delete this object from C++ memory.
 func (this *QWebEngineCookieStore__FilterRequest) Delete() {
-	C.QWebEngineCookieStore__FilterRequest_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebEngineCookieStore__FilterRequest_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -160,7 +160,7 @@ QColor* QColor_FromHsl4(int h, int s, int l, int a);
 QColor* QColor_FromHslF4(float h, float s, float l, float a);
 QColor* QColor_Lighter1(const QColor* self, int f);
 QColor* QColor_Darker1(const QColor* self, int f);
-void QColor_Delete(QColor* self, bool isSubclass);
+void QColor_Delete(QColor* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -68,21 +68,21 @@ void QShortcut_connect_ActivatedAmbiguously(QShortcut* self, intptr_t slot);
 bool QShortcut_Event(QShortcut* self, QEvent* e);
 struct miqt_string QShortcut_Tr2(const char* s, const char* c);
 struct miqt_string QShortcut_Tr3(const char* s, const char* c, int n);
-void QShortcut_override_virtual_Event(void* self, intptr_t slot);
+bool QShortcut_override_virtual_Event(void* self, intptr_t slot);
 bool QShortcut_virtualbase_Event(void* self, QEvent* e);
-void QShortcut_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QShortcut_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QShortcut_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QShortcut_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QShortcut_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QShortcut_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QShortcut_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QShortcut_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QShortcut_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QShortcut_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QShortcut_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QShortcut_virtualbase_CustomEvent(void* self, QEvent* event);
-void QShortcut_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QShortcut_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QShortcut_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QShortcut_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QShortcut_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QShortcut_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QShortcut_Delete(QShortcut* self, bool isSubclass);
+void QShortcut_Delete(QShortcut* self);
 
 #ifdef __cplusplus
 } /* extern C */

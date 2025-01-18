@@ -29,13 +29,13 @@ void miqt_exec_callback_QSyntaxHighlighter_DisconnectNotify(void*, intptr_t, QMe
 } /* extern C */
 #endif
 
-class MiqtVirtualQSyntaxHighlighter : public virtual QSyntaxHighlighter {
+class MiqtVirtualQSyntaxHighlighter final : public QSyntaxHighlighter {
 public:
 
 	MiqtVirtualQSyntaxHighlighter(QObject* parent): QSyntaxHighlighter(parent) {};
 	MiqtVirtualQSyntaxHighlighter(QTextDocument* parent): QSyntaxHighlighter(parent) {};
 
-	virtual ~MiqtVirtualQSyntaxHighlighter() = default;
+	virtual ~MiqtVirtualQSyntaxHighlighter() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__HighlightBlock = 0;
@@ -335,71 +335,115 @@ struct miqt_string QSyntaxHighlighter_TrUtf83(const char* s, const char* c, int 
 	return _ms;
 }
 
-void QSyntaxHighlighter_override_virtual_HighlightBlock(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSyntaxHighlighter*>( (QSyntaxHighlighter*)(self) )->handle__HighlightBlock = slot;
+bool QSyntaxHighlighter_override_virtual_HighlightBlock(void* self, intptr_t slot) {
+	MiqtVirtualQSyntaxHighlighter* self_cast = dynamic_cast<MiqtVirtualQSyntaxHighlighter*>( (QSyntaxHighlighter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HighlightBlock = slot;
+	return true;
 }
 
-void QSyntaxHighlighter_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSyntaxHighlighter*>( (QSyntaxHighlighter*)(self) )->handle__Event = slot;
+bool QSyntaxHighlighter_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQSyntaxHighlighter* self_cast = dynamic_cast<MiqtVirtualQSyntaxHighlighter*>( (QSyntaxHighlighter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QSyntaxHighlighter_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQSyntaxHighlighter*)(self) )->virtualbase_Event(event);
 }
 
-void QSyntaxHighlighter_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSyntaxHighlighter*>( (QSyntaxHighlighter*)(self) )->handle__EventFilter = slot;
+bool QSyntaxHighlighter_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQSyntaxHighlighter* self_cast = dynamic_cast<MiqtVirtualQSyntaxHighlighter*>( (QSyntaxHighlighter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QSyntaxHighlighter_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQSyntaxHighlighter*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QSyntaxHighlighter_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSyntaxHighlighter*>( (QSyntaxHighlighter*)(self) )->handle__TimerEvent = slot;
+bool QSyntaxHighlighter_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSyntaxHighlighter* self_cast = dynamic_cast<MiqtVirtualQSyntaxHighlighter*>( (QSyntaxHighlighter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QSyntaxHighlighter_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQSyntaxHighlighter*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QSyntaxHighlighter_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSyntaxHighlighter*>( (QSyntaxHighlighter*)(self) )->handle__ChildEvent = slot;
+bool QSyntaxHighlighter_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSyntaxHighlighter* self_cast = dynamic_cast<MiqtVirtualQSyntaxHighlighter*>( (QSyntaxHighlighter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QSyntaxHighlighter_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQSyntaxHighlighter*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QSyntaxHighlighter_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSyntaxHighlighter*>( (QSyntaxHighlighter*)(self) )->handle__CustomEvent = slot;
+bool QSyntaxHighlighter_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSyntaxHighlighter* self_cast = dynamic_cast<MiqtVirtualQSyntaxHighlighter*>( (QSyntaxHighlighter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QSyntaxHighlighter_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQSyntaxHighlighter*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QSyntaxHighlighter_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSyntaxHighlighter*>( (QSyntaxHighlighter*)(self) )->handle__ConnectNotify = slot;
+bool QSyntaxHighlighter_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQSyntaxHighlighter* self_cast = dynamic_cast<MiqtVirtualQSyntaxHighlighter*>( (QSyntaxHighlighter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QSyntaxHighlighter_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSyntaxHighlighter*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QSyntaxHighlighter_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSyntaxHighlighter*>( (QSyntaxHighlighter*)(self) )->handle__DisconnectNotify = slot;
+bool QSyntaxHighlighter_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQSyntaxHighlighter* self_cast = dynamic_cast<MiqtVirtualQSyntaxHighlighter*>( (QSyntaxHighlighter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QSyntaxHighlighter_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSyntaxHighlighter*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QSyntaxHighlighter_Delete(QSyntaxHighlighter* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSyntaxHighlighter*>( self );
-	} else {
-		delete self;
-	}
+void QSyntaxHighlighter_Delete(QSyntaxHighlighter* self) {
+	delete self;
 }
 

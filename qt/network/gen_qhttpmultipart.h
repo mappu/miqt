@@ -48,7 +48,7 @@ void QHttpPart_SetHeader(QHttpPart* self, int header, QVariant* value);
 void QHttpPart_SetRawHeader(QHttpPart* self, struct miqt_string headerName, struct miqt_string headerValue);
 void QHttpPart_SetBody(QHttpPart* self, struct miqt_string body);
 void QHttpPart_SetBodyDevice(QHttpPart* self, QIODevice* device);
-void QHttpPart_Delete(QHttpPart* self, bool isSubclass);
+void QHttpPart_Delete(QHttpPart* self);
 
 QHttpMultiPart* QHttpMultiPart_new();
 QHttpMultiPart* QHttpMultiPart_new2(int contentType);
@@ -67,21 +67,21 @@ struct miqt_string QHttpMultiPart_Tr2(const char* s, const char* c);
 struct miqt_string QHttpMultiPart_Tr3(const char* s, const char* c, int n);
 struct miqt_string QHttpMultiPart_TrUtf82(const char* s, const char* c);
 struct miqt_string QHttpMultiPart_TrUtf83(const char* s, const char* c, int n);
-void QHttpMultiPart_override_virtual_Event(void* self, intptr_t slot);
+bool QHttpMultiPart_override_virtual_Event(void* self, intptr_t slot);
 bool QHttpMultiPart_virtualbase_Event(void* self, QEvent* event);
-void QHttpMultiPart_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QHttpMultiPart_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QHttpMultiPart_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QHttpMultiPart_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QHttpMultiPart_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QHttpMultiPart_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QHttpMultiPart_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QHttpMultiPart_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QHttpMultiPart_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QHttpMultiPart_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QHttpMultiPart_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QHttpMultiPart_virtualbase_CustomEvent(void* self, QEvent* event);
-void QHttpMultiPart_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QHttpMultiPart_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QHttpMultiPart_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QHttpMultiPart_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QHttpMultiPart_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QHttpMultiPart_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QHttpMultiPart_Delete(QHttpMultiPart* self, bool isSubclass);
+void QHttpMultiPart_Delete(QHttpMultiPart* self);
 
 #ifdef __cplusplus
 } /* extern C */

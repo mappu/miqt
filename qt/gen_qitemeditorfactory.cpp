@@ -32,21 +32,17 @@ void QItemEditorCreatorBase_OperatorAssign(QItemEditorCreatorBase* self, QItemEd
 	self->operator=(*param1);
 }
 
-void QItemEditorCreatorBase_Delete(QItemEditorCreatorBase* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QItemEditorCreatorBase*>( self );
-	} else {
-		delete self;
-	}
+void QItemEditorCreatorBase_Delete(QItemEditorCreatorBase* self) {
+	delete self;
 }
 
-class MiqtVirtualQItemEditorFactory : public virtual QItemEditorFactory {
+class MiqtVirtualQItemEditorFactory final : public QItemEditorFactory {
 public:
 
 	MiqtVirtualQItemEditorFactory(): QItemEditorFactory() {};
 	MiqtVirtualQItemEditorFactory(const QItemEditorFactory& param1): QItemEditorFactory(param1) {};
 
-	virtual ~MiqtVirtualQItemEditorFactory() = default;
+	virtual ~MiqtVirtualQItemEditorFactory() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__CreateEditor = 0;
@@ -136,27 +132,35 @@ void QItemEditorFactory_SetDefaultFactory(QItemEditorFactory* factory) {
 	QItemEditorFactory::setDefaultFactory(factory);
 }
 
-void QItemEditorFactory_override_virtual_CreateEditor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemEditorFactory*>( (QItemEditorFactory*)(self) )->handle__CreateEditor = slot;
+bool QItemEditorFactory_override_virtual_CreateEditor(void* self, intptr_t slot) {
+	MiqtVirtualQItemEditorFactory* self_cast = dynamic_cast<MiqtVirtualQItemEditorFactory*>( (QItemEditorFactory*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CreateEditor = slot;
+	return true;
 }
 
 QWidget* QItemEditorFactory_virtualbase_CreateEditor(const void* self, int userType, QWidget* parent) {
 	return ( (const MiqtVirtualQItemEditorFactory*)(self) )->virtualbase_CreateEditor(userType, parent);
 }
 
-void QItemEditorFactory_override_virtual_ValuePropertyName(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemEditorFactory*>( (QItemEditorFactory*)(self) )->handle__ValuePropertyName = slot;
+bool QItemEditorFactory_override_virtual_ValuePropertyName(void* self, intptr_t slot) {
+	MiqtVirtualQItemEditorFactory* self_cast = dynamic_cast<MiqtVirtualQItemEditorFactory*>( (QItemEditorFactory*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ValuePropertyName = slot;
+	return true;
 }
 
 struct miqt_string QItemEditorFactory_virtualbase_ValuePropertyName(const void* self, int userType) {
 	return ( (const MiqtVirtualQItemEditorFactory*)(self) )->virtualbase_ValuePropertyName(userType);
 }
 
-void QItemEditorFactory_Delete(QItemEditorFactory* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQItemEditorFactory*>( self );
-	} else {
-		delete self;
-	}
+void QItemEditorFactory_Delete(QItemEditorFactory* self) {
+	delete self;
 }
 

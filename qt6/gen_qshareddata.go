@@ -14,8 +14,7 @@ import (
 )
 
 type QSharedData struct {
-	h          *C.QSharedData
-	isSubclass bool
+	h *C.QSharedData
 }
 
 func (this *QSharedData) cPointer() *C.QSharedData {
@@ -49,22 +48,18 @@ func UnsafeNewQSharedData(h unsafe.Pointer) *QSharedData {
 // NewQSharedData constructs a new QSharedData object.
 func NewQSharedData() *QSharedData {
 
-	ret := newQSharedData(C.QSharedData_new())
-	ret.isSubclass = true
-	return ret
+	return newQSharedData(C.QSharedData_new())
 }
 
 // NewQSharedData2 constructs a new QSharedData object.
 func NewQSharedData2(param1 *QSharedData) *QSharedData {
 
-	ret := newQSharedData(C.QSharedData_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSharedData(C.QSharedData_new2(param1.cPointer()))
 }
 
 // Delete this object from C++ memory.
 func (this *QSharedData) Delete() {
-	C.QSharedData_Delete(this.h, C.bool(this.isSubclass))
+	C.QSharedData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -77,8 +72,7 @@ func (this *QSharedData) GoGC() {
 }
 
 type QAdoptSharedDataTag struct {
-	h          *C.QAdoptSharedDataTag
-	isSubclass bool
+	h *C.QAdoptSharedDataTag
 }
 
 func (this *QAdoptSharedDataTag) cPointer() *C.QAdoptSharedDataTag {
@@ -112,14 +106,12 @@ func UnsafeNewQAdoptSharedDataTag(h unsafe.Pointer) *QAdoptSharedDataTag {
 // NewQAdoptSharedDataTag constructs a new QAdoptSharedDataTag object.
 func NewQAdoptSharedDataTag() *QAdoptSharedDataTag {
 
-	ret := newQAdoptSharedDataTag(C.QAdoptSharedDataTag_new())
-	ret.isSubclass = true
-	return ret
+	return newQAdoptSharedDataTag(C.QAdoptSharedDataTag_new())
 }
 
 // Delete this object from C++ memory.
 func (this *QAdoptSharedDataTag) Delete() {
-	C.QAdoptSharedDataTag_Delete(this.h, C.bool(this.isSubclass))
+	C.QAdoptSharedDataTag_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

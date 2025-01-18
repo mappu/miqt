@@ -175,11 +175,7 @@ struct miqt_string QVideoDeviceSelectorControl_TrUtf83(const char* s, const char
 	return _ms;
 }
 
-void QVideoDeviceSelectorControl_Delete(QVideoDeviceSelectorControl* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QVideoDeviceSelectorControl*>( self );
-	} else {
-		delete self;
-	}
+void QVideoDeviceSelectorControl_Delete(QVideoDeviceSelectorControl* self) {
+	delete self;
 }
 

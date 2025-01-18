@@ -109,11 +109,7 @@ QMimeType* QMimeDatabase_MimeTypeForFile22(const QMimeDatabase* self, QFileInfo*
 	return new QMimeType(self->mimeTypeForFile(*fileInfo, static_cast<QMimeDatabase::MatchMode>(mode)));
 }
 
-void QMimeDatabase_Delete(QMimeDatabase* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMimeDatabase*>( self );
-	} else {
-		delete self;
-	}
+void QMimeDatabase_Delete(QMimeDatabase* self) {
+	delete self;
 }
 

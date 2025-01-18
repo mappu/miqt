@@ -14,8 +14,7 @@ import (
 )
 
 type QStringDataPtr struct {
-	h          *C.QStringDataPtr
-	isSubclass bool
+	h *C.QStringDataPtr
 }
 
 func (this *QStringDataPtr) cPointer() *C.QStringDataPtr {
@@ -48,7 +47,7 @@ func UnsafeNewQStringDataPtr(h unsafe.Pointer) *QStringDataPtr {
 
 // Delete this object from C++ memory.
 func (this *QStringDataPtr) Delete() {
-	C.QStringDataPtr_Delete(this.h, C.bool(this.isSubclass))
+	C.QStringDataPtr_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

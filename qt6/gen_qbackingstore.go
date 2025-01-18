@@ -14,8 +14,7 @@ import (
 )
 
 type QBackingStore struct {
-	h          *C.QBackingStore
-	isSubclass bool
+	h *C.QBackingStore
 }
 
 func (this *QBackingStore) cPointer() *C.QBackingStore {
@@ -49,9 +48,7 @@ func UnsafeNewQBackingStore(h unsafe.Pointer) *QBackingStore {
 // NewQBackingStore constructs a new QBackingStore object.
 func NewQBackingStore(window *QWindow) *QBackingStore {
 
-	ret := newQBackingStore(C.QBackingStore_new(window.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQBackingStore(C.QBackingStore_new(window.cPointer()))
 }
 
 func (this *QBackingStore) Window() *QWindow {
@@ -112,7 +109,7 @@ func (this *QBackingStore) Flush3(region *QRegion, window *QWindow, offset *QPoi
 
 // Delete this object from C++ memory.
 func (this *QBackingStore) Delete() {
-	C.QBackingStore_Delete(this.h, C.bool(this.isSubclass))
+	C.QBackingStore_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

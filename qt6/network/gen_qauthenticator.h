@@ -38,7 +38,7 @@ struct miqt_map /* of struct miqt_string to QVariant* */  QAuthenticator_Options
 void QAuthenticator_SetOption(QAuthenticator* self, struct miqt_string opt, QVariant* value);
 bool QAuthenticator_IsNull(const QAuthenticator* self);
 void QAuthenticator_Detach(QAuthenticator* self);
-void QAuthenticator_Delete(QAuthenticator* self, bool isSubclass);
+void QAuthenticator_Delete(QAuthenticator* self);
 
 #ifdef __cplusplus
 } /* extern C */

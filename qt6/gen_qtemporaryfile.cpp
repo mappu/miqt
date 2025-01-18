@@ -25,7 +25,7 @@ bool miqt_exec_callback_QTemporaryFile_SetPermissions(void*, intptr_t, int);
 } /* extern C */
 #endif
 
-class MiqtVirtualQTemporaryFile : public virtual QTemporaryFile {
+class MiqtVirtualQTemporaryFile final : public QTemporaryFile {
 public:
 
 	MiqtVirtualQTemporaryFile(): QTemporaryFile() {};
@@ -33,7 +33,7 @@ public:
 	MiqtVirtualQTemporaryFile(QObject* parent): QTemporaryFile(parent) {};
 	MiqtVirtualQTemporaryFile(const QString& templateName, QObject* parent): QTemporaryFile(templateName, parent) {};
 
-	virtual ~MiqtVirtualQTemporaryFile() = default;
+	virtual ~MiqtVirtualQTemporaryFile() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__FileName = 0;
@@ -301,59 +301,91 @@ struct miqt_string QTemporaryFile_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QTemporaryFile_override_virtual_FileName(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) )->handle__FileName = slot;
+bool QTemporaryFile_override_virtual_FileName(void* self, intptr_t slot) {
+	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FileName = slot;
+	return true;
 }
 
 struct miqt_string QTemporaryFile_virtualbase_FileName(const void* self) {
 	return ( (const MiqtVirtualQTemporaryFile*)(self) )->virtualbase_FileName();
 }
 
-void QTemporaryFile_override_virtual_OpenWithFlags(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) )->handle__OpenWithFlags = slot;
+bool QTemporaryFile_override_virtual_OpenWithFlags(void* self, intptr_t slot) {
+	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__OpenWithFlags = slot;
+	return true;
 }
 
 bool QTemporaryFile_virtualbase_OpenWithFlags(void* self, int flags) {
 	return ( (MiqtVirtualQTemporaryFile*)(self) )->virtualbase_OpenWithFlags(flags);
 }
 
-void QTemporaryFile_override_virtual_Size(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) )->handle__Size = slot;
+bool QTemporaryFile_override_virtual_Size(void* self, intptr_t slot) {
+	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Size = slot;
+	return true;
 }
 
 long long QTemporaryFile_virtualbase_Size(const void* self) {
 	return ( (const MiqtVirtualQTemporaryFile*)(self) )->virtualbase_Size();
 }
 
-void QTemporaryFile_override_virtual_Resize(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) )->handle__Resize = slot;
+bool QTemporaryFile_override_virtual_Resize(void* self, intptr_t slot) {
+	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Resize = slot;
+	return true;
 }
 
 bool QTemporaryFile_virtualbase_Resize(void* self, long long sz) {
 	return ( (MiqtVirtualQTemporaryFile*)(self) )->virtualbase_Resize(sz);
 }
 
-void QTemporaryFile_override_virtual_Permissions(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) )->handle__Permissions = slot;
+bool QTemporaryFile_override_virtual_Permissions(void* self, intptr_t slot) {
+	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Permissions = slot;
+	return true;
 }
 
 int QTemporaryFile_virtualbase_Permissions(const void* self) {
 	return ( (const MiqtVirtualQTemporaryFile*)(self) )->virtualbase_Permissions();
 }
 
-void QTemporaryFile_override_virtual_SetPermissions(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) )->handle__SetPermissions = slot;
+bool QTemporaryFile_override_virtual_SetPermissions(void* self, intptr_t slot) {
+	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetPermissions = slot;
+	return true;
 }
 
 bool QTemporaryFile_virtualbase_SetPermissions(void* self, int permissionSpec) {
 	return ( (MiqtVirtualQTemporaryFile*)(self) )->virtualbase_SetPermissions(permissionSpec);
 }
 
-void QTemporaryFile_Delete(QTemporaryFile* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQTemporaryFile*>( self );
-	} else {
-		delete self;
-	}
+void QTemporaryFile_Delete(QTemporaryFile* self) {
+	delete self;
 }
 

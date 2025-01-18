@@ -16,8 +16,7 @@ import (
 )
 
 type QVideoDeviceSelectorControl struct {
-	h          *C.QVideoDeviceSelectorControl
-	isSubclass bool
+	h *C.QVideoDeviceSelectorControl
 	*QMediaControl
 }
 
@@ -220,7 +219,7 @@ func QVideoDeviceSelectorControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QVideoDeviceSelectorControl) Delete() {
-	C.QVideoDeviceSelectorControl_Delete(this.h, C.bool(this.isSubclass))
+	C.QVideoDeviceSelectorControl_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

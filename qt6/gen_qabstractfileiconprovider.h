@@ -30,17 +30,17 @@ QIcon* QAbstractFileIconProvider_IconWithQFileInfo(const QAbstractFileIconProvid
 struct miqt_string QAbstractFileIconProvider_Type(const QAbstractFileIconProvider* self, QFileInfo* param1);
 void QAbstractFileIconProvider_SetOptions(QAbstractFileIconProvider* self, int options);
 int QAbstractFileIconProvider_Options(const QAbstractFileIconProvider* self);
-void QAbstractFileIconProvider_override_virtual_Icon(void* self, intptr_t slot);
+bool QAbstractFileIconProvider_override_virtual_Icon(void* self, intptr_t slot);
 QIcon* QAbstractFileIconProvider_virtualbase_Icon(const void* self, int param1);
-void QAbstractFileIconProvider_override_virtual_IconWithQFileInfo(void* self, intptr_t slot);
+bool QAbstractFileIconProvider_override_virtual_IconWithQFileInfo(void* self, intptr_t slot);
 QIcon* QAbstractFileIconProvider_virtualbase_IconWithQFileInfo(const void* self, QFileInfo* param1);
-void QAbstractFileIconProvider_override_virtual_Type(void* self, intptr_t slot);
+bool QAbstractFileIconProvider_override_virtual_Type(void* self, intptr_t slot);
 struct miqt_string QAbstractFileIconProvider_virtualbase_Type(const void* self, QFileInfo* param1);
-void QAbstractFileIconProvider_override_virtual_SetOptions(void* self, intptr_t slot);
+bool QAbstractFileIconProvider_override_virtual_SetOptions(void* self, intptr_t slot);
 void QAbstractFileIconProvider_virtualbase_SetOptions(void* self, int options);
-void QAbstractFileIconProvider_override_virtual_Options(void* self, intptr_t slot);
+bool QAbstractFileIconProvider_override_virtual_Options(void* self, intptr_t slot);
 int QAbstractFileIconProvider_virtualbase_Options(const void* self);
-void QAbstractFileIconProvider_Delete(QAbstractFileIconProvider* self, bool isSubclass);
+void QAbstractFileIconProvider_Delete(QAbstractFileIconProvider* self);
 
 #ifdef __cplusplus
 } /* extern C */

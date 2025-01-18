@@ -45,13 +45,13 @@ bool miqt_exec_callback_QGuiApplication_Event(void*, intptr_t, QEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQGuiApplication : public virtual QGuiApplication {
+class MiqtVirtualQGuiApplication final : public QGuiApplication {
 public:
 
 	MiqtVirtualQGuiApplication(int& argc, char** argv): QGuiApplication(argc, argv) {};
 	MiqtVirtualQGuiApplication(int& argc, char** argv, int param3): QGuiApplication(argc, argv, param3) {};
 
-	virtual ~MiqtVirtualQGuiApplication() = default;
+	virtual ~MiqtVirtualQGuiApplication() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Notify = 0;
@@ -624,27 +624,35 @@ struct miqt_string QGuiApplication_TrUtf83(const char* s, const char* c, int n) 
 	return _ms;
 }
 
-void QGuiApplication_override_virtual_Notify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) )->handle__Notify = slot;
+bool QGuiApplication_override_virtual_Notify(void* self, intptr_t slot) {
+	MiqtVirtualQGuiApplication* self_cast = dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Notify = slot;
+	return true;
 }
 
 bool QGuiApplication_virtualbase_Notify(void* self, QObject* param1, QEvent* param2) {
 	return ( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_Notify(param1, param2);
 }
 
-void QGuiApplication_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) )->handle__Event = slot;
+bool QGuiApplication_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQGuiApplication* self_cast = dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QGuiApplication_virtualbase_Event(void* self, QEvent* param1) {
 	return ( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_Event(param1);
 }
 
-void QGuiApplication_Delete(QGuiApplication* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGuiApplication*>( self );
-	} else {
-		delete self;
-	}
+void QGuiApplication_Delete(QGuiApplication* self) {
+	delete self;
 }
 

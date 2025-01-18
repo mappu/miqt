@@ -72,7 +72,7 @@ struct miqt_string QAudioDecoderControl_Tr2(const char* s, const char* c);
 struct miqt_string QAudioDecoderControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QAudioDecoderControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QAudioDecoderControl_TrUtf83(const char* s, const char* c, int n);
-void QAudioDecoderControl_Delete(QAudioDecoderControl* self, bool isSubclass);
+void QAudioDecoderControl_Delete(QAudioDecoderControl* self);
 
 #ifdef __cplusplus
 } /* extern C */

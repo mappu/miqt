@@ -40,11 +40,7 @@ QStyle* QStyleFactory_Create(struct miqt_string param1) {
 	return QStyleFactory::create(param1_QString);
 }
 
-void QStyleFactory_Delete(QStyleFactory* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QStyleFactory*>( self );
-	} else {
-		delete self;
-	}
+void QStyleFactory_Delete(QStyleFactory* self) {
+	delete self;
 }
 

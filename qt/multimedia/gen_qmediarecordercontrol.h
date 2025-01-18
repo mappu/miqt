@@ -62,7 +62,7 @@ struct miqt_string QMediaRecorderControl_Tr2(const char* s, const char* c);
 struct miqt_string QMediaRecorderControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QMediaRecorderControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QMediaRecorderControl_TrUtf83(const char* s, const char* c, int n);
-void QMediaRecorderControl_Delete(QMediaRecorderControl* self, bool isSubclass);
+void QMediaRecorderControl_Delete(QMediaRecorderControl* self);
 
 #ifdef __cplusplus
 } /* extern C */

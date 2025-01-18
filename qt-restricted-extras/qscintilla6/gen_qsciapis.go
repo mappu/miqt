@@ -16,8 +16,7 @@ import (
 )
 
 type QsciAPIs struct {
-	h          *C.QsciAPIs
-	isSubclass bool
+	h *C.QsciAPIs
 	*QsciAbstractAPIs
 }
 
@@ -55,9 +54,7 @@ func UnsafeNewQsciAPIs(h unsafe.Pointer) *QsciAPIs {
 // NewQsciAPIs constructs a new QsciAPIs object.
 func NewQsciAPIs(lexer *QsciLexer) *QsciAPIs {
 
-	ret := newQsciAPIs(C.QsciAPIs_new(lexer.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQsciAPIs(C.QsciAPIs_new(lexer.cPointer()))
 }
 
 func (this *QsciAPIs) MetaObject() *qt6.QMetaObject {
@@ -335,10 +332,10 @@ func (this *QsciAPIs) callVirtualBase_UpdateAutoCompletionList(context []string,
 
 }
 func (this *QsciAPIs) OnUpdateAutoCompletionList(slot func(super func(context []string, list []string), context []string, list []string)) {
-	if !this.isSubclass {
+	ok := C.QsciAPIs_override_virtual_UpdateAutoCompletionList(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciAPIs_override_virtual_UpdateAutoCompletionList(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciAPIs_UpdateAutoCompletionList
@@ -385,10 +382,10 @@ func (this *QsciAPIs) callVirtualBase_AutoCompletionSelected(sel string) {
 
 }
 func (this *QsciAPIs) OnAutoCompletionSelected(slot func(super func(sel string), sel string)) {
-	if !this.isSubclass {
+	ok := C.QsciAPIs_override_virtual_AutoCompletionSelected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciAPIs_override_virtual_AutoCompletionSelected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciAPIs_AutoCompletionSelected
@@ -439,10 +436,10 @@ func (this *QsciAPIs) callVirtualBase_CallTips(context []string, commas int, sty
 
 }
 func (this *QsciAPIs) OnCallTips(slot func(super func(context []string, commas int, style QsciScintilla__CallTipsStyle, shifts []int) []string, context []string, commas int, style QsciScintilla__CallTipsStyle, shifts []int) []string) {
-	if !this.isSubclass {
+	ok := C.QsciAPIs_override_virtual_CallTips(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciAPIs_override_virtual_CallTips(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciAPIs_CallTips
@@ -498,10 +495,10 @@ func (this *QsciAPIs) callVirtualBase_Event(e *qt6.QEvent) bool {
 
 }
 func (this *QsciAPIs) OnEvent(slot func(super func(e *qt6.QEvent) bool, e *qt6.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QsciAPIs_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciAPIs_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciAPIs_Event
@@ -522,7 +519,7 @@ func miqt_exec_callback_QsciAPIs_Event(self *C.QsciAPIs, cb C.intptr_t, e *C.QEv
 
 // Delete this object from C++ memory.
 func (this *QsciAPIs) Delete() {
-	C.QsciAPIs_Delete(this.h, C.bool(this.isSubclass))
+	C.QsciAPIs_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

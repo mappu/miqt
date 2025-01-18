@@ -65,8 +65,7 @@ const (
 )
 
 type QCameraExposure struct {
-	h          *C.QCameraExposure
-	isSubclass bool
+	h *C.QCameraExposure
 	*qt.QObject
 }
 

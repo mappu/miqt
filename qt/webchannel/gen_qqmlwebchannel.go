@@ -15,8 +15,7 @@ import (
 )
 
 type QQmlWebChannel struct {
-	h          *C.QQmlWebChannel
-	isSubclass bool
+	h *C.QQmlWebChannel
 	*QWebChannel
 }
 
@@ -54,17 +53,13 @@ func UnsafeNewQQmlWebChannel(h unsafe.Pointer) *QQmlWebChannel {
 // NewQQmlWebChannel constructs a new QQmlWebChannel object.
 func NewQQmlWebChannel() *QQmlWebChannel {
 
-	ret := newQQmlWebChannel(C.QQmlWebChannel_new())
-	ret.isSubclass = true
-	return ret
+	return newQQmlWebChannel(C.QQmlWebChannel_new())
 }
 
 // NewQQmlWebChannel2 constructs a new QQmlWebChannel object.
 func NewQQmlWebChannel2(parent *qt.QObject) *QQmlWebChannel {
 
-	ret := newQQmlWebChannel(C.QQmlWebChannel_new2((*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQQmlWebChannel(C.QQmlWebChannel_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QQmlWebChannel) MetaObject() *qt.QMetaObject {
@@ -172,7 +167,7 @@ func QQmlWebChannel_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QQmlWebChannel) Delete() {
-	C.QQmlWebChannel_Delete(this.h, C.bool(this.isSubclass))
+	C.QQmlWebChannel_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -22,8 +22,7 @@ const (
 )
 
 type QPagedPaintDevice struct {
-	h          *C.QPagedPaintDevice
-	isSubclass bool
+	h *C.QPagedPaintDevice
 	*QPaintDevice
 }
 
@@ -96,7 +95,7 @@ func (this *QPagedPaintDevice) PageRanges() *QPageRanges {
 
 // Delete this object from C++ memory.
 func (this *QPagedPaintDevice) Delete() {
-	C.QPagedPaintDevice_Delete(this.h, C.bool(this.isSubclass))
+	C.QPagedPaintDevice_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

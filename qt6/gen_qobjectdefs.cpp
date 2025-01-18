@@ -26,12 +26,8 @@ extern "C" {
 } /* extern C */
 #endif
 
-void QMethodRawArguments_Delete(QMethodRawArguments* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMethodRawArguments*>( self );
-	} else {
-		delete self;
-	}
+void QMethodRawArguments_Delete(QMethodRawArguments* self) {
+	delete self;
 }
 
 QGenericArgument* QGenericArgument_new() {
@@ -58,12 +54,8 @@ const char* QGenericArgument_Name(const QGenericArgument* self) {
 	return (const char*) self->name();
 }
 
-void QGenericArgument_Delete(QGenericArgument* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QGenericArgument*>( self );
-	} else {
-		delete self;
-	}
+void QGenericArgument_Delete(QGenericArgument* self) {
+	delete self;
 }
 
 QGenericReturnArgument* QGenericReturnArgument_new() {
@@ -86,12 +78,8 @@ void QGenericReturnArgument_virtbase(QGenericReturnArgument* src, QGenericArgume
 	*outptr_QGenericArgument = static_cast<QGenericArgument*>(src);
 }
 
-void QGenericReturnArgument_Delete(QGenericReturnArgument* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QGenericReturnArgument*>( self );
-	} else {
-		delete self;
-	}
+void QGenericReturnArgument_Delete(QGenericReturnArgument* self) {
+	delete self;
 }
 
 QMetaObject* QMetaObject_new() {
@@ -506,12 +494,8 @@ QObject* QMetaObject_NewInstance10(const QMetaObject* self, QGenericArgument* va
 	return self->newInstance(*val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7, *val8, *val9);
 }
 
-void QMetaObject_Delete(QMetaObject* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMetaObject*>( self );
-	} else {
-		delete self;
-	}
+void QMetaObject_Delete(QMetaObject* self) {
+	delete self;
 }
 
 QMetaObject__Connection* QMetaObject__Connection_new() {
@@ -530,12 +514,8 @@ void QMetaObject__Connection_Swap(QMetaObject__Connection* self, QMetaObject__Co
 	self->swap(*other);
 }
 
-void QMetaObject__Connection_Delete(QMetaObject__Connection* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMetaObject::Connection*>( self );
-	} else {
-		delete self;
-	}
+void QMetaObject__Connection_Delete(QMetaObject__Connection* self) {
+	delete self;
 }
 
 QMetaObject__SuperData* QMetaObject__SuperData_new() {
@@ -562,12 +542,8 @@ void QMetaObject__SuperData_OperatorAssign(QMetaObject__SuperData* self, QMetaOb
 	self->operator=(*param1);
 }
 
-void QMetaObject__SuperData_Delete(QMetaObject__SuperData* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMetaObject::SuperData*>( self );
-	} else {
-		delete self;
-	}
+void QMetaObject__SuperData_Delete(QMetaObject__SuperData* self) {
+	delete self;
 }
 
 QMetaObject__Data* QMetaObject__Data_new() {
@@ -582,11 +558,7 @@ void QMetaObject__Data_OperatorAssign(QMetaObject__Data* self, QMetaObject__Data
 	self->operator=(*param1);
 }
 
-void QMetaObject__Data_Delete(QMetaObject__Data* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMetaObject::Data*>( self );
-	} else {
-		delete self;
-	}
+void QMetaObject__Data_Delete(QMetaObject__Data* self) {
+	delete self;
 }
 

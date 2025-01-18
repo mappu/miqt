@@ -39,13 +39,13 @@ void QEvent_Accept(QEvent* self);
 void QEvent_Ignore(QEvent* self);
 int QEvent_RegisterEventType();
 int QEvent_RegisterEventType1(int hint);
-void QEvent_Delete(QEvent* self, bool isSubclass);
+void QEvent_Delete(QEvent* self);
 
 QTimerEvent* QTimerEvent_new(int timerId);
 QTimerEvent* QTimerEvent_new2(QTimerEvent* param1);
 void QTimerEvent_virtbase(QTimerEvent* src, QEvent** outptr_QEvent);
 int QTimerEvent_TimerId(const QTimerEvent* self);
-void QTimerEvent_Delete(QTimerEvent* self, bool isSubclass);
+void QTimerEvent_Delete(QTimerEvent* self);
 
 QChildEvent* QChildEvent_new(int typeVal, QObject* child);
 QChildEvent* QChildEvent_new2(QChildEvent* param1);
@@ -54,13 +54,13 @@ QObject* QChildEvent_Child(const QChildEvent* self);
 bool QChildEvent_Added(const QChildEvent* self);
 bool QChildEvent_Polished(const QChildEvent* self);
 bool QChildEvent_Removed(const QChildEvent* self);
-void QChildEvent_Delete(QChildEvent* self, bool isSubclass);
+void QChildEvent_Delete(QChildEvent* self);
 
 QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_new(struct miqt_string name);
 QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_new2(QDynamicPropertyChangeEvent* param1);
 void QDynamicPropertyChangeEvent_virtbase(QDynamicPropertyChangeEvent* src, QEvent** outptr_QEvent);
 struct miqt_string QDynamicPropertyChangeEvent_PropertyName(const QDynamicPropertyChangeEvent* self);
-void QDynamicPropertyChangeEvent_Delete(QDynamicPropertyChangeEvent* self, bool isSubclass);
+void QDynamicPropertyChangeEvent_Delete(QDynamicPropertyChangeEvent* self);
 
 #ifdef __cplusplus
 } /* extern C */

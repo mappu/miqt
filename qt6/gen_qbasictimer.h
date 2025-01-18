@@ -29,7 +29,7 @@ int QBasicTimer_TimerId(const QBasicTimer* self);
 void QBasicTimer_Start(QBasicTimer* self, int msec, QObject* obj);
 void QBasicTimer_Start2(QBasicTimer* self, int msec, int timerType, QObject* obj);
 void QBasicTimer_Stop(QBasicTimer* self);
-void QBasicTimer_Delete(QBasicTimer* self, bool isSubclass);
+void QBasicTimer_Delete(QBasicTimer* self);
 
 #ifdef __cplusplus
 } /* extern C */

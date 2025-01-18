@@ -15,8 +15,7 @@ import (
 )
 
 type QAuthenticator struct {
-	h          *C.QAuthenticator
-	isSubclass bool
+	h *C.QAuthenticator
 }
 
 func (this *QAuthenticator) cPointer() *C.QAuthenticator {
@@ -50,17 +49,13 @@ func UnsafeNewQAuthenticator(h unsafe.Pointer) *QAuthenticator {
 // NewQAuthenticator constructs a new QAuthenticator object.
 func NewQAuthenticator() *QAuthenticator {
 
-	ret := newQAuthenticator(C.QAuthenticator_new())
-	ret.isSubclass = true
-	return ret
+	return newQAuthenticator(C.QAuthenticator_new())
 }
 
 // NewQAuthenticator2 constructs a new QAuthenticator object.
 func NewQAuthenticator2(other *QAuthenticator) *QAuthenticator {
 
-	ret := newQAuthenticator(C.QAuthenticator_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQAuthenticator(C.QAuthenticator_new2(other.cPointer()))
 }
 
 func (this *QAuthenticator) OperatorAssign(other *QAuthenticator) {
@@ -167,7 +162,7 @@ func (this *QAuthenticator) Detach() {
 
 // Delete this object from C++ memory.
 func (this *QAuthenticator) Delete() {
-	C.QAuthenticator_Delete(this.h, C.bool(this.isSubclass))
+	C.QAuthenticator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

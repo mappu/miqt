@@ -272,11 +272,7 @@ QPrinterInfo* QPrinterInfo_PrinterInfo(struct miqt_string printerName) {
 	return new QPrinterInfo(QPrinterInfo::printerInfo(printerName_QString));
 }
 
-void QPrinterInfo_Delete(QPrinterInfo* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPrinterInfo*>( self );
-	} else {
-		delete self;
-	}
+void QPrinterInfo_Delete(QPrinterInfo* self) {
+	delete self;
 }
 

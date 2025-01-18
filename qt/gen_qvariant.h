@@ -206,13 +206,13 @@ unsigned long long QVariant_ToULongLong1(const QVariant* self, bool* ok);
 double QVariant_ToDouble1(const QVariant* self, bool* ok);
 float QVariant_ToFloat1(const QVariant* self, bool* ok);
 double QVariant_ToReal1(const QVariant* self, bool* ok);
-void QVariant_Delete(QVariant* self, bool isSubclass);
+void QVariant_Delete(QVariant* self);
 
 QVariantComparisonHelper* QVariantComparisonHelper_new(QVariant* varVal);
 QVariantComparisonHelper* QVariantComparisonHelper_new2(QVariantComparisonHelper* param1);
-void QVariantComparisonHelper_Delete(QVariantComparisonHelper* self, bool isSubclass);
+void QVariantComparisonHelper_Delete(QVariantComparisonHelper* self);
 
-void QVariant__Handler_Delete(QVariant__Handler* self, bool isSubclass);
+void QVariant__Handler_Delete(QVariant__Handler* self);
 
 QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_new(QSequentialIterable__const_iterator* other);
 void QSequentialIterable__const_iterator_OperatorAssign(QSequentialIterable__const_iterator* self, QSequentialIterable__const_iterator* other);
@@ -227,7 +227,7 @@ QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_Operato
 QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorMinusAssign(QSequentialIterable__const_iterator* self, int j);
 QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorPlus(const QSequentialIterable__const_iterator* self, int j);
 QSequentialIterable__const_iterator* QSequentialIterable__const_iterator_OperatorMinus(const QSequentialIterable__const_iterator* self, int j);
-void QSequentialIterable__const_iterator_Delete(QSequentialIterable__const_iterator* self, bool isSubclass);
+void QSequentialIterable__const_iterator_Delete(QSequentialIterable__const_iterator* self);
 
 QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_new(QAssociativeIterable__const_iterator* other);
 void QAssociativeIterable__const_iterator_OperatorAssign(QAssociativeIterable__const_iterator* self, QAssociativeIterable__const_iterator* other);
@@ -244,7 +244,7 @@ QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_Opera
 QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorMinusAssign(QAssociativeIterable__const_iterator* self, int j);
 QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorPlus(const QAssociativeIterable__const_iterator* self, int j);
 QAssociativeIterable__const_iterator* QAssociativeIterable__const_iterator_OperatorMinus(const QAssociativeIterable__const_iterator* self, int j);
-void QAssociativeIterable__const_iterator_Delete(QAssociativeIterable__const_iterator* self, bool isSubclass);
+void QAssociativeIterable__const_iterator_Delete(QAssociativeIterable__const_iterator* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -234,11 +234,7 @@ QVariant* QRegion_ToQVariant(const QRegion* self) {
 	return new QVariant(self->operator QVariant());
 }
 
-void QRegion_Delete(QRegion* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QRegion*>( self );
-	} else {
-		delete self;
-	}
+void QRegion_Delete(QRegion* self) {
+	delete self;
 }
 

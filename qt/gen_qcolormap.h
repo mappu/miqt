@@ -34,7 +34,7 @@ unsigned int QColormap_Pixel(const QColormap* self, QColor* color);
 QColor* QColormap_ColorAt(const QColormap* self, unsigned int pixel);
 struct miqt_array /* of QColor* */  QColormap_Colormap(const QColormap* self);
 QColormap* QColormap_Instance1(int screen);
-void QColormap_Delete(QColormap* self, bool isSubclass);
+void QColormap_Delete(QColormap* self);
 
 #ifdef __cplusplus
 } /* extern C */

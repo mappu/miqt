@@ -112,25 +112,25 @@ void QMediaPlaylist_Load2(QMediaPlaylist* self, QNetworkRequest* request, const 
 void QMediaPlaylist_Load22(QMediaPlaylist* self, QUrl* location, const char* format);
 void QMediaPlaylist_Load23(QMediaPlaylist* self, QIODevice* device, const char* format);
 bool QMediaPlaylist_Save22(QMediaPlaylist* self, QUrl* location, const char* format);
-void QMediaPlaylist_override_virtual_MediaObject(void* self, intptr_t slot);
+bool QMediaPlaylist_override_virtual_MediaObject(void* self, intptr_t slot);
 QMediaObject* QMediaPlaylist_virtualbase_MediaObject(const void* self);
-void QMediaPlaylist_override_virtual_SetMediaObject(void* self, intptr_t slot);
+bool QMediaPlaylist_override_virtual_SetMediaObject(void* self, intptr_t slot);
 bool QMediaPlaylist_virtualbase_SetMediaObject(void* self, QMediaObject* object);
-void QMediaPlaylist_override_virtual_Event(void* self, intptr_t slot);
+bool QMediaPlaylist_override_virtual_Event(void* self, intptr_t slot);
 bool QMediaPlaylist_virtualbase_Event(void* self, QEvent* event);
-void QMediaPlaylist_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QMediaPlaylist_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QMediaPlaylist_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QMediaPlaylist_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QMediaPlaylist_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QMediaPlaylist_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QMediaPlaylist_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QMediaPlaylist_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QMediaPlaylist_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QMediaPlaylist_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QMediaPlaylist_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QMediaPlaylist_virtualbase_CustomEvent(void* self, QEvent* event);
-void QMediaPlaylist_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QMediaPlaylist_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QMediaPlaylist_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QMediaPlaylist_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QMediaPlaylist_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QMediaPlaylist_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QMediaPlaylist_Delete(QMediaPlaylist* self, bool isSubclass);
+void QMediaPlaylist_Delete(QMediaPlaylist* self);
 
 #ifdef __cplusplus
 } /* extern C */

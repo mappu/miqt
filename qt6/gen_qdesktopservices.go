@@ -14,8 +14,7 @@ import (
 )
 
 type QDesktopServices struct {
-	h          *C.QDesktopServices
-	isSubclass bool
+	h *C.QDesktopServices
 }
 
 func (this *QDesktopServices) cPointer() *C.QDesktopServices {
@@ -70,7 +69,7 @@ func QDesktopServices_UnsetUrlHandler(scheme string) {
 
 // Delete this object from C++ memory.
 func (this *QDesktopServices) Delete() {
-	C.QDesktopServices_Delete(this.h, C.bool(this.isSubclass))
+	C.QDesktopServices_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

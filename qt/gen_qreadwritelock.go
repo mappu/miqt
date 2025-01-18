@@ -21,8 +21,7 @@ const (
 )
 
 type QReadWriteLock struct {
-	h          *C.QReadWriteLock
-	isSubclass bool
+	h *C.QReadWriteLock
 }
 
 func (this *QReadWriteLock) cPointer() *C.QReadWriteLock {
@@ -56,17 +55,13 @@ func UnsafeNewQReadWriteLock(h unsafe.Pointer) *QReadWriteLock {
 // NewQReadWriteLock constructs a new QReadWriteLock object.
 func NewQReadWriteLock() *QReadWriteLock {
 
-	ret := newQReadWriteLock(C.QReadWriteLock_new())
-	ret.isSubclass = true
-	return ret
+	return newQReadWriteLock(C.QReadWriteLock_new())
 }
 
 // NewQReadWriteLock2 constructs a new QReadWriteLock object.
 func NewQReadWriteLock2(recursionMode QReadWriteLock__RecursionMode) *QReadWriteLock {
 
-	ret := newQReadWriteLock(C.QReadWriteLock_new2((C.int)(recursionMode)))
-	ret.isSubclass = true
-	return ret
+	return newQReadWriteLock(C.QReadWriteLock_new2((C.int)(recursionMode)))
 }
 
 func (this *QReadWriteLock) LockForRead() {
@@ -99,7 +94,7 @@ func (this *QReadWriteLock) Unlock() {
 
 // Delete this object from C++ memory.
 func (this *QReadWriteLock) Delete() {
-	C.QReadWriteLock_Delete(this.h, C.bool(this.isSubclass))
+	C.QReadWriteLock_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -112,8 +107,7 @@ func (this *QReadWriteLock) GoGC() {
 }
 
 type QReadLocker struct {
-	h          *C.QReadLocker
-	isSubclass bool
+	h *C.QReadLocker
 }
 
 func (this *QReadLocker) cPointer() *C.QReadLocker {
@@ -147,9 +141,7 @@ func UnsafeNewQReadLocker(h unsafe.Pointer) *QReadLocker {
 // NewQReadLocker constructs a new QReadLocker object.
 func NewQReadLocker(readWriteLock *QReadWriteLock) *QReadLocker {
 
-	ret := newQReadLocker(C.QReadLocker_new(readWriteLock.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQReadLocker(C.QReadLocker_new(readWriteLock.cPointer()))
 }
 
 func (this *QReadLocker) Unlock() {
@@ -166,7 +158,7 @@ func (this *QReadLocker) ReadWriteLock() *QReadWriteLock {
 
 // Delete this object from C++ memory.
 func (this *QReadLocker) Delete() {
-	C.QReadLocker_Delete(this.h, C.bool(this.isSubclass))
+	C.QReadLocker_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -179,8 +171,7 @@ func (this *QReadLocker) GoGC() {
 }
 
 type QWriteLocker struct {
-	h          *C.QWriteLocker
-	isSubclass bool
+	h *C.QWriteLocker
 }
 
 func (this *QWriteLocker) cPointer() *C.QWriteLocker {
@@ -214,9 +205,7 @@ func UnsafeNewQWriteLocker(h unsafe.Pointer) *QWriteLocker {
 // NewQWriteLocker constructs a new QWriteLocker object.
 func NewQWriteLocker(readWriteLock *QReadWriteLock) *QWriteLocker {
 
-	ret := newQWriteLocker(C.QWriteLocker_new(readWriteLock.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWriteLocker(C.QWriteLocker_new(readWriteLock.cPointer()))
 }
 
 func (this *QWriteLocker) Unlock() {
@@ -233,7 +222,7 @@ func (this *QWriteLocker) ReadWriteLock() *QReadWriteLock {
 
 // Delete this object from C++ memory.
 func (this *QWriteLocker) Delete() {
-	C.QWriteLocker_Delete(this.h, C.bool(this.isSubclass))
+	C.QWriteLocker_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

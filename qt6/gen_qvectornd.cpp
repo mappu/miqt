@@ -157,12 +157,8 @@ QVariant* QVector2D_ToQVariant(const QVector2D* self) {
 	return new QVariant(self->operator QVariant());
 }
 
-void QVector2D_Delete(QVector2D* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QVector2D*>( self );
-	} else {
-		delete self;
-	}
+void QVector2D_Delete(QVector2D* self) {
+	delete self;
 }
 
 QVector3D* QVector3D_new() {
@@ -345,12 +341,8 @@ QVariant* QVector3D_ToQVariant(const QVector3D* self) {
 	return new QVariant(self->operator QVariant());
 }
 
-void QVector3D_Delete(QVector3D* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QVector3D*>( self );
-	} else {
-		delete self;
-	}
+void QVector3D_Delete(QVector3D* self) {
+	delete self;
 }
 
 QVector4D* QVector4D_new() {
@@ -517,11 +509,7 @@ QVariant* QVector4D_ToQVariant(const QVector4D* self) {
 	return new QVariant(self->operator QVariant());
 }
 
-void QVector4D_Delete(QVector4D* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QVector4D*>( self );
-	} else {
-		delete self;
-	}
+void QVector4D_Delete(QVector4D* self) {
+	delete self;
 }
 

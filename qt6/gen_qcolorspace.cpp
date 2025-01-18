@@ -248,11 +248,7 @@ QColorSpace* QColorSpace_WithTransferFunction2(const QColorSpace* self, int tran
 	return new QColorSpace(self->withTransferFunction(static_cast<QColorSpace::TransferFunction>(transferFunction), static_cast<float>(gamma)));
 }
 
-void QColorSpace_Delete(QColorSpace* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QColorSpace*>( self );
-	} else {
-		delete self;
-	}
+void QColorSpace_Delete(QColorSpace* self) {
+	delete self;
 }
 

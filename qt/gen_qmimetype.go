@@ -14,8 +14,7 @@ import (
 )
 
 type QMimeType struct {
-	h          *C.QMimeType
-	isSubclass bool
+	h *C.QMimeType
 }
 
 func (this *QMimeType) cPointer() *C.QMimeType {
@@ -49,17 +48,13 @@ func UnsafeNewQMimeType(h unsafe.Pointer) *QMimeType {
 // NewQMimeType constructs a new QMimeType object.
 func NewQMimeType() *QMimeType {
 
-	ret := newQMimeType(C.QMimeType_new())
-	ret.isSubclass = true
-	return ret
+	return newQMimeType(C.QMimeType_new())
 }
 
 // NewQMimeType2 constructs a new QMimeType object.
 func NewQMimeType2(other *QMimeType) *QMimeType {
 
-	ret := newQMimeType(C.QMimeType_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQMimeType(C.QMimeType_new2(other.cPointer()))
 }
 
 func (this *QMimeType) OperatorAssign(other *QMimeType) {
@@ -203,7 +198,7 @@ func (this *QMimeType) FilterString() string {
 
 // Delete this object from C++ memory.
 func (this *QMimeType) Delete() {
-	C.QMimeType_Delete(this.h, C.bool(this.isSubclass))
+	C.QMimeType_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

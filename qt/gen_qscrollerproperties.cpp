@@ -47,11 +47,7 @@ void QScrollerProperties_SetScrollMetric(QScrollerProperties* self, int metric, 
 	self->setScrollMetric(static_cast<QScrollerProperties::ScrollMetric>(metric), *value);
 }
 
-void QScrollerProperties_Delete(QScrollerProperties* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QScrollerProperties*>( self );
-	} else {
-		delete self;
-	}
+void QScrollerProperties_Delete(QScrollerProperties* self) {
+	delete self;
 }
 

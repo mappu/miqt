@@ -28,13 +28,13 @@ void miqt_exec_callback_QWebEngineUrlRequestInterceptor_DisconnectNotify(void*, 
 } /* extern C */
 #endif
 
-class MiqtVirtualQWebEngineUrlRequestInterceptor : public virtual QWebEngineUrlRequestInterceptor {
+class MiqtVirtualQWebEngineUrlRequestInterceptor final : public QWebEngineUrlRequestInterceptor {
 public:
 
 	MiqtVirtualQWebEngineUrlRequestInterceptor(): QWebEngineUrlRequestInterceptor() {};
 	MiqtVirtualQWebEngineUrlRequestInterceptor(QObject* p): QWebEngineUrlRequestInterceptor(p) {};
 
-	virtual ~MiqtVirtualQWebEngineUrlRequestInterceptor() = default;
+	virtual ~MiqtVirtualQWebEngineUrlRequestInterceptor() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__InterceptRequest = 0;
@@ -284,71 +284,115 @@ struct miqt_string QWebEngineUrlRequestInterceptor_Tr3(const char* s, const char
 	return _ms;
 }
 
-void QWebEngineUrlRequestInterceptor_override_virtual_InterceptRequest(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebEngineUrlRequestInterceptor*>( (QWebEngineUrlRequestInterceptor*)(self) )->handle__InterceptRequest = slot;
+bool QWebEngineUrlRequestInterceptor_override_virtual_InterceptRequest(void* self, intptr_t slot) {
+	MiqtVirtualQWebEngineUrlRequestInterceptor* self_cast = dynamic_cast<MiqtVirtualQWebEngineUrlRequestInterceptor*>( (QWebEngineUrlRequestInterceptor*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InterceptRequest = slot;
+	return true;
 }
 
-void QWebEngineUrlRequestInterceptor_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebEngineUrlRequestInterceptor*>( (QWebEngineUrlRequestInterceptor*)(self) )->handle__Event = slot;
+bool QWebEngineUrlRequestInterceptor_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQWebEngineUrlRequestInterceptor* self_cast = dynamic_cast<MiqtVirtualQWebEngineUrlRequestInterceptor*>( (QWebEngineUrlRequestInterceptor*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QWebEngineUrlRequestInterceptor_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->virtualbase_Event(event);
 }
 
-void QWebEngineUrlRequestInterceptor_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebEngineUrlRequestInterceptor*>( (QWebEngineUrlRequestInterceptor*)(self) )->handle__EventFilter = slot;
+bool QWebEngineUrlRequestInterceptor_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQWebEngineUrlRequestInterceptor* self_cast = dynamic_cast<MiqtVirtualQWebEngineUrlRequestInterceptor*>( (QWebEngineUrlRequestInterceptor*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QWebEngineUrlRequestInterceptor_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QWebEngineUrlRequestInterceptor_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebEngineUrlRequestInterceptor*>( (QWebEngineUrlRequestInterceptor*)(self) )->handle__TimerEvent = slot;
+bool QWebEngineUrlRequestInterceptor_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebEngineUrlRequestInterceptor* self_cast = dynamic_cast<MiqtVirtualQWebEngineUrlRequestInterceptor*>( (QWebEngineUrlRequestInterceptor*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QWebEngineUrlRequestInterceptor_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QWebEngineUrlRequestInterceptor_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebEngineUrlRequestInterceptor*>( (QWebEngineUrlRequestInterceptor*)(self) )->handle__ChildEvent = slot;
+bool QWebEngineUrlRequestInterceptor_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebEngineUrlRequestInterceptor* self_cast = dynamic_cast<MiqtVirtualQWebEngineUrlRequestInterceptor*>( (QWebEngineUrlRequestInterceptor*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QWebEngineUrlRequestInterceptor_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QWebEngineUrlRequestInterceptor_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebEngineUrlRequestInterceptor*>( (QWebEngineUrlRequestInterceptor*)(self) )->handle__CustomEvent = slot;
+bool QWebEngineUrlRequestInterceptor_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebEngineUrlRequestInterceptor* self_cast = dynamic_cast<MiqtVirtualQWebEngineUrlRequestInterceptor*>( (QWebEngineUrlRequestInterceptor*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QWebEngineUrlRequestInterceptor_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QWebEngineUrlRequestInterceptor_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebEngineUrlRequestInterceptor*>( (QWebEngineUrlRequestInterceptor*)(self) )->handle__ConnectNotify = slot;
+bool QWebEngineUrlRequestInterceptor_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQWebEngineUrlRequestInterceptor* self_cast = dynamic_cast<MiqtVirtualQWebEngineUrlRequestInterceptor*>( (QWebEngineUrlRequestInterceptor*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QWebEngineUrlRequestInterceptor_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QWebEngineUrlRequestInterceptor_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebEngineUrlRequestInterceptor*>( (QWebEngineUrlRequestInterceptor*)(self) )->handle__DisconnectNotify = slot;
+bool QWebEngineUrlRequestInterceptor_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQWebEngineUrlRequestInterceptor* self_cast = dynamic_cast<MiqtVirtualQWebEngineUrlRequestInterceptor*>( (QWebEngineUrlRequestInterceptor*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QWebEngineUrlRequestInterceptor_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QWebEngineUrlRequestInterceptor_Delete(QWebEngineUrlRequestInterceptor* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQWebEngineUrlRequestInterceptor*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineUrlRequestInterceptor_Delete(QWebEngineUrlRequestInterceptor* self) {
+	delete self;
 }
 

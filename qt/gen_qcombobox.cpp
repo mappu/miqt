@@ -104,13 +104,13 @@ bool miqt_exec_callback_QComboBox_FocusNextPrevChild(void*, intptr_t, bool);
 } /* extern C */
 #endif
 
-class MiqtVirtualQComboBox : public virtual QComboBox {
+class MiqtVirtualQComboBox final : public QComboBox {
 public:
 
 	MiqtVirtualQComboBox(QWidget* parent): QComboBox(parent) {};
 	MiqtVirtualQComboBox(): QComboBox() {};
 
-	virtual ~MiqtVirtualQComboBox() = default;
+	virtual ~MiqtVirtualQComboBox() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -1767,355 +1767,609 @@ void QComboBox_SetItemData3(QComboBox* self, int index, QVariant* value, int rol
 	self->setItemData(static_cast<int>(index), *value, static_cast<int>(role));
 }
 
-void QComboBox_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__SizeHint = slot;
+bool QComboBox_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QComboBox_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQComboBox*)(self) )->virtualbase_SizeHint();
 }
 
-void QComboBox_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__MinimumSizeHint = slot;
+bool QComboBox_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QComboBox_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQComboBox*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QComboBox_override_virtual_ShowPopup(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__ShowPopup = slot;
+bool QComboBox_override_virtual_ShowPopup(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowPopup = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_ShowPopup(void* self) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_ShowPopup();
 }
 
-void QComboBox_override_virtual_HidePopup(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__HidePopup = slot;
+bool QComboBox_override_virtual_HidePopup(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HidePopup = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_HidePopup(void* self) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_HidePopup();
 }
 
-void QComboBox_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__Event = slot;
+bool QComboBox_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QComboBox_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQComboBox*)(self) )->virtualbase_Event(event);
 }
 
-void QComboBox_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__InputMethodQuery = slot;
+bool QComboBox_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodQuery = slot;
+	return true;
 }
 
 QVariant* QComboBox_virtualbase_InputMethodQuery(const void* self, int param1) {
 	return ( (const MiqtVirtualQComboBox*)(self) )->virtualbase_InputMethodQuery(param1);
 }
 
-void QComboBox_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__FocusInEvent = slot;
+bool QComboBox_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_FocusInEvent(void* self, QFocusEvent* e) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_FocusInEvent(e);
 }
 
-void QComboBox_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__FocusOutEvent = slot;
+bool QComboBox_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_FocusOutEvent(void* self, QFocusEvent* e) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_FocusOutEvent(e);
 }
 
-void QComboBox_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__ChangeEvent = slot;
+bool QComboBox_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_ChangeEvent(void* self, QEvent* e) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_ChangeEvent(e);
 }
 
-void QComboBox_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__ResizeEvent = slot;
+bool QComboBox_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_ResizeEvent(void* self, QResizeEvent* e) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_ResizeEvent(e);
 }
 
-void QComboBox_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__PaintEvent = slot;
+bool QComboBox_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_PaintEvent(void* self, QPaintEvent* e) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_PaintEvent(e);
 }
 
-void QComboBox_override_virtual_ShowEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__ShowEvent = slot;
+bool QComboBox_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_ShowEvent(void* self, QShowEvent* e) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_ShowEvent(e);
 }
 
-void QComboBox_override_virtual_HideEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__HideEvent = slot;
+bool QComboBox_override_virtual_HideEvent(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HideEvent = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_HideEvent(void* self, QHideEvent* e) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_HideEvent(e);
 }
 
-void QComboBox_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__MousePressEvent = slot;
+bool QComboBox_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_MousePressEvent(void* self, QMouseEvent* e) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_MousePressEvent(e);
 }
 
-void QComboBox_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__MouseReleaseEvent = slot;
+bool QComboBox_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* e) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_MouseReleaseEvent(e);
 }
 
-void QComboBox_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__KeyPressEvent = slot;
+bool QComboBox_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_KeyPressEvent(void* self, QKeyEvent* e) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_KeyPressEvent(e);
 }
 
-void QComboBox_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__KeyReleaseEvent = slot;
+bool QComboBox_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyReleaseEvent = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* e) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_KeyReleaseEvent(e);
 }
 
-void QComboBox_override_virtual_WheelEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__WheelEvent = slot;
+bool QComboBox_override_virtual_WheelEvent(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WheelEvent = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_WheelEvent(void* self, QWheelEvent* e) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_WheelEvent(e);
 }
 
-void QComboBox_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__ContextMenuEvent = slot;
+bool QComboBox_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* e) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_ContextMenuEvent(e);
 }
 
-void QComboBox_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__InputMethodEvent = slot;
+bool QComboBox_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodEvent = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* param1) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_InputMethodEvent(param1);
 }
 
-void QComboBox_override_virtual_DevType(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__DevType = slot;
+bool QComboBox_override_virtual_DevType(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DevType = slot;
+	return true;
 }
 
 int QComboBox_virtualbase_DevType(const void* self) {
 	return ( (const MiqtVirtualQComboBox*)(self) )->virtualbase_DevType();
 }
 
-void QComboBox_override_virtual_SetVisible(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__SetVisible = slot;
+bool QComboBox_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_SetVisible(void* self, bool visible) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_SetVisible(visible);
 }
 
-void QComboBox_override_virtual_HeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__HeightForWidth = slot;
+bool QComboBox_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeightForWidth = slot;
+	return true;
 }
 
 int QComboBox_virtualbase_HeightForWidth(const void* self, int param1) {
 	return ( (const MiqtVirtualQComboBox*)(self) )->virtualbase_HeightForWidth(param1);
 }
 
-void QComboBox_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__HasHeightForWidth = slot;
+bool QComboBox_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasHeightForWidth = slot;
+	return true;
 }
 
 bool QComboBox_virtualbase_HasHeightForWidth(const void* self) {
 	return ( (const MiqtVirtualQComboBox*)(self) )->virtualbase_HasHeightForWidth();
 }
 
-void QComboBox_override_virtual_PaintEngine(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__PaintEngine = slot;
+bool QComboBox_override_virtual_PaintEngine(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEngine = slot;
+	return true;
 }
 
 QPaintEngine* QComboBox_virtualbase_PaintEngine(const void* self) {
 	return ( (const MiqtVirtualQComboBox*)(self) )->virtualbase_PaintEngine();
 }
 
-void QComboBox_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__MouseDoubleClickEvent = slot;
+bool QComboBox_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseDoubleClickEvent = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_MouseDoubleClickEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_MouseDoubleClickEvent(event);
 }
 
-void QComboBox_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__MouseMoveEvent = slot;
+bool QComboBox_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_MouseMoveEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_MouseMoveEvent(event);
 }
 
-void QComboBox_override_virtual_EnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__EnterEvent = slot;
+bool QComboBox_override_virtual_EnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EnterEvent = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_EnterEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_EnterEvent(event);
 }
 
-void QComboBox_override_virtual_LeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__LeaveEvent = slot;
+bool QComboBox_override_virtual_LeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__LeaveEvent = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_LeaveEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_LeaveEvent(event);
 }
 
-void QComboBox_override_virtual_MoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__MoveEvent = slot;
+bool QComboBox_override_virtual_MoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveEvent = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_MoveEvent(void* self, QMoveEvent* event) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_MoveEvent(event);
 }
 
-void QComboBox_override_virtual_CloseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__CloseEvent = slot;
+bool QComboBox_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_CloseEvent(void* self, QCloseEvent* event) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_CloseEvent(event);
 }
 
-void QComboBox_override_virtual_TabletEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__TabletEvent = slot;
+bool QComboBox_override_virtual_TabletEvent(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TabletEvent = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_TabletEvent(void* self, QTabletEvent* event) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_TabletEvent(event);
 }
 
-void QComboBox_override_virtual_ActionEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__ActionEvent = slot;
+bool QComboBox_override_virtual_ActionEvent(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ActionEvent = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_ActionEvent(void* self, QActionEvent* event) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_ActionEvent(event);
 }
 
-void QComboBox_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__DragEnterEvent = slot;
+bool QComboBox_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragEnterEvent = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_DragEnterEvent(void* self, QDragEnterEvent* event) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_DragEnterEvent(event);
 }
 
-void QComboBox_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__DragMoveEvent = slot;
+bool QComboBox_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragMoveEvent = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_DragMoveEvent(void* self, QDragMoveEvent* event) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_DragMoveEvent(event);
 }
 
-void QComboBox_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__DragLeaveEvent = slot;
+bool QComboBox_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragLeaveEvent = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* event) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_DragLeaveEvent(event);
 }
 
-void QComboBox_override_virtual_DropEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__DropEvent = slot;
+bool QComboBox_override_virtual_DropEvent(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropEvent = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_DropEvent(void* self, QDropEvent* event) {
 	( (MiqtVirtualQComboBox*)(self) )->virtualbase_DropEvent(event);
 }
 
-void QComboBox_override_virtual_NativeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__NativeEvent = slot;
+bool QComboBox_override_virtual_NativeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NativeEvent = slot;
+	return true;
 }
 
 bool QComboBox_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	return ( (MiqtVirtualQComboBox*)(self) )->virtualbase_NativeEvent(eventType, message, result);
 }
 
-void QComboBox_override_virtual_Metric(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__Metric = slot;
+bool QComboBox_override_virtual_Metric(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Metric = slot;
+	return true;
 }
 
 int QComboBox_virtualbase_Metric(const void* self, int param1) {
 	return ( (const MiqtVirtualQComboBox*)(self) )->virtualbase_Metric(param1);
 }
 
-void QComboBox_override_virtual_InitPainter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__InitPainter = slot;
+bool QComboBox_override_virtual_InitPainter(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitPainter = slot;
+	return true;
 }
 
 void QComboBox_virtualbase_InitPainter(const void* self, QPainter* painter) {
 	( (const MiqtVirtualQComboBox*)(self) )->virtualbase_InitPainter(painter);
 }
 
-void QComboBox_override_virtual_Redirected(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__Redirected = slot;
+bool QComboBox_override_virtual_Redirected(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Redirected = slot;
+	return true;
 }
 
 QPaintDevice* QComboBox_virtualbase_Redirected(const void* self, QPoint* offset) {
 	return ( (const MiqtVirtualQComboBox*)(self) )->virtualbase_Redirected(offset);
 }
 
-void QComboBox_override_virtual_SharedPainter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__SharedPainter = slot;
+bool QComboBox_override_virtual_SharedPainter(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SharedPainter = slot;
+	return true;
 }
 
 QPainter* QComboBox_virtualbase_SharedPainter(const void* self) {
 	return ( (const MiqtVirtualQComboBox*)(self) )->virtualbase_SharedPainter();
 }
 
-void QComboBox_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) )->handle__FocusNextPrevChild = slot;
+bool QComboBox_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+	MiqtVirtualQComboBox* self_cast = dynamic_cast<MiqtVirtualQComboBox*>( (QComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusNextPrevChild = slot;
+	return true;
 }
 
 bool QComboBox_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQComboBox*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QComboBox_Delete(QComboBox* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQComboBox*>( self );
-	} else {
-		delete self;
-	}
+void QComboBox_Delete(QComboBox* self) {
+	delete self;
 }
 

@@ -66,7 +66,7 @@ QUrl* QNetworkProxyQuery_Url(const QNetworkProxyQuery* self);
 void QNetworkProxyQuery_SetUrl(QNetworkProxyQuery* self, QUrl* url);
 QNetworkConfiguration* QNetworkProxyQuery_NetworkConfiguration(const QNetworkProxyQuery* self);
 void QNetworkProxyQuery_SetNetworkConfiguration(QNetworkProxyQuery* self, QNetworkConfiguration* networkConfiguration);
-void QNetworkProxyQuery_Delete(QNetworkProxyQuery* self, bool isSubclass);
+void QNetworkProxyQuery_Delete(QNetworkProxyQuery* self);
 
 QNetworkProxy* QNetworkProxy_new();
 QNetworkProxy* QNetworkProxy_new2(int typeVal);
@@ -101,7 +101,7 @@ bool QNetworkProxy_HasRawHeader(const QNetworkProxy* self, struct miqt_string he
 struct miqt_array /* of struct miqt_string */  QNetworkProxy_RawHeaderList(const QNetworkProxy* self);
 struct miqt_string QNetworkProxy_RawHeader(const QNetworkProxy* self, struct miqt_string headerName);
 void QNetworkProxy_SetRawHeader(QNetworkProxy* self, struct miqt_string headerName, struct miqt_string value);
-void QNetworkProxy_Delete(QNetworkProxy* self, bool isSubclass);
+void QNetworkProxy_Delete(QNetworkProxy* self);
 
 QNetworkProxyFactory* QNetworkProxyFactory_new();
 struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_QueryProxy(QNetworkProxyFactory* self, QNetworkProxyQuery* query);
@@ -112,9 +112,9 @@ struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_ProxyForQuery(QN
 struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_SystemProxyForQuery();
 void QNetworkProxyFactory_OperatorAssign(QNetworkProxyFactory* self, QNetworkProxyFactory* param1);
 struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_SystemProxyForQuery1(QNetworkProxyQuery* query);
-void QNetworkProxyFactory_override_virtual_QueryProxy(void* self, intptr_t slot);
+bool QNetworkProxyFactory_override_virtual_QueryProxy(void* self, intptr_t slot);
 struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_virtualbase_QueryProxy(void* self, QNetworkProxyQuery* query);
-void QNetworkProxyFactory_Delete(QNetworkProxyFactory* self, bool isSubclass);
+void QNetworkProxyFactory_Delete(QNetworkProxyFactory* self);
 
 #ifdef __cplusplus
 } /* extern C */

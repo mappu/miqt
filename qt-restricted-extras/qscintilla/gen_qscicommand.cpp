@@ -52,11 +52,7 @@ struct miqt_string QsciCommand_Description(const QsciCommand* self) {
 	return _ms;
 }
 
-void QsciCommand_Delete(QsciCommand* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QsciCommand*>( self );
-	} else {
-		delete self;
-	}
+void QsciCommand_Delete(QsciCommand* self) {
+	delete self;
 }
 

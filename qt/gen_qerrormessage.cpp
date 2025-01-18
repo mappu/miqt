@@ -40,13 +40,13 @@ bool miqt_exec_callback_QErrorMessage_EventFilter(void*, intptr_t, QObject*, QEv
 } /* extern C */
 #endif
 
-class MiqtVirtualQErrorMessage : public virtual QErrorMessage {
+class MiqtVirtualQErrorMessage final : public QErrorMessage {
 public:
 
 	MiqtVirtualQErrorMessage(QWidget* parent): QErrorMessage(parent) {};
 	MiqtVirtualQErrorMessage(): QErrorMessage() {};
 
-	virtual ~MiqtVirtualQErrorMessage() = default;
+	virtual ~MiqtVirtualQErrorMessage() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Done = 0;
@@ -502,131 +502,217 @@ struct miqt_string QErrorMessage_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QErrorMessage_override_virtual_Done(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) )->handle__Done = slot;
+bool QErrorMessage_override_virtual_Done(void* self, intptr_t slot) {
+	MiqtVirtualQErrorMessage* self_cast = dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Done = slot;
+	return true;
 }
 
 void QErrorMessage_virtualbase_Done(void* self, int param1) {
 	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_Done(param1);
 }
 
-void QErrorMessage_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) )->handle__ChangeEvent = slot;
+bool QErrorMessage_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQErrorMessage* self_cast = dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QErrorMessage_virtualbase_ChangeEvent(void* self, QEvent* e) {
 	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_ChangeEvent(e);
 }
 
-void QErrorMessage_override_virtual_SetVisible(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) )->handle__SetVisible = slot;
+bool QErrorMessage_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQErrorMessage* self_cast = dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
 }
 
 void QErrorMessage_virtualbase_SetVisible(void* self, bool visible) {
 	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_SetVisible(visible);
 }
 
-void QErrorMessage_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) )->handle__SizeHint = slot;
+bool QErrorMessage_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQErrorMessage* self_cast = dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QErrorMessage_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQErrorMessage*)(self) )->virtualbase_SizeHint();
 }
 
-void QErrorMessage_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) )->handle__MinimumSizeHint = slot;
+bool QErrorMessage_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQErrorMessage* self_cast = dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QErrorMessage_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQErrorMessage*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QErrorMessage_override_virtual_Open(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) )->handle__Open = slot;
+bool QErrorMessage_override_virtual_Open(void* self, intptr_t slot) {
+	MiqtVirtualQErrorMessage* self_cast = dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Open = slot;
+	return true;
 }
 
 void QErrorMessage_virtualbase_Open(void* self) {
 	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_Open();
 }
 
-void QErrorMessage_override_virtual_Exec(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) )->handle__Exec = slot;
+bool QErrorMessage_override_virtual_Exec(void* self, intptr_t slot) {
+	MiqtVirtualQErrorMessage* self_cast = dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Exec = slot;
+	return true;
 }
 
 int QErrorMessage_virtualbase_Exec(void* self) {
 	return ( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_Exec();
 }
 
-void QErrorMessage_override_virtual_Accept(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) )->handle__Accept = slot;
+bool QErrorMessage_override_virtual_Accept(void* self, intptr_t slot) {
+	MiqtVirtualQErrorMessage* self_cast = dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Accept = slot;
+	return true;
 }
 
 void QErrorMessage_virtualbase_Accept(void* self) {
 	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_Accept();
 }
 
-void QErrorMessage_override_virtual_Reject(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) )->handle__Reject = slot;
+bool QErrorMessage_override_virtual_Reject(void* self, intptr_t slot) {
+	MiqtVirtualQErrorMessage* self_cast = dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Reject = slot;
+	return true;
 }
 
 void QErrorMessage_virtualbase_Reject(void* self) {
 	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_Reject();
 }
 
-void QErrorMessage_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) )->handle__KeyPressEvent = slot;
+bool QErrorMessage_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQErrorMessage* self_cast = dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QErrorMessage_virtualbase_KeyPressEvent(void* self, QKeyEvent* param1) {
 	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_KeyPressEvent(param1);
 }
 
-void QErrorMessage_override_virtual_CloseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) )->handle__CloseEvent = slot;
+bool QErrorMessage_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQErrorMessage* self_cast = dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
 }
 
 void QErrorMessage_virtualbase_CloseEvent(void* self, QCloseEvent* param1) {
 	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_CloseEvent(param1);
 }
 
-void QErrorMessage_override_virtual_ShowEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) )->handle__ShowEvent = slot;
+bool QErrorMessage_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQErrorMessage* self_cast = dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
 }
 
 void QErrorMessage_virtualbase_ShowEvent(void* self, QShowEvent* param1) {
 	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_ShowEvent(param1);
 }
 
-void QErrorMessage_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) )->handle__ResizeEvent = slot;
+bool QErrorMessage_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQErrorMessage* self_cast = dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QErrorMessage_virtualbase_ResizeEvent(void* self, QResizeEvent* param1) {
 	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_ResizeEvent(param1);
 }
 
-void QErrorMessage_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) )->handle__ContextMenuEvent = slot;
+bool QErrorMessage_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQErrorMessage* self_cast = dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QErrorMessage_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* param1) {
 	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_ContextMenuEvent(param1);
 }
 
-void QErrorMessage_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) )->handle__EventFilter = slot;
+bool QErrorMessage_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQErrorMessage* self_cast = dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QErrorMessage_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2) {
 	return ( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_EventFilter(param1, param2);
 }
 
-void QErrorMessage_Delete(QErrorMessage* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQErrorMessage*>( self );
-	} else {
-		delete self;
-	}
+void QErrorMessage_Delete(QErrorMessage* self) {
+	delete self;
 }
 

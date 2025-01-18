@@ -97,7 +97,7 @@ QTransform* QTransform_FromScale(double dx, double dy);
 QTransform* QTransform_Inverted1(const QTransform* self, bool* invertible);
 QTransform* QTransform_Rotate2(QTransform* self, double a, int axis);
 QTransform* QTransform_RotateRadians2(QTransform* self, double a, int axis);
-void QTransform_Delete(QTransform* self, bool isSubclass);
+void QTransform_Delete(QTransform* self);
 
 #ifdef __cplusplus
 } /* extern C */

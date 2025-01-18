@@ -24,13 +24,13 @@ typedef struct QBindingStorage QBindingStorage;
 typedef struct QUntypedPropertyData QUntypedPropertyData;
 #endif
 
-void QBindingStatus_Delete(QBindingStatus* self, bool isSubclass);
+void QBindingStatus_Delete(QBindingStatus* self);
 
 QBindingStorage* QBindingStorage_new();
 bool QBindingStorage_IsEmpty(QBindingStorage* self);
 bool QBindingStorage_IsValid(const QBindingStorage* self);
 void QBindingStorage_RegisterDependency(const QBindingStorage* self, QUntypedPropertyData* data);
-void QBindingStorage_Delete(QBindingStorage* self, bool isSubclass);
+void QBindingStorage_Delete(QBindingStorage* self);
 
 #ifdef __cplusplus
 } /* extern C */

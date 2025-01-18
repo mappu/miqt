@@ -27,12 +27,12 @@ QVariant* miqt_exec_callback_QScriptClass_Extension(void*, intptr_t, int, QVaria
 } /* extern C */
 #endif
 
-class MiqtVirtualQScriptClass : public virtual QScriptClass {
+class MiqtVirtualQScriptClass final : public QScriptClass {
 public:
 
 	MiqtVirtualQScriptClass(QScriptEngine* engine): QScriptClass(engine) {};
 
-	virtual ~MiqtVirtualQScriptClass() = default;
+	virtual ~MiqtVirtualQScriptClass() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__QueryProperty = 0;
@@ -345,83 +345,133 @@ QVariant* QScriptClass_Extension(QScriptClass* self, int extension, QVariant* ar
 	return new QVariant(self->extension(static_cast<QScriptClass::Extension>(extension), *argument));
 }
 
-void QScriptClass_override_virtual_QueryProperty(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptClass*>( (QScriptClass*)(self) )->handle__QueryProperty = slot;
+bool QScriptClass_override_virtual_QueryProperty(void* self, intptr_t slot) {
+	MiqtVirtualQScriptClass* self_cast = dynamic_cast<MiqtVirtualQScriptClass*>( (QScriptClass*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__QueryProperty = slot;
+	return true;
 }
 
 int QScriptClass_virtualbase_QueryProperty(void* self, QScriptValue* object, QScriptString* name, int flags, unsigned int* id) {
 	return ( (MiqtVirtualQScriptClass*)(self) )->virtualbase_QueryProperty(object, name, flags, id);
 }
 
-void QScriptClass_override_virtual_Property(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptClass*>( (QScriptClass*)(self) )->handle__Property = slot;
+bool QScriptClass_override_virtual_Property(void* self, intptr_t slot) {
+	MiqtVirtualQScriptClass* self_cast = dynamic_cast<MiqtVirtualQScriptClass*>( (QScriptClass*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Property = slot;
+	return true;
 }
 
 QScriptValue* QScriptClass_virtualbase_Property(void* self, QScriptValue* object, QScriptString* name, unsigned int id) {
 	return ( (MiqtVirtualQScriptClass*)(self) )->virtualbase_Property(object, name, id);
 }
 
-void QScriptClass_override_virtual_SetProperty(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptClass*>( (QScriptClass*)(self) )->handle__SetProperty = slot;
+bool QScriptClass_override_virtual_SetProperty(void* self, intptr_t slot) {
+	MiqtVirtualQScriptClass* self_cast = dynamic_cast<MiqtVirtualQScriptClass*>( (QScriptClass*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetProperty = slot;
+	return true;
 }
 
 void QScriptClass_virtualbase_SetProperty(void* self, QScriptValue* object, QScriptString* name, unsigned int id, QScriptValue* value) {
 	( (MiqtVirtualQScriptClass*)(self) )->virtualbase_SetProperty(object, name, id, value);
 }
 
-void QScriptClass_override_virtual_PropertyFlags(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptClass*>( (QScriptClass*)(self) )->handle__PropertyFlags = slot;
+bool QScriptClass_override_virtual_PropertyFlags(void* self, intptr_t slot) {
+	MiqtVirtualQScriptClass* self_cast = dynamic_cast<MiqtVirtualQScriptClass*>( (QScriptClass*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PropertyFlags = slot;
+	return true;
 }
 
 int QScriptClass_virtualbase_PropertyFlags(void* self, QScriptValue* object, QScriptString* name, unsigned int id) {
 	return ( (MiqtVirtualQScriptClass*)(self) )->virtualbase_PropertyFlags(object, name, id);
 }
 
-void QScriptClass_override_virtual_NewIterator(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptClass*>( (QScriptClass*)(self) )->handle__NewIterator = slot;
+bool QScriptClass_override_virtual_NewIterator(void* self, intptr_t slot) {
+	MiqtVirtualQScriptClass* self_cast = dynamic_cast<MiqtVirtualQScriptClass*>( (QScriptClass*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NewIterator = slot;
+	return true;
 }
 
 QScriptClassPropertyIterator* QScriptClass_virtualbase_NewIterator(void* self, QScriptValue* object) {
 	return ( (MiqtVirtualQScriptClass*)(self) )->virtualbase_NewIterator(object);
 }
 
-void QScriptClass_override_virtual_Prototype(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptClass*>( (QScriptClass*)(self) )->handle__Prototype = slot;
+bool QScriptClass_override_virtual_Prototype(void* self, intptr_t slot) {
+	MiqtVirtualQScriptClass* self_cast = dynamic_cast<MiqtVirtualQScriptClass*>( (QScriptClass*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Prototype = slot;
+	return true;
 }
 
 QScriptValue* QScriptClass_virtualbase_Prototype(const void* self) {
 	return ( (const MiqtVirtualQScriptClass*)(self) )->virtualbase_Prototype();
 }
 
-void QScriptClass_override_virtual_Name(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptClass*>( (QScriptClass*)(self) )->handle__Name = slot;
+bool QScriptClass_override_virtual_Name(void* self, intptr_t slot) {
+	MiqtVirtualQScriptClass* self_cast = dynamic_cast<MiqtVirtualQScriptClass*>( (QScriptClass*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Name = slot;
+	return true;
 }
 
 struct miqt_string QScriptClass_virtualbase_Name(const void* self) {
 	return ( (const MiqtVirtualQScriptClass*)(self) )->virtualbase_Name();
 }
 
-void QScriptClass_override_virtual_SupportsExtension(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptClass*>( (QScriptClass*)(self) )->handle__SupportsExtension = slot;
+bool QScriptClass_override_virtual_SupportsExtension(void* self, intptr_t slot) {
+	MiqtVirtualQScriptClass* self_cast = dynamic_cast<MiqtVirtualQScriptClass*>( (QScriptClass*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SupportsExtension = slot;
+	return true;
 }
 
 bool QScriptClass_virtualbase_SupportsExtension(const void* self, int extension) {
 	return ( (const MiqtVirtualQScriptClass*)(self) )->virtualbase_SupportsExtension(extension);
 }
 
-void QScriptClass_override_virtual_Extension(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptClass*>( (QScriptClass*)(self) )->handle__Extension = slot;
+bool QScriptClass_override_virtual_Extension(void* self, intptr_t slot) {
+	MiqtVirtualQScriptClass* self_cast = dynamic_cast<MiqtVirtualQScriptClass*>( (QScriptClass*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Extension = slot;
+	return true;
 }
 
 QVariant* QScriptClass_virtualbase_Extension(void* self, int extension, QVariant* argument) {
 	return ( (MiqtVirtualQScriptClass*)(self) )->virtualbase_Extension(extension, argument);
 }
 
-void QScriptClass_Delete(QScriptClass* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQScriptClass*>( self );
-	} else {
-		delete self;
-	}
+void QScriptClass_Delete(QScriptClass* self) {
+	delete self;
 }
 

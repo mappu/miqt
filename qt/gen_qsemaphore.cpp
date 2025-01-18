@@ -51,12 +51,8 @@ void QSemaphore_Release1(QSemaphore* self, int n) {
 	self->release(static_cast<int>(n));
 }
 
-void QSemaphore_Delete(QSemaphore* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QSemaphore*>( self );
-	} else {
-		delete self;
-	}
+void QSemaphore_Delete(QSemaphore* self) {
+	delete self;
 }
 
 QSemaphoreReleaser* QSemaphoreReleaser_new() {
@@ -91,11 +87,7 @@ QSemaphore* QSemaphoreReleaser_Cancel(QSemaphoreReleaser* self) {
 	return self->cancel();
 }
 
-void QSemaphoreReleaser_Delete(QSemaphoreReleaser* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QSemaphoreReleaser*>( self );
-	} else {
-		delete self;
-	}
+void QSemaphoreReleaser_Delete(QSemaphoreReleaser* self) {
+	delete self;
 }
 

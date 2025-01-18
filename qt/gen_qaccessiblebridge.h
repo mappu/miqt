@@ -41,7 +41,7 @@ typedef struct QTimerEvent QTimerEvent;
 void QAccessibleBridge_SetRootObject(QAccessibleBridge* self, QAccessibleInterface* rootObject);
 void QAccessibleBridge_NotifyAccessibilityUpdate(QAccessibleBridge* self, QAccessibleEvent* event);
 void QAccessibleBridge_OperatorAssign(QAccessibleBridge* self, QAccessibleBridge* param1);
-void QAccessibleBridge_Delete(QAccessibleBridge* self, bool isSubclass);
+void QAccessibleBridge_Delete(QAccessibleBridge* self);
 
 QAccessibleBridgePlugin* QAccessibleBridgePlugin_new();
 QAccessibleBridgePlugin* QAccessibleBridgePlugin_new2(QObject* parent);
@@ -55,23 +55,23 @@ struct miqt_string QAccessibleBridgePlugin_Tr2(const char* s, const char* c);
 struct miqt_string QAccessibleBridgePlugin_Tr3(const char* s, const char* c, int n);
 struct miqt_string QAccessibleBridgePlugin_TrUtf82(const char* s, const char* c);
 struct miqt_string QAccessibleBridgePlugin_TrUtf83(const char* s, const char* c, int n);
-void QAccessibleBridgePlugin_override_virtual_Create(void* self, intptr_t slot);
+bool QAccessibleBridgePlugin_override_virtual_Create(void* self, intptr_t slot);
 QAccessibleBridge* QAccessibleBridgePlugin_virtualbase_Create(void* self, struct miqt_string key);
-void QAccessibleBridgePlugin_override_virtual_Event(void* self, intptr_t slot);
+bool QAccessibleBridgePlugin_override_virtual_Event(void* self, intptr_t slot);
 bool QAccessibleBridgePlugin_virtualbase_Event(void* self, QEvent* event);
-void QAccessibleBridgePlugin_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QAccessibleBridgePlugin_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QAccessibleBridgePlugin_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QAccessibleBridgePlugin_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QAccessibleBridgePlugin_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QAccessibleBridgePlugin_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QAccessibleBridgePlugin_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QAccessibleBridgePlugin_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QAccessibleBridgePlugin_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QAccessibleBridgePlugin_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QAccessibleBridgePlugin_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QAccessibleBridgePlugin_virtualbase_CustomEvent(void* self, QEvent* event);
-void QAccessibleBridgePlugin_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QAccessibleBridgePlugin_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QAccessibleBridgePlugin_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QAccessibleBridgePlugin_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QAccessibleBridgePlugin_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QAccessibleBridgePlugin_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QAccessibleBridgePlugin_Delete(QAccessibleBridgePlugin* self, bool isSubclass);
+void QAccessibleBridgePlugin_Delete(QAccessibleBridgePlugin* self);
 
 #ifdef __cplusplus
 } /* extern C */

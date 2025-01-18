@@ -20,7 +20,7 @@ class QStringDataPtr;
 typedef struct QStringDataPtr QStringDataPtr;
 #endif
 
-void QStringDataPtr_Delete(QStringDataPtr* self, bool isSubclass);
+void QStringDataPtr_Delete(QStringDataPtr* self);
 
 #ifdef __cplusplus
 } /* extern C */

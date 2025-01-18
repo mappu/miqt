@@ -14,8 +14,7 @@ import (
 )
 
 type QVector2D struct {
-	h          *C.QVector2D
-	isSubclass bool
+	h *C.QVector2D
 }
 
 func (this *QVector2D) cPointer() *C.QVector2D {
@@ -49,65 +48,49 @@ func UnsafeNewQVector2D(h unsafe.Pointer) *QVector2D {
 // NewQVector2D constructs a new QVector2D object.
 func NewQVector2D() *QVector2D {
 
-	ret := newQVector2D(C.QVector2D_new())
-	ret.isSubclass = true
-	return ret
+	return newQVector2D(C.QVector2D_new())
 }
 
 // NewQVector2D2 constructs a new QVector2D object.
 func NewQVector2D2(param1 Initialization) *QVector2D {
 
-	ret := newQVector2D(C.QVector2D_new2((C.int)(param1)))
-	ret.isSubclass = true
-	return ret
+	return newQVector2D(C.QVector2D_new2((C.int)(param1)))
 }
 
 // NewQVector2D3 constructs a new QVector2D object.
 func NewQVector2D3(xpos float32, ypos float32) *QVector2D {
 
-	ret := newQVector2D(C.QVector2D_new3((C.float)(xpos), (C.float)(ypos)))
-	ret.isSubclass = true
-	return ret
+	return newQVector2D(C.QVector2D_new3((C.float)(xpos), (C.float)(ypos)))
 }
 
 // NewQVector2D4 constructs a new QVector2D object.
 func NewQVector2D4(point *QPoint) *QVector2D {
 
-	ret := newQVector2D(C.QVector2D_new4(point.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQVector2D(C.QVector2D_new4(point.cPointer()))
 }
 
 // NewQVector2D5 constructs a new QVector2D object.
 func NewQVector2D5(point *QPointF) *QVector2D {
 
-	ret := newQVector2D(C.QVector2D_new5(point.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQVector2D(C.QVector2D_new5(point.cPointer()))
 }
 
 // NewQVector2D6 constructs a new QVector2D object.
 func NewQVector2D6(vector *QVector3D) *QVector2D {
 
-	ret := newQVector2D(C.QVector2D_new6(vector.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQVector2D(C.QVector2D_new6(vector.cPointer()))
 }
 
 // NewQVector2D7 constructs a new QVector2D object.
 func NewQVector2D7(vector *QVector4D) *QVector2D {
 
-	ret := newQVector2D(C.QVector2D_new7(vector.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQVector2D(C.QVector2D_new7(vector.cPointer()))
 }
 
 // NewQVector2D8 constructs a new QVector2D object.
 func NewQVector2D8(param1 *QVector2D) *QVector2D {
 
-	ret := newQVector2D(C.QVector2D_new8(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQVector2D(C.QVector2D_new8(param1.cPointer()))
 }
 
 func (this *QVector2D) IsNull() bool {
@@ -220,7 +203,7 @@ func (this *QVector2D) ToQVariant() *QVariant {
 
 // Delete this object from C++ memory.
 func (this *QVector2D) Delete() {
-	C.QVector2D_Delete(this.h, C.bool(this.isSubclass))
+	C.QVector2D_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

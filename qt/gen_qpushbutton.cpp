@@ -44,7 +44,7 @@ void miqt_exec_callback_QPushButton_TimerEvent(void*, intptr_t, QTimerEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQPushButton : public virtual QPushButton {
+class MiqtVirtualQPushButton final : public QPushButton {
 public:
 
 	MiqtVirtualQPushButton(QWidget* parent): QPushButton(parent) {};
@@ -54,7 +54,7 @@ public:
 	MiqtVirtualQPushButton(const QString& text, QWidget* parent): QPushButton(text, parent) {};
 	MiqtVirtualQPushButton(const QIcon& icon, const QString& text, QWidget* parent): QPushButton(icon, text, parent) {};
 
-	virtual ~MiqtVirtualQPushButton() = default;
+	virtual ~MiqtVirtualQPushButton() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -586,139 +586,231 @@ struct miqt_string QPushButton_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QPushButton_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) )->handle__SizeHint = slot;
+bool QPushButton_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQPushButton* self_cast = dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QPushButton_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQPushButton*)(self) )->virtualbase_SizeHint();
 }
 
-void QPushButton_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) )->handle__MinimumSizeHint = slot;
+bool QPushButton_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQPushButton* self_cast = dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QPushButton_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQPushButton*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QPushButton_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) )->handle__Event = slot;
+bool QPushButton_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQPushButton* self_cast = dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QPushButton_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQPushButton*)(self) )->virtualbase_Event(e);
 }
 
-void QPushButton_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) )->handle__PaintEvent = slot;
+bool QPushButton_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPushButton* self_cast = dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QPushButton_virtualbase_PaintEvent(void* self, QPaintEvent* param1) {
 	( (MiqtVirtualQPushButton*)(self) )->virtualbase_PaintEvent(param1);
 }
 
-void QPushButton_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) )->handle__KeyPressEvent = slot;
+bool QPushButton_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPushButton* self_cast = dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QPushButton_virtualbase_KeyPressEvent(void* self, QKeyEvent* param1) {
 	( (MiqtVirtualQPushButton*)(self) )->virtualbase_KeyPressEvent(param1);
 }
 
-void QPushButton_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) )->handle__FocusInEvent = slot;
+bool QPushButton_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPushButton* self_cast = dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QPushButton_virtualbase_FocusInEvent(void* self, QFocusEvent* param1) {
 	( (MiqtVirtualQPushButton*)(self) )->virtualbase_FocusInEvent(param1);
 }
 
-void QPushButton_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) )->handle__FocusOutEvent = slot;
+bool QPushButton_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPushButton* self_cast = dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
 }
 
 void QPushButton_virtualbase_FocusOutEvent(void* self, QFocusEvent* param1) {
 	( (MiqtVirtualQPushButton*)(self) )->virtualbase_FocusOutEvent(param1);
 }
 
-void QPushButton_override_virtual_HitButton(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) )->handle__HitButton = slot;
+bool QPushButton_override_virtual_HitButton(void* self, intptr_t slot) {
+	MiqtVirtualQPushButton* self_cast = dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HitButton = slot;
+	return true;
 }
 
 bool QPushButton_virtualbase_HitButton(const void* self, QPoint* pos) {
 	return ( (const MiqtVirtualQPushButton*)(self) )->virtualbase_HitButton(pos);
 }
 
-void QPushButton_override_virtual_CheckStateSet(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) )->handle__CheckStateSet = slot;
+bool QPushButton_override_virtual_CheckStateSet(void* self, intptr_t slot) {
+	MiqtVirtualQPushButton* self_cast = dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CheckStateSet = slot;
+	return true;
 }
 
 void QPushButton_virtualbase_CheckStateSet(void* self) {
 	( (MiqtVirtualQPushButton*)(self) )->virtualbase_CheckStateSet();
 }
 
-void QPushButton_override_virtual_NextCheckState(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) )->handle__NextCheckState = slot;
+bool QPushButton_override_virtual_NextCheckState(void* self, intptr_t slot) {
+	MiqtVirtualQPushButton* self_cast = dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NextCheckState = slot;
+	return true;
 }
 
 void QPushButton_virtualbase_NextCheckState(void* self) {
 	( (MiqtVirtualQPushButton*)(self) )->virtualbase_NextCheckState();
 }
 
-void QPushButton_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) )->handle__KeyReleaseEvent = slot;
+bool QPushButton_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPushButton* self_cast = dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyReleaseEvent = slot;
+	return true;
 }
 
 void QPushButton_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* e) {
 	( (MiqtVirtualQPushButton*)(self) )->virtualbase_KeyReleaseEvent(e);
 }
 
-void QPushButton_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) )->handle__MousePressEvent = slot;
+bool QPushButton_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPushButton* self_cast = dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QPushButton_virtualbase_MousePressEvent(void* self, QMouseEvent* e) {
 	( (MiqtVirtualQPushButton*)(self) )->virtualbase_MousePressEvent(e);
 }
 
-void QPushButton_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) )->handle__MouseReleaseEvent = slot;
+bool QPushButton_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPushButton* self_cast = dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QPushButton_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* e) {
 	( (MiqtVirtualQPushButton*)(self) )->virtualbase_MouseReleaseEvent(e);
 }
 
-void QPushButton_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) )->handle__MouseMoveEvent = slot;
+bool QPushButton_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPushButton* self_cast = dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QPushButton_virtualbase_MouseMoveEvent(void* self, QMouseEvent* e) {
 	( (MiqtVirtualQPushButton*)(self) )->virtualbase_MouseMoveEvent(e);
 }
 
-void QPushButton_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) )->handle__ChangeEvent = slot;
+bool QPushButton_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPushButton* self_cast = dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QPushButton_virtualbase_ChangeEvent(void* self, QEvent* e) {
 	( (MiqtVirtualQPushButton*)(self) )->virtualbase_ChangeEvent(e);
 }
 
-void QPushButton_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) )->handle__TimerEvent = slot;
+bool QPushButton_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPushButton* self_cast = dynamic_cast<MiqtVirtualQPushButton*>( (QPushButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QPushButton_virtualbase_TimerEvent(void* self, QTimerEvent* e) {
 	( (MiqtVirtualQPushButton*)(self) )->virtualbase_TimerEvent(e);
 }
 
-void QPushButton_Delete(QPushButton* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQPushButton*>( self );
-	} else {
-		delete self;
-	}
+void QPushButton_Delete(QPushButton* self) {
+	delete self;
 }
 

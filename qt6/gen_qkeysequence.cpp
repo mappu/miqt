@@ -239,11 +239,7 @@ struct miqt_string QKeySequence_ListToString2(struct miqt_array /* of QKeySequen
 	return _ms;
 }
 
-void QKeySequence_Delete(QKeySequence* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QKeySequence*>( self );
-	} else {
-		delete self;
-	}
+void QKeySequence_Delete(QKeySequence* self) {
+	delete self;
 }
 

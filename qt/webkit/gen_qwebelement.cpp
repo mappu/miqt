@@ -471,12 +471,8 @@ struct miqt_array /* of struct miqt_string */  QWebElement_AttributeNames1(const
 	return _out;
 }
 
-void QWebElement_Delete(QWebElement* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebElement*>( self );
-	} else {
-		delete self;
-	}
+void QWebElement_Delete(QWebElement* self) {
+	delete self;
 }
 
 QWebElementCollection* QWebElementCollection_new() {
@@ -567,12 +563,8 @@ QWebElementCollection__iterator* QWebElementCollection_End2(QWebElementCollectio
 	return new QWebElementCollection::iterator(self->end());
 }
 
-void QWebElementCollection_Delete(QWebElementCollection* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebElementCollection*>( self );
-	} else {
-		delete self;
-	}
+void QWebElementCollection_Delete(QWebElementCollection* self) {
+	delete self;
 }
 
 QWebElementCollection__const_iterator* QWebElementCollection__const_iterator_new(QWebElementCollection* collection_, int index) {
@@ -655,12 +647,8 @@ int QWebElementCollection__const_iterator_OperatorMinusWithQWebElementCollection
 	return self->operator-(*j);
 }
 
-void QWebElementCollection__const_iterator_Delete(QWebElementCollection__const_iterator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebElementCollection::const_iterator*>( self );
-	} else {
-		delete self;
-	}
+void QWebElementCollection__const_iterator_Delete(QWebElementCollection__const_iterator* self) {
+	delete self;
 }
 
 QWebElementCollection__iterator* QWebElementCollection__iterator_new(QWebElementCollection* collection_, int index) {
@@ -743,11 +731,7 @@ int QWebElementCollection__iterator_OperatorMinusWithQWebElementCollectioniterat
 	return self->operator-(*j);
 }
 
-void QWebElementCollection__iterator_Delete(QWebElementCollection__iterator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebElementCollection::iterator*>( self );
-	} else {
-		delete self;
-	}
+void QWebElementCollection__iterator_Delete(QWebElementCollection__iterator* self) {
+	delete self;
 }
 

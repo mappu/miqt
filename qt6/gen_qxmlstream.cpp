@@ -59,12 +59,8 @@ void QXmlStreamAttribute_OperatorAssign(QXmlStreamAttribute* self, QXmlStreamAtt
 	self->operator=(*param1);
 }
 
-void QXmlStreamAttribute_Delete(QXmlStreamAttribute* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QXmlStreamAttribute*>( self );
-	} else {
-		delete self;
-	}
+void QXmlStreamAttribute_Delete(QXmlStreamAttribute* self) {
+	delete self;
 }
 
 QXmlStreamNamespaceDeclaration* QXmlStreamNamespaceDeclaration_new() {
@@ -85,12 +81,8 @@ bool QXmlStreamNamespaceDeclaration_OperatorNotEqual(const QXmlStreamNamespaceDe
 	return (*self != *other);
 }
 
-void QXmlStreamNamespaceDeclaration_Delete(QXmlStreamNamespaceDeclaration* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QXmlStreamNamespaceDeclaration*>( self );
-	} else {
-		delete self;
-	}
+void QXmlStreamNamespaceDeclaration_Delete(QXmlStreamNamespaceDeclaration* self) {
+	delete self;
 }
 
 QXmlStreamNotationDeclaration* QXmlStreamNotationDeclaration_new() {
@@ -105,12 +97,8 @@ bool QXmlStreamNotationDeclaration_OperatorNotEqual(const QXmlStreamNotationDecl
 	return (*self != *other);
 }
 
-void QXmlStreamNotationDeclaration_Delete(QXmlStreamNotationDeclaration* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QXmlStreamNotationDeclaration*>( self );
-	} else {
-		delete self;
-	}
+void QXmlStreamNotationDeclaration_Delete(QXmlStreamNotationDeclaration* self) {
+	delete self;
 }
 
 QXmlStreamEntityDeclaration* QXmlStreamEntityDeclaration_new() {
@@ -125,12 +113,8 @@ bool QXmlStreamEntityDeclaration_OperatorNotEqual(const QXmlStreamEntityDeclarat
 	return (*self != *other);
 }
 
-void QXmlStreamEntityDeclaration_Delete(QXmlStreamEntityDeclaration* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QXmlStreamEntityDeclaration*>( self );
-	} else {
-		delete self;
-	}
+void QXmlStreamEntityDeclaration_Delete(QXmlStreamEntityDeclaration* self) {
+	delete self;
 }
 
 struct miqt_string QXmlStreamEntityResolver_ResolveEntity(QXmlStreamEntityResolver* self, struct miqt_string publicId, struct miqt_string systemId) {
@@ -158,12 +142,8 @@ struct miqt_string QXmlStreamEntityResolver_ResolveUndeclaredEntity(QXmlStreamEn
 	return _ms;
 }
 
-void QXmlStreamEntityResolver_Delete(QXmlStreamEntityResolver* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QXmlStreamEntityResolver*>( self );
-	} else {
-		delete self;
-	}
+void QXmlStreamEntityResolver_Delete(QXmlStreamEntityResolver* self) {
+	delete self;
 }
 
 QXmlStreamReader* QXmlStreamReader_new() {
@@ -438,12 +418,8 @@ void QXmlStreamReader_RaiseError1(QXmlStreamReader* self, struct miqt_string mes
 	self->raiseError(message_QString);
 }
 
-void QXmlStreamReader_Delete(QXmlStreamReader* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QXmlStreamReader*>( self );
-	} else {
-		delete self;
-	}
+void QXmlStreamReader_Delete(QXmlStreamReader* self) {
+	delete self;
 }
 
 QXmlStreamWriter* QXmlStreamWriter_new() {
@@ -612,11 +588,7 @@ void QXmlStreamWriter_WriteProcessingInstruction2(QXmlStreamWriter* self, struct
 	self->writeProcessingInstruction(target_QString, data_QString);
 }
 
-void QXmlStreamWriter_Delete(QXmlStreamWriter* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QXmlStreamWriter*>( self );
-	} else {
-		delete self;
-	}
+void QXmlStreamWriter_Delete(QXmlStreamWriter* self) {
+	delete self;
 }
 

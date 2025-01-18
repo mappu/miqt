@@ -14,8 +14,7 @@ import (
 )
 
 type QSemaphore struct {
-	h          *C.QSemaphore
-	isSubclass bool
+	h *C.QSemaphore
 }
 
 func (this *QSemaphore) cPointer() *C.QSemaphore {
@@ -49,17 +48,13 @@ func UnsafeNewQSemaphore(h unsafe.Pointer) *QSemaphore {
 // NewQSemaphore constructs a new QSemaphore object.
 func NewQSemaphore() *QSemaphore {
 
-	ret := newQSemaphore(C.QSemaphore_new())
-	ret.isSubclass = true
-	return ret
+	return newQSemaphore(C.QSemaphore_new())
 }
 
 // NewQSemaphore2 constructs a new QSemaphore object.
 func NewQSemaphore2(n int) *QSemaphore {
 
-	ret := newQSemaphore(C.QSemaphore_new2((C.int)(n)))
-	ret.isSubclass = true
-	return ret
+	return newQSemaphore(C.QSemaphore_new2((C.int)(n)))
 }
 
 func (this *QSemaphore) Acquire() {
@@ -100,7 +95,7 @@ func (this *QSemaphore) Release1(n int) {
 
 // Delete this object from C++ memory.
 func (this *QSemaphore) Delete() {
-	C.QSemaphore_Delete(this.h, C.bool(this.isSubclass))
+	C.QSemaphore_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -113,8 +108,7 @@ func (this *QSemaphore) GoGC() {
 }
 
 type QSemaphoreReleaser struct {
-	h          *C.QSemaphoreReleaser
-	isSubclass bool
+	h *C.QSemaphoreReleaser
 }
 
 func (this *QSemaphoreReleaser) cPointer() *C.QSemaphoreReleaser {
@@ -148,41 +142,31 @@ func UnsafeNewQSemaphoreReleaser(h unsafe.Pointer) *QSemaphoreReleaser {
 // NewQSemaphoreReleaser constructs a new QSemaphoreReleaser object.
 func NewQSemaphoreReleaser() *QSemaphoreReleaser {
 
-	ret := newQSemaphoreReleaser(C.QSemaphoreReleaser_new())
-	ret.isSubclass = true
-	return ret
+	return newQSemaphoreReleaser(C.QSemaphoreReleaser_new())
 }
 
 // NewQSemaphoreReleaser2 constructs a new QSemaphoreReleaser object.
 func NewQSemaphoreReleaser2(sem *QSemaphore) *QSemaphoreReleaser {
 
-	ret := newQSemaphoreReleaser(C.QSemaphoreReleaser_new2(sem.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSemaphoreReleaser(C.QSemaphoreReleaser_new2(sem.cPointer()))
 }
 
 // NewQSemaphoreReleaser3 constructs a new QSemaphoreReleaser object.
 func NewQSemaphoreReleaser3(sem *QSemaphore) *QSemaphoreReleaser {
 
-	ret := newQSemaphoreReleaser(C.QSemaphoreReleaser_new3(sem.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSemaphoreReleaser(C.QSemaphoreReleaser_new3(sem.cPointer()))
 }
 
 // NewQSemaphoreReleaser4 constructs a new QSemaphoreReleaser object.
 func NewQSemaphoreReleaser4(sem *QSemaphore, n int) *QSemaphoreReleaser {
 
-	ret := newQSemaphoreReleaser(C.QSemaphoreReleaser_new4(sem.cPointer(), (C.int)(n)))
-	ret.isSubclass = true
-	return ret
+	return newQSemaphoreReleaser(C.QSemaphoreReleaser_new4(sem.cPointer(), (C.int)(n)))
 }
 
 // NewQSemaphoreReleaser5 constructs a new QSemaphoreReleaser object.
 func NewQSemaphoreReleaser5(sem *QSemaphore, n int) *QSemaphoreReleaser {
 
-	ret := newQSemaphoreReleaser(C.QSemaphoreReleaser_new5(sem.cPointer(), (C.int)(n)))
-	ret.isSubclass = true
-	return ret
+	return newQSemaphoreReleaser(C.QSemaphoreReleaser_new5(sem.cPointer(), (C.int)(n)))
 }
 
 func (this *QSemaphoreReleaser) Swap(other *QSemaphoreReleaser) {
@@ -199,7 +183,7 @@ func (this *QSemaphoreReleaser) Cancel() *QSemaphore {
 
 // Delete this object from C++ memory.
 func (this *QSemaphoreReleaser) Delete() {
-	C.QSemaphoreReleaser_Delete(this.h, C.bool(this.isSubclass))
+	C.QSemaphoreReleaser_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

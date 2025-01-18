@@ -38,17 +38,17 @@ const char* QsciLexerJava_Language(const QsciLexerJava* self);
 const char* QsciLexerJava_Keywords(const QsciLexerJava* self, int set);
 struct miqt_string QsciLexerJava_Tr2(const char* s, const char* c);
 struct miqt_string QsciLexerJava_Tr3(const char* s, const char* c, int n);
-void QsciLexerJava_override_virtual_SetFoldAtElse(void* self, intptr_t slot);
+bool QsciLexerJava_override_virtual_SetFoldAtElse(void* self, intptr_t slot);
 void QsciLexerJava_virtualbase_SetFoldAtElse(void* self, bool fold);
-void QsciLexerJava_override_virtual_SetFoldComments(void* self, intptr_t slot);
+bool QsciLexerJava_override_virtual_SetFoldComments(void* self, intptr_t slot);
 void QsciLexerJava_virtualbase_SetFoldComments(void* self, bool fold);
-void QsciLexerJava_override_virtual_SetFoldCompact(void* self, intptr_t slot);
+bool QsciLexerJava_override_virtual_SetFoldCompact(void* self, intptr_t slot);
 void QsciLexerJava_virtualbase_SetFoldCompact(void* self, bool fold);
-void QsciLexerJava_override_virtual_SetFoldPreprocessor(void* self, intptr_t slot);
+bool QsciLexerJava_override_virtual_SetFoldPreprocessor(void* self, intptr_t slot);
 void QsciLexerJava_virtualbase_SetFoldPreprocessor(void* self, bool fold);
-void QsciLexerJava_override_virtual_SetStylePreprocessor(void* self, intptr_t slot);
+bool QsciLexerJava_override_virtual_SetStylePreprocessor(void* self, intptr_t slot);
 void QsciLexerJava_virtualbase_SetStylePreprocessor(void* self, bool style);
-void QsciLexerJava_Delete(QsciLexerJava* self, bool isSubclass);
+void QsciLexerJava_Delete(QsciLexerJava* self);
 
 #ifdef __cplusplus
 } /* extern C */

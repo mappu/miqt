@@ -36,7 +36,7 @@ bool miqt_exec_callback_QStringListModel_DropMimeData(void*, intptr_t, QMimeData
 } /* extern C */
 #endif
 
-class MiqtVirtualQStringListModel : public virtual QStringListModel {
+class MiqtVirtualQStringListModel final : public QStringListModel {
 public:
 
 	MiqtVirtualQStringListModel(): QStringListModel() {};
@@ -44,7 +44,7 @@ public:
 	MiqtVirtualQStringListModel(QObject* parent): QStringListModel(parent) {};
 	MiqtVirtualQStringListModel(const QStringList& strings, QObject* parent): QStringListModel(strings, parent) {};
 
-	virtual ~MiqtVirtualQStringListModel() = default;
+	virtual ~MiqtVirtualQStringListModel() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__RowCount = 0;
@@ -672,123 +672,203 @@ struct miqt_string QStringListModel_TrUtf83(const char* s, const char* c, int n)
 	return _ms;
 }
 
-void QStringListModel_override_virtual_RowCount(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) )->handle__RowCount = slot;
+bool QStringListModel_override_virtual_RowCount(void* self, intptr_t slot) {
+	MiqtVirtualQStringListModel* self_cast = dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RowCount = slot;
+	return true;
 }
 
 int QStringListModel_virtualbase_RowCount(const void* self, QModelIndex* parent) {
 	return ( (const MiqtVirtualQStringListModel*)(self) )->virtualbase_RowCount(parent);
 }
 
-void QStringListModel_override_virtual_Sibling(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) )->handle__Sibling = slot;
+bool QStringListModel_override_virtual_Sibling(void* self, intptr_t slot) {
+	MiqtVirtualQStringListModel* self_cast = dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Sibling = slot;
+	return true;
 }
 
 QModelIndex* QStringListModel_virtualbase_Sibling(const void* self, int row, int column, QModelIndex* idx) {
 	return ( (const MiqtVirtualQStringListModel*)(self) )->virtualbase_Sibling(row, column, idx);
 }
 
-void QStringListModel_override_virtual_Data(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) )->handle__Data = slot;
+bool QStringListModel_override_virtual_Data(void* self, intptr_t slot) {
+	MiqtVirtualQStringListModel* self_cast = dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Data = slot;
+	return true;
 }
 
 QVariant* QStringListModel_virtualbase_Data(const void* self, QModelIndex* index, int role) {
 	return ( (const MiqtVirtualQStringListModel*)(self) )->virtualbase_Data(index, role);
 }
 
-void QStringListModel_override_virtual_SetData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) )->handle__SetData = slot;
+bool QStringListModel_override_virtual_SetData(void* self, intptr_t slot) {
+	MiqtVirtualQStringListModel* self_cast = dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetData = slot;
+	return true;
 }
 
 bool QStringListModel_virtualbase_SetData(void* self, QModelIndex* index, QVariant* value, int role) {
 	return ( (MiqtVirtualQStringListModel*)(self) )->virtualbase_SetData(index, value, role);
 }
 
-void QStringListModel_override_virtual_Flags(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) )->handle__Flags = slot;
+bool QStringListModel_override_virtual_Flags(void* self, intptr_t slot) {
+	MiqtVirtualQStringListModel* self_cast = dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Flags = slot;
+	return true;
 }
 
 int QStringListModel_virtualbase_Flags(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQStringListModel*)(self) )->virtualbase_Flags(index);
 }
 
-void QStringListModel_override_virtual_InsertRows(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) )->handle__InsertRows = slot;
+bool QStringListModel_override_virtual_InsertRows(void* self, intptr_t slot) {
+	MiqtVirtualQStringListModel* self_cast = dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InsertRows = slot;
+	return true;
 }
 
 bool QStringListModel_virtualbase_InsertRows(void* self, int row, int count, QModelIndex* parent) {
 	return ( (MiqtVirtualQStringListModel*)(self) )->virtualbase_InsertRows(row, count, parent);
 }
 
-void QStringListModel_override_virtual_RemoveRows(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) )->handle__RemoveRows = slot;
+bool QStringListModel_override_virtual_RemoveRows(void* self, intptr_t slot) {
+	MiqtVirtualQStringListModel* self_cast = dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RemoveRows = slot;
+	return true;
 }
 
 bool QStringListModel_virtualbase_RemoveRows(void* self, int row, int count, QModelIndex* parent) {
 	return ( (MiqtVirtualQStringListModel*)(self) )->virtualbase_RemoveRows(row, count, parent);
 }
 
-void QStringListModel_override_virtual_MoveRows(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) )->handle__MoveRows = slot;
+bool QStringListModel_override_virtual_MoveRows(void* self, intptr_t slot) {
+	MiqtVirtualQStringListModel* self_cast = dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveRows = slot;
+	return true;
 }
 
 bool QStringListModel_virtualbase_MoveRows(void* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
 	return ( (MiqtVirtualQStringListModel*)(self) )->virtualbase_MoveRows(sourceParent, sourceRow, count, destinationParent, destinationChild);
 }
 
-void QStringListModel_override_virtual_ItemData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) )->handle__ItemData = slot;
+bool QStringListModel_override_virtual_ItemData(void* self, intptr_t slot) {
+	MiqtVirtualQStringListModel* self_cast = dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ItemData = slot;
+	return true;
 }
 
 struct miqt_map /* of int to QVariant* */  QStringListModel_virtualbase_ItemData(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQStringListModel*)(self) )->virtualbase_ItemData(index);
 }
 
-void QStringListModel_override_virtual_SetItemData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) )->handle__SetItemData = slot;
+bool QStringListModel_override_virtual_SetItemData(void* self, intptr_t slot) {
+	MiqtVirtualQStringListModel* self_cast = dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetItemData = slot;
+	return true;
 }
 
 bool QStringListModel_virtualbase_SetItemData(void* self, QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles) {
 	return ( (MiqtVirtualQStringListModel*)(self) )->virtualbase_SetItemData(index, roles);
 }
 
-void QStringListModel_override_virtual_Sort(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) )->handle__Sort = slot;
+bool QStringListModel_override_virtual_Sort(void* self, intptr_t slot) {
+	MiqtVirtualQStringListModel* self_cast = dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Sort = slot;
+	return true;
 }
 
 void QStringListModel_virtualbase_Sort(void* self, int column, int order) {
 	( (MiqtVirtualQStringListModel*)(self) )->virtualbase_Sort(column, order);
 }
 
-void QStringListModel_override_virtual_SupportedDropActions(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) )->handle__SupportedDropActions = slot;
+bool QStringListModel_override_virtual_SupportedDropActions(void* self, intptr_t slot) {
+	MiqtVirtualQStringListModel* self_cast = dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SupportedDropActions = slot;
+	return true;
 }
 
 int QStringListModel_virtualbase_SupportedDropActions(const void* self) {
 	return ( (const MiqtVirtualQStringListModel*)(self) )->virtualbase_SupportedDropActions();
 }
 
-void QStringListModel_override_virtual_Index(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) )->handle__Index = slot;
+bool QStringListModel_override_virtual_Index(void* self, intptr_t slot) {
+	MiqtVirtualQStringListModel* self_cast = dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Index = slot;
+	return true;
 }
 
 QModelIndex* QStringListModel_virtualbase_Index(const void* self, int row, int column, QModelIndex* parent) {
 	return ( (const MiqtVirtualQStringListModel*)(self) )->virtualbase_Index(row, column, parent);
 }
 
-void QStringListModel_override_virtual_DropMimeData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) )->handle__DropMimeData = slot;
+bool QStringListModel_override_virtual_DropMimeData(void* self, intptr_t slot) {
+	MiqtVirtualQStringListModel* self_cast = dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropMimeData = slot;
+	return true;
 }
 
 bool QStringListModel_virtualbase_DropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 	return ( (MiqtVirtualQStringListModel*)(self) )->virtualbase_DropMimeData(data, action, row, column, parent);
 }
 
-void QStringListModel_Delete(QStringListModel* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQStringListModel*>( self );
-	} else {
-		delete self;
-	}
+void QStringListModel_Delete(QStringListModel* self) {
+	delete self;
 }
 

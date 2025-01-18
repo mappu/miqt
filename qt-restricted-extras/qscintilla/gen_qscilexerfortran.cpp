@@ -15,13 +15,13 @@ void miqt_exec_callback_QsciLexerFortran_SetFoldCompact(void*, intptr_t, bool);
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerFortran : public virtual QsciLexerFortran {
+class MiqtVirtualQsciLexerFortran final : public QsciLexerFortran {
 public:
 
 	MiqtVirtualQsciLexerFortran(): QsciLexerFortran() {};
 	MiqtVirtualQsciLexerFortran(QObject* parent): QsciLexerFortran(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerFortran() = default;
+	virtual ~MiqtVirtualQsciLexerFortran() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetFoldCompact = 0;
@@ -147,19 +147,21 @@ struct miqt_string QsciLexerFortran_TrUtf83(const char* s, const char* c, int n)
 	return _ms;
 }
 
-void QsciLexerFortran_override_virtual_SetFoldCompact(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerFortran*>( (QsciLexerFortran*)(self) )->handle__SetFoldCompact = slot;
+bool QsciLexerFortran_override_virtual_SetFoldCompact(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerFortran* self_cast = dynamic_cast<MiqtVirtualQsciLexerFortran*>( (QsciLexerFortran*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetFoldCompact = slot;
+	return true;
 }
 
 void QsciLexerFortran_virtualbase_SetFoldCompact(void* self, bool fold) {
 	( (MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_SetFoldCompact(fold);
 }
 
-void QsciLexerFortran_Delete(QsciLexerFortran* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerFortran*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerFortran_Delete(QsciLexerFortran* self) {
+	delete self;
 }
 

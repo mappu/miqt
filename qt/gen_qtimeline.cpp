@@ -28,14 +28,14 @@ void miqt_exec_callback_QTimeLine_DisconnectNotify(void*, intptr_t, QMetaMethod*
 } /* extern C */
 #endif
 
-class MiqtVirtualQTimeLine : public virtual QTimeLine {
+class MiqtVirtualQTimeLine final : public QTimeLine {
 public:
 
 	MiqtVirtualQTimeLine(): QTimeLine() {};
 	MiqtVirtualQTimeLine(int duration): QTimeLine(duration) {};
 	MiqtVirtualQTimeLine(int duration, QObject* parent): QTimeLine(duration, parent) {};
 
-	virtual ~MiqtVirtualQTimeLine() = default;
+	virtual ~MiqtVirtualQTimeLine() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__ValueForTime = 0;
@@ -445,75 +445,119 @@ struct miqt_string QTimeLine_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QTimeLine_override_virtual_ValueForTime(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) )->handle__ValueForTime = slot;
+bool QTimeLine_override_virtual_ValueForTime(void* self, intptr_t slot) {
+	MiqtVirtualQTimeLine* self_cast = dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ValueForTime = slot;
+	return true;
 }
 
 double QTimeLine_virtualbase_ValueForTime(const void* self, int msec) {
 	return ( (const MiqtVirtualQTimeLine*)(self) )->virtualbase_ValueForTime(msec);
 }
 
-void QTimeLine_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) )->handle__TimerEvent = slot;
+bool QTimeLine_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeLine* self_cast = dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QTimeLine_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQTimeLine*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QTimeLine_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) )->handle__Event = slot;
+bool QTimeLine_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQTimeLine* self_cast = dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QTimeLine_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQTimeLine*)(self) )->virtualbase_Event(event);
 }
 
-void QTimeLine_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) )->handle__EventFilter = slot;
+bool QTimeLine_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQTimeLine* self_cast = dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QTimeLine_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQTimeLine*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QTimeLine_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) )->handle__ChildEvent = slot;
+bool QTimeLine_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeLine* self_cast = dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QTimeLine_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQTimeLine*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QTimeLine_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) )->handle__CustomEvent = slot;
+bool QTimeLine_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeLine* self_cast = dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QTimeLine_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQTimeLine*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QTimeLine_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) )->handle__ConnectNotify = slot;
+bool QTimeLine_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQTimeLine* self_cast = dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QTimeLine_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTimeLine*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QTimeLine_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) )->handle__DisconnectNotify = slot;
+bool QTimeLine_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQTimeLine* self_cast = dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QTimeLine_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTimeLine*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QTimeLine_Delete(QTimeLine* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQTimeLine*>( self );
-	} else {
-		delete self;
-	}
+void QTimeLine_Delete(QTimeLine* self) {
+	delete self;
 }
 

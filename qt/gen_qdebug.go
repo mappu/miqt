@@ -22,8 +22,7 @@ const (
 )
 
 type QDebug struct {
-	h          *C.QDebug
-	isSubclass bool
+	h *C.QDebug
 }
 
 func (this *QDebug) cPointer() *C.QDebug {
@@ -57,17 +56,13 @@ func UnsafeNewQDebug(h unsafe.Pointer) *QDebug {
 // NewQDebug constructs a new QDebug object.
 func NewQDebug(device *QIODevice) *QDebug {
 
-	ret := newQDebug(C.QDebug_new(device.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQDebug(C.QDebug_new(device.cPointer()))
 }
 
 // NewQDebug2 constructs a new QDebug object.
 func NewQDebug2(o *QDebug) *QDebug {
 
-	ret := newQDebug(C.QDebug_new2(o.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQDebug(C.QDebug_new2(o.cPointer()))
 }
 
 func (this *QDebug) OperatorAssign(other *QDebug) {
@@ -209,7 +204,7 @@ func (this *QDebug) MaybeQuote1(c int8) *QDebug {
 
 // Delete this object from C++ memory.
 func (this *QDebug) Delete() {
-	C.QDebug_Delete(this.h, C.bool(this.isSubclass))
+	C.QDebug_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -222,8 +217,7 @@ func (this *QDebug) GoGC() {
 }
 
 type QDebugStateSaver struct {
-	h          *C.QDebugStateSaver
-	isSubclass bool
+	h *C.QDebugStateSaver
 }
 
 func (this *QDebugStateSaver) cPointer() *C.QDebugStateSaver {
@@ -257,14 +251,12 @@ func UnsafeNewQDebugStateSaver(h unsafe.Pointer) *QDebugStateSaver {
 // NewQDebugStateSaver constructs a new QDebugStateSaver object.
 func NewQDebugStateSaver(dbg *QDebug) *QDebugStateSaver {
 
-	ret := newQDebugStateSaver(C.QDebugStateSaver_new(dbg.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQDebugStateSaver(C.QDebugStateSaver_new(dbg.cPointer()))
 }
 
 // Delete this object from C++ memory.
 func (this *QDebugStateSaver) Delete() {
-	C.QDebugStateSaver_Delete(this.h, C.bool(this.isSubclass))
+	C.QDebugStateSaver_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -277,8 +269,7 @@ func (this *QDebugStateSaver) GoGC() {
 }
 
 type QNoDebug struct {
-	h          *C.QNoDebug
-	isSubclass bool
+	h *C.QNoDebug
 }
 
 func (this *QNoDebug) cPointer() *C.QNoDebug {
@@ -343,7 +334,7 @@ func (this *QNoDebug) MaybeQuote1(param1 int8) *QNoDebug {
 
 // Delete this object from C++ memory.
 func (this *QNoDebug) Delete() {
-	C.QNoDebug_Delete(this.h, C.bool(this.isSubclass))
+	C.QNoDebug_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

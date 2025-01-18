@@ -120,11 +120,7 @@ struct miqt_string QAbstractState_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QAbstractState_Delete(QAbstractState* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QAbstractState*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractState_Delete(QAbstractState* self) {
+	delete self;
 }
 

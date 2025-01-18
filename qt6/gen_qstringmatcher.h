@@ -37,7 +37,7 @@ struct miqt_string QStringMatcher_Pattern(const QStringMatcher* self);
 int QStringMatcher_CaseSensitivity(const QStringMatcher* self);
 ptrdiff_t QStringMatcher_IndexIn22(const QStringMatcher* self, struct miqt_string str, ptrdiff_t from);
 ptrdiff_t QStringMatcher_IndexIn3(const QStringMatcher* self, QChar* str, ptrdiff_t length, ptrdiff_t from);
-void QStringMatcher_Delete(QStringMatcher* self, bool isSubclass);
+void QStringMatcher_Delete(QStringMatcher* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -188,14 +188,14 @@ unsigned long long QVariant_ToULongLong1(const QVariant* self, bool* ok);
 double QVariant_ToDouble1(const QVariant* self, bool* ok);
 float QVariant_ToFloat1(const QVariant* self, bool* ok);
 double QVariant_ToReal1(const QVariant* self, bool* ok);
-void QVariant_Delete(QVariant* self, bool isSubclass);
+void QVariant_Delete(QVariant* self);
 
 QVariantConstPointer* QVariantConstPointer_new(QVariant* variant);
 QVariantConstPointer* QVariantConstPointer_new2(QVariantConstPointer* param1);
 QVariant* QVariantConstPointer_OperatorMultiply(const QVariantConstPointer* self);
 QVariant* QVariantConstPointer_OperatorMinusGreater(const QVariantConstPointer* self);
 void QVariantConstPointer_OperatorAssign(QVariantConstPointer* self, QVariantConstPointer* param1);
-void QVariantConstPointer_Delete(QVariantConstPointer* self, bool isSubclass);
+void QVariantConstPointer_Delete(QVariantConstPointer* self);
 
 #ifdef __cplusplus
 } /* extern C */

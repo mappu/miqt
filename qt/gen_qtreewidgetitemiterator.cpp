@@ -72,11 +72,7 @@ QTreeWidgetItem* QTreeWidgetItemIterator_OperatorMultiply(const QTreeWidgetItemI
 	return self->operator*();
 }
 
-void QTreeWidgetItemIterator_Delete(QTreeWidgetItemIterator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTreeWidgetItemIterator*>( self );
-	} else {
-		delete self;
-	}
+void QTreeWidgetItemIterator_Delete(QTreeWidgetItemIterator* self) {
+	delete self;
 }
 

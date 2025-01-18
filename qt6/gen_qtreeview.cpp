@@ -112,13 +112,13 @@ bool miqt_exec_callback_QTreeView_EventFilter(void*, intptr_t, QObject*, QEvent*
 } /* extern C */
 #endif
 
-class MiqtVirtualQTreeView : public virtual QTreeView {
+class MiqtVirtualQTreeView final : public QTreeView {
 public:
 
 	MiqtVirtualQTreeView(QWidget* parent): QTreeView(parent) {};
 	MiqtVirtualQTreeView(): QTreeView() {};
 
-	virtual ~MiqtVirtualQTreeView() = default;
+	virtual ~MiqtVirtualQTreeView() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetModel = 0;
@@ -2079,523 +2079,903 @@ void QTreeView_ExpandRecursively2(QTreeView* self, QModelIndex* index, int depth
 	self->expandRecursively(*index, static_cast<int>(depth));
 }
 
-void QTreeView_override_virtual_SetModel(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__SetModel = slot;
+bool QTreeView_override_virtual_SetModel(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetModel = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_SetModel(void* self, QAbstractItemModel* model) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_SetModel(model);
 }
 
-void QTreeView_override_virtual_SetRootIndex(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__SetRootIndex = slot;
+bool QTreeView_override_virtual_SetRootIndex(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetRootIndex = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_SetRootIndex(void* self, QModelIndex* index) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_SetRootIndex(index);
 }
 
-void QTreeView_override_virtual_SetSelectionModel(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__SetSelectionModel = slot;
+bool QTreeView_override_virtual_SetSelectionModel(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetSelectionModel = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_SetSelectionModel(void* self, QItemSelectionModel* selectionModel) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_SetSelectionModel(selectionModel);
 }
 
-void QTreeView_override_virtual_KeyboardSearch(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__KeyboardSearch = slot;
+bool QTreeView_override_virtual_KeyboardSearch(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyboardSearch = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_KeyboardSearch(void* self, struct miqt_string search) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_KeyboardSearch(search);
 }
 
-void QTreeView_override_virtual_VisualRect(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__VisualRect = slot;
+bool QTreeView_override_virtual_VisualRect(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__VisualRect = slot;
+	return true;
 }
 
 QRect* QTreeView_virtualbase_VisualRect(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQTreeView*)(self) )->virtualbase_VisualRect(index);
 }
 
-void QTreeView_override_virtual_ScrollTo(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__ScrollTo = slot;
+bool QTreeView_override_virtual_ScrollTo(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ScrollTo = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_ScrollTo(void* self, QModelIndex* index, int hint) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_ScrollTo(index, hint);
 }
 
-void QTreeView_override_virtual_IndexAt(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__IndexAt = slot;
+bool QTreeView_override_virtual_IndexAt(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IndexAt = slot;
+	return true;
 }
 
 QModelIndex* QTreeView_virtualbase_IndexAt(const void* self, QPoint* p) {
 	return ( (const MiqtVirtualQTreeView*)(self) )->virtualbase_IndexAt(p);
 }
 
-void QTreeView_override_virtual_DoItemsLayout(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__DoItemsLayout = slot;
+bool QTreeView_override_virtual_DoItemsLayout(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DoItemsLayout = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_DoItemsLayout(void* self) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_DoItemsLayout();
 }
 
-void QTreeView_override_virtual_Reset(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__Reset = slot;
+bool QTreeView_override_virtual_Reset(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Reset = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_Reset(void* self) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_Reset();
 }
 
-void QTreeView_override_virtual_DataChanged(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__DataChanged = slot;
+bool QTreeView_override_virtual_DataChanged(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DataChanged = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_DataChanged(void* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array /* of int */  roles) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_DataChanged(topLeft, bottomRight, roles);
 }
 
-void QTreeView_override_virtual_SelectAll(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__SelectAll = slot;
+bool QTreeView_override_virtual_SelectAll(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SelectAll = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_SelectAll(void* self) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_SelectAll();
 }
 
-void QTreeView_override_virtual_VerticalScrollbarValueChanged(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__VerticalScrollbarValueChanged = slot;
+bool QTreeView_override_virtual_VerticalScrollbarValueChanged(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__VerticalScrollbarValueChanged = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_VerticalScrollbarValueChanged(void* self, int value) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_VerticalScrollbarValueChanged(value);
 }
 
-void QTreeView_override_virtual_ScrollContentsBy(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__ScrollContentsBy = slot;
+bool QTreeView_override_virtual_ScrollContentsBy(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ScrollContentsBy = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_ScrollContentsBy(void* self, int dx, int dy) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_ScrollContentsBy(dx, dy);
 }
 
-void QTreeView_override_virtual_RowsInserted(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__RowsInserted = slot;
+bool QTreeView_override_virtual_RowsInserted(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RowsInserted = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_RowsInserted(void* self, QModelIndex* parent, int start, int end) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_RowsInserted(parent, start, end);
 }
 
-void QTreeView_override_virtual_RowsAboutToBeRemoved(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__RowsAboutToBeRemoved = slot;
+bool QTreeView_override_virtual_RowsAboutToBeRemoved(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RowsAboutToBeRemoved = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_RowsAboutToBeRemoved(void* self, QModelIndex* parent, int start, int end) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_RowsAboutToBeRemoved(parent, start, end);
 }
 
-void QTreeView_override_virtual_MoveCursor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__MoveCursor = slot;
+bool QTreeView_override_virtual_MoveCursor(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveCursor = slot;
+	return true;
 }
 
 QModelIndex* QTreeView_virtualbase_MoveCursor(void* self, int cursorAction, int modifiers) {
 	return ( (MiqtVirtualQTreeView*)(self) )->virtualbase_MoveCursor(cursorAction, modifiers);
 }
 
-void QTreeView_override_virtual_HorizontalOffset(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__HorizontalOffset = slot;
+bool QTreeView_override_virtual_HorizontalOffset(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HorizontalOffset = slot;
+	return true;
 }
 
 int QTreeView_virtualbase_HorizontalOffset(const void* self) {
 	return ( (const MiqtVirtualQTreeView*)(self) )->virtualbase_HorizontalOffset();
 }
 
-void QTreeView_override_virtual_VerticalOffset(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__VerticalOffset = slot;
+bool QTreeView_override_virtual_VerticalOffset(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__VerticalOffset = slot;
+	return true;
 }
 
 int QTreeView_virtualbase_VerticalOffset(const void* self) {
 	return ( (const MiqtVirtualQTreeView*)(self) )->virtualbase_VerticalOffset();
 }
 
-void QTreeView_override_virtual_SetSelection(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__SetSelection = slot;
+bool QTreeView_override_virtual_SetSelection(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetSelection = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_SetSelection(void* self, QRect* rect, int command) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_SetSelection(rect, command);
 }
 
-void QTreeView_override_virtual_VisualRegionForSelection(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__VisualRegionForSelection = slot;
+bool QTreeView_override_virtual_VisualRegionForSelection(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__VisualRegionForSelection = slot;
+	return true;
 }
 
 QRegion* QTreeView_virtualbase_VisualRegionForSelection(const void* self, QItemSelection* selection) {
 	return ( (const MiqtVirtualQTreeView*)(self) )->virtualbase_VisualRegionForSelection(selection);
 }
 
-void QTreeView_override_virtual_SelectedIndexes(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__SelectedIndexes = slot;
+bool QTreeView_override_virtual_SelectedIndexes(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SelectedIndexes = slot;
+	return true;
 }
 
 struct miqt_array /* of QModelIndex* */  QTreeView_virtualbase_SelectedIndexes(const void* self) {
 	return ( (const MiqtVirtualQTreeView*)(self) )->virtualbase_SelectedIndexes();
 }
 
-void QTreeView_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__ChangeEvent = slot;
+bool QTreeView_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_ChangeEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_ChangeEvent(event);
 }
 
-void QTreeView_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__TimerEvent = slot;
+bool QTreeView_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QTreeView_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__PaintEvent = slot;
+bool QTreeView_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_PaintEvent(void* self, QPaintEvent* event) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_PaintEvent(event);
 }
 
-void QTreeView_override_virtual_DrawRow(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__DrawRow = slot;
+bool QTreeView_override_virtual_DrawRow(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DrawRow = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_DrawRow(const void* self, QPainter* painter, QStyleOptionViewItem* options, QModelIndex* index) {
 	( (const MiqtVirtualQTreeView*)(self) )->virtualbase_DrawRow(painter, options, index);
 }
 
-void QTreeView_override_virtual_DrawBranches(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__DrawBranches = slot;
+bool QTreeView_override_virtual_DrawBranches(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DrawBranches = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_DrawBranches(const void* self, QPainter* painter, QRect* rect, QModelIndex* index) {
 	( (const MiqtVirtualQTreeView*)(self) )->virtualbase_DrawBranches(painter, rect, index);
 }
 
-void QTreeView_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__MousePressEvent = slot;
+bool QTreeView_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_MousePressEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_MousePressEvent(event);
 }
 
-void QTreeView_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__MouseReleaseEvent = slot;
+bool QTreeView_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_MouseReleaseEvent(event);
 }
 
-void QTreeView_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__MouseDoubleClickEvent = slot;
+bool QTreeView_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseDoubleClickEvent = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_MouseDoubleClickEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_MouseDoubleClickEvent(event);
 }
 
-void QTreeView_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__MouseMoveEvent = slot;
+bool QTreeView_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_MouseMoveEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_MouseMoveEvent(event);
 }
 
-void QTreeView_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__KeyPressEvent = slot;
+bool QTreeView_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_KeyPressEvent(void* self, QKeyEvent* event) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_KeyPressEvent(event);
 }
 
-void QTreeView_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__DragMoveEvent = slot;
+bool QTreeView_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragMoveEvent = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_DragMoveEvent(void* self, QDragMoveEvent* event) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_DragMoveEvent(event);
 }
 
-void QTreeView_override_virtual_ViewportEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__ViewportEvent = slot;
+bool QTreeView_override_virtual_ViewportEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ViewportEvent = slot;
+	return true;
 }
 
 bool QTreeView_virtualbase_ViewportEvent(void* self, QEvent* event) {
 	return ( (MiqtVirtualQTreeView*)(self) )->virtualbase_ViewportEvent(event);
 }
 
-void QTreeView_override_virtual_UpdateGeometries(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__UpdateGeometries = slot;
+bool QTreeView_override_virtual_UpdateGeometries(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateGeometries = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_UpdateGeometries(void* self) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_UpdateGeometries();
 }
 
-void QTreeView_override_virtual_ViewportSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__ViewportSizeHint = slot;
+bool QTreeView_override_virtual_ViewportSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ViewportSizeHint = slot;
+	return true;
 }
 
 QSize* QTreeView_virtualbase_ViewportSizeHint(const void* self) {
 	return ( (const MiqtVirtualQTreeView*)(self) )->virtualbase_ViewportSizeHint();
 }
 
-void QTreeView_override_virtual_SizeHintForColumn(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__SizeHintForColumn = slot;
+bool QTreeView_override_virtual_SizeHintForColumn(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHintForColumn = slot;
+	return true;
 }
 
 int QTreeView_virtualbase_SizeHintForColumn(const void* self, int column) {
 	return ( (const MiqtVirtualQTreeView*)(self) )->virtualbase_SizeHintForColumn(column);
 }
 
-void QTreeView_override_virtual_HorizontalScrollbarAction(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__HorizontalScrollbarAction = slot;
+bool QTreeView_override_virtual_HorizontalScrollbarAction(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HorizontalScrollbarAction = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_HorizontalScrollbarAction(void* self, int action) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_HorizontalScrollbarAction(action);
 }
 
-void QTreeView_override_virtual_IsIndexHidden(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__IsIndexHidden = slot;
+bool QTreeView_override_virtual_IsIndexHidden(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsIndexHidden = slot;
+	return true;
 }
 
 bool QTreeView_virtualbase_IsIndexHidden(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQTreeView*)(self) )->virtualbase_IsIndexHidden(index);
 }
 
-void QTreeView_override_virtual_SelectionChanged(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__SelectionChanged = slot;
+bool QTreeView_override_virtual_SelectionChanged(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SelectionChanged = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_SelectionChanged(void* self, QItemSelection* selected, QItemSelection* deselected) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_SelectionChanged(selected, deselected);
 }
 
-void QTreeView_override_virtual_CurrentChanged(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__CurrentChanged = slot;
+bool QTreeView_override_virtual_CurrentChanged(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CurrentChanged = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_CurrentChanged(void* self, QModelIndex* current, QModelIndex* previous) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_CurrentChanged(current, previous);
 }
 
-void QTreeView_override_virtual_SizeHintForRow(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__SizeHintForRow = slot;
+bool QTreeView_override_virtual_SizeHintForRow(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHintForRow = slot;
+	return true;
 }
 
 int QTreeView_virtualbase_SizeHintForRow(const void* self, int row) {
 	return ( (const MiqtVirtualQTreeView*)(self) )->virtualbase_SizeHintForRow(row);
 }
 
-void QTreeView_override_virtual_ItemDelegateForIndex(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__ItemDelegateForIndex = slot;
+bool QTreeView_override_virtual_ItemDelegateForIndex(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ItemDelegateForIndex = slot;
+	return true;
 }
 
 QAbstractItemDelegate* QTreeView_virtualbase_ItemDelegateForIndex(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQTreeView*)(self) )->virtualbase_ItemDelegateForIndex(index);
 }
 
-void QTreeView_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__InputMethodQuery = slot;
+bool QTreeView_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodQuery = slot;
+	return true;
 }
 
 QVariant* QTreeView_virtualbase_InputMethodQuery(const void* self, int query) {
 	return ( (const MiqtVirtualQTreeView*)(self) )->virtualbase_InputMethodQuery(query);
 }
 
-void QTreeView_override_virtual_UpdateEditorData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__UpdateEditorData = slot;
+bool QTreeView_override_virtual_UpdateEditorData(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateEditorData = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_UpdateEditorData(void* self) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_UpdateEditorData();
 }
 
-void QTreeView_override_virtual_UpdateEditorGeometries(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__UpdateEditorGeometries = slot;
+bool QTreeView_override_virtual_UpdateEditorGeometries(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateEditorGeometries = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_UpdateEditorGeometries(void* self) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_UpdateEditorGeometries();
 }
 
-void QTreeView_override_virtual_VerticalScrollbarAction(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__VerticalScrollbarAction = slot;
+bool QTreeView_override_virtual_VerticalScrollbarAction(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__VerticalScrollbarAction = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_VerticalScrollbarAction(void* self, int action) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_VerticalScrollbarAction(action);
 }
 
-void QTreeView_override_virtual_HorizontalScrollbarValueChanged(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__HorizontalScrollbarValueChanged = slot;
+bool QTreeView_override_virtual_HorizontalScrollbarValueChanged(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HorizontalScrollbarValueChanged = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_HorizontalScrollbarValueChanged(void* self, int value) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_HorizontalScrollbarValueChanged(value);
 }
 
-void QTreeView_override_virtual_CloseEditor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__CloseEditor = slot;
+bool QTreeView_override_virtual_CloseEditor(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEditor = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_CloseEditor(void* self, QWidget* editor, int hint) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_CloseEditor(editor, hint);
 }
 
-void QTreeView_override_virtual_CommitData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__CommitData = slot;
+bool QTreeView_override_virtual_CommitData(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CommitData = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_CommitData(void* self, QWidget* editor) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_CommitData(editor);
 }
 
-void QTreeView_override_virtual_EditorDestroyed(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__EditorDestroyed = slot;
+bool QTreeView_override_virtual_EditorDestroyed(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EditorDestroyed = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_EditorDestroyed(void* self, QObject* editor) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_EditorDestroyed(editor);
 }
 
-void QTreeView_override_virtual_Edit2(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__Edit2 = slot;
+bool QTreeView_override_virtual_Edit2(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Edit2 = slot;
+	return true;
 }
 
 bool QTreeView_virtualbase_Edit2(void* self, QModelIndex* index, int trigger, QEvent* event) {
 	return ( (MiqtVirtualQTreeView*)(self) )->virtualbase_Edit2(index, trigger, event);
 }
 
-void QTreeView_override_virtual_SelectionCommand(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__SelectionCommand = slot;
+bool QTreeView_override_virtual_SelectionCommand(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SelectionCommand = slot;
+	return true;
 }
 
 int QTreeView_virtualbase_SelectionCommand(const void* self, QModelIndex* index, QEvent* event) {
 	return ( (const MiqtVirtualQTreeView*)(self) )->virtualbase_SelectionCommand(index, event);
 }
 
-void QTreeView_override_virtual_StartDrag(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__StartDrag = slot;
+bool QTreeView_override_virtual_StartDrag(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__StartDrag = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_StartDrag(void* self, int supportedActions) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_StartDrag(supportedActions);
 }
 
-void QTreeView_override_virtual_InitViewItemOption(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__InitViewItemOption = slot;
+bool QTreeView_override_virtual_InitViewItemOption(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitViewItemOption = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_InitViewItemOption(const void* self, QStyleOptionViewItem* option) {
 	( (const MiqtVirtualQTreeView*)(self) )->virtualbase_InitViewItemOption(option);
 }
 
-void QTreeView_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__FocusNextPrevChild = slot;
+bool QTreeView_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusNextPrevChild = slot;
+	return true;
 }
 
 bool QTreeView_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQTreeView*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QTreeView_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__Event = slot;
+bool QTreeView_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QTreeView_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQTreeView*)(self) )->virtualbase_Event(event);
 }
 
-void QTreeView_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__DragEnterEvent = slot;
+bool QTreeView_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragEnterEvent = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_DragEnterEvent(void* self, QDragEnterEvent* event) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_DragEnterEvent(event);
 }
 
-void QTreeView_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__DragLeaveEvent = slot;
+bool QTreeView_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragLeaveEvent = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* event) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_DragLeaveEvent(event);
 }
 
-void QTreeView_override_virtual_DropEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__DropEvent = slot;
+bool QTreeView_override_virtual_DropEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropEvent = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_DropEvent(void* self, QDropEvent* event) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_DropEvent(event);
 }
 
-void QTreeView_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__FocusInEvent = slot;
+bool QTreeView_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_FocusInEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_FocusInEvent(event);
 }
 
-void QTreeView_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__FocusOutEvent = slot;
+bool QTreeView_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_FocusOutEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_FocusOutEvent(event);
 }
 
-void QTreeView_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__ResizeEvent = slot;
+bool QTreeView_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_ResizeEvent(void* self, QResizeEvent* event) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_ResizeEvent(event);
 }
 
-void QTreeView_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__InputMethodEvent = slot;
+bool QTreeView_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodEvent = slot;
+	return true;
 }
 
 void QTreeView_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* event) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_InputMethodEvent(event);
 }
 
-void QTreeView_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) )->handle__EventFilter = slot;
+bool QTreeView_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QTreeView_virtualbase_EventFilter(void* self, QObject* object, QEvent* event) {
 	return ( (MiqtVirtualQTreeView*)(self) )->virtualbase_EventFilter(object, event);
 }
 
-void QTreeView_Delete(QTreeView* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQTreeView*>( self );
-	} else {
-		delete self;
-	}
+void QTreeView_Delete(QTreeView* self) {
+	delete self;
 }
 

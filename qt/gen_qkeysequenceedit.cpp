@@ -88,7 +88,7 @@ bool miqt_exec_callback_QKeySequenceEdit_FocusNextPrevChild(void*, intptr_t, boo
 } /* extern C */
 #endif
 
-class MiqtVirtualQKeySequenceEdit : public virtual QKeySequenceEdit {
+class MiqtVirtualQKeySequenceEdit final : public QKeySequenceEdit {
 public:
 
 	MiqtVirtualQKeySequenceEdit(QWidget* parent): QKeySequenceEdit(parent) {};
@@ -96,7 +96,7 @@ public:
 	MiqtVirtualQKeySequenceEdit(const QKeySequence& keySequence): QKeySequenceEdit(keySequence) {};
 	MiqtVirtualQKeySequenceEdit(const QKeySequence& keySequence, QWidget* parent): QKeySequenceEdit(keySequence, parent) {};
 
-	virtual ~MiqtVirtualQKeySequenceEdit() = default;
+	virtual ~MiqtVirtualQKeySequenceEdit() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -1228,347 +1228,595 @@ struct miqt_string QKeySequenceEdit_TrUtf83(const char* s, const char* c, int n)
 	return _ms;
 }
 
-void QKeySequenceEdit_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__Event = slot;
+bool QKeySequenceEdit_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QKeySequenceEdit_virtualbase_Event(void* self, QEvent* param1) {
 	return ( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_Event(param1);
 }
 
-void QKeySequenceEdit_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__KeyPressEvent = slot;
+bool QKeySequenceEdit_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_KeyPressEvent(void* self, QKeyEvent* param1) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_KeyPressEvent(param1);
 }
 
-void QKeySequenceEdit_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__KeyReleaseEvent = slot;
+bool QKeySequenceEdit_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyReleaseEvent = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* param1) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_KeyReleaseEvent(param1);
 }
 
-void QKeySequenceEdit_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__TimerEvent = slot;
+bool QKeySequenceEdit_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_TimerEvent(void* self, QTimerEvent* param1) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_TimerEvent(param1);
 }
 
-void QKeySequenceEdit_override_virtual_DevType(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__DevType = slot;
+bool QKeySequenceEdit_override_virtual_DevType(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DevType = slot;
+	return true;
 }
 
 int QKeySequenceEdit_virtualbase_DevType(const void* self) {
 	return ( (const MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_DevType();
 }
 
-void QKeySequenceEdit_override_virtual_SetVisible(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__SetVisible = slot;
+bool QKeySequenceEdit_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_SetVisible(void* self, bool visible) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_SetVisible(visible);
 }
 
-void QKeySequenceEdit_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__SizeHint = slot;
+bool QKeySequenceEdit_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QKeySequenceEdit_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_SizeHint();
 }
 
-void QKeySequenceEdit_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__MinimumSizeHint = slot;
+bool QKeySequenceEdit_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QKeySequenceEdit_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QKeySequenceEdit_override_virtual_HeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__HeightForWidth = slot;
+bool QKeySequenceEdit_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeightForWidth = slot;
+	return true;
 }
 
 int QKeySequenceEdit_virtualbase_HeightForWidth(const void* self, int param1) {
 	return ( (const MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_HeightForWidth(param1);
 }
 
-void QKeySequenceEdit_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__HasHeightForWidth = slot;
+bool QKeySequenceEdit_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasHeightForWidth = slot;
+	return true;
 }
 
 bool QKeySequenceEdit_virtualbase_HasHeightForWidth(const void* self) {
 	return ( (const MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_HasHeightForWidth();
 }
 
-void QKeySequenceEdit_override_virtual_PaintEngine(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__PaintEngine = slot;
+bool QKeySequenceEdit_override_virtual_PaintEngine(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEngine = slot;
+	return true;
 }
 
 QPaintEngine* QKeySequenceEdit_virtualbase_PaintEngine(const void* self) {
 	return ( (const MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_PaintEngine();
 }
 
-void QKeySequenceEdit_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__MousePressEvent = slot;
+bool QKeySequenceEdit_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_MousePressEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_MousePressEvent(event);
 }
 
-void QKeySequenceEdit_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__MouseReleaseEvent = slot;
+bool QKeySequenceEdit_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_MouseReleaseEvent(event);
 }
 
-void QKeySequenceEdit_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__MouseDoubleClickEvent = slot;
+bool QKeySequenceEdit_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseDoubleClickEvent = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_MouseDoubleClickEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_MouseDoubleClickEvent(event);
 }
 
-void QKeySequenceEdit_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__MouseMoveEvent = slot;
+bool QKeySequenceEdit_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_MouseMoveEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_MouseMoveEvent(event);
 }
 
-void QKeySequenceEdit_override_virtual_WheelEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__WheelEvent = slot;
+bool QKeySequenceEdit_override_virtual_WheelEvent(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WheelEvent = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_WheelEvent(void* self, QWheelEvent* event) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_WheelEvent(event);
 }
 
-void QKeySequenceEdit_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__FocusInEvent = slot;
+bool QKeySequenceEdit_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_FocusInEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_FocusInEvent(event);
 }
 
-void QKeySequenceEdit_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__FocusOutEvent = slot;
+bool QKeySequenceEdit_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_FocusOutEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_FocusOutEvent(event);
 }
 
-void QKeySequenceEdit_override_virtual_EnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__EnterEvent = slot;
+bool QKeySequenceEdit_override_virtual_EnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EnterEvent = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_EnterEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_EnterEvent(event);
 }
 
-void QKeySequenceEdit_override_virtual_LeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__LeaveEvent = slot;
+bool QKeySequenceEdit_override_virtual_LeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__LeaveEvent = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_LeaveEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_LeaveEvent(event);
 }
 
-void QKeySequenceEdit_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__PaintEvent = slot;
+bool QKeySequenceEdit_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_PaintEvent(void* self, QPaintEvent* event) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_PaintEvent(event);
 }
 
-void QKeySequenceEdit_override_virtual_MoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__MoveEvent = slot;
+bool QKeySequenceEdit_override_virtual_MoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveEvent = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_MoveEvent(void* self, QMoveEvent* event) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_MoveEvent(event);
 }
 
-void QKeySequenceEdit_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__ResizeEvent = slot;
+bool QKeySequenceEdit_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_ResizeEvent(void* self, QResizeEvent* event) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_ResizeEvent(event);
 }
 
-void QKeySequenceEdit_override_virtual_CloseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__CloseEvent = slot;
+bool QKeySequenceEdit_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_CloseEvent(void* self, QCloseEvent* event) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_CloseEvent(event);
 }
 
-void QKeySequenceEdit_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__ContextMenuEvent = slot;
+bool QKeySequenceEdit_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* event) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_ContextMenuEvent(event);
 }
 
-void QKeySequenceEdit_override_virtual_TabletEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__TabletEvent = slot;
+bool QKeySequenceEdit_override_virtual_TabletEvent(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TabletEvent = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_TabletEvent(void* self, QTabletEvent* event) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_TabletEvent(event);
 }
 
-void QKeySequenceEdit_override_virtual_ActionEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__ActionEvent = slot;
+bool QKeySequenceEdit_override_virtual_ActionEvent(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ActionEvent = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_ActionEvent(void* self, QActionEvent* event) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_ActionEvent(event);
 }
 
-void QKeySequenceEdit_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__DragEnterEvent = slot;
+bool QKeySequenceEdit_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragEnterEvent = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_DragEnterEvent(void* self, QDragEnterEvent* event) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_DragEnterEvent(event);
 }
 
-void QKeySequenceEdit_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__DragMoveEvent = slot;
+bool QKeySequenceEdit_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragMoveEvent = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_DragMoveEvent(void* self, QDragMoveEvent* event) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_DragMoveEvent(event);
 }
 
-void QKeySequenceEdit_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__DragLeaveEvent = slot;
+bool QKeySequenceEdit_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragLeaveEvent = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* event) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_DragLeaveEvent(event);
 }
 
-void QKeySequenceEdit_override_virtual_DropEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__DropEvent = slot;
+bool QKeySequenceEdit_override_virtual_DropEvent(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropEvent = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_DropEvent(void* self, QDropEvent* event) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_DropEvent(event);
 }
 
-void QKeySequenceEdit_override_virtual_ShowEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__ShowEvent = slot;
+bool QKeySequenceEdit_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_ShowEvent(void* self, QShowEvent* event) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_ShowEvent(event);
 }
 
-void QKeySequenceEdit_override_virtual_HideEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__HideEvent = slot;
+bool QKeySequenceEdit_override_virtual_HideEvent(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HideEvent = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_HideEvent(void* self, QHideEvent* event) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_HideEvent(event);
 }
 
-void QKeySequenceEdit_override_virtual_NativeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__NativeEvent = slot;
+bool QKeySequenceEdit_override_virtual_NativeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NativeEvent = slot;
+	return true;
 }
 
 bool QKeySequenceEdit_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	return ( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_NativeEvent(eventType, message, result);
 }
 
-void QKeySequenceEdit_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__ChangeEvent = slot;
+bool QKeySequenceEdit_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_ChangeEvent(void* self, QEvent* param1) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_ChangeEvent(param1);
 }
 
-void QKeySequenceEdit_override_virtual_Metric(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__Metric = slot;
+bool QKeySequenceEdit_override_virtual_Metric(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Metric = slot;
+	return true;
 }
 
 int QKeySequenceEdit_virtualbase_Metric(const void* self, int param1) {
 	return ( (const MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_Metric(param1);
 }
 
-void QKeySequenceEdit_override_virtual_InitPainter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__InitPainter = slot;
+bool QKeySequenceEdit_override_virtual_InitPainter(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitPainter = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_InitPainter(const void* self, QPainter* painter) {
 	( (const MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_InitPainter(painter);
 }
 
-void QKeySequenceEdit_override_virtual_Redirected(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__Redirected = slot;
+bool QKeySequenceEdit_override_virtual_Redirected(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Redirected = slot;
+	return true;
 }
 
 QPaintDevice* QKeySequenceEdit_virtualbase_Redirected(const void* self, QPoint* offset) {
 	return ( (const MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_Redirected(offset);
 }
 
-void QKeySequenceEdit_override_virtual_SharedPainter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__SharedPainter = slot;
+bool QKeySequenceEdit_override_virtual_SharedPainter(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SharedPainter = slot;
+	return true;
 }
 
 QPainter* QKeySequenceEdit_virtualbase_SharedPainter(const void* self) {
 	return ( (const MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_SharedPainter();
 }
 
-void QKeySequenceEdit_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__InputMethodEvent = slot;
+bool QKeySequenceEdit_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodEvent = slot;
+	return true;
 }
 
 void QKeySequenceEdit_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* param1) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_InputMethodEvent(param1);
 }
 
-void QKeySequenceEdit_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__InputMethodQuery = slot;
+bool QKeySequenceEdit_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodQuery = slot;
+	return true;
 }
 
 QVariant* QKeySequenceEdit_virtualbase_InputMethodQuery(const void* self, int param1) {
 	return ( (const MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_InputMethodQuery(param1);
 }
 
-void QKeySequenceEdit_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) )->handle__FocusNextPrevChild = slot;
+bool QKeySequenceEdit_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusNextPrevChild = slot;
+	return true;
 }
 
 bool QKeySequenceEdit_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QKeySequenceEdit_Delete(QKeySequenceEdit* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQKeySequenceEdit*>( self );
-	} else {
-		delete self;
-	}
+void QKeySequenceEdit_Delete(QKeySequenceEdit* self) {
+	delete self;
 }
 

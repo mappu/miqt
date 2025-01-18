@@ -26,8 +26,7 @@ const (
 )
 
 type QCameraControl struct {
-	h          *C.QCameraControl
-	isSubclass bool
+	h *C.QCameraControl
 	*QMediaControl
 }
 
@@ -253,7 +252,7 @@ func QCameraControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QCameraControl) Delete() {
-	C.QCameraControl_Delete(this.h, C.bool(this.isSubclass))
+	C.QCameraControl_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

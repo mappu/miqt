@@ -33,13 +33,13 @@ QTcpSocket* miqt_exec_callback_QSslServer_NextPendingConnection(void*, intptr_t)
 } /* extern C */
 #endif
 
-class MiqtVirtualQSslServer : public virtual QSslServer {
+class MiqtVirtualQSslServer final : public QSslServer {
 public:
 
 	MiqtVirtualQSslServer(): QSslServer() {};
 	MiqtVirtualQSslServer(QObject* parent): QSslServer(parent) {};
 
-	virtual ~MiqtVirtualQSslServer() = default;
+	virtual ~MiqtVirtualQSslServer() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__IncomingConnection = 0;
@@ -320,35 +320,49 @@ struct miqt_string QSslServer_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QSslServer_override_virtual_IncomingConnection(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSslServer*>( (QSslServer*)(self) )->handle__IncomingConnection = slot;
+bool QSslServer_override_virtual_IncomingConnection(void* self, intptr_t slot) {
+	MiqtVirtualQSslServer* self_cast = dynamic_cast<MiqtVirtualQSslServer*>( (QSslServer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IncomingConnection = slot;
+	return true;
 }
 
 void QSslServer_virtualbase_IncomingConnection(void* self, intptr_t socket) {
 	( (MiqtVirtualQSslServer*)(self) )->virtualbase_IncomingConnection(socket);
 }
 
-void QSslServer_override_virtual_HasPendingConnections(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSslServer*>( (QSslServer*)(self) )->handle__HasPendingConnections = slot;
+bool QSslServer_override_virtual_HasPendingConnections(void* self, intptr_t slot) {
+	MiqtVirtualQSslServer* self_cast = dynamic_cast<MiqtVirtualQSslServer*>( (QSslServer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasPendingConnections = slot;
+	return true;
 }
 
 bool QSslServer_virtualbase_HasPendingConnections(const void* self) {
 	return ( (const MiqtVirtualQSslServer*)(self) )->virtualbase_HasPendingConnections();
 }
 
-void QSslServer_override_virtual_NextPendingConnection(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSslServer*>( (QSslServer*)(self) )->handle__NextPendingConnection = slot;
+bool QSslServer_override_virtual_NextPendingConnection(void* self, intptr_t slot) {
+	MiqtVirtualQSslServer* self_cast = dynamic_cast<MiqtVirtualQSslServer*>( (QSslServer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NextPendingConnection = slot;
+	return true;
 }
 
 QTcpSocket* QSslServer_virtualbase_NextPendingConnection(void* self) {
 	return ( (MiqtVirtualQSslServer*)(self) )->virtualbase_NextPendingConnection();
 }
 
-void QSslServer_Delete(QSslServer* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSslServer*>( self );
-	} else {
-		delete self;
-	}
+void QSslServer_Delete(QSslServer* self) {
+	delete self;
 }
 

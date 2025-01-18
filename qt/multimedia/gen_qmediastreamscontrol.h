@@ -46,7 +46,7 @@ struct miqt_string QMediaStreamsControl_Tr2(const char* s, const char* c);
 struct miqt_string QMediaStreamsControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QMediaStreamsControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QMediaStreamsControl_TrUtf83(const char* s, const char* c, int n);
-void QMediaStreamsControl_Delete(QMediaStreamsControl* self, bool isSubclass);
+void QMediaStreamsControl_Delete(QMediaStreamsControl* self);
 
 #ifdef __cplusplus
 } /* extern C */

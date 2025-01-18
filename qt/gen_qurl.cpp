@@ -705,11 +705,7 @@ struct miqt_array /* of QUrl* */  QUrl_FromStringList2(struct miqt_array /* of s
 	return _out;
 }
 
-void QUrl_Delete(QUrl* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QUrl*>( self );
-	} else {
-		delete self;
-	}
+void QUrl_Delete(QUrl* self) {
+	delete self;
 }
 

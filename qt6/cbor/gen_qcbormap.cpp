@@ -357,12 +357,8 @@ QJsonObject* QCborMap_ToJsonObject(const QCborMap* self) {
 	return new QJsonObject(self->toJsonObject());
 }
 
-void QCborMap_Delete(QCborMap* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCborMap*>( self );
-	} else {
-		delete self;
-	}
+void QCborMap_Delete(QCborMap* self) {
+	delete self;
 }
 
 QCborMap__Iterator* QCborMap__Iterator_new() {
@@ -514,12 +510,8 @@ ptrdiff_t QCborMap__Iterator_OperatorMinusWithQCborMapIterator(const QCborMap__I
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-void QCborMap__Iterator_Delete(QCborMap__Iterator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCborMap::Iterator*>( self );
-	} else {
-		delete self;
-	}
+void QCborMap__Iterator_Delete(QCborMap__Iterator* self) {
+	delete self;
 }
 
 QCborMap__ConstIterator* QCborMap__ConstIterator_new() {
@@ -667,11 +659,7 @@ ptrdiff_t QCborMap__ConstIterator_OperatorMinusWithQCborMapConstIterator(const Q
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-void QCborMap__ConstIterator_Delete(QCborMap__ConstIterator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCborMap::ConstIterator*>( self );
-	} else {
-		delete self;
-	}
+void QCborMap__ConstIterator_Delete(QCborMap__ConstIterator* self) {
+	delete self;
 }
 

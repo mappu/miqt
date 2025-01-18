@@ -15,8 +15,7 @@ import (
 )
 
 type QWebEngineQuotaRequest struct {
-	h          *C.QWebEngineQuotaRequest
-	isSubclass bool
+	h *C.QWebEngineQuotaRequest
 }
 
 func (this *QWebEngineQuotaRequest) cPointer() *C.QWebEngineQuotaRequest {
@@ -50,17 +49,13 @@ func UnsafeNewQWebEngineQuotaRequest(h unsafe.Pointer) *QWebEngineQuotaRequest {
 // NewQWebEngineQuotaRequest constructs a new QWebEngineQuotaRequest object.
 func NewQWebEngineQuotaRequest() *QWebEngineQuotaRequest {
 
-	ret := newQWebEngineQuotaRequest(C.QWebEngineQuotaRequest_new())
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineQuotaRequest(C.QWebEngineQuotaRequest_new())
 }
 
 // NewQWebEngineQuotaRequest2 constructs a new QWebEngineQuotaRequest object.
 func NewQWebEngineQuotaRequest2(param1 *QWebEngineQuotaRequest) *QWebEngineQuotaRequest {
 
-	ret := newQWebEngineQuotaRequest(C.QWebEngineQuotaRequest_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineQuotaRequest(C.QWebEngineQuotaRequest_new2(param1.cPointer()))
 }
 
 func (this *QWebEngineQuotaRequest) Accept() {
@@ -91,7 +86,7 @@ func (this *QWebEngineQuotaRequest) OperatorNotEqual(that *QWebEngineQuotaReques
 
 // Delete this object from C++ memory.
 func (this *QWebEngineQuotaRequest) Delete() {
-	C.QWebEngineQuotaRequest_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebEngineQuotaRequest_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

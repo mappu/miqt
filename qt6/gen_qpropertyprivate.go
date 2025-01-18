@@ -14,8 +14,7 @@ import (
 )
 
 type QUntypedPropertyData struct {
-	h          *C.QUntypedPropertyData
-	isSubclass bool
+	h *C.QUntypedPropertyData
 }
 
 func (this *QUntypedPropertyData) cPointer() *C.QUntypedPropertyData {
@@ -48,7 +47,7 @@ func UnsafeNewQUntypedPropertyData(h unsafe.Pointer) *QUntypedPropertyData {
 
 // Delete this object from C++ memory.
 func (this *QUntypedPropertyData) Delete() {
-	C.QUntypedPropertyData_Delete(this.h, C.bool(this.isSubclass))
+	C.QUntypedPropertyData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -61,8 +60,7 @@ func (this *QUntypedPropertyData) GoGC() {
 }
 
 type QPropertyProxyBindingData struct {
-	h          *C.QPropertyProxyBindingData
-	isSubclass bool
+	h *C.QPropertyProxyBindingData
 }
 
 func (this *QPropertyProxyBindingData) cPointer() *C.QPropertyProxyBindingData {
@@ -95,7 +93,7 @@ func UnsafeNewQPropertyProxyBindingData(h unsafe.Pointer) *QPropertyProxyBinding
 
 // Delete this object from C++ memory.
 func (this *QPropertyProxyBindingData) Delete() {
-	C.QPropertyProxyBindingData_Delete(this.h, C.bool(this.isSubclass))
+	C.QPropertyProxyBindingData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

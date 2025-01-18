@@ -29,11 +29,7 @@ void QDesktopServices_UnsetUrlHandler(struct miqt_string scheme) {
 	QDesktopServices::unsetUrlHandler(scheme_QString);
 }
 
-void QDesktopServices_Delete(QDesktopServices* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QDesktopServices*>( self );
-	} else {
-		delete self;
-	}
+void QDesktopServices_Delete(QDesktopServices* self) {
+	delete self;
 }
 

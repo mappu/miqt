@@ -30,11 +30,7 @@ void QWebEngineFindTextResult_OperatorAssign(QWebEngineFindTextResult* self, QWe
 	self->operator=(*other);
 }
 
-void QWebEngineFindTextResult_Delete(QWebEngineFindTextResult* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebEngineFindTextResult*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineFindTextResult_Delete(QWebEngineFindTextResult* self) {
+	delete self;
 }
 

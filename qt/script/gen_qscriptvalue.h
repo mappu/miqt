@@ -120,7 +120,7 @@ int QScriptValue_PropertyFlags22(const QScriptValue* self, QScriptString* name, 
 QScriptValue* QScriptValue_Call1(QScriptValue* self, QScriptValue* thisObject);
 QScriptValue* QScriptValue_Call22(QScriptValue* self, QScriptValue* thisObject, struct miqt_array /* of QScriptValue* */  args);
 QScriptValue* QScriptValue_Construct1(QScriptValue* self, struct miqt_array /* of QScriptValue* */  args);
-void QScriptValue_Delete(QScriptValue* self, bool isSubclass);
+void QScriptValue_Delete(QScriptValue* self);
 
 #ifdef __cplusplus
 } /* extern C */

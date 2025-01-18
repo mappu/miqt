@@ -41,7 +41,7 @@ struct miqt_string QCameraImageProcessingControl_Tr2(const char* s, const char* 
 struct miqt_string QCameraImageProcessingControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QCameraImageProcessingControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QCameraImageProcessingControl_TrUtf83(const char* s, const char* c, int n);
-void QCameraImageProcessingControl_Delete(QCameraImageProcessingControl* self, bool isSubclass);
+void QCameraImageProcessingControl_Delete(QCameraImageProcessingControl* self);
 
 #ifdef __cplusplus
 } /* extern C */

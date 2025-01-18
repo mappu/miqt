@@ -15,8 +15,7 @@ import (
 )
 
 type QScreen struct {
-	h          *C.QScreen
-	isSubclass bool
+	h *C.QScreen
 	*QObject
 }
 
@@ -511,7 +510,7 @@ func (this *QScreen) GrabWindow5(window uintptr, x int, y int, w int, h int) *QP
 
 // Delete this object from C++ memory.
 func (this *QScreen) Delete() {
-	C.QScreen_Delete(this.h, C.bool(this.isSubclass))
+	C.QScreen_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

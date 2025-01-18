@@ -44,7 +44,7 @@ struct miqt_string QImageEncoderControl_Tr2(const char* s, const char* c);
 struct miqt_string QImageEncoderControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QImageEncoderControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QImageEncoderControl_TrUtf83(const char* s, const char* c, int n);
-void QImageEncoderControl_Delete(QImageEncoderControl* self, bool isSubclass);
+void QImageEncoderControl_Delete(QImageEncoderControl* self);
 
 #ifdef __cplusplus
 } /* extern C */

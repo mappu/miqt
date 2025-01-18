@@ -29,8 +29,7 @@ const (
 )
 
 type QWebEngineFileSystemAccessRequest struct {
-	h          *C.QWebEngineFileSystemAccessRequest
-	isSubclass bool
+	h *C.QWebEngineFileSystemAccessRequest
 }
 
 func (this *QWebEngineFileSystemAccessRequest) cPointer() *C.QWebEngineFileSystemAccessRequest {
@@ -64,9 +63,7 @@ func UnsafeNewQWebEngineFileSystemAccessRequest(h unsafe.Pointer) *QWebEngineFil
 // NewQWebEngineFileSystemAccessRequest constructs a new QWebEngineFileSystemAccessRequest object.
 func NewQWebEngineFileSystemAccessRequest(other *QWebEngineFileSystemAccessRequest) *QWebEngineFileSystemAccessRequest {
 
-	ret := newQWebEngineFileSystemAccessRequest(C.QWebEngineFileSystemAccessRequest_new(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineFileSystemAccessRequest(C.QWebEngineFileSystemAccessRequest_new(other.cPointer()))
 }
 
 func (this *QWebEngineFileSystemAccessRequest) OperatorAssign(other *QWebEngineFileSystemAccessRequest) {
@@ -107,7 +104,7 @@ func (this *QWebEngineFileSystemAccessRequest) AccessFlags() QWebEngineFileSyste
 
 // Delete this object from C++ memory.
 func (this *QWebEngineFileSystemAccessRequest) Delete() {
-	C.QWebEngineFileSystemAccessRequest_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebEngineFileSystemAccessRequest_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

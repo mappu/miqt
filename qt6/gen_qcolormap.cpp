@@ -71,11 +71,7 @@ QColormap* QColormap_Instance1(int screen) {
 	return new QColormap(QColormap::instance(static_cast<int>(screen)));
 }
 
-void QColormap_Delete(QColormap* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QColormap*>( self );
-	} else {
-		delete self;
-	}
+void QColormap_Delete(QColormap* self) {
+	delete self;
 }
 

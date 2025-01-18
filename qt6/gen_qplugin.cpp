@@ -20,48 +20,32 @@ unsigned char QPluginMetaData_ArchRequirements() {
 	return static_cast<unsigned char>(_ret);
 }
 
-void QPluginMetaData_Delete(QPluginMetaData* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPluginMetaData*>( self );
-	} else {
-		delete self;
-	}
+void QPluginMetaData_Delete(QPluginMetaData* self) {
+	delete self;
 }
 
 QJsonObject* QStaticPlugin_MetaData(const QStaticPlugin* self) {
 	return new QJsonObject(self->metaData());
 }
 
-void QStaticPlugin_Delete(QStaticPlugin* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QStaticPlugin*>( self );
-	} else {
-		delete self;
-	}
+void QStaticPlugin_Delete(QStaticPlugin* self) {
+	delete self;
 }
 
 QPluginMetaData__Header* QPluginMetaData__Header_new(QPluginMetaData__Header* param1) {
 	return new QPluginMetaData::Header(*param1);
 }
 
-void QPluginMetaData__Header_Delete(QPluginMetaData__Header* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPluginMetaData::Header*>( self );
-	} else {
-		delete self;
-	}
+void QPluginMetaData__Header_Delete(QPluginMetaData__Header* self) {
+	delete self;
 }
 
 QPluginMetaData__MagicHeader* QPluginMetaData__MagicHeader_new() {
 	return new QPluginMetaData::MagicHeader();
 }
 
-void QPluginMetaData__MagicHeader_Delete(QPluginMetaData__MagicHeader* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPluginMetaData::MagicHeader*>( self );
-	} else {
-		delete self;
-	}
+void QPluginMetaData__MagicHeader_Delete(QPluginMetaData__MagicHeader* self) {
+	delete self;
 }
 
 QPluginMetaData__ElfNoteHeader* QPluginMetaData__ElfNoteHeader_new(unsigned int payloadSize) {
@@ -72,11 +56,7 @@ QPluginMetaData__ElfNoteHeader* QPluginMetaData__ElfNoteHeader_new2(QPluginMetaD
 	return new QPluginMetaData::ElfNoteHeader(*param1);
 }
 
-void QPluginMetaData__ElfNoteHeader_Delete(QPluginMetaData__ElfNoteHeader* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPluginMetaData::ElfNoteHeader*>( self );
-	} else {
-		delete self;
-	}
+void QPluginMetaData__ElfNoteHeader_Delete(QPluginMetaData__ElfNoteHeader* self) {
+	delete self;
 }
 

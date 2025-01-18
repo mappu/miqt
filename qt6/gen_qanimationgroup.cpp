@@ -22,13 +22,13 @@ void miqt_exec_callback_QAnimationGroup_UpdateDirection(void*, intptr_t, int);
 } /* extern C */
 #endif
 
-class MiqtVirtualQAnimationGroup : public virtual QAnimationGroup {
+class MiqtVirtualQAnimationGroup final : public QAnimationGroup {
 public:
 
 	MiqtVirtualQAnimationGroup(): QAnimationGroup() {};
 	MiqtVirtualQAnimationGroup(QObject* parent): QAnimationGroup(parent) {};
 
-	virtual ~MiqtVirtualQAnimationGroup() = default;
+	virtual ~MiqtVirtualQAnimationGroup() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -223,43 +223,69 @@ struct miqt_string QAnimationGroup_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QAnimationGroup_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAnimationGroup*>( (QAnimationGroup*)(self) )->handle__Event = slot;
+bool QAnimationGroup_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQAnimationGroup* self_cast = dynamic_cast<MiqtVirtualQAnimationGroup*>( (QAnimationGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QAnimationGroup_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQAnimationGroup*)(self) )->virtualbase_Event(event);
 }
 
-void QAnimationGroup_override_virtual_Duration(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAnimationGroup*>( (QAnimationGroup*)(self) )->handle__Duration = slot;
+bool QAnimationGroup_override_virtual_Duration(void* self, intptr_t slot) {
+	MiqtVirtualQAnimationGroup* self_cast = dynamic_cast<MiqtVirtualQAnimationGroup*>( (QAnimationGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Duration = slot;
+	return true;
 }
 
-void QAnimationGroup_override_virtual_UpdateCurrentTime(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAnimationGroup*>( (QAnimationGroup*)(self) )->handle__UpdateCurrentTime = slot;
+bool QAnimationGroup_override_virtual_UpdateCurrentTime(void* self, intptr_t slot) {
+	MiqtVirtualQAnimationGroup* self_cast = dynamic_cast<MiqtVirtualQAnimationGroup*>( (QAnimationGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateCurrentTime = slot;
+	return true;
 }
 
-void QAnimationGroup_override_virtual_UpdateState(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAnimationGroup*>( (QAnimationGroup*)(self) )->handle__UpdateState = slot;
+bool QAnimationGroup_override_virtual_UpdateState(void* self, intptr_t slot) {
+	MiqtVirtualQAnimationGroup* self_cast = dynamic_cast<MiqtVirtualQAnimationGroup*>( (QAnimationGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateState = slot;
+	return true;
 }
 
 void QAnimationGroup_virtualbase_UpdateState(void* self, int newState, int oldState) {
 	( (MiqtVirtualQAnimationGroup*)(self) )->virtualbase_UpdateState(newState, oldState);
 }
 
-void QAnimationGroup_override_virtual_UpdateDirection(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAnimationGroup*>( (QAnimationGroup*)(self) )->handle__UpdateDirection = slot;
+bool QAnimationGroup_override_virtual_UpdateDirection(void* self, intptr_t slot) {
+	MiqtVirtualQAnimationGroup* self_cast = dynamic_cast<MiqtVirtualQAnimationGroup*>( (QAnimationGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateDirection = slot;
+	return true;
 }
 
 void QAnimationGroup_virtualbase_UpdateDirection(void* self, int direction) {
 	( (MiqtVirtualQAnimationGroup*)(self) )->virtualbase_UpdateDirection(direction);
 }
 
-void QAnimationGroup_Delete(QAnimationGroup* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAnimationGroup*>( self );
-	} else {
-		delete self;
-	}
+void QAnimationGroup_Delete(QAnimationGroup* self) {
+	delete self;
 }
 

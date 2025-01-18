@@ -74,7 +74,7 @@ QQuaternion* QQuaternion_FromDirection(QVector3D* direction, QVector3D* up);
 QQuaternion* QQuaternion_RotationTo(QVector3D* from, QVector3D* to);
 QQuaternion* QQuaternion_Slerp(QQuaternion* q1, QQuaternion* q2, float t);
 QQuaternion* QQuaternion_Nlerp(QQuaternion* q1, QQuaternion* q2, float t);
-void QQuaternion_Delete(QQuaternion* self, bool isSubclass);
+void QQuaternion_Delete(QQuaternion* self);
 
 #ifdef __cplusplus
 } /* extern C */

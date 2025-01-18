@@ -14,8 +14,7 @@ import (
 )
 
 type QPaintDeviceWindow struct {
-	h          *C.QPaintDeviceWindow
-	isSubclass bool
+	h *C.QPaintDeviceWindow
 	*QWindow
 	*QPaintDevice
 }
@@ -139,7 +138,7 @@ func QPaintDeviceWindow_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QPaintDeviceWindow) Delete() {
-	C.QPaintDeviceWindow_Delete(this.h, C.bool(this.isSubclass))
+	C.QPaintDeviceWindow_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -48,8 +48,7 @@ const (
 )
 
 type QXmlStreamStringRef struct {
-	h          *C.QXmlStreamStringRef
-	isSubclass bool
+	h *C.QXmlStreamStringRef
 }
 
 func (this *QXmlStreamStringRef) cPointer() *C.QXmlStreamStringRef {
@@ -83,9 +82,7 @@ func UnsafeNewQXmlStreamStringRef(h unsafe.Pointer) *QXmlStreamStringRef {
 // NewQXmlStreamStringRef constructs a new QXmlStreamStringRef object.
 func NewQXmlStreamStringRef() *QXmlStreamStringRef {
 
-	ret := newQXmlStreamStringRef(C.QXmlStreamStringRef_new())
-	ret.isSubclass = true
-	return ret
+	return newQXmlStreamStringRef(C.QXmlStreamStringRef_new())
 }
 
 // NewQXmlStreamStringRef2 constructs a new QXmlStreamStringRef object.
@@ -95,17 +92,13 @@ func NewQXmlStreamStringRef2(aString string) *QXmlStreamStringRef {
 	aString_ms.len = C.size_t(len(aString))
 	defer C.free(unsafe.Pointer(aString_ms.data))
 
-	ret := newQXmlStreamStringRef(C.QXmlStreamStringRef_new2(aString_ms))
-	ret.isSubclass = true
-	return ret
+	return newQXmlStreamStringRef(C.QXmlStreamStringRef_new2(aString_ms))
 }
 
 // NewQXmlStreamStringRef3 constructs a new QXmlStreamStringRef object.
 func NewQXmlStreamStringRef3(other *QXmlStreamStringRef) *QXmlStreamStringRef {
 
-	ret := newQXmlStreamStringRef(C.QXmlStreamStringRef_new3(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQXmlStreamStringRef(C.QXmlStreamStringRef_new3(other.cPointer()))
 }
 
 func (this *QXmlStreamStringRef) OperatorAssign(other *QXmlStreamStringRef) {
@@ -137,7 +130,7 @@ func (this *QXmlStreamStringRef) Size() int {
 
 // Delete this object from C++ memory.
 func (this *QXmlStreamStringRef) Delete() {
-	C.QXmlStreamStringRef_Delete(this.h, C.bool(this.isSubclass))
+	C.QXmlStreamStringRef_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -150,8 +143,7 @@ func (this *QXmlStreamStringRef) GoGC() {
 }
 
 type QXmlStreamAttribute struct {
-	h          *C.QXmlStreamAttribute
-	isSubclass bool
+	h *C.QXmlStreamAttribute
 }
 
 func (this *QXmlStreamAttribute) cPointer() *C.QXmlStreamAttribute {
@@ -185,9 +177,7 @@ func UnsafeNewQXmlStreamAttribute(h unsafe.Pointer) *QXmlStreamAttribute {
 // NewQXmlStreamAttribute constructs a new QXmlStreamAttribute object.
 func NewQXmlStreamAttribute() *QXmlStreamAttribute {
 
-	ret := newQXmlStreamAttribute(C.QXmlStreamAttribute_new())
-	ret.isSubclass = true
-	return ret
+	return newQXmlStreamAttribute(C.QXmlStreamAttribute_new())
 }
 
 // NewQXmlStreamAttribute2 constructs a new QXmlStreamAttribute object.
@@ -201,9 +191,7 @@ func NewQXmlStreamAttribute2(qualifiedName string, value string) *QXmlStreamAttr
 	value_ms.len = C.size_t(len(value))
 	defer C.free(unsafe.Pointer(value_ms.data))
 
-	ret := newQXmlStreamAttribute(C.QXmlStreamAttribute_new2(qualifiedName_ms, value_ms))
-	ret.isSubclass = true
-	return ret
+	return newQXmlStreamAttribute(C.QXmlStreamAttribute_new2(qualifiedName_ms, value_ms))
 }
 
 // NewQXmlStreamAttribute3 constructs a new QXmlStreamAttribute object.
@@ -221,17 +209,13 @@ func NewQXmlStreamAttribute3(namespaceUri string, name string, value string) *QX
 	value_ms.len = C.size_t(len(value))
 	defer C.free(unsafe.Pointer(value_ms.data))
 
-	ret := newQXmlStreamAttribute(C.QXmlStreamAttribute_new3(namespaceUri_ms, name_ms, value_ms))
-	ret.isSubclass = true
-	return ret
+	return newQXmlStreamAttribute(C.QXmlStreamAttribute_new3(namespaceUri_ms, name_ms, value_ms))
 }
 
 // NewQXmlStreamAttribute4 constructs a new QXmlStreamAttribute object.
 func NewQXmlStreamAttribute4(param1 *QXmlStreamAttribute) *QXmlStreamAttribute {
 
-	ret := newQXmlStreamAttribute(C.QXmlStreamAttribute_new4(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQXmlStreamAttribute(C.QXmlStreamAttribute_new4(param1.cPointer()))
 }
 
 func (this *QXmlStreamAttribute) OperatorAssign(param1 *QXmlStreamAttribute) {
@@ -252,7 +236,7 @@ func (this *QXmlStreamAttribute) OperatorNotEqual(other *QXmlStreamAttribute) bo
 
 // Delete this object from C++ memory.
 func (this *QXmlStreamAttribute) Delete() {
-	C.QXmlStreamAttribute_Delete(this.h, C.bool(this.isSubclass))
+	C.QXmlStreamAttribute_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -265,8 +249,7 @@ func (this *QXmlStreamAttribute) GoGC() {
 }
 
 type QXmlStreamNamespaceDeclaration struct {
-	h          *C.QXmlStreamNamespaceDeclaration
-	isSubclass bool
+	h *C.QXmlStreamNamespaceDeclaration
 }
 
 func (this *QXmlStreamNamespaceDeclaration) cPointer() *C.QXmlStreamNamespaceDeclaration {
@@ -300,9 +283,7 @@ func UnsafeNewQXmlStreamNamespaceDeclaration(h unsafe.Pointer) *QXmlStreamNamesp
 // NewQXmlStreamNamespaceDeclaration constructs a new QXmlStreamNamespaceDeclaration object.
 func NewQXmlStreamNamespaceDeclaration() *QXmlStreamNamespaceDeclaration {
 
-	ret := newQXmlStreamNamespaceDeclaration(C.QXmlStreamNamespaceDeclaration_new())
-	ret.isSubclass = true
-	return ret
+	return newQXmlStreamNamespaceDeclaration(C.QXmlStreamNamespaceDeclaration_new())
 }
 
 // NewQXmlStreamNamespaceDeclaration2 constructs a new QXmlStreamNamespaceDeclaration object.
@@ -316,17 +297,13 @@ func NewQXmlStreamNamespaceDeclaration2(prefix string, namespaceUri string) *QXm
 	namespaceUri_ms.len = C.size_t(len(namespaceUri))
 	defer C.free(unsafe.Pointer(namespaceUri_ms.data))
 
-	ret := newQXmlStreamNamespaceDeclaration(C.QXmlStreamNamespaceDeclaration_new2(prefix_ms, namespaceUri_ms))
-	ret.isSubclass = true
-	return ret
+	return newQXmlStreamNamespaceDeclaration(C.QXmlStreamNamespaceDeclaration_new2(prefix_ms, namespaceUri_ms))
 }
 
 // NewQXmlStreamNamespaceDeclaration3 constructs a new QXmlStreamNamespaceDeclaration object.
 func NewQXmlStreamNamespaceDeclaration3(param1 *QXmlStreamNamespaceDeclaration) *QXmlStreamNamespaceDeclaration {
 
-	ret := newQXmlStreamNamespaceDeclaration(C.QXmlStreamNamespaceDeclaration_new3(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQXmlStreamNamespaceDeclaration(C.QXmlStreamNamespaceDeclaration_new3(param1.cPointer()))
 }
 
 func (this *QXmlStreamNamespaceDeclaration) OperatorAssign(param1 *QXmlStreamNamespaceDeclaration) {
@@ -343,7 +320,7 @@ func (this *QXmlStreamNamespaceDeclaration) OperatorNotEqual(other *QXmlStreamNa
 
 // Delete this object from C++ memory.
 func (this *QXmlStreamNamespaceDeclaration) Delete() {
-	C.QXmlStreamNamespaceDeclaration_Delete(this.h, C.bool(this.isSubclass))
+	C.QXmlStreamNamespaceDeclaration_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -356,8 +333,7 @@ func (this *QXmlStreamNamespaceDeclaration) GoGC() {
 }
 
 type QXmlStreamNotationDeclaration struct {
-	h          *C.QXmlStreamNotationDeclaration
-	isSubclass bool
+	h *C.QXmlStreamNotationDeclaration
 }
 
 func (this *QXmlStreamNotationDeclaration) cPointer() *C.QXmlStreamNotationDeclaration {
@@ -391,17 +367,13 @@ func UnsafeNewQXmlStreamNotationDeclaration(h unsafe.Pointer) *QXmlStreamNotatio
 // NewQXmlStreamNotationDeclaration constructs a new QXmlStreamNotationDeclaration object.
 func NewQXmlStreamNotationDeclaration() *QXmlStreamNotationDeclaration {
 
-	ret := newQXmlStreamNotationDeclaration(C.QXmlStreamNotationDeclaration_new())
-	ret.isSubclass = true
-	return ret
+	return newQXmlStreamNotationDeclaration(C.QXmlStreamNotationDeclaration_new())
 }
 
 // NewQXmlStreamNotationDeclaration2 constructs a new QXmlStreamNotationDeclaration object.
 func NewQXmlStreamNotationDeclaration2(param1 *QXmlStreamNotationDeclaration) *QXmlStreamNotationDeclaration {
 
-	ret := newQXmlStreamNotationDeclaration(C.QXmlStreamNotationDeclaration_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQXmlStreamNotationDeclaration(C.QXmlStreamNotationDeclaration_new2(param1.cPointer()))
 }
 
 func (this *QXmlStreamNotationDeclaration) OperatorAssign(param1 *QXmlStreamNotationDeclaration) {
@@ -418,7 +390,7 @@ func (this *QXmlStreamNotationDeclaration) OperatorNotEqual(other *QXmlStreamNot
 
 // Delete this object from C++ memory.
 func (this *QXmlStreamNotationDeclaration) Delete() {
-	C.QXmlStreamNotationDeclaration_Delete(this.h, C.bool(this.isSubclass))
+	C.QXmlStreamNotationDeclaration_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -431,8 +403,7 @@ func (this *QXmlStreamNotationDeclaration) GoGC() {
 }
 
 type QXmlStreamEntityDeclaration struct {
-	h          *C.QXmlStreamEntityDeclaration
-	isSubclass bool
+	h *C.QXmlStreamEntityDeclaration
 }
 
 func (this *QXmlStreamEntityDeclaration) cPointer() *C.QXmlStreamEntityDeclaration {
@@ -466,17 +437,13 @@ func UnsafeNewQXmlStreamEntityDeclaration(h unsafe.Pointer) *QXmlStreamEntityDec
 // NewQXmlStreamEntityDeclaration constructs a new QXmlStreamEntityDeclaration object.
 func NewQXmlStreamEntityDeclaration() *QXmlStreamEntityDeclaration {
 
-	ret := newQXmlStreamEntityDeclaration(C.QXmlStreamEntityDeclaration_new())
-	ret.isSubclass = true
-	return ret
+	return newQXmlStreamEntityDeclaration(C.QXmlStreamEntityDeclaration_new())
 }
 
 // NewQXmlStreamEntityDeclaration2 constructs a new QXmlStreamEntityDeclaration object.
 func NewQXmlStreamEntityDeclaration2(param1 *QXmlStreamEntityDeclaration) *QXmlStreamEntityDeclaration {
 
-	ret := newQXmlStreamEntityDeclaration(C.QXmlStreamEntityDeclaration_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQXmlStreamEntityDeclaration(C.QXmlStreamEntityDeclaration_new2(param1.cPointer()))
 }
 
 func (this *QXmlStreamEntityDeclaration) OperatorAssign(param1 *QXmlStreamEntityDeclaration) {
@@ -493,7 +460,7 @@ func (this *QXmlStreamEntityDeclaration) OperatorNotEqual(other *QXmlStreamEntit
 
 // Delete this object from C++ memory.
 func (this *QXmlStreamEntityDeclaration) Delete() {
-	C.QXmlStreamEntityDeclaration_Delete(this.h, C.bool(this.isSubclass))
+	C.QXmlStreamEntityDeclaration_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -506,8 +473,7 @@ func (this *QXmlStreamEntityDeclaration) GoGC() {
 }
 
 type QXmlStreamEntityResolver struct {
-	h          *C.QXmlStreamEntityResolver
-	isSubclass bool
+	h *C.QXmlStreamEntityResolver
 }
 
 func (this *QXmlStreamEntityResolver) cPointer() *C.QXmlStreamEntityResolver {
@@ -566,7 +532,7 @@ func (this *QXmlStreamEntityResolver) ResolveUndeclaredEntity(name string) strin
 
 // Delete this object from C++ memory.
 func (this *QXmlStreamEntityResolver) Delete() {
-	C.QXmlStreamEntityResolver_Delete(this.h, C.bool(this.isSubclass))
+	C.QXmlStreamEntityResolver_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -579,8 +545,7 @@ func (this *QXmlStreamEntityResolver) GoGC() {
 }
 
 type QXmlStreamReader struct {
-	h          *C.QXmlStreamReader
-	isSubclass bool
+	h *C.QXmlStreamReader
 }
 
 func (this *QXmlStreamReader) cPointer() *C.QXmlStreamReader {
@@ -614,17 +579,13 @@ func UnsafeNewQXmlStreamReader(h unsafe.Pointer) *QXmlStreamReader {
 // NewQXmlStreamReader constructs a new QXmlStreamReader object.
 func NewQXmlStreamReader() *QXmlStreamReader {
 
-	ret := newQXmlStreamReader(C.QXmlStreamReader_new())
-	ret.isSubclass = true
-	return ret
+	return newQXmlStreamReader(C.QXmlStreamReader_new())
 }
 
 // NewQXmlStreamReader2 constructs a new QXmlStreamReader object.
 func NewQXmlStreamReader2(device *QIODevice) *QXmlStreamReader {
 
-	ret := newQXmlStreamReader(C.QXmlStreamReader_new2(device.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQXmlStreamReader(C.QXmlStreamReader_new2(device.cPointer()))
 }
 
 // NewQXmlStreamReader3 constructs a new QXmlStreamReader object.
@@ -633,9 +594,7 @@ func NewQXmlStreamReader3(data []byte) *QXmlStreamReader {
 	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
 	data_alias.len = C.size_t(len(data))
 
-	ret := newQXmlStreamReader(C.QXmlStreamReader_new3(data_alias))
-	ret.isSubclass = true
-	return ret
+	return newQXmlStreamReader(C.QXmlStreamReader_new3(data_alias))
 }
 
 // NewQXmlStreamReader4 constructs a new QXmlStreamReader object.
@@ -645,9 +604,7 @@ func NewQXmlStreamReader4(data string) *QXmlStreamReader {
 	data_ms.len = C.size_t(len(data))
 	defer C.free(unsafe.Pointer(data_ms.data))
 
-	ret := newQXmlStreamReader(C.QXmlStreamReader_new4(data_ms))
-	ret.isSubclass = true
-	return ret
+	return newQXmlStreamReader(C.QXmlStreamReader_new4(data_ms))
 }
 
 // NewQXmlStreamReader5 constructs a new QXmlStreamReader object.
@@ -655,9 +612,7 @@ func NewQXmlStreamReader5(data string) *QXmlStreamReader {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
-	ret := newQXmlStreamReader(C.QXmlStreamReader_new5(data_Cstring))
-	ret.isSubclass = true
-	return ret
+	return newQXmlStreamReader(C.QXmlStreamReader_new5(data_Cstring))
 }
 
 func (this *QXmlStreamReader) SetDevice(device *QIODevice) {
@@ -897,7 +852,7 @@ func (this *QXmlStreamReader) RaiseError1(message string) {
 
 // Delete this object from C++ memory.
 func (this *QXmlStreamReader) Delete() {
-	C.QXmlStreamReader_Delete(this.h, C.bool(this.isSubclass))
+	C.QXmlStreamReader_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -910,8 +865,7 @@ func (this *QXmlStreamReader) GoGC() {
 }
 
 type QXmlStreamWriter struct {
-	h          *C.QXmlStreamWriter
-	isSubclass bool
+	h *C.QXmlStreamWriter
 }
 
 func (this *QXmlStreamWriter) cPointer() *C.QXmlStreamWriter {
@@ -945,17 +899,13 @@ func UnsafeNewQXmlStreamWriter(h unsafe.Pointer) *QXmlStreamWriter {
 // NewQXmlStreamWriter constructs a new QXmlStreamWriter object.
 func NewQXmlStreamWriter() *QXmlStreamWriter {
 
-	ret := newQXmlStreamWriter(C.QXmlStreamWriter_new())
-	ret.isSubclass = true
-	return ret
+	return newQXmlStreamWriter(C.QXmlStreamWriter_new())
 }
 
 // NewQXmlStreamWriter2 constructs a new QXmlStreamWriter object.
 func NewQXmlStreamWriter2(device *QIODevice) *QXmlStreamWriter {
 
-	ret := newQXmlStreamWriter(C.QXmlStreamWriter_new2(device.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQXmlStreamWriter(C.QXmlStreamWriter_new2(device.cPointer()))
 }
 
 func (this *QXmlStreamWriter) SetDevice(device *QIODevice) {
@@ -1222,7 +1172,7 @@ func (this *QXmlStreamWriter) WriteProcessingInstruction2(target string, data st
 
 // Delete this object from C++ memory.
 func (this *QXmlStreamWriter) Delete() {
-	C.QXmlStreamWriter_Delete(this.h, C.bool(this.isSubclass))
+	C.QXmlStreamWriter_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

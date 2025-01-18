@@ -49,7 +49,7 @@ void QCborStreamWriter_StartMap(QCborStreamWriter* self);
 void QCborStreamWriter_StartMapWithCount(QCborStreamWriter* self, unsigned long long count);
 bool QCborStreamWriter_EndMap(QCborStreamWriter* self);
 void QCborStreamWriter_Append22(QCborStreamWriter* self, const char* str, ptrdiff_t size);
-void QCborStreamWriter_Delete(QCborStreamWriter* self, bool isSubclass);
+void QCborStreamWriter_Delete(QCborStreamWriter* self);
 
 #ifdef __cplusplus
 } /* extern C */

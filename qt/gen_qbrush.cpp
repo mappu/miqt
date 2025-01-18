@@ -162,12 +162,8 @@ bool QBrush_IsDetached(const QBrush* self) {
 	return self->isDetached();
 }
 
-void QBrush_Delete(QBrush* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QBrush*>( self );
-	} else {
-		delete self;
-	}
+void QBrush_Delete(QBrush* self) {
+	delete self;
 }
 
 QBrushData* QBrushData_new(QBrushData* param1) {
@@ -178,12 +174,8 @@ void QBrushData_OperatorAssign(QBrushData* self, QBrushData* param1) {
 	self->operator=(*param1);
 }
 
-void QBrushData_Delete(QBrushData* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QBrushData*>( self );
-	} else {
-		delete self;
-	}
+void QBrushData_Delete(QBrushData* self) {
+	delete self;
 }
 
 QGradient* QGradient_new() {
@@ -280,12 +272,8 @@ bool QGradient_OperatorNotEqual(const QGradient* self, QGradient* other) {
 	return (*self != *other);
 }
 
-void QGradient_Delete(QGradient* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QGradient*>( self );
-	} else {
-		delete self;
-	}
+void QGradient_Delete(QGradient* self) {
+	delete self;
 }
 
 QLinearGradient* QLinearGradient_new() {
@@ -332,12 +320,8 @@ void QLinearGradient_SetFinalStop2(QLinearGradient* self, double x, double y) {
 	self->setFinalStop(static_cast<qreal>(x), static_cast<qreal>(y));
 }
 
-void QLinearGradient_Delete(QLinearGradient* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QLinearGradient*>( self );
-	} else {
-		delete self;
-	}
+void QLinearGradient_Delete(QLinearGradient* self) {
+	delete self;
 }
 
 QRadialGradient* QRadialGradient_new() {
@@ -427,12 +411,8 @@ void QRadialGradient_SetFocalRadius(QRadialGradient* self, double radius) {
 	self->setFocalRadius(static_cast<qreal>(radius));
 }
 
-void QRadialGradient_Delete(QRadialGradient* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QRadialGradient*>( self );
-	} else {
-		delete self;
-	}
+void QRadialGradient_Delete(QRadialGradient* self) {
+	delete self;
 }
 
 QConicalGradient* QConicalGradient_new() {
@@ -476,12 +456,8 @@ void QConicalGradient_SetAngle(QConicalGradient* self, double angle) {
 	self->setAngle(static_cast<qreal>(angle));
 }
 
-void QConicalGradient_Delete(QConicalGradient* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QConicalGradient*>( self );
-	} else {
-		delete self;
-	}
+void QConicalGradient_Delete(QConicalGradient* self) {
+	delete self;
 }
 
 QGradient__QGradientData* QGradient__QGradientData_new(QGradient__QGradientData* param1) {
@@ -492,11 +468,7 @@ void QGradient__QGradientData_OperatorAssign(QGradient__QGradientData* self, QGr
 	self->operator=(*param1);
 }
 
-void QGradient__QGradientData_Delete(QGradient__QGradientData* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QGradient::QGradientData*>( self );
-	} else {
-		delete self;
-	}
+void QGradient__QGradientData_Delete(QGradient__QGradientData* self) {
+	delete self;
 }
 

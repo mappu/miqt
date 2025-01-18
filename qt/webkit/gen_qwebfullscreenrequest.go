@@ -15,8 +15,7 @@ import (
 )
 
 type QWebFullScreenRequest struct {
-	h          *C.QWebFullScreenRequest
-	isSubclass bool
+	h *C.QWebFullScreenRequest
 }
 
 func (this *QWebFullScreenRequest) cPointer() *C.QWebFullScreenRequest {
@@ -50,17 +49,13 @@ func UnsafeNewQWebFullScreenRequest(h unsafe.Pointer) *QWebFullScreenRequest {
 // NewQWebFullScreenRequest constructs a new QWebFullScreenRequest object.
 func NewQWebFullScreenRequest() *QWebFullScreenRequest {
 
-	ret := newQWebFullScreenRequest(C.QWebFullScreenRequest_new())
-	ret.isSubclass = true
-	return ret
+	return newQWebFullScreenRequest(C.QWebFullScreenRequest_new())
 }
 
 // NewQWebFullScreenRequest2 constructs a new QWebFullScreenRequest object.
 func NewQWebFullScreenRequest2(param1 *QWebFullScreenRequest) *QWebFullScreenRequest {
 
-	ret := newQWebFullScreenRequest(C.QWebFullScreenRequest_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebFullScreenRequest(C.QWebFullScreenRequest_new2(param1.cPointer()))
 }
 
 func (this *QWebFullScreenRequest) Accept() {
@@ -87,7 +82,7 @@ func (this *QWebFullScreenRequest) Element() *QWebElement {
 
 // Delete this object from C++ memory.
 func (this *QWebFullScreenRequest) Delete() {
-	C.QWebFullScreenRequest_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebFullScreenRequest_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

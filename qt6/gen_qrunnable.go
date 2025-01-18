@@ -15,8 +15,7 @@ import (
 )
 
 type QRunnable struct {
-	h          *C.QRunnable
-	isSubclass bool
+	h *C.QRunnable
 }
 
 func (this *QRunnable) cPointer() *C.QRunnable {
@@ -50,9 +49,7 @@ func UnsafeNewQRunnable(h unsafe.Pointer) *QRunnable {
 // NewQRunnable constructs a new QRunnable object.
 func NewQRunnable() *QRunnable {
 
-	ret := newQRunnable(C.QRunnable_new())
-	ret.isSubclass = true
-	return ret
+	return newQRunnable(C.QRunnable_new())
 }
 
 func (this *QRunnable) Run() {
@@ -67,10 +64,10 @@ func (this *QRunnable) SetAutoDelete(autoDelete bool) {
 	C.QRunnable_SetAutoDelete(this.h, (C.bool)(autoDelete))
 }
 func (this *QRunnable) OnRun(slot func()) {
-	if !this.isSubclass {
+	ok := C.QRunnable_override_virtual_Run(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QRunnable_override_virtual_Run(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QRunnable_Run
@@ -86,7 +83,7 @@ func miqt_exec_callback_QRunnable_Run(self *C.QRunnable, cb C.intptr_t) {
 
 // Delete this object from C++ memory.
 func (this *QRunnable) Delete() {
-	C.QRunnable_Delete(this.h, C.bool(this.isSubclass))
+	C.QRunnable_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -22,7 +22,7 @@ void miqt_exec_callback_QPauseAnimation_UpdateDirection(void*, intptr_t, int);
 } /* extern C */
 #endif
 
-class MiqtVirtualQPauseAnimation : public virtual QPauseAnimation {
+class MiqtVirtualQPauseAnimation final : public QPauseAnimation {
 public:
 
 	MiqtVirtualQPauseAnimation(): QPauseAnimation() {};
@@ -30,7 +30,7 @@ public:
 	MiqtVirtualQPauseAnimation(QObject* parent): QPauseAnimation(parent) {};
 	MiqtVirtualQPauseAnimation(int msecs, QObject* parent): QPauseAnimation(msecs, parent) {};
 
-	virtual ~MiqtVirtualQPauseAnimation() = default;
+	virtual ~MiqtVirtualQPauseAnimation() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Duration = 0;
@@ -224,51 +224,77 @@ struct miqt_string QPauseAnimation_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QPauseAnimation_override_virtual_Duration(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPauseAnimation*>( (QPauseAnimation*)(self) )->handle__Duration = slot;
+bool QPauseAnimation_override_virtual_Duration(void* self, intptr_t slot) {
+	MiqtVirtualQPauseAnimation* self_cast = dynamic_cast<MiqtVirtualQPauseAnimation*>( (QPauseAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Duration = slot;
+	return true;
 }
 
 int QPauseAnimation_virtualbase_Duration(const void* self) {
 	return ( (const MiqtVirtualQPauseAnimation*)(self) )->virtualbase_Duration();
 }
 
-void QPauseAnimation_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPauseAnimation*>( (QPauseAnimation*)(self) )->handle__Event = slot;
+bool QPauseAnimation_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQPauseAnimation* self_cast = dynamic_cast<MiqtVirtualQPauseAnimation*>( (QPauseAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QPauseAnimation_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQPauseAnimation*)(self) )->virtualbase_Event(e);
 }
 
-void QPauseAnimation_override_virtual_UpdateCurrentTime(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPauseAnimation*>( (QPauseAnimation*)(self) )->handle__UpdateCurrentTime = slot;
+bool QPauseAnimation_override_virtual_UpdateCurrentTime(void* self, intptr_t slot) {
+	MiqtVirtualQPauseAnimation* self_cast = dynamic_cast<MiqtVirtualQPauseAnimation*>( (QPauseAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateCurrentTime = slot;
+	return true;
 }
 
 void QPauseAnimation_virtualbase_UpdateCurrentTime(void* self, int param1) {
 	( (MiqtVirtualQPauseAnimation*)(self) )->virtualbase_UpdateCurrentTime(param1);
 }
 
-void QPauseAnimation_override_virtual_UpdateState(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPauseAnimation*>( (QPauseAnimation*)(self) )->handle__UpdateState = slot;
+bool QPauseAnimation_override_virtual_UpdateState(void* self, intptr_t slot) {
+	MiqtVirtualQPauseAnimation* self_cast = dynamic_cast<MiqtVirtualQPauseAnimation*>( (QPauseAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateState = slot;
+	return true;
 }
 
 void QPauseAnimation_virtualbase_UpdateState(void* self, int newState, int oldState) {
 	( (MiqtVirtualQPauseAnimation*)(self) )->virtualbase_UpdateState(newState, oldState);
 }
 
-void QPauseAnimation_override_virtual_UpdateDirection(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPauseAnimation*>( (QPauseAnimation*)(self) )->handle__UpdateDirection = slot;
+bool QPauseAnimation_override_virtual_UpdateDirection(void* self, intptr_t slot) {
+	MiqtVirtualQPauseAnimation* self_cast = dynamic_cast<MiqtVirtualQPauseAnimation*>( (QPauseAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateDirection = slot;
+	return true;
 }
 
 void QPauseAnimation_virtualbase_UpdateDirection(void* self, int direction) {
 	( (MiqtVirtualQPauseAnimation*)(self) )->virtualbase_UpdateDirection(direction);
 }
 
-void QPauseAnimation_Delete(QPauseAnimation* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQPauseAnimation*>( self );
-	} else {
-		delete self;
-	}
+void QPauseAnimation_Delete(QPauseAnimation* self) {
+	delete self;
 }
 

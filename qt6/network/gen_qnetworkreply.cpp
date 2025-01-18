@@ -381,11 +381,7 @@ struct miqt_string QNetworkReply_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QNetworkReply_Delete(QNetworkReply* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QNetworkReply*>( self );
-	} else {
-		delete self;
-	}
+void QNetworkReply_Delete(QNetworkReply* self) {
+	delete self;
 }
 

@@ -56,7 +56,7 @@ struct miqt_string QPaintDeviceWindow_Tr2(const char* s, const char* c);
 struct miqt_string QPaintDeviceWindow_Tr3(const char* s, const char* c, int n);
 struct miqt_string QPaintDeviceWindow_TrUtf82(const char* s, const char* c);
 struct miqt_string QPaintDeviceWindow_TrUtf83(const char* s, const char* c, int n);
-void QPaintDeviceWindow_Delete(QPaintDeviceWindow* self, bool isSubclass);
+void QPaintDeviceWindow_Delete(QPaintDeviceWindow* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -250,11 +250,7 @@ void* QMetaType_Construct2(const QMetaType* self, void* where, const void* copyV
 	return self->construct(where, copyVal);
 }
 
-void QMetaType_Delete(QMetaType* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMetaType*>( self );
-	} else {
-		delete self;
-	}
+void QMetaType_Delete(QMetaType* self) {
+	delete self;
 }
 

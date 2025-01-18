@@ -212,11 +212,7 @@ int QVideoFrame_ImageFormatFromPixelFormat(int format) {
 	return static_cast<int>(_ret);
 }
 
-void QVideoFrame_Delete(QVideoFrame* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QVideoFrame*>( self );
-	} else {
-		delete self;
-	}
+void QVideoFrame_Delete(QVideoFrame* self) {
+	delete self;
 }
 

@@ -31,14 +31,14 @@ void miqt_exec_callback_QToolBox_PaintEvent(void*, intptr_t, QPaintEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQToolBox : public virtual QToolBox {
+class MiqtVirtualQToolBox final : public QToolBox {
 public:
 
 	MiqtVirtualQToolBox(QWidget* parent): QToolBox(parent) {};
 	MiqtVirtualQToolBox(): QToolBox() {};
 	MiqtVirtualQToolBox(QWidget* parent, Qt::WindowFlags f): QToolBox(parent, f) {};
 
-	virtual ~MiqtVirtualQToolBox() = default;
+	virtual ~MiqtVirtualQToolBox() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -408,67 +408,105 @@ struct miqt_string QToolBox_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QToolBox_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) )->handle__Event = slot;
+bool QToolBox_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQToolBox* self_cast = dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QToolBox_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQToolBox*)(self) )->virtualbase_Event(e);
 }
 
-void QToolBox_override_virtual_ItemInserted(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) )->handle__ItemInserted = slot;
+bool QToolBox_override_virtual_ItemInserted(void* self, intptr_t slot) {
+	MiqtVirtualQToolBox* self_cast = dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ItemInserted = slot;
+	return true;
 }
 
 void QToolBox_virtualbase_ItemInserted(void* self, int index) {
 	( (MiqtVirtualQToolBox*)(self) )->virtualbase_ItemInserted(index);
 }
 
-void QToolBox_override_virtual_ItemRemoved(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) )->handle__ItemRemoved = slot;
+bool QToolBox_override_virtual_ItemRemoved(void* self, intptr_t slot) {
+	MiqtVirtualQToolBox* self_cast = dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ItemRemoved = slot;
+	return true;
 }
 
 void QToolBox_virtualbase_ItemRemoved(void* self, int index) {
 	( (MiqtVirtualQToolBox*)(self) )->virtualbase_ItemRemoved(index);
 }
 
-void QToolBox_override_virtual_ShowEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) )->handle__ShowEvent = slot;
+bool QToolBox_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQToolBox* self_cast = dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
 }
 
 void QToolBox_virtualbase_ShowEvent(void* self, QShowEvent* e) {
 	( (MiqtVirtualQToolBox*)(self) )->virtualbase_ShowEvent(e);
 }
 
-void QToolBox_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) )->handle__ChangeEvent = slot;
+bool QToolBox_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQToolBox* self_cast = dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QToolBox_virtualbase_ChangeEvent(void* self, QEvent* param1) {
 	( (MiqtVirtualQToolBox*)(self) )->virtualbase_ChangeEvent(param1);
 }
 
-void QToolBox_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) )->handle__SizeHint = slot;
+bool QToolBox_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQToolBox* self_cast = dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QToolBox_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQToolBox*)(self) )->virtualbase_SizeHint();
 }
 
-void QToolBox_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) )->handle__PaintEvent = slot;
+bool QToolBox_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQToolBox* self_cast = dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QToolBox_virtualbase_PaintEvent(void* self, QPaintEvent* param1) {
 	( (MiqtVirtualQToolBox*)(self) )->virtualbase_PaintEvent(param1);
 }
 
-void QToolBox_Delete(QToolBox* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQToolBox*>( self );
-	} else {
-		delete self;
-	}
+void QToolBox_Delete(QToolBox* self) {
+	delete self;
 }
 

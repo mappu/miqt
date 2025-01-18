@@ -16,8 +16,7 @@ import (
 )
 
 type QWebEngineClientCertificateSelection struct {
-	h          *C.QWebEngineClientCertificateSelection
-	isSubclass bool
+	h *C.QWebEngineClientCertificateSelection
 }
 
 func (this *QWebEngineClientCertificateSelection) cPointer() *C.QWebEngineClientCertificateSelection {
@@ -51,9 +50,7 @@ func UnsafeNewQWebEngineClientCertificateSelection(h unsafe.Pointer) *QWebEngine
 // NewQWebEngineClientCertificateSelection constructs a new QWebEngineClientCertificateSelection object.
 func NewQWebEngineClientCertificateSelection(param1 *QWebEngineClientCertificateSelection) *QWebEngineClientCertificateSelection {
 
-	ret := newQWebEngineClientCertificateSelection(C.QWebEngineClientCertificateSelection_new(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineClientCertificateSelection(C.QWebEngineClientCertificateSelection_new(param1.cPointer()))
 }
 
 func (this *QWebEngineClientCertificateSelection) OperatorAssign(param1 *QWebEngineClientCertificateSelection) {
@@ -88,7 +85,7 @@ func (this *QWebEngineClientCertificateSelection) Certificates() []network.QSslC
 
 // Delete this object from C++ memory.
 func (this *QWebEngineClientCertificateSelection) Delete() {
-	C.QWebEngineClientCertificateSelection_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebEngineClientCertificateSelection_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

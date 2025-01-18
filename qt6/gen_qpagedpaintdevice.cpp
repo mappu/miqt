@@ -51,11 +51,7 @@ QPageRanges* QPagedPaintDevice_PageRanges(const QPagedPaintDevice* self) {
 	return new QPageRanges(self->pageRanges());
 }
 
-void QPagedPaintDevice_Delete(QPagedPaintDevice* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPagedPaintDevice*>( self );
-	} else {
-		delete self;
-	}
+void QPagedPaintDevice_Delete(QPagedPaintDevice* self) {
+	delete self;
 }
 

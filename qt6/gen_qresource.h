@@ -47,7 +47,7 @@ bool QResource_RegisterResource2(struct miqt_string rccFilename, struct miqt_str
 bool QResource_UnregisterResource2(struct miqt_string rccFilename, struct miqt_string resourceRoot);
 bool QResource_RegisterResource22(const unsigned char* rccData, struct miqt_string resourceRoot);
 bool QResource_UnregisterResource22(const unsigned char* rccData, struct miqt_string resourceRoot);
-void QResource_Delete(QResource* self, bool isSubclass);
+void QResource_Delete(QResource* self);
 
 #ifdef __cplusplus
 } /* extern C */

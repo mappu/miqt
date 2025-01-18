@@ -28,8 +28,7 @@ const (
 )
 
 type QIODeviceBase struct {
-	h          *C.QIODeviceBase
-	isSubclass bool
+	h *C.QIODeviceBase
 }
 
 func (this *QIODeviceBase) cPointer() *C.QIODeviceBase {

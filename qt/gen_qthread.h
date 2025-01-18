@@ -76,23 +76,23 @@ struct miqt_string QThread_TrUtf83(const char* s, const char* c, int n);
 void QThread_Exit1(QThread* self, int retcode);
 void QThread_Start1(QThread* self, int param1);
 bool QThread_Wait1(QThread* self, QDeadlineTimer* deadline);
-void QThread_override_virtual_Event(void* self, intptr_t slot);
+bool QThread_override_virtual_Event(void* self, intptr_t slot);
 bool QThread_virtualbase_Event(void* self, QEvent* event);
-void QThread_override_virtual_Run(void* self, intptr_t slot);
+bool QThread_override_virtual_Run(void* self, intptr_t slot);
 void QThread_virtualbase_Run(void* self);
-void QThread_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QThread_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QThread_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QThread_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QThread_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QThread_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QThread_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QThread_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QThread_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QThread_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QThread_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QThread_virtualbase_CustomEvent(void* self, QEvent* event);
-void QThread_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QThread_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QThread_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QThread_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QThread_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QThread_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QThread_Delete(QThread* self, bool isSubclass);
+void QThread_Delete(QThread* self);
 
 #ifdef __cplusplus
 } /* extern C */

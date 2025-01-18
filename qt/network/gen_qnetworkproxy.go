@@ -50,8 +50,7 @@ const (
 )
 
 type QNetworkProxyQuery struct {
-	h          *C.QNetworkProxyQuery
-	isSubclass bool
+	h *C.QNetworkProxyQuery
 }
 
 func (this *QNetworkProxyQuery) cPointer() *C.QNetworkProxyQuery {
@@ -85,17 +84,13 @@ func UnsafeNewQNetworkProxyQuery(h unsafe.Pointer) *QNetworkProxyQuery {
 // NewQNetworkProxyQuery constructs a new QNetworkProxyQuery object.
 func NewQNetworkProxyQuery() *QNetworkProxyQuery {
 
-	ret := newQNetworkProxyQuery(C.QNetworkProxyQuery_new())
-	ret.isSubclass = true
-	return ret
+	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new())
 }
 
 // NewQNetworkProxyQuery2 constructs a new QNetworkProxyQuery object.
 func NewQNetworkProxyQuery2(requestUrl *qt.QUrl) *QNetworkProxyQuery {
 
-	ret := newQNetworkProxyQuery(C.QNetworkProxyQuery_new2((*C.QUrl)(requestUrl.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new2((*C.QUrl)(requestUrl.UnsafePointer())))
 }
 
 // NewQNetworkProxyQuery3 constructs a new QNetworkProxyQuery object.
@@ -105,25 +100,19 @@ func NewQNetworkProxyQuery3(hostname string, port int) *QNetworkProxyQuery {
 	hostname_ms.len = C.size_t(len(hostname))
 	defer C.free(unsafe.Pointer(hostname_ms.data))
 
-	ret := newQNetworkProxyQuery(C.QNetworkProxyQuery_new3(hostname_ms, (C.int)(port)))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new3(hostname_ms, (C.int)(port)))
 }
 
 // NewQNetworkProxyQuery4 constructs a new QNetworkProxyQuery object.
 func NewQNetworkProxyQuery4(bindPort uint16) *QNetworkProxyQuery {
 
-	ret := newQNetworkProxyQuery(C.QNetworkProxyQuery_new4((C.uint16_t)(bindPort)))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new4((C.uint16_t)(bindPort)))
 }
 
 // NewQNetworkProxyQuery5 constructs a new QNetworkProxyQuery object.
 func NewQNetworkProxyQuery5(networkConfiguration *QNetworkConfiguration, requestUrl *qt.QUrl) *QNetworkProxyQuery {
 
-	ret := newQNetworkProxyQuery(C.QNetworkProxyQuery_new5(networkConfiguration.cPointer(), (*C.QUrl)(requestUrl.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new5(networkConfiguration.cPointer(), (*C.QUrl)(requestUrl.UnsafePointer())))
 }
 
 // NewQNetworkProxyQuery6 constructs a new QNetworkProxyQuery object.
@@ -133,33 +122,25 @@ func NewQNetworkProxyQuery6(networkConfiguration *QNetworkConfiguration, hostnam
 	hostname_ms.len = C.size_t(len(hostname))
 	defer C.free(unsafe.Pointer(hostname_ms.data))
 
-	ret := newQNetworkProxyQuery(C.QNetworkProxyQuery_new6(networkConfiguration.cPointer(), hostname_ms, (C.int)(port)))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new6(networkConfiguration.cPointer(), hostname_ms, (C.int)(port)))
 }
 
 // NewQNetworkProxyQuery7 constructs a new QNetworkProxyQuery object.
 func NewQNetworkProxyQuery7(networkConfiguration *QNetworkConfiguration, bindPort uint16) *QNetworkProxyQuery {
 
-	ret := newQNetworkProxyQuery(C.QNetworkProxyQuery_new7(networkConfiguration.cPointer(), (C.uint16_t)(bindPort)))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new7(networkConfiguration.cPointer(), (C.uint16_t)(bindPort)))
 }
 
 // NewQNetworkProxyQuery8 constructs a new QNetworkProxyQuery object.
 func NewQNetworkProxyQuery8(other *QNetworkProxyQuery) *QNetworkProxyQuery {
 
-	ret := newQNetworkProxyQuery(C.QNetworkProxyQuery_new8(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new8(other.cPointer()))
 }
 
 // NewQNetworkProxyQuery9 constructs a new QNetworkProxyQuery object.
 func NewQNetworkProxyQuery9(requestUrl *qt.QUrl, queryType QNetworkProxyQuery__QueryType) *QNetworkProxyQuery {
 
-	ret := newQNetworkProxyQuery(C.QNetworkProxyQuery_new9((*C.QUrl)(requestUrl.UnsafePointer()), (C.int)(queryType)))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new9((*C.QUrl)(requestUrl.UnsafePointer()), (C.int)(queryType)))
 }
 
 // NewQNetworkProxyQuery10 constructs a new QNetworkProxyQuery object.
@@ -173,9 +154,7 @@ func NewQNetworkProxyQuery10(hostname string, port int, protocolTag string) *QNe
 	protocolTag_ms.len = C.size_t(len(protocolTag))
 	defer C.free(unsafe.Pointer(protocolTag_ms.data))
 
-	ret := newQNetworkProxyQuery(C.QNetworkProxyQuery_new10(hostname_ms, (C.int)(port), protocolTag_ms))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new10(hostname_ms, (C.int)(port), protocolTag_ms))
 }
 
 // NewQNetworkProxyQuery11 constructs a new QNetworkProxyQuery object.
@@ -189,9 +168,7 @@ func NewQNetworkProxyQuery11(hostname string, port int, protocolTag string, quer
 	protocolTag_ms.len = C.size_t(len(protocolTag))
 	defer C.free(unsafe.Pointer(protocolTag_ms.data))
 
-	ret := newQNetworkProxyQuery(C.QNetworkProxyQuery_new11(hostname_ms, (C.int)(port), protocolTag_ms, (C.int)(queryType)))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new11(hostname_ms, (C.int)(port), protocolTag_ms, (C.int)(queryType)))
 }
 
 // NewQNetworkProxyQuery12 constructs a new QNetworkProxyQuery object.
@@ -201,9 +178,7 @@ func NewQNetworkProxyQuery12(bindPort uint16, protocolTag string) *QNetworkProxy
 	protocolTag_ms.len = C.size_t(len(protocolTag))
 	defer C.free(unsafe.Pointer(protocolTag_ms.data))
 
-	ret := newQNetworkProxyQuery(C.QNetworkProxyQuery_new12((C.uint16_t)(bindPort), protocolTag_ms))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new12((C.uint16_t)(bindPort), protocolTag_ms))
 }
 
 // NewQNetworkProxyQuery13 constructs a new QNetworkProxyQuery object.
@@ -213,17 +188,13 @@ func NewQNetworkProxyQuery13(bindPort uint16, protocolTag string, queryType QNet
 	protocolTag_ms.len = C.size_t(len(protocolTag))
 	defer C.free(unsafe.Pointer(protocolTag_ms.data))
 
-	ret := newQNetworkProxyQuery(C.QNetworkProxyQuery_new13((C.uint16_t)(bindPort), protocolTag_ms, (C.int)(queryType)))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new13((C.uint16_t)(bindPort), protocolTag_ms, (C.int)(queryType)))
 }
 
 // NewQNetworkProxyQuery14 constructs a new QNetworkProxyQuery object.
 func NewQNetworkProxyQuery14(networkConfiguration *QNetworkConfiguration, requestUrl *qt.QUrl, queryType QNetworkProxyQuery__QueryType) *QNetworkProxyQuery {
 
-	ret := newQNetworkProxyQuery(C.QNetworkProxyQuery_new14(networkConfiguration.cPointer(), (*C.QUrl)(requestUrl.UnsafePointer()), (C.int)(queryType)))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new14(networkConfiguration.cPointer(), (*C.QUrl)(requestUrl.UnsafePointer()), (C.int)(queryType)))
 }
 
 // NewQNetworkProxyQuery15 constructs a new QNetworkProxyQuery object.
@@ -237,9 +208,7 @@ func NewQNetworkProxyQuery15(networkConfiguration *QNetworkConfiguration, hostna
 	protocolTag_ms.len = C.size_t(len(protocolTag))
 	defer C.free(unsafe.Pointer(protocolTag_ms.data))
 
-	ret := newQNetworkProxyQuery(C.QNetworkProxyQuery_new15(networkConfiguration.cPointer(), hostname_ms, (C.int)(port), protocolTag_ms))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new15(networkConfiguration.cPointer(), hostname_ms, (C.int)(port), protocolTag_ms))
 }
 
 // NewQNetworkProxyQuery16 constructs a new QNetworkProxyQuery object.
@@ -253,9 +222,7 @@ func NewQNetworkProxyQuery16(networkConfiguration *QNetworkConfiguration, hostna
 	protocolTag_ms.len = C.size_t(len(protocolTag))
 	defer C.free(unsafe.Pointer(protocolTag_ms.data))
 
-	ret := newQNetworkProxyQuery(C.QNetworkProxyQuery_new16(networkConfiguration.cPointer(), hostname_ms, (C.int)(port), protocolTag_ms, (C.int)(queryType)))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new16(networkConfiguration.cPointer(), hostname_ms, (C.int)(port), protocolTag_ms, (C.int)(queryType)))
 }
 
 // NewQNetworkProxyQuery17 constructs a new QNetworkProxyQuery object.
@@ -265,9 +232,7 @@ func NewQNetworkProxyQuery17(networkConfiguration *QNetworkConfiguration, bindPo
 	protocolTag_ms.len = C.size_t(len(protocolTag))
 	defer C.free(unsafe.Pointer(protocolTag_ms.data))
 
-	ret := newQNetworkProxyQuery(C.QNetworkProxyQuery_new17(networkConfiguration.cPointer(), (C.uint16_t)(bindPort), protocolTag_ms))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new17(networkConfiguration.cPointer(), (C.uint16_t)(bindPort), protocolTag_ms))
 }
 
 // NewQNetworkProxyQuery18 constructs a new QNetworkProxyQuery object.
@@ -277,9 +242,7 @@ func NewQNetworkProxyQuery18(networkConfiguration *QNetworkConfiguration, bindPo
 	protocolTag_ms.len = C.size_t(len(protocolTag))
 	defer C.free(unsafe.Pointer(protocolTag_ms.data))
 
-	ret := newQNetworkProxyQuery(C.QNetworkProxyQuery_new18(networkConfiguration.cPointer(), (C.uint16_t)(bindPort), protocolTag_ms, (C.int)(queryType)))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new18(networkConfiguration.cPointer(), (C.uint16_t)(bindPort), protocolTag_ms, (C.int)(queryType)))
 }
 
 func (this *QNetworkProxyQuery) OperatorAssign(other *QNetworkProxyQuery) {
@@ -374,7 +337,7 @@ func (this *QNetworkProxyQuery) SetNetworkConfiguration(networkConfiguration *QN
 
 // Delete this object from C++ memory.
 func (this *QNetworkProxyQuery) Delete() {
-	C.QNetworkProxyQuery_Delete(this.h, C.bool(this.isSubclass))
+	C.QNetworkProxyQuery_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -387,8 +350,7 @@ func (this *QNetworkProxyQuery) GoGC() {
 }
 
 type QNetworkProxy struct {
-	h          *C.QNetworkProxy
-	isSubclass bool
+	h *C.QNetworkProxy
 }
 
 func (this *QNetworkProxy) cPointer() *C.QNetworkProxy {
@@ -422,25 +384,19 @@ func UnsafeNewQNetworkProxy(h unsafe.Pointer) *QNetworkProxy {
 // NewQNetworkProxy constructs a new QNetworkProxy object.
 func NewQNetworkProxy() *QNetworkProxy {
 
-	ret := newQNetworkProxy(C.QNetworkProxy_new())
-	ret.isSubclass = true
-	return ret
+	return newQNetworkProxy(C.QNetworkProxy_new())
 }
 
 // NewQNetworkProxy2 constructs a new QNetworkProxy object.
 func NewQNetworkProxy2(typeVal QNetworkProxy__ProxyType) *QNetworkProxy {
 
-	ret := newQNetworkProxy(C.QNetworkProxy_new2((C.int)(typeVal)))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkProxy(C.QNetworkProxy_new2((C.int)(typeVal)))
 }
 
 // NewQNetworkProxy3 constructs a new QNetworkProxy object.
 func NewQNetworkProxy3(other *QNetworkProxy) *QNetworkProxy {
 
-	ret := newQNetworkProxy(C.QNetworkProxy_new3(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkProxy(C.QNetworkProxy_new3(other.cPointer()))
 }
 
 // NewQNetworkProxy4 constructs a new QNetworkProxy object.
@@ -450,9 +406,7 @@ func NewQNetworkProxy4(typeVal QNetworkProxy__ProxyType, hostName string) *QNetw
 	hostName_ms.len = C.size_t(len(hostName))
 	defer C.free(unsafe.Pointer(hostName_ms.data))
 
-	ret := newQNetworkProxy(C.QNetworkProxy_new4((C.int)(typeVal), hostName_ms))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkProxy(C.QNetworkProxy_new4((C.int)(typeVal), hostName_ms))
 }
 
 // NewQNetworkProxy5 constructs a new QNetworkProxy object.
@@ -462,9 +416,7 @@ func NewQNetworkProxy5(typeVal QNetworkProxy__ProxyType, hostName string, port u
 	hostName_ms.len = C.size_t(len(hostName))
 	defer C.free(unsafe.Pointer(hostName_ms.data))
 
-	ret := newQNetworkProxy(C.QNetworkProxy_new5((C.int)(typeVal), hostName_ms, (C.uint16_t)(port)))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkProxy(C.QNetworkProxy_new5((C.int)(typeVal), hostName_ms, (C.uint16_t)(port)))
 }
 
 // NewQNetworkProxy6 constructs a new QNetworkProxy object.
@@ -478,9 +430,7 @@ func NewQNetworkProxy6(typeVal QNetworkProxy__ProxyType, hostName string, port u
 	user_ms.len = C.size_t(len(user))
 	defer C.free(unsafe.Pointer(user_ms.data))
 
-	ret := newQNetworkProxy(C.QNetworkProxy_new6((C.int)(typeVal), hostName_ms, (C.uint16_t)(port), user_ms))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkProxy(C.QNetworkProxy_new6((C.int)(typeVal), hostName_ms, (C.uint16_t)(port), user_ms))
 }
 
 // NewQNetworkProxy7 constructs a new QNetworkProxy object.
@@ -498,9 +448,7 @@ func NewQNetworkProxy7(typeVal QNetworkProxy__ProxyType, hostName string, port u
 	password_ms.len = C.size_t(len(password))
 	defer C.free(unsafe.Pointer(password_ms.data))
 
-	ret := newQNetworkProxy(C.QNetworkProxy_new7((C.int)(typeVal), hostName_ms, (C.uint16_t)(port), user_ms, password_ms))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkProxy(C.QNetworkProxy_new7((C.int)(typeVal), hostName_ms, (C.uint16_t)(port), user_ms, password_ms))
 }
 
 func (this *QNetworkProxy) OperatorAssign(other *QNetworkProxy) {
@@ -658,7 +606,7 @@ func (this *QNetworkProxy) SetRawHeader(headerName []byte, value []byte) {
 
 // Delete this object from C++ memory.
 func (this *QNetworkProxy) Delete() {
-	C.QNetworkProxy_Delete(this.h, C.bool(this.isSubclass))
+	C.QNetworkProxy_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -671,8 +619,7 @@ func (this *QNetworkProxy) GoGC() {
 }
 
 type QNetworkProxyFactory struct {
-	h          *C.QNetworkProxyFactory
-	isSubclass bool
+	h *C.QNetworkProxyFactory
 }
 
 func (this *QNetworkProxyFactory) cPointer() *C.QNetworkProxyFactory {
@@ -706,9 +653,7 @@ func UnsafeNewQNetworkProxyFactory(h unsafe.Pointer) *QNetworkProxyFactory {
 // NewQNetworkProxyFactory constructs a new QNetworkProxyFactory object.
 func NewQNetworkProxyFactory() *QNetworkProxyFactory {
 
-	ret := newQNetworkProxyFactory(C.QNetworkProxyFactory_new())
-	ret.isSubclass = true
-	return ret
+	return newQNetworkProxyFactory(C.QNetworkProxyFactory_new())
 }
 
 func (this *QNetworkProxyFactory) QueryProxy(query *QNetworkProxyQuery) []QNetworkProxy {
@@ -775,10 +720,10 @@ func QNetworkProxyFactory_SystemProxyForQuery1(query *QNetworkProxyQuery) []QNet
 	return _ret
 }
 func (this *QNetworkProxyFactory) OnQueryProxy(slot func(query *QNetworkProxyQuery) []QNetworkProxy) {
-	if !this.isSubclass {
+	ok := C.QNetworkProxyFactory_override_virtual_QueryProxy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QNetworkProxyFactory_override_virtual_QueryProxy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QNetworkProxyFactory_QueryProxy
@@ -805,7 +750,7 @@ func miqt_exec_callback_QNetworkProxyFactory_QueryProxy(self *C.QNetworkProxyFac
 
 // Delete this object from C++ memory.
 func (this *QNetworkProxyFactory) Delete() {
-	C.QNetworkProxyFactory_Delete(this.h, C.bool(this.isSubclass))
+	C.QNetworkProxyFactory_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

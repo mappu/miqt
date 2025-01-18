@@ -44,12 +44,8 @@ ptrdiff_t QStringEncoder_RequiredSpace(const QStringEncoder* self, ptrdiff_t inp
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-void QStringEncoder_Delete(QStringEncoder* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QStringEncoder*>( self );
-	} else {
-		delete self;
-	}
+void QStringEncoder_Delete(QStringEncoder* self) {
+	delete self;
 }
 
 QStringDecoder* QStringDecoder_new(int encoding) {
@@ -89,11 +85,7 @@ QStringDecoder* QStringDecoder_DecoderForHtml(QByteArrayView* data) {
 	return new QStringDecoder(QStringDecoder::decoderForHtml(*data));
 }
 
-void QStringDecoder_Delete(QStringDecoder* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QStringDecoder*>( self );
-	} else {
-		delete self;
-	}
+void QStringDecoder_Delete(QStringDecoder* self) {
+	delete self;
 }
 

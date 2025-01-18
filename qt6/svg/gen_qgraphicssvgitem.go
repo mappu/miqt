@@ -22,8 +22,7 @@ const (
 )
 
 type QGraphicsSvgItem struct {
-	h          *C.QGraphicsSvgItem
-	isSubclass bool
+	h *C.QGraphicsSvgItem
 	*qt6.QGraphicsObject
 }
 
@@ -61,9 +60,7 @@ func UnsafeNewQGraphicsSvgItem(h unsafe.Pointer) *QGraphicsSvgItem {
 // NewQGraphicsSvgItem constructs a new QGraphicsSvgItem object.
 func NewQGraphicsSvgItem() *QGraphicsSvgItem {
 
-	ret := newQGraphicsSvgItem(C.QGraphicsSvgItem_new())
-	ret.isSubclass = true
-	return ret
+	return newQGraphicsSvgItem(C.QGraphicsSvgItem_new())
 }
 
 // NewQGraphicsSvgItem2 constructs a new QGraphicsSvgItem object.
@@ -73,17 +70,13 @@ func NewQGraphicsSvgItem2(fileName string) *QGraphicsSvgItem {
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 
-	ret := newQGraphicsSvgItem(C.QGraphicsSvgItem_new2(fileName_ms))
-	ret.isSubclass = true
-	return ret
+	return newQGraphicsSvgItem(C.QGraphicsSvgItem_new2(fileName_ms))
 }
 
 // NewQGraphicsSvgItem3 constructs a new QGraphicsSvgItem object.
 func NewQGraphicsSvgItem3(parentItem *qt6.QGraphicsItem) *QGraphicsSvgItem {
 
-	ret := newQGraphicsSvgItem(C.QGraphicsSvgItem_new3((*C.QGraphicsItem)(parentItem.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQGraphicsSvgItem(C.QGraphicsSvgItem_new3((*C.QGraphicsItem)(parentItem.UnsafePointer())))
 }
 
 // NewQGraphicsSvgItem4 constructs a new QGraphicsSvgItem object.
@@ -93,9 +86,7 @@ func NewQGraphicsSvgItem4(fileName string, parentItem *qt6.QGraphicsItem) *QGrap
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 
-	ret := newQGraphicsSvgItem(C.QGraphicsSvgItem_new4(fileName_ms, (*C.QGraphicsItem)(parentItem.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQGraphicsSvgItem(C.QGraphicsSvgItem_new4(fileName_ms, (*C.QGraphicsItem)(parentItem.UnsafePointer())))
 }
 
 func (this *QGraphicsSvgItem) MetaObject() *qt6.QMetaObject {
@@ -202,10 +193,10 @@ func (this *QGraphicsSvgItem) callVirtualBase_BoundingRect() *qt6.QRectF {
 
 }
 func (this *QGraphicsSvgItem) OnBoundingRect(slot func(super func() *qt6.QRectF) *qt6.QRectF) {
-	if !this.isSubclass {
+	ok := C.QGraphicsSvgItem_override_virtual_BoundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGraphicsSvgItem_override_virtual_BoundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsSvgItem_BoundingRect
@@ -227,10 +218,10 @@ func (this *QGraphicsSvgItem) callVirtualBase_Paint(painter *qt6.QPainter, optio
 
 }
 func (this *QGraphicsSvgItem) OnPaint(slot func(super func(painter *qt6.QPainter, option *qt6.QStyleOptionGraphicsItem, widget *qt6.QWidget), painter *qt6.QPainter, option *qt6.QStyleOptionGraphicsItem, widget *qt6.QWidget)) {
-	if !this.isSubclass {
+	ok := C.QGraphicsSvgItem_override_virtual_Paint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGraphicsSvgItem_override_virtual_Paint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsSvgItem_Paint
@@ -257,10 +248,10 @@ func (this *QGraphicsSvgItem) callVirtualBase_Type() int {
 
 }
 func (this *QGraphicsSvgItem) OnType(slot func(super func() int) int) {
-	if !this.isSubclass {
+	ok := C.QGraphicsSvgItem_override_virtual_Type(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGraphicsSvgItem_override_virtual_Type(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsSvgItem_Type
@@ -282,10 +273,10 @@ func (this *QGraphicsSvgItem) callVirtualBase_Event(ev *qt6.QEvent) bool {
 
 }
 func (this *QGraphicsSvgItem) OnEvent(slot func(super func(ev *qt6.QEvent) bool, ev *qt6.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QGraphicsSvgItem_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGraphicsSvgItem_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsSvgItem_Event
@@ -306,7 +297,7 @@ func miqt_exec_callback_QGraphicsSvgItem_Event(self *C.QGraphicsSvgItem, cb C.in
 
 // Delete this object from C++ memory.
 func (this *QGraphicsSvgItem) Delete() {
-	C.QGraphicsSvgItem_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsSvgItem_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

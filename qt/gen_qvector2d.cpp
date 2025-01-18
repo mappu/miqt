@@ -155,11 +155,7 @@ QVariant* QVector2D_ToQVariant(const QVector2D* self) {
 	return new QVariant(self->operator QVariant());
 }
 
-void QVector2D_Delete(QVector2D* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QVector2D*>( self );
-	} else {
-		delete self;
-	}
+void QVector2D_Delete(QVector2D* self) {
+	delete self;
 }
 

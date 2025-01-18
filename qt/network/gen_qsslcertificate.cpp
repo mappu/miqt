@@ -487,11 +487,7 @@ bool QSslCertificate_ImportPkcs125(QIODevice* device, QSslKey* key, QSslCertific
 	return QSslCertificate::importPkcs12(device, key, cert, &caCertificates_QList, passPhrase_QByteArray);
 }
 
-void QSslCertificate_Delete(QSslCertificate* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QSslCertificate*>( self );
-	} else {
-		delete self;
-	}
+void QSslCertificate_Delete(QSslCertificate* self) {
+	delete self;
 }
 

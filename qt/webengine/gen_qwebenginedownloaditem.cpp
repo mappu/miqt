@@ -302,11 +302,7 @@ struct miqt_string QWebEngineDownloadItem_TrUtf83(const char* s, const char* c, 
 	return _ms;
 }
 
-void QWebEngineDownloadItem_Delete(QWebEngineDownloadItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebEngineDownloadItem*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineDownloadItem_Delete(QWebEngineDownloadItem* self) {
+	delete self;
 }
 

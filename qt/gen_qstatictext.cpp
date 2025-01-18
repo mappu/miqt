@@ -113,11 +113,7 @@ void QStaticText_Prepare2(QStaticText* self, QTransform* matrix, QFont* font) {
 	self->prepare(*matrix, *font);
 }
 
-void QStaticText_Delete(QStaticText* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QStaticText*>( self );
-	} else {
-		delete self;
-	}
+void QStaticText_Delete(QStaticText* self) {
+	delete self;
 }
 

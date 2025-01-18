@@ -42,8 +42,7 @@ const (
 )
 
 type QWebEngineUrlScheme struct {
-	h          *C.QWebEngineUrlScheme
-	isSubclass bool
+	h *C.QWebEngineUrlScheme
 }
 
 func (this *QWebEngineUrlScheme) cPointer() *C.QWebEngineUrlScheme {
@@ -77,9 +76,7 @@ func UnsafeNewQWebEngineUrlScheme(h unsafe.Pointer) *QWebEngineUrlScheme {
 // NewQWebEngineUrlScheme constructs a new QWebEngineUrlScheme object.
 func NewQWebEngineUrlScheme() *QWebEngineUrlScheme {
 
-	ret := newQWebEngineUrlScheme(C.QWebEngineUrlScheme_new())
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineUrlScheme(C.QWebEngineUrlScheme_new())
 }
 
 // NewQWebEngineUrlScheme2 constructs a new QWebEngineUrlScheme object.
@@ -88,17 +85,13 @@ func NewQWebEngineUrlScheme2(name []byte) *QWebEngineUrlScheme {
 	name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
 	name_alias.len = C.size_t(len(name))
 
-	ret := newQWebEngineUrlScheme(C.QWebEngineUrlScheme_new2(name_alias))
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineUrlScheme(C.QWebEngineUrlScheme_new2(name_alias))
 }
 
 // NewQWebEngineUrlScheme3 constructs a new QWebEngineUrlScheme object.
 func NewQWebEngineUrlScheme3(that *QWebEngineUrlScheme) *QWebEngineUrlScheme {
 
-	ret := newQWebEngineUrlScheme(C.QWebEngineUrlScheme_new3(that.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineUrlScheme(C.QWebEngineUrlScheme_new3(that.cPointer()))
 }
 
 func (this *QWebEngineUrlScheme) OperatorAssign(that *QWebEngineUrlScheme) {
@@ -166,7 +159,7 @@ func QWebEngineUrlScheme_SchemeByName(name []byte) *QWebEngineUrlScheme {
 
 // Delete this object from C++ memory.
 func (this *QWebEngineUrlScheme) Delete() {
-	C.QWebEngineUrlScheme_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebEngineUrlScheme_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

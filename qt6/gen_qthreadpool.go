@@ -15,8 +15,7 @@ import (
 )
 
 type QThreadPool struct {
-	h          *C.QThreadPool
-	isSubclass bool
+	h *C.QThreadPool
 	*QObject
 }
 
@@ -54,17 +53,13 @@ func UnsafeNewQThreadPool(h unsafe.Pointer) *QThreadPool {
 // NewQThreadPool constructs a new QThreadPool object.
 func NewQThreadPool() *QThreadPool {
 
-	ret := newQThreadPool(C.QThreadPool_new())
-	ret.isSubclass = true
-	return ret
+	return newQThreadPool(C.QThreadPool_new())
 }
 
 // NewQThreadPool2 constructs a new QThreadPool object.
 func NewQThreadPool2(parent *QObject) *QThreadPool {
 
-	ret := newQThreadPool(C.QThreadPool_new2(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQThreadPool(C.QThreadPool_new2(parent.cPointer()))
 }
 
 func (this *QThreadPool) MetaObject() *QMetaObject {
@@ -198,10 +193,10 @@ func (this *QThreadPool) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QThreadPool) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QThreadPool_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QThreadPool_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QThreadPool_Event
@@ -226,10 +221,10 @@ func (this *QThreadPool) callVirtualBase_EventFilter(watched *QObject, event *QE
 
 }
 func (this *QThreadPool) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QThreadPool_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QThreadPool_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QThreadPool_EventFilter
@@ -256,10 +251,10 @@ func (this *QThreadPool) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QThreadPool) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QThreadPool_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QThreadPool_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QThreadPool_TimerEvent
@@ -282,10 +277,10 @@ func (this *QThreadPool) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QThreadPool) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QThreadPool_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QThreadPool_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QThreadPool_ChildEvent
@@ -308,10 +303,10 @@ func (this *QThreadPool) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QThreadPool) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QThreadPool_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QThreadPool_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QThreadPool_CustomEvent
@@ -334,10 +329,10 @@ func (this *QThreadPool) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QThreadPool) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QThreadPool_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QThreadPool_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QThreadPool_ConnectNotify
@@ -360,10 +355,10 @@ func (this *QThreadPool) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QThreadPool) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QThreadPool_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QThreadPool_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QThreadPool_DisconnectNotify
@@ -382,7 +377,7 @@ func miqt_exec_callback_QThreadPool_DisconnectNotify(self *C.QThreadPool, cb C.i
 
 // Delete this object from C++ memory.
 func (this *QThreadPool) Delete() {
-	C.QThreadPool_Delete(this.h, C.bool(this.isSubclass))
+	C.QThreadPool_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

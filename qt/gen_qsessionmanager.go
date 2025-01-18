@@ -22,8 +22,7 @@ const (
 )
 
 type QSessionManager struct {
-	h          *C.QSessionManager
-	isSubclass bool
+	h *C.QSessionManager
 	*QObject
 }
 

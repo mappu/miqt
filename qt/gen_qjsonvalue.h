@@ -71,7 +71,7 @@ bool QJsonValue_OperatorNotEqual(const QJsonValue* self, QJsonValue* other);
 bool QJsonValue_ToBool1(const QJsonValue* self, bool defaultValue);
 int QJsonValue_ToInt1(const QJsonValue* self, int defaultValue);
 double QJsonValue_ToDouble1(const QJsonValue* self, double defaultValue);
-void QJsonValue_Delete(QJsonValue* self, bool isSubclass);
+void QJsonValue_Delete(QJsonValue* self);
 
 QJsonValueRef* QJsonValueRef_new(QJsonValueRef* param1);
 QJsonValueRef* QJsonValueRef_new2(QJsonArray* array, int idx);
@@ -100,14 +100,14 @@ double QJsonValueRef_ToDoubleWithDefaultValue(const QJsonValueRef* self, double 
 struct miqt_string QJsonValueRef_ToStringWithDefaultValue(const QJsonValueRef* self, struct miqt_string defaultValue);
 bool QJsonValueRef_OperatorEqual(const QJsonValueRef* self, QJsonValue* other);
 bool QJsonValueRef_OperatorNotEqual(const QJsonValueRef* self, QJsonValue* other);
-void QJsonValueRef_Delete(QJsonValueRef* self, bool isSubclass);
+void QJsonValueRef_Delete(QJsonValueRef* self);
 
 QJsonValuePtr* QJsonValuePtr_new(QJsonValue* val);
 QJsonValuePtr* QJsonValuePtr_new2(QJsonValuePtr* param1);
 QJsonValue* QJsonValuePtr_OperatorMultiply(QJsonValuePtr* self);
 QJsonValue* QJsonValuePtr_OperatorMinusGreater(QJsonValuePtr* self);
 void QJsonValuePtr_OperatorAssign(QJsonValuePtr* self, QJsonValuePtr* param1);
-void QJsonValuePtr_Delete(QJsonValuePtr* self, bool isSubclass);
+void QJsonValuePtr_Delete(QJsonValuePtr* self);
 
 QJsonValueRefPtr* QJsonValueRefPtr_new(QJsonArray* array, int idx);
 QJsonValueRefPtr* QJsonValueRefPtr_new2(QJsonObject* object, int idx);
@@ -115,7 +115,7 @@ QJsonValueRefPtr* QJsonValueRefPtr_new3(QJsonValueRefPtr* param1);
 QJsonValueRef* QJsonValueRefPtr_OperatorMultiply(QJsonValueRefPtr* self);
 QJsonValueRef* QJsonValueRefPtr_OperatorMinusGreater(QJsonValueRefPtr* self);
 void QJsonValueRefPtr_OperatorAssign(QJsonValueRefPtr* self, QJsonValueRefPtr* param1);
-void QJsonValueRefPtr_Delete(QJsonValueRefPtr* self, bool isSubclass);
+void QJsonValueRefPtr_Delete(QJsonValueRefPtr* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -56,7 +56,7 @@ bool miqt_exec_callback_QFileDialog_EventFilter(void*, intptr_t, QObject*, QEven
 } /* extern C */
 #endif
 
-class MiqtVirtualQFileDialog : public virtual QFileDialog {
+class MiqtVirtualQFileDialog final : public QFileDialog {
 public:
 
 	MiqtVirtualQFileDialog(QWidget* parent): QFileDialog(parent) {};
@@ -66,7 +66,7 @@ public:
 	MiqtVirtualQFileDialog(QWidget* parent, const QString& caption, const QString& directory): QFileDialog(parent, caption, directory) {};
 	MiqtVirtualQFileDialog(QWidget* parent, const QString& caption, const QString& directory, const QString& filter): QFileDialog(parent, caption, directory, filter) {};
 
-	virtual ~MiqtVirtualQFileDialog() = default;
+	virtual ~MiqtVirtualQFileDialog() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetVisible = 0;
@@ -1495,131 +1495,217 @@ struct miqt_array /* of QUrl* */  QFileDialog_GetOpenFileUrls4(QWidget* parent, 
 	return _out;
 }
 
-void QFileDialog_override_virtual_SetVisible(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) )->handle__SetVisible = slot;
+bool QFileDialog_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQFileDialog* self_cast = dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
 }
 
 void QFileDialog_virtualbase_SetVisible(void* self, bool visible) {
 	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_SetVisible(visible);
 }
 
-void QFileDialog_override_virtual_Done(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) )->handle__Done = slot;
+bool QFileDialog_override_virtual_Done(void* self, intptr_t slot) {
+	MiqtVirtualQFileDialog* self_cast = dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Done = slot;
+	return true;
 }
 
 void QFileDialog_virtualbase_Done(void* self, int result) {
 	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_Done(result);
 }
 
-void QFileDialog_override_virtual_Accept(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) )->handle__Accept = slot;
+bool QFileDialog_override_virtual_Accept(void* self, intptr_t slot) {
+	MiqtVirtualQFileDialog* self_cast = dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Accept = slot;
+	return true;
 }
 
 void QFileDialog_virtualbase_Accept(void* self) {
 	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_Accept();
 }
 
-void QFileDialog_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) )->handle__ChangeEvent = slot;
+bool QFileDialog_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFileDialog* self_cast = dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QFileDialog_virtualbase_ChangeEvent(void* self, QEvent* e) {
 	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_ChangeEvent(e);
 }
 
-void QFileDialog_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) )->handle__SizeHint = slot;
+bool QFileDialog_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQFileDialog* self_cast = dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QFileDialog_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQFileDialog*)(self) )->virtualbase_SizeHint();
 }
 
-void QFileDialog_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) )->handle__MinimumSizeHint = slot;
+bool QFileDialog_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQFileDialog* self_cast = dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QFileDialog_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQFileDialog*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QFileDialog_override_virtual_Open(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) )->handle__Open = slot;
+bool QFileDialog_override_virtual_Open(void* self, intptr_t slot) {
+	MiqtVirtualQFileDialog* self_cast = dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Open = slot;
+	return true;
 }
 
 void QFileDialog_virtualbase_Open(void* self) {
 	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_Open();
 }
 
-void QFileDialog_override_virtual_Exec(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) )->handle__Exec = slot;
+bool QFileDialog_override_virtual_Exec(void* self, intptr_t slot) {
+	MiqtVirtualQFileDialog* self_cast = dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Exec = slot;
+	return true;
 }
 
 int QFileDialog_virtualbase_Exec(void* self) {
 	return ( (MiqtVirtualQFileDialog*)(self) )->virtualbase_Exec();
 }
 
-void QFileDialog_override_virtual_Reject(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) )->handle__Reject = slot;
+bool QFileDialog_override_virtual_Reject(void* self, intptr_t slot) {
+	MiqtVirtualQFileDialog* self_cast = dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Reject = slot;
+	return true;
 }
 
 void QFileDialog_virtualbase_Reject(void* self) {
 	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_Reject();
 }
 
-void QFileDialog_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) )->handle__KeyPressEvent = slot;
+bool QFileDialog_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFileDialog* self_cast = dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QFileDialog_virtualbase_KeyPressEvent(void* self, QKeyEvent* param1) {
 	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_KeyPressEvent(param1);
 }
 
-void QFileDialog_override_virtual_CloseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) )->handle__CloseEvent = slot;
+bool QFileDialog_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFileDialog* self_cast = dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
 }
 
 void QFileDialog_virtualbase_CloseEvent(void* self, QCloseEvent* param1) {
 	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_CloseEvent(param1);
 }
 
-void QFileDialog_override_virtual_ShowEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) )->handle__ShowEvent = slot;
+bool QFileDialog_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFileDialog* self_cast = dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
 }
 
 void QFileDialog_virtualbase_ShowEvent(void* self, QShowEvent* param1) {
 	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_ShowEvent(param1);
 }
 
-void QFileDialog_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) )->handle__ResizeEvent = slot;
+bool QFileDialog_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFileDialog* self_cast = dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QFileDialog_virtualbase_ResizeEvent(void* self, QResizeEvent* param1) {
 	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_ResizeEvent(param1);
 }
 
-void QFileDialog_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) )->handle__ContextMenuEvent = slot;
+bool QFileDialog_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFileDialog* self_cast = dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QFileDialog_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* param1) {
 	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_ContextMenuEvent(param1);
 }
 
-void QFileDialog_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) )->handle__EventFilter = slot;
+bool QFileDialog_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQFileDialog* self_cast = dynamic_cast<MiqtVirtualQFileDialog*>( (QFileDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QFileDialog_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2) {
 	return ( (MiqtVirtualQFileDialog*)(self) )->virtualbase_EventFilter(param1, param2);
 }
 
-void QFileDialog_Delete(QFileDialog* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQFileDialog*>( self );
-	} else {
-		delete self;
-	}
+void QFileDialog_Delete(QFileDialog* self) {
+	delete self;
 }
 

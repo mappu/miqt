@@ -70,8 +70,7 @@ const (
 )
 
 type QAudioFormat struct {
-	h          *C.QAudioFormat
-	isSubclass bool
+	h *C.QAudioFormat
 }
 
 func (this *QAudioFormat) cPointer() *C.QAudioFormat {
@@ -105,17 +104,13 @@ func UnsafeNewQAudioFormat(h unsafe.Pointer) *QAudioFormat {
 // NewQAudioFormat constructs a new QAudioFormat object.
 func NewQAudioFormat() *QAudioFormat {
 
-	ret := newQAudioFormat(C.QAudioFormat_new())
-	ret.isSubclass = true
-	return ret
+	return newQAudioFormat(C.QAudioFormat_new())
 }
 
 // NewQAudioFormat2 constructs a new QAudioFormat object.
 func NewQAudioFormat2(param1 *QAudioFormat) *QAudioFormat {
 
-	ret := newQAudioFormat(C.QAudioFormat_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQAudioFormat(C.QAudioFormat_new2(param1.cPointer()))
 }
 
 func (this *QAudioFormat) IsValid() bool {
@@ -200,7 +195,7 @@ func QAudioFormat_DefaultChannelConfigForChannelCount(channelCount int) QAudioFo
 
 // Delete this object from C++ memory.
 func (this *QAudioFormat) Delete() {
-	C.QAudioFormat_Delete(this.h, C.bool(this.isSubclass))
+	C.QAudioFormat_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

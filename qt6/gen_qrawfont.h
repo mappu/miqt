@@ -81,7 +81,7 @@ QRawFont* QRawFont_FromFont(QFont* font);
 QImage* QRawFont_AlphaMapForGlyph2(const QRawFont* self, unsigned int glyphIndex, int antialiasingType);
 QImage* QRawFont_AlphaMapForGlyph3(const QRawFont* self, unsigned int glyphIndex, int antialiasingType, QTransform* transform);
 QRawFont* QRawFont_FromFont2(QFont* font, int writingSystem);
-void QRawFont_Delete(QRawFont* self, bool isSubclass);
+void QRawFont_Delete(QRawFont* self);
 
 #ifdef __cplusplus
 } /* extern C */

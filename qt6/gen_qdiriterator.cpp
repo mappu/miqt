@@ -136,11 +136,7 @@ struct miqt_string QDirIterator_Path(const QDirIterator* self) {
 	return _ms;
 }
 
-void QDirIterator_Delete(QDirIterator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QDirIterator*>( self );
-	} else {
-		delete self;
-	}
+void QDirIterator_Delete(QDirIterator* self) {
+	delete self;
 }
 

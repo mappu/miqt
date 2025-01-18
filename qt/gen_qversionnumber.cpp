@@ -118,11 +118,7 @@ QVersionNumber* QVersionNumber_FromString22(struct miqt_string stringVal, int* s
 	return new QVersionNumber(QVersionNumber::fromString(stringVal_QString, static_cast<int*>(suffixIndex)));
 }
 
-void QVersionNumber_Delete(QVersionNumber* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QVersionNumber*>( self );
-	} else {
-		delete self;
-	}
+void QVersionNumber_Delete(QVersionNumber* self) {
+	delete self;
 }
 

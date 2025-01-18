@@ -767,7 +767,6 @@ import "C"
 		ret.WriteString(`
 		type ` + goClassName + ` struct {
 			h *C.` + goClassName + `
-			isSubclass bool
 		`)
 
 		// Embed all inherited types to directly allow calling inherited methods
@@ -886,9 +885,7 @@ import "C"
 			// Call Cgo constructor
 
 			ret.WriteString(`				
-				ret := new` + goClassName + `(C.` + goClassName + `_new` + maybeSuffix(i) + `(` + forwarding + `))
-				ret.isSubclass = true
-				return ret
+				return new` + goClassName + `(C.` + goClassName + `_new` + maybeSuffix(i) + `(` + forwarding + `))
 			}
 			
 			`)
@@ -1035,10 +1032,10 @@ import "C"
 				goCbType += `) ` + m.ReturnType.renderReturnTypeGo(&gfs)
 				callbackName := cabiCallbackName(c, m)
 				ret.WriteString(`func (this *` + goClassName + `) On` + m.SafeMethodName() + `(slot ` + goCbType + `) {
-					if ! this.isSubclass {
+					ok := C.` + goClassName + `_override_virtual_` + m.SafeMethodName() + `(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)) )
+					if !ok {
 						panic("miqt: can only override virtual methods for directly constructed types")
 					}
-					C.` + goClassName + `_override_virtual_` + m.SafeMethodName() + `(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)) )
 				}
 
 				//export ` + callbackName + `
@@ -1074,7 +1071,7 @@ import "C"
 			ret.WriteString(`
 			// Delete this object from C++ memory.
 			func (this *` + goClassName + `) Delete() {
-				C.` + goClassName + `_Delete(this.h, C.bool(this.isSubclass))
+				C.` + goClassName + `_Delete(this.h)
 			}
 				
 			// GoGC adds a Go Finalizer to this pointer, so that it will be deleted

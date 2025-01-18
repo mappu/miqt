@@ -501,11 +501,7 @@ void QFont_SetStyleHint2(QFont* self, int param1, int param2) {
 	self->setStyleHint(static_cast<QFont::StyleHint>(param1), static_cast<QFont::StyleStrategy>(param2));
 }
 
-void QFont_Delete(QFont* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QFont*>( self );
-	} else {
-		delete self;
-	}
+void QFont_Delete(QFont* self) {
+	delete self;
 }
 

@@ -162,11 +162,7 @@ void QVideoSurfaceFormat_SetProperty(QVideoSurfaceFormat* self, const char* name
 	self->setProperty(name, *value);
 }
 
-void QVideoSurfaceFormat_Delete(QVideoSurfaceFormat* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QVideoSurfaceFormat*>( self );
-	} else {
-		delete self;
-	}
+void QVideoSurfaceFormat_Delete(QVideoSurfaceFormat* self) {
+	delete self;
 }
 

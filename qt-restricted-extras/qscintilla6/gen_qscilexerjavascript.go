@@ -16,8 +16,7 @@ import (
 )
 
 type QsciLexerJavaScript struct {
-	h          *C.QsciLexerJavaScript
-	isSubclass bool
+	h *C.QsciLexerJavaScript
 	*QsciLexerCPP
 }
 
@@ -55,17 +54,13 @@ func UnsafeNewQsciLexerJavaScript(h unsafe.Pointer) *QsciLexerJavaScript {
 // NewQsciLexerJavaScript constructs a new QsciLexerJavaScript object.
 func NewQsciLexerJavaScript() *QsciLexerJavaScript {
 
-	ret := newQsciLexerJavaScript(C.QsciLexerJavaScript_new())
-	ret.isSubclass = true
-	return ret
+	return newQsciLexerJavaScript(C.QsciLexerJavaScript_new())
 }
 
 // NewQsciLexerJavaScript2 constructs a new QsciLexerJavaScript object.
 func NewQsciLexerJavaScript2(parent *qt6.QObject) *QsciLexerJavaScript {
 
-	ret := newQsciLexerJavaScript(C.QsciLexerJavaScript_new2((*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQsciLexerJavaScript(C.QsciLexerJavaScript_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerJavaScript) MetaObject() *qt6.QMetaObject {
@@ -154,10 +149,10 @@ func (this *QsciLexerJavaScript) callVirtualBase_SetFoldAtElse(fold bool) {
 
 }
 func (this *QsciLexerJavaScript) OnSetFoldAtElse(slot func(super func(fold bool), fold bool)) {
-	if !this.isSubclass {
+	ok := C.QsciLexerJavaScript_override_virtual_SetFoldAtElse(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciLexerJavaScript_override_virtual_SetFoldAtElse(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerJavaScript_SetFoldAtElse
@@ -180,10 +175,10 @@ func (this *QsciLexerJavaScript) callVirtualBase_SetFoldComments(fold bool) {
 
 }
 func (this *QsciLexerJavaScript) OnSetFoldComments(slot func(super func(fold bool), fold bool)) {
-	if !this.isSubclass {
+	ok := C.QsciLexerJavaScript_override_virtual_SetFoldComments(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciLexerJavaScript_override_virtual_SetFoldComments(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerJavaScript_SetFoldComments
@@ -206,10 +201,10 @@ func (this *QsciLexerJavaScript) callVirtualBase_SetFoldCompact(fold bool) {
 
 }
 func (this *QsciLexerJavaScript) OnSetFoldCompact(slot func(super func(fold bool), fold bool)) {
-	if !this.isSubclass {
+	ok := C.QsciLexerJavaScript_override_virtual_SetFoldCompact(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciLexerJavaScript_override_virtual_SetFoldCompact(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerJavaScript_SetFoldCompact
@@ -232,10 +227,10 @@ func (this *QsciLexerJavaScript) callVirtualBase_SetFoldPreprocessor(fold bool) 
 
 }
 func (this *QsciLexerJavaScript) OnSetFoldPreprocessor(slot func(super func(fold bool), fold bool)) {
-	if !this.isSubclass {
+	ok := C.QsciLexerJavaScript_override_virtual_SetFoldPreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciLexerJavaScript_override_virtual_SetFoldPreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerJavaScript_SetFoldPreprocessor
@@ -258,10 +253,10 @@ func (this *QsciLexerJavaScript) callVirtualBase_SetStylePreprocessor(style bool
 
 }
 func (this *QsciLexerJavaScript) OnSetStylePreprocessor(slot func(super func(style bool), style bool)) {
-	if !this.isSubclass {
+	ok := C.QsciLexerJavaScript_override_virtual_SetStylePreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciLexerJavaScript_override_virtual_SetStylePreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerJavaScript_SetStylePreprocessor
@@ -280,7 +275,7 @@ func miqt_exec_callback_QsciLexerJavaScript_SetStylePreprocessor(self *C.QsciLex
 
 // Delete this object from C++ memory.
 func (this *QsciLexerJavaScript) Delete() {
-	C.QsciLexerJavaScript_Delete(this.h, C.bool(this.isSubclass))
+	C.QsciLexerJavaScript_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

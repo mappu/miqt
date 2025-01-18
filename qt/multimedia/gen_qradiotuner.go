@@ -57,8 +57,7 @@ const (
 )
 
 type QRadioTuner struct {
-	h          *C.QRadioTuner
-	isSubclass bool
+	h *C.QRadioTuner
 	*QMediaObject
 }
 
@@ -96,17 +95,13 @@ func UnsafeNewQRadioTuner(h unsafe.Pointer) *QRadioTuner {
 // NewQRadioTuner constructs a new QRadioTuner object.
 func NewQRadioTuner() *QRadioTuner {
 
-	ret := newQRadioTuner(C.QRadioTuner_new())
-	ret.isSubclass = true
-	return ret
+	return newQRadioTuner(C.QRadioTuner_new())
 }
 
 // NewQRadioTuner2 constructs a new QRadioTuner object.
 func NewQRadioTuner2(parent *qt.QObject) *QRadioTuner {
 
-	ret := newQRadioTuner(C.QRadioTuner_new2((*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQRadioTuner(C.QRadioTuner_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QRadioTuner) MetaObject() *qt.QMetaObject {
@@ -548,10 +543,10 @@ func (this *QRadioTuner) callVirtualBase_Availability() QMultimedia__Availabilit
 
 }
 func (this *QRadioTuner) OnAvailability(slot func(super func() QMultimedia__AvailabilityStatus) QMultimedia__AvailabilityStatus) {
-	if !this.isSubclass {
+	ok := C.QRadioTuner_override_virtual_Availability(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QRadioTuner_override_virtual_Availability(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QRadioTuner_Availability
@@ -573,10 +568,10 @@ func (this *QRadioTuner) callVirtualBase_IsAvailable() bool {
 
 }
 func (this *QRadioTuner) OnIsAvailable(slot func(super func() bool) bool) {
-	if !this.isSubclass {
+	ok := C.QRadioTuner_override_virtual_IsAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QRadioTuner_override_virtual_IsAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QRadioTuner_IsAvailable
@@ -598,10 +593,10 @@ func (this *QRadioTuner) callVirtualBase_Service() *QMediaService {
 
 }
 func (this *QRadioTuner) OnService(slot func(super func() *QMediaService) *QMediaService) {
-	if !this.isSubclass {
+	ok := C.QRadioTuner_override_virtual_Service(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QRadioTuner_override_virtual_Service(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QRadioTuner_Service
@@ -623,10 +618,10 @@ func (this *QRadioTuner) callVirtualBase_Bind(param1 *qt.QObject) bool {
 
 }
 func (this *QRadioTuner) OnBind(slot func(super func(param1 *qt.QObject) bool, param1 *qt.QObject) bool) {
-	if !this.isSubclass {
+	ok := C.QRadioTuner_override_virtual_Bind(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QRadioTuner_override_virtual_Bind(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QRadioTuner_Bind
@@ -651,10 +646,10 @@ func (this *QRadioTuner) callVirtualBase_Unbind(param1 *qt.QObject) {
 
 }
 func (this *QRadioTuner) OnUnbind(slot func(super func(param1 *qt.QObject), param1 *qt.QObject)) {
-	if !this.isSubclass {
+	ok := C.QRadioTuner_override_virtual_Unbind(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QRadioTuner_override_virtual_Unbind(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QRadioTuner_Unbind
@@ -673,7 +668,7 @@ func miqt_exec_callback_QRadioTuner_Unbind(self *C.QRadioTuner, cb C.intptr_t, p
 
 // Delete this object from C++ memory.
 func (this *QRadioTuner) Delete() {
-	C.QRadioTuner_Delete(this.h, C.bool(this.isSubclass))
+	C.QRadioTuner_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

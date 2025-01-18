@@ -15,8 +15,7 @@ import (
 )
 
 type QEventTransition struct {
-	h          *C.QEventTransition
-	isSubclass bool
+	h *C.QEventTransition
 	*QAbstractTransition
 }
 
@@ -54,33 +53,25 @@ func UnsafeNewQEventTransition(h unsafe.Pointer) *QEventTransition {
 // NewQEventTransition constructs a new QEventTransition object.
 func NewQEventTransition() *QEventTransition {
 
-	ret := newQEventTransition(C.QEventTransition_new())
-	ret.isSubclass = true
-	return ret
+	return newQEventTransition(C.QEventTransition_new())
 }
 
 // NewQEventTransition2 constructs a new QEventTransition object.
 func NewQEventTransition2(object *QObject, typeVal QEvent__Type) *QEventTransition {
 
-	ret := newQEventTransition(C.QEventTransition_new2(object.cPointer(), (C.int)(typeVal)))
-	ret.isSubclass = true
-	return ret
+	return newQEventTransition(C.QEventTransition_new2(object.cPointer(), (C.int)(typeVal)))
 }
 
 // NewQEventTransition3 constructs a new QEventTransition object.
 func NewQEventTransition3(sourceState *QState) *QEventTransition {
 
-	ret := newQEventTransition(C.QEventTransition_new3(sourceState.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQEventTransition(C.QEventTransition_new3(sourceState.cPointer()))
 }
 
 // NewQEventTransition4 constructs a new QEventTransition object.
 func NewQEventTransition4(object *QObject, typeVal QEvent__Type, sourceState *QState) *QEventTransition {
 
-	ret := newQEventTransition(C.QEventTransition_new4(object.cPointer(), (C.int)(typeVal), sourceState.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQEventTransition(C.QEventTransition_new4(object.cPointer(), (C.int)(typeVal), sourceState.cPointer()))
 }
 
 func (this *QEventTransition) MetaObject() *QMetaObject {
@@ -177,10 +168,10 @@ func (this *QEventTransition) callVirtualBase_EventTest(event *QEvent) bool {
 
 }
 func (this *QEventTransition) OnEventTest(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QEventTransition_override_virtual_EventTest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QEventTransition_override_virtual_EventTest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QEventTransition_EventTest
@@ -205,10 +196,10 @@ func (this *QEventTransition) callVirtualBase_OnTransition(event *QEvent) {
 
 }
 func (this *QEventTransition) OnOnTransition(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QEventTransition_override_virtual_OnTransition(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QEventTransition_override_virtual_OnTransition(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QEventTransition_OnTransition
@@ -231,10 +222,10 @@ func (this *QEventTransition) callVirtualBase_Event(e *QEvent) bool {
 
 }
 func (this *QEventTransition) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QEventTransition_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QEventTransition_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QEventTransition_Event
@@ -255,7 +246,7 @@ func miqt_exec_callback_QEventTransition_Event(self *C.QEventTransition, cb C.in
 
 // Delete this object from C++ memory.
 func (this *QEventTransition) Delete() {
-	C.QEventTransition_Delete(this.h, C.bool(this.isSubclass))
+	C.QEventTransition_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

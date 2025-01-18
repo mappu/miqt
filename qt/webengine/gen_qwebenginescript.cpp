@@ -99,11 +99,7 @@ void QWebEngineScript_Swap(QWebEngineScript* self, QWebEngineScript* other) {
 	self->swap(*other);
 }
 
-void QWebEngineScript_Delete(QWebEngineScript* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebEngineScript*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineScript_Delete(QWebEngineScript* self) {
+	delete self;
 }
 

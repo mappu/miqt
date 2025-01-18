@@ -33,8 +33,7 @@ const (
 )
 
 type QRegExp struct {
-	h          *C.QRegExp
-	isSubclass bool
+	h *C.QRegExp
 }
 
 func (this *QRegExp) cPointer() *C.QRegExp {
@@ -68,9 +67,7 @@ func UnsafeNewQRegExp(h unsafe.Pointer) *QRegExp {
 // NewQRegExp constructs a new QRegExp object.
 func NewQRegExp() *QRegExp {
 
-	ret := newQRegExp(C.QRegExp_new())
-	ret.isSubclass = true
-	return ret
+	return newQRegExp(C.QRegExp_new())
 }
 
 // NewQRegExp2 constructs a new QRegExp object.
@@ -80,17 +77,13 @@ func NewQRegExp2(pattern string) *QRegExp {
 	pattern_ms.len = C.size_t(len(pattern))
 	defer C.free(unsafe.Pointer(pattern_ms.data))
 
-	ret := newQRegExp(C.QRegExp_new2(pattern_ms))
-	ret.isSubclass = true
-	return ret
+	return newQRegExp(C.QRegExp_new2(pattern_ms))
 }
 
 // NewQRegExp3 constructs a new QRegExp object.
 func NewQRegExp3(rx *QRegExp) *QRegExp {
 
-	ret := newQRegExp(C.QRegExp_new3(rx.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQRegExp(C.QRegExp_new3(rx.cPointer()))
 }
 
 // NewQRegExp4 constructs a new QRegExp object.
@@ -100,9 +93,7 @@ func NewQRegExp4(pattern string, cs CaseSensitivity) *QRegExp {
 	pattern_ms.len = C.size_t(len(pattern))
 	defer C.free(unsafe.Pointer(pattern_ms.data))
 
-	ret := newQRegExp(C.QRegExp_new4(pattern_ms, (C.int)(cs)))
-	ret.isSubclass = true
-	return ret
+	return newQRegExp(C.QRegExp_new4(pattern_ms, (C.int)(cs)))
 }
 
 // NewQRegExp5 constructs a new QRegExp object.
@@ -112,9 +103,7 @@ func NewQRegExp5(pattern string, cs CaseSensitivity, syntax QRegExp__PatternSynt
 	pattern_ms.len = C.size_t(len(pattern))
 	defer C.free(unsafe.Pointer(pattern_ms.data))
 
-	ret := newQRegExp(C.QRegExp_new5(pattern_ms, (C.int)(cs), (C.int)(syntax)))
-	ret.isSubclass = true
-	return ret
+	return newQRegExp(C.QRegExp_new5(pattern_ms, (C.int)(cs), (C.int)(syntax)))
 }
 
 func (this *QRegExp) OperatorAssign(rx *QRegExp) {
@@ -341,7 +330,7 @@ func (this *QRegExp) Pos1WithNth(nth int) int {
 
 // Delete this object from C++ memory.
 func (this *QRegExp) Delete() {
-	C.QRegExp_Delete(this.h, C.bool(this.isSubclass))
+	C.QRegExp_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

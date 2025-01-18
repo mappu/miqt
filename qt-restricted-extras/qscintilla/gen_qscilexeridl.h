@@ -45,17 +45,17 @@ struct miqt_string QsciLexerIDL_Tr2(const char* s, const char* c);
 struct miqt_string QsciLexerIDL_Tr3(const char* s, const char* c, int n);
 struct miqt_string QsciLexerIDL_TrUtf82(const char* s, const char* c);
 struct miqt_string QsciLexerIDL_TrUtf83(const char* s, const char* c, int n);
-void QsciLexerIDL_override_virtual_SetFoldAtElse(void* self, intptr_t slot);
+bool QsciLexerIDL_override_virtual_SetFoldAtElse(void* self, intptr_t slot);
 void QsciLexerIDL_virtualbase_SetFoldAtElse(void* self, bool fold);
-void QsciLexerIDL_override_virtual_SetFoldComments(void* self, intptr_t slot);
+bool QsciLexerIDL_override_virtual_SetFoldComments(void* self, intptr_t slot);
 void QsciLexerIDL_virtualbase_SetFoldComments(void* self, bool fold);
-void QsciLexerIDL_override_virtual_SetFoldCompact(void* self, intptr_t slot);
+bool QsciLexerIDL_override_virtual_SetFoldCompact(void* self, intptr_t slot);
 void QsciLexerIDL_virtualbase_SetFoldCompact(void* self, bool fold);
-void QsciLexerIDL_override_virtual_SetFoldPreprocessor(void* self, intptr_t slot);
+bool QsciLexerIDL_override_virtual_SetFoldPreprocessor(void* self, intptr_t slot);
 void QsciLexerIDL_virtualbase_SetFoldPreprocessor(void* self, bool fold);
-void QsciLexerIDL_override_virtual_SetStylePreprocessor(void* self, intptr_t slot);
+bool QsciLexerIDL_override_virtual_SetStylePreprocessor(void* self, intptr_t slot);
 void QsciLexerIDL_virtualbase_SetStylePreprocessor(void* self, bool style);
-void QsciLexerIDL_Delete(QsciLexerIDL* self, bool isSubclass);
+void QsciLexerIDL_Delete(QsciLexerIDL* self);
 
 #ifdef __cplusplus
 } /* extern C */

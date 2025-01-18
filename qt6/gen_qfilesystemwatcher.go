@@ -15,8 +15,7 @@ import (
 )
 
 type QFileSystemWatcher struct {
-	h          *C.QFileSystemWatcher
-	isSubclass bool
+	h *C.QFileSystemWatcher
 	*QObject
 }
 
@@ -54,9 +53,7 @@ func UnsafeNewQFileSystemWatcher(h unsafe.Pointer) *QFileSystemWatcher {
 // NewQFileSystemWatcher constructs a new QFileSystemWatcher object.
 func NewQFileSystemWatcher() *QFileSystemWatcher {
 
-	ret := newQFileSystemWatcher(C.QFileSystemWatcher_new())
-	ret.isSubclass = true
-	return ret
+	return newQFileSystemWatcher(C.QFileSystemWatcher_new())
 }
 
 // NewQFileSystemWatcher2 constructs a new QFileSystemWatcher object.
@@ -72,17 +69,13 @@ func NewQFileSystemWatcher2(paths []string) *QFileSystemWatcher {
 	}
 	paths_ma := C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray)}
 
-	ret := newQFileSystemWatcher(C.QFileSystemWatcher_new2(paths_ma))
-	ret.isSubclass = true
-	return ret
+	return newQFileSystemWatcher(C.QFileSystemWatcher_new2(paths_ma))
 }
 
 // NewQFileSystemWatcher3 constructs a new QFileSystemWatcher object.
 func NewQFileSystemWatcher3(parent *QObject) *QFileSystemWatcher {
 
-	ret := newQFileSystemWatcher(C.QFileSystemWatcher_new3(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQFileSystemWatcher(C.QFileSystemWatcher_new3(parent.cPointer()))
 }
 
 // NewQFileSystemWatcher4 constructs a new QFileSystemWatcher object.
@@ -98,9 +91,7 @@ func NewQFileSystemWatcher4(paths []string, parent *QObject) *QFileSystemWatcher
 	}
 	paths_ma := C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray)}
 
-	ret := newQFileSystemWatcher(C.QFileSystemWatcher_new4(paths_ma, parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQFileSystemWatcher(C.QFileSystemWatcher_new4(paths_ma, parent.cPointer()))
 }
 
 func (this *QFileSystemWatcher) MetaObject() *QMetaObject {
@@ -238,10 +229,10 @@ func (this *QFileSystemWatcher) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QFileSystemWatcher) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QFileSystemWatcher_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileSystemWatcher_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileSystemWatcher_Event
@@ -266,10 +257,10 @@ func (this *QFileSystemWatcher) callVirtualBase_EventFilter(watched *QObject, ev
 
 }
 func (this *QFileSystemWatcher) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QFileSystemWatcher_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileSystemWatcher_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileSystemWatcher_EventFilter
@@ -296,10 +287,10 @@ func (this *QFileSystemWatcher) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QFileSystemWatcher) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QFileSystemWatcher_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileSystemWatcher_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileSystemWatcher_TimerEvent
@@ -322,10 +313,10 @@ func (this *QFileSystemWatcher) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QFileSystemWatcher) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QFileSystemWatcher_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileSystemWatcher_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileSystemWatcher_ChildEvent
@@ -348,10 +339,10 @@ func (this *QFileSystemWatcher) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QFileSystemWatcher) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QFileSystemWatcher_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileSystemWatcher_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileSystemWatcher_CustomEvent
@@ -374,10 +365,10 @@ func (this *QFileSystemWatcher) callVirtualBase_ConnectNotify(signal *QMetaMetho
 
 }
 func (this *QFileSystemWatcher) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QFileSystemWatcher_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileSystemWatcher_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileSystemWatcher_ConnectNotify
@@ -400,10 +391,10 @@ func (this *QFileSystemWatcher) callVirtualBase_DisconnectNotify(signal *QMetaMe
 
 }
 func (this *QFileSystemWatcher) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QFileSystemWatcher_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileSystemWatcher_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileSystemWatcher_DisconnectNotify
@@ -422,7 +413,7 @@ func miqt_exec_callback_QFileSystemWatcher_DisconnectNotify(self *C.QFileSystemW
 
 // Delete this object from C++ memory.
 func (this *QFileSystemWatcher) Delete() {
-	C.QFileSystemWatcher_Delete(this.h, C.bool(this.isSubclass))
+	C.QFileSystemWatcher_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -16,8 +16,7 @@ import (
 )
 
 type QMediaCaptureSession struct {
-	h          *C.QMediaCaptureSession
-	isSubclass bool
+	h *C.QMediaCaptureSession
 	*qt6.QObject
 }
 
@@ -55,17 +54,13 @@ func UnsafeNewQMediaCaptureSession(h unsafe.Pointer) *QMediaCaptureSession {
 // NewQMediaCaptureSession constructs a new QMediaCaptureSession object.
 func NewQMediaCaptureSession() *QMediaCaptureSession {
 
-	ret := newQMediaCaptureSession(C.QMediaCaptureSession_new())
-	ret.isSubclass = true
-	return ret
+	return newQMediaCaptureSession(C.QMediaCaptureSession_new())
 }
 
 // NewQMediaCaptureSession2 constructs a new QMediaCaptureSession object.
 func NewQMediaCaptureSession2(parent *qt6.QObject) *QMediaCaptureSession {
 
-	ret := newQMediaCaptureSession(C.QMediaCaptureSession_new2((*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQMediaCaptureSession(C.QMediaCaptureSession_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QMediaCaptureSession) MetaObject() *qt6.QMetaObject {
@@ -273,10 +268,10 @@ func (this *QMediaCaptureSession) callVirtualBase_Event(event *qt6.QEvent) bool 
 
 }
 func (this *QMediaCaptureSession) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QMediaCaptureSession_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QMediaCaptureSession_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMediaCaptureSession_Event
@@ -301,10 +296,10 @@ func (this *QMediaCaptureSession) callVirtualBase_EventFilter(watched *qt6.QObje
 
 }
 func (this *QMediaCaptureSession) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QMediaCaptureSession_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QMediaCaptureSession_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMediaCaptureSession_EventFilter
@@ -331,10 +326,10 @@ func (this *QMediaCaptureSession) callVirtualBase_TimerEvent(event *qt6.QTimerEv
 
 }
 func (this *QMediaCaptureSession) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QMediaCaptureSession_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QMediaCaptureSession_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMediaCaptureSession_TimerEvent
@@ -357,10 +352,10 @@ func (this *QMediaCaptureSession) callVirtualBase_ChildEvent(event *qt6.QChildEv
 
 }
 func (this *QMediaCaptureSession) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QMediaCaptureSession_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QMediaCaptureSession_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMediaCaptureSession_ChildEvent
@@ -383,10 +378,10 @@ func (this *QMediaCaptureSession) callVirtualBase_CustomEvent(event *qt6.QEvent)
 
 }
 func (this *QMediaCaptureSession) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
-	if !this.isSubclass {
+	ok := C.QMediaCaptureSession_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QMediaCaptureSession_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMediaCaptureSession_CustomEvent
@@ -409,10 +404,10 @@ func (this *QMediaCaptureSession) callVirtualBase_ConnectNotify(signal *qt6.QMet
 
 }
 func (this *QMediaCaptureSession) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QMediaCaptureSession_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QMediaCaptureSession_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMediaCaptureSession_ConnectNotify
@@ -435,10 +430,10 @@ func (this *QMediaCaptureSession) callVirtualBase_DisconnectNotify(signal *qt6.Q
 
 }
 func (this *QMediaCaptureSession) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QMediaCaptureSession_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QMediaCaptureSession_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMediaCaptureSession_DisconnectNotify
@@ -457,7 +452,7 @@ func miqt_exec_callback_QMediaCaptureSession_DisconnectNotify(self *C.QMediaCapt
 
 // Delete this object from C++ memory.
 func (this *QMediaCaptureSession) Delete() {
-	C.QMediaCaptureSession_Delete(this.h, C.bool(this.isSubclass))
+	C.QMediaCaptureSession_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

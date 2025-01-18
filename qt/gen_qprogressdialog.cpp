@@ -44,7 +44,7 @@ bool miqt_exec_callback_QProgressDialog_EventFilter(void*, intptr_t, QObject*, Q
 } /* extern C */
 #endif
 
-class MiqtVirtualQProgressDialog : public virtual QProgressDialog {
+class MiqtVirtualQProgressDialog final : public QProgressDialog {
 public:
 
 	MiqtVirtualQProgressDialog(QWidget* parent): QProgressDialog(parent) {};
@@ -54,7 +54,7 @@ public:
 	MiqtVirtualQProgressDialog(const QString& labelText, const QString& cancelButtonText, int minimum, int maximum, QWidget* parent): QProgressDialog(labelText, cancelButtonText, minimum, maximum, parent) {};
 	MiqtVirtualQProgressDialog(const QString& labelText, const QString& cancelButtonText, int minimum, int maximum, QWidget* parent, Qt::WindowFlags flags): QProgressDialog(labelText, cancelButtonText, minimum, maximum, parent, flags) {};
 
-	virtual ~MiqtVirtualQProgressDialog() = default;
+	virtual ~MiqtVirtualQProgressDialog() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -628,131 +628,217 @@ struct miqt_string QProgressDialog_TrUtf83(const char* s, const char* c, int n) 
 	return _ms;
 }
 
-void QProgressDialog_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__SizeHint = slot;
+bool QProgressDialog_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQProgressDialog* self_cast = dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QProgressDialog_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQProgressDialog*)(self) )->virtualbase_SizeHint();
 }
 
-void QProgressDialog_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__ResizeEvent = slot;
+bool QProgressDialog_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQProgressDialog* self_cast = dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QProgressDialog_virtualbase_ResizeEvent(void* self, QResizeEvent* event) {
 	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_ResizeEvent(event);
 }
 
-void QProgressDialog_override_virtual_CloseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__CloseEvent = slot;
+bool QProgressDialog_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQProgressDialog* self_cast = dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
 }
 
 void QProgressDialog_virtualbase_CloseEvent(void* self, QCloseEvent* event) {
 	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_CloseEvent(event);
 }
 
-void QProgressDialog_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__ChangeEvent = slot;
+bool QProgressDialog_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQProgressDialog* self_cast = dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QProgressDialog_virtualbase_ChangeEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_ChangeEvent(event);
 }
 
-void QProgressDialog_override_virtual_ShowEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__ShowEvent = slot;
+bool QProgressDialog_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQProgressDialog* self_cast = dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
 }
 
 void QProgressDialog_virtualbase_ShowEvent(void* self, QShowEvent* event) {
 	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_ShowEvent(event);
 }
 
-void QProgressDialog_override_virtual_SetVisible(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__SetVisible = slot;
+bool QProgressDialog_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQProgressDialog* self_cast = dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
 }
 
 void QProgressDialog_virtualbase_SetVisible(void* self, bool visible) {
 	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_SetVisible(visible);
 }
 
-void QProgressDialog_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__MinimumSizeHint = slot;
+bool QProgressDialog_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQProgressDialog* self_cast = dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QProgressDialog_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQProgressDialog*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QProgressDialog_override_virtual_Open(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__Open = slot;
+bool QProgressDialog_override_virtual_Open(void* self, intptr_t slot) {
+	MiqtVirtualQProgressDialog* self_cast = dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Open = slot;
+	return true;
 }
 
 void QProgressDialog_virtualbase_Open(void* self) {
 	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_Open();
 }
 
-void QProgressDialog_override_virtual_Exec(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__Exec = slot;
+bool QProgressDialog_override_virtual_Exec(void* self, intptr_t slot) {
+	MiqtVirtualQProgressDialog* self_cast = dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Exec = slot;
+	return true;
 }
 
 int QProgressDialog_virtualbase_Exec(void* self) {
 	return ( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_Exec();
 }
 
-void QProgressDialog_override_virtual_Done(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__Done = slot;
+bool QProgressDialog_override_virtual_Done(void* self, intptr_t slot) {
+	MiqtVirtualQProgressDialog* self_cast = dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Done = slot;
+	return true;
 }
 
 void QProgressDialog_virtualbase_Done(void* self, int param1) {
 	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_Done(param1);
 }
 
-void QProgressDialog_override_virtual_Accept(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__Accept = slot;
+bool QProgressDialog_override_virtual_Accept(void* self, intptr_t slot) {
+	MiqtVirtualQProgressDialog* self_cast = dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Accept = slot;
+	return true;
 }
 
 void QProgressDialog_virtualbase_Accept(void* self) {
 	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_Accept();
 }
 
-void QProgressDialog_override_virtual_Reject(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__Reject = slot;
+bool QProgressDialog_override_virtual_Reject(void* self, intptr_t slot) {
+	MiqtVirtualQProgressDialog* self_cast = dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Reject = slot;
+	return true;
 }
 
 void QProgressDialog_virtualbase_Reject(void* self) {
 	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_Reject();
 }
 
-void QProgressDialog_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__KeyPressEvent = slot;
+bool QProgressDialog_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQProgressDialog* self_cast = dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QProgressDialog_virtualbase_KeyPressEvent(void* self, QKeyEvent* param1) {
 	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_KeyPressEvent(param1);
 }
 
-void QProgressDialog_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__ContextMenuEvent = slot;
+bool QProgressDialog_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQProgressDialog* self_cast = dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QProgressDialog_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* param1) {
 	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_ContextMenuEvent(param1);
 }
 
-void QProgressDialog_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) )->handle__EventFilter = slot;
+bool QProgressDialog_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQProgressDialog* self_cast = dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QProgressDialog_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2) {
 	return ( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_EventFilter(param1, param2);
 }
 
-void QProgressDialog_Delete(QProgressDialog* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQProgressDialog*>( self );
-	} else {
-		delete self;
-	}
+void QProgressDialog_Delete(QProgressDialog* self) {
+	delete self;
 }
 

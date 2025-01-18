@@ -47,7 +47,7 @@ int QUuid_Variant(const QUuid* self);
 int QUuid_Version(const QUuid* self);
 struct miqt_string QUuid_ToString1(const QUuid* self, int mode);
 struct miqt_string QUuid_ToByteArray1(const QUuid* self, int mode);
-void QUuid_Delete(QUuid* self, bool isSubclass);
+void QUuid_Delete(QUuid* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -10,11 +10,7 @@ extern "C" {
 } /* extern C */
 #endif
 
-void QStringDataPtr_Delete(QStringDataPtr* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QStringDataPtr*>( self );
-	} else {
-		delete self;
-	}
+void QStringDataPtr_Delete(QStringDataPtr* self) {
+	delete self;
 }
 

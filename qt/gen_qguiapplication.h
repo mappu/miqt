@@ -141,11 +141,11 @@ struct miqt_string QGuiApplication_Tr2(const char* s, const char* c);
 struct miqt_string QGuiApplication_Tr3(const char* s, const char* c, int n);
 struct miqt_string QGuiApplication_TrUtf82(const char* s, const char* c);
 struct miqt_string QGuiApplication_TrUtf83(const char* s, const char* c, int n);
-void QGuiApplication_override_virtual_Notify(void* self, intptr_t slot);
+bool QGuiApplication_override_virtual_Notify(void* self, intptr_t slot);
 bool QGuiApplication_virtualbase_Notify(void* self, QObject* param1, QEvent* param2);
-void QGuiApplication_override_virtual_Event(void* self, intptr_t slot);
+bool QGuiApplication_override_virtual_Event(void* self, intptr_t slot);
 bool QGuiApplication_virtualbase_Event(void* self, QEvent* param1);
-void QGuiApplication_Delete(QGuiApplication* self, bool isSubclass);
+void QGuiApplication_Delete(QGuiApplication* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -76,27 +76,27 @@ bool QTcpServer_Listen1(QTcpServer* self, QHostAddress* address);
 bool QTcpServer_Listen2(QTcpServer* self, QHostAddress* address, uint16_t port);
 bool QTcpServer_WaitForNewConnection1(QTcpServer* self, int msec);
 bool QTcpServer_WaitForNewConnection2(QTcpServer* self, int msec, bool* timedOut);
-void QTcpServer_override_virtual_HasPendingConnections(void* self, intptr_t slot);
+bool QTcpServer_override_virtual_HasPendingConnections(void* self, intptr_t slot);
 bool QTcpServer_virtualbase_HasPendingConnections(const void* self);
-void QTcpServer_override_virtual_NextPendingConnection(void* self, intptr_t slot);
+bool QTcpServer_override_virtual_NextPendingConnection(void* self, intptr_t slot);
 QTcpSocket* QTcpServer_virtualbase_NextPendingConnection(void* self);
-void QTcpServer_override_virtual_IncomingConnection(void* self, intptr_t slot);
+bool QTcpServer_override_virtual_IncomingConnection(void* self, intptr_t slot);
 void QTcpServer_virtualbase_IncomingConnection(void* self, intptr_t handle);
-void QTcpServer_override_virtual_Event(void* self, intptr_t slot);
+bool QTcpServer_override_virtual_Event(void* self, intptr_t slot);
 bool QTcpServer_virtualbase_Event(void* self, QEvent* event);
-void QTcpServer_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QTcpServer_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QTcpServer_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QTcpServer_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QTcpServer_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QTcpServer_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QTcpServer_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QTcpServer_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QTcpServer_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QTcpServer_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QTcpServer_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QTcpServer_virtualbase_CustomEvent(void* self, QEvent* event);
-void QTcpServer_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QTcpServer_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QTcpServer_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QTcpServer_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QTcpServer_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QTcpServer_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QTcpServer_Delete(QTcpServer* self, bool isSubclass);
+void QTcpServer_Delete(QTcpServer* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -14,8 +14,7 @@ import (
 )
 
 type QTextTableCell struct {
-	h          *C.QTextTableCell
-	isSubclass bool
+	h *C.QTextTableCell
 }
 
 func (this *QTextTableCell) cPointer() *C.QTextTableCell {
@@ -49,17 +48,13 @@ func UnsafeNewQTextTableCell(h unsafe.Pointer) *QTextTableCell {
 // NewQTextTableCell constructs a new QTextTableCell object.
 func NewQTextTableCell() *QTextTableCell {
 
-	ret := newQTextTableCell(C.QTextTableCell_new())
-	ret.isSubclass = true
-	return ret
+	return newQTextTableCell(C.QTextTableCell_new())
 }
 
 // NewQTextTableCell2 constructs a new QTextTableCell object.
 func NewQTextTableCell2(o *QTextTableCell) *QTextTableCell {
 
-	ret := newQTextTableCell(C.QTextTableCell_new2(o.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTextTableCell(C.QTextTableCell_new2(o.cPointer()))
 }
 
 func (this *QTextTableCell) OperatorAssign(o *QTextTableCell) {
@@ -142,7 +137,7 @@ func (this *QTextTableCell) TableCellFormatIndex() int {
 
 // Delete this object from C++ memory.
 func (this *QTextTableCell) Delete() {
-	C.QTextTableCell_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextTableCell_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -155,8 +150,7 @@ func (this *QTextTableCell) GoGC() {
 }
 
 type QTextTable struct {
-	h          *C.QTextTable
-	isSubclass bool
+	h *C.QTextTable
 	*QTextFrame
 }
 
@@ -194,9 +188,7 @@ func UnsafeNewQTextTable(h unsafe.Pointer) *QTextTable {
 // NewQTextTable constructs a new QTextTable object.
 func NewQTextTable(doc *QTextDocument) *QTextTable {
 
-	ret := newQTextTable(C.QTextTable_new(doc.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTextTable(C.QTextTable_new(doc.cPointer()))
 }
 
 func (this *QTextTable) MetaObject() *QMetaObject {
@@ -330,7 +322,7 @@ func QTextTable_Tr3(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QTextTable) Delete() {
-	C.QTextTable_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextTable_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

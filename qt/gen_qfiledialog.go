@@ -62,8 +62,7 @@ const (
 )
 
 type QFileDialog struct {
-	h          *C.QFileDialog
-	isSubclass bool
+	h *C.QFileDialog
 	*QDialog
 }
 
@@ -101,25 +100,19 @@ func UnsafeNewQFileDialog(h unsafe.Pointer) *QFileDialog {
 // NewQFileDialog constructs a new QFileDialog object.
 func NewQFileDialog(parent *QWidget) *QFileDialog {
 
-	ret := newQFileDialog(C.QFileDialog_new(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQFileDialog(C.QFileDialog_new(parent.cPointer()))
 }
 
 // NewQFileDialog2 constructs a new QFileDialog object.
 func NewQFileDialog2(parent *QWidget, f WindowType) *QFileDialog {
 
-	ret := newQFileDialog(C.QFileDialog_new2(parent.cPointer(), (C.int)(f)))
-	ret.isSubclass = true
-	return ret
+	return newQFileDialog(C.QFileDialog_new2(parent.cPointer(), (C.int)(f)))
 }
 
 // NewQFileDialog3 constructs a new QFileDialog object.
 func NewQFileDialog3() *QFileDialog {
 
-	ret := newQFileDialog(C.QFileDialog_new3())
-	ret.isSubclass = true
-	return ret
+	return newQFileDialog(C.QFileDialog_new3())
 }
 
 // NewQFileDialog4 constructs a new QFileDialog object.
@@ -129,9 +122,7 @@ func NewQFileDialog4(parent *QWidget, caption string) *QFileDialog {
 	caption_ms.len = C.size_t(len(caption))
 	defer C.free(unsafe.Pointer(caption_ms.data))
 
-	ret := newQFileDialog(C.QFileDialog_new4(parent.cPointer(), caption_ms))
-	ret.isSubclass = true
-	return ret
+	return newQFileDialog(C.QFileDialog_new4(parent.cPointer(), caption_ms))
 }
 
 // NewQFileDialog5 constructs a new QFileDialog object.
@@ -145,9 +136,7 @@ func NewQFileDialog5(parent *QWidget, caption string, directory string) *QFileDi
 	directory_ms.len = C.size_t(len(directory))
 	defer C.free(unsafe.Pointer(directory_ms.data))
 
-	ret := newQFileDialog(C.QFileDialog_new5(parent.cPointer(), caption_ms, directory_ms))
-	ret.isSubclass = true
-	return ret
+	return newQFileDialog(C.QFileDialog_new5(parent.cPointer(), caption_ms, directory_ms))
 }
 
 // NewQFileDialog6 constructs a new QFileDialog object.
@@ -165,9 +154,7 @@ func NewQFileDialog6(parent *QWidget, caption string, directory string, filter s
 	filter_ms.len = C.size_t(len(filter))
 	defer C.free(unsafe.Pointer(filter_ms.data))
 
-	ret := newQFileDialog(C.QFileDialog_new6(parent.cPointer(), caption_ms, directory_ms, filter_ms))
-	ret.isSubclass = true
-	return ret
+	return newQFileDialog(C.QFileDialog_new6(parent.cPointer(), caption_ms, directory_ms, filter_ms))
 }
 
 func (this *QFileDialog) MetaObject() *QMetaObject {
@@ -1381,10 +1368,10 @@ func (this *QFileDialog) callVirtualBase_SetVisible(visible bool) {
 
 }
 func (this *QFileDialog) OnSetVisible(slot func(super func(visible bool), visible bool)) {
-	if !this.isSubclass {
+	ok := C.QFileDialog_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileDialog_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileDialog_SetVisible
@@ -1407,10 +1394,10 @@ func (this *QFileDialog) callVirtualBase_Done(result int) {
 
 }
 func (this *QFileDialog) OnDone(slot func(super func(result int), result int)) {
-	if !this.isSubclass {
+	ok := C.QFileDialog_override_virtual_Done(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileDialog_override_virtual_Done(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileDialog_Done
@@ -1433,10 +1420,10 @@ func (this *QFileDialog) callVirtualBase_Accept() {
 
 }
 func (this *QFileDialog) OnAccept(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QFileDialog_override_virtual_Accept(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileDialog_override_virtual_Accept(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileDialog_Accept
@@ -1456,10 +1443,10 @@ func (this *QFileDialog) callVirtualBase_ChangeEvent(e *QEvent) {
 
 }
 func (this *QFileDialog) OnChangeEvent(slot func(super func(e *QEvent), e *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QFileDialog_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileDialog_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileDialog_ChangeEvent
@@ -1484,10 +1471,10 @@ func (this *QFileDialog) callVirtualBase_SizeHint() *QSize {
 
 }
 func (this *QFileDialog) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	if !this.isSubclass {
+	ok := C.QFileDialog_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileDialog_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileDialog_SizeHint
@@ -1511,10 +1498,10 @@ func (this *QFileDialog) callVirtualBase_MinimumSizeHint() *QSize {
 
 }
 func (this *QFileDialog) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
-	if !this.isSubclass {
+	ok := C.QFileDialog_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileDialog_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileDialog_MinimumSizeHint
@@ -1536,10 +1523,10 @@ func (this *QFileDialog) callVirtualBase_Open() {
 
 }
 func (this *QFileDialog) OnOpen(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QFileDialog_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileDialog_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileDialog_Open
@@ -1559,10 +1546,10 @@ func (this *QFileDialog) callVirtualBase_Exec() int {
 
 }
 func (this *QFileDialog) OnExec(slot func(super func() int) int) {
-	if !this.isSubclass {
+	ok := C.QFileDialog_override_virtual_Exec(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileDialog_override_virtual_Exec(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileDialog_Exec
@@ -1584,10 +1571,10 @@ func (this *QFileDialog) callVirtualBase_Reject() {
 
 }
 func (this *QFileDialog) OnReject(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QFileDialog_override_virtual_Reject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileDialog_override_virtual_Reject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileDialog_Reject
@@ -1607,10 +1594,10 @@ func (this *QFileDialog) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
 
 }
 func (this *QFileDialog) OnKeyPressEvent(slot func(super func(param1 *QKeyEvent), param1 *QKeyEvent)) {
-	if !this.isSubclass {
+	ok := C.QFileDialog_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileDialog_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileDialog_KeyPressEvent
@@ -1633,10 +1620,10 @@ func (this *QFileDialog) callVirtualBase_CloseEvent(param1 *QCloseEvent) {
 
 }
 func (this *QFileDialog) OnCloseEvent(slot func(super func(param1 *QCloseEvent), param1 *QCloseEvent)) {
-	if !this.isSubclass {
+	ok := C.QFileDialog_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileDialog_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileDialog_CloseEvent
@@ -1659,10 +1646,10 @@ func (this *QFileDialog) callVirtualBase_ShowEvent(param1 *QShowEvent) {
 
 }
 func (this *QFileDialog) OnShowEvent(slot func(super func(param1 *QShowEvent), param1 *QShowEvent)) {
-	if !this.isSubclass {
+	ok := C.QFileDialog_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileDialog_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileDialog_ShowEvent
@@ -1685,10 +1672,10 @@ func (this *QFileDialog) callVirtualBase_ResizeEvent(param1 *QResizeEvent) {
 
 }
 func (this *QFileDialog) OnResizeEvent(slot func(super func(param1 *QResizeEvent), param1 *QResizeEvent)) {
-	if !this.isSubclass {
+	ok := C.QFileDialog_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileDialog_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileDialog_ResizeEvent
@@ -1711,10 +1698,10 @@ func (this *QFileDialog) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEv
 
 }
 func (this *QFileDialog) OnContextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
-	if !this.isSubclass {
+	ok := C.QFileDialog_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileDialog_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileDialog_ContextMenuEvent
@@ -1737,10 +1724,10 @@ func (this *QFileDialog) callVirtualBase_EventFilter(param1 *QObject, param2 *QE
 
 }
 func (this *QFileDialog) OnEventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QFileDialog_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileDialog_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileDialog_EventFilter
@@ -1763,7 +1750,7 @@ func miqt_exec_callback_QFileDialog_EventFilter(self *C.QFileDialog, cb C.intptr
 
 // Delete this object from C++ memory.
 func (this *QFileDialog) Delete() {
-	C.QFileDialog_Delete(this.h, C.bool(this.isSubclass))
+	C.QFileDialog_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

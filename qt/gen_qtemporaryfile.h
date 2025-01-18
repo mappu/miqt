@@ -55,19 +55,19 @@ struct miqt_string QTemporaryFile_Tr2(const char* s, const char* c);
 struct miqt_string QTemporaryFile_Tr3(const char* s, const char* c, int n);
 struct miqt_string QTemporaryFile_TrUtf82(const char* s, const char* c);
 struct miqt_string QTemporaryFile_TrUtf83(const char* s, const char* c, int n);
-void QTemporaryFile_override_virtual_FileName(void* self, intptr_t slot);
+bool QTemporaryFile_override_virtual_FileName(void* self, intptr_t slot);
 struct miqt_string QTemporaryFile_virtualbase_FileName(const void* self);
-void QTemporaryFile_override_virtual_OpenWithFlags(void* self, intptr_t slot);
+bool QTemporaryFile_override_virtual_OpenWithFlags(void* self, intptr_t slot);
 bool QTemporaryFile_virtualbase_OpenWithFlags(void* self, int flags);
-void QTemporaryFile_override_virtual_Size(void* self, intptr_t slot);
+bool QTemporaryFile_override_virtual_Size(void* self, intptr_t slot);
 long long QTemporaryFile_virtualbase_Size(const void* self);
-void QTemporaryFile_override_virtual_Resize(void* self, intptr_t slot);
+bool QTemporaryFile_override_virtual_Resize(void* self, intptr_t slot);
 bool QTemporaryFile_virtualbase_Resize(void* self, long long sz);
-void QTemporaryFile_override_virtual_Permissions(void* self, intptr_t slot);
+bool QTemporaryFile_override_virtual_Permissions(void* self, intptr_t slot);
 int QTemporaryFile_virtualbase_Permissions(const void* self);
-void QTemporaryFile_override_virtual_SetPermissions(void* self, intptr_t slot);
+bool QTemporaryFile_override_virtual_SetPermissions(void* self, intptr_t slot);
 bool QTemporaryFile_virtualbase_SetPermissions(void* self, int permissionSpec);
-void QTemporaryFile_Delete(QTemporaryFile* self, bool isSubclass);
+void QTemporaryFile_Delete(QTemporaryFile* self);
 
 #ifdef __cplusplus
 } /* extern C */

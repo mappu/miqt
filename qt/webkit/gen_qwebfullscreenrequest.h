@@ -31,7 +31,7 @@ void QWebFullScreenRequest_Reject(QWebFullScreenRequest* self);
 bool QWebFullScreenRequest_ToggleOn(const QWebFullScreenRequest* self);
 QUrl* QWebFullScreenRequest_Origin(const QWebFullScreenRequest* self);
 QWebElement* QWebFullScreenRequest_Element(const QWebFullScreenRequest* self);
-void QWebFullScreenRequest_Delete(QWebFullScreenRequest* self, bool isSubclass);
+void QWebFullScreenRequest_Delete(QWebFullScreenRequest* self);
 
 #ifdef __cplusplus
 } /* extern C */

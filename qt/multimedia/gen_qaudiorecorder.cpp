@@ -23,13 +23,13 @@ bool miqt_exec_callback_QAudioRecorder_SetMediaObject(void*, intptr_t, QMediaObj
 } /* extern C */
 #endif
 
-class MiqtVirtualQAudioRecorder : public virtual QAudioRecorder {
+class MiqtVirtualQAudioRecorder final : public QAudioRecorder {
 public:
 
 	MiqtVirtualQAudioRecorder(): QAudioRecorder() {};
 	MiqtVirtualQAudioRecorder(QObject* parent): QAudioRecorder(parent) {};
 
-	virtual ~MiqtVirtualQAudioRecorder() = default;
+	virtual ~MiqtVirtualQAudioRecorder() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__MediaObject = 0;
@@ -252,27 +252,35 @@ struct miqt_string QAudioRecorder_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QAudioRecorder_override_virtual_MediaObject(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioRecorder*>( (QAudioRecorder*)(self) )->handle__MediaObject = slot;
+bool QAudioRecorder_override_virtual_MediaObject(void* self, intptr_t slot) {
+	MiqtVirtualQAudioRecorder* self_cast = dynamic_cast<MiqtVirtualQAudioRecorder*>( (QAudioRecorder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MediaObject = slot;
+	return true;
 }
 
 QMediaObject* QAudioRecorder_virtualbase_MediaObject(const void* self) {
 	return ( (const MiqtVirtualQAudioRecorder*)(self) )->virtualbase_MediaObject();
 }
 
-void QAudioRecorder_override_virtual_SetMediaObject(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioRecorder*>( (QAudioRecorder*)(self) )->handle__SetMediaObject = slot;
+bool QAudioRecorder_override_virtual_SetMediaObject(void* self, intptr_t slot) {
+	MiqtVirtualQAudioRecorder* self_cast = dynamic_cast<MiqtVirtualQAudioRecorder*>( (QAudioRecorder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetMediaObject = slot;
+	return true;
 }
 
 bool QAudioRecorder_virtualbase_SetMediaObject(void* self, QMediaObject* object) {
 	return ( (MiqtVirtualQAudioRecorder*)(self) )->virtualbase_SetMediaObject(object);
 }
 
-void QAudioRecorder_Delete(QAudioRecorder* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAudioRecorder*>( self );
-	} else {
-		delete self;
-	}
+void QAudioRecorder_Delete(QAudioRecorder* self) {
+	delete self;
 }
 

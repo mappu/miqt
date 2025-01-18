@@ -26,7 +26,7 @@ void miqt_exec_callback_QSharedMemory_DisconnectNotify(void*, intptr_t, QMetaMet
 } /* extern C */
 #endif
 
-class MiqtVirtualQSharedMemory : public virtual QSharedMemory {
+class MiqtVirtualQSharedMemory final : public QSharedMemory {
 public:
 
 	MiqtVirtualQSharedMemory(): QSharedMemory() {};
@@ -34,7 +34,7 @@ public:
 	MiqtVirtualQSharedMemory(QObject* parent): QSharedMemory(parent) {};
 	MiqtVirtualQSharedMemory(const QString& key, QObject* parent): QSharedMemory(key, parent) {};
 
-	virtual ~MiqtVirtualQSharedMemory() = default;
+	virtual ~MiqtVirtualQSharedMemory() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -369,67 +369,105 @@ bool QSharedMemory_Attach1(QSharedMemory* self, int mode) {
 	return self->attach(static_cast<QSharedMemory::AccessMode>(mode));
 }
 
-void QSharedMemory_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSharedMemory*>( (QSharedMemory*)(self) )->handle__Event = slot;
+bool QSharedMemory_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQSharedMemory* self_cast = dynamic_cast<MiqtVirtualQSharedMemory*>( (QSharedMemory*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QSharedMemory_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQSharedMemory*)(self) )->virtualbase_Event(event);
 }
 
-void QSharedMemory_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSharedMemory*>( (QSharedMemory*)(self) )->handle__EventFilter = slot;
+bool QSharedMemory_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQSharedMemory* self_cast = dynamic_cast<MiqtVirtualQSharedMemory*>( (QSharedMemory*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QSharedMemory_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQSharedMemory*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QSharedMemory_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSharedMemory*>( (QSharedMemory*)(self) )->handle__TimerEvent = slot;
+bool QSharedMemory_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSharedMemory* self_cast = dynamic_cast<MiqtVirtualQSharedMemory*>( (QSharedMemory*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QSharedMemory_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQSharedMemory*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QSharedMemory_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSharedMemory*>( (QSharedMemory*)(self) )->handle__ChildEvent = slot;
+bool QSharedMemory_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSharedMemory* self_cast = dynamic_cast<MiqtVirtualQSharedMemory*>( (QSharedMemory*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QSharedMemory_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQSharedMemory*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QSharedMemory_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSharedMemory*>( (QSharedMemory*)(self) )->handle__CustomEvent = slot;
+bool QSharedMemory_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSharedMemory* self_cast = dynamic_cast<MiqtVirtualQSharedMemory*>( (QSharedMemory*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QSharedMemory_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQSharedMemory*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QSharedMemory_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSharedMemory*>( (QSharedMemory*)(self) )->handle__ConnectNotify = slot;
+bool QSharedMemory_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQSharedMemory* self_cast = dynamic_cast<MiqtVirtualQSharedMemory*>( (QSharedMemory*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QSharedMemory_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSharedMemory*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QSharedMemory_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSharedMemory*>( (QSharedMemory*)(self) )->handle__DisconnectNotify = slot;
+bool QSharedMemory_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQSharedMemory* self_cast = dynamic_cast<MiqtVirtualQSharedMemory*>( (QSharedMemory*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QSharedMemory_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSharedMemory*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QSharedMemory_Delete(QSharedMemory* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSharedMemory*>( self );
-	} else {
-		delete self;
-	}
+void QSharedMemory_Delete(QSharedMemory* self) {
+	delete self;
 }
 

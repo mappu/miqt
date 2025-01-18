@@ -13,8 +13,7 @@ import (
 )
 
 type QVLABaseBase struct {
-	h          *C.QVLABaseBase
-	isSubclass bool
+	h *C.QVLABaseBase
 }
 
 func (this *QVLABaseBase) cPointer() *C.QVLABaseBase {

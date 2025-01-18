@@ -63,21 +63,21 @@ void QAmbientSound_Pause(QAmbientSound* self);
 void QAmbientSound_Stop(QAmbientSound* self);
 struct miqt_string QAmbientSound_Tr2(const char* s, const char* c);
 struct miqt_string QAmbientSound_Tr3(const char* s, const char* c, int n);
-void QAmbientSound_override_virtual_Event(void* self, intptr_t slot);
+bool QAmbientSound_override_virtual_Event(void* self, intptr_t slot);
 bool QAmbientSound_virtualbase_Event(void* self, QEvent* event);
-void QAmbientSound_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QAmbientSound_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QAmbientSound_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QAmbientSound_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QAmbientSound_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QAmbientSound_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QAmbientSound_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QAmbientSound_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QAmbientSound_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QAmbientSound_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QAmbientSound_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QAmbientSound_virtualbase_CustomEvent(void* self, QEvent* event);
-void QAmbientSound_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QAmbientSound_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QAmbientSound_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QAmbientSound_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QAmbientSound_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QAmbientSound_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QAmbientSound_Delete(QAmbientSound* self, bool isSubclass);
+void QAmbientSound_Delete(QAmbientSound* self);
 
 #ifdef __cplusplus
 } /* extern C */

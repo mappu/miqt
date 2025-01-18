@@ -57,11 +57,7 @@ bool QWaitCondition_Wait23(QWaitCondition* self, QReadWriteLock* lockedReadWrite
 	return self->wait(lockedReadWriteLock, *deadline);
 }
 
-void QWaitCondition_Delete(QWaitCondition* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWaitCondition*>( self );
-	} else {
-		delete self;
-	}
+void QWaitCondition_Delete(QWaitCondition* self) {
+	delete self;
 }
 

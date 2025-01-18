@@ -298,11 +298,7 @@ QRawFont* QRawFont_FromFont2(QFont* font, int writingSystem) {
 	return new QRawFont(QRawFont::fromFont(*font, static_cast<QFontDatabase::WritingSystem>(writingSystem)));
 }
 
-void QRawFont_Delete(QRawFont* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QRawFont*>( self );
-	} else {
-		delete self;
-	}
+void QRawFont_Delete(QRawFont* self) {
+	delete self;
 }
 

@@ -41,7 +41,7 @@ struct miqt_string QCameraLocksControl_Tr2(const char* s, const char* c);
 struct miqt_string QCameraLocksControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QCameraLocksControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QCameraLocksControl_TrUtf83(const char* s, const char* c, int n);
-void QCameraLocksControl_Delete(QCameraLocksControl* self, bool isSubclass);
+void QCameraLocksControl_Delete(QCameraLocksControl* self);
 
 #ifdef __cplusplus
 } /* extern C */

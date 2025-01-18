@@ -15,8 +15,7 @@ import (
 )
 
 type QsciLexerOctave struct {
-	h          *C.QsciLexerOctave
-	isSubclass bool
+	h *C.QsciLexerOctave
 	*QsciLexerMatlab
 }
 
@@ -54,17 +53,13 @@ func UnsafeNewQsciLexerOctave(h unsafe.Pointer) *QsciLexerOctave {
 // NewQsciLexerOctave constructs a new QsciLexerOctave object.
 func NewQsciLexerOctave() *QsciLexerOctave {
 
-	ret := newQsciLexerOctave(C.QsciLexerOctave_new())
-	ret.isSubclass = true
-	return ret
+	return newQsciLexerOctave(C.QsciLexerOctave_new())
 }
 
 // NewQsciLexerOctave2 constructs a new QsciLexerOctave object.
 func NewQsciLexerOctave2(parent *qt.QObject) *QsciLexerOctave {
 
-	ret := newQsciLexerOctave(C.QsciLexerOctave_new2((*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQsciLexerOctave(C.QsciLexerOctave_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerOctave) MetaObject() *qt.QMetaObject {
@@ -156,7 +151,7 @@ func QsciLexerOctave_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QsciLexerOctave) Delete() {
-	C.QsciLexerOctave_Delete(this.h, C.bool(this.isSubclass))
+	C.QsciLexerOctave_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

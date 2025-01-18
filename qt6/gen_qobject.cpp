@@ -40,21 +40,17 @@ QMetaObject* QObjectData_DynamicMetaObject(const QObjectData* self) {
 	return self->dynamicMetaObject();
 }
 
-void QObjectData_Delete(QObjectData* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QObjectData*>( self );
-	} else {
-		delete self;
-	}
+void QObjectData_Delete(QObjectData* self) {
+	delete self;
 }
 
-class MiqtVirtualQObject : public virtual QObject {
+class MiqtVirtualQObject final : public QObject {
 public:
 
 	MiqtVirtualQObject(): QObject() {};
 	MiqtVirtualQObject(QObject* parent): QObject(parent) {};
 
-	virtual ~MiqtVirtualQObject() = default;
+	virtual ~MiqtVirtualQObject() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -465,68 +461,106 @@ void QObject_connect_Destroyed1(QObject* self, intptr_t slot) {
 	});
 }
 
-void QObject_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQObject*>( (QObject*)(self) )->handle__Event = slot;
+bool QObject_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQObject* self_cast = dynamic_cast<MiqtVirtualQObject*>( (QObject*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QObject_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQObject*)(self) )->virtualbase_Event(event);
 }
 
-void QObject_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQObject*>( (QObject*)(self) )->handle__EventFilter = slot;
+bool QObject_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQObject* self_cast = dynamic_cast<MiqtVirtualQObject*>( (QObject*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QObject_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQObject*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QObject_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQObject*>( (QObject*)(self) )->handle__TimerEvent = slot;
+bool QObject_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQObject* self_cast = dynamic_cast<MiqtVirtualQObject*>( (QObject*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QObject_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQObject*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QObject_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQObject*>( (QObject*)(self) )->handle__ChildEvent = slot;
+bool QObject_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQObject* self_cast = dynamic_cast<MiqtVirtualQObject*>( (QObject*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QObject_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQObject*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QObject_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQObject*>( (QObject*)(self) )->handle__CustomEvent = slot;
+bool QObject_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQObject* self_cast = dynamic_cast<MiqtVirtualQObject*>( (QObject*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QObject_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQObject*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QObject_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQObject*>( (QObject*)(self) )->handle__ConnectNotify = slot;
+bool QObject_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQObject* self_cast = dynamic_cast<MiqtVirtualQObject*>( (QObject*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QObject_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQObject*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QObject_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQObject*>( (QObject*)(self) )->handle__DisconnectNotify = slot;
+bool QObject_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQObject* self_cast = dynamic_cast<MiqtVirtualQObject*>( (QObject*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QObject_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQObject*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QObject_Delete(QObject* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQObject*>( self );
-	} else {
-		delete self;
-	}
+void QObject_Delete(QObject* self) {
+	delete self;
 }
 
 QSignalBlocker* QSignalBlocker_new(QObject* o) {
@@ -545,11 +579,7 @@ void QSignalBlocker_Unblock(QSignalBlocker* self) {
 	self->unblock();
 }
 
-void QSignalBlocker_Delete(QSignalBlocker* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QSignalBlocker*>( self );
-	} else {
-		delete self;
-	}
+void QSignalBlocker_Delete(QSignalBlocker* self) {
+	delete self;
 }
 

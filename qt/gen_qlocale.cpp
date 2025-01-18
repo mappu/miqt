@@ -1288,11 +1288,7 @@ struct miqt_string QLocale_QuoteString2(const QLocale* self, struct miqt_string 
 	return _ms;
 }
 
-void QLocale_Delete(QLocale* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QLocale*>( self );
-	} else {
-		delete self;
-	}
+void QLocale_Delete(QLocale* self) {
+	delete self;
 }
 

@@ -95,12 +95,8 @@ void QWebSelectData_OperatorAssign(QWebSelectData* self, QWebSelectData* param1)
 	self->operator=(*param1);
 }
 
-void QWebSelectData_Delete(QWebSelectData* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebSelectData*>( self );
-	} else {
-		delete self;
-	}
+void QWebSelectData_Delete(QWebSelectData* self) {
+	delete self;
 }
 
 void QWebSelectMethod_virtbase(QWebSelectMethod* src, QObject** outptr_QObject) {
@@ -220,12 +216,8 @@ struct miqt_string QWebSelectMethod_TrUtf83(const char* s, const char* c, int n)
 	return _ms;
 }
 
-void QWebSelectMethod_Delete(QWebSelectMethod* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebSelectMethod*>( self );
-	} else {
-		delete self;
-	}
+void QWebSelectMethod_Delete(QWebSelectMethod* self) {
+	delete self;
 }
 
 struct miqt_string QWebNotificationData_Title(const QWebNotificationData* self) {
@@ -262,12 +254,8 @@ void QWebNotificationData_OperatorAssign(QWebNotificationData* self, QWebNotific
 	self->operator=(*param1);
 }
 
-void QWebNotificationData_Delete(QWebNotificationData* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebNotificationData*>( self );
-	} else {
-		delete self;
-	}
+void QWebNotificationData_Delete(QWebNotificationData* self) {
+	delete self;
 }
 
 void QWebNotificationPresenter_virtbase(QWebNotificationPresenter* src, QObject** outptr_QObject) {
@@ -372,12 +360,8 @@ struct miqt_string QWebNotificationPresenter_TrUtf83(const char* s, const char* 
 	return _ms;
 }
 
-void QWebNotificationPresenter_Delete(QWebNotificationPresenter* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebNotificationPresenter*>( self );
-	} else {
-		delete self;
-	}
+void QWebNotificationPresenter_Delete(QWebNotificationPresenter* self) {
+	delete self;
 }
 
 void QWebHapticFeedbackPlayer_virtbase(QWebHapticFeedbackPlayer* src, QObject** outptr_QObject) {
@@ -463,12 +447,8 @@ struct miqt_string QWebHapticFeedbackPlayer_TrUtf83(const char* s, const char* c
 	return _ms;
 }
 
-void QWebHapticFeedbackPlayer_Delete(QWebHapticFeedbackPlayer* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebHapticFeedbackPlayer*>( self );
-	} else {
-		delete self;
-	}
+void QWebHapticFeedbackPlayer_Delete(QWebHapticFeedbackPlayer* self) {
+	delete self;
 }
 
 void QWebTouchModifier_virtbase(QWebTouchModifier* src, QObject** outptr_QObject) {
@@ -553,12 +533,8 @@ struct miqt_string QWebTouchModifier_TrUtf83(const char* s, const char* c, int n
 	return _ms;
 }
 
-void QWebTouchModifier_Delete(QWebTouchModifier* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebTouchModifier*>( self );
-	} else {
-		delete self;
-	}
+void QWebTouchModifier_Delete(QWebTouchModifier* self) {
+	delete self;
 }
 
 void QWebSpellChecker_virtbase(QWebSpellChecker* src, QObject** outptr_QObject) {
@@ -706,12 +682,8 @@ struct miqt_string QWebSpellChecker_TrUtf83(const char* s, const char* c, int n)
 	return _ms;
 }
 
-void QWebSpellChecker_Delete(QWebSpellChecker* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebSpellChecker*>( self );
-	} else {
-		delete self;
-	}
+void QWebSpellChecker_Delete(QWebSpellChecker* self) {
+	delete self;
 }
 
 bool QWebKitPlatformPlugin_SupportsExtension(const QWebKitPlatformPlugin* self, int param1) {
@@ -726,12 +698,8 @@ void QWebKitPlatformPlugin_OperatorAssign(QWebKitPlatformPlugin* self, QWebKitPl
 	self->operator=(*param1);
 }
 
-void QWebKitPlatformPlugin_Delete(QWebKitPlatformPlugin* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebKitPlatformPlugin*>( self );
-	} else {
-		delete self;
-	}
+void QWebKitPlatformPlugin_Delete(QWebKitPlatformPlugin* self) {
+	delete self;
 }
 
 QWebSpellChecker__GrammarDetail* QWebSpellChecker__GrammarDetail_new(QWebSpellChecker__GrammarDetail* param1) {
@@ -742,11 +710,7 @@ void QWebSpellChecker__GrammarDetail_OperatorAssign(QWebSpellChecker__GrammarDet
 	self->operator=(*param1);
 }
 
-void QWebSpellChecker__GrammarDetail_Delete(QWebSpellChecker__GrammarDetail* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebSpellChecker::GrammarDetail*>( self );
-	} else {
-		delete self;
-	}
+void QWebSpellChecker__GrammarDetail_Delete(QWebSpellChecker__GrammarDetail* self) {
+	delete self;
 }
 

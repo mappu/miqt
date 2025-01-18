@@ -14,8 +14,7 @@ import (
 )
 
 type QTextDocumentWriter struct {
-	h          *C.QTextDocumentWriter
-	isSubclass bool
+	h *C.QTextDocumentWriter
 }
 
 func (this *QTextDocumentWriter) cPointer() *C.QTextDocumentWriter {
@@ -49,9 +48,7 @@ func UnsafeNewQTextDocumentWriter(h unsafe.Pointer) *QTextDocumentWriter {
 // NewQTextDocumentWriter constructs a new QTextDocumentWriter object.
 func NewQTextDocumentWriter() *QTextDocumentWriter {
 
-	ret := newQTextDocumentWriter(C.QTextDocumentWriter_new())
-	ret.isSubclass = true
-	return ret
+	return newQTextDocumentWriter(C.QTextDocumentWriter_new())
 }
 
 // NewQTextDocumentWriter2 constructs a new QTextDocumentWriter object.
@@ -60,9 +57,7 @@ func NewQTextDocumentWriter2(device *QIODevice, format []byte) *QTextDocumentWri
 	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
 	format_alias.len = C.size_t(len(format))
 
-	ret := newQTextDocumentWriter(C.QTextDocumentWriter_new2(device.cPointer(), format_alias))
-	ret.isSubclass = true
-	return ret
+	return newQTextDocumentWriter(C.QTextDocumentWriter_new2(device.cPointer(), format_alias))
 }
 
 // NewQTextDocumentWriter3 constructs a new QTextDocumentWriter object.
@@ -72,9 +67,7 @@ func NewQTextDocumentWriter3(fileName string) *QTextDocumentWriter {
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 
-	ret := newQTextDocumentWriter(C.QTextDocumentWriter_new3(fileName_ms))
-	ret.isSubclass = true
-	return ret
+	return newQTextDocumentWriter(C.QTextDocumentWriter_new3(fileName_ms))
 }
 
 // NewQTextDocumentWriter4 constructs a new QTextDocumentWriter object.
@@ -87,9 +80,7 @@ func NewQTextDocumentWriter4(fileName string, format []byte) *QTextDocumentWrite
 	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
 	format_alias.len = C.size_t(len(format))
 
-	ret := newQTextDocumentWriter(C.QTextDocumentWriter_new4(fileName_ms, format_alias))
-	ret.isSubclass = true
-	return ret
+	return newQTextDocumentWriter(C.QTextDocumentWriter_new4(fileName_ms, format_alias))
 }
 
 func (this *QTextDocumentWriter) SetFormat(format []byte) {
@@ -160,7 +151,7 @@ func QTextDocumentWriter_SupportedDocumentFormats() [][]byte {
 
 // Delete this object from C++ memory.
 func (this *QTextDocumentWriter) Delete() {
-	C.QTextDocumentWriter_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextDocumentWriter_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

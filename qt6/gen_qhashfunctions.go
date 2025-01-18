@@ -14,8 +14,7 @@ import (
 )
 
 type QHashSeed struct {
-	h          *C.QHashSeed
-	isSubclass bool
+	h *C.QHashSeed
 }
 
 func (this *QHashSeed) cPointer() *C.QHashSeed {
@@ -49,17 +48,13 @@ func UnsafeNewQHashSeed(h unsafe.Pointer) *QHashSeed {
 // NewQHashSeed constructs a new QHashSeed object.
 func NewQHashSeed() *QHashSeed {
 
-	ret := newQHashSeed(C.QHashSeed_new())
-	ret.isSubclass = true
-	return ret
+	return newQHashSeed(C.QHashSeed_new())
 }
 
 // NewQHashSeed2 constructs a new QHashSeed object.
 func NewQHashSeed2(d uint64) *QHashSeed {
 
-	ret := newQHashSeed(C.QHashSeed_new2((C.size_t)(d)))
-	ret.isSubclass = true
-	return ret
+	return newQHashSeed(C.QHashSeed_new2((C.size_t)(d)))
 }
 
 func QHashSeed_GlobalSeed() *QHashSeed {
@@ -78,7 +73,7 @@ func QHashSeed_ResetRandomGlobalSeed() {
 
 // Delete this object from C++ memory.
 func (this *QHashSeed) Delete() {
-	C.QHashSeed_Delete(this.h, C.bool(this.isSubclass))
+	C.QHashSeed_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

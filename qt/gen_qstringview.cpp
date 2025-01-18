@@ -356,11 +356,7 @@ double QStringView_ToDouble1(const QStringView* self, bool* ok) {
 	return self->toDouble(ok);
 }
 
-void QStringView_Delete(QStringView* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QStringView*>( self );
-	} else {
-		delete self;
-	}
+void QStringView_Delete(QStringView* self) {
+	delete self;
 }
 

@@ -183,11 +183,7 @@ bool QPen_IsDetached(QPen* self) {
 	return self->isDetached();
 }
 
-void QPen_Delete(QPen* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPen*>( self );
-	} else {
-		delete self;
-	}
+void QPen_Delete(QPen* self) {
+	delete self;
 }
 

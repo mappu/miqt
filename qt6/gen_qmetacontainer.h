@@ -52,7 +52,7 @@ bool QMetaContainer_CompareConstIterator(const QMetaContainer* self, const void*
 void QMetaContainer_CopyConstIterator(const QMetaContainer* self, void* target, const void* source);
 void QMetaContainer_AdvanceConstIterator(const QMetaContainer* self, void* iterator, ptrdiff_t step);
 ptrdiff_t QMetaContainer_DiffConstIterator(const QMetaContainer* self, const void* i, const void* j);
-void QMetaContainer_Delete(QMetaContainer* self, bool isSubclass);
+void QMetaContainer_Delete(QMetaContainer* self);
 
 QMetaSequence* QMetaSequence_new();
 void QMetaSequence_virtbase(QMetaSequence* src, QMetaContainer** outptr_QMetaContainer);
@@ -86,7 +86,7 @@ bool QMetaSequence_CanEraseRangeAtIterator(const QMetaSequence* self);
 void QMetaSequence_EraseRangeAtIterator(const QMetaSequence* self, void* container, const void* iterator1, const void* iterator2);
 bool QMetaSequence_CanGetValueAtConstIterator(const QMetaSequence* self);
 void QMetaSequence_ValueAtConstIterator(const QMetaSequence* self, const void* iterator, void* result);
-void QMetaSequence_Delete(QMetaSequence* self, bool isSubclass);
+void QMetaSequence_Delete(QMetaSequence* self);
 
 QMetaAssociation* QMetaAssociation_new();
 void QMetaAssociation_virtbase(QMetaAssociation* src, QMetaContainer** outptr_QMetaContainer);
@@ -116,7 +116,7 @@ bool QMetaAssociation_CanCreateIteratorAtKey(const QMetaAssociation* self);
 void* QMetaAssociation_CreateIteratorAtKey(const QMetaAssociation* self, void* container, const void* key);
 bool QMetaAssociation_CanCreateConstIteratorAtKey(const QMetaAssociation* self);
 void* QMetaAssociation_CreateConstIteratorAtKey(const QMetaAssociation* self, const void* container, const void* key);
-void QMetaAssociation_Delete(QMetaAssociation* self, bool isSubclass);
+void QMetaAssociation_Delete(QMetaAssociation* self);
 
 #ifdef __cplusplus
 } /* extern C */

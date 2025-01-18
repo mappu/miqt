@@ -14,8 +14,7 @@ import (
 )
 
 type QSslEllipticCurve struct {
-	h          *C.QSslEllipticCurve
-	isSubclass bool
+	h *C.QSslEllipticCurve
 }
 
 func (this *QSslEllipticCurve) cPointer() *C.QSslEllipticCurve {
@@ -49,17 +48,13 @@ func UnsafeNewQSslEllipticCurve(h unsafe.Pointer) *QSslEllipticCurve {
 // NewQSslEllipticCurve constructs a new QSslEllipticCurve object.
 func NewQSslEllipticCurve() *QSslEllipticCurve {
 
-	ret := newQSslEllipticCurve(C.QSslEllipticCurve_new())
-	ret.isSubclass = true
-	return ret
+	return newQSslEllipticCurve(C.QSslEllipticCurve_new())
 }
 
 // NewQSslEllipticCurve2 constructs a new QSslEllipticCurve object.
 func NewQSslEllipticCurve2(param1 *QSslEllipticCurve) *QSslEllipticCurve {
 
-	ret := newQSslEllipticCurve(C.QSslEllipticCurve_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSslEllipticCurve(C.QSslEllipticCurve_new2(param1.cPointer()))
 }
 
 func QSslEllipticCurve_FromShortName(name string) *QSslEllipticCurve {
@@ -106,7 +101,7 @@ func (this *QSslEllipticCurve) IsTlsNamedCurve() bool {
 
 // Delete this object from C++ memory.
 func (this *QSslEllipticCurve) Delete() {
-	C.QSslEllipticCurve_Delete(this.h, C.bool(this.isSubclass))
+	C.QSslEllipticCurve_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

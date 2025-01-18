@@ -93,11 +93,7 @@ struct miqt_string QWebEngineNavigationRequest_Tr3(const char* s, const char* c,
 	return _ms;
 }
 
-void QWebEngineNavigationRequest_Delete(QWebEngineNavigationRequest* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebEngineNavigationRequest*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineNavigationRequest_Delete(QWebEngineNavigationRequest* self) {
+	delete self;
 }
 

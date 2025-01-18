@@ -87,11 +87,7 @@ int QStringMatcher_IndexIn3(const QStringMatcher* self, QChar* str, int length, 
 	return self->indexIn(str, static_cast<int>(length), static_cast<int>(from));
 }
 
-void QStringMatcher_Delete(QStringMatcher* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QStringMatcher*>( self );
-	} else {
-		delete self;
-	}
+void QStringMatcher_Delete(QStringMatcher* self) {
+	delete self;
 }
 

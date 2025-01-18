@@ -245,11 +245,7 @@ bool QCborStreamReader_Next1(QCborStreamReader* self, int maxRecursion) {
 	return self->next(static_cast<int>(maxRecursion));
 }
 
-void QCborStreamReader_Delete(QCborStreamReader* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCborStreamReader*>( self );
-	} else {
-		delete self;
-	}
+void QCborStreamReader_Delete(QCborStreamReader* self) {
+	delete self;
 }
 

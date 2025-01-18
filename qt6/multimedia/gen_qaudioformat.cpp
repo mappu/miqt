@@ -107,11 +107,7 @@ uint32_t QAudioFormat_DefaultChannelConfigForChannelCount(int channelCount) {
 	return static_cast<uint32_t>(_ret);
 }
 
-void QAudioFormat_Delete(QAudioFormat* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QAudioFormat*>( self );
-	} else {
-		delete self;
-	}
+void QAudioFormat_Delete(QAudioFormat* self) {
+	delete self;
 }
 

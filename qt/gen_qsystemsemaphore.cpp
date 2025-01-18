@@ -82,11 +82,7 @@ bool QSystemSemaphore_Release1(QSystemSemaphore* self, int n) {
 	return self->release(static_cast<int>(n));
 }
 
-void QSystemSemaphore_Delete(QSystemSemaphore* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QSystemSemaphore*>( self );
-	} else {
-		delete self;
-	}
+void QSystemSemaphore_Delete(QSystemSemaphore* self) {
+	delete self;
 }
 

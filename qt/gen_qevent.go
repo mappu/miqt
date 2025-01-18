@@ -81,8 +81,7 @@ const (
 )
 
 type QInputEvent struct {
-	h          *C.QInputEvent
-	isSubclass bool
+	h *C.QInputEvent
 	*QEvent
 }
 
@@ -120,25 +119,19 @@ func UnsafeNewQInputEvent(h unsafe.Pointer) *QInputEvent {
 // NewQInputEvent constructs a new QInputEvent object.
 func NewQInputEvent(typeVal QEvent__Type) *QInputEvent {
 
-	ret := newQInputEvent(C.QInputEvent_new((C.int)(typeVal)))
-	ret.isSubclass = true
-	return ret
+	return newQInputEvent(C.QInputEvent_new((C.int)(typeVal)))
 }
 
 // NewQInputEvent2 constructs a new QInputEvent object.
 func NewQInputEvent2(param1 *QInputEvent) *QInputEvent {
 
-	ret := newQInputEvent(C.QInputEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQInputEvent(C.QInputEvent_new2(param1.cPointer()))
 }
 
 // NewQInputEvent3 constructs a new QInputEvent object.
 func NewQInputEvent3(typeVal QEvent__Type, modifiers KeyboardModifier) *QInputEvent {
 
-	ret := newQInputEvent(C.QInputEvent_new3((C.int)(typeVal), (C.int)(modifiers)))
-	ret.isSubclass = true
-	return ret
+	return newQInputEvent(C.QInputEvent_new3((C.int)(typeVal), (C.int)(modifiers)))
 }
 
 func (this *QInputEvent) Modifiers() KeyboardModifier {
@@ -159,7 +152,7 @@ func (this *QInputEvent) SetTimestamp(atimestamp uint64) {
 
 // Delete this object from C++ memory.
 func (this *QInputEvent) Delete() {
-	C.QInputEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QInputEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -172,8 +165,7 @@ func (this *QInputEvent) GoGC() {
 }
 
 type QEnterEvent struct {
-	h          *C.QEnterEvent
-	isSubclass bool
+	h *C.QEnterEvent
 	*QEvent
 }
 
@@ -211,17 +203,13 @@ func UnsafeNewQEnterEvent(h unsafe.Pointer) *QEnterEvent {
 // NewQEnterEvent constructs a new QEnterEvent object.
 func NewQEnterEvent(localPos *QPointF, windowPos *QPointF, screenPos *QPointF) *QEnterEvent {
 
-	ret := newQEnterEvent(C.QEnterEvent_new(localPos.cPointer(), windowPos.cPointer(), screenPos.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQEnterEvent(C.QEnterEvent_new(localPos.cPointer(), windowPos.cPointer(), screenPos.cPointer()))
 }
 
 // NewQEnterEvent2 constructs a new QEnterEvent object.
 func NewQEnterEvent2(param1 *QEnterEvent) *QEnterEvent {
 
-	ret := newQEnterEvent(C.QEnterEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQEnterEvent(C.QEnterEvent_new2(param1.cPointer()))
 }
 
 func (this *QEnterEvent) Pos() *QPoint {
@@ -266,7 +254,7 @@ func (this *QEnterEvent) ScreenPos() *QPointF {
 
 // Delete this object from C++ memory.
 func (this *QEnterEvent) Delete() {
-	C.QEnterEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QEnterEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -279,8 +267,7 @@ func (this *QEnterEvent) GoGC() {
 }
 
 type QMouseEvent struct {
-	h          *C.QMouseEvent
-	isSubclass bool
+	h *C.QMouseEvent
 	*QInputEvent
 }
 
@@ -318,41 +305,31 @@ func UnsafeNewQMouseEvent(h unsafe.Pointer) *QMouseEvent {
 // NewQMouseEvent constructs a new QMouseEvent object.
 func NewQMouseEvent(typeVal QEvent__Type, localPos *QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier) *QMouseEvent {
 
-	ret := newQMouseEvent(C.QMouseEvent_new((C.int)(typeVal), localPos.cPointer(), (C.int)(button), (C.int)(buttons), (C.int)(modifiers)))
-	ret.isSubclass = true
-	return ret
+	return newQMouseEvent(C.QMouseEvent_new((C.int)(typeVal), localPos.cPointer(), (C.int)(button), (C.int)(buttons), (C.int)(modifiers)))
 }
 
 // NewQMouseEvent2 constructs a new QMouseEvent object.
 func NewQMouseEvent2(typeVal QEvent__Type, localPos *QPointF, screenPos *QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier) *QMouseEvent {
 
-	ret := newQMouseEvent(C.QMouseEvent_new2((C.int)(typeVal), localPos.cPointer(), screenPos.cPointer(), (C.int)(button), (C.int)(buttons), (C.int)(modifiers)))
-	ret.isSubclass = true
-	return ret
+	return newQMouseEvent(C.QMouseEvent_new2((C.int)(typeVal), localPos.cPointer(), screenPos.cPointer(), (C.int)(button), (C.int)(buttons), (C.int)(modifiers)))
 }
 
 // NewQMouseEvent3 constructs a new QMouseEvent object.
 func NewQMouseEvent3(typeVal QEvent__Type, localPos *QPointF, windowPos *QPointF, screenPos *QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier) *QMouseEvent {
 
-	ret := newQMouseEvent(C.QMouseEvent_new3((C.int)(typeVal), localPos.cPointer(), windowPos.cPointer(), screenPos.cPointer(), (C.int)(button), (C.int)(buttons), (C.int)(modifiers)))
-	ret.isSubclass = true
-	return ret
+	return newQMouseEvent(C.QMouseEvent_new3((C.int)(typeVal), localPos.cPointer(), windowPos.cPointer(), screenPos.cPointer(), (C.int)(button), (C.int)(buttons), (C.int)(modifiers)))
 }
 
 // NewQMouseEvent4 constructs a new QMouseEvent object.
 func NewQMouseEvent4(typeVal QEvent__Type, localPos *QPointF, windowPos *QPointF, screenPos *QPointF, button MouseButton, buttons MouseButton, modifiers KeyboardModifier, source MouseEventSource) *QMouseEvent {
 
-	ret := newQMouseEvent(C.QMouseEvent_new4((C.int)(typeVal), localPos.cPointer(), windowPos.cPointer(), screenPos.cPointer(), (C.int)(button), (C.int)(buttons), (C.int)(modifiers), (C.int)(source)))
-	ret.isSubclass = true
-	return ret
+	return newQMouseEvent(C.QMouseEvent_new4((C.int)(typeVal), localPos.cPointer(), windowPos.cPointer(), screenPos.cPointer(), (C.int)(button), (C.int)(buttons), (C.int)(modifiers), (C.int)(source)))
 }
 
 // NewQMouseEvent5 constructs a new QMouseEvent object.
 func NewQMouseEvent5(param1 *QMouseEvent) *QMouseEvent {
 
-	ret := newQMouseEvent(C.QMouseEvent_new5(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQMouseEvent(C.QMouseEvent_new5(param1.cPointer()))
 }
 
 func (this *QMouseEvent) Pos() *QPoint {
@@ -417,7 +394,7 @@ func (this *QMouseEvent) Flags() MouseEventFlag {
 
 // Delete this object from C++ memory.
 func (this *QMouseEvent) Delete() {
-	C.QMouseEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QMouseEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -430,8 +407,7 @@ func (this *QMouseEvent) GoGC() {
 }
 
 type QHoverEvent struct {
-	h          *C.QHoverEvent
-	isSubclass bool
+	h *C.QHoverEvent
 	*QInputEvent
 }
 
@@ -469,25 +445,19 @@ func UnsafeNewQHoverEvent(h unsafe.Pointer) *QHoverEvent {
 // NewQHoverEvent constructs a new QHoverEvent object.
 func NewQHoverEvent(typeVal QEvent__Type, pos *QPointF, oldPos *QPointF) *QHoverEvent {
 
-	ret := newQHoverEvent(C.QHoverEvent_new((C.int)(typeVal), pos.cPointer(), oldPos.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQHoverEvent(C.QHoverEvent_new((C.int)(typeVal), pos.cPointer(), oldPos.cPointer()))
 }
 
 // NewQHoverEvent2 constructs a new QHoverEvent object.
 func NewQHoverEvent2(param1 *QHoverEvent) *QHoverEvent {
 
-	ret := newQHoverEvent(C.QHoverEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQHoverEvent(C.QHoverEvent_new2(param1.cPointer()))
 }
 
 // NewQHoverEvent3 constructs a new QHoverEvent object.
 func NewQHoverEvent3(typeVal QEvent__Type, pos *QPointF, oldPos *QPointF, modifiers KeyboardModifier) *QHoverEvent {
 
-	ret := newQHoverEvent(C.QHoverEvent_new3((C.int)(typeVal), pos.cPointer(), oldPos.cPointer(), (C.int)(modifiers)))
-	ret.isSubclass = true
-	return ret
+	return newQHoverEvent(C.QHoverEvent_new3((C.int)(typeVal), pos.cPointer(), oldPos.cPointer(), (C.int)(modifiers)))
 }
 
 func (this *QHoverEvent) Pos() *QPoint {
@@ -512,7 +482,7 @@ func (this *QHoverEvent) OldPosF() *QPointF {
 
 // Delete this object from C++ memory.
 func (this *QHoverEvent) Delete() {
-	C.QHoverEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QHoverEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -525,8 +495,7 @@ func (this *QHoverEvent) GoGC() {
 }
 
 type QWheelEvent struct {
-	h          *C.QWheelEvent
-	isSubclass bool
+	h *C.QWheelEvent
 	*QInputEvent
 }
 
@@ -564,89 +533,67 @@ func UnsafeNewQWheelEvent(h unsafe.Pointer) *QWheelEvent {
 // NewQWheelEvent constructs a new QWheelEvent object.
 func NewQWheelEvent(pos *QPointF, delta int, buttons MouseButton, modifiers KeyboardModifier) *QWheelEvent {
 
-	ret := newQWheelEvent(C.QWheelEvent_new(pos.cPointer(), (C.int)(delta), (C.int)(buttons), (C.int)(modifiers)))
-	ret.isSubclass = true
-	return ret
+	return newQWheelEvent(C.QWheelEvent_new(pos.cPointer(), (C.int)(delta), (C.int)(buttons), (C.int)(modifiers)))
 }
 
 // NewQWheelEvent2 constructs a new QWheelEvent object.
 func NewQWheelEvent2(pos *QPointF, globalPos *QPointF, delta int, buttons MouseButton, modifiers KeyboardModifier) *QWheelEvent {
 
-	ret := newQWheelEvent(C.QWheelEvent_new2(pos.cPointer(), globalPos.cPointer(), (C.int)(delta), (C.int)(buttons), (C.int)(modifiers)))
-	ret.isSubclass = true
-	return ret
+	return newQWheelEvent(C.QWheelEvent_new2(pos.cPointer(), globalPos.cPointer(), (C.int)(delta), (C.int)(buttons), (C.int)(modifiers)))
 }
 
 // NewQWheelEvent3 constructs a new QWheelEvent object.
 func NewQWheelEvent3(pos *QPointF, globalPos *QPointF, pixelDelta QPoint, angleDelta QPoint, qt4Delta int, qt4Orientation Orientation, buttons MouseButton, modifiers KeyboardModifier) *QWheelEvent {
 
-	ret := newQWheelEvent(C.QWheelEvent_new3(pos.cPointer(), globalPos.cPointer(), pixelDelta.cPointer(), angleDelta.cPointer(), (C.int)(qt4Delta), (C.int)(qt4Orientation), (C.int)(buttons), (C.int)(modifiers)))
-	ret.isSubclass = true
-	return ret
+	return newQWheelEvent(C.QWheelEvent_new3(pos.cPointer(), globalPos.cPointer(), pixelDelta.cPointer(), angleDelta.cPointer(), (C.int)(qt4Delta), (C.int)(qt4Orientation), (C.int)(buttons), (C.int)(modifiers)))
 }
 
 // NewQWheelEvent4 constructs a new QWheelEvent object.
 func NewQWheelEvent4(pos *QPointF, globalPos *QPointF, pixelDelta QPoint, angleDelta QPoint, qt4Delta int, qt4Orientation Orientation, buttons MouseButton, modifiers KeyboardModifier, phase ScrollPhase) *QWheelEvent {
 
-	ret := newQWheelEvent(C.QWheelEvent_new4(pos.cPointer(), globalPos.cPointer(), pixelDelta.cPointer(), angleDelta.cPointer(), (C.int)(qt4Delta), (C.int)(qt4Orientation), (C.int)(buttons), (C.int)(modifiers), (C.int)(phase)))
-	ret.isSubclass = true
-	return ret
+	return newQWheelEvent(C.QWheelEvent_new4(pos.cPointer(), globalPos.cPointer(), pixelDelta.cPointer(), angleDelta.cPointer(), (C.int)(qt4Delta), (C.int)(qt4Orientation), (C.int)(buttons), (C.int)(modifiers), (C.int)(phase)))
 }
 
 // NewQWheelEvent5 constructs a new QWheelEvent object.
 func NewQWheelEvent5(pos *QPointF, globalPos *QPointF, pixelDelta QPoint, angleDelta QPoint, qt4Delta int, qt4Orientation Orientation, buttons MouseButton, modifiers KeyboardModifier, phase ScrollPhase, source MouseEventSource) *QWheelEvent {
 
-	ret := newQWheelEvent(C.QWheelEvent_new5(pos.cPointer(), globalPos.cPointer(), pixelDelta.cPointer(), angleDelta.cPointer(), (C.int)(qt4Delta), (C.int)(qt4Orientation), (C.int)(buttons), (C.int)(modifiers), (C.int)(phase), (C.int)(source)))
-	ret.isSubclass = true
-	return ret
+	return newQWheelEvent(C.QWheelEvent_new5(pos.cPointer(), globalPos.cPointer(), pixelDelta.cPointer(), angleDelta.cPointer(), (C.int)(qt4Delta), (C.int)(qt4Orientation), (C.int)(buttons), (C.int)(modifiers), (C.int)(phase), (C.int)(source)))
 }
 
 // NewQWheelEvent6 constructs a new QWheelEvent object.
 func NewQWheelEvent6(pos *QPointF, globalPos *QPointF, pixelDelta QPoint, angleDelta QPoint, qt4Delta int, qt4Orientation Orientation, buttons MouseButton, modifiers KeyboardModifier, phase ScrollPhase, source MouseEventSource, inverted bool) *QWheelEvent {
 
-	ret := newQWheelEvent(C.QWheelEvent_new6(pos.cPointer(), globalPos.cPointer(), pixelDelta.cPointer(), angleDelta.cPointer(), (C.int)(qt4Delta), (C.int)(qt4Orientation), (C.int)(buttons), (C.int)(modifiers), (C.int)(phase), (C.int)(source), (C.bool)(inverted)))
-	ret.isSubclass = true
-	return ret
+	return newQWheelEvent(C.QWheelEvent_new6(pos.cPointer(), globalPos.cPointer(), pixelDelta.cPointer(), angleDelta.cPointer(), (C.int)(qt4Delta), (C.int)(qt4Orientation), (C.int)(buttons), (C.int)(modifiers), (C.int)(phase), (C.int)(source), (C.bool)(inverted)))
 }
 
 // NewQWheelEvent7 constructs a new QWheelEvent object.
 func NewQWheelEvent7(pos QPointF, globalPos QPointF, pixelDelta QPoint, angleDelta QPoint, buttons MouseButton, modifiers KeyboardModifier, phase ScrollPhase, inverted bool) *QWheelEvent {
 
-	ret := newQWheelEvent(C.QWheelEvent_new7(pos.cPointer(), globalPos.cPointer(), pixelDelta.cPointer(), angleDelta.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.int)(phase), (C.bool)(inverted)))
-	ret.isSubclass = true
-	return ret
+	return newQWheelEvent(C.QWheelEvent_new7(pos.cPointer(), globalPos.cPointer(), pixelDelta.cPointer(), angleDelta.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.int)(phase), (C.bool)(inverted)))
 }
 
 // NewQWheelEvent8 constructs a new QWheelEvent object.
 func NewQWheelEvent8(param1 *QWheelEvent) *QWheelEvent {
 
-	ret := newQWheelEvent(C.QWheelEvent_new8(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWheelEvent(C.QWheelEvent_new8(param1.cPointer()))
 }
 
 // NewQWheelEvent9 constructs a new QWheelEvent object.
 func NewQWheelEvent9(pos *QPointF, delta int, buttons MouseButton, modifiers KeyboardModifier, orient Orientation) *QWheelEvent {
 
-	ret := newQWheelEvent(C.QWheelEvent_new9(pos.cPointer(), (C.int)(delta), (C.int)(buttons), (C.int)(modifiers), (C.int)(orient)))
-	ret.isSubclass = true
-	return ret
+	return newQWheelEvent(C.QWheelEvent_new9(pos.cPointer(), (C.int)(delta), (C.int)(buttons), (C.int)(modifiers), (C.int)(orient)))
 }
 
 // NewQWheelEvent10 constructs a new QWheelEvent object.
 func NewQWheelEvent10(pos *QPointF, globalPos *QPointF, delta int, buttons MouseButton, modifiers KeyboardModifier, orient Orientation) *QWheelEvent {
 
-	ret := newQWheelEvent(C.QWheelEvent_new10(pos.cPointer(), globalPos.cPointer(), (C.int)(delta), (C.int)(buttons), (C.int)(modifiers), (C.int)(orient)))
-	ret.isSubclass = true
-	return ret
+	return newQWheelEvent(C.QWheelEvent_new10(pos.cPointer(), globalPos.cPointer(), (C.int)(delta), (C.int)(buttons), (C.int)(modifiers), (C.int)(orient)))
 }
 
 // NewQWheelEvent11 constructs a new QWheelEvent object.
 func NewQWheelEvent11(pos QPointF, globalPos QPointF, pixelDelta QPoint, angleDelta QPoint, buttons MouseButton, modifiers KeyboardModifier, phase ScrollPhase, inverted bool, source MouseEventSource) *QWheelEvent {
 
-	ret := newQWheelEvent(C.QWheelEvent_new11(pos.cPointer(), globalPos.cPointer(), pixelDelta.cPointer(), angleDelta.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.int)(phase), (C.bool)(inverted), (C.int)(source)))
-	ret.isSubclass = true
-	return ret
+	return newQWheelEvent(C.QWheelEvent_new11(pos.cPointer(), globalPos.cPointer(), pixelDelta.cPointer(), angleDelta.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.int)(phase), (C.bool)(inverted), (C.int)(source)))
 }
 
 func (this *QWheelEvent) PixelDelta() *QPoint {
@@ -735,7 +682,7 @@ func (this *QWheelEvent) Source() MouseEventSource {
 
 // Delete this object from C++ memory.
 func (this *QWheelEvent) Delete() {
-	C.QWheelEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QWheelEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -748,8 +695,7 @@ func (this *QWheelEvent) GoGC() {
 }
 
 type QTabletEvent struct {
-	h          *C.QTabletEvent
-	isSubclass bool
+	h *C.QTabletEvent
 	*QInputEvent
 }
 
@@ -787,25 +733,19 @@ func UnsafeNewQTabletEvent(h unsafe.Pointer) *QTabletEvent {
 // NewQTabletEvent constructs a new QTabletEvent object.
 func NewQTabletEvent(t QEvent__Type, pos *QPointF, globalPos *QPointF, device int, pointerType int, pressure float64, xTilt int, yTilt int, tangentialPressure float64, rotation float64, z int, keyState KeyboardModifier, uniqueID int64) *QTabletEvent {
 
-	ret := newQTabletEvent(C.QTabletEvent_new((C.int)(t), pos.cPointer(), globalPos.cPointer(), (C.int)(device), (C.int)(pointerType), (C.double)(pressure), (C.int)(xTilt), (C.int)(yTilt), (C.double)(tangentialPressure), (C.double)(rotation), (C.int)(z), (C.int)(keyState), (C.longlong)(uniqueID)))
-	ret.isSubclass = true
-	return ret
+	return newQTabletEvent(C.QTabletEvent_new((C.int)(t), pos.cPointer(), globalPos.cPointer(), (C.int)(device), (C.int)(pointerType), (C.double)(pressure), (C.int)(xTilt), (C.int)(yTilt), (C.double)(tangentialPressure), (C.double)(rotation), (C.int)(z), (C.int)(keyState), (C.longlong)(uniqueID)))
 }
 
 // NewQTabletEvent2 constructs a new QTabletEvent object.
 func NewQTabletEvent2(t QEvent__Type, pos *QPointF, globalPos *QPointF, device int, pointerType int, pressure float64, xTilt int, yTilt int, tangentialPressure float64, rotation float64, z int, keyState KeyboardModifier, uniqueID int64, button MouseButton, buttons MouseButton) *QTabletEvent {
 
-	ret := newQTabletEvent(C.QTabletEvent_new2((C.int)(t), pos.cPointer(), globalPos.cPointer(), (C.int)(device), (C.int)(pointerType), (C.double)(pressure), (C.int)(xTilt), (C.int)(yTilt), (C.double)(tangentialPressure), (C.double)(rotation), (C.int)(z), (C.int)(keyState), (C.longlong)(uniqueID), (C.int)(button), (C.int)(buttons)))
-	ret.isSubclass = true
-	return ret
+	return newQTabletEvent(C.QTabletEvent_new2((C.int)(t), pos.cPointer(), globalPos.cPointer(), (C.int)(device), (C.int)(pointerType), (C.double)(pressure), (C.int)(xTilt), (C.int)(yTilt), (C.double)(tangentialPressure), (C.double)(rotation), (C.int)(z), (C.int)(keyState), (C.longlong)(uniqueID), (C.int)(button), (C.int)(buttons)))
 }
 
 // NewQTabletEvent3 constructs a new QTabletEvent object.
 func NewQTabletEvent3(param1 *QTabletEvent) *QTabletEvent {
 
-	ret := newQTabletEvent(C.QTabletEvent_new3(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTabletEvent(C.QTabletEvent_new3(param1.cPointer()))
 }
 
 func (this *QTabletEvent) Pos() *QPoint {
@@ -902,7 +842,7 @@ func (this *QTabletEvent) Buttons() MouseButton {
 
 // Delete this object from C++ memory.
 func (this *QTabletEvent) Delete() {
-	C.QTabletEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QTabletEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -915,8 +855,7 @@ func (this *QTabletEvent) GoGC() {
 }
 
 type QNativeGestureEvent struct {
-	h          *C.QNativeGestureEvent
-	isSubclass bool
+	h *C.QNativeGestureEvent
 	*QInputEvent
 }
 
@@ -954,25 +893,19 @@ func UnsafeNewQNativeGestureEvent(h unsafe.Pointer) *QNativeGestureEvent {
 // NewQNativeGestureEvent constructs a new QNativeGestureEvent object.
 func NewQNativeGestureEvent(typeVal NativeGestureType, localPos *QPointF, windowPos *QPointF, screenPos *QPointF, value float64, sequenceId uint64, intArgument uint64) *QNativeGestureEvent {
 
-	ret := newQNativeGestureEvent(C.QNativeGestureEvent_new((C.int)(typeVal), localPos.cPointer(), windowPos.cPointer(), screenPos.cPointer(), (C.double)(value), (C.ulong)(sequenceId), (C.ulonglong)(intArgument)))
-	ret.isSubclass = true
-	return ret
+	return newQNativeGestureEvent(C.QNativeGestureEvent_new((C.int)(typeVal), localPos.cPointer(), windowPos.cPointer(), screenPos.cPointer(), (C.double)(value), (C.ulong)(sequenceId), (C.ulonglong)(intArgument)))
 }
 
 // NewQNativeGestureEvent2 constructs a new QNativeGestureEvent object.
 func NewQNativeGestureEvent2(typeVal NativeGestureType, dev *QTouchDevice, localPos *QPointF, windowPos *QPointF, screenPos *QPointF, value float64, sequenceId uint64, intArgument uint64) *QNativeGestureEvent {
 
-	ret := newQNativeGestureEvent(C.QNativeGestureEvent_new2((C.int)(typeVal), dev.cPointer(), localPos.cPointer(), windowPos.cPointer(), screenPos.cPointer(), (C.double)(value), (C.ulong)(sequenceId), (C.ulonglong)(intArgument)))
-	ret.isSubclass = true
-	return ret
+	return newQNativeGestureEvent(C.QNativeGestureEvent_new2((C.int)(typeVal), dev.cPointer(), localPos.cPointer(), windowPos.cPointer(), screenPos.cPointer(), (C.double)(value), (C.ulong)(sequenceId), (C.ulonglong)(intArgument)))
 }
 
 // NewQNativeGestureEvent3 constructs a new QNativeGestureEvent object.
 func NewQNativeGestureEvent3(param1 *QNativeGestureEvent) *QNativeGestureEvent {
 
-	ret := newQNativeGestureEvent(C.QNativeGestureEvent_new3(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQNativeGestureEvent(C.QNativeGestureEvent_new3(param1.cPointer()))
 }
 
 func (this *QNativeGestureEvent) GestureType() NativeGestureType {
@@ -1013,7 +946,7 @@ func (this *QNativeGestureEvent) Device() *QTouchDevice {
 
 // Delete this object from C++ memory.
 func (this *QNativeGestureEvent) Delete() {
-	C.QNativeGestureEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QNativeGestureEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1026,8 +959,7 @@ func (this *QNativeGestureEvent) GoGC() {
 }
 
 type QKeyEvent struct {
-	h          *C.QKeyEvent
-	isSubclass bool
+	h *C.QKeyEvent
 	*QInputEvent
 }
 
@@ -1065,25 +997,19 @@ func UnsafeNewQKeyEvent(h unsafe.Pointer) *QKeyEvent {
 // NewQKeyEvent constructs a new QKeyEvent object.
 func NewQKeyEvent(typeVal QEvent__Type, key int, modifiers KeyboardModifier) *QKeyEvent {
 
-	ret := newQKeyEvent(C.QKeyEvent_new((C.int)(typeVal), (C.int)(key), (C.int)(modifiers)))
-	ret.isSubclass = true
-	return ret
+	return newQKeyEvent(C.QKeyEvent_new((C.int)(typeVal), (C.int)(key), (C.int)(modifiers)))
 }
 
 // NewQKeyEvent2 constructs a new QKeyEvent object.
 func NewQKeyEvent2(typeVal QEvent__Type, key int, modifiers KeyboardModifier, nativeScanCode uint, nativeVirtualKey uint, nativeModifiers uint) *QKeyEvent {
 
-	ret := newQKeyEvent(C.QKeyEvent_new2((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), (C.uint)(nativeScanCode), (C.uint)(nativeVirtualKey), (C.uint)(nativeModifiers)))
-	ret.isSubclass = true
-	return ret
+	return newQKeyEvent(C.QKeyEvent_new2((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), (C.uint)(nativeScanCode), (C.uint)(nativeVirtualKey), (C.uint)(nativeModifiers)))
 }
 
 // NewQKeyEvent3 constructs a new QKeyEvent object.
 func NewQKeyEvent3(param1 *QKeyEvent) *QKeyEvent {
 
-	ret := newQKeyEvent(C.QKeyEvent_new3(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQKeyEvent(C.QKeyEvent_new3(param1.cPointer()))
 }
 
 // NewQKeyEvent4 constructs a new QKeyEvent object.
@@ -1093,9 +1019,7 @@ func NewQKeyEvent4(typeVal QEvent__Type, key int, modifiers KeyboardModifier, te
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQKeyEvent(C.QKeyEvent_new4((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), text_ms))
-	ret.isSubclass = true
-	return ret
+	return newQKeyEvent(C.QKeyEvent_new4((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), text_ms))
 }
 
 // NewQKeyEvent5 constructs a new QKeyEvent object.
@@ -1105,9 +1029,7 @@ func NewQKeyEvent5(typeVal QEvent__Type, key int, modifiers KeyboardModifier, te
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQKeyEvent(C.QKeyEvent_new5((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), text_ms, (C.bool)(autorep)))
-	ret.isSubclass = true
-	return ret
+	return newQKeyEvent(C.QKeyEvent_new5((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), text_ms, (C.bool)(autorep)))
 }
 
 // NewQKeyEvent6 constructs a new QKeyEvent object.
@@ -1117,9 +1039,7 @@ func NewQKeyEvent6(typeVal QEvent__Type, key int, modifiers KeyboardModifier, te
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQKeyEvent(C.QKeyEvent_new6((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), text_ms, (C.bool)(autorep), (C.uint16_t)(count)))
-	ret.isSubclass = true
-	return ret
+	return newQKeyEvent(C.QKeyEvent_new6((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), text_ms, (C.bool)(autorep), (C.uint16_t)(count)))
 }
 
 // NewQKeyEvent7 constructs a new QKeyEvent object.
@@ -1129,9 +1049,7 @@ func NewQKeyEvent7(typeVal QEvent__Type, key int, modifiers KeyboardModifier, na
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQKeyEvent(C.QKeyEvent_new7((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), (C.uint)(nativeScanCode), (C.uint)(nativeVirtualKey), (C.uint)(nativeModifiers), text_ms))
-	ret.isSubclass = true
-	return ret
+	return newQKeyEvent(C.QKeyEvent_new7((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), (C.uint)(nativeScanCode), (C.uint)(nativeVirtualKey), (C.uint)(nativeModifiers), text_ms))
 }
 
 // NewQKeyEvent8 constructs a new QKeyEvent object.
@@ -1141,9 +1059,7 @@ func NewQKeyEvent8(typeVal QEvent__Type, key int, modifiers KeyboardModifier, na
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQKeyEvent(C.QKeyEvent_new8((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), (C.uint)(nativeScanCode), (C.uint)(nativeVirtualKey), (C.uint)(nativeModifiers), text_ms, (C.bool)(autorep)))
-	ret.isSubclass = true
-	return ret
+	return newQKeyEvent(C.QKeyEvent_new8((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), (C.uint)(nativeScanCode), (C.uint)(nativeVirtualKey), (C.uint)(nativeModifiers), text_ms, (C.bool)(autorep)))
 }
 
 // NewQKeyEvent9 constructs a new QKeyEvent object.
@@ -1153,9 +1069,7 @@ func NewQKeyEvent9(typeVal QEvent__Type, key int, modifiers KeyboardModifier, na
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQKeyEvent(C.QKeyEvent_new9((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), (C.uint)(nativeScanCode), (C.uint)(nativeVirtualKey), (C.uint)(nativeModifiers), text_ms, (C.bool)(autorep), (C.uint16_t)(count)))
-	ret.isSubclass = true
-	return ret
+	return newQKeyEvent(C.QKeyEvent_new9((C.int)(typeVal), (C.int)(key), (C.int)(modifiers), (C.uint)(nativeScanCode), (C.uint)(nativeVirtualKey), (C.uint)(nativeModifiers), text_ms, (C.bool)(autorep), (C.uint16_t)(count)))
 }
 
 func (this *QKeyEvent) Key() int {
@@ -1199,7 +1113,7 @@ func (this *QKeyEvent) NativeModifiers() uint {
 
 // Delete this object from C++ memory.
 func (this *QKeyEvent) Delete() {
-	C.QKeyEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QKeyEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1212,8 +1126,7 @@ func (this *QKeyEvent) GoGC() {
 }
 
 type QFocusEvent struct {
-	h          *C.QFocusEvent
-	isSubclass bool
+	h *C.QFocusEvent
 	*QEvent
 }
 
@@ -1251,25 +1164,19 @@ func UnsafeNewQFocusEvent(h unsafe.Pointer) *QFocusEvent {
 // NewQFocusEvent constructs a new QFocusEvent object.
 func NewQFocusEvent(typeVal QEvent__Type) *QFocusEvent {
 
-	ret := newQFocusEvent(C.QFocusEvent_new((C.int)(typeVal)))
-	ret.isSubclass = true
-	return ret
+	return newQFocusEvent(C.QFocusEvent_new((C.int)(typeVal)))
 }
 
 // NewQFocusEvent2 constructs a new QFocusEvent object.
 func NewQFocusEvent2(param1 *QFocusEvent) *QFocusEvent {
 
-	ret := newQFocusEvent(C.QFocusEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQFocusEvent(C.QFocusEvent_new2(param1.cPointer()))
 }
 
 // NewQFocusEvent3 constructs a new QFocusEvent object.
 func NewQFocusEvent3(typeVal QEvent__Type, reason FocusReason) *QFocusEvent {
 
-	ret := newQFocusEvent(C.QFocusEvent_new3((C.int)(typeVal), (C.int)(reason)))
-	ret.isSubclass = true
-	return ret
+	return newQFocusEvent(C.QFocusEvent_new3((C.int)(typeVal), (C.int)(reason)))
 }
 
 func (this *QFocusEvent) GotFocus() bool {
@@ -1286,7 +1193,7 @@ func (this *QFocusEvent) Reason() FocusReason {
 
 // Delete this object from C++ memory.
 func (this *QFocusEvent) Delete() {
-	C.QFocusEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QFocusEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1299,8 +1206,7 @@ func (this *QFocusEvent) GoGC() {
 }
 
 type QPaintEvent struct {
-	h          *C.QPaintEvent
-	isSubclass bool
+	h *C.QPaintEvent
 	*QEvent
 }
 
@@ -1338,25 +1244,19 @@ func UnsafeNewQPaintEvent(h unsafe.Pointer) *QPaintEvent {
 // NewQPaintEvent constructs a new QPaintEvent object.
 func NewQPaintEvent(paintRegion *QRegion) *QPaintEvent {
 
-	ret := newQPaintEvent(C.QPaintEvent_new(paintRegion.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPaintEvent(C.QPaintEvent_new(paintRegion.cPointer()))
 }
 
 // NewQPaintEvent2 constructs a new QPaintEvent object.
 func NewQPaintEvent2(paintRect *QRect) *QPaintEvent {
 
-	ret := newQPaintEvent(C.QPaintEvent_new2(paintRect.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPaintEvent(C.QPaintEvent_new2(paintRect.cPointer()))
 }
 
 // NewQPaintEvent3 constructs a new QPaintEvent object.
 func NewQPaintEvent3(param1 *QPaintEvent) *QPaintEvent {
 
-	ret := newQPaintEvent(C.QPaintEvent_new3(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPaintEvent(C.QPaintEvent_new3(param1.cPointer()))
 }
 
 func (this *QPaintEvent) Rect() *QRect {
@@ -1369,7 +1269,7 @@ func (this *QPaintEvent) Region() *QRegion {
 
 // Delete this object from C++ memory.
 func (this *QPaintEvent) Delete() {
-	C.QPaintEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QPaintEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1382,8 +1282,7 @@ func (this *QPaintEvent) GoGC() {
 }
 
 type QMoveEvent struct {
-	h          *C.QMoveEvent
-	isSubclass bool
+	h *C.QMoveEvent
 	*QEvent
 }
 
@@ -1421,17 +1320,13 @@ func UnsafeNewQMoveEvent(h unsafe.Pointer) *QMoveEvent {
 // NewQMoveEvent constructs a new QMoveEvent object.
 func NewQMoveEvent(pos *QPoint, oldPos *QPoint) *QMoveEvent {
 
-	ret := newQMoveEvent(C.QMoveEvent_new(pos.cPointer(), oldPos.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQMoveEvent(C.QMoveEvent_new(pos.cPointer(), oldPos.cPointer()))
 }
 
 // NewQMoveEvent2 constructs a new QMoveEvent object.
 func NewQMoveEvent2(param1 *QMoveEvent) *QMoveEvent {
 
-	ret := newQMoveEvent(C.QMoveEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQMoveEvent(C.QMoveEvent_new2(param1.cPointer()))
 }
 
 func (this *QMoveEvent) Pos() *QPoint {
@@ -1444,7 +1339,7 @@ func (this *QMoveEvent) OldPos() *QPoint {
 
 // Delete this object from C++ memory.
 func (this *QMoveEvent) Delete() {
-	C.QMoveEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QMoveEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1457,8 +1352,7 @@ func (this *QMoveEvent) GoGC() {
 }
 
 type QExposeEvent struct {
-	h          *C.QExposeEvent
-	isSubclass bool
+	h *C.QExposeEvent
 	*QEvent
 }
 
@@ -1496,17 +1390,13 @@ func UnsafeNewQExposeEvent(h unsafe.Pointer) *QExposeEvent {
 // NewQExposeEvent constructs a new QExposeEvent object.
 func NewQExposeEvent(rgn *QRegion) *QExposeEvent {
 
-	ret := newQExposeEvent(C.QExposeEvent_new(rgn.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQExposeEvent(C.QExposeEvent_new(rgn.cPointer()))
 }
 
 // NewQExposeEvent2 constructs a new QExposeEvent object.
 func NewQExposeEvent2(param1 *QExposeEvent) *QExposeEvent {
 
-	ret := newQExposeEvent(C.QExposeEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQExposeEvent(C.QExposeEvent_new2(param1.cPointer()))
 }
 
 func (this *QExposeEvent) Region() *QRegion {
@@ -1515,7 +1405,7 @@ func (this *QExposeEvent) Region() *QRegion {
 
 // Delete this object from C++ memory.
 func (this *QExposeEvent) Delete() {
-	C.QExposeEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QExposeEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1528,8 +1418,7 @@ func (this *QExposeEvent) GoGC() {
 }
 
 type QPlatformSurfaceEvent struct {
-	h          *C.QPlatformSurfaceEvent
-	isSubclass bool
+	h *C.QPlatformSurfaceEvent
 	*QEvent
 }
 
@@ -1567,17 +1456,13 @@ func UnsafeNewQPlatformSurfaceEvent(h unsafe.Pointer) *QPlatformSurfaceEvent {
 // NewQPlatformSurfaceEvent constructs a new QPlatformSurfaceEvent object.
 func NewQPlatformSurfaceEvent(surfaceEventType QPlatformSurfaceEvent__SurfaceEventType) *QPlatformSurfaceEvent {
 
-	ret := newQPlatformSurfaceEvent(C.QPlatformSurfaceEvent_new((C.int)(surfaceEventType)))
-	ret.isSubclass = true
-	return ret
+	return newQPlatformSurfaceEvent(C.QPlatformSurfaceEvent_new((C.int)(surfaceEventType)))
 }
 
 // NewQPlatformSurfaceEvent2 constructs a new QPlatformSurfaceEvent object.
 func NewQPlatformSurfaceEvent2(param1 *QPlatformSurfaceEvent) *QPlatformSurfaceEvent {
 
-	ret := newQPlatformSurfaceEvent(C.QPlatformSurfaceEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPlatformSurfaceEvent(C.QPlatformSurfaceEvent_new2(param1.cPointer()))
 }
 
 func (this *QPlatformSurfaceEvent) SurfaceEventType() QPlatformSurfaceEvent__SurfaceEventType {
@@ -1586,7 +1471,7 @@ func (this *QPlatformSurfaceEvent) SurfaceEventType() QPlatformSurfaceEvent__Sur
 
 // Delete this object from C++ memory.
 func (this *QPlatformSurfaceEvent) Delete() {
-	C.QPlatformSurfaceEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QPlatformSurfaceEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1599,8 +1484,7 @@ func (this *QPlatformSurfaceEvent) GoGC() {
 }
 
 type QResizeEvent struct {
-	h          *C.QResizeEvent
-	isSubclass bool
+	h *C.QResizeEvent
 	*QEvent
 }
 
@@ -1638,17 +1522,13 @@ func UnsafeNewQResizeEvent(h unsafe.Pointer) *QResizeEvent {
 // NewQResizeEvent constructs a new QResizeEvent object.
 func NewQResizeEvent(size *QSize, oldSize *QSize) *QResizeEvent {
 
-	ret := newQResizeEvent(C.QResizeEvent_new(size.cPointer(), oldSize.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQResizeEvent(C.QResizeEvent_new(size.cPointer(), oldSize.cPointer()))
 }
 
 // NewQResizeEvent2 constructs a new QResizeEvent object.
 func NewQResizeEvent2(param1 *QResizeEvent) *QResizeEvent {
 
-	ret := newQResizeEvent(C.QResizeEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQResizeEvent(C.QResizeEvent_new2(param1.cPointer()))
 }
 
 func (this *QResizeEvent) Size() *QSize {
@@ -1661,7 +1541,7 @@ func (this *QResizeEvent) OldSize() *QSize {
 
 // Delete this object from C++ memory.
 func (this *QResizeEvent) Delete() {
-	C.QResizeEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QResizeEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1674,8 +1554,7 @@ func (this *QResizeEvent) GoGC() {
 }
 
 type QCloseEvent struct {
-	h          *C.QCloseEvent
-	isSubclass bool
+	h *C.QCloseEvent
 	*QEvent
 }
 
@@ -1713,17 +1592,13 @@ func UnsafeNewQCloseEvent(h unsafe.Pointer) *QCloseEvent {
 // NewQCloseEvent constructs a new QCloseEvent object.
 func NewQCloseEvent() *QCloseEvent {
 
-	ret := newQCloseEvent(C.QCloseEvent_new())
-	ret.isSubclass = true
-	return ret
+	return newQCloseEvent(C.QCloseEvent_new())
 }
 
 // NewQCloseEvent2 constructs a new QCloseEvent object.
 func NewQCloseEvent2(param1 *QCloseEvent) *QCloseEvent {
 
-	ret := newQCloseEvent(C.QCloseEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQCloseEvent(C.QCloseEvent_new2(param1.cPointer()))
 }
 
 func (this *QCloseEvent) OperatorAssign(param1 *QCloseEvent) {
@@ -1732,7 +1607,7 @@ func (this *QCloseEvent) OperatorAssign(param1 *QCloseEvent) {
 
 // Delete this object from C++ memory.
 func (this *QCloseEvent) Delete() {
-	C.QCloseEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QCloseEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1745,8 +1620,7 @@ func (this *QCloseEvent) GoGC() {
 }
 
 type QIconDragEvent struct {
-	h          *C.QIconDragEvent
-	isSubclass bool
+	h *C.QIconDragEvent
 	*QEvent
 }
 
@@ -1784,17 +1658,13 @@ func UnsafeNewQIconDragEvent(h unsafe.Pointer) *QIconDragEvent {
 // NewQIconDragEvent constructs a new QIconDragEvent object.
 func NewQIconDragEvent() *QIconDragEvent {
 
-	ret := newQIconDragEvent(C.QIconDragEvent_new())
-	ret.isSubclass = true
-	return ret
+	return newQIconDragEvent(C.QIconDragEvent_new())
 }
 
 // NewQIconDragEvent2 constructs a new QIconDragEvent object.
 func NewQIconDragEvent2(param1 *QIconDragEvent) *QIconDragEvent {
 
-	ret := newQIconDragEvent(C.QIconDragEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQIconDragEvent(C.QIconDragEvent_new2(param1.cPointer()))
 }
 
 func (this *QIconDragEvent) OperatorAssign(param1 *QIconDragEvent) {
@@ -1803,7 +1673,7 @@ func (this *QIconDragEvent) OperatorAssign(param1 *QIconDragEvent) {
 
 // Delete this object from C++ memory.
 func (this *QIconDragEvent) Delete() {
-	C.QIconDragEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QIconDragEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1816,8 +1686,7 @@ func (this *QIconDragEvent) GoGC() {
 }
 
 type QShowEvent struct {
-	h          *C.QShowEvent
-	isSubclass bool
+	h *C.QShowEvent
 	*QEvent
 }
 
@@ -1855,17 +1724,13 @@ func UnsafeNewQShowEvent(h unsafe.Pointer) *QShowEvent {
 // NewQShowEvent constructs a new QShowEvent object.
 func NewQShowEvent() *QShowEvent {
 
-	ret := newQShowEvent(C.QShowEvent_new())
-	ret.isSubclass = true
-	return ret
+	return newQShowEvent(C.QShowEvent_new())
 }
 
 // NewQShowEvent2 constructs a new QShowEvent object.
 func NewQShowEvent2(param1 *QShowEvent) *QShowEvent {
 
-	ret := newQShowEvent(C.QShowEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQShowEvent(C.QShowEvent_new2(param1.cPointer()))
 }
 
 func (this *QShowEvent) OperatorAssign(param1 *QShowEvent) {
@@ -1874,7 +1739,7 @@ func (this *QShowEvent) OperatorAssign(param1 *QShowEvent) {
 
 // Delete this object from C++ memory.
 func (this *QShowEvent) Delete() {
-	C.QShowEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QShowEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1887,8 +1752,7 @@ func (this *QShowEvent) GoGC() {
 }
 
 type QHideEvent struct {
-	h          *C.QHideEvent
-	isSubclass bool
+	h *C.QHideEvent
 	*QEvent
 }
 
@@ -1926,17 +1790,13 @@ func UnsafeNewQHideEvent(h unsafe.Pointer) *QHideEvent {
 // NewQHideEvent constructs a new QHideEvent object.
 func NewQHideEvent() *QHideEvent {
 
-	ret := newQHideEvent(C.QHideEvent_new())
-	ret.isSubclass = true
-	return ret
+	return newQHideEvent(C.QHideEvent_new())
 }
 
 // NewQHideEvent2 constructs a new QHideEvent object.
 func NewQHideEvent2(param1 *QHideEvent) *QHideEvent {
 
-	ret := newQHideEvent(C.QHideEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQHideEvent(C.QHideEvent_new2(param1.cPointer()))
 }
 
 func (this *QHideEvent) OperatorAssign(param1 *QHideEvent) {
@@ -1945,7 +1805,7 @@ func (this *QHideEvent) OperatorAssign(param1 *QHideEvent) {
 
 // Delete this object from C++ memory.
 func (this *QHideEvent) Delete() {
-	C.QHideEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QHideEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1958,8 +1818,7 @@ func (this *QHideEvent) GoGC() {
 }
 
 type QContextMenuEvent struct {
-	h          *C.QContextMenuEvent
-	isSubclass bool
+	h *C.QContextMenuEvent
 	*QInputEvent
 }
 
@@ -1997,33 +1856,25 @@ func UnsafeNewQContextMenuEvent(h unsafe.Pointer) *QContextMenuEvent {
 // NewQContextMenuEvent constructs a new QContextMenuEvent object.
 func NewQContextMenuEvent(reason QContextMenuEvent__Reason, pos *QPoint, globalPos *QPoint, modifiers KeyboardModifier) *QContextMenuEvent {
 
-	ret := newQContextMenuEvent(C.QContextMenuEvent_new((C.int)(reason), pos.cPointer(), globalPos.cPointer(), (C.int)(modifiers)))
-	ret.isSubclass = true
-	return ret
+	return newQContextMenuEvent(C.QContextMenuEvent_new((C.int)(reason), pos.cPointer(), globalPos.cPointer(), (C.int)(modifiers)))
 }
 
 // NewQContextMenuEvent2 constructs a new QContextMenuEvent object.
 func NewQContextMenuEvent2(reason QContextMenuEvent__Reason, pos *QPoint, globalPos *QPoint) *QContextMenuEvent {
 
-	ret := newQContextMenuEvent(C.QContextMenuEvent_new2((C.int)(reason), pos.cPointer(), globalPos.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQContextMenuEvent(C.QContextMenuEvent_new2((C.int)(reason), pos.cPointer(), globalPos.cPointer()))
 }
 
 // NewQContextMenuEvent3 constructs a new QContextMenuEvent object.
 func NewQContextMenuEvent3(reason QContextMenuEvent__Reason, pos *QPoint) *QContextMenuEvent {
 
-	ret := newQContextMenuEvent(C.QContextMenuEvent_new3((C.int)(reason), pos.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQContextMenuEvent(C.QContextMenuEvent_new3((C.int)(reason), pos.cPointer()))
 }
 
 // NewQContextMenuEvent4 constructs a new QContextMenuEvent object.
 func NewQContextMenuEvent4(param1 *QContextMenuEvent) *QContextMenuEvent {
 
-	ret := newQContextMenuEvent(C.QContextMenuEvent_new4(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQContextMenuEvent(C.QContextMenuEvent_new4(param1.cPointer()))
 }
 
 func (this *QContextMenuEvent) X() int {
@@ -2056,7 +1907,7 @@ func (this *QContextMenuEvent) Reason() QContextMenuEvent__Reason {
 
 // Delete this object from C++ memory.
 func (this *QContextMenuEvent) Delete() {
-	C.QContextMenuEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QContextMenuEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2069,8 +1920,7 @@ func (this *QContextMenuEvent) GoGC() {
 }
 
 type QInputMethodEvent struct {
-	h          *C.QInputMethodEvent
-	isSubclass bool
+	h *C.QInputMethodEvent
 	*QEvent
 }
 
@@ -2108,9 +1958,7 @@ func UnsafeNewQInputMethodEvent(h unsafe.Pointer) *QInputMethodEvent {
 // NewQInputMethodEvent constructs a new QInputMethodEvent object.
 func NewQInputMethodEvent() *QInputMethodEvent {
 
-	ret := newQInputMethodEvent(C.QInputMethodEvent_new())
-	ret.isSubclass = true
-	return ret
+	return newQInputMethodEvent(C.QInputMethodEvent_new())
 }
 
 // NewQInputMethodEvent2 constructs a new QInputMethodEvent object.
@@ -2126,17 +1974,13 @@ func NewQInputMethodEvent2(preeditText string, attributes []QInputMethodEvent__A
 	}
 	attributes_ma := C.struct_miqt_array{len: C.size_t(len(attributes)), data: unsafe.Pointer(attributes_CArray)}
 
-	ret := newQInputMethodEvent(C.QInputMethodEvent_new2(preeditText_ms, attributes_ma))
-	ret.isSubclass = true
-	return ret
+	return newQInputMethodEvent(C.QInputMethodEvent_new2(preeditText_ms, attributes_ma))
 }
 
 // NewQInputMethodEvent3 constructs a new QInputMethodEvent object.
 func NewQInputMethodEvent3(other *QInputMethodEvent) *QInputMethodEvent {
 
-	ret := newQInputMethodEvent(C.QInputMethodEvent_new3(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQInputMethodEvent(C.QInputMethodEvent_new3(other.cPointer()))
 }
 
 func (this *QInputMethodEvent) SetCommitString(commitString string) {
@@ -2199,7 +2043,7 @@ func (this *QInputMethodEvent) SetCommitString3(commitString string, replaceFrom
 
 // Delete this object from C++ memory.
 func (this *QInputMethodEvent) Delete() {
-	C.QInputMethodEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QInputMethodEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2212,8 +2056,7 @@ func (this *QInputMethodEvent) GoGC() {
 }
 
 type QInputMethodQueryEvent struct {
-	h          *C.QInputMethodQueryEvent
-	isSubclass bool
+	h *C.QInputMethodQueryEvent
 	*QEvent
 }
 
@@ -2251,17 +2094,13 @@ func UnsafeNewQInputMethodQueryEvent(h unsafe.Pointer) *QInputMethodQueryEvent {
 // NewQInputMethodQueryEvent constructs a new QInputMethodQueryEvent object.
 func NewQInputMethodQueryEvent(queries InputMethodQuery) *QInputMethodQueryEvent {
 
-	ret := newQInputMethodQueryEvent(C.QInputMethodQueryEvent_new((C.int)(queries)))
-	ret.isSubclass = true
-	return ret
+	return newQInputMethodQueryEvent(C.QInputMethodQueryEvent_new((C.int)(queries)))
 }
 
 // NewQInputMethodQueryEvent2 constructs a new QInputMethodQueryEvent object.
 func NewQInputMethodQueryEvent2(param1 *QInputMethodQueryEvent) *QInputMethodQueryEvent {
 
-	ret := newQInputMethodQueryEvent(C.QInputMethodQueryEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQInputMethodQueryEvent(C.QInputMethodQueryEvent_new2(param1.cPointer()))
 }
 
 func (this *QInputMethodQueryEvent) Queries() InputMethodQuery {
@@ -2280,7 +2119,7 @@ func (this *QInputMethodQueryEvent) Value(query InputMethodQuery) *QVariant {
 
 // Delete this object from C++ memory.
 func (this *QInputMethodQueryEvent) Delete() {
-	C.QInputMethodQueryEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QInputMethodQueryEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2293,8 +2132,7 @@ func (this *QInputMethodQueryEvent) GoGC() {
 }
 
 type QDropEvent struct {
-	h          *C.QDropEvent
-	isSubclass bool
+	h *C.QDropEvent
 	*QEvent
 }
 
@@ -2332,25 +2170,19 @@ func UnsafeNewQDropEvent(h unsafe.Pointer) *QDropEvent {
 // NewQDropEvent constructs a new QDropEvent object.
 func NewQDropEvent(pos *QPointF, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier) *QDropEvent {
 
-	ret := newQDropEvent(C.QDropEvent_new(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers)))
-	ret.isSubclass = true
-	return ret
+	return newQDropEvent(C.QDropEvent_new(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers)))
 }
 
 // NewQDropEvent2 constructs a new QDropEvent object.
 func NewQDropEvent2(param1 *QDropEvent) *QDropEvent {
 
-	ret := newQDropEvent(C.QDropEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQDropEvent(C.QDropEvent_new2(param1.cPointer()))
 }
 
 // NewQDropEvent3 constructs a new QDropEvent object.
 func NewQDropEvent3(pos *QPointF, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier, typeVal QEvent__Type) *QDropEvent {
 
-	ret := newQDropEvent(C.QDropEvent_new3(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.int)(typeVal)))
-	ret.isSubclass = true
-	return ret
+	return newQDropEvent(C.QDropEvent_new3(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.int)(typeVal)))
 }
 
 func (this *QDropEvent) Pos() *QPoint {
@@ -2401,7 +2233,7 @@ func (this *QDropEvent) MimeData() *QMimeData {
 
 // Delete this object from C++ memory.
 func (this *QDropEvent) Delete() {
-	C.QDropEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QDropEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2414,8 +2246,7 @@ func (this *QDropEvent) GoGC() {
 }
 
 type QDragMoveEvent struct {
-	h          *C.QDragMoveEvent
-	isSubclass bool
+	h *C.QDragMoveEvent
 	*QDropEvent
 }
 
@@ -2453,25 +2284,19 @@ func UnsafeNewQDragMoveEvent(h unsafe.Pointer) *QDragMoveEvent {
 // NewQDragMoveEvent constructs a new QDragMoveEvent object.
 func NewQDragMoveEvent(pos *QPoint, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier) *QDragMoveEvent {
 
-	ret := newQDragMoveEvent(C.QDragMoveEvent_new(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers)))
-	ret.isSubclass = true
-	return ret
+	return newQDragMoveEvent(C.QDragMoveEvent_new(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers)))
 }
 
 // NewQDragMoveEvent2 constructs a new QDragMoveEvent object.
 func NewQDragMoveEvent2(param1 *QDragMoveEvent) *QDragMoveEvent {
 
-	ret := newQDragMoveEvent(C.QDragMoveEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQDragMoveEvent(C.QDragMoveEvent_new2(param1.cPointer()))
 }
 
 // NewQDragMoveEvent3 constructs a new QDragMoveEvent object.
 func NewQDragMoveEvent3(pos *QPoint, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier, typeVal QEvent__Type) *QDragMoveEvent {
 
-	ret := newQDragMoveEvent(C.QDragMoveEvent_new3(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.int)(typeVal)))
-	ret.isSubclass = true
-	return ret
+	return newQDragMoveEvent(C.QDragMoveEvent_new3(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers), (C.int)(typeVal)))
 }
 
 func (this *QDragMoveEvent) AnswerRect() *QRect {
@@ -2498,7 +2323,7 @@ func (this *QDragMoveEvent) IgnoreWithQRect(r *QRect) {
 
 // Delete this object from C++ memory.
 func (this *QDragMoveEvent) Delete() {
-	C.QDragMoveEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QDragMoveEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2511,8 +2336,7 @@ func (this *QDragMoveEvent) GoGC() {
 }
 
 type QDragEnterEvent struct {
-	h          *C.QDragEnterEvent
-	isSubclass bool
+	h *C.QDragEnterEvent
 	*QDragMoveEvent
 }
 
@@ -2550,17 +2374,13 @@ func UnsafeNewQDragEnterEvent(h unsafe.Pointer) *QDragEnterEvent {
 // NewQDragEnterEvent constructs a new QDragEnterEvent object.
 func NewQDragEnterEvent(pos *QPoint, actions DropAction, data *QMimeData, buttons MouseButton, modifiers KeyboardModifier) *QDragEnterEvent {
 
-	ret := newQDragEnterEvent(C.QDragEnterEvent_new(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers)))
-	ret.isSubclass = true
-	return ret
+	return newQDragEnterEvent(C.QDragEnterEvent_new(pos.cPointer(), (C.int)(actions), data.cPointer(), (C.int)(buttons), (C.int)(modifiers)))
 }
 
 // NewQDragEnterEvent2 constructs a new QDragEnterEvent object.
 func NewQDragEnterEvent2(param1 *QDragEnterEvent) *QDragEnterEvent {
 
-	ret := newQDragEnterEvent(C.QDragEnterEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQDragEnterEvent(C.QDragEnterEvent_new2(param1.cPointer()))
 }
 
 func (this *QDragEnterEvent) OperatorAssign(param1 *QDragEnterEvent) {
@@ -2569,7 +2389,7 @@ func (this *QDragEnterEvent) OperatorAssign(param1 *QDragEnterEvent) {
 
 // Delete this object from C++ memory.
 func (this *QDragEnterEvent) Delete() {
-	C.QDragEnterEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QDragEnterEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2582,8 +2402,7 @@ func (this *QDragEnterEvent) GoGC() {
 }
 
 type QDragLeaveEvent struct {
-	h          *C.QDragLeaveEvent
-	isSubclass bool
+	h *C.QDragLeaveEvent
 	*QEvent
 }
 
@@ -2621,17 +2440,13 @@ func UnsafeNewQDragLeaveEvent(h unsafe.Pointer) *QDragLeaveEvent {
 // NewQDragLeaveEvent constructs a new QDragLeaveEvent object.
 func NewQDragLeaveEvent() *QDragLeaveEvent {
 
-	ret := newQDragLeaveEvent(C.QDragLeaveEvent_new())
-	ret.isSubclass = true
-	return ret
+	return newQDragLeaveEvent(C.QDragLeaveEvent_new())
 }
 
 // NewQDragLeaveEvent2 constructs a new QDragLeaveEvent object.
 func NewQDragLeaveEvent2(param1 *QDragLeaveEvent) *QDragLeaveEvent {
 
-	ret := newQDragLeaveEvent(C.QDragLeaveEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQDragLeaveEvent(C.QDragLeaveEvent_new2(param1.cPointer()))
 }
 
 func (this *QDragLeaveEvent) OperatorAssign(param1 *QDragLeaveEvent) {
@@ -2640,7 +2455,7 @@ func (this *QDragLeaveEvent) OperatorAssign(param1 *QDragLeaveEvent) {
 
 // Delete this object from C++ memory.
 func (this *QDragLeaveEvent) Delete() {
-	C.QDragLeaveEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QDragLeaveEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2653,8 +2468,7 @@ func (this *QDragLeaveEvent) GoGC() {
 }
 
 type QHelpEvent struct {
-	h          *C.QHelpEvent
-	isSubclass bool
+	h *C.QHelpEvent
 	*QEvent
 }
 
@@ -2692,17 +2506,13 @@ func UnsafeNewQHelpEvent(h unsafe.Pointer) *QHelpEvent {
 // NewQHelpEvent constructs a new QHelpEvent object.
 func NewQHelpEvent(typeVal QEvent__Type, pos *QPoint, globalPos *QPoint) *QHelpEvent {
 
-	ret := newQHelpEvent(C.QHelpEvent_new((C.int)(typeVal), pos.cPointer(), globalPos.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQHelpEvent(C.QHelpEvent_new((C.int)(typeVal), pos.cPointer(), globalPos.cPointer()))
 }
 
 // NewQHelpEvent2 constructs a new QHelpEvent object.
 func NewQHelpEvent2(param1 *QHelpEvent) *QHelpEvent {
 
-	ret := newQHelpEvent(C.QHelpEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQHelpEvent(C.QHelpEvent_new2(param1.cPointer()))
 }
 
 func (this *QHelpEvent) X() int {
@@ -2731,7 +2541,7 @@ func (this *QHelpEvent) GlobalPos() *QPoint {
 
 // Delete this object from C++ memory.
 func (this *QHelpEvent) Delete() {
-	C.QHelpEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QHelpEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2744,8 +2554,7 @@ func (this *QHelpEvent) GoGC() {
 }
 
 type QStatusTipEvent struct {
-	h          *C.QStatusTipEvent
-	isSubclass bool
+	h *C.QStatusTipEvent
 	*QEvent
 }
 
@@ -2787,17 +2596,13 @@ func NewQStatusTipEvent(tip string) *QStatusTipEvent {
 	tip_ms.len = C.size_t(len(tip))
 	defer C.free(unsafe.Pointer(tip_ms.data))
 
-	ret := newQStatusTipEvent(C.QStatusTipEvent_new(tip_ms))
-	ret.isSubclass = true
-	return ret
+	return newQStatusTipEvent(C.QStatusTipEvent_new(tip_ms))
 }
 
 // NewQStatusTipEvent2 constructs a new QStatusTipEvent object.
 func NewQStatusTipEvent2(param1 *QStatusTipEvent) *QStatusTipEvent {
 
-	ret := newQStatusTipEvent(C.QStatusTipEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStatusTipEvent(C.QStatusTipEvent_new2(param1.cPointer()))
 }
 
 func (this *QStatusTipEvent) Tip() string {
@@ -2809,7 +2614,7 @@ func (this *QStatusTipEvent) Tip() string {
 
 // Delete this object from C++ memory.
 func (this *QStatusTipEvent) Delete() {
-	C.QStatusTipEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QStatusTipEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2822,8 +2627,7 @@ func (this *QStatusTipEvent) GoGC() {
 }
 
 type QWhatsThisClickedEvent struct {
-	h          *C.QWhatsThisClickedEvent
-	isSubclass bool
+	h *C.QWhatsThisClickedEvent
 	*QEvent
 }
 
@@ -2865,17 +2669,13 @@ func NewQWhatsThisClickedEvent(href string) *QWhatsThisClickedEvent {
 	href_ms.len = C.size_t(len(href))
 	defer C.free(unsafe.Pointer(href_ms.data))
 
-	ret := newQWhatsThisClickedEvent(C.QWhatsThisClickedEvent_new(href_ms))
-	ret.isSubclass = true
-	return ret
+	return newQWhatsThisClickedEvent(C.QWhatsThisClickedEvent_new(href_ms))
 }
 
 // NewQWhatsThisClickedEvent2 constructs a new QWhatsThisClickedEvent object.
 func NewQWhatsThisClickedEvent2(param1 *QWhatsThisClickedEvent) *QWhatsThisClickedEvent {
 
-	ret := newQWhatsThisClickedEvent(C.QWhatsThisClickedEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWhatsThisClickedEvent(C.QWhatsThisClickedEvent_new2(param1.cPointer()))
 }
 
 func (this *QWhatsThisClickedEvent) Href() string {
@@ -2887,7 +2687,7 @@ func (this *QWhatsThisClickedEvent) Href() string {
 
 // Delete this object from C++ memory.
 func (this *QWhatsThisClickedEvent) Delete() {
-	C.QWhatsThisClickedEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QWhatsThisClickedEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2900,8 +2700,7 @@ func (this *QWhatsThisClickedEvent) GoGC() {
 }
 
 type QActionEvent struct {
-	h          *C.QActionEvent
-	isSubclass bool
+	h *C.QActionEvent
 	*QEvent
 }
 
@@ -2939,25 +2738,19 @@ func UnsafeNewQActionEvent(h unsafe.Pointer) *QActionEvent {
 // NewQActionEvent constructs a new QActionEvent object.
 func NewQActionEvent(typeVal int, action *QAction) *QActionEvent {
 
-	ret := newQActionEvent(C.QActionEvent_new((C.int)(typeVal), action.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQActionEvent(C.QActionEvent_new((C.int)(typeVal), action.cPointer()))
 }
 
 // NewQActionEvent2 constructs a new QActionEvent object.
 func NewQActionEvent2(param1 *QActionEvent) *QActionEvent {
 
-	ret := newQActionEvent(C.QActionEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQActionEvent(C.QActionEvent_new2(param1.cPointer()))
 }
 
 // NewQActionEvent3 constructs a new QActionEvent object.
 func NewQActionEvent3(typeVal int, action *QAction, before *QAction) *QActionEvent {
 
-	ret := newQActionEvent(C.QActionEvent_new3((C.int)(typeVal), action.cPointer(), before.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQActionEvent(C.QActionEvent_new3((C.int)(typeVal), action.cPointer(), before.cPointer()))
 }
 
 func (this *QActionEvent) Action() *QAction {
@@ -2974,7 +2767,7 @@ func (this *QActionEvent) OperatorAssign(param1 *QActionEvent) {
 
 // Delete this object from C++ memory.
 func (this *QActionEvent) Delete() {
-	C.QActionEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QActionEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2987,8 +2780,7 @@ func (this *QActionEvent) GoGC() {
 }
 
 type QFileOpenEvent struct {
-	h          *C.QFileOpenEvent
-	isSubclass bool
+	h *C.QFileOpenEvent
 	*QEvent
 }
 
@@ -3030,25 +2822,19 @@ func NewQFileOpenEvent(file string) *QFileOpenEvent {
 	file_ms.len = C.size_t(len(file))
 	defer C.free(unsafe.Pointer(file_ms.data))
 
-	ret := newQFileOpenEvent(C.QFileOpenEvent_new(file_ms))
-	ret.isSubclass = true
-	return ret
+	return newQFileOpenEvent(C.QFileOpenEvent_new(file_ms))
 }
 
 // NewQFileOpenEvent2 constructs a new QFileOpenEvent object.
 func NewQFileOpenEvent2(url *QUrl) *QFileOpenEvent {
 
-	ret := newQFileOpenEvent(C.QFileOpenEvent_new2(url.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQFileOpenEvent(C.QFileOpenEvent_new2(url.cPointer()))
 }
 
 // NewQFileOpenEvent3 constructs a new QFileOpenEvent object.
 func NewQFileOpenEvent3(param1 *QFileOpenEvent) *QFileOpenEvent {
 
-	ret := newQFileOpenEvent(C.QFileOpenEvent_new3(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQFileOpenEvent(C.QFileOpenEvent_new3(param1.cPointer()))
 }
 
 func (this *QFileOpenEvent) File() string {
@@ -3070,7 +2856,7 @@ func (this *QFileOpenEvent) OpenFile(file *QFile, flags QIODevice__OpenModeFlag)
 
 // Delete this object from C++ memory.
 func (this *QFileOpenEvent) Delete() {
-	C.QFileOpenEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QFileOpenEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3083,8 +2869,7 @@ func (this *QFileOpenEvent) GoGC() {
 }
 
 type QToolBarChangeEvent struct {
-	h          *C.QToolBarChangeEvent
-	isSubclass bool
+	h *C.QToolBarChangeEvent
 	*QEvent
 }
 
@@ -3122,17 +2907,13 @@ func UnsafeNewQToolBarChangeEvent(h unsafe.Pointer) *QToolBarChangeEvent {
 // NewQToolBarChangeEvent constructs a new QToolBarChangeEvent object.
 func NewQToolBarChangeEvent(t bool) *QToolBarChangeEvent {
 
-	ret := newQToolBarChangeEvent(C.QToolBarChangeEvent_new((C.bool)(t)))
-	ret.isSubclass = true
-	return ret
+	return newQToolBarChangeEvent(C.QToolBarChangeEvent_new((C.bool)(t)))
 }
 
 // NewQToolBarChangeEvent2 constructs a new QToolBarChangeEvent object.
 func NewQToolBarChangeEvent2(param1 *QToolBarChangeEvent) *QToolBarChangeEvent {
 
-	ret := newQToolBarChangeEvent(C.QToolBarChangeEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQToolBarChangeEvent(C.QToolBarChangeEvent_new2(param1.cPointer()))
 }
 
 func (this *QToolBarChangeEvent) Toggle() bool {
@@ -3141,7 +2922,7 @@ func (this *QToolBarChangeEvent) Toggle() bool {
 
 // Delete this object from C++ memory.
 func (this *QToolBarChangeEvent) Delete() {
-	C.QToolBarChangeEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QToolBarChangeEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3154,8 +2935,7 @@ func (this *QToolBarChangeEvent) GoGC() {
 }
 
 type QShortcutEvent struct {
-	h          *C.QShortcutEvent
-	isSubclass bool
+	h *C.QShortcutEvent
 	*QEvent
 }
 
@@ -3193,25 +2973,19 @@ func UnsafeNewQShortcutEvent(h unsafe.Pointer) *QShortcutEvent {
 // NewQShortcutEvent constructs a new QShortcutEvent object.
 func NewQShortcutEvent(key *QKeySequence, id int) *QShortcutEvent {
 
-	ret := newQShortcutEvent(C.QShortcutEvent_new(key.cPointer(), (C.int)(id)))
-	ret.isSubclass = true
-	return ret
+	return newQShortcutEvent(C.QShortcutEvent_new(key.cPointer(), (C.int)(id)))
 }
 
 // NewQShortcutEvent2 constructs a new QShortcutEvent object.
 func NewQShortcutEvent2(param1 *QShortcutEvent) *QShortcutEvent {
 
-	ret := newQShortcutEvent(C.QShortcutEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQShortcutEvent(C.QShortcutEvent_new2(param1.cPointer()))
 }
 
 // NewQShortcutEvent3 constructs a new QShortcutEvent object.
 func NewQShortcutEvent3(key *QKeySequence, id int, ambiguous bool) *QShortcutEvent {
 
-	ret := newQShortcutEvent(C.QShortcutEvent_new3(key.cPointer(), (C.int)(id), (C.bool)(ambiguous)))
-	ret.isSubclass = true
-	return ret
+	return newQShortcutEvent(C.QShortcutEvent_new3(key.cPointer(), (C.int)(id), (C.bool)(ambiguous)))
 }
 
 func (this *QShortcutEvent) Key() *QKeySequence {
@@ -3228,7 +3002,7 @@ func (this *QShortcutEvent) IsAmbiguous() bool {
 
 // Delete this object from C++ memory.
 func (this *QShortcutEvent) Delete() {
-	C.QShortcutEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QShortcutEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3241,8 +3015,7 @@ func (this *QShortcutEvent) GoGC() {
 }
 
 type QWindowStateChangeEvent struct {
-	h          *C.QWindowStateChangeEvent
-	isSubclass bool
+	h *C.QWindowStateChangeEvent
 	*QEvent
 }
 
@@ -3280,25 +3053,19 @@ func UnsafeNewQWindowStateChangeEvent(h unsafe.Pointer) *QWindowStateChangeEvent
 // NewQWindowStateChangeEvent constructs a new QWindowStateChangeEvent object.
 func NewQWindowStateChangeEvent(aOldState WindowState) *QWindowStateChangeEvent {
 
-	ret := newQWindowStateChangeEvent(C.QWindowStateChangeEvent_new((C.int)(aOldState)))
-	ret.isSubclass = true
-	return ret
+	return newQWindowStateChangeEvent(C.QWindowStateChangeEvent_new((C.int)(aOldState)))
 }
 
 // NewQWindowStateChangeEvent2 constructs a new QWindowStateChangeEvent object.
 func NewQWindowStateChangeEvent2(param1 *QWindowStateChangeEvent) *QWindowStateChangeEvent {
 
-	ret := newQWindowStateChangeEvent(C.QWindowStateChangeEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWindowStateChangeEvent(C.QWindowStateChangeEvent_new2(param1.cPointer()))
 }
 
 // NewQWindowStateChangeEvent3 constructs a new QWindowStateChangeEvent object.
 func NewQWindowStateChangeEvent3(aOldState WindowState, isOverride bool) *QWindowStateChangeEvent {
 
-	ret := newQWindowStateChangeEvent(C.QWindowStateChangeEvent_new3((C.int)(aOldState), (C.bool)(isOverride)))
-	ret.isSubclass = true
-	return ret
+	return newQWindowStateChangeEvent(C.QWindowStateChangeEvent_new3((C.int)(aOldState), (C.bool)(isOverride)))
 }
 
 func (this *QWindowStateChangeEvent) OldState() WindowState {
@@ -3311,7 +3078,7 @@ func (this *QWindowStateChangeEvent) IsOverride() bool {
 
 // Delete this object from C++ memory.
 func (this *QWindowStateChangeEvent) Delete() {
-	C.QWindowStateChangeEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QWindowStateChangeEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3324,8 +3091,7 @@ func (this *QWindowStateChangeEvent) GoGC() {
 }
 
 type QPointingDeviceUniqueId struct {
-	h          *C.QPointingDeviceUniqueId
-	isSubclass bool
+	h *C.QPointingDeviceUniqueId
 }
 
 func (this *QPointingDeviceUniqueId) cPointer() *C.QPointingDeviceUniqueId {
@@ -3359,17 +3125,13 @@ func UnsafeNewQPointingDeviceUniqueId(h unsafe.Pointer) *QPointingDeviceUniqueId
 // NewQPointingDeviceUniqueId constructs a new QPointingDeviceUniqueId object.
 func NewQPointingDeviceUniqueId() *QPointingDeviceUniqueId {
 
-	ret := newQPointingDeviceUniqueId(C.QPointingDeviceUniqueId_new())
-	ret.isSubclass = true
-	return ret
+	return newQPointingDeviceUniqueId(C.QPointingDeviceUniqueId_new())
 }
 
 // NewQPointingDeviceUniqueId2 constructs a new QPointingDeviceUniqueId object.
 func NewQPointingDeviceUniqueId2(param1 *QPointingDeviceUniqueId) *QPointingDeviceUniqueId {
 
-	ret := newQPointingDeviceUniqueId(C.QPointingDeviceUniqueId_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPointingDeviceUniqueId(C.QPointingDeviceUniqueId_new2(param1.cPointer()))
 }
 
 func QPointingDeviceUniqueId_FromNumericId(id int64) *QPointingDeviceUniqueId {
@@ -3388,7 +3150,7 @@ func (this *QPointingDeviceUniqueId) NumericId() int64 {
 
 // Delete this object from C++ memory.
 func (this *QPointingDeviceUniqueId) Delete() {
-	C.QPointingDeviceUniqueId_Delete(this.h, C.bool(this.isSubclass))
+	C.QPointingDeviceUniqueId_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3401,8 +3163,7 @@ func (this *QPointingDeviceUniqueId) GoGC() {
 }
 
 type QTouchEvent struct {
-	h          *C.QTouchEvent
-	isSubclass bool
+	h *C.QTouchEvent
 	*QInputEvent
 }
 
@@ -3440,41 +3201,31 @@ func UnsafeNewQTouchEvent(h unsafe.Pointer) *QTouchEvent {
 // NewQTouchEvent constructs a new QTouchEvent object.
 func NewQTouchEvent(eventType QEvent__Type) *QTouchEvent {
 
-	ret := newQTouchEvent(C.QTouchEvent_new((C.int)(eventType)))
-	ret.isSubclass = true
-	return ret
+	return newQTouchEvent(C.QTouchEvent_new((C.int)(eventType)))
 }
 
 // NewQTouchEvent2 constructs a new QTouchEvent object.
 func NewQTouchEvent2(param1 *QTouchEvent) *QTouchEvent {
 
-	ret := newQTouchEvent(C.QTouchEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTouchEvent(C.QTouchEvent_new2(param1.cPointer()))
 }
 
 // NewQTouchEvent3 constructs a new QTouchEvent object.
 func NewQTouchEvent3(eventType QEvent__Type, device *QTouchDevice) *QTouchEvent {
 
-	ret := newQTouchEvent(C.QTouchEvent_new3((C.int)(eventType), device.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTouchEvent(C.QTouchEvent_new3((C.int)(eventType), device.cPointer()))
 }
 
 // NewQTouchEvent4 constructs a new QTouchEvent object.
 func NewQTouchEvent4(eventType QEvent__Type, device *QTouchDevice, modifiers KeyboardModifier) *QTouchEvent {
 
-	ret := newQTouchEvent(C.QTouchEvent_new4((C.int)(eventType), device.cPointer(), (C.int)(modifiers)))
-	ret.isSubclass = true
-	return ret
+	return newQTouchEvent(C.QTouchEvent_new4((C.int)(eventType), device.cPointer(), (C.int)(modifiers)))
 }
 
 // NewQTouchEvent5 constructs a new QTouchEvent object.
 func NewQTouchEvent5(eventType QEvent__Type, device *QTouchDevice, modifiers KeyboardModifier, touchPointStates TouchPointState) *QTouchEvent {
 
-	ret := newQTouchEvent(C.QTouchEvent_new5((C.int)(eventType), device.cPointer(), (C.int)(modifiers), (C.int)(touchPointStates)))
-	ret.isSubclass = true
-	return ret
+	return newQTouchEvent(C.QTouchEvent_new5((C.int)(eventType), device.cPointer(), (C.int)(modifiers), (C.int)(touchPointStates)))
 }
 
 // NewQTouchEvent6 constructs a new QTouchEvent object.
@@ -3486,9 +3237,7 @@ func NewQTouchEvent6(eventType QEvent__Type, device *QTouchDevice, modifiers Key
 	}
 	touchPoints_ma := C.struct_miqt_array{len: C.size_t(len(touchPoints)), data: unsafe.Pointer(touchPoints_CArray)}
 
-	ret := newQTouchEvent(C.QTouchEvent_new6((C.int)(eventType), device.cPointer(), (C.int)(modifiers), (C.int)(touchPointStates), touchPoints_ma))
-	ret.isSubclass = true
-	return ret
+	return newQTouchEvent(C.QTouchEvent_new6((C.int)(eventType), device.cPointer(), (C.int)(modifiers), (C.int)(touchPointStates), touchPoints_ma))
 }
 
 func (this *QTouchEvent) Window() *QWindow {
@@ -3547,7 +3296,7 @@ func (this *QTouchEvent) SetDevice(adevice *QTouchDevice) {
 
 // Delete this object from C++ memory.
 func (this *QTouchEvent) Delete() {
-	C.QTouchEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QTouchEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3560,8 +3309,7 @@ func (this *QTouchEvent) GoGC() {
 }
 
 type QScrollPrepareEvent struct {
-	h          *C.QScrollPrepareEvent
-	isSubclass bool
+	h *C.QScrollPrepareEvent
 	*QEvent
 }
 
@@ -3599,17 +3347,13 @@ func UnsafeNewQScrollPrepareEvent(h unsafe.Pointer) *QScrollPrepareEvent {
 // NewQScrollPrepareEvent constructs a new QScrollPrepareEvent object.
 func NewQScrollPrepareEvent(startPos *QPointF) *QScrollPrepareEvent {
 
-	ret := newQScrollPrepareEvent(C.QScrollPrepareEvent_new(startPos.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQScrollPrepareEvent(C.QScrollPrepareEvent_new(startPos.cPointer()))
 }
 
 // NewQScrollPrepareEvent2 constructs a new QScrollPrepareEvent object.
 func NewQScrollPrepareEvent2(param1 *QScrollPrepareEvent) *QScrollPrepareEvent {
 
-	ret := newQScrollPrepareEvent(C.QScrollPrepareEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQScrollPrepareEvent(C.QScrollPrepareEvent_new2(param1.cPointer()))
 }
 
 func (this *QScrollPrepareEvent) StartPos() *QPointF {
@@ -3650,7 +3394,7 @@ func (this *QScrollPrepareEvent) SetContentPos(pos *QPointF) {
 
 // Delete this object from C++ memory.
 func (this *QScrollPrepareEvent) Delete() {
-	C.QScrollPrepareEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QScrollPrepareEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3663,8 +3407,7 @@ func (this *QScrollPrepareEvent) GoGC() {
 }
 
 type QScrollEvent struct {
-	h          *C.QScrollEvent
-	isSubclass bool
+	h *C.QScrollEvent
 	*QEvent
 }
 
@@ -3702,17 +3445,13 @@ func UnsafeNewQScrollEvent(h unsafe.Pointer) *QScrollEvent {
 // NewQScrollEvent constructs a new QScrollEvent object.
 func NewQScrollEvent(contentPos *QPointF, overshoot *QPointF, scrollState QScrollEvent__ScrollState) *QScrollEvent {
 
-	ret := newQScrollEvent(C.QScrollEvent_new(contentPos.cPointer(), overshoot.cPointer(), (C.int)(scrollState)))
-	ret.isSubclass = true
-	return ret
+	return newQScrollEvent(C.QScrollEvent_new(contentPos.cPointer(), overshoot.cPointer(), (C.int)(scrollState)))
 }
 
 // NewQScrollEvent2 constructs a new QScrollEvent object.
 func NewQScrollEvent2(param1 *QScrollEvent) *QScrollEvent {
 
-	ret := newQScrollEvent(C.QScrollEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQScrollEvent(C.QScrollEvent_new2(param1.cPointer()))
 }
 
 func (this *QScrollEvent) ContentPos() *QPointF {
@@ -3733,7 +3472,7 @@ func (this *QScrollEvent) ScrollState() QScrollEvent__ScrollState {
 
 // Delete this object from C++ memory.
 func (this *QScrollEvent) Delete() {
-	C.QScrollEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QScrollEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3746,8 +3485,7 @@ func (this *QScrollEvent) GoGC() {
 }
 
 type QScreenOrientationChangeEvent struct {
-	h          *C.QScreenOrientationChangeEvent
-	isSubclass bool
+	h *C.QScreenOrientationChangeEvent
 	*QEvent
 }
 
@@ -3785,17 +3523,13 @@ func UnsafeNewQScreenOrientationChangeEvent(h unsafe.Pointer) *QScreenOrientatio
 // NewQScreenOrientationChangeEvent constructs a new QScreenOrientationChangeEvent object.
 func NewQScreenOrientationChangeEvent(screen *QScreen, orientation ScreenOrientation) *QScreenOrientationChangeEvent {
 
-	ret := newQScreenOrientationChangeEvent(C.QScreenOrientationChangeEvent_new(screen.cPointer(), (C.int)(orientation)))
-	ret.isSubclass = true
-	return ret
+	return newQScreenOrientationChangeEvent(C.QScreenOrientationChangeEvent_new(screen.cPointer(), (C.int)(orientation)))
 }
 
 // NewQScreenOrientationChangeEvent2 constructs a new QScreenOrientationChangeEvent object.
 func NewQScreenOrientationChangeEvent2(param1 *QScreenOrientationChangeEvent) *QScreenOrientationChangeEvent {
 
-	ret := newQScreenOrientationChangeEvent(C.QScreenOrientationChangeEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQScreenOrientationChangeEvent(C.QScreenOrientationChangeEvent_new2(param1.cPointer()))
 }
 
 func (this *QScreenOrientationChangeEvent) Screen() *QScreen {
@@ -3808,7 +3542,7 @@ func (this *QScreenOrientationChangeEvent) Orientation() ScreenOrientation {
 
 // Delete this object from C++ memory.
 func (this *QScreenOrientationChangeEvent) Delete() {
-	C.QScreenOrientationChangeEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QScreenOrientationChangeEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3821,8 +3555,7 @@ func (this *QScreenOrientationChangeEvent) GoGC() {
 }
 
 type QApplicationStateChangeEvent struct {
-	h          *C.QApplicationStateChangeEvent
-	isSubclass bool
+	h *C.QApplicationStateChangeEvent
 	*QEvent
 }
 
@@ -3860,17 +3593,13 @@ func UnsafeNewQApplicationStateChangeEvent(h unsafe.Pointer) *QApplicationStateC
 // NewQApplicationStateChangeEvent constructs a new QApplicationStateChangeEvent object.
 func NewQApplicationStateChangeEvent(state ApplicationState) *QApplicationStateChangeEvent {
 
-	ret := newQApplicationStateChangeEvent(C.QApplicationStateChangeEvent_new((C.int)(state)))
-	ret.isSubclass = true
-	return ret
+	return newQApplicationStateChangeEvent(C.QApplicationStateChangeEvent_new((C.int)(state)))
 }
 
 // NewQApplicationStateChangeEvent2 constructs a new QApplicationStateChangeEvent object.
 func NewQApplicationStateChangeEvent2(param1 *QApplicationStateChangeEvent) *QApplicationStateChangeEvent {
 
-	ret := newQApplicationStateChangeEvent(C.QApplicationStateChangeEvent_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQApplicationStateChangeEvent(C.QApplicationStateChangeEvent_new2(param1.cPointer()))
 }
 
 func (this *QApplicationStateChangeEvent) ApplicationState() ApplicationState {
@@ -3879,7 +3608,7 @@ func (this *QApplicationStateChangeEvent) ApplicationState() ApplicationState {
 
 // Delete this object from C++ memory.
 func (this *QApplicationStateChangeEvent) Delete() {
-	C.QApplicationStateChangeEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QApplicationStateChangeEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3892,8 +3621,7 @@ func (this *QApplicationStateChangeEvent) GoGC() {
 }
 
 type QInputMethodEvent__Attribute struct {
-	h          *C.QInputMethodEvent__Attribute
-	isSubclass bool
+	h *C.QInputMethodEvent__Attribute
 }
 
 func (this *QInputMethodEvent__Attribute) cPointer() *C.QInputMethodEvent__Attribute {
@@ -3927,25 +3655,19 @@ func UnsafeNewQInputMethodEvent__Attribute(h unsafe.Pointer) *QInputMethodEvent_
 // NewQInputMethodEvent__Attribute constructs a new QInputMethodEvent::Attribute object.
 func NewQInputMethodEvent__Attribute(typ QInputMethodEvent__AttributeType, s int, l int, val QVariant) *QInputMethodEvent__Attribute {
 
-	ret := newQInputMethodEvent__Attribute(C.QInputMethodEvent__Attribute_new((C.int)(typ), (C.int)(s), (C.int)(l), val.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQInputMethodEvent__Attribute(C.QInputMethodEvent__Attribute_new((C.int)(typ), (C.int)(s), (C.int)(l), val.cPointer()))
 }
 
 // NewQInputMethodEvent__Attribute2 constructs a new QInputMethodEvent::Attribute object.
 func NewQInputMethodEvent__Attribute2(typ QInputMethodEvent__AttributeType, s int, l int) *QInputMethodEvent__Attribute {
 
-	ret := newQInputMethodEvent__Attribute(C.QInputMethodEvent__Attribute_new2((C.int)(typ), (C.int)(s), (C.int)(l)))
-	ret.isSubclass = true
-	return ret
+	return newQInputMethodEvent__Attribute(C.QInputMethodEvent__Attribute_new2((C.int)(typ), (C.int)(s), (C.int)(l)))
 }
 
 // NewQInputMethodEvent__Attribute3 constructs a new QInputMethodEvent::Attribute object.
 func NewQInputMethodEvent__Attribute3(param1 *QInputMethodEvent__Attribute) *QInputMethodEvent__Attribute {
 
-	ret := newQInputMethodEvent__Attribute(C.QInputMethodEvent__Attribute_new3(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQInputMethodEvent__Attribute(C.QInputMethodEvent__Attribute_new3(param1.cPointer()))
 }
 
 func (this *QInputMethodEvent__Attribute) OperatorAssign(param1 *QInputMethodEvent__Attribute) {
@@ -3954,7 +3676,7 @@ func (this *QInputMethodEvent__Attribute) OperatorAssign(param1 *QInputMethodEve
 
 // Delete this object from C++ memory.
 func (this *QInputMethodEvent__Attribute) Delete() {
-	C.QInputMethodEvent__Attribute_Delete(this.h, C.bool(this.isSubclass))
+	C.QInputMethodEvent__Attribute_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3967,8 +3689,7 @@ func (this *QInputMethodEvent__Attribute) GoGC() {
 }
 
 type QTouchEvent__TouchPoint struct {
-	h          *C.QTouchEvent__TouchPoint
-	isSubclass bool
+	h *C.QTouchEvent__TouchPoint
 }
 
 func (this *QTouchEvent__TouchPoint) cPointer() *C.QTouchEvent__TouchPoint {
@@ -4002,25 +3723,19 @@ func UnsafeNewQTouchEvent__TouchPoint(h unsafe.Pointer) *QTouchEvent__TouchPoint
 // NewQTouchEvent__TouchPoint constructs a new QTouchEvent::TouchPoint object.
 func NewQTouchEvent__TouchPoint() *QTouchEvent__TouchPoint {
 
-	ret := newQTouchEvent__TouchPoint(C.QTouchEvent__TouchPoint_new())
-	ret.isSubclass = true
-	return ret
+	return newQTouchEvent__TouchPoint(C.QTouchEvent__TouchPoint_new())
 }
 
 // NewQTouchEvent__TouchPoint2 constructs a new QTouchEvent::TouchPoint object.
 func NewQTouchEvent__TouchPoint2(other *QTouchEvent__TouchPoint) *QTouchEvent__TouchPoint {
 
-	ret := newQTouchEvent__TouchPoint(C.QTouchEvent__TouchPoint_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTouchEvent__TouchPoint(C.QTouchEvent__TouchPoint_new2(other.cPointer()))
 }
 
 // NewQTouchEvent__TouchPoint3 constructs a new QTouchEvent::TouchPoint object.
 func NewQTouchEvent__TouchPoint3(id int) *QTouchEvent__TouchPoint {
 
-	ret := newQTouchEvent__TouchPoint(C.QTouchEvent__TouchPoint_new3((C.int)(id)))
-	ret.isSubclass = true
-	return ret
+	return newQTouchEvent__TouchPoint(C.QTouchEvent__TouchPoint_new3((C.int)(id)))
 }
 
 func (this *QTouchEvent__TouchPoint) OperatorAssign(other *QTouchEvent__TouchPoint) {
@@ -4275,7 +3990,7 @@ func (this *QTouchEvent__TouchPoint) SetRawScreenPositions(positions []QPointF) 
 
 // Delete this object from C++ memory.
 func (this *QTouchEvent__TouchPoint) Delete() {
-	C.QTouchEvent__TouchPoint_Delete(this.h, C.bool(this.isSubclass))
+	C.QTouchEvent__TouchPoint_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

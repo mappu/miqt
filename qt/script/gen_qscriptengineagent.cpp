@@ -27,12 +27,12 @@ QVariant* miqt_exec_callback_QScriptEngineAgent_Extension(void*, intptr_t, int, 
 } /* extern C */
 #endif
 
-class MiqtVirtualQScriptEngineAgent : public virtual QScriptEngineAgent {
+class MiqtVirtualQScriptEngineAgent final : public QScriptEngineAgent {
 public:
 
 	MiqtVirtualQScriptEngineAgent(QScriptEngine* engine): QScriptEngineAgent(engine) {};
 
-	virtual ~MiqtVirtualQScriptEngineAgent() = default;
+	virtual ~MiqtVirtualQScriptEngineAgent() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__ScriptLoad = 0;
@@ -393,99 +393,161 @@ QScriptEngine* QScriptEngineAgent_Engine(const QScriptEngineAgent* self) {
 	return self->engine();
 }
 
-void QScriptEngineAgent_override_virtual_ScriptLoad(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptEngineAgent*>( (QScriptEngineAgent*)(self) )->handle__ScriptLoad = slot;
+bool QScriptEngineAgent_override_virtual_ScriptLoad(void* self, intptr_t slot) {
+	MiqtVirtualQScriptEngineAgent* self_cast = dynamic_cast<MiqtVirtualQScriptEngineAgent*>( (QScriptEngineAgent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ScriptLoad = slot;
+	return true;
 }
 
 void QScriptEngineAgent_virtualbase_ScriptLoad(void* self, long long id, struct miqt_string program, struct miqt_string fileName, int baseLineNumber) {
 	( (MiqtVirtualQScriptEngineAgent*)(self) )->virtualbase_ScriptLoad(id, program, fileName, baseLineNumber);
 }
 
-void QScriptEngineAgent_override_virtual_ScriptUnload(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptEngineAgent*>( (QScriptEngineAgent*)(self) )->handle__ScriptUnload = slot;
+bool QScriptEngineAgent_override_virtual_ScriptUnload(void* self, intptr_t slot) {
+	MiqtVirtualQScriptEngineAgent* self_cast = dynamic_cast<MiqtVirtualQScriptEngineAgent*>( (QScriptEngineAgent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ScriptUnload = slot;
+	return true;
 }
 
 void QScriptEngineAgent_virtualbase_ScriptUnload(void* self, long long id) {
 	( (MiqtVirtualQScriptEngineAgent*)(self) )->virtualbase_ScriptUnload(id);
 }
 
-void QScriptEngineAgent_override_virtual_ContextPush(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptEngineAgent*>( (QScriptEngineAgent*)(self) )->handle__ContextPush = slot;
+bool QScriptEngineAgent_override_virtual_ContextPush(void* self, intptr_t slot) {
+	MiqtVirtualQScriptEngineAgent* self_cast = dynamic_cast<MiqtVirtualQScriptEngineAgent*>( (QScriptEngineAgent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextPush = slot;
+	return true;
 }
 
 void QScriptEngineAgent_virtualbase_ContextPush(void* self) {
 	( (MiqtVirtualQScriptEngineAgent*)(self) )->virtualbase_ContextPush();
 }
 
-void QScriptEngineAgent_override_virtual_ContextPop(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptEngineAgent*>( (QScriptEngineAgent*)(self) )->handle__ContextPop = slot;
+bool QScriptEngineAgent_override_virtual_ContextPop(void* self, intptr_t slot) {
+	MiqtVirtualQScriptEngineAgent* self_cast = dynamic_cast<MiqtVirtualQScriptEngineAgent*>( (QScriptEngineAgent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextPop = slot;
+	return true;
 }
 
 void QScriptEngineAgent_virtualbase_ContextPop(void* self) {
 	( (MiqtVirtualQScriptEngineAgent*)(self) )->virtualbase_ContextPop();
 }
 
-void QScriptEngineAgent_override_virtual_FunctionEntry(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptEngineAgent*>( (QScriptEngineAgent*)(self) )->handle__FunctionEntry = slot;
+bool QScriptEngineAgent_override_virtual_FunctionEntry(void* self, intptr_t slot) {
+	MiqtVirtualQScriptEngineAgent* self_cast = dynamic_cast<MiqtVirtualQScriptEngineAgent*>( (QScriptEngineAgent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FunctionEntry = slot;
+	return true;
 }
 
 void QScriptEngineAgent_virtualbase_FunctionEntry(void* self, long long scriptId) {
 	( (MiqtVirtualQScriptEngineAgent*)(self) )->virtualbase_FunctionEntry(scriptId);
 }
 
-void QScriptEngineAgent_override_virtual_FunctionExit(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptEngineAgent*>( (QScriptEngineAgent*)(self) )->handle__FunctionExit = slot;
+bool QScriptEngineAgent_override_virtual_FunctionExit(void* self, intptr_t slot) {
+	MiqtVirtualQScriptEngineAgent* self_cast = dynamic_cast<MiqtVirtualQScriptEngineAgent*>( (QScriptEngineAgent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FunctionExit = slot;
+	return true;
 }
 
 void QScriptEngineAgent_virtualbase_FunctionExit(void* self, long long scriptId, QScriptValue* returnValue) {
 	( (MiqtVirtualQScriptEngineAgent*)(self) )->virtualbase_FunctionExit(scriptId, returnValue);
 }
 
-void QScriptEngineAgent_override_virtual_PositionChange(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptEngineAgent*>( (QScriptEngineAgent*)(self) )->handle__PositionChange = slot;
+bool QScriptEngineAgent_override_virtual_PositionChange(void* self, intptr_t slot) {
+	MiqtVirtualQScriptEngineAgent* self_cast = dynamic_cast<MiqtVirtualQScriptEngineAgent*>( (QScriptEngineAgent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PositionChange = slot;
+	return true;
 }
 
 void QScriptEngineAgent_virtualbase_PositionChange(void* self, long long scriptId, int lineNumber, int columnNumber) {
 	( (MiqtVirtualQScriptEngineAgent*)(self) )->virtualbase_PositionChange(scriptId, lineNumber, columnNumber);
 }
 
-void QScriptEngineAgent_override_virtual_ExceptionThrow(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptEngineAgent*>( (QScriptEngineAgent*)(self) )->handle__ExceptionThrow = slot;
+bool QScriptEngineAgent_override_virtual_ExceptionThrow(void* self, intptr_t slot) {
+	MiqtVirtualQScriptEngineAgent* self_cast = dynamic_cast<MiqtVirtualQScriptEngineAgent*>( (QScriptEngineAgent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ExceptionThrow = slot;
+	return true;
 }
 
 void QScriptEngineAgent_virtualbase_ExceptionThrow(void* self, long long scriptId, QScriptValue* exception, bool hasHandler) {
 	( (MiqtVirtualQScriptEngineAgent*)(self) )->virtualbase_ExceptionThrow(scriptId, exception, hasHandler);
 }
 
-void QScriptEngineAgent_override_virtual_ExceptionCatch(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptEngineAgent*>( (QScriptEngineAgent*)(self) )->handle__ExceptionCatch = slot;
+bool QScriptEngineAgent_override_virtual_ExceptionCatch(void* self, intptr_t slot) {
+	MiqtVirtualQScriptEngineAgent* self_cast = dynamic_cast<MiqtVirtualQScriptEngineAgent*>( (QScriptEngineAgent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ExceptionCatch = slot;
+	return true;
 }
 
 void QScriptEngineAgent_virtualbase_ExceptionCatch(void* self, long long scriptId, QScriptValue* exception) {
 	( (MiqtVirtualQScriptEngineAgent*)(self) )->virtualbase_ExceptionCatch(scriptId, exception);
 }
 
-void QScriptEngineAgent_override_virtual_SupportsExtension(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptEngineAgent*>( (QScriptEngineAgent*)(self) )->handle__SupportsExtension = slot;
+bool QScriptEngineAgent_override_virtual_SupportsExtension(void* self, intptr_t slot) {
+	MiqtVirtualQScriptEngineAgent* self_cast = dynamic_cast<MiqtVirtualQScriptEngineAgent*>( (QScriptEngineAgent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SupportsExtension = slot;
+	return true;
 }
 
 bool QScriptEngineAgent_virtualbase_SupportsExtension(const void* self, int extension) {
 	return ( (const MiqtVirtualQScriptEngineAgent*)(self) )->virtualbase_SupportsExtension(extension);
 }
 
-void QScriptEngineAgent_override_virtual_Extension(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptEngineAgent*>( (QScriptEngineAgent*)(self) )->handle__Extension = slot;
+bool QScriptEngineAgent_override_virtual_Extension(void* self, intptr_t slot) {
+	MiqtVirtualQScriptEngineAgent* self_cast = dynamic_cast<MiqtVirtualQScriptEngineAgent*>( (QScriptEngineAgent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Extension = slot;
+	return true;
 }
 
 QVariant* QScriptEngineAgent_virtualbase_Extension(void* self, int extension, QVariant* argument) {
 	return ( (MiqtVirtualQScriptEngineAgent*)(self) )->virtualbase_Extension(extension, argument);
 }
 
-void QScriptEngineAgent_Delete(QScriptEngineAgent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQScriptEngineAgent*>( self );
-	} else {
-		delete self;
-	}
+void QScriptEngineAgent_Delete(QScriptEngineAgent* self) {
+	delete self;
 }
 

@@ -82,17 +82,17 @@ struct miqt_string QAudioDecoder_Tr3(const char* s, const char* c, int n);
 struct miqt_string QAudioDecoder_TrUtf82(const char* s, const char* c);
 struct miqt_string QAudioDecoder_TrUtf83(const char* s, const char* c, int n);
 int QAudioDecoder_HasSupport2(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs);
-void QAudioDecoder_override_virtual_Bind(void* self, intptr_t slot);
+bool QAudioDecoder_override_virtual_Bind(void* self, intptr_t slot);
 bool QAudioDecoder_virtualbase_Bind(void* self, QObject* param1);
-void QAudioDecoder_override_virtual_Unbind(void* self, intptr_t slot);
+bool QAudioDecoder_override_virtual_Unbind(void* self, intptr_t slot);
 void QAudioDecoder_virtualbase_Unbind(void* self, QObject* param1);
-void QAudioDecoder_override_virtual_IsAvailable(void* self, intptr_t slot);
+bool QAudioDecoder_override_virtual_IsAvailable(void* self, intptr_t slot);
 bool QAudioDecoder_virtualbase_IsAvailable(const void* self);
-void QAudioDecoder_override_virtual_Availability(void* self, intptr_t slot);
+bool QAudioDecoder_override_virtual_Availability(void* self, intptr_t slot);
 int QAudioDecoder_virtualbase_Availability(const void* self);
-void QAudioDecoder_override_virtual_Service(void* self, intptr_t slot);
+bool QAudioDecoder_override_virtual_Service(void* self, intptr_t slot);
 QMediaService* QAudioDecoder_virtualbase_Service(const void* self);
-void QAudioDecoder_Delete(QAudioDecoder* self, bool isSubclass);
+void QAudioDecoder_Delete(QAudioDecoder* self);
 
 #ifdef __cplusplus
 } /* extern C */

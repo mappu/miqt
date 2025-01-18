@@ -113,12 +113,8 @@ QLineF* QLine_ToLineF(const QLine* self) {
 	return new QLineF(self->toLineF());
 }
 
-void QLine_Delete(QLine* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QLine*>( self );
-	} else {
-		delete self;
-	}
+void QLine_Delete(QLine* self) {
+	delete self;
 }
 
 QLineF* QLineF_new() {
@@ -280,11 +276,7 @@ int QLineF_Intersects2(const QLineF* self, QLineF* l, QPointF* intersectionPoint
 	return static_cast<int>(_ret);
 }
 
-void QLineF_Delete(QLineF* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QLineF*>( self );
-	} else {
-		delete self;
-	}
+void QLineF_Delete(QLineF* self) {
+	delete self;
 }
 

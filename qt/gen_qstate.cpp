@@ -24,7 +24,7 @@ bool miqt_exec_callback_QState_Event(void*, intptr_t, QEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQState : public virtual QState {
+class MiqtVirtualQState final : public QState {
 public:
 
 	MiqtVirtualQState(): QState() {};
@@ -32,7 +32,7 @@ public:
 	MiqtVirtualQState(QState* parent): QState(parent) {};
 	MiqtVirtualQState(QState::ChildMode childMode, QState* parent): QState(childMode, parent) {};
 
-	virtual ~MiqtVirtualQState() = default;
+	virtual ~MiqtVirtualQState() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__OnEntry = 0;
@@ -259,35 +259,49 @@ struct miqt_string QState_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QState_override_virtual_OnEntry(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQState*>( (QState*)(self) )->handle__OnEntry = slot;
+bool QState_override_virtual_OnEntry(void* self, intptr_t slot) {
+	MiqtVirtualQState* self_cast = dynamic_cast<MiqtVirtualQState*>( (QState*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__OnEntry = slot;
+	return true;
 }
 
 void QState_virtualbase_OnEntry(void* self, QEvent* event) {
 	( (MiqtVirtualQState*)(self) )->virtualbase_OnEntry(event);
 }
 
-void QState_override_virtual_OnExit(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQState*>( (QState*)(self) )->handle__OnExit = slot;
+bool QState_override_virtual_OnExit(void* self, intptr_t slot) {
+	MiqtVirtualQState* self_cast = dynamic_cast<MiqtVirtualQState*>( (QState*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__OnExit = slot;
+	return true;
 }
 
 void QState_virtualbase_OnExit(void* self, QEvent* event) {
 	( (MiqtVirtualQState*)(self) )->virtualbase_OnExit(event);
 }
 
-void QState_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQState*>( (QState*)(self) )->handle__Event = slot;
+bool QState_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQState* self_cast = dynamic_cast<MiqtVirtualQState*>( (QState*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QState_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQState*)(self) )->virtualbase_Event(e);
 }
 
-void QState_Delete(QState* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQState*>( self );
-	} else {
-		delete self;
-	}
+void QState_Delete(QState* self) {
+	delete self;
 }
 

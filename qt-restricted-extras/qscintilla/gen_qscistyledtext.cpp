@@ -45,11 +45,7 @@ int QsciStyledText_Style(const QsciStyledText* self) {
 	return self->style();
 }
 
-void QsciStyledText_Delete(QsciStyledText* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QsciStyledText*>( self );
-	} else {
-		delete self;
-	}
+void QsciStyledText_Delete(QsciStyledText* self) {
+	delete self;
 }
 

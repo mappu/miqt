@@ -52,13 +52,13 @@ void miqt_exec_callback_QToolButton_FocusOutEvent(void*, intptr_t, QFocusEvent*)
 } /* extern C */
 #endif
 
-class MiqtVirtualQToolButton : public virtual QToolButton {
+class MiqtVirtualQToolButton final : public QToolButton {
 public:
 
 	MiqtVirtualQToolButton(QWidget* parent): QToolButton(parent) {};
 	MiqtVirtualQToolButton(): QToolButton() {};
 
-	virtual ~MiqtVirtualQToolButton() = default;
+	virtual ~MiqtVirtualQToolButton() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -663,171 +663,287 @@ struct miqt_string QToolButton_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QToolButton_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) )->handle__SizeHint = slot;
+bool QToolButton_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQToolButton* self_cast = dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QToolButton_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQToolButton*)(self) )->virtualbase_SizeHint();
 }
 
-void QToolButton_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) )->handle__MinimumSizeHint = slot;
+bool QToolButton_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQToolButton* self_cast = dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QToolButton_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQToolButton*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QToolButton_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) )->handle__Event = slot;
+bool QToolButton_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQToolButton* self_cast = dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QToolButton_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQToolButton*)(self) )->virtualbase_Event(e);
 }
 
-void QToolButton_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) )->handle__MousePressEvent = slot;
+bool QToolButton_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQToolButton* self_cast = dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QToolButton_virtualbase_MousePressEvent(void* self, QMouseEvent* param1) {
 	( (MiqtVirtualQToolButton*)(self) )->virtualbase_MousePressEvent(param1);
 }
 
-void QToolButton_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) )->handle__MouseReleaseEvent = slot;
+bool QToolButton_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQToolButton* self_cast = dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QToolButton_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* param1) {
 	( (MiqtVirtualQToolButton*)(self) )->virtualbase_MouseReleaseEvent(param1);
 }
 
-void QToolButton_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) )->handle__PaintEvent = slot;
+bool QToolButton_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQToolButton* self_cast = dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QToolButton_virtualbase_PaintEvent(void* self, QPaintEvent* param1) {
 	( (MiqtVirtualQToolButton*)(self) )->virtualbase_PaintEvent(param1);
 }
 
-void QToolButton_override_virtual_ActionEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) )->handle__ActionEvent = slot;
+bool QToolButton_override_virtual_ActionEvent(void* self, intptr_t slot) {
+	MiqtVirtualQToolButton* self_cast = dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ActionEvent = slot;
+	return true;
 }
 
 void QToolButton_virtualbase_ActionEvent(void* self, QActionEvent* param1) {
 	( (MiqtVirtualQToolButton*)(self) )->virtualbase_ActionEvent(param1);
 }
 
-void QToolButton_override_virtual_EnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) )->handle__EnterEvent = slot;
+bool QToolButton_override_virtual_EnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQToolButton* self_cast = dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EnterEvent = slot;
+	return true;
 }
 
 void QToolButton_virtualbase_EnterEvent(void* self, QEnterEvent* param1) {
 	( (MiqtVirtualQToolButton*)(self) )->virtualbase_EnterEvent(param1);
 }
 
-void QToolButton_override_virtual_LeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) )->handle__LeaveEvent = slot;
+bool QToolButton_override_virtual_LeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQToolButton* self_cast = dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__LeaveEvent = slot;
+	return true;
 }
 
 void QToolButton_virtualbase_LeaveEvent(void* self, QEvent* param1) {
 	( (MiqtVirtualQToolButton*)(self) )->virtualbase_LeaveEvent(param1);
 }
 
-void QToolButton_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) )->handle__TimerEvent = slot;
+bool QToolButton_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQToolButton* self_cast = dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QToolButton_virtualbase_TimerEvent(void* self, QTimerEvent* param1) {
 	( (MiqtVirtualQToolButton*)(self) )->virtualbase_TimerEvent(param1);
 }
 
-void QToolButton_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) )->handle__ChangeEvent = slot;
+bool QToolButton_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQToolButton* self_cast = dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QToolButton_virtualbase_ChangeEvent(void* self, QEvent* param1) {
 	( (MiqtVirtualQToolButton*)(self) )->virtualbase_ChangeEvent(param1);
 }
 
-void QToolButton_override_virtual_HitButton(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) )->handle__HitButton = slot;
+bool QToolButton_override_virtual_HitButton(void* self, intptr_t slot) {
+	MiqtVirtualQToolButton* self_cast = dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HitButton = slot;
+	return true;
 }
 
 bool QToolButton_virtualbase_HitButton(const void* self, QPoint* pos) {
 	return ( (const MiqtVirtualQToolButton*)(self) )->virtualbase_HitButton(pos);
 }
 
-void QToolButton_override_virtual_CheckStateSet(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) )->handle__CheckStateSet = slot;
+bool QToolButton_override_virtual_CheckStateSet(void* self, intptr_t slot) {
+	MiqtVirtualQToolButton* self_cast = dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CheckStateSet = slot;
+	return true;
 }
 
 void QToolButton_virtualbase_CheckStateSet(void* self) {
 	( (MiqtVirtualQToolButton*)(self) )->virtualbase_CheckStateSet();
 }
 
-void QToolButton_override_virtual_NextCheckState(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) )->handle__NextCheckState = slot;
+bool QToolButton_override_virtual_NextCheckState(void* self, intptr_t slot) {
+	MiqtVirtualQToolButton* self_cast = dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NextCheckState = slot;
+	return true;
 }
 
 void QToolButton_virtualbase_NextCheckState(void* self) {
 	( (MiqtVirtualQToolButton*)(self) )->virtualbase_NextCheckState();
 }
 
-void QToolButton_override_virtual_InitStyleOption(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) )->handle__InitStyleOption = slot;
+bool QToolButton_override_virtual_InitStyleOption(void* self, intptr_t slot) {
+	MiqtVirtualQToolButton* self_cast = dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitStyleOption = slot;
+	return true;
 }
 
 void QToolButton_virtualbase_InitStyleOption(const void* self, QStyleOptionToolButton* option) {
 	( (const MiqtVirtualQToolButton*)(self) )->virtualbase_InitStyleOption(option);
 }
 
-void QToolButton_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) )->handle__KeyPressEvent = slot;
+bool QToolButton_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQToolButton* self_cast = dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QToolButton_virtualbase_KeyPressEvent(void* self, QKeyEvent* e) {
 	( (MiqtVirtualQToolButton*)(self) )->virtualbase_KeyPressEvent(e);
 }
 
-void QToolButton_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) )->handle__KeyReleaseEvent = slot;
+bool QToolButton_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQToolButton* self_cast = dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyReleaseEvent = slot;
+	return true;
 }
 
 void QToolButton_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* e) {
 	( (MiqtVirtualQToolButton*)(self) )->virtualbase_KeyReleaseEvent(e);
 }
 
-void QToolButton_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) )->handle__MouseMoveEvent = slot;
+bool QToolButton_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQToolButton* self_cast = dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QToolButton_virtualbase_MouseMoveEvent(void* self, QMouseEvent* e) {
 	( (MiqtVirtualQToolButton*)(self) )->virtualbase_MouseMoveEvent(e);
 }
 
-void QToolButton_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) )->handle__FocusInEvent = slot;
+bool QToolButton_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQToolButton* self_cast = dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QToolButton_virtualbase_FocusInEvent(void* self, QFocusEvent* e) {
 	( (MiqtVirtualQToolButton*)(self) )->virtualbase_FocusInEvent(e);
 }
 
-void QToolButton_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) )->handle__FocusOutEvent = slot;
+bool QToolButton_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQToolButton* self_cast = dynamic_cast<MiqtVirtualQToolButton*>( (QToolButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
 }
 
 void QToolButton_virtualbase_FocusOutEvent(void* self, QFocusEvent* e) {
 	( (MiqtVirtualQToolButton*)(self) )->virtualbase_FocusOutEvent(e);
 }
 
-void QToolButton_Delete(QToolButton* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQToolButton*>( self );
-	} else {
-		delete self;
-	}
+void QToolButton_Delete(QToolButton* self) {
+	delete self;
 }
 

@@ -135,17 +135,17 @@ int QMediaPlayer_HasSupport2(struct miqt_string mimeType, struct miqt_array /* o
 int QMediaPlayer_HasSupport3(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs, int flags);
 struct miqt_array /* of struct miqt_string */  QMediaPlayer_SupportedMimeTypes1(int flags);
 void QMediaPlayer_SetMedia2(QMediaPlayer* self, QMediaContent* media, QIODevice* stream);
-void QMediaPlayer_override_virtual_Availability(void* self, intptr_t slot);
+bool QMediaPlayer_override_virtual_Availability(void* self, intptr_t slot);
 int QMediaPlayer_virtualbase_Availability(const void* self);
-void QMediaPlayer_override_virtual_Bind(void* self, intptr_t slot);
+bool QMediaPlayer_override_virtual_Bind(void* self, intptr_t slot);
 bool QMediaPlayer_virtualbase_Bind(void* self, QObject* param1);
-void QMediaPlayer_override_virtual_Unbind(void* self, intptr_t slot);
+bool QMediaPlayer_override_virtual_Unbind(void* self, intptr_t slot);
 void QMediaPlayer_virtualbase_Unbind(void* self, QObject* param1);
-void QMediaPlayer_override_virtual_IsAvailable(void* self, intptr_t slot);
+bool QMediaPlayer_override_virtual_IsAvailable(void* self, intptr_t slot);
 bool QMediaPlayer_virtualbase_IsAvailable(const void* self);
-void QMediaPlayer_override_virtual_Service(void* self, intptr_t slot);
+bool QMediaPlayer_override_virtual_Service(void* self, intptr_t slot);
 QMediaService* QMediaPlayer_virtualbase_Service(const void* self);
-void QMediaPlayer_Delete(QMediaPlayer* self, bool isSubclass);
+void QMediaPlayer_Delete(QMediaPlayer* self);
 
 #ifdef __cplusplus
 } /* extern C */

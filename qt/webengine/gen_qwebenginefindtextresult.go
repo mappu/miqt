@@ -14,8 +14,7 @@ import (
 )
 
 type QWebEngineFindTextResult struct {
-	h          *C.QWebEngineFindTextResult
-	isSubclass bool
+	h *C.QWebEngineFindTextResult
 }
 
 func (this *QWebEngineFindTextResult) cPointer() *C.QWebEngineFindTextResult {
@@ -49,17 +48,13 @@ func UnsafeNewQWebEngineFindTextResult(h unsafe.Pointer) *QWebEngineFindTextResu
 // NewQWebEngineFindTextResult constructs a new QWebEngineFindTextResult object.
 func NewQWebEngineFindTextResult() *QWebEngineFindTextResult {
 
-	ret := newQWebEngineFindTextResult(C.QWebEngineFindTextResult_new())
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineFindTextResult(C.QWebEngineFindTextResult_new())
 }
 
 // NewQWebEngineFindTextResult2 constructs a new QWebEngineFindTextResult object.
 func NewQWebEngineFindTextResult2(other *QWebEngineFindTextResult) *QWebEngineFindTextResult {
 
-	ret := newQWebEngineFindTextResult(C.QWebEngineFindTextResult_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineFindTextResult(C.QWebEngineFindTextResult_new2(other.cPointer()))
 }
 
 func (this *QWebEngineFindTextResult) NumberOfMatches() int {
@@ -76,7 +71,7 @@ func (this *QWebEngineFindTextResult) OperatorAssign(other *QWebEngineFindTextRe
 
 // Delete this object from C++ memory.
 func (this *QWebEngineFindTextResult) Delete() {
-	C.QWebEngineFindTextResult_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebEngineFindTextResult_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

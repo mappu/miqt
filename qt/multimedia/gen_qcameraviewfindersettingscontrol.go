@@ -26,8 +26,7 @@ const (
 )
 
 type QCameraViewfinderSettingsControl struct {
-	h          *C.QCameraViewfinderSettingsControl
-	isSubclass bool
+	h *C.QCameraViewfinderSettingsControl
 	*QMediaControl
 }
 
@@ -150,7 +149,7 @@ func QCameraViewfinderSettingsControl_TrUtf83(s string, c string, n int) string 
 
 // Delete this object from C++ memory.
 func (this *QCameraViewfinderSettingsControl) Delete() {
-	C.QCameraViewfinderSettingsControl_Delete(this.h, C.bool(this.isSubclass))
+	C.QCameraViewfinderSettingsControl_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -163,8 +162,7 @@ func (this *QCameraViewfinderSettingsControl) GoGC() {
 }
 
 type QCameraViewfinderSettingsControl2 struct {
-	h          *C.QCameraViewfinderSettingsControl2
-	isSubclass bool
+	h *C.QCameraViewfinderSettingsControl2
 	*QMediaControl
 }
 
@@ -295,7 +293,7 @@ func QCameraViewfinderSettingsControl2_TrUtf83(s string, c string, n int) string
 
 // Delete this object from C++ memory.
 func (this *QCameraViewfinderSettingsControl2) Delete() {
-	C.QCameraViewfinderSettingsControl2_Delete(this.h, C.bool(this.isSubclass))
+	C.QCameraViewfinderSettingsControl2_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

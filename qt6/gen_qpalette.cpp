@@ -264,11 +264,7 @@ void QPalette_SetResolveMask(QPalette* self, unsigned long long mask) {
 	self->setResolveMask(static_cast<QPalette::ResolveMask>(mask));
 }
 
-void QPalette_Delete(QPalette* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPalette*>( self );
-	} else {
-		delete self;
-	}
+void QPalette_Delete(QPalette* self) {
+	delete self;
 }
 

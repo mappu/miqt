@@ -246,12 +246,8 @@ struct miqt_string QCalendar_StandaloneWeekDayName3(const QCalendar* self, QLoca
 	return _ms;
 }
 
-void QCalendar_Delete(QCalendar* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCalendar*>( self );
-	} else {
-		delete self;
-	}
+void QCalendar_Delete(QCalendar* self) {
+	delete self;
 }
 
 QCalendar__YearMonthDay* QCalendar__YearMonthDay_new() {
@@ -274,11 +270,7 @@ bool QCalendar__YearMonthDay_IsValid(const QCalendar__YearMonthDay* self) {
 	return self->isValid();
 }
 
-void QCalendar__YearMonthDay_Delete(QCalendar__YearMonthDay* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCalendar::YearMonthDay*>( self );
-	} else {
-		delete self;
-	}
+void QCalendar__YearMonthDay_Delete(QCalendar__YearMonthDay* self) {
+	delete self;
 }
 

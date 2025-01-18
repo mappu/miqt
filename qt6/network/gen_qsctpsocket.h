@@ -51,15 +51,15 @@ long long QSctpSocket_ReadData(QSctpSocket* self, char* data, long long maxlen);
 long long QSctpSocket_ReadLineData(QSctpSocket* self, char* data, long long maxlen);
 struct miqt_string QSctpSocket_Tr2(const char* s, const char* c);
 struct miqt_string QSctpSocket_Tr3(const char* s, const char* c, int n);
-void QSctpSocket_override_virtual_Close(void* self, intptr_t slot);
+bool QSctpSocket_override_virtual_Close(void* self, intptr_t slot);
 void QSctpSocket_virtualbase_Close(void* self);
-void QSctpSocket_override_virtual_DisconnectFromHost(void* self, intptr_t slot);
+bool QSctpSocket_override_virtual_DisconnectFromHost(void* self, intptr_t slot);
 void QSctpSocket_virtualbase_DisconnectFromHost(void* self);
-void QSctpSocket_override_virtual_ReadData(void* self, intptr_t slot);
+bool QSctpSocket_override_virtual_ReadData(void* self, intptr_t slot);
 long long QSctpSocket_virtualbase_ReadData(void* self, char* data, long long maxlen);
-void QSctpSocket_override_virtual_ReadLineData(void* self, intptr_t slot);
+bool QSctpSocket_override_virtual_ReadLineData(void* self, intptr_t slot);
 long long QSctpSocket_virtualbase_ReadLineData(void* self, char* data, long long maxlen);
-void QSctpSocket_Delete(QSctpSocket* self, bool isSubclass);
+void QSctpSocket_Delete(QSctpSocket* self);
 
 #ifdef __cplusplus
 } /* extern C */

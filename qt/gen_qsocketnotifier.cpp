@@ -27,13 +27,13 @@ void miqt_exec_callback_QSocketNotifier_DisconnectNotify(void*, intptr_t, QMetaM
 } /* extern C */
 #endif
 
-class MiqtVirtualQSocketNotifier : public virtual QSocketNotifier {
+class MiqtVirtualQSocketNotifier final : public QSocketNotifier {
 public:
 
 	MiqtVirtualQSocketNotifier(qintptr socket, QSocketNotifier::Type param2): QSocketNotifier(socket, param2) {};
 	MiqtVirtualQSocketNotifier(qintptr socket, QSocketNotifier::Type param2, QObject* parent): QSocketNotifier(socket, param2, parent) {};
 
-	virtual ~MiqtVirtualQSocketNotifier() = default;
+	virtual ~MiqtVirtualQSocketNotifier() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -312,68 +312,106 @@ struct miqt_string QSocketNotifier_TrUtf83(const char* s, const char* c, int n) 
 	return _ms;
 }
 
-void QSocketNotifier_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSocketNotifier*>( (QSocketNotifier*)(self) )->handle__Event = slot;
+bool QSocketNotifier_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQSocketNotifier* self_cast = dynamic_cast<MiqtVirtualQSocketNotifier*>( (QSocketNotifier*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QSocketNotifier_virtualbase_Event(void* self, QEvent* param1) {
 	return ( (MiqtVirtualQSocketNotifier*)(self) )->virtualbase_Event(param1);
 }
 
-void QSocketNotifier_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSocketNotifier*>( (QSocketNotifier*)(self) )->handle__EventFilter = slot;
+bool QSocketNotifier_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQSocketNotifier* self_cast = dynamic_cast<MiqtVirtualQSocketNotifier*>( (QSocketNotifier*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QSocketNotifier_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQSocketNotifier*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QSocketNotifier_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSocketNotifier*>( (QSocketNotifier*)(self) )->handle__TimerEvent = slot;
+bool QSocketNotifier_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSocketNotifier* self_cast = dynamic_cast<MiqtVirtualQSocketNotifier*>( (QSocketNotifier*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QSocketNotifier_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQSocketNotifier*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QSocketNotifier_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSocketNotifier*>( (QSocketNotifier*)(self) )->handle__ChildEvent = slot;
+bool QSocketNotifier_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSocketNotifier* self_cast = dynamic_cast<MiqtVirtualQSocketNotifier*>( (QSocketNotifier*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QSocketNotifier_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQSocketNotifier*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QSocketNotifier_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSocketNotifier*>( (QSocketNotifier*)(self) )->handle__CustomEvent = slot;
+bool QSocketNotifier_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSocketNotifier* self_cast = dynamic_cast<MiqtVirtualQSocketNotifier*>( (QSocketNotifier*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QSocketNotifier_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQSocketNotifier*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QSocketNotifier_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSocketNotifier*>( (QSocketNotifier*)(self) )->handle__ConnectNotify = slot;
+bool QSocketNotifier_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQSocketNotifier* self_cast = dynamic_cast<MiqtVirtualQSocketNotifier*>( (QSocketNotifier*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QSocketNotifier_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSocketNotifier*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QSocketNotifier_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSocketNotifier*>( (QSocketNotifier*)(self) )->handle__DisconnectNotify = slot;
+bool QSocketNotifier_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQSocketNotifier* self_cast = dynamic_cast<MiqtVirtualQSocketNotifier*>( (QSocketNotifier*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QSocketNotifier_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSocketNotifier*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QSocketNotifier_Delete(QSocketNotifier* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSocketNotifier*>( self );
-	} else {
-		delete self;
-	}
+void QSocketNotifier_Delete(QSocketNotifier* self) {
+	delete self;
 }
 
 QSocketDescriptor* QSocketDescriptor_new() {
@@ -406,11 +444,7 @@ bool QSocketDescriptor_IsValid(const QSocketDescriptor* self) {
 	return self->isValid();
 }
 
-void QSocketDescriptor_Delete(QSocketDescriptor* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QSocketDescriptor*>( self );
-	} else {
-		delete self;
-	}
+void QSocketDescriptor_Delete(QSocketDescriptor* self) {
+	delete self;
 }
 

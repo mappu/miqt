@@ -16,8 +16,7 @@ import (
 )
 
 type QCameraZoomControl struct {
-	h          *C.QCameraZoomControl
-	isSubclass bool
+	h *C.QCameraZoomControl
 	*QMediaControl
 }
 
@@ -274,7 +273,7 @@ func QCameraZoomControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QCameraZoomControl) Delete() {
-	C.QCameraZoomControl_Delete(this.h, C.bool(this.isSubclass))
+	C.QCameraZoomControl_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

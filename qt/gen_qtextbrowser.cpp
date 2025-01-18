@@ -81,13 +81,13 @@ void miqt_exec_callback_QTextBrowser_DoSetTextCursor(void*, intptr_t, QTextCurso
 } /* extern C */
 #endif
 
-class MiqtVirtualQTextBrowser : public virtual QTextBrowser {
+class MiqtVirtualQTextBrowser final : public QTextBrowser {
 public:
 
 	MiqtVirtualQTextBrowser(QWidget* parent): QTextBrowser(parent) {};
 	MiqtVirtualQTextBrowser(): QTextBrowser() {};
 
-	virtual ~MiqtVirtualQTextBrowser() = default;
+	virtual ~MiqtVirtualQTextBrowser() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__LoadResource = 0;
@@ -1200,283 +1200,483 @@ struct miqt_string QTextBrowser_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QTextBrowser_override_virtual_LoadResource(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__LoadResource = slot;
+bool QTextBrowser_override_virtual_LoadResource(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__LoadResource = slot;
+	return true;
 }
 
 QVariant* QTextBrowser_virtualbase_LoadResource(void* self, int typeVal, QUrl* name) {
 	return ( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_LoadResource(typeVal, name);
 }
 
-void QTextBrowser_override_virtual_SetSource(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__SetSource = slot;
+bool QTextBrowser_override_virtual_SetSource(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetSource = slot;
+	return true;
 }
 
 void QTextBrowser_virtualbase_SetSource(void* self, QUrl* name) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_SetSource(name);
 }
 
-void QTextBrowser_override_virtual_Backward(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__Backward = slot;
+bool QTextBrowser_override_virtual_Backward(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Backward = slot;
+	return true;
 }
 
 void QTextBrowser_virtualbase_Backward(void* self) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_Backward();
 }
 
-void QTextBrowser_override_virtual_Forward(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__Forward = slot;
+bool QTextBrowser_override_virtual_Forward(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Forward = slot;
+	return true;
 }
 
 void QTextBrowser_virtualbase_Forward(void* self) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_Forward();
 }
 
-void QTextBrowser_override_virtual_Home(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__Home = slot;
+bool QTextBrowser_override_virtual_Home(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Home = slot;
+	return true;
 }
 
 void QTextBrowser_virtualbase_Home(void* self) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_Home();
 }
 
-void QTextBrowser_override_virtual_Reload(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__Reload = slot;
+bool QTextBrowser_override_virtual_Reload(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Reload = slot;
+	return true;
 }
 
 void QTextBrowser_virtualbase_Reload(void* self) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_Reload();
 }
 
-void QTextBrowser_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__Event = slot;
+bool QTextBrowser_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QTextBrowser_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_Event(e);
 }
 
-void QTextBrowser_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__KeyPressEvent = slot;
+bool QTextBrowser_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QTextBrowser_virtualbase_KeyPressEvent(void* self, QKeyEvent* ev) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_KeyPressEvent(ev);
 }
 
-void QTextBrowser_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__MouseMoveEvent = slot;
+bool QTextBrowser_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QTextBrowser_virtualbase_MouseMoveEvent(void* self, QMouseEvent* ev) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_MouseMoveEvent(ev);
 }
 
-void QTextBrowser_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__MousePressEvent = slot;
+bool QTextBrowser_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QTextBrowser_virtualbase_MousePressEvent(void* self, QMouseEvent* ev) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_MousePressEvent(ev);
 }
 
-void QTextBrowser_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__MouseReleaseEvent = slot;
+bool QTextBrowser_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QTextBrowser_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* ev) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_MouseReleaseEvent(ev);
 }
 
-void QTextBrowser_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__FocusOutEvent = slot;
+bool QTextBrowser_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
 }
 
 void QTextBrowser_virtualbase_FocusOutEvent(void* self, QFocusEvent* ev) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_FocusOutEvent(ev);
 }
 
-void QTextBrowser_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__FocusNextPrevChild = slot;
+bool QTextBrowser_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusNextPrevChild = slot;
+	return true;
 }
 
 bool QTextBrowser_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QTextBrowser_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__PaintEvent = slot;
+bool QTextBrowser_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QTextBrowser_virtualbase_PaintEvent(void* self, QPaintEvent* e) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_PaintEvent(e);
 }
 
-void QTextBrowser_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__InputMethodQuery = slot;
+bool QTextBrowser_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodQuery = slot;
+	return true;
 }
 
 QVariant* QTextBrowser_virtualbase_InputMethodQuery(const void* self, int property) {
 	return ( (const MiqtVirtualQTextBrowser*)(self) )->virtualbase_InputMethodQuery(property);
 }
 
-void QTextBrowser_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__TimerEvent = slot;
+bool QTextBrowser_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QTextBrowser_virtualbase_TimerEvent(void* self, QTimerEvent* e) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_TimerEvent(e);
 }
 
-void QTextBrowser_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__KeyReleaseEvent = slot;
+bool QTextBrowser_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyReleaseEvent = slot;
+	return true;
 }
 
 void QTextBrowser_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* e) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_KeyReleaseEvent(e);
 }
 
-void QTextBrowser_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__ResizeEvent = slot;
+bool QTextBrowser_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QTextBrowser_virtualbase_ResizeEvent(void* self, QResizeEvent* e) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_ResizeEvent(e);
 }
 
-void QTextBrowser_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__MouseDoubleClickEvent = slot;
+bool QTextBrowser_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseDoubleClickEvent = slot;
+	return true;
 }
 
 void QTextBrowser_virtualbase_MouseDoubleClickEvent(void* self, QMouseEvent* e) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_MouseDoubleClickEvent(e);
 }
 
-void QTextBrowser_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__ContextMenuEvent = slot;
+bool QTextBrowser_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QTextBrowser_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* e) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_ContextMenuEvent(e);
 }
 
-void QTextBrowser_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__DragEnterEvent = slot;
+bool QTextBrowser_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragEnterEvent = slot;
+	return true;
 }
 
 void QTextBrowser_virtualbase_DragEnterEvent(void* self, QDragEnterEvent* e) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_DragEnterEvent(e);
 }
 
-void QTextBrowser_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__DragLeaveEvent = slot;
+bool QTextBrowser_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragLeaveEvent = slot;
+	return true;
 }
 
 void QTextBrowser_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* e) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_DragLeaveEvent(e);
 }
 
-void QTextBrowser_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__DragMoveEvent = slot;
+bool QTextBrowser_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragMoveEvent = slot;
+	return true;
 }
 
 void QTextBrowser_virtualbase_DragMoveEvent(void* self, QDragMoveEvent* e) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_DragMoveEvent(e);
 }
 
-void QTextBrowser_override_virtual_DropEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__DropEvent = slot;
+bool QTextBrowser_override_virtual_DropEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropEvent = slot;
+	return true;
 }
 
 void QTextBrowser_virtualbase_DropEvent(void* self, QDropEvent* e) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_DropEvent(e);
 }
 
-void QTextBrowser_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__FocusInEvent = slot;
+bool QTextBrowser_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QTextBrowser_virtualbase_FocusInEvent(void* self, QFocusEvent* e) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_FocusInEvent(e);
 }
 
-void QTextBrowser_override_virtual_ShowEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__ShowEvent = slot;
+bool QTextBrowser_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
 }
 
 void QTextBrowser_virtualbase_ShowEvent(void* self, QShowEvent* param1) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_ShowEvent(param1);
 }
 
-void QTextBrowser_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__ChangeEvent = slot;
+bool QTextBrowser_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QTextBrowser_virtualbase_ChangeEvent(void* self, QEvent* e) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_ChangeEvent(e);
 }
 
-void QTextBrowser_override_virtual_WheelEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__WheelEvent = slot;
+bool QTextBrowser_override_virtual_WheelEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WheelEvent = slot;
+	return true;
 }
 
 void QTextBrowser_virtualbase_WheelEvent(void* self, QWheelEvent* e) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_WheelEvent(e);
 }
 
-void QTextBrowser_override_virtual_CreateMimeDataFromSelection(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__CreateMimeDataFromSelection = slot;
+bool QTextBrowser_override_virtual_CreateMimeDataFromSelection(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CreateMimeDataFromSelection = slot;
+	return true;
 }
 
 QMimeData* QTextBrowser_virtualbase_CreateMimeDataFromSelection(const void* self) {
 	return ( (const MiqtVirtualQTextBrowser*)(self) )->virtualbase_CreateMimeDataFromSelection();
 }
 
-void QTextBrowser_override_virtual_CanInsertFromMimeData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__CanInsertFromMimeData = slot;
+bool QTextBrowser_override_virtual_CanInsertFromMimeData(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CanInsertFromMimeData = slot;
+	return true;
 }
 
 bool QTextBrowser_virtualbase_CanInsertFromMimeData(const void* self, QMimeData* source) {
 	return ( (const MiqtVirtualQTextBrowser*)(self) )->virtualbase_CanInsertFromMimeData(source);
 }
 
-void QTextBrowser_override_virtual_InsertFromMimeData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__InsertFromMimeData = slot;
+bool QTextBrowser_override_virtual_InsertFromMimeData(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InsertFromMimeData = slot;
+	return true;
 }
 
 void QTextBrowser_virtualbase_InsertFromMimeData(void* self, QMimeData* source) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_InsertFromMimeData(source);
 }
 
-void QTextBrowser_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__InputMethodEvent = slot;
+bool QTextBrowser_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodEvent = slot;
+	return true;
 }
 
 void QTextBrowser_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* param1) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_InputMethodEvent(param1);
 }
 
-void QTextBrowser_override_virtual_ScrollContentsBy(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__ScrollContentsBy = slot;
+bool QTextBrowser_override_virtual_ScrollContentsBy(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ScrollContentsBy = slot;
+	return true;
 }
 
 void QTextBrowser_virtualbase_ScrollContentsBy(void* self, int dx, int dy) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_ScrollContentsBy(dx, dy);
 }
 
-void QTextBrowser_override_virtual_DoSetTextCursor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) )->handle__DoSetTextCursor = slot;
+bool QTextBrowser_override_virtual_DoSetTextCursor(void* self, intptr_t slot) {
+	MiqtVirtualQTextBrowser* self_cast = dynamic_cast<MiqtVirtualQTextBrowser*>( (QTextBrowser*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DoSetTextCursor = slot;
+	return true;
 }
 
 void QTextBrowser_virtualbase_DoSetTextCursor(void* self, QTextCursor* cursor) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_DoSetTextCursor(cursor);
 }
 
-void QTextBrowser_Delete(QTextBrowser* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQTextBrowser*>( self );
-	} else {
-		delete self;
-	}
+void QTextBrowser_Delete(QTextBrowser* self) {
+	delete self;
 }
 

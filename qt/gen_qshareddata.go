@@ -14,8 +14,7 @@ import (
 )
 
 type QSharedData struct {
-	h          *C.QSharedData
-	isSubclass bool
+	h *C.QSharedData
 }
 
 func (this *QSharedData) cPointer() *C.QSharedData {
@@ -49,22 +48,18 @@ func UnsafeNewQSharedData(h unsafe.Pointer) *QSharedData {
 // NewQSharedData constructs a new QSharedData object.
 func NewQSharedData() *QSharedData {
 
-	ret := newQSharedData(C.QSharedData_new())
-	ret.isSubclass = true
-	return ret
+	return newQSharedData(C.QSharedData_new())
 }
 
 // NewQSharedData2 constructs a new QSharedData object.
 func NewQSharedData2(param1 *QSharedData) *QSharedData {
 
-	ret := newQSharedData(C.QSharedData_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSharedData(C.QSharedData_new2(param1.cPointer()))
 }
 
 // Delete this object from C++ memory.
 func (this *QSharedData) Delete() {
-	C.QSharedData_Delete(this.h, C.bool(this.isSubclass))
+	C.QSharedData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

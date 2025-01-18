@@ -15,8 +15,7 @@ import (
 )
 
 type QVideoEncoderSettingsControl struct {
-	h          *C.QVideoEncoderSettingsControl
-	isSubclass bool
+	h *C.QVideoEncoderSettingsControl
 	*QMediaControl
 }
 
@@ -181,7 +180,7 @@ func QVideoEncoderSettingsControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QVideoEncoderSettingsControl) Delete() {
-	C.QVideoEncoderSettingsControl_Delete(this.h, C.bool(this.isSubclass))
+	C.QVideoEncoderSettingsControl_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

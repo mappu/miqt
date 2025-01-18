@@ -46,7 +46,7 @@ int QPaintDevice_Metric(const QPaintDevice* self, int metric);
 void QPaintDevice_InitPainter(const QPaintDevice* self, QPainter* painter);
 QPaintDevice* QPaintDevice_Redirected(const QPaintDevice* self, QPoint* offset);
 QPainter* QPaintDevice_SharedPainter(const QPaintDevice* self);
-void QPaintDevice_Delete(QPaintDevice* self, bool isSubclass);
+void QPaintDevice_Delete(QPaintDevice* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -15,8 +15,7 @@ import (
 )
 
 type QNetworkCacheMetaData struct {
-	h          *C.QNetworkCacheMetaData
-	isSubclass bool
+	h *C.QNetworkCacheMetaData
 }
 
 func (this *QNetworkCacheMetaData) cPointer() *C.QNetworkCacheMetaData {
@@ -50,17 +49,13 @@ func UnsafeNewQNetworkCacheMetaData(h unsafe.Pointer) *QNetworkCacheMetaData {
 // NewQNetworkCacheMetaData constructs a new QNetworkCacheMetaData object.
 func NewQNetworkCacheMetaData() *QNetworkCacheMetaData {
 
-	ret := newQNetworkCacheMetaData(C.QNetworkCacheMetaData_new())
-	ret.isSubclass = true
-	return ret
+	return newQNetworkCacheMetaData(C.QNetworkCacheMetaData_new())
 }
 
 // NewQNetworkCacheMetaData2 constructs a new QNetworkCacheMetaData object.
 func NewQNetworkCacheMetaData2(other *QNetworkCacheMetaData) *QNetworkCacheMetaData {
 
-	ret := newQNetworkCacheMetaData(C.QNetworkCacheMetaData_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkCacheMetaData(C.QNetworkCacheMetaData_new2(other.cPointer()))
 }
 
 func (this *QNetworkCacheMetaData) OperatorAssign(other *QNetworkCacheMetaData) {
@@ -219,7 +214,7 @@ func (this *QNetworkCacheMetaData) SetAttributes(attributes map[QNetworkRequest_
 
 // Delete this object from C++ memory.
 func (this *QNetworkCacheMetaData) Delete() {
-	C.QNetworkCacheMetaData_Delete(this.h, C.bool(this.isSubclass))
+	C.QNetworkCacheMetaData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -232,8 +227,7 @@ func (this *QNetworkCacheMetaData) GoGC() {
 }
 
 type QAbstractNetworkCache struct {
-	h          *C.QAbstractNetworkCache
-	isSubclass bool
+	h *C.QAbstractNetworkCache
 	*qt6.QObject
 }
 
@@ -345,7 +339,7 @@ func QAbstractNetworkCache_Tr3(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QAbstractNetworkCache) Delete() {
-	C.QAbstractNetworkCache_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractNetworkCache_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

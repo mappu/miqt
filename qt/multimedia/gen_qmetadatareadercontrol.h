@@ -46,7 +46,7 @@ struct miqt_string QMetaDataReaderControl_Tr2(const char* s, const char* c);
 struct miqt_string QMetaDataReaderControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QMetaDataReaderControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QMetaDataReaderControl_TrUtf83(const char* s, const char* c, int n);
-void QMetaDataReaderControl_Delete(QMetaDataReaderControl* self, bool isSubclass);
+void QMetaDataReaderControl_Delete(QMetaDataReaderControl* self);
 
 #ifdef __cplusplus
 } /* extern C */

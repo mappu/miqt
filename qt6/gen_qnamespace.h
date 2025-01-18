@@ -30,9 +30,9 @@ typedef struct Disambiguated_t Disambiguated_t;
 
 Disambiguated_t* Disambiguated_t_new();
 Disambiguated_t* Disambiguated_t_new2(Disambiguated_t* param1);
-void Disambiguated_t_Delete(Disambiguated_t* self, bool isSubclass);
+void Disambiguated_t_Delete(Disambiguated_t* self);
 
-void QInternal_Delete(QInternal* self, bool isSubclass);
+void QInternal_Delete(QInternal* self);
 
 QKeyCombination* QKeyCombination_new();
 QKeyCombination* QKeyCombination_new2(int modifiers);
@@ -46,7 +46,7 @@ int QKeyCombination_Key(const QKeyCombination* self);
 QKeyCombination* QKeyCombination_FromCombined(int combined);
 int QKeyCombination_ToCombined(const QKeyCombination* self);
 int QKeyCombination_ToInt(const QKeyCombination* self);
-void QKeyCombination_Delete(QKeyCombination* self, bool isSubclass);
+void QKeyCombination_Delete(QKeyCombination* self);
 
 #ifdef __cplusplus
 } /* extern C */

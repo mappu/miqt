@@ -131,7 +131,7 @@ bool QTextCursor_MovePosition2(QTextCursor* self, int op, int param2);
 bool QTextCursor_MovePosition3(QTextCursor* self, int op, int param2, int n);
 void QTextCursor_InsertMarkdown2(QTextCursor* self, struct miqt_string markdown, int features);
 void QTextCursor_InsertImage2(QTextCursor* self, QImage* image, struct miqt_string name);
-void QTextCursor_Delete(QTextCursor* self, bool isSubclass);
+void QTextCursor_Delete(QTextCursor* self);
 
 #ifdef __cplusplus
 } /* extern C */

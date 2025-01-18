@@ -92,12 +92,8 @@ void QPageRanges_Detach(QPageRanges* self) {
 	self->detach();
 }
 
-void QPageRanges_Delete(QPageRanges* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPageRanges*>( self );
-	} else {
-		delete self;
-	}
+void QPageRanges_Delete(QPageRanges* self) {
+	delete self;
 }
 
 QPageRanges__Range* QPageRanges__Range_new() {
@@ -112,11 +108,7 @@ bool QPageRanges__Range_Contains(const QPageRanges__Range* self, int pageNumber)
 	return self->contains(static_cast<int>(pageNumber));
 }
 
-void QPageRanges__Range_Delete(QPageRanges__Range* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPageRanges::Range*>( self );
-	} else {
-		delete self;
-	}
+void QPageRanges__Range_Delete(QPageRanges__Range* self) {
+	delete self;
 }
 

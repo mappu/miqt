@@ -40,7 +40,7 @@ ptrdiff_t QTextBoundaryFinder_ToNextBoundary(QTextBoundaryFinder* self);
 ptrdiff_t QTextBoundaryFinder_ToPreviousBoundary(QTextBoundaryFinder* self);
 bool QTextBoundaryFinder_IsAtBoundary(const QTextBoundaryFinder* self);
 int QTextBoundaryFinder_BoundaryReasons(const QTextBoundaryFinder* self);
-void QTextBoundaryFinder_Delete(QTextBoundaryFinder* self, bool isSubclass);
+void QTextBoundaryFinder_Delete(QTextBoundaryFinder* self);
 
 #ifdef __cplusplus
 } /* extern C */

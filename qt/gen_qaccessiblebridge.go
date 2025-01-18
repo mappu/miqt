@@ -15,8 +15,7 @@ import (
 )
 
 type QAccessibleBridge struct {
-	h          *C.QAccessibleBridge
-	isSubclass bool
+	h *C.QAccessibleBridge
 }
 
 func (this *QAccessibleBridge) cPointer() *C.QAccessibleBridge {
@@ -61,7 +60,7 @@ func (this *QAccessibleBridge) OperatorAssign(param1 *QAccessibleBridge) {
 
 // Delete this object from C++ memory.
 func (this *QAccessibleBridge) Delete() {
-	C.QAccessibleBridge_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessibleBridge_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -74,8 +73,7 @@ func (this *QAccessibleBridge) GoGC() {
 }
 
 type QAccessibleBridgePlugin struct {
-	h          *C.QAccessibleBridgePlugin
-	isSubclass bool
+	h *C.QAccessibleBridgePlugin
 	*QObject
 }
 
@@ -113,17 +111,13 @@ func UnsafeNewQAccessibleBridgePlugin(h unsafe.Pointer) *QAccessibleBridgePlugin
 // NewQAccessibleBridgePlugin constructs a new QAccessibleBridgePlugin object.
 func NewQAccessibleBridgePlugin() *QAccessibleBridgePlugin {
 
-	ret := newQAccessibleBridgePlugin(C.QAccessibleBridgePlugin_new())
-	ret.isSubclass = true
-	return ret
+	return newQAccessibleBridgePlugin(C.QAccessibleBridgePlugin_new())
 }
 
 // NewQAccessibleBridgePlugin2 constructs a new QAccessibleBridgePlugin object.
 func NewQAccessibleBridgePlugin2(parent *QObject) *QAccessibleBridgePlugin {
 
-	ret := newQAccessibleBridgePlugin(C.QAccessibleBridgePlugin_new2(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQAccessibleBridgePlugin(C.QAccessibleBridgePlugin_new2(parent.cPointer()))
 }
 
 func (this *QAccessibleBridgePlugin) MetaObject() *QMetaObject {
@@ -206,10 +200,10 @@ func QAccessibleBridgePlugin_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 func (this *QAccessibleBridgePlugin) OnCreate(slot func(key string) *QAccessibleBridge) {
-	if !this.isSubclass {
+	ok := C.QAccessibleBridgePlugin_override_virtual_Create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAccessibleBridgePlugin_override_virtual_Create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAccessibleBridgePlugin_Create
@@ -237,10 +231,10 @@ func (this *QAccessibleBridgePlugin) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QAccessibleBridgePlugin) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QAccessibleBridgePlugin_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAccessibleBridgePlugin_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAccessibleBridgePlugin_Event
@@ -265,10 +259,10 @@ func (this *QAccessibleBridgePlugin) callVirtualBase_EventFilter(watched *QObjec
 
 }
 func (this *QAccessibleBridgePlugin) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QAccessibleBridgePlugin_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAccessibleBridgePlugin_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAccessibleBridgePlugin_EventFilter
@@ -295,10 +289,10 @@ func (this *QAccessibleBridgePlugin) callVirtualBase_TimerEvent(event *QTimerEve
 
 }
 func (this *QAccessibleBridgePlugin) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QAccessibleBridgePlugin_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAccessibleBridgePlugin_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAccessibleBridgePlugin_TimerEvent
@@ -321,10 +315,10 @@ func (this *QAccessibleBridgePlugin) callVirtualBase_ChildEvent(event *QChildEve
 
 }
 func (this *QAccessibleBridgePlugin) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QAccessibleBridgePlugin_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAccessibleBridgePlugin_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAccessibleBridgePlugin_ChildEvent
@@ -347,10 +341,10 @@ func (this *QAccessibleBridgePlugin) callVirtualBase_CustomEvent(event *QEvent) 
 
 }
 func (this *QAccessibleBridgePlugin) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QAccessibleBridgePlugin_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAccessibleBridgePlugin_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAccessibleBridgePlugin_CustomEvent
@@ -373,10 +367,10 @@ func (this *QAccessibleBridgePlugin) callVirtualBase_ConnectNotify(signal *QMeta
 
 }
 func (this *QAccessibleBridgePlugin) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QAccessibleBridgePlugin_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAccessibleBridgePlugin_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAccessibleBridgePlugin_ConnectNotify
@@ -399,10 +393,10 @@ func (this *QAccessibleBridgePlugin) callVirtualBase_DisconnectNotify(signal *QM
 
 }
 func (this *QAccessibleBridgePlugin) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QAccessibleBridgePlugin_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAccessibleBridgePlugin_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAccessibleBridgePlugin_DisconnectNotify
@@ -421,7 +415,7 @@ func miqt_exec_callback_QAccessibleBridgePlugin_DisconnectNotify(self *C.QAccess
 
 // Delete this object from C++ memory.
 func (this *QAccessibleBridgePlugin) Delete() {
-	C.QAccessibleBridgePlugin_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessibleBridgePlugin_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

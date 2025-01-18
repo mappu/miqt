@@ -33,9 +33,9 @@ int QByteArrayMatcher_IndexIn2(const QByteArrayMatcher* self, const char* str, i
 struct miqt_string QByteArrayMatcher_Pattern(const QByteArrayMatcher* self);
 int QByteArrayMatcher_IndexIn22(const QByteArrayMatcher* self, struct miqt_string ba, int from);
 int QByteArrayMatcher_IndexIn3(const QByteArrayMatcher* self, const char* str, int lenVal, int from);
-void QByteArrayMatcher_Delete(QByteArrayMatcher* self, bool isSubclass);
+void QByteArrayMatcher_Delete(QByteArrayMatcher* self);
 
-void QStaticByteArrayMatcherBase_Delete(QStaticByteArrayMatcherBase* self, bool isSubclass);
+void QStaticByteArrayMatcherBase_Delete(QStaticByteArrayMatcherBase* self);
 
 #ifdef __cplusplus
 } /* extern C */

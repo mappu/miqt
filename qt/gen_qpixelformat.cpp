@@ -140,11 +140,7 @@ unsigned char QPixelFormat_SubEnum(const QPixelFormat* self) {
 	return static_cast<unsigned char>(_ret);
 }
 
-void QPixelFormat_Delete(QPixelFormat* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPixelFormat*>( self );
-	} else {
-		delete self;
-	}
+void QPixelFormat_Delete(QPixelFormat* self) {
+	delete self;
 }
 

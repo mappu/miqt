@@ -77,11 +77,7 @@ QSslDiffieHellmanParameters* QSslDiffieHellmanParameters_FromEncoded22(QIODevice
 	return new QSslDiffieHellmanParameters(QSslDiffieHellmanParameters::fromEncoded(device, static_cast<QSsl::EncodingFormat>(format)));
 }
 
-void QSslDiffieHellmanParameters_Delete(QSslDiffieHellmanParameters* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QSslDiffieHellmanParameters*>( self );
-	} else {
-		delete self;
-	}
+void QSslDiffieHellmanParameters_Delete(QSslDiffieHellmanParameters* self) {
+	delete self;
 }
 

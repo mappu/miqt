@@ -48,15 +48,15 @@ struct miqt_string QWidgetAction_Tr2(const char* s, const char* c);
 struct miqt_string QWidgetAction_Tr3(const char* s, const char* c, int n);
 struct miqt_string QWidgetAction_TrUtf82(const char* s, const char* c);
 struct miqt_string QWidgetAction_TrUtf83(const char* s, const char* c, int n);
-void QWidgetAction_override_virtual_Event(void* self, intptr_t slot);
+bool QWidgetAction_override_virtual_Event(void* self, intptr_t slot);
 bool QWidgetAction_virtualbase_Event(void* self, QEvent* param1);
-void QWidgetAction_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QWidgetAction_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QWidgetAction_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2);
-void QWidgetAction_override_virtual_CreateWidget(void* self, intptr_t slot);
+bool QWidgetAction_override_virtual_CreateWidget(void* self, intptr_t slot);
 QWidget* QWidgetAction_virtualbase_CreateWidget(void* self, QWidget* parent);
-void QWidgetAction_override_virtual_DeleteWidget(void* self, intptr_t slot);
+bool QWidgetAction_override_virtual_DeleteWidget(void* self, intptr_t slot);
 void QWidgetAction_virtualbase_DeleteWidget(void* self, QWidget* widget);
-void QWidgetAction_Delete(QWidgetAction* self, bool isSubclass);
+void QWidgetAction_Delete(QWidgetAction* self);
 
 #ifdef __cplusplus
 } /* extern C */

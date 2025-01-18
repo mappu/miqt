@@ -14,8 +14,7 @@ import (
 )
 
 type QMediaBindableInterface struct {
-	h          *C.QMediaBindableInterface
-	isSubclass bool
+	h *C.QMediaBindableInterface
 }
 
 func (this *QMediaBindableInterface) cPointer() *C.QMediaBindableInterface {
@@ -52,7 +51,7 @@ func (this *QMediaBindableInterface) MediaObject() *QMediaObject {
 
 // Delete this object from C++ memory.
 func (this *QMediaBindableInterface) Delete() {
-	C.QMediaBindableInterface_Delete(this.h, C.bool(this.isSubclass))
+	C.QMediaBindableInterface_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

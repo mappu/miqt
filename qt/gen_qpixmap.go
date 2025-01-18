@@ -15,8 +15,7 @@ import (
 )
 
 type QPixmap struct {
-	h          *C.QPixmap
-	isSubclass bool
+	h *C.QPixmap
 	*QPaintDevice
 }
 
@@ -54,25 +53,19 @@ func UnsafeNewQPixmap(h unsafe.Pointer) *QPixmap {
 // NewQPixmap constructs a new QPixmap object.
 func NewQPixmap() *QPixmap {
 
-	ret := newQPixmap(C.QPixmap_new())
-	ret.isSubclass = true
-	return ret
+	return newQPixmap(C.QPixmap_new())
 }
 
 // NewQPixmap2 constructs a new QPixmap object.
 func NewQPixmap2(w int, h int) *QPixmap {
 
-	ret := newQPixmap(C.QPixmap_new2((C.int)(w), (C.int)(h)))
-	ret.isSubclass = true
-	return ret
+	return newQPixmap(C.QPixmap_new2((C.int)(w), (C.int)(h)))
 }
 
 // NewQPixmap3 constructs a new QPixmap object.
 func NewQPixmap3(param1 *QSize) *QPixmap {
 
-	ret := newQPixmap(C.QPixmap_new3(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPixmap(C.QPixmap_new3(param1.cPointer()))
 }
 
 // NewQPixmap4 constructs a new QPixmap object.
@@ -82,17 +75,13 @@ func NewQPixmap4(fileName string) *QPixmap {
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 
-	ret := newQPixmap(C.QPixmap_new4(fileName_ms))
-	ret.isSubclass = true
-	return ret
+	return newQPixmap(C.QPixmap_new4(fileName_ms))
 }
 
 // NewQPixmap5 constructs a new QPixmap object.
 func NewQPixmap5(param1 *QPixmap) *QPixmap {
 
-	ret := newQPixmap(C.QPixmap_new5(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPixmap(C.QPixmap_new5(param1.cPointer()))
 }
 
 // NewQPixmap6 constructs a new QPixmap object.
@@ -104,9 +93,7 @@ func NewQPixmap6(fileName string, format string) *QPixmap {
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
 
-	ret := newQPixmap(C.QPixmap_new6(fileName_ms, format_Cstring))
-	ret.isSubclass = true
-	return ret
+	return newQPixmap(C.QPixmap_new6(fileName_ms, format_Cstring))
 }
 
 // NewQPixmap7 constructs a new QPixmap object.
@@ -118,9 +105,7 @@ func NewQPixmap7(fileName string, format string, flags ImageConversionFlag) *QPi
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
 
-	ret := newQPixmap(C.QPixmap_new7(fileName_ms, format_Cstring, (C.int)(flags)))
-	ret.isSubclass = true
-	return ret
+	return newQPixmap(C.QPixmap_new7(fileName_ms, format_Cstring, (C.int)(flags)))
 }
 
 func (this *QPixmap) OperatorAssign(param1 *QPixmap) {
@@ -616,10 +601,10 @@ func (this *QPixmap) callVirtualBase_DevType() int {
 
 }
 func (this *QPixmap) OnDevType(slot func(super func() int) int) {
-	if !this.isSubclass {
+	ok := C.QPixmap_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPixmap_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPixmap_DevType
@@ -641,10 +626,10 @@ func (this *QPixmap) callVirtualBase_PaintEngine() *QPaintEngine {
 
 }
 func (this *QPixmap) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
-	if !this.isSubclass {
+	ok := C.QPixmap_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPixmap_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPixmap_PaintEngine
@@ -666,10 +651,10 @@ func (this *QPixmap) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetr
 
 }
 func (this *QPixmap) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
-	if !this.isSubclass {
+	ok := C.QPixmap_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPixmap_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPixmap_Metric
@@ -694,10 +679,10 @@ func (this *QPixmap) callVirtualBase_InitPainter(painter *QPainter) {
 
 }
 func (this *QPixmap) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
-	if !this.isSubclass {
+	ok := C.QPixmap_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPixmap_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPixmap_InitPainter
@@ -720,10 +705,10 @@ func (this *QPixmap) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
 }
 func (this *QPixmap) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
-	if !this.isSubclass {
+	ok := C.QPixmap_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPixmap_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPixmap_Redirected
@@ -748,10 +733,10 @@ func (this *QPixmap) callVirtualBase_SharedPainter() *QPainter {
 
 }
 func (this *QPixmap) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
-	if !this.isSubclass {
+	ok := C.QPixmap_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPixmap_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPixmap_SharedPainter
@@ -769,7 +754,7 @@ func miqt_exec_callback_QPixmap_SharedPainter(self *C.QPixmap, cb C.intptr_t) *C
 
 // Delete this object from C++ memory.
 func (this *QPixmap) Delete() {
-	C.QPixmap_Delete(this.h, C.bool(this.isSubclass))
+	C.QPixmap_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

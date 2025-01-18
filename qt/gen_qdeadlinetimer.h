@@ -52,7 +52,7 @@ void QDeadlineTimer_SetDeadline2(QDeadlineTimer* self, long long msecs, int time
 void QDeadlineTimer_SetPreciseDeadline2(QDeadlineTimer* self, long long secs, long long nsecs);
 void QDeadlineTimer_SetPreciseDeadline3(QDeadlineTimer* self, long long secs, long long nsecs, int typeVal);
 QDeadlineTimer* QDeadlineTimer_Current1(int timerType);
-void QDeadlineTimer_Delete(QDeadlineTimer* self, bool isSubclass);
+void QDeadlineTimer_Delete(QDeadlineTimer* self);
 
 #ifdef __cplusplus
 } /* extern C */

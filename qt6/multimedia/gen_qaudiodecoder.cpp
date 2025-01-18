@@ -39,13 +39,13 @@ void miqt_exec_callback_QAudioDecoder_DisconnectNotify(void*, intptr_t, QMetaMet
 } /* extern C */
 #endif
 
-class MiqtVirtualQAudioDecoder : public virtual QAudioDecoder {
+class MiqtVirtualQAudioDecoder final : public QAudioDecoder {
 public:
 
 	MiqtVirtualQAudioDecoder(): QAudioDecoder() {};
 	MiqtVirtualQAudioDecoder(QObject* parent): QAudioDecoder(parent) {};
 
-	virtual ~MiqtVirtualQAudioDecoder() = default;
+	virtual ~MiqtVirtualQAudioDecoder() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -448,67 +448,105 @@ struct miqt_string QAudioDecoder_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QAudioDecoder_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) )->handle__Event = slot;
+bool QAudioDecoder_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQAudioDecoder* self_cast = dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QAudioDecoder_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQAudioDecoder*)(self) )->virtualbase_Event(event);
 }
 
-void QAudioDecoder_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) )->handle__EventFilter = slot;
+bool QAudioDecoder_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQAudioDecoder* self_cast = dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QAudioDecoder_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQAudioDecoder*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QAudioDecoder_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) )->handle__TimerEvent = slot;
+bool QAudioDecoder_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAudioDecoder* self_cast = dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QAudioDecoder_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQAudioDecoder*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QAudioDecoder_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) )->handle__ChildEvent = slot;
+bool QAudioDecoder_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAudioDecoder* self_cast = dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QAudioDecoder_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQAudioDecoder*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QAudioDecoder_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) )->handle__CustomEvent = slot;
+bool QAudioDecoder_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAudioDecoder* self_cast = dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QAudioDecoder_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQAudioDecoder*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QAudioDecoder_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) )->handle__ConnectNotify = slot;
+bool QAudioDecoder_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQAudioDecoder* self_cast = dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QAudioDecoder_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAudioDecoder*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QAudioDecoder_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) )->handle__DisconnectNotify = slot;
+bool QAudioDecoder_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQAudioDecoder* self_cast = dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QAudioDecoder_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAudioDecoder*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QAudioDecoder_Delete(QAudioDecoder* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAudioDecoder*>( self );
-	} else {
-		delete self;
-	}
+void QAudioDecoder_Delete(QAudioDecoder* self) {
+	delete self;
 }
 

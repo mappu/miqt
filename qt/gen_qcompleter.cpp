@@ -38,7 +38,7 @@ void miqt_exec_callback_QCompleter_DisconnectNotify(void*, intptr_t, QMetaMethod
 } /* extern C */
 #endif
 
-class MiqtVirtualQCompleter : public virtual QCompleter {
+class MiqtVirtualQCompleter final : public QCompleter {
 public:
 
 	MiqtVirtualQCompleter(): QCompleter() {};
@@ -48,7 +48,7 @@ public:
 	MiqtVirtualQCompleter(QAbstractItemModel* model, QObject* parent): QCompleter(model, parent) {};
 	MiqtVirtualQCompleter(const QStringList& completions, QObject* parent): QCompleter(completions, parent) {};
 
-	virtual ~MiqtVirtualQCompleter() = default;
+	virtual ~MiqtVirtualQCompleter() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__PathFromIndex = 0;
@@ -669,83 +669,133 @@ void QCompleter_Complete1(QCompleter* self, QRect* rect) {
 	self->complete(*rect);
 }
 
-void QCompleter_override_virtual_PathFromIndex(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCompleter*>( (QCompleter*)(self) )->handle__PathFromIndex = slot;
+bool QCompleter_override_virtual_PathFromIndex(void* self, intptr_t slot) {
+	MiqtVirtualQCompleter* self_cast = dynamic_cast<MiqtVirtualQCompleter*>( (QCompleter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PathFromIndex = slot;
+	return true;
 }
 
 struct miqt_string QCompleter_virtualbase_PathFromIndex(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQCompleter*)(self) )->virtualbase_PathFromIndex(index);
 }
 
-void QCompleter_override_virtual_SplitPath(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCompleter*>( (QCompleter*)(self) )->handle__SplitPath = slot;
+bool QCompleter_override_virtual_SplitPath(void* self, intptr_t slot) {
+	MiqtVirtualQCompleter* self_cast = dynamic_cast<MiqtVirtualQCompleter*>( (QCompleter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SplitPath = slot;
+	return true;
 }
 
 struct miqt_array /* of struct miqt_string */  QCompleter_virtualbase_SplitPath(const void* self, struct miqt_string path) {
 	return ( (const MiqtVirtualQCompleter*)(self) )->virtualbase_SplitPath(path);
 }
 
-void QCompleter_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCompleter*>( (QCompleter*)(self) )->handle__EventFilter = slot;
+bool QCompleter_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQCompleter* self_cast = dynamic_cast<MiqtVirtualQCompleter*>( (QCompleter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QCompleter_virtualbase_EventFilter(void* self, QObject* o, QEvent* e) {
 	return ( (MiqtVirtualQCompleter*)(self) )->virtualbase_EventFilter(o, e);
 }
 
-void QCompleter_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCompleter*>( (QCompleter*)(self) )->handle__Event = slot;
+bool QCompleter_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQCompleter* self_cast = dynamic_cast<MiqtVirtualQCompleter*>( (QCompleter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QCompleter_virtualbase_Event(void* self, QEvent* param1) {
 	return ( (MiqtVirtualQCompleter*)(self) )->virtualbase_Event(param1);
 }
 
-void QCompleter_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCompleter*>( (QCompleter*)(self) )->handle__TimerEvent = slot;
+bool QCompleter_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQCompleter* self_cast = dynamic_cast<MiqtVirtualQCompleter*>( (QCompleter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QCompleter_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQCompleter*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QCompleter_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCompleter*>( (QCompleter*)(self) )->handle__ChildEvent = slot;
+bool QCompleter_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQCompleter* self_cast = dynamic_cast<MiqtVirtualQCompleter*>( (QCompleter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QCompleter_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQCompleter*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QCompleter_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCompleter*>( (QCompleter*)(self) )->handle__CustomEvent = slot;
+bool QCompleter_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQCompleter* self_cast = dynamic_cast<MiqtVirtualQCompleter*>( (QCompleter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QCompleter_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQCompleter*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QCompleter_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCompleter*>( (QCompleter*)(self) )->handle__ConnectNotify = slot;
+bool QCompleter_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQCompleter* self_cast = dynamic_cast<MiqtVirtualQCompleter*>( (QCompleter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QCompleter_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQCompleter*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QCompleter_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCompleter*>( (QCompleter*)(self) )->handle__DisconnectNotify = slot;
+bool QCompleter_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQCompleter* self_cast = dynamic_cast<MiqtVirtualQCompleter*>( (QCompleter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QCompleter_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQCompleter*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QCompleter_Delete(QCompleter* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQCompleter*>( self );
-	} else {
-		delete self;
-	}
+void QCompleter_Delete(QCompleter* self) {
+	delete self;
 }
 

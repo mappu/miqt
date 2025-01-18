@@ -48,12 +48,8 @@ void QReadWriteLock_Unlock(QReadWriteLock* self) {
 	self->unlock();
 }
 
-void QReadWriteLock_Delete(QReadWriteLock* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QReadWriteLock*>( self );
-	} else {
-		delete self;
-	}
+void QReadWriteLock_Delete(QReadWriteLock* self) {
+	delete self;
 }
 
 QReadLocker* QReadLocker_new(QReadWriteLock* readWriteLock) {
@@ -72,12 +68,8 @@ QReadWriteLock* QReadLocker_ReadWriteLock(const QReadLocker* self) {
 	return self->readWriteLock();
 }
 
-void QReadLocker_Delete(QReadLocker* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QReadLocker*>( self );
-	} else {
-		delete self;
-	}
+void QReadLocker_Delete(QReadLocker* self) {
+	delete self;
 }
 
 QWriteLocker* QWriteLocker_new(QReadWriteLock* readWriteLock) {
@@ -96,11 +88,7 @@ QReadWriteLock* QWriteLocker_ReadWriteLock(const QWriteLocker* self) {
 	return self->readWriteLock();
 }
 
-void QWriteLocker_Delete(QWriteLocker* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWriteLocker*>( self );
-	} else {
-		delete self;
-	}
+void QWriteLocker_Delete(QWriteLocker* self) {
+	delete self;
 }
 

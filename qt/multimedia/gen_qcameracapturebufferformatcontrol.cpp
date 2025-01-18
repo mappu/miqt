@@ -131,11 +131,7 @@ struct miqt_string QCameraCaptureBufferFormatControl_TrUtf83(const char* s, cons
 	return _ms;
 }
 
-void QCameraCaptureBufferFormatControl_Delete(QCameraCaptureBufferFormatControl* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCameraCaptureBufferFormatControl*>( self );
-	} else {
-		delete self;
-	}
+void QCameraCaptureBufferFormatControl_Delete(QCameraCaptureBufferFormatControl* self) {
+	delete self;
 }
 

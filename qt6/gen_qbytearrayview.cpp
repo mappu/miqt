@@ -349,11 +349,7 @@ int QByteArrayView_Compare2(const QByteArrayView* self, QByteArrayView* a, int c
 	return self->compare(*a, static_cast<Qt::CaseSensitivity>(cs));
 }
 
-void QByteArrayView_Delete(QByteArrayView* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QByteArrayView*>( self );
-	} else {
-		delete self;
-	}
+void QByteArrayView_Delete(QByteArrayView* self) {
+	delete self;
 }
 

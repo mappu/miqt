@@ -91,7 +91,7 @@ struct miqt_string QMediaPlayerControl_Tr2(const char* s, const char* c);
 struct miqt_string QMediaPlayerControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QMediaPlayerControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QMediaPlayerControl_TrUtf83(const char* s, const char* c, int n);
-void QMediaPlayerControl_Delete(QMediaPlayerControl* self, bool isSubclass);
+void QMediaPlayerControl_Delete(QMediaPlayerControl* self);
 
 #ifdef __cplusplus
 } /* extern C */

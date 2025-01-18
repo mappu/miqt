@@ -110,11 +110,7 @@ struct miqt_array /* of QCameraInfo* */  QCameraInfo_AvailableCameras1(int posit
 	return _out;
 }
 
-void QCameraInfo_Delete(QCameraInfo* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCameraInfo*>( self );
-	} else {
-		delete self;
-	}
+void QCameraInfo_Delete(QCameraInfo* self) {
+	delete self;
 }
 

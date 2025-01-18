@@ -65,21 +65,21 @@ bool QPicture_Load2(QPicture* self, QIODevice* dev, const char* format);
 bool QPicture_Load22(QPicture* self, struct miqt_string fileName, const char* format);
 bool QPicture_Save2(QPicture* self, QIODevice* dev, const char* format);
 bool QPicture_Save22(QPicture* self, struct miqt_string fileName, const char* format);
-void QPicture_override_virtual_DevType(void* self, intptr_t slot);
+bool QPicture_override_virtual_DevType(void* self, intptr_t slot);
 int QPicture_virtualbase_DevType(const void* self);
-void QPicture_override_virtual_SetData(void* self, intptr_t slot);
+bool QPicture_override_virtual_SetData(void* self, intptr_t slot);
 void QPicture_virtualbase_SetData(void* self, const char* data, unsigned int size);
-void QPicture_override_virtual_PaintEngine(void* self, intptr_t slot);
+bool QPicture_override_virtual_PaintEngine(void* self, intptr_t slot);
 QPaintEngine* QPicture_virtualbase_PaintEngine(const void* self);
-void QPicture_override_virtual_Metric(void* self, intptr_t slot);
+bool QPicture_override_virtual_Metric(void* self, intptr_t slot);
 int QPicture_virtualbase_Metric(const void* self, int m);
-void QPicture_override_virtual_InitPainter(void* self, intptr_t slot);
+bool QPicture_override_virtual_InitPainter(void* self, intptr_t slot);
 void QPicture_virtualbase_InitPainter(const void* self, QPainter* painter);
-void QPicture_override_virtual_Redirected(void* self, intptr_t slot);
+bool QPicture_override_virtual_Redirected(void* self, intptr_t slot);
 QPaintDevice* QPicture_virtualbase_Redirected(const void* self, QPoint* offset);
-void QPicture_override_virtual_SharedPainter(void* self, intptr_t slot);
+bool QPicture_override_virtual_SharedPainter(void* self, intptr_t slot);
 QPainter* QPicture_virtualbase_SharedPainter(const void* self);
-void QPicture_Delete(QPicture* self, bool isSubclass);
+void QPicture_Delete(QPicture* self);
 
 QPictureIO* QPictureIO_new();
 QPictureIO* QPictureIO_new2(QIODevice* ioDevice, const char* format);
@@ -108,7 +108,7 @@ struct miqt_string QPictureIO_PictureFormat(struct miqt_string fileName);
 struct miqt_string QPictureIO_PictureFormatWithQIODevice(QIODevice* param1);
 struct miqt_array /* of struct miqt_string */  QPictureIO_InputFormats();
 struct miqt_array /* of struct miqt_string */  QPictureIO_OutputFormats();
-void QPictureIO_Delete(QPictureIO* self, bool isSubclass);
+void QPictureIO_Delete(QPictureIO* self);
 
 #ifdef __cplusplus
 } /* extern C */

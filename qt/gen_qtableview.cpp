@@ -104,13 +104,13 @@ bool miqt_exec_callback_QTableView_EventFilter(void*, intptr_t, QObject*, QEvent
 } /* extern C */
 #endif
 
-class MiqtVirtualQTableView : public virtual QTableView {
+class MiqtVirtualQTableView final : public QTableView {
 public:
 
 	MiqtVirtualQTableView(QWidget* parent): QTableView(parent) {};
 	MiqtVirtualQTableView(): QTableView() {};
 
-	virtual ~MiqtVirtualQTableView() = default;
+	virtual ~MiqtVirtualQTableView() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetModel = 0;
@@ -1905,491 +1905,847 @@ struct miqt_string QTableView_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QTableView_override_virtual_SetModel(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__SetModel = slot;
+bool QTableView_override_virtual_SetModel(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetModel = slot;
+	return true;
 }
 
 void QTableView_virtualbase_SetModel(void* self, QAbstractItemModel* model) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_SetModel(model);
 }
 
-void QTableView_override_virtual_SetRootIndex(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__SetRootIndex = slot;
+bool QTableView_override_virtual_SetRootIndex(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetRootIndex = slot;
+	return true;
 }
 
 void QTableView_virtualbase_SetRootIndex(void* self, QModelIndex* index) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_SetRootIndex(index);
 }
 
-void QTableView_override_virtual_SetSelectionModel(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__SetSelectionModel = slot;
+bool QTableView_override_virtual_SetSelectionModel(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetSelectionModel = slot;
+	return true;
 }
 
 void QTableView_virtualbase_SetSelectionModel(void* self, QItemSelectionModel* selectionModel) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_SetSelectionModel(selectionModel);
 }
 
-void QTableView_override_virtual_DoItemsLayout(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__DoItemsLayout = slot;
+bool QTableView_override_virtual_DoItemsLayout(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DoItemsLayout = slot;
+	return true;
 }
 
 void QTableView_virtualbase_DoItemsLayout(void* self) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_DoItemsLayout();
 }
 
-void QTableView_override_virtual_VisualRect(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__VisualRect = slot;
+bool QTableView_override_virtual_VisualRect(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__VisualRect = slot;
+	return true;
 }
 
 QRect* QTableView_virtualbase_VisualRect(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_VisualRect(index);
 }
 
-void QTableView_override_virtual_ScrollTo(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__ScrollTo = slot;
+bool QTableView_override_virtual_ScrollTo(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ScrollTo = slot;
+	return true;
 }
 
 void QTableView_virtualbase_ScrollTo(void* self, QModelIndex* index, int hint) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_ScrollTo(index, hint);
 }
 
-void QTableView_override_virtual_IndexAt(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__IndexAt = slot;
+bool QTableView_override_virtual_IndexAt(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IndexAt = slot;
+	return true;
 }
 
 QModelIndex* QTableView_virtualbase_IndexAt(const void* self, QPoint* p) {
 	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_IndexAt(p);
 }
 
-void QTableView_override_virtual_ScrollContentsBy(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__ScrollContentsBy = slot;
+bool QTableView_override_virtual_ScrollContentsBy(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ScrollContentsBy = slot;
+	return true;
 }
 
 void QTableView_virtualbase_ScrollContentsBy(void* self, int dx, int dy) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_ScrollContentsBy(dx, dy);
 }
 
-void QTableView_override_virtual_ViewOptions(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__ViewOptions = slot;
+bool QTableView_override_virtual_ViewOptions(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ViewOptions = slot;
+	return true;
 }
 
 QStyleOptionViewItem* QTableView_virtualbase_ViewOptions(const void* self) {
 	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_ViewOptions();
 }
 
-void QTableView_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__PaintEvent = slot;
+bool QTableView_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QTableView_virtualbase_PaintEvent(void* self, QPaintEvent* e) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_PaintEvent(e);
 }
 
-void QTableView_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__TimerEvent = slot;
+bool QTableView_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QTableView_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QTableView_override_virtual_HorizontalOffset(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__HorizontalOffset = slot;
+bool QTableView_override_virtual_HorizontalOffset(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HorizontalOffset = slot;
+	return true;
 }
 
 int QTableView_virtualbase_HorizontalOffset(const void* self) {
 	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_HorizontalOffset();
 }
 
-void QTableView_override_virtual_VerticalOffset(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__VerticalOffset = slot;
+bool QTableView_override_virtual_VerticalOffset(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__VerticalOffset = slot;
+	return true;
 }
 
 int QTableView_virtualbase_VerticalOffset(const void* self) {
 	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_VerticalOffset();
 }
 
-void QTableView_override_virtual_MoveCursor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__MoveCursor = slot;
+bool QTableView_override_virtual_MoveCursor(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveCursor = slot;
+	return true;
 }
 
 QModelIndex* QTableView_virtualbase_MoveCursor(void* self, int cursorAction, int modifiers) {
 	return ( (MiqtVirtualQTableView*)(self) )->virtualbase_MoveCursor(cursorAction, modifiers);
 }
 
-void QTableView_override_virtual_SetSelection(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__SetSelection = slot;
+bool QTableView_override_virtual_SetSelection(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetSelection = slot;
+	return true;
 }
 
 void QTableView_virtualbase_SetSelection(void* self, QRect* rect, int command) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_SetSelection(rect, command);
 }
 
-void QTableView_override_virtual_VisualRegionForSelection(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__VisualRegionForSelection = slot;
+bool QTableView_override_virtual_VisualRegionForSelection(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__VisualRegionForSelection = slot;
+	return true;
 }
 
 QRegion* QTableView_virtualbase_VisualRegionForSelection(const void* self, QItemSelection* selection) {
 	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_VisualRegionForSelection(selection);
 }
 
-void QTableView_override_virtual_SelectedIndexes(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__SelectedIndexes = slot;
+bool QTableView_override_virtual_SelectedIndexes(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SelectedIndexes = slot;
+	return true;
 }
 
 struct miqt_array /* of QModelIndex* */  QTableView_virtualbase_SelectedIndexes(const void* self) {
 	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_SelectedIndexes();
 }
 
-void QTableView_override_virtual_UpdateGeometries(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__UpdateGeometries = slot;
+bool QTableView_override_virtual_UpdateGeometries(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateGeometries = slot;
+	return true;
 }
 
 void QTableView_virtualbase_UpdateGeometries(void* self) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_UpdateGeometries();
 }
 
-void QTableView_override_virtual_ViewportSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__ViewportSizeHint = slot;
+bool QTableView_override_virtual_ViewportSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ViewportSizeHint = slot;
+	return true;
 }
 
 QSize* QTableView_virtualbase_ViewportSizeHint(const void* self) {
 	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_ViewportSizeHint();
 }
 
-void QTableView_override_virtual_SizeHintForRow(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__SizeHintForRow = slot;
+bool QTableView_override_virtual_SizeHintForRow(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHintForRow = slot;
+	return true;
 }
 
 int QTableView_virtualbase_SizeHintForRow(const void* self, int row) {
 	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_SizeHintForRow(row);
 }
 
-void QTableView_override_virtual_SizeHintForColumn(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__SizeHintForColumn = slot;
+bool QTableView_override_virtual_SizeHintForColumn(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHintForColumn = slot;
+	return true;
 }
 
 int QTableView_virtualbase_SizeHintForColumn(const void* self, int column) {
 	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_SizeHintForColumn(column);
 }
 
-void QTableView_override_virtual_VerticalScrollbarAction(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__VerticalScrollbarAction = slot;
+bool QTableView_override_virtual_VerticalScrollbarAction(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__VerticalScrollbarAction = slot;
+	return true;
 }
 
 void QTableView_virtualbase_VerticalScrollbarAction(void* self, int action) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_VerticalScrollbarAction(action);
 }
 
-void QTableView_override_virtual_HorizontalScrollbarAction(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__HorizontalScrollbarAction = slot;
+bool QTableView_override_virtual_HorizontalScrollbarAction(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HorizontalScrollbarAction = slot;
+	return true;
 }
 
 void QTableView_virtualbase_HorizontalScrollbarAction(void* self, int action) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_HorizontalScrollbarAction(action);
 }
 
-void QTableView_override_virtual_IsIndexHidden(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__IsIndexHidden = slot;
+bool QTableView_override_virtual_IsIndexHidden(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsIndexHidden = slot;
+	return true;
 }
 
 bool QTableView_virtualbase_IsIndexHidden(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_IsIndexHidden(index);
 }
 
-void QTableView_override_virtual_SelectionChanged(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__SelectionChanged = slot;
+bool QTableView_override_virtual_SelectionChanged(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SelectionChanged = slot;
+	return true;
 }
 
 void QTableView_virtualbase_SelectionChanged(void* self, QItemSelection* selected, QItemSelection* deselected) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_SelectionChanged(selected, deselected);
 }
 
-void QTableView_override_virtual_CurrentChanged(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__CurrentChanged = slot;
+bool QTableView_override_virtual_CurrentChanged(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CurrentChanged = slot;
+	return true;
 }
 
 void QTableView_virtualbase_CurrentChanged(void* self, QModelIndex* current, QModelIndex* previous) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_CurrentChanged(current, previous);
 }
 
-void QTableView_override_virtual_KeyboardSearch(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__KeyboardSearch = slot;
+bool QTableView_override_virtual_KeyboardSearch(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyboardSearch = slot;
+	return true;
 }
 
 void QTableView_virtualbase_KeyboardSearch(void* self, struct miqt_string search) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_KeyboardSearch(search);
 }
 
-void QTableView_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__InputMethodQuery = slot;
+bool QTableView_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodQuery = slot;
+	return true;
 }
 
 QVariant* QTableView_virtualbase_InputMethodQuery(const void* self, int query) {
 	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_InputMethodQuery(query);
 }
 
-void QTableView_override_virtual_Reset(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__Reset = slot;
+bool QTableView_override_virtual_Reset(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Reset = slot;
+	return true;
 }
 
 void QTableView_virtualbase_Reset(void* self) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_Reset();
 }
 
-void QTableView_override_virtual_SelectAll(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__SelectAll = slot;
+bool QTableView_override_virtual_SelectAll(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SelectAll = slot;
+	return true;
 }
 
 void QTableView_virtualbase_SelectAll(void* self) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_SelectAll();
 }
 
-void QTableView_override_virtual_DataChanged(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__DataChanged = slot;
+bool QTableView_override_virtual_DataChanged(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DataChanged = slot;
+	return true;
 }
 
 void QTableView_virtualbase_DataChanged(void* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array /* of int */  roles) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_DataChanged(topLeft, bottomRight, roles);
 }
 
-void QTableView_override_virtual_RowsInserted(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__RowsInserted = slot;
+bool QTableView_override_virtual_RowsInserted(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RowsInserted = slot;
+	return true;
 }
 
 void QTableView_virtualbase_RowsInserted(void* self, QModelIndex* parent, int start, int end) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_RowsInserted(parent, start, end);
 }
 
-void QTableView_override_virtual_RowsAboutToBeRemoved(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__RowsAboutToBeRemoved = slot;
+bool QTableView_override_virtual_RowsAboutToBeRemoved(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RowsAboutToBeRemoved = slot;
+	return true;
 }
 
 void QTableView_virtualbase_RowsAboutToBeRemoved(void* self, QModelIndex* parent, int start, int end) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_RowsAboutToBeRemoved(parent, start, end);
 }
 
-void QTableView_override_virtual_UpdateEditorData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__UpdateEditorData = slot;
+bool QTableView_override_virtual_UpdateEditorData(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateEditorData = slot;
+	return true;
 }
 
 void QTableView_virtualbase_UpdateEditorData(void* self) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_UpdateEditorData();
 }
 
-void QTableView_override_virtual_UpdateEditorGeometries(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__UpdateEditorGeometries = slot;
+bool QTableView_override_virtual_UpdateEditorGeometries(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateEditorGeometries = slot;
+	return true;
 }
 
 void QTableView_virtualbase_UpdateEditorGeometries(void* self) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_UpdateEditorGeometries();
 }
 
-void QTableView_override_virtual_VerticalScrollbarValueChanged(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__VerticalScrollbarValueChanged = slot;
+bool QTableView_override_virtual_VerticalScrollbarValueChanged(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__VerticalScrollbarValueChanged = slot;
+	return true;
 }
 
 void QTableView_virtualbase_VerticalScrollbarValueChanged(void* self, int value) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_VerticalScrollbarValueChanged(value);
 }
 
-void QTableView_override_virtual_HorizontalScrollbarValueChanged(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__HorizontalScrollbarValueChanged = slot;
+bool QTableView_override_virtual_HorizontalScrollbarValueChanged(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HorizontalScrollbarValueChanged = slot;
+	return true;
 }
 
 void QTableView_virtualbase_HorizontalScrollbarValueChanged(void* self, int value) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_HorizontalScrollbarValueChanged(value);
 }
 
-void QTableView_override_virtual_CloseEditor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__CloseEditor = slot;
+bool QTableView_override_virtual_CloseEditor(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEditor = slot;
+	return true;
 }
 
 void QTableView_virtualbase_CloseEditor(void* self, QWidget* editor, int hint) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_CloseEditor(editor, hint);
 }
 
-void QTableView_override_virtual_CommitData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__CommitData = slot;
+bool QTableView_override_virtual_CommitData(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CommitData = slot;
+	return true;
 }
 
 void QTableView_virtualbase_CommitData(void* self, QWidget* editor) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_CommitData(editor);
 }
 
-void QTableView_override_virtual_EditorDestroyed(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__EditorDestroyed = slot;
+bool QTableView_override_virtual_EditorDestroyed(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EditorDestroyed = slot;
+	return true;
 }
 
 void QTableView_virtualbase_EditorDestroyed(void* self, QObject* editor) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_EditorDestroyed(editor);
 }
 
-void QTableView_override_virtual_Edit2(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__Edit2 = slot;
+bool QTableView_override_virtual_Edit2(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Edit2 = slot;
+	return true;
 }
 
 bool QTableView_virtualbase_Edit2(void* self, QModelIndex* index, int trigger, QEvent* event) {
 	return ( (MiqtVirtualQTableView*)(self) )->virtualbase_Edit2(index, trigger, event);
 }
 
-void QTableView_override_virtual_SelectionCommand(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__SelectionCommand = slot;
+bool QTableView_override_virtual_SelectionCommand(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SelectionCommand = slot;
+	return true;
 }
 
 int QTableView_virtualbase_SelectionCommand(const void* self, QModelIndex* index, QEvent* event) {
 	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_SelectionCommand(index, event);
 }
 
-void QTableView_override_virtual_StartDrag(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__StartDrag = slot;
+bool QTableView_override_virtual_StartDrag(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__StartDrag = slot;
+	return true;
 }
 
 void QTableView_virtualbase_StartDrag(void* self, int supportedActions) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_StartDrag(supportedActions);
 }
 
-void QTableView_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__FocusNextPrevChild = slot;
+bool QTableView_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusNextPrevChild = slot;
+	return true;
 }
 
 bool QTableView_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQTableView*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QTableView_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__Event = slot;
+bool QTableView_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QTableView_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQTableView*)(self) )->virtualbase_Event(event);
 }
 
-void QTableView_override_virtual_ViewportEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__ViewportEvent = slot;
+bool QTableView_override_virtual_ViewportEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ViewportEvent = slot;
+	return true;
 }
 
 bool QTableView_virtualbase_ViewportEvent(void* self, QEvent* event) {
 	return ( (MiqtVirtualQTableView*)(self) )->virtualbase_ViewportEvent(event);
 }
 
-void QTableView_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__MousePressEvent = slot;
+bool QTableView_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QTableView_virtualbase_MousePressEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_MousePressEvent(event);
 }
 
-void QTableView_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__MouseMoveEvent = slot;
+bool QTableView_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QTableView_virtualbase_MouseMoveEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_MouseMoveEvent(event);
 }
 
-void QTableView_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__MouseReleaseEvent = slot;
+bool QTableView_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QTableView_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_MouseReleaseEvent(event);
 }
 
-void QTableView_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__MouseDoubleClickEvent = slot;
+bool QTableView_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseDoubleClickEvent = slot;
+	return true;
 }
 
 void QTableView_virtualbase_MouseDoubleClickEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_MouseDoubleClickEvent(event);
 }
 
-void QTableView_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__DragEnterEvent = slot;
+bool QTableView_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragEnterEvent = slot;
+	return true;
 }
 
 void QTableView_virtualbase_DragEnterEvent(void* self, QDragEnterEvent* event) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_DragEnterEvent(event);
 }
 
-void QTableView_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__DragMoveEvent = slot;
+bool QTableView_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragMoveEvent = slot;
+	return true;
 }
 
 void QTableView_virtualbase_DragMoveEvent(void* self, QDragMoveEvent* event) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_DragMoveEvent(event);
 }
 
-void QTableView_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__DragLeaveEvent = slot;
+bool QTableView_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragLeaveEvent = slot;
+	return true;
 }
 
 void QTableView_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* event) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_DragLeaveEvent(event);
 }
 
-void QTableView_override_virtual_DropEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__DropEvent = slot;
+bool QTableView_override_virtual_DropEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropEvent = slot;
+	return true;
 }
 
 void QTableView_virtualbase_DropEvent(void* self, QDropEvent* event) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_DropEvent(event);
 }
 
-void QTableView_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__FocusInEvent = slot;
+bool QTableView_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QTableView_virtualbase_FocusInEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_FocusInEvent(event);
 }
 
-void QTableView_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__FocusOutEvent = slot;
+bool QTableView_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
 }
 
 void QTableView_virtualbase_FocusOutEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_FocusOutEvent(event);
 }
 
-void QTableView_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__KeyPressEvent = slot;
+bool QTableView_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QTableView_virtualbase_KeyPressEvent(void* self, QKeyEvent* event) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_KeyPressEvent(event);
 }
 
-void QTableView_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__ResizeEvent = slot;
+bool QTableView_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QTableView_virtualbase_ResizeEvent(void* self, QResizeEvent* event) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_ResizeEvent(event);
 }
 
-void QTableView_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__InputMethodEvent = slot;
+bool QTableView_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodEvent = slot;
+	return true;
 }
 
 void QTableView_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* event) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_InputMethodEvent(event);
 }
 
-void QTableView_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) )->handle__EventFilter = slot;
+bool QTableView_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QTableView_virtualbase_EventFilter(void* self, QObject* object, QEvent* event) {
 	return ( (MiqtVirtualQTableView*)(self) )->virtualbase_EventFilter(object, event);
 }
 
-void QTableView_Delete(QTableView* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQTableView*>( self );
-	} else {
-		delete self;
-	}
+void QTableView_Delete(QTableView* self) {
+	delete self;
 }
 

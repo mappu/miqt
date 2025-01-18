@@ -44,7 +44,7 @@ void miqt_exec_callback_QRadioButton_TimerEvent(void*, intptr_t, QTimerEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQRadioButton : public virtual QRadioButton {
+class MiqtVirtualQRadioButton final : public QRadioButton {
 public:
 
 	MiqtVirtualQRadioButton(QWidget* parent): QRadioButton(parent) {};
@@ -52,7 +52,7 @@ public:
 	MiqtVirtualQRadioButton(const QString& text): QRadioButton(text) {};
 	MiqtVirtualQRadioButton(const QString& text, QWidget* parent): QRadioButton(text, parent) {};
 
-	virtual ~MiqtVirtualQRadioButton() = default;
+	virtual ~MiqtVirtualQRadioButton() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -529,147 +529,245 @@ struct miqt_string QRadioButton_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QRadioButton_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) )->handle__SizeHint = slot;
+bool QRadioButton_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQRadioButton* self_cast = dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QRadioButton_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQRadioButton*)(self) )->virtualbase_SizeHint();
 }
 
-void QRadioButton_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) )->handle__MinimumSizeHint = slot;
+bool QRadioButton_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQRadioButton* self_cast = dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QRadioButton_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQRadioButton*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QRadioButton_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) )->handle__Event = slot;
+bool QRadioButton_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQRadioButton* self_cast = dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QRadioButton_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQRadioButton*)(self) )->virtualbase_Event(e);
 }
 
-void QRadioButton_override_virtual_HitButton(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) )->handle__HitButton = slot;
+bool QRadioButton_override_virtual_HitButton(void* self, intptr_t slot) {
+	MiqtVirtualQRadioButton* self_cast = dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HitButton = slot;
+	return true;
 }
 
 bool QRadioButton_virtualbase_HitButton(const void* self, QPoint* param1) {
 	return ( (const MiqtVirtualQRadioButton*)(self) )->virtualbase_HitButton(param1);
 }
 
-void QRadioButton_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) )->handle__PaintEvent = slot;
+bool QRadioButton_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRadioButton* self_cast = dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QRadioButton_virtualbase_PaintEvent(void* self, QPaintEvent* param1) {
 	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_PaintEvent(param1);
 }
 
-void QRadioButton_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) )->handle__MouseMoveEvent = slot;
+bool QRadioButton_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRadioButton* self_cast = dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QRadioButton_virtualbase_MouseMoveEvent(void* self, QMouseEvent* param1) {
 	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_MouseMoveEvent(param1);
 }
 
-void QRadioButton_override_virtual_InitStyleOption(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) )->handle__InitStyleOption = slot;
+bool QRadioButton_override_virtual_InitStyleOption(void* self, intptr_t slot) {
+	MiqtVirtualQRadioButton* self_cast = dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitStyleOption = slot;
+	return true;
 }
 
 void QRadioButton_virtualbase_InitStyleOption(const void* self, QStyleOptionButton* button) {
 	( (const MiqtVirtualQRadioButton*)(self) )->virtualbase_InitStyleOption(button);
 }
 
-void QRadioButton_override_virtual_CheckStateSet(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) )->handle__CheckStateSet = slot;
+bool QRadioButton_override_virtual_CheckStateSet(void* self, intptr_t slot) {
+	MiqtVirtualQRadioButton* self_cast = dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CheckStateSet = slot;
+	return true;
 }
 
 void QRadioButton_virtualbase_CheckStateSet(void* self) {
 	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_CheckStateSet();
 }
 
-void QRadioButton_override_virtual_NextCheckState(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) )->handle__NextCheckState = slot;
+bool QRadioButton_override_virtual_NextCheckState(void* self, intptr_t slot) {
+	MiqtVirtualQRadioButton* self_cast = dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NextCheckState = slot;
+	return true;
 }
 
 void QRadioButton_virtualbase_NextCheckState(void* self) {
 	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_NextCheckState();
 }
 
-void QRadioButton_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) )->handle__KeyPressEvent = slot;
+bool QRadioButton_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRadioButton* self_cast = dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QRadioButton_virtualbase_KeyPressEvent(void* self, QKeyEvent* e) {
 	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_KeyPressEvent(e);
 }
 
-void QRadioButton_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) )->handle__KeyReleaseEvent = slot;
+bool QRadioButton_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRadioButton* self_cast = dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyReleaseEvent = slot;
+	return true;
 }
 
 void QRadioButton_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* e) {
 	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_KeyReleaseEvent(e);
 }
 
-void QRadioButton_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) )->handle__MousePressEvent = slot;
+bool QRadioButton_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRadioButton* self_cast = dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QRadioButton_virtualbase_MousePressEvent(void* self, QMouseEvent* e) {
 	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_MousePressEvent(e);
 }
 
-void QRadioButton_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) )->handle__MouseReleaseEvent = slot;
+bool QRadioButton_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRadioButton* self_cast = dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QRadioButton_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* e) {
 	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_MouseReleaseEvent(e);
 }
 
-void QRadioButton_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) )->handle__FocusInEvent = slot;
+bool QRadioButton_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRadioButton* self_cast = dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QRadioButton_virtualbase_FocusInEvent(void* self, QFocusEvent* e) {
 	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_FocusInEvent(e);
 }
 
-void QRadioButton_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) )->handle__FocusOutEvent = slot;
+bool QRadioButton_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRadioButton* self_cast = dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
 }
 
 void QRadioButton_virtualbase_FocusOutEvent(void* self, QFocusEvent* e) {
 	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_FocusOutEvent(e);
 }
 
-void QRadioButton_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) )->handle__ChangeEvent = slot;
+bool QRadioButton_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRadioButton* self_cast = dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QRadioButton_virtualbase_ChangeEvent(void* self, QEvent* e) {
 	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_ChangeEvent(e);
 }
 
-void QRadioButton_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) )->handle__TimerEvent = slot;
+bool QRadioButton_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRadioButton* self_cast = dynamic_cast<MiqtVirtualQRadioButton*>( (QRadioButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QRadioButton_virtualbase_TimerEvent(void* self, QTimerEvent* e) {
 	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_TimerEvent(e);
 }
 
-void QRadioButton_Delete(QRadioButton* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQRadioButton*>( self );
-	} else {
-		delete self;
-	}
+void QRadioButton_Delete(QRadioButton* self) {
+	delete self;
 }
 

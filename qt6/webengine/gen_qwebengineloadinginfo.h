@@ -30,7 +30,7 @@ int QWebEngineLoadingInfo_Status(const QWebEngineLoadingInfo* self);
 struct miqt_string QWebEngineLoadingInfo_ErrorString(const QWebEngineLoadingInfo* self);
 int QWebEngineLoadingInfo_ErrorDomain(const QWebEngineLoadingInfo* self);
 int QWebEngineLoadingInfo_ErrorCode(const QWebEngineLoadingInfo* self);
-void QWebEngineLoadingInfo_Delete(QWebEngineLoadingInfo* self, bool isSubclass);
+void QWebEngineLoadingInfo_Delete(QWebEngineLoadingInfo* self);
 
 #ifdef __cplusplus
 } /* extern C */

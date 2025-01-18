@@ -98,21 +98,21 @@ struct miqt_string QSettings_TrUtf82(const char* s, const char* c);
 struct miqt_string QSettings_TrUtf83(const char* s, const char* c, int n);
 void QSettings_BeginWriteArray2(QSettings* self, struct miqt_string prefix, int size);
 QVariant* QSettings_Value2(const QSettings* self, struct miqt_string key, QVariant* defaultValue);
-void QSettings_override_virtual_Event(void* self, intptr_t slot);
+bool QSettings_override_virtual_Event(void* self, intptr_t slot);
 bool QSettings_virtualbase_Event(void* self, QEvent* event);
-void QSettings_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QSettings_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QSettings_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QSettings_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QSettings_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QSettings_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QSettings_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QSettings_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QSettings_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QSettings_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QSettings_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QSettings_virtualbase_CustomEvent(void* self, QEvent* event);
-void QSettings_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QSettings_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QSettings_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QSettings_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QSettings_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QSettings_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QSettings_Delete(QSettings* self, bool isSubclass);
+void QSettings_Delete(QSettings* self);
 
 #ifdef __cplusplus
 } /* extern C */

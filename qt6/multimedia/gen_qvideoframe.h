@@ -73,9 +73,9 @@ QImage* QVideoFrame_ToImage(const QVideoFrame* self);
 struct miqt_string QVideoFrame_SubtitleText(const QVideoFrame* self);
 void QVideoFrame_SetSubtitleText(QVideoFrame* self, struct miqt_string text);
 void QVideoFrame_Paint(QVideoFrame* self, QPainter* painter, QRectF* rect, QVideoFrame__PaintOptions* options);
-void QVideoFrame_Delete(QVideoFrame* self, bool isSubclass);
+void QVideoFrame_Delete(QVideoFrame* self);
 
-void QVideoFrame__PaintOptions_Delete(QVideoFrame__PaintOptions* self, bool isSubclass);
+void QVideoFrame__PaintOptions_Delete(QVideoFrame__PaintOptions* self);
 
 #ifdef __cplusplus
 } /* extern C */

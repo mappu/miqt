@@ -30,7 +30,7 @@ void QTemporaryDir_SetAutoRemove(QTemporaryDir* self, bool b);
 bool QTemporaryDir_Remove(QTemporaryDir* self);
 struct miqt_string QTemporaryDir_Path(const QTemporaryDir* self);
 struct miqt_string QTemporaryDir_FilePath(const QTemporaryDir* self, struct miqt_string fileName);
-void QTemporaryDir_Delete(QTemporaryDir* self, bool isSubclass);
+void QTemporaryDir_Delete(QTemporaryDir* self);
 
 #ifdef __cplusplus
 } /* extern C */

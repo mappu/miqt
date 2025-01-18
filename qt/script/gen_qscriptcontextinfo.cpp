@@ -115,11 +115,7 @@ bool QScriptContextInfo_OperatorNotEqual(const QScriptContextInfo* self, QScript
 	return (*self != *other);
 }
 
-void QScriptContextInfo_Delete(QScriptContextInfo* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QScriptContextInfo*>( self );
-	} else {
-		delete self;
-	}
+void QScriptContextInfo_Delete(QScriptContextInfo* self) {
+	delete self;
 }
 

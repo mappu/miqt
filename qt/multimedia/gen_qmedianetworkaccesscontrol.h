@@ -41,7 +41,7 @@ struct miqt_string QMediaNetworkAccessControl_Tr2(const char* s, const char* c);
 struct miqt_string QMediaNetworkAccessControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QMediaNetworkAccessControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QMediaNetworkAccessControl_TrUtf83(const char* s, const char* c, int n);
-void QMediaNetworkAccessControl_Delete(QMediaNetworkAccessControl* self, bool isSubclass);
+void QMediaNetworkAccessControl_Delete(QMediaNetworkAccessControl* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -47,7 +47,7 @@ bool miqt_exec_callback_QMessageBox_EventFilter(void*, intptr_t, QObject*, QEven
 } /* extern C */
 #endif
 
-class MiqtVirtualQMessageBox : public virtual QMessageBox {
+class MiqtVirtualQMessageBox final : public QMessageBox {
 public:
 
 	MiqtVirtualQMessageBox(QWidget* parent): QMessageBox(parent) {};
@@ -60,7 +60,7 @@ public:
 	MiqtVirtualQMessageBox(const QString& title, const QString& text, QMessageBox::Icon icon, int button0, int button1, int button2, QWidget* parent): QMessageBox(title, text, icon, button0, button1, button2, parent) {};
 	MiqtVirtualQMessageBox(const QString& title, const QString& text, QMessageBox::Icon icon, int button0, int button1, int button2, QWidget* parent, Qt::WindowFlags f): QMessageBox(title, text, icon, button0, button1, button2, parent, f) {};
 
-	virtual ~MiqtVirtualQMessageBox() = default;
+	virtual ~MiqtVirtualQMessageBox() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -1104,139 +1104,231 @@ int QMessageBox_Critical8(QWidget* parent, struct miqt_string title, struct miqt
 	return QMessageBox::critical(parent, title_QString, text_QString, button0Text_QString, button1Text_QString, button2Text_QString, static_cast<int>(defaultButtonNumber), static_cast<int>(escapeButtonNumber));
 }
 
-void QMessageBox_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) )->handle__Event = slot;
+bool QMessageBox_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQMessageBox* self_cast = dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QMessageBox_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQMessageBox*)(self) )->virtualbase_Event(e);
 }
 
-void QMessageBox_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) )->handle__ResizeEvent = slot;
+bool QMessageBox_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMessageBox* self_cast = dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QMessageBox_virtualbase_ResizeEvent(void* self, QResizeEvent* event) {
 	( (MiqtVirtualQMessageBox*)(self) )->virtualbase_ResizeEvent(event);
 }
 
-void QMessageBox_override_virtual_ShowEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) )->handle__ShowEvent = slot;
+bool QMessageBox_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMessageBox* self_cast = dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
 }
 
 void QMessageBox_virtualbase_ShowEvent(void* self, QShowEvent* event) {
 	( (MiqtVirtualQMessageBox*)(self) )->virtualbase_ShowEvent(event);
 }
 
-void QMessageBox_override_virtual_CloseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) )->handle__CloseEvent = slot;
+bool QMessageBox_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMessageBox* self_cast = dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
 }
 
 void QMessageBox_virtualbase_CloseEvent(void* self, QCloseEvent* event) {
 	( (MiqtVirtualQMessageBox*)(self) )->virtualbase_CloseEvent(event);
 }
 
-void QMessageBox_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) )->handle__KeyPressEvent = slot;
+bool QMessageBox_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMessageBox* self_cast = dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QMessageBox_virtualbase_KeyPressEvent(void* self, QKeyEvent* event) {
 	( (MiqtVirtualQMessageBox*)(self) )->virtualbase_KeyPressEvent(event);
 }
 
-void QMessageBox_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) )->handle__ChangeEvent = slot;
+bool QMessageBox_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMessageBox* self_cast = dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QMessageBox_virtualbase_ChangeEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQMessageBox*)(self) )->virtualbase_ChangeEvent(event);
 }
 
-void QMessageBox_override_virtual_SetVisible(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) )->handle__SetVisible = slot;
+bool QMessageBox_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQMessageBox* self_cast = dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
 }
 
 void QMessageBox_virtualbase_SetVisible(void* self, bool visible) {
 	( (MiqtVirtualQMessageBox*)(self) )->virtualbase_SetVisible(visible);
 }
 
-void QMessageBox_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) )->handle__SizeHint = slot;
+bool QMessageBox_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQMessageBox* self_cast = dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QMessageBox_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQMessageBox*)(self) )->virtualbase_SizeHint();
 }
 
-void QMessageBox_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) )->handle__MinimumSizeHint = slot;
+bool QMessageBox_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQMessageBox* self_cast = dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QMessageBox_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQMessageBox*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QMessageBox_override_virtual_Open(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) )->handle__Open = slot;
+bool QMessageBox_override_virtual_Open(void* self, intptr_t slot) {
+	MiqtVirtualQMessageBox* self_cast = dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Open = slot;
+	return true;
 }
 
 void QMessageBox_virtualbase_Open(void* self) {
 	( (MiqtVirtualQMessageBox*)(self) )->virtualbase_Open();
 }
 
-void QMessageBox_override_virtual_Exec(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) )->handle__Exec = slot;
+bool QMessageBox_override_virtual_Exec(void* self, intptr_t slot) {
+	MiqtVirtualQMessageBox* self_cast = dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Exec = slot;
+	return true;
 }
 
 int QMessageBox_virtualbase_Exec(void* self) {
 	return ( (MiqtVirtualQMessageBox*)(self) )->virtualbase_Exec();
 }
 
-void QMessageBox_override_virtual_Done(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) )->handle__Done = slot;
+bool QMessageBox_override_virtual_Done(void* self, intptr_t slot) {
+	MiqtVirtualQMessageBox* self_cast = dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Done = slot;
+	return true;
 }
 
 void QMessageBox_virtualbase_Done(void* self, int param1) {
 	( (MiqtVirtualQMessageBox*)(self) )->virtualbase_Done(param1);
 }
 
-void QMessageBox_override_virtual_Accept(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) )->handle__Accept = slot;
+bool QMessageBox_override_virtual_Accept(void* self, intptr_t slot) {
+	MiqtVirtualQMessageBox* self_cast = dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Accept = slot;
+	return true;
 }
 
 void QMessageBox_virtualbase_Accept(void* self) {
 	( (MiqtVirtualQMessageBox*)(self) )->virtualbase_Accept();
 }
 
-void QMessageBox_override_virtual_Reject(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) )->handle__Reject = slot;
+bool QMessageBox_override_virtual_Reject(void* self, intptr_t slot) {
+	MiqtVirtualQMessageBox* self_cast = dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Reject = slot;
+	return true;
 }
 
 void QMessageBox_virtualbase_Reject(void* self) {
 	( (MiqtVirtualQMessageBox*)(self) )->virtualbase_Reject();
 }
 
-void QMessageBox_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) )->handle__ContextMenuEvent = slot;
+bool QMessageBox_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMessageBox* self_cast = dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QMessageBox_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* param1) {
 	( (MiqtVirtualQMessageBox*)(self) )->virtualbase_ContextMenuEvent(param1);
 }
 
-void QMessageBox_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) )->handle__EventFilter = slot;
+bool QMessageBox_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQMessageBox* self_cast = dynamic_cast<MiqtVirtualQMessageBox*>( (QMessageBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QMessageBox_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2) {
 	return ( (MiqtVirtualQMessageBox*)(self) )->virtualbase_EventFilter(param1, param2);
 }
 
-void QMessageBox_Delete(QMessageBox* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQMessageBox*>( self );
-	} else {
-		delete self;
-	}
+void QMessageBox_Delete(QMessageBox* self) {
+	delete self;
 }
 

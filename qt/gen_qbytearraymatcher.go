@@ -14,8 +14,7 @@ import (
 )
 
 type QByteArrayMatcher struct {
-	h          *C.QByteArrayMatcher
-	isSubclass bool
+	h *C.QByteArrayMatcher
 }
 
 func (this *QByteArrayMatcher) cPointer() *C.QByteArrayMatcher {
@@ -49,9 +48,7 @@ func UnsafeNewQByteArrayMatcher(h unsafe.Pointer) *QByteArrayMatcher {
 // NewQByteArrayMatcher constructs a new QByteArrayMatcher object.
 func NewQByteArrayMatcher() *QByteArrayMatcher {
 
-	ret := newQByteArrayMatcher(C.QByteArrayMatcher_new())
-	ret.isSubclass = true
-	return ret
+	return newQByteArrayMatcher(C.QByteArrayMatcher_new())
 }
 
 // NewQByteArrayMatcher2 constructs a new QByteArrayMatcher object.
@@ -60,9 +57,7 @@ func NewQByteArrayMatcher2(pattern []byte) *QByteArrayMatcher {
 	pattern_alias.data = (*C.char)(unsafe.Pointer(&pattern[0]))
 	pattern_alias.len = C.size_t(len(pattern))
 
-	ret := newQByteArrayMatcher(C.QByteArrayMatcher_new2(pattern_alias))
-	ret.isSubclass = true
-	return ret
+	return newQByteArrayMatcher(C.QByteArrayMatcher_new2(pattern_alias))
 }
 
 // NewQByteArrayMatcher3 constructs a new QByteArrayMatcher object.
@@ -70,17 +65,13 @@ func NewQByteArrayMatcher3(pattern string, length int) *QByteArrayMatcher {
 	pattern_Cstring := C.CString(pattern)
 	defer C.free(unsafe.Pointer(pattern_Cstring))
 
-	ret := newQByteArrayMatcher(C.QByteArrayMatcher_new3(pattern_Cstring, (C.int)(length)))
-	ret.isSubclass = true
-	return ret
+	return newQByteArrayMatcher(C.QByteArrayMatcher_new3(pattern_Cstring, (C.int)(length)))
 }
 
 // NewQByteArrayMatcher4 constructs a new QByteArrayMatcher object.
 func NewQByteArrayMatcher4(other *QByteArrayMatcher) *QByteArrayMatcher {
 
-	ret := newQByteArrayMatcher(C.QByteArrayMatcher_new4(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQByteArrayMatcher(C.QByteArrayMatcher_new4(other.cPointer()))
 }
 
 func (this *QByteArrayMatcher) OperatorAssign(other *QByteArrayMatcher) {
@@ -129,7 +120,7 @@ func (this *QByteArrayMatcher) IndexIn3(str string, lenVal int, from int) int {
 
 // Delete this object from C++ memory.
 func (this *QByteArrayMatcher) Delete() {
-	C.QByteArrayMatcher_Delete(this.h, C.bool(this.isSubclass))
+	C.QByteArrayMatcher_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -142,8 +133,7 @@ func (this *QByteArrayMatcher) GoGC() {
 }
 
 type QStaticByteArrayMatcherBase struct {
-	h          *C.QStaticByteArrayMatcherBase
-	isSubclass bool
+	h *C.QStaticByteArrayMatcherBase
 }
 
 func (this *QStaticByteArrayMatcherBase) cPointer() *C.QStaticByteArrayMatcherBase {
@@ -176,7 +166,7 @@ func UnsafeNewQStaticByteArrayMatcherBase(h unsafe.Pointer) *QStaticByteArrayMat
 
 // Delete this object from C++ memory.
 func (this *QStaticByteArrayMatcherBase) Delete() {
-	C.QStaticByteArrayMatcherBase_Delete(this.h, C.bool(this.isSubclass))
+	C.QStaticByteArrayMatcherBase_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

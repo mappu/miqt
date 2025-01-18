@@ -32,8 +32,7 @@ const (
 )
 
 type QLCDNumber struct {
-	h          *C.QLCDNumber
-	isSubclass bool
+	h *C.QLCDNumber
 	*QFrame
 }
 
@@ -71,33 +70,25 @@ func UnsafeNewQLCDNumber(h unsafe.Pointer) *QLCDNumber {
 // NewQLCDNumber constructs a new QLCDNumber object.
 func NewQLCDNumber(parent *QWidget) *QLCDNumber {
 
-	ret := newQLCDNumber(C.QLCDNumber_new(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQLCDNumber(C.QLCDNumber_new(parent.cPointer()))
 }
 
 // NewQLCDNumber2 constructs a new QLCDNumber object.
 func NewQLCDNumber2() *QLCDNumber {
 
-	ret := newQLCDNumber(C.QLCDNumber_new2())
-	ret.isSubclass = true
-	return ret
+	return newQLCDNumber(C.QLCDNumber_new2())
 }
 
 // NewQLCDNumber3 constructs a new QLCDNumber object.
 func NewQLCDNumber3(numDigits uint) *QLCDNumber {
 
-	ret := newQLCDNumber(C.QLCDNumber_new3((C.uint)(numDigits)))
-	ret.isSubclass = true
-	return ret
+	return newQLCDNumber(C.QLCDNumber_new3((C.uint)(numDigits)))
 }
 
 // NewQLCDNumber4 constructs a new QLCDNumber object.
 func NewQLCDNumber4(numDigits uint, parent *QWidget) *QLCDNumber {
 
-	ret := newQLCDNumber(C.QLCDNumber_new4((C.uint)(numDigits), parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQLCDNumber(C.QLCDNumber_new4((C.uint)(numDigits), parent.cPointer()))
 }
 
 func (this *QLCDNumber) MetaObject() *QMetaObject {
@@ -252,10 +243,10 @@ func (this *QLCDNumber) callVirtualBase_SizeHint() *QSize {
 
 }
 func (this *QLCDNumber) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	if !this.isSubclass {
+	ok := C.QLCDNumber_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLCDNumber_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLCDNumber_SizeHint
@@ -277,10 +268,10 @@ func (this *QLCDNumber) callVirtualBase_Event(e *QEvent) bool {
 
 }
 func (this *QLCDNumber) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QLCDNumber_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLCDNumber_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLCDNumber_Event
@@ -305,10 +296,10 @@ func (this *QLCDNumber) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
 
 }
 func (this *QLCDNumber) OnPaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
-	if !this.isSubclass {
+	ok := C.QLCDNumber_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLCDNumber_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLCDNumber_PaintEvent
@@ -331,10 +322,10 @@ func (this *QLCDNumber) callVirtualBase_ChangeEvent(param1 *QEvent) {
 
 }
 func (this *QLCDNumber) OnChangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QLCDNumber_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLCDNumber_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLCDNumber_ChangeEvent
@@ -357,10 +348,10 @@ func (this *QLCDNumber) callVirtualBase_InitStyleOption(option *QStyleOptionFram
 
 }
 func (this *QLCDNumber) OnInitStyleOption(slot func(super func(option *QStyleOptionFrame), option *QStyleOptionFrame)) {
-	if !this.isSubclass {
+	ok := C.QLCDNumber_override_virtual_InitStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLCDNumber_override_virtual_InitStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLCDNumber_InitStyleOption
@@ -379,7 +370,7 @@ func miqt_exec_callback_QLCDNumber_InitStyleOption(self *C.QLCDNumber, cb C.intp
 
 // Delete this object from C++ memory.
 func (this *QLCDNumber) Delete() {
-	C.QLCDNumber_Delete(this.h, C.bool(this.isSubclass))
+	C.QLCDNumber_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

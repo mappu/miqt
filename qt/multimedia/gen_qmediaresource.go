@@ -16,8 +16,7 @@ import (
 )
 
 type QMediaResource struct {
-	h          *C.QMediaResource
-	isSubclass bool
+	h *C.QMediaResource
 }
 
 func (this *QMediaResource) cPointer() *C.QMediaResource {
@@ -51,33 +50,25 @@ func UnsafeNewQMediaResource(h unsafe.Pointer) *QMediaResource {
 // NewQMediaResource constructs a new QMediaResource object.
 func NewQMediaResource() *QMediaResource {
 
-	ret := newQMediaResource(C.QMediaResource_new())
-	ret.isSubclass = true
-	return ret
+	return newQMediaResource(C.QMediaResource_new())
 }
 
 // NewQMediaResource2 constructs a new QMediaResource object.
 func NewQMediaResource2(url *qt.QUrl) *QMediaResource {
 
-	ret := newQMediaResource(C.QMediaResource_new2((*C.QUrl)(url.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQMediaResource(C.QMediaResource_new2((*C.QUrl)(url.UnsafePointer())))
 }
 
 // NewQMediaResource3 constructs a new QMediaResource object.
 func NewQMediaResource3(request *network.QNetworkRequest) *QMediaResource {
 
-	ret := newQMediaResource(C.QMediaResource_new3((*C.QNetworkRequest)(request.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQMediaResource(C.QMediaResource_new3((*C.QNetworkRequest)(request.UnsafePointer())))
 }
 
 // NewQMediaResource4 constructs a new QMediaResource object.
 func NewQMediaResource4(other *QMediaResource) *QMediaResource {
 
-	ret := newQMediaResource(C.QMediaResource_new4(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQMediaResource(C.QMediaResource_new4(other.cPointer()))
 }
 
 // NewQMediaResource5 constructs a new QMediaResource object.
@@ -87,9 +78,7 @@ func NewQMediaResource5(url *qt.QUrl, mimeType string) *QMediaResource {
 	mimeType_ms.len = C.size_t(len(mimeType))
 	defer C.free(unsafe.Pointer(mimeType_ms.data))
 
-	ret := newQMediaResource(C.QMediaResource_new5((*C.QUrl)(url.UnsafePointer()), mimeType_ms))
-	ret.isSubclass = true
-	return ret
+	return newQMediaResource(C.QMediaResource_new5((*C.QUrl)(url.UnsafePointer()), mimeType_ms))
 }
 
 // NewQMediaResource6 constructs a new QMediaResource object.
@@ -99,9 +88,7 @@ func NewQMediaResource6(request *network.QNetworkRequest, mimeType string) *QMed
 	mimeType_ms.len = C.size_t(len(mimeType))
 	defer C.free(unsafe.Pointer(mimeType_ms.data))
 
-	ret := newQMediaResource(C.QMediaResource_new6((*C.QNetworkRequest)(request.UnsafePointer()), mimeType_ms))
-	ret.isSubclass = true
-	return ret
+	return newQMediaResource(C.QMediaResource_new6((*C.QNetworkRequest)(request.UnsafePointer()), mimeType_ms))
 }
 
 func (this *QMediaResource) OperatorAssign(other *QMediaResource) {
@@ -240,7 +227,7 @@ func (this *QMediaResource) SetResolution2(width int, height int) {
 
 // Delete this object from C++ memory.
 func (this *QMediaResource) Delete() {
-	C.QMediaResource_Delete(this.h, C.bool(this.isSubclass))
+	C.QMediaResource_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

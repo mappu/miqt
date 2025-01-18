@@ -22,8 +22,7 @@ const (
 )
 
 type QDataWidgetMapper struct {
-	h          *C.QDataWidgetMapper
-	isSubclass bool
+	h *C.QDataWidgetMapper
 	*QObject
 }
 
@@ -61,17 +60,13 @@ func UnsafeNewQDataWidgetMapper(h unsafe.Pointer) *QDataWidgetMapper {
 // NewQDataWidgetMapper constructs a new QDataWidgetMapper object.
 func NewQDataWidgetMapper() *QDataWidgetMapper {
 
-	ret := newQDataWidgetMapper(C.QDataWidgetMapper_new())
-	ret.isSubclass = true
-	return ret
+	return newQDataWidgetMapper(C.QDataWidgetMapper_new())
 }
 
 // NewQDataWidgetMapper2 constructs a new QDataWidgetMapper object.
 func NewQDataWidgetMapper2(parent *QObject) *QDataWidgetMapper {
 
-	ret := newQDataWidgetMapper(C.QDataWidgetMapper_new2(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQDataWidgetMapper(C.QDataWidgetMapper_new2(parent.cPointer()))
 }
 
 func (this *QDataWidgetMapper) MetaObject() *QMetaObject {
@@ -284,10 +279,10 @@ func (this *QDataWidgetMapper) callVirtualBase_SetCurrentIndex(index int) {
 
 }
 func (this *QDataWidgetMapper) OnSetCurrentIndex(slot func(super func(index int), index int)) {
-	if !this.isSubclass {
+	ok := C.QDataWidgetMapper_override_virtual_SetCurrentIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDataWidgetMapper_override_virtual_SetCurrentIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDataWidgetMapper_SetCurrentIndex
@@ -310,10 +305,10 @@ func (this *QDataWidgetMapper) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QDataWidgetMapper) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QDataWidgetMapper_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDataWidgetMapper_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDataWidgetMapper_Event
@@ -338,10 +333,10 @@ func (this *QDataWidgetMapper) callVirtualBase_EventFilter(watched *QObject, eve
 
 }
 func (this *QDataWidgetMapper) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QDataWidgetMapper_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDataWidgetMapper_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDataWidgetMapper_EventFilter
@@ -368,10 +363,10 @@ func (this *QDataWidgetMapper) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QDataWidgetMapper) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QDataWidgetMapper_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDataWidgetMapper_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDataWidgetMapper_TimerEvent
@@ -394,10 +389,10 @@ func (this *QDataWidgetMapper) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QDataWidgetMapper) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QDataWidgetMapper_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDataWidgetMapper_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDataWidgetMapper_ChildEvent
@@ -420,10 +415,10 @@ func (this *QDataWidgetMapper) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QDataWidgetMapper) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QDataWidgetMapper_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDataWidgetMapper_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDataWidgetMapper_CustomEvent
@@ -446,10 +441,10 @@ func (this *QDataWidgetMapper) callVirtualBase_ConnectNotify(signal *QMetaMethod
 
 }
 func (this *QDataWidgetMapper) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QDataWidgetMapper_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDataWidgetMapper_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDataWidgetMapper_ConnectNotify
@@ -472,10 +467,10 @@ func (this *QDataWidgetMapper) callVirtualBase_DisconnectNotify(signal *QMetaMet
 
 }
 func (this *QDataWidgetMapper) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QDataWidgetMapper_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDataWidgetMapper_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDataWidgetMapper_DisconnectNotify
@@ -494,7 +489,7 @@ func miqt_exec_callback_QDataWidgetMapper_DisconnectNotify(self *C.QDataWidgetMa
 
 // Delete this object from C++ memory.
 func (this *QDataWidgetMapper) Delete() {
-	C.QDataWidgetMapper_Delete(this.h, C.bool(this.isSubclass))
+	C.QDataWidgetMapper_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

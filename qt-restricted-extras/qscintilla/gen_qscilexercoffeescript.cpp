@@ -52,13 +52,13 @@ bool miqt_exec_callback_QsciLexerCoffeeScript_WriteProperties(void*, intptr_t, Q
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerCoffeeScript : public virtual QsciLexerCoffeeScript {
+class MiqtVirtualQsciLexerCoffeeScript final : public QsciLexerCoffeeScript {
 public:
 
 	MiqtVirtualQsciLexerCoffeeScript(): QsciLexerCoffeeScript() {};
 	MiqtVirtualQsciLexerCoffeeScript(QObject* parent): QsciLexerCoffeeScript(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerCoffeeScript() = default;
+	virtual ~MiqtVirtualQsciLexerCoffeeScript() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Language = 0;
@@ -1093,275 +1093,475 @@ const char* QsciLexerCoffeeScript_BlockStartKeyword1(const QsciLexerCoffeeScript
 	return (const char*) self->blockStartKeyword(static_cast<int*>(style));
 }
 
-void QsciLexerCoffeeScript_override_virtual_Language(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__Language = slot;
+bool QsciLexerCoffeeScript_override_virtual_Language(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Language = slot;
+	return true;
 }
 
-void QsciLexerCoffeeScript_override_virtual_Lexer(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__Lexer = slot;
+bool QsciLexerCoffeeScript_override_virtual_Lexer(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Lexer = slot;
+	return true;
 }
 
 const char* QsciLexerCoffeeScript_virtualbase_Lexer(const void* self) {
 	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_Lexer();
 }
 
-void QsciLexerCoffeeScript_override_virtual_LexerId(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__LexerId = slot;
+bool QsciLexerCoffeeScript_override_virtual_LexerId(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__LexerId = slot;
+	return true;
 }
 
 int QsciLexerCoffeeScript_virtualbase_LexerId(const void* self) {
 	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_LexerId();
 }
 
-void QsciLexerCoffeeScript_override_virtual_AutoCompletionFillups(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__AutoCompletionFillups = slot;
+bool QsciLexerCoffeeScript_override_virtual_AutoCompletionFillups(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__AutoCompletionFillups = slot;
+	return true;
 }
 
 const char* QsciLexerCoffeeScript_virtualbase_AutoCompletionFillups(const void* self) {
 	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_AutoCompletionFillups();
 }
 
-void QsciLexerCoffeeScript_override_virtual_AutoCompletionWordSeparators(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__AutoCompletionWordSeparators = slot;
+bool QsciLexerCoffeeScript_override_virtual_AutoCompletionWordSeparators(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__AutoCompletionWordSeparators = slot;
+	return true;
 }
 
 struct miqt_array /* of struct miqt_string */  QsciLexerCoffeeScript_virtualbase_AutoCompletionWordSeparators(const void* self) {
 	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_AutoCompletionWordSeparators();
 }
 
-void QsciLexerCoffeeScript_override_virtual_BlockEnd(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__BlockEnd = slot;
+bool QsciLexerCoffeeScript_override_virtual_BlockEnd(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BlockEnd = slot;
+	return true;
 }
 
 const char* QsciLexerCoffeeScript_virtualbase_BlockEnd(const void* self, int* style) {
 	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_BlockEnd(style);
 }
 
-void QsciLexerCoffeeScript_override_virtual_BlockLookback(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__BlockLookback = slot;
+bool QsciLexerCoffeeScript_override_virtual_BlockLookback(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BlockLookback = slot;
+	return true;
 }
 
 int QsciLexerCoffeeScript_virtualbase_BlockLookback(const void* self) {
 	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_BlockLookback();
 }
 
-void QsciLexerCoffeeScript_override_virtual_BlockStart(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__BlockStart = slot;
+bool QsciLexerCoffeeScript_override_virtual_BlockStart(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BlockStart = slot;
+	return true;
 }
 
 const char* QsciLexerCoffeeScript_virtualbase_BlockStart(const void* self, int* style) {
 	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_BlockStart(style);
 }
 
-void QsciLexerCoffeeScript_override_virtual_BlockStartKeyword(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__BlockStartKeyword = slot;
+bool QsciLexerCoffeeScript_override_virtual_BlockStartKeyword(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BlockStartKeyword = slot;
+	return true;
 }
 
 const char* QsciLexerCoffeeScript_virtualbase_BlockStartKeyword(const void* self, int* style) {
 	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_BlockStartKeyword(style);
 }
 
-void QsciLexerCoffeeScript_override_virtual_BraceStyle(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__BraceStyle = slot;
+bool QsciLexerCoffeeScript_override_virtual_BraceStyle(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BraceStyle = slot;
+	return true;
 }
 
 int QsciLexerCoffeeScript_virtualbase_BraceStyle(const void* self) {
 	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_BraceStyle();
 }
 
-void QsciLexerCoffeeScript_override_virtual_CaseSensitive(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__CaseSensitive = slot;
+bool QsciLexerCoffeeScript_override_virtual_CaseSensitive(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CaseSensitive = slot;
+	return true;
 }
 
 bool QsciLexerCoffeeScript_virtualbase_CaseSensitive(const void* self) {
 	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_CaseSensitive();
 }
 
-void QsciLexerCoffeeScript_override_virtual_Color(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__Color = slot;
+bool QsciLexerCoffeeScript_override_virtual_Color(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Color = slot;
+	return true;
 }
 
 QColor* QsciLexerCoffeeScript_virtualbase_Color(const void* self, int style) {
 	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_Color(style);
 }
 
-void QsciLexerCoffeeScript_override_virtual_EolFill(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__EolFill = slot;
+bool QsciLexerCoffeeScript_override_virtual_EolFill(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EolFill = slot;
+	return true;
 }
 
 bool QsciLexerCoffeeScript_virtualbase_EolFill(const void* self, int style) {
 	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_EolFill(style);
 }
 
-void QsciLexerCoffeeScript_override_virtual_Font(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__Font = slot;
+bool QsciLexerCoffeeScript_override_virtual_Font(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Font = slot;
+	return true;
 }
 
 QFont* QsciLexerCoffeeScript_virtualbase_Font(const void* self, int style) {
 	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_Font(style);
 }
 
-void QsciLexerCoffeeScript_override_virtual_IndentationGuideView(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__IndentationGuideView = slot;
+bool QsciLexerCoffeeScript_override_virtual_IndentationGuideView(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IndentationGuideView = slot;
+	return true;
 }
 
 int QsciLexerCoffeeScript_virtualbase_IndentationGuideView(const void* self) {
 	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_IndentationGuideView();
 }
 
-void QsciLexerCoffeeScript_override_virtual_Keywords(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__Keywords = slot;
+bool QsciLexerCoffeeScript_override_virtual_Keywords(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Keywords = slot;
+	return true;
 }
 
 const char* QsciLexerCoffeeScript_virtualbase_Keywords(const void* self, int set) {
 	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_Keywords(set);
 }
 
-void QsciLexerCoffeeScript_override_virtual_DefaultStyle(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__DefaultStyle = slot;
+bool QsciLexerCoffeeScript_override_virtual_DefaultStyle(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DefaultStyle = slot;
+	return true;
 }
 
 int QsciLexerCoffeeScript_virtualbase_DefaultStyle(const void* self) {
 	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_DefaultStyle();
 }
 
-void QsciLexerCoffeeScript_override_virtual_Description(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__Description = slot;
+bool QsciLexerCoffeeScript_override_virtual_Description(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Description = slot;
+	return true;
 }
 
-void QsciLexerCoffeeScript_override_virtual_Paper(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__Paper = slot;
+bool QsciLexerCoffeeScript_override_virtual_Paper(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Paper = slot;
+	return true;
 }
 
 QColor* QsciLexerCoffeeScript_virtualbase_Paper(const void* self, int style) {
 	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_Paper(style);
 }
 
-void QsciLexerCoffeeScript_override_virtual_DefaultColorWithStyle(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__DefaultColorWithStyle = slot;
+bool QsciLexerCoffeeScript_override_virtual_DefaultColorWithStyle(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DefaultColorWithStyle = slot;
+	return true;
 }
 
 QColor* QsciLexerCoffeeScript_virtualbase_DefaultColorWithStyle(const void* self, int style) {
 	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_DefaultColorWithStyle(style);
 }
 
-void QsciLexerCoffeeScript_override_virtual_DefaultEolFill(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__DefaultEolFill = slot;
+bool QsciLexerCoffeeScript_override_virtual_DefaultEolFill(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DefaultEolFill = slot;
+	return true;
 }
 
 bool QsciLexerCoffeeScript_virtualbase_DefaultEolFill(const void* self, int style) {
 	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_DefaultEolFill(style);
 }
 
-void QsciLexerCoffeeScript_override_virtual_DefaultFontWithStyle(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__DefaultFontWithStyle = slot;
+bool QsciLexerCoffeeScript_override_virtual_DefaultFontWithStyle(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DefaultFontWithStyle = slot;
+	return true;
 }
 
 QFont* QsciLexerCoffeeScript_virtualbase_DefaultFontWithStyle(const void* self, int style) {
 	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_DefaultFontWithStyle(style);
 }
 
-void QsciLexerCoffeeScript_override_virtual_DefaultPaperWithStyle(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__DefaultPaperWithStyle = slot;
+bool QsciLexerCoffeeScript_override_virtual_DefaultPaperWithStyle(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DefaultPaperWithStyle = slot;
+	return true;
 }
 
 QColor* QsciLexerCoffeeScript_virtualbase_DefaultPaperWithStyle(const void* self, int style) {
 	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_DefaultPaperWithStyle(style);
 }
 
-void QsciLexerCoffeeScript_override_virtual_SetEditor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__SetEditor = slot;
+bool QsciLexerCoffeeScript_override_virtual_SetEditor(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetEditor = slot;
+	return true;
 }
 
 void QsciLexerCoffeeScript_virtualbase_SetEditor(void* self, QsciScintilla* editor) {
 	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_SetEditor(editor);
 }
 
-void QsciLexerCoffeeScript_override_virtual_RefreshProperties(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__RefreshProperties = slot;
+bool QsciLexerCoffeeScript_override_virtual_RefreshProperties(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RefreshProperties = slot;
+	return true;
 }
 
 void QsciLexerCoffeeScript_virtualbase_RefreshProperties(void* self) {
 	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_RefreshProperties();
 }
 
-void QsciLexerCoffeeScript_override_virtual_StyleBitsNeeded(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__StyleBitsNeeded = slot;
+bool QsciLexerCoffeeScript_override_virtual_StyleBitsNeeded(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__StyleBitsNeeded = slot;
+	return true;
 }
 
 int QsciLexerCoffeeScript_virtualbase_StyleBitsNeeded(const void* self) {
 	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_StyleBitsNeeded();
 }
 
-void QsciLexerCoffeeScript_override_virtual_WordCharacters(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__WordCharacters = slot;
+bool QsciLexerCoffeeScript_override_virtual_WordCharacters(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WordCharacters = slot;
+	return true;
 }
 
 const char* QsciLexerCoffeeScript_virtualbase_WordCharacters(const void* self) {
 	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_WordCharacters();
 }
 
-void QsciLexerCoffeeScript_override_virtual_SetAutoIndentStyle(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__SetAutoIndentStyle = slot;
+bool QsciLexerCoffeeScript_override_virtual_SetAutoIndentStyle(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetAutoIndentStyle = slot;
+	return true;
 }
 
 void QsciLexerCoffeeScript_virtualbase_SetAutoIndentStyle(void* self, int autoindentstyle) {
 	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_SetAutoIndentStyle(autoindentstyle);
 }
 
-void QsciLexerCoffeeScript_override_virtual_SetColor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__SetColor = slot;
+bool QsciLexerCoffeeScript_override_virtual_SetColor(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetColor = slot;
+	return true;
 }
 
 void QsciLexerCoffeeScript_virtualbase_SetColor(void* self, QColor* c, int style) {
 	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_SetColor(c, style);
 }
 
-void QsciLexerCoffeeScript_override_virtual_SetEolFill(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__SetEolFill = slot;
+bool QsciLexerCoffeeScript_override_virtual_SetEolFill(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetEolFill = slot;
+	return true;
 }
 
 void QsciLexerCoffeeScript_virtualbase_SetEolFill(void* self, bool eoffill, int style) {
 	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_SetEolFill(eoffill, style);
 }
 
-void QsciLexerCoffeeScript_override_virtual_SetFont(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__SetFont = slot;
+bool QsciLexerCoffeeScript_override_virtual_SetFont(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetFont = slot;
+	return true;
 }
 
 void QsciLexerCoffeeScript_virtualbase_SetFont(void* self, QFont* f, int style) {
 	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_SetFont(f, style);
 }
 
-void QsciLexerCoffeeScript_override_virtual_SetPaper(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__SetPaper = slot;
+bool QsciLexerCoffeeScript_override_virtual_SetPaper(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetPaper = slot;
+	return true;
 }
 
 void QsciLexerCoffeeScript_virtualbase_SetPaper(void* self, QColor* c, int style) {
 	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_SetPaper(c, style);
 }
 
-void QsciLexerCoffeeScript_override_virtual_ReadProperties(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__ReadProperties = slot;
+bool QsciLexerCoffeeScript_override_virtual_ReadProperties(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ReadProperties = slot;
+	return true;
 }
 
 bool QsciLexerCoffeeScript_virtualbase_ReadProperties(void* self, QSettings* qs, struct miqt_string prefix) {
 	return ( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_ReadProperties(qs, prefix);
 }
 
-void QsciLexerCoffeeScript_override_virtual_WriteProperties(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) )->handle__WriteProperties = slot;
+bool QsciLexerCoffeeScript_override_virtual_WriteProperties(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WriteProperties = slot;
+	return true;
 }
 
 bool QsciLexerCoffeeScript_virtualbase_WriteProperties(const void* self, QSettings* qs, struct miqt_string prefix) {
 	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_WriteProperties(qs, prefix);
 }
 
-void QsciLexerCoffeeScript_Delete(QsciLexerCoffeeScript* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerCoffeeScript_Delete(QsciLexerCoffeeScript* self) {
+	delete self;
 }
 

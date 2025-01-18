@@ -146,11 +146,7 @@ struct miqt_string QWebEngineNotification_Tr3(const char* s, const char* c, int 
 	return _ms;
 }
 
-void QWebEngineNotification_Delete(QWebEngineNotification* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebEngineNotification*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineNotification_Delete(QWebEngineNotification* self) {
+	delete self;
 }
 

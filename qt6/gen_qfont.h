@@ -107,7 +107,7 @@ void QFont_SetResolveMask(QFont* self, unsigned int mask);
 void QFont_SetLegacyWeight(QFont* self, int legacyWeight);
 int QFont_LegacyWeight(const QFont* self);
 void QFont_SetStyleHint2(QFont* self, int param1, int param2);
-void QFont_Delete(QFont* self, bool isSubclass);
+void QFont_Delete(QFont* self);
 
 #ifdef __cplusplus
 } /* extern C */

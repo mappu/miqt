@@ -43,7 +43,7 @@ void miqt_exec_callback_QCheckBox_TimerEvent(void*, intptr_t, QTimerEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQCheckBox : public virtual QCheckBox {
+class MiqtVirtualQCheckBox final : public QCheckBox {
 public:
 
 	MiqtVirtualQCheckBox(QWidget* parent): QCheckBox(parent) {};
@@ -51,7 +51,7 @@ public:
 	MiqtVirtualQCheckBox(const QString& text): QCheckBox(text) {};
 	MiqtVirtualQCheckBox(const QString& text, QWidget* parent): QCheckBox(text, parent) {};
 
-	virtual ~MiqtVirtualQCheckBox() = default;
+	virtual ~MiqtVirtualQCheckBox() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -569,139 +569,231 @@ void QCheckBox_SetTristate1(QCheckBox* self, bool y) {
 	self->setTristate(y);
 }
 
-void QCheckBox_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) )->handle__SizeHint = slot;
+bool QCheckBox_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQCheckBox* self_cast = dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QCheckBox_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQCheckBox*)(self) )->virtualbase_SizeHint();
 }
 
-void QCheckBox_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) )->handle__MinimumSizeHint = slot;
+bool QCheckBox_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQCheckBox* self_cast = dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QCheckBox_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQCheckBox*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QCheckBox_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) )->handle__Event = slot;
+bool QCheckBox_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQCheckBox* self_cast = dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QCheckBox_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQCheckBox*)(self) )->virtualbase_Event(e);
 }
 
-void QCheckBox_override_virtual_HitButton(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) )->handle__HitButton = slot;
+bool QCheckBox_override_virtual_HitButton(void* self, intptr_t slot) {
+	MiqtVirtualQCheckBox* self_cast = dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HitButton = slot;
+	return true;
 }
 
 bool QCheckBox_virtualbase_HitButton(const void* self, QPoint* pos) {
 	return ( (const MiqtVirtualQCheckBox*)(self) )->virtualbase_HitButton(pos);
 }
 
-void QCheckBox_override_virtual_CheckStateSet(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) )->handle__CheckStateSet = slot;
+bool QCheckBox_override_virtual_CheckStateSet(void* self, intptr_t slot) {
+	MiqtVirtualQCheckBox* self_cast = dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CheckStateSet = slot;
+	return true;
 }
 
 void QCheckBox_virtualbase_CheckStateSet(void* self) {
 	( (MiqtVirtualQCheckBox*)(self) )->virtualbase_CheckStateSet();
 }
 
-void QCheckBox_override_virtual_NextCheckState(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) )->handle__NextCheckState = slot;
+bool QCheckBox_override_virtual_NextCheckState(void* self, intptr_t slot) {
+	MiqtVirtualQCheckBox* self_cast = dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NextCheckState = slot;
+	return true;
 }
 
 void QCheckBox_virtualbase_NextCheckState(void* self) {
 	( (MiqtVirtualQCheckBox*)(self) )->virtualbase_NextCheckState();
 }
 
-void QCheckBox_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) )->handle__PaintEvent = slot;
+bool QCheckBox_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQCheckBox* self_cast = dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QCheckBox_virtualbase_PaintEvent(void* self, QPaintEvent* param1) {
 	( (MiqtVirtualQCheckBox*)(self) )->virtualbase_PaintEvent(param1);
 }
 
-void QCheckBox_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) )->handle__MouseMoveEvent = slot;
+bool QCheckBox_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQCheckBox* self_cast = dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QCheckBox_virtualbase_MouseMoveEvent(void* self, QMouseEvent* param1) {
 	( (MiqtVirtualQCheckBox*)(self) )->virtualbase_MouseMoveEvent(param1);
 }
 
-void QCheckBox_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) )->handle__KeyPressEvent = slot;
+bool QCheckBox_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQCheckBox* self_cast = dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QCheckBox_virtualbase_KeyPressEvent(void* self, QKeyEvent* e) {
 	( (MiqtVirtualQCheckBox*)(self) )->virtualbase_KeyPressEvent(e);
 }
 
-void QCheckBox_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) )->handle__KeyReleaseEvent = slot;
+bool QCheckBox_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQCheckBox* self_cast = dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyReleaseEvent = slot;
+	return true;
 }
 
 void QCheckBox_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* e) {
 	( (MiqtVirtualQCheckBox*)(self) )->virtualbase_KeyReleaseEvent(e);
 }
 
-void QCheckBox_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) )->handle__MousePressEvent = slot;
+bool QCheckBox_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQCheckBox* self_cast = dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QCheckBox_virtualbase_MousePressEvent(void* self, QMouseEvent* e) {
 	( (MiqtVirtualQCheckBox*)(self) )->virtualbase_MousePressEvent(e);
 }
 
-void QCheckBox_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) )->handle__MouseReleaseEvent = slot;
+bool QCheckBox_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQCheckBox* self_cast = dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QCheckBox_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* e) {
 	( (MiqtVirtualQCheckBox*)(self) )->virtualbase_MouseReleaseEvent(e);
 }
 
-void QCheckBox_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) )->handle__FocusInEvent = slot;
+bool QCheckBox_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQCheckBox* self_cast = dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QCheckBox_virtualbase_FocusInEvent(void* self, QFocusEvent* e) {
 	( (MiqtVirtualQCheckBox*)(self) )->virtualbase_FocusInEvent(e);
 }
 
-void QCheckBox_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) )->handle__FocusOutEvent = slot;
+bool QCheckBox_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQCheckBox* self_cast = dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
 }
 
 void QCheckBox_virtualbase_FocusOutEvent(void* self, QFocusEvent* e) {
 	( (MiqtVirtualQCheckBox*)(self) )->virtualbase_FocusOutEvent(e);
 }
 
-void QCheckBox_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) )->handle__ChangeEvent = slot;
+bool QCheckBox_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQCheckBox* self_cast = dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QCheckBox_virtualbase_ChangeEvent(void* self, QEvent* e) {
 	( (MiqtVirtualQCheckBox*)(self) )->virtualbase_ChangeEvent(e);
 }
 
-void QCheckBox_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) )->handle__TimerEvent = slot;
+bool QCheckBox_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQCheckBox* self_cast = dynamic_cast<MiqtVirtualQCheckBox*>( (QCheckBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QCheckBox_virtualbase_TimerEvent(void* self, QTimerEvent* e) {
 	( (MiqtVirtualQCheckBox*)(self) )->virtualbase_TimerEvent(e);
 }
 
-void QCheckBox_Delete(QCheckBox* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQCheckBox*>( self );
-	} else {
-		delete self;
-	}
+void QCheckBox_Delete(QCheckBox* self) {
+	delete self;
 }
 

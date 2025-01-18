@@ -34,8 +34,7 @@ const (
 )
 
 type QMediaServiceProviderHint struct {
-	h          *C.QMediaServiceProviderHint
-	isSubclass bool
+	h *C.QMediaServiceProviderHint
 }
 
 func (this *QMediaServiceProviderHint) cPointer() *C.QMediaServiceProviderHint {
@@ -69,9 +68,7 @@ func UnsafeNewQMediaServiceProviderHint(h unsafe.Pointer) *QMediaServiceProvider
 // NewQMediaServiceProviderHint constructs a new QMediaServiceProviderHint object.
 func NewQMediaServiceProviderHint() *QMediaServiceProviderHint {
 
-	ret := newQMediaServiceProviderHint(C.QMediaServiceProviderHint_new())
-	ret.isSubclass = true
-	return ret
+	return newQMediaServiceProviderHint(C.QMediaServiceProviderHint_new())
 }
 
 // NewQMediaServiceProviderHint2 constructs a new QMediaServiceProviderHint object.
@@ -91,9 +88,7 @@ func NewQMediaServiceProviderHint2(mimeType string, codecs []string) *QMediaServ
 	}
 	codecs_ma := C.struct_miqt_array{len: C.size_t(len(codecs)), data: unsafe.Pointer(codecs_CArray)}
 
-	ret := newQMediaServiceProviderHint(C.QMediaServiceProviderHint_new2(mimeType_ms, codecs_ma))
-	ret.isSubclass = true
-	return ret
+	return newQMediaServiceProviderHint(C.QMediaServiceProviderHint_new2(mimeType_ms, codecs_ma))
 }
 
 // NewQMediaServiceProviderHint3 constructs a new QMediaServiceProviderHint object.
@@ -102,33 +97,25 @@ func NewQMediaServiceProviderHint3(device []byte) *QMediaServiceProviderHint {
 	device_alias.data = (*C.char)(unsafe.Pointer(&device[0]))
 	device_alias.len = C.size_t(len(device))
 
-	ret := newQMediaServiceProviderHint(C.QMediaServiceProviderHint_new3(device_alias))
-	ret.isSubclass = true
-	return ret
+	return newQMediaServiceProviderHint(C.QMediaServiceProviderHint_new3(device_alias))
 }
 
 // NewQMediaServiceProviderHint4 constructs a new QMediaServiceProviderHint object.
 func NewQMediaServiceProviderHint4(position QCamera__Position) *QMediaServiceProviderHint {
 
-	ret := newQMediaServiceProviderHint(C.QMediaServiceProviderHint_new4((C.int)(position)))
-	ret.isSubclass = true
-	return ret
+	return newQMediaServiceProviderHint(C.QMediaServiceProviderHint_new4((C.int)(position)))
 }
 
 // NewQMediaServiceProviderHint5 constructs a new QMediaServiceProviderHint object.
 func NewQMediaServiceProviderHint5(features QMediaServiceProviderHint__Feature) *QMediaServiceProviderHint {
 
-	ret := newQMediaServiceProviderHint(C.QMediaServiceProviderHint_new5((C.int)(features)))
-	ret.isSubclass = true
-	return ret
+	return newQMediaServiceProviderHint(C.QMediaServiceProviderHint_new5((C.int)(features)))
 }
 
 // NewQMediaServiceProviderHint6 constructs a new QMediaServiceProviderHint object.
 func NewQMediaServiceProviderHint6(other *QMediaServiceProviderHint) *QMediaServiceProviderHint {
 
-	ret := newQMediaServiceProviderHint(C.QMediaServiceProviderHint_new6(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQMediaServiceProviderHint(C.QMediaServiceProviderHint_new6(other.cPointer()))
 }
 
 func (this *QMediaServiceProviderHint) OperatorAssign(other *QMediaServiceProviderHint) {
@@ -188,7 +175,7 @@ func (this *QMediaServiceProviderHint) Features() QMediaServiceProviderHint__Fea
 
 // Delete this object from C++ memory.
 func (this *QMediaServiceProviderHint) Delete() {
-	C.QMediaServiceProviderHint_Delete(this.h, C.bool(this.isSubclass))
+	C.QMediaServiceProviderHint_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -201,8 +188,7 @@ func (this *QMediaServiceProviderHint) GoGC() {
 }
 
 type QMediaServiceProviderFactoryInterface struct {
-	h          *C.QMediaServiceProviderFactoryInterface
-	isSubclass bool
+	h *C.QMediaServiceProviderFactoryInterface
 }
 
 func (this *QMediaServiceProviderFactoryInterface) cPointer() *C.QMediaServiceProviderFactoryInterface {
@@ -251,7 +237,7 @@ func (this *QMediaServiceProviderFactoryInterface) OperatorAssign(param1 *QMedia
 
 // Delete this object from C++ memory.
 func (this *QMediaServiceProviderFactoryInterface) Delete() {
-	C.QMediaServiceProviderFactoryInterface_Delete(this.h, C.bool(this.isSubclass))
+	C.QMediaServiceProviderFactoryInterface_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -264,8 +250,7 @@ func (this *QMediaServiceProviderFactoryInterface) GoGC() {
 }
 
 type QMediaServiceSupportedFormatsInterface struct {
-	h          *C.QMediaServiceSupportedFormatsInterface
-	isSubclass bool
+	h *C.QMediaServiceSupportedFormatsInterface
 }
 
 func (this *QMediaServiceSupportedFormatsInterface) cPointer() *C.QMediaServiceSupportedFormatsInterface {
@@ -333,7 +318,7 @@ func (this *QMediaServiceSupportedFormatsInterface) OperatorAssign(param1 *QMedi
 
 // Delete this object from C++ memory.
 func (this *QMediaServiceSupportedFormatsInterface) Delete() {
-	C.QMediaServiceSupportedFormatsInterface_Delete(this.h, C.bool(this.isSubclass))
+	C.QMediaServiceSupportedFormatsInterface_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -346,8 +331,7 @@ func (this *QMediaServiceSupportedFormatsInterface) GoGC() {
 }
 
 type QMediaServiceSupportedDevicesInterface struct {
-	h          *C.QMediaServiceSupportedDevicesInterface
-	isSubclass bool
+	h *C.QMediaServiceSupportedDevicesInterface
 }
 
 func (this *QMediaServiceSupportedDevicesInterface) cPointer() *C.QMediaServiceSupportedDevicesInterface {
@@ -413,7 +397,7 @@ func (this *QMediaServiceSupportedDevicesInterface) OperatorAssign(param1 *QMedi
 
 // Delete this object from C++ memory.
 func (this *QMediaServiceSupportedDevicesInterface) Delete() {
-	C.QMediaServiceSupportedDevicesInterface_Delete(this.h, C.bool(this.isSubclass))
+	C.QMediaServiceSupportedDevicesInterface_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -426,8 +410,7 @@ func (this *QMediaServiceSupportedDevicesInterface) GoGC() {
 }
 
 type QMediaServiceDefaultDeviceInterface struct {
-	h          *C.QMediaServiceDefaultDeviceInterface
-	isSubclass bool
+	h *C.QMediaServiceDefaultDeviceInterface
 }
 
 func (this *QMediaServiceDefaultDeviceInterface) cPointer() *C.QMediaServiceDefaultDeviceInterface {
@@ -474,7 +457,7 @@ func (this *QMediaServiceDefaultDeviceInterface) OperatorAssign(param1 *QMediaSe
 
 // Delete this object from C++ memory.
 func (this *QMediaServiceDefaultDeviceInterface) Delete() {
-	C.QMediaServiceDefaultDeviceInterface_Delete(this.h, C.bool(this.isSubclass))
+	C.QMediaServiceDefaultDeviceInterface_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -487,8 +470,7 @@ func (this *QMediaServiceDefaultDeviceInterface) GoGC() {
 }
 
 type QMediaServiceCameraInfoInterface struct {
-	h          *C.QMediaServiceCameraInfoInterface
-	isSubclass bool
+	h *C.QMediaServiceCameraInfoInterface
 }
 
 func (this *QMediaServiceCameraInfoInterface) cPointer() *C.QMediaServiceCameraInfoInterface {
@@ -539,7 +521,7 @@ func (this *QMediaServiceCameraInfoInterface) OperatorAssign(param1 *QMediaServi
 
 // Delete this object from C++ memory.
 func (this *QMediaServiceCameraInfoInterface) Delete() {
-	C.QMediaServiceCameraInfoInterface_Delete(this.h, C.bool(this.isSubclass))
+	C.QMediaServiceCameraInfoInterface_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -552,8 +534,7 @@ func (this *QMediaServiceCameraInfoInterface) GoGC() {
 }
 
 type QMediaServiceFeaturesInterface struct {
-	h          *C.QMediaServiceFeaturesInterface
-	isSubclass bool
+	h *C.QMediaServiceFeaturesInterface
 }
 
 func (this *QMediaServiceFeaturesInterface) cPointer() *C.QMediaServiceFeaturesInterface {
@@ -597,7 +578,7 @@ func (this *QMediaServiceFeaturesInterface) OperatorAssign(param1 *QMediaService
 
 // Delete this object from C++ memory.
 func (this *QMediaServiceFeaturesInterface) Delete() {
-	C.QMediaServiceFeaturesInterface_Delete(this.h, C.bool(this.isSubclass))
+	C.QMediaServiceFeaturesInterface_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -610,8 +591,7 @@ func (this *QMediaServiceFeaturesInterface) GoGC() {
 }
 
 type QMediaServiceProviderPlugin struct {
-	h          *C.QMediaServiceProviderPlugin
-	isSubclass bool
+	h *C.QMediaServiceProviderPlugin
 	*qt.QObject
 	*QMediaServiceProviderFactoryInterface
 }
@@ -735,7 +715,7 @@ func QMediaServiceProviderPlugin_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QMediaServiceProviderPlugin) Delete() {
-	C.QMediaServiceProviderPlugin_Delete(this.h, C.bool(this.isSubclass))
+	C.QMediaServiceProviderPlugin_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

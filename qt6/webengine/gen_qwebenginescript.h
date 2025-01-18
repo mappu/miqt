@@ -40,7 +40,7 @@ void QWebEngineScript_SetRunsOnSubFrames(QWebEngineScript* self, bool on);
 bool QWebEngineScript_OperatorEqual(const QWebEngineScript* self, QWebEngineScript* other);
 bool QWebEngineScript_OperatorNotEqual(const QWebEngineScript* self, QWebEngineScript* other);
 void QWebEngineScript_Swap(QWebEngineScript* self, QWebEngineScript* other);
-void QWebEngineScript_Delete(QWebEngineScript* self, bool isSubclass);
+void QWebEngineScript_Delete(QWebEngineScript* self);
 
 #ifdef __cplusplus
 } /* extern C */

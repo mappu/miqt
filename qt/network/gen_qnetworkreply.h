@@ -97,7 +97,7 @@ struct miqt_string QNetworkReply_Tr2(const char* s, const char* c);
 struct miqt_string QNetworkReply_Tr3(const char* s, const char* c, int n);
 struct miqt_string QNetworkReply_TrUtf82(const char* s, const char* c);
 struct miqt_string QNetworkReply_TrUtf83(const char* s, const char* c, int n);
-void QNetworkReply_Delete(QNetworkReply* self, bool isSubclass);
+void QNetworkReply_Delete(QNetworkReply* self);
 
 #ifdef __cplusplus
 } /* extern C */

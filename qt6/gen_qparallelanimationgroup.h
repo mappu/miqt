@@ -43,17 +43,17 @@ void QParallelAnimationGroup_UpdateState(QParallelAnimationGroup* self, int newS
 void QParallelAnimationGroup_UpdateDirection(QParallelAnimationGroup* self, int direction);
 struct miqt_string QParallelAnimationGroup_Tr2(const char* s, const char* c);
 struct miqt_string QParallelAnimationGroup_Tr3(const char* s, const char* c, int n);
-void QParallelAnimationGroup_override_virtual_Duration(void* self, intptr_t slot);
+bool QParallelAnimationGroup_override_virtual_Duration(void* self, intptr_t slot);
 int QParallelAnimationGroup_virtualbase_Duration(const void* self);
-void QParallelAnimationGroup_override_virtual_Event(void* self, intptr_t slot);
+bool QParallelAnimationGroup_override_virtual_Event(void* self, intptr_t slot);
 bool QParallelAnimationGroup_virtualbase_Event(void* self, QEvent* event);
-void QParallelAnimationGroup_override_virtual_UpdateCurrentTime(void* self, intptr_t slot);
+bool QParallelAnimationGroup_override_virtual_UpdateCurrentTime(void* self, intptr_t slot);
 void QParallelAnimationGroup_virtualbase_UpdateCurrentTime(void* self, int currentTime);
-void QParallelAnimationGroup_override_virtual_UpdateState(void* self, intptr_t slot);
+bool QParallelAnimationGroup_override_virtual_UpdateState(void* self, intptr_t slot);
 void QParallelAnimationGroup_virtualbase_UpdateState(void* self, int newState, int oldState);
-void QParallelAnimationGroup_override_virtual_UpdateDirection(void* self, intptr_t slot);
+bool QParallelAnimationGroup_override_virtual_UpdateDirection(void* self, intptr_t slot);
 void QParallelAnimationGroup_virtualbase_UpdateDirection(void* self, int direction);
-void QParallelAnimationGroup_Delete(QParallelAnimationGroup* self, bool isSubclass);
+void QParallelAnimationGroup_Delete(QParallelAnimationGroup* self);
 
 #ifdef __cplusplus
 } /* extern C */

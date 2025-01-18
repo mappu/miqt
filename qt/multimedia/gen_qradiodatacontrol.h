@@ -58,7 +58,7 @@ struct miqt_string QRadioDataControl_Tr2(const char* s, const char* c);
 struct miqt_string QRadioDataControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QRadioDataControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QRadioDataControl_TrUtf83(const char* s, const char* c, int n);
-void QRadioDataControl_Delete(QRadioDataControl* self, bool isSubclass);
+void QRadioDataControl_Delete(QRadioDataControl* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -37,11 +37,7 @@ QScriptValue* QScriptable_Argument(const QScriptable* self, int index) {
 	return new QScriptValue(self->argument(static_cast<int>(index)));
 }
 
-void QScriptable_Delete(QScriptable* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QScriptable*>( self );
-	} else {
-		delete self;
-	}
+void QScriptable_Delete(QScriptable* self) {
+	delete self;
 }
 

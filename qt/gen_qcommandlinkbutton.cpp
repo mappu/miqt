@@ -34,7 +34,7 @@ bool miqt_exec_callback_QCommandLinkButton_HitButton(void*, intptr_t, QPoint*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQCommandLinkButton : public virtual QCommandLinkButton {
+class MiqtVirtualQCommandLinkButton final : public QCommandLinkButton {
 public:
 
 	MiqtVirtualQCommandLinkButton(QWidget* parent): QCommandLinkButton(parent) {};
@@ -44,7 +44,7 @@ public:
 	MiqtVirtualQCommandLinkButton(const QString& text, QWidget* parent): QCommandLinkButton(text, parent) {};
 	MiqtVirtualQCommandLinkButton(const QString& text, const QString& description, QWidget* parent): QCommandLinkButton(text, description, parent) {};
 
-	virtual ~MiqtVirtualQCommandLinkButton() = default;
+	virtual ~MiqtVirtualQCommandLinkButton() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -383,83 +383,133 @@ struct miqt_string QCommandLinkButton_TrUtf83(const char* s, const char* c, int 
 	return _ms;
 }
 
-void QCommandLinkButton_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommandLinkButton*>( (QCommandLinkButton*)(self) )->handle__SizeHint = slot;
+bool QCommandLinkButton_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQCommandLinkButton* self_cast = dynamic_cast<MiqtVirtualQCommandLinkButton*>( (QCommandLinkButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QCommandLinkButton_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQCommandLinkButton*)(self) )->virtualbase_SizeHint();
 }
 
-void QCommandLinkButton_override_virtual_HeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommandLinkButton*>( (QCommandLinkButton*)(self) )->handle__HeightForWidth = slot;
+bool QCommandLinkButton_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQCommandLinkButton* self_cast = dynamic_cast<MiqtVirtualQCommandLinkButton*>( (QCommandLinkButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeightForWidth = slot;
+	return true;
 }
 
 int QCommandLinkButton_virtualbase_HeightForWidth(const void* self, int param1) {
 	return ( (const MiqtVirtualQCommandLinkButton*)(self) )->virtualbase_HeightForWidth(param1);
 }
 
-void QCommandLinkButton_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommandLinkButton*>( (QCommandLinkButton*)(self) )->handle__MinimumSizeHint = slot;
+bool QCommandLinkButton_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQCommandLinkButton* self_cast = dynamic_cast<MiqtVirtualQCommandLinkButton*>( (QCommandLinkButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QCommandLinkButton_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQCommandLinkButton*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QCommandLinkButton_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommandLinkButton*>( (QCommandLinkButton*)(self) )->handle__Event = slot;
+bool QCommandLinkButton_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQCommandLinkButton* self_cast = dynamic_cast<MiqtVirtualQCommandLinkButton*>( (QCommandLinkButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QCommandLinkButton_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQCommandLinkButton*)(self) )->virtualbase_Event(e);
 }
 
-void QCommandLinkButton_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommandLinkButton*>( (QCommandLinkButton*)(self) )->handle__PaintEvent = slot;
+bool QCommandLinkButton_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQCommandLinkButton* self_cast = dynamic_cast<MiqtVirtualQCommandLinkButton*>( (QCommandLinkButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QCommandLinkButton_virtualbase_PaintEvent(void* self, QPaintEvent* param1) {
 	( (MiqtVirtualQCommandLinkButton*)(self) )->virtualbase_PaintEvent(param1);
 }
 
-void QCommandLinkButton_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommandLinkButton*>( (QCommandLinkButton*)(self) )->handle__KeyPressEvent = slot;
+bool QCommandLinkButton_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQCommandLinkButton* self_cast = dynamic_cast<MiqtVirtualQCommandLinkButton*>( (QCommandLinkButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QCommandLinkButton_virtualbase_KeyPressEvent(void* self, QKeyEvent* param1) {
 	( (MiqtVirtualQCommandLinkButton*)(self) )->virtualbase_KeyPressEvent(param1);
 }
 
-void QCommandLinkButton_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommandLinkButton*>( (QCommandLinkButton*)(self) )->handle__FocusInEvent = slot;
+bool QCommandLinkButton_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQCommandLinkButton* self_cast = dynamic_cast<MiqtVirtualQCommandLinkButton*>( (QCommandLinkButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QCommandLinkButton_virtualbase_FocusInEvent(void* self, QFocusEvent* param1) {
 	( (MiqtVirtualQCommandLinkButton*)(self) )->virtualbase_FocusInEvent(param1);
 }
 
-void QCommandLinkButton_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommandLinkButton*>( (QCommandLinkButton*)(self) )->handle__FocusOutEvent = slot;
+bool QCommandLinkButton_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQCommandLinkButton* self_cast = dynamic_cast<MiqtVirtualQCommandLinkButton*>( (QCommandLinkButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
 }
 
 void QCommandLinkButton_virtualbase_FocusOutEvent(void* self, QFocusEvent* param1) {
 	( (MiqtVirtualQCommandLinkButton*)(self) )->virtualbase_FocusOutEvent(param1);
 }
 
-void QCommandLinkButton_override_virtual_HitButton(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCommandLinkButton*>( (QCommandLinkButton*)(self) )->handle__HitButton = slot;
+bool QCommandLinkButton_override_virtual_HitButton(void* self, intptr_t slot) {
+	MiqtVirtualQCommandLinkButton* self_cast = dynamic_cast<MiqtVirtualQCommandLinkButton*>( (QCommandLinkButton*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HitButton = slot;
+	return true;
 }
 
 bool QCommandLinkButton_virtualbase_HitButton(const void* self, QPoint* pos) {
 	return ( (const MiqtVirtualQCommandLinkButton*)(self) )->virtualbase_HitButton(pos);
 }
 
-void QCommandLinkButton_Delete(QCommandLinkButton* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQCommandLinkButton*>( self );
-	} else {
-		delete self;
-	}
+void QCommandLinkButton_Delete(QCommandLinkButton* self) {
+	delete self;
 }
 

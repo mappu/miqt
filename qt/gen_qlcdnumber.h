@@ -73,15 +73,15 @@ struct miqt_string QLCDNumber_Tr2(const char* s, const char* c);
 struct miqt_string QLCDNumber_Tr3(const char* s, const char* c, int n);
 struct miqt_string QLCDNumber_TrUtf82(const char* s, const char* c);
 struct miqt_string QLCDNumber_TrUtf83(const char* s, const char* c, int n);
-void QLCDNumber_override_virtual_SizeHint(void* self, intptr_t slot);
+bool QLCDNumber_override_virtual_SizeHint(void* self, intptr_t slot);
 QSize* QLCDNumber_virtualbase_SizeHint(const void* self);
-void QLCDNumber_override_virtual_Event(void* self, intptr_t slot);
+bool QLCDNumber_override_virtual_Event(void* self, intptr_t slot);
 bool QLCDNumber_virtualbase_Event(void* self, QEvent* e);
-void QLCDNumber_override_virtual_PaintEvent(void* self, intptr_t slot);
+bool QLCDNumber_override_virtual_PaintEvent(void* self, intptr_t slot);
 void QLCDNumber_virtualbase_PaintEvent(void* self, QPaintEvent* param1);
-void QLCDNumber_override_virtual_ChangeEvent(void* self, intptr_t slot);
+bool QLCDNumber_override_virtual_ChangeEvent(void* self, intptr_t slot);
 void QLCDNumber_virtualbase_ChangeEvent(void* self, QEvent* param1);
-void QLCDNumber_Delete(QLCDNumber* self, bool isSubclass);
+void QLCDNumber_Delete(QLCDNumber* self);
 
 #ifdef __cplusplus
 } /* extern C */

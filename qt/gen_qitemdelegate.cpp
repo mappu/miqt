@@ -44,13 +44,13 @@ struct miqt_array /* of int */  miqt_exec_callback_QItemDelegate_PaintingRoles(v
 } /* extern C */
 #endif
 
-class MiqtVirtualQItemDelegate : public virtual QItemDelegate {
+class MiqtVirtualQItemDelegate final : public QItemDelegate {
 public:
 
 	MiqtVirtualQItemDelegate(): QItemDelegate() {};
 	MiqtVirtualQItemDelegate(QObject* parent): QItemDelegate(parent) {};
 
-	virtual ~MiqtVirtualQItemDelegate() = default;
+	virtual ~MiqtVirtualQItemDelegate() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Paint = 0;
@@ -634,131 +634,217 @@ struct miqt_string QItemDelegate_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QItemDelegate_override_virtual_Paint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) )->handle__Paint = slot;
+bool QItemDelegate_override_virtual_Paint(void* self, intptr_t slot) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Paint = slot;
+	return true;
 }
 
 void QItemDelegate_virtualbase_Paint(const void* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index) {
 	( (const MiqtVirtualQItemDelegate*)(self) )->virtualbase_Paint(painter, option, index);
 }
 
-void QItemDelegate_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) )->handle__SizeHint = slot;
+bool QItemDelegate_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QItemDelegate_virtualbase_SizeHint(const void* self, QStyleOptionViewItem* option, QModelIndex* index) {
 	return ( (const MiqtVirtualQItemDelegate*)(self) )->virtualbase_SizeHint(option, index);
 }
 
-void QItemDelegate_override_virtual_CreateEditor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) )->handle__CreateEditor = slot;
+bool QItemDelegate_override_virtual_CreateEditor(void* self, intptr_t slot) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CreateEditor = slot;
+	return true;
 }
 
 QWidget* QItemDelegate_virtualbase_CreateEditor(const void* self, QWidget* parent, QStyleOptionViewItem* option, QModelIndex* index) {
 	return ( (const MiqtVirtualQItemDelegate*)(self) )->virtualbase_CreateEditor(parent, option, index);
 }
 
-void QItemDelegate_override_virtual_SetEditorData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) )->handle__SetEditorData = slot;
+bool QItemDelegate_override_virtual_SetEditorData(void* self, intptr_t slot) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetEditorData = slot;
+	return true;
 }
 
 void QItemDelegate_virtualbase_SetEditorData(const void* self, QWidget* editor, QModelIndex* index) {
 	( (const MiqtVirtualQItemDelegate*)(self) )->virtualbase_SetEditorData(editor, index);
 }
 
-void QItemDelegate_override_virtual_SetModelData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) )->handle__SetModelData = slot;
+bool QItemDelegate_override_virtual_SetModelData(void* self, intptr_t slot) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetModelData = slot;
+	return true;
 }
 
 void QItemDelegate_virtualbase_SetModelData(const void* self, QWidget* editor, QAbstractItemModel* model, QModelIndex* index) {
 	( (const MiqtVirtualQItemDelegate*)(self) )->virtualbase_SetModelData(editor, model, index);
 }
 
-void QItemDelegate_override_virtual_UpdateEditorGeometry(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) )->handle__UpdateEditorGeometry = slot;
+bool QItemDelegate_override_virtual_UpdateEditorGeometry(void* self, intptr_t slot) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateEditorGeometry = slot;
+	return true;
 }
 
 void QItemDelegate_virtualbase_UpdateEditorGeometry(const void* self, QWidget* editor, QStyleOptionViewItem* option, QModelIndex* index) {
 	( (const MiqtVirtualQItemDelegate*)(self) )->virtualbase_UpdateEditorGeometry(editor, option, index);
 }
 
-void QItemDelegate_override_virtual_DrawDisplay(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) )->handle__DrawDisplay = slot;
+bool QItemDelegate_override_virtual_DrawDisplay(void* self, intptr_t slot) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DrawDisplay = slot;
+	return true;
 }
 
 void QItemDelegate_virtualbase_DrawDisplay(const void* self, QPainter* painter, QStyleOptionViewItem* option, QRect* rect, struct miqt_string text) {
 	( (const MiqtVirtualQItemDelegate*)(self) )->virtualbase_DrawDisplay(painter, option, rect, text);
 }
 
-void QItemDelegate_override_virtual_DrawDecoration(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) )->handle__DrawDecoration = slot;
+bool QItemDelegate_override_virtual_DrawDecoration(void* self, intptr_t slot) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DrawDecoration = slot;
+	return true;
 }
 
 void QItemDelegate_virtualbase_DrawDecoration(const void* self, QPainter* painter, QStyleOptionViewItem* option, QRect* rect, QPixmap* pixmap) {
 	( (const MiqtVirtualQItemDelegate*)(self) )->virtualbase_DrawDecoration(painter, option, rect, pixmap);
 }
 
-void QItemDelegate_override_virtual_DrawFocus(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) )->handle__DrawFocus = slot;
+bool QItemDelegate_override_virtual_DrawFocus(void* self, intptr_t slot) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DrawFocus = slot;
+	return true;
 }
 
 void QItemDelegate_virtualbase_DrawFocus(const void* self, QPainter* painter, QStyleOptionViewItem* option, QRect* rect) {
 	( (const MiqtVirtualQItemDelegate*)(self) )->virtualbase_DrawFocus(painter, option, rect);
 }
 
-void QItemDelegate_override_virtual_DrawCheck(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) )->handle__DrawCheck = slot;
+bool QItemDelegate_override_virtual_DrawCheck(void* self, intptr_t slot) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DrawCheck = slot;
+	return true;
 }
 
 void QItemDelegate_virtualbase_DrawCheck(const void* self, QPainter* painter, QStyleOptionViewItem* option, QRect* rect, int state) {
 	( (const MiqtVirtualQItemDelegate*)(self) )->virtualbase_DrawCheck(painter, option, rect, state);
 }
 
-void QItemDelegate_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) )->handle__EventFilter = slot;
+bool QItemDelegate_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QItemDelegate_virtualbase_EventFilter(void* self, QObject* object, QEvent* event) {
 	return ( (MiqtVirtualQItemDelegate*)(self) )->virtualbase_EventFilter(object, event);
 }
 
-void QItemDelegate_override_virtual_EditorEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) )->handle__EditorEvent = slot;
+bool QItemDelegate_override_virtual_EditorEvent(void* self, intptr_t slot) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EditorEvent = slot;
+	return true;
 }
 
 bool QItemDelegate_virtualbase_EditorEvent(void* self, QEvent* event, QAbstractItemModel* model, QStyleOptionViewItem* option, QModelIndex* index) {
 	return ( (MiqtVirtualQItemDelegate*)(self) )->virtualbase_EditorEvent(event, model, option, index);
 }
 
-void QItemDelegate_override_virtual_DestroyEditor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) )->handle__DestroyEditor = slot;
+bool QItemDelegate_override_virtual_DestroyEditor(void* self, intptr_t slot) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DestroyEditor = slot;
+	return true;
 }
 
 void QItemDelegate_virtualbase_DestroyEditor(const void* self, QWidget* editor, QModelIndex* index) {
 	( (const MiqtVirtualQItemDelegate*)(self) )->virtualbase_DestroyEditor(editor, index);
 }
 
-void QItemDelegate_override_virtual_HelpEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) )->handle__HelpEvent = slot;
+bool QItemDelegate_override_virtual_HelpEvent(void* self, intptr_t slot) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HelpEvent = slot;
+	return true;
 }
 
 bool QItemDelegate_virtualbase_HelpEvent(void* self, QHelpEvent* event, QAbstractItemView* view, QStyleOptionViewItem* option, QModelIndex* index) {
 	return ( (MiqtVirtualQItemDelegate*)(self) )->virtualbase_HelpEvent(event, view, option, index);
 }
 
-void QItemDelegate_override_virtual_PaintingRoles(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) )->handle__PaintingRoles = slot;
+bool QItemDelegate_override_virtual_PaintingRoles(void* self, intptr_t slot) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintingRoles = slot;
+	return true;
 }
 
 struct miqt_array /* of int */  QItemDelegate_virtualbase_PaintingRoles(const void* self) {
 	return ( (const MiqtVirtualQItemDelegate*)(self) )->virtualbase_PaintingRoles();
 }
 
-void QItemDelegate_Delete(QItemDelegate* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQItemDelegate*>( self );
-	} else {
-		delete self;
-	}
+void QItemDelegate_Delete(QItemDelegate* self) {
+	delete self;
 }
 

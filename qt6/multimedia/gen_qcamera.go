@@ -97,8 +97,7 @@ const (
 )
 
 type QCamera struct {
-	h          *C.QCamera
-	isSubclass bool
+	h *C.QCamera
 	*qt6.QObject
 }
 
@@ -136,49 +135,37 @@ func UnsafeNewQCamera(h unsafe.Pointer) *QCamera {
 // NewQCamera constructs a new QCamera object.
 func NewQCamera() *QCamera {
 
-	ret := newQCamera(C.QCamera_new())
-	ret.isSubclass = true
-	return ret
+	return newQCamera(C.QCamera_new())
 }
 
 // NewQCamera2 constructs a new QCamera object.
 func NewQCamera2(cameraDevice *QCameraDevice) *QCamera {
 
-	ret := newQCamera(C.QCamera_new2(cameraDevice.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQCamera(C.QCamera_new2(cameraDevice.cPointer()))
 }
 
 // NewQCamera3 constructs a new QCamera object.
 func NewQCamera3(position QCameraDevice__Position) *QCamera {
 
-	ret := newQCamera(C.QCamera_new3((C.int)(position)))
-	ret.isSubclass = true
-	return ret
+	return newQCamera(C.QCamera_new3((C.int)(position)))
 }
 
 // NewQCamera4 constructs a new QCamera object.
 func NewQCamera4(parent *qt6.QObject) *QCamera {
 
-	ret := newQCamera(C.QCamera_new4((*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQCamera(C.QCamera_new4((*C.QObject)(parent.UnsafePointer())))
 }
 
 // NewQCamera5 constructs a new QCamera object.
 func NewQCamera5(cameraDevice *QCameraDevice, parent *qt6.QObject) *QCamera {
 
-	ret := newQCamera(C.QCamera_new5(cameraDevice.cPointer(), (*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQCamera(C.QCamera_new5(cameraDevice.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 }
 
 // NewQCamera6 constructs a new QCamera object.
 func NewQCamera6(position QCameraDevice__Position, parent *qt6.QObject) *QCamera {
 
-	ret := newQCamera(C.QCamera_new6((C.int)(position), (*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQCamera(C.QCamera_new6((C.int)(position), (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QCamera) MetaObject() *qt6.QMetaObject {
@@ -980,10 +967,10 @@ func (this *QCamera) callVirtualBase_Event(event *qt6.QEvent) bool {
 
 }
 func (this *QCamera) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QCamera_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QCamera_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCamera_Event
@@ -1008,10 +995,10 @@ func (this *QCamera) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt
 
 }
 func (this *QCamera) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QCamera_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QCamera_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCamera_EventFilter
@@ -1038,10 +1025,10 @@ func (this *QCamera) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
 
 }
 func (this *QCamera) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QCamera_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QCamera_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCamera_TimerEvent
@@ -1064,10 +1051,10 @@ func (this *QCamera) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
 
 }
 func (this *QCamera) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QCamera_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QCamera_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCamera_ChildEvent
@@ -1090,10 +1077,10 @@ func (this *QCamera) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 
 }
 func (this *QCamera) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
-	if !this.isSubclass {
+	ok := C.QCamera_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QCamera_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCamera_CustomEvent
@@ -1116,10 +1103,10 @@ func (this *QCamera) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
 
 }
 func (this *QCamera) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QCamera_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QCamera_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCamera_ConnectNotify
@@ -1142,10 +1129,10 @@ func (this *QCamera) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
 
 }
 func (this *QCamera) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QCamera_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QCamera_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCamera_DisconnectNotify
@@ -1164,7 +1151,7 @@ func miqt_exec_callback_QCamera_DisconnectNotify(self *C.QCamera, cb C.intptr_t,
 
 // Delete this object from C++ memory.
 func (this *QCamera) Delete() {
-	C.QCamera_Delete(this.h, C.bool(this.isSubclass))
+	C.QCamera_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

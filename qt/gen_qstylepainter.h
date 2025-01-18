@@ -51,7 +51,7 @@ void QStylePainter_DrawItemText(QStylePainter* self, QRect* r, int flags, QPalet
 void QStylePainter_DrawItemPixmap(QStylePainter* self, QRect* r, int flags, QPixmap* pixmap);
 QStyle* QStylePainter_Style(const QStylePainter* self);
 void QStylePainter_DrawItemText6(QStylePainter* self, QRect* r, int flags, QPalette* pal, bool enabled, struct miqt_string text, int textRole);
-void QStylePainter_Delete(QStylePainter* self, bool isSubclass);
+void QStylePainter_Delete(QStylePainter* self);
 
 #ifdef __cplusplus
 } /* extern C */

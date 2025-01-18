@@ -217,11 +217,7 @@ struct miqt_string QMimeType_FilterString(const QMimeType* self) {
 	return _ms;
 }
 
-void QMimeType_Delete(QMimeType* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMimeType*>( self );
-	} else {
-		delete self;
-	}
+void QMimeType_Delete(QMimeType* self) {
+	delete self;
 }
 

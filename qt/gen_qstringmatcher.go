@@ -14,8 +14,7 @@ import (
 )
 
 type QStringMatcher struct {
-	h          *C.QStringMatcher
-	isSubclass bool
+	h *C.QStringMatcher
 }
 
 func (this *QStringMatcher) cPointer() *C.QStringMatcher {
@@ -49,9 +48,7 @@ func UnsafeNewQStringMatcher(h unsafe.Pointer) *QStringMatcher {
 // NewQStringMatcher constructs a new QStringMatcher object.
 func NewQStringMatcher() *QStringMatcher {
 
-	ret := newQStringMatcher(C.QStringMatcher_new())
-	ret.isSubclass = true
-	return ret
+	return newQStringMatcher(C.QStringMatcher_new())
 }
 
 // NewQStringMatcher2 constructs a new QStringMatcher object.
@@ -61,25 +58,19 @@ func NewQStringMatcher2(pattern string) *QStringMatcher {
 	pattern_ms.len = C.size_t(len(pattern))
 	defer C.free(unsafe.Pointer(pattern_ms.data))
 
-	ret := newQStringMatcher(C.QStringMatcher_new2(pattern_ms))
-	ret.isSubclass = true
-	return ret
+	return newQStringMatcher(C.QStringMatcher_new2(pattern_ms))
 }
 
 // NewQStringMatcher3 constructs a new QStringMatcher object.
 func NewQStringMatcher3(uc *QChar, lenVal int) *QStringMatcher {
 
-	ret := newQStringMatcher(C.QStringMatcher_new3(uc.cPointer(), (C.int)(lenVal)))
-	ret.isSubclass = true
-	return ret
+	return newQStringMatcher(C.QStringMatcher_new3(uc.cPointer(), (C.int)(lenVal)))
 }
 
 // NewQStringMatcher4 constructs a new QStringMatcher object.
 func NewQStringMatcher4(other *QStringMatcher) *QStringMatcher {
 
-	ret := newQStringMatcher(C.QStringMatcher_new4(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStringMatcher(C.QStringMatcher_new4(other.cPointer()))
 }
 
 // NewQStringMatcher5 constructs a new QStringMatcher object.
@@ -89,17 +80,13 @@ func NewQStringMatcher5(pattern string, cs CaseSensitivity) *QStringMatcher {
 	pattern_ms.len = C.size_t(len(pattern))
 	defer C.free(unsafe.Pointer(pattern_ms.data))
 
-	ret := newQStringMatcher(C.QStringMatcher_new5(pattern_ms, (C.int)(cs)))
-	ret.isSubclass = true
-	return ret
+	return newQStringMatcher(C.QStringMatcher_new5(pattern_ms, (C.int)(cs)))
 }
 
 // NewQStringMatcher6 constructs a new QStringMatcher object.
 func NewQStringMatcher6(uc *QChar, lenVal int, cs CaseSensitivity) *QStringMatcher {
 
-	ret := newQStringMatcher(C.QStringMatcher_new6(uc.cPointer(), (C.int)(lenVal), (C.int)(cs)))
-	ret.isSubclass = true
-	return ret
+	return newQStringMatcher(C.QStringMatcher_new6(uc.cPointer(), (C.int)(lenVal), (C.int)(cs)))
 }
 
 func (this *QStringMatcher) OperatorAssign(other *QStringMatcher) {
@@ -155,7 +142,7 @@ func (this *QStringMatcher) IndexIn3(str *QChar, length int, from int) int {
 
 // Delete this object from C++ memory.
 func (this *QStringMatcher) Delete() {
-	C.QStringMatcher_Delete(this.h, C.bool(this.isSubclass))
+	C.QStringMatcher_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

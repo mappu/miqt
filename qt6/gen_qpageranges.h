@@ -41,12 +41,12 @@ bool QPageRanges_IsEmpty(const QPageRanges* self);
 int QPageRanges_FirstPage(const QPageRanges* self);
 int QPageRanges_LastPage(const QPageRanges* self);
 void QPageRanges_Detach(QPageRanges* self);
-void QPageRanges_Delete(QPageRanges* self, bool isSubclass);
+void QPageRanges_Delete(QPageRanges* self);
 
 QPageRanges__Range* QPageRanges__Range_new();
 QPageRanges__Range* QPageRanges__Range_new2(QPageRanges__Range* param1);
 bool QPageRanges__Range_Contains(const QPageRanges__Range* self, int pageNumber);
-void QPageRanges__Range_Delete(QPageRanges__Range* self, bool isSubclass);
+void QPageRanges__Range_Delete(QPageRanges__Range* self);
 
 #ifdef __cplusplus
 } /* extern C */

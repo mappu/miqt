@@ -15,8 +15,7 @@ import (
 )
 
 type QButtonGroup struct {
-	h          *C.QButtonGroup
-	isSubclass bool
+	h *C.QButtonGroup
 	*QObject
 }
 
@@ -54,17 +53,13 @@ func UnsafeNewQButtonGroup(h unsafe.Pointer) *QButtonGroup {
 // NewQButtonGroup constructs a new QButtonGroup object.
 func NewQButtonGroup() *QButtonGroup {
 
-	ret := newQButtonGroup(C.QButtonGroup_new())
-	ret.isSubclass = true
-	return ret
+	return newQButtonGroup(C.QButtonGroup_new())
 }
 
 // NewQButtonGroup2 constructs a new QButtonGroup object.
 func NewQButtonGroup2(parent *QObject) *QButtonGroup {
 
-	ret := newQButtonGroup(C.QButtonGroup_new2(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQButtonGroup(C.QButtonGroup_new2(parent.cPointer()))
 }
 
 func (this *QButtonGroup) MetaObject() *QMetaObject {
@@ -328,10 +323,10 @@ func (this *QButtonGroup) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QButtonGroup) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QButtonGroup_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QButtonGroup_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QButtonGroup_Event
@@ -356,10 +351,10 @@ func (this *QButtonGroup) callVirtualBase_EventFilter(watched *QObject, event *Q
 
 }
 func (this *QButtonGroup) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QButtonGroup_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QButtonGroup_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QButtonGroup_EventFilter
@@ -386,10 +381,10 @@ func (this *QButtonGroup) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QButtonGroup) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QButtonGroup_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QButtonGroup_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QButtonGroup_TimerEvent
@@ -412,10 +407,10 @@ func (this *QButtonGroup) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QButtonGroup) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QButtonGroup_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QButtonGroup_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QButtonGroup_ChildEvent
@@ -438,10 +433,10 @@ func (this *QButtonGroup) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QButtonGroup) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QButtonGroup_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QButtonGroup_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QButtonGroup_CustomEvent
@@ -464,10 +459,10 @@ func (this *QButtonGroup) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QButtonGroup) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QButtonGroup_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QButtonGroup_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QButtonGroup_ConnectNotify
@@ -490,10 +485,10 @@ func (this *QButtonGroup) callVirtualBase_DisconnectNotify(signal *QMetaMethod) 
 
 }
 func (this *QButtonGroup) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QButtonGroup_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QButtonGroup_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QButtonGroup_DisconnectNotify
@@ -512,7 +507,7 @@ func miqt_exec_callback_QButtonGroup_DisconnectNotify(self *C.QButtonGroup, cb C
 
 // Delete this object from C++ memory.
 func (this *QButtonGroup) Delete() {
-	C.QButtonGroup_Delete(this.h, C.bool(this.isSubclass))
+	C.QButtonGroup_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

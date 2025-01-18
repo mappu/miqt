@@ -88,12 +88,8 @@ QTextFormat* QTextInlineObject_Format(const QTextInlineObject* self) {
 	return new QTextFormat(self->format());
 }
 
-void QTextInlineObject_Delete(QTextInlineObject* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextInlineObject*>( self );
-	} else {
-		delete self;
-	}
+void QTextInlineObject_Delete(QTextInlineObject* self) {
+	delete self;
 }
 
 QTextLayout* QTextLayout_new() {
@@ -401,12 +397,8 @@ struct miqt_array /* of QGlyphRun* */  QTextLayout_GlyphRuns2(const QTextLayout*
 	return _out;
 }
 
-void QTextLayout_Delete(QTextLayout* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextLayout*>( self );
-	} else {
-		delete self;
-	}
+void QTextLayout_Delete(QTextLayout* self) {
+	delete self;
 }
 
 QTextLine* QTextLine_new() {
@@ -585,19 +577,11 @@ struct miqt_array /* of QGlyphRun* */  QTextLine_GlyphRuns2(const QTextLine* sel
 	return _out;
 }
 
-void QTextLine_Delete(QTextLine* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextLine*>( self );
-	} else {
-		delete self;
-	}
+void QTextLine_Delete(QTextLine* self) {
+	delete self;
 }
 
-void QTextLayout__FormatRange_Delete(QTextLayout__FormatRange* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextLayout::FormatRange*>( self );
-	} else {
-		delete self;
-	}
+void QTextLayout__FormatRange_Delete(QTextLayout__FormatRange* self) {
+	delete self;
 }
 

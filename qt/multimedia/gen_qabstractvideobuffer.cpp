@@ -22,12 +22,12 @@ QVariant* miqt_exec_callback_QAbstractPlanarVideoBuffer_Handle(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQAbstractVideoBuffer : public virtual QAbstractVideoBuffer {
+class MiqtVirtualQAbstractVideoBuffer final : public QAbstractVideoBuffer {
 public:
 
 	MiqtVirtualQAbstractVideoBuffer(QAbstractVideoBuffer::HandleType typeVal): QAbstractVideoBuffer(typeVal) {};
 
-	virtual ~MiqtVirtualQAbstractVideoBuffer() = default;
+	virtual ~MiqtVirtualQAbstractVideoBuffer() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Release = 0;
@@ -156,48 +156,74 @@ QVariant* QAbstractVideoBuffer_Handle(const QAbstractVideoBuffer* self) {
 	return new QVariant(self->handle());
 }
 
-void QAbstractVideoBuffer_override_virtual_Release(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractVideoBuffer*>( (QAbstractVideoBuffer*)(self) )->handle__Release = slot;
+bool QAbstractVideoBuffer_override_virtual_Release(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractVideoBuffer* self_cast = dynamic_cast<MiqtVirtualQAbstractVideoBuffer*>( (QAbstractVideoBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Release = slot;
+	return true;
 }
 
 void QAbstractVideoBuffer_virtualbase_Release(void* self) {
 	( (MiqtVirtualQAbstractVideoBuffer*)(self) )->virtualbase_Release();
 }
 
-void QAbstractVideoBuffer_override_virtual_MapMode(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractVideoBuffer*>( (QAbstractVideoBuffer*)(self) )->handle__MapMode = slot;
+bool QAbstractVideoBuffer_override_virtual_MapMode(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractVideoBuffer* self_cast = dynamic_cast<MiqtVirtualQAbstractVideoBuffer*>( (QAbstractVideoBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MapMode = slot;
+	return true;
 }
 
-void QAbstractVideoBuffer_override_virtual_Map(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractVideoBuffer*>( (QAbstractVideoBuffer*)(self) )->handle__Map = slot;
+bool QAbstractVideoBuffer_override_virtual_Map(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractVideoBuffer* self_cast = dynamic_cast<MiqtVirtualQAbstractVideoBuffer*>( (QAbstractVideoBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Map = slot;
+	return true;
 }
 
-void QAbstractVideoBuffer_override_virtual_Unmap(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractVideoBuffer*>( (QAbstractVideoBuffer*)(self) )->handle__Unmap = slot;
+bool QAbstractVideoBuffer_override_virtual_Unmap(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractVideoBuffer* self_cast = dynamic_cast<MiqtVirtualQAbstractVideoBuffer*>( (QAbstractVideoBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Unmap = slot;
+	return true;
 }
 
-void QAbstractVideoBuffer_override_virtual_Handle(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractVideoBuffer*>( (QAbstractVideoBuffer*)(self) )->handle__Handle = slot;
+bool QAbstractVideoBuffer_override_virtual_Handle(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractVideoBuffer* self_cast = dynamic_cast<MiqtVirtualQAbstractVideoBuffer*>( (QAbstractVideoBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Handle = slot;
+	return true;
 }
 
 QVariant* QAbstractVideoBuffer_virtualbase_Handle(const void* self) {
 	return ( (const MiqtVirtualQAbstractVideoBuffer*)(self) )->virtualbase_Handle();
 }
 
-void QAbstractVideoBuffer_Delete(QAbstractVideoBuffer* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractVideoBuffer*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractVideoBuffer_Delete(QAbstractVideoBuffer* self) {
+	delete self;
 }
 
-class MiqtVirtualQAbstractPlanarVideoBuffer : public virtual QAbstractPlanarVideoBuffer {
+class MiqtVirtualQAbstractPlanarVideoBuffer final : public QAbstractPlanarVideoBuffer {
 public:
 
 	MiqtVirtualQAbstractPlanarVideoBuffer(QAbstractVideoBuffer::HandleType typeVal): QAbstractPlanarVideoBuffer(typeVal) {};
 
-	virtual ~MiqtVirtualQAbstractPlanarVideoBuffer() = default;
+	virtual ~MiqtVirtualQAbstractPlanarVideoBuffer() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Map = 0;
@@ -316,43 +342,69 @@ unsigned char* QAbstractPlanarVideoBuffer_Map(QAbstractPlanarVideoBuffer* self, 
 	return static_cast<unsigned char*>(_ret);
 }
 
-void QAbstractPlanarVideoBuffer_override_virtual_Map(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractPlanarVideoBuffer*>( (QAbstractPlanarVideoBuffer*)(self) )->handle__Map = slot;
+bool QAbstractPlanarVideoBuffer_override_virtual_Map(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractPlanarVideoBuffer* self_cast = dynamic_cast<MiqtVirtualQAbstractPlanarVideoBuffer*>( (QAbstractPlanarVideoBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Map = slot;
+	return true;
 }
 
 unsigned char* QAbstractPlanarVideoBuffer_virtualbase_Map(void* self, int mode, int* numBytes, int* bytesPerLine) {
 	return ( (MiqtVirtualQAbstractPlanarVideoBuffer*)(self) )->virtualbase_Map(mode, numBytes, bytesPerLine);
 }
 
-void QAbstractPlanarVideoBuffer_override_virtual_Release(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractPlanarVideoBuffer*>( (QAbstractPlanarVideoBuffer*)(self) )->handle__Release = slot;
+bool QAbstractPlanarVideoBuffer_override_virtual_Release(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractPlanarVideoBuffer* self_cast = dynamic_cast<MiqtVirtualQAbstractPlanarVideoBuffer*>( (QAbstractPlanarVideoBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Release = slot;
+	return true;
 }
 
 void QAbstractPlanarVideoBuffer_virtualbase_Release(void* self) {
 	( (MiqtVirtualQAbstractPlanarVideoBuffer*)(self) )->virtualbase_Release();
 }
 
-void QAbstractPlanarVideoBuffer_override_virtual_MapMode(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractPlanarVideoBuffer*>( (QAbstractPlanarVideoBuffer*)(self) )->handle__MapMode = slot;
+bool QAbstractPlanarVideoBuffer_override_virtual_MapMode(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractPlanarVideoBuffer* self_cast = dynamic_cast<MiqtVirtualQAbstractPlanarVideoBuffer*>( (QAbstractPlanarVideoBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MapMode = slot;
+	return true;
 }
 
-void QAbstractPlanarVideoBuffer_override_virtual_Unmap(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractPlanarVideoBuffer*>( (QAbstractPlanarVideoBuffer*)(self) )->handle__Unmap = slot;
+bool QAbstractPlanarVideoBuffer_override_virtual_Unmap(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractPlanarVideoBuffer* self_cast = dynamic_cast<MiqtVirtualQAbstractPlanarVideoBuffer*>( (QAbstractPlanarVideoBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Unmap = slot;
+	return true;
 }
 
-void QAbstractPlanarVideoBuffer_override_virtual_Handle(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractPlanarVideoBuffer*>( (QAbstractPlanarVideoBuffer*)(self) )->handle__Handle = slot;
+bool QAbstractPlanarVideoBuffer_override_virtual_Handle(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractPlanarVideoBuffer* self_cast = dynamic_cast<MiqtVirtualQAbstractPlanarVideoBuffer*>( (QAbstractPlanarVideoBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Handle = slot;
+	return true;
 }
 
 QVariant* QAbstractPlanarVideoBuffer_virtualbase_Handle(const void* self) {
 	return ( (const MiqtVirtualQAbstractPlanarVideoBuffer*)(self) )->virtualbase_Handle();
 }
 
-void QAbstractPlanarVideoBuffer_Delete(QAbstractPlanarVideoBuffer* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractPlanarVideoBuffer*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractPlanarVideoBuffer_Delete(QAbstractPlanarVideoBuffer* self) {
+	delete self;
 }
 

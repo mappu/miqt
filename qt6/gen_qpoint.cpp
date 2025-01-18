@@ -95,12 +95,8 @@ QPointF* QPoint_ToPointF(const QPoint* self) {
 	return new QPointF(self->toPointF());
 }
 
-void QPoint_Delete(QPoint* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPoint*>( self );
-	} else {
-		delete self;
-	}
+void QPoint_Delete(QPoint* self) {
+	delete self;
 }
 
 QPointF* QPointF_new() {
@@ -183,11 +179,7 @@ QPoint* QPointF_ToPoint(const QPointF* self) {
 	return new QPoint(self->toPoint());
 }
 
-void QPointF_Delete(QPointF* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPointF*>( self );
-	} else {
-		delete self;
-	}
+void QPointF_Delete(QPointF* self) {
+	delete self;
 }
 

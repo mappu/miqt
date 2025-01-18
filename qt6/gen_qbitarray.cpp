@@ -160,12 +160,8 @@ unsigned int QBitArray_ToUInt322(const QBitArray* self, int endianness, bool* ok
 	return static_cast<unsigned int>(_ret);
 }
 
-void QBitArray_Delete(QBitArray* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QBitArray*>( self );
-	} else {
-		delete self;
-	}
+void QBitArray_Delete(QBitArray* self) {
+	delete self;
 }
 
 QBitRef* QBitRef_new(QBitRef* param1) {
@@ -188,11 +184,7 @@ void QBitRef_OperatorAssignWithVal(QBitRef* self, bool val) {
 	self->operator=(val);
 }
 
-void QBitRef_Delete(QBitRef* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QBitRef*>( self );
-	} else {
-		delete self;
-	}
+void QBitRef_Delete(QBitRef* self) {
+	delete self;
 }
 

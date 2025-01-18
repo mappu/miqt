@@ -285,11 +285,7 @@ struct miqt_string QRadioDataControl_TrUtf83(const char* s, const char* c, int n
 	return _ms;
 }
 
-void QRadioDataControl_Delete(QRadioDataControl* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QRadioDataControl*>( self );
-	} else {
-		delete self;
-	}
+void QRadioDataControl_Delete(QRadioDataControl* self) {
+	delete self;
 }
 

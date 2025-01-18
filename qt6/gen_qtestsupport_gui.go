@@ -14,8 +14,7 @@ import (
 )
 
 type QTest__QTouchEventSequence struct {
-	h          *C.QTest__QTouchEventSequence
-	isSubclass bool
+	h *C.QTest__QTouchEventSequence
 }
 
 func (this *QTest__QTouchEventSequence) cPointer() *C.QTest__QTouchEventSequence {
@@ -80,7 +79,7 @@ func (this *QTest__QTouchEventSequence) Release3(touchId int, pt *QPoint, window
 
 // Delete this object from C++ memory.
 func (this *QTest__QTouchEventSequence) Delete() {
-	C.QTest__QTouchEventSequence_Delete(this.h, C.bool(this.isSubclass))
+	C.QTest__QTouchEventSequence_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

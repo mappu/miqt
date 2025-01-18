@@ -15,8 +15,7 @@ import (
 )
 
 type QFutureWatcherBase struct {
-	h          *C.QFutureWatcherBase
-	isSubclass bool
+	h *C.QFutureWatcherBase
 	*QObject
 }
 
@@ -392,7 +391,7 @@ func QFutureWatcherBase_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QFutureWatcherBase) Delete() {
-	C.QFutureWatcherBase_Delete(this.h, C.bool(this.isSubclass))
+	C.QFutureWatcherBase_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

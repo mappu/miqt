@@ -110,7 +110,7 @@ void QUrl_SetFragment2(QUrl* self, struct miqt_string fragment, int mode);
 struct miqt_string QUrl_ToPercentEncoding2(struct miqt_string param1, struct miqt_string exclude);
 struct miqt_string QUrl_ToPercentEncoding3(struct miqt_string param1, struct miqt_string exclude, struct miqt_string include);
 struct miqt_array /* of QUrl* */  QUrl_FromStringList2(struct miqt_array /* of struct miqt_string */  uris, int mode);
-void QUrl_Delete(QUrl* self, bool isSubclass);
+void QUrl_Delete(QUrl* self);
 
 #ifdef __cplusplus
 } /* extern C */

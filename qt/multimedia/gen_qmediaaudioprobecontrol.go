@@ -16,8 +16,7 @@ import (
 )
 
 type QMediaAudioProbeControl struct {
-	h          *C.QMediaAudioProbeControl
-	isSubclass bool
+	h *C.QMediaAudioProbeControl
 	*QMediaControl
 }
 
@@ -163,7 +162,7 @@ func QMediaAudioProbeControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QMediaAudioProbeControl) Delete() {
-	C.QMediaAudioProbeControl_Delete(this.h, C.bool(this.isSubclass))
+	C.QMediaAudioProbeControl_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

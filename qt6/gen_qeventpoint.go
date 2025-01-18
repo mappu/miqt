@@ -24,8 +24,7 @@ const (
 )
 
 type QEventPoint struct {
-	h          *C.QEventPoint
-	isSubclass bool
+	h *C.QEventPoint
 }
 
 func (this *QEventPoint) cPointer() *C.QEventPoint {
@@ -59,41 +58,31 @@ func UnsafeNewQEventPoint(h unsafe.Pointer) *QEventPoint {
 // NewQEventPoint constructs a new QEventPoint object.
 func NewQEventPoint() *QEventPoint {
 
-	ret := newQEventPoint(C.QEventPoint_new())
-	ret.isSubclass = true
-	return ret
+	return newQEventPoint(C.QEventPoint_new())
 }
 
 // NewQEventPoint2 constructs a new QEventPoint object.
 func NewQEventPoint2(pointId int, state QEventPoint__State, scenePosition *QPointF, globalPosition *QPointF) *QEventPoint {
 
-	ret := newQEventPoint(C.QEventPoint_new2((C.int)(pointId), (C.uint8_t)(state), scenePosition.cPointer(), globalPosition.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQEventPoint(C.QEventPoint_new2((C.int)(pointId), (C.uint8_t)(state), scenePosition.cPointer(), globalPosition.cPointer()))
 }
 
 // NewQEventPoint3 constructs a new QEventPoint object.
 func NewQEventPoint3(other *QEventPoint) *QEventPoint {
 
-	ret := newQEventPoint(C.QEventPoint_new3(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQEventPoint(C.QEventPoint_new3(other.cPointer()))
 }
 
 // NewQEventPoint4 constructs a new QEventPoint object.
 func NewQEventPoint4(id int) *QEventPoint {
 
-	ret := newQEventPoint(C.QEventPoint_new4((C.int)(id)))
-	ret.isSubclass = true
-	return ret
+	return newQEventPoint(C.QEventPoint_new4((C.int)(id)))
 }
 
 // NewQEventPoint5 constructs a new QEventPoint object.
 func NewQEventPoint5(id int, device *QPointingDevice) *QEventPoint {
 
-	ret := newQEventPoint(C.QEventPoint_new5((C.int)(id), device.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQEventPoint(C.QEventPoint_new5((C.int)(id), device.cPointer()))
 }
 
 func (this *QEventPoint) OperatorAssign(other *QEventPoint) {
@@ -330,7 +319,7 @@ func (this *QEventPoint) SetAccepted1(accepted bool) {
 
 // Delete this object from C++ memory.
 func (this *QEventPoint) Delete() {
-	C.QEventPoint_Delete(this.h, C.bool(this.isSubclass))
+	C.QEventPoint_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

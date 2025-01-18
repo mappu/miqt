@@ -77,21 +77,21 @@ void QAudioRoom_ReverbBrightnessChanged(QAudioRoom* self);
 void QAudioRoom_connect_ReverbBrightnessChanged(QAudioRoom* self, intptr_t slot);
 struct miqt_string QAudioRoom_Tr2(const char* s, const char* c);
 struct miqt_string QAudioRoom_Tr3(const char* s, const char* c, int n);
-void QAudioRoom_override_virtual_Event(void* self, intptr_t slot);
+bool QAudioRoom_override_virtual_Event(void* self, intptr_t slot);
 bool QAudioRoom_virtualbase_Event(void* self, QEvent* event);
-void QAudioRoom_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QAudioRoom_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QAudioRoom_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QAudioRoom_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QAudioRoom_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QAudioRoom_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QAudioRoom_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QAudioRoom_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QAudioRoom_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QAudioRoom_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QAudioRoom_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QAudioRoom_virtualbase_CustomEvent(void* self, QEvent* event);
-void QAudioRoom_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QAudioRoom_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QAudioRoom_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QAudioRoom_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QAudioRoom_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QAudioRoom_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QAudioRoom_Delete(QAudioRoom* self, bool isSubclass);
+void QAudioRoom_Delete(QAudioRoom* self);
 
 #ifdef __cplusplus
 } /* extern C */

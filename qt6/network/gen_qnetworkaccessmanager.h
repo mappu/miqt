@@ -123,25 +123,25 @@ void QNetworkAccessManager_ConnectToHostEncrypted22(QNetworkAccessManager* self,
 void QNetworkAccessManager_ConnectToHostEncrypted3(QNetworkAccessManager* self, struct miqt_string hostName, uint16_t port, QSslConfiguration* sslConfiguration);
 void QNetworkAccessManager_ConnectToHost2(QNetworkAccessManager* self, struct miqt_string hostName, uint16_t port);
 void QNetworkAccessManager_SetTransferTimeout1(QNetworkAccessManager* self, int timeout);
-void QNetworkAccessManager_override_virtual_SupportedSchemes(void* self, intptr_t slot);
+bool QNetworkAccessManager_override_virtual_SupportedSchemes(void* self, intptr_t slot);
 struct miqt_array /* of struct miqt_string */  QNetworkAccessManager_virtualbase_SupportedSchemes(const void* self);
-void QNetworkAccessManager_override_virtual_CreateRequest(void* self, intptr_t slot);
+bool QNetworkAccessManager_override_virtual_CreateRequest(void* self, intptr_t slot);
 QNetworkReply* QNetworkAccessManager_virtualbase_CreateRequest(void* self, int op, QNetworkRequest* request, QIODevice* outgoingData);
-void QNetworkAccessManager_override_virtual_Event(void* self, intptr_t slot);
+bool QNetworkAccessManager_override_virtual_Event(void* self, intptr_t slot);
 bool QNetworkAccessManager_virtualbase_Event(void* self, QEvent* event);
-void QNetworkAccessManager_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QNetworkAccessManager_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QNetworkAccessManager_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QNetworkAccessManager_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QNetworkAccessManager_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QNetworkAccessManager_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QNetworkAccessManager_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QNetworkAccessManager_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QNetworkAccessManager_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QNetworkAccessManager_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QNetworkAccessManager_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QNetworkAccessManager_virtualbase_CustomEvent(void* self, QEvent* event);
-void QNetworkAccessManager_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QNetworkAccessManager_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QNetworkAccessManager_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QNetworkAccessManager_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QNetworkAccessManager_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QNetworkAccessManager_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QNetworkAccessManager_Delete(QNetworkAccessManager* self, bool isSubclass);
+void QNetworkAccessManager_Delete(QNetworkAccessManager* self);
 
 #ifdef __cplusplus
 } /* extern C */

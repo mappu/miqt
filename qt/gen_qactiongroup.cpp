@@ -31,12 +31,12 @@ void miqt_exec_callback_QActionGroup_DisconnectNotify(void*, intptr_t, QMetaMeth
 } /* extern C */
 #endif
 
-class MiqtVirtualQActionGroup : public virtual QActionGroup {
+class MiqtVirtualQActionGroup final : public QActionGroup {
 public:
 
 	MiqtVirtualQActionGroup(QObject* parent): QActionGroup(parent) {};
 
-	virtual ~MiqtVirtualQActionGroup() = default;
+	virtual ~MiqtVirtualQActionGroup() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -387,67 +387,105 @@ struct miqt_string QActionGroup_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QActionGroup_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) )->handle__Event = slot;
+bool QActionGroup_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQActionGroup* self_cast = dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QActionGroup_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQActionGroup*)(self) )->virtualbase_Event(event);
 }
 
-void QActionGroup_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) )->handle__EventFilter = slot;
+bool QActionGroup_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQActionGroup* self_cast = dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QActionGroup_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQActionGroup*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QActionGroup_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) )->handle__TimerEvent = slot;
+bool QActionGroup_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQActionGroup* self_cast = dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QActionGroup_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQActionGroup*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QActionGroup_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) )->handle__ChildEvent = slot;
+bool QActionGroup_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQActionGroup* self_cast = dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QActionGroup_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQActionGroup*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QActionGroup_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) )->handle__CustomEvent = slot;
+bool QActionGroup_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQActionGroup* self_cast = dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QActionGroup_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQActionGroup*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QActionGroup_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) )->handle__ConnectNotify = slot;
+bool QActionGroup_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQActionGroup* self_cast = dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QActionGroup_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQActionGroup*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QActionGroup_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) )->handle__DisconnectNotify = slot;
+bool QActionGroup_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQActionGroup* self_cast = dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QActionGroup_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQActionGroup*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QActionGroup_Delete(QActionGroup* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQActionGroup*>( self );
-	} else {
-		delete self;
-	}
+void QActionGroup_Delete(QActionGroup* self) {
+	delete self;
 }
 

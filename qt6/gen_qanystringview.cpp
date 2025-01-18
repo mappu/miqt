@@ -99,11 +99,7 @@ int QAnyStringView_Compare3(QAnyStringView* lhs, QAnyStringView* rhs, int cs) {
 	return QAnyStringView::compare(*lhs, *rhs, static_cast<Qt::CaseSensitivity>(cs));
 }
 
-void QAnyStringView_Delete(QAnyStringView* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QAnyStringView*>( self );
-	} else {
-		delete self;
-	}
+void QAnyStringView_Delete(QAnyStringView* self) {
+	delete self;
 }
 

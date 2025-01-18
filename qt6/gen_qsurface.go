@@ -33,8 +33,7 @@ const (
 )
 
 type QSurface struct {
-	h          *C.QSurface
-	isSubclass bool
+	h *C.QSurface
 }
 
 func (this *QSurface) cPointer() *C.QSurface {
@@ -91,7 +90,7 @@ func (this *QSurface) Size() *QSize {
 
 // Delete this object from C++ memory.
 func (this *QSurface) Delete() {
-	C.QSurface_Delete(this.h, C.bool(this.isSubclass))
+	C.QSurface_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

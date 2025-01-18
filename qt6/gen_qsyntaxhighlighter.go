@@ -15,8 +15,7 @@ import (
 )
 
 type QSyntaxHighlighter struct {
-	h          *C.QSyntaxHighlighter
-	isSubclass bool
+	h *C.QSyntaxHighlighter
 	*QObject
 }
 
@@ -54,17 +53,13 @@ func UnsafeNewQSyntaxHighlighter(h unsafe.Pointer) *QSyntaxHighlighter {
 // NewQSyntaxHighlighter constructs a new QSyntaxHighlighter object.
 func NewQSyntaxHighlighter(parent *QObject) *QSyntaxHighlighter {
 
-	ret := newQSyntaxHighlighter(C.QSyntaxHighlighter_new(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSyntaxHighlighter(C.QSyntaxHighlighter_new(parent.cPointer()))
 }
 
 // NewQSyntaxHighlighter2 constructs a new QSyntaxHighlighter object.
 func NewQSyntaxHighlighter2(parent *QTextDocument) *QSyntaxHighlighter {
 
-	ret := newQSyntaxHighlighter(C.QSyntaxHighlighter_new2(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSyntaxHighlighter(C.QSyntaxHighlighter_new2(parent.cPointer()))
 }
 
 func (this *QSyntaxHighlighter) MetaObject() *QMetaObject {
@@ -124,10 +119,10 @@ func QSyntaxHighlighter_Tr3(s string, c string, n int) string {
 	return _ret
 }
 func (this *QSyntaxHighlighter) OnHighlightBlock(slot func(text string)) {
-	if !this.isSubclass {
+	ok := C.QSyntaxHighlighter_override_virtual_HighlightBlock(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSyntaxHighlighter_override_virtual_HighlightBlock(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSyntaxHighlighter_HighlightBlock
@@ -153,10 +148,10 @@ func (this *QSyntaxHighlighter) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QSyntaxHighlighter) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QSyntaxHighlighter_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSyntaxHighlighter_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSyntaxHighlighter_Event
@@ -181,10 +176,10 @@ func (this *QSyntaxHighlighter) callVirtualBase_EventFilter(watched *QObject, ev
 
 }
 func (this *QSyntaxHighlighter) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QSyntaxHighlighter_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSyntaxHighlighter_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSyntaxHighlighter_EventFilter
@@ -211,10 +206,10 @@ func (this *QSyntaxHighlighter) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QSyntaxHighlighter) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QSyntaxHighlighter_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSyntaxHighlighter_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSyntaxHighlighter_TimerEvent
@@ -237,10 +232,10 @@ func (this *QSyntaxHighlighter) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QSyntaxHighlighter) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QSyntaxHighlighter_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSyntaxHighlighter_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSyntaxHighlighter_ChildEvent
@@ -263,10 +258,10 @@ func (this *QSyntaxHighlighter) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QSyntaxHighlighter) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QSyntaxHighlighter_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSyntaxHighlighter_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSyntaxHighlighter_CustomEvent
@@ -289,10 +284,10 @@ func (this *QSyntaxHighlighter) callVirtualBase_ConnectNotify(signal *QMetaMetho
 
 }
 func (this *QSyntaxHighlighter) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QSyntaxHighlighter_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSyntaxHighlighter_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSyntaxHighlighter_ConnectNotify
@@ -315,10 +310,10 @@ func (this *QSyntaxHighlighter) callVirtualBase_DisconnectNotify(signal *QMetaMe
 
 }
 func (this *QSyntaxHighlighter) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QSyntaxHighlighter_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSyntaxHighlighter_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSyntaxHighlighter_DisconnectNotify
@@ -337,7 +332,7 @@ func miqt_exec_callback_QSyntaxHighlighter_DisconnectNotify(self *C.QSyntaxHighl
 
 // Delete this object from C++ memory.
 func (this *QSyntaxHighlighter) Delete() {
-	C.QSyntaxHighlighter_Delete(this.h, C.bool(this.isSubclass))
+	C.QSyntaxHighlighter_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -105,11 +105,7 @@ struct miqt_string QCameraInfoControl_TrUtf83(const char* s, const char* c, int 
 	return _ms;
 }
 
-void QCameraInfoControl_Delete(QCameraInfoControl* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCameraInfoControl*>( self );
-	} else {
-		delete self;
-	}
+void QCameraInfoControl_Delete(QCameraInfoControl* self) {
+	delete self;
 }
 

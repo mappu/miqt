@@ -44,8 +44,7 @@ const (
 )
 
 type QColorSpace struct {
-	h          *C.QColorSpace
-	isSubclass bool
+	h *C.QColorSpace
 }
 
 func (this *QColorSpace) cPointer() *C.QColorSpace {
@@ -79,33 +78,25 @@ func UnsafeNewQColorSpace(h unsafe.Pointer) *QColorSpace {
 // NewQColorSpace constructs a new QColorSpace object.
 func NewQColorSpace() *QColorSpace {
 
-	ret := newQColorSpace(C.QColorSpace_new())
-	ret.isSubclass = true
-	return ret
+	return newQColorSpace(C.QColorSpace_new())
 }
 
 // NewQColorSpace2 constructs a new QColorSpace object.
 func NewQColorSpace2(namedColorSpace QColorSpace__NamedColorSpace) *QColorSpace {
 
-	ret := newQColorSpace(C.QColorSpace_new2((C.int)(namedColorSpace)))
-	ret.isSubclass = true
-	return ret
+	return newQColorSpace(C.QColorSpace_new2((C.int)(namedColorSpace)))
 }
 
 // NewQColorSpace3 constructs a new QColorSpace object.
 func NewQColorSpace3(primaries QColorSpace__Primaries, transferFunction QColorSpace__TransferFunction) *QColorSpace {
 
-	ret := newQColorSpace(C.QColorSpace_new3((C.int)(primaries), (C.int)(transferFunction)))
-	ret.isSubclass = true
-	return ret
+	return newQColorSpace(C.QColorSpace_new3((C.int)(primaries), (C.int)(transferFunction)))
 }
 
 // NewQColorSpace4 constructs a new QColorSpace object.
 func NewQColorSpace4(primaries QColorSpace__Primaries, gamma float32) *QColorSpace {
 
-	ret := newQColorSpace(C.QColorSpace_new4((C.int)(primaries), (C.float)(gamma)))
-	ret.isSubclass = true
-	return ret
+	return newQColorSpace(C.QColorSpace_new4((C.int)(primaries), (C.float)(gamma)))
 }
 
 // NewQColorSpace5 constructs a new QColorSpace object.
@@ -117,17 +108,13 @@ func NewQColorSpace5(primaries QColorSpace__Primaries, transferFunctionTable []u
 	}
 	transferFunctionTable_ma := C.struct_miqt_array{len: C.size_t(len(transferFunctionTable)), data: unsafe.Pointer(transferFunctionTable_CArray)}
 
-	ret := newQColorSpace(C.QColorSpace_new5((C.int)(primaries), transferFunctionTable_ma))
-	ret.isSubclass = true
-	return ret
+	return newQColorSpace(C.QColorSpace_new5((C.int)(primaries), transferFunctionTable_ma))
 }
 
 // NewQColorSpace6 constructs a new QColorSpace object.
 func NewQColorSpace6(whitePoint *QPointF, redPoint *QPointF, greenPoint *QPointF, bluePoint *QPointF, transferFunction QColorSpace__TransferFunction) *QColorSpace {
 
-	ret := newQColorSpace(C.QColorSpace_new6(whitePoint.cPointer(), redPoint.cPointer(), greenPoint.cPointer(), bluePoint.cPointer(), (C.int)(transferFunction)))
-	ret.isSubclass = true
-	return ret
+	return newQColorSpace(C.QColorSpace_new6(whitePoint.cPointer(), redPoint.cPointer(), greenPoint.cPointer(), bluePoint.cPointer(), (C.int)(transferFunction)))
 }
 
 // NewQColorSpace7 constructs a new QColorSpace object.
@@ -139,9 +126,7 @@ func NewQColorSpace7(whitePoint *QPointF, redPoint *QPointF, greenPoint *QPointF
 	}
 	transferFunctionTable_ma := C.struct_miqt_array{len: C.size_t(len(transferFunctionTable)), data: unsafe.Pointer(transferFunctionTable_CArray)}
 
-	ret := newQColorSpace(C.QColorSpace_new7(whitePoint.cPointer(), redPoint.cPointer(), greenPoint.cPointer(), bluePoint.cPointer(), transferFunctionTable_ma))
-	ret.isSubclass = true
-	return ret
+	return newQColorSpace(C.QColorSpace_new7(whitePoint.cPointer(), redPoint.cPointer(), greenPoint.cPointer(), bluePoint.cPointer(), transferFunctionTable_ma))
 }
 
 // NewQColorSpace8 constructs a new QColorSpace object.
@@ -165,33 +150,25 @@ func NewQColorSpace8(whitePoint *QPointF, redPoint *QPointF, greenPoint *QPointF
 	}
 	blueTransferFunctionTable_ma := C.struct_miqt_array{len: C.size_t(len(blueTransferFunctionTable)), data: unsafe.Pointer(blueTransferFunctionTable_CArray)}
 
-	ret := newQColorSpace(C.QColorSpace_new8(whitePoint.cPointer(), redPoint.cPointer(), greenPoint.cPointer(), bluePoint.cPointer(), redTransferFunctionTable_ma, greenTransferFunctionTable_ma, blueTransferFunctionTable_ma))
-	ret.isSubclass = true
-	return ret
+	return newQColorSpace(C.QColorSpace_new8(whitePoint.cPointer(), redPoint.cPointer(), greenPoint.cPointer(), bluePoint.cPointer(), redTransferFunctionTable_ma, greenTransferFunctionTable_ma, blueTransferFunctionTable_ma))
 }
 
 // NewQColorSpace9 constructs a new QColorSpace object.
 func NewQColorSpace9(colorSpace *QColorSpace) *QColorSpace {
 
-	ret := newQColorSpace(C.QColorSpace_new9(colorSpace.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQColorSpace(C.QColorSpace_new9(colorSpace.cPointer()))
 }
 
 // NewQColorSpace10 constructs a new QColorSpace object.
 func NewQColorSpace10(primaries QColorSpace__Primaries, transferFunction QColorSpace__TransferFunction, gamma float32) *QColorSpace {
 
-	ret := newQColorSpace(C.QColorSpace_new10((C.int)(primaries), (C.int)(transferFunction), (C.float)(gamma)))
-	ret.isSubclass = true
-	return ret
+	return newQColorSpace(C.QColorSpace_new10((C.int)(primaries), (C.int)(transferFunction), (C.float)(gamma)))
 }
 
 // NewQColorSpace11 constructs a new QColorSpace object.
 func NewQColorSpace11(whitePoint *QPointF, redPoint *QPointF, greenPoint *QPointF, bluePoint *QPointF, transferFunction QColorSpace__TransferFunction, gamma float32) *QColorSpace {
 
-	ret := newQColorSpace(C.QColorSpace_new11(whitePoint.cPointer(), redPoint.cPointer(), greenPoint.cPointer(), bluePoint.cPointer(), (C.int)(transferFunction), (C.float)(gamma)))
-	ret.isSubclass = true
-	return ret
+	return newQColorSpace(C.QColorSpace_new11(whitePoint.cPointer(), redPoint.cPointer(), greenPoint.cPointer(), bluePoint.cPointer(), (C.int)(transferFunction), (C.float)(gamma)))
 }
 
 func (this *QColorSpace) OperatorAssign(colorSpace *QColorSpace) {
@@ -363,7 +340,7 @@ func (this *QColorSpace) WithTransferFunction2(transferFunction QColorSpace__Tra
 
 // Delete this object from C++ memory.
 func (this *QColorSpace) Delete() {
-	C.QColorSpace_Delete(this.h, C.bool(this.isSubclass))
+	C.QColorSpace_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

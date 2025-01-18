@@ -14,8 +14,7 @@ import (
 )
 
 type QScriptable struct {
-	h          *C.QScriptable
-	isSubclass bool
+	h *C.QScriptable
 }
 
 func (this *QScriptable) cPointer() *C.QScriptable {
@@ -49,9 +48,7 @@ func UnsafeNewQScriptable(h unsafe.Pointer) *QScriptable {
 // NewQScriptable constructs a new QScriptable object.
 func NewQScriptable() *QScriptable {
 
-	ret := newQScriptable(C.QScriptable_new())
-	ret.isSubclass = true
-	return ret
+	return newQScriptable(C.QScriptable_new())
 }
 
 func (this *QScriptable) Engine() *QScriptEngine {
@@ -80,7 +77,7 @@ func (this *QScriptable) Argument(index int) *QScriptValue {
 
 // Delete this object from C++ memory.
 func (this *QScriptable) Delete() {
-	C.QScriptable_Delete(this.h, C.bool(this.isSubclass))
+	C.QScriptable_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

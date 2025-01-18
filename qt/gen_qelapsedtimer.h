@@ -35,7 +35,7 @@ long long QElapsedTimer_MsecsTo(const QElapsedTimer* self, QElapsedTimer* other)
 long long QElapsedTimer_SecsTo(const QElapsedTimer* self, QElapsedTimer* other);
 bool QElapsedTimer_OperatorEqual(const QElapsedTimer* self, QElapsedTimer* other);
 bool QElapsedTimer_OperatorNotEqual(const QElapsedTimer* self, QElapsedTimer* other);
-void QElapsedTimer_Delete(QElapsedTimer* self, bool isSubclass);
+void QElapsedTimer_Delete(QElapsedTimer* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -16,8 +16,7 @@ import (
 )
 
 type QScriptExtensionInterface struct {
-	h          *C.QScriptExtensionInterface
-	isSubclass bool
+	h *C.QScriptExtensionInterface
 	*qt.QFactoryInterface
 }
 
@@ -55,9 +54,7 @@ func UnsafeNewQScriptExtensionInterface(h unsafe.Pointer) *QScriptExtensionInter
 // NewQScriptExtensionInterface constructs a new QScriptExtensionInterface object.
 func NewQScriptExtensionInterface(param1 *QScriptExtensionInterface) *QScriptExtensionInterface {
 
-	ret := newQScriptExtensionInterface(C.QScriptExtensionInterface_new(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQScriptExtensionInterface(C.QScriptExtensionInterface_new(param1.cPointer()))
 }
 
 func (this *QScriptExtensionInterface) Initialize(key string, engine *QScriptEngine) {
@@ -72,10 +69,10 @@ func (this *QScriptExtensionInterface) OperatorAssign(param1 *QScriptExtensionIn
 	C.QScriptExtensionInterface_OperatorAssign(this.h, param1.cPointer())
 }
 func (this *QScriptExtensionInterface) OnInitialize(slot func(key string, engine *QScriptEngine)) {
-	if !this.isSubclass {
+	ok := C.QScriptExtensionInterface_override_virtual_Initialize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QScriptExtensionInterface_override_virtual_Initialize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QScriptExtensionInterface_Initialize
@@ -96,10 +93,10 @@ func miqt_exec_callback_QScriptExtensionInterface_Initialize(self *C.QScriptExte
 
 }
 func (this *QScriptExtensionInterface) OnKeys(slot func() []string) {
-	if !this.isSubclass {
+	ok := C.QScriptExtensionInterface_override_virtual_Keys(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QScriptExtensionInterface_override_virtual_Keys(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QScriptExtensionInterface_Keys
@@ -127,7 +124,7 @@ func miqt_exec_callback_QScriptExtensionInterface_Keys(self *C.QScriptExtensionI
 
 // Delete this object from C++ memory.
 func (this *QScriptExtensionInterface) Delete() {
-	C.QScriptExtensionInterface_Delete(this.h, C.bool(this.isSubclass))
+	C.QScriptExtensionInterface_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

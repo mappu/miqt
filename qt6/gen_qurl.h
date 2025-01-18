@@ -110,7 +110,7 @@ struct miqt_string QUrl_ToPercentEncoding3(struct miqt_string param1, struct miq
 struct miqt_string QUrl_FromAce2(struct miqt_string domain, unsigned int options);
 struct miqt_string QUrl_ToAce2(struct miqt_string domain, unsigned int options);
 struct miqt_array /* of QUrl* */  QUrl_FromStringList2(struct miqt_array /* of struct miqt_string */  uris, int mode);
-void QUrl_Delete(QUrl* self, bool isSubclass);
+void QUrl_Delete(QUrl* self);
 
 #ifdef __cplusplus
 } /* extern C */

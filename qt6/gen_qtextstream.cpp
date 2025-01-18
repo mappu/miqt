@@ -423,11 +423,7 @@ struct miqt_string QTextStream_ReadLine1(QTextStream* self, long long maxlen) {
 	return _ms;
 }
 
-void QTextStream_Delete(QTextStream* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextStream*>( self );
-	} else {
-		delete self;
-	}
+void QTextStream_Delete(QTextStream* self) {
+	delete self;
 }
 

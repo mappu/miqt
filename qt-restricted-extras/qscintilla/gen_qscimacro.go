@@ -16,8 +16,7 @@ import (
 )
 
 type QsciMacro struct {
-	h          *C.QsciMacro
-	isSubclass bool
+	h *C.QsciMacro
 	*qt.QObject
 }
 
@@ -55,9 +54,7 @@ func UnsafeNewQsciMacro(h unsafe.Pointer) *QsciMacro {
 // NewQsciMacro constructs a new QsciMacro object.
 func NewQsciMacro(parent *QsciScintilla) *QsciMacro {
 
-	ret := newQsciMacro(C.QsciMacro_new(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQsciMacro(C.QsciMacro_new(parent.cPointer()))
 }
 
 // NewQsciMacro2 constructs a new QsciMacro object.
@@ -67,9 +64,7 @@ func NewQsciMacro2(asc string, parent *QsciScintilla) *QsciMacro {
 	asc_ms.len = C.size_t(len(asc))
 	defer C.free(unsafe.Pointer(asc_ms.data))
 
-	ret := newQsciMacro(C.QsciMacro_new2(asc_ms, parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQsciMacro(C.QsciMacro_new2(asc_ms, parent.cPointer()))
 }
 
 func (this *QsciMacro) MetaObject() *qt.QMetaObject {
@@ -181,10 +176,10 @@ func (this *QsciMacro) callVirtualBase_Play() {
 
 }
 func (this *QsciMacro) OnPlay(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QsciMacro_override_virtual_Play(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciMacro_override_virtual_Play(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciMacro_Play
@@ -204,10 +199,10 @@ func (this *QsciMacro) callVirtualBase_StartRecording() {
 
 }
 func (this *QsciMacro) OnStartRecording(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QsciMacro_override_virtual_StartRecording(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciMacro_override_virtual_StartRecording(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciMacro_StartRecording
@@ -227,10 +222,10 @@ func (this *QsciMacro) callVirtualBase_EndRecording() {
 
 }
 func (this *QsciMacro) OnEndRecording(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QsciMacro_override_virtual_EndRecording(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciMacro_override_virtual_EndRecording(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciMacro_EndRecording
@@ -250,10 +245,10 @@ func (this *QsciMacro) callVirtualBase_Event(event *qt.QEvent) bool {
 
 }
 func (this *QsciMacro) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QsciMacro_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciMacro_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciMacro_Event
@@ -278,10 +273,10 @@ func (this *QsciMacro) callVirtualBase_EventFilter(watched *qt.QObject, event *q
 
 }
 func (this *QsciMacro) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QsciMacro_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciMacro_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciMacro_EventFilter
@@ -308,10 +303,10 @@ func (this *QsciMacro) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
 }
 func (this *QsciMacro) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QsciMacro_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciMacro_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciMacro_TimerEvent
@@ -334,10 +329,10 @@ func (this *QsciMacro) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
 }
 func (this *QsciMacro) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QsciMacro_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciMacro_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciMacro_ChildEvent
@@ -360,10 +355,10 @@ func (this *QsciMacro) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
 }
 func (this *QsciMacro) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	if !this.isSubclass {
+	ok := C.QsciMacro_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciMacro_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciMacro_CustomEvent
@@ -386,10 +381,10 @@ func (this *QsciMacro) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 
 }
 func (this *QsciMacro) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QsciMacro_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciMacro_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciMacro_ConnectNotify
@@ -412,10 +407,10 @@ func (this *QsciMacro) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) 
 
 }
 func (this *QsciMacro) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QsciMacro_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciMacro_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciMacro_DisconnectNotify
@@ -434,7 +429,7 @@ func miqt_exec_callback_QsciMacro_DisconnectNotify(self *C.QsciMacro, cb C.intpt
 
 // Delete this object from C++ memory.
 func (this *QsciMacro) Delete() {
-	C.QsciMacro_Delete(this.h, C.bool(this.isSubclass))
+	C.QsciMacro_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

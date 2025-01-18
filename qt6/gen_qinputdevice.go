@@ -50,8 +50,7 @@ const (
 )
 
 type QInputDevice struct {
-	h          *C.QInputDevice
-	isSubclass bool
+	h *C.QInputDevice
 	*QObject
 }
 
@@ -89,9 +88,7 @@ func UnsafeNewQInputDevice(h unsafe.Pointer) *QInputDevice {
 // NewQInputDevice constructs a new QInputDevice object.
 func NewQInputDevice() *QInputDevice {
 
-	ret := newQInputDevice(C.QInputDevice_new())
-	ret.isSubclass = true
-	return ret
+	return newQInputDevice(C.QInputDevice_new())
 }
 
 // NewQInputDevice2 constructs a new QInputDevice object.
@@ -101,17 +98,13 @@ func NewQInputDevice2(name string, systemId int64, typeVal QInputDevice__DeviceT
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
 
-	ret := newQInputDevice(C.QInputDevice_new2(name_ms, (C.longlong)(systemId), (C.int)(typeVal)))
-	ret.isSubclass = true
-	return ret
+	return newQInputDevice(C.QInputDevice_new2(name_ms, (C.longlong)(systemId), (C.int)(typeVal)))
 }
 
 // NewQInputDevice3 constructs a new QInputDevice object.
 func NewQInputDevice3(parent *QObject) *QInputDevice {
 
-	ret := newQInputDevice(C.QInputDevice_new3(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQInputDevice(C.QInputDevice_new3(parent.cPointer()))
 }
 
 // NewQInputDevice4 constructs a new QInputDevice object.
@@ -125,9 +118,7 @@ func NewQInputDevice4(name string, systemId int64, typeVal QInputDevice__DeviceT
 	seatName_ms.len = C.size_t(len(seatName))
 	defer C.free(unsafe.Pointer(seatName_ms.data))
 
-	ret := newQInputDevice(C.QInputDevice_new4(name_ms, (C.longlong)(systemId), (C.int)(typeVal), seatName_ms))
-	ret.isSubclass = true
-	return ret
+	return newQInputDevice(C.QInputDevice_new4(name_ms, (C.longlong)(systemId), (C.int)(typeVal), seatName_ms))
 }
 
 // NewQInputDevice5 constructs a new QInputDevice object.
@@ -141,9 +132,7 @@ func NewQInputDevice5(name string, systemId int64, typeVal QInputDevice__DeviceT
 	seatName_ms.len = C.size_t(len(seatName))
 	defer C.free(unsafe.Pointer(seatName_ms.data))
 
-	ret := newQInputDevice(C.QInputDevice_new5(name_ms, (C.longlong)(systemId), (C.int)(typeVal), seatName_ms, parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQInputDevice(C.QInputDevice_new5(name_ms, (C.longlong)(systemId), (C.int)(typeVal), seatName_ms, parent.cPointer()))
 }
 
 func (this *QInputDevice) MetaObject() *QMetaObject {
@@ -290,10 +279,10 @@ func (this *QInputDevice) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QInputDevice) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QInputDevice_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QInputDevice_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QInputDevice_Event
@@ -318,10 +307,10 @@ func (this *QInputDevice) callVirtualBase_EventFilter(watched *QObject, event *Q
 
 }
 func (this *QInputDevice) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QInputDevice_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QInputDevice_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QInputDevice_EventFilter
@@ -348,10 +337,10 @@ func (this *QInputDevice) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QInputDevice) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QInputDevice_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QInputDevice_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QInputDevice_TimerEvent
@@ -374,10 +363,10 @@ func (this *QInputDevice) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QInputDevice) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QInputDevice_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QInputDevice_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QInputDevice_ChildEvent
@@ -400,10 +389,10 @@ func (this *QInputDevice) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QInputDevice) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QInputDevice_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QInputDevice_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QInputDevice_CustomEvent
@@ -426,10 +415,10 @@ func (this *QInputDevice) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QInputDevice) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QInputDevice_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QInputDevice_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QInputDevice_ConnectNotify
@@ -452,10 +441,10 @@ func (this *QInputDevice) callVirtualBase_DisconnectNotify(signal *QMetaMethod) 
 
 }
 func (this *QInputDevice) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QInputDevice_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QInputDevice_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QInputDevice_DisconnectNotify
@@ -474,7 +463,7 @@ func miqt_exec_callback_QInputDevice_DisconnectNotify(self *C.QInputDevice, cb C
 
 // Delete this object from C++ memory.
 func (this *QInputDevice) Delete() {
-	C.QInputDevice_Delete(this.h, C.bool(this.isSubclass))
+	C.QInputDevice_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

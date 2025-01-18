@@ -364,11 +364,7 @@ struct miqt_string QRadioTunerControl_TrUtf83(const char* s, const char* c, int 
 	return _ms;
 }
 
-void QRadioTunerControl_Delete(QRadioTunerControl* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QRadioTunerControl*>( self );
-	} else {
-		delete self;
-	}
+void QRadioTunerControl_Delete(QRadioTunerControl* self) {
+	delete self;
 }
 

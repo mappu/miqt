@@ -15,8 +15,7 @@ import (
 )
 
 type QPushButton struct {
-	h          *C.QPushButton
-	isSubclass bool
+	h *C.QPushButton
 	*QAbstractButton
 }
 
@@ -54,17 +53,13 @@ func UnsafeNewQPushButton(h unsafe.Pointer) *QPushButton {
 // NewQPushButton constructs a new QPushButton object.
 func NewQPushButton(parent *QWidget) *QPushButton {
 
-	ret := newQPushButton(C.QPushButton_new(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPushButton(C.QPushButton_new(parent.cPointer()))
 }
 
 // NewQPushButton2 constructs a new QPushButton object.
 func NewQPushButton2() *QPushButton {
 
-	ret := newQPushButton(C.QPushButton_new2())
-	ret.isSubclass = true
-	return ret
+	return newQPushButton(C.QPushButton_new2())
 }
 
 // NewQPushButton3 constructs a new QPushButton object.
@@ -74,9 +69,7 @@ func NewQPushButton3(text string) *QPushButton {
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQPushButton(C.QPushButton_new3(text_ms))
-	ret.isSubclass = true
-	return ret
+	return newQPushButton(C.QPushButton_new3(text_ms))
 }
 
 // NewQPushButton4 constructs a new QPushButton object.
@@ -86,9 +79,7 @@ func NewQPushButton4(icon *QIcon, text string) *QPushButton {
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQPushButton(C.QPushButton_new4(icon.cPointer(), text_ms))
-	ret.isSubclass = true
-	return ret
+	return newQPushButton(C.QPushButton_new4(icon.cPointer(), text_ms))
 }
 
 // NewQPushButton5 constructs a new QPushButton object.
@@ -98,9 +89,7 @@ func NewQPushButton5(text string, parent *QWidget) *QPushButton {
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQPushButton(C.QPushButton_new5(text_ms, parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPushButton(C.QPushButton_new5(text_ms, parent.cPointer()))
 }
 
 // NewQPushButton6 constructs a new QPushButton object.
@@ -110,9 +99,7 @@ func NewQPushButton6(icon *QIcon, text string, parent *QWidget) *QPushButton {
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQPushButton(C.QPushButton_new6(icon.cPointer(), text_ms, parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPushButton(C.QPushButton_new6(icon.cPointer(), text_ms, parent.cPointer()))
 }
 
 func (this *QPushButton) MetaObject() *QMetaObject {
@@ -243,10 +230,10 @@ func (this *QPushButton) callVirtualBase_SizeHint() *QSize {
 
 }
 func (this *QPushButton) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	if !this.isSubclass {
+	ok := C.QPushButton_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPushButton_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPushButton_SizeHint
@@ -270,10 +257,10 @@ func (this *QPushButton) callVirtualBase_MinimumSizeHint() *QSize {
 
 }
 func (this *QPushButton) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
-	if !this.isSubclass {
+	ok := C.QPushButton_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPushButton_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPushButton_MinimumSizeHint
@@ -295,10 +282,10 @@ func (this *QPushButton) callVirtualBase_Event(e *QEvent) bool {
 
 }
 func (this *QPushButton) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QPushButton_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPushButton_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPushButton_Event
@@ -323,10 +310,10 @@ func (this *QPushButton) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
 
 }
 func (this *QPushButton) OnPaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
-	if !this.isSubclass {
+	ok := C.QPushButton_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPushButton_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPushButton_PaintEvent
@@ -349,10 +336,10 @@ func (this *QPushButton) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
 
 }
 func (this *QPushButton) OnKeyPressEvent(slot func(super func(param1 *QKeyEvent), param1 *QKeyEvent)) {
-	if !this.isSubclass {
+	ok := C.QPushButton_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPushButton_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPushButton_KeyPressEvent
@@ -375,10 +362,10 @@ func (this *QPushButton) callVirtualBase_FocusInEvent(param1 *QFocusEvent) {
 
 }
 func (this *QPushButton) OnFocusInEvent(slot func(super func(param1 *QFocusEvent), param1 *QFocusEvent)) {
-	if !this.isSubclass {
+	ok := C.QPushButton_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPushButton_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPushButton_FocusInEvent
@@ -401,10 +388,10 @@ func (this *QPushButton) callVirtualBase_FocusOutEvent(param1 *QFocusEvent) {
 
 }
 func (this *QPushButton) OnFocusOutEvent(slot func(super func(param1 *QFocusEvent), param1 *QFocusEvent)) {
-	if !this.isSubclass {
+	ok := C.QPushButton_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPushButton_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPushButton_FocusOutEvent
@@ -427,10 +414,10 @@ func (this *QPushButton) callVirtualBase_HitButton(pos *QPoint) bool {
 
 }
 func (this *QPushButton) OnHitButton(slot func(super func(pos *QPoint) bool, pos *QPoint) bool) {
-	if !this.isSubclass {
+	ok := C.QPushButton_override_virtual_HitButton(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPushButton_override_virtual_HitButton(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPushButton_HitButton
@@ -455,10 +442,10 @@ func (this *QPushButton) callVirtualBase_CheckStateSet() {
 
 }
 func (this *QPushButton) OnCheckStateSet(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QPushButton_override_virtual_CheckStateSet(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPushButton_override_virtual_CheckStateSet(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPushButton_CheckStateSet
@@ -478,10 +465,10 @@ func (this *QPushButton) callVirtualBase_NextCheckState() {
 
 }
 func (this *QPushButton) OnNextCheckState(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QPushButton_override_virtual_NextCheckState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPushButton_override_virtual_NextCheckState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPushButton_NextCheckState
@@ -501,10 +488,10 @@ func (this *QPushButton) callVirtualBase_KeyReleaseEvent(e *QKeyEvent) {
 
 }
 func (this *QPushButton) OnKeyReleaseEvent(slot func(super func(e *QKeyEvent), e *QKeyEvent)) {
-	if !this.isSubclass {
+	ok := C.QPushButton_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPushButton_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPushButton_KeyReleaseEvent
@@ -527,10 +514,10 @@ func (this *QPushButton) callVirtualBase_MousePressEvent(e *QMouseEvent) {
 
 }
 func (this *QPushButton) OnMousePressEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QPushButton_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPushButton_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPushButton_MousePressEvent
@@ -553,10 +540,10 @@ func (this *QPushButton) callVirtualBase_MouseReleaseEvent(e *QMouseEvent) {
 
 }
 func (this *QPushButton) OnMouseReleaseEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QPushButton_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPushButton_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPushButton_MouseReleaseEvent
@@ -579,10 +566,10 @@ func (this *QPushButton) callVirtualBase_MouseMoveEvent(e *QMouseEvent) {
 
 }
 func (this *QPushButton) OnMouseMoveEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QPushButton_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPushButton_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPushButton_MouseMoveEvent
@@ -605,10 +592,10 @@ func (this *QPushButton) callVirtualBase_ChangeEvent(e *QEvent) {
 
 }
 func (this *QPushButton) OnChangeEvent(slot func(super func(e *QEvent), e *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QPushButton_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPushButton_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPushButton_ChangeEvent
@@ -631,10 +618,10 @@ func (this *QPushButton) callVirtualBase_TimerEvent(e *QTimerEvent) {
 
 }
 func (this *QPushButton) OnTimerEvent(slot func(super func(e *QTimerEvent), e *QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QPushButton_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPushButton_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPushButton_TimerEvent
@@ -653,7 +640,7 @@ func miqt_exec_callback_QPushButton_TimerEvent(self *C.QPushButton, cb C.intptr_
 
 // Delete this object from C++ memory.
 func (this *QPushButton) Delete() {
-	C.QPushButton_Delete(this.h, C.bool(this.isSubclass))
+	C.QPushButton_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -68,12 +68,8 @@ QVariant* QTextLength_ToQVariant(const QTextLength* self) {
 	return new QVariant(self->operator QVariant());
 }
 
-void QTextLength_Delete(QTextLength* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextLength*>( self );
-	} else {
-		delete self;
-	}
+void QTextLength_Delete(QTextLength* self) {
+	delete self;
 }
 
 QTextFormat* QTextFormat_new() {
@@ -330,12 +326,8 @@ void QTextFormat_ClearForeground(QTextFormat* self) {
 	self->clearForeground();
 }
 
-void QTextFormat_Delete(QTextFormat* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextFormat*>( self );
-	} else {
-		delete self;
-	}
+void QTextFormat_Delete(QTextFormat* self) {
+	delete self;
 }
 
 QTextCharFormat* QTextCharFormat_new() {
@@ -694,12 +686,8 @@ void QTextCharFormat_SetFontStyleHint2(QTextCharFormat* self, int hint, int stra
 	self->setFontStyleHint(static_cast<QFont::StyleHint>(hint), static_cast<QFont::StyleStrategy>(strategy));
 }
 
-void QTextCharFormat_Delete(QTextCharFormat* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextCharFormat*>( self );
-	} else {
-		delete self;
-	}
+void QTextCharFormat_Delete(QTextCharFormat* self) {
+	delete self;
 }
 
 QTextBlockFormat* QTextBlockFormat_new() {
@@ -855,12 +843,8 @@ int QTextBlockFormat_Marker(const QTextBlockFormat* self) {
 	return static_cast<int>(_ret);
 }
 
-void QTextBlockFormat_Delete(QTextBlockFormat* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextBlockFormat*>( self );
-	} else {
-		delete self;
-	}
+void QTextBlockFormat_Delete(QTextBlockFormat* self) {
+	delete self;
 }
 
 QTextListFormat* QTextListFormat_new() {
@@ -928,12 +912,8 @@ struct miqt_string QTextListFormat_NumberSuffix(const QTextListFormat* self) {
 	return _ms;
 }
 
-void QTextListFormat_Delete(QTextListFormat* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextListFormat*>( self );
-	} else {
-		delete self;
-	}
+void QTextListFormat_Delete(QTextListFormat* self) {
+	delete self;
 }
 
 QTextImageFormat* QTextImageFormat_new() {
@@ -994,12 +974,8 @@ int QTextImageFormat_Quality(const QTextImageFormat* self) {
 	return self->quality();
 }
 
-void QTextImageFormat_Delete(QTextImageFormat* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextImageFormat*>( self );
-	} else {
-		delete self;
-	}
+void QTextImageFormat_Delete(QTextImageFormat* self) {
+	delete self;
 }
 
 QTextFrameFormat* QTextFrameFormat_new() {
@@ -1140,12 +1116,8 @@ int QTextFrameFormat_PageBreakPolicy(const QTextFrameFormat* self) {
 	return static_cast<int>(_ret);
 }
 
-void QTextFrameFormat_Delete(QTextFrameFormat* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextFrameFormat*>( self );
-	} else {
-		delete self;
-	}
+void QTextFrameFormat_Delete(QTextFrameFormat* self) {
+	delete self;
 }
 
 QTextTableFormat* QTextTableFormat_new() {
@@ -1238,12 +1210,8 @@ bool QTextTableFormat_BorderCollapse(const QTextTableFormat* self) {
 	return self->borderCollapse();
 }
 
-void QTextTableFormat_Delete(QTextTableFormat* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextTableFormat*>( self );
-	} else {
-		delete self;
-	}
+void QTextTableFormat_Delete(QTextTableFormat* self) {
+	delete self;
 }
 
 QTextTableCellFormat* QTextTableCellFormat_new() {
@@ -1414,11 +1382,7 @@ void QTextTableCellFormat_SetBorderBrush(QTextTableCellFormat* self, QBrush* bru
 	self->setBorderBrush(*brush);
 }
 
-void QTextTableCellFormat_Delete(QTextTableCellFormat* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextTableCellFormat*>( self );
-	} else {
-		delete self;
-	}
+void QTextTableCellFormat_Delete(QTextTableCellFormat* self) {
+	delete self;
 }
 

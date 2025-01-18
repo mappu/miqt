@@ -16,8 +16,7 @@ import (
 )
 
 type QRadioDataControl struct {
-	h          *C.QRadioDataControl
-	isSubclass bool
+	h *C.QRadioDataControl
 	*QMediaControl
 }
 
@@ -345,7 +344,7 @@ func QRadioDataControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QRadioDataControl) Delete() {
-	C.QRadioDataControl_Delete(this.h, C.bool(this.isSubclass))
+	C.QRadioDataControl_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

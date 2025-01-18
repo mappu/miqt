@@ -123,12 +123,8 @@ QVersionNumber* QVersionNumber_FromString2(QAnyStringView* stringVal, ptrdiff_t*
 	return new QVersionNumber(QVersionNumber::fromString(*stringVal, (qsizetype*)(suffixIndex)));
 }
 
-void QVersionNumber_Delete(QVersionNumber* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QVersionNumber*>( self );
-	} else {
-		delete self;
-	}
+void QVersionNumber_Delete(QVersionNumber* self) {
+	delete self;
 }
 
 QTypeRevision* QTypeRevision_new() {
@@ -165,11 +161,7 @@ bool QTypeRevision_IsValid(const QTypeRevision* self) {
 	return self->isValid();
 }
 
-void QTypeRevision_Delete(QTypeRevision* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTypeRevision*>( self );
-	} else {
-		delete self;
-	}
+void QTypeRevision_Delete(QTypeRevision* self) {
+	delete self;
 }
 

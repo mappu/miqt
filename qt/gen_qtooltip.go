@@ -14,8 +14,7 @@ import (
 )
 
 type QToolTip struct {
-	h          *C.QToolTip
-	isSubclass bool
+	h *C.QToolTip
 }
 
 func (this *QToolTip) cPointer() *C.QToolTip {
@@ -115,7 +114,7 @@ func QToolTip_ShowText32(pos *QPoint, text string, w *QWidget) {
 
 // Delete this object from C++ memory.
 func (this *QToolTip) Delete() {
-	C.QToolTip_Delete(this.h, C.bool(this.isSubclass))
+	C.QToolTip_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -42,7 +42,7 @@ int QAudioFormat_BytesPerFrame(const QAudioFormat* self);
 int QAudioFormat_BytesPerSample(const QAudioFormat* self);
 float QAudioFormat_NormalizedSampleValue(const QAudioFormat* self, const void* sample);
 uint32_t QAudioFormat_DefaultChannelConfigForChannelCount(int channelCount);
-void QAudioFormat_Delete(QAudioFormat* self, bool isSubclass);
+void QAudioFormat_Delete(QAudioFormat* self);
 
 #ifdef __cplusplus
 } /* extern C */

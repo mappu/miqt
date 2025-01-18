@@ -40,8 +40,7 @@ const (
 )
 
 type QPropertyBindingSourceLocation struct {
-	h          *C.QPropertyBindingSourceLocation
-	isSubclass bool
+	h *C.QPropertyBindingSourceLocation
 }
 
 func (this *QPropertyBindingSourceLocation) cPointer() *C.QPropertyBindingSourceLocation {
@@ -75,22 +74,18 @@ func UnsafeNewQPropertyBindingSourceLocation(h unsafe.Pointer) *QPropertyBinding
 // NewQPropertyBindingSourceLocation constructs a new QPropertyBindingSourceLocation object.
 func NewQPropertyBindingSourceLocation() *QPropertyBindingSourceLocation {
 
-	ret := newQPropertyBindingSourceLocation(C.QPropertyBindingSourceLocation_new())
-	ret.isSubclass = true
-	return ret
+	return newQPropertyBindingSourceLocation(C.QPropertyBindingSourceLocation_new())
 }
 
 // NewQPropertyBindingSourceLocation2 constructs a new QPropertyBindingSourceLocation object.
 func NewQPropertyBindingSourceLocation2(param1 *QPropertyBindingSourceLocation) *QPropertyBindingSourceLocation {
 
-	ret := newQPropertyBindingSourceLocation(C.QPropertyBindingSourceLocation_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPropertyBindingSourceLocation(C.QPropertyBindingSourceLocation_new2(param1.cPointer()))
 }
 
 // Delete this object from C++ memory.
 func (this *QPropertyBindingSourceLocation) Delete() {
-	C.QPropertyBindingSourceLocation_Delete(this.h, C.bool(this.isSubclass))
+	C.QPropertyBindingSourceLocation_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -103,8 +98,7 @@ func (this *QPropertyBindingSourceLocation) GoGC() {
 }
 
 type QPropertyBindingError struct {
-	h          *C.QPropertyBindingError
-	isSubclass bool
+	h *C.QPropertyBindingError
 }
 
 func (this *QPropertyBindingError) cPointer() *C.QPropertyBindingError {
@@ -138,25 +132,19 @@ func UnsafeNewQPropertyBindingError(h unsafe.Pointer) *QPropertyBindingError {
 // NewQPropertyBindingError constructs a new QPropertyBindingError object.
 func NewQPropertyBindingError() *QPropertyBindingError {
 
-	ret := newQPropertyBindingError(C.QPropertyBindingError_new())
-	ret.isSubclass = true
-	return ret
+	return newQPropertyBindingError(C.QPropertyBindingError_new())
 }
 
 // NewQPropertyBindingError2 constructs a new QPropertyBindingError object.
 func NewQPropertyBindingError2(typeVal QPropertyBindingError__Type) *QPropertyBindingError {
 
-	ret := newQPropertyBindingError(C.QPropertyBindingError_new2((C.int)(typeVal)))
-	ret.isSubclass = true
-	return ret
+	return newQPropertyBindingError(C.QPropertyBindingError_new2((C.int)(typeVal)))
 }
 
 // NewQPropertyBindingError3 constructs a new QPropertyBindingError object.
 func NewQPropertyBindingError3(other *QPropertyBindingError) *QPropertyBindingError {
 
-	ret := newQPropertyBindingError(C.QPropertyBindingError_new3(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPropertyBindingError(C.QPropertyBindingError_new3(other.cPointer()))
 }
 
 // NewQPropertyBindingError4 constructs a new QPropertyBindingError object.
@@ -166,9 +154,7 @@ func NewQPropertyBindingError4(typeVal QPropertyBindingError__Type, description 
 	description_ms.len = C.size_t(len(description))
 	defer C.free(unsafe.Pointer(description_ms.data))
 
-	ret := newQPropertyBindingError(C.QPropertyBindingError_new4((C.int)(typeVal), description_ms))
-	ret.isSubclass = true
-	return ret
+	return newQPropertyBindingError(C.QPropertyBindingError_new4((C.int)(typeVal), description_ms))
 }
 
 func (this *QPropertyBindingError) OperatorAssign(other *QPropertyBindingError) {
@@ -192,7 +178,7 @@ func (this *QPropertyBindingError) Description() string {
 
 // Delete this object from C++ memory.
 func (this *QPropertyBindingError) Delete() {
-	C.QPropertyBindingError_Delete(this.h, C.bool(this.isSubclass))
+	C.QPropertyBindingError_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -205,8 +191,7 @@ func (this *QPropertyBindingError) GoGC() {
 }
 
 type QUntypedPropertyBinding struct {
-	h          *C.QUntypedPropertyBinding
-	isSubclass bool
+	h *C.QUntypedPropertyBinding
 }
 
 func (this *QUntypedPropertyBinding) cPointer() *C.QUntypedPropertyBinding {
@@ -240,17 +225,13 @@ func UnsafeNewQUntypedPropertyBinding(h unsafe.Pointer) *QUntypedPropertyBinding
 // NewQUntypedPropertyBinding constructs a new QUntypedPropertyBinding object.
 func NewQUntypedPropertyBinding() *QUntypedPropertyBinding {
 
-	ret := newQUntypedPropertyBinding(C.QUntypedPropertyBinding_new())
-	ret.isSubclass = true
-	return ret
+	return newQUntypedPropertyBinding(C.QUntypedPropertyBinding_new())
 }
 
 // NewQUntypedPropertyBinding2 constructs a new QUntypedPropertyBinding object.
 func NewQUntypedPropertyBinding2(other *QUntypedPropertyBinding) *QUntypedPropertyBinding {
 
-	ret := newQUntypedPropertyBinding(C.QUntypedPropertyBinding_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQUntypedPropertyBinding(C.QUntypedPropertyBinding_new2(other.cPointer()))
 }
 
 func (this *QUntypedPropertyBinding) OperatorAssign(other *QUntypedPropertyBinding) {
@@ -275,7 +256,7 @@ func (this *QUntypedPropertyBinding) ValueMetaType() *QMetaType {
 
 // Delete this object from C++ memory.
 func (this *QUntypedPropertyBinding) Delete() {
-	C.QUntypedPropertyBinding_Delete(this.h, C.bool(this.isSubclass))
+	C.QUntypedPropertyBinding_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -288,8 +269,7 @@ func (this *QUntypedPropertyBinding) GoGC() {
 }
 
 type QPropertyObserverBase struct {
-	h          *C.QPropertyObserverBase
-	isSubclass bool
+	h *C.QPropertyObserverBase
 }
 
 func (this *QPropertyObserverBase) cPointer() *C.QPropertyObserverBase {
@@ -323,22 +303,18 @@ func UnsafeNewQPropertyObserverBase(h unsafe.Pointer) *QPropertyObserverBase {
 // NewQPropertyObserverBase constructs a new QPropertyObserverBase object.
 func NewQPropertyObserverBase() *QPropertyObserverBase {
 
-	ret := newQPropertyObserverBase(C.QPropertyObserverBase_new())
-	ret.isSubclass = true
-	return ret
+	return newQPropertyObserverBase(C.QPropertyObserverBase_new())
 }
 
 // NewQPropertyObserverBase2 constructs a new QPropertyObserverBase object.
 func NewQPropertyObserverBase2(param1 *QPropertyObserverBase) *QPropertyObserverBase {
 
-	ret := newQPropertyObserverBase(C.QPropertyObserverBase_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPropertyObserverBase(C.QPropertyObserverBase_new2(param1.cPointer()))
 }
 
 // Delete this object from C++ memory.
 func (this *QPropertyObserverBase) Delete() {
-	C.QPropertyObserverBase_Delete(this.h, C.bool(this.isSubclass))
+	C.QPropertyObserverBase_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -351,8 +327,7 @@ func (this *QPropertyObserverBase) GoGC() {
 }
 
 type QPropertyObserver struct {
-	h          *C.QPropertyObserver
-	isSubclass bool
+	h *C.QPropertyObserver
 	*QPropertyObserverBase
 }
 
@@ -390,14 +365,12 @@ func UnsafeNewQPropertyObserver(h unsafe.Pointer) *QPropertyObserver {
 // NewQPropertyObserver constructs a new QPropertyObserver object.
 func NewQPropertyObserver() *QPropertyObserver {
 
-	ret := newQPropertyObserver(C.QPropertyObserver_new())
-	ret.isSubclass = true
-	return ret
+	return newQPropertyObserver(C.QPropertyObserver_new())
 }
 
 // Delete this object from C++ memory.
 func (this *QPropertyObserver) Delete() {
-	C.QPropertyObserver_Delete(this.h, C.bool(this.isSubclass))
+	C.QPropertyObserver_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -410,8 +383,7 @@ func (this *QPropertyObserver) GoGC() {
 }
 
 type QPropertyNotifier struct {
-	h          *C.QPropertyNotifier
-	isSubclass bool
+	h *C.QPropertyNotifier
 	*QPropertyObserver
 }
 
@@ -449,14 +421,12 @@ func UnsafeNewQPropertyNotifier(h unsafe.Pointer) *QPropertyNotifier {
 // NewQPropertyNotifier constructs a new QPropertyNotifier object.
 func NewQPropertyNotifier() *QPropertyNotifier {
 
-	ret := newQPropertyNotifier(C.QPropertyNotifier_new())
-	ret.isSubclass = true
-	return ret
+	return newQPropertyNotifier(C.QPropertyNotifier_new())
 }
 
 // Delete this object from C++ memory.
 func (this *QPropertyNotifier) Delete() {
-	C.QPropertyNotifier_Delete(this.h, C.bool(this.isSubclass))
+	C.QPropertyNotifier_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -469,8 +439,7 @@ func (this *QPropertyNotifier) GoGC() {
 }
 
 type QUntypedBindable struct {
-	h          *C.QUntypedBindable
-	isSubclass bool
+	h *C.QUntypedBindable
 }
 
 func (this *QUntypedBindable) cPointer() *C.QUntypedBindable {
@@ -504,17 +473,13 @@ func UnsafeNewQUntypedBindable(h unsafe.Pointer) *QUntypedBindable {
 // NewQUntypedBindable constructs a new QUntypedBindable object.
 func NewQUntypedBindable() *QUntypedBindable {
 
-	ret := newQUntypedBindable(C.QUntypedBindable_new())
-	ret.isSubclass = true
-	return ret
+	return newQUntypedBindable(C.QUntypedBindable_new())
 }
 
 // NewQUntypedBindable2 constructs a new QUntypedBindable object.
 func NewQUntypedBindable2(param1 *QUntypedBindable) *QUntypedBindable {
 
-	ret := newQUntypedBindable(C.QUntypedBindable_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQUntypedBindable(C.QUntypedBindable_new2(param1.cPointer()))
 }
 
 func (this *QUntypedBindable) IsValid() bool {
@@ -573,7 +538,7 @@ func (this *QUntypedBindable) MakeBinding1(location *QPropertyBindingSourceLocat
 
 // Delete this object from C++ memory.
 func (this *QUntypedBindable) Delete() {
-	C.QUntypedBindable_Delete(this.h, C.bool(this.isSubclass))
+	C.QUntypedBindable_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

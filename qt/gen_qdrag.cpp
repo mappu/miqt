@@ -31,12 +31,12 @@ void miqt_exec_callback_QDrag_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQDrag : public virtual QDrag {
+class MiqtVirtualQDrag final : public QDrag {
 public:
 
 	MiqtVirtualQDrag(QObject* dragSource): QDrag(dragSource) {};
 
-	virtual ~MiqtVirtualQDrag() = default;
+	virtual ~MiqtVirtualQDrag() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -395,67 +395,105 @@ int QDrag_Exec1(QDrag* self, int supportedActions) {
 	return static_cast<int>(_ret);
 }
 
-void QDrag_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDrag*>( (QDrag*)(self) )->handle__Event = slot;
+bool QDrag_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQDrag* self_cast = dynamic_cast<MiqtVirtualQDrag*>( (QDrag*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QDrag_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQDrag*)(self) )->virtualbase_Event(event);
 }
 
-void QDrag_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDrag*>( (QDrag*)(self) )->handle__EventFilter = slot;
+bool QDrag_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQDrag* self_cast = dynamic_cast<MiqtVirtualQDrag*>( (QDrag*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QDrag_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQDrag*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QDrag_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDrag*>( (QDrag*)(self) )->handle__TimerEvent = slot;
+bool QDrag_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDrag* self_cast = dynamic_cast<MiqtVirtualQDrag*>( (QDrag*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QDrag_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQDrag*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QDrag_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDrag*>( (QDrag*)(self) )->handle__ChildEvent = slot;
+bool QDrag_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDrag* self_cast = dynamic_cast<MiqtVirtualQDrag*>( (QDrag*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QDrag_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQDrag*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QDrag_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDrag*>( (QDrag*)(self) )->handle__CustomEvent = slot;
+bool QDrag_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDrag* self_cast = dynamic_cast<MiqtVirtualQDrag*>( (QDrag*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QDrag_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQDrag*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QDrag_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDrag*>( (QDrag*)(self) )->handle__ConnectNotify = slot;
+bool QDrag_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQDrag* self_cast = dynamic_cast<MiqtVirtualQDrag*>( (QDrag*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QDrag_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDrag*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QDrag_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDrag*>( (QDrag*)(self) )->handle__DisconnectNotify = slot;
+bool QDrag_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQDrag* self_cast = dynamic_cast<MiqtVirtualQDrag*>( (QDrag*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QDrag_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDrag*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QDrag_Delete(QDrag* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQDrag*>( self );
-	} else {
-		delete self;
-	}
+void QDrag_Delete(QDrag* self) {
+	delete self;
 }
 

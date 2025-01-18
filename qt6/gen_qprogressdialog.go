@@ -15,8 +15,7 @@ import (
 )
 
 type QProgressDialog struct {
-	h          *C.QProgressDialog
-	isSubclass bool
+	h *C.QProgressDialog
 	*QDialog
 }
 
@@ -54,17 +53,13 @@ func UnsafeNewQProgressDialog(h unsafe.Pointer) *QProgressDialog {
 // NewQProgressDialog constructs a new QProgressDialog object.
 func NewQProgressDialog(parent *QWidget) *QProgressDialog {
 
-	ret := newQProgressDialog(C.QProgressDialog_new(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQProgressDialog(C.QProgressDialog_new(parent.cPointer()))
 }
 
 // NewQProgressDialog2 constructs a new QProgressDialog object.
 func NewQProgressDialog2() *QProgressDialog {
 
-	ret := newQProgressDialog(C.QProgressDialog_new2())
-	ret.isSubclass = true
-	return ret
+	return newQProgressDialog(C.QProgressDialog_new2())
 }
 
 // NewQProgressDialog3 constructs a new QProgressDialog object.
@@ -78,17 +73,13 @@ func NewQProgressDialog3(labelText string, cancelButtonText string, minimum int,
 	cancelButtonText_ms.len = C.size_t(len(cancelButtonText))
 	defer C.free(unsafe.Pointer(cancelButtonText_ms.data))
 
-	ret := newQProgressDialog(C.QProgressDialog_new3(labelText_ms, cancelButtonText_ms, (C.int)(minimum), (C.int)(maximum)))
-	ret.isSubclass = true
-	return ret
+	return newQProgressDialog(C.QProgressDialog_new3(labelText_ms, cancelButtonText_ms, (C.int)(minimum), (C.int)(maximum)))
 }
 
 // NewQProgressDialog4 constructs a new QProgressDialog object.
 func NewQProgressDialog4(parent *QWidget, flags WindowType) *QProgressDialog {
 
-	ret := newQProgressDialog(C.QProgressDialog_new4(parent.cPointer(), (C.int)(flags)))
-	ret.isSubclass = true
-	return ret
+	return newQProgressDialog(C.QProgressDialog_new4(parent.cPointer(), (C.int)(flags)))
 }
 
 // NewQProgressDialog5 constructs a new QProgressDialog object.
@@ -102,9 +93,7 @@ func NewQProgressDialog5(labelText string, cancelButtonText string, minimum int,
 	cancelButtonText_ms.len = C.size_t(len(cancelButtonText))
 	defer C.free(unsafe.Pointer(cancelButtonText_ms.data))
 
-	ret := newQProgressDialog(C.QProgressDialog_new5(labelText_ms, cancelButtonText_ms, (C.int)(minimum), (C.int)(maximum), parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQProgressDialog(C.QProgressDialog_new5(labelText_ms, cancelButtonText_ms, (C.int)(minimum), (C.int)(maximum), parent.cPointer()))
 }
 
 // NewQProgressDialog6 constructs a new QProgressDialog object.
@@ -118,9 +107,7 @@ func NewQProgressDialog6(labelText string, cancelButtonText string, minimum int,
 	cancelButtonText_ms.len = C.size_t(len(cancelButtonText))
 	defer C.free(unsafe.Pointer(cancelButtonText_ms.data))
 
-	ret := newQProgressDialog(C.QProgressDialog_new6(labelText_ms, cancelButtonText_ms, (C.int)(minimum), (C.int)(maximum), parent.cPointer(), (C.int)(flags)))
-	ret.isSubclass = true
-	return ret
+	return newQProgressDialog(C.QProgressDialog_new6(labelText_ms, cancelButtonText_ms, (C.int)(minimum), (C.int)(maximum), parent.cPointer(), (C.int)(flags)))
 }
 
 func (this *QProgressDialog) MetaObject() *QMetaObject {
@@ -294,10 +281,10 @@ func (this *QProgressDialog) callVirtualBase_SizeHint() *QSize {
 
 }
 func (this *QProgressDialog) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	if !this.isSubclass {
+	ok := C.QProgressDialog_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QProgressDialog_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QProgressDialog_SizeHint
@@ -319,10 +306,10 @@ func (this *QProgressDialog) callVirtualBase_ResizeEvent(event *QResizeEvent) {
 
 }
 func (this *QProgressDialog) OnResizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
-	if !this.isSubclass {
+	ok := C.QProgressDialog_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QProgressDialog_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QProgressDialog_ResizeEvent
@@ -345,10 +332,10 @@ func (this *QProgressDialog) callVirtualBase_CloseEvent(event *QCloseEvent) {
 
 }
 func (this *QProgressDialog) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
-	if !this.isSubclass {
+	ok := C.QProgressDialog_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QProgressDialog_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QProgressDialog_CloseEvent
@@ -371,10 +358,10 @@ func (this *QProgressDialog) callVirtualBase_ChangeEvent(event *QEvent) {
 
 }
 func (this *QProgressDialog) OnChangeEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QProgressDialog_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QProgressDialog_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QProgressDialog_ChangeEvent
@@ -397,10 +384,10 @@ func (this *QProgressDialog) callVirtualBase_ShowEvent(event *QShowEvent) {
 
 }
 func (this *QProgressDialog) OnShowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
-	if !this.isSubclass {
+	ok := C.QProgressDialog_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QProgressDialog_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QProgressDialog_ShowEvent
@@ -423,10 +410,10 @@ func (this *QProgressDialog) callVirtualBase_SetVisible(visible bool) {
 
 }
 func (this *QProgressDialog) OnSetVisible(slot func(super func(visible bool), visible bool)) {
-	if !this.isSubclass {
+	ok := C.QProgressDialog_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QProgressDialog_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QProgressDialog_SetVisible
@@ -451,10 +438,10 @@ func (this *QProgressDialog) callVirtualBase_MinimumSizeHint() *QSize {
 
 }
 func (this *QProgressDialog) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
-	if !this.isSubclass {
+	ok := C.QProgressDialog_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QProgressDialog_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QProgressDialog_MinimumSizeHint
@@ -476,10 +463,10 @@ func (this *QProgressDialog) callVirtualBase_Open() {
 
 }
 func (this *QProgressDialog) OnOpen(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QProgressDialog_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QProgressDialog_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QProgressDialog_Open
@@ -499,10 +486,10 @@ func (this *QProgressDialog) callVirtualBase_Exec() int {
 
 }
 func (this *QProgressDialog) OnExec(slot func(super func() int) int) {
-	if !this.isSubclass {
+	ok := C.QProgressDialog_override_virtual_Exec(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QProgressDialog_override_virtual_Exec(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QProgressDialog_Exec
@@ -524,10 +511,10 @@ func (this *QProgressDialog) callVirtualBase_Done(param1 int) {
 
 }
 func (this *QProgressDialog) OnDone(slot func(super func(param1 int), param1 int)) {
-	if !this.isSubclass {
+	ok := C.QProgressDialog_override_virtual_Done(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QProgressDialog_override_virtual_Done(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QProgressDialog_Done
@@ -550,10 +537,10 @@ func (this *QProgressDialog) callVirtualBase_Accept() {
 
 }
 func (this *QProgressDialog) OnAccept(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QProgressDialog_override_virtual_Accept(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QProgressDialog_override_virtual_Accept(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QProgressDialog_Accept
@@ -573,10 +560,10 @@ func (this *QProgressDialog) callVirtualBase_Reject() {
 
 }
 func (this *QProgressDialog) OnReject(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QProgressDialog_override_virtual_Reject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QProgressDialog_override_virtual_Reject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QProgressDialog_Reject
@@ -596,10 +583,10 @@ func (this *QProgressDialog) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
 
 }
 func (this *QProgressDialog) OnKeyPressEvent(slot func(super func(param1 *QKeyEvent), param1 *QKeyEvent)) {
-	if !this.isSubclass {
+	ok := C.QProgressDialog_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QProgressDialog_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QProgressDialog_KeyPressEvent
@@ -622,10 +609,10 @@ func (this *QProgressDialog) callVirtualBase_ContextMenuEvent(param1 *QContextMe
 
 }
 func (this *QProgressDialog) OnContextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
-	if !this.isSubclass {
+	ok := C.QProgressDialog_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QProgressDialog_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QProgressDialog_ContextMenuEvent
@@ -648,10 +635,10 @@ func (this *QProgressDialog) callVirtualBase_EventFilter(param1 *QObject, param2
 
 }
 func (this *QProgressDialog) OnEventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QProgressDialog_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QProgressDialog_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QProgressDialog_EventFilter
@@ -674,7 +661,7 @@ func miqt_exec_callback_QProgressDialog_EventFilter(self *C.QProgressDialog, cb 
 
 // Delete this object from C++ memory.
 func (this *QProgressDialog) Delete() {
-	C.QProgressDialog_Delete(this.h, C.bool(this.isSubclass))
+	C.QProgressDialog_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

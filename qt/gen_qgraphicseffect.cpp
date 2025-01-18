@@ -60,13 +60,13 @@ void miqt_exec_callback_QGraphicsOpacityEffect_SourceChanged(void*, intptr_t, in
 } /* extern C */
 #endif
 
-class MiqtVirtualQGraphicsEffect : public virtual QGraphicsEffect {
+class MiqtVirtualQGraphicsEffect final : public QGraphicsEffect {
 public:
 
 	MiqtVirtualQGraphicsEffect(): QGraphicsEffect() {};
 	MiqtVirtualQGraphicsEffect(QObject* parent): QGraphicsEffect(parent) {};
 
-	virtual ~MiqtVirtualQGraphicsEffect() = default;
+	virtual ~MiqtVirtualQGraphicsEffect() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__BoundingRectFor = 0;
@@ -424,97 +424,153 @@ struct miqt_string QGraphicsEffect_TrUtf83(const char* s, const char* c, int n) 
 	return _ms;
 }
 
-void QGraphicsEffect_override_virtual_BoundingRectFor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) )->handle__BoundingRectFor = slot;
+bool QGraphicsEffect_override_virtual_BoundingRectFor(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BoundingRectFor = slot;
+	return true;
 }
 
 QRectF* QGraphicsEffect_virtualbase_BoundingRectFor(const void* self, QRectF* sourceRect) {
 	return ( (const MiqtVirtualQGraphicsEffect*)(self) )->virtualbase_BoundingRectFor(sourceRect);
 }
 
-void QGraphicsEffect_override_virtual_Draw(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) )->handle__Draw = slot;
+bool QGraphicsEffect_override_virtual_Draw(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Draw = slot;
+	return true;
 }
 
-void QGraphicsEffect_override_virtual_SourceChanged(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) )->handle__SourceChanged = slot;
+bool QGraphicsEffect_override_virtual_SourceChanged(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SourceChanged = slot;
+	return true;
 }
 
 void QGraphicsEffect_virtualbase_SourceChanged(void* self, int flags) {
 	( (MiqtVirtualQGraphicsEffect*)(self) )->virtualbase_SourceChanged(flags);
 }
 
-void QGraphicsEffect_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) )->handle__Event = slot;
+bool QGraphicsEffect_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QGraphicsEffect_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQGraphicsEffect*)(self) )->virtualbase_Event(event);
 }
 
-void QGraphicsEffect_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) )->handle__EventFilter = slot;
+bool QGraphicsEffect_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QGraphicsEffect_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQGraphicsEffect*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QGraphicsEffect_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) )->handle__TimerEvent = slot;
+bool QGraphicsEffect_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QGraphicsEffect_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQGraphicsEffect*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QGraphicsEffect_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) )->handle__ChildEvent = slot;
+bool QGraphicsEffect_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QGraphicsEffect_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQGraphicsEffect*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QGraphicsEffect_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) )->handle__CustomEvent = slot;
+bool QGraphicsEffect_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QGraphicsEffect_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQGraphicsEffect*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QGraphicsEffect_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) )->handle__ConnectNotify = slot;
+bool QGraphicsEffect_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QGraphicsEffect_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQGraphicsEffect*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QGraphicsEffect_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) )->handle__DisconnectNotify = slot;
+bool QGraphicsEffect_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsEffect*>( (QGraphicsEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QGraphicsEffect_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQGraphicsEffect*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QGraphicsEffect_Delete(QGraphicsEffect* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsEffect*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsEffect_Delete(QGraphicsEffect* self) {
+	delete self;
 }
 
-class MiqtVirtualQGraphicsColorizeEffect : public virtual QGraphicsColorizeEffect {
+class MiqtVirtualQGraphicsColorizeEffect final : public QGraphicsColorizeEffect {
 public:
 
 	MiqtVirtualQGraphicsColorizeEffect(): QGraphicsColorizeEffect() {};
 	MiqtVirtualQGraphicsColorizeEffect(QObject* parent): QGraphicsColorizeEffect(parent) {};
 
-	virtual ~MiqtVirtualQGraphicsColorizeEffect() = default;
+	virtual ~MiqtVirtualQGraphicsColorizeEffect() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Draw = 0;
@@ -720,45 +776,59 @@ struct miqt_string QGraphicsColorizeEffect_TrUtf83(const char* s, const char* c,
 	return _ms;
 }
 
-void QGraphicsColorizeEffect_override_virtual_Draw(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) )->handle__Draw = slot;
+bool QGraphicsColorizeEffect_override_virtual_Draw(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsColorizeEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Draw = slot;
+	return true;
 }
 
 void QGraphicsColorizeEffect_virtualbase_Draw(void* self, QPainter* painter) {
 	( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->virtualbase_Draw(painter);
 }
 
-void QGraphicsColorizeEffect_override_virtual_BoundingRectFor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) )->handle__BoundingRectFor = slot;
+bool QGraphicsColorizeEffect_override_virtual_BoundingRectFor(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsColorizeEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BoundingRectFor = slot;
+	return true;
 }
 
 QRectF* QGraphicsColorizeEffect_virtualbase_BoundingRectFor(const void* self, QRectF* sourceRect) {
 	return ( (const MiqtVirtualQGraphicsColorizeEffect*)(self) )->virtualbase_BoundingRectFor(sourceRect);
 }
 
-void QGraphicsColorizeEffect_override_virtual_SourceChanged(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) )->handle__SourceChanged = slot;
+bool QGraphicsColorizeEffect_override_virtual_SourceChanged(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsColorizeEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SourceChanged = slot;
+	return true;
 }
 
 void QGraphicsColorizeEffect_virtualbase_SourceChanged(void* self, int flags) {
 	( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->virtualbase_SourceChanged(flags);
 }
 
-void QGraphicsColorizeEffect_Delete(QGraphicsColorizeEffect* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsColorizeEffect*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsColorizeEffect_Delete(QGraphicsColorizeEffect* self) {
+	delete self;
 }
 
-class MiqtVirtualQGraphicsBlurEffect : public virtual QGraphicsBlurEffect {
+class MiqtVirtualQGraphicsBlurEffect final : public QGraphicsBlurEffect {
 public:
 
 	MiqtVirtualQGraphicsBlurEffect(): QGraphicsBlurEffect() {};
 	MiqtVirtualQGraphicsBlurEffect(QObject* parent): QGraphicsBlurEffect(parent) {};
 
-	virtual ~MiqtVirtualQGraphicsBlurEffect() = default;
+	virtual ~MiqtVirtualQGraphicsBlurEffect() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__BoundingRectFor = 0;
@@ -968,45 +1038,59 @@ struct miqt_string QGraphicsBlurEffect_TrUtf83(const char* s, const char* c, int
 	return _ms;
 }
 
-void QGraphicsBlurEffect_override_virtual_BoundingRectFor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) )->handle__BoundingRectFor = slot;
+bool QGraphicsBlurEffect_override_virtual_BoundingRectFor(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsBlurEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BoundingRectFor = slot;
+	return true;
 }
 
 QRectF* QGraphicsBlurEffect_virtualbase_BoundingRectFor(const void* self, QRectF* rect) {
 	return ( (const MiqtVirtualQGraphicsBlurEffect*)(self) )->virtualbase_BoundingRectFor(rect);
 }
 
-void QGraphicsBlurEffect_override_virtual_Draw(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) )->handle__Draw = slot;
+bool QGraphicsBlurEffect_override_virtual_Draw(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsBlurEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Draw = slot;
+	return true;
 }
 
 void QGraphicsBlurEffect_virtualbase_Draw(void* self, QPainter* painter) {
 	( (MiqtVirtualQGraphicsBlurEffect*)(self) )->virtualbase_Draw(painter);
 }
 
-void QGraphicsBlurEffect_override_virtual_SourceChanged(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) )->handle__SourceChanged = slot;
+bool QGraphicsBlurEffect_override_virtual_SourceChanged(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsBlurEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SourceChanged = slot;
+	return true;
 }
 
 void QGraphicsBlurEffect_virtualbase_SourceChanged(void* self, int flags) {
 	( (MiqtVirtualQGraphicsBlurEffect*)(self) )->virtualbase_SourceChanged(flags);
 }
 
-void QGraphicsBlurEffect_Delete(QGraphicsBlurEffect* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsBlurEffect*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsBlurEffect_Delete(QGraphicsBlurEffect* self) {
+	delete self;
 }
 
-class MiqtVirtualQGraphicsDropShadowEffect : public virtual QGraphicsDropShadowEffect {
+class MiqtVirtualQGraphicsDropShadowEffect final : public QGraphicsDropShadowEffect {
 public:
 
 	MiqtVirtualQGraphicsDropShadowEffect(): QGraphicsDropShadowEffect() {};
 	MiqtVirtualQGraphicsDropShadowEffect(QObject* parent): QGraphicsDropShadowEffect(parent) {};
 
-	virtual ~MiqtVirtualQGraphicsDropShadowEffect() = default;
+	virtual ~MiqtVirtualQGraphicsDropShadowEffect() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__BoundingRectFor = 0;
@@ -1263,45 +1347,59 @@ struct miqt_string QGraphicsDropShadowEffect_TrUtf83(const char* s, const char* 
 	return _ms;
 }
 
-void QGraphicsDropShadowEffect_override_virtual_BoundingRectFor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) )->handle__BoundingRectFor = slot;
+bool QGraphicsDropShadowEffect_override_virtual_BoundingRectFor(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsDropShadowEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BoundingRectFor = slot;
+	return true;
 }
 
 QRectF* QGraphicsDropShadowEffect_virtualbase_BoundingRectFor(const void* self, QRectF* rect) {
 	return ( (const MiqtVirtualQGraphicsDropShadowEffect*)(self) )->virtualbase_BoundingRectFor(rect);
 }
 
-void QGraphicsDropShadowEffect_override_virtual_Draw(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) )->handle__Draw = slot;
+bool QGraphicsDropShadowEffect_override_virtual_Draw(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsDropShadowEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Draw = slot;
+	return true;
 }
 
 void QGraphicsDropShadowEffect_virtualbase_Draw(void* self, QPainter* painter) {
 	( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->virtualbase_Draw(painter);
 }
 
-void QGraphicsDropShadowEffect_override_virtual_SourceChanged(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) )->handle__SourceChanged = slot;
+bool QGraphicsDropShadowEffect_override_virtual_SourceChanged(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsDropShadowEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SourceChanged = slot;
+	return true;
 }
 
 void QGraphicsDropShadowEffect_virtualbase_SourceChanged(void* self, int flags) {
 	( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->virtualbase_SourceChanged(flags);
 }
 
-void QGraphicsDropShadowEffect_Delete(QGraphicsDropShadowEffect* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsDropShadowEffect*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsDropShadowEffect_Delete(QGraphicsDropShadowEffect* self) {
+	delete self;
 }
 
-class MiqtVirtualQGraphicsOpacityEffect : public virtual QGraphicsOpacityEffect {
+class MiqtVirtualQGraphicsOpacityEffect final : public QGraphicsOpacityEffect {
 public:
 
 	MiqtVirtualQGraphicsOpacityEffect(): QGraphicsOpacityEffect() {};
 	MiqtVirtualQGraphicsOpacityEffect(QObject* parent): QGraphicsOpacityEffect(parent) {};
 
-	virtual ~MiqtVirtualQGraphicsOpacityEffect() = default;
+	virtual ~MiqtVirtualQGraphicsOpacityEffect() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Draw = 0;
@@ -1507,35 +1605,49 @@ struct miqt_string QGraphicsOpacityEffect_TrUtf83(const char* s, const char* c, 
 	return _ms;
 }
 
-void QGraphicsOpacityEffect_override_virtual_Draw(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) )->handle__Draw = slot;
+bool QGraphicsOpacityEffect_override_virtual_Draw(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsOpacityEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Draw = slot;
+	return true;
 }
 
 void QGraphicsOpacityEffect_virtualbase_Draw(void* self, QPainter* painter) {
 	( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->virtualbase_Draw(painter);
 }
 
-void QGraphicsOpacityEffect_override_virtual_BoundingRectFor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) )->handle__BoundingRectFor = slot;
+bool QGraphicsOpacityEffect_override_virtual_BoundingRectFor(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsOpacityEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BoundingRectFor = slot;
+	return true;
 }
 
 QRectF* QGraphicsOpacityEffect_virtualbase_BoundingRectFor(const void* self, QRectF* sourceRect) {
 	return ( (const MiqtVirtualQGraphicsOpacityEffect*)(self) )->virtualbase_BoundingRectFor(sourceRect);
 }
 
-void QGraphicsOpacityEffect_override_virtual_SourceChanged(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) )->handle__SourceChanged = slot;
+bool QGraphicsOpacityEffect_override_virtual_SourceChanged(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsOpacityEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SourceChanged = slot;
+	return true;
 }
 
 void QGraphicsOpacityEffect_virtualbase_SourceChanged(void* self, int flags) {
 	( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->virtualbase_SourceChanged(flags);
 }
 
-void QGraphicsOpacityEffect_Delete(QGraphicsOpacityEffect* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsOpacityEffect*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsOpacityEffect_Delete(QGraphicsOpacityEffect* self) {
+	delete self;
 }
 

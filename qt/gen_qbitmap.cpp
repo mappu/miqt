@@ -24,7 +24,7 @@ int miqt_exec_callback_QBitmap_Metric(void*, intptr_t, int);
 } /* extern C */
 #endif
 
-class MiqtVirtualQBitmap : public virtual QBitmap {
+class MiqtVirtualQBitmap final : public QBitmap {
 public:
 
 	MiqtVirtualQBitmap(): QBitmap() {};
@@ -35,7 +35,7 @@ public:
 	MiqtVirtualQBitmap(const QBitmap& other): QBitmap(other) {};
 	MiqtVirtualQBitmap(const QString& fileName, const char* format): QBitmap(fileName, format) {};
 
-	virtual ~MiqtVirtualQBitmap() = default;
+	virtual ~MiqtVirtualQBitmap() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__DevType = 0;
@@ -185,35 +185,49 @@ QBitmap* QBitmap_FromData3(QSize* size, const unsigned char* bits, int monoForma
 	return new QBitmap(QBitmap::fromData(*size, static_cast<const uchar*>(bits), static_cast<QImage::Format>(monoFormat)));
 }
 
-void QBitmap_override_virtual_DevType(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQBitmap*>( (QBitmap*)(self) )->handle__DevType = slot;
+bool QBitmap_override_virtual_DevType(void* self, intptr_t slot) {
+	MiqtVirtualQBitmap* self_cast = dynamic_cast<MiqtVirtualQBitmap*>( (QBitmap*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DevType = slot;
+	return true;
 }
 
 int QBitmap_virtualbase_DevType(const void* self) {
 	return ( (const MiqtVirtualQBitmap*)(self) )->virtualbase_DevType();
 }
 
-void QBitmap_override_virtual_PaintEngine(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQBitmap*>( (QBitmap*)(self) )->handle__PaintEngine = slot;
+bool QBitmap_override_virtual_PaintEngine(void* self, intptr_t slot) {
+	MiqtVirtualQBitmap* self_cast = dynamic_cast<MiqtVirtualQBitmap*>( (QBitmap*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEngine = slot;
+	return true;
 }
 
 QPaintEngine* QBitmap_virtualbase_PaintEngine(const void* self) {
 	return ( (const MiqtVirtualQBitmap*)(self) )->virtualbase_PaintEngine();
 }
 
-void QBitmap_override_virtual_Metric(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQBitmap*>( (QBitmap*)(self) )->handle__Metric = slot;
+bool QBitmap_override_virtual_Metric(void* self, intptr_t slot) {
+	MiqtVirtualQBitmap* self_cast = dynamic_cast<MiqtVirtualQBitmap*>( (QBitmap*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Metric = slot;
+	return true;
 }
 
 int QBitmap_virtualbase_Metric(const void* self, int param1) {
 	return ( (const MiqtVirtualQBitmap*)(self) )->virtualbase_Metric(param1);
 }
 
-void QBitmap_Delete(QBitmap* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQBitmap*>( self );
-	} else {
-		delete self;
-	}
+void QBitmap_Delete(QBitmap* self) {
+	delete self;
 }
 

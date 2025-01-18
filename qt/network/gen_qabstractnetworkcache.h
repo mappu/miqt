@@ -53,7 +53,7 @@ bool QNetworkCacheMetaData_SaveToDisk(const QNetworkCacheMetaData* self);
 void QNetworkCacheMetaData_SetSaveToDisk(QNetworkCacheMetaData* self, bool allow);
 struct miqt_map /* of int to QVariant* */  QNetworkCacheMetaData_Attributes(const QNetworkCacheMetaData* self);
 void QNetworkCacheMetaData_SetAttributes(QNetworkCacheMetaData* self, struct miqt_map /* of int to QVariant* */  attributes);
-void QNetworkCacheMetaData_Delete(QNetworkCacheMetaData* self, bool isSubclass);
+void QNetworkCacheMetaData_Delete(QNetworkCacheMetaData* self);
 
 void QAbstractNetworkCache_virtbase(QAbstractNetworkCache* src, QObject** outptr_QObject);
 QMetaObject* QAbstractNetworkCache_MetaObject(const QAbstractNetworkCache* self);
@@ -72,7 +72,7 @@ struct miqt_string QAbstractNetworkCache_Tr2(const char* s, const char* c);
 struct miqt_string QAbstractNetworkCache_Tr3(const char* s, const char* c, int n);
 struct miqt_string QAbstractNetworkCache_TrUtf82(const char* s, const char* c);
 struct miqt_string QAbstractNetworkCache_TrUtf83(const char* s, const char* c, int n);
-void QAbstractNetworkCache_Delete(QAbstractNetworkCache* self, bool isSubclass);
+void QAbstractNetworkCache_Delete(QAbstractNetworkCache* self);
 
 #ifdef __cplusplus
 } /* extern C */

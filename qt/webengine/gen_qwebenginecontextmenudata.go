@@ -56,8 +56,7 @@ const (
 )
 
 type QWebEngineContextMenuData struct {
-	h          *C.QWebEngineContextMenuData
-	isSubclass bool
+	h *C.QWebEngineContextMenuData
 }
 
 func (this *QWebEngineContextMenuData) cPointer() *C.QWebEngineContextMenuData {
@@ -91,17 +90,13 @@ func UnsafeNewQWebEngineContextMenuData(h unsafe.Pointer) *QWebEngineContextMenu
 // NewQWebEngineContextMenuData constructs a new QWebEngineContextMenuData object.
 func NewQWebEngineContextMenuData() *QWebEngineContextMenuData {
 
-	ret := newQWebEngineContextMenuData(C.QWebEngineContextMenuData_new())
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineContextMenuData(C.QWebEngineContextMenuData_new())
 }
 
 // NewQWebEngineContextMenuData2 constructs a new QWebEngineContextMenuData object.
 func NewQWebEngineContextMenuData2(other *QWebEngineContextMenuData) *QWebEngineContextMenuData {
 
-	ret := newQWebEngineContextMenuData(C.QWebEngineContextMenuData_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineContextMenuData(C.QWebEngineContextMenuData_new2(other.cPointer()))
 }
 
 func (this *QWebEngineContextMenuData) OperatorAssign(other *QWebEngineContextMenuData) {
@@ -182,7 +177,7 @@ func (this *QWebEngineContextMenuData) EditFlags() QWebEngineContextMenuData__Ed
 
 // Delete this object from C++ memory.
 func (this *QWebEngineContextMenuData) Delete() {
-	C.QWebEngineContextMenuData_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebEngineContextMenuData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

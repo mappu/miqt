@@ -31,13 +31,13 @@ void miqt_exec_callback_QVideoProbe_DisconnectNotify(void*, intptr_t, QMetaMetho
 } /* extern C */
 #endif
 
-class MiqtVirtualQVideoProbe : public virtual QVideoProbe {
+class MiqtVirtualQVideoProbe final : public QVideoProbe {
 public:
 
 	MiqtVirtualQVideoProbe(): QVideoProbe() {};
 	MiqtVirtualQVideoProbe(QObject* parent): QVideoProbe(parent) {};
 
-	virtual ~MiqtVirtualQVideoProbe() = default;
+	virtual ~MiqtVirtualQVideoProbe() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -333,67 +333,105 @@ struct miqt_string QVideoProbe_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QVideoProbe_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQVideoProbe*>( (QVideoProbe*)(self) )->handle__Event = slot;
+bool QVideoProbe_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQVideoProbe* self_cast = dynamic_cast<MiqtVirtualQVideoProbe*>( (QVideoProbe*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QVideoProbe_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQVideoProbe*)(self) )->virtualbase_Event(event);
 }
 
-void QVideoProbe_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQVideoProbe*>( (QVideoProbe*)(self) )->handle__EventFilter = slot;
+bool QVideoProbe_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQVideoProbe* self_cast = dynamic_cast<MiqtVirtualQVideoProbe*>( (QVideoProbe*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QVideoProbe_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQVideoProbe*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QVideoProbe_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQVideoProbe*>( (QVideoProbe*)(self) )->handle__TimerEvent = slot;
+bool QVideoProbe_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQVideoProbe* self_cast = dynamic_cast<MiqtVirtualQVideoProbe*>( (QVideoProbe*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QVideoProbe_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQVideoProbe*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QVideoProbe_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQVideoProbe*>( (QVideoProbe*)(self) )->handle__ChildEvent = slot;
+bool QVideoProbe_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQVideoProbe* self_cast = dynamic_cast<MiqtVirtualQVideoProbe*>( (QVideoProbe*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QVideoProbe_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQVideoProbe*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QVideoProbe_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQVideoProbe*>( (QVideoProbe*)(self) )->handle__CustomEvent = slot;
+bool QVideoProbe_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQVideoProbe* self_cast = dynamic_cast<MiqtVirtualQVideoProbe*>( (QVideoProbe*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QVideoProbe_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQVideoProbe*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QVideoProbe_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQVideoProbe*>( (QVideoProbe*)(self) )->handle__ConnectNotify = slot;
+bool QVideoProbe_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQVideoProbe* self_cast = dynamic_cast<MiqtVirtualQVideoProbe*>( (QVideoProbe*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QVideoProbe_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQVideoProbe*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QVideoProbe_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQVideoProbe*>( (QVideoProbe*)(self) )->handle__DisconnectNotify = slot;
+bool QVideoProbe_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQVideoProbe* self_cast = dynamic_cast<MiqtVirtualQVideoProbe*>( (QVideoProbe*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QVideoProbe_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQVideoProbe*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QVideoProbe_Delete(QVideoProbe* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQVideoProbe*>( self );
-	} else {
-		delete self;
-	}
+void QVideoProbe_Delete(QVideoProbe* self) {
+	delete self;
 }
 

@@ -89,11 +89,7 @@ struct miqt_string QTextDocumentFragment_ToHtml1(const QTextDocumentFragment* se
 	return _ms;
 }
 
-void QTextDocumentFragment_Delete(QTextDocumentFragment* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextDocumentFragment*>( self );
-	} else {
-		delete self;
-	}
+void QTextDocumentFragment_Delete(QTextDocumentFragment* self) {
+	delete self;
 }
 
