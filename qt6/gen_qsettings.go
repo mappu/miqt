@@ -54,8 +54,7 @@ const (
 )
 
 type QSettings struct {
-	h          *C.QSettings
-	isSubclass bool
+	h *C.QSettings
 	*QObject
 }
 
@@ -97,9 +96,7 @@ func NewQSettings(organization string) *QSettings {
 	organization_ms.len = C.size_t(len(organization))
 	defer C.free(unsafe.Pointer(organization_ms.data))
 
-	ret := newQSettings(C.QSettings_new(organization_ms))
-	ret.isSubclass = true
-	return ret
+	return newQSettings(C.QSettings_new(organization_ms))
 }
 
 // NewQSettings2 constructs a new QSettings object.
@@ -109,9 +106,7 @@ func NewQSettings2(scope QSettings__Scope, organization string) *QSettings {
 	organization_ms.len = C.size_t(len(organization))
 	defer C.free(unsafe.Pointer(organization_ms.data))
 
-	ret := newQSettings(C.QSettings_new2((C.int)(scope), organization_ms))
-	ret.isSubclass = true
-	return ret
+	return newQSettings(C.QSettings_new2((C.int)(scope), organization_ms))
 }
 
 // NewQSettings3 constructs a new QSettings object.
@@ -121,9 +116,7 @@ func NewQSettings3(format QSettings__Format, scope QSettings__Scope, organizatio
 	organization_ms.len = C.size_t(len(organization))
 	defer C.free(unsafe.Pointer(organization_ms.data))
 
-	ret := newQSettings(C.QSettings_new3((C.int)(format), (C.int)(scope), organization_ms))
-	ret.isSubclass = true
-	return ret
+	return newQSettings(C.QSettings_new3((C.int)(format), (C.int)(scope), organization_ms))
 }
 
 // NewQSettings4 constructs a new QSettings object.
@@ -133,25 +126,19 @@ func NewQSettings4(fileName string, format QSettings__Format) *QSettings {
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 
-	ret := newQSettings(C.QSettings_new4(fileName_ms, (C.int)(format)))
-	ret.isSubclass = true
-	return ret
+	return newQSettings(C.QSettings_new4(fileName_ms, (C.int)(format)))
 }
 
 // NewQSettings5 constructs a new QSettings object.
 func NewQSettings5() *QSettings {
 
-	ret := newQSettings(C.QSettings_new5())
-	ret.isSubclass = true
-	return ret
+	return newQSettings(C.QSettings_new5())
 }
 
 // NewQSettings6 constructs a new QSettings object.
 func NewQSettings6(scope QSettings__Scope) *QSettings {
 
-	ret := newQSettings(C.QSettings_new6((C.int)(scope)))
-	ret.isSubclass = true
-	return ret
+	return newQSettings(C.QSettings_new6((C.int)(scope)))
 }
 
 // NewQSettings7 constructs a new QSettings object.
@@ -165,9 +152,7 @@ func NewQSettings7(organization string, application string) *QSettings {
 	application_ms.len = C.size_t(len(application))
 	defer C.free(unsafe.Pointer(application_ms.data))
 
-	ret := newQSettings(C.QSettings_new7(organization_ms, application_ms))
-	ret.isSubclass = true
-	return ret
+	return newQSettings(C.QSettings_new7(organization_ms, application_ms))
 }
 
 // NewQSettings8 constructs a new QSettings object.
@@ -181,9 +166,7 @@ func NewQSettings8(organization string, application string, parent *QObject) *QS
 	application_ms.len = C.size_t(len(application))
 	defer C.free(unsafe.Pointer(application_ms.data))
 
-	ret := newQSettings(C.QSettings_new8(organization_ms, application_ms, parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSettings(C.QSettings_new8(organization_ms, application_ms, parent.cPointer()))
 }
 
 // NewQSettings9 constructs a new QSettings object.
@@ -197,9 +180,7 @@ func NewQSettings9(scope QSettings__Scope, organization string, application stri
 	application_ms.len = C.size_t(len(application))
 	defer C.free(unsafe.Pointer(application_ms.data))
 
-	ret := newQSettings(C.QSettings_new9((C.int)(scope), organization_ms, application_ms))
-	ret.isSubclass = true
-	return ret
+	return newQSettings(C.QSettings_new9((C.int)(scope), organization_ms, application_ms))
 }
 
 // NewQSettings10 constructs a new QSettings object.
@@ -213,9 +194,7 @@ func NewQSettings10(scope QSettings__Scope, organization string, application str
 	application_ms.len = C.size_t(len(application))
 	defer C.free(unsafe.Pointer(application_ms.data))
 
-	ret := newQSettings(C.QSettings_new10((C.int)(scope), organization_ms, application_ms, parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSettings(C.QSettings_new10((C.int)(scope), organization_ms, application_ms, parent.cPointer()))
 }
 
 // NewQSettings11 constructs a new QSettings object.
@@ -229,9 +208,7 @@ func NewQSettings11(format QSettings__Format, scope QSettings__Scope, organizati
 	application_ms.len = C.size_t(len(application))
 	defer C.free(unsafe.Pointer(application_ms.data))
 
-	ret := newQSettings(C.QSettings_new11((C.int)(format), (C.int)(scope), organization_ms, application_ms))
-	ret.isSubclass = true
-	return ret
+	return newQSettings(C.QSettings_new11((C.int)(format), (C.int)(scope), organization_ms, application_ms))
 }
 
 // NewQSettings12 constructs a new QSettings object.
@@ -245,9 +222,7 @@ func NewQSettings12(format QSettings__Format, scope QSettings__Scope, organizati
 	application_ms.len = C.size_t(len(application))
 	defer C.free(unsafe.Pointer(application_ms.data))
 
-	ret := newQSettings(C.QSettings_new12((C.int)(format), (C.int)(scope), organization_ms, application_ms, parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSettings(C.QSettings_new12((C.int)(format), (C.int)(scope), organization_ms, application_ms, parent.cPointer()))
 }
 
 // NewQSettings13 constructs a new QSettings object.
@@ -257,25 +232,19 @@ func NewQSettings13(fileName string, format QSettings__Format, parent *QObject) 
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 
-	ret := newQSettings(C.QSettings_new13(fileName_ms, (C.int)(format), parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSettings(C.QSettings_new13(fileName_ms, (C.int)(format), parent.cPointer()))
 }
 
 // NewQSettings14 constructs a new QSettings object.
 func NewQSettings14(parent *QObject) *QSettings {
 
-	ret := newQSettings(C.QSettings_new14(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSettings(C.QSettings_new14(parent.cPointer()))
 }
 
 // NewQSettings15 constructs a new QSettings object.
 func NewQSettings15(scope QSettings__Scope, parent *QObject) *QSettings {
 
-	ret := newQSettings(C.QSettings_new15((C.int)(scope), parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSettings(C.QSettings_new15((C.int)(scope), parent.cPointer()))
 }
 
 func (this *QSettings) MetaObject() *QMetaObject {
@@ -500,10 +469,10 @@ func (this *QSettings) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QSettings) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QSettings_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSettings_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSettings_Event
@@ -528,10 +497,10 @@ func (this *QSettings) callVirtualBase_EventFilter(watched *QObject, event *QEve
 
 }
 func (this *QSettings) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QSettings_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSettings_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSettings_EventFilter
@@ -558,10 +527,10 @@ func (this *QSettings) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QSettings) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QSettings_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSettings_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSettings_TimerEvent
@@ -584,10 +553,10 @@ func (this *QSettings) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QSettings) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QSettings_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSettings_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSettings_ChildEvent
@@ -610,10 +579,10 @@ func (this *QSettings) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QSettings) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QSettings_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSettings_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSettings_CustomEvent
@@ -636,10 +605,10 @@ func (this *QSettings) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QSettings) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QSettings_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSettings_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSettings_ConnectNotify
@@ -662,10 +631,10 @@ func (this *QSettings) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QSettings) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QSettings_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSettings_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSettings_DisconnectNotify

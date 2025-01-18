@@ -15,8 +15,7 @@ import (
 )
 
 type QWidgetAction struct {
-	h          *C.QWidgetAction
-	isSubclass bool
+	h *C.QWidgetAction
 	*QAction
 }
 
@@ -54,9 +53,7 @@ func UnsafeNewQWidgetAction(h unsafe.Pointer) *QWidgetAction {
 // NewQWidgetAction constructs a new QWidgetAction object.
 func NewQWidgetAction(parent *QObject) *QWidgetAction {
 
-	ret := newQWidgetAction(C.QWidgetAction_new(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWidgetAction(C.QWidgetAction_new(parent.cPointer()))
 }
 
 func (this *QWidgetAction) MetaObject() *QMetaObject {
@@ -122,10 +119,10 @@ func (this *QWidgetAction) callVirtualBase_Event(param1 *QEvent) bool {
 
 }
 func (this *QWidgetAction) OnEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QWidgetAction_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWidgetAction_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWidgetAction_Event
@@ -150,10 +147,10 @@ func (this *QWidgetAction) callVirtualBase_EventFilter(param1 *QObject, param2 *
 
 }
 func (this *QWidgetAction) OnEventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QWidgetAction_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWidgetAction_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWidgetAction_EventFilter
@@ -180,10 +177,10 @@ func (this *QWidgetAction) callVirtualBase_CreateWidget(parent *QWidget) *QWidge
 
 }
 func (this *QWidgetAction) OnCreateWidget(slot func(super func(parent *QWidget) *QWidget, parent *QWidget) *QWidget) {
-	if !this.isSubclass {
+	ok := C.QWidgetAction_override_virtual_CreateWidget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWidgetAction_override_virtual_CreateWidget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWidgetAction_CreateWidget
@@ -208,10 +205,10 @@ func (this *QWidgetAction) callVirtualBase_DeleteWidget(widget *QWidget) {
 
 }
 func (this *QWidgetAction) OnDeleteWidget(slot func(super func(widget *QWidget), widget *QWidget)) {
-	if !this.isSubclass {
+	ok := C.QWidgetAction_override_virtual_DeleteWidget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWidgetAction_override_virtual_DeleteWidget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWidgetAction_DeleteWidget

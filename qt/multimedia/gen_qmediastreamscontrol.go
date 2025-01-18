@@ -26,8 +26,7 @@ const (
 )
 
 type QMediaStreamsControl struct {
-	h          *C.QMediaStreamsControl
-	isSubclass bool
+	h *C.QMediaStreamsControl
 	*QMediaControl
 }
 

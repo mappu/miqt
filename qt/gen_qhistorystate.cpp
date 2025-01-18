@@ -224,24 +224,42 @@ struct miqt_string QHistoryState_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QHistoryState_override_virtual_OnEntry(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQHistoryState*>( (QHistoryState*)(self) )->handle__OnEntry = slot;
+bool QHistoryState_override_virtual_OnEntry(void* self, intptr_t slot) {
+	MiqtVirtualQHistoryState* self_cast = dynamic_cast<MiqtVirtualQHistoryState*>( (QHistoryState*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__OnEntry = slot;
+	return true;
 }
 
 void QHistoryState_virtualbase_OnEntry(void* self, QEvent* event) {
 	( (MiqtVirtualQHistoryState*)(self) )->virtualbase_OnEntry(event);
 }
 
-void QHistoryState_override_virtual_OnExit(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQHistoryState*>( (QHistoryState*)(self) )->handle__OnExit = slot;
+bool QHistoryState_override_virtual_OnExit(void* self, intptr_t slot) {
+	MiqtVirtualQHistoryState* self_cast = dynamic_cast<MiqtVirtualQHistoryState*>( (QHistoryState*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__OnExit = slot;
+	return true;
 }
 
 void QHistoryState_virtualbase_OnExit(void* self, QEvent* event) {
 	( (MiqtVirtualQHistoryState*)(self) )->virtualbase_OnExit(event);
 }
 
-void QHistoryState_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQHistoryState*>( (QHistoryState*)(self) )->handle__Event = slot;
+bool QHistoryState_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQHistoryState* self_cast = dynamic_cast<MiqtVirtualQHistoryState*>( (QHistoryState*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QHistoryState_virtualbase_Event(void* self, QEvent* e) {

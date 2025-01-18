@@ -15,8 +15,7 @@ import (
 )
 
 type QCborArray struct {
-	h          *C.QCborArray
-	isSubclass bool
+	h *C.QCborArray
 }
 
 func (this *QCborArray) cPointer() *C.QCborArray {
@@ -50,17 +49,13 @@ func UnsafeNewQCborArray(h unsafe.Pointer) *QCborArray {
 // NewQCborArray constructs a new QCborArray object.
 func NewQCborArray() *QCborArray {
 
-	ret := newQCborArray(C.QCborArray_new())
-	ret.isSubclass = true
-	return ret
+	return newQCborArray(C.QCborArray_new())
 }
 
 // NewQCborArray2 constructs a new QCborArray object.
 func NewQCborArray2(other *QCborArray) *QCborArray {
 
-	ret := newQCborArray(C.QCborArray_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQCborArray(C.QCborArray_new2(other.cPointer()))
 }
 
 func (this *QCborArray) OperatorAssign(other *QCborArray) {
@@ -354,8 +349,7 @@ func (this *QCborArray) GoGC() {
 }
 
 type QCborArray__Iterator struct {
-	h          *C.QCborArray__Iterator
-	isSubclass bool
+	h *C.QCborArray__Iterator
 }
 
 func (this *QCborArray__Iterator) cPointer() *C.QCborArray__Iterator {
@@ -389,17 +383,13 @@ func UnsafeNewQCborArray__Iterator(h unsafe.Pointer) *QCborArray__Iterator {
 // NewQCborArray__Iterator constructs a new QCborArray::Iterator object.
 func NewQCborArray__Iterator() *QCborArray__Iterator {
 
-	ret := newQCborArray__Iterator(C.QCborArray__Iterator_new())
-	ret.isSubclass = true
-	return ret
+	return newQCborArray__Iterator(C.QCborArray__Iterator_new())
 }
 
 // NewQCborArray__Iterator2 constructs a new QCborArray::Iterator object.
 func NewQCborArray__Iterator2(param1 *QCborArray__Iterator) *QCborArray__Iterator {
 
-	ret := newQCborArray__Iterator(C.QCborArray__Iterator_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQCborArray__Iterator(C.QCborArray__Iterator_new2(param1.cPointer()))
 }
 
 func (this *QCborArray__Iterator) OperatorAssign(other *QCborArray__Iterator) {
@@ -529,8 +519,7 @@ func (this *QCborArray__Iterator) GoGC() {
 }
 
 type QCborArray__ConstIterator struct {
-	h          *C.QCborArray__ConstIterator
-	isSubclass bool
+	h *C.QCborArray__ConstIterator
 }
 
 func (this *QCborArray__ConstIterator) cPointer() *C.QCborArray__ConstIterator {
@@ -564,17 +553,13 @@ func UnsafeNewQCborArray__ConstIterator(h unsafe.Pointer) *QCborArray__ConstIter
 // NewQCborArray__ConstIterator constructs a new QCborArray::ConstIterator object.
 func NewQCborArray__ConstIterator() *QCborArray__ConstIterator {
 
-	ret := newQCborArray__ConstIterator(C.QCborArray__ConstIterator_new())
-	ret.isSubclass = true
-	return ret
+	return newQCborArray__ConstIterator(C.QCborArray__ConstIterator_new())
 }
 
 // NewQCborArray__ConstIterator2 constructs a new QCborArray::ConstIterator object.
 func NewQCborArray__ConstIterator2(param1 *QCborArray__ConstIterator) *QCborArray__ConstIterator {
 
-	ret := newQCborArray__ConstIterator(C.QCborArray__ConstIterator_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQCborArray__ConstIterator(C.QCborArray__ConstIterator_new2(param1.cPointer()))
 }
 
 func (this *QCborArray__ConstIterator) OperatorAssign(other *QCborArray__ConstIterator) {

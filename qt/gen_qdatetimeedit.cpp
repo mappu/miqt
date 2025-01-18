@@ -1183,224 +1183,392 @@ struct miqt_string QDateTimeEdit_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QDateTimeEdit_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) )->handle__SizeHint = slot;
+bool QDateTimeEdit_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QDateTimeEdit_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_SizeHint();
 }
 
-void QDateTimeEdit_override_virtual_Clear(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) )->handle__Clear = slot;
+bool QDateTimeEdit_override_virtual_Clear(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Clear = slot;
+	return true;
 }
 
 void QDateTimeEdit_virtualbase_Clear(void* self) {
 	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_Clear();
 }
 
-void QDateTimeEdit_override_virtual_StepBy(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) )->handle__StepBy = slot;
+bool QDateTimeEdit_override_virtual_StepBy(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__StepBy = slot;
+	return true;
 }
 
 void QDateTimeEdit_virtualbase_StepBy(void* self, int steps) {
 	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_StepBy(steps);
 }
 
-void QDateTimeEdit_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) )->handle__Event = slot;
+bool QDateTimeEdit_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QDateTimeEdit_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_Event(event);
 }
 
-void QDateTimeEdit_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) )->handle__KeyPressEvent = slot;
+bool QDateTimeEdit_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QDateTimeEdit_virtualbase_KeyPressEvent(void* self, QKeyEvent* event) {
 	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_KeyPressEvent(event);
 }
 
-void QDateTimeEdit_override_virtual_WheelEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) )->handle__WheelEvent = slot;
+bool QDateTimeEdit_override_virtual_WheelEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WheelEvent = slot;
+	return true;
 }
 
 void QDateTimeEdit_virtualbase_WheelEvent(void* self, QWheelEvent* event) {
 	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_WheelEvent(event);
 }
 
-void QDateTimeEdit_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) )->handle__FocusInEvent = slot;
+bool QDateTimeEdit_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QDateTimeEdit_virtualbase_FocusInEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_FocusInEvent(event);
 }
 
-void QDateTimeEdit_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) )->handle__FocusNextPrevChild = slot;
+bool QDateTimeEdit_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusNextPrevChild = slot;
+	return true;
 }
 
 bool QDateTimeEdit_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QDateTimeEdit_override_virtual_Validate(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) )->handle__Validate = slot;
+bool QDateTimeEdit_override_virtual_Validate(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Validate = slot;
+	return true;
 }
 
 int QDateTimeEdit_virtualbase_Validate(const void* self, struct miqt_string input, int* pos) {
 	return ( (const MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_Validate(input, pos);
 }
 
-void QDateTimeEdit_override_virtual_Fixup(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) )->handle__Fixup = slot;
+bool QDateTimeEdit_override_virtual_Fixup(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Fixup = slot;
+	return true;
 }
 
 void QDateTimeEdit_virtualbase_Fixup(const void* self, struct miqt_string input) {
 	( (const MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_Fixup(input);
 }
 
-void QDateTimeEdit_override_virtual_DateTimeFromText(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) )->handle__DateTimeFromText = slot;
+bool QDateTimeEdit_override_virtual_DateTimeFromText(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DateTimeFromText = slot;
+	return true;
 }
 
 QDateTime* QDateTimeEdit_virtualbase_DateTimeFromText(const void* self, struct miqt_string text) {
 	return ( (const MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_DateTimeFromText(text);
 }
 
-void QDateTimeEdit_override_virtual_TextFromDateTime(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) )->handle__TextFromDateTime = slot;
+bool QDateTimeEdit_override_virtual_TextFromDateTime(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TextFromDateTime = slot;
+	return true;
 }
 
 struct miqt_string QDateTimeEdit_virtualbase_TextFromDateTime(const void* self, QDateTime* dt) {
 	return ( (const MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_TextFromDateTime(dt);
 }
 
-void QDateTimeEdit_override_virtual_StepEnabled(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) )->handle__StepEnabled = slot;
+bool QDateTimeEdit_override_virtual_StepEnabled(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__StepEnabled = slot;
+	return true;
 }
 
 int QDateTimeEdit_virtualbase_StepEnabled(const void* self) {
 	return ( (const MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_StepEnabled();
 }
 
-void QDateTimeEdit_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) )->handle__MousePressEvent = slot;
+bool QDateTimeEdit_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QDateTimeEdit_virtualbase_MousePressEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_MousePressEvent(event);
 }
 
-void QDateTimeEdit_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) )->handle__PaintEvent = slot;
+bool QDateTimeEdit_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QDateTimeEdit_virtualbase_PaintEvent(void* self, QPaintEvent* event) {
 	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_PaintEvent(event);
 }
 
-void QDateTimeEdit_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) )->handle__MinimumSizeHint = slot;
+bool QDateTimeEdit_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QDateTimeEdit_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QDateTimeEdit_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) )->handle__InputMethodQuery = slot;
+bool QDateTimeEdit_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodQuery = slot;
+	return true;
 }
 
 QVariant* QDateTimeEdit_virtualbase_InputMethodQuery(const void* self, int param1) {
 	return ( (const MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_InputMethodQuery(param1);
 }
 
-void QDateTimeEdit_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) )->handle__ResizeEvent = slot;
+bool QDateTimeEdit_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QDateTimeEdit_virtualbase_ResizeEvent(void* self, QResizeEvent* event) {
 	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_ResizeEvent(event);
 }
 
-void QDateTimeEdit_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) )->handle__KeyReleaseEvent = slot;
+bool QDateTimeEdit_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyReleaseEvent = slot;
+	return true;
 }
 
 void QDateTimeEdit_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* event) {
 	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_KeyReleaseEvent(event);
 }
 
-void QDateTimeEdit_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) )->handle__FocusOutEvent = slot;
+bool QDateTimeEdit_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
 }
 
 void QDateTimeEdit_virtualbase_FocusOutEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_FocusOutEvent(event);
 }
 
-void QDateTimeEdit_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) )->handle__ContextMenuEvent = slot;
+bool QDateTimeEdit_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QDateTimeEdit_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* event) {
 	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_ContextMenuEvent(event);
 }
 
-void QDateTimeEdit_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) )->handle__ChangeEvent = slot;
+bool QDateTimeEdit_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QDateTimeEdit_virtualbase_ChangeEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_ChangeEvent(event);
 }
 
-void QDateTimeEdit_override_virtual_CloseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) )->handle__CloseEvent = slot;
+bool QDateTimeEdit_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
 }
 
 void QDateTimeEdit_virtualbase_CloseEvent(void* self, QCloseEvent* event) {
 	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_CloseEvent(event);
 }
 
-void QDateTimeEdit_override_virtual_HideEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) )->handle__HideEvent = slot;
+bool QDateTimeEdit_override_virtual_HideEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HideEvent = slot;
+	return true;
 }
 
 void QDateTimeEdit_virtualbase_HideEvent(void* self, QHideEvent* event) {
 	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_HideEvent(event);
 }
 
-void QDateTimeEdit_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) )->handle__MouseReleaseEvent = slot;
+bool QDateTimeEdit_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QDateTimeEdit_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_MouseReleaseEvent(event);
 }
 
-void QDateTimeEdit_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) )->handle__MouseMoveEvent = slot;
+bool QDateTimeEdit_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QDateTimeEdit_virtualbase_MouseMoveEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_MouseMoveEvent(event);
 }
 
-void QDateTimeEdit_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) )->handle__TimerEvent = slot;
+bool QDateTimeEdit_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QDateTimeEdit_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QDateTimeEdit_override_virtual_ShowEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) )->handle__ShowEvent = slot;
+bool QDateTimeEdit_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
 }
 
 void QDateTimeEdit_virtualbase_ShowEvent(void* self, QShowEvent* event) {
@@ -1917,120 +2085,210 @@ struct miqt_string QTimeEdit_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QTimeEdit_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) )->handle__SizeHint = slot;
+bool QTimeEdit_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QTimeEdit_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQTimeEdit*)(self) )->virtualbase_SizeHint();
 }
 
-void QTimeEdit_override_virtual_Clear(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) )->handle__Clear = slot;
+bool QTimeEdit_override_virtual_Clear(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Clear = slot;
+	return true;
 }
 
 void QTimeEdit_virtualbase_Clear(void* self) {
 	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_Clear();
 }
 
-void QTimeEdit_override_virtual_StepBy(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) )->handle__StepBy = slot;
+bool QTimeEdit_override_virtual_StepBy(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__StepBy = slot;
+	return true;
 }
 
 void QTimeEdit_virtualbase_StepBy(void* self, int steps) {
 	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_StepBy(steps);
 }
 
-void QTimeEdit_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) )->handle__Event = slot;
+bool QTimeEdit_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QTimeEdit_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_Event(event);
 }
 
-void QTimeEdit_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) )->handle__KeyPressEvent = slot;
+bool QTimeEdit_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QTimeEdit_virtualbase_KeyPressEvent(void* self, QKeyEvent* event) {
 	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_KeyPressEvent(event);
 }
 
-void QTimeEdit_override_virtual_WheelEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) )->handle__WheelEvent = slot;
+bool QTimeEdit_override_virtual_WheelEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WheelEvent = slot;
+	return true;
 }
 
 void QTimeEdit_virtualbase_WheelEvent(void* self, QWheelEvent* event) {
 	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_WheelEvent(event);
 }
 
-void QTimeEdit_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) )->handle__FocusInEvent = slot;
+bool QTimeEdit_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QTimeEdit_virtualbase_FocusInEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_FocusInEvent(event);
 }
 
-void QTimeEdit_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) )->handle__FocusNextPrevChild = slot;
+bool QTimeEdit_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusNextPrevChild = slot;
+	return true;
 }
 
 bool QTimeEdit_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QTimeEdit_override_virtual_Validate(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) )->handle__Validate = slot;
+bool QTimeEdit_override_virtual_Validate(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Validate = slot;
+	return true;
 }
 
 int QTimeEdit_virtualbase_Validate(const void* self, struct miqt_string input, int* pos) {
 	return ( (const MiqtVirtualQTimeEdit*)(self) )->virtualbase_Validate(input, pos);
 }
 
-void QTimeEdit_override_virtual_Fixup(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) )->handle__Fixup = slot;
+bool QTimeEdit_override_virtual_Fixup(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Fixup = slot;
+	return true;
 }
 
 void QTimeEdit_virtualbase_Fixup(const void* self, struct miqt_string input) {
 	( (const MiqtVirtualQTimeEdit*)(self) )->virtualbase_Fixup(input);
 }
 
-void QTimeEdit_override_virtual_DateTimeFromText(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) )->handle__DateTimeFromText = slot;
+bool QTimeEdit_override_virtual_DateTimeFromText(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DateTimeFromText = slot;
+	return true;
 }
 
 QDateTime* QTimeEdit_virtualbase_DateTimeFromText(const void* self, struct miqt_string text) {
 	return ( (const MiqtVirtualQTimeEdit*)(self) )->virtualbase_DateTimeFromText(text);
 }
 
-void QTimeEdit_override_virtual_TextFromDateTime(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) )->handle__TextFromDateTime = slot;
+bool QTimeEdit_override_virtual_TextFromDateTime(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TextFromDateTime = slot;
+	return true;
 }
 
 struct miqt_string QTimeEdit_virtualbase_TextFromDateTime(const void* self, QDateTime* dt) {
 	return ( (const MiqtVirtualQTimeEdit*)(self) )->virtualbase_TextFromDateTime(dt);
 }
 
-void QTimeEdit_override_virtual_StepEnabled(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) )->handle__StepEnabled = slot;
+bool QTimeEdit_override_virtual_StepEnabled(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__StepEnabled = slot;
+	return true;
 }
 
 int QTimeEdit_virtualbase_StepEnabled(const void* self) {
 	return ( (const MiqtVirtualQTimeEdit*)(self) )->virtualbase_StepEnabled();
 }
 
-void QTimeEdit_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) )->handle__MousePressEvent = slot;
+bool QTimeEdit_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QTimeEdit_virtualbase_MousePressEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_MousePressEvent(event);
 }
 
-void QTimeEdit_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) )->handle__PaintEvent = slot;
+bool QTimeEdit_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QTimeEdit_virtualbase_PaintEvent(void* self, QPaintEvent* event) {
@@ -2547,120 +2805,210 @@ struct miqt_string QDateEdit_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QDateEdit_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) )->handle__SizeHint = slot;
+bool QDateEdit_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QDateEdit_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQDateEdit*)(self) )->virtualbase_SizeHint();
 }
 
-void QDateEdit_override_virtual_Clear(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) )->handle__Clear = slot;
+bool QDateEdit_override_virtual_Clear(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Clear = slot;
+	return true;
 }
 
 void QDateEdit_virtualbase_Clear(void* self) {
 	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_Clear();
 }
 
-void QDateEdit_override_virtual_StepBy(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) )->handle__StepBy = slot;
+bool QDateEdit_override_virtual_StepBy(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__StepBy = slot;
+	return true;
 }
 
 void QDateEdit_virtualbase_StepBy(void* self, int steps) {
 	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_StepBy(steps);
 }
 
-void QDateEdit_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) )->handle__Event = slot;
+bool QDateEdit_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QDateEdit_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQDateEdit*)(self) )->virtualbase_Event(event);
 }
 
-void QDateEdit_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) )->handle__KeyPressEvent = slot;
+bool QDateEdit_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QDateEdit_virtualbase_KeyPressEvent(void* self, QKeyEvent* event) {
 	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_KeyPressEvent(event);
 }
 
-void QDateEdit_override_virtual_WheelEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) )->handle__WheelEvent = slot;
+bool QDateEdit_override_virtual_WheelEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WheelEvent = slot;
+	return true;
 }
 
 void QDateEdit_virtualbase_WheelEvent(void* self, QWheelEvent* event) {
 	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_WheelEvent(event);
 }
 
-void QDateEdit_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) )->handle__FocusInEvent = slot;
+bool QDateEdit_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QDateEdit_virtualbase_FocusInEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_FocusInEvent(event);
 }
 
-void QDateEdit_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) )->handle__FocusNextPrevChild = slot;
+bool QDateEdit_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusNextPrevChild = slot;
+	return true;
 }
 
 bool QDateEdit_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQDateEdit*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QDateEdit_override_virtual_Validate(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) )->handle__Validate = slot;
+bool QDateEdit_override_virtual_Validate(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Validate = slot;
+	return true;
 }
 
 int QDateEdit_virtualbase_Validate(const void* self, struct miqt_string input, int* pos) {
 	return ( (const MiqtVirtualQDateEdit*)(self) )->virtualbase_Validate(input, pos);
 }
 
-void QDateEdit_override_virtual_Fixup(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) )->handle__Fixup = slot;
+bool QDateEdit_override_virtual_Fixup(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Fixup = slot;
+	return true;
 }
 
 void QDateEdit_virtualbase_Fixup(const void* self, struct miqt_string input) {
 	( (const MiqtVirtualQDateEdit*)(self) )->virtualbase_Fixup(input);
 }
 
-void QDateEdit_override_virtual_DateTimeFromText(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) )->handle__DateTimeFromText = slot;
+bool QDateEdit_override_virtual_DateTimeFromText(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DateTimeFromText = slot;
+	return true;
 }
 
 QDateTime* QDateEdit_virtualbase_DateTimeFromText(const void* self, struct miqt_string text) {
 	return ( (const MiqtVirtualQDateEdit*)(self) )->virtualbase_DateTimeFromText(text);
 }
 
-void QDateEdit_override_virtual_TextFromDateTime(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) )->handle__TextFromDateTime = slot;
+bool QDateEdit_override_virtual_TextFromDateTime(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TextFromDateTime = slot;
+	return true;
 }
 
 struct miqt_string QDateEdit_virtualbase_TextFromDateTime(const void* self, QDateTime* dt) {
 	return ( (const MiqtVirtualQDateEdit*)(self) )->virtualbase_TextFromDateTime(dt);
 }
 
-void QDateEdit_override_virtual_StepEnabled(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) )->handle__StepEnabled = slot;
+bool QDateEdit_override_virtual_StepEnabled(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__StepEnabled = slot;
+	return true;
 }
 
 int QDateEdit_virtualbase_StepEnabled(const void* self) {
 	return ( (const MiqtVirtualQDateEdit*)(self) )->virtualbase_StepEnabled();
 }
 
-void QDateEdit_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) )->handle__MousePressEvent = slot;
+bool QDateEdit_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QDateEdit_virtualbase_MousePressEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_MousePressEvent(event);
 }
 
-void QDateEdit_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) )->handle__PaintEvent = slot;
+bool QDateEdit_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QDateEdit_virtualbase_PaintEvent(void* self, QPaintEvent* event) {

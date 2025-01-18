@@ -14,8 +14,7 @@ import (
 )
 
 type QScriptClassPropertyIterator struct {
-	h          *C.QScriptClassPropertyIterator
-	isSubclass bool
+	h *C.QScriptClassPropertyIterator
 }
 
 func (this *QScriptClassPropertyIterator) cPointer() *C.QScriptClassPropertyIterator {

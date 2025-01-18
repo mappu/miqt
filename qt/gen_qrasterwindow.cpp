@@ -242,40 +242,70 @@ struct miqt_string QRasterWindow_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QRasterWindow_override_virtual_Metric(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRasterWindow*>( (QRasterWindow*)(self) )->handle__Metric = slot;
+bool QRasterWindow_override_virtual_Metric(void* self, intptr_t slot) {
+	MiqtVirtualQRasterWindow* self_cast = dynamic_cast<MiqtVirtualQRasterWindow*>( (QRasterWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Metric = slot;
+	return true;
 }
 
 int QRasterWindow_virtualbase_Metric(const void* self, int metric) {
 	return ( (const MiqtVirtualQRasterWindow*)(self) )->virtualbase_Metric(metric);
 }
 
-void QRasterWindow_override_virtual_Redirected(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRasterWindow*>( (QRasterWindow*)(self) )->handle__Redirected = slot;
+bool QRasterWindow_override_virtual_Redirected(void* self, intptr_t slot) {
+	MiqtVirtualQRasterWindow* self_cast = dynamic_cast<MiqtVirtualQRasterWindow*>( (QRasterWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Redirected = slot;
+	return true;
 }
 
 QPaintDevice* QRasterWindow_virtualbase_Redirected(const void* self, QPoint* param1) {
 	return ( (const MiqtVirtualQRasterWindow*)(self) )->virtualbase_Redirected(param1);
 }
 
-void QRasterWindow_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRasterWindow*>( (QRasterWindow*)(self) )->handle__PaintEvent = slot;
+bool QRasterWindow_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRasterWindow* self_cast = dynamic_cast<MiqtVirtualQRasterWindow*>( (QRasterWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QRasterWindow_virtualbase_PaintEvent(void* self, QPaintEvent* event) {
 	( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_PaintEvent(event);
 }
 
-void QRasterWindow_override_virtual_ExposeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRasterWindow*>( (QRasterWindow*)(self) )->handle__ExposeEvent = slot;
+bool QRasterWindow_override_virtual_ExposeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRasterWindow* self_cast = dynamic_cast<MiqtVirtualQRasterWindow*>( (QRasterWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ExposeEvent = slot;
+	return true;
 }
 
 void QRasterWindow_virtualbase_ExposeEvent(void* self, QExposeEvent* param1) {
 	( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_ExposeEvent(param1);
 }
 
-void QRasterWindow_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRasterWindow*>( (QRasterWindow*)(self) )->handle__Event = slot;
+bool QRasterWindow_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQRasterWindow* self_cast = dynamic_cast<MiqtVirtualQRasterWindow*>( (QRasterWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QRasterWindow_virtualbase_Event(void* self, QEvent* event) {

@@ -1265,328 +1265,574 @@ QRect* QDesktopWidget_AvailableGeometry1(const QDesktopWidget* self, int screen)
 	return new QRect(self->availableGeometry(static_cast<int>(screen)));
 }
 
-void QDesktopWidget_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__ResizeEvent = slot;
+bool QDesktopWidget_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QDesktopWidget_virtualbase_ResizeEvent(void* self, QResizeEvent* e) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_ResizeEvent(e);
 }
 
-void QDesktopWidget_override_virtual_DevType(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__DevType = slot;
+bool QDesktopWidget_override_virtual_DevType(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DevType = slot;
+	return true;
 }
 
 int QDesktopWidget_virtualbase_DevType(const void* self) {
 	return ( (const MiqtVirtualQDesktopWidget*)(self) )->virtualbase_DevType();
 }
 
-void QDesktopWidget_override_virtual_SetVisible(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__SetVisible = slot;
+bool QDesktopWidget_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
 }
 
 void QDesktopWidget_virtualbase_SetVisible(void* self, bool visible) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_SetVisible(visible);
 }
 
-void QDesktopWidget_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__SizeHint = slot;
+bool QDesktopWidget_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QDesktopWidget_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQDesktopWidget*)(self) )->virtualbase_SizeHint();
 }
 
-void QDesktopWidget_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__MinimumSizeHint = slot;
+bool QDesktopWidget_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QDesktopWidget_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQDesktopWidget*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QDesktopWidget_override_virtual_HeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__HeightForWidth = slot;
+bool QDesktopWidget_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeightForWidth = slot;
+	return true;
 }
 
 int QDesktopWidget_virtualbase_HeightForWidth(const void* self, int param1) {
 	return ( (const MiqtVirtualQDesktopWidget*)(self) )->virtualbase_HeightForWidth(param1);
 }
 
-void QDesktopWidget_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__HasHeightForWidth = slot;
+bool QDesktopWidget_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasHeightForWidth = slot;
+	return true;
 }
 
 bool QDesktopWidget_virtualbase_HasHeightForWidth(const void* self) {
 	return ( (const MiqtVirtualQDesktopWidget*)(self) )->virtualbase_HasHeightForWidth();
 }
 
-void QDesktopWidget_override_virtual_PaintEngine(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__PaintEngine = slot;
+bool QDesktopWidget_override_virtual_PaintEngine(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEngine = slot;
+	return true;
 }
 
 QPaintEngine* QDesktopWidget_virtualbase_PaintEngine(const void* self) {
 	return ( (const MiqtVirtualQDesktopWidget*)(self) )->virtualbase_PaintEngine();
 }
 
-void QDesktopWidget_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__Event = slot;
+bool QDesktopWidget_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QDesktopWidget_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_Event(event);
 }
 
-void QDesktopWidget_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__MousePressEvent = slot;
+bool QDesktopWidget_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QDesktopWidget_virtualbase_MousePressEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_MousePressEvent(event);
 }
 
-void QDesktopWidget_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__MouseReleaseEvent = slot;
+bool QDesktopWidget_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QDesktopWidget_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_MouseReleaseEvent(event);
 }
 
-void QDesktopWidget_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__MouseDoubleClickEvent = slot;
+bool QDesktopWidget_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseDoubleClickEvent = slot;
+	return true;
 }
 
 void QDesktopWidget_virtualbase_MouseDoubleClickEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_MouseDoubleClickEvent(event);
 }
 
-void QDesktopWidget_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__MouseMoveEvent = slot;
+bool QDesktopWidget_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QDesktopWidget_virtualbase_MouseMoveEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_MouseMoveEvent(event);
 }
 
-void QDesktopWidget_override_virtual_WheelEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__WheelEvent = slot;
+bool QDesktopWidget_override_virtual_WheelEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WheelEvent = slot;
+	return true;
 }
 
 void QDesktopWidget_virtualbase_WheelEvent(void* self, QWheelEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_WheelEvent(event);
 }
 
-void QDesktopWidget_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__KeyPressEvent = slot;
+bool QDesktopWidget_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QDesktopWidget_virtualbase_KeyPressEvent(void* self, QKeyEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_KeyPressEvent(event);
 }
 
-void QDesktopWidget_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__KeyReleaseEvent = slot;
+bool QDesktopWidget_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyReleaseEvent = slot;
+	return true;
 }
 
 void QDesktopWidget_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_KeyReleaseEvent(event);
 }
 
-void QDesktopWidget_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__FocusInEvent = slot;
+bool QDesktopWidget_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QDesktopWidget_virtualbase_FocusInEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_FocusInEvent(event);
 }
 
-void QDesktopWidget_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__FocusOutEvent = slot;
+bool QDesktopWidget_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
 }
 
 void QDesktopWidget_virtualbase_FocusOutEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_FocusOutEvent(event);
 }
 
-void QDesktopWidget_override_virtual_EnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__EnterEvent = slot;
+bool QDesktopWidget_override_virtual_EnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EnterEvent = slot;
+	return true;
 }
 
 void QDesktopWidget_virtualbase_EnterEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_EnterEvent(event);
 }
 
-void QDesktopWidget_override_virtual_LeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__LeaveEvent = slot;
+bool QDesktopWidget_override_virtual_LeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__LeaveEvent = slot;
+	return true;
 }
 
 void QDesktopWidget_virtualbase_LeaveEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_LeaveEvent(event);
 }
 
-void QDesktopWidget_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__PaintEvent = slot;
+bool QDesktopWidget_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QDesktopWidget_virtualbase_PaintEvent(void* self, QPaintEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_PaintEvent(event);
 }
 
-void QDesktopWidget_override_virtual_MoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__MoveEvent = slot;
+bool QDesktopWidget_override_virtual_MoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveEvent = slot;
+	return true;
 }
 
 void QDesktopWidget_virtualbase_MoveEvent(void* self, QMoveEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_MoveEvent(event);
 }
 
-void QDesktopWidget_override_virtual_CloseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__CloseEvent = slot;
+bool QDesktopWidget_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
 }
 
 void QDesktopWidget_virtualbase_CloseEvent(void* self, QCloseEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_CloseEvent(event);
 }
 
-void QDesktopWidget_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__ContextMenuEvent = slot;
+bool QDesktopWidget_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QDesktopWidget_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_ContextMenuEvent(event);
 }
 
-void QDesktopWidget_override_virtual_TabletEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__TabletEvent = slot;
+bool QDesktopWidget_override_virtual_TabletEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TabletEvent = slot;
+	return true;
 }
 
 void QDesktopWidget_virtualbase_TabletEvent(void* self, QTabletEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_TabletEvent(event);
 }
 
-void QDesktopWidget_override_virtual_ActionEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__ActionEvent = slot;
+bool QDesktopWidget_override_virtual_ActionEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ActionEvent = slot;
+	return true;
 }
 
 void QDesktopWidget_virtualbase_ActionEvent(void* self, QActionEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_ActionEvent(event);
 }
 
-void QDesktopWidget_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__DragEnterEvent = slot;
+bool QDesktopWidget_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragEnterEvent = slot;
+	return true;
 }
 
 void QDesktopWidget_virtualbase_DragEnterEvent(void* self, QDragEnterEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_DragEnterEvent(event);
 }
 
-void QDesktopWidget_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__DragMoveEvent = slot;
+bool QDesktopWidget_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragMoveEvent = slot;
+	return true;
 }
 
 void QDesktopWidget_virtualbase_DragMoveEvent(void* self, QDragMoveEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_DragMoveEvent(event);
 }
 
-void QDesktopWidget_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__DragLeaveEvent = slot;
+bool QDesktopWidget_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragLeaveEvent = slot;
+	return true;
 }
 
 void QDesktopWidget_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_DragLeaveEvent(event);
 }
 
-void QDesktopWidget_override_virtual_DropEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__DropEvent = slot;
+bool QDesktopWidget_override_virtual_DropEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropEvent = slot;
+	return true;
 }
 
 void QDesktopWidget_virtualbase_DropEvent(void* self, QDropEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_DropEvent(event);
 }
 
-void QDesktopWidget_override_virtual_ShowEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__ShowEvent = slot;
+bool QDesktopWidget_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
 }
 
 void QDesktopWidget_virtualbase_ShowEvent(void* self, QShowEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_ShowEvent(event);
 }
 
-void QDesktopWidget_override_virtual_HideEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__HideEvent = slot;
+bool QDesktopWidget_override_virtual_HideEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HideEvent = slot;
+	return true;
 }
 
 void QDesktopWidget_virtualbase_HideEvent(void* self, QHideEvent* event) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_HideEvent(event);
 }
 
-void QDesktopWidget_override_virtual_NativeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__NativeEvent = slot;
+bool QDesktopWidget_override_virtual_NativeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NativeEvent = slot;
+	return true;
 }
 
 bool QDesktopWidget_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	return ( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_NativeEvent(eventType, message, result);
 }
 
-void QDesktopWidget_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__ChangeEvent = slot;
+bool QDesktopWidget_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QDesktopWidget_virtualbase_ChangeEvent(void* self, QEvent* param1) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_ChangeEvent(param1);
 }
 
-void QDesktopWidget_override_virtual_Metric(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__Metric = slot;
+bool QDesktopWidget_override_virtual_Metric(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Metric = slot;
+	return true;
 }
 
 int QDesktopWidget_virtualbase_Metric(const void* self, int param1) {
 	return ( (const MiqtVirtualQDesktopWidget*)(self) )->virtualbase_Metric(param1);
 }
 
-void QDesktopWidget_override_virtual_InitPainter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__InitPainter = slot;
+bool QDesktopWidget_override_virtual_InitPainter(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitPainter = slot;
+	return true;
 }
 
 void QDesktopWidget_virtualbase_InitPainter(const void* self, QPainter* painter) {
 	( (const MiqtVirtualQDesktopWidget*)(self) )->virtualbase_InitPainter(painter);
 }
 
-void QDesktopWidget_override_virtual_Redirected(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__Redirected = slot;
+bool QDesktopWidget_override_virtual_Redirected(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Redirected = slot;
+	return true;
 }
 
 QPaintDevice* QDesktopWidget_virtualbase_Redirected(const void* self, QPoint* offset) {
 	return ( (const MiqtVirtualQDesktopWidget*)(self) )->virtualbase_Redirected(offset);
 }
 
-void QDesktopWidget_override_virtual_SharedPainter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__SharedPainter = slot;
+bool QDesktopWidget_override_virtual_SharedPainter(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SharedPainter = slot;
+	return true;
 }
 
 QPainter* QDesktopWidget_virtualbase_SharedPainter(const void* self) {
 	return ( (const MiqtVirtualQDesktopWidget*)(self) )->virtualbase_SharedPainter();
 }
 
-void QDesktopWidget_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__InputMethodEvent = slot;
+bool QDesktopWidget_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodEvent = slot;
+	return true;
 }
 
 void QDesktopWidget_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* param1) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_InputMethodEvent(param1);
 }
 
-void QDesktopWidget_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__InputMethodQuery = slot;
+bool QDesktopWidget_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodQuery = slot;
+	return true;
 }
 
 QVariant* QDesktopWidget_virtualbase_InputMethodQuery(const void* self, int param1) {
 	return ( (const MiqtVirtualQDesktopWidget*)(self) )->virtualbase_InputMethodQuery(param1);
 }
 
-void QDesktopWidget_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) )->handle__FocusNextPrevChild = slot;
+bool QDesktopWidget_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusNextPrevChild = slot;
+	return true;
 }
 
 bool QDesktopWidget_virtualbase_FocusNextPrevChild(void* self, bool next) {

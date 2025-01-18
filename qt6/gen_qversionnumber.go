@@ -14,8 +14,7 @@ import (
 )
 
 type QVersionNumber struct {
-	h          *C.QVersionNumber
-	isSubclass bool
+	h *C.QVersionNumber
 }
 
 func (this *QVersionNumber) cPointer() *C.QVersionNumber {
@@ -49,9 +48,7 @@ func UnsafeNewQVersionNumber(h unsafe.Pointer) *QVersionNumber {
 // NewQVersionNumber constructs a new QVersionNumber object.
 func NewQVersionNumber() *QVersionNumber {
 
-	ret := newQVersionNumber(C.QVersionNumber_new())
-	ret.isSubclass = true
-	return ret
+	return newQVersionNumber(C.QVersionNumber_new())
 }
 
 // NewQVersionNumber2 constructs a new QVersionNumber object.
@@ -63,41 +60,31 @@ func NewQVersionNumber2(seg []int) *QVersionNumber {
 	}
 	seg_ma := C.struct_miqt_array{len: C.size_t(len(seg)), data: unsafe.Pointer(seg_CArray)}
 
-	ret := newQVersionNumber(C.QVersionNumber_new2(seg_ma))
-	ret.isSubclass = true
-	return ret
+	return newQVersionNumber(C.QVersionNumber_new2(seg_ma))
 }
 
 // NewQVersionNumber3 constructs a new QVersionNumber object.
 func NewQVersionNumber3(maj int) *QVersionNumber {
 
-	ret := newQVersionNumber(C.QVersionNumber_new3((C.int)(maj)))
-	ret.isSubclass = true
-	return ret
+	return newQVersionNumber(C.QVersionNumber_new3((C.int)(maj)))
 }
 
 // NewQVersionNumber4 constructs a new QVersionNumber object.
 func NewQVersionNumber4(maj int, min int) *QVersionNumber {
 
-	ret := newQVersionNumber(C.QVersionNumber_new4((C.int)(maj), (C.int)(min)))
-	ret.isSubclass = true
-	return ret
+	return newQVersionNumber(C.QVersionNumber_new4((C.int)(maj), (C.int)(min)))
 }
 
 // NewQVersionNumber5 constructs a new QVersionNumber object.
 func NewQVersionNumber5(maj int, min int, mic int) *QVersionNumber {
 
-	ret := newQVersionNumber(C.QVersionNumber_new5((C.int)(maj), (C.int)(min), (C.int)(mic)))
-	ret.isSubclass = true
-	return ret
+	return newQVersionNumber(C.QVersionNumber_new5((C.int)(maj), (C.int)(min), (C.int)(mic)))
 }
 
 // NewQVersionNumber6 constructs a new QVersionNumber object.
 func NewQVersionNumber6(param1 *QVersionNumber) *QVersionNumber {
 
-	ret := newQVersionNumber(C.QVersionNumber_new6(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQVersionNumber(C.QVersionNumber_new6(param1.cPointer()))
 }
 
 func (this *QVersionNumber) IsNull() bool {
@@ -192,8 +179,7 @@ func (this *QVersionNumber) GoGC() {
 }
 
 type QTypeRevision struct {
-	h          *C.QTypeRevision
-	isSubclass bool
+	h *C.QTypeRevision
 }
 
 func (this *QTypeRevision) cPointer() *C.QTypeRevision {
@@ -227,17 +213,13 @@ func UnsafeNewQTypeRevision(h unsafe.Pointer) *QTypeRevision {
 // NewQTypeRevision constructs a new QTypeRevision object.
 func NewQTypeRevision() *QTypeRevision {
 
-	ret := newQTypeRevision(C.QTypeRevision_new())
-	ret.isSubclass = true
-	return ret
+	return newQTypeRevision(C.QTypeRevision_new())
 }
 
 // NewQTypeRevision2 constructs a new QTypeRevision object.
 func NewQTypeRevision2(param1 *QTypeRevision) *QTypeRevision {
 
-	ret := newQTypeRevision(C.QTypeRevision_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTypeRevision(C.QTypeRevision_new2(param1.cPointer()))
 }
 
 func QTypeRevision_Zero() *QTypeRevision {

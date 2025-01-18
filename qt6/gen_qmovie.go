@@ -30,8 +30,7 @@ const (
 )
 
 type QMovie struct {
-	h          *C.QMovie
-	isSubclass bool
+	h *C.QMovie
 	*QObject
 }
 
@@ -69,17 +68,13 @@ func UnsafeNewQMovie(h unsafe.Pointer) *QMovie {
 // NewQMovie constructs a new QMovie object.
 func NewQMovie() *QMovie {
 
-	ret := newQMovie(C.QMovie_new())
-	ret.isSubclass = true
-	return ret
+	return newQMovie(C.QMovie_new())
 }
 
 // NewQMovie2 constructs a new QMovie object.
 func NewQMovie2(device *QIODevice) *QMovie {
 
-	ret := newQMovie(C.QMovie_new2(device.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQMovie(C.QMovie_new2(device.cPointer()))
 }
 
 // NewQMovie3 constructs a new QMovie object.
@@ -89,17 +84,13 @@ func NewQMovie3(fileName string) *QMovie {
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 
-	ret := newQMovie(C.QMovie_new3(fileName_ms))
-	ret.isSubclass = true
-	return ret
+	return newQMovie(C.QMovie_new3(fileName_ms))
 }
 
 // NewQMovie4 constructs a new QMovie object.
 func NewQMovie4(parent *QObject) *QMovie {
 
-	ret := newQMovie(C.QMovie_new4(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQMovie(C.QMovie_new4(parent.cPointer()))
 }
 
 // NewQMovie5 constructs a new QMovie object.
@@ -108,9 +99,7 @@ func NewQMovie5(device *QIODevice, format []byte) *QMovie {
 	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
 	format_alias.len = C.size_t(len(format))
 
-	ret := newQMovie(C.QMovie_new5(device.cPointer(), format_alias))
-	ret.isSubclass = true
-	return ret
+	return newQMovie(C.QMovie_new5(device.cPointer(), format_alias))
 }
 
 // NewQMovie6 constructs a new QMovie object.
@@ -119,9 +108,7 @@ func NewQMovie6(device *QIODevice, format []byte, parent *QObject) *QMovie {
 	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
 	format_alias.len = C.size_t(len(format))
 
-	ret := newQMovie(C.QMovie_new6(device.cPointer(), format_alias, parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQMovie(C.QMovie_new6(device.cPointer(), format_alias, parent.cPointer()))
 }
 
 // NewQMovie7 constructs a new QMovie object.
@@ -134,9 +121,7 @@ func NewQMovie7(fileName string, format []byte) *QMovie {
 	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
 	format_alias.len = C.size_t(len(format))
 
-	ret := newQMovie(C.QMovie_new7(fileName_ms, format_alias))
-	ret.isSubclass = true
-	return ret
+	return newQMovie(C.QMovie_new7(fileName_ms, format_alias))
 }
 
 // NewQMovie8 constructs a new QMovie object.
@@ -149,9 +134,7 @@ func NewQMovie8(fileName string, format []byte, parent *QObject) *QMovie {
 	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
 	format_alias.len = C.size_t(len(format))
 
-	ret := newQMovie(C.QMovie_new8(fileName_ms, format_alias, parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQMovie(C.QMovie_new8(fileName_ms, format_alias, parent.cPointer()))
 }
 
 func (this *QMovie) MetaObject() *QMetaObject {
@@ -494,10 +477,10 @@ func (this *QMovie) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QMovie) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QMovie_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QMovie_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMovie_Event
@@ -522,10 +505,10 @@ func (this *QMovie) callVirtualBase_EventFilter(watched *QObject, event *QEvent)
 
 }
 func (this *QMovie) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QMovie_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QMovie_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMovie_EventFilter
@@ -552,10 +535,10 @@ func (this *QMovie) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QMovie) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QMovie_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QMovie_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMovie_TimerEvent
@@ -578,10 +561,10 @@ func (this *QMovie) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QMovie) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QMovie_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QMovie_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMovie_ChildEvent
@@ -604,10 +587,10 @@ func (this *QMovie) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QMovie) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QMovie_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QMovie_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMovie_CustomEvent
@@ -630,10 +613,10 @@ func (this *QMovie) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QMovie) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QMovie_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QMovie_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMovie_ConnectNotify
@@ -656,10 +639,10 @@ func (this *QMovie) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QMovie) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QMovie_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QMovie_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMovie_DisconnectNotify

@@ -65,11 +65,11 @@ void QSslServer_connect_StartedEncryptionHandshake(QSslServer* self, intptr_t sl
 void QSslServer_IncomingConnection(QSslServer* self, intptr_t socket);
 struct miqt_string QSslServer_Tr2(const char* s, const char* c);
 struct miqt_string QSslServer_Tr3(const char* s, const char* c, int n);
-void QSslServer_override_virtual_IncomingConnection(void* self, intptr_t slot);
+bool QSslServer_override_virtual_IncomingConnection(void* self, intptr_t slot);
 void QSslServer_virtualbase_IncomingConnection(void* self, intptr_t socket);
-void QSslServer_override_virtual_HasPendingConnections(void* self, intptr_t slot);
+bool QSslServer_override_virtual_HasPendingConnections(void* self, intptr_t slot);
 bool QSslServer_virtualbase_HasPendingConnections(const void* self);
-void QSslServer_override_virtual_NextPendingConnection(void* self, intptr_t slot);
+bool QSslServer_override_virtual_NextPendingConnection(void* self, intptr_t slot);
 QTcpSocket* QSslServer_virtualbase_NextPendingConnection(void* self);
 void QSslServer_Delete(QSslServer* self);
 

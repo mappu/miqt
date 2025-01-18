@@ -23,8 +23,7 @@ const (
 )
 
 type QGraphicsSceneEvent struct {
-	h          *C.QGraphicsSceneEvent
-	isSubclass bool
+	h *C.QGraphicsSceneEvent
 	*QEvent
 }
 
@@ -62,9 +61,7 @@ func UnsafeNewQGraphicsSceneEvent(h unsafe.Pointer) *QGraphicsSceneEvent {
 // NewQGraphicsSceneEvent constructs a new QGraphicsSceneEvent object.
 func NewQGraphicsSceneEvent(typeVal QEvent__Type) *QGraphicsSceneEvent {
 
-	ret := newQGraphicsSceneEvent(C.QGraphicsSceneEvent_new((C.int)(typeVal)))
-	ret.isSubclass = true
-	return ret
+	return newQGraphicsSceneEvent(C.QGraphicsSceneEvent_new((C.int)(typeVal)))
 }
 
 func (this *QGraphicsSceneEvent) Widget() *QWidget {
@@ -89,10 +86,10 @@ func (this *QGraphicsSceneEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 }
 func (this *QGraphicsSceneEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
-	if !this.isSubclass {
+	ok := C.QGraphicsSceneEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGraphicsSceneEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsSceneEvent_SetAccepted
@@ -115,10 +112,10 @@ func (this *QGraphicsSceneEvent) callVirtualBase_Clone() *QEvent {
 
 }
 func (this *QGraphicsSceneEvent) OnClone(slot func(super func() *QEvent) *QEvent) {
-	if !this.isSubclass {
+	ok := C.QGraphicsSceneEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGraphicsSceneEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsSceneEvent_Clone
@@ -149,8 +146,7 @@ func (this *QGraphicsSceneEvent) GoGC() {
 }
 
 type QGraphicsSceneMouseEvent struct {
-	h          *C.QGraphicsSceneMouseEvent
-	isSubclass bool
+	h *C.QGraphicsSceneMouseEvent
 	*QGraphicsSceneEvent
 }
 
@@ -188,17 +184,13 @@ func UnsafeNewQGraphicsSceneMouseEvent(h unsafe.Pointer) *QGraphicsSceneMouseEve
 // NewQGraphicsSceneMouseEvent constructs a new QGraphicsSceneMouseEvent object.
 func NewQGraphicsSceneMouseEvent() *QGraphicsSceneMouseEvent {
 
-	ret := newQGraphicsSceneMouseEvent(C.QGraphicsSceneMouseEvent_new())
-	ret.isSubclass = true
-	return ret
+	return newQGraphicsSceneMouseEvent(C.QGraphicsSceneMouseEvent_new())
 }
 
 // NewQGraphicsSceneMouseEvent2 constructs a new QGraphicsSceneMouseEvent object.
 func NewQGraphicsSceneMouseEvent2(typeVal QEvent__Type) *QGraphicsSceneMouseEvent {
 
-	ret := newQGraphicsSceneMouseEvent(C.QGraphicsSceneMouseEvent_new2((C.int)(typeVal)))
-	ret.isSubclass = true
-	return ret
+	return newQGraphicsSceneMouseEvent(C.QGraphicsSceneMouseEvent_new2((C.int)(typeVal)))
 }
 
 func (this *QGraphicsSceneMouseEvent) Pos() *QPointF {
@@ -346,8 +338,7 @@ func (this *QGraphicsSceneMouseEvent) GoGC() {
 }
 
 type QGraphicsSceneWheelEvent struct {
-	h          *C.QGraphicsSceneWheelEvent
-	isSubclass bool
+	h *C.QGraphicsSceneWheelEvent
 	*QGraphicsSceneEvent
 }
 
@@ -385,17 +376,13 @@ func UnsafeNewQGraphicsSceneWheelEvent(h unsafe.Pointer) *QGraphicsSceneWheelEve
 // NewQGraphicsSceneWheelEvent constructs a new QGraphicsSceneWheelEvent object.
 func NewQGraphicsSceneWheelEvent() *QGraphicsSceneWheelEvent {
 
-	ret := newQGraphicsSceneWheelEvent(C.QGraphicsSceneWheelEvent_new())
-	ret.isSubclass = true
-	return ret
+	return newQGraphicsSceneWheelEvent(C.QGraphicsSceneWheelEvent_new())
 }
 
 // NewQGraphicsSceneWheelEvent2 constructs a new QGraphicsSceneWheelEvent object.
 func NewQGraphicsSceneWheelEvent2(typeVal QEvent__Type) *QGraphicsSceneWheelEvent {
 
-	ret := newQGraphicsSceneWheelEvent(C.QGraphicsSceneWheelEvent_new2((C.int)(typeVal)))
-	ret.isSubclass = true
-	return ret
+	return newQGraphicsSceneWheelEvent(C.QGraphicsSceneWheelEvent_new2((C.int)(typeVal)))
 }
 
 func (this *QGraphicsSceneWheelEvent) Pos() *QPointF {
@@ -501,8 +488,7 @@ func (this *QGraphicsSceneWheelEvent) GoGC() {
 }
 
 type QGraphicsSceneContextMenuEvent struct {
-	h          *C.QGraphicsSceneContextMenuEvent
-	isSubclass bool
+	h *C.QGraphicsSceneContextMenuEvent
 	*QGraphicsSceneEvent
 }
 
@@ -540,17 +526,13 @@ func UnsafeNewQGraphicsSceneContextMenuEvent(h unsafe.Pointer) *QGraphicsSceneCo
 // NewQGraphicsSceneContextMenuEvent constructs a new QGraphicsSceneContextMenuEvent object.
 func NewQGraphicsSceneContextMenuEvent() *QGraphicsSceneContextMenuEvent {
 
-	ret := newQGraphicsSceneContextMenuEvent(C.QGraphicsSceneContextMenuEvent_new())
-	ret.isSubclass = true
-	return ret
+	return newQGraphicsSceneContextMenuEvent(C.QGraphicsSceneContextMenuEvent_new())
 }
 
 // NewQGraphicsSceneContextMenuEvent2 constructs a new QGraphicsSceneContextMenuEvent object.
 func NewQGraphicsSceneContextMenuEvent2(typeVal QEvent__Type) *QGraphicsSceneContextMenuEvent {
 
-	ret := newQGraphicsSceneContextMenuEvent(C.QGraphicsSceneContextMenuEvent_new2((C.int)(typeVal)))
-	ret.isSubclass = true
-	return ret
+	return newQGraphicsSceneContextMenuEvent(C.QGraphicsSceneContextMenuEvent_new2((C.int)(typeVal)))
 }
 
 func (this *QGraphicsSceneContextMenuEvent) Pos() *QPointF {
@@ -614,8 +596,7 @@ func (this *QGraphicsSceneContextMenuEvent) GoGC() {
 }
 
 type QGraphicsSceneHoverEvent struct {
-	h          *C.QGraphicsSceneHoverEvent
-	isSubclass bool
+	h *C.QGraphicsSceneHoverEvent
 	*QGraphicsSceneEvent
 }
 
@@ -653,17 +634,13 @@ func UnsafeNewQGraphicsSceneHoverEvent(h unsafe.Pointer) *QGraphicsSceneHoverEve
 // NewQGraphicsSceneHoverEvent constructs a new QGraphicsSceneHoverEvent object.
 func NewQGraphicsSceneHoverEvent() *QGraphicsSceneHoverEvent {
 
-	ret := newQGraphicsSceneHoverEvent(C.QGraphicsSceneHoverEvent_new())
-	ret.isSubclass = true
-	return ret
+	return newQGraphicsSceneHoverEvent(C.QGraphicsSceneHoverEvent_new())
 }
 
 // NewQGraphicsSceneHoverEvent2 constructs a new QGraphicsSceneHoverEvent object.
 func NewQGraphicsSceneHoverEvent2(typeVal QEvent__Type) *QGraphicsSceneHoverEvent {
 
-	ret := newQGraphicsSceneHoverEvent(C.QGraphicsSceneHoverEvent_new2((C.int)(typeVal)))
-	ret.isSubclass = true
-	return ret
+	return newQGraphicsSceneHoverEvent(C.QGraphicsSceneHoverEvent_new2((C.int)(typeVal)))
 }
 
 func (this *QGraphicsSceneHoverEvent) Pos() *QPointF {
@@ -749,8 +726,7 @@ func (this *QGraphicsSceneHoverEvent) GoGC() {
 }
 
 type QGraphicsSceneHelpEvent struct {
-	h          *C.QGraphicsSceneHelpEvent
-	isSubclass bool
+	h *C.QGraphicsSceneHelpEvent
 	*QGraphicsSceneEvent
 }
 
@@ -788,17 +764,13 @@ func UnsafeNewQGraphicsSceneHelpEvent(h unsafe.Pointer) *QGraphicsSceneHelpEvent
 // NewQGraphicsSceneHelpEvent constructs a new QGraphicsSceneHelpEvent object.
 func NewQGraphicsSceneHelpEvent() *QGraphicsSceneHelpEvent {
 
-	ret := newQGraphicsSceneHelpEvent(C.QGraphicsSceneHelpEvent_new())
-	ret.isSubclass = true
-	return ret
+	return newQGraphicsSceneHelpEvent(C.QGraphicsSceneHelpEvent_new())
 }
 
 // NewQGraphicsSceneHelpEvent2 constructs a new QGraphicsSceneHelpEvent object.
 func NewQGraphicsSceneHelpEvent2(typeVal QEvent__Type) *QGraphicsSceneHelpEvent {
 
-	ret := newQGraphicsSceneHelpEvent(C.QGraphicsSceneHelpEvent_new2((C.int)(typeVal)))
-	ret.isSubclass = true
-	return ret
+	return newQGraphicsSceneHelpEvent(C.QGraphicsSceneHelpEvent_new2((C.int)(typeVal)))
 }
 
 func (this *QGraphicsSceneHelpEvent) ScenePos() *QPointF {
@@ -836,8 +808,7 @@ func (this *QGraphicsSceneHelpEvent) GoGC() {
 }
 
 type QGraphicsSceneDragDropEvent struct {
-	h          *C.QGraphicsSceneDragDropEvent
-	isSubclass bool
+	h *C.QGraphicsSceneDragDropEvent
 	*QGraphicsSceneEvent
 }
 
@@ -875,17 +846,13 @@ func UnsafeNewQGraphicsSceneDragDropEvent(h unsafe.Pointer) *QGraphicsSceneDragD
 // NewQGraphicsSceneDragDropEvent constructs a new QGraphicsSceneDragDropEvent object.
 func NewQGraphicsSceneDragDropEvent() *QGraphicsSceneDragDropEvent {
 
-	ret := newQGraphicsSceneDragDropEvent(C.QGraphicsSceneDragDropEvent_new())
-	ret.isSubclass = true
-	return ret
+	return newQGraphicsSceneDragDropEvent(C.QGraphicsSceneDragDropEvent_new())
 }
 
 // NewQGraphicsSceneDragDropEvent2 constructs a new QGraphicsSceneDragDropEvent object.
 func NewQGraphicsSceneDragDropEvent2(typeVal QEvent__Type) *QGraphicsSceneDragDropEvent {
 
-	ret := newQGraphicsSceneDragDropEvent(C.QGraphicsSceneDragDropEvent_new2((C.int)(typeVal)))
-	ret.isSubclass = true
-	return ret
+	return newQGraphicsSceneDragDropEvent(C.QGraphicsSceneDragDropEvent_new2((C.int)(typeVal)))
 }
 
 func (this *QGraphicsSceneDragDropEvent) Pos() *QPointF {
@@ -993,8 +960,7 @@ func (this *QGraphicsSceneDragDropEvent) GoGC() {
 }
 
 type QGraphicsSceneResizeEvent struct {
-	h          *C.QGraphicsSceneResizeEvent
-	isSubclass bool
+	h *C.QGraphicsSceneResizeEvent
 	*QGraphicsSceneEvent
 }
 
@@ -1032,9 +998,7 @@ func UnsafeNewQGraphicsSceneResizeEvent(h unsafe.Pointer) *QGraphicsSceneResizeE
 // NewQGraphicsSceneResizeEvent constructs a new QGraphicsSceneResizeEvent object.
 func NewQGraphicsSceneResizeEvent() *QGraphicsSceneResizeEvent {
 
-	ret := newQGraphicsSceneResizeEvent(C.QGraphicsSceneResizeEvent_new())
-	ret.isSubclass = true
-	return ret
+	return newQGraphicsSceneResizeEvent(C.QGraphicsSceneResizeEvent_new())
 }
 
 func (this *QGraphicsSceneResizeEvent) OldSize() *QSizeF {
@@ -1072,8 +1036,7 @@ func (this *QGraphicsSceneResizeEvent) GoGC() {
 }
 
 type QGraphicsSceneMoveEvent struct {
-	h          *C.QGraphicsSceneMoveEvent
-	isSubclass bool
+	h *C.QGraphicsSceneMoveEvent
 	*QGraphicsSceneEvent
 }
 
@@ -1111,9 +1074,7 @@ func UnsafeNewQGraphicsSceneMoveEvent(h unsafe.Pointer) *QGraphicsSceneMoveEvent
 // NewQGraphicsSceneMoveEvent constructs a new QGraphicsSceneMoveEvent object.
 func NewQGraphicsSceneMoveEvent() *QGraphicsSceneMoveEvent {
 
-	ret := newQGraphicsSceneMoveEvent(C.QGraphicsSceneMoveEvent_new())
-	ret.isSubclass = true
-	return ret
+	return newQGraphicsSceneMoveEvent(C.QGraphicsSceneMoveEvent_new())
 }
 
 func (this *QGraphicsSceneMoveEvent) OldPos() *QPointF {

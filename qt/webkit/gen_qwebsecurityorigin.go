@@ -22,8 +22,7 @@ const (
 )
 
 type QWebSecurityOrigin struct {
-	h          *C.QWebSecurityOrigin
-	isSubclass bool
+	h *C.QWebSecurityOrigin
 }
 
 func (this *QWebSecurityOrigin) cPointer() *C.QWebSecurityOrigin {
@@ -57,17 +56,13 @@ func UnsafeNewQWebSecurityOrigin(h unsafe.Pointer) *QWebSecurityOrigin {
 // NewQWebSecurityOrigin constructs a new QWebSecurityOrigin object.
 func NewQWebSecurityOrigin(url *qt.QUrl) *QWebSecurityOrigin {
 
-	ret := newQWebSecurityOrigin(C.QWebSecurityOrigin_new((*C.QUrl)(url.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQWebSecurityOrigin(C.QWebSecurityOrigin_new((*C.QUrl)(url.UnsafePointer())))
 }
 
 // NewQWebSecurityOrigin2 constructs a new QWebSecurityOrigin object.
 func NewQWebSecurityOrigin2(other *QWebSecurityOrigin) *QWebSecurityOrigin {
 
-	ret := newQWebSecurityOrigin(C.QWebSecurityOrigin_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebSecurityOrigin(C.QWebSecurityOrigin_new2(other.cPointer()))
 }
 
 func QWebSecurityOrigin_AllOrigins() []QWebSecurityOrigin {

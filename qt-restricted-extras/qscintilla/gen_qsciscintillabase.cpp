@@ -1439,240 +1439,420 @@ long QsciScintillaBase_SendScintilla32(const QsciScintillaBase* self, unsigned i
 	return self->SendScintilla(static_cast<unsigned int>(msg), static_cast<unsigned long>(wParam), static_cast<long>(lParam));
 }
 
-void QsciScintillaBase_override_virtual_CanInsertFromMimeData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__CanInsertFromMimeData = slot;
+bool QsciScintillaBase_override_virtual_CanInsertFromMimeData(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CanInsertFromMimeData = slot;
+	return true;
 }
 
 bool QsciScintillaBase_virtualbase_CanInsertFromMimeData(const void* self, QMimeData* source) {
 	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_CanInsertFromMimeData(source);
 }
 
-void QsciScintillaBase_override_virtual_FromMimeData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__FromMimeData = slot;
+bool QsciScintillaBase_override_virtual_FromMimeData(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FromMimeData = slot;
+	return true;
 }
 
 struct miqt_string QsciScintillaBase_virtualbase_FromMimeData(const void* self, QMimeData* source, bool* rectangular) {
 	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_FromMimeData(source, rectangular);
 }
 
-void QsciScintillaBase_override_virtual_ToMimeData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__ToMimeData = slot;
+bool QsciScintillaBase_override_virtual_ToMimeData(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ToMimeData = slot;
+	return true;
 }
 
 QMimeData* QsciScintillaBase_virtualbase_ToMimeData(const void* self, struct miqt_string text, bool rectangular) {
 	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_ToMimeData(text, rectangular);
 }
 
-void QsciScintillaBase_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__ChangeEvent = slot;
+bool QsciScintillaBase_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QsciScintillaBase_virtualbase_ChangeEvent(void* self, QEvent* e) {
 	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_ChangeEvent(e);
 }
 
-void QsciScintillaBase_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__ContextMenuEvent = slot;
+bool QsciScintillaBase_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QsciScintillaBase_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* e) {
 	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_ContextMenuEvent(e);
 }
 
-void QsciScintillaBase_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__DragEnterEvent = slot;
+bool QsciScintillaBase_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragEnterEvent = slot;
+	return true;
 }
 
 void QsciScintillaBase_virtualbase_DragEnterEvent(void* self, QDragEnterEvent* e) {
 	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_DragEnterEvent(e);
 }
 
-void QsciScintillaBase_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__DragLeaveEvent = slot;
+bool QsciScintillaBase_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragLeaveEvent = slot;
+	return true;
 }
 
 void QsciScintillaBase_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* e) {
 	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_DragLeaveEvent(e);
 }
 
-void QsciScintillaBase_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__DragMoveEvent = slot;
+bool QsciScintillaBase_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragMoveEvent = slot;
+	return true;
 }
 
 void QsciScintillaBase_virtualbase_DragMoveEvent(void* self, QDragMoveEvent* e) {
 	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_DragMoveEvent(e);
 }
 
-void QsciScintillaBase_override_virtual_DropEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__DropEvent = slot;
+bool QsciScintillaBase_override_virtual_DropEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropEvent = slot;
+	return true;
 }
 
 void QsciScintillaBase_virtualbase_DropEvent(void* self, QDropEvent* e) {
 	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_DropEvent(e);
 }
 
-void QsciScintillaBase_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__FocusInEvent = slot;
+bool QsciScintillaBase_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QsciScintillaBase_virtualbase_FocusInEvent(void* self, QFocusEvent* e) {
 	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_FocusInEvent(e);
 }
 
-void QsciScintillaBase_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__FocusOutEvent = slot;
+bool QsciScintillaBase_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
 }
 
 void QsciScintillaBase_virtualbase_FocusOutEvent(void* self, QFocusEvent* e) {
 	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_FocusOutEvent(e);
 }
 
-void QsciScintillaBase_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__FocusNextPrevChild = slot;
+bool QsciScintillaBase_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusNextPrevChild = slot;
+	return true;
 }
 
 bool QsciScintillaBase_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QsciScintillaBase_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__KeyPressEvent = slot;
+bool QsciScintillaBase_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QsciScintillaBase_virtualbase_KeyPressEvent(void* self, QKeyEvent* e) {
 	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_KeyPressEvent(e);
 }
 
-void QsciScintillaBase_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__InputMethodEvent = slot;
+bool QsciScintillaBase_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodEvent = slot;
+	return true;
 }
 
 void QsciScintillaBase_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* event) {
 	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_InputMethodEvent(event);
 }
 
-void QsciScintillaBase_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__InputMethodQuery = slot;
+bool QsciScintillaBase_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodQuery = slot;
+	return true;
 }
 
 QVariant* QsciScintillaBase_virtualbase_InputMethodQuery(const void* self, int query) {
 	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_InputMethodQuery(query);
 }
 
-void QsciScintillaBase_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__MouseDoubleClickEvent = slot;
+bool QsciScintillaBase_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseDoubleClickEvent = slot;
+	return true;
 }
 
 void QsciScintillaBase_virtualbase_MouseDoubleClickEvent(void* self, QMouseEvent* e) {
 	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_MouseDoubleClickEvent(e);
 }
 
-void QsciScintillaBase_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__MouseMoveEvent = slot;
+bool QsciScintillaBase_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QsciScintillaBase_virtualbase_MouseMoveEvent(void* self, QMouseEvent* e) {
 	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_MouseMoveEvent(e);
 }
 
-void QsciScintillaBase_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__MousePressEvent = slot;
+bool QsciScintillaBase_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QsciScintillaBase_virtualbase_MousePressEvent(void* self, QMouseEvent* e) {
 	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_MousePressEvent(e);
 }
 
-void QsciScintillaBase_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__MouseReleaseEvent = slot;
+bool QsciScintillaBase_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QsciScintillaBase_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* e) {
 	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_MouseReleaseEvent(e);
 }
 
-void QsciScintillaBase_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__PaintEvent = slot;
+bool QsciScintillaBase_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QsciScintillaBase_virtualbase_PaintEvent(void* self, QPaintEvent* e) {
 	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_PaintEvent(e);
 }
 
-void QsciScintillaBase_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__ResizeEvent = slot;
+bool QsciScintillaBase_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QsciScintillaBase_virtualbase_ResizeEvent(void* self, QResizeEvent* e) {
 	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_ResizeEvent(e);
 }
 
-void QsciScintillaBase_override_virtual_ScrollContentsBy(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__ScrollContentsBy = slot;
+bool QsciScintillaBase_override_virtual_ScrollContentsBy(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ScrollContentsBy = slot;
+	return true;
 }
 
 void QsciScintillaBase_virtualbase_ScrollContentsBy(void* self, int dx, int dy) {
 	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_ScrollContentsBy(dx, dy);
 }
 
-void QsciScintillaBase_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__MinimumSizeHint = slot;
+bool QsciScintillaBase_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QsciScintillaBase_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QsciScintillaBase_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__SizeHint = slot;
+bool QsciScintillaBase_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QsciScintillaBase_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_SizeHint();
 }
 
-void QsciScintillaBase_override_virtual_SetupViewport(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__SetupViewport = slot;
+bool QsciScintillaBase_override_virtual_SetupViewport(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetupViewport = slot;
+	return true;
 }
 
 void QsciScintillaBase_virtualbase_SetupViewport(void* self, QWidget* viewport) {
 	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_SetupViewport(viewport);
 }
 
-void QsciScintillaBase_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__EventFilter = slot;
+bool QsciScintillaBase_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QsciScintillaBase_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2) {
 	return ( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_EventFilter(param1, param2);
 }
 
-void QsciScintillaBase_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__Event = slot;
+bool QsciScintillaBase_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QsciScintillaBase_virtualbase_Event(void* self, QEvent* param1) {
 	return ( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_Event(param1);
 }
 
-void QsciScintillaBase_override_virtual_ViewportEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__ViewportEvent = slot;
+bool QsciScintillaBase_override_virtual_ViewportEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ViewportEvent = slot;
+	return true;
 }
 
 bool QsciScintillaBase_virtualbase_ViewportEvent(void* self, QEvent* param1) {
 	return ( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_ViewportEvent(param1);
 }
 
-void QsciScintillaBase_override_virtual_WheelEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__WheelEvent = slot;
+bool QsciScintillaBase_override_virtual_WheelEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WheelEvent = slot;
+	return true;
 }
 
 void QsciScintillaBase_virtualbase_WheelEvent(void* self, QWheelEvent* param1) {
 	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_WheelEvent(param1);
 }
 
-void QsciScintillaBase_override_virtual_ViewportSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) )->handle__ViewportSizeHint = slot;
+bool QsciScintillaBase_override_virtual_ViewportSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ViewportSizeHint = slot;
+	return true;
 }
 
 QSize* QsciScintillaBase_virtualbase_ViewportSizeHint(const void* self) {

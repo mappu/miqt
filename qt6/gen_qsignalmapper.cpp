@@ -342,56 +342,98 @@ struct miqt_string QSignalMapper_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QSignalMapper_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSignalMapper*>( (QSignalMapper*)(self) )->handle__Event = slot;
+bool QSignalMapper_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQSignalMapper* self_cast = dynamic_cast<MiqtVirtualQSignalMapper*>( (QSignalMapper*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QSignalMapper_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQSignalMapper*)(self) )->virtualbase_Event(event);
 }
 
-void QSignalMapper_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSignalMapper*>( (QSignalMapper*)(self) )->handle__EventFilter = slot;
+bool QSignalMapper_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQSignalMapper* self_cast = dynamic_cast<MiqtVirtualQSignalMapper*>( (QSignalMapper*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QSignalMapper_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQSignalMapper*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QSignalMapper_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSignalMapper*>( (QSignalMapper*)(self) )->handle__TimerEvent = slot;
+bool QSignalMapper_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSignalMapper* self_cast = dynamic_cast<MiqtVirtualQSignalMapper*>( (QSignalMapper*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QSignalMapper_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQSignalMapper*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QSignalMapper_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSignalMapper*>( (QSignalMapper*)(self) )->handle__ChildEvent = slot;
+bool QSignalMapper_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSignalMapper* self_cast = dynamic_cast<MiqtVirtualQSignalMapper*>( (QSignalMapper*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QSignalMapper_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQSignalMapper*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QSignalMapper_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSignalMapper*>( (QSignalMapper*)(self) )->handle__CustomEvent = slot;
+bool QSignalMapper_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSignalMapper* self_cast = dynamic_cast<MiqtVirtualQSignalMapper*>( (QSignalMapper*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QSignalMapper_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQSignalMapper*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QSignalMapper_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSignalMapper*>( (QSignalMapper*)(self) )->handle__ConnectNotify = slot;
+bool QSignalMapper_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQSignalMapper* self_cast = dynamic_cast<MiqtVirtualQSignalMapper*>( (QSignalMapper*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QSignalMapper_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSignalMapper*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QSignalMapper_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSignalMapper*>( (QSignalMapper*)(self) )->handle__DisconnectNotify = slot;
+bool QSignalMapper_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQSignalMapper* self_cast = dynamic_cast<MiqtVirtualQSignalMapper*>( (QSignalMapper*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QSignalMapper_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

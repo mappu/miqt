@@ -43,8 +43,7 @@ const (
 )
 
 type QTextOption struct {
-	h          *C.QTextOption
-	isSubclass bool
+	h *C.QTextOption
 }
 
 func (this *QTextOption) cPointer() *C.QTextOption {
@@ -78,25 +77,19 @@ func UnsafeNewQTextOption(h unsafe.Pointer) *QTextOption {
 // NewQTextOption constructs a new QTextOption object.
 func NewQTextOption() *QTextOption {
 
-	ret := newQTextOption(C.QTextOption_new())
-	ret.isSubclass = true
-	return ret
+	return newQTextOption(C.QTextOption_new())
 }
 
 // NewQTextOption2 constructs a new QTextOption object.
 func NewQTextOption2(alignment AlignmentFlag) *QTextOption {
 
-	ret := newQTextOption(C.QTextOption_new2((C.int)(alignment)))
-	ret.isSubclass = true
-	return ret
+	return newQTextOption(C.QTextOption_new2((C.int)(alignment)))
 }
 
 // NewQTextOption3 constructs a new QTextOption object.
 func NewQTextOption3(o *QTextOption) *QTextOption {
 
-	ret := newQTextOption(C.QTextOption_new3(o.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTextOption(C.QTextOption_new3(o.cPointer()))
 }
 
 func (this *QTextOption) OperatorAssign(o *QTextOption) {
@@ -216,8 +209,7 @@ func (this *QTextOption) GoGC() {
 }
 
 type QTextOption__Tab struct {
-	h          *C.QTextOption__Tab
-	isSubclass bool
+	h *C.QTextOption__Tab
 }
 
 func (this *QTextOption__Tab) cPointer() *C.QTextOption__Tab {
@@ -251,33 +243,25 @@ func UnsafeNewQTextOption__Tab(h unsafe.Pointer) *QTextOption__Tab {
 // NewQTextOption__Tab constructs a new QTextOption::Tab object.
 func NewQTextOption__Tab() *QTextOption__Tab {
 
-	ret := newQTextOption__Tab(C.QTextOption__Tab_new())
-	ret.isSubclass = true
-	return ret
+	return newQTextOption__Tab(C.QTextOption__Tab_new())
 }
 
 // NewQTextOption__Tab2 constructs a new QTextOption::Tab object.
 func NewQTextOption__Tab2(pos float64, tabType QTextOption__TabType) *QTextOption__Tab {
 
-	ret := newQTextOption__Tab(C.QTextOption__Tab_new2((C.double)(pos), (C.int)(tabType)))
-	ret.isSubclass = true
-	return ret
+	return newQTextOption__Tab(C.QTextOption__Tab_new2((C.double)(pos), (C.int)(tabType)))
 }
 
 // NewQTextOption__Tab3 constructs a new QTextOption::Tab object.
 func NewQTextOption__Tab3(param1 *QTextOption__Tab) *QTextOption__Tab {
 
-	ret := newQTextOption__Tab(C.QTextOption__Tab_new3(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTextOption__Tab(C.QTextOption__Tab_new3(param1.cPointer()))
 }
 
 // NewQTextOption__Tab4 constructs a new QTextOption::Tab object.
 func NewQTextOption__Tab4(pos float64, tabType QTextOption__TabType, delim QChar) *QTextOption__Tab {
 
-	ret := newQTextOption__Tab(C.QTextOption__Tab_new4((C.double)(pos), (C.int)(tabType), delim.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTextOption__Tab(C.QTextOption__Tab_new4((C.double)(pos), (C.int)(tabType), delim.cPointer()))
 }
 
 func (this *QTextOption__Tab) OperatorEqual(other *QTextOption__Tab) bool {

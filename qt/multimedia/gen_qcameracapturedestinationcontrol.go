@@ -16,8 +16,7 @@ import (
 )
 
 type QCameraCaptureDestinationControl struct {
-	h          *C.QCameraCaptureDestinationControl
-	isSubclass bool
+	h *C.QCameraCaptureDestinationControl
 	*QMediaControl
 }
 

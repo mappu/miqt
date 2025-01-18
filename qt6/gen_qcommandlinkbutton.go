@@ -15,8 +15,7 @@ import (
 )
 
 type QCommandLinkButton struct {
-	h          *C.QCommandLinkButton
-	isSubclass bool
+	h *C.QCommandLinkButton
 	*QPushButton
 }
 
@@ -54,17 +53,13 @@ func UnsafeNewQCommandLinkButton(h unsafe.Pointer) *QCommandLinkButton {
 // NewQCommandLinkButton constructs a new QCommandLinkButton object.
 func NewQCommandLinkButton(parent *QWidget) *QCommandLinkButton {
 
-	ret := newQCommandLinkButton(C.QCommandLinkButton_new(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQCommandLinkButton(C.QCommandLinkButton_new(parent.cPointer()))
 }
 
 // NewQCommandLinkButton2 constructs a new QCommandLinkButton object.
 func NewQCommandLinkButton2() *QCommandLinkButton {
 
-	ret := newQCommandLinkButton(C.QCommandLinkButton_new2())
-	ret.isSubclass = true
-	return ret
+	return newQCommandLinkButton(C.QCommandLinkButton_new2())
 }
 
 // NewQCommandLinkButton3 constructs a new QCommandLinkButton object.
@@ -74,9 +69,7 @@ func NewQCommandLinkButton3(text string) *QCommandLinkButton {
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQCommandLinkButton(C.QCommandLinkButton_new3(text_ms))
-	ret.isSubclass = true
-	return ret
+	return newQCommandLinkButton(C.QCommandLinkButton_new3(text_ms))
 }
 
 // NewQCommandLinkButton4 constructs a new QCommandLinkButton object.
@@ -90,9 +83,7 @@ func NewQCommandLinkButton4(text string, description string) *QCommandLinkButton
 	description_ms.len = C.size_t(len(description))
 	defer C.free(unsafe.Pointer(description_ms.data))
 
-	ret := newQCommandLinkButton(C.QCommandLinkButton_new4(text_ms, description_ms))
-	ret.isSubclass = true
-	return ret
+	return newQCommandLinkButton(C.QCommandLinkButton_new4(text_ms, description_ms))
 }
 
 // NewQCommandLinkButton5 constructs a new QCommandLinkButton object.
@@ -102,9 +93,7 @@ func NewQCommandLinkButton5(text string, parent *QWidget) *QCommandLinkButton {
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQCommandLinkButton(C.QCommandLinkButton_new5(text_ms, parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQCommandLinkButton(C.QCommandLinkButton_new5(text_ms, parent.cPointer()))
 }
 
 // NewQCommandLinkButton6 constructs a new QCommandLinkButton object.
@@ -118,9 +107,7 @@ func NewQCommandLinkButton6(text string, description string, parent *QWidget) *Q
 	description_ms.len = C.size_t(len(description))
 	defer C.free(unsafe.Pointer(description_ms.data))
 
-	ret := newQCommandLinkButton(C.QCommandLinkButton_new6(text_ms, description_ms, parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQCommandLinkButton(C.QCommandLinkButton_new6(text_ms, description_ms, parent.cPointer()))
 }
 
 func (this *QCommandLinkButton) MetaObject() *QMetaObject {
@@ -207,10 +194,10 @@ func (this *QCommandLinkButton) callVirtualBase_SizeHint() *QSize {
 
 }
 func (this *QCommandLinkButton) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	if !this.isSubclass {
+	ok := C.QCommandLinkButton_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QCommandLinkButton_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCommandLinkButton_SizeHint
@@ -232,10 +219,10 @@ func (this *QCommandLinkButton) callVirtualBase_HeightForWidth(param1 int) int {
 
 }
 func (this *QCommandLinkButton) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
-	if !this.isSubclass {
+	ok := C.QCommandLinkButton_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QCommandLinkButton_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCommandLinkButton_HeightForWidth
@@ -262,10 +249,10 @@ func (this *QCommandLinkButton) callVirtualBase_MinimumSizeHint() *QSize {
 
 }
 func (this *QCommandLinkButton) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
-	if !this.isSubclass {
+	ok := C.QCommandLinkButton_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QCommandLinkButton_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCommandLinkButton_MinimumSizeHint
@@ -287,10 +274,10 @@ func (this *QCommandLinkButton) callVirtualBase_InitStyleOption(option *QStyleOp
 
 }
 func (this *QCommandLinkButton) OnInitStyleOption(slot func(super func(option *QStyleOptionButton), option *QStyleOptionButton)) {
-	if !this.isSubclass {
+	ok := C.QCommandLinkButton_override_virtual_InitStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QCommandLinkButton_override_virtual_InitStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCommandLinkButton_InitStyleOption
@@ -313,10 +300,10 @@ func (this *QCommandLinkButton) callVirtualBase_Event(e *QEvent) bool {
 
 }
 func (this *QCommandLinkButton) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QCommandLinkButton_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QCommandLinkButton_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCommandLinkButton_Event
@@ -341,10 +328,10 @@ func (this *QCommandLinkButton) callVirtualBase_PaintEvent(param1 *QPaintEvent) 
 
 }
 func (this *QCommandLinkButton) OnPaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
-	if !this.isSubclass {
+	ok := C.QCommandLinkButton_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QCommandLinkButton_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCommandLinkButton_PaintEvent
@@ -367,10 +354,10 @@ func (this *QCommandLinkButton) callVirtualBase_KeyPressEvent(param1 *QKeyEvent)
 
 }
 func (this *QCommandLinkButton) OnKeyPressEvent(slot func(super func(param1 *QKeyEvent), param1 *QKeyEvent)) {
-	if !this.isSubclass {
+	ok := C.QCommandLinkButton_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QCommandLinkButton_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCommandLinkButton_KeyPressEvent
@@ -393,10 +380,10 @@ func (this *QCommandLinkButton) callVirtualBase_FocusInEvent(param1 *QFocusEvent
 
 }
 func (this *QCommandLinkButton) OnFocusInEvent(slot func(super func(param1 *QFocusEvent), param1 *QFocusEvent)) {
-	if !this.isSubclass {
+	ok := C.QCommandLinkButton_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QCommandLinkButton_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCommandLinkButton_FocusInEvent
@@ -419,10 +406,10 @@ func (this *QCommandLinkButton) callVirtualBase_FocusOutEvent(param1 *QFocusEven
 
 }
 func (this *QCommandLinkButton) OnFocusOutEvent(slot func(super func(param1 *QFocusEvent), param1 *QFocusEvent)) {
-	if !this.isSubclass {
+	ok := C.QCommandLinkButton_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QCommandLinkButton_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCommandLinkButton_FocusOutEvent
@@ -445,10 +432,10 @@ func (this *QCommandLinkButton) callVirtualBase_MouseMoveEvent(param1 *QMouseEve
 
 }
 func (this *QCommandLinkButton) OnMouseMoveEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QCommandLinkButton_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QCommandLinkButton_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCommandLinkButton_MouseMoveEvent
@@ -471,10 +458,10 @@ func (this *QCommandLinkButton) callVirtualBase_HitButton(pos *QPoint) bool {
 
 }
 func (this *QCommandLinkButton) OnHitButton(slot func(super func(pos *QPoint) bool, pos *QPoint) bool) {
-	if !this.isSubclass {
+	ok := C.QCommandLinkButton_override_virtual_HitButton(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QCommandLinkButton_override_virtual_HitButton(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCommandLinkButton_HitButton

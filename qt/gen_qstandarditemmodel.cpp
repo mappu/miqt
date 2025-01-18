@@ -733,56 +733,98 @@ void QStandardItem_SortChildren2(QStandardItem* self, int column, int order) {
 	self->sortChildren(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 }
 
-void QStandardItem_override_virtual_Data(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItem*>( (QStandardItem*)(self) )->handle__Data = slot;
+bool QStandardItem_override_virtual_Data(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItem* self_cast = dynamic_cast<MiqtVirtualQStandardItem*>( (QStandardItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Data = slot;
+	return true;
 }
 
 QVariant* QStandardItem_virtualbase_Data(const void* self, int role) {
 	return ( (const MiqtVirtualQStandardItem*)(self) )->virtualbase_Data(role);
 }
 
-void QStandardItem_override_virtual_SetData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItem*>( (QStandardItem*)(self) )->handle__SetData = slot;
+bool QStandardItem_override_virtual_SetData(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItem* self_cast = dynamic_cast<MiqtVirtualQStandardItem*>( (QStandardItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetData = slot;
+	return true;
 }
 
 void QStandardItem_virtualbase_SetData(void* self, QVariant* value, int role) {
 	( (MiqtVirtualQStandardItem*)(self) )->virtualbase_SetData(value, role);
 }
 
-void QStandardItem_override_virtual_Clone(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItem*>( (QStandardItem*)(self) )->handle__Clone = slot;
+bool QStandardItem_override_virtual_Clone(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItem* self_cast = dynamic_cast<MiqtVirtualQStandardItem*>( (QStandardItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Clone = slot;
+	return true;
 }
 
 QStandardItem* QStandardItem_virtualbase_Clone(const void* self) {
 	return ( (const MiqtVirtualQStandardItem*)(self) )->virtualbase_Clone();
 }
 
-void QStandardItem_override_virtual_Type(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItem*>( (QStandardItem*)(self) )->handle__Type = slot;
+bool QStandardItem_override_virtual_Type(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItem* self_cast = dynamic_cast<MiqtVirtualQStandardItem*>( (QStandardItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Type = slot;
+	return true;
 }
 
 int QStandardItem_virtualbase_Type(const void* self) {
 	return ( (const MiqtVirtualQStandardItem*)(self) )->virtualbase_Type();
 }
 
-void QStandardItem_override_virtual_Read(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItem*>( (QStandardItem*)(self) )->handle__Read = slot;
+bool QStandardItem_override_virtual_Read(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItem* self_cast = dynamic_cast<MiqtVirtualQStandardItem*>( (QStandardItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Read = slot;
+	return true;
 }
 
 void QStandardItem_virtualbase_Read(void* self, QDataStream* in) {
 	( (MiqtVirtualQStandardItem*)(self) )->virtualbase_Read(in);
 }
 
-void QStandardItem_override_virtual_Write(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItem*>( (QStandardItem*)(self) )->handle__Write = slot;
+bool QStandardItem_override_virtual_Write(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItem* self_cast = dynamic_cast<MiqtVirtualQStandardItem*>( (QStandardItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Write = slot;
+	return true;
 }
 
 void QStandardItem_virtualbase_Write(const void* self, QDataStream* out) {
 	( (const MiqtVirtualQStandardItem*)(self) )->virtualbase_Write(out);
 }
 
-void QStandardItem_override_virtual_OperatorLesser(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItem*>( (QStandardItem*)(self) )->handle__OperatorLesser = slot;
+bool QStandardItem_override_virtual_OperatorLesser(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItem* self_cast = dynamic_cast<MiqtVirtualQStandardItem*>( (QStandardItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__OperatorLesser = slot;
+	return true;
 }
 
 bool QStandardItem_virtualbase_OperatorLesser(const void* self, QStandardItem* other) {
@@ -2308,272 +2350,476 @@ struct miqt_array /* of QStandardItem* */  QStandardItemModel_FindItems3(const Q
 	return _out;
 }
 
-void QStandardItemModel_override_virtual_Index(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__Index = slot;
+bool QStandardItemModel_override_virtual_Index(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Index = slot;
+	return true;
 }
 
 QModelIndex* QStandardItemModel_virtualbase_Index(const void* self, int row, int column, QModelIndex* parent) {
 	return ( (const MiqtVirtualQStandardItemModel*)(self) )->virtualbase_Index(row, column, parent);
 }
 
-void QStandardItemModel_override_virtual_Parent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__Parent = slot;
+bool QStandardItemModel_override_virtual_Parent(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Parent = slot;
+	return true;
 }
 
 QModelIndex* QStandardItemModel_virtualbase_Parent(const void* self, QModelIndex* child) {
 	return ( (const MiqtVirtualQStandardItemModel*)(self) )->virtualbase_Parent(child);
 }
 
-void QStandardItemModel_override_virtual_RowCount(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__RowCount = slot;
+bool QStandardItemModel_override_virtual_RowCount(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RowCount = slot;
+	return true;
 }
 
 int QStandardItemModel_virtualbase_RowCount(const void* self, QModelIndex* parent) {
 	return ( (const MiqtVirtualQStandardItemModel*)(self) )->virtualbase_RowCount(parent);
 }
 
-void QStandardItemModel_override_virtual_ColumnCount(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__ColumnCount = slot;
+bool QStandardItemModel_override_virtual_ColumnCount(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ColumnCount = slot;
+	return true;
 }
 
 int QStandardItemModel_virtualbase_ColumnCount(const void* self, QModelIndex* parent) {
 	return ( (const MiqtVirtualQStandardItemModel*)(self) )->virtualbase_ColumnCount(parent);
 }
 
-void QStandardItemModel_override_virtual_HasChildren(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__HasChildren = slot;
+bool QStandardItemModel_override_virtual_HasChildren(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasChildren = slot;
+	return true;
 }
 
 bool QStandardItemModel_virtualbase_HasChildren(const void* self, QModelIndex* parent) {
 	return ( (const MiqtVirtualQStandardItemModel*)(self) )->virtualbase_HasChildren(parent);
 }
 
-void QStandardItemModel_override_virtual_Sibling(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__Sibling = slot;
+bool QStandardItemModel_override_virtual_Sibling(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Sibling = slot;
+	return true;
 }
 
 QModelIndex* QStandardItemModel_virtualbase_Sibling(const void* self, int row, int column, QModelIndex* idx) {
 	return ( (const MiqtVirtualQStandardItemModel*)(self) )->virtualbase_Sibling(row, column, idx);
 }
 
-void QStandardItemModel_override_virtual_Data(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__Data = slot;
+bool QStandardItemModel_override_virtual_Data(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Data = slot;
+	return true;
 }
 
 QVariant* QStandardItemModel_virtualbase_Data(const void* self, QModelIndex* index, int role) {
 	return ( (const MiqtVirtualQStandardItemModel*)(self) )->virtualbase_Data(index, role);
 }
 
-void QStandardItemModel_override_virtual_SetData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__SetData = slot;
+bool QStandardItemModel_override_virtual_SetData(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetData = slot;
+	return true;
 }
 
 bool QStandardItemModel_virtualbase_SetData(void* self, QModelIndex* index, QVariant* value, int role) {
 	return ( (MiqtVirtualQStandardItemModel*)(self) )->virtualbase_SetData(index, value, role);
 }
 
-void QStandardItemModel_override_virtual_HeaderData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__HeaderData = slot;
+bool QStandardItemModel_override_virtual_HeaderData(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeaderData = slot;
+	return true;
 }
 
 QVariant* QStandardItemModel_virtualbase_HeaderData(const void* self, int section, int orientation, int role) {
 	return ( (const MiqtVirtualQStandardItemModel*)(self) )->virtualbase_HeaderData(section, orientation, role);
 }
 
-void QStandardItemModel_override_virtual_SetHeaderData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__SetHeaderData = slot;
+bool QStandardItemModel_override_virtual_SetHeaderData(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetHeaderData = slot;
+	return true;
 }
 
 bool QStandardItemModel_virtualbase_SetHeaderData(void* self, int section, int orientation, QVariant* value, int role) {
 	return ( (MiqtVirtualQStandardItemModel*)(self) )->virtualbase_SetHeaderData(section, orientation, value, role);
 }
 
-void QStandardItemModel_override_virtual_InsertRows(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__InsertRows = slot;
+bool QStandardItemModel_override_virtual_InsertRows(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InsertRows = slot;
+	return true;
 }
 
 bool QStandardItemModel_virtualbase_InsertRows(void* self, int row, int count, QModelIndex* parent) {
 	return ( (MiqtVirtualQStandardItemModel*)(self) )->virtualbase_InsertRows(row, count, parent);
 }
 
-void QStandardItemModel_override_virtual_InsertColumns(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__InsertColumns = slot;
+bool QStandardItemModel_override_virtual_InsertColumns(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InsertColumns = slot;
+	return true;
 }
 
 bool QStandardItemModel_virtualbase_InsertColumns(void* self, int column, int count, QModelIndex* parent) {
 	return ( (MiqtVirtualQStandardItemModel*)(self) )->virtualbase_InsertColumns(column, count, parent);
 }
 
-void QStandardItemModel_override_virtual_RemoveRows(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__RemoveRows = slot;
+bool QStandardItemModel_override_virtual_RemoveRows(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RemoveRows = slot;
+	return true;
 }
 
 bool QStandardItemModel_virtualbase_RemoveRows(void* self, int row, int count, QModelIndex* parent) {
 	return ( (MiqtVirtualQStandardItemModel*)(self) )->virtualbase_RemoveRows(row, count, parent);
 }
 
-void QStandardItemModel_override_virtual_RemoveColumns(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__RemoveColumns = slot;
+bool QStandardItemModel_override_virtual_RemoveColumns(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RemoveColumns = slot;
+	return true;
 }
 
 bool QStandardItemModel_virtualbase_RemoveColumns(void* self, int column, int count, QModelIndex* parent) {
 	return ( (MiqtVirtualQStandardItemModel*)(self) )->virtualbase_RemoveColumns(column, count, parent);
 }
 
-void QStandardItemModel_override_virtual_Flags(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__Flags = slot;
+bool QStandardItemModel_override_virtual_Flags(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Flags = slot;
+	return true;
 }
 
 int QStandardItemModel_virtualbase_Flags(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQStandardItemModel*)(self) )->virtualbase_Flags(index);
 }
 
-void QStandardItemModel_override_virtual_SupportedDropActions(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__SupportedDropActions = slot;
+bool QStandardItemModel_override_virtual_SupportedDropActions(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SupportedDropActions = slot;
+	return true;
 }
 
 int QStandardItemModel_virtualbase_SupportedDropActions(const void* self) {
 	return ( (const MiqtVirtualQStandardItemModel*)(self) )->virtualbase_SupportedDropActions();
 }
 
-void QStandardItemModel_override_virtual_ItemData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__ItemData = slot;
+bool QStandardItemModel_override_virtual_ItemData(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ItemData = slot;
+	return true;
 }
 
 struct miqt_map /* of int to QVariant* */  QStandardItemModel_virtualbase_ItemData(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQStandardItemModel*)(self) )->virtualbase_ItemData(index);
 }
 
-void QStandardItemModel_override_virtual_SetItemData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__SetItemData = slot;
+bool QStandardItemModel_override_virtual_SetItemData(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetItemData = slot;
+	return true;
 }
 
 bool QStandardItemModel_virtualbase_SetItemData(void* self, QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles) {
 	return ( (MiqtVirtualQStandardItemModel*)(self) )->virtualbase_SetItemData(index, roles);
 }
 
-void QStandardItemModel_override_virtual_Sort(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__Sort = slot;
+bool QStandardItemModel_override_virtual_Sort(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Sort = slot;
+	return true;
 }
 
 void QStandardItemModel_virtualbase_Sort(void* self, int column, int order) {
 	( (MiqtVirtualQStandardItemModel*)(self) )->virtualbase_Sort(column, order);
 }
 
-void QStandardItemModel_override_virtual_MimeTypes(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__MimeTypes = slot;
+bool QStandardItemModel_override_virtual_MimeTypes(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MimeTypes = slot;
+	return true;
 }
 
 struct miqt_array /* of struct miqt_string */  QStandardItemModel_virtualbase_MimeTypes(const void* self) {
 	return ( (const MiqtVirtualQStandardItemModel*)(self) )->virtualbase_MimeTypes();
 }
 
-void QStandardItemModel_override_virtual_MimeData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__MimeData = slot;
+bool QStandardItemModel_override_virtual_MimeData(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MimeData = slot;
+	return true;
 }
 
 QMimeData* QStandardItemModel_virtualbase_MimeData(const void* self, struct miqt_array /* of QModelIndex* */  indexes) {
 	return ( (const MiqtVirtualQStandardItemModel*)(self) )->virtualbase_MimeData(indexes);
 }
 
-void QStandardItemModel_override_virtual_DropMimeData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__DropMimeData = slot;
+bool QStandardItemModel_override_virtual_DropMimeData(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropMimeData = slot;
+	return true;
 }
 
 bool QStandardItemModel_virtualbase_DropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 	return ( (MiqtVirtualQStandardItemModel*)(self) )->virtualbase_DropMimeData(data, action, row, column, parent);
 }
 
-void QStandardItemModel_override_virtual_CanDropMimeData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__CanDropMimeData = slot;
+bool QStandardItemModel_override_virtual_CanDropMimeData(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CanDropMimeData = slot;
+	return true;
 }
 
 bool QStandardItemModel_virtualbase_CanDropMimeData(const void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 	return ( (const MiqtVirtualQStandardItemModel*)(self) )->virtualbase_CanDropMimeData(data, action, row, column, parent);
 }
 
-void QStandardItemModel_override_virtual_SupportedDragActions(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__SupportedDragActions = slot;
+bool QStandardItemModel_override_virtual_SupportedDragActions(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SupportedDragActions = slot;
+	return true;
 }
 
 int QStandardItemModel_virtualbase_SupportedDragActions(const void* self) {
 	return ( (const MiqtVirtualQStandardItemModel*)(self) )->virtualbase_SupportedDragActions();
 }
 
-void QStandardItemModel_override_virtual_MoveRows(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__MoveRows = slot;
+bool QStandardItemModel_override_virtual_MoveRows(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveRows = slot;
+	return true;
 }
 
 bool QStandardItemModel_virtualbase_MoveRows(void* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
 	return ( (MiqtVirtualQStandardItemModel*)(self) )->virtualbase_MoveRows(sourceParent, sourceRow, count, destinationParent, destinationChild);
 }
 
-void QStandardItemModel_override_virtual_MoveColumns(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__MoveColumns = slot;
+bool QStandardItemModel_override_virtual_MoveColumns(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveColumns = slot;
+	return true;
 }
 
 bool QStandardItemModel_virtualbase_MoveColumns(void* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
 	return ( (MiqtVirtualQStandardItemModel*)(self) )->virtualbase_MoveColumns(sourceParent, sourceColumn, count, destinationParent, destinationChild);
 }
 
-void QStandardItemModel_override_virtual_FetchMore(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__FetchMore = slot;
+bool QStandardItemModel_override_virtual_FetchMore(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FetchMore = slot;
+	return true;
 }
 
 void QStandardItemModel_virtualbase_FetchMore(void* self, QModelIndex* parent) {
 	( (MiqtVirtualQStandardItemModel*)(self) )->virtualbase_FetchMore(parent);
 }
 
-void QStandardItemModel_override_virtual_CanFetchMore(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__CanFetchMore = slot;
+bool QStandardItemModel_override_virtual_CanFetchMore(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CanFetchMore = slot;
+	return true;
 }
 
 bool QStandardItemModel_virtualbase_CanFetchMore(const void* self, QModelIndex* parent) {
 	return ( (const MiqtVirtualQStandardItemModel*)(self) )->virtualbase_CanFetchMore(parent);
 }
 
-void QStandardItemModel_override_virtual_Buddy(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__Buddy = slot;
+bool QStandardItemModel_override_virtual_Buddy(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Buddy = slot;
+	return true;
 }
 
 QModelIndex* QStandardItemModel_virtualbase_Buddy(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQStandardItemModel*)(self) )->virtualbase_Buddy(index);
 }
 
-void QStandardItemModel_override_virtual_Match(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__Match = slot;
+bool QStandardItemModel_override_virtual_Match(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Match = slot;
+	return true;
 }
 
 struct miqt_array /* of QModelIndex* */  QStandardItemModel_virtualbase_Match(const void* self, QModelIndex* start, int role, QVariant* value, int hits, int flags) {
 	return ( (const MiqtVirtualQStandardItemModel*)(self) )->virtualbase_Match(start, role, value, hits, flags);
 }
 
-void QStandardItemModel_override_virtual_Span(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__Span = slot;
+bool QStandardItemModel_override_virtual_Span(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Span = slot;
+	return true;
 }
 
 QSize* QStandardItemModel_virtualbase_Span(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQStandardItemModel*)(self) )->virtualbase_Span(index);
 }
 
-void QStandardItemModel_override_virtual_RoleNames(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__RoleNames = slot;
+bool QStandardItemModel_override_virtual_RoleNames(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RoleNames = slot;
+	return true;
 }
 
 struct miqt_map /* of int to struct miqt_string */  QStandardItemModel_virtualbase_RoleNames(const void* self) {
 	return ( (const MiqtVirtualQStandardItemModel*)(self) )->virtualbase_RoleNames();
 }
 
-void QStandardItemModel_override_virtual_Submit(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__Submit = slot;
+bool QStandardItemModel_override_virtual_Submit(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Submit = slot;
+	return true;
 }
 
 bool QStandardItemModel_virtualbase_Submit(void* self) {
 	return ( (MiqtVirtualQStandardItemModel*)(self) )->virtualbase_Submit();
 }
 
-void QStandardItemModel_override_virtual_Revert(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) )->handle__Revert = slot;
+bool QStandardItemModel_override_virtual_Revert(void* self, intptr_t slot) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Revert = slot;
+	return true;
 }
 
 void QStandardItemModel_virtualbase_Revert(void* self) {

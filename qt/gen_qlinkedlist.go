@@ -14,8 +14,7 @@ import (
 )
 
 type QLinkedListData struct {
-	h          *C.QLinkedListData
-	isSubclass bool
+	h *C.QLinkedListData
 }
 
 func (this *QLinkedListData) cPointer() *C.QLinkedListData {
@@ -49,9 +48,7 @@ func UnsafeNewQLinkedListData(h unsafe.Pointer) *QLinkedListData {
 // NewQLinkedListData constructs a new QLinkedListData object.
 func NewQLinkedListData() *QLinkedListData {
 
-	ret := newQLinkedListData(C.QLinkedListData_new())
-	ret.isSubclass = true
-	return ret
+	return newQLinkedListData(C.QLinkedListData_new())
 }
 
 // Delete this object from C++ memory.

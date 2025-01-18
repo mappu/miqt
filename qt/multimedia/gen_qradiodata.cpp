@@ -543,72 +543,126 @@ struct miqt_string QRadioData_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QRadioData_override_virtual_MediaObject(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioData*>( (QRadioData*)(self) )->handle__MediaObject = slot;
+bool QRadioData_override_virtual_MediaObject(void* self, intptr_t slot) {
+	MiqtVirtualQRadioData* self_cast = dynamic_cast<MiqtVirtualQRadioData*>( (QRadioData*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MediaObject = slot;
+	return true;
 }
 
 QMediaObject* QRadioData_virtualbase_MediaObject(const void* self) {
 	return ( (const MiqtVirtualQRadioData*)(self) )->virtualbase_MediaObject();
 }
 
-void QRadioData_override_virtual_SetMediaObject(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioData*>( (QRadioData*)(self) )->handle__SetMediaObject = slot;
+bool QRadioData_override_virtual_SetMediaObject(void* self, intptr_t slot) {
+	MiqtVirtualQRadioData* self_cast = dynamic_cast<MiqtVirtualQRadioData*>( (QRadioData*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetMediaObject = slot;
+	return true;
 }
 
 bool QRadioData_virtualbase_SetMediaObject(void* self, QMediaObject* mediaObject) {
 	return ( (MiqtVirtualQRadioData*)(self) )->virtualbase_SetMediaObject(mediaObject);
 }
 
-void QRadioData_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioData*>( (QRadioData*)(self) )->handle__Event = slot;
+bool QRadioData_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQRadioData* self_cast = dynamic_cast<MiqtVirtualQRadioData*>( (QRadioData*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QRadioData_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQRadioData*)(self) )->virtualbase_Event(event);
 }
 
-void QRadioData_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioData*>( (QRadioData*)(self) )->handle__EventFilter = slot;
+bool QRadioData_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQRadioData* self_cast = dynamic_cast<MiqtVirtualQRadioData*>( (QRadioData*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QRadioData_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQRadioData*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QRadioData_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioData*>( (QRadioData*)(self) )->handle__TimerEvent = slot;
+bool QRadioData_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRadioData* self_cast = dynamic_cast<MiqtVirtualQRadioData*>( (QRadioData*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QRadioData_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQRadioData*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QRadioData_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioData*>( (QRadioData*)(self) )->handle__ChildEvent = slot;
+bool QRadioData_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRadioData* self_cast = dynamic_cast<MiqtVirtualQRadioData*>( (QRadioData*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QRadioData_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQRadioData*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QRadioData_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioData*>( (QRadioData*)(self) )->handle__CustomEvent = slot;
+bool QRadioData_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQRadioData* self_cast = dynamic_cast<MiqtVirtualQRadioData*>( (QRadioData*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QRadioData_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQRadioData*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QRadioData_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioData*>( (QRadioData*)(self) )->handle__ConnectNotify = slot;
+bool QRadioData_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQRadioData* self_cast = dynamic_cast<MiqtVirtualQRadioData*>( (QRadioData*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QRadioData_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQRadioData*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QRadioData_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRadioData*>( (QRadioData*)(self) )->handle__DisconnectNotify = slot;
+bool QRadioData_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQRadioData* self_cast = dynamic_cast<MiqtVirtualQRadioData*>( (QRadioData*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QRadioData_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

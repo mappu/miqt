@@ -482,56 +482,98 @@ bool QNetworkSession_WaitForOpened1(QNetworkSession* self, int msecs) {
 	return self->waitForOpened(static_cast<int>(msecs));
 }
 
-void QNetworkSession_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQNetworkSession*>( (QNetworkSession*)(self) )->handle__ConnectNotify = slot;
+bool QNetworkSession_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQNetworkSession* self_cast = dynamic_cast<MiqtVirtualQNetworkSession*>( (QNetworkSession*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QNetworkSession_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQNetworkSession*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QNetworkSession_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQNetworkSession*>( (QNetworkSession*)(self) )->handle__DisconnectNotify = slot;
+bool QNetworkSession_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQNetworkSession* self_cast = dynamic_cast<MiqtVirtualQNetworkSession*>( (QNetworkSession*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QNetworkSession_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQNetworkSession*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QNetworkSession_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQNetworkSession*>( (QNetworkSession*)(self) )->handle__Event = slot;
+bool QNetworkSession_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQNetworkSession* self_cast = dynamic_cast<MiqtVirtualQNetworkSession*>( (QNetworkSession*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QNetworkSession_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQNetworkSession*)(self) )->virtualbase_Event(event);
 }
 
-void QNetworkSession_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQNetworkSession*>( (QNetworkSession*)(self) )->handle__EventFilter = slot;
+bool QNetworkSession_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQNetworkSession* self_cast = dynamic_cast<MiqtVirtualQNetworkSession*>( (QNetworkSession*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QNetworkSession_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQNetworkSession*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QNetworkSession_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQNetworkSession*>( (QNetworkSession*)(self) )->handle__TimerEvent = slot;
+bool QNetworkSession_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQNetworkSession* self_cast = dynamic_cast<MiqtVirtualQNetworkSession*>( (QNetworkSession*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QNetworkSession_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQNetworkSession*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QNetworkSession_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQNetworkSession*>( (QNetworkSession*)(self) )->handle__ChildEvent = slot;
+bool QNetworkSession_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQNetworkSession* self_cast = dynamic_cast<MiqtVirtualQNetworkSession*>( (QNetworkSession*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QNetworkSession_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQNetworkSession*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QNetworkSession_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQNetworkSession*>( (QNetworkSession*)(self) )->handle__CustomEvent = slot;
+bool QNetworkSession_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQNetworkSession* self_cast = dynamic_cast<MiqtVirtualQNetworkSession*>( (QNetworkSession*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QNetworkSession_virtualbase_CustomEvent(void* self, QEvent* event) {

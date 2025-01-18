@@ -318,32 +318,56 @@ struct miqt_string QLCDNumber_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QLCDNumber_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLCDNumber*>( (QLCDNumber*)(self) )->handle__SizeHint = slot;
+bool QLCDNumber_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQLCDNumber* self_cast = dynamic_cast<MiqtVirtualQLCDNumber*>( (QLCDNumber*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QLCDNumber_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQLCDNumber*)(self) )->virtualbase_SizeHint();
 }
 
-void QLCDNumber_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLCDNumber*>( (QLCDNumber*)(self) )->handle__Event = slot;
+bool QLCDNumber_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQLCDNumber* self_cast = dynamic_cast<MiqtVirtualQLCDNumber*>( (QLCDNumber*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QLCDNumber_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_Event(e);
 }
 
-void QLCDNumber_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLCDNumber*>( (QLCDNumber*)(self) )->handle__PaintEvent = slot;
+bool QLCDNumber_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQLCDNumber* self_cast = dynamic_cast<MiqtVirtualQLCDNumber*>( (QLCDNumber*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QLCDNumber_virtualbase_PaintEvent(void* self, QPaintEvent* param1) {
 	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_PaintEvent(param1);
 }
 
-void QLCDNumber_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLCDNumber*>( (QLCDNumber*)(self) )->handle__ChangeEvent = slot;
+bool QLCDNumber_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQLCDNumber* self_cast = dynamic_cast<MiqtVirtualQLCDNumber*>( (QLCDNumber*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QLCDNumber_virtualbase_ChangeEvent(void* self, QEvent* param1) {

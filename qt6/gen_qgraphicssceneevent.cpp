@@ -106,16 +106,28 @@ void QGraphicsSceneEvent_SetTimestamp(QGraphicsSceneEvent* self, unsigned long l
 	self->setTimestamp(static_cast<quint64>(ts));
 }
 
-void QGraphicsSceneEvent_override_virtual_SetAccepted(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsSceneEvent*>( (QGraphicsSceneEvent*)(self) )->handle__SetAccepted = slot;
+bool QGraphicsSceneEvent_override_virtual_SetAccepted(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsSceneEvent* self_cast = dynamic_cast<MiqtVirtualQGraphicsSceneEvent*>( (QGraphicsSceneEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetAccepted = slot;
+	return true;
 }
 
 void QGraphicsSceneEvent_virtualbase_SetAccepted(void* self, bool accepted) {
 	( (MiqtVirtualQGraphicsSceneEvent*)(self) )->virtualbase_SetAccepted(accepted);
 }
 
-void QGraphicsSceneEvent_override_virtual_Clone(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsSceneEvent*>( (QGraphicsSceneEvent*)(self) )->handle__Clone = slot;
+bool QGraphicsSceneEvent_override_virtual_Clone(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsSceneEvent* self_cast = dynamic_cast<MiqtVirtualQGraphicsSceneEvent*>( (QGraphicsSceneEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Clone = slot;
+	return true;
 }
 
 QEvent* QGraphicsSceneEvent_virtualbase_Clone(const void* self) {

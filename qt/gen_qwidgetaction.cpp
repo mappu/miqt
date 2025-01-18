@@ -223,32 +223,56 @@ struct miqt_string QWidgetAction_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QWidgetAction_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetAction*>( (QWidgetAction*)(self) )->handle__Event = slot;
+bool QWidgetAction_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetAction* self_cast = dynamic_cast<MiqtVirtualQWidgetAction*>( (QWidgetAction*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QWidgetAction_virtualbase_Event(void* self, QEvent* param1) {
 	return ( (MiqtVirtualQWidgetAction*)(self) )->virtualbase_Event(param1);
 }
 
-void QWidgetAction_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetAction*>( (QWidgetAction*)(self) )->handle__EventFilter = slot;
+bool QWidgetAction_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetAction* self_cast = dynamic_cast<MiqtVirtualQWidgetAction*>( (QWidgetAction*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QWidgetAction_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2) {
 	return ( (MiqtVirtualQWidgetAction*)(self) )->virtualbase_EventFilter(param1, param2);
 }
 
-void QWidgetAction_override_virtual_CreateWidget(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetAction*>( (QWidgetAction*)(self) )->handle__CreateWidget = slot;
+bool QWidgetAction_override_virtual_CreateWidget(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetAction* self_cast = dynamic_cast<MiqtVirtualQWidgetAction*>( (QWidgetAction*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CreateWidget = slot;
+	return true;
 }
 
 QWidget* QWidgetAction_virtualbase_CreateWidget(void* self, QWidget* parent) {
 	return ( (MiqtVirtualQWidgetAction*)(self) )->virtualbase_CreateWidget(parent);
 }
 
-void QWidgetAction_override_virtual_DeleteWidget(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWidgetAction*>( (QWidgetAction*)(self) )->handle__DeleteWidget = slot;
+bool QWidgetAction_override_virtual_DeleteWidget(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetAction* self_cast = dynamic_cast<MiqtVirtualQWidgetAction*>( (QWidgetAction*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DeleteWidget = slot;
+	return true;
 }
 
 void QWidgetAction_virtualbase_DeleteWidget(void* self, QWidget* widget) {

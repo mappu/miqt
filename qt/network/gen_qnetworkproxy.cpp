@@ -498,8 +498,14 @@ struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_SystemProxyForQu
 	return _out;
 }
 
-void QNetworkProxyFactory_override_virtual_QueryProxy(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQNetworkProxyFactory*>( (QNetworkProxyFactory*)(self) )->handle__QueryProxy = slot;
+bool QNetworkProxyFactory_override_virtual_QueryProxy(void* self, intptr_t slot) {
+	MiqtVirtualQNetworkProxyFactory* self_cast = dynamic_cast<MiqtVirtualQNetworkProxyFactory*>( (QNetworkProxyFactory*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__QueryProxy = slot;
+	return true;
 }
 
 void QNetworkProxyFactory_Delete(QNetworkProxyFactory* self) {

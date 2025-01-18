@@ -31,8 +31,7 @@ const (
 )
 
 type QNetworkCookie struct {
-	h          *C.QNetworkCookie
-	isSubclass bool
+	h *C.QNetworkCookie
 }
 
 func (this *QNetworkCookie) cPointer() *C.QNetworkCookie {
@@ -66,17 +65,13 @@ func UnsafeNewQNetworkCookie(h unsafe.Pointer) *QNetworkCookie {
 // NewQNetworkCookie constructs a new QNetworkCookie object.
 func NewQNetworkCookie() *QNetworkCookie {
 
-	ret := newQNetworkCookie(C.QNetworkCookie_new())
-	ret.isSubclass = true
-	return ret
+	return newQNetworkCookie(C.QNetworkCookie_new())
 }
 
 // NewQNetworkCookie2 constructs a new QNetworkCookie object.
 func NewQNetworkCookie2(other *QNetworkCookie) *QNetworkCookie {
 
-	ret := newQNetworkCookie(C.QNetworkCookie_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkCookie(C.QNetworkCookie_new2(other.cPointer()))
 }
 
 // NewQNetworkCookie3 constructs a new QNetworkCookie object.
@@ -85,9 +80,7 @@ func NewQNetworkCookie3(name []byte) *QNetworkCookie {
 	name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
 	name_alias.len = C.size_t(len(name))
 
-	ret := newQNetworkCookie(C.QNetworkCookie_new3(name_alias))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkCookie(C.QNetworkCookie_new3(name_alias))
 }
 
 // NewQNetworkCookie4 constructs a new QNetworkCookie object.
@@ -99,9 +92,7 @@ func NewQNetworkCookie4(name []byte, value []byte) *QNetworkCookie {
 	value_alias.data = (*C.char)(unsafe.Pointer(&value[0]))
 	value_alias.len = C.size_t(len(value))
 
-	ret := newQNetworkCookie(C.QNetworkCookie_new4(name_alias, value_alias))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkCookie(C.QNetworkCookie_new4(name_alias, value_alias))
 }
 
 func (this *QNetworkCookie) OperatorAssign(other *QNetworkCookie) {

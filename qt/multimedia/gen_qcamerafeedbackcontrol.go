@@ -31,8 +31,7 @@ const (
 )
 
 type QCameraFeedbackControl struct {
-	h          *C.QCameraFeedbackControl
-	isSubclass bool
+	h *C.QCameraFeedbackControl
 	*QMediaControl
 }
 

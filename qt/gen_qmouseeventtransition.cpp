@@ -225,24 +225,42 @@ struct miqt_string QMouseEventTransition_TrUtf83(const char* s, const char* c, i
 	return _ms;
 }
 
-void QMouseEventTransition_override_virtual_OnTransition(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMouseEventTransition*>( (QMouseEventTransition*)(self) )->handle__OnTransition = slot;
+bool QMouseEventTransition_override_virtual_OnTransition(void* self, intptr_t slot) {
+	MiqtVirtualQMouseEventTransition* self_cast = dynamic_cast<MiqtVirtualQMouseEventTransition*>( (QMouseEventTransition*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__OnTransition = slot;
+	return true;
 }
 
 void QMouseEventTransition_virtualbase_OnTransition(void* self, QEvent* event) {
 	( (MiqtVirtualQMouseEventTransition*)(self) )->virtualbase_OnTransition(event);
 }
 
-void QMouseEventTransition_override_virtual_EventTest(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMouseEventTransition*>( (QMouseEventTransition*)(self) )->handle__EventTest = slot;
+bool QMouseEventTransition_override_virtual_EventTest(void* self, intptr_t slot) {
+	MiqtVirtualQMouseEventTransition* self_cast = dynamic_cast<MiqtVirtualQMouseEventTransition*>( (QMouseEventTransition*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventTest = slot;
+	return true;
 }
 
 bool QMouseEventTransition_virtualbase_EventTest(void* self, QEvent* event) {
 	return ( (MiqtVirtualQMouseEventTransition*)(self) )->virtualbase_EventTest(event);
 }
 
-void QMouseEventTransition_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMouseEventTransition*>( (QMouseEventTransition*)(self) )->handle__Event = slot;
+bool QMouseEventTransition_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQMouseEventTransition* self_cast = dynamic_cast<MiqtVirtualQMouseEventTransition*>( (QMouseEventTransition*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QMouseEventTransition_virtualbase_Event(void* self, QEvent* e) {

@@ -456,96 +456,168 @@ struct miqt_string QSlider_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QSlider_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSlider*>( (QSlider*)(self) )->handle__SizeHint = slot;
+bool QSlider_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQSlider* self_cast = dynamic_cast<MiqtVirtualQSlider*>( (QSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QSlider_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQSlider*)(self) )->virtualbase_SizeHint();
 }
 
-void QSlider_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSlider*>( (QSlider*)(self) )->handle__MinimumSizeHint = slot;
+bool QSlider_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQSlider* self_cast = dynamic_cast<MiqtVirtualQSlider*>( (QSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QSlider_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQSlider*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QSlider_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSlider*>( (QSlider*)(self) )->handle__Event = slot;
+bool QSlider_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQSlider* self_cast = dynamic_cast<MiqtVirtualQSlider*>( (QSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QSlider_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQSlider*)(self) )->virtualbase_Event(event);
 }
 
-void QSlider_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSlider*>( (QSlider*)(self) )->handle__PaintEvent = slot;
+bool QSlider_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSlider* self_cast = dynamic_cast<MiqtVirtualQSlider*>( (QSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QSlider_virtualbase_PaintEvent(void* self, QPaintEvent* ev) {
 	( (MiqtVirtualQSlider*)(self) )->virtualbase_PaintEvent(ev);
 }
 
-void QSlider_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSlider*>( (QSlider*)(self) )->handle__MousePressEvent = slot;
+bool QSlider_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSlider* self_cast = dynamic_cast<MiqtVirtualQSlider*>( (QSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QSlider_virtualbase_MousePressEvent(void* self, QMouseEvent* ev) {
 	( (MiqtVirtualQSlider*)(self) )->virtualbase_MousePressEvent(ev);
 }
 
-void QSlider_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSlider*>( (QSlider*)(self) )->handle__MouseReleaseEvent = slot;
+bool QSlider_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSlider* self_cast = dynamic_cast<MiqtVirtualQSlider*>( (QSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QSlider_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* ev) {
 	( (MiqtVirtualQSlider*)(self) )->virtualbase_MouseReleaseEvent(ev);
 }
 
-void QSlider_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSlider*>( (QSlider*)(self) )->handle__MouseMoveEvent = slot;
+bool QSlider_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSlider* self_cast = dynamic_cast<MiqtVirtualQSlider*>( (QSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QSlider_virtualbase_MouseMoveEvent(void* self, QMouseEvent* ev) {
 	( (MiqtVirtualQSlider*)(self) )->virtualbase_MouseMoveEvent(ev);
 }
 
-void QSlider_override_virtual_SliderChange(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSlider*>( (QSlider*)(self) )->handle__SliderChange = slot;
+bool QSlider_override_virtual_SliderChange(void* self, intptr_t slot) {
+	MiqtVirtualQSlider* self_cast = dynamic_cast<MiqtVirtualQSlider*>( (QSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SliderChange = slot;
+	return true;
 }
 
 void QSlider_virtualbase_SliderChange(void* self, int change) {
 	( (MiqtVirtualQSlider*)(self) )->virtualbase_SliderChange(change);
 }
 
-void QSlider_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSlider*>( (QSlider*)(self) )->handle__KeyPressEvent = slot;
+bool QSlider_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSlider* self_cast = dynamic_cast<MiqtVirtualQSlider*>( (QSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QSlider_virtualbase_KeyPressEvent(void* self, QKeyEvent* ev) {
 	( (MiqtVirtualQSlider*)(self) )->virtualbase_KeyPressEvent(ev);
 }
 
-void QSlider_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSlider*>( (QSlider*)(self) )->handle__TimerEvent = slot;
+bool QSlider_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSlider* self_cast = dynamic_cast<MiqtVirtualQSlider*>( (QSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QSlider_virtualbase_TimerEvent(void* self, QTimerEvent* param1) {
 	( (MiqtVirtualQSlider*)(self) )->virtualbase_TimerEvent(param1);
 }
 
-void QSlider_override_virtual_WheelEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSlider*>( (QSlider*)(self) )->handle__WheelEvent = slot;
+bool QSlider_override_virtual_WheelEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSlider* self_cast = dynamic_cast<MiqtVirtualQSlider*>( (QSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WheelEvent = slot;
+	return true;
 }
 
 void QSlider_virtualbase_WheelEvent(void* self, QWheelEvent* e) {
 	( (MiqtVirtualQSlider*)(self) )->virtualbase_WheelEvent(e);
 }
 
-void QSlider_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSlider*>( (QSlider*)(self) )->handle__ChangeEvent = slot;
+bool QSlider_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSlider* self_cast = dynamic_cast<MiqtVirtualQSlider*>( (QSlider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QSlider_virtualbase_ChangeEvent(void* self, QEvent* e) {

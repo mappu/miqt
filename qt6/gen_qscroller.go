@@ -40,8 +40,7 @@ const (
 )
 
 type QScroller struct {
-	h          *C.QScroller
-	isSubclass bool
+	h *C.QScroller
 	*QObject
 }
 

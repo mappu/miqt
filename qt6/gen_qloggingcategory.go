@@ -14,8 +14,7 @@ import (
 )
 
 type QLoggingCategory struct {
-	h          *C.QLoggingCategory
-	isSubclass bool
+	h *C.QLoggingCategory
 }
 
 func (this *QLoggingCategory) cPointer() *C.QLoggingCategory {
@@ -51,9 +50,7 @@ func NewQLoggingCategory(category string) *QLoggingCategory {
 	category_Cstring := C.CString(category)
 	defer C.free(unsafe.Pointer(category_Cstring))
 
-	ret := newQLoggingCategory(C.QLoggingCategory_new(category_Cstring))
-	ret.isSubclass = true
-	return ret
+	return newQLoggingCategory(C.QLoggingCategory_new(category_Cstring))
 }
 
 func (this *QLoggingCategory) IsDebugEnabled() bool {

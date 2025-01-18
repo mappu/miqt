@@ -71,8 +71,7 @@ const (
 )
 
 type QWebEngineContextMenuRequest struct {
-	h          *C.QWebEngineContextMenuRequest
-	isSubclass bool
+	h *C.QWebEngineContextMenuRequest
 	*qt6.QObject
 }
 

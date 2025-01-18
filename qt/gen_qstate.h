@@ -62,11 +62,11 @@ struct miqt_string QState_Tr2(const char* s, const char* c);
 struct miqt_string QState_Tr3(const char* s, const char* c, int n);
 struct miqt_string QState_TrUtf82(const char* s, const char* c);
 struct miqt_string QState_TrUtf83(const char* s, const char* c, int n);
-void QState_override_virtual_OnEntry(void* self, intptr_t slot);
+bool QState_override_virtual_OnEntry(void* self, intptr_t slot);
 void QState_virtualbase_OnEntry(void* self, QEvent* event);
-void QState_override_virtual_OnExit(void* self, intptr_t slot);
+bool QState_override_virtual_OnExit(void* self, intptr_t slot);
 void QState_virtualbase_OnExit(void* self, QEvent* event);
-void QState_override_virtual_Event(void* self, intptr_t slot);
+bool QState_override_virtual_Event(void* self, intptr_t slot);
 bool QState_virtualbase_Event(void* self, QEvent* e);
 void QState_Delete(QState* self);
 

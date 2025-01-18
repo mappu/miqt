@@ -15,8 +15,7 @@ import (
 )
 
 type QVideoRendererControl struct {
-	h          *C.QVideoRendererControl
-	isSubclass bool
+	h *C.QVideoRendererControl
 	*QMediaControl
 }
 

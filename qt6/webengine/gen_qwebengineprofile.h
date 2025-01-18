@@ -97,19 +97,19 @@ void QWebEngineProfile_DownloadRequested(QWebEngineProfile* self, QWebEngineDown
 void QWebEngineProfile_connect_DownloadRequested(QWebEngineProfile* self, intptr_t slot);
 struct miqt_string QWebEngineProfile_Tr2(const char* s, const char* c);
 struct miqt_string QWebEngineProfile_Tr3(const char* s, const char* c, int n);
-void QWebEngineProfile_override_virtual_Event(void* self, intptr_t slot);
+bool QWebEngineProfile_override_virtual_Event(void* self, intptr_t slot);
 bool QWebEngineProfile_virtualbase_Event(void* self, QEvent* event);
-void QWebEngineProfile_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QWebEngineProfile_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QWebEngineProfile_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QWebEngineProfile_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QWebEngineProfile_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QWebEngineProfile_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QWebEngineProfile_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QWebEngineProfile_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QWebEngineProfile_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QWebEngineProfile_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QWebEngineProfile_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QWebEngineProfile_virtualbase_CustomEvent(void* self, QEvent* event);
-void QWebEngineProfile_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QWebEngineProfile_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QWebEngineProfile_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QWebEngineProfile_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QWebEngineProfile_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QWebEngineProfile_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QWebEngineProfile_Delete(QWebEngineProfile* self);
 

@@ -1246,144 +1246,252 @@ bool QSslSocket_WaitForEncrypted1(QSslSocket* self, int msecs) {
 	return self->waitForEncrypted(static_cast<int>(msecs));
 }
 
-void QSslSocket_override_virtual_Resume(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) )->handle__Resume = slot;
+bool QSslSocket_override_virtual_Resume(void* self, intptr_t slot) {
+	MiqtVirtualQSslSocket* self_cast = dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Resume = slot;
+	return true;
 }
 
 void QSslSocket_virtualbase_Resume(void* self) {
 	( (MiqtVirtualQSslSocket*)(self) )->virtualbase_Resume();
 }
 
-void QSslSocket_override_virtual_SetSocketDescriptor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) )->handle__SetSocketDescriptor = slot;
+bool QSslSocket_override_virtual_SetSocketDescriptor(void* self, intptr_t slot) {
+	MiqtVirtualQSslSocket* self_cast = dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetSocketDescriptor = slot;
+	return true;
 }
 
 bool QSslSocket_virtualbase_SetSocketDescriptor(void* self, intptr_t socketDescriptor, int state, int openMode) {
 	return ( (MiqtVirtualQSslSocket*)(self) )->virtualbase_SetSocketDescriptor(socketDescriptor, state, openMode);
 }
 
-void QSslSocket_override_virtual_ConnectToHost(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) )->handle__ConnectToHost = slot;
+bool QSslSocket_override_virtual_ConnectToHost(void* self, intptr_t slot) {
+	MiqtVirtualQSslSocket* self_cast = dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectToHost = slot;
+	return true;
 }
 
 void QSslSocket_virtualbase_ConnectToHost(void* self, struct miqt_string hostName, uint16_t port, int openMode, int protocol) {
 	( (MiqtVirtualQSslSocket*)(self) )->virtualbase_ConnectToHost(hostName, port, openMode, protocol);
 }
 
-void QSslSocket_override_virtual_DisconnectFromHost(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) )->handle__DisconnectFromHost = slot;
+bool QSslSocket_override_virtual_DisconnectFromHost(void* self, intptr_t slot) {
+	MiqtVirtualQSslSocket* self_cast = dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectFromHost = slot;
+	return true;
 }
 
 void QSslSocket_virtualbase_DisconnectFromHost(void* self) {
 	( (MiqtVirtualQSslSocket*)(self) )->virtualbase_DisconnectFromHost();
 }
 
-void QSslSocket_override_virtual_SetSocketOption(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) )->handle__SetSocketOption = slot;
+bool QSslSocket_override_virtual_SetSocketOption(void* self, intptr_t slot) {
+	MiqtVirtualQSslSocket* self_cast = dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetSocketOption = slot;
+	return true;
 }
 
 void QSslSocket_virtualbase_SetSocketOption(void* self, int option, QVariant* value) {
 	( (MiqtVirtualQSslSocket*)(self) )->virtualbase_SetSocketOption(option, value);
 }
 
-void QSslSocket_override_virtual_SocketOption(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) )->handle__SocketOption = slot;
+bool QSslSocket_override_virtual_SocketOption(void* self, intptr_t slot) {
+	MiqtVirtualQSslSocket* self_cast = dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SocketOption = slot;
+	return true;
 }
 
 QVariant* QSslSocket_virtualbase_SocketOption(void* self, int option) {
 	return ( (MiqtVirtualQSslSocket*)(self) )->virtualbase_SocketOption(option);
 }
 
-void QSslSocket_override_virtual_BytesAvailable(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) )->handle__BytesAvailable = slot;
+bool QSslSocket_override_virtual_BytesAvailable(void* self, intptr_t slot) {
+	MiqtVirtualQSslSocket* self_cast = dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BytesAvailable = slot;
+	return true;
 }
 
 long long QSslSocket_virtualbase_BytesAvailable(const void* self) {
 	return ( (const MiqtVirtualQSslSocket*)(self) )->virtualbase_BytesAvailable();
 }
 
-void QSslSocket_override_virtual_BytesToWrite(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) )->handle__BytesToWrite = slot;
+bool QSslSocket_override_virtual_BytesToWrite(void* self, intptr_t slot) {
+	MiqtVirtualQSslSocket* self_cast = dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BytesToWrite = slot;
+	return true;
 }
 
 long long QSslSocket_virtualbase_BytesToWrite(const void* self) {
 	return ( (const MiqtVirtualQSslSocket*)(self) )->virtualbase_BytesToWrite();
 }
 
-void QSslSocket_override_virtual_CanReadLine(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) )->handle__CanReadLine = slot;
+bool QSslSocket_override_virtual_CanReadLine(void* self, intptr_t slot) {
+	MiqtVirtualQSslSocket* self_cast = dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CanReadLine = slot;
+	return true;
 }
 
 bool QSslSocket_virtualbase_CanReadLine(const void* self) {
 	return ( (const MiqtVirtualQSslSocket*)(self) )->virtualbase_CanReadLine();
 }
 
-void QSslSocket_override_virtual_Close(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) )->handle__Close = slot;
+bool QSslSocket_override_virtual_Close(void* self, intptr_t slot) {
+	MiqtVirtualQSslSocket* self_cast = dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Close = slot;
+	return true;
 }
 
 void QSslSocket_virtualbase_Close(void* self) {
 	( (MiqtVirtualQSslSocket*)(self) )->virtualbase_Close();
 }
 
-void QSslSocket_override_virtual_AtEnd(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) )->handle__AtEnd = slot;
+bool QSslSocket_override_virtual_AtEnd(void* self, intptr_t slot) {
+	MiqtVirtualQSslSocket* self_cast = dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__AtEnd = slot;
+	return true;
 }
 
 bool QSslSocket_virtualbase_AtEnd(const void* self) {
 	return ( (const MiqtVirtualQSslSocket*)(self) )->virtualbase_AtEnd();
 }
 
-void QSslSocket_override_virtual_SetReadBufferSize(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) )->handle__SetReadBufferSize = slot;
+bool QSslSocket_override_virtual_SetReadBufferSize(void* self, intptr_t slot) {
+	MiqtVirtualQSslSocket* self_cast = dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetReadBufferSize = slot;
+	return true;
 }
 
 void QSslSocket_virtualbase_SetReadBufferSize(void* self, long long size) {
 	( (MiqtVirtualQSslSocket*)(self) )->virtualbase_SetReadBufferSize(size);
 }
 
-void QSslSocket_override_virtual_WaitForConnected(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) )->handle__WaitForConnected = slot;
+bool QSslSocket_override_virtual_WaitForConnected(void* self, intptr_t slot) {
+	MiqtVirtualQSslSocket* self_cast = dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WaitForConnected = slot;
+	return true;
 }
 
 bool QSslSocket_virtualbase_WaitForConnected(void* self, int msecs) {
 	return ( (MiqtVirtualQSslSocket*)(self) )->virtualbase_WaitForConnected(msecs);
 }
 
-void QSslSocket_override_virtual_WaitForReadyRead(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) )->handle__WaitForReadyRead = slot;
+bool QSslSocket_override_virtual_WaitForReadyRead(void* self, intptr_t slot) {
+	MiqtVirtualQSslSocket* self_cast = dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WaitForReadyRead = slot;
+	return true;
 }
 
 bool QSslSocket_virtualbase_WaitForReadyRead(void* self, int msecs) {
 	return ( (MiqtVirtualQSslSocket*)(self) )->virtualbase_WaitForReadyRead(msecs);
 }
 
-void QSslSocket_override_virtual_WaitForBytesWritten(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) )->handle__WaitForBytesWritten = slot;
+bool QSslSocket_override_virtual_WaitForBytesWritten(void* self, intptr_t slot) {
+	MiqtVirtualQSslSocket* self_cast = dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WaitForBytesWritten = slot;
+	return true;
 }
 
 bool QSslSocket_virtualbase_WaitForBytesWritten(void* self, int msecs) {
 	return ( (MiqtVirtualQSslSocket*)(self) )->virtualbase_WaitForBytesWritten(msecs);
 }
 
-void QSslSocket_override_virtual_WaitForDisconnected(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) )->handle__WaitForDisconnected = slot;
+bool QSslSocket_override_virtual_WaitForDisconnected(void* self, intptr_t slot) {
+	MiqtVirtualQSslSocket* self_cast = dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WaitForDisconnected = slot;
+	return true;
 }
 
 bool QSslSocket_virtualbase_WaitForDisconnected(void* self, int msecs) {
 	return ( (MiqtVirtualQSslSocket*)(self) )->virtualbase_WaitForDisconnected(msecs);
 }
 
-void QSslSocket_override_virtual_ReadData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) )->handle__ReadData = slot;
+bool QSslSocket_override_virtual_ReadData(void* self, intptr_t slot) {
+	MiqtVirtualQSslSocket* self_cast = dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ReadData = slot;
+	return true;
 }
 
 long long QSslSocket_virtualbase_ReadData(void* self, char* data, long long maxlen) {
 	return ( (MiqtVirtualQSslSocket*)(self) )->virtualbase_ReadData(data, maxlen);
 }
 
-void QSslSocket_override_virtual_WriteData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) )->handle__WriteData = slot;
+bool QSslSocket_override_virtual_WriteData(void* self, intptr_t slot) {
+	MiqtVirtualQSslSocket* self_cast = dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WriteData = slot;
+	return true;
 }
 
 long long QSslSocket_virtualbase_WriteData(void* self, const char* data, long long lenVal) {

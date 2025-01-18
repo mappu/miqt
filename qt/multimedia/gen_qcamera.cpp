@@ -659,40 +659,70 @@ struct miqt_array /* of int */  QCamera_SupportedViewfinderPixelFormats1(const Q
 	return _out;
 }
 
-void QCamera_override_virtual_Availability(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) )->handle__Availability = slot;
+bool QCamera_override_virtual_Availability(void* self, intptr_t slot) {
+	MiqtVirtualQCamera* self_cast = dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Availability = slot;
+	return true;
 }
 
 int QCamera_virtualbase_Availability(const void* self) {
 	return ( (const MiqtVirtualQCamera*)(self) )->virtualbase_Availability();
 }
 
-void QCamera_override_virtual_IsAvailable(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) )->handle__IsAvailable = slot;
+bool QCamera_override_virtual_IsAvailable(void* self, intptr_t slot) {
+	MiqtVirtualQCamera* self_cast = dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsAvailable = slot;
+	return true;
 }
 
 bool QCamera_virtualbase_IsAvailable(const void* self) {
 	return ( (const MiqtVirtualQCamera*)(self) )->virtualbase_IsAvailable();
 }
 
-void QCamera_override_virtual_Service(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) )->handle__Service = slot;
+bool QCamera_override_virtual_Service(void* self, intptr_t slot) {
+	MiqtVirtualQCamera* self_cast = dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Service = slot;
+	return true;
 }
 
 QMediaService* QCamera_virtualbase_Service(const void* self) {
 	return ( (const MiqtVirtualQCamera*)(self) )->virtualbase_Service();
 }
 
-void QCamera_override_virtual_Bind(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) )->handle__Bind = slot;
+bool QCamera_override_virtual_Bind(void* self, intptr_t slot) {
+	MiqtVirtualQCamera* self_cast = dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Bind = slot;
+	return true;
 }
 
 bool QCamera_virtualbase_Bind(void* self, QObject* param1) {
 	return ( (MiqtVirtualQCamera*)(self) )->virtualbase_Bind(param1);
 }
 
-void QCamera_override_virtual_Unbind(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) )->handle__Unbind = slot;
+bool QCamera_override_virtual_Unbind(void* self, intptr_t slot) {
+	MiqtVirtualQCamera* self_cast = dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Unbind = slot;
+	return true;
 }
 
 void QCamera_virtualbase_Unbind(void* self, QObject* param1) {

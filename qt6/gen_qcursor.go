@@ -14,8 +14,7 @@ import (
 )
 
 type QCursor struct {
-	h          *C.QCursor
-	isSubclass bool
+	h *C.QCursor
 }
 
 func (this *QCursor) cPointer() *C.QCursor {
@@ -49,73 +48,55 @@ func UnsafeNewQCursor(h unsafe.Pointer) *QCursor {
 // NewQCursor constructs a new QCursor object.
 func NewQCursor() *QCursor {
 
-	ret := newQCursor(C.QCursor_new())
-	ret.isSubclass = true
-	return ret
+	return newQCursor(C.QCursor_new())
 }
 
 // NewQCursor2 constructs a new QCursor object.
 func NewQCursor2(shape CursorShape) *QCursor {
 
-	ret := newQCursor(C.QCursor_new2((C.int)(shape)))
-	ret.isSubclass = true
-	return ret
+	return newQCursor(C.QCursor_new2((C.int)(shape)))
 }
 
 // NewQCursor3 constructs a new QCursor object.
 func NewQCursor3(bitmap *QBitmap, mask *QBitmap) *QCursor {
 
-	ret := newQCursor(C.QCursor_new3(bitmap.cPointer(), mask.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQCursor(C.QCursor_new3(bitmap.cPointer(), mask.cPointer()))
 }
 
 // NewQCursor4 constructs a new QCursor object.
 func NewQCursor4(pixmap *QPixmap) *QCursor {
 
-	ret := newQCursor(C.QCursor_new4(pixmap.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQCursor(C.QCursor_new4(pixmap.cPointer()))
 }
 
 // NewQCursor5 constructs a new QCursor object.
 func NewQCursor5(cursor *QCursor) *QCursor {
 
-	ret := newQCursor(C.QCursor_new5(cursor.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQCursor(C.QCursor_new5(cursor.cPointer()))
 }
 
 // NewQCursor6 constructs a new QCursor object.
 func NewQCursor6(bitmap *QBitmap, mask *QBitmap, hotX int) *QCursor {
 
-	ret := newQCursor(C.QCursor_new6(bitmap.cPointer(), mask.cPointer(), (C.int)(hotX)))
-	ret.isSubclass = true
-	return ret
+	return newQCursor(C.QCursor_new6(bitmap.cPointer(), mask.cPointer(), (C.int)(hotX)))
 }
 
 // NewQCursor7 constructs a new QCursor object.
 func NewQCursor7(bitmap *QBitmap, mask *QBitmap, hotX int, hotY int) *QCursor {
 
-	ret := newQCursor(C.QCursor_new7(bitmap.cPointer(), mask.cPointer(), (C.int)(hotX), (C.int)(hotY)))
-	ret.isSubclass = true
-	return ret
+	return newQCursor(C.QCursor_new7(bitmap.cPointer(), mask.cPointer(), (C.int)(hotX), (C.int)(hotY)))
 }
 
 // NewQCursor8 constructs a new QCursor object.
 func NewQCursor8(pixmap *QPixmap, hotX int) *QCursor {
 
-	ret := newQCursor(C.QCursor_new8(pixmap.cPointer(), (C.int)(hotX)))
-	ret.isSubclass = true
-	return ret
+	return newQCursor(C.QCursor_new8(pixmap.cPointer(), (C.int)(hotX)))
 }
 
 // NewQCursor9 constructs a new QCursor object.
 func NewQCursor9(pixmap *QPixmap, hotX int, hotY int) *QCursor {
 
-	ret := newQCursor(C.QCursor_new9(pixmap.cPointer(), (C.int)(hotX), (C.int)(hotY)))
-	ret.isSubclass = true
-	return ret
+	return newQCursor(C.QCursor_new9(pixmap.cPointer(), (C.int)(hotX), (C.int)(hotY)))
 }
 
 func (this *QCursor) OperatorAssign(cursor *QCursor) {

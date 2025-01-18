@@ -890,8 +890,7 @@ const (
 )
 
 type QLocale struct {
-	h          *C.QLocale
-	isSubclass bool
+	h *C.QLocale
 }
 
 func (this *QLocale) cPointer() *C.QLocale {
@@ -925,9 +924,7 @@ func UnsafeNewQLocale(h unsafe.Pointer) *QLocale {
 // NewQLocale constructs a new QLocale object.
 func NewQLocale() *QLocale {
 
-	ret := newQLocale(C.QLocale_new())
-	ret.isSubclass = true
-	return ret
+	return newQLocale(C.QLocale_new())
 }
 
 // NewQLocale2 constructs a new QLocale object.
@@ -937,49 +934,37 @@ func NewQLocale2(name string) *QLocale {
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
 
-	ret := newQLocale(C.QLocale_new2(name_ms))
-	ret.isSubclass = true
-	return ret
+	return newQLocale(C.QLocale_new2(name_ms))
 }
 
 // NewQLocale3 constructs a new QLocale object.
 func NewQLocale3(language QLocale__Language, territory QLocale__Country) *QLocale {
 
-	ret := newQLocale(C.QLocale_new3((C.uint16_t)(language), (C.uint16_t)(territory)))
-	ret.isSubclass = true
-	return ret
+	return newQLocale(C.QLocale_new3((C.uint16_t)(language), (C.uint16_t)(territory)))
 }
 
 // NewQLocale4 constructs a new QLocale object.
 func NewQLocale4(language QLocale__Language) *QLocale {
 
-	ret := newQLocale(C.QLocale_new4((C.uint16_t)(language)))
-	ret.isSubclass = true
-	return ret
+	return newQLocale(C.QLocale_new4((C.uint16_t)(language)))
 }
 
 // NewQLocale5 constructs a new QLocale object.
 func NewQLocale5(other *QLocale) *QLocale {
 
-	ret := newQLocale(C.QLocale_new5(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQLocale(C.QLocale_new5(other.cPointer()))
 }
 
 // NewQLocale6 constructs a new QLocale object.
 func NewQLocale6(language QLocale__Language, script QLocale__Script) *QLocale {
 
-	ret := newQLocale(C.QLocale_new6((C.uint16_t)(language), (C.uint16_t)(script)))
-	ret.isSubclass = true
-	return ret
+	return newQLocale(C.QLocale_new6((C.uint16_t)(language), (C.uint16_t)(script)))
 }
 
 // NewQLocale7 constructs a new QLocale object.
 func NewQLocale7(language QLocale__Language, script QLocale__Script, territory QLocale__Country) *QLocale {
 
-	ret := newQLocale(C.QLocale_new7((C.uint16_t)(language), (C.uint16_t)(script), (C.uint16_t)(territory)))
-	ret.isSubclass = true
-	return ret
+	return newQLocale(C.QLocale_new7((C.uint16_t)(language), (C.uint16_t)(script), (C.uint16_t)(territory)))
 }
 
 func (this *QLocale) OperatorAssign(other *QLocale) {

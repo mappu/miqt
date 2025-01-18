@@ -14,8 +14,7 @@ import (
 )
 
 type QByteArrayMatcher struct {
-	h          *C.QByteArrayMatcher
-	isSubclass bool
+	h *C.QByteArrayMatcher
 }
 
 func (this *QByteArrayMatcher) cPointer() *C.QByteArrayMatcher {
@@ -49,9 +48,7 @@ func UnsafeNewQByteArrayMatcher(h unsafe.Pointer) *QByteArrayMatcher {
 // NewQByteArrayMatcher constructs a new QByteArrayMatcher object.
 func NewQByteArrayMatcher() *QByteArrayMatcher {
 
-	ret := newQByteArrayMatcher(C.QByteArrayMatcher_new())
-	ret.isSubclass = true
-	return ret
+	return newQByteArrayMatcher(C.QByteArrayMatcher_new())
 }
 
 // NewQByteArrayMatcher2 constructs a new QByteArrayMatcher object.
@@ -60,17 +57,13 @@ func NewQByteArrayMatcher2(pattern []byte) *QByteArrayMatcher {
 	pattern_alias.data = (*C.char)(unsafe.Pointer(&pattern[0]))
 	pattern_alias.len = C.size_t(len(pattern))
 
-	ret := newQByteArrayMatcher(C.QByteArrayMatcher_new2(pattern_alias))
-	ret.isSubclass = true
-	return ret
+	return newQByteArrayMatcher(C.QByteArrayMatcher_new2(pattern_alias))
 }
 
 // NewQByteArrayMatcher3 constructs a new QByteArrayMatcher object.
 func NewQByteArrayMatcher3(pattern QByteArrayView) *QByteArrayMatcher {
 
-	ret := newQByteArrayMatcher(C.QByteArrayMatcher_new3(pattern.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQByteArrayMatcher(C.QByteArrayMatcher_new3(pattern.cPointer()))
 }
 
 // NewQByteArrayMatcher4 constructs a new QByteArrayMatcher object.
@@ -78,17 +71,13 @@ func NewQByteArrayMatcher4(pattern string) *QByteArrayMatcher {
 	pattern_Cstring := C.CString(pattern)
 	defer C.free(unsafe.Pointer(pattern_Cstring))
 
-	ret := newQByteArrayMatcher(C.QByteArrayMatcher_new4(pattern_Cstring))
-	ret.isSubclass = true
-	return ret
+	return newQByteArrayMatcher(C.QByteArrayMatcher_new4(pattern_Cstring))
 }
 
 // NewQByteArrayMatcher5 constructs a new QByteArrayMatcher object.
 func NewQByteArrayMatcher5(other *QByteArrayMatcher) *QByteArrayMatcher {
 
-	ret := newQByteArrayMatcher(C.QByteArrayMatcher_new5(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQByteArrayMatcher(C.QByteArrayMatcher_new5(other.cPointer()))
 }
 
 // NewQByteArrayMatcher6 constructs a new QByteArrayMatcher object.
@@ -96,9 +85,7 @@ func NewQByteArrayMatcher6(pattern string, length int64) *QByteArrayMatcher {
 	pattern_Cstring := C.CString(pattern)
 	defer C.free(unsafe.Pointer(pattern_Cstring))
 
-	ret := newQByteArrayMatcher(C.QByteArrayMatcher_new6(pattern_Cstring, (C.ptrdiff_t)(length)))
-	ret.isSubclass = true
-	return ret
+	return newQByteArrayMatcher(C.QByteArrayMatcher_new6(pattern_Cstring, (C.ptrdiff_t)(length)))
 }
 
 func (this *QByteArrayMatcher) OperatorAssign(other *QByteArrayMatcher) {
@@ -154,8 +141,7 @@ func (this *QByteArrayMatcher) GoGC() {
 }
 
 type QStaticByteArrayMatcherBase struct {
-	h          *C.QStaticByteArrayMatcherBase
-	isSubclass bool
+	h *C.QStaticByteArrayMatcherBase
 }
 
 func (this *QStaticByteArrayMatcherBase) cPointer() *C.QStaticByteArrayMatcherBase {

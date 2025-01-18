@@ -16,8 +16,7 @@ import (
 )
 
 type QMediaRecorderControl struct {
-	h          *C.QMediaRecorderControl
-	isSubclass bool
+	h *C.QMediaRecorderControl
 	*QMediaControl
 }
 

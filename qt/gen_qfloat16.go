@@ -14,8 +14,7 @@ import (
 )
 
 type qfloat16 struct {
-	h          *C.qfloat16
-	isSubclass bool
+	h *C.qfloat16
 }
 
 func (this *qfloat16) cPointer() *C.qfloat16 {
@@ -49,17 +48,13 @@ func UnsafeNewqfloat16(h unsafe.Pointer) *qfloat16 {
 // Newqfloat16 constructs a new qfloat16 object.
 func Newqfloat16() *qfloat16 {
 
-	ret := newqfloat16(C.qfloat16_new())
-	ret.isSubclass = true
-	return ret
+	return newqfloat16(C.qfloat16_new())
 }
 
 // Newqfloat162 constructs a new qfloat16 object.
 func Newqfloat162(f float32) *qfloat16 {
 
-	ret := newqfloat16(C.qfloat16_new2((C.float)(f)))
-	ret.isSubclass = true
-	return ret
+	return newqfloat16(C.qfloat16_new2((C.float)(f)))
 }
 
 func (this *qfloat16) IsInf() bool {

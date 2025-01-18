@@ -588,56 +588,98 @@ struct miqt_string QMovie_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QMovie_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMovie*>( (QMovie*)(self) )->handle__Event = slot;
+bool QMovie_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQMovie* self_cast = dynamic_cast<MiqtVirtualQMovie*>( (QMovie*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QMovie_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQMovie*)(self) )->virtualbase_Event(event);
 }
 
-void QMovie_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMovie*>( (QMovie*)(self) )->handle__EventFilter = slot;
+bool QMovie_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQMovie* self_cast = dynamic_cast<MiqtVirtualQMovie*>( (QMovie*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QMovie_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQMovie*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QMovie_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMovie*>( (QMovie*)(self) )->handle__TimerEvent = slot;
+bool QMovie_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMovie* self_cast = dynamic_cast<MiqtVirtualQMovie*>( (QMovie*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QMovie_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQMovie*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QMovie_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMovie*>( (QMovie*)(self) )->handle__ChildEvent = slot;
+bool QMovie_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMovie* self_cast = dynamic_cast<MiqtVirtualQMovie*>( (QMovie*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QMovie_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQMovie*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QMovie_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMovie*>( (QMovie*)(self) )->handle__CustomEvent = slot;
+bool QMovie_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMovie* self_cast = dynamic_cast<MiqtVirtualQMovie*>( (QMovie*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QMovie_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQMovie*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QMovie_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMovie*>( (QMovie*)(self) )->handle__ConnectNotify = slot;
+bool QMovie_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQMovie* self_cast = dynamic_cast<MiqtVirtualQMovie*>( (QMovie*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QMovie_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMovie*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QMovie_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMovie*>( (QMovie*)(self) )->handle__DisconnectNotify = slot;
+bool QMovie_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQMovie* self_cast = dynamic_cast<MiqtVirtualQMovie*>( (QMovie*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QMovie_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

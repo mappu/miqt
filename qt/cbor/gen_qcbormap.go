@@ -15,8 +15,7 @@ import (
 )
 
 type QCborMap struct {
-	h          *C.QCborMap
-	isSubclass bool
+	h *C.QCborMap
 }
 
 func (this *QCborMap) cPointer() *C.QCborMap {
@@ -50,17 +49,13 @@ func UnsafeNewQCborMap(h unsafe.Pointer) *QCborMap {
 // NewQCborMap constructs a new QCborMap object.
 func NewQCborMap() *QCborMap {
 
-	ret := newQCborMap(C.QCborMap_new())
-	ret.isSubclass = true
-	return ret
+	return newQCborMap(C.QCborMap_new())
 }
 
 // NewQCborMap2 constructs a new QCborMap object.
 func NewQCborMap2(other *QCborMap) *QCborMap {
 
-	ret := newQCborMap(C.QCborMap_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQCborMap(C.QCborMap_new2(other.cPointer()))
 }
 
 func (this *QCborMap) OperatorAssign(other *QCborMap) {
@@ -536,8 +531,7 @@ func (this *QCborMap) GoGC() {
 }
 
 type QCborMap__Iterator struct {
-	h          *C.QCborMap__Iterator
-	isSubclass bool
+	h *C.QCborMap__Iterator
 }
 
 func (this *QCborMap__Iterator) cPointer() *C.QCborMap__Iterator {
@@ -571,17 +565,13 @@ func UnsafeNewQCborMap__Iterator(h unsafe.Pointer) *QCborMap__Iterator {
 // NewQCborMap__Iterator constructs a new QCborMap::Iterator object.
 func NewQCborMap__Iterator() *QCborMap__Iterator {
 
-	ret := newQCborMap__Iterator(C.QCborMap__Iterator_new())
-	ret.isSubclass = true
-	return ret
+	return newQCborMap__Iterator(C.QCborMap__Iterator_new())
 }
 
 // NewQCborMap__Iterator2 constructs a new QCborMap::Iterator object.
 func NewQCborMap__Iterator2(param1 *QCborMap__Iterator) *QCborMap__Iterator {
 
-	ret := newQCborMap__Iterator(C.QCborMap__Iterator_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQCborMap__Iterator(C.QCborMap__Iterator_new2(param1.cPointer()))
 }
 
 func (this *QCborMap__Iterator) OperatorAssign(other *QCborMap__Iterator) {
@@ -732,8 +722,7 @@ func (this *QCborMap__Iterator) GoGC() {
 }
 
 type QCborMap__ConstIterator struct {
-	h          *C.QCborMap__ConstIterator
-	isSubclass bool
+	h *C.QCborMap__ConstIterator
 }
 
 func (this *QCborMap__ConstIterator) cPointer() *C.QCborMap__ConstIterator {
@@ -767,17 +756,13 @@ func UnsafeNewQCborMap__ConstIterator(h unsafe.Pointer) *QCborMap__ConstIterator
 // NewQCborMap__ConstIterator constructs a new QCborMap::ConstIterator object.
 func NewQCborMap__ConstIterator() *QCborMap__ConstIterator {
 
-	ret := newQCborMap__ConstIterator(C.QCborMap__ConstIterator_new())
-	ret.isSubclass = true
-	return ret
+	return newQCborMap__ConstIterator(C.QCborMap__ConstIterator_new())
 }
 
 // NewQCborMap__ConstIterator2 constructs a new QCborMap::ConstIterator object.
 func NewQCborMap__ConstIterator2(param1 *QCborMap__ConstIterator) *QCborMap__ConstIterator {
 
-	ret := newQCborMap__ConstIterator(C.QCborMap__ConstIterator_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQCborMap__ConstIterator(C.QCborMap__ConstIterator_new2(param1.cPointer()))
 }
 
 func (this *QCborMap__ConstIterator) OperatorAssign(other *QCborMap__ConstIterator) {

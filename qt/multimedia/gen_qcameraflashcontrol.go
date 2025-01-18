@@ -16,8 +16,7 @@ import (
 )
 
 type QCameraFlashControl struct {
-	h          *C.QCameraFlashControl
-	isSubclass bool
+	h *C.QCameraFlashControl
 	*QMediaControl
 }
 

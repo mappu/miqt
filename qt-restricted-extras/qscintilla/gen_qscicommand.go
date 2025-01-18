@@ -118,8 +118,7 @@ const (
 )
 
 type QsciCommand struct {
-	h          *C.QsciCommand
-	isSubclass bool
+	h *C.QsciCommand
 }
 
 func (this *QsciCommand) cPointer() *C.QsciCommand {

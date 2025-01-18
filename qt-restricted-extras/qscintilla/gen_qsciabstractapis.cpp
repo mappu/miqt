@@ -484,72 +484,132 @@ struct miqt_string QsciAbstractAPIs_TrUtf83(const char* s, const char* c, int n)
 	return _ms;
 }
 
-void QsciAbstractAPIs_override_virtual_UpdateAutoCompletionList(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciAbstractAPIs*>( (QsciAbstractAPIs*)(self) )->handle__UpdateAutoCompletionList = slot;
+bool QsciAbstractAPIs_override_virtual_UpdateAutoCompletionList(void* self, intptr_t slot) {
+	MiqtVirtualQsciAbstractAPIs* self_cast = dynamic_cast<MiqtVirtualQsciAbstractAPIs*>( (QsciAbstractAPIs*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateAutoCompletionList = slot;
+	return true;
 }
 
-void QsciAbstractAPIs_override_virtual_AutoCompletionSelected(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciAbstractAPIs*>( (QsciAbstractAPIs*)(self) )->handle__AutoCompletionSelected = slot;
+bool QsciAbstractAPIs_override_virtual_AutoCompletionSelected(void* self, intptr_t slot) {
+	MiqtVirtualQsciAbstractAPIs* self_cast = dynamic_cast<MiqtVirtualQsciAbstractAPIs*>( (QsciAbstractAPIs*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__AutoCompletionSelected = slot;
+	return true;
 }
 
 void QsciAbstractAPIs_virtualbase_AutoCompletionSelected(void* self, struct miqt_string selection) {
 	( (MiqtVirtualQsciAbstractAPIs*)(self) )->virtualbase_AutoCompletionSelected(selection);
 }
 
-void QsciAbstractAPIs_override_virtual_CallTips(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciAbstractAPIs*>( (QsciAbstractAPIs*)(self) )->handle__CallTips = slot;
+bool QsciAbstractAPIs_override_virtual_CallTips(void* self, intptr_t slot) {
+	MiqtVirtualQsciAbstractAPIs* self_cast = dynamic_cast<MiqtVirtualQsciAbstractAPIs*>( (QsciAbstractAPIs*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CallTips = slot;
+	return true;
 }
 
-void QsciAbstractAPIs_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciAbstractAPIs*>( (QsciAbstractAPIs*)(self) )->handle__Event = slot;
+bool QsciAbstractAPIs_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQsciAbstractAPIs* self_cast = dynamic_cast<MiqtVirtualQsciAbstractAPIs*>( (QsciAbstractAPIs*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QsciAbstractAPIs_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQsciAbstractAPIs*)(self) )->virtualbase_Event(event);
 }
 
-void QsciAbstractAPIs_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciAbstractAPIs*>( (QsciAbstractAPIs*)(self) )->handle__EventFilter = slot;
+bool QsciAbstractAPIs_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQsciAbstractAPIs* self_cast = dynamic_cast<MiqtVirtualQsciAbstractAPIs*>( (QsciAbstractAPIs*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QsciAbstractAPIs_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQsciAbstractAPIs*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QsciAbstractAPIs_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciAbstractAPIs*>( (QsciAbstractAPIs*)(self) )->handle__TimerEvent = slot;
+bool QsciAbstractAPIs_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciAbstractAPIs* self_cast = dynamic_cast<MiqtVirtualQsciAbstractAPIs*>( (QsciAbstractAPIs*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QsciAbstractAPIs_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQsciAbstractAPIs*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QsciAbstractAPIs_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciAbstractAPIs*>( (QsciAbstractAPIs*)(self) )->handle__ChildEvent = slot;
+bool QsciAbstractAPIs_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciAbstractAPIs* self_cast = dynamic_cast<MiqtVirtualQsciAbstractAPIs*>( (QsciAbstractAPIs*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QsciAbstractAPIs_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQsciAbstractAPIs*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QsciAbstractAPIs_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciAbstractAPIs*>( (QsciAbstractAPIs*)(self) )->handle__CustomEvent = slot;
+bool QsciAbstractAPIs_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciAbstractAPIs* self_cast = dynamic_cast<MiqtVirtualQsciAbstractAPIs*>( (QsciAbstractAPIs*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QsciAbstractAPIs_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQsciAbstractAPIs*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QsciAbstractAPIs_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciAbstractAPIs*>( (QsciAbstractAPIs*)(self) )->handle__ConnectNotify = slot;
+bool QsciAbstractAPIs_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQsciAbstractAPIs* self_cast = dynamic_cast<MiqtVirtualQsciAbstractAPIs*>( (QsciAbstractAPIs*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QsciAbstractAPIs_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQsciAbstractAPIs*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QsciAbstractAPIs_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciAbstractAPIs*>( (QsciAbstractAPIs*)(self) )->handle__DisconnectNotify = slot;
+bool QsciAbstractAPIs_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQsciAbstractAPIs* self_cast = dynamic_cast<MiqtVirtualQsciAbstractAPIs*>( (QsciAbstractAPIs*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QsciAbstractAPIs_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

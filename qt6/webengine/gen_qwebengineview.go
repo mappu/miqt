@@ -17,8 +17,7 @@ import (
 )
 
 type QWebEngineView struct {
-	h          *C.QWebEngineView
-	isSubclass bool
+	h *C.QWebEngineView
 	*qt6.QWidget
 }
 
@@ -56,49 +55,37 @@ func UnsafeNewQWebEngineView(h unsafe.Pointer) *QWebEngineView {
 // NewQWebEngineView constructs a new QWebEngineView object.
 func NewQWebEngineView(parent *qt6.QWidget) *QWebEngineView {
 
-	ret := newQWebEngineView(C.QWebEngineView_new((*C.QWidget)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineView(C.QWebEngineView_new((*C.QWidget)(parent.UnsafePointer())))
 }
 
 // NewQWebEngineView2 constructs a new QWebEngineView object.
 func NewQWebEngineView2() *QWebEngineView {
 
-	ret := newQWebEngineView(C.QWebEngineView_new2())
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineView(C.QWebEngineView_new2())
 }
 
 // NewQWebEngineView3 constructs a new QWebEngineView object.
 func NewQWebEngineView3(profile *QWebEngineProfile) *QWebEngineView {
 
-	ret := newQWebEngineView(C.QWebEngineView_new3(profile.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineView(C.QWebEngineView_new3(profile.cPointer()))
 }
 
 // NewQWebEngineView4 constructs a new QWebEngineView object.
 func NewQWebEngineView4(page *QWebEnginePage) *QWebEngineView {
 
-	ret := newQWebEngineView(C.QWebEngineView_new4(page.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineView(C.QWebEngineView_new4(page.cPointer()))
 }
 
 // NewQWebEngineView5 constructs a new QWebEngineView object.
 func NewQWebEngineView5(profile *QWebEngineProfile, parent *qt6.QWidget) *QWebEngineView {
 
-	ret := newQWebEngineView(C.QWebEngineView_new5(profile.cPointer(), (*C.QWidget)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineView(C.QWebEngineView_new5(profile.cPointer(), (*C.QWidget)(parent.UnsafePointer())))
 }
 
 // NewQWebEngineView6 constructs a new QWebEngineView object.
 func NewQWebEngineView6(page *QWebEnginePage, parent *qt6.QWidget) *QWebEngineView {
 
-	ret := newQWebEngineView(C.QWebEngineView_new6(page.cPointer(), (*C.QWidget)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineView(C.QWebEngineView_new6(page.cPointer(), (*C.QWidget)(parent.UnsafePointer())))
 }
 
 func (this *QWebEngineView) MetaObject() *qt6.QMetaObject {
@@ -589,10 +576,10 @@ func (this *QWebEngineView) callVirtualBase_SizeHint() *qt6.QSize {
 
 }
 func (this *QWebEngineView) OnSizeHint(slot func(super func() *qt6.QSize) *qt6.QSize) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_SizeHint
@@ -614,10 +601,10 @@ func (this *QWebEngineView) callVirtualBase_CreateWindow(typeVal QWebEnginePage_
 
 }
 func (this *QWebEngineView) OnCreateWindow(slot func(super func(typeVal QWebEnginePage__WebWindowType) *QWebEngineView, typeVal QWebEnginePage__WebWindowType) *QWebEngineView) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_CreateWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_CreateWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_CreateWindow
@@ -642,10 +629,10 @@ func (this *QWebEngineView) callVirtualBase_ContextMenuEvent(param1 *qt6.QContex
 
 }
 func (this *QWebEngineView) OnContextMenuEvent(slot func(super func(param1 *qt6.QContextMenuEvent), param1 *qt6.QContextMenuEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_ContextMenuEvent
@@ -668,10 +655,10 @@ func (this *QWebEngineView) callVirtualBase_Event(param1 *qt6.QEvent) bool {
 
 }
 func (this *QWebEngineView) OnEvent(slot func(super func(param1 *qt6.QEvent) bool, param1 *qt6.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_Event
@@ -696,10 +683,10 @@ func (this *QWebEngineView) callVirtualBase_ShowEvent(param1 *qt6.QShowEvent) {
 
 }
 func (this *QWebEngineView) OnShowEvent(slot func(super func(param1 *qt6.QShowEvent), param1 *qt6.QShowEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_ShowEvent
@@ -722,10 +709,10 @@ func (this *QWebEngineView) callVirtualBase_HideEvent(param1 *qt6.QHideEvent) {
 
 }
 func (this *QWebEngineView) OnHideEvent(slot func(super func(param1 *qt6.QHideEvent), param1 *qt6.QHideEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_HideEvent
@@ -748,10 +735,10 @@ func (this *QWebEngineView) callVirtualBase_CloseEvent(param1 *qt6.QCloseEvent) 
 
 }
 func (this *QWebEngineView) OnCloseEvent(slot func(super func(param1 *qt6.QCloseEvent), param1 *qt6.QCloseEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_CloseEvent
@@ -774,10 +761,10 @@ func (this *QWebEngineView) callVirtualBase_DragEnterEvent(e *qt6.QDragEnterEven
 
 }
 func (this *QWebEngineView) OnDragEnterEvent(slot func(super func(e *qt6.QDragEnterEvent), e *qt6.QDragEnterEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_DragEnterEvent
@@ -800,10 +787,10 @@ func (this *QWebEngineView) callVirtualBase_DragLeaveEvent(e *qt6.QDragLeaveEven
 
 }
 func (this *QWebEngineView) OnDragLeaveEvent(slot func(super func(e *qt6.QDragLeaveEvent), e *qt6.QDragLeaveEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_DragLeaveEvent
@@ -826,10 +813,10 @@ func (this *QWebEngineView) callVirtualBase_DragMoveEvent(e *qt6.QDragMoveEvent)
 
 }
 func (this *QWebEngineView) OnDragMoveEvent(slot func(super func(e *qt6.QDragMoveEvent), e *qt6.QDragMoveEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_DragMoveEvent
@@ -852,10 +839,10 @@ func (this *QWebEngineView) callVirtualBase_DropEvent(e *qt6.QDropEvent) {
 
 }
 func (this *QWebEngineView) OnDropEvent(slot func(super func(e *qt6.QDropEvent), e *qt6.QDropEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_DropEvent
@@ -878,10 +865,10 @@ func (this *QWebEngineView) callVirtualBase_DevType() int {
 
 }
 func (this *QWebEngineView) OnDevType(slot func(super func() int) int) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_DevType
@@ -903,10 +890,10 @@ func (this *QWebEngineView) callVirtualBase_SetVisible(visible bool) {
 
 }
 func (this *QWebEngineView) OnSetVisible(slot func(super func(visible bool), visible bool)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_SetVisible
@@ -931,10 +918,10 @@ func (this *QWebEngineView) callVirtualBase_MinimumSizeHint() *qt6.QSize {
 
 }
 func (this *QWebEngineView) OnMinimumSizeHint(slot func(super func() *qt6.QSize) *qt6.QSize) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_MinimumSizeHint
@@ -956,10 +943,10 @@ func (this *QWebEngineView) callVirtualBase_HeightForWidth(param1 int) int {
 
 }
 func (this *QWebEngineView) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_HeightForWidth
@@ -984,10 +971,10 @@ func (this *QWebEngineView) callVirtualBase_HasHeightForWidth() bool {
 
 }
 func (this *QWebEngineView) OnHasHeightForWidth(slot func(super func() bool) bool) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_HasHeightForWidth
@@ -1009,10 +996,10 @@ func (this *QWebEngineView) callVirtualBase_PaintEngine() *qt6.QPaintEngine {
 
 }
 func (this *QWebEngineView) OnPaintEngine(slot func(super func() *qt6.QPaintEngine) *qt6.QPaintEngine) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_PaintEngine
@@ -1034,10 +1021,10 @@ func (this *QWebEngineView) callVirtualBase_MousePressEvent(event *qt6.QMouseEve
 
 }
 func (this *QWebEngineView) OnMousePressEvent(slot func(super func(event *qt6.QMouseEvent), event *qt6.QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_MousePressEvent
@@ -1060,10 +1047,10 @@ func (this *QWebEngineView) callVirtualBase_MouseReleaseEvent(event *qt6.QMouseE
 
 }
 func (this *QWebEngineView) OnMouseReleaseEvent(slot func(super func(event *qt6.QMouseEvent), event *qt6.QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_MouseReleaseEvent
@@ -1086,10 +1073,10 @@ func (this *QWebEngineView) callVirtualBase_MouseDoubleClickEvent(event *qt6.QMo
 
 }
 func (this *QWebEngineView) OnMouseDoubleClickEvent(slot func(super func(event *qt6.QMouseEvent), event *qt6.QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_MouseDoubleClickEvent
@@ -1112,10 +1099,10 @@ func (this *QWebEngineView) callVirtualBase_MouseMoveEvent(event *qt6.QMouseEven
 
 }
 func (this *QWebEngineView) OnMouseMoveEvent(slot func(super func(event *qt6.QMouseEvent), event *qt6.QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_MouseMoveEvent
@@ -1138,10 +1125,10 @@ func (this *QWebEngineView) callVirtualBase_WheelEvent(event *qt6.QWheelEvent) {
 
 }
 func (this *QWebEngineView) OnWheelEvent(slot func(super func(event *qt6.QWheelEvent), event *qt6.QWheelEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_WheelEvent
@@ -1164,10 +1151,10 @@ func (this *QWebEngineView) callVirtualBase_KeyPressEvent(event *qt6.QKeyEvent) 
 
 }
 func (this *QWebEngineView) OnKeyPressEvent(slot func(super func(event *qt6.QKeyEvent), event *qt6.QKeyEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_KeyPressEvent
@@ -1190,10 +1177,10 @@ func (this *QWebEngineView) callVirtualBase_KeyReleaseEvent(event *qt6.QKeyEvent
 
 }
 func (this *QWebEngineView) OnKeyReleaseEvent(slot func(super func(event *qt6.QKeyEvent), event *qt6.QKeyEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_KeyReleaseEvent
@@ -1216,10 +1203,10 @@ func (this *QWebEngineView) callVirtualBase_FocusInEvent(event *qt6.QFocusEvent)
 
 }
 func (this *QWebEngineView) OnFocusInEvent(slot func(super func(event *qt6.QFocusEvent), event *qt6.QFocusEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_FocusInEvent
@@ -1242,10 +1229,10 @@ func (this *QWebEngineView) callVirtualBase_FocusOutEvent(event *qt6.QFocusEvent
 
 }
 func (this *QWebEngineView) OnFocusOutEvent(slot func(super func(event *qt6.QFocusEvent), event *qt6.QFocusEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_FocusOutEvent
@@ -1268,10 +1255,10 @@ func (this *QWebEngineView) callVirtualBase_EnterEvent(event *qt6.QEnterEvent) {
 
 }
 func (this *QWebEngineView) OnEnterEvent(slot func(super func(event *qt6.QEnterEvent), event *qt6.QEnterEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_EnterEvent
@@ -1294,10 +1281,10 @@ func (this *QWebEngineView) callVirtualBase_LeaveEvent(event *qt6.QEvent) {
 
 }
 func (this *QWebEngineView) OnLeaveEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_LeaveEvent
@@ -1320,10 +1307,10 @@ func (this *QWebEngineView) callVirtualBase_PaintEvent(event *qt6.QPaintEvent) {
 
 }
 func (this *QWebEngineView) OnPaintEvent(slot func(super func(event *qt6.QPaintEvent), event *qt6.QPaintEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_PaintEvent
@@ -1346,10 +1333,10 @@ func (this *QWebEngineView) callVirtualBase_MoveEvent(event *qt6.QMoveEvent) {
 
 }
 func (this *QWebEngineView) OnMoveEvent(slot func(super func(event *qt6.QMoveEvent), event *qt6.QMoveEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_MoveEvent
@@ -1372,10 +1359,10 @@ func (this *QWebEngineView) callVirtualBase_ResizeEvent(event *qt6.QResizeEvent)
 
 }
 func (this *QWebEngineView) OnResizeEvent(slot func(super func(event *qt6.QResizeEvent), event *qt6.QResizeEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_ResizeEvent
@@ -1398,10 +1385,10 @@ func (this *QWebEngineView) callVirtualBase_TabletEvent(event *qt6.QTabletEvent)
 
 }
 func (this *QWebEngineView) OnTabletEvent(slot func(super func(event *qt6.QTabletEvent), event *qt6.QTabletEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_TabletEvent
@@ -1424,10 +1411,10 @@ func (this *QWebEngineView) callVirtualBase_ActionEvent(event *qt6.QActionEvent)
 
 }
 func (this *QWebEngineView) OnActionEvent(slot func(super func(event *qt6.QActionEvent), event *qt6.QActionEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_ActionEvent
@@ -1453,10 +1440,10 @@ func (this *QWebEngineView) callVirtualBase_NativeEvent(eventType []byte, messag
 
 }
 func (this *QWebEngineView) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_NativeEvent
@@ -1487,10 +1474,10 @@ func (this *QWebEngineView) callVirtualBase_ChangeEvent(param1 *qt6.QEvent) {
 
 }
 func (this *QWebEngineView) OnChangeEvent(slot func(super func(param1 *qt6.QEvent), param1 *qt6.QEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_ChangeEvent
@@ -1513,10 +1500,10 @@ func (this *QWebEngineView) callVirtualBase_Metric(param1 qt6.QPaintDevice__Pain
 
 }
 func (this *QWebEngineView) OnMetric(slot func(super func(param1 qt6.QPaintDevice__PaintDeviceMetric) int, param1 qt6.QPaintDevice__PaintDeviceMetric) int) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_Metric
@@ -1541,10 +1528,10 @@ func (this *QWebEngineView) callVirtualBase_InitPainter(painter *qt6.QPainter) {
 
 }
 func (this *QWebEngineView) OnInitPainter(slot func(super func(painter *qt6.QPainter), painter *qt6.QPainter)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_InitPainter
@@ -1567,10 +1554,10 @@ func (this *QWebEngineView) callVirtualBase_Redirected(offset *qt6.QPoint) *qt6.
 
 }
 func (this *QWebEngineView) OnRedirected(slot func(super func(offset *qt6.QPoint) *qt6.QPaintDevice, offset *qt6.QPoint) *qt6.QPaintDevice) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_Redirected
@@ -1595,10 +1582,10 @@ func (this *QWebEngineView) callVirtualBase_SharedPainter() *qt6.QPainter {
 
 }
 func (this *QWebEngineView) OnSharedPainter(slot func(super func() *qt6.QPainter) *qt6.QPainter) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_SharedPainter
@@ -1620,10 +1607,10 @@ func (this *QWebEngineView) callVirtualBase_InputMethodEvent(param1 *qt6.QInputM
 
 }
 func (this *QWebEngineView) OnInputMethodEvent(slot func(super func(param1 *qt6.QInputMethodEvent), param1 *qt6.QInputMethodEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_InputMethodEvent
@@ -1648,10 +1635,10 @@ func (this *QWebEngineView) callVirtualBase_InputMethodQuery(param1 qt6.InputMet
 
 }
 func (this *QWebEngineView) OnInputMethodQuery(slot func(super func(param1 qt6.InputMethodQuery) *qt6.QVariant, param1 qt6.InputMethodQuery) *qt6.QVariant) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_InputMethodQuery
@@ -1676,10 +1663,10 @@ func (this *QWebEngineView) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
 }
 func (this *QWebEngineView) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
-	if !this.isSubclass {
+	ok := C.QWebEngineView_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineView_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineView_FocusNextPrevChild

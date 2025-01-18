@@ -399,56 +399,98 @@ struct miqt_string QShortcut_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QShortcut_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) )->handle__Event = slot;
+bool QShortcut_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQShortcut* self_cast = dynamic_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QShortcut_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQShortcut*)(self) )->virtualbase_Event(e);
 }
 
-void QShortcut_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) )->handle__EventFilter = slot;
+bool QShortcut_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQShortcut* self_cast = dynamic_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QShortcut_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQShortcut*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QShortcut_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) )->handle__TimerEvent = slot;
+bool QShortcut_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQShortcut* self_cast = dynamic_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QShortcut_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQShortcut*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QShortcut_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) )->handle__ChildEvent = slot;
+bool QShortcut_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQShortcut* self_cast = dynamic_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QShortcut_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQShortcut*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QShortcut_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) )->handle__CustomEvent = slot;
+bool QShortcut_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQShortcut* self_cast = dynamic_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QShortcut_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQShortcut*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QShortcut_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) )->handle__ConnectNotify = slot;
+bool QShortcut_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQShortcut* self_cast = dynamic_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QShortcut_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQShortcut*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QShortcut_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) )->handle__DisconnectNotify = slot;
+bool QShortcut_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQShortcut* self_cast = dynamic_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QShortcut_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

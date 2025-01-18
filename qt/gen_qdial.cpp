@@ -480,104 +480,182 @@ struct miqt_string QDial_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QDial_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDial*>( (QDial*)(self) )->handle__SizeHint = slot;
+bool QDial_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQDial* self_cast = dynamic_cast<MiqtVirtualQDial*>( (QDial*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QDial_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQDial*)(self) )->virtualbase_SizeHint();
 }
 
-void QDial_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDial*>( (QDial*)(self) )->handle__MinimumSizeHint = slot;
+bool QDial_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQDial* self_cast = dynamic_cast<MiqtVirtualQDial*>( (QDial*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QDial_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQDial*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QDial_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDial*>( (QDial*)(self) )->handle__Event = slot;
+bool QDial_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQDial* self_cast = dynamic_cast<MiqtVirtualQDial*>( (QDial*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QDial_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQDial*)(self) )->virtualbase_Event(e);
 }
 
-void QDial_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDial*>( (QDial*)(self) )->handle__ResizeEvent = slot;
+bool QDial_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDial* self_cast = dynamic_cast<MiqtVirtualQDial*>( (QDial*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QDial_virtualbase_ResizeEvent(void* self, QResizeEvent* re) {
 	( (MiqtVirtualQDial*)(self) )->virtualbase_ResizeEvent(re);
 }
 
-void QDial_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDial*>( (QDial*)(self) )->handle__PaintEvent = slot;
+bool QDial_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDial* self_cast = dynamic_cast<MiqtVirtualQDial*>( (QDial*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QDial_virtualbase_PaintEvent(void* self, QPaintEvent* pe) {
 	( (MiqtVirtualQDial*)(self) )->virtualbase_PaintEvent(pe);
 }
 
-void QDial_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDial*>( (QDial*)(self) )->handle__MousePressEvent = slot;
+bool QDial_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDial* self_cast = dynamic_cast<MiqtVirtualQDial*>( (QDial*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QDial_virtualbase_MousePressEvent(void* self, QMouseEvent* me) {
 	( (MiqtVirtualQDial*)(self) )->virtualbase_MousePressEvent(me);
 }
 
-void QDial_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDial*>( (QDial*)(self) )->handle__MouseReleaseEvent = slot;
+bool QDial_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDial* self_cast = dynamic_cast<MiqtVirtualQDial*>( (QDial*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QDial_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* me) {
 	( (MiqtVirtualQDial*)(self) )->virtualbase_MouseReleaseEvent(me);
 }
 
-void QDial_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDial*>( (QDial*)(self) )->handle__MouseMoveEvent = slot;
+bool QDial_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDial* self_cast = dynamic_cast<MiqtVirtualQDial*>( (QDial*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QDial_virtualbase_MouseMoveEvent(void* self, QMouseEvent* me) {
 	( (MiqtVirtualQDial*)(self) )->virtualbase_MouseMoveEvent(me);
 }
 
-void QDial_override_virtual_SliderChange(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDial*>( (QDial*)(self) )->handle__SliderChange = slot;
+bool QDial_override_virtual_SliderChange(void* self, intptr_t slot) {
+	MiqtVirtualQDial* self_cast = dynamic_cast<MiqtVirtualQDial*>( (QDial*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SliderChange = slot;
+	return true;
 }
 
 void QDial_virtualbase_SliderChange(void* self, int change) {
 	( (MiqtVirtualQDial*)(self) )->virtualbase_SliderChange(change);
 }
 
-void QDial_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDial*>( (QDial*)(self) )->handle__KeyPressEvent = slot;
+bool QDial_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDial* self_cast = dynamic_cast<MiqtVirtualQDial*>( (QDial*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QDial_virtualbase_KeyPressEvent(void* self, QKeyEvent* ev) {
 	( (MiqtVirtualQDial*)(self) )->virtualbase_KeyPressEvent(ev);
 }
 
-void QDial_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDial*>( (QDial*)(self) )->handle__TimerEvent = slot;
+bool QDial_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDial* self_cast = dynamic_cast<MiqtVirtualQDial*>( (QDial*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QDial_virtualbase_TimerEvent(void* self, QTimerEvent* param1) {
 	( (MiqtVirtualQDial*)(self) )->virtualbase_TimerEvent(param1);
 }
 
-void QDial_override_virtual_WheelEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDial*>( (QDial*)(self) )->handle__WheelEvent = slot;
+bool QDial_override_virtual_WheelEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDial* self_cast = dynamic_cast<MiqtVirtualQDial*>( (QDial*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WheelEvent = slot;
+	return true;
 }
 
 void QDial_virtualbase_WheelEvent(void* self, QWheelEvent* e) {
 	( (MiqtVirtualQDial*)(self) )->virtualbase_WheelEvent(e);
 }
 
-void QDial_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDial*>( (QDial*)(self) )->handle__ChangeEvent = slot;
+bool QDial_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDial* self_cast = dynamic_cast<MiqtVirtualQDial*>( (QDial*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QDial_virtualbase_ChangeEvent(void* self, QEvent* e) {

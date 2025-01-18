@@ -308,48 +308,84 @@ struct miqt_string QPropertyAnimation_TrUtf83(const char* s, const char* c, int 
 	return _ms;
 }
 
-void QPropertyAnimation_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPropertyAnimation*>( (QPropertyAnimation*)(self) )->handle__Event = slot;
+bool QPropertyAnimation_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQPropertyAnimation* self_cast = dynamic_cast<MiqtVirtualQPropertyAnimation*>( (QPropertyAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QPropertyAnimation_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQPropertyAnimation*)(self) )->virtualbase_Event(event);
 }
 
-void QPropertyAnimation_override_virtual_UpdateCurrentValue(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPropertyAnimation*>( (QPropertyAnimation*)(self) )->handle__UpdateCurrentValue = slot;
+bool QPropertyAnimation_override_virtual_UpdateCurrentValue(void* self, intptr_t slot) {
+	MiqtVirtualQPropertyAnimation* self_cast = dynamic_cast<MiqtVirtualQPropertyAnimation*>( (QPropertyAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateCurrentValue = slot;
+	return true;
 }
 
 void QPropertyAnimation_virtualbase_UpdateCurrentValue(void* self, QVariant* value) {
 	( (MiqtVirtualQPropertyAnimation*)(self) )->virtualbase_UpdateCurrentValue(value);
 }
 
-void QPropertyAnimation_override_virtual_UpdateState(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPropertyAnimation*>( (QPropertyAnimation*)(self) )->handle__UpdateState = slot;
+bool QPropertyAnimation_override_virtual_UpdateState(void* self, intptr_t slot) {
+	MiqtVirtualQPropertyAnimation* self_cast = dynamic_cast<MiqtVirtualQPropertyAnimation*>( (QPropertyAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateState = slot;
+	return true;
 }
 
 void QPropertyAnimation_virtualbase_UpdateState(void* self, int newState, int oldState) {
 	( (MiqtVirtualQPropertyAnimation*)(self) )->virtualbase_UpdateState(newState, oldState);
 }
 
-void QPropertyAnimation_override_virtual_Duration(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPropertyAnimation*>( (QPropertyAnimation*)(self) )->handle__Duration = slot;
+bool QPropertyAnimation_override_virtual_Duration(void* self, intptr_t slot) {
+	MiqtVirtualQPropertyAnimation* self_cast = dynamic_cast<MiqtVirtualQPropertyAnimation*>( (QPropertyAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Duration = slot;
+	return true;
 }
 
 int QPropertyAnimation_virtualbase_Duration(const void* self) {
 	return ( (const MiqtVirtualQPropertyAnimation*)(self) )->virtualbase_Duration();
 }
 
-void QPropertyAnimation_override_virtual_UpdateCurrentTime(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPropertyAnimation*>( (QPropertyAnimation*)(self) )->handle__UpdateCurrentTime = slot;
+bool QPropertyAnimation_override_virtual_UpdateCurrentTime(void* self, intptr_t slot) {
+	MiqtVirtualQPropertyAnimation* self_cast = dynamic_cast<MiqtVirtualQPropertyAnimation*>( (QPropertyAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateCurrentTime = slot;
+	return true;
 }
 
 void QPropertyAnimation_virtualbase_UpdateCurrentTime(void* self, int param1) {
 	( (MiqtVirtualQPropertyAnimation*)(self) )->virtualbase_UpdateCurrentTime(param1);
 }
 
-void QPropertyAnimation_override_virtual_Interpolated(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPropertyAnimation*>( (QPropertyAnimation*)(self) )->handle__Interpolated = slot;
+bool QPropertyAnimation_override_virtual_Interpolated(void* self, intptr_t slot) {
+	MiqtVirtualQPropertyAnimation* self_cast = dynamic_cast<MiqtVirtualQPropertyAnimation*>( (QPropertyAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Interpolated = slot;
+	return true;
 }
 
 QVariant* QPropertyAnimation_virtualbase_Interpolated(const void* self, QVariant* from, QVariant* to, double progress) {

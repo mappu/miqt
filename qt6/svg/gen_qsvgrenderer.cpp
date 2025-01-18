@@ -416,56 +416,98 @@ void QSvgRenderer_Render32(QSvgRenderer* self, QPainter* p, struct miqt_string e
 	self->render(p, elementId_QString, *bounds);
 }
 
-void QSvgRenderer_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSvgRenderer*>( (QSvgRenderer*)(self) )->handle__Event = slot;
+bool QSvgRenderer_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQSvgRenderer* self_cast = dynamic_cast<MiqtVirtualQSvgRenderer*>( (QSvgRenderer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QSvgRenderer_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQSvgRenderer*)(self) )->virtualbase_Event(event);
 }
 
-void QSvgRenderer_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSvgRenderer*>( (QSvgRenderer*)(self) )->handle__EventFilter = slot;
+bool QSvgRenderer_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQSvgRenderer* self_cast = dynamic_cast<MiqtVirtualQSvgRenderer*>( (QSvgRenderer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QSvgRenderer_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQSvgRenderer*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QSvgRenderer_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSvgRenderer*>( (QSvgRenderer*)(self) )->handle__TimerEvent = slot;
+bool QSvgRenderer_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSvgRenderer* self_cast = dynamic_cast<MiqtVirtualQSvgRenderer*>( (QSvgRenderer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QSvgRenderer_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQSvgRenderer*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QSvgRenderer_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSvgRenderer*>( (QSvgRenderer*)(self) )->handle__ChildEvent = slot;
+bool QSvgRenderer_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSvgRenderer* self_cast = dynamic_cast<MiqtVirtualQSvgRenderer*>( (QSvgRenderer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QSvgRenderer_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQSvgRenderer*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QSvgRenderer_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSvgRenderer*>( (QSvgRenderer*)(self) )->handle__CustomEvent = slot;
+bool QSvgRenderer_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSvgRenderer* self_cast = dynamic_cast<MiqtVirtualQSvgRenderer*>( (QSvgRenderer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QSvgRenderer_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQSvgRenderer*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QSvgRenderer_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSvgRenderer*>( (QSvgRenderer*)(self) )->handle__ConnectNotify = slot;
+bool QSvgRenderer_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQSvgRenderer* self_cast = dynamic_cast<MiqtVirtualQSvgRenderer*>( (QSvgRenderer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QSvgRenderer_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSvgRenderer*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QSvgRenderer_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSvgRenderer*>( (QSvgRenderer*)(self) )->handle__DisconnectNotify = slot;
+bool QSvgRenderer_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQSvgRenderer* self_cast = dynamic_cast<MiqtVirtualQSvgRenderer*>( (QSvgRenderer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QSvgRenderer_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

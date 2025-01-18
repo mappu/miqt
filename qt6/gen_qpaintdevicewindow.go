@@ -14,8 +14,7 @@ import (
 )
 
 type QPaintDeviceWindow struct {
-	h          *C.QPaintDeviceWindow
-	isSubclass bool
+	h *C.QPaintDeviceWindow
 	*QWindow
 	*QPaintDevice
 }

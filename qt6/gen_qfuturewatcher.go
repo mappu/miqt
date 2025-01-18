@@ -15,8 +15,7 @@ import (
 )
 
 type QFutureWatcherBase struct {
-	h          *C.QFutureWatcherBase
-	isSubclass bool
+	h *C.QFutureWatcherBase
 	*QObject
 }
 

@@ -218,32 +218,56 @@ QUndoCommand* QUndoCommand_Child(const QUndoCommand* self, int index) {
 	return (QUndoCommand*) self->child(static_cast<int>(index));
 }
 
-void QUndoCommand_override_virtual_Undo(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoCommand*>( (QUndoCommand*)(self) )->handle__Undo = slot;
+bool QUndoCommand_override_virtual_Undo(void* self, intptr_t slot) {
+	MiqtVirtualQUndoCommand* self_cast = dynamic_cast<MiqtVirtualQUndoCommand*>( (QUndoCommand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Undo = slot;
+	return true;
 }
 
 void QUndoCommand_virtualbase_Undo(void* self) {
 	( (MiqtVirtualQUndoCommand*)(self) )->virtualbase_Undo();
 }
 
-void QUndoCommand_override_virtual_Redo(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoCommand*>( (QUndoCommand*)(self) )->handle__Redo = slot;
+bool QUndoCommand_override_virtual_Redo(void* self, intptr_t slot) {
+	MiqtVirtualQUndoCommand* self_cast = dynamic_cast<MiqtVirtualQUndoCommand*>( (QUndoCommand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Redo = slot;
+	return true;
 }
 
 void QUndoCommand_virtualbase_Redo(void* self) {
 	( (MiqtVirtualQUndoCommand*)(self) )->virtualbase_Redo();
 }
 
-void QUndoCommand_override_virtual_Id(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoCommand*>( (QUndoCommand*)(self) )->handle__Id = slot;
+bool QUndoCommand_override_virtual_Id(void* self, intptr_t slot) {
+	MiqtVirtualQUndoCommand* self_cast = dynamic_cast<MiqtVirtualQUndoCommand*>( (QUndoCommand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Id = slot;
+	return true;
 }
 
 int QUndoCommand_virtualbase_Id(const void* self) {
 	return ( (const MiqtVirtualQUndoCommand*)(self) )->virtualbase_Id();
 }
 
-void QUndoCommand_override_virtual_MergeWith(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoCommand*>( (QUndoCommand*)(self) )->handle__MergeWith = slot;
+bool QUndoCommand_override_virtual_MergeWith(void* self, intptr_t slot) {
+	MiqtVirtualQUndoCommand* self_cast = dynamic_cast<MiqtVirtualQUndoCommand*>( (QUndoCommand*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MergeWith = slot;
+	return true;
 }
 
 bool QUndoCommand_virtualbase_MergeWith(void* self, QUndoCommand* other) {
@@ -739,56 +763,98 @@ void QUndoStack_SetActive1(QUndoStack* self, bool active) {
 	self->setActive(active);
 }
 
-void QUndoStack_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoStack*>( (QUndoStack*)(self) )->handle__Event = slot;
+bool QUndoStack_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQUndoStack* self_cast = dynamic_cast<MiqtVirtualQUndoStack*>( (QUndoStack*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QUndoStack_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQUndoStack*)(self) )->virtualbase_Event(event);
 }
 
-void QUndoStack_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoStack*>( (QUndoStack*)(self) )->handle__EventFilter = slot;
+bool QUndoStack_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQUndoStack* self_cast = dynamic_cast<MiqtVirtualQUndoStack*>( (QUndoStack*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QUndoStack_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQUndoStack*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QUndoStack_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoStack*>( (QUndoStack*)(self) )->handle__TimerEvent = slot;
+bool QUndoStack_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQUndoStack* self_cast = dynamic_cast<MiqtVirtualQUndoStack*>( (QUndoStack*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QUndoStack_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQUndoStack*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QUndoStack_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoStack*>( (QUndoStack*)(self) )->handle__ChildEvent = slot;
+bool QUndoStack_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQUndoStack* self_cast = dynamic_cast<MiqtVirtualQUndoStack*>( (QUndoStack*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QUndoStack_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQUndoStack*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QUndoStack_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoStack*>( (QUndoStack*)(self) )->handle__CustomEvent = slot;
+bool QUndoStack_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQUndoStack* self_cast = dynamic_cast<MiqtVirtualQUndoStack*>( (QUndoStack*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QUndoStack_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQUndoStack*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QUndoStack_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoStack*>( (QUndoStack*)(self) )->handle__ConnectNotify = slot;
+bool QUndoStack_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQUndoStack* self_cast = dynamic_cast<MiqtVirtualQUndoStack*>( (QUndoStack*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QUndoStack_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQUndoStack*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QUndoStack_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoStack*>( (QUndoStack*)(self) )->handle__DisconnectNotify = slot;
+bool QUndoStack_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQUndoStack* self_cast = dynamic_cast<MiqtVirtualQUndoStack*>( (QUndoStack*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QUndoStack_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

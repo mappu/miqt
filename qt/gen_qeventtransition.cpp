@@ -214,24 +214,42 @@ struct miqt_string QEventTransition_TrUtf83(const char* s, const char* c, int n)
 	return _ms;
 }
 
-void QEventTransition_override_virtual_EventTest(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQEventTransition*>( (QEventTransition*)(self) )->handle__EventTest = slot;
+bool QEventTransition_override_virtual_EventTest(void* self, intptr_t slot) {
+	MiqtVirtualQEventTransition* self_cast = dynamic_cast<MiqtVirtualQEventTransition*>( (QEventTransition*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventTest = slot;
+	return true;
 }
 
 bool QEventTransition_virtualbase_EventTest(void* self, QEvent* event) {
 	return ( (MiqtVirtualQEventTransition*)(self) )->virtualbase_EventTest(event);
 }
 
-void QEventTransition_override_virtual_OnTransition(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQEventTransition*>( (QEventTransition*)(self) )->handle__OnTransition = slot;
+bool QEventTransition_override_virtual_OnTransition(void* self, intptr_t slot) {
+	MiqtVirtualQEventTransition* self_cast = dynamic_cast<MiqtVirtualQEventTransition*>( (QEventTransition*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__OnTransition = slot;
+	return true;
 }
 
 void QEventTransition_virtualbase_OnTransition(void* self, QEvent* event) {
 	( (MiqtVirtualQEventTransition*)(self) )->virtualbase_OnTransition(event);
 }
 
-void QEventTransition_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQEventTransition*>( (QEventTransition*)(self) )->handle__Event = slot;
+bool QEventTransition_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQEventTransition* self_cast = dynamic_cast<MiqtVirtualQEventTransition*>( (QEventTransition*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QEventTransition_virtualbase_Event(void* self, QEvent* e) {

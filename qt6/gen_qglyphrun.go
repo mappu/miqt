@@ -24,8 +24,7 @@ const (
 )
 
 type QGlyphRun struct {
-	h          *C.QGlyphRun
-	isSubclass bool
+	h *C.QGlyphRun
 }
 
 func (this *QGlyphRun) cPointer() *C.QGlyphRun {
@@ -59,17 +58,13 @@ func UnsafeNewQGlyphRun(h unsafe.Pointer) *QGlyphRun {
 // NewQGlyphRun constructs a new QGlyphRun object.
 func NewQGlyphRun() *QGlyphRun {
 
-	ret := newQGlyphRun(C.QGlyphRun_new())
-	ret.isSubclass = true
-	return ret
+	return newQGlyphRun(C.QGlyphRun_new())
 }
 
 // NewQGlyphRun2 constructs a new QGlyphRun object.
 func NewQGlyphRun2(other *QGlyphRun) *QGlyphRun {
 
-	ret := newQGlyphRun(C.QGlyphRun_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQGlyphRun(C.QGlyphRun_new2(other.cPointer()))
 }
 
 func (this *QGlyphRun) OperatorAssign(other *QGlyphRun) {

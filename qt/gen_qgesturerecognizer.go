@@ -28,8 +28,7 @@ const (
 )
 
 type QGestureRecognizer struct {
-	h          *C.QGestureRecognizer
-	isSubclass bool
+	h *C.QGestureRecognizer
 }
 
 func (this *QGestureRecognizer) cPointer() *C.QGestureRecognizer {
@@ -63,9 +62,7 @@ func UnsafeNewQGestureRecognizer(h unsafe.Pointer) *QGestureRecognizer {
 // NewQGestureRecognizer constructs a new QGestureRecognizer object.
 func NewQGestureRecognizer() *QGestureRecognizer {
 
-	ret := newQGestureRecognizer(C.QGestureRecognizer_new())
-	ret.isSubclass = true
-	return ret
+	return newQGestureRecognizer(C.QGestureRecognizer_new())
 }
 
 func (this *QGestureRecognizer) Create(target *QObject) *QGesture {
@@ -98,10 +95,10 @@ func (this *QGestureRecognizer) callVirtualBase_Create(target *QObject) *QGestur
 
 }
 func (this *QGestureRecognizer) OnCreate(slot func(super func(target *QObject) *QGesture, target *QObject) *QGesture) {
-	if !this.isSubclass {
+	ok := C.QGestureRecognizer_override_virtual_Create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGestureRecognizer_override_virtual_Create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGestureRecognizer_Create
@@ -120,10 +117,10 @@ func miqt_exec_callback_QGestureRecognizer_Create(self *C.QGestureRecognizer, cb
 
 }
 func (this *QGestureRecognizer) OnRecognize(slot func(state *QGesture, watched *QObject, event *QEvent) QGestureRecognizer__ResultFlag) {
-	if !this.isSubclass {
+	ok := C.QGestureRecognizer_override_virtual_Recognize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGestureRecognizer_override_virtual_Recognize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGestureRecognizer_Recognize
@@ -152,10 +149,10 @@ func (this *QGestureRecognizer) callVirtualBase_Reset(state *QGesture) {
 
 }
 func (this *QGestureRecognizer) OnReset(slot func(super func(state *QGesture), state *QGesture)) {
-	if !this.isSubclass {
+	ok := C.QGestureRecognizer_override_virtual_Reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGestureRecognizer_override_virtual_Reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGestureRecognizer_Reset

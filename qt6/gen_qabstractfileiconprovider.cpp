@@ -191,40 +191,70 @@ int QAbstractFileIconProvider_Options(const QAbstractFileIconProvider* self) {
 	return static_cast<int>(_ret);
 }
 
-void QAbstractFileIconProvider_override_virtual_Icon(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractFileIconProvider*>( (QAbstractFileIconProvider*)(self) )->handle__Icon = slot;
+bool QAbstractFileIconProvider_override_virtual_Icon(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractFileIconProvider* self_cast = dynamic_cast<MiqtVirtualQAbstractFileIconProvider*>( (QAbstractFileIconProvider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Icon = slot;
+	return true;
 }
 
 QIcon* QAbstractFileIconProvider_virtualbase_Icon(const void* self, int param1) {
 	return ( (const MiqtVirtualQAbstractFileIconProvider*)(self) )->virtualbase_Icon(param1);
 }
 
-void QAbstractFileIconProvider_override_virtual_IconWithQFileInfo(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractFileIconProvider*>( (QAbstractFileIconProvider*)(self) )->handle__IconWithQFileInfo = slot;
+bool QAbstractFileIconProvider_override_virtual_IconWithQFileInfo(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractFileIconProvider* self_cast = dynamic_cast<MiqtVirtualQAbstractFileIconProvider*>( (QAbstractFileIconProvider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IconWithQFileInfo = slot;
+	return true;
 }
 
 QIcon* QAbstractFileIconProvider_virtualbase_IconWithQFileInfo(const void* self, QFileInfo* param1) {
 	return ( (const MiqtVirtualQAbstractFileIconProvider*)(self) )->virtualbase_IconWithQFileInfo(param1);
 }
 
-void QAbstractFileIconProvider_override_virtual_Type(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractFileIconProvider*>( (QAbstractFileIconProvider*)(self) )->handle__Type = slot;
+bool QAbstractFileIconProvider_override_virtual_Type(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractFileIconProvider* self_cast = dynamic_cast<MiqtVirtualQAbstractFileIconProvider*>( (QAbstractFileIconProvider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Type = slot;
+	return true;
 }
 
 struct miqt_string QAbstractFileIconProvider_virtualbase_Type(const void* self, QFileInfo* param1) {
 	return ( (const MiqtVirtualQAbstractFileIconProvider*)(self) )->virtualbase_Type(param1);
 }
 
-void QAbstractFileIconProvider_override_virtual_SetOptions(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractFileIconProvider*>( (QAbstractFileIconProvider*)(self) )->handle__SetOptions = slot;
+bool QAbstractFileIconProvider_override_virtual_SetOptions(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractFileIconProvider* self_cast = dynamic_cast<MiqtVirtualQAbstractFileIconProvider*>( (QAbstractFileIconProvider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetOptions = slot;
+	return true;
 }
 
 void QAbstractFileIconProvider_virtualbase_SetOptions(void* self, int options) {
 	( (MiqtVirtualQAbstractFileIconProvider*)(self) )->virtualbase_SetOptions(options);
 }
 
-void QAbstractFileIconProvider_override_virtual_Options(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractFileIconProvider*>( (QAbstractFileIconProvider*)(self) )->handle__Options = slot;
+bool QAbstractFileIconProvider_override_virtual_Options(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractFileIconProvider* self_cast = dynamic_cast<MiqtVirtualQAbstractFileIconProvider*>( (QAbstractFileIconProvider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Options = slot;
+	return true;
 }
 
 int QAbstractFileIconProvider_virtualbase_Options(const void* self) {

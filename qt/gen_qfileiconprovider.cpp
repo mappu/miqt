@@ -141,24 +141,42 @@ int QFileIconProvider_Options(const QFileIconProvider* self) {
 	return static_cast<int>(_ret);
 }
 
-void QFileIconProvider_override_virtual_Icon(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileIconProvider*>( (QFileIconProvider*)(self) )->handle__Icon = slot;
+bool QFileIconProvider_override_virtual_Icon(void* self, intptr_t slot) {
+	MiqtVirtualQFileIconProvider* self_cast = dynamic_cast<MiqtVirtualQFileIconProvider*>( (QFileIconProvider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Icon = slot;
+	return true;
 }
 
 QIcon* QFileIconProvider_virtualbase_Icon(const void* self, int typeVal) {
 	return ( (const MiqtVirtualQFileIconProvider*)(self) )->virtualbase_Icon(typeVal);
 }
 
-void QFileIconProvider_override_virtual_IconWithInfo(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileIconProvider*>( (QFileIconProvider*)(self) )->handle__IconWithInfo = slot;
+bool QFileIconProvider_override_virtual_IconWithInfo(void* self, intptr_t slot) {
+	MiqtVirtualQFileIconProvider* self_cast = dynamic_cast<MiqtVirtualQFileIconProvider*>( (QFileIconProvider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IconWithInfo = slot;
+	return true;
 }
 
 QIcon* QFileIconProvider_virtualbase_IconWithInfo(const void* self, QFileInfo* info) {
 	return ( (const MiqtVirtualQFileIconProvider*)(self) )->virtualbase_IconWithInfo(info);
 }
 
-void QFileIconProvider_override_virtual_Type(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFileIconProvider*>( (QFileIconProvider*)(self) )->handle__Type = slot;
+bool QFileIconProvider_override_virtual_Type(void* self, intptr_t slot) {
+	MiqtVirtualQFileIconProvider* self_cast = dynamic_cast<MiqtVirtualQFileIconProvider*>( (QFileIconProvider*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Type = slot;
+	return true;
 }
 
 struct miqt_string QFileIconProvider_virtualbase_Type(const void* self, QFileInfo* info) {

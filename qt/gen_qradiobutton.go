@@ -15,8 +15,7 @@ import (
 )
 
 type QRadioButton struct {
-	h          *C.QRadioButton
-	isSubclass bool
+	h *C.QRadioButton
 	*QAbstractButton
 }
 
@@ -54,17 +53,13 @@ func UnsafeNewQRadioButton(h unsafe.Pointer) *QRadioButton {
 // NewQRadioButton constructs a new QRadioButton object.
 func NewQRadioButton(parent *QWidget) *QRadioButton {
 
-	ret := newQRadioButton(C.QRadioButton_new(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQRadioButton(C.QRadioButton_new(parent.cPointer()))
 }
 
 // NewQRadioButton2 constructs a new QRadioButton object.
 func NewQRadioButton2() *QRadioButton {
 
-	ret := newQRadioButton(C.QRadioButton_new2())
-	ret.isSubclass = true
-	return ret
+	return newQRadioButton(C.QRadioButton_new2())
 }
 
 // NewQRadioButton3 constructs a new QRadioButton object.
@@ -74,9 +69,7 @@ func NewQRadioButton3(text string) *QRadioButton {
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQRadioButton(C.QRadioButton_new3(text_ms))
-	ret.isSubclass = true
-	return ret
+	return newQRadioButton(C.QRadioButton_new3(text_ms))
 }
 
 // NewQRadioButton4 constructs a new QRadioButton object.
@@ -86,9 +79,7 @@ func NewQRadioButton4(text string, parent *QWidget) *QRadioButton {
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQRadioButton(C.QRadioButton_new4(text_ms, parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQRadioButton(C.QRadioButton_new4(text_ms, parent.cPointer()))
 }
 
 func (this *QRadioButton) MetaObject() *QMetaObject {
@@ -183,10 +174,10 @@ func (this *QRadioButton) callVirtualBase_SizeHint() *QSize {
 
 }
 func (this *QRadioButton) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	if !this.isSubclass {
+	ok := C.QRadioButton_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QRadioButton_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QRadioButton_SizeHint
@@ -210,10 +201,10 @@ func (this *QRadioButton) callVirtualBase_MinimumSizeHint() *QSize {
 
 }
 func (this *QRadioButton) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
-	if !this.isSubclass {
+	ok := C.QRadioButton_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QRadioButton_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QRadioButton_MinimumSizeHint
@@ -235,10 +226,10 @@ func (this *QRadioButton) callVirtualBase_Event(e *QEvent) bool {
 
 }
 func (this *QRadioButton) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QRadioButton_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QRadioButton_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QRadioButton_Event
@@ -263,10 +254,10 @@ func (this *QRadioButton) callVirtualBase_HitButton(param1 *QPoint) bool {
 
 }
 func (this *QRadioButton) OnHitButton(slot func(super func(param1 *QPoint) bool, param1 *QPoint) bool) {
-	if !this.isSubclass {
+	ok := C.QRadioButton_override_virtual_HitButton(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QRadioButton_override_virtual_HitButton(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QRadioButton_HitButton
@@ -291,10 +282,10 @@ func (this *QRadioButton) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
 
 }
 func (this *QRadioButton) OnPaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
-	if !this.isSubclass {
+	ok := C.QRadioButton_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QRadioButton_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QRadioButton_PaintEvent
@@ -317,10 +308,10 @@ func (this *QRadioButton) callVirtualBase_MouseMoveEvent(param1 *QMouseEvent) {
 
 }
 func (this *QRadioButton) OnMouseMoveEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QRadioButton_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QRadioButton_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QRadioButton_MouseMoveEvent
@@ -343,10 +334,10 @@ func (this *QRadioButton) callVirtualBase_CheckStateSet() {
 
 }
 func (this *QRadioButton) OnCheckStateSet(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QRadioButton_override_virtual_CheckStateSet(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QRadioButton_override_virtual_CheckStateSet(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QRadioButton_CheckStateSet
@@ -366,10 +357,10 @@ func (this *QRadioButton) callVirtualBase_NextCheckState() {
 
 }
 func (this *QRadioButton) OnNextCheckState(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QRadioButton_override_virtual_NextCheckState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QRadioButton_override_virtual_NextCheckState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QRadioButton_NextCheckState
@@ -389,10 +380,10 @@ func (this *QRadioButton) callVirtualBase_KeyPressEvent(e *QKeyEvent) {
 
 }
 func (this *QRadioButton) OnKeyPressEvent(slot func(super func(e *QKeyEvent), e *QKeyEvent)) {
-	if !this.isSubclass {
+	ok := C.QRadioButton_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QRadioButton_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QRadioButton_KeyPressEvent
@@ -415,10 +406,10 @@ func (this *QRadioButton) callVirtualBase_KeyReleaseEvent(e *QKeyEvent) {
 
 }
 func (this *QRadioButton) OnKeyReleaseEvent(slot func(super func(e *QKeyEvent), e *QKeyEvent)) {
-	if !this.isSubclass {
+	ok := C.QRadioButton_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QRadioButton_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QRadioButton_KeyReleaseEvent
@@ -441,10 +432,10 @@ func (this *QRadioButton) callVirtualBase_MousePressEvent(e *QMouseEvent) {
 
 }
 func (this *QRadioButton) OnMousePressEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QRadioButton_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QRadioButton_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QRadioButton_MousePressEvent
@@ -467,10 +458,10 @@ func (this *QRadioButton) callVirtualBase_MouseReleaseEvent(e *QMouseEvent) {
 
 }
 func (this *QRadioButton) OnMouseReleaseEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QRadioButton_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QRadioButton_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QRadioButton_MouseReleaseEvent
@@ -493,10 +484,10 @@ func (this *QRadioButton) callVirtualBase_FocusInEvent(e *QFocusEvent) {
 
 }
 func (this *QRadioButton) OnFocusInEvent(slot func(super func(e *QFocusEvent), e *QFocusEvent)) {
-	if !this.isSubclass {
+	ok := C.QRadioButton_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QRadioButton_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QRadioButton_FocusInEvent
@@ -519,10 +510,10 @@ func (this *QRadioButton) callVirtualBase_FocusOutEvent(e *QFocusEvent) {
 
 }
 func (this *QRadioButton) OnFocusOutEvent(slot func(super func(e *QFocusEvent), e *QFocusEvent)) {
-	if !this.isSubclass {
+	ok := C.QRadioButton_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QRadioButton_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QRadioButton_FocusOutEvent
@@ -545,10 +536,10 @@ func (this *QRadioButton) callVirtualBase_ChangeEvent(e *QEvent) {
 
 }
 func (this *QRadioButton) OnChangeEvent(slot func(super func(e *QEvent), e *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QRadioButton_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QRadioButton_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QRadioButton_ChangeEvent
@@ -571,10 +562,10 @@ func (this *QRadioButton) callVirtualBase_TimerEvent(e *QTimerEvent) {
 
 }
 func (this *QRadioButton) OnTimerEvent(slot func(super func(e *QTimerEvent), e *QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QRadioButton_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QRadioButton_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QRadioButton_TimerEvent

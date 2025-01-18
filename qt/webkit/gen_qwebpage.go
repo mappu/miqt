@@ -208,8 +208,7 @@ const (
 )
 
 type QWebPage struct {
-	h          *C.QWebPage
-	isSubclass bool
+	h *C.QWebPage
 	*qt.QObject
 }
 
@@ -247,17 +246,13 @@ func UnsafeNewQWebPage(h unsafe.Pointer) *QWebPage {
 // NewQWebPage constructs a new QWebPage object.
 func NewQWebPage() *QWebPage {
 
-	ret := newQWebPage(C.QWebPage_new())
-	ret.isSubclass = true
-	return ret
+	return newQWebPage(C.QWebPage_new())
 }
 
 // NewQWebPage2 constructs a new QWebPage object.
 func NewQWebPage2(parent *qt.QObject) *QWebPage {
 
-	ret := newQWebPage(C.QWebPage_new2((*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQWebPage(C.QWebPage_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QWebPage) MetaObject() *qt.QMetaObject {
@@ -1273,10 +1268,10 @@ func (this *QWebPage) callVirtualBase_TriggerAction(action QWebPage__WebAction, 
 
 }
 func (this *QWebPage) OnTriggerAction(slot func(super func(action QWebPage__WebAction, checked bool), action QWebPage__WebAction, checked bool)) {
-	if !this.isSubclass {
+	ok := C.QWebPage_override_virtual_TriggerAction(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPage_override_virtual_TriggerAction(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPage_TriggerAction
@@ -1301,10 +1296,10 @@ func (this *QWebPage) callVirtualBase_Event(param1 *qt.QEvent) bool {
 
 }
 func (this *QWebPage) OnEvent(slot func(super func(param1 *qt.QEvent) bool, param1 *qt.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QWebPage_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPage_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPage_Event
@@ -1329,10 +1324,10 @@ func (this *QWebPage) callVirtualBase_Extension(extension QWebPage__Extension, o
 
 }
 func (this *QWebPage) OnExtension(slot func(super func(extension QWebPage__Extension, option *QWebPage__ExtensionOption, output *QWebPage__ExtensionReturn) bool, extension QWebPage__Extension, option *QWebPage__ExtensionOption, output *QWebPage__ExtensionReturn) bool) {
-	if !this.isSubclass {
+	ok := C.QWebPage_override_virtual_Extension(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPage_override_virtual_Extension(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPage_Extension
@@ -1361,10 +1356,10 @@ func (this *QWebPage) callVirtualBase_SupportsExtension(extension QWebPage__Exte
 
 }
 func (this *QWebPage) OnSupportsExtension(slot func(super func(extension QWebPage__Extension) bool, extension QWebPage__Extension) bool) {
-	if !this.isSubclass {
+	ok := C.QWebPage_override_virtual_SupportsExtension(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPage_override_virtual_SupportsExtension(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPage_SupportsExtension
@@ -1389,10 +1384,10 @@ func (this *QWebPage) callVirtualBase_ShouldInterruptJavaScript() bool {
 
 }
 func (this *QWebPage) OnShouldInterruptJavaScript(slot func(super func() bool) bool) {
-	if !this.isSubclass {
+	ok := C.QWebPage_override_virtual_ShouldInterruptJavaScript(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPage_override_virtual_ShouldInterruptJavaScript(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPage_ShouldInterruptJavaScript
@@ -1414,10 +1409,10 @@ func (this *QWebPage) callVirtualBase_CreateWindow(typeVal QWebPage__WebWindowTy
 
 }
 func (this *QWebPage) OnCreateWindow(slot func(super func(typeVal QWebPage__WebWindowType) *QWebPage, typeVal QWebPage__WebWindowType) *QWebPage) {
-	if !this.isSubclass {
+	ok := C.QWebPage_override_virtual_CreateWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPage_override_virtual_CreateWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPage_CreateWindow
@@ -1466,10 +1461,10 @@ func (this *QWebPage) callVirtualBase_CreatePlugin(classid string, url *qt.QUrl,
 
 }
 func (this *QWebPage) OnCreatePlugin(slot func(super func(classid string, url *qt.QUrl, paramNames []string, paramValues []string) *qt.QObject, classid string, url *qt.QUrl, paramNames []string, paramValues []string) *qt.QObject) {
-	if !this.isSubclass {
+	ok := C.QWebPage_override_virtual_CreatePlugin(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPage_override_virtual_CreatePlugin(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPage_CreatePlugin
@@ -1520,10 +1515,10 @@ func (this *QWebPage) callVirtualBase_AcceptNavigationRequest(frame *QWebFrame, 
 
 }
 func (this *QWebPage) OnAcceptNavigationRequest(slot func(super func(frame *QWebFrame, request *network.QNetworkRequest, typeVal QWebPage__NavigationType) bool, frame *QWebFrame, request *network.QNetworkRequest, typeVal QWebPage__NavigationType) bool) {
-	if !this.isSubclass {
+	ok := C.QWebPage_override_virtual_AcceptNavigationRequest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPage_override_virtual_AcceptNavigationRequest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPage_AcceptNavigationRequest
@@ -1558,10 +1553,10 @@ func (this *QWebPage) callVirtualBase_ChooseFile(originatingFrame *QWebFrame, ol
 	return _ret
 }
 func (this *QWebPage) OnChooseFile(slot func(super func(originatingFrame *QWebFrame, oldFile string) string, originatingFrame *QWebFrame, oldFile string) string) {
-	if !this.isSubclass {
+	ok := C.QWebPage_override_virtual_ChooseFile(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPage_override_virtual_ChooseFile(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPage_ChooseFile
@@ -1599,10 +1594,10 @@ func (this *QWebPage) callVirtualBase_JavaScriptAlert(originatingFrame *QWebFram
 
 }
 func (this *QWebPage) OnJavaScriptAlert(slot func(super func(originatingFrame *QWebFrame, msg string), originatingFrame *QWebFrame, msg string)) {
-	if !this.isSubclass {
+	ok := C.QWebPage_override_virtual_JavaScriptAlert(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPage_override_virtual_JavaScriptAlert(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPage_JavaScriptAlert
@@ -1634,10 +1629,10 @@ func (this *QWebPage) callVirtualBase_JavaScriptConfirm(originatingFrame *QWebFr
 
 }
 func (this *QWebPage) OnJavaScriptConfirm(slot func(super func(originatingFrame *QWebFrame, msg string) bool, originatingFrame *QWebFrame, msg string) bool) {
-	if !this.isSubclass {
+	ok := C.QWebPage_override_virtual_JavaScriptConfirm(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPage_override_virtual_JavaScriptConfirm(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPage_JavaScriptConfirm
@@ -1675,10 +1670,10 @@ func (this *QWebPage) callVirtualBase_JavaScriptConsoleMessage(message string, l
 
 }
 func (this *QWebPage) OnJavaScriptConsoleMessage(slot func(super func(message string, lineNumber int, sourceID string), message string, lineNumber int, sourceID string)) {
-	if !this.isSubclass {
+	ok := C.QWebPage_override_virtual_JavaScriptConsoleMessage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPage_override_virtual_JavaScriptConsoleMessage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPage_JavaScriptConsoleMessage
@@ -1712,10 +1707,10 @@ func (this *QWebPage) callVirtualBase_UserAgentForUrl(url *qt.QUrl) string {
 	return _ret
 }
 func (this *QWebPage) OnUserAgentForUrl(slot func(super func(url *qt.QUrl) string, url *qt.QUrl) string) {
-	if !this.isSubclass {
+	ok := C.QWebPage_override_virtual_UserAgentForUrl(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPage_override_virtual_UserAgentForUrl(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPage_UserAgentForUrl
@@ -1744,10 +1739,10 @@ func (this *QWebPage) callVirtualBase_EventFilter(watched *qt.QObject, event *qt
 
 }
 func (this *QWebPage) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QWebPage_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPage_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPage_EventFilter
@@ -1774,10 +1769,10 @@ func (this *QWebPage) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
 }
 func (this *QWebPage) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebPage_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPage_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPage_TimerEvent
@@ -1800,10 +1795,10 @@ func (this *QWebPage) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
 }
 func (this *QWebPage) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebPage_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPage_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPage_ChildEvent
@@ -1826,10 +1821,10 @@ func (this *QWebPage) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
 }
 func (this *QWebPage) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebPage_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPage_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPage_CustomEvent
@@ -1852,10 +1847,10 @@ func (this *QWebPage) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 
 }
 func (this *QWebPage) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QWebPage_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPage_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPage_ConnectNotify
@@ -1878,10 +1873,10 @@ func (this *QWebPage) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
 
 }
 func (this *QWebPage) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QWebPage_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebPage_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPage_DisconnectNotify
@@ -1913,8 +1908,7 @@ func (this *QWebPage) GoGC() {
 }
 
 type QWebPage__ViewportAttributes struct {
-	h          *C.QWebPage__ViewportAttributes
-	isSubclass bool
+	h *C.QWebPage__ViewportAttributes
 }
 
 func (this *QWebPage__ViewportAttributes) cPointer() *C.QWebPage__ViewportAttributes {
@@ -1948,17 +1942,13 @@ func UnsafeNewQWebPage__ViewportAttributes(h unsafe.Pointer) *QWebPage__Viewport
 // NewQWebPage__ViewportAttributes constructs a new QWebPage::ViewportAttributes object.
 func NewQWebPage__ViewportAttributes() *QWebPage__ViewportAttributes {
 
-	ret := newQWebPage__ViewportAttributes(C.QWebPage__ViewportAttributes_new())
-	ret.isSubclass = true
-	return ret
+	return newQWebPage__ViewportAttributes(C.QWebPage__ViewportAttributes_new())
 }
 
 // NewQWebPage__ViewportAttributes2 constructs a new QWebPage::ViewportAttributes object.
 func NewQWebPage__ViewportAttributes2(other *QWebPage__ViewportAttributes) *QWebPage__ViewportAttributes {
 
-	ret := newQWebPage__ViewportAttributes(C.QWebPage__ViewportAttributes_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebPage__ViewportAttributes(C.QWebPage__ViewportAttributes_new2(other.cPointer()))
 }
 
 func (this *QWebPage__ViewportAttributes) OperatorAssign(other *QWebPage__ViewportAttributes) {
@@ -2010,8 +2000,7 @@ func (this *QWebPage__ViewportAttributes) GoGC() {
 }
 
 type QWebPage__ExtensionOption struct {
-	h          *C.QWebPage__ExtensionOption
-	isSubclass bool
+	h *C.QWebPage__ExtensionOption
 }
 
 func (this *QWebPage__ExtensionOption) cPointer() *C.QWebPage__ExtensionOption {
@@ -2045,9 +2034,7 @@ func UnsafeNewQWebPage__ExtensionOption(h unsafe.Pointer) *QWebPage__ExtensionOp
 // NewQWebPage__ExtensionOption constructs a new QWebPage::ExtensionOption object.
 func NewQWebPage__ExtensionOption(param1 *QWebPage__ExtensionOption) *QWebPage__ExtensionOption {
 
-	ret := newQWebPage__ExtensionOption(C.QWebPage__ExtensionOption_new(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebPage__ExtensionOption(C.QWebPage__ExtensionOption_new(param1.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -2065,8 +2052,7 @@ func (this *QWebPage__ExtensionOption) GoGC() {
 }
 
 type QWebPage__ExtensionReturn struct {
-	h          *C.QWebPage__ExtensionReturn
-	isSubclass bool
+	h *C.QWebPage__ExtensionReturn
 }
 
 func (this *QWebPage__ExtensionReturn) cPointer() *C.QWebPage__ExtensionReturn {
@@ -2100,17 +2086,13 @@ func UnsafeNewQWebPage__ExtensionReturn(h unsafe.Pointer) *QWebPage__ExtensionRe
 // NewQWebPage__ExtensionReturn constructs a new QWebPage::ExtensionReturn object.
 func NewQWebPage__ExtensionReturn(param1 *QWebPage__ExtensionReturn) *QWebPage__ExtensionReturn {
 
-	ret := newQWebPage__ExtensionReturn(C.QWebPage__ExtensionReturn_new(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebPage__ExtensionReturn(C.QWebPage__ExtensionReturn_new(param1.cPointer()))
 }
 
 // NewQWebPage__ExtensionReturn2 constructs a new QWebPage::ExtensionReturn object.
 func NewQWebPage__ExtensionReturn2() *QWebPage__ExtensionReturn {
 
-	ret := newQWebPage__ExtensionReturn(C.QWebPage__ExtensionReturn_new2())
-	ret.isSubclass = true
-	return ret
+	return newQWebPage__ExtensionReturn(C.QWebPage__ExtensionReturn_new2())
 }
 
 // Delete this object from C++ memory.
@@ -2128,8 +2110,7 @@ func (this *QWebPage__ExtensionReturn) GoGC() {
 }
 
 type QWebPage__ChooseMultipleFilesExtensionOption struct {
-	h          *C.QWebPage__ChooseMultipleFilesExtensionOption
-	isSubclass bool
+	h *C.QWebPage__ChooseMultipleFilesExtensionOption
 	*QWebPage__ExtensionOption
 }
 
@@ -2179,8 +2160,7 @@ func (this *QWebPage__ChooseMultipleFilesExtensionOption) GoGC() {
 }
 
 type QWebPage__ChooseMultipleFilesExtensionReturn struct {
-	h          *C.QWebPage__ChooseMultipleFilesExtensionReturn
-	isSubclass bool
+	h *C.QWebPage__ChooseMultipleFilesExtensionReturn
 	*QWebPage__ExtensionReturn
 }
 
@@ -2230,8 +2210,7 @@ func (this *QWebPage__ChooseMultipleFilesExtensionReturn) GoGC() {
 }
 
 type QWebPage__ErrorPageExtensionOption struct {
-	h          *C.QWebPage__ErrorPageExtensionOption
-	isSubclass bool
+	h *C.QWebPage__ErrorPageExtensionOption
 	*QWebPage__ExtensionOption
 }
 
@@ -2269,9 +2248,7 @@ func UnsafeNewQWebPage__ErrorPageExtensionOption(h unsafe.Pointer) *QWebPage__Er
 // NewQWebPage__ErrorPageExtensionOption constructs a new QWebPage::ErrorPageExtensionOption object.
 func NewQWebPage__ErrorPageExtensionOption(param1 *QWebPage__ErrorPageExtensionOption) *QWebPage__ErrorPageExtensionOption {
 
-	ret := newQWebPage__ErrorPageExtensionOption(C.QWebPage__ErrorPageExtensionOption_new(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebPage__ErrorPageExtensionOption(C.QWebPage__ErrorPageExtensionOption_new(param1.cPointer()))
 }
 
 func (this *QWebPage__ErrorPageExtensionOption) OperatorAssign(param1 *QWebPage__ErrorPageExtensionOption) {
@@ -2293,8 +2270,7 @@ func (this *QWebPage__ErrorPageExtensionOption) GoGC() {
 }
 
 type QWebPage__ErrorPageExtensionReturn struct {
-	h          *C.QWebPage__ErrorPageExtensionReturn
-	isSubclass bool
+	h *C.QWebPage__ErrorPageExtensionReturn
 	*QWebPage__ExtensionReturn
 }
 
@@ -2332,17 +2308,13 @@ func UnsafeNewQWebPage__ErrorPageExtensionReturn(h unsafe.Pointer) *QWebPage__Er
 // NewQWebPage__ErrorPageExtensionReturn constructs a new QWebPage::ErrorPageExtensionReturn object.
 func NewQWebPage__ErrorPageExtensionReturn() *QWebPage__ErrorPageExtensionReturn {
 
-	ret := newQWebPage__ErrorPageExtensionReturn(C.QWebPage__ErrorPageExtensionReturn_new())
-	ret.isSubclass = true
-	return ret
+	return newQWebPage__ErrorPageExtensionReturn(C.QWebPage__ErrorPageExtensionReturn_new())
 }
 
 // NewQWebPage__ErrorPageExtensionReturn2 constructs a new QWebPage::ErrorPageExtensionReturn object.
 func NewQWebPage__ErrorPageExtensionReturn2(param1 *QWebPage__ErrorPageExtensionReturn) *QWebPage__ErrorPageExtensionReturn {
 
-	ret := newQWebPage__ErrorPageExtensionReturn(C.QWebPage__ErrorPageExtensionReturn_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebPage__ErrorPageExtensionReturn(C.QWebPage__ErrorPageExtensionReturn_new2(param1.cPointer()))
 }
 
 func (this *QWebPage__ErrorPageExtensionReturn) OperatorAssign(param1 *QWebPage__ErrorPageExtensionReturn) {

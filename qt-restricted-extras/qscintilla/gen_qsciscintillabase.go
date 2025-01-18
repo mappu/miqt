@@ -1186,8 +1186,7 @@ const (
 )
 
 type QsciScintillaBase struct {
-	h          *C.QsciScintillaBase
-	isSubclass bool
+	h *C.QsciScintillaBase
 	*qt.QAbstractScrollArea
 }
 
@@ -1225,17 +1224,13 @@ func UnsafeNewQsciScintillaBase(h unsafe.Pointer) *QsciScintillaBase {
 // NewQsciScintillaBase constructs a new QsciScintillaBase object.
 func NewQsciScintillaBase(parent *qt.QWidget) *QsciScintillaBase {
 
-	ret := newQsciScintillaBase(C.QsciScintillaBase_new((*C.QWidget)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQsciScintillaBase(C.QsciScintillaBase_new((*C.QWidget)(parent.UnsafePointer())))
 }
 
 // NewQsciScintillaBase2 constructs a new QsciScintillaBase object.
 func NewQsciScintillaBase2() *QsciScintillaBase {
 
-	ret := newQsciScintillaBase(C.QsciScintillaBase_new2())
-	ret.isSubclass = true
-	return ret
+	return newQsciScintillaBase(C.QsciScintillaBase_new2())
 }
 
 func (this *QsciScintillaBase) MetaObject() *qt.QMetaObject {
@@ -2208,10 +2203,10 @@ func (this *QsciScintillaBase) callVirtualBase_CanInsertFromMimeData(source *qt.
 
 }
 func (this *QsciScintillaBase) OnCanInsertFromMimeData(slot func(super func(source *qt.QMimeData) bool, source *qt.QMimeData) bool) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_CanInsertFromMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_CanInsertFromMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_CanInsertFromMimeData
@@ -2238,10 +2233,10 @@ func (this *QsciScintillaBase) callVirtualBase_FromMimeData(source *qt.QMimeData
 	return _ret
 }
 func (this *QsciScintillaBase) OnFromMimeData(slot func(super func(source *qt.QMimeData, rectangular *bool) []byte, source *qt.QMimeData, rectangular *bool) []byte) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_FromMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_FromMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_FromMimeData
@@ -2274,10 +2269,10 @@ func (this *QsciScintillaBase) callVirtualBase_ToMimeData(text []byte, rectangul
 
 }
 func (this *QsciScintillaBase) OnToMimeData(slot func(super func(text []byte, rectangular bool) *qt.QMimeData, text []byte, rectangular bool) *qt.QMimeData) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_ToMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_ToMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_ToMimeData
@@ -2306,10 +2301,10 @@ func (this *QsciScintillaBase) callVirtualBase_ChangeEvent(e *qt.QEvent) {
 
 }
 func (this *QsciScintillaBase) OnChangeEvent(slot func(super func(e *qt.QEvent), e *qt.QEvent)) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_ChangeEvent
@@ -2332,10 +2327,10 @@ func (this *QsciScintillaBase) callVirtualBase_ContextMenuEvent(e *qt.QContextMe
 
 }
 func (this *QsciScintillaBase) OnContextMenuEvent(slot func(super func(e *qt.QContextMenuEvent), e *qt.QContextMenuEvent)) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_ContextMenuEvent
@@ -2358,10 +2353,10 @@ func (this *QsciScintillaBase) callVirtualBase_DragEnterEvent(e *qt.QDragEnterEv
 
 }
 func (this *QsciScintillaBase) OnDragEnterEvent(slot func(super func(e *qt.QDragEnterEvent), e *qt.QDragEnterEvent)) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_DragEnterEvent
@@ -2384,10 +2379,10 @@ func (this *QsciScintillaBase) callVirtualBase_DragLeaveEvent(e *qt.QDragLeaveEv
 
 }
 func (this *QsciScintillaBase) OnDragLeaveEvent(slot func(super func(e *qt.QDragLeaveEvent), e *qt.QDragLeaveEvent)) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_DragLeaveEvent
@@ -2410,10 +2405,10 @@ func (this *QsciScintillaBase) callVirtualBase_DragMoveEvent(e *qt.QDragMoveEven
 
 }
 func (this *QsciScintillaBase) OnDragMoveEvent(slot func(super func(e *qt.QDragMoveEvent), e *qt.QDragMoveEvent)) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_DragMoveEvent
@@ -2436,10 +2431,10 @@ func (this *QsciScintillaBase) callVirtualBase_DropEvent(e *qt.QDropEvent) {
 
 }
 func (this *QsciScintillaBase) OnDropEvent(slot func(super func(e *qt.QDropEvent), e *qt.QDropEvent)) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_DropEvent
@@ -2462,10 +2457,10 @@ func (this *QsciScintillaBase) callVirtualBase_FocusInEvent(e *qt.QFocusEvent) {
 
 }
 func (this *QsciScintillaBase) OnFocusInEvent(slot func(super func(e *qt.QFocusEvent), e *qt.QFocusEvent)) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_FocusInEvent
@@ -2488,10 +2483,10 @@ func (this *QsciScintillaBase) callVirtualBase_FocusOutEvent(e *qt.QFocusEvent) 
 
 }
 func (this *QsciScintillaBase) OnFocusOutEvent(slot func(super func(e *qt.QFocusEvent), e *qt.QFocusEvent)) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_FocusOutEvent
@@ -2514,10 +2509,10 @@ func (this *QsciScintillaBase) callVirtualBase_FocusNextPrevChild(next bool) boo
 
 }
 func (this *QsciScintillaBase) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_FocusNextPrevChild
@@ -2542,10 +2537,10 @@ func (this *QsciScintillaBase) callVirtualBase_KeyPressEvent(e *qt.QKeyEvent) {
 
 }
 func (this *QsciScintillaBase) OnKeyPressEvent(slot func(super func(e *qt.QKeyEvent), e *qt.QKeyEvent)) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_KeyPressEvent
@@ -2568,10 +2563,10 @@ func (this *QsciScintillaBase) callVirtualBase_InputMethodEvent(event *qt.QInput
 
 }
 func (this *QsciScintillaBase) OnInputMethodEvent(slot func(super func(event *qt.QInputMethodEvent), event *qt.QInputMethodEvent)) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_InputMethodEvent
@@ -2596,10 +2591,10 @@ func (this *QsciScintillaBase) callVirtualBase_InputMethodQuery(query qt.InputMe
 
 }
 func (this *QsciScintillaBase) OnInputMethodQuery(slot func(super func(query qt.InputMethodQuery) *qt.QVariant, query qt.InputMethodQuery) *qt.QVariant) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_InputMethodQuery
@@ -2624,10 +2619,10 @@ func (this *QsciScintillaBase) callVirtualBase_MouseDoubleClickEvent(e *qt.QMous
 
 }
 func (this *QsciScintillaBase) OnMouseDoubleClickEvent(slot func(super func(e *qt.QMouseEvent), e *qt.QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_MouseDoubleClickEvent
@@ -2650,10 +2645,10 @@ func (this *QsciScintillaBase) callVirtualBase_MouseMoveEvent(e *qt.QMouseEvent)
 
 }
 func (this *QsciScintillaBase) OnMouseMoveEvent(slot func(super func(e *qt.QMouseEvent), e *qt.QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_MouseMoveEvent
@@ -2676,10 +2671,10 @@ func (this *QsciScintillaBase) callVirtualBase_MousePressEvent(e *qt.QMouseEvent
 
 }
 func (this *QsciScintillaBase) OnMousePressEvent(slot func(super func(e *qt.QMouseEvent), e *qt.QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_MousePressEvent
@@ -2702,10 +2697,10 @@ func (this *QsciScintillaBase) callVirtualBase_MouseReleaseEvent(e *qt.QMouseEve
 
 }
 func (this *QsciScintillaBase) OnMouseReleaseEvent(slot func(super func(e *qt.QMouseEvent), e *qt.QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_MouseReleaseEvent
@@ -2728,10 +2723,10 @@ func (this *QsciScintillaBase) callVirtualBase_PaintEvent(e *qt.QPaintEvent) {
 
 }
 func (this *QsciScintillaBase) OnPaintEvent(slot func(super func(e *qt.QPaintEvent), e *qt.QPaintEvent)) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_PaintEvent
@@ -2754,10 +2749,10 @@ func (this *QsciScintillaBase) callVirtualBase_ResizeEvent(e *qt.QResizeEvent) {
 
 }
 func (this *QsciScintillaBase) OnResizeEvent(slot func(super func(e *qt.QResizeEvent), e *qt.QResizeEvent)) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_ResizeEvent
@@ -2780,10 +2775,10 @@ func (this *QsciScintillaBase) callVirtualBase_ScrollContentsBy(dx int, dy int) 
 
 }
 func (this *QsciScintillaBase) OnScrollContentsBy(slot func(super func(dx int, dy int), dx int, dy int)) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_ScrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_ScrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_ScrollContentsBy
@@ -2810,10 +2805,10 @@ func (this *QsciScintillaBase) callVirtualBase_MinimumSizeHint() *qt.QSize {
 
 }
 func (this *QsciScintillaBase) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_MinimumSizeHint
@@ -2837,10 +2832,10 @@ func (this *QsciScintillaBase) callVirtualBase_SizeHint() *qt.QSize {
 
 }
 func (this *QsciScintillaBase) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_SizeHint
@@ -2862,10 +2857,10 @@ func (this *QsciScintillaBase) callVirtualBase_SetupViewport(viewport *qt.QWidge
 
 }
 func (this *QsciScintillaBase) OnSetupViewport(slot func(super func(viewport *qt.QWidget), viewport *qt.QWidget)) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_SetupViewport(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_SetupViewport(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_SetupViewport
@@ -2888,10 +2883,10 @@ func (this *QsciScintillaBase) callVirtualBase_EventFilter(param1 *qt.QObject, p
 
 }
 func (this *QsciScintillaBase) OnEventFilter(slot func(super func(param1 *qt.QObject, param2 *qt.QEvent) bool, param1 *qt.QObject, param2 *qt.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_EventFilter
@@ -2918,10 +2913,10 @@ func (this *QsciScintillaBase) callVirtualBase_Event(param1 *qt.QEvent) bool {
 
 }
 func (this *QsciScintillaBase) OnEvent(slot func(super func(param1 *qt.QEvent) bool, param1 *qt.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_Event
@@ -2946,10 +2941,10 @@ func (this *QsciScintillaBase) callVirtualBase_ViewportEvent(param1 *qt.QEvent) 
 
 }
 func (this *QsciScintillaBase) OnViewportEvent(slot func(super func(param1 *qt.QEvent) bool, param1 *qt.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_ViewportEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_ViewportEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_ViewportEvent
@@ -2974,10 +2969,10 @@ func (this *QsciScintillaBase) callVirtualBase_WheelEvent(param1 *qt.QWheelEvent
 
 }
 func (this *QsciScintillaBase) OnWheelEvent(slot func(super func(param1 *qt.QWheelEvent), param1 *qt.QWheelEvent)) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_WheelEvent
@@ -3002,10 +2997,10 @@ func (this *QsciScintillaBase) callVirtualBase_ViewportSizeHint() *qt.QSize {
 
 }
 func (this *QsciScintillaBase) OnViewportSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
-	if !this.isSubclass {
+	ok := C.QsciScintillaBase_override_virtual_ViewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciScintillaBase_override_virtual_ViewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciScintillaBase_ViewportSizeHint

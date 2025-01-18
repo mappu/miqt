@@ -14,8 +14,7 @@ import (
 )
 
 type QMessageAuthenticationCode struct {
-	h          *C.QMessageAuthenticationCode
-	isSubclass bool
+	h *C.QMessageAuthenticationCode
 }
 
 func (this *QMessageAuthenticationCode) cPointer() *C.QMessageAuthenticationCode {
@@ -49,9 +48,7 @@ func UnsafeNewQMessageAuthenticationCode(h unsafe.Pointer) *QMessageAuthenticati
 // NewQMessageAuthenticationCode constructs a new QMessageAuthenticationCode object.
 func NewQMessageAuthenticationCode(method QCryptographicHash__Algorithm) *QMessageAuthenticationCode {
 
-	ret := newQMessageAuthenticationCode(C.QMessageAuthenticationCode_new((C.int)(method)))
-	ret.isSubclass = true
-	return ret
+	return newQMessageAuthenticationCode(C.QMessageAuthenticationCode_new((C.int)(method)))
 }
 
 // NewQMessageAuthenticationCode2 constructs a new QMessageAuthenticationCode object.
@@ -60,9 +57,7 @@ func NewQMessageAuthenticationCode2(method QCryptographicHash__Algorithm, key []
 	key_alias.data = (*C.char)(unsafe.Pointer(&key[0]))
 	key_alias.len = C.size_t(len(key))
 
-	ret := newQMessageAuthenticationCode(C.QMessageAuthenticationCode_new2((C.int)(method), key_alias))
-	ret.isSubclass = true
-	return ret
+	return newQMessageAuthenticationCode(C.QMessageAuthenticationCode_new2((C.int)(method), key_alias))
 }
 
 func (this *QMessageAuthenticationCode) Reset() {

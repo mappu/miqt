@@ -52,8 +52,7 @@ const (
 )
 
 type QPrintEngine struct {
-	h          *C.QPrintEngine
-	isSubclass bool
+	h *C.QPrintEngine
 }
 
 func (this *QPrintEngine) cPointer() *C.QPrintEngine {

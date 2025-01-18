@@ -495,56 +495,98 @@ void QButtonGroup_AddButton2(QButtonGroup* self, QAbstractButton* param1, int id
 	self->addButton(param1, static_cast<int>(id));
 }
 
-void QButtonGroup_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) )->handle__Event = slot;
+bool QButtonGroup_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQButtonGroup* self_cast = dynamic_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QButtonGroup_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQButtonGroup*)(self) )->virtualbase_Event(event);
 }
 
-void QButtonGroup_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) )->handle__EventFilter = slot;
+bool QButtonGroup_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQButtonGroup* self_cast = dynamic_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QButtonGroup_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQButtonGroup*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QButtonGroup_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) )->handle__TimerEvent = slot;
+bool QButtonGroup_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQButtonGroup* self_cast = dynamic_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QButtonGroup_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQButtonGroup*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QButtonGroup_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) )->handle__ChildEvent = slot;
+bool QButtonGroup_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQButtonGroup* self_cast = dynamic_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QButtonGroup_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQButtonGroup*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QButtonGroup_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) )->handle__CustomEvent = slot;
+bool QButtonGroup_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQButtonGroup* self_cast = dynamic_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QButtonGroup_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQButtonGroup*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QButtonGroup_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) )->handle__ConnectNotify = slot;
+bool QButtonGroup_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQButtonGroup* self_cast = dynamic_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QButtonGroup_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQButtonGroup*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QButtonGroup_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) )->handle__DisconnectNotify = slot;
+bool QButtonGroup_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQButtonGroup* self_cast = dynamic_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QButtonGroup_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

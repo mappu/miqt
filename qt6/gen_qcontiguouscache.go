@@ -14,8 +14,7 @@ import (
 )
 
 type QContiguousCacheData struct {
-	h          *C.QContiguousCacheData
-	isSubclass bool
+	h *C.QContiguousCacheData
 }
 
 func (this *QContiguousCacheData) cPointer() *C.QContiguousCacheData {

@@ -23,8 +23,7 @@ const (
 )
 
 type QElapsedTimer struct {
-	h          *C.QElapsedTimer
-	isSubclass bool
+	h *C.QElapsedTimer
 }
 
 func (this *QElapsedTimer) cPointer() *C.QElapsedTimer {
@@ -58,9 +57,7 @@ func UnsafeNewQElapsedTimer(h unsafe.Pointer) *QElapsedTimer {
 // NewQElapsedTimer constructs a new QElapsedTimer object.
 func NewQElapsedTimer() *QElapsedTimer {
 
-	ret := newQElapsedTimer(C.QElapsedTimer_new())
-	ret.isSubclass = true
-	return ret
+	return newQElapsedTimer(C.QElapsedTimer_new())
 }
 
 func QElapsedTimer_ClockType() QElapsedTimer__ClockType {

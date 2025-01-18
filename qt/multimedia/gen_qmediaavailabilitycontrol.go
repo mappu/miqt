@@ -16,8 +16,7 @@ import (
 )
 
 type QMediaAvailabilityControl struct {
-	h          *C.QMediaAvailabilityControl
-	isSubclass bool
+	h *C.QMediaAvailabilityControl
 	*QMediaControl
 }
 

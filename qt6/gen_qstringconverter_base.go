@@ -40,8 +40,7 @@ const (
 )
 
 type QStringConverterBase struct {
-	h          *C.QStringConverterBase
-	isSubclass bool
+	h *C.QStringConverterBase
 }
 
 func (this *QStringConverterBase) cPointer() *C.QStringConverterBase {
@@ -75,22 +74,17 @@ func UnsafeNewQStringConverterBase(h unsafe.Pointer) *QStringConverterBase {
 // NewQStringConverterBase constructs a new QStringConverterBase object.
 func NewQStringConverterBase(param1 *QStringConverterBase) *QStringConverterBase {
 
-	ret := newQStringConverterBase(C.QStringConverterBase_new(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStringConverterBase(C.QStringConverterBase_new(param1.cPointer()))
 }
 
 // NewQStringConverterBase2 constructs a new QStringConverterBase object.
 func NewQStringConverterBase2() *QStringConverterBase {
 
-	ret := newQStringConverterBase(C.QStringConverterBase_new2())
-	ret.isSubclass = true
-	return ret
+	return newQStringConverterBase(C.QStringConverterBase_new2())
 }
 
 type QStringConverter struct {
-	h          *C.QStringConverter
-	isSubclass bool
+	h *C.QStringConverter
 	*QStringConverterBase
 }
 
@@ -148,8 +142,7 @@ func QStringConverter_NameForEncoding(e QStringConverter__Encoding) string {
 }
 
 type QStringConverterBase__State struct {
-	h          *C.QStringConverterBase__State
-	isSubclass bool
+	h *C.QStringConverterBase__State
 }
 
 func (this *QStringConverterBase__State) cPointer() *C.QStringConverterBase__State {
@@ -183,17 +176,13 @@ func UnsafeNewQStringConverterBase__State(h unsafe.Pointer) *QStringConverterBas
 // NewQStringConverterBase__State constructs a new QStringConverterBase::State object.
 func NewQStringConverterBase__State() *QStringConverterBase__State {
 
-	ret := newQStringConverterBase__State(C.QStringConverterBase__State_new())
-	ret.isSubclass = true
-	return ret
+	return newQStringConverterBase__State(C.QStringConverterBase__State_new())
 }
 
 // NewQStringConverterBase__State2 constructs a new QStringConverterBase::State object.
 func NewQStringConverterBase__State2(f QStringConverterBase__Flag) *QStringConverterBase__State {
 
-	ret := newQStringConverterBase__State(C.QStringConverterBase__State_new2((C.int)(f)))
-	ret.isSubclass = true
-	return ret
+	return newQStringConverterBase__State(C.QStringConverterBase__State_new2((C.int)(f)))
 }
 
 func (this *QStringConverterBase__State) Clear() {

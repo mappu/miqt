@@ -24,7 +24,7 @@ QRunnable* QRunnable_new();
 void QRunnable_Run(QRunnable* self);
 bool QRunnable_AutoDelete(const QRunnable* self);
 void QRunnable_SetAutoDelete(QRunnable* self, bool autoDelete);
-void QRunnable_override_virtual_Run(void* self, intptr_t slot);
+bool QRunnable_override_virtual_Run(void* self, intptr_t slot);
 void QRunnable_virtualbase_Run(void* self);
 void QRunnable_Delete(QRunnable* self);
 

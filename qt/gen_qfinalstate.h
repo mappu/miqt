@@ -44,11 +44,11 @@ struct miqt_string QFinalState_Tr2(const char* s, const char* c);
 struct miqt_string QFinalState_Tr3(const char* s, const char* c, int n);
 struct miqt_string QFinalState_TrUtf82(const char* s, const char* c);
 struct miqt_string QFinalState_TrUtf83(const char* s, const char* c, int n);
-void QFinalState_override_virtual_OnEntry(void* self, intptr_t slot);
+bool QFinalState_override_virtual_OnEntry(void* self, intptr_t slot);
 void QFinalState_virtualbase_OnEntry(void* self, QEvent* event);
-void QFinalState_override_virtual_OnExit(void* self, intptr_t slot);
+bool QFinalState_override_virtual_OnExit(void* self, intptr_t slot);
 void QFinalState_virtualbase_OnExit(void* self, QEvent* event);
-void QFinalState_override_virtual_Event(void* self, intptr_t slot);
+bool QFinalState_override_virtual_Event(void* self, intptr_t slot);
 bool QFinalState_virtualbase_Event(void* self, QEvent* e);
 void QFinalState_Delete(QFinalState* self);
 

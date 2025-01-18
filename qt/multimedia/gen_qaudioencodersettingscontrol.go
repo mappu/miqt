@@ -15,8 +15,7 @@ import (
 )
 
 type QAudioEncoderSettingsControl struct {
-	h          *C.QAudioEncoderSettingsControl
-	isSubclass bool
+	h *C.QAudioEncoderSettingsControl
 	*QMediaControl
 }
 

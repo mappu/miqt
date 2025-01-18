@@ -33,8 +33,7 @@ const (
 )
 
 type QArrayData struct {
-	h          *C.QArrayData
-	isSubclass bool
+	h *C.QArrayData
 }
 
 func (this *QArrayData) cPointer() *C.QArrayData {

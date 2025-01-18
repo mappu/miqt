@@ -346,72 +346,126 @@ struct miqt_string QCameraViewfinder_TrUtf83(const char* s, const char* c, int n
 	return _ms;
 }
 
-void QCameraViewfinder_override_virtual_MediaObject(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCameraViewfinder*>( (QCameraViewfinder*)(self) )->handle__MediaObject = slot;
+bool QCameraViewfinder_override_virtual_MediaObject(void* self, intptr_t slot) {
+	MiqtVirtualQCameraViewfinder* self_cast = dynamic_cast<MiqtVirtualQCameraViewfinder*>( (QCameraViewfinder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MediaObject = slot;
+	return true;
 }
 
 QMediaObject* QCameraViewfinder_virtualbase_MediaObject(const void* self) {
 	return ( (const MiqtVirtualQCameraViewfinder*)(self) )->virtualbase_MediaObject();
 }
 
-void QCameraViewfinder_override_virtual_SetMediaObject(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCameraViewfinder*>( (QCameraViewfinder*)(self) )->handle__SetMediaObject = slot;
+bool QCameraViewfinder_override_virtual_SetMediaObject(void* self, intptr_t slot) {
+	MiqtVirtualQCameraViewfinder* self_cast = dynamic_cast<MiqtVirtualQCameraViewfinder*>( (QCameraViewfinder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetMediaObject = slot;
+	return true;
 }
 
 bool QCameraViewfinder_virtualbase_SetMediaObject(void* self, QMediaObject* object) {
 	return ( (MiqtVirtualQCameraViewfinder*)(self) )->virtualbase_SetMediaObject(object);
 }
 
-void QCameraViewfinder_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCameraViewfinder*>( (QCameraViewfinder*)(self) )->handle__SizeHint = slot;
+bool QCameraViewfinder_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQCameraViewfinder* self_cast = dynamic_cast<MiqtVirtualQCameraViewfinder*>( (QCameraViewfinder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QCameraViewfinder_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQCameraViewfinder*)(self) )->virtualbase_SizeHint();
 }
 
-void QCameraViewfinder_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCameraViewfinder*>( (QCameraViewfinder*)(self) )->handle__Event = slot;
+bool QCameraViewfinder_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQCameraViewfinder* self_cast = dynamic_cast<MiqtVirtualQCameraViewfinder*>( (QCameraViewfinder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QCameraViewfinder_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQCameraViewfinder*)(self) )->virtualbase_Event(event);
 }
 
-void QCameraViewfinder_override_virtual_ShowEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCameraViewfinder*>( (QCameraViewfinder*)(self) )->handle__ShowEvent = slot;
+bool QCameraViewfinder_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQCameraViewfinder* self_cast = dynamic_cast<MiqtVirtualQCameraViewfinder*>( (QCameraViewfinder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
 }
 
 void QCameraViewfinder_virtualbase_ShowEvent(void* self, QShowEvent* event) {
 	( (MiqtVirtualQCameraViewfinder*)(self) )->virtualbase_ShowEvent(event);
 }
 
-void QCameraViewfinder_override_virtual_HideEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCameraViewfinder*>( (QCameraViewfinder*)(self) )->handle__HideEvent = slot;
+bool QCameraViewfinder_override_virtual_HideEvent(void* self, intptr_t slot) {
+	MiqtVirtualQCameraViewfinder* self_cast = dynamic_cast<MiqtVirtualQCameraViewfinder*>( (QCameraViewfinder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HideEvent = slot;
+	return true;
 }
 
 void QCameraViewfinder_virtualbase_HideEvent(void* self, QHideEvent* event) {
 	( (MiqtVirtualQCameraViewfinder*)(self) )->virtualbase_HideEvent(event);
 }
 
-void QCameraViewfinder_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCameraViewfinder*>( (QCameraViewfinder*)(self) )->handle__ResizeEvent = slot;
+bool QCameraViewfinder_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQCameraViewfinder* self_cast = dynamic_cast<MiqtVirtualQCameraViewfinder*>( (QCameraViewfinder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QCameraViewfinder_virtualbase_ResizeEvent(void* self, QResizeEvent* event) {
 	( (MiqtVirtualQCameraViewfinder*)(self) )->virtualbase_ResizeEvent(event);
 }
 
-void QCameraViewfinder_override_virtual_MoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCameraViewfinder*>( (QCameraViewfinder*)(self) )->handle__MoveEvent = slot;
+bool QCameraViewfinder_override_virtual_MoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQCameraViewfinder* self_cast = dynamic_cast<MiqtVirtualQCameraViewfinder*>( (QCameraViewfinder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveEvent = slot;
+	return true;
 }
 
 void QCameraViewfinder_virtualbase_MoveEvent(void* self, QMoveEvent* event) {
 	( (MiqtVirtualQCameraViewfinder*)(self) )->virtualbase_MoveEvent(event);
 }
 
-void QCameraViewfinder_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCameraViewfinder*>( (QCameraViewfinder*)(self) )->handle__PaintEvent = slot;
+bool QCameraViewfinder_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQCameraViewfinder* self_cast = dynamic_cast<MiqtVirtualQCameraViewfinder*>( (QCameraViewfinder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QCameraViewfinder_virtualbase_PaintEvent(void* self, QPaintEvent* event) {

@@ -37,8 +37,7 @@ const (
 )
 
 type QSslCertificate struct {
-	h          *C.QSslCertificate
-	isSubclass bool
+	h *C.QSslCertificate
 }
 
 func (this *QSslCertificate) cPointer() *C.QSslCertificate {
@@ -72,33 +71,25 @@ func UnsafeNewQSslCertificate(h unsafe.Pointer) *QSslCertificate {
 // NewQSslCertificate constructs a new QSslCertificate object.
 func NewQSslCertificate(device *qt6.QIODevice) *QSslCertificate {
 
-	ret := newQSslCertificate(C.QSslCertificate_new((*C.QIODevice)(device.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQSslCertificate(C.QSslCertificate_new((*C.QIODevice)(device.UnsafePointer())))
 }
 
 // NewQSslCertificate2 constructs a new QSslCertificate object.
 func NewQSslCertificate2() *QSslCertificate {
 
-	ret := newQSslCertificate(C.QSslCertificate_new2())
-	ret.isSubclass = true
-	return ret
+	return newQSslCertificate(C.QSslCertificate_new2())
 }
 
 // NewQSslCertificate3 constructs a new QSslCertificate object.
 func NewQSslCertificate3(other *QSslCertificate) *QSslCertificate {
 
-	ret := newQSslCertificate(C.QSslCertificate_new3(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSslCertificate(C.QSslCertificate_new3(other.cPointer()))
 }
 
 // NewQSslCertificate4 constructs a new QSslCertificate object.
 func NewQSslCertificate4(device *qt6.QIODevice, format QSsl__EncodingFormat) *QSslCertificate {
 
-	ret := newQSslCertificate(C.QSslCertificate_new4((*C.QIODevice)(device.UnsafePointer()), (C.int)(format)))
-	ret.isSubclass = true
-	return ret
+	return newQSslCertificate(C.QSslCertificate_new4((*C.QIODevice)(device.UnsafePointer()), (C.int)(format)))
 }
 
 // NewQSslCertificate5 constructs a new QSslCertificate object.
@@ -107,9 +98,7 @@ func NewQSslCertificate5(data []byte) *QSslCertificate {
 	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
 	data_alias.len = C.size_t(len(data))
 
-	ret := newQSslCertificate(C.QSslCertificate_new5(data_alias))
-	ret.isSubclass = true
-	return ret
+	return newQSslCertificate(C.QSslCertificate_new5(data_alias))
 }
 
 // NewQSslCertificate6 constructs a new QSslCertificate object.
@@ -118,9 +107,7 @@ func NewQSslCertificate6(data []byte, format QSsl__EncodingFormat) *QSslCertific
 	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
 	data_alias.len = C.size_t(len(data))
 
-	ret := newQSslCertificate(C.QSslCertificate_new6(data_alias, (C.int)(format)))
-	ret.isSubclass = true
-	return ret
+	return newQSslCertificate(C.QSslCertificate_new6(data_alias, (C.int)(format)))
 }
 
 func (this *QSslCertificate) OperatorAssign(other *QSslCertificate) {

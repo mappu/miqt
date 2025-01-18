@@ -57,8 +57,7 @@ const (
 )
 
 type QSslError struct {
-	h          *C.QSslError
-	isSubclass bool
+	h *C.QSslError
 }
 
 func (this *QSslError) cPointer() *C.QSslError {
@@ -92,33 +91,25 @@ func UnsafeNewQSslError(h unsafe.Pointer) *QSslError {
 // NewQSslError constructs a new QSslError object.
 func NewQSslError() *QSslError {
 
-	ret := newQSslError(C.QSslError_new())
-	ret.isSubclass = true
-	return ret
+	return newQSslError(C.QSslError_new())
 }
 
 // NewQSslError2 constructs a new QSslError object.
 func NewQSslError2(error QSslError__SslError) *QSslError {
 
-	ret := newQSslError(C.QSslError_new2((C.int)(error)))
-	ret.isSubclass = true
-	return ret
+	return newQSslError(C.QSslError_new2((C.int)(error)))
 }
 
 // NewQSslError3 constructs a new QSslError object.
 func NewQSslError3(error QSslError__SslError, certificate *QSslCertificate) *QSslError {
 
-	ret := newQSslError(C.QSslError_new3((C.int)(error), certificate.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSslError(C.QSslError_new3((C.int)(error), certificate.cPointer()))
 }
 
 // NewQSslError4 constructs a new QSslError object.
 func NewQSslError4(other *QSslError) *QSslError {
 
-	ret := newQSslError(C.QSslError_new4(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSslError(C.QSslError_new4(other.cPointer()))
 }
 
 func (this *QSslError) Swap(other *QSslError) {

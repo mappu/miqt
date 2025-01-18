@@ -14,8 +14,7 @@ import (
 )
 
 type QUntypedPropertyData struct {
-	h          *C.QUntypedPropertyData
-	isSubclass bool
+	h *C.QUntypedPropertyData
 }
 
 func (this *QUntypedPropertyData) cPointer() *C.QUntypedPropertyData {
@@ -61,8 +60,7 @@ func (this *QUntypedPropertyData) GoGC() {
 }
 
 type QPropertyProxyBindingData struct {
-	h          *C.QPropertyProxyBindingData
-	isSubclass bool
+	h *C.QPropertyProxyBindingData
 }
 
 func (this *QPropertyProxyBindingData) cPointer() *C.QPropertyProxyBindingData {

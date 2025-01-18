@@ -22,8 +22,7 @@ const (
 )
 
 type QGraphicsVideoItem struct {
-	h          *C.QGraphicsVideoItem
-	isSubclass bool
+	h *C.QGraphicsVideoItem
 	*qt6.QGraphicsObject
 }
 
@@ -61,17 +60,13 @@ func UnsafeNewQGraphicsVideoItem(h unsafe.Pointer) *QGraphicsVideoItem {
 // NewQGraphicsVideoItem constructs a new QGraphicsVideoItem object.
 func NewQGraphicsVideoItem() *QGraphicsVideoItem {
 
-	ret := newQGraphicsVideoItem(C.QGraphicsVideoItem_new())
-	ret.isSubclass = true
-	return ret
+	return newQGraphicsVideoItem(C.QGraphicsVideoItem_new())
 }
 
 // NewQGraphicsVideoItem2 constructs a new QGraphicsVideoItem object.
 func NewQGraphicsVideoItem2(parent *qt6.QGraphicsItem) *QGraphicsVideoItem {
 
-	ret := newQGraphicsVideoItem(C.QGraphicsVideoItem_new2((*C.QGraphicsItem)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQGraphicsVideoItem(C.QGraphicsVideoItem_new2((*C.QGraphicsItem)(parent.UnsafePointer())))
 }
 
 func (this *QGraphicsVideoItem) MetaObject() *qt6.QMetaObject {
@@ -195,10 +190,10 @@ func (this *QGraphicsVideoItem) callVirtualBase_BoundingRect() *qt6.QRectF {
 
 }
 func (this *QGraphicsVideoItem) OnBoundingRect(slot func(super func() *qt6.QRectF) *qt6.QRectF) {
-	if !this.isSubclass {
+	ok := C.QGraphicsVideoItem_override_virtual_BoundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGraphicsVideoItem_override_virtual_BoundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsVideoItem_BoundingRect
@@ -220,10 +215,10 @@ func (this *QGraphicsVideoItem) callVirtualBase_Paint(painter *qt6.QPainter, opt
 
 }
 func (this *QGraphicsVideoItem) OnPaint(slot func(super func(painter *qt6.QPainter, option *qt6.QStyleOptionGraphicsItem, widget *qt6.QWidget), painter *qt6.QPainter, option *qt6.QStyleOptionGraphicsItem, widget *qt6.QWidget)) {
-	if !this.isSubclass {
+	ok := C.QGraphicsVideoItem_override_virtual_Paint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGraphicsVideoItem_override_virtual_Paint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsVideoItem_Paint
@@ -250,10 +245,10 @@ func (this *QGraphicsVideoItem) callVirtualBase_Type() int {
 
 }
 func (this *QGraphicsVideoItem) OnType(slot func(super func() int) int) {
-	if !this.isSubclass {
+	ok := C.QGraphicsVideoItem_override_virtual_Type(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGraphicsVideoItem_override_virtual_Type(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsVideoItem_Type
@@ -275,10 +270,10 @@ func (this *QGraphicsVideoItem) callVirtualBase_TimerEvent(event *qt6.QTimerEven
 
 }
 func (this *QGraphicsVideoItem) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QGraphicsVideoItem_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGraphicsVideoItem_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsVideoItem_TimerEvent
@@ -303,10 +298,10 @@ func (this *QGraphicsVideoItem) callVirtualBase_ItemChange(change qt6.QGraphicsI
 
 }
 func (this *QGraphicsVideoItem) OnItemChange(slot func(super func(change qt6.QGraphicsItem__GraphicsItemChange, value *qt6.QVariant) *qt6.QVariant, change qt6.QGraphicsItem__GraphicsItemChange, value *qt6.QVariant) *qt6.QVariant) {
-	if !this.isSubclass {
+	ok := C.QGraphicsVideoItem_override_virtual_ItemChange(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGraphicsVideoItem_override_virtual_ItemChange(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsVideoItem_ItemChange
@@ -333,10 +328,10 @@ func (this *QGraphicsVideoItem) callVirtualBase_Event(ev *qt6.QEvent) bool {
 
 }
 func (this *QGraphicsVideoItem) OnEvent(slot func(super func(ev *qt6.QEvent) bool, ev *qt6.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QGraphicsVideoItem_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGraphicsVideoItem_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsVideoItem_Event

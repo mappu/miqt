@@ -1075,136 +1075,238 @@ void QProcess_connect_Finished2(QProcess* self, intptr_t slot) {
 	});
 }
 
-void QProcess_override_virtual_Open(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__Open = slot;
+bool QProcess_override_virtual_Open(void* self, intptr_t slot) {
+	MiqtVirtualQProcess* self_cast = dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Open = slot;
+	return true;
 }
 
 bool QProcess_virtualbase_Open(void* self, int mode) {
 	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_Open(mode);
 }
 
-void QProcess_override_virtual_WaitForReadyRead(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__WaitForReadyRead = slot;
+bool QProcess_override_virtual_WaitForReadyRead(void* self, intptr_t slot) {
+	MiqtVirtualQProcess* self_cast = dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WaitForReadyRead = slot;
+	return true;
 }
 
 bool QProcess_virtualbase_WaitForReadyRead(void* self, int msecs) {
 	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_WaitForReadyRead(msecs);
 }
 
-void QProcess_override_virtual_WaitForBytesWritten(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__WaitForBytesWritten = slot;
+bool QProcess_override_virtual_WaitForBytesWritten(void* self, intptr_t slot) {
+	MiqtVirtualQProcess* self_cast = dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WaitForBytesWritten = slot;
+	return true;
 }
 
 bool QProcess_virtualbase_WaitForBytesWritten(void* self, int msecs) {
 	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_WaitForBytesWritten(msecs);
 }
 
-void QProcess_override_virtual_BytesToWrite(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__BytesToWrite = slot;
+bool QProcess_override_virtual_BytesToWrite(void* self, intptr_t slot) {
+	MiqtVirtualQProcess* self_cast = dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BytesToWrite = slot;
+	return true;
 }
 
 long long QProcess_virtualbase_BytesToWrite(const void* self) {
 	return ( (const MiqtVirtualQProcess*)(self) )->virtualbase_BytesToWrite();
 }
 
-void QProcess_override_virtual_IsSequential(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__IsSequential = slot;
+bool QProcess_override_virtual_IsSequential(void* self, intptr_t slot) {
+	MiqtVirtualQProcess* self_cast = dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsSequential = slot;
+	return true;
 }
 
 bool QProcess_virtualbase_IsSequential(const void* self) {
 	return ( (const MiqtVirtualQProcess*)(self) )->virtualbase_IsSequential();
 }
 
-void QProcess_override_virtual_Close(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__Close = slot;
+bool QProcess_override_virtual_Close(void* self, intptr_t slot) {
+	MiqtVirtualQProcess* self_cast = dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Close = slot;
+	return true;
 }
 
 void QProcess_virtualbase_Close(void* self) {
 	( (MiqtVirtualQProcess*)(self) )->virtualbase_Close();
 }
 
-void QProcess_override_virtual_ReadData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__ReadData = slot;
+bool QProcess_override_virtual_ReadData(void* self, intptr_t slot) {
+	MiqtVirtualQProcess* self_cast = dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ReadData = slot;
+	return true;
 }
 
 long long QProcess_virtualbase_ReadData(void* self, char* data, long long maxlen) {
 	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_ReadData(data, maxlen);
 }
 
-void QProcess_override_virtual_WriteData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__WriteData = slot;
+bool QProcess_override_virtual_WriteData(void* self, intptr_t slot) {
+	MiqtVirtualQProcess* self_cast = dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WriteData = slot;
+	return true;
 }
 
 long long QProcess_virtualbase_WriteData(void* self, const char* data, long long lenVal) {
 	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_WriteData(data, lenVal);
 }
 
-void QProcess_override_virtual_Pos(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__Pos = slot;
+bool QProcess_override_virtual_Pos(void* self, intptr_t slot) {
+	MiqtVirtualQProcess* self_cast = dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Pos = slot;
+	return true;
 }
 
 long long QProcess_virtualbase_Pos(const void* self) {
 	return ( (const MiqtVirtualQProcess*)(self) )->virtualbase_Pos();
 }
 
-void QProcess_override_virtual_Size(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__Size = slot;
+bool QProcess_override_virtual_Size(void* self, intptr_t slot) {
+	MiqtVirtualQProcess* self_cast = dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Size = slot;
+	return true;
 }
 
 long long QProcess_virtualbase_Size(const void* self) {
 	return ( (const MiqtVirtualQProcess*)(self) )->virtualbase_Size();
 }
 
-void QProcess_override_virtual_Seek(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__Seek = slot;
+bool QProcess_override_virtual_Seek(void* self, intptr_t slot) {
+	MiqtVirtualQProcess* self_cast = dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Seek = slot;
+	return true;
 }
 
 bool QProcess_virtualbase_Seek(void* self, long long pos) {
 	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_Seek(pos);
 }
 
-void QProcess_override_virtual_AtEnd(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__AtEnd = slot;
+bool QProcess_override_virtual_AtEnd(void* self, intptr_t slot) {
+	MiqtVirtualQProcess* self_cast = dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__AtEnd = slot;
+	return true;
 }
 
 bool QProcess_virtualbase_AtEnd(const void* self) {
 	return ( (const MiqtVirtualQProcess*)(self) )->virtualbase_AtEnd();
 }
 
-void QProcess_override_virtual_Reset(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__Reset = slot;
+bool QProcess_override_virtual_Reset(void* self, intptr_t slot) {
+	MiqtVirtualQProcess* self_cast = dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Reset = slot;
+	return true;
 }
 
 bool QProcess_virtualbase_Reset(void* self) {
 	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_Reset();
 }
 
-void QProcess_override_virtual_BytesAvailable(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__BytesAvailable = slot;
+bool QProcess_override_virtual_BytesAvailable(void* self, intptr_t slot) {
+	MiqtVirtualQProcess* self_cast = dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BytesAvailable = slot;
+	return true;
 }
 
 long long QProcess_virtualbase_BytesAvailable(const void* self) {
 	return ( (const MiqtVirtualQProcess*)(self) )->virtualbase_BytesAvailable();
 }
 
-void QProcess_override_virtual_CanReadLine(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__CanReadLine = slot;
+bool QProcess_override_virtual_CanReadLine(void* self, intptr_t slot) {
+	MiqtVirtualQProcess* self_cast = dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CanReadLine = slot;
+	return true;
 }
 
 bool QProcess_virtualbase_CanReadLine(const void* self) {
 	return ( (const MiqtVirtualQProcess*)(self) )->virtualbase_CanReadLine();
 }
 
-void QProcess_override_virtual_ReadLineData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__ReadLineData = slot;
+bool QProcess_override_virtual_ReadLineData(void* self, intptr_t slot) {
+	MiqtVirtualQProcess* self_cast = dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ReadLineData = slot;
+	return true;
 }
 
 long long QProcess_virtualbase_ReadLineData(void* self, char* data, long long maxlen) {
 	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_ReadLineData(data, maxlen);
 }
 
-void QProcess_override_virtual_SkipData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) )->handle__SkipData = slot;
+bool QProcess_override_virtual_SkipData(void* self, intptr_t slot) {
+	MiqtVirtualQProcess* self_cast = dynamic_cast<MiqtVirtualQProcess*>( (QProcess*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SkipData = slot;
+	return true;
 }
 
 long long QProcess_virtualbase_SkipData(void* self, long long maxSize) {

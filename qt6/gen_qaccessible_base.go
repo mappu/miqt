@@ -215,8 +215,7 @@ const (
 )
 
 type QAccessible struct {
-	h          *C.QAccessible
-	isSubclass bool
+	h *C.QAccessible
 }
 
 func (this *QAccessible) cPointer() *C.QAccessible {
@@ -327,8 +326,7 @@ func (this *QAccessible) GoGC() {
 }
 
 type QAccessible__State struct {
-	h          *C.QAccessible__State
-	isSubclass bool
+	h *C.QAccessible__State
 }
 
 func (this *QAccessible__State) cPointer() *C.QAccessible__State {
@@ -362,9 +360,7 @@ func UnsafeNewQAccessible__State(h unsafe.Pointer) *QAccessible__State {
 // NewQAccessible__State constructs a new QAccessible::State object.
 func NewQAccessible__State() *QAccessible__State {
 
-	ret := newQAccessible__State(C.QAccessible__State_new())
-	ret.isSubclass = true
-	return ret
+	return newQAccessible__State(C.QAccessible__State_new())
 }
 
 // Delete this object from C++ memory.
@@ -382,8 +378,7 @@ func (this *QAccessible__State) GoGC() {
 }
 
 type QAccessible__ActivationObserver struct {
-	h          *C.QAccessible__ActivationObserver
-	isSubclass bool
+	h *C.QAccessible__ActivationObserver
 }
 
 func (this *QAccessible__ActivationObserver) cPointer() *C.QAccessible__ActivationObserver {

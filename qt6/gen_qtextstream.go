@@ -50,8 +50,7 @@ const (
 )
 
 type QTextStream struct {
-	h          *C.QTextStream
-	isSubclass bool
+	h *C.QTextStream
 	*QIODeviceBase
 }
 
@@ -89,17 +88,13 @@ func UnsafeNewQTextStream(h unsafe.Pointer) *QTextStream {
 // NewQTextStream constructs a new QTextStream object.
 func NewQTextStream() *QTextStream {
 
-	ret := newQTextStream(C.QTextStream_new())
-	ret.isSubclass = true
-	return ret
+	return newQTextStream(C.QTextStream_new())
 }
 
 // NewQTextStream2 constructs a new QTextStream object.
 func NewQTextStream2(device *QIODevice) *QTextStream {
 
-	ret := newQTextStream(C.QTextStream_new2(device.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTextStream(C.QTextStream_new2(device.cPointer()))
 }
 
 // NewQTextStream3 constructs a new QTextStream object.
@@ -108,9 +103,7 @@ func NewQTextStream3(array []byte) *QTextStream {
 	array_alias.data = (*C.char)(unsafe.Pointer(&array[0]))
 	array_alias.len = C.size_t(len(array))
 
-	ret := newQTextStream(C.QTextStream_new3(array_alias))
-	ret.isSubclass = true
-	return ret
+	return newQTextStream(C.QTextStream_new3(array_alias))
 }
 
 // NewQTextStream4 constructs a new QTextStream object.
@@ -119,9 +112,7 @@ func NewQTextStream4(array []byte, openMode QIODeviceBase__OpenModeFlag) *QTextS
 	array_alias.data = (*C.char)(unsafe.Pointer(&array[0]))
 	array_alias.len = C.size_t(len(array))
 
-	ret := newQTextStream(C.QTextStream_new4(array_alias, (C.int)(openMode)))
-	ret.isSubclass = true
-	return ret
+	return newQTextStream(C.QTextStream_new4(array_alias, (C.int)(openMode)))
 }
 
 func (this *QTextStream) SetEncoding(encoding QStringConverter__Encoding) {

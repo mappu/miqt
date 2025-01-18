@@ -24,8 +24,7 @@ const (
 )
 
 type QWebEngineNewWindowRequest struct {
-	h          *C.QWebEngineNewWindowRequest
-	isSubclass bool
+	h *C.QWebEngineNewWindowRequest
 	*qt6.QObject
 }
 

@@ -14,8 +14,7 @@ import (
 )
 
 type QTextDocumentFragment struct {
-	h          *C.QTextDocumentFragment
-	isSubclass bool
+	h *C.QTextDocumentFragment
 }
 
 func (this *QTextDocumentFragment) cPointer() *C.QTextDocumentFragment {
@@ -49,33 +48,25 @@ func UnsafeNewQTextDocumentFragment(h unsafe.Pointer) *QTextDocumentFragment {
 // NewQTextDocumentFragment constructs a new QTextDocumentFragment object.
 func NewQTextDocumentFragment() *QTextDocumentFragment {
 
-	ret := newQTextDocumentFragment(C.QTextDocumentFragment_new())
-	ret.isSubclass = true
-	return ret
+	return newQTextDocumentFragment(C.QTextDocumentFragment_new())
 }
 
 // NewQTextDocumentFragment2 constructs a new QTextDocumentFragment object.
 func NewQTextDocumentFragment2(document *QTextDocument) *QTextDocumentFragment {
 
-	ret := newQTextDocumentFragment(C.QTextDocumentFragment_new2(document.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTextDocumentFragment(C.QTextDocumentFragment_new2(document.cPointer()))
 }
 
 // NewQTextDocumentFragment3 constructs a new QTextDocumentFragment object.
 func NewQTextDocumentFragment3(rangeVal *QTextCursor) *QTextDocumentFragment {
 
-	ret := newQTextDocumentFragment(C.QTextDocumentFragment_new3(rangeVal.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTextDocumentFragment(C.QTextDocumentFragment_new3(rangeVal.cPointer()))
 }
 
 // NewQTextDocumentFragment4 constructs a new QTextDocumentFragment object.
 func NewQTextDocumentFragment4(rhs *QTextDocumentFragment) *QTextDocumentFragment {
 
-	ret := newQTextDocumentFragment(C.QTextDocumentFragment_new4(rhs.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTextDocumentFragment(C.QTextDocumentFragment_new4(rhs.cPointer()))
 }
 
 func (this *QTextDocumentFragment) OperatorAssign(rhs *QTextDocumentFragment) {

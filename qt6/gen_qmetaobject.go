@@ -39,8 +39,7 @@ const (
 )
 
 type QMetaMethod struct {
-	h          *C.QMetaMethod
-	isSubclass bool
+	h *C.QMetaMethod
 }
 
 func (this *QMetaMethod) cPointer() *C.QMetaMethod {
@@ -74,17 +73,13 @@ func UnsafeNewQMetaMethod(h unsafe.Pointer) *QMetaMethod {
 // NewQMetaMethod constructs a new QMetaMethod object.
 func NewQMetaMethod() *QMetaMethod {
 
-	ret := newQMetaMethod(C.QMetaMethod_new())
-	ret.isSubclass = true
-	return ret
+	return newQMetaMethod(C.QMetaMethod_new())
 }
 
 // NewQMetaMethod2 constructs a new QMetaMethod object.
 func NewQMetaMethod2(param1 *QMetaMethod) *QMetaMethod {
 
-	ret := newQMetaMethod(C.QMetaMethod_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQMetaMethod(C.QMetaMethod_new2(param1.cPointer()))
 }
 
 func (this *QMetaMethod) MethodSignature() []byte {
@@ -487,8 +482,7 @@ func (this *QMetaMethod) GoGC() {
 }
 
 type QMetaEnum struct {
-	h          *C.QMetaEnum
-	isSubclass bool
+	h *C.QMetaEnum
 }
 
 func (this *QMetaEnum) cPointer() *C.QMetaEnum {
@@ -522,17 +516,13 @@ func UnsafeNewQMetaEnum(h unsafe.Pointer) *QMetaEnum {
 // NewQMetaEnum constructs a new QMetaEnum object.
 func NewQMetaEnum() *QMetaEnum {
 
-	ret := newQMetaEnum(C.QMetaEnum_new())
-	ret.isSubclass = true
-	return ret
+	return newQMetaEnum(C.QMetaEnum_new())
 }
 
 // NewQMetaEnum2 constructs a new QMetaEnum object.
 func NewQMetaEnum2(param1 *QMetaEnum) *QMetaEnum {
 
-	ret := newQMetaEnum(C.QMetaEnum_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQMetaEnum(C.QMetaEnum_new2(param1.cPointer()))
 }
 
 func (this *QMetaEnum) Name() string {
@@ -630,8 +620,7 @@ func (this *QMetaEnum) GoGC() {
 }
 
 type QMetaProperty struct {
-	h          *C.QMetaProperty
-	isSubclass bool
+	h *C.QMetaProperty
 }
 
 func (this *QMetaProperty) cPointer() *C.QMetaProperty {
@@ -665,9 +654,7 @@ func UnsafeNewQMetaProperty(h unsafe.Pointer) *QMetaProperty {
 // NewQMetaProperty constructs a new QMetaProperty object.
 func NewQMetaProperty() *QMetaProperty {
 
-	ret := newQMetaProperty(C.QMetaProperty_new())
-	ret.isSubclass = true
-	return ret
+	return newQMetaProperty(C.QMetaProperty_new())
 }
 
 func (this *QMetaProperty) Name() string {
@@ -847,8 +834,7 @@ func (this *QMetaProperty) GoGC() {
 }
 
 type QMetaClassInfo struct {
-	h          *C.QMetaClassInfo
-	isSubclass bool
+	h *C.QMetaClassInfo
 }
 
 func (this *QMetaClassInfo) cPointer() *C.QMetaClassInfo {
@@ -882,9 +868,7 @@ func UnsafeNewQMetaClassInfo(h unsafe.Pointer) *QMetaClassInfo {
 // NewQMetaClassInfo constructs a new QMetaClassInfo object.
 func NewQMetaClassInfo() *QMetaClassInfo {
 
-	ret := newQMetaClassInfo(C.QMetaClassInfo_new())
-	ret.isSubclass = true
-	return ret
+	return newQMetaClassInfo(C.QMetaClassInfo_new())
 }
 
 func (this *QMetaClassInfo) Name() string {

@@ -693,120 +693,210 @@ struct miqt_string QLabel_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QLabel_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) )->handle__SizeHint = slot;
+bool QLabel_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQLabel* self_cast = dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QLabel_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQLabel*)(self) )->virtualbase_SizeHint();
 }
 
-void QLabel_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) )->handle__MinimumSizeHint = slot;
+bool QLabel_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQLabel* self_cast = dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QLabel_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQLabel*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QLabel_override_virtual_HeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) )->handle__HeightForWidth = slot;
+bool QLabel_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQLabel* self_cast = dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeightForWidth = slot;
+	return true;
 }
 
 int QLabel_virtualbase_HeightForWidth(const void* self, int param1) {
 	return ( (const MiqtVirtualQLabel*)(self) )->virtualbase_HeightForWidth(param1);
 }
 
-void QLabel_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) )->handle__Event = slot;
+bool QLabel_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQLabel* self_cast = dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QLabel_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQLabel*)(self) )->virtualbase_Event(e);
 }
 
-void QLabel_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) )->handle__KeyPressEvent = slot;
+bool QLabel_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQLabel* self_cast = dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QLabel_virtualbase_KeyPressEvent(void* self, QKeyEvent* ev) {
 	( (MiqtVirtualQLabel*)(self) )->virtualbase_KeyPressEvent(ev);
 }
 
-void QLabel_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) )->handle__PaintEvent = slot;
+bool QLabel_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQLabel* self_cast = dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QLabel_virtualbase_PaintEvent(void* self, QPaintEvent* param1) {
 	( (MiqtVirtualQLabel*)(self) )->virtualbase_PaintEvent(param1);
 }
 
-void QLabel_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) )->handle__ChangeEvent = slot;
+bool QLabel_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQLabel* self_cast = dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QLabel_virtualbase_ChangeEvent(void* self, QEvent* param1) {
 	( (MiqtVirtualQLabel*)(self) )->virtualbase_ChangeEvent(param1);
 }
 
-void QLabel_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) )->handle__MousePressEvent = slot;
+bool QLabel_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQLabel* self_cast = dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QLabel_virtualbase_MousePressEvent(void* self, QMouseEvent* ev) {
 	( (MiqtVirtualQLabel*)(self) )->virtualbase_MousePressEvent(ev);
 }
 
-void QLabel_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) )->handle__MouseMoveEvent = slot;
+bool QLabel_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQLabel* self_cast = dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QLabel_virtualbase_MouseMoveEvent(void* self, QMouseEvent* ev) {
 	( (MiqtVirtualQLabel*)(self) )->virtualbase_MouseMoveEvent(ev);
 }
 
-void QLabel_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) )->handle__MouseReleaseEvent = slot;
+bool QLabel_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQLabel* self_cast = dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QLabel_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* ev) {
 	( (MiqtVirtualQLabel*)(self) )->virtualbase_MouseReleaseEvent(ev);
 }
 
-void QLabel_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) )->handle__ContextMenuEvent = slot;
+bool QLabel_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQLabel* self_cast = dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QLabel_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* ev) {
 	( (MiqtVirtualQLabel*)(self) )->virtualbase_ContextMenuEvent(ev);
 }
 
-void QLabel_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) )->handle__FocusInEvent = slot;
+bool QLabel_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQLabel* self_cast = dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QLabel_virtualbase_FocusInEvent(void* self, QFocusEvent* ev) {
 	( (MiqtVirtualQLabel*)(self) )->virtualbase_FocusInEvent(ev);
 }
 
-void QLabel_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) )->handle__FocusOutEvent = slot;
+bool QLabel_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQLabel* self_cast = dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
 }
 
 void QLabel_virtualbase_FocusOutEvent(void* self, QFocusEvent* ev) {
 	( (MiqtVirtualQLabel*)(self) )->virtualbase_FocusOutEvent(ev);
 }
 
-void QLabel_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) )->handle__FocusNextPrevChild = slot;
+bool QLabel_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+	MiqtVirtualQLabel* self_cast = dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusNextPrevChild = slot;
+	return true;
 }
 
 bool QLabel_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQLabel*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QLabel_override_virtual_InitStyleOption(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) )->handle__InitStyleOption = slot;
+bool QLabel_override_virtual_InitStyleOption(void* self, intptr_t slot) {
+	MiqtVirtualQLabel* self_cast = dynamic_cast<MiqtVirtualQLabel*>( (QLabel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitStyleOption = slot;
+	return true;
 }
 
 void QLabel_virtualbase_InitStyleOption(const void* self, QStyleOptionFrame* option) {

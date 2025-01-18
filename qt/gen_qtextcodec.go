@@ -22,8 +22,7 @@ const (
 )
 
 type QTextCodec struct {
-	h          *C.QTextCodec
-	isSubclass bool
+	h *C.QTextCodec
 }
 
 func (this *QTextCodec) cPointer() *C.QTextCodec {
@@ -245,8 +244,7 @@ func (this *QTextCodec) MakeEncoder1(flags QTextCodec__ConversionFlag) *QTextEnc
 }
 
 type QTextEncoder struct {
-	h          *C.QTextEncoder
-	isSubclass bool
+	h *C.QTextEncoder
 }
 
 func (this *QTextEncoder) cPointer() *C.QTextEncoder {
@@ -280,17 +278,13 @@ func UnsafeNewQTextEncoder(h unsafe.Pointer) *QTextEncoder {
 // NewQTextEncoder constructs a new QTextEncoder object.
 func NewQTextEncoder(codec *QTextCodec) *QTextEncoder {
 
-	ret := newQTextEncoder(C.QTextEncoder_new(codec.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTextEncoder(C.QTextEncoder_new(codec.cPointer()))
 }
 
 // NewQTextEncoder2 constructs a new QTextEncoder object.
 func NewQTextEncoder2(codec *QTextCodec, flags QTextCodec__ConversionFlag) *QTextEncoder {
 
-	ret := newQTextEncoder(C.QTextEncoder_new2(codec.cPointer(), (C.int)(flags)))
-	ret.isSubclass = true
-	return ret
+	return newQTextEncoder(C.QTextEncoder_new2(codec.cPointer(), (C.int)(flags)))
 }
 
 func (this *QTextEncoder) FromUnicode(str string) []byte {
@@ -330,8 +324,7 @@ func (this *QTextEncoder) GoGC() {
 }
 
 type QTextDecoder struct {
-	h          *C.QTextDecoder
-	isSubclass bool
+	h *C.QTextDecoder
 }
 
 func (this *QTextDecoder) cPointer() *C.QTextDecoder {
@@ -365,17 +358,13 @@ func UnsafeNewQTextDecoder(h unsafe.Pointer) *QTextDecoder {
 // NewQTextDecoder constructs a new QTextDecoder object.
 func NewQTextDecoder(codec *QTextCodec) *QTextDecoder {
 
-	ret := newQTextDecoder(C.QTextDecoder_new(codec.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTextDecoder(C.QTextDecoder_new(codec.cPointer()))
 }
 
 // NewQTextDecoder2 constructs a new QTextDecoder object.
 func NewQTextDecoder2(codec *QTextCodec, flags QTextCodec__ConversionFlag) *QTextDecoder {
 
-	ret := newQTextDecoder(C.QTextDecoder_new2(codec.cPointer(), (C.int)(flags)))
-	ret.isSubclass = true
-	return ret
+	return newQTextDecoder(C.QTextDecoder_new2(codec.cPointer(), (C.int)(flags)))
 }
 
 func (this *QTextDecoder) ToUnicode(chars string, lenVal int) string {
@@ -420,8 +409,7 @@ func (this *QTextDecoder) GoGC() {
 }
 
 type QTextCodec__ConverterState struct {
-	h          *C.QTextCodec__ConverterState
-	isSubclass bool
+	h *C.QTextCodec__ConverterState
 }
 
 func (this *QTextCodec__ConverterState) cPointer() *C.QTextCodec__ConverterState {
@@ -455,17 +443,13 @@ func UnsafeNewQTextCodec__ConverterState(h unsafe.Pointer) *QTextCodec__Converte
 // NewQTextCodec__ConverterState constructs a new QTextCodec::ConverterState object.
 func NewQTextCodec__ConverterState() *QTextCodec__ConverterState {
 
-	ret := newQTextCodec__ConverterState(C.QTextCodec__ConverterState_new())
-	ret.isSubclass = true
-	return ret
+	return newQTextCodec__ConverterState(C.QTextCodec__ConverterState_new())
 }
 
 // NewQTextCodec__ConverterState2 constructs a new QTextCodec::ConverterState object.
 func NewQTextCodec__ConverterState2(f QTextCodec__ConversionFlag) *QTextCodec__ConverterState {
 
-	ret := newQTextCodec__ConverterState(C.QTextCodec__ConverterState_new2((C.int)(f)))
-	ret.isSubclass = true
-	return ret
+	return newQTextCodec__ConverterState(C.QTextCodec__ConverterState_new2((C.int)(f)))
 }
 
 // Delete this object from C++ memory.

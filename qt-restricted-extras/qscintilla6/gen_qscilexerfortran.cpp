@@ -114,8 +114,14 @@ struct miqt_string QsciLexerFortran_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QsciLexerFortran_override_virtual_SetFoldCompact(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerFortran*>( (QsciLexerFortran*)(self) )->handle__SetFoldCompact = slot;
+bool QsciLexerFortran_override_virtual_SetFoldCompact(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerFortran* self_cast = dynamic_cast<MiqtVirtualQsciLexerFortran*>( (QsciLexerFortran*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetFoldCompact = slot;
+	return true;
 }
 
 void QsciLexerFortran_virtualbase_SetFoldCompact(void* self, bool fold) {

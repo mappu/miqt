@@ -75,8 +75,7 @@ const (
 )
 
 type QDataStream struct {
-	h          *C.QDataStream
-	isSubclass bool
+	h *C.QDataStream
 }
 
 func (this *QDataStream) cPointer() *C.QDataStream {
@@ -110,17 +109,13 @@ func UnsafeNewQDataStream(h unsafe.Pointer) *QDataStream {
 // NewQDataStream constructs a new QDataStream object.
 func NewQDataStream() *QDataStream {
 
-	ret := newQDataStream(C.QDataStream_new())
-	ret.isSubclass = true
-	return ret
+	return newQDataStream(C.QDataStream_new())
 }
 
 // NewQDataStream2 constructs a new QDataStream object.
 func NewQDataStream2(param1 *QIODevice) *QDataStream {
 
-	ret := newQDataStream(C.QDataStream_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQDataStream(C.QDataStream_new2(param1.cPointer()))
 }
 
 // NewQDataStream3 constructs a new QDataStream object.
@@ -129,9 +124,7 @@ func NewQDataStream3(param1 []byte) *QDataStream {
 	param1_alias.data = (*C.char)(unsafe.Pointer(&param1[0]))
 	param1_alias.len = C.size_t(len(param1))
 
-	ret := newQDataStream(C.QDataStream_new3(param1_alias))
-	ret.isSubclass = true
-	return ret
+	return newQDataStream(C.QDataStream_new3(param1_alias))
 }
 
 func (this *QDataStream) Device() *QIODevice {

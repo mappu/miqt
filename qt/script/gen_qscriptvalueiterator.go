@@ -14,8 +14,7 @@ import (
 )
 
 type QScriptValueIterator struct {
-	h          *C.QScriptValueIterator
-	isSubclass bool
+	h *C.QScriptValueIterator
 }
 
 func (this *QScriptValueIterator) cPointer() *C.QScriptValueIterator {
@@ -49,9 +48,7 @@ func UnsafeNewQScriptValueIterator(h unsafe.Pointer) *QScriptValueIterator {
 // NewQScriptValueIterator constructs a new QScriptValueIterator object.
 func NewQScriptValueIterator(value *QScriptValue) *QScriptValueIterator {
 
-	ret := newQScriptValueIterator(C.QScriptValueIterator_new(value.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQScriptValueIterator(C.QScriptValueIterator_new(value.cPointer()))
 }
 
 func (this *QScriptValueIterator) HasNext() bool {

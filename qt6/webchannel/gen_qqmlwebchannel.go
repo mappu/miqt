@@ -15,8 +15,7 @@ import (
 )
 
 type QQmlWebChannel struct {
-	h          *C.QQmlWebChannel
-	isSubclass bool
+	h *C.QQmlWebChannel
 	*QWebChannel
 }
 
@@ -54,17 +53,13 @@ func UnsafeNewQQmlWebChannel(h unsafe.Pointer) *QQmlWebChannel {
 // NewQQmlWebChannel constructs a new QQmlWebChannel object.
 func NewQQmlWebChannel() *QQmlWebChannel {
 
-	ret := newQQmlWebChannel(C.QQmlWebChannel_new())
-	ret.isSubclass = true
-	return ret
+	return newQQmlWebChannel(C.QQmlWebChannel_new())
 }
 
 // NewQQmlWebChannel2 constructs a new QQmlWebChannel object.
 func NewQQmlWebChannel2(parent *qt6.QObject) *QQmlWebChannel {
 
-	ret := newQQmlWebChannel(C.QQmlWebChannel_new2((*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQQmlWebChannel(C.QQmlWebChannel_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QQmlWebChannel) MetaObject() *qt6.QMetaObject {

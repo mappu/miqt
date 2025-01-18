@@ -37,8 +37,7 @@ const (
 )
 
 type QWebEngineLoadingInfo struct {
-	h          *C.QWebEngineLoadingInfo
-	isSubclass bool
+	h *C.QWebEngineLoadingInfo
 }
 
 func (this *QWebEngineLoadingInfo) cPointer() *C.QWebEngineLoadingInfo {
@@ -72,9 +71,7 @@ func UnsafeNewQWebEngineLoadingInfo(h unsafe.Pointer) *QWebEngineLoadingInfo {
 // NewQWebEngineLoadingInfo constructs a new QWebEngineLoadingInfo object.
 func NewQWebEngineLoadingInfo(other *QWebEngineLoadingInfo) *QWebEngineLoadingInfo {
 
-	ret := newQWebEngineLoadingInfo(C.QWebEngineLoadingInfo_new(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineLoadingInfo(C.QWebEngineLoadingInfo_new(other.cPointer()))
 }
 
 func (this *QWebEngineLoadingInfo) OperatorAssign(other *QWebEngineLoadingInfo) {

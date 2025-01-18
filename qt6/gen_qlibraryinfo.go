@@ -34,8 +34,7 @@ const (
 )
 
 type QLibraryInfo struct {
-	h          *C.QLibraryInfo
-	isSubclass bool
+	h *C.QLibraryInfo
 }
 
 func (this *QLibraryInfo) cPointer() *C.QLibraryInfo {

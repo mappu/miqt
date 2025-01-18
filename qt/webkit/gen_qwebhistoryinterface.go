@@ -16,8 +16,7 @@ import (
 )
 
 type QWebHistoryInterface struct {
-	h          *C.QWebHistoryInterface
-	isSubclass bool
+	h *C.QWebHistoryInterface
 	*qt.QObject
 }
 
@@ -55,17 +54,13 @@ func UnsafeNewQWebHistoryInterface(h unsafe.Pointer) *QWebHistoryInterface {
 // NewQWebHistoryInterface constructs a new QWebHistoryInterface object.
 func NewQWebHistoryInterface() *QWebHistoryInterface {
 
-	ret := newQWebHistoryInterface(C.QWebHistoryInterface_new())
-	ret.isSubclass = true
-	return ret
+	return newQWebHistoryInterface(C.QWebHistoryInterface_new())
 }
 
 // NewQWebHistoryInterface2 constructs a new QWebHistoryInterface object.
 func NewQWebHistoryInterface2(parent *qt.QObject) *QWebHistoryInterface {
 
-	ret := newQWebHistoryInterface(C.QWebHistoryInterface_new2((*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQWebHistoryInterface(C.QWebHistoryInterface_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QWebHistoryInterface) MetaObject() *qt.QMetaObject {
@@ -164,10 +159,10 @@ func QWebHistoryInterface_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 func (this *QWebHistoryInterface) OnHistoryContains(slot func(url string) bool) {
-	if !this.isSubclass {
+	ok := C.QWebHistoryInterface_override_virtual_HistoryContains(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebHistoryInterface_override_virtual_HistoryContains(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebHistoryInterface_HistoryContains
@@ -189,10 +184,10 @@ func miqt_exec_callback_QWebHistoryInterface_HistoryContains(self *C.QWebHistory
 
 }
 func (this *QWebHistoryInterface) OnAddHistoryEntry(slot func(url string)) {
-	if !this.isSubclass {
+	ok := C.QWebHistoryInterface_override_virtual_AddHistoryEntry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebHistoryInterface_override_virtual_AddHistoryEntry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebHistoryInterface_AddHistoryEntry
@@ -218,10 +213,10 @@ func (this *QWebHistoryInterface) callVirtualBase_Event(event *qt.QEvent) bool {
 
 }
 func (this *QWebHistoryInterface) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QWebHistoryInterface_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebHistoryInterface_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebHistoryInterface_Event
@@ -246,10 +241,10 @@ func (this *QWebHistoryInterface) callVirtualBase_EventFilter(watched *qt.QObjec
 
 }
 func (this *QWebHistoryInterface) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QWebHistoryInterface_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebHistoryInterface_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebHistoryInterface_EventFilter
@@ -276,10 +271,10 @@ func (this *QWebHistoryInterface) callVirtualBase_TimerEvent(event *qt.QTimerEve
 
 }
 func (this *QWebHistoryInterface) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebHistoryInterface_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebHistoryInterface_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebHistoryInterface_TimerEvent
@@ -302,10 +297,10 @@ func (this *QWebHistoryInterface) callVirtualBase_ChildEvent(event *qt.QChildEve
 
 }
 func (this *QWebHistoryInterface) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebHistoryInterface_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebHistoryInterface_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebHistoryInterface_ChildEvent
@@ -328,10 +323,10 @@ func (this *QWebHistoryInterface) callVirtualBase_CustomEvent(event *qt.QEvent) 
 
 }
 func (this *QWebHistoryInterface) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebHistoryInterface_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebHistoryInterface_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebHistoryInterface_CustomEvent
@@ -354,10 +349,10 @@ func (this *QWebHistoryInterface) callVirtualBase_ConnectNotify(signal *qt.QMeta
 
 }
 func (this *QWebHistoryInterface) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QWebHistoryInterface_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebHistoryInterface_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebHistoryInterface_ConnectNotify
@@ -380,10 +375,10 @@ func (this *QWebHistoryInterface) callVirtualBase_DisconnectNotify(signal *qt.QM
 
 }
 func (this *QWebHistoryInterface) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QWebHistoryInterface_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebHistoryInterface_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebHistoryInterface_DisconnectNotify

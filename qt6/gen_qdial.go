@@ -15,8 +15,7 @@ import (
 )
 
 type QDial struct {
-	h          *C.QDial
-	isSubclass bool
+	h *C.QDial
 	*QAbstractSlider
 }
 
@@ -54,17 +53,13 @@ func UnsafeNewQDial(h unsafe.Pointer) *QDial {
 // NewQDial constructs a new QDial object.
 func NewQDial(parent *QWidget) *QDial {
 
-	ret := newQDial(C.QDial_new(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQDial(C.QDial_new(parent.cPointer()))
 }
 
 // NewQDial2 constructs a new QDial object.
 func NewQDial2() *QDial {
 
-	ret := newQDial(C.QDial_new2())
-	ret.isSubclass = true
-	return ret
+	return newQDial(C.QDial_new2())
 }
 
 func (this *QDial) MetaObject() *QMetaObject {
@@ -156,10 +151,10 @@ func (this *QDial) callVirtualBase_SizeHint() *QSize {
 
 }
 func (this *QDial) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	if !this.isSubclass {
+	ok := C.QDial_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDial_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDial_SizeHint
@@ -183,10 +178,10 @@ func (this *QDial) callVirtualBase_MinimumSizeHint() *QSize {
 
 }
 func (this *QDial) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
-	if !this.isSubclass {
+	ok := C.QDial_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDial_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDial_MinimumSizeHint
@@ -208,10 +203,10 @@ func (this *QDial) callVirtualBase_Event(e *QEvent) bool {
 
 }
 func (this *QDial) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QDial_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDial_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDial_Event
@@ -236,10 +231,10 @@ func (this *QDial) callVirtualBase_ResizeEvent(re *QResizeEvent) {
 
 }
 func (this *QDial) OnResizeEvent(slot func(super func(re *QResizeEvent), re *QResizeEvent)) {
-	if !this.isSubclass {
+	ok := C.QDial_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDial_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDial_ResizeEvent
@@ -262,10 +257,10 @@ func (this *QDial) callVirtualBase_PaintEvent(pe *QPaintEvent) {
 
 }
 func (this *QDial) OnPaintEvent(slot func(super func(pe *QPaintEvent), pe *QPaintEvent)) {
-	if !this.isSubclass {
+	ok := C.QDial_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDial_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDial_PaintEvent
@@ -288,10 +283,10 @@ func (this *QDial) callVirtualBase_MousePressEvent(me *QMouseEvent) {
 
 }
 func (this *QDial) OnMousePressEvent(slot func(super func(me *QMouseEvent), me *QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QDial_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDial_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDial_MousePressEvent
@@ -314,10 +309,10 @@ func (this *QDial) callVirtualBase_MouseReleaseEvent(me *QMouseEvent) {
 
 }
 func (this *QDial) OnMouseReleaseEvent(slot func(super func(me *QMouseEvent), me *QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QDial_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDial_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDial_MouseReleaseEvent
@@ -340,10 +335,10 @@ func (this *QDial) callVirtualBase_MouseMoveEvent(me *QMouseEvent) {
 
 }
 func (this *QDial) OnMouseMoveEvent(slot func(super func(me *QMouseEvent), me *QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QDial_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDial_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDial_MouseMoveEvent
@@ -366,10 +361,10 @@ func (this *QDial) callVirtualBase_SliderChange(change QAbstractSlider__SliderCh
 
 }
 func (this *QDial) OnSliderChange(slot func(super func(change QAbstractSlider__SliderChange), change QAbstractSlider__SliderChange)) {
-	if !this.isSubclass {
+	ok := C.QDial_override_virtual_SliderChange(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDial_override_virtual_SliderChange(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDial_SliderChange
@@ -392,10 +387,10 @@ func (this *QDial) callVirtualBase_InitStyleOption(option *QStyleOptionSlider) {
 
 }
 func (this *QDial) OnInitStyleOption(slot func(super func(option *QStyleOptionSlider), option *QStyleOptionSlider)) {
-	if !this.isSubclass {
+	ok := C.QDial_override_virtual_InitStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDial_override_virtual_InitStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDial_InitStyleOption
@@ -418,10 +413,10 @@ func (this *QDial) callVirtualBase_KeyPressEvent(ev *QKeyEvent) {
 
 }
 func (this *QDial) OnKeyPressEvent(slot func(super func(ev *QKeyEvent), ev *QKeyEvent)) {
-	if !this.isSubclass {
+	ok := C.QDial_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDial_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDial_KeyPressEvent
@@ -444,10 +439,10 @@ func (this *QDial) callVirtualBase_TimerEvent(param1 *QTimerEvent) {
 
 }
 func (this *QDial) OnTimerEvent(slot func(super func(param1 *QTimerEvent), param1 *QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QDial_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDial_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDial_TimerEvent
@@ -470,10 +465,10 @@ func (this *QDial) callVirtualBase_WheelEvent(e *QWheelEvent) {
 
 }
 func (this *QDial) OnWheelEvent(slot func(super func(e *QWheelEvent), e *QWheelEvent)) {
-	if !this.isSubclass {
+	ok := C.QDial_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDial_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDial_WheelEvent
@@ -496,10 +491,10 @@ func (this *QDial) callVirtualBase_ChangeEvent(e *QEvent) {
 
 }
 func (this *QDial) OnChangeEvent(slot func(super func(e *QEvent), e *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QDial_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDial_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDial_ChangeEvent

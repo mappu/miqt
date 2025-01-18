@@ -21,8 +21,7 @@ const (
 )
 
 type QRegion struct {
-	h          *C.QRegion
-	isSubclass bool
+	h *C.QRegion
 }
 
 func (this *QRegion) cPointer() *C.QRegion {
@@ -56,57 +55,43 @@ func UnsafeNewQRegion(h unsafe.Pointer) *QRegion {
 // NewQRegion constructs a new QRegion object.
 func NewQRegion() *QRegion {
 
-	ret := newQRegion(C.QRegion_new())
-	ret.isSubclass = true
-	return ret
+	return newQRegion(C.QRegion_new())
 }
 
 // NewQRegion2 constructs a new QRegion object.
 func NewQRegion2(x int, y int, w int, h int) *QRegion {
 
-	ret := newQRegion(C.QRegion_new2((C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h)))
-	ret.isSubclass = true
-	return ret
+	return newQRegion(C.QRegion_new2((C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h)))
 }
 
 // NewQRegion3 constructs a new QRegion object.
 func NewQRegion3(r *QRect) *QRegion {
 
-	ret := newQRegion(C.QRegion_new3(r.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQRegion(C.QRegion_new3(r.cPointer()))
 }
 
 // NewQRegion4 constructs a new QRegion object.
 func NewQRegion4(region *QRegion) *QRegion {
 
-	ret := newQRegion(C.QRegion_new4(region.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQRegion(C.QRegion_new4(region.cPointer()))
 }
 
 // NewQRegion5 constructs a new QRegion object.
 func NewQRegion5(bitmap *QBitmap) *QRegion {
 
-	ret := newQRegion(C.QRegion_new5(bitmap.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQRegion(C.QRegion_new5(bitmap.cPointer()))
 }
 
 // NewQRegion6 constructs a new QRegion object.
 func NewQRegion6(x int, y int, w int, h int, t QRegion__RegionType) *QRegion {
 
-	ret := newQRegion(C.QRegion_new6((C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(t)))
-	ret.isSubclass = true
-	return ret
+	return newQRegion(C.QRegion_new6((C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(t)))
 }
 
 // NewQRegion7 constructs a new QRegion object.
 func NewQRegion7(r *QRect, t QRegion__RegionType) *QRegion {
 
-	ret := newQRegion(C.QRegion_new7(r.cPointer(), (C.int)(t)))
-	ret.isSubclass = true
-	return ret
+	return newQRegion(C.QRegion_new7(r.cPointer(), (C.int)(t)))
 }
 
 func (this *QRegion) OperatorAssign(param1 *QRegion) {

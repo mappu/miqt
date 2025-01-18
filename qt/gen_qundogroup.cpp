@@ -485,56 +485,98 @@ QAction* QUndoGroup_CreateRedoAction2(const QUndoGroup* self, QObject* parent, s
 	return self->createRedoAction(parent, prefix_QString);
 }
 
-void QUndoGroup_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoGroup*>( (QUndoGroup*)(self) )->handle__Event = slot;
+bool QUndoGroup_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQUndoGroup* self_cast = dynamic_cast<MiqtVirtualQUndoGroup*>( (QUndoGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QUndoGroup_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQUndoGroup*)(self) )->virtualbase_Event(event);
 }
 
-void QUndoGroup_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoGroup*>( (QUndoGroup*)(self) )->handle__EventFilter = slot;
+bool QUndoGroup_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQUndoGroup* self_cast = dynamic_cast<MiqtVirtualQUndoGroup*>( (QUndoGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QUndoGroup_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQUndoGroup*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QUndoGroup_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoGroup*>( (QUndoGroup*)(self) )->handle__TimerEvent = slot;
+bool QUndoGroup_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQUndoGroup* self_cast = dynamic_cast<MiqtVirtualQUndoGroup*>( (QUndoGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QUndoGroup_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQUndoGroup*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QUndoGroup_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoGroup*>( (QUndoGroup*)(self) )->handle__ChildEvent = slot;
+bool QUndoGroup_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQUndoGroup* self_cast = dynamic_cast<MiqtVirtualQUndoGroup*>( (QUndoGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QUndoGroup_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQUndoGroup*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QUndoGroup_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoGroup*>( (QUndoGroup*)(self) )->handle__CustomEvent = slot;
+bool QUndoGroup_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQUndoGroup* self_cast = dynamic_cast<MiqtVirtualQUndoGroup*>( (QUndoGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QUndoGroup_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQUndoGroup*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QUndoGroup_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoGroup*>( (QUndoGroup*)(self) )->handle__ConnectNotify = slot;
+bool QUndoGroup_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQUndoGroup* self_cast = dynamic_cast<MiqtVirtualQUndoGroup*>( (QUndoGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QUndoGroup_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQUndoGroup*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QUndoGroup_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoGroup*>( (QUndoGroup*)(self) )->handle__DisconnectNotify = slot;
+bool QUndoGroup_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQUndoGroup* self_cast = dynamic_cast<MiqtVirtualQUndoGroup*>( (QUndoGroup*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QUndoGroup_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

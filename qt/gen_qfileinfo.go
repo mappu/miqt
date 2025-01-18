@@ -14,8 +14,7 @@ import (
 )
 
 type QFileInfo struct {
-	h          *C.QFileInfo
-	isSubclass bool
+	h *C.QFileInfo
 }
 
 func (this *QFileInfo) cPointer() *C.QFileInfo {
@@ -49,9 +48,7 @@ func UnsafeNewQFileInfo(h unsafe.Pointer) *QFileInfo {
 // NewQFileInfo constructs a new QFileInfo object.
 func NewQFileInfo() *QFileInfo {
 
-	ret := newQFileInfo(C.QFileInfo_new())
-	ret.isSubclass = true
-	return ret
+	return newQFileInfo(C.QFileInfo_new())
 }
 
 // NewQFileInfo2 constructs a new QFileInfo object.
@@ -61,17 +58,13 @@ func NewQFileInfo2(file string) *QFileInfo {
 	file_ms.len = C.size_t(len(file))
 	defer C.free(unsafe.Pointer(file_ms.data))
 
-	ret := newQFileInfo(C.QFileInfo_new2(file_ms))
-	ret.isSubclass = true
-	return ret
+	return newQFileInfo(C.QFileInfo_new2(file_ms))
 }
 
 // NewQFileInfo3 constructs a new QFileInfo object.
 func NewQFileInfo3(file *QFile) *QFileInfo {
 
-	ret := newQFileInfo(C.QFileInfo_new3(file.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQFileInfo(C.QFileInfo_new3(file.cPointer()))
 }
 
 // NewQFileInfo4 constructs a new QFileInfo object.
@@ -81,17 +74,13 @@ func NewQFileInfo4(dir *QDir, file string) *QFileInfo {
 	file_ms.len = C.size_t(len(file))
 	defer C.free(unsafe.Pointer(file_ms.data))
 
-	ret := newQFileInfo(C.QFileInfo_new4(dir.cPointer(), file_ms))
-	ret.isSubclass = true
-	return ret
+	return newQFileInfo(C.QFileInfo_new4(dir.cPointer(), file_ms))
 }
 
 // NewQFileInfo5 constructs a new QFileInfo object.
 func NewQFileInfo5(fileinfo *QFileInfo) *QFileInfo {
 
-	ret := newQFileInfo(C.QFileInfo_new5(fileinfo.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQFileInfo(C.QFileInfo_new5(fileinfo.cPointer()))
 }
 
 func (this *QFileInfo) OperatorAssign(fileinfo *QFileInfo) {

@@ -14,8 +14,7 @@ import (
 )
 
 type QStylePainter struct {
-	h          *C.QStylePainter
-	isSubclass bool
+	h *C.QStylePainter
 	*QPainter
 }
 
@@ -53,25 +52,19 @@ func UnsafeNewQStylePainter(h unsafe.Pointer) *QStylePainter {
 // NewQStylePainter constructs a new QStylePainter object.
 func NewQStylePainter(w *QWidget) *QStylePainter {
 
-	ret := newQStylePainter(C.QStylePainter_new(w.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStylePainter(C.QStylePainter_new(w.cPointer()))
 }
 
 // NewQStylePainter2 constructs a new QStylePainter object.
 func NewQStylePainter2() *QStylePainter {
 
-	ret := newQStylePainter(C.QStylePainter_new2())
-	ret.isSubclass = true
-	return ret
+	return newQStylePainter(C.QStylePainter_new2())
 }
 
 // NewQStylePainter3 constructs a new QStylePainter object.
 func NewQStylePainter3(pd *QPaintDevice, w *QWidget) *QStylePainter {
 
-	ret := newQStylePainter(C.QStylePainter_new3(pd.cPointer(), w.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStylePainter(C.QStylePainter_new3(pd.cPointer(), w.cPointer()))
 }
 
 func (this *QStylePainter) Begin(w *QWidget) bool {

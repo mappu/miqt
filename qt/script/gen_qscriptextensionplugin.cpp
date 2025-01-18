@@ -377,64 +377,118 @@ struct miqt_string QScriptExtensionPlugin_TrUtf83(const char* s, const char* c, 
 	return _ms;
 }
 
-void QScriptExtensionPlugin_override_virtual_Keys(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptExtensionPlugin*>( (QScriptExtensionPlugin*)(self) )->handle__Keys = slot;
+bool QScriptExtensionPlugin_override_virtual_Keys(void* self, intptr_t slot) {
+	MiqtVirtualQScriptExtensionPlugin* self_cast = dynamic_cast<MiqtVirtualQScriptExtensionPlugin*>( (QScriptExtensionPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Keys = slot;
+	return true;
 }
 
-void QScriptExtensionPlugin_override_virtual_Initialize(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptExtensionPlugin*>( (QScriptExtensionPlugin*)(self) )->handle__Initialize = slot;
+bool QScriptExtensionPlugin_override_virtual_Initialize(void* self, intptr_t slot) {
+	MiqtVirtualQScriptExtensionPlugin* self_cast = dynamic_cast<MiqtVirtualQScriptExtensionPlugin*>( (QScriptExtensionPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Initialize = slot;
+	return true;
 }
 
-void QScriptExtensionPlugin_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptExtensionPlugin*>( (QScriptExtensionPlugin*)(self) )->handle__Event = slot;
+bool QScriptExtensionPlugin_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQScriptExtensionPlugin* self_cast = dynamic_cast<MiqtVirtualQScriptExtensionPlugin*>( (QScriptExtensionPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QScriptExtensionPlugin_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQScriptExtensionPlugin*)(self) )->virtualbase_Event(event);
 }
 
-void QScriptExtensionPlugin_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptExtensionPlugin*>( (QScriptExtensionPlugin*)(self) )->handle__EventFilter = slot;
+bool QScriptExtensionPlugin_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQScriptExtensionPlugin* self_cast = dynamic_cast<MiqtVirtualQScriptExtensionPlugin*>( (QScriptExtensionPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QScriptExtensionPlugin_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQScriptExtensionPlugin*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QScriptExtensionPlugin_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptExtensionPlugin*>( (QScriptExtensionPlugin*)(self) )->handle__TimerEvent = slot;
+bool QScriptExtensionPlugin_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQScriptExtensionPlugin* self_cast = dynamic_cast<MiqtVirtualQScriptExtensionPlugin*>( (QScriptExtensionPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QScriptExtensionPlugin_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQScriptExtensionPlugin*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QScriptExtensionPlugin_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptExtensionPlugin*>( (QScriptExtensionPlugin*)(self) )->handle__ChildEvent = slot;
+bool QScriptExtensionPlugin_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQScriptExtensionPlugin* self_cast = dynamic_cast<MiqtVirtualQScriptExtensionPlugin*>( (QScriptExtensionPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QScriptExtensionPlugin_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQScriptExtensionPlugin*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QScriptExtensionPlugin_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptExtensionPlugin*>( (QScriptExtensionPlugin*)(self) )->handle__CustomEvent = slot;
+bool QScriptExtensionPlugin_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQScriptExtensionPlugin* self_cast = dynamic_cast<MiqtVirtualQScriptExtensionPlugin*>( (QScriptExtensionPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QScriptExtensionPlugin_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQScriptExtensionPlugin*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QScriptExtensionPlugin_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptExtensionPlugin*>( (QScriptExtensionPlugin*)(self) )->handle__ConnectNotify = slot;
+bool QScriptExtensionPlugin_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQScriptExtensionPlugin* self_cast = dynamic_cast<MiqtVirtualQScriptExtensionPlugin*>( (QScriptExtensionPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QScriptExtensionPlugin_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQScriptExtensionPlugin*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QScriptExtensionPlugin_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptExtensionPlugin*>( (QScriptExtensionPlugin*)(self) )->handle__DisconnectNotify = slot;
+bool QScriptExtensionPlugin_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQScriptExtensionPlugin* self_cast = dynamic_cast<MiqtVirtualQScriptExtensionPlugin*>( (QScriptExtensionPlugin*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QScriptExtensionPlugin_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

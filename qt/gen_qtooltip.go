@@ -14,8 +14,7 @@ import (
 )
 
 type QToolTip struct {
-	h          *C.QToolTip
-	isSubclass bool
+	h *C.QToolTip
 }
 
 func (this *QToolTip) cPointer() *C.QToolTip {

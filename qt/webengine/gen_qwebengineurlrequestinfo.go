@@ -53,8 +53,7 @@ const (
 )
 
 type QWebEngineUrlRequestInfo struct {
-	h          *C.QWebEngineUrlRequestInfo
-	isSubclass bool
+	h *C.QWebEngineUrlRequestInfo
 }
 
 func (this *QWebEngineUrlRequestInfo) cPointer() *C.QWebEngineUrlRequestInfo {

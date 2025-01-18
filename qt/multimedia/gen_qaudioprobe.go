@@ -16,8 +16,7 @@ import (
 )
 
 type QAudioProbe struct {
-	h          *C.QAudioProbe
-	isSubclass bool
+	h *C.QAudioProbe
 	*qt.QObject
 }
 
@@ -55,17 +54,13 @@ func UnsafeNewQAudioProbe(h unsafe.Pointer) *QAudioProbe {
 // NewQAudioProbe constructs a new QAudioProbe object.
 func NewQAudioProbe() *QAudioProbe {
 
-	ret := newQAudioProbe(C.QAudioProbe_new())
-	ret.isSubclass = true
-	return ret
+	return newQAudioProbe(C.QAudioProbe_new())
 }
 
 // NewQAudioProbe2 constructs a new QAudioProbe object.
 func NewQAudioProbe2(parent *qt.QObject) *QAudioProbe {
 
-	ret := newQAudioProbe(C.QAudioProbe_new2((*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQAudioProbe(C.QAudioProbe_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QAudioProbe) MetaObject() *qt.QMetaObject {
@@ -195,10 +190,10 @@ func (this *QAudioProbe) callVirtualBase_Event(event *qt.QEvent) bool {
 
 }
 func (this *QAudioProbe) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QAudioProbe_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAudioProbe_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioProbe_Event
@@ -223,10 +218,10 @@ func (this *QAudioProbe) callVirtualBase_EventFilter(watched *qt.QObject, event 
 
 }
 func (this *QAudioProbe) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QAudioProbe_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAudioProbe_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioProbe_EventFilter
@@ -253,10 +248,10 @@ func (this *QAudioProbe) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
 }
 func (this *QAudioProbe) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QAudioProbe_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAudioProbe_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioProbe_TimerEvent
@@ -279,10 +274,10 @@ func (this *QAudioProbe) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
 }
 func (this *QAudioProbe) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QAudioProbe_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAudioProbe_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioProbe_ChildEvent
@@ -305,10 +300,10 @@ func (this *QAudioProbe) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
 }
 func (this *QAudioProbe) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	if !this.isSubclass {
+	ok := C.QAudioProbe_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAudioProbe_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioProbe_CustomEvent
@@ -331,10 +326,10 @@ func (this *QAudioProbe) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 
 }
 func (this *QAudioProbe) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QAudioProbe_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAudioProbe_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioProbe_ConnectNotify
@@ -357,10 +352,10 @@ func (this *QAudioProbe) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod
 
 }
 func (this *QAudioProbe) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QAudioProbe_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAudioProbe_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioProbe_DisconnectNotify

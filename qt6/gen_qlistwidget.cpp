@@ -503,48 +503,84 @@ int QListWidgetItem_Type(const QListWidgetItem* self) {
 	return self->type();
 }
 
-void QListWidgetItem_override_virtual_Clone(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidgetItem*>( (QListWidgetItem*)(self) )->handle__Clone = slot;
+bool QListWidgetItem_override_virtual_Clone(void* self, intptr_t slot) {
+	MiqtVirtualQListWidgetItem* self_cast = dynamic_cast<MiqtVirtualQListWidgetItem*>( (QListWidgetItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Clone = slot;
+	return true;
 }
 
 QListWidgetItem* QListWidgetItem_virtualbase_Clone(const void* self) {
 	return ( (const MiqtVirtualQListWidgetItem*)(self) )->virtualbase_Clone();
 }
 
-void QListWidgetItem_override_virtual_Data(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidgetItem*>( (QListWidgetItem*)(self) )->handle__Data = slot;
+bool QListWidgetItem_override_virtual_Data(void* self, intptr_t slot) {
+	MiqtVirtualQListWidgetItem* self_cast = dynamic_cast<MiqtVirtualQListWidgetItem*>( (QListWidgetItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Data = slot;
+	return true;
 }
 
 QVariant* QListWidgetItem_virtualbase_Data(const void* self, int role) {
 	return ( (const MiqtVirtualQListWidgetItem*)(self) )->virtualbase_Data(role);
 }
 
-void QListWidgetItem_override_virtual_SetData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidgetItem*>( (QListWidgetItem*)(self) )->handle__SetData = slot;
+bool QListWidgetItem_override_virtual_SetData(void* self, intptr_t slot) {
+	MiqtVirtualQListWidgetItem* self_cast = dynamic_cast<MiqtVirtualQListWidgetItem*>( (QListWidgetItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetData = slot;
+	return true;
 }
 
 void QListWidgetItem_virtualbase_SetData(void* self, int role, QVariant* value) {
 	( (MiqtVirtualQListWidgetItem*)(self) )->virtualbase_SetData(role, value);
 }
 
-void QListWidgetItem_override_virtual_OperatorLesser(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidgetItem*>( (QListWidgetItem*)(self) )->handle__OperatorLesser = slot;
+bool QListWidgetItem_override_virtual_OperatorLesser(void* self, intptr_t slot) {
+	MiqtVirtualQListWidgetItem* self_cast = dynamic_cast<MiqtVirtualQListWidgetItem*>( (QListWidgetItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__OperatorLesser = slot;
+	return true;
 }
 
 bool QListWidgetItem_virtualbase_OperatorLesser(const void* self, QListWidgetItem* other) {
 	return ( (const MiqtVirtualQListWidgetItem*)(self) )->virtualbase_OperatorLesser(other);
 }
 
-void QListWidgetItem_override_virtual_Read(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidgetItem*>( (QListWidgetItem*)(self) )->handle__Read = slot;
+bool QListWidgetItem_override_virtual_Read(void* self, intptr_t slot) {
+	MiqtVirtualQListWidgetItem* self_cast = dynamic_cast<MiqtVirtualQListWidgetItem*>( (QListWidgetItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Read = slot;
+	return true;
 }
 
 void QListWidgetItem_virtualbase_Read(void* self, QDataStream* in) {
 	( (MiqtVirtualQListWidgetItem*)(self) )->virtualbase_Read(in);
 }
 
-void QListWidgetItem_override_virtual_Write(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidgetItem*>( (QListWidgetItem*)(self) )->handle__Write = slot;
+bool QListWidgetItem_override_virtual_Write(void* self, intptr_t slot) {
+	MiqtVirtualQListWidgetItem* self_cast = dynamic_cast<MiqtVirtualQListWidgetItem*>( (QListWidgetItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Write = slot;
+	return true;
 }
 
 void QListWidgetItem_virtualbase_Write(const void* self, QDataStream* out) {
@@ -1944,304 +1980,532 @@ void QListWidget_ScrollToItem2(QListWidget* self, QListWidgetItem* item, int hin
 	self->scrollToItem(item, static_cast<QAbstractItemView::ScrollHint>(hint));
 }
 
-void QListWidget_override_virtual_SetSelectionModel(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__SetSelectionModel = slot;
+bool QListWidget_override_virtual_SetSelectionModel(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetSelectionModel = slot;
+	return true;
 }
 
 void QListWidget_virtualbase_SetSelectionModel(void* self, QItemSelectionModel* selectionModel) {
 	( (MiqtVirtualQListWidget*)(self) )->virtualbase_SetSelectionModel(selectionModel);
 }
 
-void QListWidget_override_virtual_DropEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__DropEvent = slot;
+bool QListWidget_override_virtual_DropEvent(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropEvent = slot;
+	return true;
 }
 
 void QListWidget_virtualbase_DropEvent(void* self, QDropEvent* event) {
 	( (MiqtVirtualQListWidget*)(self) )->virtualbase_DropEvent(event);
 }
 
-void QListWidget_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__Event = slot;
+bool QListWidget_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QListWidget_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQListWidget*)(self) )->virtualbase_Event(e);
 }
 
-void QListWidget_override_virtual_MimeTypes(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__MimeTypes = slot;
+bool QListWidget_override_virtual_MimeTypes(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MimeTypes = slot;
+	return true;
 }
 
 struct miqt_array /* of struct miqt_string */  QListWidget_virtualbase_MimeTypes(const void* self) {
 	return ( (const MiqtVirtualQListWidget*)(self) )->virtualbase_MimeTypes();
 }
 
-void QListWidget_override_virtual_MimeData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__MimeData = slot;
+bool QListWidget_override_virtual_MimeData(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MimeData = slot;
+	return true;
 }
 
 QMimeData* QListWidget_virtualbase_MimeData(const void* self, struct miqt_array /* of QListWidgetItem* */  items) {
 	return ( (const MiqtVirtualQListWidget*)(self) )->virtualbase_MimeData(items);
 }
 
-void QListWidget_override_virtual_DropMimeData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__DropMimeData = slot;
+bool QListWidget_override_virtual_DropMimeData(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropMimeData = slot;
+	return true;
 }
 
 bool QListWidget_virtualbase_DropMimeData(void* self, int index, QMimeData* data, int action) {
 	return ( (MiqtVirtualQListWidget*)(self) )->virtualbase_DropMimeData(index, data, action);
 }
 
-void QListWidget_override_virtual_SupportedDropActions(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__SupportedDropActions = slot;
+bool QListWidget_override_virtual_SupportedDropActions(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SupportedDropActions = slot;
+	return true;
 }
 
 int QListWidget_virtualbase_SupportedDropActions(const void* self) {
 	return ( (const MiqtVirtualQListWidget*)(self) )->virtualbase_SupportedDropActions();
 }
 
-void QListWidget_override_virtual_VisualRect(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__VisualRect = slot;
+bool QListWidget_override_virtual_VisualRect(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__VisualRect = slot;
+	return true;
 }
 
 QRect* QListWidget_virtualbase_VisualRect(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQListWidget*)(self) )->virtualbase_VisualRect(index);
 }
 
-void QListWidget_override_virtual_ScrollTo(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__ScrollTo = slot;
+bool QListWidget_override_virtual_ScrollTo(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ScrollTo = slot;
+	return true;
 }
 
 void QListWidget_virtualbase_ScrollTo(void* self, QModelIndex* index, int hint) {
 	( (MiqtVirtualQListWidget*)(self) )->virtualbase_ScrollTo(index, hint);
 }
 
-void QListWidget_override_virtual_IndexAt(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__IndexAt = slot;
+bool QListWidget_override_virtual_IndexAt(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IndexAt = slot;
+	return true;
 }
 
 QModelIndex* QListWidget_virtualbase_IndexAt(const void* self, QPoint* p) {
 	return ( (const MiqtVirtualQListWidget*)(self) )->virtualbase_IndexAt(p);
 }
 
-void QListWidget_override_virtual_DoItemsLayout(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__DoItemsLayout = slot;
+bool QListWidget_override_virtual_DoItemsLayout(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DoItemsLayout = slot;
+	return true;
 }
 
 void QListWidget_virtualbase_DoItemsLayout(void* self) {
 	( (MiqtVirtualQListWidget*)(self) )->virtualbase_DoItemsLayout();
 }
 
-void QListWidget_override_virtual_Reset(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__Reset = slot;
+bool QListWidget_override_virtual_Reset(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Reset = slot;
+	return true;
 }
 
 void QListWidget_virtualbase_Reset(void* self) {
 	( (MiqtVirtualQListWidget*)(self) )->virtualbase_Reset();
 }
 
-void QListWidget_override_virtual_SetRootIndex(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__SetRootIndex = slot;
+bool QListWidget_override_virtual_SetRootIndex(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetRootIndex = slot;
+	return true;
 }
 
 void QListWidget_virtualbase_SetRootIndex(void* self, QModelIndex* index) {
 	( (MiqtVirtualQListWidget*)(self) )->virtualbase_SetRootIndex(index);
 }
 
-void QListWidget_override_virtual_ScrollContentsBy(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__ScrollContentsBy = slot;
+bool QListWidget_override_virtual_ScrollContentsBy(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ScrollContentsBy = slot;
+	return true;
 }
 
 void QListWidget_virtualbase_ScrollContentsBy(void* self, int dx, int dy) {
 	( (MiqtVirtualQListWidget*)(self) )->virtualbase_ScrollContentsBy(dx, dy);
 }
 
-void QListWidget_override_virtual_DataChanged(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__DataChanged = slot;
+bool QListWidget_override_virtual_DataChanged(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DataChanged = slot;
+	return true;
 }
 
 void QListWidget_virtualbase_DataChanged(void* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array /* of int */  roles) {
 	( (MiqtVirtualQListWidget*)(self) )->virtualbase_DataChanged(topLeft, bottomRight, roles);
 }
 
-void QListWidget_override_virtual_RowsInserted(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__RowsInserted = slot;
+bool QListWidget_override_virtual_RowsInserted(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RowsInserted = slot;
+	return true;
 }
 
 void QListWidget_virtualbase_RowsInserted(void* self, QModelIndex* parent, int start, int end) {
 	( (MiqtVirtualQListWidget*)(self) )->virtualbase_RowsInserted(parent, start, end);
 }
 
-void QListWidget_override_virtual_RowsAboutToBeRemoved(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__RowsAboutToBeRemoved = slot;
+bool QListWidget_override_virtual_RowsAboutToBeRemoved(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RowsAboutToBeRemoved = slot;
+	return true;
 }
 
 void QListWidget_virtualbase_RowsAboutToBeRemoved(void* self, QModelIndex* parent, int start, int end) {
 	( (MiqtVirtualQListWidget*)(self) )->virtualbase_RowsAboutToBeRemoved(parent, start, end);
 }
 
-void QListWidget_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__MouseMoveEvent = slot;
+bool QListWidget_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QListWidget_virtualbase_MouseMoveEvent(void* self, QMouseEvent* e) {
 	( (MiqtVirtualQListWidget*)(self) )->virtualbase_MouseMoveEvent(e);
 }
 
-void QListWidget_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__MouseReleaseEvent = slot;
+bool QListWidget_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QListWidget_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* e) {
 	( (MiqtVirtualQListWidget*)(self) )->virtualbase_MouseReleaseEvent(e);
 }
 
-void QListWidget_override_virtual_WheelEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__WheelEvent = slot;
+bool QListWidget_override_virtual_WheelEvent(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WheelEvent = slot;
+	return true;
 }
 
 void QListWidget_virtualbase_WheelEvent(void* self, QWheelEvent* e) {
 	( (MiqtVirtualQListWidget*)(self) )->virtualbase_WheelEvent(e);
 }
 
-void QListWidget_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__TimerEvent = slot;
+bool QListWidget_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QListWidget_virtualbase_TimerEvent(void* self, QTimerEvent* e) {
 	( (MiqtVirtualQListWidget*)(self) )->virtualbase_TimerEvent(e);
 }
 
-void QListWidget_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__ResizeEvent = slot;
+bool QListWidget_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QListWidget_virtualbase_ResizeEvent(void* self, QResizeEvent* e) {
 	( (MiqtVirtualQListWidget*)(self) )->virtualbase_ResizeEvent(e);
 }
 
-void QListWidget_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__DragMoveEvent = slot;
+bool QListWidget_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragMoveEvent = slot;
+	return true;
 }
 
 void QListWidget_virtualbase_DragMoveEvent(void* self, QDragMoveEvent* e) {
 	( (MiqtVirtualQListWidget*)(self) )->virtualbase_DragMoveEvent(e);
 }
 
-void QListWidget_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__DragLeaveEvent = slot;
+bool QListWidget_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragLeaveEvent = slot;
+	return true;
 }
 
 void QListWidget_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* e) {
 	( (MiqtVirtualQListWidget*)(self) )->virtualbase_DragLeaveEvent(e);
 }
 
-void QListWidget_override_virtual_StartDrag(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__StartDrag = slot;
+bool QListWidget_override_virtual_StartDrag(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__StartDrag = slot;
+	return true;
 }
 
 void QListWidget_virtualbase_StartDrag(void* self, int supportedActions) {
 	( (MiqtVirtualQListWidget*)(self) )->virtualbase_StartDrag(supportedActions);
 }
 
-void QListWidget_override_virtual_InitViewItemOption(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__InitViewItemOption = slot;
+bool QListWidget_override_virtual_InitViewItemOption(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitViewItemOption = slot;
+	return true;
 }
 
 void QListWidget_virtualbase_InitViewItemOption(const void* self, QStyleOptionViewItem* option) {
 	( (const MiqtVirtualQListWidget*)(self) )->virtualbase_InitViewItemOption(option);
 }
 
-void QListWidget_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__PaintEvent = slot;
+bool QListWidget_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QListWidget_virtualbase_PaintEvent(void* self, QPaintEvent* e) {
 	( (MiqtVirtualQListWidget*)(self) )->virtualbase_PaintEvent(e);
 }
 
-void QListWidget_override_virtual_HorizontalOffset(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__HorizontalOffset = slot;
+bool QListWidget_override_virtual_HorizontalOffset(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HorizontalOffset = slot;
+	return true;
 }
 
 int QListWidget_virtualbase_HorizontalOffset(const void* self) {
 	return ( (const MiqtVirtualQListWidget*)(self) )->virtualbase_HorizontalOffset();
 }
 
-void QListWidget_override_virtual_VerticalOffset(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__VerticalOffset = slot;
+bool QListWidget_override_virtual_VerticalOffset(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__VerticalOffset = slot;
+	return true;
 }
 
 int QListWidget_virtualbase_VerticalOffset(const void* self) {
 	return ( (const MiqtVirtualQListWidget*)(self) )->virtualbase_VerticalOffset();
 }
 
-void QListWidget_override_virtual_MoveCursor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__MoveCursor = slot;
+bool QListWidget_override_virtual_MoveCursor(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveCursor = slot;
+	return true;
 }
 
 QModelIndex* QListWidget_virtualbase_MoveCursor(void* self, int cursorAction, int modifiers) {
 	return ( (MiqtVirtualQListWidget*)(self) )->virtualbase_MoveCursor(cursorAction, modifiers);
 }
 
-void QListWidget_override_virtual_SetSelection(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__SetSelection = slot;
+bool QListWidget_override_virtual_SetSelection(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetSelection = slot;
+	return true;
 }
 
 void QListWidget_virtualbase_SetSelection(void* self, QRect* rect, int command) {
 	( (MiqtVirtualQListWidget*)(self) )->virtualbase_SetSelection(rect, command);
 }
 
-void QListWidget_override_virtual_VisualRegionForSelection(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__VisualRegionForSelection = slot;
+bool QListWidget_override_virtual_VisualRegionForSelection(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__VisualRegionForSelection = slot;
+	return true;
 }
 
 QRegion* QListWidget_virtualbase_VisualRegionForSelection(const void* self, QItemSelection* selection) {
 	return ( (const MiqtVirtualQListWidget*)(self) )->virtualbase_VisualRegionForSelection(selection);
 }
 
-void QListWidget_override_virtual_SelectedIndexes(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__SelectedIndexes = slot;
+bool QListWidget_override_virtual_SelectedIndexes(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SelectedIndexes = slot;
+	return true;
 }
 
 struct miqt_array /* of QModelIndex* */  QListWidget_virtualbase_SelectedIndexes(const void* self) {
 	return ( (const MiqtVirtualQListWidget*)(self) )->virtualbase_SelectedIndexes();
 }
 
-void QListWidget_override_virtual_UpdateGeometries(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__UpdateGeometries = slot;
+bool QListWidget_override_virtual_UpdateGeometries(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateGeometries = slot;
+	return true;
 }
 
 void QListWidget_virtualbase_UpdateGeometries(void* self) {
 	( (MiqtVirtualQListWidget*)(self) )->virtualbase_UpdateGeometries();
 }
 
-void QListWidget_override_virtual_IsIndexHidden(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__IsIndexHidden = slot;
+bool QListWidget_override_virtual_IsIndexHidden(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsIndexHidden = slot;
+	return true;
 }
 
 bool QListWidget_virtualbase_IsIndexHidden(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQListWidget*)(self) )->virtualbase_IsIndexHidden(index);
 }
 
-void QListWidget_override_virtual_SelectionChanged(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__SelectionChanged = slot;
+bool QListWidget_override_virtual_SelectionChanged(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SelectionChanged = slot;
+	return true;
 }
 
 void QListWidget_virtualbase_SelectionChanged(void* self, QItemSelection* selected, QItemSelection* deselected) {
 	( (MiqtVirtualQListWidget*)(self) )->virtualbase_SelectionChanged(selected, deselected);
 }
 
-void QListWidget_override_virtual_CurrentChanged(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__CurrentChanged = slot;
+bool QListWidget_override_virtual_CurrentChanged(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CurrentChanged = slot;
+	return true;
 }
 
 void QListWidget_virtualbase_CurrentChanged(void* self, QModelIndex* current, QModelIndex* previous) {
 	( (MiqtVirtualQListWidget*)(self) )->virtualbase_CurrentChanged(current, previous);
 }
 
-void QListWidget_override_virtual_ViewportSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) )->handle__ViewportSizeHint = slot;
+bool QListWidget_override_virtual_ViewportSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQListWidget* self_cast = dynamic_cast<MiqtVirtualQListWidget*>( (QListWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ViewportSizeHint = slot;
+	return true;
 }
 
 QSize* QListWidget_virtualbase_ViewportSizeHint(const void* self) {

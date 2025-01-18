@@ -47,15 +47,15 @@ const char* QsciLexerJavaScript_Keywords(const QsciLexerJavaScript* self, int se
 struct miqt_string QsciLexerJavaScript_Description(const QsciLexerJavaScript* self, int style);
 struct miqt_string QsciLexerJavaScript_Tr2(const char* s, const char* c);
 struct miqt_string QsciLexerJavaScript_Tr3(const char* s, const char* c, int n);
-void QsciLexerJavaScript_override_virtual_SetFoldAtElse(void* self, intptr_t slot);
+bool QsciLexerJavaScript_override_virtual_SetFoldAtElse(void* self, intptr_t slot);
 void QsciLexerJavaScript_virtualbase_SetFoldAtElse(void* self, bool fold);
-void QsciLexerJavaScript_override_virtual_SetFoldComments(void* self, intptr_t slot);
+bool QsciLexerJavaScript_override_virtual_SetFoldComments(void* self, intptr_t slot);
 void QsciLexerJavaScript_virtualbase_SetFoldComments(void* self, bool fold);
-void QsciLexerJavaScript_override_virtual_SetFoldCompact(void* self, intptr_t slot);
+bool QsciLexerJavaScript_override_virtual_SetFoldCompact(void* self, intptr_t slot);
 void QsciLexerJavaScript_virtualbase_SetFoldCompact(void* self, bool fold);
-void QsciLexerJavaScript_override_virtual_SetFoldPreprocessor(void* self, intptr_t slot);
+bool QsciLexerJavaScript_override_virtual_SetFoldPreprocessor(void* self, intptr_t slot);
 void QsciLexerJavaScript_virtualbase_SetFoldPreprocessor(void* self, bool fold);
-void QsciLexerJavaScript_override_virtual_SetStylePreprocessor(void* self, intptr_t slot);
+bool QsciLexerJavaScript_override_virtual_SetStylePreprocessor(void* self, intptr_t slot);
 void QsciLexerJavaScript_virtualbase_SetStylePreprocessor(void* self, bool style);
 void QsciLexerJavaScript_Delete(QsciLexerJavaScript* self);
 

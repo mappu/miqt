@@ -53,11 +53,11 @@ struct miqt_string QsciLexerXML_Tr2(const char* s, const char* c);
 struct miqt_string QsciLexerXML_Tr3(const char* s, const char* c, int n);
 struct miqt_string QsciLexerXML_TrUtf82(const char* s, const char* c);
 struct miqt_string QsciLexerXML_TrUtf83(const char* s, const char* c, int n);
-void QsciLexerXML_override_virtual_SetFoldCompact(void* self, intptr_t slot);
+bool QsciLexerXML_override_virtual_SetFoldCompact(void* self, intptr_t slot);
 void QsciLexerXML_virtualbase_SetFoldCompact(void* self, bool fold);
-void QsciLexerXML_override_virtual_SetFoldPreprocessor(void* self, intptr_t slot);
+bool QsciLexerXML_override_virtual_SetFoldPreprocessor(void* self, intptr_t slot);
 void QsciLexerXML_virtualbase_SetFoldPreprocessor(void* self, bool fold);
-void QsciLexerXML_override_virtual_SetCaseSensitiveTags(void* self, intptr_t slot);
+bool QsciLexerXML_override_virtual_SetCaseSensitiveTags(void* self, intptr_t slot);
 void QsciLexerXML_virtualbase_SetCaseSensitiveTags(void* self, bool sens);
 void QsciLexerXML_Delete(QsciLexerXML* self);
 

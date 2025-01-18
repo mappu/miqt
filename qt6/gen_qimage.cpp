@@ -861,48 +861,84 @@ struct miqt_string QImage_Text1(const QImage* self, struct miqt_string key) {
 	return _ms;
 }
 
-void QImage_override_virtual_DevType(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQImage*>( (QImage*)(self) )->handle__DevType = slot;
+bool QImage_override_virtual_DevType(void* self, intptr_t slot) {
+	MiqtVirtualQImage* self_cast = dynamic_cast<MiqtVirtualQImage*>( (QImage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DevType = slot;
+	return true;
 }
 
 int QImage_virtualbase_DevType(const void* self) {
 	return ( (const MiqtVirtualQImage*)(self) )->virtualbase_DevType();
 }
 
-void QImage_override_virtual_PaintEngine(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQImage*>( (QImage*)(self) )->handle__PaintEngine = slot;
+bool QImage_override_virtual_PaintEngine(void* self, intptr_t slot) {
+	MiqtVirtualQImage* self_cast = dynamic_cast<MiqtVirtualQImage*>( (QImage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEngine = slot;
+	return true;
 }
 
 QPaintEngine* QImage_virtualbase_PaintEngine(const void* self) {
 	return ( (const MiqtVirtualQImage*)(self) )->virtualbase_PaintEngine();
 }
 
-void QImage_override_virtual_Metric(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQImage*>( (QImage*)(self) )->handle__Metric = slot;
+bool QImage_override_virtual_Metric(void* self, intptr_t slot) {
+	MiqtVirtualQImage* self_cast = dynamic_cast<MiqtVirtualQImage*>( (QImage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Metric = slot;
+	return true;
 }
 
 int QImage_virtualbase_Metric(const void* self, int metric) {
 	return ( (const MiqtVirtualQImage*)(self) )->virtualbase_Metric(metric);
 }
 
-void QImage_override_virtual_InitPainter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQImage*>( (QImage*)(self) )->handle__InitPainter = slot;
+bool QImage_override_virtual_InitPainter(void* self, intptr_t slot) {
+	MiqtVirtualQImage* self_cast = dynamic_cast<MiqtVirtualQImage*>( (QImage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitPainter = slot;
+	return true;
 }
 
 void QImage_virtualbase_InitPainter(const void* self, QPainter* painter) {
 	( (const MiqtVirtualQImage*)(self) )->virtualbase_InitPainter(painter);
 }
 
-void QImage_override_virtual_Redirected(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQImage*>( (QImage*)(self) )->handle__Redirected = slot;
+bool QImage_override_virtual_Redirected(void* self, intptr_t slot) {
+	MiqtVirtualQImage* self_cast = dynamic_cast<MiqtVirtualQImage*>( (QImage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Redirected = slot;
+	return true;
 }
 
 QPaintDevice* QImage_virtualbase_Redirected(const void* self, QPoint* offset) {
 	return ( (const MiqtVirtualQImage*)(self) )->virtualbase_Redirected(offset);
 }
 
-void QImage_override_virtual_SharedPainter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQImage*>( (QImage*)(self) )->handle__SharedPainter = slot;
+bool QImage_override_virtual_SharedPainter(void* self, intptr_t slot) {
+	MiqtVirtualQImage* self_cast = dynamic_cast<MiqtVirtualQImage*>( (QImage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SharedPainter = slot;
+	return true;
 }
 
 QPainter* QImage_virtualbase_SharedPainter(const void* self) {

@@ -666,72 +666,126 @@ void QNetworkAccessManager_SetTransferTimeout1(QNetworkAccessManager* self, int 
 	self->setTransferTimeout(static_cast<int>(timeout));
 }
 
-void QNetworkAccessManager_override_virtual_SupportedSchemes(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQNetworkAccessManager*>( (QNetworkAccessManager*)(self) )->handle__SupportedSchemes = slot;
+bool QNetworkAccessManager_override_virtual_SupportedSchemes(void* self, intptr_t slot) {
+	MiqtVirtualQNetworkAccessManager* self_cast = dynamic_cast<MiqtVirtualQNetworkAccessManager*>( (QNetworkAccessManager*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SupportedSchemes = slot;
+	return true;
 }
 
 struct miqt_array /* of struct miqt_string */  QNetworkAccessManager_virtualbase_SupportedSchemes(const void* self) {
 	return ( (const MiqtVirtualQNetworkAccessManager*)(self) )->virtualbase_SupportedSchemes();
 }
 
-void QNetworkAccessManager_override_virtual_CreateRequest(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQNetworkAccessManager*>( (QNetworkAccessManager*)(self) )->handle__CreateRequest = slot;
+bool QNetworkAccessManager_override_virtual_CreateRequest(void* self, intptr_t slot) {
+	MiqtVirtualQNetworkAccessManager* self_cast = dynamic_cast<MiqtVirtualQNetworkAccessManager*>( (QNetworkAccessManager*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CreateRequest = slot;
+	return true;
 }
 
 QNetworkReply* QNetworkAccessManager_virtualbase_CreateRequest(void* self, int op, QNetworkRequest* request, QIODevice* outgoingData) {
 	return ( (MiqtVirtualQNetworkAccessManager*)(self) )->virtualbase_CreateRequest(op, request, outgoingData);
 }
 
-void QNetworkAccessManager_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQNetworkAccessManager*>( (QNetworkAccessManager*)(self) )->handle__Event = slot;
+bool QNetworkAccessManager_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQNetworkAccessManager* self_cast = dynamic_cast<MiqtVirtualQNetworkAccessManager*>( (QNetworkAccessManager*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QNetworkAccessManager_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQNetworkAccessManager*)(self) )->virtualbase_Event(event);
 }
 
-void QNetworkAccessManager_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQNetworkAccessManager*>( (QNetworkAccessManager*)(self) )->handle__EventFilter = slot;
+bool QNetworkAccessManager_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQNetworkAccessManager* self_cast = dynamic_cast<MiqtVirtualQNetworkAccessManager*>( (QNetworkAccessManager*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QNetworkAccessManager_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQNetworkAccessManager*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QNetworkAccessManager_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQNetworkAccessManager*>( (QNetworkAccessManager*)(self) )->handle__TimerEvent = slot;
+bool QNetworkAccessManager_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQNetworkAccessManager* self_cast = dynamic_cast<MiqtVirtualQNetworkAccessManager*>( (QNetworkAccessManager*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QNetworkAccessManager_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQNetworkAccessManager*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QNetworkAccessManager_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQNetworkAccessManager*>( (QNetworkAccessManager*)(self) )->handle__ChildEvent = slot;
+bool QNetworkAccessManager_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQNetworkAccessManager* self_cast = dynamic_cast<MiqtVirtualQNetworkAccessManager*>( (QNetworkAccessManager*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QNetworkAccessManager_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQNetworkAccessManager*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QNetworkAccessManager_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQNetworkAccessManager*>( (QNetworkAccessManager*)(self) )->handle__CustomEvent = slot;
+bool QNetworkAccessManager_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQNetworkAccessManager* self_cast = dynamic_cast<MiqtVirtualQNetworkAccessManager*>( (QNetworkAccessManager*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QNetworkAccessManager_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQNetworkAccessManager*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QNetworkAccessManager_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQNetworkAccessManager*>( (QNetworkAccessManager*)(self) )->handle__ConnectNotify = slot;
+bool QNetworkAccessManager_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQNetworkAccessManager* self_cast = dynamic_cast<MiqtVirtualQNetworkAccessManager*>( (QNetworkAccessManager*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QNetworkAccessManager_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQNetworkAccessManager*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QNetworkAccessManager_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQNetworkAccessManager*>( (QNetworkAccessManager*)(self) )->handle__DisconnectNotify = slot;
+bool QNetworkAccessManager_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQNetworkAccessManager* self_cast = dynamic_cast<MiqtVirtualQNetworkAccessManager*>( (QNetworkAccessManager*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QNetworkAccessManager_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

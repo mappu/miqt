@@ -14,8 +14,7 @@ import (
 )
 
 type QScopedPointerPodDeleter struct {
-	h          *C.QScopedPointerPodDeleter
-	isSubclass bool
+	h *C.QScopedPointerPodDeleter
 }
 
 func (this *QScopedPointerPodDeleter) cPointer() *C.QScopedPointerPodDeleter {

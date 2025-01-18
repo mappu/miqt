@@ -14,8 +14,7 @@ import (
 )
 
 type QBindingStatus struct {
-	h          *C.QBindingStatus
-	isSubclass bool
+	h *C.QBindingStatus
 }
 
 func (this *QBindingStatus) cPointer() *C.QBindingStatus {
@@ -61,8 +60,7 @@ func (this *QBindingStatus) GoGC() {
 }
 
 type QBindingStorage struct {
-	h          *C.QBindingStorage
-	isSubclass bool
+	h *C.QBindingStorage
 }
 
 func (this *QBindingStorage) cPointer() *C.QBindingStorage {
@@ -96,9 +94,7 @@ func UnsafeNewQBindingStorage(h unsafe.Pointer) *QBindingStorage {
 // NewQBindingStorage constructs a new QBindingStorage object.
 func NewQBindingStorage() *QBindingStorage {
 
-	ret := newQBindingStorage(C.QBindingStorage_new())
-	ret.isSubclass = true
-	return ret
+	return newQBindingStorage(C.QBindingStorage_new())
 }
 
 func (this *QBindingStorage) IsEmpty() bool {

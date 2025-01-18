@@ -776,104 +776,182 @@ struct miqt_array /* of QModelIndex* */  QItemSelectionModel_SelectedColumns1(co
 	return _out;
 }
 
-void QItemSelectionModel_override_virtual_SetCurrentIndex(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemSelectionModel*>( (QItemSelectionModel*)(self) )->handle__SetCurrentIndex = slot;
+bool QItemSelectionModel_override_virtual_SetCurrentIndex(void* self, intptr_t slot) {
+	MiqtVirtualQItemSelectionModel* self_cast = dynamic_cast<MiqtVirtualQItemSelectionModel*>( (QItemSelectionModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetCurrentIndex = slot;
+	return true;
 }
 
 void QItemSelectionModel_virtualbase_SetCurrentIndex(void* self, QModelIndex* index, int command) {
 	( (MiqtVirtualQItemSelectionModel*)(self) )->virtualbase_SetCurrentIndex(index, command);
 }
 
-void QItemSelectionModel_override_virtual_Select(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemSelectionModel*>( (QItemSelectionModel*)(self) )->handle__Select = slot;
+bool QItemSelectionModel_override_virtual_Select(void* self, intptr_t slot) {
+	MiqtVirtualQItemSelectionModel* self_cast = dynamic_cast<MiqtVirtualQItemSelectionModel*>( (QItemSelectionModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Select = slot;
+	return true;
 }
 
 void QItemSelectionModel_virtualbase_Select(void* self, QModelIndex* index, int command) {
 	( (MiqtVirtualQItemSelectionModel*)(self) )->virtualbase_Select(index, command);
 }
 
-void QItemSelectionModel_override_virtual_Select2(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemSelectionModel*>( (QItemSelectionModel*)(self) )->handle__Select2 = slot;
+bool QItemSelectionModel_override_virtual_Select2(void* self, intptr_t slot) {
+	MiqtVirtualQItemSelectionModel* self_cast = dynamic_cast<MiqtVirtualQItemSelectionModel*>( (QItemSelectionModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Select2 = slot;
+	return true;
 }
 
 void QItemSelectionModel_virtualbase_Select2(void* self, QItemSelection* selection, int command) {
 	( (MiqtVirtualQItemSelectionModel*)(self) )->virtualbase_Select2(selection, command);
 }
 
-void QItemSelectionModel_override_virtual_Clear(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemSelectionModel*>( (QItemSelectionModel*)(self) )->handle__Clear = slot;
+bool QItemSelectionModel_override_virtual_Clear(void* self, intptr_t slot) {
+	MiqtVirtualQItemSelectionModel* self_cast = dynamic_cast<MiqtVirtualQItemSelectionModel*>( (QItemSelectionModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Clear = slot;
+	return true;
 }
 
 void QItemSelectionModel_virtualbase_Clear(void* self) {
 	( (MiqtVirtualQItemSelectionModel*)(self) )->virtualbase_Clear();
 }
 
-void QItemSelectionModel_override_virtual_Reset(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemSelectionModel*>( (QItemSelectionModel*)(self) )->handle__Reset = slot;
+bool QItemSelectionModel_override_virtual_Reset(void* self, intptr_t slot) {
+	MiqtVirtualQItemSelectionModel* self_cast = dynamic_cast<MiqtVirtualQItemSelectionModel*>( (QItemSelectionModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Reset = slot;
+	return true;
 }
 
 void QItemSelectionModel_virtualbase_Reset(void* self) {
 	( (MiqtVirtualQItemSelectionModel*)(self) )->virtualbase_Reset();
 }
 
-void QItemSelectionModel_override_virtual_ClearCurrentIndex(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemSelectionModel*>( (QItemSelectionModel*)(self) )->handle__ClearCurrentIndex = slot;
+bool QItemSelectionModel_override_virtual_ClearCurrentIndex(void* self, intptr_t slot) {
+	MiqtVirtualQItemSelectionModel* self_cast = dynamic_cast<MiqtVirtualQItemSelectionModel*>( (QItemSelectionModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ClearCurrentIndex = slot;
+	return true;
 }
 
 void QItemSelectionModel_virtualbase_ClearCurrentIndex(void* self) {
 	( (MiqtVirtualQItemSelectionModel*)(self) )->virtualbase_ClearCurrentIndex();
 }
 
-void QItemSelectionModel_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemSelectionModel*>( (QItemSelectionModel*)(self) )->handle__Event = slot;
+bool QItemSelectionModel_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQItemSelectionModel* self_cast = dynamic_cast<MiqtVirtualQItemSelectionModel*>( (QItemSelectionModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QItemSelectionModel_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQItemSelectionModel*)(self) )->virtualbase_Event(event);
 }
 
-void QItemSelectionModel_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemSelectionModel*>( (QItemSelectionModel*)(self) )->handle__EventFilter = slot;
+bool QItemSelectionModel_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQItemSelectionModel* self_cast = dynamic_cast<MiqtVirtualQItemSelectionModel*>( (QItemSelectionModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QItemSelectionModel_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQItemSelectionModel*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QItemSelectionModel_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemSelectionModel*>( (QItemSelectionModel*)(self) )->handle__TimerEvent = slot;
+bool QItemSelectionModel_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQItemSelectionModel* self_cast = dynamic_cast<MiqtVirtualQItemSelectionModel*>( (QItemSelectionModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QItemSelectionModel_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQItemSelectionModel*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QItemSelectionModel_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemSelectionModel*>( (QItemSelectionModel*)(self) )->handle__ChildEvent = slot;
+bool QItemSelectionModel_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQItemSelectionModel* self_cast = dynamic_cast<MiqtVirtualQItemSelectionModel*>( (QItemSelectionModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QItemSelectionModel_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQItemSelectionModel*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QItemSelectionModel_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemSelectionModel*>( (QItemSelectionModel*)(self) )->handle__CustomEvent = slot;
+bool QItemSelectionModel_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQItemSelectionModel* self_cast = dynamic_cast<MiqtVirtualQItemSelectionModel*>( (QItemSelectionModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QItemSelectionModel_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQItemSelectionModel*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QItemSelectionModel_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemSelectionModel*>( (QItemSelectionModel*)(self) )->handle__ConnectNotify = slot;
+bool QItemSelectionModel_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQItemSelectionModel* self_cast = dynamic_cast<MiqtVirtualQItemSelectionModel*>( (QItemSelectionModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QItemSelectionModel_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQItemSelectionModel*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QItemSelectionModel_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemSelectionModel*>( (QItemSelectionModel*)(self) )->handle__DisconnectNotify = slot;
+bool QItemSelectionModel_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQItemSelectionModel* self_cast = dynamic_cast<MiqtVirtualQItemSelectionModel*>( (QItemSelectionModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QItemSelectionModel_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

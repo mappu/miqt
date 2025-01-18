@@ -310,68 +310,128 @@ bool QGraphicsLayout_InstantInvalidatePropagation() {
 	return QGraphicsLayout::instantInvalidatePropagation();
 }
 
-void QGraphicsLayout_override_virtual_GetContentsMargins(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsLayout*>( (QGraphicsLayout*)(self) )->handle__GetContentsMargins = slot;
+bool QGraphicsLayout_override_virtual_GetContentsMargins(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsLayout* self_cast = dynamic_cast<MiqtVirtualQGraphicsLayout*>( (QGraphicsLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__GetContentsMargins = slot;
+	return true;
 }
 
 void QGraphicsLayout_virtualbase_GetContentsMargins(const void* self, double* left, double* top, double* right, double* bottom) {
 	( (const MiqtVirtualQGraphicsLayout*)(self) )->virtualbase_GetContentsMargins(left, top, right, bottom);
 }
 
-void QGraphicsLayout_override_virtual_Invalidate(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsLayout*>( (QGraphicsLayout*)(self) )->handle__Invalidate = slot;
+bool QGraphicsLayout_override_virtual_Invalidate(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsLayout* self_cast = dynamic_cast<MiqtVirtualQGraphicsLayout*>( (QGraphicsLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Invalidate = slot;
+	return true;
 }
 
 void QGraphicsLayout_virtualbase_Invalidate(void* self) {
 	( (MiqtVirtualQGraphicsLayout*)(self) )->virtualbase_Invalidate();
 }
 
-void QGraphicsLayout_override_virtual_UpdateGeometry(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsLayout*>( (QGraphicsLayout*)(self) )->handle__UpdateGeometry = slot;
+bool QGraphicsLayout_override_virtual_UpdateGeometry(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsLayout* self_cast = dynamic_cast<MiqtVirtualQGraphicsLayout*>( (QGraphicsLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateGeometry = slot;
+	return true;
 }
 
 void QGraphicsLayout_virtualbase_UpdateGeometry(void* self) {
 	( (MiqtVirtualQGraphicsLayout*)(self) )->virtualbase_UpdateGeometry();
 }
 
-void QGraphicsLayout_override_virtual_WidgetEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsLayout*>( (QGraphicsLayout*)(self) )->handle__WidgetEvent = slot;
+bool QGraphicsLayout_override_virtual_WidgetEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsLayout* self_cast = dynamic_cast<MiqtVirtualQGraphicsLayout*>( (QGraphicsLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WidgetEvent = slot;
+	return true;
 }
 
 void QGraphicsLayout_virtualbase_WidgetEvent(void* self, QEvent* e) {
 	( (MiqtVirtualQGraphicsLayout*)(self) )->virtualbase_WidgetEvent(e);
 }
 
-void QGraphicsLayout_override_virtual_Count(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsLayout*>( (QGraphicsLayout*)(self) )->handle__Count = slot;
+bool QGraphicsLayout_override_virtual_Count(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsLayout* self_cast = dynamic_cast<MiqtVirtualQGraphicsLayout*>( (QGraphicsLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Count = slot;
+	return true;
 }
 
-void QGraphicsLayout_override_virtual_ItemAt(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsLayout*>( (QGraphicsLayout*)(self) )->handle__ItemAt = slot;
+bool QGraphicsLayout_override_virtual_ItemAt(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsLayout* self_cast = dynamic_cast<MiqtVirtualQGraphicsLayout*>( (QGraphicsLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ItemAt = slot;
+	return true;
 }
 
-void QGraphicsLayout_override_virtual_RemoveAt(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsLayout*>( (QGraphicsLayout*)(self) )->handle__RemoveAt = slot;
+bool QGraphicsLayout_override_virtual_RemoveAt(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsLayout* self_cast = dynamic_cast<MiqtVirtualQGraphicsLayout*>( (QGraphicsLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RemoveAt = slot;
+	return true;
 }
 
-void QGraphicsLayout_override_virtual_SetGeometry(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsLayout*>( (QGraphicsLayout*)(self) )->handle__SetGeometry = slot;
+bool QGraphicsLayout_override_virtual_SetGeometry(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsLayout* self_cast = dynamic_cast<MiqtVirtualQGraphicsLayout*>( (QGraphicsLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetGeometry = slot;
+	return true;
 }
 
 void QGraphicsLayout_virtualbase_SetGeometry(void* self, QRectF* rect) {
 	( (MiqtVirtualQGraphicsLayout*)(self) )->virtualbase_SetGeometry(rect);
 }
 
-void QGraphicsLayout_override_virtual_IsEmpty(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsLayout*>( (QGraphicsLayout*)(self) )->handle__IsEmpty = slot;
+bool QGraphicsLayout_override_virtual_IsEmpty(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsLayout* self_cast = dynamic_cast<MiqtVirtualQGraphicsLayout*>( (QGraphicsLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsEmpty = slot;
+	return true;
 }
 
 bool QGraphicsLayout_virtualbase_IsEmpty(const void* self) {
 	return ( (const MiqtVirtualQGraphicsLayout*)(self) )->virtualbase_IsEmpty();
 }
 
-void QGraphicsLayout_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsLayout*>( (QGraphicsLayout*)(self) )->handle__SizeHint = slot;
+bool QGraphicsLayout_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsLayout* self_cast = dynamic_cast<MiqtVirtualQGraphicsLayout*>( (QGraphicsLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 void QGraphicsLayout_Delete(QGraphicsLayout* self) {

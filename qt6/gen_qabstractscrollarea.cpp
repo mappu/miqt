@@ -756,184 +756,322 @@ struct miqt_string QAbstractScrollArea_Tr3(const char* s, const char* c, int n) 
 	return _ms;
 }
 
-void QAbstractScrollArea_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) )->handle__MinimumSizeHint = slot;
+bool QAbstractScrollArea_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QAbstractScrollArea_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QAbstractScrollArea_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) )->handle__SizeHint = slot;
+bool QAbstractScrollArea_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QAbstractScrollArea_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_SizeHint();
 }
 
-void QAbstractScrollArea_override_virtual_SetupViewport(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) )->handle__SetupViewport = slot;
+bool QAbstractScrollArea_override_virtual_SetupViewport(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetupViewport = slot;
+	return true;
 }
 
 void QAbstractScrollArea_virtualbase_SetupViewport(void* self, QWidget* viewport) {
 	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_SetupViewport(viewport);
 }
 
-void QAbstractScrollArea_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) )->handle__EventFilter = slot;
+bool QAbstractScrollArea_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QAbstractScrollArea_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2) {
 	return ( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_EventFilter(param1, param2);
 }
 
-void QAbstractScrollArea_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) )->handle__Event = slot;
+bool QAbstractScrollArea_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QAbstractScrollArea_virtualbase_Event(void* self, QEvent* param1) {
 	return ( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_Event(param1);
 }
 
-void QAbstractScrollArea_override_virtual_ViewportEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) )->handle__ViewportEvent = slot;
+bool QAbstractScrollArea_override_virtual_ViewportEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ViewportEvent = slot;
+	return true;
 }
 
 bool QAbstractScrollArea_virtualbase_ViewportEvent(void* self, QEvent* param1) {
 	return ( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_ViewportEvent(param1);
 }
 
-void QAbstractScrollArea_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) )->handle__ResizeEvent = slot;
+bool QAbstractScrollArea_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QAbstractScrollArea_virtualbase_ResizeEvent(void* self, QResizeEvent* param1) {
 	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_ResizeEvent(param1);
 }
 
-void QAbstractScrollArea_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) )->handle__PaintEvent = slot;
+bool QAbstractScrollArea_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QAbstractScrollArea_virtualbase_PaintEvent(void* self, QPaintEvent* param1) {
 	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_PaintEvent(param1);
 }
 
-void QAbstractScrollArea_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) )->handle__MousePressEvent = slot;
+bool QAbstractScrollArea_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QAbstractScrollArea_virtualbase_MousePressEvent(void* self, QMouseEvent* param1) {
 	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_MousePressEvent(param1);
 }
 
-void QAbstractScrollArea_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) )->handle__MouseReleaseEvent = slot;
+bool QAbstractScrollArea_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QAbstractScrollArea_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* param1) {
 	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_MouseReleaseEvent(param1);
 }
 
-void QAbstractScrollArea_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) )->handle__MouseDoubleClickEvent = slot;
+bool QAbstractScrollArea_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseDoubleClickEvent = slot;
+	return true;
 }
 
 void QAbstractScrollArea_virtualbase_MouseDoubleClickEvent(void* self, QMouseEvent* param1) {
 	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_MouseDoubleClickEvent(param1);
 }
 
-void QAbstractScrollArea_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) )->handle__MouseMoveEvent = slot;
+bool QAbstractScrollArea_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QAbstractScrollArea_virtualbase_MouseMoveEvent(void* self, QMouseEvent* param1) {
 	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_MouseMoveEvent(param1);
 }
 
-void QAbstractScrollArea_override_virtual_WheelEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) )->handle__WheelEvent = slot;
+bool QAbstractScrollArea_override_virtual_WheelEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WheelEvent = slot;
+	return true;
 }
 
 void QAbstractScrollArea_virtualbase_WheelEvent(void* self, QWheelEvent* param1) {
 	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_WheelEvent(param1);
 }
 
-void QAbstractScrollArea_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) )->handle__ContextMenuEvent = slot;
+bool QAbstractScrollArea_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QAbstractScrollArea_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* param1) {
 	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_ContextMenuEvent(param1);
 }
 
-void QAbstractScrollArea_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) )->handle__DragEnterEvent = slot;
+bool QAbstractScrollArea_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragEnterEvent = slot;
+	return true;
 }
 
 void QAbstractScrollArea_virtualbase_DragEnterEvent(void* self, QDragEnterEvent* param1) {
 	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_DragEnterEvent(param1);
 }
 
-void QAbstractScrollArea_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) )->handle__DragMoveEvent = slot;
+bool QAbstractScrollArea_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragMoveEvent = slot;
+	return true;
 }
 
 void QAbstractScrollArea_virtualbase_DragMoveEvent(void* self, QDragMoveEvent* param1) {
 	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_DragMoveEvent(param1);
 }
 
-void QAbstractScrollArea_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) )->handle__DragLeaveEvent = slot;
+bool QAbstractScrollArea_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragLeaveEvent = slot;
+	return true;
 }
 
 void QAbstractScrollArea_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* param1) {
 	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_DragLeaveEvent(param1);
 }
 
-void QAbstractScrollArea_override_virtual_DropEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) )->handle__DropEvent = slot;
+bool QAbstractScrollArea_override_virtual_DropEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropEvent = slot;
+	return true;
 }
 
 void QAbstractScrollArea_virtualbase_DropEvent(void* self, QDropEvent* param1) {
 	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_DropEvent(param1);
 }
 
-void QAbstractScrollArea_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) )->handle__KeyPressEvent = slot;
+bool QAbstractScrollArea_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QAbstractScrollArea_virtualbase_KeyPressEvent(void* self, QKeyEvent* param1) {
 	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_KeyPressEvent(param1);
 }
 
-void QAbstractScrollArea_override_virtual_ScrollContentsBy(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) )->handle__ScrollContentsBy = slot;
+bool QAbstractScrollArea_override_virtual_ScrollContentsBy(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ScrollContentsBy = slot;
+	return true;
 }
 
 void QAbstractScrollArea_virtualbase_ScrollContentsBy(void* self, int dx, int dy) {
 	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_ScrollContentsBy(dx, dy);
 }
 
-void QAbstractScrollArea_override_virtual_ViewportSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) )->handle__ViewportSizeHint = slot;
+bool QAbstractScrollArea_override_virtual_ViewportSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ViewportSizeHint = slot;
+	return true;
 }
 
 QSize* QAbstractScrollArea_virtualbase_ViewportSizeHint(const void* self) {
 	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_ViewportSizeHint();
 }
 
-void QAbstractScrollArea_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) )->handle__ChangeEvent = slot;
+bool QAbstractScrollArea_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QAbstractScrollArea_virtualbase_ChangeEvent(void* self, QEvent* param1) {
 	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_ChangeEvent(param1);
 }
 
-void QAbstractScrollArea_override_virtual_InitStyleOption(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) )->handle__InitStyleOption = slot;
+bool QAbstractScrollArea_override_virtual_InitStyleOption(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitStyleOption = slot;
+	return true;
 }
 
 void QAbstractScrollArea_virtualbase_InitStyleOption(const void* self, QStyleOptionFrame* option) {

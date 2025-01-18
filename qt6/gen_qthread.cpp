@@ -401,64 +401,112 @@ bool QThread_Wait1(QThread* self, QDeadlineTimer* deadline) {
 	return self->wait(*deadline);
 }
 
-void QThread_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQThread*>( (QThread*)(self) )->handle__Event = slot;
+bool QThread_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQThread* self_cast = dynamic_cast<MiqtVirtualQThread*>( (QThread*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QThread_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQThread*)(self) )->virtualbase_Event(event);
 }
 
-void QThread_override_virtual_Run(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQThread*>( (QThread*)(self) )->handle__Run = slot;
+bool QThread_override_virtual_Run(void* self, intptr_t slot) {
+	MiqtVirtualQThread* self_cast = dynamic_cast<MiqtVirtualQThread*>( (QThread*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Run = slot;
+	return true;
 }
 
 void QThread_virtualbase_Run(void* self) {
 	( (MiqtVirtualQThread*)(self) )->virtualbase_Run();
 }
 
-void QThread_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQThread*>( (QThread*)(self) )->handle__EventFilter = slot;
+bool QThread_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQThread* self_cast = dynamic_cast<MiqtVirtualQThread*>( (QThread*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QThread_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQThread*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QThread_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQThread*>( (QThread*)(self) )->handle__TimerEvent = slot;
+bool QThread_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQThread* self_cast = dynamic_cast<MiqtVirtualQThread*>( (QThread*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QThread_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQThread*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QThread_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQThread*>( (QThread*)(self) )->handle__ChildEvent = slot;
+bool QThread_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQThread* self_cast = dynamic_cast<MiqtVirtualQThread*>( (QThread*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QThread_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQThread*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QThread_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQThread*>( (QThread*)(self) )->handle__CustomEvent = slot;
+bool QThread_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQThread* self_cast = dynamic_cast<MiqtVirtualQThread*>( (QThread*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QThread_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQThread*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QThread_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQThread*>( (QThread*)(self) )->handle__ConnectNotify = slot;
+bool QThread_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQThread* self_cast = dynamic_cast<MiqtVirtualQThread*>( (QThread*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QThread_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQThread*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QThread_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQThread*>( (QThread*)(self) )->handle__DisconnectNotify = slot;
+bool QThread_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQThread* self_cast = dynamic_cast<MiqtVirtualQThread*>( (QThread*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QThread_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

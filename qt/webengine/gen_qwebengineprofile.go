@@ -32,8 +32,7 @@ const (
 )
 
 type QWebEngineProfile struct {
-	h          *C.QWebEngineProfile
-	isSubclass bool
+	h *C.QWebEngineProfile
 	*qt.QObject
 }
 
@@ -71,9 +70,7 @@ func UnsafeNewQWebEngineProfile(h unsafe.Pointer) *QWebEngineProfile {
 // NewQWebEngineProfile constructs a new QWebEngineProfile object.
 func NewQWebEngineProfile() *QWebEngineProfile {
 
-	ret := newQWebEngineProfile(C.QWebEngineProfile_new())
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineProfile(C.QWebEngineProfile_new())
 }
 
 // NewQWebEngineProfile2 constructs a new QWebEngineProfile object.
@@ -83,17 +80,13 @@ func NewQWebEngineProfile2(name string) *QWebEngineProfile {
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
 
-	ret := newQWebEngineProfile(C.QWebEngineProfile_new2(name_ms))
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineProfile(C.QWebEngineProfile_new2(name_ms))
 }
 
 // NewQWebEngineProfile3 constructs a new QWebEngineProfile object.
 func NewQWebEngineProfile3(parent *qt.QObject) *QWebEngineProfile {
 
-	ret := newQWebEngineProfile(C.QWebEngineProfile_new3((*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineProfile(C.QWebEngineProfile_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 // NewQWebEngineProfile4 constructs a new QWebEngineProfile object.
@@ -103,9 +96,7 @@ func NewQWebEngineProfile4(name string, parent *qt.QObject) *QWebEngineProfile {
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
 
-	ret := newQWebEngineProfile(C.QWebEngineProfile_new4(name_ms, (*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineProfile(C.QWebEngineProfile_new4(name_ms, (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QWebEngineProfile) MetaObject() *qt.QMetaObject {
@@ -442,10 +433,10 @@ func (this *QWebEngineProfile) callVirtualBase_Event(event *qt.QEvent) bool {
 
 }
 func (this *QWebEngineProfile) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QWebEngineProfile_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineProfile_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineProfile_Event
@@ -470,10 +461,10 @@ func (this *QWebEngineProfile) callVirtualBase_EventFilter(watched *qt.QObject, 
 
 }
 func (this *QWebEngineProfile) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QWebEngineProfile_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineProfile_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineProfile_EventFilter
@@ -500,10 +491,10 @@ func (this *QWebEngineProfile) callVirtualBase_TimerEvent(event *qt.QTimerEvent)
 
 }
 func (this *QWebEngineProfile) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineProfile_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineProfile_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineProfile_TimerEvent
@@ -526,10 +517,10 @@ func (this *QWebEngineProfile) callVirtualBase_ChildEvent(event *qt.QChildEvent)
 
 }
 func (this *QWebEngineProfile) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineProfile_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineProfile_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineProfile_ChildEvent
@@ -552,10 +543,10 @@ func (this *QWebEngineProfile) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
 }
 func (this *QWebEngineProfile) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineProfile_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineProfile_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineProfile_CustomEvent
@@ -578,10 +569,10 @@ func (this *QWebEngineProfile) callVirtualBase_ConnectNotify(signal *qt.QMetaMet
 
 }
 func (this *QWebEngineProfile) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineProfile_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineProfile_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineProfile_ConnectNotify
@@ -604,10 +595,10 @@ func (this *QWebEngineProfile) callVirtualBase_DisconnectNotify(signal *qt.QMeta
 
 }
 func (this *QWebEngineProfile) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QWebEngineProfile_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebEngineProfile_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineProfile_DisconnectNotify

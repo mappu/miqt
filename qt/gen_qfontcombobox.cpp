@@ -665,160 +665,280 @@ struct miqt_string QFontComboBox_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QFontComboBox_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) )->handle__SizeHint = slot;
+bool QFontComboBox_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QFontComboBox_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQFontComboBox*)(self) )->virtualbase_SizeHint();
 }
 
-void QFontComboBox_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) )->handle__Event = slot;
+bool QFontComboBox_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QFontComboBox_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQFontComboBox*)(self) )->virtualbase_Event(e);
 }
 
-void QFontComboBox_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) )->handle__MinimumSizeHint = slot;
+bool QFontComboBox_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QFontComboBox_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQFontComboBox*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QFontComboBox_override_virtual_ShowPopup(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) )->handle__ShowPopup = slot;
+bool QFontComboBox_override_virtual_ShowPopup(void* self, intptr_t slot) {
+	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowPopup = slot;
+	return true;
 }
 
 void QFontComboBox_virtualbase_ShowPopup(void* self) {
 	( (MiqtVirtualQFontComboBox*)(self) )->virtualbase_ShowPopup();
 }
 
-void QFontComboBox_override_virtual_HidePopup(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) )->handle__HidePopup = slot;
+bool QFontComboBox_override_virtual_HidePopup(void* self, intptr_t slot) {
+	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HidePopup = slot;
+	return true;
 }
 
 void QFontComboBox_virtualbase_HidePopup(void* self) {
 	( (MiqtVirtualQFontComboBox*)(self) )->virtualbase_HidePopup();
 }
 
-void QFontComboBox_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) )->handle__InputMethodQuery = slot;
+bool QFontComboBox_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodQuery = slot;
+	return true;
 }
 
 QVariant* QFontComboBox_virtualbase_InputMethodQuery(const void* self, int param1) {
 	return ( (const MiqtVirtualQFontComboBox*)(self) )->virtualbase_InputMethodQuery(param1);
 }
 
-void QFontComboBox_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) )->handle__FocusInEvent = slot;
+bool QFontComboBox_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QFontComboBox_virtualbase_FocusInEvent(void* self, QFocusEvent* e) {
 	( (MiqtVirtualQFontComboBox*)(self) )->virtualbase_FocusInEvent(e);
 }
 
-void QFontComboBox_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) )->handle__FocusOutEvent = slot;
+bool QFontComboBox_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
 }
 
 void QFontComboBox_virtualbase_FocusOutEvent(void* self, QFocusEvent* e) {
 	( (MiqtVirtualQFontComboBox*)(self) )->virtualbase_FocusOutEvent(e);
 }
 
-void QFontComboBox_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) )->handle__ChangeEvent = slot;
+bool QFontComboBox_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QFontComboBox_virtualbase_ChangeEvent(void* self, QEvent* e) {
 	( (MiqtVirtualQFontComboBox*)(self) )->virtualbase_ChangeEvent(e);
 }
 
-void QFontComboBox_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) )->handle__ResizeEvent = slot;
+bool QFontComboBox_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QFontComboBox_virtualbase_ResizeEvent(void* self, QResizeEvent* e) {
 	( (MiqtVirtualQFontComboBox*)(self) )->virtualbase_ResizeEvent(e);
 }
 
-void QFontComboBox_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) )->handle__PaintEvent = slot;
+bool QFontComboBox_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QFontComboBox_virtualbase_PaintEvent(void* self, QPaintEvent* e) {
 	( (MiqtVirtualQFontComboBox*)(self) )->virtualbase_PaintEvent(e);
 }
 
-void QFontComboBox_override_virtual_ShowEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) )->handle__ShowEvent = slot;
+bool QFontComboBox_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
 }
 
 void QFontComboBox_virtualbase_ShowEvent(void* self, QShowEvent* e) {
 	( (MiqtVirtualQFontComboBox*)(self) )->virtualbase_ShowEvent(e);
 }
 
-void QFontComboBox_override_virtual_HideEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) )->handle__HideEvent = slot;
+bool QFontComboBox_override_virtual_HideEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HideEvent = slot;
+	return true;
 }
 
 void QFontComboBox_virtualbase_HideEvent(void* self, QHideEvent* e) {
 	( (MiqtVirtualQFontComboBox*)(self) )->virtualbase_HideEvent(e);
 }
 
-void QFontComboBox_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) )->handle__MousePressEvent = slot;
+bool QFontComboBox_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QFontComboBox_virtualbase_MousePressEvent(void* self, QMouseEvent* e) {
 	( (MiqtVirtualQFontComboBox*)(self) )->virtualbase_MousePressEvent(e);
 }
 
-void QFontComboBox_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) )->handle__MouseReleaseEvent = slot;
+bool QFontComboBox_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QFontComboBox_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* e) {
 	( (MiqtVirtualQFontComboBox*)(self) )->virtualbase_MouseReleaseEvent(e);
 }
 
-void QFontComboBox_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) )->handle__KeyPressEvent = slot;
+bool QFontComboBox_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QFontComboBox_virtualbase_KeyPressEvent(void* self, QKeyEvent* e) {
 	( (MiqtVirtualQFontComboBox*)(self) )->virtualbase_KeyPressEvent(e);
 }
 
-void QFontComboBox_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) )->handle__KeyReleaseEvent = slot;
+bool QFontComboBox_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyReleaseEvent = slot;
+	return true;
 }
 
 void QFontComboBox_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* e) {
 	( (MiqtVirtualQFontComboBox*)(self) )->virtualbase_KeyReleaseEvent(e);
 }
 
-void QFontComboBox_override_virtual_WheelEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) )->handle__WheelEvent = slot;
+bool QFontComboBox_override_virtual_WheelEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WheelEvent = slot;
+	return true;
 }
 
 void QFontComboBox_virtualbase_WheelEvent(void* self, QWheelEvent* e) {
 	( (MiqtVirtualQFontComboBox*)(self) )->virtualbase_WheelEvent(e);
 }
 
-void QFontComboBox_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) )->handle__ContextMenuEvent = slot;
+bool QFontComboBox_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QFontComboBox_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* e) {
 	( (MiqtVirtualQFontComboBox*)(self) )->virtualbase_ContextMenuEvent(e);
 }
 
-void QFontComboBox_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) )->handle__InputMethodEvent = slot;
+bool QFontComboBox_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFontComboBox* self_cast = dynamic_cast<MiqtVirtualQFontComboBox*>( (QFontComboBox*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodEvent = slot;
+	return true;
 }
 
 void QFontComboBox_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* param1) {

@@ -188,17 +188,17 @@ bool QImage_Save32(const QImage* self, QIODevice* device, const char* format, in
 QImage* QImage_FromData3(const unsigned char* data, int size, const char* format);
 QImage* QImage_FromData2(struct miqt_string data, const char* format);
 struct miqt_string QImage_Text1(const QImage* self, struct miqt_string key);
-void QImage_override_virtual_DevType(void* self, intptr_t slot);
+bool QImage_override_virtual_DevType(void* self, intptr_t slot);
 int QImage_virtualbase_DevType(const void* self);
-void QImage_override_virtual_PaintEngine(void* self, intptr_t slot);
+bool QImage_override_virtual_PaintEngine(void* self, intptr_t slot);
 QPaintEngine* QImage_virtualbase_PaintEngine(const void* self);
-void QImage_override_virtual_Metric(void* self, intptr_t slot);
+bool QImage_override_virtual_Metric(void* self, intptr_t slot);
 int QImage_virtualbase_Metric(const void* self, int metric);
-void QImage_override_virtual_InitPainter(void* self, intptr_t slot);
+bool QImage_override_virtual_InitPainter(void* self, intptr_t slot);
 void QImage_virtualbase_InitPainter(const void* self, QPainter* painter);
-void QImage_override_virtual_Redirected(void* self, intptr_t slot);
+bool QImage_override_virtual_Redirected(void* self, intptr_t slot);
 QPaintDevice* QImage_virtualbase_Redirected(const void* self, QPoint* offset);
-void QImage_override_virtual_SharedPainter(void* self, intptr_t slot);
+bool QImage_override_virtual_SharedPainter(void* self, intptr_t slot);
 QPainter* QImage_virtualbase_SharedPainter(const void* self);
 void QImage_Delete(QImage* self);
 

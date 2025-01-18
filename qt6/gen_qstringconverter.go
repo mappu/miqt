@@ -14,8 +14,7 @@ import (
 )
 
 type QStringEncoder struct {
-	h          *C.QStringEncoder
-	isSubclass bool
+	h *C.QStringEncoder
 	*QStringConverter
 }
 
@@ -53,17 +52,13 @@ func UnsafeNewQStringEncoder(h unsafe.Pointer) *QStringEncoder {
 // NewQStringEncoder constructs a new QStringEncoder object.
 func NewQStringEncoder() *QStringEncoder {
 
-	ret := newQStringEncoder(C.QStringEncoder_new())
-	ret.isSubclass = true
-	return ret
+	return newQStringEncoder(C.QStringEncoder_new())
 }
 
 // NewQStringEncoder2 constructs a new QStringEncoder object.
 func NewQStringEncoder2(encoding QStringConverter__Encoding) *QStringEncoder {
 
-	ret := newQStringEncoder(C.QStringEncoder_new2((C.int)(encoding)))
-	ret.isSubclass = true
-	return ret
+	return newQStringEncoder(C.QStringEncoder_new2((C.int)(encoding)))
 }
 
 // NewQStringEncoder3 constructs a new QStringEncoder object.
@@ -71,17 +66,13 @@ func NewQStringEncoder3(name string) *QStringEncoder {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
 
-	ret := newQStringEncoder(C.QStringEncoder_new3(name_Cstring))
-	ret.isSubclass = true
-	return ret
+	return newQStringEncoder(C.QStringEncoder_new3(name_Cstring))
 }
 
 // NewQStringEncoder4 constructs a new QStringEncoder object.
 func NewQStringEncoder4(encoding QStringConverter__Encoding, flags QStringConverterBase__Flag) *QStringEncoder {
 
-	ret := newQStringEncoder(C.QStringEncoder_new4((C.int)(encoding), (C.int)(flags)))
-	ret.isSubclass = true
-	return ret
+	return newQStringEncoder(C.QStringEncoder_new4((C.int)(encoding), (C.int)(flags)))
 }
 
 // NewQStringEncoder5 constructs a new QStringEncoder object.
@@ -89,9 +80,7 @@ func NewQStringEncoder5(name string, flags QStringConverterBase__Flag) *QStringE
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
 
-	ret := newQStringEncoder(C.QStringEncoder_new5(name_Cstring, (C.int)(flags)))
-	ret.isSubclass = true
-	return ret
+	return newQStringEncoder(C.QStringEncoder_new5(name_Cstring, (C.int)(flags)))
 }
 
 func (this *QStringEncoder) RequiredSpace(inputLength int64) int64 {
@@ -113,8 +102,7 @@ func (this *QStringEncoder) GoGC() {
 }
 
 type QStringDecoder struct {
-	h          *C.QStringDecoder
-	isSubclass bool
+	h *C.QStringDecoder
 	*QStringConverter
 }
 
@@ -152,17 +140,13 @@ func UnsafeNewQStringDecoder(h unsafe.Pointer) *QStringDecoder {
 // NewQStringDecoder constructs a new QStringDecoder object.
 func NewQStringDecoder(encoding QStringConverter__Encoding) *QStringDecoder {
 
-	ret := newQStringDecoder(C.QStringDecoder_new((C.int)(encoding)))
-	ret.isSubclass = true
-	return ret
+	return newQStringDecoder(C.QStringDecoder_new((C.int)(encoding)))
 }
 
 // NewQStringDecoder2 constructs a new QStringDecoder object.
 func NewQStringDecoder2() *QStringDecoder {
 
-	ret := newQStringDecoder(C.QStringDecoder_new2())
-	ret.isSubclass = true
-	return ret
+	return newQStringDecoder(C.QStringDecoder_new2())
 }
 
 // NewQStringDecoder3 constructs a new QStringDecoder object.
@@ -170,17 +154,13 @@ func NewQStringDecoder3(name string) *QStringDecoder {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
 
-	ret := newQStringDecoder(C.QStringDecoder_new3(name_Cstring))
-	ret.isSubclass = true
-	return ret
+	return newQStringDecoder(C.QStringDecoder_new3(name_Cstring))
 }
 
 // NewQStringDecoder4 constructs a new QStringDecoder object.
 func NewQStringDecoder4(encoding QStringConverter__Encoding, flags QStringConverterBase__Flag) *QStringDecoder {
 
-	ret := newQStringDecoder(C.QStringDecoder_new4((C.int)(encoding), (C.int)(flags)))
-	ret.isSubclass = true
-	return ret
+	return newQStringDecoder(C.QStringDecoder_new4((C.int)(encoding), (C.int)(flags)))
 }
 
 // NewQStringDecoder5 constructs a new QStringDecoder object.
@@ -188,9 +168,7 @@ func NewQStringDecoder5(name string, f QStringConverterBase__Flag) *QStringDecod
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
 
-	ret := newQStringDecoder(C.QStringDecoder_new5(name_Cstring, (C.int)(f)))
-	ret.isSubclass = true
-	return ret
+	return newQStringDecoder(C.QStringDecoder_new5(name_Cstring, (C.int)(f)))
 }
 
 func (this *QStringDecoder) RequiredSpace(inputLength int64) int64 {

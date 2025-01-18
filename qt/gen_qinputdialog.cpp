@@ -1155,112 +1155,196 @@ double QInputDialog_GetDouble9(QWidget* parent, struct miqt_string title, struct
 	return QInputDialog::getDouble(parent, title_QString, label_QString, static_cast<double>(value), static_cast<double>(minValue), static_cast<double>(maxValue), static_cast<int>(decimals), ok, static_cast<Qt::WindowFlags>(flags));
 }
 
-void QInputDialog_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) )->handle__MinimumSizeHint = slot;
+bool QInputDialog_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQInputDialog* self_cast = dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QInputDialog_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQInputDialog*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QInputDialog_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) )->handle__SizeHint = slot;
+bool QInputDialog_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQInputDialog* self_cast = dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QInputDialog_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQInputDialog*)(self) )->virtualbase_SizeHint();
 }
 
-void QInputDialog_override_virtual_SetVisible(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) )->handle__SetVisible = slot;
+bool QInputDialog_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQInputDialog* self_cast = dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
 }
 
 void QInputDialog_virtualbase_SetVisible(void* self, bool visible) {
 	( (MiqtVirtualQInputDialog*)(self) )->virtualbase_SetVisible(visible);
 }
 
-void QInputDialog_override_virtual_Done(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) )->handle__Done = slot;
+bool QInputDialog_override_virtual_Done(void* self, intptr_t slot) {
+	MiqtVirtualQInputDialog* self_cast = dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Done = slot;
+	return true;
 }
 
 void QInputDialog_virtualbase_Done(void* self, int result) {
 	( (MiqtVirtualQInputDialog*)(self) )->virtualbase_Done(result);
 }
 
-void QInputDialog_override_virtual_Open(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) )->handle__Open = slot;
+bool QInputDialog_override_virtual_Open(void* self, intptr_t slot) {
+	MiqtVirtualQInputDialog* self_cast = dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Open = slot;
+	return true;
 }
 
 void QInputDialog_virtualbase_Open(void* self) {
 	( (MiqtVirtualQInputDialog*)(self) )->virtualbase_Open();
 }
 
-void QInputDialog_override_virtual_Exec(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) )->handle__Exec = slot;
+bool QInputDialog_override_virtual_Exec(void* self, intptr_t slot) {
+	MiqtVirtualQInputDialog* self_cast = dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Exec = slot;
+	return true;
 }
 
 int QInputDialog_virtualbase_Exec(void* self) {
 	return ( (MiqtVirtualQInputDialog*)(self) )->virtualbase_Exec();
 }
 
-void QInputDialog_override_virtual_Accept(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) )->handle__Accept = slot;
+bool QInputDialog_override_virtual_Accept(void* self, intptr_t slot) {
+	MiqtVirtualQInputDialog* self_cast = dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Accept = slot;
+	return true;
 }
 
 void QInputDialog_virtualbase_Accept(void* self) {
 	( (MiqtVirtualQInputDialog*)(self) )->virtualbase_Accept();
 }
 
-void QInputDialog_override_virtual_Reject(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) )->handle__Reject = slot;
+bool QInputDialog_override_virtual_Reject(void* self, intptr_t slot) {
+	MiqtVirtualQInputDialog* self_cast = dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Reject = slot;
+	return true;
 }
 
 void QInputDialog_virtualbase_Reject(void* self) {
 	( (MiqtVirtualQInputDialog*)(self) )->virtualbase_Reject();
 }
 
-void QInputDialog_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) )->handle__KeyPressEvent = slot;
+bool QInputDialog_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQInputDialog* self_cast = dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QInputDialog_virtualbase_KeyPressEvent(void* self, QKeyEvent* param1) {
 	( (MiqtVirtualQInputDialog*)(self) )->virtualbase_KeyPressEvent(param1);
 }
 
-void QInputDialog_override_virtual_CloseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) )->handle__CloseEvent = slot;
+bool QInputDialog_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQInputDialog* self_cast = dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
 }
 
 void QInputDialog_virtualbase_CloseEvent(void* self, QCloseEvent* param1) {
 	( (MiqtVirtualQInputDialog*)(self) )->virtualbase_CloseEvent(param1);
 }
 
-void QInputDialog_override_virtual_ShowEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) )->handle__ShowEvent = slot;
+bool QInputDialog_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQInputDialog* self_cast = dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
 }
 
 void QInputDialog_virtualbase_ShowEvent(void* self, QShowEvent* param1) {
 	( (MiqtVirtualQInputDialog*)(self) )->virtualbase_ShowEvent(param1);
 }
 
-void QInputDialog_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) )->handle__ResizeEvent = slot;
+bool QInputDialog_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQInputDialog* self_cast = dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QInputDialog_virtualbase_ResizeEvent(void* self, QResizeEvent* param1) {
 	( (MiqtVirtualQInputDialog*)(self) )->virtualbase_ResizeEvent(param1);
 }
 
-void QInputDialog_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) )->handle__ContextMenuEvent = slot;
+bool QInputDialog_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQInputDialog* self_cast = dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QInputDialog_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* param1) {
 	( (MiqtVirtualQInputDialog*)(self) )->virtualbase_ContextMenuEvent(param1);
 }
 
-void QInputDialog_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) )->handle__EventFilter = slot;
+bool QInputDialog_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQInputDialog* self_cast = dynamic_cast<MiqtVirtualQInputDialog*>( (QInputDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QInputDialog_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2) {

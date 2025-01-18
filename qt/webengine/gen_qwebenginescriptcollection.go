@@ -14,8 +14,7 @@ import (
 )
 
 type QWebEngineScriptCollection struct {
-	h          *C.QWebEngineScriptCollection
-	isSubclass bool
+	h *C.QWebEngineScriptCollection
 }
 
 func (this *QWebEngineScriptCollection) cPointer() *C.QWebEngineScriptCollection {

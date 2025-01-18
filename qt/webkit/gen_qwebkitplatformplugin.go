@@ -60,8 +60,7 @@ const (
 )
 
 type QWebSelectData struct {
-	h          *C.QWebSelectData
-	isSubclass bool
+	h *C.QWebSelectData
 }
 
 func (this *QWebSelectData) cPointer() *C.QWebSelectData {
@@ -169,8 +168,7 @@ func (this *QWebSelectData) GoGC() {
 }
 
 type QWebSelectMethod struct {
-	h          *C.QWebSelectMethod
-	isSubclass bool
+	h *C.QWebSelectMethod
 	*qt.QObject
 }
 
@@ -349,8 +347,7 @@ func (this *QWebSelectMethod) GoGC() {
 }
 
 type QWebNotificationData struct {
-	h          *C.QWebNotificationData
-	isSubclass bool
+	h *C.QWebNotificationData
 }
 
 func (this *QWebNotificationData) cPointer() *C.QWebNotificationData {
@@ -426,8 +423,7 @@ func (this *QWebNotificationData) GoGC() {
 }
 
 type QWebNotificationPresenter struct {
-	h          *C.QWebNotificationPresenter
-	isSubclass bool
+	h *C.QWebNotificationPresenter
 	*qt.QObject
 }
 
@@ -587,8 +583,7 @@ func (this *QWebNotificationPresenter) GoGC() {
 }
 
 type QWebHapticFeedbackPlayer struct {
-	h          *C.QWebHapticFeedbackPlayer
-	isSubclass bool
+	h *C.QWebHapticFeedbackPlayer
 	*qt.QObject
 }
 
@@ -718,8 +713,7 @@ func (this *QWebHapticFeedbackPlayer) GoGC() {
 }
 
 type QWebTouchModifier struct {
-	h          *C.QWebTouchModifier
-	isSubclass bool
+	h *C.QWebTouchModifier
 	*qt.QObject
 }
 
@@ -845,8 +839,7 @@ func (this *QWebTouchModifier) GoGC() {
 }
 
 type QWebSpellChecker struct {
-	h          *C.QWebSpellChecker
-	isSubclass bool
+	h *C.QWebSpellChecker
 	*qt.QObject
 }
 
@@ -1055,8 +1048,7 @@ func (this *QWebSpellChecker) GoGC() {
 }
 
 type QWebKitPlatformPlugin struct {
-	h          *C.QWebKitPlatformPlugin
-	isSubclass bool
+	h *C.QWebKitPlatformPlugin
 }
 
 func (this *QWebKitPlatformPlugin) cPointer() *C.QWebKitPlatformPlugin {
@@ -1114,8 +1106,7 @@ func (this *QWebKitPlatformPlugin) GoGC() {
 }
 
 type QWebSpellChecker__GrammarDetail struct {
-	h          *C.QWebSpellChecker__GrammarDetail
-	isSubclass bool
+	h *C.QWebSpellChecker__GrammarDetail
 }
 
 func (this *QWebSpellChecker__GrammarDetail) cPointer() *C.QWebSpellChecker__GrammarDetail {
@@ -1149,9 +1140,7 @@ func UnsafeNewQWebSpellChecker__GrammarDetail(h unsafe.Pointer) *QWebSpellChecke
 // NewQWebSpellChecker__GrammarDetail constructs a new QWebSpellChecker::GrammarDetail object.
 func NewQWebSpellChecker__GrammarDetail(param1 *QWebSpellChecker__GrammarDetail) *QWebSpellChecker__GrammarDetail {
 
-	ret := newQWebSpellChecker__GrammarDetail(C.QWebSpellChecker__GrammarDetail_new(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebSpellChecker__GrammarDetail(C.QWebSpellChecker__GrammarDetail_new(param1.cPointer()))
 }
 
 func (this *QWebSpellChecker__GrammarDetail) OperatorAssign(param1 *QWebSpellChecker__GrammarDetail) {

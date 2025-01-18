@@ -202,24 +202,42 @@ struct miqt_string QTextList_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QTextList_override_virtual_BlockInserted(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextList*>( (QTextList*)(self) )->handle__BlockInserted = slot;
+bool QTextList_override_virtual_BlockInserted(void* self, intptr_t slot) {
+	MiqtVirtualQTextList* self_cast = dynamic_cast<MiqtVirtualQTextList*>( (QTextList*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BlockInserted = slot;
+	return true;
 }
 
 void QTextList_virtualbase_BlockInserted(void* self, QTextBlock* block) {
 	( (MiqtVirtualQTextList*)(self) )->virtualbase_BlockInserted(block);
 }
 
-void QTextList_override_virtual_BlockRemoved(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextList*>( (QTextList*)(self) )->handle__BlockRemoved = slot;
+bool QTextList_override_virtual_BlockRemoved(void* self, intptr_t slot) {
+	MiqtVirtualQTextList* self_cast = dynamic_cast<MiqtVirtualQTextList*>( (QTextList*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BlockRemoved = slot;
+	return true;
 }
 
 void QTextList_virtualbase_BlockRemoved(void* self, QTextBlock* block) {
 	( (MiqtVirtualQTextList*)(self) )->virtualbase_BlockRemoved(block);
 }
 
-void QTextList_override_virtual_BlockFormatChanged(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextList*>( (QTextList*)(self) )->handle__BlockFormatChanged = slot;
+bool QTextList_override_virtual_BlockFormatChanged(void* self, intptr_t slot) {
+	MiqtVirtualQTextList* self_cast = dynamic_cast<MiqtVirtualQTextList*>( (QTextList*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BlockFormatChanged = slot;
+	return true;
 }
 
 void QTextList_virtualbase_BlockFormatChanged(void* self, QTextBlock* block) {

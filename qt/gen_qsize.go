@@ -14,8 +14,7 @@ import (
 )
 
 type QSize struct {
-	h          *C.QSize
-	isSubclass bool
+	h *C.QSize
 }
 
 func (this *QSize) cPointer() *C.QSize {
@@ -49,25 +48,19 @@ func UnsafeNewQSize(h unsafe.Pointer) *QSize {
 // NewQSize constructs a new QSize object.
 func NewQSize() *QSize {
 
-	ret := newQSize(C.QSize_new())
-	ret.isSubclass = true
-	return ret
+	return newQSize(C.QSize_new())
 }
 
 // NewQSize2 constructs a new QSize object.
 func NewQSize2(w int, h int) *QSize {
 
-	ret := newQSize(C.QSize_new2((C.int)(w), (C.int)(h)))
-	ret.isSubclass = true
-	return ret
+	return newQSize(C.QSize_new2((C.int)(w), (C.int)(h)))
 }
 
 // NewQSize3 constructs a new QSize object.
 func NewQSize3(param1 *QSize) *QSize {
 
-	ret := newQSize(C.QSize_new3(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSize(C.QSize_new3(param1.cPointer()))
 }
 
 func (this *QSize) IsNull() bool {
@@ -183,8 +176,7 @@ func (this *QSize) GoGC() {
 }
 
 type QSizeF struct {
-	h          *C.QSizeF
-	isSubclass bool
+	h *C.QSizeF
 }
 
 func (this *QSizeF) cPointer() *C.QSizeF {
@@ -218,33 +210,25 @@ func UnsafeNewQSizeF(h unsafe.Pointer) *QSizeF {
 // NewQSizeF constructs a new QSizeF object.
 func NewQSizeF() *QSizeF {
 
-	ret := newQSizeF(C.QSizeF_new())
-	ret.isSubclass = true
-	return ret
+	return newQSizeF(C.QSizeF_new())
 }
 
 // NewQSizeF2 constructs a new QSizeF object.
 func NewQSizeF2(sz *QSize) *QSizeF {
 
-	ret := newQSizeF(C.QSizeF_new2(sz.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSizeF(C.QSizeF_new2(sz.cPointer()))
 }
 
 // NewQSizeF3 constructs a new QSizeF object.
 func NewQSizeF3(w float64, h float64) *QSizeF {
 
-	ret := newQSizeF(C.QSizeF_new3((C.double)(w), (C.double)(h)))
-	ret.isSubclass = true
-	return ret
+	return newQSizeF(C.QSizeF_new3((C.double)(w), (C.double)(h)))
 }
 
 // NewQSizeF4 constructs a new QSizeF object.
 func NewQSizeF4(param1 *QSizeF) *QSizeF {
 
-	ret := newQSizeF(C.QSizeF_new4(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSizeF(C.QSizeF_new4(param1.cPointer()))
 }
 
 func (this *QSizeF) IsNull() bool {

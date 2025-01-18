@@ -120,20 +120,38 @@ void QGestureRecognizer_OperatorAssign(QGestureRecognizer* self, QGestureRecogni
 	self->operator=(*param1);
 }
 
-void QGestureRecognizer_override_virtual_Create(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGestureRecognizer*>( (QGestureRecognizer*)(self) )->handle__Create = slot;
+bool QGestureRecognizer_override_virtual_Create(void* self, intptr_t slot) {
+	MiqtVirtualQGestureRecognizer* self_cast = dynamic_cast<MiqtVirtualQGestureRecognizer*>( (QGestureRecognizer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Create = slot;
+	return true;
 }
 
 QGesture* QGestureRecognizer_virtualbase_Create(void* self, QObject* target) {
 	return ( (MiqtVirtualQGestureRecognizer*)(self) )->virtualbase_Create(target);
 }
 
-void QGestureRecognizer_override_virtual_Recognize(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGestureRecognizer*>( (QGestureRecognizer*)(self) )->handle__Recognize = slot;
+bool QGestureRecognizer_override_virtual_Recognize(void* self, intptr_t slot) {
+	MiqtVirtualQGestureRecognizer* self_cast = dynamic_cast<MiqtVirtualQGestureRecognizer*>( (QGestureRecognizer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Recognize = slot;
+	return true;
 }
 
-void QGestureRecognizer_override_virtual_Reset(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGestureRecognizer*>( (QGestureRecognizer*)(self) )->handle__Reset = slot;
+bool QGestureRecognizer_override_virtual_Reset(void* self, intptr_t slot) {
+	MiqtVirtualQGestureRecognizer* self_cast = dynamic_cast<MiqtVirtualQGestureRecognizer*>( (QGestureRecognizer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Reset = slot;
+	return true;
 }
 
 void QGestureRecognizer_virtualbase_Reset(void* self, QGesture* state) {

@@ -401,64 +401,118 @@ struct miqt_string QAbstractTransition_TrUtf83(const char* s, const char* c, int
 	return _ms;
 }
 
-void QAbstractTransition_override_virtual_EventTest(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractTransition*>( (QAbstractTransition*)(self) )->handle__EventTest = slot;
+bool QAbstractTransition_override_virtual_EventTest(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTransition* self_cast = dynamic_cast<MiqtVirtualQAbstractTransition*>( (QAbstractTransition*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventTest = slot;
+	return true;
 }
 
-void QAbstractTransition_override_virtual_OnTransition(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractTransition*>( (QAbstractTransition*)(self) )->handle__OnTransition = slot;
+bool QAbstractTransition_override_virtual_OnTransition(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTransition* self_cast = dynamic_cast<MiqtVirtualQAbstractTransition*>( (QAbstractTransition*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__OnTransition = slot;
+	return true;
 }
 
-void QAbstractTransition_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractTransition*>( (QAbstractTransition*)(self) )->handle__Event = slot;
+bool QAbstractTransition_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTransition* self_cast = dynamic_cast<MiqtVirtualQAbstractTransition*>( (QAbstractTransition*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QAbstractTransition_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQAbstractTransition*)(self) )->virtualbase_Event(e);
 }
 
-void QAbstractTransition_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractTransition*>( (QAbstractTransition*)(self) )->handle__EventFilter = slot;
+bool QAbstractTransition_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTransition* self_cast = dynamic_cast<MiqtVirtualQAbstractTransition*>( (QAbstractTransition*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QAbstractTransition_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQAbstractTransition*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QAbstractTransition_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractTransition*>( (QAbstractTransition*)(self) )->handle__TimerEvent = slot;
+bool QAbstractTransition_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTransition* self_cast = dynamic_cast<MiqtVirtualQAbstractTransition*>( (QAbstractTransition*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QAbstractTransition_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQAbstractTransition*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QAbstractTransition_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractTransition*>( (QAbstractTransition*)(self) )->handle__ChildEvent = slot;
+bool QAbstractTransition_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTransition* self_cast = dynamic_cast<MiqtVirtualQAbstractTransition*>( (QAbstractTransition*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QAbstractTransition_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQAbstractTransition*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QAbstractTransition_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractTransition*>( (QAbstractTransition*)(self) )->handle__CustomEvent = slot;
+bool QAbstractTransition_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTransition* self_cast = dynamic_cast<MiqtVirtualQAbstractTransition*>( (QAbstractTransition*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QAbstractTransition_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQAbstractTransition*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QAbstractTransition_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractTransition*>( (QAbstractTransition*)(self) )->handle__ConnectNotify = slot;
+bool QAbstractTransition_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTransition* self_cast = dynamic_cast<MiqtVirtualQAbstractTransition*>( (QAbstractTransition*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QAbstractTransition_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAbstractTransition*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QAbstractTransition_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractTransition*>( (QAbstractTransition*)(self) )->handle__DisconnectNotify = slot;
+bool QAbstractTransition_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTransition* self_cast = dynamic_cast<MiqtVirtualQAbstractTransition*>( (QAbstractTransition*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QAbstractTransition_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

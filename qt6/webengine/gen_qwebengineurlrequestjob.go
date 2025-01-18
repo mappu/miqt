@@ -26,8 +26,7 @@ const (
 )
 
 type QWebEngineUrlRequestJob struct {
-	h          *C.QWebEngineUrlRequestJob
-	isSubclass bool
+	h *C.QWebEngineUrlRequestJob
 	*qt6.QObject
 }
 

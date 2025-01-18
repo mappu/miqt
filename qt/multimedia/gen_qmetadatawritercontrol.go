@@ -16,8 +16,7 @@ import (
 )
 
 type QMetaDataWriterControl struct {
-	h          *C.QMetaDataWriterControl
-	isSubclass bool
+	h *C.QMetaDataWriterControl
 	*QMediaControl
 }
 

@@ -914,160 +914,280 @@ void QWizard_SetOption2(QWizard* self, int option, bool on) {
 	self->setOption(static_cast<QWizard::WizardOption>(option), on);
 }
 
-void QWizard_override_virtual_ValidateCurrentPage(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) )->handle__ValidateCurrentPage = slot;
+bool QWizard_override_virtual_ValidateCurrentPage(void* self, intptr_t slot) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ValidateCurrentPage = slot;
+	return true;
 }
 
 bool QWizard_virtualbase_ValidateCurrentPage(void* self) {
 	return ( (MiqtVirtualQWizard*)(self) )->virtualbase_ValidateCurrentPage();
 }
 
-void QWizard_override_virtual_NextId(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) )->handle__NextId = slot;
+bool QWizard_override_virtual_NextId(void* self, intptr_t slot) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NextId = slot;
+	return true;
 }
 
 int QWizard_virtualbase_NextId(const void* self) {
 	return ( (const MiqtVirtualQWizard*)(self) )->virtualbase_NextId();
 }
 
-void QWizard_override_virtual_SetVisible(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) )->handle__SetVisible = slot;
+bool QWizard_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
 }
 
 void QWizard_virtualbase_SetVisible(void* self, bool visible) {
 	( (MiqtVirtualQWizard*)(self) )->virtualbase_SetVisible(visible);
 }
 
-void QWizard_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) )->handle__SizeHint = slot;
+bool QWizard_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QWizard_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQWizard*)(self) )->virtualbase_SizeHint();
 }
 
-void QWizard_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) )->handle__Event = slot;
+bool QWizard_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QWizard_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQWizard*)(self) )->virtualbase_Event(event);
 }
 
-void QWizard_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) )->handle__ResizeEvent = slot;
+bool QWizard_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QWizard_virtualbase_ResizeEvent(void* self, QResizeEvent* event) {
 	( (MiqtVirtualQWizard*)(self) )->virtualbase_ResizeEvent(event);
 }
 
-void QWizard_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) )->handle__PaintEvent = slot;
+bool QWizard_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QWizard_virtualbase_PaintEvent(void* self, QPaintEvent* event) {
 	( (MiqtVirtualQWizard*)(self) )->virtualbase_PaintEvent(event);
 }
 
-void QWizard_override_virtual_Done(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) )->handle__Done = slot;
+bool QWizard_override_virtual_Done(void* self, intptr_t slot) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Done = slot;
+	return true;
 }
 
 void QWizard_virtualbase_Done(void* self, int result) {
 	( (MiqtVirtualQWizard*)(self) )->virtualbase_Done(result);
 }
 
-void QWizard_override_virtual_InitializePage(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) )->handle__InitializePage = slot;
+bool QWizard_override_virtual_InitializePage(void* self, intptr_t slot) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitializePage = slot;
+	return true;
 }
 
 void QWizard_virtualbase_InitializePage(void* self, int id) {
 	( (MiqtVirtualQWizard*)(self) )->virtualbase_InitializePage(id);
 }
 
-void QWizard_override_virtual_CleanupPage(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) )->handle__CleanupPage = slot;
+bool QWizard_override_virtual_CleanupPage(void* self, intptr_t slot) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CleanupPage = slot;
+	return true;
 }
 
 void QWizard_virtualbase_CleanupPage(void* self, int id) {
 	( (MiqtVirtualQWizard*)(self) )->virtualbase_CleanupPage(id);
 }
 
-void QWizard_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) )->handle__MinimumSizeHint = slot;
+bool QWizard_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QWizard_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQWizard*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QWizard_override_virtual_Open(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) )->handle__Open = slot;
+bool QWizard_override_virtual_Open(void* self, intptr_t slot) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Open = slot;
+	return true;
 }
 
 void QWizard_virtualbase_Open(void* self) {
 	( (MiqtVirtualQWizard*)(self) )->virtualbase_Open();
 }
 
-void QWizard_override_virtual_Exec(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) )->handle__Exec = slot;
+bool QWizard_override_virtual_Exec(void* self, intptr_t slot) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Exec = slot;
+	return true;
 }
 
 int QWizard_virtualbase_Exec(void* self) {
 	return ( (MiqtVirtualQWizard*)(self) )->virtualbase_Exec();
 }
 
-void QWizard_override_virtual_Accept(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) )->handle__Accept = slot;
+bool QWizard_override_virtual_Accept(void* self, intptr_t slot) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Accept = slot;
+	return true;
 }
 
 void QWizard_virtualbase_Accept(void* self) {
 	( (MiqtVirtualQWizard*)(self) )->virtualbase_Accept();
 }
 
-void QWizard_override_virtual_Reject(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) )->handle__Reject = slot;
+bool QWizard_override_virtual_Reject(void* self, intptr_t slot) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Reject = slot;
+	return true;
 }
 
 void QWizard_virtualbase_Reject(void* self) {
 	( (MiqtVirtualQWizard*)(self) )->virtualbase_Reject();
 }
 
-void QWizard_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) )->handle__KeyPressEvent = slot;
+bool QWizard_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QWizard_virtualbase_KeyPressEvent(void* self, QKeyEvent* param1) {
 	( (MiqtVirtualQWizard*)(self) )->virtualbase_KeyPressEvent(param1);
 }
 
-void QWizard_override_virtual_CloseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) )->handle__CloseEvent = slot;
+bool QWizard_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
 }
 
 void QWizard_virtualbase_CloseEvent(void* self, QCloseEvent* param1) {
 	( (MiqtVirtualQWizard*)(self) )->virtualbase_CloseEvent(param1);
 }
 
-void QWizard_override_virtual_ShowEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) )->handle__ShowEvent = slot;
+bool QWizard_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
 }
 
 void QWizard_virtualbase_ShowEvent(void* self, QShowEvent* param1) {
 	( (MiqtVirtualQWizard*)(self) )->virtualbase_ShowEvent(param1);
 }
 
-void QWizard_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) )->handle__ContextMenuEvent = slot;
+bool QWizard_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QWizard_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* param1) {
 	( (MiqtVirtualQWizard*)(self) )->virtualbase_ContextMenuEvent(param1);
 }
 
-void QWizard_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) )->handle__EventFilter = slot;
+bool QWizard_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QWizard_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2) {
@@ -2331,368 +2451,644 @@ struct miqt_string QWizardPage_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QWizardPage_override_virtual_InitializePage(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__InitializePage = slot;
+bool QWizardPage_override_virtual_InitializePage(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitializePage = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_InitializePage(void* self) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_InitializePage();
 }
 
-void QWizardPage_override_virtual_CleanupPage(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__CleanupPage = slot;
+bool QWizardPage_override_virtual_CleanupPage(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CleanupPage = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_CleanupPage(void* self) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_CleanupPage();
 }
 
-void QWizardPage_override_virtual_ValidatePage(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__ValidatePage = slot;
+bool QWizardPage_override_virtual_ValidatePage(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ValidatePage = slot;
+	return true;
 }
 
 bool QWizardPage_virtualbase_ValidatePage(void* self) {
 	return ( (MiqtVirtualQWizardPage*)(self) )->virtualbase_ValidatePage();
 }
 
-void QWizardPage_override_virtual_IsComplete(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__IsComplete = slot;
+bool QWizardPage_override_virtual_IsComplete(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsComplete = slot;
+	return true;
 }
 
 bool QWizardPage_virtualbase_IsComplete(const void* self) {
 	return ( (const MiqtVirtualQWizardPage*)(self) )->virtualbase_IsComplete();
 }
 
-void QWizardPage_override_virtual_NextId(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__NextId = slot;
+bool QWizardPage_override_virtual_NextId(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NextId = slot;
+	return true;
 }
 
 int QWizardPage_virtualbase_NextId(const void* self) {
 	return ( (const MiqtVirtualQWizardPage*)(self) )->virtualbase_NextId();
 }
 
-void QWizardPage_override_virtual_DevType(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__DevType = slot;
+bool QWizardPage_override_virtual_DevType(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DevType = slot;
+	return true;
 }
 
 int QWizardPage_virtualbase_DevType(const void* self) {
 	return ( (const MiqtVirtualQWizardPage*)(self) )->virtualbase_DevType();
 }
 
-void QWizardPage_override_virtual_SetVisible(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__SetVisible = slot;
+bool QWizardPage_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_SetVisible(void* self, bool visible) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_SetVisible(visible);
 }
 
-void QWizardPage_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__SizeHint = slot;
+bool QWizardPage_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QWizardPage_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQWizardPage*)(self) )->virtualbase_SizeHint();
 }
 
-void QWizardPage_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__MinimumSizeHint = slot;
+bool QWizardPage_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QWizardPage_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQWizardPage*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QWizardPage_override_virtual_HeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__HeightForWidth = slot;
+bool QWizardPage_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeightForWidth = slot;
+	return true;
 }
 
 int QWizardPage_virtualbase_HeightForWidth(const void* self, int param1) {
 	return ( (const MiqtVirtualQWizardPage*)(self) )->virtualbase_HeightForWidth(param1);
 }
 
-void QWizardPage_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__HasHeightForWidth = slot;
+bool QWizardPage_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasHeightForWidth = slot;
+	return true;
 }
 
 bool QWizardPage_virtualbase_HasHeightForWidth(const void* self) {
 	return ( (const MiqtVirtualQWizardPage*)(self) )->virtualbase_HasHeightForWidth();
 }
 
-void QWizardPage_override_virtual_PaintEngine(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__PaintEngine = slot;
+bool QWizardPage_override_virtual_PaintEngine(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEngine = slot;
+	return true;
 }
 
 QPaintEngine* QWizardPage_virtualbase_PaintEngine(const void* self) {
 	return ( (const MiqtVirtualQWizardPage*)(self) )->virtualbase_PaintEngine();
 }
 
-void QWizardPage_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__Event = slot;
+bool QWizardPage_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QWizardPage_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQWizardPage*)(self) )->virtualbase_Event(event);
 }
 
-void QWizardPage_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__MousePressEvent = slot;
+bool QWizardPage_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_MousePressEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_MousePressEvent(event);
 }
 
-void QWizardPage_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__MouseReleaseEvent = slot;
+bool QWizardPage_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_MouseReleaseEvent(event);
 }
 
-void QWizardPage_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__MouseDoubleClickEvent = slot;
+bool QWizardPage_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseDoubleClickEvent = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_MouseDoubleClickEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_MouseDoubleClickEvent(event);
 }
 
-void QWizardPage_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__MouseMoveEvent = slot;
+bool QWizardPage_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_MouseMoveEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_MouseMoveEvent(event);
 }
 
-void QWizardPage_override_virtual_WheelEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__WheelEvent = slot;
+bool QWizardPage_override_virtual_WheelEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WheelEvent = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_WheelEvent(void* self, QWheelEvent* event) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_WheelEvent(event);
 }
 
-void QWizardPage_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__KeyPressEvent = slot;
+bool QWizardPage_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_KeyPressEvent(void* self, QKeyEvent* event) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_KeyPressEvent(event);
 }
 
-void QWizardPage_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__KeyReleaseEvent = slot;
+bool QWizardPage_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyReleaseEvent = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* event) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_KeyReleaseEvent(event);
 }
 
-void QWizardPage_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__FocusInEvent = slot;
+bool QWizardPage_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_FocusInEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_FocusInEvent(event);
 }
 
-void QWizardPage_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__FocusOutEvent = slot;
+bool QWizardPage_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_FocusOutEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_FocusOutEvent(event);
 }
 
-void QWizardPage_override_virtual_EnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__EnterEvent = slot;
+bool QWizardPage_override_virtual_EnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EnterEvent = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_EnterEvent(void* self, QEnterEvent* event) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_EnterEvent(event);
 }
 
-void QWizardPage_override_virtual_LeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__LeaveEvent = slot;
+bool QWizardPage_override_virtual_LeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__LeaveEvent = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_LeaveEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_LeaveEvent(event);
 }
 
-void QWizardPage_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__PaintEvent = slot;
+bool QWizardPage_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_PaintEvent(void* self, QPaintEvent* event) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_PaintEvent(event);
 }
 
-void QWizardPage_override_virtual_MoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__MoveEvent = slot;
+bool QWizardPage_override_virtual_MoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveEvent = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_MoveEvent(void* self, QMoveEvent* event) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_MoveEvent(event);
 }
 
-void QWizardPage_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__ResizeEvent = slot;
+bool QWizardPage_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_ResizeEvent(void* self, QResizeEvent* event) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_ResizeEvent(event);
 }
 
-void QWizardPage_override_virtual_CloseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__CloseEvent = slot;
+bool QWizardPage_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_CloseEvent(void* self, QCloseEvent* event) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_CloseEvent(event);
 }
 
-void QWizardPage_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__ContextMenuEvent = slot;
+bool QWizardPage_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* event) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_ContextMenuEvent(event);
 }
 
-void QWizardPage_override_virtual_TabletEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__TabletEvent = slot;
+bool QWizardPage_override_virtual_TabletEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TabletEvent = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_TabletEvent(void* self, QTabletEvent* event) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_TabletEvent(event);
 }
 
-void QWizardPage_override_virtual_ActionEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__ActionEvent = slot;
+bool QWizardPage_override_virtual_ActionEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ActionEvent = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_ActionEvent(void* self, QActionEvent* event) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_ActionEvent(event);
 }
 
-void QWizardPage_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__DragEnterEvent = slot;
+bool QWizardPage_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragEnterEvent = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_DragEnterEvent(void* self, QDragEnterEvent* event) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_DragEnterEvent(event);
 }
 
-void QWizardPage_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__DragMoveEvent = slot;
+bool QWizardPage_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragMoveEvent = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_DragMoveEvent(void* self, QDragMoveEvent* event) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_DragMoveEvent(event);
 }
 
-void QWizardPage_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__DragLeaveEvent = slot;
+bool QWizardPage_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragLeaveEvent = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* event) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_DragLeaveEvent(event);
 }
 
-void QWizardPage_override_virtual_DropEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__DropEvent = slot;
+bool QWizardPage_override_virtual_DropEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropEvent = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_DropEvent(void* self, QDropEvent* event) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_DropEvent(event);
 }
 
-void QWizardPage_override_virtual_ShowEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__ShowEvent = slot;
+bool QWizardPage_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_ShowEvent(void* self, QShowEvent* event) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_ShowEvent(event);
 }
 
-void QWizardPage_override_virtual_HideEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__HideEvent = slot;
+bool QWizardPage_override_virtual_HideEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HideEvent = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_HideEvent(void* self, QHideEvent* event) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_HideEvent(event);
 }
 
-void QWizardPage_override_virtual_NativeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__NativeEvent = slot;
+bool QWizardPage_override_virtual_NativeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NativeEvent = slot;
+	return true;
 }
 
 bool QWizardPage_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
 	return ( (MiqtVirtualQWizardPage*)(self) )->virtualbase_NativeEvent(eventType, message, result);
 }
 
-void QWizardPage_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__ChangeEvent = slot;
+bool QWizardPage_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_ChangeEvent(void* self, QEvent* param1) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_ChangeEvent(param1);
 }
 
-void QWizardPage_override_virtual_Metric(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__Metric = slot;
+bool QWizardPage_override_virtual_Metric(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Metric = slot;
+	return true;
 }
 
 int QWizardPage_virtualbase_Metric(const void* self, int param1) {
 	return ( (const MiqtVirtualQWizardPage*)(self) )->virtualbase_Metric(param1);
 }
 
-void QWizardPage_override_virtual_InitPainter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__InitPainter = slot;
+bool QWizardPage_override_virtual_InitPainter(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitPainter = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_InitPainter(const void* self, QPainter* painter) {
 	( (const MiqtVirtualQWizardPage*)(self) )->virtualbase_InitPainter(painter);
 }
 
-void QWizardPage_override_virtual_Redirected(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__Redirected = slot;
+bool QWizardPage_override_virtual_Redirected(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Redirected = slot;
+	return true;
 }
 
 QPaintDevice* QWizardPage_virtualbase_Redirected(const void* self, QPoint* offset) {
 	return ( (const MiqtVirtualQWizardPage*)(self) )->virtualbase_Redirected(offset);
 }
 
-void QWizardPage_override_virtual_SharedPainter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__SharedPainter = slot;
+bool QWizardPage_override_virtual_SharedPainter(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SharedPainter = slot;
+	return true;
 }
 
 QPainter* QWizardPage_virtualbase_SharedPainter(const void* self) {
 	return ( (const MiqtVirtualQWizardPage*)(self) )->virtualbase_SharedPainter();
 }
 
-void QWizardPage_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__InputMethodEvent = slot;
+bool QWizardPage_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodEvent = slot;
+	return true;
 }
 
 void QWizardPage_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* param1) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_InputMethodEvent(param1);
 }
 
-void QWizardPage_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__InputMethodQuery = slot;
+bool QWizardPage_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodQuery = slot;
+	return true;
 }
 
 QVariant* QWizardPage_virtualbase_InputMethodQuery(const void* self, int param1) {
 	return ( (const MiqtVirtualQWizardPage*)(self) )->virtualbase_InputMethodQuery(param1);
 }
 
-void QWizardPage_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) )->handle__FocusNextPrevChild = slot;
+bool QWizardPage_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusNextPrevChild = slot;
+	return true;
 }
 
 bool QWizardPage_virtualbase_FocusNextPrevChild(void* self, bool next) {

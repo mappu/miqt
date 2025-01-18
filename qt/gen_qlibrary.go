@@ -25,8 +25,7 @@ const (
 )
 
 type QLibrary struct {
-	h          *C.QLibrary
-	isSubclass bool
+	h *C.QLibrary
 	*QObject
 }
 
@@ -64,9 +63,7 @@ func UnsafeNewQLibrary(h unsafe.Pointer) *QLibrary {
 // NewQLibrary constructs a new QLibrary object.
 func NewQLibrary() *QLibrary {
 
-	ret := newQLibrary(C.QLibrary_new())
-	ret.isSubclass = true
-	return ret
+	return newQLibrary(C.QLibrary_new())
 }
 
 // NewQLibrary2 constructs a new QLibrary object.
@@ -76,9 +73,7 @@ func NewQLibrary2(fileName string) *QLibrary {
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 
-	ret := newQLibrary(C.QLibrary_new2(fileName_ms))
-	ret.isSubclass = true
-	return ret
+	return newQLibrary(C.QLibrary_new2(fileName_ms))
 }
 
 // NewQLibrary3 constructs a new QLibrary object.
@@ -88,9 +83,7 @@ func NewQLibrary3(fileName string, verNum int) *QLibrary {
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 
-	ret := newQLibrary(C.QLibrary_new3(fileName_ms, (C.int)(verNum)))
-	ret.isSubclass = true
-	return ret
+	return newQLibrary(C.QLibrary_new3(fileName_ms, (C.int)(verNum)))
 }
 
 // NewQLibrary4 constructs a new QLibrary object.
@@ -104,17 +97,13 @@ func NewQLibrary4(fileName string, version string) *QLibrary {
 	version_ms.len = C.size_t(len(version))
 	defer C.free(unsafe.Pointer(version_ms.data))
 
-	ret := newQLibrary(C.QLibrary_new4(fileName_ms, version_ms))
-	ret.isSubclass = true
-	return ret
+	return newQLibrary(C.QLibrary_new4(fileName_ms, version_ms))
 }
 
 // NewQLibrary5 constructs a new QLibrary object.
 func NewQLibrary5(parent *QObject) *QLibrary {
 
-	ret := newQLibrary(C.QLibrary_new5(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQLibrary(C.QLibrary_new5(parent.cPointer()))
 }
 
 // NewQLibrary6 constructs a new QLibrary object.
@@ -124,9 +113,7 @@ func NewQLibrary6(fileName string, parent *QObject) *QLibrary {
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 
-	ret := newQLibrary(C.QLibrary_new6(fileName_ms, parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQLibrary(C.QLibrary_new6(fileName_ms, parent.cPointer()))
 }
 
 // NewQLibrary7 constructs a new QLibrary object.
@@ -136,9 +123,7 @@ func NewQLibrary7(fileName string, verNum int, parent *QObject) *QLibrary {
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 
-	ret := newQLibrary(C.QLibrary_new7(fileName_ms, (C.int)(verNum), parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQLibrary(C.QLibrary_new7(fileName_ms, (C.int)(verNum), parent.cPointer()))
 }
 
 // NewQLibrary8 constructs a new QLibrary object.
@@ -152,9 +137,7 @@ func NewQLibrary8(fileName string, version string, parent *QObject) *QLibrary {
 	version_ms.len = C.size_t(len(version))
 	defer C.free(unsafe.Pointer(version_ms.data))
 
-	ret := newQLibrary(C.QLibrary_new8(fileName_ms, version_ms, parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQLibrary(C.QLibrary_new8(fileName_ms, version_ms, parent.cPointer()))
 }
 
 func (this *QLibrary) MetaObject() *QMetaObject {
@@ -305,10 +288,10 @@ func (this *QLibrary) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QLibrary) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QLibrary_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLibrary_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLibrary_Event
@@ -333,10 +316,10 @@ func (this *QLibrary) callVirtualBase_EventFilter(watched *QObject, event *QEven
 
 }
 func (this *QLibrary) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QLibrary_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLibrary_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLibrary_EventFilter
@@ -363,10 +346,10 @@ func (this *QLibrary) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QLibrary) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QLibrary_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLibrary_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLibrary_TimerEvent
@@ -389,10 +372,10 @@ func (this *QLibrary) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QLibrary) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QLibrary_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLibrary_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLibrary_ChildEvent
@@ -415,10 +398,10 @@ func (this *QLibrary) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QLibrary) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QLibrary_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLibrary_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLibrary_CustomEvent
@@ -441,10 +424,10 @@ func (this *QLibrary) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QLibrary) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QLibrary_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLibrary_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLibrary_ConnectNotify
@@ -467,10 +450,10 @@ func (this *QLibrary) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QLibrary) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QLibrary_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLibrary_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLibrary_DisconnectNotify

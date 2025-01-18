@@ -304,56 +304,98 @@ struct miqt_string QObjectCleanupHandler_TrUtf83(const char* s, const char* c, i
 	return _ms;
 }
 
-void QObjectCleanupHandler_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) )->handle__Event = slot;
+bool QObjectCleanupHandler_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQObjectCleanupHandler* self_cast = dynamic_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QObjectCleanupHandler_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQObjectCleanupHandler*)(self) )->virtualbase_Event(event);
 }
 
-void QObjectCleanupHandler_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) )->handle__EventFilter = slot;
+bool QObjectCleanupHandler_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQObjectCleanupHandler* self_cast = dynamic_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QObjectCleanupHandler_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQObjectCleanupHandler*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QObjectCleanupHandler_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) )->handle__TimerEvent = slot;
+bool QObjectCleanupHandler_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQObjectCleanupHandler* self_cast = dynamic_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QObjectCleanupHandler_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQObjectCleanupHandler*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QObjectCleanupHandler_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) )->handle__ChildEvent = slot;
+bool QObjectCleanupHandler_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQObjectCleanupHandler* self_cast = dynamic_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QObjectCleanupHandler_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQObjectCleanupHandler*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QObjectCleanupHandler_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) )->handle__CustomEvent = slot;
+bool QObjectCleanupHandler_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQObjectCleanupHandler* self_cast = dynamic_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QObjectCleanupHandler_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQObjectCleanupHandler*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QObjectCleanupHandler_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) )->handle__ConnectNotify = slot;
+bool QObjectCleanupHandler_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQObjectCleanupHandler* self_cast = dynamic_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QObjectCleanupHandler_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQObjectCleanupHandler*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QObjectCleanupHandler_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) )->handle__DisconnectNotify = slot;
+bool QObjectCleanupHandler_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQObjectCleanupHandler* self_cast = dynamic_cast<MiqtVirtualQObjectCleanupHandler*>( (QObjectCleanupHandler*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QObjectCleanupHandler_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

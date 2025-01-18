@@ -1460,152 +1460,266 @@ bool QWebPage_FindText2(QWebPage* self, struct miqt_string subString, int option
 	return self->findText(subString_QString, static_cast<QWebPage::FindFlags>(options));
 }
 
-void QWebPage_override_virtual_TriggerAction(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) )->handle__TriggerAction = slot;
+bool QWebPage_override_virtual_TriggerAction(void* self, intptr_t slot) {
+	MiqtVirtualQWebPage* self_cast = dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TriggerAction = slot;
+	return true;
 }
 
 void QWebPage_virtualbase_TriggerAction(void* self, int action, bool checked) {
 	( (MiqtVirtualQWebPage*)(self) )->virtualbase_TriggerAction(action, checked);
 }
 
-void QWebPage_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) )->handle__Event = slot;
+bool QWebPage_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQWebPage* self_cast = dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QWebPage_virtualbase_Event(void* self, QEvent* param1) {
 	return ( (MiqtVirtualQWebPage*)(self) )->virtualbase_Event(param1);
 }
 
-void QWebPage_override_virtual_Extension(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) )->handle__Extension = slot;
+bool QWebPage_override_virtual_Extension(void* self, intptr_t slot) {
+	MiqtVirtualQWebPage* self_cast = dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Extension = slot;
+	return true;
 }
 
 bool QWebPage_virtualbase_Extension(void* self, int extension, QWebPage__ExtensionOption* option, QWebPage__ExtensionReturn* output) {
 	return ( (MiqtVirtualQWebPage*)(self) )->virtualbase_Extension(extension, option, output);
 }
 
-void QWebPage_override_virtual_SupportsExtension(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) )->handle__SupportsExtension = slot;
+bool QWebPage_override_virtual_SupportsExtension(void* self, intptr_t slot) {
+	MiqtVirtualQWebPage* self_cast = dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SupportsExtension = slot;
+	return true;
 }
 
 bool QWebPage_virtualbase_SupportsExtension(const void* self, int extension) {
 	return ( (const MiqtVirtualQWebPage*)(self) )->virtualbase_SupportsExtension(extension);
 }
 
-void QWebPage_override_virtual_ShouldInterruptJavaScript(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) )->handle__ShouldInterruptJavaScript = slot;
+bool QWebPage_override_virtual_ShouldInterruptJavaScript(void* self, intptr_t slot) {
+	MiqtVirtualQWebPage* self_cast = dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShouldInterruptJavaScript = slot;
+	return true;
 }
 
 bool QWebPage_virtualbase_ShouldInterruptJavaScript(void* self) {
 	return ( (MiqtVirtualQWebPage*)(self) )->virtualbase_ShouldInterruptJavaScript();
 }
 
-void QWebPage_override_virtual_CreateWindow(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) )->handle__CreateWindow = slot;
+bool QWebPage_override_virtual_CreateWindow(void* self, intptr_t slot) {
+	MiqtVirtualQWebPage* self_cast = dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CreateWindow = slot;
+	return true;
 }
 
 QWebPage* QWebPage_virtualbase_CreateWindow(void* self, int typeVal) {
 	return ( (MiqtVirtualQWebPage*)(self) )->virtualbase_CreateWindow(typeVal);
 }
 
-void QWebPage_override_virtual_CreatePlugin(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) )->handle__CreatePlugin = slot;
+bool QWebPage_override_virtual_CreatePlugin(void* self, intptr_t slot) {
+	MiqtVirtualQWebPage* self_cast = dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CreatePlugin = slot;
+	return true;
 }
 
 QObject* QWebPage_virtualbase_CreatePlugin(void* self, struct miqt_string classid, QUrl* url, struct miqt_array /* of struct miqt_string */  paramNames, struct miqt_array /* of struct miqt_string */  paramValues) {
 	return ( (MiqtVirtualQWebPage*)(self) )->virtualbase_CreatePlugin(classid, url, paramNames, paramValues);
 }
 
-void QWebPage_override_virtual_AcceptNavigationRequest(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) )->handle__AcceptNavigationRequest = slot;
+bool QWebPage_override_virtual_AcceptNavigationRequest(void* self, intptr_t slot) {
+	MiqtVirtualQWebPage* self_cast = dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__AcceptNavigationRequest = slot;
+	return true;
 }
 
 bool QWebPage_virtualbase_AcceptNavigationRequest(void* self, QWebFrame* frame, QNetworkRequest* request, int typeVal) {
 	return ( (MiqtVirtualQWebPage*)(self) )->virtualbase_AcceptNavigationRequest(frame, request, typeVal);
 }
 
-void QWebPage_override_virtual_ChooseFile(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) )->handle__ChooseFile = slot;
+bool QWebPage_override_virtual_ChooseFile(void* self, intptr_t slot) {
+	MiqtVirtualQWebPage* self_cast = dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChooseFile = slot;
+	return true;
 }
 
 struct miqt_string QWebPage_virtualbase_ChooseFile(void* self, QWebFrame* originatingFrame, struct miqt_string oldFile) {
 	return ( (MiqtVirtualQWebPage*)(self) )->virtualbase_ChooseFile(originatingFrame, oldFile);
 }
 
-void QWebPage_override_virtual_JavaScriptAlert(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) )->handle__JavaScriptAlert = slot;
+bool QWebPage_override_virtual_JavaScriptAlert(void* self, intptr_t slot) {
+	MiqtVirtualQWebPage* self_cast = dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__JavaScriptAlert = slot;
+	return true;
 }
 
 void QWebPage_virtualbase_JavaScriptAlert(void* self, QWebFrame* originatingFrame, struct miqt_string msg) {
 	( (MiqtVirtualQWebPage*)(self) )->virtualbase_JavaScriptAlert(originatingFrame, msg);
 }
 
-void QWebPage_override_virtual_JavaScriptConfirm(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) )->handle__JavaScriptConfirm = slot;
+bool QWebPage_override_virtual_JavaScriptConfirm(void* self, intptr_t slot) {
+	MiqtVirtualQWebPage* self_cast = dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__JavaScriptConfirm = slot;
+	return true;
 }
 
 bool QWebPage_virtualbase_JavaScriptConfirm(void* self, QWebFrame* originatingFrame, struct miqt_string msg) {
 	return ( (MiqtVirtualQWebPage*)(self) )->virtualbase_JavaScriptConfirm(originatingFrame, msg);
 }
 
-void QWebPage_override_virtual_JavaScriptConsoleMessage(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) )->handle__JavaScriptConsoleMessage = slot;
+bool QWebPage_override_virtual_JavaScriptConsoleMessage(void* self, intptr_t slot) {
+	MiqtVirtualQWebPage* self_cast = dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__JavaScriptConsoleMessage = slot;
+	return true;
 }
 
 void QWebPage_virtualbase_JavaScriptConsoleMessage(void* self, struct miqt_string message, int lineNumber, struct miqt_string sourceID) {
 	( (MiqtVirtualQWebPage*)(self) )->virtualbase_JavaScriptConsoleMessage(message, lineNumber, sourceID);
 }
 
-void QWebPage_override_virtual_UserAgentForUrl(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) )->handle__UserAgentForUrl = slot;
+bool QWebPage_override_virtual_UserAgentForUrl(void* self, intptr_t slot) {
+	MiqtVirtualQWebPage* self_cast = dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UserAgentForUrl = slot;
+	return true;
 }
 
 struct miqt_string QWebPage_virtualbase_UserAgentForUrl(const void* self, QUrl* url) {
 	return ( (const MiqtVirtualQWebPage*)(self) )->virtualbase_UserAgentForUrl(url);
 }
 
-void QWebPage_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) )->handle__EventFilter = slot;
+bool QWebPage_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQWebPage* self_cast = dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QWebPage_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQWebPage*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QWebPage_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) )->handle__TimerEvent = slot;
+bool QWebPage_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebPage* self_cast = dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QWebPage_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQWebPage*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QWebPage_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) )->handle__ChildEvent = slot;
+bool QWebPage_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebPage* self_cast = dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QWebPage_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQWebPage*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QWebPage_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) )->handle__CustomEvent = slot;
+bool QWebPage_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebPage* self_cast = dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QWebPage_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQWebPage*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QWebPage_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) )->handle__ConnectNotify = slot;
+bool QWebPage_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQWebPage* self_cast = dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QWebPage_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWebPage*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QWebPage_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) )->handle__DisconnectNotify = slot;
+bool QWebPage_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQWebPage* self_cast = dynamic_cast<MiqtVirtualQWebPage*>( (QWebPage*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QWebPage_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

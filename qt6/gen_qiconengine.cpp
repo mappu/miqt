@@ -521,104 +521,188 @@ void QIconEngine_VirtualHook(QIconEngine* self, int id, void* data) {
 	self->virtual_hook(static_cast<int>(id), data);
 }
 
-void QIconEngine_override_virtual_Paint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIconEngine*>( (QIconEngine*)(self) )->handle__Paint = slot;
+bool QIconEngine_override_virtual_Paint(void* self, intptr_t slot) {
+	MiqtVirtualQIconEngine* self_cast = dynamic_cast<MiqtVirtualQIconEngine*>( (QIconEngine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Paint = slot;
+	return true;
 }
 
-void QIconEngine_override_virtual_ActualSize(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIconEngine*>( (QIconEngine*)(self) )->handle__ActualSize = slot;
+bool QIconEngine_override_virtual_ActualSize(void* self, intptr_t slot) {
+	MiqtVirtualQIconEngine* self_cast = dynamic_cast<MiqtVirtualQIconEngine*>( (QIconEngine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ActualSize = slot;
+	return true;
 }
 
 QSize* QIconEngine_virtualbase_ActualSize(void* self, QSize* size, int mode, int state) {
 	return ( (MiqtVirtualQIconEngine*)(self) )->virtualbase_ActualSize(size, mode, state);
 }
 
-void QIconEngine_override_virtual_Pixmap(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIconEngine*>( (QIconEngine*)(self) )->handle__Pixmap = slot;
+bool QIconEngine_override_virtual_Pixmap(void* self, intptr_t slot) {
+	MiqtVirtualQIconEngine* self_cast = dynamic_cast<MiqtVirtualQIconEngine*>( (QIconEngine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Pixmap = slot;
+	return true;
 }
 
 QPixmap* QIconEngine_virtualbase_Pixmap(void* self, QSize* size, int mode, int state) {
 	return ( (MiqtVirtualQIconEngine*)(self) )->virtualbase_Pixmap(size, mode, state);
 }
 
-void QIconEngine_override_virtual_AddPixmap(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIconEngine*>( (QIconEngine*)(self) )->handle__AddPixmap = slot;
+bool QIconEngine_override_virtual_AddPixmap(void* self, intptr_t slot) {
+	MiqtVirtualQIconEngine* self_cast = dynamic_cast<MiqtVirtualQIconEngine*>( (QIconEngine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__AddPixmap = slot;
+	return true;
 }
 
 void QIconEngine_virtualbase_AddPixmap(void* self, QPixmap* pixmap, int mode, int state) {
 	( (MiqtVirtualQIconEngine*)(self) )->virtualbase_AddPixmap(pixmap, mode, state);
 }
 
-void QIconEngine_override_virtual_AddFile(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIconEngine*>( (QIconEngine*)(self) )->handle__AddFile = slot;
+bool QIconEngine_override_virtual_AddFile(void* self, intptr_t slot) {
+	MiqtVirtualQIconEngine* self_cast = dynamic_cast<MiqtVirtualQIconEngine*>( (QIconEngine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__AddFile = slot;
+	return true;
 }
 
 void QIconEngine_virtualbase_AddFile(void* self, struct miqt_string fileName, QSize* size, int mode, int state) {
 	( (MiqtVirtualQIconEngine*)(self) )->virtualbase_AddFile(fileName, size, mode, state);
 }
 
-void QIconEngine_override_virtual_Key(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIconEngine*>( (QIconEngine*)(self) )->handle__Key = slot;
+bool QIconEngine_override_virtual_Key(void* self, intptr_t slot) {
+	MiqtVirtualQIconEngine* self_cast = dynamic_cast<MiqtVirtualQIconEngine*>( (QIconEngine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Key = slot;
+	return true;
 }
 
 struct miqt_string QIconEngine_virtualbase_Key(const void* self) {
 	return ( (const MiqtVirtualQIconEngine*)(self) )->virtualbase_Key();
 }
 
-void QIconEngine_override_virtual_Clone(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIconEngine*>( (QIconEngine*)(self) )->handle__Clone = slot;
+bool QIconEngine_override_virtual_Clone(void* self, intptr_t slot) {
+	MiqtVirtualQIconEngine* self_cast = dynamic_cast<MiqtVirtualQIconEngine*>( (QIconEngine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Clone = slot;
+	return true;
 }
 
-void QIconEngine_override_virtual_Read(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIconEngine*>( (QIconEngine*)(self) )->handle__Read = slot;
+bool QIconEngine_override_virtual_Read(void* self, intptr_t slot) {
+	MiqtVirtualQIconEngine* self_cast = dynamic_cast<MiqtVirtualQIconEngine*>( (QIconEngine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Read = slot;
+	return true;
 }
 
 bool QIconEngine_virtualbase_Read(void* self, QDataStream* in) {
 	return ( (MiqtVirtualQIconEngine*)(self) )->virtualbase_Read(in);
 }
 
-void QIconEngine_override_virtual_Write(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIconEngine*>( (QIconEngine*)(self) )->handle__Write = slot;
+bool QIconEngine_override_virtual_Write(void* self, intptr_t slot) {
+	MiqtVirtualQIconEngine* self_cast = dynamic_cast<MiqtVirtualQIconEngine*>( (QIconEngine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Write = slot;
+	return true;
 }
 
 bool QIconEngine_virtualbase_Write(const void* self, QDataStream* out) {
 	return ( (const MiqtVirtualQIconEngine*)(self) )->virtualbase_Write(out);
 }
 
-void QIconEngine_override_virtual_AvailableSizes(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIconEngine*>( (QIconEngine*)(self) )->handle__AvailableSizes = slot;
+bool QIconEngine_override_virtual_AvailableSizes(void* self, intptr_t slot) {
+	MiqtVirtualQIconEngine* self_cast = dynamic_cast<MiqtVirtualQIconEngine*>( (QIconEngine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__AvailableSizes = slot;
+	return true;
 }
 
 struct miqt_array /* of QSize* */  QIconEngine_virtualbase_AvailableSizes(void* self, int mode, int state) {
 	return ( (MiqtVirtualQIconEngine*)(self) )->virtualbase_AvailableSizes(mode, state);
 }
 
-void QIconEngine_override_virtual_IconName(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIconEngine*>( (QIconEngine*)(self) )->handle__IconName = slot;
+bool QIconEngine_override_virtual_IconName(void* self, intptr_t slot) {
+	MiqtVirtualQIconEngine* self_cast = dynamic_cast<MiqtVirtualQIconEngine*>( (QIconEngine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IconName = slot;
+	return true;
 }
 
 struct miqt_string QIconEngine_virtualbase_IconName(void* self) {
 	return ( (MiqtVirtualQIconEngine*)(self) )->virtualbase_IconName();
 }
 
-void QIconEngine_override_virtual_IsNull(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIconEngine*>( (QIconEngine*)(self) )->handle__IsNull = slot;
+bool QIconEngine_override_virtual_IsNull(void* self, intptr_t slot) {
+	MiqtVirtualQIconEngine* self_cast = dynamic_cast<MiqtVirtualQIconEngine*>( (QIconEngine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsNull = slot;
+	return true;
 }
 
 bool QIconEngine_virtualbase_IsNull(void* self) {
 	return ( (MiqtVirtualQIconEngine*)(self) )->virtualbase_IsNull();
 }
 
-void QIconEngine_override_virtual_ScaledPixmap(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIconEngine*>( (QIconEngine*)(self) )->handle__ScaledPixmap = slot;
+bool QIconEngine_override_virtual_ScaledPixmap(void* self, intptr_t slot) {
+	MiqtVirtualQIconEngine* self_cast = dynamic_cast<MiqtVirtualQIconEngine*>( (QIconEngine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ScaledPixmap = slot;
+	return true;
 }
 
 QPixmap* QIconEngine_virtualbase_ScaledPixmap(void* self, QSize* size, int mode, int state, double scale) {
 	return ( (MiqtVirtualQIconEngine*)(self) )->virtualbase_ScaledPixmap(size, mode, state, scale);
 }
 
-void QIconEngine_override_virtual_VirtualHook(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIconEngine*>( (QIconEngine*)(self) )->handle__VirtualHook = slot;
+bool QIconEngine_override_virtual_VirtualHook(void* self, intptr_t slot) {
+	MiqtVirtualQIconEngine* self_cast = dynamic_cast<MiqtVirtualQIconEngine*>( (QIconEngine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__VirtualHook = slot;
+	return true;
 }
 
 void QIconEngine_virtualbase_VirtualHook(void* self, int id, void* data) {

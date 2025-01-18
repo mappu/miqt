@@ -15,8 +15,7 @@ import (
 )
 
 type QImageEncoderControl struct {
-	h          *C.QImageEncoderControl
-	isSubclass bool
+	h *C.QImageEncoderControl
 	*QMediaControl
 }
 

@@ -14,8 +14,7 @@ import (
 )
 
 type QBasicTimer struct {
-	h          *C.QBasicTimer
-	isSubclass bool
+	h *C.QBasicTimer
 }
 
 func (this *QBasicTimer) cPointer() *C.QBasicTimer {
@@ -49,17 +48,13 @@ func UnsafeNewQBasicTimer(h unsafe.Pointer) *QBasicTimer {
 // NewQBasicTimer constructs a new QBasicTimer object.
 func NewQBasicTimer(param1 *QBasicTimer) *QBasicTimer {
 
-	ret := newQBasicTimer(C.QBasicTimer_new(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQBasicTimer(C.QBasicTimer_new(param1.cPointer()))
 }
 
 // NewQBasicTimer2 constructs a new QBasicTimer object.
 func NewQBasicTimer2() *QBasicTimer {
 
-	ret := newQBasicTimer(C.QBasicTimer_new2())
-	ret.isSubclass = true
-	return ret
+	return newQBasicTimer(C.QBasicTimer_new2())
 }
 
 func (this *QBasicTimer) OperatorAssign(param1 *QBasicTimer) {

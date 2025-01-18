@@ -15,8 +15,7 @@ import (
 )
 
 type QAnimationGroup struct {
-	h          *C.QAnimationGroup
-	isSubclass bool
+	h *C.QAnimationGroup
 	*QAbstractAnimation
 }
 
@@ -54,17 +53,13 @@ func UnsafeNewQAnimationGroup(h unsafe.Pointer) *QAnimationGroup {
 // NewQAnimationGroup constructs a new QAnimationGroup object.
 func NewQAnimationGroup() *QAnimationGroup {
 
-	ret := newQAnimationGroup(C.QAnimationGroup_new())
-	ret.isSubclass = true
-	return ret
+	return newQAnimationGroup(C.QAnimationGroup_new())
 }
 
 // NewQAnimationGroup2 constructs a new QAnimationGroup object.
 func NewQAnimationGroup2(parent *QObject) *QAnimationGroup {
 
-	ret := newQAnimationGroup(C.QAnimationGroup_new2(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQAnimationGroup(C.QAnimationGroup_new2(parent.cPointer()))
 }
 
 func (this *QAnimationGroup) MetaObject() *QMetaObject {
@@ -177,10 +172,10 @@ func (this *QAnimationGroup) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QAnimationGroup) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QAnimationGroup_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAnimationGroup_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAnimationGroup_Event
@@ -199,10 +194,10 @@ func miqt_exec_callback_QAnimationGroup_Event(self *C.QAnimationGroup, cb C.intp
 
 }
 func (this *QAnimationGroup) OnDuration(slot func() int) {
-	if !this.isSubclass {
+	ok := C.QAnimationGroup_override_virtual_Duration(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAnimationGroup_override_virtual_Duration(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAnimationGroup_Duration
@@ -218,10 +213,10 @@ func miqt_exec_callback_QAnimationGroup_Duration(self *C.QAnimationGroup, cb C.i
 
 }
 func (this *QAnimationGroup) OnUpdateCurrentTime(slot func(currentTime int)) {
-	if !this.isSubclass {
+	ok := C.QAnimationGroup_override_virtual_UpdateCurrentTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAnimationGroup_override_virtual_UpdateCurrentTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAnimationGroup_UpdateCurrentTime
@@ -244,10 +239,10 @@ func (this *QAnimationGroup) callVirtualBase_UpdateState(newState QAbstractAnima
 
 }
 func (this *QAnimationGroup) OnUpdateState(slot func(super func(newState QAbstractAnimation__State, oldState QAbstractAnimation__State), newState QAbstractAnimation__State, oldState QAbstractAnimation__State)) {
-	if !this.isSubclass {
+	ok := C.QAnimationGroup_override_virtual_UpdateState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAnimationGroup_override_virtual_UpdateState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAnimationGroup_UpdateState
@@ -272,10 +267,10 @@ func (this *QAnimationGroup) callVirtualBase_UpdateDirection(direction QAbstract
 
 }
 func (this *QAnimationGroup) OnUpdateDirection(slot func(super func(direction QAbstractAnimation__Direction), direction QAbstractAnimation__Direction)) {
-	if !this.isSubclass {
+	ok := C.QAnimationGroup_override_virtual_UpdateDirection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAnimationGroup_override_virtual_UpdateDirection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAnimationGroup_UpdateDirection

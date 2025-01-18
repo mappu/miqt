@@ -16,8 +16,7 @@ import (
 )
 
 type QMetaDataReaderControl struct {
-	h          *C.QMetaDataReaderControl
-	isSubclass bool
+	h *C.QMetaDataReaderControl
 	*QMediaControl
 }
 

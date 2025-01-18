@@ -36,8 +36,7 @@ const (
 )
 
 type QNetworkAccessManager struct {
-	h          *C.QNetworkAccessManager
-	isSubclass bool
+	h *C.QNetworkAccessManager
 	*qt.QObject
 }
 
@@ -75,17 +74,13 @@ func UnsafeNewQNetworkAccessManager(h unsafe.Pointer) *QNetworkAccessManager {
 // NewQNetworkAccessManager constructs a new QNetworkAccessManager object.
 func NewQNetworkAccessManager() *QNetworkAccessManager {
 
-	ret := newQNetworkAccessManager(C.QNetworkAccessManager_new())
-	ret.isSubclass = true
-	return ret
+	return newQNetworkAccessManager(C.QNetworkAccessManager_new())
 }
 
 // NewQNetworkAccessManager2 constructs a new QNetworkAccessManager object.
 func NewQNetworkAccessManager2(parent *qt.QObject) *QNetworkAccessManager {
 
-	ret := newQNetworkAccessManager(C.QNetworkAccessManager_new2((*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkAccessManager(C.QNetworkAccessManager_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QNetworkAccessManager) MetaObject() *qt.QMetaObject {
@@ -623,10 +618,10 @@ func (this *QNetworkAccessManager) callVirtualBase_CreateRequest(op QNetworkAcce
 
 }
 func (this *QNetworkAccessManager) OnCreateRequest(slot func(super func(op QNetworkAccessManager__Operation, request *QNetworkRequest, outgoingData *qt.QIODevice) *QNetworkReply, op QNetworkAccessManager__Operation, request *QNetworkRequest, outgoingData *qt.QIODevice) *QNetworkReply) {
-	if !this.isSubclass {
+	ok := C.QNetworkAccessManager_override_virtual_CreateRequest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QNetworkAccessManager_override_virtual_CreateRequest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QNetworkAccessManager_CreateRequest
@@ -655,10 +650,10 @@ func (this *QNetworkAccessManager) callVirtualBase_Event(event *qt.QEvent) bool 
 
 }
 func (this *QNetworkAccessManager) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QNetworkAccessManager_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QNetworkAccessManager_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QNetworkAccessManager_Event
@@ -683,10 +678,10 @@ func (this *QNetworkAccessManager) callVirtualBase_EventFilter(watched *qt.QObje
 
 }
 func (this *QNetworkAccessManager) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QNetworkAccessManager_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QNetworkAccessManager_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QNetworkAccessManager_EventFilter
@@ -713,10 +708,10 @@ func (this *QNetworkAccessManager) callVirtualBase_TimerEvent(event *qt.QTimerEv
 
 }
 func (this *QNetworkAccessManager) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QNetworkAccessManager_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QNetworkAccessManager_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QNetworkAccessManager_TimerEvent
@@ -739,10 +734,10 @@ func (this *QNetworkAccessManager) callVirtualBase_ChildEvent(event *qt.QChildEv
 
 }
 func (this *QNetworkAccessManager) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QNetworkAccessManager_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QNetworkAccessManager_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QNetworkAccessManager_ChildEvent
@@ -765,10 +760,10 @@ func (this *QNetworkAccessManager) callVirtualBase_CustomEvent(event *qt.QEvent)
 
 }
 func (this *QNetworkAccessManager) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	if !this.isSubclass {
+	ok := C.QNetworkAccessManager_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QNetworkAccessManager_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QNetworkAccessManager_CustomEvent
@@ -791,10 +786,10 @@ func (this *QNetworkAccessManager) callVirtualBase_ConnectNotify(signal *qt.QMet
 
 }
 func (this *QNetworkAccessManager) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QNetworkAccessManager_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QNetworkAccessManager_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QNetworkAccessManager_ConnectNotify
@@ -817,10 +812,10 @@ func (this *QNetworkAccessManager) callVirtualBase_DisconnectNotify(signal *qt.Q
 
 }
 func (this *QNetworkAccessManager) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QNetworkAccessManager_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QNetworkAccessManager_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QNetworkAccessManager_DisconnectNotify

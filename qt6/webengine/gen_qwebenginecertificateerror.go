@@ -39,8 +39,7 @@ const (
 )
 
 type QWebEngineCertificateError struct {
-	h          *C.QWebEngineCertificateError
-	isSubclass bool
+	h *C.QWebEngineCertificateError
 }
 
 func (this *QWebEngineCertificateError) cPointer() *C.QWebEngineCertificateError {
@@ -74,9 +73,7 @@ func UnsafeNewQWebEngineCertificateError(h unsafe.Pointer) *QWebEngineCertificat
 // NewQWebEngineCertificateError constructs a new QWebEngineCertificateError object.
 func NewQWebEngineCertificateError(other *QWebEngineCertificateError) *QWebEngineCertificateError {
 
-	ret := newQWebEngineCertificateError(C.QWebEngineCertificateError_new(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineCertificateError(C.QWebEngineCertificateError_new(other.cPointer()))
 }
 
 func (this *QWebEngineCertificateError) OperatorAssign(other *QWebEngineCertificateError) {

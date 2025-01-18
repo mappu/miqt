@@ -23,8 +23,7 @@ const (
 )
 
 type QPainterPath struct {
-	h          *C.QPainterPath
-	isSubclass bool
+	h *C.QPainterPath
 }
 
 func (this *QPainterPath) cPointer() *C.QPainterPath {
@@ -58,25 +57,19 @@ func UnsafeNewQPainterPath(h unsafe.Pointer) *QPainterPath {
 // NewQPainterPath constructs a new QPainterPath object.
 func NewQPainterPath() *QPainterPath {
 
-	ret := newQPainterPath(C.QPainterPath_new())
-	ret.isSubclass = true
-	return ret
+	return newQPainterPath(C.QPainterPath_new())
 }
 
 // NewQPainterPath2 constructs a new QPainterPath object.
 func NewQPainterPath2(startPoint *QPointF) *QPainterPath {
 
-	ret := newQPainterPath(C.QPainterPath_new2(startPoint.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPainterPath(C.QPainterPath_new2(startPoint.cPointer()))
 }
 
 // NewQPainterPath3 constructs a new QPainterPath object.
 func NewQPainterPath3(other *QPainterPath) *QPainterPath {
 
-	ret := newQPainterPath(C.QPainterPath_new3(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPainterPath(C.QPainterPath_new3(other.cPointer()))
 }
 
 func (this *QPainterPath) OperatorAssign(other *QPainterPath) {
@@ -436,8 +429,7 @@ func (this *QPainterPath) GoGC() {
 }
 
 type QPainterPathStroker struct {
-	h          *C.QPainterPathStroker
-	isSubclass bool
+	h *C.QPainterPathStroker
 }
 
 func (this *QPainterPathStroker) cPointer() *C.QPainterPathStroker {
@@ -471,17 +463,13 @@ func UnsafeNewQPainterPathStroker(h unsafe.Pointer) *QPainterPathStroker {
 // NewQPainterPathStroker constructs a new QPainterPathStroker object.
 func NewQPainterPathStroker() *QPainterPathStroker {
 
-	ret := newQPainterPathStroker(C.QPainterPathStroker_new())
-	ret.isSubclass = true
-	return ret
+	return newQPainterPathStroker(C.QPainterPathStroker_new())
 }
 
 // NewQPainterPathStroker2 constructs a new QPainterPathStroker object.
 func NewQPainterPathStroker2(pen *QPen) *QPainterPathStroker {
 
-	ret := newQPainterPathStroker(C.QPainterPathStroker_new2(pen.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPainterPathStroker(C.QPainterPathStroker_new2(pen.cPointer()))
 }
 
 func (this *QPainterPathStroker) SetWidth(width float64) {
@@ -577,8 +565,7 @@ func (this *QPainterPathStroker) GoGC() {
 }
 
 type QPainterPath__Element struct {
-	h          *C.QPainterPath__Element
-	isSubclass bool
+	h *C.QPainterPath__Element
 }
 
 func (this *QPainterPath__Element) cPointer() *C.QPainterPath__Element {

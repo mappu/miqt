@@ -75,8 +75,7 @@ const (
 )
 
 type QPainter struct {
-	h          *C.QPainter
-	isSubclass bool
+	h *C.QPainter
 }
 
 func (this *QPainter) cPointer() *C.QPainter {
@@ -110,17 +109,13 @@ func UnsafeNewQPainter(h unsafe.Pointer) *QPainter {
 // NewQPainter constructs a new QPainter object.
 func NewQPainter() *QPainter {
 
-	ret := newQPainter(C.QPainter_new())
-	ret.isSubclass = true
-	return ret
+	return newQPainter(C.QPainter_new())
 }
 
 // NewQPainter2 constructs a new QPainter object.
 func NewQPainter2(param1 *QPaintDevice) *QPainter {
 
-	ret := newQPainter(C.QPainter_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPainter(C.QPainter_new2(param1.cPointer()))
 }
 
 func (this *QPainter) Device() *QPaintDevice {
@@ -1252,8 +1247,7 @@ func (this *QPainter) GoGC() {
 }
 
 type QPainter__PixmapFragment struct {
-	h          *C.QPainter__PixmapFragment
-	isSubclass bool
+	h *C.QPainter__PixmapFragment
 }
 
 func (this *QPainter__PixmapFragment) cPointer() *C.QPainter__PixmapFragment {

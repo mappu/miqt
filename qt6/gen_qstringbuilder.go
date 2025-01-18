@@ -14,8 +14,7 @@ import (
 )
 
 type QAbstractConcatenable struct {
-	h          *C.QAbstractConcatenable
-	isSubclass bool
+	h *C.QAbstractConcatenable
 }
 
 func (this *QAbstractConcatenable) cPointer() *C.QAbstractConcatenable {

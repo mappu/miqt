@@ -54,9 +54,9 @@ QWidget* QGraphicsSceneEvent_Widget(const QGraphicsSceneEvent* self);
 void QGraphicsSceneEvent_SetWidget(QGraphicsSceneEvent* self, QWidget* widget);
 unsigned long long QGraphicsSceneEvent_Timestamp(const QGraphicsSceneEvent* self);
 void QGraphicsSceneEvent_SetTimestamp(QGraphicsSceneEvent* self, unsigned long long ts);
-void QGraphicsSceneEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
+bool QGraphicsSceneEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QGraphicsSceneEvent_virtualbase_SetAccepted(void* self, bool accepted);
-void QGraphicsSceneEvent_override_virtual_Clone(void* self, intptr_t slot);
+bool QGraphicsSceneEvent_override_virtual_Clone(void* self, intptr_t slot);
 QEvent* QGraphicsSceneEvent_virtualbase_Clone(const void* self);
 void QGraphicsSceneEvent_Delete(QGraphicsSceneEvent* self);
 

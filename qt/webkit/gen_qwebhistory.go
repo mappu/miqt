@@ -15,8 +15,7 @@ import (
 )
 
 type QWebHistoryItem struct {
-	h          *C.QWebHistoryItem
-	isSubclass bool
+	h *C.QWebHistoryItem
 }
 
 func (this *QWebHistoryItem) cPointer() *C.QWebHistoryItem {
@@ -50,9 +49,7 @@ func UnsafeNewQWebHistoryItem(h unsafe.Pointer) *QWebHistoryItem {
 // NewQWebHistoryItem constructs a new QWebHistoryItem object.
 func NewQWebHistoryItem(other *QWebHistoryItem) *QWebHistoryItem {
 
-	ret := newQWebHistoryItem(C.QWebHistoryItem_new(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebHistoryItem(C.QWebHistoryItem_new(other.cPointer()))
 }
 
 func (this *QWebHistoryItem) OperatorAssign(other *QWebHistoryItem) {
@@ -161,8 +158,7 @@ func (this *QWebHistoryItem) GoGC() {
 }
 
 type QWebHistory struct {
-	h          *C.QWebHistory
-	isSubclass bool
+	h *C.QWebHistory
 }
 
 func (this *QWebHistory) cPointer() *C.QWebHistory {

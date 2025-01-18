@@ -417,72 +417,126 @@ bool QTranslator_Load34(QTranslator* self, const unsigned char* data, int lenVal
 	return self->load(static_cast<const uchar*>(data), static_cast<int>(lenVal), directory_QString);
 }
 
-void QTranslator_override_virtual_Translate(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTranslator*>( (QTranslator*)(self) )->handle__Translate = slot;
+bool QTranslator_override_virtual_Translate(void* self, intptr_t slot) {
+	MiqtVirtualQTranslator* self_cast = dynamic_cast<MiqtVirtualQTranslator*>( (QTranslator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Translate = slot;
+	return true;
 }
 
 struct miqt_string QTranslator_virtualbase_Translate(const void* self, const char* context, const char* sourceText, const char* disambiguation, int n) {
 	return ( (const MiqtVirtualQTranslator*)(self) )->virtualbase_Translate(context, sourceText, disambiguation, n);
 }
 
-void QTranslator_override_virtual_IsEmpty(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTranslator*>( (QTranslator*)(self) )->handle__IsEmpty = slot;
+bool QTranslator_override_virtual_IsEmpty(void* self, intptr_t slot) {
+	MiqtVirtualQTranslator* self_cast = dynamic_cast<MiqtVirtualQTranslator*>( (QTranslator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsEmpty = slot;
+	return true;
 }
 
 bool QTranslator_virtualbase_IsEmpty(const void* self) {
 	return ( (const MiqtVirtualQTranslator*)(self) )->virtualbase_IsEmpty();
 }
 
-void QTranslator_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTranslator*>( (QTranslator*)(self) )->handle__Event = slot;
+bool QTranslator_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQTranslator* self_cast = dynamic_cast<MiqtVirtualQTranslator*>( (QTranslator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QTranslator_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQTranslator*)(self) )->virtualbase_Event(event);
 }
 
-void QTranslator_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTranslator*>( (QTranslator*)(self) )->handle__EventFilter = slot;
+bool QTranslator_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQTranslator* self_cast = dynamic_cast<MiqtVirtualQTranslator*>( (QTranslator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QTranslator_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQTranslator*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QTranslator_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTranslator*>( (QTranslator*)(self) )->handle__TimerEvent = slot;
+bool QTranslator_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTranslator* self_cast = dynamic_cast<MiqtVirtualQTranslator*>( (QTranslator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QTranslator_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQTranslator*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QTranslator_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTranslator*>( (QTranslator*)(self) )->handle__ChildEvent = slot;
+bool QTranslator_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTranslator* self_cast = dynamic_cast<MiqtVirtualQTranslator*>( (QTranslator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QTranslator_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQTranslator*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QTranslator_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTranslator*>( (QTranslator*)(self) )->handle__CustomEvent = slot;
+bool QTranslator_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTranslator* self_cast = dynamic_cast<MiqtVirtualQTranslator*>( (QTranslator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QTranslator_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQTranslator*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QTranslator_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTranslator*>( (QTranslator*)(self) )->handle__ConnectNotify = slot;
+bool QTranslator_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQTranslator* self_cast = dynamic_cast<MiqtVirtualQTranslator*>( (QTranslator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QTranslator_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTranslator*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QTranslator_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTranslator*>( (QTranslator*)(self) )->handle__DisconnectNotify = slot;
+bool QTranslator_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQTranslator* self_cast = dynamic_cast<MiqtVirtualQTranslator*>( (QTranslator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QTranslator_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

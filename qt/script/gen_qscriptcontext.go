@@ -32,8 +32,7 @@ const (
 )
 
 type QScriptContext struct {
-	h          *C.QScriptContext
-	isSubclass bool
+	h *C.QScriptContext
 }
 
 func (this *QScriptContext) cPointer() *C.QScriptContext {

@@ -1246,304 +1246,538 @@ const char* QsciLexerCPP_BlockStartKeyword1(const QsciLexerCPP* self, int* style
 	return (const char*) self->blockStartKeyword(static_cast<int*>(style));
 }
 
-void QsciLexerCPP_override_virtual_SetFoldAtElse(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__SetFoldAtElse = slot;
+bool QsciLexerCPP_override_virtual_SetFoldAtElse(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetFoldAtElse = slot;
+	return true;
 }
 
 void QsciLexerCPP_virtualbase_SetFoldAtElse(void* self, bool fold) {
 	( (MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_SetFoldAtElse(fold);
 }
 
-void QsciLexerCPP_override_virtual_SetFoldComments(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__SetFoldComments = slot;
+bool QsciLexerCPP_override_virtual_SetFoldComments(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetFoldComments = slot;
+	return true;
 }
 
 void QsciLexerCPP_virtualbase_SetFoldComments(void* self, bool fold) {
 	( (MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_SetFoldComments(fold);
 }
 
-void QsciLexerCPP_override_virtual_SetFoldCompact(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__SetFoldCompact = slot;
+bool QsciLexerCPP_override_virtual_SetFoldCompact(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetFoldCompact = slot;
+	return true;
 }
 
 void QsciLexerCPP_virtualbase_SetFoldCompact(void* self, bool fold) {
 	( (MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_SetFoldCompact(fold);
 }
 
-void QsciLexerCPP_override_virtual_SetFoldPreprocessor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__SetFoldPreprocessor = slot;
+bool QsciLexerCPP_override_virtual_SetFoldPreprocessor(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetFoldPreprocessor = slot;
+	return true;
 }
 
 void QsciLexerCPP_virtualbase_SetFoldPreprocessor(void* self, bool fold) {
 	( (MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_SetFoldPreprocessor(fold);
 }
 
-void QsciLexerCPP_override_virtual_SetStylePreprocessor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__SetStylePreprocessor = slot;
+bool QsciLexerCPP_override_virtual_SetStylePreprocessor(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetStylePreprocessor = slot;
+	return true;
 }
 
 void QsciLexerCPP_virtualbase_SetStylePreprocessor(void* self, bool style) {
 	( (MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_SetStylePreprocessor(style);
 }
 
-void QsciLexerCPP_override_virtual_Language(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__Language = slot;
+bool QsciLexerCPP_override_virtual_Language(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Language = slot;
+	return true;
 }
 
-void QsciLexerCPP_override_virtual_Lexer(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__Lexer = slot;
+bool QsciLexerCPP_override_virtual_Lexer(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Lexer = slot;
+	return true;
 }
 
 const char* QsciLexerCPP_virtualbase_Lexer(const void* self) {
 	return ( (const MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_Lexer();
 }
 
-void QsciLexerCPP_override_virtual_LexerId(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__LexerId = slot;
+bool QsciLexerCPP_override_virtual_LexerId(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__LexerId = slot;
+	return true;
 }
 
 int QsciLexerCPP_virtualbase_LexerId(const void* self) {
 	return ( (const MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_LexerId();
 }
 
-void QsciLexerCPP_override_virtual_AutoCompletionFillups(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__AutoCompletionFillups = slot;
+bool QsciLexerCPP_override_virtual_AutoCompletionFillups(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__AutoCompletionFillups = slot;
+	return true;
 }
 
 const char* QsciLexerCPP_virtualbase_AutoCompletionFillups(const void* self) {
 	return ( (const MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_AutoCompletionFillups();
 }
 
-void QsciLexerCPP_override_virtual_AutoCompletionWordSeparators(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__AutoCompletionWordSeparators = slot;
+bool QsciLexerCPP_override_virtual_AutoCompletionWordSeparators(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__AutoCompletionWordSeparators = slot;
+	return true;
 }
 
 struct miqt_array /* of struct miqt_string */  QsciLexerCPP_virtualbase_AutoCompletionWordSeparators(const void* self) {
 	return ( (const MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_AutoCompletionWordSeparators();
 }
 
-void QsciLexerCPP_override_virtual_BlockEnd(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__BlockEnd = slot;
+bool QsciLexerCPP_override_virtual_BlockEnd(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BlockEnd = slot;
+	return true;
 }
 
 const char* QsciLexerCPP_virtualbase_BlockEnd(const void* self, int* style) {
 	return ( (const MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_BlockEnd(style);
 }
 
-void QsciLexerCPP_override_virtual_BlockLookback(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__BlockLookback = slot;
+bool QsciLexerCPP_override_virtual_BlockLookback(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BlockLookback = slot;
+	return true;
 }
 
 int QsciLexerCPP_virtualbase_BlockLookback(const void* self) {
 	return ( (const MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_BlockLookback();
 }
 
-void QsciLexerCPP_override_virtual_BlockStart(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__BlockStart = slot;
+bool QsciLexerCPP_override_virtual_BlockStart(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BlockStart = slot;
+	return true;
 }
 
 const char* QsciLexerCPP_virtualbase_BlockStart(const void* self, int* style) {
 	return ( (const MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_BlockStart(style);
 }
 
-void QsciLexerCPP_override_virtual_BlockStartKeyword(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__BlockStartKeyword = slot;
+bool QsciLexerCPP_override_virtual_BlockStartKeyword(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BlockStartKeyword = slot;
+	return true;
 }
 
 const char* QsciLexerCPP_virtualbase_BlockStartKeyword(const void* self, int* style) {
 	return ( (const MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_BlockStartKeyword(style);
 }
 
-void QsciLexerCPP_override_virtual_BraceStyle(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__BraceStyle = slot;
+bool QsciLexerCPP_override_virtual_BraceStyle(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BraceStyle = slot;
+	return true;
 }
 
 int QsciLexerCPP_virtualbase_BraceStyle(const void* self) {
 	return ( (const MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_BraceStyle();
 }
 
-void QsciLexerCPP_override_virtual_CaseSensitive(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__CaseSensitive = slot;
+bool QsciLexerCPP_override_virtual_CaseSensitive(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CaseSensitive = slot;
+	return true;
 }
 
 bool QsciLexerCPP_virtualbase_CaseSensitive(const void* self) {
 	return ( (const MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_CaseSensitive();
 }
 
-void QsciLexerCPP_override_virtual_Color(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__Color = slot;
+bool QsciLexerCPP_override_virtual_Color(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Color = slot;
+	return true;
 }
 
 QColor* QsciLexerCPP_virtualbase_Color(const void* self, int style) {
 	return ( (const MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_Color(style);
 }
 
-void QsciLexerCPP_override_virtual_EolFill(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__EolFill = slot;
+bool QsciLexerCPP_override_virtual_EolFill(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EolFill = slot;
+	return true;
 }
 
 bool QsciLexerCPP_virtualbase_EolFill(const void* self, int style) {
 	return ( (const MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_EolFill(style);
 }
 
-void QsciLexerCPP_override_virtual_Font(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__Font = slot;
+bool QsciLexerCPP_override_virtual_Font(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Font = slot;
+	return true;
 }
 
 QFont* QsciLexerCPP_virtualbase_Font(const void* self, int style) {
 	return ( (const MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_Font(style);
 }
 
-void QsciLexerCPP_override_virtual_IndentationGuideView(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__IndentationGuideView = slot;
+bool QsciLexerCPP_override_virtual_IndentationGuideView(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IndentationGuideView = slot;
+	return true;
 }
 
 int QsciLexerCPP_virtualbase_IndentationGuideView(const void* self) {
 	return ( (const MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_IndentationGuideView();
 }
 
-void QsciLexerCPP_override_virtual_Keywords(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__Keywords = slot;
+bool QsciLexerCPP_override_virtual_Keywords(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Keywords = slot;
+	return true;
 }
 
 const char* QsciLexerCPP_virtualbase_Keywords(const void* self, int set) {
 	return ( (const MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_Keywords(set);
 }
 
-void QsciLexerCPP_override_virtual_DefaultStyle(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__DefaultStyle = slot;
+bool QsciLexerCPP_override_virtual_DefaultStyle(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DefaultStyle = slot;
+	return true;
 }
 
 int QsciLexerCPP_virtualbase_DefaultStyle(const void* self) {
 	return ( (const MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_DefaultStyle();
 }
 
-void QsciLexerCPP_override_virtual_Description(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__Description = slot;
+bool QsciLexerCPP_override_virtual_Description(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Description = slot;
+	return true;
 }
 
-void QsciLexerCPP_override_virtual_Paper(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__Paper = slot;
+bool QsciLexerCPP_override_virtual_Paper(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Paper = slot;
+	return true;
 }
 
 QColor* QsciLexerCPP_virtualbase_Paper(const void* self, int style) {
 	return ( (const MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_Paper(style);
 }
 
-void QsciLexerCPP_override_virtual_DefaultColorWithStyle(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__DefaultColorWithStyle = slot;
+bool QsciLexerCPP_override_virtual_DefaultColorWithStyle(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DefaultColorWithStyle = slot;
+	return true;
 }
 
 QColor* QsciLexerCPP_virtualbase_DefaultColorWithStyle(const void* self, int style) {
 	return ( (const MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_DefaultColorWithStyle(style);
 }
 
-void QsciLexerCPP_override_virtual_DefaultEolFill(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__DefaultEolFill = slot;
+bool QsciLexerCPP_override_virtual_DefaultEolFill(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DefaultEolFill = slot;
+	return true;
 }
 
 bool QsciLexerCPP_virtualbase_DefaultEolFill(const void* self, int style) {
 	return ( (const MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_DefaultEolFill(style);
 }
 
-void QsciLexerCPP_override_virtual_DefaultFontWithStyle(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__DefaultFontWithStyle = slot;
+bool QsciLexerCPP_override_virtual_DefaultFontWithStyle(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DefaultFontWithStyle = slot;
+	return true;
 }
 
 QFont* QsciLexerCPP_virtualbase_DefaultFontWithStyle(const void* self, int style) {
 	return ( (const MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_DefaultFontWithStyle(style);
 }
 
-void QsciLexerCPP_override_virtual_DefaultPaperWithStyle(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__DefaultPaperWithStyle = slot;
+bool QsciLexerCPP_override_virtual_DefaultPaperWithStyle(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DefaultPaperWithStyle = slot;
+	return true;
 }
 
 QColor* QsciLexerCPP_virtualbase_DefaultPaperWithStyle(const void* self, int style) {
 	return ( (const MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_DefaultPaperWithStyle(style);
 }
 
-void QsciLexerCPP_override_virtual_SetEditor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__SetEditor = slot;
+bool QsciLexerCPP_override_virtual_SetEditor(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetEditor = slot;
+	return true;
 }
 
 void QsciLexerCPP_virtualbase_SetEditor(void* self, QsciScintilla* editor) {
 	( (MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_SetEditor(editor);
 }
 
-void QsciLexerCPP_override_virtual_RefreshProperties(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__RefreshProperties = slot;
+bool QsciLexerCPP_override_virtual_RefreshProperties(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RefreshProperties = slot;
+	return true;
 }
 
 void QsciLexerCPP_virtualbase_RefreshProperties(void* self) {
 	( (MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_RefreshProperties();
 }
 
-void QsciLexerCPP_override_virtual_StyleBitsNeeded(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__StyleBitsNeeded = slot;
+bool QsciLexerCPP_override_virtual_StyleBitsNeeded(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__StyleBitsNeeded = slot;
+	return true;
 }
 
 int QsciLexerCPP_virtualbase_StyleBitsNeeded(const void* self) {
 	return ( (const MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_StyleBitsNeeded();
 }
 
-void QsciLexerCPP_override_virtual_WordCharacters(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__WordCharacters = slot;
+bool QsciLexerCPP_override_virtual_WordCharacters(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WordCharacters = slot;
+	return true;
 }
 
 const char* QsciLexerCPP_virtualbase_WordCharacters(const void* self) {
 	return ( (const MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_WordCharacters();
 }
 
-void QsciLexerCPP_override_virtual_SetAutoIndentStyle(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__SetAutoIndentStyle = slot;
+bool QsciLexerCPP_override_virtual_SetAutoIndentStyle(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetAutoIndentStyle = slot;
+	return true;
 }
 
 void QsciLexerCPP_virtualbase_SetAutoIndentStyle(void* self, int autoindentstyle) {
 	( (MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_SetAutoIndentStyle(autoindentstyle);
 }
 
-void QsciLexerCPP_override_virtual_SetColor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__SetColor = slot;
+bool QsciLexerCPP_override_virtual_SetColor(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetColor = slot;
+	return true;
 }
 
 void QsciLexerCPP_virtualbase_SetColor(void* self, QColor* c, int style) {
 	( (MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_SetColor(c, style);
 }
 
-void QsciLexerCPP_override_virtual_SetEolFill(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__SetEolFill = slot;
+bool QsciLexerCPP_override_virtual_SetEolFill(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetEolFill = slot;
+	return true;
 }
 
 void QsciLexerCPP_virtualbase_SetEolFill(void* self, bool eoffill, int style) {
 	( (MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_SetEolFill(eoffill, style);
 }
 
-void QsciLexerCPP_override_virtual_SetFont(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__SetFont = slot;
+bool QsciLexerCPP_override_virtual_SetFont(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetFont = slot;
+	return true;
 }
 
 void QsciLexerCPP_virtualbase_SetFont(void* self, QFont* f, int style) {
 	( (MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_SetFont(f, style);
 }
 
-void QsciLexerCPP_override_virtual_SetPaper(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__SetPaper = slot;
+bool QsciLexerCPP_override_virtual_SetPaper(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetPaper = slot;
+	return true;
 }
 
 void QsciLexerCPP_virtualbase_SetPaper(void* self, QColor* c, int style) {
 	( (MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_SetPaper(c, style);
 }
 
-void QsciLexerCPP_override_virtual_ReadProperties(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__ReadProperties = slot;
+bool QsciLexerCPP_override_virtual_ReadProperties(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ReadProperties = slot;
+	return true;
 }
 
 bool QsciLexerCPP_virtualbase_ReadProperties(void* self, QSettings* qs, struct miqt_string prefix) {
 	return ( (MiqtVirtualQsciLexerCPP*)(self) )->virtualbase_ReadProperties(qs, prefix);
 }
 
-void QsciLexerCPP_override_virtual_WriteProperties(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) )->handle__WriteProperties = slot;
+bool QsciLexerCPP_override_virtual_WriteProperties(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCPP* self_cast = dynamic_cast<MiqtVirtualQsciLexerCPP*>( (QsciLexerCPP*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WriteProperties = slot;
+	return true;
 }
 
 bool QsciLexerCPP_virtualbase_WriteProperties(const void* self, QSettings* qs, struct miqt_string prefix) {

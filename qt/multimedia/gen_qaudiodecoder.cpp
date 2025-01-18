@@ -453,40 +453,70 @@ int QAudioDecoder_HasSupport2(struct miqt_string mimeType, struct miqt_array /* 
 	return static_cast<int>(_ret);
 }
 
-void QAudioDecoder_override_virtual_Bind(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) )->handle__Bind = slot;
+bool QAudioDecoder_override_virtual_Bind(void* self, intptr_t slot) {
+	MiqtVirtualQAudioDecoder* self_cast = dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Bind = slot;
+	return true;
 }
 
 bool QAudioDecoder_virtualbase_Bind(void* self, QObject* param1) {
 	return ( (MiqtVirtualQAudioDecoder*)(self) )->virtualbase_Bind(param1);
 }
 
-void QAudioDecoder_override_virtual_Unbind(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) )->handle__Unbind = slot;
+bool QAudioDecoder_override_virtual_Unbind(void* self, intptr_t slot) {
+	MiqtVirtualQAudioDecoder* self_cast = dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Unbind = slot;
+	return true;
 }
 
 void QAudioDecoder_virtualbase_Unbind(void* self, QObject* param1) {
 	( (MiqtVirtualQAudioDecoder*)(self) )->virtualbase_Unbind(param1);
 }
 
-void QAudioDecoder_override_virtual_IsAvailable(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) )->handle__IsAvailable = slot;
+bool QAudioDecoder_override_virtual_IsAvailable(void* self, intptr_t slot) {
+	MiqtVirtualQAudioDecoder* self_cast = dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsAvailable = slot;
+	return true;
 }
 
 bool QAudioDecoder_virtualbase_IsAvailable(const void* self) {
 	return ( (const MiqtVirtualQAudioDecoder*)(self) )->virtualbase_IsAvailable();
 }
 
-void QAudioDecoder_override_virtual_Availability(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) )->handle__Availability = slot;
+bool QAudioDecoder_override_virtual_Availability(void* self, intptr_t slot) {
+	MiqtVirtualQAudioDecoder* self_cast = dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Availability = slot;
+	return true;
 }
 
 int QAudioDecoder_virtualbase_Availability(const void* self) {
 	return ( (const MiqtVirtualQAudioDecoder*)(self) )->virtualbase_Availability();
 }
 
-void QAudioDecoder_override_virtual_Service(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) )->handle__Service = slot;
+bool QAudioDecoder_override_virtual_Service(void* self, intptr_t slot) {
+	MiqtVirtualQAudioDecoder* self_cast = dynamic_cast<MiqtVirtualQAudioDecoder*>( (QAudioDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Service = slot;
+	return true;
 }
 
 QMediaService* QAudioDecoder_virtualbase_Service(const void* self) {

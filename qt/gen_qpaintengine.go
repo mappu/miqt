@@ -101,8 +101,7 @@ const (
 )
 
 type QTextItem struct {
-	h          *C.QTextItem
-	isSubclass bool
+	h *C.QTextItem
 }
 
 func (this *QTextItem) cPointer() *C.QTextItem {
@@ -177,8 +176,7 @@ func (this *QTextItem) GoGC() {
 }
 
 type QPaintEngine struct {
-	h          *C.QPaintEngine
-	isSubclass bool
+	h *C.QPaintEngine
 }
 
 func (this *QPaintEngine) cPointer() *C.QPaintEngine {
@@ -212,17 +210,13 @@ func UnsafeNewQPaintEngine(h unsafe.Pointer) *QPaintEngine {
 // NewQPaintEngine constructs a new QPaintEngine object.
 func NewQPaintEngine() *QPaintEngine {
 
-	ret := newQPaintEngine(C.QPaintEngine_new())
-	ret.isSubclass = true
-	return ret
+	return newQPaintEngine(C.QPaintEngine_new())
 }
 
 // NewQPaintEngine2 constructs a new QPaintEngine object.
 func NewQPaintEngine2(features QPaintEngine__PaintEngineFeature) *QPaintEngine {
 
-	ret := newQPaintEngine(C.QPaintEngine_new2((C.int)(features)))
-	ret.isSubclass = true
-	return ret
+	return newQPaintEngine(C.QPaintEngine_new2((C.int)(features)))
 }
 
 func (this *QPaintEngine) IsActive() bool {
@@ -375,10 +369,10 @@ func (this *QPaintEngine) IsExtended() bool {
 	return (bool)(C.QPaintEngine_IsExtended(this.h))
 }
 func (this *QPaintEngine) OnBegin(slot func(pdev *QPaintDevice) bool) {
-	if !this.isSubclass {
+	ok := C.QPaintEngine_override_virtual_Begin(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPaintEngine_override_virtual_Begin(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPaintEngine_Begin
@@ -397,10 +391,10 @@ func miqt_exec_callback_QPaintEngine_Begin(self *C.QPaintEngine, cb C.intptr_t, 
 
 }
 func (this *QPaintEngine) OnEnd(slot func() bool) {
-	if !this.isSubclass {
+	ok := C.QPaintEngine_override_virtual_End(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPaintEngine_override_virtual_End(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPaintEngine_End
@@ -416,10 +410,10 @@ func miqt_exec_callback_QPaintEngine_End(self *C.QPaintEngine, cb C.intptr_t) C.
 
 }
 func (this *QPaintEngine) OnUpdateState(slot func(state *QPaintEngineState)) {
-	if !this.isSubclass {
+	ok := C.QPaintEngine_override_virtual_UpdateState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPaintEngine_override_virtual_UpdateState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPaintEngine_UpdateState
@@ -442,10 +436,10 @@ func (this *QPaintEngine) callVirtualBase_DrawRects(rects *QRect, rectCount int)
 
 }
 func (this *QPaintEngine) OnDrawRects(slot func(super func(rects *QRect, rectCount int), rects *QRect, rectCount int)) {
-	if !this.isSubclass {
+	ok := C.QPaintEngine_override_virtual_DrawRects(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPaintEngine_override_virtual_DrawRects(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPaintEngine_DrawRects
@@ -470,10 +464,10 @@ func (this *QPaintEngine) callVirtualBase_DrawRects2(rects *QRectF, rectCount in
 
 }
 func (this *QPaintEngine) OnDrawRects2(slot func(super func(rects *QRectF, rectCount int), rects *QRectF, rectCount int)) {
-	if !this.isSubclass {
+	ok := C.QPaintEngine_override_virtual_DrawRects2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPaintEngine_override_virtual_DrawRects2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPaintEngine_DrawRects2
@@ -498,10 +492,10 @@ func (this *QPaintEngine) callVirtualBase_DrawLines(lines *QLine, lineCount int)
 
 }
 func (this *QPaintEngine) OnDrawLines(slot func(super func(lines *QLine, lineCount int), lines *QLine, lineCount int)) {
-	if !this.isSubclass {
+	ok := C.QPaintEngine_override_virtual_DrawLines(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPaintEngine_override_virtual_DrawLines(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPaintEngine_DrawLines
@@ -526,10 +520,10 @@ func (this *QPaintEngine) callVirtualBase_DrawLines2(lines *QLineF, lineCount in
 
 }
 func (this *QPaintEngine) OnDrawLines2(slot func(super func(lines *QLineF, lineCount int), lines *QLineF, lineCount int)) {
-	if !this.isSubclass {
+	ok := C.QPaintEngine_override_virtual_DrawLines2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPaintEngine_override_virtual_DrawLines2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPaintEngine_DrawLines2
@@ -554,10 +548,10 @@ func (this *QPaintEngine) callVirtualBase_DrawEllipse(r *QRectF) {
 
 }
 func (this *QPaintEngine) OnDrawEllipse(slot func(super func(r *QRectF), r *QRectF)) {
-	if !this.isSubclass {
+	ok := C.QPaintEngine_override_virtual_DrawEllipse(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPaintEngine_override_virtual_DrawEllipse(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPaintEngine_DrawEllipse
@@ -580,10 +574,10 @@ func (this *QPaintEngine) callVirtualBase_DrawEllipseWithQRect(r *QRect) {
 
 }
 func (this *QPaintEngine) OnDrawEllipseWithQRect(slot func(super func(r *QRect), r *QRect)) {
-	if !this.isSubclass {
+	ok := C.QPaintEngine_override_virtual_DrawEllipseWithQRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPaintEngine_override_virtual_DrawEllipseWithQRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPaintEngine_DrawEllipseWithQRect
@@ -606,10 +600,10 @@ func (this *QPaintEngine) callVirtualBase_DrawPath(path *QPainterPath) {
 
 }
 func (this *QPaintEngine) OnDrawPath(slot func(super func(path *QPainterPath), path *QPainterPath)) {
-	if !this.isSubclass {
+	ok := C.QPaintEngine_override_virtual_DrawPath(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPaintEngine_override_virtual_DrawPath(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPaintEngine_DrawPath
@@ -632,10 +626,10 @@ func (this *QPaintEngine) callVirtualBase_DrawPoints(points *QPointF, pointCount
 
 }
 func (this *QPaintEngine) OnDrawPoints(slot func(super func(points *QPointF, pointCount int), points *QPointF, pointCount int)) {
-	if !this.isSubclass {
+	ok := C.QPaintEngine_override_virtual_DrawPoints(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPaintEngine_override_virtual_DrawPoints(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPaintEngine_DrawPoints
@@ -660,10 +654,10 @@ func (this *QPaintEngine) callVirtualBase_DrawPoints2(points *QPoint, pointCount
 
 }
 func (this *QPaintEngine) OnDrawPoints2(slot func(super func(points *QPoint, pointCount int), points *QPoint, pointCount int)) {
-	if !this.isSubclass {
+	ok := C.QPaintEngine_override_virtual_DrawPoints2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPaintEngine_override_virtual_DrawPoints2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPaintEngine_DrawPoints2
@@ -688,10 +682,10 @@ func (this *QPaintEngine) callVirtualBase_DrawPolygon(points *QPointF, pointCoun
 
 }
 func (this *QPaintEngine) OnDrawPolygon(slot func(super func(points *QPointF, pointCount int, mode QPaintEngine__PolygonDrawMode), points *QPointF, pointCount int, mode QPaintEngine__PolygonDrawMode)) {
-	if !this.isSubclass {
+	ok := C.QPaintEngine_override_virtual_DrawPolygon(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPaintEngine_override_virtual_DrawPolygon(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPaintEngine_DrawPolygon
@@ -718,10 +712,10 @@ func (this *QPaintEngine) callVirtualBase_DrawPolygon2(points *QPoint, pointCoun
 
 }
 func (this *QPaintEngine) OnDrawPolygon2(slot func(super func(points *QPoint, pointCount int, mode QPaintEngine__PolygonDrawMode), points *QPoint, pointCount int, mode QPaintEngine__PolygonDrawMode)) {
-	if !this.isSubclass {
+	ok := C.QPaintEngine_override_virtual_DrawPolygon2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPaintEngine_override_virtual_DrawPolygon2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPaintEngine_DrawPolygon2
@@ -742,10 +736,10 @@ func miqt_exec_callback_QPaintEngine_DrawPolygon2(self *C.QPaintEngine, cb C.int
 
 }
 func (this *QPaintEngine) OnDrawPixmap(slot func(r *QRectF, pm *QPixmap, sr *QRectF)) {
-	if !this.isSubclass {
+	ok := C.QPaintEngine_override_virtual_DrawPixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPaintEngine_override_virtual_DrawPixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPaintEngine_DrawPixmap
@@ -772,10 +766,10 @@ func (this *QPaintEngine) callVirtualBase_DrawTextItem(p *QPointF, textItem *QTe
 
 }
 func (this *QPaintEngine) OnDrawTextItem(slot func(super func(p *QPointF, textItem *QTextItem), p *QPointF, textItem *QTextItem)) {
-	if !this.isSubclass {
+	ok := C.QPaintEngine_override_virtual_DrawTextItem(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPaintEngine_override_virtual_DrawTextItem(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPaintEngine_DrawTextItem
@@ -800,10 +794,10 @@ func (this *QPaintEngine) callVirtualBase_DrawTiledPixmap(r *QRectF, pixmap *QPi
 
 }
 func (this *QPaintEngine) OnDrawTiledPixmap(slot func(super func(r *QRectF, pixmap *QPixmap, s *QPointF), r *QRectF, pixmap *QPixmap, s *QPointF)) {
-	if !this.isSubclass {
+	ok := C.QPaintEngine_override_virtual_DrawTiledPixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPaintEngine_override_virtual_DrawTiledPixmap(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPaintEngine_DrawTiledPixmap
@@ -830,10 +824,10 @@ func (this *QPaintEngine) callVirtualBase_DrawImage(r *QRectF, pm *QImage, sr *Q
 
 }
 func (this *QPaintEngine) OnDrawImage(slot func(super func(r *QRectF, pm *QImage, sr *QRectF, flags ImageConversionFlag), r *QRectF, pm *QImage, sr *QRectF, flags ImageConversionFlag)) {
-	if !this.isSubclass {
+	ok := C.QPaintEngine_override_virtual_DrawImage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPaintEngine_override_virtual_DrawImage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPaintEngine_DrawImage
@@ -864,10 +858,10 @@ func (this *QPaintEngine) callVirtualBase_CoordinateOffset() *QPoint {
 
 }
 func (this *QPaintEngine) OnCoordinateOffset(slot func(super func() *QPoint) *QPoint) {
-	if !this.isSubclass {
+	ok := C.QPaintEngine_override_virtual_CoordinateOffset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPaintEngine_override_virtual_CoordinateOffset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPaintEngine_CoordinateOffset
@@ -883,10 +877,10 @@ func miqt_exec_callback_QPaintEngine_CoordinateOffset(self *C.QPaintEngine, cb C
 
 }
 func (this *QPaintEngine) OnType(slot func() QPaintEngine__Type) {
-	if !this.isSubclass {
+	ok := C.QPaintEngine_override_virtual_Type(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPaintEngine_override_virtual_Type(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPaintEngine_Type
@@ -917,8 +911,7 @@ func (this *QPaintEngine) GoGC() {
 }
 
 type QPaintEngineState struct {
-	h          *C.QPaintEngineState
-	isSubclass bool
+	h *C.QPaintEngineState
 }
 
 func (this *QPaintEngineState) cPointer() *C.QPaintEngineState {

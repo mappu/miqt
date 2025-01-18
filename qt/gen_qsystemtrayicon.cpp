@@ -420,56 +420,98 @@ void QSystemTrayIcon_ShowMessage42(QSystemTrayIcon* self, struct miqt_string tit
 	self->showMessage(title_QString, msg_QString, static_cast<QSystemTrayIcon::MessageIcon>(icon), static_cast<int>(msecs));
 }
 
-void QSystemTrayIcon_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSystemTrayIcon*>( (QSystemTrayIcon*)(self) )->handle__Event = slot;
+bool QSystemTrayIcon_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQSystemTrayIcon* self_cast = dynamic_cast<MiqtVirtualQSystemTrayIcon*>( (QSystemTrayIcon*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QSystemTrayIcon_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQSystemTrayIcon*)(self) )->virtualbase_Event(event);
 }
 
-void QSystemTrayIcon_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSystemTrayIcon*>( (QSystemTrayIcon*)(self) )->handle__EventFilter = slot;
+bool QSystemTrayIcon_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQSystemTrayIcon* self_cast = dynamic_cast<MiqtVirtualQSystemTrayIcon*>( (QSystemTrayIcon*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QSystemTrayIcon_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQSystemTrayIcon*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QSystemTrayIcon_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSystemTrayIcon*>( (QSystemTrayIcon*)(self) )->handle__TimerEvent = slot;
+bool QSystemTrayIcon_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSystemTrayIcon* self_cast = dynamic_cast<MiqtVirtualQSystemTrayIcon*>( (QSystemTrayIcon*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QSystemTrayIcon_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQSystemTrayIcon*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QSystemTrayIcon_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSystemTrayIcon*>( (QSystemTrayIcon*)(self) )->handle__ChildEvent = slot;
+bool QSystemTrayIcon_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSystemTrayIcon* self_cast = dynamic_cast<MiqtVirtualQSystemTrayIcon*>( (QSystemTrayIcon*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QSystemTrayIcon_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQSystemTrayIcon*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QSystemTrayIcon_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSystemTrayIcon*>( (QSystemTrayIcon*)(self) )->handle__CustomEvent = slot;
+bool QSystemTrayIcon_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSystemTrayIcon* self_cast = dynamic_cast<MiqtVirtualQSystemTrayIcon*>( (QSystemTrayIcon*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QSystemTrayIcon_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQSystemTrayIcon*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QSystemTrayIcon_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSystemTrayIcon*>( (QSystemTrayIcon*)(self) )->handle__ConnectNotify = slot;
+bool QSystemTrayIcon_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQSystemTrayIcon* self_cast = dynamic_cast<MiqtVirtualQSystemTrayIcon*>( (QSystemTrayIcon*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QSystemTrayIcon_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSystemTrayIcon*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QSystemTrayIcon_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSystemTrayIcon*>( (QSystemTrayIcon*)(self) )->handle__DisconnectNotify = slot;
+bool QSystemTrayIcon_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQSystemTrayIcon* self_cast = dynamic_cast<MiqtVirtualQSystemTrayIcon*>( (QSystemTrayIcon*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QSystemTrayIcon_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

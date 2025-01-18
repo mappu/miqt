@@ -53,8 +53,14 @@ bool QAbstractNativeEventFilter_NativeEventFilter(QAbstractNativeEventFilter* se
 	return self->nativeEventFilter(eventType_QByteArray, message, static_cast<long*>(result));
 }
 
-void QAbstractNativeEventFilter_override_virtual_NativeEventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractNativeEventFilter*>( (QAbstractNativeEventFilter*)(self) )->handle__NativeEventFilter = slot;
+bool QAbstractNativeEventFilter_override_virtual_NativeEventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractNativeEventFilter* self_cast = dynamic_cast<MiqtVirtualQAbstractNativeEventFilter*>( (QAbstractNativeEventFilter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NativeEventFilter = slot;
+	return true;
 }
 
 void QAbstractNativeEventFilter_Delete(QAbstractNativeEventFilter* self) {

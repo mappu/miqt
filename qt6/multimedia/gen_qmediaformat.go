@@ -85,8 +85,7 @@ const (
 )
 
 type QMediaFormat struct {
-	h          *C.QMediaFormat
-	isSubclass bool
+	h *C.QMediaFormat
 }
 
 func (this *QMediaFormat) cPointer() *C.QMediaFormat {
@@ -120,25 +119,19 @@ func UnsafeNewQMediaFormat(h unsafe.Pointer) *QMediaFormat {
 // NewQMediaFormat constructs a new QMediaFormat object.
 func NewQMediaFormat() *QMediaFormat {
 
-	ret := newQMediaFormat(C.QMediaFormat_new())
-	ret.isSubclass = true
-	return ret
+	return newQMediaFormat(C.QMediaFormat_new())
 }
 
 // NewQMediaFormat2 constructs a new QMediaFormat object.
 func NewQMediaFormat2(other *QMediaFormat) *QMediaFormat {
 
-	ret := newQMediaFormat(C.QMediaFormat_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQMediaFormat(C.QMediaFormat_new2(other.cPointer()))
 }
 
 // NewQMediaFormat3 constructs a new QMediaFormat object.
 func NewQMediaFormat3(format QMediaFormat__FileFormat) *QMediaFormat {
 
-	ret := newQMediaFormat(C.QMediaFormat_new3((C.int)(format)))
-	ret.isSubclass = true
-	return ret
+	return newQMediaFormat(C.QMediaFormat_new3((C.int)(format)))
 }
 
 func (this *QMediaFormat) OperatorAssign(other *QMediaFormat) {

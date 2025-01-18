@@ -81,8 +81,7 @@ const (
 )
 
 type QWebEngineSettings struct {
-	h          *C.QWebEngineSettings
-	isSubclass bool
+	h *C.QWebEngineSettings
 }
 
 func (this *QWebEngineSettings) cPointer() *C.QWebEngineSettings {

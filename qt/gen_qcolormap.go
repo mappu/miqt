@@ -22,8 +22,7 @@ const (
 )
 
 type QColormap struct {
-	h          *C.QColormap
-	isSubclass bool
+	h *C.QColormap
 }
 
 func (this *QColormap) cPointer() *C.QColormap {
@@ -57,9 +56,7 @@ func UnsafeNewQColormap(h unsafe.Pointer) *QColormap {
 // NewQColormap constructs a new QColormap object.
 func NewQColormap(colormap *QColormap) *QColormap {
 
-	ret := newQColormap(C.QColormap_new(colormap.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQColormap(C.QColormap_new(colormap.cPointer()))
 }
 
 func QColormap_Initialize() {

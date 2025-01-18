@@ -14,8 +14,7 @@ import (
 )
 
 type QScriptProgram struct {
-	h          *C.QScriptProgram
-	isSubclass bool
+	h *C.QScriptProgram
 }
 
 func (this *QScriptProgram) cPointer() *C.QScriptProgram {
@@ -49,9 +48,7 @@ func UnsafeNewQScriptProgram(h unsafe.Pointer) *QScriptProgram {
 // NewQScriptProgram constructs a new QScriptProgram object.
 func NewQScriptProgram() *QScriptProgram {
 
-	ret := newQScriptProgram(C.QScriptProgram_new())
-	ret.isSubclass = true
-	return ret
+	return newQScriptProgram(C.QScriptProgram_new())
 }
 
 // NewQScriptProgram2 constructs a new QScriptProgram object.
@@ -61,17 +58,13 @@ func NewQScriptProgram2(sourceCode string) *QScriptProgram {
 	sourceCode_ms.len = C.size_t(len(sourceCode))
 	defer C.free(unsafe.Pointer(sourceCode_ms.data))
 
-	ret := newQScriptProgram(C.QScriptProgram_new2(sourceCode_ms))
-	ret.isSubclass = true
-	return ret
+	return newQScriptProgram(C.QScriptProgram_new2(sourceCode_ms))
 }
 
 // NewQScriptProgram3 constructs a new QScriptProgram object.
 func NewQScriptProgram3(other *QScriptProgram) *QScriptProgram {
 
-	ret := newQScriptProgram(C.QScriptProgram_new3(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQScriptProgram(C.QScriptProgram_new3(other.cPointer()))
 }
 
 // NewQScriptProgram4 constructs a new QScriptProgram object.
@@ -85,9 +78,7 @@ func NewQScriptProgram4(sourceCode string, fileName string) *QScriptProgram {
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 
-	ret := newQScriptProgram(C.QScriptProgram_new4(sourceCode_ms, fileName_ms))
-	ret.isSubclass = true
-	return ret
+	return newQScriptProgram(C.QScriptProgram_new4(sourceCode_ms, fileName_ms))
 }
 
 // NewQScriptProgram5 constructs a new QScriptProgram object.
@@ -101,9 +92,7 @@ func NewQScriptProgram5(sourceCode string, fileName string, firstLineNumber int)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 
-	ret := newQScriptProgram(C.QScriptProgram_new5(sourceCode_ms, fileName_ms, (C.int)(firstLineNumber)))
-	ret.isSubclass = true
-	return ret
+	return newQScriptProgram(C.QScriptProgram_new5(sourceCode_ms, fileName_ms, (C.int)(firstLineNumber)))
 }
 
 func (this *QScriptProgram) OperatorAssign(other *QScriptProgram) {

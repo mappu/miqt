@@ -376,56 +376,98 @@ struct miqt_string QHttpMultiPart_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QHttpMultiPart_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQHttpMultiPart*>( (QHttpMultiPart*)(self) )->handle__Event = slot;
+bool QHttpMultiPart_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQHttpMultiPart* self_cast = dynamic_cast<MiqtVirtualQHttpMultiPart*>( (QHttpMultiPart*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QHttpMultiPart_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQHttpMultiPart*)(self) )->virtualbase_Event(event);
 }
 
-void QHttpMultiPart_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQHttpMultiPart*>( (QHttpMultiPart*)(self) )->handle__EventFilter = slot;
+bool QHttpMultiPart_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQHttpMultiPart* self_cast = dynamic_cast<MiqtVirtualQHttpMultiPart*>( (QHttpMultiPart*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QHttpMultiPart_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQHttpMultiPart*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QHttpMultiPart_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQHttpMultiPart*>( (QHttpMultiPart*)(self) )->handle__TimerEvent = slot;
+bool QHttpMultiPart_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQHttpMultiPart* self_cast = dynamic_cast<MiqtVirtualQHttpMultiPart*>( (QHttpMultiPart*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QHttpMultiPart_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQHttpMultiPart*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QHttpMultiPart_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQHttpMultiPart*>( (QHttpMultiPart*)(self) )->handle__ChildEvent = slot;
+bool QHttpMultiPart_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQHttpMultiPart* self_cast = dynamic_cast<MiqtVirtualQHttpMultiPart*>( (QHttpMultiPart*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QHttpMultiPart_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQHttpMultiPart*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QHttpMultiPart_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQHttpMultiPart*>( (QHttpMultiPart*)(self) )->handle__CustomEvent = slot;
+bool QHttpMultiPart_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQHttpMultiPart* self_cast = dynamic_cast<MiqtVirtualQHttpMultiPart*>( (QHttpMultiPart*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QHttpMultiPart_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQHttpMultiPart*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QHttpMultiPart_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQHttpMultiPart*>( (QHttpMultiPart*)(self) )->handle__ConnectNotify = slot;
+bool QHttpMultiPart_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQHttpMultiPart* self_cast = dynamic_cast<MiqtVirtualQHttpMultiPart*>( (QHttpMultiPart*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QHttpMultiPart_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQHttpMultiPart*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QHttpMultiPart_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQHttpMultiPart*>( (QHttpMultiPart*)(self) )->handle__DisconnectNotify = slot;
+bool QHttpMultiPart_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQHttpMultiPart* self_cast = dynamic_cast<MiqtVirtualQHttpMultiPart*>( (QHttpMultiPart*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QHttpMultiPart_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

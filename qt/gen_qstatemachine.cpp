@@ -457,64 +457,112 @@ void QStateMachine_PostEvent2(QStateMachine* self, QEvent* event, int priority) 
 	self->postEvent(event, static_cast<QStateMachine::EventPriority>(priority));
 }
 
-void QStateMachine_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStateMachine*>( (QStateMachine*)(self) )->handle__EventFilter = slot;
+bool QStateMachine_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQStateMachine* self_cast = dynamic_cast<MiqtVirtualQStateMachine*>( (QStateMachine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QStateMachine_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQStateMachine*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QStateMachine_override_virtual_OnEntry(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStateMachine*>( (QStateMachine*)(self) )->handle__OnEntry = slot;
+bool QStateMachine_override_virtual_OnEntry(void* self, intptr_t slot) {
+	MiqtVirtualQStateMachine* self_cast = dynamic_cast<MiqtVirtualQStateMachine*>( (QStateMachine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__OnEntry = slot;
+	return true;
 }
 
 void QStateMachine_virtualbase_OnEntry(void* self, QEvent* event) {
 	( (MiqtVirtualQStateMachine*)(self) )->virtualbase_OnEntry(event);
 }
 
-void QStateMachine_override_virtual_OnExit(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStateMachine*>( (QStateMachine*)(self) )->handle__OnExit = slot;
+bool QStateMachine_override_virtual_OnExit(void* self, intptr_t slot) {
+	MiqtVirtualQStateMachine* self_cast = dynamic_cast<MiqtVirtualQStateMachine*>( (QStateMachine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__OnExit = slot;
+	return true;
 }
 
 void QStateMachine_virtualbase_OnExit(void* self, QEvent* event) {
 	( (MiqtVirtualQStateMachine*)(self) )->virtualbase_OnExit(event);
 }
 
-void QStateMachine_override_virtual_BeginSelectTransitions(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStateMachine*>( (QStateMachine*)(self) )->handle__BeginSelectTransitions = slot;
+bool QStateMachine_override_virtual_BeginSelectTransitions(void* self, intptr_t slot) {
+	MiqtVirtualQStateMachine* self_cast = dynamic_cast<MiqtVirtualQStateMachine*>( (QStateMachine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BeginSelectTransitions = slot;
+	return true;
 }
 
 void QStateMachine_virtualbase_BeginSelectTransitions(void* self, QEvent* event) {
 	( (MiqtVirtualQStateMachine*)(self) )->virtualbase_BeginSelectTransitions(event);
 }
 
-void QStateMachine_override_virtual_EndSelectTransitions(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStateMachine*>( (QStateMachine*)(self) )->handle__EndSelectTransitions = slot;
+bool QStateMachine_override_virtual_EndSelectTransitions(void* self, intptr_t slot) {
+	MiqtVirtualQStateMachine* self_cast = dynamic_cast<MiqtVirtualQStateMachine*>( (QStateMachine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EndSelectTransitions = slot;
+	return true;
 }
 
 void QStateMachine_virtualbase_EndSelectTransitions(void* self, QEvent* event) {
 	( (MiqtVirtualQStateMachine*)(self) )->virtualbase_EndSelectTransitions(event);
 }
 
-void QStateMachine_override_virtual_BeginMicrostep(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStateMachine*>( (QStateMachine*)(self) )->handle__BeginMicrostep = slot;
+bool QStateMachine_override_virtual_BeginMicrostep(void* self, intptr_t slot) {
+	MiqtVirtualQStateMachine* self_cast = dynamic_cast<MiqtVirtualQStateMachine*>( (QStateMachine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BeginMicrostep = slot;
+	return true;
 }
 
 void QStateMachine_virtualbase_BeginMicrostep(void* self, QEvent* event) {
 	( (MiqtVirtualQStateMachine*)(self) )->virtualbase_BeginMicrostep(event);
 }
 
-void QStateMachine_override_virtual_EndMicrostep(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStateMachine*>( (QStateMachine*)(self) )->handle__EndMicrostep = slot;
+bool QStateMachine_override_virtual_EndMicrostep(void* self, intptr_t slot) {
+	MiqtVirtualQStateMachine* self_cast = dynamic_cast<MiqtVirtualQStateMachine*>( (QStateMachine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EndMicrostep = slot;
+	return true;
 }
 
 void QStateMachine_virtualbase_EndMicrostep(void* self, QEvent* event) {
 	( (MiqtVirtualQStateMachine*)(self) )->virtualbase_EndMicrostep(event);
 }
 
-void QStateMachine_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStateMachine*>( (QStateMachine*)(self) )->handle__Event = slot;
+bool QStateMachine_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQStateMachine* self_cast = dynamic_cast<MiqtVirtualQStateMachine*>( (QStateMachine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QStateMachine_virtualbase_Event(void* self, QEvent* e) {

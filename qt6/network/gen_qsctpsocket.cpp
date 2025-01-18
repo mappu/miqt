@@ -213,32 +213,56 @@ struct miqt_string QSctpSocket_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QSctpSocket_override_virtual_Close(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSctpSocket*>( (QSctpSocket*)(self) )->handle__Close = slot;
+bool QSctpSocket_override_virtual_Close(void* self, intptr_t slot) {
+	MiqtVirtualQSctpSocket* self_cast = dynamic_cast<MiqtVirtualQSctpSocket*>( (QSctpSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Close = slot;
+	return true;
 }
 
 void QSctpSocket_virtualbase_Close(void* self) {
 	( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_Close();
 }
 
-void QSctpSocket_override_virtual_DisconnectFromHost(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSctpSocket*>( (QSctpSocket*)(self) )->handle__DisconnectFromHost = slot;
+bool QSctpSocket_override_virtual_DisconnectFromHost(void* self, intptr_t slot) {
+	MiqtVirtualQSctpSocket* self_cast = dynamic_cast<MiqtVirtualQSctpSocket*>( (QSctpSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectFromHost = slot;
+	return true;
 }
 
 void QSctpSocket_virtualbase_DisconnectFromHost(void* self) {
 	( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_DisconnectFromHost();
 }
 
-void QSctpSocket_override_virtual_ReadData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSctpSocket*>( (QSctpSocket*)(self) )->handle__ReadData = slot;
+bool QSctpSocket_override_virtual_ReadData(void* self, intptr_t slot) {
+	MiqtVirtualQSctpSocket* self_cast = dynamic_cast<MiqtVirtualQSctpSocket*>( (QSctpSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ReadData = slot;
+	return true;
 }
 
 long long QSctpSocket_virtualbase_ReadData(void* self, char* data, long long maxlen) {
 	return ( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_ReadData(data, maxlen);
 }
 
-void QSctpSocket_override_virtual_ReadLineData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSctpSocket*>( (QSctpSocket*)(self) )->handle__ReadLineData = slot;
+bool QSctpSocket_override_virtual_ReadLineData(void* self, intptr_t slot) {
+	MiqtVirtualQSctpSocket* self_cast = dynamic_cast<MiqtVirtualQSctpSocket*>( (QSctpSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ReadLineData = slot;
+	return true;
 }
 
 long long QSctpSocket_virtualbase_ReadLineData(void* self, char* data, long long maxlen) {

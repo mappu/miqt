@@ -848,56 +848,98 @@ struct miqt_string QCamera_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QCamera_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) )->handle__Event = slot;
+bool QCamera_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQCamera* self_cast = dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QCamera_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQCamera*)(self) )->virtualbase_Event(event);
 }
 
-void QCamera_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) )->handle__EventFilter = slot;
+bool QCamera_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQCamera* self_cast = dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QCamera_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQCamera*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QCamera_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) )->handle__TimerEvent = slot;
+bool QCamera_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQCamera* self_cast = dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QCamera_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQCamera*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QCamera_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) )->handle__ChildEvent = slot;
+bool QCamera_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQCamera* self_cast = dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QCamera_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQCamera*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QCamera_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) )->handle__CustomEvent = slot;
+bool QCamera_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQCamera* self_cast = dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QCamera_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQCamera*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QCamera_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) )->handle__ConnectNotify = slot;
+bool QCamera_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQCamera* self_cast = dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QCamera_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQCamera*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QCamera_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) )->handle__DisconnectNotify = slot;
+bool QCamera_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQCamera* self_cast = dynamic_cast<MiqtVirtualQCamera*>( (QCamera*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QCamera_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

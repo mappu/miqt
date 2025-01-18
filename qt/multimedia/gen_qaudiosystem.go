@@ -16,8 +16,7 @@ import (
 )
 
 type QAbstractAudioDeviceInfo struct {
-	h          *C.QAbstractAudioDeviceInfo
-	isSubclass bool
+	h *C.QAbstractAudioDeviceInfo
 	*qt.QObject
 }
 
@@ -219,8 +218,7 @@ func (this *QAbstractAudioDeviceInfo) GoGC() {
 }
 
 type QAbstractAudioOutput struct {
-	h          *C.QAbstractAudioOutput
-	isSubclass bool
+	h *C.QAbstractAudioOutput
 	*qt.QObject
 }
 
@@ -496,8 +494,7 @@ func (this *QAbstractAudioOutput) GoGC() {
 }
 
 type QAbstractAudioInput struct {
-	h          *C.QAbstractAudioInput
-	isSubclass bool
+	h *C.QAbstractAudioInput
 	*qt.QObject
 }
 

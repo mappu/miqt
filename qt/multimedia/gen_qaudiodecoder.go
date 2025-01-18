@@ -33,8 +33,7 @@ const (
 )
 
 type QAudioDecoder struct {
-	h          *C.QAudioDecoder
-	isSubclass bool
+	h *C.QAudioDecoder
 	*QMediaObject
 }
 
@@ -72,17 +71,13 @@ func UnsafeNewQAudioDecoder(h unsafe.Pointer) *QAudioDecoder {
 // NewQAudioDecoder constructs a new QAudioDecoder object.
 func NewQAudioDecoder() *QAudioDecoder {
 
-	ret := newQAudioDecoder(C.QAudioDecoder_new())
-	ret.isSubclass = true
-	return ret
+	return newQAudioDecoder(C.QAudioDecoder_new())
 }
 
 // NewQAudioDecoder2 constructs a new QAudioDecoder object.
 func NewQAudioDecoder2(parent *qt.QObject) *QAudioDecoder {
 
-	ret := newQAudioDecoder(C.QAudioDecoder_new2((*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQAudioDecoder(C.QAudioDecoder_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QAudioDecoder) MetaObject() *qt.QMetaObject {
@@ -442,10 +437,10 @@ func (this *QAudioDecoder) callVirtualBase_Bind(param1 *qt.QObject) bool {
 
 }
 func (this *QAudioDecoder) OnBind(slot func(super func(param1 *qt.QObject) bool, param1 *qt.QObject) bool) {
-	if !this.isSubclass {
+	ok := C.QAudioDecoder_override_virtual_Bind(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAudioDecoder_override_virtual_Bind(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioDecoder_Bind
@@ -470,10 +465,10 @@ func (this *QAudioDecoder) callVirtualBase_Unbind(param1 *qt.QObject) {
 
 }
 func (this *QAudioDecoder) OnUnbind(slot func(super func(param1 *qt.QObject), param1 *qt.QObject)) {
-	if !this.isSubclass {
+	ok := C.QAudioDecoder_override_virtual_Unbind(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAudioDecoder_override_virtual_Unbind(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioDecoder_Unbind
@@ -496,10 +491,10 @@ func (this *QAudioDecoder) callVirtualBase_IsAvailable() bool {
 
 }
 func (this *QAudioDecoder) OnIsAvailable(slot func(super func() bool) bool) {
-	if !this.isSubclass {
+	ok := C.QAudioDecoder_override_virtual_IsAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAudioDecoder_override_virtual_IsAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioDecoder_IsAvailable
@@ -521,10 +516,10 @@ func (this *QAudioDecoder) callVirtualBase_Availability() QMultimedia__Availabil
 
 }
 func (this *QAudioDecoder) OnAvailability(slot func(super func() QMultimedia__AvailabilityStatus) QMultimedia__AvailabilityStatus) {
-	if !this.isSubclass {
+	ok := C.QAudioDecoder_override_virtual_Availability(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAudioDecoder_override_virtual_Availability(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioDecoder_Availability
@@ -546,10 +541,10 @@ func (this *QAudioDecoder) callVirtualBase_Service() *QMediaService {
 
 }
 func (this *QAudioDecoder) OnService(slot func(super func() *QMediaService) *QMediaService) {
-	if !this.isSubclass {
+	ok := C.QAudioDecoder_override_virtual_Service(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAudioDecoder_override_virtual_Service(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioDecoder_Service

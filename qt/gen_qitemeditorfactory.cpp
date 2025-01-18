@@ -132,16 +132,28 @@ void QItemEditorFactory_SetDefaultFactory(QItemEditorFactory* factory) {
 	QItemEditorFactory::setDefaultFactory(factory);
 }
 
-void QItemEditorFactory_override_virtual_CreateEditor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemEditorFactory*>( (QItemEditorFactory*)(self) )->handle__CreateEditor = slot;
+bool QItemEditorFactory_override_virtual_CreateEditor(void* self, intptr_t slot) {
+	MiqtVirtualQItemEditorFactory* self_cast = dynamic_cast<MiqtVirtualQItemEditorFactory*>( (QItemEditorFactory*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CreateEditor = slot;
+	return true;
 }
 
 QWidget* QItemEditorFactory_virtualbase_CreateEditor(const void* self, int userType, QWidget* parent) {
 	return ( (const MiqtVirtualQItemEditorFactory*)(self) )->virtualbase_CreateEditor(userType, parent);
 }
 
-void QItemEditorFactory_override_virtual_ValuePropertyName(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQItemEditorFactory*>( (QItemEditorFactory*)(self) )->handle__ValuePropertyName = slot;
+bool QItemEditorFactory_override_virtual_ValuePropertyName(void* self, intptr_t slot) {
+	MiqtVirtualQItemEditorFactory* self_cast = dynamic_cast<MiqtVirtualQItemEditorFactory*>( (QItemEditorFactory*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ValuePropertyName = slot;
+	return true;
 }
 
 struct miqt_string QItemEditorFactory_virtualbase_ValuePropertyName(const void* self, int userType) {

@@ -75,8 +75,7 @@ const (
 )
 
 type QCborError struct {
-	h          *C.QCborError
-	isSubclass bool
+	h *C.QCborError
 }
 
 func (this *QCborError) cPointer() *C.QCborError {

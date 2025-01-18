@@ -556,120 +556,210 @@ QFont* QFontDialog_GetFont5(bool* ok, QFont* initial, QWidget* parent, struct mi
 	return new QFont(QFontDialog::getFont(ok, *initial, parent, title_QString, static_cast<QFontDialog::FontDialogOptions>(options)));
 }
 
-void QFontDialog_override_virtual_SetVisible(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) )->handle__SetVisible = slot;
+bool QFontDialog_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQFontDialog* self_cast = dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
 }
 
 void QFontDialog_virtualbase_SetVisible(void* self, bool visible) {
 	( (MiqtVirtualQFontDialog*)(self) )->virtualbase_SetVisible(visible);
 }
 
-void QFontDialog_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) )->handle__ChangeEvent = slot;
+bool QFontDialog_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFontDialog* self_cast = dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QFontDialog_virtualbase_ChangeEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQFontDialog*)(self) )->virtualbase_ChangeEvent(event);
 }
 
-void QFontDialog_override_virtual_Done(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) )->handle__Done = slot;
+bool QFontDialog_override_virtual_Done(void* self, intptr_t slot) {
+	MiqtVirtualQFontDialog* self_cast = dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Done = slot;
+	return true;
 }
 
 void QFontDialog_virtualbase_Done(void* self, int result) {
 	( (MiqtVirtualQFontDialog*)(self) )->virtualbase_Done(result);
 }
 
-void QFontDialog_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) )->handle__EventFilter = slot;
+bool QFontDialog_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQFontDialog* self_cast = dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QFontDialog_virtualbase_EventFilter(void* self, QObject* object, QEvent* event) {
 	return ( (MiqtVirtualQFontDialog*)(self) )->virtualbase_EventFilter(object, event);
 }
 
-void QFontDialog_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) )->handle__SizeHint = slot;
+bool QFontDialog_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQFontDialog* self_cast = dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QFontDialog_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQFontDialog*)(self) )->virtualbase_SizeHint();
 }
 
-void QFontDialog_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) )->handle__MinimumSizeHint = slot;
+bool QFontDialog_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQFontDialog* self_cast = dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QFontDialog_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQFontDialog*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QFontDialog_override_virtual_Open(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) )->handle__Open = slot;
+bool QFontDialog_override_virtual_Open(void* self, intptr_t slot) {
+	MiqtVirtualQFontDialog* self_cast = dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Open = slot;
+	return true;
 }
 
 void QFontDialog_virtualbase_Open(void* self) {
 	( (MiqtVirtualQFontDialog*)(self) )->virtualbase_Open();
 }
 
-void QFontDialog_override_virtual_Exec(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) )->handle__Exec = slot;
+bool QFontDialog_override_virtual_Exec(void* self, intptr_t slot) {
+	MiqtVirtualQFontDialog* self_cast = dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Exec = slot;
+	return true;
 }
 
 int QFontDialog_virtualbase_Exec(void* self) {
 	return ( (MiqtVirtualQFontDialog*)(self) )->virtualbase_Exec();
 }
 
-void QFontDialog_override_virtual_Accept(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) )->handle__Accept = slot;
+bool QFontDialog_override_virtual_Accept(void* self, intptr_t slot) {
+	MiqtVirtualQFontDialog* self_cast = dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Accept = slot;
+	return true;
 }
 
 void QFontDialog_virtualbase_Accept(void* self) {
 	( (MiqtVirtualQFontDialog*)(self) )->virtualbase_Accept();
 }
 
-void QFontDialog_override_virtual_Reject(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) )->handle__Reject = slot;
+bool QFontDialog_override_virtual_Reject(void* self, intptr_t slot) {
+	MiqtVirtualQFontDialog* self_cast = dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Reject = slot;
+	return true;
 }
 
 void QFontDialog_virtualbase_Reject(void* self) {
 	( (MiqtVirtualQFontDialog*)(self) )->virtualbase_Reject();
 }
 
-void QFontDialog_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) )->handle__KeyPressEvent = slot;
+bool QFontDialog_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFontDialog* self_cast = dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QFontDialog_virtualbase_KeyPressEvent(void* self, QKeyEvent* param1) {
 	( (MiqtVirtualQFontDialog*)(self) )->virtualbase_KeyPressEvent(param1);
 }
 
-void QFontDialog_override_virtual_CloseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) )->handle__CloseEvent = slot;
+bool QFontDialog_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFontDialog* self_cast = dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
 }
 
 void QFontDialog_virtualbase_CloseEvent(void* self, QCloseEvent* param1) {
 	( (MiqtVirtualQFontDialog*)(self) )->virtualbase_CloseEvent(param1);
 }
 
-void QFontDialog_override_virtual_ShowEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) )->handle__ShowEvent = slot;
+bool QFontDialog_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFontDialog* self_cast = dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
 }
 
 void QFontDialog_virtualbase_ShowEvent(void* self, QShowEvent* param1) {
 	( (MiqtVirtualQFontDialog*)(self) )->virtualbase_ShowEvent(param1);
 }
 
-void QFontDialog_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) )->handle__ResizeEvent = slot;
+bool QFontDialog_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFontDialog* self_cast = dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QFontDialog_virtualbase_ResizeEvent(void* self, QResizeEvent* param1) {
 	( (MiqtVirtualQFontDialog*)(self) )->virtualbase_ResizeEvent(param1);
 }
 
-void QFontDialog_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) )->handle__ContextMenuEvent = slot;
+bool QFontDialog_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFontDialog* self_cast = dynamic_cast<MiqtVirtualQFontDialog*>( (QFontDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QFontDialog_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* param1) {

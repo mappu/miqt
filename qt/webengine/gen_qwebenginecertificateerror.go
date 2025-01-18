@@ -37,8 +37,7 @@ const (
 )
 
 type QWebEngineCertificateError struct {
-	h          *C.QWebEngineCertificateError
-	isSubclass bool
+	h *C.QWebEngineCertificateError
 }
 
 func (this *QWebEngineCertificateError) cPointer() *C.QWebEngineCertificateError {
@@ -76,17 +75,13 @@ func NewQWebEngineCertificateError(error int, url qt.QUrl, overridable bool, err
 	errorDescription_ms.len = C.size_t(len(errorDescription))
 	defer C.free(unsafe.Pointer(errorDescription_ms.data))
 
-	ret := newQWebEngineCertificateError(C.QWebEngineCertificateError_new((C.int)(error), (*C.QUrl)(url.UnsafePointer()), (C.bool)(overridable), errorDescription_ms))
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineCertificateError(C.QWebEngineCertificateError_new((C.int)(error), (*C.QUrl)(url.UnsafePointer()), (C.bool)(overridable), errorDescription_ms))
 }
 
 // NewQWebEngineCertificateError2 constructs a new QWebEngineCertificateError object.
 func NewQWebEngineCertificateError2(other *QWebEngineCertificateError) *QWebEngineCertificateError {
 
-	ret := newQWebEngineCertificateError(C.QWebEngineCertificateError_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineCertificateError(C.QWebEngineCertificateError_new2(other.cPointer()))
 }
 
 func (this *QWebEngineCertificateError) Error() QWebEngineCertificateError__Error {

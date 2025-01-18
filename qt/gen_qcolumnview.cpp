@@ -1815,488 +1815,854 @@ struct miqt_string QColumnView_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QColumnView_override_virtual_IndexAt(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__IndexAt = slot;
+bool QColumnView_override_virtual_IndexAt(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IndexAt = slot;
+	return true;
 }
 
 QModelIndex* QColumnView_virtualbase_IndexAt(const void* self, QPoint* point) {
 	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_IndexAt(point);
 }
 
-void QColumnView_override_virtual_ScrollTo(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__ScrollTo = slot;
+bool QColumnView_override_virtual_ScrollTo(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ScrollTo = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_ScrollTo(void* self, QModelIndex* index, int hint) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_ScrollTo(index, hint);
 }
 
-void QColumnView_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__SizeHint = slot;
+bool QColumnView_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QColumnView_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_SizeHint();
 }
 
-void QColumnView_override_virtual_VisualRect(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__VisualRect = slot;
+bool QColumnView_override_virtual_VisualRect(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__VisualRect = slot;
+	return true;
 }
 
 QRect* QColumnView_virtualbase_VisualRect(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_VisualRect(index);
 }
 
-void QColumnView_override_virtual_SetModel(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__SetModel = slot;
+bool QColumnView_override_virtual_SetModel(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetModel = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_SetModel(void* self, QAbstractItemModel* model) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_SetModel(model);
 }
 
-void QColumnView_override_virtual_SetSelectionModel(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__SetSelectionModel = slot;
+bool QColumnView_override_virtual_SetSelectionModel(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetSelectionModel = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_SetSelectionModel(void* self, QItemSelectionModel* selectionModel) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_SetSelectionModel(selectionModel);
 }
 
-void QColumnView_override_virtual_SetRootIndex(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__SetRootIndex = slot;
+bool QColumnView_override_virtual_SetRootIndex(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetRootIndex = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_SetRootIndex(void* self, QModelIndex* index) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_SetRootIndex(index);
 }
 
-void QColumnView_override_virtual_SelectAll(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__SelectAll = slot;
+bool QColumnView_override_virtual_SelectAll(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SelectAll = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_SelectAll(void* self) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_SelectAll();
 }
 
-void QColumnView_override_virtual_IsIndexHidden(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__IsIndexHidden = slot;
+bool QColumnView_override_virtual_IsIndexHidden(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsIndexHidden = slot;
+	return true;
 }
 
 bool QColumnView_virtualbase_IsIndexHidden(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_IsIndexHidden(index);
 }
 
-void QColumnView_override_virtual_MoveCursor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__MoveCursor = slot;
+bool QColumnView_override_virtual_MoveCursor(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveCursor = slot;
+	return true;
 }
 
 QModelIndex* QColumnView_virtualbase_MoveCursor(void* self, int cursorAction, int modifiers) {
 	return ( (MiqtVirtualQColumnView*)(self) )->virtualbase_MoveCursor(cursorAction, modifiers);
 }
 
-void QColumnView_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__ResizeEvent = slot;
+bool QColumnView_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_ResizeEvent(void* self, QResizeEvent* event) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_ResizeEvent(event);
 }
 
-void QColumnView_override_virtual_SetSelection(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__SetSelection = slot;
+bool QColumnView_override_virtual_SetSelection(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetSelection = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_SetSelection(void* self, QRect* rect, int command) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_SetSelection(rect, command);
 }
 
-void QColumnView_override_virtual_VisualRegionForSelection(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__VisualRegionForSelection = slot;
+bool QColumnView_override_virtual_VisualRegionForSelection(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__VisualRegionForSelection = slot;
+	return true;
 }
 
 QRegion* QColumnView_virtualbase_VisualRegionForSelection(const void* self, QItemSelection* selection) {
 	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_VisualRegionForSelection(selection);
 }
 
-void QColumnView_override_virtual_HorizontalOffset(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__HorizontalOffset = slot;
+bool QColumnView_override_virtual_HorizontalOffset(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HorizontalOffset = slot;
+	return true;
 }
 
 int QColumnView_virtualbase_HorizontalOffset(const void* self) {
 	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_HorizontalOffset();
 }
 
-void QColumnView_override_virtual_VerticalOffset(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__VerticalOffset = slot;
+bool QColumnView_override_virtual_VerticalOffset(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__VerticalOffset = slot;
+	return true;
 }
 
 int QColumnView_virtualbase_VerticalOffset(const void* self) {
 	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_VerticalOffset();
 }
 
-void QColumnView_override_virtual_RowsInserted(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__RowsInserted = slot;
+bool QColumnView_override_virtual_RowsInserted(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RowsInserted = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_RowsInserted(void* self, QModelIndex* parent, int start, int end) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_RowsInserted(parent, start, end);
 }
 
-void QColumnView_override_virtual_CurrentChanged(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__CurrentChanged = slot;
+bool QColumnView_override_virtual_CurrentChanged(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CurrentChanged = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_CurrentChanged(void* self, QModelIndex* current, QModelIndex* previous) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_CurrentChanged(current, previous);
 }
 
-void QColumnView_override_virtual_ScrollContentsBy(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__ScrollContentsBy = slot;
+bool QColumnView_override_virtual_ScrollContentsBy(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ScrollContentsBy = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_ScrollContentsBy(void* self, int dx, int dy) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_ScrollContentsBy(dx, dy);
 }
 
-void QColumnView_override_virtual_CreateColumn(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__CreateColumn = slot;
+bool QColumnView_override_virtual_CreateColumn(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CreateColumn = slot;
+	return true;
 }
 
 QAbstractItemView* QColumnView_virtualbase_CreateColumn(void* self, QModelIndex* rootIndex) {
 	return ( (MiqtVirtualQColumnView*)(self) )->virtualbase_CreateColumn(rootIndex);
 }
 
-void QColumnView_override_virtual_KeyboardSearch(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__KeyboardSearch = slot;
+bool QColumnView_override_virtual_KeyboardSearch(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyboardSearch = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_KeyboardSearch(void* self, struct miqt_string search) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_KeyboardSearch(search);
 }
 
-void QColumnView_override_virtual_SizeHintForRow(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__SizeHintForRow = slot;
+bool QColumnView_override_virtual_SizeHintForRow(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHintForRow = slot;
+	return true;
 }
 
 int QColumnView_virtualbase_SizeHintForRow(const void* self, int row) {
 	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_SizeHintForRow(row);
 }
 
-void QColumnView_override_virtual_SizeHintForColumn(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__SizeHintForColumn = slot;
+bool QColumnView_override_virtual_SizeHintForColumn(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHintForColumn = slot;
+	return true;
 }
 
 int QColumnView_virtualbase_SizeHintForColumn(const void* self, int column) {
 	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_SizeHintForColumn(column);
 }
 
-void QColumnView_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__InputMethodQuery = slot;
+bool QColumnView_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodQuery = slot;
+	return true;
 }
 
 QVariant* QColumnView_virtualbase_InputMethodQuery(const void* self, int query) {
 	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_InputMethodQuery(query);
 }
 
-void QColumnView_override_virtual_Reset(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__Reset = slot;
+bool QColumnView_override_virtual_Reset(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Reset = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_Reset(void* self) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_Reset();
 }
 
-void QColumnView_override_virtual_DoItemsLayout(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__DoItemsLayout = slot;
+bool QColumnView_override_virtual_DoItemsLayout(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DoItemsLayout = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_DoItemsLayout(void* self) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_DoItemsLayout();
 }
 
-void QColumnView_override_virtual_DataChanged(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__DataChanged = slot;
+bool QColumnView_override_virtual_DataChanged(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DataChanged = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_DataChanged(void* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array /* of int */  roles) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_DataChanged(topLeft, bottomRight, roles);
 }
 
-void QColumnView_override_virtual_RowsAboutToBeRemoved(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__RowsAboutToBeRemoved = slot;
+bool QColumnView_override_virtual_RowsAboutToBeRemoved(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RowsAboutToBeRemoved = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_RowsAboutToBeRemoved(void* self, QModelIndex* parent, int start, int end) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_RowsAboutToBeRemoved(parent, start, end);
 }
 
-void QColumnView_override_virtual_SelectionChanged(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__SelectionChanged = slot;
+bool QColumnView_override_virtual_SelectionChanged(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SelectionChanged = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_SelectionChanged(void* self, QItemSelection* selected, QItemSelection* deselected) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_SelectionChanged(selected, deselected);
 }
 
-void QColumnView_override_virtual_UpdateEditorData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__UpdateEditorData = slot;
+bool QColumnView_override_virtual_UpdateEditorData(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateEditorData = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_UpdateEditorData(void* self) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_UpdateEditorData();
 }
 
-void QColumnView_override_virtual_UpdateEditorGeometries(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__UpdateEditorGeometries = slot;
+bool QColumnView_override_virtual_UpdateEditorGeometries(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateEditorGeometries = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_UpdateEditorGeometries(void* self) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_UpdateEditorGeometries();
 }
 
-void QColumnView_override_virtual_UpdateGeometries(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__UpdateGeometries = slot;
+bool QColumnView_override_virtual_UpdateGeometries(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateGeometries = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_UpdateGeometries(void* self) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_UpdateGeometries();
 }
 
-void QColumnView_override_virtual_VerticalScrollbarAction(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__VerticalScrollbarAction = slot;
+bool QColumnView_override_virtual_VerticalScrollbarAction(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__VerticalScrollbarAction = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_VerticalScrollbarAction(void* self, int action) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_VerticalScrollbarAction(action);
 }
 
-void QColumnView_override_virtual_HorizontalScrollbarAction(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__HorizontalScrollbarAction = slot;
+bool QColumnView_override_virtual_HorizontalScrollbarAction(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HorizontalScrollbarAction = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_HorizontalScrollbarAction(void* self, int action) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_HorizontalScrollbarAction(action);
 }
 
-void QColumnView_override_virtual_VerticalScrollbarValueChanged(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__VerticalScrollbarValueChanged = slot;
+bool QColumnView_override_virtual_VerticalScrollbarValueChanged(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__VerticalScrollbarValueChanged = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_VerticalScrollbarValueChanged(void* self, int value) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_VerticalScrollbarValueChanged(value);
 }
 
-void QColumnView_override_virtual_HorizontalScrollbarValueChanged(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__HorizontalScrollbarValueChanged = slot;
+bool QColumnView_override_virtual_HorizontalScrollbarValueChanged(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HorizontalScrollbarValueChanged = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_HorizontalScrollbarValueChanged(void* self, int value) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_HorizontalScrollbarValueChanged(value);
 }
 
-void QColumnView_override_virtual_CloseEditor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__CloseEditor = slot;
+bool QColumnView_override_virtual_CloseEditor(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEditor = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_CloseEditor(void* self, QWidget* editor, int hint) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_CloseEditor(editor, hint);
 }
 
-void QColumnView_override_virtual_CommitData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__CommitData = slot;
+bool QColumnView_override_virtual_CommitData(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CommitData = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_CommitData(void* self, QWidget* editor) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_CommitData(editor);
 }
 
-void QColumnView_override_virtual_EditorDestroyed(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__EditorDestroyed = slot;
+bool QColumnView_override_virtual_EditorDestroyed(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EditorDestroyed = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_EditorDestroyed(void* self, QObject* editor) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_EditorDestroyed(editor);
 }
 
-void QColumnView_override_virtual_SelectedIndexes(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__SelectedIndexes = slot;
+bool QColumnView_override_virtual_SelectedIndexes(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SelectedIndexes = slot;
+	return true;
 }
 
 struct miqt_array /* of QModelIndex* */  QColumnView_virtualbase_SelectedIndexes(const void* self) {
 	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_SelectedIndexes();
 }
 
-void QColumnView_override_virtual_Edit2(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__Edit2 = slot;
+bool QColumnView_override_virtual_Edit2(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Edit2 = slot;
+	return true;
 }
 
 bool QColumnView_virtualbase_Edit2(void* self, QModelIndex* index, int trigger, QEvent* event) {
 	return ( (MiqtVirtualQColumnView*)(self) )->virtualbase_Edit2(index, trigger, event);
 }
 
-void QColumnView_override_virtual_SelectionCommand(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__SelectionCommand = slot;
+bool QColumnView_override_virtual_SelectionCommand(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SelectionCommand = slot;
+	return true;
 }
 
 int QColumnView_virtualbase_SelectionCommand(const void* self, QModelIndex* index, QEvent* event) {
 	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_SelectionCommand(index, event);
 }
 
-void QColumnView_override_virtual_StartDrag(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__StartDrag = slot;
+bool QColumnView_override_virtual_StartDrag(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__StartDrag = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_StartDrag(void* self, int supportedActions) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_StartDrag(supportedActions);
 }
 
-void QColumnView_override_virtual_ViewOptions(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__ViewOptions = slot;
+bool QColumnView_override_virtual_ViewOptions(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ViewOptions = slot;
+	return true;
 }
 
 QStyleOptionViewItem* QColumnView_virtualbase_ViewOptions(const void* self) {
 	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_ViewOptions();
 }
 
-void QColumnView_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__FocusNextPrevChild = slot;
+bool QColumnView_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusNextPrevChild = slot;
+	return true;
 }
 
 bool QColumnView_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQColumnView*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QColumnView_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__Event = slot;
+bool QColumnView_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QColumnView_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQColumnView*)(self) )->virtualbase_Event(event);
 }
 
-void QColumnView_override_virtual_ViewportEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__ViewportEvent = slot;
+bool QColumnView_override_virtual_ViewportEvent(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ViewportEvent = slot;
+	return true;
 }
 
 bool QColumnView_virtualbase_ViewportEvent(void* self, QEvent* event) {
 	return ( (MiqtVirtualQColumnView*)(self) )->virtualbase_ViewportEvent(event);
 }
 
-void QColumnView_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__MousePressEvent = slot;
+bool QColumnView_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_MousePressEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_MousePressEvent(event);
 }
 
-void QColumnView_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__MouseMoveEvent = slot;
+bool QColumnView_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_MouseMoveEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_MouseMoveEvent(event);
 }
 
-void QColumnView_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__MouseReleaseEvent = slot;
+bool QColumnView_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_MouseReleaseEvent(event);
 }
 
-void QColumnView_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__MouseDoubleClickEvent = slot;
+bool QColumnView_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseDoubleClickEvent = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_MouseDoubleClickEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_MouseDoubleClickEvent(event);
 }
 
-void QColumnView_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__DragEnterEvent = slot;
+bool QColumnView_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragEnterEvent = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_DragEnterEvent(void* self, QDragEnterEvent* event) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_DragEnterEvent(event);
 }
 
-void QColumnView_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__DragMoveEvent = slot;
+bool QColumnView_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragMoveEvent = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_DragMoveEvent(void* self, QDragMoveEvent* event) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_DragMoveEvent(event);
 }
 
-void QColumnView_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__DragLeaveEvent = slot;
+bool QColumnView_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragLeaveEvent = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* event) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_DragLeaveEvent(event);
 }
 
-void QColumnView_override_virtual_DropEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__DropEvent = slot;
+bool QColumnView_override_virtual_DropEvent(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropEvent = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_DropEvent(void* self, QDropEvent* event) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_DropEvent(event);
 }
 
-void QColumnView_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__FocusInEvent = slot;
+bool QColumnView_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_FocusInEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_FocusInEvent(event);
 }
 
-void QColumnView_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__FocusOutEvent = slot;
+bool QColumnView_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_FocusOutEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_FocusOutEvent(event);
 }
 
-void QColumnView_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__KeyPressEvent = slot;
+bool QColumnView_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_KeyPressEvent(void* self, QKeyEvent* event) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_KeyPressEvent(event);
 }
 
-void QColumnView_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__TimerEvent = slot;
+bool QColumnView_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QColumnView_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__InputMethodEvent = slot;
+bool QColumnView_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodEvent = slot;
+	return true;
 }
 
 void QColumnView_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* event) {
 	( (MiqtVirtualQColumnView*)(self) )->virtualbase_InputMethodEvent(event);
 }
 
-void QColumnView_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__EventFilter = slot;
+bool QColumnView_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QColumnView_virtualbase_EventFilter(void* self, QObject* object, QEvent* event) {
 	return ( (MiqtVirtualQColumnView*)(self) )->virtualbase_EventFilter(object, event);
 }
 
-void QColumnView_override_virtual_ViewportSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) )->handle__ViewportSizeHint = slot;
+bool QColumnView_override_virtual_ViewportSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQColumnView* self_cast = dynamic_cast<MiqtVirtualQColumnView*>( (QColumnView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ViewportSizeHint = slot;
+	return true;
 }
 
 QSize* QColumnView_virtualbase_ViewportSizeHint(const void* self) {

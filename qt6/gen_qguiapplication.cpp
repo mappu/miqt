@@ -583,16 +583,28 @@ struct miqt_string QGuiApplication_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QGuiApplication_override_virtual_Notify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) )->handle__Notify = slot;
+bool QGuiApplication_override_virtual_Notify(void* self, intptr_t slot) {
+	MiqtVirtualQGuiApplication* self_cast = dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Notify = slot;
+	return true;
 }
 
 bool QGuiApplication_virtualbase_Notify(void* self, QObject* param1, QEvent* param2) {
 	return ( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_Notify(param1, param2);
 }
 
-void QGuiApplication_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) )->handle__Event = slot;
+bool QGuiApplication_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQGuiApplication* self_cast = dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QGuiApplication_virtualbase_Event(void* self, QEvent* param1) {

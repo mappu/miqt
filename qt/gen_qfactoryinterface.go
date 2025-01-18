@@ -14,8 +14,7 @@ import (
 )
 
 type QFactoryInterface struct {
-	h          *C.QFactoryInterface
-	isSubclass bool
+	h *C.QFactoryInterface
 }
 
 func (this *QFactoryInterface) cPointer() *C.QFactoryInterface {

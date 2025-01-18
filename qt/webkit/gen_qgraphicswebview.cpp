@@ -1624,368 +1624,644 @@ void QGraphicsWebView_SetRenderHint2(QGraphicsWebView* self, int param1, bool en
 	self->setRenderHint(static_cast<QPainter::RenderHint>(param1), enabled);
 }
 
-void QGraphicsWebView_override_virtual_SetGeometry(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__SetGeometry = slot;
+bool QGraphicsWebView_override_virtual_SetGeometry(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetGeometry = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_SetGeometry(void* self, QRectF* rect) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_SetGeometry(rect);
 }
 
-void QGraphicsWebView_override_virtual_UpdateGeometry(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__UpdateGeometry = slot;
+bool QGraphicsWebView_override_virtual_UpdateGeometry(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateGeometry = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_UpdateGeometry(void* self) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_UpdateGeometry();
 }
 
-void QGraphicsWebView_override_virtual_Paint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__Paint = slot;
+bool QGraphicsWebView_override_virtual_Paint(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Paint = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_Paint(void* self, QPainter* param1, QStyleOptionGraphicsItem* options, QWidget* widget) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_Paint(param1, options, widget);
 }
 
-void QGraphicsWebView_override_virtual_ItemChange(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__ItemChange = slot;
+bool QGraphicsWebView_override_virtual_ItemChange(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ItemChange = slot;
+	return true;
 }
 
 QVariant* QGraphicsWebView_virtualbase_ItemChange(void* self, int change, QVariant* value) {
 	return ( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_ItemChange(change, value);
 }
 
-void QGraphicsWebView_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__Event = slot;
+bool QGraphicsWebView_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QGraphicsWebView_virtualbase_Event(void* self, QEvent* param1) {
 	return ( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_Event(param1);
 }
 
-void QGraphicsWebView_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__SizeHint = slot;
+bool QGraphicsWebView_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSizeF* QGraphicsWebView_virtualbase_SizeHint(const void* self, int which, QSizeF* constraint) {
 	return ( (const MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_SizeHint(which, constraint);
 }
 
-void QGraphicsWebView_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__InputMethodQuery = slot;
+bool QGraphicsWebView_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodQuery = slot;
+	return true;
 }
 
 QVariant* QGraphicsWebView_virtualbase_InputMethodQuery(const void* self, int query) {
 	return ( (const MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_InputMethodQuery(query);
 }
 
-void QGraphicsWebView_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__MousePressEvent = slot;
+bool QGraphicsWebView_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_MousePressEvent(void* self, QGraphicsSceneMouseEvent* param1) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_MousePressEvent(param1);
 }
 
-void QGraphicsWebView_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__MouseDoubleClickEvent = slot;
+bool QGraphicsWebView_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseDoubleClickEvent = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_MouseDoubleClickEvent(void* self, QGraphicsSceneMouseEvent* param1) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_MouseDoubleClickEvent(param1);
 }
 
-void QGraphicsWebView_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__MouseReleaseEvent = slot;
+bool QGraphicsWebView_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_MouseReleaseEvent(void* self, QGraphicsSceneMouseEvent* param1) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_MouseReleaseEvent(param1);
 }
 
-void QGraphicsWebView_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__MouseMoveEvent = slot;
+bool QGraphicsWebView_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_MouseMoveEvent(void* self, QGraphicsSceneMouseEvent* param1) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_MouseMoveEvent(param1);
 }
 
-void QGraphicsWebView_override_virtual_HoverMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__HoverMoveEvent = slot;
+bool QGraphicsWebView_override_virtual_HoverMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HoverMoveEvent = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_HoverMoveEvent(void* self, QGraphicsSceneHoverEvent* param1) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_HoverMoveEvent(param1);
 }
 
-void QGraphicsWebView_override_virtual_HoverLeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__HoverLeaveEvent = slot;
+bool QGraphicsWebView_override_virtual_HoverLeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HoverLeaveEvent = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_HoverLeaveEvent(void* self, QGraphicsSceneHoverEvent* param1) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_HoverLeaveEvent(param1);
 }
 
-void QGraphicsWebView_override_virtual_WheelEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__WheelEvent = slot;
+bool QGraphicsWebView_override_virtual_WheelEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WheelEvent = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_WheelEvent(void* self, QGraphicsSceneWheelEvent* param1) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_WheelEvent(param1);
 }
 
-void QGraphicsWebView_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__KeyPressEvent = slot;
+bool QGraphicsWebView_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_KeyPressEvent(void* self, QKeyEvent* param1) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_KeyPressEvent(param1);
 }
 
-void QGraphicsWebView_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__KeyReleaseEvent = slot;
+bool QGraphicsWebView_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyReleaseEvent = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* param1) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_KeyReleaseEvent(param1);
 }
 
-void QGraphicsWebView_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__ContextMenuEvent = slot;
+bool QGraphicsWebView_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_ContextMenuEvent(void* self, QGraphicsSceneContextMenuEvent* param1) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_ContextMenuEvent(param1);
 }
 
-void QGraphicsWebView_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__DragEnterEvent = slot;
+bool QGraphicsWebView_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragEnterEvent = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_DragEnterEvent(void* self, QGraphicsSceneDragDropEvent* param1) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_DragEnterEvent(param1);
 }
 
-void QGraphicsWebView_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__DragLeaveEvent = slot;
+bool QGraphicsWebView_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragLeaveEvent = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_DragLeaveEvent(void* self, QGraphicsSceneDragDropEvent* param1) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_DragLeaveEvent(param1);
 }
 
-void QGraphicsWebView_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__DragMoveEvent = slot;
+bool QGraphicsWebView_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragMoveEvent = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_DragMoveEvent(void* self, QGraphicsSceneDragDropEvent* param1) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_DragMoveEvent(param1);
 }
 
-void QGraphicsWebView_override_virtual_DropEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__DropEvent = slot;
+bool QGraphicsWebView_override_virtual_DropEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropEvent = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_DropEvent(void* self, QGraphicsSceneDragDropEvent* param1) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_DropEvent(param1);
 }
 
-void QGraphicsWebView_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__FocusInEvent = slot;
+bool QGraphicsWebView_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_FocusInEvent(void* self, QFocusEvent* param1) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_FocusInEvent(param1);
 }
 
-void QGraphicsWebView_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__FocusOutEvent = slot;
+bool QGraphicsWebView_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_FocusOutEvent(void* self, QFocusEvent* param1) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_FocusOutEvent(param1);
 }
 
-void QGraphicsWebView_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__InputMethodEvent = slot;
+bool QGraphicsWebView_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodEvent = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* param1) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_InputMethodEvent(param1);
 }
 
-void QGraphicsWebView_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__FocusNextPrevChild = slot;
+bool QGraphicsWebView_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusNextPrevChild = slot;
+	return true;
 }
 
 bool QGraphicsWebView_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QGraphicsWebView_override_virtual_SceneEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__SceneEvent = slot;
+bool QGraphicsWebView_override_virtual_SceneEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SceneEvent = slot;
+	return true;
 }
 
 bool QGraphicsWebView_virtualbase_SceneEvent(void* self, QEvent* param1) {
 	return ( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_SceneEvent(param1);
 }
 
-void QGraphicsWebView_override_virtual_GetContentsMargins(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__GetContentsMargins = slot;
+bool QGraphicsWebView_override_virtual_GetContentsMargins(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__GetContentsMargins = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_GetContentsMargins(const void* self, double* left, double* top, double* right, double* bottom) {
 	( (const MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_GetContentsMargins(left, top, right, bottom);
 }
 
-void QGraphicsWebView_override_virtual_Type(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__Type = slot;
+bool QGraphicsWebView_override_virtual_Type(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Type = slot;
+	return true;
 }
 
 int QGraphicsWebView_virtualbase_Type(const void* self) {
 	return ( (const MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_Type();
 }
 
-void QGraphicsWebView_override_virtual_PaintWindowFrame(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__PaintWindowFrame = slot;
+bool QGraphicsWebView_override_virtual_PaintWindowFrame(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintWindowFrame = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_PaintWindowFrame(void* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_PaintWindowFrame(painter, option, widget);
 }
 
-void QGraphicsWebView_override_virtual_BoundingRect(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__BoundingRect = slot;
+bool QGraphicsWebView_override_virtual_BoundingRect(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BoundingRect = slot;
+	return true;
 }
 
 QRectF* QGraphicsWebView_virtualbase_BoundingRect(const void* self) {
 	return ( (const MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_BoundingRect();
 }
 
-void QGraphicsWebView_override_virtual_Shape(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__Shape = slot;
+bool QGraphicsWebView_override_virtual_Shape(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Shape = slot;
+	return true;
 }
 
 QPainterPath* QGraphicsWebView_virtualbase_Shape(const void* self) {
 	return ( (const MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_Shape();
 }
 
-void QGraphicsWebView_override_virtual_InitStyleOption(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__InitStyleOption = slot;
+bool QGraphicsWebView_override_virtual_InitStyleOption(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitStyleOption = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_InitStyleOption(const void* self, QStyleOption* option) {
 	( (const MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_InitStyleOption(option);
 }
 
-void QGraphicsWebView_override_virtual_PropertyChange(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__PropertyChange = slot;
+bool QGraphicsWebView_override_virtual_PropertyChange(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PropertyChange = slot;
+	return true;
 }
 
 QVariant* QGraphicsWebView_virtualbase_PropertyChange(void* self, struct miqt_string propertyName, QVariant* value) {
 	return ( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_PropertyChange(propertyName, value);
 }
 
-void QGraphicsWebView_override_virtual_WindowFrameEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__WindowFrameEvent = slot;
+bool QGraphicsWebView_override_virtual_WindowFrameEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WindowFrameEvent = slot;
+	return true;
 }
 
 bool QGraphicsWebView_virtualbase_WindowFrameEvent(void* self, QEvent* e) {
 	return ( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_WindowFrameEvent(e);
 }
 
-void QGraphicsWebView_override_virtual_WindowFrameSectionAt(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__WindowFrameSectionAt = slot;
+bool QGraphicsWebView_override_virtual_WindowFrameSectionAt(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WindowFrameSectionAt = slot;
+	return true;
 }
 
 int QGraphicsWebView_virtualbase_WindowFrameSectionAt(const void* self, QPointF* pos) {
 	return ( (const MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_WindowFrameSectionAt(pos);
 }
 
-void QGraphicsWebView_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__ChangeEvent = slot;
+bool QGraphicsWebView_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_ChangeEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_ChangeEvent(event);
 }
 
-void QGraphicsWebView_override_virtual_CloseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__CloseEvent = slot;
+bool QGraphicsWebView_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_CloseEvent(void* self, QCloseEvent* event) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_CloseEvent(event);
 }
 
-void QGraphicsWebView_override_virtual_HideEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__HideEvent = slot;
+bool QGraphicsWebView_override_virtual_HideEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HideEvent = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_HideEvent(void* self, QHideEvent* event) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_HideEvent(event);
 }
 
-void QGraphicsWebView_override_virtual_MoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__MoveEvent = slot;
+bool QGraphicsWebView_override_virtual_MoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveEvent = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_MoveEvent(void* self, QGraphicsSceneMoveEvent* event) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_MoveEvent(event);
 }
 
-void QGraphicsWebView_override_virtual_PolishEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__PolishEvent = slot;
+bool QGraphicsWebView_override_virtual_PolishEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PolishEvent = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_PolishEvent(void* self) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_PolishEvent();
 }
 
-void QGraphicsWebView_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__ResizeEvent = slot;
+bool QGraphicsWebView_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_ResizeEvent(void* self, QGraphicsSceneResizeEvent* event) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_ResizeEvent(event);
 }
 
-void QGraphicsWebView_override_virtual_ShowEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__ShowEvent = slot;
+bool QGraphicsWebView_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_ShowEvent(void* self, QShowEvent* event) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_ShowEvent(event);
 }
 
-void QGraphicsWebView_override_virtual_GrabMouseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__GrabMouseEvent = slot;
+bool QGraphicsWebView_override_virtual_GrabMouseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__GrabMouseEvent = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_GrabMouseEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_GrabMouseEvent(event);
 }
 
-void QGraphicsWebView_override_virtual_UngrabMouseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__UngrabMouseEvent = slot;
+bool QGraphicsWebView_override_virtual_UngrabMouseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UngrabMouseEvent = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_UngrabMouseEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_UngrabMouseEvent(event);
 }
 
-void QGraphicsWebView_override_virtual_GrabKeyboardEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__GrabKeyboardEvent = slot;
+bool QGraphicsWebView_override_virtual_GrabKeyboardEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__GrabKeyboardEvent = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_GrabKeyboardEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_GrabKeyboardEvent(event);
 }
 
-void QGraphicsWebView_override_virtual_UngrabKeyboardEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) )->handle__UngrabKeyboardEvent = slot;
+bool QGraphicsWebView_override_virtual_UngrabKeyboardEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsWebView* self_cast = dynamic_cast<MiqtVirtualQGraphicsWebView*>( (QGraphicsWebView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UngrabKeyboardEvent = slot;
+	return true;
 }
 
 void QGraphicsWebView_virtualbase_UngrabKeyboardEvent(void* self, QEvent* event) {

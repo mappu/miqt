@@ -478,112 +478,196 @@ struct miqt_string QAbstractPrintDialog_Tr3(const char* s, const char* c, int n)
 	return _ms;
 }
 
-void QAbstractPrintDialog_override_virtual_SetVisible(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) )->handle__SetVisible = slot;
+bool QAbstractPrintDialog_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractPrintDialog* self_cast = dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
 }
 
 void QAbstractPrintDialog_virtualbase_SetVisible(void* self, bool visible) {
 	( (MiqtVirtualQAbstractPrintDialog*)(self) )->virtualbase_SetVisible(visible);
 }
 
-void QAbstractPrintDialog_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) )->handle__SizeHint = slot;
+bool QAbstractPrintDialog_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractPrintDialog* self_cast = dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QAbstractPrintDialog_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQAbstractPrintDialog*)(self) )->virtualbase_SizeHint();
 }
 
-void QAbstractPrintDialog_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) )->handle__MinimumSizeHint = slot;
+bool QAbstractPrintDialog_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractPrintDialog* self_cast = dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QAbstractPrintDialog_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQAbstractPrintDialog*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QAbstractPrintDialog_override_virtual_Open(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) )->handle__Open = slot;
+bool QAbstractPrintDialog_override_virtual_Open(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractPrintDialog* self_cast = dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Open = slot;
+	return true;
 }
 
 void QAbstractPrintDialog_virtualbase_Open(void* self) {
 	( (MiqtVirtualQAbstractPrintDialog*)(self) )->virtualbase_Open();
 }
 
-void QAbstractPrintDialog_override_virtual_Exec(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) )->handle__Exec = slot;
+bool QAbstractPrintDialog_override_virtual_Exec(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractPrintDialog* self_cast = dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Exec = slot;
+	return true;
 }
 
 int QAbstractPrintDialog_virtualbase_Exec(void* self) {
 	return ( (MiqtVirtualQAbstractPrintDialog*)(self) )->virtualbase_Exec();
 }
 
-void QAbstractPrintDialog_override_virtual_Done(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) )->handle__Done = slot;
+bool QAbstractPrintDialog_override_virtual_Done(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractPrintDialog* self_cast = dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Done = slot;
+	return true;
 }
 
 void QAbstractPrintDialog_virtualbase_Done(void* self, int param1) {
 	( (MiqtVirtualQAbstractPrintDialog*)(self) )->virtualbase_Done(param1);
 }
 
-void QAbstractPrintDialog_override_virtual_Accept(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) )->handle__Accept = slot;
+bool QAbstractPrintDialog_override_virtual_Accept(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractPrintDialog* self_cast = dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Accept = slot;
+	return true;
 }
 
 void QAbstractPrintDialog_virtualbase_Accept(void* self) {
 	( (MiqtVirtualQAbstractPrintDialog*)(self) )->virtualbase_Accept();
 }
 
-void QAbstractPrintDialog_override_virtual_Reject(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) )->handle__Reject = slot;
+bool QAbstractPrintDialog_override_virtual_Reject(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractPrintDialog* self_cast = dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Reject = slot;
+	return true;
 }
 
 void QAbstractPrintDialog_virtualbase_Reject(void* self) {
 	( (MiqtVirtualQAbstractPrintDialog*)(self) )->virtualbase_Reject();
 }
 
-void QAbstractPrintDialog_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) )->handle__KeyPressEvent = slot;
+bool QAbstractPrintDialog_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractPrintDialog* self_cast = dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QAbstractPrintDialog_virtualbase_KeyPressEvent(void* self, QKeyEvent* param1) {
 	( (MiqtVirtualQAbstractPrintDialog*)(self) )->virtualbase_KeyPressEvent(param1);
 }
 
-void QAbstractPrintDialog_override_virtual_CloseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) )->handle__CloseEvent = slot;
+bool QAbstractPrintDialog_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractPrintDialog* self_cast = dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
 }
 
 void QAbstractPrintDialog_virtualbase_CloseEvent(void* self, QCloseEvent* param1) {
 	( (MiqtVirtualQAbstractPrintDialog*)(self) )->virtualbase_CloseEvent(param1);
 }
 
-void QAbstractPrintDialog_override_virtual_ShowEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) )->handle__ShowEvent = slot;
+bool QAbstractPrintDialog_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractPrintDialog* self_cast = dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
 }
 
 void QAbstractPrintDialog_virtualbase_ShowEvent(void* self, QShowEvent* param1) {
 	( (MiqtVirtualQAbstractPrintDialog*)(self) )->virtualbase_ShowEvent(param1);
 }
 
-void QAbstractPrintDialog_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) )->handle__ResizeEvent = slot;
+bool QAbstractPrintDialog_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractPrintDialog* self_cast = dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QAbstractPrintDialog_virtualbase_ResizeEvent(void* self, QResizeEvent* param1) {
 	( (MiqtVirtualQAbstractPrintDialog*)(self) )->virtualbase_ResizeEvent(param1);
 }
 
-void QAbstractPrintDialog_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) )->handle__ContextMenuEvent = slot;
+bool QAbstractPrintDialog_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractPrintDialog* self_cast = dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QAbstractPrintDialog_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* param1) {
 	( (MiqtVirtualQAbstractPrintDialog*)(self) )->virtualbase_ContextMenuEvent(param1);
 }
 
-void QAbstractPrintDialog_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) )->handle__EventFilter = slot;
+bool QAbstractPrintDialog_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractPrintDialog* self_cast = dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( (QAbstractPrintDialog*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QAbstractPrintDialog_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2) {

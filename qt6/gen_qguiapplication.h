@@ -136,9 +136,9 @@ void QGuiApplication_connect_FontChanged(QGuiApplication* self, intptr_t slot);
 bool QGuiApplication_Event(QGuiApplication* self, QEvent* param1);
 struct miqt_string QGuiApplication_Tr2(const char* s, const char* c);
 struct miqt_string QGuiApplication_Tr3(const char* s, const char* c, int n);
-void QGuiApplication_override_virtual_Notify(void* self, intptr_t slot);
+bool QGuiApplication_override_virtual_Notify(void* self, intptr_t slot);
 bool QGuiApplication_virtualbase_Notify(void* self, QObject* param1, QEvent* param2);
-void QGuiApplication_override_virtual_Event(void* self, intptr_t slot);
+bool QGuiApplication_override_virtual_Event(void* self, intptr_t slot);
 bool QGuiApplication_virtualbase_Event(void* self, QEvent* param1);
 void QGuiApplication_Delete(QGuiApplication* self);
 

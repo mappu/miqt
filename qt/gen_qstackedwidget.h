@@ -62,13 +62,13 @@ struct miqt_string QStackedWidget_Tr2(const char* s, const char* c);
 struct miqt_string QStackedWidget_Tr3(const char* s, const char* c, int n);
 struct miqt_string QStackedWidget_TrUtf82(const char* s, const char* c);
 struct miqt_string QStackedWidget_TrUtf83(const char* s, const char* c, int n);
-void QStackedWidget_override_virtual_Event(void* self, intptr_t slot);
+bool QStackedWidget_override_virtual_Event(void* self, intptr_t slot);
 bool QStackedWidget_virtualbase_Event(void* self, QEvent* e);
-void QStackedWidget_override_virtual_SizeHint(void* self, intptr_t slot);
+bool QStackedWidget_override_virtual_SizeHint(void* self, intptr_t slot);
 QSize* QStackedWidget_virtualbase_SizeHint(const void* self);
-void QStackedWidget_override_virtual_PaintEvent(void* self, intptr_t slot);
+bool QStackedWidget_override_virtual_PaintEvent(void* self, intptr_t slot);
 void QStackedWidget_virtualbase_PaintEvent(void* self, QPaintEvent* param1);
-void QStackedWidget_override_virtual_ChangeEvent(void* self, intptr_t slot);
+bool QStackedWidget_override_virtual_ChangeEvent(void* self, intptr_t slot);
 void QStackedWidget_virtualbase_ChangeEvent(void* self, QEvent* param1);
 void QStackedWidget_Delete(QStackedWidget* self);
 

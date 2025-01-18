@@ -15,8 +15,7 @@ import (
 )
 
 type QTest__QTouchEventWidgetSequence struct {
-	h          *C.QTest__QTouchEventWidgetSequence
-	isSubclass bool
+	h *C.QTest__QTouchEventWidgetSequence
 	*QTest__QTouchEventSequence
 }
 
@@ -54,9 +53,7 @@ func UnsafeNewQTest__QTouchEventWidgetSequence(h unsafe.Pointer) *QTest__QTouchE
 // NewQTest__QTouchEventWidgetSequence constructs a new QTest::QTouchEventWidgetSequence object.
 func NewQTest__QTouchEventWidgetSequence(param1 *QTest__QTouchEventWidgetSequence) *QTest__QTouchEventWidgetSequence {
 
-	ret := newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_new(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_new(param1.cPointer()))
 }
 
 func (this *QTest__QTouchEventWidgetSequence) Press(touchId int, pt *QPoint) *QTest__QTouchEventWidgetSequence {
@@ -97,10 +94,10 @@ func (this *QTest__QTouchEventWidgetSequence) callVirtualBase_Stationary(touchId
 
 }
 func (this *QTest__QTouchEventWidgetSequence) OnStationary(slot func(super func(touchId int) *QTest__QTouchEventWidgetSequence, touchId int) *QTest__QTouchEventWidgetSequence) {
-	if !this.isSubclass {
+	ok := C.QTest__QTouchEventWidgetSequence_override_virtual_Stationary(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTest__QTouchEventWidgetSequence_override_virtual_Stationary(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTest__QTouchEventWidgetSequence_Stationary
@@ -125,10 +122,10 @@ func (this *QTest__QTouchEventWidgetSequence) callVirtualBase_Commit(processEven
 
 }
 func (this *QTest__QTouchEventWidgetSequence) OnCommit(slot func(super func(processEvents bool) bool, processEvents bool) bool) {
-	if !this.isSubclass {
+	ok := C.QTest__QTouchEventWidgetSequence_override_virtual_Commit(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTest__QTouchEventWidgetSequence_override_virtual_Commit(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTest__QTouchEventWidgetSequence_Commit

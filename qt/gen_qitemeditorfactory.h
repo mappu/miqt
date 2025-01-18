@@ -36,9 +36,9 @@ struct miqt_string QItemEditorFactory_ValuePropertyName(const QItemEditorFactory
 void QItemEditorFactory_RegisterEditor(QItemEditorFactory* self, int userType, QItemEditorCreatorBase* creator);
 QItemEditorFactory* QItemEditorFactory_DefaultFactory();
 void QItemEditorFactory_SetDefaultFactory(QItemEditorFactory* factory);
-void QItemEditorFactory_override_virtual_CreateEditor(void* self, intptr_t slot);
+bool QItemEditorFactory_override_virtual_CreateEditor(void* self, intptr_t slot);
 QWidget* QItemEditorFactory_virtualbase_CreateEditor(const void* self, int userType, QWidget* parent);
-void QItemEditorFactory_override_virtual_ValuePropertyName(void* self, intptr_t slot);
+bool QItemEditorFactory_override_virtual_ValuePropertyName(void* self, intptr_t slot);
 struct miqt_string QItemEditorFactory_virtualbase_ValuePropertyName(const void* self, int userType);
 void QItemEditorFactory_Delete(QItemEditorFactory* self);
 

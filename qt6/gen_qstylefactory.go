@@ -14,8 +14,7 @@ import (
 )
 
 type QStyleFactory struct {
-	h          *C.QStyleFactory
-	isSubclass bool
+	h *C.QStyleFactory
 }
 
 func (this *QStyleFactory) cPointer() *C.QStyleFactory {

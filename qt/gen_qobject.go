@@ -21,8 +21,7 @@ const (
 )
 
 type QObjectData struct {
-	h          *C.QObjectData
-	isSubclass bool
+	h *C.QObjectData
 }
 
 func (this *QObjectData) cPointer() *C.QObjectData {
@@ -72,8 +71,7 @@ func (this *QObjectData) GoGC() {
 }
 
 type QObject struct {
-	h          *C.QObject
-	isSubclass bool
+	h *C.QObject
 }
 
 func (this *QObject) cPointer() *C.QObject {
@@ -107,17 +105,13 @@ func UnsafeNewQObject(h unsafe.Pointer) *QObject {
 // NewQObject constructs a new QObject object.
 func NewQObject() *QObject {
 
-	ret := newQObject(C.QObject_new())
-	ret.isSubclass = true
-	return ret
+	return newQObject(C.QObject_new())
 }
 
 // NewQObject2 constructs a new QObject object.
 func NewQObject2(parent *QObject) *QObject {
 
-	ret := newQObject(C.QObject_new2(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQObject(C.QObject_new2(parent.cPointer()))
 }
 
 func (this *QObject) MetaObject() *QMetaObject {
@@ -425,10 +419,10 @@ func (this *QObject) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QObject) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QObject_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QObject_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QObject_Event
@@ -453,10 +447,10 @@ func (this *QObject) callVirtualBase_EventFilter(watched *QObject, event *QEvent
 
 }
 func (this *QObject) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QObject_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QObject_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QObject_EventFilter
@@ -483,10 +477,10 @@ func (this *QObject) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QObject) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QObject_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QObject_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QObject_TimerEvent
@@ -509,10 +503,10 @@ func (this *QObject) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QObject) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QObject_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QObject_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QObject_ChildEvent
@@ -535,10 +529,10 @@ func (this *QObject) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QObject) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QObject_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QObject_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QObject_CustomEvent
@@ -561,10 +555,10 @@ func (this *QObject) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QObject) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QObject_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QObject_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QObject_ConnectNotify
@@ -587,10 +581,10 @@ func (this *QObject) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QObject) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QObject_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QObject_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QObject_DisconnectNotify
@@ -622,8 +616,7 @@ func (this *QObject) GoGC() {
 }
 
 type QObjectUserData struct {
-	h          *C.QObjectUserData
-	isSubclass bool
+	h *C.QObjectUserData
 }
 
 func (this *QObjectUserData) cPointer() *C.QObjectUserData {
@@ -657,9 +650,7 @@ func UnsafeNewQObjectUserData(h unsafe.Pointer) *QObjectUserData {
 // NewQObjectUserData constructs a new QObjectUserData object.
 func NewQObjectUserData() *QObjectUserData {
 
-	ret := newQObjectUserData(C.QObjectUserData_new())
-	ret.isSubclass = true
-	return ret
+	return newQObjectUserData(C.QObjectUserData_new())
 }
 
 // Delete this object from C++ memory.
@@ -677,8 +668,7 @@ func (this *QObjectUserData) GoGC() {
 }
 
 type QSignalBlocker struct {
-	h          *C.QSignalBlocker
-	isSubclass bool
+	h *C.QSignalBlocker
 }
 
 func (this *QSignalBlocker) cPointer() *C.QSignalBlocker {
@@ -712,17 +702,13 @@ func UnsafeNewQSignalBlocker(h unsafe.Pointer) *QSignalBlocker {
 // NewQSignalBlocker constructs a new QSignalBlocker object.
 func NewQSignalBlocker(o *QObject) *QSignalBlocker {
 
-	ret := newQSignalBlocker(C.QSignalBlocker_new(o.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSignalBlocker(C.QSignalBlocker_new(o.cPointer()))
 }
 
 // NewQSignalBlocker2 constructs a new QSignalBlocker object.
 func NewQSignalBlocker2(o *QObject) *QSignalBlocker {
 
-	ret := newQSignalBlocker(C.QSignalBlocker_new2(o.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSignalBlocker(C.QSignalBlocker_new2(o.cPointer()))
 }
 
 func (this *QSignalBlocker) Reblock() {

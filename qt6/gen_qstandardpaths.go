@@ -46,8 +46,7 @@ const (
 )
 
 type QStandardPaths struct {
-	h          *C.QStandardPaths
-	isSubclass bool
+	h *C.QStandardPaths
 }
 
 func (this *QStandardPaths) cPointer() *C.QStandardPaths {

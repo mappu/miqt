@@ -210,40 +210,70 @@ struct miqt_string QsciLexerJava_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QsciLexerJava_override_virtual_SetFoldAtElse(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerJava*>( (QsciLexerJava*)(self) )->handle__SetFoldAtElse = slot;
+bool QsciLexerJava_override_virtual_SetFoldAtElse(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerJava* self_cast = dynamic_cast<MiqtVirtualQsciLexerJava*>( (QsciLexerJava*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetFoldAtElse = slot;
+	return true;
 }
 
 void QsciLexerJava_virtualbase_SetFoldAtElse(void* self, bool fold) {
 	( (MiqtVirtualQsciLexerJava*)(self) )->virtualbase_SetFoldAtElse(fold);
 }
 
-void QsciLexerJava_override_virtual_SetFoldComments(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerJava*>( (QsciLexerJava*)(self) )->handle__SetFoldComments = slot;
+bool QsciLexerJava_override_virtual_SetFoldComments(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerJava* self_cast = dynamic_cast<MiqtVirtualQsciLexerJava*>( (QsciLexerJava*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetFoldComments = slot;
+	return true;
 }
 
 void QsciLexerJava_virtualbase_SetFoldComments(void* self, bool fold) {
 	( (MiqtVirtualQsciLexerJava*)(self) )->virtualbase_SetFoldComments(fold);
 }
 
-void QsciLexerJava_override_virtual_SetFoldCompact(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerJava*>( (QsciLexerJava*)(self) )->handle__SetFoldCompact = slot;
+bool QsciLexerJava_override_virtual_SetFoldCompact(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerJava* self_cast = dynamic_cast<MiqtVirtualQsciLexerJava*>( (QsciLexerJava*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetFoldCompact = slot;
+	return true;
 }
 
 void QsciLexerJava_virtualbase_SetFoldCompact(void* self, bool fold) {
 	( (MiqtVirtualQsciLexerJava*)(self) )->virtualbase_SetFoldCompact(fold);
 }
 
-void QsciLexerJava_override_virtual_SetFoldPreprocessor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerJava*>( (QsciLexerJava*)(self) )->handle__SetFoldPreprocessor = slot;
+bool QsciLexerJava_override_virtual_SetFoldPreprocessor(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerJava* self_cast = dynamic_cast<MiqtVirtualQsciLexerJava*>( (QsciLexerJava*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetFoldPreprocessor = slot;
+	return true;
 }
 
 void QsciLexerJava_virtualbase_SetFoldPreprocessor(void* self, bool fold) {
 	( (MiqtVirtualQsciLexerJava*)(self) )->virtualbase_SetFoldPreprocessor(fold);
 }
 
-void QsciLexerJava_override_virtual_SetStylePreprocessor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerJava*>( (QsciLexerJava*)(self) )->handle__SetStylePreprocessor = slot;
+bool QsciLexerJava_override_virtual_SetStylePreprocessor(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerJava* self_cast = dynamic_cast<MiqtVirtualQsciLexerJava*>( (QsciLexerJava*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetStylePreprocessor = slot;
+	return true;
 }
 
 void QsciLexerJava_virtualbase_SetStylePreprocessor(void* self, bool style) {

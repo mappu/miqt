@@ -15,8 +15,7 @@ import (
 )
 
 type QPropertyAnimation struct {
-	h          *C.QPropertyAnimation
-	isSubclass bool
+	h *C.QPropertyAnimation
 	*QVariantAnimation
 }
 
@@ -54,9 +53,7 @@ func UnsafeNewQPropertyAnimation(h unsafe.Pointer) *QPropertyAnimation {
 // NewQPropertyAnimation constructs a new QPropertyAnimation object.
 func NewQPropertyAnimation() *QPropertyAnimation {
 
-	ret := newQPropertyAnimation(C.QPropertyAnimation_new())
-	ret.isSubclass = true
-	return ret
+	return newQPropertyAnimation(C.QPropertyAnimation_new())
 }
 
 // NewQPropertyAnimation2 constructs a new QPropertyAnimation object.
@@ -65,17 +62,13 @@ func NewQPropertyAnimation2(target *QObject, propertyName []byte) *QPropertyAnim
 	propertyName_alias.data = (*C.char)(unsafe.Pointer(&propertyName[0]))
 	propertyName_alias.len = C.size_t(len(propertyName))
 
-	ret := newQPropertyAnimation(C.QPropertyAnimation_new2(target.cPointer(), propertyName_alias))
-	ret.isSubclass = true
-	return ret
+	return newQPropertyAnimation(C.QPropertyAnimation_new2(target.cPointer(), propertyName_alias))
 }
 
 // NewQPropertyAnimation3 constructs a new QPropertyAnimation object.
 func NewQPropertyAnimation3(parent *QObject) *QPropertyAnimation {
 
-	ret := newQPropertyAnimation(C.QPropertyAnimation_new3(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPropertyAnimation(C.QPropertyAnimation_new3(parent.cPointer()))
 }
 
 // NewQPropertyAnimation4 constructs a new QPropertyAnimation object.
@@ -84,9 +77,7 @@ func NewQPropertyAnimation4(target *QObject, propertyName []byte, parent *QObjec
 	propertyName_alias.data = (*C.char)(unsafe.Pointer(&propertyName[0]))
 	propertyName_alias.len = C.size_t(len(propertyName))
 
-	ret := newQPropertyAnimation(C.QPropertyAnimation_new4(target.cPointer(), propertyName_alias, parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPropertyAnimation(C.QPropertyAnimation_new4(target.cPointer(), propertyName_alias, parent.cPointer()))
 }
 
 func (this *QPropertyAnimation) MetaObject() *QMetaObject {
@@ -189,10 +180,10 @@ func (this *QPropertyAnimation) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QPropertyAnimation) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QPropertyAnimation_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPropertyAnimation_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPropertyAnimation_Event
@@ -217,10 +208,10 @@ func (this *QPropertyAnimation) callVirtualBase_UpdateCurrentValue(value *QVaria
 
 }
 func (this *QPropertyAnimation) OnUpdateCurrentValue(slot func(super func(value *QVariant), value *QVariant)) {
-	if !this.isSubclass {
+	ok := C.QPropertyAnimation_override_virtual_UpdateCurrentValue(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPropertyAnimation_override_virtual_UpdateCurrentValue(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPropertyAnimation_UpdateCurrentValue
@@ -243,10 +234,10 @@ func (this *QPropertyAnimation) callVirtualBase_UpdateState(newState QAbstractAn
 
 }
 func (this *QPropertyAnimation) OnUpdateState(slot func(super func(newState QAbstractAnimation__State, oldState QAbstractAnimation__State), newState QAbstractAnimation__State, oldState QAbstractAnimation__State)) {
-	if !this.isSubclass {
+	ok := C.QPropertyAnimation_override_virtual_UpdateState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPropertyAnimation_override_virtual_UpdateState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPropertyAnimation_UpdateState
@@ -271,10 +262,10 @@ func (this *QPropertyAnimation) callVirtualBase_Duration() int {
 
 }
 func (this *QPropertyAnimation) OnDuration(slot func(super func() int) int) {
-	if !this.isSubclass {
+	ok := C.QPropertyAnimation_override_virtual_Duration(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPropertyAnimation_override_virtual_Duration(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPropertyAnimation_Duration
@@ -296,10 +287,10 @@ func (this *QPropertyAnimation) callVirtualBase_UpdateCurrentTime(param1 int) {
 
 }
 func (this *QPropertyAnimation) OnUpdateCurrentTime(slot func(super func(param1 int), param1 int)) {
-	if !this.isSubclass {
+	ok := C.QPropertyAnimation_override_virtual_UpdateCurrentTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPropertyAnimation_override_virtual_UpdateCurrentTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPropertyAnimation_UpdateCurrentTime
@@ -324,10 +315,10 @@ func (this *QPropertyAnimation) callVirtualBase_Interpolated(from *QVariant, to 
 
 }
 func (this *QPropertyAnimation) OnInterpolated(slot func(super func(from *QVariant, to *QVariant, progress float64) *QVariant, from *QVariant, to *QVariant, progress float64) *QVariant) {
-	if !this.isSubclass {
+	ok := C.QPropertyAnimation_override_virtual_Interpolated(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPropertyAnimation_override_virtual_Interpolated(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPropertyAnimation_Interpolated

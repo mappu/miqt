@@ -16,8 +16,7 @@ import (
 )
 
 type QAudioRoleControl struct {
-	h          *C.QAudioRoleControl
-	isSubclass bool
+	h *C.QAudioRoleControl
 	*QMediaControl
 }
 

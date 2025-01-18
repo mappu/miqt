@@ -1551,280 +1551,490 @@ void QTextEdit_ZoomOut1(QTextEdit* self, int rangeVal) {
 	self->zoomOut(static_cast<int>(rangeVal));
 }
 
-void QTextEdit_override_virtual_LoadResource(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__LoadResource = slot;
+bool QTextEdit_override_virtual_LoadResource(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__LoadResource = slot;
+	return true;
 }
 
 QVariant* QTextEdit_virtualbase_LoadResource(void* self, int typeVal, QUrl* name) {
 	return ( (MiqtVirtualQTextEdit*)(self) )->virtualbase_LoadResource(typeVal, name);
 }
 
-void QTextEdit_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__InputMethodQuery = slot;
+bool QTextEdit_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodQuery = slot;
+	return true;
 }
 
 QVariant* QTextEdit_virtualbase_InputMethodQuery(const void* self, int property) {
 	return ( (const MiqtVirtualQTextEdit*)(self) )->virtualbase_InputMethodQuery(property);
 }
 
-void QTextEdit_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__Event = slot;
+bool QTextEdit_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QTextEdit_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQTextEdit*)(self) )->virtualbase_Event(e);
 }
 
-void QTextEdit_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__TimerEvent = slot;
+bool QTextEdit_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QTextEdit_virtualbase_TimerEvent(void* self, QTimerEvent* e) {
 	( (MiqtVirtualQTextEdit*)(self) )->virtualbase_TimerEvent(e);
 }
 
-void QTextEdit_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__KeyPressEvent = slot;
+bool QTextEdit_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QTextEdit_virtualbase_KeyPressEvent(void* self, QKeyEvent* e) {
 	( (MiqtVirtualQTextEdit*)(self) )->virtualbase_KeyPressEvent(e);
 }
 
-void QTextEdit_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__KeyReleaseEvent = slot;
+bool QTextEdit_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyReleaseEvent = slot;
+	return true;
 }
 
 void QTextEdit_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* e) {
 	( (MiqtVirtualQTextEdit*)(self) )->virtualbase_KeyReleaseEvent(e);
 }
 
-void QTextEdit_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__ResizeEvent = slot;
+bool QTextEdit_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QTextEdit_virtualbase_ResizeEvent(void* self, QResizeEvent* e) {
 	( (MiqtVirtualQTextEdit*)(self) )->virtualbase_ResizeEvent(e);
 }
 
-void QTextEdit_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__PaintEvent = slot;
+bool QTextEdit_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QTextEdit_virtualbase_PaintEvent(void* self, QPaintEvent* e) {
 	( (MiqtVirtualQTextEdit*)(self) )->virtualbase_PaintEvent(e);
 }
 
-void QTextEdit_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__MousePressEvent = slot;
+bool QTextEdit_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QTextEdit_virtualbase_MousePressEvent(void* self, QMouseEvent* e) {
 	( (MiqtVirtualQTextEdit*)(self) )->virtualbase_MousePressEvent(e);
 }
 
-void QTextEdit_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__MouseMoveEvent = slot;
+bool QTextEdit_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QTextEdit_virtualbase_MouseMoveEvent(void* self, QMouseEvent* e) {
 	( (MiqtVirtualQTextEdit*)(self) )->virtualbase_MouseMoveEvent(e);
 }
 
-void QTextEdit_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__MouseReleaseEvent = slot;
+bool QTextEdit_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QTextEdit_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* e) {
 	( (MiqtVirtualQTextEdit*)(self) )->virtualbase_MouseReleaseEvent(e);
 }
 
-void QTextEdit_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__MouseDoubleClickEvent = slot;
+bool QTextEdit_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseDoubleClickEvent = slot;
+	return true;
 }
 
 void QTextEdit_virtualbase_MouseDoubleClickEvent(void* self, QMouseEvent* e) {
 	( (MiqtVirtualQTextEdit*)(self) )->virtualbase_MouseDoubleClickEvent(e);
 }
 
-void QTextEdit_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__FocusNextPrevChild = slot;
+bool QTextEdit_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusNextPrevChild = slot;
+	return true;
 }
 
 bool QTextEdit_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQTextEdit*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QTextEdit_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__ContextMenuEvent = slot;
+bool QTextEdit_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QTextEdit_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* e) {
 	( (MiqtVirtualQTextEdit*)(self) )->virtualbase_ContextMenuEvent(e);
 }
 
-void QTextEdit_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__DragEnterEvent = slot;
+bool QTextEdit_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragEnterEvent = slot;
+	return true;
 }
 
 void QTextEdit_virtualbase_DragEnterEvent(void* self, QDragEnterEvent* e) {
 	( (MiqtVirtualQTextEdit*)(self) )->virtualbase_DragEnterEvent(e);
 }
 
-void QTextEdit_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__DragLeaveEvent = slot;
+bool QTextEdit_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragLeaveEvent = slot;
+	return true;
 }
 
 void QTextEdit_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* e) {
 	( (MiqtVirtualQTextEdit*)(self) )->virtualbase_DragLeaveEvent(e);
 }
 
-void QTextEdit_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__DragMoveEvent = slot;
+bool QTextEdit_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragMoveEvent = slot;
+	return true;
 }
 
 void QTextEdit_virtualbase_DragMoveEvent(void* self, QDragMoveEvent* e) {
 	( (MiqtVirtualQTextEdit*)(self) )->virtualbase_DragMoveEvent(e);
 }
 
-void QTextEdit_override_virtual_DropEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__DropEvent = slot;
+bool QTextEdit_override_virtual_DropEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropEvent = slot;
+	return true;
 }
 
 void QTextEdit_virtualbase_DropEvent(void* self, QDropEvent* e) {
 	( (MiqtVirtualQTextEdit*)(self) )->virtualbase_DropEvent(e);
 }
 
-void QTextEdit_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__FocusInEvent = slot;
+bool QTextEdit_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QTextEdit_virtualbase_FocusInEvent(void* self, QFocusEvent* e) {
 	( (MiqtVirtualQTextEdit*)(self) )->virtualbase_FocusInEvent(e);
 }
 
-void QTextEdit_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__FocusOutEvent = slot;
+bool QTextEdit_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
 }
 
 void QTextEdit_virtualbase_FocusOutEvent(void* self, QFocusEvent* e) {
 	( (MiqtVirtualQTextEdit*)(self) )->virtualbase_FocusOutEvent(e);
 }
 
-void QTextEdit_override_virtual_ShowEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__ShowEvent = slot;
+bool QTextEdit_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
 }
 
 void QTextEdit_virtualbase_ShowEvent(void* self, QShowEvent* param1) {
 	( (MiqtVirtualQTextEdit*)(self) )->virtualbase_ShowEvent(param1);
 }
 
-void QTextEdit_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__ChangeEvent = slot;
+bool QTextEdit_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QTextEdit_virtualbase_ChangeEvent(void* self, QEvent* e) {
 	( (MiqtVirtualQTextEdit*)(self) )->virtualbase_ChangeEvent(e);
 }
 
-void QTextEdit_override_virtual_WheelEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__WheelEvent = slot;
+bool QTextEdit_override_virtual_WheelEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WheelEvent = slot;
+	return true;
 }
 
 void QTextEdit_virtualbase_WheelEvent(void* self, QWheelEvent* e) {
 	( (MiqtVirtualQTextEdit*)(self) )->virtualbase_WheelEvent(e);
 }
 
-void QTextEdit_override_virtual_CreateMimeDataFromSelection(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__CreateMimeDataFromSelection = slot;
+bool QTextEdit_override_virtual_CreateMimeDataFromSelection(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CreateMimeDataFromSelection = slot;
+	return true;
 }
 
 QMimeData* QTextEdit_virtualbase_CreateMimeDataFromSelection(const void* self) {
 	return ( (const MiqtVirtualQTextEdit*)(self) )->virtualbase_CreateMimeDataFromSelection();
 }
 
-void QTextEdit_override_virtual_CanInsertFromMimeData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__CanInsertFromMimeData = slot;
+bool QTextEdit_override_virtual_CanInsertFromMimeData(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CanInsertFromMimeData = slot;
+	return true;
 }
 
 bool QTextEdit_virtualbase_CanInsertFromMimeData(const void* self, QMimeData* source) {
 	return ( (const MiqtVirtualQTextEdit*)(self) )->virtualbase_CanInsertFromMimeData(source);
 }
 
-void QTextEdit_override_virtual_InsertFromMimeData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__InsertFromMimeData = slot;
+bool QTextEdit_override_virtual_InsertFromMimeData(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InsertFromMimeData = slot;
+	return true;
 }
 
 void QTextEdit_virtualbase_InsertFromMimeData(void* self, QMimeData* source) {
 	( (MiqtVirtualQTextEdit*)(self) )->virtualbase_InsertFromMimeData(source);
 }
 
-void QTextEdit_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__InputMethodEvent = slot;
+bool QTextEdit_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodEvent = slot;
+	return true;
 }
 
 void QTextEdit_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* param1) {
 	( (MiqtVirtualQTextEdit*)(self) )->virtualbase_InputMethodEvent(param1);
 }
 
-void QTextEdit_override_virtual_ScrollContentsBy(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__ScrollContentsBy = slot;
+bool QTextEdit_override_virtual_ScrollContentsBy(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ScrollContentsBy = slot;
+	return true;
 }
 
 void QTextEdit_virtualbase_ScrollContentsBy(void* self, int dx, int dy) {
 	( (MiqtVirtualQTextEdit*)(self) )->virtualbase_ScrollContentsBy(dx, dy);
 }
 
-void QTextEdit_override_virtual_DoSetTextCursor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__DoSetTextCursor = slot;
+bool QTextEdit_override_virtual_DoSetTextCursor(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DoSetTextCursor = slot;
+	return true;
 }
 
 void QTextEdit_virtualbase_DoSetTextCursor(void* self, QTextCursor* cursor) {
 	( (MiqtVirtualQTextEdit*)(self) )->virtualbase_DoSetTextCursor(cursor);
 }
 
-void QTextEdit_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__MinimumSizeHint = slot;
+bool QTextEdit_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QTextEdit_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQTextEdit*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QTextEdit_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__SizeHint = slot;
+bool QTextEdit_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QTextEdit_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQTextEdit*)(self) )->virtualbase_SizeHint();
 }
 
-void QTextEdit_override_virtual_SetupViewport(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__SetupViewport = slot;
+bool QTextEdit_override_virtual_SetupViewport(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetupViewport = slot;
+	return true;
 }
 
 void QTextEdit_virtualbase_SetupViewport(void* self, QWidget* viewport) {
 	( (MiqtVirtualQTextEdit*)(self) )->virtualbase_SetupViewport(viewport);
 }
 
-void QTextEdit_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__EventFilter = slot;
+bool QTextEdit_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QTextEdit_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2) {
 	return ( (MiqtVirtualQTextEdit*)(self) )->virtualbase_EventFilter(param1, param2);
 }
 
-void QTextEdit_override_virtual_ViewportEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__ViewportEvent = slot;
+bool QTextEdit_override_virtual_ViewportEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ViewportEvent = slot;
+	return true;
 }
 
 bool QTextEdit_virtualbase_ViewportEvent(void* self, QEvent* param1) {
 	return ( (MiqtVirtualQTextEdit*)(self) )->virtualbase_ViewportEvent(param1);
 }
 
-void QTextEdit_override_virtual_ViewportSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) )->handle__ViewportSizeHint = slot;
+bool QTextEdit_override_virtual_ViewportSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQTextEdit* self_cast = dynamic_cast<MiqtVirtualQTextEdit*>( (QTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ViewportSizeHint = slot;
+	return true;
 }
 
 QSize* QTextEdit_virtualbase_ViewportSizeHint(const void* self) {

@@ -16,8 +16,7 @@ import (
 )
 
 type QCameraCaptureBufferFormatControl struct {
-	h          *C.QCameraCaptureBufferFormatControl
-	isSubclass bool
+	h *C.QCameraCaptureBufferFormatControl
 	*QMediaControl
 }
 

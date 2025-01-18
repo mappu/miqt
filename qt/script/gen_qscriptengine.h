@@ -130,19 +130,19 @@ QScriptValue* QScriptEngine_NewQObject32(QScriptEngine* self, QScriptValue* scri
 QScriptValue* QScriptEngine_NewQObject4(QScriptEngine* self, QScriptValue* scriptObject, QObject* qtObject, int ownership, int* options);
 QScriptValue* QScriptEngine_NewQMetaObject2(QScriptEngine* self, QMetaObject* metaObject, QScriptValue* ctor);
 void QScriptEngine_InstallTranslatorFunctions1(QScriptEngine* self, QScriptValue* object);
-void QScriptEngine_override_virtual_Event(void* self, intptr_t slot);
+bool QScriptEngine_override_virtual_Event(void* self, intptr_t slot);
 bool QScriptEngine_virtualbase_Event(void* self, QEvent* event);
-void QScriptEngine_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QScriptEngine_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QScriptEngine_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-void QScriptEngine_override_virtual_TimerEvent(void* self, intptr_t slot);
+bool QScriptEngine_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QScriptEngine_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-void QScriptEngine_override_virtual_ChildEvent(void* self, intptr_t slot);
+bool QScriptEngine_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QScriptEngine_virtualbase_ChildEvent(void* self, QChildEvent* event);
-void QScriptEngine_override_virtual_CustomEvent(void* self, intptr_t slot);
+bool QScriptEngine_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QScriptEngine_virtualbase_CustomEvent(void* self, QEvent* event);
-void QScriptEngine_override_virtual_ConnectNotify(void* self, intptr_t slot);
+bool QScriptEngine_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QScriptEngine_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-void QScriptEngine_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+bool QScriptEngine_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QScriptEngine_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QScriptEngine_Delete(QScriptEngine* self);
 

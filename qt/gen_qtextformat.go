@@ -250,8 +250,7 @@ const (
 )
 
 type QTextLength struct {
-	h          *C.QTextLength
-	isSubclass bool
+	h *C.QTextLength
 }
 
 func (this *QTextLength) cPointer() *C.QTextLength {
@@ -285,25 +284,19 @@ func UnsafeNewQTextLength(h unsafe.Pointer) *QTextLength {
 // NewQTextLength constructs a new QTextLength object.
 func NewQTextLength() *QTextLength {
 
-	ret := newQTextLength(C.QTextLength_new())
-	ret.isSubclass = true
-	return ret
+	return newQTextLength(C.QTextLength_new())
 }
 
 // NewQTextLength2 constructs a new QTextLength object.
 func NewQTextLength2(typeVal QTextLength__Type, value float64) *QTextLength {
 
-	ret := newQTextLength(C.QTextLength_new2((C.int)(typeVal), (C.double)(value)))
-	ret.isSubclass = true
-	return ret
+	return newQTextLength(C.QTextLength_new2((C.int)(typeVal), (C.double)(value)))
 }
 
 // NewQTextLength3 constructs a new QTextLength object.
 func NewQTextLength3(param1 *QTextLength) *QTextLength {
 
-	ret := newQTextLength(C.QTextLength_new3(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTextLength(C.QTextLength_new3(param1.cPointer()))
 }
 
 func (this *QTextLength) Type() QTextLength__Type {
@@ -347,8 +340,7 @@ func (this *QTextLength) GoGC() {
 }
 
 type QTextFormat struct {
-	h          *C.QTextFormat
-	isSubclass bool
+	h *C.QTextFormat
 }
 
 func (this *QTextFormat) cPointer() *C.QTextFormat {
@@ -382,25 +374,19 @@ func UnsafeNewQTextFormat(h unsafe.Pointer) *QTextFormat {
 // NewQTextFormat constructs a new QTextFormat object.
 func NewQTextFormat() *QTextFormat {
 
-	ret := newQTextFormat(C.QTextFormat_new())
-	ret.isSubclass = true
-	return ret
+	return newQTextFormat(C.QTextFormat_new())
 }
 
 // NewQTextFormat2 constructs a new QTextFormat object.
 func NewQTextFormat2(typeVal int) *QTextFormat {
 
-	ret := newQTextFormat(C.QTextFormat_new2((C.int)(typeVal)))
-	ret.isSubclass = true
-	return ret
+	return newQTextFormat(C.QTextFormat_new2((C.int)(typeVal)))
 }
 
 // NewQTextFormat3 constructs a new QTextFormat object.
 func NewQTextFormat3(rhs *QTextFormat) *QTextFormat {
 
-	ret := newQTextFormat(C.QTextFormat_new3(rhs.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTextFormat(C.QTextFormat_new3(rhs.cPointer()))
 }
 
 func (this *QTextFormat) OperatorAssign(rhs *QTextFormat) {
@@ -682,8 +668,7 @@ func (this *QTextFormat) GoGC() {
 }
 
 type QTextCharFormat struct {
-	h          *C.QTextCharFormat
-	isSubclass bool
+	h *C.QTextCharFormat
 	*QTextFormat
 }
 
@@ -721,17 +706,13 @@ func UnsafeNewQTextCharFormat(h unsafe.Pointer) *QTextCharFormat {
 // NewQTextCharFormat constructs a new QTextCharFormat object.
 func NewQTextCharFormat() *QTextCharFormat {
 
-	ret := newQTextCharFormat(C.QTextCharFormat_new())
-	ret.isSubclass = true
-	return ret
+	return newQTextCharFormat(C.QTextCharFormat_new())
 }
 
 // NewQTextCharFormat2 constructs a new QTextCharFormat object.
 func NewQTextCharFormat2(param1 *QTextCharFormat) *QTextCharFormat {
 
-	ret := newQTextCharFormat(C.QTextCharFormat_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTextCharFormat(C.QTextCharFormat_new2(param1.cPointer()))
 }
 
 func (this *QTextCharFormat) IsValid() bool {
@@ -1080,8 +1061,7 @@ func (this *QTextCharFormat) GoGC() {
 }
 
 type QTextBlockFormat struct {
-	h          *C.QTextBlockFormat
-	isSubclass bool
+	h *C.QTextBlockFormat
 	*QTextFormat
 }
 
@@ -1119,17 +1099,13 @@ func UnsafeNewQTextBlockFormat(h unsafe.Pointer) *QTextBlockFormat {
 // NewQTextBlockFormat constructs a new QTextBlockFormat object.
 func NewQTextBlockFormat() *QTextBlockFormat {
 
-	ret := newQTextBlockFormat(C.QTextBlockFormat_new())
-	ret.isSubclass = true
-	return ret
+	return newQTextBlockFormat(C.QTextBlockFormat_new())
 }
 
 // NewQTextBlockFormat2 constructs a new QTextBlockFormat object.
 func NewQTextBlockFormat2(param1 *QTextBlockFormat) *QTextBlockFormat {
 
-	ret := newQTextBlockFormat(C.QTextBlockFormat_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTextBlockFormat(C.QTextBlockFormat_new2(param1.cPointer()))
 }
 
 func (this *QTextBlockFormat) IsValid() bool {
@@ -1277,8 +1253,7 @@ func (this *QTextBlockFormat) GoGC() {
 }
 
 type QTextListFormat struct {
-	h          *C.QTextListFormat
-	isSubclass bool
+	h *C.QTextListFormat
 	*QTextFormat
 }
 
@@ -1316,17 +1291,13 @@ func UnsafeNewQTextListFormat(h unsafe.Pointer) *QTextListFormat {
 // NewQTextListFormat constructs a new QTextListFormat object.
 func NewQTextListFormat() *QTextListFormat {
 
-	ret := newQTextListFormat(C.QTextListFormat_new())
-	ret.isSubclass = true
-	return ret
+	return newQTextListFormat(C.QTextListFormat_new())
 }
 
 // NewQTextListFormat2 constructs a new QTextListFormat object.
 func NewQTextListFormat2(param1 *QTextListFormat) *QTextListFormat {
 
-	ret := newQTextListFormat(C.QTextListFormat_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTextListFormat(C.QTextListFormat_new2(param1.cPointer()))
 }
 
 func (this *QTextListFormat) IsValid() bool {
@@ -1394,8 +1365,7 @@ func (this *QTextListFormat) GoGC() {
 }
 
 type QTextImageFormat struct {
-	h          *C.QTextImageFormat
-	isSubclass bool
+	h *C.QTextImageFormat
 	*QTextCharFormat
 }
 
@@ -1433,9 +1403,7 @@ func UnsafeNewQTextImageFormat(h unsafe.Pointer) *QTextImageFormat {
 // NewQTextImageFormat constructs a new QTextImageFormat object.
 func NewQTextImageFormat() *QTextImageFormat {
 
-	ret := newQTextImageFormat(C.QTextImageFormat_new())
-	ret.isSubclass = true
-	return ret
+	return newQTextImageFormat(C.QTextImageFormat_new())
 }
 
 func (this *QTextImageFormat) IsValid() bool {
@@ -1500,8 +1468,7 @@ func (this *QTextImageFormat) GoGC() {
 }
 
 type QTextFrameFormat struct {
-	h          *C.QTextFrameFormat
-	isSubclass bool
+	h *C.QTextFrameFormat
 	*QTextFormat
 }
 
@@ -1539,17 +1506,13 @@ func UnsafeNewQTextFrameFormat(h unsafe.Pointer) *QTextFrameFormat {
 // NewQTextFrameFormat constructs a new QTextFrameFormat object.
 func NewQTextFrameFormat() *QTextFrameFormat {
 
-	ret := newQTextFrameFormat(C.QTextFrameFormat_new())
-	ret.isSubclass = true
-	return ret
+	return newQTextFrameFormat(C.QTextFrameFormat_new())
 }
 
 // NewQTextFrameFormat2 constructs a new QTextFrameFormat object.
 func NewQTextFrameFormat2(param1 *QTextFrameFormat) *QTextFrameFormat {
 
-	ret := newQTextFrameFormat(C.QTextFrameFormat_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTextFrameFormat(C.QTextFrameFormat_new2(param1.cPointer()))
 }
 
 func (this *QTextFrameFormat) IsValid() bool {
@@ -1689,8 +1652,7 @@ func (this *QTextFrameFormat) GoGC() {
 }
 
 type QTextTableFormat struct {
-	h          *C.QTextTableFormat
-	isSubclass bool
+	h *C.QTextTableFormat
 	*QTextFrameFormat
 }
 
@@ -1728,9 +1690,7 @@ func UnsafeNewQTextTableFormat(h unsafe.Pointer) *QTextTableFormat {
 // NewQTextTableFormat constructs a new QTextTableFormat object.
 func NewQTextTableFormat() *QTextTableFormat {
 
-	ret := newQTextTableFormat(C.QTextTableFormat_new())
-	ret.isSubclass = true
-	return ret
+	return newQTextTableFormat(C.QTextTableFormat_new())
 }
 
 func (this *QTextTableFormat) IsValid() bool {
@@ -1826,8 +1786,7 @@ func (this *QTextTableFormat) GoGC() {
 }
 
 type QTextTableCellFormat struct {
-	h          *C.QTextTableCellFormat
-	isSubclass bool
+	h *C.QTextTableCellFormat
 	*QTextCharFormat
 }
 
@@ -1865,9 +1824,7 @@ func UnsafeNewQTextTableCellFormat(h unsafe.Pointer) *QTextTableCellFormat {
 // NewQTextTableCellFormat constructs a new QTextTableCellFormat object.
 func NewQTextTableCellFormat() *QTextTableCellFormat {
 
-	ret := newQTextTableCellFormat(C.QTextTableCellFormat_new())
-	ret.isSubclass = true
-	return ret
+	return newQTextTableCellFormat(C.QTextTableCellFormat_new())
 }
 
 func (this *QTextTableCellFormat) IsValid() bool {

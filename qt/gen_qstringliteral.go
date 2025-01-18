@@ -14,8 +14,7 @@ import (
 )
 
 type QStringDataPtr struct {
-	h          *C.QStringDataPtr
-	isSubclass bool
+	h *C.QStringDataPtr
 }
 
 func (this *QStringDataPtr) cPointer() *C.QStringDataPtr {

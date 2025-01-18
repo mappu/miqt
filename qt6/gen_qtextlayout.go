@@ -35,8 +35,7 @@ const (
 )
 
 type QTextInlineObject struct {
-	h          *C.QTextInlineObject
-	isSubclass bool
+	h *C.QTextInlineObject
 }
 
 func (this *QTextInlineObject) cPointer() *C.QTextInlineObject {
@@ -70,9 +69,7 @@ func UnsafeNewQTextInlineObject(h unsafe.Pointer) *QTextInlineObject {
 // NewQTextInlineObject constructs a new QTextInlineObject object.
 func NewQTextInlineObject() *QTextInlineObject {
 
-	ret := newQTextInlineObject(C.QTextInlineObject_new())
-	ret.isSubclass = true
-	return ret
+	return newQTextInlineObject(C.QTextInlineObject_new())
 }
 
 func (this *QTextInlineObject) IsValid() bool {
@@ -146,8 +143,7 @@ func (this *QTextInlineObject) GoGC() {
 }
 
 type QTextLayout struct {
-	h          *C.QTextLayout
-	isSubclass bool
+	h *C.QTextLayout
 }
 
 func (this *QTextLayout) cPointer() *C.QTextLayout {
@@ -181,9 +177,7 @@ func UnsafeNewQTextLayout(h unsafe.Pointer) *QTextLayout {
 // NewQTextLayout constructs a new QTextLayout object.
 func NewQTextLayout() *QTextLayout {
 
-	ret := newQTextLayout(C.QTextLayout_new())
-	ret.isSubclass = true
-	return ret
+	return newQTextLayout(C.QTextLayout_new())
 }
 
 // NewQTextLayout2 constructs a new QTextLayout object.
@@ -193,9 +187,7 @@ func NewQTextLayout2(text string) *QTextLayout {
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQTextLayout(C.QTextLayout_new2(text_ms))
-	ret.isSubclass = true
-	return ret
+	return newQTextLayout(C.QTextLayout_new2(text_ms))
 }
 
 // NewQTextLayout3 constructs a new QTextLayout object.
@@ -205,17 +197,13 @@ func NewQTextLayout3(text string, font *QFont) *QTextLayout {
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQTextLayout(C.QTextLayout_new3(text_ms, font.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTextLayout(C.QTextLayout_new3(text_ms, font.cPointer()))
 }
 
 // NewQTextLayout4 constructs a new QTextLayout object.
 func NewQTextLayout4(b *QTextBlock) *QTextLayout {
 
-	ret := newQTextLayout(C.QTextLayout_new4(b.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTextLayout(C.QTextLayout_new4(b.cPointer()))
 }
 
 // NewQTextLayout5 constructs a new QTextLayout object.
@@ -225,9 +213,7 @@ func NewQTextLayout5(text string, font *QFont, paintdevice *QPaintDevice) *QText
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQTextLayout(C.QTextLayout_new5(text_ms, font.cPointer(), paintdevice.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTextLayout(C.QTextLayout_new5(text_ms, font.cPointer(), paintdevice.cPointer()))
 }
 
 func (this *QTextLayout) SetFont(f *QFont) {
@@ -501,8 +487,7 @@ func (this *QTextLayout) GoGC() {
 }
 
 type QTextLine struct {
-	h          *C.QTextLine
-	isSubclass bool
+	h *C.QTextLine
 }
 
 func (this *QTextLine) cPointer() *C.QTextLine {
@@ -536,9 +521,7 @@ func UnsafeNewQTextLine(h unsafe.Pointer) *QTextLine {
 // NewQTextLine constructs a new QTextLine object.
 func NewQTextLine() *QTextLine {
 
-	ret := newQTextLine(C.QTextLine_new())
-	ret.isSubclass = true
-	return ret
+	return newQTextLine(C.QTextLine_new())
 }
 
 func (this *QTextLine) IsValid() bool {
@@ -714,8 +697,7 @@ func (this *QTextLine) GoGC() {
 }
 
 type QTextLayout__FormatRange struct {
-	h          *C.QTextLayout__FormatRange
-	isSubclass bool
+	h *C.QTextLayout__FormatRange
 }
 
 func (this *QTextLayout__FormatRange) cPointer() *C.QTextLayout__FormatRange {
@@ -749,9 +731,7 @@ func UnsafeNewQTextLayout__FormatRange(h unsafe.Pointer) *QTextLayout__FormatRan
 // NewQTextLayout__FormatRange constructs a new QTextLayout::FormatRange object.
 func NewQTextLayout__FormatRange(param1 *QTextLayout__FormatRange) *QTextLayout__FormatRange {
 
-	ret := newQTextLayout__FormatRange(C.QTextLayout__FormatRange_new(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTextLayout__FormatRange(C.QTextLayout__FormatRange_new(param1.cPointer()))
 }
 
 func (this *QTextLayout__FormatRange) OperatorAssign(param1 *QTextLayout__FormatRange) {

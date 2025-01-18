@@ -50,11 +50,11 @@ struct miqt_string QEventTransition_Tr2(const char* s, const char* c);
 struct miqt_string QEventTransition_Tr3(const char* s, const char* c, int n);
 struct miqt_string QEventTransition_TrUtf82(const char* s, const char* c);
 struct miqt_string QEventTransition_TrUtf83(const char* s, const char* c, int n);
-void QEventTransition_override_virtual_EventTest(void* self, intptr_t slot);
+bool QEventTransition_override_virtual_EventTest(void* self, intptr_t slot);
 bool QEventTransition_virtualbase_EventTest(void* self, QEvent* event);
-void QEventTransition_override_virtual_OnTransition(void* self, intptr_t slot);
+bool QEventTransition_override_virtual_OnTransition(void* self, intptr_t slot);
 void QEventTransition_virtualbase_OnTransition(void* self, QEvent* event);
-void QEventTransition_override_virtual_Event(void* self, intptr_t slot);
+bool QEventTransition_override_virtual_Event(void* self, intptr_t slot);
 bool QEventTransition_virtualbase_Event(void* self, QEvent* e);
 void QEventTransition_Delete(QEventTransition* self);
 

@@ -26,8 +26,7 @@ const (
 )
 
 type QCameraViewfinderSettingsControl struct {
-	h          *C.QCameraViewfinderSettingsControl
-	isSubclass bool
+	h *C.QCameraViewfinderSettingsControl
 	*QMediaControl
 }
 
@@ -163,8 +162,7 @@ func (this *QCameraViewfinderSettingsControl) GoGC() {
 }
 
 type QCameraViewfinderSettingsControl2 struct {
-	h          *C.QCameraViewfinderSettingsControl2
-	isSubclass bool
+	h *C.QCameraViewfinderSettingsControl2
 	*QMediaControl
 }
 

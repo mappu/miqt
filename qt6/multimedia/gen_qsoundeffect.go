@@ -31,8 +31,7 @@ const (
 )
 
 type QSoundEffect struct {
-	h          *C.QSoundEffect
-	isSubclass bool
+	h *C.QSoundEffect
 	*qt6.QObject
 }
 
@@ -70,33 +69,25 @@ func UnsafeNewQSoundEffect(h unsafe.Pointer) *QSoundEffect {
 // NewQSoundEffect constructs a new QSoundEffect object.
 func NewQSoundEffect() *QSoundEffect {
 
-	ret := newQSoundEffect(C.QSoundEffect_new())
-	ret.isSubclass = true
-	return ret
+	return newQSoundEffect(C.QSoundEffect_new())
 }
 
 // NewQSoundEffect2 constructs a new QSoundEffect object.
 func NewQSoundEffect2(audioDevice *QAudioDevice) *QSoundEffect {
 
-	ret := newQSoundEffect(C.QSoundEffect_new2(audioDevice.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSoundEffect(C.QSoundEffect_new2(audioDevice.cPointer()))
 }
 
 // NewQSoundEffect3 constructs a new QSoundEffect object.
 func NewQSoundEffect3(parent *qt6.QObject) *QSoundEffect {
 
-	ret := newQSoundEffect(C.QSoundEffect_new3((*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQSoundEffect(C.QSoundEffect_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 // NewQSoundEffect4 constructs a new QSoundEffect object.
 func NewQSoundEffect4(audioDevice *QAudioDevice, parent *qt6.QObject) *QSoundEffect {
 
-	ret := newQSoundEffect(C.QSoundEffect_new4(audioDevice.cPointer(), (*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQSoundEffect(C.QSoundEffect_new4(audioDevice.cPointer(), (*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QSoundEffect) MetaObject() *qt6.QMetaObject {
@@ -380,10 +371,10 @@ func (this *QSoundEffect) callVirtualBase_Event(event *qt6.QEvent) bool {
 
 }
 func (this *QSoundEffect) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QSoundEffect_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSoundEffect_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSoundEffect_Event
@@ -408,10 +399,10 @@ func (this *QSoundEffect) callVirtualBase_EventFilter(watched *qt6.QObject, even
 
 }
 func (this *QSoundEffect) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QSoundEffect_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSoundEffect_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSoundEffect_EventFilter
@@ -438,10 +429,10 @@ func (this *QSoundEffect) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
 
 }
 func (this *QSoundEffect) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QSoundEffect_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSoundEffect_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSoundEffect_TimerEvent
@@ -464,10 +455,10 @@ func (this *QSoundEffect) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
 
 }
 func (this *QSoundEffect) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QSoundEffect_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSoundEffect_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSoundEffect_ChildEvent
@@ -490,10 +481,10 @@ func (this *QSoundEffect) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 
 }
 func (this *QSoundEffect) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
-	if !this.isSubclass {
+	ok := C.QSoundEffect_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSoundEffect_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSoundEffect_CustomEvent
@@ -516,10 +507,10 @@ func (this *QSoundEffect) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod)
 
 }
 func (this *QSoundEffect) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QSoundEffect_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSoundEffect_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSoundEffect_ConnectNotify
@@ -542,10 +533,10 @@ func (this *QSoundEffect) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMeth
 
 }
 func (this *QSoundEffect) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QSoundEffect_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSoundEffect_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSoundEffect_DisconnectNotify

@@ -1015,80 +1015,140 @@ void QTextDocument_SetModified1(QTextDocument* self, bool m) {
 	self->setModified(m);
 }
 
-void QTextDocument_override_virtual_Clear(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextDocument*>( (QTextDocument*)(self) )->handle__Clear = slot;
+bool QTextDocument_override_virtual_Clear(void* self, intptr_t slot) {
+	MiqtVirtualQTextDocument* self_cast = dynamic_cast<MiqtVirtualQTextDocument*>( (QTextDocument*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Clear = slot;
+	return true;
 }
 
 void QTextDocument_virtualbase_Clear(void* self) {
 	( (MiqtVirtualQTextDocument*)(self) )->virtualbase_Clear();
 }
 
-void QTextDocument_override_virtual_CreateObject(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextDocument*>( (QTextDocument*)(self) )->handle__CreateObject = slot;
+bool QTextDocument_override_virtual_CreateObject(void* self, intptr_t slot) {
+	MiqtVirtualQTextDocument* self_cast = dynamic_cast<MiqtVirtualQTextDocument*>( (QTextDocument*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CreateObject = slot;
+	return true;
 }
 
 QTextObject* QTextDocument_virtualbase_CreateObject(void* self, QTextFormat* f) {
 	return ( (MiqtVirtualQTextDocument*)(self) )->virtualbase_CreateObject(f);
 }
 
-void QTextDocument_override_virtual_LoadResource(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextDocument*>( (QTextDocument*)(self) )->handle__LoadResource = slot;
+bool QTextDocument_override_virtual_LoadResource(void* self, intptr_t slot) {
+	MiqtVirtualQTextDocument* self_cast = dynamic_cast<MiqtVirtualQTextDocument*>( (QTextDocument*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__LoadResource = slot;
+	return true;
 }
 
 QVariant* QTextDocument_virtualbase_LoadResource(void* self, int typeVal, QUrl* name) {
 	return ( (MiqtVirtualQTextDocument*)(self) )->virtualbase_LoadResource(typeVal, name);
 }
 
-void QTextDocument_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextDocument*>( (QTextDocument*)(self) )->handle__Event = slot;
+bool QTextDocument_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQTextDocument* self_cast = dynamic_cast<MiqtVirtualQTextDocument*>( (QTextDocument*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QTextDocument_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQTextDocument*)(self) )->virtualbase_Event(event);
 }
 
-void QTextDocument_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextDocument*>( (QTextDocument*)(self) )->handle__EventFilter = slot;
+bool QTextDocument_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQTextDocument* self_cast = dynamic_cast<MiqtVirtualQTextDocument*>( (QTextDocument*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QTextDocument_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQTextDocument*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QTextDocument_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextDocument*>( (QTextDocument*)(self) )->handle__TimerEvent = slot;
+bool QTextDocument_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextDocument* self_cast = dynamic_cast<MiqtVirtualQTextDocument*>( (QTextDocument*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QTextDocument_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQTextDocument*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QTextDocument_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextDocument*>( (QTextDocument*)(self) )->handle__ChildEvent = slot;
+bool QTextDocument_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextDocument* self_cast = dynamic_cast<MiqtVirtualQTextDocument*>( (QTextDocument*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QTextDocument_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQTextDocument*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QTextDocument_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextDocument*>( (QTextDocument*)(self) )->handle__CustomEvent = slot;
+bool QTextDocument_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextDocument* self_cast = dynamic_cast<MiqtVirtualQTextDocument*>( (QTextDocument*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QTextDocument_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQTextDocument*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QTextDocument_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextDocument*>( (QTextDocument*)(self) )->handle__ConnectNotify = slot;
+bool QTextDocument_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQTextDocument* self_cast = dynamic_cast<MiqtVirtualQTextDocument*>( (QTextDocument*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QTextDocument_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTextDocument*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QTextDocument_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTextDocument*>( (QTextDocument*)(self) )->handle__DisconnectNotify = slot;
+bool QTextDocument_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQTextDocument* self_cast = dynamic_cast<MiqtVirtualQTextDocument*>( (QTextDocument*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QTextDocument_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

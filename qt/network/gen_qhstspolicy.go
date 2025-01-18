@@ -21,8 +21,7 @@ const (
 )
 
 type QHstsPolicy struct {
-	h          *C.QHstsPolicy
-	isSubclass bool
+	h *C.QHstsPolicy
 }
 
 func (this *QHstsPolicy) cPointer() *C.QHstsPolicy {
@@ -56,9 +55,7 @@ func UnsafeNewQHstsPolicy(h unsafe.Pointer) *QHstsPolicy {
 // NewQHstsPolicy constructs a new QHstsPolicy object.
 func NewQHstsPolicy() *QHstsPolicy {
 
-	ret := newQHstsPolicy(C.QHstsPolicy_new())
-	ret.isSubclass = true
-	return ret
+	return newQHstsPolicy(C.QHstsPolicy_new())
 }
 
 // NewQHstsPolicy2 constructs a new QHstsPolicy object.
@@ -68,17 +65,13 @@ func NewQHstsPolicy2(expiry *qt.QDateTime, flags QHstsPolicy__PolicyFlag, host s
 	host_ms.len = C.size_t(len(host))
 	defer C.free(unsafe.Pointer(host_ms.data))
 
-	ret := newQHstsPolicy(C.QHstsPolicy_new2((*C.QDateTime)(expiry.UnsafePointer()), (C.int)(flags), host_ms))
-	ret.isSubclass = true
-	return ret
+	return newQHstsPolicy(C.QHstsPolicy_new2((*C.QDateTime)(expiry.UnsafePointer()), (C.int)(flags), host_ms))
 }
 
 // NewQHstsPolicy3 constructs a new QHstsPolicy object.
 func NewQHstsPolicy3(rhs *QHstsPolicy) *QHstsPolicy {
 
-	ret := newQHstsPolicy(C.QHstsPolicy_new3(rhs.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQHstsPolicy(C.QHstsPolicy_new3(rhs.cPointer()))
 }
 
 // NewQHstsPolicy4 constructs a new QHstsPolicy object.
@@ -88,9 +81,7 @@ func NewQHstsPolicy4(expiry *qt.QDateTime, flags QHstsPolicy__PolicyFlag, host s
 	host_ms.len = C.size_t(len(host))
 	defer C.free(unsafe.Pointer(host_ms.data))
 
-	ret := newQHstsPolicy(C.QHstsPolicy_new4((*C.QDateTime)(expiry.UnsafePointer()), (C.int)(flags), host_ms, (C.int)(mode)))
-	ret.isSubclass = true
-	return ret
+	return newQHstsPolicy(C.QHstsPolicy_new4((*C.QDateTime)(expiry.UnsafePointer()), (C.int)(flags), host_ms, (C.int)(mode)))
 }
 
 func (this *QHstsPolicy) OperatorAssign(rhs *QHstsPolicy) {

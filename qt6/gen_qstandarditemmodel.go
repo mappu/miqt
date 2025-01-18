@@ -22,8 +22,7 @@ const (
 )
 
 type QStandardItem struct {
-	h          *C.QStandardItem
-	isSubclass bool
+	h *C.QStandardItem
 }
 
 func (this *QStandardItem) cPointer() *C.QStandardItem {
@@ -57,9 +56,7 @@ func UnsafeNewQStandardItem(h unsafe.Pointer) *QStandardItem {
 // NewQStandardItem constructs a new QStandardItem object.
 func NewQStandardItem() *QStandardItem {
 
-	ret := newQStandardItem(C.QStandardItem_new())
-	ret.isSubclass = true
-	return ret
+	return newQStandardItem(C.QStandardItem_new())
 }
 
 // NewQStandardItem2 constructs a new QStandardItem object.
@@ -69,9 +66,7 @@ func NewQStandardItem2(text string) *QStandardItem {
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQStandardItem(C.QStandardItem_new2(text_ms))
-	ret.isSubclass = true
-	return ret
+	return newQStandardItem(C.QStandardItem_new2(text_ms))
 }
 
 // NewQStandardItem3 constructs a new QStandardItem object.
@@ -81,25 +76,19 @@ func NewQStandardItem3(icon *QIcon, text string) *QStandardItem {
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	ret := newQStandardItem(C.QStandardItem_new3(icon.cPointer(), text_ms))
-	ret.isSubclass = true
-	return ret
+	return newQStandardItem(C.QStandardItem_new3(icon.cPointer(), text_ms))
 }
 
 // NewQStandardItem4 constructs a new QStandardItem object.
 func NewQStandardItem4(rows int) *QStandardItem {
 
-	ret := newQStandardItem(C.QStandardItem_new4((C.int)(rows)))
-	ret.isSubclass = true
-	return ret
+	return newQStandardItem(C.QStandardItem_new4((C.int)(rows)))
 }
 
 // NewQStandardItem5 constructs a new QStandardItem object.
 func NewQStandardItem5(rows int, columns int) *QStandardItem {
 
-	ret := newQStandardItem(C.QStandardItem_new5((C.int)(rows), (C.int)(columns)))
-	ret.isSubclass = true
-	return ret
+	return newQStandardItem(C.QStandardItem_new5((C.int)(rows), (C.int)(columns)))
 }
 
 func (this *QStandardItem) Data(role int) *QVariant {
@@ -562,10 +551,10 @@ func (this *QStandardItem) callVirtualBase_Data(role int) *QVariant {
 
 }
 func (this *QStandardItem) OnData(slot func(super func(role int) *QVariant, role int) *QVariant) {
-	if !this.isSubclass {
+	ok := C.QStandardItem_override_virtual_Data(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItem_override_virtual_Data(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItem_Data
@@ -590,10 +579,10 @@ func (this *QStandardItem) callVirtualBase_MultiData(roleDataSpan QModelRoleData
 
 }
 func (this *QStandardItem) OnMultiData(slot func(super func(roleDataSpan QModelRoleDataSpan), roleDataSpan QModelRoleDataSpan)) {
-	if !this.isSubclass {
+	ok := C.QStandardItem_override_virtual_MultiData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItem_override_virtual_MultiData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItem_MultiData
@@ -618,10 +607,10 @@ func (this *QStandardItem) callVirtualBase_SetData(value *QVariant, role int) {
 
 }
 func (this *QStandardItem) OnSetData(slot func(super func(value *QVariant, role int), value *QVariant, role int)) {
-	if !this.isSubclass {
+	ok := C.QStandardItem_override_virtual_SetData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItem_override_virtual_SetData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItem_SetData
@@ -646,10 +635,10 @@ func (this *QStandardItem) callVirtualBase_Clone() *QStandardItem {
 
 }
 func (this *QStandardItem) OnClone(slot func(super func() *QStandardItem) *QStandardItem) {
-	if !this.isSubclass {
+	ok := C.QStandardItem_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItem_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItem_Clone
@@ -671,10 +660,10 @@ func (this *QStandardItem) callVirtualBase_Type() int {
 
 }
 func (this *QStandardItem) OnType(slot func(super func() int) int) {
-	if !this.isSubclass {
+	ok := C.QStandardItem_override_virtual_Type(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItem_override_virtual_Type(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItem_Type
@@ -696,10 +685,10 @@ func (this *QStandardItem) callVirtualBase_Read(in *QDataStream) {
 
 }
 func (this *QStandardItem) OnRead(slot func(super func(in *QDataStream), in *QDataStream)) {
-	if !this.isSubclass {
+	ok := C.QStandardItem_override_virtual_Read(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItem_override_virtual_Read(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItem_Read
@@ -722,10 +711,10 @@ func (this *QStandardItem) callVirtualBase_Write(out *QDataStream) {
 
 }
 func (this *QStandardItem) OnWrite(slot func(super func(out *QDataStream), out *QDataStream)) {
-	if !this.isSubclass {
+	ok := C.QStandardItem_override_virtual_Write(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItem_override_virtual_Write(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItem_Write
@@ -748,10 +737,10 @@ func (this *QStandardItem) callVirtualBase_OperatorLesser(other *QStandardItem) 
 
 }
 func (this *QStandardItem) OnOperatorLesser(slot func(super func(other *QStandardItem) bool, other *QStandardItem) bool) {
-	if !this.isSubclass {
+	ok := C.QStandardItem_override_virtual_OperatorLesser(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItem_override_virtual_OperatorLesser(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItem_OperatorLesser
@@ -785,8 +774,7 @@ func (this *QStandardItem) GoGC() {
 }
 
 type QStandardItemModel struct {
-	h          *C.QStandardItemModel
-	isSubclass bool
+	h *C.QStandardItemModel
 	*QAbstractItemModel
 }
 
@@ -824,33 +812,25 @@ func UnsafeNewQStandardItemModel(h unsafe.Pointer) *QStandardItemModel {
 // NewQStandardItemModel constructs a new QStandardItemModel object.
 func NewQStandardItemModel() *QStandardItemModel {
 
-	ret := newQStandardItemModel(C.QStandardItemModel_new())
-	ret.isSubclass = true
-	return ret
+	return newQStandardItemModel(C.QStandardItemModel_new())
 }
 
 // NewQStandardItemModel2 constructs a new QStandardItemModel object.
 func NewQStandardItemModel2(rows int, columns int) *QStandardItemModel {
 
-	ret := newQStandardItemModel(C.QStandardItemModel_new2((C.int)(rows), (C.int)(columns)))
-	ret.isSubclass = true
-	return ret
+	return newQStandardItemModel(C.QStandardItemModel_new2((C.int)(rows), (C.int)(columns)))
 }
 
 // NewQStandardItemModel3 constructs a new QStandardItemModel object.
 func NewQStandardItemModel3(parent *QObject) *QStandardItemModel {
 
-	ret := newQStandardItemModel(C.QStandardItemModel_new3(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStandardItemModel(C.QStandardItemModel_new3(parent.cPointer()))
 }
 
 // NewQStandardItemModel4 constructs a new QStandardItemModel object.
 func NewQStandardItemModel4(rows int, columns int, parent *QObject) *QStandardItemModel {
 
-	ret := newQStandardItemModel(C.QStandardItemModel_new4((C.int)(rows), (C.int)(columns), parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStandardItemModel(C.QStandardItemModel_new4((C.int)(rows), (C.int)(columns), parent.cPointer()))
 }
 
 func (this *QStandardItemModel) MetaObject() *QMetaObject {
@@ -1359,10 +1339,10 @@ func (this *QStandardItemModel) callVirtualBase_RoleNames() map[int][]byte {
 
 }
 func (this *QStandardItemModel) OnRoleNames(slot func(super func() map[int][]byte) map[int][]byte) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_RoleNames(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_RoleNames(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_RoleNames
@@ -1404,10 +1384,10 @@ func (this *QStandardItemModel) callVirtualBase_Index(row int, column int, paren
 
 }
 func (this *QStandardItemModel) OnIndex(slot func(super func(row int, column int, parent *QModelIndex) *QModelIndex, row int, column int, parent *QModelIndex) *QModelIndex) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_Index(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_Index(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_Index
@@ -1438,10 +1418,10 @@ func (this *QStandardItemModel) callVirtualBase_Parent(child *QModelIndex) *QMod
 
 }
 func (this *QStandardItemModel) OnParent(slot func(super func(child *QModelIndex) *QModelIndex, child *QModelIndex) *QModelIndex) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_Parent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_Parent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_Parent
@@ -1466,10 +1446,10 @@ func (this *QStandardItemModel) callVirtualBase_RowCount(parent *QModelIndex) in
 
 }
 func (this *QStandardItemModel) OnRowCount(slot func(super func(parent *QModelIndex) int, parent *QModelIndex) int) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_RowCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_RowCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_RowCount
@@ -1494,10 +1474,10 @@ func (this *QStandardItemModel) callVirtualBase_ColumnCount(parent *QModelIndex)
 
 }
 func (this *QStandardItemModel) OnColumnCount(slot func(super func(parent *QModelIndex) int, parent *QModelIndex) int) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_ColumnCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_ColumnCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_ColumnCount
@@ -1522,10 +1502,10 @@ func (this *QStandardItemModel) callVirtualBase_HasChildren(parent *QModelIndex)
 
 }
 func (this *QStandardItemModel) OnHasChildren(slot func(super func(parent *QModelIndex) bool, parent *QModelIndex) bool) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_HasChildren(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_HasChildren(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_HasChildren
@@ -1552,10 +1532,10 @@ func (this *QStandardItemModel) callVirtualBase_Data(index *QModelIndex, role in
 
 }
 func (this *QStandardItemModel) OnData(slot func(super func(index *QModelIndex, role int) *QVariant, index *QModelIndex, role int) *QVariant) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_Data(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_Data(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_Data
@@ -1582,10 +1562,10 @@ func (this *QStandardItemModel) callVirtualBase_MultiData(index *QModelIndex, ro
 
 }
 func (this *QStandardItemModel) OnMultiData(slot func(super func(index *QModelIndex, roleDataSpan QModelRoleDataSpan), index *QModelIndex, roleDataSpan QModelRoleDataSpan)) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_MultiData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_MultiData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_MultiData
@@ -1612,10 +1592,10 @@ func (this *QStandardItemModel) callVirtualBase_SetData(index *QModelIndex, valu
 
 }
 func (this *QStandardItemModel) OnSetData(slot func(super func(index *QModelIndex, value *QVariant, role int) bool, index *QModelIndex, value *QVariant, role int) bool) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_SetData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_SetData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_SetData
@@ -1644,10 +1624,10 @@ func (this *QStandardItemModel) callVirtualBase_ClearItemData(index *QModelIndex
 
 }
 func (this *QStandardItemModel) OnClearItemData(slot func(super func(index *QModelIndex) bool, index *QModelIndex) bool) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_ClearItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_ClearItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_ClearItemData
@@ -1674,10 +1654,10 @@ func (this *QStandardItemModel) callVirtualBase_HeaderData(section int, orientat
 
 }
 func (this *QStandardItemModel) OnHeaderData(slot func(super func(section int, orientation Orientation, role int) *QVariant, section int, orientation Orientation, role int) *QVariant) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_HeaderData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_HeaderData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_HeaderData
@@ -1706,10 +1686,10 @@ func (this *QStandardItemModel) callVirtualBase_SetHeaderData(section int, orien
 
 }
 func (this *QStandardItemModel) OnSetHeaderData(slot func(super func(section int, orientation Orientation, value *QVariant, role int) bool, section int, orientation Orientation, value *QVariant, role int) bool) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_SetHeaderData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_SetHeaderData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_SetHeaderData
@@ -1740,10 +1720,10 @@ func (this *QStandardItemModel) callVirtualBase_InsertRows(row int, count int, p
 
 }
 func (this *QStandardItemModel) OnInsertRows(slot func(super func(row int, count int, parent *QModelIndex) bool, row int, count int, parent *QModelIndex) bool) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_InsertRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_InsertRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_InsertRows
@@ -1772,10 +1752,10 @@ func (this *QStandardItemModel) callVirtualBase_InsertColumns(column int, count 
 
 }
 func (this *QStandardItemModel) OnInsertColumns(slot func(super func(column int, count int, parent *QModelIndex) bool, column int, count int, parent *QModelIndex) bool) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_InsertColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_InsertColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_InsertColumns
@@ -1804,10 +1784,10 @@ func (this *QStandardItemModel) callVirtualBase_RemoveRows(row int, count int, p
 
 }
 func (this *QStandardItemModel) OnRemoveRows(slot func(super func(row int, count int, parent *QModelIndex) bool, row int, count int, parent *QModelIndex) bool) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_RemoveRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_RemoveRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_RemoveRows
@@ -1836,10 +1816,10 @@ func (this *QStandardItemModel) callVirtualBase_RemoveColumns(column int, count 
 
 }
 func (this *QStandardItemModel) OnRemoveColumns(slot func(super func(column int, count int, parent *QModelIndex) bool, column int, count int, parent *QModelIndex) bool) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_RemoveColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_RemoveColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_RemoveColumns
@@ -1868,10 +1848,10 @@ func (this *QStandardItemModel) callVirtualBase_Flags(index *QModelIndex) ItemFl
 
 }
 func (this *QStandardItemModel) OnFlags(slot func(super func(index *QModelIndex) ItemFlag, index *QModelIndex) ItemFlag) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_Flags(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_Flags(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_Flags
@@ -1896,10 +1876,10 @@ func (this *QStandardItemModel) callVirtualBase_SupportedDropActions() DropActio
 
 }
 func (this *QStandardItemModel) OnSupportedDropActions(slot func(super func() DropAction) DropAction) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_SupportedDropActions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_SupportedDropActions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_SupportedDropActions
@@ -1934,10 +1914,10 @@ func (this *QStandardItemModel) callVirtualBase_ItemData(index *QModelIndex) map
 
 }
 func (this *QStandardItemModel) OnItemData(slot func(super func(index *QModelIndex) map[int]QVariant, index *QModelIndex) map[int]QVariant) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_ItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_ItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_ItemData
@@ -1992,10 +1972,10 @@ func (this *QStandardItemModel) callVirtualBase_SetItemData(index *QModelIndex, 
 
 }
 func (this *QStandardItemModel) OnSetItemData(slot func(super func(index *QModelIndex, roles map[int]QVariant) bool, index *QModelIndex, roles map[int]QVariant) bool) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_SetItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_SetItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_SetItemData
@@ -2035,10 +2015,10 @@ func (this *QStandardItemModel) callVirtualBase_Sort(column int, order SortOrder
 
 }
 func (this *QStandardItemModel) OnSort(slot func(super func(column int, order SortOrder), column int, order SortOrder)) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_Sort(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_Sort(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_Sort
@@ -2072,10 +2052,10 @@ func (this *QStandardItemModel) callVirtualBase_MimeTypes() []string {
 
 }
 func (this *QStandardItemModel) OnMimeTypes(slot func(super func() []string) []string) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_MimeTypes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_MimeTypes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_MimeTypes
@@ -2113,10 +2093,10 @@ func (this *QStandardItemModel) callVirtualBase_MimeData(indexes []QModelIndex) 
 
 }
 func (this *QStandardItemModel) OnMimeData(slot func(super func(indexes []QModelIndex) *QMimeData, indexes []QModelIndex) *QMimeData) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_MimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_MimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_MimeData
@@ -2149,10 +2129,10 @@ func (this *QStandardItemModel) callVirtualBase_DropMimeData(data *QMimeData, ac
 
 }
 func (this *QStandardItemModel) OnDropMimeData(slot func(super func(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool, data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_DropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_DropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_DropMimeData
@@ -2187,10 +2167,10 @@ func (this *QStandardItemModel) callVirtualBase_Sibling(row int, column int, idx
 
 }
 func (this *QStandardItemModel) OnSibling(slot func(super func(row int, column int, idx *QModelIndex) *QModelIndex, row int, column int, idx *QModelIndex) *QModelIndex) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_Sibling(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_Sibling(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_Sibling
@@ -2219,10 +2199,10 @@ func (this *QStandardItemModel) callVirtualBase_CanDropMimeData(data *QMimeData,
 
 }
 func (this *QStandardItemModel) OnCanDropMimeData(slot func(super func(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool, data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_CanDropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_CanDropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_CanDropMimeData
@@ -2255,10 +2235,10 @@ func (this *QStandardItemModel) callVirtualBase_SupportedDragActions() DropActio
 
 }
 func (this *QStandardItemModel) OnSupportedDragActions(slot func(super func() DropAction) DropAction) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_SupportedDragActions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_SupportedDragActions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_SupportedDragActions
@@ -2280,10 +2260,10 @@ func (this *QStandardItemModel) callVirtualBase_MoveRows(sourceParent *QModelInd
 
 }
 func (this *QStandardItemModel) OnMoveRows(slot func(super func(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool, sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_MoveRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_MoveRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_MoveRows
@@ -2316,10 +2296,10 @@ func (this *QStandardItemModel) callVirtualBase_MoveColumns(sourceParent *QModel
 
 }
 func (this *QStandardItemModel) OnMoveColumns(slot func(super func(sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool, sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_MoveColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_MoveColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_MoveColumns
@@ -2352,10 +2332,10 @@ func (this *QStandardItemModel) callVirtualBase_FetchMore(parent *QModelIndex) {
 
 }
 func (this *QStandardItemModel) OnFetchMore(slot func(super func(parent *QModelIndex), parent *QModelIndex)) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_FetchMore(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_FetchMore(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_FetchMore
@@ -2378,10 +2358,10 @@ func (this *QStandardItemModel) callVirtualBase_CanFetchMore(parent *QModelIndex
 
 }
 func (this *QStandardItemModel) OnCanFetchMore(slot func(super func(parent *QModelIndex) bool, parent *QModelIndex) bool) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_CanFetchMore(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_CanFetchMore(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_CanFetchMore
@@ -2408,10 +2388,10 @@ func (this *QStandardItemModel) callVirtualBase_Buddy(index *QModelIndex) *QMode
 
 }
 func (this *QStandardItemModel) OnBuddy(slot func(super func(index *QModelIndex) *QModelIndex, index *QModelIndex) *QModelIndex) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_Buddy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_Buddy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_Buddy
@@ -2444,10 +2424,10 @@ func (this *QStandardItemModel) callVirtualBase_Match(start *QModelIndex, role i
 
 }
 func (this *QStandardItemModel) OnMatch(slot func(super func(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex, start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_Match(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_Match(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_Match
@@ -2488,10 +2468,10 @@ func (this *QStandardItemModel) callVirtualBase_Span(index *QModelIndex) *QSize 
 
 }
 func (this *QStandardItemModel) OnSpan(slot func(super func(index *QModelIndex) *QSize, index *QModelIndex) *QSize) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_Span(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_Span(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_Span
@@ -2516,10 +2496,10 @@ func (this *QStandardItemModel) callVirtualBase_Submit() bool {
 
 }
 func (this *QStandardItemModel) OnSubmit(slot func(super func() bool) bool) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_Submit(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_Submit(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_Submit
@@ -2541,10 +2521,10 @@ func (this *QStandardItemModel) callVirtualBase_Revert() {
 
 }
 func (this *QStandardItemModel) OnRevert(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_Revert(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_Revert(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_Revert
@@ -2564,10 +2544,10 @@ func (this *QStandardItemModel) callVirtualBase_ResetInternalData() {
 
 }
 func (this *QStandardItemModel) OnResetInternalData(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QStandardItemModel_override_virtual_ResetInternalData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QStandardItemModel_override_virtual_ResetInternalData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStandardItemModel_ResetInternalData

@@ -15,8 +15,7 @@ import (
 )
 
 type QPdfWriter struct {
-	h          *C.QPdfWriter
-	isSubclass bool
+	h *C.QPdfWriter
 	*QObject
 	*QPagedPaintDevice
 }
@@ -61,17 +60,13 @@ func NewQPdfWriter(filename string) *QPdfWriter {
 	filename_ms.len = C.size_t(len(filename))
 	defer C.free(unsafe.Pointer(filename_ms.data))
 
-	ret := newQPdfWriter(C.QPdfWriter_new(filename_ms))
-	ret.isSubclass = true
-	return ret
+	return newQPdfWriter(C.QPdfWriter_new(filename_ms))
 }
 
 // NewQPdfWriter2 constructs a new QPdfWriter object.
 func NewQPdfWriter2(device *QIODevice) *QPdfWriter {
 
-	ret := newQPdfWriter(C.QPdfWriter_new2(device.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPdfWriter(C.QPdfWriter_new2(device.cPointer()))
 }
 
 func (this *QPdfWriter) MetaObject() *QMetaObject {
@@ -211,10 +206,10 @@ func (this *QPdfWriter) callVirtualBase_NewPage() bool {
 
 }
 func (this *QPdfWriter) OnNewPage(slot func(super func() bool) bool) {
-	if !this.isSubclass {
+	ok := C.QPdfWriter_override_virtual_NewPage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPdfWriter_override_virtual_NewPage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPdfWriter_NewPage
@@ -236,10 +231,10 @@ func (this *QPdfWriter) callVirtualBase_PaintEngine() *QPaintEngine {
 
 }
 func (this *QPdfWriter) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
-	if !this.isSubclass {
+	ok := C.QPdfWriter_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPdfWriter_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPdfWriter_PaintEngine
@@ -261,10 +256,10 @@ func (this *QPdfWriter) callVirtualBase_Metric(id QPaintDevice__PaintDeviceMetri
 
 }
 func (this *QPdfWriter) OnMetric(slot func(super func(id QPaintDevice__PaintDeviceMetric) int, id QPaintDevice__PaintDeviceMetric) int) {
-	if !this.isSubclass {
+	ok := C.QPdfWriter_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPdfWriter_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPdfWriter_Metric
@@ -289,10 +284,10 @@ func (this *QPdfWriter) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QPdfWriter) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QPdfWriter_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPdfWriter_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPdfWriter_Event
@@ -317,10 +312,10 @@ func (this *QPdfWriter) callVirtualBase_EventFilter(watched *QObject, event *QEv
 
 }
 func (this *QPdfWriter) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QPdfWriter_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPdfWriter_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPdfWriter_EventFilter
@@ -347,10 +342,10 @@ func (this *QPdfWriter) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QPdfWriter) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QPdfWriter_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPdfWriter_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPdfWriter_TimerEvent
@@ -373,10 +368,10 @@ func (this *QPdfWriter) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QPdfWriter) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QPdfWriter_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPdfWriter_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPdfWriter_ChildEvent
@@ -399,10 +394,10 @@ func (this *QPdfWriter) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QPdfWriter) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QPdfWriter_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPdfWriter_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPdfWriter_CustomEvent
@@ -425,10 +420,10 @@ func (this *QPdfWriter) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QPdfWriter) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QPdfWriter_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPdfWriter_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPdfWriter_ConnectNotify
@@ -451,10 +446,10 @@ func (this *QPdfWriter) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QPdfWriter) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QPdfWriter_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPdfWriter_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPdfWriter_DisconnectNotify
@@ -477,10 +472,10 @@ func (this *QPdfWriter) callVirtualBase_SetPageLayout(pageLayout *QPageLayout) b
 
 }
 func (this *QPdfWriter) OnSetPageLayout(slot func(super func(pageLayout *QPageLayout) bool, pageLayout *QPageLayout) bool) {
-	if !this.isSubclass {
+	ok := C.QPdfWriter_override_virtual_SetPageLayout(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPdfWriter_override_virtual_SetPageLayout(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPdfWriter_SetPageLayout
@@ -505,10 +500,10 @@ func (this *QPdfWriter) callVirtualBase_SetPageSize(pageSize *QPageSize) bool {
 
 }
 func (this *QPdfWriter) OnSetPageSize(slot func(super func(pageSize *QPageSize) bool, pageSize *QPageSize) bool) {
-	if !this.isSubclass {
+	ok := C.QPdfWriter_override_virtual_SetPageSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPdfWriter_override_virtual_SetPageSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPdfWriter_SetPageSize
@@ -533,10 +528,10 @@ func (this *QPdfWriter) callVirtualBase_SetPageOrientation(orientation QPageLayo
 
 }
 func (this *QPdfWriter) OnSetPageOrientation(slot func(super func(orientation QPageLayout__Orientation) bool, orientation QPageLayout__Orientation) bool) {
-	if !this.isSubclass {
+	ok := C.QPdfWriter_override_virtual_SetPageOrientation(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPdfWriter_override_virtual_SetPageOrientation(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPdfWriter_SetPageOrientation
@@ -561,10 +556,10 @@ func (this *QPdfWriter) callVirtualBase_SetPageMargins(margins *QMarginsF, units
 
 }
 func (this *QPdfWriter) OnSetPageMargins(slot func(super func(margins *QMarginsF, units QPageLayout__Unit) bool, margins *QMarginsF, units QPageLayout__Unit) bool) {
-	if !this.isSubclass {
+	ok := C.QPdfWriter_override_virtual_SetPageMargins(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPdfWriter_override_virtual_SetPageMargins(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPdfWriter_SetPageMargins
@@ -591,10 +586,10 @@ func (this *QPdfWriter) callVirtualBase_SetPageRanges(ranges *QPageRanges) {
 
 }
 func (this *QPdfWriter) OnSetPageRanges(slot func(super func(ranges *QPageRanges), ranges *QPageRanges)) {
-	if !this.isSubclass {
+	ok := C.QPdfWriter_override_virtual_SetPageRanges(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPdfWriter_override_virtual_SetPageRanges(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPdfWriter_SetPageRanges

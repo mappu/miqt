@@ -14,8 +14,7 @@ import (
 )
 
 type QWhatsThis struct {
-	h          *C.QWhatsThis
-	isSubclass bool
+	h *C.QWhatsThis
 }
 
 func (this *QWhatsThis) cPointer() *C.QWhatsThis {

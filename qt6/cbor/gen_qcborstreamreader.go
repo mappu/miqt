@@ -43,8 +43,7 @@ const (
 )
 
 type QCborStreamReader struct {
-	h          *C.QCborStreamReader
-	isSubclass bool
+	h *C.QCborStreamReader
 }
 
 func (this *QCborStreamReader) cPointer() *C.QCborStreamReader {
@@ -78,9 +77,7 @@ func UnsafeNewQCborStreamReader(h unsafe.Pointer) *QCborStreamReader {
 // NewQCborStreamReader constructs a new QCborStreamReader object.
 func NewQCborStreamReader() *QCborStreamReader {
 
-	ret := newQCborStreamReader(C.QCborStreamReader_new())
-	ret.isSubclass = true
-	return ret
+	return newQCborStreamReader(C.QCborStreamReader_new())
 }
 
 // NewQCborStreamReader2 constructs a new QCborStreamReader object.
@@ -88,17 +85,13 @@ func NewQCborStreamReader2(data string, lenVal int64) *QCborStreamReader {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
-	ret := newQCborStreamReader(C.QCborStreamReader_new2(data_Cstring, (C.ptrdiff_t)(lenVal)))
-	ret.isSubclass = true
-	return ret
+	return newQCborStreamReader(C.QCborStreamReader_new2(data_Cstring, (C.ptrdiff_t)(lenVal)))
 }
 
 // NewQCborStreamReader3 constructs a new QCborStreamReader object.
 func NewQCborStreamReader3(data *byte, lenVal int64) *QCborStreamReader {
 
-	ret := newQCborStreamReader(C.QCborStreamReader_new3((*C.uchar)(unsafe.Pointer(data)), (C.ptrdiff_t)(lenVal)))
-	ret.isSubclass = true
-	return ret
+	return newQCborStreamReader(C.QCborStreamReader_new3((*C.uchar)(unsafe.Pointer(data)), (C.ptrdiff_t)(lenVal)))
 }
 
 // NewQCborStreamReader4 constructs a new QCborStreamReader object.
@@ -107,17 +100,13 @@ func NewQCborStreamReader4(data []byte) *QCborStreamReader {
 	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
 	data_alias.len = C.size_t(len(data))
 
-	ret := newQCborStreamReader(C.QCborStreamReader_new4(data_alias))
-	ret.isSubclass = true
-	return ret
+	return newQCborStreamReader(C.QCborStreamReader_new4(data_alias))
 }
 
 // NewQCborStreamReader5 constructs a new QCborStreamReader object.
 func NewQCborStreamReader5(device *qt6.QIODevice) *QCborStreamReader {
 
-	ret := newQCborStreamReader(C.QCborStreamReader_new5((*C.QIODevice)(device.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQCborStreamReader(C.QCborStreamReader_new5((*C.QIODevice)(device.UnsafePointer())))
 }
 
 func (this *QCborStreamReader) SetDevice(device *qt6.QIODevice) {

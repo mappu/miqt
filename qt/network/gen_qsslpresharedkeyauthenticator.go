@@ -14,8 +14,7 @@ import (
 )
 
 type QSslPreSharedKeyAuthenticator struct {
-	h          *C.QSslPreSharedKeyAuthenticator
-	isSubclass bool
+	h *C.QSslPreSharedKeyAuthenticator
 }
 
 func (this *QSslPreSharedKeyAuthenticator) cPointer() *C.QSslPreSharedKeyAuthenticator {
@@ -49,17 +48,13 @@ func UnsafeNewQSslPreSharedKeyAuthenticator(h unsafe.Pointer) *QSslPreSharedKeyA
 // NewQSslPreSharedKeyAuthenticator constructs a new QSslPreSharedKeyAuthenticator object.
 func NewQSslPreSharedKeyAuthenticator() *QSslPreSharedKeyAuthenticator {
 
-	ret := newQSslPreSharedKeyAuthenticator(C.QSslPreSharedKeyAuthenticator_new())
-	ret.isSubclass = true
-	return ret
+	return newQSslPreSharedKeyAuthenticator(C.QSslPreSharedKeyAuthenticator_new())
 }
 
 // NewQSslPreSharedKeyAuthenticator2 constructs a new QSslPreSharedKeyAuthenticator object.
 func NewQSslPreSharedKeyAuthenticator2(authenticator *QSslPreSharedKeyAuthenticator) *QSslPreSharedKeyAuthenticator {
 
-	ret := newQSslPreSharedKeyAuthenticator(C.QSslPreSharedKeyAuthenticator_new2(authenticator.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSslPreSharedKeyAuthenticator(C.QSslPreSharedKeyAuthenticator_new2(authenticator.cPointer()))
 }
 
 func (this *QSslPreSharedKeyAuthenticator) OperatorAssign(authenticator *QSslPreSharedKeyAuthenticator) {

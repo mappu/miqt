@@ -14,8 +14,7 @@ import (
 )
 
 type QStorageInfo struct {
-	h          *C.QStorageInfo
-	isSubclass bool
+	h *C.QStorageInfo
 }
 
 func (this *QStorageInfo) cPointer() *C.QStorageInfo {
@@ -49,9 +48,7 @@ func UnsafeNewQStorageInfo(h unsafe.Pointer) *QStorageInfo {
 // NewQStorageInfo constructs a new QStorageInfo object.
 func NewQStorageInfo() *QStorageInfo {
 
-	ret := newQStorageInfo(C.QStorageInfo_new())
-	ret.isSubclass = true
-	return ret
+	return newQStorageInfo(C.QStorageInfo_new())
 }
 
 // NewQStorageInfo2 constructs a new QStorageInfo object.
@@ -61,25 +58,19 @@ func NewQStorageInfo2(path string) *QStorageInfo {
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
 
-	ret := newQStorageInfo(C.QStorageInfo_new2(path_ms))
-	ret.isSubclass = true
-	return ret
+	return newQStorageInfo(C.QStorageInfo_new2(path_ms))
 }
 
 // NewQStorageInfo3 constructs a new QStorageInfo object.
 func NewQStorageInfo3(dir *QDir) *QStorageInfo {
 
-	ret := newQStorageInfo(C.QStorageInfo_new3(dir.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStorageInfo(C.QStorageInfo_new3(dir.cPointer()))
 }
 
 // NewQStorageInfo4 constructs a new QStorageInfo object.
 func NewQStorageInfo4(other *QStorageInfo) *QStorageInfo {
 
-	ret := newQStorageInfo(C.QStorageInfo_new4(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStorageInfo(C.QStorageInfo_new4(other.cPointer()))
 }
 
 func (this *QStorageInfo) OperatorAssign(other *QStorageInfo) {

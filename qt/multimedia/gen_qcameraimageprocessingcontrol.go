@@ -34,8 +34,7 @@ const (
 )
 
 type QCameraImageProcessingControl struct {
-	h          *C.QCameraImageProcessingControl
-	isSubclass bool
+	h *C.QCameraImageProcessingControl
 	*QMediaControl
 }
 

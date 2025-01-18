@@ -15,8 +15,7 @@ import (
 )
 
 type QAccessiblePlugin struct {
-	h          *C.QAccessiblePlugin
-	isSubclass bool
+	h *C.QAccessiblePlugin
 	*QObject
 }
 
@@ -54,17 +53,13 @@ func UnsafeNewQAccessiblePlugin(h unsafe.Pointer) *QAccessiblePlugin {
 // NewQAccessiblePlugin constructs a new QAccessiblePlugin object.
 func NewQAccessiblePlugin() *QAccessiblePlugin {
 
-	ret := newQAccessiblePlugin(C.QAccessiblePlugin_new())
-	ret.isSubclass = true
-	return ret
+	return newQAccessiblePlugin(C.QAccessiblePlugin_new())
 }
 
 // NewQAccessiblePlugin2 constructs a new QAccessiblePlugin object.
 func NewQAccessiblePlugin2(parent *QObject) *QAccessiblePlugin {
 
-	ret := newQAccessiblePlugin(C.QAccessiblePlugin_new2(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQAccessiblePlugin(C.QAccessiblePlugin_new2(parent.cPointer()))
 }
 
 func (this *QAccessiblePlugin) MetaObject() *QMetaObject {
@@ -116,10 +111,10 @@ func QAccessiblePlugin_Tr3(s string, c string, n int) string {
 	return _ret
 }
 func (this *QAccessiblePlugin) OnCreate(slot func(key string, object *QObject) *QAccessibleInterface) {
-	if !this.isSubclass {
+	ok := C.QAccessiblePlugin_override_virtual_Create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAccessiblePlugin_override_virtual_Create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAccessiblePlugin_Create
@@ -148,10 +143,10 @@ func (this *QAccessiblePlugin) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QAccessiblePlugin) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QAccessiblePlugin_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAccessiblePlugin_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAccessiblePlugin_Event
@@ -176,10 +171,10 @@ func (this *QAccessiblePlugin) callVirtualBase_EventFilter(watched *QObject, eve
 
 }
 func (this *QAccessiblePlugin) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QAccessiblePlugin_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAccessiblePlugin_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAccessiblePlugin_EventFilter
@@ -206,10 +201,10 @@ func (this *QAccessiblePlugin) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QAccessiblePlugin) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QAccessiblePlugin_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAccessiblePlugin_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAccessiblePlugin_TimerEvent
@@ -232,10 +227,10 @@ func (this *QAccessiblePlugin) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QAccessiblePlugin) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QAccessiblePlugin_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAccessiblePlugin_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAccessiblePlugin_ChildEvent
@@ -258,10 +253,10 @@ func (this *QAccessiblePlugin) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QAccessiblePlugin) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QAccessiblePlugin_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAccessiblePlugin_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAccessiblePlugin_CustomEvent
@@ -284,10 +279,10 @@ func (this *QAccessiblePlugin) callVirtualBase_ConnectNotify(signal *QMetaMethod
 
 }
 func (this *QAccessiblePlugin) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QAccessiblePlugin_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAccessiblePlugin_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAccessiblePlugin_ConnectNotify
@@ -310,10 +305,10 @@ func (this *QAccessiblePlugin) callVirtualBase_DisconnectNotify(signal *QMetaMet
 
 }
 func (this *QAccessiblePlugin) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QAccessiblePlugin_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAccessiblePlugin_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAccessiblePlugin_DisconnectNotify

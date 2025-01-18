@@ -545,104 +545,182 @@ void QPdfWriter_AddFileAttachment3(QPdfWriter* self, struct miqt_string fileName
 	self->addFileAttachment(fileName_QString, data_QByteArray, mimeType_QString);
 }
 
-void QPdfWriter_override_virtual_NewPage(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) )->handle__NewPage = slot;
+bool QPdfWriter_override_virtual_NewPage(void* self, intptr_t slot) {
+	MiqtVirtualQPdfWriter* self_cast = dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NewPage = slot;
+	return true;
 }
 
 bool QPdfWriter_virtualbase_NewPage(void* self) {
 	return ( (MiqtVirtualQPdfWriter*)(self) )->virtualbase_NewPage();
 }
 
-void QPdfWriter_override_virtual_SetPageSize(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) )->handle__SetPageSize = slot;
+bool QPdfWriter_override_virtual_SetPageSize(void* self, intptr_t slot) {
+	MiqtVirtualQPdfWriter* self_cast = dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetPageSize = slot;
+	return true;
 }
 
 void QPdfWriter_virtualbase_SetPageSize(void* self, int size) {
 	( (MiqtVirtualQPdfWriter*)(self) )->virtualbase_SetPageSize(size);
 }
 
-void QPdfWriter_override_virtual_SetPageSizeMM(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) )->handle__SetPageSizeMM = slot;
+bool QPdfWriter_override_virtual_SetPageSizeMM(void* self, intptr_t slot) {
+	MiqtVirtualQPdfWriter* self_cast = dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetPageSizeMM = slot;
+	return true;
 }
 
 void QPdfWriter_virtualbase_SetPageSizeMM(void* self, QSizeF* size) {
 	( (MiqtVirtualQPdfWriter*)(self) )->virtualbase_SetPageSizeMM(size);
 }
 
-void QPdfWriter_override_virtual_SetMargins(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) )->handle__SetMargins = slot;
+bool QPdfWriter_override_virtual_SetMargins(void* self, intptr_t slot) {
+	MiqtVirtualQPdfWriter* self_cast = dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetMargins = slot;
+	return true;
 }
 
 void QPdfWriter_virtualbase_SetMargins(void* self, QPagedPaintDevice__Margins* m) {
 	( (MiqtVirtualQPdfWriter*)(self) )->virtualbase_SetMargins(m);
 }
 
-void QPdfWriter_override_virtual_PaintEngine(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) )->handle__PaintEngine = slot;
+bool QPdfWriter_override_virtual_PaintEngine(void* self, intptr_t slot) {
+	MiqtVirtualQPdfWriter* self_cast = dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEngine = slot;
+	return true;
 }
 
 QPaintEngine* QPdfWriter_virtualbase_PaintEngine(const void* self) {
 	return ( (const MiqtVirtualQPdfWriter*)(self) )->virtualbase_PaintEngine();
 }
 
-void QPdfWriter_override_virtual_Metric(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) )->handle__Metric = slot;
+bool QPdfWriter_override_virtual_Metric(void* self, intptr_t slot) {
+	MiqtVirtualQPdfWriter* self_cast = dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Metric = slot;
+	return true;
 }
 
 int QPdfWriter_virtualbase_Metric(const void* self, int id) {
 	return ( (const MiqtVirtualQPdfWriter*)(self) )->virtualbase_Metric(id);
 }
 
-void QPdfWriter_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) )->handle__Event = slot;
+bool QPdfWriter_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQPdfWriter* self_cast = dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QPdfWriter_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQPdfWriter*)(self) )->virtualbase_Event(event);
 }
 
-void QPdfWriter_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) )->handle__EventFilter = slot;
+bool QPdfWriter_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQPdfWriter* self_cast = dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QPdfWriter_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQPdfWriter*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QPdfWriter_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) )->handle__TimerEvent = slot;
+bool QPdfWriter_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPdfWriter* self_cast = dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QPdfWriter_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQPdfWriter*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QPdfWriter_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) )->handle__ChildEvent = slot;
+bool QPdfWriter_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPdfWriter* self_cast = dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QPdfWriter_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQPdfWriter*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QPdfWriter_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) )->handle__CustomEvent = slot;
+bool QPdfWriter_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPdfWriter* self_cast = dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QPdfWriter_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQPdfWriter*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QPdfWriter_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) )->handle__ConnectNotify = slot;
+bool QPdfWriter_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQPdfWriter* self_cast = dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QPdfWriter_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQPdfWriter*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QPdfWriter_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) )->handle__DisconnectNotify = slot;
+bool QPdfWriter_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQPdfWriter* self_cast = dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QPdfWriter_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

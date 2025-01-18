@@ -74,8 +74,7 @@ const (
 )
 
 type QFileDevice struct {
-	h          *C.QFileDevice
-	isSubclass bool
+	h *C.QFileDevice
 	*QIODevice
 }
 

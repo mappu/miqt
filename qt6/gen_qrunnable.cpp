@@ -51,8 +51,14 @@ void QRunnable_SetAutoDelete(QRunnable* self, bool autoDelete) {
 	self->setAutoDelete(autoDelete);
 }
 
-void QRunnable_override_virtual_Run(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRunnable*>( (QRunnable*)(self) )->handle__Run = slot;
+bool QRunnable_override_virtual_Run(void* self, intptr_t slot) {
+	MiqtVirtualQRunnable* self_cast = dynamic_cast<MiqtVirtualQRunnable*>( (QRunnable*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Run = slot;
+	return true;
 }
 
 void QRunnable_Delete(QRunnable* self) {

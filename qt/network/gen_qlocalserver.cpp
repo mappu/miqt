@@ -479,80 +479,140 @@ bool QLocalServer_WaitForNewConnection2(QLocalServer* self, int msec, bool* time
 	return self->waitForNewConnection(static_cast<int>(msec), timedOut);
 }
 
-void QLocalServer_override_virtual_HasPendingConnections(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) )->handle__HasPendingConnections = slot;
+bool QLocalServer_override_virtual_HasPendingConnections(void* self, intptr_t slot) {
+	MiqtVirtualQLocalServer* self_cast = dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasPendingConnections = slot;
+	return true;
 }
 
 bool QLocalServer_virtualbase_HasPendingConnections(const void* self) {
 	return ( (const MiqtVirtualQLocalServer*)(self) )->virtualbase_HasPendingConnections();
 }
 
-void QLocalServer_override_virtual_NextPendingConnection(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) )->handle__NextPendingConnection = slot;
+bool QLocalServer_override_virtual_NextPendingConnection(void* self, intptr_t slot) {
+	MiqtVirtualQLocalServer* self_cast = dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NextPendingConnection = slot;
+	return true;
 }
 
 QLocalSocket* QLocalServer_virtualbase_NextPendingConnection(void* self) {
 	return ( (MiqtVirtualQLocalServer*)(self) )->virtualbase_NextPendingConnection();
 }
 
-void QLocalServer_override_virtual_IncomingConnection(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) )->handle__IncomingConnection = slot;
+bool QLocalServer_override_virtual_IncomingConnection(void* self, intptr_t slot) {
+	MiqtVirtualQLocalServer* self_cast = dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IncomingConnection = slot;
+	return true;
 }
 
 void QLocalServer_virtualbase_IncomingConnection(void* self, uintptr_t socketDescriptor) {
 	( (MiqtVirtualQLocalServer*)(self) )->virtualbase_IncomingConnection(socketDescriptor);
 }
 
-void QLocalServer_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) )->handle__Event = slot;
+bool QLocalServer_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQLocalServer* self_cast = dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QLocalServer_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQLocalServer*)(self) )->virtualbase_Event(event);
 }
 
-void QLocalServer_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) )->handle__EventFilter = slot;
+bool QLocalServer_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQLocalServer* self_cast = dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QLocalServer_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQLocalServer*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QLocalServer_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) )->handle__TimerEvent = slot;
+bool QLocalServer_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQLocalServer* self_cast = dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QLocalServer_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQLocalServer*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QLocalServer_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) )->handle__ChildEvent = slot;
+bool QLocalServer_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQLocalServer* self_cast = dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QLocalServer_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQLocalServer*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QLocalServer_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) )->handle__CustomEvent = slot;
+bool QLocalServer_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQLocalServer* self_cast = dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QLocalServer_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQLocalServer*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QLocalServer_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) )->handle__ConnectNotify = slot;
+bool QLocalServer_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQLocalServer* self_cast = dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QLocalServer_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQLocalServer*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QLocalServer_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) )->handle__DisconnectNotify = slot;
+bool QLocalServer_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQLocalServer* self_cast = dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QLocalServer_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

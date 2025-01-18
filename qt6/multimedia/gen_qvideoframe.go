@@ -46,8 +46,7 @@ const (
 )
 
 type QVideoFrame struct {
-	h          *C.QVideoFrame
-	isSubclass bool
+	h *C.QVideoFrame
 }
 
 func (this *QVideoFrame) cPointer() *C.QVideoFrame {
@@ -81,25 +80,19 @@ func UnsafeNewQVideoFrame(h unsafe.Pointer) *QVideoFrame {
 // NewQVideoFrame constructs a new QVideoFrame object.
 func NewQVideoFrame() *QVideoFrame {
 
-	ret := newQVideoFrame(C.QVideoFrame_new())
-	ret.isSubclass = true
-	return ret
+	return newQVideoFrame(C.QVideoFrame_new())
 }
 
 // NewQVideoFrame2 constructs a new QVideoFrame object.
 func NewQVideoFrame2(format *QVideoFrameFormat) *QVideoFrame {
 
-	ret := newQVideoFrame(C.QVideoFrame_new2(format.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQVideoFrame(C.QVideoFrame_new2(format.cPointer()))
 }
 
 // NewQVideoFrame3 constructs a new QVideoFrame object.
 func NewQVideoFrame3(other *QVideoFrame) *QVideoFrame {
 
-	ret := newQVideoFrame(C.QVideoFrame_new3(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQVideoFrame(C.QVideoFrame_new3(other.cPointer()))
 }
 
 func (this *QVideoFrame) Swap(other *QVideoFrame) {
@@ -266,8 +259,7 @@ func (this *QVideoFrame) GoGC() {
 }
 
 type QVideoFrame__PaintOptions struct {
-	h          *C.QVideoFrame__PaintOptions
-	isSubclass bool
+	h *C.QVideoFrame__PaintOptions
 }
 
 func (this *QVideoFrame__PaintOptions) cPointer() *C.QVideoFrame__PaintOptions {

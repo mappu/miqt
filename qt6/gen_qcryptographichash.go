@@ -46,8 +46,7 @@ const (
 )
 
 type QCryptographicHash struct {
-	h          *C.QCryptographicHash
-	isSubclass bool
+	h *C.QCryptographicHash
 }
 
 func (this *QCryptographicHash) cPointer() *C.QCryptographicHash {
@@ -81,9 +80,7 @@ func UnsafeNewQCryptographicHash(h unsafe.Pointer) *QCryptographicHash {
 // NewQCryptographicHash constructs a new QCryptographicHash object.
 func NewQCryptographicHash(method QCryptographicHash__Algorithm) *QCryptographicHash {
 
-	ret := newQCryptographicHash(C.QCryptographicHash_new((C.int)(method)))
-	ret.isSubclass = true
-	return ret
+	return newQCryptographicHash(C.QCryptographicHash_new((C.int)(method)))
 }
 
 func (this *QCryptographicHash) Reset() {

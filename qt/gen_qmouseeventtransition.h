@@ -55,11 +55,11 @@ struct miqt_string QMouseEventTransition_Tr2(const char* s, const char* c);
 struct miqt_string QMouseEventTransition_Tr3(const char* s, const char* c, int n);
 struct miqt_string QMouseEventTransition_TrUtf82(const char* s, const char* c);
 struct miqt_string QMouseEventTransition_TrUtf83(const char* s, const char* c, int n);
-void QMouseEventTransition_override_virtual_OnTransition(void* self, intptr_t slot);
+bool QMouseEventTransition_override_virtual_OnTransition(void* self, intptr_t slot);
 void QMouseEventTransition_virtualbase_OnTransition(void* self, QEvent* event);
-void QMouseEventTransition_override_virtual_EventTest(void* self, intptr_t slot);
+bool QMouseEventTransition_override_virtual_EventTest(void* self, intptr_t slot);
 bool QMouseEventTransition_virtualbase_EventTest(void* self, QEvent* event);
-void QMouseEventTransition_override_virtual_Event(void* self, intptr_t slot);
+bool QMouseEventTransition_override_virtual_Event(void* self, intptr_t slot);
 bool QMouseEventTransition_virtualbase_Event(void* self, QEvent* e);
 void QMouseEventTransition_Delete(QMouseEventTransition* self);
 

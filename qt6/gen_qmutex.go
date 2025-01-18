@@ -14,8 +14,7 @@ import (
 )
 
 type QBasicMutex struct {
-	h          *C.QBasicMutex
-	isSubclass bool
+	h *C.QBasicMutex
 }
 
 func (this *QBasicMutex) cPointer() *C.QBasicMutex {
@@ -49,9 +48,7 @@ func UnsafeNewQBasicMutex(h unsafe.Pointer) *QBasicMutex {
 // NewQBasicMutex constructs a new QBasicMutex object.
 func NewQBasicMutex() *QBasicMutex {
 
-	ret := newQBasicMutex(C.QBasicMutex_new())
-	ret.isSubclass = true
-	return ret
+	return newQBasicMutex(C.QBasicMutex_new())
 }
 
 func (this *QBasicMutex) Lock() {
@@ -85,8 +82,7 @@ func (this *QBasicMutex) GoGC() {
 }
 
 type QMutex struct {
-	h          *C.QMutex
-	isSubclass bool
+	h *C.QMutex
 	*QBasicMutex
 }
 
@@ -124,9 +120,7 @@ func UnsafeNewQMutex(h unsafe.Pointer) *QMutex {
 // NewQMutex constructs a new QMutex object.
 func NewQMutex() *QMutex {
 
-	ret := newQMutex(C.QMutex_new())
-	ret.isSubclass = true
-	return ret
+	return newQMutex(C.QMutex_new())
 }
 
 func (this *QMutex) TryLock() bool {
@@ -152,8 +146,7 @@ func (this *QMutex) GoGC() {
 }
 
 type QRecursiveMutex struct {
-	h          *C.QRecursiveMutex
-	isSubclass bool
+	h *C.QRecursiveMutex
 }
 
 func (this *QRecursiveMutex) cPointer() *C.QRecursiveMutex {
@@ -187,9 +180,7 @@ func UnsafeNewQRecursiveMutex(h unsafe.Pointer) *QRecursiveMutex {
 // NewQRecursiveMutex constructs a new QRecursiveMutex object.
 func NewQRecursiveMutex() *QRecursiveMutex {
 
-	ret := newQRecursiveMutex(C.QRecursiveMutex_new())
-	ret.isSubclass = true
-	return ret
+	return newQRecursiveMutex(C.QRecursiveMutex_new())
 }
 
 func (this *QRecursiveMutex) Lock() {

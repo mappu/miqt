@@ -15,8 +15,7 @@ import (
 )
 
 type QNetworkCacheMetaData struct {
-	h          *C.QNetworkCacheMetaData
-	isSubclass bool
+	h *C.QNetworkCacheMetaData
 }
 
 func (this *QNetworkCacheMetaData) cPointer() *C.QNetworkCacheMetaData {
@@ -50,17 +49,13 @@ func UnsafeNewQNetworkCacheMetaData(h unsafe.Pointer) *QNetworkCacheMetaData {
 // NewQNetworkCacheMetaData constructs a new QNetworkCacheMetaData object.
 func NewQNetworkCacheMetaData() *QNetworkCacheMetaData {
 
-	ret := newQNetworkCacheMetaData(C.QNetworkCacheMetaData_new())
-	ret.isSubclass = true
-	return ret
+	return newQNetworkCacheMetaData(C.QNetworkCacheMetaData_new())
 }
 
 // NewQNetworkCacheMetaData2 constructs a new QNetworkCacheMetaData object.
 func NewQNetworkCacheMetaData2(other *QNetworkCacheMetaData) *QNetworkCacheMetaData {
 
-	ret := newQNetworkCacheMetaData(C.QNetworkCacheMetaData_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkCacheMetaData(C.QNetworkCacheMetaData_new2(other.cPointer()))
 }
 
 func (this *QNetworkCacheMetaData) OperatorAssign(other *QNetworkCacheMetaData) {
@@ -232,8 +227,7 @@ func (this *QNetworkCacheMetaData) GoGC() {
 }
 
 type QAbstractNetworkCache struct {
-	h          *C.QAbstractNetworkCache
-	isSubclass bool
+	h *C.QAbstractNetworkCache
 	*qt.QObject
 }
 

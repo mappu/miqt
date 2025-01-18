@@ -15,8 +15,7 @@ import (
 )
 
 type QTransposeProxyModel struct {
-	h          *C.QTransposeProxyModel
-	isSubclass bool
+	h *C.QTransposeProxyModel
 	*QAbstractProxyModel
 }
 
@@ -54,17 +53,13 @@ func UnsafeNewQTransposeProxyModel(h unsafe.Pointer) *QTransposeProxyModel {
 // NewQTransposeProxyModel constructs a new QTransposeProxyModel object.
 func NewQTransposeProxyModel() *QTransposeProxyModel {
 
-	ret := newQTransposeProxyModel(C.QTransposeProxyModel_new())
-	ret.isSubclass = true
-	return ret
+	return newQTransposeProxyModel(C.QTransposeProxyModel_new())
 }
 
 // NewQTransposeProxyModel2 constructs a new QTransposeProxyModel object.
 func NewQTransposeProxyModel2(parent *QObject) *QTransposeProxyModel {
 
-	ret := newQTransposeProxyModel(C.QTransposeProxyModel_new2(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTransposeProxyModel(C.QTransposeProxyModel_new2(parent.cPointer()))
 }
 
 func (this *QTransposeProxyModel) MetaObject() *QMetaObject {
@@ -230,10 +225,10 @@ func (this *QTransposeProxyModel) callVirtualBase_SetSourceModel(newSourceModel 
 
 }
 func (this *QTransposeProxyModel) OnSetSourceModel(slot func(super func(newSourceModel *QAbstractItemModel), newSourceModel *QAbstractItemModel)) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_SetSourceModel(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_SetSourceModel(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_SetSourceModel
@@ -256,10 +251,10 @@ func (this *QTransposeProxyModel) callVirtualBase_RowCount(parent *QModelIndex) 
 
 }
 func (this *QTransposeProxyModel) OnRowCount(slot func(super func(parent *QModelIndex) int, parent *QModelIndex) int) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_RowCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_RowCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_RowCount
@@ -284,10 +279,10 @@ func (this *QTransposeProxyModel) callVirtualBase_ColumnCount(parent *QModelInde
 
 }
 func (this *QTransposeProxyModel) OnColumnCount(slot func(super func(parent *QModelIndex) int, parent *QModelIndex) int) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_ColumnCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_ColumnCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_ColumnCount
@@ -314,10 +309,10 @@ func (this *QTransposeProxyModel) callVirtualBase_HeaderData(section int, orient
 
 }
 func (this *QTransposeProxyModel) OnHeaderData(slot func(super func(section int, orientation Orientation, role int) *QVariant, section int, orientation Orientation, role int) *QVariant) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_HeaderData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_HeaderData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_HeaderData
@@ -346,10 +341,10 @@ func (this *QTransposeProxyModel) callVirtualBase_SetHeaderData(section int, ori
 
 }
 func (this *QTransposeProxyModel) OnSetHeaderData(slot func(super func(section int, orientation Orientation, value *QVariant, role int) bool, section int, orientation Orientation, value *QVariant, role int) bool) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_SetHeaderData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_SetHeaderData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_SetHeaderData
@@ -395,10 +390,10 @@ func (this *QTransposeProxyModel) callVirtualBase_SetItemData(index *QModelIndex
 
 }
 func (this *QTransposeProxyModel) OnSetItemData(slot func(super func(index *QModelIndex, roles map[int]QVariant) bool, index *QModelIndex, roles map[int]QVariant) bool) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_SetItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_SetItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_SetItemData
@@ -440,10 +435,10 @@ func (this *QTransposeProxyModel) callVirtualBase_Span(index *QModelIndex) *QSiz
 
 }
 func (this *QTransposeProxyModel) OnSpan(slot func(super func(index *QModelIndex) *QSize, index *QModelIndex) *QSize) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_Span(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_Span(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_Span
@@ -481,10 +476,10 @@ func (this *QTransposeProxyModel) callVirtualBase_ItemData(index *QModelIndex) m
 
 }
 func (this *QTransposeProxyModel) OnItemData(slot func(super func(index *QModelIndex) map[int]QVariant, index *QModelIndex) map[int]QVariant) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_ItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_ItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_ItemData
@@ -526,10 +521,10 @@ func (this *QTransposeProxyModel) callVirtualBase_MapFromSource(sourceIndex *QMo
 
 }
 func (this *QTransposeProxyModel) OnMapFromSource(slot func(super func(sourceIndex *QModelIndex) *QModelIndex, sourceIndex *QModelIndex) *QModelIndex) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_MapFromSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_MapFromSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_MapFromSource
@@ -556,10 +551,10 @@ func (this *QTransposeProxyModel) callVirtualBase_MapToSource(proxyIndex *QModel
 
 }
 func (this *QTransposeProxyModel) OnMapToSource(slot func(super func(proxyIndex *QModelIndex) *QModelIndex, proxyIndex *QModelIndex) *QModelIndex) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_MapToSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_MapToSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_MapToSource
@@ -586,10 +581,10 @@ func (this *QTransposeProxyModel) callVirtualBase_Parent(index *QModelIndex) *QM
 
 }
 func (this *QTransposeProxyModel) OnParent(slot func(super func(index *QModelIndex) *QModelIndex, index *QModelIndex) *QModelIndex) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_Parent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_Parent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_Parent
@@ -616,10 +611,10 @@ func (this *QTransposeProxyModel) callVirtualBase_Index(row int, column int, par
 
 }
 func (this *QTransposeProxyModel) OnIndex(slot func(super func(row int, column int, parent *QModelIndex) *QModelIndex, row int, column int, parent *QModelIndex) *QModelIndex) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_Index(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_Index(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_Index
@@ -648,10 +643,10 @@ func (this *QTransposeProxyModel) callVirtualBase_InsertRows(row int, count int,
 
 }
 func (this *QTransposeProxyModel) OnInsertRows(slot func(super func(row int, count int, parent *QModelIndex) bool, row int, count int, parent *QModelIndex) bool) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_InsertRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_InsertRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_InsertRows
@@ -680,10 +675,10 @@ func (this *QTransposeProxyModel) callVirtualBase_RemoveRows(row int, count int,
 
 }
 func (this *QTransposeProxyModel) OnRemoveRows(slot func(super func(row int, count int, parent *QModelIndex) bool, row int, count int, parent *QModelIndex) bool) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_RemoveRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_RemoveRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_RemoveRows
@@ -712,10 +707,10 @@ func (this *QTransposeProxyModel) callVirtualBase_MoveRows(sourceParent *QModelI
 
 }
 func (this *QTransposeProxyModel) OnMoveRows(slot func(super func(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool, sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_MoveRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_MoveRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_MoveRows
@@ -748,10 +743,10 @@ func (this *QTransposeProxyModel) callVirtualBase_InsertColumns(column int, coun
 
 }
 func (this *QTransposeProxyModel) OnInsertColumns(slot func(super func(column int, count int, parent *QModelIndex) bool, column int, count int, parent *QModelIndex) bool) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_InsertColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_InsertColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_InsertColumns
@@ -780,10 +775,10 @@ func (this *QTransposeProxyModel) callVirtualBase_RemoveColumns(column int, coun
 
 }
 func (this *QTransposeProxyModel) OnRemoveColumns(slot func(super func(column int, count int, parent *QModelIndex) bool, column int, count int, parent *QModelIndex) bool) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_RemoveColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_RemoveColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_RemoveColumns
@@ -812,10 +807,10 @@ func (this *QTransposeProxyModel) callVirtualBase_MoveColumns(sourceParent *QMod
 
 }
 func (this *QTransposeProxyModel) OnMoveColumns(slot func(super func(sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool, sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_MoveColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_MoveColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_MoveColumns
@@ -848,10 +843,10 @@ func (this *QTransposeProxyModel) callVirtualBase_Sort(column int, order SortOrd
 
 }
 func (this *QTransposeProxyModel) OnSort(slot func(super func(column int, order SortOrder), column int, order SortOrder)) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_Sort(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_Sort(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_Sort
@@ -878,10 +873,10 @@ func (this *QTransposeProxyModel) callVirtualBase_MapSelectionToSource(selection
 
 }
 func (this *QTransposeProxyModel) OnMapSelectionToSource(slot func(super func(selection *QItemSelection) *QItemSelection, selection *QItemSelection) *QItemSelection) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_MapSelectionToSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_MapSelectionToSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_MapSelectionToSource
@@ -908,10 +903,10 @@ func (this *QTransposeProxyModel) callVirtualBase_MapSelectionFromSource(selecti
 
 }
 func (this *QTransposeProxyModel) OnMapSelectionFromSource(slot func(super func(selection *QItemSelection) *QItemSelection, selection *QItemSelection) *QItemSelection) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_MapSelectionFromSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_MapSelectionFromSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_MapSelectionFromSource
@@ -936,10 +931,10 @@ func (this *QTransposeProxyModel) callVirtualBase_Submit() bool {
 
 }
 func (this *QTransposeProxyModel) OnSubmit(slot func(super func() bool) bool) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_Submit(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_Submit(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_Submit
@@ -961,10 +956,10 @@ func (this *QTransposeProxyModel) callVirtualBase_Revert() {
 
 }
 func (this *QTransposeProxyModel) OnRevert(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_Revert(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_Revert(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_Revert
@@ -986,10 +981,10 @@ func (this *QTransposeProxyModel) callVirtualBase_Data(proxyIndex *QModelIndex, 
 
 }
 func (this *QTransposeProxyModel) OnData(slot func(super func(proxyIndex *QModelIndex, role int) *QVariant, proxyIndex *QModelIndex, role int) *QVariant) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_Data(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_Data(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_Data
@@ -1016,10 +1011,10 @@ func (this *QTransposeProxyModel) callVirtualBase_Flags(index *QModelIndex) Item
 
 }
 func (this *QTransposeProxyModel) OnFlags(slot func(super func(index *QModelIndex) ItemFlag, index *QModelIndex) ItemFlag) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_Flags(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_Flags(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_Flags
@@ -1044,10 +1039,10 @@ func (this *QTransposeProxyModel) callVirtualBase_SetData(index *QModelIndex, va
 
 }
 func (this *QTransposeProxyModel) OnSetData(slot func(super func(index *QModelIndex, value *QVariant, role int) bool, index *QModelIndex, value *QVariant, role int) bool) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_SetData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_SetData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_SetData
@@ -1076,10 +1071,10 @@ func (this *QTransposeProxyModel) callVirtualBase_ClearItemData(index *QModelInd
 
 }
 func (this *QTransposeProxyModel) OnClearItemData(slot func(super func(index *QModelIndex) bool, index *QModelIndex) bool) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_ClearItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_ClearItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_ClearItemData
@@ -1106,10 +1101,10 @@ func (this *QTransposeProxyModel) callVirtualBase_Buddy(index *QModelIndex) *QMo
 
 }
 func (this *QTransposeProxyModel) OnBuddy(slot func(super func(index *QModelIndex) *QModelIndex, index *QModelIndex) *QModelIndex) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_Buddy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_Buddy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_Buddy
@@ -1134,10 +1129,10 @@ func (this *QTransposeProxyModel) callVirtualBase_CanFetchMore(parent *QModelInd
 
 }
 func (this *QTransposeProxyModel) OnCanFetchMore(slot func(super func(parent *QModelIndex) bool, parent *QModelIndex) bool) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_CanFetchMore(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_CanFetchMore(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_CanFetchMore
@@ -1162,10 +1157,10 @@ func (this *QTransposeProxyModel) callVirtualBase_FetchMore(parent *QModelIndex)
 
 }
 func (this *QTransposeProxyModel) OnFetchMore(slot func(super func(parent *QModelIndex), parent *QModelIndex)) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_FetchMore(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_FetchMore(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_FetchMore
@@ -1188,10 +1183,10 @@ func (this *QTransposeProxyModel) callVirtualBase_HasChildren(parent *QModelInde
 
 }
 func (this *QTransposeProxyModel) OnHasChildren(slot func(super func(parent *QModelIndex) bool, parent *QModelIndex) bool) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_HasChildren(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_HasChildren(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_HasChildren
@@ -1218,10 +1213,10 @@ func (this *QTransposeProxyModel) callVirtualBase_Sibling(row int, column int, i
 
 }
 func (this *QTransposeProxyModel) OnSibling(slot func(super func(row int, column int, idx *QModelIndex) *QModelIndex, row int, column int, idx *QModelIndex) *QModelIndex) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_Sibling(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_Sibling(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_Sibling
@@ -1256,10 +1251,10 @@ func (this *QTransposeProxyModel) callVirtualBase_MimeData(indexes []QModelIndex
 
 }
 func (this *QTransposeProxyModel) OnMimeData(slot func(super func(indexes []QModelIndex) *QMimeData, indexes []QModelIndex) *QMimeData) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_MimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_MimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_MimeData
@@ -1292,10 +1287,10 @@ func (this *QTransposeProxyModel) callVirtualBase_CanDropMimeData(data *QMimeDat
 
 }
 func (this *QTransposeProxyModel) OnCanDropMimeData(slot func(super func(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool, data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_CanDropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_CanDropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_CanDropMimeData
@@ -1328,10 +1323,10 @@ func (this *QTransposeProxyModel) callVirtualBase_DropMimeData(data *QMimeData, 
 
 }
 func (this *QTransposeProxyModel) OnDropMimeData(slot func(super func(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool, data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_DropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_DropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_DropMimeData
@@ -1373,10 +1368,10 @@ func (this *QTransposeProxyModel) callVirtualBase_MimeTypes() []string {
 
 }
 func (this *QTransposeProxyModel) OnMimeTypes(slot func(super func() []string) []string) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_MimeTypes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_MimeTypes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_MimeTypes
@@ -1408,10 +1403,10 @@ func (this *QTransposeProxyModel) callVirtualBase_SupportedDragActions() DropAct
 
 }
 func (this *QTransposeProxyModel) OnSupportedDragActions(slot func(super func() DropAction) DropAction) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_SupportedDragActions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_SupportedDragActions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_SupportedDragActions
@@ -1433,10 +1428,10 @@ func (this *QTransposeProxyModel) callVirtualBase_SupportedDropActions() DropAct
 
 }
 func (this *QTransposeProxyModel) OnSupportedDropActions(slot func(super func() DropAction) DropAction) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_SupportedDropActions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_SupportedDropActions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_SupportedDropActions
@@ -1471,10 +1466,10 @@ func (this *QTransposeProxyModel) callVirtualBase_RoleNames() map[int][]byte {
 
 }
 func (this *QTransposeProxyModel) OnRoleNames(slot func(super func() map[int][]byte) map[int][]byte) {
-	if !this.isSubclass {
+	ok := C.QTransposeProxyModel_override_virtual_RoleNames(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTransposeProxyModel_override_virtual_RoleNames(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTransposeProxyModel_RoleNames

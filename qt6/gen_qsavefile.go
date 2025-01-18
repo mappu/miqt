@@ -15,8 +15,7 @@ import (
 )
 
 type QSaveFile struct {
-	h          *C.QSaveFile
-	isSubclass bool
+	h *C.QSaveFile
 	*QFileDevice
 }
 
@@ -58,17 +57,13 @@ func NewQSaveFile(name string) *QSaveFile {
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
 
-	ret := newQSaveFile(C.QSaveFile_new(name_ms))
-	ret.isSubclass = true
-	return ret
+	return newQSaveFile(C.QSaveFile_new(name_ms))
 }
 
 // NewQSaveFile2 constructs a new QSaveFile object.
 func NewQSaveFile2() *QSaveFile {
 
-	ret := newQSaveFile(C.QSaveFile_new2())
-	ret.isSubclass = true
-	return ret
+	return newQSaveFile(C.QSaveFile_new2())
 }
 
 // NewQSaveFile3 constructs a new QSaveFile object.
@@ -78,17 +73,13 @@ func NewQSaveFile3(name string, parent *QObject) *QSaveFile {
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
 
-	ret := newQSaveFile(C.QSaveFile_new3(name_ms, parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSaveFile(C.QSaveFile_new3(name_ms, parent.cPointer()))
 }
 
 // NewQSaveFile4 constructs a new QSaveFile object.
 func NewQSaveFile4(parent *QObject) *QSaveFile {
 
-	ret := newQSaveFile(C.QSaveFile_new4(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQSaveFile(C.QSaveFile_new4(parent.cPointer()))
 }
 
 func (this *QSaveFile) MetaObject() *QMetaObject {
@@ -175,10 +166,10 @@ func (this *QSaveFile) callVirtualBase_FileName() string {
 	return _ret
 }
 func (this *QSaveFile) OnFileName(slot func(super func() string) string) {
-	if !this.isSubclass {
+	ok := C.QSaveFile_override_virtual_FileName(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSaveFile_override_virtual_FileName(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSaveFile_FileName
@@ -204,10 +195,10 @@ func (this *QSaveFile) callVirtualBase_Open(flags QIODeviceBase__OpenModeFlag) b
 
 }
 func (this *QSaveFile) OnOpen(slot func(super func(flags QIODeviceBase__OpenModeFlag) bool, flags QIODeviceBase__OpenModeFlag) bool) {
-	if !this.isSubclass {
+	ok := C.QSaveFile_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSaveFile_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSaveFile_Open
@@ -234,10 +225,10 @@ func (this *QSaveFile) callVirtualBase_WriteData(data string, lenVal int64) int6
 
 }
 func (this *QSaveFile) OnWriteData(slot func(super func(data string, lenVal int64) int64, data string, lenVal int64) int64) {
-	if !this.isSubclass {
+	ok := C.QSaveFile_override_virtual_WriteData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSaveFile_override_virtual_WriteData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSaveFile_WriteData
@@ -265,10 +256,10 @@ func (this *QSaveFile) callVirtualBase_IsSequential() bool {
 
 }
 func (this *QSaveFile) OnIsSequential(slot func(super func() bool) bool) {
-	if !this.isSubclass {
+	ok := C.QSaveFile_override_virtual_IsSequential(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSaveFile_override_virtual_IsSequential(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSaveFile_IsSequential
@@ -290,10 +281,10 @@ func (this *QSaveFile) callVirtualBase_Pos() int64 {
 
 }
 func (this *QSaveFile) OnPos(slot func(super func() int64) int64) {
-	if !this.isSubclass {
+	ok := C.QSaveFile_override_virtual_Pos(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSaveFile_override_virtual_Pos(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSaveFile_Pos
@@ -315,10 +306,10 @@ func (this *QSaveFile) callVirtualBase_Seek(offset int64) bool {
 
 }
 func (this *QSaveFile) OnSeek(slot func(super func(offset int64) bool, offset int64) bool) {
-	if !this.isSubclass {
+	ok := C.QSaveFile_override_virtual_Seek(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSaveFile_override_virtual_Seek(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSaveFile_Seek
@@ -343,10 +334,10 @@ func (this *QSaveFile) callVirtualBase_AtEnd() bool {
 
 }
 func (this *QSaveFile) OnAtEnd(slot func(super func() bool) bool) {
-	if !this.isSubclass {
+	ok := C.QSaveFile_override_virtual_AtEnd(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSaveFile_override_virtual_AtEnd(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSaveFile_AtEnd
@@ -368,10 +359,10 @@ func (this *QSaveFile) callVirtualBase_Size() int64 {
 
 }
 func (this *QSaveFile) OnSize(slot func(super func() int64) int64) {
-	if !this.isSubclass {
+	ok := C.QSaveFile_override_virtual_Size(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSaveFile_override_virtual_Size(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSaveFile_Size
@@ -393,10 +384,10 @@ func (this *QSaveFile) callVirtualBase_Resize(sz int64) bool {
 
 }
 func (this *QSaveFile) OnResize(slot func(super func(sz int64) bool, sz int64) bool) {
-	if !this.isSubclass {
+	ok := C.QSaveFile_override_virtual_Resize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSaveFile_override_virtual_Resize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSaveFile_Resize
@@ -421,10 +412,10 @@ func (this *QSaveFile) callVirtualBase_Permissions() QFileDevice__Permission {
 
 }
 func (this *QSaveFile) OnPermissions(slot func(super func() QFileDevice__Permission) QFileDevice__Permission) {
-	if !this.isSubclass {
+	ok := C.QSaveFile_override_virtual_Permissions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSaveFile_override_virtual_Permissions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSaveFile_Permissions
@@ -446,10 +437,10 @@ func (this *QSaveFile) callVirtualBase_SetPermissions(permissionSpec QFileDevice
 
 }
 func (this *QSaveFile) OnSetPermissions(slot func(super func(permissionSpec QFileDevice__Permission) bool, permissionSpec QFileDevice__Permission) bool) {
-	if !this.isSubclass {
+	ok := C.QSaveFile_override_virtual_SetPermissions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSaveFile_override_virtual_SetPermissions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSaveFile_SetPermissions
@@ -476,10 +467,10 @@ func (this *QSaveFile) callVirtualBase_ReadData(data string, maxlen int64) int64
 
 }
 func (this *QSaveFile) OnReadData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
-	if !this.isSubclass {
+	ok := C.QSaveFile_override_virtual_ReadData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSaveFile_override_virtual_ReadData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSaveFile_ReadData
@@ -509,10 +500,10 @@ func (this *QSaveFile) callVirtualBase_ReadLineData(data string, maxlen int64) i
 
 }
 func (this *QSaveFile) OnReadLineData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
-	if !this.isSubclass {
+	ok := C.QSaveFile_override_virtual_ReadLineData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSaveFile_override_virtual_ReadLineData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSaveFile_ReadLineData

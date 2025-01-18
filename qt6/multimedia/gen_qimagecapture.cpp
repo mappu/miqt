@@ -553,56 +553,98 @@ int QImageCapture_CaptureToFile1(QImageCapture* self, struct miqt_string locatio
 	return self->captureToFile(location_QString);
 }
 
-void QImageCapture_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQImageCapture*>( (QImageCapture*)(self) )->handle__Event = slot;
+bool QImageCapture_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQImageCapture* self_cast = dynamic_cast<MiqtVirtualQImageCapture*>( (QImageCapture*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QImageCapture_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQImageCapture*)(self) )->virtualbase_Event(event);
 }
 
-void QImageCapture_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQImageCapture*>( (QImageCapture*)(self) )->handle__EventFilter = slot;
+bool QImageCapture_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQImageCapture* self_cast = dynamic_cast<MiqtVirtualQImageCapture*>( (QImageCapture*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QImageCapture_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQImageCapture*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QImageCapture_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQImageCapture*>( (QImageCapture*)(self) )->handle__TimerEvent = slot;
+bool QImageCapture_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQImageCapture* self_cast = dynamic_cast<MiqtVirtualQImageCapture*>( (QImageCapture*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QImageCapture_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQImageCapture*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QImageCapture_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQImageCapture*>( (QImageCapture*)(self) )->handle__ChildEvent = slot;
+bool QImageCapture_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQImageCapture* self_cast = dynamic_cast<MiqtVirtualQImageCapture*>( (QImageCapture*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QImageCapture_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQImageCapture*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QImageCapture_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQImageCapture*>( (QImageCapture*)(self) )->handle__CustomEvent = slot;
+bool QImageCapture_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQImageCapture* self_cast = dynamic_cast<MiqtVirtualQImageCapture*>( (QImageCapture*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QImageCapture_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQImageCapture*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QImageCapture_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQImageCapture*>( (QImageCapture*)(self) )->handle__ConnectNotify = slot;
+bool QImageCapture_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQImageCapture* self_cast = dynamic_cast<MiqtVirtualQImageCapture*>( (QImageCapture*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QImageCapture_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQImageCapture*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QImageCapture_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQImageCapture*>( (QImageCapture*)(self) )->handle__DisconnectNotify = slot;
+bool QImageCapture_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQImageCapture* self_cast = dynamic_cast<MiqtVirtualQImageCapture*>( (QImageCapture*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QImageCapture_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

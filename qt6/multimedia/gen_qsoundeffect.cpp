@@ -457,56 +457,98 @@ struct miqt_string QSoundEffect_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QSoundEffect_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) )->handle__Event = slot;
+bool QSoundEffect_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQSoundEffect* self_cast = dynamic_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QSoundEffect_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQSoundEffect*)(self) )->virtualbase_Event(event);
 }
 
-void QSoundEffect_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) )->handle__EventFilter = slot;
+bool QSoundEffect_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQSoundEffect* self_cast = dynamic_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QSoundEffect_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQSoundEffect*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QSoundEffect_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) )->handle__TimerEvent = slot;
+bool QSoundEffect_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSoundEffect* self_cast = dynamic_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QSoundEffect_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQSoundEffect*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QSoundEffect_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) )->handle__ChildEvent = slot;
+bool QSoundEffect_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSoundEffect* self_cast = dynamic_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QSoundEffect_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQSoundEffect*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QSoundEffect_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) )->handle__CustomEvent = slot;
+bool QSoundEffect_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSoundEffect* self_cast = dynamic_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QSoundEffect_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQSoundEffect*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QSoundEffect_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) )->handle__ConnectNotify = slot;
+bool QSoundEffect_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQSoundEffect* self_cast = dynamic_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QSoundEffect_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSoundEffect*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QSoundEffect_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) )->handle__DisconnectNotify = slot;
+bool QSoundEffect_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQSoundEffect* self_cast = dynamic_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QSoundEffect_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

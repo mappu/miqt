@@ -21,8 +21,7 @@ const (
 )
 
 type QBasicMutex struct {
-	h          *C.QBasicMutex
-	isSubclass bool
+	h *C.QBasicMutex
 }
 
 func (this *QBasicMutex) cPointer() *C.QBasicMutex {
@@ -56,9 +55,7 @@ func UnsafeNewQBasicMutex(h unsafe.Pointer) *QBasicMutex {
 // NewQBasicMutex constructs a new QBasicMutex object.
 func NewQBasicMutex() *QBasicMutex {
 
-	ret := newQBasicMutex(C.QBasicMutex_new())
-	ret.isSubclass = true
-	return ret
+	return newQBasicMutex(C.QBasicMutex_new())
 }
 
 func (this *QBasicMutex) Lock() {
@@ -100,8 +97,7 @@ func (this *QBasicMutex) GoGC() {
 }
 
 type QMutex struct {
-	h          *C.QMutex
-	isSubclass bool
+	h *C.QMutex
 	*QBasicMutex
 }
 
@@ -139,17 +135,13 @@ func UnsafeNewQMutex(h unsafe.Pointer) *QMutex {
 // NewQMutex constructs a new QMutex object.
 func NewQMutex() *QMutex {
 
-	ret := newQMutex(C.QMutex_new())
-	ret.isSubclass = true
-	return ret
+	return newQMutex(C.QMutex_new())
 }
 
 // NewQMutex2 constructs a new QMutex object.
 func NewQMutex2(mode QMutex__RecursionMode) *QMutex {
 
-	ret := newQMutex(C.QMutex_new2((C.int)(mode)))
-	ret.isSubclass = true
-	return ret
+	return newQMutex(C.QMutex_new2((C.int)(mode)))
 }
 
 func (this *QMutex) Lock() {
@@ -191,8 +183,7 @@ func (this *QMutex) GoGC() {
 }
 
 type QRecursiveMutex struct {
-	h          *C.QRecursiveMutex
-	isSubclass bool
+	h *C.QRecursiveMutex
 }
 
 func (this *QRecursiveMutex) cPointer() *C.QRecursiveMutex {
@@ -226,9 +217,7 @@ func UnsafeNewQRecursiveMutex(h unsafe.Pointer) *QRecursiveMutex {
 // NewQRecursiveMutex constructs a new QRecursiveMutex object.
 func NewQRecursiveMutex() *QRecursiveMutex {
 
-	ret := newQRecursiveMutex(C.QRecursiveMutex_new())
-	ret.isSubclass = true
-	return ret
+	return newQRecursiveMutex(C.QRecursiveMutex_new())
 }
 
 // Delete this object from C++ memory.
@@ -246,8 +235,7 @@ func (this *QRecursiveMutex) GoGC() {
 }
 
 type QMutexLocker struct {
-	h          *C.QMutexLocker
-	isSubclass bool
+	h *C.QMutexLocker
 }
 
 func (this *QMutexLocker) cPointer() *C.QMutexLocker {
@@ -281,17 +269,13 @@ func UnsafeNewQMutexLocker(h unsafe.Pointer) *QMutexLocker {
 // NewQMutexLocker constructs a new QMutexLocker object.
 func NewQMutexLocker(m *QBasicMutex) *QMutexLocker {
 
-	ret := newQMutexLocker(C.QMutexLocker_new(m.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQMutexLocker(C.QMutexLocker_new(m.cPointer()))
 }
 
 // NewQMutexLocker2 constructs a new QMutexLocker object.
 func NewQMutexLocker2(m *QRecursiveMutex) *QMutexLocker {
 
-	ret := newQMutexLocker(C.QMutexLocker_new2(m.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQMutexLocker(C.QMutexLocker_new2(m.cPointer()))
 }
 
 func (this *QMutexLocker) Unlock() {

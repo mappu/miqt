@@ -54,11 +54,11 @@ struct miqt_string QHistoryState_Tr2(const char* s, const char* c);
 struct miqt_string QHistoryState_Tr3(const char* s, const char* c, int n);
 struct miqt_string QHistoryState_TrUtf82(const char* s, const char* c);
 struct miqt_string QHistoryState_TrUtf83(const char* s, const char* c, int n);
-void QHistoryState_override_virtual_OnEntry(void* self, intptr_t slot);
+bool QHistoryState_override_virtual_OnEntry(void* self, intptr_t slot);
 void QHistoryState_virtualbase_OnEntry(void* self, QEvent* event);
-void QHistoryState_override_virtual_OnExit(void* self, intptr_t slot);
+bool QHistoryState_override_virtual_OnExit(void* self, intptr_t slot);
 void QHistoryState_virtualbase_OnExit(void* self, QEvent* event);
-void QHistoryState_override_virtual_Event(void* self, intptr_t slot);
+bool QHistoryState_override_virtual_Event(void* self, intptr_t slot);
 bool QHistoryState_virtualbase_Event(void* self, QEvent* e);
 void QHistoryState_Delete(QHistoryState* self);
 

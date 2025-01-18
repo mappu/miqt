@@ -390,56 +390,98 @@ struct miqt_string QPluginLoader_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QPluginLoader_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) )->handle__Event = slot;
+bool QPluginLoader_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQPluginLoader* self_cast = dynamic_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QPluginLoader_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQPluginLoader*)(self) )->virtualbase_Event(event);
 }
 
-void QPluginLoader_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) )->handle__EventFilter = slot;
+bool QPluginLoader_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQPluginLoader* self_cast = dynamic_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QPluginLoader_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQPluginLoader*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QPluginLoader_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) )->handle__TimerEvent = slot;
+bool QPluginLoader_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPluginLoader* self_cast = dynamic_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QPluginLoader_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQPluginLoader*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QPluginLoader_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) )->handle__ChildEvent = slot;
+bool QPluginLoader_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPluginLoader* self_cast = dynamic_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QPluginLoader_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQPluginLoader*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QPluginLoader_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) )->handle__CustomEvent = slot;
+bool QPluginLoader_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPluginLoader* self_cast = dynamic_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QPluginLoader_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQPluginLoader*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QPluginLoader_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) )->handle__ConnectNotify = slot;
+bool QPluginLoader_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQPluginLoader* self_cast = dynamic_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QPluginLoader_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQPluginLoader*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QPluginLoader_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) )->handle__DisconnectNotify = slot;
+bool QPluginLoader_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQPluginLoader* self_cast = dynamic_cast<MiqtVirtualQPluginLoader*>( (QPluginLoader*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QPluginLoader_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

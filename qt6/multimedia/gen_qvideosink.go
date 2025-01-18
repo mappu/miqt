@@ -16,8 +16,7 @@ import (
 )
 
 type QVideoSink struct {
-	h          *C.QVideoSink
-	isSubclass bool
+	h *C.QVideoSink
 	*qt6.QObject
 }
 
@@ -55,17 +54,13 @@ func UnsafeNewQVideoSink(h unsafe.Pointer) *QVideoSink {
 // NewQVideoSink constructs a new QVideoSink object.
 func NewQVideoSink() *QVideoSink {
 
-	ret := newQVideoSink(C.QVideoSink_new())
-	ret.isSubclass = true
-	return ret
+	return newQVideoSink(C.QVideoSink_new())
 }
 
 // NewQVideoSink2 constructs a new QVideoSink object.
 func NewQVideoSink2(parent *qt6.QObject) *QVideoSink {
 
-	ret := newQVideoSink(C.QVideoSink_new2((*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQVideoSink(C.QVideoSink_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QVideoSink) MetaObject() *qt6.QMetaObject {
@@ -210,10 +205,10 @@ func (this *QVideoSink) callVirtualBase_Event(event *qt6.QEvent) bool {
 
 }
 func (this *QVideoSink) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QVideoSink_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QVideoSink_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QVideoSink_Event
@@ -238,10 +233,10 @@ func (this *QVideoSink) callVirtualBase_EventFilter(watched *qt6.QObject, event 
 
 }
 func (this *QVideoSink) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QVideoSink_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QVideoSink_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QVideoSink_EventFilter
@@ -268,10 +263,10 @@ func (this *QVideoSink) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
 
 }
 func (this *QVideoSink) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QVideoSink_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QVideoSink_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QVideoSink_TimerEvent
@@ -294,10 +289,10 @@ func (this *QVideoSink) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
 
 }
 func (this *QVideoSink) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QVideoSink_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QVideoSink_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QVideoSink_ChildEvent
@@ -320,10 +315,10 @@ func (this *QVideoSink) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 
 }
 func (this *QVideoSink) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
-	if !this.isSubclass {
+	ok := C.QVideoSink_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QVideoSink_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QVideoSink_CustomEvent
@@ -346,10 +341,10 @@ func (this *QVideoSink) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
 
 }
 func (this *QVideoSink) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QVideoSink_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QVideoSink_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QVideoSink_ConnectNotify
@@ -372,10 +367,10 @@ func (this *QVideoSink) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod
 
 }
 func (this *QVideoSink) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QVideoSink_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QVideoSink_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QVideoSink_DisconnectNotify

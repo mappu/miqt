@@ -14,8 +14,7 @@ import (
 )
 
 type QThreadStorageData struct {
-	h          *C.QThreadStorageData
-	isSubclass bool
+	h *C.QThreadStorageData
 }
 
 func (this *QThreadStorageData) cPointer() *C.QThreadStorageData {
@@ -49,9 +48,7 @@ func UnsafeNewQThreadStorageData(h unsafe.Pointer) *QThreadStorageData {
 // NewQThreadStorageData constructs a new QThreadStorageData object.
 func NewQThreadStorageData(param1 *QThreadStorageData) *QThreadStorageData {
 
-	ret := newQThreadStorageData(C.QThreadStorageData_new(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQThreadStorageData(C.QThreadStorageData_new(param1.cPointer()))
 }
 
 // Delete this object from C++ memory.

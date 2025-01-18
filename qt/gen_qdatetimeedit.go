@@ -31,8 +31,7 @@ const (
 )
 
 type QDateTimeEdit struct {
-	h          *C.QDateTimeEdit
-	isSubclass bool
+	h *C.QDateTimeEdit
 	*QAbstractSpinBox
 }
 
@@ -70,65 +69,49 @@ func UnsafeNewQDateTimeEdit(h unsafe.Pointer) *QDateTimeEdit {
 // NewQDateTimeEdit constructs a new QDateTimeEdit object.
 func NewQDateTimeEdit(parent *QWidget) *QDateTimeEdit {
 
-	ret := newQDateTimeEdit(C.QDateTimeEdit_new(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQDateTimeEdit(C.QDateTimeEdit_new(parent.cPointer()))
 }
 
 // NewQDateTimeEdit2 constructs a new QDateTimeEdit object.
 func NewQDateTimeEdit2() *QDateTimeEdit {
 
-	ret := newQDateTimeEdit(C.QDateTimeEdit_new2())
-	ret.isSubclass = true
-	return ret
+	return newQDateTimeEdit(C.QDateTimeEdit_new2())
 }
 
 // NewQDateTimeEdit3 constructs a new QDateTimeEdit object.
 func NewQDateTimeEdit3(dt *QDateTime) *QDateTimeEdit {
 
-	ret := newQDateTimeEdit(C.QDateTimeEdit_new3(dt.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQDateTimeEdit(C.QDateTimeEdit_new3(dt.cPointer()))
 }
 
 // NewQDateTimeEdit4 constructs a new QDateTimeEdit object.
 func NewQDateTimeEdit4(d *QDate) *QDateTimeEdit {
 
-	ret := newQDateTimeEdit(C.QDateTimeEdit_new4(d.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQDateTimeEdit(C.QDateTimeEdit_new4(d.cPointer()))
 }
 
 // NewQDateTimeEdit5 constructs a new QDateTimeEdit object.
 func NewQDateTimeEdit5(t *QTime) *QDateTimeEdit {
 
-	ret := newQDateTimeEdit(C.QDateTimeEdit_new5(t.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQDateTimeEdit(C.QDateTimeEdit_new5(t.cPointer()))
 }
 
 // NewQDateTimeEdit6 constructs a new QDateTimeEdit object.
 func NewQDateTimeEdit6(dt *QDateTime, parent *QWidget) *QDateTimeEdit {
 
-	ret := newQDateTimeEdit(C.QDateTimeEdit_new6(dt.cPointer(), parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQDateTimeEdit(C.QDateTimeEdit_new6(dt.cPointer(), parent.cPointer()))
 }
 
 // NewQDateTimeEdit7 constructs a new QDateTimeEdit object.
 func NewQDateTimeEdit7(d *QDate, parent *QWidget) *QDateTimeEdit {
 
-	ret := newQDateTimeEdit(C.QDateTimeEdit_new7(d.cPointer(), parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQDateTimeEdit(C.QDateTimeEdit_new7(d.cPointer(), parent.cPointer()))
 }
 
 // NewQDateTimeEdit8 constructs a new QDateTimeEdit object.
 func NewQDateTimeEdit8(t *QTime, parent *QWidget) *QDateTimeEdit {
 
-	ret := newQDateTimeEdit(C.QDateTimeEdit_new8(t.cPointer(), parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQDateTimeEdit(C.QDateTimeEdit_new8(t.cPointer(), parent.cPointer()))
 }
 
 func (this *QDateTimeEdit) MetaObject() *QMetaObject {
@@ -503,10 +486,10 @@ func (this *QDateTimeEdit) callVirtualBase_SizeHint() *QSize {
 
 }
 func (this *QDateTimeEdit) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	if !this.isSubclass {
+	ok := C.QDateTimeEdit_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateTimeEdit_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_SizeHint
@@ -528,10 +511,10 @@ func (this *QDateTimeEdit) callVirtualBase_Clear() {
 
 }
 func (this *QDateTimeEdit) OnClear(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QDateTimeEdit_override_virtual_Clear(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateTimeEdit_override_virtual_Clear(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_Clear
@@ -551,10 +534,10 @@ func (this *QDateTimeEdit) callVirtualBase_StepBy(steps int) {
 
 }
 func (this *QDateTimeEdit) OnStepBy(slot func(super func(steps int), steps int)) {
-	if !this.isSubclass {
+	ok := C.QDateTimeEdit_override_virtual_StepBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateTimeEdit_override_virtual_StepBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_StepBy
@@ -577,10 +560,10 @@ func (this *QDateTimeEdit) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QDateTimeEdit) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QDateTimeEdit_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateTimeEdit_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_Event
@@ -605,10 +588,10 @@ func (this *QDateTimeEdit) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
 
 }
 func (this *QDateTimeEdit) OnKeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
-	if !this.isSubclass {
+	ok := C.QDateTimeEdit_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateTimeEdit_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_KeyPressEvent
@@ -631,10 +614,10 @@ func (this *QDateTimeEdit) callVirtualBase_WheelEvent(event *QWheelEvent) {
 
 }
 func (this *QDateTimeEdit) OnWheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
-	if !this.isSubclass {
+	ok := C.QDateTimeEdit_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateTimeEdit_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_WheelEvent
@@ -657,10 +640,10 @@ func (this *QDateTimeEdit) callVirtualBase_FocusInEvent(event *QFocusEvent) {
 
 }
 func (this *QDateTimeEdit) OnFocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
-	if !this.isSubclass {
+	ok := C.QDateTimeEdit_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateTimeEdit_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_FocusInEvent
@@ -683,10 +666,10 @@ func (this *QDateTimeEdit) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
 }
 func (this *QDateTimeEdit) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
-	if !this.isSubclass {
+	ok := C.QDateTimeEdit_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateTimeEdit_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_FocusNextPrevChild
@@ -715,10 +698,10 @@ func (this *QDateTimeEdit) callVirtualBase_Validate(input string, pos *int) QVal
 
 }
 func (this *QDateTimeEdit) OnValidate(slot func(super func(input string, pos *int) QValidator__State, input string, pos *int) QValidator__State) {
-	if !this.isSubclass {
+	ok := C.QDateTimeEdit_override_virtual_Validate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateTimeEdit_override_virtual_Validate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_Validate
@@ -751,10 +734,10 @@ func (this *QDateTimeEdit) callVirtualBase_Fixup(input string) {
 
 }
 func (this *QDateTimeEdit) OnFixup(slot func(super func(input string), input string)) {
-	if !this.isSubclass {
+	ok := C.QDateTimeEdit_override_virtual_Fixup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateTimeEdit_override_virtual_Fixup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_Fixup
@@ -786,10 +769,10 @@ func (this *QDateTimeEdit) callVirtualBase_DateTimeFromText(text string) *QDateT
 
 }
 func (this *QDateTimeEdit) OnDateTimeFromText(slot func(super func(text string) *QDateTime, text string) *QDateTime) {
-	if !this.isSubclass {
+	ok := C.QDateTimeEdit_override_virtual_DateTimeFromText(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateTimeEdit_override_virtual_DateTimeFromText(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_DateTimeFromText
@@ -819,10 +802,10 @@ func (this *QDateTimeEdit) callVirtualBase_TextFromDateTime(dt *QDateTime) strin
 	return _ret
 }
 func (this *QDateTimeEdit) OnTextFromDateTime(slot func(super func(dt *QDateTime) string, dt *QDateTime) string) {
-	if !this.isSubclass {
+	ok := C.QDateTimeEdit_override_virtual_TextFromDateTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateTimeEdit_override_virtual_TextFromDateTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_TextFromDateTime
@@ -851,10 +834,10 @@ func (this *QDateTimeEdit) callVirtualBase_StepEnabled() QAbstractSpinBox__StepE
 
 }
 func (this *QDateTimeEdit) OnStepEnabled(slot func(super func() QAbstractSpinBox__StepEnabledFlag) QAbstractSpinBox__StepEnabledFlag) {
-	if !this.isSubclass {
+	ok := C.QDateTimeEdit_override_virtual_StepEnabled(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateTimeEdit_override_virtual_StepEnabled(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_StepEnabled
@@ -876,10 +859,10 @@ func (this *QDateTimeEdit) callVirtualBase_MousePressEvent(event *QMouseEvent) {
 
 }
 func (this *QDateTimeEdit) OnMousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QDateTimeEdit_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateTimeEdit_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_MousePressEvent
@@ -902,10 +885,10 @@ func (this *QDateTimeEdit) callVirtualBase_PaintEvent(event *QPaintEvent) {
 
 }
 func (this *QDateTimeEdit) OnPaintEvent(slot func(super func(event *QPaintEvent), event *QPaintEvent)) {
-	if !this.isSubclass {
+	ok := C.QDateTimeEdit_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateTimeEdit_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_PaintEvent
@@ -930,10 +913,10 @@ func (this *QDateTimeEdit) callVirtualBase_MinimumSizeHint() *QSize {
 
 }
 func (this *QDateTimeEdit) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
-	if !this.isSubclass {
+	ok := C.QDateTimeEdit_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateTimeEdit_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_MinimumSizeHint
@@ -957,10 +940,10 @@ func (this *QDateTimeEdit) callVirtualBase_InputMethodQuery(param1 InputMethodQu
 
 }
 func (this *QDateTimeEdit) OnInputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
-	if !this.isSubclass {
+	ok := C.QDateTimeEdit_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateTimeEdit_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_InputMethodQuery
@@ -985,10 +968,10 @@ func (this *QDateTimeEdit) callVirtualBase_ResizeEvent(event *QResizeEvent) {
 
 }
 func (this *QDateTimeEdit) OnResizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
-	if !this.isSubclass {
+	ok := C.QDateTimeEdit_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateTimeEdit_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_ResizeEvent
@@ -1011,10 +994,10 @@ func (this *QDateTimeEdit) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
 
 }
 func (this *QDateTimeEdit) OnKeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
-	if !this.isSubclass {
+	ok := C.QDateTimeEdit_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateTimeEdit_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_KeyReleaseEvent
@@ -1037,10 +1020,10 @@ func (this *QDateTimeEdit) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
 
 }
 func (this *QDateTimeEdit) OnFocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
-	if !this.isSubclass {
+	ok := C.QDateTimeEdit_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateTimeEdit_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_FocusOutEvent
@@ -1063,10 +1046,10 @@ func (this *QDateTimeEdit) callVirtualBase_ContextMenuEvent(event *QContextMenuE
 
 }
 func (this *QDateTimeEdit) OnContextMenuEvent(slot func(super func(event *QContextMenuEvent), event *QContextMenuEvent)) {
-	if !this.isSubclass {
+	ok := C.QDateTimeEdit_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateTimeEdit_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_ContextMenuEvent
@@ -1089,10 +1072,10 @@ func (this *QDateTimeEdit) callVirtualBase_ChangeEvent(event *QEvent) {
 
 }
 func (this *QDateTimeEdit) OnChangeEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QDateTimeEdit_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateTimeEdit_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_ChangeEvent
@@ -1115,10 +1098,10 @@ func (this *QDateTimeEdit) callVirtualBase_CloseEvent(event *QCloseEvent) {
 
 }
 func (this *QDateTimeEdit) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
-	if !this.isSubclass {
+	ok := C.QDateTimeEdit_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateTimeEdit_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_CloseEvent
@@ -1141,10 +1124,10 @@ func (this *QDateTimeEdit) callVirtualBase_HideEvent(event *QHideEvent) {
 
 }
 func (this *QDateTimeEdit) OnHideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
-	if !this.isSubclass {
+	ok := C.QDateTimeEdit_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateTimeEdit_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_HideEvent
@@ -1167,10 +1150,10 @@ func (this *QDateTimeEdit) callVirtualBase_MouseReleaseEvent(event *QMouseEvent)
 
 }
 func (this *QDateTimeEdit) OnMouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QDateTimeEdit_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateTimeEdit_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_MouseReleaseEvent
@@ -1193,10 +1176,10 @@ func (this *QDateTimeEdit) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
 
 }
 func (this *QDateTimeEdit) OnMouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QDateTimeEdit_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateTimeEdit_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_MouseMoveEvent
@@ -1219,10 +1202,10 @@ func (this *QDateTimeEdit) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QDateTimeEdit) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QDateTimeEdit_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateTimeEdit_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_TimerEvent
@@ -1245,10 +1228,10 @@ func (this *QDateTimeEdit) callVirtualBase_ShowEvent(event *QShowEvent) {
 
 }
 func (this *QDateTimeEdit) OnShowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
-	if !this.isSubclass {
+	ok := C.QDateTimeEdit_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateTimeEdit_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateTimeEdit_ShowEvent
@@ -1280,8 +1263,7 @@ func (this *QDateTimeEdit) GoGC() {
 }
 
 type QTimeEdit struct {
-	h          *C.QTimeEdit
-	isSubclass bool
+	h *C.QTimeEdit
 	*QDateTimeEdit
 }
 
@@ -1319,33 +1301,25 @@ func UnsafeNewQTimeEdit(h unsafe.Pointer) *QTimeEdit {
 // NewQTimeEdit constructs a new QTimeEdit object.
 func NewQTimeEdit(parent *QWidget) *QTimeEdit {
 
-	ret := newQTimeEdit(C.QTimeEdit_new(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTimeEdit(C.QTimeEdit_new(parent.cPointer()))
 }
 
 // NewQTimeEdit2 constructs a new QTimeEdit object.
 func NewQTimeEdit2() *QTimeEdit {
 
-	ret := newQTimeEdit(C.QTimeEdit_new2())
-	ret.isSubclass = true
-	return ret
+	return newQTimeEdit(C.QTimeEdit_new2())
 }
 
 // NewQTimeEdit3 constructs a new QTimeEdit object.
 func NewQTimeEdit3(time *QTime) *QTimeEdit {
 
-	ret := newQTimeEdit(C.QTimeEdit_new3(time.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTimeEdit(C.QTimeEdit_new3(time.cPointer()))
 }
 
 // NewQTimeEdit4 constructs a new QTimeEdit object.
 func NewQTimeEdit4(time *QTime, parent *QWidget) *QTimeEdit {
 
-	ret := newQTimeEdit(C.QTimeEdit_new4(time.cPointer(), parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTimeEdit(C.QTimeEdit_new4(time.cPointer(), parent.cPointer()))
 }
 
 func (this *QTimeEdit) MetaObject() *QMetaObject {
@@ -1448,10 +1422,10 @@ func (this *QTimeEdit) callVirtualBase_SizeHint() *QSize {
 
 }
 func (this *QTimeEdit) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	if !this.isSubclass {
+	ok := C.QTimeEdit_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTimeEdit_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTimeEdit_SizeHint
@@ -1473,10 +1447,10 @@ func (this *QTimeEdit) callVirtualBase_Clear() {
 
 }
 func (this *QTimeEdit) OnClear(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QTimeEdit_override_virtual_Clear(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTimeEdit_override_virtual_Clear(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTimeEdit_Clear
@@ -1496,10 +1470,10 @@ func (this *QTimeEdit) callVirtualBase_StepBy(steps int) {
 
 }
 func (this *QTimeEdit) OnStepBy(slot func(super func(steps int), steps int)) {
-	if !this.isSubclass {
+	ok := C.QTimeEdit_override_virtual_StepBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTimeEdit_override_virtual_StepBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTimeEdit_StepBy
@@ -1522,10 +1496,10 @@ func (this *QTimeEdit) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QTimeEdit) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QTimeEdit_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTimeEdit_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTimeEdit_Event
@@ -1550,10 +1524,10 @@ func (this *QTimeEdit) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
 
 }
 func (this *QTimeEdit) OnKeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
-	if !this.isSubclass {
+	ok := C.QTimeEdit_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTimeEdit_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTimeEdit_KeyPressEvent
@@ -1576,10 +1550,10 @@ func (this *QTimeEdit) callVirtualBase_WheelEvent(event *QWheelEvent) {
 
 }
 func (this *QTimeEdit) OnWheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
-	if !this.isSubclass {
+	ok := C.QTimeEdit_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTimeEdit_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTimeEdit_WheelEvent
@@ -1602,10 +1576,10 @@ func (this *QTimeEdit) callVirtualBase_FocusInEvent(event *QFocusEvent) {
 
 }
 func (this *QTimeEdit) OnFocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
-	if !this.isSubclass {
+	ok := C.QTimeEdit_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTimeEdit_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTimeEdit_FocusInEvent
@@ -1628,10 +1602,10 @@ func (this *QTimeEdit) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
 }
 func (this *QTimeEdit) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
-	if !this.isSubclass {
+	ok := C.QTimeEdit_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTimeEdit_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTimeEdit_FocusNextPrevChild
@@ -1660,10 +1634,10 @@ func (this *QTimeEdit) callVirtualBase_Validate(input string, pos *int) QValidat
 
 }
 func (this *QTimeEdit) OnValidate(slot func(super func(input string, pos *int) QValidator__State, input string, pos *int) QValidator__State) {
-	if !this.isSubclass {
+	ok := C.QTimeEdit_override_virtual_Validate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTimeEdit_override_virtual_Validate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTimeEdit_Validate
@@ -1696,10 +1670,10 @@ func (this *QTimeEdit) callVirtualBase_Fixup(input string) {
 
 }
 func (this *QTimeEdit) OnFixup(slot func(super func(input string), input string)) {
-	if !this.isSubclass {
+	ok := C.QTimeEdit_override_virtual_Fixup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTimeEdit_override_virtual_Fixup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTimeEdit_Fixup
@@ -1731,10 +1705,10 @@ func (this *QTimeEdit) callVirtualBase_DateTimeFromText(text string) *QDateTime 
 
 }
 func (this *QTimeEdit) OnDateTimeFromText(slot func(super func(text string) *QDateTime, text string) *QDateTime) {
-	if !this.isSubclass {
+	ok := C.QTimeEdit_override_virtual_DateTimeFromText(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTimeEdit_override_virtual_DateTimeFromText(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTimeEdit_DateTimeFromText
@@ -1764,10 +1738,10 @@ func (this *QTimeEdit) callVirtualBase_TextFromDateTime(dt *QDateTime) string {
 	return _ret
 }
 func (this *QTimeEdit) OnTextFromDateTime(slot func(super func(dt *QDateTime) string, dt *QDateTime) string) {
-	if !this.isSubclass {
+	ok := C.QTimeEdit_override_virtual_TextFromDateTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTimeEdit_override_virtual_TextFromDateTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTimeEdit_TextFromDateTime
@@ -1796,10 +1770,10 @@ func (this *QTimeEdit) callVirtualBase_StepEnabled() QAbstractSpinBox__StepEnabl
 
 }
 func (this *QTimeEdit) OnStepEnabled(slot func(super func() QAbstractSpinBox__StepEnabledFlag) QAbstractSpinBox__StepEnabledFlag) {
-	if !this.isSubclass {
+	ok := C.QTimeEdit_override_virtual_StepEnabled(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTimeEdit_override_virtual_StepEnabled(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTimeEdit_StepEnabled
@@ -1821,10 +1795,10 @@ func (this *QTimeEdit) callVirtualBase_MousePressEvent(event *QMouseEvent) {
 
 }
 func (this *QTimeEdit) OnMousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QTimeEdit_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTimeEdit_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTimeEdit_MousePressEvent
@@ -1847,10 +1821,10 @@ func (this *QTimeEdit) callVirtualBase_PaintEvent(event *QPaintEvent) {
 
 }
 func (this *QTimeEdit) OnPaintEvent(slot func(super func(event *QPaintEvent), event *QPaintEvent)) {
-	if !this.isSubclass {
+	ok := C.QTimeEdit_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTimeEdit_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTimeEdit_PaintEvent
@@ -1882,8 +1856,7 @@ func (this *QTimeEdit) GoGC() {
 }
 
 type QDateEdit struct {
-	h          *C.QDateEdit
-	isSubclass bool
+	h *C.QDateEdit
 	*QDateTimeEdit
 }
 
@@ -1921,33 +1894,25 @@ func UnsafeNewQDateEdit(h unsafe.Pointer) *QDateEdit {
 // NewQDateEdit constructs a new QDateEdit object.
 func NewQDateEdit(parent *QWidget) *QDateEdit {
 
-	ret := newQDateEdit(C.QDateEdit_new(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQDateEdit(C.QDateEdit_new(parent.cPointer()))
 }
 
 // NewQDateEdit2 constructs a new QDateEdit object.
 func NewQDateEdit2() *QDateEdit {
 
-	ret := newQDateEdit(C.QDateEdit_new2())
-	ret.isSubclass = true
-	return ret
+	return newQDateEdit(C.QDateEdit_new2())
 }
 
 // NewQDateEdit3 constructs a new QDateEdit object.
 func NewQDateEdit3(date *QDate) *QDateEdit {
 
-	ret := newQDateEdit(C.QDateEdit_new3(date.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQDateEdit(C.QDateEdit_new3(date.cPointer()))
 }
 
 // NewQDateEdit4 constructs a new QDateEdit object.
 func NewQDateEdit4(date *QDate, parent *QWidget) *QDateEdit {
 
-	ret := newQDateEdit(C.QDateEdit_new4(date.cPointer(), parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQDateEdit(C.QDateEdit_new4(date.cPointer(), parent.cPointer()))
 }
 
 func (this *QDateEdit) MetaObject() *QMetaObject {
@@ -2050,10 +2015,10 @@ func (this *QDateEdit) callVirtualBase_SizeHint() *QSize {
 
 }
 func (this *QDateEdit) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	if !this.isSubclass {
+	ok := C.QDateEdit_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateEdit_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateEdit_SizeHint
@@ -2075,10 +2040,10 @@ func (this *QDateEdit) callVirtualBase_Clear() {
 
 }
 func (this *QDateEdit) OnClear(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QDateEdit_override_virtual_Clear(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateEdit_override_virtual_Clear(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateEdit_Clear
@@ -2098,10 +2063,10 @@ func (this *QDateEdit) callVirtualBase_StepBy(steps int) {
 
 }
 func (this *QDateEdit) OnStepBy(slot func(super func(steps int), steps int)) {
-	if !this.isSubclass {
+	ok := C.QDateEdit_override_virtual_StepBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateEdit_override_virtual_StepBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateEdit_StepBy
@@ -2124,10 +2089,10 @@ func (this *QDateEdit) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QDateEdit) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QDateEdit_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateEdit_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateEdit_Event
@@ -2152,10 +2117,10 @@ func (this *QDateEdit) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
 
 }
 func (this *QDateEdit) OnKeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
-	if !this.isSubclass {
+	ok := C.QDateEdit_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateEdit_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateEdit_KeyPressEvent
@@ -2178,10 +2143,10 @@ func (this *QDateEdit) callVirtualBase_WheelEvent(event *QWheelEvent) {
 
 }
 func (this *QDateEdit) OnWheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
-	if !this.isSubclass {
+	ok := C.QDateEdit_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateEdit_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateEdit_WheelEvent
@@ -2204,10 +2169,10 @@ func (this *QDateEdit) callVirtualBase_FocusInEvent(event *QFocusEvent) {
 
 }
 func (this *QDateEdit) OnFocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
-	if !this.isSubclass {
+	ok := C.QDateEdit_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateEdit_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateEdit_FocusInEvent
@@ -2230,10 +2195,10 @@ func (this *QDateEdit) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
 }
 func (this *QDateEdit) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
-	if !this.isSubclass {
+	ok := C.QDateEdit_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateEdit_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateEdit_FocusNextPrevChild
@@ -2262,10 +2227,10 @@ func (this *QDateEdit) callVirtualBase_Validate(input string, pos *int) QValidat
 
 }
 func (this *QDateEdit) OnValidate(slot func(super func(input string, pos *int) QValidator__State, input string, pos *int) QValidator__State) {
-	if !this.isSubclass {
+	ok := C.QDateEdit_override_virtual_Validate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateEdit_override_virtual_Validate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateEdit_Validate
@@ -2298,10 +2263,10 @@ func (this *QDateEdit) callVirtualBase_Fixup(input string) {
 
 }
 func (this *QDateEdit) OnFixup(slot func(super func(input string), input string)) {
-	if !this.isSubclass {
+	ok := C.QDateEdit_override_virtual_Fixup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateEdit_override_virtual_Fixup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateEdit_Fixup
@@ -2333,10 +2298,10 @@ func (this *QDateEdit) callVirtualBase_DateTimeFromText(text string) *QDateTime 
 
 }
 func (this *QDateEdit) OnDateTimeFromText(slot func(super func(text string) *QDateTime, text string) *QDateTime) {
-	if !this.isSubclass {
+	ok := C.QDateEdit_override_virtual_DateTimeFromText(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateEdit_override_virtual_DateTimeFromText(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateEdit_DateTimeFromText
@@ -2366,10 +2331,10 @@ func (this *QDateEdit) callVirtualBase_TextFromDateTime(dt *QDateTime) string {
 	return _ret
 }
 func (this *QDateEdit) OnTextFromDateTime(slot func(super func(dt *QDateTime) string, dt *QDateTime) string) {
-	if !this.isSubclass {
+	ok := C.QDateEdit_override_virtual_TextFromDateTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateEdit_override_virtual_TextFromDateTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateEdit_TextFromDateTime
@@ -2398,10 +2363,10 @@ func (this *QDateEdit) callVirtualBase_StepEnabled() QAbstractSpinBox__StepEnabl
 
 }
 func (this *QDateEdit) OnStepEnabled(slot func(super func() QAbstractSpinBox__StepEnabledFlag) QAbstractSpinBox__StepEnabledFlag) {
-	if !this.isSubclass {
+	ok := C.QDateEdit_override_virtual_StepEnabled(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateEdit_override_virtual_StepEnabled(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateEdit_StepEnabled
@@ -2423,10 +2388,10 @@ func (this *QDateEdit) callVirtualBase_MousePressEvent(event *QMouseEvent) {
 
 }
 func (this *QDateEdit) OnMousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	if !this.isSubclass {
+	ok := C.QDateEdit_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateEdit_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateEdit_MousePressEvent
@@ -2449,10 +2414,10 @@ func (this *QDateEdit) callVirtualBase_PaintEvent(event *QPaintEvent) {
 
 }
 func (this *QDateEdit) OnPaintEvent(slot func(super func(event *QPaintEvent), event *QPaintEvent)) {
-	if !this.isSubclass {
+	ok := C.QDateEdit_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QDateEdit_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDateEdit_PaintEvent

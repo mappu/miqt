@@ -15,8 +15,7 @@ import (
 )
 
 type QWebEngineFullScreenRequest struct {
-	h          *C.QWebEngineFullScreenRequest
-	isSubclass bool
+	h *C.QWebEngineFullScreenRequest
 }
 
 func (this *QWebEngineFullScreenRequest) cPointer() *C.QWebEngineFullScreenRequest {
@@ -50,9 +49,7 @@ func UnsafeNewQWebEngineFullScreenRequest(h unsafe.Pointer) *QWebEngineFullScree
 // NewQWebEngineFullScreenRequest constructs a new QWebEngineFullScreenRequest object.
 func NewQWebEngineFullScreenRequest(other *QWebEngineFullScreenRequest) *QWebEngineFullScreenRequest {
 
-	ret := newQWebEngineFullScreenRequest(C.QWebEngineFullScreenRequest_new(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineFullScreenRequest(C.QWebEngineFullScreenRequest_new(other.cPointer()))
 }
 
 func (this *QWebEngineFullScreenRequest) OperatorAssign(other *QWebEngineFullScreenRequest) {

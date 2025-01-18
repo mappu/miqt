@@ -32,8 +32,7 @@ const (
 )
 
 type QCalendar struct {
-	h          *C.QCalendar
-	isSubclass bool
+	h *C.QCalendar
 }
 
 func (this *QCalendar) cPointer() *C.QCalendar {
@@ -67,33 +66,25 @@ func UnsafeNewQCalendar(h unsafe.Pointer) *QCalendar {
 // NewQCalendar constructs a new QCalendar object.
 func NewQCalendar() *QCalendar {
 
-	ret := newQCalendar(C.QCalendar_new())
-	ret.isSubclass = true
-	return ret
+	return newQCalendar(C.QCalendar_new())
 }
 
 // NewQCalendar2 constructs a new QCalendar object.
 func NewQCalendar2(system QCalendar__System) *QCalendar {
 
-	ret := newQCalendar(C.QCalendar_new2((C.int)(system)))
-	ret.isSubclass = true
-	return ret
+	return newQCalendar(C.QCalendar_new2((C.int)(system)))
 }
 
 // NewQCalendar3 constructs a new QCalendar object.
 func NewQCalendar3(name QAnyStringView) *QCalendar {
 
-	ret := newQCalendar(C.QCalendar_new3(name.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQCalendar(C.QCalendar_new3(name.cPointer()))
 }
 
 // NewQCalendar4 constructs a new QCalendar object.
 func NewQCalendar4(id QCalendar__SystemId) *QCalendar {
 
-	ret := newQCalendar(C.QCalendar_new4(id.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQCalendar(C.QCalendar_new4(id.cPointer()))
 }
 
 func (this *QCalendar) IsValid() bool {
@@ -287,8 +278,7 @@ func (this *QCalendar) GoGC() {
 }
 
 type QCalendar__YearMonthDay struct {
-	h          *C.QCalendar__YearMonthDay
-	isSubclass bool
+	h *C.QCalendar__YearMonthDay
 }
 
 func (this *QCalendar__YearMonthDay) cPointer() *C.QCalendar__YearMonthDay {
@@ -322,33 +312,25 @@ func UnsafeNewQCalendar__YearMonthDay(h unsafe.Pointer) *QCalendar__YearMonthDay
 // NewQCalendar__YearMonthDay constructs a new QCalendar::YearMonthDay object.
 func NewQCalendar__YearMonthDay() *QCalendar__YearMonthDay {
 
-	ret := newQCalendar__YearMonthDay(C.QCalendar__YearMonthDay_new())
-	ret.isSubclass = true
-	return ret
+	return newQCalendar__YearMonthDay(C.QCalendar__YearMonthDay_new())
 }
 
 // NewQCalendar__YearMonthDay2 constructs a new QCalendar::YearMonthDay object.
 func NewQCalendar__YearMonthDay2(y int) *QCalendar__YearMonthDay {
 
-	ret := newQCalendar__YearMonthDay(C.QCalendar__YearMonthDay_new2((C.int)(y)))
-	ret.isSubclass = true
-	return ret
+	return newQCalendar__YearMonthDay(C.QCalendar__YearMonthDay_new2((C.int)(y)))
 }
 
 // NewQCalendar__YearMonthDay3 constructs a new QCalendar::YearMonthDay object.
 func NewQCalendar__YearMonthDay3(y int, m int) *QCalendar__YearMonthDay {
 
-	ret := newQCalendar__YearMonthDay(C.QCalendar__YearMonthDay_new3((C.int)(y), (C.int)(m)))
-	ret.isSubclass = true
-	return ret
+	return newQCalendar__YearMonthDay(C.QCalendar__YearMonthDay_new3((C.int)(y), (C.int)(m)))
 }
 
 // NewQCalendar__YearMonthDay4 constructs a new QCalendar::YearMonthDay object.
 func NewQCalendar__YearMonthDay4(y int, m int, d int) *QCalendar__YearMonthDay {
 
-	ret := newQCalendar__YearMonthDay(C.QCalendar__YearMonthDay_new4((C.int)(y), (C.int)(m), (C.int)(d)))
-	ret.isSubclass = true
-	return ret
+	return newQCalendar__YearMonthDay(C.QCalendar__YearMonthDay_new4((C.int)(y), (C.int)(m), (C.int)(d)))
 }
 
 func (this *QCalendar__YearMonthDay) IsValid() bool {
@@ -370,8 +352,7 @@ func (this *QCalendar__YearMonthDay) GoGC() {
 }
 
 type QCalendar__SystemId struct {
-	h          *C.QCalendar__SystemId
-	isSubclass bool
+	h *C.QCalendar__SystemId
 }
 
 func (this *QCalendar__SystemId) cPointer() *C.QCalendar__SystemId {
@@ -405,9 +386,7 @@ func UnsafeNewQCalendar__SystemId(h unsafe.Pointer) *QCalendar__SystemId {
 // NewQCalendar__SystemId constructs a new QCalendar::SystemId object.
 func NewQCalendar__SystemId() *QCalendar__SystemId {
 
-	ret := newQCalendar__SystemId(C.QCalendar__SystemId_new())
-	ret.isSubclass = true
-	return ret
+	return newQCalendar__SystemId(C.QCalendar__SystemId_new())
 }
 
 func (this *QCalendar__SystemId) Index() uint64 {

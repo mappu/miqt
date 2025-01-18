@@ -17,8 +17,7 @@ import (
 )
 
 type QMediaNetworkAccessControl struct {
-	h          *C.QMediaNetworkAccessControl
-	isSubclass bool
+	h *C.QMediaNetworkAccessControl
 	*QMediaControl
 }
 

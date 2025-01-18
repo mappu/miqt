@@ -14,8 +14,7 @@ import (
 )
 
 type QQuaternion struct {
-	h          *C.QQuaternion
-	isSubclass bool
+	h *C.QQuaternion
 }
 
 func (this *QQuaternion) cPointer() *C.QQuaternion {
@@ -49,49 +48,37 @@ func UnsafeNewQQuaternion(h unsafe.Pointer) *QQuaternion {
 // NewQQuaternion constructs a new QQuaternion object.
 func NewQQuaternion() *QQuaternion {
 
-	ret := newQQuaternion(C.QQuaternion_new())
-	ret.isSubclass = true
-	return ret
+	return newQQuaternion(C.QQuaternion_new())
 }
 
 // NewQQuaternion2 constructs a new QQuaternion object.
 func NewQQuaternion2(param1 Initialization) *QQuaternion {
 
-	ret := newQQuaternion(C.QQuaternion_new2((C.int)(param1)))
-	ret.isSubclass = true
-	return ret
+	return newQQuaternion(C.QQuaternion_new2((C.int)(param1)))
 }
 
 // NewQQuaternion3 constructs a new QQuaternion object.
 func NewQQuaternion3(scalar float32, xpos float32, ypos float32, zpos float32) *QQuaternion {
 
-	ret := newQQuaternion(C.QQuaternion_new3((C.float)(scalar), (C.float)(xpos), (C.float)(ypos), (C.float)(zpos)))
-	ret.isSubclass = true
-	return ret
+	return newQQuaternion(C.QQuaternion_new3((C.float)(scalar), (C.float)(xpos), (C.float)(ypos), (C.float)(zpos)))
 }
 
 // NewQQuaternion4 constructs a new QQuaternion object.
 func NewQQuaternion4(scalar float32, vector *QVector3D) *QQuaternion {
 
-	ret := newQQuaternion(C.QQuaternion_new4((C.float)(scalar), vector.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQQuaternion(C.QQuaternion_new4((C.float)(scalar), vector.cPointer()))
 }
 
 // NewQQuaternion5 constructs a new QQuaternion object.
 func NewQQuaternion5(vector *QVector4D) *QQuaternion {
 
-	ret := newQQuaternion(C.QQuaternion_new5(vector.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQQuaternion(C.QQuaternion_new5(vector.cPointer()))
 }
 
 // NewQQuaternion6 constructs a new QQuaternion object.
 func NewQQuaternion6(param1 *QQuaternion) *QQuaternion {
 
-	ret := newQQuaternion(C.QQuaternion_new6(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQQuaternion(C.QQuaternion_new6(param1.cPointer()))
 }
 
 func (this *QQuaternion) IsNull() bool {

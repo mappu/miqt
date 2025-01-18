@@ -1537,216 +1537,378 @@ void QGraphicsScene_Invalidate22(QGraphicsScene* self, QRectF* rect, int layers)
 	self->invalidate(*rect, static_cast<QGraphicsScene::SceneLayers>(layers));
 }
 
-void QGraphicsScene_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) )->handle__InputMethodQuery = slot;
+bool QGraphicsScene_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodQuery = slot;
+	return true;
 }
 
 QVariant* QGraphicsScene_virtualbase_InputMethodQuery(const void* self, int query) {
 	return ( (const MiqtVirtualQGraphicsScene*)(self) )->virtualbase_InputMethodQuery(query);
 }
 
-void QGraphicsScene_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) )->handle__Event = slot;
+bool QGraphicsScene_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QGraphicsScene_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_Event(event);
 }
 
-void QGraphicsScene_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) )->handle__EventFilter = slot;
+bool QGraphicsScene_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QGraphicsScene_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QGraphicsScene_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) )->handle__ContextMenuEvent = slot;
+bool QGraphicsScene_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QGraphicsScene_virtualbase_ContextMenuEvent(void* self, QGraphicsSceneContextMenuEvent* event) {
 	( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_ContextMenuEvent(event);
 }
 
-void QGraphicsScene_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) )->handle__DragEnterEvent = slot;
+bool QGraphicsScene_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragEnterEvent = slot;
+	return true;
 }
 
 void QGraphicsScene_virtualbase_DragEnterEvent(void* self, QGraphicsSceneDragDropEvent* event) {
 	( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_DragEnterEvent(event);
 }
 
-void QGraphicsScene_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) )->handle__DragMoveEvent = slot;
+bool QGraphicsScene_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragMoveEvent = slot;
+	return true;
 }
 
 void QGraphicsScene_virtualbase_DragMoveEvent(void* self, QGraphicsSceneDragDropEvent* event) {
 	( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_DragMoveEvent(event);
 }
 
-void QGraphicsScene_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) )->handle__DragLeaveEvent = slot;
+bool QGraphicsScene_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragLeaveEvent = slot;
+	return true;
 }
 
 void QGraphicsScene_virtualbase_DragLeaveEvent(void* self, QGraphicsSceneDragDropEvent* event) {
 	( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_DragLeaveEvent(event);
 }
 
-void QGraphicsScene_override_virtual_DropEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) )->handle__DropEvent = slot;
+bool QGraphicsScene_override_virtual_DropEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropEvent = slot;
+	return true;
 }
 
 void QGraphicsScene_virtualbase_DropEvent(void* self, QGraphicsSceneDragDropEvent* event) {
 	( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_DropEvent(event);
 }
 
-void QGraphicsScene_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) )->handle__FocusInEvent = slot;
+bool QGraphicsScene_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QGraphicsScene_virtualbase_FocusInEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_FocusInEvent(event);
 }
 
-void QGraphicsScene_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) )->handle__FocusOutEvent = slot;
+bool QGraphicsScene_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
 }
 
 void QGraphicsScene_virtualbase_FocusOutEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_FocusOutEvent(event);
 }
 
-void QGraphicsScene_override_virtual_HelpEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) )->handle__HelpEvent = slot;
+bool QGraphicsScene_override_virtual_HelpEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HelpEvent = slot;
+	return true;
 }
 
 void QGraphicsScene_virtualbase_HelpEvent(void* self, QGraphicsSceneHelpEvent* event) {
 	( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_HelpEvent(event);
 }
 
-void QGraphicsScene_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) )->handle__KeyPressEvent = slot;
+bool QGraphicsScene_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QGraphicsScene_virtualbase_KeyPressEvent(void* self, QKeyEvent* event) {
 	( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_KeyPressEvent(event);
 }
 
-void QGraphicsScene_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) )->handle__KeyReleaseEvent = slot;
+bool QGraphicsScene_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyReleaseEvent = slot;
+	return true;
 }
 
 void QGraphicsScene_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* event) {
 	( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_KeyReleaseEvent(event);
 }
 
-void QGraphicsScene_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) )->handle__MousePressEvent = slot;
+bool QGraphicsScene_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QGraphicsScene_virtualbase_MousePressEvent(void* self, QGraphicsSceneMouseEvent* event) {
 	( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_MousePressEvent(event);
 }
 
-void QGraphicsScene_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) )->handle__MouseMoveEvent = slot;
+bool QGraphicsScene_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QGraphicsScene_virtualbase_MouseMoveEvent(void* self, QGraphicsSceneMouseEvent* event) {
 	( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_MouseMoveEvent(event);
 }
 
-void QGraphicsScene_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) )->handle__MouseReleaseEvent = slot;
+bool QGraphicsScene_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QGraphicsScene_virtualbase_MouseReleaseEvent(void* self, QGraphicsSceneMouseEvent* event) {
 	( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_MouseReleaseEvent(event);
 }
 
-void QGraphicsScene_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) )->handle__MouseDoubleClickEvent = slot;
+bool QGraphicsScene_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseDoubleClickEvent = slot;
+	return true;
 }
 
 void QGraphicsScene_virtualbase_MouseDoubleClickEvent(void* self, QGraphicsSceneMouseEvent* event) {
 	( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_MouseDoubleClickEvent(event);
 }
 
-void QGraphicsScene_override_virtual_WheelEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) )->handle__WheelEvent = slot;
+bool QGraphicsScene_override_virtual_WheelEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WheelEvent = slot;
+	return true;
 }
 
 void QGraphicsScene_virtualbase_WheelEvent(void* self, QGraphicsSceneWheelEvent* event) {
 	( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_WheelEvent(event);
 }
 
-void QGraphicsScene_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) )->handle__InputMethodEvent = slot;
+bool QGraphicsScene_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodEvent = slot;
+	return true;
 }
 
 void QGraphicsScene_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* event) {
 	( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_InputMethodEvent(event);
 }
 
-void QGraphicsScene_override_virtual_DrawBackground(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) )->handle__DrawBackground = slot;
+bool QGraphicsScene_override_virtual_DrawBackground(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DrawBackground = slot;
+	return true;
 }
 
 void QGraphicsScene_virtualbase_DrawBackground(void* self, QPainter* painter, QRectF* rect) {
 	( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_DrawBackground(painter, rect);
 }
 
-void QGraphicsScene_override_virtual_DrawForeground(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) )->handle__DrawForeground = slot;
+bool QGraphicsScene_override_virtual_DrawForeground(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DrawForeground = slot;
+	return true;
 }
 
 void QGraphicsScene_virtualbase_DrawForeground(void* self, QPainter* painter, QRectF* rect) {
 	( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_DrawForeground(painter, rect);
 }
 
-void QGraphicsScene_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) )->handle__FocusNextPrevChild = slot;
+bool QGraphicsScene_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusNextPrevChild = slot;
+	return true;
 }
 
 bool QGraphicsScene_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QGraphicsScene_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) )->handle__TimerEvent = slot;
+bool QGraphicsScene_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QGraphicsScene_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QGraphicsScene_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) )->handle__ChildEvent = slot;
+bool QGraphicsScene_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QGraphicsScene_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QGraphicsScene_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) )->handle__CustomEvent = slot;
+bool QGraphicsScene_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QGraphicsScene_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QGraphicsScene_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) )->handle__ConnectNotify = slot;
+bool QGraphicsScene_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QGraphicsScene_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QGraphicsScene_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) )->handle__DisconnectNotify = slot;
+bool QGraphicsScene_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QGraphicsScene_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

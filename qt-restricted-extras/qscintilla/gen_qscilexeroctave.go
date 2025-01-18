@@ -15,8 +15,7 @@ import (
 )
 
 type QsciLexerOctave struct {
-	h          *C.QsciLexerOctave
-	isSubclass bool
+	h *C.QsciLexerOctave
 	*QsciLexerMatlab
 }
 
@@ -54,17 +53,13 @@ func UnsafeNewQsciLexerOctave(h unsafe.Pointer) *QsciLexerOctave {
 // NewQsciLexerOctave constructs a new QsciLexerOctave object.
 func NewQsciLexerOctave() *QsciLexerOctave {
 
-	ret := newQsciLexerOctave(C.QsciLexerOctave_new())
-	ret.isSubclass = true
-	return ret
+	return newQsciLexerOctave(C.QsciLexerOctave_new())
 }
 
 // NewQsciLexerOctave2 constructs a new QsciLexerOctave object.
 func NewQsciLexerOctave2(parent *qt.QObject) *QsciLexerOctave {
 
-	ret := newQsciLexerOctave(C.QsciLexerOctave_new2((*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQsciLexerOctave(C.QsciLexerOctave_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerOctave) MetaObject() *qt.QMetaObject {

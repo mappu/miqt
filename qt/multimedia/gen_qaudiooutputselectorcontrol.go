@@ -16,8 +16,7 @@ import (
 )
 
 type QAudioOutputSelectorControl struct {
-	h          *C.QAudioOutputSelectorControl
-	isSubclass bool
+	h *C.QAudioOutputSelectorControl
 	*QMediaControl
 }
 

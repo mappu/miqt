@@ -14,8 +14,7 @@ import (
 )
 
 type QWebEngineClientCertificateStore struct {
-	h          *C.QWebEngineClientCertificateStore
-	isSubclass bool
+	h *C.QWebEngineClientCertificateStore
 }
 
 func (this *QWebEngineClientCertificateStore) cPointer() *C.QWebEngineClientCertificateStore {

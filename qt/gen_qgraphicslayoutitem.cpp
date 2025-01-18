@@ -295,32 +295,56 @@ QSizeF* QGraphicsLayoutItem_EffectiveSizeHint2(const QGraphicsLayoutItem* self, 
 	return new QSizeF(self->effectiveSizeHint(static_cast<Qt::SizeHint>(which), *constraint));
 }
 
-void QGraphicsLayoutItem_override_virtual_SetGeometry(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsLayoutItem*>( (QGraphicsLayoutItem*)(self) )->handle__SetGeometry = slot;
+bool QGraphicsLayoutItem_override_virtual_SetGeometry(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsLayoutItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsLayoutItem*>( (QGraphicsLayoutItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetGeometry = slot;
+	return true;
 }
 
 void QGraphicsLayoutItem_virtualbase_SetGeometry(void* self, QRectF* rect) {
 	( (MiqtVirtualQGraphicsLayoutItem*)(self) )->virtualbase_SetGeometry(rect);
 }
 
-void QGraphicsLayoutItem_override_virtual_GetContentsMargins(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsLayoutItem*>( (QGraphicsLayoutItem*)(self) )->handle__GetContentsMargins = slot;
+bool QGraphicsLayoutItem_override_virtual_GetContentsMargins(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsLayoutItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsLayoutItem*>( (QGraphicsLayoutItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__GetContentsMargins = slot;
+	return true;
 }
 
 void QGraphicsLayoutItem_virtualbase_GetContentsMargins(const void* self, double* left, double* top, double* right, double* bottom) {
 	( (const MiqtVirtualQGraphicsLayoutItem*)(self) )->virtualbase_GetContentsMargins(left, top, right, bottom);
 }
 
-void QGraphicsLayoutItem_override_virtual_UpdateGeometry(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsLayoutItem*>( (QGraphicsLayoutItem*)(self) )->handle__UpdateGeometry = slot;
+bool QGraphicsLayoutItem_override_virtual_UpdateGeometry(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsLayoutItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsLayoutItem*>( (QGraphicsLayoutItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateGeometry = slot;
+	return true;
 }
 
 void QGraphicsLayoutItem_virtualbase_UpdateGeometry(void* self) {
 	( (MiqtVirtualQGraphicsLayoutItem*)(self) )->virtualbase_UpdateGeometry();
 }
 
-void QGraphicsLayoutItem_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsLayoutItem*>( (QGraphicsLayoutItem*)(self) )->handle__SizeHint = slot;
+bool QGraphicsLayoutItem_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsLayoutItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsLayoutItem*>( (QGraphicsLayoutItem*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 void QGraphicsLayoutItem_Delete(QGraphicsLayoutItem* self) {

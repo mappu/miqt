@@ -14,8 +14,7 @@ import (
 )
 
 type QScriptable struct {
-	h          *C.QScriptable
-	isSubclass bool
+	h *C.QScriptable
 }
 
 func (this *QScriptable) cPointer() *C.QScriptable {
@@ -49,9 +48,7 @@ func UnsafeNewQScriptable(h unsafe.Pointer) *QScriptable {
 // NewQScriptable constructs a new QScriptable object.
 func NewQScriptable() *QScriptable {
 
-	ret := newQScriptable(C.QScriptable_new())
-	ret.isSubclass = true
-	return ret
+	return newQScriptable(C.QScriptable_new())
 }
 
 func (this *QScriptable) Engine() *QScriptEngine {

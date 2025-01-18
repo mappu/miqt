@@ -395,56 +395,98 @@ struct miqt_string QLibrary_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QLibrary_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLibrary*>( (QLibrary*)(self) )->handle__Event = slot;
+bool QLibrary_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQLibrary* self_cast = dynamic_cast<MiqtVirtualQLibrary*>( (QLibrary*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QLibrary_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQLibrary*)(self) )->virtualbase_Event(event);
 }
 
-void QLibrary_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLibrary*>( (QLibrary*)(self) )->handle__EventFilter = slot;
+bool QLibrary_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQLibrary* self_cast = dynamic_cast<MiqtVirtualQLibrary*>( (QLibrary*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QLibrary_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQLibrary*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QLibrary_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLibrary*>( (QLibrary*)(self) )->handle__TimerEvent = slot;
+bool QLibrary_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQLibrary* self_cast = dynamic_cast<MiqtVirtualQLibrary*>( (QLibrary*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QLibrary_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQLibrary*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QLibrary_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLibrary*>( (QLibrary*)(self) )->handle__ChildEvent = slot;
+bool QLibrary_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQLibrary* self_cast = dynamic_cast<MiqtVirtualQLibrary*>( (QLibrary*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QLibrary_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQLibrary*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QLibrary_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLibrary*>( (QLibrary*)(self) )->handle__CustomEvent = slot;
+bool QLibrary_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQLibrary* self_cast = dynamic_cast<MiqtVirtualQLibrary*>( (QLibrary*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QLibrary_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQLibrary*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QLibrary_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLibrary*>( (QLibrary*)(self) )->handle__ConnectNotify = slot;
+bool QLibrary_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQLibrary* self_cast = dynamic_cast<MiqtVirtualQLibrary*>( (QLibrary*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QLibrary_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQLibrary*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QLibrary_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLibrary*>( (QLibrary*)(self) )->handle__DisconnectNotify = slot;
+bool QLibrary_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQLibrary* self_cast = dynamic_cast<MiqtVirtualQLibrary*>( (QLibrary*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QLibrary_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

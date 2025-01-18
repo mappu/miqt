@@ -252,16 +252,28 @@ struct miqt_string QAudioRecorder_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QAudioRecorder_override_virtual_MediaObject(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioRecorder*>( (QAudioRecorder*)(self) )->handle__MediaObject = slot;
+bool QAudioRecorder_override_virtual_MediaObject(void* self, intptr_t slot) {
+	MiqtVirtualQAudioRecorder* self_cast = dynamic_cast<MiqtVirtualQAudioRecorder*>( (QAudioRecorder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MediaObject = slot;
+	return true;
 }
 
 QMediaObject* QAudioRecorder_virtualbase_MediaObject(const void* self) {
 	return ( (const MiqtVirtualQAudioRecorder*)(self) )->virtualbase_MediaObject();
 }
 
-void QAudioRecorder_override_virtual_SetMediaObject(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioRecorder*>( (QAudioRecorder*)(self) )->handle__SetMediaObject = slot;
+bool QAudioRecorder_override_virtual_SetMediaObject(void* self, intptr_t slot) {
+	MiqtVirtualQAudioRecorder* self_cast = dynamic_cast<MiqtVirtualQAudioRecorder*>( (QAudioRecorder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetMediaObject = slot;
+	return true;
 }
 
 bool QAudioRecorder_virtualbase_SetMediaObject(void* self, QMediaObject* object) {

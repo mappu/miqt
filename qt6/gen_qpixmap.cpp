@@ -521,48 +521,84 @@ void QPixmap_Scroll4(QPixmap* self, int dx, int dy, QRect* rect, QRegion* expose
 	self->scroll(static_cast<int>(dx), static_cast<int>(dy), *rect, exposed);
 }
 
-void QPixmap_override_virtual_DevType(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPixmap*>( (QPixmap*)(self) )->handle__DevType = slot;
+bool QPixmap_override_virtual_DevType(void* self, intptr_t slot) {
+	MiqtVirtualQPixmap* self_cast = dynamic_cast<MiqtVirtualQPixmap*>( (QPixmap*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DevType = slot;
+	return true;
 }
 
 int QPixmap_virtualbase_DevType(const void* self) {
 	return ( (const MiqtVirtualQPixmap*)(self) )->virtualbase_DevType();
 }
 
-void QPixmap_override_virtual_PaintEngine(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPixmap*>( (QPixmap*)(self) )->handle__PaintEngine = slot;
+bool QPixmap_override_virtual_PaintEngine(void* self, intptr_t slot) {
+	MiqtVirtualQPixmap* self_cast = dynamic_cast<MiqtVirtualQPixmap*>( (QPixmap*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEngine = slot;
+	return true;
 }
 
 QPaintEngine* QPixmap_virtualbase_PaintEngine(const void* self) {
 	return ( (const MiqtVirtualQPixmap*)(self) )->virtualbase_PaintEngine();
 }
 
-void QPixmap_override_virtual_Metric(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPixmap*>( (QPixmap*)(self) )->handle__Metric = slot;
+bool QPixmap_override_virtual_Metric(void* self, intptr_t slot) {
+	MiqtVirtualQPixmap* self_cast = dynamic_cast<MiqtVirtualQPixmap*>( (QPixmap*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Metric = slot;
+	return true;
 }
 
 int QPixmap_virtualbase_Metric(const void* self, int param1) {
 	return ( (const MiqtVirtualQPixmap*)(self) )->virtualbase_Metric(param1);
 }
 
-void QPixmap_override_virtual_InitPainter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPixmap*>( (QPixmap*)(self) )->handle__InitPainter = slot;
+bool QPixmap_override_virtual_InitPainter(void* self, intptr_t slot) {
+	MiqtVirtualQPixmap* self_cast = dynamic_cast<MiqtVirtualQPixmap*>( (QPixmap*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitPainter = slot;
+	return true;
 }
 
 void QPixmap_virtualbase_InitPainter(const void* self, QPainter* painter) {
 	( (const MiqtVirtualQPixmap*)(self) )->virtualbase_InitPainter(painter);
 }
 
-void QPixmap_override_virtual_Redirected(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPixmap*>( (QPixmap*)(self) )->handle__Redirected = slot;
+bool QPixmap_override_virtual_Redirected(void* self, intptr_t slot) {
+	MiqtVirtualQPixmap* self_cast = dynamic_cast<MiqtVirtualQPixmap*>( (QPixmap*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Redirected = slot;
+	return true;
 }
 
 QPaintDevice* QPixmap_virtualbase_Redirected(const void* self, QPoint* offset) {
 	return ( (const MiqtVirtualQPixmap*)(self) )->virtualbase_Redirected(offset);
 }
 
-void QPixmap_override_virtual_SharedPainter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPixmap*>( (QPixmap*)(self) )->handle__SharedPainter = slot;
+bool QPixmap_override_virtual_SharedPainter(void* self, intptr_t slot) {
+	MiqtVirtualQPixmap* self_cast = dynamic_cast<MiqtVirtualQPixmap*>( (QPixmap*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SharedPainter = slot;
+	return true;
 }
 
 QPainter* QPixmap_virtualbase_SharedPainter(const void* self) {

@@ -15,8 +15,7 @@ import (
 )
 
 type QGraphicsLinearLayout struct {
-	h          *C.QGraphicsLinearLayout
-	isSubclass bool
+	h *C.QGraphicsLinearLayout
 	*QGraphicsLayout
 }
 
@@ -54,33 +53,25 @@ func UnsafeNewQGraphicsLinearLayout(h unsafe.Pointer) *QGraphicsLinearLayout {
 // NewQGraphicsLinearLayout constructs a new QGraphicsLinearLayout object.
 func NewQGraphicsLinearLayout() *QGraphicsLinearLayout {
 
-	ret := newQGraphicsLinearLayout(C.QGraphicsLinearLayout_new())
-	ret.isSubclass = true
-	return ret
+	return newQGraphicsLinearLayout(C.QGraphicsLinearLayout_new())
 }
 
 // NewQGraphicsLinearLayout2 constructs a new QGraphicsLinearLayout object.
 func NewQGraphicsLinearLayout2(orientation Orientation) *QGraphicsLinearLayout {
 
-	ret := newQGraphicsLinearLayout(C.QGraphicsLinearLayout_new2((C.int)(orientation)))
-	ret.isSubclass = true
-	return ret
+	return newQGraphicsLinearLayout(C.QGraphicsLinearLayout_new2((C.int)(orientation)))
 }
 
 // NewQGraphicsLinearLayout3 constructs a new QGraphicsLinearLayout object.
 func NewQGraphicsLinearLayout3(parent *QGraphicsLayoutItem) *QGraphicsLinearLayout {
 
-	ret := newQGraphicsLinearLayout(C.QGraphicsLinearLayout_new3(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQGraphicsLinearLayout(C.QGraphicsLinearLayout_new3(parent.cPointer()))
 }
 
 // NewQGraphicsLinearLayout4 constructs a new QGraphicsLinearLayout object.
 func NewQGraphicsLinearLayout4(orientation Orientation, parent *QGraphicsLayoutItem) *QGraphicsLinearLayout {
 
-	ret := newQGraphicsLinearLayout(C.QGraphicsLinearLayout_new4((C.int)(orientation), parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQGraphicsLinearLayout(C.QGraphicsLinearLayout_new4((C.int)(orientation), parent.cPointer()))
 }
 
 func (this *QGraphicsLinearLayout) SetOrientation(orientation Orientation) {
@@ -191,10 +182,10 @@ func (this *QGraphicsLinearLayout) callVirtualBase_RemoveAt(index int) {
 
 }
 func (this *QGraphicsLinearLayout) OnRemoveAt(slot func(super func(index int), index int)) {
-	if !this.isSubclass {
+	ok := C.QGraphicsLinearLayout_override_virtual_RemoveAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGraphicsLinearLayout_override_virtual_RemoveAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsLinearLayout_RemoveAt
@@ -217,10 +208,10 @@ func (this *QGraphicsLinearLayout) callVirtualBase_SetGeometry(rect *QRectF) {
 
 }
 func (this *QGraphicsLinearLayout) OnSetGeometry(slot func(super func(rect *QRectF), rect *QRectF)) {
-	if !this.isSubclass {
+	ok := C.QGraphicsLinearLayout_override_virtual_SetGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGraphicsLinearLayout_override_virtual_SetGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsLinearLayout_SetGeometry
@@ -243,10 +234,10 @@ func (this *QGraphicsLinearLayout) callVirtualBase_Count() int {
 
 }
 func (this *QGraphicsLinearLayout) OnCount(slot func(super func() int) int) {
-	if !this.isSubclass {
+	ok := C.QGraphicsLinearLayout_override_virtual_Count(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGraphicsLinearLayout_override_virtual_Count(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsLinearLayout_Count
@@ -268,10 +259,10 @@ func (this *QGraphicsLinearLayout) callVirtualBase_ItemAt(index int) *QGraphicsL
 
 }
 func (this *QGraphicsLinearLayout) OnItemAt(slot func(super func(index int) *QGraphicsLayoutItem, index int) *QGraphicsLayoutItem) {
-	if !this.isSubclass {
+	ok := C.QGraphicsLinearLayout_override_virtual_ItemAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGraphicsLinearLayout_override_virtual_ItemAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsLinearLayout_ItemAt
@@ -296,10 +287,10 @@ func (this *QGraphicsLinearLayout) callVirtualBase_Invalidate() {
 
 }
 func (this *QGraphicsLinearLayout) OnInvalidate(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QGraphicsLinearLayout_override_virtual_Invalidate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGraphicsLinearLayout_override_virtual_Invalidate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsLinearLayout_Invalidate
@@ -321,10 +312,10 @@ func (this *QGraphicsLinearLayout) callVirtualBase_SizeHint(which SizeHint, cons
 
 }
 func (this *QGraphicsLinearLayout) OnSizeHint(slot func(super func(which SizeHint, constraint *QSizeF) *QSizeF, which SizeHint, constraint *QSizeF) *QSizeF) {
-	if !this.isSubclass {
+	ok := C.QGraphicsLinearLayout_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGraphicsLinearLayout_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsLinearLayout_SizeHint
@@ -351,10 +342,10 @@ func (this *QGraphicsLinearLayout) callVirtualBase_GetContentsMargins(left *floa
 
 }
 func (this *QGraphicsLinearLayout) OnGetContentsMargins(slot func(super func(left *float64, top *float64, right *float64, bottom *float64), left *float64, top *float64, right *float64, bottom *float64)) {
-	if !this.isSubclass {
+	ok := C.QGraphicsLinearLayout_override_virtual_GetContentsMargins(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGraphicsLinearLayout_override_virtual_GetContentsMargins(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsLinearLayout_GetContentsMargins
@@ -383,10 +374,10 @@ func (this *QGraphicsLinearLayout) callVirtualBase_UpdateGeometry() {
 
 }
 func (this *QGraphicsLinearLayout) OnUpdateGeometry(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QGraphicsLinearLayout_override_virtual_UpdateGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGraphicsLinearLayout_override_virtual_UpdateGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsLinearLayout_UpdateGeometry
@@ -406,10 +397,10 @@ func (this *QGraphicsLinearLayout) callVirtualBase_WidgetEvent(e *QEvent) {
 
 }
 func (this *QGraphicsLinearLayout) OnWidgetEvent(slot func(super func(e *QEvent), e *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QGraphicsLinearLayout_override_virtual_WidgetEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGraphicsLinearLayout_override_virtual_WidgetEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsLinearLayout_WidgetEvent

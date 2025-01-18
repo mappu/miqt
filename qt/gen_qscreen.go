@@ -15,8 +15,7 @@ import (
 )
 
 type QScreen struct {
-	h          *C.QScreen
-	isSubclass bool
+	h *C.QScreen
 	*QObject
 }
 

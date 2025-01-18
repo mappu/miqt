@@ -57,8 +57,7 @@ const (
 )
 
 type QScrollerProperties struct {
-	h          *C.QScrollerProperties
-	isSubclass bool
+	h *C.QScrollerProperties
 }
 
 func (this *QScrollerProperties) cPointer() *C.QScrollerProperties {
@@ -92,17 +91,13 @@ func UnsafeNewQScrollerProperties(h unsafe.Pointer) *QScrollerProperties {
 // NewQScrollerProperties constructs a new QScrollerProperties object.
 func NewQScrollerProperties() *QScrollerProperties {
 
-	ret := newQScrollerProperties(C.QScrollerProperties_new())
-	ret.isSubclass = true
-	return ret
+	return newQScrollerProperties(C.QScrollerProperties_new())
 }
 
 // NewQScrollerProperties2 constructs a new QScrollerProperties object.
 func NewQScrollerProperties2(sp *QScrollerProperties) *QScrollerProperties {
 
-	ret := newQScrollerProperties(C.QScrollerProperties_new2(sp.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQScrollerProperties(C.QScrollerProperties_new2(sp.cPointer()))
 }
 
 func (this *QScrollerProperties) OperatorAssign(sp *QScrollerProperties) {

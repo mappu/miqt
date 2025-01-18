@@ -1289,296 +1289,518 @@ struct miqt_string QTransposeProxyModel_TrUtf83(const char* s, const char* c, in
 	return _ms;
 }
 
-void QTransposeProxyModel_override_virtual_SetSourceModel(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__SetSourceModel = slot;
+bool QTransposeProxyModel_override_virtual_SetSourceModel(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetSourceModel = slot;
+	return true;
 }
 
 void QTransposeProxyModel_virtualbase_SetSourceModel(void* self, QAbstractItemModel* newSourceModel) {
 	( (MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_SetSourceModel(newSourceModel);
 }
 
-void QTransposeProxyModel_override_virtual_RowCount(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__RowCount = slot;
+bool QTransposeProxyModel_override_virtual_RowCount(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RowCount = slot;
+	return true;
 }
 
 int QTransposeProxyModel_virtualbase_RowCount(const void* self, QModelIndex* parent) {
 	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_RowCount(parent);
 }
 
-void QTransposeProxyModel_override_virtual_ColumnCount(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__ColumnCount = slot;
+bool QTransposeProxyModel_override_virtual_ColumnCount(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ColumnCount = slot;
+	return true;
 }
 
 int QTransposeProxyModel_virtualbase_ColumnCount(const void* self, QModelIndex* parent) {
 	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_ColumnCount(parent);
 }
 
-void QTransposeProxyModel_override_virtual_HeaderData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__HeaderData = slot;
+bool QTransposeProxyModel_override_virtual_HeaderData(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeaderData = slot;
+	return true;
 }
 
 QVariant* QTransposeProxyModel_virtualbase_HeaderData(const void* self, int section, int orientation, int role) {
 	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_HeaderData(section, orientation, role);
 }
 
-void QTransposeProxyModel_override_virtual_SetHeaderData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__SetHeaderData = slot;
+bool QTransposeProxyModel_override_virtual_SetHeaderData(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetHeaderData = slot;
+	return true;
 }
 
 bool QTransposeProxyModel_virtualbase_SetHeaderData(void* self, int section, int orientation, QVariant* value, int role) {
 	return ( (MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_SetHeaderData(section, orientation, value, role);
 }
 
-void QTransposeProxyModel_override_virtual_SetItemData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__SetItemData = slot;
+bool QTransposeProxyModel_override_virtual_SetItemData(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetItemData = slot;
+	return true;
 }
 
 bool QTransposeProxyModel_virtualbase_SetItemData(void* self, QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles) {
 	return ( (MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_SetItemData(index, roles);
 }
 
-void QTransposeProxyModel_override_virtual_Span(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__Span = slot;
+bool QTransposeProxyModel_override_virtual_Span(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Span = slot;
+	return true;
 }
 
 QSize* QTransposeProxyModel_virtualbase_Span(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_Span(index);
 }
 
-void QTransposeProxyModel_override_virtual_ItemData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__ItemData = slot;
+bool QTransposeProxyModel_override_virtual_ItemData(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ItemData = slot;
+	return true;
 }
 
 struct miqt_map /* of int to QVariant* */  QTransposeProxyModel_virtualbase_ItemData(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_ItemData(index);
 }
 
-void QTransposeProxyModel_override_virtual_MapFromSource(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__MapFromSource = slot;
+bool QTransposeProxyModel_override_virtual_MapFromSource(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MapFromSource = slot;
+	return true;
 }
 
 QModelIndex* QTransposeProxyModel_virtualbase_MapFromSource(const void* self, QModelIndex* sourceIndex) {
 	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_MapFromSource(sourceIndex);
 }
 
-void QTransposeProxyModel_override_virtual_MapToSource(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__MapToSource = slot;
+bool QTransposeProxyModel_override_virtual_MapToSource(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MapToSource = slot;
+	return true;
 }
 
 QModelIndex* QTransposeProxyModel_virtualbase_MapToSource(const void* self, QModelIndex* proxyIndex) {
 	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_MapToSource(proxyIndex);
 }
 
-void QTransposeProxyModel_override_virtual_Parent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__Parent = slot;
+bool QTransposeProxyModel_override_virtual_Parent(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Parent = slot;
+	return true;
 }
 
 QModelIndex* QTransposeProxyModel_virtualbase_Parent(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_Parent(index);
 }
 
-void QTransposeProxyModel_override_virtual_Index(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__Index = slot;
+bool QTransposeProxyModel_override_virtual_Index(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Index = slot;
+	return true;
 }
 
 QModelIndex* QTransposeProxyModel_virtualbase_Index(const void* self, int row, int column, QModelIndex* parent) {
 	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_Index(row, column, parent);
 }
 
-void QTransposeProxyModel_override_virtual_InsertRows(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__InsertRows = slot;
+bool QTransposeProxyModel_override_virtual_InsertRows(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InsertRows = slot;
+	return true;
 }
 
 bool QTransposeProxyModel_virtualbase_InsertRows(void* self, int row, int count, QModelIndex* parent) {
 	return ( (MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_InsertRows(row, count, parent);
 }
 
-void QTransposeProxyModel_override_virtual_RemoveRows(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__RemoveRows = slot;
+bool QTransposeProxyModel_override_virtual_RemoveRows(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RemoveRows = slot;
+	return true;
 }
 
 bool QTransposeProxyModel_virtualbase_RemoveRows(void* self, int row, int count, QModelIndex* parent) {
 	return ( (MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_RemoveRows(row, count, parent);
 }
 
-void QTransposeProxyModel_override_virtual_MoveRows(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__MoveRows = slot;
+bool QTransposeProxyModel_override_virtual_MoveRows(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveRows = slot;
+	return true;
 }
 
 bool QTransposeProxyModel_virtualbase_MoveRows(void* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
 	return ( (MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_MoveRows(sourceParent, sourceRow, count, destinationParent, destinationChild);
 }
 
-void QTransposeProxyModel_override_virtual_InsertColumns(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__InsertColumns = slot;
+bool QTransposeProxyModel_override_virtual_InsertColumns(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InsertColumns = slot;
+	return true;
 }
 
 bool QTransposeProxyModel_virtualbase_InsertColumns(void* self, int column, int count, QModelIndex* parent) {
 	return ( (MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_InsertColumns(column, count, parent);
 }
 
-void QTransposeProxyModel_override_virtual_RemoveColumns(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__RemoveColumns = slot;
+bool QTransposeProxyModel_override_virtual_RemoveColumns(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RemoveColumns = slot;
+	return true;
 }
 
 bool QTransposeProxyModel_virtualbase_RemoveColumns(void* self, int column, int count, QModelIndex* parent) {
 	return ( (MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_RemoveColumns(column, count, parent);
 }
 
-void QTransposeProxyModel_override_virtual_MoveColumns(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__MoveColumns = slot;
+bool QTransposeProxyModel_override_virtual_MoveColumns(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveColumns = slot;
+	return true;
 }
 
 bool QTransposeProxyModel_virtualbase_MoveColumns(void* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
 	return ( (MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_MoveColumns(sourceParent, sourceColumn, count, destinationParent, destinationChild);
 }
 
-void QTransposeProxyModel_override_virtual_Sort(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__Sort = slot;
+bool QTransposeProxyModel_override_virtual_Sort(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Sort = slot;
+	return true;
 }
 
 void QTransposeProxyModel_virtualbase_Sort(void* self, int column, int order) {
 	( (MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_Sort(column, order);
 }
 
-void QTransposeProxyModel_override_virtual_MapSelectionToSource(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__MapSelectionToSource = slot;
+bool QTransposeProxyModel_override_virtual_MapSelectionToSource(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MapSelectionToSource = slot;
+	return true;
 }
 
 QItemSelection* QTransposeProxyModel_virtualbase_MapSelectionToSource(const void* self, QItemSelection* selection) {
 	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_MapSelectionToSource(selection);
 }
 
-void QTransposeProxyModel_override_virtual_MapSelectionFromSource(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__MapSelectionFromSource = slot;
+bool QTransposeProxyModel_override_virtual_MapSelectionFromSource(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MapSelectionFromSource = slot;
+	return true;
 }
 
 QItemSelection* QTransposeProxyModel_virtualbase_MapSelectionFromSource(const void* self, QItemSelection* selection) {
 	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_MapSelectionFromSource(selection);
 }
 
-void QTransposeProxyModel_override_virtual_Submit(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__Submit = slot;
+bool QTransposeProxyModel_override_virtual_Submit(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Submit = slot;
+	return true;
 }
 
 bool QTransposeProxyModel_virtualbase_Submit(void* self) {
 	return ( (MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_Submit();
 }
 
-void QTransposeProxyModel_override_virtual_Revert(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__Revert = slot;
+bool QTransposeProxyModel_override_virtual_Revert(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Revert = slot;
+	return true;
 }
 
 void QTransposeProxyModel_virtualbase_Revert(void* self) {
 	( (MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_Revert();
 }
 
-void QTransposeProxyModel_override_virtual_Data(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__Data = slot;
+bool QTransposeProxyModel_override_virtual_Data(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Data = slot;
+	return true;
 }
 
 QVariant* QTransposeProxyModel_virtualbase_Data(const void* self, QModelIndex* proxyIndex, int role) {
 	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_Data(proxyIndex, role);
 }
 
-void QTransposeProxyModel_override_virtual_Flags(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__Flags = slot;
+bool QTransposeProxyModel_override_virtual_Flags(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Flags = slot;
+	return true;
 }
 
 int QTransposeProxyModel_virtualbase_Flags(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_Flags(index);
 }
 
-void QTransposeProxyModel_override_virtual_SetData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__SetData = slot;
+bool QTransposeProxyModel_override_virtual_SetData(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetData = slot;
+	return true;
 }
 
 bool QTransposeProxyModel_virtualbase_SetData(void* self, QModelIndex* index, QVariant* value, int role) {
 	return ( (MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_SetData(index, value, role);
 }
 
-void QTransposeProxyModel_override_virtual_Buddy(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__Buddy = slot;
+bool QTransposeProxyModel_override_virtual_Buddy(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Buddy = slot;
+	return true;
 }
 
 QModelIndex* QTransposeProxyModel_virtualbase_Buddy(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_Buddy(index);
 }
 
-void QTransposeProxyModel_override_virtual_CanFetchMore(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__CanFetchMore = slot;
+bool QTransposeProxyModel_override_virtual_CanFetchMore(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CanFetchMore = slot;
+	return true;
 }
 
 bool QTransposeProxyModel_virtualbase_CanFetchMore(const void* self, QModelIndex* parent) {
 	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_CanFetchMore(parent);
 }
 
-void QTransposeProxyModel_override_virtual_FetchMore(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__FetchMore = slot;
+bool QTransposeProxyModel_override_virtual_FetchMore(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FetchMore = slot;
+	return true;
 }
 
 void QTransposeProxyModel_virtualbase_FetchMore(void* self, QModelIndex* parent) {
 	( (MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_FetchMore(parent);
 }
 
-void QTransposeProxyModel_override_virtual_HasChildren(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__HasChildren = slot;
+bool QTransposeProxyModel_override_virtual_HasChildren(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasChildren = slot;
+	return true;
 }
 
 bool QTransposeProxyModel_virtualbase_HasChildren(const void* self, QModelIndex* parent) {
 	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_HasChildren(parent);
 }
 
-void QTransposeProxyModel_override_virtual_Sibling(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__Sibling = slot;
+bool QTransposeProxyModel_override_virtual_Sibling(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Sibling = slot;
+	return true;
 }
 
 QModelIndex* QTransposeProxyModel_virtualbase_Sibling(const void* self, int row, int column, QModelIndex* idx) {
 	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_Sibling(row, column, idx);
 }
 
-void QTransposeProxyModel_override_virtual_MimeData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__MimeData = slot;
+bool QTransposeProxyModel_override_virtual_MimeData(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MimeData = slot;
+	return true;
 }
 
 QMimeData* QTransposeProxyModel_virtualbase_MimeData(const void* self, struct miqt_array /* of QModelIndex* */  indexes) {
 	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_MimeData(indexes);
 }
 
-void QTransposeProxyModel_override_virtual_CanDropMimeData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__CanDropMimeData = slot;
+bool QTransposeProxyModel_override_virtual_CanDropMimeData(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CanDropMimeData = slot;
+	return true;
 }
 
 bool QTransposeProxyModel_virtualbase_CanDropMimeData(const void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_CanDropMimeData(data, action, row, column, parent);
 }
 
-void QTransposeProxyModel_override_virtual_DropMimeData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__DropMimeData = slot;
+bool QTransposeProxyModel_override_virtual_DropMimeData(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropMimeData = slot;
+	return true;
 }
 
 bool QTransposeProxyModel_virtualbase_DropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 	return ( (MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_DropMimeData(data, action, row, column, parent);
 }
 
-void QTransposeProxyModel_override_virtual_MimeTypes(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__MimeTypes = slot;
+bool QTransposeProxyModel_override_virtual_MimeTypes(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MimeTypes = slot;
+	return true;
 }
 
 struct miqt_array /* of struct miqt_string */  QTransposeProxyModel_virtualbase_MimeTypes(const void* self) {
 	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_MimeTypes();
 }
 
-void QTransposeProxyModel_override_virtual_SupportedDragActions(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__SupportedDragActions = slot;
+bool QTransposeProxyModel_override_virtual_SupportedDragActions(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SupportedDragActions = slot;
+	return true;
 }
 
 int QTransposeProxyModel_virtualbase_SupportedDragActions(const void* self) {
 	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_SupportedDragActions();
 }
 
-void QTransposeProxyModel_override_virtual_SupportedDropActions(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) )->handle__SupportedDropActions = slot;
+bool QTransposeProxyModel_override_virtual_SupportedDropActions(void* self, intptr_t slot) {
+	MiqtVirtualQTransposeProxyModel* self_cast = dynamic_cast<MiqtVirtualQTransposeProxyModel*>( (QTransposeProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SupportedDropActions = slot;
+	return true;
 }
 
 int QTransposeProxyModel_virtualbase_SupportedDropActions(const void* self) {

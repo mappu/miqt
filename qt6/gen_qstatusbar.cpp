@@ -1212,328 +1212,574 @@ void QStatusBar_ShowMessage2(QStatusBar* self, struct miqt_string text, int time
 	self->showMessage(text_QString, static_cast<int>(timeout));
 }
 
-void QStatusBar_override_virtual_ShowEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__ShowEvent = slot;
+bool QStatusBar_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
 }
 
 void QStatusBar_virtualbase_ShowEvent(void* self, QShowEvent* param1) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_ShowEvent(param1);
 }
 
-void QStatusBar_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__PaintEvent = slot;
+bool QStatusBar_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QStatusBar_virtualbase_PaintEvent(void* self, QPaintEvent* param1) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_PaintEvent(param1);
 }
 
-void QStatusBar_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__ResizeEvent = slot;
+bool QStatusBar_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QStatusBar_virtualbase_ResizeEvent(void* self, QResizeEvent* param1) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_ResizeEvent(param1);
 }
 
-void QStatusBar_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__Event = slot;
+bool QStatusBar_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QStatusBar_virtualbase_Event(void* self, QEvent* param1) {
 	return ( (MiqtVirtualQStatusBar*)(self) )->virtualbase_Event(param1);
 }
 
-void QStatusBar_override_virtual_DevType(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__DevType = slot;
+bool QStatusBar_override_virtual_DevType(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DevType = slot;
+	return true;
 }
 
 int QStatusBar_virtualbase_DevType(const void* self) {
 	return ( (const MiqtVirtualQStatusBar*)(self) )->virtualbase_DevType();
 }
 
-void QStatusBar_override_virtual_SetVisible(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__SetVisible = slot;
+bool QStatusBar_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
 }
 
 void QStatusBar_virtualbase_SetVisible(void* self, bool visible) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_SetVisible(visible);
 }
 
-void QStatusBar_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__SizeHint = slot;
+bool QStatusBar_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QStatusBar_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQStatusBar*)(self) )->virtualbase_SizeHint();
 }
 
-void QStatusBar_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__MinimumSizeHint = slot;
+bool QStatusBar_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QStatusBar_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQStatusBar*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QStatusBar_override_virtual_HeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__HeightForWidth = slot;
+bool QStatusBar_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeightForWidth = slot;
+	return true;
 }
 
 int QStatusBar_virtualbase_HeightForWidth(const void* self, int param1) {
 	return ( (const MiqtVirtualQStatusBar*)(self) )->virtualbase_HeightForWidth(param1);
 }
 
-void QStatusBar_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__HasHeightForWidth = slot;
+bool QStatusBar_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasHeightForWidth = slot;
+	return true;
 }
 
 bool QStatusBar_virtualbase_HasHeightForWidth(const void* self) {
 	return ( (const MiqtVirtualQStatusBar*)(self) )->virtualbase_HasHeightForWidth();
 }
 
-void QStatusBar_override_virtual_PaintEngine(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__PaintEngine = slot;
+bool QStatusBar_override_virtual_PaintEngine(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEngine = slot;
+	return true;
 }
 
 QPaintEngine* QStatusBar_virtualbase_PaintEngine(const void* self) {
 	return ( (const MiqtVirtualQStatusBar*)(self) )->virtualbase_PaintEngine();
 }
 
-void QStatusBar_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__MousePressEvent = slot;
+bool QStatusBar_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QStatusBar_virtualbase_MousePressEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_MousePressEvent(event);
 }
 
-void QStatusBar_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__MouseReleaseEvent = slot;
+bool QStatusBar_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QStatusBar_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_MouseReleaseEvent(event);
 }
 
-void QStatusBar_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__MouseDoubleClickEvent = slot;
+bool QStatusBar_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseDoubleClickEvent = slot;
+	return true;
 }
 
 void QStatusBar_virtualbase_MouseDoubleClickEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_MouseDoubleClickEvent(event);
 }
 
-void QStatusBar_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__MouseMoveEvent = slot;
+bool QStatusBar_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QStatusBar_virtualbase_MouseMoveEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_MouseMoveEvent(event);
 }
 
-void QStatusBar_override_virtual_WheelEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__WheelEvent = slot;
+bool QStatusBar_override_virtual_WheelEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WheelEvent = slot;
+	return true;
 }
 
 void QStatusBar_virtualbase_WheelEvent(void* self, QWheelEvent* event) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_WheelEvent(event);
 }
 
-void QStatusBar_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__KeyPressEvent = slot;
+bool QStatusBar_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QStatusBar_virtualbase_KeyPressEvent(void* self, QKeyEvent* event) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_KeyPressEvent(event);
 }
 
-void QStatusBar_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__KeyReleaseEvent = slot;
+bool QStatusBar_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyReleaseEvent = slot;
+	return true;
 }
 
 void QStatusBar_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* event) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_KeyReleaseEvent(event);
 }
 
-void QStatusBar_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__FocusInEvent = slot;
+bool QStatusBar_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QStatusBar_virtualbase_FocusInEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_FocusInEvent(event);
 }
 
-void QStatusBar_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__FocusOutEvent = slot;
+bool QStatusBar_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
 }
 
 void QStatusBar_virtualbase_FocusOutEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_FocusOutEvent(event);
 }
 
-void QStatusBar_override_virtual_EnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__EnterEvent = slot;
+bool QStatusBar_override_virtual_EnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EnterEvent = slot;
+	return true;
 }
 
 void QStatusBar_virtualbase_EnterEvent(void* self, QEnterEvent* event) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_EnterEvent(event);
 }
 
-void QStatusBar_override_virtual_LeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__LeaveEvent = slot;
+bool QStatusBar_override_virtual_LeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__LeaveEvent = slot;
+	return true;
 }
 
 void QStatusBar_virtualbase_LeaveEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_LeaveEvent(event);
 }
 
-void QStatusBar_override_virtual_MoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__MoveEvent = slot;
+bool QStatusBar_override_virtual_MoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveEvent = slot;
+	return true;
 }
 
 void QStatusBar_virtualbase_MoveEvent(void* self, QMoveEvent* event) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_MoveEvent(event);
 }
 
-void QStatusBar_override_virtual_CloseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__CloseEvent = slot;
+bool QStatusBar_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
 }
 
 void QStatusBar_virtualbase_CloseEvent(void* self, QCloseEvent* event) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_CloseEvent(event);
 }
 
-void QStatusBar_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__ContextMenuEvent = slot;
+bool QStatusBar_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QStatusBar_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* event) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_ContextMenuEvent(event);
 }
 
-void QStatusBar_override_virtual_TabletEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__TabletEvent = slot;
+bool QStatusBar_override_virtual_TabletEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TabletEvent = slot;
+	return true;
 }
 
 void QStatusBar_virtualbase_TabletEvent(void* self, QTabletEvent* event) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_TabletEvent(event);
 }
 
-void QStatusBar_override_virtual_ActionEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__ActionEvent = slot;
+bool QStatusBar_override_virtual_ActionEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ActionEvent = slot;
+	return true;
 }
 
 void QStatusBar_virtualbase_ActionEvent(void* self, QActionEvent* event) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_ActionEvent(event);
 }
 
-void QStatusBar_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__DragEnterEvent = slot;
+bool QStatusBar_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragEnterEvent = slot;
+	return true;
 }
 
 void QStatusBar_virtualbase_DragEnterEvent(void* self, QDragEnterEvent* event) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_DragEnterEvent(event);
 }
 
-void QStatusBar_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__DragMoveEvent = slot;
+bool QStatusBar_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragMoveEvent = slot;
+	return true;
 }
 
 void QStatusBar_virtualbase_DragMoveEvent(void* self, QDragMoveEvent* event) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_DragMoveEvent(event);
 }
 
-void QStatusBar_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__DragLeaveEvent = slot;
+bool QStatusBar_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragLeaveEvent = slot;
+	return true;
 }
 
 void QStatusBar_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* event) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_DragLeaveEvent(event);
 }
 
-void QStatusBar_override_virtual_DropEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__DropEvent = slot;
+bool QStatusBar_override_virtual_DropEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropEvent = slot;
+	return true;
 }
 
 void QStatusBar_virtualbase_DropEvent(void* self, QDropEvent* event) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_DropEvent(event);
 }
 
-void QStatusBar_override_virtual_HideEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__HideEvent = slot;
+bool QStatusBar_override_virtual_HideEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HideEvent = slot;
+	return true;
 }
 
 void QStatusBar_virtualbase_HideEvent(void* self, QHideEvent* event) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_HideEvent(event);
 }
 
-void QStatusBar_override_virtual_NativeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__NativeEvent = slot;
+bool QStatusBar_override_virtual_NativeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NativeEvent = slot;
+	return true;
 }
 
 bool QStatusBar_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
 	return ( (MiqtVirtualQStatusBar*)(self) )->virtualbase_NativeEvent(eventType, message, result);
 }
 
-void QStatusBar_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__ChangeEvent = slot;
+bool QStatusBar_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QStatusBar_virtualbase_ChangeEvent(void* self, QEvent* param1) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_ChangeEvent(param1);
 }
 
-void QStatusBar_override_virtual_Metric(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__Metric = slot;
+bool QStatusBar_override_virtual_Metric(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Metric = slot;
+	return true;
 }
 
 int QStatusBar_virtualbase_Metric(const void* self, int param1) {
 	return ( (const MiqtVirtualQStatusBar*)(self) )->virtualbase_Metric(param1);
 }
 
-void QStatusBar_override_virtual_InitPainter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__InitPainter = slot;
+bool QStatusBar_override_virtual_InitPainter(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitPainter = slot;
+	return true;
 }
 
 void QStatusBar_virtualbase_InitPainter(const void* self, QPainter* painter) {
 	( (const MiqtVirtualQStatusBar*)(self) )->virtualbase_InitPainter(painter);
 }
 
-void QStatusBar_override_virtual_Redirected(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__Redirected = slot;
+bool QStatusBar_override_virtual_Redirected(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Redirected = slot;
+	return true;
 }
 
 QPaintDevice* QStatusBar_virtualbase_Redirected(const void* self, QPoint* offset) {
 	return ( (const MiqtVirtualQStatusBar*)(self) )->virtualbase_Redirected(offset);
 }
 
-void QStatusBar_override_virtual_SharedPainter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__SharedPainter = slot;
+bool QStatusBar_override_virtual_SharedPainter(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SharedPainter = slot;
+	return true;
 }
 
 QPainter* QStatusBar_virtualbase_SharedPainter(const void* self) {
 	return ( (const MiqtVirtualQStatusBar*)(self) )->virtualbase_SharedPainter();
 }
 
-void QStatusBar_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__InputMethodEvent = slot;
+bool QStatusBar_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodEvent = slot;
+	return true;
 }
 
 void QStatusBar_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* param1) {
 	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_InputMethodEvent(param1);
 }
 
-void QStatusBar_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__InputMethodQuery = slot;
+bool QStatusBar_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodQuery = slot;
+	return true;
 }
 
 QVariant* QStatusBar_virtualbase_InputMethodQuery(const void* self, int param1) {
 	return ( (const MiqtVirtualQStatusBar*)(self) )->virtualbase_InputMethodQuery(param1);
 }
 
-void QStatusBar_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) )->handle__FocusNextPrevChild = slot;
+bool QStatusBar_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusNextPrevChild = slot;
+	return true;
 }
 
 bool QStatusBar_virtualbase_FocusNextPrevChild(void* self, bool next) {

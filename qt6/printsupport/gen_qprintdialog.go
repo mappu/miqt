@@ -16,8 +16,7 @@ import (
 )
 
 type QPrintDialog struct {
-	h          *C.QPrintDialog
-	isSubclass bool
+	h *C.QPrintDialog
 	*QAbstractPrintDialog
 }
 
@@ -55,33 +54,25 @@ func UnsafeNewQPrintDialog(h unsafe.Pointer) *QPrintDialog {
 // NewQPrintDialog constructs a new QPrintDialog object.
 func NewQPrintDialog(parent *qt6.QWidget) *QPrintDialog {
 
-	ret := newQPrintDialog(C.QPrintDialog_new((*C.QWidget)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQPrintDialog(C.QPrintDialog_new((*C.QWidget)(parent.UnsafePointer())))
 }
 
 // NewQPrintDialog2 constructs a new QPrintDialog object.
 func NewQPrintDialog2(printer *QPrinter) *QPrintDialog {
 
-	ret := newQPrintDialog(C.QPrintDialog_new2(printer.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPrintDialog(C.QPrintDialog_new2(printer.cPointer()))
 }
 
 // NewQPrintDialog3 constructs a new QPrintDialog object.
 func NewQPrintDialog3() *QPrintDialog {
 
-	ret := newQPrintDialog(C.QPrintDialog_new3())
-	ret.isSubclass = true
-	return ret
+	return newQPrintDialog(C.QPrintDialog_new3())
 }
 
 // NewQPrintDialog4 constructs a new QPrintDialog object.
 func NewQPrintDialog4(printer *QPrinter, parent *qt6.QWidget) *QPrintDialog {
 
-	ret := newQPrintDialog(C.QPrintDialog_new4(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQPrintDialog(C.QPrintDialog_new4(printer.cPointer(), (*C.QWidget)(parent.UnsafePointer())))
 }
 
 func (this *QPrintDialog) MetaObject() *qt6.QMetaObject {
@@ -187,10 +178,10 @@ func (this *QPrintDialog) callVirtualBase_Exec() int {
 
 }
 func (this *QPrintDialog) OnExec(slot func(super func() int) int) {
-	if !this.isSubclass {
+	ok := C.QPrintDialog_override_virtual_Exec(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPrintDialog_override_virtual_Exec(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPrintDialog_Exec
@@ -212,10 +203,10 @@ func (this *QPrintDialog) callVirtualBase_Accept() {
 
 }
 func (this *QPrintDialog) OnAccept(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QPrintDialog_override_virtual_Accept(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPrintDialog_override_virtual_Accept(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPrintDialog_Accept
@@ -235,10 +226,10 @@ func (this *QPrintDialog) callVirtualBase_Done(result int) {
 
 }
 func (this *QPrintDialog) OnDone(slot func(super func(result int), result int)) {
-	if !this.isSubclass {
+	ok := C.QPrintDialog_override_virtual_Done(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPrintDialog_override_virtual_Done(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPrintDialog_Done
@@ -261,10 +252,10 @@ func (this *QPrintDialog) callVirtualBase_SetVisible(visible bool) {
 
 }
 func (this *QPrintDialog) OnSetVisible(slot func(super func(visible bool), visible bool)) {
-	if !this.isSubclass {
+	ok := C.QPrintDialog_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPrintDialog_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPrintDialog_SetVisible

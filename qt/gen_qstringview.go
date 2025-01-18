@@ -14,8 +14,7 @@ import (
 )
 
 type QStringView struct {
-	h          *C.QStringView
-	isSubclass bool
+	h *C.QStringView
 }
 
 func (this *QStringView) cPointer() *C.QStringView {
@@ -49,9 +48,7 @@ func UnsafeNewQStringView(h unsafe.Pointer) *QStringView {
 // NewQStringView constructs a new QStringView object.
 func NewQStringView() *QStringView {
 
-	ret := newQStringView(C.QStringView_new())
-	ret.isSubclass = true
-	return ret
+	return newQStringView(C.QStringView_new())
 }
 
 func (this *QStringView) ToString() string {

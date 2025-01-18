@@ -15,8 +15,7 @@ import (
 )
 
 type QGuiApplication struct {
-	h          *C.QGuiApplication
-	isSubclass bool
+	h *C.QGuiApplication
 	*QCoreApplication
 }
 
@@ -63,9 +62,7 @@ func NewQGuiApplication(args []string) *QGuiApplication {
 
 	runtime.LockOSThread() // Prevent Go from migrating the main Qt thread
 
-	ret := newQGuiApplication(C.QGuiApplication_new(argc, &argv[0]))
-	ret.isSubclass = true
-	return ret
+	return newQGuiApplication(C.QGuiApplication_new(argc, &argv[0]))
 }
 
 // NewQGuiApplication2 constructs a new QGuiApplication object.
@@ -80,9 +77,7 @@ func NewQGuiApplication2(args []string, param3 int) *QGuiApplication {
 
 	runtime.LockOSThread() // Prevent Go from migrating the main Qt thread
 
-	ret := newQGuiApplication(C.QGuiApplication_new2(argc, &argv[0], (C.int)(param3)))
-	ret.isSubclass = true
-	return ret
+	return newQGuiApplication(C.QGuiApplication_new2(argc, &argv[0], (C.int)(param3)))
 }
 
 func (this *QGuiApplication) MetaObject() *QMetaObject {
@@ -685,10 +680,10 @@ func (this *QGuiApplication) callVirtualBase_Notify(param1 *QObject, param2 *QEv
 
 }
 func (this *QGuiApplication) OnNotify(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QGuiApplication_override_virtual_Notify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGuiApplication_override_virtual_Notify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGuiApplication_Notify
@@ -715,10 +710,10 @@ func (this *QGuiApplication) callVirtualBase_Event(param1 *QEvent) bool {
 
 }
 func (this *QGuiApplication) OnEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QGuiApplication_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGuiApplication_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGuiApplication_Event

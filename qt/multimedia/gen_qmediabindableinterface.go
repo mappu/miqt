@@ -14,8 +14,7 @@ import (
 )
 
 type QMediaBindableInterface struct {
-	h          *C.QMediaBindableInterface
-	isSubclass bool
+	h *C.QMediaBindableInterface
 }
 
 func (this *QMediaBindableInterface) cPointer() *C.QMediaBindableInterface {

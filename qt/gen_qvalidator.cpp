@@ -406,68 +406,122 @@ struct miqt_string QValidator_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QValidator_override_virtual_Validate(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQValidator*>( (QValidator*)(self) )->handle__Validate = slot;
+bool QValidator_override_virtual_Validate(void* self, intptr_t slot) {
+	MiqtVirtualQValidator* self_cast = dynamic_cast<MiqtVirtualQValidator*>( (QValidator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Validate = slot;
+	return true;
 }
 
-void QValidator_override_virtual_Fixup(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQValidator*>( (QValidator*)(self) )->handle__Fixup = slot;
+bool QValidator_override_virtual_Fixup(void* self, intptr_t slot) {
+	MiqtVirtualQValidator* self_cast = dynamic_cast<MiqtVirtualQValidator*>( (QValidator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Fixup = slot;
+	return true;
 }
 
 void QValidator_virtualbase_Fixup(const void* self, struct miqt_string param1) {
 	( (const MiqtVirtualQValidator*)(self) )->virtualbase_Fixup(param1);
 }
 
-void QValidator_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQValidator*>( (QValidator*)(self) )->handle__Event = slot;
+bool QValidator_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQValidator* self_cast = dynamic_cast<MiqtVirtualQValidator*>( (QValidator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QValidator_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQValidator*)(self) )->virtualbase_Event(event);
 }
 
-void QValidator_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQValidator*>( (QValidator*)(self) )->handle__EventFilter = slot;
+bool QValidator_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQValidator* self_cast = dynamic_cast<MiqtVirtualQValidator*>( (QValidator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QValidator_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQValidator*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QValidator_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQValidator*>( (QValidator*)(self) )->handle__TimerEvent = slot;
+bool QValidator_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQValidator* self_cast = dynamic_cast<MiqtVirtualQValidator*>( (QValidator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QValidator_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQValidator*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QValidator_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQValidator*>( (QValidator*)(self) )->handle__ChildEvent = slot;
+bool QValidator_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQValidator* self_cast = dynamic_cast<MiqtVirtualQValidator*>( (QValidator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QValidator_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQValidator*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QValidator_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQValidator*>( (QValidator*)(self) )->handle__CustomEvent = slot;
+bool QValidator_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQValidator* self_cast = dynamic_cast<MiqtVirtualQValidator*>( (QValidator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QValidator_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQValidator*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QValidator_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQValidator*>( (QValidator*)(self) )->handle__ConnectNotify = slot;
+bool QValidator_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQValidator* self_cast = dynamic_cast<MiqtVirtualQValidator*>( (QValidator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QValidator_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQValidator*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QValidator_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQValidator*>( (QValidator*)(self) )->handle__DisconnectNotify = slot;
+bool QValidator_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQValidator* self_cast = dynamic_cast<MiqtVirtualQValidator*>( (QValidator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QValidator_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
@@ -727,24 +781,42 @@ struct miqt_string QIntValidator_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QIntValidator_override_virtual_Validate(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIntValidator*>( (QIntValidator*)(self) )->handle__Validate = slot;
+bool QIntValidator_override_virtual_Validate(void* self, intptr_t slot) {
+	MiqtVirtualQIntValidator* self_cast = dynamic_cast<MiqtVirtualQIntValidator*>( (QIntValidator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Validate = slot;
+	return true;
 }
 
 int QIntValidator_virtualbase_Validate(const void* self, struct miqt_string param1, int* param2) {
 	return ( (const MiqtVirtualQIntValidator*)(self) )->virtualbase_Validate(param1, param2);
 }
 
-void QIntValidator_override_virtual_Fixup(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIntValidator*>( (QIntValidator*)(self) )->handle__Fixup = slot;
+bool QIntValidator_override_virtual_Fixup(void* self, intptr_t slot) {
+	MiqtVirtualQIntValidator* self_cast = dynamic_cast<MiqtVirtualQIntValidator*>( (QIntValidator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Fixup = slot;
+	return true;
 }
 
 void QIntValidator_virtualbase_Fixup(const void* self, struct miqt_string input) {
 	( (const MiqtVirtualQIntValidator*)(self) )->virtualbase_Fixup(input);
 }
 
-void QIntValidator_override_virtual_SetRange(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQIntValidator*>( (QIntValidator*)(self) )->handle__SetRange = slot;
+bool QIntValidator_override_virtual_SetRange(void* self, intptr_t slot) {
+	MiqtVirtualQIntValidator* self_cast = dynamic_cast<MiqtVirtualQIntValidator*>( (QIntValidator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetRange = slot;
+	return true;
 }
 
 void QIntValidator_virtualbase_SetRange(void* self, int bottom, int top) {
@@ -1040,24 +1112,42 @@ struct miqt_string QDoubleValidator_TrUtf83(const char* s, const char* c, int n)
 	return _ms;
 }
 
-void QDoubleValidator_override_virtual_Validate(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDoubleValidator*>( (QDoubleValidator*)(self) )->handle__Validate = slot;
+bool QDoubleValidator_override_virtual_Validate(void* self, intptr_t slot) {
+	MiqtVirtualQDoubleValidator* self_cast = dynamic_cast<MiqtVirtualQDoubleValidator*>( (QDoubleValidator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Validate = slot;
+	return true;
 }
 
 int QDoubleValidator_virtualbase_Validate(const void* self, struct miqt_string param1, int* param2) {
 	return ( (const MiqtVirtualQDoubleValidator*)(self) )->virtualbase_Validate(param1, param2);
 }
 
-void QDoubleValidator_override_virtual_SetRange(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDoubleValidator*>( (QDoubleValidator*)(self) )->handle__SetRange = slot;
+bool QDoubleValidator_override_virtual_SetRange(void* self, intptr_t slot) {
+	MiqtVirtualQDoubleValidator* self_cast = dynamic_cast<MiqtVirtualQDoubleValidator*>( (QDoubleValidator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetRange = slot;
+	return true;
 }
 
 void QDoubleValidator_virtualbase_SetRange(void* self, double bottom, double top, int decimals) {
 	( (MiqtVirtualQDoubleValidator*)(self) )->virtualbase_SetRange(bottom, top, decimals);
 }
 
-void QDoubleValidator_override_virtual_Fixup(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDoubleValidator*>( (QDoubleValidator*)(self) )->handle__Fixup = slot;
+bool QDoubleValidator_override_virtual_Fixup(void* self, intptr_t slot) {
+	MiqtVirtualQDoubleValidator* self_cast = dynamic_cast<MiqtVirtualQDoubleValidator*>( (QDoubleValidator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Fixup = slot;
+	return true;
 }
 
 void QDoubleValidator_virtualbase_Fixup(const void* self, struct miqt_string param1) {
@@ -1268,16 +1358,28 @@ struct miqt_string QRegExpValidator_TrUtf83(const char* s, const char* c, int n)
 	return _ms;
 }
 
-void QRegExpValidator_override_virtual_Validate(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRegExpValidator*>( (QRegExpValidator*)(self) )->handle__Validate = slot;
+bool QRegExpValidator_override_virtual_Validate(void* self, intptr_t slot) {
+	MiqtVirtualQRegExpValidator* self_cast = dynamic_cast<MiqtVirtualQRegExpValidator*>( (QRegExpValidator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Validate = slot;
+	return true;
 }
 
 int QRegExpValidator_virtualbase_Validate(const void* self, struct miqt_string input, int* pos) {
 	return ( (const MiqtVirtualQRegExpValidator*)(self) )->virtualbase_Validate(input, pos);
 }
 
-void QRegExpValidator_override_virtual_Fixup(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRegExpValidator*>( (QRegExpValidator*)(self) )->handle__Fixup = slot;
+bool QRegExpValidator_override_virtual_Fixup(void* self, intptr_t slot) {
+	MiqtVirtualQRegExpValidator* self_cast = dynamic_cast<MiqtVirtualQRegExpValidator*>( (QRegExpValidator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Fixup = slot;
+	return true;
 }
 
 void QRegExpValidator_virtualbase_Fixup(const void* self, struct miqt_string param1) {
@@ -1486,16 +1588,28 @@ struct miqt_string QRegularExpressionValidator_TrUtf83(const char* s, const char
 	return _ms;
 }
 
-void QRegularExpressionValidator_override_virtual_Validate(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRegularExpressionValidator*>( (QRegularExpressionValidator*)(self) )->handle__Validate = slot;
+bool QRegularExpressionValidator_override_virtual_Validate(void* self, intptr_t slot) {
+	MiqtVirtualQRegularExpressionValidator* self_cast = dynamic_cast<MiqtVirtualQRegularExpressionValidator*>( (QRegularExpressionValidator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Validate = slot;
+	return true;
 }
 
 int QRegularExpressionValidator_virtualbase_Validate(const void* self, struct miqt_string input, int* pos) {
 	return ( (const MiqtVirtualQRegularExpressionValidator*)(self) )->virtualbase_Validate(input, pos);
 }
 
-void QRegularExpressionValidator_override_virtual_Fixup(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQRegularExpressionValidator*>( (QRegularExpressionValidator*)(self) )->handle__Fixup = slot;
+bool QRegularExpressionValidator_override_virtual_Fixup(void* self, intptr_t slot) {
+	MiqtVirtualQRegularExpressionValidator* self_cast = dynamic_cast<MiqtVirtualQRegularExpressionValidator*>( (QRegularExpressionValidator*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Fixup = slot;
+	return true;
 }
 
 void QRegularExpressionValidator_virtualbase_Fixup(const void* self, struct miqt_string param1) {

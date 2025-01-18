@@ -54,8 +54,7 @@ const (
 )
 
 type QNetworkAddressEntry struct {
-	h          *C.QNetworkAddressEntry
-	isSubclass bool
+	h *C.QNetworkAddressEntry
 }
 
 func (this *QNetworkAddressEntry) cPointer() *C.QNetworkAddressEntry {
@@ -89,17 +88,13 @@ func UnsafeNewQNetworkAddressEntry(h unsafe.Pointer) *QNetworkAddressEntry {
 // NewQNetworkAddressEntry constructs a new QNetworkAddressEntry object.
 func NewQNetworkAddressEntry() *QNetworkAddressEntry {
 
-	ret := newQNetworkAddressEntry(C.QNetworkAddressEntry_new())
-	ret.isSubclass = true
-	return ret
+	return newQNetworkAddressEntry(C.QNetworkAddressEntry_new())
 }
 
 // NewQNetworkAddressEntry2 constructs a new QNetworkAddressEntry object.
 func NewQNetworkAddressEntry2(other *QNetworkAddressEntry) *QNetworkAddressEntry {
 
-	ret := newQNetworkAddressEntry(C.QNetworkAddressEntry_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkAddressEntry(C.QNetworkAddressEntry_new2(other.cPointer()))
 }
 
 func (this *QNetworkAddressEntry) OperatorAssign(other *QNetworkAddressEntry) {
@@ -211,8 +206,7 @@ func (this *QNetworkAddressEntry) GoGC() {
 }
 
 type QNetworkInterface struct {
-	h          *C.QNetworkInterface
-	isSubclass bool
+	h *C.QNetworkInterface
 }
 
 func (this *QNetworkInterface) cPointer() *C.QNetworkInterface {
@@ -246,17 +240,13 @@ func UnsafeNewQNetworkInterface(h unsafe.Pointer) *QNetworkInterface {
 // NewQNetworkInterface constructs a new QNetworkInterface object.
 func NewQNetworkInterface() *QNetworkInterface {
 
-	ret := newQNetworkInterface(C.QNetworkInterface_new())
-	ret.isSubclass = true
-	return ret
+	return newQNetworkInterface(C.QNetworkInterface_new())
 }
 
 // NewQNetworkInterface2 constructs a new QNetworkInterface object.
 func NewQNetworkInterface2(other *QNetworkInterface) *QNetworkInterface {
 
-	ret := newQNetworkInterface(C.QNetworkInterface_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQNetworkInterface(C.QNetworkInterface_new2(other.cPointer()))
 }
 
 func (this *QNetworkInterface) OperatorAssign(other *QNetworkInterface) {

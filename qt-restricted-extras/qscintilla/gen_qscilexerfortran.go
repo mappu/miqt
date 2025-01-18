@@ -16,8 +16,7 @@ import (
 )
 
 type QsciLexerFortran struct {
-	h          *C.QsciLexerFortran
-	isSubclass bool
+	h *C.QsciLexerFortran
 	*QsciLexerFortran77
 }
 
@@ -55,17 +54,13 @@ func UnsafeNewQsciLexerFortran(h unsafe.Pointer) *QsciLexerFortran {
 // NewQsciLexerFortran constructs a new QsciLexerFortran object.
 func NewQsciLexerFortran() *QsciLexerFortran {
 
-	ret := newQsciLexerFortran(C.QsciLexerFortran_new())
-	ret.isSubclass = true
-	return ret
+	return newQsciLexerFortran(C.QsciLexerFortran_new())
 }
 
 // NewQsciLexerFortran2 constructs a new QsciLexerFortran object.
 func NewQsciLexerFortran2(parent *qt.QObject) *QsciLexerFortran {
 
-	ret := newQsciLexerFortran(C.QsciLexerFortran_new2((*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQsciLexerFortran(C.QsciLexerFortran_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerFortran) MetaObject() *qt.QMetaObject {
@@ -161,10 +156,10 @@ func (this *QsciLexerFortran) callVirtualBase_SetFoldCompact(fold bool) {
 
 }
 func (this *QsciLexerFortran) OnSetFoldCompact(slot func(super func(fold bool), fold bool)) {
-	if !this.isSubclass {
+	ok := C.QsciLexerFortran_override_virtual_SetFoldCompact(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciLexerFortran_override_virtual_SetFoldCompact(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerFortran_SetFoldCompact

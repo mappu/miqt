@@ -34,8 +34,7 @@ const (
 )
 
 type QTextBoundaryFinder struct {
-	h          *C.QTextBoundaryFinder
-	isSubclass bool
+	h *C.QTextBoundaryFinder
 }
 
 func (this *QTextBoundaryFinder) cPointer() *C.QTextBoundaryFinder {
@@ -69,17 +68,13 @@ func UnsafeNewQTextBoundaryFinder(h unsafe.Pointer) *QTextBoundaryFinder {
 // NewQTextBoundaryFinder constructs a new QTextBoundaryFinder object.
 func NewQTextBoundaryFinder() *QTextBoundaryFinder {
 
-	ret := newQTextBoundaryFinder(C.QTextBoundaryFinder_new())
-	ret.isSubclass = true
-	return ret
+	return newQTextBoundaryFinder(C.QTextBoundaryFinder_new())
 }
 
 // NewQTextBoundaryFinder2 constructs a new QTextBoundaryFinder object.
 func NewQTextBoundaryFinder2(other *QTextBoundaryFinder) *QTextBoundaryFinder {
 
-	ret := newQTextBoundaryFinder(C.QTextBoundaryFinder_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTextBoundaryFinder(C.QTextBoundaryFinder_new2(other.cPointer()))
 }
 
 // NewQTextBoundaryFinder3 constructs a new QTextBoundaryFinder object.
@@ -89,33 +84,25 @@ func NewQTextBoundaryFinder3(typeVal QTextBoundaryFinder__BoundaryType, stringVa
 	stringVal_ms.len = C.size_t(len(stringVal))
 	defer C.free(unsafe.Pointer(stringVal_ms.data))
 
-	ret := newQTextBoundaryFinder(C.QTextBoundaryFinder_new3((C.int)(typeVal), stringVal_ms))
-	ret.isSubclass = true
-	return ret
+	return newQTextBoundaryFinder(C.QTextBoundaryFinder_new3((C.int)(typeVal), stringVal_ms))
 }
 
 // NewQTextBoundaryFinder4 constructs a new QTextBoundaryFinder object.
 func NewQTextBoundaryFinder4(typeVal QTextBoundaryFinder__BoundaryType, chars *QChar, length int64) *QTextBoundaryFinder {
 
-	ret := newQTextBoundaryFinder(C.QTextBoundaryFinder_new4((C.int)(typeVal), chars.cPointer(), (C.ptrdiff_t)(length)))
-	ret.isSubclass = true
-	return ret
+	return newQTextBoundaryFinder(C.QTextBoundaryFinder_new4((C.int)(typeVal), chars.cPointer(), (C.ptrdiff_t)(length)))
 }
 
 // NewQTextBoundaryFinder5 constructs a new QTextBoundaryFinder object.
 func NewQTextBoundaryFinder5(typeVal QTextBoundaryFinder__BoundaryType, chars *QChar, length int64, buffer *byte) *QTextBoundaryFinder {
 
-	ret := newQTextBoundaryFinder(C.QTextBoundaryFinder_new5((C.int)(typeVal), chars.cPointer(), (C.ptrdiff_t)(length), (*C.uchar)(unsafe.Pointer(buffer))))
-	ret.isSubclass = true
-	return ret
+	return newQTextBoundaryFinder(C.QTextBoundaryFinder_new5((C.int)(typeVal), chars.cPointer(), (C.ptrdiff_t)(length), (*C.uchar)(unsafe.Pointer(buffer))))
 }
 
 // NewQTextBoundaryFinder6 constructs a new QTextBoundaryFinder object.
 func NewQTextBoundaryFinder6(typeVal QTextBoundaryFinder__BoundaryType, chars *QChar, length int64, buffer *byte, bufferSize int64) *QTextBoundaryFinder {
 
-	ret := newQTextBoundaryFinder(C.QTextBoundaryFinder_new6((C.int)(typeVal), chars.cPointer(), (C.ptrdiff_t)(length), (*C.uchar)(unsafe.Pointer(buffer)), (C.ptrdiff_t)(bufferSize)))
-	ret.isSubclass = true
-	return ret
+	return newQTextBoundaryFinder(C.QTextBoundaryFinder_new6((C.int)(typeVal), chars.cPointer(), (C.ptrdiff_t)(length), (*C.uchar)(unsafe.Pointer(buffer)), (C.ptrdiff_t)(bufferSize)))
 }
 
 func (this *QTextBoundaryFinder) OperatorAssign(other *QTextBoundaryFinder) {

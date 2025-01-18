@@ -14,8 +14,7 @@ import (
 )
 
 type QGenericPluginFactory struct {
-	h          *C.QGenericPluginFactory
-	isSubclass bool
+	h *C.QGenericPluginFactory
 }
 
 func (this *QGenericPluginFactory) cPointer() *C.QGenericPluginFactory {

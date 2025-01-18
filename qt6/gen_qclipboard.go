@@ -23,8 +23,7 @@ const (
 )
 
 type QClipboard struct {
-	h          *C.QClipboard
-	isSubclass bool
+	h *C.QClipboard
 	*QObject
 }
 

@@ -690,168 +690,294 @@ struct miqt_string QStackedLayout_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QStackedLayout_override_virtual_Count(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) )->handle__Count = slot;
+bool QStackedLayout_override_virtual_Count(void* self, intptr_t slot) {
+	MiqtVirtualQStackedLayout* self_cast = dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Count = slot;
+	return true;
 }
 
 int QStackedLayout_virtualbase_Count(const void* self) {
 	return ( (const MiqtVirtualQStackedLayout*)(self) )->virtualbase_Count();
 }
 
-void QStackedLayout_override_virtual_AddItem(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) )->handle__AddItem = slot;
+bool QStackedLayout_override_virtual_AddItem(void* self, intptr_t slot) {
+	MiqtVirtualQStackedLayout* self_cast = dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__AddItem = slot;
+	return true;
 }
 
 void QStackedLayout_virtualbase_AddItem(void* self, QLayoutItem* item) {
 	( (MiqtVirtualQStackedLayout*)(self) )->virtualbase_AddItem(item);
 }
 
-void QStackedLayout_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) )->handle__SizeHint = slot;
+bool QStackedLayout_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQStackedLayout* self_cast = dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QStackedLayout_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQStackedLayout*)(self) )->virtualbase_SizeHint();
 }
 
-void QStackedLayout_override_virtual_MinimumSize(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) )->handle__MinimumSize = slot;
+bool QStackedLayout_override_virtual_MinimumSize(void* self, intptr_t slot) {
+	MiqtVirtualQStackedLayout* self_cast = dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSize = slot;
+	return true;
 }
 
 QSize* QStackedLayout_virtualbase_MinimumSize(const void* self) {
 	return ( (const MiqtVirtualQStackedLayout*)(self) )->virtualbase_MinimumSize();
 }
 
-void QStackedLayout_override_virtual_ItemAt(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) )->handle__ItemAt = slot;
+bool QStackedLayout_override_virtual_ItemAt(void* self, intptr_t slot) {
+	MiqtVirtualQStackedLayout* self_cast = dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ItemAt = slot;
+	return true;
 }
 
 QLayoutItem* QStackedLayout_virtualbase_ItemAt(const void* self, int param1) {
 	return ( (const MiqtVirtualQStackedLayout*)(self) )->virtualbase_ItemAt(param1);
 }
 
-void QStackedLayout_override_virtual_TakeAt(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) )->handle__TakeAt = slot;
+bool QStackedLayout_override_virtual_TakeAt(void* self, intptr_t slot) {
+	MiqtVirtualQStackedLayout* self_cast = dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TakeAt = slot;
+	return true;
 }
 
 QLayoutItem* QStackedLayout_virtualbase_TakeAt(void* self, int param1) {
 	return ( (MiqtVirtualQStackedLayout*)(self) )->virtualbase_TakeAt(param1);
 }
 
-void QStackedLayout_override_virtual_SetGeometry(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) )->handle__SetGeometry = slot;
+bool QStackedLayout_override_virtual_SetGeometry(void* self, intptr_t slot) {
+	MiqtVirtualQStackedLayout* self_cast = dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetGeometry = slot;
+	return true;
 }
 
 void QStackedLayout_virtualbase_SetGeometry(void* self, QRect* rect) {
 	( (MiqtVirtualQStackedLayout*)(self) )->virtualbase_SetGeometry(rect);
 }
 
-void QStackedLayout_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) )->handle__HasHeightForWidth = slot;
+bool QStackedLayout_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQStackedLayout* self_cast = dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasHeightForWidth = slot;
+	return true;
 }
 
 bool QStackedLayout_virtualbase_HasHeightForWidth(const void* self) {
 	return ( (const MiqtVirtualQStackedLayout*)(self) )->virtualbase_HasHeightForWidth();
 }
 
-void QStackedLayout_override_virtual_HeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) )->handle__HeightForWidth = slot;
+bool QStackedLayout_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQStackedLayout* self_cast = dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeightForWidth = slot;
+	return true;
 }
 
 int QStackedLayout_virtualbase_HeightForWidth(const void* self, int width) {
 	return ( (const MiqtVirtualQStackedLayout*)(self) )->virtualbase_HeightForWidth(width);
 }
 
-void QStackedLayout_override_virtual_Spacing(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) )->handle__Spacing = slot;
+bool QStackedLayout_override_virtual_Spacing(void* self, intptr_t slot) {
+	MiqtVirtualQStackedLayout* self_cast = dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Spacing = slot;
+	return true;
 }
 
 int QStackedLayout_virtualbase_Spacing(const void* self) {
 	return ( (const MiqtVirtualQStackedLayout*)(self) )->virtualbase_Spacing();
 }
 
-void QStackedLayout_override_virtual_SetSpacing(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) )->handle__SetSpacing = slot;
+bool QStackedLayout_override_virtual_SetSpacing(void* self, intptr_t slot) {
+	MiqtVirtualQStackedLayout* self_cast = dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetSpacing = slot;
+	return true;
 }
 
 void QStackedLayout_virtualbase_SetSpacing(void* self, int spacing) {
 	( (MiqtVirtualQStackedLayout*)(self) )->virtualbase_SetSpacing(spacing);
 }
 
-void QStackedLayout_override_virtual_Invalidate(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) )->handle__Invalidate = slot;
+bool QStackedLayout_override_virtual_Invalidate(void* self, intptr_t slot) {
+	MiqtVirtualQStackedLayout* self_cast = dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Invalidate = slot;
+	return true;
 }
 
 void QStackedLayout_virtualbase_Invalidate(void* self) {
 	( (MiqtVirtualQStackedLayout*)(self) )->virtualbase_Invalidate();
 }
 
-void QStackedLayout_override_virtual_Geometry(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) )->handle__Geometry = slot;
+bool QStackedLayout_override_virtual_Geometry(void* self, intptr_t slot) {
+	MiqtVirtualQStackedLayout* self_cast = dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Geometry = slot;
+	return true;
 }
 
 QRect* QStackedLayout_virtualbase_Geometry(const void* self) {
 	return ( (const MiqtVirtualQStackedLayout*)(self) )->virtualbase_Geometry();
 }
 
-void QStackedLayout_override_virtual_ExpandingDirections(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) )->handle__ExpandingDirections = slot;
+bool QStackedLayout_override_virtual_ExpandingDirections(void* self, intptr_t slot) {
+	MiqtVirtualQStackedLayout* self_cast = dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ExpandingDirections = slot;
+	return true;
 }
 
 int QStackedLayout_virtualbase_ExpandingDirections(const void* self) {
 	return ( (const MiqtVirtualQStackedLayout*)(self) )->virtualbase_ExpandingDirections();
 }
 
-void QStackedLayout_override_virtual_MaximumSize(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) )->handle__MaximumSize = slot;
+bool QStackedLayout_override_virtual_MaximumSize(void* self, intptr_t slot) {
+	MiqtVirtualQStackedLayout* self_cast = dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MaximumSize = slot;
+	return true;
 }
 
 QSize* QStackedLayout_virtualbase_MaximumSize(const void* self) {
 	return ( (const MiqtVirtualQStackedLayout*)(self) )->virtualbase_MaximumSize();
 }
 
-void QStackedLayout_override_virtual_IndexOf(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) )->handle__IndexOf = slot;
+bool QStackedLayout_override_virtual_IndexOf(void* self, intptr_t slot) {
+	MiqtVirtualQStackedLayout* self_cast = dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IndexOf = slot;
+	return true;
 }
 
 int QStackedLayout_virtualbase_IndexOf(const void* self, QWidget* param1) {
 	return ( (const MiqtVirtualQStackedLayout*)(self) )->virtualbase_IndexOf(param1);
 }
 
-void QStackedLayout_override_virtual_IsEmpty(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) )->handle__IsEmpty = slot;
+bool QStackedLayout_override_virtual_IsEmpty(void* self, intptr_t slot) {
+	MiqtVirtualQStackedLayout* self_cast = dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsEmpty = slot;
+	return true;
 }
 
 bool QStackedLayout_virtualbase_IsEmpty(const void* self) {
 	return ( (const MiqtVirtualQStackedLayout*)(self) )->virtualbase_IsEmpty();
 }
 
-void QStackedLayout_override_virtual_ControlTypes(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) )->handle__ControlTypes = slot;
+bool QStackedLayout_override_virtual_ControlTypes(void* self, intptr_t slot) {
+	MiqtVirtualQStackedLayout* self_cast = dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ControlTypes = slot;
+	return true;
 }
 
 int QStackedLayout_virtualbase_ControlTypes(const void* self) {
 	return ( (const MiqtVirtualQStackedLayout*)(self) )->virtualbase_ControlTypes();
 }
 
-void QStackedLayout_override_virtual_ReplaceWidget(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) )->handle__ReplaceWidget = slot;
+bool QStackedLayout_override_virtual_ReplaceWidget(void* self, intptr_t slot) {
+	MiqtVirtualQStackedLayout* self_cast = dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ReplaceWidget = slot;
+	return true;
 }
 
 QLayoutItem* QStackedLayout_virtualbase_ReplaceWidget(void* self, QWidget* from, QWidget* to, int options) {
 	return ( (MiqtVirtualQStackedLayout*)(self) )->virtualbase_ReplaceWidget(from, to, options);
 }
 
-void QStackedLayout_override_virtual_Layout(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) )->handle__Layout = slot;
+bool QStackedLayout_override_virtual_Layout(void* self, intptr_t slot) {
+	MiqtVirtualQStackedLayout* self_cast = dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Layout = slot;
+	return true;
 }
 
 QLayout* QStackedLayout_virtualbase_Layout(void* self) {
 	return ( (MiqtVirtualQStackedLayout*)(self) )->virtualbase_Layout();
 }
 
-void QStackedLayout_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) )->handle__ChildEvent = slot;
+bool QStackedLayout_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStackedLayout* self_cast = dynamic_cast<MiqtVirtualQStackedLayout*>( (QStackedLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QStackedLayout_virtualbase_ChildEvent(void* self, QChildEvent* e) {

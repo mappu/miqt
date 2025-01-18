@@ -1171,328 +1171,574 @@ struct miqt_string QWebInspector_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QWebInspector_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__SizeHint = slot;
+bool QWebInspector_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QWebInspector_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQWebInspector*)(self) )->virtualbase_SizeHint();
 }
 
-void QWebInspector_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__Event = slot;
+bool QWebInspector_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QWebInspector_virtualbase_Event(void* self, QEvent* param1) {
 	return ( (MiqtVirtualQWebInspector*)(self) )->virtualbase_Event(param1);
 }
 
-void QWebInspector_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__ResizeEvent = slot;
+bool QWebInspector_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QWebInspector_virtualbase_ResizeEvent(void* self, QResizeEvent* event) {
 	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_ResizeEvent(event);
 }
 
-void QWebInspector_override_virtual_ShowEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__ShowEvent = slot;
+bool QWebInspector_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
 }
 
 void QWebInspector_virtualbase_ShowEvent(void* self, QShowEvent* event) {
 	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_ShowEvent(event);
 }
 
-void QWebInspector_override_virtual_HideEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__HideEvent = slot;
+bool QWebInspector_override_virtual_HideEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HideEvent = slot;
+	return true;
 }
 
 void QWebInspector_virtualbase_HideEvent(void* self, QHideEvent* event) {
 	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_HideEvent(event);
 }
 
-void QWebInspector_override_virtual_CloseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__CloseEvent = slot;
+bool QWebInspector_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
 }
 
 void QWebInspector_virtualbase_CloseEvent(void* self, QCloseEvent* event) {
 	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_CloseEvent(event);
 }
 
-void QWebInspector_override_virtual_DevType(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__DevType = slot;
+bool QWebInspector_override_virtual_DevType(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DevType = slot;
+	return true;
 }
 
 int QWebInspector_virtualbase_DevType(const void* self) {
 	return ( (const MiqtVirtualQWebInspector*)(self) )->virtualbase_DevType();
 }
 
-void QWebInspector_override_virtual_SetVisible(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__SetVisible = slot;
+bool QWebInspector_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
 }
 
 void QWebInspector_virtualbase_SetVisible(void* self, bool visible) {
 	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_SetVisible(visible);
 }
 
-void QWebInspector_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__MinimumSizeHint = slot;
+bool QWebInspector_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QWebInspector_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQWebInspector*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QWebInspector_override_virtual_HeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__HeightForWidth = slot;
+bool QWebInspector_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeightForWidth = slot;
+	return true;
 }
 
 int QWebInspector_virtualbase_HeightForWidth(const void* self, int param1) {
 	return ( (const MiqtVirtualQWebInspector*)(self) )->virtualbase_HeightForWidth(param1);
 }
 
-void QWebInspector_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__HasHeightForWidth = slot;
+bool QWebInspector_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasHeightForWidth = slot;
+	return true;
 }
 
 bool QWebInspector_virtualbase_HasHeightForWidth(const void* self) {
 	return ( (const MiqtVirtualQWebInspector*)(self) )->virtualbase_HasHeightForWidth();
 }
 
-void QWebInspector_override_virtual_PaintEngine(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__PaintEngine = slot;
+bool QWebInspector_override_virtual_PaintEngine(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEngine = slot;
+	return true;
 }
 
 QPaintEngine* QWebInspector_virtualbase_PaintEngine(const void* self) {
 	return ( (const MiqtVirtualQWebInspector*)(self) )->virtualbase_PaintEngine();
 }
 
-void QWebInspector_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__MousePressEvent = slot;
+bool QWebInspector_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QWebInspector_virtualbase_MousePressEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_MousePressEvent(event);
 }
 
-void QWebInspector_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__MouseReleaseEvent = slot;
+bool QWebInspector_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QWebInspector_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_MouseReleaseEvent(event);
 }
 
-void QWebInspector_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__MouseDoubleClickEvent = slot;
+bool QWebInspector_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseDoubleClickEvent = slot;
+	return true;
 }
 
 void QWebInspector_virtualbase_MouseDoubleClickEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_MouseDoubleClickEvent(event);
 }
 
-void QWebInspector_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__MouseMoveEvent = slot;
+bool QWebInspector_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QWebInspector_virtualbase_MouseMoveEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_MouseMoveEvent(event);
 }
 
-void QWebInspector_override_virtual_WheelEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__WheelEvent = slot;
+bool QWebInspector_override_virtual_WheelEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WheelEvent = slot;
+	return true;
 }
 
 void QWebInspector_virtualbase_WheelEvent(void* self, QWheelEvent* event) {
 	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_WheelEvent(event);
 }
 
-void QWebInspector_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__KeyPressEvent = slot;
+bool QWebInspector_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QWebInspector_virtualbase_KeyPressEvent(void* self, QKeyEvent* event) {
 	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_KeyPressEvent(event);
 }
 
-void QWebInspector_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__KeyReleaseEvent = slot;
+bool QWebInspector_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyReleaseEvent = slot;
+	return true;
 }
 
 void QWebInspector_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* event) {
 	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_KeyReleaseEvent(event);
 }
 
-void QWebInspector_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__FocusInEvent = slot;
+bool QWebInspector_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QWebInspector_virtualbase_FocusInEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_FocusInEvent(event);
 }
 
-void QWebInspector_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__FocusOutEvent = slot;
+bool QWebInspector_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
 }
 
 void QWebInspector_virtualbase_FocusOutEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_FocusOutEvent(event);
 }
 
-void QWebInspector_override_virtual_EnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__EnterEvent = slot;
+bool QWebInspector_override_virtual_EnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EnterEvent = slot;
+	return true;
 }
 
 void QWebInspector_virtualbase_EnterEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_EnterEvent(event);
 }
 
-void QWebInspector_override_virtual_LeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__LeaveEvent = slot;
+bool QWebInspector_override_virtual_LeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__LeaveEvent = slot;
+	return true;
 }
 
 void QWebInspector_virtualbase_LeaveEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_LeaveEvent(event);
 }
 
-void QWebInspector_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__PaintEvent = slot;
+bool QWebInspector_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QWebInspector_virtualbase_PaintEvent(void* self, QPaintEvent* event) {
 	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_PaintEvent(event);
 }
 
-void QWebInspector_override_virtual_MoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__MoveEvent = slot;
+bool QWebInspector_override_virtual_MoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveEvent = slot;
+	return true;
 }
 
 void QWebInspector_virtualbase_MoveEvent(void* self, QMoveEvent* event) {
 	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_MoveEvent(event);
 }
 
-void QWebInspector_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__ContextMenuEvent = slot;
+bool QWebInspector_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QWebInspector_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* event) {
 	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_ContextMenuEvent(event);
 }
 
-void QWebInspector_override_virtual_TabletEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__TabletEvent = slot;
+bool QWebInspector_override_virtual_TabletEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TabletEvent = slot;
+	return true;
 }
 
 void QWebInspector_virtualbase_TabletEvent(void* self, QTabletEvent* event) {
 	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_TabletEvent(event);
 }
 
-void QWebInspector_override_virtual_ActionEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__ActionEvent = slot;
+bool QWebInspector_override_virtual_ActionEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ActionEvent = slot;
+	return true;
 }
 
 void QWebInspector_virtualbase_ActionEvent(void* self, QActionEvent* event) {
 	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_ActionEvent(event);
 }
 
-void QWebInspector_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__DragEnterEvent = slot;
+bool QWebInspector_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragEnterEvent = slot;
+	return true;
 }
 
 void QWebInspector_virtualbase_DragEnterEvent(void* self, QDragEnterEvent* event) {
 	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_DragEnterEvent(event);
 }
 
-void QWebInspector_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__DragMoveEvent = slot;
+bool QWebInspector_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragMoveEvent = slot;
+	return true;
 }
 
 void QWebInspector_virtualbase_DragMoveEvent(void* self, QDragMoveEvent* event) {
 	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_DragMoveEvent(event);
 }
 
-void QWebInspector_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__DragLeaveEvent = slot;
+bool QWebInspector_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragLeaveEvent = slot;
+	return true;
 }
 
 void QWebInspector_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* event) {
 	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_DragLeaveEvent(event);
 }
 
-void QWebInspector_override_virtual_DropEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__DropEvent = slot;
+bool QWebInspector_override_virtual_DropEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropEvent = slot;
+	return true;
 }
 
 void QWebInspector_virtualbase_DropEvent(void* self, QDropEvent* event) {
 	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_DropEvent(event);
 }
 
-void QWebInspector_override_virtual_NativeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__NativeEvent = slot;
+bool QWebInspector_override_virtual_NativeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NativeEvent = slot;
+	return true;
 }
 
 bool QWebInspector_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	return ( (MiqtVirtualQWebInspector*)(self) )->virtualbase_NativeEvent(eventType, message, result);
 }
 
-void QWebInspector_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__ChangeEvent = slot;
+bool QWebInspector_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QWebInspector_virtualbase_ChangeEvent(void* self, QEvent* param1) {
 	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_ChangeEvent(param1);
 }
 
-void QWebInspector_override_virtual_Metric(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__Metric = slot;
+bool QWebInspector_override_virtual_Metric(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Metric = slot;
+	return true;
 }
 
 int QWebInspector_virtualbase_Metric(const void* self, int param1) {
 	return ( (const MiqtVirtualQWebInspector*)(self) )->virtualbase_Metric(param1);
 }
 
-void QWebInspector_override_virtual_InitPainter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__InitPainter = slot;
+bool QWebInspector_override_virtual_InitPainter(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitPainter = slot;
+	return true;
 }
 
 void QWebInspector_virtualbase_InitPainter(const void* self, QPainter* painter) {
 	( (const MiqtVirtualQWebInspector*)(self) )->virtualbase_InitPainter(painter);
 }
 
-void QWebInspector_override_virtual_Redirected(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__Redirected = slot;
+bool QWebInspector_override_virtual_Redirected(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Redirected = slot;
+	return true;
 }
 
 QPaintDevice* QWebInspector_virtualbase_Redirected(const void* self, QPoint* offset) {
 	return ( (const MiqtVirtualQWebInspector*)(self) )->virtualbase_Redirected(offset);
 }
 
-void QWebInspector_override_virtual_SharedPainter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__SharedPainter = slot;
+bool QWebInspector_override_virtual_SharedPainter(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SharedPainter = slot;
+	return true;
 }
 
 QPainter* QWebInspector_virtualbase_SharedPainter(const void* self) {
 	return ( (const MiqtVirtualQWebInspector*)(self) )->virtualbase_SharedPainter();
 }
 
-void QWebInspector_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__InputMethodEvent = slot;
+bool QWebInspector_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodEvent = slot;
+	return true;
 }
 
 void QWebInspector_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* param1) {
 	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_InputMethodEvent(param1);
 }
 
-void QWebInspector_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__InputMethodQuery = slot;
+bool QWebInspector_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodQuery = slot;
+	return true;
 }
 
 QVariant* QWebInspector_virtualbase_InputMethodQuery(const void* self, int param1) {
 	return ( (const MiqtVirtualQWebInspector*)(self) )->virtualbase_InputMethodQuery(param1);
 }
 
-void QWebInspector_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) )->handle__FocusNextPrevChild = slot;
+bool QWebInspector_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+	MiqtVirtualQWebInspector* self_cast = dynamic_cast<MiqtVirtualQWebInspector*>( (QWebInspector*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusNextPrevChild = slot;
+	return true;
 }
 
 bool QWebInspector_virtualbase_FocusNextPrevChild(void* self, bool next) {

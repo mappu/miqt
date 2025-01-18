@@ -35,8 +35,7 @@ const (
 )
 
 type QWebEngineNavigationRequest struct {
-	h          *C.QWebEngineNavigationRequest
-	isSubclass bool
+	h *C.QWebEngineNavigationRequest
 	*qt6.QObject
 }
 

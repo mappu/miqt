@@ -634,108 +634,210 @@ void QAbstractTextDocumentLayout_connect_Update1(QAbstractTextDocumentLayout* se
 	});
 }
 
-void QAbstractTextDocumentLayout_override_virtual_Draw(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) )->handle__Draw = slot;
+bool QAbstractTextDocumentLayout_override_virtual_Draw(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Draw = slot;
+	return true;
 }
 
-void QAbstractTextDocumentLayout_override_virtual_HitTest(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) )->handle__HitTest = slot;
+bool QAbstractTextDocumentLayout_override_virtual_HitTest(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HitTest = slot;
+	return true;
 }
 
-void QAbstractTextDocumentLayout_override_virtual_PageCount(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) )->handle__PageCount = slot;
+bool QAbstractTextDocumentLayout_override_virtual_PageCount(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PageCount = slot;
+	return true;
 }
 
-void QAbstractTextDocumentLayout_override_virtual_DocumentSize(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) )->handle__DocumentSize = slot;
+bool QAbstractTextDocumentLayout_override_virtual_DocumentSize(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DocumentSize = slot;
+	return true;
 }
 
-void QAbstractTextDocumentLayout_override_virtual_FrameBoundingRect(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) )->handle__FrameBoundingRect = slot;
+bool QAbstractTextDocumentLayout_override_virtual_FrameBoundingRect(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FrameBoundingRect = slot;
+	return true;
 }
 
-void QAbstractTextDocumentLayout_override_virtual_BlockBoundingRect(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) )->handle__BlockBoundingRect = slot;
+bool QAbstractTextDocumentLayout_override_virtual_BlockBoundingRect(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BlockBoundingRect = slot;
+	return true;
 }
 
-void QAbstractTextDocumentLayout_override_virtual_DocumentChanged(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) )->handle__DocumentChanged = slot;
+bool QAbstractTextDocumentLayout_override_virtual_DocumentChanged(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DocumentChanged = slot;
+	return true;
 }
 
-void QAbstractTextDocumentLayout_override_virtual_ResizeInlineObject(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) )->handle__ResizeInlineObject = slot;
+bool QAbstractTextDocumentLayout_override_virtual_ResizeInlineObject(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeInlineObject = slot;
+	return true;
 }
 
 void QAbstractTextDocumentLayout_virtualbase_ResizeInlineObject(void* self, QTextInlineObject* item, int posInDocument, QTextFormat* format) {
 	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->virtualbase_ResizeInlineObject(item, posInDocument, format);
 }
 
-void QAbstractTextDocumentLayout_override_virtual_PositionInlineObject(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) )->handle__PositionInlineObject = slot;
+bool QAbstractTextDocumentLayout_override_virtual_PositionInlineObject(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PositionInlineObject = slot;
+	return true;
 }
 
 void QAbstractTextDocumentLayout_virtualbase_PositionInlineObject(void* self, QTextInlineObject* item, int posInDocument, QTextFormat* format) {
 	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->virtualbase_PositionInlineObject(item, posInDocument, format);
 }
 
-void QAbstractTextDocumentLayout_override_virtual_DrawInlineObject(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) )->handle__DrawInlineObject = slot;
+bool QAbstractTextDocumentLayout_override_virtual_DrawInlineObject(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DrawInlineObject = slot;
+	return true;
 }
 
 void QAbstractTextDocumentLayout_virtualbase_DrawInlineObject(void* self, QPainter* painter, QRectF* rect, QTextInlineObject* object, int posInDocument, QTextFormat* format) {
 	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->virtualbase_DrawInlineObject(painter, rect, object, posInDocument, format);
 }
 
-void QAbstractTextDocumentLayout_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) )->handle__Event = slot;
+bool QAbstractTextDocumentLayout_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QAbstractTextDocumentLayout_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->virtualbase_Event(event);
 }
 
-void QAbstractTextDocumentLayout_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) )->handle__EventFilter = slot;
+bool QAbstractTextDocumentLayout_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QAbstractTextDocumentLayout_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QAbstractTextDocumentLayout_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) )->handle__TimerEvent = slot;
+bool QAbstractTextDocumentLayout_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QAbstractTextDocumentLayout_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QAbstractTextDocumentLayout_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) )->handle__ChildEvent = slot;
+bool QAbstractTextDocumentLayout_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QAbstractTextDocumentLayout_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QAbstractTextDocumentLayout_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) )->handle__CustomEvent = slot;
+bool QAbstractTextDocumentLayout_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QAbstractTextDocumentLayout_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QAbstractTextDocumentLayout_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) )->handle__ConnectNotify = slot;
+bool QAbstractTextDocumentLayout_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QAbstractTextDocumentLayout_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QAbstractTextDocumentLayout_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) )->handle__DisconnectNotify = slot;
+bool QAbstractTextDocumentLayout_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QAbstractTextDocumentLayout_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

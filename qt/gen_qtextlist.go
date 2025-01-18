@@ -15,8 +15,7 @@ import (
 )
 
 type QTextList struct {
-	h          *C.QTextList
-	isSubclass bool
+	h *C.QTextList
 	*QTextBlockGroup
 }
 
@@ -54,9 +53,7 @@ func UnsafeNewQTextList(h unsafe.Pointer) *QTextList {
 // NewQTextList constructs a new QTextList object.
 func NewQTextList(doc *QTextDocument) *QTextList {
 
-	ret := newQTextList(C.QTextList_new(doc.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTextList(C.QTextList_new(doc.cPointer()))
 }
 
 func (this *QTextList) MetaObject() *QMetaObject {
@@ -184,10 +181,10 @@ func (this *QTextList) callVirtualBase_BlockInserted(block *QTextBlock) {
 
 }
 func (this *QTextList) OnBlockInserted(slot func(super func(block *QTextBlock), block *QTextBlock)) {
-	if !this.isSubclass {
+	ok := C.QTextList_override_virtual_BlockInserted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTextList_override_virtual_BlockInserted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTextList_BlockInserted
@@ -210,10 +207,10 @@ func (this *QTextList) callVirtualBase_BlockRemoved(block *QTextBlock) {
 
 }
 func (this *QTextList) OnBlockRemoved(slot func(super func(block *QTextBlock), block *QTextBlock)) {
-	if !this.isSubclass {
+	ok := C.QTextList_override_virtual_BlockRemoved(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTextList_override_virtual_BlockRemoved(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTextList_BlockRemoved
@@ -236,10 +233,10 @@ func (this *QTextList) callVirtualBase_BlockFormatChanged(block *QTextBlock) {
 
 }
 func (this *QTextList) OnBlockFormatChanged(slot func(super func(block *QTextBlock), block *QTextBlock)) {
-	if !this.isSubclass {
+	ok := C.QTextList_override_virtual_BlockFormatChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QTextList_override_virtual_BlockFormatChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QTextList_BlockFormatChanged

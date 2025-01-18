@@ -33,8 +33,7 @@ const (
 )
 
 type QFileIconProvider struct {
-	h          *C.QFileIconProvider
-	isSubclass bool
+	h *C.QFileIconProvider
 }
 
 func (this *QFileIconProvider) cPointer() *C.QFileIconProvider {
@@ -68,9 +67,7 @@ func UnsafeNewQFileIconProvider(h unsafe.Pointer) *QFileIconProvider {
 // NewQFileIconProvider constructs a new QFileIconProvider object.
 func NewQFileIconProvider() *QFileIconProvider {
 
-	ret := newQFileIconProvider(C.QFileIconProvider_new())
-	ret.isSubclass = true
-	return ret
+	return newQFileIconProvider(C.QFileIconProvider_new())
 }
 
 func (this *QFileIconProvider) Icon(typeVal QFileIconProvider__IconType) *QIcon {
@@ -108,10 +105,10 @@ func (this *QFileIconProvider) callVirtualBase_Icon(typeVal QFileIconProvider__I
 
 }
 func (this *QFileIconProvider) OnIcon(slot func(super func(typeVal QFileIconProvider__IconType) *QIcon, typeVal QFileIconProvider__IconType) *QIcon) {
-	if !this.isSubclass {
+	ok := C.QFileIconProvider_override_virtual_Icon(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileIconProvider_override_virtual_Icon(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileIconProvider_Icon
@@ -138,10 +135,10 @@ func (this *QFileIconProvider) callVirtualBase_IconWithInfo(info *QFileInfo) *QI
 
 }
 func (this *QFileIconProvider) OnIconWithInfo(slot func(super func(info *QFileInfo) *QIcon, info *QFileInfo) *QIcon) {
-	if !this.isSubclass {
+	ok := C.QFileIconProvider_override_virtual_IconWithInfo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileIconProvider_override_virtual_IconWithInfo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileIconProvider_IconWithInfo
@@ -168,10 +165,10 @@ func (this *QFileIconProvider) callVirtualBase_Type(info *QFileInfo) string {
 	return _ret
 }
 func (this *QFileIconProvider) OnType(slot func(super func(info *QFileInfo) string, info *QFileInfo) string) {
-	if !this.isSubclass {
+	ok := C.QFileIconProvider_override_virtual_Type(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QFileIconProvider_override_virtual_Type(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QFileIconProvider_Type

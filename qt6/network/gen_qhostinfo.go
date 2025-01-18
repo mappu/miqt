@@ -22,8 +22,7 @@ const (
 )
 
 type QHostInfo struct {
-	h          *C.QHostInfo
-	isSubclass bool
+	h *C.QHostInfo
 }
 
 func (this *QHostInfo) cPointer() *C.QHostInfo {
@@ -57,25 +56,19 @@ func UnsafeNewQHostInfo(h unsafe.Pointer) *QHostInfo {
 // NewQHostInfo constructs a new QHostInfo object.
 func NewQHostInfo() *QHostInfo {
 
-	ret := newQHostInfo(C.QHostInfo_new())
-	ret.isSubclass = true
-	return ret
+	return newQHostInfo(C.QHostInfo_new())
 }
 
 // NewQHostInfo2 constructs a new QHostInfo object.
 func NewQHostInfo2(d *QHostInfo) *QHostInfo {
 
-	ret := newQHostInfo(C.QHostInfo_new2(d.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQHostInfo(C.QHostInfo_new2(d.cPointer()))
 }
 
 // NewQHostInfo3 constructs a new QHostInfo object.
 func NewQHostInfo3(lookupId int) *QHostInfo {
 
-	ret := newQHostInfo(C.QHostInfo_new3((C.int)(lookupId)))
-	ret.isSubclass = true
-	return ret
+	return newQHostInfo(C.QHostInfo_new3((C.int)(lookupId)))
 }
 
 func (this *QHostInfo) OperatorAssign(d *QHostInfo) {

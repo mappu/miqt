@@ -30,8 +30,7 @@ const (
 )
 
 type QWebEngineScript struct {
-	h          *C.QWebEngineScript
-	isSubclass bool
+	h *C.QWebEngineScript
 }
 
 func (this *QWebEngineScript) cPointer() *C.QWebEngineScript {
@@ -65,17 +64,13 @@ func UnsafeNewQWebEngineScript(h unsafe.Pointer) *QWebEngineScript {
 // NewQWebEngineScript constructs a new QWebEngineScript object.
 func NewQWebEngineScript() *QWebEngineScript {
 
-	ret := newQWebEngineScript(C.QWebEngineScript_new())
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineScript(C.QWebEngineScript_new())
 }
 
 // NewQWebEngineScript2 constructs a new QWebEngineScript object.
 func NewQWebEngineScript2(other *QWebEngineScript) *QWebEngineScript {
 
-	ret := newQWebEngineScript(C.QWebEngineScript_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineScript(C.QWebEngineScript_new2(other.cPointer()))
 }
 
 func (this *QWebEngineScript) OperatorAssign(other *QWebEngineScript) {

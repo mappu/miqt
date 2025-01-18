@@ -14,8 +14,7 @@ import (
 )
 
 type QCameraInfo struct {
-	h          *C.QCameraInfo
-	isSubclass bool
+	h *C.QCameraInfo
 }
 
 func (this *QCameraInfo) cPointer() *C.QCameraInfo {
@@ -49,25 +48,19 @@ func UnsafeNewQCameraInfo(h unsafe.Pointer) *QCameraInfo {
 // NewQCameraInfo constructs a new QCameraInfo object.
 func NewQCameraInfo() *QCameraInfo {
 
-	ret := newQCameraInfo(C.QCameraInfo_new())
-	ret.isSubclass = true
-	return ret
+	return newQCameraInfo(C.QCameraInfo_new())
 }
 
 // NewQCameraInfo2 constructs a new QCameraInfo object.
 func NewQCameraInfo2(camera *QCamera) *QCameraInfo {
 
-	ret := newQCameraInfo(C.QCameraInfo_new2(camera.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQCameraInfo(C.QCameraInfo_new2(camera.cPointer()))
 }
 
 // NewQCameraInfo3 constructs a new QCameraInfo object.
 func NewQCameraInfo3(other *QCameraInfo) *QCameraInfo {
 
-	ret := newQCameraInfo(C.QCameraInfo_new3(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQCameraInfo(C.QCameraInfo_new3(other.cPointer()))
 }
 
 // NewQCameraInfo4 constructs a new QCameraInfo object.
@@ -76,9 +69,7 @@ func NewQCameraInfo4(name []byte) *QCameraInfo {
 	name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
 	name_alias.len = C.size_t(len(name))
 
-	ret := newQCameraInfo(C.QCameraInfo_new4(name_alias))
-	ret.isSubclass = true
-	return ret
+	return newQCameraInfo(C.QCameraInfo_new4(name_alias))
 }
 
 func (this *QCameraInfo) OperatorAssign(other *QCameraInfo) {

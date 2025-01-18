@@ -15,8 +15,7 @@ import (
 )
 
 type QAbstractEventDispatcher struct {
-	h          *C.QAbstractEventDispatcher
-	isSubclass bool
+	h *C.QAbstractEventDispatcher
 	*QObject
 }
 
@@ -224,8 +223,7 @@ func (this *QAbstractEventDispatcher) GoGC() {
 }
 
 type QAbstractEventDispatcher__TimerInfo struct {
-	h          *C.QAbstractEventDispatcher__TimerInfo
-	isSubclass bool
+	h *C.QAbstractEventDispatcher__TimerInfo
 }
 
 func (this *QAbstractEventDispatcher__TimerInfo) cPointer() *C.QAbstractEventDispatcher__TimerInfo {
@@ -259,9 +257,7 @@ func UnsafeNewQAbstractEventDispatcher__TimerInfo(h unsafe.Pointer) *QAbstractEv
 // NewQAbstractEventDispatcher__TimerInfo constructs a new QAbstractEventDispatcher::TimerInfo object.
 func NewQAbstractEventDispatcher__TimerInfo(id int, i int, t TimerType) *QAbstractEventDispatcher__TimerInfo {
 
-	ret := newQAbstractEventDispatcher__TimerInfo(C.QAbstractEventDispatcher__TimerInfo_new((C.int)(id), (C.int)(i), (C.int)(t)))
-	ret.isSubclass = true
-	return ret
+	return newQAbstractEventDispatcher__TimerInfo(C.QAbstractEventDispatcher__TimerInfo_new((C.int)(id), (C.int)(i), (C.int)(t)))
 }
 
 // Delete this object from C++ memory.

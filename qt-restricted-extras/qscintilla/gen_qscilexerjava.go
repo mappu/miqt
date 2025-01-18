@@ -16,8 +16,7 @@ import (
 )
 
 type QsciLexerJava struct {
-	h          *C.QsciLexerJava
-	isSubclass bool
+	h *C.QsciLexerJava
 	*QsciLexerCPP
 }
 
@@ -55,17 +54,13 @@ func UnsafeNewQsciLexerJava(h unsafe.Pointer) *QsciLexerJava {
 // NewQsciLexerJava constructs a new QsciLexerJava object.
 func NewQsciLexerJava() *QsciLexerJava {
 
-	ret := newQsciLexerJava(C.QsciLexerJava_new())
-	ret.isSubclass = true
-	return ret
+	return newQsciLexerJava(C.QsciLexerJava_new())
 }
 
 // NewQsciLexerJava2 constructs a new QsciLexerJava object.
 func NewQsciLexerJava2(parent *qt.QObject) *QsciLexerJava {
 
-	ret := newQsciLexerJava(C.QsciLexerJava_new2((*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQsciLexerJava(C.QsciLexerJava_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerJava) MetaObject() *qt.QMetaObject {
@@ -156,10 +151,10 @@ func (this *QsciLexerJava) callVirtualBase_SetFoldAtElse(fold bool) {
 
 }
 func (this *QsciLexerJava) OnSetFoldAtElse(slot func(super func(fold bool), fold bool)) {
-	if !this.isSubclass {
+	ok := C.QsciLexerJava_override_virtual_SetFoldAtElse(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciLexerJava_override_virtual_SetFoldAtElse(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerJava_SetFoldAtElse
@@ -182,10 +177,10 @@ func (this *QsciLexerJava) callVirtualBase_SetFoldComments(fold bool) {
 
 }
 func (this *QsciLexerJava) OnSetFoldComments(slot func(super func(fold bool), fold bool)) {
-	if !this.isSubclass {
+	ok := C.QsciLexerJava_override_virtual_SetFoldComments(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciLexerJava_override_virtual_SetFoldComments(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerJava_SetFoldComments
@@ -208,10 +203,10 @@ func (this *QsciLexerJava) callVirtualBase_SetFoldCompact(fold bool) {
 
 }
 func (this *QsciLexerJava) OnSetFoldCompact(slot func(super func(fold bool), fold bool)) {
-	if !this.isSubclass {
+	ok := C.QsciLexerJava_override_virtual_SetFoldCompact(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciLexerJava_override_virtual_SetFoldCompact(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerJava_SetFoldCompact
@@ -234,10 +229,10 @@ func (this *QsciLexerJava) callVirtualBase_SetFoldPreprocessor(fold bool) {
 
 }
 func (this *QsciLexerJava) OnSetFoldPreprocessor(slot func(super func(fold bool), fold bool)) {
-	if !this.isSubclass {
+	ok := C.QsciLexerJava_override_virtual_SetFoldPreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciLexerJava_override_virtual_SetFoldPreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerJava_SetFoldPreprocessor
@@ -260,10 +255,10 @@ func (this *QsciLexerJava) callVirtualBase_SetStylePreprocessor(style bool) {
 
 }
 func (this *QsciLexerJava) OnSetStylePreprocessor(slot func(super func(style bool), style bool)) {
-	if !this.isSubclass {
+	ok := C.QsciLexerJava_override_virtual_SetStylePreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QsciLexerJava_override_virtual_SetStylePreprocessor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerJava_SetStylePreprocessor

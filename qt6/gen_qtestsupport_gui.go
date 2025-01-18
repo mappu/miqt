@@ -14,8 +14,7 @@ import (
 )
 
 type QTest__QTouchEventSequence struct {
-	h          *C.QTest__QTouchEventSequence
-	isSubclass bool
+	h *C.QTest__QTouchEventSequence
 }
 
 func (this *QTest__QTouchEventSequence) cPointer() *C.QTest__QTouchEventSequence {

@@ -23,8 +23,7 @@ const (
 )
 
 type QScriptContextInfo struct {
-	h          *C.QScriptContextInfo
-	isSubclass bool
+	h *C.QScriptContextInfo
 }
 
 func (this *QScriptContextInfo) cPointer() *C.QScriptContextInfo {
@@ -58,25 +57,19 @@ func UnsafeNewQScriptContextInfo(h unsafe.Pointer) *QScriptContextInfo {
 // NewQScriptContextInfo constructs a new QScriptContextInfo object.
 func NewQScriptContextInfo(context *QScriptContext) *QScriptContextInfo {
 
-	ret := newQScriptContextInfo(C.QScriptContextInfo_new(context.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQScriptContextInfo(C.QScriptContextInfo_new(context.cPointer()))
 }
 
 // NewQScriptContextInfo2 constructs a new QScriptContextInfo object.
 func NewQScriptContextInfo2(other *QScriptContextInfo) *QScriptContextInfo {
 
-	ret := newQScriptContextInfo(C.QScriptContextInfo_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQScriptContextInfo(C.QScriptContextInfo_new2(other.cPointer()))
 }
 
 // NewQScriptContextInfo3 constructs a new QScriptContextInfo object.
 func NewQScriptContextInfo3() *QScriptContextInfo {
 
-	ret := newQScriptContextInfo(C.QScriptContextInfo_new3())
-	ret.isSubclass = true
-	return ret
+	return newQScriptContextInfo(C.QScriptContextInfo_new3())
 }
 
 func (this *QScriptContextInfo) OperatorAssign(other *QScriptContextInfo) {

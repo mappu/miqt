@@ -39,8 +39,7 @@ const (
 )
 
 type QTreeWidgetItemIterator struct {
-	h          *C.QTreeWidgetItemIterator
-	isSubclass bool
+	h *C.QTreeWidgetItemIterator
 }
 
 func (this *QTreeWidgetItemIterator) cPointer() *C.QTreeWidgetItemIterator {
@@ -74,41 +73,31 @@ func UnsafeNewQTreeWidgetItemIterator(h unsafe.Pointer) *QTreeWidgetItemIterator
 // NewQTreeWidgetItemIterator constructs a new QTreeWidgetItemIterator object.
 func NewQTreeWidgetItemIterator(it *QTreeWidgetItemIterator) *QTreeWidgetItemIterator {
 
-	ret := newQTreeWidgetItemIterator(C.QTreeWidgetItemIterator_new(it.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTreeWidgetItemIterator(C.QTreeWidgetItemIterator_new(it.cPointer()))
 }
 
 // NewQTreeWidgetItemIterator2 constructs a new QTreeWidgetItemIterator object.
 func NewQTreeWidgetItemIterator2(widget *QTreeWidget) *QTreeWidgetItemIterator {
 
-	ret := newQTreeWidgetItemIterator(C.QTreeWidgetItemIterator_new2(widget.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTreeWidgetItemIterator(C.QTreeWidgetItemIterator_new2(widget.cPointer()))
 }
 
 // NewQTreeWidgetItemIterator3 constructs a new QTreeWidgetItemIterator object.
 func NewQTreeWidgetItemIterator3(item *QTreeWidgetItem) *QTreeWidgetItemIterator {
 
-	ret := newQTreeWidgetItemIterator(C.QTreeWidgetItemIterator_new3(item.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQTreeWidgetItemIterator(C.QTreeWidgetItemIterator_new3(item.cPointer()))
 }
 
 // NewQTreeWidgetItemIterator4 constructs a new QTreeWidgetItemIterator object.
 func NewQTreeWidgetItemIterator4(widget *QTreeWidget, flags QTreeWidgetItemIterator__IteratorFlag) *QTreeWidgetItemIterator {
 
-	ret := newQTreeWidgetItemIterator(C.QTreeWidgetItemIterator_new4(widget.cPointer(), (C.int)(flags)))
-	ret.isSubclass = true
-	return ret
+	return newQTreeWidgetItemIterator(C.QTreeWidgetItemIterator_new4(widget.cPointer(), (C.int)(flags)))
 }
 
 // NewQTreeWidgetItemIterator5 constructs a new QTreeWidgetItemIterator object.
 func NewQTreeWidgetItemIterator5(item *QTreeWidgetItem, flags QTreeWidgetItemIterator__IteratorFlag) *QTreeWidgetItemIterator {
 
-	ret := newQTreeWidgetItemIterator(C.QTreeWidgetItemIterator_new5(item.cPointer(), (C.int)(flags)))
-	ret.isSubclass = true
-	return ret
+	return newQTreeWidgetItemIterator(C.QTreeWidgetItemIterator_new5(item.cPointer(), (C.int)(flags)))
 }
 
 func (this *QTreeWidgetItemIterator) OperatorAssign(it *QTreeWidgetItemIterator) {

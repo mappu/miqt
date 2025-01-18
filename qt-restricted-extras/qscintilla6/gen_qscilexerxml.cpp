@@ -194,24 +194,42 @@ struct miqt_string QsciLexerXML_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QsciLexerXML_override_virtual_SetFoldCompact(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerXML*>( (QsciLexerXML*)(self) )->handle__SetFoldCompact = slot;
+bool QsciLexerXML_override_virtual_SetFoldCompact(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerXML* self_cast = dynamic_cast<MiqtVirtualQsciLexerXML*>( (QsciLexerXML*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetFoldCompact = slot;
+	return true;
 }
 
 void QsciLexerXML_virtualbase_SetFoldCompact(void* self, bool fold) {
 	( (MiqtVirtualQsciLexerXML*)(self) )->virtualbase_SetFoldCompact(fold);
 }
 
-void QsciLexerXML_override_virtual_SetFoldPreprocessor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerXML*>( (QsciLexerXML*)(self) )->handle__SetFoldPreprocessor = slot;
+bool QsciLexerXML_override_virtual_SetFoldPreprocessor(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerXML* self_cast = dynamic_cast<MiqtVirtualQsciLexerXML*>( (QsciLexerXML*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetFoldPreprocessor = slot;
+	return true;
 }
 
 void QsciLexerXML_virtualbase_SetFoldPreprocessor(void* self, bool fold) {
 	( (MiqtVirtualQsciLexerXML*)(self) )->virtualbase_SetFoldPreprocessor(fold);
 }
 
-void QsciLexerXML_override_virtual_SetCaseSensitiveTags(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciLexerXML*>( (QsciLexerXML*)(self) )->handle__SetCaseSensitiveTags = slot;
+bool QsciLexerXML_override_virtual_SetCaseSensitiveTags(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerXML* self_cast = dynamic_cast<MiqtVirtualQsciLexerXML*>( (QsciLexerXML*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetCaseSensitiveTags = slot;
+	return true;
 }
 
 void QsciLexerXML_virtualbase_SetCaseSensitiveTags(void* self, bool sens) {

@@ -295,60 +295,108 @@ struct miqt_string QGraphicsTransform_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QGraphicsTransform_override_virtual_ApplyTo(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsTransform*>( (QGraphicsTransform*)(self) )->handle__ApplyTo = slot;
+bool QGraphicsTransform_override_virtual_ApplyTo(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsTransform* self_cast = dynamic_cast<MiqtVirtualQGraphicsTransform*>( (QGraphicsTransform*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ApplyTo = slot;
+	return true;
 }
 
-void QGraphicsTransform_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsTransform*>( (QGraphicsTransform*)(self) )->handle__Event = slot;
+bool QGraphicsTransform_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsTransform* self_cast = dynamic_cast<MiqtVirtualQGraphicsTransform*>( (QGraphicsTransform*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QGraphicsTransform_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQGraphicsTransform*)(self) )->virtualbase_Event(event);
 }
 
-void QGraphicsTransform_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsTransform*>( (QGraphicsTransform*)(self) )->handle__EventFilter = slot;
+bool QGraphicsTransform_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsTransform* self_cast = dynamic_cast<MiqtVirtualQGraphicsTransform*>( (QGraphicsTransform*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QGraphicsTransform_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQGraphicsTransform*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QGraphicsTransform_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsTransform*>( (QGraphicsTransform*)(self) )->handle__TimerEvent = slot;
+bool QGraphicsTransform_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsTransform* self_cast = dynamic_cast<MiqtVirtualQGraphicsTransform*>( (QGraphicsTransform*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QGraphicsTransform_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQGraphicsTransform*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QGraphicsTransform_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsTransform*>( (QGraphicsTransform*)(self) )->handle__ChildEvent = slot;
+bool QGraphicsTransform_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsTransform* self_cast = dynamic_cast<MiqtVirtualQGraphicsTransform*>( (QGraphicsTransform*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QGraphicsTransform_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQGraphicsTransform*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QGraphicsTransform_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsTransform*>( (QGraphicsTransform*)(self) )->handle__CustomEvent = slot;
+bool QGraphicsTransform_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsTransform* self_cast = dynamic_cast<MiqtVirtualQGraphicsTransform*>( (QGraphicsTransform*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QGraphicsTransform_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQGraphicsTransform*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QGraphicsTransform_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsTransform*>( (QGraphicsTransform*)(self) )->handle__ConnectNotify = slot;
+bool QGraphicsTransform_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsTransform* self_cast = dynamic_cast<MiqtVirtualQGraphicsTransform*>( (QGraphicsTransform*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QGraphicsTransform_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQGraphicsTransform*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QGraphicsTransform_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsTransform*>( (QGraphicsTransform*)(self) )->handle__DisconnectNotify = slot;
+bool QGraphicsTransform_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsTransform* self_cast = dynamic_cast<MiqtVirtualQGraphicsTransform*>( (QGraphicsTransform*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QGraphicsTransform_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
@@ -535,8 +583,14 @@ struct miqt_string QGraphicsScale_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QGraphicsScale_override_virtual_ApplyTo(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsScale*>( (QGraphicsScale*)(self) )->handle__ApplyTo = slot;
+bool QGraphicsScale_override_virtual_ApplyTo(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsScale* self_cast = dynamic_cast<MiqtVirtualQGraphicsScale*>( (QGraphicsScale*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ApplyTo = slot;
+	return true;
 }
 
 void QGraphicsScale_virtualbase_ApplyTo(const void* self, QMatrix4x4* matrix) {
@@ -697,8 +751,14 @@ struct miqt_string QGraphicsRotation_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QGraphicsRotation_override_virtual_ApplyTo(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQGraphicsRotation*>( (QGraphicsRotation*)(self) )->handle__ApplyTo = slot;
+bool QGraphicsRotation_override_virtual_ApplyTo(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsRotation* self_cast = dynamic_cast<MiqtVirtualQGraphicsRotation*>( (QGraphicsRotation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ApplyTo = slot;
+	return true;
 }
 
 void QGraphicsRotation_virtualbase_ApplyTo(const void* self, QMatrix4x4* matrix) {

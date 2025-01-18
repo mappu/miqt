@@ -100,7 +100,7 @@ struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_ProxyForQuery(QN
 struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_SystemProxyForQuery();
 void QNetworkProxyFactory_OperatorAssign(QNetworkProxyFactory* self, QNetworkProxyFactory* param1);
 struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_SystemProxyForQuery1(QNetworkProxyQuery* query);
-void QNetworkProxyFactory_override_virtual_QueryProxy(void* self, intptr_t slot);
+bool QNetworkProxyFactory_override_virtual_QueryProxy(void* self, intptr_t slot);
 struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_virtualbase_QueryProxy(void* self, QNetworkProxyQuery* query);
 void QNetworkProxyFactory_Delete(QNetworkProxyFactory* self);
 

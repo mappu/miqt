@@ -14,8 +14,7 @@ import (
 )
 
 type QTemporaryDir struct {
-	h          *C.QTemporaryDir
-	isSubclass bool
+	h *C.QTemporaryDir
 }
 
 func (this *QTemporaryDir) cPointer() *C.QTemporaryDir {
@@ -49,9 +48,7 @@ func UnsafeNewQTemporaryDir(h unsafe.Pointer) *QTemporaryDir {
 // NewQTemporaryDir constructs a new QTemporaryDir object.
 func NewQTemporaryDir() *QTemporaryDir {
 
-	ret := newQTemporaryDir(C.QTemporaryDir_new())
-	ret.isSubclass = true
-	return ret
+	return newQTemporaryDir(C.QTemporaryDir_new())
 }
 
 // NewQTemporaryDir2 constructs a new QTemporaryDir object.
@@ -61,9 +58,7 @@ func NewQTemporaryDir2(templateName string) *QTemporaryDir {
 	templateName_ms.len = C.size_t(len(templateName))
 	defer C.free(unsafe.Pointer(templateName_ms.data))
 
-	ret := newQTemporaryDir(C.QTemporaryDir_new2(templateName_ms))
-	ret.isSubclass = true
-	return ret
+	return newQTemporaryDir(C.QTemporaryDir_new2(templateName_ms))
 }
 
 func (this *QTemporaryDir) Swap(other *QTemporaryDir) {

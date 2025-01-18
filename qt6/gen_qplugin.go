@@ -14,8 +14,7 @@ import (
 )
 
 type QPluginMetaData struct {
-	h          *C.QPluginMetaData
-	isSubclass bool
+	h *C.QPluginMetaData
 }
 
 func (this *QPluginMetaData) cPointer() *C.QPluginMetaData {
@@ -65,8 +64,7 @@ func (this *QPluginMetaData) GoGC() {
 }
 
 type QStaticPlugin struct {
-	h          *C.QStaticPlugin
-	isSubclass bool
+	h *C.QStaticPlugin
 }
 
 func (this *QStaticPlugin) cPointer() *C.QStaticPlugin {
@@ -118,8 +116,7 @@ func (this *QStaticPlugin) GoGC() {
 }
 
 type QPluginMetaData__Header struct {
-	h          *C.QPluginMetaData__Header
-	isSubclass bool
+	h *C.QPluginMetaData__Header
 }
 
 func (this *QPluginMetaData__Header) cPointer() *C.QPluginMetaData__Header {
@@ -153,9 +150,7 @@ func UnsafeNewQPluginMetaData__Header(h unsafe.Pointer) *QPluginMetaData__Header
 // NewQPluginMetaData__Header constructs a new QPluginMetaData::Header object.
 func NewQPluginMetaData__Header(param1 *QPluginMetaData__Header) *QPluginMetaData__Header {
 
-	ret := newQPluginMetaData__Header(C.QPluginMetaData__Header_new(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPluginMetaData__Header(C.QPluginMetaData__Header_new(param1.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -173,8 +168,7 @@ func (this *QPluginMetaData__Header) GoGC() {
 }
 
 type QPluginMetaData__MagicHeader struct {
-	h          *C.QPluginMetaData__MagicHeader
-	isSubclass bool
+	h *C.QPluginMetaData__MagicHeader
 }
 
 func (this *QPluginMetaData__MagicHeader) cPointer() *C.QPluginMetaData__MagicHeader {
@@ -208,9 +202,7 @@ func UnsafeNewQPluginMetaData__MagicHeader(h unsafe.Pointer) *QPluginMetaData__M
 // NewQPluginMetaData__MagicHeader constructs a new QPluginMetaData::MagicHeader object.
 func NewQPluginMetaData__MagicHeader() *QPluginMetaData__MagicHeader {
 
-	ret := newQPluginMetaData__MagicHeader(C.QPluginMetaData__MagicHeader_new())
-	ret.isSubclass = true
-	return ret
+	return newQPluginMetaData__MagicHeader(C.QPluginMetaData__MagicHeader_new())
 }
 
 // Delete this object from C++ memory.
@@ -228,8 +220,7 @@ func (this *QPluginMetaData__MagicHeader) GoGC() {
 }
 
 type QPluginMetaData__ElfNoteHeader struct {
-	h          *C.QPluginMetaData__ElfNoteHeader
-	isSubclass bool
+	h *C.QPluginMetaData__ElfNoteHeader
 }
 
 func (this *QPluginMetaData__ElfNoteHeader) cPointer() *C.QPluginMetaData__ElfNoteHeader {
@@ -263,17 +254,13 @@ func UnsafeNewQPluginMetaData__ElfNoteHeader(h unsafe.Pointer) *QPluginMetaData_
 // NewQPluginMetaData__ElfNoteHeader constructs a new QPluginMetaData::ElfNoteHeader object.
 func NewQPluginMetaData__ElfNoteHeader(payloadSize uint) *QPluginMetaData__ElfNoteHeader {
 
-	ret := newQPluginMetaData__ElfNoteHeader(C.QPluginMetaData__ElfNoteHeader_new((C.uint)(payloadSize)))
-	ret.isSubclass = true
-	return ret
+	return newQPluginMetaData__ElfNoteHeader(C.QPluginMetaData__ElfNoteHeader_new((C.uint)(payloadSize)))
 }
 
 // NewQPluginMetaData__ElfNoteHeader2 constructs a new QPluginMetaData::ElfNoteHeader object.
 func NewQPluginMetaData__ElfNoteHeader2(param1 *QPluginMetaData__ElfNoteHeader) *QPluginMetaData__ElfNoteHeader {
 
-	ret := newQPluginMetaData__ElfNoteHeader(C.QPluginMetaData__ElfNoteHeader_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPluginMetaData__ElfNoteHeader(C.QPluginMetaData__ElfNoteHeader_new2(param1.cPointer()))
 }
 
 // Delete this object from C++ memory.

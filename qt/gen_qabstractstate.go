@@ -15,8 +15,7 @@ import (
 )
 
 type QAbstractState struct {
-	h          *C.QAbstractState
-	isSubclass bool
+	h *C.QAbstractState
 	*QObject
 }
 

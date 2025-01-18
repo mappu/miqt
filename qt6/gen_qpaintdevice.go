@@ -31,8 +31,7 @@ const (
 )
 
 type QPaintDevice struct {
-	h          *C.QPaintDevice
-	isSubclass bool
+	h *C.QPaintDevice
 }
 
 func (this *QPaintDevice) cPointer() *C.QPaintDevice {

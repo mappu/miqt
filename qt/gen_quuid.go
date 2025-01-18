@@ -44,8 +44,7 @@ const (
 )
 
 type QUuid struct {
-	h          *C.QUuid
-	isSubclass bool
+	h *C.QUuid
 }
 
 func (this *QUuid) cPointer() *C.QUuid {
@@ -79,17 +78,13 @@ func UnsafeNewQUuid(h unsafe.Pointer) *QUuid {
 // NewQUuid constructs a new QUuid object.
 func NewQUuid() *QUuid {
 
-	ret := newQUuid(C.QUuid_new())
-	ret.isSubclass = true
-	return ret
+	return newQUuid(C.QUuid_new())
 }
 
 // NewQUuid2 constructs a new QUuid object.
 func NewQUuid2(l uint, w1 uint16, w2 uint16, b1 byte, b2 byte, b3 byte, b4 byte, b5 byte, b6 byte, b7 byte, b8 byte) *QUuid {
 
-	ret := newQUuid(C.QUuid_new2((C.uint)(l), (C.uint16_t)(w1), (C.uint16_t)(w2), (C.uchar)(b1), (C.uchar)(b2), (C.uchar)(b3), (C.uchar)(b4), (C.uchar)(b5), (C.uchar)(b6), (C.uchar)(b7), (C.uchar)(b8)))
-	ret.isSubclass = true
-	return ret
+	return newQUuid(C.QUuid_new2((C.uint)(l), (C.uint16_t)(w1), (C.uint16_t)(w2), (C.uchar)(b1), (C.uchar)(b2), (C.uchar)(b3), (C.uchar)(b4), (C.uchar)(b5), (C.uchar)(b6), (C.uchar)(b7), (C.uchar)(b8)))
 }
 
 // NewQUuid3 constructs a new QUuid object.
@@ -99,9 +94,7 @@ func NewQUuid3(param1 string) *QUuid {
 	param1_ms.len = C.size_t(len(param1))
 	defer C.free(unsafe.Pointer(param1_ms.data))
 
-	ret := newQUuid(C.QUuid_new3(param1_ms))
-	ret.isSubclass = true
-	return ret
+	return newQUuid(C.QUuid_new3(param1_ms))
 }
 
 // NewQUuid4 constructs a new QUuid object.
@@ -109,9 +102,7 @@ func NewQUuid4(param1 string) *QUuid {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 
-	ret := newQUuid(C.QUuid_new4(param1_Cstring))
-	ret.isSubclass = true
-	return ret
+	return newQUuid(C.QUuid_new4(param1_Cstring))
 }
 
 // NewQUuid5 constructs a new QUuid object.
@@ -120,17 +111,13 @@ func NewQUuid5(param1 []byte) *QUuid {
 	param1_alias.data = (*C.char)(unsafe.Pointer(&param1[0]))
 	param1_alias.len = C.size_t(len(param1))
 
-	ret := newQUuid(C.QUuid_new5(param1_alias))
-	ret.isSubclass = true
-	return ret
+	return newQUuid(C.QUuid_new5(param1_alias))
 }
 
 // NewQUuid6 constructs a new QUuid object.
 func NewQUuid6(param1 *QUuid) *QUuid {
 
-	ret := newQUuid(C.QUuid_new6(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQUuid(C.QUuid_new6(param1.cPointer()))
 }
 
 func (this *QUuid) ToString() string {

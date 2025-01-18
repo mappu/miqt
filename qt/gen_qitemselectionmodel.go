@@ -31,8 +31,7 @@ const (
 )
 
 type QItemSelectionRange struct {
-	h          *C.QItemSelectionRange
-	isSubclass bool
+	h *C.QItemSelectionRange
 }
 
 func (this *QItemSelectionRange) cPointer() *C.QItemSelectionRange {
@@ -66,33 +65,25 @@ func UnsafeNewQItemSelectionRange(h unsafe.Pointer) *QItemSelectionRange {
 // NewQItemSelectionRange constructs a new QItemSelectionRange object.
 func NewQItemSelectionRange() *QItemSelectionRange {
 
-	ret := newQItemSelectionRange(C.QItemSelectionRange_new())
-	ret.isSubclass = true
-	return ret
+	return newQItemSelectionRange(C.QItemSelectionRange_new())
 }
 
 // NewQItemSelectionRange2 constructs a new QItemSelectionRange object.
 func NewQItemSelectionRange2(other *QItemSelectionRange) *QItemSelectionRange {
 
-	ret := newQItemSelectionRange(C.QItemSelectionRange_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQItemSelectionRange(C.QItemSelectionRange_new2(other.cPointer()))
 }
 
 // NewQItemSelectionRange3 constructs a new QItemSelectionRange object.
 func NewQItemSelectionRange3(topL *QModelIndex, bottomR *QModelIndex) *QItemSelectionRange {
 
-	ret := newQItemSelectionRange(C.QItemSelectionRange_new3(topL.cPointer(), bottomR.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQItemSelectionRange(C.QItemSelectionRange_new3(topL.cPointer(), bottomR.cPointer()))
 }
 
 // NewQItemSelectionRange4 constructs a new QItemSelectionRange object.
 func NewQItemSelectionRange4(index *QModelIndex) *QItemSelectionRange {
 
-	ret := newQItemSelectionRange(C.QItemSelectionRange_new4(index.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQItemSelectionRange(C.QItemSelectionRange_new4(index.cPointer()))
 }
 
 func (this *QItemSelectionRange) OperatorAssign(other *QItemSelectionRange) {
@@ -210,8 +201,7 @@ func (this *QItemSelectionRange) GoGC() {
 }
 
 type QItemSelectionModel struct {
-	h          *C.QItemSelectionModel
-	isSubclass bool
+	h *C.QItemSelectionModel
 	*QObject
 }
 
@@ -249,25 +239,19 @@ func UnsafeNewQItemSelectionModel(h unsafe.Pointer) *QItemSelectionModel {
 // NewQItemSelectionModel constructs a new QItemSelectionModel object.
 func NewQItemSelectionModel() *QItemSelectionModel {
 
-	ret := newQItemSelectionModel(C.QItemSelectionModel_new())
-	ret.isSubclass = true
-	return ret
+	return newQItemSelectionModel(C.QItemSelectionModel_new())
 }
 
 // NewQItemSelectionModel2 constructs a new QItemSelectionModel object.
 func NewQItemSelectionModel2(model *QAbstractItemModel, parent *QObject) *QItemSelectionModel {
 
-	ret := newQItemSelectionModel(C.QItemSelectionModel_new2(model.cPointer(), parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQItemSelectionModel(C.QItemSelectionModel_new2(model.cPointer(), parent.cPointer()))
 }
 
 // NewQItemSelectionModel3 constructs a new QItemSelectionModel object.
 func NewQItemSelectionModel3(model *QAbstractItemModel) *QItemSelectionModel {
 
-	ret := newQItemSelectionModel(C.QItemSelectionModel_new3(model.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQItemSelectionModel(C.QItemSelectionModel_new3(model.cPointer()))
 }
 
 func (this *QItemSelectionModel) MetaObject() *QMetaObject {
@@ -608,10 +592,10 @@ func (this *QItemSelectionModel) callVirtualBase_SetCurrentIndex(index *QModelIn
 
 }
 func (this *QItemSelectionModel) OnSetCurrentIndex(slot func(super func(index *QModelIndex, command QItemSelectionModel__SelectionFlag), index *QModelIndex, command QItemSelectionModel__SelectionFlag)) {
-	if !this.isSubclass {
+	ok := C.QItemSelectionModel_override_virtual_SetCurrentIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QItemSelectionModel_override_virtual_SetCurrentIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QItemSelectionModel_SetCurrentIndex
@@ -636,10 +620,10 @@ func (this *QItemSelectionModel) callVirtualBase_Select(index *QModelIndex, comm
 
 }
 func (this *QItemSelectionModel) OnSelect(slot func(super func(index *QModelIndex, command QItemSelectionModel__SelectionFlag), index *QModelIndex, command QItemSelectionModel__SelectionFlag)) {
-	if !this.isSubclass {
+	ok := C.QItemSelectionModel_override_virtual_Select(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QItemSelectionModel_override_virtual_Select(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QItemSelectionModel_Select
@@ -664,10 +648,10 @@ func (this *QItemSelectionModel) callVirtualBase_Select2(selection *QItemSelecti
 
 }
 func (this *QItemSelectionModel) OnSelect2(slot func(super func(selection *QItemSelection, command QItemSelectionModel__SelectionFlag), selection *QItemSelection, command QItemSelectionModel__SelectionFlag)) {
-	if !this.isSubclass {
+	ok := C.QItemSelectionModel_override_virtual_Select2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QItemSelectionModel_override_virtual_Select2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QItemSelectionModel_Select2
@@ -692,10 +676,10 @@ func (this *QItemSelectionModel) callVirtualBase_Clear() {
 
 }
 func (this *QItemSelectionModel) OnClear(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QItemSelectionModel_override_virtual_Clear(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QItemSelectionModel_override_virtual_Clear(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QItemSelectionModel_Clear
@@ -715,10 +699,10 @@ func (this *QItemSelectionModel) callVirtualBase_Reset() {
 
 }
 func (this *QItemSelectionModel) OnReset(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QItemSelectionModel_override_virtual_Reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QItemSelectionModel_override_virtual_Reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QItemSelectionModel_Reset
@@ -738,10 +722,10 @@ func (this *QItemSelectionModel) callVirtualBase_ClearCurrentIndex() {
 
 }
 func (this *QItemSelectionModel) OnClearCurrentIndex(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QItemSelectionModel_override_virtual_ClearCurrentIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QItemSelectionModel_override_virtual_ClearCurrentIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QItemSelectionModel_ClearCurrentIndex
@@ -761,10 +745,10 @@ func (this *QItemSelectionModel) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QItemSelectionModel) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QItemSelectionModel_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QItemSelectionModel_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QItemSelectionModel_Event
@@ -789,10 +773,10 @@ func (this *QItemSelectionModel) callVirtualBase_EventFilter(watched *QObject, e
 
 }
 func (this *QItemSelectionModel) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QItemSelectionModel_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QItemSelectionModel_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QItemSelectionModel_EventFilter
@@ -819,10 +803,10 @@ func (this *QItemSelectionModel) callVirtualBase_TimerEvent(event *QTimerEvent) 
 
 }
 func (this *QItemSelectionModel) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QItemSelectionModel_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QItemSelectionModel_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QItemSelectionModel_TimerEvent
@@ -845,10 +829,10 @@ func (this *QItemSelectionModel) callVirtualBase_ChildEvent(event *QChildEvent) 
 
 }
 func (this *QItemSelectionModel) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QItemSelectionModel_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QItemSelectionModel_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QItemSelectionModel_ChildEvent
@@ -871,10 +855,10 @@ func (this *QItemSelectionModel) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QItemSelectionModel) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QItemSelectionModel_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QItemSelectionModel_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QItemSelectionModel_CustomEvent
@@ -897,10 +881,10 @@ func (this *QItemSelectionModel) callVirtualBase_ConnectNotify(signal *QMetaMeth
 
 }
 func (this *QItemSelectionModel) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QItemSelectionModel_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QItemSelectionModel_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QItemSelectionModel_ConnectNotify
@@ -923,10 +907,10 @@ func (this *QItemSelectionModel) callVirtualBase_DisconnectNotify(signal *QMetaM
 
 }
 func (this *QItemSelectionModel) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QItemSelectionModel_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QItemSelectionModel_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QItemSelectionModel_DisconnectNotify
@@ -958,8 +942,7 @@ func (this *QItemSelectionModel) GoGC() {
 }
 
 type QItemSelection struct {
-	h          *C.QItemSelection
-	isSubclass bool
+	h *C.QItemSelection
 	/* Also inherits unprojectable QList<QItemSelectionRange> */
 
 }
@@ -995,17 +978,13 @@ func UnsafeNewQItemSelection(h unsafe.Pointer) *QItemSelection {
 // NewQItemSelection constructs a new QItemSelection object.
 func NewQItemSelection() *QItemSelection {
 
-	ret := newQItemSelection(C.QItemSelection_new())
-	ret.isSubclass = true
-	return ret
+	return newQItemSelection(C.QItemSelection_new())
 }
 
 // NewQItemSelection2 constructs a new QItemSelection object.
 func NewQItemSelection2(topLeft *QModelIndex, bottomRight *QModelIndex) *QItemSelection {
 
-	ret := newQItemSelection(C.QItemSelection_new2(topLeft.cPointer(), bottomRight.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQItemSelection(C.QItemSelection_new2(topLeft.cPointer(), bottomRight.cPointer()))
 }
 
 func (this *QItemSelection) Select(topLeft *QModelIndex, bottomRight *QModelIndex) {

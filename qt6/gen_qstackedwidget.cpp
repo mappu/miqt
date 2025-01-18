@@ -271,40 +271,70 @@ struct miqt_string QStackedWidget_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QStackedWidget_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) )->handle__Event = slot;
+bool QStackedWidget_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQStackedWidget* self_cast = dynamic_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QStackedWidget_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQStackedWidget*)(self) )->virtualbase_Event(e);
 }
 
-void QStackedWidget_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) )->handle__SizeHint = slot;
+bool QStackedWidget_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQStackedWidget* self_cast = dynamic_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QStackedWidget_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQStackedWidget*)(self) )->virtualbase_SizeHint();
 }
 
-void QStackedWidget_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) )->handle__PaintEvent = slot;
+bool QStackedWidget_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStackedWidget* self_cast = dynamic_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QStackedWidget_virtualbase_PaintEvent(void* self, QPaintEvent* param1) {
 	( (MiqtVirtualQStackedWidget*)(self) )->virtualbase_PaintEvent(param1);
 }
 
-void QStackedWidget_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) )->handle__ChangeEvent = slot;
+bool QStackedWidget_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStackedWidget* self_cast = dynamic_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QStackedWidget_virtualbase_ChangeEvent(void* self, QEvent* param1) {
 	( (MiqtVirtualQStackedWidget*)(self) )->virtualbase_ChangeEvent(param1);
 }
 
-void QStackedWidget_override_virtual_InitStyleOption(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) )->handle__InitStyleOption = slot;
+bool QStackedWidget_override_virtual_InitStyleOption(void* self, intptr_t slot) {
+	MiqtVirtualQStackedWidget* self_cast = dynamic_cast<MiqtVirtualQStackedWidget*>( (QStackedWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitStyleOption = slot;
+	return true;
 }
 
 void QStackedWidget_virtualbase_InitStyleOption(const void* self, QStyleOptionFrame* option) {

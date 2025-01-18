@@ -131,16 +131,28 @@ int QEvent_RegisterEventType1(int hint) {
 	return QEvent::registerEventType(static_cast<int>(hint));
 }
 
-void QEvent_override_virtual_SetAccepted(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQEvent*>( (QEvent*)(self) )->handle__SetAccepted = slot;
+bool QEvent_override_virtual_SetAccepted(void* self, intptr_t slot) {
+	MiqtVirtualQEvent* self_cast = dynamic_cast<MiqtVirtualQEvent*>( (QEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetAccepted = slot;
+	return true;
 }
 
 void QEvent_virtualbase_SetAccepted(void* self, bool accepted) {
 	( (MiqtVirtualQEvent*)(self) )->virtualbase_SetAccepted(accepted);
 }
 
-void QEvent_override_virtual_Clone(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQEvent*>( (QEvent*)(self) )->handle__Clone = slot;
+bool QEvent_override_virtual_Clone(void* self, intptr_t slot) {
+	MiqtVirtualQEvent* self_cast = dynamic_cast<MiqtVirtualQEvent*>( (QEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Clone = slot;
+	return true;
 }
 
 QEvent* QEvent_virtualbase_Clone(const void* self) {
@@ -222,16 +234,28 @@ int QTimerEvent_TimerId(const QTimerEvent* self) {
 	return self->timerId();
 }
 
-void QTimerEvent_override_virtual_Clone(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTimerEvent*>( (QTimerEvent*)(self) )->handle__Clone = slot;
+bool QTimerEvent_override_virtual_Clone(void* self, intptr_t slot) {
+	MiqtVirtualQTimerEvent* self_cast = dynamic_cast<MiqtVirtualQTimerEvent*>( (QTimerEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Clone = slot;
+	return true;
 }
 
 QTimerEvent* QTimerEvent_virtualbase_Clone(const void* self) {
 	return ( (const MiqtVirtualQTimerEvent*)(self) )->virtualbase_Clone();
 }
 
-void QTimerEvent_override_virtual_SetAccepted(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQTimerEvent*>( (QTimerEvent*)(self) )->handle__SetAccepted = slot;
+bool QTimerEvent_override_virtual_SetAccepted(void* self, intptr_t slot) {
+	MiqtVirtualQTimerEvent* self_cast = dynamic_cast<MiqtVirtualQTimerEvent*>( (QTimerEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetAccepted = slot;
+	return true;
 }
 
 void QTimerEvent_virtualbase_SetAccepted(void* self, bool accepted) {
@@ -325,16 +349,28 @@ bool QChildEvent_Removed(const QChildEvent* self) {
 	return self->removed();
 }
 
-void QChildEvent_override_virtual_Clone(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQChildEvent*>( (QChildEvent*)(self) )->handle__Clone = slot;
+bool QChildEvent_override_virtual_Clone(void* self, intptr_t slot) {
+	MiqtVirtualQChildEvent* self_cast = dynamic_cast<MiqtVirtualQChildEvent*>( (QChildEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Clone = slot;
+	return true;
 }
 
 QChildEvent* QChildEvent_virtualbase_Clone(const void* self) {
 	return ( (const MiqtVirtualQChildEvent*)(self) )->virtualbase_Clone();
 }
 
-void QChildEvent_override_virtual_SetAccepted(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQChildEvent*>( (QChildEvent*)(self) )->handle__SetAccepted = slot;
+bool QChildEvent_override_virtual_SetAccepted(void* self, intptr_t slot) {
+	MiqtVirtualQChildEvent* self_cast = dynamic_cast<MiqtVirtualQChildEvent*>( (QChildEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetAccepted = slot;
+	return true;
 }
 
 void QChildEvent_virtualbase_SetAccepted(void* self, bool accepted) {
@@ -422,16 +458,28 @@ struct miqt_string QDynamicPropertyChangeEvent_PropertyName(const QDynamicProper
 	return _ms;
 }
 
-void QDynamicPropertyChangeEvent_override_virtual_Clone(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDynamicPropertyChangeEvent*>( (QDynamicPropertyChangeEvent*)(self) )->handle__Clone = slot;
+bool QDynamicPropertyChangeEvent_override_virtual_Clone(void* self, intptr_t slot) {
+	MiqtVirtualQDynamicPropertyChangeEvent* self_cast = dynamic_cast<MiqtVirtualQDynamicPropertyChangeEvent*>( (QDynamicPropertyChangeEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Clone = slot;
+	return true;
 }
 
 QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_virtualbase_Clone(const void* self) {
 	return ( (const MiqtVirtualQDynamicPropertyChangeEvent*)(self) )->virtualbase_Clone();
 }
 
-void QDynamicPropertyChangeEvent_override_virtual_SetAccepted(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQDynamicPropertyChangeEvent*>( (QDynamicPropertyChangeEvent*)(self) )->handle__SetAccepted = slot;
+bool QDynamicPropertyChangeEvent_override_virtual_SetAccepted(void* self, intptr_t slot) {
+	MiqtVirtualQDynamicPropertyChangeEvent* self_cast = dynamic_cast<MiqtVirtualQDynamicPropertyChangeEvent*>( (QDynamicPropertyChangeEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetAccepted = slot;
+	return true;
 }
 
 void QDynamicPropertyChangeEvent_virtualbase_SetAccepted(void* self, bool accepted) {

@@ -1694,8 +1694,7 @@ const (
 )
 
 type QInternal struct {
-	h          *C.QInternal
-	isSubclass bool
+	h *C.QInternal
 }
 
 func (this *QInternal) cPointer() *C.QInternal {

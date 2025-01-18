@@ -561,8 +561,7 @@ const (
 )
 
 type QStyleOption struct {
-	h          *C.QStyleOption
-	isSubclass bool
+	h *C.QStyleOption
 }
 
 func (this *QStyleOption) cPointer() *C.QStyleOption {
@@ -596,33 +595,25 @@ func UnsafeNewQStyleOption(h unsafe.Pointer) *QStyleOption {
 // NewQStyleOption constructs a new QStyleOption object.
 func NewQStyleOption() *QStyleOption {
 
-	ret := newQStyleOption(C.QStyleOption_new())
-	ret.isSubclass = true
-	return ret
+	return newQStyleOption(C.QStyleOption_new())
 }
 
 // NewQStyleOption2 constructs a new QStyleOption object.
 func NewQStyleOption2(other *QStyleOption) *QStyleOption {
 
-	ret := newQStyleOption(C.QStyleOption_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOption(C.QStyleOption_new2(other.cPointer()))
 }
 
 // NewQStyleOption3 constructs a new QStyleOption object.
 func NewQStyleOption3(version int) *QStyleOption {
 
-	ret := newQStyleOption(C.QStyleOption_new3((C.int)(version)))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOption(C.QStyleOption_new3((C.int)(version)))
 }
 
 // NewQStyleOption4 constructs a new QStyleOption object.
 func NewQStyleOption4(version int, typeVal int) *QStyleOption {
 
-	ret := newQStyleOption(C.QStyleOption_new4((C.int)(version), (C.int)(typeVal)))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOption(C.QStyleOption_new4((C.int)(version), (C.int)(typeVal)))
 }
 
 func (this *QStyleOption) InitFrom(w *QWidget) {
@@ -648,8 +639,7 @@ func (this *QStyleOption) GoGC() {
 }
 
 type QStyleOptionFocusRect struct {
-	h          *C.QStyleOptionFocusRect
-	isSubclass bool
+	h *C.QStyleOptionFocusRect
 	*QStyleOption
 }
 
@@ -687,17 +677,13 @@ func UnsafeNewQStyleOptionFocusRect(h unsafe.Pointer) *QStyleOptionFocusRect {
 // NewQStyleOptionFocusRect constructs a new QStyleOptionFocusRect object.
 func NewQStyleOptionFocusRect() *QStyleOptionFocusRect {
 
-	ret := newQStyleOptionFocusRect(C.QStyleOptionFocusRect_new())
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionFocusRect(C.QStyleOptionFocusRect_new())
 }
 
 // NewQStyleOptionFocusRect2 constructs a new QStyleOptionFocusRect object.
 func NewQStyleOptionFocusRect2(other *QStyleOptionFocusRect) *QStyleOptionFocusRect {
 
-	ret := newQStyleOptionFocusRect(C.QStyleOptionFocusRect_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionFocusRect(C.QStyleOptionFocusRect_new2(other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -715,8 +701,7 @@ func (this *QStyleOptionFocusRect) GoGC() {
 }
 
 type QStyleOptionFrame struct {
-	h          *C.QStyleOptionFrame
-	isSubclass bool
+	h *C.QStyleOptionFrame
 	*QStyleOption
 }
 
@@ -754,17 +739,13 @@ func UnsafeNewQStyleOptionFrame(h unsafe.Pointer) *QStyleOptionFrame {
 // NewQStyleOptionFrame constructs a new QStyleOptionFrame object.
 func NewQStyleOptionFrame() *QStyleOptionFrame {
 
-	ret := newQStyleOptionFrame(C.QStyleOptionFrame_new())
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionFrame(C.QStyleOptionFrame_new())
 }
 
 // NewQStyleOptionFrame2 constructs a new QStyleOptionFrame object.
 func NewQStyleOptionFrame2(other *QStyleOptionFrame) *QStyleOptionFrame {
 
-	ret := newQStyleOptionFrame(C.QStyleOptionFrame_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionFrame(C.QStyleOptionFrame_new2(other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -782,8 +763,7 @@ func (this *QStyleOptionFrame) GoGC() {
 }
 
 type QStyleOptionTabWidgetFrame struct {
-	h          *C.QStyleOptionTabWidgetFrame
-	isSubclass bool
+	h *C.QStyleOptionTabWidgetFrame
 	*QStyleOption
 }
 
@@ -821,17 +801,13 @@ func UnsafeNewQStyleOptionTabWidgetFrame(h unsafe.Pointer) *QStyleOptionTabWidge
 // NewQStyleOptionTabWidgetFrame constructs a new QStyleOptionTabWidgetFrame object.
 func NewQStyleOptionTabWidgetFrame() *QStyleOptionTabWidgetFrame {
 
-	ret := newQStyleOptionTabWidgetFrame(C.QStyleOptionTabWidgetFrame_new())
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionTabWidgetFrame(C.QStyleOptionTabWidgetFrame_new())
 }
 
 // NewQStyleOptionTabWidgetFrame2 constructs a new QStyleOptionTabWidgetFrame object.
 func NewQStyleOptionTabWidgetFrame2(other *QStyleOptionTabWidgetFrame) *QStyleOptionTabWidgetFrame {
 
-	ret := newQStyleOptionTabWidgetFrame(C.QStyleOptionTabWidgetFrame_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionTabWidgetFrame(C.QStyleOptionTabWidgetFrame_new2(other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -849,8 +825,7 @@ func (this *QStyleOptionTabWidgetFrame) GoGC() {
 }
 
 type QStyleOptionTabBarBase struct {
-	h          *C.QStyleOptionTabBarBase
-	isSubclass bool
+	h *C.QStyleOptionTabBarBase
 	*QStyleOption
 }
 
@@ -888,17 +863,13 @@ func UnsafeNewQStyleOptionTabBarBase(h unsafe.Pointer) *QStyleOptionTabBarBase {
 // NewQStyleOptionTabBarBase constructs a new QStyleOptionTabBarBase object.
 func NewQStyleOptionTabBarBase() *QStyleOptionTabBarBase {
 
-	ret := newQStyleOptionTabBarBase(C.QStyleOptionTabBarBase_new())
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionTabBarBase(C.QStyleOptionTabBarBase_new())
 }
 
 // NewQStyleOptionTabBarBase2 constructs a new QStyleOptionTabBarBase object.
 func NewQStyleOptionTabBarBase2(other *QStyleOptionTabBarBase) *QStyleOptionTabBarBase {
 
-	ret := newQStyleOptionTabBarBase(C.QStyleOptionTabBarBase_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionTabBarBase(C.QStyleOptionTabBarBase_new2(other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -916,8 +887,7 @@ func (this *QStyleOptionTabBarBase) GoGC() {
 }
 
 type QStyleOptionHeader struct {
-	h          *C.QStyleOptionHeader
-	isSubclass bool
+	h *C.QStyleOptionHeader
 	*QStyleOption
 }
 
@@ -955,17 +925,13 @@ func UnsafeNewQStyleOptionHeader(h unsafe.Pointer) *QStyleOptionHeader {
 // NewQStyleOptionHeader constructs a new QStyleOptionHeader object.
 func NewQStyleOptionHeader() *QStyleOptionHeader {
 
-	ret := newQStyleOptionHeader(C.QStyleOptionHeader_new())
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionHeader(C.QStyleOptionHeader_new())
 }
 
 // NewQStyleOptionHeader2 constructs a new QStyleOptionHeader object.
 func NewQStyleOptionHeader2(other *QStyleOptionHeader) *QStyleOptionHeader {
 
-	ret := newQStyleOptionHeader(C.QStyleOptionHeader_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionHeader(C.QStyleOptionHeader_new2(other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -983,8 +949,7 @@ func (this *QStyleOptionHeader) GoGC() {
 }
 
 type QStyleOptionHeaderV2 struct {
-	h          *C.QStyleOptionHeaderV2
-	isSubclass bool
+	h *C.QStyleOptionHeaderV2
 	*QStyleOptionHeader
 }
 
@@ -1022,17 +987,13 @@ func UnsafeNewQStyleOptionHeaderV2(h unsafe.Pointer) *QStyleOptionHeaderV2 {
 // NewQStyleOptionHeaderV2 constructs a new QStyleOptionHeaderV2 object.
 func NewQStyleOptionHeaderV2() *QStyleOptionHeaderV2 {
 
-	ret := newQStyleOptionHeaderV2(C.QStyleOptionHeaderV2_new())
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionHeaderV2(C.QStyleOptionHeaderV2_new())
 }
 
 // NewQStyleOptionHeaderV22 constructs a new QStyleOptionHeaderV2 object.
 func NewQStyleOptionHeaderV22(other *QStyleOptionHeaderV2) *QStyleOptionHeaderV2 {
 
-	ret := newQStyleOptionHeaderV2(C.QStyleOptionHeaderV2_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionHeaderV2(C.QStyleOptionHeaderV2_new2(other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -1050,8 +1011,7 @@ func (this *QStyleOptionHeaderV2) GoGC() {
 }
 
 type QStyleOptionButton struct {
-	h          *C.QStyleOptionButton
-	isSubclass bool
+	h *C.QStyleOptionButton
 	*QStyleOption
 }
 
@@ -1089,17 +1049,13 @@ func UnsafeNewQStyleOptionButton(h unsafe.Pointer) *QStyleOptionButton {
 // NewQStyleOptionButton constructs a new QStyleOptionButton object.
 func NewQStyleOptionButton() *QStyleOptionButton {
 
-	ret := newQStyleOptionButton(C.QStyleOptionButton_new())
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionButton(C.QStyleOptionButton_new())
 }
 
 // NewQStyleOptionButton2 constructs a new QStyleOptionButton object.
 func NewQStyleOptionButton2(other *QStyleOptionButton) *QStyleOptionButton {
 
-	ret := newQStyleOptionButton(C.QStyleOptionButton_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionButton(C.QStyleOptionButton_new2(other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -1117,8 +1073,7 @@ func (this *QStyleOptionButton) GoGC() {
 }
 
 type QStyleOptionTab struct {
-	h          *C.QStyleOptionTab
-	isSubclass bool
+	h *C.QStyleOptionTab
 	*QStyleOption
 }
 
@@ -1156,17 +1111,13 @@ func UnsafeNewQStyleOptionTab(h unsafe.Pointer) *QStyleOptionTab {
 // NewQStyleOptionTab constructs a new QStyleOptionTab object.
 func NewQStyleOptionTab() *QStyleOptionTab {
 
-	ret := newQStyleOptionTab(C.QStyleOptionTab_new())
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionTab(C.QStyleOptionTab_new())
 }
 
 // NewQStyleOptionTab2 constructs a new QStyleOptionTab object.
 func NewQStyleOptionTab2(other *QStyleOptionTab) *QStyleOptionTab {
 
-	ret := newQStyleOptionTab(C.QStyleOptionTab_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionTab(C.QStyleOptionTab_new2(other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -1184,8 +1135,7 @@ func (this *QStyleOptionTab) GoGC() {
 }
 
 type QStyleOptionToolBar struct {
-	h          *C.QStyleOptionToolBar
-	isSubclass bool
+	h *C.QStyleOptionToolBar
 	*QStyleOption
 }
 
@@ -1223,17 +1173,13 @@ func UnsafeNewQStyleOptionToolBar(h unsafe.Pointer) *QStyleOptionToolBar {
 // NewQStyleOptionToolBar constructs a new QStyleOptionToolBar object.
 func NewQStyleOptionToolBar() *QStyleOptionToolBar {
 
-	ret := newQStyleOptionToolBar(C.QStyleOptionToolBar_new())
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionToolBar(C.QStyleOptionToolBar_new())
 }
 
 // NewQStyleOptionToolBar2 constructs a new QStyleOptionToolBar object.
 func NewQStyleOptionToolBar2(other *QStyleOptionToolBar) *QStyleOptionToolBar {
 
-	ret := newQStyleOptionToolBar(C.QStyleOptionToolBar_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionToolBar(C.QStyleOptionToolBar_new2(other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -1251,8 +1197,7 @@ func (this *QStyleOptionToolBar) GoGC() {
 }
 
 type QStyleOptionProgressBar struct {
-	h          *C.QStyleOptionProgressBar
-	isSubclass bool
+	h *C.QStyleOptionProgressBar
 	*QStyleOption
 }
 
@@ -1290,17 +1235,13 @@ func UnsafeNewQStyleOptionProgressBar(h unsafe.Pointer) *QStyleOptionProgressBar
 // NewQStyleOptionProgressBar constructs a new QStyleOptionProgressBar object.
 func NewQStyleOptionProgressBar() *QStyleOptionProgressBar {
 
-	ret := newQStyleOptionProgressBar(C.QStyleOptionProgressBar_new())
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionProgressBar(C.QStyleOptionProgressBar_new())
 }
 
 // NewQStyleOptionProgressBar2 constructs a new QStyleOptionProgressBar object.
 func NewQStyleOptionProgressBar2(other *QStyleOptionProgressBar) *QStyleOptionProgressBar {
 
-	ret := newQStyleOptionProgressBar(C.QStyleOptionProgressBar_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionProgressBar(C.QStyleOptionProgressBar_new2(other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -1318,8 +1259,7 @@ func (this *QStyleOptionProgressBar) GoGC() {
 }
 
 type QStyleOptionMenuItem struct {
-	h          *C.QStyleOptionMenuItem
-	isSubclass bool
+	h *C.QStyleOptionMenuItem
 	*QStyleOption
 }
 
@@ -1357,17 +1297,13 @@ func UnsafeNewQStyleOptionMenuItem(h unsafe.Pointer) *QStyleOptionMenuItem {
 // NewQStyleOptionMenuItem constructs a new QStyleOptionMenuItem object.
 func NewQStyleOptionMenuItem() *QStyleOptionMenuItem {
 
-	ret := newQStyleOptionMenuItem(C.QStyleOptionMenuItem_new())
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionMenuItem(C.QStyleOptionMenuItem_new())
 }
 
 // NewQStyleOptionMenuItem2 constructs a new QStyleOptionMenuItem object.
 func NewQStyleOptionMenuItem2(other *QStyleOptionMenuItem) *QStyleOptionMenuItem {
 
-	ret := newQStyleOptionMenuItem(C.QStyleOptionMenuItem_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionMenuItem(C.QStyleOptionMenuItem_new2(other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -1385,8 +1321,7 @@ func (this *QStyleOptionMenuItem) GoGC() {
 }
 
 type QStyleOptionDockWidget struct {
-	h          *C.QStyleOptionDockWidget
-	isSubclass bool
+	h *C.QStyleOptionDockWidget
 	*QStyleOption
 }
 
@@ -1424,17 +1359,13 @@ func UnsafeNewQStyleOptionDockWidget(h unsafe.Pointer) *QStyleOptionDockWidget {
 // NewQStyleOptionDockWidget constructs a new QStyleOptionDockWidget object.
 func NewQStyleOptionDockWidget() *QStyleOptionDockWidget {
 
-	ret := newQStyleOptionDockWidget(C.QStyleOptionDockWidget_new())
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionDockWidget(C.QStyleOptionDockWidget_new())
 }
 
 // NewQStyleOptionDockWidget2 constructs a new QStyleOptionDockWidget object.
 func NewQStyleOptionDockWidget2(other *QStyleOptionDockWidget) *QStyleOptionDockWidget {
 
-	ret := newQStyleOptionDockWidget(C.QStyleOptionDockWidget_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionDockWidget(C.QStyleOptionDockWidget_new2(other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -1452,8 +1383,7 @@ func (this *QStyleOptionDockWidget) GoGC() {
 }
 
 type QStyleOptionViewItem struct {
-	h          *C.QStyleOptionViewItem
-	isSubclass bool
+	h *C.QStyleOptionViewItem
 	*QStyleOption
 }
 
@@ -1491,17 +1421,13 @@ func UnsafeNewQStyleOptionViewItem(h unsafe.Pointer) *QStyleOptionViewItem {
 // NewQStyleOptionViewItem constructs a new QStyleOptionViewItem object.
 func NewQStyleOptionViewItem() *QStyleOptionViewItem {
 
-	ret := newQStyleOptionViewItem(C.QStyleOptionViewItem_new())
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionViewItem(C.QStyleOptionViewItem_new())
 }
 
 // NewQStyleOptionViewItem2 constructs a new QStyleOptionViewItem object.
 func NewQStyleOptionViewItem2(other *QStyleOptionViewItem) *QStyleOptionViewItem {
 
-	ret := newQStyleOptionViewItem(C.QStyleOptionViewItem_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionViewItem(C.QStyleOptionViewItem_new2(other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -1519,8 +1445,7 @@ func (this *QStyleOptionViewItem) GoGC() {
 }
 
 type QStyleOptionToolBox struct {
-	h          *C.QStyleOptionToolBox
-	isSubclass bool
+	h *C.QStyleOptionToolBox
 	*QStyleOption
 }
 
@@ -1558,17 +1483,13 @@ func UnsafeNewQStyleOptionToolBox(h unsafe.Pointer) *QStyleOptionToolBox {
 // NewQStyleOptionToolBox constructs a new QStyleOptionToolBox object.
 func NewQStyleOptionToolBox() *QStyleOptionToolBox {
 
-	ret := newQStyleOptionToolBox(C.QStyleOptionToolBox_new())
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionToolBox(C.QStyleOptionToolBox_new())
 }
 
 // NewQStyleOptionToolBox2 constructs a new QStyleOptionToolBox object.
 func NewQStyleOptionToolBox2(other *QStyleOptionToolBox) *QStyleOptionToolBox {
 
-	ret := newQStyleOptionToolBox(C.QStyleOptionToolBox_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionToolBox(C.QStyleOptionToolBox_new2(other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -1586,8 +1507,7 @@ func (this *QStyleOptionToolBox) GoGC() {
 }
 
 type QStyleOptionRubberBand struct {
-	h          *C.QStyleOptionRubberBand
-	isSubclass bool
+	h *C.QStyleOptionRubberBand
 	*QStyleOption
 }
 
@@ -1625,17 +1545,13 @@ func UnsafeNewQStyleOptionRubberBand(h unsafe.Pointer) *QStyleOptionRubberBand {
 // NewQStyleOptionRubberBand constructs a new QStyleOptionRubberBand object.
 func NewQStyleOptionRubberBand() *QStyleOptionRubberBand {
 
-	ret := newQStyleOptionRubberBand(C.QStyleOptionRubberBand_new())
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionRubberBand(C.QStyleOptionRubberBand_new())
 }
 
 // NewQStyleOptionRubberBand2 constructs a new QStyleOptionRubberBand object.
 func NewQStyleOptionRubberBand2(other *QStyleOptionRubberBand) *QStyleOptionRubberBand {
 
-	ret := newQStyleOptionRubberBand(C.QStyleOptionRubberBand_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionRubberBand(C.QStyleOptionRubberBand_new2(other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -1653,8 +1569,7 @@ func (this *QStyleOptionRubberBand) GoGC() {
 }
 
 type QStyleOptionComplex struct {
-	h          *C.QStyleOptionComplex
-	isSubclass bool
+	h *C.QStyleOptionComplex
 	*QStyleOption
 }
 
@@ -1692,33 +1607,25 @@ func UnsafeNewQStyleOptionComplex(h unsafe.Pointer) *QStyleOptionComplex {
 // NewQStyleOptionComplex constructs a new QStyleOptionComplex object.
 func NewQStyleOptionComplex() *QStyleOptionComplex {
 
-	ret := newQStyleOptionComplex(C.QStyleOptionComplex_new())
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionComplex(C.QStyleOptionComplex_new())
 }
 
 // NewQStyleOptionComplex2 constructs a new QStyleOptionComplex object.
 func NewQStyleOptionComplex2(other *QStyleOptionComplex) *QStyleOptionComplex {
 
-	ret := newQStyleOptionComplex(C.QStyleOptionComplex_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionComplex(C.QStyleOptionComplex_new2(other.cPointer()))
 }
 
 // NewQStyleOptionComplex3 constructs a new QStyleOptionComplex object.
 func NewQStyleOptionComplex3(version int) *QStyleOptionComplex {
 
-	ret := newQStyleOptionComplex(C.QStyleOptionComplex_new3((C.int)(version)))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionComplex(C.QStyleOptionComplex_new3((C.int)(version)))
 }
 
 // NewQStyleOptionComplex4 constructs a new QStyleOptionComplex object.
 func NewQStyleOptionComplex4(version int, typeVal int) *QStyleOptionComplex {
 
-	ret := newQStyleOptionComplex(C.QStyleOptionComplex_new4((C.int)(version), (C.int)(typeVal)))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionComplex(C.QStyleOptionComplex_new4((C.int)(version), (C.int)(typeVal)))
 }
 
 // Delete this object from C++ memory.
@@ -1736,8 +1643,7 @@ func (this *QStyleOptionComplex) GoGC() {
 }
 
 type QStyleOptionSlider struct {
-	h          *C.QStyleOptionSlider
-	isSubclass bool
+	h *C.QStyleOptionSlider
 	*QStyleOptionComplex
 }
 
@@ -1775,17 +1681,13 @@ func UnsafeNewQStyleOptionSlider(h unsafe.Pointer) *QStyleOptionSlider {
 // NewQStyleOptionSlider constructs a new QStyleOptionSlider object.
 func NewQStyleOptionSlider() *QStyleOptionSlider {
 
-	ret := newQStyleOptionSlider(C.QStyleOptionSlider_new())
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionSlider(C.QStyleOptionSlider_new())
 }
 
 // NewQStyleOptionSlider2 constructs a new QStyleOptionSlider object.
 func NewQStyleOptionSlider2(other *QStyleOptionSlider) *QStyleOptionSlider {
 
-	ret := newQStyleOptionSlider(C.QStyleOptionSlider_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionSlider(C.QStyleOptionSlider_new2(other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -1803,8 +1705,7 @@ func (this *QStyleOptionSlider) GoGC() {
 }
 
 type QStyleOptionSpinBox struct {
-	h          *C.QStyleOptionSpinBox
-	isSubclass bool
+	h *C.QStyleOptionSpinBox
 	*QStyleOptionComplex
 }
 
@@ -1842,17 +1743,13 @@ func UnsafeNewQStyleOptionSpinBox(h unsafe.Pointer) *QStyleOptionSpinBox {
 // NewQStyleOptionSpinBox constructs a new QStyleOptionSpinBox object.
 func NewQStyleOptionSpinBox() *QStyleOptionSpinBox {
 
-	ret := newQStyleOptionSpinBox(C.QStyleOptionSpinBox_new())
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionSpinBox(C.QStyleOptionSpinBox_new())
 }
 
 // NewQStyleOptionSpinBox2 constructs a new QStyleOptionSpinBox object.
 func NewQStyleOptionSpinBox2(other *QStyleOptionSpinBox) *QStyleOptionSpinBox {
 
-	ret := newQStyleOptionSpinBox(C.QStyleOptionSpinBox_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionSpinBox(C.QStyleOptionSpinBox_new2(other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -1870,8 +1767,7 @@ func (this *QStyleOptionSpinBox) GoGC() {
 }
 
 type QStyleOptionToolButton struct {
-	h          *C.QStyleOptionToolButton
-	isSubclass bool
+	h *C.QStyleOptionToolButton
 	*QStyleOptionComplex
 }
 
@@ -1909,17 +1805,13 @@ func UnsafeNewQStyleOptionToolButton(h unsafe.Pointer) *QStyleOptionToolButton {
 // NewQStyleOptionToolButton constructs a new QStyleOptionToolButton object.
 func NewQStyleOptionToolButton() *QStyleOptionToolButton {
 
-	ret := newQStyleOptionToolButton(C.QStyleOptionToolButton_new())
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionToolButton(C.QStyleOptionToolButton_new())
 }
 
 // NewQStyleOptionToolButton2 constructs a new QStyleOptionToolButton object.
 func NewQStyleOptionToolButton2(other *QStyleOptionToolButton) *QStyleOptionToolButton {
 
-	ret := newQStyleOptionToolButton(C.QStyleOptionToolButton_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionToolButton(C.QStyleOptionToolButton_new2(other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -1937,8 +1829,7 @@ func (this *QStyleOptionToolButton) GoGC() {
 }
 
 type QStyleOptionComboBox struct {
-	h          *C.QStyleOptionComboBox
-	isSubclass bool
+	h *C.QStyleOptionComboBox
 	*QStyleOptionComplex
 }
 
@@ -1976,17 +1867,13 @@ func UnsafeNewQStyleOptionComboBox(h unsafe.Pointer) *QStyleOptionComboBox {
 // NewQStyleOptionComboBox constructs a new QStyleOptionComboBox object.
 func NewQStyleOptionComboBox() *QStyleOptionComboBox {
 
-	ret := newQStyleOptionComboBox(C.QStyleOptionComboBox_new())
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionComboBox(C.QStyleOptionComboBox_new())
 }
 
 // NewQStyleOptionComboBox2 constructs a new QStyleOptionComboBox object.
 func NewQStyleOptionComboBox2(other *QStyleOptionComboBox) *QStyleOptionComboBox {
 
-	ret := newQStyleOptionComboBox(C.QStyleOptionComboBox_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionComboBox(C.QStyleOptionComboBox_new2(other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -2004,8 +1891,7 @@ func (this *QStyleOptionComboBox) GoGC() {
 }
 
 type QStyleOptionTitleBar struct {
-	h          *C.QStyleOptionTitleBar
-	isSubclass bool
+	h *C.QStyleOptionTitleBar
 	*QStyleOptionComplex
 }
 
@@ -2043,17 +1929,13 @@ func UnsafeNewQStyleOptionTitleBar(h unsafe.Pointer) *QStyleOptionTitleBar {
 // NewQStyleOptionTitleBar constructs a new QStyleOptionTitleBar object.
 func NewQStyleOptionTitleBar() *QStyleOptionTitleBar {
 
-	ret := newQStyleOptionTitleBar(C.QStyleOptionTitleBar_new())
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionTitleBar(C.QStyleOptionTitleBar_new())
 }
 
 // NewQStyleOptionTitleBar2 constructs a new QStyleOptionTitleBar object.
 func NewQStyleOptionTitleBar2(other *QStyleOptionTitleBar) *QStyleOptionTitleBar {
 
-	ret := newQStyleOptionTitleBar(C.QStyleOptionTitleBar_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionTitleBar(C.QStyleOptionTitleBar_new2(other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -2071,8 +1953,7 @@ func (this *QStyleOptionTitleBar) GoGC() {
 }
 
 type QStyleOptionGroupBox struct {
-	h          *C.QStyleOptionGroupBox
-	isSubclass bool
+	h *C.QStyleOptionGroupBox
 	*QStyleOptionComplex
 }
 
@@ -2110,17 +1991,13 @@ func UnsafeNewQStyleOptionGroupBox(h unsafe.Pointer) *QStyleOptionGroupBox {
 // NewQStyleOptionGroupBox constructs a new QStyleOptionGroupBox object.
 func NewQStyleOptionGroupBox() *QStyleOptionGroupBox {
 
-	ret := newQStyleOptionGroupBox(C.QStyleOptionGroupBox_new())
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionGroupBox(C.QStyleOptionGroupBox_new())
 }
 
 // NewQStyleOptionGroupBox2 constructs a new QStyleOptionGroupBox object.
 func NewQStyleOptionGroupBox2(other *QStyleOptionGroupBox) *QStyleOptionGroupBox {
 
-	ret := newQStyleOptionGroupBox(C.QStyleOptionGroupBox_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionGroupBox(C.QStyleOptionGroupBox_new2(other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -2138,8 +2015,7 @@ func (this *QStyleOptionGroupBox) GoGC() {
 }
 
 type QStyleOptionSizeGrip struct {
-	h          *C.QStyleOptionSizeGrip
-	isSubclass bool
+	h *C.QStyleOptionSizeGrip
 	*QStyleOptionComplex
 }
 
@@ -2177,17 +2053,13 @@ func UnsafeNewQStyleOptionSizeGrip(h unsafe.Pointer) *QStyleOptionSizeGrip {
 // NewQStyleOptionSizeGrip constructs a new QStyleOptionSizeGrip object.
 func NewQStyleOptionSizeGrip() *QStyleOptionSizeGrip {
 
-	ret := newQStyleOptionSizeGrip(C.QStyleOptionSizeGrip_new())
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionSizeGrip(C.QStyleOptionSizeGrip_new())
 }
 
 // NewQStyleOptionSizeGrip2 constructs a new QStyleOptionSizeGrip object.
 func NewQStyleOptionSizeGrip2(other *QStyleOptionSizeGrip) *QStyleOptionSizeGrip {
 
-	ret := newQStyleOptionSizeGrip(C.QStyleOptionSizeGrip_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionSizeGrip(C.QStyleOptionSizeGrip_new2(other.cPointer()))
 }
 
 // Delete this object from C++ memory.
@@ -2205,8 +2077,7 @@ func (this *QStyleOptionSizeGrip) GoGC() {
 }
 
 type QStyleOptionGraphicsItem struct {
-	h          *C.QStyleOptionGraphicsItem
-	isSubclass bool
+	h *C.QStyleOptionGraphicsItem
 	*QStyleOption
 }
 
@@ -2244,17 +2115,13 @@ func UnsafeNewQStyleOptionGraphicsItem(h unsafe.Pointer) *QStyleOptionGraphicsIt
 // NewQStyleOptionGraphicsItem constructs a new QStyleOptionGraphicsItem object.
 func NewQStyleOptionGraphicsItem() *QStyleOptionGraphicsItem {
 
-	ret := newQStyleOptionGraphicsItem(C.QStyleOptionGraphicsItem_new())
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionGraphicsItem(C.QStyleOptionGraphicsItem_new())
 }
 
 // NewQStyleOptionGraphicsItem2 constructs a new QStyleOptionGraphicsItem object.
 func NewQStyleOptionGraphicsItem2(other *QStyleOptionGraphicsItem) *QStyleOptionGraphicsItem {
 
-	ret := newQStyleOptionGraphicsItem(C.QStyleOptionGraphicsItem_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStyleOptionGraphicsItem(C.QStyleOptionGraphicsItem_new2(other.cPointer()))
 }
 
 func QStyleOptionGraphicsItem_LevelOfDetailFromTransform(worldTransform *QTransform) float64 {
@@ -2276,8 +2143,7 @@ func (this *QStyleOptionGraphicsItem) GoGC() {
 }
 
 type QStyleHintReturn struct {
-	h          *C.QStyleHintReturn
-	isSubclass bool
+	h *C.QStyleHintReturn
 }
 
 func (this *QStyleHintReturn) cPointer() *C.QStyleHintReturn {
@@ -2311,33 +2177,25 @@ func UnsafeNewQStyleHintReturn(h unsafe.Pointer) *QStyleHintReturn {
 // NewQStyleHintReturn constructs a new QStyleHintReturn object.
 func NewQStyleHintReturn() *QStyleHintReturn {
 
-	ret := newQStyleHintReturn(C.QStyleHintReturn_new())
-	ret.isSubclass = true
-	return ret
+	return newQStyleHintReturn(C.QStyleHintReturn_new())
 }
 
 // NewQStyleHintReturn2 constructs a new QStyleHintReturn object.
 func NewQStyleHintReturn2(param1 *QStyleHintReturn) *QStyleHintReturn {
 
-	ret := newQStyleHintReturn(C.QStyleHintReturn_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStyleHintReturn(C.QStyleHintReturn_new2(param1.cPointer()))
 }
 
 // NewQStyleHintReturn3 constructs a new QStyleHintReturn object.
 func NewQStyleHintReturn3(version int) *QStyleHintReturn {
 
-	ret := newQStyleHintReturn(C.QStyleHintReturn_new3((C.int)(version)))
-	ret.isSubclass = true
-	return ret
+	return newQStyleHintReturn(C.QStyleHintReturn_new3((C.int)(version)))
 }
 
 // NewQStyleHintReturn4 constructs a new QStyleHintReturn object.
 func NewQStyleHintReturn4(version int, typeVal int) *QStyleHintReturn {
 
-	ret := newQStyleHintReturn(C.QStyleHintReturn_new4((C.int)(version), (C.int)(typeVal)))
-	ret.isSubclass = true
-	return ret
+	return newQStyleHintReturn(C.QStyleHintReturn_new4((C.int)(version), (C.int)(typeVal)))
 }
 
 func (this *QStyleHintReturn) OperatorAssign(param1 *QStyleHintReturn) {
@@ -2359,8 +2217,7 @@ func (this *QStyleHintReturn) GoGC() {
 }
 
 type QStyleHintReturnMask struct {
-	h          *C.QStyleHintReturnMask
-	isSubclass bool
+	h *C.QStyleHintReturnMask
 	*QStyleHintReturn
 }
 
@@ -2398,17 +2255,13 @@ func UnsafeNewQStyleHintReturnMask(h unsafe.Pointer) *QStyleHintReturnMask {
 // NewQStyleHintReturnMask constructs a new QStyleHintReturnMask object.
 func NewQStyleHintReturnMask() *QStyleHintReturnMask {
 
-	ret := newQStyleHintReturnMask(C.QStyleHintReturnMask_new())
-	ret.isSubclass = true
-	return ret
+	return newQStyleHintReturnMask(C.QStyleHintReturnMask_new())
 }
 
 // NewQStyleHintReturnMask2 constructs a new QStyleHintReturnMask object.
 func NewQStyleHintReturnMask2(param1 *QStyleHintReturnMask) *QStyleHintReturnMask {
 
-	ret := newQStyleHintReturnMask(C.QStyleHintReturnMask_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStyleHintReturnMask(C.QStyleHintReturnMask_new2(param1.cPointer()))
 }
 
 func (this *QStyleHintReturnMask) OperatorAssign(param1 *QStyleHintReturnMask) {
@@ -2430,8 +2283,7 @@ func (this *QStyleHintReturnMask) GoGC() {
 }
 
 type QStyleHintReturnVariant struct {
-	h          *C.QStyleHintReturnVariant
-	isSubclass bool
+	h *C.QStyleHintReturnVariant
 	*QStyleHintReturn
 }
 
@@ -2469,17 +2321,13 @@ func UnsafeNewQStyleHintReturnVariant(h unsafe.Pointer) *QStyleHintReturnVariant
 // NewQStyleHintReturnVariant constructs a new QStyleHintReturnVariant object.
 func NewQStyleHintReturnVariant() *QStyleHintReturnVariant {
 
-	ret := newQStyleHintReturnVariant(C.QStyleHintReturnVariant_new())
-	ret.isSubclass = true
-	return ret
+	return newQStyleHintReturnVariant(C.QStyleHintReturnVariant_new())
 }
 
 // NewQStyleHintReturnVariant2 constructs a new QStyleHintReturnVariant object.
 func NewQStyleHintReturnVariant2(param1 *QStyleHintReturnVariant) *QStyleHintReturnVariant {
 
-	ret := newQStyleHintReturnVariant(C.QStyleHintReturnVariant_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQStyleHintReturnVariant(C.QStyleHintReturnVariant_new2(param1.cPointer()))
 }
 
 func (this *QStyleHintReturnVariant) OperatorAssign(param1 *QStyleHintReturnVariant) {

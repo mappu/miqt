@@ -16,8 +16,7 @@ import (
 )
 
 type QSslServer struct {
-	h          *C.QSslServer
-	isSubclass bool
+	h *C.QSslServer
 	*QTcpServer
 }
 
@@ -55,17 +54,13 @@ func UnsafeNewQSslServer(h unsafe.Pointer) *QSslServer {
 // NewQSslServer constructs a new QSslServer object.
 func NewQSslServer() *QSslServer {
 
-	ret := newQSslServer(C.QSslServer_new())
-	ret.isSubclass = true
-	return ret
+	return newQSslServer(C.QSslServer_new())
 }
 
 // NewQSslServer2 constructs a new QSslServer object.
 func NewQSslServer2(parent *qt6.QObject) *QSslServer {
 
-	ret := newQSslServer(C.QSslServer_new2((*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQSslServer(C.QSslServer_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QSslServer) MetaObject() *qt6.QMetaObject {
@@ -343,10 +338,10 @@ func (this *QSslServer) callVirtualBase_IncomingConnection(socket uintptr) {
 
 }
 func (this *QSslServer) OnIncomingConnection(slot func(super func(socket uintptr), socket uintptr)) {
-	if !this.isSubclass {
+	ok := C.QSslServer_override_virtual_IncomingConnection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSslServer_override_virtual_IncomingConnection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSslServer_IncomingConnection
@@ -369,10 +364,10 @@ func (this *QSslServer) callVirtualBase_HasPendingConnections() bool {
 
 }
 func (this *QSslServer) OnHasPendingConnections(slot func(super func() bool) bool) {
-	if !this.isSubclass {
+	ok := C.QSslServer_override_virtual_HasPendingConnections(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSslServer_override_virtual_HasPendingConnections(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSslServer_HasPendingConnections
@@ -394,10 +389,10 @@ func (this *QSslServer) callVirtualBase_NextPendingConnection() *QTcpSocket {
 
 }
 func (this *QSslServer) OnNextPendingConnection(slot func(super func() *QTcpSocket) *QTcpSocket) {
-	if !this.isSubclass {
+	ok := C.QSslServer_override_virtual_NextPendingConnection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QSslServer_override_virtual_NextPendingConnection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSslServer_NextPendingConnection

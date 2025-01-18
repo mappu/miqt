@@ -17,8 +17,7 @@ import (
 )
 
 type QWebEngineCookieStore struct {
-	h          *C.QWebEngineCookieStore
-	isSubclass bool
+	h *C.QWebEngineCookieStore
 	*qt.QObject
 }
 
@@ -208,8 +207,7 @@ func (this *QWebEngineCookieStore) GoGC() {
 }
 
 type QWebEngineCookieStore__FilterRequest struct {
-	h          *C.QWebEngineCookieStore__FilterRequest
-	isSubclass bool
+	h *C.QWebEngineCookieStore__FilterRequest
 }
 
 func (this *QWebEngineCookieStore__FilterRequest) cPointer() *C.QWebEngineCookieStore__FilterRequest {
@@ -243,9 +241,7 @@ func UnsafeNewQWebEngineCookieStore__FilterRequest(h unsafe.Pointer) *QWebEngine
 // NewQWebEngineCookieStore__FilterRequest constructs a new QWebEngineCookieStore::FilterRequest object.
 func NewQWebEngineCookieStore__FilterRequest(param1 *QWebEngineCookieStore__FilterRequest) *QWebEngineCookieStore__FilterRequest {
 
-	ret := newQWebEngineCookieStore__FilterRequest(C.QWebEngineCookieStore__FilterRequest_new(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebEngineCookieStore__FilterRequest(C.QWebEngineCookieStore__FilterRequest_new(param1.cPointer()))
 }
 
 func (this *QWebEngineCookieStore__FilterRequest) OperatorAssign(param1 *QWebEngineCookieStore__FilterRequest) {

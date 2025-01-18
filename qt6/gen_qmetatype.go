@@ -132,8 +132,7 @@ const (
 )
 
 type QMetaType struct {
-	h          *C.QMetaType
-	isSubclass bool
+	h *C.QMetaType
 }
 
 func (this *QMetaType) cPointer() *C.QMetaType {
@@ -167,25 +166,19 @@ func UnsafeNewQMetaType(h unsafe.Pointer) *QMetaType {
 // NewQMetaType constructs a new QMetaType object.
 func NewQMetaType(typeVal int) *QMetaType {
 
-	ret := newQMetaType(C.QMetaType_new((C.int)(typeVal)))
-	ret.isSubclass = true
-	return ret
+	return newQMetaType(C.QMetaType_new((C.int)(typeVal)))
 }
 
 // NewQMetaType2 constructs a new QMetaType object.
 func NewQMetaType2() *QMetaType {
 
-	ret := newQMetaType(C.QMetaType_new2())
-	ret.isSubclass = true
-	return ret
+	return newQMetaType(C.QMetaType_new2())
 }
 
 // NewQMetaType3 constructs a new QMetaType object.
 func NewQMetaType3(param1 *QMetaType) *QMetaType {
 
-	ret := newQMetaType(C.QMetaType_new3(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQMetaType(C.QMetaType_new3(param1.cPointer()))
 }
 
 func QMetaType_RegisterNormalizedTypedef(normalizedTypeName []byte, typeVal QMetaType) {

@@ -63,13 +63,13 @@ void QGraphicsSvgItem_Paint(QGraphicsSvgItem* self, QPainter* painter, QStyleOpt
 int QGraphicsSvgItem_Type(const QGraphicsSvgItem* self);
 struct miqt_string QGraphicsSvgItem_Tr2(const char* s, const char* c);
 struct miqt_string QGraphicsSvgItem_Tr3(const char* s, const char* c, int n);
-void QGraphicsSvgItem_override_virtual_BoundingRect(void* self, intptr_t slot);
+bool QGraphicsSvgItem_override_virtual_BoundingRect(void* self, intptr_t slot);
 QRectF* QGraphicsSvgItem_virtualbase_BoundingRect(const void* self);
-void QGraphicsSvgItem_override_virtual_Paint(void* self, intptr_t slot);
+bool QGraphicsSvgItem_override_virtual_Paint(void* self, intptr_t slot);
 void QGraphicsSvgItem_virtualbase_Paint(void* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget);
-void QGraphicsSvgItem_override_virtual_Type(void* self, intptr_t slot);
+bool QGraphicsSvgItem_override_virtual_Type(void* self, intptr_t slot);
 int QGraphicsSvgItem_virtualbase_Type(const void* self);
-void QGraphicsSvgItem_override_virtual_Event(void* self, intptr_t slot);
+bool QGraphicsSvgItem_override_virtual_Event(void* self, intptr_t slot);
 bool QGraphicsSvgItem_virtualbase_Event(void* self, QEvent* ev);
 void QGraphicsSvgItem_Delete(QGraphicsSvgItem* self);
 

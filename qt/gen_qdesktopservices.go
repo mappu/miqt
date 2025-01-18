@@ -14,8 +14,7 @@ import (
 )
 
 type QDesktopServices struct {
-	h          *C.QDesktopServices
-	isSubclass bool
+	h *C.QDesktopServices
 }
 
 func (this *QDesktopServices) cPointer() *C.QDesktopServices {

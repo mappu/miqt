@@ -29,8 +29,7 @@ const (
 )
 
 type QPartialOrdering struct {
-	h          *C.QPartialOrdering
-	isSubclass bool
+	h *C.QPartialOrdering
 }
 
 func (this *QPartialOrdering) cPointer() *C.QPartialOrdering {
@@ -64,9 +63,7 @@ func UnsafeNewQPartialOrdering(h unsafe.Pointer) *QPartialOrdering {
 // NewQPartialOrdering constructs a new QPartialOrdering object.
 func NewQPartialOrdering(param1 *QPartialOrdering) *QPartialOrdering {
 
-	ret := newQPartialOrdering(C.QPartialOrdering_new(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPartialOrdering(C.QPartialOrdering_new(param1.cPointer()))
 }
 
 // Delete this object from C++ memory.

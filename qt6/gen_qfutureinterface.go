@@ -35,8 +35,7 @@ const (
 )
 
 type QFutureInterfaceBase struct {
-	h          *C.QFutureInterfaceBase
-	isSubclass bool
+	h *C.QFutureInterfaceBase
 }
 
 func (this *QFutureInterfaceBase) cPointer() *C.QFutureInterfaceBase {
@@ -70,25 +69,19 @@ func UnsafeNewQFutureInterfaceBase(h unsafe.Pointer) *QFutureInterfaceBase {
 // NewQFutureInterfaceBase constructs a new QFutureInterfaceBase object.
 func NewQFutureInterfaceBase() *QFutureInterfaceBase {
 
-	ret := newQFutureInterfaceBase(C.QFutureInterfaceBase_new())
-	ret.isSubclass = true
-	return ret
+	return newQFutureInterfaceBase(C.QFutureInterfaceBase_new())
 }
 
 // NewQFutureInterfaceBase2 constructs a new QFutureInterfaceBase object.
 func NewQFutureInterfaceBase2(other *QFutureInterfaceBase) *QFutureInterfaceBase {
 
-	ret := newQFutureInterfaceBase(C.QFutureInterfaceBase_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQFutureInterfaceBase(C.QFutureInterfaceBase_new2(other.cPointer()))
 }
 
 // NewQFutureInterfaceBase3 constructs a new QFutureInterfaceBase object.
 func NewQFutureInterfaceBase3(initialState QFutureInterfaceBase__State) *QFutureInterfaceBase {
 
-	ret := newQFutureInterfaceBase(C.QFutureInterfaceBase_new3((C.int)(initialState)))
-	ret.isSubclass = true
-	return ret
+	return newQFutureInterfaceBase(C.QFutureInterfaceBase_new3((C.int)(initialState)))
 }
 
 func (this *QFutureInterfaceBase) OperatorAssign(other *QFutureInterfaceBase) {

@@ -364,80 +364,140 @@ struct miqt_string QsciMacro_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QsciMacro_override_virtual_Play(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) )->handle__Play = slot;
+bool QsciMacro_override_virtual_Play(void* self, intptr_t slot) {
+	MiqtVirtualQsciMacro* self_cast = dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Play = slot;
+	return true;
 }
 
 void QsciMacro_virtualbase_Play(void* self) {
 	( (MiqtVirtualQsciMacro*)(self) )->virtualbase_Play();
 }
 
-void QsciMacro_override_virtual_StartRecording(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) )->handle__StartRecording = slot;
+bool QsciMacro_override_virtual_StartRecording(void* self, intptr_t slot) {
+	MiqtVirtualQsciMacro* self_cast = dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__StartRecording = slot;
+	return true;
 }
 
 void QsciMacro_virtualbase_StartRecording(void* self) {
 	( (MiqtVirtualQsciMacro*)(self) )->virtualbase_StartRecording();
 }
 
-void QsciMacro_override_virtual_EndRecording(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) )->handle__EndRecording = slot;
+bool QsciMacro_override_virtual_EndRecording(void* self, intptr_t slot) {
+	MiqtVirtualQsciMacro* self_cast = dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EndRecording = slot;
+	return true;
 }
 
 void QsciMacro_virtualbase_EndRecording(void* self) {
 	( (MiqtVirtualQsciMacro*)(self) )->virtualbase_EndRecording();
 }
 
-void QsciMacro_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) )->handle__Event = slot;
+bool QsciMacro_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQsciMacro* self_cast = dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QsciMacro_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQsciMacro*)(self) )->virtualbase_Event(event);
 }
 
-void QsciMacro_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) )->handle__EventFilter = slot;
+bool QsciMacro_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQsciMacro* self_cast = dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QsciMacro_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQsciMacro*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QsciMacro_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) )->handle__TimerEvent = slot;
+bool QsciMacro_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciMacro* self_cast = dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QsciMacro_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQsciMacro*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QsciMacro_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) )->handle__ChildEvent = slot;
+bool QsciMacro_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciMacro* self_cast = dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QsciMacro_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQsciMacro*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QsciMacro_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) )->handle__CustomEvent = slot;
+bool QsciMacro_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciMacro* self_cast = dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QsciMacro_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQsciMacro*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QsciMacro_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) )->handle__ConnectNotify = slot;
+bool QsciMacro_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQsciMacro* self_cast = dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QsciMacro_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQsciMacro*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QsciMacro_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) )->handle__DisconnectNotify = slot;
+bool QsciMacro_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQsciMacro* self_cast = dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QsciMacro_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

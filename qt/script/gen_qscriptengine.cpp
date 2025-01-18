@@ -641,56 +641,98 @@ void QScriptEngine_InstallTranslatorFunctions1(QScriptEngine* self, QScriptValue
 	self->installTranslatorFunctions(*object);
 }
 
-void QScriptEngine_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptEngine*>( (QScriptEngine*)(self) )->handle__Event = slot;
+bool QScriptEngine_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQScriptEngine* self_cast = dynamic_cast<MiqtVirtualQScriptEngine*>( (QScriptEngine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QScriptEngine_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQScriptEngine*)(self) )->virtualbase_Event(event);
 }
 
-void QScriptEngine_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptEngine*>( (QScriptEngine*)(self) )->handle__EventFilter = slot;
+bool QScriptEngine_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQScriptEngine* self_cast = dynamic_cast<MiqtVirtualQScriptEngine*>( (QScriptEngine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QScriptEngine_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQScriptEngine*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QScriptEngine_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptEngine*>( (QScriptEngine*)(self) )->handle__TimerEvent = slot;
+bool QScriptEngine_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQScriptEngine* self_cast = dynamic_cast<MiqtVirtualQScriptEngine*>( (QScriptEngine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QScriptEngine_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQScriptEngine*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QScriptEngine_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptEngine*>( (QScriptEngine*)(self) )->handle__ChildEvent = slot;
+bool QScriptEngine_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQScriptEngine* self_cast = dynamic_cast<MiqtVirtualQScriptEngine*>( (QScriptEngine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QScriptEngine_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQScriptEngine*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QScriptEngine_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptEngine*>( (QScriptEngine*)(self) )->handle__CustomEvent = slot;
+bool QScriptEngine_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQScriptEngine* self_cast = dynamic_cast<MiqtVirtualQScriptEngine*>( (QScriptEngine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QScriptEngine_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQScriptEngine*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QScriptEngine_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptEngine*>( (QScriptEngine*)(self) )->handle__ConnectNotify = slot;
+bool QScriptEngine_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQScriptEngine* self_cast = dynamic_cast<MiqtVirtualQScriptEngine*>( (QScriptEngine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QScriptEngine_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQScriptEngine*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QScriptEngine_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptEngine*>( (QScriptEngine*)(self) )->handle__DisconnectNotify = slot;
+bool QScriptEngine_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQScriptEngine* self_cast = dynamic_cast<MiqtVirtualQScriptEngine*>( (QScriptEngine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QScriptEngine_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

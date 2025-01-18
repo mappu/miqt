@@ -701,136 +701,238 @@ bool QLocalSocket_WaitForDisconnected1(QLocalSocket* self, int msecs) {
 	return self->waitForDisconnected(static_cast<int>(msecs));
 }
 
-void QLocalSocket_override_virtual_IsSequential(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) )->handle__IsSequential = slot;
+bool QLocalSocket_override_virtual_IsSequential(void* self, intptr_t slot) {
+	MiqtVirtualQLocalSocket* self_cast = dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsSequential = slot;
+	return true;
 }
 
 bool QLocalSocket_virtualbase_IsSequential(const void* self) {
 	return ( (const MiqtVirtualQLocalSocket*)(self) )->virtualbase_IsSequential();
 }
 
-void QLocalSocket_override_virtual_BytesAvailable(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) )->handle__BytesAvailable = slot;
+bool QLocalSocket_override_virtual_BytesAvailable(void* self, intptr_t slot) {
+	MiqtVirtualQLocalSocket* self_cast = dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BytesAvailable = slot;
+	return true;
 }
 
 long long QLocalSocket_virtualbase_BytesAvailable(const void* self) {
 	return ( (const MiqtVirtualQLocalSocket*)(self) )->virtualbase_BytesAvailable();
 }
 
-void QLocalSocket_override_virtual_BytesToWrite(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) )->handle__BytesToWrite = slot;
+bool QLocalSocket_override_virtual_BytesToWrite(void* self, intptr_t slot) {
+	MiqtVirtualQLocalSocket* self_cast = dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BytesToWrite = slot;
+	return true;
 }
 
 long long QLocalSocket_virtualbase_BytesToWrite(const void* self) {
 	return ( (const MiqtVirtualQLocalSocket*)(self) )->virtualbase_BytesToWrite();
 }
 
-void QLocalSocket_override_virtual_CanReadLine(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) )->handle__CanReadLine = slot;
+bool QLocalSocket_override_virtual_CanReadLine(void* self, intptr_t slot) {
+	MiqtVirtualQLocalSocket* self_cast = dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CanReadLine = slot;
+	return true;
 }
 
 bool QLocalSocket_virtualbase_CanReadLine(const void* self) {
 	return ( (const MiqtVirtualQLocalSocket*)(self) )->virtualbase_CanReadLine();
 }
 
-void QLocalSocket_override_virtual_Open(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) )->handle__Open = slot;
+bool QLocalSocket_override_virtual_Open(void* self, intptr_t slot) {
+	MiqtVirtualQLocalSocket* self_cast = dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Open = slot;
+	return true;
 }
 
 bool QLocalSocket_virtualbase_Open(void* self, int openMode) {
 	return ( (MiqtVirtualQLocalSocket*)(self) )->virtualbase_Open(openMode);
 }
 
-void QLocalSocket_override_virtual_Close(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) )->handle__Close = slot;
+bool QLocalSocket_override_virtual_Close(void* self, intptr_t slot) {
+	MiqtVirtualQLocalSocket* self_cast = dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Close = slot;
+	return true;
 }
 
 void QLocalSocket_virtualbase_Close(void* self) {
 	( (MiqtVirtualQLocalSocket*)(self) )->virtualbase_Close();
 }
 
-void QLocalSocket_override_virtual_WaitForBytesWritten(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) )->handle__WaitForBytesWritten = slot;
+bool QLocalSocket_override_virtual_WaitForBytesWritten(void* self, intptr_t slot) {
+	MiqtVirtualQLocalSocket* self_cast = dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WaitForBytesWritten = slot;
+	return true;
 }
 
 bool QLocalSocket_virtualbase_WaitForBytesWritten(void* self, int msecs) {
 	return ( (MiqtVirtualQLocalSocket*)(self) )->virtualbase_WaitForBytesWritten(msecs);
 }
 
-void QLocalSocket_override_virtual_WaitForReadyRead(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) )->handle__WaitForReadyRead = slot;
+bool QLocalSocket_override_virtual_WaitForReadyRead(void* self, intptr_t slot) {
+	MiqtVirtualQLocalSocket* self_cast = dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WaitForReadyRead = slot;
+	return true;
 }
 
 bool QLocalSocket_virtualbase_WaitForReadyRead(void* self, int msecs) {
 	return ( (MiqtVirtualQLocalSocket*)(self) )->virtualbase_WaitForReadyRead(msecs);
 }
 
-void QLocalSocket_override_virtual_ReadData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) )->handle__ReadData = slot;
+bool QLocalSocket_override_virtual_ReadData(void* self, intptr_t slot) {
+	MiqtVirtualQLocalSocket* self_cast = dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ReadData = slot;
+	return true;
 }
 
 long long QLocalSocket_virtualbase_ReadData(void* self, char* param1, long long param2) {
 	return ( (MiqtVirtualQLocalSocket*)(self) )->virtualbase_ReadData(param1, param2);
 }
 
-void QLocalSocket_override_virtual_ReadLineData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) )->handle__ReadLineData = slot;
+bool QLocalSocket_override_virtual_ReadLineData(void* self, intptr_t slot) {
+	MiqtVirtualQLocalSocket* self_cast = dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ReadLineData = slot;
+	return true;
 }
 
 long long QLocalSocket_virtualbase_ReadLineData(void* self, char* data, long long maxSize) {
 	return ( (MiqtVirtualQLocalSocket*)(self) )->virtualbase_ReadLineData(data, maxSize);
 }
 
-void QLocalSocket_override_virtual_SkipData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) )->handle__SkipData = slot;
+bool QLocalSocket_override_virtual_SkipData(void* self, intptr_t slot) {
+	MiqtVirtualQLocalSocket* self_cast = dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SkipData = slot;
+	return true;
 }
 
 long long QLocalSocket_virtualbase_SkipData(void* self, long long maxSize) {
 	return ( (MiqtVirtualQLocalSocket*)(self) )->virtualbase_SkipData(maxSize);
 }
 
-void QLocalSocket_override_virtual_WriteData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) )->handle__WriteData = slot;
+bool QLocalSocket_override_virtual_WriteData(void* self, intptr_t slot) {
+	MiqtVirtualQLocalSocket* self_cast = dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WriteData = slot;
+	return true;
 }
 
 long long QLocalSocket_virtualbase_WriteData(void* self, const char* param1, long long param2) {
 	return ( (MiqtVirtualQLocalSocket*)(self) )->virtualbase_WriteData(param1, param2);
 }
 
-void QLocalSocket_override_virtual_Pos(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) )->handle__Pos = slot;
+bool QLocalSocket_override_virtual_Pos(void* self, intptr_t slot) {
+	MiqtVirtualQLocalSocket* self_cast = dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Pos = slot;
+	return true;
 }
 
 long long QLocalSocket_virtualbase_Pos(const void* self) {
 	return ( (const MiqtVirtualQLocalSocket*)(self) )->virtualbase_Pos();
 }
 
-void QLocalSocket_override_virtual_Size(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) )->handle__Size = slot;
+bool QLocalSocket_override_virtual_Size(void* self, intptr_t slot) {
+	MiqtVirtualQLocalSocket* self_cast = dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Size = slot;
+	return true;
 }
 
 long long QLocalSocket_virtualbase_Size(const void* self) {
 	return ( (const MiqtVirtualQLocalSocket*)(self) )->virtualbase_Size();
 }
 
-void QLocalSocket_override_virtual_Seek(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) )->handle__Seek = slot;
+bool QLocalSocket_override_virtual_Seek(void* self, intptr_t slot) {
+	MiqtVirtualQLocalSocket* self_cast = dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Seek = slot;
+	return true;
 }
 
 bool QLocalSocket_virtualbase_Seek(void* self, long long pos) {
 	return ( (MiqtVirtualQLocalSocket*)(self) )->virtualbase_Seek(pos);
 }
 
-void QLocalSocket_override_virtual_AtEnd(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) )->handle__AtEnd = slot;
+bool QLocalSocket_override_virtual_AtEnd(void* self, intptr_t slot) {
+	MiqtVirtualQLocalSocket* self_cast = dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__AtEnd = slot;
+	return true;
 }
 
 bool QLocalSocket_virtualbase_AtEnd(const void* self) {
 	return ( (const MiqtVirtualQLocalSocket*)(self) )->virtualbase_AtEnd();
 }
 
-void QLocalSocket_override_virtual_Reset(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) )->handle__Reset = slot;
+bool QLocalSocket_override_virtual_Reset(void* self, intptr_t slot) {
+	MiqtVirtualQLocalSocket* self_cast = dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Reset = slot;
+	return true;
 }
 
 bool QLocalSocket_virtualbase_Reset(void* self) {

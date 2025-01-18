@@ -15,8 +15,7 @@ import (
 )
 
 type QPluginLoader struct {
-	h          *C.QPluginLoader
-	isSubclass bool
+	h *C.QPluginLoader
 	*QObject
 }
 
@@ -54,9 +53,7 @@ func UnsafeNewQPluginLoader(h unsafe.Pointer) *QPluginLoader {
 // NewQPluginLoader constructs a new QPluginLoader object.
 func NewQPluginLoader() *QPluginLoader {
 
-	ret := newQPluginLoader(C.QPluginLoader_new())
-	ret.isSubclass = true
-	return ret
+	return newQPluginLoader(C.QPluginLoader_new())
 }
 
 // NewQPluginLoader2 constructs a new QPluginLoader object.
@@ -66,17 +63,13 @@ func NewQPluginLoader2(fileName string) *QPluginLoader {
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 
-	ret := newQPluginLoader(C.QPluginLoader_new2(fileName_ms))
-	ret.isSubclass = true
-	return ret
+	return newQPluginLoader(C.QPluginLoader_new2(fileName_ms))
 }
 
 // NewQPluginLoader3 constructs a new QPluginLoader object.
 func NewQPluginLoader3(parent *QObject) *QPluginLoader {
 
-	ret := newQPluginLoader(C.QPluginLoader_new3(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPluginLoader(C.QPluginLoader_new3(parent.cPointer()))
 }
 
 // NewQPluginLoader4 constructs a new QPluginLoader object.
@@ -86,9 +79,7 @@ func NewQPluginLoader4(fileName string, parent *QObject) *QPluginLoader {
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 
-	ret := newQPluginLoader(C.QPluginLoader_new4(fileName_ms, parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPluginLoader(C.QPluginLoader_new4(fileName_ms, parent.cPointer()))
 }
 
 func (this *QPluginLoader) MetaObject() *QMetaObject {
@@ -243,10 +234,10 @@ func (this *QPluginLoader) callVirtualBase_Event(event *QEvent) bool {
 
 }
 func (this *QPluginLoader) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QPluginLoader_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPluginLoader_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPluginLoader_Event
@@ -271,10 +262,10 @@ func (this *QPluginLoader) callVirtualBase_EventFilter(watched *QObject, event *
 
 }
 func (this *QPluginLoader) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QPluginLoader_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPluginLoader_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPluginLoader_EventFilter
@@ -301,10 +292,10 @@ func (this *QPluginLoader) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
 }
 func (this *QPluginLoader) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QPluginLoader_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPluginLoader_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPluginLoader_TimerEvent
@@ -327,10 +318,10 @@ func (this *QPluginLoader) callVirtualBase_ChildEvent(event *QChildEvent) {
 
 }
 func (this *QPluginLoader) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QPluginLoader_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPluginLoader_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPluginLoader_ChildEvent
@@ -353,10 +344,10 @@ func (this *QPluginLoader) callVirtualBase_CustomEvent(event *QEvent) {
 
 }
 func (this *QPluginLoader) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QPluginLoader_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPluginLoader_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPluginLoader_CustomEvent
@@ -379,10 +370,10 @@ func (this *QPluginLoader) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
 }
 func (this *QPluginLoader) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QPluginLoader_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPluginLoader_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPluginLoader_ConnectNotify
@@ -405,10 +396,10 @@ func (this *QPluginLoader) callVirtualBase_DisconnectNotify(signal *QMetaMethod)
 
 }
 func (this *QPluginLoader) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QPluginLoader_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QPluginLoader_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPluginLoader_DisconnectNotify

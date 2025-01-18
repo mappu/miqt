@@ -90,12 +90,24 @@ void QScriptExtensionInterface_OperatorAssign(QScriptExtensionInterface* self, Q
 	self->operator=(*param1);
 }
 
-void QScriptExtensionInterface_override_virtual_Initialize(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptExtensionInterface*>( (QScriptExtensionInterface*)(self) )->handle__Initialize = slot;
+bool QScriptExtensionInterface_override_virtual_Initialize(void* self, intptr_t slot) {
+	MiqtVirtualQScriptExtensionInterface* self_cast = dynamic_cast<MiqtVirtualQScriptExtensionInterface*>( (QScriptExtensionInterface*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Initialize = slot;
+	return true;
 }
 
-void QScriptExtensionInterface_override_virtual_Keys(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQScriptExtensionInterface*>( (QScriptExtensionInterface*)(self) )->handle__Keys = slot;
+bool QScriptExtensionInterface_override_virtual_Keys(void* self, intptr_t slot) {
+	MiqtVirtualQScriptExtensionInterface* self_cast = dynamic_cast<MiqtVirtualQScriptExtensionInterface*>( (QScriptExtensionInterface*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Keys = slot;
+	return true;
 }
 
 void QScriptExtensionInterface_Delete(QScriptExtensionInterface* self) {

@@ -15,8 +15,7 @@ import (
 )
 
 type QGraphicsLayoutItem struct {
-	h          *C.QGraphicsLayoutItem
-	isSubclass bool
+	h *C.QGraphicsLayoutItem
 }
 
 func (this *QGraphicsLayoutItem) cPointer() *C.QGraphicsLayoutItem {
@@ -50,25 +49,19 @@ func UnsafeNewQGraphicsLayoutItem(h unsafe.Pointer) *QGraphicsLayoutItem {
 // NewQGraphicsLayoutItem constructs a new QGraphicsLayoutItem object.
 func NewQGraphicsLayoutItem() *QGraphicsLayoutItem {
 
-	ret := newQGraphicsLayoutItem(C.QGraphicsLayoutItem_new())
-	ret.isSubclass = true
-	return ret
+	return newQGraphicsLayoutItem(C.QGraphicsLayoutItem_new())
 }
 
 // NewQGraphicsLayoutItem2 constructs a new QGraphicsLayoutItem object.
 func NewQGraphicsLayoutItem2(parent *QGraphicsLayoutItem) *QGraphicsLayoutItem {
 
-	ret := newQGraphicsLayoutItem(C.QGraphicsLayoutItem_new2(parent.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQGraphicsLayoutItem(C.QGraphicsLayoutItem_new2(parent.cPointer()))
 }
 
 // NewQGraphicsLayoutItem3 constructs a new QGraphicsLayoutItem object.
 func NewQGraphicsLayoutItem3(parent *QGraphicsLayoutItem, isLayout bool) *QGraphicsLayoutItem {
 
-	ret := newQGraphicsLayoutItem(C.QGraphicsLayoutItem_new3(parent.cPointer(), (C.bool)(isLayout)))
-	ret.isSubclass = true
-	return ret
+	return newQGraphicsLayoutItem(C.QGraphicsLayoutItem_new3(parent.cPointer(), (C.bool)(isLayout)))
 }
 
 func (this *QGraphicsLayoutItem) SetSizePolicy(policy *QSizePolicy) {
@@ -241,10 +234,10 @@ func (this *QGraphicsLayoutItem) callVirtualBase_SetGeometry(rect *QRectF) {
 
 }
 func (this *QGraphicsLayoutItem) OnSetGeometry(slot func(super func(rect *QRectF), rect *QRectF)) {
-	if !this.isSubclass {
+	ok := C.QGraphicsLayoutItem_override_virtual_SetGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGraphicsLayoutItem_override_virtual_SetGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsLayoutItem_SetGeometry
@@ -267,10 +260,10 @@ func (this *QGraphicsLayoutItem) callVirtualBase_GetContentsMargins(left *float6
 
 }
 func (this *QGraphicsLayoutItem) OnGetContentsMargins(slot func(super func(left *float64, top *float64, right *float64, bottom *float64), left *float64, top *float64, right *float64, bottom *float64)) {
-	if !this.isSubclass {
+	ok := C.QGraphicsLayoutItem_override_virtual_GetContentsMargins(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGraphicsLayoutItem_override_virtual_GetContentsMargins(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsLayoutItem_GetContentsMargins
@@ -299,10 +292,10 @@ func (this *QGraphicsLayoutItem) callVirtualBase_UpdateGeometry() {
 
 }
 func (this *QGraphicsLayoutItem) OnUpdateGeometry(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QGraphicsLayoutItem_override_virtual_UpdateGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGraphicsLayoutItem_override_virtual_UpdateGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsLayoutItem_UpdateGeometry
@@ -316,10 +309,10 @@ func miqt_exec_callback_QGraphicsLayoutItem_UpdateGeometry(self *C.QGraphicsLayo
 
 }
 func (this *QGraphicsLayoutItem) OnSizeHint(slot func(which SizeHint, constraint *QSizeF) *QSizeF) {
-	if !this.isSubclass {
+	ok := C.QGraphicsLayoutItem_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QGraphicsLayoutItem_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsLayoutItem_SizeHint

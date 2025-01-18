@@ -16,8 +16,7 @@ import (
 )
 
 type QWebChannelAbstractTransport struct {
-	h          *C.QWebChannelAbstractTransport
-	isSubclass bool
+	h *C.QWebChannelAbstractTransport
 	*qt6.QObject
 }
 
@@ -55,17 +54,13 @@ func UnsafeNewQWebChannelAbstractTransport(h unsafe.Pointer) *QWebChannelAbstrac
 // NewQWebChannelAbstractTransport constructs a new QWebChannelAbstractTransport object.
 func NewQWebChannelAbstractTransport() *QWebChannelAbstractTransport {
 
-	ret := newQWebChannelAbstractTransport(C.QWebChannelAbstractTransport_new())
-	ret.isSubclass = true
-	return ret
+	return newQWebChannelAbstractTransport(C.QWebChannelAbstractTransport_new())
 }
 
 // NewQWebChannelAbstractTransport2 constructs a new QWebChannelAbstractTransport object.
 func NewQWebChannelAbstractTransport2(parent *qt6.QObject) *QWebChannelAbstractTransport {
 
-	ret := newQWebChannelAbstractTransport(C.QWebChannelAbstractTransport_new2((*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQWebChannelAbstractTransport(C.QWebChannelAbstractTransport_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QWebChannelAbstractTransport) MetaObject() *qt6.QMetaObject {
@@ -135,10 +130,10 @@ func QWebChannelAbstractTransport_Tr3(s string, c string, n int) string {
 	return _ret
 }
 func (this *QWebChannelAbstractTransport) OnSendMessage(slot func(message *qt6.QJsonObject)) {
-	if !this.isSubclass {
+	ok := C.QWebChannelAbstractTransport_override_virtual_SendMessage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebChannelAbstractTransport_override_virtual_SendMessage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebChannelAbstractTransport_SendMessage
@@ -161,10 +156,10 @@ func (this *QWebChannelAbstractTransport) callVirtualBase_Event(event *qt6.QEven
 
 }
 func (this *QWebChannelAbstractTransport) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QWebChannelAbstractTransport_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebChannelAbstractTransport_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebChannelAbstractTransport_Event
@@ -189,10 +184,10 @@ func (this *QWebChannelAbstractTransport) callVirtualBase_EventFilter(watched *q
 
 }
 func (this *QWebChannelAbstractTransport) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QWebChannelAbstractTransport_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebChannelAbstractTransport_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebChannelAbstractTransport_EventFilter
@@ -219,10 +214,10 @@ func (this *QWebChannelAbstractTransport) callVirtualBase_TimerEvent(event *qt6.
 
 }
 func (this *QWebChannelAbstractTransport) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebChannelAbstractTransport_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebChannelAbstractTransport_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebChannelAbstractTransport_TimerEvent
@@ -245,10 +240,10 @@ func (this *QWebChannelAbstractTransport) callVirtualBase_ChildEvent(event *qt6.
 
 }
 func (this *QWebChannelAbstractTransport) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebChannelAbstractTransport_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebChannelAbstractTransport_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebChannelAbstractTransport_ChildEvent
@@ -271,10 +266,10 @@ func (this *QWebChannelAbstractTransport) callVirtualBase_CustomEvent(event *qt6
 
 }
 func (this *QWebChannelAbstractTransport) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
-	if !this.isSubclass {
+	ok := C.QWebChannelAbstractTransport_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebChannelAbstractTransport_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebChannelAbstractTransport_CustomEvent
@@ -297,10 +292,10 @@ func (this *QWebChannelAbstractTransport) callVirtualBase_ConnectNotify(signal *
 
 }
 func (this *QWebChannelAbstractTransport) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QWebChannelAbstractTransport_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebChannelAbstractTransport_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebChannelAbstractTransport_ConnectNotify
@@ -323,10 +318,10 @@ func (this *QWebChannelAbstractTransport) callVirtualBase_DisconnectNotify(signa
 
 }
 func (this *QWebChannelAbstractTransport) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	if !this.isSubclass {
+	ok := C.QWebChannelAbstractTransport_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QWebChannelAbstractTransport_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebChannelAbstractTransport_DisconnectNotify

@@ -48,8 +48,7 @@ const (
 )
 
 type QJsonParseError struct {
-	h          *C.QJsonParseError
-	isSubclass bool
+	h *C.QJsonParseError
 }
 
 func (this *QJsonParseError) cPointer() *C.QJsonParseError {
@@ -102,8 +101,7 @@ func (this *QJsonParseError) GoGC() {
 }
 
 type QJsonDocument struct {
-	h          *C.QJsonDocument
-	isSubclass bool
+	h *C.QJsonDocument
 }
 
 func (this *QJsonDocument) cPointer() *C.QJsonDocument {
@@ -137,33 +135,25 @@ func UnsafeNewQJsonDocument(h unsafe.Pointer) *QJsonDocument {
 // NewQJsonDocument constructs a new QJsonDocument object.
 func NewQJsonDocument() *QJsonDocument {
 
-	ret := newQJsonDocument(C.QJsonDocument_new())
-	ret.isSubclass = true
-	return ret
+	return newQJsonDocument(C.QJsonDocument_new())
 }
 
 // NewQJsonDocument2 constructs a new QJsonDocument object.
 func NewQJsonDocument2(object *QJsonObject) *QJsonDocument {
 
-	ret := newQJsonDocument(C.QJsonDocument_new2(object.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQJsonDocument(C.QJsonDocument_new2(object.cPointer()))
 }
 
 // NewQJsonDocument3 constructs a new QJsonDocument object.
 func NewQJsonDocument3(array *QJsonArray) *QJsonDocument {
 
-	ret := newQJsonDocument(C.QJsonDocument_new3(array.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQJsonDocument(C.QJsonDocument_new3(array.cPointer()))
 }
 
 // NewQJsonDocument4 constructs a new QJsonDocument object.
 func NewQJsonDocument4(other *QJsonDocument) *QJsonDocument {
 
-	ret := newQJsonDocument(C.QJsonDocument_new4(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQJsonDocument(C.QJsonDocument_new4(other.cPointer()))
 }
 
 func (this *QJsonDocument) OperatorAssign(other *QJsonDocument) {

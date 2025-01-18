@@ -16,8 +16,7 @@ import (
 )
 
 type QRadioDataControl struct {
-	h          *C.QRadioDataControl
-	isSubclass bool
+	h *C.QRadioDataControl
 	*QMediaControl
 }
 

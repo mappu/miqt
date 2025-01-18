@@ -16,8 +16,7 @@ import (
 )
 
 type QAudioRecorder struct {
-	h          *C.QAudioRecorder
-	isSubclass bool
+	h *C.QAudioRecorder
 	*QMediaRecorder
 }
 
@@ -55,17 +54,13 @@ func UnsafeNewQAudioRecorder(h unsafe.Pointer) *QAudioRecorder {
 // NewQAudioRecorder constructs a new QAudioRecorder object.
 func NewQAudioRecorder() *QAudioRecorder {
 
-	ret := newQAudioRecorder(C.QAudioRecorder_new())
-	ret.isSubclass = true
-	return ret
+	return newQAudioRecorder(C.QAudioRecorder_new())
 }
 
 // NewQAudioRecorder2 constructs a new QAudioRecorder object.
 func NewQAudioRecorder2(parent *qt.QObject) *QAudioRecorder {
 
-	ret := newQAudioRecorder(C.QAudioRecorder_new2((*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQAudioRecorder(C.QAudioRecorder_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QAudioRecorder) MetaObject() *qt.QMetaObject {
@@ -236,10 +231,10 @@ func (this *QAudioRecorder) callVirtualBase_MediaObject() *QMediaObject {
 
 }
 func (this *QAudioRecorder) OnMediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
-	if !this.isSubclass {
+	ok := C.QAudioRecorder_override_virtual_MediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAudioRecorder_override_virtual_MediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioRecorder_MediaObject
@@ -261,10 +256,10 @@ func (this *QAudioRecorder) callVirtualBase_SetMediaObject(object *QMediaObject)
 
 }
 func (this *QAudioRecorder) OnSetMediaObject(slot func(super func(object *QMediaObject) bool, object *QMediaObject) bool) {
-	if !this.isSubclass {
+	ok := C.QAudioRecorder_override_virtual_SetMediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QAudioRecorder_override_virtual_SetMediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioRecorder_SetMediaObject

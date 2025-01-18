@@ -22,8 +22,7 @@ const (
 )
 
 type QPagedPaintDevice struct {
-	h          *C.QPagedPaintDevice
-	isSubclass bool
+	h *C.QPagedPaintDevice
 	*QPaintDevice
 }
 

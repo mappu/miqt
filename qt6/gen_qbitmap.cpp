@@ -184,24 +184,42 @@ QBitmap* QBitmap_FromData3(QSize* size, const unsigned char* bits, int monoForma
 	return new QBitmap(QBitmap::fromData(*size, static_cast<const uchar*>(bits), static_cast<QImage::Format>(monoFormat)));
 }
 
-void QBitmap_override_virtual_DevType(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQBitmap*>( (QBitmap*)(self) )->handle__DevType = slot;
+bool QBitmap_override_virtual_DevType(void* self, intptr_t slot) {
+	MiqtVirtualQBitmap* self_cast = dynamic_cast<MiqtVirtualQBitmap*>( (QBitmap*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DevType = slot;
+	return true;
 }
 
 int QBitmap_virtualbase_DevType(const void* self) {
 	return ( (const MiqtVirtualQBitmap*)(self) )->virtualbase_DevType();
 }
 
-void QBitmap_override_virtual_PaintEngine(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQBitmap*>( (QBitmap*)(self) )->handle__PaintEngine = slot;
+bool QBitmap_override_virtual_PaintEngine(void* self, intptr_t slot) {
+	MiqtVirtualQBitmap* self_cast = dynamic_cast<MiqtVirtualQBitmap*>( (QBitmap*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEngine = slot;
+	return true;
 }
 
 QPaintEngine* QBitmap_virtualbase_PaintEngine(const void* self) {
 	return ( (const MiqtVirtualQBitmap*)(self) )->virtualbase_PaintEngine();
 }
 
-void QBitmap_override_virtual_Metric(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQBitmap*>( (QBitmap*)(self) )->handle__Metric = slot;
+bool QBitmap_override_virtual_Metric(void* self, intptr_t slot) {
+	MiqtVirtualQBitmap* self_cast = dynamic_cast<MiqtVirtualQBitmap*>( (QBitmap*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Metric = slot;
+	return true;
 }
 
 int QBitmap_virtualbase_Metric(const void* self, int param1) {

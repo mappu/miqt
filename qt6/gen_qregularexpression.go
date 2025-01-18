@@ -52,8 +52,7 @@ const (
 )
 
 type QRegularExpression struct {
-	h          *C.QRegularExpression
-	isSubclass bool
+	h *C.QRegularExpression
 }
 
 func (this *QRegularExpression) cPointer() *C.QRegularExpression {
@@ -87,9 +86,7 @@ func UnsafeNewQRegularExpression(h unsafe.Pointer) *QRegularExpression {
 // NewQRegularExpression constructs a new QRegularExpression object.
 func NewQRegularExpression() *QRegularExpression {
 
-	ret := newQRegularExpression(C.QRegularExpression_new())
-	ret.isSubclass = true
-	return ret
+	return newQRegularExpression(C.QRegularExpression_new())
 }
 
 // NewQRegularExpression2 constructs a new QRegularExpression object.
@@ -99,17 +96,13 @@ func NewQRegularExpression2(pattern string) *QRegularExpression {
 	pattern_ms.len = C.size_t(len(pattern))
 	defer C.free(unsafe.Pointer(pattern_ms.data))
 
-	ret := newQRegularExpression(C.QRegularExpression_new2(pattern_ms))
-	ret.isSubclass = true
-	return ret
+	return newQRegularExpression(C.QRegularExpression_new2(pattern_ms))
 }
 
 // NewQRegularExpression3 constructs a new QRegularExpression object.
 func NewQRegularExpression3(re *QRegularExpression) *QRegularExpression {
 
-	ret := newQRegularExpression(C.QRegularExpression_new3(re.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQRegularExpression(C.QRegularExpression_new3(re.cPointer()))
 }
 
 // NewQRegularExpression4 constructs a new QRegularExpression object.
@@ -119,9 +112,7 @@ func NewQRegularExpression4(pattern string, options QRegularExpression__PatternO
 	pattern_ms.len = C.size_t(len(pattern))
 	defer C.free(unsafe.Pointer(pattern_ms.data))
 
-	ret := newQRegularExpression(C.QRegularExpression_new4(pattern_ms, (C.int)(options)))
-	ret.isSubclass = true
-	return ret
+	return newQRegularExpression(C.QRegularExpression_new4(pattern_ms, (C.int)(options)))
 }
 
 func (this *QRegularExpression) PatternOptions() QRegularExpression__PatternOption {
@@ -338,8 +329,7 @@ func (this *QRegularExpression) GoGC() {
 }
 
 type QRegularExpressionMatch struct {
-	h          *C.QRegularExpressionMatch
-	isSubclass bool
+	h *C.QRegularExpressionMatch
 }
 
 func (this *QRegularExpressionMatch) cPointer() *C.QRegularExpressionMatch {
@@ -373,17 +363,13 @@ func UnsafeNewQRegularExpressionMatch(h unsafe.Pointer) *QRegularExpressionMatch
 // NewQRegularExpressionMatch constructs a new QRegularExpressionMatch object.
 func NewQRegularExpressionMatch() *QRegularExpressionMatch {
 
-	ret := newQRegularExpressionMatch(C.QRegularExpressionMatch_new())
-	ret.isSubclass = true
-	return ret
+	return newQRegularExpressionMatch(C.QRegularExpressionMatch_new())
 }
 
 // NewQRegularExpressionMatch2 constructs a new QRegularExpressionMatch object.
 func NewQRegularExpressionMatch2(match *QRegularExpressionMatch) *QRegularExpressionMatch {
 
-	ret := newQRegularExpressionMatch(C.QRegularExpressionMatch_new2(match.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQRegularExpressionMatch(C.QRegularExpressionMatch_new2(match.cPointer()))
 }
 
 func (this *QRegularExpressionMatch) OperatorAssign(match *QRegularExpressionMatch) {
@@ -537,8 +523,7 @@ func (this *QRegularExpressionMatch) GoGC() {
 }
 
 type QRegularExpressionMatchIterator struct {
-	h          *C.QRegularExpressionMatchIterator
-	isSubclass bool
+	h *C.QRegularExpressionMatchIterator
 }
 
 func (this *QRegularExpressionMatchIterator) cPointer() *C.QRegularExpressionMatchIterator {
@@ -572,17 +557,13 @@ func UnsafeNewQRegularExpressionMatchIterator(h unsafe.Pointer) *QRegularExpress
 // NewQRegularExpressionMatchIterator constructs a new QRegularExpressionMatchIterator object.
 func NewQRegularExpressionMatchIterator() *QRegularExpressionMatchIterator {
 
-	ret := newQRegularExpressionMatchIterator(C.QRegularExpressionMatchIterator_new())
-	ret.isSubclass = true
-	return ret
+	return newQRegularExpressionMatchIterator(C.QRegularExpressionMatchIterator_new())
 }
 
 // NewQRegularExpressionMatchIterator2 constructs a new QRegularExpressionMatchIterator object.
 func NewQRegularExpressionMatchIterator2(iterator *QRegularExpressionMatchIterator) *QRegularExpressionMatchIterator {
 
-	ret := newQRegularExpressionMatchIterator(C.QRegularExpressionMatchIterator_new2(iterator.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQRegularExpressionMatchIterator(C.QRegularExpressionMatchIterator_new2(iterator.cPointer()))
 }
 
 func (this *QRegularExpressionMatchIterator) OperatorAssign(iterator *QRegularExpressionMatchIterator) {

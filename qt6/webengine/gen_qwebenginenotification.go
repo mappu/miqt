@@ -16,8 +16,7 @@ import (
 )
 
 type QWebEngineNotification struct {
-	h          *C.QWebEngineNotification
-	isSubclass bool
+	h *C.QWebEngineNotification
 	*qt6.QObject
 }
 

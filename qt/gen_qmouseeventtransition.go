@@ -15,8 +15,7 @@ import (
 )
 
 type QMouseEventTransition struct {
-	h          *C.QMouseEventTransition
-	isSubclass bool
+	h *C.QMouseEventTransition
 	*QEventTransition
 }
 
@@ -54,33 +53,25 @@ func UnsafeNewQMouseEventTransition(h unsafe.Pointer) *QMouseEventTransition {
 // NewQMouseEventTransition constructs a new QMouseEventTransition object.
 func NewQMouseEventTransition() *QMouseEventTransition {
 
-	ret := newQMouseEventTransition(C.QMouseEventTransition_new())
-	ret.isSubclass = true
-	return ret
+	return newQMouseEventTransition(C.QMouseEventTransition_new())
 }
 
 // NewQMouseEventTransition2 constructs a new QMouseEventTransition object.
 func NewQMouseEventTransition2(object *QObject, typeVal QEvent__Type, button MouseButton) *QMouseEventTransition {
 
-	ret := newQMouseEventTransition(C.QMouseEventTransition_new2(object.cPointer(), (C.int)(typeVal), (C.int)(button)))
-	ret.isSubclass = true
-	return ret
+	return newQMouseEventTransition(C.QMouseEventTransition_new2(object.cPointer(), (C.int)(typeVal), (C.int)(button)))
 }
 
 // NewQMouseEventTransition3 constructs a new QMouseEventTransition object.
 func NewQMouseEventTransition3(sourceState *QState) *QMouseEventTransition {
 
-	ret := newQMouseEventTransition(C.QMouseEventTransition_new3(sourceState.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQMouseEventTransition(C.QMouseEventTransition_new3(sourceState.cPointer()))
 }
 
 // NewQMouseEventTransition4 constructs a new QMouseEventTransition object.
 func NewQMouseEventTransition4(object *QObject, typeVal QEvent__Type, button MouseButton, sourceState *QState) *QMouseEventTransition {
 
-	ret := newQMouseEventTransition(C.QMouseEventTransition_new4(object.cPointer(), (C.int)(typeVal), (C.int)(button), sourceState.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQMouseEventTransition(C.QMouseEventTransition_new4(object.cPointer(), (C.int)(typeVal), (C.int)(button), sourceState.cPointer()))
 }
 
 func (this *QMouseEventTransition) MetaObject() *QMetaObject {
@@ -187,10 +178,10 @@ func (this *QMouseEventTransition) callVirtualBase_OnTransition(event *QEvent) {
 
 }
 func (this *QMouseEventTransition) OnOnTransition(slot func(super func(event *QEvent), event *QEvent)) {
-	if !this.isSubclass {
+	ok := C.QMouseEventTransition_override_virtual_OnTransition(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QMouseEventTransition_override_virtual_OnTransition(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMouseEventTransition_OnTransition
@@ -213,10 +204,10 @@ func (this *QMouseEventTransition) callVirtualBase_EventTest(event *QEvent) bool
 
 }
 func (this *QMouseEventTransition) OnEventTest(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QMouseEventTransition_override_virtual_EventTest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QMouseEventTransition_override_virtual_EventTest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMouseEventTransition_EventTest
@@ -241,10 +232,10 @@ func (this *QMouseEventTransition) callVirtualBase_Event(e *QEvent) bool {
 
 }
 func (this *QMouseEventTransition) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
-	if !this.isSubclass {
+	ok := C.QMouseEventTransition_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QMouseEventTransition_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QMouseEventTransition_Event

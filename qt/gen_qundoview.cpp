@@ -1080,264 +1080,462 @@ struct miqt_string QUndoView_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QUndoView_override_virtual_VisualRect(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__VisualRect = slot;
+bool QUndoView_override_virtual_VisualRect(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__VisualRect = slot;
+	return true;
 }
 
 QRect* QUndoView_virtualbase_VisualRect(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_VisualRect(index);
 }
 
-void QUndoView_override_virtual_ScrollTo(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__ScrollTo = slot;
+bool QUndoView_override_virtual_ScrollTo(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ScrollTo = slot;
+	return true;
 }
 
 void QUndoView_virtualbase_ScrollTo(void* self, QModelIndex* index, int hint) {
 	( (MiqtVirtualQUndoView*)(self) )->virtualbase_ScrollTo(index, hint);
 }
 
-void QUndoView_override_virtual_IndexAt(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__IndexAt = slot;
+bool QUndoView_override_virtual_IndexAt(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IndexAt = slot;
+	return true;
 }
 
 QModelIndex* QUndoView_virtualbase_IndexAt(const void* self, QPoint* p) {
 	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_IndexAt(p);
 }
 
-void QUndoView_override_virtual_DoItemsLayout(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__DoItemsLayout = slot;
+bool QUndoView_override_virtual_DoItemsLayout(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DoItemsLayout = slot;
+	return true;
 }
 
 void QUndoView_virtualbase_DoItemsLayout(void* self) {
 	( (MiqtVirtualQUndoView*)(self) )->virtualbase_DoItemsLayout();
 }
 
-void QUndoView_override_virtual_Reset(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__Reset = slot;
+bool QUndoView_override_virtual_Reset(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Reset = slot;
+	return true;
 }
 
 void QUndoView_virtualbase_Reset(void* self) {
 	( (MiqtVirtualQUndoView*)(self) )->virtualbase_Reset();
 }
 
-void QUndoView_override_virtual_SetRootIndex(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__SetRootIndex = slot;
+bool QUndoView_override_virtual_SetRootIndex(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetRootIndex = slot;
+	return true;
 }
 
 void QUndoView_virtualbase_SetRootIndex(void* self, QModelIndex* index) {
 	( (MiqtVirtualQUndoView*)(self) )->virtualbase_SetRootIndex(index);
 }
 
-void QUndoView_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__Event = slot;
+bool QUndoView_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QUndoView_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQUndoView*)(self) )->virtualbase_Event(e);
 }
 
-void QUndoView_override_virtual_ScrollContentsBy(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__ScrollContentsBy = slot;
+bool QUndoView_override_virtual_ScrollContentsBy(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ScrollContentsBy = slot;
+	return true;
 }
 
 void QUndoView_virtualbase_ScrollContentsBy(void* self, int dx, int dy) {
 	( (MiqtVirtualQUndoView*)(self) )->virtualbase_ScrollContentsBy(dx, dy);
 }
 
-void QUndoView_override_virtual_DataChanged(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__DataChanged = slot;
+bool QUndoView_override_virtual_DataChanged(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DataChanged = slot;
+	return true;
 }
 
 void QUndoView_virtualbase_DataChanged(void* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array /* of int */  roles) {
 	( (MiqtVirtualQUndoView*)(self) )->virtualbase_DataChanged(topLeft, bottomRight, roles);
 }
 
-void QUndoView_override_virtual_RowsInserted(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__RowsInserted = slot;
+bool QUndoView_override_virtual_RowsInserted(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RowsInserted = slot;
+	return true;
 }
 
 void QUndoView_virtualbase_RowsInserted(void* self, QModelIndex* parent, int start, int end) {
 	( (MiqtVirtualQUndoView*)(self) )->virtualbase_RowsInserted(parent, start, end);
 }
 
-void QUndoView_override_virtual_RowsAboutToBeRemoved(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__RowsAboutToBeRemoved = slot;
+bool QUndoView_override_virtual_RowsAboutToBeRemoved(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RowsAboutToBeRemoved = slot;
+	return true;
 }
 
 void QUndoView_virtualbase_RowsAboutToBeRemoved(void* self, QModelIndex* parent, int start, int end) {
 	( (MiqtVirtualQUndoView*)(self) )->virtualbase_RowsAboutToBeRemoved(parent, start, end);
 }
 
-void QUndoView_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__MouseMoveEvent = slot;
+bool QUndoView_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QUndoView_virtualbase_MouseMoveEvent(void* self, QMouseEvent* e) {
 	( (MiqtVirtualQUndoView*)(self) )->virtualbase_MouseMoveEvent(e);
 }
 
-void QUndoView_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__MouseReleaseEvent = slot;
+bool QUndoView_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QUndoView_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* e) {
 	( (MiqtVirtualQUndoView*)(self) )->virtualbase_MouseReleaseEvent(e);
 }
 
-void QUndoView_override_virtual_WheelEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__WheelEvent = slot;
+bool QUndoView_override_virtual_WheelEvent(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WheelEvent = slot;
+	return true;
 }
 
 void QUndoView_virtualbase_WheelEvent(void* self, QWheelEvent* e) {
 	( (MiqtVirtualQUndoView*)(self) )->virtualbase_WheelEvent(e);
 }
 
-void QUndoView_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__TimerEvent = slot;
+bool QUndoView_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QUndoView_virtualbase_TimerEvent(void* self, QTimerEvent* e) {
 	( (MiqtVirtualQUndoView*)(self) )->virtualbase_TimerEvent(e);
 }
 
-void QUndoView_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__ResizeEvent = slot;
+bool QUndoView_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QUndoView_virtualbase_ResizeEvent(void* self, QResizeEvent* e) {
 	( (MiqtVirtualQUndoView*)(self) )->virtualbase_ResizeEvent(e);
 }
 
-void QUndoView_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__DragMoveEvent = slot;
+bool QUndoView_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragMoveEvent = slot;
+	return true;
 }
 
 void QUndoView_virtualbase_DragMoveEvent(void* self, QDragMoveEvent* e) {
 	( (MiqtVirtualQUndoView*)(self) )->virtualbase_DragMoveEvent(e);
 }
 
-void QUndoView_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__DragLeaveEvent = slot;
+bool QUndoView_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragLeaveEvent = slot;
+	return true;
 }
 
 void QUndoView_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* e) {
 	( (MiqtVirtualQUndoView*)(self) )->virtualbase_DragLeaveEvent(e);
 }
 
-void QUndoView_override_virtual_DropEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__DropEvent = slot;
+bool QUndoView_override_virtual_DropEvent(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropEvent = slot;
+	return true;
 }
 
 void QUndoView_virtualbase_DropEvent(void* self, QDropEvent* e) {
 	( (MiqtVirtualQUndoView*)(self) )->virtualbase_DropEvent(e);
 }
 
-void QUndoView_override_virtual_StartDrag(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__StartDrag = slot;
+bool QUndoView_override_virtual_StartDrag(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__StartDrag = slot;
+	return true;
 }
 
 void QUndoView_virtualbase_StartDrag(void* self, int supportedActions) {
 	( (MiqtVirtualQUndoView*)(self) )->virtualbase_StartDrag(supportedActions);
 }
 
-void QUndoView_override_virtual_ViewOptions(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__ViewOptions = slot;
+bool QUndoView_override_virtual_ViewOptions(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ViewOptions = slot;
+	return true;
 }
 
 QStyleOptionViewItem* QUndoView_virtualbase_ViewOptions(const void* self) {
 	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_ViewOptions();
 }
 
-void QUndoView_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__PaintEvent = slot;
+bool QUndoView_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QUndoView_virtualbase_PaintEvent(void* self, QPaintEvent* e) {
 	( (MiqtVirtualQUndoView*)(self) )->virtualbase_PaintEvent(e);
 }
 
-void QUndoView_override_virtual_HorizontalOffset(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__HorizontalOffset = slot;
+bool QUndoView_override_virtual_HorizontalOffset(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HorizontalOffset = slot;
+	return true;
 }
 
 int QUndoView_virtualbase_HorizontalOffset(const void* self) {
 	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_HorizontalOffset();
 }
 
-void QUndoView_override_virtual_VerticalOffset(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__VerticalOffset = slot;
+bool QUndoView_override_virtual_VerticalOffset(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__VerticalOffset = slot;
+	return true;
 }
 
 int QUndoView_virtualbase_VerticalOffset(const void* self) {
 	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_VerticalOffset();
 }
 
-void QUndoView_override_virtual_MoveCursor(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__MoveCursor = slot;
+bool QUndoView_override_virtual_MoveCursor(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveCursor = slot;
+	return true;
 }
 
 QModelIndex* QUndoView_virtualbase_MoveCursor(void* self, int cursorAction, int modifiers) {
 	return ( (MiqtVirtualQUndoView*)(self) )->virtualbase_MoveCursor(cursorAction, modifiers);
 }
 
-void QUndoView_override_virtual_SetSelection(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__SetSelection = slot;
+bool QUndoView_override_virtual_SetSelection(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetSelection = slot;
+	return true;
 }
 
 void QUndoView_virtualbase_SetSelection(void* self, QRect* rect, int command) {
 	( (MiqtVirtualQUndoView*)(self) )->virtualbase_SetSelection(rect, command);
 }
 
-void QUndoView_override_virtual_VisualRegionForSelection(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__VisualRegionForSelection = slot;
+bool QUndoView_override_virtual_VisualRegionForSelection(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__VisualRegionForSelection = slot;
+	return true;
 }
 
 QRegion* QUndoView_virtualbase_VisualRegionForSelection(const void* self, QItemSelection* selection) {
 	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_VisualRegionForSelection(selection);
 }
 
-void QUndoView_override_virtual_SelectedIndexes(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__SelectedIndexes = slot;
+bool QUndoView_override_virtual_SelectedIndexes(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SelectedIndexes = slot;
+	return true;
 }
 
 struct miqt_array /* of QModelIndex* */  QUndoView_virtualbase_SelectedIndexes(const void* self) {
 	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_SelectedIndexes();
 }
 
-void QUndoView_override_virtual_UpdateGeometries(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__UpdateGeometries = slot;
+bool QUndoView_override_virtual_UpdateGeometries(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateGeometries = slot;
+	return true;
 }
 
 void QUndoView_virtualbase_UpdateGeometries(void* self) {
 	( (MiqtVirtualQUndoView*)(self) )->virtualbase_UpdateGeometries();
 }
 
-void QUndoView_override_virtual_IsIndexHidden(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__IsIndexHidden = slot;
+bool QUndoView_override_virtual_IsIndexHidden(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsIndexHidden = slot;
+	return true;
 }
 
 bool QUndoView_virtualbase_IsIndexHidden(const void* self, QModelIndex* index) {
 	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_IsIndexHidden(index);
 }
 
-void QUndoView_override_virtual_SelectionChanged(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__SelectionChanged = slot;
+bool QUndoView_override_virtual_SelectionChanged(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SelectionChanged = slot;
+	return true;
 }
 
 void QUndoView_virtualbase_SelectionChanged(void* self, QItemSelection* selected, QItemSelection* deselected) {
 	( (MiqtVirtualQUndoView*)(self) )->virtualbase_SelectionChanged(selected, deselected);
 }
 
-void QUndoView_override_virtual_CurrentChanged(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__CurrentChanged = slot;
+bool QUndoView_override_virtual_CurrentChanged(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CurrentChanged = slot;
+	return true;
 }
 
 void QUndoView_virtualbase_CurrentChanged(void* self, QModelIndex* current, QModelIndex* previous) {
 	( (MiqtVirtualQUndoView*)(self) )->virtualbase_CurrentChanged(current, previous);
 }
 
-void QUndoView_override_virtual_ViewportSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) )->handle__ViewportSizeHint = slot;
+bool QUndoView_override_virtual_ViewportSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ViewportSizeHint = slot;
+	return true;
 }
 
 QSize* QUndoView_virtualbase_ViewportSizeHint(const void* self) {

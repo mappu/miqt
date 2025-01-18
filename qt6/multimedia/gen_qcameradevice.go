@@ -23,8 +23,7 @@ const (
 )
 
 type QCameraFormat struct {
-	h          *C.QCameraFormat
-	isSubclass bool
+	h *C.QCameraFormat
 }
 
 func (this *QCameraFormat) cPointer() *C.QCameraFormat {
@@ -58,17 +57,13 @@ func UnsafeNewQCameraFormat(h unsafe.Pointer) *QCameraFormat {
 // NewQCameraFormat constructs a new QCameraFormat object.
 func NewQCameraFormat() *QCameraFormat {
 
-	ret := newQCameraFormat(C.QCameraFormat_new())
-	ret.isSubclass = true
-	return ret
+	return newQCameraFormat(C.QCameraFormat_new())
 }
 
 // NewQCameraFormat2 constructs a new QCameraFormat object.
 func NewQCameraFormat2(other *QCameraFormat) *QCameraFormat {
 
-	ret := newQCameraFormat(C.QCameraFormat_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQCameraFormat(C.QCameraFormat_new2(other.cPointer()))
 }
 
 func (this *QCameraFormat) OperatorAssign(other *QCameraFormat) {
@@ -120,8 +115,7 @@ func (this *QCameraFormat) GoGC() {
 }
 
 type QCameraDevice struct {
-	h          *C.QCameraDevice
-	isSubclass bool
+	h *C.QCameraDevice
 }
 
 func (this *QCameraDevice) cPointer() *C.QCameraDevice {
@@ -155,17 +149,13 @@ func UnsafeNewQCameraDevice(h unsafe.Pointer) *QCameraDevice {
 // NewQCameraDevice constructs a new QCameraDevice object.
 func NewQCameraDevice() *QCameraDevice {
 
-	ret := newQCameraDevice(C.QCameraDevice_new())
-	ret.isSubclass = true
-	return ret
+	return newQCameraDevice(C.QCameraDevice_new())
 }
 
 // NewQCameraDevice2 constructs a new QCameraDevice object.
 func NewQCameraDevice2(other *QCameraDevice) *QCameraDevice {
 
-	ret := newQCameraDevice(C.QCameraDevice_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQCameraDevice(C.QCameraDevice_new2(other.cPointer()))
 }
 
 func (this *QCameraDevice) OperatorAssign(other *QCameraDevice) {

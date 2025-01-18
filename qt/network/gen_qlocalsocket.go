@@ -41,8 +41,7 @@ const (
 )
 
 type QLocalSocket struct {
-	h          *C.QLocalSocket
-	isSubclass bool
+	h *C.QLocalSocket
 	*qt.QIODevice
 }
 
@@ -80,17 +79,13 @@ func UnsafeNewQLocalSocket(h unsafe.Pointer) *QLocalSocket {
 // NewQLocalSocket constructs a new QLocalSocket object.
 func NewQLocalSocket() *QLocalSocket {
 
-	ret := newQLocalSocket(C.QLocalSocket_new())
-	ret.isSubclass = true
-	return ret
+	return newQLocalSocket(C.QLocalSocket_new())
 }
 
 // NewQLocalSocket2 constructs a new QLocalSocket object.
 func NewQLocalSocket2(parent *qt.QObject) *QLocalSocket {
 
-	ret := newQLocalSocket(C.QLocalSocket_new2((*C.QObject)(parent.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQLocalSocket(C.QLocalSocket_new2((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QLocalSocket) MetaObject() *qt.QMetaObject {
@@ -407,10 +402,10 @@ func (this *QLocalSocket) callVirtualBase_IsSequential() bool {
 
 }
 func (this *QLocalSocket) OnIsSequential(slot func(super func() bool) bool) {
-	if !this.isSubclass {
+	ok := C.QLocalSocket_override_virtual_IsSequential(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLocalSocket_override_virtual_IsSequential(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLocalSocket_IsSequential
@@ -432,10 +427,10 @@ func (this *QLocalSocket) callVirtualBase_BytesAvailable() int64 {
 
 }
 func (this *QLocalSocket) OnBytesAvailable(slot func(super func() int64) int64) {
-	if !this.isSubclass {
+	ok := C.QLocalSocket_override_virtual_BytesAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLocalSocket_override_virtual_BytesAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLocalSocket_BytesAvailable
@@ -457,10 +452,10 @@ func (this *QLocalSocket) callVirtualBase_BytesToWrite() int64 {
 
 }
 func (this *QLocalSocket) OnBytesToWrite(slot func(super func() int64) int64) {
-	if !this.isSubclass {
+	ok := C.QLocalSocket_override_virtual_BytesToWrite(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLocalSocket_override_virtual_BytesToWrite(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLocalSocket_BytesToWrite
@@ -482,10 +477,10 @@ func (this *QLocalSocket) callVirtualBase_CanReadLine() bool {
 
 }
 func (this *QLocalSocket) OnCanReadLine(slot func(super func() bool) bool) {
-	if !this.isSubclass {
+	ok := C.QLocalSocket_override_virtual_CanReadLine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLocalSocket_override_virtual_CanReadLine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLocalSocket_CanReadLine
@@ -507,10 +502,10 @@ func (this *QLocalSocket) callVirtualBase_Open(openMode qt.QIODevice__OpenModeFl
 
 }
 func (this *QLocalSocket) OnOpen(slot func(super func(openMode qt.QIODevice__OpenModeFlag) bool, openMode qt.QIODevice__OpenModeFlag) bool) {
-	if !this.isSubclass {
+	ok := C.QLocalSocket_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLocalSocket_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLocalSocket_Open
@@ -535,10 +530,10 @@ func (this *QLocalSocket) callVirtualBase_Close() {
 
 }
 func (this *QLocalSocket) OnClose(slot func(super func())) {
-	if !this.isSubclass {
+	ok := C.QLocalSocket_override_virtual_Close(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLocalSocket_override_virtual_Close(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLocalSocket_Close
@@ -558,10 +553,10 @@ func (this *QLocalSocket) callVirtualBase_WaitForBytesWritten(msecs int) bool {
 
 }
 func (this *QLocalSocket) OnWaitForBytesWritten(slot func(super func(msecs int) bool, msecs int) bool) {
-	if !this.isSubclass {
+	ok := C.QLocalSocket_override_virtual_WaitForBytesWritten(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLocalSocket_override_virtual_WaitForBytesWritten(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLocalSocket_WaitForBytesWritten
@@ -586,10 +581,10 @@ func (this *QLocalSocket) callVirtualBase_WaitForReadyRead(msecs int) bool {
 
 }
 func (this *QLocalSocket) OnWaitForReadyRead(slot func(super func(msecs int) bool, msecs int) bool) {
-	if !this.isSubclass {
+	ok := C.QLocalSocket_override_virtual_WaitForReadyRead(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLocalSocket_override_virtual_WaitForReadyRead(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLocalSocket_WaitForReadyRead
@@ -616,10 +611,10 @@ func (this *QLocalSocket) callVirtualBase_ReadData(param1 string, param2 int64) 
 
 }
 func (this *QLocalSocket) OnReadData(slot func(super func(param1 string, param2 int64) int64, param1 string, param2 int64) int64) {
-	if !this.isSubclass {
+	ok := C.QLocalSocket_override_virtual_ReadData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLocalSocket_override_virtual_ReadData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLocalSocket_ReadData
@@ -649,10 +644,10 @@ func (this *QLocalSocket) callVirtualBase_WriteData(param1 string, param2 int64)
 
 }
 func (this *QLocalSocket) OnWriteData(slot func(super func(param1 string, param2 int64) int64, param1 string, param2 int64) int64) {
-	if !this.isSubclass {
+	ok := C.QLocalSocket_override_virtual_WriteData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLocalSocket_override_virtual_WriteData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLocalSocket_WriteData
@@ -680,10 +675,10 @@ func (this *QLocalSocket) callVirtualBase_Pos() int64 {
 
 }
 func (this *QLocalSocket) OnPos(slot func(super func() int64) int64) {
-	if !this.isSubclass {
+	ok := C.QLocalSocket_override_virtual_Pos(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLocalSocket_override_virtual_Pos(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLocalSocket_Pos
@@ -705,10 +700,10 @@ func (this *QLocalSocket) callVirtualBase_Size() int64 {
 
 }
 func (this *QLocalSocket) OnSize(slot func(super func() int64) int64) {
-	if !this.isSubclass {
+	ok := C.QLocalSocket_override_virtual_Size(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLocalSocket_override_virtual_Size(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLocalSocket_Size
@@ -730,10 +725,10 @@ func (this *QLocalSocket) callVirtualBase_Seek(pos int64) bool {
 
 }
 func (this *QLocalSocket) OnSeek(slot func(super func(pos int64) bool, pos int64) bool) {
-	if !this.isSubclass {
+	ok := C.QLocalSocket_override_virtual_Seek(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLocalSocket_override_virtual_Seek(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLocalSocket_Seek
@@ -758,10 +753,10 @@ func (this *QLocalSocket) callVirtualBase_AtEnd() bool {
 
 }
 func (this *QLocalSocket) OnAtEnd(slot func(super func() bool) bool) {
-	if !this.isSubclass {
+	ok := C.QLocalSocket_override_virtual_AtEnd(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLocalSocket_override_virtual_AtEnd(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLocalSocket_AtEnd
@@ -783,10 +778,10 @@ func (this *QLocalSocket) callVirtualBase_Reset() bool {
 
 }
 func (this *QLocalSocket) OnReset(slot func(super func() bool) bool) {
-	if !this.isSubclass {
+	ok := C.QLocalSocket_override_virtual_Reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLocalSocket_override_virtual_Reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLocalSocket_Reset
@@ -810,10 +805,10 @@ func (this *QLocalSocket) callVirtualBase_ReadLineData(data string, maxlen int64
 
 }
 func (this *QLocalSocket) OnReadLineData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
-	if !this.isSubclass {
+	ok := C.QLocalSocket_override_virtual_ReadLineData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
-	C.QLocalSocket_override_virtual_ReadLineData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QLocalSocket_ReadLineData

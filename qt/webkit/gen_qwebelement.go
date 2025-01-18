@@ -23,8 +23,7 @@ const (
 )
 
 type QWebElement struct {
-	h          *C.QWebElement
-	isSubclass bool
+	h *C.QWebElement
 }
 
 func (this *QWebElement) cPointer() *C.QWebElement {
@@ -58,17 +57,13 @@ func UnsafeNewQWebElement(h unsafe.Pointer) *QWebElement {
 // NewQWebElement constructs a new QWebElement object.
 func NewQWebElement() *QWebElement {
 
-	ret := newQWebElement(C.QWebElement_new())
-	ret.isSubclass = true
-	return ret
+	return newQWebElement(C.QWebElement_new())
 }
 
 // NewQWebElement2 constructs a new QWebElement object.
 func NewQWebElement2(param1 *QWebElement) *QWebElement {
 
-	ret := newQWebElement(C.QWebElement_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebElement(C.QWebElement_new2(param1.cPointer()))
 }
 
 func (this *QWebElement) OperatorAssign(param1 *QWebElement) {
@@ -599,8 +594,7 @@ func (this *QWebElement) GoGC() {
 }
 
 type QWebElementCollection struct {
-	h          *C.QWebElementCollection
-	isSubclass bool
+	h *C.QWebElementCollection
 }
 
 func (this *QWebElementCollection) cPointer() *C.QWebElementCollection {
@@ -634,9 +628,7 @@ func UnsafeNewQWebElementCollection(h unsafe.Pointer) *QWebElementCollection {
 // NewQWebElementCollection constructs a new QWebElementCollection object.
 func NewQWebElementCollection() *QWebElementCollection {
 
-	ret := newQWebElementCollection(C.QWebElementCollection_new())
-	ret.isSubclass = true
-	return ret
+	return newQWebElementCollection(C.QWebElementCollection_new())
 }
 
 // NewQWebElementCollection2 constructs a new QWebElementCollection object.
@@ -646,17 +638,13 @@ func NewQWebElementCollection2(contextElement *QWebElement, query string) *QWebE
 	query_ms.len = C.size_t(len(query))
 	defer C.free(unsafe.Pointer(query_ms.data))
 
-	ret := newQWebElementCollection(C.QWebElementCollection_new2(contextElement.cPointer(), query_ms))
-	ret.isSubclass = true
-	return ret
+	return newQWebElementCollection(C.QWebElementCollection_new2(contextElement.cPointer(), query_ms))
 }
 
 // NewQWebElementCollection3 constructs a new QWebElementCollection object.
 func NewQWebElementCollection3(param1 *QWebElementCollection) *QWebElementCollection {
 
-	ret := newQWebElementCollection(C.QWebElementCollection_new3(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebElementCollection(C.QWebElementCollection_new3(param1.cPointer()))
 }
 
 func (this *QWebElementCollection) OperatorAssign(param1 *QWebElementCollection) {
@@ -768,8 +756,7 @@ func (this *QWebElementCollection) GoGC() {
 }
 
 type QWebElementCollection__const_iterator struct {
-	h          *C.QWebElementCollection__const_iterator
-	isSubclass bool
+	h *C.QWebElementCollection__const_iterator
 }
 
 func (this *QWebElementCollection__const_iterator) cPointer() *C.QWebElementCollection__const_iterator {
@@ -803,17 +790,13 @@ func UnsafeNewQWebElementCollection__const_iterator(h unsafe.Pointer) *QWebEleme
 // NewQWebElementCollection__const_iterator constructs a new QWebElementCollection::const_iterator object.
 func NewQWebElementCollection__const_iterator(collection_ *QWebElementCollection, index int) *QWebElementCollection__const_iterator {
 
-	ret := newQWebElementCollection__const_iterator(C.QWebElementCollection__const_iterator_new(collection_.cPointer(), (C.int)(index)))
-	ret.isSubclass = true
-	return ret
+	return newQWebElementCollection__const_iterator(C.QWebElementCollection__const_iterator_new(collection_.cPointer(), (C.int)(index)))
 }
 
 // NewQWebElementCollection__const_iterator2 constructs a new QWebElementCollection::const_iterator object.
 func NewQWebElementCollection__const_iterator2(o *QWebElementCollection__const_iterator) *QWebElementCollection__const_iterator {
 
-	ret := newQWebElementCollection__const_iterator(C.QWebElementCollection__const_iterator_new2(o.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebElementCollection__const_iterator(C.QWebElementCollection__const_iterator_new2(o.cPointer()))
 }
 
 func (this *QWebElementCollection__const_iterator) OperatorMultiply() *QWebElement {
@@ -905,8 +888,7 @@ func (this *QWebElementCollection__const_iterator) GoGC() {
 }
 
 type QWebElementCollection__iterator struct {
-	h          *C.QWebElementCollection__iterator
-	isSubclass bool
+	h *C.QWebElementCollection__iterator
 }
 
 func (this *QWebElementCollection__iterator) cPointer() *C.QWebElementCollection__iterator {
@@ -940,17 +922,13 @@ func UnsafeNewQWebElementCollection__iterator(h unsafe.Pointer) *QWebElementColl
 // NewQWebElementCollection__iterator constructs a new QWebElementCollection::iterator object.
 func NewQWebElementCollection__iterator(collection_ *QWebElementCollection, index int) *QWebElementCollection__iterator {
 
-	ret := newQWebElementCollection__iterator(C.QWebElementCollection__iterator_new(collection_.cPointer(), (C.int)(index)))
-	ret.isSubclass = true
-	return ret
+	return newQWebElementCollection__iterator(C.QWebElementCollection__iterator_new(collection_.cPointer(), (C.int)(index)))
 }
 
 // NewQWebElementCollection__iterator2 constructs a new QWebElementCollection::iterator object.
 func NewQWebElementCollection__iterator2(o *QWebElementCollection__iterator) *QWebElementCollection__iterator {
 
-	ret := newQWebElementCollection__iterator(C.QWebElementCollection__iterator_new2(o.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQWebElementCollection__iterator(C.QWebElementCollection__iterator_new2(o.cPointer()))
 }
 
 func (this *QWebElementCollection__iterator) OperatorMultiply() *QWebElement {

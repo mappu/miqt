@@ -55,8 +55,7 @@ const (
 )
 
 type QNetworkReply struct {
-	h          *C.QNetworkReply
-	isSubclass bool
+	h *C.QNetworkReply
 	*qt.QIODevice
 }
 

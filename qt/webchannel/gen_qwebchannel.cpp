@@ -369,56 +369,98 @@ struct miqt_string QWebChannel_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QWebChannel_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebChannel*>( (QWebChannel*)(self) )->handle__Event = slot;
+bool QWebChannel_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQWebChannel* self_cast = dynamic_cast<MiqtVirtualQWebChannel*>( (QWebChannel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QWebChannel_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQWebChannel*)(self) )->virtualbase_Event(event);
 }
 
-void QWebChannel_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebChannel*>( (QWebChannel*)(self) )->handle__EventFilter = slot;
+bool QWebChannel_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQWebChannel* self_cast = dynamic_cast<MiqtVirtualQWebChannel*>( (QWebChannel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QWebChannel_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQWebChannel*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QWebChannel_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebChannel*>( (QWebChannel*)(self) )->handle__TimerEvent = slot;
+bool QWebChannel_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebChannel* self_cast = dynamic_cast<MiqtVirtualQWebChannel*>( (QWebChannel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QWebChannel_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQWebChannel*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QWebChannel_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebChannel*>( (QWebChannel*)(self) )->handle__ChildEvent = slot;
+bool QWebChannel_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebChannel* self_cast = dynamic_cast<MiqtVirtualQWebChannel*>( (QWebChannel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QWebChannel_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQWebChannel*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QWebChannel_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebChannel*>( (QWebChannel*)(self) )->handle__CustomEvent = slot;
+bool QWebChannel_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWebChannel* self_cast = dynamic_cast<MiqtVirtualQWebChannel*>( (QWebChannel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QWebChannel_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQWebChannel*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QWebChannel_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebChannel*>( (QWebChannel*)(self) )->handle__ConnectNotify = slot;
+bool QWebChannel_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQWebChannel* self_cast = dynamic_cast<MiqtVirtualQWebChannel*>( (QWebChannel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QWebChannel_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWebChannel*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QWebChannel_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQWebChannel*>( (QWebChannel*)(self) )->handle__DisconnectNotify = slot;
+bool QWebChannel_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQWebChannel* self_cast = dynamic_cast<MiqtVirtualQWebChannel*>( (QWebChannel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QWebChannel_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

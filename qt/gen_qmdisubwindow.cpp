@@ -1340,352 +1340,616 @@ void QMdiSubWindow_SetOption2(QMdiSubWindow* self, int option, bool on) {
 	self->setOption(static_cast<QMdiSubWindow::SubWindowOption>(option), on);
 }
 
-void QMdiSubWindow_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__SizeHint = slot;
+bool QMdiSubWindow_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QMdiSubWindow_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_SizeHint();
 }
 
-void QMdiSubWindow_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__MinimumSizeHint = slot;
+bool QMdiSubWindow_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QMdiSubWindow_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QMdiSubWindow_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__EventFilter = slot;
+bool QMdiSubWindow_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QMdiSubWindow_virtualbase_EventFilter(void* self, QObject* object, QEvent* event) {
 	return ( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_EventFilter(object, event);
 }
 
-void QMdiSubWindow_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__Event = slot;
+bool QMdiSubWindow_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QMdiSubWindow_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_Event(event);
 }
 
-void QMdiSubWindow_override_virtual_ShowEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__ShowEvent = slot;
+bool QMdiSubWindow_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_ShowEvent(void* self, QShowEvent* showEvent) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_ShowEvent(showEvent);
 }
 
-void QMdiSubWindow_override_virtual_HideEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__HideEvent = slot;
+bool QMdiSubWindow_override_virtual_HideEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HideEvent = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_HideEvent(void* self, QHideEvent* hideEvent) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_HideEvent(hideEvent);
 }
 
-void QMdiSubWindow_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__ChangeEvent = slot;
+bool QMdiSubWindow_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_ChangeEvent(void* self, QEvent* changeEvent) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_ChangeEvent(changeEvent);
 }
 
-void QMdiSubWindow_override_virtual_CloseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__CloseEvent = slot;
+bool QMdiSubWindow_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_CloseEvent(void* self, QCloseEvent* closeEvent) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_CloseEvent(closeEvent);
 }
 
-void QMdiSubWindow_override_virtual_LeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__LeaveEvent = slot;
+bool QMdiSubWindow_override_virtual_LeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__LeaveEvent = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_LeaveEvent(void* self, QEvent* leaveEvent) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_LeaveEvent(leaveEvent);
 }
 
-void QMdiSubWindow_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__ResizeEvent = slot;
+bool QMdiSubWindow_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_ResizeEvent(void* self, QResizeEvent* resizeEvent) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_ResizeEvent(resizeEvent);
 }
 
-void QMdiSubWindow_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__TimerEvent = slot;
+bool QMdiSubWindow_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_TimerEvent(void* self, QTimerEvent* timerEvent) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_TimerEvent(timerEvent);
 }
 
-void QMdiSubWindow_override_virtual_MoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__MoveEvent = slot;
+bool QMdiSubWindow_override_virtual_MoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveEvent = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_MoveEvent(void* self, QMoveEvent* moveEvent) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_MoveEvent(moveEvent);
 }
 
-void QMdiSubWindow_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__PaintEvent = slot;
+bool QMdiSubWindow_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_PaintEvent(void* self, QPaintEvent* paintEvent) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_PaintEvent(paintEvent);
 }
 
-void QMdiSubWindow_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__MousePressEvent = slot;
+bool QMdiSubWindow_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_MousePressEvent(void* self, QMouseEvent* mouseEvent) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_MousePressEvent(mouseEvent);
 }
 
-void QMdiSubWindow_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__MouseDoubleClickEvent = slot;
+bool QMdiSubWindow_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseDoubleClickEvent = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_MouseDoubleClickEvent(void* self, QMouseEvent* mouseEvent) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_MouseDoubleClickEvent(mouseEvent);
 }
 
-void QMdiSubWindow_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__MouseReleaseEvent = slot;
+bool QMdiSubWindow_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* mouseEvent) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_MouseReleaseEvent(mouseEvent);
 }
 
-void QMdiSubWindow_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__MouseMoveEvent = slot;
+bool QMdiSubWindow_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_MouseMoveEvent(void* self, QMouseEvent* mouseEvent) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_MouseMoveEvent(mouseEvent);
 }
 
-void QMdiSubWindow_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__KeyPressEvent = slot;
+bool QMdiSubWindow_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_KeyPressEvent(void* self, QKeyEvent* keyEvent) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_KeyPressEvent(keyEvent);
 }
 
-void QMdiSubWindow_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__ContextMenuEvent = slot;
+bool QMdiSubWindow_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* contextMenuEvent) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_ContextMenuEvent(contextMenuEvent);
 }
 
-void QMdiSubWindow_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__FocusInEvent = slot;
+bool QMdiSubWindow_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_FocusInEvent(void* self, QFocusEvent* focusInEvent) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_FocusInEvent(focusInEvent);
 }
 
-void QMdiSubWindow_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__FocusOutEvent = slot;
+bool QMdiSubWindow_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_FocusOutEvent(void* self, QFocusEvent* focusOutEvent) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_FocusOutEvent(focusOutEvent);
 }
 
-void QMdiSubWindow_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__ChildEvent = slot;
+bool QMdiSubWindow_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_ChildEvent(void* self, QChildEvent* childEvent) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_ChildEvent(childEvent);
 }
 
-void QMdiSubWindow_override_virtual_DevType(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__DevType = slot;
+bool QMdiSubWindow_override_virtual_DevType(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DevType = slot;
+	return true;
 }
 
 int QMdiSubWindow_virtualbase_DevType(const void* self) {
 	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_DevType();
 }
 
-void QMdiSubWindow_override_virtual_SetVisible(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__SetVisible = slot;
+bool QMdiSubWindow_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_SetVisible(void* self, bool visible) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_SetVisible(visible);
 }
 
-void QMdiSubWindow_override_virtual_HeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__HeightForWidth = slot;
+bool QMdiSubWindow_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeightForWidth = slot;
+	return true;
 }
 
 int QMdiSubWindow_virtualbase_HeightForWidth(const void* self, int param1) {
 	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_HeightForWidth(param1);
 }
 
-void QMdiSubWindow_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__HasHeightForWidth = slot;
+bool QMdiSubWindow_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasHeightForWidth = slot;
+	return true;
 }
 
 bool QMdiSubWindow_virtualbase_HasHeightForWidth(const void* self) {
 	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_HasHeightForWidth();
 }
 
-void QMdiSubWindow_override_virtual_PaintEngine(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__PaintEngine = slot;
+bool QMdiSubWindow_override_virtual_PaintEngine(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEngine = slot;
+	return true;
 }
 
 QPaintEngine* QMdiSubWindow_virtualbase_PaintEngine(const void* self) {
 	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_PaintEngine();
 }
 
-void QMdiSubWindow_override_virtual_WheelEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__WheelEvent = slot;
+bool QMdiSubWindow_override_virtual_WheelEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WheelEvent = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_WheelEvent(void* self, QWheelEvent* event) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_WheelEvent(event);
 }
 
-void QMdiSubWindow_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__KeyReleaseEvent = slot;
+bool QMdiSubWindow_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyReleaseEvent = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* event) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_KeyReleaseEvent(event);
 }
 
-void QMdiSubWindow_override_virtual_EnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__EnterEvent = slot;
+bool QMdiSubWindow_override_virtual_EnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EnterEvent = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_EnterEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_EnterEvent(event);
 }
 
-void QMdiSubWindow_override_virtual_TabletEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__TabletEvent = slot;
+bool QMdiSubWindow_override_virtual_TabletEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TabletEvent = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_TabletEvent(void* self, QTabletEvent* event) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_TabletEvent(event);
 }
 
-void QMdiSubWindow_override_virtual_ActionEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__ActionEvent = slot;
+bool QMdiSubWindow_override_virtual_ActionEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ActionEvent = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_ActionEvent(void* self, QActionEvent* event) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_ActionEvent(event);
 }
 
-void QMdiSubWindow_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__DragEnterEvent = slot;
+bool QMdiSubWindow_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragEnterEvent = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_DragEnterEvent(void* self, QDragEnterEvent* event) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_DragEnterEvent(event);
 }
 
-void QMdiSubWindow_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__DragMoveEvent = slot;
+bool QMdiSubWindow_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragMoveEvent = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_DragMoveEvent(void* self, QDragMoveEvent* event) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_DragMoveEvent(event);
 }
 
-void QMdiSubWindow_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__DragLeaveEvent = slot;
+bool QMdiSubWindow_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragLeaveEvent = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* event) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_DragLeaveEvent(event);
 }
 
-void QMdiSubWindow_override_virtual_DropEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__DropEvent = slot;
+bool QMdiSubWindow_override_virtual_DropEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropEvent = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_DropEvent(void* self, QDropEvent* event) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_DropEvent(event);
 }
 
-void QMdiSubWindow_override_virtual_NativeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__NativeEvent = slot;
+bool QMdiSubWindow_override_virtual_NativeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NativeEvent = slot;
+	return true;
 }
 
 bool QMdiSubWindow_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	return ( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_NativeEvent(eventType, message, result);
 }
 
-void QMdiSubWindow_override_virtual_Metric(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__Metric = slot;
+bool QMdiSubWindow_override_virtual_Metric(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Metric = slot;
+	return true;
 }
 
 int QMdiSubWindow_virtualbase_Metric(const void* self, int param1) {
 	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_Metric(param1);
 }
 
-void QMdiSubWindow_override_virtual_InitPainter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__InitPainter = slot;
+bool QMdiSubWindow_override_virtual_InitPainter(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitPainter = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_InitPainter(const void* self, QPainter* painter) {
 	( (const MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_InitPainter(painter);
 }
 
-void QMdiSubWindow_override_virtual_Redirected(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__Redirected = slot;
+bool QMdiSubWindow_override_virtual_Redirected(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Redirected = slot;
+	return true;
 }
 
 QPaintDevice* QMdiSubWindow_virtualbase_Redirected(const void* self, QPoint* offset) {
 	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_Redirected(offset);
 }
 
-void QMdiSubWindow_override_virtual_SharedPainter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__SharedPainter = slot;
+bool QMdiSubWindow_override_virtual_SharedPainter(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SharedPainter = slot;
+	return true;
 }
 
 QPainter* QMdiSubWindow_virtualbase_SharedPainter(const void* self) {
 	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_SharedPainter();
 }
 
-void QMdiSubWindow_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__InputMethodEvent = slot;
+bool QMdiSubWindow_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodEvent = slot;
+	return true;
 }
 
 void QMdiSubWindow_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* param1) {
 	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_InputMethodEvent(param1);
 }
 
-void QMdiSubWindow_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__InputMethodQuery = slot;
+bool QMdiSubWindow_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodQuery = slot;
+	return true;
 }
 
 QVariant* QMdiSubWindow_virtualbase_InputMethodQuery(const void* self, int param1) {
 	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_InputMethodQuery(param1);
 }
 
-void QMdiSubWindow_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) )->handle__FocusNextPrevChild = slot;
+bool QMdiSubWindow_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusNextPrevChild = slot;
+	return true;
 }
 
 bool QMdiSubWindow_virtualbase_FocusNextPrevChild(void* self, bool next) {

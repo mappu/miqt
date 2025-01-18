@@ -1218,328 +1218,574 @@ struct miqt_string QFrame_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QFrame_override_virtual_SizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__SizeHint = slot;
+bool QFrame_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
 }
 
 QSize* QFrame_virtualbase_SizeHint(const void* self) {
 	return ( (const MiqtVirtualQFrame*)(self) )->virtualbase_SizeHint();
 }
 
-void QFrame_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__Event = slot;
+bool QFrame_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QFrame_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQFrame*)(self) )->virtualbase_Event(e);
 }
 
-void QFrame_override_virtual_PaintEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__PaintEvent = slot;
+bool QFrame_override_virtual_PaintEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEvent = slot;
+	return true;
 }
 
 void QFrame_virtualbase_PaintEvent(void* self, QPaintEvent* param1) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_PaintEvent(param1);
 }
 
-void QFrame_override_virtual_ChangeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__ChangeEvent = slot;
+bool QFrame_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
 }
 
 void QFrame_virtualbase_ChangeEvent(void* self, QEvent* param1) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_ChangeEvent(param1);
 }
 
-void QFrame_override_virtual_DevType(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__DevType = slot;
+bool QFrame_override_virtual_DevType(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DevType = slot;
+	return true;
 }
 
 int QFrame_virtualbase_DevType(const void* self) {
 	return ( (const MiqtVirtualQFrame*)(self) )->virtualbase_DevType();
 }
 
-void QFrame_override_virtual_SetVisible(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__SetVisible = slot;
+bool QFrame_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
 }
 
 void QFrame_virtualbase_SetVisible(void* self, bool visible) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_SetVisible(visible);
 }
 
-void QFrame_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__MinimumSizeHint = slot;
+bool QFrame_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
 }
 
 QSize* QFrame_virtualbase_MinimumSizeHint(const void* self) {
 	return ( (const MiqtVirtualQFrame*)(self) )->virtualbase_MinimumSizeHint();
 }
 
-void QFrame_override_virtual_HeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__HeightForWidth = slot;
+bool QFrame_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeightForWidth = slot;
+	return true;
 }
 
 int QFrame_virtualbase_HeightForWidth(const void* self, int param1) {
 	return ( (const MiqtVirtualQFrame*)(self) )->virtualbase_HeightForWidth(param1);
 }
 
-void QFrame_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__HasHeightForWidth = slot;
+bool QFrame_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasHeightForWidth = slot;
+	return true;
 }
 
 bool QFrame_virtualbase_HasHeightForWidth(const void* self) {
 	return ( (const MiqtVirtualQFrame*)(self) )->virtualbase_HasHeightForWidth();
 }
 
-void QFrame_override_virtual_PaintEngine(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__PaintEngine = slot;
+bool QFrame_override_virtual_PaintEngine(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEngine = slot;
+	return true;
 }
 
 QPaintEngine* QFrame_virtualbase_PaintEngine(const void* self) {
 	return ( (const MiqtVirtualQFrame*)(self) )->virtualbase_PaintEngine();
 }
 
-void QFrame_override_virtual_MousePressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__MousePressEvent = slot;
+bool QFrame_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MousePressEvent = slot;
+	return true;
 }
 
 void QFrame_virtualbase_MousePressEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_MousePressEvent(event);
 }
 
-void QFrame_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__MouseReleaseEvent = slot;
+bool QFrame_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
 }
 
 void QFrame_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_MouseReleaseEvent(event);
 }
 
-void QFrame_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__MouseDoubleClickEvent = slot;
+bool QFrame_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseDoubleClickEvent = slot;
+	return true;
 }
 
 void QFrame_virtualbase_MouseDoubleClickEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_MouseDoubleClickEvent(event);
 }
 
-void QFrame_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__MouseMoveEvent = slot;
+bool QFrame_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
 }
 
 void QFrame_virtualbase_MouseMoveEvent(void* self, QMouseEvent* event) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_MouseMoveEvent(event);
 }
 
-void QFrame_override_virtual_WheelEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__WheelEvent = slot;
+bool QFrame_override_virtual_WheelEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WheelEvent = slot;
+	return true;
 }
 
 void QFrame_virtualbase_WheelEvent(void* self, QWheelEvent* event) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_WheelEvent(event);
 }
 
-void QFrame_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__KeyPressEvent = slot;
+bool QFrame_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyPressEvent = slot;
+	return true;
 }
 
 void QFrame_virtualbase_KeyPressEvent(void* self, QKeyEvent* event) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_KeyPressEvent(event);
 }
 
-void QFrame_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__KeyReleaseEvent = slot;
+bool QFrame_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyReleaseEvent = slot;
+	return true;
 }
 
 void QFrame_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* event) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_KeyReleaseEvent(event);
 }
 
-void QFrame_override_virtual_FocusInEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__FocusInEvent = slot;
+bool QFrame_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
 }
 
 void QFrame_virtualbase_FocusInEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_FocusInEvent(event);
 }
 
-void QFrame_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__FocusOutEvent = slot;
+bool QFrame_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
 }
 
 void QFrame_virtualbase_FocusOutEvent(void* self, QFocusEvent* event) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_FocusOutEvent(event);
 }
 
-void QFrame_override_virtual_EnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__EnterEvent = slot;
+bool QFrame_override_virtual_EnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EnterEvent = slot;
+	return true;
 }
 
 void QFrame_virtualbase_EnterEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_EnterEvent(event);
 }
 
-void QFrame_override_virtual_LeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__LeaveEvent = slot;
+bool QFrame_override_virtual_LeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__LeaveEvent = slot;
+	return true;
 }
 
 void QFrame_virtualbase_LeaveEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_LeaveEvent(event);
 }
 
-void QFrame_override_virtual_MoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__MoveEvent = slot;
+bool QFrame_override_virtual_MoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveEvent = slot;
+	return true;
 }
 
 void QFrame_virtualbase_MoveEvent(void* self, QMoveEvent* event) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_MoveEvent(event);
 }
 
-void QFrame_override_virtual_ResizeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__ResizeEvent = slot;
+bool QFrame_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
 }
 
 void QFrame_virtualbase_ResizeEvent(void* self, QResizeEvent* event) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_ResizeEvent(event);
 }
 
-void QFrame_override_virtual_CloseEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__CloseEvent = slot;
+bool QFrame_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
 }
 
 void QFrame_virtualbase_CloseEvent(void* self, QCloseEvent* event) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_CloseEvent(event);
 }
 
-void QFrame_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__ContextMenuEvent = slot;
+bool QFrame_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
 }
 
 void QFrame_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* event) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_ContextMenuEvent(event);
 }
 
-void QFrame_override_virtual_TabletEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__TabletEvent = slot;
+bool QFrame_override_virtual_TabletEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TabletEvent = slot;
+	return true;
 }
 
 void QFrame_virtualbase_TabletEvent(void* self, QTabletEvent* event) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_TabletEvent(event);
 }
 
-void QFrame_override_virtual_ActionEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__ActionEvent = slot;
+bool QFrame_override_virtual_ActionEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ActionEvent = slot;
+	return true;
 }
 
 void QFrame_virtualbase_ActionEvent(void* self, QActionEvent* event) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_ActionEvent(event);
 }
 
-void QFrame_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__DragEnterEvent = slot;
+bool QFrame_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragEnterEvent = slot;
+	return true;
 }
 
 void QFrame_virtualbase_DragEnterEvent(void* self, QDragEnterEvent* event) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_DragEnterEvent(event);
 }
 
-void QFrame_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__DragMoveEvent = slot;
+bool QFrame_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragMoveEvent = slot;
+	return true;
 }
 
 void QFrame_virtualbase_DragMoveEvent(void* self, QDragMoveEvent* event) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_DragMoveEvent(event);
 }
 
-void QFrame_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__DragLeaveEvent = slot;
+bool QFrame_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragLeaveEvent = slot;
+	return true;
 }
 
 void QFrame_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* event) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_DragLeaveEvent(event);
 }
 
-void QFrame_override_virtual_DropEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__DropEvent = slot;
+bool QFrame_override_virtual_DropEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropEvent = slot;
+	return true;
 }
 
 void QFrame_virtualbase_DropEvent(void* self, QDropEvent* event) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_DropEvent(event);
 }
 
-void QFrame_override_virtual_ShowEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__ShowEvent = slot;
+bool QFrame_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
 }
 
 void QFrame_virtualbase_ShowEvent(void* self, QShowEvent* event) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_ShowEvent(event);
 }
 
-void QFrame_override_virtual_HideEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__HideEvent = slot;
+bool QFrame_override_virtual_HideEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HideEvent = slot;
+	return true;
 }
 
 void QFrame_virtualbase_HideEvent(void* self, QHideEvent* event) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_HideEvent(event);
 }
 
-void QFrame_override_virtual_NativeEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__NativeEvent = slot;
+bool QFrame_override_virtual_NativeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NativeEvent = slot;
+	return true;
 }
 
 bool QFrame_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	return ( (MiqtVirtualQFrame*)(self) )->virtualbase_NativeEvent(eventType, message, result);
 }
 
-void QFrame_override_virtual_Metric(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__Metric = slot;
+bool QFrame_override_virtual_Metric(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Metric = slot;
+	return true;
 }
 
 int QFrame_virtualbase_Metric(const void* self, int param1) {
 	return ( (const MiqtVirtualQFrame*)(self) )->virtualbase_Metric(param1);
 }
 
-void QFrame_override_virtual_InitPainter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__InitPainter = slot;
+bool QFrame_override_virtual_InitPainter(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitPainter = slot;
+	return true;
 }
 
 void QFrame_virtualbase_InitPainter(const void* self, QPainter* painter) {
 	( (const MiqtVirtualQFrame*)(self) )->virtualbase_InitPainter(painter);
 }
 
-void QFrame_override_virtual_Redirected(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__Redirected = slot;
+bool QFrame_override_virtual_Redirected(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Redirected = slot;
+	return true;
 }
 
 QPaintDevice* QFrame_virtualbase_Redirected(const void* self, QPoint* offset) {
 	return ( (const MiqtVirtualQFrame*)(self) )->virtualbase_Redirected(offset);
 }
 
-void QFrame_override_virtual_SharedPainter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__SharedPainter = slot;
+bool QFrame_override_virtual_SharedPainter(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SharedPainter = slot;
+	return true;
 }
 
 QPainter* QFrame_virtualbase_SharedPainter(const void* self) {
 	return ( (const MiqtVirtualQFrame*)(self) )->virtualbase_SharedPainter();
 }
 
-void QFrame_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__InputMethodEvent = slot;
+bool QFrame_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodEvent = slot;
+	return true;
 }
 
 void QFrame_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* param1) {
 	( (MiqtVirtualQFrame*)(self) )->virtualbase_InputMethodEvent(param1);
 }
 
-void QFrame_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__InputMethodQuery = slot;
+bool QFrame_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodQuery = slot;
+	return true;
 }
 
 QVariant* QFrame_virtualbase_InputMethodQuery(const void* self, int param1) {
 	return ( (const MiqtVirtualQFrame*)(self) )->virtualbase_InputMethodQuery(param1);
 }
 
-void QFrame_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) )->handle__FocusNextPrevChild = slot;
+bool QFrame_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+	MiqtVirtualQFrame* self_cast = dynamic_cast<MiqtVirtualQFrame*>( (QFrame*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusNextPrevChild = slot;
+	return true;
 }
 
 bool QFrame_virtualbase_FocusNextPrevChild(void* self, bool next) {

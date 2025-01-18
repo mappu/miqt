@@ -16,8 +16,7 @@ import (
 )
 
 type QVideoWindowControl struct {
-	h          *C.QVideoWindowControl
-	isSubclass bool
+	h *C.QVideoWindowControl
 	*QMediaControl
 }
 

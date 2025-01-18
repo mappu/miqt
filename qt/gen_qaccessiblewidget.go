@@ -13,8 +13,7 @@ import (
 )
 
 type QAccessibleWidget struct {
-	h          *C.QAccessibleWidget
-	isSubclass bool
+	h *C.QAccessibleWidget
 	*QAccessibleObject
 	*QAccessibleActionInterface
 }
@@ -55,17 +54,13 @@ func UnsafeNewQAccessibleWidget(h unsafe.Pointer) *QAccessibleWidget {
 // NewQAccessibleWidget constructs a new QAccessibleWidget object.
 func NewQAccessibleWidget(o *QWidget) *QAccessibleWidget {
 
-	ret := newQAccessibleWidget(C.QAccessibleWidget_new(o.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQAccessibleWidget(C.QAccessibleWidget_new(o.cPointer()))
 }
 
 // NewQAccessibleWidget2 constructs a new QAccessibleWidget object.
 func NewQAccessibleWidget2(o *QWidget, r QAccessible__Role) *QAccessibleWidget {
 
-	ret := newQAccessibleWidget(C.QAccessibleWidget_new2(o.cPointer(), (C.int)(r)))
-	ret.isSubclass = true
-	return ret
+	return newQAccessibleWidget(C.QAccessibleWidget_new2(o.cPointer(), (C.int)(r)))
 }
 
 // NewQAccessibleWidget3 constructs a new QAccessibleWidget object.
@@ -75,9 +70,7 @@ func NewQAccessibleWidget3(o *QWidget, r QAccessible__Role, name string) *QAcces
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
 
-	ret := newQAccessibleWidget(C.QAccessibleWidget_new3(o.cPointer(), (C.int)(r), name_ms))
-	ret.isSubclass = true
-	return ret
+	return newQAccessibleWidget(C.QAccessibleWidget_new3(o.cPointer(), (C.int)(r), name_ms))
 }
 
 func (this *QAccessibleWidget) IsValid() bool {

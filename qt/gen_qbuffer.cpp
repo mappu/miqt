@@ -625,144 +625,252 @@ struct miqt_string QBuffer_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QBuffer_override_virtual_Open(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) )->handle__Open = slot;
+bool QBuffer_override_virtual_Open(void* self, intptr_t slot) {
+	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Open = slot;
+	return true;
 }
 
 bool QBuffer_virtualbase_Open(void* self, int openMode) {
 	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_Open(openMode);
 }
 
-void QBuffer_override_virtual_Close(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) )->handle__Close = slot;
+bool QBuffer_override_virtual_Close(void* self, intptr_t slot) {
+	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Close = slot;
+	return true;
 }
 
 void QBuffer_virtualbase_Close(void* self) {
 	( (MiqtVirtualQBuffer*)(self) )->virtualbase_Close();
 }
 
-void QBuffer_override_virtual_Size(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) )->handle__Size = slot;
+bool QBuffer_override_virtual_Size(void* self, intptr_t slot) {
+	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Size = slot;
+	return true;
 }
 
 long long QBuffer_virtualbase_Size(const void* self) {
 	return ( (const MiqtVirtualQBuffer*)(self) )->virtualbase_Size();
 }
 
-void QBuffer_override_virtual_Pos(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) )->handle__Pos = slot;
+bool QBuffer_override_virtual_Pos(void* self, intptr_t slot) {
+	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Pos = slot;
+	return true;
 }
 
 long long QBuffer_virtualbase_Pos(const void* self) {
 	return ( (const MiqtVirtualQBuffer*)(self) )->virtualbase_Pos();
 }
 
-void QBuffer_override_virtual_Seek(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) )->handle__Seek = slot;
+bool QBuffer_override_virtual_Seek(void* self, intptr_t slot) {
+	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Seek = slot;
+	return true;
 }
 
 bool QBuffer_virtualbase_Seek(void* self, long long off) {
 	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_Seek(off);
 }
 
-void QBuffer_override_virtual_AtEnd(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) )->handle__AtEnd = slot;
+bool QBuffer_override_virtual_AtEnd(void* self, intptr_t slot) {
+	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__AtEnd = slot;
+	return true;
 }
 
 bool QBuffer_virtualbase_AtEnd(const void* self) {
 	return ( (const MiqtVirtualQBuffer*)(self) )->virtualbase_AtEnd();
 }
 
-void QBuffer_override_virtual_CanReadLine(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) )->handle__CanReadLine = slot;
+bool QBuffer_override_virtual_CanReadLine(void* self, intptr_t slot) {
+	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CanReadLine = slot;
+	return true;
 }
 
 bool QBuffer_virtualbase_CanReadLine(const void* self) {
 	return ( (const MiqtVirtualQBuffer*)(self) )->virtualbase_CanReadLine();
 }
 
-void QBuffer_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) )->handle__ConnectNotify = slot;
+bool QBuffer_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QBuffer_virtualbase_ConnectNotify(void* self, QMetaMethod* param1) {
 	( (MiqtVirtualQBuffer*)(self) )->virtualbase_ConnectNotify(param1);
 }
 
-void QBuffer_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) )->handle__DisconnectNotify = slot;
+bool QBuffer_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QBuffer_virtualbase_DisconnectNotify(void* self, QMetaMethod* param1) {
 	( (MiqtVirtualQBuffer*)(self) )->virtualbase_DisconnectNotify(param1);
 }
 
-void QBuffer_override_virtual_ReadData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) )->handle__ReadData = slot;
+bool QBuffer_override_virtual_ReadData(void* self, intptr_t slot) {
+	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ReadData = slot;
+	return true;
 }
 
 long long QBuffer_virtualbase_ReadData(void* self, char* data, long long maxlen) {
 	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_ReadData(data, maxlen);
 }
 
-void QBuffer_override_virtual_WriteData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) )->handle__WriteData = slot;
+bool QBuffer_override_virtual_WriteData(void* self, intptr_t slot) {
+	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WriteData = slot;
+	return true;
 }
 
 long long QBuffer_virtualbase_WriteData(void* self, const char* data, long long lenVal) {
 	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_WriteData(data, lenVal);
 }
 
-void QBuffer_override_virtual_IsSequential(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) )->handle__IsSequential = slot;
+bool QBuffer_override_virtual_IsSequential(void* self, intptr_t slot) {
+	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsSequential = slot;
+	return true;
 }
 
 bool QBuffer_virtualbase_IsSequential(const void* self) {
 	return ( (const MiqtVirtualQBuffer*)(self) )->virtualbase_IsSequential();
 }
 
-void QBuffer_override_virtual_Reset(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) )->handle__Reset = slot;
+bool QBuffer_override_virtual_Reset(void* self, intptr_t slot) {
+	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Reset = slot;
+	return true;
 }
 
 bool QBuffer_virtualbase_Reset(void* self) {
 	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_Reset();
 }
 
-void QBuffer_override_virtual_BytesAvailable(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) )->handle__BytesAvailable = slot;
+bool QBuffer_override_virtual_BytesAvailable(void* self, intptr_t slot) {
+	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BytesAvailable = slot;
+	return true;
 }
 
 long long QBuffer_virtualbase_BytesAvailable(const void* self) {
 	return ( (const MiqtVirtualQBuffer*)(self) )->virtualbase_BytesAvailable();
 }
 
-void QBuffer_override_virtual_BytesToWrite(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) )->handle__BytesToWrite = slot;
+bool QBuffer_override_virtual_BytesToWrite(void* self, intptr_t slot) {
+	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BytesToWrite = slot;
+	return true;
 }
 
 long long QBuffer_virtualbase_BytesToWrite(const void* self) {
 	return ( (const MiqtVirtualQBuffer*)(self) )->virtualbase_BytesToWrite();
 }
 
-void QBuffer_override_virtual_WaitForReadyRead(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) )->handle__WaitForReadyRead = slot;
+bool QBuffer_override_virtual_WaitForReadyRead(void* self, intptr_t slot) {
+	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WaitForReadyRead = slot;
+	return true;
 }
 
 bool QBuffer_virtualbase_WaitForReadyRead(void* self, int msecs) {
 	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_WaitForReadyRead(msecs);
 }
 
-void QBuffer_override_virtual_WaitForBytesWritten(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) )->handle__WaitForBytesWritten = slot;
+bool QBuffer_override_virtual_WaitForBytesWritten(void* self, intptr_t slot) {
+	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WaitForBytesWritten = slot;
+	return true;
 }
 
 bool QBuffer_virtualbase_WaitForBytesWritten(void* self, int msecs) {
 	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_WaitForBytesWritten(msecs);
 }
 
-void QBuffer_override_virtual_ReadLineData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) )->handle__ReadLineData = slot;
+bool QBuffer_override_virtual_ReadLineData(void* self, intptr_t slot) {
+	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ReadLineData = slot;
+	return true;
 }
 
 long long QBuffer_virtualbase_ReadLineData(void* self, char* data, long long maxlen) {

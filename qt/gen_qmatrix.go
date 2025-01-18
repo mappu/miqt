@@ -14,8 +14,7 @@ import (
 )
 
 type QMatrix struct {
-	h          *C.QMatrix
-	isSubclass bool
+	h *C.QMatrix
 }
 
 func (this *QMatrix) cPointer() *C.QMatrix {
@@ -49,33 +48,25 @@ func UnsafeNewQMatrix(h unsafe.Pointer) *QMatrix {
 // NewQMatrix constructs a new QMatrix object.
 func NewQMatrix(param1 Initialization) *QMatrix {
 
-	ret := newQMatrix(C.QMatrix_new((C.int)(param1)))
-	ret.isSubclass = true
-	return ret
+	return newQMatrix(C.QMatrix_new((C.int)(param1)))
 }
 
 // NewQMatrix2 constructs a new QMatrix object.
 func NewQMatrix2() *QMatrix {
 
-	ret := newQMatrix(C.QMatrix_new2())
-	ret.isSubclass = true
-	return ret
+	return newQMatrix(C.QMatrix_new2())
 }
 
 // NewQMatrix3 constructs a new QMatrix object.
 func NewQMatrix3(m11 float64, m12 float64, m21 float64, m22 float64, dx float64, dy float64) *QMatrix {
 
-	ret := newQMatrix(C.QMatrix_new3((C.double)(m11), (C.double)(m12), (C.double)(m21), (C.double)(m22), (C.double)(dx), (C.double)(dy)))
-	ret.isSubclass = true
-	return ret
+	return newQMatrix(C.QMatrix_new3((C.double)(m11), (C.double)(m12), (C.double)(m21), (C.double)(m22), (C.double)(dx), (C.double)(dy)))
 }
 
 // NewQMatrix4 constructs a new QMatrix object.
 func NewQMatrix4(other *QMatrix) *QMatrix {
 
-	ret := newQMatrix(C.QMatrix_new4(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQMatrix(C.QMatrix_new4(other.cPointer()))
 }
 
 func (this *QMatrix) OperatorAssign(param1 *QMatrix) {

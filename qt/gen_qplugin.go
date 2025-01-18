@@ -14,8 +14,7 @@ import (
 )
 
 type QStaticPlugin struct {
-	h          *C.QStaticPlugin
-	isSubclass bool
+	h *C.QStaticPlugin
 }
 
 func (this *QStaticPlugin) cPointer() *C.QStaticPlugin {

@@ -64,8 +64,7 @@ const (
 )
 
 type QWebEngineDownloadRequest struct {
-	h          *C.QWebEngineDownloadRequest
-	isSubclass bool
+	h *C.QWebEngineDownloadRequest
 	*qt6.QObject
 }
 

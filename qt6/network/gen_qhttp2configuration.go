@@ -14,8 +14,7 @@ import (
 )
 
 type QHttp2Configuration struct {
-	h          *C.QHttp2Configuration
-	isSubclass bool
+	h *C.QHttp2Configuration
 }
 
 func (this *QHttp2Configuration) cPointer() *C.QHttp2Configuration {
@@ -49,17 +48,13 @@ func UnsafeNewQHttp2Configuration(h unsafe.Pointer) *QHttp2Configuration {
 // NewQHttp2Configuration constructs a new QHttp2Configuration object.
 func NewQHttp2Configuration() *QHttp2Configuration {
 
-	ret := newQHttp2Configuration(C.QHttp2Configuration_new())
-	ret.isSubclass = true
-	return ret
+	return newQHttp2Configuration(C.QHttp2Configuration_new())
 }
 
 // NewQHttp2Configuration2 constructs a new QHttp2Configuration object.
 func NewQHttp2Configuration2(other *QHttp2Configuration) *QHttp2Configuration {
 
-	ret := newQHttp2Configuration(C.QHttp2Configuration_new2(other.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQHttp2Configuration(C.QHttp2Configuration_new2(other.cPointer()))
 }
 
 func (this *QHttp2Configuration) OperatorAssign(other *QHttp2Configuration) {

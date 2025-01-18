@@ -32,8 +32,7 @@ const (
 )
 
 type QSurface struct {
-	h          *C.QSurface
-	isSubclass bool
+	h *C.QSurface
 }
 
 func (this *QSurface) cPointer() *C.QSurface {

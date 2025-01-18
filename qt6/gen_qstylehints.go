@@ -15,8 +15,7 @@ import (
 )
 
 type QStyleHints struct {
-	h          *C.QStyleHints
-	isSubclass bool
+	h *C.QStyleHints
 	*QObject
 }
 

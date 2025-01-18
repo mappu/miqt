@@ -900,8 +900,14 @@ QAccessibleInterface* QAccessibleEvent_AccessibleInterface(const QAccessibleEven
 	return self->accessibleInterface();
 }
 
-void QAccessibleEvent_override_virtual_AccessibleInterface(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAccessibleEvent*>( (QAccessibleEvent*)(self) )->handle__AccessibleInterface = slot;
+bool QAccessibleEvent_override_virtual_AccessibleInterface(void* self, intptr_t slot) {
+	MiqtVirtualQAccessibleEvent* self_cast = dynamic_cast<MiqtVirtualQAccessibleEvent*>( (QAccessibleEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__AccessibleInterface = slot;
+	return true;
 }
 
 QAccessibleInterface* QAccessibleEvent_virtualbase_AccessibleInterface(const void* self) {
@@ -960,8 +966,14 @@ QAccessible__State* QAccessibleStateChangeEvent_ChangedStates(const QAccessibleS
 	return new QAccessible::State(self->changedStates());
 }
 
-void QAccessibleStateChangeEvent_override_virtual_AccessibleInterface(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAccessibleStateChangeEvent*>( (QAccessibleStateChangeEvent*)(self) )->handle__AccessibleInterface = slot;
+bool QAccessibleStateChangeEvent_override_virtual_AccessibleInterface(void* self, intptr_t slot) {
+	MiqtVirtualQAccessibleStateChangeEvent* self_cast = dynamic_cast<MiqtVirtualQAccessibleStateChangeEvent*>( (QAccessibleStateChangeEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__AccessibleInterface = slot;
+	return true;
 }
 
 QAccessibleInterface* QAccessibleStateChangeEvent_virtualbase_AccessibleInterface(const void* self) {
@@ -1024,8 +1036,14 @@ int QAccessibleTextCursorEvent_CursorPosition(const QAccessibleTextCursorEvent* 
 	return self->cursorPosition();
 }
 
-void QAccessibleTextCursorEvent_override_virtual_AccessibleInterface(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAccessibleTextCursorEvent*>( (QAccessibleTextCursorEvent*)(self) )->handle__AccessibleInterface = slot;
+bool QAccessibleTextCursorEvent_override_virtual_AccessibleInterface(void* self, intptr_t slot) {
+	MiqtVirtualQAccessibleTextCursorEvent* self_cast = dynamic_cast<MiqtVirtualQAccessibleTextCursorEvent*>( (QAccessibleTextCursorEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__AccessibleInterface = slot;
+	return true;
 }
 
 QAccessibleInterface* QAccessibleTextCursorEvent_virtualbase_AccessibleInterface(const void* self) {
@@ -1228,8 +1246,14 @@ QVariant* QAccessibleValueChangeEvent_Value(const QAccessibleValueChangeEvent* s
 	return new QVariant(self->value());
 }
 
-void QAccessibleValueChangeEvent_override_virtual_AccessibleInterface(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAccessibleValueChangeEvent*>( (QAccessibleValueChangeEvent*)(self) )->handle__AccessibleInterface = slot;
+bool QAccessibleValueChangeEvent_override_virtual_AccessibleInterface(void* self, intptr_t slot) {
+	MiqtVirtualQAccessibleValueChangeEvent* self_cast = dynamic_cast<MiqtVirtualQAccessibleValueChangeEvent*>( (QAccessibleValueChangeEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__AccessibleInterface = slot;
+	return true;
 }
 
 QAccessibleInterface* QAccessibleValueChangeEvent_virtualbase_AccessibleInterface(const void* self) {
@@ -1325,8 +1349,14 @@ int QAccessibleTableModelChangeEvent_LastColumn(const QAccessibleTableModelChang
 	return self->lastColumn();
 }
 
-void QAccessibleTableModelChangeEvent_override_virtual_AccessibleInterface(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAccessibleTableModelChangeEvent*>( (QAccessibleTableModelChangeEvent*)(self) )->handle__AccessibleInterface = slot;
+bool QAccessibleTableModelChangeEvent_override_virtual_AccessibleInterface(void* self, intptr_t slot) {
+	MiqtVirtualQAccessibleTableModelChangeEvent* self_cast = dynamic_cast<MiqtVirtualQAccessibleTableModelChangeEvent*>( (QAccessibleTableModelChangeEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__AccessibleInterface = slot;
+	return true;
 }
 
 QAccessibleInterface* QAccessibleTableModelChangeEvent_virtualbase_AccessibleInterface(const void* self) {

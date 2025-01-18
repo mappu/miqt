@@ -287,56 +287,98 @@ QPaintEngine* QPicture_PaintEngine(const QPicture* self) {
 	return self->paintEngine();
 }
 
-void QPicture_override_virtual_DevType(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPicture*>( (QPicture*)(self) )->handle__DevType = slot;
+bool QPicture_override_virtual_DevType(void* self, intptr_t slot) {
+	MiqtVirtualQPicture* self_cast = dynamic_cast<MiqtVirtualQPicture*>( (QPicture*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DevType = slot;
+	return true;
 }
 
 int QPicture_virtualbase_DevType(const void* self) {
 	return ( (const MiqtVirtualQPicture*)(self) )->virtualbase_DevType();
 }
 
-void QPicture_override_virtual_SetData(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPicture*>( (QPicture*)(self) )->handle__SetData = slot;
+bool QPicture_override_virtual_SetData(void* self, intptr_t slot) {
+	MiqtVirtualQPicture* self_cast = dynamic_cast<MiqtVirtualQPicture*>( (QPicture*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetData = slot;
+	return true;
 }
 
 void QPicture_virtualbase_SetData(void* self, const char* data, unsigned int size) {
 	( (MiqtVirtualQPicture*)(self) )->virtualbase_SetData(data, size);
 }
 
-void QPicture_override_virtual_PaintEngine(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPicture*>( (QPicture*)(self) )->handle__PaintEngine = slot;
+bool QPicture_override_virtual_PaintEngine(void* self, intptr_t slot) {
+	MiqtVirtualQPicture* self_cast = dynamic_cast<MiqtVirtualQPicture*>( (QPicture*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEngine = slot;
+	return true;
 }
 
 QPaintEngine* QPicture_virtualbase_PaintEngine(const void* self) {
 	return ( (const MiqtVirtualQPicture*)(self) )->virtualbase_PaintEngine();
 }
 
-void QPicture_override_virtual_Metric(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPicture*>( (QPicture*)(self) )->handle__Metric = slot;
+bool QPicture_override_virtual_Metric(void* self, intptr_t slot) {
+	MiqtVirtualQPicture* self_cast = dynamic_cast<MiqtVirtualQPicture*>( (QPicture*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Metric = slot;
+	return true;
 }
 
 int QPicture_virtualbase_Metric(const void* self, int m) {
 	return ( (const MiqtVirtualQPicture*)(self) )->virtualbase_Metric(m);
 }
 
-void QPicture_override_virtual_InitPainter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPicture*>( (QPicture*)(self) )->handle__InitPainter = slot;
+bool QPicture_override_virtual_InitPainter(void* self, intptr_t slot) {
+	MiqtVirtualQPicture* self_cast = dynamic_cast<MiqtVirtualQPicture*>( (QPicture*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitPainter = slot;
+	return true;
 }
 
 void QPicture_virtualbase_InitPainter(const void* self, QPainter* painter) {
 	( (const MiqtVirtualQPicture*)(self) )->virtualbase_InitPainter(painter);
 }
 
-void QPicture_override_virtual_Redirected(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPicture*>( (QPicture*)(self) )->handle__Redirected = slot;
+bool QPicture_override_virtual_Redirected(void* self, intptr_t slot) {
+	MiqtVirtualQPicture* self_cast = dynamic_cast<MiqtVirtualQPicture*>( (QPicture*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Redirected = slot;
+	return true;
 }
 
 QPaintDevice* QPicture_virtualbase_Redirected(const void* self, QPoint* offset) {
 	return ( (const MiqtVirtualQPicture*)(self) )->virtualbase_Redirected(offset);
 }
 
-void QPicture_override_virtual_SharedPainter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQPicture*>( (QPicture*)(self) )->handle__SharedPainter = slot;
+bool QPicture_override_virtual_SharedPainter(void* self, intptr_t slot) {
+	MiqtVirtualQPicture* self_cast = dynamic_cast<MiqtVirtualQPicture*>( (QPicture*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SharedPainter = slot;
+	return true;
 }
 
 QPainter* QPicture_virtualbase_SharedPainter(const void* self) {

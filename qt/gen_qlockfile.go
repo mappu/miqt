@@ -23,8 +23,7 @@ const (
 )
 
 type QLockFile struct {
-	h          *C.QLockFile
-	isSubclass bool
+	h *C.QLockFile
 }
 
 func (this *QLockFile) cPointer() *C.QLockFile {
@@ -62,9 +61,7 @@ func NewQLockFile(fileName string) *QLockFile {
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 
-	ret := newQLockFile(C.QLockFile_new(fileName_ms))
-	ret.isSubclass = true
-	return ret
+	return newQLockFile(C.QLockFile_new(fileName_ms))
 }
 
 func (this *QLockFile) Lock() bool {

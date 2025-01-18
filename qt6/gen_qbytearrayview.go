@@ -14,8 +14,7 @@ import (
 )
 
 type QByteArrayView struct {
-	h          *C.QByteArrayView
-	isSubclass bool
+	h *C.QByteArrayView
 }
 
 func (this *QByteArrayView) cPointer() *C.QByteArrayView {
@@ -49,17 +48,13 @@ func UnsafeNewQByteArrayView(h unsafe.Pointer) *QByteArrayView {
 // NewQByteArrayView constructs a new QByteArrayView object.
 func NewQByteArrayView() *QByteArrayView {
 
-	ret := newQByteArrayView(C.QByteArrayView_new())
-	ret.isSubclass = true
-	return ret
+	return newQByteArrayView(C.QByteArrayView_new())
 }
 
 // NewQByteArrayView2 constructs a new QByteArrayView object.
 func NewQByteArrayView2(param1 *QByteArrayView) *QByteArrayView {
 
-	ret := newQByteArrayView(C.QByteArrayView_new2(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQByteArrayView(C.QByteArrayView_new2(param1.cPointer()))
 }
 
 func (this *QByteArrayView) ToByteArray() []byte {

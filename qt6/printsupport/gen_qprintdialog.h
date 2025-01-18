@@ -55,13 +55,13 @@ void QPrintDialog_connect_Accepted(QPrintDialog* self, intptr_t slot);
 struct miqt_string QPrintDialog_Tr2(const char* s, const char* c);
 struct miqt_string QPrintDialog_Tr3(const char* s, const char* c, int n);
 void QPrintDialog_SetOption2(QPrintDialog* self, int option, bool on);
-void QPrintDialog_override_virtual_Exec(void* self, intptr_t slot);
+bool QPrintDialog_override_virtual_Exec(void* self, intptr_t slot);
 int QPrintDialog_virtualbase_Exec(void* self);
-void QPrintDialog_override_virtual_Accept(void* self, intptr_t slot);
+bool QPrintDialog_override_virtual_Accept(void* self, intptr_t slot);
 void QPrintDialog_virtualbase_Accept(void* self);
-void QPrintDialog_override_virtual_Done(void* self, intptr_t slot);
+bool QPrintDialog_override_virtual_Done(void* self, intptr_t slot);
 void QPrintDialog_virtualbase_Done(void* self, int result);
-void QPrintDialog_override_virtual_SetVisible(void* self, intptr_t slot);
+bool QPrintDialog_override_virtual_SetVisible(void* self, intptr_t slot);
 void QPrintDialog_virtualbase_SetVisible(void* self, bool visible);
 void QPrintDialog_Delete(QPrintDialog* self);
 

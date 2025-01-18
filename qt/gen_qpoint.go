@@ -14,8 +14,7 @@ import (
 )
 
 type QPoint struct {
-	h          *C.QPoint
-	isSubclass bool
+	h *C.QPoint
 }
 
 func (this *QPoint) cPointer() *C.QPoint {
@@ -49,25 +48,19 @@ func UnsafeNewQPoint(h unsafe.Pointer) *QPoint {
 // NewQPoint constructs a new QPoint object.
 func NewQPoint() *QPoint {
 
-	ret := newQPoint(C.QPoint_new())
-	ret.isSubclass = true
-	return ret
+	return newQPoint(C.QPoint_new())
 }
 
 // NewQPoint2 constructs a new QPoint object.
 func NewQPoint2(xpos int, ypos int) *QPoint {
 
-	ret := newQPoint(C.QPoint_new2((C.int)(xpos), (C.int)(ypos)))
-	ret.isSubclass = true
-	return ret
+	return newQPoint(C.QPoint_new2((C.int)(xpos), (C.int)(ypos)))
 }
 
 // NewQPoint3 constructs a new QPoint object.
 func NewQPoint3(param1 *QPoint) *QPoint {
 
-	ret := newQPoint(C.QPoint_new3(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPoint(C.QPoint_new3(param1.cPointer()))
 }
 
 func (this *QPoint) IsNull() bool {
@@ -143,8 +136,7 @@ func (this *QPoint) GoGC() {
 }
 
 type QPointF struct {
-	h          *C.QPointF
-	isSubclass bool
+	h *C.QPointF
 }
 
 func (this *QPointF) cPointer() *C.QPointF {
@@ -178,33 +170,25 @@ func UnsafeNewQPointF(h unsafe.Pointer) *QPointF {
 // NewQPointF constructs a new QPointF object.
 func NewQPointF() *QPointF {
 
-	ret := newQPointF(C.QPointF_new())
-	ret.isSubclass = true
-	return ret
+	return newQPointF(C.QPointF_new())
 }
 
 // NewQPointF2 constructs a new QPointF object.
 func NewQPointF2(p *QPoint) *QPointF {
 
-	ret := newQPointF(C.QPointF_new2(p.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPointF(C.QPointF_new2(p.cPointer()))
 }
 
 // NewQPointF3 constructs a new QPointF object.
 func NewQPointF3(xpos float64, ypos float64) *QPointF {
 
-	ret := newQPointF(C.QPointF_new3((C.double)(xpos), (C.double)(ypos)))
-	ret.isSubclass = true
-	return ret
+	return newQPointF(C.QPointF_new3((C.double)(xpos), (C.double)(ypos)))
 }
 
 // NewQPointF4 constructs a new QPointF object.
 func NewQPointF4(param1 *QPointF) *QPointF {
 
-	ret := newQPointF(C.QPointF_new4(param1.cPointer()))
-	ret.isSubclass = true
-	return ret
+	return newQPointF(C.QPointF_new4(param1.cPointer()))
 }
 
 func (this *QPointF) ManhattanLength() float64 {

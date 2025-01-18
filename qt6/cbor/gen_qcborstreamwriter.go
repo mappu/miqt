@@ -15,8 +15,7 @@ import (
 )
 
 type QCborStreamWriter struct {
-	h          *C.QCborStreamWriter
-	isSubclass bool
+	h *C.QCborStreamWriter
 }
 
 func (this *QCborStreamWriter) cPointer() *C.QCborStreamWriter {
@@ -50,9 +49,7 @@ func UnsafeNewQCborStreamWriter(h unsafe.Pointer) *QCborStreamWriter {
 // NewQCborStreamWriter constructs a new QCborStreamWriter object.
 func NewQCborStreamWriter(device *qt6.QIODevice) *QCborStreamWriter {
 
-	ret := newQCborStreamWriter(C.QCborStreamWriter_new((*C.QIODevice)(device.UnsafePointer())))
-	ret.isSubclass = true
-	return ret
+	return newQCborStreamWriter(C.QCborStreamWriter_new((*C.QIODevice)(device.UnsafePointer())))
 }
 
 func (this *QCborStreamWriter) SetDevice(device *qt6.QIODevice) {

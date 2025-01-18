@@ -639,72 +639,126 @@ bool QMediaPlaylist_Save22(QMediaPlaylist* self, QUrl* location, const char* for
 	return self->save(*location, format);
 }
 
-void QMediaPlaylist_override_virtual_MediaObject(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) )->handle__MediaObject = slot;
+bool QMediaPlaylist_override_virtual_MediaObject(void* self, intptr_t slot) {
+	MiqtVirtualQMediaPlaylist* self_cast = dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MediaObject = slot;
+	return true;
 }
 
 QMediaObject* QMediaPlaylist_virtualbase_MediaObject(const void* self) {
 	return ( (const MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_MediaObject();
 }
 
-void QMediaPlaylist_override_virtual_SetMediaObject(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) )->handle__SetMediaObject = slot;
+bool QMediaPlaylist_override_virtual_SetMediaObject(void* self, intptr_t slot) {
+	MiqtVirtualQMediaPlaylist* self_cast = dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetMediaObject = slot;
+	return true;
 }
 
 bool QMediaPlaylist_virtualbase_SetMediaObject(void* self, QMediaObject* object) {
 	return ( (MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_SetMediaObject(object);
 }
 
-void QMediaPlaylist_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) )->handle__Event = slot;
+bool QMediaPlaylist_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQMediaPlaylist* self_cast = dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QMediaPlaylist_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_Event(event);
 }
 
-void QMediaPlaylist_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) )->handle__EventFilter = slot;
+bool QMediaPlaylist_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQMediaPlaylist* self_cast = dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QMediaPlaylist_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QMediaPlaylist_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) )->handle__TimerEvent = slot;
+bool QMediaPlaylist_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMediaPlaylist* self_cast = dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QMediaPlaylist_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QMediaPlaylist_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) )->handle__ChildEvent = slot;
+bool QMediaPlaylist_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMediaPlaylist* self_cast = dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QMediaPlaylist_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QMediaPlaylist_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) )->handle__CustomEvent = slot;
+bool QMediaPlaylist_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMediaPlaylist* self_cast = dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QMediaPlaylist_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QMediaPlaylist_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) )->handle__ConnectNotify = slot;
+bool QMediaPlaylist_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQMediaPlaylist* self_cast = dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QMediaPlaylist_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QMediaPlaylist_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) )->handle__DisconnectNotify = slot;
+bool QMediaPlaylist_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQMediaPlaylist* self_cast = dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QMediaPlaylist_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

@@ -233,56 +233,98 @@ QAudioEngine* QAudioListener_Engine(const QAudioListener* self) {
 	return self->engine();
 }
 
-void QAudioListener_override_virtual_Event(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioListener*>( (QAudioListener*)(self) )->handle__Event = slot;
+bool QAudioListener_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQAudioListener* self_cast = dynamic_cast<MiqtVirtualQAudioListener*>( (QAudioListener*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
 }
 
 bool QAudioListener_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQAudioListener*)(self) )->virtualbase_Event(event);
 }
 
-void QAudioListener_override_virtual_EventFilter(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioListener*>( (QAudioListener*)(self) )->handle__EventFilter = slot;
+bool QAudioListener_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQAudioListener* self_cast = dynamic_cast<MiqtVirtualQAudioListener*>( (QAudioListener*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
 }
 
 bool QAudioListener_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
 	return ( (MiqtVirtualQAudioListener*)(self) )->virtualbase_EventFilter(watched, event);
 }
 
-void QAudioListener_override_virtual_TimerEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioListener*>( (QAudioListener*)(self) )->handle__TimerEvent = slot;
+bool QAudioListener_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAudioListener* self_cast = dynamic_cast<MiqtVirtualQAudioListener*>( (QAudioListener*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
 }
 
 void QAudioListener_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
 	( (MiqtVirtualQAudioListener*)(self) )->virtualbase_TimerEvent(event);
 }
 
-void QAudioListener_override_virtual_ChildEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioListener*>( (QAudioListener*)(self) )->handle__ChildEvent = slot;
+bool QAudioListener_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAudioListener* self_cast = dynamic_cast<MiqtVirtualQAudioListener*>( (QAudioListener*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
 }
 
 void QAudioListener_virtualbase_ChildEvent(void* self, QChildEvent* event) {
 	( (MiqtVirtualQAudioListener*)(self) )->virtualbase_ChildEvent(event);
 }
 
-void QAudioListener_override_virtual_CustomEvent(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioListener*>( (QAudioListener*)(self) )->handle__CustomEvent = slot;
+bool QAudioListener_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAudioListener* self_cast = dynamic_cast<MiqtVirtualQAudioListener*>( (QAudioListener*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
 }
 
 void QAudioListener_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQAudioListener*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QAudioListener_override_virtual_ConnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioListener*>( (QAudioListener*)(self) )->handle__ConnectNotify = slot;
+bool QAudioListener_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQAudioListener* self_cast = dynamic_cast<MiqtVirtualQAudioListener*>( (QAudioListener*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
 }
 
 void QAudioListener_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAudioListener*)(self) )->virtualbase_ConnectNotify(signal);
 }
 
-void QAudioListener_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
-	dynamic_cast<MiqtVirtualQAudioListener*>( (QAudioListener*)(self) )->handle__DisconnectNotify = slot;
+bool QAudioListener_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQAudioListener* self_cast = dynamic_cast<MiqtVirtualQAudioListener*>( (QAudioListener*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
 }
 
 void QAudioListener_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {

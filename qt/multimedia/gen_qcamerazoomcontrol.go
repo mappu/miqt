@@ -16,8 +16,7 @@ import (
 )
 
 type QCameraZoomControl struct {
-	h          *C.QCameraZoomControl
-	isSubclass bool
+	h *C.QCameraZoomControl
 	*QMediaControl
 }
 
