@@ -47,5 +47,8 @@ examples/libraries/restricted-extras-qscintilla/restricted-extras-qscintilla
 android-build
 deployment-settings.json
 
+# Makefile state tracking
 *.docker-buildstamp
+
+# IDE / LSP files
 compile_flags.txt
