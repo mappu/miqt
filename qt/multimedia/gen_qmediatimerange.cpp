@@ -54,12 +54,8 @@ QMediaTimeInterval* QMediaTimeInterval_Translated(const QMediaTimeInterval* self
 	return new QMediaTimeInterval(self->translated(static_cast<qint64>(offset)));
 }
 
-void QMediaTimeInterval_Delete(QMediaTimeInterval* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMediaTimeInterval*>( self );
-	} else {
-		delete self;
-	}
+void QMediaTimeInterval_Delete(QMediaTimeInterval* self) {
+	delete self;
 }
 
 QMediaTimeRange* QMediaTimeRange_new() {
@@ -173,11 +169,7 @@ void QMediaTimeRange_Clear(QMediaTimeRange* self) {
 	self->clear();
 }
 
-void QMediaTimeRange_Delete(QMediaTimeRange* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMediaTimeRange*>( self );
-	} else {
-		delete self;
-	}
+void QMediaTimeRange_Delete(QMediaTimeRange* self) {
+	delete self;
 }
 

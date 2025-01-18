@@ -88,7 +88,7 @@ int QTableWidgetSelectionRange_LeftColumn(const QTableWidgetSelectionRange* self
 int QTableWidgetSelectionRange_RightColumn(const QTableWidgetSelectionRange* self);
 int QTableWidgetSelectionRange_RowCount(const QTableWidgetSelectionRange* self);
 int QTableWidgetSelectionRange_ColumnCount(const QTableWidgetSelectionRange* self);
-void QTableWidgetSelectionRange_Delete(QTableWidgetSelectionRange* self, bool isSubclass);
+void QTableWidgetSelectionRange_Delete(QTableWidgetSelectionRange* self);
 
 QTableWidgetItem* QTableWidgetItem_new();
 QTableWidgetItem* QTableWidgetItem_new2(struct miqt_string text);
@@ -150,7 +150,7 @@ void QTableWidgetItem_override_virtual_Read(void* self, intptr_t slot);
 void QTableWidgetItem_virtualbase_Read(void* self, QDataStream* in);
 void QTableWidgetItem_override_virtual_Write(void* self, intptr_t slot);
 void QTableWidgetItem_virtualbase_Write(const void* self, QDataStream* out);
-void QTableWidgetItem_Delete(QTableWidgetItem* self, bool isSubclass);
+void QTableWidgetItem_Delete(QTableWidgetItem* self);
 
 QTableWidget* QTableWidget_new(QWidget* parent);
 QTableWidget* QTableWidget_new2();
@@ -319,7 +319,7 @@ void QTableWidget_override_virtual_SelectionChanged(void* self, intptr_t slot);
 void QTableWidget_virtualbase_SelectionChanged(void* self, QItemSelection* selected, QItemSelection* deselected);
 void QTableWidget_override_virtual_CurrentChanged(void* self, intptr_t slot);
 void QTableWidget_virtualbase_CurrentChanged(void* self, QModelIndex* current, QModelIndex* previous);
-void QTableWidget_Delete(QTableWidget* self, bool isSubclass);
+void QTableWidget_Delete(QTableWidget* self);
 
 #ifdef __cplusplus
 } /* extern C */

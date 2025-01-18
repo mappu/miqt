@@ -33,13 +33,13 @@ QTcpSocket* miqt_exec_callback_QSslServer_NextPendingConnection(void*, intptr_t)
 } /* extern C */
 #endif
 
-class MiqtVirtualQSslServer : public virtual QSslServer {
+class MiqtVirtualQSslServer final : public QSslServer {
 public:
 
 	MiqtVirtualQSslServer(): QSslServer() {};
 	MiqtVirtualQSslServer(QObject* parent): QSslServer(parent) {};
 
-	virtual ~MiqtVirtualQSslServer() = default;
+	virtual ~MiqtVirtualQSslServer() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__IncomingConnection = 0;
@@ -344,11 +344,7 @@ QTcpSocket* QSslServer_virtualbase_NextPendingConnection(void* self) {
 	return ( (MiqtVirtualQSslServer*)(self) )->virtualbase_NextPendingConnection();
 }
 
-void QSslServer_Delete(QSslServer* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSslServer*>( self );
-	} else {
-		delete self;
-	}
+void QSslServer_Delete(QSslServer* self) {
+	delete self;
 }
 

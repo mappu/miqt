@@ -196,7 +196,7 @@ void QDesktopWidget_override_virtual_InputMethodQuery(void* self, intptr_t slot)
 QVariant* QDesktopWidget_virtualbase_InputMethodQuery(const void* self, int param1);
 void QDesktopWidget_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QDesktopWidget_virtualbase_FocusNextPrevChild(void* self, bool next);
-void QDesktopWidget_Delete(QDesktopWidget* self, bool isSubclass);
+void QDesktopWidget_Delete(QDesktopWidget* self);
 
 #ifdef __cplusplus
 } /* extern C */

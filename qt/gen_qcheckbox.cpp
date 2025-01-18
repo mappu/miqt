@@ -43,7 +43,7 @@ void miqt_exec_callback_QCheckBox_TimerEvent(void*, intptr_t, QTimerEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQCheckBox : public virtual QCheckBox {
+class MiqtVirtualQCheckBox final : public QCheckBox {
 public:
 
 	MiqtVirtualQCheckBox(QWidget* parent): QCheckBox(parent) {};
@@ -51,7 +51,7 @@ public:
 	MiqtVirtualQCheckBox(const QString& text): QCheckBox(text) {};
 	MiqtVirtualQCheckBox(const QString& text, QWidget* parent): QCheckBox(text, parent) {};
 
-	virtual ~MiqtVirtualQCheckBox() = default;
+	virtual ~MiqtVirtualQCheckBox() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -697,11 +697,7 @@ void QCheckBox_virtualbase_TimerEvent(void* self, QTimerEvent* e) {
 	( (MiqtVirtualQCheckBox*)(self) )->virtualbase_TimerEvent(e);
 }
 
-void QCheckBox_Delete(QCheckBox* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQCheckBox*>( self );
-	} else {
-		delete self;
-	}
+void QCheckBox_Delete(QCheckBox* self) {
+	delete self;
 }
 

@@ -48,14 +48,14 @@ void QTextOption_SetTabs(QTextOption* self, struct miqt_array /* of QTextOption_
 struct miqt_array /* of QTextOption__Tab* */  QTextOption_Tabs(const QTextOption* self);
 void QTextOption_SetUseDesignMetrics(QTextOption* self, bool b);
 bool QTextOption_UseDesignMetrics(const QTextOption* self);
-void QTextOption_Delete(QTextOption* self, bool isSubclass);
+void QTextOption_Delete(QTextOption* self);
 
 QTextOption__Tab* QTextOption__Tab_new();
 QTextOption__Tab* QTextOption__Tab_new2(double pos, int tabType);
 QTextOption__Tab* QTextOption__Tab_new3(double pos, int tabType, QChar* delim);
 bool QTextOption__Tab_OperatorEqual(const QTextOption__Tab* self, QTextOption__Tab* other);
 bool QTextOption__Tab_OperatorNotEqual(const QTextOption__Tab* self, QTextOption__Tab* other);
-void QTextOption__Tab_Delete(QTextOption__Tab* self, bool isSubclass);
+void QTextOption__Tab_Delete(QTextOption__Tab* self);
 
 #ifdef __cplusplus
 } /* extern C */

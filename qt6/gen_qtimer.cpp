@@ -26,13 +26,13 @@ void miqt_exec_callback_QTimer_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQTimer : public virtual QTimer {
+class MiqtVirtualQTimer final : public QTimer {
 public:
 
 	MiqtVirtualQTimer(): QTimer() {};
 	MiqtVirtualQTimer(QObject* parent): QTimer(parent) {};
 
-	virtual ~MiqtVirtualQTimer() = default;
+	virtual ~MiqtVirtualQTimer() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__TimerEvent = 0;
@@ -365,11 +365,7 @@ void QTimer_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTimer*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QTimer_Delete(QTimer* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQTimer*>( self );
-	} else {
-		delete self;
-	}
+void QTimer_Delete(QTimer* self) {
+	delete self;
 }
 

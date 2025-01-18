@@ -38,7 +38,7 @@ void miqt_exec_callback_QCompleter_DisconnectNotify(void*, intptr_t, QMetaMethod
 } /* extern C */
 #endif
 
-class MiqtVirtualQCompleter : public virtual QCompleter {
+class MiqtVirtualQCompleter final : public QCompleter {
 public:
 
 	MiqtVirtualQCompleter(): QCompleter() {};
@@ -48,7 +48,7 @@ public:
 	MiqtVirtualQCompleter(QAbstractItemModel* model, QObject* parent): QCompleter(model, parent) {};
 	MiqtVirtualQCompleter(const QStringList& completions, QObject* parent): QCompleter(completions, parent) {};
 
-	virtual ~MiqtVirtualQCompleter() = default;
+	virtual ~MiqtVirtualQCompleter() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__PathFromIndex = 0;
@@ -741,11 +741,7 @@ void QCompleter_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQCompleter*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QCompleter_Delete(QCompleter* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQCompleter*>( self );
-	} else {
-		delete self;
-	}
+void QCompleter_Delete(QCompleter* self) {
+	delete self;
 }
 

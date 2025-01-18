@@ -70,7 +70,7 @@ void QAudioOutput_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QAudioOutput_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QAudioOutput_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QAudioOutput_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QAudioOutput_Delete(QAudioOutput* self, bool isSubclass);
+void QAudioOutput_Delete(QAudioOutput* self);
 
 #ifdef __cplusplus
 } /* extern C */

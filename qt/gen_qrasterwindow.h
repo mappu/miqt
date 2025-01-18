@@ -63,7 +63,7 @@ void QRasterWindow_override_virtual_ExposeEvent(void* self, intptr_t slot);
 void QRasterWindow_virtualbase_ExposeEvent(void* self, QExposeEvent* param1);
 void QRasterWindow_override_virtual_Event(void* self, intptr_t slot);
 bool QRasterWindow_virtualbase_Event(void* self, QEvent* event);
-void QRasterWindow_Delete(QRasterWindow* self, bool isSubclass);
+void QRasterWindow_Delete(QRasterWindow* self);
 
 #ifdef __cplusplus
 } /* extern C */

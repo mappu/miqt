@@ -23,13 +23,13 @@ void miqt_exec_callback_QParallelAnimationGroup_UpdateDirection(void*, intptr_t,
 } /* extern C */
 #endif
 
-class MiqtVirtualQParallelAnimationGroup : public virtual QParallelAnimationGroup {
+class MiqtVirtualQParallelAnimationGroup final : public QParallelAnimationGroup {
 public:
 
 	MiqtVirtualQParallelAnimationGroup(): QParallelAnimationGroup() {};
 	MiqtVirtualQParallelAnimationGroup(QObject* parent): QParallelAnimationGroup(parent) {};
 
-	virtual ~MiqtVirtualQParallelAnimationGroup() = default;
+	virtual ~MiqtVirtualQParallelAnimationGroup() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Duration = 0;
@@ -251,11 +251,7 @@ void QParallelAnimationGroup_virtualbase_UpdateDirection(void* self, int directi
 	( (MiqtVirtualQParallelAnimationGroup*)(self) )->virtualbase_UpdateDirection(direction);
 }
 
-void QParallelAnimationGroup_Delete(QParallelAnimationGroup* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQParallelAnimationGroup*>( self );
-	} else {
-		delete self;
-	}
+void QParallelAnimationGroup_Delete(QParallelAnimationGroup* self) {
+	delete self;
 }
 

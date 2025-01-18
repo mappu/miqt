@@ -344,12 +344,8 @@ void QPainterPath_AddRoundedRect7(QPainterPath* self, double x, double y, double
 	self->addRoundedRect(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h), static_cast<qreal>(xRadius), static_cast<qreal>(yRadius), static_cast<Qt::SizeMode>(mode));
 }
 
-void QPainterPath_Delete(QPainterPath* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPainterPath*>( self );
-	} else {
-		delete self;
-	}
+void QPainterPath_Delete(QPainterPath* self) {
+	delete self;
 }
 
 QPainterPathStroker* QPainterPathStroker_new() {
@@ -445,12 +441,8 @@ QPainterPath* QPainterPathStroker_CreateStroke(const QPainterPathStroker* self, 
 	return new QPainterPath(self->createStroke(*path));
 }
 
-void QPainterPathStroker_Delete(QPainterPathStroker* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPainterPathStroker*>( self );
-	} else {
-		delete self;
-	}
+void QPainterPathStroker_Delete(QPainterPathStroker* self) {
+	delete self;
 }
 
 bool QPainterPath__Element_IsMoveTo(const QPainterPath__Element* self) {
@@ -477,11 +469,7 @@ bool QPainterPath__Element_OperatorNotEqual(const QPainterPath__Element* self, Q
 	return (*self != *e);
 }
 
-void QPainterPath__Element_Delete(QPainterPath__Element* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPainterPath::Element*>( self );
-	} else {
-		delete self;
-	}
+void QPainterPath__Element_Delete(QPainterPath__Element* self) {
+	delete self;
 }
 

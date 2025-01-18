@@ -435,7 +435,7 @@ func (this *QBrush) IsDetached() bool {
 
 // Delete this object from C++ memory.
 func (this *QBrush) Delete() {
-	C.QBrush_Delete(this.h, C.bool(this.isSubclass))
+	C.QBrush_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -494,7 +494,7 @@ func (this *QBrushData) OperatorAssign(param1 *QBrushData) {
 
 // Delete this object from C++ memory.
 func (this *QBrushData) Delete() {
-	C.QBrushData_Delete(this.h, C.bool(this.isSubclass))
+	C.QBrushData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -657,7 +657,7 @@ func (this *QGradient) OperatorNotEqual(other *QGradient) bool {
 
 // Delete this object from C++ memory.
 func (this *QGradient) Delete() {
-	C.QGradient_Delete(this.h, C.bool(this.isSubclass))
+	C.QGradient_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -768,7 +768,7 @@ func (this *QLinearGradient) SetFinalStop2(x float64, y float64) {
 
 // Delete this object from C++ memory.
 func (this *QLinearGradient) Delete() {
-	C.QLinearGradient_Delete(this.h, C.bool(this.isSubclass))
+	C.QLinearGradient_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -935,7 +935,7 @@ func (this *QRadialGradient) SetFocalRadius(radius float64) {
 
 // Delete this object from C++ memory.
 func (this *QRadialGradient) Delete() {
-	C.QRadialGradient_Delete(this.h, C.bool(this.isSubclass))
+	C.QRadialGradient_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1040,7 +1040,7 @@ func (this *QConicalGradient) SetAngle(angle float64) {
 
 // Delete this object from C++ memory.
 func (this *QConicalGradient) Delete() {
-	C.QConicalGradient_Delete(this.h, C.bool(this.isSubclass))
+	C.QConicalGradient_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1095,7 +1095,7 @@ func NewQGradient__QGradientData(param1 *QGradient__QGradientData) *QGradient__Q
 
 // Delete this object from C++ memory.
 func (this *QGradient__QGradientData) Delete() {
-	C.QGradient__QGradientData_Delete(this.h, C.bool(this.isSubclass))
+	C.QGradient__QGradientData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

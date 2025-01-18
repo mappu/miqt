@@ -104,13 +104,13 @@ QSize* miqt_exec_callback_QColumnView_ViewportSizeHint(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQColumnView : public virtual QColumnView {
+class MiqtVirtualQColumnView final : public QColumnView {
 public:
 
 	MiqtVirtualQColumnView(QWidget* parent): QColumnView(parent) {};
 	MiqtVirtualQColumnView(): QColumnView() {};
 
-	virtual ~MiqtVirtualQColumnView() = default;
+	virtual ~MiqtVirtualQColumnView() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__IndexAt = 0;
@@ -2303,11 +2303,7 @@ QSize* QColumnView_virtualbase_ViewportSizeHint(const void* self) {
 	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_ViewportSizeHint();
 }
 
-void QColumnView_Delete(QColumnView* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQColumnView*>( self );
-	} else {
-		delete self;
-	}
+void QColumnView_Delete(QColumnView* self) {
+	delete self;
 }
 

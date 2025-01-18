@@ -74,7 +74,7 @@ void QTranslator_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QTranslator_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QTranslator_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QTranslator_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QTranslator_Delete(QTranslator* self, bool isSubclass);
+void QTranslator_Delete(QTranslator* self);
 
 #ifdef __cplusplus
 } /* extern C */

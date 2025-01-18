@@ -34,7 +34,7 @@ void QScriptClassPropertyIterator_ToBack(QScriptClassPropertyIterator* self);
 QScriptString* QScriptClassPropertyIterator_Name(const QScriptClassPropertyIterator* self);
 unsigned int QScriptClassPropertyIterator_Id(const QScriptClassPropertyIterator* self);
 int QScriptClassPropertyIterator_Flags(const QScriptClassPropertyIterator* self);
-void QScriptClassPropertyIterator_Delete(QScriptClassPropertyIterator* self, bool isSubclass);
+void QScriptClassPropertyIterator_Delete(QScriptClassPropertyIterator* self);
 
 #ifdef __cplusplus
 } /* extern C */

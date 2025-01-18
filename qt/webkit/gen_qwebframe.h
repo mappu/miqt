@@ -80,7 +80,7 @@ bool QWebHitTestResult_IsContentEditable(const QWebHitTestResult* self);
 bool QWebHitTestResult_IsContentSelected(const QWebHitTestResult* self);
 QWebElement* QWebHitTestResult_Element(const QWebHitTestResult* self);
 QWebFrame* QWebHitTestResult_Frame(const QWebHitTestResult* self);
-void QWebHitTestResult_Delete(QWebHitTestResult* self, bool isSubclass);
+void QWebHitTestResult_Delete(QWebHitTestResult* self);
 
 void QWebFrame_virtbase(QWebFrame* src, QObject** outptr_QObject);
 QMetaObject* QWebFrame_MetaObject(const QWebFrame* self);

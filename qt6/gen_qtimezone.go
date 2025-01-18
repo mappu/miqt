@@ -432,7 +432,7 @@ func (this *QTimeZone) DisplayName32(timeType QTimeZone__TimeType, nameType QTim
 
 // Delete this object from C++ memory.
 func (this *QTimeZone) Delete() {
-	C.QTimeZone_Delete(this.h, C.bool(this.isSubclass))
+	C.QTimeZone_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -491,7 +491,7 @@ func (this *QTimeZone__OffsetData) OperatorAssign(param1 *QTimeZone__OffsetData)
 
 // Delete this object from C++ memory.
 func (this *QTimeZone__OffsetData) Delete() {
-	C.QTimeZone__OffsetData_Delete(this.h, C.bool(this.isSubclass))
+	C.QTimeZone__OffsetData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -99,7 +99,7 @@ void QAbstractAnimation_override_virtual_ConnectNotify(void* self, intptr_t slot
 void QAbstractAnimation_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QAbstractAnimation_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QAbstractAnimation_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QAbstractAnimation_Delete(QAbstractAnimation* self, bool isSubclass);
+void QAbstractAnimation_Delete(QAbstractAnimation* self);
 
 QAnimationDriver* QAnimationDriver_new();
 QAnimationDriver* QAnimationDriver_new2(QObject* parent);
@@ -147,7 +147,7 @@ void QAnimationDriver_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QAnimationDriver_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QAnimationDriver_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QAnimationDriver_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QAnimationDriver_Delete(QAnimationDriver* self, bool isSubclass);
+void QAnimationDriver_Delete(QAnimationDriver* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -26,11 +26,7 @@ QTileRules* QTileRules_new4(int rule) {
 	return new QTileRules(static_cast<Qt::TileRule>(rule));
 }
 
-void QTileRules_Delete(QTileRules* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTileRules*>( self );
-	} else {
-		delete self;
-	}
+void QTileRules_Delete(QTileRules* self) {
+	delete self;
 }
 

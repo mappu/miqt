@@ -454,7 +454,7 @@ func miqt_exec_callback_QOffscreenSurface_DisconnectNotify(self *C.QOffscreenSur
 
 // Delete this object from C++ memory.
 func (this *QOffscreenSurface) Delete() {
-	C.QOffscreenSurface_Delete(this.h, C.bool(this.isSubclass))
+	C.QOffscreenSurface_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

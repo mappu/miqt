@@ -28,12 +28,8 @@ QPropertyBindingSourceLocation* QPropertyBindingSourceLocation_new2(QPropertyBin
 	return new QPropertyBindingSourceLocation(*param1);
 }
 
-void QPropertyBindingSourceLocation_Delete(QPropertyBindingSourceLocation* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPropertyBindingSourceLocation*>( self );
-	} else {
-		delete self;
-	}
+void QPropertyBindingSourceLocation_Delete(QPropertyBindingSourceLocation* self) {
+	delete self;
 }
 
 QPropertyBindingError* QPropertyBindingError_new() {
@@ -77,12 +73,8 @@ struct miqt_string QPropertyBindingError_Description(const QPropertyBindingError
 	return _ms;
 }
 
-void QPropertyBindingError_Delete(QPropertyBindingError* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPropertyBindingError*>( self );
-	} else {
-		delete self;
-	}
+void QPropertyBindingError_Delete(QPropertyBindingError* self) {
+	delete self;
 }
 
 QUntypedPropertyBinding* QUntypedPropertyBinding_new() {
@@ -109,12 +101,8 @@ QMetaType* QUntypedPropertyBinding_ValueMetaType(const QUntypedPropertyBinding* 
 	return new QMetaType(self->valueMetaType());
 }
 
-void QUntypedPropertyBinding_Delete(QUntypedPropertyBinding* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QUntypedPropertyBinding*>( self );
-	} else {
-		delete self;
-	}
+void QUntypedPropertyBinding_Delete(QUntypedPropertyBinding* self) {
+	delete self;
 }
 
 QPropertyObserverBase* QPropertyObserverBase_new() {
@@ -125,12 +113,8 @@ QPropertyObserverBase* QPropertyObserverBase_new2(QPropertyObserverBase* param1)
 	return new QPropertyObserverBase(*param1);
 }
 
-void QPropertyObserverBase_Delete(QPropertyObserverBase* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPropertyObserverBase*>( self );
-	} else {
-		delete self;
-	}
+void QPropertyObserverBase_Delete(QPropertyObserverBase* self) {
+	delete self;
 }
 
 QPropertyObserver* QPropertyObserver_new() {
@@ -141,12 +125,8 @@ void QPropertyObserver_virtbase(QPropertyObserver* src, QPropertyObserverBase** 
 	*outptr_QPropertyObserverBase = static_cast<QPropertyObserverBase*>(src);
 }
 
-void QPropertyObserver_Delete(QPropertyObserver* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPropertyObserver*>( self );
-	} else {
-		delete self;
-	}
+void QPropertyObserver_Delete(QPropertyObserver* self) {
+	delete self;
 }
 
 QPropertyNotifier* QPropertyNotifier_new() {
@@ -157,12 +137,8 @@ void QPropertyNotifier_virtbase(QPropertyNotifier* src, QPropertyObserver** outp
 	*outptr_QPropertyObserver = static_cast<QPropertyObserver*>(src);
 }
 
-void QPropertyNotifier_Delete(QPropertyNotifier* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPropertyNotifier*>( self );
-	} else {
-		delete self;
-	}
+void QPropertyNotifier_Delete(QPropertyNotifier* self) {
+	delete self;
 }
 
 QUntypedBindable* QUntypedBindable_new() {
@@ -217,11 +193,7 @@ QUntypedPropertyBinding* QUntypedBindable_MakeBinding1(const QUntypedBindable* s
 	return new QUntypedPropertyBinding(self->makeBinding(*location));
 }
 
-void QUntypedBindable_Delete(QUntypedBindable* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QUntypedBindable*>( self );
-	} else {
-		delete self;
-	}
+void QUntypedBindable_Delete(QUntypedBindable* self) {
+	delete self;
 }
 

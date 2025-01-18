@@ -27,7 +27,7 @@ void miqt_exec_callback_QFileSystemWatcher_DisconnectNotify(void*, intptr_t, QMe
 } /* extern C */
 #endif
 
-class MiqtVirtualQFileSystemWatcher : public virtual QFileSystemWatcher {
+class MiqtVirtualQFileSystemWatcher final : public QFileSystemWatcher {
 public:
 
 	MiqtVirtualQFileSystemWatcher(): QFileSystemWatcher() {};
@@ -35,7 +35,7 @@ public:
 	MiqtVirtualQFileSystemWatcher(QObject* parent): QFileSystemWatcher(parent) {};
 	MiqtVirtualQFileSystemWatcher(const QStringList& paths, QObject* parent): QFileSystemWatcher(paths, parent) {};
 
-	virtual ~MiqtVirtualQFileSystemWatcher() = default;
+	virtual ~MiqtVirtualQFileSystemWatcher() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -445,11 +445,7 @@ void QFileSystemWatcher_virtualbase_DisconnectNotify(void* self, QMetaMethod* si
 	( (MiqtVirtualQFileSystemWatcher*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QFileSystemWatcher_Delete(QFileSystemWatcher* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQFileSystemWatcher*>( self );
-	} else {
-		delete self;
-	}
+void QFileSystemWatcher_Delete(QFileSystemWatcher* self) {
+	delete self;
 }
 

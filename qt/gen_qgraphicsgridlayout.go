@@ -500,7 +500,7 @@ func miqt_exec_callback_QGraphicsGridLayout_WidgetEvent(self *C.QGraphicsGridLay
 
 // Delete this object from C++ memory.
 func (this *QGraphicsGridLayout) Delete() {
-	C.QGraphicsGridLayout_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsGridLayout_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

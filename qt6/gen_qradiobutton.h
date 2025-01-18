@@ -99,7 +99,7 @@ void QRadioButton_override_virtual_ChangeEvent(void* self, intptr_t slot);
 void QRadioButton_virtualbase_ChangeEvent(void* self, QEvent* e);
 void QRadioButton_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QRadioButton_virtualbase_TimerEvent(void* self, QTimerEvent* e);
-void QRadioButton_Delete(QRadioButton* self, bool isSubclass);
+void QRadioButton_Delete(QRadioButton* self);
 
 #ifdef __cplusplus
 } /* extern C */

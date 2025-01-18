@@ -174,7 +174,7 @@ func miqt_exec_callback_QGestureRecognizer_Reset(self *C.QGestureRecognizer, cb 
 
 // Delete this object from C++ memory.
 func (this *QGestureRecognizer) Delete() {
-	C.QGestureRecognizer_Delete(this.h, C.bool(this.isSubclass))
+	C.QGestureRecognizer_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

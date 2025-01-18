@@ -1429,7 +1429,7 @@ func miqt_exec_callback_QMenuBar_FocusNextPrevChild(self *C.QMenuBar, cb C.intpt
 
 // Delete this object from C++ memory.
 func (this *QMenuBar) Delete() {
-	C.QMenuBar_Delete(this.h, C.bool(this.isSubclass))
+	C.QMenuBar_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

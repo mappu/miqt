@@ -31,12 +31,12 @@ void miqt_exec_callback_QDrag_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQDrag : public virtual QDrag {
+class MiqtVirtualQDrag final : public QDrag {
 public:
 
 	MiqtVirtualQDrag(QObject* dragSource): QDrag(dragSource) {};
 
-	virtual ~MiqtVirtualQDrag() = default;
+	virtual ~MiqtVirtualQDrag() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -451,11 +451,7 @@ void QDrag_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDrag*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QDrag_Delete(QDrag* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQDrag*>( self );
-	} else {
-		delete self;
-	}
+void QDrag_Delete(QDrag* self) {
+	delete self;
 }
 

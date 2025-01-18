@@ -71,7 +71,7 @@ void QSslServer_override_virtual_HasPendingConnections(void* self, intptr_t slot
 bool QSslServer_virtualbase_HasPendingConnections(const void* self);
 void QSslServer_override_virtual_NextPendingConnection(void* self, intptr_t slot);
 QTcpSocket* QSslServer_virtualbase_NextPendingConnection(void* self);
-void QSslServer_Delete(QSslServer* self, bool isSubclass);
+void QSslServer_Delete(QSslServer* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -73,15 +73,11 @@ void QHttpPart_SetBodyDevice(QHttpPart* self, QIODevice* device) {
 	self->setBodyDevice(device);
 }
 
-void QHttpPart_Delete(QHttpPart* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QHttpPart*>( self );
-	} else {
-		delete self;
-	}
+void QHttpPart_Delete(QHttpPart* self) {
+	delete self;
 }
 
-class MiqtVirtualQHttpMultiPart : public virtual QHttpMultiPart {
+class MiqtVirtualQHttpMultiPart final : public QHttpMultiPart {
 public:
 
 	MiqtVirtualQHttpMultiPart(): QHttpMultiPart() {};
@@ -89,7 +85,7 @@ public:
 	MiqtVirtualQHttpMultiPart(QObject* parent): QHttpMultiPart(parent) {};
 	MiqtVirtualQHttpMultiPart(QHttpMultiPart::ContentType contentType, QObject* parent): QHttpMultiPart(contentType, parent) {};
 
-	virtual ~MiqtVirtualQHttpMultiPart() = default;
+	virtual ~MiqtVirtualQHttpMultiPart() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -436,11 +432,7 @@ void QHttpMultiPart_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQHttpMultiPart*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QHttpMultiPart_Delete(QHttpMultiPart* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQHttpMultiPart*>( self );
-	} else {
-		delete self;
-	}
+void QHttpMultiPart_Delete(QHttpMultiPart* self) {
+	delete self;
 }
 

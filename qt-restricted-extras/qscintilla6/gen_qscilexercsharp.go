@@ -280,7 +280,7 @@ func miqt_exec_callback_QsciLexerCSharp_SetStylePreprocessor(self *C.QsciLexerCS
 
 // Delete this object from C++ memory.
 func (this *QsciLexerCSharp) Delete() {
-	C.QsciLexerCSharp_Delete(this.h, C.bool(this.isSubclass))
+	C.QsciLexerCSharp_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

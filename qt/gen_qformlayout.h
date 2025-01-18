@@ -139,9 +139,9 @@ void QFormLayout_override_virtual_Layout(void* self, intptr_t slot);
 QLayout* QFormLayout_virtualbase_Layout(void* self);
 void QFormLayout_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QFormLayout_virtualbase_ChildEvent(void* self, QChildEvent* e);
-void QFormLayout_Delete(QFormLayout* self, bool isSubclass);
+void QFormLayout_Delete(QFormLayout* self);
 
-void QFormLayout__TakeRowResult_Delete(QFormLayout__TakeRowResult* self, bool isSubclass);
+void QFormLayout__TakeRowResult_Delete(QFormLayout__TakeRowResult* self);
 
 #ifdef __cplusplus
 } /* extern C */

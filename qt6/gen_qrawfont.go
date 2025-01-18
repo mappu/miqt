@@ -365,7 +365,7 @@ func QRawFont_FromFont2(font *QFont, writingSystem QFontDatabase__WritingSystem)
 
 // Delete this object from C++ memory.
 func (this *QRawFont) Delete() {
-	C.QRawFont_Delete(this.h, C.bool(this.isSubclass))
+	C.QRawFont_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

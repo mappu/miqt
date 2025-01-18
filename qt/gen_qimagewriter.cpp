@@ -327,11 +327,7 @@ struct miqt_string QImageWriter_TrUtf83(const char* sourceText, const char* disa
 	return _ms;
 }
 
-void QImageWriter_Delete(QImageWriter* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QImageWriter*>( self );
-	} else {
-		delete self;
-	}
+void QImageWriter_Delete(QImageWriter* self) {
+	delete self;
 }
 

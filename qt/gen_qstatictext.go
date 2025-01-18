@@ -166,7 +166,7 @@ func (this *QStaticText) Prepare2(matrix *QTransform, font *QFont) {
 
 // Delete this object from C++ memory.
 func (this *QStaticText) Delete() {
-	C.QStaticText_Delete(this.h, C.bool(this.isSubclass))
+	C.QStaticText_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

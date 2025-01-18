@@ -267,7 +267,7 @@ func miqt_exec_callback_QPauseAnimation_UpdateDirection(self *C.QPauseAnimation,
 
 // Delete this object from C++ memory.
 func (this *QPauseAnimation) Delete() {
-	C.QPauseAnimation_Delete(this.h, C.bool(this.isSubclass))
+	C.QPauseAnimation_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

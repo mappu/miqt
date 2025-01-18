@@ -230,7 +230,7 @@ func miqt_exec_callback_QWidgetAction_DeleteWidget(self *C.QWidgetAction, cb C.i
 
 // Delete this object from C++ memory.
 func (this *QWidgetAction) Delete() {
-	C.QWidgetAction_Delete(this.h, C.bool(this.isSubclass))
+	C.QWidgetAction_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

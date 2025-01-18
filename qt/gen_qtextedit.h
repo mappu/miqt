@@ -322,11 +322,11 @@ void QTextEdit_override_virtual_ViewportEvent(void* self, intptr_t slot);
 bool QTextEdit_virtualbase_ViewportEvent(void* self, QEvent* param1);
 void QTextEdit_override_virtual_ViewportSizeHint(void* self, intptr_t slot);
 QSize* QTextEdit_virtualbase_ViewportSizeHint(const void* self);
-void QTextEdit_Delete(QTextEdit* self, bool isSubclass);
+void QTextEdit_Delete(QTextEdit* self);
 
 QTextEdit__ExtraSelection* QTextEdit__ExtraSelection_new(QTextEdit__ExtraSelection* param1);
 void QTextEdit__ExtraSelection_OperatorAssign(QTextEdit__ExtraSelection* self, QTextEdit__ExtraSelection* param1);
-void QTextEdit__ExtraSelection_Delete(QTextEdit__ExtraSelection* self, bool isSubclass);
+void QTextEdit__ExtraSelection_Delete(QTextEdit__ExtraSelection* self);
 
 #ifdef __cplusplus
 } /* extern C */

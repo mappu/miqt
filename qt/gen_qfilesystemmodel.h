@@ -192,7 +192,7 @@ void QFileSystemModel_override_virtual_Submit(void* self, intptr_t slot);
 bool QFileSystemModel_virtualbase_Submit(void* self);
 void QFileSystemModel_override_virtual_Revert(void* self, intptr_t slot);
 void QFileSystemModel_virtualbase_Revert(void* self);
-void QFileSystemModel_Delete(QFileSystemModel* self, bool isSubclass);
+void QFileSystemModel_Delete(QFileSystemModel* self);
 
 #ifdef __cplusplus
 } /* extern C */

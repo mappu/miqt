@@ -82,11 +82,7 @@ void QCameraViewfinderSettings_SetPixelAspectRatio2(QCameraViewfinderSettings* s
 	self->setPixelAspectRatio(static_cast<int>(horizontal), static_cast<int>(vertical));
 }
 
-void QCameraViewfinderSettings_Delete(QCameraViewfinderSettings* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCameraViewfinderSettings*>( self );
-	} else {
-		delete self;
-	}
+void QCameraViewfinderSettings_Delete(QCameraViewfinderSettings* self) {
+	delete self;
 }
 

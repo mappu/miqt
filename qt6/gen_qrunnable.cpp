@@ -11,12 +11,12 @@ void miqt_exec_callback_QRunnable_Run(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQRunnable : public virtual QRunnable {
+class MiqtVirtualQRunnable final : public QRunnable {
 public:
 
 	MiqtVirtualQRunnable(): QRunnable() {};
 
-	virtual ~MiqtVirtualQRunnable() = default;
+	virtual ~MiqtVirtualQRunnable() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Run = 0;
@@ -55,11 +55,7 @@ void QRunnable_override_virtual_Run(void* self, intptr_t slot) {
 	dynamic_cast<MiqtVirtualQRunnable*>( (QRunnable*)(self) )->handle__Run = slot;
 }
 
-void QRunnable_Delete(QRunnable* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQRunnable*>( self );
-	} else {
-		delete self;
-	}
+void QRunnable_Delete(QRunnable* self) {
+	delete self;
 }
 

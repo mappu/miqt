@@ -136,7 +136,7 @@ void QsciLexerCoffeeScript_override_virtual_ReadProperties(void* self, intptr_t 
 bool QsciLexerCoffeeScript_virtualbase_ReadProperties(void* self, QSettings* qs, struct miqt_string prefix);
 void QsciLexerCoffeeScript_override_virtual_WriteProperties(void* self, intptr_t slot);
 bool QsciLexerCoffeeScript_virtualbase_WriteProperties(const void* self, QSettings* qs, struct miqt_string prefix);
-void QsciLexerCoffeeScript_Delete(QsciLexerCoffeeScript* self, bool isSubclass);
+void QsciLexerCoffeeScript_Delete(QsciLexerCoffeeScript* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -147,11 +147,7 @@ QDeadlineTimer* QDeadlineTimer_Current1(int timerType) {
 	return new QDeadlineTimer(QDeadlineTimer::current(static_cast<Qt::TimerType>(timerType)));
 }
 
-void QDeadlineTimer_Delete(QDeadlineTimer* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QDeadlineTimer*>( self );
-	} else {
-		delete self;
-	}
+void QDeadlineTimer_Delete(QDeadlineTimer* self) {
+	delete self;
 }
 

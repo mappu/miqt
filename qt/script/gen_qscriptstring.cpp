@@ -69,11 +69,7 @@ unsigned int QScriptString_ToArrayIndex1(const QScriptString* self, bool* ok) {
 	return static_cast<unsigned int>(_ret);
 }
 
-void QScriptString_Delete(QScriptString* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QScriptString*>( self );
-	} else {
-		delete self;
-	}
+void QScriptString_Delete(QScriptString* self) {
+	delete self;
 }
 

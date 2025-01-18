@@ -39,7 +39,7 @@ void QCameraViewfinderSettings_SetPixelFormat(QCameraViewfinderSettings* self, i
 QSize* QCameraViewfinderSettings_PixelAspectRatio(const QCameraViewfinderSettings* self);
 void QCameraViewfinderSettings_SetPixelAspectRatio(QCameraViewfinderSettings* self, QSize* ratio);
 void QCameraViewfinderSettings_SetPixelAspectRatio2(QCameraViewfinderSettings* self, int horizontal, int vertical);
-void QCameraViewfinderSettings_Delete(QCameraViewfinderSettings* self, bool isSubclass);
+void QCameraViewfinderSettings_Delete(QCameraViewfinderSettings* self);
 
 #ifdef __cplusplus
 } /* extern C */

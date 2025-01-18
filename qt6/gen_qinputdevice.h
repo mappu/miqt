@@ -73,7 +73,7 @@ void QInputDevice_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QInputDevice_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QInputDevice_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QInputDevice_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QInputDevice_Delete(QInputDevice* self, bool isSubclass);
+void QInputDevice_Delete(QInputDevice* self);
 
 #ifdef __cplusplus
 } /* extern C */

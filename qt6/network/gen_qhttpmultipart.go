@@ -116,7 +116,7 @@ func (this *QHttpPart) SetBodyDevice(device *qt6.QIODevice) {
 
 // Delete this object from C++ memory.
 func (this *QHttpPart) Delete() {
-	C.QHttpPart_Delete(this.h, C.bool(this.isSubclass))
+	C.QHttpPart_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -450,7 +450,7 @@ func miqt_exec_callback_QHttpMultiPart_DisconnectNotify(self *C.QHttpMultiPart, 
 
 // Delete this object from C++ memory.
 func (this *QHttpMultiPart) Delete() {
-	C.QHttpMultiPart_Delete(this.h, C.bool(this.isSubclass))
+	C.QHttpMultiPart_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

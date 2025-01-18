@@ -221,7 +221,7 @@ func miqt_exec_callback_QFinalState_Event(self *C.QFinalState, cb C.intptr_t, e 
 
 // Delete this object from C++ memory.
 func (this *QFinalState) Delete() {
-	C.QFinalState_Delete(this.h, C.bool(this.isSubclass))
+	C.QFinalState_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

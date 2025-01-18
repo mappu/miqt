@@ -27,12 +27,12 @@ QPainter* miqt_exec_callback_QSvgGenerator_SharedPainter(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQSvgGenerator : public virtual QSvgGenerator {
+class MiqtVirtualQSvgGenerator final : public QSvgGenerator {
 public:
 
 	MiqtVirtualQSvgGenerator(): QSvgGenerator() {};
 
-	virtual ~MiqtVirtualQSvgGenerator() = default;
+	virtual ~MiqtVirtualQSvgGenerator() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__PaintEngine = 0;
@@ -317,11 +317,7 @@ QPainter* QSvgGenerator_virtualbase_SharedPainter(const void* self) {
 	return ( (const MiqtVirtualQSvgGenerator*)(self) )->virtualbase_SharedPainter();
 }
 
-void QSvgGenerator_Delete(QSvgGenerator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSvgGenerator*>( self );
-	} else {
-		delete self;
-	}
+void QSvgGenerator_Delete(QSvgGenerator* self) {
+	delete self;
 }
 

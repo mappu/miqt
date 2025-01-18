@@ -111,7 +111,7 @@ func (this *QGenericArgument) Name() string {
 
 // Delete this object from C++ memory.
 func (this *QGenericArgument) Delete() {
-	C.QGenericArgument_Delete(this.h, C.bool(this.isSubclass))
+	C.QGenericArgument_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -198,7 +198,7 @@ func NewQGenericReturnArgument4(aName string, aData unsafe.Pointer) *QGenericRet
 
 // Delete this object from C++ memory.
 func (this *QGenericReturnArgument) Delete() {
-	C.QGenericReturnArgument_Delete(this.h, C.bool(this.isSubclass))
+	C.QGenericReturnArgument_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -786,7 +786,7 @@ func (this *QMetaObject) NewInstance10(val0 QGenericArgument, val1 QGenericArgum
 
 // Delete this object from C++ memory.
 func (this *QMetaObject) Delete() {
-	C.QMetaObject_Delete(this.h, C.bool(this.isSubclass))
+	C.QMetaObject_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -853,7 +853,7 @@ func (this *QMetaObject__Connection) OperatorAssign(other *QMetaObject__Connecti
 
 // Delete this object from C++ memory.
 func (this *QMetaObject__Connection) Delete() {
-	C.QMetaObject__Connection_Delete(this.h, C.bool(this.isSubclass))
+	C.QMetaObject__Connection_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -936,7 +936,7 @@ func (this *QMetaObject__SuperData) OperatorAssign(param1 *QMetaObject__SuperDat
 
 // Delete this object from C++ memory.
 func (this *QMetaObject__SuperData) Delete() {
-	C.QMetaObject__SuperData_Delete(this.h, C.bool(this.isSubclass))
+	C.QMetaObject__SuperData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

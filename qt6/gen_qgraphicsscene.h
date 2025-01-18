@@ -309,7 +309,7 @@ void QGraphicsScene_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QGraphicsScene_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QGraphicsScene_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QGraphicsScene_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QGraphicsScene_Delete(QGraphicsScene* self, bool isSubclass);
+void QGraphicsScene_Delete(QGraphicsScene* self);
 
 #ifdef __cplusplus
 } /* extern C */

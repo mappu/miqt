@@ -86,11 +86,7 @@ void QWebEngineSettings_ResetUnknownUrlSchemePolicy(QWebEngineSettings* self) {
 	self->resetUnknownUrlSchemePolicy();
 }
 
-void QWebEngineSettings_Delete(QWebEngineSettings* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebEngineSettings*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineSettings_Delete(QWebEngineSettings* self) {
+	delete self;
 }
 

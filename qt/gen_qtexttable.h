@@ -63,7 +63,7 @@ bool QTextTableCell_OperatorNotEqual(const QTextTableCell* self, QTextTableCell*
 QTextFrame__iterator* QTextTableCell_Begin(const QTextTableCell* self);
 QTextFrame__iterator* QTextTableCell_End(const QTextTableCell* self);
 int QTextTableCell_TableCellFormatIndex(const QTextTableCell* self);
-void QTextTableCell_Delete(QTextTableCell* self, bool isSubclass);
+void QTextTableCell_Delete(QTextTableCell* self);
 
 QTextTable* QTextTable_new(QTextDocument* doc);
 void QTextTable_virtbase(QTextTable* src, QTextFrame** outptr_QTextFrame);
@@ -94,7 +94,7 @@ struct miqt_string QTextTable_Tr2(const char* s, const char* c);
 struct miqt_string QTextTable_Tr3(const char* s, const char* c, int n);
 struct miqt_string QTextTable_TrUtf82(const char* s, const char* c);
 struct miqt_string QTextTable_TrUtf83(const char* s, const char* c, int n);
-void QTextTable_Delete(QTextTable* self, bool isSubclass);
+void QTextTable_Delete(QTextTable* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -977,7 +977,7 @@ func miqt_exec_callback_QMdiArea_ViewportSizeHint(self *C.QMdiArea, cb C.intptr_
 
 // Delete this object from C++ memory.
 func (this *QMdiArea) Delete() {
-	C.QMdiArea_Delete(this.h, C.bool(this.isSubclass))
+	C.QMdiArea_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -60,12 +60,8 @@ int QEvent_RegisterEventType1(int hint) {
 	return QEvent::registerEventType(static_cast<int>(hint));
 }
 
-void QEvent_Delete(QEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QEvent*>( self );
-	} else {
-		delete self;
-	}
+void QEvent_Delete(QEvent* self) {
+	delete self;
 }
 
 QTimerEvent* QTimerEvent_new(int timerId) {
@@ -84,12 +80,8 @@ int QTimerEvent_TimerId(const QTimerEvent* self) {
 	return self->timerId();
 }
 
-void QTimerEvent_Delete(QTimerEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTimerEvent*>( self );
-	} else {
-		delete self;
-	}
+void QTimerEvent_Delete(QTimerEvent* self) {
+	delete self;
 }
 
 QChildEvent* QChildEvent_new(int typeVal, QObject* child) {
@@ -120,12 +112,8 @@ bool QChildEvent_Removed(const QChildEvent* self) {
 	return self->removed();
 }
 
-void QChildEvent_Delete(QChildEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QChildEvent*>( self );
-	} else {
-		delete self;
-	}
+void QChildEvent_Delete(QChildEvent* self) {
+	delete self;
 }
 
 QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_new(struct miqt_string name) {
@@ -150,11 +138,7 @@ struct miqt_string QDynamicPropertyChangeEvent_PropertyName(const QDynamicProper
 	return _ms;
 }
 
-void QDynamicPropertyChangeEvent_Delete(QDynamicPropertyChangeEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QDynamicPropertyChangeEvent*>( self );
-	} else {
-		delete self;
-	}
+void QDynamicPropertyChangeEvent_Delete(QDynamicPropertyChangeEvent* self) {
+	delete self;
 }
 

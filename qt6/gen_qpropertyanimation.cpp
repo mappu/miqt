@@ -26,7 +26,7 @@ QVariant* miqt_exec_callback_QPropertyAnimation_Interpolated(void*, intptr_t, QV
 } /* extern C */
 #endif
 
-class MiqtVirtualQPropertyAnimation : public virtual QPropertyAnimation {
+class MiqtVirtualQPropertyAnimation final : public QPropertyAnimation {
 public:
 
 	MiqtVirtualQPropertyAnimation(): QPropertyAnimation() {};
@@ -34,7 +34,7 @@ public:
 	MiqtVirtualQPropertyAnimation(QObject* parent): QPropertyAnimation(parent) {};
 	MiqtVirtualQPropertyAnimation(QObject* target, const QByteArray& propertyName, QObject* parent): QPropertyAnimation(target, propertyName, parent) {};
 
-	virtual ~MiqtVirtualQPropertyAnimation() = default;
+	virtual ~MiqtVirtualQPropertyAnimation() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -323,11 +323,7 @@ QVariant* QPropertyAnimation_virtualbase_Interpolated(const void* self, QVariant
 	return ( (const MiqtVirtualQPropertyAnimation*)(self) )->virtualbase_Interpolated(from, to, progress);
 }
 
-void QPropertyAnimation_Delete(QPropertyAnimation* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQPropertyAnimation*>( self );
-	} else {
-		delete self;
-	}
+void QPropertyAnimation_Delete(QPropertyAnimation* self) {
+	delete self;
 }
 

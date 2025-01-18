@@ -206,7 +206,7 @@ func QCursor_SetPos3(screen *QScreen, p *QPoint) {
 
 // Delete this object from C++ memory.
 func (this *QCursor) Delete() {
-	C.QCursor_Delete(this.h, C.bool(this.isSubclass))
+	C.QCursor_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

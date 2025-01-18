@@ -127,7 +127,7 @@ func QArrayData_Deallocate(data *QArrayData, objectSize int64, alignment int64) 
 
 // Delete this object from C++ memory.
 func (this *QArrayData) Delete() {
-	C.QArrayData_Delete(this.h, C.bool(this.isSubclass))
+	C.QArrayData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

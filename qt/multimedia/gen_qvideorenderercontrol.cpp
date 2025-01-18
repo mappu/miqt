@@ -103,11 +103,7 @@ struct miqt_string QVideoRendererControl_TrUtf83(const char* s, const char* c, i
 	return _ms;
 }
 
-void QVideoRendererControl_Delete(QVideoRendererControl* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QVideoRendererControl*>( self );
-	} else {
-		delete self;
-	}
+void QVideoRendererControl_Delete(QVideoRendererControl* self) {
+	delete self;
 }
 

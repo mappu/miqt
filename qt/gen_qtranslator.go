@@ -558,7 +558,7 @@ func miqt_exec_callback_QTranslator_DisconnectNotify(self *C.QTranslator, cb C.i
 
 // Delete this object from C++ memory.
 func (this *QTranslator) Delete() {
-	C.QTranslator_Delete(this.h, C.bool(this.isSubclass))
+	C.QTranslator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -41,11 +41,7 @@ bool qfloat16_IsNormal(const qfloat16* self) {
 	return self->isNormal();
 }
 
-void qfloat16_Delete(qfloat16* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<qfloat16*>( self );
-	} else {
-		delete self;
-	}
+void qfloat16_Delete(qfloat16* self) {
+	delete self;
 }
 

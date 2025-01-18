@@ -23,13 +23,13 @@ bool miqt_exec_callback_QAudioRecorder_SetMediaObject(void*, intptr_t, QMediaObj
 } /* extern C */
 #endif
 
-class MiqtVirtualQAudioRecorder : public virtual QAudioRecorder {
+class MiqtVirtualQAudioRecorder final : public QAudioRecorder {
 public:
 
 	MiqtVirtualQAudioRecorder(): QAudioRecorder() {};
 	MiqtVirtualQAudioRecorder(QObject* parent): QAudioRecorder(parent) {};
 
-	virtual ~MiqtVirtualQAudioRecorder() = default;
+	virtual ~MiqtVirtualQAudioRecorder() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__MediaObject = 0;
@@ -268,11 +268,7 @@ bool QAudioRecorder_virtualbase_SetMediaObject(void* self, QMediaObject* object)
 	return ( (MiqtVirtualQAudioRecorder*)(self) )->virtualbase_SetMediaObject(object);
 }
 
-void QAudioRecorder_Delete(QAudioRecorder* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAudioRecorder*>( self );
-	} else {
-		delete self;
-	}
+void QAudioRecorder_Delete(QAudioRecorder* self) {
+	delete self;
 }
 

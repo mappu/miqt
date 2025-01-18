@@ -229,7 +229,7 @@ func (this *QProcessEnvironment) Value2(name string, defaultValue string) string
 
 // Delete this object from C++ memory.
 func (this *QProcessEnvironment) Delete() {
-	C.QProcessEnvironment_Delete(this.h, C.bool(this.isSubclass))
+	C.QProcessEnvironment_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1371,7 +1371,7 @@ func miqt_exec_callback_QProcess_ReadLineData(self *C.QProcess, cb C.intptr_t, d
 
 // Delete this object from C++ memory.
 func (this *QProcess) Delete() {
-	C.QProcess_Delete(this.h, C.bool(this.isSubclass))
+	C.QProcess_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -255,7 +255,7 @@ func (this *QNetworkCookie) ToRawForm1(form QNetworkCookie__RawForm) []byte {
 
 // Delete this object from C++ memory.
 func (this *QNetworkCookie) Delete() {
-	C.QNetworkCookie_Delete(this.h, C.bool(this.isSubclass))
+	C.QNetworkCookie_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

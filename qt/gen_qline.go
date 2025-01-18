@@ -178,7 +178,7 @@ func (this *QLine) OperatorNotEqual(d *QLine) bool {
 
 // Delete this object from C++ memory.
 func (this *QLine) Delete() {
-	C.QLine_Delete(this.h, C.bool(this.isSubclass))
+	C.QLine_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -417,7 +417,7 @@ func (this *QLineF) ToLine() *QLine {
 
 // Delete this object from C++ memory.
 func (this *QLineF) Delete() {
-	C.QLineF_Delete(this.h, C.bool(this.isSubclass))
+	C.QLineF_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

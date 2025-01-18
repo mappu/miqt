@@ -29,12 +29,12 @@ void miqt_exec_callback_QsciAbstractAPIs_DisconnectNotify(void*, intptr_t, QMeta
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciAbstractAPIs : public virtual QsciAbstractAPIs {
+class MiqtVirtualQsciAbstractAPIs final : public QsciAbstractAPIs {
 public:
 
 	MiqtVirtualQsciAbstractAPIs(QsciLexer* lexer): QsciAbstractAPIs(lexer) {};
 
-	virtual ~MiqtVirtualQsciAbstractAPIs() = default;
+	virtual ~MiqtVirtualQsciAbstractAPIs() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__UpdateAutoCompletionList = 0;
@@ -556,11 +556,7 @@ void QsciAbstractAPIs_virtualbase_DisconnectNotify(void* self, QMetaMethod* sign
 	( (MiqtVirtualQsciAbstractAPIs*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QsciAbstractAPIs_Delete(QsciAbstractAPIs* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciAbstractAPIs*>( self );
-	} else {
-		delete self;
-	}
+void QsciAbstractAPIs_Delete(QsciAbstractAPIs* self) {
+	delete self;
 }
 

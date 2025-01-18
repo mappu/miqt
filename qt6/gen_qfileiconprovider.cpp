@@ -21,12 +21,12 @@ int miqt_exec_callback_QFileIconProvider_Options(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQFileIconProvider : public virtual QFileIconProvider {
+class MiqtVirtualQFileIconProvider final : public QFileIconProvider {
 public:
 
 	MiqtVirtualQFileIconProvider(): QFileIconProvider() {};
 
-	virtual ~MiqtVirtualQFileIconProvider() = default;
+	virtual ~MiqtVirtualQFileIconProvider() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Icon = 0;
@@ -216,11 +216,7 @@ int QFileIconProvider_virtualbase_Options(const void* self) {
 	return ( (const MiqtVirtualQFileIconProvider*)(self) )->virtualbase_Options();
 }
 
-void QFileIconProvider_Delete(QFileIconProvider* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQFileIconProvider*>( self );
-	} else {
-		delete self;
-	}
+void QFileIconProvider_Delete(QFileIconProvider* self) {
+	delete self;
 }
 

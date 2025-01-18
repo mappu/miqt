@@ -148,7 +148,7 @@ void QSplitter_override_virtual_PaintEvent(void* self, intptr_t slot);
 void QSplitter_virtualbase_PaintEvent(void* self, QPaintEvent* param1);
 void QSplitter_override_virtual_InitStyleOption(void* self, intptr_t slot);
 void QSplitter_virtualbase_InitStyleOption(const void* self, QStyleOptionFrame* option);
-void QSplitter_Delete(QSplitter* self, bool isSubclass);
+void QSplitter_Delete(QSplitter* self);
 
 QSplitterHandle* QSplitterHandle_new(int o, QSplitter* parent);
 void QSplitterHandle_virtbase(QSplitterHandle* src, QWidget** outptr_QWidget);
@@ -250,7 +250,7 @@ void QSplitterHandle_override_virtual_InputMethodQuery(void* self, intptr_t slot
 QVariant* QSplitterHandle_virtualbase_InputMethodQuery(const void* self, int param1);
 void QSplitterHandle_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QSplitterHandle_virtualbase_FocusNextPrevChild(void* self, bool next);
-void QSplitterHandle_Delete(QSplitterHandle* self, bool isSubclass);
+void QSplitterHandle_Delete(QSplitterHandle* self);
 
 #ifdef __cplusplus
 } /* extern C */

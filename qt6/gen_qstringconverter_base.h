@@ -42,7 +42,7 @@ QStringConverterBase__State* QStringConverterBase__State_new();
 QStringConverterBase__State* QStringConverterBase__State_new2(int f);
 void QStringConverterBase__State_Clear(QStringConverterBase__State* self);
 void QStringConverterBase__State_Reset(QStringConverterBase__State* self);
-void QStringConverterBase__State_Delete(QStringConverterBase__State* self, bool isSubclass);
+void QStringConverterBase__State_Delete(QStringConverterBase__State* self);
 
 #ifdef __cplusplus
 } /* extern C */

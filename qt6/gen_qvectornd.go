@@ -220,7 +220,7 @@ func (this *QVector2D) ToQVariant() *QVariant {
 
 // Delete this object from C++ memory.
 func (this *QVector2D) Delete() {
-	C.QVector2D_Delete(this.h, C.bool(this.isSubclass))
+	C.QVector2D_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -493,7 +493,7 @@ func (this *QVector3D) ToQVariant() *QVariant {
 
 // Delete this object from C++ memory.
 func (this *QVector3D) Delete() {
-	C.QVector3D_Delete(this.h, C.bool(this.isSubclass))
+	C.QVector3D_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -748,7 +748,7 @@ func (this *QVector4D) ToQVariant() *QVariant {
 
 // Delete this object from C++ memory.
 func (this *QVector4D) Delete() {
-	C.QVector4D_Delete(this.h, C.bool(this.isSubclass))
+	C.QVector4D_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

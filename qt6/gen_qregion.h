@@ -77,7 +77,7 @@ void QRegion_OperatorBitwiseNotAssign(QRegion* self, QRegion* r);
 bool QRegion_OperatorEqual(const QRegion* self, QRegion* r);
 bool QRegion_OperatorNotEqual(const QRegion* self, QRegion* r);
 QVariant* QRegion_ToQVariant(const QRegion* self);
-void QRegion_Delete(QRegion* self, bool isSubclass);
+void QRegion_Delete(QRegion* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -66,7 +66,7 @@ bool QItemSelectionRange_OperatorNotEqual(const QItemSelectionRange* self, QItem
 bool QItemSelectionRange_IsValid(const QItemSelectionRange* self);
 bool QItemSelectionRange_IsEmpty(const QItemSelectionRange* self);
 struct miqt_array /* of QModelIndex* */  QItemSelectionRange_Indexes(const QItemSelectionRange* self);
-void QItemSelectionRange_Delete(QItemSelectionRange* self, bool isSubclass);
+void QItemSelectionRange_Delete(QItemSelectionRange* self);
 
 QItemSelectionModel* QItemSelectionModel_new();
 QItemSelectionModel* QItemSelectionModel_new2(QAbstractItemModel* model, QObject* parent);
@@ -140,7 +140,7 @@ void QItemSelectionModel_override_virtual_ConnectNotify(void* self, intptr_t slo
 void QItemSelectionModel_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QItemSelectionModel_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QItemSelectionModel_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QItemSelectionModel_Delete(QItemSelectionModel* self, bool isSubclass);
+void QItemSelectionModel_Delete(QItemSelectionModel* self);
 
 QItemSelection* QItemSelection_new(QModelIndex* topLeft, QModelIndex* bottomRight);
 QItemSelection* QItemSelection_new2();
@@ -150,7 +150,7 @@ bool QItemSelection_Contains(const QItemSelection* self, QModelIndex* index);
 struct miqt_array /* of QModelIndex* */  QItemSelection_Indexes(const QItemSelection* self);
 void QItemSelection_Merge(QItemSelection* self, QItemSelection* other, int command);
 void QItemSelection_Split(QItemSelectionRange* rangeVal, QItemSelectionRange* other, QItemSelection* result);
-void QItemSelection_Delete(QItemSelection* self, bool isSubclass);
+void QItemSelection_Delete(QItemSelection* self);
 
 #ifdef __cplusplus
 } /* extern C */

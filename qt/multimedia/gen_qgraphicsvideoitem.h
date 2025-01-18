@@ -93,7 +93,7 @@ void QGraphicsVideoItem_override_virtual_SetMediaObject(void* self, intptr_t slo
 bool QGraphicsVideoItem_virtualbase_SetMediaObject(void* self, QMediaObject* object);
 void QGraphicsVideoItem_override_virtual_Event(void* self, intptr_t slot);
 bool QGraphicsVideoItem_virtualbase_Event(void* self, QEvent* ev);
-void QGraphicsVideoItem_Delete(QGraphicsVideoItem* self, bool isSubclass);
+void QGraphicsVideoItem_Delete(QGraphicsVideoItem* self);
 
 #ifdef __cplusplus
 } /* extern C */

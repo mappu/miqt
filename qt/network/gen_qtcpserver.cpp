@@ -34,13 +34,13 @@ void miqt_exec_callback_QTcpServer_DisconnectNotify(void*, intptr_t, QMetaMethod
 } /* extern C */
 #endif
 
-class MiqtVirtualQTcpServer : public virtual QTcpServer {
+class MiqtVirtualQTcpServer final : public QTcpServer {
 public:
 
 	MiqtVirtualQTcpServer(): QTcpServer() {};
 	MiqtVirtualQTcpServer(QObject* parent): QTcpServer(parent) {};
 
-	virtual ~MiqtVirtualQTcpServer() = default;
+	virtual ~MiqtVirtualQTcpServer() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__HasPendingConnections = 0;
@@ -570,11 +570,7 @@ void QTcpServer_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTcpServer*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QTcpServer_Delete(QTcpServer* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQTcpServer*>( self );
-	} else {
-		delete self;
-	}
+void QTcpServer_Delete(QTcpServer* self) {
+	delete self;
 }
 

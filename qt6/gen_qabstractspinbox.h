@@ -240,7 +240,7 @@ void QAbstractSpinBox_override_virtual_InputMethodEvent(void* self, intptr_t slo
 void QAbstractSpinBox_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* param1);
 void QAbstractSpinBox_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QAbstractSpinBox_virtualbase_FocusNextPrevChild(void* self, bool next);
-void QAbstractSpinBox_Delete(QAbstractSpinBox* self, bool isSubclass);
+void QAbstractSpinBox_Delete(QAbstractSpinBox* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -29,7 +29,7 @@ void miqt_exec_callback_QInputDevice_DisconnectNotify(void*, intptr_t, QMetaMeth
 } /* extern C */
 #endif
 
-class MiqtVirtualQInputDevice : public virtual QInputDevice {
+class MiqtVirtualQInputDevice final : public QInputDevice {
 public:
 
 	MiqtVirtualQInputDevice(): QInputDevice() {};
@@ -38,7 +38,7 @@ public:
 	MiqtVirtualQInputDevice(const QString& name, qint64 systemId, QInputDevice::DeviceType typeVal, const QString& seatName): QInputDevice(name, systemId, typeVal, seatName) {};
 	MiqtVirtualQInputDevice(const QString& name, qint64 systemId, QInputDevice::DeviceType typeVal, const QString& seatName, QObject* parent): QInputDevice(name, systemId, typeVal, seatName, parent) {};
 
-	virtual ~MiqtVirtualQInputDevice() = default;
+	virtual ~MiqtVirtualQInputDevice() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -441,11 +441,7 @@ void QInputDevice_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQInputDevice*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QInputDevice_Delete(QInputDevice* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQInputDevice*>( self );
-	} else {
-		delete self;
-	}
+void QInputDevice_Delete(QInputDevice* self) {
+	delete self;
 }
 

@@ -92,11 +92,7 @@ struct miqt_string QHstsPolicy_Host1(const QHstsPolicy* self, unsigned int optio
 	return _ms;
 }
 
-void QHstsPolicy_Delete(QHstsPolicy* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QHstsPolicy*>( self );
-	} else {
-		delete self;
-	}
+void QHstsPolicy_Delete(QHstsPolicy* self) {
+	delete self;
 }
 

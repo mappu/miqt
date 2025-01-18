@@ -588,7 +588,7 @@ func miqt_exec_callback_QRadioButton_TimerEvent(self *C.QRadioButton, cb C.intpt
 
 // Delete this object from C++ memory.
 func (this *QRadioButton) Delete() {
-	C.QRadioButton_Delete(this.h, C.bool(this.isSubclass))
+	C.QRadioButton_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

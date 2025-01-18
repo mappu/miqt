@@ -69,7 +69,7 @@ void QVideoSink_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QVideoSink_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QVideoSink_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QVideoSink_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QVideoSink_Delete(QVideoSink* self, bool isSubclass);
+void QVideoSink_Delete(QVideoSink* self);
 
 #ifdef __cplusplus
 } /* extern C */

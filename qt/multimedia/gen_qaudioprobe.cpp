@@ -31,13 +31,13 @@ void miqt_exec_callback_QAudioProbe_DisconnectNotify(void*, intptr_t, QMetaMetho
 } /* extern C */
 #endif
 
-class MiqtVirtualQAudioProbe : public virtual QAudioProbe {
+class MiqtVirtualQAudioProbe final : public QAudioProbe {
 public:
 
 	MiqtVirtualQAudioProbe(): QAudioProbe() {};
 	MiqtVirtualQAudioProbe(QObject* parent): QAudioProbe(parent) {};
 
-	virtual ~MiqtVirtualQAudioProbe() = default;
+	virtual ~MiqtVirtualQAudioProbe() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -389,11 +389,7 @@ void QAudioProbe_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAudioProbe*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QAudioProbe_Delete(QAudioProbe* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAudioProbe*>( self );
-	} else {
-		delete self;
-	}
+void QAudioProbe_Delete(QAudioProbe* self) {
+	delete self;
 }
 

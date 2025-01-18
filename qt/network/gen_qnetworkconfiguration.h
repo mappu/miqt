@@ -39,7 +39,7 @@ struct miqt_string QNetworkConfiguration_Name(const QNetworkConfiguration* self)
 bool QNetworkConfiguration_IsValid(const QNetworkConfiguration* self);
 int QNetworkConfiguration_ConnectTimeout(const QNetworkConfiguration* self);
 bool QNetworkConfiguration_SetConnectTimeout(QNetworkConfiguration* self, int timeout);
-void QNetworkConfiguration_Delete(QNetworkConfiguration* self, bool isSubclass);
+void QNetworkConfiguration_Delete(QNetworkConfiguration* self);
 
 #ifdef __cplusplus
 } /* extern C */

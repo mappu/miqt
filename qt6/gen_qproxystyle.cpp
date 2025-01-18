@@ -55,14 +55,14 @@ bool miqt_exec_callback_QProxyStyle_Event(void*, intptr_t, QEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQProxyStyle : public virtual QProxyStyle {
+class MiqtVirtualQProxyStyle final : public QProxyStyle {
 public:
 
 	MiqtVirtualQProxyStyle(): QProxyStyle() {};
 	MiqtVirtualQProxyStyle(const QString& key): QProxyStyle(key) {};
 	MiqtVirtualQProxyStyle(QStyle* style): QProxyStyle(style) {};
 
-	virtual ~MiqtVirtualQProxyStyle() = default;
+	virtual ~MiqtVirtualQProxyStyle() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__DrawPrimitive = 0;
@@ -1088,11 +1088,7 @@ bool QProxyStyle_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQProxyStyle*)(self) )->virtualbase_Event(e);
 }
 
-void QProxyStyle_Delete(QProxyStyle* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQProxyStyle*>( self );
-	} else {
-		delete self;
-	}
+void QProxyStyle_Delete(QProxyStyle* self) {
+	delete self;
 }
 

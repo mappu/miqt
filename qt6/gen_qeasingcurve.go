@@ -198,7 +198,7 @@ func (this *QEasingCurve) ValueForProgress(progress float64) float64 {
 
 // Delete this object from C++ memory.
 func (this *QEasingCurve) Delete() {
-	C.QEasingCurve_Delete(this.h, C.bool(this.isSubclass))
+	C.QEasingCurve_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

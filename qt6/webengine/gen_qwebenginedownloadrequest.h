@@ -75,7 +75,7 @@ void QWebEngineDownloadRequest_DownloadFileNameChanged(QWebEngineDownloadRequest
 void QWebEngineDownloadRequest_connect_DownloadFileNameChanged(QWebEngineDownloadRequest* self, intptr_t slot);
 struct miqt_string QWebEngineDownloadRequest_Tr2(const char* s, const char* c);
 struct miqt_string QWebEngineDownloadRequest_Tr3(const char* s, const char* c, int n);
-void QWebEngineDownloadRequest_Delete(QWebEngineDownloadRequest* self, bool isSubclass);
+void QWebEngineDownloadRequest_Delete(QWebEngineDownloadRequest* self);
 
 #ifdef __cplusplus
 } /* extern C */

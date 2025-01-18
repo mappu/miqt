@@ -109,7 +109,7 @@ void QImageCapture_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QImageCapture_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QImageCapture_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QImageCapture_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QImageCapture_Delete(QImageCapture* self, bool isSubclass);
+void QImageCapture_Delete(QImageCapture* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -18,12 +18,12 @@ struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QScriptExtensi
 } /* extern C */
 #endif
 
-class MiqtVirtualQScriptExtensionInterface : public virtual QScriptExtensionInterface {
+class MiqtVirtualQScriptExtensionInterface final : public QScriptExtensionInterface {
 public:
 
 	MiqtVirtualQScriptExtensionInterface(const QScriptExtensionInterface& param1): QScriptExtensionInterface(param1) {};
 
-	virtual ~MiqtVirtualQScriptExtensionInterface() = default;
+	virtual ~MiqtVirtualQScriptExtensionInterface() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Initialize = 0;
@@ -98,11 +98,7 @@ void QScriptExtensionInterface_override_virtual_Keys(void* self, intptr_t slot) 
 	dynamic_cast<MiqtVirtualQScriptExtensionInterface*>( (QScriptExtensionInterface*)(self) )->handle__Keys = slot;
 }
 
-void QScriptExtensionInterface_Delete(QScriptExtensionInterface* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQScriptExtensionInterface*>( self );
-	} else {
-		delete self;
-	}
+void QScriptExtensionInterface_Delete(QScriptExtensionInterface* self) {
+	delete self;
 }
 

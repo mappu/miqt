@@ -98,7 +98,7 @@ void QFile_override_virtual_WriteData(void* self, intptr_t slot);
 long long QFile_virtualbase_WriteData(void* self, const char* data, long long lenVal);
 void QFile_override_virtual_ReadLineData(void* self, intptr_t slot);
 long long QFile_virtualbase_ReadLineData(void* self, char* data, long long maxlen);
-void QFile_Delete(QFile* self, bool isSubclass);
+void QFile_Delete(QFile* self);
 
 #ifdef __cplusplus
 } /* extern C */

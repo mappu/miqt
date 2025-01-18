@@ -40,13 +40,13 @@ void miqt_exec_callback_QAbstractVideoSurface_DisconnectNotify(void*, intptr_t, 
 } /* extern C */
 #endif
 
-class MiqtVirtualQAbstractVideoSurface : public virtual QAbstractVideoSurface {
+class MiqtVirtualQAbstractVideoSurface final : public QAbstractVideoSurface {
 public:
 
 	MiqtVirtualQAbstractVideoSurface(): QAbstractVideoSurface() {};
 	MiqtVirtualQAbstractVideoSurface(QObject* parent): QAbstractVideoSurface(parent) {};
 
-	virtual ~MiqtVirtualQAbstractVideoSurface() = default;
+	virtual ~MiqtVirtualQAbstractVideoSurface() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SupportedPixelFormats = 0;
@@ -640,11 +640,7 @@ void QAbstractVideoSurface_virtualbase_DisconnectNotify(void* self, QMetaMethod*
 	( (MiqtVirtualQAbstractVideoSurface*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QAbstractVideoSurface_Delete(QAbstractVideoSurface* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractVideoSurface*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractVideoSurface_Delete(QAbstractVideoSurface* self) {
+	delete self;
 }
 

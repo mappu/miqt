@@ -61,7 +61,7 @@ void QMouseEventTransition_override_virtual_EventTest(void* self, intptr_t slot)
 bool QMouseEventTransition_virtualbase_EventTest(void* self, QEvent* event);
 void QMouseEventTransition_override_virtual_Event(void* self, intptr_t slot);
 bool QMouseEventTransition_virtualbase_Event(void* self, QEvent* e);
-void QMouseEventTransition_Delete(QMouseEventTransition* self, bool isSubclass);
+void QMouseEventTransition_Delete(QMouseEventTransition* self);
 
 #ifdef __cplusplus
 } /* extern C */

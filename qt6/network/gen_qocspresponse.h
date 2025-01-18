@@ -30,7 +30,7 @@ int QOcspResponse_RevocationReason(const QOcspResponse* self);
 QSslCertificate* QOcspResponse_Responder(const QOcspResponse* self);
 QSslCertificate* QOcspResponse_Subject(const QOcspResponse* self);
 void QOcspResponse_Swap(QOcspResponse* self, QOcspResponse* other);
-void QOcspResponse_Delete(QOcspResponse* self, bool isSubclass);
+void QOcspResponse_Delete(QOcspResponse* self);
 
 #ifdef __cplusplus
 } /* extern C */

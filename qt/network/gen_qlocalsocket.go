@@ -837,7 +837,7 @@ func miqt_exec_callback_QLocalSocket_ReadLineData(self *C.QLocalSocket, cb C.int
 
 // Delete this object from C++ memory.
 func (this *QLocalSocket) Delete() {
-	C.QLocalSocket_Delete(this.h, C.bool(this.isSubclass))
+	C.QLocalSocket_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

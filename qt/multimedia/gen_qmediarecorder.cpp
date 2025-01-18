@@ -49,13 +49,13 @@ void miqt_exec_callback_QMediaRecorder_DisconnectNotify(void*, intptr_t, QMetaMe
 } /* extern C */
 #endif
 
-class MiqtVirtualQMediaRecorder : public virtual QMediaRecorder {
+class MiqtVirtualQMediaRecorder final : public QMediaRecorder {
 public:
 
 	MiqtVirtualQMediaRecorder(QMediaObject* mediaObject): QMediaRecorder(mediaObject) {};
 	MiqtVirtualQMediaRecorder(QMediaObject* mediaObject, QObject* parent): QMediaRecorder(mediaObject, parent) {};
 
-	virtual ~MiqtVirtualQMediaRecorder() = default;
+	virtual ~MiqtVirtualQMediaRecorder() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__MediaObject = 0;
@@ -976,11 +976,7 @@ void QMediaRecorder_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQMediaRecorder*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QMediaRecorder_Delete(QMediaRecorder* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQMediaRecorder*>( self );
-	} else {
-		delete self;
-	}
+void QMediaRecorder_Delete(QMediaRecorder* self) {
+	delete self;
 }
 

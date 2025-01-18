@@ -102,7 +102,7 @@ void QRadioTuner_override_virtual_Bind(void* self, intptr_t slot);
 bool QRadioTuner_virtualbase_Bind(void* self, QObject* param1);
 void QRadioTuner_override_virtual_Unbind(void* self, intptr_t slot);
 void QRadioTuner_virtualbase_Unbind(void* self, QObject* param1);
-void QRadioTuner_Delete(QRadioTuner* self, bool isSubclass);
+void QRadioTuner_Delete(QRadioTuner* self);
 
 #ifdef __cplusplus
 } /* extern C */

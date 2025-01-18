@@ -195,7 +195,7 @@ func (this *QWebEngineCookieStore) DeleteCookie2(cookie *network.QNetworkCookie,
 
 // Delete this object from C++ memory.
 func (this *QWebEngineCookieStore) Delete() {
-	C.QWebEngineCookieStore_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebEngineCookieStore_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -254,7 +254,7 @@ func (this *QWebEngineCookieStore__FilterRequest) OperatorAssign(param1 *QWebEng
 
 // Delete this object from C++ memory.
 func (this *QWebEngineCookieStore__FilterRequest) Delete() {
-	C.QWebEngineCookieStore__FilterRequest_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebEngineCookieStore__FilterRequest_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

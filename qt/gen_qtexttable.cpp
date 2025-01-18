@@ -99,12 +99,8 @@ int QTextTableCell_TableCellFormatIndex(const QTextTableCell* self) {
 	return self->tableCellFormatIndex();
 }
 
-void QTextTableCell_Delete(QTextTableCell* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextTableCell*>( self );
-	} else {
-		delete self;
-	}
+void QTextTableCell_Delete(QTextTableCell* self) {
+	delete self;
 }
 
 QTextTable* QTextTable_new(QTextDocument* doc) {
@@ -265,11 +261,7 @@ struct miqt_string QTextTable_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QTextTable_Delete(QTextTable* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextTable*>( self );
-	} else {
-		delete self;
-	}
+void QTextTable_Delete(QTextTable* self) {
+	delete self;
 }
 

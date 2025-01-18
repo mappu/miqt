@@ -21,7 +21,7 @@ bool miqt_exec_callback_QEventTransition_Event(void*, intptr_t, QEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQEventTransition : public virtual QEventTransition {
+class MiqtVirtualQEventTransition final : public QEventTransition {
 public:
 
 	MiqtVirtualQEventTransition(): QEventTransition() {};
@@ -29,7 +29,7 @@ public:
 	MiqtVirtualQEventTransition(QState* sourceState): QEventTransition(sourceState) {};
 	MiqtVirtualQEventTransition(QObject* object, QEvent::Type typeVal, QState* sourceState): QEventTransition(object, typeVal, sourceState) {};
 
-	virtual ~MiqtVirtualQEventTransition() = default;
+	virtual ~MiqtVirtualQEventTransition() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__EventTest = 0;
@@ -238,11 +238,7 @@ bool QEventTransition_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQEventTransition*)(self) )->virtualbase_Event(e);
 }
 
-void QEventTransition_Delete(QEventTransition* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQEventTransition*>( self );
-	} else {
-		delete self;
-	}
+void QEventTransition_Delete(QEventTransition* self) {
+	delete self;
 }
 

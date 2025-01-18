@@ -58,12 +58,8 @@ bool QCameraFormat_OperatorNotEqual(const QCameraFormat* self, QCameraFormat* ot
 	return (*self != *other);
 }
 
-void QCameraFormat_Delete(QCameraFormat* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCameraFormat*>( self );
-	} else {
-		delete self;
-	}
+void QCameraFormat_Delete(QCameraFormat* self) {
+	delete self;
 }
 
 QCameraDevice* QCameraDevice_new() {
@@ -145,11 +141,7 @@ struct miqt_array /* of QCameraFormat* */  QCameraDevice_VideoFormats(const QCam
 	return _out;
 }
 
-void QCameraDevice_Delete(QCameraDevice* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCameraDevice*>( self );
-	} else {
-		delete self;
-	}
+void QCameraDevice_Delete(QCameraDevice* self) {
+	delete self;
 }
 

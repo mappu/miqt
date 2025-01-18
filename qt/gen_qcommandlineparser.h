@@ -56,7 +56,7 @@ struct miqt_string QCommandLineParser_Tr3(const char* sourceText, const char* di
 struct miqt_string QCommandLineParser_TrUtf82(const char* sourceText, const char* disambiguation);
 struct miqt_string QCommandLineParser_TrUtf83(const char* sourceText, const char* disambiguation, int n);
 void QCommandLineParser_AddPositionalArgument3(QCommandLineParser* self, struct miqt_string name, struct miqt_string description, struct miqt_string syntax);
-void QCommandLineParser_Delete(QCommandLineParser* self, bool isSubclass);
+void QCommandLineParser_Delete(QCommandLineParser* self);
 
 #ifdef __cplusplus
 } /* extern C */

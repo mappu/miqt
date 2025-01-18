@@ -40,13 +40,13 @@ bool miqt_exec_callback_QErrorMessage_EventFilter(void*, intptr_t, QObject*, QEv
 } /* extern C */
 #endif
 
-class MiqtVirtualQErrorMessage : public virtual QErrorMessage {
+class MiqtVirtualQErrorMessage final : public QErrorMessage {
 public:
 
 	MiqtVirtualQErrorMessage(QWidget* parent): QErrorMessage(parent) {};
 	MiqtVirtualQErrorMessage(): QErrorMessage() {};
 
-	virtual ~MiqtVirtualQErrorMessage() = default;
+	virtual ~MiqtVirtualQErrorMessage() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Done = 0;
@@ -622,11 +622,7 @@ bool QErrorMessage_virtualbase_EventFilter(void* self, QObject* param1, QEvent* 
 	return ( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_EventFilter(param1, param2);
 }
 
-void QErrorMessage_Delete(QErrorMessage* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQErrorMessage*>( self );
-	} else {
-		delete self;
-	}
+void QErrorMessage_Delete(QErrorMessage* self) {
+	delete self;
 }
 

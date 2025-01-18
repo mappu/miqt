@@ -29,13 +29,13 @@ void miqt_exec_callback_QWebChannelAbstractTransport_DisconnectNotify(void*, int
 } /* extern C */
 #endif
 
-class MiqtVirtualQWebChannelAbstractTransport : public virtual QWebChannelAbstractTransport {
+class MiqtVirtualQWebChannelAbstractTransport final : public QWebChannelAbstractTransport {
 public:
 
 	MiqtVirtualQWebChannelAbstractTransport(): QWebChannelAbstractTransport() {};
 	MiqtVirtualQWebChannelAbstractTransport(QObject* parent): QWebChannelAbstractTransport(parent) {};
 
-	virtual ~MiqtVirtualQWebChannelAbstractTransport() = default;
+	virtual ~MiqtVirtualQWebChannelAbstractTransport() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SendMessage = 0;
@@ -359,11 +359,7 @@ void QWebChannelAbstractTransport_virtualbase_DisconnectNotify(void* self, QMeta
 	( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QWebChannelAbstractTransport_Delete(QWebChannelAbstractTransport* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQWebChannelAbstractTransport*>( self );
-	} else {
-		delete self;
-	}
+void QWebChannelAbstractTransport_Delete(QWebChannelAbstractTransport* self) {
+	delete self;
 }
 

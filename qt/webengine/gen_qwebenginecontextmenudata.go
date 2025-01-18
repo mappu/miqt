@@ -182,7 +182,7 @@ func (this *QWebEngineContextMenuData) EditFlags() QWebEngineContextMenuData__Ed
 
 // Delete this object from C++ memory.
 func (this *QWebEngineContextMenuData) Delete() {
-	C.QWebEngineContextMenuData_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebEngineContextMenuData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

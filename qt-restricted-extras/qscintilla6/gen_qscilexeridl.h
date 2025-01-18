@@ -52,7 +52,7 @@ void QsciLexerIDL_override_virtual_SetFoldPreprocessor(void* self, intptr_t slot
 void QsciLexerIDL_virtualbase_SetFoldPreprocessor(void* self, bool fold);
 void QsciLexerIDL_override_virtual_SetStylePreprocessor(void* self, intptr_t slot);
 void QsciLexerIDL_virtualbase_SetStylePreprocessor(void* self, bool style);
-void QsciLexerIDL_Delete(QsciLexerIDL* self, bool isSubclass);
+void QsciLexerIDL_Delete(QsciLexerIDL* self);
 
 #ifdef __cplusplus
 } /* extern C */

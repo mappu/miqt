@@ -593,7 +593,7 @@ func miqt_exec_callback_QNetworkSession_CustomEvent(self *C.QNetworkSession, cb 
 
 // Delete this object from C++ memory.
 func (this *QNetworkSession) Delete() {
-	C.QNetworkSession_Delete(this.h, C.bool(this.isSubclass))
+	C.QNetworkSession_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

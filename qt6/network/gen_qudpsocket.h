@@ -107,7 +107,7 @@ void QUdpSocket_override_virtual_SkipData(void* self, intptr_t slot);
 long long QUdpSocket_virtualbase_SkipData(void* self, long long maxSize);
 void QUdpSocket_override_virtual_WriteData(void* self, intptr_t slot);
 long long QUdpSocket_virtualbase_WriteData(void* self, const char* data, long long lenVal);
-void QUdpSocket_Delete(QUdpSocket* self, bool isSubclass);
+void QUdpSocket_Delete(QUdpSocket* self);
 
 #ifdef __cplusplus
 } /* extern C */

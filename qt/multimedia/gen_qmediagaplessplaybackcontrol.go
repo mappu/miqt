@@ -205,7 +205,7 @@ func QMediaGaplessPlaybackControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QMediaGaplessPlaybackControl) Delete() {
-	C.QMediaGaplessPlaybackControl_Delete(this.h, C.bool(this.isSubclass))
+	C.QMediaGaplessPlaybackControl_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

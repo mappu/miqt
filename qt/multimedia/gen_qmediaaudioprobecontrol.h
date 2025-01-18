@@ -41,7 +41,7 @@ struct miqt_string QMediaAudioProbeControl_Tr2(const char* s, const char* c);
 struct miqt_string QMediaAudioProbeControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QMediaAudioProbeControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QMediaAudioProbeControl_TrUtf83(const char* s, const char* c, int n);
-void QMediaAudioProbeControl_Delete(QMediaAudioProbeControl* self, bool isSubclass);
+void QMediaAudioProbeControl_Delete(QMediaAudioProbeControl* self);
 
 #ifdef __cplusplus
 } /* extern C */

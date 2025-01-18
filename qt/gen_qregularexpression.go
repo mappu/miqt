@@ -308,7 +308,7 @@ func (this *QRegularExpression) GlobalMatch4(subject string, offset int, matchTy
 
 // Delete this object from C++ memory.
 func (this *QRegularExpression) Delete() {
-	C.QRegularExpression_Delete(this.h, C.bool(this.isSubclass))
+	C.QRegularExpression_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -495,7 +495,7 @@ func (this *QRegularExpressionMatch) CapturedEnd1(nth int) int {
 
 // Delete this object from C++ memory.
 func (this *QRegularExpressionMatch) Delete() {
-	C.QRegularExpressionMatch_Delete(this.h, C.bool(this.isSubclass))
+	C.QRegularExpressionMatch_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -600,7 +600,7 @@ func (this *QRegularExpressionMatchIterator) MatchOptions() QRegularExpression__
 
 // Delete this object from C++ memory.
 func (this *QRegularExpressionMatchIterator) Delete() {
-	C.QRegularExpressionMatchIterator_Delete(this.h, C.bool(this.isSubclass))
+	C.QRegularExpressionMatchIterator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

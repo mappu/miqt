@@ -1474,7 +1474,7 @@ func miqt_exec_callback_QDialog_FocusNextPrevChild(self *C.QDialog, cb C.intptr_
 
 // Delete this object from C++ memory.
 func (this *QDialog) Delete() {
-	C.QDialog_Delete(this.h, C.bool(this.isSubclass))
+	C.QDialog_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

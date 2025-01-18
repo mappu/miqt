@@ -52,13 +52,13 @@ bool miqt_exec_callback_QsciLexerRuby_WriteProperties(void*, intptr_t, QSettings
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerRuby : public virtual QsciLexerRuby {
+class MiqtVirtualQsciLexerRuby final : public QsciLexerRuby {
 public:
 
 	MiqtVirtualQsciLexerRuby(): QsciLexerRuby() {};
 	MiqtVirtualQsciLexerRuby(QObject* parent): QsciLexerRuby(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerRuby() = default;
+	virtual ~MiqtVirtualQsciLexerRuby() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Language = 0;
@@ -1317,11 +1317,7 @@ bool QsciLexerRuby_virtualbase_WriteProperties(const void* self, QSettings* qs, 
 	return ( (const MiqtVirtualQsciLexerRuby*)(self) )->virtualbase_WriteProperties(qs, prefix);
 }
 
-void QsciLexerRuby_Delete(QsciLexerRuby* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerRuby*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerRuby_Delete(QsciLexerRuby* self) {
+	delete self;
 }
 

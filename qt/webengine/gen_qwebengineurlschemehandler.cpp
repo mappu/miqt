@@ -28,13 +28,13 @@ void miqt_exec_callback_QWebEngineUrlSchemeHandler_DisconnectNotify(void*, intpt
 } /* extern C */
 #endif
 
-class MiqtVirtualQWebEngineUrlSchemeHandler : public virtual QWebEngineUrlSchemeHandler {
+class MiqtVirtualQWebEngineUrlSchemeHandler final : public QWebEngineUrlSchemeHandler {
 public:
 
 	MiqtVirtualQWebEngineUrlSchemeHandler(): QWebEngineUrlSchemeHandler() {};
 	MiqtVirtualQWebEngineUrlSchemeHandler(QObject* parent): QWebEngineUrlSchemeHandler(parent) {};
 
-	virtual ~MiqtVirtualQWebEngineUrlSchemeHandler() = default;
+	virtual ~MiqtVirtualQWebEngineUrlSchemeHandler() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__RequestStarted = 0;
@@ -375,11 +375,7 @@ void QWebEngineUrlSchemeHandler_virtualbase_DisconnectNotify(void* self, QMetaMe
 	( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QWebEngineUrlSchemeHandler_Delete(QWebEngineUrlSchemeHandler* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQWebEngineUrlSchemeHandler*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineUrlSchemeHandler_Delete(QWebEngineUrlSchemeHandler* self) {
+	delete self;
 }
 

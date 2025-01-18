@@ -1509,7 +1509,7 @@ func miqt_exec_callback_QToolBar_FocusNextPrevChild(self *C.QToolBar, cb C.intpt
 
 // Delete this object from C++ memory.
 func (this *QToolBar) Delete() {
-	C.QToolBar_Delete(this.h, C.bool(this.isSubclass))
+	C.QToolBar_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

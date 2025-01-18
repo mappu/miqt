@@ -52,13 +52,13 @@ bool miqt_exec_callback_QsciLexerCoffeeScript_WriteProperties(void*, intptr_t, Q
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerCoffeeScript : public virtual QsciLexerCoffeeScript {
+class MiqtVirtualQsciLexerCoffeeScript final : public QsciLexerCoffeeScript {
 public:
 
 	MiqtVirtualQsciLexerCoffeeScript(): QsciLexerCoffeeScript() {};
 	MiqtVirtualQsciLexerCoffeeScript(QObject* parent): QsciLexerCoffeeScript(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerCoffeeScript() = default;
+	virtual ~MiqtVirtualQsciLexerCoffeeScript() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Language = 0;
@@ -1324,11 +1324,7 @@ bool QsciLexerCoffeeScript_virtualbase_WriteProperties(const void* self, QSettin
 	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_WriteProperties(qs, prefix);
 }
 
-void QsciLexerCoffeeScript_Delete(QsciLexerCoffeeScript* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerCoffeeScript_Delete(QsciLexerCoffeeScript* self) {
+	delete self;
 }
 

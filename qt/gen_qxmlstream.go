@@ -137,7 +137,7 @@ func (this *QXmlStreamStringRef) Size() int {
 
 // Delete this object from C++ memory.
 func (this *QXmlStreamStringRef) Delete() {
-	C.QXmlStreamStringRef_Delete(this.h, C.bool(this.isSubclass))
+	C.QXmlStreamStringRef_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -252,7 +252,7 @@ func (this *QXmlStreamAttribute) OperatorNotEqual(other *QXmlStreamAttribute) bo
 
 // Delete this object from C++ memory.
 func (this *QXmlStreamAttribute) Delete() {
-	C.QXmlStreamAttribute_Delete(this.h, C.bool(this.isSubclass))
+	C.QXmlStreamAttribute_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -343,7 +343,7 @@ func (this *QXmlStreamNamespaceDeclaration) OperatorNotEqual(other *QXmlStreamNa
 
 // Delete this object from C++ memory.
 func (this *QXmlStreamNamespaceDeclaration) Delete() {
-	C.QXmlStreamNamespaceDeclaration_Delete(this.h, C.bool(this.isSubclass))
+	C.QXmlStreamNamespaceDeclaration_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -418,7 +418,7 @@ func (this *QXmlStreamNotationDeclaration) OperatorNotEqual(other *QXmlStreamNot
 
 // Delete this object from C++ memory.
 func (this *QXmlStreamNotationDeclaration) Delete() {
-	C.QXmlStreamNotationDeclaration_Delete(this.h, C.bool(this.isSubclass))
+	C.QXmlStreamNotationDeclaration_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -493,7 +493,7 @@ func (this *QXmlStreamEntityDeclaration) OperatorNotEqual(other *QXmlStreamEntit
 
 // Delete this object from C++ memory.
 func (this *QXmlStreamEntityDeclaration) Delete() {
-	C.QXmlStreamEntityDeclaration_Delete(this.h, C.bool(this.isSubclass))
+	C.QXmlStreamEntityDeclaration_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -566,7 +566,7 @@ func (this *QXmlStreamEntityResolver) ResolveUndeclaredEntity(name string) strin
 
 // Delete this object from C++ memory.
 func (this *QXmlStreamEntityResolver) Delete() {
-	C.QXmlStreamEntityResolver_Delete(this.h, C.bool(this.isSubclass))
+	C.QXmlStreamEntityResolver_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -897,7 +897,7 @@ func (this *QXmlStreamReader) RaiseError1(message string) {
 
 // Delete this object from C++ memory.
 func (this *QXmlStreamReader) Delete() {
-	C.QXmlStreamReader_Delete(this.h, C.bool(this.isSubclass))
+	C.QXmlStreamReader_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1222,7 +1222,7 @@ func (this *QXmlStreamWriter) WriteProcessingInstruction2(target string, data st
 
 // Delete this object from C++ memory.
 func (this *QXmlStreamWriter) Delete() {
-	C.QXmlStreamWriter_Delete(this.h, C.bool(this.isSubclass))
+	C.QXmlStreamWriter_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -44,13 +44,13 @@ struct miqt_array /* of int */  miqt_exec_callback_QItemDelegate_PaintingRoles(v
 } /* extern C */
 #endif
 
-class MiqtVirtualQItemDelegate : public virtual QItemDelegate {
+class MiqtVirtualQItemDelegate final : public QItemDelegate {
 public:
 
 	MiqtVirtualQItemDelegate(): QItemDelegate() {};
 	MiqtVirtualQItemDelegate(QObject* parent): QItemDelegate(parent) {};
 
-	virtual ~MiqtVirtualQItemDelegate() = default;
+	virtual ~MiqtVirtualQItemDelegate() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Paint = 0;
@@ -754,11 +754,7 @@ struct miqt_array /* of int */  QItemDelegate_virtualbase_PaintingRoles(const vo
 	return ( (const MiqtVirtualQItemDelegate*)(self) )->virtualbase_PaintingRoles();
 }
 
-void QItemDelegate_Delete(QItemDelegate* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQItemDelegate*>( self );
-	} else {
-		delete self;
-	}
+void QItemDelegate_Delete(QItemDelegate* self) {
+	delete self;
 }
 

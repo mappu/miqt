@@ -30,11 +30,7 @@ void QHashSeed_ResetRandomGlobalSeed() {
 	QHashSeed::resetRandomGlobalSeed();
 }
 
-void QHashSeed_Delete(QHashSeed* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QHashSeed*>( self );
-	} else {
-		delete self;
-	}
+void QHashSeed_Delete(QHashSeed* self) {
+	delete self;
 }
 

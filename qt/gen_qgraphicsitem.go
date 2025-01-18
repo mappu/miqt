@@ -2009,7 +2009,7 @@ func miqt_exec_callback_QGraphicsItem_Extension(self *C.QGraphicsItem, cb C.intp
 
 // Delete this object from C++ memory.
 func (this *QGraphicsItem) Delete() {
-	C.QGraphicsItem_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsItem_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3493,7 +3493,7 @@ func miqt_exec_callback_QGraphicsObject_Extension(self *C.QGraphicsObject, cb C.
 
 // Delete this object from C++ memory.
 func (this *QGraphicsObject) Delete() {
-	C.QGraphicsObject_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsObject_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -4528,7 +4528,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_Extension(self *C.QAbstractGr
 
 // Delete this object from C++ memory.
 func (this *QAbstractGraphicsShapeItem) Delete() {
-	C.QAbstractGraphicsShapeItem_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractGraphicsShapeItem_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -4933,7 +4933,7 @@ func miqt_exec_callback_QGraphicsPathItem_Extension(self *C.QGraphicsPathItem, c
 
 // Delete this object from C++ memory.
 func (this *QGraphicsPathItem) Delete() {
-	C.QGraphicsPathItem_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsPathItem_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5358,7 +5358,7 @@ func miqt_exec_callback_QGraphicsRectItem_Extension(self *C.QGraphicsRectItem, c
 
 // Delete this object from C++ memory.
 func (this *QGraphicsRectItem) Delete() {
-	C.QGraphicsRectItem_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsRectItem_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5799,7 +5799,7 @@ func miqt_exec_callback_QGraphicsEllipseItem_Extension(self *C.QGraphicsEllipseI
 
 // Delete this object from C++ memory.
 func (this *QGraphicsEllipseItem) Delete() {
-	C.QGraphicsEllipseItem_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsEllipseItem_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -6186,7 +6186,7 @@ func miqt_exec_callback_QGraphicsPolygonItem_Extension(self *C.QGraphicsPolygonI
 
 // Delete this object from C++ memory.
 func (this *QGraphicsPolygonItem) Delete() {
-	C.QGraphicsPolygonItem_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsPolygonItem_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -7295,7 +7295,7 @@ func miqt_exec_callback_QGraphicsLineItem_ItemChange(self *C.QGraphicsLineItem, 
 
 // Delete this object from C++ memory.
 func (this *QGraphicsLineItem) Delete() {
-	C.QGraphicsLineItem_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsLineItem_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -8404,7 +8404,7 @@ func miqt_exec_callback_QGraphicsPixmapItem_ItemChange(self *C.QGraphicsPixmapIt
 
 // Delete this object from C++ memory.
 func (this *QGraphicsPixmapItem) Delete() {
-	C.QGraphicsPixmapItem_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsPixmapItem_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -9565,7 +9565,7 @@ func miqt_exec_callback_QGraphicsTextItem_Event(self *C.QGraphicsTextItem, cb C.
 
 // Delete this object from C++ memory.
 func (this *QGraphicsTextItem) Delete() {
-	C.QGraphicsTextItem_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsTextItem_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -9993,7 +9993,7 @@ func miqt_exec_callback_QGraphicsSimpleTextItem_Extension(self *C.QGraphicsSimpl
 
 // Delete this object from C++ memory.
 func (this *QGraphicsSimpleTextItem) Delete() {
-	C.QGraphicsSimpleTextItem_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsSimpleTextItem_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -11044,7 +11044,7 @@ func miqt_exec_callback_QGraphicsItemGroup_Extension(self *C.QGraphicsItemGroup,
 
 // Delete this object from C++ memory.
 func (this *QGraphicsItemGroup) Delete() {
-	C.QGraphicsItemGroup_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsItemGroup_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

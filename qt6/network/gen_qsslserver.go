@@ -415,7 +415,7 @@ func miqt_exec_callback_QSslServer_NextPendingConnection(self *C.QSslServer, cb 
 
 // Delete this object from C++ memory.
 func (this *QSslServer) Delete() {
-	C.QSslServer_Delete(this.h, C.bool(this.isSubclass))
+	C.QSslServer_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

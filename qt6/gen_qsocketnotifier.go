@@ -346,7 +346,7 @@ func miqt_exec_callback_QSocketNotifier_DisconnectNotify(self *C.QSocketNotifier
 
 // Delete this object from C++ memory.
 func (this *QSocketNotifier) Delete() {
-	C.QSocketNotifier_Delete(this.h, C.bool(this.isSubclass))
+	C.QSocketNotifier_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -433,7 +433,7 @@ func (this *QSocketDescriptor) IsValid() bool {
 
 // Delete this object from C++ memory.
 func (this *QSocketDescriptor) Delete() {
-	C.QSocketDescriptor_Delete(this.h, C.bool(this.isSubclass))
+	C.QSocketDescriptor_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

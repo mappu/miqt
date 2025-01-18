@@ -363,7 +363,7 @@ func (this *QColorSpace) WithTransferFunction2(transferFunction QColorSpace__Tra
 
 // Delete this object from C++ memory.
 func (this *QColorSpace) Delete() {
-	C.QColorSpace_Delete(this.h, C.bool(this.isSubclass))
+	C.QColorSpace_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

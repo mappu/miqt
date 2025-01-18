@@ -215,7 +215,7 @@ func (this *QBitArray) ToUInt322(endianness QSysInfo__Endian, ok *bool) uint {
 
 // Delete this object from C++ memory.
 func (this *QBitArray) Delete() {
-	C.QBitArray_Delete(this.h, C.bool(this.isSubclass))
+	C.QBitArray_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -286,7 +286,7 @@ func (this *QBitRef) OperatorAssignWithVal(val bool) {
 
 // Delete this object from C++ memory.
 func (this *QBitRef) Delete() {
-	C.QBitRef_Delete(this.h, C.bool(this.isSubclass))
+	C.QBitRef_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

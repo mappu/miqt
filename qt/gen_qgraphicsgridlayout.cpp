@@ -24,13 +24,13 @@ void miqt_exec_callback_QGraphicsGridLayout_WidgetEvent(void*, intptr_t, QEvent*
 } /* extern C */
 #endif
 
-class MiqtVirtualQGraphicsGridLayout : public virtual QGraphicsGridLayout {
+class MiqtVirtualQGraphicsGridLayout final : public QGraphicsGridLayout {
 public:
 
 	MiqtVirtualQGraphicsGridLayout(): QGraphicsGridLayout() {};
 	MiqtVirtualQGraphicsGridLayout(QGraphicsLayoutItem* parent): QGraphicsGridLayout(parent) {};
 
-	virtual ~MiqtVirtualQGraphicsGridLayout() = default;
+	virtual ~MiqtVirtualQGraphicsGridLayout() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Count = 0;
@@ -542,11 +542,7 @@ void QGraphicsGridLayout_virtualbase_WidgetEvent(void* self, QEvent* e) {
 	( (MiqtVirtualQGraphicsGridLayout*)(self) )->virtualbase_WidgetEvent(e);
 }
 
-void QGraphicsGridLayout_Delete(QGraphicsGridLayout* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsGridLayout*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsGridLayout_Delete(QGraphicsGridLayout* self) {
+	delete self;
 }
 

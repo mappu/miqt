@@ -59,7 +59,7 @@ void QScriptClass_override_virtual_SupportsExtension(void* self, intptr_t slot);
 bool QScriptClass_virtualbase_SupportsExtension(const void* self, int extension);
 void QScriptClass_override_virtual_Extension(void* self, intptr_t slot);
 QVariant* QScriptClass_virtualbase_Extension(void* self, int extension, QVariant* argument);
-void QScriptClass_Delete(QScriptClass* self, bool isSubclass);
+void QScriptClass_Delete(QScriptClass* self);
 
 #ifdef __cplusplus
 } /* extern C */

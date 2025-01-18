@@ -41,7 +41,7 @@ typedef struct QTimerEvent QTimerEvent;
 void QAccessibleBridge_SetRootObject(QAccessibleBridge* self, QAccessibleInterface* rootObject);
 void QAccessibleBridge_NotifyAccessibilityUpdate(QAccessibleBridge* self, QAccessibleEvent* event);
 void QAccessibleBridge_OperatorAssign(QAccessibleBridge* self, QAccessibleBridge* param1);
-void QAccessibleBridge_Delete(QAccessibleBridge* self, bool isSubclass);
+void QAccessibleBridge_Delete(QAccessibleBridge* self);
 
 QAccessibleBridgePlugin* QAccessibleBridgePlugin_new();
 QAccessibleBridgePlugin* QAccessibleBridgePlugin_new2(QObject* parent);
@@ -68,7 +68,7 @@ void QAccessibleBridgePlugin_override_virtual_ConnectNotify(void* self, intptr_t
 void QAccessibleBridgePlugin_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QAccessibleBridgePlugin_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QAccessibleBridgePlugin_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QAccessibleBridgePlugin_Delete(QAccessibleBridgePlugin* self, bool isSubclass);
+void QAccessibleBridgePlugin_Delete(QAccessibleBridgePlugin* self);
 
 #ifdef __cplusplus
 } /* extern C */

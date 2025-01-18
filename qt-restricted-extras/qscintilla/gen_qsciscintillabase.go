@@ -3023,7 +3023,7 @@ func miqt_exec_callback_QsciScintillaBase_ViewportSizeHint(self *C.QsciScintilla
 
 // Delete this object from C++ memory.
 func (this *QsciScintillaBase) Delete() {
-	C.QsciScintillaBase_Delete(this.h, C.bool(this.isSubclass))
+	C.QsciScintillaBase_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

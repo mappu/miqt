@@ -330,11 +330,7 @@ void QCommandLineParser_AddPositionalArgument3(QCommandLineParser* self, struct 
 	self->addPositionalArgument(name_QString, description_QString, syntax_QString);
 }
 
-void QCommandLineParser_Delete(QCommandLineParser* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCommandLineParser*>( self );
-	} else {
-		delete self;
-	}
+void QCommandLineParser_Delete(QCommandLineParser* self) {
+	delete self;
 }
 

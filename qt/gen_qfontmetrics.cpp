@@ -251,12 +251,8 @@ struct miqt_string QFontMetrics_ElidedText4(const QFontMetrics* self, struct miq
 	return _ms;
 }
 
-void QFontMetrics_Delete(QFontMetrics* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QFontMetrics*>( self );
-	} else {
-		delete self;
-	}
+void QFontMetrics_Delete(QFontMetrics* self) {
+	delete self;
 }
 
 QFontMetricsF* QFontMetricsF_new(QFont* font) {
@@ -489,11 +485,7 @@ struct miqt_string QFontMetricsF_ElidedText4(const QFontMetricsF* self, struct m
 	return _ms;
 }
 
-void QFontMetricsF_Delete(QFontMetricsF* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QFontMetricsF*>( self );
-	} else {
-		delete self;
-	}
+void QFontMetricsF_Delete(QFontMetricsF* self) {
+	delete self;
 }
 

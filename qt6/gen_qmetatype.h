@@ -87,7 +87,7 @@ void* QMetaType_Create22(int typeVal, const void* copyVal);
 int QMetaType_Id1(const QMetaType* self, int param1);
 void* QMetaType_Create1(const QMetaType* self, const void* copyVal);
 void* QMetaType_Construct2(const QMetaType* self, void* where, const void* copyVal);
-void QMetaType_Delete(QMetaType* self, bool isSubclass);
+void QMetaType_Delete(QMetaType* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -377,7 +377,7 @@ func miqt_exec_callback_QTimer_DisconnectNotify(self *C.QTimer, cb C.intptr_t, s
 
 // Delete this object from C++ memory.
 func (this *QTimer) Delete() {
-	C.QTimer_Delete(this.h, C.bool(this.isSubclass))
+	C.QTimer_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

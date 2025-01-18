@@ -77,9 +77,9 @@ void QPagedPaintDevice_override_virtual_Redirected(void* self, intptr_t slot);
 QPaintDevice* QPagedPaintDevice_virtualbase_Redirected(const void* self, QPoint* offset);
 void QPagedPaintDevice_override_virtual_SharedPainter(void* self, intptr_t slot);
 QPainter* QPagedPaintDevice_virtualbase_SharedPainter(const void* self);
-void QPagedPaintDevice_Delete(QPagedPaintDevice* self, bool isSubclass);
+void QPagedPaintDevice_Delete(QPagedPaintDevice* self);
 
-void QPagedPaintDevice__Margins_Delete(QPagedPaintDevice__Margins* self, bool isSubclass);
+void QPagedPaintDevice__Margins_Delete(QPagedPaintDevice__Margins* self);
 
 #ifdef __cplusplus
 } /* extern C */

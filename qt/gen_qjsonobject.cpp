@@ -237,12 +237,8 @@ bool QJsonObject_Empty(const QJsonObject* self) {
 	return self->empty();
 }
 
-void QJsonObject_Delete(QJsonObject* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QJsonObject*>( self );
-	} else {
-		delete self;
-	}
+void QJsonObject_Delete(QJsonObject* self) {
+	delete self;
 }
 
 QJsonObject__iterator* QJsonObject__iterator_new() {
@@ -376,12 +372,8 @@ bool QJsonObject__iterator_OperatorGreaterOrEqualWithOther(const QJsonObject__it
 	return (*self >= *other);
 }
 
-void QJsonObject__iterator_Delete(QJsonObject__iterator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QJsonObject::iterator*>( self );
-	} else {
-		delete self;
-	}
+void QJsonObject__iterator_Delete(QJsonObject__iterator* self) {
+	delete self;
 }
 
 QJsonObject__const_iterator* QJsonObject__const_iterator_new() {
@@ -519,11 +511,7 @@ bool QJsonObject__const_iterator_OperatorGreaterOrEqualWithOther(const QJsonObje
 	return (*self >= *other);
 }
 
-void QJsonObject__const_iterator_Delete(QJsonObject__const_iterator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QJsonObject::const_iterator*>( self );
-	} else {
-		delete self;
-	}
+void QJsonObject__const_iterator_Delete(QJsonObject__const_iterator* self) {
+	delete self;
 }
 

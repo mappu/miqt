@@ -270,7 +270,7 @@ func (this *QJsonArray) Empty() bool {
 
 // Delete this object from C++ memory.
 func (this *QJsonArray) Delete() {
-	C.QJsonArray_Delete(this.h, C.bool(this.isSubclass))
+	C.QJsonArray_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -451,7 +451,7 @@ func (this *QJsonArray__iterator) OperatorMinusWithQJsonArrayiterator(j QJsonArr
 
 // Delete this object from C++ memory.
 func (this *QJsonArray__iterator) Delete() {
-	C.QJsonArray__iterator_Delete(this.h, C.bool(this.isSubclass))
+	C.QJsonArray__iterator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -616,7 +616,7 @@ func (this *QJsonArray__const_iterator) OperatorMinusWithQJsonArrayconstIterator
 
 // Delete this object from C++ memory.
 func (this *QJsonArray__const_iterator) Delete() {
-	C.QJsonArray__const_iterator_Delete(this.h, C.bool(this.isSubclass))
+	C.QJsonArray__const_iterator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

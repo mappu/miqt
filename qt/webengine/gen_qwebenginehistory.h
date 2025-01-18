@@ -35,7 +35,7 @@ QDateTime* QWebEngineHistoryItem_LastVisited(const QWebEngineHistoryItem* self);
 QUrl* QWebEngineHistoryItem_IconUrl(const QWebEngineHistoryItem* self);
 bool QWebEngineHistoryItem_IsValid(const QWebEngineHistoryItem* self);
 void QWebEngineHistoryItem_Swap(QWebEngineHistoryItem* self, QWebEngineHistoryItem* other);
-void QWebEngineHistoryItem_Delete(QWebEngineHistoryItem* self, bool isSubclass);
+void QWebEngineHistoryItem_Delete(QWebEngineHistoryItem* self);
 
 void QWebEngineHistory_Clear(QWebEngineHistory* self);
 struct miqt_array /* of QWebEngineHistoryItem* */  QWebEngineHistory_Items(const QWebEngineHistory* self);

@@ -36,13 +36,13 @@ void miqt_exec_callback_QCameraViewfinder_PaintEvent(void*, intptr_t, QPaintEven
 } /* extern C */
 #endif
 
-class MiqtVirtualQCameraViewfinder : public virtual QCameraViewfinder {
+class MiqtVirtualQCameraViewfinder final : public QCameraViewfinder {
 public:
 
 	MiqtVirtualQCameraViewfinder(QWidget* parent): QCameraViewfinder(parent) {};
 	MiqtVirtualQCameraViewfinder(): QCameraViewfinder() {};
 
-	virtual ~MiqtVirtualQCameraViewfinder() = default;
+	virtual ~MiqtVirtualQCameraViewfinder() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__MediaObject = 0;
@@ -418,11 +418,7 @@ void QCameraViewfinder_virtualbase_PaintEvent(void* self, QPaintEvent* event) {
 	( (MiqtVirtualQCameraViewfinder*)(self) )->virtualbase_PaintEvent(event);
 }
 
-void QCameraViewfinder_Delete(QCameraViewfinder* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQCameraViewfinder*>( self );
-	} else {
-		delete self;
-	}
+void QCameraViewfinder_Delete(QCameraViewfinder* self) {
+	delete self;
 }
 

@@ -1393,7 +1393,7 @@ func miqt_exec_callback_QProgressBar_FocusNextPrevChild(self *C.QProgressBar, cb
 
 // Delete this object from C++ memory.
 func (this *QProgressBar) Delete() {
-	C.QProgressBar_Delete(this.h, C.bool(this.isSubclass))
+	C.QProgressBar_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

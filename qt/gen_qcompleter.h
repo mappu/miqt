@@ -119,7 +119,7 @@ void QCompleter_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QCompleter_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QCompleter_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QCompleter_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QCompleter_Delete(QCompleter* self, bool isSubclass);
+void QCompleter_Delete(QCompleter* self);
 
 #ifdef __cplusplus
 } /* extern C */

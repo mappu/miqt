@@ -39,7 +39,7 @@ void miqt_exec_callback_QSlider_ChangeEvent(void*, intptr_t, QEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQSlider : public virtual QSlider {
+class MiqtVirtualQSlider final : public QSlider {
 public:
 
 	MiqtVirtualQSlider(QWidget* parent): QSlider(parent) {};
@@ -47,7 +47,7 @@ public:
 	MiqtVirtualQSlider(Qt::Orientation orientation): QSlider(orientation) {};
 	MiqtVirtualQSlider(Qt::Orientation orientation, QWidget* parent): QSlider(orientation, parent) {};
 
-	virtual ~MiqtVirtualQSlider() = default;
+	virtual ~MiqtVirtualQSlider() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -553,11 +553,7 @@ void QSlider_virtualbase_ChangeEvent(void* self, QEvent* e) {
 	( (MiqtVirtualQSlider*)(self) )->virtualbase_ChangeEvent(e);
 }
 
-void QSlider_Delete(QSlider* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSlider*>( self );
-	} else {
-		delete self;
-	}
+void QSlider_Delete(QSlider* self) {
+	delete self;
 }
 

@@ -133,7 +133,7 @@ func (this *QPageRanges) Detach() {
 
 // Delete this object from C++ memory.
 func (this *QPageRanges) Delete() {
-	C.QPageRanges_Delete(this.h, C.bool(this.isSubclass))
+	C.QPageRanges_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -200,7 +200,7 @@ func (this *QPageRanges__Range) Contains(pageNumber int) bool {
 
 // Delete this object from C++ memory.
 func (this *QPageRanges__Range) Delete() {
-	C.QPageRanges__Range_Delete(this.h, C.bool(this.isSubclass))
+	C.QPageRanges__Range_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

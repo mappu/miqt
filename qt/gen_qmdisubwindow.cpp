@@ -92,14 +92,14 @@ bool miqt_exec_callback_QMdiSubWindow_FocusNextPrevChild(void*, intptr_t, bool);
 } /* extern C */
 #endif
 
-class MiqtVirtualQMdiSubWindow : public virtual QMdiSubWindow {
+class MiqtVirtualQMdiSubWindow final : public QMdiSubWindow {
 public:
 
 	MiqtVirtualQMdiSubWindow(QWidget* parent): QMdiSubWindow(parent) {};
 	MiqtVirtualQMdiSubWindow(): QMdiSubWindow() {};
 	MiqtVirtualQMdiSubWindow(QWidget* parent, Qt::WindowFlags flags): QMdiSubWindow(parent, flags) {};
 
-	virtual ~MiqtVirtualQMdiSubWindow() = default;
+	virtual ~MiqtVirtualQMdiSubWindow() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -1692,11 +1692,7 @@ bool QMdiSubWindow_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QMdiSubWindow_Delete(QMdiSubWindow* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQMdiSubWindow*>( self );
-	} else {
-		delete self;
-	}
+void QMdiSubWindow_Delete(QMdiSubWindow* self) {
+	delete self;
 }
 

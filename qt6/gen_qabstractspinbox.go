@@ -1601,7 +1601,7 @@ func miqt_exec_callback_QAbstractSpinBox_FocusNextPrevChild(self *C.QAbstractSpi
 
 // Delete this object from C++ memory.
 func (this *QAbstractSpinBox) Delete() {
-	C.QAbstractSpinBox_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractSpinBox_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

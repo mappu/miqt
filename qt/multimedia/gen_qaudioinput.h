@@ -90,7 +90,7 @@ void QAudioInput_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QAudioInput_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QAudioInput_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QAudioInput_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QAudioInput_Delete(QAudioInput* self, bool isSubclass);
+void QAudioInput_Delete(QAudioInput* self);
 
 #ifdef __cplusplus
 } /* extern C */

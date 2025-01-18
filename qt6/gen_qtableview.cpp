@@ -106,13 +106,13 @@ bool miqt_exec_callback_QTableView_EventFilter(void*, intptr_t, QObject*, QEvent
 } /* extern C */
 #endif
 
-class MiqtVirtualQTableView : public virtual QTableView {
+class MiqtVirtualQTableView final : public QTableView {
 public:
 
 	MiqtVirtualQTableView(QWidget* parent): QTableView(parent) {};
 	MiqtVirtualQTableView(): QTableView() {};
 
-	virtual ~MiqtVirtualQTableView() = default;
+	virtual ~MiqtVirtualQTableView() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetModel = 0;
@@ -2385,11 +2385,7 @@ bool QTableView_virtualbase_EventFilter(void* self, QObject* object, QEvent* eve
 	return ( (MiqtVirtualQTableView*)(self) )->virtualbase_EventFilter(object, event);
 }
 
-void QTableView_Delete(QTableView* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQTableView*>( self );
-	} else {
-		delete self;
-	}
+void QTableView_Delete(QTableView* self) {
+	delete self;
 }
 

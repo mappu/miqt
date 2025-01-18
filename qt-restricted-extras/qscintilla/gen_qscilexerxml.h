@@ -59,7 +59,7 @@ void QsciLexerXML_override_virtual_SetFoldPreprocessor(void* self, intptr_t slot
 void QsciLexerXML_virtualbase_SetFoldPreprocessor(void* self, bool fold);
 void QsciLexerXML_override_virtual_SetCaseSensitiveTags(void* self, intptr_t slot);
 void QsciLexerXML_virtualbase_SetCaseSensitiveTags(void* self, bool sens);
-void QsciLexerXML_Delete(QsciLexerXML* self, bool isSubclass);
+void QsciLexerXML_Delete(QsciLexerXML* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -79,7 +79,7 @@ void QDrag_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QDrag_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QDrag_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QDrag_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QDrag_Delete(QDrag* self, bool isSubclass);
+void QDrag_Delete(QDrag* self);
 
 #ifdef __cplusplus
 } /* extern C */

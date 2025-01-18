@@ -71,7 +71,7 @@ void QStackedWidget_override_virtual_ChangeEvent(void* self, intptr_t slot);
 void QStackedWidget_virtualbase_ChangeEvent(void* self, QEvent* param1);
 void QStackedWidget_override_virtual_InitStyleOption(void* self, intptr_t slot);
 void QStackedWidget_virtualbase_InitStyleOption(const void* self, QStyleOptionFrame* option);
-void QStackedWidget_Delete(QStackedWidget* self, bool isSubclass);
+void QStackedWidget_Delete(QStackedWidget* self);
 
 #ifdef __cplusplus
 } /* extern C */

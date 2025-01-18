@@ -55,7 +55,7 @@ void QPauseAnimation_override_virtual_UpdateState(void* self, intptr_t slot);
 void QPauseAnimation_virtualbase_UpdateState(void* self, int newState, int oldState);
 void QPauseAnimation_override_virtual_UpdateDirection(void* self, intptr_t slot);
 void QPauseAnimation_virtualbase_UpdateDirection(void* self, int direction);
-void QPauseAnimation_Delete(QPauseAnimation* self, bool isSubclass);
+void QPauseAnimation_Delete(QPauseAnimation* self);
 
 #ifdef __cplusplus
 } /* extern C */

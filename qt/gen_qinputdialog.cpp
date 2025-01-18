@@ -46,14 +46,14 @@ bool miqt_exec_callback_QInputDialog_EventFilter(void*, intptr_t, QObject*, QEve
 } /* extern C */
 #endif
 
-class MiqtVirtualQInputDialog : public virtual QInputDialog {
+class MiqtVirtualQInputDialog final : public QInputDialog {
 public:
 
 	MiqtVirtualQInputDialog(QWidget* parent): QInputDialog(parent) {};
 	MiqtVirtualQInputDialog(): QInputDialog() {};
 	MiqtVirtualQInputDialog(QWidget* parent, Qt::WindowFlags flags): QInputDialog(parent, flags) {};
 
-	virtual ~MiqtVirtualQInputDialog() = default;
+	virtual ~MiqtVirtualQInputDialog() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__MinimumSizeHint = 0;
@@ -1267,11 +1267,7 @@ bool QInputDialog_virtualbase_EventFilter(void* self, QObject* param1, QEvent* p
 	return ( (MiqtVirtualQInputDialog*)(self) )->virtualbase_EventFilter(param1, param2);
 }
 
-void QInputDialog_Delete(QInputDialog* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQInputDialog*>( self );
-	} else {
-		delete self;
-	}
+void QInputDialog_Delete(QInputDialog* self) {
+	delete self;
 }
 

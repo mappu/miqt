@@ -1763,7 +1763,7 @@ func miqt_exec_callback_QFileDialog_EventFilter(self *C.QFileDialog, cb C.intptr
 
 // Delete this object from C++ memory.
 func (this *QFileDialog) Delete() {
-	C.QFileDialog_Delete(this.h, C.bool(this.isSubclass))
+	C.QFileDialog_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

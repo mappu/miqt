@@ -263,7 +263,7 @@ func miqt_exec_callback_QAnimationGroup_UpdateDirection(self *C.QAnimationGroup,
 
 // Delete this object from C++ memory.
 func (this *QAnimationGroup) Delete() {
-	C.QAnimationGroup_Delete(this.h, C.bool(this.isSubclass))
+	C.QAnimationGroup_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

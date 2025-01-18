@@ -341,7 +341,7 @@ func (this *QCborArray) ToJsonArray() *qt.QJsonArray {
 
 // Delete this object from C++ memory.
 func (this *QCborArray) Delete() {
-	C.QCborArray_Delete(this.h, C.bool(this.isSubclass))
+	C.QCborArray_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -516,7 +516,7 @@ func (this *QCborArray__Iterator) OperatorMinusWithQCborArrayIterator(j QCborArr
 
 // Delete this object from C++ memory.
 func (this *QCborArray__Iterator) Delete() {
-	C.QCborArray__Iterator_Delete(this.h, C.bool(this.isSubclass))
+	C.QCborArray__Iterator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -691,7 +691,7 @@ func (this *QCborArray__ConstIterator) OperatorMinusWithQCborArrayConstIterator(
 
 // Delete this object from C++ memory.
 func (this *QCborArray__ConstIterator) Delete() {
-	C.QCborArray__ConstIterator_Delete(this.h, C.bool(this.isSubclass))
+	C.QCborArray__ConstIterator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

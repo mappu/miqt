@@ -140,11 +140,7 @@ void QWebSecurityOrigin_OperatorAssign(QWebSecurityOrigin* self, QWebSecurityOri
 	self->operator=(*other);
 }
 
-void QWebSecurityOrigin_Delete(QWebSecurityOrigin* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebSecurityOrigin*>( self );
-	} else {
-		delete self;
-	}
+void QWebSecurityOrigin_Delete(QWebSecurityOrigin* self) {
+	delete self;
 }
 

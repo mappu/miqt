@@ -70,7 +70,7 @@ void QMediaDevices_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QMediaDevices_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QMediaDevices_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QMediaDevices_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QMediaDevices_Delete(QMediaDevices* self, bool isSubclass);
+void QMediaDevices_Delete(QMediaDevices* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -89,7 +89,7 @@ bool miqt_exec_callback_QSplashScreen_FocusNextPrevChild(void*, intptr_t, bool);
 } /* extern C */
 #endif
 
-class MiqtVirtualQSplashScreen : public virtual QSplashScreen {
+class MiqtVirtualQSplashScreen final : public QSplashScreen {
 public:
 
 	MiqtVirtualQSplashScreen(): QSplashScreen() {};
@@ -99,7 +99,7 @@ public:
 	MiqtVirtualQSplashScreen(QScreen* screen, const QPixmap& pixmap): QSplashScreen(screen, pixmap) {};
 	MiqtVirtualQSplashScreen(QScreen* screen, const QPixmap& pixmap, Qt::WindowFlags f): QSplashScreen(screen, pixmap, f) {};
 
-	virtual ~MiqtVirtualQSplashScreen() = default;
+	virtual ~MiqtVirtualQSplashScreen() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -1573,11 +1573,7 @@ bool QSplashScreen_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQSplashScreen*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QSplashScreen_Delete(QSplashScreen* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSplashScreen*>( self );
-	} else {
-		delete self;
-	}
+void QSplashScreen_Delete(QSplashScreen* self) {
+	delete self;
 }
 

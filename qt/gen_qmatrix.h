@@ -75,7 +75,7 @@ QMatrix* QMatrix_OperatorMultiplyAssign(QMatrix* self, QMatrix* param1);
 QMatrix* QMatrix_OperatorMultiply(const QMatrix* self, QMatrix* o);
 QVariant* QMatrix_ToQVariant(const QMatrix* self);
 QMatrix* QMatrix_Inverted1(const QMatrix* self, bool* invertible);
-void QMatrix_Delete(QMatrix* self, bool isSubclass);
+void QMatrix_Delete(QMatrix* self);
 
 #ifdef __cplusplus
 } /* extern C */

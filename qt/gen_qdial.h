@@ -99,7 +99,7 @@ void QDial_override_virtual_WheelEvent(void* self, intptr_t slot);
 void QDial_virtualbase_WheelEvent(void* self, QWheelEvent* e);
 void QDial_override_virtual_ChangeEvent(void* self, intptr_t slot);
 void QDial_virtualbase_ChangeEvent(void* self, QEvent* e);
-void QDial_Delete(QDial* self, bool isSubclass);
+void QDial_Delete(QDial* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -39,7 +39,7 @@ struct miqt_string QVideoRendererControl_Tr2(const char* s, const char* c);
 struct miqt_string QVideoRendererControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QVideoRendererControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QVideoRendererControl_TrUtf83(const char* s, const char* c, int n);
-void QVideoRendererControl_Delete(QVideoRendererControl* self, bool isSubclass);
+void QVideoRendererControl_Delete(QVideoRendererControl* self);
 
 #ifdef __cplusplus
 } /* extern C */

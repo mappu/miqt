@@ -63,11 +63,7 @@ struct miqt_string QMessageAuthenticationCode_Hash(struct miqt_string message, s
 	return _ms;
 }
 
-void QMessageAuthenticationCode_Delete(QMessageAuthenticationCode* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMessageAuthenticationCode*>( self );
-	} else {
-		delete self;
-	}
+void QMessageAuthenticationCode_Delete(QMessageAuthenticationCode* self) {
+	delete self;
 }
 

@@ -152,7 +152,7 @@ func QTextDocumentWriter_SupportedDocumentFormats() [][]byte {
 
 // Delete this object from C++ memory.
 func (this *QTextDocumentWriter) Delete() {
-	C.QTextDocumentWriter_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextDocumentWriter_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

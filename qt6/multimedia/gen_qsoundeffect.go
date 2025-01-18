@@ -564,7 +564,7 @@ func miqt_exec_callback_QSoundEffect_DisconnectNotify(self *C.QSoundEffect, cb C
 
 // Delete this object from C++ memory.
 func (this *QSoundEffect) Delete() {
-	C.QSoundEffect_Delete(this.h, C.bool(this.isSubclass))
+	C.QSoundEffect_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

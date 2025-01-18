@@ -148,7 +148,7 @@ func (this *QWebHistoryItem) LoadFromMap(mapVal map[string]qt.QVariant) {
 
 // Delete this object from C++ memory.
 func (this *QWebHistoryItem) Delete() {
-	C.QWebHistoryItem_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebHistoryItem_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

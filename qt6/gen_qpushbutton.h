@@ -117,7 +117,7 @@ void QPushButton_override_virtual_ChangeEvent(void* self, intptr_t slot);
 void QPushButton_virtualbase_ChangeEvent(void* self, QEvent* e);
 void QPushButton_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QPushButton_virtualbase_TimerEvent(void* self, QTimerEvent* e);
-void QPushButton_Delete(QPushButton* self, bool isSubclass);
+void QPushButton_Delete(QPushButton* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -50,7 +50,7 @@ void QFinalState_override_virtual_OnExit(void* self, intptr_t slot);
 void QFinalState_virtualbase_OnExit(void* self, QEvent* event);
 void QFinalState_override_virtual_Event(void* self, intptr_t slot);
 bool QFinalState_virtualbase_Event(void* self, QEvent* e);
-void QFinalState_Delete(QFinalState* self, bool isSubclass);
+void QFinalState_Delete(QFinalState* self);
 
 #ifdef __cplusplus
 } /* extern C */

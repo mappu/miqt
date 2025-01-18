@@ -36,13 +36,13 @@ void miqt_exec_callback_QNetworkSession_CustomEvent(void*, intptr_t, QEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQNetworkSession : public virtual QNetworkSession {
+class MiqtVirtualQNetworkSession final : public QNetworkSession {
 public:
 
 	MiqtVirtualQNetworkSession(const QNetworkConfiguration& connConfig): QNetworkSession(connConfig) {};
 	MiqtVirtualQNetworkSession(const QNetworkConfiguration& connConfig, QObject* parent): QNetworkSession(connConfig, parent) {};
 
-	virtual ~MiqtVirtualQNetworkSession() = default;
+	virtual ~MiqtVirtualQNetworkSession() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__ConnectNotify = 0;
@@ -538,11 +538,7 @@ void QNetworkSession_virtualbase_CustomEvent(void* self, QEvent* event) {
 	( (MiqtVirtualQNetworkSession*)(self) )->virtualbase_CustomEvent(event);
 }
 
-void QNetworkSession_Delete(QNetworkSession* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQNetworkSession*>( self );
-	} else {
-		delete self;
-	}
+void QNetworkSession_Delete(QNetworkSession* self) {
+	delete self;
 }
 

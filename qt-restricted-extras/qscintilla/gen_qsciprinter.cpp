@@ -29,13 +29,13 @@ int miqt_exec_callback_QsciPrinter_Metric(void*, intptr_t, int);
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciPrinter : public virtual QsciPrinter {
+class MiqtVirtualQsciPrinter final : public QsciPrinter {
 public:
 
 	MiqtVirtualQsciPrinter(): QsciPrinter() {};
 	MiqtVirtualQsciPrinter(QPrinter::PrinterMode mode): QsciPrinter(mode) {};
 
-	virtual ~MiqtVirtualQsciPrinter() = default;
+	virtual ~MiqtVirtualQsciPrinter() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__FormatPage = 0;
@@ -476,11 +476,7 @@ int QsciPrinter_virtualbase_Metric(const void* self, int param1) {
 	return ( (const MiqtVirtualQsciPrinter*)(self) )->virtualbase_Metric(param1);
 }
 
-void QsciPrinter_Delete(QsciPrinter* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciPrinter*>( self );
-	} else {
-		delete self;
-	}
+void QsciPrinter_Delete(QsciPrinter* self) {
+	delete self;
 }
 

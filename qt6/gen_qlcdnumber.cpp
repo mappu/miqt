@@ -28,7 +28,7 @@ void miqt_exec_callback_QLCDNumber_InitStyleOption(void*, intptr_t, QStyleOption
 } /* extern C */
 #endif
 
-class MiqtVirtualQLCDNumber : public virtual QLCDNumber {
+class MiqtVirtualQLCDNumber final : public QLCDNumber {
 public:
 
 	MiqtVirtualQLCDNumber(QWidget* parent): QLCDNumber(parent) {};
@@ -36,7 +36,7 @@ public:
 	MiqtVirtualQLCDNumber(uint numDigits): QLCDNumber(numDigits) {};
 	MiqtVirtualQLCDNumber(uint numDigits, QWidget* parent): QLCDNumber(numDigits, parent) {};
 
-	virtual ~MiqtVirtualQLCDNumber() = default;
+	virtual ~MiqtVirtualQLCDNumber() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -351,11 +351,7 @@ void QLCDNumber_virtualbase_InitStyleOption(const void* self, QStyleOptionFrame*
 	( (const MiqtVirtualQLCDNumber*)(self) )->virtualbase_InitStyleOption(option);
 }
 
-void QLCDNumber_Delete(QLCDNumber* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQLCDNumber*>( self );
-	} else {
-		delete self;
-	}
+void QLCDNumber_Delete(QLCDNumber* self) {
+	delete self;
 }
 

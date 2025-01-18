@@ -29,7 +29,7 @@ bool QArrayData_NeedsDetach(const QArrayData* self);
 ptrdiff_t QArrayData_DetachCapacity(const QArrayData* self, ptrdiff_t newSize);
 struct miqt_map /* tuple of QArrayData* and void* */  QArrayData_ReallocateUnaligned(QArrayData* data, void* dataPointer, ptrdiff_t objectSize, ptrdiff_t newCapacity, int option);
 void QArrayData_Deallocate(QArrayData* data, ptrdiff_t objectSize, ptrdiff_t alignment);
-void QArrayData_Delete(QArrayData* self, bool isSubclass);
+void QArrayData_Delete(QArrayData* self);
 
 #ifdef __cplusplus
 } /* extern C */

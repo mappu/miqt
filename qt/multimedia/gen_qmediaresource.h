@@ -58,7 +58,7 @@ void QMediaResource_SetVideoBitRate(QMediaResource* self, int rate);
 QSize* QMediaResource_Resolution(const QMediaResource* self);
 void QMediaResource_SetResolution(QMediaResource* self, QSize* resolution);
 void QMediaResource_SetResolution2(QMediaResource* self, int width, int height);
-void QMediaResource_Delete(QMediaResource* self, bool isSubclass);
+void QMediaResource_Delete(QMediaResource* self);
 
 #ifdef __cplusplus
 } /* extern C */

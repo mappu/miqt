@@ -101,7 +101,7 @@ void QPdfWriter_override_virtual_SetPageMargins(void* self, intptr_t slot);
 bool QPdfWriter_virtualbase_SetPageMargins(void* self, QMarginsF* margins, int units);
 void QPdfWriter_override_virtual_SetPageRanges(void* self, intptr_t slot);
 void QPdfWriter_virtualbase_SetPageRanges(void* self, QPageRanges* ranges);
-void QPdfWriter_Delete(QPdfWriter* self, bool isSubclass);
+void QPdfWriter_Delete(QPdfWriter* self);
 
 #ifdef __cplusplus
 } /* extern C */

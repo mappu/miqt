@@ -150,11 +150,7 @@ struct miqt_string QImageEncoderControl_TrUtf83(const char* s, const char* c, in
 	return _ms;
 }
 
-void QImageEncoderControl_Delete(QImageEncoderControl* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QImageEncoderControl*>( self );
-	} else {
-		delete self;
-	}
+void QImageEncoderControl_Delete(QImageEncoderControl* self) {
+	delete self;
 }
 

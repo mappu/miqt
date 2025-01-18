@@ -115,7 +115,7 @@ func QMessageAuthenticationCode_Hash(message []byte, key []byte, method QCryptog
 
 // Delete this object from C++ memory.
 func (this *QMessageAuthenticationCode) Delete() {
-	C.QMessageAuthenticationCode_Delete(this.h, C.bool(this.isSubclass))
+	C.QMessageAuthenticationCode_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

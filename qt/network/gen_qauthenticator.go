@@ -167,7 +167,7 @@ func (this *QAuthenticator) Detach() {
 
 // Delete this object from C++ memory.
 func (this *QAuthenticator) Delete() {
-	C.QAuthenticator_Delete(this.h, C.bool(this.isSubclass))
+	C.QAuthenticator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

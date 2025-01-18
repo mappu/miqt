@@ -337,7 +337,7 @@ func miqt_exec_callback_QGraphicsSvgItem_Event(self *C.QGraphicsSvgItem, cb C.in
 
 // Delete this object from C++ memory.
 func (this *QGraphicsSvgItem) Delete() {
-	C.QGraphicsSvgItem_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsSvgItem_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -443,7 +443,7 @@ func miqt_exec_callback_QActionGroup_DisconnectNotify(self *C.QActionGroup, cb C
 
 // Delete this object from C++ memory.
 func (this *QActionGroup) Delete() {
-	C.QActionGroup_Delete(this.h, C.bool(this.isSubclass))
+	C.QActionGroup_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

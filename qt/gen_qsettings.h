@@ -112,7 +112,7 @@ void QSettings_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QSettings_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QSettings_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QSettings_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QSettings_Delete(QSettings* self, bool isSubclass);
+void QSettings_Delete(QSettings* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -59,7 +59,7 @@ void QUndoCommand_override_virtual_Id(void* self, intptr_t slot);
 int QUndoCommand_virtualbase_Id(const void* self);
 void QUndoCommand_override_virtual_MergeWith(void* self, intptr_t slot);
 bool QUndoCommand_virtualbase_MergeWith(void* self, QUndoCommand* other);
-void QUndoCommand_Delete(QUndoCommand* self, bool isSubclass);
+void QUndoCommand_Delete(QUndoCommand* self);
 
 QUndoStack* QUndoStack_new();
 QUndoStack* QUndoStack_new2(QObject* parent);
@@ -123,7 +123,7 @@ void QUndoStack_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QUndoStack_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QUndoStack_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QUndoStack_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QUndoStack_Delete(QUndoStack* self, bool isSubclass);
+void QUndoStack_Delete(QUndoStack* self);
 
 #ifdef __cplusplus
 } /* extern C */

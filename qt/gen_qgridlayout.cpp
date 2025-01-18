@@ -40,13 +40,13 @@ void miqt_exec_callback_QGridLayout_ChildEvent(void*, intptr_t, QChildEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQGridLayout : public virtual QGridLayout {
+class MiqtVirtualQGridLayout final : public QGridLayout {
 public:
 
 	MiqtVirtualQGridLayout(QWidget* parent): QGridLayout(parent) {};
 	MiqtVirtualQGridLayout(): QGridLayout() {};
 
-	virtual ~MiqtVirtualQGridLayout() = default;
+	virtual ~MiqtVirtualQGridLayout() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -912,11 +912,7 @@ void QGridLayout_virtualbase_ChildEvent(void* self, QChildEvent* e) {
 	( (MiqtVirtualQGridLayout*)(self) )->virtualbase_ChildEvent(e);
 }
 
-void QGridLayout_Delete(QGridLayout* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGridLayout*>( self );
-	} else {
-		delete self;
-	}
+void QGridLayout_Delete(QGridLayout* self) {
+	delete self;
 }
 

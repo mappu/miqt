@@ -24,7 +24,7 @@ bool miqt_exec_callback_QState_Event(void*, intptr_t, QEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQState : public virtual QState {
+class MiqtVirtualQState final : public QState {
 public:
 
 	MiqtVirtualQState(): QState() {};
@@ -32,7 +32,7 @@ public:
 	MiqtVirtualQState(QState* parent): QState(parent) {};
 	MiqtVirtualQState(QState::ChildMode childMode, QState* parent): QState(childMode, parent) {};
 
-	virtual ~MiqtVirtualQState() = default;
+	virtual ~MiqtVirtualQState() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__OnEntry = 0;
@@ -283,11 +283,7 @@ bool QState_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQState*)(self) )->virtualbase_Event(e);
 }
 
-void QState_Delete(QState* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQState*>( self );
-	} else {
-		delete self;
-	}
+void QState_Delete(QState* self) {
+	delete self;
 }
 

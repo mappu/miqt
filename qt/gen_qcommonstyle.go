@@ -969,7 +969,7 @@ func miqt_exec_callback_QCommonStyle_StandardPalette(self *C.QCommonStyle, cb C.
 
 // Delete this object from C++ memory.
 func (this *QCommonStyle) Delete() {
-	C.QCommonStyle_Delete(this.h, C.bool(this.isSubclass))
+	C.QCommonStyle_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

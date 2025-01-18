@@ -35,13 +35,13 @@ QMediaService* miqt_exec_callback_QAudioDecoder_Service(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQAudioDecoder : public virtual QAudioDecoder {
+class MiqtVirtualQAudioDecoder final : public QAudioDecoder {
 public:
 
 	MiqtVirtualQAudioDecoder(): QAudioDecoder() {};
 	MiqtVirtualQAudioDecoder(QObject* parent): QAudioDecoder(parent) {};
 
-	virtual ~MiqtVirtualQAudioDecoder() = default;
+	virtual ~MiqtVirtualQAudioDecoder() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Bind = 0;
@@ -493,11 +493,7 @@ QMediaService* QAudioDecoder_virtualbase_Service(const void* self) {
 	return ( (const MiqtVirtualQAudioDecoder*)(self) )->virtualbase_Service();
 }
 
-void QAudioDecoder_Delete(QAudioDecoder* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAudioDecoder*>( self );
-	} else {
-		delete self;
-	}
+void QAudioDecoder_Delete(QAudioDecoder* self) {
+	delete self;
 }
 

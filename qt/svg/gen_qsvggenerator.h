@@ -68,7 +68,7 @@ void QSvgGenerator_override_virtual_Redirected(void* self, intptr_t slot);
 QPaintDevice* QSvgGenerator_virtualbase_Redirected(const void* self, QPoint* offset);
 void QSvgGenerator_override_virtual_SharedPainter(void* self, intptr_t slot);
 QPainter* QSvgGenerator_virtualbase_SharedPainter(const void* self);
-void QSvgGenerator_Delete(QSvgGenerator* self, bool isSubclass);
+void QSvgGenerator_Delete(QSvgGenerator* self);
 
 #ifdef __cplusplus
 } /* extern C */

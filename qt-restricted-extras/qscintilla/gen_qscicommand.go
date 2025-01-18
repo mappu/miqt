@@ -187,7 +187,7 @@ func (this *QsciCommand) Description() string {
 
 // Delete this object from C++ memory.
 func (this *QsciCommand) Delete() {
-	C.QsciCommand_Delete(this.h, C.bool(this.isSubclass))
+	C.QsciCommand_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

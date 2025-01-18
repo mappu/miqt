@@ -122,7 +122,7 @@ func (this *QElapsedTimer) OperatorNotEqual(other *QElapsedTimer) bool {
 
 // Delete this object from C++ memory.
 func (this *QElapsedTimer) Delete() {
-	C.QElapsedTimer_Delete(this.h, C.bool(this.isSubclass))
+	C.QElapsedTimer_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

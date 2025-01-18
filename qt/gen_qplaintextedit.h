@@ -325,7 +325,7 @@ void QPlainTextEdit_override_virtual_ViewportEvent(void* self, intptr_t slot);
 bool QPlainTextEdit_virtualbase_ViewportEvent(void* self, QEvent* param1);
 void QPlainTextEdit_override_virtual_ViewportSizeHint(void* self, intptr_t slot);
 QSize* QPlainTextEdit_virtualbase_ViewportSizeHint(const void* self);
-void QPlainTextEdit_Delete(QPlainTextEdit* self, bool isSubclass);
+void QPlainTextEdit_Delete(QPlainTextEdit* self);
 
 QPlainTextDocumentLayout* QPlainTextDocumentLayout_new(QTextDocument* document);
 void QPlainTextDocumentLayout_virtbase(QPlainTextDocumentLayout* src, QAbstractTextDocumentLayout** outptr_QAbstractTextDocumentLayout);
@@ -368,7 +368,7 @@ void QPlainTextDocumentLayout_override_virtual_PositionInlineObject(void* self, 
 void QPlainTextDocumentLayout_virtualbase_PositionInlineObject(void* self, QTextInlineObject* item, int posInDocument, QTextFormat* format);
 void QPlainTextDocumentLayout_override_virtual_DrawInlineObject(void* self, intptr_t slot);
 void QPlainTextDocumentLayout_virtualbase_DrawInlineObject(void* self, QPainter* painter, QRectF* rect, QTextInlineObject* object, int posInDocument, QTextFormat* format);
-void QPlainTextDocumentLayout_Delete(QPlainTextDocumentLayout* self, bool isSubclass);
+void QPlainTextDocumentLayout_Delete(QPlainTextDocumentLayout* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -31,7 +31,7 @@ void miqt_exec_callback_QAudioOutput_DisconnectNotify(void*, intptr_t, QMetaMeth
 } /* extern C */
 #endif
 
-class MiqtVirtualQAudioOutput : public virtual QAudioOutput {
+class MiqtVirtualQAudioOutput final : public QAudioOutput {
 public:
 
 	MiqtVirtualQAudioOutput(): QAudioOutput() {};
@@ -41,7 +41,7 @@ public:
 	MiqtVirtualQAudioOutput(const QAudioDeviceInfo& audioDeviceInfo, const QAudioFormat& format): QAudioOutput(audioDeviceInfo, format) {};
 	MiqtVirtualQAudioOutput(const QAudioDeviceInfo& audioDeviceInfo, const QAudioFormat& format, QObject* parent): QAudioOutput(audioDeviceInfo, format, parent) {};
 
-	virtual ~MiqtVirtualQAudioOutput() = default;
+	virtual ~MiqtVirtualQAudioOutput() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -493,11 +493,7 @@ void QAudioOutput_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQAudioOutput*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QAudioOutput_Delete(QAudioOutput* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAudioOutput*>( self );
-	} else {
-		delete self;
-	}
+void QAudioOutput_Delete(QAudioOutput* self) {
+	delete self;
 }
 

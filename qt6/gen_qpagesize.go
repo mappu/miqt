@@ -435,7 +435,7 @@ func QPageSize_Id3(size *QSizeF, units QPageSize__Unit, matchPolicy QPageSize__S
 
 // Delete this object from C++ memory.
 func (this *QPageSize) Delete() {
-	C.QPageSize_Delete(this.h, C.bool(this.isSubclass))
+	C.QPageSize_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

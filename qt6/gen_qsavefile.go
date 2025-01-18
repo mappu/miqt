@@ -536,7 +536,7 @@ func miqt_exec_callback_QSaveFile_ReadLineData(self *C.QSaveFile, cb C.intptr_t,
 
 // Delete this object from C++ memory.
 func (this *QSaveFile) Delete() {
-	C.QSaveFile_Delete(this.h, C.bool(this.isSubclass))
+	C.QSaveFile_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

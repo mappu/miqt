@@ -421,7 +421,7 @@ func miqt_exec_callback_QAudioSink_DisconnectNotify(self *C.QAudioSink, cb C.int
 
 // Delete this object from C++ memory.
 func (this *QAudioSink) Delete() {
-	C.QAudioSink_Delete(this.h, C.bool(this.isSubclass))
+	C.QAudioSink_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -151,7 +151,7 @@ void QListWidgetItem_override_virtual_Read(void* self, intptr_t slot);
 void QListWidgetItem_virtualbase_Read(void* self, QDataStream* in);
 void QListWidgetItem_override_virtual_Write(void* self, intptr_t slot);
 void QListWidgetItem_virtualbase_Write(const void* self, QDataStream* out);
-void QListWidgetItem_Delete(QListWidgetItem* self, bool isSubclass);
+void QListWidgetItem_Delete(QListWidgetItem* self);
 
 QListWidget* QListWidget_new(QWidget* parent);
 QListWidget* QListWidget_new2();
@@ -306,7 +306,7 @@ void QListWidget_override_virtual_CurrentChanged(void* self, intptr_t slot);
 void QListWidget_virtualbase_CurrentChanged(void* self, QModelIndex* current, QModelIndex* previous);
 void QListWidget_override_virtual_ViewportSizeHint(void* self, intptr_t slot);
 QSize* QListWidget_virtualbase_ViewportSizeHint(const void* self);
-void QListWidget_Delete(QListWidget* self, bool isSubclass);
+void QListWidget_Delete(QListWidget* self);
 
 #ifdef __cplusplus
 } /* extern C */

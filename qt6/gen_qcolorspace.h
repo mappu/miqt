@@ -60,7 +60,7 @@ QColorTransform* QColorSpace_TransformationToColorSpace(const QColorSpace* self,
 QVariant* QColorSpace_ToQVariant(const QColorSpace* self);
 void QColorSpace_SetTransferFunction2(QColorSpace* self, int transferFunction, float gamma);
 QColorSpace* QColorSpace_WithTransferFunction2(const QColorSpace* self, int transferFunction, float gamma);
-void QColorSpace_Delete(QColorSpace* self, bool isSubclass);
+void QColorSpace_Delete(QColorSpace* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -52,13 +52,13 @@ bool miqt_exec_callback_QsciLexerMakefile_WriteProperties(void*, intptr_t, QSett
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerMakefile : public virtual QsciLexerMakefile {
+class MiqtVirtualQsciLexerMakefile final : public QsciLexerMakefile {
 public:
 
 	MiqtVirtualQsciLexerMakefile(): QsciLexerMakefile() {};
 	MiqtVirtualQsciLexerMakefile(QObject* parent): QsciLexerMakefile(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerMakefile() = default;
+	virtual ~MiqtVirtualQsciLexerMakefile() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Language = 0;
@@ -1236,11 +1236,7 @@ bool QsciLexerMakefile_virtualbase_WriteProperties(const void* self, QSettings* 
 	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_WriteProperties(qs, prefix);
 }
 
-void QsciLexerMakefile_Delete(QsciLexerMakefile* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerMakefile*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerMakefile_Delete(QsciLexerMakefile* self) {
+	delete self;
 }
 

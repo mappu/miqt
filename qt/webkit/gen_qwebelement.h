@@ -111,7 +111,7 @@ void QWebElement_Render2(QWebElement* self, QPainter* painter, QRect* clipRect);
 struct miqt_string QWebElement_Attribute2(const QWebElement* self, struct miqt_string name, struct miqt_string defaultValue);
 struct miqt_string QWebElement_AttributeNS3(const QWebElement* self, struct miqt_string namespaceUri, struct miqt_string name, struct miqt_string defaultValue);
 struct miqt_array /* of struct miqt_string */  QWebElement_AttributeNames1(const QWebElement* self, struct miqt_string namespaceUri);
-void QWebElement_Delete(QWebElement* self, bool isSubclass);
+void QWebElement_Delete(QWebElement* self);
 
 QWebElementCollection* QWebElementCollection_new();
 QWebElementCollection* QWebElementCollection_new2(QWebElement* contextElement, struct miqt_string query);
@@ -132,7 +132,7 @@ QWebElementCollection__const_iterator* QWebElementCollection_ConstBegin(const QW
 QWebElementCollection__const_iterator* QWebElementCollection_ConstEnd(const QWebElementCollection* self);
 QWebElementCollection__iterator* QWebElementCollection_Begin2(QWebElementCollection* self);
 QWebElementCollection__iterator* QWebElementCollection_End2(QWebElementCollection* self);
-void QWebElementCollection_Delete(QWebElementCollection* self, bool isSubclass);
+void QWebElementCollection_Delete(QWebElementCollection* self);
 
 QWebElementCollection__const_iterator* QWebElementCollection__const_iterator_new(QWebElementCollection* collection_, int index);
 QWebElementCollection__const_iterator* QWebElementCollection__const_iterator_new2(QWebElementCollection__const_iterator* o);
@@ -152,7 +152,7 @@ QWebElementCollection__const_iterator* QWebElementCollection__const_iterator_Ope
 QWebElementCollection__const_iterator* QWebElementCollection__const_iterator_OperatorPlus(const QWebElementCollection__const_iterator* self, int j);
 QWebElementCollection__const_iterator* QWebElementCollection__const_iterator_OperatorMinus(const QWebElementCollection__const_iterator* self, int j);
 int QWebElementCollection__const_iterator_OperatorMinusWithQWebElementCollectionconstIterator(const QWebElementCollection__const_iterator* self, QWebElementCollection__const_iterator* j);
-void QWebElementCollection__const_iterator_Delete(QWebElementCollection__const_iterator* self, bool isSubclass);
+void QWebElementCollection__const_iterator_Delete(QWebElementCollection__const_iterator* self);
 
 QWebElementCollection__iterator* QWebElementCollection__iterator_new(QWebElementCollection* collection_, int index);
 QWebElementCollection__iterator* QWebElementCollection__iterator_new2(QWebElementCollection__iterator* o);
@@ -172,7 +172,7 @@ QWebElementCollection__iterator* QWebElementCollection__iterator_OperatorMinusAs
 QWebElementCollection__iterator* QWebElementCollection__iterator_OperatorPlus(const QWebElementCollection__iterator* self, int j);
 QWebElementCollection__iterator* QWebElementCollection__iterator_OperatorMinus(const QWebElementCollection__iterator* self, int j);
 int QWebElementCollection__iterator_OperatorMinusWithQWebElementCollectioniterator(const QWebElementCollection__iterator* self, QWebElementCollection__iterator* j);
-void QWebElementCollection__iterator_Delete(QWebElementCollection__iterator* self, bool isSubclass);
+void QWebElementCollection__iterator_Delete(QWebElementCollection__iterator* self);
 
 #ifdef __cplusplus
 } /* extern C */

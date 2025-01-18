@@ -42,7 +42,7 @@ struct miqt_string QAudioDeviceInfo_Realm(const QAudioDeviceInfo* self);
 QAudioDeviceInfo* QAudioDeviceInfo_DefaultInputDevice();
 QAudioDeviceInfo* QAudioDeviceInfo_DefaultOutputDevice();
 struct miqt_array /* of QAudioDeviceInfo* */  QAudioDeviceInfo_AvailableDevices(int mode);
-void QAudioDeviceInfo_Delete(QAudioDeviceInfo* self, bool isSubclass);
+void QAudioDeviceInfo_Delete(QAudioDeviceInfo* self);
 
 #ifdef __cplusplus
 } /* extern C */

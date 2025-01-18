@@ -274,7 +274,7 @@ func (this *QCalendar) StandaloneWeekDayName3(locale *QLocale, day int, format Q
 
 // Delete this object from C++ memory.
 func (this *QCalendar) Delete() {
-	C.QCalendar_Delete(this.h, C.bool(this.isSubclass))
+	C.QCalendar_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -357,7 +357,7 @@ func (this *QCalendar__YearMonthDay) IsValid() bool {
 
 // Delete this object from C++ memory.
 func (this *QCalendar__YearMonthDay) Delete() {
-	C.QCalendar__YearMonthDay_Delete(this.h, C.bool(this.isSubclass))
+	C.QCalendar__YearMonthDay_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -420,7 +420,7 @@ func (this *QCalendar__SystemId) IsValid() bool {
 
 // Delete this object from C++ memory.
 func (this *QCalendar__SystemId) Delete() {
-	C.QCalendar__SystemId_Delete(this.h, C.bool(this.isSubclass))
+	C.QCalendar__SystemId_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

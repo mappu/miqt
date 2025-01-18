@@ -35,7 +35,7 @@ long long miqt_exec_callback_QWaveDecoder_SkipData(void*, intptr_t, long long);
 } /* extern C */
 #endif
 
-class MiqtVirtualQWaveDecoder : public virtual QWaveDecoder {
+class MiqtVirtualQWaveDecoder final : public QWaveDecoder {
 public:
 
 	MiqtVirtualQWaveDecoder(QIODevice* device): QWaveDecoder(device) {};
@@ -43,7 +43,7 @@ public:
 	MiqtVirtualQWaveDecoder(QIODevice* device, QObject* parent): QWaveDecoder(device, parent) {};
 	MiqtVirtualQWaveDecoder(QIODevice* device, const QAudioFormat& format, QObject* parent): QWaveDecoder(device, format, parent) {};
 
-	virtual ~MiqtVirtualQWaveDecoder() = default;
+	virtual ~MiqtVirtualQWaveDecoder() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Open = 0;
@@ -644,11 +644,7 @@ long long QWaveDecoder_virtualbase_SkipData(void* self, long long maxSize) {
 	return ( (MiqtVirtualQWaveDecoder*)(self) )->virtualbase_SkipData(maxSize);
 }
 
-void QWaveDecoder_Delete(QWaveDecoder* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQWaveDecoder*>( self );
-	} else {
-		delete self;
-	}
+void QWaveDecoder_Delete(QWaveDecoder* self) {
+	delete self;
 }
 

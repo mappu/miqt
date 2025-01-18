@@ -220,7 +220,7 @@ void QFileDialog_override_virtual_ContextMenuEvent(void* self, intptr_t slot);
 void QFileDialog_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* param1);
 void QFileDialog_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QFileDialog_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2);
-void QFileDialog_Delete(QFileDialog* self, bool isSubclass);
+void QFileDialog_Delete(QFileDialog* self);
 
 #ifdef __cplusplus
 } /* extern C */

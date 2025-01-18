@@ -54,13 +54,13 @@ void miqt_exec_callback_QAbstractScrollArea_ChangeEvent(void*, intptr_t, QEvent*
 } /* extern C */
 #endif
 
-class MiqtVirtualQAbstractScrollArea : public virtual QAbstractScrollArea {
+class MiqtVirtualQAbstractScrollArea final : public QAbstractScrollArea {
 public:
 
 	MiqtVirtualQAbstractScrollArea(QWidget* parent): QAbstractScrollArea(parent) {};
 	MiqtVirtualQAbstractScrollArea(): QAbstractScrollArea() {};
 
-	virtual ~MiqtVirtualQAbstractScrollArea() = default;
+	virtual ~MiqtVirtualQAbstractScrollArea() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__MinimumSizeHint = 0;
@@ -939,11 +939,7 @@ void QAbstractScrollArea_virtualbase_ChangeEvent(void* self, QEvent* param1) {
 	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_ChangeEvent(param1);
 }
 
-void QAbstractScrollArea_Delete(QAbstractScrollArea* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractScrollArea*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractScrollArea_Delete(QAbstractScrollArea* self) {
+	delete self;
 }
 

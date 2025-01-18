@@ -65,7 +65,7 @@ int QNetworkRequest_TransferTimeout(const QNetworkRequest* self);
 void QNetworkRequest_SetTransferTimeout(QNetworkRequest* self);
 QVariant* QNetworkRequest_Attribute2(const QNetworkRequest* self, int code, QVariant* defaultValue);
 void QNetworkRequest_SetTransferTimeout1(QNetworkRequest* self, int timeout);
-void QNetworkRequest_Delete(QNetworkRequest* self, bool isSubclass);
+void QNetworkRequest_Delete(QNetworkRequest* self);
 
 #ifdef __cplusplus
 } /* extern C */

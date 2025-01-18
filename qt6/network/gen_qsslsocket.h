@@ -198,7 +198,7 @@ void QSslSocket_override_virtual_SkipData(void* self, intptr_t slot);
 long long QSslSocket_virtualbase_SkipData(void* self, long long maxSize);
 void QSslSocket_override_virtual_WriteData(void* self, intptr_t slot);
 long long QSslSocket_virtualbase_WriteData(void* self, const char* data, long long lenVal);
-void QSslSocket_Delete(QSslSocket* self, bool isSubclass);
+void QSslSocket_Delete(QSslSocket* self);
 
 #ifdef __cplusplus
 } /* extern C */

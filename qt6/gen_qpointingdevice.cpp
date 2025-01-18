@@ -41,12 +41,8 @@ long long QPointingDeviceUniqueId_NumericId(const QPointingDeviceUniqueId* self)
 	return static_cast<long long>(_ret);
 }
 
-void QPointingDeviceUniqueId_Delete(QPointingDeviceUniqueId* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPointingDeviceUniqueId*>( self );
-	} else {
-		delete self;
-	}
+void QPointingDeviceUniqueId_Delete(QPointingDeviceUniqueId* self) {
+	delete self;
 }
 
 QPointingDevice* QPointingDevice_new() {
@@ -184,11 +180,7 @@ QPointingDevice* QPointingDevice_PrimaryPointingDevice1(struct miqt_string seatN
 	return (QPointingDevice*) QPointingDevice::primaryPointingDevice(seatName_QString);
 }
 
-void QPointingDevice_Delete(QPointingDevice* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPointingDevice*>( self );
-	} else {
-		delete self;
-	}
+void QPointingDevice_Delete(QPointingDevice* self) {
+	delete self;
 }
 

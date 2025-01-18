@@ -394,7 +394,7 @@ func miqt_exec_callback_QVideoSink_DisconnectNotify(self *C.QVideoSink, cb C.int
 
 // Delete this object from C++ memory.
 func (this *QVideoSink) Delete() {
-	C.QVideoSink_Delete(this.h, C.bool(this.isSubclass))
+	C.QVideoSink_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

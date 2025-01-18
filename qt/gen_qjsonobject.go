@@ -339,7 +339,7 @@ func (this *QJsonObject) Empty() bool {
 
 // Delete this object from C++ memory.
 func (this *QJsonObject) Delete() {
-	C.QJsonObject_Delete(this.h, C.bool(this.isSubclass))
+	C.QJsonObject_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -533,7 +533,7 @@ func (this *QJsonObject__iterator) OperatorGreaterOrEqualWithOther(other *QJsonO
 
 // Delete this object from C++ memory.
 func (this *QJsonObject__iterator) Delete() {
-	C.QJsonObject__iterator_Delete(this.h, C.bool(this.isSubclass))
+	C.QJsonObject__iterator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -735,7 +735,7 @@ func (this *QJsonObject__const_iterator) OperatorGreaterOrEqualWithOther(other *
 
 // Delete this object from C++ memory.
 func (this *QJsonObject__const_iterator) Delete() {
-	C.QJsonObject__const_iterator_Delete(this.h, C.bool(this.isSubclass))
+	C.QJsonObject__const_iterator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

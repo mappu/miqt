@@ -63,7 +63,7 @@ bool QPen_OperatorEqual(const QPen* self, QPen* p);
 bool QPen_OperatorNotEqual(const QPen* self, QPen* p);
 QVariant* QPen_ToQVariant(const QPen* self);
 bool QPen_IsDetached(QPen* self);
-void QPen_Delete(QPen* self, bool isSubclass);
+void QPen_Delete(QPen* self);
 
 #ifdef __cplusplus
 } /* extern C */

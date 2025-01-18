@@ -441,7 +441,7 @@ func (this *QTextStream) ReadLine1(maxlen int64) string {
 
 // Delete this object from C++ memory.
 func (this *QTextStream) Delete() {
-	C.QTextStream_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextStream_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

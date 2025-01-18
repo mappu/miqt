@@ -127,7 +127,7 @@ func QLibraryInfo_PlatformPluginArguments(platformName string) []string {
 
 // Delete this object from C++ memory.
 func (this *QLibraryInfo) Delete() {
-	C.QLibraryInfo_Delete(this.h, C.bool(this.isSubclass))
+	C.QLibraryInfo_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

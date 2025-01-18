@@ -776,7 +776,7 @@ func miqt_exec_callback_QStringListModel_DropMimeData(self *C.QStringListModel, 
 
 // Delete this object from C++ memory.
 func (this *QStringListModel) Delete() {
-	C.QStringListModel_Delete(this.h, C.bool(this.isSubclass))
+	C.QStringListModel_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

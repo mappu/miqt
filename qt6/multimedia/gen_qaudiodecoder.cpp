@@ -39,13 +39,13 @@ void miqt_exec_callback_QAudioDecoder_DisconnectNotify(void*, intptr_t, QMetaMet
 } /* extern C */
 #endif
 
-class MiqtVirtualQAudioDecoder : public virtual QAudioDecoder {
+class MiqtVirtualQAudioDecoder final : public QAudioDecoder {
 public:
 
 	MiqtVirtualQAudioDecoder(): QAudioDecoder() {};
 	MiqtVirtualQAudioDecoder(QObject* parent): QAudioDecoder(parent) {};
 
-	virtual ~MiqtVirtualQAudioDecoder() = default;
+	virtual ~MiqtVirtualQAudioDecoder() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -504,11 +504,7 @@ void QAudioDecoder_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQAudioDecoder*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QAudioDecoder_Delete(QAudioDecoder* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAudioDecoder*>( self );
-	} else {
-		delete self;
-	}
+void QAudioDecoder_Delete(QAudioDecoder* self) {
+	delete self;
 }
 

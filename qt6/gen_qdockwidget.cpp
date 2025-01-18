@@ -92,7 +92,7 @@ bool miqt_exec_callback_QDockWidget_FocusNextPrevChild(void*, intptr_t, bool);
 } /* extern C */
 #endif
 
-class MiqtVirtualQDockWidget : public virtual QDockWidget {
+class MiqtVirtualQDockWidget final : public QDockWidget {
 public:
 
 	MiqtVirtualQDockWidget(QWidget* parent): QDockWidget(parent) {};
@@ -102,7 +102,7 @@ public:
 	MiqtVirtualQDockWidget(const QString& title, QWidget* parent, Qt::WindowFlags flags): QDockWidget(title, parent, flags) {};
 	MiqtVirtualQDockWidget(QWidget* parent, Qt::WindowFlags flags): QDockWidget(parent, flags) {};
 
-	virtual ~MiqtVirtualQDockWidget() = default;
+	virtual ~MiqtVirtualQDockWidget() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__ChangeEvent = 0;
@@ -1622,11 +1622,7 @@ bool QDockWidget_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQDockWidget*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QDockWidget_Delete(QDockWidget* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQDockWidget*>( self );
-	} else {
-		delete self;
-	}
+void QDockWidget_Delete(QDockWidget* self) {
+	delete self;
 }
 

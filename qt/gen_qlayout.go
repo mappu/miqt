@@ -1032,7 +1032,7 @@ func miqt_exec_callback_QLayout_SpacerItem(self *C.QLayout, cb C.intptr_t) *C.QS
 
 // Delete this object from C++ memory.
 func (this *QLayout) Delete() {
-	C.QLayout_Delete(this.h, C.bool(this.isSubclass))
+	C.QLayout_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -92,7 +92,7 @@ func (this *qfloat16) IsNormal() bool {
 
 // Delete this object from C++ memory.
 func (this *qfloat16) Delete() {
-	C.qfloat16_Delete(this.h, C.bool(this.isSubclass))
+	C.qfloat16_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

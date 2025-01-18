@@ -358,7 +358,7 @@ func (this *QCommandLineParser) AddPositionalArgument3(name string, description 
 
 // Delete this object from C++ memory.
 func (this *QCommandLineParser) Delete() {
-	C.QCommandLineParser_Delete(this.h, C.bool(this.isSubclass))
+	C.QCommandLineParser_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -60,7 +60,7 @@ void QTextList_override_virtual_BlockRemoved(void* self, intptr_t slot);
 void QTextList_virtualbase_BlockRemoved(void* self, QTextBlock* block);
 void QTextList_override_virtual_BlockFormatChanged(void* self, intptr_t slot);
 void QTextList_virtualbase_BlockFormatChanged(void* self, QTextBlock* block);
-void QTextList_Delete(QTextList* self, bool isSubclass);
+void QTextList_Delete(QTextList* self);
 
 #ifdef __cplusplus
 } /* extern C */

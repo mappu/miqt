@@ -362,7 +362,7 @@ func miqt_exec_callback_QStylePlugin_DisconnectNotify(self *C.QStylePlugin, cb C
 
 // Delete this object from C++ memory.
 func (this *QStylePlugin) Delete() {
-	C.QStylePlugin_Delete(this.h, C.bool(this.isSubclass))
+	C.QStylePlugin_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

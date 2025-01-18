@@ -198,7 +198,7 @@ void QFileSystemModel_override_virtual_Revert(void* self, intptr_t slot);
 void QFileSystemModel_virtualbase_Revert(void* self);
 void QFileSystemModel_override_virtual_ResetInternalData(void* self, intptr_t slot);
 void QFileSystemModel_virtualbase_ResetInternalData(void* self);
-void QFileSystemModel_Delete(QFileSystemModel* self, bool isSubclass);
+void QFileSystemModel_Delete(QFileSystemModel* self);
 
 #ifdef __cplusplus
 } /* extern C */

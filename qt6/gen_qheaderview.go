@@ -2477,7 +2477,7 @@ func miqt_exec_callback_QHeaderView_ViewportSizeHint(self *C.QHeaderView, cb C.i
 
 // Delete this object from C++ memory.
 func (this *QHeaderView) Delete() {
-	C.QHeaderView_Delete(this.h, C.bool(this.isSubclass))
+	C.QHeaderView_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -196,7 +196,7 @@ func (this *QAudioEncoderSettings) SetEncodingOptions(options map[string]qt.QVar
 
 // Delete this object from C++ memory.
 func (this *QAudioEncoderSettings) Delete() {
-	C.QAudioEncoderSettings_Delete(this.h, C.bool(this.isSubclass))
+	C.QAudioEncoderSettings_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -396,7 +396,7 @@ func (this *QVideoEncoderSettings) SetEncodingOptions(options map[string]qt.QVar
 
 // Delete this object from C++ memory.
 func (this *QVideoEncoderSettings) Delete() {
-	C.QVideoEncoderSettings_Delete(this.h, C.bool(this.isSubclass))
+	C.QVideoEncoderSettings_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -572,7 +572,7 @@ func (this *QImageEncoderSettings) SetEncodingOptions(options map[string]qt.QVar
 
 // Delete this object from C++ memory.
 func (this *QImageEncoderSettings) Delete() {
-	C.QImageEncoderSettings_Delete(this.h, C.bool(this.isSubclass))
+	C.QImageEncoderSettings_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

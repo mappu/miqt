@@ -27,13 +27,13 @@ void miqt_exec_callback_QGenericPlugin_DisconnectNotify(void*, intptr_t, QMetaMe
 } /* extern C */
 #endif
 
-class MiqtVirtualQGenericPlugin : public virtual QGenericPlugin {
+class MiqtVirtualQGenericPlugin final : public QGenericPlugin {
 public:
 
 	MiqtVirtualQGenericPlugin(): QGenericPlugin() {};
 	MiqtVirtualQGenericPlugin(QObject* parent): QGenericPlugin(parent) {};
 
-	virtual ~MiqtVirtualQGenericPlugin() = default;
+	virtual ~MiqtVirtualQGenericPlugin() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Create = 0;
@@ -391,11 +391,7 @@ void QGenericPlugin_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQGenericPlugin*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QGenericPlugin_Delete(QGenericPlugin* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGenericPlugin*>( self );
-	} else {
-		delete self;
-	}
+void QGenericPlugin_Delete(QGenericPlugin* self) {
+	delete self;
 }
 

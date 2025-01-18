@@ -68,7 +68,7 @@ void QPictureFormatPlugin_override_virtual_ConnectNotify(void* self, intptr_t sl
 void QPictureFormatPlugin_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QPictureFormatPlugin_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QPictureFormatPlugin_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QPictureFormatPlugin_Delete(QPictureFormatPlugin* self, bool isSubclass);
+void QPictureFormatPlugin_Delete(QPictureFormatPlugin* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -51,13 +51,13 @@ void miqt_exec_callback_QMediaPlayer_DisconnectNotify(void*, intptr_t, QMetaMeth
 } /* extern C */
 #endif
 
-class MiqtVirtualQMediaPlayer : public virtual QMediaPlayer {
+class MiqtVirtualQMediaPlayer final : public QMediaPlayer {
 public:
 
 	MiqtVirtualQMediaPlayer(): QMediaPlayer() {};
 	MiqtVirtualQMediaPlayer(QObject* parent): QMediaPlayer(parent) {};
 
-	virtual ~MiqtVirtualQMediaPlayer() = default;
+	virtual ~MiqtVirtualQMediaPlayer() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -753,11 +753,7 @@ void QMediaPlayer_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQMediaPlayer*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QMediaPlayer_Delete(QMediaPlayer* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQMediaPlayer*>( self );
-	} else {
-		delete self;
-	}
+void QMediaPlayer_Delete(QMediaPlayer* self) {
+	delete self;
 }
 

@@ -119,11 +119,7 @@ QSizePolicy* QSizePolicy_Transposed(const QSizePolicy* self) {
 	return new QSizePolicy(self->transposed());
 }
 
-void QSizePolicy_Delete(QSizePolicy* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QSizePolicy*>( self );
-	} else {
-		delete self;
-	}
+void QSizePolicy_Delete(QSizePolicy* self) {
+	delete self;
 }
 

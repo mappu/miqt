@@ -277,7 +277,7 @@ func QEvent_RegisterEventType1(hint int) int {
 
 // Delete this object from C++ memory.
 func (this *QEvent) Delete() {
-	C.QEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -348,7 +348,7 @@ func (this *QTimerEvent) TimerId() int {
 
 // Delete this object from C++ memory.
 func (this *QTimerEvent) Delete() {
-	C.QTimerEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QTimerEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -431,7 +431,7 @@ func (this *QChildEvent) Removed() bool {
 
 // Delete this object from C++ memory.
 func (this *QChildEvent) Delete() {
-	C.QChildEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QChildEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -508,7 +508,7 @@ func (this *QDynamicPropertyChangeEvent) PropertyName() []byte {
 
 // Delete this object from C++ memory.
 func (this *QDynamicPropertyChangeEvent) Delete() {
-	C.QDynamicPropertyChangeEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QDynamicPropertyChangeEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

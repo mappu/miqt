@@ -79,11 +79,7 @@ struct miqt_string QsciLexerOctave_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QsciLexerOctave_Delete(QsciLexerOctave* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QsciLexerOctave*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerOctave_Delete(QsciLexerOctave* self) {
+	delete self;
 }
 

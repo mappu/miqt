@@ -27,12 +27,12 @@ QVariant* miqt_exec_callback_QScriptClass_Extension(void*, intptr_t, int, QVaria
 } /* extern C */
 #endif
 
-class MiqtVirtualQScriptClass : public virtual QScriptClass {
+class MiqtVirtualQScriptClass final : public QScriptClass {
 public:
 
 	MiqtVirtualQScriptClass(QScriptEngine* engine): QScriptClass(engine) {};
 
-	virtual ~MiqtVirtualQScriptClass() = default;
+	virtual ~MiqtVirtualQScriptClass() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__QueryProperty = 0;
@@ -417,11 +417,7 @@ QVariant* QScriptClass_virtualbase_Extension(void* self, int extension, QVariant
 	return ( (MiqtVirtualQScriptClass*)(self) )->virtualbase_Extension(extension, argument);
 }
 
-void QScriptClass_Delete(QScriptClass* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQScriptClass*>( self );
-	} else {
-		delete self;
-	}
+void QScriptClass_Delete(QScriptClass* self) {
+	delete self;
 }
 

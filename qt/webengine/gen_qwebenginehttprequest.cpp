@@ -136,11 +136,7 @@ void QWebEngineHttpRequest_UnsetHeader(QWebEngineHttpRequest* self, struct miqt_
 	self->unsetHeader(headerName_QByteArray);
 }
 
-void QWebEngineHttpRequest_Delete(QWebEngineHttpRequest* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebEngineHttpRequest*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineHttpRequest_Delete(QWebEngineHttpRequest* self) {
+	delete self;
 }
 

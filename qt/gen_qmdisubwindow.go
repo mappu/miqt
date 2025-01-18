@@ -1448,7 +1448,7 @@ func miqt_exec_callback_QMdiSubWindow_FocusNextPrevChild(self *C.QMdiSubWindow, 
 
 // Delete this object from C++ memory.
 func (this *QMdiSubWindow) Delete() {
-	C.QMdiSubWindow_Delete(this.h, C.bool(this.isSubclass))
+	C.QMdiSubWindow_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

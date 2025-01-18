@@ -201,7 +201,7 @@ void QDockWidget_override_virtual_InputMethodQuery(void* self, intptr_t slot);
 QVariant* QDockWidget_virtualbase_InputMethodQuery(const void* self, int param1);
 void QDockWidget_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QDockWidget_virtualbase_FocusNextPrevChild(void* self, bool next);
-void QDockWidget_Delete(QDockWidget* self, bool isSubclass);
+void QDockWidget_Delete(QDockWidget* self);
 
 #ifdef __cplusplus
 } /* extern C */

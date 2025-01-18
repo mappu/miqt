@@ -798,7 +798,7 @@ func miqt_exec_callback_QUdpSocket_WriteData(self *C.QUdpSocket, cb C.intptr_t, 
 
 // Delete this object from C++ memory.
 func (this *QUdpSocket) Delete() {
-	C.QUdpSocket_Delete(this.h, C.bool(this.isSubclass))
+	C.QUdpSocket_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

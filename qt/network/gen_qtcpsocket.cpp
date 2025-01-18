@@ -39,13 +39,13 @@ long long miqt_exec_callback_QTcpSocket_WriteData(void*, intptr_t, const char*, 
 } /* extern C */
 #endif
 
-class MiqtVirtualQTcpSocket : public virtual QTcpSocket {
+class MiqtVirtualQTcpSocket final : public QTcpSocket {
 public:
 
 	MiqtVirtualQTcpSocket(): QTcpSocket() {};
 	MiqtVirtualQTcpSocket(QObject* parent): QTcpSocket(parent) {};
 
-	virtual ~MiqtVirtualQTcpSocket() = default;
+	virtual ~MiqtVirtualQTcpSocket() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Resume = 0;
@@ -820,11 +820,7 @@ long long QTcpSocket_virtualbase_WriteData(void* self, const char* data, long lo
 	return ( (MiqtVirtualQTcpSocket*)(self) )->virtualbase_WriteData(data, lenVal);
 }
 
-void QTcpSocket_Delete(QTcpSocket* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQTcpSocket*>( self );
-	} else {
-		delete self;
-	}
+void QTcpSocket_Delete(QTcpSocket* self) {
+	delete self;
 }
 

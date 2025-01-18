@@ -187,7 +187,7 @@ func (this *QWebSecurityOrigin) OperatorAssign(other *QWebSecurityOrigin) {
 
 // Delete this object from C++ memory.
 func (this *QWebSecurityOrigin) Delete() {
-	C.QWebSecurityOrigin_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebSecurityOrigin_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

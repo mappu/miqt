@@ -33,7 +33,7 @@ struct miqt_string QMediaControl_Tr2(const char* s, const char* c);
 struct miqt_string QMediaControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QMediaControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QMediaControl_TrUtf83(const char* s, const char* c, int n);
-void QMediaControl_Delete(QMediaControl* self, bool isSubclass);
+void QMediaControl_Delete(QMediaControl* self);
 
 #ifdef __cplusplus
 } /* extern C */

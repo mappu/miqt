@@ -507,7 +507,7 @@ func miqt_exec_callback_QPagedPaintDevice_SharedPainter(self *C.QPagedPaintDevic
 
 // Delete this object from C++ memory.
 func (this *QPagedPaintDevice) Delete() {
-	C.QPagedPaintDevice_Delete(this.h, C.bool(this.isSubclass))
+	C.QPagedPaintDevice_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -554,7 +554,7 @@ func UnsafeNewQPagedPaintDevice__Margins(h unsafe.Pointer) *QPagedPaintDevice__M
 
 // Delete this object from C++ memory.
 func (this *QPagedPaintDevice__Margins) Delete() {
-	C.QPagedPaintDevice__Margins_Delete(this.h, C.bool(this.isSubclass))
+	C.QPagedPaintDevice__Margins_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

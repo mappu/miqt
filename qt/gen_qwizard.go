@@ -1041,7 +1041,7 @@ func miqt_exec_callback_QWizard_EventFilter(self *C.QWizard, cb C.intptr_t, para
 
 // Delete this object from C++ memory.
 func (this *QWizard) Delete() {
-	C.QWizard_Delete(this.h, C.bool(this.isSubclass))
+	C.QWizard_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2498,7 +2498,7 @@ func miqt_exec_callback_QWizardPage_FocusNextPrevChild(self *C.QWizardPage, cb C
 
 // Delete this object from C++ memory.
 func (this *QWizardPage) Delete() {
-	C.QWizardPage_Delete(this.h, C.bool(this.isSubclass))
+	C.QWizardPage_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

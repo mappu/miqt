@@ -220,7 +220,7 @@ func (this *QVector2D) ToQVariant() *QVariant {
 
 // Delete this object from C++ memory.
 func (this *QVector2D) Delete() {
-	C.QVector2D_Delete(this.h, C.bool(this.isSubclass))
+	C.QVector2D_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

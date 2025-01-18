@@ -30,12 +30,8 @@ struct miqt_string QJsonParseError_ErrorString(const QJsonParseError* self) {
 	return _ms;
 }
 
-void QJsonParseError_Delete(QJsonParseError* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QJsonParseError*>( self );
-	} else {
-		delete self;
-	}
+void QJsonParseError_Delete(QJsonParseError* self) {
+	delete self;
 }
 
 QJsonDocument* QJsonDocument_new() {
@@ -147,11 +143,7 @@ struct miqt_string QJsonDocument_ToJson1(const QJsonDocument* self, int format) 
 	return _ms;
 }
 
-void QJsonDocument_Delete(QJsonDocument* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QJsonDocument*>( self );
-	} else {
-		delete self;
-	}
+void QJsonDocument_Delete(QJsonDocument* self) {
+	delete self;
 }
 

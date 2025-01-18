@@ -553,7 +553,7 @@ func miqt_exec_callback_QsciAPIs_Event(self *C.QsciAPIs, cb C.intptr_t, e *C.QEv
 
 // Delete this object from C++ memory.
 func (this *QsciAPIs) Delete() {
-	C.QsciAPIs_Delete(this.h, C.bool(this.isSubclass))
+	C.QsciAPIs_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

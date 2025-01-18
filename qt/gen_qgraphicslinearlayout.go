@@ -428,7 +428,7 @@ func miqt_exec_callback_QGraphicsLinearLayout_WidgetEvent(self *C.QGraphicsLinea
 
 // Delete this object from C++ memory.
 func (this *QGraphicsLinearLayout) Delete() {
-	C.QGraphicsLinearLayout_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsLinearLayout_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

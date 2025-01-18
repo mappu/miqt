@@ -457,7 +457,7 @@ func miqt_exec_callback_QMediaCaptureSession_DisconnectNotify(self *C.QMediaCapt
 
 // Delete this object from C++ memory.
 func (this *QMediaCaptureSession) Delete() {
-	C.QMediaCaptureSession_Delete(this.h, C.bool(this.isSubclass))
+	C.QMediaCaptureSession_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

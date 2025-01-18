@@ -533,7 +533,7 @@ func miqt_exec_callback_QNetworkCookieJar_DisconnectNotify(self *C.QNetworkCooki
 
 // Delete this object from C++ memory.
 func (this *QNetworkCookieJar) Delete() {
-	C.QNetworkCookieJar_Delete(this.h, C.bool(this.isSubclass))
+	C.QNetworkCookieJar_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

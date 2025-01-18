@@ -22,12 +22,12 @@ void miqt_exec_callback_QWidgetAction_DeleteWidget(void*, intptr_t, QWidget*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQWidgetAction : public virtual QWidgetAction {
+class MiqtVirtualQWidgetAction final : public QWidgetAction {
 public:
 
 	MiqtVirtualQWidgetAction(QObject* parent): QWidgetAction(parent) {};
 
-	virtual ~MiqtVirtualQWidgetAction() = default;
+	virtual ~MiqtVirtualQWidgetAction() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -222,11 +222,7 @@ void QWidgetAction_virtualbase_DeleteWidget(void* self, QWidget* widget) {
 	( (MiqtVirtualQWidgetAction*)(self) )->virtualbase_DeleteWidget(widget);
 }
 
-void QWidgetAction_Delete(QWidgetAction* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQWidgetAction*>( self );
-	} else {
-		delete self;
-	}
+void QWidgetAction_Delete(QWidgetAction* self) {
+	delete self;
 }
 

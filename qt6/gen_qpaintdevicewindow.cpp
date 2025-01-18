@@ -81,11 +81,7 @@ struct miqt_string QPaintDeviceWindow_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QPaintDeviceWindow_Delete(QPaintDeviceWindow* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPaintDeviceWindow*>( self );
-	} else {
-		delete self;
-	}
+void QPaintDeviceWindow_Delete(QPaintDeviceWindow* self) {
+	delete self;
 }
 

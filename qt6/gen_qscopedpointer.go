@@ -56,7 +56,7 @@ func (this *QScopedPointerPodDeleter) OperatorCall(pointer unsafe.Pointer) {
 
 // Delete this object from C++ memory.
 func (this *QScopedPointerPodDeleter) Delete() {
-	C.QScopedPointerPodDeleter_Delete(this.h, C.bool(this.isSubclass))
+	C.QScopedPointerPodDeleter_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

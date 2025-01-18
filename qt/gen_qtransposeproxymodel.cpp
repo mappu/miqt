@@ -61,13 +61,13 @@ int miqt_exec_callback_QTransposeProxyModel_SupportedDropActions(void*, intptr_t
 } /* extern C */
 #endif
 
-class MiqtVirtualQTransposeProxyModel : public virtual QTransposeProxyModel {
+class MiqtVirtualQTransposeProxyModel final : public QTransposeProxyModel {
 public:
 
 	MiqtVirtualQTransposeProxyModel(): QTransposeProxyModel() {};
 	MiqtVirtualQTransposeProxyModel(QObject* parent): QTransposeProxyModel(parent) {};
 
-	virtual ~MiqtVirtualQTransposeProxyModel() = default;
+	virtual ~MiqtVirtualQTransposeProxyModel() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetSourceModel = 0;
@@ -1585,11 +1585,7 @@ int QTransposeProxyModel_virtualbase_SupportedDropActions(const void* self) {
 	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_SupportedDropActions();
 }
 
-void QTransposeProxyModel_Delete(QTransposeProxyModel* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQTransposeProxyModel*>( self );
-	} else {
-		delete self;
-	}
+void QTransposeProxyModel_Delete(QTransposeProxyModel* self) {
+	delete self;
 }
 

@@ -100,13 +100,13 @@ bool miqt_exec_callback_QWebEngineView_FocusNextPrevChild(void*, intptr_t, bool)
 } /* extern C */
 #endif
 
-class MiqtVirtualQWebEngineView : public virtual QWebEngineView {
+class MiqtVirtualQWebEngineView final : public QWebEngineView {
 public:
 
 	MiqtVirtualQWebEngineView(QWidget* parent): QWebEngineView(parent) {};
 	MiqtVirtualQWebEngineView(): QWebEngineView() {};
 
-	virtual ~MiqtVirtualQWebEngineView() = default;
+	virtual ~MiqtVirtualQWebEngineView() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -1788,11 +1788,7 @@ bool QWebEngineView_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQWebEngineView*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QWebEngineView_Delete(QWebEngineView* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQWebEngineView*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineView_Delete(QWebEngineView* self) {
+	delete self;
 }
 

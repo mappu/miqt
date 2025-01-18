@@ -772,7 +772,7 @@ func miqt_exec_callback_QStandardItem_OperatorLesser(self *C.QStandardItem, cb C
 
 // Delete this object from C++ memory.
 func (this *QStandardItem) Delete() {
-	C.QStandardItem_Delete(this.h, C.bool(this.isSubclass))
+	C.QStandardItem_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2583,7 +2583,7 @@ func miqt_exec_callback_QStandardItemModel_ResetInternalData(self *C.QStandardIt
 
 // Delete this object from C++ memory.
 func (this *QStandardItemModel) Delete() {
-	C.QStandardItemModel_Delete(this.h, C.bool(this.isSubclass))
+	C.QStandardItemModel_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

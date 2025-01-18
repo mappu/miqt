@@ -219,7 +219,7 @@ func (this *QNetworkCacheMetaData) SetAttributes(attributes map[QNetworkRequest_
 
 // Delete this object from C++ memory.
 func (this *QNetworkCacheMetaData) Delete() {
-	C.QNetworkCacheMetaData_Delete(this.h, C.bool(this.isSubclass))
+	C.QNetworkCacheMetaData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -376,7 +376,7 @@ func QAbstractNetworkCache_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QAbstractNetworkCache) Delete() {
-	C.QAbstractNetworkCache_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractNetworkCache_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

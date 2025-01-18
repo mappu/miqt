@@ -203,7 +203,7 @@ void QProgressBar_override_virtual_InputMethodQuery(void* self, intptr_t slot);
 QVariant* QProgressBar_virtualbase_InputMethodQuery(const void* self, int param1);
 void QProgressBar_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QProgressBar_virtualbase_FocusNextPrevChild(void* self, bool next);
-void QProgressBar_Delete(QProgressBar* self, bool isSubclass);
+void QProgressBar_Delete(QProgressBar* self);
 
 #ifdef __cplusplus
 } /* extern C */

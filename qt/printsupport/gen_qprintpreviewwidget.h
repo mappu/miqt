@@ -204,7 +204,7 @@ void QPrintPreviewWidget_override_virtual_InputMethodQuery(void* self, intptr_t 
 QVariant* QPrintPreviewWidget_virtualbase_InputMethodQuery(const void* self, int param1);
 void QPrintPreviewWidget_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QPrintPreviewWidget_virtualbase_FocusNextPrevChild(void* self, bool next);
-void QPrintPreviewWidget_Delete(QPrintPreviewWidget* self, bool isSubclass);
+void QPrintPreviewWidget_Delete(QPrintPreviewWidget* self);
 
 #ifdef __cplusplus
 } /* extern C */

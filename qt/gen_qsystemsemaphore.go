@@ -157,7 +157,7 @@ func (this *QSystemSemaphore) Release1(n int) bool {
 
 // Delete this object from C++ memory.
 func (this *QSystemSemaphore) Delete() {
-	C.QSystemSemaphore_Delete(this.h, C.bool(this.isSubclass))
+	C.QSystemSemaphore_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

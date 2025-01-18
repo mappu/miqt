@@ -52,13 +52,13 @@ bool miqt_exec_callback_QsciLexerDiff_WriteProperties(void*, intptr_t, QSettings
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerDiff : public virtual QsciLexerDiff {
+class MiqtVirtualQsciLexerDiff final : public QsciLexerDiff {
 public:
 
 	MiqtVirtualQsciLexerDiff(): QsciLexerDiff() {};
 	MiqtVirtualQsciLexerDiff(QObject* parent): QsciLexerDiff(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerDiff() = default;
+	virtual ~MiqtVirtualQsciLexerDiff() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Language = 0;
@@ -1257,11 +1257,7 @@ bool QsciLexerDiff_virtualbase_WriteProperties(const void* self, QSettings* qs, 
 	return ( (const MiqtVirtualQsciLexerDiff*)(self) )->virtualbase_WriteProperties(qs, prefix);
 }
 
-void QsciLexerDiff_Delete(QsciLexerDiff* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerDiff*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerDiff_Delete(QsciLexerDiff* self) {
+	delete self;
 }
 

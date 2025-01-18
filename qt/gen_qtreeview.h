@@ -313,7 +313,7 @@ void QTreeView_override_virtual_InputMethodEvent(void* self, intptr_t slot);
 void QTreeView_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* event);
 void QTreeView_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QTreeView_virtualbase_EventFilter(void* self, QObject* object, QEvent* event);
-void QTreeView_Delete(QTreeView* self, bool isSubclass);
+void QTreeView_Delete(QTreeView* self);
 
 #ifdef __cplusplus
 } /* extern C */

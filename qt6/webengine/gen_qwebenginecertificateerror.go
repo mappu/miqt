@@ -130,7 +130,7 @@ func (this *QWebEngineCertificateError) CertificateChain() []network.QSslCertifi
 
 // Delete this object from C++ memory.
 func (this *QWebEngineCertificateError) Delete() {
-	C.QWebEngineCertificateError_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebEngineCertificateError_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

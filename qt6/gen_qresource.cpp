@@ -142,11 +142,7 @@ bool QResource_UnregisterResource22(const unsigned char* rccData, struct miqt_st
 	return QResource::unregisterResource(static_cast<const uchar*>(rccData), resourceRoot_QString);
 }
 
-void QResource_Delete(QResource* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QResource*>( self );
-	} else {
-		delete self;
-	}
+void QResource_Delete(QResource* self) {
+	delete self;
 }
 

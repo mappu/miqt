@@ -56,7 +56,7 @@ void QEventTransition_override_virtual_OnTransition(void* self, intptr_t slot);
 void QEventTransition_virtualbase_OnTransition(void* self, QEvent* event);
 void QEventTransition_override_virtual_Event(void* self, intptr_t slot);
 bool QEventTransition_virtualbase_Event(void* self, QEvent* e);
-void QEventTransition_Delete(QEventTransition* self, bool isSubclass);
+void QEventTransition_Delete(QEventTransition* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -1453,7 +1453,7 @@ func miqt_exec_callback_QGraphicsProxyWidget_UngrabKeyboardEvent(self *C.QGraphi
 
 // Delete this object from C++ memory.
 func (this *QGraphicsProxyWidget) Delete() {
-	C.QGraphicsProxyWidget_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsProxyWidget_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

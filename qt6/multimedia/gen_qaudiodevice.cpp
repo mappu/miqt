@@ -116,11 +116,7 @@ uint32_t QAudioDevice_ChannelConfiguration(const QAudioDevice* self) {
 	return static_cast<uint32_t>(_ret);
 }
 
-void QAudioDevice_Delete(QAudioDevice* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QAudioDevice*>( self );
-	} else {
-		delete self;
-	}
+void QAudioDevice_Delete(QAudioDevice* self) {
+	delete self;
 }
 

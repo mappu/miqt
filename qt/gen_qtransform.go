@@ -371,7 +371,7 @@ func (this *QTransform) RotateRadians2(a float64, axis Axis) *QTransform {
 
 // Delete this object from C++ memory.
 func (this *QTransform) Delete() {
-	C.QTransform_Delete(this.h, C.bool(this.isSubclass))
+	C.QTransform_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

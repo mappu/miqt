@@ -99,7 +99,7 @@ func (this *QReadWriteLock) Unlock() {
 
 // Delete this object from C++ memory.
 func (this *QReadWriteLock) Delete() {
-	C.QReadWriteLock_Delete(this.h, C.bool(this.isSubclass))
+	C.QReadWriteLock_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -166,7 +166,7 @@ func (this *QReadLocker) ReadWriteLock() *QReadWriteLock {
 
 // Delete this object from C++ memory.
 func (this *QReadLocker) Delete() {
-	C.QReadLocker_Delete(this.h, C.bool(this.isSubclass))
+	C.QReadLocker_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -233,7 +233,7 @@ func (this *QWriteLocker) ReadWriteLock() *QReadWriteLock {
 
 // Delete this object from C++ memory.
 func (this *QWriteLocker) Delete() {
-	C.QWriteLocker_Delete(this.h, C.bool(this.isSubclass))
+	C.QWriteLocker_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

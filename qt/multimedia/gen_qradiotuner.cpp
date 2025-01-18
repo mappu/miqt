@@ -35,13 +35,13 @@ void miqt_exec_callback_QRadioTuner_Unbind(void*, intptr_t, QObject*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQRadioTuner : public virtual QRadioTuner {
+class MiqtVirtualQRadioTuner final : public QRadioTuner {
 public:
 
 	MiqtVirtualQRadioTuner(): QRadioTuner() {};
 	MiqtVirtualQRadioTuner(QObject* parent): QRadioTuner(parent) {};
 
-	virtual ~MiqtVirtualQRadioTuner() = default;
+	virtual ~MiqtVirtualQRadioTuner() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Availability = 0;
@@ -556,11 +556,7 @@ void QRadioTuner_virtualbase_Unbind(void* self, QObject* param1) {
 	( (MiqtVirtualQRadioTuner*)(self) )->virtualbase_Unbind(param1);
 }
 
-void QRadioTuner_Delete(QRadioTuner* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQRadioTuner*>( self );
-	} else {
-		delete self;
-	}
+void QRadioTuner_Delete(QRadioTuner* self) {
+	delete self;
 }
 

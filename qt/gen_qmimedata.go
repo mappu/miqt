@@ -585,7 +585,7 @@ func miqt_exec_callback_QMimeData_DisconnectNotify(self *C.QMimeData, cb C.intpt
 
 // Delete this object from C++ memory.
 func (this *QMimeData) Delete() {
-	C.QMimeData_Delete(this.h, C.bool(this.isSubclass))
+	C.QMimeData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

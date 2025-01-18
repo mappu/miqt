@@ -49,11 +49,7 @@ int QWebEngineFileSystemAccessRequest_AccessFlags(const QWebEngineFileSystemAcce
 	return static_cast<int>(_ret);
 }
 
-void QWebEngineFileSystemAccessRequest_Delete(QWebEngineFileSystemAccessRequest* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebEngineFileSystemAccessRequest*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineFileSystemAccessRequest_Delete(QWebEngineFileSystemAccessRequest* self) {
+	delete self;
 }
 

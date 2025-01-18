@@ -113,7 +113,7 @@ func (this *QElapsedTimer) SecsTo(other *QElapsedTimer) int64 {
 
 // Delete this object from C++ memory.
 func (this *QElapsedTimer) Delete() {
-	C.QElapsedTimer_Delete(this.h, C.bool(this.isSubclass))
+	C.QElapsedTimer_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -386,7 +386,7 @@ func miqt_exec_callback_QFileSelector_DisconnectNotify(self *C.QFileSelector, cb
 
 // Delete this object from C++ memory.
 func (this *QFileSelector) Delete() {
-	C.QFileSelector_Delete(this.h, C.bool(this.isSubclass))
+	C.QFileSelector_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -53,13 +53,13 @@ bool miqt_exec_callback_QsciLexerYAML_WriteProperties(void*, intptr_t, QSettings
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerYAML : public virtual QsciLexerYAML {
+class MiqtVirtualQsciLexerYAML final : public QsciLexerYAML {
 public:
 
 	MiqtVirtualQsciLexerYAML(): QsciLexerYAML() {};
 	MiqtVirtualQsciLexerYAML(QObject* parent): QsciLexerYAML(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerYAML() = default;
+	virtual ~MiqtVirtualQsciLexerYAML() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetFoldComments = 0;
@@ -1314,11 +1314,7 @@ bool QsciLexerYAML_virtualbase_WriteProperties(const void* self, QSettings* qs, 
 	return ( (const MiqtVirtualQsciLexerYAML*)(self) )->virtualbase_WriteProperties(qs, prefix);
 }
 
-void QsciLexerYAML_Delete(QsciLexerYAML* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerYAML*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerYAML_Delete(QsciLexerYAML* self) {
+	delete self;
 }
 

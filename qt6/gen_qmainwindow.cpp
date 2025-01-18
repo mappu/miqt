@@ -94,14 +94,14 @@ bool miqt_exec_callback_QMainWindow_FocusNextPrevChild(void*, intptr_t, bool);
 } /* extern C */
 #endif
 
-class MiqtVirtualQMainWindow : public virtual QMainWindow {
+class MiqtVirtualQMainWindow final : public QMainWindow {
 public:
 
 	MiqtVirtualQMainWindow(QWidget* parent): QMainWindow(parent) {};
 	MiqtVirtualQMainWindow(): QMainWindow() {};
 	MiqtVirtualQMainWindow(QWidget* parent, Qt::WindowFlags flags): QMainWindow(parent, flags) {};
 
-	virtual ~MiqtVirtualQMainWindow() = default;
+	virtual ~MiqtVirtualQMainWindow() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__CreatePopupMenu = 0;
@@ -1793,11 +1793,7 @@ bool QMainWindow_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQMainWindow*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QMainWindow_Delete(QMainWindow* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQMainWindow*>( self );
-	} else {
-		delete self;
-	}
+void QMainWindow_Delete(QMainWindow* self) {
+	delete self;
 }
 

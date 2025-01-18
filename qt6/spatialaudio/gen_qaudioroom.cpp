@@ -37,12 +37,12 @@ void miqt_exec_callback_QAudioRoom_DisconnectNotify(void*, intptr_t, QMetaMethod
 } /* extern C */
 #endif
 
-class MiqtVirtualQAudioRoom : public virtual QAudioRoom {
+class MiqtVirtualQAudioRoom final : public QAudioRoom {
 public:
 
 	MiqtVirtualQAudioRoom(QAudioEngine* engine): QAudioRoom(engine) {};
 
-	virtual ~MiqtVirtualQAudioRoom() = default;
+	virtual ~MiqtVirtualQAudioRoom() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -467,11 +467,7 @@ void QAudioRoom_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAudioRoom*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QAudioRoom_Delete(QAudioRoom* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAudioRoom*>( self );
-	} else {
-		delete self;
-	}
+void QAudioRoom_Delete(QAudioRoom* self) {
+	delete self;
 }
 

@@ -86,7 +86,7 @@ void QLocalServer_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QLocalServer_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QLocalServer_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QLocalServer_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QLocalServer_Delete(QLocalServer* self, bool isSubclass);
+void QLocalServer_Delete(QLocalServer* self);
 
 #ifdef __cplusplus
 } /* extern C */

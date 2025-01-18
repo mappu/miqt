@@ -102,7 +102,7 @@ func (this *QModelRoleData) OperatorAssign(param1 *QModelRoleData) {
 
 // Delete this object from C++ memory.
 func (this *QModelRoleData) Delete() {
-	C.QModelRoleData_Delete(this.h, C.bool(this.isSubclass))
+	C.QModelRoleData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -209,7 +209,7 @@ func (this *QModelRoleDataSpan) DataForRole(role int) *QVariant {
 
 // Delete this object from C++ memory.
 func (this *QModelRoleDataSpan) Delete() {
-	C.QModelRoleDataSpan_Delete(this.h, C.bool(this.isSubclass))
+	C.QModelRoleDataSpan_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -356,7 +356,7 @@ func (this *QModelIndex) Data1(role int) *QVariant {
 
 // Delete this object from C++ memory.
 func (this *QModelIndex) Delete() {
-	C.QModelIndex_Delete(this.h, C.bool(this.isSubclass))
+	C.QModelIndex_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -525,7 +525,7 @@ func (this *QPersistentModelIndex) Data1(role int) *QVariant {
 
 // Delete this object from C++ memory.
 func (this *QPersistentModelIndex) Delete() {
-	C.QPersistentModelIndex_Delete(this.h, C.bool(this.isSubclass))
+	C.QPersistentModelIndex_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2561,7 +2561,7 @@ func miqt_exec_callback_QAbstractItemModel_DisconnectNotify(self *C.QAbstractIte
 
 // Delete this object from C++ memory.
 func (this *QAbstractItemModel) Delete() {
-	C.QAbstractItemModel_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractItemModel_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3852,7 +3852,7 @@ func miqt_exec_callback_QAbstractTableModel_ResetInternalData(self *C.QAbstractT
 
 // Delete this object from C++ memory.
 func (this *QAbstractTableModel) Delete() {
-	C.QAbstractTableModel_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractTableModel_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5121,7 +5121,7 @@ func miqt_exec_callback_QAbstractListModel_ResetInternalData(self *C.QAbstractLi
 
 // Delete this object from C++ memory.
 func (this *QAbstractListModel) Delete() {
-	C.QAbstractListModel_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractListModel_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

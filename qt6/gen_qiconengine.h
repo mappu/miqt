@@ -79,11 +79,11 @@ void QIconEngine_override_virtual_ScaledPixmap(void* self, intptr_t slot);
 QPixmap* QIconEngine_virtualbase_ScaledPixmap(void* self, QSize* size, int mode, int state, double scale);
 void QIconEngine_override_virtual_VirtualHook(void* self, intptr_t slot);
 void QIconEngine_virtualbase_VirtualHook(void* self, int id, void* data);
-void QIconEngine_Delete(QIconEngine* self, bool isSubclass);
+void QIconEngine_Delete(QIconEngine* self);
 
 QIconEngine__ScaledPixmapArgument* QIconEngine__ScaledPixmapArgument_new(QIconEngine__ScaledPixmapArgument* param1);
 void QIconEngine__ScaledPixmapArgument_OperatorAssign(QIconEngine__ScaledPixmapArgument* self, QIconEngine__ScaledPixmapArgument* param1);
-void QIconEngine__ScaledPixmapArgument_Delete(QIconEngine__ScaledPixmapArgument* self, bool isSubclass);
+void QIconEngine__ScaledPixmapArgument_Delete(QIconEngine__ScaledPixmapArgument* self);
 
 #ifdef __cplusplus
 } /* extern C */

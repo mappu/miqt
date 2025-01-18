@@ -1127,7 +1127,7 @@ func miqt_exec_callback_QsciLexerDiff_WriteProperties(self *C.QsciLexerDiff, cb 
 
 // Delete this object from C++ memory.
 func (this *QsciLexerDiff) Delete() {
-	C.QsciLexerDiff_Delete(this.h, C.bool(this.isSubclass))
+	C.QsciLexerDiff_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

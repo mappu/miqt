@@ -149,7 +149,7 @@ void QIODevice_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QIODevice_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QIODevice_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QIODevice_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QIODevice_Delete(QIODevice* self, bool isSubclass);
+void QIODevice_Delete(QIODevice* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -69,7 +69,7 @@ struct miqt_string QVideoWindowControl_Tr2(const char* s, const char* c);
 struct miqt_string QVideoWindowControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QVideoWindowControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QVideoWindowControl_TrUtf83(const char* s, const char* c, int n);
-void QVideoWindowControl_Delete(QVideoWindowControl* self, bool isSubclass);
+void QVideoWindowControl_Delete(QVideoWindowControl* self);
 
 #ifdef __cplusplus
 } /* extern C */

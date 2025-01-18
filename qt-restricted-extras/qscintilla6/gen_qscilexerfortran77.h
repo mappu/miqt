@@ -124,7 +124,7 @@ void QsciLexerFortran77_override_virtual_ReadProperties(void* self, intptr_t slo
 bool QsciLexerFortran77_virtualbase_ReadProperties(void* self, QSettings* qs, struct miqt_string prefix);
 void QsciLexerFortran77_override_virtual_WriteProperties(void* self, intptr_t slot);
 bool QsciLexerFortran77_virtualbase_WriteProperties(const void* self, QSettings* qs, struct miqt_string prefix);
-void QsciLexerFortran77_Delete(QsciLexerFortran77* self, bool isSubclass);
+void QsciLexerFortran77_Delete(QsciLexerFortran77* self);
 
 #ifdef __cplusplus
 } /* extern C */

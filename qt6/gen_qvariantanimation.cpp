@@ -29,13 +29,13 @@ void miqt_exec_callback_QVariantAnimation_UpdateDirection(void*, intptr_t, int);
 } /* extern C */
 #endif
 
-class MiqtVirtualQVariantAnimation : public virtual QVariantAnimation {
+class MiqtVirtualQVariantAnimation final : public QVariantAnimation {
 public:
 
 	MiqtVirtualQVariantAnimation(): QVariantAnimation() {};
 	MiqtVirtualQVariantAnimation(QObject* parent): QVariantAnimation(parent) {};
 
-	virtual ~MiqtVirtualQVariantAnimation() = default;
+	virtual ~MiqtVirtualQVariantAnimation() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Duration = 0;
@@ -420,11 +420,7 @@ void QVariantAnimation_virtualbase_UpdateDirection(void* self, int direction) {
 	( (MiqtVirtualQVariantAnimation*)(self) )->virtualbase_UpdateDirection(direction);
 }
 
-void QVariantAnimation_Delete(QVariantAnimation* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQVariantAnimation*>( self );
-	} else {
-		delete self;
-	}
+void QVariantAnimation_Delete(QVariantAnimation* self) {
+	delete self;
 }
 

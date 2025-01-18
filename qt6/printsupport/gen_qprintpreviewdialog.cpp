@@ -41,7 +41,7 @@ bool miqt_exec_callback_QPrintPreviewDialog_EventFilter(void*, intptr_t, QObject
 } /* extern C */
 #endif
 
-class MiqtVirtualQPrintPreviewDialog : public virtual QPrintPreviewDialog {
+class MiqtVirtualQPrintPreviewDialog final : public QPrintPreviewDialog {
 public:
 
 	MiqtVirtualQPrintPreviewDialog(QWidget* parent): QPrintPreviewDialog(parent) {};
@@ -51,7 +51,7 @@ public:
 	MiqtVirtualQPrintPreviewDialog(QPrinter* printer, QWidget* parent): QPrintPreviewDialog(printer, parent) {};
 	MiqtVirtualQPrintPreviewDialog(QPrinter* printer, QWidget* parent, Qt::WindowFlags flags): QPrintPreviewDialog(printer, parent, flags) {};
 
-	virtual ~MiqtVirtualQPrintPreviewDialog() = default;
+	virtual ~MiqtVirtualQPrintPreviewDialog() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetVisible = 0;
@@ -586,11 +586,7 @@ bool QPrintPreviewDialog_virtualbase_EventFilter(void* self, QObject* param1, QE
 	return ( (MiqtVirtualQPrintPreviewDialog*)(self) )->virtualbase_EventFilter(param1, param2);
 }
 
-void QPrintPreviewDialog_Delete(QPrintPreviewDialog* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQPrintPreviewDialog*>( self );
-	} else {
-		delete self;
-	}
+void QPrintPreviewDialog_Delete(QPrintPreviewDialog* self) {
+	delete self;
 }
 

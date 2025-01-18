@@ -53,13 +53,13 @@ void miqt_exec_callback_QScrollArea_KeyPressEvent(void*, intptr_t, QKeyEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQScrollArea : public virtual QScrollArea {
+class MiqtVirtualQScrollArea final : public QScrollArea {
 public:
 
 	MiqtVirtualQScrollArea(QWidget* parent): QScrollArea(parent) {};
 	MiqtVirtualQScrollArea(): QScrollArea() {};
 
-	virtual ~MiqtVirtualQScrollArea() = default;
+	virtual ~MiqtVirtualQScrollArea() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -873,11 +873,7 @@ void QScrollArea_virtualbase_KeyPressEvent(void* self, QKeyEvent* param1) {
 	( (MiqtVirtualQScrollArea*)(self) )->virtualbase_KeyPressEvent(param1);
 }
 
-void QScrollArea_Delete(QScrollArea* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQScrollArea*>( self );
-	} else {
-		delete self;
-	}
+void QScrollArea_Delete(QScrollArea* self) {
+	delete self;
 }
 

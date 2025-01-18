@@ -102,7 +102,7 @@ void miqt_exec_callback_QDateEdit_PaintEvent(void*, intptr_t, QPaintEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQDateTimeEdit : public virtual QDateTimeEdit {
+class MiqtVirtualQDateTimeEdit final : public QDateTimeEdit {
 public:
 
 	MiqtVirtualQDateTimeEdit(QWidget* parent): QDateTimeEdit(parent) {};
@@ -114,7 +114,7 @@ public:
 	MiqtVirtualQDateTimeEdit(const QDate& d, QWidget* parent): QDateTimeEdit(d, parent) {};
 	MiqtVirtualQDateTimeEdit(const QTime& t, QWidget* parent): QDateTimeEdit(t, parent) {};
 
-	virtual ~MiqtVirtualQDateTimeEdit() = default;
+	virtual ~MiqtVirtualQDateTimeEdit() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -1407,15 +1407,11 @@ void QDateTimeEdit_virtualbase_ShowEvent(void* self, QShowEvent* event) {
 	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_ShowEvent(event);
 }
 
-void QDateTimeEdit_Delete(QDateTimeEdit* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQDateTimeEdit*>( self );
-	} else {
-		delete self;
-	}
+void QDateTimeEdit_Delete(QDateTimeEdit* self) {
+	delete self;
 }
 
-class MiqtVirtualQTimeEdit : public virtual QTimeEdit {
+class MiqtVirtualQTimeEdit final : public QTimeEdit {
 public:
 
 	MiqtVirtualQTimeEdit(QWidget* parent): QTimeEdit(parent) {};
@@ -1423,7 +1419,7 @@ public:
 	MiqtVirtualQTimeEdit(const QTime& time): QTimeEdit(time) {};
 	MiqtVirtualQTimeEdit(const QTime& time, QWidget* parent): QTimeEdit(time, parent) {};
 
-	virtual ~MiqtVirtualQTimeEdit() = default;
+	virtual ~MiqtVirtualQTimeEdit() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -2041,15 +2037,11 @@ void QTimeEdit_virtualbase_PaintEvent(void* self, QPaintEvent* event) {
 	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_PaintEvent(event);
 }
 
-void QTimeEdit_Delete(QTimeEdit* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQTimeEdit*>( self );
-	} else {
-		delete self;
-	}
+void QTimeEdit_Delete(QTimeEdit* self) {
+	delete self;
 }
 
-class MiqtVirtualQDateEdit : public virtual QDateEdit {
+class MiqtVirtualQDateEdit final : public QDateEdit {
 public:
 
 	MiqtVirtualQDateEdit(QWidget* parent): QDateEdit(parent) {};
@@ -2057,7 +2049,7 @@ public:
 	MiqtVirtualQDateEdit(const QDate& date): QDateEdit(date) {};
 	MiqtVirtualQDateEdit(const QDate& date, QWidget* parent): QDateEdit(date, parent) {};
 
-	virtual ~MiqtVirtualQDateEdit() = default;
+	virtual ~MiqtVirtualQDateEdit() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -2675,11 +2667,7 @@ void QDateEdit_virtualbase_PaintEvent(void* self, QPaintEvent* event) {
 	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_PaintEvent(event);
 }
 
-void QDateEdit_Delete(QDateEdit* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQDateEdit*>( self );
-	} else {
-		delete self;
-	}
+void QDateEdit_Delete(QDateEdit* self) {
+	delete self;
 }
 

@@ -26,12 +26,12 @@ void miqt_exec_callback_QObjectCleanupHandler_DisconnectNotify(void*, intptr_t, 
 } /* extern C */
 #endif
 
-class MiqtVirtualQObjectCleanupHandler : public virtual QObjectCleanupHandler {
+class MiqtVirtualQObjectCleanupHandler final : public QObjectCleanupHandler {
 public:
 
 	MiqtVirtualQObjectCleanupHandler(): QObjectCleanupHandler() {};
 
-	virtual ~MiqtVirtualQObjectCleanupHandler() = default;
+	virtual ~MiqtVirtualQObjectCleanupHandler() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -360,11 +360,7 @@ void QObjectCleanupHandler_virtualbase_DisconnectNotify(void* self, QMetaMethod*
 	( (MiqtVirtualQObjectCleanupHandler*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QObjectCleanupHandler_Delete(QObjectCleanupHandler* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQObjectCleanupHandler*>( self );
-	} else {
-		delete self;
-	}
+void QObjectCleanupHandler_Delete(QObjectCleanupHandler* self) {
+	delete self;
 }
 

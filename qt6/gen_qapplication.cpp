@@ -28,13 +28,13 @@ bool miqt_exec_callback_QApplication_Event(void*, intptr_t, QEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQApplication : public virtual QApplication {
+class MiqtVirtualQApplication final : public QApplication {
 public:
 
 	MiqtVirtualQApplication(int& argc, char** argv): QApplication(argc, argv) {};
 	MiqtVirtualQApplication(int& argc, char** argv, int param3): QApplication(argc, argv, param3) {};
 
-	virtual ~MiqtVirtualQApplication() = default;
+	virtual ~MiqtVirtualQApplication() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Notify = 0;
@@ -393,11 +393,7 @@ bool QApplication_virtualbase_Event(void* self, QEvent* param1) {
 	return ( (MiqtVirtualQApplication*)(self) )->virtualbase_Event(param1);
 }
 
-void QApplication_Delete(QApplication* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQApplication*>( self );
-	} else {
-		delete self;
-	}
+void QApplication_Delete(QApplication* self) {
+	delete self;
 }
 

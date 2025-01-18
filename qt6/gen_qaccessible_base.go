@@ -314,7 +314,7 @@ func QAccessible_QAccessibleTextBoundaryHelper(cursor *QTextCursor, boundaryType
 
 // Delete this object from C++ memory.
 func (this *QAccessible) Delete() {
-	C.QAccessible_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessible_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -369,7 +369,7 @@ func NewQAccessible__State() *QAccessible__State {
 
 // Delete this object from C++ memory.
 func (this *QAccessible__State) Delete() {
-	C.QAccessible__State_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessible__State_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -424,7 +424,7 @@ func (this *QAccessible__ActivationObserver) OperatorAssign(param1 *QAccessible_
 
 // Delete this object from C++ memory.
 func (this *QAccessible__ActivationObserver) Delete() {
-	C.QAccessible__ActivationObserver_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessible__ActivationObserver_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

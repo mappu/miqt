@@ -145,7 +145,7 @@ func QGraphicsAnchor_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QGraphicsAnchor) Delete() {
-	C.QGraphicsAnchor_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsAnchor_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -513,7 +513,7 @@ func miqt_exec_callback_QGraphicsAnchorLayout_WidgetEvent(self *C.QGraphicsAncho
 
 // Delete this object from C++ memory.
 func (this *QGraphicsAnchorLayout) Delete() {
-	C.QGraphicsAnchorLayout_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsAnchorLayout_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

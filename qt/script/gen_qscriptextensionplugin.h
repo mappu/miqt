@@ -72,7 +72,7 @@ void QScriptExtensionPlugin_override_virtual_ConnectNotify(void* self, intptr_t 
 void QScriptExtensionPlugin_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QScriptExtensionPlugin_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QScriptExtensionPlugin_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QScriptExtensionPlugin_Delete(QScriptExtensionPlugin* self, bool isSubclass);
+void QScriptExtensionPlugin_Delete(QScriptExtensionPlugin* self);
 
 #ifdef __cplusplus
 } /* extern C */

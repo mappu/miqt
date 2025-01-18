@@ -22,7 +22,7 @@ bool miqt_exec_callback_QKeyEventTransition_Event(void*, intptr_t, QEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQKeyEventTransition : public virtual QKeyEventTransition {
+class MiqtVirtualQKeyEventTransition final : public QKeyEventTransition {
 public:
 
 	MiqtVirtualQKeyEventTransition(): QKeyEventTransition() {};
@@ -30,7 +30,7 @@ public:
 	MiqtVirtualQKeyEventTransition(QState* sourceState): QKeyEventTransition(sourceState) {};
 	MiqtVirtualQKeyEventTransition(QObject* object, QEvent::Type typeVal, int key, QState* sourceState): QKeyEventTransition(object, typeVal, key, sourceState) {};
 
-	virtual ~MiqtVirtualQKeyEventTransition() = default;
+	virtual ~MiqtVirtualQKeyEventTransition() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__OnTransition = 0;
@@ -239,11 +239,7 @@ bool QKeyEventTransition_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQKeyEventTransition*)(self) )->virtualbase_Event(e);
 }
 
-void QKeyEventTransition_Delete(QKeyEventTransition* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQKeyEventTransition*>( self );
-	} else {
-		delete self;
-	}
+void QKeyEventTransition_Delete(QKeyEventTransition* self) {
+	delete self;
 }
 

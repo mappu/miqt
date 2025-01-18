@@ -255,7 +255,7 @@ func miqt_exec_callback_QKeyEventTransition_Event(self *C.QKeyEventTransition, c
 
 // Delete this object from C++ memory.
 func (this *QKeyEventTransition) Delete() {
-	C.QKeyEventTransition_Delete(this.h, C.bool(this.isSubclass))
+	C.QKeyEventTransition_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

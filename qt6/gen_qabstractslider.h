@@ -216,7 +216,7 @@ void QAbstractSlider_override_virtual_InputMethodQuery(void* self, intptr_t slot
 QVariant* QAbstractSlider_virtualbase_InputMethodQuery(const void* self, int param1);
 void QAbstractSlider_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QAbstractSlider_virtualbase_FocusNextPrevChild(void* self, bool next);
-void QAbstractSlider_Delete(QAbstractSlider* self, bool isSubclass);
+void QAbstractSlider_Delete(QAbstractSlider* self);
 
 #ifdef __cplusplus
 } /* extern C */

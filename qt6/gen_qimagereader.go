@@ -441,7 +441,7 @@ func QImageReader_Tr3(sourceText string, disambiguation string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QImageReader) Delete() {
-	C.QImageReader_Delete(this.h, C.bool(this.isSubclass))
+	C.QImageReader_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

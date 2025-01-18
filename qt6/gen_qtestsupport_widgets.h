@@ -48,7 +48,7 @@ void QTest__QTouchEventWidgetSequence_override_virtual_Stationary(void* self, in
 QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_virtualbase_Stationary(void* self, int touchId);
 void QTest__QTouchEventWidgetSequence_override_virtual_Commit(void* self, intptr_t slot);
 bool QTest__QTouchEventWidgetSequence_virtualbase_Commit(void* self, bool processEvents);
-void QTest__QTouchEventWidgetSequence_Delete(QTest__QTouchEventWidgetSequence* self, bool isSubclass);
+void QTest__QTouchEventWidgetSequence_Delete(QTest__QTouchEventWidgetSequence* self);
 
 #ifdef __cplusplus
 } /* extern C */

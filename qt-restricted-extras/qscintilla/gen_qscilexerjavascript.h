@@ -60,7 +60,7 @@ void QsciLexerJavaScript_override_virtual_SetFoldPreprocessor(void* self, intptr
 void QsciLexerJavaScript_virtualbase_SetFoldPreprocessor(void* self, bool fold);
 void QsciLexerJavaScript_override_virtual_SetStylePreprocessor(void* self, intptr_t slot);
 void QsciLexerJavaScript_virtualbase_SetStylePreprocessor(void* self, bool style);
-void QsciLexerJavaScript_Delete(QsciLexerJavaScript* self, bool isSubclass);
+void QsciLexerJavaScript_Delete(QsciLexerJavaScript* self);
 
 #ifdef __cplusplus
 } /* extern C */

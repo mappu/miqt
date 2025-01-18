@@ -59,7 +59,7 @@ void QSctpSocket_override_virtual_ReadData(void* self, intptr_t slot);
 long long QSctpSocket_virtualbase_ReadData(void* self, char* data, long long maxlen);
 void QSctpSocket_override_virtual_ReadLineData(void* self, intptr_t slot);
 long long QSctpSocket_virtualbase_ReadLineData(void* self, char* data, long long maxlen);
-void QSctpSocket_Delete(QSctpSocket* self, bool isSubclass);
+void QSctpSocket_Delete(QSctpSocket* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -48,7 +48,7 @@ bool QSslKey_OperatorEqual(const QSslKey* self, QSslKey* key);
 bool QSslKey_OperatorNotEqual(const QSslKey* self, QSslKey* key);
 struct miqt_string QSslKey_ToPem1(const QSslKey* self, struct miqt_string passPhrase);
 struct miqt_string QSslKey_ToDer1(const QSslKey* self, struct miqt_string passPhrase);
-void QSslKey_Delete(QSslKey* self, bool isSubclass);
+void QSslKey_Delete(QSslKey* self);
 
 #ifdef __cplusplus
 } /* extern C */

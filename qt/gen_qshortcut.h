@@ -81,7 +81,7 @@ void QShortcut_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QShortcut_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QShortcut_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QShortcut_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QShortcut_Delete(QShortcut* self, bool isSubclass);
+void QShortcut_Delete(QShortcut* self);
 
 #ifdef __cplusplus
 } /* extern C */

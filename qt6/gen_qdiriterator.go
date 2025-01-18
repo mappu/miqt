@@ -230,7 +230,7 @@ func (this *QDirIterator) Path() string {
 
 // Delete this object from C++ memory.
 func (this *QDirIterator) Delete() {
-	C.QDirIterator_Delete(this.h, C.bool(this.isSubclass))
+	C.QDirIterator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

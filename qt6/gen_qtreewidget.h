@@ -171,7 +171,7 @@ void QTreeWidgetItem_override_virtual_Read(void* self, intptr_t slot);
 void QTreeWidgetItem_virtualbase_Read(void* self, QDataStream* in);
 void QTreeWidgetItem_override_virtual_Write(void* self, intptr_t slot);
 void QTreeWidgetItem_virtualbase_Write(const void* self, QDataStream* out);
-void QTreeWidgetItem_Delete(QTreeWidgetItem* self, bool isSubclass);
+void QTreeWidgetItem_Delete(QTreeWidgetItem* self);
 
 QTreeWidget* QTreeWidget_new(QWidget* parent);
 QTreeWidget* QTreeWidget_new2();
@@ -347,7 +347,7 @@ void QTreeWidget_override_virtual_SelectionChanged(void* self, intptr_t slot);
 void QTreeWidget_virtualbase_SelectionChanged(void* self, QItemSelection* selected, QItemSelection* deselected);
 void QTreeWidget_override_virtual_CurrentChanged(void* self, intptr_t slot);
 void QTreeWidget_virtualbase_CurrentChanged(void* self, QModelIndex* current, QModelIndex* previous);
-void QTreeWidget_Delete(QTreeWidget* self, bool isSubclass);
+void QTreeWidget_Delete(QTreeWidget* self);
 
 #ifdef __cplusplus
 } /* extern C */

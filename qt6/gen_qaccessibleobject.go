@@ -164,7 +164,7 @@ func (this *QAccessibleApplication) State() *QAccessible__State {
 
 // Delete this object from C++ memory.
 func (this *QAccessibleApplication) Delete() {
-	C.QAccessibleApplication_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessibleApplication_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

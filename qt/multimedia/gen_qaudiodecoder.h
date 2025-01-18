@@ -92,7 +92,7 @@ void QAudioDecoder_override_virtual_Availability(void* self, intptr_t slot);
 int QAudioDecoder_virtualbase_Availability(const void* self);
 void QAudioDecoder_override_virtual_Service(void* self, intptr_t slot);
 QMediaService* QAudioDecoder_virtualbase_Service(const void* self);
-void QAudioDecoder_Delete(QAudioDecoder* self, bool isSubclass);
+void QAudioDecoder_Delete(QAudioDecoder* self);
 
 #ifdef __cplusplus
 } /* extern C */

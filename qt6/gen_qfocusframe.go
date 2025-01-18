@@ -1263,7 +1263,7 @@ func miqt_exec_callback_QFocusFrame_FocusNextPrevChild(self *C.QFocusFrame, cb C
 
 // Delete this object from C++ memory.
 func (this *QFocusFrame) Delete() {
-	C.QFocusFrame_Delete(this.h, C.bool(this.isSubclass))
+	C.QFocusFrame_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

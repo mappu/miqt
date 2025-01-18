@@ -58,11 +58,7 @@ QTest__QTouchEventSequence* QTest__QTouchEventSequence_Release3(QTest__QTouchEve
 	return &_ret;
 }
 
-void QTest__QTouchEventSequence_Delete(QTest__QTouchEventSequence* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTest::QTouchEventSequence*>( self );
-	} else {
-		delete self;
-	}
+void QTest__QTouchEventSequence_Delete(QTest__QTouchEventSequence* self) {
+	delete self;
 }
 

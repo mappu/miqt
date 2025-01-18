@@ -73,11 +73,7 @@ struct miqt_array /* of QSslCertificate* */  QWebEngineCertificateError_Certific
 	return _out;
 }
 
-void QWebEngineCertificateError_Delete(QWebEngineCertificateError* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebEngineCertificateError*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineCertificateError_Delete(QWebEngineCertificateError* self) {
+	delete self;
 }
 

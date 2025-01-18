@@ -72,12 +72,12 @@ void QEventLoop_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QEventLoop_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QEventLoop_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QEventLoop_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QEventLoop_Delete(QEventLoop* self, bool isSubclass);
+void QEventLoop_Delete(QEventLoop* self);
 
 QEventLoopLocker* QEventLoopLocker_new();
 QEventLoopLocker* QEventLoopLocker_new2(QEventLoop* loop);
 QEventLoopLocker* QEventLoopLocker_new3(QThread* thread);
-void QEventLoopLocker_Delete(QEventLoopLocker* self, bool isSubclass);
+void QEventLoopLocker_Delete(QEventLoopLocker* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -38,13 +38,13 @@ void miqt_exec_callback_QMediaCaptureSession_DisconnectNotify(void*, intptr_t, Q
 } /* extern C */
 #endif
 
-class MiqtVirtualQMediaCaptureSession : public virtual QMediaCaptureSession {
+class MiqtVirtualQMediaCaptureSession final : public QMediaCaptureSession {
 public:
 
 	MiqtVirtualQMediaCaptureSession(): QMediaCaptureSession() {};
 	MiqtVirtualQMediaCaptureSession(QObject* parent): QMediaCaptureSession(parent) {};
 
-	virtual ~MiqtVirtualQMediaCaptureSession() = default;
+	virtual ~MiqtVirtualQMediaCaptureSession() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -444,11 +444,7 @@ void QMediaCaptureSession_virtualbase_DisconnectNotify(void* self, QMetaMethod* 
 	( (MiqtVirtualQMediaCaptureSession*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QMediaCaptureSession_Delete(QMediaCaptureSession* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQMediaCaptureSession*>( self );
-	} else {
-		delete self;
-	}
+void QMediaCaptureSession_Delete(QMediaCaptureSession* self) {
+	delete self;
 }
 

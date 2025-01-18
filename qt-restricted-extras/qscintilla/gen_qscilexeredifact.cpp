@@ -52,13 +52,13 @@ bool miqt_exec_callback_QsciLexerEDIFACT_WriteProperties(void*, intptr_t, QSetti
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerEDIFACT : public virtual QsciLexerEDIFACT {
+class MiqtVirtualQsciLexerEDIFACT final : public QsciLexerEDIFACT {
 public:
 
 	MiqtVirtualQsciLexerEDIFACT(): QsciLexerEDIFACT() {};
 	MiqtVirtualQsciLexerEDIFACT(QObject* parent): QsciLexerEDIFACT(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerEDIFACT() = default;
+	virtual ~MiqtVirtualQsciLexerEDIFACT() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Language = 0;
@@ -1253,11 +1253,7 @@ bool QsciLexerEDIFACT_virtualbase_WriteProperties(const void* self, QSettings* q
 	return ( (const MiqtVirtualQsciLexerEDIFACT*)(self) )->virtualbase_WriteProperties(qs, prefix);
 }
 
-void QsciLexerEDIFACT_Delete(QsciLexerEDIFACT* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerEDIFACT*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerEDIFACT_Delete(QsciLexerEDIFACT* self) {
+	delete self;
 }
 

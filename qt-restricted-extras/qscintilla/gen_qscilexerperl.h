@@ -143,7 +143,7 @@ void QsciLexerPerl_override_virtual_ReadProperties(void* self, intptr_t slot);
 bool QsciLexerPerl_virtualbase_ReadProperties(void* self, QSettings* qs, struct miqt_string prefix);
 void QsciLexerPerl_override_virtual_WriteProperties(void* self, intptr_t slot);
 bool QsciLexerPerl_virtualbase_WriteProperties(const void* self, QSettings* qs, struct miqt_string prefix);
-void QsciLexerPerl_Delete(QsciLexerPerl* self, bool isSubclass);
+void QsciLexerPerl_Delete(QsciLexerPerl* self);
 
 #ifdef __cplusplus
 } /* extern C */

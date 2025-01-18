@@ -767,7 +767,7 @@ func miqt_exec_callback_QCameraImageCapture_DisconnectNotify(self *C.QCameraImag
 
 // Delete this object from C++ memory.
 func (this *QCameraImageCapture) Delete() {
-	C.QCameraImageCapture_Delete(this.h, C.bool(this.isSubclass))
+	C.QCameraImageCapture_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

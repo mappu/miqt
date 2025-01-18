@@ -130,7 +130,7 @@ void QMediaRecorder_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QMediaRecorder_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QMediaRecorder_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QMediaRecorder_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QMediaRecorder_Delete(QMediaRecorder* self, bool isSubclass);
+void QMediaRecorder_Delete(QMediaRecorder* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -129,7 +129,7 @@ func (this *QByteArrayMatcher) IndexIn3(str string, lenVal int, from int) int {
 
 // Delete this object from C++ memory.
 func (this *QByteArrayMatcher) Delete() {
-	C.QByteArrayMatcher_Delete(this.h, C.bool(this.isSubclass))
+	C.QByteArrayMatcher_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -176,7 +176,7 @@ func UnsafeNewQStaticByteArrayMatcherBase(h unsafe.Pointer) *QStaticByteArrayMat
 
 // Delete this object from C++ memory.
 func (this *QStaticByteArrayMatcherBase) Delete() {
-	C.QStaticByteArrayMatcherBase_Delete(this.h, C.bool(this.isSubclass))
+	C.QStaticByteArrayMatcherBase_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

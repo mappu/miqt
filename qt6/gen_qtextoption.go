@@ -195,7 +195,7 @@ func (this *QTextOption) UseDesignMetrics() bool {
 
 // Delete this object from C++ memory.
 func (this *QTextOption) Delete() {
-	C.QTextOption_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextOption_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -274,7 +274,7 @@ func (this *QTextOption__Tab) OperatorNotEqual(other *QTextOption__Tab) bool {
 
 // Delete this object from C++ memory.
 func (this *QTextOption__Tab) Delete() {
-	C.QTextOption__Tab_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextOption__Tab_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

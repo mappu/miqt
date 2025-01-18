@@ -389,11 +389,7 @@ void QFileInfo_Stat(QFileInfo* self) {
 	self->stat();
 }
 
-void QFileInfo_Delete(QFileInfo* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QFileInfo*>( self );
-	} else {
-		delete self;
-	}
+void QFileInfo_Delete(QFileInfo* self) {
+	delete self;
 }
 

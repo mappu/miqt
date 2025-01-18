@@ -503,7 +503,7 @@ func (this *QIcon) AvailableSizes2(mode QIcon__Mode, state QIcon__State) []QSize
 
 // Delete this object from C++ memory.
 func (this *QIcon) Delete() {
-	C.QIcon_Delete(this.h, C.bool(this.isSubclass))
+	C.QIcon_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

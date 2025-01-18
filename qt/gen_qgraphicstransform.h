@@ -68,7 +68,7 @@ void QGraphicsTransform_override_virtual_ConnectNotify(void* self, intptr_t slot
 void QGraphicsTransform_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QGraphicsTransform_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QGraphicsTransform_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QGraphicsTransform_Delete(QGraphicsTransform* self, bool isSubclass);
+void QGraphicsTransform_Delete(QGraphicsTransform* self);
 
 QGraphicsScale* QGraphicsScale_new();
 QGraphicsScale* QGraphicsScale_new2(QObject* parent);
@@ -102,7 +102,7 @@ struct miqt_string QGraphicsScale_TrUtf82(const char* s, const char* c);
 struct miqt_string QGraphicsScale_TrUtf83(const char* s, const char* c, int n);
 void QGraphicsScale_override_virtual_ApplyTo(void* self, intptr_t slot);
 void QGraphicsScale_virtualbase_ApplyTo(const void* self, QMatrix4x4* matrix);
-void QGraphicsScale_Delete(QGraphicsScale* self, bool isSubclass);
+void QGraphicsScale_Delete(QGraphicsScale* self);
 
 QGraphicsRotation* QGraphicsRotation_new();
 QGraphicsRotation* QGraphicsRotation_new2(QObject* parent);
@@ -131,7 +131,7 @@ struct miqt_string QGraphicsRotation_TrUtf82(const char* s, const char* c);
 struct miqt_string QGraphicsRotation_TrUtf83(const char* s, const char* c, int n);
 void QGraphicsRotation_override_virtual_ApplyTo(void* self, intptr_t slot);
 void QGraphicsRotation_virtualbase_ApplyTo(const void* self, QMatrix4x4* matrix);
-void QGraphicsRotation_Delete(QGraphicsRotation* self, bool isSubclass);
+void QGraphicsRotation_Delete(QGraphicsRotation* self);
 
 #ifdef __cplusplus
 } /* extern C */

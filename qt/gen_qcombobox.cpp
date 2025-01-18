@@ -104,13 +104,13 @@ bool miqt_exec_callback_QComboBox_FocusNextPrevChild(void*, intptr_t, bool);
 } /* extern C */
 #endif
 
-class MiqtVirtualQComboBox : public virtual QComboBox {
+class MiqtVirtualQComboBox final : public QComboBox {
 public:
 
 	MiqtVirtualQComboBox(QWidget* parent): QComboBox(parent) {};
 	MiqtVirtualQComboBox(): QComboBox() {};
 
-	virtual ~MiqtVirtualQComboBox() = default;
+	virtual ~MiqtVirtualQComboBox() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -2111,11 +2111,7 @@ bool QComboBox_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQComboBox*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QComboBox_Delete(QComboBox* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQComboBox*>( self );
-	} else {
-		delete self;
-	}
+void QComboBox_Delete(QComboBox* self) {
+	delete self;
 }
 

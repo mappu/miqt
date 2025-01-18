@@ -49,13 +49,13 @@ void miqt_exec_callback_QIODevice_DisconnectNotify(void*, intptr_t, QMetaMethod*
 } /* extern C */
 #endif
 
-class MiqtVirtualQIODevice : public virtual QIODevice {
+class MiqtVirtualQIODevice final : public QIODevice {
 public:
 
 	MiqtVirtualQIODevice(): QIODevice() {};
 	MiqtVirtualQIODevice(QObject* parent): QIODevice(parent) {};
 
-	virtual ~MiqtVirtualQIODevice() = default;
+	virtual ~MiqtVirtualQIODevice() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__IsSequential = 0;
@@ -1142,11 +1142,7 @@ void QIODevice_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQIODevice*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QIODevice_Delete(QIODevice* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQIODevice*>( self );
-	} else {
-		delete self;
-	}
+void QIODevice_Delete(QIODevice* self) {
+	delete self;
 }
 

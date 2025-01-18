@@ -1846,7 +1846,7 @@ func miqt_exec_callback_QSortFilterProxyModel_SupportedDragActions(self *C.QSort
 
 // Delete this object from C++ memory.
 func (this *QSortFilterProxyModel) Delete() {
-	C.QSortFilterProxyModel_Delete(this.h, C.bool(this.isSubclass))
+	C.QSortFilterProxyModel_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

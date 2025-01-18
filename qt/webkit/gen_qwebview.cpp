@@ -101,13 +101,13 @@ QPainter* miqt_exec_callback_QWebView_SharedPainter(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQWebView : public virtual QWebView {
+class MiqtVirtualQWebView final : public QWebView {
 public:
 
 	MiqtVirtualQWebView(QWidget* parent): QWebView(parent) {};
 	MiqtVirtualQWebView(): QWebView() {};
 
-	virtual ~MiqtVirtualQWebView() = default;
+	virtual ~MiqtVirtualQWebView() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__InputMethodQuery = 0;
@@ -1850,11 +1850,7 @@ QPainter* QWebView_virtualbase_SharedPainter(const void* self) {
 	return ( (const MiqtVirtualQWebView*)(self) )->virtualbase_SharedPainter();
 }
 
-void QWebView_Delete(QWebView* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQWebView*>( self );
-	} else {
-		delete self;
-	}
+void QWebView_Delete(QWebView* self) {
+	delete self;
 }
 

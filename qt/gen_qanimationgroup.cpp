@@ -22,13 +22,13 @@ void miqt_exec_callback_QAnimationGroup_UpdateDirection(void*, intptr_t, int);
 } /* extern C */
 #endif
 
-class MiqtVirtualQAnimationGroup : public virtual QAnimationGroup {
+class MiqtVirtualQAnimationGroup final : public QAnimationGroup {
 public:
 
 	MiqtVirtualQAnimationGroup(): QAnimationGroup() {};
 	MiqtVirtualQAnimationGroup(QObject* parent): QAnimationGroup(parent) {};
 
-	virtual ~MiqtVirtualQAnimationGroup() = default;
+	virtual ~MiqtVirtualQAnimationGroup() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -288,11 +288,7 @@ void QAnimationGroup_virtualbase_UpdateDirection(void* self, int direction) {
 	( (MiqtVirtualQAnimationGroup*)(self) )->virtualbase_UpdateDirection(direction);
 }
 
-void QAnimationGroup_Delete(QAnimationGroup* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAnimationGroup*>( self );
-	} else {
-		delete self;
-	}
+void QAnimationGroup_Delete(QAnimationGroup* self) {
+	delete self;
 }
 

@@ -60,7 +60,7 @@ void QHistoryState_override_virtual_OnExit(void* self, intptr_t slot);
 void QHistoryState_virtualbase_OnExit(void* self, QEvent* event);
 void QHistoryState_override_virtual_Event(void* self, intptr_t slot);
 bool QHistoryState_virtualbase_Event(void* self, QEvent* e);
-void QHistoryState_Delete(QHistoryState* self, bool isSubclass);
+void QHistoryState_Delete(QHistoryState* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -31,13 +31,13 @@ void miqt_exec_callback_QVideoProbe_DisconnectNotify(void*, intptr_t, QMetaMetho
 } /* extern C */
 #endif
 
-class MiqtVirtualQVideoProbe : public virtual QVideoProbe {
+class MiqtVirtualQVideoProbe final : public QVideoProbe {
 public:
 
 	MiqtVirtualQVideoProbe(): QVideoProbe() {};
 	MiqtVirtualQVideoProbe(QObject* parent): QVideoProbe(parent) {};
 
-	virtual ~MiqtVirtualQVideoProbe() = default;
+	virtual ~MiqtVirtualQVideoProbe() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -389,11 +389,7 @@ void QVideoProbe_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQVideoProbe*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QVideoProbe_Delete(QVideoProbe* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQVideoProbe*>( self );
-	} else {
-		delete self;
-	}
+void QVideoProbe_Delete(QVideoProbe* self) {
+	delete self;
 }
 

@@ -309,11 +309,7 @@ struct miqt_array /* of struct miqt_string */  QUrlQuery_AllQueryItemValues2(con
 	return _out;
 }
 
-void QUrlQuery_Delete(QUrlQuery* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QUrlQuery*>( self );
-	} else {
-		delete self;
-	}
+void QUrlQuery_Delete(QUrlQuery* self) {
+	delete self;
 }
 

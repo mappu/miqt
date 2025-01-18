@@ -64,7 +64,7 @@ func (this *QItemEditorCreatorBase) OperatorAssign(param1 *QItemEditorCreatorBas
 
 // Delete this object from C++ memory.
 func (this *QItemEditorCreatorBase) Delete() {
-	C.QItemEditorCreatorBase_Delete(this.h, C.bool(this.isSubclass))
+	C.QItemEditorCreatorBase_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -213,7 +213,7 @@ func miqt_exec_callback_QItemEditorFactory_ValuePropertyName(self *C.QItemEditor
 
 // Delete this object from C++ memory.
 func (this *QItemEditorFactory) Delete() {
-	C.QItemEditorFactory_Delete(this.h, C.bool(this.isSubclass))
+	C.QItemEditorFactory_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -26,7 +26,7 @@ void miqt_exec_callback_QSharedMemory_DisconnectNotify(void*, intptr_t, QMetaMet
 } /* extern C */
 #endif
 
-class MiqtVirtualQSharedMemory : public virtual QSharedMemory {
+class MiqtVirtualQSharedMemory final : public QSharedMemory {
 public:
 
 	MiqtVirtualQSharedMemory(): QSharedMemory() {};
@@ -34,7 +34,7 @@ public:
 	MiqtVirtualQSharedMemory(QObject* parent): QSharedMemory(parent) {};
 	MiqtVirtualQSharedMemory(const QString& key, QObject* parent): QSharedMemory(key, parent) {};
 
-	virtual ~MiqtVirtualQSharedMemory() = default;
+	virtual ~MiqtVirtualQSharedMemory() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -425,11 +425,7 @@ void QSharedMemory_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQSharedMemory*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QSharedMemory_Delete(QSharedMemory* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSharedMemory*>( self );
-	} else {
-		delete self;
-	}
+void QSharedMemory_Delete(QSharedMemory* self) {
+	delete self;
 }
 

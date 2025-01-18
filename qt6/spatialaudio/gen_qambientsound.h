@@ -77,7 +77,7 @@ void QAmbientSound_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QAmbientSound_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QAmbientSound_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QAmbientSound_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QAmbientSound_Delete(QAmbientSound* self, bool isSubclass);
+void QAmbientSound_Delete(QAmbientSound* self);
 
 #ifdef __cplusplus
 } /* extern C */

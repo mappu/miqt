@@ -226,7 +226,7 @@ func (this *QTextFrameLayoutData) OperatorAssign(param1 *QTextFrameLayoutData) {
 
 // Delete this object from C++ memory.
 func (this *QTextFrameLayoutData) Delete() {
-	C.QTextFrameLayoutData_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextFrameLayoutData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -390,7 +390,7 @@ func QTextFrame_Tr3(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QTextFrame) Delete() {
-	C.QTextFrame_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextFrame_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -441,7 +441,7 @@ func (this *QTextBlockUserData) OperatorAssign(param1 *QTextBlockUserData) {
 
 // Delete this object from C++ memory.
 func (this *QTextBlockUserData) Delete() {
-	C.QTextBlockUserData_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextBlockUserData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -671,7 +671,7 @@ func (this *QTextBlock) FragmentIndex() int {
 
 // Delete this object from C++ memory.
 func (this *QTextBlock) Delete() {
-	C.QTextBlock_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextBlock_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -819,7 +819,7 @@ func (this *QTextFragment) GlyphRuns2(from int, length int) []QGlyphRun {
 
 // Delete this object from C++ memory.
 func (this *QTextFragment) Delete() {
-	C.QTextFragment_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextFragment_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -928,7 +928,7 @@ func (this *QTextFrame__iterator) OperatorMinusMinusWithInt(param1 int) *QTextFr
 
 // Delete this object from C++ memory.
 func (this *QTextFrame__iterator) Delete() {
-	C.QTextFrame__iterator_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextFrame__iterator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1029,7 +1029,7 @@ func (this *QTextBlock__iterator) OperatorMinusMinusWithInt(param1 int) *QTextBl
 
 // Delete this object from C++ memory.
 func (this *QTextBlock__iterator) Delete() {
-	C.QTextBlock__iterator_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextBlock__iterator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

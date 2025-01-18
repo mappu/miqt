@@ -41,13 +41,13 @@ void miqt_exec_callback_QDial_ChangeEvent(void*, intptr_t, QEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQDial : public virtual QDial {
+class MiqtVirtualQDial final : public QDial {
 public:
 
 	MiqtVirtualQDial(QWidget* parent): QDial(parent) {};
 	MiqtVirtualQDial(): QDial() {};
 
-	virtual ~MiqtVirtualQDial() = default;
+	virtual ~MiqtVirtualQDial() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -585,11 +585,7 @@ void QDial_virtualbase_ChangeEvent(void* self, QEvent* e) {
 	( (MiqtVirtualQDial*)(self) )->virtualbase_ChangeEvent(e);
 }
 
-void QDial_Delete(QDial* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQDial*>( self );
-	} else {
-		delete self;
-	}
+void QDial_Delete(QDial* self) {
+	delete self;
 }
 

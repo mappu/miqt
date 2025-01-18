@@ -87,13 +87,13 @@ bool miqt_exec_callback_QRubberBand_FocusNextPrevChild(void*, intptr_t, bool);
 } /* extern C */
 #endif
 
-class MiqtVirtualQRubberBand : public virtual QRubberBand {
+class MiqtVirtualQRubberBand final : public QRubberBand {
 public:
 
 	MiqtVirtualQRubberBand(QRubberBand::Shape param1): QRubberBand(param1) {};
 	MiqtVirtualQRubberBand(QRubberBand::Shape param1, QWidget* param2): QRubberBand(param1, param2) {};
 
-	virtual ~MiqtVirtualQRubberBand() = default;
+	virtual ~MiqtVirtualQRubberBand() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -1515,11 +1515,7 @@ bool QRubberBand_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQRubberBand*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QRubberBand_Delete(QRubberBand* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQRubberBand*>( self );
-	} else {
-		delete self;
-	}
+void QRubberBand_Delete(QRubberBand* self) {
+	delete self;
 }
 

@@ -45,7 +45,7 @@ typedef struct QVariant QVariant;
 #endif
 
 struct miqt_string QCborParserError_ErrorString(const QCborParserError* self);
-void QCborParserError_Delete(QCborParserError* self, bool isSubclass);
+void QCborParserError_Delete(QCborParserError* self);
 
 QCborValue* QCborValue_new();
 QCborValue* QCborValue_new2(int t_);
@@ -145,7 +145,7 @@ QCborValue* QCborValue_FromCbor33(const unsigned char* data, ptrdiff_t lenVal, Q
 struct miqt_string QCborValue_ToCbor1(QCborValue* self, int opt);
 void QCborValue_ToCbor2(QCborValue* self, QCborStreamWriter* writer, int opt);
 struct miqt_string QCborValue_ToDiagnosticNotation1(const QCborValue* self, int opts);
-void QCborValue_Delete(QCborValue* self, bool isSubclass);
+void QCborValue_Delete(QCborValue* self);
 
 QCborValueRef* QCborValueRef_new(QCborValueRef* param1);
 QCborValue* QCborValueRef_ToQCborValue(const QCborValueRef* self);
@@ -214,7 +214,7 @@ QUuid* QCborValueRef_ToUuid1(const QCborValueRef* self, QUuid* defaultValue);
 struct miqt_string QCborValueRef_ToCbor1(QCborValueRef* self, int opt);
 void QCborValueRef_ToCbor2(QCborValueRef* self, QCborStreamWriter* writer, int opt);
 struct miqt_string QCborValueRef_ToDiagnosticNotation1(QCborValueRef* self, int opt);
-void QCborValueRef_Delete(QCborValueRef* self, bool isSubclass);
+void QCborValueRef_Delete(QCborValueRef* self);
 
 #ifdef __cplusplus
 } /* extern C */

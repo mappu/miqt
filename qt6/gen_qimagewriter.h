@@ -59,7 +59,7 @@ struct miqt_array /* of struct miqt_string */  QImageWriter_SupportedMimeTypes()
 struct miqt_array /* of struct miqt_string */  QImageWriter_ImageFormatsForMimeType(struct miqt_string mimeType);
 struct miqt_string QImageWriter_Tr2(const char* sourceText, const char* disambiguation);
 struct miqt_string QImageWriter_Tr3(const char* sourceText, const char* disambiguation, int n);
-void QImageWriter_Delete(QImageWriter* self, bool isSubclass);
+void QImageWriter_Delete(QImageWriter* self);
 
 #ifdef __cplusplus
 } /* extern C */

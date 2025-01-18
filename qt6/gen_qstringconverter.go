@@ -100,7 +100,7 @@ func (this *QStringEncoder) RequiredSpace(inputLength int64) int64 {
 
 // Delete this object from C++ memory.
 func (this *QStringEncoder) Delete() {
-	C.QStringEncoder_Delete(this.h, C.bool(this.isSubclass))
+	C.QStringEncoder_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -209,7 +209,7 @@ func QStringDecoder_DecoderForHtml(data QByteArrayView) *QStringDecoder {
 
 // Delete this object from C++ memory.
 func (this *QStringDecoder) Delete() {
-	C.QStringDecoder_Delete(this.h, C.bool(this.isSubclass))
+	C.QStringDecoder_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -28,13 +28,13 @@ bool miqt_exec_callback_QRasterWindow_Event(void*, intptr_t, QEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQRasterWindow : public virtual QRasterWindow {
+class MiqtVirtualQRasterWindow final : public QRasterWindow {
 public:
 
 	MiqtVirtualQRasterWindow(): QRasterWindow() {};
 	MiqtVirtualQRasterWindow(QWindow* parent): QRasterWindow(parent) {};
 
-	virtual ~MiqtVirtualQRasterWindow() = default;
+	virtual ~MiqtVirtualQRasterWindow() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Metric = 0;
@@ -282,11 +282,7 @@ bool QRasterWindow_virtualbase_Event(void* self, QEvent* event) {
 	return ( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_Event(event);
 }
 
-void QRasterWindow_Delete(QRasterWindow* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQRasterWindow*>( self );
-	} else {
-		delete self;
-	}
+void QRasterWindow_Delete(QRasterWindow* self) {
+	delete self;
 }
 

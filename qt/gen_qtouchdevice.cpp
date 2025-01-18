@@ -73,11 +73,7 @@ void QTouchDevice_SetMaximumTouchPoints(QTouchDevice* self, int max) {
 	self->setMaximumTouchPoints(static_cast<int>(max));
 }
 
-void QTouchDevice_Delete(QTouchDevice* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTouchDevice*>( self );
-	} else {
-		delete self;
-	}
+void QTouchDevice_Delete(QTouchDevice* self) {
+	delete self;
 }
 

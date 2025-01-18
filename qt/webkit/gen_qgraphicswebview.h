@@ -274,7 +274,7 @@ void QGraphicsWebView_override_virtual_GrabKeyboardEvent(void* self, intptr_t sl
 void QGraphicsWebView_virtualbase_GrabKeyboardEvent(void* self, QEvent* event);
 void QGraphicsWebView_override_virtual_UngrabKeyboardEvent(void* self, intptr_t slot);
 void QGraphicsWebView_virtualbase_UngrabKeyboardEvent(void* self, QEvent* event);
-void QGraphicsWebView_Delete(QGraphicsWebView* self, bool isSubclass);
+void QGraphicsWebView_Delete(QGraphicsWebView* self);
 
 #ifdef __cplusplus
 } /* extern C */

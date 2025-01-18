@@ -374,7 +374,7 @@ func (this *QNetworkProxyQuery) SetNetworkConfiguration(networkConfiguration *QN
 
 // Delete this object from C++ memory.
 func (this *QNetworkProxyQuery) Delete() {
-	C.QNetworkProxyQuery_Delete(this.h, C.bool(this.isSubclass))
+	C.QNetworkProxyQuery_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -658,7 +658,7 @@ func (this *QNetworkProxy) SetRawHeader(headerName []byte, value []byte) {
 
 // Delete this object from C++ memory.
 func (this *QNetworkProxy) Delete() {
-	C.QNetworkProxy_Delete(this.h, C.bool(this.isSubclass))
+	C.QNetworkProxy_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -805,7 +805,7 @@ func miqt_exec_callback_QNetworkProxyFactory_QueryProxy(self *C.QNetworkProxyFac
 
 // Delete this object from C++ memory.
 func (this *QNetworkProxyFactory) Delete() {
-	C.QNetworkProxyFactory_Delete(this.h, C.bool(this.isSubclass))
+	C.QNetworkProxyFactory_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

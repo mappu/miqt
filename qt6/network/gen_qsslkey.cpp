@@ -147,11 +147,7 @@ struct miqt_string QSslKey_ToDer1(const QSslKey* self, struct miqt_string passPh
 	return _ms;
 }
 
-void QSslKey_Delete(QSslKey* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QSslKey*>( self );
-	} else {
-		delete self;
-	}
+void QSslKey_Delete(QSslKey* self) {
+	delete self;
 }
 

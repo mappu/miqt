@@ -19,14 +19,14 @@ QSizeF* miqt_exec_callback_QGraphicsLayoutItem_SizeHint(void*, intptr_t, int, QS
 } /* extern C */
 #endif
 
-class MiqtVirtualQGraphicsLayoutItem : public virtual QGraphicsLayoutItem {
+class MiqtVirtualQGraphicsLayoutItem final : public QGraphicsLayoutItem {
 public:
 
 	MiqtVirtualQGraphicsLayoutItem(): QGraphicsLayoutItem() {};
 	MiqtVirtualQGraphicsLayoutItem(QGraphicsLayoutItem* parent): QGraphicsLayoutItem(parent) {};
 	MiqtVirtualQGraphicsLayoutItem(QGraphicsLayoutItem* parent, bool isLayout): QGraphicsLayoutItem(parent, isLayout) {};
 
-	virtual ~MiqtVirtualQGraphicsLayoutItem() = default;
+	virtual ~MiqtVirtualQGraphicsLayoutItem() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetGeometry = 0;
@@ -358,11 +358,7 @@ void QGraphicsLayoutItem_override_virtual_SizeHint(void* self, intptr_t slot) {
 	dynamic_cast<MiqtVirtualQGraphicsLayoutItem*>( (QGraphicsLayoutItem*)(self) )->handle__SizeHint = slot;
 }
 
-void QGraphicsLayoutItem_Delete(QGraphicsLayoutItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsLayoutItem*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsLayoutItem_Delete(QGraphicsLayoutItem* self) {
+	delete self;
 }
 

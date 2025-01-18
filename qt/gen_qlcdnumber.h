@@ -81,7 +81,7 @@ void QLCDNumber_override_virtual_PaintEvent(void* self, intptr_t slot);
 void QLCDNumber_virtualbase_PaintEvent(void* self, QPaintEvent* param1);
 void QLCDNumber_override_virtual_ChangeEvent(void* self, intptr_t slot);
 void QLCDNumber_virtualbase_ChangeEvent(void* self, QEvent* param1);
-void QLCDNumber_Delete(QLCDNumber* self, bool isSubclass);
+void QLCDNumber_Delete(QLCDNumber* self);
 
 #ifdef __cplusplus
 } /* extern C */

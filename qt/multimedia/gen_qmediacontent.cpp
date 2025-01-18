@@ -106,11 +106,7 @@ QMediaPlaylist* QMediaContent_Playlist(const QMediaContent* self) {
 	return self->playlist();
 }
 
-void QMediaContent_Delete(QMediaContent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMediaContent*>( self );
-	} else {
-		delete self;
-	}
+void QMediaContent_Delete(QMediaContent* self) {
+	delete self;
 }
 

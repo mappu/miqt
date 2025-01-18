@@ -212,7 +212,7 @@ void QDateTimeEdit_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QDateTimeEdit_virtualbase_TimerEvent(void* self, QTimerEvent* event);
 void QDateTimeEdit_override_virtual_ShowEvent(void* self, intptr_t slot);
 void QDateTimeEdit_virtualbase_ShowEvent(void* self, QShowEvent* event);
-void QDateTimeEdit_Delete(QDateTimeEdit* self, bool isSubclass);
+void QDateTimeEdit_Delete(QDateTimeEdit* self);
 
 QTimeEdit* QTimeEdit_new(QWidget* parent);
 QTimeEdit* QTimeEdit_new2();
@@ -259,7 +259,7 @@ void QTimeEdit_override_virtual_MousePressEvent(void* self, intptr_t slot);
 void QTimeEdit_virtualbase_MousePressEvent(void* self, QMouseEvent* event);
 void QTimeEdit_override_virtual_PaintEvent(void* self, intptr_t slot);
 void QTimeEdit_virtualbase_PaintEvent(void* self, QPaintEvent* event);
-void QTimeEdit_Delete(QTimeEdit* self, bool isSubclass);
+void QTimeEdit_Delete(QTimeEdit* self);
 
 QDateEdit* QDateEdit_new(QWidget* parent);
 QDateEdit* QDateEdit_new2();
@@ -306,7 +306,7 @@ void QDateEdit_override_virtual_MousePressEvent(void* self, intptr_t slot);
 void QDateEdit_virtualbase_MousePressEvent(void* self, QMouseEvent* event);
 void QDateEdit_override_virtual_PaintEvent(void* self, intptr_t slot);
 void QDateEdit_virtualbase_PaintEvent(void* self, QPaintEvent* event);
-void QDateEdit_Delete(QDateEdit* self, bool isSubclass);
+void QDateEdit_Delete(QDateEdit* self);
 
 #ifdef __cplusplus
 } /* extern C */

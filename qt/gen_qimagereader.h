@@ -91,7 +91,7 @@ struct miqt_string QImageReader_Tr2(const char* sourceText, const char* disambig
 struct miqt_string QImageReader_Tr3(const char* sourceText, const char* disambiguation, int n);
 struct miqt_string QImageReader_TrUtf82(const char* sourceText, const char* disambiguation);
 struct miqt_string QImageReader_TrUtf83(const char* sourceText, const char* disambiguation, int n);
-void QImageReader_Delete(QImageReader* self, bool isSubclass);
+void QImageReader_Delete(QImageReader* self);
 
 #ifdef __cplusplus
 } /* extern C */

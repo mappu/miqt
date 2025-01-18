@@ -43,7 +43,7 @@ bool miqt_exec_callback_QColorDialog_EventFilter(void*, intptr_t, QObject*, QEve
 } /* extern C */
 #endif
 
-class MiqtVirtualQColorDialog : public virtual QColorDialog {
+class MiqtVirtualQColorDialog final : public QColorDialog {
 public:
 
 	MiqtVirtualQColorDialog(QWidget* parent): QColorDialog(parent) {};
@@ -51,7 +51,7 @@ public:
 	MiqtVirtualQColorDialog(const QColor& initial): QColorDialog(initial) {};
 	MiqtVirtualQColorDialog(const QColor& initial, QWidget* parent): QColorDialog(initial, parent) {};
 
-	virtual ~MiqtVirtualQColorDialog() = default;
+	virtual ~MiqtVirtualQColorDialog() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetVisible = 0;
@@ -692,11 +692,7 @@ bool QColorDialog_virtualbase_EventFilter(void* self, QObject* param1, QEvent* p
 	return ( (MiqtVirtualQColorDialog*)(self) )->virtualbase_EventFilter(param1, param2);
 }
 
-void QColorDialog_Delete(QColorDialog* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQColorDialog*>( self );
-	} else {
-		delete self;
-	}
+void QColorDialog_Delete(QColorDialog* self) {
+	delete self;
 }
 

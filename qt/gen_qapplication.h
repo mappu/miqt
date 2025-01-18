@@ -123,7 +123,7 @@ void QApplication_override_virtual_Notify(void* self, intptr_t slot);
 bool QApplication_virtualbase_Notify(void* self, QObject* param1, QEvent* param2);
 void QApplication_override_virtual_Event(void* self, intptr_t slot);
 bool QApplication_virtualbase_Event(void* self, QEvent* param1);
-void QApplication_Delete(QApplication* self, bool isSubclass);
+void QApplication_Delete(QApplication* self);
 
 #ifdef __cplusplus
 } /* extern C */

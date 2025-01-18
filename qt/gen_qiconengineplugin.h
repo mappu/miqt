@@ -62,7 +62,7 @@ void QIconEnginePlugin_override_virtual_ConnectNotify(void* self, intptr_t slot)
 void QIconEnginePlugin_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QIconEnginePlugin_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QIconEnginePlugin_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QIconEnginePlugin_Delete(QIconEnginePlugin* self, bool isSubclass);
+void QIconEnginePlugin_Delete(QIconEnginePlugin* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -112,7 +112,7 @@ void QLocalSocket_override_virtual_Reset(void* self, intptr_t slot);
 bool QLocalSocket_virtualbase_Reset(void* self);
 void QLocalSocket_override_virtual_ReadLineData(void* self, intptr_t slot);
 long long QLocalSocket_virtualbase_ReadLineData(void* self, char* data, long long maxlen);
-void QLocalSocket_Delete(QLocalSocket* self, bool isSubclass);
+void QLocalSocket_Delete(QLocalSocket* self);
 
 #ifdef __cplusplus
 } /* extern C */

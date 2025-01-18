@@ -633,7 +633,7 @@ func miqt_exec_callback_QCheckBox_TimerEvent(self *C.QCheckBox, cb C.intptr_t, e
 
 // Delete this object from C++ memory.
 func (this *QCheckBox) Delete() {
-	C.QCheckBox_Delete(this.h, C.bool(this.isSubclass))
+	C.QCheckBox_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -87,7 +87,7 @@ void QGraphicsEffect_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QGraphicsEffect_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QGraphicsEffect_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QGraphicsEffect_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QGraphicsEffect_Delete(QGraphicsEffect* self, bool isSubclass);
+void QGraphicsEffect_Delete(QGraphicsEffect* self);
 
 QGraphicsColorizeEffect* QGraphicsColorizeEffect_new();
 QGraphicsColorizeEffect* QGraphicsColorizeEffect_new2(QObject* parent);
@@ -112,7 +112,7 @@ void QGraphicsColorizeEffect_override_virtual_BoundingRectFor(void* self, intptr
 QRectF* QGraphicsColorizeEffect_virtualbase_BoundingRectFor(const void* self, QRectF* sourceRect);
 void QGraphicsColorizeEffect_override_virtual_SourceChanged(void* self, intptr_t slot);
 void QGraphicsColorizeEffect_virtualbase_SourceChanged(void* self, int flags);
-void QGraphicsColorizeEffect_Delete(QGraphicsColorizeEffect* self, bool isSubclass);
+void QGraphicsColorizeEffect_Delete(QGraphicsColorizeEffect* self);
 
 QGraphicsBlurEffect* QGraphicsBlurEffect_new();
 QGraphicsBlurEffect* QGraphicsBlurEffect_new2(QObject* parent);
@@ -138,7 +138,7 @@ void QGraphicsBlurEffect_override_virtual_Draw(void* self, intptr_t slot);
 void QGraphicsBlurEffect_virtualbase_Draw(void* self, QPainter* painter);
 void QGraphicsBlurEffect_override_virtual_SourceChanged(void* self, intptr_t slot);
 void QGraphicsBlurEffect_virtualbase_SourceChanged(void* self, int flags);
-void QGraphicsBlurEffect_Delete(QGraphicsBlurEffect* self, bool isSubclass);
+void QGraphicsBlurEffect_Delete(QGraphicsBlurEffect* self);
 
 QGraphicsDropShadowEffect* QGraphicsDropShadowEffect_new();
 QGraphicsDropShadowEffect* QGraphicsDropShadowEffect_new2(QObject* parent);
@@ -174,7 +174,7 @@ void QGraphicsDropShadowEffect_override_virtual_Draw(void* self, intptr_t slot);
 void QGraphicsDropShadowEffect_virtualbase_Draw(void* self, QPainter* painter);
 void QGraphicsDropShadowEffect_override_virtual_SourceChanged(void* self, intptr_t slot);
 void QGraphicsDropShadowEffect_virtualbase_SourceChanged(void* self, int flags);
-void QGraphicsDropShadowEffect_Delete(QGraphicsDropShadowEffect* self, bool isSubclass);
+void QGraphicsDropShadowEffect_Delete(QGraphicsDropShadowEffect* self);
 
 QGraphicsOpacityEffect* QGraphicsOpacityEffect_new();
 QGraphicsOpacityEffect* QGraphicsOpacityEffect_new2(QObject* parent);
@@ -199,7 +199,7 @@ void QGraphicsOpacityEffect_override_virtual_BoundingRectFor(void* self, intptr_
 QRectF* QGraphicsOpacityEffect_virtualbase_BoundingRectFor(const void* self, QRectF* sourceRect);
 void QGraphicsOpacityEffect_override_virtual_SourceChanged(void* self, intptr_t slot);
 void QGraphicsOpacityEffect_virtualbase_SourceChanged(void* self, int flags);
-void QGraphicsOpacityEffect_Delete(QGraphicsOpacityEffect* self, bool isSubclass);
+void QGraphicsOpacityEffect_Delete(QGraphicsOpacityEffect* self);
 
 #ifdef __cplusplus
 } /* extern C */

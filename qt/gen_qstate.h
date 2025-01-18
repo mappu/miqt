@@ -68,7 +68,7 @@ void QState_override_virtual_OnExit(void* self, intptr_t slot);
 void QState_virtualbase_OnExit(void* self, QEvent* event);
 void QState_override_virtual_Event(void* self, intptr_t slot);
 bool QState_virtualbase_Event(void* self, QEvent* e);
-void QState_Delete(QState* self, bool isSubclass);
+void QState_Delete(QState* self);
 
 #ifdef __cplusplus
 } /* extern C */

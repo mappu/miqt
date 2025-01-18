@@ -279,7 +279,7 @@ void QTableView_override_virtual_InputMethodEvent(void* self, intptr_t slot);
 void QTableView_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* event);
 void QTableView_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QTableView_virtualbase_EventFilter(void* self, QObject* object, QEvent* event);
-void QTableView_Delete(QTableView* self, bool isSubclass);
+void QTableView_Delete(QTableView* self);
 
 #ifdef __cplusplus
 } /* extern C */

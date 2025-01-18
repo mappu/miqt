@@ -613,7 +613,7 @@ func miqt_exec_callback_QPdfWriter_SetPageRanges(self *C.QPdfWriter, cb C.intptr
 
 // Delete this object from C++ memory.
 func (this *QPdfWriter) Delete() {
-	C.QPdfWriter_Delete(this.h, C.bool(this.isSubclass))
+	C.QPdfWriter_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

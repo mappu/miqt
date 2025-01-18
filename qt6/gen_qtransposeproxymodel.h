@@ -143,7 +143,7 @@ void QTransposeProxyModel_override_virtual_SupportedDropActions(void* self, intp
 int QTransposeProxyModel_virtualbase_SupportedDropActions(const void* self);
 void QTransposeProxyModel_override_virtual_RoleNames(void* self, intptr_t slot);
 struct miqt_map /* of int to struct miqt_string */  QTransposeProxyModel_virtualbase_RoleNames(const void* self);
-void QTransposeProxyModel_Delete(QTransposeProxyModel* self, bool isSubclass);
+void QTransposeProxyModel_Delete(QTransposeProxyModel* self);
 
 #ifdef __cplusplus
 } /* extern C */

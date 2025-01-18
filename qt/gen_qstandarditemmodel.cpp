@@ -70,7 +70,7 @@ void miqt_exec_callback_QStandardItemModel_Revert(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQStandardItem : public virtual QStandardItem {
+class MiqtVirtualQStandardItem final : public QStandardItem {
 public:
 
 	MiqtVirtualQStandardItem(): QStandardItem() {};
@@ -79,7 +79,7 @@ public:
 	MiqtVirtualQStandardItem(int rows): QStandardItem(rows) {};
 	MiqtVirtualQStandardItem(int rows, int columns): QStandardItem(rows, columns) {};
 
-	virtual ~MiqtVirtualQStandardItem() = default;
+	virtual ~MiqtVirtualQStandardItem() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Data = 0;
@@ -789,15 +789,11 @@ bool QStandardItem_virtualbase_OperatorLesser(const void* self, QStandardItem* o
 	return ( (const MiqtVirtualQStandardItem*)(self) )->virtualbase_OperatorLesser(other);
 }
 
-void QStandardItem_Delete(QStandardItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQStandardItem*>( self );
-	} else {
-		delete self;
-	}
+void QStandardItem_Delete(QStandardItem* self) {
+	delete self;
 }
 
-class MiqtVirtualQStandardItemModel : public virtual QStandardItemModel {
+class MiqtVirtualQStandardItemModel final : public QStandardItemModel {
 public:
 
 	MiqtVirtualQStandardItemModel(): QStandardItemModel() {};
@@ -805,7 +801,7 @@ public:
 	MiqtVirtualQStandardItemModel(QObject* parent): QStandardItemModel(parent) {};
 	MiqtVirtualQStandardItemModel(int rows, int columns, QObject* parent): QStandardItemModel(rows, columns, parent) {};
 
-	virtual ~MiqtVirtualQStandardItemModel() = default;
+	virtual ~MiqtVirtualQStandardItemModel() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Index = 0;
@@ -2584,11 +2580,7 @@ void QStandardItemModel_virtualbase_Revert(void* self) {
 	( (MiqtVirtualQStandardItemModel*)(self) )->virtualbase_Revert();
 }
 
-void QStandardItemModel_Delete(QStandardItemModel* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQStandardItemModel*>( self );
-	} else {
-		delete self;
-	}
+void QStandardItemModel_Delete(QStandardItemModel* self) {
+	delete self;
 }
 

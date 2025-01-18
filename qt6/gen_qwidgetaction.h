@@ -53,7 +53,7 @@ void QWidgetAction_override_virtual_CreateWidget(void* self, intptr_t slot);
 QWidget* QWidgetAction_virtualbase_CreateWidget(void* self, QWidget* parent);
 void QWidgetAction_override_virtual_DeleteWidget(void* self, intptr_t slot);
 void QWidgetAction_virtualbase_DeleteWidget(void* self, QWidget* widget);
-void QWidgetAction_Delete(QWidgetAction* self, bool isSubclass);
+void QWidgetAction_Delete(QWidgetAction* self);
 
 #ifdef __cplusplus
 } /* extern C */

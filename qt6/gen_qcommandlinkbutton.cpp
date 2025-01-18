@@ -38,7 +38,7 @@ bool miqt_exec_callback_QCommandLinkButton_HitButton(void*, intptr_t, QPoint*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQCommandLinkButton : public virtual QCommandLinkButton {
+class MiqtVirtualQCommandLinkButton final : public QCommandLinkButton {
 public:
 
 	MiqtVirtualQCommandLinkButton(QWidget* parent): QCommandLinkButton(parent) {};
@@ -48,7 +48,7 @@ public:
 	MiqtVirtualQCommandLinkButton(const QString& text, QWidget* parent): QCommandLinkButton(text, parent) {};
 	MiqtVirtualQCommandLinkButton(const QString& text, const QString& description, QWidget* parent): QCommandLinkButton(text, description, parent) {};
 
-	virtual ~MiqtVirtualQCommandLinkButton() = default;
+	virtual ~MiqtVirtualQCommandLinkButton() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -506,11 +506,7 @@ bool QCommandLinkButton_virtualbase_HitButton(const void* self, QPoint* pos) {
 	return ( (const MiqtVirtualQCommandLinkButton*)(self) )->virtualbase_HitButton(pos);
 }
 
-void QCommandLinkButton_Delete(QCommandLinkButton* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQCommandLinkButton*>( self );
-	} else {
-		delete self;
-	}
+void QCommandLinkButton_Delete(QCommandLinkButton* self) {
+	delete self;
 }
 

@@ -132,7 +132,7 @@ void QBoxLayout_override_virtual_Layout(void* self, intptr_t slot);
 QLayout* QBoxLayout_virtualbase_Layout(void* self);
 void QBoxLayout_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QBoxLayout_virtualbase_ChildEvent(void* self, QChildEvent* e);
-void QBoxLayout_Delete(QBoxLayout* self, bool isSubclass);
+void QBoxLayout_Delete(QBoxLayout* self);
 
 QHBoxLayout* QHBoxLayout_new(QWidget* parent);
 QHBoxLayout* QHBoxLayout_new2();
@@ -171,7 +171,7 @@ void QHBoxLayout_override_virtual_Count(void* self, intptr_t slot);
 int QHBoxLayout_virtualbase_Count(const void* self);
 void QHBoxLayout_override_virtual_SetGeometry(void* self, intptr_t slot);
 void QHBoxLayout_virtualbase_SetGeometry(void* self, QRect* geometry);
-void QHBoxLayout_Delete(QHBoxLayout* self, bool isSubclass);
+void QHBoxLayout_Delete(QHBoxLayout* self);
 
 QVBoxLayout* QVBoxLayout_new(QWidget* parent);
 QVBoxLayout* QVBoxLayout_new2();
@@ -210,7 +210,7 @@ void QVBoxLayout_override_virtual_Count(void* self, intptr_t slot);
 int QVBoxLayout_virtualbase_Count(const void* self);
 void QVBoxLayout_override_virtual_SetGeometry(void* self, intptr_t slot);
 void QVBoxLayout_virtualbase_SetGeometry(void* self, QRect* geometry);
-void QVBoxLayout_Delete(QVBoxLayout* self, bool isSubclass);
+void QVBoxLayout_Delete(QVBoxLayout* self);
 
 #ifdef __cplusplus
 } /* extern C */

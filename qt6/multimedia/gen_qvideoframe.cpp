@@ -183,19 +183,11 @@ void QVideoFrame_Paint(QVideoFrame* self, QPainter* painter, QRectF* rect, QVide
 	self->paint(painter, *rect, *options);
 }
 
-void QVideoFrame_Delete(QVideoFrame* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QVideoFrame*>( self );
-	} else {
-		delete self;
-	}
+void QVideoFrame_Delete(QVideoFrame* self) {
+	delete self;
 }
 
-void QVideoFrame__PaintOptions_Delete(QVideoFrame__PaintOptions* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QVideoFrame::PaintOptions*>( self );
-	} else {
-		delete self;
-	}
+void QVideoFrame__PaintOptions_Delete(QVideoFrame__PaintOptions* self) {
+	delete self;
 }
 

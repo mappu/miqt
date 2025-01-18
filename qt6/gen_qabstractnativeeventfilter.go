@@ -92,7 +92,7 @@ func miqt_exec_callback_QAbstractNativeEventFilter_NativeEventFilter(self *C.QAb
 
 // Delete this object from C++ memory.
 func (this *QAbstractNativeEventFilter) Delete() {
-	C.QAbstractNativeEventFilter_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractNativeEventFilter_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

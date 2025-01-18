@@ -46,7 +46,7 @@ void miqt_exec_callback_QPushButton_TimerEvent(void*, intptr_t, QTimerEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQPushButton : public virtual QPushButton {
+class MiqtVirtualQPushButton final : public QPushButton {
 public:
 
 	MiqtVirtualQPushButton(QWidget* parent): QPushButton(parent) {};
@@ -56,7 +56,7 @@ public:
 	MiqtVirtualQPushButton(const QString& text, QWidget* parent): QPushButton(text, parent) {};
 	MiqtVirtualQPushButton(const QIcon& icon, const QString& text, QWidget* parent): QPushButton(icon, text, parent) {};
 
-	virtual ~MiqtVirtualQPushButton() = default;
+	virtual ~MiqtVirtualQPushButton() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -715,11 +715,7 @@ void QPushButton_virtualbase_TimerEvent(void* self, QTimerEvent* e) {
 	( (MiqtVirtualQPushButton*)(self) )->virtualbase_TimerEvent(e);
 }
 
-void QPushButton_Delete(QPushButton* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQPushButton*>( self );
-	} else {
-		delete self;
-	}
+void QPushButton_Delete(QPushButton* self) {
+	delete self;
 }
 

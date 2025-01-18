@@ -91,7 +91,7 @@ void QUndoGroup_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QUndoGroup_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QUndoGroup_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QUndoGroup_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QUndoGroup_Delete(QUndoGroup* self, bool isSubclass);
+void QUndoGroup_Delete(QUndoGroup* self);
 
 #ifdef __cplusplus
 } /* extern C */

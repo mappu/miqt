@@ -184,7 +184,7 @@ func (this *QMediaContent) Playlist() *QMediaPlaylist {
 
 // Delete this object from C++ memory.
 func (this *QMediaContent) Delete() {
-	C.QMediaContent_Delete(this.h, C.bool(this.isSubclass))
+	C.QMediaContent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

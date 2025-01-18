@@ -42,21 +42,17 @@ void QAccessibleBridge_OperatorAssign(QAccessibleBridge* self, QAccessibleBridge
 	self->operator=(*param1);
 }
 
-void QAccessibleBridge_Delete(QAccessibleBridge* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QAccessibleBridge*>( self );
-	} else {
-		delete self;
-	}
+void QAccessibleBridge_Delete(QAccessibleBridge* self) {
+	delete self;
 }
 
-class MiqtVirtualQAccessibleBridgePlugin : public virtual QAccessibleBridgePlugin {
+class MiqtVirtualQAccessibleBridgePlugin final : public QAccessibleBridgePlugin {
 public:
 
 	MiqtVirtualQAccessibleBridgePlugin(): QAccessibleBridgePlugin() {};
 	MiqtVirtualQAccessibleBridgePlugin(QObject* parent): QAccessibleBridgePlugin(parent) {};
 
-	virtual ~MiqtVirtualQAccessibleBridgePlugin() = default;
+	virtual ~MiqtVirtualQAccessibleBridgePlugin() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Create = 0;
@@ -405,11 +401,7 @@ void QAccessibleBridgePlugin_virtualbase_DisconnectNotify(void* self, QMetaMetho
 	( (MiqtVirtualQAccessibleBridgePlugin*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QAccessibleBridgePlugin_Delete(QAccessibleBridgePlugin* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAccessibleBridgePlugin*>( self );
-	} else {
-		delete self;
-	}
+void QAccessibleBridgePlugin_Delete(QAccessibleBridgePlugin* self) {
+	delete self;
 }
 

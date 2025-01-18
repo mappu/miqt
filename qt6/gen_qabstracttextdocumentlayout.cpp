@@ -54,12 +54,12 @@ void miqt_exec_callback_QAbstractTextDocumentLayout_DisconnectNotify(void*, intp
 } /* extern C */
 #endif
 
-class MiqtVirtualQAbstractTextDocumentLayout : public virtual QAbstractTextDocumentLayout {
+class MiqtVirtualQAbstractTextDocumentLayout final : public QAbstractTextDocumentLayout {
 public:
 
 	MiqtVirtualQAbstractTextDocumentLayout(QTextDocument* doc): QAbstractTextDocumentLayout(doc) {};
 
-	virtual ~MiqtVirtualQAbstractTextDocumentLayout() = default;
+	virtual ~MiqtVirtualQAbstractTextDocumentLayout() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Draw = 0;
@@ -742,12 +742,8 @@ void QAbstractTextDocumentLayout_virtualbase_DisconnectNotify(void* self, QMetaM
 	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QAbstractTextDocumentLayout_Delete(QAbstractTextDocumentLayout* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractTextDocumentLayout_Delete(QAbstractTextDocumentLayout* self) {
+	delete self;
 }
 
 QSizeF* QTextObjectInterface_IntrinsicSize(QTextObjectInterface* self, QTextDocument* doc, int posInDocument, QTextFormat* format) {
@@ -762,12 +758,8 @@ void QTextObjectInterface_OperatorAssign(QTextObjectInterface* self, QTextObject
 	self->operator=(*param1);
 }
 
-void QTextObjectInterface_Delete(QTextObjectInterface* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextObjectInterface*>( self );
-	} else {
-		delete self;
-	}
+void QTextObjectInterface_Delete(QTextObjectInterface* self) {
+	delete self;
 }
 
 QAbstractTextDocumentLayout__Selection* QAbstractTextDocumentLayout__Selection_new(QAbstractTextDocumentLayout__Selection* param1) {
@@ -778,12 +770,8 @@ void QAbstractTextDocumentLayout__Selection_OperatorAssign(QAbstractTextDocument
 	self->operator=(*param1);
 }
 
-void QAbstractTextDocumentLayout__Selection_Delete(QAbstractTextDocumentLayout__Selection* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QAbstractTextDocumentLayout::Selection*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractTextDocumentLayout__Selection_Delete(QAbstractTextDocumentLayout__Selection* self) {
+	delete self;
 }
 
 QAbstractTextDocumentLayout__PaintContext* QAbstractTextDocumentLayout__PaintContext_new() {
@@ -798,11 +786,7 @@ void QAbstractTextDocumentLayout__PaintContext_OperatorAssign(QAbstractTextDocum
 	self->operator=(*param1);
 }
 
-void QAbstractTextDocumentLayout__PaintContext_Delete(QAbstractTextDocumentLayout__PaintContext* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QAbstractTextDocumentLayout::PaintContext*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractTextDocumentLayout__PaintContext_Delete(QAbstractTextDocumentLayout__PaintContext* self) {
+	delete self;
 }
 

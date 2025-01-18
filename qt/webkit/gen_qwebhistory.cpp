@@ -103,12 +103,8 @@ void QWebHistoryItem_LoadFromMap(QWebHistoryItem* self, struct miqt_map /* of st
 	self->loadFromMap(mapVal_QMap);
 }
 
-void QWebHistoryItem_Delete(QWebHistoryItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebHistoryItem*>( self );
-	} else {
-		delete self;
-	}
+void QWebHistoryItem_Delete(QWebHistoryItem* self) {
+	delete self;
 }
 
 void QWebHistory_Clear(QWebHistory* self) {

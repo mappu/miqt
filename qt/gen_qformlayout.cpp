@@ -40,13 +40,13 @@ void miqt_exec_callback_QFormLayout_ChildEvent(void*, intptr_t, QChildEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQFormLayout : public virtual QFormLayout {
+class MiqtVirtualQFormLayout final : public QFormLayout {
 public:
 
 	MiqtVirtualQFormLayout(QWidget* parent): QFormLayout(parent) {};
 	MiqtVirtualQFormLayout(): QFormLayout() {};
 
-	virtual ~MiqtVirtualQFormLayout() = default;
+	virtual ~MiqtVirtualQFormLayout() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__AddItem = 0;
@@ -900,19 +900,11 @@ void QFormLayout_virtualbase_ChildEvent(void* self, QChildEvent* e) {
 	( (MiqtVirtualQFormLayout*)(self) )->virtualbase_ChildEvent(e);
 }
 
-void QFormLayout_Delete(QFormLayout* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQFormLayout*>( self );
-	} else {
-		delete self;
-	}
+void QFormLayout_Delete(QFormLayout* self) {
+	delete self;
 }
 
-void QFormLayout__TakeRowResult_Delete(QFormLayout__TakeRowResult* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QFormLayout::TakeRowResult*>( self );
-	} else {
-		delete self;
-	}
+void QFormLayout__TakeRowResult_Delete(QFormLayout__TakeRowResult* self) {
+	delete self;
 }
 

@@ -62,7 +62,7 @@ void QsciPrinter_override_virtual_PaintEngine(void* self, intptr_t slot);
 QPaintEngine* QsciPrinter_virtualbase_PaintEngine(const void* self);
 void QsciPrinter_override_virtual_Metric(void* self, intptr_t slot);
 int QsciPrinter_virtualbase_Metric(const void* self, int param1);
-void QsciPrinter_Delete(QsciPrinter* self, bool isSubclass);
+void QsciPrinter_Delete(QsciPrinter* self);
 
 #ifdef __cplusplus
 } /* extern C */

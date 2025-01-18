@@ -74,19 +74,19 @@ struct miqt_string QCalendar_StandaloneMonthName3(const QCalendar* self, QLocale
 struct miqt_string QCalendar_StandaloneMonthName4(const QCalendar* self, QLocale* locale, int month, int year, int format);
 struct miqt_string QCalendar_WeekDayName3(const QCalendar* self, QLocale* locale, int day, int format);
 struct miqt_string QCalendar_StandaloneWeekDayName3(const QCalendar* self, QLocale* locale, int day, int format);
-void QCalendar_Delete(QCalendar* self, bool isSubclass);
+void QCalendar_Delete(QCalendar* self);
 
 QCalendar__YearMonthDay* QCalendar__YearMonthDay_new();
 QCalendar__YearMonthDay* QCalendar__YearMonthDay_new2(int y);
 QCalendar__YearMonthDay* QCalendar__YearMonthDay_new3(int y, int m);
 QCalendar__YearMonthDay* QCalendar__YearMonthDay_new4(int y, int m, int d);
 bool QCalendar__YearMonthDay_IsValid(const QCalendar__YearMonthDay* self);
-void QCalendar__YearMonthDay_Delete(QCalendar__YearMonthDay* self, bool isSubclass);
+void QCalendar__YearMonthDay_Delete(QCalendar__YearMonthDay* self);
 
 QCalendar__SystemId* QCalendar__SystemId_new();
 size_t QCalendar__SystemId_Index(const QCalendar__SystemId* self);
 bool QCalendar__SystemId_IsValid(const QCalendar__SystemId* self);
-void QCalendar__SystemId_Delete(QCalendar__SystemId* self, bool isSubclass);
+void QCalendar__SystemId_Delete(QCalendar__SystemId* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -35,13 +35,13 @@ void miqt_exec_callback_QSignalMapper_DisconnectNotify(void*, intptr_t, QMetaMet
 } /* extern C */
 #endif
 
-class MiqtVirtualQSignalMapper : public virtual QSignalMapper {
+class MiqtVirtualQSignalMapper final : public QSignalMapper {
 public:
 
 	MiqtVirtualQSignalMapper(): QSignalMapper() {};
 	MiqtVirtualQSignalMapper(QObject* parent): QSignalMapper(parent) {};
 
-	virtual ~MiqtVirtualQSignalMapper() = default;
+	virtual ~MiqtVirtualQSignalMapper() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -508,11 +508,7 @@ void QSignalMapper_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQSignalMapper*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QSignalMapper_Delete(QSignalMapper* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSignalMapper*>( self );
-	} else {
-		delete self;
-	}
+void QSignalMapper_Delete(QSignalMapper* self) {
+	delete self;
 }
 

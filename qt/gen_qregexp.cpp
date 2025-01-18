@@ -280,11 +280,7 @@ int QRegExp_Pos1WithNth(QRegExp* self, int nth) {
 	return self->pos(static_cast<int>(nth));
 }
 
-void QRegExp_Delete(QRegExp* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QRegExp*>( self );
-	} else {
-		delete self;
-	}
+void QRegExp_Delete(QRegExp* self) {
+	delete self;
 }
 

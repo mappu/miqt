@@ -474,7 +474,7 @@ func (this *QMetaMethod) InvokeOnGadget112(gadget unsafe.Pointer, val0 QGenericA
 
 // Delete this object from C++ memory.
 func (this *QMetaMethod) Delete() {
-	C.QMetaMethod_Delete(this.h, C.bool(this.isSubclass))
+	C.QMetaMethod_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -617,7 +617,7 @@ func (this *QMetaEnum) KeysToValue2(keys string, ok *bool) int {
 
 // Delete this object from C++ memory.
 func (this *QMetaEnum) Delete() {
-	C.QMetaEnum_Delete(this.h, C.bool(this.isSubclass))
+	C.QMetaEnum_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -834,7 +834,7 @@ func (this *QMetaProperty) EnclosingMetaObject() *QMetaObject {
 
 // Delete this object from C++ memory.
 func (this *QMetaProperty) Delete() {
-	C.QMetaProperty_Delete(this.h, C.bool(this.isSubclass))
+	C.QMetaProperty_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -903,7 +903,7 @@ func (this *QMetaClassInfo) EnclosingMetaObject() *QMetaObject {
 
 // Delete this object from C++ memory.
 func (this *QMetaClassInfo) Delete() {
-	C.QMetaClassInfo_Delete(this.h, C.bool(this.isSubclass))
+	C.QMetaClassInfo_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

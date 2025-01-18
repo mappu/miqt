@@ -91,7 +91,7 @@ func (this *QWebEngineQuotaRequest) OperatorNotEqual(that *QWebEngineQuotaReques
 
 // Delete this object from C++ memory.
 func (this *QWebEngineQuotaRequest) Delete() {
-	C.QWebEngineQuotaRequest_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebEngineQuotaRequest_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

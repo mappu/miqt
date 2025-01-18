@@ -41,7 +41,7 @@ struct miqt_string QCameraFlashControl_Tr2(const char* s, const char* c);
 struct miqt_string QCameraFlashControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QCameraFlashControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QCameraFlashControl_TrUtf83(const char* s, const char* c, int n);
-void QCameraFlashControl_Delete(QCameraFlashControl* self, bool isSubclass);
+void QCameraFlashControl_Delete(QCameraFlashControl* self);
 
 #ifdef __cplusplus
 } /* extern C */

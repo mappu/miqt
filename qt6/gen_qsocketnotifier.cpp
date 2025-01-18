@@ -27,7 +27,7 @@ void miqt_exec_callback_QSocketNotifier_DisconnectNotify(void*, intptr_t, QMetaM
 } /* extern C */
 #endif
 
-class MiqtVirtualQSocketNotifier : public virtual QSocketNotifier {
+class MiqtVirtualQSocketNotifier final : public QSocketNotifier {
 public:
 
 	MiqtVirtualQSocketNotifier(QSocketNotifier::Type param1): QSocketNotifier(param1) {};
@@ -35,7 +35,7 @@ public:
 	MiqtVirtualQSocketNotifier(QSocketNotifier::Type param1, QObject* parent): QSocketNotifier(param1, parent) {};
 	MiqtVirtualQSocketNotifier(qintptr socket, QSocketNotifier::Type param2, QObject* parent): QSocketNotifier(socket, param2, parent) {};
 
-	virtual ~MiqtVirtualQSocketNotifier() = default;
+	virtual ~MiqtVirtualQSocketNotifier() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -353,12 +353,8 @@ void QSocketNotifier_virtualbase_DisconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQSocketNotifier*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QSocketNotifier_Delete(QSocketNotifier* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSocketNotifier*>( self );
-	} else {
-		delete self;
-	}
+void QSocketNotifier_Delete(QSocketNotifier* self) {
+	delete self;
 }
 
 QSocketDescriptor* QSocketDescriptor_new() {
@@ -391,11 +387,7 @@ bool QSocketDescriptor_IsValid(const QSocketDescriptor* self) {
 	return self->isValid();
 }
 
-void QSocketDescriptor_Delete(QSocketDescriptor* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QSocketDescriptor*>( self );
-	} else {
-		delete self;
-	}
+void QSocketDescriptor_Delete(QSocketDescriptor* self) {
+	delete self;
 }
 

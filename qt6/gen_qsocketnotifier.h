@@ -65,14 +65,14 @@ void QSocketNotifier_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QSocketNotifier_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QSocketNotifier_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QSocketNotifier_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QSocketNotifier_Delete(QSocketNotifier* self, bool isSubclass);
+void QSocketNotifier_Delete(QSocketNotifier* self);
 
 QSocketDescriptor* QSocketDescriptor_new();
 QSocketDescriptor* QSocketDescriptor_new2(QSocketDescriptor* param1);
 QSocketDescriptor* QSocketDescriptor_new3(int descriptor);
 int QSocketDescriptor_ToInt(const QSocketDescriptor* self);
 bool QSocketDescriptor_IsValid(const QSocketDescriptor* self);
-void QSocketDescriptor_Delete(QSocketDescriptor* self, bool isSubclass);
+void QSocketDescriptor_Delete(QSocketDescriptor* self);
 
 #ifdef __cplusplus
 } /* extern C */

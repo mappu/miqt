@@ -57,13 +57,13 @@ void miqt_exec_callback_QFontComboBox_InitStyleOption(void*, intptr_t, QStyleOpt
 } /* extern C */
 #endif
 
-class MiqtVirtualQFontComboBox : public virtual QFontComboBox {
+class MiqtVirtualQFontComboBox final : public QFontComboBox {
 public:
 
 	MiqtVirtualQFontComboBox(QWidget* parent): QFontComboBox(parent) {};
 	MiqtVirtualQFontComboBox(): QFontComboBox() {};
 
-	virtual ~MiqtVirtualQFontComboBox() = default;
+	virtual ~MiqtVirtualQFontComboBox() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -899,11 +899,7 @@ void QFontComboBox_virtualbase_InitStyleOption(const void* self, QStyleOptionCom
 	( (const MiqtVirtualQFontComboBox*)(self) )->virtualbase_InitStyleOption(option);
 }
 
-void QFontComboBox_Delete(QFontComboBox* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQFontComboBox*>( self );
-	} else {
-		delete self;
-	}
+void QFontComboBox_Delete(QFontComboBox* self) {
+	delete self;
 }
 

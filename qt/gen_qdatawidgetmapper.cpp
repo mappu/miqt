@@ -33,13 +33,13 @@ void miqt_exec_callback_QDataWidgetMapper_DisconnectNotify(void*, intptr_t, QMet
 } /* extern C */
 #endif
 
-class MiqtVirtualQDataWidgetMapper : public virtual QDataWidgetMapper {
+class MiqtVirtualQDataWidgetMapper final : public QDataWidgetMapper {
 public:
 
 	MiqtVirtualQDataWidgetMapper(): QDataWidgetMapper() {};
 	MiqtVirtualQDataWidgetMapper(QObject* parent): QDataWidgetMapper(parent) {};
 
-	virtual ~MiqtVirtualQDataWidgetMapper() = default;
+	virtual ~MiqtVirtualQDataWidgetMapper() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetCurrentIndex = 0;
@@ -511,11 +511,7 @@ void QDataWidgetMapper_virtualbase_DisconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualQDataWidgetMapper*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QDataWidgetMapper_Delete(QDataWidgetMapper* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQDataWidgetMapper*>( self );
-	} else {
-		delete self;
-	}
+void QDataWidgetMapper_Delete(QDataWidgetMapper* self) {
+	delete self;
 }
 

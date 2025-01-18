@@ -109,13 +109,13 @@ bool miqt_exec_callback_QTreeView_EventFilter(void*, intptr_t, QObject*, QEvent*
 } /* extern C */
 #endif
 
-class MiqtVirtualQTreeView : public virtual QTreeView {
+class MiqtVirtualQTreeView final : public QTreeView {
 public:
 
 	MiqtVirtualQTreeView(QWidget* parent): QTreeView(parent) {};
 	MiqtVirtualQTreeView(): QTreeView() {};
 
-	virtual ~MiqtVirtualQTreeView() = default;
+	virtual ~MiqtVirtualQTreeView() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetModel = 0;
@@ -2558,11 +2558,7 @@ bool QTreeView_virtualbase_EventFilter(void* self, QObject* object, QEvent* even
 	return ( (MiqtVirtualQTreeView*)(self) )->virtualbase_EventFilter(object, event);
 }
 
-void QTreeView_Delete(QTreeView* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQTreeView*>( self );
-	} else {
-		delete self;
-	}
+void QTreeView_Delete(QTreeView* self) {
+	delete self;
 }
 

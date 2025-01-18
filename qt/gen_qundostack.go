@@ -242,7 +242,7 @@ func miqt_exec_callback_QUndoCommand_MergeWith(self *C.QUndoCommand, cb C.intptr
 
 // Delete this object from C++ memory.
 func (this *QUndoCommand) Delete() {
-	C.QUndoCommand_Delete(this.h, C.bool(this.isSubclass))
+	C.QUndoCommand_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -836,7 +836,7 @@ func miqt_exec_callback_QUndoStack_DisconnectNotify(self *C.QUndoStack, cb C.int
 
 // Delete this object from C++ memory.
 func (this *QUndoStack) Delete() {
-	C.QUndoStack_Delete(this.h, C.bool(this.isSubclass))
+	C.QUndoStack_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

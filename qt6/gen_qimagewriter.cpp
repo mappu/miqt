@@ -270,11 +270,7 @@ struct miqt_string QImageWriter_Tr3(const char* sourceText, const char* disambig
 	return _ms;
 }
 
-void QImageWriter_Delete(QImageWriter* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QImageWriter*>( self );
-	} else {
-		delete self;
-	}
+void QImageWriter_Delete(QImageWriter* self) {
+	delete self;
 }
 

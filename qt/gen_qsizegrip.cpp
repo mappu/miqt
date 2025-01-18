@@ -84,12 +84,12 @@ bool miqt_exec_callback_QSizeGrip_FocusNextPrevChild(void*, intptr_t, bool);
 } /* extern C */
 #endif
 
-class MiqtVirtualQSizeGrip : public virtual QSizeGrip {
+class MiqtVirtualQSizeGrip final : public QSizeGrip {
 public:
 
 	MiqtVirtualQSizeGrip(QWidget* parent): QSizeGrip(parent) {};
 
-	virtual ~MiqtVirtualQSizeGrip() = default;
+	virtual ~MiqtVirtualQSizeGrip() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -1518,11 +1518,7 @@ bool QSizeGrip_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQSizeGrip*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QSizeGrip_Delete(QSizeGrip* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSizeGrip*>( self );
-	} else {
-		delete self;
-	}
+void QSizeGrip_Delete(QSizeGrip* self) {
+	delete self;
 }
 

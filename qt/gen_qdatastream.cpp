@@ -214,11 +214,7 @@ void QDataStream_AbortTransaction(QDataStream* self) {
 	self->abortTransaction();
 }
 
-void QDataStream_Delete(QDataStream* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QDataStream*>( self );
-	} else {
-		delete self;
-	}
+void QDataStream_Delete(QDataStream* self) {
+	delete self;
 }
 

@@ -96,7 +96,7 @@ struct miqt_string QDate_LongMonthName2(int month, int typeVal);
 struct miqt_string QDate_LongDayName2(int weekday, int typeVal);
 struct miqt_string QDate_ToString1(const QDate* self, int format);
 QDate* QDate_FromString22(struct miqt_string s, int f);
-void QDate_Delete(QDate* self, bool isSubclass);
+void QDate_Delete(QDate* self);
 
 QTime* QTime_new();
 QTime* QTime_new2(int h, int m);
@@ -135,7 +135,7 @@ struct miqt_string QTime_ToString1(const QTime* self, int f);
 bool QTime_SetHMS4(QTime* self, int h, int m, int s, int ms);
 QTime* QTime_FromString22(struct miqt_string s, int f);
 bool QTime_IsValid4(int h, int m, int s, int ms);
-void QTime_Delete(QTime* self, bool isSubclass);
+void QTime_Delete(QTime* self);
 
 QDateTime* QDateTime_new(QDate* param1);
 QDateTime* QDateTime_new2(QDate* param1, QTime* param2);
@@ -210,7 +210,7 @@ QDateTime* QDateTime_FromTimeT32(unsigned int secsSince1Jan1970UTC, int spec, in
 QDateTime* QDateTime_FromMSecsSinceEpoch32(long long msecs, int spec, int offsetFromUtc);
 QDateTime* QDateTime_FromSecsSinceEpoch22(long long secs, int spe);
 QDateTime* QDateTime_FromSecsSinceEpoch3(long long secs, int spe, int offsetFromUtc);
-void QDateTime_Delete(QDateTime* self, bool isSubclass);
+void QDateTime_Delete(QDateTime* self);
 
 #ifdef __cplusplus
 } /* extern C */

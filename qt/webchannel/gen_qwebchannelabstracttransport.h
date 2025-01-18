@@ -64,7 +64,7 @@ void QWebChannelAbstractTransport_override_virtual_ConnectNotify(void* self, int
 void QWebChannelAbstractTransport_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QWebChannelAbstractTransport_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QWebChannelAbstractTransport_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QWebChannelAbstractTransport_Delete(QWebChannelAbstractTransport* self, bool isSubclass);
+void QWebChannelAbstractTransport_Delete(QWebChannelAbstractTransport* self);
 
 #ifdef __cplusplus
 } /* extern C */

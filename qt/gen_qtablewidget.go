@@ -108,7 +108,7 @@ func (this *QTableWidgetSelectionRange) ColumnCount() int {
 
 // Delete this object from C++ memory.
 func (this *QTableWidgetSelectionRange) Delete() {
-	C.QTableWidgetSelectionRange_Delete(this.h, C.bool(this.isSubclass))
+	C.QTableWidgetSelectionRange_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -598,7 +598,7 @@ func miqt_exec_callback_QTableWidgetItem_Write(self *C.QTableWidgetItem, cb C.in
 
 // Delete this object from C++ memory.
 func (this *QTableWidgetItem) Delete() {
-	C.QTableWidgetItem_Delete(this.h, C.bool(this.isSubclass))
+	C.QTableWidgetItem_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2228,7 +2228,7 @@ func miqt_exec_callback_QTableWidget_CurrentChanged(self *C.QTableWidget, cb C.i
 
 // Delete this object from C++ memory.
 func (this *QTableWidget) Delete() {
-	C.QTableWidget_Delete(this.h, C.bool(this.isSubclass))
+	C.QTableWidget_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -184,7 +184,7 @@ func QHostInfo_LocalDomainName() string {
 
 // Delete this object from C++ memory.
 func (this *QHostInfo) Delete() {
-	C.QHostInfo_Delete(this.h, C.bool(this.isSubclass))
+	C.QHostInfo_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

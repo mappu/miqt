@@ -89,7 +89,7 @@ void QStringListModel_override_virtual_Index(void* self, intptr_t slot);
 QModelIndex* QStringListModel_virtualbase_Index(const void* self, int row, int column, QModelIndex* parent);
 void QStringListModel_override_virtual_DropMimeData(void* self, intptr_t slot);
 bool QStringListModel_virtualbase_DropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
-void QStringListModel_Delete(QStringListModel* self, bool isSubclass);
+void QStringListModel_Delete(QStringListModel* self);
 
 #ifdef __cplusplus
 } /* extern C */

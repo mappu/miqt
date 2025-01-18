@@ -353,7 +353,7 @@ func miqt_exec_callback_QGraphicsTransform_DisconnectNotify(self *C.QGraphicsTra
 
 // Delete this object from C++ memory.
 func (this *QGraphicsTransform) Delete() {
-	C.QGraphicsTransform_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsTransform_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -641,7 +641,7 @@ func miqt_exec_callback_QGraphicsScale_ApplyTo(self *C.QGraphicsScale, cb C.intp
 
 // Delete this object from C++ memory.
 func (this *QGraphicsScale) Delete() {
-	C.QGraphicsScale_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsScale_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -893,7 +893,7 @@ func miqt_exec_callback_QGraphicsRotation_ApplyTo(self *C.QGraphicsRotation, cb 
 
 // Delete this object from C++ memory.
 func (this *QGraphicsRotation) Delete() {
-	C.QGraphicsRotation_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsRotation_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

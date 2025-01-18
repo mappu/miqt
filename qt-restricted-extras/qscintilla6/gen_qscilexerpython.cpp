@@ -55,13 +55,13 @@ bool miqt_exec_callback_QsciLexerPython_WriteProperties(void*, intptr_t, QSettin
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerPython : public virtual QsciLexerPython {
+class MiqtVirtualQsciLexerPython final : public QsciLexerPython {
 public:
 
 	MiqtVirtualQsciLexerPython(): QsciLexerPython() {};
 	MiqtVirtualQsciLexerPython(QObject* parent): QsciLexerPython(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerPython() = default;
+	virtual ~MiqtVirtualQsciLexerPython() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__IndentationGuideView = 0;
@@ -1453,11 +1453,7 @@ bool QsciLexerPython_virtualbase_WriteProperties(const void* self, QSettings* qs
 	return ( (const MiqtVirtualQsciLexerPython*)(self) )->virtualbase_WriteProperties(qs, prefix);
 }
 
-void QsciLexerPython_Delete(QsciLexerPython* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerPython*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerPython_Delete(QsciLexerPython* self) {
+	delete self;
 }
 

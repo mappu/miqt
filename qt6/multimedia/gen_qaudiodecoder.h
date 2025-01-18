@@ -96,7 +96,7 @@ void QAudioDecoder_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QAudioDecoder_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QAudioDecoder_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QAudioDecoder_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QAudioDecoder_Delete(QAudioDecoder* self, bool isSubclass);
+void QAudioDecoder_Delete(QAudioDecoder* self);
 
 #ifdef __cplusplus
 } /* extern C */

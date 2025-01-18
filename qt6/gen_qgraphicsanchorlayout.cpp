@@ -97,21 +97,17 @@ struct miqt_string QGraphicsAnchor_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QGraphicsAnchor_Delete(QGraphicsAnchor* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QGraphicsAnchor*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsAnchor_Delete(QGraphicsAnchor* self) {
+	delete self;
 }
 
-class MiqtVirtualQGraphicsAnchorLayout : public virtual QGraphicsAnchorLayout {
+class MiqtVirtualQGraphicsAnchorLayout final : public QGraphicsAnchorLayout {
 public:
 
 	MiqtVirtualQGraphicsAnchorLayout(): QGraphicsAnchorLayout() {};
 	MiqtVirtualQGraphicsAnchorLayout(QGraphicsLayoutItem* parent): QGraphicsAnchorLayout(parent) {};
 
-	virtual ~MiqtVirtualQGraphicsAnchorLayout() = default;
+	virtual ~MiqtVirtualQGraphicsAnchorLayout() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__RemoveAt = 0;
@@ -484,11 +480,7 @@ void QGraphicsAnchorLayout_virtualbase_WidgetEvent(void* self, QEvent* e) {
 	( (MiqtVirtualQGraphicsAnchorLayout*)(self) )->virtualbase_WidgetEvent(e);
 }
 
-void QGraphicsAnchorLayout_Delete(QGraphicsAnchorLayout* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsAnchorLayout*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsAnchorLayout_Delete(QGraphicsAnchorLayout* self) {
+	delete self;
 }
 

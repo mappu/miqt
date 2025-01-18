@@ -21,11 +21,7 @@ void QsciDocument_OperatorAssign(QsciDocument* self, QsciDocument* param1) {
 	self->operator=(*param1);
 }
 
-void QsciDocument_Delete(QsciDocument* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QsciDocument*>( self );
-	} else {
-		delete self;
-	}
+void QsciDocument_Delete(QsciDocument* self) {
+	delete self;
 }
 

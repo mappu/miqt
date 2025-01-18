@@ -84,7 +84,7 @@ void miqt_exec_callback_QGraphicsScene_DisconnectNotify(void*, intptr_t, QMetaMe
 } /* extern C */
 #endif
 
-class MiqtVirtualQGraphicsScene : public virtual QGraphicsScene {
+class MiqtVirtualQGraphicsScene final : public QGraphicsScene {
 public:
 
 	MiqtVirtualQGraphicsScene(): QGraphicsScene() {};
@@ -94,7 +94,7 @@ public:
 	MiqtVirtualQGraphicsScene(const QRectF& sceneRect, QObject* parent): QGraphicsScene(sceneRect, parent) {};
 	MiqtVirtualQGraphicsScene(qreal x, qreal y, qreal width, qreal height, QObject* parent): QGraphicsScene(x, y, width, height, parent) {};
 
-	virtual ~MiqtVirtualQGraphicsScene() = default;
+	virtual ~MiqtVirtualQGraphicsScene() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__InputMethodQuery = 0;
@@ -1770,11 +1770,7 @@ void QGraphicsScene_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QGraphicsScene_Delete(QGraphicsScene* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsScene*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsScene_Delete(QGraphicsScene* self) {
+	delete self;
 }
 

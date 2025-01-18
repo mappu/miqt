@@ -158,7 +158,7 @@ void QAbstractSocket_override_virtual_Seek(void* self, intptr_t slot);
 bool QAbstractSocket_virtualbase_Seek(void* self, long long pos);
 void QAbstractSocket_override_virtual_Reset(void* self, intptr_t slot);
 bool QAbstractSocket_virtualbase_Reset(void* self);
-void QAbstractSocket_Delete(QAbstractSocket* self, bool isSubclass);
+void QAbstractSocket_Delete(QAbstractSocket* self);
 
 #ifdef __cplusplus
 } /* extern C */

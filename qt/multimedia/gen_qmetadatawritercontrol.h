@@ -50,7 +50,7 @@ struct miqt_string QMetaDataWriterControl_Tr2(const char* s, const char* c);
 struct miqt_string QMetaDataWriterControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QMetaDataWriterControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QMetaDataWriterControl_TrUtf83(const char* s, const char* c, int n);
-void QMetaDataWriterControl_Delete(QMetaDataWriterControl* self, bool isSubclass);
+void QMetaDataWriterControl_Delete(QMetaDataWriterControl* self);
 
 #ifdef __cplusplus
 } /* extern C */

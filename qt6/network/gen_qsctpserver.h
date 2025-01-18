@@ -48,7 +48,7 @@ void QSctpServer_override_virtual_HasPendingConnections(void* self, intptr_t slo
 bool QSctpServer_virtualbase_HasPendingConnections(const void* self);
 void QSctpServer_override_virtual_NextPendingConnection(void* self, intptr_t slot);
 QTcpSocket* QSctpServer_virtualbase_NextPendingConnection(void* self);
-void QSctpServer_Delete(QSctpServer* self, bool isSubclass);
+void QSctpServer_Delete(QSctpServer* self);
 
 #ifdef __cplusplus
 } /* extern C */

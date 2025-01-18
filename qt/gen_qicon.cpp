@@ -374,11 +374,7 @@ struct miqt_array /* of QSize* */  QIcon_AvailableSizes2(const QIcon* self, int 
 	return _out;
 }
 
-void QIcon_Delete(QIcon* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QIcon*>( self );
-	} else {
-		delete self;
-	}
+void QIcon_Delete(QIcon* self) {
+	delete self;
 }
 

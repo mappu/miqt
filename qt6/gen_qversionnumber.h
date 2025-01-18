@@ -45,7 +45,7 @@ QVersionNumber* QVersionNumber_CommonPrefix(QVersionNumber* v1, QVersionNumber* 
 struct miqt_string QVersionNumber_ToString(const QVersionNumber* self);
 QVersionNumber* QVersionNumber_FromString(QAnyStringView* stringVal);
 QVersionNumber* QVersionNumber_FromString2(QAnyStringView* stringVal, ptrdiff_t* suffixIndex);
-void QVersionNumber_Delete(QVersionNumber* self, bool isSubclass);
+void QVersionNumber_Delete(QVersionNumber* self);
 
 QTypeRevision* QTypeRevision_new();
 QTypeRevision* QTypeRevision_new2(QTypeRevision* param1);
@@ -55,7 +55,7 @@ unsigned char QTypeRevision_MajorVersion(const QTypeRevision* self);
 bool QTypeRevision_HasMinorVersion(const QTypeRevision* self);
 unsigned char QTypeRevision_MinorVersion(const QTypeRevision* self);
 bool QTypeRevision_IsValid(const QTypeRevision* self);
-void QTypeRevision_Delete(QTypeRevision* self, bool isSubclass);
+void QTypeRevision_Delete(QTypeRevision* self);
 
 #ifdef __cplusplus
 } /* extern C */

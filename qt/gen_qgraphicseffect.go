@@ -474,7 +474,7 @@ func miqt_exec_callback_QGraphicsEffect_DisconnectNotify(self *C.QGraphicsEffect
 
 // Delete this object from C++ memory.
 func (this *QGraphicsEffect) Delete() {
-	C.QGraphicsEffect_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsEffect_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -753,7 +753,7 @@ func miqt_exec_callback_QGraphicsColorizeEffect_SourceChanged(self *C.QGraphicsC
 
 // Delete this object from C++ memory.
 func (this *QGraphicsColorizeEffect) Delete() {
-	C.QGraphicsColorizeEffect_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsColorizeEffect_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1036,7 +1036,7 @@ func miqt_exec_callback_QGraphicsBlurEffect_SourceChanged(self *C.QGraphicsBlurE
 
 // Delete this object from C++ memory.
 func (this *QGraphicsBlurEffect) Delete() {
-	C.QGraphicsBlurEffect_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsBlurEffect_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1375,7 +1375,7 @@ func miqt_exec_callback_QGraphicsDropShadowEffect_SourceChanged(self *C.QGraphic
 
 // Delete this object from C++ memory.
 func (this *QGraphicsDropShadowEffect) Delete() {
-	C.QGraphicsDropShadowEffect_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsDropShadowEffect_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1654,7 +1654,7 @@ func miqt_exec_callback_QGraphicsOpacityEffect_SourceChanged(self *C.QGraphicsOp
 
 // Delete this object from C++ memory.
 func (this *QGraphicsOpacityEffect) Delete() {
-	C.QGraphicsOpacityEffect_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsOpacityEffect_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

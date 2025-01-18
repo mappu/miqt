@@ -1616,7 +1616,7 @@ func miqt_exec_callback_QPlainTextEdit_ViewportSizeHint(self *C.QPlainTextEdit, 
 
 // Delete this object from C++ memory.
 func (this *QPlainTextEdit) Delete() {
-	C.QPlainTextEdit_Delete(this.h, C.bool(this.isSubclass))
+	C.QPlainTextEdit_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2062,7 +2062,7 @@ func miqt_exec_callback_QPlainTextDocumentLayout_DrawInlineObject(self *C.QPlain
 
 // Delete this object from C++ memory.
 func (this *QPlainTextDocumentLayout) Delete() {
-	C.QPlainTextDocumentLayout_Delete(this.h, C.bool(this.isSubclass))
+	C.QPlainTextDocumentLayout_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

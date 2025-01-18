@@ -28,13 +28,13 @@ void miqt_exec_callback_QAccessiblePlugin_DisconnectNotify(void*, intptr_t, QMet
 } /* extern C */
 #endif
 
-class MiqtVirtualQAccessiblePlugin : public virtual QAccessiblePlugin {
+class MiqtVirtualQAccessiblePlugin final : public QAccessiblePlugin {
 public:
 
 	MiqtVirtualQAccessiblePlugin(): QAccessiblePlugin() {};
 	MiqtVirtualQAccessiblePlugin(QObject* parent): QAccessiblePlugin(parent) {};
 
-	virtual ~MiqtVirtualQAccessiblePlugin() = default;
+	virtual ~MiqtVirtualQAccessiblePlugin() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Create = 0;
@@ -351,11 +351,7 @@ void QAccessiblePlugin_virtualbase_DisconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualQAccessiblePlugin*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QAccessiblePlugin_Delete(QAccessiblePlugin* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAccessiblePlugin*>( self );
-	} else {
-		delete self;
-	}
+void QAccessiblePlugin_Delete(QAccessiblePlugin* self) {
+	delete self;
 }
 

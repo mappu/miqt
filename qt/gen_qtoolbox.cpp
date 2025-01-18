@@ -31,14 +31,14 @@ void miqt_exec_callback_QToolBox_PaintEvent(void*, intptr_t, QPaintEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQToolBox : public virtual QToolBox {
+class MiqtVirtualQToolBox final : public QToolBox {
 public:
 
 	MiqtVirtualQToolBox(QWidget* parent): QToolBox(parent) {};
 	MiqtVirtualQToolBox(): QToolBox() {};
 	MiqtVirtualQToolBox(QWidget* parent, Qt::WindowFlags f): QToolBox(parent, f) {};
 
-	virtual ~MiqtVirtualQToolBox() = default;
+	virtual ~MiqtVirtualQToolBox() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -464,11 +464,7 @@ void QToolBox_virtualbase_PaintEvent(void* self, QPaintEvent* param1) {
 	( (MiqtVirtualQToolBox*)(self) )->virtualbase_PaintEvent(param1);
 }
 
-void QToolBox_Delete(QToolBox* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQToolBox*>( self );
-	} else {
-		delete self;
-	}
+void QToolBox_Delete(QToolBox* self) {
+	delete self;
 }
 

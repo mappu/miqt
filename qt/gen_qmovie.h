@@ -120,7 +120,7 @@ void QMovie_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QMovie_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QMovie_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QMovie_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QMovie_Delete(QMovie* self, bool isSubclass);
+void QMovie_Delete(QMovie* self);
 
 #ifdef __cplusplus
 } /* extern C */

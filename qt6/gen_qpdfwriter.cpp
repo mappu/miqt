@@ -43,13 +43,13 @@ void miqt_exec_callback_QPdfWriter_SetPageRanges(void*, intptr_t, QPageRanges*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQPdfWriter : public virtual QPdfWriter {
+class MiqtVirtualQPdfWriter final : public QPdfWriter {
 public:
 
 	MiqtVirtualQPdfWriter(const QString& filename): QPdfWriter(filename) {};
 	MiqtVirtualQPdfWriter(QIODevice* device): QPdfWriter(device) {};
 
-	virtual ~MiqtVirtualQPdfWriter() = default;
+	virtual ~MiqtVirtualQPdfWriter() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__NewPage = 0;
@@ -674,11 +674,7 @@ void QPdfWriter_virtualbase_SetPageRanges(void* self, QPageRanges* ranges) {
 	( (MiqtVirtualQPdfWriter*)(self) )->virtualbase_SetPageRanges(ranges);
 }
 
-void QPdfWriter_Delete(QPdfWriter* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQPdfWriter*>( self );
-	} else {
-		delete self;
-	}
+void QPdfWriter_Delete(QPdfWriter* self) {
+	delete self;
 }
 

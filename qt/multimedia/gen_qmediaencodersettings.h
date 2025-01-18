@@ -50,7 +50,7 @@ QVariant* QAudioEncoderSettings_EncodingOption(const QAudioEncoderSettings* self
 struct miqt_map /* of struct miqt_string to QVariant* */  QAudioEncoderSettings_EncodingOptions(const QAudioEncoderSettings* self);
 void QAudioEncoderSettings_SetEncodingOption(QAudioEncoderSettings* self, struct miqt_string option, QVariant* value);
 void QAudioEncoderSettings_SetEncodingOptions(QAudioEncoderSettings* self, struct miqt_map /* of struct miqt_string to QVariant* */  options);
-void QAudioEncoderSettings_Delete(QAudioEncoderSettings* self, bool isSubclass);
+void QAudioEncoderSettings_Delete(QAudioEncoderSettings* self);
 
 QVideoEncoderSettings* QVideoEncoderSettings_new();
 QVideoEncoderSettings* QVideoEncoderSettings_new2(QVideoEncoderSettings* other);
@@ -75,7 +75,7 @@ QVariant* QVideoEncoderSettings_EncodingOption(const QVideoEncoderSettings* self
 struct miqt_map /* of struct miqt_string to QVariant* */  QVideoEncoderSettings_EncodingOptions(const QVideoEncoderSettings* self);
 void QVideoEncoderSettings_SetEncodingOption(QVideoEncoderSettings* self, struct miqt_string option, QVariant* value);
 void QVideoEncoderSettings_SetEncodingOptions(QVideoEncoderSettings* self, struct miqt_map /* of struct miqt_string to QVariant* */  options);
-void QVideoEncoderSettings_Delete(QVideoEncoderSettings* self, bool isSubclass);
+void QVideoEncoderSettings_Delete(QVideoEncoderSettings* self);
 
 QImageEncoderSettings* QImageEncoderSettings_new();
 QImageEncoderSettings* QImageEncoderSettings_new2(QImageEncoderSettings* other);
@@ -94,7 +94,7 @@ QVariant* QImageEncoderSettings_EncodingOption(const QImageEncoderSettings* self
 struct miqt_map /* of struct miqt_string to QVariant* */  QImageEncoderSettings_EncodingOptions(const QImageEncoderSettings* self);
 void QImageEncoderSettings_SetEncodingOption(QImageEncoderSettings* self, struct miqt_string option, QVariant* value);
 void QImageEncoderSettings_SetEncodingOptions(QImageEncoderSettings* self, struct miqt_map /* of struct miqt_string to QVariant* */  options);
-void QImageEncoderSettings_Delete(QImageEncoderSettings* self, bool isSubclass);
+void QImageEncoderSettings_Delete(QImageEncoderSettings* self);
 
 #ifdef __cplusplus
 } /* extern C */

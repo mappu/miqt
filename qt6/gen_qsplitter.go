@@ -515,7 +515,7 @@ func miqt_exec_callback_QSplitter_InitStyleOption(self *C.QSplitter, cb C.intptr
 
 // Delete this object from C++ memory.
 func (this *QSplitter) Delete() {
-	C.QSplitter_Delete(this.h, C.bool(this.isSubclass))
+	C.QSplitter_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1726,7 +1726,7 @@ func miqt_exec_callback_QSplitterHandle_FocusNextPrevChild(self *C.QSplitterHand
 
 // Delete this object from C++ memory.
 func (this *QSplitterHandle) Delete() {
-	C.QSplitterHandle_Delete(this.h, C.bool(this.isSubclass))
+	C.QSplitterHandle_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

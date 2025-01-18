@@ -88,7 +88,7 @@ bool miqt_exec_callback_QGroupBox_FocusNextPrevChild(void*, intptr_t, bool);
 } /* extern C */
 #endif
 
-class MiqtVirtualQGroupBox : public virtual QGroupBox {
+class MiqtVirtualQGroupBox final : public QGroupBox {
 public:
 
 	MiqtVirtualQGroupBox(QWidget* parent): QGroupBox(parent) {};
@@ -96,7 +96,7 @@ public:
 	MiqtVirtualQGroupBox(const QString& title): QGroupBox(title) {};
 	MiqtVirtualQGroupBox(const QString& title, QWidget* parent): QGroupBox(title, parent) {};
 
-	virtual ~MiqtVirtualQGroupBox() = default;
+	virtual ~MiqtVirtualQGroupBox() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__MinimumSizeHint = 0;
@@ -1616,11 +1616,7 @@ bool QGroupBox_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQGroupBox*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QGroupBox_Delete(QGroupBox* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGroupBox*>( self );
-	} else {
-		delete self;
-	}
+void QGroupBox_Delete(QGroupBox* self) {
+	delete self;
 }
 

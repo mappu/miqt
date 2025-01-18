@@ -63,13 +63,13 @@ struct miqt_map /* of int to struct miqt_string */  miqt_exec_callback_QAbstract
 } /* extern C */
 #endif
 
-class MiqtVirtualQAbstractProxyModel : public virtual QAbstractProxyModel {
+class MiqtVirtualQAbstractProxyModel final : public QAbstractProxyModel {
 public:
 
 	MiqtVirtualQAbstractProxyModel(): QAbstractProxyModel() {};
 	MiqtVirtualQAbstractProxyModel(QObject* parent): QAbstractProxyModel(parent) {};
 
-	virtual ~MiqtVirtualQAbstractProxyModel() = default;
+	virtual ~MiqtVirtualQAbstractProxyModel() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetSourceModel = 0;
@@ -1694,11 +1694,7 @@ struct miqt_map /* of int to struct miqt_string */  QAbstractProxyModel_virtualb
 	return ( (const MiqtVirtualQAbstractProxyModel*)(self) )->virtualbase_RoleNames();
 }
 
-void QAbstractProxyModel_Delete(QAbstractProxyModel* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractProxyModel*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractProxyModel_Delete(QAbstractProxyModel* self) {
+	delete self;
 }
 

@@ -722,7 +722,7 @@ func miqt_exec_callback_QToolButton_FocusOutEvent(self *C.QToolButton, cb C.intp
 
 // Delete this object from C++ memory.
 func (this *QToolButton) Delete() {
-	C.QToolButton_Delete(this.h, C.bool(this.isSubclass))
+	C.QToolButton_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

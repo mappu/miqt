@@ -513,7 +513,7 @@ func miqt_exec_callback_QStateMachine_Event(self *C.QStateMachine, cb C.intptr_t
 
 // Delete this object from C++ memory.
 func (this *QStateMachine) Delete() {
-	C.QStateMachine_Delete(this.h, C.bool(this.isSubclass))
+	C.QStateMachine_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -580,7 +580,7 @@ func (this *QStateMachine__SignalEvent) SignalIndex() int {
 
 // Delete this object from C++ memory.
 func (this *QStateMachine__SignalEvent) Delete() {
-	C.QStateMachine__SignalEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QStateMachine__SignalEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -655,7 +655,7 @@ func (this *QStateMachine__WrappedEvent) Event() *QEvent {
 
 // Delete this object from C++ memory.
 func (this *QStateMachine__WrappedEvent) Delete() {
-	C.QStateMachine__WrappedEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QStateMachine__WrappedEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

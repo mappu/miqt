@@ -123,7 +123,7 @@ void QCommonStyle_override_virtual_DrawItemPixmap(void* self, intptr_t slot);
 void QCommonStyle_virtualbase_DrawItemPixmap(const void* self, QPainter* painter, QRect* rect, int alignment, QPixmap* pixmap);
 void QCommonStyle_override_virtual_StandardPalette(void* self, intptr_t slot);
 QPalette* QCommonStyle_virtualbase_StandardPalette(const void* self);
-void QCommonStyle_Delete(QCommonStyle* self, bool isSubclass);
+void QCommonStyle_Delete(QCommonStyle* self);
 
 #ifdef __cplusplus
 } /* extern C */

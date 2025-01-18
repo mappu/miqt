@@ -109,12 +109,8 @@ bool QLine_OperatorNotEqual(const QLine* self, QLine* d) {
 	return (*self != *d);
 }
 
-void QLine_Delete(QLine* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QLine*>( self );
-	} else {
-		delete self;
-	}
+void QLine_Delete(QLine* self) {
+	delete self;
 }
 
 QLineF* QLineF_new() {
@@ -281,11 +277,7 @@ QLine* QLineF_ToLine(const QLineF* self) {
 	return new QLine(self->toLine());
 }
 
-void QLineF_Delete(QLineF* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QLineF*>( self );
-	} else {
-		delete self;
-	}
+void QLineF_Delete(QLineF* self) {
+	delete self;
 }
 

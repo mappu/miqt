@@ -154,12 +154,8 @@ void QRandomGenerator_Seed1(QRandomGenerator* self, unsigned int s) {
 	self->seed(static_cast<quint32>(s));
 }
 
-void QRandomGenerator_Delete(QRandomGenerator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QRandomGenerator*>( self );
-	} else {
-		delete self;
-	}
+void QRandomGenerator_Delete(QRandomGenerator* self) {
+	delete self;
 }
 
 QRandomGenerator64* QRandomGenerator64_new() {
@@ -230,11 +226,7 @@ void QRandomGenerator64_OperatorAssign(QRandomGenerator64* self, QRandomGenerato
 	self->operator=(*param1);
 }
 
-void QRandomGenerator64_Delete(QRandomGenerator64* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QRandomGenerator64*>( self );
-	} else {
-		delete self;
-	}
+void QRandomGenerator64_Delete(QRandomGenerator64* self) {
+	delete self;
 }
 

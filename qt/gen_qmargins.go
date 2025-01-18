@@ -140,7 +140,7 @@ func (this *QMargins) OperatorDivideAssignWithQreal(param1 float64) *QMargins {
 
 // Delete this object from C++ memory.
 func (this *QMargins) Delete() {
-	C.QMargins_Delete(this.h, C.bool(this.isSubclass))
+	C.QMargins_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -285,7 +285,7 @@ func (this *QMarginsF) ToMargins() *QMargins {
 
 // Delete this object from C++ memory.
 func (this *QMarginsF) Delete() {
-	C.QMarginsF_Delete(this.h, C.bool(this.isSubclass))
+	C.QMarginsF_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

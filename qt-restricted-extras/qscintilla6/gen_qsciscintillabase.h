@@ -260,7 +260,7 @@ void QsciScintillaBase_override_virtual_WheelEvent(void* self, intptr_t slot);
 void QsciScintillaBase_virtualbase_WheelEvent(void* self, QWheelEvent* param1);
 void QsciScintillaBase_override_virtual_ViewportSizeHint(void* self, intptr_t slot);
 QSize* QsciScintillaBase_virtualbase_ViewportSizeHint(const void* self);
-void QsciScintillaBase_Delete(QsciScintillaBase* self, bool isSubclass);
+void QsciScintillaBase_Delete(QsciScintillaBase* self);
 
 #ifdef __cplusplus
 } /* extern C */

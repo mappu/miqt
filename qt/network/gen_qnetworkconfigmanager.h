@@ -76,7 +76,7 @@ void QNetworkConfigurationManager_override_virtual_ConnectNotify(void* self, int
 void QNetworkConfigurationManager_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QNetworkConfigurationManager_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QNetworkConfigurationManager_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QNetworkConfigurationManager_Delete(QNetworkConfigurationManager* self, bool isSubclass);
+void QNetworkConfigurationManager_Delete(QNetworkConfigurationManager* self);
 
 #ifdef __cplusplus
 } /* extern C */

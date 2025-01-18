@@ -251,7 +251,7 @@ void QMenu_override_virtual_InputMethodEvent(void* self, intptr_t slot);
 void QMenu_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* param1);
 void QMenu_override_virtual_InputMethodQuery(void* self, intptr_t slot);
 QVariant* QMenu_virtualbase_InputMethodQuery(const void* self, int param1);
-void QMenu_Delete(QMenu* self, bool isSubclass);
+void QMenu_Delete(QMenu* self);
 
 #ifdef __cplusplus
 } /* extern C */

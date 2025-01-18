@@ -145,7 +145,7 @@ void QsciLexerSQL_override_virtual_ReadProperties(void* self, intptr_t slot);
 bool QsciLexerSQL_virtualbase_ReadProperties(void* self, QSettings* qs, struct miqt_string prefix);
 void QsciLexerSQL_override_virtual_WriteProperties(void* self, intptr_t slot);
 bool QsciLexerSQL_virtualbase_WriteProperties(const void* self, QSettings* qs, struct miqt_string prefix);
-void QsciLexerSQL_Delete(QsciLexerSQL* self, bool isSubclass);
+void QsciLexerSQL_Delete(QsciLexerSQL* self);
 
 #ifdef __cplusplus
 } /* extern C */

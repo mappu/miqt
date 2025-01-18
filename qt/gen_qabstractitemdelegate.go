@@ -782,7 +782,7 @@ func miqt_exec_callback_QAbstractItemDelegate_DisconnectNotify(self *C.QAbstract
 
 // Delete this object from C++ memory.
 func (this *QAbstractItemDelegate) Delete() {
-	C.QAbstractItemDelegate_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractItemDelegate_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

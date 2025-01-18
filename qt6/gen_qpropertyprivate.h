@@ -22,9 +22,9 @@ typedef struct QPropertyProxyBindingData QPropertyProxyBindingData;
 typedef struct QUntypedPropertyData QUntypedPropertyData;
 #endif
 
-void QUntypedPropertyData_Delete(QUntypedPropertyData* self, bool isSubclass);
+void QUntypedPropertyData_Delete(QUntypedPropertyData* self);
 
-void QPropertyProxyBindingData_Delete(QPropertyProxyBindingData* self, bool isSubclass);
+void QPropertyProxyBindingData_Delete(QPropertyProxyBindingData* self);
 
 #ifdef __cplusplus
 } /* extern C */

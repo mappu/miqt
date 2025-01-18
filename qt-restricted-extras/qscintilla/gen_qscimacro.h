@@ -71,7 +71,7 @@ void QsciMacro_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QsciMacro_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QsciMacro_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QsciMacro_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QsciMacro_Delete(QsciMacro* self, bool isSubclass);
+void QsciMacro_Delete(QsciMacro* self);
 
 #ifdef __cplusplus
 } /* extern C */

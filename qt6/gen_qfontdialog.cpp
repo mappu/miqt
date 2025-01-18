@@ -43,7 +43,7 @@ void miqt_exec_callback_QFontDialog_ContextMenuEvent(void*, intptr_t, QContextMe
 } /* extern C */
 #endif
 
-class MiqtVirtualQFontDialog : public virtual QFontDialog {
+class MiqtVirtualQFontDialog final : public QFontDialog {
 public:
 
 	MiqtVirtualQFontDialog(QWidget* parent): QFontDialog(parent) {};
@@ -51,7 +51,7 @@ public:
 	MiqtVirtualQFontDialog(const QFont& initial): QFontDialog(initial) {};
 	MiqtVirtualQFontDialog(const QFont& initial, QWidget* parent): QFontDialog(initial, parent) {};
 
-	virtual ~MiqtVirtualQFontDialog() = default;
+	virtual ~MiqtVirtualQFontDialog() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetVisible = 0;
@@ -676,11 +676,7 @@ void QFontDialog_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* par
 	( (MiqtVirtualQFontDialog*)(self) )->virtualbase_ContextMenuEvent(param1);
 }
 
-void QFontDialog_Delete(QFontDialog* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQFontDialog*>( self );
-	} else {
-		delete self;
-	}
+void QFontDialog_Delete(QFontDialog* self) {
+	delete self;
 }
 

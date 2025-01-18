@@ -31,13 +31,13 @@ void miqt_exec_callback_QLocalServer_DisconnectNotify(void*, intptr_t, QMetaMeth
 } /* extern C */
 #endif
 
-class MiqtVirtualQLocalServer : public virtual QLocalServer {
+class MiqtVirtualQLocalServer final : public QLocalServer {
 public:
 
 	MiqtVirtualQLocalServer(): QLocalServer() {};
 	MiqtVirtualQLocalServer(QObject* parent): QLocalServer(parent) {};
 
-	virtual ~MiqtVirtualQLocalServer() = default;
+	virtual ~MiqtVirtualQLocalServer() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__HasPendingConnections = 0;
@@ -534,11 +534,7 @@ void QLocalServer_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQLocalServer*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QLocalServer_Delete(QLocalServer* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQLocalServer*>( self );
-	} else {
-		delete self;
-	}
+void QLocalServer_Delete(QLocalServer* self) {
+	delete self;
 }
 

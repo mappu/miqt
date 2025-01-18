@@ -452,7 +452,7 @@ func QStyleHints_Tr3(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QStyleHints) Delete() {
-	C.QStyleHints_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleHints_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

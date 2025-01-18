@@ -120,12 +120,8 @@ ptrdiff_t QMetaContainer_DiffConstIterator(const QMetaContainer* self, const voi
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-void QMetaContainer_Delete(QMetaContainer* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMetaContainer*>( self );
-	} else {
-		delete self;
-	}
+void QMetaContainer_Delete(QMetaContainer* self) {
+	delete self;
 }
 
 QMetaSequence* QMetaSequence_new() {
@@ -256,12 +252,8 @@ void QMetaSequence_ValueAtConstIterator(const QMetaSequence* self, const void* i
 	self->valueAtConstIterator(iterator, result);
 }
 
-void QMetaSequence_Delete(QMetaSequence* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMetaSequence*>( self );
-	} else {
-		delete self;
-	}
+void QMetaSequence_Delete(QMetaSequence* self) {
+	delete self;
 }
 
 QMetaAssociation* QMetaAssociation_new() {
@@ -376,11 +368,7 @@ void* QMetaAssociation_CreateConstIteratorAtKey(const QMetaAssociation* self, co
 	return self->createConstIteratorAtKey(container, key);
 }
 
-void QMetaAssociation_Delete(QMetaAssociation* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMetaAssociation*>( self );
-	} else {
-		delete self;
-	}
+void QMetaAssociation_Delete(QMetaAssociation* self) {
+	delete self;
 }
 

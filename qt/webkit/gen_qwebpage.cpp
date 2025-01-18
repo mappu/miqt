@@ -100,13 +100,13 @@ void miqt_exec_callback_QWebPage_DisconnectNotify(void*, intptr_t, QMetaMethod*)
 } /* extern C */
 #endif
 
-class MiqtVirtualQWebPage : public virtual QWebPage {
+class MiqtVirtualQWebPage final : public QWebPage {
 public:
 
 	MiqtVirtualQWebPage(): QWebPage() {};
 	MiqtVirtualQWebPage(QObject* parent): QWebPage(parent) {};
 
-	virtual ~MiqtVirtualQWebPage() = default;
+	virtual ~MiqtVirtualQWebPage() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__TriggerAction = 0;
@@ -1612,12 +1612,8 @@ void QWebPage_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWebPage*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QWebPage_Delete(QWebPage* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQWebPage*>( self );
-	} else {
-		delete self;
-	}
+void QWebPage_Delete(QWebPage* self) {
+	delete self;
 }
 
 QWebPage__ViewportAttributes* QWebPage__ViewportAttributes_new() {
@@ -1664,24 +1660,16 @@ QSizeF* QWebPage__ViewportAttributes_Size(const QWebPage__ViewportAttributes* se
 	return new QSizeF(self->size());
 }
 
-void QWebPage__ViewportAttributes_Delete(QWebPage__ViewportAttributes* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebPage::ViewportAttributes*>( self );
-	} else {
-		delete self;
-	}
+void QWebPage__ViewportAttributes_Delete(QWebPage__ViewportAttributes* self) {
+	delete self;
 }
 
 QWebPage__ExtensionOption* QWebPage__ExtensionOption_new(QWebPage__ExtensionOption* param1) {
 	return new QWebPage::ExtensionOption(*param1);
 }
 
-void QWebPage__ExtensionOption_Delete(QWebPage__ExtensionOption* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebPage::ExtensionOption*>( self );
-	} else {
-		delete self;
-	}
+void QWebPage__ExtensionOption_Delete(QWebPage__ExtensionOption* self) {
+	delete self;
 }
 
 QWebPage__ExtensionReturn* QWebPage__ExtensionReturn_new(QWebPage__ExtensionReturn* param1) {
@@ -1692,36 +1680,24 @@ QWebPage__ExtensionReturn* QWebPage__ExtensionReturn_new2() {
 	return new QWebPage::ExtensionReturn();
 }
 
-void QWebPage__ExtensionReturn_Delete(QWebPage__ExtensionReturn* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebPage::ExtensionReturn*>( self );
-	} else {
-		delete self;
-	}
+void QWebPage__ExtensionReturn_Delete(QWebPage__ExtensionReturn* self) {
+	delete self;
 }
 
 void QWebPage__ChooseMultipleFilesExtensionOption_virtbase(QWebPage__ChooseMultipleFilesExtensionOption* src, QWebPage::ExtensionOption** outptr_QWebPage__ExtensionOption) {
 	*outptr_QWebPage__ExtensionOption = static_cast<QWebPage::ExtensionOption*>(src);
 }
 
-void QWebPage__ChooseMultipleFilesExtensionOption_Delete(QWebPage__ChooseMultipleFilesExtensionOption* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebPage::ChooseMultipleFilesExtensionOption*>( self );
-	} else {
-		delete self;
-	}
+void QWebPage__ChooseMultipleFilesExtensionOption_Delete(QWebPage__ChooseMultipleFilesExtensionOption* self) {
+	delete self;
 }
 
 void QWebPage__ChooseMultipleFilesExtensionReturn_virtbase(QWebPage__ChooseMultipleFilesExtensionReturn* src, QWebPage::ExtensionReturn** outptr_QWebPage__ExtensionReturn) {
 	*outptr_QWebPage__ExtensionReturn = static_cast<QWebPage::ExtensionReturn*>(src);
 }
 
-void QWebPage__ChooseMultipleFilesExtensionReturn_Delete(QWebPage__ChooseMultipleFilesExtensionReturn* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebPage::ChooseMultipleFilesExtensionReturn*>( self );
-	} else {
-		delete self;
-	}
+void QWebPage__ChooseMultipleFilesExtensionReturn_Delete(QWebPage__ChooseMultipleFilesExtensionReturn* self) {
+	delete self;
 }
 
 QWebPage__ErrorPageExtensionOption* QWebPage__ErrorPageExtensionOption_new(QWebPage__ErrorPageExtensionOption* param1) {
@@ -1736,12 +1712,8 @@ void QWebPage__ErrorPageExtensionOption_OperatorAssign(QWebPage__ErrorPageExtens
 	self->operator=(*param1);
 }
 
-void QWebPage__ErrorPageExtensionOption_Delete(QWebPage__ErrorPageExtensionOption* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebPage::ErrorPageExtensionOption*>( self );
-	} else {
-		delete self;
-	}
+void QWebPage__ErrorPageExtensionOption_Delete(QWebPage__ErrorPageExtensionOption* self) {
+	delete self;
 }
 
 QWebPage__ErrorPageExtensionReturn* QWebPage__ErrorPageExtensionReturn_new() {
@@ -1760,11 +1732,7 @@ void QWebPage__ErrorPageExtensionReturn_OperatorAssign(QWebPage__ErrorPageExtens
 	self->operator=(*param1);
 }
 
-void QWebPage__ErrorPageExtensionReturn_Delete(QWebPage__ErrorPageExtensionReturn* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebPage::ErrorPageExtensionReturn*>( self );
-	} else {
-		delete self;
-	}
+void QWebPage__ErrorPageExtensionReturn_Delete(QWebPage__ErrorPageExtensionReturn* self) {
+	delete self;
 }
 

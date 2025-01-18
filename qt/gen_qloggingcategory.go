@@ -99,7 +99,7 @@ func QLoggingCategory_SetFilterRules(rules string) {
 
 // Delete this object from C++ memory.
 func (this *QLoggingCategory) Delete() {
-	C.QLoggingCategory_Delete(this.h, C.bool(this.isSubclass))
+	C.QLoggingCategory_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

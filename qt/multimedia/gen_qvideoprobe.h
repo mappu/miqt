@@ -70,7 +70,7 @@ void QVideoProbe_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QVideoProbe_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QVideoProbe_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QVideoProbe_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QVideoProbe_Delete(QVideoProbe* self, bool isSubclass);
+void QVideoProbe_Delete(QVideoProbe* self);
 
 #ifdef __cplusplus
 } /* extern C */

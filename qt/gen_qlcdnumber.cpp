@@ -26,7 +26,7 @@ void miqt_exec_callback_QLCDNumber_ChangeEvent(void*, intptr_t, QEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQLCDNumber : public virtual QLCDNumber {
+class MiqtVirtualQLCDNumber final : public QLCDNumber {
 public:
 
 	MiqtVirtualQLCDNumber(QWidget* parent): QLCDNumber(parent) {};
@@ -34,7 +34,7 @@ public:
 	MiqtVirtualQLCDNumber(uint numDigits): QLCDNumber(numDigits) {};
 	MiqtVirtualQLCDNumber(uint numDigits, QWidget* parent): QLCDNumber(numDigits, parent) {};
 
-	virtual ~MiqtVirtualQLCDNumber() = default;
+	virtual ~MiqtVirtualQLCDNumber() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -350,11 +350,7 @@ void QLCDNumber_virtualbase_ChangeEvent(void* self, QEvent* param1) {
 	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_ChangeEvent(param1);
 }
 
-void QLCDNumber_Delete(QLCDNumber* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQLCDNumber*>( self );
-	} else {
-		delete self;
-	}
+void QLCDNumber_Delete(QLCDNumber* self) {
+	delete self;
 }
 

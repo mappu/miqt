@@ -85,13 +85,13 @@ bool miqt_exec_callback_QStatusBar_FocusNextPrevChild(void*, intptr_t, bool);
 } /* extern C */
 #endif
 
-class MiqtVirtualQStatusBar : public virtual QStatusBar {
+class MiqtVirtualQStatusBar final : public QStatusBar {
 public:
 
 	MiqtVirtualQStatusBar(QWidget* parent): QStatusBar(parent) {};
 	MiqtVirtualQStatusBar(): QStatusBar() {};
 
-	virtual ~MiqtVirtualQStatusBar() = default;
+	virtual ~MiqtVirtualQStatusBar() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__ShowEvent = 0;
@@ -1540,11 +1540,7 @@ bool QStatusBar_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQStatusBar*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QStatusBar_Delete(QStatusBar* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQStatusBar*>( self );
-	} else {
-		delete self;
-	}
+void QStatusBar_Delete(QStatusBar* self) {
+	delete self;
 }
 

@@ -1346,7 +1346,7 @@ func miqt_exec_callback_QGraphicsWidget_IsEmpty(self *C.QGraphicsWidget, cb C.in
 
 // Delete this object from C++ memory.
 func (this *QGraphicsWidget) Delete() {
-	C.QGraphicsWidget_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsWidget_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -93,13 +93,13 @@ int miqt_exec_callback_QDoubleSpinBox_StepEnabled(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQSpinBox : public virtual QSpinBox {
+class MiqtVirtualQSpinBox final : public QSpinBox {
 public:
 
 	MiqtVirtualQSpinBox(QWidget* parent): QSpinBox(parent) {};
 	MiqtVirtualQSpinBox(): QSpinBox() {};
 
-	virtual ~MiqtVirtualQSpinBox() = default;
+	virtual ~MiqtVirtualQSpinBox() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -1222,21 +1222,17 @@ int QSpinBox_virtualbase_StepEnabled(const void* self) {
 	return ( (const MiqtVirtualQSpinBox*)(self) )->virtualbase_StepEnabled();
 }
 
-void QSpinBox_Delete(QSpinBox* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSpinBox*>( self );
-	} else {
-		delete self;
-	}
+void QSpinBox_Delete(QSpinBox* self) {
+	delete self;
 }
 
-class MiqtVirtualQDoubleSpinBox : public virtual QDoubleSpinBox {
+class MiqtVirtualQDoubleSpinBox final : public QDoubleSpinBox {
 public:
 
 	MiqtVirtualQDoubleSpinBox(QWidget* parent): QDoubleSpinBox(parent) {};
 	MiqtVirtualQDoubleSpinBox(): QDoubleSpinBox() {};
 
-	virtual ~MiqtVirtualQDoubleSpinBox() = default;
+	virtual ~MiqtVirtualQDoubleSpinBox() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Validate = 0;
@@ -2386,11 +2382,7 @@ int QDoubleSpinBox_virtualbase_StepEnabled(const void* self) {
 	return ( (const MiqtVirtualQDoubleSpinBox*)(self) )->virtualbase_StepEnabled();
 }
 
-void QDoubleSpinBox_Delete(QDoubleSpinBox* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQDoubleSpinBox*>( self );
-	} else {
-		delete self;
-	}
+void QDoubleSpinBox_Delete(QDoubleSpinBox* self) {
+	delete self;
 }
 

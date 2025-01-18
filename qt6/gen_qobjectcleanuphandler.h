@@ -57,7 +57,7 @@ void QObjectCleanupHandler_override_virtual_ConnectNotify(void* self, intptr_t s
 void QObjectCleanupHandler_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QObjectCleanupHandler_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QObjectCleanupHandler_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QObjectCleanupHandler_Delete(QObjectCleanupHandler* self, bool isSubclass);
+void QObjectCleanupHandler_Delete(QObjectCleanupHandler* self);
 
 #ifdef __cplusplus
 } /* extern C */

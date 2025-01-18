@@ -91,13 +91,13 @@ bool miqt_exec_callback_QAbstractSpinBox_FocusNextPrevChild(void*, intptr_t, boo
 } /* extern C */
 #endif
 
-class MiqtVirtualQAbstractSpinBox : public virtual QAbstractSpinBox {
+class MiqtVirtualQAbstractSpinBox final : public QAbstractSpinBox {
 public:
 
 	MiqtVirtualQAbstractSpinBox(QWidget* parent): QAbstractSpinBox(parent) {};
 	MiqtVirtualQAbstractSpinBox(): QAbstractSpinBox() {};
 
-	virtual ~MiqtVirtualQAbstractSpinBox() = default;
+	virtual ~MiqtVirtualQAbstractSpinBox() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -1864,11 +1864,7 @@ bool QAbstractSpinBox_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QAbstractSpinBox_Delete(QAbstractSpinBox* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractSpinBox*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractSpinBox_Delete(QAbstractSpinBox* self) {
+	delete self;
 }
 

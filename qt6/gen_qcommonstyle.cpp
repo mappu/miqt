@@ -52,12 +52,12 @@ QPalette* miqt_exec_callback_QCommonStyle_StandardPalette(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQCommonStyle : public virtual QCommonStyle {
+class MiqtVirtualQCommonStyle final : public QCommonStyle {
 public:
 
 	MiqtVirtualQCommonStyle(): QCommonStyle() {};
 
-	virtual ~MiqtVirtualQCommonStyle() = default;
+	virtual ~MiqtVirtualQCommonStyle() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__DrawPrimitive = 0;
@@ -1013,11 +1013,7 @@ QPalette* QCommonStyle_virtualbase_StandardPalette(const void* self) {
 	return ( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_StandardPalette();
 }
 
-void QCommonStyle_Delete(QCommonStyle* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQCommonStyle*>( self );
-	} else {
-		delete self;
-	}
+void QCommonStyle_Delete(QCommonStyle* self) {
+	delete self;
 }
 

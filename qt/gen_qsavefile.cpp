@@ -30,7 +30,7 @@ long long miqt_exec_callback_QSaveFile_ReadLineData(void*, intptr_t, char*, long
 } /* extern C */
 #endif
 
-class MiqtVirtualQSaveFile : public virtual QSaveFile {
+class MiqtVirtualQSaveFile final : public QSaveFile {
 public:
 
 	MiqtVirtualQSaveFile(const QString& name): QSaveFile(name) {};
@@ -38,7 +38,7 @@ public:
 	MiqtVirtualQSaveFile(const QString& name, QObject* parent): QSaveFile(name, parent) {};
 	MiqtVirtualQSaveFile(QObject* parent): QSaveFile(parent) {};
 
-	virtual ~MiqtVirtualQSaveFile() = default;
+	virtual ~MiqtVirtualQSaveFile() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__FileName = 0;
@@ -595,11 +595,7 @@ long long QSaveFile_virtualbase_ReadLineData(void* self, char* data, long long m
 	return ( (MiqtVirtualQSaveFile*)(self) )->virtualbase_ReadLineData(data, maxlen);
 }
 
-void QSaveFile_Delete(QSaveFile* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSaveFile*>( self );
-	} else {
-		delete self;
-	}
+void QSaveFile_Delete(QSaveFile* self) {
+	delete self;
 }
 

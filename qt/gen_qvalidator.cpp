@@ -54,13 +54,13 @@ void miqt_exec_callback_QRegularExpressionValidator_Fixup(void*, intptr_t, struc
 } /* extern C */
 #endif
 
-class MiqtVirtualQValidator : public virtual QValidator {
+class MiqtVirtualQValidator final : public QValidator {
 public:
 
 	MiqtVirtualQValidator(): QValidator() {};
 	MiqtVirtualQValidator(QObject* parent): QValidator(parent) {};
 
-	virtual ~MiqtVirtualQValidator() = default;
+	virtual ~MiqtVirtualQValidator() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Validate = 0;
@@ -474,15 +474,11 @@ void QValidator_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQValidator*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QValidator_Delete(QValidator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQValidator*>( self );
-	} else {
-		delete self;
-	}
+void QValidator_Delete(QValidator* self) {
+	delete self;
 }
 
-class MiqtVirtualQIntValidator : public virtual QIntValidator {
+class MiqtVirtualQIntValidator final : public QIntValidator {
 public:
 
 	MiqtVirtualQIntValidator(): QIntValidator() {};
@@ -490,7 +486,7 @@ public:
 	MiqtVirtualQIntValidator(QObject* parent): QIntValidator(parent) {};
 	MiqtVirtualQIntValidator(int bottom, int top, QObject* parent): QIntValidator(bottom, top, parent) {};
 
-	virtual ~MiqtVirtualQIntValidator() = default;
+	virtual ~MiqtVirtualQIntValidator() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Validate = 0;
@@ -755,15 +751,11 @@ void QIntValidator_virtualbase_SetRange(void* self, int bottom, int top) {
 	( (MiqtVirtualQIntValidator*)(self) )->virtualbase_SetRange(bottom, top);
 }
 
-void QIntValidator_Delete(QIntValidator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQIntValidator*>( self );
-	} else {
-		delete self;
-	}
+void QIntValidator_Delete(QIntValidator* self) {
+	delete self;
 }
 
-class MiqtVirtualQDoubleValidator : public virtual QDoubleValidator {
+class MiqtVirtualQDoubleValidator final : public QDoubleValidator {
 public:
 
 	MiqtVirtualQDoubleValidator(): QDoubleValidator() {};
@@ -771,7 +763,7 @@ public:
 	MiqtVirtualQDoubleValidator(QObject* parent): QDoubleValidator(parent) {};
 	MiqtVirtualQDoubleValidator(double bottom, double top, int decimals, QObject* parent): QDoubleValidator(bottom, top, decimals, parent) {};
 
-	virtual ~MiqtVirtualQDoubleValidator() = default;
+	virtual ~MiqtVirtualQDoubleValidator() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Validate = 0;
@@ -1072,15 +1064,11 @@ void QDoubleValidator_virtualbase_Fixup(const void* self, struct miqt_string par
 	( (const MiqtVirtualQDoubleValidator*)(self) )->virtualbase_Fixup(param1);
 }
 
-void QDoubleValidator_Delete(QDoubleValidator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQDoubleValidator*>( self );
-	} else {
-		delete self;
-	}
+void QDoubleValidator_Delete(QDoubleValidator* self) {
+	delete self;
 }
 
-class MiqtVirtualQRegExpValidator : public virtual QRegExpValidator {
+class MiqtVirtualQRegExpValidator final : public QRegExpValidator {
 public:
 
 	MiqtVirtualQRegExpValidator(): QRegExpValidator() {};
@@ -1088,7 +1076,7 @@ public:
 	MiqtVirtualQRegExpValidator(QObject* parent): QRegExpValidator(parent) {};
 	MiqtVirtualQRegExpValidator(const QRegExp& rx, QObject* parent): QRegExpValidator(rx, parent) {};
 
-	virtual ~MiqtVirtualQRegExpValidator() = default;
+	virtual ~MiqtVirtualQRegExpValidator() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Validate = 0;
@@ -1296,15 +1284,11 @@ void QRegExpValidator_virtualbase_Fixup(const void* self, struct miqt_string par
 	( (const MiqtVirtualQRegExpValidator*)(self) )->virtualbase_Fixup(param1);
 }
 
-void QRegExpValidator_Delete(QRegExpValidator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQRegExpValidator*>( self );
-	} else {
-		delete self;
-	}
+void QRegExpValidator_Delete(QRegExpValidator* self) {
+	delete self;
 }
 
-class MiqtVirtualQRegularExpressionValidator : public virtual QRegularExpressionValidator {
+class MiqtVirtualQRegularExpressionValidator final : public QRegularExpressionValidator {
 public:
 
 	MiqtVirtualQRegularExpressionValidator(): QRegularExpressionValidator() {};
@@ -1312,7 +1296,7 @@ public:
 	MiqtVirtualQRegularExpressionValidator(QObject* parent): QRegularExpressionValidator(parent) {};
 	MiqtVirtualQRegularExpressionValidator(const QRegularExpression& re, QObject* parent): QRegularExpressionValidator(re, parent) {};
 
-	virtual ~MiqtVirtualQRegularExpressionValidator() = default;
+	virtual ~MiqtVirtualQRegularExpressionValidator() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Validate = 0;
@@ -1518,11 +1502,7 @@ void QRegularExpressionValidator_virtualbase_Fixup(const void* self, struct miqt
 	( (const MiqtVirtualQRegularExpressionValidator*)(self) )->virtualbase_Fixup(param1);
 }
 
-void QRegularExpressionValidator_Delete(QRegularExpressionValidator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQRegularExpressionValidator*>( self );
-	} else {
-		delete self;
-	}
+void QRegularExpressionValidator_Delete(QRegularExpressionValidator* self) {
+	delete self;
 }
 

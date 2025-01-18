@@ -122,7 +122,7 @@ func QColormap_Instance1(screen int) *QColormap {
 
 // Delete this object from C++ memory.
 func (this *QColormap) Delete() {
-	C.QColormap_Delete(this.h, C.bool(this.isSubclass))
+	C.QColormap_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -36,7 +36,7 @@ QPainter* miqt_exec_callback_QImage_SharedPainter(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQImage : public virtual QImage {
+class MiqtVirtualQImage final : public QImage {
 public:
 
 	MiqtVirtualQImage(): QImage() {};
@@ -50,7 +50,7 @@ public:
 	MiqtVirtualQImage(const QImage& param1): QImage(param1) {};
 	MiqtVirtualQImage(const QString& fileName, const char* format): QImage(fileName, format) {};
 
-	virtual ~MiqtVirtualQImage() = default;
+	virtual ~MiqtVirtualQImage() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__DevType = 0;
@@ -909,11 +909,7 @@ QPainter* QImage_virtualbase_SharedPainter(const void* self) {
 	return ( (const MiqtVirtualQImage*)(self) )->virtualbase_SharedPainter();
 }
 
-void QImage_Delete(QImage* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQImage*>( self );
-	} else {
-		delete self;
-	}
+void QImage_Delete(QImage* self) {
+	delete self;
 }
 

@@ -78,7 +78,7 @@ void QGraphicsLinearLayout_override_virtual_UpdateGeometry(void* self, intptr_t 
 void QGraphicsLinearLayout_virtualbase_UpdateGeometry(void* self);
 void QGraphicsLinearLayout_override_virtual_WidgetEvent(void* self, intptr_t slot);
 void QGraphicsLinearLayout_virtualbase_WidgetEvent(void* self, QEvent* e);
-void QGraphicsLinearLayout_Delete(QGraphicsLinearLayout* self, bool isSubclass);
+void QGraphicsLinearLayout_Delete(QGraphicsLinearLayout* self);
 
 #ifdef __cplusplus
 } /* extern C */

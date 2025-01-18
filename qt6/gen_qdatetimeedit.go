@@ -1266,7 +1266,7 @@ func miqt_exec_callback_QDateTimeEdit_ShowEvent(self *C.QDateTimeEdit, cb C.intp
 
 // Delete this object from C++ memory.
 func (this *QDateTimeEdit) Delete() {
-	C.QDateTimeEdit_Delete(this.h, C.bool(this.isSubclass))
+	C.QDateTimeEdit_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1865,7 +1865,7 @@ func miqt_exec_callback_QTimeEdit_InitStyleOption(self *C.QTimeEdit, cb C.intptr
 
 // Delete this object from C++ memory.
 func (this *QTimeEdit) Delete() {
-	C.QTimeEdit_Delete(this.h, C.bool(this.isSubclass))
+	C.QTimeEdit_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2464,7 +2464,7 @@ func miqt_exec_callback_QDateEdit_InitStyleOption(self *C.QDateEdit, cb C.intptr
 
 // Delete this object from C++ memory.
 func (this *QDateEdit) Delete() {
-	C.QDateEdit_Delete(this.h, C.bool(this.isSubclass))
+	C.QDateEdit_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

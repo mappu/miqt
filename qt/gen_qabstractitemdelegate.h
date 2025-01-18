@@ -114,7 +114,7 @@ void QAbstractItemDelegate_override_virtual_ConnectNotify(void* self, intptr_t s
 void QAbstractItemDelegate_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QAbstractItemDelegate_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QAbstractItemDelegate_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QAbstractItemDelegate_Delete(QAbstractItemDelegate* self, bool isSubclass);
+void QAbstractItemDelegate_Delete(QAbstractItemDelegate* self);
 
 #ifdef __cplusplus
 } /* extern C */

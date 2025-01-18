@@ -95,7 +95,7 @@ func (this *QsciStyledText) Style() int {
 
 // Delete this object from C++ memory.
 func (this *QsciStyledText) Delete() {
-	C.QsciStyledText_Delete(this.h, C.bool(this.isSubclass))
+	C.QsciStyledText_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

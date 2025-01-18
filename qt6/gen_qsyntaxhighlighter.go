@@ -337,7 +337,7 @@ func miqt_exec_callback_QSyntaxHighlighter_DisconnectNotify(self *C.QSyntaxHighl
 
 // Delete this object from C++ memory.
 func (this *QSyntaxHighlighter) Delete() {
-	C.QSyntaxHighlighter_Delete(this.h, C.bool(this.isSubclass))
+	C.QSyntaxHighlighter_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

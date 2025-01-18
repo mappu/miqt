@@ -260,7 +260,7 @@ void QWebEnginePage_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QWebEnginePage_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QWebEnginePage_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QWebEnginePage_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QWebEnginePage_Delete(QWebEnginePage* self, bool isSubclass);
+void QWebEnginePage_Delete(QWebEnginePage* self);
 
 #ifdef __cplusplus
 } /* extern C */

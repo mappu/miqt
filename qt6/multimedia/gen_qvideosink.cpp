@@ -31,13 +31,13 @@ void miqt_exec_callback_QVideoSink_DisconnectNotify(void*, intptr_t, QMetaMethod
 } /* extern C */
 #endif
 
-class MiqtVirtualQVideoSink : public virtual QVideoSink {
+class MiqtVirtualQVideoSink final : public QVideoSink {
 public:
 
 	MiqtVirtualQVideoSink(): QVideoSink() {};
 	MiqtVirtualQVideoSink(QObject* parent): QVideoSink(parent) {};
 
-	virtual ~MiqtVirtualQVideoSink() = default;
+	virtual ~MiqtVirtualQVideoSink() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -391,11 +391,7 @@ void QVideoSink_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQVideoSink*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QVideoSink_Delete(QVideoSink* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQVideoSink*>( self );
-	} else {
-		delete self;
-	}
+void QVideoSink_Delete(QVideoSink* self) {
+	delete self;
 }
 

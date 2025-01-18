@@ -242,7 +242,7 @@ func QResource_UnregisterResource22(rccData *byte, resourceRoot string) bool {
 
 // Delete this object from C++ memory.
 func (this *QResource) Delete() {
-	C.QResource_Delete(this.h, C.bool(this.isSubclass))
+	C.QResource_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

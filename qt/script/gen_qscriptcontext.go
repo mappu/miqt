@@ -202,7 +202,7 @@ func (this *QScriptContext) ToString() string {
 
 // Delete this object from C++ memory.
 func (this *QScriptContext) Delete() {
-	C.QScriptContext_Delete(this.h, C.bool(this.isSubclass))
+	C.QScriptContext_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

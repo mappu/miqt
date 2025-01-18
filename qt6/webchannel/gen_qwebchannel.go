@@ -395,7 +395,7 @@ func miqt_exec_callback_QWebChannel_DisconnectNotify(self *C.QWebChannel, cb C.i
 
 // Delete this object from C++ memory.
 func (this *QWebChannel) Delete() {
-	C.QWebChannel_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebChannel_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

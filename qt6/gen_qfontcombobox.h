@@ -129,7 +129,7 @@ void QFontComboBox_override_virtual_InputMethodEvent(void* self, intptr_t slot);
 void QFontComboBox_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* param1);
 void QFontComboBox_override_virtual_InitStyleOption(void* self, intptr_t slot);
 void QFontComboBox_virtualbase_InitStyleOption(const void* self, QStyleOptionComboBox* option);
-void QFontComboBox_Delete(QFontComboBox* self, bool isSubclass);
+void QFontComboBox_Delete(QFontComboBox* self);
 
 #ifdef __cplusplus
 } /* extern C */

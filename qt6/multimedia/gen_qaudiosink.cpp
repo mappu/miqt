@@ -30,7 +30,7 @@ void miqt_exec_callback_QAudioSink_DisconnectNotify(void*, intptr_t, QMetaMethod
 } /* extern C */
 #endif
 
-class MiqtVirtualQAudioSink : public virtual QAudioSink {
+class MiqtVirtualQAudioSink final : public QAudioSink {
 public:
 
 	MiqtVirtualQAudioSink(): QAudioSink() {};
@@ -40,7 +40,7 @@ public:
 	MiqtVirtualQAudioSink(const QAudioDevice& audioDeviceInfo, const QAudioFormat& format): QAudioSink(audioDeviceInfo, format) {};
 	MiqtVirtualQAudioSink(const QAudioDevice& audioDeviceInfo, const QAudioFormat& format, QObject* parent): QAudioSink(audioDeviceInfo, format, parent) {};
 
-	virtual ~MiqtVirtualQAudioSink() = default;
+	virtual ~MiqtVirtualQAudioSink() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -427,11 +427,7 @@ void QAudioSink_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAudioSink*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QAudioSink_Delete(QAudioSink* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAudioSink*>( self );
-	} else {
-		delete self;
-	}
+void QAudioSink_Delete(QAudioSink* self) {
+	delete self;
 }
 

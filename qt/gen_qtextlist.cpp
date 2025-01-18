@@ -23,12 +23,12 @@ void miqt_exec_callback_QTextList_BlockFormatChanged(void*, intptr_t, QTextBlock
 } /* extern C */
 #endif
 
-class MiqtVirtualQTextList : public virtual QTextList {
+class MiqtVirtualQTextList final : public QTextList {
 public:
 
 	MiqtVirtualQTextList(QTextDocument* doc): QTextList(doc) {};
 
-	virtual ~MiqtVirtualQTextList() = default;
+	virtual ~MiqtVirtualQTextList() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__BlockInserted = 0;
@@ -263,11 +263,7 @@ void QTextList_virtualbase_BlockFormatChanged(void* self, QTextBlock* block) {
 	( (MiqtVirtualQTextList*)(self) )->virtualbase_BlockFormatChanged(block);
 }
 
-void QTextList_Delete(QTextList* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQTextList*>( self );
-	} else {
-		delete self;
-	}
+void QTextList_Delete(QTextList* self) {
+	delete self;
 }
 

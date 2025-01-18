@@ -94,13 +94,13 @@ bool miqt_exec_callback_QCalendarWidget_FocusNextPrevChild(void*, intptr_t, bool
 } /* extern C */
 #endif
 
-class MiqtVirtualQCalendarWidget : public virtual QCalendarWidget {
+class MiqtVirtualQCalendarWidget final : public QCalendarWidget {
 public:
 
 	MiqtVirtualQCalendarWidget(QWidget* parent): QCalendarWidget(parent) {};
 	MiqtVirtualQCalendarWidget(): QCalendarWidget() {};
 
-	virtual ~MiqtVirtualQCalendarWidget() = default;
+	virtual ~MiqtVirtualQCalendarWidget() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -1801,11 +1801,7 @@ bool QCalendarWidget_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QCalendarWidget_Delete(QCalendarWidget* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQCalendarWidget*>( self );
-	} else {
-		delete self;
-	}
+void QCalendarWidget_Delete(QCalendarWidget* self) {
+	delete self;
 }
 

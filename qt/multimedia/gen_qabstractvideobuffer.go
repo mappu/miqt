@@ -218,7 +218,7 @@ func miqt_exec_callback_QAbstractVideoBuffer_Handle(self *C.QAbstractVideoBuffer
 
 // Delete this object from C++ memory.
 func (this *QAbstractVideoBuffer) Delete() {
-	C.QAbstractVideoBuffer_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractVideoBuffer_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -399,7 +399,7 @@ func miqt_exec_callback_QAbstractPlanarVideoBuffer_Handle(self *C.QAbstractPlana
 
 // Delete this object from C++ memory.
 func (this *QAbstractPlanarVideoBuffer) Delete() {
-	C.QAbstractPlanarVideoBuffer_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractPlanarVideoBuffer_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

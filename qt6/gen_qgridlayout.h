@@ -136,7 +136,7 @@ void QGridLayout_override_virtual_Layout(void* self, intptr_t slot);
 QLayout* QGridLayout_virtualbase_Layout(void* self);
 void QGridLayout_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QGridLayout_virtualbase_ChildEvent(void* self, QChildEvent* e);
-void QGridLayout_Delete(QGridLayout* self, bool isSubclass);
+void QGridLayout_Delete(QGridLayout* self);
 
 #ifdef __cplusplus
 } /* extern C */

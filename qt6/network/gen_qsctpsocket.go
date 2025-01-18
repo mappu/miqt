@@ -253,7 +253,7 @@ func miqt_exec_callback_QSctpSocket_ReadLineData(self *C.QSctpSocket, cb C.intpt
 
 // Delete this object from C++ memory.
 func (this *QSctpSocket) Delete() {
-	C.QSctpSocket_Delete(this.h, C.bool(this.isSubclass))
+	C.QSctpSocket_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

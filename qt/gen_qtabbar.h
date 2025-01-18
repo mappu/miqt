@@ -273,7 +273,7 @@ void QTabBar_override_virtual_InputMethodQuery(void* self, intptr_t slot);
 QVariant* QTabBar_virtualbase_InputMethodQuery(const void* self, int param1);
 void QTabBar_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QTabBar_virtualbase_FocusNextPrevChild(void* self, bool next);
-void QTabBar_Delete(QTabBar* self, bool isSubclass);
+void QTabBar_Delete(QTabBar* self);
 
 #ifdef __cplusplus
 } /* extern C */

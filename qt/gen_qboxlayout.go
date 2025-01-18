@@ -821,7 +821,7 @@ func miqt_exec_callback_QBoxLayout_ChildEvent(self *C.QBoxLayout, cb C.intptr_t,
 
 // Delete this object from C++ memory.
 func (this *QBoxLayout) Delete() {
-	C.QBoxLayout_Delete(this.h, C.bool(this.isSubclass))
+	C.QBoxLayout_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1303,7 +1303,7 @@ func miqt_exec_callback_QHBoxLayout_SetGeometry(self *C.QHBoxLayout, cb C.intptr
 
 // Delete this object from C++ memory.
 func (this *QHBoxLayout) Delete() {
-	C.QHBoxLayout_Delete(this.h, C.bool(this.isSubclass))
+	C.QHBoxLayout_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1785,7 +1785,7 @@ func miqt_exec_callback_QVBoxLayout_SetGeometry(self *C.QVBoxLayout, cb C.intptr
 
 // Delete this object from C++ memory.
 func (this *QVBoxLayout) Delete() {
-	C.QVBoxLayout_Delete(this.h, C.bool(this.isSubclass))
+	C.QVBoxLayout_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

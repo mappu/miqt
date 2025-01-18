@@ -156,7 +156,7 @@ func QsciLexerOctave_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QsciLexerOctave) Delete() {
-	C.QsciLexerOctave_Delete(this.h, C.bool(this.isSubclass))
+	C.QsciLexerOctave_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

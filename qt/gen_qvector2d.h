@@ -62,7 +62,7 @@ QVector4D* QVector2D_ToVector4D(const QVector2D* self);
 QPoint* QVector2D_ToPoint(const QVector2D* self);
 QPointF* QVector2D_ToPointF(const QVector2D* self);
 QVariant* QVector2D_ToQVariant(const QVector2D* self);
-void QVector2D_Delete(QVector2D* self, bool isSubclass);
+void QVector2D_Delete(QVector2D* self);
 
 #ifdef __cplusplus
 } /* extern C */

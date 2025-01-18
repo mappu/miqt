@@ -784,7 +784,7 @@ func miqt_exec_callback_QFile_ReadLineData(self *C.QFile, cb C.intptr_t, data *C
 
 // Delete this object from C++ memory.
 func (this *QFile) Delete() {
-	C.QFile_Delete(this.h, C.bool(this.isSubclass))
+	C.QFile_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

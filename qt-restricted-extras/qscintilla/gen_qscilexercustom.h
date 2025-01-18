@@ -124,7 +124,7 @@ void QsciLexerCustom_override_virtual_ReadProperties(void* self, intptr_t slot);
 bool QsciLexerCustom_virtualbase_ReadProperties(void* self, QSettings* qs, struct miqt_string prefix);
 void QsciLexerCustom_override_virtual_WriteProperties(void* self, intptr_t slot);
 bool QsciLexerCustom_virtualbase_WriteProperties(const void* self, QSettings* qs, struct miqt_string prefix);
-void QsciLexerCustom_Delete(QsciLexerCustom* self, bool isSubclass);
+void QsciLexerCustom_Delete(QsciLexerCustom* self);
 
 #ifdef __cplusplus
 } /* extern C */

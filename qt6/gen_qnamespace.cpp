@@ -20,20 +20,12 @@ Disambiguated_t* Disambiguated_t_new2(Disambiguated_t* param1) {
 	return new Qt::Disambiguated_t(*param1);
 }
 
-void Disambiguated_t_Delete(Disambiguated_t* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<Qt::Disambiguated_t*>( self );
-	} else {
-		delete self;
-	}
+void Disambiguated_t_Delete(Disambiguated_t* self) {
+	delete self;
 }
 
-void QInternal_Delete(QInternal* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QInternal*>( self );
-	} else {
-		delete self;
-	}
+void QInternal_Delete(QInternal* self) {
+	delete self;
 }
 
 QKeyCombination* QKeyCombination_new() {
@@ -86,11 +78,7 @@ int QKeyCombination_ToInt(const QKeyCombination* self) {
 	return self->operator int();
 }
 
-void QKeyCombination_Delete(QKeyCombination* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QKeyCombination*>( self );
-	} else {
-		delete self;
-	}
+void QKeyCombination_Delete(QKeyCombination* self) {
+	delete self;
 }
 

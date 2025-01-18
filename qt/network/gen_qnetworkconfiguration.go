@@ -194,7 +194,7 @@ func (this *QNetworkConfiguration) SetConnectTimeout(timeout int) bool {
 
 // Delete this object from C++ memory.
 func (this *QNetworkConfiguration) Delete() {
-	C.QNetworkConfiguration_Delete(this.h, C.bool(this.isSubclass))
+	C.QNetworkConfiguration_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

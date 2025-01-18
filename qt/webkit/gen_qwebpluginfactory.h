@@ -98,21 +98,21 @@ void QWebPluginFactory_override_virtual_ConnectNotify(void* self, intptr_t slot)
 void QWebPluginFactory_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QWebPluginFactory_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QWebPluginFactory_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QWebPluginFactory_Delete(QWebPluginFactory* self, bool isSubclass);
+void QWebPluginFactory_Delete(QWebPluginFactory* self);
 
 QWebPluginFactory__MimeType* QWebPluginFactory__MimeType_new(QWebPluginFactory__MimeType* param1);
 bool QWebPluginFactory__MimeType_OperatorEqual(const QWebPluginFactory__MimeType* self, QWebPluginFactory__MimeType* other);
 bool QWebPluginFactory__MimeType_OperatorNotEqual(const QWebPluginFactory__MimeType* self, QWebPluginFactory__MimeType* other);
 void QWebPluginFactory__MimeType_OperatorAssign(QWebPluginFactory__MimeType* self, QWebPluginFactory__MimeType* param1);
-void QWebPluginFactory__MimeType_Delete(QWebPluginFactory__MimeType* self, bool isSubclass);
+void QWebPluginFactory__MimeType_Delete(QWebPluginFactory__MimeType* self);
 
 QWebPluginFactory__Plugin* QWebPluginFactory__Plugin_new(QWebPluginFactory__Plugin* param1);
 void QWebPluginFactory__Plugin_OperatorAssign(QWebPluginFactory__Plugin* self, QWebPluginFactory__Plugin* param1);
-void QWebPluginFactory__Plugin_Delete(QWebPluginFactory__Plugin* self, bool isSubclass);
+void QWebPluginFactory__Plugin_Delete(QWebPluginFactory__Plugin* self);
 
-void QWebPluginFactory__ExtensionOption_Delete(QWebPluginFactory__ExtensionOption* self, bool isSubclass);
+void QWebPluginFactory__ExtensionOption_Delete(QWebPluginFactory__ExtensionOption* self);
 
-void QWebPluginFactory__ExtensionReturn_Delete(QWebPluginFactory__ExtensionReturn* self, bool isSubclass);
+void QWebPluginFactory__ExtensionReturn_Delete(QWebPluginFactory__ExtensionReturn* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -482,7 +482,7 @@ func miqt_exec_callback_QsciAbstractAPIs_DisconnectNotify(self *C.QsciAbstractAP
 
 // Delete this object from C++ memory.
 func (this *QsciAbstractAPIs) Delete() {
-	C.QsciAbstractAPIs_Delete(this.h, C.bool(this.isSubclass))
+	C.QsciAbstractAPIs_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

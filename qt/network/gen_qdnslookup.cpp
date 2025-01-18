@@ -81,12 +81,8 @@ struct miqt_string QDnsDomainNameRecord_Value(const QDnsDomainNameRecord* self) 
 	return _ms;
 }
 
-void QDnsDomainNameRecord_Delete(QDnsDomainNameRecord* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QDnsDomainNameRecord*>( self );
-	} else {
-		delete self;
-	}
+void QDnsDomainNameRecord_Delete(QDnsDomainNameRecord* self) {
+	delete self;
 }
 
 QDnsHostAddressRecord* QDnsHostAddressRecord_new() {
@@ -125,12 +121,8 @@ QHostAddress* QDnsHostAddressRecord_Value(const QDnsHostAddressRecord* self) {
 	return new QHostAddress(self->value());
 }
 
-void QDnsHostAddressRecord_Delete(QDnsHostAddressRecord* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QDnsHostAddressRecord*>( self );
-	} else {
-		delete self;
-	}
+void QDnsHostAddressRecord_Delete(QDnsHostAddressRecord* self) {
+	delete self;
 }
 
 QDnsMailExchangeRecord* QDnsMailExchangeRecord_new() {
@@ -181,12 +173,8 @@ unsigned int QDnsMailExchangeRecord_TimeToLive(const QDnsMailExchangeRecord* sel
 	return static_cast<unsigned int>(_ret);
 }
 
-void QDnsMailExchangeRecord_Delete(QDnsMailExchangeRecord* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QDnsMailExchangeRecord*>( self );
-	} else {
-		delete self;
-	}
+void QDnsMailExchangeRecord_Delete(QDnsMailExchangeRecord* self) {
+	delete self;
 }
 
 QDnsServiceRecord* QDnsServiceRecord_new() {
@@ -247,12 +235,8 @@ uint16_t QDnsServiceRecord_Weight(const QDnsServiceRecord* self) {
 	return static_cast<uint16_t>(_ret);
 }
 
-void QDnsServiceRecord_Delete(QDnsServiceRecord* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QDnsServiceRecord*>( self );
-	} else {
-		delete self;
-	}
+void QDnsServiceRecord_Delete(QDnsServiceRecord* self) {
+	delete self;
 }
 
 QDnsTextRecord* QDnsTextRecord_new() {
@@ -305,15 +289,11 @@ struct miqt_array /* of struct miqt_string */  QDnsTextRecord_Values(const QDnsT
 	return _out;
 }
 
-void QDnsTextRecord_Delete(QDnsTextRecord* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QDnsTextRecord*>( self );
-	} else {
-		delete self;
-	}
+void QDnsTextRecord_Delete(QDnsTextRecord* self) {
+	delete self;
 }
 
-class MiqtVirtualQDnsLookup : public virtual QDnsLookup {
+class MiqtVirtualQDnsLookup final : public QDnsLookup {
 public:
 
 	MiqtVirtualQDnsLookup(): QDnsLookup() {};
@@ -323,7 +303,7 @@ public:
 	MiqtVirtualQDnsLookup(QDnsLookup::Type typeVal, const QString& name, QObject* parent): QDnsLookup(typeVal, name, parent) {};
 	MiqtVirtualQDnsLookup(QDnsLookup::Type typeVal, const QString& name, const QHostAddress& nameserver, QObject* parent): QDnsLookup(typeVal, name, nameserver, parent) {};
 
-	virtual ~MiqtVirtualQDnsLookup() = default;
+	virtual ~MiqtVirtualQDnsLookup() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -866,11 +846,7 @@ void QDnsLookup_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDnsLookup*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QDnsLookup_Delete(QDnsLookup* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQDnsLookup*>( self );
-	} else {
-		delete self;
-	}
+void QDnsLookup_Delete(QDnsLookup* self) {
+	delete self;
 }
 

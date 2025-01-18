@@ -41,13 +41,13 @@ bool miqt_exec_callback_QAbstractPrintDialog_EventFilter(void*, intptr_t, QObjec
 } /* extern C */
 #endif
 
-class MiqtVirtualQAbstractPrintDialog : public virtual QAbstractPrintDialog {
+class MiqtVirtualQAbstractPrintDialog final : public QAbstractPrintDialog {
 public:
 
 	MiqtVirtualQAbstractPrintDialog(QPrinter* printer): QAbstractPrintDialog(printer) {};
 	MiqtVirtualQAbstractPrintDialog(QPrinter* printer, QWidget* parent): QAbstractPrintDialog(printer, parent) {};
 
-	virtual ~MiqtVirtualQAbstractPrintDialog() = default;
+	virtual ~MiqtVirtualQAbstractPrintDialog() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetVisible = 0;
@@ -640,11 +640,7 @@ bool QAbstractPrintDialog_virtualbase_EventFilter(void* self, QObject* param1, Q
 	return ( (MiqtVirtualQAbstractPrintDialog*)(self) )->virtualbase_EventFilter(param1, param2);
 }
 
-void QAbstractPrintDialog_Delete(QAbstractPrintDialog* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractPrintDialog*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractPrintDialog_Delete(QAbstractPrintDialog* self) {
+	delete self;
 }
 

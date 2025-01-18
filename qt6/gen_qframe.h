@@ -193,7 +193,7 @@ void QFrame_override_virtual_InputMethodQuery(void* self, intptr_t slot);
 QVariant* QFrame_virtualbase_InputMethodQuery(const void* self, int param1);
 void QFrame_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QFrame_virtualbase_FocusNextPrevChild(void* self, bool next);
-void QFrame_Delete(QFrame* self, bool isSubclass);
+void QFrame_Delete(QFrame* self);
 
 #ifdef __cplusplus
 } /* extern C */

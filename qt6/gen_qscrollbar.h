@@ -99,7 +99,7 @@ void QScrollBar_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QScrollBar_virtualbase_TimerEvent(void* self, QTimerEvent* param1);
 void QScrollBar_override_virtual_ChangeEvent(void* self, intptr_t slot);
 void QScrollBar_virtualbase_ChangeEvent(void* self, QEvent* e);
-void QScrollBar_Delete(QScrollBar* self, bool isSubclass);
+void QScrollBar_Delete(QScrollBar* self);
 
 #ifdef __cplusplus
 } /* extern C */

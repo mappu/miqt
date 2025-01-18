@@ -69,7 +69,7 @@ void QsciAPIs_override_virtual_CallTips(void* self, intptr_t slot);
 struct miqt_array /* of struct miqt_string */  QsciAPIs_virtualbase_CallTips(void* self, struct miqt_array /* of struct miqt_string */  context, int commas, int style, struct miqt_array /* of int */  shifts);
 void QsciAPIs_override_virtual_Event(void* self, intptr_t slot);
 bool QsciAPIs_virtualbase_Event(void* self, QEvent* e);
-void QsciAPIs_Delete(QsciAPIs* self, bool isSubclass);
+void QsciAPIs_Delete(QsciAPIs* self);
 
 #ifdef __cplusplus
 } /* extern C */

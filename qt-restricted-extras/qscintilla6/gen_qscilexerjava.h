@@ -48,7 +48,7 @@ void QsciLexerJava_override_virtual_SetFoldPreprocessor(void* self, intptr_t slo
 void QsciLexerJava_virtualbase_SetFoldPreprocessor(void* self, bool fold);
 void QsciLexerJava_override_virtual_SetStylePreprocessor(void* self, intptr_t slot);
 void QsciLexerJava_virtualbase_SetStylePreprocessor(void* self, bool style);
-void QsciLexerJava_Delete(QsciLexerJava* self, bool isSubclass);
+void QsciLexerJava_Delete(QsciLexerJava* self);
 
 #ifdef __cplusplus
 } /* extern C */

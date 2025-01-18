@@ -48,12 +48,12 @@ void miqt_exec_callback_QImageIOPlugin_DisconnectNotify(void*, intptr_t, QMetaMe
 } /* extern C */
 #endif
 
-class MiqtVirtualQImageIOHandler : public virtual QImageIOHandler {
+class MiqtVirtualQImageIOHandler final : public QImageIOHandler {
 public:
 
 	MiqtVirtualQImageIOHandler(): QImageIOHandler() {};
 
-	virtual ~MiqtVirtualQImageIOHandler() = default;
+	virtual ~MiqtVirtualQImageIOHandler() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__CanRead = 0;
@@ -527,21 +527,17 @@ QRect* QImageIOHandler_virtualbase_CurrentImageRect(const void* self) {
 	return ( (const MiqtVirtualQImageIOHandler*)(self) )->virtualbase_CurrentImageRect();
 }
 
-void QImageIOHandler_Delete(QImageIOHandler* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQImageIOHandler*>( self );
-	} else {
-		delete self;
-	}
+void QImageIOHandler_Delete(QImageIOHandler* self) {
+	delete self;
 }
 
-class MiqtVirtualQImageIOPlugin : public virtual QImageIOPlugin {
+class MiqtVirtualQImageIOPlugin final : public QImageIOPlugin {
 public:
 
 	MiqtVirtualQImageIOPlugin(): QImageIOPlugin() {};
 	MiqtVirtualQImageIOPlugin(QObject* parent): QImageIOPlugin(parent) {};
 
-	virtual ~MiqtVirtualQImageIOPlugin() = default;
+	virtual ~MiqtVirtualQImageIOPlugin() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Capabilities = 0;
@@ -888,11 +884,7 @@ void QImageIOPlugin_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQImageIOPlugin*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QImageIOPlugin_Delete(QImageIOPlugin* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQImageIOPlugin*>( self );
-	} else {
-		delete self;
-	}
+void QImageIOPlugin_Delete(QImageIOPlugin* self) {
+	delete self;
 }
 

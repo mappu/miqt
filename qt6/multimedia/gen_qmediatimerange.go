@@ -172,7 +172,7 @@ func (this *QMediaTimeRange) Clear() {
 
 // Delete this object from C++ memory.
 func (this *QMediaTimeRange) Delete() {
-	C.QMediaTimeRange_Delete(this.h, C.bool(this.isSubclass))
+	C.QMediaTimeRange_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -271,7 +271,7 @@ func (this *QMediaTimeRange__Interval) Translated(offset int64) *QMediaTimeRange
 
 // Delete this object from C++ memory.
 func (this *QMediaTimeRange__Interval) Delete() {
-	C.QMediaTimeRange__Interval_Delete(this.h, C.bool(this.isSubclass))
+	C.QMediaTimeRange__Interval_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

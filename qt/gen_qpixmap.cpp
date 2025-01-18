@@ -36,7 +36,7 @@ QPainter* miqt_exec_callback_QPixmap_SharedPainter(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQPixmap : public virtual QPixmap {
+class MiqtVirtualQPixmap final : public QPixmap {
 public:
 
 	MiqtVirtualQPixmap(): QPixmap() {};
@@ -47,7 +47,7 @@ public:
 	MiqtVirtualQPixmap(const QString& fileName, const char* format): QPixmap(fileName, format) {};
 	MiqtVirtualQPixmap(const QString& fileName, const char* format, Qt::ImageConversionFlags flags): QPixmap(fileName, format, flags) {};
 
-	virtual ~MiqtVirtualQPixmap() = default;
+	virtual ~MiqtVirtualQPixmap() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__DevType = 0;
@@ -630,11 +630,7 @@ QPainter* QPixmap_virtualbase_SharedPainter(const void* self) {
 	return ( (const MiqtVirtualQPixmap*)(self) )->virtualbase_SharedPainter();
 }
 
-void QPixmap_Delete(QPixmap* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQPixmap*>( self );
-	} else {
-		delete self;
-	}
+void QPixmap_Delete(QPixmap* self) {
+	delete self;
 }
 

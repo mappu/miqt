@@ -44,12 +44,12 @@ void miqt_exec_callback_QSpatialSound_DisconnectNotify(void*, intptr_t, QMetaMet
 } /* extern C */
 #endif
 
-class MiqtVirtualQSpatialSound : public virtual QSpatialSound {
+class MiqtVirtualQSpatialSound final : public QSpatialSound {
 public:
 
 	MiqtVirtualQSpatialSound(QAudioEngine* engine): QSpatialSound(engine) {};
 
-	virtual ~MiqtVirtualQSpatialSound() = default;
+	virtual ~MiqtVirtualQSpatialSound() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -598,11 +598,7 @@ void QSpatialSound_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQSpatialSound*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QSpatialSound_Delete(QSpatialSound* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSpatialSound*>( self );
-	} else {
-		delete self;
-	}
+void QSpatialSound_Delete(QSpatialSound* self) {
+	delete self;
 }
 

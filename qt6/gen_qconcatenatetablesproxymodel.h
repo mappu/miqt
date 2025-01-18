@@ -138,7 +138,7 @@ void QConcatenateTablesProxyModel_override_virtual_Revert(void* self, intptr_t s
 void QConcatenateTablesProxyModel_virtualbase_Revert(void* self);
 void QConcatenateTablesProxyModel_override_virtual_ResetInternalData(void* self, intptr_t slot);
 void QConcatenateTablesProxyModel_virtualbase_ResetInternalData(void* self);
-void QConcatenateTablesProxyModel_Delete(QConcatenateTablesProxyModel* self, bool isSubclass);
+void QConcatenateTablesProxyModel_Delete(QConcatenateTablesProxyModel* self);
 
 #ifdef __cplusplus
 } /* extern C */

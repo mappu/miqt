@@ -56,13 +56,13 @@ bool miqt_exec_callback_QsciLexerPostScript_WriteProperties(void*, intptr_t, QSe
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerPostScript : public virtual QsciLexerPostScript {
+class MiqtVirtualQsciLexerPostScript final : public QsciLexerPostScript {
 public:
 
 	MiqtVirtualQsciLexerPostScript(): QsciLexerPostScript() {};
 	MiqtVirtualQsciLexerPostScript(QObject* parent): QsciLexerPostScript(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerPostScript() = default;
+	virtual ~MiqtVirtualQsciLexerPostScript() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetTokenize = 0;
@@ -1437,11 +1437,7 @@ bool QsciLexerPostScript_virtualbase_WriteProperties(const void* self, QSettings
 	return ( (const MiqtVirtualQsciLexerPostScript*)(self) )->virtualbase_WriteProperties(qs, prefix);
 }
 
-void QsciLexerPostScript_Delete(QsciLexerPostScript* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerPostScript*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerPostScript_Delete(QsciLexerPostScript* self) {
+	delete self;
 }
 

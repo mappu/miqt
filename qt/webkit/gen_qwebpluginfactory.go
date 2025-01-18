@@ -538,7 +538,7 @@ func miqt_exec_callback_QWebPluginFactory_DisconnectNotify(self *C.QWebPluginFac
 
 // Delete this object from C++ memory.
 func (this *QWebPluginFactory) Delete() {
-	C.QWebPluginFactory_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebPluginFactory_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -605,7 +605,7 @@ func (this *QWebPluginFactory__MimeType) OperatorAssign(param1 *QWebPluginFactor
 
 // Delete this object from C++ memory.
 func (this *QWebPluginFactory__MimeType) Delete() {
-	C.QWebPluginFactory__MimeType_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebPluginFactory__MimeType_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -664,7 +664,7 @@ func (this *QWebPluginFactory__Plugin) OperatorAssign(param1 *QWebPluginFactory_
 
 // Delete this object from C++ memory.
 func (this *QWebPluginFactory__Plugin) Delete() {
-	C.QWebPluginFactory__Plugin_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebPluginFactory__Plugin_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -711,7 +711,7 @@ func UnsafeNewQWebPluginFactory__ExtensionOption(h unsafe.Pointer) *QWebPluginFa
 
 // Delete this object from C++ memory.
 func (this *QWebPluginFactory__ExtensionOption) Delete() {
-	C.QWebPluginFactory__ExtensionOption_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebPluginFactory__ExtensionOption_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -758,7 +758,7 @@ func UnsafeNewQWebPluginFactory__ExtensionReturn(h unsafe.Pointer) *QWebPluginFa
 
 // Delete this object from C++ memory.
 func (this *QWebPluginFactory__ExtensionReturn) Delete() {
-	C.QWebPluginFactory__ExtensionReturn_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebPluginFactory__ExtensionReturn_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

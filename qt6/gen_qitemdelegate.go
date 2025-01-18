@@ -630,7 +630,7 @@ func miqt_exec_callback_QItemDelegate_PaintingRoles(self *C.QItemDelegate, cb C.
 
 // Delete this object from C++ memory.
 func (this *QItemDelegate) Delete() {
-	C.QItemDelegate_Delete(this.h, C.bool(this.isSubclass))
+	C.QItemDelegate_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

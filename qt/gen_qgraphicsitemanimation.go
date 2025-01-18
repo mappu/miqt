@@ -613,7 +613,7 @@ func miqt_exec_callback_QGraphicsItemAnimation_DisconnectNotify(self *C.QGraphic
 
 // Delete this object from C++ memory.
 func (this *QGraphicsItemAnimation) Delete() {
-	C.QGraphicsItemAnimation_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsItemAnimation_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

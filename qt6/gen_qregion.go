@@ -313,7 +313,7 @@ func (this *QRegion) ToQVariant() *QVariant {
 
 // Delete this object from C++ memory.
 func (this *QRegion) Delete() {
-	C.QRegion_Delete(this.h, C.bool(this.isSubclass))
+	C.QRegion_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

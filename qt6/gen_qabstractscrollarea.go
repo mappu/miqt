@@ -821,7 +821,7 @@ func miqt_exec_callback_QAbstractScrollArea_InitStyleOption(self *C.QAbstractScr
 
 // Delete this object from C++ memory.
 func (this *QAbstractScrollArea) Delete() {
-	C.QAbstractScrollArea_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractScrollArea_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

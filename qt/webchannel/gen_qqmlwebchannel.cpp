@@ -123,11 +123,7 @@ struct miqt_string QQmlWebChannel_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QQmlWebChannel_Delete(QQmlWebChannel* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QQmlWebChannel*>( self );
-	} else {
-		delete self;
-	}
+void QQmlWebChannel_Delete(QQmlWebChannel* self) {
+	delete self;
 }
 

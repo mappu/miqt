@@ -83,7 +83,7 @@ void QAbstractTransition_override_virtual_ConnectNotify(void* self, intptr_t slo
 void QAbstractTransition_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QAbstractTransition_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QAbstractTransition_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QAbstractTransition_Delete(QAbstractTransition* self, bool isSubclass);
+void QAbstractTransition_Delete(QAbstractTransition* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -278,7 +278,7 @@ func miqt_exec_callback_QParallelAnimationGroup_UpdateDirection(self *C.QParalle
 
 // Delete this object from C++ memory.
 func (this *QParallelAnimationGroup) Delete() {
-	C.QParallelAnimationGroup_Delete(this.h, C.bool(this.isSubclass))
+	C.QParallelAnimationGroup_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -44,7 +44,7 @@ QUuid* QUuid_CreateUuidV32(QUuid* ns, struct miqt_string baseData);
 QUuid* QUuid_CreateUuidV52(QUuid* ns, struct miqt_string baseData);
 int QUuid_Variant(const QUuid* self);
 int QUuid_Version(const QUuid* self);
-void QUuid_Delete(QUuid* self, bool isSubclass);
+void QUuid_Delete(QUuid* self);
 
 #ifdef __cplusplus
 } /* extern C */

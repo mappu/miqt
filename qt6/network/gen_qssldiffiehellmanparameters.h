@@ -35,7 +35,7 @@ int QSslDiffieHellmanParameters_Error(const QSslDiffieHellmanParameters* self);
 struct miqt_string QSslDiffieHellmanParameters_ErrorString(const QSslDiffieHellmanParameters* self);
 QSslDiffieHellmanParameters* QSslDiffieHellmanParameters_FromEncoded2(struct miqt_string encoded, int format);
 QSslDiffieHellmanParameters* QSslDiffieHellmanParameters_FromEncoded22(QIODevice* device, int format);
-void QSslDiffieHellmanParameters_Delete(QSslDiffieHellmanParameters* self, bool isSubclass);
+void QSslDiffieHellmanParameters_Delete(QSslDiffieHellmanParameters* self);
 
 #ifdef __cplusplus
 } /* extern C */

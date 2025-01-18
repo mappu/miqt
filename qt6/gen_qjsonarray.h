@@ -80,7 +80,7 @@ void QJsonArray_PushFront(QJsonArray* self, QJsonValue* t);
 void QJsonArray_PopFront(QJsonArray* self);
 void QJsonArray_PopBack(QJsonArray* self);
 bool QJsonArray_Empty(const QJsonArray* self);
-void QJsonArray_Delete(QJsonArray* self, bool isSubclass);
+void QJsonArray_Delete(QJsonArray* self);
 
 QJsonArray__iterator* QJsonArray__iterator_new();
 QJsonArray__iterator* QJsonArray__iterator_new2(QJsonArray* array, ptrdiff_t index);
@@ -111,7 +111,7 @@ QJsonArray__iterator* QJsonArray__iterator_OperatorMinusAssign(QJsonArray__itera
 QJsonArray__iterator* QJsonArray__iterator_OperatorPlus(const QJsonArray__iterator* self, ptrdiff_t j);
 QJsonArray__iterator* QJsonArray__iterator_OperatorMinus(const QJsonArray__iterator* self, ptrdiff_t j);
 ptrdiff_t QJsonArray__iterator_OperatorMinusWithQJsonArrayiterator(const QJsonArray__iterator* self, QJsonArray__iterator* j);
-void QJsonArray__iterator_Delete(QJsonArray__iterator* self, bool isSubclass);
+void QJsonArray__iterator_Delete(QJsonArray__iterator* self);
 
 QJsonArray__const_iterator* QJsonArray__const_iterator_new();
 QJsonArray__const_iterator* QJsonArray__const_iterator_new2(QJsonArray* array, ptrdiff_t index);
@@ -136,7 +136,7 @@ QJsonArray__const_iterator* QJsonArray__const_iterator_OperatorMinusAssign(QJson
 QJsonArray__const_iterator* QJsonArray__const_iterator_OperatorPlus(const QJsonArray__const_iterator* self, ptrdiff_t j);
 QJsonArray__const_iterator* QJsonArray__const_iterator_OperatorMinus(const QJsonArray__const_iterator* self, ptrdiff_t j);
 ptrdiff_t QJsonArray__const_iterator_OperatorMinusWithQJsonArrayconstIterator(const QJsonArray__const_iterator* self, QJsonArray__const_iterator* j);
-void QJsonArray__const_iterator_Delete(QJsonArray__const_iterator* self, bool isSubclass);
+void QJsonArray__const_iterator_Delete(QJsonArray__const_iterator* self);
 
 #ifdef __cplusplus
 } /* extern C */

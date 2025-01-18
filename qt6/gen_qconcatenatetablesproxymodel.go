@@ -1494,7 +1494,7 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_ResetInternalData(self *C.Q
 
 // Delete this object from C++ memory.
 func (this *QConcatenateTablesProxyModel) Delete() {
-	C.QConcatenateTablesProxyModel_Delete(this.h, C.bool(this.isSubclass))
+	C.QConcatenateTablesProxyModel_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

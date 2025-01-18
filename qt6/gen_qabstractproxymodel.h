@@ -160,7 +160,7 @@ void QAbstractProxyModel_override_virtual_MultiData(void* self, intptr_t slot);
 void QAbstractProxyModel_virtualbase_MultiData(const void* self, QModelIndex* index, QModelRoleDataSpan* roleDataSpan);
 void QAbstractProxyModel_override_virtual_ResetInternalData(void* self, intptr_t slot);
 void QAbstractProxyModel_virtualbase_ResetInternalData(void* self);
-void QAbstractProxyModel_Delete(QAbstractProxyModel* self, bool isSubclass);
+void QAbstractProxyModel_Delete(QAbstractProxyModel* self);
 
 #ifdef __cplusplus
 } /* extern C */

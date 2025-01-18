@@ -94,7 +94,7 @@ void QSlider_override_virtual_WheelEvent(void* self, intptr_t slot);
 void QSlider_virtualbase_WheelEvent(void* self, QWheelEvent* e);
 void QSlider_override_virtual_ChangeEvent(void* self, intptr_t slot);
 void QSlider_virtualbase_ChangeEvent(void* self, QEvent* e);
-void QSlider_Delete(QSlider* self, bool isSubclass);
+void QSlider_Delete(QSlider* self);
 
 #ifdef __cplusplus
 } /* extern C */

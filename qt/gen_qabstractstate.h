@@ -47,7 +47,7 @@ struct miqt_string QAbstractState_Tr2(const char* s, const char* c);
 struct miqt_string QAbstractState_Tr3(const char* s, const char* c, int n);
 struct miqt_string QAbstractState_TrUtf82(const char* s, const char* c);
 struct miqt_string QAbstractState_TrUtf83(const char* s, const char* c, int n);
-void QAbstractState_Delete(QAbstractState* self, bool isSubclass);
+void QAbstractState_Delete(QAbstractState* self);
 
 #ifdef __cplusplus
 } /* extern C */

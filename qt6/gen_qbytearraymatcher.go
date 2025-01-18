@@ -141,7 +141,7 @@ func (this *QByteArrayMatcher) IndexIn2(data QByteArrayView, from int64) int64 {
 
 // Delete this object from C++ memory.
 func (this *QByteArrayMatcher) Delete() {
-	C.QByteArrayMatcher_Delete(this.h, C.bool(this.isSubclass))
+	C.QByteArrayMatcher_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

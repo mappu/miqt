@@ -87,21 +87,17 @@ QFont* QTextItem_Font(const QTextItem* self) {
 	return new QFont(self->font());
 }
 
-void QTextItem_Delete(QTextItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextItem*>( self );
-	} else {
-		delete self;
-	}
+void QTextItem_Delete(QTextItem* self) {
+	delete self;
 }
 
-class MiqtVirtualQPaintEngine : public virtual QPaintEngine {
+class MiqtVirtualQPaintEngine final : public QPaintEngine {
 public:
 
 	MiqtVirtualQPaintEngine(): QPaintEngine() {};
 	MiqtVirtualQPaintEngine(QPaintEngine::PaintEngineFeatures features): QPaintEngine(features) {};
 
-	virtual ~MiqtVirtualQPaintEngine() = default;
+	virtual ~MiqtVirtualQPaintEngine() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Begin = 0;
@@ -885,12 +881,8 @@ void QPaintEngine_override_virtual_Type(void* self, intptr_t slot) {
 	dynamic_cast<MiqtVirtualQPaintEngine*>( (QPaintEngine*)(self) )->handle__Type = slot;
 }
 
-void QPaintEngine_Delete(QPaintEngine* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQPaintEngine*>( self );
-	} else {
-		delete self;
-	}
+void QPaintEngine_Delete(QPaintEngine* self) {
+	delete self;
 }
 
 int QPaintEngineState_State(const QPaintEngineState* self) {
@@ -975,11 +967,7 @@ bool QPaintEngineState_PenNeedsResolving(const QPaintEngineState* self) {
 	return self->penNeedsResolving();
 }
 
-void QPaintEngineState_Delete(QPaintEngineState* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPaintEngineState*>( self );
-	} else {
-		delete self;
-	}
+void QPaintEngineState_Delete(QPaintEngineState* self) {
+	delete self;
 }
 

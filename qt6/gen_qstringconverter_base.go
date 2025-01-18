@@ -206,7 +206,7 @@ func (this *QStringConverterBase__State) Reset() {
 
 // Delete this object from C++ memory.
 func (this *QStringConverterBase__State) Delete() {
-	C.QStringConverterBase__State_Delete(this.h, C.bool(this.isSubclass))
+	C.QStringConverterBase__State_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

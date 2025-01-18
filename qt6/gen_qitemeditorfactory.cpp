@@ -32,21 +32,17 @@ void QItemEditorCreatorBase_OperatorAssign(QItemEditorCreatorBase* self, QItemEd
 	self->operator=(*param1);
 }
 
-void QItemEditorCreatorBase_Delete(QItemEditorCreatorBase* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QItemEditorCreatorBase*>( self );
-	} else {
-		delete self;
-	}
+void QItemEditorCreatorBase_Delete(QItemEditorCreatorBase* self) {
+	delete self;
 }
 
-class MiqtVirtualQItemEditorFactory : public virtual QItemEditorFactory {
+class MiqtVirtualQItemEditorFactory final : public QItemEditorFactory {
 public:
 
 	MiqtVirtualQItemEditorFactory(): QItemEditorFactory() {};
 	MiqtVirtualQItemEditorFactory(const QItemEditorFactory& param1): QItemEditorFactory(param1) {};
 
-	virtual ~MiqtVirtualQItemEditorFactory() = default;
+	virtual ~MiqtVirtualQItemEditorFactory() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__CreateEditor = 0;
@@ -152,11 +148,7 @@ struct miqt_string QItemEditorFactory_virtualbase_ValuePropertyName(const void* 
 	return ( (const MiqtVirtualQItemEditorFactory*)(self) )->virtualbase_ValuePropertyName(userType);
 }
 
-void QItemEditorFactory_Delete(QItemEditorFactory* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQItemEditorFactory*>( self );
-	} else {
-		delete self;
-	}
+void QItemEditorFactory_Delete(QItemEditorFactory* self) {
+	delete self;
 }
 

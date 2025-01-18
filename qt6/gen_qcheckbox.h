@@ -108,7 +108,7 @@ void QCheckBox_override_virtual_ChangeEvent(void* self, intptr_t slot);
 void QCheckBox_virtualbase_ChangeEvent(void* self, QEvent* e);
 void QCheckBox_override_virtual_TimerEvent(void* self, intptr_t slot);
 void QCheckBox_virtualbase_TimerEvent(void* self, QTimerEvent* e);
-void QCheckBox_Delete(QCheckBox* self, bool isSubclass);
+void QCheckBox_Delete(QCheckBox* self);
 
 #ifdef __cplusplus
 } /* extern C */

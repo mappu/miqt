@@ -96,11 +96,7 @@ QAccessible__State* QAccessibleApplication_State(const QAccessibleApplication* s
 	return new QAccessible::State(self->state());
 }
 
-void QAccessibleApplication_Delete(QAccessibleApplication* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QAccessibleApplication*>( self );
-	} else {
-		delete self;
-	}
+void QAccessibleApplication_Delete(QAccessibleApplication* self) {
+	delete self;
 }
 

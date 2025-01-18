@@ -148,11 +148,7 @@ int QUuid_Version(const QUuid* self) {
 	return static_cast<int>(_ret);
 }
 
-void QUuid_Delete(QUuid* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QUuid*>( self );
-	} else {
-		delete self;
-	}
+void QUuid_Delete(QUuid* self) {
+	delete self;
 }
 

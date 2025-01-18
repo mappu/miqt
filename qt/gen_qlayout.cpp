@@ -52,13 +52,13 @@ QSpacerItem* miqt_exec_callback_QLayout_SpacerItem(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQLayout : public virtual QLayout {
+class MiqtVirtualQLayout final : public QLayout {
 public:
 
 	MiqtVirtualQLayout(QWidget* parent): QLayout(parent) {};
 	MiqtVirtualQLayout(): QLayout() {};
 
-	virtual ~MiqtVirtualQLayout() = default;
+	virtual ~MiqtVirtualQLayout() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Invalidate = 0;
@@ -1117,11 +1117,7 @@ QSpacerItem* QLayout_virtualbase_SpacerItem(void* self) {
 	return ( (MiqtVirtualQLayout*)(self) )->virtualbase_SpacerItem();
 }
 
-void QLayout_Delete(QLayout* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQLayout*>( self );
-	} else {
-		delete self;
-	}
+void QLayout_Delete(QLayout* self) {
+	delete self;
 }
 

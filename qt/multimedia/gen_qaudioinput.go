@@ -477,7 +477,7 @@ func miqt_exec_callback_QAudioInput_DisconnectNotify(self *C.QAudioInput, cb C.i
 
 // Delete this object from C++ memory.
 func (this *QAudioInput) Delete() {
-	C.QAudioInput_Delete(this.h, C.bool(this.isSubclass))
+	C.QAudioInput_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

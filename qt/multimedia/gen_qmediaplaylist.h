@@ -130,7 +130,7 @@ void QMediaPlaylist_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QMediaPlaylist_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QMediaPlaylist_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QMediaPlaylist_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QMediaPlaylist_Delete(QMediaPlaylist* self, bool isSubclass);
+void QMediaPlaylist_Delete(QMediaPlaylist* self);
 
 #ifdef __cplusplus
 } /* extern C */

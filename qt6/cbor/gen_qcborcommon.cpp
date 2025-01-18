@@ -29,11 +29,7 @@ struct miqt_string QCborError_ToString(const QCborError* self) {
 	return _ms;
 }
 
-void QCborError_Delete(QCborError* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCborError*>( self );
-	} else {
-		delete self;
-	}
+void QCborError_Delete(QCborError* self) {
+	delete self;
 }
 

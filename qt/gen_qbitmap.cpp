@@ -24,7 +24,7 @@ int miqt_exec_callback_QBitmap_Metric(void*, intptr_t, int);
 } /* extern C */
 #endif
 
-class MiqtVirtualQBitmap : public virtual QBitmap {
+class MiqtVirtualQBitmap final : public QBitmap {
 public:
 
 	MiqtVirtualQBitmap(): QBitmap() {};
@@ -35,7 +35,7 @@ public:
 	MiqtVirtualQBitmap(const QBitmap& other): QBitmap(other) {};
 	MiqtVirtualQBitmap(const QString& fileName, const char* format): QBitmap(fileName, format) {};
 
-	virtual ~MiqtVirtualQBitmap() = default;
+	virtual ~MiqtVirtualQBitmap() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__DevType = 0;
@@ -209,11 +209,7 @@ int QBitmap_virtualbase_Metric(const void* self, int param1) {
 	return ( (const MiqtVirtualQBitmap*)(self) )->virtualbase_Metric(param1);
 }
 
-void QBitmap_Delete(QBitmap* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQBitmap*>( self );
-	} else {
-		delete self;
-	}
+void QBitmap_Delete(QBitmap* self) {
+	delete self;
 }
 

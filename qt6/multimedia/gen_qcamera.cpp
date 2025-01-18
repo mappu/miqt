@@ -58,7 +58,7 @@ void miqt_exec_callback_QCamera_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQCamera : public virtual QCamera {
+class MiqtVirtualQCamera final : public QCamera {
 public:
 
 	MiqtVirtualQCamera(): QCamera() {};
@@ -68,7 +68,7 @@ public:
 	MiqtVirtualQCamera(const QCameraDevice& cameraDevice, QObject* parent): QCamera(cameraDevice, parent) {};
 	MiqtVirtualQCamera(QCameraDevice::Position position, QObject* parent): QCamera(position, parent) {};
 
-	virtual ~MiqtVirtualQCamera() = default;
+	virtual ~MiqtVirtualQCamera() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -904,11 +904,7 @@ void QCamera_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQCamera*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QCamera_Delete(QCamera* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQCamera*>( self );
-	} else {
-		delete self;
-	}
+void QCamera_Delete(QCamera* self) {
+	delete self;
 }
 

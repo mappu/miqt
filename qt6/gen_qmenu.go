@@ -1582,7 +1582,7 @@ func miqt_exec_callback_QMenu_InputMethodQuery(self *C.QMenu, cb C.intptr_t, par
 
 // Delete this object from C++ memory.
 func (this *QMenu) Delete() {
-	C.QMenu_Delete(this.h, C.bool(this.isSubclass))
+	C.QMenu_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

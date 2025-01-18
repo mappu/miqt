@@ -28,13 +28,13 @@ void miqt_exec_callback_QsciMacro_DisconnectNotify(void*, intptr_t, QMetaMethod*
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciMacro : public virtual QsciMacro {
+class MiqtVirtualQsciMacro final : public QsciMacro {
 public:
 
 	MiqtVirtualQsciMacro(QsciScintilla* parent): QsciMacro(parent) {};
 	MiqtVirtualQsciMacro(const QString& asc, QsciScintilla* parent): QsciMacro(asc, parent) {};
 
-	virtual ~MiqtVirtualQsciMacro() = default;
+	virtual ~MiqtVirtualQsciMacro() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Play = 0;
@@ -444,11 +444,7 @@ void QsciMacro_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQsciMacro*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QsciMacro_Delete(QsciMacro* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciMacro*>( self );
-	} else {
-		delete self;
-	}
+void QsciMacro_Delete(QsciMacro* self) {
+	delete self;
 }
 

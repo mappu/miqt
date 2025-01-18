@@ -84,7 +84,7 @@ void QCommandLinkButton_override_virtual_FocusOutEvent(void* self, intptr_t slot
 void QCommandLinkButton_virtualbase_FocusOutEvent(void* self, QFocusEvent* param1);
 void QCommandLinkButton_override_virtual_HitButton(void* self, intptr_t slot);
 bool QCommandLinkButton_virtualbase_HitButton(const void* self, QPoint* pos);
-void QCommandLinkButton_Delete(QCommandLinkButton* self, bool isSubclass);
+void QCommandLinkButton_Delete(QCommandLinkButton* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -69,7 +69,7 @@ void QWebChannel_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QWebChannel_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QWebChannel_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QWebChannel_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QWebChannel_Delete(QWebChannel* self, bool isSubclass);
+void QWebChannel_Delete(QWebChannel* self);
 
 #ifdef __cplusplus
 } /* extern C */

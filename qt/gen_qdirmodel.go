@@ -1575,7 +1575,7 @@ func miqt_exec_callback_QDirModel_Revert(self *C.QDirModel, cb C.intptr_t) {
 
 // Delete this object from C++ memory.
 func (this *QDirModel) Delete() {
-	C.QDirModel_Delete(this.h, C.bool(this.isSubclass))
+	C.QDirModel_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

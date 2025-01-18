@@ -323,7 +323,7 @@ func (this *QAccessibleTextInterface) OperatorAssign(param1 *QAccessibleTextInte
 
 // Delete this object from C++ memory.
 func (this *QAccessibleTextInterface) Delete() {
-	C.QAccessibleTextInterface_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessibleTextInterface_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -394,7 +394,7 @@ func (this *QAccessibleEditableTextInterface) OperatorAssign(param1 *QAccessible
 
 // Delete this object from C++ memory.
 func (this *QAccessibleEditableTextInterface) Delete() {
-	C.QAccessibleEditableTextInterface_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessibleEditableTextInterface_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -473,7 +473,7 @@ func (this *QAccessibleValueInterface) OperatorAssign(param1 *QAccessibleValueIn
 
 // Delete this object from C++ memory.
 func (this *QAccessibleValueInterface) Delete() {
-	C.QAccessibleValueInterface_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessibleValueInterface_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -568,7 +568,7 @@ func (this *QAccessibleTableCellInterface) OperatorAssign(param1 *QAccessibleTab
 
 // Delete this object from C++ memory.
 func (this *QAccessibleTableCellInterface) Delete() {
-	C.QAccessibleTableCellInterface_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessibleTableCellInterface_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -719,7 +719,7 @@ func (this *QAccessibleTableInterface) ModelChange(event *QAccessibleTableModelC
 
 // Delete this object from C++ memory.
 func (this *QAccessibleTableInterface) Delete() {
-	C.QAccessibleTableInterface_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessibleTableInterface_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -945,7 +945,7 @@ func QAccessibleActionInterface_Tr3(sourceText string, disambiguation string, n 
 
 // Delete this object from C++ memory.
 func (this *QAccessibleActionInterface) Delete() {
-	C.QAccessibleActionInterface_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessibleActionInterface_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1015,7 +1015,7 @@ func (this *QAccessibleImageInterface) OperatorAssign(param1 *QAccessibleImageIn
 
 // Delete this object from C++ memory.
 func (this *QAccessibleImageInterface) Delete() {
-	C.QAccessibleImageInterface_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessibleImageInterface_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1092,7 +1092,7 @@ func (this *QAccessibleHyperlinkInterface) OperatorAssign(param1 *QAccessibleHyp
 
 // Delete this object from C++ memory.
 func (this *QAccessibleHyperlinkInterface) Delete() {
-	C.QAccessibleHyperlinkInterface_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessibleHyperlinkInterface_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1204,7 +1204,7 @@ func miqt_exec_callback_QAccessibleEvent_AccessibleInterface(self *C.QAccessible
 
 // Delete this object from C++ memory.
 func (this *QAccessibleEvent) Delete() {
-	C.QAccessibleEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessibleEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1302,7 +1302,7 @@ func miqt_exec_callback_QAccessibleStateChangeEvent_AccessibleInterface(self *C.
 
 // Delete this object from C++ memory.
 func (this *QAccessibleStateChangeEvent) Delete() {
-	C.QAccessibleStateChangeEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessibleStateChangeEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1402,7 +1402,7 @@ func miqt_exec_callback_QAccessibleTextCursorEvent_AccessibleInterface(self *C.Q
 
 // Delete this object from C++ memory.
 func (this *QAccessibleTextCursorEvent) Delete() {
-	C.QAccessibleTextCursorEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessibleTextCursorEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1481,7 +1481,7 @@ func (this *QAccessibleTextSelectionEvent) SelectionEnd() int {
 
 // Delete this object from C++ memory.
 func (this *QAccessibleTextSelectionEvent) Delete() {
-	C.QAccessibleTextSelectionEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessibleTextSelectionEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1567,7 +1567,7 @@ func (this *QAccessibleTextInsertEvent) ChangePosition() int {
 
 // Delete this object from C++ memory.
 func (this *QAccessibleTextInsertEvent) Delete() {
-	C.QAccessibleTextInsertEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessibleTextInsertEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1653,7 +1653,7 @@ func (this *QAccessibleTextRemoveEvent) ChangePosition() int {
 
 // Delete this object from C++ memory.
 func (this *QAccessibleTextRemoveEvent) Delete() {
-	C.QAccessibleTextRemoveEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessibleTextRemoveEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1754,7 +1754,7 @@ func (this *QAccessibleTextUpdateEvent) ChangePosition() int {
 
 // Delete this object from C++ memory.
 func (this *QAccessibleTextUpdateEvent) Delete() {
-	C.QAccessibleTextUpdateEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessibleTextUpdateEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1856,7 +1856,7 @@ func miqt_exec_callback_QAccessibleValueChangeEvent_AccessibleInterface(self *C.
 
 // Delete this object from C++ memory.
 func (this *QAccessibleValueChangeEvent) Delete() {
-	C.QAccessibleValueChangeEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessibleValueChangeEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1988,7 +1988,7 @@ func miqt_exec_callback_QAccessibleTableModelChangeEvent_AccessibleInterface(sel
 
 // Delete this object from C++ memory.
 func (this *QAccessibleTableModelChangeEvent) Delete() {
-	C.QAccessibleTableModelChangeEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessibleTableModelChangeEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

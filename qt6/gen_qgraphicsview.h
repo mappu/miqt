@@ -272,7 +272,7 @@ void QGraphicsView_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QGraphicsView_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2);
 void QGraphicsView_override_virtual_ViewportSizeHint(void* self, intptr_t slot);
 QSize* QGraphicsView_virtualbase_ViewportSizeHint(const void* self);
-void QGraphicsView_Delete(QGraphicsView* self, bool isSubclass);
+void QGraphicsView_Delete(QGraphicsView* self);
 
 #ifdef __cplusplus
 } /* extern C */

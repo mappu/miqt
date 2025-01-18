@@ -417,7 +417,7 @@ func miqt_exec_callback_QScriptExtensionPlugin_DisconnectNotify(self *C.QScriptE
 
 // Delete this object from C++ memory.
 func (this *QScriptExtensionPlugin) Delete() {
-	C.QScriptExtensionPlugin_Delete(this.h, C.bool(this.isSubclass))
+	C.QScriptExtensionPlugin_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

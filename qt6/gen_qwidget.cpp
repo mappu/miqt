@@ -129,22 +129,18 @@ void QWidgetData_OperatorAssign(QWidgetData* self, QWidgetData* param1) {
 	self->operator=(*param1);
 }
 
-void QWidgetData_Delete(QWidgetData* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWidgetData*>( self );
-	} else {
-		delete self;
-	}
+void QWidgetData_Delete(QWidgetData* self) {
+	delete self;
 }
 
-class MiqtVirtualQWidget : public virtual QWidget {
+class MiqtVirtualQWidget final : public QWidget {
 public:
 
 	MiqtVirtualQWidget(QWidget* parent): QWidget(parent) {};
 	MiqtVirtualQWidget(): QWidget() {};
 	MiqtVirtualQWidget(QWidget* parent, Qt::WindowFlags f): QWidget(parent, f) {};
 
-	virtual ~MiqtVirtualQWidget() = default;
+	virtual ~MiqtVirtualQWidget() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__DevType = 0;
@@ -2985,11 +2981,7 @@ void QWidget_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWidget*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QWidget_Delete(QWidget* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQWidget*>( self );
-	} else {
-		delete self;
-	}
+void QWidget_Delete(QWidget* self) {
+	delete self;
 }
 

@@ -52,13 +52,13 @@ bool miqt_exec_callback_QsciLexerJSON_WriteProperties(void*, intptr_t, QSettings
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerJSON : public virtual QsciLexerJSON {
+class MiqtVirtualQsciLexerJSON final : public QsciLexerJSON {
 public:
 
 	MiqtVirtualQsciLexerJSON(): QsciLexerJSON() {};
 	MiqtVirtualQsciLexerJSON(QObject* parent): QsciLexerJSON(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerJSON() = default;
+	virtual ~MiqtVirtualQsciLexerJSON() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Language = 0;
@@ -1297,11 +1297,7 @@ bool QsciLexerJSON_virtualbase_WriteProperties(const void* self, QSettings* qs, 
 	return ( (const MiqtVirtualQsciLexerJSON*)(self) )->virtualbase_WriteProperties(qs, prefix);
 }
 
-void QsciLexerJSON_Delete(QsciLexerJSON* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerJSON*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerJSON_Delete(QsciLexerJSON* self) {
+	delete self;
 }
 

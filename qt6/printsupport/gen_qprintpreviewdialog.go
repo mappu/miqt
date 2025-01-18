@@ -535,7 +535,7 @@ func miqt_exec_callback_QPrintPreviewDialog_EventFilter(self *C.QPrintPreviewDia
 
 // Delete this object from C++ memory.
 func (this *QPrintPreviewDialog) Delete() {
-	C.QPrintPreviewDialog_Delete(this.h, C.bool(this.isSubclass))
+	C.QPrintPreviewDialog_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

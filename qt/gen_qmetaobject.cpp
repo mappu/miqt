@@ -400,12 +400,8 @@ bool QMetaMethod_InvokeOnGadget112(const QMetaMethod* self, void* gadget, QGener
 	return self->invokeOnGadget(gadget, *val0, *val1, *val2, *val3, *val4, *val5, *val6, *val7, *val8, *val9);
 }
 
-void QMetaMethod_Delete(QMetaMethod* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMetaMethod*>( self );
-	} else {
-		delete self;
-	}
+void QMetaMethod_Delete(QMetaMethod* self) {
+	delete self;
 }
 
 QMetaEnum* QMetaEnum_new() {
@@ -485,12 +481,8 @@ int QMetaEnum_KeysToValue2(const QMetaEnum* self, const char* keys, bool* ok) {
 	return self->keysToValue(keys, ok);
 }
 
-void QMetaEnum_Delete(QMetaEnum* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMetaEnum*>( self );
-	} else {
-		delete self;
-	}
+void QMetaEnum_Delete(QMetaEnum* self) {
+	delete self;
 }
 
 QMetaProperty* QMetaProperty_new() {
@@ -650,12 +642,8 @@ bool QMetaProperty_IsUser1(const QMetaProperty* self, QObject* obj) {
 	return self->isUser(obj);
 }
 
-void QMetaProperty_Delete(QMetaProperty* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMetaProperty*>( self );
-	} else {
-		delete self;
-	}
+void QMetaProperty_Delete(QMetaProperty* self) {
+	delete self;
 }
 
 QMetaClassInfo* QMetaClassInfo_new() {
@@ -674,11 +662,7 @@ QMetaObject* QMetaClassInfo_EnclosingMetaObject(const QMetaClassInfo* self) {
 	return (QMetaObject*) self->enclosingMetaObject();
 }
 
-void QMetaClassInfo_Delete(QMetaClassInfo* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMetaClassInfo*>( self );
-	} else {
-		delete self;
-	}
+void QMetaClassInfo_Delete(QMetaClassInfo* self) {
+	delete self;
 }
 

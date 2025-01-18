@@ -325,7 +325,7 @@ func QRegularExpression_WildcardToRegularExpression2(str string, options QRegula
 
 // Delete this object from C++ memory.
 func (this *QRegularExpression) Delete() {
-	C.QRegularExpression_Delete(this.h, C.bool(this.isSubclass))
+	C.QRegularExpression_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -524,7 +524,7 @@ func (this *QRegularExpressionMatch) CapturedEnd1(nth int) int64 {
 
 // Delete this object from C++ memory.
 func (this *QRegularExpressionMatch) Delete() {
-	C.QRegularExpressionMatch_Delete(this.h, C.bool(this.isSubclass))
+	C.QRegularExpressionMatch_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -629,7 +629,7 @@ func (this *QRegularExpressionMatchIterator) MatchOptions() QRegularExpression__
 
 // Delete this object from C++ memory.
 func (this *QRegularExpressionMatchIterator) Delete() {
-	C.QRegularExpressionMatchIterator_Delete(this.h, C.bool(this.isSubclass))
+	C.QRegularExpressionMatchIterator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

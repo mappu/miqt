@@ -197,11 +197,7 @@ QVariant* QVector3D_ToQVariant(const QVector3D* self) {
 	return new QVariant(self->operator QVariant());
 }
 
-void QVector3D_Delete(QVector3D* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QVector3D*>( self );
-	} else {
-		delete self;
-	}
+void QVector3D_Delete(QVector3D* self) {
+	delete self;
 }
 

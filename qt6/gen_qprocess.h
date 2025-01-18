@@ -49,7 +49,7 @@ struct miqt_array /* of struct miqt_string */  QProcessEnvironment_Keys(const QP
 void QProcessEnvironment_InsertWithQProcessEnvironment(QProcessEnvironment* self, QProcessEnvironment* e);
 QProcessEnvironment* QProcessEnvironment_SystemEnvironment();
 struct miqt_string QProcessEnvironment_Value2(const QProcessEnvironment* self, struct miqt_string name, struct miqt_string defaultValue);
-void QProcessEnvironment_Delete(QProcessEnvironment* self, bool isSubclass);
+void QProcessEnvironment_Delete(QProcessEnvironment* self);
 
 QProcess* QProcess_new();
 QProcess* QProcess_new2(QObject* parent);
@@ -161,7 +161,7 @@ void QProcess_override_virtual_ReadLineData(void* self, intptr_t slot);
 long long QProcess_virtualbase_ReadLineData(void* self, char* data, long long maxlen);
 void QProcess_override_virtual_SkipData(void* self, intptr_t slot);
 long long QProcess_virtualbase_SkipData(void* self, long long maxSize);
-void QProcess_Delete(QProcess* self, bool isSubclass);
+void QProcess_Delete(QProcess* self);
 
 #ifdef __cplusplus
 } /* extern C */

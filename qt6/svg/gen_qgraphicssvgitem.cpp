@@ -28,7 +28,7 @@ bool miqt_exec_callback_QGraphicsSvgItem_Event(void*, intptr_t, QEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQGraphicsSvgItem : public virtual QGraphicsSvgItem {
+class MiqtVirtualQGraphicsSvgItem final : public QGraphicsSvgItem {
 public:
 
 	MiqtVirtualQGraphicsSvgItem(): QGraphicsSvgItem() {};
@@ -36,7 +36,7 @@ public:
 	MiqtVirtualQGraphicsSvgItem(QGraphicsItem* parentItem): QGraphicsSvgItem(parentItem) {};
 	MiqtVirtualQGraphicsSvgItem(const QString& fileName, QGraphicsItem* parentItem): QGraphicsSvgItem(fileName, parentItem) {};
 
-	virtual ~MiqtVirtualQGraphicsSvgItem() = default;
+	virtual ~MiqtVirtualQGraphicsSvgItem() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__BoundingRect = 0;
@@ -280,11 +280,7 @@ bool QGraphicsSvgItem_virtualbase_Event(void* self, QEvent* ev) {
 	return ( (MiqtVirtualQGraphicsSvgItem*)(self) )->virtualbase_Event(ev);
 }
 
-void QGraphicsSvgItem_Delete(QGraphicsSvgItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsSvgItem*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsSvgItem_Delete(QGraphicsSvgItem* self) {
+	delete self;
 }
 

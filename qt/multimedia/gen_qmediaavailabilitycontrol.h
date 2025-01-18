@@ -38,7 +38,7 @@ struct miqt_string QMediaAvailabilityControl_Tr2(const char* s, const char* c);
 struct miqt_string QMediaAvailabilityControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QMediaAvailabilityControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QMediaAvailabilityControl_TrUtf83(const char* s, const char* c, int n);
-void QMediaAvailabilityControl_Delete(QMediaAvailabilityControl* self, bool isSubclass);
+void QMediaAvailabilityControl_Delete(QMediaAvailabilityControl* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -184,7 +184,7 @@ void QVideoWidget_override_virtual_InputMethodQuery(void* self, intptr_t slot);
 QVariant* QVideoWidget_virtualbase_InputMethodQuery(const void* self, int param1);
 void QVideoWidget_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QVideoWidget_virtualbase_FocusNextPrevChild(void* self, bool next);
-void QVideoWidget_Delete(QVideoWidget* self, bool isSubclass);
+void QVideoWidget_Delete(QVideoWidget* self);
 
 #ifdef __cplusplus
 } /* extern C */

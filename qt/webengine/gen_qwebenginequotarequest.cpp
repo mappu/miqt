@@ -44,11 +44,7 @@ bool QWebEngineQuotaRequest_OperatorNotEqual(const QWebEngineQuotaRequest* self,
 	return (*self != *that);
 }
 
-void QWebEngineQuotaRequest_Delete(QWebEngineQuotaRequest* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebEngineQuotaRequest*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineQuotaRequest_Delete(QWebEngineQuotaRequest* self) {
+	delete self;
 }
 

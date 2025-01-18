@@ -80,7 +80,7 @@ func (this *QScriptable) Argument(index int) *QScriptValue {
 
 // Delete this object from C++ memory.
 func (this *QScriptable) Delete() {
-	C.QScriptable_Delete(this.h, C.bool(this.isSubclass))
+	C.QScriptable_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

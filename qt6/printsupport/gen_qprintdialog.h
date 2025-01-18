@@ -63,7 +63,7 @@ void QPrintDialog_override_virtual_Done(void* self, intptr_t slot);
 void QPrintDialog_virtualbase_Done(void* self, int result);
 void QPrintDialog_override_virtual_SetVisible(void* self, intptr_t slot);
 void QPrintDialog_virtualbase_SetVisible(void* self, bool visible);
-void QPrintDialog_Delete(QPrintDialog* self, bool isSubclass);
+void QPrintDialog_Delete(QPrintDialog* self);
 
 #ifdef __cplusplus
 } /* extern C */

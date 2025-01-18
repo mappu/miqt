@@ -155,7 +155,7 @@ func (this *QStringMatcher) IndexIn3(str *QChar, length int, from int) int {
 
 // Delete this object from C++ memory.
 func (this *QStringMatcher) Delete() {
-	C.QStringMatcher_Delete(this.h, C.bool(this.isSubclass))
+	C.QStringMatcher_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

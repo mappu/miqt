@@ -635,7 +635,7 @@ func (this *QStyleOption) OperatorAssign(other *QStyleOption) {
 
 // Delete this object from C++ memory.
 func (this *QStyleOption) Delete() {
-	C.QStyleOption_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleOption_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -702,7 +702,7 @@ func NewQStyleOptionFocusRect2(other *QStyleOptionFocusRect) *QStyleOptionFocusR
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionFocusRect) Delete() {
-	C.QStyleOptionFocusRect_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleOptionFocusRect_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -769,7 +769,7 @@ func NewQStyleOptionFrame2(other *QStyleOptionFrame) *QStyleOptionFrame {
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionFrame) Delete() {
-	C.QStyleOptionFrame_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleOptionFrame_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -836,7 +836,7 @@ func NewQStyleOptionTabWidgetFrame2(other *QStyleOptionTabWidgetFrame) *QStyleOp
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionTabWidgetFrame) Delete() {
-	C.QStyleOptionTabWidgetFrame_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleOptionTabWidgetFrame_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -903,7 +903,7 @@ func NewQStyleOptionTabBarBase2(other *QStyleOptionTabBarBase) *QStyleOptionTabB
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionTabBarBase) Delete() {
-	C.QStyleOptionTabBarBase_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleOptionTabBarBase_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -970,7 +970,7 @@ func NewQStyleOptionHeader2(other *QStyleOptionHeader) *QStyleOptionHeader {
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionHeader) Delete() {
-	C.QStyleOptionHeader_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleOptionHeader_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1037,7 +1037,7 @@ func NewQStyleOptionHeaderV22(other *QStyleOptionHeaderV2) *QStyleOptionHeaderV2
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionHeaderV2) Delete() {
-	C.QStyleOptionHeaderV2_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleOptionHeaderV2_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1104,7 +1104,7 @@ func NewQStyleOptionButton2(other *QStyleOptionButton) *QStyleOptionButton {
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionButton) Delete() {
-	C.QStyleOptionButton_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleOptionButton_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1171,7 +1171,7 @@ func NewQStyleOptionTab2(other *QStyleOptionTab) *QStyleOptionTab {
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionTab) Delete() {
-	C.QStyleOptionTab_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleOptionTab_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1238,7 +1238,7 @@ func NewQStyleOptionToolBar2(other *QStyleOptionToolBar) *QStyleOptionToolBar {
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionToolBar) Delete() {
-	C.QStyleOptionToolBar_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleOptionToolBar_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1305,7 +1305,7 @@ func NewQStyleOptionProgressBar2(other *QStyleOptionProgressBar) *QStyleOptionPr
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionProgressBar) Delete() {
-	C.QStyleOptionProgressBar_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleOptionProgressBar_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1372,7 +1372,7 @@ func NewQStyleOptionMenuItem2(other *QStyleOptionMenuItem) *QStyleOptionMenuItem
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionMenuItem) Delete() {
-	C.QStyleOptionMenuItem_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleOptionMenuItem_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1439,7 +1439,7 @@ func NewQStyleOptionDockWidget2(other *QStyleOptionDockWidget) *QStyleOptionDock
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionDockWidget) Delete() {
-	C.QStyleOptionDockWidget_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleOptionDockWidget_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1506,7 +1506,7 @@ func NewQStyleOptionViewItem2(other *QStyleOptionViewItem) *QStyleOptionViewItem
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionViewItem) Delete() {
-	C.QStyleOptionViewItem_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleOptionViewItem_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1573,7 +1573,7 @@ func NewQStyleOptionToolBox2(other *QStyleOptionToolBox) *QStyleOptionToolBox {
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionToolBox) Delete() {
-	C.QStyleOptionToolBox_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleOptionToolBox_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1640,7 +1640,7 @@ func NewQStyleOptionRubberBand2(other *QStyleOptionRubberBand) *QStyleOptionRubb
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionRubberBand) Delete() {
-	C.QStyleOptionRubberBand_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleOptionRubberBand_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1723,7 +1723,7 @@ func NewQStyleOptionComplex4(version int, typeVal int) *QStyleOptionComplex {
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionComplex) Delete() {
-	C.QStyleOptionComplex_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleOptionComplex_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1790,7 +1790,7 @@ func NewQStyleOptionSlider2(other *QStyleOptionSlider) *QStyleOptionSlider {
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionSlider) Delete() {
-	C.QStyleOptionSlider_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleOptionSlider_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1857,7 +1857,7 @@ func NewQStyleOptionSpinBox2(other *QStyleOptionSpinBox) *QStyleOptionSpinBox {
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionSpinBox) Delete() {
-	C.QStyleOptionSpinBox_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleOptionSpinBox_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1924,7 +1924,7 @@ func NewQStyleOptionToolButton2(other *QStyleOptionToolButton) *QStyleOptionTool
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionToolButton) Delete() {
-	C.QStyleOptionToolButton_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleOptionToolButton_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1991,7 +1991,7 @@ func NewQStyleOptionComboBox2(other *QStyleOptionComboBox) *QStyleOptionComboBox
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionComboBox) Delete() {
-	C.QStyleOptionComboBox_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleOptionComboBox_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2058,7 +2058,7 @@ func NewQStyleOptionTitleBar2(other *QStyleOptionTitleBar) *QStyleOptionTitleBar
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionTitleBar) Delete() {
-	C.QStyleOptionTitleBar_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleOptionTitleBar_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2125,7 +2125,7 @@ func NewQStyleOptionGroupBox2(other *QStyleOptionGroupBox) *QStyleOptionGroupBox
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionGroupBox) Delete() {
-	C.QStyleOptionGroupBox_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleOptionGroupBox_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2192,7 +2192,7 @@ func NewQStyleOptionSizeGrip2(other *QStyleOptionSizeGrip) *QStyleOptionSizeGrip
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionSizeGrip) Delete() {
-	C.QStyleOptionSizeGrip_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleOptionSizeGrip_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2263,7 +2263,7 @@ func QStyleOptionGraphicsItem_LevelOfDetailFromTransform(worldTransform *QTransf
 
 // Delete this object from C++ memory.
 func (this *QStyleOptionGraphicsItem) Delete() {
-	C.QStyleOptionGraphicsItem_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleOptionGraphicsItem_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2346,7 +2346,7 @@ func (this *QStyleHintReturn) OperatorAssign(param1 *QStyleHintReturn) {
 
 // Delete this object from C++ memory.
 func (this *QStyleHintReturn) Delete() {
-	C.QStyleHintReturn_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleHintReturn_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2417,7 +2417,7 @@ func (this *QStyleHintReturnMask) OperatorAssign(param1 *QStyleHintReturnMask) {
 
 // Delete this object from C++ memory.
 func (this *QStyleHintReturnMask) Delete() {
-	C.QStyleHintReturnMask_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleHintReturnMask_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2488,7 +2488,7 @@ func (this *QStyleHintReturnVariant) OperatorAssign(param1 *QStyleHintReturnVari
 
 // Delete this object from C++ memory.
 func (this *QStyleHintReturnVariant) Delete() {
-	C.QStyleHintReturnVariant_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleHintReturnVariant_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

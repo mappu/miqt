@@ -33,11 +33,7 @@ QUrl* QWebEngineFullScreenRequest_Origin(const QWebEngineFullScreenRequest* self
 	return const_cast<QUrl*>(&_ret);
 }
 
-void QWebEngineFullScreenRequest_Delete(QWebEngineFullScreenRequest* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebEngineFullScreenRequest*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineFullScreenRequest_Delete(QWebEngineFullScreenRequest* self) {
+	delete self;
 }
 

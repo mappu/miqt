@@ -52,13 +52,13 @@ bool miqt_exec_callback_QsciLexerMatlab_WriteProperties(void*, intptr_t, QSettin
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerMatlab : public virtual QsciLexerMatlab {
+class MiqtVirtualQsciLexerMatlab final : public QsciLexerMatlab {
 public:
 
 	MiqtVirtualQsciLexerMatlab(): QsciLexerMatlab() {};
 	MiqtVirtualQsciLexerMatlab(QObject* parent): QsciLexerMatlab(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerMatlab() = default;
+	virtual ~MiqtVirtualQsciLexerMatlab() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Language = 0;
@@ -1261,11 +1261,7 @@ bool QsciLexerMatlab_virtualbase_WriteProperties(const void* self, QSettings* qs
 	return ( (const MiqtVirtualQsciLexerMatlab*)(self) )->virtualbase_WriteProperties(qs, prefix);
 }
 
-void QsciLexerMatlab_Delete(QsciLexerMatlab* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerMatlab*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerMatlab_Delete(QsciLexerMatlab* self) {
+	delete self;
 }
 

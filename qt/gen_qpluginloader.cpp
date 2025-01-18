@@ -29,7 +29,7 @@ void miqt_exec_callback_QPluginLoader_DisconnectNotify(void*, intptr_t, QMetaMet
 } /* extern C */
 #endif
 
-class MiqtVirtualQPluginLoader : public virtual QPluginLoader {
+class MiqtVirtualQPluginLoader final : public QPluginLoader {
 public:
 
 	MiqtVirtualQPluginLoader(): QPluginLoader() {};
@@ -37,7 +37,7 @@ public:
 	MiqtVirtualQPluginLoader(QObject* parent): QPluginLoader(parent) {};
 	MiqtVirtualQPluginLoader(const QString& fileName, QObject* parent): QPluginLoader(fileName, parent) {};
 
-	virtual ~MiqtVirtualQPluginLoader() = default;
+	virtual ~MiqtVirtualQPluginLoader() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -446,11 +446,7 @@ void QPluginLoader_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQPluginLoader*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QPluginLoader_Delete(QPluginLoader* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQPluginLoader*>( self );
-	} else {
-		delete self;
-	}
+void QPluginLoader_Delete(QPluginLoader* self) {
+	delete self;
 }
 

@@ -479,7 +479,7 @@ func miqt_exec_callback_QAudioEngine_DisconnectNotify(self *C.QAudioEngine, cb C
 
 // Delete this object from C++ memory.
 func (this *QAudioEngine) Delete() {
-	C.QAudioEngine_Delete(this.h, C.bool(this.isSubclass))
+	C.QAudioEngine_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

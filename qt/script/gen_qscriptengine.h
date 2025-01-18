@@ -58,7 +58,7 @@ int QScriptSyntaxCheckResult_ErrorLineNumber(const QScriptSyntaxCheckResult* sel
 int QScriptSyntaxCheckResult_ErrorColumnNumber(const QScriptSyntaxCheckResult* self);
 struct miqt_string QScriptSyntaxCheckResult_ErrorMessage(const QScriptSyntaxCheckResult* self);
 void QScriptSyntaxCheckResult_OperatorAssign(QScriptSyntaxCheckResult* self, QScriptSyntaxCheckResult* other);
-void QScriptSyntaxCheckResult_Delete(QScriptSyntaxCheckResult* self, bool isSubclass);
+void QScriptSyntaxCheckResult_Delete(QScriptSyntaxCheckResult* self);
 
 QScriptEngine* QScriptEngine_new();
 QScriptEngine* QScriptEngine_new2(QObject* parent);
@@ -144,7 +144,7 @@ void QScriptEngine_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QScriptEngine_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QScriptEngine_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QScriptEngine_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QScriptEngine_Delete(QScriptEngine* self, bool isSubclass);
+void QScriptEngine_Delete(QScriptEngine* self);
 
 #ifdef __cplusplus
 } /* extern C */

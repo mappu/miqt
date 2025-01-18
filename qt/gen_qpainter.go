@@ -1239,7 +1239,7 @@ func QPainter_Redirected2(device *QPaintDevice, offset *QPoint) *QPaintDevice {
 
 // Delete this object from C++ memory.
 func (this *QPainter) Delete() {
-	C.QPainter_Delete(this.h, C.bool(this.isSubclass))
+	C.QPainter_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1316,7 +1316,7 @@ func QPainter__PixmapFragment_Create6(pos *QPointF, sourceRect *QRectF, scaleX f
 
 // Delete this object from C++ memory.
 func (this *QPainter__PixmapFragment) Delete() {
-	C.QPainter__PixmapFragment_Delete(this.h, C.bool(this.isSubclass))
+	C.QPainter__PixmapFragment_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -33,7 +33,7 @@ long long miqt_exec_callback_QFile_ReadLineData(void*, intptr_t, char*, long lon
 } /* extern C */
 #endif
 
-class MiqtVirtualQFile : public virtual QFile {
+class MiqtVirtualQFile final : public QFile {
 public:
 
 	MiqtVirtualQFile(): QFile() {};
@@ -41,7 +41,7 @@ public:
 	MiqtVirtualQFile(QObject* parent): QFile(parent) {};
 	MiqtVirtualQFile(const QString& name, QObject* parent): QFile(name, parent) {};
 
-	virtual ~MiqtVirtualQFile() = default;
+	virtual ~MiqtVirtualQFile() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__FileName = 0;
@@ -742,11 +742,7 @@ long long QFile_virtualbase_ReadLineData(void* self, char* data, long long maxle
 	return ( (MiqtVirtualQFile*)(self) )->virtualbase_ReadLineData(data, maxlen);
 }
 
-void QFile_Delete(QFile* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQFile*>( self );
-	} else {
-		delete self;
-	}
+void QFile_Delete(QFile* self) {
+	delete self;
 }
 

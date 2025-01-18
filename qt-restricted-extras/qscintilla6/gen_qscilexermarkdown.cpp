@@ -52,13 +52,13 @@ bool miqt_exec_callback_QsciLexerMarkdown_WriteProperties(void*, intptr_t, QSett
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerMarkdown : public virtual QsciLexerMarkdown {
+class MiqtVirtualQsciLexerMarkdown final : public QsciLexerMarkdown {
 public:
 
 	MiqtVirtualQsciLexerMarkdown(): QsciLexerMarkdown() {};
 	MiqtVirtualQsciLexerMarkdown(QObject* parent): QsciLexerMarkdown(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerMarkdown() = default;
+	virtual ~MiqtVirtualQsciLexerMarkdown() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Language = 0;
@@ -1228,11 +1228,7 @@ bool QsciLexerMarkdown_virtualbase_WriteProperties(const void* self, QSettings* 
 	return ( (const MiqtVirtualQsciLexerMarkdown*)(self) )->virtualbase_WriteProperties(qs, prefix);
 }
 
-void QsciLexerMarkdown_Delete(QsciLexerMarkdown* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerMarkdown*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerMarkdown_Delete(QsciLexerMarkdown* self) {
+	delete self;
 }
 

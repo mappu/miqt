@@ -75,7 +75,7 @@ void QSaveFile_override_virtual_ReadData(void* self, intptr_t slot);
 long long QSaveFile_virtualbase_ReadData(void* self, char* data, long long maxlen);
 void QSaveFile_override_virtual_ReadLineData(void* self, intptr_t slot);
 long long QSaveFile_virtualbase_ReadLineData(void* self, char* data, long long maxlen);
-void QSaveFile_Delete(QSaveFile* self, bool isSubclass);
+void QSaveFile_Delete(QSaveFile* self);
 
 #ifdef __cplusplus
 } /* extern C */

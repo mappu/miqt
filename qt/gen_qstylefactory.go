@@ -69,7 +69,7 @@ func QStyleFactory_Create(param1 string) *QStyle {
 
 // Delete this object from C++ memory.
 func (this *QStyleFactory) Delete() {
-	C.QStyleFactory_Delete(this.h, C.bool(this.isSubclass))
+	C.QStyleFactory_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

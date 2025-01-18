@@ -111,7 +111,7 @@ func (this *QScriptSyntaxCheckResult) OperatorAssign(other *QScriptSyntaxCheckRe
 
 // Delete this object from C++ memory.
 func (this *QScriptSyntaxCheckResult) Delete() {
-	C.QScriptSyntaxCheckResult_Delete(this.h, C.bool(this.isSubclass))
+	C.QScriptSyntaxCheckResult_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -825,7 +825,7 @@ func miqt_exec_callback_QScriptEngine_DisconnectNotify(self *C.QScriptEngine, cb
 
 // Delete this object from C++ memory.
 func (this *QScriptEngine) Delete() {
-	C.QScriptEngine_Delete(this.h, C.bool(this.isSubclass))
+	C.QScriptEngine_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

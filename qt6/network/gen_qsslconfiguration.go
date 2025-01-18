@@ -491,7 +491,7 @@ func (this *QSslConfiguration) AddCaCertificates3(path string, format QSsl__Enco
 
 // Delete this object from C++ memory.
 func (this *QSslConfiguration) Delete() {
-	C.QSslConfiguration_Delete(this.h, C.bool(this.isSubclass))
+	C.QSslConfiguration_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -27,13 +27,13 @@ void miqt_exec_callback_QStackedWidget_ChangeEvent(void*, intptr_t, QEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQStackedWidget : public virtual QStackedWidget {
+class MiqtVirtualQStackedWidget final : public QStackedWidget {
 public:
 
 	MiqtVirtualQStackedWidget(QWidget* parent): QStackedWidget(parent) {};
 	MiqtVirtualQStackedWidget(): QStackedWidget() {};
 
-	virtual ~MiqtVirtualQStackedWidget() = default;
+	virtual ~MiqtVirtualQStackedWidget() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -310,11 +310,7 @@ void QStackedWidget_virtualbase_ChangeEvent(void* self, QEvent* param1) {
 	( (MiqtVirtualQStackedWidget*)(self) )->virtualbase_ChangeEvent(param1);
 }
 
-void QStackedWidget_Delete(QStackedWidget* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQStackedWidget*>( self );
-	} else {
-		delete self;
-	}
+void QStackedWidget_Delete(QStackedWidget* self) {
+	delete self;
 }
 

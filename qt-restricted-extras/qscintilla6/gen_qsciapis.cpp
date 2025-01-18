@@ -23,12 +23,12 @@ bool miqt_exec_callback_QsciAPIs_Event(void*, intptr_t, QEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciAPIs : public virtual QsciAPIs {
+class MiqtVirtualQsciAPIs final : public QsciAPIs {
 public:
 
 	MiqtVirtualQsciAPIs(QsciLexer* lexer): QsciAPIs(lexer) {};
 
-	virtual ~MiqtVirtualQsciAPIs() = default;
+	virtual ~MiqtVirtualQsciAPIs() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__UpdateAutoCompletionList = 0;
@@ -502,11 +502,7 @@ bool QsciAPIs_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQsciAPIs*)(self) )->virtualbase_Event(e);
 }
 
-void QsciAPIs_Delete(QsciAPIs* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciAPIs*>( self );
-	} else {
-		delete self;
-	}
+void QsciAPIs_Delete(QsciAPIs* self) {
+	delete self;
 }
 

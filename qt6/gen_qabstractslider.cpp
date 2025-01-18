@@ -93,13 +93,13 @@ bool miqt_exec_callback_QAbstractSlider_FocusNextPrevChild(void*, intptr_t, bool
 } /* extern C */
 #endif
 
-class MiqtVirtualQAbstractSlider : public virtual QAbstractSlider {
+class MiqtVirtualQAbstractSlider final : public QAbstractSlider {
 public:
 
 	MiqtVirtualQAbstractSlider(QWidget* parent): QAbstractSlider(parent) {};
 	MiqtVirtualQAbstractSlider(): QAbstractSlider() {};
 
-	virtual ~MiqtVirtualQAbstractSlider() = default;
+	virtual ~MiqtVirtualQAbstractSlider() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -1687,11 +1687,7 @@ bool QAbstractSlider_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QAbstractSlider_Delete(QAbstractSlider* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractSlider*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractSlider_Delete(QAbstractSlider* self) {
+	delete self;
 }
 

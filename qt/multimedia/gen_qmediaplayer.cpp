@@ -47,14 +47,14 @@ QMediaService* miqt_exec_callback_QMediaPlayer_Service(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQMediaPlayer : public virtual QMediaPlayer {
+class MiqtVirtualQMediaPlayer final : public QMediaPlayer {
 public:
 
 	MiqtVirtualQMediaPlayer(): QMediaPlayer() {};
 	MiqtVirtualQMediaPlayer(QObject* parent): QMediaPlayer(parent) {};
 	MiqtVirtualQMediaPlayer(QObject* parent, QMediaPlayer::Flags flags): QMediaPlayer(parent, flags) {};
 
-	virtual ~MiqtVirtualQMediaPlayer() = default;
+	virtual ~MiqtVirtualQMediaPlayer() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Availability = 0;
@@ -811,11 +811,7 @@ QMediaService* QMediaPlayer_virtualbase_Service(const void* self) {
 	return ( (const MiqtVirtualQMediaPlayer*)(self) )->virtualbase_Service();
 }
 
-void QMediaPlayer_Delete(QMediaPlayer* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQMediaPlayer*>( self );
-	} else {
-		delete self;
-	}
+void QMediaPlayer_Delete(QMediaPlayer* self) {
+	delete self;
 }
 

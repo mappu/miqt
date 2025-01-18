@@ -76,13 +76,13 @@ void miqt_exec_callback_QVBoxLayout_SetGeometry(void*, intptr_t, QRect*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQBoxLayout : public virtual QBoxLayout {
+class MiqtVirtualQBoxLayout final : public QBoxLayout {
 public:
 
 	MiqtVirtualQBoxLayout(QBoxLayout::Direction param1): QBoxLayout(param1) {};
 	MiqtVirtualQBoxLayout(QBoxLayout::Direction param1, QWidget* parent): QBoxLayout(param1, parent) {};
 
-	virtual ~MiqtVirtualQBoxLayout() = default;
+	virtual ~MiqtVirtualQBoxLayout() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__AddItem = 0;
@@ -987,21 +987,17 @@ void QBoxLayout_virtualbase_ChildEvent(void* self, QChildEvent* e) {
 	( (MiqtVirtualQBoxLayout*)(self) )->virtualbase_ChildEvent(e);
 }
 
-void QBoxLayout_Delete(QBoxLayout* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQBoxLayout*>( self );
-	} else {
-		delete self;
-	}
+void QBoxLayout_Delete(QBoxLayout* self) {
+	delete self;
 }
 
-class MiqtVirtualQHBoxLayout : public virtual QHBoxLayout {
+class MiqtVirtualQHBoxLayout final : public QHBoxLayout {
 public:
 
 	MiqtVirtualQHBoxLayout(QWidget* parent): QHBoxLayout(parent) {};
 	MiqtVirtualQHBoxLayout(): QHBoxLayout() {};
 
-	virtual ~MiqtVirtualQHBoxLayout() = default;
+	virtual ~MiqtVirtualQHBoxLayout() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__AddItem = 0;
@@ -1522,21 +1518,17 @@ void QHBoxLayout_virtualbase_SetGeometry(void* self, QRect* geometry) {
 	( (MiqtVirtualQHBoxLayout*)(self) )->virtualbase_SetGeometry(geometry);
 }
 
-void QHBoxLayout_Delete(QHBoxLayout* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQHBoxLayout*>( self );
-	} else {
-		delete self;
-	}
+void QHBoxLayout_Delete(QHBoxLayout* self) {
+	delete self;
 }
 
-class MiqtVirtualQVBoxLayout : public virtual QVBoxLayout {
+class MiqtVirtualQVBoxLayout final : public QVBoxLayout {
 public:
 
 	MiqtVirtualQVBoxLayout(QWidget* parent): QVBoxLayout(parent) {};
 	MiqtVirtualQVBoxLayout(): QVBoxLayout() {};
 
-	virtual ~MiqtVirtualQVBoxLayout() = default;
+	virtual ~MiqtVirtualQVBoxLayout() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__AddItem = 0;
@@ -2057,11 +2049,7 @@ void QVBoxLayout_virtualbase_SetGeometry(void* self, QRect* geometry) {
 	( (MiqtVirtualQVBoxLayout*)(self) )->virtualbase_SetGeometry(geometry);
 }
 
-void QVBoxLayout_Delete(QVBoxLayout* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQVBoxLayout*>( self );
-	} else {
-		delete self;
-	}
+void QVBoxLayout_Delete(QVBoxLayout* self) {
+	delete self;
 }
 

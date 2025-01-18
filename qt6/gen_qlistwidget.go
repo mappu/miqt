@@ -519,7 +519,7 @@ func miqt_exec_callback_QListWidgetItem_Write(self *C.QListWidgetItem, cb C.intp
 
 // Delete this object from C++ memory.
 func (this *QListWidgetItem) Delete() {
-	C.QListWidgetItem_Delete(this.h, C.bool(this.isSubclass))
+	C.QListWidgetItem_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2127,7 +2127,7 @@ func miqt_exec_callback_QListWidget_ViewportSizeHint(self *C.QListWidget, cb C.i
 
 // Delete this object from C++ memory.
 func (this *QListWidget) Delete() {
-	C.QListWidget_Delete(this.h, C.bool(this.isSubclass))
+	C.QListWidget_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

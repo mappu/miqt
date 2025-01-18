@@ -57,13 +57,13 @@ bool miqt_exec_callback_QsciLexerVHDL_WriteProperties(void*, intptr_t, QSettings
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerVHDL : public virtual QsciLexerVHDL {
+class MiqtVirtualQsciLexerVHDL final : public QsciLexerVHDL {
 public:
 
 	MiqtVirtualQsciLexerVHDL(): QsciLexerVHDL() {};
 	MiqtVirtualQsciLexerVHDL(QObject* parent): QsciLexerVHDL(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerVHDL() = default;
+	virtual ~MiqtVirtualQsciLexerVHDL() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetFoldComments = 0;
@@ -1449,11 +1449,7 @@ bool QsciLexerVHDL_virtualbase_WriteProperties(const void* self, QSettings* qs, 
 	return ( (const MiqtVirtualQsciLexerVHDL*)(self) )->virtualbase_WriteProperties(qs, prefix);
 }
 
-void QsciLexerVHDL_Delete(QsciLexerVHDL* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerVHDL*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerVHDL_Delete(QsciLexerVHDL* self) {
+	delete self;
 }
 

@@ -120,14 +120,14 @@ bool miqt_exec_callback_QWizardPage_FocusNextPrevChild(void*, intptr_t, bool);
 } /* extern C */
 #endif
 
-class MiqtVirtualQWizard : public virtual QWizard {
+class MiqtVirtualQWizard final : public QWizard {
 public:
 
 	MiqtVirtualQWizard(QWidget* parent): QWizard(parent) {};
 	MiqtVirtualQWizard(): QWizard() {};
 	MiqtVirtualQWizard(QWidget* parent, Qt::WindowFlags flags): QWizard(parent, flags) {};
 
-	virtual ~MiqtVirtualQWizard() = default;
+	virtual ~MiqtVirtualQWizard() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__ValidateCurrentPage = 0;
@@ -1074,21 +1074,17 @@ bool QWizard_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2
 	return ( (MiqtVirtualQWizard*)(self) )->virtualbase_EventFilter(param1, param2);
 }
 
-void QWizard_Delete(QWizard* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQWizard*>( self );
-	} else {
-		delete self;
-	}
+void QWizard_Delete(QWizard* self) {
+	delete self;
 }
 
-class MiqtVirtualQWizardPage : public virtual QWizardPage {
+class MiqtVirtualQWizardPage final : public QWizardPage {
 public:
 
 	MiqtVirtualQWizardPage(QWidget* parent): QWizardPage(parent) {};
 	MiqtVirtualQWizardPage(): QWizardPage() {};
 
-	virtual ~MiqtVirtualQWizardPage() = default;
+	virtual ~MiqtVirtualQWizardPage() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__InitializePage = 0;
@@ -2703,11 +2699,7 @@ bool QWizardPage_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQWizardPage*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QWizardPage_Delete(QWizardPage* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQWizardPage*>( self );
-	} else {
-		delete self;
-	}
+void QWizardPage_Delete(QWizardPage* self) {
+	delete self;
 }
 

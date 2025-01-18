@@ -96,7 +96,7 @@ func (this *QCborParserError) ErrorString() string {
 
 // Delete this object from C++ memory.
 func (this *QCborParserError) Delete() {
-	C.QCborParserError_Delete(this.h, C.bool(this.isSubclass))
+	C.QCborParserError_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -739,7 +739,7 @@ func (this *QCborValue) ToDiagnosticNotation1(opts QCborValue__DiagnosticNotatio
 
 // Delete this object from C++ memory.
 func (this *QCborValue) Delete() {
-	C.QCborValue_Delete(this.h, C.bool(this.isSubclass))
+	C.QCborValue_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1139,7 +1139,7 @@ func (this *QCborValueRef) ToDiagnosticNotation1(opt QCborValue__DiagnosticNotat
 
 // Delete this object from C++ memory.
 func (this *QCborValueRef) Delete() {
-	C.QCborValueRef_Delete(this.h, C.bool(this.isSubclass))
+	C.QCborValueRef_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -25,7 +25,7 @@ bool miqt_exec_callback_QTemporaryFile_SetPermissions(void*, intptr_t, int);
 } /* extern C */
 #endif
 
-class MiqtVirtualQTemporaryFile : public virtual QTemporaryFile {
+class MiqtVirtualQTemporaryFile final : public QTemporaryFile {
 public:
 
 	MiqtVirtualQTemporaryFile(): QTemporaryFile() {};
@@ -33,7 +33,7 @@ public:
 	MiqtVirtualQTemporaryFile(QObject* parent): QTemporaryFile(parent) {};
 	MiqtVirtualQTemporaryFile(const QString& templateName, QObject* parent): QTemporaryFile(templateName, parent) {};
 
-	virtual ~MiqtVirtualQTemporaryFile() = default;
+	virtual ~MiqtVirtualQTemporaryFile() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__FileName = 0;
@@ -349,11 +349,7 @@ bool QTemporaryFile_virtualbase_SetPermissions(void* self, int permissionSpec) {
 	return ( (MiqtVirtualQTemporaryFile*)(self) )->virtualbase_SetPermissions(permissionSpec);
 }
 
-void QTemporaryFile_Delete(QTemporaryFile* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQTemporaryFile*>( self );
-	} else {
-		delete self;
-	}
+void QTemporaryFile_Delete(QTemporaryFile* self) {
+	delete self;
 }
 

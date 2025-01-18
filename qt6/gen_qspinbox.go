@@ -1012,7 +1012,7 @@ func miqt_exec_callback_QSpinBox_StepEnabled(self *C.QSpinBox, cb C.intptr_t) C.
 
 // Delete this object from C++ memory.
 func (this *QSpinBox) Delete() {
-	C.QSpinBox_Delete(this.h, C.bool(this.isSubclass))
+	C.QSpinBox_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2053,7 +2053,7 @@ func miqt_exec_callback_QDoubleSpinBox_StepEnabled(self *C.QDoubleSpinBox, cb C.
 
 // Delete this object from C++ memory.
 func (this *QDoubleSpinBox) Delete() {
-	C.QDoubleSpinBox_Delete(this.h, C.bool(this.isSubclass))
+	C.QDoubleSpinBox_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

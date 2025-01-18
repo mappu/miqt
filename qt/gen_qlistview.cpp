@@ -106,13 +106,13 @@ bool miqt_exec_callback_QListView_EventFilter(void*, intptr_t, QObject*, QEvent*
 } /* extern C */
 #endif
 
-class MiqtVirtualQListView : public virtual QListView {
+class MiqtVirtualQListView final : public QListView {
 public:
 
 	MiqtVirtualQListView(QWidget* parent): QListView(parent) {};
 	MiqtVirtualQListView(): QListView() {};
 
-	virtual ~MiqtVirtualQListView() = default;
+	virtual ~MiqtVirtualQListView() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__VisualRect = 0;
@@ -2402,11 +2402,7 @@ bool QListView_virtualbase_EventFilter(void* self, QObject* object, QEvent* even
 	return ( (MiqtVirtualQListView*)(self) )->virtualbase_EventFilter(object, event);
 }
 
-void QListView_Delete(QListView* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQListView*>( self );
-	} else {
-		delete self;
-	}
+void QListView_Delete(QListView* self) {
+	delete self;
 }
 

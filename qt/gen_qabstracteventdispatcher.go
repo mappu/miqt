@@ -250,7 +250,7 @@ func QAbstractEventDispatcher_Instance1(thread *QThread) *QAbstractEventDispatch
 
 // Delete this object from C++ memory.
 func (this *QAbstractEventDispatcher) Delete() {
-	C.QAbstractEventDispatcher_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractEventDispatcher_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -305,7 +305,7 @@ func NewQAbstractEventDispatcher__TimerInfo(id int, i int, t TimerType) *QAbstra
 
 // Delete this object from C++ memory.
 func (this *QAbstractEventDispatcher__TimerInfo) Delete() {
-	C.QAbstractEventDispatcher__TimerInfo_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractEventDispatcher__TimerInfo_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

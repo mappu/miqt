@@ -66,11 +66,7 @@ QSslCertificate* QSslError_Certificate(const QSslError* self) {
 	return new QSslCertificate(self->certificate());
 }
 
-void QSslError_Delete(QSslError* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QSslError*>( self );
-	} else {
-		delete self;
-	}
+void QSslError_Delete(QSslError* self) {
+	delete self;
 }
 

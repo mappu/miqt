@@ -186,7 +186,7 @@ func (this *QMetaContainer) DiffConstIterator(i unsafe.Pointer, j unsafe.Pointer
 
 // Delete this object from C++ memory.
 func (this *QMetaContainer) Delete() {
-	C.QMetaContainer_Delete(this.h, C.bool(this.isSubclass))
+	C.QMetaContainer_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -367,7 +367,7 @@ func (this *QMetaSequence) ValueAtConstIterator(iterator unsafe.Pointer, result 
 
 // Delete this object from C++ memory.
 func (this *QMetaSequence) Delete() {
-	C.QMetaSequence_Delete(this.h, C.bool(this.isSubclass))
+	C.QMetaSequence_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -534,7 +534,7 @@ func (this *QMetaAssociation) CreateConstIteratorAtKey(container unsafe.Pointer,
 
 // Delete this object from C++ memory.
 func (this *QMetaAssociation) Delete() {
-	C.QMetaAssociation_Delete(this.h, C.bool(this.isSubclass))
+	C.QMetaAssociation_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

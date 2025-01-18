@@ -117,13 +117,13 @@ void miqt_exec_callback_QAbstractItemView_ScrollContentsBy(void*, intptr_t, int,
 } /* extern C */
 #endif
 
-class MiqtVirtualQAbstractItemView : public virtual QAbstractItemView {
+class MiqtVirtualQAbstractItemView final : public QAbstractItemView {
 public:
 
 	MiqtVirtualQAbstractItemView(QWidget* parent): QAbstractItemView(parent) {};
 	MiqtVirtualQAbstractItemView(): QAbstractItemView() {};
 
-	virtual ~MiqtVirtualQAbstractItemView() = default;
+	virtual ~MiqtVirtualQAbstractItemView() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetModel = 0;
@@ -2633,11 +2633,7 @@ void QAbstractItemView_virtualbase_ScrollContentsBy(void* self, int dx, int dy) 
 	( (MiqtVirtualQAbstractItemView*)(self) )->virtualbase_ScrollContentsBy(dx, dy);
 }
 
-void QAbstractItemView_Delete(QAbstractItemView* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractItemView*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractItemView_Delete(QAbstractItemView* self) {
+	delete self;
 }
 

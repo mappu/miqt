@@ -119,7 +119,7 @@ void QsciLexerMarkdown_override_virtual_ReadProperties(void* self, intptr_t slot
 bool QsciLexerMarkdown_virtualbase_ReadProperties(void* self, QSettings* qs, struct miqt_string prefix);
 void QsciLexerMarkdown_override_virtual_WriteProperties(void* self, intptr_t slot);
 bool QsciLexerMarkdown_virtualbase_WriteProperties(const void* self, QSettings* qs, struct miqt_string prefix);
-void QsciLexerMarkdown_Delete(QsciLexerMarkdown* self, bool isSubclass);
+void QsciLexerMarkdown_Delete(QsciLexerMarkdown* self);
 
 #ifdef __cplusplus
 } /* extern C */

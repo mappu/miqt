@@ -116,7 +116,7 @@ func (this *QPrintEngine) OperatorAssign(param1 *QPrintEngine) {
 
 // Delete this object from C++ memory.
 func (this *QPrintEngine) Delete() {
-	C.QPrintEngine_Delete(this.h, C.bool(this.isSubclass))
+	C.QPrintEngine_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

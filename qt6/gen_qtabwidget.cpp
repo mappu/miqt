@@ -94,13 +94,13 @@ bool miqt_exec_callback_QTabWidget_FocusNextPrevChild(void*, intptr_t, bool);
 } /* extern C */
 #endif
 
-class MiqtVirtualQTabWidget : public virtual QTabWidget {
+class MiqtVirtualQTabWidget final : public QTabWidget {
 public:
 
 	MiqtVirtualQTabWidget(QWidget* parent): QTabWidget(parent) {};
 	MiqtVirtualQTabWidget(): QTabWidget() {};
 
-	virtual ~MiqtVirtualQTabWidget() = default;
+	virtual ~MiqtVirtualQTabWidget() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -1840,11 +1840,7 @@ bool QTabWidget_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQTabWidget*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QTabWidget_Delete(QTabWidget* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQTabWidget*>( self );
-	} else {
-		delete self;
-	}
+void QTabWidget_Delete(QTabWidget* self) {
+	delete self;
 }
 

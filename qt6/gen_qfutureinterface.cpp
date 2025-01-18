@@ -242,11 +242,7 @@ bool QFutureInterfaceBase_IsChainCanceled(const QFutureInterfaceBase* self) {
 	return self->isChainCanceled();
 }
 
-void QFutureInterfaceBase_Delete(QFutureInterfaceBase* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QFutureInterfaceBase*>( self );
-	} else {
-		delete self;
-	}
+void QFutureInterfaceBase_Delete(QFutureInterfaceBase* self) {
+	delete self;
 }
 

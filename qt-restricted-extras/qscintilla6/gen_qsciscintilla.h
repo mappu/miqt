@@ -615,7 +615,7 @@ void QsciScintilla_override_virtual_ResizeEvent(void* self, intptr_t slot);
 void QsciScintilla_virtualbase_ResizeEvent(void* self, QResizeEvent* e);
 void QsciScintilla_override_virtual_ScrollContentsBy(void* self, intptr_t slot);
 void QsciScintilla_virtualbase_ScrollContentsBy(void* self, int dx, int dy);
-void QsciScintilla_Delete(QsciScintilla* self, bool isSubclass);
+void QsciScintilla_Delete(QsciScintilla* self);
 
 #ifdef __cplusplus
 } /* extern C */

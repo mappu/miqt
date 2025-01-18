@@ -487,7 +487,7 @@ func miqt_exec_callback_QLayoutItem_ControlTypes(self *C.QLayoutItem, cb C.intpt
 
 // Delete this object from C++ memory.
 func (this *QLayoutItem) Delete() {
-	C.QLayoutItem_Delete(this.h, C.bool(this.isSubclass))
+	C.QLayoutItem_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1016,7 +1016,7 @@ func miqt_exec_callback_QSpacerItem_ControlTypes(self *C.QSpacerItem, cb C.intpt
 
 // Delete this object from C++ memory.
 func (this *QSpacerItem) Delete() {
-	C.QSpacerItem_Delete(this.h, C.bool(this.isSubclass))
+	C.QSpacerItem_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1515,7 +1515,7 @@ func miqt_exec_callback_QWidgetItem_SpacerItem(self *C.QWidgetItem, cb C.intptr_
 
 // Delete this object from C++ memory.
 func (this *QWidgetItem) Delete() {
-	C.QWidgetItem_Delete(this.h, C.bool(this.isSubclass))
+	C.QWidgetItem_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1883,7 +1883,7 @@ func miqt_exec_callback_QWidgetItemV2_ControlTypes(self *C.QWidgetItemV2, cb C.i
 
 // Delete this object from C++ memory.
 func (this *QWidgetItemV2) Delete() {
-	C.QWidgetItemV2_Delete(this.h, C.bool(this.isSubclass))
+	C.QWidgetItemV2_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -129,7 +129,7 @@ func (this *QCameraViewfinderSettings) SetPixelAspectRatio2(horizontal int, vert
 
 // Delete this object from C++ memory.
 func (this *QCameraViewfinderSettings) Delete() {
-	C.QCameraViewfinderSettings_Delete(this.h, C.bool(this.isSubclass))
+	C.QCameraViewfinderSettings_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

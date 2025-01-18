@@ -55,13 +55,13 @@ bool miqt_exec_callback_QsciLexerSQL_WriteProperties(void*, intptr_t, QSettings*
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerSQL : public virtual QsciLexerSQL {
+class MiqtVirtualQsciLexerSQL final : public QsciLexerSQL {
 public:
 
 	MiqtVirtualQsciLexerSQL(): QsciLexerSQL() {};
 	MiqtVirtualQsciLexerSQL(QObject* parent): QsciLexerSQL(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerSQL() = default;
+	virtual ~MiqtVirtualQsciLexerSQL() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetBackslashEscapes = 0;
@@ -1440,11 +1440,7 @@ bool QsciLexerSQL_virtualbase_WriteProperties(const void* self, QSettings* qs, s
 	return ( (const MiqtVirtualQsciLexerSQL*)(self) )->virtualbase_WriteProperties(qs, prefix);
 }
 
-void QsciLexerSQL_Delete(QsciLexerSQL* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerSQL*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerSQL_Delete(QsciLexerSQL* self) {
+	delete self;
 }
 

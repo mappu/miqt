@@ -162,11 +162,7 @@ QStorageInfo* QStorageInfo_Root() {
 	return new QStorageInfo(QStorageInfo::root());
 }
 
-void QStorageInfo_Delete(QStorageInfo* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QStorageInfo*>( self );
-	} else {
-		delete self;
-	}
+void QStorageInfo_Delete(QStorageInfo* self) {
+	delete self;
 }
 

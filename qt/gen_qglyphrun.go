@@ -212,7 +212,7 @@ func (this *QGlyphRun) SetFlag2(flag QGlyphRun__GlyphRunFlag, enabled bool) {
 
 // Delete this object from C++ memory.
 func (this *QGlyphRun) Delete() {
-	C.QGlyphRun_Delete(this.h, C.bool(this.isSubclass))
+	C.QGlyphRun_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

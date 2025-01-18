@@ -29,13 +29,13 @@ void miqt_exec_callback_QThread_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQThread : public virtual QThread {
+class MiqtVirtualQThread final : public QThread {
 public:
 
 	MiqtVirtualQThread(): QThread() {};
 	MiqtVirtualQThread(QObject* parent): QThread(parent) {};
 
-	virtual ~MiqtVirtualQThread() = default;
+	virtual ~MiqtVirtualQThread() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -465,11 +465,7 @@ void QThread_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQThread*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QThread_Delete(QThread* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQThread*>( self );
-	} else {
-		delete self;
-	}
+void QThread_Delete(QThread* self) {
+	delete self;
 }
 

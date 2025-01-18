@@ -28,13 +28,13 @@ void miqt_exec_callback_QWebEngineUrlRequestInterceptor_DisconnectNotify(void*, 
 } /* extern C */
 #endif
 
-class MiqtVirtualQWebEngineUrlRequestInterceptor : public virtual QWebEngineUrlRequestInterceptor {
+class MiqtVirtualQWebEngineUrlRequestInterceptor final : public QWebEngineUrlRequestInterceptor {
 public:
 
 	MiqtVirtualQWebEngineUrlRequestInterceptor(): QWebEngineUrlRequestInterceptor() {};
 	MiqtVirtualQWebEngineUrlRequestInterceptor(QObject* p): QWebEngineUrlRequestInterceptor(p) {};
 
-	virtual ~MiqtVirtualQWebEngineUrlRequestInterceptor() = default;
+	virtual ~MiqtVirtualQWebEngineUrlRequestInterceptor() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__InterceptRequest = 0;
@@ -377,11 +377,7 @@ void QWebEngineUrlRequestInterceptor_virtualbase_DisconnectNotify(void* self, QM
 	( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QWebEngineUrlRequestInterceptor_Delete(QWebEngineUrlRequestInterceptor* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQWebEngineUrlRequestInterceptor*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineUrlRequestInterceptor_Delete(QWebEngineUrlRequestInterceptor* self) {
+	delete self;
 }
 

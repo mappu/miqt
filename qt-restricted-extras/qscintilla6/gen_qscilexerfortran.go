@@ -152,7 +152,7 @@ func miqt_exec_callback_QsciLexerFortran_SetFoldCompact(self *C.QsciLexerFortran
 
 // Delete this object from C++ memory.
 func (this *QsciLexerFortran) Delete() {
-	C.QsciLexerFortran_Delete(this.h, C.bool(this.isSubclass))
+	C.QsciLexerFortran_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

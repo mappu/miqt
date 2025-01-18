@@ -42,7 +42,7 @@ struct miqt_array /* of struct miqt_string */  QWebEngineHttpRequest_Headers(con
 struct miqt_string QWebEngineHttpRequest_Header(const QWebEngineHttpRequest* self, struct miqt_string headerName);
 void QWebEngineHttpRequest_SetHeader(QWebEngineHttpRequest* self, struct miqt_string headerName, struct miqt_string value);
 void QWebEngineHttpRequest_UnsetHeader(QWebEngineHttpRequest* self, struct miqt_string headerName);
-void QWebEngineHttpRequest_Delete(QWebEngineHttpRequest* self, bool isSubclass);
+void QWebEngineHttpRequest_Delete(QWebEngineHttpRequest* self);
 
 #ifdef __cplusplus
 } /* extern C */

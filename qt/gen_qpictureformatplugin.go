@@ -474,7 +474,7 @@ func miqt_exec_callback_QPictureFormatPlugin_DisconnectNotify(self *C.QPictureFo
 
 // Delete this object from C++ memory.
 func (this *QPictureFormatPlugin) Delete() {
-	C.QPictureFormatPlugin_Delete(this.h, C.bool(this.isSubclass))
+	C.QPictureFormatPlugin_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

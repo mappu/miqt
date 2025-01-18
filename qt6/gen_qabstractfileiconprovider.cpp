@@ -20,12 +20,12 @@ int miqt_exec_callback_QAbstractFileIconProvider_Options(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQAbstractFileIconProvider : public virtual QAbstractFileIconProvider {
+class MiqtVirtualQAbstractFileIconProvider final : public QAbstractFileIconProvider {
 public:
 
 	MiqtVirtualQAbstractFileIconProvider(): QAbstractFileIconProvider() {};
 
-	virtual ~MiqtVirtualQAbstractFileIconProvider() = default;
+	virtual ~MiqtVirtualQAbstractFileIconProvider() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Icon = 0;
@@ -231,11 +231,7 @@ int QAbstractFileIconProvider_virtualbase_Options(const void* self) {
 	return ( (const MiqtVirtualQAbstractFileIconProvider*)(self) )->virtualbase_Options();
 }
 
-void QAbstractFileIconProvider_Delete(QAbstractFileIconProvider* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractFileIconProvider*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractFileIconProvider_Delete(QAbstractFileIconProvider* self) {
+	delete self;
 }
 

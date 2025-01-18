@@ -92,7 +92,7 @@ unsigned long long QStringView_ToULongLong1(const QStringView* self, bool* ok);
 unsigned long long QStringView_ToULongLong2(const QStringView* self, bool* ok, int base);
 float QStringView_ToFloat1(const QStringView* self, bool* ok);
 double QStringView_ToDouble1(const QStringView* self, bool* ok);
-void QStringView_Delete(QStringView* self, bool isSubclass);
+void QStringView_Delete(QStringView* self);
 
 #ifdef __cplusplus
 } /* extern C */

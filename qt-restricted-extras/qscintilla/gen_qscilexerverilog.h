@@ -134,7 +134,7 @@ void QsciLexerVerilog_override_virtual_ReadProperties(void* self, intptr_t slot)
 bool QsciLexerVerilog_virtualbase_ReadProperties(void* self, QSettings* qs, struct miqt_string prefix);
 void QsciLexerVerilog_override_virtual_WriteProperties(void* self, intptr_t slot);
 bool QsciLexerVerilog_virtualbase_WriteProperties(const void* self, QSettings* qs, struct miqt_string prefix);
-void QsciLexerVerilog_Delete(QsciLexerVerilog* self, bool isSubclass);
+void QsciLexerVerilog_Delete(QsciLexerVerilog* self);
 
 #ifdef __cplusplus
 } /* extern C */

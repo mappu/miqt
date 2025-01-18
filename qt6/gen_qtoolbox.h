@@ -94,7 +94,7 @@ void QToolBox_override_virtual_PaintEvent(void* self, intptr_t slot);
 void QToolBox_virtualbase_PaintEvent(void* self, QPaintEvent* param1);
 void QToolBox_override_virtual_InitStyleOption(void* self, intptr_t slot);
 void QToolBox_virtualbase_InitStyleOption(const void* self, QStyleOptionFrame* option);
-void QToolBox_Delete(QToolBox* self, bool isSubclass);
+void QToolBox_Delete(QToolBox* self);
 
 #ifdef __cplusplus
 } /* extern C */

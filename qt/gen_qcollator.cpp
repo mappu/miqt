@@ -32,12 +32,8 @@ int QCollatorSortKey_Compare(const QCollatorSortKey* self, QCollatorSortKey* key
 	return self->compare(*key);
 }
 
-void QCollatorSortKey_Delete(QCollatorSortKey* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCollatorSortKey*>( self );
-	} else {
-		delete self;
-	}
+void QCollatorSortKey_Delete(QCollatorSortKey* self) {
+	delete self;
 }
 
 QCollator* QCollator_new() {
@@ -114,11 +110,7 @@ QCollatorSortKey* QCollator_SortKey(const QCollator* self, struct miqt_string st
 	return new QCollatorSortKey(self->sortKey(stringVal_QString));
 }
 
-void QCollator_Delete(QCollator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCollator*>( self );
-	} else {
-		delete self;
-	}
+void QCollator_Delete(QCollator* self) {
+	delete self;
 }
 

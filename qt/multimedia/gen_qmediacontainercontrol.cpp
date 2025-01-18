@@ -143,11 +143,7 @@ struct miqt_string QMediaContainerControl_TrUtf83(const char* s, const char* c, 
 	return _ms;
 }
 
-void QMediaContainerControl_Delete(QMediaContainerControl* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMediaContainerControl*>( self );
-	} else {
-		delete self;
-	}
+void QMediaContainerControl_Delete(QMediaContainerControl* self) {
+	delete self;
 }
 

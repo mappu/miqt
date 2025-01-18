@@ -108,13 +108,13 @@ QSize* miqt_exec_callback_QsciScintillaBase_ViewportSizeHint(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciScintillaBase : public virtual QsciScintillaBase {
+class MiqtVirtualQsciScintillaBase final : public QsciScintillaBase {
 public:
 
 	MiqtVirtualQsciScintillaBase(QWidget* parent): QsciScintillaBase(parent) {};
 	MiqtVirtualQsciScintillaBase(): QsciScintillaBase() {};
 
-	virtual ~MiqtVirtualQsciScintillaBase() = default;
+	virtual ~MiqtVirtualQsciScintillaBase() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__CanInsertFromMimeData = 0;
@@ -1679,11 +1679,7 @@ QSize* QsciScintillaBase_virtualbase_ViewportSizeHint(const void* self) {
 	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_ViewportSizeHint();
 }
 
-void QsciScintillaBase_Delete(QsciScintillaBase* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciScintillaBase*>( self );
-	} else {
-		delete self;
-	}
+void QsciScintillaBase_Delete(QsciScintillaBase* self) {
+	delete self;
 }
 

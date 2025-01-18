@@ -40,7 +40,7 @@ void miqt_exec_callback_QScrollBar_ChangeEvent(void*, intptr_t, QEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQScrollBar : public virtual QScrollBar {
+class MiqtVirtualQScrollBar final : public QScrollBar {
 public:
 
 	MiqtVirtualQScrollBar(QWidget* parent): QScrollBar(parent) {};
@@ -48,7 +48,7 @@ public:
 	MiqtVirtualQScrollBar(Qt::Orientation param1): QScrollBar(param1) {};
 	MiqtVirtualQScrollBar(Qt::Orientation param1, QWidget* parent): QScrollBar(param1, parent) {};
 
-	virtual ~MiqtVirtualQScrollBar() = default;
+	virtual ~MiqtVirtualQScrollBar() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -568,11 +568,7 @@ void QScrollBar_virtualbase_ChangeEvent(void* self, QEvent* e) {
 	( (MiqtVirtualQScrollBar*)(self) )->virtualbase_ChangeEvent(e);
 }
 
-void QScrollBar_Delete(QScrollBar* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQScrollBar*>( self );
-	} else {
-		delete self;
-	}
+void QScrollBar_Delete(QScrollBar* self) {
+	delete self;
 }
 

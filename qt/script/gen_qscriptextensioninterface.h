@@ -32,7 +32,7 @@ void QScriptExtensionInterface_override_virtual_Initialize(void* self, intptr_t 
 void QScriptExtensionInterface_virtualbase_Initialize(void* self, struct miqt_string key, QScriptEngine* engine);
 void QScriptExtensionInterface_override_virtual_Keys(void* self, intptr_t slot);
 struct miqt_array /* of struct miqt_string */  QScriptExtensionInterface_virtualbase_Keys(const void* self);
-void QScriptExtensionInterface_Delete(QScriptExtensionInterface* self, bool isSubclass);
+void QScriptExtensionInterface_Delete(QScriptExtensionInterface* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -124,7 +124,7 @@ void QProgressDialog_override_virtual_ContextMenuEvent(void* self, intptr_t slot
 void QProgressDialog_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* param1);
 void QProgressDialog_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QProgressDialog_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2);
-void QProgressDialog_Delete(QProgressDialog* self, bool isSubclass);
+void QProgressDialog_Delete(QProgressDialog* self);
 
 #ifdef __cplusplus
 } /* extern C */

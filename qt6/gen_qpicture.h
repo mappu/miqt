@@ -68,7 +68,7 @@ void QPicture_override_virtual_Redirected(void* self, intptr_t slot);
 QPaintDevice* QPicture_virtualbase_Redirected(const void* self, QPoint* offset);
 void QPicture_override_virtual_SharedPainter(void* self, intptr_t slot);
 QPainter* QPicture_virtualbase_SharedPainter(const void* self);
-void QPicture_Delete(QPicture* self, bool isSubclass);
+void QPicture_Delete(QPicture* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -222,7 +222,7 @@ void QGraphicsProxyWidget_override_virtual_GrabKeyboardEvent(void* self, intptr_
 void QGraphicsProxyWidget_virtualbase_GrabKeyboardEvent(void* self, QEvent* event);
 void QGraphicsProxyWidget_override_virtual_UngrabKeyboardEvent(void* self, intptr_t slot);
 void QGraphicsProxyWidget_virtualbase_UngrabKeyboardEvent(void* self, QEvent* event);
-void QGraphicsProxyWidget_Delete(QGraphicsProxyWidget* self, bool isSubclass);
+void QGraphicsProxyWidget_Delete(QGraphicsProxyWidget* self);
 
 #ifdef __cplusplus
 } /* extern C */

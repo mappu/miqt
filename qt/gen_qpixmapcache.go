@@ -118,7 +118,7 @@ func QPixmapCache_Clear() {
 
 // Delete this object from C++ memory.
 func (this *QPixmapCache) Delete() {
-	C.QPixmapCache_Delete(this.h, C.bool(this.isSubclass))
+	C.QPixmapCache_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -201,7 +201,7 @@ func (this *QPixmapCache__Key) IsValid() bool {
 
 // Delete this object from C++ memory.
 func (this *QPixmapCache__Key) Delete() {
-	C.QPixmapCache__Key_Delete(this.h, C.bool(this.isSubclass))
+	C.QPixmapCache__Key_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

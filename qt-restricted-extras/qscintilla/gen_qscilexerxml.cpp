@@ -19,13 +19,13 @@ void miqt_exec_callback_QsciLexerXML_SetCaseSensitiveTags(void*, intptr_t, bool)
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerXML : public virtual QsciLexerXML {
+class MiqtVirtualQsciLexerXML final : public QsciLexerXML {
 public:
 
 	MiqtVirtualQsciLexerXML(): QsciLexerXML() {};
 	MiqtVirtualQsciLexerXML(QObject* parent): QsciLexerXML(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerXML() = default;
+	virtual ~MiqtVirtualQsciLexerXML() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetFoldCompact = 0;
@@ -251,11 +251,7 @@ void QsciLexerXML_virtualbase_SetCaseSensitiveTags(void* self, bool sens) {
 	( (MiqtVirtualQsciLexerXML*)(self) )->virtualbase_SetCaseSensitiveTags(sens);
 }
 
-void QsciLexerXML_Delete(QsciLexerXML* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerXML*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerXML_Delete(QsciLexerXML* self) {
+	delete self;
 }
 

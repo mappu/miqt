@@ -216,7 +216,7 @@ func QDeadlineTimer_Current1(timerType TimerType) *QDeadlineTimer {
 
 // Delete this object from C++ memory.
 func (this *QDeadlineTimer) Delete() {
-	C.QDeadlineTimer_Delete(this.h, C.bool(this.isSubclass))
+	C.QDeadlineTimer_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

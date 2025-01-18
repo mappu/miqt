@@ -65,19 +65,11 @@ int QByteArrayMatcher_IndexIn3(const QByteArrayMatcher* self, const char* str, i
 	return self->indexIn(str, static_cast<int>(lenVal), static_cast<int>(from));
 }
 
-void QByteArrayMatcher_Delete(QByteArrayMatcher* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QByteArrayMatcher*>( self );
-	} else {
-		delete self;
-	}
+void QByteArrayMatcher_Delete(QByteArrayMatcher* self) {
+	delete self;
 }
 
-void QStaticByteArrayMatcherBase_Delete(QStaticByteArrayMatcherBase* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QStaticByteArrayMatcherBase*>( self );
-	} else {
-		delete self;
-	}
+void QStaticByteArrayMatcherBase_Delete(QStaticByteArrayMatcherBase* self) {
+	delete self;
 }
 

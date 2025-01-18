@@ -166,7 +166,7 @@ func QWebEngineUrlScheme_SchemeByName(name []byte) *QWebEngineUrlScheme {
 
 // Delete this object from C++ memory.
 func (this *QWebEngineUrlScheme) Delete() {
-	C.QWebEngineUrlScheme_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebEngineUrlScheme_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -133,11 +133,7 @@ void QsciStyle_Refresh(QsciStyle* self) {
 	self->refresh();
 }
 
-void QsciStyle_Delete(QsciStyle* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QsciStyle*>( self );
-	} else {
-		delete self;
-	}
+void QsciStyle_Delete(QsciStyle* self) {
+	delete self;
 }
 

@@ -155,7 +155,7 @@ func (this *QHstsPolicy) Host1(options qt6.QUrl__ComponentFormattingOption) stri
 
 // Delete this object from C++ memory.
 func (this *QHstsPolicy) Delete() {
-	C.QHstsPolicy_Delete(this.h, C.bool(this.isSubclass))
+	C.QHstsPolicy_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -77,7 +77,7 @@ void QVariantAnimation_override_virtual_Interpolated(void* self, intptr_t slot);
 QVariant* QVariantAnimation_virtualbase_Interpolated(const void* self, QVariant* from, QVariant* to, double progress);
 void QVariantAnimation_override_virtual_UpdateDirection(void* self, intptr_t slot);
 void QVariantAnimation_virtualbase_UpdateDirection(void* self, int direction);
-void QVariantAnimation_Delete(QVariantAnimation* self, bool isSubclass);
+void QVariantAnimation_Delete(QVariantAnimation* self);
 
 #ifdef __cplusplus
 } /* extern C */

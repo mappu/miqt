@@ -112,7 +112,7 @@ func (this *QHttp2Configuration) Swap(other *QHttp2Configuration) {
 
 // Delete this object from C++ memory.
 func (this *QHttp2Configuration) Delete() {
-	C.QHttp2Configuration_Delete(this.h, C.bool(this.isSubclass))
+	C.QHttp2Configuration_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -149,7 +149,7 @@ func miqt_exec_callback_QTest__QTouchEventWidgetSequence_Commit(self *C.QTest__Q
 
 // Delete this object from C++ memory.
 func (this *QTest__QTouchEventWidgetSequence) Delete() {
-	C.QTest__QTouchEventWidgetSequence_Delete(this.h, C.bool(this.isSubclass))
+	C.QTest__QTouchEventWidgetSequence_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

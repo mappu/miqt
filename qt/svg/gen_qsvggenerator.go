@@ -310,7 +310,7 @@ func miqt_exec_callback_QSvgGenerator_SharedPainter(self *C.QSvgGenerator, cb C.
 
 // Delete this object from C++ memory.
 func (this *QSvgGenerator) Delete() {
-	C.QSvgGenerator_Delete(this.h, C.bool(this.isSubclass))
+	C.QSvgGenerator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

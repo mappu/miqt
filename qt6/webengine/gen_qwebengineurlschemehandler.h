@@ -59,7 +59,7 @@ void QWebEngineUrlSchemeHandler_override_virtual_ConnectNotify(void* self, intpt
 void QWebEngineUrlSchemeHandler_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QWebEngineUrlSchemeHandler_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QWebEngineUrlSchemeHandler_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QWebEngineUrlSchemeHandler_Delete(QWebEngineUrlSchemeHandler* self, bool isSubclass);
+void QWebEngineUrlSchemeHandler_Delete(QWebEngineUrlSchemeHandler* self);
 
 #ifdef __cplusplus
 } /* extern C */

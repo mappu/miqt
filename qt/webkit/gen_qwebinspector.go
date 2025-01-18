@@ -1249,7 +1249,7 @@ func miqt_exec_callback_QWebInspector_FocusNextPrevChild(self *C.QWebInspector, 
 
 // Delete this object from C++ memory.
 func (this *QWebInspector) Delete() {
-	C.QWebInspector_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebInspector_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

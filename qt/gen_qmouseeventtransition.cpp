@@ -23,7 +23,7 @@ bool miqt_exec_callback_QMouseEventTransition_Event(void*, intptr_t, QEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQMouseEventTransition : public virtual QMouseEventTransition {
+class MiqtVirtualQMouseEventTransition final : public QMouseEventTransition {
 public:
 
 	MiqtVirtualQMouseEventTransition(): QMouseEventTransition() {};
@@ -31,7 +31,7 @@ public:
 	MiqtVirtualQMouseEventTransition(QState* sourceState): QMouseEventTransition(sourceState) {};
 	MiqtVirtualQMouseEventTransition(QObject* object, QEvent::Type typeVal, Qt::MouseButton button, QState* sourceState): QMouseEventTransition(object, typeVal, button, sourceState) {};
 
-	virtual ~MiqtVirtualQMouseEventTransition() = default;
+	virtual ~MiqtVirtualQMouseEventTransition() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__OnTransition = 0;
@@ -249,11 +249,7 @@ bool QMouseEventTransition_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQMouseEventTransition*)(self) )->virtualbase_Event(e);
 }
 
-void QMouseEventTransition_Delete(QMouseEventTransition* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQMouseEventTransition*>( self );
-	} else {
-		delete self;
-	}
+void QMouseEventTransition_Delete(QMouseEventTransition* self) {
+	delete self;
 }
 

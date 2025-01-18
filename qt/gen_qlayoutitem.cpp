@@ -74,14 +74,14 @@ int miqt_exec_callback_QWidgetItemV2_ControlTypes(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQLayoutItem : public virtual QLayoutItem {
+class MiqtVirtualQLayoutItem final : public QLayoutItem {
 public:
 
 	MiqtVirtualQLayoutItem(): QLayoutItem() {};
 	MiqtVirtualQLayoutItem(const QLayoutItem& param1): QLayoutItem(param1) {};
 	MiqtVirtualQLayoutItem(Qt::Alignment alignment): QLayoutItem(alignment) {};
 
-	virtual ~MiqtVirtualQLayoutItem() = default;
+	virtual ~MiqtVirtualQLayoutItem() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -548,15 +548,11 @@ int QLayoutItem_virtualbase_ControlTypes(const void* self) {
 	return ( (const MiqtVirtualQLayoutItem*)(self) )->virtualbase_ControlTypes();
 }
 
-void QLayoutItem_Delete(QLayoutItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQLayoutItem*>( self );
-	} else {
-		delete self;
-	}
+void QLayoutItem_Delete(QLayoutItem* self) {
+	delete self;
 }
 
-class MiqtVirtualQSpacerItem : public virtual QSpacerItem {
+class MiqtVirtualQSpacerItem final : public QSpacerItem {
 public:
 
 	MiqtVirtualQSpacerItem(int w, int h): QSpacerItem(w, h) {};
@@ -564,7 +560,7 @@ public:
 	MiqtVirtualQSpacerItem(int w, int h, QSizePolicy::Policy hData): QSpacerItem(w, h, hData) {};
 	MiqtVirtualQSpacerItem(int w, int h, QSizePolicy::Policy hData, QSizePolicy::Policy vData): QSpacerItem(w, h, hData, vData) {};
 
-	virtual ~MiqtVirtualQSpacerItem() = default;
+	virtual ~MiqtVirtualQSpacerItem() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -1096,20 +1092,16 @@ int QSpacerItem_virtualbase_ControlTypes(const void* self) {
 	return ( (const MiqtVirtualQSpacerItem*)(self) )->virtualbase_ControlTypes();
 }
 
-void QSpacerItem_Delete(QSpacerItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSpacerItem*>( self );
-	} else {
-		delete self;
-	}
+void QSpacerItem_Delete(QSpacerItem* self) {
+	delete self;
 }
 
-class MiqtVirtualQWidgetItem : public virtual QWidgetItem {
+class MiqtVirtualQWidgetItem final : public QWidgetItem {
 public:
 
 	MiqtVirtualQWidgetItem(QWidget* w): QWidgetItem(w) {};
 
-	virtual ~MiqtVirtualQWidgetItem() = default;
+	virtual ~MiqtVirtualQWidgetItem() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -1626,20 +1618,16 @@ QSpacerItem* QWidgetItem_virtualbase_SpacerItem(void* self) {
 	return ( (MiqtVirtualQWidgetItem*)(self) )->virtualbase_SpacerItem();
 }
 
-void QWidgetItem_Delete(QWidgetItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQWidgetItem*>( self );
-	} else {
-		delete self;
-	}
+void QWidgetItem_Delete(QWidgetItem* self) {
+	delete self;
 }
 
-class MiqtVirtualQWidgetItemV2 : public virtual QWidgetItemV2 {
+class MiqtVirtualQWidgetItemV2 final : public QWidgetItemV2 {
 public:
 
 	MiqtVirtualQWidgetItemV2(QWidget* widget): QWidgetItemV2(widget) {};
 
-	virtual ~MiqtVirtualQWidgetItemV2() = default;
+	virtual ~MiqtVirtualQWidgetItemV2() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -2004,11 +1992,7 @@ int QWidgetItemV2_virtualbase_ControlTypes(const void* self) {
 	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_ControlTypes();
 }
 
-void QWidgetItemV2_Delete(QWidgetItemV2* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQWidgetItemV2*>( self );
-	} else {
-		delete self;
-	}
+void QWidgetItemV2_Delete(QWidgetItemV2* self) {
+	delete self;
 }
 

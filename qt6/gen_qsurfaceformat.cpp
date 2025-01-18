@@ -208,11 +208,7 @@ void QSurfaceFormat_SetOption2(QSurfaceFormat* self, int option, bool on) {
 	self->setOption(static_cast<QSurfaceFormat::FormatOption>(option), on);
 }
 
-void QSurfaceFormat_Delete(QSurfaceFormat* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QSurfaceFormat*>( self );
-	} else {
-		delete self;
-	}
+void QSurfaceFormat_Delete(QSurfaceFormat* self) {
+	delete self;
 }
 

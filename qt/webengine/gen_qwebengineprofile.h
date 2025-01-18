@@ -118,7 +118,7 @@ void QWebEngineProfile_override_virtual_ConnectNotify(void* self, intptr_t slot)
 void QWebEngineProfile_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QWebEngineProfile_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QWebEngineProfile_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QWebEngineProfile_Delete(QWebEngineProfile* self, bool isSubclass);
+void QWebEngineProfile_Delete(QWebEngineProfile* self);
 
 #ifdef __cplusplus
 } /* extern C */

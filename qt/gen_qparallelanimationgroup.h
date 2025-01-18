@@ -56,7 +56,7 @@ void QParallelAnimationGroup_override_virtual_UpdateState(void* self, intptr_t s
 void QParallelAnimationGroup_virtualbase_UpdateState(void* self, int newState, int oldState);
 void QParallelAnimationGroup_override_virtual_UpdateDirection(void* self, intptr_t slot);
 void QParallelAnimationGroup_virtualbase_UpdateDirection(void* self, int direction);
-void QParallelAnimationGroup_Delete(QParallelAnimationGroup* self, bool isSubclass);
+void QParallelAnimationGroup_Delete(QParallelAnimationGroup* self);
 
 #ifdef __cplusplus
 } /* extern C */

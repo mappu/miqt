@@ -248,12 +248,8 @@ QJsonArray* QCborArray_ToJsonArray(const QCborArray* self) {
 	return new QJsonArray(self->toJsonArray());
 }
 
-void QCborArray_Delete(QCborArray* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCborArray*>( self );
-	} else {
-		delete self;
-	}
+void QCborArray_Delete(QCborArray* self) {
+	delete self;
 }
 
 QCborArray__Iterator* QCborArray__Iterator_new() {
@@ -377,12 +373,8 @@ ptrdiff_t QCborArray__Iterator_OperatorMinusWithQCborArrayIterator(const QCborAr
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-void QCborArray__Iterator_Delete(QCborArray__Iterator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCborArray::Iterator*>( self );
-	} else {
-		delete self;
-	}
+void QCborArray__Iterator_Delete(QCborArray__Iterator* self) {
+	delete self;
 }
 
 QCborArray__ConstIterator* QCborArray__ConstIterator_new() {
@@ -502,11 +494,7 @@ ptrdiff_t QCborArray__ConstIterator_OperatorMinusWithQCborArrayConstIterator(con
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-void QCborArray__ConstIterator_Delete(QCborArray__ConstIterator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCborArray::ConstIterator*>( self );
-	} else {
-		delete self;
-	}
+void QCborArray__ConstIterator_Delete(QCborArray__ConstIterator* self) {
+	delete self;
 }
 

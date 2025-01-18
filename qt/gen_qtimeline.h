@@ -92,7 +92,7 @@ void QTimeLine_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QTimeLine_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QTimeLine_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QTimeLine_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QTimeLine_Delete(QTimeLine* self, bool isSubclass);
+void QTimeLine_Delete(QTimeLine* self);
 
 #ifdef __cplusplus
 } /* extern C */

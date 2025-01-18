@@ -86,7 +86,7 @@ func miqt_exec_callback_QRunnable_Run(self *C.QRunnable, cb C.intptr_t) {
 
 // Delete this object from C++ memory.
 func (this *QRunnable) Delete() {
-	C.QRunnable_Delete(this.h, C.bool(this.isSubclass))
+	C.QRunnable_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

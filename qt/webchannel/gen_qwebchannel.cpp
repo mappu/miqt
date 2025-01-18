@@ -29,13 +29,13 @@ void miqt_exec_callback_QWebChannel_DisconnectNotify(void*, intptr_t, QMetaMetho
 } /* extern C */
 #endif
 
-class MiqtVirtualQWebChannel : public virtual QWebChannel {
+class MiqtVirtualQWebChannel final : public QWebChannel {
 public:
 
 	MiqtVirtualQWebChannel(): QWebChannel() {};
 	MiqtVirtualQWebChannel(QObject* parent): QWebChannel(parent) {};
 
-	virtual ~MiqtVirtualQWebChannel() = default;
+	virtual ~MiqtVirtualQWebChannel() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -425,11 +425,7 @@ void QWebChannel_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWebChannel*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QWebChannel_Delete(QWebChannel* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQWebChannel*>( self );
-	} else {
-		delete self;
-	}
+void QWebChannel_Delete(QWebChannel* self) {
+	delete self;
 }
 

@@ -362,7 +362,7 @@ func (this *QFontMetrics) ElidedText4(text string, mode TextElideMode, width int
 
 // Delete this object from C++ memory.
 func (this *QFontMetrics) Delete() {
-	C.QFontMetrics_Delete(this.h, C.bool(this.isSubclass))
+	C.QFontMetrics_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -681,7 +681,7 @@ func (this *QFontMetricsF) ElidedText4(text string, mode TextElideMode, width fl
 
 // Delete this object from C++ memory.
 func (this *QFontMetricsF) Delete() {
-	C.QFontMetricsF_Delete(this.h, C.bool(this.isSubclass))
+	C.QFontMetricsF_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

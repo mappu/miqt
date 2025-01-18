@@ -65,7 +65,7 @@ void QsciAbstractAPIs_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QsciAbstractAPIs_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QsciAbstractAPIs_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QsciAbstractAPIs_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QsciAbstractAPIs_Delete(QsciAbstractAPIs* self, bool isSubclass);
+void QsciAbstractAPIs_Delete(QsciAbstractAPIs* self);
 
 #ifdef __cplusplus
 } /* extern C */

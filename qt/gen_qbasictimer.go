@@ -92,7 +92,7 @@ func (this *QBasicTimer) Stop() {
 
 // Delete this object from C++ memory.
 func (this *QBasicTimer) Delete() {
-	C.QBasicTimer_Delete(this.h, C.bool(this.isSubclass))
+	C.QBasicTimer_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

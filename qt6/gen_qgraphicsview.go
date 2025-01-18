@@ -1452,7 +1452,7 @@ func miqt_exec_callback_QGraphicsView_ViewportSizeHint(self *C.QGraphicsView, cb
 
 // Delete this object from C++ memory.
 func (this *QGraphicsView) Delete() {
-	C.QGraphicsView_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsView_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -42,7 +42,7 @@ void QWebHistoryItem_SetUserData(QWebHistoryItem* self, QVariant* userData);
 bool QWebHistoryItem_IsValid(const QWebHistoryItem* self);
 struct miqt_map /* of struct miqt_string to QVariant* */  QWebHistoryItem_ToMap(const QWebHistoryItem* self);
 void QWebHistoryItem_LoadFromMap(QWebHistoryItem* self, struct miqt_map /* of struct miqt_string to QVariant* */  mapVal);
-void QWebHistoryItem_Delete(QWebHistoryItem* self, bool isSubclass);
+void QWebHistoryItem_Delete(QWebHistoryItem* self);
 
 void QWebHistory_Clear(QWebHistory* self);
 struct miqt_array /* of QWebHistoryItem* */  QWebHistory_Items(const QWebHistory* self);

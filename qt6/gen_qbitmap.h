@@ -59,7 +59,7 @@ void QBitmap_override_virtual_PaintEngine(void* self, intptr_t slot);
 QPaintEngine* QBitmap_virtualbase_PaintEngine(const void* self);
 void QBitmap_override_virtual_Metric(void* self, intptr_t slot);
 int QBitmap_virtualbase_Metric(const void* self, int param1);
-void QBitmap_Delete(QBitmap* self, bool isSubclass);
+void QBitmap_Delete(QBitmap* self);
 
 #ifdef __cplusplus
 } /* extern C */

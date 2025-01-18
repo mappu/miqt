@@ -143,11 +143,7 @@ struct miqt_string QUuid_ToByteArray1(const QUuid* self, int mode) {
 	return _ms;
 }
 
-void QUuid_Delete(QUuid* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QUuid*>( self );
-	} else {
-		delete self;
-	}
+void QUuid_Delete(QUuid* self) {
+	delete self;
 }
 

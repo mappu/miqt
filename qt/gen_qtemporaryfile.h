@@ -67,7 +67,7 @@ void QTemporaryFile_override_virtual_Permissions(void* self, intptr_t slot);
 int QTemporaryFile_virtualbase_Permissions(const void* self);
 void QTemporaryFile_override_virtual_SetPermissions(void* self, intptr_t slot);
 bool QTemporaryFile_virtualbase_SetPermissions(void* self, int permissionSpec);
-void QTemporaryFile_Delete(QTemporaryFile* self, bool isSubclass);
+void QTemporaryFile_Delete(QTemporaryFile* self);
 
 #ifdef __cplusplus
 } /* extern C */

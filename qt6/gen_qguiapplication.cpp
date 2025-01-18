@@ -45,13 +45,13 @@ bool miqt_exec_callback_QGuiApplication_Event(void*, intptr_t, QEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQGuiApplication : public virtual QGuiApplication {
+class MiqtVirtualQGuiApplication final : public QGuiApplication {
 public:
 
 	MiqtVirtualQGuiApplication(int& argc, char** argv): QGuiApplication(argc, argv) {};
 	MiqtVirtualQGuiApplication(int& argc, char** argv, int param3): QGuiApplication(argc, argv, param3) {};
 
-	virtual ~MiqtVirtualQGuiApplication() = default;
+	virtual ~MiqtVirtualQGuiApplication() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Notify = 0;
@@ -599,11 +599,7 @@ bool QGuiApplication_virtualbase_Event(void* self, QEvent* param1) {
 	return ( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_Event(param1);
 }
 
-void QGuiApplication_Delete(QGuiApplication* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGuiApplication*>( self );
-	} else {
-		delete self;
-	}
+void QGuiApplication_Delete(QGuiApplication* self) {
+	delete self;
 }
 

@@ -59,7 +59,7 @@ func (this *QObjectData) DynamicMetaObject() *QMetaObject {
 
 // Delete this object from C++ memory.
 func (this *QObjectData) Delete() {
-	C.QObjectData_Delete(this.h, C.bool(this.isSubclass))
+	C.QObjectData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -609,7 +609,7 @@ func miqt_exec_callback_QObject_DisconnectNotify(self *C.QObject, cb C.intptr_t,
 
 // Delete this object from C++ memory.
 func (this *QObject) Delete() {
-	C.QObject_Delete(this.h, C.bool(this.isSubclass))
+	C.QObject_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -664,7 +664,7 @@ func NewQObjectUserData() *QObjectUserData {
 
 // Delete this object from C++ memory.
 func (this *QObjectUserData) Delete() {
-	C.QObjectUserData_Delete(this.h, C.bool(this.isSubclass))
+	C.QObjectUserData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -735,7 +735,7 @@ func (this *QSignalBlocker) Unblock() {
 
 // Delete this object from C++ memory.
 func (this *QSignalBlocker) Delete() {
-	C.QSignalBlocker_Delete(this.h, C.bool(this.isSubclass))
+	C.QSignalBlocker_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

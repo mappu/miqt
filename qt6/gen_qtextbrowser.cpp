@@ -80,13 +80,13 @@ void miqt_exec_callback_QTextBrowser_DoSetTextCursor(void*, intptr_t, QTextCurso
 } /* extern C */
 #endif
 
-class MiqtVirtualQTextBrowser : public virtual QTextBrowser {
+class MiqtVirtualQTextBrowser final : public QTextBrowser {
 public:
 
 	MiqtVirtualQTextBrowser(QWidget* parent): QTextBrowser(parent) {};
 	MiqtVirtualQTextBrowser(): QTextBrowser() {};
 
-	virtual ~MiqtVirtualQTextBrowser() = default;
+	virtual ~MiqtVirtualQTextBrowser() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__LoadResource = 0;
@@ -1421,11 +1421,7 @@ void QTextBrowser_virtualbase_DoSetTextCursor(void* self, QTextCursor* cursor) {
 	( (MiqtVirtualQTextBrowser*)(self) )->virtualbase_DoSetTextCursor(cursor);
 }
 
-void QTextBrowser_Delete(QTextBrowser* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQTextBrowser*>( self );
-	} else {
-		delete self;
-	}
+void QTextBrowser_Delete(QTextBrowser* self) {
+	delete self;
 }
 

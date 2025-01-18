@@ -91,7 +91,7 @@ void QRadioData_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QRadioData_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QRadioData_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QRadioData_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QRadioData_Delete(QRadioData* self, bool isSubclass);
+void QRadioData_Delete(QRadioData* self);
 
 #ifdef __cplusplus
 } /* extern C */

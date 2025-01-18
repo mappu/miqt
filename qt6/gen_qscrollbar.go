@@ -503,7 +503,7 @@ func miqt_exec_callback_QScrollBar_ChangeEvent(self *C.QScrollBar, cb C.intptr_t
 
 // Delete this object from C++ memory.
 func (this *QScrollBar) Delete() {
-	C.QScrollBar_Delete(this.h, C.bool(this.isSubclass))
+	C.QScrollBar_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

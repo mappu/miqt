@@ -184,7 +184,7 @@ void QRubberBand_override_virtual_InputMethodQuery(void* self, intptr_t slot);
 QVariant* QRubberBand_virtualbase_InputMethodQuery(const void* self, int param1);
 void QRubberBand_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QRubberBand_virtualbase_FocusNextPrevChild(void* self, bool next);
-void QRubberBand_Delete(QRubberBand* self, bool isSubclass);
+void QRubberBand_Delete(QRubberBand* self);
 
 #ifdef __cplusplus
 } /* extern C */

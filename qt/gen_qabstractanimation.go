@@ -595,7 +595,7 @@ func miqt_exec_callback_QAbstractAnimation_DisconnectNotify(self *C.QAbstractAni
 
 // Delete this object from C++ memory.
 func (this *QAbstractAnimation) Delete() {
-	C.QAbstractAnimation_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractAnimation_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1078,7 +1078,7 @@ func miqt_exec_callback_QAnimationDriver_DisconnectNotify(self *C.QAnimationDriv
 
 // Delete this object from C++ memory.
 func (this *QAnimationDriver) Delete() {
-	C.QAnimationDriver_Delete(this.h, C.bool(this.isSubclass))
+	C.QAnimationDriver_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

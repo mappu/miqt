@@ -28,13 +28,13 @@ long long miqt_exec_callback_QNetworkDiskCache_Expire(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQNetworkDiskCache : public virtual QNetworkDiskCache {
+class MiqtVirtualQNetworkDiskCache final : public QNetworkDiskCache {
 public:
 
 	MiqtVirtualQNetworkDiskCache(): QNetworkDiskCache() {};
 	MiqtVirtualQNetworkDiskCache(QObject* parent): QNetworkDiskCache(parent) {};
 
-	virtual ~MiqtVirtualQNetworkDiskCache() = default;
+	virtual ~MiqtVirtualQNetworkDiskCache() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__CacheSize = 0;
@@ -445,11 +445,7 @@ long long QNetworkDiskCache_virtualbase_Expire(void* self) {
 	return ( (MiqtVirtualQNetworkDiskCache*)(self) )->virtualbase_Expire();
 }
 
-void QNetworkDiskCache_Delete(QNetworkDiskCache* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQNetworkDiskCache*>( self );
-	} else {
-		delete self;
-	}
+void QNetworkDiskCache_Delete(QNetworkDiskCache* self) {
+	delete self;
 }
 

@@ -1537,7 +1537,7 @@ func miqt_exec_callback_QAbstractButton_FocusNextPrevChild(self *C.QAbstractButt
 
 // Delete this object from C++ memory.
 func (this *QAbstractButton) Delete() {
-	C.QAbstractButton_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractButton_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

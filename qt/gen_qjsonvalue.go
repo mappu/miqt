@@ -296,7 +296,7 @@ func (this *QJsonValue) ToDouble1(defaultValue float64) float64 {
 
 // Delete this object from C++ memory.
 func (this *QJsonValue) Delete() {
-	C.QJsonValue_Delete(this.h, C.bool(this.isSubclass))
+	C.QJsonValue_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -481,7 +481,7 @@ func (this *QJsonValueRef) OperatorNotEqual(other *QJsonValue) bool {
 
 // Delete this object from C++ memory.
 func (this *QJsonValueRef) Delete() {
-	C.QJsonValueRef_Delete(this.h, C.bool(this.isSubclass))
+	C.QJsonValueRef_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -556,7 +556,7 @@ func (this *QJsonValuePtr) OperatorAssign(param1 *QJsonValuePtr) {
 
 // Delete this object from C++ memory.
 func (this *QJsonValuePtr) Delete() {
-	C.QJsonValuePtr_Delete(this.h, C.bool(this.isSubclass))
+	C.QJsonValuePtr_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -639,7 +639,7 @@ func (this *QJsonValueRefPtr) OperatorAssign(param1 *QJsonValueRefPtr) {
 
 // Delete this object from C++ memory.
 func (this *QJsonValueRefPtr) Delete() {
-	C.QJsonValueRefPtr_Delete(this.h, C.bool(this.isSubclass))
+	C.QJsonValueRefPtr_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

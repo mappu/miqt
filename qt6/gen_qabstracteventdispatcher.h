@@ -64,10 +64,10 @@ void QAbstractEventDispatcher_connect_Awake(QAbstractEventDispatcher* self, intp
 struct miqt_string QAbstractEventDispatcher_Tr2(const char* s, const char* c);
 struct miqt_string QAbstractEventDispatcher_Tr3(const char* s, const char* c, int n);
 QAbstractEventDispatcher* QAbstractEventDispatcher_Instance1(QThread* thread);
-void QAbstractEventDispatcher_Delete(QAbstractEventDispatcher* self, bool isSubclass);
+void QAbstractEventDispatcher_Delete(QAbstractEventDispatcher* self);
 
 QAbstractEventDispatcher__TimerInfo* QAbstractEventDispatcher__TimerInfo_new(int id, int i, int t);
-void QAbstractEventDispatcher__TimerInfo_Delete(QAbstractEventDispatcher__TimerInfo* self, bool isSubclass);
+void QAbstractEventDispatcher__TimerInfo_Delete(QAbstractEventDispatcher__TimerInfo* self);
 
 #ifdef __cplusplus
 } /* extern C */

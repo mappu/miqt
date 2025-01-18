@@ -120,11 +120,7 @@ struct miqt_string QMediaVideoProbeControl_TrUtf83(const char* s, const char* c,
 	return _ms;
 }
 
-void QMediaVideoProbeControl_Delete(QMediaVideoProbeControl* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMediaVideoProbeControl*>( self );
-	} else {
-		delete self;
-	}
+void QMediaVideoProbeControl_Delete(QMediaVideoProbeControl* self) {
+	delete self;
 }
 

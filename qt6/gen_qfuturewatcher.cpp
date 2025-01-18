@@ -304,11 +304,7 @@ struct miqt_string QFutureWatcherBase_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QFutureWatcherBase_Delete(QFutureWatcherBase* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QFutureWatcherBase*>( self );
-	} else {
-		delete self;
-	}
+void QFutureWatcherBase_Delete(QFutureWatcherBase* self) {
+	delete self;
 }
 

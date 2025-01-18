@@ -163,7 +163,7 @@ func (this *QTextItem) Font() *QFont {
 
 // Delete this object from C++ memory.
 func (this *QTextItem) Delete() {
-	C.QTextItem_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextItem_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -981,7 +981,7 @@ func miqt_exec_callback_QPaintEngine_CreatePixmapFromImage(self *C.QPaintEngine,
 
 // Delete this object from C++ memory.
 func (this *QPaintEngine) Delete() {
-	C.QPaintEngine_Delete(this.h, C.bool(this.isSubclass))
+	C.QPaintEngine_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1116,7 +1116,7 @@ func (this *QPaintEngineState) PenNeedsResolving() bool {
 
 // Delete this object from C++ memory.
 func (this *QPaintEngineState) Delete() {
-	C.QPaintEngineState_Delete(this.h, C.bool(this.isSubclass))
+	C.QPaintEngineState_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

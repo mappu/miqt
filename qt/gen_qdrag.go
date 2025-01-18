@@ -439,7 +439,7 @@ func miqt_exec_callback_QDrag_DisconnectNotify(self *C.QDrag, cb C.intptr_t, sig
 
 // Delete this object from C++ memory.
 func (this *QDrag) Delete() {
-	C.QDrag_Delete(this.h, C.bool(this.isSubclass))
+	C.QDrag_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -135,12 +135,12 @@ void QCamera_override_virtual_Bind(void* self, intptr_t slot);
 bool QCamera_virtualbase_Bind(void* self, QObject* param1);
 void QCamera_override_virtual_Unbind(void* self, intptr_t slot);
 void QCamera_virtualbase_Unbind(void* self, QObject* param1);
-void QCamera_Delete(QCamera* self, bool isSubclass);
+void QCamera_Delete(QCamera* self);
 
 QCamera__FrameRateRange* QCamera__FrameRateRange_new();
 QCamera__FrameRateRange* QCamera__FrameRateRange_new2(double minimum, double maximum);
 QCamera__FrameRateRange* QCamera__FrameRateRange_new3(QCamera__FrameRateRange* param1);
-void QCamera__FrameRateRange_Delete(QCamera__FrameRateRange* self, bool isSubclass);
+void QCamera__FrameRateRange_Delete(QCamera__FrameRateRange* self);
 
 #ifdef __cplusplus
 } /* extern C */

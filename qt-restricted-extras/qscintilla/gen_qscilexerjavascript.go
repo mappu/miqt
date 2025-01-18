@@ -311,7 +311,7 @@ func miqt_exec_callback_QsciLexerJavaScript_SetStylePreprocessor(self *C.QsciLex
 
 // Delete this object from C++ memory.
 func (this *QsciLexerJavaScript) Delete() {
-	C.QsciLexerJavaScript_Delete(this.h, C.bool(this.isSubclass))
+	C.QsciLexerJavaScript_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

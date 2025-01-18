@@ -55,11 +55,7 @@ bool QLockFile_TryLock1(QLockFile* self, int timeout) {
 	return self->tryLock(static_cast<int>(timeout));
 }
 
-void QLockFile_Delete(QLockFile* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QLockFile*>( self );
-	} else {
-		delete self;
-	}
+void QLockFile_Delete(QLockFile* self) {
+	delete self;
 }
 

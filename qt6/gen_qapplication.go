@@ -451,7 +451,7 @@ func miqt_exec_callback_QApplication_Event(self *C.QApplication, cb C.intptr_t, 
 
 // Delete this object from C++ memory.
 func (this *QApplication) Delete() {
-	C.QApplication_Delete(this.h, C.bool(this.isSubclass))
+	C.QApplication_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

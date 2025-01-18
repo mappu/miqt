@@ -184,11 +184,7 @@ QMatrix* QMatrix_Inverted1(const QMatrix* self, bool* invertible) {
 	return new QMatrix(self->inverted(invertible));
 }
 
-void QMatrix_Delete(QMatrix* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMatrix*>( self );
-	} else {
-		delete self;
-	}
+void QMatrix_Delete(QMatrix* self) {
+	delete self;
 }
 

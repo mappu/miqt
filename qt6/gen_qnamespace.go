@@ -1716,7 +1716,7 @@ func NewDisambiguated_t2(param1 *Disambiguated_t) *Disambiguated_t {
 
 // Delete this object from C++ memory.
 func (this *Disambiguated_t) Delete() {
-	C.Disambiguated_t_Delete(this.h, C.bool(this.isSubclass))
+	C.Disambiguated_t_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1763,7 +1763,7 @@ func UnsafeNewQInternal(h unsafe.Pointer) *QInternal {
 
 // Delete this object from C++ memory.
 func (this *QInternal) Delete() {
-	C.QInternal_Delete(this.h, C.bool(this.isSubclass))
+	C.QInternal_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1888,7 +1888,7 @@ func (this *QKeyCombination) ToInt() int {
 
 // Delete this object from C++ memory.
 func (this *QKeyCombination) Delete() {
-	C.QKeyCombination_Delete(this.h, C.bool(this.isSubclass))
+	C.QKeyCombination_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

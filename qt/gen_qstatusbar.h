@@ -190,7 +190,7 @@ void QStatusBar_override_virtual_InputMethodQuery(void* self, intptr_t slot);
 QVariant* QStatusBar_virtualbase_InputMethodQuery(const void* self, int param1);
 void QStatusBar_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QStatusBar_virtualbase_FocusNextPrevChild(void* self, bool next);
-void QStatusBar_Delete(QStatusBar* self, bool isSubclass);
+void QStatusBar_Delete(QStatusBar* self);
 
 #ifdef __cplusplus
 } /* extern C */

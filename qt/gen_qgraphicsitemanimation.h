@@ -100,7 +100,7 @@ void QGraphicsItemAnimation_override_virtual_ConnectNotify(void* self, intptr_t 
 void QGraphicsItemAnimation_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QGraphicsItemAnimation_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QGraphicsItemAnimation_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QGraphicsItemAnimation_Delete(QGraphicsItemAnimation* self, bool isSubclass);
+void QGraphicsItemAnimation_Delete(QGraphicsItemAnimation* self);
 
 #ifdef __cplusplus
 } /* extern C */

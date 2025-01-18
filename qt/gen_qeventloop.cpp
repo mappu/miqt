@@ -28,13 +28,13 @@ void miqt_exec_callback_QEventLoop_DisconnectNotify(void*, intptr_t, QMetaMethod
 } /* extern C */
 #endif
 
-class MiqtVirtualQEventLoop : public virtual QEventLoop {
+class MiqtVirtualQEventLoop final : public QEventLoop {
 public:
 
 	MiqtVirtualQEventLoop(): QEventLoop() {};
 	MiqtVirtualQEventLoop(QObject* parent): QEventLoop(parent) {};
 
-	virtual ~MiqtVirtualQEventLoop() = default;
+	virtual ~MiqtVirtualQEventLoop() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -395,12 +395,8 @@ void QEventLoop_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQEventLoop*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QEventLoop_Delete(QEventLoop* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQEventLoop*>( self );
-	} else {
-		delete self;
-	}
+void QEventLoop_Delete(QEventLoop* self) {
+	delete self;
 }
 
 QEventLoopLocker* QEventLoopLocker_new() {
@@ -415,11 +411,7 @@ QEventLoopLocker* QEventLoopLocker_new3(QThread* thread) {
 	return new QEventLoopLocker(thread);
 }
 
-void QEventLoopLocker_Delete(QEventLoopLocker* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QEventLoopLocker*>( self );
-	} else {
-		delete self;
-	}
+void QEventLoopLocker_Delete(QEventLoopLocker* self) {
+	delete self;
 }
 

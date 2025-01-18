@@ -54,7 +54,7 @@ struct miqt_string QCameraZoomControl_Tr2(const char* s, const char* c);
 struct miqt_string QCameraZoomControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QCameraZoomControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QCameraZoomControl_TrUtf83(const char* s, const char* c, int n);
-void QCameraZoomControl_Delete(QCameraZoomControl* self, bool isSubclass);
+void QCameraZoomControl_Delete(QCameraZoomControl* self);
 
 #ifdef __cplusplus
 } /* extern C */

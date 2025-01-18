@@ -370,11 +370,7 @@ void QTextCursor_InsertImage2(QTextCursor* self, QImage* image, struct miqt_stri
 	self->insertImage(*image, name_QString);
 }
 
-void QTextCursor_Delete(QTextCursor* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextCursor*>( self );
-	} else {
-		delete self;
-	}
+void QTextCursor_Delete(QTextCursor* self) {
+	delete self;
 }
 

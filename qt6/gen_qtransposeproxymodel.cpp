@@ -64,13 +64,13 @@ struct miqt_map /* of int to struct miqt_string */  miqt_exec_callback_QTranspos
 } /* extern C */
 #endif
 
-class MiqtVirtualQTransposeProxyModel : public virtual QTransposeProxyModel {
+class MiqtVirtualQTransposeProxyModel final : public QTransposeProxyModel {
 public:
 
 	MiqtVirtualQTransposeProxyModel(): QTransposeProxyModel() {};
 	MiqtVirtualQTransposeProxyModel(QObject* parent): QTransposeProxyModel(parent) {};
 
-	virtual ~MiqtVirtualQTransposeProxyModel() = default;
+	virtual ~MiqtVirtualQTransposeProxyModel() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetSourceModel = 0;
@@ -1645,11 +1645,7 @@ struct miqt_map /* of int to struct miqt_string */  QTransposeProxyModel_virtual
 	return ( (const MiqtVirtualQTransposeProxyModel*)(self) )->virtualbase_RoleNames();
 }
 
-void QTransposeProxyModel_Delete(QTransposeProxyModel* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQTransposeProxyModel*>( self );
-	} else {
-		delete self;
-	}
+void QTransposeProxyModel_Delete(QTransposeProxyModel* self) {
+	delete self;
 }
 

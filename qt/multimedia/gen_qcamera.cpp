@@ -43,7 +43,7 @@ void miqt_exec_callback_QCamera_Unbind(void*, intptr_t, QObject*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQCamera : public virtual QCamera {
+class MiqtVirtualQCamera final : public QCamera {
 public:
 
 	MiqtVirtualQCamera(): QCamera() {};
@@ -55,7 +55,7 @@ public:
 	MiqtVirtualQCamera(const QCameraInfo& cameraInfo, QObject* parent): QCamera(cameraInfo, parent) {};
 	MiqtVirtualQCamera(QCamera::Position position, QObject* parent): QCamera(position, parent) {};
 
-	virtual ~MiqtVirtualQCamera() = default;
+	virtual ~MiqtVirtualQCamera() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Availability = 0;
@@ -699,12 +699,8 @@ void QCamera_virtualbase_Unbind(void* self, QObject* param1) {
 	( (MiqtVirtualQCamera*)(self) )->virtualbase_Unbind(param1);
 }
 
-void QCamera_Delete(QCamera* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQCamera*>( self );
-	} else {
-		delete self;
-	}
+void QCamera_Delete(QCamera* self) {
+	delete self;
 }
 
 QCamera__FrameRateRange* QCamera__FrameRateRange_new() {
@@ -719,11 +715,7 @@ QCamera__FrameRateRange* QCamera__FrameRateRange_new3(QCamera__FrameRateRange* p
 	return new QCamera::FrameRateRange(*param1);
 }
 
-void QCamera__FrameRateRange_Delete(QCamera__FrameRateRange* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCamera::FrameRateRange*>( self );
-	} else {
-		delete self;
-	}
+void QCamera__FrameRateRange_Delete(QCamera__FrameRateRange* self) {
+	delete self;
 }
 

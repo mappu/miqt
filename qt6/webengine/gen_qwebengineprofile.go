@@ -579,7 +579,7 @@ func miqt_exec_callback_QWebEngineProfile_DisconnectNotify(self *C.QWebEnginePro
 
 // Delete this object from C++ memory.
 func (this *QWebEngineProfile) Delete() {
-	C.QWebEngineProfile_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebEngineProfile_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

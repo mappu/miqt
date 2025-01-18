@@ -40,7 +40,7 @@ struct miqt_string QCameraFeedbackControl_Tr2(const char* s, const char* c);
 struct miqt_string QCameraFeedbackControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QCameraFeedbackControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QCameraFeedbackControl_TrUtf83(const char* s, const char* c, int n);
-void QCameraFeedbackControl_Delete(QCameraFeedbackControl* self, bool isSubclass);
+void QCameraFeedbackControl_Delete(QCameraFeedbackControl* self);
 
 #ifdef __cplusplus
 } /* extern C */

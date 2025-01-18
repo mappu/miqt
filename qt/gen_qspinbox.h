@@ -154,7 +154,7 @@ void QSpinBox_override_virtual_ShowEvent(void* self, intptr_t slot);
 void QSpinBox_virtualbase_ShowEvent(void* self, QShowEvent* event);
 void QSpinBox_override_virtual_StepEnabled(void* self, intptr_t slot);
 int QSpinBox_virtualbase_StepEnabled(const void* self);
-void QSpinBox_Delete(QSpinBox* self, bool isSubclass);
+void QSpinBox_Delete(QSpinBox* self);
 
 QDoubleSpinBox* QDoubleSpinBox_new(QWidget* parent);
 QDoubleSpinBox* QDoubleSpinBox_new2();
@@ -249,7 +249,7 @@ void QDoubleSpinBox_override_virtual_ShowEvent(void* self, intptr_t slot);
 void QDoubleSpinBox_virtualbase_ShowEvent(void* self, QShowEvent* event);
 void QDoubleSpinBox_override_virtual_StepEnabled(void* self, intptr_t slot);
 int QDoubleSpinBox_virtualbase_StepEnabled(const void* self);
-void QDoubleSpinBox_Delete(QDoubleSpinBox* self, bool isSubclass);
+void QDoubleSpinBox_Delete(QDoubleSpinBox* self);
 
 #ifdef __cplusplus
 } /* extern C */

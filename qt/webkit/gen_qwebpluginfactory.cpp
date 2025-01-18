@@ -37,13 +37,13 @@ void miqt_exec_callback_QWebPluginFactory_DisconnectNotify(void*, intptr_t, QMet
 } /* extern C */
 #endif
 
-class MiqtVirtualQWebPluginFactory : public virtual QWebPluginFactory {
+class MiqtVirtualQWebPluginFactory final : public QWebPluginFactory {
 public:
 
 	MiqtVirtualQWebPluginFactory(): QWebPluginFactory() {};
 	MiqtVirtualQWebPluginFactory(QObject* parent): QWebPluginFactory(parent) {};
 
-	virtual ~MiqtVirtualQWebPluginFactory() = default;
+	virtual ~MiqtVirtualQWebPluginFactory() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Plugins = 0;
@@ -590,12 +590,8 @@ void QWebPluginFactory_virtualbase_DisconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualQWebPluginFactory*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QWebPluginFactory_Delete(QWebPluginFactory* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQWebPluginFactory*>( self );
-	} else {
-		delete self;
-	}
+void QWebPluginFactory_Delete(QWebPluginFactory* self) {
+	delete self;
 }
 
 QWebPluginFactory__MimeType* QWebPluginFactory__MimeType_new(QWebPluginFactory__MimeType* param1) {
@@ -614,12 +610,8 @@ void QWebPluginFactory__MimeType_OperatorAssign(QWebPluginFactory__MimeType* sel
 	self->operator=(*param1);
 }
 
-void QWebPluginFactory__MimeType_Delete(QWebPluginFactory__MimeType* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebPluginFactory::MimeType*>( self );
-	} else {
-		delete self;
-	}
+void QWebPluginFactory__MimeType_Delete(QWebPluginFactory__MimeType* self) {
+	delete self;
 }
 
 QWebPluginFactory__Plugin* QWebPluginFactory__Plugin_new(QWebPluginFactory__Plugin* param1) {
@@ -630,27 +622,15 @@ void QWebPluginFactory__Plugin_OperatorAssign(QWebPluginFactory__Plugin* self, Q
 	self->operator=(*param1);
 }
 
-void QWebPluginFactory__Plugin_Delete(QWebPluginFactory__Plugin* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebPluginFactory::Plugin*>( self );
-	} else {
-		delete self;
-	}
+void QWebPluginFactory__Plugin_Delete(QWebPluginFactory__Plugin* self) {
+	delete self;
 }
 
-void QWebPluginFactory__ExtensionOption_Delete(QWebPluginFactory__ExtensionOption* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebPluginFactory::ExtensionOption*>( self );
-	} else {
-		delete self;
-	}
+void QWebPluginFactory__ExtensionOption_Delete(QWebPluginFactory__ExtensionOption* self) {
+	delete self;
 }
 
-void QWebPluginFactory__ExtensionReturn_Delete(QWebPluginFactory__ExtensionReturn* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebPluginFactory::ExtensionReturn*>( self );
-	} else {
-		delete self;
-	}
+void QWebPluginFactory__ExtensionReturn_Delete(QWebPluginFactory__ExtensionReturn* self) {
+	delete self;
 }
 

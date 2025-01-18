@@ -57,7 +57,7 @@ QVariant* QModelRoleData_Data(QModelRoleData* self);
 QVariant* QModelRoleData_Data2(const QModelRoleData* self);
 void QModelRoleData_ClearData(QModelRoleData* self);
 void QModelRoleData_OperatorAssign(QModelRoleData* self, QModelRoleData* param1);
-void QModelRoleData_Delete(QModelRoleData* self, bool isSubclass);
+void QModelRoleData_Delete(QModelRoleData* self);
 
 QModelRoleDataSpan* QModelRoleDataSpan_new();
 QModelRoleDataSpan* QModelRoleDataSpan_new2(QModelRoleData* modelRoleData);
@@ -70,7 +70,7 @@ QModelRoleData* QModelRoleDataSpan_Begin(const QModelRoleDataSpan* self);
 QModelRoleData* QModelRoleDataSpan_End(const QModelRoleDataSpan* self);
 QModelRoleData* QModelRoleDataSpan_OperatorSubscript(const QModelRoleDataSpan* self, ptrdiff_t index);
 QVariant* QModelRoleDataSpan_DataForRole(const QModelRoleDataSpan* self, int role);
-void QModelRoleDataSpan_Delete(QModelRoleDataSpan* self, bool isSubclass);
+void QModelRoleDataSpan_Delete(QModelRoleDataSpan* self);
 
 QModelIndex* QModelIndex_new();
 QModelIndex* QModelIndex_new2(QModelIndex* param1);
@@ -92,7 +92,7 @@ bool QModelIndex_OperatorEqual(const QModelIndex* self, QModelIndex* other);
 bool QModelIndex_OperatorNotEqual(const QModelIndex* self, QModelIndex* other);
 bool QModelIndex_OperatorLesser(const QModelIndex* self, QModelIndex* other);
 QVariant* QModelIndex_Data1(const QModelIndex* self, int role);
-void QModelIndex_Delete(QModelIndex* self, bool isSubclass);
+void QModelIndex_Delete(QModelIndex* self);
 
 QPersistentModelIndex* QPersistentModelIndex_new();
 QPersistentModelIndex* QPersistentModelIndex_new2(QModelIndex* index);
@@ -119,7 +119,7 @@ int QPersistentModelIndex_Flags(const QPersistentModelIndex* self);
 QAbstractItemModel* QPersistentModelIndex_Model(const QPersistentModelIndex* self);
 bool QPersistentModelIndex_IsValid(const QPersistentModelIndex* self);
 QVariant* QPersistentModelIndex_Data1(const QPersistentModelIndex* self, int role);
-void QPersistentModelIndex_Delete(QPersistentModelIndex* self, bool isSubclass);
+void QPersistentModelIndex_Delete(QPersistentModelIndex* self);
 
 QAbstractItemModel* QAbstractItemModel_new();
 QAbstractItemModel* QAbstractItemModel_new2(QObject* parent);
@@ -286,7 +286,7 @@ void QAbstractItemModel_override_virtual_ConnectNotify(void* self, intptr_t slot
 void QAbstractItemModel_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QAbstractItemModel_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QAbstractItemModel_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QAbstractItemModel_Delete(QAbstractItemModel* self, bool isSubclass);
+void QAbstractItemModel_Delete(QAbstractItemModel* self);
 
 QAbstractTableModel* QAbstractTableModel_new();
 QAbstractTableModel* QAbstractTableModel_new2(QObject* parent);
@@ -370,7 +370,7 @@ void QAbstractTableModel_override_virtual_Revert(void* self, intptr_t slot);
 void QAbstractTableModel_virtualbase_Revert(void* self);
 void QAbstractTableModel_override_virtual_ResetInternalData(void* self, intptr_t slot);
 void QAbstractTableModel_virtualbase_ResetInternalData(void* self);
-void QAbstractTableModel_Delete(QAbstractTableModel* self, bool isSubclass);
+void QAbstractTableModel_Delete(QAbstractTableModel* self);
 
 QAbstractListModel* QAbstractListModel_new();
 QAbstractListModel* QAbstractListModel_new2(QObject* parent);
@@ -452,7 +452,7 @@ void QAbstractListModel_override_virtual_Revert(void* self, intptr_t slot);
 void QAbstractListModel_virtualbase_Revert(void* self);
 void QAbstractListModel_override_virtual_ResetInternalData(void* self, intptr_t slot);
 void QAbstractListModel_virtualbase_ResetInternalData(void* self);
-void QAbstractListModel_Delete(QAbstractListModel* self, bool isSubclass);
+void QAbstractListModel_Delete(QAbstractListModel* self);
 
 #ifdef __cplusplus
 } /* extern C */

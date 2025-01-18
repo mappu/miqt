@@ -137,12 +137,8 @@ bool QTextOption_UseDesignMetrics(const QTextOption* self) {
 	return self->useDesignMetrics();
 }
 
-void QTextOption_Delete(QTextOption* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextOption*>( self );
-	} else {
-		delete self;
-	}
+void QTextOption_Delete(QTextOption* self) {
+	delete self;
 }
 
 QTextOption__Tab* QTextOption__Tab_new() {
@@ -169,11 +165,7 @@ bool QTextOption__Tab_OperatorNotEqual(const QTextOption__Tab* self, QTextOption
 	return (*self != *other);
 }
 
-void QTextOption__Tab_Delete(QTextOption__Tab* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextOption::Tab*>( self );
-	} else {
-		delete self;
-	}
+void QTextOption__Tab_Delete(QTextOption__Tab* self) {
+	delete self;
 }
 

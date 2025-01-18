@@ -337,7 +337,7 @@ func miqt_exec_callback_QObjectCleanupHandler_DisconnectNotify(self *C.QObjectCl
 
 // Delete this object from C++ memory.
 func (this *QObjectCleanupHandler) Delete() {
-	C.QObjectCleanupHandler_Delete(this.h, C.bool(this.isSubclass))
+	C.QObjectCleanupHandler_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

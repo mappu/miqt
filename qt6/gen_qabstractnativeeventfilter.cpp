@@ -12,12 +12,12 @@ bool miqt_exec_callback_QAbstractNativeEventFilter_NativeEventFilter(void*, intp
 } /* extern C */
 #endif
 
-class MiqtVirtualQAbstractNativeEventFilter : public virtual QAbstractNativeEventFilter {
+class MiqtVirtualQAbstractNativeEventFilter final : public QAbstractNativeEventFilter {
 public:
 
 	MiqtVirtualQAbstractNativeEventFilter(): QAbstractNativeEventFilter() {};
 
-	virtual ~MiqtVirtualQAbstractNativeEventFilter() = default;
+	virtual ~MiqtVirtualQAbstractNativeEventFilter() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__NativeEventFilter = 0;
@@ -58,11 +58,7 @@ void QAbstractNativeEventFilter_override_virtual_NativeEventFilter(void* self, i
 	dynamic_cast<MiqtVirtualQAbstractNativeEventFilter*>( (QAbstractNativeEventFilter*)(self) )->handle__NativeEventFilter = slot;
 }
 
-void QAbstractNativeEventFilter_Delete(QAbstractNativeEventFilter* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractNativeEventFilter*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractNativeEventFilter_Delete(QAbstractNativeEventFilter* self) {
+	delete self;
 }
 

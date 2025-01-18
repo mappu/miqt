@@ -1667,7 +1667,7 @@ func miqt_exec_callback_QWebView_SharedPainter(self *C.QWebView, cb C.intptr_t) 
 
 // Delete this object from C++ memory.
 func (this *QWebView) Delete() {
-	C.QWebView_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebView_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

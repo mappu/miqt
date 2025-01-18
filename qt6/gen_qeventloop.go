@@ -355,7 +355,7 @@ func miqt_exec_callback_QEventLoop_DisconnectNotify(self *C.QEventLoop, cb C.int
 
 // Delete this object from C++ memory.
 func (this *QEventLoop) Delete() {
-	C.QEventLoop_Delete(this.h, C.bool(this.isSubclass))
+	C.QEventLoop_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -426,7 +426,7 @@ func NewQEventLoopLocker3(thread *QThread) *QEventLoopLocker {
 
 // Delete this object from C++ memory.
 func (this *QEventLoopLocker) Delete() {
-	C.QEventLoopLocker_Delete(this.h, C.bool(this.isSubclass))
+	C.QEventLoopLocker_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

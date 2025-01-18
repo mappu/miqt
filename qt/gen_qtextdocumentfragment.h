@@ -36,7 +36,7 @@ QTextDocumentFragment* QTextDocumentFragment_FromPlainText(struct miqt_string pl
 QTextDocumentFragment* QTextDocumentFragment_FromHtml(struct miqt_string html);
 QTextDocumentFragment* QTextDocumentFragment_FromHtml2(struct miqt_string html, QTextDocument* resourceProvider);
 struct miqt_string QTextDocumentFragment_ToHtml1(const QTextDocumentFragment* self, struct miqt_string encoding);
-void QTextDocumentFragment_Delete(QTextDocumentFragment* self, bool isSubclass);
+void QTextDocumentFragment_Delete(QTextDocumentFragment* self);
 
 #ifdef __cplusplus
 } /* extern C */

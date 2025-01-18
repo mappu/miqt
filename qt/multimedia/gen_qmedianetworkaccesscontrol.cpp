@@ -124,11 +124,7 @@ struct miqt_string QMediaNetworkAccessControl_TrUtf83(const char* s, const char*
 	return _ms;
 }
 
-void QMediaNetworkAccessControl_Delete(QMediaNetworkAccessControl* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMediaNetworkAccessControl*>( self );
-	} else {
-		delete self;
-	}
+void QMediaNetworkAccessControl_Delete(QMediaNetworkAccessControl* self) {
+	delete self;
 }
 

@@ -717,7 +717,7 @@ func miqt_exec_callback_QTcpSocket_WriteData(self *C.QTcpSocket, cb C.intptr_t, 
 
 // Delete this object from C++ memory.
 func (this *QTcpSocket) Delete() {
-	C.QTcpSocket_Delete(this.h, C.bool(this.isSubclass))
+	C.QTcpSocket_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

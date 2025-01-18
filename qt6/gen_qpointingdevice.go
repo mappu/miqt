@@ -103,7 +103,7 @@ func (this *QPointingDeviceUniqueId) NumericId() int64 {
 
 // Delete this object from C++ memory.
 func (this *QPointingDeviceUniqueId) Delete() {
-	C.QPointingDeviceUniqueId_Delete(this.h, C.bool(this.isSubclass))
+	C.QPointingDeviceUniqueId_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -343,7 +343,7 @@ func QPointingDevice_PrimaryPointingDevice1(seatName string) *QPointingDevice {
 
 // Delete this object from C++ memory.
 func (this *QPointingDevice) Delete() {
-	C.QPointingDevice_Delete(this.h, C.bool(this.isSubclass))
+	C.QPointingDevice_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

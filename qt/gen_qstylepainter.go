@@ -120,7 +120,7 @@ func (this *QStylePainter) DrawItemText6(r *QRect, flags int, pal *QPalette, ena
 
 // Delete this object from C++ memory.
 func (this *QStylePainter) Delete() {
-	C.QStylePainter_Delete(this.h, C.bool(this.isSubclass))
+	C.QStylePainter_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

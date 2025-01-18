@@ -60,13 +60,13 @@ void miqt_exec_callback_QGraphicsOpacityEffect_SourceChanged(void*, intptr_t, in
 } /* extern C */
 #endif
 
-class MiqtVirtualQGraphicsEffect : public virtual QGraphicsEffect {
+class MiqtVirtualQGraphicsEffect final : public QGraphicsEffect {
 public:
 
 	MiqtVirtualQGraphicsEffect(): QGraphicsEffect() {};
 	MiqtVirtualQGraphicsEffect(QObject* parent): QGraphicsEffect(parent) {};
 
-	virtual ~MiqtVirtualQGraphicsEffect() = default;
+	virtual ~MiqtVirtualQGraphicsEffect() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__BoundingRectFor = 0;
@@ -467,21 +467,17 @@ void QGraphicsEffect_virtualbase_DisconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQGraphicsEffect*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QGraphicsEffect_Delete(QGraphicsEffect* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsEffect*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsEffect_Delete(QGraphicsEffect* self) {
+	delete self;
 }
 
-class MiqtVirtualQGraphicsColorizeEffect : public virtual QGraphicsColorizeEffect {
+class MiqtVirtualQGraphicsColorizeEffect final : public QGraphicsColorizeEffect {
 public:
 
 	MiqtVirtualQGraphicsColorizeEffect(): QGraphicsColorizeEffect() {};
 	MiqtVirtualQGraphicsColorizeEffect(QObject* parent): QGraphicsColorizeEffect(parent) {};
 
-	virtual ~MiqtVirtualQGraphicsColorizeEffect() = default;
+	virtual ~MiqtVirtualQGraphicsColorizeEffect() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Draw = 0;
@@ -678,21 +674,17 @@ void QGraphicsColorizeEffect_virtualbase_SourceChanged(void* self, int flags) {
 	( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->virtualbase_SourceChanged(flags);
 }
 
-void QGraphicsColorizeEffect_Delete(QGraphicsColorizeEffect* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsColorizeEffect*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsColorizeEffect_Delete(QGraphicsColorizeEffect* self) {
+	delete self;
 }
 
-class MiqtVirtualQGraphicsBlurEffect : public virtual QGraphicsBlurEffect {
+class MiqtVirtualQGraphicsBlurEffect final : public QGraphicsBlurEffect {
 public:
 
 	MiqtVirtualQGraphicsBlurEffect(): QGraphicsBlurEffect() {};
 	MiqtVirtualQGraphicsBlurEffect(QObject* parent): QGraphicsBlurEffect(parent) {};
 
-	virtual ~MiqtVirtualQGraphicsBlurEffect() = default;
+	virtual ~MiqtVirtualQGraphicsBlurEffect() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__BoundingRectFor = 0;
@@ -893,21 +885,17 @@ void QGraphicsBlurEffect_virtualbase_SourceChanged(void* self, int flags) {
 	( (MiqtVirtualQGraphicsBlurEffect*)(self) )->virtualbase_SourceChanged(flags);
 }
 
-void QGraphicsBlurEffect_Delete(QGraphicsBlurEffect* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsBlurEffect*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsBlurEffect_Delete(QGraphicsBlurEffect* self) {
+	delete self;
 }
 
-class MiqtVirtualQGraphicsDropShadowEffect : public virtual QGraphicsDropShadowEffect {
+class MiqtVirtualQGraphicsDropShadowEffect final : public QGraphicsDropShadowEffect {
 public:
 
 	MiqtVirtualQGraphicsDropShadowEffect(): QGraphicsDropShadowEffect() {};
 	MiqtVirtualQGraphicsDropShadowEffect(QObject* parent): QGraphicsDropShadowEffect(parent) {};
 
-	virtual ~MiqtVirtualQGraphicsDropShadowEffect() = default;
+	virtual ~MiqtVirtualQGraphicsDropShadowEffect() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__BoundingRectFor = 0;
@@ -1155,21 +1143,17 @@ void QGraphicsDropShadowEffect_virtualbase_SourceChanged(void* self, int flags) 
 	( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->virtualbase_SourceChanged(flags);
 }
 
-void QGraphicsDropShadowEffect_Delete(QGraphicsDropShadowEffect* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsDropShadowEffect*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsDropShadowEffect_Delete(QGraphicsDropShadowEffect* self) {
+	delete self;
 }
 
-class MiqtVirtualQGraphicsOpacityEffect : public virtual QGraphicsOpacityEffect {
+class MiqtVirtualQGraphicsOpacityEffect final : public QGraphicsOpacityEffect {
 public:
 
 	MiqtVirtualQGraphicsOpacityEffect(): QGraphicsOpacityEffect() {};
 	MiqtVirtualQGraphicsOpacityEffect(QObject* parent): QGraphicsOpacityEffect(parent) {};
 
-	virtual ~MiqtVirtualQGraphicsOpacityEffect() = default;
+	virtual ~MiqtVirtualQGraphicsOpacityEffect() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Draw = 0;
@@ -1366,11 +1350,7 @@ void QGraphicsOpacityEffect_virtualbase_SourceChanged(void* self, int flags) {
 	( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->virtualbase_SourceChanged(flags);
 }
 
-void QGraphicsOpacityEffect_Delete(QGraphicsOpacityEffect* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsOpacityEffect*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsOpacityEffect_Delete(QGraphicsOpacityEffect* self) {
+	delete self;
 }
 

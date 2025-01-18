@@ -758,11 +758,7 @@ struct miqt_array /* of QFileInfo* */  QDir_EntryInfoList3(const QDir* self, str
 	return _out;
 }
 
-void QDir_Delete(QDir* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QDir*>( self );
-	} else {
-		delete self;
-	}
+void QDir_Delete(QDir* self) {
+	delete self;
 }
 

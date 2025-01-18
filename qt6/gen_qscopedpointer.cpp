@@ -18,11 +18,7 @@ void QScopedPointerPodDeleter_OperatorCall(const QScopedPointerPodDeleter* self,
 	self->operator()(pointer);
 }
 
-void QScopedPointerPodDeleter_Delete(QScopedPointerPodDeleter* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QScopedPointerPodDeleter*>( self );
-	} else {
-		delete self;
-	}
+void QScopedPointerPodDeleter_Delete(QScopedPointerPodDeleter* self) {
+	delete self;
 }
 

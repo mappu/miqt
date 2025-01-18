@@ -125,11 +125,7 @@ void QRgba64_OperatorAssign(QRgba64* self, unsigned long long _rgba) {
 	self->operator=(static_cast<quint64>(_rgba));
 }
 
-void QRgba64_Delete(QRgba64* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QRgba64*>( self );
-	} else {
-		delete self;
-	}
+void QRgba64_Delete(QRgba64* self) {
+	delete self;
 }
 

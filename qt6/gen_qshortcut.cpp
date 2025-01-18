@@ -30,7 +30,7 @@ void miqt_exec_callback_QShortcut_DisconnectNotify(void*, intptr_t, QMetaMethod*
 } /* extern C */
 #endif
 
-class MiqtVirtualQShortcut : public virtual QShortcut {
+class MiqtVirtualQShortcut final : public QShortcut {
 public:
 
 	MiqtVirtualQShortcut(QObject* parent): QShortcut(parent) {};
@@ -43,7 +43,7 @@ public:
 	MiqtVirtualQShortcut(QKeySequence::StandardKey key, QObject* parent, const char* member, const char* ambiguousMember): QShortcut(key, parent, member, ambiguousMember) {};
 	MiqtVirtualQShortcut(QKeySequence::StandardKey key, QObject* parent, const char* member, const char* ambiguousMember, Qt::ShortcutContext context): QShortcut(key, parent, member, ambiguousMember, context) {};
 
-	virtual ~MiqtVirtualQShortcut() = default;
+	virtual ~MiqtVirtualQShortcut() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -455,11 +455,7 @@ void QShortcut_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQShortcut*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QShortcut_Delete(QShortcut* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQShortcut*>( self );
-	} else {
-		delete self;
-	}
+void QShortcut_Delete(QShortcut* self) {
+	delete self;
 }
 

@@ -128,7 +128,7 @@ void QScrollArea_override_virtual_DropEvent(void* self, intptr_t slot);
 void QScrollArea_virtualbase_DropEvent(void* self, QDropEvent* param1);
 void QScrollArea_override_virtual_KeyPressEvent(void* self, intptr_t slot);
 void QScrollArea_virtualbase_KeyPressEvent(void* self, QKeyEvent* param1);
-void QScrollArea_Delete(QScrollArea* self, bool isSubclass);
+void QScrollArea_Delete(QScrollArea* self);
 
 #ifdef __cplusplus
 } /* extern C */

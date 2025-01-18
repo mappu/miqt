@@ -29,13 +29,13 @@ void miqt_exec_callback_QSyntaxHighlighter_DisconnectNotify(void*, intptr_t, QMe
 } /* extern C */
 #endif
 
-class MiqtVirtualQSyntaxHighlighter : public virtual QSyntaxHighlighter {
+class MiqtVirtualQSyntaxHighlighter final : public QSyntaxHighlighter {
 public:
 
 	MiqtVirtualQSyntaxHighlighter(QObject* parent): QSyntaxHighlighter(parent) {};
 	MiqtVirtualQSyntaxHighlighter(QTextDocument* parent): QSyntaxHighlighter(parent) {};
 
-	virtual ~MiqtVirtualQSyntaxHighlighter() = default;
+	virtual ~MiqtVirtualQSyntaxHighlighter() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__HighlightBlock = 0;
@@ -362,11 +362,7 @@ void QSyntaxHighlighter_virtualbase_DisconnectNotify(void* self, QMetaMethod* si
 	( (MiqtVirtualQSyntaxHighlighter*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QSyntaxHighlighter_Delete(QSyntaxHighlighter* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSyntaxHighlighter*>( self );
-	} else {
-		delete self;
-	}
+void QSyntaxHighlighter_Delete(QSyntaxHighlighter* self) {
+	delete self;
 }
 

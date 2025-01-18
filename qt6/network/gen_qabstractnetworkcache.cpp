@@ -164,12 +164,8 @@ void QNetworkCacheMetaData_SetAttributes(QNetworkCacheMetaData* self, struct miq
 	self->setAttributes(attributes_QMap);
 }
 
-void QNetworkCacheMetaData_Delete(QNetworkCacheMetaData* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QNetworkCacheMetaData*>( self );
-	} else {
-		delete self;
-	}
+void QNetworkCacheMetaData_Delete(QNetworkCacheMetaData* self) {
+	delete self;
 }
 
 void QAbstractNetworkCache_virtbase(QAbstractNetworkCache* src, QObject** outptr_QObject) {
@@ -250,11 +246,7 @@ struct miqt_string QAbstractNetworkCache_Tr3(const char* s, const char* c, int n
 	return _ms;
 }
 
-void QAbstractNetworkCache_Delete(QAbstractNetworkCache* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QAbstractNetworkCache*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractNetworkCache_Delete(QAbstractNetworkCache* self) {
+	delete self;
 }
 

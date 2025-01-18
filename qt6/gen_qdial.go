@@ -518,7 +518,7 @@ func miqt_exec_callback_QDial_ChangeEvent(self *C.QDial, cb C.intptr_t, e *C.QEv
 
 // Delete this object from C++ memory.
 func (this *QDial) Delete() {
-	C.QDial_Delete(this.h, C.bool(this.isSubclass))
+	C.QDial_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

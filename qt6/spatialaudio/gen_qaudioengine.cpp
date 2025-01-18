@@ -32,7 +32,7 @@ void miqt_exec_callback_QAudioEngine_DisconnectNotify(void*, intptr_t, QMetaMeth
 } /* extern C */
 #endif
 
-class MiqtVirtualQAudioEngine : public virtual QAudioEngine {
+class MiqtVirtualQAudioEngine final : public QAudioEngine {
 public:
 
 	MiqtVirtualQAudioEngine(): QAudioEngine() {};
@@ -40,7 +40,7 @@ public:
 	MiqtVirtualQAudioEngine(int sampleRate): QAudioEngine(sampleRate) {};
 	MiqtVirtualQAudioEngine(int sampleRate, QObject* parent): QAudioEngine(sampleRate, parent) {};
 
-	virtual ~MiqtVirtualQAudioEngine() = default;
+	virtual ~MiqtVirtualQAudioEngine() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -451,11 +451,7 @@ void QAudioEngine_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQAudioEngine*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QAudioEngine_Delete(QAudioEngine* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAudioEngine*>( self );
-	} else {
-		delete self;
-	}
+void QAudioEngine_Delete(QAudioEngine* self) {
+	delete self;
 }
 

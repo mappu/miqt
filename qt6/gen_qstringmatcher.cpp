@@ -91,11 +91,7 @@ ptrdiff_t QStringMatcher_IndexIn3(const QStringMatcher* self, QChar* str, ptrdif
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-void QStringMatcher_Delete(QStringMatcher* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QStringMatcher*>( self );
-	} else {
-		delete self;
-	}
+void QStringMatcher_Delete(QStringMatcher* self) {
+	delete self;
 }
 

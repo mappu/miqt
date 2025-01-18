@@ -54,7 +54,7 @@ void QAudioRecorder_override_virtual_MediaObject(void* self, intptr_t slot);
 QMediaObject* QAudioRecorder_virtualbase_MediaObject(const void* self);
 void QAudioRecorder_override_virtual_SetMediaObject(void* self, intptr_t slot);
 bool QAudioRecorder_virtualbase_SetMediaObject(void* self, QMediaObject* object);
-void QAudioRecorder_Delete(QAudioRecorder* self, bool isSubclass);
+void QAudioRecorder_Delete(QAudioRecorder* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -25,13 +25,13 @@ void miqt_exec_callback_QSequentialAnimationGroup_UpdateDirection(void*, intptr_
 } /* extern C */
 #endif
 
-class MiqtVirtualQSequentialAnimationGroup : public virtual QSequentialAnimationGroup {
+class MiqtVirtualQSequentialAnimationGroup final : public QSequentialAnimationGroup {
 public:
 
 	MiqtVirtualQSequentialAnimationGroup(): QSequentialAnimationGroup() {};
 	MiqtVirtualQSequentialAnimationGroup(QObject* parent): QSequentialAnimationGroup(parent) {};
 
-	virtual ~MiqtVirtualQSequentialAnimationGroup() = default;
+	virtual ~MiqtVirtualQSequentialAnimationGroup() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Duration = 0;
@@ -309,11 +309,7 @@ void QSequentialAnimationGroup_virtualbase_UpdateDirection(void* self, int direc
 	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->virtualbase_UpdateDirection(direction);
 }
 
-void QSequentialAnimationGroup_Delete(QSequentialAnimationGroup* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSequentialAnimationGroup*>( self );
-	} else {
-		delete self;
-	}
+void QSequentialAnimationGroup_Delete(QSequentialAnimationGroup* self) {
+	delete self;
 }
 

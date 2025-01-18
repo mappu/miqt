@@ -255,7 +255,7 @@ func miqt_exec_callback_QBitmap_Metric(self *C.QBitmap, cb C.intptr_t, param1 C.
 
 // Delete this object from C++ memory.
 func (this *QBitmap) Delete() {
-	C.QBitmap_Delete(this.h, C.bool(this.isSubclass))
+	C.QBitmap_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

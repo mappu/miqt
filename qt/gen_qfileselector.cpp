@@ -28,13 +28,13 @@ void miqt_exec_callback_QFileSelector_DisconnectNotify(void*, intptr_t, QMetaMet
 } /* extern C */
 #endif
 
-class MiqtVirtualQFileSelector : public virtual QFileSelector {
+class MiqtVirtualQFileSelector final : public QFileSelector {
 public:
 
 	MiqtVirtualQFileSelector(): QFileSelector() {};
 	MiqtVirtualQFileSelector(QObject* parent): QFileSelector(parent) {};
 
-	virtual ~MiqtVirtualQFileSelector() = default;
+	virtual ~MiqtVirtualQFileSelector() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -418,11 +418,7 @@ void QFileSelector_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQFileSelector*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QFileSelector_Delete(QFileSelector* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQFileSelector*>( self );
-	} else {
-		delete self;
-	}
+void QFileSelector_Delete(QFileSelector* self) {
+	delete self;
 }
 

@@ -39,7 +39,7 @@ void QWebEngineNavigationRequest_ActionChanged(QWebEngineNavigationRequest* self
 void QWebEngineNavigationRequest_connect_ActionChanged(QWebEngineNavigationRequest* self, intptr_t slot);
 struct miqt_string QWebEngineNavigationRequest_Tr2(const char* s, const char* c);
 struct miqt_string QWebEngineNavigationRequest_Tr3(const char* s, const char* c, int n);
-void QWebEngineNavigationRequest_Delete(QWebEngineNavigationRequest* self, bool isSubclass);
+void QWebEngineNavigationRequest_Delete(QWebEngineNavigationRequest* self);
 
 #ifdef __cplusplus
 } /* extern C */

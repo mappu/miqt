@@ -206,11 +206,7 @@ struct miqt_string QCameraZoomControl_TrUtf83(const char* s, const char* c, int 
 	return _ms;
 }
 
-void QCameraZoomControl_Delete(QCameraZoomControl* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCameraZoomControl*>( self );
-	} else {
-		delete self;
-	}
+void QCameraZoomControl_Delete(QCameraZoomControl* self) {
+	delete self;
 }
 

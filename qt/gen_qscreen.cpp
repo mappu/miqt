@@ -426,11 +426,7 @@ QPixmap* QScreen_GrabWindow5(QScreen* self, uintptr_t window, int x, int y, int 
 	return new QPixmap(self->grabWindow(static_cast<WId>(window), static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h)));
 }
 
-void QScreen_Delete(QScreen* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QScreen*>( self );
-	} else {
-		delete self;
-	}
+void QScreen_Delete(QScreen* self) {
+	delete self;
 }
 

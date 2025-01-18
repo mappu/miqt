@@ -163,7 +163,7 @@ void QStyle_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QStyle_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QStyle_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QStyle_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QStyle_Delete(QStyle* self, bool isSubclass);
+void QStyle_Delete(QStyle* self);
 
 #ifdef __cplusplus
 } /* extern C */

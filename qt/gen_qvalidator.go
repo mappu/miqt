@@ -446,7 +446,7 @@ func miqt_exec_callback_QValidator_DisconnectNotify(self *C.QValidator, cb C.int
 
 // Delete this object from C++ memory.
 func (this *QValidator) Delete() {
-	C.QValidator_Delete(this.h, C.bool(this.isSubclass))
+	C.QValidator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -774,7 +774,7 @@ func miqt_exec_callback_QIntValidator_SetRange(self *C.QIntValidator, cb C.intpt
 
 // Delete this object from C++ memory.
 func (this *QIntValidator) Delete() {
-	C.QIntValidator_Delete(this.h, C.bool(this.isSubclass))
+	C.QIntValidator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1152,7 +1152,7 @@ func miqt_exec_callback_QDoubleValidator_Fixup(self *C.QDoubleValidator, cb C.in
 
 // Delete this object from C++ memory.
 func (this *QDoubleValidator) Delete() {
-	C.QDoubleValidator_Delete(this.h, C.bool(this.isSubclass))
+	C.QDoubleValidator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1412,7 +1412,7 @@ func miqt_exec_callback_QRegExpValidator_Fixup(self *C.QRegExpValidator, cb C.in
 
 // Delete this object from C++ memory.
 func (this *QRegExpValidator) Delete() {
-	C.QRegExpValidator_Delete(this.h, C.bool(this.isSubclass))
+	C.QRegExpValidator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1674,7 +1674,7 @@ func miqt_exec_callback_QRegularExpressionValidator_Fixup(self *C.QRegularExpres
 
 // Delete this object from C++ memory.
 func (this *QRegularExpressionValidator) Delete() {
-	C.QRegularExpressionValidator_Delete(this.h, C.bool(this.isSubclass))
+	C.QRegularExpressionValidator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

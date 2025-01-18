@@ -1435,7 +1435,7 @@ func miqt_exec_callback_QDockWidget_FocusNextPrevChild(self *C.QDockWidget, cb C
 
 // Delete this object from C++ memory.
 func (this *QDockWidget) Delete() {
-	C.QDockWidget_Delete(this.h, C.bool(this.isSubclass))
+	C.QDockWidget_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

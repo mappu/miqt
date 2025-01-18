@@ -53,13 +53,13 @@ bool miqt_exec_callback_QsciLexerLua_WriteProperties(void*, intptr_t, QSettings*
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerLua : public virtual QsciLexerLua {
+class MiqtVirtualQsciLexerLua final : public QsciLexerLua {
 public:
 
 	MiqtVirtualQsciLexerLua(): QsciLexerLua() {};
 	MiqtVirtualQsciLexerLua(QObject* parent): QsciLexerLua(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerLua() = default;
+	virtual ~MiqtVirtualQsciLexerLua() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetFoldCompact = 0;
@@ -1346,11 +1346,7 @@ bool QsciLexerLua_virtualbase_WriteProperties(const void* self, QSettings* qs, s
 	return ( (const MiqtVirtualQsciLexerLua*)(self) )->virtualbase_WriteProperties(qs, prefix);
 }
 
-void QsciLexerLua_Delete(QsciLexerLua* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerLua*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerLua_Delete(QsciLexerLua* self) {
+	delete self;
 }
 

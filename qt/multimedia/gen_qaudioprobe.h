@@ -70,7 +70,7 @@ void QAudioProbe_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QAudioProbe_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QAudioProbe_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QAudioProbe_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QAudioProbe_Delete(QAudioProbe* self, bool isSubclass);
+void QAudioProbe_Delete(QAudioProbe* self);
 
 #ifdef __cplusplus
 } /* extern C */

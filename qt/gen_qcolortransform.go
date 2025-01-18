@@ -88,7 +88,7 @@ func (this *QColorTransform) MapWithColor(color *QColor) *QColor {
 
 // Delete this object from C++ memory.
 func (this *QColorTransform) Delete() {
-	C.QColorTransform_Delete(this.h, C.bool(this.isSubclass))
+	C.QColorTransform_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

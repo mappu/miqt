@@ -632,11 +632,7 @@ QColor* QColor_Darker1(const QColor* self, int f) {
 	return new QColor(self->darker(static_cast<int>(f)));
 }
 
-void QColor_Delete(QColor* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QColor*>( self );
-	} else {
-		delete self;
-	}
+void QColor_Delete(QColor* self) {
+	delete self;
 }
 

@@ -88,7 +88,7 @@ void QStyleHints_MouseQuickSelectionThresholdChanged(QStyleHints* self, int thre
 void QStyleHints_connect_MouseQuickSelectionThresholdChanged(QStyleHints* self, intptr_t slot);
 struct miqt_string QStyleHints_Tr2(const char* s, const char* c);
 struct miqt_string QStyleHints_Tr3(const char* s, const char* c, int n);
-void QStyleHints_Delete(QStyleHints* self, bool isSubclass);
+void QStyleHints_Delete(QStyleHints* self);
 
 #ifdef __cplusplus
 } /* extern C */

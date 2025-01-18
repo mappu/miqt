@@ -37,7 +37,7 @@ bool miqt_exec_callback_QStringListModel_DropMimeData(void*, intptr_t, QMimeData
 } /* extern C */
 #endif
 
-class MiqtVirtualQStringListModel : public virtual QStringListModel {
+class MiqtVirtualQStringListModel final : public QStringListModel {
 public:
 
 	MiqtVirtualQStringListModel(): QStringListModel() {};
@@ -45,7 +45,7 @@ public:
 	MiqtVirtualQStringListModel(QObject* parent): QStringListModel(parent) {};
 	MiqtVirtualQStringListModel(const QStringList& strings, QObject* parent): QStringListModel(strings, parent) {};
 
-	virtual ~MiqtVirtualQStringListModel() = default;
+	virtual ~MiqtVirtualQStringListModel() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__RowCount = 0;
@@ -789,11 +789,7 @@ bool QStringListModel_virtualbase_DropMimeData(void* self, QMimeData* data, int 
 	return ( (MiqtVirtualQStringListModel*)(self) )->virtualbase_DropMimeData(data, action, row, column, parent);
 }
 
-void QStringListModel_Delete(QStringListModel* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQStringListModel*>( self );
-	} else {
-		delete self;
-	}
+void QStringListModel_Delete(QStringListModel* self) {
+	delete self;
 }
 

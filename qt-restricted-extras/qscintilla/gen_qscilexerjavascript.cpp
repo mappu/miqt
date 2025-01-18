@@ -21,13 +21,13 @@ void miqt_exec_callback_QsciLexerJavaScript_SetStylePreprocessor(void*, intptr_t
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerJavaScript : public virtual QsciLexerJavaScript {
+class MiqtVirtualQsciLexerJavaScript final : public QsciLexerJavaScript {
 public:
 
 	MiqtVirtualQsciLexerJavaScript(): QsciLexerJavaScript() {};
 	MiqtVirtualQsciLexerJavaScript(QObject* parent): QsciLexerJavaScript(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerJavaScript() = default;
+	virtual ~MiqtVirtualQsciLexerJavaScript() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetFoldAtElse = 0;
@@ -312,11 +312,7 @@ void QsciLexerJavaScript_virtualbase_SetStylePreprocessor(void* self, bool style
 	( (MiqtVirtualQsciLexerJavaScript*)(self) )->virtualbase_SetStylePreprocessor(style);
 }
 
-void QsciLexerJavaScript_Delete(QsciLexerJavaScript* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerJavaScript*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerJavaScript_Delete(QsciLexerJavaScript* self) {
+	delete self;
 }
 

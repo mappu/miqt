@@ -75,7 +75,7 @@ func (this *QIPv6Address) OperatorSubscript(index int) byte {
 
 // Delete this object from C++ memory.
 func (this *QIPv6Address) Delete() {
-	C.QIPv6Address_Delete(this.h, C.bool(this.isSubclass))
+	C.QIPv6Address_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -363,7 +363,7 @@ func (this *QHostAddress) IsEqual2(address *QHostAddress, mode QHostAddress__Con
 
 // Delete this object from C++ memory.
 func (this *QHostAddress) Delete() {
-	C.QHostAddress_Delete(this.h, C.bool(this.isSubclass))
+	C.QHostAddress_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

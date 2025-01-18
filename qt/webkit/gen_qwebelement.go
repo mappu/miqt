@@ -586,7 +586,7 @@ func (this *QWebElement) AttributeNames1(namespaceUri string) []string {
 
 // Delete this object from C++ memory.
 func (this *QWebElement) Delete() {
-	C.QWebElement_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebElement_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -755,7 +755,7 @@ func (this *QWebElementCollection) End2() *QWebElementCollection__iterator {
 
 // Delete this object from C++ memory.
 func (this *QWebElementCollection) Delete() {
-	C.QWebElementCollection_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebElementCollection_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -892,7 +892,7 @@ func (this *QWebElementCollection__const_iterator) OperatorMinusWithQWebElementC
 
 // Delete this object from C++ memory.
 func (this *QWebElementCollection__const_iterator) Delete() {
-	C.QWebElementCollection__const_iterator_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebElementCollection__const_iterator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1029,7 +1029,7 @@ func (this *QWebElementCollection__iterator) OperatorMinusWithQWebElementCollect
 
 // Delete this object from C++ memory.
 func (this *QWebElementCollection__iterator) Delete() {
-	C.QWebElementCollection__iterator_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebElementCollection__iterator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

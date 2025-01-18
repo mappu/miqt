@@ -812,7 +812,7 @@ func miqt_exec_callback_QCamera_Unbind(self *C.QCamera, cb C.intptr_t, param1 *C
 
 // Delete this object from C++ memory.
 func (this *QCamera) Delete() {
-	C.QCamera_Delete(this.h, C.bool(this.isSubclass))
+	C.QCamera_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -883,7 +883,7 @@ func NewQCamera__FrameRateRange3(param1 *QCamera__FrameRateRange) *QCamera__Fram
 
 // Delete this object from C++ memory.
 func (this *QCamera__FrameRateRange) Delete() {
-	C.QCamera__FrameRateRange_Delete(this.h, C.bool(this.isSubclass))
+	C.QCamera__FrameRateRange_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

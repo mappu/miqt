@@ -33,13 +33,13 @@ void miqt_exec_callback_QNetworkConfigurationManager_DisconnectNotify(void*, int
 } /* extern C */
 #endif
 
-class MiqtVirtualQNetworkConfigurationManager : public virtual QNetworkConfigurationManager {
+class MiqtVirtualQNetworkConfigurationManager final : public QNetworkConfigurationManager {
 public:
 
 	MiqtVirtualQNetworkConfigurationManager(): QNetworkConfigurationManager() {};
 	MiqtVirtualQNetworkConfigurationManager(QObject* parent): QNetworkConfigurationManager(parent) {};
 
-	virtual ~MiqtVirtualQNetworkConfigurationManager() = default;
+	virtual ~MiqtVirtualQNetworkConfigurationManager() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -464,11 +464,7 @@ void QNetworkConfigurationManager_virtualbase_DisconnectNotify(void* self, QMeta
 	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QNetworkConfigurationManager_Delete(QNetworkConfigurationManager* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQNetworkConfigurationManager*>( self );
-	} else {
-		delete self;
-	}
+void QNetworkConfigurationManager_Delete(QNetworkConfigurationManager* self) {
+	delete self;
 }
 

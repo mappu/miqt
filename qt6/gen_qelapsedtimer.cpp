@@ -69,11 +69,7 @@ long long QElapsedTimer_SecsTo(const QElapsedTimer* self, QElapsedTimer* other) 
 	return static_cast<long long>(_ret);
 }
 
-void QElapsedTimer_Delete(QElapsedTimer* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QElapsedTimer*>( self );
-	} else {
-		delete self;
-	}
+void QElapsedTimer_Delete(QElapsedTimer* self) {
+	delete self;
 }
 

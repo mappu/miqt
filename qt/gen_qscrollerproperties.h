@@ -31,7 +31,7 @@ void QScrollerProperties_SetDefaultScrollerProperties(QScrollerProperties* sp);
 void QScrollerProperties_UnsetDefaultScrollerProperties();
 QVariant* QScrollerProperties_ScrollMetric(const QScrollerProperties* self, int metric);
 void QScrollerProperties_SetScrollMetric(QScrollerProperties* self, int metric, QVariant* value);
-void QScrollerProperties_Delete(QScrollerProperties* self, bool isSubclass);
+void QScrollerProperties_Delete(QScrollerProperties* self);
 
 #ifdef __cplusplus
 } /* extern C */

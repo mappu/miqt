@@ -250,7 +250,7 @@ func QMetaDataWriterControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QMetaDataWriterControl) Delete() {
-	C.QMetaDataWriterControl_Delete(this.h, C.bool(this.isSubclass))
+	C.QMetaDataWriterControl_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

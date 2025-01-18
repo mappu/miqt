@@ -50,7 +50,7 @@ struct miqt_string QCameraControl_Tr2(const char* s, const char* c);
 struct miqt_string QCameraControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QCameraControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QCameraControl_TrUtf83(const char* s, const char* c, int n);
-void QCameraControl_Delete(QCameraControl* self, bool isSubclass);
+void QCameraControl_Delete(QCameraControl* self);
 
 #ifdef __cplusplus
 } /* extern C */

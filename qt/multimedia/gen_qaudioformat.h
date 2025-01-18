@@ -45,7 +45,7 @@ int QAudioFormat_FramesForBytes(const QAudioFormat* self, int byteCount);
 int QAudioFormat_FramesForDuration(const QAudioFormat* self, long long duration);
 long long QAudioFormat_DurationForFrames(const QAudioFormat* self, int frameCount);
 int QAudioFormat_BytesPerFrame(const QAudioFormat* self);
-void QAudioFormat_Delete(QAudioFormat* self, bool isSubclass);
+void QAudioFormat_Delete(QAudioFormat* self);
 
 #ifdef __cplusplus
 } /* extern C */

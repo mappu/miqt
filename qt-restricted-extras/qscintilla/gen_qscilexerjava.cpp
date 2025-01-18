@@ -19,13 +19,13 @@ void miqt_exec_callback_QsciLexerJava_SetStylePreprocessor(void*, intptr_t, bool
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerJava : public virtual QsciLexerJava {
+class MiqtVirtualQsciLexerJava final : public QsciLexerJava {
 public:
 
 	MiqtVirtualQsciLexerJava(): QsciLexerJava() {};
 	MiqtVirtualQsciLexerJava(QObject* parent): QsciLexerJava(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerJava() = default;
+	virtual ~MiqtVirtualQsciLexerJava() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetFoldAtElse = 0;
@@ -283,11 +283,7 @@ void QsciLexerJava_virtualbase_SetStylePreprocessor(void* self, bool style) {
 	( (MiqtVirtualQsciLexerJava*)(self) )->virtualbase_SetStylePreprocessor(style);
 }
 
-void QsciLexerJava_Delete(QsciLexerJava* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerJava*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerJava_Delete(QsciLexerJava* self) {
+	delete self;
 }
 

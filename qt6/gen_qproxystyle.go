@@ -1028,7 +1028,7 @@ func miqt_exec_callback_QProxyStyle_Event(self *C.QProxyStyle, cb C.intptr_t, e 
 
 // Delete this object from C++ memory.
 func (this *QProxyStyle) Delete() {
-	C.QProxyStyle_Delete(this.h, C.bool(this.isSubclass))
+	C.QProxyStyle_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

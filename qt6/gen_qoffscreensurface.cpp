@@ -34,14 +34,14 @@ void miqt_exec_callback_QOffscreenSurface_DisconnectNotify(void*, intptr_t, QMet
 } /* extern C */
 #endif
 
-class MiqtVirtualQOffscreenSurface : public virtual QOffscreenSurface {
+class MiqtVirtualQOffscreenSurface final : public QOffscreenSurface {
 public:
 
 	MiqtVirtualQOffscreenSurface(): QOffscreenSurface() {};
 	MiqtVirtualQOffscreenSurface(QScreen* screen): QOffscreenSurface(screen) {};
 	MiqtVirtualQOffscreenSurface(QScreen* screen, QObject* parent): QOffscreenSurface(screen, parent) {};
 
-	virtual ~MiqtVirtualQOffscreenSurface() = default;
+	virtual ~MiqtVirtualQOffscreenSurface() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SurfaceType = 0;
@@ -473,11 +473,7 @@ void QOffscreenSurface_virtualbase_DisconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualQOffscreenSurface*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QOffscreenSurface_Delete(QOffscreenSurface* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQOffscreenSurface*>( self );
-	} else {
-		delete self;
-	}
+void QOffscreenSurface_Delete(QOffscreenSurface* self) {
+	delete self;
 }
 

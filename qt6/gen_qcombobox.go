@@ -1904,7 +1904,7 @@ func miqt_exec_callback_QComboBox_FocusNextPrevChild(self *C.QComboBox, cb C.int
 
 // Delete this object from C++ memory.
 func (this *QComboBox) Delete() {
-	C.QComboBox_Delete(this.h, C.bool(this.isSubclass))
+	C.QComboBox_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -90,7 +90,7 @@ void QErrorMessage_override_virtual_ContextMenuEvent(void* self, intptr_t slot);
 void QErrorMessage_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* param1);
 void QErrorMessage_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QErrorMessage_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2);
-void QErrorMessage_Delete(QErrorMessage* self, bool isSubclass);
+void QErrorMessage_Delete(QErrorMessage* self);
 
 #ifdef __cplusplus
 } /* extern C */

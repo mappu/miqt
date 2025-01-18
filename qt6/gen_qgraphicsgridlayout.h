@@ -98,7 +98,7 @@ void QGraphicsGridLayout_override_virtual_UpdateGeometry(void* self, intptr_t sl
 void QGraphicsGridLayout_virtualbase_UpdateGeometry(void* self);
 void QGraphicsGridLayout_override_virtual_WidgetEvent(void* self, intptr_t slot);
 void QGraphicsGridLayout_virtualbase_WidgetEvent(void* self, QEvent* e);
-void QGraphicsGridLayout_Delete(QGraphicsGridLayout* self, bool isSubclass);
+void QGraphicsGridLayout_Delete(QGraphicsGridLayout* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -34,11 +34,7 @@ struct miqt_array /* of struct miqt_string */  QFactoryInterface_Keys(const QFac
 	return _out;
 }
 
-void QFactoryInterface_Delete(QFactoryInterface* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QFactoryInterface*>( self );
-	} else {
-		delete self;
-	}
+void QFactoryInterface_Delete(QFactoryInterface* self) {
+	delete self;
 }
 

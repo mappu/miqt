@@ -93,13 +93,13 @@ bool miqt_exec_callback_QVideoWidget_FocusNextPrevChild(void*, intptr_t, bool);
 } /* extern C */
 #endif
 
-class MiqtVirtualQVideoWidget : public virtual QVideoWidget {
+class MiqtVirtualQVideoWidget final : public QVideoWidget {
 public:
 
 	MiqtVirtualQVideoWidget(QWidget* parent): QVideoWidget(parent) {};
 	MiqtVirtualQVideoWidget(): QVideoWidget() {};
 
-	virtual ~MiqtVirtualQVideoWidget() = default;
+	virtual ~MiqtVirtualQVideoWidget() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__MediaObject = 0;
@@ -1666,11 +1666,7 @@ bool QVideoWidget_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QVideoWidget_Delete(QVideoWidget* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQVideoWidget*>( self );
-	} else {
-		delete self;
-	}
+void QVideoWidget_Delete(QVideoWidget* self) {
+	delete self;
 }
 

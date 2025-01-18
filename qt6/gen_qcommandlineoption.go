@@ -325,7 +325,7 @@ func (this *QCommandLineOption) SetFlags(aflags QCommandLineOption__Flag) {
 
 // Delete this object from C++ memory.
 func (this *QCommandLineOption) Delete() {
-	C.QCommandLineOption_Delete(this.h, C.bool(this.isSubclass))
+	C.QCommandLineOption_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -177,7 +177,7 @@ struct miqt_string QLocale_FormattedDataSize2(const QLocale* self, long long byt
 struct miqt_string QLocale_FormattedDataSize3(const QLocale* self, long long bytes, int precision, int format);
 struct miqt_string QLocale_LanguageToCode2(uint16_t language, int codeTypes);
 struct miqt_string QLocale_QuoteString2(const QLocale* self, struct miqt_string str, int style);
-void QLocale_Delete(QLocale* self, bool isSubclass);
+void QLocale_Delete(QLocale* self);
 
 #ifdef __cplusplus
 } /* extern C */

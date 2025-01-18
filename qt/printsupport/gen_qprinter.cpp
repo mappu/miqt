@@ -30,7 +30,7 @@ int miqt_exec_callback_QPrinter_Metric(void*, intptr_t, int);
 } /* extern C */
 #endif
 
-class MiqtVirtualQPrinter : public virtual QPrinter {
+class MiqtVirtualQPrinter final : public QPrinter {
 public:
 
 	MiqtVirtualQPrinter(): QPrinter() {};
@@ -38,7 +38,7 @@ public:
 	MiqtVirtualQPrinter(QPrinter::PrinterMode mode): QPrinter(mode) {};
 	MiqtVirtualQPrinter(const QPrinterInfo& printer, QPrinter::PrinterMode mode): QPrinter(printer, mode) {};
 
-	virtual ~MiqtVirtualQPrinter() = default;
+	virtual ~MiqtVirtualQPrinter() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__DevType = 0;
@@ -653,11 +653,7 @@ int QPrinter_virtualbase_Metric(const void* self, int param1) {
 	return ( (const MiqtVirtualQPrinter*)(self) )->virtualbase_Metric(param1);
 }
 
-void QPrinter_Delete(QPrinter* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQPrinter*>( self );
-	} else {
-		delete self;
-	}
+void QPrinter_Delete(QPrinter* self) {
+	delete self;
 }
 

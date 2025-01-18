@@ -453,7 +453,7 @@ func miqt_exec_callback_QFileSystemWatcher_DisconnectNotify(self *C.QFileSystemW
 
 // Delete this object from C++ memory.
 func (this *QFileSystemWatcher) Delete() {
-	C.QFileSystemWatcher_Delete(this.h, C.bool(this.isSubclass))
+	C.QFileSystemWatcher_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

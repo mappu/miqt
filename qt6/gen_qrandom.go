@@ -198,7 +198,7 @@ func (this *QRandomGenerator) Seed1(s uint) {
 
 // Delete this object from C++ memory.
 func (this *QRandomGenerator) Delete() {
-	C.QRandomGenerator_Delete(this.h, C.bool(this.isSubclass))
+	C.QRandomGenerator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -335,7 +335,7 @@ func (this *QRandomGenerator64) OperatorAssign(param1 *QRandomGenerator64) {
 
 // Delete this object from C++ memory.
 func (this *QRandomGenerator64) Delete() {
-	C.QRandomGenerator64_Delete(this.h, C.bool(this.isSubclass))
+	C.QRandomGenerator64_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

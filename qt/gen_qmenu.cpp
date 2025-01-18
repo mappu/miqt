@@ -93,7 +93,7 @@ QVariant* miqt_exec_callback_QMenu_InputMethodQuery(void*, intptr_t, int);
 } /* extern C */
 #endif
 
-class MiqtVirtualQMenu : public virtual QMenu {
+class MiqtVirtualQMenu final : public QMenu {
 public:
 
 	MiqtVirtualQMenu(QWidget* parent): QMenu(parent) {};
@@ -101,7 +101,7 @@ public:
 	MiqtVirtualQMenu(const QString& title): QMenu(title) {};
 	MiqtVirtualQMenu(const QString& title, QWidget* parent): QMenu(title, parent) {};
 
-	virtual ~MiqtVirtualQMenu() = default;
+	virtual ~MiqtVirtualQMenu() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -1792,11 +1792,7 @@ QVariant* QMenu_virtualbase_InputMethodQuery(const void* self, int param1) {
 	return ( (const MiqtVirtualQMenu*)(self) )->virtualbase_InputMethodQuery(param1);
 }
 
-void QMenu_Delete(QMenu* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQMenu*>( self );
-	} else {
-		delete self;
-	}
+void QMenu_Delete(QMenu* self) {
+	delete self;
 }
 

@@ -28,14 +28,14 @@ void miqt_exec_callback_QTimeLine_DisconnectNotify(void*, intptr_t, QMetaMethod*
 } /* extern C */
 #endif
 
-class MiqtVirtualQTimeLine : public virtual QTimeLine {
+class MiqtVirtualQTimeLine final : public QTimeLine {
 public:
 
 	MiqtVirtualQTimeLine(): QTimeLine() {};
 	MiqtVirtualQTimeLine(int duration): QTimeLine(duration) {};
 	MiqtVirtualQTimeLine(int duration, QObject* parent): QTimeLine(duration, parent) {};
 
-	virtual ~MiqtVirtualQTimeLine() = default;
+	virtual ~MiqtVirtualQTimeLine() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__ValueForTime = 0;
@@ -509,11 +509,7 @@ void QTimeLine_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTimeLine*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QTimeLine_Delete(QTimeLine* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQTimeLine*>( self );
-	} else {
-		delete self;
-	}
+void QTimeLine_Delete(QTimeLine* self) {
+	delete self;
 }
 

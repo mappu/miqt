@@ -100,7 +100,7 @@ func (this *QSemaphore) Release1(n int) {
 
 // Delete this object from C++ memory.
 func (this *QSemaphore) Delete() {
-	C.QSemaphore_Delete(this.h, C.bool(this.isSubclass))
+	C.QSemaphore_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -199,7 +199,7 @@ func (this *QSemaphoreReleaser) Cancel() *QSemaphore {
 
 // Delete this object from C++ memory.
 func (this *QSemaphoreReleaser) Delete() {
-	C.QSemaphoreReleaser_Delete(this.h, C.bool(this.isSubclass))
+	C.QSemaphoreReleaser_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

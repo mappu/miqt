@@ -81,24 +81,16 @@ struct miqt_map /* tuple of int and int */  QAccessible_QAccessibleTextBoundaryH
 	return _out;
 }
 
-void QAccessible_Delete(QAccessible* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QAccessible*>( self );
-	} else {
-		delete self;
-	}
+void QAccessible_Delete(QAccessible* self) {
+	delete self;
 }
 
 QAccessible__State* QAccessible__State_new() {
 	return new QAccessible::State();
 }
 
-void QAccessible__State_Delete(QAccessible__State* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QAccessible::State*>( self );
-	} else {
-		delete self;
-	}
+void QAccessible__State_Delete(QAccessible__State* self) {
+	delete self;
 }
 
 void QAccessible__ActivationObserver_AccessibilityActiveChanged(QAccessible__ActivationObserver* self, bool active) {
@@ -109,11 +101,7 @@ void QAccessible__ActivationObserver_OperatorAssign(QAccessible__ActivationObser
 	self->operator=(*param1);
 }
 
-void QAccessible__ActivationObserver_Delete(QAccessible__ActivationObserver* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QAccessible::ActivationObserver*>( self );
-	} else {
-		delete self;
-	}
+void QAccessible__ActivationObserver_Delete(QAccessible__ActivationObserver* self) {
+	delete self;
 }
 

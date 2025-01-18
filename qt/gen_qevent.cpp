@@ -106,12 +106,8 @@ void QInputEvent_SetTimestamp(QInputEvent* self, unsigned long atimestamp) {
 	self->setTimestamp(static_cast<ulong>(atimestamp));
 }
 
-void QInputEvent_Delete(QInputEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QInputEvent*>( self );
-	} else {
-		delete self;
-	}
+void QInputEvent_Delete(QInputEvent* self) {
+	delete self;
 }
 
 QEnterEvent* QEnterEvent_new(QPointF* localPos, QPointF* windowPos, QPointF* screenPos) {
@@ -168,12 +164,8 @@ QPointF* QEnterEvent_ScreenPos(const QEnterEvent* self) {
 	return const_cast<QPointF*>(&_ret);
 }
 
-void QEnterEvent_Delete(QEnterEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QEnterEvent*>( self );
-	} else {
-		delete self;
-	}
+void QEnterEvent_Delete(QEnterEvent* self) {
+	delete self;
 }
 
 QMouseEvent* QMouseEvent_new(int typeVal, QPointF* localPos, int button, int buttons, int modifiers) {
@@ -266,12 +258,8 @@ int QMouseEvent_Flags(const QMouseEvent* self) {
 	return static_cast<int>(_ret);
 }
 
-void QMouseEvent_Delete(QMouseEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMouseEvent*>( self );
-	} else {
-		delete self;
-	}
+void QMouseEvent_Delete(QMouseEvent* self) {
+	delete self;
 }
 
 QHoverEvent* QHoverEvent_new(int typeVal, QPointF* pos, QPointF* oldPos) {
@@ -310,12 +298,8 @@ QPointF* QHoverEvent_OldPosF(const QHoverEvent* self) {
 	return const_cast<QPointF*>(&_ret);
 }
 
-void QHoverEvent_Delete(QHoverEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QHoverEvent*>( self );
-	} else {
-		delete self;
-	}
+void QHoverEvent_Delete(QHoverEvent* self) {
+	delete self;
 }
 
 QWheelEvent* QWheelEvent_new(QPointF* pos, int delta, int buttons, int modifiers) {
@@ -446,12 +430,8 @@ int QWheelEvent_Source(const QWheelEvent* self) {
 	return static_cast<int>(_ret);
 }
 
-void QWheelEvent_Delete(QWheelEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWheelEvent*>( self );
-	} else {
-		delete self;
-	}
+void QWheelEvent_Delete(QWheelEvent* self) {
+	delete self;
 }
 
 QTabletEvent* QTabletEvent_new(int t, QPointF* pos, QPointF* globalPos, int device, int pointerType, double pressure, int xTilt, int yTilt, double tangentialPressure, double rotation, int z, int keyState, long long uniqueID) {
@@ -573,12 +553,8 @@ int QTabletEvent_Buttons(const QTabletEvent* self) {
 	return static_cast<int>(_ret);
 }
 
-void QTabletEvent_Delete(QTabletEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTabletEvent*>( self );
-	} else {
-		delete self;
-	}
+void QTabletEvent_Delete(QTabletEvent* self) {
+	delete self;
 }
 
 QNativeGestureEvent* QNativeGestureEvent_new(int typeVal, QPointF* localPos, QPointF* windowPos, QPointF* screenPos, double value, unsigned long sequenceId, unsigned long long intArgument) {
@@ -637,12 +613,8 @@ QTouchDevice* QNativeGestureEvent_Device(const QNativeGestureEvent* self) {
 	return (QTouchDevice*) self->device();
 }
 
-void QNativeGestureEvent_Delete(QNativeGestureEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QNativeGestureEvent*>( self );
-	} else {
-		delete self;
-	}
+void QNativeGestureEvent_Delete(QNativeGestureEvent* self) {
+	delete self;
 }
 
 QKeyEvent* QKeyEvent_new(int typeVal, int key, int modifiers) {
@@ -738,12 +710,8 @@ unsigned int QKeyEvent_NativeModifiers(const QKeyEvent* self) {
 	return static_cast<unsigned int>(_ret);
 }
 
-void QKeyEvent_Delete(QKeyEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QKeyEvent*>( self );
-	} else {
-		delete self;
-	}
+void QKeyEvent_Delete(QKeyEvent* self) {
+	delete self;
 }
 
 QFocusEvent* QFocusEvent_new(int typeVal) {
@@ -775,12 +743,8 @@ int QFocusEvent_Reason(const QFocusEvent* self) {
 	return static_cast<int>(_ret);
 }
 
-void QFocusEvent_Delete(QFocusEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QFocusEvent*>( self );
-	} else {
-		delete self;
-	}
+void QFocusEvent_Delete(QFocusEvent* self) {
+	delete self;
 }
 
 QPaintEvent* QPaintEvent_new(QRegion* paintRegion) {
@@ -811,12 +775,8 @@ QRegion* QPaintEvent_Region(const QPaintEvent* self) {
 	return const_cast<QRegion*>(&_ret);
 }
 
-void QPaintEvent_Delete(QPaintEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPaintEvent*>( self );
-	} else {
-		delete self;
-	}
+void QPaintEvent_Delete(QPaintEvent* self) {
+	delete self;
 }
 
 QMoveEvent* QMoveEvent_new(QPoint* pos, QPoint* oldPos) {
@@ -843,12 +803,8 @@ QPoint* QMoveEvent_OldPos(const QMoveEvent* self) {
 	return const_cast<QPoint*>(&_ret);
 }
 
-void QMoveEvent_Delete(QMoveEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMoveEvent*>( self );
-	} else {
-		delete self;
-	}
+void QMoveEvent_Delete(QMoveEvent* self) {
+	delete self;
 }
 
 QExposeEvent* QExposeEvent_new(QRegion* rgn) {
@@ -869,12 +825,8 @@ QRegion* QExposeEvent_Region(const QExposeEvent* self) {
 	return const_cast<QRegion*>(&_ret);
 }
 
-void QExposeEvent_Delete(QExposeEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QExposeEvent*>( self );
-	} else {
-		delete self;
-	}
+void QExposeEvent_Delete(QExposeEvent* self) {
+	delete self;
 }
 
 QPlatformSurfaceEvent* QPlatformSurfaceEvent_new(int surfaceEventType) {
@@ -894,12 +846,8 @@ int QPlatformSurfaceEvent_SurfaceEventType(const QPlatformSurfaceEvent* self) {
 	return static_cast<int>(_ret);
 }
 
-void QPlatformSurfaceEvent_Delete(QPlatformSurfaceEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPlatformSurfaceEvent*>( self );
-	} else {
-		delete self;
-	}
+void QPlatformSurfaceEvent_Delete(QPlatformSurfaceEvent* self) {
+	delete self;
 }
 
 QResizeEvent* QResizeEvent_new(QSize* size, QSize* oldSize) {
@@ -926,12 +874,8 @@ QSize* QResizeEvent_OldSize(const QResizeEvent* self) {
 	return const_cast<QSize*>(&_ret);
 }
 
-void QResizeEvent_Delete(QResizeEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QResizeEvent*>( self );
-	} else {
-		delete self;
-	}
+void QResizeEvent_Delete(QResizeEvent* self) {
+	delete self;
 }
 
 QCloseEvent* QCloseEvent_new() {
@@ -950,12 +894,8 @@ void QCloseEvent_OperatorAssign(QCloseEvent* self, QCloseEvent* param1) {
 	self->operator=(*param1);
 }
 
-void QCloseEvent_Delete(QCloseEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCloseEvent*>( self );
-	} else {
-		delete self;
-	}
+void QCloseEvent_Delete(QCloseEvent* self) {
+	delete self;
 }
 
 QIconDragEvent* QIconDragEvent_new() {
@@ -974,12 +914,8 @@ void QIconDragEvent_OperatorAssign(QIconDragEvent* self, QIconDragEvent* param1)
 	self->operator=(*param1);
 }
 
-void QIconDragEvent_Delete(QIconDragEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QIconDragEvent*>( self );
-	} else {
-		delete self;
-	}
+void QIconDragEvent_Delete(QIconDragEvent* self) {
+	delete self;
 }
 
 QShowEvent* QShowEvent_new() {
@@ -998,12 +934,8 @@ void QShowEvent_OperatorAssign(QShowEvent* self, QShowEvent* param1) {
 	self->operator=(*param1);
 }
 
-void QShowEvent_Delete(QShowEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QShowEvent*>( self );
-	} else {
-		delete self;
-	}
+void QShowEvent_Delete(QShowEvent* self) {
+	delete self;
 }
 
 QHideEvent* QHideEvent_new() {
@@ -1022,12 +954,8 @@ void QHideEvent_OperatorAssign(QHideEvent* self, QHideEvent* param1) {
 	self->operator=(*param1);
 }
 
-void QHideEvent_Delete(QHideEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QHideEvent*>( self );
-	} else {
-		delete self;
-	}
+void QHideEvent_Delete(QHideEvent* self) {
+	delete self;
 }
 
 QContextMenuEvent* QContextMenuEvent_new(int reason, QPoint* pos, QPoint* globalPos, int modifiers) {
@@ -1083,12 +1011,8 @@ int QContextMenuEvent_Reason(const QContextMenuEvent* self) {
 	return static_cast<int>(_ret);
 }
 
-void QContextMenuEvent_Delete(QContextMenuEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QContextMenuEvent*>( self );
-	} else {
-		delete self;
-	}
+void QContextMenuEvent_Delete(QContextMenuEvent* self) {
+	delete self;
 }
 
 QInputMethodEvent* QInputMethodEvent_new() {
@@ -1172,12 +1096,8 @@ void QInputMethodEvent_SetCommitString3(QInputMethodEvent* self, struct miqt_str
 	self->setCommitString(commitString_QString, static_cast<int>(replaceFrom), static_cast<int>(replaceLength));
 }
 
-void QInputMethodEvent_Delete(QInputMethodEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QInputMethodEvent*>( self );
-	} else {
-		delete self;
-	}
+void QInputMethodEvent_Delete(QInputMethodEvent* self) {
+	delete self;
 }
 
 QInputMethodQueryEvent* QInputMethodQueryEvent_new(int queries) {
@@ -1205,12 +1125,8 @@ QVariant* QInputMethodQueryEvent_Value(const QInputMethodQueryEvent* self, int q
 	return new QVariant(self->value(static_cast<Qt::InputMethodQuery>(query)));
 }
 
-void QInputMethodQueryEvent_Delete(QInputMethodQueryEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QInputMethodQueryEvent*>( self );
-	} else {
-		delete self;
-	}
+void QInputMethodQueryEvent_Delete(QInputMethodQueryEvent* self) {
+	delete self;
 }
 
 QDropEvent* QDropEvent_new(QPointF* pos, int actions, QMimeData* data, int buttons, int modifiers) {
@@ -1280,12 +1196,8 @@ QMimeData* QDropEvent_MimeData(const QDropEvent* self) {
 	return (QMimeData*) self->mimeData();
 }
 
-void QDropEvent_Delete(QDropEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QDropEvent*>( self );
-	} else {
-		delete self;
-	}
+void QDropEvent_Delete(QDropEvent* self) {
+	delete self;
 }
 
 QDragMoveEvent* QDragMoveEvent_new(QPoint* pos, int actions, QMimeData* data, int buttons, int modifiers) {
@@ -1324,12 +1236,8 @@ void QDragMoveEvent_IgnoreWithQRect(QDragMoveEvent* self, QRect* r) {
 	self->ignore(*r);
 }
 
-void QDragMoveEvent_Delete(QDragMoveEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QDragMoveEvent*>( self );
-	} else {
-		delete self;
-	}
+void QDragMoveEvent_Delete(QDragMoveEvent* self) {
+	delete self;
 }
 
 QDragEnterEvent* QDragEnterEvent_new(QPoint* pos, int actions, QMimeData* data, int buttons, int modifiers) {
@@ -1348,12 +1256,8 @@ void QDragEnterEvent_OperatorAssign(QDragEnterEvent* self, QDragEnterEvent* para
 	self->operator=(*param1);
 }
 
-void QDragEnterEvent_Delete(QDragEnterEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QDragEnterEvent*>( self );
-	} else {
-		delete self;
-	}
+void QDragEnterEvent_Delete(QDragEnterEvent* self) {
+	delete self;
 }
 
 QDragLeaveEvent* QDragLeaveEvent_new() {
@@ -1372,12 +1276,8 @@ void QDragLeaveEvent_OperatorAssign(QDragLeaveEvent* self, QDragLeaveEvent* para
 	self->operator=(*param1);
 }
 
-void QDragLeaveEvent_Delete(QDragLeaveEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QDragLeaveEvent*>( self );
-	} else {
-		delete self;
-	}
+void QDragLeaveEvent_Delete(QDragLeaveEvent* self) {
+	delete self;
 }
 
 QHelpEvent* QHelpEvent_new(int typeVal, QPoint* pos, QPoint* globalPos) {
@@ -1420,12 +1320,8 @@ QPoint* QHelpEvent_GlobalPos(const QHelpEvent* self) {
 	return const_cast<QPoint*>(&_ret);
 }
 
-void QHelpEvent_Delete(QHelpEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QHelpEvent*>( self );
-	} else {
-		delete self;
-	}
+void QHelpEvent_Delete(QHelpEvent* self) {
+	delete self;
 }
 
 QStatusTipEvent* QStatusTipEvent_new(struct miqt_string tip) {
@@ -1452,12 +1348,8 @@ struct miqt_string QStatusTipEvent_Tip(const QStatusTipEvent* self) {
 	return _ms;
 }
 
-void QStatusTipEvent_Delete(QStatusTipEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QStatusTipEvent*>( self );
-	} else {
-		delete self;
-	}
+void QStatusTipEvent_Delete(QStatusTipEvent* self) {
+	delete self;
 }
 
 QWhatsThisClickedEvent* QWhatsThisClickedEvent_new(struct miqt_string href) {
@@ -1484,12 +1376,8 @@ struct miqt_string QWhatsThisClickedEvent_Href(const QWhatsThisClickedEvent* sel
 	return _ms;
 }
 
-void QWhatsThisClickedEvent_Delete(QWhatsThisClickedEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWhatsThisClickedEvent*>( self );
-	} else {
-		delete self;
-	}
+void QWhatsThisClickedEvent_Delete(QWhatsThisClickedEvent* self) {
+	delete self;
 }
 
 QActionEvent* QActionEvent_new(int typeVal, QAction* action) {
@@ -1520,12 +1408,8 @@ void QActionEvent_OperatorAssign(QActionEvent* self, QActionEvent* param1) {
 	self->operator=(*param1);
 }
 
-void QActionEvent_Delete(QActionEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QActionEvent*>( self );
-	} else {
-		delete self;
-	}
+void QActionEvent_Delete(QActionEvent* self) {
+	delete self;
 }
 
 QFileOpenEvent* QFileOpenEvent_new(struct miqt_string file) {
@@ -1564,12 +1448,8 @@ bool QFileOpenEvent_OpenFile(const QFileOpenEvent* self, QFile* file, int flags)
 	return self->openFile(*file, static_cast<QIODevice::OpenMode>(flags));
 }
 
-void QFileOpenEvent_Delete(QFileOpenEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QFileOpenEvent*>( self );
-	} else {
-		delete self;
-	}
+void QFileOpenEvent_Delete(QFileOpenEvent* self) {
+	delete self;
 }
 
 QToolBarChangeEvent* QToolBarChangeEvent_new(bool t) {
@@ -1588,12 +1468,8 @@ bool QToolBarChangeEvent_Toggle(const QToolBarChangeEvent* self) {
 	return self->toggle();
 }
 
-void QToolBarChangeEvent_Delete(QToolBarChangeEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QToolBarChangeEvent*>( self );
-	} else {
-		delete self;
-	}
+void QToolBarChangeEvent_Delete(QToolBarChangeEvent* self) {
+	delete self;
 }
 
 QShortcutEvent* QShortcutEvent_new(QKeySequence* key, int id) {
@@ -1626,12 +1502,8 @@ bool QShortcutEvent_IsAmbiguous(const QShortcutEvent* self) {
 	return self->isAmbiguous();
 }
 
-void QShortcutEvent_Delete(QShortcutEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QShortcutEvent*>( self );
-	} else {
-		delete self;
-	}
+void QShortcutEvent_Delete(QShortcutEvent* self) {
+	delete self;
 }
 
 QWindowStateChangeEvent* QWindowStateChangeEvent_new(int aOldState) {
@@ -1659,12 +1531,8 @@ bool QWindowStateChangeEvent_IsOverride(const QWindowStateChangeEvent* self) {
 	return self->isOverride();
 }
 
-void QWindowStateChangeEvent_Delete(QWindowStateChangeEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWindowStateChangeEvent*>( self );
-	} else {
-		delete self;
-	}
+void QWindowStateChangeEvent_Delete(QWindowStateChangeEvent* self) {
+	delete self;
 }
 
 QPointingDeviceUniqueId* QPointingDeviceUniqueId_new() {
@@ -1688,12 +1556,8 @@ long long QPointingDeviceUniqueId_NumericId(const QPointingDeviceUniqueId* self)
 	return static_cast<long long>(_ret);
 }
 
-void QPointingDeviceUniqueId_Delete(QPointingDeviceUniqueId* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPointingDeviceUniqueId*>( self );
-	} else {
-		delete self;
-	}
+void QPointingDeviceUniqueId_Delete(QPointingDeviceUniqueId* self) {
+	delete self;
 }
 
 QTouchEvent* QTouchEvent_new(int eventType) {
@@ -1786,12 +1650,8 @@ void QTouchEvent_SetDevice(QTouchEvent* self, QTouchDevice* adevice) {
 	self->setDevice(adevice);
 }
 
-void QTouchEvent_Delete(QTouchEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTouchEvent*>( self );
-	} else {
-		delete self;
-	}
+void QTouchEvent_Delete(QTouchEvent* self) {
+	delete self;
 }
 
 QScrollPrepareEvent* QScrollPrepareEvent_new(QPointF* startPos) {
@@ -1834,12 +1694,8 @@ void QScrollPrepareEvent_SetContentPos(QScrollPrepareEvent* self, QPointF* pos) 
 	self->setContentPos(*pos);
 }
 
-void QScrollPrepareEvent_Delete(QScrollPrepareEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QScrollPrepareEvent*>( self );
-	} else {
-		delete self;
-	}
+void QScrollPrepareEvent_Delete(QScrollPrepareEvent* self) {
+	delete self;
 }
 
 QScrollEvent* QScrollEvent_new(QPointF* contentPos, QPointF* overshoot, int scrollState) {
@@ -1867,12 +1723,8 @@ int QScrollEvent_ScrollState(const QScrollEvent* self) {
 	return static_cast<int>(_ret);
 }
 
-void QScrollEvent_Delete(QScrollEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QScrollEvent*>( self );
-	} else {
-		delete self;
-	}
+void QScrollEvent_Delete(QScrollEvent* self) {
+	delete self;
 }
 
 QScreenOrientationChangeEvent* QScreenOrientationChangeEvent_new(QScreen* screen, int orientation) {
@@ -1896,12 +1748,8 @@ int QScreenOrientationChangeEvent_Orientation(const QScreenOrientationChangeEven
 	return static_cast<int>(_ret);
 }
 
-void QScreenOrientationChangeEvent_Delete(QScreenOrientationChangeEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QScreenOrientationChangeEvent*>( self );
-	} else {
-		delete self;
-	}
+void QScreenOrientationChangeEvent_Delete(QScreenOrientationChangeEvent* self) {
+	delete self;
 }
 
 QApplicationStateChangeEvent* QApplicationStateChangeEvent_new(int state) {
@@ -1921,12 +1769,8 @@ int QApplicationStateChangeEvent_ApplicationState(const QApplicationStateChangeE
 	return static_cast<int>(_ret);
 }
 
-void QApplicationStateChangeEvent_Delete(QApplicationStateChangeEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QApplicationStateChangeEvent*>( self );
-	} else {
-		delete self;
-	}
+void QApplicationStateChangeEvent_Delete(QApplicationStateChangeEvent* self) {
+	delete self;
 }
 
 QInputMethodEvent__Attribute* QInputMethodEvent__Attribute_new(int typ, int s, int l, QVariant* val) {
@@ -1945,12 +1789,8 @@ void QInputMethodEvent__Attribute_OperatorAssign(QInputMethodEvent__Attribute* s
 	self->operator=(*param1);
 }
 
-void QInputMethodEvent__Attribute_Delete(QInputMethodEvent__Attribute* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QInputMethodEvent::Attribute*>( self );
-	} else {
-		delete self;
-	}
+void QInputMethodEvent__Attribute_Delete(QInputMethodEvent__Attribute* self) {
+	delete self;
 }
 
 QTouchEvent__TouchPoint* QTouchEvent__TouchPoint_new() {
@@ -2184,11 +2024,7 @@ void QTouchEvent__TouchPoint_SetRawScreenPositions(QTouchEvent__TouchPoint* self
 	self->setRawScreenPositions(positions_QList);
 }
 
-void QTouchEvent__TouchPoint_Delete(QTouchEvent__TouchPoint* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTouchEvent::TouchPoint*>( self );
-	} else {
-		delete self;
-	}
+void QTouchEvent__TouchPoint_Delete(QTouchEvent__TouchPoint* self) {
+	delete self;
 }
 

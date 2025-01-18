@@ -33,13 +33,13 @@ void miqt_exec_callback_QAbstractTransition_DisconnectNotify(void*, intptr_t, QM
 } /* extern C */
 #endif
 
-class MiqtVirtualQAbstractTransition : public virtual QAbstractTransition {
+class MiqtVirtualQAbstractTransition final : public QAbstractTransition {
 public:
 
 	MiqtVirtualQAbstractTransition(): QAbstractTransition() {};
 	MiqtVirtualQAbstractTransition(QState* sourceState): QAbstractTransition(sourceState) {};
 
-	virtual ~MiqtVirtualQAbstractTransition() = default;
+	virtual ~MiqtVirtualQAbstractTransition() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__EventTest = 0;
@@ -465,11 +465,7 @@ void QAbstractTransition_virtualbase_DisconnectNotify(void* self, QMetaMethod* s
 	( (MiqtVirtualQAbstractTransition*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QAbstractTransition_Delete(QAbstractTransition* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractTransition*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractTransition_Delete(QAbstractTransition* self) {
+	delete self;
 }
 

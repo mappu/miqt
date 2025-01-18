@@ -152,11 +152,7 @@ unsigned char* QFileDevice_Map3(QFileDevice* self, long long offset, long long s
 	return static_cast<unsigned char*>(_ret);
 }
 
-void QFileDevice_Delete(QFileDevice* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QFileDevice*>( self );
-	} else {
-		delete self;
-	}
+void QFileDevice_Delete(QFileDevice* self) {
+	delete self;
 }
 

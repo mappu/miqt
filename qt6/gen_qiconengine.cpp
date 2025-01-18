@@ -34,12 +34,12 @@ void miqt_exec_callback_QIconEngine_VirtualHook(void*, intptr_t, int, void*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQIconEngine : public virtual QIconEngine {
+class MiqtVirtualQIconEngine final : public QIconEngine {
 public:
 
 	MiqtVirtualQIconEngine(): QIconEngine() {};
 
-	virtual ~MiqtVirtualQIconEngine() = default;
+	virtual ~MiqtVirtualQIconEngine() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Paint = 0;
@@ -625,12 +625,8 @@ void QIconEngine_virtualbase_VirtualHook(void* self, int id, void* data) {
 	( (MiqtVirtualQIconEngine*)(self) )->virtualbase_VirtualHook(id, data);
 }
 
-void QIconEngine_Delete(QIconEngine* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQIconEngine*>( self );
-	} else {
-		delete self;
-	}
+void QIconEngine_Delete(QIconEngine* self) {
+	delete self;
 }
 
 QIconEngine__ScaledPixmapArgument* QIconEngine__ScaledPixmapArgument_new(QIconEngine__ScaledPixmapArgument* param1) {
@@ -641,11 +637,7 @@ void QIconEngine__ScaledPixmapArgument_OperatorAssign(QIconEngine__ScaledPixmapA
 	self->operator=(*param1);
 }
 
-void QIconEngine__ScaledPixmapArgument_Delete(QIconEngine__ScaledPixmapArgument* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QIconEngine::ScaledPixmapArgument*>( self );
-	} else {
-		delete self;
-	}
+void QIconEngine__ScaledPixmapArgument_Delete(QIconEngine__ScaledPixmapArgument* self) {
+	delete self;
 }
 

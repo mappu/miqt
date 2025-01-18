@@ -459,7 +459,7 @@ func QDate_FromString22(s string, f DateFormat) *QDate {
 
 // Delete this object from C++ memory.
 func (this *QDate) Delete() {
-	C.QDate_Delete(this.h, C.bool(this.isSubclass))
+	C.QDate_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -717,7 +717,7 @@ func QTime_IsValid4(h int, m int, s int, ms int) bool {
 
 // Delete this object from C++ memory.
 func (this *QTime) Delete() {
-	C.QTime_Delete(this.h, C.bool(this.isSubclass))
+	C.QTime_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1189,7 +1189,7 @@ func QDateTime_FromSecsSinceEpoch3(secs int64, spe TimeSpec, offsetFromUtc int) 
 
 // Delete this object from C++ memory.
 func (this *QDateTime) Delete() {
-	C.QDateTime_Delete(this.h, C.bool(this.isSubclass))
+	C.QDateTime_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

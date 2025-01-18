@@ -307,7 +307,7 @@ func QVideoFrame_ImageFormatFromPixelFormat(format QVideoFrame__PixelFormat) qt.
 
 // Delete this object from C++ memory.
 func (this *QVideoFrame) Delete() {
-	C.QVideoFrame_Delete(this.h, C.bool(this.isSubclass))
+	C.QVideoFrame_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

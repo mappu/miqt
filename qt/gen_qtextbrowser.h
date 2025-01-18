@@ -195,7 +195,7 @@ void QTextBrowser_override_virtual_ScrollContentsBy(void* self, intptr_t slot);
 void QTextBrowser_virtualbase_ScrollContentsBy(void* self, int dx, int dy);
 void QTextBrowser_override_virtual_DoSetTextCursor(void* self, intptr_t slot);
 void QTextBrowser_virtualbase_DoSetTextCursor(void* self, QTextCursor* cursor);
-void QTextBrowser_Delete(QTextBrowser* self, bool isSubclass);
+void QTextBrowser_Delete(QTextBrowser* self);
 
 #ifdef __cplusplus
 } /* extern C */

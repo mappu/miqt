@@ -218,7 +218,7 @@ func miqt_exec_callback_QFileIconProvider_Options(self *C.QFileIconProvider, cb 
 
 // Delete this object from C++ memory.
 func (this *QFileIconProvider) Delete() {
-	C.QFileIconProvider_Delete(this.h, C.bool(this.isSubclass))
+	C.QFileIconProvider_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

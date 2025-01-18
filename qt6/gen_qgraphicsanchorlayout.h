@@ -47,7 +47,7 @@ void QGraphicsAnchor_SetSizePolicy(QGraphicsAnchor* self, int policy);
 int QGraphicsAnchor_SizePolicy(const QGraphicsAnchor* self);
 struct miqt_string QGraphicsAnchor_Tr2(const char* s, const char* c);
 struct miqt_string QGraphicsAnchor_Tr3(const char* s, const char* c, int n);
-void QGraphicsAnchor_Delete(QGraphicsAnchor* self, bool isSubclass);
+void QGraphicsAnchor_Delete(QGraphicsAnchor* self);
 
 QGraphicsAnchorLayout* QGraphicsAnchorLayout_new();
 QGraphicsAnchorLayout* QGraphicsAnchorLayout_new2(QGraphicsLayoutItem* parent);
@@ -86,7 +86,7 @@ void QGraphicsAnchorLayout_override_virtual_UpdateGeometry(void* self, intptr_t 
 void QGraphicsAnchorLayout_virtualbase_UpdateGeometry(void* self);
 void QGraphicsAnchorLayout_override_virtual_WidgetEvent(void* self, intptr_t slot);
 void QGraphicsAnchorLayout_virtualbase_WidgetEvent(void* self, QEvent* e);
-void QGraphicsAnchorLayout_Delete(QGraphicsAnchorLayout* self, bool isSubclass);
+void QGraphicsAnchorLayout_Delete(QGraphicsAnchorLayout* self);
 
 #ifdef __cplusplus
 } /* extern C */

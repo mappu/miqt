@@ -332,7 +332,7 @@ func miqt_exec_callback_QAccessiblePlugin_DisconnectNotify(self *C.QAccessiblePl
 
 // Delete this object from C++ memory.
 func (this *QAccessiblePlugin) Delete() {
-	C.QAccessiblePlugin_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessiblePlugin_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

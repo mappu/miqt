@@ -75,7 +75,7 @@ QJsonObject__const_iterator* QJsonObject_FindWithKey(const QJsonObject* self, st
 QJsonObject__const_iterator* QJsonObject_ConstFind(const QJsonObject* self, struct miqt_string key);
 QJsonObject__iterator* QJsonObject_Insert(QJsonObject* self, struct miqt_string key, QJsonValue* value);
 bool QJsonObject_Empty(const QJsonObject* self);
-void QJsonObject_Delete(QJsonObject* self, bool isSubclass);
+void QJsonObject_Delete(QJsonObject* self);
 
 QJsonObject__iterator* QJsonObject__iterator_new();
 QJsonObject__iterator* QJsonObject__iterator_new2(QJsonObject* obj, int index);
@@ -106,7 +106,7 @@ bool QJsonObject__iterator_OperatorLesserWithOther(const QJsonObject__iterator* 
 bool QJsonObject__iterator_OperatorLesserOrEqualWithOther(const QJsonObject__iterator* self, QJsonObject__const_iterator* other);
 bool QJsonObject__iterator_OperatorGreaterWithOther(const QJsonObject__iterator* self, QJsonObject__const_iterator* other);
 bool QJsonObject__iterator_OperatorGreaterOrEqualWithOther(const QJsonObject__iterator* self, QJsonObject__const_iterator* other);
-void QJsonObject__iterator_Delete(QJsonObject__iterator* self, bool isSubclass);
+void QJsonObject__iterator_Delete(QJsonObject__iterator* self);
 
 QJsonObject__const_iterator* QJsonObject__const_iterator_new();
 QJsonObject__const_iterator* QJsonObject__const_iterator_new2(QJsonObject* obj, int index);
@@ -138,7 +138,7 @@ bool QJsonObject__const_iterator_OperatorLesserWithOther(const QJsonObject__cons
 bool QJsonObject__const_iterator_OperatorLesserOrEqualWithOther(const QJsonObject__const_iterator* self, QJsonObject__iterator* other);
 bool QJsonObject__const_iterator_OperatorGreaterWithOther(const QJsonObject__const_iterator* self, QJsonObject__iterator* other);
 bool QJsonObject__const_iterator_OperatorGreaterOrEqualWithOther(const QJsonObject__const_iterator* self, QJsonObject__iterator* other);
-void QJsonObject__const_iterator_Delete(QJsonObject__const_iterator* self, bool isSubclass);
+void QJsonObject__const_iterator_Delete(QJsonObject__const_iterator* self);
 
 #ifdef __cplusplus
 } /* extern C */

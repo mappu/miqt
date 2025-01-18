@@ -102,7 +102,7 @@ func (this *QScriptString) ToArrayIndex1(ok *bool) uint {
 
 // Delete this object from C++ memory.
 func (this *QScriptString) Delete() {
-	C.QScriptString_Delete(this.h, C.bool(this.isSubclass))
+	C.QScriptString_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

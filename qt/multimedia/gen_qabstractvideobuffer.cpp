@@ -22,12 +22,12 @@ QVariant* miqt_exec_callback_QAbstractPlanarVideoBuffer_Handle(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQAbstractVideoBuffer : public virtual QAbstractVideoBuffer {
+class MiqtVirtualQAbstractVideoBuffer final : public QAbstractVideoBuffer {
 public:
 
 	MiqtVirtualQAbstractVideoBuffer(QAbstractVideoBuffer::HandleType typeVal): QAbstractVideoBuffer(typeVal) {};
 
-	virtual ~MiqtVirtualQAbstractVideoBuffer() = default;
+	virtual ~MiqtVirtualQAbstractVideoBuffer() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Release = 0;
@@ -184,20 +184,16 @@ QVariant* QAbstractVideoBuffer_virtualbase_Handle(const void* self) {
 	return ( (const MiqtVirtualQAbstractVideoBuffer*)(self) )->virtualbase_Handle();
 }
 
-void QAbstractVideoBuffer_Delete(QAbstractVideoBuffer* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractVideoBuffer*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractVideoBuffer_Delete(QAbstractVideoBuffer* self) {
+	delete self;
 }
 
-class MiqtVirtualQAbstractPlanarVideoBuffer : public virtual QAbstractPlanarVideoBuffer {
+class MiqtVirtualQAbstractPlanarVideoBuffer final : public QAbstractPlanarVideoBuffer {
 public:
 
 	MiqtVirtualQAbstractPlanarVideoBuffer(QAbstractVideoBuffer::HandleType typeVal): QAbstractPlanarVideoBuffer(typeVal) {};
 
-	virtual ~MiqtVirtualQAbstractPlanarVideoBuffer() = default;
+	virtual ~MiqtVirtualQAbstractPlanarVideoBuffer() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Map = 0;
@@ -348,11 +344,7 @@ QVariant* QAbstractPlanarVideoBuffer_virtualbase_Handle(const void* self) {
 	return ( (const MiqtVirtualQAbstractPlanarVideoBuffer*)(self) )->virtualbase_Handle();
 }
 
-void QAbstractPlanarVideoBuffer_Delete(QAbstractPlanarVideoBuffer* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractPlanarVideoBuffer*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractPlanarVideoBuffer_Delete(QAbstractPlanarVideoBuffer* self) {
+	delete self;
 }
 

@@ -190,7 +190,7 @@ void QKeySequenceEdit_override_virtual_InputMethodQuery(void* self, intptr_t slo
 QVariant* QKeySequenceEdit_virtualbase_InputMethodQuery(const void* self, int param1);
 void QKeySequenceEdit_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QKeySequenceEdit_virtualbase_FocusNextPrevChild(void* self, bool next);
-void QKeySequenceEdit_Delete(QKeySequenceEdit* self, bool isSubclass);
+void QKeySequenceEdit_Delete(QKeySequenceEdit* self);
 
 #ifdef __cplusplus
 } /* extern C */

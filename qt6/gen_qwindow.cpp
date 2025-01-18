@@ -95,14 +95,14 @@ void miqt_exec_callback_QWindow_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQWindow : public virtual QWindow {
+class MiqtVirtualQWindow final : public QWindow {
 public:
 
 	MiqtVirtualQWindow(): QWindow() {};
 	MiqtVirtualQWindow(QWindow* parent): QWindow(parent) {};
 	MiqtVirtualQWindow(QScreen* screen): QWindow(screen) {};
 
-	virtual ~MiqtVirtualQWindow() = default;
+	virtual ~MiqtVirtualQWindow() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SurfaceType = 0;
@@ -1854,11 +1854,7 @@ void QWindow_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWindow*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QWindow_Delete(QWindow* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQWindow*>( self );
-	} else {
-		delete self;
-	}
+void QWindow_Delete(QWindow* self) {
+	delete self;
 }
 

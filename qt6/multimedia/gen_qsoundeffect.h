@@ -95,7 +95,7 @@ void QSoundEffect_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QSoundEffect_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QSoundEffect_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QSoundEffect_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QSoundEffect_Delete(QSoundEffect* self, bool isSubclass);
+void QSoundEffect_Delete(QSoundEffect* self);
 
 #ifdef __cplusplus
 } /* extern C */

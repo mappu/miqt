@@ -24,7 +24,7 @@ void miqt_exec_callback_QGraphicsLinearLayout_WidgetEvent(void*, intptr_t, QEven
 } /* extern C */
 #endif
 
-class MiqtVirtualQGraphicsLinearLayout : public virtual QGraphicsLinearLayout {
+class MiqtVirtualQGraphicsLinearLayout final : public QGraphicsLinearLayout {
 public:
 
 	MiqtVirtualQGraphicsLinearLayout(): QGraphicsLinearLayout() {};
@@ -32,7 +32,7 @@ public:
 	MiqtVirtualQGraphicsLinearLayout(QGraphicsLayoutItem* parent): QGraphicsLinearLayout(parent) {};
 	MiqtVirtualQGraphicsLinearLayout(Qt::Orientation orientation, QGraphicsLayoutItem* parent): QGraphicsLinearLayout(orientation, parent) {};
 
-	virtual ~MiqtVirtualQGraphicsLinearLayout() = default;
+	virtual ~MiqtVirtualQGraphicsLinearLayout() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__RemoveAt = 0;
@@ -455,11 +455,7 @@ void QGraphicsLinearLayout_virtualbase_WidgetEvent(void* self, QEvent* e) {
 	( (MiqtVirtualQGraphicsLinearLayout*)(self) )->virtualbase_WidgetEvent(e);
 }
 
-void QGraphicsLinearLayout_Delete(QGraphicsLinearLayout* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsLinearLayout*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsLinearLayout_Delete(QGraphicsLinearLayout* self) {
+	delete self;
 }
 

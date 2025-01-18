@@ -172,7 +172,7 @@ func (this *QRgba64) OperatorAssign(_rgba uint64) {
 
 // Delete this object from C++ memory.
 func (this *QRgba64) Delete() {
-	C.QRgba64_Delete(this.h, C.bool(this.isSubclass))
+	C.QRgba64_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

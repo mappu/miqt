@@ -194,7 +194,7 @@ void QWizard_override_virtual_ContextMenuEvent(void* self, intptr_t slot);
 void QWizard_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* param1);
 void QWizard_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QWizard_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2);
-void QWizard_Delete(QWizard* self, bool isSubclass);
+void QWizard_Delete(QWizard* self);
 
 QWizardPage* QWizardPage_new(QWidget* parent);
 QWizardPage* QWizardPage_new2();
@@ -318,7 +318,7 @@ void QWizardPage_override_virtual_InputMethodQuery(void* self, intptr_t slot);
 QVariant* QWizardPage_virtualbase_InputMethodQuery(const void* self, int param1);
 void QWizardPage_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QWizardPage_virtualbase_FocusNextPrevChild(void* self, bool next);
-void QWizardPage_Delete(QWizardPage* self, bool isSubclass);
+void QWizardPage_Delete(QWizardPage* self);
 
 #ifdef __cplusplus
 } /* extern C */

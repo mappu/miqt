@@ -70,7 +70,7 @@ void QStackedWidget_override_virtual_PaintEvent(void* self, intptr_t slot);
 void QStackedWidget_virtualbase_PaintEvent(void* self, QPaintEvent* param1);
 void QStackedWidget_override_virtual_ChangeEvent(void* self, intptr_t slot);
 void QStackedWidget_virtualbase_ChangeEvent(void* self, QEvent* param1);
-void QStackedWidget_Delete(QStackedWidget* self, bool isSubclass);
+void QStackedWidget_Delete(QStackedWidget* self);
 
 #ifdef __cplusplus
 } /* extern C */

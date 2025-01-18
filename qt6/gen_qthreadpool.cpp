@@ -28,13 +28,13 @@ void miqt_exec_callback_QThreadPool_DisconnectNotify(void*, intptr_t, QMetaMetho
 } /* extern C */
 #endif
 
-class MiqtVirtualQThreadPool : public virtual QThreadPool {
+class MiqtVirtualQThreadPool final : public QThreadPool {
 public:
 
 	MiqtVirtualQThreadPool(): QThreadPool() {};
 	MiqtVirtualQThreadPool(QObject* parent): QThreadPool(parent) {};
 
-	virtual ~MiqtVirtualQThreadPool() = default;
+	virtual ~MiqtVirtualQThreadPool() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -404,11 +404,7 @@ void QThreadPool_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQThreadPool*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QThreadPool_Delete(QThreadPool* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQThreadPool*>( self );
-	} else {
-		delete self;
-	}
+void QThreadPool_Delete(QThreadPool* self) {
+	delete self;
 }
 

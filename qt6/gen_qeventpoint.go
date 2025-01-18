@@ -330,7 +330,7 @@ func (this *QEventPoint) SetAccepted1(accepted bool) {
 
 // Delete this object from C++ memory.
 func (this *QEventPoint) Delete() {
-	C.QEventPoint_Delete(this.h, C.bool(this.isSubclass))
+	C.QEventPoint_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

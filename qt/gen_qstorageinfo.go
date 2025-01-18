@@ -196,7 +196,7 @@ func QStorageInfo_Root() *QStorageInfo {
 
 // Delete this object from C++ memory.
 func (this *QStorageInfo) Delete() {
-	C.QStorageInfo_Delete(this.h, C.bool(this.isSubclass))
+	C.QStorageInfo_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

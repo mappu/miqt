@@ -99,7 +99,7 @@ void miqt_exec_callback_QWebEnginePage_DisconnectNotify(void*, intptr_t, QMetaMe
 } /* extern C */
 #endif
 
-class MiqtVirtualQWebEnginePage : public virtual QWebEnginePage {
+class MiqtVirtualQWebEnginePage final : public QWebEnginePage {
 public:
 
 	MiqtVirtualQWebEnginePage(): QWebEnginePage() {};
@@ -107,7 +107,7 @@ public:
 	MiqtVirtualQWebEnginePage(QObject* parent): QWebEnginePage(parent) {};
 	MiqtVirtualQWebEnginePage(QWebEngineProfile* profile, QObject* parent): QWebEnginePage(profile, parent) {};
 
-	virtual ~MiqtVirtualQWebEnginePage() = default;
+	virtual ~MiqtVirtualQWebEnginePage() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__TriggerAction = 0;
@@ -1476,11 +1476,7 @@ void QWebEnginePage_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQWebEnginePage*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QWebEnginePage_Delete(QWebEnginePage* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQWebEnginePage*>( self );
-	} else {
-		delete self;
-	}
+void QWebEnginePage_Delete(QWebEnginePage* self) {
+	delete self;
 }
 

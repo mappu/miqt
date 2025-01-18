@@ -47,7 +47,7 @@ int QWebEngineContextMenuRequest_MediaFlags(const QWebEngineContextMenuRequest* 
 int QWebEngineContextMenuRequest_EditFlags(const QWebEngineContextMenuRequest* self);
 struct miqt_string QWebEngineContextMenuRequest_Tr2(const char* s, const char* c);
 struct miqt_string QWebEngineContextMenuRequest_Tr3(const char* s, const char* c, int n);
-void QWebEngineContextMenuRequest_Delete(QWebEngineContextMenuRequest* self, bool isSubclass);
+void QWebEngineContextMenuRequest_Delete(QWebEngineContextMenuRequest* self);
 
 #ifdef __cplusplus
 } /* extern C */

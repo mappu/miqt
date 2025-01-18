@@ -147,7 +147,7 @@ void QLabel_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QLabel_virtualbase_FocusNextPrevChild(void* self, bool next);
 void QLabel_override_virtual_InitStyleOption(void* self, intptr_t slot);
 void QLabel_virtualbase_InitStyleOption(const void* self, QStyleOptionFrame* option);
-void QLabel_Delete(QLabel* self, bool isSubclass);
+void QLabel_Delete(QLabel* self);
 
 #ifdef __cplusplus
 } /* extern C */

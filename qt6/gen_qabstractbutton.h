@@ -234,7 +234,7 @@ void QAbstractButton_override_virtual_InputMethodQuery(void* self, intptr_t slot
 QVariant* QAbstractButton_virtualbase_InputMethodQuery(const void* self, int param1);
 void QAbstractButton_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QAbstractButton_virtualbase_FocusNextPrevChild(void* self, bool next);
-void QAbstractButton_Delete(QAbstractButton* self, bool isSubclass);
+void QAbstractButton_Delete(QAbstractButton* self);
 
 #ifdef __cplusplus
 } /* extern C */

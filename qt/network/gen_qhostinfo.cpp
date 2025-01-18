@@ -138,11 +138,7 @@ struct miqt_string QHostInfo_LocalDomainName() {
 	return _ms;
 }
 
-void QHostInfo_Delete(QHostInfo* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QHostInfo*>( self );
-	} else {
-		delete self;
-	}
+void QHostInfo_Delete(QHostInfo* self) {
+	delete self;
 }
 

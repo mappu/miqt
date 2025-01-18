@@ -836,7 +836,7 @@ func miqt_exec_callback_QGridLayout_ChildEvent(self *C.QGridLayout, cb C.intptr_
 
 // Delete this object from C++ memory.
 func (this *QGridLayout) Delete() {
-	C.QGridLayout_Delete(this.h, C.bool(this.isSubclass))
+	C.QGridLayout_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

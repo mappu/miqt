@@ -72,11 +72,7 @@ struct miqt_string QTemporaryDir_FilePath(const QTemporaryDir* self, struct miqt
 	return _ms;
 }
 
-void QTemporaryDir_Delete(QTemporaryDir* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTemporaryDir*>( self );
-	} else {
-		delete self;
-	}
+void QTemporaryDir_Delete(QTemporaryDir* self) {
+	delete self;
 }
 

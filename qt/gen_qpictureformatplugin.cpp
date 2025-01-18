@@ -30,13 +30,13 @@ void miqt_exec_callback_QPictureFormatPlugin_DisconnectNotify(void*, intptr_t, Q
 } /* extern C */
 #endif
 
-class MiqtVirtualQPictureFormatPlugin : public virtual QPictureFormatPlugin {
+class MiqtVirtualQPictureFormatPlugin final : public QPictureFormatPlugin {
 public:
 
 	MiqtVirtualQPictureFormatPlugin(): QPictureFormatPlugin() {};
 	MiqtVirtualQPictureFormatPlugin(QObject* parent): QPictureFormatPlugin(parent) {};
 
-	virtual ~MiqtVirtualQPictureFormatPlugin() = default;
+	virtual ~MiqtVirtualQPictureFormatPlugin() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__LoadPicture = 0;
@@ -497,11 +497,7 @@ void QPictureFormatPlugin_virtualbase_DisconnectNotify(void* self, QMetaMethod* 
 	( (MiqtVirtualQPictureFormatPlugin*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QPictureFormatPlugin_Delete(QPictureFormatPlugin* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQPictureFormatPlugin*>( self );
-	} else {
-		delete self;
-	}
+void QPictureFormatPlugin_Delete(QPictureFormatPlugin* self) {
+	delete self;
 }
 

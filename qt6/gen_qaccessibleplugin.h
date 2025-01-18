@@ -59,7 +59,7 @@ void QAccessiblePlugin_override_virtual_ConnectNotify(void* self, intptr_t slot)
 void QAccessiblePlugin_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QAccessiblePlugin_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QAccessiblePlugin_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QAccessiblePlugin_Delete(QAccessiblePlugin* self, bool isSubclass);
+void QAccessiblePlugin_Delete(QAccessiblePlugin* self);
 
 #ifdef __cplusplus
 } /* extern C */

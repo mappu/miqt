@@ -96,7 +96,7 @@ void QStyledItemDelegate_override_virtual_HelpEvent(void* self, intptr_t slot);
 bool QStyledItemDelegate_virtualbase_HelpEvent(void* self, QHelpEvent* event, QAbstractItemView* view, QStyleOptionViewItem* option, QModelIndex* index);
 void QStyledItemDelegate_override_virtual_PaintingRoles(void* self, intptr_t slot);
 struct miqt_array /* of int */  QStyledItemDelegate_virtualbase_PaintingRoles(const void* self);
-void QStyledItemDelegate_Delete(QStyledItemDelegate* self, bool isSubclass);
+void QStyledItemDelegate_Delete(QStyledItemDelegate* self);
 
 #ifdef __cplusplus
 } /* extern C */

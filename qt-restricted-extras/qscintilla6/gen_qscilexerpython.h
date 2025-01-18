@@ -149,7 +149,7 @@ void QsciLexerPython_override_virtual_ReadProperties(void* self, intptr_t slot);
 bool QsciLexerPython_virtualbase_ReadProperties(void* self, QSettings* qs, struct miqt_string prefix);
 void QsciLexerPython_override_virtual_WriteProperties(void* self, intptr_t slot);
 bool QsciLexerPython_virtualbase_WriteProperties(const void* self, QSettings* qs, struct miqt_string prefix);
-void QsciLexerPython_Delete(QsciLexerPython* self, bool isSubclass);
+void QsciLexerPython_Delete(QsciLexerPython* self);
 
 #ifdef __cplusplus
 } /* extern C */

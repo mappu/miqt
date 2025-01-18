@@ -739,7 +739,7 @@ func miqt_exec_callback_QGuiApplication_Event(self *C.QGuiApplication, cb C.intp
 
 // Delete this object from C++ memory.
 func (this *QGuiApplication) Delete() {
-	C.QGuiApplication_Delete(this.h, C.bool(this.isSubclass))
+	C.QGuiApplication_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

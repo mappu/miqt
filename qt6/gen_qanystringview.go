@@ -154,7 +154,7 @@ func QAnyStringView_Compare3(lhs QAnyStringView, rhs QAnyStringView, cs CaseSens
 
 // Delete this object from C++ memory.
 func (this *QAnyStringView) Delete() {
-	C.QAnyStringView_Delete(this.h, C.bool(this.isSubclass))
+	C.QAnyStringView_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

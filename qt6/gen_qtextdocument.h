@@ -69,7 +69,7 @@ typedef struct QVariant QVariant;
 void QAbstractUndoItem_Undo(QAbstractUndoItem* self);
 void QAbstractUndoItem_Redo(QAbstractUndoItem* self);
 void QAbstractUndoItem_OperatorAssign(QAbstractUndoItem* self, QAbstractUndoItem* param1);
-void QAbstractUndoItem_Delete(QAbstractUndoItem* self, bool isSubclass);
+void QAbstractUndoItem_Delete(QAbstractUndoItem* self);
 
 QTextDocument* QTextDocument_new();
 QTextDocument* QTextDocument_new2(struct miqt_string text);
@@ -223,7 +223,7 @@ void QTextDocument_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QTextDocument_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QTextDocument_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QTextDocument_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QTextDocument_Delete(QTextDocument* self, bool isSubclass);
+void QTextDocument_Delete(QTextDocument* self);
 
 #ifdef __cplusplus
 } /* extern C */

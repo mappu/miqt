@@ -159,7 +159,7 @@ func (this *QInputEvent) SetTimestamp(atimestamp uint64) {
 
 // Delete this object from C++ memory.
 func (this *QInputEvent) Delete() {
-	C.QInputEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QInputEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -266,7 +266,7 @@ func (this *QEnterEvent) ScreenPos() *QPointF {
 
 // Delete this object from C++ memory.
 func (this *QEnterEvent) Delete() {
-	C.QEnterEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QEnterEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -417,7 +417,7 @@ func (this *QMouseEvent) Flags() MouseEventFlag {
 
 // Delete this object from C++ memory.
 func (this *QMouseEvent) Delete() {
-	C.QMouseEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QMouseEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -512,7 +512,7 @@ func (this *QHoverEvent) OldPosF() *QPointF {
 
 // Delete this object from C++ memory.
 func (this *QHoverEvent) Delete() {
-	C.QHoverEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QHoverEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -735,7 +735,7 @@ func (this *QWheelEvent) Source() MouseEventSource {
 
 // Delete this object from C++ memory.
 func (this *QWheelEvent) Delete() {
-	C.QWheelEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QWheelEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -902,7 +902,7 @@ func (this *QTabletEvent) Buttons() MouseButton {
 
 // Delete this object from C++ memory.
 func (this *QTabletEvent) Delete() {
-	C.QTabletEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QTabletEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1013,7 +1013,7 @@ func (this *QNativeGestureEvent) Device() *QTouchDevice {
 
 // Delete this object from C++ memory.
 func (this *QNativeGestureEvent) Delete() {
-	C.QNativeGestureEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QNativeGestureEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1199,7 +1199,7 @@ func (this *QKeyEvent) NativeModifiers() uint {
 
 // Delete this object from C++ memory.
 func (this *QKeyEvent) Delete() {
-	C.QKeyEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QKeyEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1286,7 +1286,7 @@ func (this *QFocusEvent) Reason() FocusReason {
 
 // Delete this object from C++ memory.
 func (this *QFocusEvent) Delete() {
-	C.QFocusEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QFocusEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1369,7 +1369,7 @@ func (this *QPaintEvent) Region() *QRegion {
 
 // Delete this object from C++ memory.
 func (this *QPaintEvent) Delete() {
-	C.QPaintEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QPaintEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1444,7 +1444,7 @@ func (this *QMoveEvent) OldPos() *QPoint {
 
 // Delete this object from C++ memory.
 func (this *QMoveEvent) Delete() {
-	C.QMoveEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QMoveEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1515,7 +1515,7 @@ func (this *QExposeEvent) Region() *QRegion {
 
 // Delete this object from C++ memory.
 func (this *QExposeEvent) Delete() {
-	C.QExposeEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QExposeEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1586,7 +1586,7 @@ func (this *QPlatformSurfaceEvent) SurfaceEventType() QPlatformSurfaceEvent__Sur
 
 // Delete this object from C++ memory.
 func (this *QPlatformSurfaceEvent) Delete() {
-	C.QPlatformSurfaceEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QPlatformSurfaceEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1661,7 +1661,7 @@ func (this *QResizeEvent) OldSize() *QSize {
 
 // Delete this object from C++ memory.
 func (this *QResizeEvent) Delete() {
-	C.QResizeEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QResizeEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1732,7 +1732,7 @@ func (this *QCloseEvent) OperatorAssign(param1 *QCloseEvent) {
 
 // Delete this object from C++ memory.
 func (this *QCloseEvent) Delete() {
-	C.QCloseEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QCloseEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1803,7 +1803,7 @@ func (this *QIconDragEvent) OperatorAssign(param1 *QIconDragEvent) {
 
 // Delete this object from C++ memory.
 func (this *QIconDragEvent) Delete() {
-	C.QIconDragEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QIconDragEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1874,7 +1874,7 @@ func (this *QShowEvent) OperatorAssign(param1 *QShowEvent) {
 
 // Delete this object from C++ memory.
 func (this *QShowEvent) Delete() {
-	C.QShowEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QShowEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1945,7 +1945,7 @@ func (this *QHideEvent) OperatorAssign(param1 *QHideEvent) {
 
 // Delete this object from C++ memory.
 func (this *QHideEvent) Delete() {
-	C.QHideEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QHideEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2056,7 +2056,7 @@ func (this *QContextMenuEvent) Reason() QContextMenuEvent__Reason {
 
 // Delete this object from C++ memory.
 func (this *QContextMenuEvent) Delete() {
-	C.QContextMenuEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QContextMenuEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2199,7 +2199,7 @@ func (this *QInputMethodEvent) SetCommitString3(commitString string, replaceFrom
 
 // Delete this object from C++ memory.
 func (this *QInputMethodEvent) Delete() {
-	C.QInputMethodEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QInputMethodEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2280,7 +2280,7 @@ func (this *QInputMethodQueryEvent) Value(query InputMethodQuery) *QVariant {
 
 // Delete this object from C++ memory.
 func (this *QInputMethodQueryEvent) Delete() {
-	C.QInputMethodQueryEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QInputMethodQueryEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2401,7 +2401,7 @@ func (this *QDropEvent) MimeData() *QMimeData {
 
 // Delete this object from C++ memory.
 func (this *QDropEvent) Delete() {
-	C.QDropEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QDropEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2498,7 +2498,7 @@ func (this *QDragMoveEvent) IgnoreWithQRect(r *QRect) {
 
 // Delete this object from C++ memory.
 func (this *QDragMoveEvent) Delete() {
-	C.QDragMoveEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QDragMoveEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2569,7 +2569,7 @@ func (this *QDragEnterEvent) OperatorAssign(param1 *QDragEnterEvent) {
 
 // Delete this object from C++ memory.
 func (this *QDragEnterEvent) Delete() {
-	C.QDragEnterEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QDragEnterEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2640,7 +2640,7 @@ func (this *QDragLeaveEvent) OperatorAssign(param1 *QDragLeaveEvent) {
 
 // Delete this object from C++ memory.
 func (this *QDragLeaveEvent) Delete() {
-	C.QDragLeaveEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QDragLeaveEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2731,7 +2731,7 @@ func (this *QHelpEvent) GlobalPos() *QPoint {
 
 // Delete this object from C++ memory.
 func (this *QHelpEvent) Delete() {
-	C.QHelpEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QHelpEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2809,7 +2809,7 @@ func (this *QStatusTipEvent) Tip() string {
 
 // Delete this object from C++ memory.
 func (this *QStatusTipEvent) Delete() {
-	C.QStatusTipEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QStatusTipEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2887,7 +2887,7 @@ func (this *QWhatsThisClickedEvent) Href() string {
 
 // Delete this object from C++ memory.
 func (this *QWhatsThisClickedEvent) Delete() {
-	C.QWhatsThisClickedEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QWhatsThisClickedEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2974,7 +2974,7 @@ func (this *QActionEvent) OperatorAssign(param1 *QActionEvent) {
 
 // Delete this object from C++ memory.
 func (this *QActionEvent) Delete() {
-	C.QActionEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QActionEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3070,7 +3070,7 @@ func (this *QFileOpenEvent) OpenFile(file *QFile, flags QIODevice__OpenModeFlag)
 
 // Delete this object from C++ memory.
 func (this *QFileOpenEvent) Delete() {
-	C.QFileOpenEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QFileOpenEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3141,7 +3141,7 @@ func (this *QToolBarChangeEvent) Toggle() bool {
 
 // Delete this object from C++ memory.
 func (this *QToolBarChangeEvent) Delete() {
-	C.QToolBarChangeEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QToolBarChangeEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3228,7 +3228,7 @@ func (this *QShortcutEvent) IsAmbiguous() bool {
 
 // Delete this object from C++ memory.
 func (this *QShortcutEvent) Delete() {
-	C.QShortcutEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QShortcutEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3311,7 +3311,7 @@ func (this *QWindowStateChangeEvent) IsOverride() bool {
 
 // Delete this object from C++ memory.
 func (this *QWindowStateChangeEvent) Delete() {
-	C.QWindowStateChangeEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QWindowStateChangeEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3388,7 +3388,7 @@ func (this *QPointingDeviceUniqueId) NumericId() int64 {
 
 // Delete this object from C++ memory.
 func (this *QPointingDeviceUniqueId) Delete() {
-	C.QPointingDeviceUniqueId_Delete(this.h, C.bool(this.isSubclass))
+	C.QPointingDeviceUniqueId_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3547,7 +3547,7 @@ func (this *QTouchEvent) SetDevice(adevice *QTouchDevice) {
 
 // Delete this object from C++ memory.
 func (this *QTouchEvent) Delete() {
-	C.QTouchEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QTouchEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3650,7 +3650,7 @@ func (this *QScrollPrepareEvent) SetContentPos(pos *QPointF) {
 
 // Delete this object from C++ memory.
 func (this *QScrollPrepareEvent) Delete() {
-	C.QScrollPrepareEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QScrollPrepareEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3733,7 +3733,7 @@ func (this *QScrollEvent) ScrollState() QScrollEvent__ScrollState {
 
 // Delete this object from C++ memory.
 func (this *QScrollEvent) Delete() {
-	C.QScrollEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QScrollEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3808,7 +3808,7 @@ func (this *QScreenOrientationChangeEvent) Orientation() ScreenOrientation {
 
 // Delete this object from C++ memory.
 func (this *QScreenOrientationChangeEvent) Delete() {
-	C.QScreenOrientationChangeEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QScreenOrientationChangeEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3879,7 +3879,7 @@ func (this *QApplicationStateChangeEvent) ApplicationState() ApplicationState {
 
 // Delete this object from C++ memory.
 func (this *QApplicationStateChangeEvent) Delete() {
-	C.QApplicationStateChangeEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QApplicationStateChangeEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3954,7 +3954,7 @@ func (this *QInputMethodEvent__Attribute) OperatorAssign(param1 *QInputMethodEve
 
 // Delete this object from C++ memory.
 func (this *QInputMethodEvent__Attribute) Delete() {
-	C.QInputMethodEvent__Attribute_Delete(this.h, C.bool(this.isSubclass))
+	C.QInputMethodEvent__Attribute_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -4275,7 +4275,7 @@ func (this *QTouchEvent__TouchPoint) SetRawScreenPositions(positions []QPointF) 
 
 // Delete this object from C++ memory.
 func (this *QTouchEvent__TouchPoint) Delete() {
-	C.QTouchEvent__TouchPoint_Delete(this.h, C.bool(this.isSubclass))
+	C.QTouchEvent__TouchPoint_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

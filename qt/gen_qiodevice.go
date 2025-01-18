@@ -1088,7 +1088,7 @@ func miqt_exec_callback_QIODevice_DisconnectNotify(self *C.QIODevice, cb C.intpt
 
 // Delete this object from C++ memory.
 func (this *QIODevice) Delete() {
-	C.QIODevice_Delete(this.h, C.bool(this.isSubclass))
+	C.QIODevice_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

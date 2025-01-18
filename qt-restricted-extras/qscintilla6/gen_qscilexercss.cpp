@@ -54,13 +54,13 @@ bool miqt_exec_callback_QsciLexerCSS_WriteProperties(void*, intptr_t, QSettings*
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerCSS : public virtual QsciLexerCSS {
+class MiqtVirtualQsciLexerCSS final : public QsciLexerCSS {
 public:
 
 	MiqtVirtualQsciLexerCSS(): QsciLexerCSS() {};
 	MiqtVirtualQsciLexerCSS(QObject* parent): QsciLexerCSS(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerCSS() = default;
+	virtual ~MiqtVirtualQsciLexerCSS() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetFoldComments = 0;
@@ -1358,11 +1358,7 @@ bool QsciLexerCSS_virtualbase_WriteProperties(const void* self, QSettings* qs, s
 	return ( (const MiqtVirtualQsciLexerCSS*)(self) )->virtualbase_WriteProperties(qs, prefix);
 }
 
-void QsciLexerCSS_Delete(QsciLexerCSS* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerCSS*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerCSS_Delete(QsciLexerCSS* self) {
+	delete self;
 }
 

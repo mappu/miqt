@@ -96,7 +96,7 @@ bool miqt_exec_callback_QLineEdit_FocusNextPrevChild(void*, intptr_t, bool);
 } /* extern C */
 #endif
 
-class MiqtVirtualQLineEdit : public virtual QLineEdit {
+class MiqtVirtualQLineEdit final : public QLineEdit {
 public:
 
 	MiqtVirtualQLineEdit(QWidget* parent): QLineEdit(parent) {};
@@ -104,7 +104,7 @@ public:
 	MiqtVirtualQLineEdit(const QString& param1): QLineEdit(param1) {};
 	MiqtVirtualQLineEdit(const QString& param1, QWidget* parent): QLineEdit(param1, parent) {};
 
-	virtual ~MiqtVirtualQLineEdit() = default;
+	virtual ~MiqtVirtualQLineEdit() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -1927,11 +1927,7 @@ bool QLineEdit_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQLineEdit*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QLineEdit_Delete(QLineEdit* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQLineEdit*>( self );
-	} else {
-		delete self;
-	}
+void QLineEdit_Delete(QLineEdit* self) {
+	delete self;
 }
 

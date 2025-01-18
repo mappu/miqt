@@ -329,7 +329,7 @@ func (this *QPalette) ResolveWithMask(mask uint) {
 
 // Delete this object from C++ memory.
 func (this *QPalette) Delete() {
-	C.QPalette_Delete(this.h, C.bool(this.isSubclass))
+	C.QPalette_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

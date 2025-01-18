@@ -49,13 +49,13 @@ void miqt_exec_callback_QAbstractItemDelegate_DisconnectNotify(void*, intptr_t, 
 } /* extern C */
 #endif
 
-class MiqtVirtualQAbstractItemDelegate : public virtual QAbstractItemDelegate {
+class MiqtVirtualQAbstractItemDelegate final : public QAbstractItemDelegate {
 public:
 
 	MiqtVirtualQAbstractItemDelegate(): QAbstractItemDelegate() {};
 	MiqtVirtualQAbstractItemDelegate(QObject* parent): QAbstractItemDelegate(parent) {};
 
-	virtual ~MiqtVirtualQAbstractItemDelegate() = default;
+	virtual ~MiqtVirtualQAbstractItemDelegate() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Paint = 0;
@@ -789,11 +789,7 @@ void QAbstractItemDelegate_virtualbase_DisconnectNotify(void* self, QMetaMethod*
 	( (MiqtVirtualQAbstractItemDelegate*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QAbstractItemDelegate_Delete(QAbstractItemDelegate* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractItemDelegate*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractItemDelegate_Delete(QAbstractItemDelegate* self) {
+	delete self;
 }
 

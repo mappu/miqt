@@ -37,7 +37,7 @@ QPointingDeviceUniqueId* QPointingDeviceUniqueId_new2(QPointingDeviceUniqueId* p
 QPointingDeviceUniqueId* QPointingDeviceUniqueId_FromNumericId(long long id);
 bool QPointingDeviceUniqueId_IsValid(const QPointingDeviceUniqueId* self);
 long long QPointingDeviceUniqueId_NumericId(const QPointingDeviceUniqueId* self);
-void QPointingDeviceUniqueId_Delete(QPointingDeviceUniqueId* self, bool isSubclass);
+void QPointingDeviceUniqueId_Delete(QPointingDeviceUniqueId* self);
 
 QPointingDevice* QPointingDevice_new();
 QPointingDevice* QPointingDevice_new2(struct miqt_string name, long long systemId, int devType, int pType, int caps, int maxPoints, int buttonCount);
@@ -63,7 +63,7 @@ void QPointingDevice_connect_GrabChanged(QPointingDevice* self, intptr_t slot);
 struct miqt_string QPointingDevice_Tr2(const char* s, const char* c);
 struct miqt_string QPointingDevice_Tr3(const char* s, const char* c, int n);
 QPointingDevice* QPointingDevice_PrimaryPointingDevice1(struct miqt_string seatName);
-void QPointingDevice_Delete(QPointingDevice* self, bool isSubclass);
+void QPointingDevice_Delete(QPointingDevice* self);
 
 #ifdef __cplusplus
 } /* extern C */

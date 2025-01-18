@@ -285,7 +285,7 @@ func miqt_exec_callback_QAudioRecorder_SetMediaObject(self *C.QAudioRecorder, cb
 
 // Delete this object from C++ memory.
 func (this *QAudioRecorder) Delete() {
-	C.QAudioRecorder_Delete(this.h, C.bool(this.isSubclass))
+	C.QAudioRecorder_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

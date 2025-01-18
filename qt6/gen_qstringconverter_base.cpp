@@ -60,11 +60,7 @@ void QStringConverterBase__State_Reset(QStringConverterBase__State* self) {
 	self->reset();
 }
 
-void QStringConverterBase__State_Delete(QStringConverterBase__State* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QStringConverterBase::State*>( self );
-	} else {
-		delete self;
-	}
+void QStringConverterBase__State_Delete(QStringConverterBase__State* self) {
+	delete self;
 }
 

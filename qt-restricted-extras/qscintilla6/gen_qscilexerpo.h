@@ -124,7 +124,7 @@ void QsciLexerPO_override_virtual_ReadProperties(void* self, intptr_t slot);
 bool QsciLexerPO_virtualbase_ReadProperties(void* self, QSettings* qs, struct miqt_string prefix);
 void QsciLexerPO_override_virtual_WriteProperties(void* self, intptr_t slot);
 bool QsciLexerPO_virtualbase_WriteProperties(const void* self, QSettings* qs, struct miqt_string prefix);
-void QsciLexerPO_Delete(QsciLexerPO* self, bool isSubclass);
+void QsciLexerPO_Delete(QsciLexerPO* self);
 
 #ifdef __cplusplus
 } /* extern C */

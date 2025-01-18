@@ -491,7 +491,7 @@ func miqt_exec_callback_QNetworkConfigurationManager_DisconnectNotify(self *C.QN
 
 // Delete this object from C++ memory.
 func (this *QNetworkConfigurationManager) Delete() {
-	C.QNetworkConfigurationManager_Delete(this.h, C.bool(this.isSubclass))
+	C.QNetworkConfigurationManager_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

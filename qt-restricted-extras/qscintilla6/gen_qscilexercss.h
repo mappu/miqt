@@ -136,7 +136,7 @@ void QsciLexerCSS_override_virtual_ReadProperties(void* self, intptr_t slot);
 bool QsciLexerCSS_virtualbase_ReadProperties(void* self, QSettings* qs, struct miqt_string prefix);
 void QsciLexerCSS_override_virtual_WriteProperties(void* self, intptr_t slot);
 bool QsciLexerCSS_virtualbase_WriteProperties(const void* self, QSettings* qs, struct miqt_string prefix);
-void QsciLexerCSS_Delete(QsciLexerCSS* self, bool isSubclass);
+void QsciLexerCSS_Delete(QsciLexerCSS* self);
 
 #ifdef __cplusplus
 } /* extern C */

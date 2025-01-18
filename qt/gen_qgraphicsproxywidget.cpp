@@ -90,14 +90,14 @@ void miqt_exec_callback_QGraphicsProxyWidget_UngrabKeyboardEvent(void*, intptr_t
 } /* extern C */
 #endif
 
-class MiqtVirtualQGraphicsProxyWidget : public virtual QGraphicsProxyWidget {
+class MiqtVirtualQGraphicsProxyWidget final : public QGraphicsProxyWidget {
 public:
 
 	MiqtVirtualQGraphicsProxyWidget(): QGraphicsProxyWidget() {};
 	MiqtVirtualQGraphicsProxyWidget(QGraphicsItem* parent): QGraphicsProxyWidget(parent) {};
 	MiqtVirtualQGraphicsProxyWidget(QGraphicsItem* parent, Qt::WindowFlags wFlags): QGraphicsProxyWidget(parent, wFlags) {};
 
-	virtual ~MiqtVirtualQGraphicsProxyWidget() = default;
+	virtual ~MiqtVirtualQGraphicsProxyWidget() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetGeometry = 0;
@@ -1774,11 +1774,7 @@ void QGraphicsProxyWidget_virtualbase_UngrabKeyboardEvent(void* self, QEvent* ev
 	( (MiqtVirtualQGraphicsProxyWidget*)(self) )->virtualbase_UngrabKeyboardEvent(event);
 }
 
-void QGraphicsProxyWidget_Delete(QGraphicsProxyWidget* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsProxyWidget*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsProxyWidget_Delete(QGraphicsProxyWidget* self) {
+	delete self;
 }
 

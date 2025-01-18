@@ -56,7 +56,7 @@ bool miqt_exec_callback_QFileDialog_EventFilter(void*, intptr_t, QObject*, QEven
 } /* extern C */
 #endif
 
-class MiqtVirtualQFileDialog : public virtual QFileDialog {
+class MiqtVirtualQFileDialog final : public QFileDialog {
 public:
 
 	MiqtVirtualQFileDialog(QWidget* parent): QFileDialog(parent) {};
@@ -66,7 +66,7 @@ public:
 	MiqtVirtualQFileDialog(QWidget* parent, const QString& caption, const QString& directory): QFileDialog(parent, caption, directory) {};
 	MiqtVirtualQFileDialog(QWidget* parent, const QString& caption, const QString& directory, const QString& filter): QFileDialog(parent, caption, directory, filter) {};
 
-	virtual ~MiqtVirtualQFileDialog() = default;
+	virtual ~MiqtVirtualQFileDialog() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetVisible = 0;
@@ -1615,11 +1615,7 @@ bool QFileDialog_virtualbase_EventFilter(void* self, QObject* param1, QEvent* pa
 	return ( (MiqtVirtualQFileDialog*)(self) )->virtualbase_EventFilter(param1, param2);
 }
 
-void QFileDialog_Delete(QFileDialog* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQFileDialog*>( self );
-	} else {
-		delete self;
-	}
+void QFileDialog_Delete(QFileDialog* self) {
+	delete self;
 }
 

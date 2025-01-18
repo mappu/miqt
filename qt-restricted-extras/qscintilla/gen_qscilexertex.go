@@ -1193,7 +1193,7 @@ func miqt_exec_callback_QsciLexerTeX_WriteProperties(self *C.QsciLexerTeX, cb C.
 
 // Delete this object from C++ memory.
 func (this *QsciLexerTeX) Delete() {
-	C.QsciLexerTeX_Delete(this.h, C.bool(this.isSubclass))
+	C.QsciLexerTeX_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

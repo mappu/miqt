@@ -26,13 +26,13 @@ void miqt_exec_callback_QSound_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQSound : public virtual QSound {
+class MiqtVirtualQSound final : public QSound {
 public:
 
 	MiqtVirtualQSound(const QString& filename): QSound(filename) {};
 	MiqtVirtualQSound(const QString& filename, QObject* parent): QSound(filename, parent) {};
 
-	virtual ~MiqtVirtualQSound() = default;
+	virtual ~MiqtVirtualQSound() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -391,11 +391,7 @@ void QSound_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSound*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QSound_Delete(QSound* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSound*>( self );
-	} else {
-		delete self;
-	}
+void QSound_Delete(QSound* self) {
+	delete self;
 }
 

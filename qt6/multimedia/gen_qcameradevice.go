@@ -107,7 +107,7 @@ func (this *QCameraFormat) OperatorNotEqual(other *QCameraFormat) bool {
 
 // Delete this object from C++ memory.
 func (this *QCameraFormat) Delete() {
-	C.QCameraFormat_Delete(this.h, C.bool(this.isSubclass))
+	C.QCameraFormat_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -232,7 +232,7 @@ func (this *QCameraDevice) VideoFormats() []QCameraFormat {
 
 // Delete this object from C++ memory.
 func (this *QCameraDevice) Delete() {
-	C.QCameraDevice_Delete(this.h, C.bool(this.isSubclass))
+	C.QCameraDevice_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

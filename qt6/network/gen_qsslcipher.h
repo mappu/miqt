@@ -37,7 +37,7 @@ struct miqt_string QSslCipher_AuthenticationMethod(const QSslCipher* self);
 struct miqt_string QSslCipher_EncryptionMethod(const QSslCipher* self);
 struct miqt_string QSslCipher_ProtocolString(const QSslCipher* self);
 int QSslCipher_Protocol(const QSslCipher* self);
-void QSslCipher_Delete(QSslCipher* self, bool isSubclass);
+void QSslCipher_Delete(QSslCipher* self);
 
 #ifdef __cplusplus
 } /* extern C */

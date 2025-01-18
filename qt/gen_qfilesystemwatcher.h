@@ -65,7 +65,7 @@ void QFileSystemWatcher_override_virtual_ConnectNotify(void* self, intptr_t slot
 void QFileSystemWatcher_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QFileSystemWatcher_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QFileSystemWatcher_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QFileSystemWatcher_Delete(QFileSystemWatcher* self, bool isSubclass);
+void QFileSystemWatcher_Delete(QFileSystemWatcher* self);
 
 #ifdef __cplusplus
 } /* extern C */

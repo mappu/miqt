@@ -336,7 +336,7 @@ func (this *QNetworkRequest) SetTransferTimeout1(timeout int) {
 
 // Delete this object from C++ memory.
 func (this *QNetworkRequest) Delete() {
-	C.QNetworkRequest_Delete(this.h, C.bool(this.isSubclass))
+	C.QNetworkRequest_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

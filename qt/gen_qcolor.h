@@ -165,7 +165,7 @@ QColor* QColor_Light1(const QColor* self, int f);
 QColor* QColor_Dark1(const QColor* self, int f);
 QColor* QColor_Lighter1(const QColor* self, int f);
 QColor* QColor_Darker1(const QColor* self, int f);
-void QColor_Delete(QColor* self, bool isSubclass);
+void QColor_Delete(QColor* self);
 
 #ifdef __cplusplus
 } /* extern C */

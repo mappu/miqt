@@ -332,11 +332,7 @@ bool QFontDatabase_IsFixedPitch2(struct miqt_string family, struct miqt_string s
 	return QFontDatabase::isFixedPitch(family_QString, style_QString);
 }
 
-void QFontDatabase_Delete(QFontDatabase* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QFontDatabase*>( self );
-	} else {
-		delete self;
-	}
+void QFontDatabase_Delete(QFontDatabase* self) {
+	delete self;
 }
 

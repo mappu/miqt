@@ -181,11 +181,7 @@ struct miqt_array /* of QAudioDeviceInfo* */  QAudioDeviceInfo_AvailableDevices(
 	return _out;
 }
 
-void QAudioDeviceInfo_Delete(QAudioDeviceInfo* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QAudioDeviceInfo*>( self );
-	} else {
-		delete self;
-	}
+void QAudioDeviceInfo_Delete(QAudioDeviceInfo* self) {
+	delete self;
 }
 

@@ -236,7 +236,7 @@ void QColumnView_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QColumnView_virtualbase_EventFilter(void* self, QObject* object, QEvent* event);
 void QColumnView_override_virtual_ViewportSizeHint(void* self, intptr_t slot);
 QSize* QColumnView_virtualbase_ViewportSizeHint(const void* self);
-void QColumnView_Delete(QColumnView* self, bool isSubclass);
+void QColumnView_Delete(QColumnView* self);
 
 #ifdef __cplusplus
 } /* extern C */

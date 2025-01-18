@@ -862,7 +862,7 @@ func miqt_exec_callback_QFormLayout_ChildEvent(self *C.QFormLayout, cb C.intptr_
 
 // Delete this object from C++ memory.
 func (this *QFormLayout) Delete() {
-	C.QFormLayout_Delete(this.h, C.bool(this.isSubclass))
+	C.QFormLayout_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -909,7 +909,7 @@ func UnsafeNewQFormLayout__TakeRowResult(h unsafe.Pointer) *QFormLayout__TakeRow
 
 // Delete this object from C++ memory.
 func (this *QFormLayout__TakeRowResult) Delete() {
-	C.QFormLayout__TakeRowResult_Delete(this.h, C.bool(this.isSubclass))
+	C.QFormLayout__TakeRowResult_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

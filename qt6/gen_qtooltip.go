@@ -115,7 +115,7 @@ func QToolTip_ShowText5(pos *QPoint, text string, w *QWidget, rect *QRect, msecS
 
 // Delete this object from C++ memory.
 func (this *QToolTip) Delete() {
-	C.QToolTip_Delete(this.h, C.bool(this.isSubclass))
+	C.QToolTip_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -84,14 +84,14 @@ bool miqt_exec_callback_QFrame_FocusNextPrevChild(void*, intptr_t, bool);
 } /* extern C */
 #endif
 
-class MiqtVirtualQFrame : public virtual QFrame {
+class MiqtVirtualQFrame final : public QFrame {
 public:
 
 	MiqtVirtualQFrame(QWidget* parent): QFrame(parent) {};
 	MiqtVirtualQFrame(): QFrame() {};
 	MiqtVirtualQFrame(QWidget* parent, Qt::WindowFlags f): QFrame(parent, f) {};
 
-	virtual ~MiqtVirtualQFrame() = default;
+	virtual ~MiqtVirtualQFrame() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -1546,11 +1546,7 @@ bool QFrame_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQFrame*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QFrame_Delete(QFrame* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQFrame*>( self );
-	} else {
-		delete self;
-	}
+void QFrame_Delete(QFrame* self) {
+	delete self;
 }
 

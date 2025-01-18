@@ -409,7 +409,7 @@ func miqt_exec_callback_QSignalMapper_DisconnectNotify(self *C.QSignalMapper, cb
 
 // Delete this object from C++ memory.
 func (this *QSignalMapper) Delete() {
-	C.QSignalMapper_Delete(this.h, C.bool(this.isSubclass))
+	C.QSignalMapper_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

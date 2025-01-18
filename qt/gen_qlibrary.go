@@ -489,7 +489,7 @@ func miqt_exec_callback_QLibrary_DisconnectNotify(self *C.QLibrary, cb C.intptr_
 
 // Delete this object from C++ memory.
 func (this *QLibrary) Delete() {
-	C.QLibrary_Delete(this.h, C.bool(this.isSubclass))
+	C.QLibrary_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

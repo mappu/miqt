@@ -71,15 +71,11 @@ void QAbstractUndoItem_OperatorAssign(QAbstractUndoItem* self, QAbstractUndoItem
 	self->operator=(*param1);
 }
 
-void QAbstractUndoItem_Delete(QAbstractUndoItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QAbstractUndoItem*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractUndoItem_Delete(QAbstractUndoItem* self) {
+	delete self;
 }
 
-class MiqtVirtualQTextDocument : public virtual QTextDocument {
+class MiqtVirtualQTextDocument final : public QTextDocument {
 public:
 
 	MiqtVirtualQTextDocument(): QTextDocument() {};
@@ -87,7 +83,7 @@ public:
 	MiqtVirtualQTextDocument(QObject* parent): QTextDocument(parent) {};
 	MiqtVirtualQTextDocument(const QString& text, QObject* parent): QTextDocument(text, parent) {};
 
-	virtual ~MiqtVirtualQTextDocument() = default;
+	virtual ~MiqtVirtualQTextDocument() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Clear = 0;
@@ -1099,11 +1095,7 @@ void QTextDocument_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQTextDocument*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QTextDocument_Delete(QTextDocument* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQTextDocument*>( self );
-	} else {
-		delete self;
-	}
+void QTextDocument_Delete(QTextDocument* self) {
+	delete self;
 }
 

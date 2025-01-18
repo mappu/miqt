@@ -76,11 +76,7 @@ struct miqt_array /* of QWebEngineScript* */  QWebEngineScriptCollection_ToList(
 	return _out;
 }
 
-void QWebEngineScriptCollection_Delete(QWebEngineScriptCollection* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebEngineScriptCollection*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineScriptCollection_Delete(QWebEngineScriptCollection* self) {
+	delete self;
 }
 

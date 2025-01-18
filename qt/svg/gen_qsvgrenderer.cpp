@@ -35,7 +35,7 @@ void miqt_exec_callback_QSvgRenderer_DisconnectNotify(void*, intptr_t, QMetaMeth
 } /* extern C */
 #endif
 
-class MiqtVirtualQSvgRenderer : public virtual QSvgRenderer {
+class MiqtVirtualQSvgRenderer final : public QSvgRenderer {
 public:
 
 	MiqtVirtualQSvgRenderer(): QSvgRenderer() {};
@@ -47,7 +47,7 @@ public:
 	MiqtVirtualQSvgRenderer(const QByteArray& contents, QObject* parent): QSvgRenderer(contents, parent) {};
 	MiqtVirtualQSvgRenderer(QXmlStreamReader* contents, QObject* parent): QSvgRenderer(contents, parent) {};
 
-	virtual ~MiqtVirtualQSvgRenderer() = default;
+	virtual ~MiqtVirtualQSvgRenderer() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -511,11 +511,7 @@ void QSvgRenderer_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQSvgRenderer*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QSvgRenderer_Delete(QSvgRenderer* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSvgRenderer*>( self );
-	} else {
-		delete self;
-	}
+void QSvgRenderer_Delete(QSvgRenderer* self) {
+	delete self;
 }
 

@@ -404,7 +404,7 @@ func miqt_exec_callback_QMediaDevices_DisconnectNotify(self *C.QMediaDevices, cb
 
 // Delete this object from C++ memory.
 func (this *QMediaDevices) Delete() {
-	C.QMediaDevices_Delete(this.h, C.bool(this.isSubclass))
+	C.QMediaDevices_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

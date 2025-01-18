@@ -243,7 +243,7 @@ void QGraphicsWidget_override_virtual_UngrabKeyboardEvent(void* self, intptr_t s
 void QGraphicsWidget_virtualbase_UngrabKeyboardEvent(void* self, QEvent* event);
 void QGraphicsWidget_override_virtual_IsEmpty(void* self, intptr_t slot);
 bool QGraphicsWidget_virtualbase_IsEmpty(const void* self);
-void QGraphicsWidget_Delete(QGraphicsWidget* self, bool isSubclass);
+void QGraphicsWidget_Delete(QGraphicsWidget* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -151,7 +151,7 @@ func QCameraInfo_AvailableCameras1(position QCamera__Position) []QCameraInfo {
 
 // Delete this object from C++ memory.
 func (this *QCameraInfo) Delete() {
-	C.QCameraInfo_Delete(this.h, C.bool(this.isSubclass))
+	C.QCameraInfo_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

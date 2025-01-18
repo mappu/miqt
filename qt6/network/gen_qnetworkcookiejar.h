@@ -76,7 +76,7 @@ void QNetworkCookieJar_override_virtual_ConnectNotify(void* self, intptr_t slot)
 void QNetworkCookieJar_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QNetworkCookieJar_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QNetworkCookieJar_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QNetworkCookieJar_Delete(QNetworkCookieJar* self, bool isSubclass);
+void QNetworkCookieJar_Delete(QNetworkCookieJar* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -106,7 +106,7 @@ void miqt_exec_callback_QTreeWidget_CurrentChanged(void*, intptr_t, QModelIndex*
 } /* extern C */
 #endif
 
-class MiqtVirtualQTreeWidgetItem : public virtual QTreeWidgetItem {
+class MiqtVirtualQTreeWidgetItem final : public QTreeWidgetItem {
 public:
 
 	MiqtVirtualQTreeWidgetItem(): QTreeWidgetItem() {};
@@ -127,7 +127,7 @@ public:
 	MiqtVirtualQTreeWidgetItem(QTreeWidgetItem* parent, const QStringList& strings, int typeVal): QTreeWidgetItem(parent, strings, typeVal) {};
 	MiqtVirtualQTreeWidgetItem(QTreeWidgetItem* parent, QTreeWidgetItem* after, int typeVal): QTreeWidgetItem(parent, after, typeVal) {};
 
-	virtual ~MiqtVirtualQTreeWidgetItem() = default;
+	virtual ~MiqtVirtualQTreeWidgetItem() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Clone = 0;
@@ -736,21 +736,17 @@ void QTreeWidgetItem_virtualbase_Write(const void* self, QDataStream* out) {
 	( (const MiqtVirtualQTreeWidgetItem*)(self) )->virtualbase_Write(out);
 }
 
-void QTreeWidgetItem_Delete(QTreeWidgetItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQTreeWidgetItem*>( self );
-	} else {
-		delete self;
-	}
+void QTreeWidgetItem_Delete(QTreeWidgetItem* self) {
+	delete self;
 }
 
-class MiqtVirtualQTreeWidget : public virtual QTreeWidget {
+class MiqtVirtualQTreeWidget final : public QTreeWidget {
 public:
 
 	MiqtVirtualQTreeWidget(QWidget* parent): QTreeWidget(parent) {};
 	MiqtVirtualQTreeWidget(): QTreeWidget() {};
 
-	virtual ~MiqtVirtualQTreeWidget() = default;
+	virtual ~MiqtVirtualQTreeWidget() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetSelectionModel = 0;
@@ -2725,11 +2721,7 @@ void QTreeWidget_virtualbase_CurrentChanged(void* self, QModelIndex* current, QM
 	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_CurrentChanged(current, previous);
 }
 
-void QTreeWidget_Delete(QTreeWidget* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQTreeWidget*>( self );
-	} else {
-		delete self;
-	}
+void QTreeWidget_Delete(QTreeWidget* self) {
+	delete self;
 }
 

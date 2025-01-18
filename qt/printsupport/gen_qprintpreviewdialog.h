@@ -94,7 +94,7 @@ void QPrintPreviewDialog_override_virtual_ContextMenuEvent(void* self, intptr_t 
 void QPrintPreviewDialog_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* param1);
 void QPrintPreviewDialog_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QPrintPreviewDialog_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2);
-void QPrintPreviewDialog_Delete(QPrintPreviewDialog* self, bool isSubclass);
+void QPrintPreviewDialog_Delete(QPrintPreviewDialog* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -190,11 +190,7 @@ void QMediaFormat_ResolveForEncoding(QMediaFormat* self, int flags) {
 	self->resolveForEncoding(static_cast<QMediaFormat::ResolveFlags>(flags));
 }
 
-void QMediaFormat_Delete(QMediaFormat* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMediaFormat*>( self );
-	} else {
-		delete self;
-	}
+void QMediaFormat_Delete(QMediaFormat* self) {
+	delete self;
 }
 

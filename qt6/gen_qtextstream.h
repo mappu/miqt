@@ -102,7 +102,7 @@ QTextStream* QTextStream_OperatorShiftLeftWithArray(QTextStream* self, struct mi
 QTextStream* QTextStream_OperatorShiftLeftWithChar(QTextStream* self, const char* c);
 QTextStream* QTextStream_OperatorShiftLeftWithPtr(QTextStream* self, const void* ptr);
 struct miqt_string QTextStream_ReadLine1(QTextStream* self, long long maxlen);
-void QTextStream_Delete(QTextStream* self, bool isSubclass);
+void QTextStream_Delete(QTextStream* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -142,7 +142,7 @@ func (this *QScriptProgram) OperatorNotEqual(other *QScriptProgram) bool {
 
 // Delete this object from C++ memory.
 func (this *QScriptProgram) Delete() {
-	C.QScriptProgram_Delete(this.h, C.bool(this.isSubclass))
+	C.QScriptProgram_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

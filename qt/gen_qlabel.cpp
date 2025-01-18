@@ -44,7 +44,7 @@ bool miqt_exec_callback_QLabel_FocusNextPrevChild(void*, intptr_t, bool);
 } /* extern C */
 #endif
 
-class MiqtVirtualQLabel : public virtual QLabel {
+class MiqtVirtualQLabel final : public QLabel {
 public:
 
 	MiqtVirtualQLabel(QWidget* parent): QLabel(parent) {};
@@ -54,7 +54,7 @@ public:
 	MiqtVirtualQLabel(const QString& text, QWidget* parent): QLabel(text, parent) {};
 	MiqtVirtualQLabel(const QString& text, QWidget* parent, Qt::WindowFlags f): QLabel(text, parent, f) {};
 
-	virtual ~MiqtVirtualQLabel() = default;
+	virtual ~MiqtVirtualQLabel() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -812,11 +812,7 @@ bool QLabel_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQLabel*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QLabel_Delete(QLabel* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQLabel*>( self );
-	} else {
-		delete self;
-	}
+void QLabel_Delete(QLabel* self) {
+	delete self;
 }
 

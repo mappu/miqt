@@ -149,7 +149,7 @@ func (this *QTreeWidgetItemIterator) OperatorMultiply() *QTreeWidgetItem {
 
 // Delete this object from C++ memory.
 func (this *QTreeWidgetItemIterator) Delete() {
-	C.QTreeWidgetItemIterator_Delete(this.h, C.bool(this.isSubclass))
+	C.QTreeWidgetItemIterator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

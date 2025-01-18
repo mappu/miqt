@@ -44,13 +44,13 @@ long long miqt_exec_callback_QUdpSocket_WriteData(void*, intptr_t, const char*, 
 } /* extern C */
 #endif
 
-class MiqtVirtualQUdpSocket : public virtual QUdpSocket {
+class MiqtVirtualQUdpSocket final : public QUdpSocket {
 public:
 
 	MiqtVirtualQUdpSocket(): QUdpSocket() {};
 	MiqtVirtualQUdpSocket(QObject* parent): QUdpSocket(parent) {};
 
-	virtual ~MiqtVirtualQUdpSocket() = default;
+	virtual ~MiqtVirtualQUdpSocket() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Resume = 0;
@@ -886,11 +886,7 @@ long long QUdpSocket_virtualbase_WriteData(void* self, const char* data, long lo
 	return ( (MiqtVirtualQUdpSocket*)(self) )->virtualbase_WriteData(data, lenVal);
 }
 
-void QUdpSocket_Delete(QUdpSocket* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQUdpSocket*>( self );
-	} else {
-		delete self;
-	}
+void QUdpSocket_Delete(QUdpSocket* self) {
+	delete self;
 }
 

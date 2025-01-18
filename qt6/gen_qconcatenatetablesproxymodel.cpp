@@ -61,13 +61,13 @@ void miqt_exec_callback_QConcatenateTablesProxyModel_ResetInternalData(void*, in
 } /* extern C */
 #endif
 
-class MiqtVirtualQConcatenateTablesProxyModel : public virtual QConcatenateTablesProxyModel {
+class MiqtVirtualQConcatenateTablesProxyModel final : public QConcatenateTablesProxyModel {
 public:
 
 	MiqtVirtualQConcatenateTablesProxyModel(): QConcatenateTablesProxyModel() {};
 	MiqtVirtualQConcatenateTablesProxyModel(QObject* parent): QConcatenateTablesProxyModel(parent) {};
 
-	virtual ~MiqtVirtualQConcatenateTablesProxyModel() = default;
+	virtual ~MiqtVirtualQConcatenateTablesProxyModel() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Data = 0;
@@ -1635,11 +1635,7 @@ void QConcatenateTablesProxyModel_virtualbase_ResetInternalData(void* self) {
 	( (MiqtVirtualQConcatenateTablesProxyModel*)(self) )->virtualbase_ResetInternalData();
 }
 
-void QConcatenateTablesProxyModel_Delete(QConcatenateTablesProxyModel* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( self );
-	} else {
-		delete self;
-	}
+void QConcatenateTablesProxyModel_Delete(QConcatenateTablesProxyModel* self) {
+	delete self;
 }
 

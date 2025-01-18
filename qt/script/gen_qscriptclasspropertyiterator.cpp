@@ -54,11 +54,7 @@ int QScriptClassPropertyIterator_Flags(const QScriptClassPropertyIterator* self)
 	return static_cast<int>(_ret);
 }
 
-void QScriptClassPropertyIterator_Delete(QScriptClassPropertyIterator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QScriptClassPropertyIterator*>( self );
-	} else {
-		delete self;
-	}
+void QScriptClassPropertyIterator_Delete(QScriptClassPropertyIterator* self) {
+	delete self;
 }
 

@@ -267,7 +267,7 @@ void QWebView_override_virtual_Redirected(void* self, intptr_t slot);
 QPaintDevice* QWebView_virtualbase_Redirected(const void* self, QPoint* offset);
 void QWebView_override_virtual_SharedPainter(void* self, intptr_t slot);
 QPainter* QWebView_virtualbase_SharedPainter(const void* self);
-void QWebView_Delete(QWebView* self, bool isSubclass);
+void QWebView_Delete(QWebView* self);
 
 #ifdef __cplusplus
 } /* extern C */

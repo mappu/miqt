@@ -159,7 +159,7 @@ void QLayout_override_virtual_Widget(void* self, intptr_t slot);
 QWidget* QLayout_virtualbase_Widget(const void* self);
 void QLayout_override_virtual_SpacerItem(void* self, intptr_t slot);
 QSpacerItem* QLayout_virtualbase_SpacerItem(void* self);
-void QLayout_Delete(QLayout* self, bool isSubclass);
+void QLayout_Delete(QLayout* self);
 
 #ifdef __cplusplus
 } /* extern C */

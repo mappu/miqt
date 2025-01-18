@@ -35,13 +35,13 @@ void miqt_exec_callback_QNetworkCookieJar_DisconnectNotify(void*, intptr_t, QMet
 } /* extern C */
 #endif
 
-class MiqtVirtualQNetworkCookieJar : public virtual QNetworkCookieJar {
+class MiqtVirtualQNetworkCookieJar final : public QNetworkCookieJar {
 public:
 
 	MiqtVirtualQNetworkCookieJar(): QNetworkCookieJar() {};
 	MiqtVirtualQNetworkCookieJar(QObject* parent): QNetworkCookieJar(parent) {};
 
-	virtual ~MiqtVirtualQNetworkCookieJar() = default;
+	virtual ~MiqtVirtualQNetworkCookieJar() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__CookiesForUrl = 0;
@@ -625,11 +625,7 @@ void QNetworkCookieJar_virtualbase_DisconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualQNetworkCookieJar*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QNetworkCookieJar_Delete(QNetworkCookieJar* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQNetworkCookieJar*>( self );
-	} else {
-		delete self;
-	}
+void QNetworkCookieJar_Delete(QNetworkCookieJar* self) {
+	delete self;
 }
 

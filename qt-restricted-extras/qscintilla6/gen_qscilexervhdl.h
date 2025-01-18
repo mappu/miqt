@@ -140,7 +140,7 @@ void QsciLexerVHDL_override_virtual_ReadProperties(void* self, intptr_t slot);
 bool QsciLexerVHDL_virtualbase_ReadProperties(void* self, QSettings* qs, struct miqt_string prefix);
 void QsciLexerVHDL_override_virtual_WriteProperties(void* self, intptr_t slot);
 bool QsciLexerVHDL_virtualbase_WriteProperties(const void* self, QSettings* qs, struct miqt_string prefix);
-void QsciLexerVHDL_Delete(QsciLexerVHDL* self, bool isSubclass);
+void QsciLexerVHDL_Delete(QsciLexerVHDL* self);
 
 #ifdef __cplusplus
 } /* extern C */

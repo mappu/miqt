@@ -1485,7 +1485,7 @@ func miqt_exec_callback_QAbstractSlider_FocusNextPrevChild(self *C.QAbstractSlid
 
 // Delete this object from C++ memory.
 func (this *QAbstractSlider) Delete() {
-	C.QAbstractSlider_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractSlider_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

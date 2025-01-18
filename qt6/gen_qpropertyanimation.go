@@ -321,7 +321,7 @@ func miqt_exec_callback_QPropertyAnimation_Interpolated(self *C.QPropertyAnimati
 
 // Delete this object from C++ memory.
 func (this *QPropertyAnimation) Delete() {
-	C.QPropertyAnimation_Delete(this.h, C.bool(this.isSubclass))
+	C.QPropertyAnimation_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

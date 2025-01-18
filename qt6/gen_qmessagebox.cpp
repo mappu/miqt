@@ -47,7 +47,7 @@ bool miqt_exec_callback_QMessageBox_EventFilter(void*, intptr_t, QObject*, QEven
 } /* extern C */
 #endif
 
-class MiqtVirtualQMessageBox : public virtual QMessageBox {
+class MiqtVirtualQMessageBox final : public QMessageBox {
 public:
 
 	MiqtVirtualQMessageBox(QWidget* parent): QMessageBox(parent) {};
@@ -60,7 +60,7 @@ public:
 	MiqtVirtualQMessageBox(const QString& title, const QString& text, QMessageBox::Icon icon, int button0, int button1, int button2, QWidget* parent): QMessageBox(title, text, icon, button0, button1, button2, parent) {};
 	MiqtVirtualQMessageBox(const QString& title, const QString& text, QMessageBox::Icon icon, int button0, int button1, int button2, QWidget* parent, Qt::WindowFlags f): QMessageBox(title, text, icon, button0, button1, button2, parent, f) {};
 
-	virtual ~MiqtVirtualQMessageBox() = default;
+	virtual ~MiqtVirtualQMessageBox() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -1232,11 +1232,7 @@ bool QMessageBox_virtualbase_EventFilter(void* self, QObject* param1, QEvent* pa
 	return ( (MiqtVirtualQMessageBox*)(self) )->virtualbase_EventFilter(param1, param2);
 }
 
-void QMessageBox_Delete(QMessageBox* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQMessageBox*>( self );
-	} else {
-		delete self;
-	}
+void QMessageBox_Delete(QMessageBox* self) {
+	delete self;
 }
 

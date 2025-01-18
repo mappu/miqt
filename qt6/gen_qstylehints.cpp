@@ -332,11 +332,7 @@ struct miqt_string QStyleHints_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QStyleHints_Delete(QStyleHints* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QStyleHints*>( self );
-	} else {
-		delete self;
-	}
+void QStyleHints_Delete(QStyleHints* self) {
+	delete self;
 }
 

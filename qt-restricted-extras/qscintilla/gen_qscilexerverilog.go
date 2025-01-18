@@ -1253,7 +1253,7 @@ func miqt_exec_callback_QsciLexerVerilog_WriteProperties(self *C.QsciLexerVerilo
 
 // Delete this object from C++ memory.
 func (this *QsciLexerVerilog) Delete() {
-	C.QsciLexerVerilog_Delete(this.h, C.bool(this.isSubclass))
+	C.QsciLexerVerilog_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

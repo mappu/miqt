@@ -169,7 +169,7 @@ void QMdiArea_override_virtual_KeyPressEvent(void* self, intptr_t slot);
 void QMdiArea_virtualbase_KeyPressEvent(void* self, QKeyEvent* param1);
 void QMdiArea_override_virtual_ViewportSizeHint(void* self, intptr_t slot);
 QSize* QMdiArea_virtualbase_ViewportSizeHint(const void* self);
-void QMdiArea_Delete(QMdiArea* self, bool isSubclass);
+void QMdiArea_Delete(QMdiArea* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -44,7 +44,7 @@ bool miqt_exec_callback_QProgressDialog_EventFilter(void*, intptr_t, QObject*, Q
 } /* extern C */
 #endif
 
-class MiqtVirtualQProgressDialog : public virtual QProgressDialog {
+class MiqtVirtualQProgressDialog final : public QProgressDialog {
 public:
 
 	MiqtVirtualQProgressDialog(QWidget* parent): QProgressDialog(parent) {};
@@ -54,7 +54,7 @@ public:
 	MiqtVirtualQProgressDialog(const QString& labelText, const QString& cancelButtonText, int minimum, int maximum, QWidget* parent): QProgressDialog(labelText, cancelButtonText, minimum, maximum, parent) {};
 	MiqtVirtualQProgressDialog(const QString& labelText, const QString& cancelButtonText, int minimum, int maximum, QWidget* parent, Qt::WindowFlags flags): QProgressDialog(labelText, cancelButtonText, minimum, maximum, parent, flags) {};
 
-	virtual ~MiqtVirtualQProgressDialog() = default;
+	virtual ~MiqtVirtualQProgressDialog() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -748,11 +748,7 @@ bool QProgressDialog_virtualbase_EventFilter(void* self, QObject* param1, QEvent
 	return ( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_EventFilter(param1, param2);
 }
 
-void QProgressDialog_Delete(QProgressDialog* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQProgressDialog*>( self );
-	} else {
-		delete self;
-	}
+void QProgressDialog_Delete(QProgressDialog* self) {
+	delete self;
 }
 

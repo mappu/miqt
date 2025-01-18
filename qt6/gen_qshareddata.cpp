@@ -18,23 +18,15 @@ QSharedData* QSharedData_new2(QSharedData* param1) {
 	return new QSharedData(*param1);
 }
 
-void QSharedData_Delete(QSharedData* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QSharedData*>( self );
-	} else {
-		delete self;
-	}
+void QSharedData_Delete(QSharedData* self) {
+	delete self;
 }
 
 QAdoptSharedDataTag* QAdoptSharedDataTag_new() {
 	return new QAdoptSharedDataTag();
 }
 
-void QAdoptSharedDataTag_Delete(QAdoptSharedDataTag* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QAdoptSharedDataTag*>( self );
-	} else {
-		delete self;
-	}
+void QAdoptSharedDataTag_Delete(QAdoptSharedDataTag* self) {
+	delete self;
 }
 

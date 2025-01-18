@@ -57,7 +57,7 @@ void QGenericPlugin_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QGenericPlugin_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QGenericPlugin_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QGenericPlugin_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QGenericPlugin_Delete(QGenericPlugin* self, bool isSubclass);
+void QGenericPlugin_Delete(QGenericPlugin* self);
 
 #ifdef __cplusplus
 } /* extern C */

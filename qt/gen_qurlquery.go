@@ -360,7 +360,7 @@ func (this *QUrlQuery) AllQueryItemValues2(key string, encoding QUrl__ComponentF
 
 // Delete this object from C++ memory.
 func (this *QUrlQuery) Delete() {
-	C.QUrlQuery_Delete(this.h, C.bool(this.isSubclass))
+	C.QUrlQuery_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

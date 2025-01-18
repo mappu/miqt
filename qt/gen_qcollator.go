@@ -68,7 +68,7 @@ func (this *QCollatorSortKey) Compare(key *QCollatorSortKey) int {
 
 // Delete this object from C++ memory.
 func (this *QCollatorSortKey) Delete() {
-	C.QCollatorSortKey_Delete(this.h, C.bool(this.isSubclass))
+	C.QCollatorSortKey_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -219,7 +219,7 @@ func (this *QCollator) SortKey(stringVal string) *QCollatorSortKey {
 
 // Delete this object from C++ memory.
 func (this *QCollator) Delete() {
-	C.QCollator_Delete(this.h, C.bool(this.isSubclass))
+	C.QCollator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

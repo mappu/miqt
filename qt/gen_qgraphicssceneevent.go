@@ -76,7 +76,7 @@ func (this *QGraphicsSceneEvent) SetWidget(widget *QWidget) {
 
 // Delete this object from C++ memory.
 func (this *QGraphicsSceneEvent) Delete() {
-	C.QGraphicsSceneEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsSceneEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -273,7 +273,7 @@ func (this *QGraphicsSceneMouseEvent) SetFlags(flags MouseEventFlag) {
 
 // Delete this object from C++ memory.
 func (this *QGraphicsSceneMouseEvent) Delete() {
-	C.QGraphicsSceneMouseEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsSceneMouseEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -402,7 +402,7 @@ func (this *QGraphicsSceneWheelEvent) SetOrientation(orientation Orientation) {
 
 // Delete this object from C++ memory.
 func (this *QGraphicsSceneWheelEvent) Delete() {
-	C.QGraphicsSceneWheelEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsSceneWheelEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -515,7 +515,7 @@ func (this *QGraphicsSceneContextMenuEvent) SetReason(reason QGraphicsSceneConte
 
 // Delete this object from C++ memory.
 func (this *QGraphicsSceneContextMenuEvent) Delete() {
-	C.QGraphicsSceneContextMenuEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsSceneContextMenuEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -650,7 +650,7 @@ func (this *QGraphicsSceneHoverEvent) SetModifiers(modifiers KeyboardModifier) {
 
 // Delete this object from C++ memory.
 func (this *QGraphicsSceneHoverEvent) Delete() {
-	C.QGraphicsSceneHoverEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsSceneHoverEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -737,7 +737,7 @@ func (this *QGraphicsSceneHelpEvent) SetScreenPos(pos *QPoint) {
 
 // Delete this object from C++ memory.
 func (this *QGraphicsSceneHelpEvent) Delete() {
-	C.QGraphicsSceneHelpEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsSceneHelpEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -894,7 +894,7 @@ func (this *QGraphicsSceneDragDropEvent) SetMimeData(data *QMimeData) {
 
 // Delete this object from C++ memory.
 func (this *QGraphicsSceneDragDropEvent) Delete() {
-	C.QGraphicsSceneDragDropEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsSceneDragDropEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -973,7 +973,7 @@ func (this *QGraphicsSceneResizeEvent) SetNewSize(size *QSizeF) {
 
 // Delete this object from C++ memory.
 func (this *QGraphicsSceneResizeEvent) Delete() {
-	C.QGraphicsSceneResizeEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsSceneResizeEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1052,7 +1052,7 @@ func (this *QGraphicsSceneMoveEvent) SetNewPos(pos *QPointF) {
 
 // Delete this object from C++ memory.
 func (this *QGraphicsSceneMoveEvent) Delete() {
-	C.QGraphicsSceneMoveEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsSceneMoveEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

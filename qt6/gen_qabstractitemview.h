@@ -352,7 +352,7 @@ void QAbstractItemView_override_virtual_ContextMenuEvent(void* self, intptr_t sl
 void QAbstractItemView_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* param1);
 void QAbstractItemView_override_virtual_ScrollContentsBy(void* self, intptr_t slot);
 void QAbstractItemView_virtualbase_ScrollContentsBy(void* self, int dx, int dy);
-void QAbstractItemView_Delete(QAbstractItemView* self, bool isSubclass);
+void QAbstractItemView_Delete(QAbstractItemView* self);
 
 #ifdef __cplusplus
 } /* extern C */

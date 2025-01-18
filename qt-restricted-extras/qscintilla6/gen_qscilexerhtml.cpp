@@ -55,13 +55,13 @@ bool miqt_exec_callback_QsciLexerHTML_WriteProperties(void*, intptr_t, QSettings
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerHTML : public virtual QsciLexerHTML {
+class MiqtVirtualQsciLexerHTML final : public QsciLexerHTML {
 public:
 
 	MiqtVirtualQsciLexerHTML(): QsciLexerHTML() {};
 	MiqtVirtualQsciLexerHTML(QObject* parent): QsciLexerHTML(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerHTML() = default;
+	virtual ~MiqtVirtualQsciLexerHTML() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetFoldCompact = 0;
@@ -1403,11 +1403,7 @@ bool QsciLexerHTML_virtualbase_WriteProperties(const void* self, QSettings* qs, 
 	return ( (const MiqtVirtualQsciLexerHTML*)(self) )->virtualbase_WriteProperties(qs, prefix);
 }
 
-void QsciLexerHTML_Delete(QsciLexerHTML* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerHTML*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerHTML_Delete(QsciLexerHTML* self) {
+	delete self;
 }
 

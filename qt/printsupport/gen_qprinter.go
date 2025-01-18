@@ -721,7 +721,7 @@ func miqt_exec_callback_QPrinter_Metric(self *C.QPrinter, cb C.intptr_t, param1 
 
 // Delete this object from C++ memory.
 func (this *QPrinter) Delete() {
-	C.QPrinter_Delete(this.h, C.bool(this.isSubclass))
+	C.QPrinter_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

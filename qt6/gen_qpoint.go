@@ -136,7 +136,7 @@ func (this *QPoint) ToPointF() *QPointF {
 
 // Delete this object from C++ memory.
 func (this *QPoint) Delete() {
-	C.QPoint_Delete(this.h, C.bool(this.isSubclass))
+	C.QPoint_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -271,7 +271,7 @@ func (this *QPointF) ToPoint() *QPoint {
 
 // Delete this object from C++ memory.
 func (this *QPointF) Delete() {
-	C.QPointF_Delete(this.h, C.bool(this.isSubclass))
+	C.QPointF_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

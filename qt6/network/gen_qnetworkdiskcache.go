@@ -417,7 +417,7 @@ func miqt_exec_callback_QNetworkDiskCache_Expire(self *C.QNetworkDiskCache, cb C
 
 // Delete this object from C++ memory.
 func (this *QNetworkDiskCache) Delete() {
-	C.QNetworkDiskCache_Delete(this.h, C.bool(this.isSubclass))
+	C.QNetworkDiskCache_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

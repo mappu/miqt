@@ -29,12 +29,12 @@ QPainter* miqt_exec_callback_QPagedPaintDevice_SharedPainter(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQPagedPaintDevice : public virtual QPagedPaintDevice {
+class MiqtVirtualQPagedPaintDevice final : public QPagedPaintDevice {
 public:
 
 	MiqtVirtualQPagedPaintDevice(): QPagedPaintDevice() {};
 
-	virtual ~MiqtVirtualQPagedPaintDevice() = default;
+	virtual ~MiqtVirtualQPagedPaintDevice() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__NewPage = 0;
@@ -393,19 +393,11 @@ QPainter* QPagedPaintDevice_virtualbase_SharedPainter(const void* self) {
 	return ( (const MiqtVirtualQPagedPaintDevice*)(self) )->virtualbase_SharedPainter();
 }
 
-void QPagedPaintDevice_Delete(QPagedPaintDevice* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQPagedPaintDevice*>( self );
-	} else {
-		delete self;
-	}
+void QPagedPaintDevice_Delete(QPagedPaintDevice* self) {
+	delete self;
 }
 
-void QPagedPaintDevice__Margins_Delete(QPagedPaintDevice__Margins* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPagedPaintDevice::Margins*>( self );
-	} else {
-		delete self;
-	}
+void QPagedPaintDevice__Margins_Delete(QPagedPaintDevice__Margins* self) {
+	delete self;
 }
 

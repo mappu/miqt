@@ -755,7 +755,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_DisconnectNotify(self *C.QAb
 
 // Delete this object from C++ memory.
 func (this *QAbstractTextDocumentLayout) Delete() {
-	C.QAbstractTextDocumentLayout_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractTextDocumentLayout_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -816,7 +816,7 @@ func (this *QTextObjectInterface) OperatorAssign(param1 *QTextObjectInterface) {
 
 // Delete this object from C++ memory.
 func (this *QTextObjectInterface) Delete() {
-	C.QTextObjectInterface_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextObjectInterface_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -875,7 +875,7 @@ func (this *QAbstractTextDocumentLayout__Selection) OperatorAssign(param1 *QAbst
 
 // Delete this object from C++ memory.
 func (this *QAbstractTextDocumentLayout__Selection) Delete() {
-	C.QAbstractTextDocumentLayout__Selection_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractTextDocumentLayout__Selection_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -942,7 +942,7 @@ func (this *QAbstractTextDocumentLayout__PaintContext) OperatorAssign(param1 *QA
 
 // Delete this object from C++ memory.
 func (this *QAbstractTextDocumentLayout__PaintContext) Delete() {
-	C.QAbstractTextDocumentLayout__PaintContext_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractTextDocumentLayout__PaintContext_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

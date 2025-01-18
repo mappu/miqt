@@ -1243,7 +1243,7 @@ func miqt_exec_callback_QsciLexerCoffeeScript_WriteProperties(self *C.QsciLexerC
 
 // Delete this object from C++ memory.
 func (this *QsciLexerCoffeeScript) Delete() {
-	C.QsciLexerCoffeeScript_Delete(this.h, C.bool(this.isSubclass))
+	C.QsciLexerCoffeeScript_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

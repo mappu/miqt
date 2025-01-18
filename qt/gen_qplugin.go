@@ -54,7 +54,7 @@ func (this *QStaticPlugin) MetaData() *QJsonObject {
 
 // Delete this object from C++ memory.
 func (this *QStaticPlugin) Delete() {
-	C.QStaticPlugin_Delete(this.h, C.bool(this.isSubclass))
+	C.QStaticPlugin_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

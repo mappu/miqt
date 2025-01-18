@@ -125,11 +125,7 @@ bool QNetworkConfiguration_SetConnectTimeout(QNetworkConfiguration* self, int ti
 	return self->setConnectTimeout(static_cast<int>(timeout));
 }
 
-void QNetworkConfiguration_Delete(QNetworkConfiguration* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QNetworkConfiguration*>( self );
-	} else {
-		delete self;
-	}
+void QNetworkConfiguration_Delete(QNetworkConfiguration* self) {
+	delete self;
 }
 

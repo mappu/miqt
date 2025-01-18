@@ -33,7 +33,7 @@ void miqt_exec_callback_QPrinter_SetPageRanges(void*, intptr_t, QPageRanges*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQPrinter : public virtual QPrinter {
+class MiqtVirtualQPrinter final : public QPrinter {
 public:
 
 	MiqtVirtualQPrinter(): QPrinter() {};
@@ -41,7 +41,7 @@ public:
 	MiqtVirtualQPrinter(QPrinter::PrinterMode mode): QPrinter(mode) {};
 	MiqtVirtualQPrinter(const QPrinterInfo& printer, QPrinter::PrinterMode mode): QPrinter(printer, mode) {};
 
-	virtual ~MiqtVirtualQPrinter() = default;
+	virtual ~MiqtVirtualQPrinter() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__DevType = 0;
@@ -619,11 +619,7 @@ void QPrinter_virtualbase_SetPageRanges(void* self, QPageRanges* ranges) {
 	( (MiqtVirtualQPrinter*)(self) )->virtualbase_SetPageRanges(ranges);
 }
 
-void QPrinter_Delete(QPrinter* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQPrinter*>( self );
-	} else {
-		delete self;
-	}
+void QPrinter_Delete(QPrinter* self) {
+	delete self;
 }
 

@@ -133,7 +133,7 @@ func (this *QTextInlineObject) Format() *QTextFormat {
 
 // Delete this object from C++ memory.
 func (this *QTextInlineObject) Delete() {
-	C.QTextInlineObject_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextInlineObject_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -514,7 +514,7 @@ func (this *QTextLayout) GlyphRuns2(from int, length int) []QGlyphRun {
 
 // Delete this object from C++ memory.
 func (this *QTextLayout) Delete() {
-	C.QTextLayout_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextLayout_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -731,7 +731,7 @@ func (this *QTextLine) GlyphRuns2(from int, length int) []QGlyphRun {
 
 // Delete this object from C++ memory.
 func (this *QTextLine) Delete() {
-	C.QTextLine_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextLine_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -778,7 +778,7 @@ func UnsafeNewQTextLayout__FormatRange(h unsafe.Pointer) *QTextLayout__FormatRan
 
 // Delete this object from C++ memory.
 func (this *QTextLayout__FormatRange) Delete() {
-	C.QTextLayout__FormatRange_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextLayout__FormatRange_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

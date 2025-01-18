@@ -197,7 +197,7 @@ func (this *QItemSelectionRange) Indexes() []QModelIndex {
 
 // Delete this object from C++ memory.
 func (this *QItemSelectionRange) Delete() {
-	C.QItemSelectionRange_Delete(this.h, C.bool(this.isSubclass))
+	C.QItemSelectionRange_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -945,7 +945,7 @@ func miqt_exec_callback_QItemSelectionModel_DisconnectNotify(self *C.QItemSelect
 
 // Delete this object from C++ memory.
 func (this *QItemSelectionModel) Delete() {
-	C.QItemSelectionModel_Delete(this.h, C.bool(this.isSubclass))
+	C.QItemSelectionModel_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1042,7 +1042,7 @@ func (this *QItemSelection) OperatorAssign(param1 *QItemSelection) {
 
 // Delete this object from C++ memory.
 func (this *QItemSelection) Delete() {
-	C.QItemSelection_Delete(this.h, C.bool(this.isSubclass))
+	C.QItemSelection_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

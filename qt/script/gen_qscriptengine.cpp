@@ -70,21 +70,17 @@ void QScriptSyntaxCheckResult_OperatorAssign(QScriptSyntaxCheckResult* self, QSc
 	self->operator=(*other);
 }
 
-void QScriptSyntaxCheckResult_Delete(QScriptSyntaxCheckResult* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QScriptSyntaxCheckResult*>( self );
-	} else {
-		delete self;
-	}
+void QScriptSyntaxCheckResult_Delete(QScriptSyntaxCheckResult* self) {
+	delete self;
 }
 
-class MiqtVirtualQScriptEngine : public virtual QScriptEngine {
+class MiqtVirtualQScriptEngine final : public QScriptEngine {
 public:
 
 	MiqtVirtualQScriptEngine(): QScriptEngine() {};
 	MiqtVirtualQScriptEngine(QObject* parent): QScriptEngine(parent) {};
 
-	virtual ~MiqtVirtualQScriptEngine() = default;
+	virtual ~MiqtVirtualQScriptEngine() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -701,11 +697,7 @@ void QScriptEngine_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQScriptEngine*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QScriptEngine_Delete(QScriptEngine* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQScriptEngine*>( self );
-	} else {
-		delete self;
-	}
+void QScriptEngine_Delete(QScriptEngine* self) {
+	delete self;
 }
 

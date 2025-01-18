@@ -39,21 +39,17 @@ void QVideoFilterRunnable_OperatorAssign(QVideoFilterRunnable* self, QVideoFilte
 	self->operator=(*param1);
 }
 
-void QVideoFilterRunnable_Delete(QVideoFilterRunnable* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QVideoFilterRunnable*>( self );
-	} else {
-		delete self;
-	}
+void QVideoFilterRunnable_Delete(QVideoFilterRunnable* self) {
+	delete self;
 }
 
-class MiqtVirtualQAbstractVideoFilter : public virtual QAbstractVideoFilter {
+class MiqtVirtualQAbstractVideoFilter final : public QAbstractVideoFilter {
 public:
 
 	MiqtVirtualQAbstractVideoFilter(): QAbstractVideoFilter() {};
 	MiqtVirtualQAbstractVideoFilter(QObject* parent): QAbstractVideoFilter(parent) {};
 
-	virtual ~MiqtVirtualQAbstractVideoFilter() = default;
+	virtual ~MiqtVirtualQAbstractVideoFilter() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__CreateFilterRunnable = 0;
@@ -411,11 +407,7 @@ void QAbstractVideoFilter_virtualbase_DisconnectNotify(void* self, QMetaMethod* 
 	( (MiqtVirtualQAbstractVideoFilter*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QAbstractVideoFilter_Delete(QAbstractVideoFilter* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractVideoFilter*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractVideoFilter_Delete(QAbstractVideoFilter* self) {
+	delete self;
 }
 

@@ -886,7 +886,7 @@ func (this *QVariant) ToReal1(ok *bool) float64 {
 
 // Delete this object from C++ memory.
 func (this *QVariant) Delete() {
-	C.QVariant_Delete(this.h, C.bool(this.isSubclass))
+	C.QVariant_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -963,7 +963,7 @@ func (this *QVariantConstPointer) OperatorAssign(param1 *QVariantConstPointer) {
 
 // Delete this object from C++ memory.
 func (this *QVariantConstPointer) Delete() {
-	C.QVariantConstPointer_Delete(this.h, C.bool(this.isSubclass))
+	C.QVariantConstPointer_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

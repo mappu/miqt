@@ -33,13 +33,13 @@ void miqt_exec_callback_QScriptExtensionPlugin_DisconnectNotify(void*, intptr_t,
 } /* extern C */
 #endif
 
-class MiqtVirtualQScriptExtensionPlugin : public virtual QScriptExtensionPlugin {
+class MiqtVirtualQScriptExtensionPlugin final : public QScriptExtensionPlugin {
 public:
 
 	MiqtVirtualQScriptExtensionPlugin(): QScriptExtensionPlugin() {};
 	MiqtVirtualQScriptExtensionPlugin(QObject* parent): QScriptExtensionPlugin(parent) {};
 
-	virtual ~MiqtVirtualQScriptExtensionPlugin() = default;
+	virtual ~MiqtVirtualQScriptExtensionPlugin() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Keys = 0;
@@ -441,11 +441,7 @@ void QScriptExtensionPlugin_virtualbase_DisconnectNotify(void* self, QMetaMethod
 	( (MiqtVirtualQScriptExtensionPlugin*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QScriptExtensionPlugin_Delete(QScriptExtensionPlugin* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQScriptExtensionPlugin*>( self );
-	} else {
-		delete self;
-	}
+void QScriptExtensionPlugin_Delete(QScriptExtensionPlugin* self) {
+	delete self;
 }
 

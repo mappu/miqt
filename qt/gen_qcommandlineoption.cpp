@@ -207,11 +207,7 @@ bool QCommandLineOption_IsHidden(const QCommandLineOption* self) {
 	return self->isHidden();
 }
 
-void QCommandLineOption_Delete(QCommandLineOption* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QCommandLineOption*>( self );
-	} else {
-		delete self;
-	}
+void QCommandLineOption_Delete(QCommandLineOption* self) {
+	delete self;
 }
 

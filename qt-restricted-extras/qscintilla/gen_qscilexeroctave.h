@@ -42,7 +42,7 @@ struct miqt_string QsciLexerOctave_Tr2(const char* s, const char* c);
 struct miqt_string QsciLexerOctave_Tr3(const char* s, const char* c, int n);
 struct miqt_string QsciLexerOctave_TrUtf82(const char* s, const char* c);
 struct miqt_string QsciLexerOctave_TrUtf83(const char* s, const char* c, int n);
-void QsciLexerOctave_Delete(QsciLexerOctave* self, bool isSubclass);
+void QsciLexerOctave_Delete(QsciLexerOctave* self);
 
 #ifdef __cplusplus
 } /* extern C */

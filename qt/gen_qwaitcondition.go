@@ -96,7 +96,7 @@ func (this *QWaitCondition) Wait23(lockedReadWriteLock *QReadWriteLock, deadline
 
 // Delete this object from C++ memory.
 func (this *QWaitCondition) Delete() {
-	C.QWaitCondition_Delete(this.h, C.bool(this.isSubclass))
+	C.QWaitCondition_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

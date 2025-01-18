@@ -87,12 +87,8 @@ struct miqt_string QOperatingSystemVersionBase_Name2(const QOperatingSystemVersi
 	return _ms;
 }
 
-void QOperatingSystemVersionBase_Delete(QOperatingSystemVersionBase* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QOperatingSystemVersionBase*>( self );
-	} else {
-		delete self;
-	}
+void QOperatingSystemVersionBase_Delete(QOperatingSystemVersionBase* self) {
+	delete self;
 }
 
 QOperatingSystemVersion* QOperatingSystemVersion_new(QOperatingSystemVersionBase* osversion) {
@@ -164,11 +160,7 @@ struct miqt_string QOperatingSystemVersion_Name(const QOperatingSystemVersion* s
 	return _ms;
 }
 
-void QOperatingSystemVersion_Delete(QOperatingSystemVersion* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QOperatingSystemVersion*>( self );
-	} else {
-		delete self;
-	}
+void QOperatingSystemVersion_Delete(QOperatingSystemVersion* self) {
+	delete self;
 }
 

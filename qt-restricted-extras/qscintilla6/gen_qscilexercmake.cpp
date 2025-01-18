@@ -53,13 +53,13 @@ bool miqt_exec_callback_QsciLexerCMake_WriteProperties(void*, intptr_t, QSetting
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerCMake : public virtual QsciLexerCMake {
+class MiqtVirtualQsciLexerCMake final : public QsciLexerCMake {
 public:
 
 	MiqtVirtualQsciLexerCMake(): QsciLexerCMake() {};
 	MiqtVirtualQsciLexerCMake(QObject* parent): QsciLexerCMake(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerCMake() = default;
+	virtual ~MiqtVirtualQsciLexerCMake() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetFoldAtElse = 0;
@@ -1277,11 +1277,7 @@ bool QsciLexerCMake_virtualbase_WriteProperties(const void* self, QSettings* qs,
 	return ( (const MiqtVirtualQsciLexerCMake*)(self) )->virtualbase_WriteProperties(qs, prefix);
 }
 
-void QsciLexerCMake_Delete(QsciLexerCMake* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerCMake*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerCMake_Delete(QsciLexerCMake* self) {
+	delete self;
 }
 

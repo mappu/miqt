@@ -176,7 +176,7 @@ func (this *QSize) ToSizeF() *QSizeF {
 
 // Delete this object from C++ memory.
 func (this *QSize) Delete() {
-	C.QSize_Delete(this.h, C.bool(this.isSubclass))
+	C.QSize_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -359,7 +359,7 @@ func (this *QSizeF) ToSize() *QSize {
 
 // Delete this object from C++ memory.
 func (this *QSizeF) Delete() {
-	C.QSizeF_Delete(this.h, C.bool(this.isSubclass))
+	C.QSizeF_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

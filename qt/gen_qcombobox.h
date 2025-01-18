@@ -305,7 +305,7 @@ void QComboBox_override_virtual_SharedPainter(void* self, intptr_t slot);
 QPainter* QComboBox_virtualbase_SharedPainter(const void* self);
 void QComboBox_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QComboBox_virtualbase_FocusNextPrevChild(void* self, bool next);
-void QComboBox_Delete(QComboBox* self, bool isSubclass);
+void QComboBox_Delete(QComboBox* self);
 
 #ifdef __cplusplus
 } /* extern C */

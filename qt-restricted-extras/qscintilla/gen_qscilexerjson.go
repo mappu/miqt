@@ -1204,7 +1204,7 @@ func miqt_exec_callback_QsciLexerJSON_WriteProperties(self *C.QsciLexerJSON, cb 
 
 // Delete this object from C++ memory.
 func (this *QsciLexerJSON) Delete() {
-	C.QsciLexerJSON_Delete(this.h, C.bool(this.isSubclass))
+	C.QsciLexerJSON_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

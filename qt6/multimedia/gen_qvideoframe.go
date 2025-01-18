@@ -253,7 +253,7 @@ func (this *QVideoFrame) Paint(painter *qt6.QPainter, rect *qt6.QRectF, options 
 
 // Delete this object from C++ memory.
 func (this *QVideoFrame) Delete() {
-	C.QVideoFrame_Delete(this.h, C.bool(this.isSubclass))
+	C.QVideoFrame_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -300,7 +300,7 @@ func UnsafeNewQVideoFrame__PaintOptions(h unsafe.Pointer) *QVideoFrame__PaintOpt
 
 // Delete this object from C++ memory.
 func (this *QVideoFrame__PaintOptions) Delete() {
-	C.QVideoFrame__PaintOptions_Delete(this.h, C.bool(this.isSubclass))
+	C.QVideoFrame__PaintOptions_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

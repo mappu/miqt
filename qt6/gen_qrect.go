@@ -414,7 +414,7 @@ func (this *QRect) Contains23(p *QPoint, proper bool) bool {
 
 // Delete this object from C++ memory.
 func (this *QRect) Delete() {
-	C.QRect_Delete(this.h, C.bool(this.isSubclass))
+	C.QRect_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -823,7 +823,7 @@ func (this *QRectF) ToAlignedRect() *QRect {
 
 // Delete this object from C++ memory.
 func (this *QRectF) Delete() {
-	C.QRectF_Delete(this.h, C.bool(this.isSubclass))
+	C.QRectF_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

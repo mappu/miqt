@@ -145,7 +145,7 @@ void QMediaPlayer_override_virtual_IsAvailable(void* self, intptr_t slot);
 bool QMediaPlayer_virtualbase_IsAvailable(const void* self);
 void QMediaPlayer_override_virtual_Service(void* self, intptr_t slot);
 QMediaService* QMediaPlayer_virtualbase_Service(const void* self);
-void QMediaPlayer_Delete(QMediaPlayer* self, bool isSubclass);
+void QMediaPlayer_Delete(QMediaPlayer* self);
 
 #ifdef __cplusplus
 } /* extern C */

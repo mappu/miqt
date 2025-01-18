@@ -76,7 +76,7 @@ long long QPalette_CacheKey(const QPalette* self);
 QPalette* QPalette_Resolve(const QPalette* self, QPalette* other);
 unsigned long long QPalette_ResolveMask(const QPalette* self);
 void QPalette_SetResolveMask(QPalette* self, unsigned long long mask);
-void QPalette_Delete(QPalette* self, bool isSubclass);
+void QPalette_Delete(QPalette* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -69,7 +69,7 @@ func (this *QWidgetData) OperatorAssign(param1 *QWidgetData) {
 
 // Delete this object from C++ memory.
 func (this *QWidgetData) Delete() {
-	C.QWidgetData_Delete(this.h, C.bool(this.isSubclass))
+	C.QWidgetData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2803,7 +2803,7 @@ func miqt_exec_callback_QWidget_DisconnectNotify(self *C.QWidget, cb C.intptr_t,
 
 // Delete this object from C++ memory.
 func (this *QWidget) Delete() {
-	C.QWidget_Delete(this.h, C.bool(this.isSubclass))
+	C.QWidget_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

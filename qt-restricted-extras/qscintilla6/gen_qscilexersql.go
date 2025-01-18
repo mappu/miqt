@@ -1303,7 +1303,7 @@ func miqt_exec_callback_QsciLexerSQL_WriteProperties(self *C.QsciLexerSQL, cb C.
 
 // Delete this object from C++ memory.
 func (this *QsciLexerSQL) Delete() {
-	C.QsciLexerSQL_Delete(this.h, C.bool(this.isSubclass))
+	C.QsciLexerSQL_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

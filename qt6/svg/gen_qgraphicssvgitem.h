@@ -71,7 +71,7 @@ void QGraphicsSvgItem_override_virtual_Type(void* self, intptr_t slot);
 int QGraphicsSvgItem_virtualbase_Type(const void* self);
 void QGraphicsSvgItem_override_virtual_Event(void* self, intptr_t slot);
 bool QGraphicsSvgItem_virtualbase_Event(void* self, QEvent* ev);
-void QGraphicsSvgItem_Delete(QGraphicsSvgItem* self, bool isSubclass);
+void QGraphicsSvgItem_Delete(QGraphicsSvgItem* self);
 
 #ifdef __cplusplus
 } /* extern C */

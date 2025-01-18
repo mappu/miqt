@@ -97,13 +97,13 @@ bool miqt_exec_callback_QAbstractButton_FocusNextPrevChild(void*, intptr_t, bool
 } /* extern C */
 #endif
 
-class MiqtVirtualQAbstractButton : public virtual QAbstractButton {
+class MiqtVirtualQAbstractButton final : public QAbstractButton {
 public:
 
 	MiqtVirtualQAbstractButton(QWidget* parent): QAbstractButton(parent) {};
 	MiqtVirtualQAbstractButton(): QAbstractButton() {};
 
-	virtual ~MiqtVirtualQAbstractButton() = default;
+	virtual ~MiqtVirtualQAbstractButton() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__PaintEvent = 0;
@@ -1743,11 +1743,7 @@ bool QAbstractButton_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQAbstractButton*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QAbstractButton_Delete(QAbstractButton* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractButton*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractButton_Delete(QAbstractButton* self) {
+	delete self;
 }
 

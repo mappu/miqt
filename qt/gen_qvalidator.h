@@ -81,7 +81,7 @@ void QValidator_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QValidator_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QValidator_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QValidator_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QValidator_Delete(QValidator* self, bool isSubclass);
+void QValidator_Delete(QValidator* self);
 
 QIntValidator* QIntValidator_new();
 QIntValidator* QIntValidator_new2(int bottom, int top);
@@ -113,7 +113,7 @@ void QIntValidator_override_virtual_Fixup(void* self, intptr_t slot);
 void QIntValidator_virtualbase_Fixup(const void* self, struct miqt_string input);
 void QIntValidator_override_virtual_SetRange(void* self, intptr_t slot);
 void QIntValidator_virtualbase_SetRange(void* self, int bottom, int top);
-void QIntValidator_Delete(QIntValidator* self, bool isSubclass);
+void QIntValidator_Delete(QIntValidator* self);
 
 QDoubleValidator* QDoubleValidator_new();
 QDoubleValidator* QDoubleValidator_new2(double bottom, double top, int decimals);
@@ -152,7 +152,7 @@ void QDoubleValidator_override_virtual_SetRange(void* self, intptr_t slot);
 void QDoubleValidator_virtualbase_SetRange(void* self, double bottom, double top, int decimals);
 void QDoubleValidator_override_virtual_Fixup(void* self, intptr_t slot);
 void QDoubleValidator_virtualbase_Fixup(const void* self, struct miqt_string param1);
-void QDoubleValidator_Delete(QDoubleValidator* self, bool isSubclass);
+void QDoubleValidator_Delete(QDoubleValidator* self);
 
 QRegExpValidator* QRegExpValidator_new();
 QRegExpValidator* QRegExpValidator_new2(QRegExp* rx);
@@ -176,7 +176,7 @@ void QRegExpValidator_override_virtual_Validate(void* self, intptr_t slot);
 int QRegExpValidator_virtualbase_Validate(const void* self, struct miqt_string input, int* pos);
 void QRegExpValidator_override_virtual_Fixup(void* self, intptr_t slot);
 void QRegExpValidator_virtualbase_Fixup(const void* self, struct miqt_string param1);
-void QRegExpValidator_Delete(QRegExpValidator* self, bool isSubclass);
+void QRegExpValidator_Delete(QRegExpValidator* self);
 
 QRegularExpressionValidator* QRegularExpressionValidator_new();
 QRegularExpressionValidator* QRegularExpressionValidator_new2(QRegularExpression* re);
@@ -200,7 +200,7 @@ void QRegularExpressionValidator_override_virtual_Validate(void* self, intptr_t 
 int QRegularExpressionValidator_virtualbase_Validate(const void* self, struct miqt_string input, int* pos);
 void QRegularExpressionValidator_override_virtual_Fixup(void* self, intptr_t slot);
 void QRegularExpressionValidator_virtualbase_Fixup(const void* self, struct miqt_string param1);
-void QRegularExpressionValidator_Delete(QRegularExpressionValidator* self, bool isSubclass);
+void QRegularExpressionValidator_Delete(QRegularExpressionValidator* self);
 
 #ifdef __cplusplus
 } /* extern C */

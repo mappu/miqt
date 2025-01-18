@@ -36,13 +36,13 @@ long long miqt_exec_callback_QBuffer_ReadLineData(void*, intptr_t, char*, long l
 } /* extern C */
 #endif
 
-class MiqtVirtualQBuffer : public virtual QBuffer {
+class MiqtVirtualQBuffer final : public QBuffer {
 public:
 
 	MiqtVirtualQBuffer(): QBuffer() {};
 	MiqtVirtualQBuffer(QObject* parent): QBuffer(parent) {};
 
-	virtual ~MiqtVirtualQBuffer() = default;
+	virtual ~MiqtVirtualQBuffer() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Open = 0;
@@ -769,11 +769,7 @@ long long QBuffer_virtualbase_ReadLineData(void* self, char* data, long long max
 	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_ReadLineData(data, maxlen);
 }
 
-void QBuffer_Delete(QBuffer* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQBuffer*>( self );
-	} else {
-		delete self;
-	}
+void QBuffer_Delete(QBuffer* self) {
+	delete self;
 }
 

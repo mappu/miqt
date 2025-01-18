@@ -44,7 +44,7 @@ struct miqt_string QsciLexerFortran_TrUtf82(const char* s, const char* c);
 struct miqt_string QsciLexerFortran_TrUtf83(const char* s, const char* c, int n);
 void QsciLexerFortran_override_virtual_SetFoldCompact(void* self, intptr_t slot);
 void QsciLexerFortran_virtualbase_SetFoldCompact(void* self, bool fold);
-void QsciLexerFortran_Delete(QsciLexerFortran* self, bool isSubclass);
+void QsciLexerFortran_Delete(QsciLexerFortran* self);
 
 #ifdef __cplusplus
 } /* extern C */

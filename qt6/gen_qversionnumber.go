@@ -179,7 +179,7 @@ func QVersionNumber_FromString2(stringVal QAnyStringView, suffixIndex *int64) *Q
 
 // Delete this object from C++ memory.
 func (this *QVersionNumber) Delete() {
-	C.QVersionNumber_Delete(this.h, C.bool(this.isSubclass))
+	C.QVersionNumber_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -268,7 +268,7 @@ func (this *QTypeRevision) IsValid() bool {
 
 // Delete this object from C++ memory.
 func (this *QTypeRevision) Delete() {
-	C.QTypeRevision_Delete(this.h, C.bool(this.isSubclass))
+	C.QTypeRevision_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

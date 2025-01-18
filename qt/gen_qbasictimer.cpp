@@ -47,11 +47,7 @@ void QBasicTimer_Stop(QBasicTimer* self) {
 	self->stop();
 }
 
-void QBasicTimer_Delete(QBasicTimer* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QBasicTimer*>( self );
-	} else {
-		delete self;
-	}
+void QBasicTimer_Delete(QBasicTimer* self) {
+	delete self;
 }
 

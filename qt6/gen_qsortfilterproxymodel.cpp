@@ -75,13 +75,13 @@ struct miqt_map /* of int to struct miqt_string */  miqt_exec_callback_QSortFilt
 } /* extern C */
 #endif
 
-class MiqtVirtualQSortFilterProxyModel : public virtual QSortFilterProxyModel {
+class MiqtVirtualQSortFilterProxyModel final : public QSortFilterProxyModel {
 public:
 
 	MiqtVirtualQSortFilterProxyModel(): QSortFilterProxyModel() {};
 	MiqtVirtualQSortFilterProxyModel(QObject* parent): QSortFilterProxyModel(parent) {};
 
-	virtual ~MiqtVirtualQSortFilterProxyModel() = default;
+	virtual ~MiqtVirtualQSortFilterProxyModel() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetSourceModel = 0;
@@ -1994,11 +1994,7 @@ struct miqt_map /* of int to struct miqt_string */  QSortFilterProxyModel_virtua
 	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->virtualbase_RoleNames();
 }
 
-void QSortFilterProxyModel_Delete(QSortFilterProxyModel* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSortFilterProxyModel*>( self );
-	} else {
-		delete self;
-	}
+void QSortFilterProxyModel_Delete(QSortFilterProxyModel* self) {
+	delete self;
 }
 

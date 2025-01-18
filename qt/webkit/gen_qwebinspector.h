@@ -179,7 +179,7 @@ void QWebInspector_override_virtual_InputMethodQuery(void* self, intptr_t slot);
 QVariant* QWebInspector_virtualbase_InputMethodQuery(const void* self, int param1);
 void QWebInspector_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QWebInspector_virtualbase_FocusNextPrevChild(void* self, bool next);
-void QWebInspector_Delete(QWebInspector* self, bool isSubclass);
+void QWebInspector_Delete(QWebInspector* self);
 
 #ifdef __cplusplus
 } /* extern C */

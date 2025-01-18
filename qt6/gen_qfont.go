@@ -708,7 +708,7 @@ func (this *QFont) SetStyleHint2(param1 QFont__StyleHint, param2 QFont__StyleStr
 
 // Delete this object from C++ memory.
 func (this *QFont) Delete() {
-	C.QFont_Delete(this.h, C.bool(this.isSubclass))
+	C.QFont_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

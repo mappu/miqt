@@ -781,7 +781,7 @@ func miqt_exec_callback_QLabel_FocusNextPrevChild(self *C.QLabel, cb C.intptr_t,
 
 // Delete this object from C++ memory.
 func (this *QLabel) Delete() {
-	C.QLabel_Delete(this.h, C.bool(this.isSubclass))
+	C.QLabel_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

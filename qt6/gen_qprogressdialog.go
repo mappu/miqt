@@ -674,7 +674,7 @@ func miqt_exec_callback_QProgressDialog_EventFilter(self *C.QProgressDialog, cb 
 
 // Delete this object from C++ memory.
 func (this *QProgressDialog) Delete() {
-	C.QProgressDialog_Delete(this.h, C.bool(this.isSubclass))
+	C.QProgressDialog_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

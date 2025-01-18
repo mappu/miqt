@@ -466,7 +466,7 @@ func miqt_exec_callback_QToolBox_PaintEvent(self *C.QToolBox, cb C.intptr_t, par
 
 // Delete this object from C++ memory.
 func (this *QToolBox) Delete() {
-	C.QToolBox_Delete(this.h, C.bool(this.isSubclass))
+	C.QToolBox_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

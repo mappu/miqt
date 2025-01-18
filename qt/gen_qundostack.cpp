@@ -38,7 +38,7 @@ void miqt_exec_callback_QUndoStack_DisconnectNotify(void*, intptr_t, QMetaMethod
 } /* extern C */
 #endif
 
-class MiqtVirtualQUndoCommand : public virtual QUndoCommand {
+class MiqtVirtualQUndoCommand final : public QUndoCommand {
 public:
 
 	MiqtVirtualQUndoCommand(): QUndoCommand() {};
@@ -46,7 +46,7 @@ public:
 	MiqtVirtualQUndoCommand(QUndoCommand* parent): QUndoCommand(parent) {};
 	MiqtVirtualQUndoCommand(const QString& text, QUndoCommand* parent): QUndoCommand(text, parent) {};
 
-	virtual ~MiqtVirtualQUndoCommand() = default;
+	virtual ~MiqtVirtualQUndoCommand() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Undo = 0;
@@ -250,21 +250,17 @@ bool QUndoCommand_virtualbase_MergeWith(void* self, QUndoCommand* other) {
 	return ( (MiqtVirtualQUndoCommand*)(self) )->virtualbase_MergeWith(other);
 }
 
-void QUndoCommand_Delete(QUndoCommand* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQUndoCommand*>( self );
-	} else {
-		delete self;
-	}
+void QUndoCommand_Delete(QUndoCommand* self) {
+	delete self;
 }
 
-class MiqtVirtualQUndoStack : public virtual QUndoStack {
+class MiqtVirtualQUndoStack final : public QUndoStack {
 public:
 
 	MiqtVirtualQUndoStack(): QUndoStack() {};
 	MiqtVirtualQUndoStack(QObject* parent): QUndoStack(parent) {};
 
-	virtual ~MiqtVirtualQUndoStack() = default;
+	virtual ~MiqtVirtualQUndoStack() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -799,11 +795,7 @@ void QUndoStack_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQUndoStack*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QUndoStack_Delete(QUndoStack* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQUndoStack*>( self );
-	} else {
-		delete self;
-	}
+void QUndoStack_Delete(QUndoStack* self) {
+	delete self;
 }
 

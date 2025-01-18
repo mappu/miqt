@@ -22,7 +22,7 @@ void miqt_exec_callback_QPauseAnimation_UpdateDirection(void*, intptr_t, int);
 } /* extern C */
 #endif
 
-class MiqtVirtualQPauseAnimation : public virtual QPauseAnimation {
+class MiqtVirtualQPauseAnimation final : public QPauseAnimation {
 public:
 
 	MiqtVirtualQPauseAnimation(): QPauseAnimation() {};
@@ -30,7 +30,7 @@ public:
 	MiqtVirtualQPauseAnimation(QObject* parent): QPauseAnimation(parent) {};
 	MiqtVirtualQPauseAnimation(int msecs, QObject* parent): QPauseAnimation(msecs, parent) {};
 
-	virtual ~MiqtVirtualQPauseAnimation() = default;
+	virtual ~MiqtVirtualQPauseAnimation() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Duration = 0;
@@ -297,11 +297,7 @@ void QPauseAnimation_virtualbase_UpdateDirection(void* self, int direction) {
 	( (MiqtVirtualQPauseAnimation*)(self) )->virtualbase_UpdateDirection(direction);
 }
 
-void QPauseAnimation_Delete(QPauseAnimation* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQPauseAnimation*>( self );
-	} else {
-		delete self;
-	}
+void QPauseAnimation_Delete(QPauseAnimation* self) {
+	delete self;
 }
 

@@ -60,7 +60,7 @@ void QSequentialAnimationGroup_override_virtual_UpdateState(void* self, intptr_t
 void QSequentialAnimationGroup_virtualbase_UpdateState(void* self, int newState, int oldState);
 void QSequentialAnimationGroup_override_virtual_UpdateDirection(void* self, intptr_t slot);
 void QSequentialAnimationGroup_virtualbase_UpdateDirection(void* self, int direction);
-void QSequentialAnimationGroup_Delete(QSequentialAnimationGroup* self, bool isSubclass);
+void QSequentialAnimationGroup_Delete(QSequentialAnimationGroup* self);
 
 #ifdef __cplusplus
 } /* extern C */

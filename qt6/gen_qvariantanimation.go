@@ -429,7 +429,7 @@ func miqt_exec_callback_QVariantAnimation_UpdateDirection(self *C.QVariantAnimat
 
 // Delete this object from C++ memory.
 func (this *QVariantAnimation) Delete() {
-	C.QVariantAnimation_Delete(this.h, C.bool(this.isSubclass))
+	C.QVariantAnimation_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

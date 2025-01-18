@@ -1249,7 +1249,7 @@ func miqt_exec_callback_QSvgWidget_FocusNextPrevChild(self *C.QSvgWidget, cb C.i
 
 // Delete this object from C++ memory.
 func (this *QSvgWidget) Delete() {
-	C.QSvgWidget_Delete(this.h, C.bool(this.isSubclass))
+	C.QSvgWidget_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

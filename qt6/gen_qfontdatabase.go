@@ -449,7 +449,7 @@ func QFontDatabase_IsFixedPitch2(family string, style string) bool {
 
 // Delete this object from C++ memory.
 func (this *QFontDatabase) Delete() {
-	C.QFontDatabase_Delete(this.h, C.bool(this.isSubclass))
+	C.QFontDatabase_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

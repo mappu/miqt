@@ -70,7 +70,7 @@ void QTimer_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QTimer_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QTimer_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QTimer_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QTimer_Delete(QTimer* self, bool isSubclass);
+void QTimer_Delete(QTimer* self);
 
 #ifdef __cplusplus
 } /* extern C */

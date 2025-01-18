@@ -22,7 +22,7 @@ bool miqt_exec_callback_QSignalTransition_Event(void*, intptr_t, QEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQSignalTransition : public virtual QSignalTransition {
+class MiqtVirtualQSignalTransition final : public QSignalTransition {
 public:
 
 	MiqtVirtualQSignalTransition(): QSignalTransition() {};
@@ -30,7 +30,7 @@ public:
 	MiqtVirtualQSignalTransition(QState* sourceState): QSignalTransition(sourceState) {};
 	MiqtVirtualQSignalTransition(const QObject* sender, const char* signal, QState* sourceState): QSignalTransition(sender, signal, sourceState) {};
 
-	virtual ~MiqtVirtualQSignalTransition() = default;
+	virtual ~MiqtVirtualQSignalTransition() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__EventTest = 0;
@@ -244,11 +244,7 @@ bool QSignalTransition_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQSignalTransition*)(self) )->virtualbase_Event(e);
 }
 
-void QSignalTransition_Delete(QSignalTransition* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSignalTransition*>( self );
-	} else {
-		delete self;
-	}
+void QSignalTransition_Delete(QSignalTransition* self) {
+	delete self;
 }
 

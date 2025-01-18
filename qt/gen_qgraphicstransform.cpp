@@ -41,13 +41,13 @@ void miqt_exec_callback_QGraphicsRotation_ApplyTo(void*, intptr_t, QMatrix4x4*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQGraphicsTransform : public virtual QGraphicsTransform {
+class MiqtVirtualQGraphicsTransform final : public QGraphicsTransform {
 public:
 
 	MiqtVirtualQGraphicsTransform(): QGraphicsTransform() {};
 	MiqtVirtualQGraphicsTransform(QObject* parent): QGraphicsTransform(parent) {};
 
-	virtual ~MiqtVirtualQGraphicsTransform() = default;
+	virtual ~MiqtVirtualQGraphicsTransform() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__ApplyTo = 0;
@@ -388,21 +388,17 @@ void QGraphicsTransform_virtualbase_DisconnectNotify(void* self, QMetaMethod* si
 	( (MiqtVirtualQGraphicsTransform*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QGraphicsTransform_Delete(QGraphicsTransform* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsTransform*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsTransform_Delete(QGraphicsTransform* self) {
+	delete self;
 }
 
-class MiqtVirtualQGraphicsScale : public virtual QGraphicsScale {
+class MiqtVirtualQGraphicsScale final : public QGraphicsScale {
 public:
 
 	MiqtVirtualQGraphicsScale(): QGraphicsScale() {};
 	MiqtVirtualQGraphicsScale(QObject* parent): QGraphicsScale(parent) {};
 
-	virtual ~MiqtVirtualQGraphicsScale() = default;
+	virtual ~MiqtVirtualQGraphicsScale() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__ApplyTo = 0;
@@ -613,21 +609,17 @@ void QGraphicsScale_virtualbase_ApplyTo(const void* self, QMatrix4x4* matrix) {
 	( (const MiqtVirtualQGraphicsScale*)(self) )->virtualbase_ApplyTo(matrix);
 }
 
-void QGraphicsScale_Delete(QGraphicsScale* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsScale*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsScale_Delete(QGraphicsScale* self) {
+	delete self;
 }
 
-class MiqtVirtualQGraphicsRotation : public virtual QGraphicsRotation {
+class MiqtVirtualQGraphicsRotation final : public QGraphicsRotation {
 public:
 
 	MiqtVirtualQGraphicsRotation(): QGraphicsRotation() {};
 	MiqtVirtualQGraphicsRotation(QObject* parent): QGraphicsRotation(parent) {};
 
-	virtual ~MiqtVirtualQGraphicsRotation() = default;
+	virtual ~MiqtVirtualQGraphicsRotation() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__ApplyTo = 0;
@@ -812,11 +804,7 @@ void QGraphicsRotation_virtualbase_ApplyTo(const void* self, QMatrix4x4* matrix)
 	( (const MiqtVirtualQGraphicsRotation*)(self) )->virtualbase_ApplyTo(matrix);
 }
 
-void QGraphicsRotation_Delete(QGraphicsRotation* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsRotation*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsRotation_Delete(QGraphicsRotation* self) {
+	delete self;
 }
 

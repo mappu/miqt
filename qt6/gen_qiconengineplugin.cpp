@@ -28,13 +28,13 @@ void miqt_exec_callback_QIconEnginePlugin_DisconnectNotify(void*, intptr_t, QMet
 } /* extern C */
 #endif
 
-class MiqtVirtualQIconEnginePlugin : public virtual QIconEnginePlugin {
+class MiqtVirtualQIconEnginePlugin final : public QIconEnginePlugin {
 public:
 
 	MiqtVirtualQIconEnginePlugin(): QIconEnginePlugin() {};
 	MiqtVirtualQIconEnginePlugin(QObject* parent): QIconEnginePlugin(parent) {};
 
-	virtual ~MiqtVirtualQIconEnginePlugin() = default;
+	virtual ~MiqtVirtualQIconEnginePlugin() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Create = 0;
@@ -350,11 +350,7 @@ void QIconEnginePlugin_virtualbase_DisconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualQIconEnginePlugin*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QIconEnginePlugin_Delete(QIconEnginePlugin* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQIconEnginePlugin*>( self );
-	} else {
-		delete self;
-	}
+void QIconEnginePlugin_Delete(QIconEnginePlugin* self) {
+	delete self;
 }
 

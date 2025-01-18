@@ -39,7 +39,7 @@ void QGestureRecognizer_override_virtual_Recognize(void* self, intptr_t slot);
 int QGestureRecognizer_virtualbase_Recognize(void* self, QGesture* state, QObject* watched, QEvent* event);
 void QGestureRecognizer_override_virtual_Reset(void* self, intptr_t slot);
 void QGestureRecognizer_virtualbase_Reset(void* self, QGesture* state);
-void QGestureRecognizer_Delete(QGestureRecognizer* self, bool isSubclass);
+void QGestureRecognizer_Delete(QGestureRecognizer* self);
 
 #ifdef __cplusplus
 } /* extern C */

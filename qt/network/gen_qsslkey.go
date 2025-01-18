@@ -237,7 +237,7 @@ func (this *QSslKey) ToDer1(passPhrase []byte) []byte {
 
 // Delete this object from C++ memory.
 func (this *QSslKey) Delete() {
-	C.QSslKey_Delete(this.h, C.bool(this.isSubclass))
+	C.QSslKey_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

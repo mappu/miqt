@@ -46,7 +46,7 @@ QScriptValue* QScriptContext_ThrowError(QScriptContext* self, int error, struct 
 QScriptValue* QScriptContext_ThrowErrorWithText(QScriptContext* self, struct miqt_string text);
 struct miqt_array /* of struct miqt_string */  QScriptContext_Backtrace(const QScriptContext* self);
 struct miqt_string QScriptContext_ToString(const QScriptContext* self);
-void QScriptContext_Delete(QScriptContext* self, bool isSubclass);
+void QScriptContext_Delete(QScriptContext* self);
 
 #ifdef __cplusplus
 } /* extern C */

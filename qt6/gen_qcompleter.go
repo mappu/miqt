@@ -712,7 +712,7 @@ func miqt_exec_callback_QCompleter_DisconnectNotify(self *C.QCompleter, cb C.int
 
 // Delete this object from C++ memory.
 func (this *QCompleter) Delete() {
-	C.QCompleter_Delete(this.h, C.bool(this.isSubclass))
+	C.QCompleter_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

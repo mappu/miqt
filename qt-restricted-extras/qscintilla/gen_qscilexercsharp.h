@@ -60,7 +60,7 @@ void QsciLexerCSharp_override_virtual_SetFoldPreprocessor(void* self, intptr_t s
 void QsciLexerCSharp_virtualbase_SetFoldPreprocessor(void* self, bool fold);
 void QsciLexerCSharp_override_virtual_SetStylePreprocessor(void* self, intptr_t slot);
 void QsciLexerCSharp_virtualbase_SetStylePreprocessor(void* self, bool style);
-void QsciLexerCSharp_Delete(QsciLexerCSharp* self, bool isSubclass);
+void QsciLexerCSharp_Delete(QsciLexerCSharp* self);
 
 #ifdef __cplusplus
 } /* extern C */

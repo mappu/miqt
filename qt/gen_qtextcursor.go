@@ -479,7 +479,7 @@ func (this *QTextCursor) InsertImage2(image *QImage, name string) {
 
 // Delete this object from C++ memory.
 func (this *QTextCursor) Delete() {
-	C.QTextCursor_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextCursor_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -125,13 +125,13 @@ QSize* miqt_exec_callback_QHeaderView_ViewportSizeHint(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQHeaderView : public virtual QHeaderView {
+class MiqtVirtualQHeaderView final : public QHeaderView {
 public:
 
 	MiqtVirtualQHeaderView(Qt::Orientation orientation): QHeaderView(orientation) {};
 	MiqtVirtualQHeaderView(Qt::Orientation orientation, QWidget* parent): QHeaderView(orientation, parent) {};
 
-	virtual ~MiqtVirtualQHeaderView() = default;
+	virtual ~MiqtVirtualQHeaderView() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetModel = 0;
@@ -2822,11 +2822,7 @@ QSize* QHeaderView_virtualbase_ViewportSizeHint(const void* self) {
 	return ( (const MiqtVirtualQHeaderView*)(self) )->virtualbase_ViewportSizeHint();
 }
 
-void QHeaderView_Delete(QHeaderView* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQHeaderView*>( self );
-	} else {
-		delete self;
-	}
+void QHeaderView_Delete(QHeaderView* self) {
+	delete self;
 }
 

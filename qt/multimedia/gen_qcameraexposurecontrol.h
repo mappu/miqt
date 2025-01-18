@@ -47,7 +47,7 @@ struct miqt_string QCameraExposureControl_Tr2(const char* s, const char* c);
 struct miqt_string QCameraExposureControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QCameraExposureControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QCameraExposureControl_TrUtf83(const char* s, const char* c, int n);
-void QCameraExposureControl_Delete(QCameraExposureControl* self, bool isSubclass);
+void QCameraExposureControl_Delete(QCameraExposureControl* self);
 
 #ifdef __cplusplus
 } /* extern C */

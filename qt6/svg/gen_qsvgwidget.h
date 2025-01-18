@@ -177,7 +177,7 @@ void QSvgWidget_override_virtual_InputMethodQuery(void* self, intptr_t slot);
 QVariant* QSvgWidget_virtualbase_InputMethodQuery(const void* self, int param1);
 void QSvgWidget_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QSvgWidget_virtualbase_FocusNextPrevChild(void* self, bool next);
-void QSvgWidget_Delete(QSvgWidget* self, bool isSubclass);
+void QSvgWidget_Delete(QSvgWidget* self);
 
 #ifdef __cplusplus
 } /* extern C */

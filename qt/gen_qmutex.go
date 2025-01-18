@@ -87,7 +87,7 @@ func (this *QBasicMutex) IsRecursive2() bool {
 
 // Delete this object from C++ memory.
 func (this *QBasicMutex) Delete() {
-	C.QBasicMutex_Delete(this.h, C.bool(this.isSubclass))
+	C.QBasicMutex_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -178,7 +178,7 @@ func (this *QMutex) TryLock1(timeout int) bool {
 
 // Delete this object from C++ memory.
 func (this *QMutex) Delete() {
-	C.QMutex_Delete(this.h, C.bool(this.isSubclass))
+	C.QMutex_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -233,7 +233,7 @@ func NewQRecursiveMutex() *QRecursiveMutex {
 
 // Delete this object from C++ memory.
 func (this *QRecursiveMutex) Delete() {
-	C.QRecursiveMutex_Delete(this.h, C.bool(this.isSubclass))
+	C.QRecursiveMutex_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -308,7 +308,7 @@ func (this *QMutexLocker) Mutex() *QMutex {
 
 // Delete this object from C++ memory.
 func (this *QMutexLocker) Delete() {
-	C.QMutexLocker_Delete(this.h, C.bool(this.isSubclass))
+	C.QMutexLocker_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

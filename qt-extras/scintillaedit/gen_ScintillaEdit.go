@@ -1799,7 +1799,7 @@ func (this *Scintilla__Internal__Point) OperatorMinus(other Scintilla__Internal_
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__Point) Delete() {
-	C.Scintilla__Internal__Point_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__Internal__Point_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1868,7 +1868,7 @@ func (this *Scintilla__Internal__Interval) Offset(offset float64) *Scintilla__In
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__Interval) Delete() {
-	C.Scintilla__Internal__Interval_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__Internal__Interval_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2033,7 +2033,7 @@ func (this *Scintilla__Internal__PRectangle) Empty() bool {
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__PRectangle) Delete() {
-	C.Scintilla__Internal__PRectangle_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__Internal__PRectangle_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2228,7 +2228,7 @@ func Scintilla__Internal__ColourRGBA_Grey2(grey uint, alpha uint) *Scintilla__In
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__ColourRGBA) Delete() {
-	C.Scintilla__Internal__ColourRGBA_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__Internal__ColourRGBA_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2303,7 +2303,7 @@ func (this *Scintilla__Internal__Stroke) WidthF() float32 {
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__Stroke) Delete() {
-	C.Scintilla__Internal__Stroke_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__Internal__Stroke_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2366,7 +2366,7 @@ func NewScintilla__Internal__Fill2(param1 *Scintilla__Internal__Fill) *Scintilla
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__Fill) Delete() {
-	C.Scintilla__Internal__Fill_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__Internal__Fill_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2445,7 +2445,7 @@ func NewScintilla__Internal__FillStroke4(colourBoth Scintilla__Internal__ColourR
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__FillStroke) Delete() {
-	C.Scintilla__Internal__FillStroke_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__Internal__FillStroke_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2500,7 +2500,7 @@ func NewScintilla__Internal__ColourStop(position_ float64, colour_ Scintilla__In
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__ColourStop) Delete() {
-	C.Scintilla__Internal__ColourStop_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__Internal__ColourStop_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2547,7 +2547,7 @@ func UnsafeNewScintilla__CharacterRange(h unsafe.Pointer) *Scintilla__CharacterR
 
 // Delete this object from C++ memory.
 func (this *Scintilla__CharacterRange) Delete() {
-	C.Scintilla__CharacterRange_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__CharacterRange_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2594,7 +2594,7 @@ func UnsafeNewScintilla__CharacterRangeFull(h unsafe.Pointer) *Scintilla__Charac
 
 // Delete this object from C++ memory.
 func (this *Scintilla__CharacterRangeFull) Delete() {
-	C.Scintilla__CharacterRangeFull_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__CharacterRangeFull_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2641,7 +2641,7 @@ func UnsafeNewScintilla__TextRange(h unsafe.Pointer) *Scintilla__TextRange {
 
 // Delete this object from C++ memory.
 func (this *Scintilla__TextRange) Delete() {
-	C.Scintilla__TextRange_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__TextRange_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2688,7 +2688,7 @@ func UnsafeNewScintilla__TextRangeFull(h unsafe.Pointer) *Scintilla__TextRangeFu
 
 // Delete this object from C++ memory.
 func (this *Scintilla__TextRangeFull) Delete() {
-	C.Scintilla__TextRangeFull_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__TextRangeFull_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2735,7 +2735,7 @@ func UnsafeNewScintilla__TextToFind(h unsafe.Pointer) *Scintilla__TextToFind {
 
 // Delete this object from C++ memory.
 func (this *Scintilla__TextToFind) Delete() {
-	C.Scintilla__TextToFind_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__TextToFind_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2782,7 +2782,7 @@ func UnsafeNewScintilla__TextToFindFull(h unsafe.Pointer) *Scintilla__TextToFind
 
 // Delete this object from C++ memory.
 func (this *Scintilla__TextToFindFull) Delete() {
-	C.Scintilla__TextToFindFull_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__TextToFindFull_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2829,7 +2829,7 @@ func UnsafeNewScintilla__Rectangle(h unsafe.Pointer) *Scintilla__Rectangle {
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Rectangle) Delete() {
-	C.Scintilla__Rectangle_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__Rectangle_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2876,7 +2876,7 @@ func UnsafeNewScintilla__RangeToFormat(h unsafe.Pointer) *Scintilla__RangeToForm
 
 // Delete this object from C++ memory.
 func (this *Scintilla__RangeToFormat) Delete() {
-	C.Scintilla__RangeToFormat_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__RangeToFormat_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2923,7 +2923,7 @@ func UnsafeNewScintilla__RangeToFormatFull(h unsafe.Pointer) *Scintilla__RangeTo
 
 // Delete this object from C++ memory.
 func (this *Scintilla__RangeToFormatFull) Delete() {
-	C.Scintilla__RangeToFormatFull_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__RangeToFormatFull_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2970,7 +2970,7 @@ func UnsafeNewScintilla__NotifyHeader(h unsafe.Pointer) *Scintilla__NotifyHeader
 
 // Delete this object from C++ memory.
 func (this *Scintilla__NotifyHeader) Delete() {
-	C.Scintilla__NotifyHeader_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__NotifyHeader_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3017,7 +3017,7 @@ func UnsafeNewScintilla__NotificationData(h unsafe.Pointer) *Scintilla__Notifica
 
 // Delete this object from C++ memory.
 func (this *Scintilla__NotificationData) Delete() {
-	C.Scintilla__NotificationData_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__NotificationData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3158,7 +3158,7 @@ func NewScintilla__Internal__FontParameters9(faceName_ string, size_ float64, we
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__FontParameters) Delete() {
-	C.Scintilla__Internal__FontParameters_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__Internal__FontParameters_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3213,7 +3213,7 @@ func NewScintilla__Internal__Font() *Scintilla__Internal__Font {
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__Font) Delete() {
-	C.Scintilla__Internal__Font_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__Internal__Font_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3300,7 +3300,7 @@ func (this *Scintilla__Internal__IScreenLine) OperatorAssign(param1 *Scintilla__
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__IScreenLine) Delete() {
-	C.Scintilla__Internal__IScreenLine_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__Internal__IScreenLine_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3359,7 +3359,7 @@ func (this *Scintilla__Internal__IScreenLineLayout) OperatorAssign(param1 *Scint
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__IScreenLineLayout) Delete() {
-	C.Scintilla__Internal__IScreenLineLayout_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__Internal__IScreenLineLayout_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3422,7 +3422,7 @@ func NewScintilla__Internal__SurfaceMode2(codePage_ int, bidiR2L_ bool) *Scintil
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__SurfaceMode) Delete() {
-	C.Scintilla__Internal__SurfaceMode_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__Internal__SurfaceMode_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -4344,7 +4344,7 @@ func miqt_exec_callback_Scintilla__Internal__Surface_FlushDrawing(self *C.Scinti
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__Surface) Delete() {
-	C.Scintilla__Internal__Surface_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__Internal__Surface_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -4461,7 +4461,7 @@ func (this *Scintilla__Internal__Window) Show1(show bool) {
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__Window) Delete() {
-	C.Scintilla__Internal__Window_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__Internal__Window_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -4516,7 +4516,7 @@ func NewScintilla__Internal__ListBoxEvent(event_ Scintilla__Internal__ListBoxEve
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__ListBoxEvent) Delete() {
-	C.Scintilla__Internal__ListBoxEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__Internal__ListBoxEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -4571,7 +4571,7 @@ func (this *Scintilla__Internal__IListBoxDelegate) OperatorAssign(param1 *Scinti
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__IListBoxDelegate) Delete() {
-	C.Scintilla__Internal__IListBoxDelegate_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__Internal__IListBoxDelegate_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -4618,7 +4618,7 @@ func UnsafeNewScintilla__Internal__ListOptions(h unsafe.Pointer) *Scintilla__Int
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__ListOptions) Delete() {
-	C.Scintilla__Internal__ListOptions_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__Internal__ListOptions_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5166,7 +5166,7 @@ func miqt_exec_callback_Scintilla__Internal__ListBox_SetOptions(self *C.Scintill
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__ListBox) Delete() {
-	C.Scintilla__Internal__ListBox_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__Internal__ListBox_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5237,7 +5237,7 @@ func (this *Scintilla__Internal__Menu) Show(pt Scintilla__Internal__Point, w *Sc
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__Menu) Delete() {
-	C.Scintilla__Internal__Menu_Delete(this.h, C.bool(this.isSubclass))
+	C.Scintilla__Internal__Menu_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5284,7 +5284,7 @@ func UnsafeNewSci_CharacterRange(h unsafe.Pointer) *Sci_CharacterRange {
 
 // Delete this object from C++ memory.
 func (this *Sci_CharacterRange) Delete() {
-	C.Sci_CharacterRange_Delete(this.h, C.bool(this.isSubclass))
+	C.Sci_CharacterRange_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5331,7 +5331,7 @@ func UnsafeNewSci_CharacterRangeFull(h unsafe.Pointer) *Sci_CharacterRangeFull {
 
 // Delete this object from C++ memory.
 func (this *Sci_CharacterRangeFull) Delete() {
-	C.Sci_CharacterRangeFull_Delete(this.h, C.bool(this.isSubclass))
+	C.Sci_CharacterRangeFull_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5378,7 +5378,7 @@ func UnsafeNewSci_TextRange(h unsafe.Pointer) *Sci_TextRange {
 
 // Delete this object from C++ memory.
 func (this *Sci_TextRange) Delete() {
-	C.Sci_TextRange_Delete(this.h, C.bool(this.isSubclass))
+	C.Sci_TextRange_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5425,7 +5425,7 @@ func UnsafeNewSci_TextRangeFull(h unsafe.Pointer) *Sci_TextRangeFull {
 
 // Delete this object from C++ memory.
 func (this *Sci_TextRangeFull) Delete() {
-	C.Sci_TextRangeFull_Delete(this.h, C.bool(this.isSubclass))
+	C.Sci_TextRangeFull_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5472,7 +5472,7 @@ func UnsafeNewSci_TextToFind(h unsafe.Pointer) *Sci_TextToFind {
 
 // Delete this object from C++ memory.
 func (this *Sci_TextToFind) Delete() {
-	C.Sci_TextToFind_Delete(this.h, C.bool(this.isSubclass))
+	C.Sci_TextToFind_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5519,7 +5519,7 @@ func UnsafeNewSci_TextToFindFull(h unsafe.Pointer) *Sci_TextToFindFull {
 
 // Delete this object from C++ memory.
 func (this *Sci_TextToFindFull) Delete() {
-	C.Sci_TextToFindFull_Delete(this.h, C.bool(this.isSubclass))
+	C.Sci_TextToFindFull_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5566,7 +5566,7 @@ func UnsafeNewSci_Rectangle(h unsafe.Pointer) *Sci_Rectangle {
 
 // Delete this object from C++ memory.
 func (this *Sci_Rectangle) Delete() {
-	C.Sci_Rectangle_Delete(this.h, C.bool(this.isSubclass))
+	C.Sci_Rectangle_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5613,7 +5613,7 @@ func UnsafeNewSci_RangeToFormat(h unsafe.Pointer) *Sci_RangeToFormat {
 
 // Delete this object from C++ memory.
 func (this *Sci_RangeToFormat) Delete() {
-	C.Sci_RangeToFormat_Delete(this.h, C.bool(this.isSubclass))
+	C.Sci_RangeToFormat_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5660,7 +5660,7 @@ func UnsafeNewSci_RangeToFormatFull(h unsafe.Pointer) *Sci_RangeToFormatFull {
 
 // Delete this object from C++ memory.
 func (this *Sci_RangeToFormatFull) Delete() {
-	C.Sci_RangeToFormatFull_Delete(this.h, C.bool(this.isSubclass))
+	C.Sci_RangeToFormatFull_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5707,7 +5707,7 @@ func UnsafeNewSci_NotifyHeader(h unsafe.Pointer) *Sci_NotifyHeader {
 
 // Delete this object from C++ memory.
 func (this *Sci_NotifyHeader) Delete() {
-	C.Sci_NotifyHeader_Delete(this.h, C.bool(this.isSubclass))
+	C.Sci_NotifyHeader_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5754,7 +5754,7 @@ func UnsafeNewSCNotification(h unsafe.Pointer) *SCNotification {
 
 // Delete this object from C++ memory.
 func (this *SCNotification) Delete() {
-	C.SCNotification_Delete(this.h, C.bool(this.isSubclass))
+	C.SCNotification_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -7435,7 +7435,7 @@ func miqt_exec_callback_ScintillaEditBase_ViewportSizeHint(self *C.ScintillaEdit
 
 // Delete this object from C++ memory.
 func (this *ScintillaEditBase) Delete() {
-	C.ScintillaEditBase_Delete(this.h, C.bool(this.isSubclass))
+	C.ScintillaEditBase_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -8056,7 +8056,7 @@ func miqt_exec_callback_ScintillaDocument_DisconnectNotify(self *C.ScintillaDocu
 
 // Delete this object from C++ memory.
 func (this *ScintillaDocument) Delete() {
-	C.ScintillaDocument_Delete(this.h, C.bool(this.isSubclass))
+	C.ScintillaDocument_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -12261,7 +12261,7 @@ func miqt_exec_callback_ScintillaEdit_ScrollContentsBy(self *C.ScintillaEdit, cb
 
 // Delete this object from C++ memory.
 func (this *ScintillaEdit) Delete() {
-	C.ScintillaEdit_Delete(this.h, C.bool(this.isSubclass))
+	C.ScintillaEdit_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

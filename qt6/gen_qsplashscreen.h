@@ -194,7 +194,7 @@ void QSplashScreen_override_virtual_InputMethodQuery(void* self, intptr_t slot);
 QVariant* QSplashScreen_virtualbase_InputMethodQuery(const void* self, int param1);
 void QSplashScreen_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QSplashScreen_virtualbase_FocusNextPrevChild(void* self, bool next);
-void QSplashScreen_Delete(QSplashScreen* self, bool isSubclass);
+void QSplashScreen_Delete(QSplashScreen* self);
 
 #ifdef __cplusplus
 } /* extern C */

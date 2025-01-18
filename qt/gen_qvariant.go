@@ -902,7 +902,7 @@ func (this *QVariant) ToReal1(ok *bool) float64 {
 
 // Delete this object from C++ memory.
 func (this *QVariant) Delete() {
-	C.QVariant_Delete(this.h, C.bool(this.isSubclass))
+	C.QVariant_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -965,7 +965,7 @@ func NewQVariantComparisonHelper2(param1 *QVariantComparisonHelper) *QVariantCom
 
 // Delete this object from C++ memory.
 func (this *QVariantComparisonHelper) Delete() {
-	C.QVariantComparisonHelper_Delete(this.h, C.bool(this.isSubclass))
+	C.QVariantComparisonHelper_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1012,7 +1012,7 @@ func UnsafeNewQVariant__Handler(h unsafe.Pointer) *QVariant__Handler {
 
 // Delete this object from C++ memory.
 func (this *QVariant__Handler) Delete() {
-	C.QVariant__Handler_Delete(this.h, C.bool(this.isSubclass))
+	C.QVariant__Handler_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1125,7 +1125,7 @@ func (this *QSequentialIterable__const_iterator) OperatorMinus(j int) *QSequenti
 
 // Delete this object from C++ memory.
 func (this *QSequentialIterable__const_iterator) Delete() {
-	C.QSequentialIterable__const_iterator_Delete(this.h, C.bool(this.isSubclass))
+	C.QSequentialIterable__const_iterator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1250,7 +1250,7 @@ func (this *QAssociativeIterable__const_iterator) OperatorMinus(j int) *QAssocia
 
 // Delete this object from C++ memory.
 func (this *QAssociativeIterable__const_iterator) Delete() {
-	C.QAssociativeIterable__const_iterator_Delete(this.h, C.bool(this.isSubclass))
+	C.QAssociativeIterable__const_iterator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -54,12 +54,12 @@ bool miqt_exec_callback_QAbstractSocket_Reset(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQAbstractSocket : public virtual QAbstractSocket {
+class MiqtVirtualQAbstractSocket final : public QAbstractSocket {
 public:
 
 	MiqtVirtualQAbstractSocket(QAbstractSocket::SocketType socketType, QObject* parent): QAbstractSocket(socketType, parent) {};
 
-	virtual ~MiqtVirtualQAbstractSocket() = default;
+	virtual ~MiqtVirtualQAbstractSocket() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Resume = 0;
@@ -1302,11 +1302,7 @@ bool QAbstractSocket_virtualbase_Reset(void* self) {
 	return ( (MiqtVirtualQAbstractSocket*)(self) )->virtualbase_Reset();
 }
 
-void QAbstractSocket_Delete(QAbstractSocket* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractSocket*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractSocket_Delete(QAbstractSocket* self) {
+	delete self;
 }
 

@@ -115,7 +115,7 @@ func (this *QScriptValueIterator) OperatorAssign(value *QScriptValue) {
 
 // Delete this object from C++ memory.
 func (this *QScriptValueIterator) Delete() {
-	C.QScriptValueIterator_Delete(this.h, C.bool(this.isSubclass))
+	C.QScriptValueIterator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

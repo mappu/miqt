@@ -408,7 +408,7 @@ func (this *QLatin1Char) ToLatin1() int8 {
 
 // Delete this object from C++ memory.
 func (this *QLatin1Char) Delete() {
-	C.QLatin1Char_Delete(this.h, C.bool(this.isSubclass))
+	C.QLatin1Char_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -714,7 +714,7 @@ func QChar_CurrentUnicodeVersion() QChar__UnicodeVersion {
 
 // Delete this object from C++ memory.
 func (this *QChar) Delete() {
-	C.QChar_Delete(this.h, C.bool(this.isSubclass))
+	C.QChar_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -275,7 +275,7 @@ func (this *QPageLayout) SetPageSize2(pageSize *QPageSize, minMargins *QMarginsF
 
 // Delete this object from C++ memory.
 func (this *QPageLayout) Delete() {
-	C.QPageLayout_Delete(this.h, C.bool(this.isSubclass))
+	C.QPageLayout_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

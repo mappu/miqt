@@ -329,7 +329,7 @@ func (this *QCborStreamReader) Next1(maxRecursion int) bool {
 
 // Delete this object from C++ memory.
 func (this *QCborStreamReader) Delete() {
-	C.QCborStreamReader_Delete(this.h, C.bool(this.isSubclass))
+	C.QCborStreamReader_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

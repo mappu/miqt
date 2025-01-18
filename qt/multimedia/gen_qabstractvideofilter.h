@@ -40,7 +40,7 @@ typedef struct QVideoSurfaceFormat QVideoSurfaceFormat;
 
 QVideoFrame* QVideoFilterRunnable_Run(QVideoFilterRunnable* self, QVideoFrame* input, QVideoSurfaceFormat* surfaceFormat, int flags);
 void QVideoFilterRunnable_OperatorAssign(QVideoFilterRunnable* self, QVideoFilterRunnable* param1);
-void QVideoFilterRunnable_Delete(QVideoFilterRunnable* self, bool isSubclass);
+void QVideoFilterRunnable_Delete(QVideoFilterRunnable* self);
 
 QAbstractVideoFilter* QAbstractVideoFilter_new();
 QAbstractVideoFilter* QAbstractVideoFilter_new2(QObject* parent);
@@ -74,7 +74,7 @@ void QAbstractVideoFilter_override_virtual_ConnectNotify(void* self, intptr_t sl
 void QAbstractVideoFilter_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QAbstractVideoFilter_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QAbstractVideoFilter_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QAbstractVideoFilter_Delete(QAbstractVideoFilter* self, bool isSubclass);
+void QAbstractVideoFilter_Delete(QAbstractVideoFilter* self);
 
 #ifdef __cplusplus
 } /* extern C */

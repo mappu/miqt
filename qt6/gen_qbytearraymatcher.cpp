@@ -76,11 +76,7 @@ ptrdiff_t QByteArrayMatcher_IndexIn2(const QByteArrayMatcher* self, QByteArrayVi
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-void QByteArrayMatcher_Delete(QByteArrayMatcher* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QByteArrayMatcher*>( self );
-	} else {
-		delete self;
-	}
+void QByteArrayMatcher_Delete(QByteArrayMatcher* self) {
+	delete self;
 }
 

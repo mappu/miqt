@@ -71,11 +71,7 @@ void QBackingStore_Flush3(QBackingStore* self, QRegion* region, QWindow* window,
 	self->flush(*region, window, *offset);
 }
 
-void QBackingStore_Delete(QBackingStore* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QBackingStore*>( self );
-	} else {
-		delete self;
-	}
+void QBackingStore_Delete(QBackingStore* self) {
+	delete self;
 }
 

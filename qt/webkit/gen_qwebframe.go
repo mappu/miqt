@@ -197,7 +197,7 @@ func (this *QWebHitTestResult) Frame() *QWebFrame {
 
 // Delete this object from C++ memory.
 func (this *QWebHitTestResult) Delete() {
-	C.QWebHitTestResult_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebHitTestResult_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

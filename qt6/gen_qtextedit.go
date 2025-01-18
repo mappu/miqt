@@ -1713,7 +1713,7 @@ func miqt_exec_callback_QTextEdit_ViewportSizeHint(self *C.QTextEdit, cb C.intpt
 
 // Delete this object from C++ memory.
 func (this *QTextEdit) Delete() {
-	C.QTextEdit_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextEdit_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1772,7 +1772,7 @@ func (this *QTextEdit__ExtraSelection) OperatorAssign(param1 *QTextEdit__ExtraSe
 
 // Delete this object from C++ memory.
 func (this *QTextEdit__ExtraSelection) Delete() {
-	C.QTextEdit__ExtraSelection_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextEdit__ExtraSelection_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

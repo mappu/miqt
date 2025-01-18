@@ -309,7 +309,7 @@ func miqt_exec_callback_QState_Event(self *C.QState, cb C.intptr_t, e *C.QEvent)
 
 // Delete this object from C++ memory.
 func (this *QState) Delete() {
-	C.QState_Delete(this.h, C.bool(this.isSubclass))
+	C.QState_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

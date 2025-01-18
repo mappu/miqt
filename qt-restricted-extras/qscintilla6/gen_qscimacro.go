@@ -403,7 +403,7 @@ func miqt_exec_callback_QsciMacro_DisconnectNotify(self *C.QsciMacro, cb C.intpt
 
 // Delete this object from C++ memory.
 func (this *QsciMacro) Delete() {
-	C.QsciMacro_Delete(this.h, C.bool(this.isSubclass))
+	C.QsciMacro_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

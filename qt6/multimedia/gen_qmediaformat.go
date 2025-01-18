@@ -269,7 +269,7 @@ func (this *QMediaFormat) ResolveForEncoding(flags QMediaFormat__ResolveFlags) {
 
 // Delete this object from C++ memory.
 func (this *QMediaFormat) Delete() {
-	C.QMediaFormat_Delete(this.h, C.bool(this.isSubclass))
+	C.QMediaFormat_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

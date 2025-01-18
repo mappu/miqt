@@ -58,11 +58,7 @@ void QLoggingCategory_SetFilterRules(struct miqt_string rules) {
 	QLoggingCategory::setFilterRules(rules_QString);
 }
 
-void QLoggingCategory_Delete(QLoggingCategory* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QLoggingCategory*>( self );
-	} else {
-		delete self;
-	}
+void QLoggingCategory_Delete(QLoggingCategory* self) {
+	delete self;
 }
 

@@ -388,7 +388,7 @@ func miqt_exec_callback_QDtlsClientVerifier_DisconnectNotify(self *C.QDtlsClient
 
 // Delete this object from C++ memory.
 func (this *QDtlsClientVerifier) Delete() {
-	C.QDtlsClientVerifier_Delete(this.h, C.bool(this.isSubclass))
+	C.QDtlsClientVerifier_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -916,7 +916,7 @@ func miqt_exec_callback_QDtls_DisconnectNotify(self *C.QDtls, cb C.intptr_t, sig
 
 // Delete this object from C++ memory.
 func (this *QDtls) Delete() {
-	C.QDtls_Delete(this.h, C.bool(this.isSubclass))
+	C.QDtls_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -994,7 +994,7 @@ func (this *QDtlsClientVerifier__GeneratorParameters) OperatorAssign(param1 *QDt
 
 // Delete this object from C++ memory.
 func (this *QDtlsClientVerifier__GeneratorParameters) Delete() {
-	C.QDtlsClientVerifier__GeneratorParameters_Delete(this.h, C.bool(this.isSubclass))
+	C.QDtlsClientVerifier__GeneratorParameters_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

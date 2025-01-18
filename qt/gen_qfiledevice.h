@@ -59,7 +59,7 @@ struct miqt_string QFileDevice_Tr3(const char* s, const char* c, int n);
 struct miqt_string QFileDevice_TrUtf82(const char* s, const char* c);
 struct miqt_string QFileDevice_TrUtf83(const char* s, const char* c, int n);
 unsigned char* QFileDevice_Map3(QFileDevice* self, long long offset, long long size, int flags);
-void QFileDevice_Delete(QFileDevice* self, bool isSubclass);
+void QFileDevice_Delete(QFileDevice* self);
 
 #ifdef __cplusplus
 } /* extern C */

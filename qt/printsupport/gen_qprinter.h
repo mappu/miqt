@@ -135,7 +135,7 @@ void QPrinter_override_virtual_SetMargins(void* self, intptr_t slot);
 void QPrinter_virtualbase_SetMargins(void* self, QPagedPaintDevice__Margins* m);
 void QPrinter_override_virtual_Metric(void* self, intptr_t slot);
 int QPrinter_virtualbase_Metric(const void* self, int param1);
-void QPrinter_Delete(QPrinter* self, bool isSubclass);
+void QPrinter_Delete(QPrinter* self);
 
 #ifdef __cplusplus
 } /* extern C */

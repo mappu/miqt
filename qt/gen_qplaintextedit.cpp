@@ -114,7 +114,7 @@ void miqt_exec_callback_QPlainTextDocumentLayout_DrawInlineObject(void*, intptr_
 } /* extern C */
 #endif
 
-class MiqtVirtualQPlainTextEdit : public virtual QPlainTextEdit {
+class MiqtVirtualQPlainTextEdit final : public QPlainTextEdit {
 public:
 
 	MiqtVirtualQPlainTextEdit(QWidget* parent): QPlainTextEdit(parent) {};
@@ -122,7 +122,7 @@ public:
 	MiqtVirtualQPlainTextEdit(const QString& text): QPlainTextEdit(text) {};
 	MiqtVirtualQPlainTextEdit(const QString& text, QWidget* parent): QPlainTextEdit(text, parent) {};
 
-	virtual ~MiqtVirtualQPlainTextEdit() = default;
+	virtual ~MiqtVirtualQPlainTextEdit() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__LoadResource = 0;
@@ -1797,20 +1797,16 @@ QSize* QPlainTextEdit_virtualbase_ViewportSizeHint(const void* self) {
 	return ( (const MiqtVirtualQPlainTextEdit*)(self) )->virtualbase_ViewportSizeHint();
 }
 
-void QPlainTextEdit_Delete(QPlainTextEdit* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQPlainTextEdit*>( self );
-	} else {
-		delete self;
-	}
+void QPlainTextEdit_Delete(QPlainTextEdit* self) {
+	delete self;
 }
 
-class MiqtVirtualQPlainTextDocumentLayout : public virtual QPlainTextDocumentLayout {
+class MiqtVirtualQPlainTextDocumentLayout final : public QPlainTextDocumentLayout {
 public:
 
 	MiqtVirtualQPlainTextDocumentLayout(QTextDocument* document): QPlainTextDocumentLayout(document) {};
 
-	virtual ~MiqtVirtualQPlainTextDocumentLayout() = default;
+	virtual ~MiqtVirtualQPlainTextDocumentLayout() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Draw = 0;
@@ -2276,11 +2272,7 @@ void QPlainTextDocumentLayout_virtualbase_DrawInlineObject(void* self, QPainter*
 	( (MiqtVirtualQPlainTextDocumentLayout*)(self) )->virtualbase_DrawInlineObject(painter, rect, object, posInDocument, format);
 }
 
-void QPlainTextDocumentLayout_Delete(QPlainTextDocumentLayout* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQPlainTextDocumentLayout*>( self );
-	} else {
-		delete self;
-	}
+void QPlainTextDocumentLayout_Delete(QPlainTextDocumentLayout* self) {
+	delete self;
 }
 

@@ -35,13 +35,13 @@ void miqt_exec_callback_QGraphicsItemAnimation_DisconnectNotify(void*, intptr_t,
 } /* extern C */
 #endif
 
-class MiqtVirtualQGraphicsItemAnimation : public virtual QGraphicsItemAnimation {
+class MiqtVirtualQGraphicsItemAnimation final : public QGraphicsItemAnimation {
 public:
 
 	MiqtVirtualQGraphicsItemAnimation(): QGraphicsItemAnimation() {};
 	MiqtVirtualQGraphicsItemAnimation(QObject* parent): QGraphicsItemAnimation(parent) {};
 
-	virtual ~MiqtVirtualQGraphicsItemAnimation() = default;
+	virtual ~MiqtVirtualQGraphicsItemAnimation() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__BeforeAnimationStep = 0;
@@ -634,11 +634,7 @@ void QGraphicsItemAnimation_virtualbase_DisconnectNotify(void* self, QMetaMethod
 	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QGraphicsItemAnimation_Delete(QGraphicsItemAnimation* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsItemAnimation*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsItemAnimation_Delete(QGraphicsItemAnimation* self) {
+	delete self;
 }
 

@@ -58,13 +58,13 @@ long long miqt_exec_callback_QSslSocket_WriteData(void*, intptr_t, const char*, 
 } /* extern C */
 #endif
 
-class MiqtVirtualQSslSocket : public virtual QSslSocket {
+class MiqtVirtualQSslSocket final : public QSslSocket {
 public:
 
 	MiqtVirtualQSslSocket(): QSslSocket() {};
 	MiqtVirtualQSslSocket(QObject* parent): QSslSocket(parent) {};
 
-	virtual ~MiqtVirtualQSslSocket() = default;
+	virtual ~MiqtVirtualQSslSocket() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Resume = 0;
@@ -1406,11 +1406,7 @@ long long QSslSocket_virtualbase_WriteData(void* self, const char* data, long lo
 	return ( (MiqtVirtualQSslSocket*)(self) )->virtualbase_WriteData(data, lenVal);
 }
 
-void QSslSocket_Delete(QSslSocket* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSslSocket*>( self );
-	} else {
-		delete self;
-	}
+void QSslSocket_Delete(QSslSocket* self) {
+	delete self;
 }
 

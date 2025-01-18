@@ -251,7 +251,7 @@ func (this *QUuid) Version() QUuid__Version {
 
 // Delete this object from C++ memory.
 func (this *QUuid) Delete() {
-	C.QUuid_Delete(this.h, C.bool(this.isSubclass))
+	C.QUuid_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

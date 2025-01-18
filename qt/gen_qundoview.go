@@ -1132,7 +1132,7 @@ func miqt_exec_callback_QUndoView_ViewportSizeHint(self *C.QUndoView, cb C.intpt
 
 // Delete this object from C++ memory.
 func (this *QUndoView) Delete() {
-	C.QUndoView_Delete(this.h, C.bool(this.isSubclass))
+	C.QUndoView_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

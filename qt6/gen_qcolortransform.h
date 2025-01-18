@@ -32,7 +32,7 @@ bool QColorTransform_IsIdentity(const QColorTransform* self);
 unsigned int QColorTransform_Map(const QColorTransform* self, unsigned int argb);
 QRgba64* QColorTransform_MapWithRgba64(const QColorTransform* self, QRgba64* rgba64);
 QColor* QColorTransform_MapWithColor(const QColorTransform* self, QColor* color);
-void QColorTransform_Delete(QColorTransform* self, bool isSubclass);
+void QColorTransform_Delete(QColorTransform* self);
 
 #ifdef __cplusplus
 } /* extern C */

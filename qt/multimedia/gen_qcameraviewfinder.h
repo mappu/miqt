@@ -79,7 +79,7 @@ void QCameraViewfinder_override_virtual_MoveEvent(void* self, intptr_t slot);
 void QCameraViewfinder_virtualbase_MoveEvent(void* self, QMoveEvent* event);
 void QCameraViewfinder_override_virtual_PaintEvent(void* self, intptr_t slot);
 void QCameraViewfinder_virtualbase_PaintEvent(void* self, QPaintEvent* event);
-void QCameraViewfinder_Delete(QCameraViewfinder* self, bool isSubclass);
+void QCameraViewfinder_Delete(QCameraViewfinder* self);
 
 #ifdef __cplusplus
 } /* extern C */

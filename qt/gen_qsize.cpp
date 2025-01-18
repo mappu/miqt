@@ -117,12 +117,8 @@ QSize* QSize_OperatorDivideAssign(QSize* self, double c) {
 	return &_ret;
 }
 
-void QSize_Delete(QSize* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QSize*>( self );
-	} else {
-		delete self;
-	}
+void QSize_Delete(QSize* self) {
+	delete self;
 }
 
 QSizeF* QSizeF_new() {
@@ -239,11 +235,7 @@ QSize* QSizeF_ToSize(const QSizeF* self) {
 	return new QSize(self->toSize());
 }
 
-void QSizeF_Delete(QSizeF* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QSizeF*>( self );
-	} else {
-		delete self;
-	}
+void QSizeF_Delete(QSizeF* self) {
+	delete self;
 }
 

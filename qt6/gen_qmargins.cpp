@@ -111,12 +111,8 @@ QMarginsF* QMargins_ToMarginsF(const QMargins* self) {
 	return new QMarginsF(self->toMarginsF());
 }
 
-void QMargins_Delete(QMargins* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMargins*>( self );
-	} else {
-		delete self;
-	}
+void QMargins_Delete(QMargins* self) {
+	delete self;
 }
 
 QMarginsF* QMarginsF_new() {
@@ -215,11 +211,7 @@ QMargins* QMarginsF_ToMargins(const QMarginsF* self) {
 	return new QMargins(self->toMargins());
 }
 
-void QMarginsF_Delete(QMarginsF* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMarginsF*>( self );
-	} else {
-		delete self;
-	}
+void QMarginsF_Delete(QMarginsF* self) {
+	delete self;
 }
 

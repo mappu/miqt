@@ -39,13 +39,13 @@ void miqt_exec_callback_QPdfWriter_DisconnectNotify(void*, intptr_t, QMetaMethod
 } /* extern C */
 #endif
 
-class MiqtVirtualQPdfWriter : public virtual QPdfWriter {
+class MiqtVirtualQPdfWriter final : public QPdfWriter {
 public:
 
 	MiqtVirtualQPdfWriter(const QString& filename): QPdfWriter(filename) {};
 	MiqtVirtualQPdfWriter(QIODevice* device): QPdfWriter(device) {};
 
-	virtual ~MiqtVirtualQPdfWriter() = default;
+	virtual ~MiqtVirtualQPdfWriter() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__NewPage = 0;
@@ -649,11 +649,7 @@ void QPdfWriter_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQPdfWriter*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QPdfWriter_Delete(QPdfWriter* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQPdfWriter*>( self );
-	} else {
-		delete self;
-	}
+void QPdfWriter_Delete(QPdfWriter* self) {
+	delete self;
 }
 

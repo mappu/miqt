@@ -12,12 +12,8 @@ extern "C" {
 } /* extern C */
 #endif
 
-void QBindingStatus_Delete(QBindingStatus* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QBindingStatus*>( self );
-	} else {
-		delete self;
-	}
+void QBindingStatus_Delete(QBindingStatus* self) {
+	delete self;
 }
 
 QBindingStorage* QBindingStorage_new() {
@@ -36,11 +32,7 @@ void QBindingStorage_RegisterDependency(const QBindingStorage* self, QUntypedPro
 	self->registerDependency(data);
 }
 
-void QBindingStorage_Delete(QBindingStorage* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QBindingStorage*>( self );
-	} else {
-		delete self;
-	}
+void QBindingStorage_Delete(QBindingStorage* self) {
+	delete self;
 }
 

@@ -163,7 +163,7 @@ void QUndoView_override_virtual_CurrentChanged(void* self, intptr_t slot);
 void QUndoView_virtualbase_CurrentChanged(void* self, QModelIndex* current, QModelIndex* previous);
 void QUndoView_override_virtual_ViewportSizeHint(void* self, intptr_t slot);
 QSize* QUndoView_virtualbase_ViewportSizeHint(const void* self);
-void QUndoView_Delete(QUndoView* self, bool isSubclass);
+void QUndoView_Delete(QUndoView* self);
 
 #ifdef __cplusplus
 } /* extern C */

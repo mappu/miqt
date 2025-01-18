@@ -154,7 +154,7 @@ func (this *QAudioDevice) ChannelConfiguration() QAudioFormat__ChannelConfig {
 
 // Delete this object from C++ memory.
 func (this *QAudioDevice) Delete() {
-	C.QAudioDevice_Delete(this.h, C.bool(this.isSubclass))
+	C.QAudioDevice_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

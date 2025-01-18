@@ -552,7 +552,7 @@ func miqt_exec_callback_QSvgRenderer_DisconnectNotify(self *C.QSvgRenderer, cb C
 
 // Delete this object from C++ memory.
 func (this *QSvgRenderer) Delete() {
-	C.QSvgRenderer_Delete(this.h, C.bool(this.isSubclass))
+	C.QSvgRenderer_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -399,7 +399,7 @@ func miqt_exec_callback_QScriptClass_Extension(self *C.QScriptClass, cb C.intptr
 
 // Delete this object from C++ memory.
 func (this *QScriptClass) Delete() {
-	C.QScriptClass_Delete(this.h, C.bool(this.isSubclass))
+	C.QScriptClass_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -55,7 +55,7 @@ void QAnimationGroup_override_virtual_UpdateState(void* self, intptr_t slot);
 void QAnimationGroup_virtualbase_UpdateState(void* self, int newState, int oldState);
 void QAnimationGroup_override_virtual_UpdateDirection(void* self, intptr_t slot);
 void QAnimationGroup_virtualbase_UpdateDirection(void* self, int direction);
-void QAnimationGroup_Delete(QAnimationGroup* self, bool isSubclass);
+void QAnimationGroup_Delete(QAnimationGroup* self);
 
 #ifdef __cplusplus
 } /* extern C */

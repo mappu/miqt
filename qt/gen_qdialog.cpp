@@ -92,14 +92,14 @@ bool miqt_exec_callback_QDialog_FocusNextPrevChild(void*, intptr_t, bool);
 } /* extern C */
 #endif
 
-class MiqtVirtualQDialog : public virtual QDialog {
+class MiqtVirtualQDialog final : public QDialog {
 public:
 
 	MiqtVirtualQDialog(QWidget* parent): QDialog(parent) {};
 	MiqtVirtualQDialog(): QDialog() {};
 	MiqtVirtualQDialog(QWidget* parent, Qt::WindowFlags f): QDialog(parent, f) {};
 
-	virtual ~MiqtVirtualQDialog() = default;
+	virtual ~MiqtVirtualQDialog() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetVisible = 0;
@@ -1787,11 +1787,7 @@ bool QDialog_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQDialog*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QDialog_Delete(QDialog* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQDialog*>( self );
-	} else {
-		delete self;
-	}
+void QDialog_Delete(QDialog* self) {
+	delete self;
 }
 

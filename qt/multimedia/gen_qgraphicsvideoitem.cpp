@@ -37,13 +37,13 @@ bool miqt_exec_callback_QGraphicsVideoItem_Event(void*, intptr_t, QEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQGraphicsVideoItem : public virtual QGraphicsVideoItem {
+class MiqtVirtualQGraphicsVideoItem final : public QGraphicsVideoItem {
 public:
 
 	MiqtVirtualQGraphicsVideoItem(): QGraphicsVideoItem() {};
 	MiqtVirtualQGraphicsVideoItem(QGraphicsItem* parent): QGraphicsVideoItem(parent) {};
 
-	virtual ~MiqtVirtualQGraphicsVideoItem() = default;
+	virtual ~MiqtVirtualQGraphicsVideoItem() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__MediaObject = 0;
@@ -415,11 +415,7 @@ bool QGraphicsVideoItem_virtualbase_Event(void* self, QEvent* ev) {
 	return ( (MiqtVirtualQGraphicsVideoItem*)(self) )->virtualbase_Event(ev);
 }
 
-void QGraphicsVideoItem_Delete(QGraphicsVideoItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsVideoItem*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsVideoItem_Delete(QGraphicsVideoItem* self) {
+	delete self;
 }
 

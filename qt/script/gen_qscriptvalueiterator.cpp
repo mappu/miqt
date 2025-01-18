@@ -79,11 +79,7 @@ void QScriptValueIterator_OperatorAssign(QScriptValueIterator* self, QScriptValu
 	self->operator=(*value);
 }
 
-void QScriptValueIterator_Delete(QScriptValueIterator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QScriptValueIterator*>( self );
-	} else {
-		delete self;
-	}
+void QScriptValueIterator_Delete(QScriptValueIterator* self) {
+	delete self;
 }
 

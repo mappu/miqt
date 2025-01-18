@@ -68,13 +68,13 @@ void miqt_exec_callback_QsciLexer_DisconnectNotify(void*, intptr_t, QMetaMethod*
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexer : public virtual QsciLexer {
+class MiqtVirtualQsciLexer final : public QsciLexer {
 public:
 
 	MiqtVirtualQsciLexer(): QsciLexer() {};
 	MiqtVirtualQsciLexer(QObject* parent): QsciLexer(parent) {};
 
-	virtual ~MiqtVirtualQsciLexer() = default;
+	virtual ~MiqtVirtualQsciLexer() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Language = 0;
@@ -1713,11 +1713,7 @@ void QsciLexer_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQsciLexer*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QsciLexer_Delete(QsciLexer* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexer*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexer_Delete(QsciLexer* self) {
+	delete self;
 }
 

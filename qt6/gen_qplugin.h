@@ -43,20 +43,20 @@ typedef struct QStaticPlugin QStaticPlugin;
 #endif
 
 unsigned char QPluginMetaData_ArchRequirements();
-void QPluginMetaData_Delete(QPluginMetaData* self, bool isSubclass);
+void QPluginMetaData_Delete(QPluginMetaData* self);
 
 QJsonObject* QStaticPlugin_MetaData(const QStaticPlugin* self);
-void QStaticPlugin_Delete(QStaticPlugin* self, bool isSubclass);
+void QStaticPlugin_Delete(QStaticPlugin* self);
 
 QPluginMetaData__Header* QPluginMetaData__Header_new(QPluginMetaData__Header* param1);
-void QPluginMetaData__Header_Delete(QPluginMetaData__Header* self, bool isSubclass);
+void QPluginMetaData__Header_Delete(QPluginMetaData__Header* self);
 
 QPluginMetaData__MagicHeader* QPluginMetaData__MagicHeader_new();
-void QPluginMetaData__MagicHeader_Delete(QPluginMetaData__MagicHeader* self, bool isSubclass);
+void QPluginMetaData__MagicHeader_Delete(QPluginMetaData__MagicHeader* self);
 
 QPluginMetaData__ElfNoteHeader* QPluginMetaData__ElfNoteHeader_new(unsigned int payloadSize);
 QPluginMetaData__ElfNoteHeader* QPluginMetaData__ElfNoteHeader_new2(QPluginMetaData__ElfNoteHeader* param1);
-void QPluginMetaData__ElfNoteHeader_Delete(QPluginMetaData__ElfNoteHeader* self, bool isSubclass);
+void QPluginMetaData__ElfNoteHeader_Delete(QPluginMetaData__ElfNoteHeader* self);
 
 #ifdef __cplusplus
 } /* extern C */

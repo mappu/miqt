@@ -106,7 +106,7 @@ void QStackedLayout_override_virtual_Layout(void* self, intptr_t slot);
 QLayout* QStackedLayout_virtualbase_Layout(void* self);
 void QStackedLayout_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QStackedLayout_virtualbase_ChildEvent(void* self, QChildEvent* e);
-void QStackedLayout_Delete(QStackedLayout* self, bool isSubclass);
+void QStackedLayout_Delete(QStackedLayout* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -118,7 +118,7 @@ void QColorDialog_override_virtual_ContextMenuEvent(void* self, intptr_t slot);
 void QColorDialog_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* param1);
 void QColorDialog_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QColorDialog_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2);
-void QColorDialog_Delete(QColorDialog* self, bool isSubclass);
+void QColorDialog_Delete(QColorDialog* self);
 
 #ifdef __cplusplus
 } /* extern C */

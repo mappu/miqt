@@ -46,7 +46,7 @@ void miqt_exec_callback_QLabel_InitStyleOption(void*, intptr_t, QStyleOptionFram
 } /* extern C */
 #endif
 
-class MiqtVirtualQLabel : public virtual QLabel {
+class MiqtVirtualQLabel final : public QLabel {
 public:
 
 	MiqtVirtualQLabel(QWidget* parent): QLabel(parent) {};
@@ -56,7 +56,7 @@ public:
 	MiqtVirtualQLabel(const QString& text, QWidget* parent): QLabel(text, parent) {};
 	MiqtVirtualQLabel(const QString& text, QWidget* parent, Qt::WindowFlags f): QLabel(text, parent, f) {};
 
-	virtual ~MiqtVirtualQLabel() = default;
+	virtual ~MiqtVirtualQLabel() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -813,11 +813,7 @@ void QLabel_virtualbase_InitStyleOption(const void* self, QStyleOptionFrame* opt
 	( (const MiqtVirtualQLabel*)(self) )->virtualbase_InitStyleOption(option);
 }
 
-void QLabel_Delete(QLabel* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQLabel*>( self );
-	} else {
-		delete self;
-	}
+void QLabel_Delete(QLabel* self) {
+	delete self;
 }
 

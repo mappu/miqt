@@ -86,7 +86,7 @@ void QLayoutItem_override_virtual_SpacerItem(void* self, intptr_t slot);
 QSpacerItem* QLayoutItem_virtualbase_SpacerItem(void* self);
 void QLayoutItem_override_virtual_ControlTypes(void* self, intptr_t slot);
 int QLayoutItem_virtualbase_ControlTypes(const void* self);
-void QLayoutItem_Delete(QLayoutItem* self, bool isSubclass);
+void QLayoutItem_Delete(QLayoutItem* self);
 
 QSpacerItem* QSpacerItem_new(int w, int h);
 QSpacerItem* QSpacerItem_new2(QSpacerItem* param1);
@@ -135,7 +135,7 @@ void QSpacerItem_override_virtual_Layout(void* self, intptr_t slot);
 QLayout* QSpacerItem_virtualbase_Layout(void* self);
 void QSpacerItem_override_virtual_ControlTypes(void* self, intptr_t slot);
 int QSpacerItem_virtualbase_ControlTypes(const void* self);
-void QSpacerItem_Delete(QSpacerItem* self, bool isSubclass);
+void QSpacerItem_Delete(QSpacerItem* self);
 
 QWidgetItem* QWidgetItem_new(QWidget* w);
 void QWidgetItem_virtbase(QWidgetItem* src, QLayoutItem** outptr_QLayoutItem);
@@ -181,7 +181,7 @@ void QWidgetItem_override_virtual_Layout(void* self, intptr_t slot);
 QLayout* QWidgetItem_virtualbase_Layout(void* self);
 void QWidgetItem_override_virtual_SpacerItem(void* self, intptr_t slot);
 QSpacerItem* QWidgetItem_virtualbase_SpacerItem(void* self);
-void QWidgetItem_Delete(QWidgetItem* self, bool isSubclass);
+void QWidgetItem_Delete(QWidgetItem* self);
 
 QWidgetItemV2* QWidgetItemV2_new(QWidget* widget);
 void QWidgetItemV2_virtbase(QWidgetItemV2* src, QWidgetItem** outptr_QWidgetItem);
@@ -213,7 +213,7 @@ void QWidgetItemV2_override_virtual_MinimumHeightForWidth(void* self, intptr_t s
 int QWidgetItemV2_virtualbase_MinimumHeightForWidth(const void* self, int param1);
 void QWidgetItemV2_override_virtual_ControlTypes(void* self, intptr_t slot);
 int QWidgetItemV2_virtualbase_ControlTypes(const void* self);
-void QWidgetItemV2_Delete(QWidgetItemV2* self, bool isSubclass);
+void QWidgetItemV2_Delete(QWidgetItemV2* self);
 
 #ifdef __cplusplus
 } /* extern C */

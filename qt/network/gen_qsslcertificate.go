@@ -523,7 +523,7 @@ func QSslCertificate_ImportPkcs125(device *qt.QIODevice, key *QSslKey, cert *QSs
 
 // Delete this object from C++ memory.
 func (this *QSslCertificate) Delete() {
-	C.QSslCertificate_Delete(this.h, C.bool(this.isSubclass))
+	C.QSslCertificate_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

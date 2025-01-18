@@ -29,7 +29,7 @@ void miqt_exec_callback_QSettings_DisconnectNotify(void*, intptr_t, QMetaMethod*
 } /* extern C */
 #endif
 
-class MiqtVirtualQSettings : public virtual QSettings {
+class MiqtVirtualQSettings final : public QSettings {
 public:
 
 	MiqtVirtualQSettings(const QString& organization): QSettings(organization) {};
@@ -48,7 +48,7 @@ public:
 	MiqtVirtualQSettings(QObject* parent): QSettings(parent) {};
 	MiqtVirtualQSettings(QSettings::Scope scope, QObject* parent): QSettings(scope, parent) {};
 
-	virtual ~MiqtVirtualQSettings() = default;
+	virtual ~MiqtVirtualQSettings() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -610,11 +610,7 @@ void QSettings_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSettings*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QSettings_Delete(QSettings* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSettings*>( self );
-	} else {
-		delete self;
-	}
+void QSettings_Delete(QSettings* self) {
+	delete self;
 }
 

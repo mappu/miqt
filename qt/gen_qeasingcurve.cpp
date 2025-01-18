@@ -102,11 +102,7 @@ double QEasingCurve_ValueForProgress(const QEasingCurve* self, double progress) 
 	return static_cast<double>(_ret);
 }
 
-void QEasingCurve_Delete(QEasingCurve* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QEasingCurve*>( self );
-	} else {
-		delete self;
-	}
+void QEasingCurve_Delete(QEasingCurve* self) {
+	delete self;
 }
 

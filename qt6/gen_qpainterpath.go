@@ -401,7 +401,7 @@ func (this *QPainterPath) AddRoundedRect7(x float64, y float64, w float64, h flo
 
 // Delete this object from C++ memory.
 func (this *QPainterPath) Delete() {
-	C.QPainterPath_Delete(this.h, C.bool(this.isSubclass))
+	C.QPainterPath_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -542,7 +542,7 @@ func (this *QPainterPathStroker) CreateStroke(path *QPainterPath) *QPainterPath 
 
 // Delete this object from C++ memory.
 func (this *QPainterPathStroker) Delete() {
-	C.QPainterPathStroker_Delete(this.h, C.bool(this.isSubclass))
+	C.QPainterPathStroker_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -615,7 +615,7 @@ func (this *QPainterPath__Element) OperatorNotEqual(e *QPainterPath__Element) bo
 
 // Delete this object from C++ memory.
 func (this *QPainterPath__Element) Delete() {
-	C.QPainterPath__Element_Delete(this.h, C.bool(this.isSubclass))
+	C.QPainterPath__Element_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

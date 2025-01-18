@@ -26,12 +26,8 @@ char QLatin1Char_ToLatin1(const QLatin1Char* self) {
 	return self->toLatin1();
 }
 
-void QLatin1Char_Delete(QLatin1Char* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QLatin1Char*>( self );
-	} else {
-		delete self;
-	}
+void QLatin1Char_Delete(QLatin1Char* self) {
+	delete self;
 }
 
 QChar* QChar_new() {
@@ -250,11 +246,7 @@ int QChar_CurrentUnicodeVersion() {
 	return static_cast<int>(_ret);
 }
 
-void QChar_Delete(QChar* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QChar*>( self );
-	} else {
-		delete self;
-	}
+void QChar_Delete(QChar* self) {
+	delete self;
 }
 

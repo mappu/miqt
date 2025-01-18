@@ -68,12 +68,8 @@ void QPixmapCache_Clear() {
 	QPixmapCache::clear();
 }
 
-void QPixmapCache_Delete(QPixmapCache* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPixmapCache*>( self );
-	} else {
-		delete self;
-	}
+void QPixmapCache_Delete(QPixmapCache* self) {
+	delete self;
 }
 
 QPixmapCache__Key* QPixmapCache__Key_new() {
@@ -104,11 +100,7 @@ bool QPixmapCache__Key_IsValid(const QPixmapCache__Key* self) {
 	return self->isValid();
 }
 
-void QPixmapCache__Key_Delete(QPixmapCache__Key* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPixmapCache::Key*>( self );
-	} else {
-		delete self;
-	}
+void QPixmapCache__Key_Delete(QPixmapCache__Key* self) {
+	delete self;
 }
 

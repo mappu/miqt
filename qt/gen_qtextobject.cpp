@@ -210,12 +210,8 @@ void QTextFrameLayoutData_OperatorAssign(QTextFrameLayoutData* self, QTextFrameL
 	self->operator=(*param1);
 }
 
-void QTextFrameLayoutData_Delete(QTextFrameLayoutData* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextFrameLayoutData*>( self );
-	} else {
-		delete self;
-	}
+void QTextFrameLayoutData_Delete(QTextFrameLayoutData* self) {
+	delete self;
 }
 
 QTextFrame* QTextFrame_new(QTextDocument* doc) {
@@ -357,24 +353,16 @@ struct miqt_string QTextFrame_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QTextFrame_Delete(QTextFrame* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextFrame*>( self );
-	} else {
-		delete self;
-	}
+void QTextFrame_Delete(QTextFrame* self) {
+	delete self;
 }
 
 void QTextBlockUserData_OperatorAssign(QTextBlockUserData* self, QTextBlockUserData* param1) {
 	self->operator=(*param1);
 }
 
-void QTextBlockUserData_Delete(QTextBlockUserData* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextBlockUserData*>( self );
-	} else {
-		delete self;
-	}
+void QTextBlockUserData_Delete(QTextBlockUserData* self) {
+	delete self;
 }
 
 QTextBlock* QTextBlock_new() {
@@ -546,12 +534,8 @@ int QTextBlock_FragmentIndex(const QTextBlock* self) {
 	return self->fragmentIndex();
 }
 
-void QTextBlock_Delete(QTextBlock* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextBlock*>( self );
-	} else {
-		delete self;
-	}
+void QTextBlock_Delete(QTextBlock* self) {
+	delete self;
 }
 
 QTextFragment* QTextFragment_new() {
@@ -652,12 +636,8 @@ struct miqt_array /* of QGlyphRun* */  QTextFragment_GlyphRuns2(const QTextFragm
 	return _out;
 }
 
-void QTextFragment_Delete(QTextFragment* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextFragment*>( self );
-	} else {
-		delete self;
-	}
+void QTextFragment_Delete(QTextFragment* self) {
+	delete self;
 }
 
 QTextFrame__iterator* QTextFrame__iterator_new() {
@@ -716,12 +696,8 @@ QTextFrame__iterator* QTextFrame__iterator_OperatorMinusMinusWithInt(QTextFrame_
 	return new QTextFrame::iterator(self->operator--(static_cast<int>(param1)));
 }
 
-void QTextFrame__iterator_Delete(QTextFrame__iterator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextFrame::iterator*>( self );
-	} else {
-		delete self;
-	}
+void QTextFrame__iterator_Delete(QTextFrame__iterator* self) {
+	delete self;
 }
 
 QTextBlock__iterator* QTextBlock__iterator_new() {
@@ -772,11 +748,7 @@ QTextBlock__iterator* QTextBlock__iterator_OperatorMinusMinusWithInt(QTextBlock_
 	return new QTextBlock::iterator(self->operator--(static_cast<int>(param1)));
 }
 
-void QTextBlock__iterator_Delete(QTextBlock__iterator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextBlock::iterator*>( self );
-	} else {
-		delete self;
-	}
+void QTextBlock__iterator_Delete(QTextBlock__iterator* self) {
+	delete self;
 }
 

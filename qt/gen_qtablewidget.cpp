@@ -135,15 +135,11 @@ int QTableWidgetSelectionRange_ColumnCount(const QTableWidgetSelectionRange* sel
 	return self->columnCount();
 }
 
-void QTableWidgetSelectionRange_Delete(QTableWidgetSelectionRange* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTableWidgetSelectionRange*>( self );
-	} else {
-		delete self;
-	}
+void QTableWidgetSelectionRange_Delete(QTableWidgetSelectionRange* self) {
+	delete self;
 }
 
-class MiqtVirtualQTableWidgetItem : public virtual QTableWidgetItem {
+class MiqtVirtualQTableWidgetItem final : public QTableWidgetItem {
 public:
 
 	MiqtVirtualQTableWidgetItem(): QTableWidgetItem() {};
@@ -154,7 +150,7 @@ public:
 	MiqtVirtualQTableWidgetItem(const QString& text, int typeVal): QTableWidgetItem(text, typeVal) {};
 	MiqtVirtualQTableWidgetItem(const QIcon& icon, const QString& text, int typeVal): QTableWidgetItem(icon, text, typeVal) {};
 
-	virtual ~MiqtVirtualQTableWidgetItem() = default;
+	virtual ~MiqtVirtualQTableWidgetItem() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Clone = 0;
@@ -585,15 +581,11 @@ void QTableWidgetItem_virtualbase_Write(const void* self, QDataStream* out) {
 	( (const MiqtVirtualQTableWidgetItem*)(self) )->virtualbase_Write(out);
 }
 
-void QTableWidgetItem_Delete(QTableWidgetItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQTableWidgetItem*>( self );
-	} else {
-		delete self;
-	}
+void QTableWidgetItem_Delete(QTableWidgetItem* self) {
+	delete self;
 }
 
-class MiqtVirtualQTableWidget : public virtual QTableWidget {
+class MiqtVirtualQTableWidget final : public QTableWidget {
 public:
 
 	MiqtVirtualQTableWidget(QWidget* parent): QTableWidget(parent) {};
@@ -601,7 +593,7 @@ public:
 	MiqtVirtualQTableWidget(int rows, int columns): QTableWidget(rows, columns) {};
 	MiqtVirtualQTableWidget(int rows, int columns, QWidget* parent): QTableWidget(rows, columns, parent) {};
 
-	virtual ~MiqtVirtualQTableWidget() = default;
+	virtual ~MiqtVirtualQTableWidget() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -2195,11 +2187,7 @@ void QTableWidget_virtualbase_CurrentChanged(void* self, QModelIndex* current, Q
 	( (MiqtVirtualQTableWidget*)(self) )->virtualbase_CurrentChanged(current, previous);
 }
 
-void QTableWidget_Delete(QTableWidget* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQTableWidget*>( self );
-	} else {
-		delete self;
-	}
+void QTableWidget_Delete(QTableWidget* self) {
+	delete self;
 }
 

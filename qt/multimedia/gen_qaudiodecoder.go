@@ -567,7 +567,7 @@ func miqt_exec_callback_QAudioDecoder_Service(self *C.QAudioDecoder, cb C.intptr
 
 // Delete this object from C++ memory.
 func (this *QAudioDecoder) Delete() {
-	C.QAudioDecoder_Delete(this.h, C.bool(this.isSubclass))
+	C.QAudioDecoder_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

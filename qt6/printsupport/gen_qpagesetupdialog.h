@@ -87,7 +87,7 @@ void QPageSetupDialog_override_virtual_ContextMenuEvent(void* self, intptr_t slo
 void QPageSetupDialog_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* param1);
 void QPageSetupDialog_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QPageSetupDialog_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2);
-void QPageSetupDialog_Delete(QPageSetupDialog* self, bool isSubclass);
+void QPageSetupDialog_Delete(QPageSetupDialog* self);
 
 #ifdef __cplusplus
 } /* extern C */

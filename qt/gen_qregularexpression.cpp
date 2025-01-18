@@ -198,12 +198,8 @@ QRegularExpressionMatchIterator* QRegularExpression_GlobalMatch4(const QRegularE
 	return new QRegularExpressionMatchIterator(self->globalMatch(subject_QString, static_cast<int>(offset), static_cast<QRegularExpression::MatchType>(matchType), static_cast<QRegularExpression::MatchOptions>(matchOptions)));
 }
 
-void QRegularExpression_Delete(QRegularExpression* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QRegularExpression*>( self );
-	} else {
-		delete self;
-	}
+void QRegularExpression_Delete(QRegularExpression* self) {
+	delete self;
 }
 
 QRegularExpressionMatch* QRegularExpressionMatch_new() {
@@ -345,12 +341,8 @@ int QRegularExpressionMatch_CapturedEnd1(const QRegularExpressionMatch* self, in
 	return self->capturedEnd(static_cast<int>(nth));
 }
 
-void QRegularExpressionMatch_Delete(QRegularExpressionMatch* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QRegularExpressionMatch*>( self );
-	} else {
-		delete self;
-	}
+void QRegularExpressionMatch_Delete(QRegularExpressionMatch* self) {
+	delete self;
 }
 
 QRegularExpressionMatchIterator* QRegularExpressionMatchIterator_new() {
@@ -399,11 +391,7 @@ int QRegularExpressionMatchIterator_MatchOptions(const QRegularExpressionMatchIt
 	return static_cast<int>(_ret);
 }
 
-void QRegularExpressionMatchIterator_Delete(QRegularExpressionMatchIterator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QRegularExpressionMatchIterator*>( self );
-	} else {
-		delete self;
-	}
+void QRegularExpressionMatchIterator_Delete(QRegularExpressionMatchIterator* self) {
+	delete self;
 }
 

@@ -25,7 +25,7 @@ void miqt_exec_callback_QPrintDialog_SetVisible(void*, intptr_t, bool);
 } /* extern C */
 #endif
 
-class MiqtVirtualQPrintDialog : public virtual QPrintDialog {
+class MiqtVirtualQPrintDialog final : public QPrintDialog {
 public:
 
 	MiqtVirtualQPrintDialog(QWidget* parent): QPrintDialog(parent) {};
@@ -33,7 +33,7 @@ public:
 	MiqtVirtualQPrintDialog(): QPrintDialog() {};
 	MiqtVirtualQPrintDialog(QPrinter* printer, QWidget* parent): QPrintDialog(printer, parent) {};
 
-	virtual ~MiqtVirtualQPrintDialog() = default;
+	virtual ~MiqtVirtualQPrintDialog() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Exec = 0;
@@ -271,11 +271,7 @@ void QPrintDialog_virtualbase_SetVisible(void* self, bool visible) {
 	( (MiqtVirtualQPrintDialog*)(self) )->virtualbase_SetVisible(visible);
 }
 
-void QPrintDialog_Delete(QPrintDialog* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQPrintDialog*>( self );
-	} else {
-		delete self;
-	}
+void QPrintDialog_Delete(QPrintDialog* self) {
+	delete self;
 }
 

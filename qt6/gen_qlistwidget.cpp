@@ -100,7 +100,7 @@ QSize* miqt_exec_callback_QListWidget_ViewportSizeHint(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQListWidgetItem : public virtual QListWidgetItem {
+class MiqtVirtualQListWidgetItem final : public QListWidgetItem {
 public:
 
 	MiqtVirtualQListWidgetItem(): QListWidgetItem() {};
@@ -114,7 +114,7 @@ public:
 	MiqtVirtualQListWidgetItem(const QIcon& icon, const QString& text, QListWidget* listview): QListWidgetItem(icon, text, listview) {};
 	MiqtVirtualQListWidgetItem(const QIcon& icon, const QString& text, QListWidget* listview, int typeVal): QListWidgetItem(icon, text, listview, typeVal) {};
 
-	virtual ~MiqtVirtualQListWidgetItem() = default;
+	virtual ~MiqtVirtualQListWidgetItem() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Clone = 0;
@@ -551,21 +551,17 @@ void QListWidgetItem_virtualbase_Write(const void* self, QDataStream* out) {
 	( (const MiqtVirtualQListWidgetItem*)(self) )->virtualbase_Write(out);
 }
 
-void QListWidgetItem_Delete(QListWidgetItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQListWidgetItem*>( self );
-	} else {
-		delete self;
-	}
+void QListWidgetItem_Delete(QListWidgetItem* self) {
+	delete self;
 }
 
-class MiqtVirtualQListWidget : public virtual QListWidget {
+class MiqtVirtualQListWidget final : public QListWidget {
 public:
 
 	MiqtVirtualQListWidget(QWidget* parent): QListWidget(parent) {};
 	MiqtVirtualQListWidget(): QListWidget() {};
 
-	virtual ~MiqtVirtualQListWidget() = default;
+	virtual ~MiqtVirtualQListWidget() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetSelectionModel = 0;
@@ -2252,11 +2248,7 @@ QSize* QListWidget_virtualbase_ViewportSizeHint(const void* self) {
 	return ( (const MiqtVirtualQListWidget*)(self) )->virtualbase_ViewportSizeHint();
 }
 
-void QListWidget_Delete(QListWidget* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQListWidget*>( self );
-	} else {
-		delete self;
-	}
+void QListWidget_Delete(QListWidget* self) {
+	delete self;
 }
 

@@ -34,12 +34,12 @@ void miqt_exec_callback_QMimeData_DisconnectNotify(void*, intptr_t, QMetaMethod*
 } /* extern C */
 #endif
 
-class MiqtVirtualQMimeData : public virtual QMimeData {
+class MiqtVirtualQMimeData final : public QMimeData {
 public:
 
 	MiqtVirtualQMimeData(): QMimeData() {};
 
-	virtual ~MiqtVirtualQMimeData() = default;
+	virtual ~MiqtVirtualQMimeData() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__HasFormat = 0;
@@ -592,11 +592,7 @@ void QMimeData_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMimeData*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QMimeData_Delete(QMimeData* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQMimeData*>( self );
-	} else {
-		delete self;
-	}
+void QMimeData_Delete(QMimeData* self) {
+	delete self;
 }
 

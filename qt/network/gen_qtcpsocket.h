@@ -83,7 +83,7 @@ void QTcpSocket_override_virtual_ReadLineData(void* self, intptr_t slot);
 long long QTcpSocket_virtualbase_ReadLineData(void* self, char* data, long long maxlen);
 void QTcpSocket_override_virtual_WriteData(void* self, intptr_t slot);
 long long QTcpSocket_virtualbase_WriteData(void* self, const char* data, long long lenVal);
-void QTcpSocket_Delete(QTcpSocket* self, bool isSubclass);
+void QTcpSocket_Delete(QTcpSocket* self);
 
 #ifdef __cplusplus
 } /* extern C */

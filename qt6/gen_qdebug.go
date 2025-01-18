@@ -217,7 +217,7 @@ func (this *QDebug) MaybeQuote1(c int8) *QDebug {
 
 // Delete this object from C++ memory.
 func (this *QDebug) Delete() {
-	C.QDebug_Delete(this.h, C.bool(this.isSubclass))
+	C.QDebug_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -272,7 +272,7 @@ func NewQDebugStateSaver(dbg *QDebug) *QDebugStateSaver {
 
 // Delete this object from C++ memory.
 func (this *QDebugStateSaver) Delete() {
-	C.QDebugStateSaver_Delete(this.h, C.bool(this.isSubclass))
+	C.QDebugStateSaver_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -351,7 +351,7 @@ func (this *QNoDebug) MaybeQuote1(param1 int8) *QNoDebug {
 
 // Delete this object from C++ memory.
 func (this *QNoDebug) Delete() {
-	C.QNoDebug_Delete(this.h, C.bool(this.isSubclass))
+	C.QNoDebug_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

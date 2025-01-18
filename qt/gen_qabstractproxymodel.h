@@ -153,7 +153,7 @@ void QAbstractProxyModel_override_virtual_Match(void* self, intptr_t slot);
 struct miqt_array /* of QModelIndex* */  QAbstractProxyModel_virtualbase_Match(const void* self, QModelIndex* start, int role, QVariant* value, int hits, int flags);
 void QAbstractProxyModel_override_virtual_RoleNames(void* self, intptr_t slot);
 struct miqt_map /* of int to struct miqt_string */  QAbstractProxyModel_virtualbase_RoleNames(const void* self);
-void QAbstractProxyModel_Delete(QAbstractProxyModel* self, bool isSubclass);
+void QAbstractProxyModel_Delete(QAbstractProxyModel* self);
 
 #ifdef __cplusplus
 } /* extern C */

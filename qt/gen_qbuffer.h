@@ -91,7 +91,7 @@ void QBuffer_override_virtual_WaitForBytesWritten(void* self, intptr_t slot);
 bool QBuffer_virtualbase_WaitForBytesWritten(void* self, int msecs);
 void QBuffer_override_virtual_ReadLineData(void* self, intptr_t slot);
 long long QBuffer_virtualbase_ReadLineData(void* self, char* data, long long maxlen);
-void QBuffer_Delete(QBuffer* self, bool isSubclass);
+void QBuffer_Delete(QBuffer* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -80,11 +80,7 @@ bool QScriptProgram_OperatorNotEqual(const QScriptProgram* self, QScriptProgram*
 	return (*self != *other);
 }
 
-void QScriptProgram_Delete(QScriptProgram* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QScriptProgram*>( self );
-	} else {
-		delete self;
-	}
+void QScriptProgram_Delete(QScriptProgram* self) {
+	delete self;
 }
 

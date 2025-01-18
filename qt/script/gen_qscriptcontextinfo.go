@@ -152,7 +152,7 @@ func (this *QScriptContextInfo) OperatorNotEqual(other *QScriptContextInfo) bool
 
 // Delete this object from C++ memory.
 func (this *QScriptContextInfo) Delete() {
-	C.QScriptContextInfo_Delete(this.h, C.bool(this.isSubclass))
+	C.QScriptContextInfo_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

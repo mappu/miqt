@@ -206,7 +206,7 @@ void QDialog_override_virtual_InputMethodQuery(void* self, intptr_t slot);
 QVariant* QDialog_virtualbase_InputMethodQuery(const void* self, int param1);
 void QDialog_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QDialog_virtualbase_FocusNextPrevChild(void* self, bool next);
-void QDialog_Delete(QDialog* self, bool isSubclass);
+void QDialog_Delete(QDialog* self);
 
 #ifdef __cplusplus
 } /* extern C */

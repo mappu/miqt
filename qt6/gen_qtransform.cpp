@@ -292,11 +292,7 @@ QTransform* QTransform_RotateRadians2(QTransform* self, double a, int axis) {
 	return &_ret;
 }
 
-void QTransform_Delete(QTransform* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTransform*>( self );
-	} else {
-		delete self;
-	}
+void QTransform_Delete(QTransform* self) {
+	delete self;
 }
 

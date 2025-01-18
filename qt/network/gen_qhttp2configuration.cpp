@@ -66,11 +66,7 @@ void QHttp2Configuration_Swap(QHttp2Configuration* self, QHttp2Configuration* ot
 	self->swap(*other);
 }
 
-void QHttp2Configuration_Delete(QHttp2Configuration* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QHttp2Configuration*>( self );
-	} else {
-		delete self;
-	}
+void QHttp2Configuration_Delete(QHttp2Configuration* self) {
+	delete self;
 }
 

@@ -523,7 +523,7 @@ func (this *QCborMap) ToJsonObject() *qt6.QJsonObject {
 
 // Delete this object from C++ memory.
 func (this *QCborMap) Delete() {
-	C.QCborMap_Delete(this.h, C.bool(this.isSubclass))
+	C.QCborMap_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -744,7 +744,7 @@ func (this *QCborMap__Iterator) OperatorMinusWithQCborMapIterator(j QCborMap__It
 
 // Delete this object from C++ memory.
 func (this *QCborMap__Iterator) Delete() {
-	C.QCborMap__Iterator_Delete(this.h, C.bool(this.isSubclass))
+	C.QCborMap__Iterator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -961,7 +961,7 @@ func (this *QCborMap__ConstIterator) OperatorMinusWithQCborMapConstIterator(j QC
 
 // Delete this object from C++ memory.
 func (this *QCborMap__ConstIterator) Delete() {
-	C.QCborMap__ConstIterator_Delete(this.h, C.bool(this.isSubclass))
+	C.QCborMap__ConstIterator_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

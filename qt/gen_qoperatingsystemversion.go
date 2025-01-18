@@ -121,7 +121,7 @@ func (this *QOperatingSystemVersion) Name() string {
 
 // Delete this object from C++ memory.
 func (this *QOperatingSystemVersion) Delete() {
-	C.QOperatingSystemVersion_Delete(this.h, C.bool(this.isSubclass))
+	C.QOperatingSystemVersion_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

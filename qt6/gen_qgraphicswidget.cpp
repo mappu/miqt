@@ -78,14 +78,14 @@ bool miqt_exec_callback_QGraphicsWidget_IsEmpty(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQGraphicsWidget : public virtual QGraphicsWidget {
+class MiqtVirtualQGraphicsWidget final : public QGraphicsWidget {
 public:
 
 	MiqtVirtualQGraphicsWidget(): QGraphicsWidget() {};
 	MiqtVirtualQGraphicsWidget(QGraphicsItem* parent): QGraphicsWidget(parent) {};
 	MiqtVirtualQGraphicsWidget(QGraphicsItem* parent, Qt::WindowFlags wFlags): QGraphicsWidget(parent, wFlags) {};
 
-	virtual ~MiqtVirtualQGraphicsWidget() = default;
+	virtual ~MiqtVirtualQGraphicsWidget() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetGeometry = 0;
@@ -1517,11 +1517,7 @@ bool QGraphicsWidget_virtualbase_IsEmpty(const void* self) {
 	return ( (const MiqtVirtualQGraphicsWidget*)(self) )->virtualbase_IsEmpty();
 }
 
-void QGraphicsWidget_Delete(QGraphicsWidget* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsWidget*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsWidget_Delete(QGraphicsWidget* self) {
+	delete self;
 }
 

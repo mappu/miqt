@@ -334,7 +334,7 @@ func miqt_exec_callback_QEvent_Clone(self *C.QEvent, cb C.intptr_t) *C.QEvent {
 
 // Delete this object from C++ memory.
 func (this *QEvent) Delete() {
-	C.QEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -452,7 +452,7 @@ func miqt_exec_callback_QTimerEvent_SetAccepted(self *C.QTimerEvent, cb C.intptr
 
 // Delete this object from C++ memory.
 func (this *QTimerEvent) Delete() {
-	C.QTimerEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QTimerEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -582,7 +582,7 @@ func miqt_exec_callback_QChildEvent_SetAccepted(self *C.QChildEvent, cb C.intptr
 
 // Delete this object from C++ memory.
 func (this *QChildEvent) Delete() {
-	C.QChildEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QChildEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -706,7 +706,7 @@ func miqt_exec_callback_QDynamicPropertyChangeEvent_SetAccepted(self *C.QDynamic
 
 // Delete this object from C++ memory.
 func (this *QDynamicPropertyChangeEvent) Delete() {
-	C.QDynamicPropertyChangeEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QDynamicPropertyChangeEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

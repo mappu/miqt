@@ -251,12 +251,8 @@ bool QTextEncoder_HasFailure(const QTextEncoder* self) {
 	return self->hasFailure();
 }
 
-void QTextEncoder_Delete(QTextEncoder* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextEncoder*>( self );
-	} else {
-		delete self;
-	}
+void QTextEncoder_Delete(QTextEncoder* self) {
+	delete self;
 }
 
 QTextDecoder* QTextDecoder_new(QTextCodec* codec) {
@@ -298,12 +294,8 @@ bool QTextDecoder_NeedsMoreData(const QTextDecoder* self) {
 	return self->needsMoreData();
 }
 
-void QTextDecoder_Delete(QTextDecoder* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextDecoder*>( self );
-	} else {
-		delete self;
-	}
+void QTextDecoder_Delete(QTextDecoder* self) {
+	delete self;
 }
 
 QTextCodec__ConverterState* QTextCodec__ConverterState_new() {
@@ -314,11 +306,7 @@ QTextCodec__ConverterState* QTextCodec__ConverterState_new2(int f) {
 	return new QTextCodec::ConverterState(static_cast<QTextCodec::ConversionFlags>(f));
 }
 
-void QTextCodec__ConverterState_Delete(QTextCodec__ConverterState* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextCodec::ConverterState*>( self );
-	} else {
-		delete self;
-	}
+void QTextCodec__ConverterState_Delete(QTextCodec__ConverterState* self) {
+	delete self;
 }
 

@@ -31,7 +31,7 @@ void miqt_exec_callback_QSystemTrayIcon_DisconnectNotify(void*, intptr_t, QMetaM
 } /* extern C */
 #endif
 
-class MiqtVirtualQSystemTrayIcon : public virtual QSystemTrayIcon {
+class MiqtVirtualQSystemTrayIcon final : public QSystemTrayIcon {
 public:
 
 	MiqtVirtualQSystemTrayIcon(): QSystemTrayIcon() {};
@@ -39,7 +39,7 @@ public:
 	MiqtVirtualQSystemTrayIcon(QObject* parent): QSystemTrayIcon(parent) {};
 	MiqtVirtualQSystemTrayIcon(const QIcon& icon, QObject* parent): QSystemTrayIcon(icon, parent) {};
 
-	virtual ~MiqtVirtualQSystemTrayIcon() = default;
+	virtual ~MiqtVirtualQSystemTrayIcon() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -443,11 +443,7 @@ void QSystemTrayIcon_virtualbase_DisconnectNotify(void* self, QMetaMethod* signa
 	( (MiqtVirtualQSystemTrayIcon*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QSystemTrayIcon_Delete(QSystemTrayIcon* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSystemTrayIcon*>( self );
-	} else {
-		delete self;
-	}
+void QSystemTrayIcon_Delete(QSystemTrayIcon* self) {
+	delete self;
 }
 

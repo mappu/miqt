@@ -1900,7 +1900,7 @@ func miqt_exec_callback_QWebPage_DisconnectNotify(self *C.QWebPage, cb C.intptr_
 
 // Delete this object from C++ memory.
 func (this *QWebPage) Delete() {
-	C.QWebPage_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebPage_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1997,7 +1997,7 @@ func (this *QWebPage__ViewportAttributes) Size() *qt.QSizeF {
 
 // Delete this object from C++ memory.
 func (this *QWebPage__ViewportAttributes) Delete() {
-	C.QWebPage__ViewportAttributes_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebPage__ViewportAttributes_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2052,7 +2052,7 @@ func NewQWebPage__ExtensionOption(param1 *QWebPage__ExtensionOption) *QWebPage__
 
 // Delete this object from C++ memory.
 func (this *QWebPage__ExtensionOption) Delete() {
-	C.QWebPage__ExtensionOption_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebPage__ExtensionOption_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2115,7 +2115,7 @@ func NewQWebPage__ExtensionReturn2() *QWebPage__ExtensionReturn {
 
 // Delete this object from C++ memory.
 func (this *QWebPage__ExtensionReturn) Delete() {
-	C.QWebPage__ExtensionReturn_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebPage__ExtensionReturn_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2166,7 +2166,7 @@ func UnsafeNewQWebPage__ChooseMultipleFilesExtensionOption(h unsafe.Pointer) *QW
 
 // Delete this object from C++ memory.
 func (this *QWebPage__ChooseMultipleFilesExtensionOption) Delete() {
-	C.QWebPage__ChooseMultipleFilesExtensionOption_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebPage__ChooseMultipleFilesExtensionOption_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2217,7 +2217,7 @@ func UnsafeNewQWebPage__ChooseMultipleFilesExtensionReturn(h unsafe.Pointer) *QW
 
 // Delete this object from C++ memory.
 func (this *QWebPage__ChooseMultipleFilesExtensionReturn) Delete() {
-	C.QWebPage__ChooseMultipleFilesExtensionReturn_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebPage__ChooseMultipleFilesExtensionReturn_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2280,7 +2280,7 @@ func (this *QWebPage__ErrorPageExtensionOption) OperatorAssign(param1 *QWebPage_
 
 // Delete this object from C++ memory.
 func (this *QWebPage__ErrorPageExtensionOption) Delete() {
-	C.QWebPage__ErrorPageExtensionOption_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebPage__ErrorPageExtensionOption_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2351,7 +2351,7 @@ func (this *QWebPage__ErrorPageExtensionReturn) OperatorAssign(param1 *QWebPage_
 
 // Delete this object from C++ memory.
 func (this *QWebPage__ErrorPageExtensionReturn) Delete() {
-	C.QWebPage__ErrorPageExtensionReturn_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebPage__ErrorPageExtensionReturn_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

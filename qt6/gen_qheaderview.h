@@ -343,7 +343,7 @@ void QHeaderView_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QHeaderView_virtualbase_EventFilter(void* self, QObject* object, QEvent* event);
 void QHeaderView_override_virtual_ViewportSizeHint(void* self, intptr_t slot);
 QSize* QHeaderView_virtualbase_ViewportSizeHint(const void* self);
-void QHeaderView_Delete(QHeaderView* self, bool isSubclass);
+void QHeaderView_Delete(QHeaderView* self);
 
 #ifdef __cplusplus
 } /* extern C */

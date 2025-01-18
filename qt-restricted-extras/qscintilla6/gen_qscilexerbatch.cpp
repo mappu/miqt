@@ -52,13 +52,13 @@ bool miqt_exec_callback_QsciLexerBatch_WriteProperties(void*, intptr_t, QSetting
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerBatch : public virtual QsciLexerBatch {
+class MiqtVirtualQsciLexerBatch final : public QsciLexerBatch {
 public:
 
 	MiqtVirtualQsciLexerBatch(): QsciLexerBatch() {};
 	MiqtVirtualQsciLexerBatch(QObject* parent): QsciLexerBatch(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerBatch() = default;
+	virtual ~MiqtVirtualQsciLexerBatch() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Language = 0;
@@ -1244,11 +1244,7 @@ bool QsciLexerBatch_virtualbase_WriteProperties(const void* self, QSettings* qs,
 	return ( (const MiqtVirtualQsciLexerBatch*)(self) )->virtualbase_WriteProperties(qs, prefix);
 }
 
-void QsciLexerBatch_Delete(QsciLexerBatch* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerBatch*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerBatch_Delete(QsciLexerBatch* self) {
+	delete self;
 }
 

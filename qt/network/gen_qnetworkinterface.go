@@ -198,7 +198,7 @@ func (this *QNetworkAddressEntry) IsTemporary() bool {
 
 // Delete this object from C++ memory.
 func (this *QNetworkAddressEntry) Delete() {
-	C.QNetworkAddressEntry_Delete(this.h, C.bool(this.isSubclass))
+	C.QNetworkAddressEntry_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -377,7 +377,7 @@ func QNetworkInterface_AllAddresses() []QHostAddress {
 
 // Delete this object from C++ memory.
 func (this *QNetworkInterface) Delete() {
-	C.QNetworkInterface_Delete(this.h, C.bool(this.isSubclass))
+	C.QNetworkInterface_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

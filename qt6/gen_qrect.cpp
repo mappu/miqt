@@ -329,12 +329,8 @@ bool QRect_Contains23(const QRect* self, QPoint* p, bool proper) {
 	return self->contains(*p, proper);
 }
 
-void QRect_Delete(QRect* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QRect*>( self );
-	} else {
-		delete self;
-	}
+void QRect_Delete(QRect* self) {
+	delete self;
 }
 
 QRectF* QRectF_new() {
@@ -649,11 +645,7 @@ QRect* QRectF_ToAlignedRect(const QRectF* self) {
 	return new QRect(self->toAlignedRect());
 }
 
-void QRectF_Delete(QRectF* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QRectF*>( self );
-	} else {
-		delete self;
-	}
+void QRectF_Delete(QRectF* self) {
+	delete self;
 }
 

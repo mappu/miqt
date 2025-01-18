@@ -323,7 +323,7 @@ void QWindow_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QWindow_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QWindow_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QWindow_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QWindow_Delete(QWindow* self, bool isSubclass);
+void QWindow_Delete(QWindow* self);
 
 #ifdef __cplusplus
 } /* extern C */

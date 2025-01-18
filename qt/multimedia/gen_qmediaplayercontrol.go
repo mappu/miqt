@@ -507,7 +507,7 @@ func QMediaPlayerControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QMediaPlayerControl) Delete() {
-	C.QMediaPlayerControl_Delete(this.h, C.bool(this.isSubclass))
+	C.QMediaPlayerControl_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -92,7 +92,7 @@ void QBuffer_override_virtual_ReadLineData(void* self, intptr_t slot);
 long long QBuffer_virtualbase_ReadLineData(void* self, char* data, long long maxlen);
 void QBuffer_override_virtual_SkipData(void* self, intptr_t slot);
 long long QBuffer_virtualbase_SkipData(void* self, long long maxSize);
-void QBuffer_Delete(QBuffer* self, bool isSubclass);
+void QBuffer_Delete(QBuffer* self);
 
 #ifdef __cplusplus
 } /* extern C */

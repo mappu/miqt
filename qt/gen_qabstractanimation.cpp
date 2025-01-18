@@ -49,13 +49,13 @@ void miqt_exec_callback_QAnimationDriver_DisconnectNotify(void*, intptr_t, QMeta
 } /* extern C */
 #endif
 
-class MiqtVirtualQAbstractAnimation : public virtual QAbstractAnimation {
+class MiqtVirtualQAbstractAnimation final : public QAbstractAnimation {
 public:
 
 	MiqtVirtualQAbstractAnimation(): QAbstractAnimation() {};
 	MiqtVirtualQAbstractAnimation(QObject* parent): QAbstractAnimation(parent) {};
 
-	virtual ~MiqtVirtualQAbstractAnimation() = default;
+	virtual ~MiqtVirtualQAbstractAnimation() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Duration = 0;
@@ -600,21 +600,17 @@ void QAbstractAnimation_virtualbase_DisconnectNotify(void* self, QMetaMethod* si
 	( (MiqtVirtualQAbstractAnimation*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QAbstractAnimation_Delete(QAbstractAnimation* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractAnimation*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractAnimation_Delete(QAbstractAnimation* self) {
+	delete self;
 }
 
-class MiqtVirtualQAnimationDriver : public virtual QAnimationDriver {
+class MiqtVirtualQAnimationDriver final : public QAnimationDriver {
 public:
 
 	MiqtVirtualQAnimationDriver(): QAnimationDriver() {};
 	MiqtVirtualQAnimationDriver(QObject* parent): QAnimationDriver(parent) {};
 
-	virtual ~MiqtVirtualQAnimationDriver() = default;
+	virtual ~MiqtVirtualQAnimationDriver() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Advance = 0;
@@ -1105,11 +1101,7 @@ void QAnimationDriver_virtualbase_DisconnectNotify(void* self, QMetaMethod* sign
 	( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QAnimationDriver_Delete(QAnimationDriver* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAnimationDriver*>( self );
-	} else {
-		delete self;
-	}
+void QAnimationDriver_Delete(QAnimationDriver* self) {
+	delete self;
 }
 

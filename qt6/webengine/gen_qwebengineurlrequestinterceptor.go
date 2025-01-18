@@ -323,7 +323,7 @@ func miqt_exec_callback_QWebEngineUrlRequestInterceptor_DisconnectNotify(self *C
 
 // Delete this object from C++ memory.
 func (this *QWebEngineUrlRequestInterceptor) Delete() {
-	C.QWebEngineUrlRequestInterceptor_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebEngineUrlRequestInterceptor_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

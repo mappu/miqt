@@ -127,7 +127,7 @@ func miqt_exec_callback_QScriptExtensionInterface_Keys(self *C.QScriptExtensionI
 
 // Delete this object from C++ memory.
 func (this *QScriptExtensionInterface) Delete() {
-	C.QScriptExtensionInterface_Delete(this.h, C.bool(this.isSubclass))
+	C.QScriptExtensionInterface_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

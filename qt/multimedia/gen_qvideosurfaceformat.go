@@ -235,7 +235,7 @@ func (this *QVideoSurfaceFormat) SetProperty(name string, value *qt.QVariant) {
 
 // Delete this object from C++ memory.
 func (this *QVideoSurfaceFormat) Delete() {
-	C.QVideoSurfaceFormat_Delete(this.h, C.bool(this.isSubclass))
+	C.QVideoSurfaceFormat_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

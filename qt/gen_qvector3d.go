@@ -274,7 +274,7 @@ func (this *QVector3D) ToQVariant() *QVariant {
 
 // Delete this object from C++ memory.
 func (this *QVector3D) Delete() {
-	C.QVector3D_Delete(this.h, C.bool(this.isSubclass))
+	C.QVector3D_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

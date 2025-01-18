@@ -109,7 +109,7 @@ func (this *QTemporaryDir) FilePath(fileName string) string {
 
 // Delete this object from C++ memory.
 func (this *QTemporaryDir) Delete() {
-	C.QTemporaryDir_Delete(this.h, C.bool(this.isSubclass))
+	C.QTemporaryDir_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

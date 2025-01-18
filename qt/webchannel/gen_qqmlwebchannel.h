@@ -42,7 +42,7 @@ struct miqt_string QQmlWebChannel_Tr2(const char* s, const char* c);
 struct miqt_string QQmlWebChannel_Tr3(const char* s, const char* c, int n);
 struct miqt_string QQmlWebChannel_TrUtf82(const char* s, const char* c);
 struct miqt_string QQmlWebChannel_TrUtf83(const char* s, const char* c, int n);
-void QQmlWebChannel_Delete(QQmlWebChannel* self, bool isSubclass);
+void QQmlWebChannel_Delete(QQmlWebChannel* self);
 
 #ifdef __cplusplus
 } /* extern C */

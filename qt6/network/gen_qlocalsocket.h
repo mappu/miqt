@@ -115,7 +115,7 @@ void QLocalSocket_override_virtual_AtEnd(void* self, intptr_t slot);
 bool QLocalSocket_virtualbase_AtEnd(const void* self);
 void QLocalSocket_override_virtual_Reset(void* self, intptr_t slot);
 bool QLocalSocket_virtualbase_Reset(void* self);
-void QLocalSocket_Delete(QLocalSocket* self, bool isSubclass);
+void QLocalSocket_Delete(QLocalSocket* self);
 
 #ifdef __cplusplus
 } /* extern C */

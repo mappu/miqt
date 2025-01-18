@@ -136,7 +136,7 @@ func QSslDiffieHellmanParameters_FromEncoded22(device *qt.QIODevice, format QSsl
 
 // Delete this object from C++ memory.
 func (this *QSslDiffieHellmanParameters) Delete() {
-	C.QSslDiffieHellmanParameters_Delete(this.h, C.bool(this.isSubclass))
+	C.QSslDiffieHellmanParameters_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

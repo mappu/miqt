@@ -199,7 +199,7 @@ func miqt_exec_callback_QSctpServer_NextPendingConnection(self *C.QSctpServer, c
 
 // Delete this object from C++ memory.
 func (this *QSctpServer) Delete() {
-	C.QSctpServer_Delete(this.h, C.bool(this.isSubclass))
+	C.QSctpServer_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

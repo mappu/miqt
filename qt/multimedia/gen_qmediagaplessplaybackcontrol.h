@@ -48,7 +48,7 @@ struct miqt_string QMediaGaplessPlaybackControl_Tr2(const char* s, const char* c
 struct miqt_string QMediaGaplessPlaybackControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QMediaGaplessPlaybackControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QMediaGaplessPlaybackControl_TrUtf83(const char* s, const char* c, int n);
-void QMediaGaplessPlaybackControl_Delete(QMediaGaplessPlaybackControl* self, bool isSubclass);
+void QMediaGaplessPlaybackControl_Delete(QMediaGaplessPlaybackControl* self);
 
 #ifdef __cplusplus
 } /* extern C */

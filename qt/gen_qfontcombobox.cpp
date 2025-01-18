@@ -53,13 +53,13 @@ void miqt_exec_callback_QFontComboBox_InputMethodEvent(void*, intptr_t, QInputMe
 } /* extern C */
 #endif
 
-class MiqtVirtualQFontComboBox : public virtual QFontComboBox {
+class MiqtVirtualQFontComboBox final : public QFontComboBox {
 public:
 
 	MiqtVirtualQFontComboBox(QWidget* parent): QFontComboBox(parent) {};
 	MiqtVirtualQFontComboBox(): QFontComboBox() {};
 
-	virtual ~MiqtVirtualQFontComboBox() = default;
+	virtual ~MiqtVirtualQFontComboBox() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -825,11 +825,7 @@ void QFontComboBox_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* p
 	( (MiqtVirtualQFontComboBox*)(self) )->virtualbase_InputMethodEvent(param1);
 }
 
-void QFontComboBox_Delete(QFontComboBox* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQFontComboBox*>( self );
-	} else {
-		delete self;
-	}
+void QFontComboBox_Delete(QFontComboBox* self) {
+	delete self;
 }
 

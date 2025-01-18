@@ -61,7 +61,7 @@ void QGraphicsLayout_override_virtual_SetGeometry(void* self, intptr_t slot);
 void QGraphicsLayout_virtualbase_SetGeometry(void* self, QRectF* rect);
 void QGraphicsLayout_override_virtual_SizeHint(void* self, intptr_t slot);
 QSizeF* QGraphicsLayout_virtualbase_SizeHint(const void* self, int which, QSizeF* constraint);
-void QGraphicsLayout_Delete(QGraphicsLayout* self, bool isSubclass);
+void QGraphicsLayout_Delete(QGraphicsLayout* self);
 
 #ifdef __cplusplus
 } /* extern C */

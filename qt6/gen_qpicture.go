@@ -346,7 +346,7 @@ func miqt_exec_callback_QPicture_SharedPainter(self *C.QPicture, cb C.intptr_t) 
 
 // Delete this object from C++ memory.
 func (this *QPicture) Delete() {
-	C.QPicture_Delete(this.h, C.bool(this.isSubclass))
+	C.QPicture_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

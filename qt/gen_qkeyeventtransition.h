@@ -57,7 +57,7 @@ void QKeyEventTransition_override_virtual_EventTest(void* self, intptr_t slot);
 bool QKeyEventTransition_virtualbase_EventTest(void* self, QEvent* event);
 void QKeyEventTransition_override_virtual_Event(void* self, intptr_t slot);
 bool QKeyEventTransition_virtualbase_Event(void* self, QEvent* e);
-void QKeyEventTransition_Delete(QKeyEventTransition* self, bool isSubclass);
+void QKeyEventTransition_Delete(QKeyEventTransition* self);
 
 #ifdef __cplusplus
 } /* extern C */

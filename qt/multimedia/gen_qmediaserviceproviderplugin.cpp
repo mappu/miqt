@@ -129,12 +129,8 @@ int QMediaServiceProviderHint_Features(const QMediaServiceProviderHint* self) {
 	return static_cast<int>(_ret);
 }
 
-void QMediaServiceProviderHint_Delete(QMediaServiceProviderHint* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMediaServiceProviderHint*>( self );
-	} else {
-		delete self;
-	}
+void QMediaServiceProviderHint_Delete(QMediaServiceProviderHint* self) {
+	delete self;
 }
 
 QMediaService* QMediaServiceProviderFactoryInterface_Create(QMediaServiceProviderFactoryInterface* self, struct miqt_string key) {
@@ -150,12 +146,8 @@ void QMediaServiceProviderFactoryInterface_OperatorAssign(QMediaServiceProviderF
 	self->operator=(*param1);
 }
 
-void QMediaServiceProviderFactoryInterface_Delete(QMediaServiceProviderFactoryInterface* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMediaServiceProviderFactoryInterface*>( self );
-	} else {
-		delete self;
-	}
+void QMediaServiceProviderFactoryInterface_Delete(QMediaServiceProviderFactoryInterface* self) {
+	delete self;
 }
 
 int QMediaServiceSupportedFormatsInterface_HasSupport(const QMediaServiceSupportedFormatsInterface* self, struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs) {
@@ -195,12 +187,8 @@ void QMediaServiceSupportedFormatsInterface_OperatorAssign(QMediaServiceSupporte
 	self->operator=(*param1);
 }
 
-void QMediaServiceSupportedFormatsInterface_Delete(QMediaServiceSupportedFormatsInterface* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMediaServiceSupportedFormatsInterface*>( self );
-	} else {
-		delete self;
-	}
+void QMediaServiceSupportedFormatsInterface_Delete(QMediaServiceSupportedFormatsInterface* self) {
+	delete self;
 }
 
 struct miqt_array /* of struct miqt_string */  QMediaServiceSupportedDevicesInterface_Devices(const QMediaServiceSupportedDevicesInterface* self, struct miqt_string service) {
@@ -239,12 +227,8 @@ void QMediaServiceSupportedDevicesInterface_OperatorAssign(QMediaServiceSupporte
 	self->operator=(*param1);
 }
 
-void QMediaServiceSupportedDevicesInterface_Delete(QMediaServiceSupportedDevicesInterface* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMediaServiceSupportedDevicesInterface*>( self );
-	} else {
-		delete self;
-	}
+void QMediaServiceSupportedDevicesInterface_Delete(QMediaServiceSupportedDevicesInterface* self) {
+	delete self;
 }
 
 struct miqt_string QMediaServiceDefaultDeviceInterface_DefaultDevice(const QMediaServiceDefaultDeviceInterface* self, struct miqt_string service) {
@@ -261,12 +245,8 @@ void QMediaServiceDefaultDeviceInterface_OperatorAssign(QMediaServiceDefaultDevi
 	self->operator=(*param1);
 }
 
-void QMediaServiceDefaultDeviceInterface_Delete(QMediaServiceDefaultDeviceInterface* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMediaServiceDefaultDeviceInterface*>( self );
-	} else {
-		delete self;
-	}
+void QMediaServiceDefaultDeviceInterface_Delete(QMediaServiceDefaultDeviceInterface* self) {
+	delete self;
 }
 
 int QMediaServiceCameraInfoInterface_CameraPosition(const QMediaServiceCameraInfoInterface* self, struct miqt_string device) {
@@ -284,12 +264,8 @@ void QMediaServiceCameraInfoInterface_OperatorAssign(QMediaServiceCameraInfoInte
 	self->operator=(*param1);
 }
 
-void QMediaServiceCameraInfoInterface_Delete(QMediaServiceCameraInfoInterface* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMediaServiceCameraInfoInterface*>( self );
-	} else {
-		delete self;
-	}
+void QMediaServiceCameraInfoInterface_Delete(QMediaServiceCameraInfoInterface* self) {
+	delete self;
 }
 
 int QMediaServiceFeaturesInterface_SupportedFeatures(const QMediaServiceFeaturesInterface* self, struct miqt_string service) {
@@ -302,12 +278,8 @@ void QMediaServiceFeaturesInterface_OperatorAssign(QMediaServiceFeaturesInterfac
 	self->operator=(*param1);
 }
 
-void QMediaServiceFeaturesInterface_Delete(QMediaServiceFeaturesInterface* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMediaServiceFeaturesInterface*>( self );
-	} else {
-		delete self;
-	}
+void QMediaServiceFeaturesInterface_Delete(QMediaServiceFeaturesInterface* self) {
+	delete self;
 }
 
 void QMediaServiceProviderPlugin_virtbase(QMediaServiceProviderPlugin* src, QObject** outptr_QObject, QMediaServiceProviderFactoryInterface** outptr_QMediaServiceProviderFactoryInterface) {
@@ -398,11 +370,7 @@ struct miqt_string QMediaServiceProviderPlugin_TrUtf83(const char* s, const char
 	return _ms;
 }
 
-void QMediaServiceProviderPlugin_Delete(QMediaServiceProviderPlugin* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QMediaServiceProviderPlugin*>( self );
-	} else {
-		delete self;
-	}
+void QMediaServiceProviderPlugin_Delete(QMediaServiceProviderPlugin* self) {
+	delete self;
 }
 

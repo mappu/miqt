@@ -371,7 +371,7 @@ func miqt_exec_callback_QGraphicsLayoutItem_SizeHint(self *C.QGraphicsLayoutItem
 
 // Delete this object from C++ memory.
 func (this *QGraphicsLayoutItem) Delete() {
-	C.QGraphicsLayoutItem_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsLayoutItem_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

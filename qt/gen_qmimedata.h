@@ -88,7 +88,7 @@ void QMimeData_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QMimeData_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QMimeData_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QMimeData_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QMimeData_Delete(QMimeData* self, bool isSubclass);
+void QMimeData_Delete(QMimeData* self);
 
 #ifdef __cplusplus
 } /* extern C */

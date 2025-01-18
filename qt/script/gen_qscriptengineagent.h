@@ -61,7 +61,7 @@ void QScriptEngineAgent_override_virtual_SupportsExtension(void* self, intptr_t 
 bool QScriptEngineAgent_virtualbase_SupportsExtension(const void* self, int extension);
 void QScriptEngineAgent_override_virtual_Extension(void* self, intptr_t slot);
 QVariant* QScriptEngineAgent_virtualbase_Extension(void* self, int extension, QVariant* argument);
-void QScriptEngineAgent_Delete(QScriptEngineAgent* self, bool isSubclass);
+void QScriptEngineAgent_Delete(QScriptEngineAgent* self);
 
 #ifdef __cplusplus
 } /* extern C */

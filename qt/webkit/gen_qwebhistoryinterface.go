@@ -402,7 +402,7 @@ func miqt_exec_callback_QWebHistoryInterface_DisconnectNotify(self *C.QWebHistor
 
 // Delete this object from C++ memory.
 func (this *QWebHistoryInterface) Delete() {
-	C.QWebHistoryInterface_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebHistoryInterface_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

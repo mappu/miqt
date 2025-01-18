@@ -87,7 +87,7 @@ bool miqt_exec_callback_QPrintPreviewWidget_FocusNextPrevChild(void*, intptr_t, 
 } /* extern C */
 #endif
 
-class MiqtVirtualQPrintPreviewWidget : public virtual QPrintPreviewWidget {
+class MiqtVirtualQPrintPreviewWidget final : public QPrintPreviewWidget {
 public:
 
 	MiqtVirtualQPrintPreviewWidget(QWidget* parent): QPrintPreviewWidget(parent) {};
@@ -97,7 +97,7 @@ public:
 	MiqtVirtualQPrintPreviewWidget(QPrinter* printer, QWidget* parent, Qt::WindowFlags flags): QPrintPreviewWidget(printer, parent, flags) {};
 	MiqtVirtualQPrintPreviewWidget(QWidget* parent, Qt::WindowFlags flags): QPrintPreviewWidget(parent, flags) {};
 
-	virtual ~MiqtVirtualQPrintPreviewWidget() = default;
+	virtual ~MiqtVirtualQPrintPreviewWidget() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetVisible = 0;
@@ -1599,11 +1599,7 @@ bool QPrintPreviewWidget_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQPrintPreviewWidget*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QPrintPreviewWidget_Delete(QPrintPreviewWidget* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQPrintPreviewWidget*>( self );
-	} else {
-		delete self;
-	}
+void QPrintPreviewWidget_Delete(QPrintPreviewWidget* self) {
+	delete self;
 }
 

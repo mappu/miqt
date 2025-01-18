@@ -47,7 +47,7 @@ typedef struct QVariant QVariant;
 #endif
 
 QMetaObject* QObjectData_DynamicMetaObject(const QObjectData* self);
-void QObjectData_Delete(QObjectData* self, bool isSubclass);
+void QObjectData_Delete(QObjectData* self);
 
 QObject* QObject_new();
 QObject* QObject_new2(QObject* parent);
@@ -118,16 +118,16 @@ void QObject_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QObject_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QObject_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QObject_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QObject_Delete(QObject* self, bool isSubclass);
+void QObject_Delete(QObject* self);
 
 QObjectUserData* QObjectUserData_new();
-void QObjectUserData_Delete(QObjectUserData* self, bool isSubclass);
+void QObjectUserData_Delete(QObjectUserData* self);
 
 QSignalBlocker* QSignalBlocker_new(QObject* o);
 QSignalBlocker* QSignalBlocker_new2(QObject* o);
 void QSignalBlocker_Reblock(QSignalBlocker* self);
 void QSignalBlocker_Unblock(QSignalBlocker* self);
-void QSignalBlocker_Delete(QSignalBlocker* self, bool isSubclass);
+void QSignalBlocker_Delete(QSignalBlocker* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -21,13 +21,13 @@ void miqt_exec_callback_QsciLexerCSharp_SetStylePreprocessor(void*, intptr_t, bo
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerCSharp : public virtual QsciLexerCSharp {
+class MiqtVirtualQsciLexerCSharp final : public QsciLexerCSharp {
 public:
 
 	MiqtVirtualQsciLexerCSharp(): QsciLexerCSharp() {};
 	MiqtVirtualQsciLexerCSharp(QObject* parent): QsciLexerCSharp(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerCSharp() = default;
+	virtual ~MiqtVirtualQsciLexerCSharp() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetFoldAtElse = 0;
@@ -312,11 +312,7 @@ void QsciLexerCSharp_virtualbase_SetStylePreprocessor(void* self, bool style) {
 	( (MiqtVirtualQsciLexerCSharp*)(self) )->virtualbase_SetStylePreprocessor(style);
 }
 
-void QsciLexerCSharp_Delete(QsciLexerCSharp* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerCSharp*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerCSharp_Delete(QsciLexerCSharp* self) {
+	delete self;
 }
 

@@ -870,7 +870,7 @@ func (this *QDir) EntryInfoList3(nameFilters []string, filters QDir__Filter, sor
 
 // Delete this object from C++ memory.
 func (this *QDir) Delete() {
-	C.QDir_Delete(this.h, C.bool(this.isSubclass))
+	C.QDir_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

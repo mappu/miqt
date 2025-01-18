@@ -154,7 +154,7 @@ void QStandardItem_override_virtual_Write(void* self, intptr_t slot);
 void QStandardItem_virtualbase_Write(const void* self, QDataStream* out);
 void QStandardItem_override_virtual_OperatorLesser(void* self, intptr_t slot);
 bool QStandardItem_virtualbase_OperatorLesser(const void* self, QStandardItem* other);
-void QStandardItem_Delete(QStandardItem* self, bool isSubclass);
+void QStandardItem_Delete(QStandardItem* self);
 
 QStandardItemModel* QStandardItemModel_new();
 QStandardItemModel* QStandardItemModel_new2(int rows, int columns);
@@ -306,7 +306,7 @@ void QStandardItemModel_override_virtual_Revert(void* self, intptr_t slot);
 void QStandardItemModel_virtualbase_Revert(void* self);
 void QStandardItemModel_override_virtual_ResetInternalData(void* self, intptr_t slot);
 void QStandardItemModel_virtualbase_ResetInternalData(void* self);
-void QStandardItemModel_Delete(QStandardItemModel* self, bool isSubclass);
+void QStandardItemModel_Delete(QStandardItemModel* self);
 
 #ifdef __cplusplus
 } /* extern C */

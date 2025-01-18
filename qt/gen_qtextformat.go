@@ -334,7 +334,7 @@ func (this *QTextLength) ToQVariant() *QVariant {
 
 // Delete this object from C++ memory.
 func (this *QTextLength) Delete() {
-	C.QTextLength_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextLength_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -669,7 +669,7 @@ func (this *QTextFormat) ClearForeground() {
 
 // Delete this object from C++ memory.
 func (this *QTextFormat) Delete() {
-	C.QTextFormat_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextFormat_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1067,7 +1067,7 @@ func (this *QTextCharFormat) SetFontStyleHint2(hint QFont__StyleHint, strategy Q
 
 // Delete this object from C++ memory.
 func (this *QTextCharFormat) Delete() {
-	C.QTextCharFormat_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextCharFormat_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1264,7 +1264,7 @@ func (this *QTextBlockFormat) Marker() QTextBlockFormat__MarkerType {
 
 // Delete this object from C++ memory.
 func (this *QTextBlockFormat) Delete() {
-	C.QTextBlockFormat_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextBlockFormat_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1381,7 +1381,7 @@ func (this *QTextListFormat) NumberSuffix() string {
 
 // Delete this object from C++ memory.
 func (this *QTextListFormat) Delete() {
-	C.QTextListFormat_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextListFormat_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1487,7 +1487,7 @@ func (this *QTextImageFormat) SetQuality1(quality int) {
 
 // Delete this object from C++ memory.
 func (this *QTextImageFormat) Delete() {
-	C.QTextImageFormat_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextImageFormat_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1676,7 +1676,7 @@ func (this *QTextFrameFormat) PageBreakPolicy() QTextFormat__PageBreakFlag {
 
 // Delete this object from C++ memory.
 func (this *QTextFrameFormat) Delete() {
-	C.QTextFrameFormat_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextFrameFormat_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1813,7 +1813,7 @@ func (this *QTextTableFormat) BorderCollapse() bool {
 
 // Delete this object from C++ memory.
 func (this *QTextTableFormat) Delete() {
-	C.QTextTableFormat_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextTableFormat_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2028,7 +2028,7 @@ func (this *QTextTableCellFormat) SetBorderBrush(brush *QBrush) {
 
 // Delete this object from C++ memory.
 func (this *QTextTableCellFormat) Delete() {
-	C.QTextTableCellFormat_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextTableCellFormat_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

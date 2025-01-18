@@ -317,7 +317,7 @@ func (this *QTextEncoder) HasFailure() bool {
 
 // Delete this object from C++ memory.
 func (this *QTextEncoder) Delete() {
-	C.QTextEncoder_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextEncoder_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -407,7 +407,7 @@ func (this *QTextDecoder) NeedsMoreData() bool {
 
 // Delete this object from C++ memory.
 func (this *QTextDecoder) Delete() {
-	C.QTextDecoder_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextDecoder_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -470,7 +470,7 @@ func NewQTextCodec__ConverterState2(f QTextCodec__ConversionFlag) *QTextCodec__C
 
 // Delete this object from C++ memory.
 func (this *QTextCodec__ConverterState) Delete() {
-	C.QTextCodec__ConverterState_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextCodec__ConverterState_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

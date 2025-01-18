@@ -39,7 +39,7 @@ struct miqt_string QWebEngineContextMenuData_MisspelledWord(const QWebEngineCont
 struct miqt_array /* of struct miqt_string */  QWebEngineContextMenuData_SpellCheckerSuggestions(const QWebEngineContextMenuData* self);
 int QWebEngineContextMenuData_MediaFlags(const QWebEngineContextMenuData* self);
 int QWebEngineContextMenuData_EditFlags(const QWebEngineContextMenuData* self);
-void QWebEngineContextMenuData_Delete(QWebEngineContextMenuData* self, bool isSubclass);
+void QWebEngineContextMenuData_Delete(QWebEngineContextMenuData* self);
 
 #ifdef __cplusplus
 } /* extern C */

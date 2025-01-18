@@ -499,7 +499,7 @@ func miqt_exec_callback_QPageSetupDialog_EventFilter(self *C.QPageSetupDialog, c
 
 // Delete this object from C++ memory.
 func (this *QPageSetupDialog) Delete() {
-	C.QPageSetupDialog_Delete(this.h, C.bool(this.isSubclass))
+	C.QPageSetupDialog_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

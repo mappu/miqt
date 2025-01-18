@@ -73,21 +73,17 @@ void QAudioSystemFactoryInterface_OperatorAssign(QAudioSystemFactoryInterface* s
 	self->operator=(*param1);
 }
 
-void QAudioSystemFactoryInterface_Delete(QAudioSystemFactoryInterface* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QAudioSystemFactoryInterface*>( self );
-	} else {
-		delete self;
-	}
+void QAudioSystemFactoryInterface_Delete(QAudioSystemFactoryInterface* self) {
+	delete self;
 }
 
-class MiqtVirtualQAudioSystemPlugin : public virtual QAudioSystemPlugin {
+class MiqtVirtualQAudioSystemPlugin final : public QAudioSystemPlugin {
 public:
 
 	MiqtVirtualQAudioSystemPlugin(): QAudioSystemPlugin() {};
 	MiqtVirtualQAudioSystemPlugin(QObject* parent): QAudioSystemPlugin(parent) {};
 
-	virtual ~MiqtVirtualQAudioSystemPlugin() = default;
+	virtual ~MiqtVirtualQAudioSystemPlugin() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__AvailableDevices = 0;
@@ -543,11 +539,7 @@ void QAudioSystemPlugin_virtualbase_DisconnectNotify(void* self, QMetaMethod* si
 	( (MiqtVirtualQAudioSystemPlugin*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QAudioSystemPlugin_Delete(QAudioSystemPlugin* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAudioSystemPlugin*>( self );
-	} else {
-		delete self;
-	}
+void QAudioSystemPlugin_Delete(QAudioSystemPlugin* self) {
+	delete self;
 }
 

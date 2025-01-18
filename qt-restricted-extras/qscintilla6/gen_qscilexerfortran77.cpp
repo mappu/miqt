@@ -53,13 +53,13 @@ bool miqt_exec_callback_QsciLexerFortran77_WriteProperties(void*, intptr_t, QSet
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerFortran77 : public virtual QsciLexerFortran77 {
+class MiqtVirtualQsciLexerFortran77 final : public QsciLexerFortran77 {
 public:
 
 	MiqtVirtualQsciLexerFortran77(): QsciLexerFortran77() {};
 	MiqtVirtualQsciLexerFortran77(QObject* parent): QsciLexerFortran77(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerFortran77() = default;
+	virtual ~MiqtVirtualQsciLexerFortran77() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetFoldCompact = 0;
@@ -1285,11 +1285,7 @@ bool QsciLexerFortran77_virtualbase_WriteProperties(const void* self, QSettings*
 	return ( (const MiqtVirtualQsciLexerFortran77*)(self) )->virtualbase_WriteProperties(qs, prefix);
 }
 
-void QsciLexerFortran77_Delete(QsciLexerFortran77* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerFortran77*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerFortran77_Delete(QsciLexerFortran77* self) {
+	delete self;
 }
 

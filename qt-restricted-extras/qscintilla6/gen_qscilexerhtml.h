@@ -141,7 +141,7 @@ void QsciLexerHTML_override_virtual_ReadProperties(void* self, intptr_t slot);
 bool QsciLexerHTML_virtualbase_ReadProperties(void* self, QSettings* qs, struct miqt_string prefix);
 void QsciLexerHTML_override_virtual_WriteProperties(void* self, intptr_t slot);
 bool QsciLexerHTML_virtualbase_WriteProperties(const void* self, QSettings* qs, struct miqt_string prefix);
-void QsciLexerHTML_Delete(QsciLexerHTML* self, bool isSubclass);
+void QsciLexerHTML_Delete(QsciLexerHTML* self);
 
 #ifdef __cplusplus
 } /* extern C */

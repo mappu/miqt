@@ -108,7 +108,7 @@ void QFontDialog_override_virtual_ResizeEvent(void* self, intptr_t slot);
 void QFontDialog_virtualbase_ResizeEvent(void* self, QResizeEvent* param1);
 void QFontDialog_override_virtual_ContextMenuEvent(void* self, intptr_t slot);
 void QFontDialog_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* param1);
-void QFontDialog_Delete(QFontDialog* self, bool isSubclass);
+void QFontDialog_Delete(QFontDialog* self);
 
 #ifdef __cplusplus
 } /* extern C */

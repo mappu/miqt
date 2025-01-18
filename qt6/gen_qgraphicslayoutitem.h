@@ -80,7 +80,7 @@ void QGraphicsLayoutItem_override_virtual_IsEmpty(void* self, intptr_t slot);
 bool QGraphicsLayoutItem_virtualbase_IsEmpty(const void* self);
 void QGraphicsLayoutItem_override_virtual_SizeHint(void* self, intptr_t slot);
 QSizeF* QGraphicsLayoutItem_virtualbase_SizeHint(const void* self, int which, QSizeF* constraint);
-void QGraphicsLayoutItem_Delete(QGraphicsLayoutItem* self, bool isSubclass);
+void QGraphicsLayoutItem_Delete(QGraphicsLayoutItem* self);
 
 #ifdef __cplusplus
 } /* extern C */

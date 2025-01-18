@@ -29,13 +29,13 @@ void miqt_exec_callback_QStackedWidget_InitStyleOption(void*, intptr_t, QStyleOp
 } /* extern C */
 #endif
 
-class MiqtVirtualQStackedWidget : public virtual QStackedWidget {
+class MiqtVirtualQStackedWidget final : public QStackedWidget {
 public:
 
 	MiqtVirtualQStackedWidget(QWidget* parent): QStackedWidget(parent) {};
 	MiqtVirtualQStackedWidget(): QStackedWidget() {};
 
-	virtual ~MiqtVirtualQStackedWidget() = default;
+	virtual ~MiqtVirtualQStackedWidget() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -311,11 +311,7 @@ void QStackedWidget_virtualbase_InitStyleOption(const void* self, QStyleOptionFr
 	( (const MiqtVirtualQStackedWidget*)(self) )->virtualbase_InitStyleOption(option);
 }
 
-void QStackedWidget_Delete(QStackedWidget* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQStackedWidget*>( self );
-	} else {
-		delete self;
-	}
+void QStackedWidget_Delete(QStackedWidget* self) {
+	delete self;
 }
 

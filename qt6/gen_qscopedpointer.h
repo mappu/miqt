@@ -22,7 +22,7 @@ typedef struct QScopedPointerPodDeleter QScopedPointerPodDeleter;
 
 void QScopedPointerPodDeleter_Cleanup(void* pointer);
 void QScopedPointerPodDeleter_OperatorCall(const QScopedPointerPodDeleter* self, void* pointer);
-void QScopedPointerPodDeleter_Delete(QScopedPointerPodDeleter* self, bool isSubclass);
+void QScopedPointerPodDeleter_Delete(QScopedPointerPodDeleter* self);
 
 #ifdef __cplusplus
 } /* extern C */

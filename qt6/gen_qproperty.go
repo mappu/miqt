@@ -90,7 +90,7 @@ func NewQPropertyBindingSourceLocation2(param1 *QPropertyBindingSourceLocation) 
 
 // Delete this object from C++ memory.
 func (this *QPropertyBindingSourceLocation) Delete() {
-	C.QPropertyBindingSourceLocation_Delete(this.h, C.bool(this.isSubclass))
+	C.QPropertyBindingSourceLocation_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -192,7 +192,7 @@ func (this *QPropertyBindingError) Description() string {
 
 // Delete this object from C++ memory.
 func (this *QPropertyBindingError) Delete() {
-	C.QPropertyBindingError_Delete(this.h, C.bool(this.isSubclass))
+	C.QPropertyBindingError_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -275,7 +275,7 @@ func (this *QUntypedPropertyBinding) ValueMetaType() *QMetaType {
 
 // Delete this object from C++ memory.
 func (this *QUntypedPropertyBinding) Delete() {
-	C.QUntypedPropertyBinding_Delete(this.h, C.bool(this.isSubclass))
+	C.QUntypedPropertyBinding_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -338,7 +338,7 @@ func NewQPropertyObserverBase2(param1 *QPropertyObserverBase) *QPropertyObserver
 
 // Delete this object from C++ memory.
 func (this *QPropertyObserverBase) Delete() {
-	C.QPropertyObserverBase_Delete(this.h, C.bool(this.isSubclass))
+	C.QPropertyObserverBase_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -397,7 +397,7 @@ func NewQPropertyObserver() *QPropertyObserver {
 
 // Delete this object from C++ memory.
 func (this *QPropertyObserver) Delete() {
-	C.QPropertyObserver_Delete(this.h, C.bool(this.isSubclass))
+	C.QPropertyObserver_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -456,7 +456,7 @@ func NewQPropertyNotifier() *QPropertyNotifier {
 
 // Delete this object from C++ memory.
 func (this *QPropertyNotifier) Delete() {
-	C.QPropertyNotifier_Delete(this.h, C.bool(this.isSubclass))
+	C.QPropertyNotifier_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -573,7 +573,7 @@ func (this *QUntypedBindable) MakeBinding1(location *QPropertyBindingSourceLocat
 
 // Delete this object from C++ memory.
 func (this *QUntypedBindable) Delete() {
-	C.QUntypedBindable_Delete(this.h, C.bool(this.isSubclass))
+	C.QUntypedBindable_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

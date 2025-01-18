@@ -384,7 +384,7 @@ func miqt_exec_callback_QLCDNumber_ChangeEvent(self *C.QLCDNumber, cb C.intptr_t
 
 // Delete this object from C++ memory.
 func (this *QLCDNumber) Delete() {
-	C.QLCDNumber_Delete(this.h, C.bool(this.isSubclass))
+	C.QLCDNumber_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -57,7 +57,7 @@ void QAudioListener_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QAudioListener_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QAudioListener_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QAudioListener_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QAudioListener_Delete(QAudioListener* self, bool isSubclass);
+void QAudioListener_Delete(QAudioListener* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -114,7 +114,7 @@ func (this *QOcspResponse) Swap(other *QOcspResponse) {
 
 // Delete this object from C++ memory.
 func (this *QOcspResponse) Delete() {
-	C.QOcspResponse_Delete(this.h, C.bool(this.isSubclass))
+	C.QOcspResponse_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

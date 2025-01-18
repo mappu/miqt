@@ -1231,7 +1231,7 @@ func miqt_exec_callback_QSizeGrip_FocusNextPrevChild(self *C.QSizeGrip, cb C.int
 
 // Delete this object from C++ memory.
 func (this *QSizeGrip) Delete() {
-	C.QSizeGrip_Delete(this.h, C.bool(this.isSubclass))
+	C.QSizeGrip_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

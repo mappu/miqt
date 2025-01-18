@@ -223,7 +223,7 @@ void QToolBar_override_virtual_InputMethodQuery(void* self, intptr_t slot);
 QVariant* QToolBar_virtualbase_InputMethodQuery(const void* self, int param1);
 void QToolBar_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QToolBar_virtualbase_FocusNextPrevChild(void* self, bool next);
-void QToolBar_Delete(QToolBar* self, bool isSubclass);
+void QToolBar_Delete(QToolBar* self);
 
 #ifdef __cplusplus
 } /* extern C */

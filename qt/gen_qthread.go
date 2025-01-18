@@ -477,7 +477,7 @@ func miqt_exec_callback_QThread_DisconnectNotify(self *C.QThread, cb C.intptr_t,
 
 // Delete this object from C++ memory.
 func (this *QThread) Delete() {
-	C.QThread_Delete(this.h, C.bool(this.isSubclass))
+	C.QThread_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

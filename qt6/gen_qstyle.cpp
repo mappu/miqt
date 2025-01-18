@@ -62,12 +62,12 @@ void miqt_exec_callback_QStyle_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQStyle : public virtual QStyle {
+class MiqtVirtualQStyle final : public QStyle {
 public:
 
 	MiqtVirtualQStyle(): QStyle() {};
 
-	virtual ~MiqtVirtualQStyle() = default;
+	virtual ~MiqtVirtualQStyle() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Polish = 0;
@@ -1185,11 +1185,7 @@ void QStyle_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQStyle*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QStyle_Delete(QStyle* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQStyle*>( self );
-	} else {
-		delete self;
-	}
+void QStyle_Delete(QStyle* self) {
+	delete self;
 }
 

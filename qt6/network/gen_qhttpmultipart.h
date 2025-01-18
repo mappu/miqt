@@ -48,7 +48,7 @@ void QHttpPart_SetHeader(QHttpPart* self, int header, QVariant* value);
 void QHttpPart_SetRawHeader(QHttpPart* self, struct miqt_string headerName, struct miqt_string headerValue);
 void QHttpPart_SetBody(QHttpPart* self, struct miqt_string body);
 void QHttpPart_SetBodyDevice(QHttpPart* self, QIODevice* device);
-void QHttpPart_Delete(QHttpPart* self, bool isSubclass);
+void QHttpPart_Delete(QHttpPart* self);
 
 QHttpMultiPart* QHttpMultiPart_new();
 QHttpMultiPart* QHttpMultiPart_new2(int contentType);
@@ -78,7 +78,7 @@ void QHttpMultiPart_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QHttpMultiPart_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QHttpMultiPart_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QHttpMultiPart_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QHttpMultiPart_Delete(QHttpMultiPart* self, bool isSubclass);
+void QHttpMultiPart_Delete(QHttpMultiPart* self);
 
 #ifdef __cplusplus
 } /* extern C */

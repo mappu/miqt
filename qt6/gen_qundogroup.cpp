@@ -36,13 +36,13 @@ void miqt_exec_callback_QUndoGroup_DisconnectNotify(void*, intptr_t, QMetaMethod
 } /* extern C */
 #endif
 
-class MiqtVirtualQUndoGroup : public virtual QUndoGroup {
+class MiqtVirtualQUndoGroup final : public QUndoGroup {
 public:
 
 	MiqtVirtualQUndoGroup(): QUndoGroup() {};
 	MiqtVirtualQUndoGroup(QObject* parent): QUndoGroup(parent) {};
 
-	virtual ~MiqtVirtualQUndoGroup() = default;
+	virtual ~MiqtVirtualQUndoGroup() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -508,11 +508,7 @@ void QUndoGroup_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQUndoGroup*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QUndoGroup_Delete(QUndoGroup* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQUndoGroup*>( self );
-	} else {
-		delete self;
-	}
+void QUndoGroup_Delete(QUndoGroup* self) {
+	delete self;
 }
 

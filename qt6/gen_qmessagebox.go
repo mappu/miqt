@@ -1692,7 +1692,7 @@ func miqt_exec_callback_QMessageBox_EventFilter(self *C.QMessageBox, cb C.intptr
 
 // Delete this object from C++ memory.
 func (this *QMessageBox) Delete() {
-	C.QMessageBox_Delete(this.h, C.bool(this.isSubclass))
+	C.QMessageBox_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

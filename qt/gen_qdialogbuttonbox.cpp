@@ -90,7 +90,7 @@ bool miqt_exec_callback_QDialogButtonBox_FocusNextPrevChild(void*, intptr_t, boo
 } /* extern C */
 #endif
 
-class MiqtVirtualQDialogButtonBox : public virtual QDialogButtonBox {
+class MiqtVirtualQDialogButtonBox final : public QDialogButtonBox {
 public:
 
 	MiqtVirtualQDialogButtonBox(QWidget* parent): QDialogButtonBox(parent) {};
@@ -102,7 +102,7 @@ public:
 	MiqtVirtualQDialogButtonBox(QDialogButtonBox::StandardButtons buttons, QWidget* parent): QDialogButtonBox(buttons, parent) {};
 	MiqtVirtualQDialogButtonBox(QDialogButtonBox::StandardButtons buttons, Qt::Orientation orientation, QWidget* parent): QDialogButtonBox(buttons, orientation, parent) {};
 
-	virtual ~MiqtVirtualQDialogButtonBox() = default;
+	virtual ~MiqtVirtualQDialogButtonBox() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__ChangeEvent = 0;
@@ -1634,11 +1634,7 @@ bool QDialogButtonBox_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQDialogButtonBox*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QDialogButtonBox_Delete(QDialogButtonBox* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQDialogButtonBox*>( self );
-	} else {
-		delete self;
-	}
+void QDialogButtonBox_Delete(QDialogButtonBox* self) {
+	delete self;
 }
 

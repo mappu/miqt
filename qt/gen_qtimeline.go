@@ -509,7 +509,7 @@ func miqt_exec_callback_QTimeLine_DisconnectNotify(self *C.QTimeLine, cb C.intpt
 
 // Delete this object from C++ memory.
 func (this *QTimeLine) Delete() {
-	C.QTimeLine_Delete(this.h, C.bool(this.isSubclass))
+	C.QTimeLine_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

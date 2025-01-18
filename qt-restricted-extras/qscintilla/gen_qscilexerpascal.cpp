@@ -55,13 +55,13 @@ bool miqt_exec_callback_QsciLexerPascal_WriteProperties(void*, intptr_t, QSettin
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerPascal : public virtual QsciLexerPascal {
+class MiqtVirtualQsciLexerPascal final : public QsciLexerPascal {
 public:
 
 	MiqtVirtualQsciLexerPascal(): QsciLexerPascal() {};
 	MiqtVirtualQsciLexerPascal(QObject* parent): QsciLexerPascal(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerPascal() = default;
+	virtual ~MiqtVirtualQsciLexerPascal() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetFoldComments = 0;
@@ -1452,11 +1452,7 @@ bool QsciLexerPascal_virtualbase_WriteProperties(const void* self, QSettings* qs
 	return ( (const MiqtVirtualQsciLexerPascal*)(self) )->virtualbase_WriteProperties(qs, prefix);
 }
 
-void QsciLexerPascal_Delete(QsciLexerPascal* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerPascal*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerPascal_Delete(QsciLexerPascal* self) {
+	delete self;
 }
 

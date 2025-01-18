@@ -76,7 +76,7 @@ bool QDataStream_CommitTransaction(QDataStream* self);
 void QDataStream_RollbackTransaction(QDataStream* self);
 void QDataStream_AbortTransaction(QDataStream* self);
 bool QDataStream_IsDeviceTransactionStarted(const QDataStream* self);
-void QDataStream_Delete(QDataStream* self, bool isSubclass);
+void QDataStream_Delete(QDataStream* self);
 
 #ifdef __cplusplus
 } /* extern C */

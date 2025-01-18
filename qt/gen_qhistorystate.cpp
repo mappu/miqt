@@ -22,7 +22,7 @@ bool miqt_exec_callback_QHistoryState_Event(void*, intptr_t, QEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQHistoryState : public virtual QHistoryState {
+class MiqtVirtualQHistoryState final : public QHistoryState {
 public:
 
 	MiqtVirtualQHistoryState(): QHistoryState() {};
@@ -30,7 +30,7 @@ public:
 	MiqtVirtualQHistoryState(QState* parent): QHistoryState(parent) {};
 	MiqtVirtualQHistoryState(QHistoryState::HistoryType typeVal, QState* parent): QHistoryState(typeVal, parent) {};
 
-	virtual ~MiqtVirtualQHistoryState() = default;
+	virtual ~MiqtVirtualQHistoryState() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__OnEntry = 0;
@@ -248,11 +248,7 @@ bool QHistoryState_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQHistoryState*)(self) )->virtualbase_Event(e);
 }
 
-void QHistoryState_Delete(QHistoryState* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQHistoryState*>( self );
-	} else {
-		delete self;
-	}
+void QHistoryState_Delete(QHistoryState* self) {
+	delete self;
 }
 

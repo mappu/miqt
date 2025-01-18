@@ -40,7 +40,7 @@ bool miqt_exec_callback_QPageSetupDialog_EventFilter(void*, intptr_t, QObject*, 
 } /* extern C */
 #endif
 
-class MiqtVirtualQPageSetupDialog : public virtual QPageSetupDialog {
+class MiqtVirtualQPageSetupDialog final : public QPageSetupDialog {
 public:
 
 	MiqtVirtualQPageSetupDialog(QWidget* parent): QPageSetupDialog(parent) {};
@@ -48,7 +48,7 @@ public:
 	MiqtVirtualQPageSetupDialog(): QPageSetupDialog() {};
 	MiqtVirtualQPageSetupDialog(QPrinter* printer, QWidget* parent): QPageSetupDialog(printer, parent) {};
 
-	virtual ~MiqtVirtualQPageSetupDialog() = default;
+	virtual ~MiqtVirtualQPageSetupDialog() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Exec = 0;
@@ -597,11 +597,7 @@ bool QPageSetupDialog_virtualbase_EventFilter(void* self, QObject* param1, QEven
 	return ( (MiqtVirtualQPageSetupDialog*)(self) )->virtualbase_EventFilter(param1, param2);
 }
 
-void QPageSetupDialog_Delete(QPageSetupDialog* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQPageSetupDialog*>( self );
-	} else {
-		delete self;
-	}
+void QPageSetupDialog_Delete(QPageSetupDialog* self) {
+	delete self;
 }
 

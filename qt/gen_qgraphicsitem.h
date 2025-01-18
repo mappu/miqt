@@ -395,7 +395,7 @@ void QGraphicsItem_override_virtual_SetExtension(void* self, intptr_t slot);
 void QGraphicsItem_virtualbase_SetExtension(void* self, int extension, QVariant* variant);
 void QGraphicsItem_override_virtual_Extension(void* self, intptr_t slot);
 QVariant* QGraphicsItem_virtualbase_Extension(const void* self, QVariant* variant);
-void QGraphicsItem_Delete(QGraphicsItem* self, bool isSubclass);
+void QGraphicsItem_Delete(QGraphicsItem* self);
 
 QGraphicsObject* QGraphicsObject_new();
 QGraphicsObject* QGraphicsObject_new2(QGraphicsItem* parent);
@@ -520,7 +520,7 @@ void QGraphicsObject_override_virtual_SetExtension(void* self, intptr_t slot);
 void QGraphicsObject_virtualbase_SetExtension(void* self, int extension, QVariant* variant);
 void QGraphicsObject_override_virtual_Extension(void* self, intptr_t slot);
 QVariant* QGraphicsObject_virtualbase_Extension(const void* self, QVariant* variant);
-void QGraphicsObject_Delete(QGraphicsObject* self, bool isSubclass);
+void QGraphicsObject_Delete(QGraphicsObject* self);
 
 QAbstractGraphicsShapeItem* QAbstractGraphicsShapeItem_new();
 QAbstractGraphicsShapeItem* QAbstractGraphicsShapeItem_new2(QGraphicsItem* parent);
@@ -601,7 +601,7 @@ void QAbstractGraphicsShapeItem_override_virtual_SetExtension(void* self, intptr
 void QAbstractGraphicsShapeItem_virtualbase_SetExtension(void* self, int extension, QVariant* variant);
 void QAbstractGraphicsShapeItem_override_virtual_Extension(void* self, intptr_t slot);
 QVariant* QAbstractGraphicsShapeItem_virtualbase_Extension(const void* self, QVariant* variant);
-void QAbstractGraphicsShapeItem_Delete(QAbstractGraphicsShapeItem* self, bool isSubclass);
+void QAbstractGraphicsShapeItem_Delete(QAbstractGraphicsShapeItem* self);
 
 QGraphicsPathItem* QGraphicsPathItem_new();
 QGraphicsPathItem* QGraphicsPathItem_new2(QPainterPath* path);
@@ -640,7 +640,7 @@ void QGraphicsPathItem_override_virtual_SetExtension(void* self, intptr_t slot);
 void QGraphicsPathItem_virtualbase_SetExtension(void* self, int extension, QVariant* variant);
 void QGraphicsPathItem_override_virtual_Extension(void* self, intptr_t slot);
 QVariant* QGraphicsPathItem_virtualbase_Extension(const void* self, QVariant* variant);
-void QGraphicsPathItem_Delete(QGraphicsPathItem* self, bool isSubclass);
+void QGraphicsPathItem_Delete(QGraphicsPathItem* self);
 
 QGraphicsRectItem* QGraphicsRectItem_new();
 QGraphicsRectItem* QGraphicsRectItem_new2(QRectF* rect);
@@ -682,7 +682,7 @@ void QGraphicsRectItem_override_virtual_SetExtension(void* self, intptr_t slot);
 void QGraphicsRectItem_virtualbase_SetExtension(void* self, int extension, QVariant* variant);
 void QGraphicsRectItem_override_virtual_Extension(void* self, intptr_t slot);
 QVariant* QGraphicsRectItem_virtualbase_Extension(const void* self, QVariant* variant);
-void QGraphicsRectItem_Delete(QGraphicsRectItem* self, bool isSubclass);
+void QGraphicsRectItem_Delete(QGraphicsRectItem* self);
 
 QGraphicsEllipseItem* QGraphicsEllipseItem_new();
 QGraphicsEllipseItem* QGraphicsEllipseItem_new2(QRectF* rect);
@@ -728,7 +728,7 @@ void QGraphicsEllipseItem_override_virtual_SetExtension(void* self, intptr_t slo
 void QGraphicsEllipseItem_virtualbase_SetExtension(void* self, int extension, QVariant* variant);
 void QGraphicsEllipseItem_override_virtual_Extension(void* self, intptr_t slot);
 QVariant* QGraphicsEllipseItem_virtualbase_Extension(const void* self, QVariant* variant);
-void QGraphicsEllipseItem_Delete(QGraphicsEllipseItem* self, bool isSubclass);
+void QGraphicsEllipseItem_Delete(QGraphicsEllipseItem* self);
 
 QGraphicsPolygonItem* QGraphicsPolygonItem_new();
 QGraphicsPolygonItem* QGraphicsPolygonItem_new2(QGraphicsItem* parent);
@@ -765,7 +765,7 @@ void QGraphicsPolygonItem_override_virtual_SetExtension(void* self, intptr_t slo
 void QGraphicsPolygonItem_virtualbase_SetExtension(void* self, int extension, QVariant* variant);
 void QGraphicsPolygonItem_override_virtual_Extension(void* self, intptr_t slot);
 QVariant* QGraphicsPolygonItem_virtualbase_Extension(const void* self, QVariant* variant);
-void QGraphicsPolygonItem_Delete(QGraphicsPolygonItem* self, bool isSubclass);
+void QGraphicsPolygonItem_Delete(QGraphicsPolygonItem* self);
 
 QGraphicsLineItem* QGraphicsLineItem_new();
 QGraphicsLineItem* QGraphicsLineItem_new2(QLineF* line);
@@ -859,7 +859,7 @@ void QGraphicsLineItem_override_virtual_InputMethodQuery(void* self, intptr_t sl
 QVariant* QGraphicsLineItem_virtualbase_InputMethodQuery(const void* self, int query);
 void QGraphicsLineItem_override_virtual_ItemChange(void* self, intptr_t slot);
 QVariant* QGraphicsLineItem_virtualbase_ItemChange(void* self, int change, QVariant* value);
-void QGraphicsLineItem_Delete(QGraphicsLineItem* self, bool isSubclass);
+void QGraphicsLineItem_Delete(QGraphicsLineItem* self);
 
 QGraphicsPixmapItem* QGraphicsPixmapItem_new();
 QGraphicsPixmapItem* QGraphicsPixmapItem_new2(QPixmap* pixmap);
@@ -955,7 +955,7 @@ void QGraphicsPixmapItem_override_virtual_InputMethodQuery(void* self, intptr_t 
 QVariant* QGraphicsPixmapItem_virtualbase_InputMethodQuery(const void* self, int query);
 void QGraphicsPixmapItem_override_virtual_ItemChange(void* self, intptr_t slot);
 QVariant* QGraphicsPixmapItem_virtualbase_ItemChange(void* self, int change, QVariant* value);
-void QGraphicsPixmapItem_Delete(QGraphicsPixmapItem* self, bool isSubclass);
+void QGraphicsPixmapItem_Delete(QGraphicsPixmapItem* self);
 
 QGraphicsTextItem* QGraphicsTextItem_new();
 QGraphicsTextItem* QGraphicsTextItem_new2(struct miqt_string text);
@@ -1084,7 +1084,7 @@ void QGraphicsTextItem_override_virtual_Extension(void* self, intptr_t slot);
 QVariant* QGraphicsTextItem_virtualbase_Extension(const void* self, QVariant* variant);
 void QGraphicsTextItem_override_virtual_Event(void* self, intptr_t slot);
 bool QGraphicsTextItem_virtualbase_Event(void* self, QEvent* ev);
-void QGraphicsTextItem_Delete(QGraphicsTextItem* self, bool isSubclass);
+void QGraphicsTextItem_Delete(QGraphicsTextItem* self);
 
 QGraphicsSimpleTextItem* QGraphicsSimpleTextItem_new();
 QGraphicsSimpleTextItem* QGraphicsSimpleTextItem_new2(struct miqt_string text);
@@ -1125,7 +1125,7 @@ void QGraphicsSimpleTextItem_override_virtual_SetExtension(void* self, intptr_t 
 void QGraphicsSimpleTextItem_virtualbase_SetExtension(void* self, int extension, QVariant* variant);
 void QGraphicsSimpleTextItem_override_virtual_Extension(void* self, intptr_t slot);
 QVariant* QGraphicsSimpleTextItem_virtualbase_Extension(const void* self, QVariant* variant);
-void QGraphicsSimpleTextItem_Delete(QGraphicsSimpleTextItem* self, bool isSubclass);
+void QGraphicsSimpleTextItem_Delete(QGraphicsSimpleTextItem* self);
 
 QGraphicsItemGroup* QGraphicsItemGroup_new();
 QGraphicsItemGroup* QGraphicsItemGroup_new2(QGraphicsItem* parent);
@@ -1207,7 +1207,7 @@ void QGraphicsItemGroup_override_virtual_SetExtension(void* self, intptr_t slot)
 void QGraphicsItemGroup_virtualbase_SetExtension(void* self, int extension, QVariant* variant);
 void QGraphicsItemGroup_override_virtual_Extension(void* self, intptr_t slot);
 QVariant* QGraphicsItemGroup_virtualbase_Extension(const void* self, QVariant* variant);
-void QGraphicsItemGroup_Delete(QGraphicsItemGroup* self, bool isSubclass);
+void QGraphicsItemGroup_Delete(QGraphicsItemGroup* self);
 
 #ifdef __cplusplus
 } /* extern C */

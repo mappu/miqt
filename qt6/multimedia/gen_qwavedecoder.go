@@ -603,7 +603,7 @@ func miqt_exec_callback_QWaveDecoder_SkipData(self *C.QWaveDecoder, cb C.intptr_
 
 // Delete this object from C++ memory.
 func (this *QWaveDecoder) Delete() {
-	C.QWaveDecoder_Delete(this.h, C.bool(this.isSubclass))
+	C.QWaveDecoder_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

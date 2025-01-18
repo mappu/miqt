@@ -15,13 +15,13 @@ void miqt_exec_callback_QsciLexerFortran_SetFoldCompact(void*, intptr_t, bool);
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerFortran : public virtual QsciLexerFortran {
+class MiqtVirtualQsciLexerFortran final : public QsciLexerFortran {
 public:
 
 	MiqtVirtualQsciLexerFortran(): QsciLexerFortran() {};
 	MiqtVirtualQsciLexerFortran(QObject* parent): QsciLexerFortran(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerFortran() = default;
+	virtual ~MiqtVirtualQsciLexerFortran() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetFoldCompact = 0;
@@ -122,11 +122,7 @@ void QsciLexerFortran_virtualbase_SetFoldCompact(void* self, bool fold) {
 	( (MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_SetFoldCompact(fold);
 }
 
-void QsciLexerFortran_Delete(QsciLexerFortran* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerFortran*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerFortran_Delete(QsciLexerFortran* self) {
+	delete self;
 }
 

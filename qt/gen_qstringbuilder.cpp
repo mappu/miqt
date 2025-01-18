@@ -9,11 +9,7 @@ extern "C" {
 } /* extern C */
 #endif
 
-void QAbstractConcatenable_Delete(QAbstractConcatenable* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QAbstractConcatenable*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractConcatenable_Delete(QAbstractConcatenable* self) {
+	delete self;
 }
 

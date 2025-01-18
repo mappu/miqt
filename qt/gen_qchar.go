@@ -414,7 +414,7 @@ func (this *QLatin1Char) Unicode() uint16 {
 
 // Delete this object from C++ memory.
 func (this *QLatin1Char) Delete() {
-	C.QLatin1Char_Delete(this.h, C.bool(this.isSubclass))
+	C.QLatin1Char_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -879,7 +879,7 @@ func QChar_IsTitleCaseWithUcs4(ucs4 uint) bool {
 
 // Delete this object from C++ memory.
 func (this *QChar) Delete() {
-	C.QChar_Delete(this.h, C.bool(this.isSubclass))
+	C.QChar_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

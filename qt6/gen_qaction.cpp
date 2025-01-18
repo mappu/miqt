@@ -40,7 +40,7 @@ void miqt_exec_callback_QAction_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQAction : public virtual QAction {
+class MiqtVirtualQAction final : public QAction {
 public:
 
 	MiqtVirtualQAction(): QAction() {};
@@ -50,7 +50,7 @@ public:
 	MiqtVirtualQAction(const QString& text, QObject* parent): QAction(text, parent) {};
 	MiqtVirtualQAction(const QIcon& icon, const QString& text, QObject* parent): QAction(icon, text, parent) {};
 
-	virtual ~MiqtVirtualQAction() = default;
+	virtual ~MiqtVirtualQAction() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -721,11 +721,7 @@ void QAction_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAction*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QAction_Delete(QAction* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAction*>( self );
-	} else {
-		delete self;
-	}
+void QAction_Delete(QAction* self) {
+	delete self;
 }
 

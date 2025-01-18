@@ -170,7 +170,7 @@ void QInputDialog_override_virtual_ContextMenuEvent(void* self, intptr_t slot);
 void QInputDialog_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* param1);
 void QInputDialog_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QInputDialog_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2);
-void QInputDialog_Delete(QInputDialog* self, bool isSubclass);
+void QInputDialog_Delete(QInputDialog* self);
 
 #ifdef __cplusplus
 } /* extern C */

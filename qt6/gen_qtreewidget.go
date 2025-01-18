@@ -725,7 +725,7 @@ func miqt_exec_callback_QTreeWidgetItem_Write(self *C.QTreeWidgetItem, cb C.intp
 
 // Delete this object from C++ memory.
 func (this *QTreeWidgetItem) Delete() {
-	C.QTreeWidgetItem_Delete(this.h, C.bool(this.isSubclass))
+	C.QTreeWidgetItem_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2586,7 +2586,7 @@ func miqt_exec_callback_QTreeWidget_CurrentChanged(self *C.QTreeWidget, cb C.int
 
 // Delete this object from C++ memory.
 func (this *QTreeWidget) Delete() {
-	C.QTreeWidget_Delete(this.h, C.bool(this.isSubclass))
+	C.QTreeWidget_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

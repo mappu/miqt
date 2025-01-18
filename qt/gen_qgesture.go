@@ -388,7 +388,7 @@ func miqt_exec_callback_QGesture_DisconnectNotify(self *C.QGesture, cb C.intptr_
 
 // Delete this object from C++ memory.
 func (this *QGesture) Delete() {
-	C.QGesture_Delete(this.h, C.bool(this.isSubclass))
+	C.QGesture_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -561,7 +561,7 @@ func QPanGesture_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QPanGesture) Delete() {
-	C.QPanGesture_Delete(this.h, C.bool(this.isSubclass))
+	C.QPanGesture_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -794,7 +794,7 @@ func QPinchGesture_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QPinchGesture) Delete() {
-	C.QPinchGesture_Delete(this.h, C.bool(this.isSubclass))
+	C.QPinchGesture_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -949,7 +949,7 @@ func QSwipeGesture_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QSwipeGesture) Delete() {
-	C.QSwipeGesture_Delete(this.h, C.bool(this.isSubclass))
+	C.QSwipeGesture_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1098,7 +1098,7 @@ func QTapGesture_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QTapGesture) Delete() {
-	C.QTapGesture_Delete(this.h, C.bool(this.isSubclass))
+	C.QTapGesture_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1255,7 +1255,7 @@ func QTapAndHoldGesture_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QTapAndHoldGesture) Delete() {
-	C.QTapAndHoldGesture_Delete(this.h, C.bool(this.isSubclass))
+	C.QTapAndHoldGesture_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1408,7 +1408,7 @@ func (this *QGestureEvent) MapToGraphicsScene(gesturePoint *QPointF) *QPointF {
 
 // Delete this object from C++ memory.
 func (this *QGestureEvent) Delete() {
-	C.QGestureEvent_Delete(this.h, C.bool(this.isSubclass))
+	C.QGestureEvent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

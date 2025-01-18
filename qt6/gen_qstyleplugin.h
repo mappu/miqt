@@ -59,7 +59,7 @@ void QStylePlugin_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QStylePlugin_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QStylePlugin_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QStylePlugin_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QStylePlugin_Delete(QStylePlugin* self, bool isSubclass);
+void QStylePlugin_Delete(QStylePlugin* self);
 
 #ifdef __cplusplus
 } /* extern C */

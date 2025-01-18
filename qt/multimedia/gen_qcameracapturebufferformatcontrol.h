@@ -40,7 +40,7 @@ struct miqt_string QCameraCaptureBufferFormatControl_Tr2(const char* s, const ch
 struct miqt_string QCameraCaptureBufferFormatControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QCameraCaptureBufferFormatControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QCameraCaptureBufferFormatControl_TrUtf83(const char* s, const char* c, int n);
-void QCameraCaptureBufferFormatControl_Delete(QCameraCaptureBufferFormatControl* self, bool isSubclass);
+void QCameraCaptureBufferFormatControl_Delete(QCameraCaptureBufferFormatControl* self);
 
 #ifdef __cplusplus
 } /* extern C */

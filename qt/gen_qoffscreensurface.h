@@ -86,7 +86,7 @@ void QOffscreenSurface_override_virtual_ConnectNotify(void* self, intptr_t slot)
 void QOffscreenSurface_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QOffscreenSurface_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QOffscreenSurface_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QOffscreenSurface_Delete(QOffscreenSurface* self, bool isSubclass);
+void QOffscreenSurface_Delete(QOffscreenSurface* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -144,7 +144,7 @@ void QIdentityProxyModel_override_virtual_SupportedDragActions(void* self, intpt
 int QIdentityProxyModel_virtualbase_SupportedDragActions(const void* self);
 void QIdentityProxyModel_override_virtual_SupportedDropActions(void* self, intptr_t slot);
 int QIdentityProxyModel_virtualbase_SupportedDropActions(const void* self);
-void QIdentityProxyModel_Delete(QIdentityProxyModel* self, bool isSubclass);
+void QIdentityProxyModel_Delete(QIdentityProxyModel* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -155,11 +155,7 @@ struct miqt_string QWebEngineContextMenuRequest_Tr3(const char* s, const char* c
 	return _ms;
 }
 
-void QWebEngineContextMenuRequest_Delete(QWebEngineContextMenuRequest* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebEngineContextMenuRequest*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineContextMenuRequest_Delete(QWebEngineContextMenuRequest* self) {
+	delete self;
 }
 

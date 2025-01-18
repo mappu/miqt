@@ -31,12 +31,12 @@ void miqt_exec_callback_QActionGroup_DisconnectNotify(void*, intptr_t, QMetaMeth
 } /* extern C */
 #endif
 
-class MiqtVirtualQActionGroup : public virtual QActionGroup {
+class MiqtVirtualQActionGroup final : public QActionGroup {
 public:
 
 	MiqtVirtualQActionGroup(QObject* parent): QActionGroup(parent) {};
 
-	virtual ~MiqtVirtualQActionGroup() = default;
+	virtual ~MiqtVirtualQActionGroup() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -410,11 +410,7 @@ void QActionGroup_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQActionGroup*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QActionGroup_Delete(QActionGroup* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQActionGroup*>( self );
-	} else {
-		delete self;
-	}
+void QActionGroup_Delete(QActionGroup* self) {
+	delete self;
 }
 

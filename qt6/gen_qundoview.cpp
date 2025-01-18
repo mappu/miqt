@@ -74,7 +74,7 @@ QSize* miqt_exec_callback_QUndoView_ViewportSizeHint(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQUndoView : public virtual QUndoView {
+class MiqtVirtualQUndoView final : public QUndoView {
 public:
 
 	MiqtVirtualQUndoView(QWidget* parent): QUndoView(parent) {};
@@ -84,7 +84,7 @@ public:
 	MiqtVirtualQUndoView(QUndoStack* stack, QWidget* parent): QUndoView(stack, parent) {};
 	MiqtVirtualQUndoView(QUndoGroup* group, QWidget* parent): QUndoView(group, parent) {};
 
-	virtual ~MiqtVirtualQUndoView() = default;
+	virtual ~MiqtVirtualQUndoView() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__VisualRect = 0;
@@ -1313,11 +1313,7 @@ QSize* QUndoView_virtualbase_ViewportSizeHint(const void* self) {
 	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_ViewportSizeHint();
 }
 
-void QUndoView_Delete(QUndoView* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQUndoView*>( self );
-	} else {
-		delete self;
-	}
+void QUndoView_Delete(QUndoView* self) {
+	delete self;
 }
 

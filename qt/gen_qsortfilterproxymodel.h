@@ -206,7 +206,7 @@ void QSortFilterProxyModel_override_virtual_CanDropMimeData(void* self, intptr_t
 bool QSortFilterProxyModel_virtualbase_CanDropMimeData(const void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
 void QSortFilterProxyModel_override_virtual_SupportedDragActions(void* self, intptr_t slot);
 int QSortFilterProxyModel_virtualbase_SupportedDragActions(const void* self);
-void QSortFilterProxyModel_Delete(QSortFilterProxyModel* self, bool isSubclass);
+void QSortFilterProxyModel_Delete(QSortFilterProxyModel* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -103,7 +103,7 @@ void QPdfWriter_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QPdfWriter_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QPdfWriter_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QPdfWriter_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QPdfWriter_Delete(QPdfWriter* self, bool isSubclass);
+void QPdfWriter_Delete(QPdfWriter* self);
 
 #ifdef __cplusplus
 } /* extern C */

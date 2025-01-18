@@ -132,7 +132,7 @@ typedef struct QWindow QWindow;
 
 QWidgetData* QWidgetData_new(QWidgetData* param1);
 void QWidgetData_OperatorAssign(QWidgetData* self, QWidgetData* param1);
-void QWidgetData_Delete(QWidgetData* self, bool isSubclass);
+void QWidgetData_Delete(QWidgetData* self);
 
 QWidget* QWidget_new(QWidget* parent);
 QWidget* QWidget_new2();
@@ -549,7 +549,7 @@ void QWidget_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QWidget_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QWidget_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QWidget_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QWidget_Delete(QWidget* self, bool isSubclass);
+void QWidget_Delete(QWidget* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -243,7 +243,7 @@ void QWebEngineView_override_virtual_InputMethodQuery(void* self, intptr_t slot)
 QVariant* QWebEngineView_virtualbase_InputMethodQuery(const void* self, int param1);
 void QWebEngineView_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QWebEngineView_virtualbase_FocusNextPrevChild(void* self, bool next);
-void QWebEngineView_Delete(QWebEngineView* self, bool isSubclass);
+void QWebEngineView_Delete(QWebEngineView* self);
 
 #ifdef __cplusplus
 } /* extern C */

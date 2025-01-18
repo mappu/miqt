@@ -148,7 +148,7 @@ func QMediaMetaData_MetaDataKeyToString(k QMediaMetaData__Key) string {
 
 // Delete this object from C++ memory.
 func (this *QMediaMetaData) Delete() {
-	C.QMediaMetaData_Delete(this.h, C.bool(this.isSubclass))
+	C.QMediaMetaData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

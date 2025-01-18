@@ -25,12 +25,12 @@ void miqt_exec_callback_QAudioListener_DisconnectNotify(void*, intptr_t, QMetaMe
 } /* extern C */
 #endif
 
-class MiqtVirtualQAudioListener : public virtual QAudioListener {
+class MiqtVirtualQAudioListener final : public QAudioListener {
 public:
 
 	MiqtVirtualQAudioListener(QAudioEngine* engine): QAudioListener(engine) {};
 
-	virtual ~MiqtVirtualQAudioListener() = default;
+	virtual ~MiqtVirtualQAudioListener() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -289,11 +289,7 @@ void QAudioListener_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal
 	( (MiqtVirtualQAudioListener*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QAudioListener_Delete(QAudioListener* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAudioListener*>( self );
-	} else {
-		delete self;
-	}
+void QAudioListener_Delete(QAudioListener* self) {
+	delete self;
 }
 

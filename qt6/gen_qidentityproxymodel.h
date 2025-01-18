@@ -145,7 +145,7 @@ void QIdentityProxyModel_override_virtual_SupportedDropActions(void* self, intpt
 int QIdentityProxyModel_virtualbase_SupportedDropActions(const void* self);
 void QIdentityProxyModel_override_virtual_RoleNames(void* self, intptr_t slot);
 struct miqt_map /* of int to struct miqt_string */  QIdentityProxyModel_virtualbase_RoleNames(const void* self);
-void QIdentityProxyModel_Delete(QIdentityProxyModel* self, bool isSubclass);
+void QIdentityProxyModel_Delete(QIdentityProxyModel* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -134,7 +134,7 @@ void QToolButton_override_virtual_FocusInEvent(void* self, intptr_t slot);
 void QToolButton_virtualbase_FocusInEvent(void* self, QFocusEvent* e);
 void QToolButton_override_virtual_FocusOutEvent(void* self, intptr_t slot);
 void QToolButton_virtualbase_FocusOutEvent(void* self, QFocusEvent* e);
-void QToolButton_Delete(QToolButton* self, bool isSubclass);
+void QToolButton_Delete(QToolButton* self);
 
 #ifdef __cplusplus
 } /* extern C */

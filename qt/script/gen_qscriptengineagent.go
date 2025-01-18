@@ -440,7 +440,7 @@ func miqt_exec_callback_QScriptEngineAgent_Extension(self *C.QScriptEngineAgent,
 
 // Delete this object from C++ memory.
 func (this *QScriptEngineAgent) Delete() {
-	C.QScriptEngineAgent_Delete(this.h, C.bool(this.isSubclass))
+	C.QScriptEngineAgent_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

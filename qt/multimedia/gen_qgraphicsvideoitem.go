@@ -413,7 +413,7 @@ func miqt_exec_callback_QGraphicsVideoItem_Event(self *C.QGraphicsVideoItem, cb 
 
 // Delete this object from C++ memory.
 func (this *QGraphicsVideoItem) Delete() {
-	C.QGraphicsVideoItem_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsVideoItem_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

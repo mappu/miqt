@@ -20,13 +20,13 @@ void miqt_exec_callback_QsciLexerIDL_SetStylePreprocessor(void*, intptr_t, bool)
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerIDL : public virtual QsciLexerIDL {
+class MiqtVirtualQsciLexerIDL final : public QsciLexerIDL {
 public:
 
 	MiqtVirtualQsciLexerIDL(): QsciLexerIDL() {};
 	MiqtVirtualQsciLexerIDL(QObject* parent): QsciLexerIDL(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerIDL() = default;
+	virtual ~MiqtVirtualQsciLexerIDL() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetFoldAtElse = 0;
@@ -299,11 +299,7 @@ void QsciLexerIDL_virtualbase_SetStylePreprocessor(void* self, bool style) {
 	( (MiqtVirtualQsciLexerIDL*)(self) )->virtualbase_SetStylePreprocessor(style);
 }
 
-void QsciLexerIDL_Delete(QsciLexerIDL* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerIDL*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerIDL_Delete(QsciLexerIDL* self) {
+	delete self;
 }
 

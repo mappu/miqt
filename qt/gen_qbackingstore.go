@@ -112,7 +112,7 @@ func (this *QBackingStore) Flush3(region *QRegion, window *QWindow, offset *QPoi
 
 // Delete this object from C++ memory.
 func (this *QBackingStore) Delete() {
-	C.QBackingStore_Delete(this.h, C.bool(this.isSubclass))
+	C.QBackingStore_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

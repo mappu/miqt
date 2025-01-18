@@ -150,7 +150,7 @@ void QAbstractScrollArea_override_virtual_ChangeEvent(void* self, intptr_t slot)
 void QAbstractScrollArea_virtualbase_ChangeEvent(void* self, QEvent* param1);
 void QAbstractScrollArea_override_virtual_InitStyleOption(void* self, intptr_t slot);
 void QAbstractScrollArea_virtualbase_InitStyleOption(const void* self, QStyleOptionFrame* option);
-void QAbstractScrollArea_Delete(QAbstractScrollArea* self, bool isSubclass);
+void QAbstractScrollArea_Delete(QAbstractScrollArea* self);
 
 #ifdef __cplusplus
 } /* extern C */

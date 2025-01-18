@@ -84,13 +84,13 @@ bool miqt_exec_callback_QWebInspector_FocusNextPrevChild(void*, intptr_t, bool);
 } /* extern C */
 #endif
 
-class MiqtVirtualQWebInspector : public virtual QWebInspector {
+class MiqtVirtualQWebInspector final : public QWebInspector {
 public:
 
 	MiqtVirtualQWebInspector(QWidget* parent): QWebInspector(parent) {};
 	MiqtVirtualQWebInspector(): QWebInspector() {};
 
-	virtual ~MiqtVirtualQWebInspector() = default;
+	virtual ~MiqtVirtualQWebInspector() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -1499,11 +1499,7 @@ bool QWebInspector_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQWebInspector*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QWebInspector_Delete(QWebInspector* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQWebInspector*>( self );
-	} else {
-		delete self;
-	}
+void QWebInspector_Delete(QWebInspector* self) {
+	delete self;
 }
 

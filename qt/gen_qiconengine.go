@@ -525,7 +525,7 @@ func miqt_exec_callback_QIconEngine_VirtualHook(self *C.QIconEngine, cb C.intptr
 
 // Delete this object from C++ memory.
 func (this *QIconEngine) Delete() {
-	C.QIconEngine_Delete(this.h, C.bool(this.isSubclass))
+	C.QIconEngine_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -584,7 +584,7 @@ func (this *QIconEngine__AvailableSizesArgument) OperatorAssign(param1 *QIconEng
 
 // Delete this object from C++ memory.
 func (this *QIconEngine__AvailableSizesArgument) Delete() {
-	C.QIconEngine__AvailableSizesArgument_Delete(this.h, C.bool(this.isSubclass))
+	C.QIconEngine__AvailableSizesArgument_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -643,7 +643,7 @@ func (this *QIconEngine__ScaledPixmapArgument) OperatorAssign(param1 *QIconEngin
 
 // Delete this object from C++ memory.
 func (this *QIconEngine__ScaledPixmapArgument) Delete() {
-	C.QIconEngine__ScaledPixmapArgument_Delete(this.h, C.bool(this.isSubclass))
+	C.QIconEngine__ScaledPixmapArgument_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

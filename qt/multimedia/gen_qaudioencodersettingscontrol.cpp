@@ -149,11 +149,7 @@ struct miqt_string QAudioEncoderSettingsControl_TrUtf83(const char* s, const cha
 	return _ms;
 }
 
-void QAudioEncoderSettingsControl_Delete(QAudioEncoderSettingsControl* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QAudioEncoderSettingsControl*>( self );
-	} else {
-		delete self;
-	}
+void QAudioEncoderSettingsControl_Delete(QAudioEncoderSettingsControl* self) {
+	delete self;
 }
 

@@ -44,7 +44,7 @@ void miqt_exec_callback_QRadioButton_TimerEvent(void*, intptr_t, QTimerEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQRadioButton : public virtual QRadioButton {
+class MiqtVirtualQRadioButton final : public QRadioButton {
 public:
 
 	MiqtVirtualQRadioButton(QWidget* parent): QRadioButton(parent) {};
@@ -52,7 +52,7 @@ public:
 	MiqtVirtualQRadioButton(const QString& text): QRadioButton(text) {};
 	MiqtVirtualQRadioButton(const QString& text, QWidget* parent): QRadioButton(text, parent) {};
 
-	virtual ~MiqtVirtualQRadioButton() = default;
+	virtual ~MiqtVirtualQRadioButton() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -665,11 +665,7 @@ void QRadioButton_virtualbase_TimerEvent(void* self, QTimerEvent* e) {
 	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_TimerEvent(e);
 }
 
-void QRadioButton_Delete(QRadioButton* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQRadioButton*>( self );
-	} else {
-		delete self;
-	}
+void QRadioButton_Delete(QRadioButton* self) {
+	delete self;
 }
 

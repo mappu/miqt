@@ -55,11 +55,7 @@ int QWebEngineLoadingInfo_ErrorCode(const QWebEngineLoadingInfo* self) {
 	return self->errorCode();
 }
 
-void QWebEngineLoadingInfo_Delete(QWebEngineLoadingInfo* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebEngineLoadingInfo*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineLoadingInfo_Delete(QWebEngineLoadingInfo* self) {
+	delete self;
 }
 

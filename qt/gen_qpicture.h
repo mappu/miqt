@@ -79,7 +79,7 @@ void QPicture_override_virtual_Redirected(void* self, intptr_t slot);
 QPaintDevice* QPicture_virtualbase_Redirected(const void* self, QPoint* offset);
 void QPicture_override_virtual_SharedPainter(void* self, intptr_t slot);
 QPainter* QPicture_virtualbase_SharedPainter(const void* self);
-void QPicture_Delete(QPicture* self, bool isSubclass);
+void QPicture_Delete(QPicture* self);
 
 QPictureIO* QPictureIO_new();
 QPictureIO* QPictureIO_new2(QIODevice* ioDevice, const char* format);
@@ -108,7 +108,7 @@ struct miqt_string QPictureIO_PictureFormat(struct miqt_string fileName);
 struct miqt_string QPictureIO_PictureFormatWithQIODevice(QIODevice* param1);
 struct miqt_array /* of struct miqt_string */  QPictureIO_InputFormats();
 struct miqt_array /* of struct miqt_string */  QPictureIO_OutputFormats();
-void QPictureIO_Delete(QPictureIO* self, bool isSubclass);
+void QPictureIO_Delete(QPictureIO* self);
 
 #ifdef __cplusplus
 } /* extern C */

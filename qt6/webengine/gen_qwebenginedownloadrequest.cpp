@@ -298,11 +298,7 @@ struct miqt_string QWebEngineDownloadRequest_Tr3(const char* s, const char* c, i
 	return _ms;
 }
 
-void QWebEngineDownloadRequest_Delete(QWebEngineDownloadRequest* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebEngineDownloadRequest*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineDownloadRequest_Delete(QWebEngineDownloadRequest* self) {
+	delete self;
 }
 

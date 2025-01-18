@@ -161,7 +161,7 @@ void QDirModel_override_virtual_Submit(void* self, intptr_t slot);
 bool QDirModel_virtualbase_Submit(void* self);
 void QDirModel_override_virtual_Revert(void* self, intptr_t slot);
 void QDirModel_virtualbase_Revert(void* self);
-void QDirModel_Delete(QDirModel* self, bool isSubclass);
+void QDirModel_Delete(QDirModel* self);
 
 #ifdef __cplusplus
 } /* extern C */

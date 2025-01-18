@@ -1647,7 +1647,7 @@ func miqt_exec_callback_QAbstractProxyModel_ResetInternalData(self *C.QAbstractP
 
 // Delete this object from C++ memory.
 func (this *QAbstractProxyModel) Delete() {
-	C.QAbstractProxyModel_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractProxyModel_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

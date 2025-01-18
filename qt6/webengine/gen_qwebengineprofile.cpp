@@ -37,7 +37,7 @@ void miqt_exec_callback_QWebEngineProfile_DisconnectNotify(void*, intptr_t, QMet
 } /* extern C */
 #endif
 
-class MiqtVirtualQWebEngineProfile : public virtual QWebEngineProfile {
+class MiqtVirtualQWebEngineProfile final : public QWebEngineProfile {
 public:
 
 	MiqtVirtualQWebEngineProfile(): QWebEngineProfile() {};
@@ -45,7 +45,7 @@ public:
 	MiqtVirtualQWebEngineProfile(QObject* parent): QWebEngineProfile(parent) {};
 	MiqtVirtualQWebEngineProfile(const QString& name, QObject* parent): QWebEngineProfile(name, parent) {};
 
-	virtual ~MiqtVirtualQWebEngineProfile() = default;
+	virtual ~MiqtVirtualQWebEngineProfile() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -579,11 +579,7 @@ void QWebEngineProfile_virtualbase_DisconnectNotify(void* self, QMetaMethod* sig
 	( (MiqtVirtualQWebEngineProfile*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QWebEngineProfile_Delete(QWebEngineProfile* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQWebEngineProfile*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineProfile_Delete(QWebEngineProfile* self) {
+	delete self;
 }
 

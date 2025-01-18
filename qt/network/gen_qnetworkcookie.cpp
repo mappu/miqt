@@ -180,11 +180,7 @@ struct miqt_string QNetworkCookie_ToRawForm1(const QNetworkCookie* self, int for
 	return _ms;
 }
 
-void QNetworkCookie_Delete(QNetworkCookie* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QNetworkCookie*>( self );
-	} else {
-		delete self;
-	}
+void QNetworkCookie_Delete(QNetworkCookie* self) {
+	delete self;
 }
 

@@ -38,7 +38,7 @@ ptrdiff_t QAudioBuffer_SampleCount(const QAudioBuffer* self);
 ptrdiff_t QAudioBuffer_ByteCount(const QAudioBuffer* self);
 long long QAudioBuffer_Duration(const QAudioBuffer* self);
 long long QAudioBuffer_StartTime(const QAudioBuffer* self);
-void QAudioBuffer_Delete(QAudioBuffer* self, bool isSubclass);
+void QAudioBuffer_Delete(QAudioBuffer* self);
 
 #ifdef __cplusplus
 } /* extern C */

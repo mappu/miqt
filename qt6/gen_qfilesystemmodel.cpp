@@ -73,13 +73,13 @@ void miqt_exec_callback_QFileSystemModel_ResetInternalData(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQFileSystemModel : public virtual QFileSystemModel {
+class MiqtVirtualQFileSystemModel final : public QFileSystemModel {
 public:
 
 	MiqtVirtualQFileSystemModel(): QFileSystemModel() {};
 	MiqtVirtualQFileSystemModel(QObject* parent): QFileSystemModel(parent) {};
 
-	virtual ~MiqtVirtualQFileSystemModel() = default;
+	virtual ~MiqtVirtualQFileSystemModel() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Index = 0;
@@ -1971,11 +1971,7 @@ void QFileSystemModel_virtualbase_ResetInternalData(void* self) {
 	( (MiqtVirtualQFileSystemModel*)(self) )->virtualbase_ResetInternalData();
 }
 
-void QFileSystemModel_Delete(QFileSystemModel* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQFileSystemModel*>( self );
-	} else {
-		delete self;
-	}
+void QFileSystemModel_Delete(QFileSystemModel* self) {
+	delete self;
 }
 

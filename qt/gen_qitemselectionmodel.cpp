@@ -160,22 +160,18 @@ struct miqt_array /* of QModelIndex* */  QItemSelectionRange_Indexes(const QItem
 	return _out;
 }
 
-void QItemSelectionRange_Delete(QItemSelectionRange* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QItemSelectionRange*>( self );
-	} else {
-		delete self;
-	}
+void QItemSelectionRange_Delete(QItemSelectionRange* self) {
+	delete self;
 }
 
-class MiqtVirtualQItemSelectionModel : public virtual QItemSelectionModel {
+class MiqtVirtualQItemSelectionModel final : public QItemSelectionModel {
 public:
 
 	MiqtVirtualQItemSelectionModel(): QItemSelectionModel() {};
 	MiqtVirtualQItemSelectionModel(QAbstractItemModel* model, QObject* parent): QItemSelectionModel(model, parent) {};
 	MiqtVirtualQItemSelectionModel(QAbstractItemModel* model): QItemSelectionModel(model) {};
 
-	virtual ~MiqtVirtualQItemSelectionModel() = default;
+	virtual ~MiqtVirtualQItemSelectionModel() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetCurrentIndex = 0;
@@ -925,12 +921,8 @@ void QItemSelectionModel_virtualbase_DisconnectNotify(void* self, QMetaMethod* s
 	( (MiqtVirtualQItemSelectionModel*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QItemSelectionModel_Delete(QItemSelectionModel* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQItemSelectionModel*>( self );
-	} else {
-		delete self;
-	}
+void QItemSelectionModel_Delete(QItemSelectionModel* self) {
+	delete self;
 }
 
 QItemSelection* QItemSelection_new() {
@@ -974,11 +966,7 @@ void QItemSelection_OperatorAssign(QItemSelection* self, QItemSelection* param1)
 	self->operator=(*param1);
 }
 
-void QItemSelection_Delete(QItemSelection* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QItemSelection*>( self );
-	} else {
-		delete self;
-	}
+void QItemSelection_Delete(QItemSelection* self) {
+	delete self;
 }
 

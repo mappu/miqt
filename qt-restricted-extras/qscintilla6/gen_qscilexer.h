@@ -190,7 +190,7 @@ void QsciLexer_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QsciLexer_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QsciLexer_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QsciLexer_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QsciLexer_Delete(QsciLexer* self, bool isSubclass);
+void QsciLexer_Delete(QsciLexer* self);
 
 #ifdef __cplusplus
 } /* extern C */

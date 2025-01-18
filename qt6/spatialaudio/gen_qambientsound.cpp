@@ -32,12 +32,12 @@ void miqt_exec_callback_QAmbientSound_DisconnectNotify(void*, intptr_t, QMetaMet
 } /* extern C */
 #endif
 
-class MiqtVirtualQAmbientSound : public virtual QAmbientSound {
+class MiqtVirtualQAmbientSound final : public QAmbientSound {
 public:
 
 	MiqtVirtualQAmbientSound(QAudioEngine* engine): QAmbientSound(engine) {};
 
-	virtual ~MiqtVirtualQAmbientSound() = default;
+	virtual ~MiqtVirtualQAmbientSound() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -405,11 +405,7 @@ void QAmbientSound_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQAmbientSound*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QAmbientSound_Delete(QAmbientSound* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAmbientSound*>( self );
-	} else {
-		delete self;
-	}
+void QAmbientSound_Delete(QAmbientSound* self) {
+	delete self;
 }
 

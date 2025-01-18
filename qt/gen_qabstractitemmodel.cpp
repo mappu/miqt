@@ -220,12 +220,8 @@ QVariant* QModelIndex_Data1(const QModelIndex* self, int role) {
 	return new QVariant(self->data(static_cast<int>(role)));
 }
 
-void QModelIndex_Delete(QModelIndex* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QModelIndex*>( self );
-	} else {
-		delete self;
-	}
+void QModelIndex_Delete(QModelIndex* self) {
+	delete self;
 }
 
 QPersistentModelIndex* QPersistentModelIndex_new() {
@@ -328,21 +324,17 @@ QVariant* QPersistentModelIndex_Data1(const QPersistentModelIndex* self, int rol
 	return new QVariant(self->data(static_cast<int>(role)));
 }
 
-void QPersistentModelIndex_Delete(QPersistentModelIndex* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPersistentModelIndex*>( self );
-	} else {
-		delete self;
-	}
+void QPersistentModelIndex_Delete(QPersistentModelIndex* self) {
+	delete self;
 }
 
-class MiqtVirtualQAbstractItemModel : public virtual QAbstractItemModel {
+class MiqtVirtualQAbstractItemModel final : public QAbstractItemModel {
 public:
 
 	MiqtVirtualQAbstractItemModel(): QAbstractItemModel() {};
 	MiqtVirtualQAbstractItemModel(QObject* parent): QAbstractItemModel(parent) {};
 
-	virtual ~MiqtVirtualQAbstractItemModel() = default;
+	virtual ~MiqtVirtualQAbstractItemModel() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Index = 0;
@@ -2339,21 +2331,17 @@ void QAbstractItemModel_virtualbase_DisconnectNotify(void* self, QMetaMethod* si
 	( (MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QAbstractItemModel_Delete(QAbstractItemModel* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractItemModel*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractItemModel_Delete(QAbstractItemModel* self) {
+	delete self;
 }
 
-class MiqtVirtualQAbstractTableModel : public virtual QAbstractTableModel {
+class MiqtVirtualQAbstractTableModel final : public QAbstractTableModel {
 public:
 
 	MiqtVirtualQAbstractTableModel(): QAbstractTableModel() {};
 	MiqtVirtualQAbstractTableModel(QObject* parent): QAbstractTableModel(parent) {};
 
-	virtual ~MiqtVirtualQAbstractTableModel() = default;
+	virtual ~MiqtVirtualQAbstractTableModel() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Index = 0;
@@ -3641,21 +3629,17 @@ void QAbstractTableModel_virtualbase_Revert(void* self) {
 	( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_Revert();
 }
 
-void QAbstractTableModel_Delete(QAbstractTableModel* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractTableModel*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractTableModel_Delete(QAbstractTableModel* self) {
+	delete self;
 }
 
-class MiqtVirtualQAbstractListModel : public virtual QAbstractListModel {
+class MiqtVirtualQAbstractListModel final : public QAbstractListModel {
 public:
 
 	MiqtVirtualQAbstractListModel(): QAbstractListModel() {};
 	MiqtVirtualQAbstractListModel(QObject* parent): QAbstractListModel(parent) {};
 
-	virtual ~MiqtVirtualQAbstractListModel() = default;
+	virtual ~MiqtVirtualQAbstractListModel() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Index = 0;
@@ -4921,11 +4905,7 @@ void QAbstractListModel_virtualbase_Revert(void* self) {
 	( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_Revert();
 }
 
-void QAbstractListModel_Delete(QAbstractListModel* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractListModel*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractListModel_Delete(QAbstractListModel* self) {
+	delete self;
 }
 

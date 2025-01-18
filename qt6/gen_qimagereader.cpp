@@ -398,11 +398,7 @@ struct miqt_string QImageReader_Tr3(const char* sourceText, const char* disambig
 	return _ms;
 }
 
-void QImageReader_Delete(QImageReader* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QImageReader*>( self );
-	} else {
-		delete self;
-	}
+void QImageReader_Delete(QImageReader* self) {
+	delete self;
 }
 

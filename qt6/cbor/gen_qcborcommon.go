@@ -120,7 +120,7 @@ func (this *QCborError) ToString() string {
 
 // Delete this object from C++ memory.
 func (this *QCborError) Delete() {
-	C.QCborError_Delete(this.h, C.bool(this.isSubclass))
+	C.QCborError_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

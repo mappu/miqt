@@ -83,7 +83,7 @@ void QDtlsClientVerifier_override_virtual_ConnectNotify(void* self, intptr_t slo
 void QDtlsClientVerifier_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QDtlsClientVerifier_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QDtlsClientVerifier_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QDtlsClientVerifier_Delete(QDtlsClientVerifier* self, bool isSubclass);
+void QDtlsClientVerifier_Delete(QDtlsClientVerifier* self);
 
 QDtls* QDtls_new(int mode);
 QDtls* QDtls_new2(int mode, QObject* parent);
@@ -143,13 +143,13 @@ void QDtls_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QDtls_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QDtls_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QDtls_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QDtls_Delete(QDtls* self, bool isSubclass);
+void QDtls_Delete(QDtls* self);
 
 QDtlsClientVerifier__GeneratorParameters* QDtlsClientVerifier__GeneratorParameters_new();
 QDtlsClientVerifier__GeneratorParameters* QDtlsClientVerifier__GeneratorParameters_new2(int a, struct miqt_string s);
 QDtlsClientVerifier__GeneratorParameters* QDtlsClientVerifier__GeneratorParameters_new3(QDtlsClientVerifier__GeneratorParameters* param1);
 void QDtlsClientVerifier__GeneratorParameters_OperatorAssign(QDtlsClientVerifier__GeneratorParameters* self, QDtlsClientVerifier__GeneratorParameters* param1);
-void QDtlsClientVerifier__GeneratorParameters_Delete(QDtlsClientVerifier__GeneratorParameters* self, bool isSubclass);
+void QDtlsClientVerifier__GeneratorParameters_Delete(QDtlsClientVerifier__GeneratorParameters* self);
 
 #ifdef __cplusplus
 } /* extern C */

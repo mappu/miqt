@@ -1234,7 +1234,7 @@ func miqt_exec_callback_QTextBrowser_DoSetTextCursor(self *C.QTextBrowser, cb C.
 
 // Delete this object from C++ memory.
 func (this *QTextBrowser) Delete() {
-	C.QTextBrowser_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextBrowser_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

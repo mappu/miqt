@@ -95,13 +95,13 @@ bool miqt_exec_callback_QMenuBar_FocusNextPrevChild(void*, intptr_t, bool);
 } /* extern C */
 #endif
 
-class MiqtVirtualQMenuBar : public virtual QMenuBar {
+class MiqtVirtualQMenuBar final : public QMenuBar {
 public:
 
 	MiqtVirtualQMenuBar(QWidget* parent): QMenuBar(parent) {};
 	MiqtVirtualQMenuBar(): QMenuBar() {};
 
-	virtual ~MiqtVirtualQMenuBar() = default;
+	virtual ~MiqtVirtualQMenuBar() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -1675,11 +1675,7 @@ bool QMenuBar_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQMenuBar*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QMenuBar_Delete(QMenuBar* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQMenuBar*>( self );
-	} else {
-		delete self;
-	}
+void QMenuBar_Delete(QMenuBar* self) {
+	delete self;
 }
 

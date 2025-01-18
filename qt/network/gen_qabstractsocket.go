@@ -1294,7 +1294,7 @@ func miqt_exec_callback_QAbstractSocket_Reset(self *C.QAbstractSocket, cb C.intp
 
 // Delete this object from C++ memory.
 func (this *QAbstractSocket) Delete() {
-	C.QAbstractSocket_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractSocket_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

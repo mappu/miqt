@@ -41,14 +41,14 @@ void miqt_exec_callback_QStackedLayout_ChildEvent(void*, intptr_t, QChildEvent*)
 } /* extern C */
 #endif
 
-class MiqtVirtualQStackedLayout : public virtual QStackedLayout {
+class MiqtVirtualQStackedLayout final : public QStackedLayout {
 public:
 
 	MiqtVirtualQStackedLayout(QWidget* parent): QStackedLayout(parent) {};
 	MiqtVirtualQStackedLayout(): QStackedLayout() {};
 	MiqtVirtualQStackedLayout(QLayout* parentLayout): QStackedLayout(parentLayout) {};
 
-	virtual ~MiqtVirtualQStackedLayout() = default;
+	virtual ~MiqtVirtualQStackedLayout() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Count = 0;
@@ -792,11 +792,7 @@ void QStackedLayout_virtualbase_ChildEvent(void* self, QChildEvent* e) {
 	( (MiqtVirtualQStackedLayout*)(self) )->virtualbase_ChildEvent(e);
 }
 
-void QStackedLayout_Delete(QStackedLayout* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQStackedLayout*>( self );
-	} else {
-		delete self;
-	}
+void QStackedLayout_Delete(QStackedLayout* self) {
+	delete self;
 }
 

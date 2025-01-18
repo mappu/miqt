@@ -341,7 +341,7 @@ func (this *QRegExp) Pos1WithNth(nth int) int {
 
 // Delete this object from C++ memory.
 func (this *QRegExp) Delete() {
-	C.QRegExp_Delete(this.h, C.bool(this.isSubclass))
+	C.QRegExp_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

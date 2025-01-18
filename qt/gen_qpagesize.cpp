@@ -209,11 +209,7 @@ int QPageSize_Id3(QSizeF* size, int units, int matchPolicy) {
 	return static_cast<int>(_ret);
 }
 
-void QPageSize_Delete(QPageSize* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QPageSize*>( self );
-	} else {
-		delete self;
-	}
+void QPageSize_Delete(QPageSize* self) {
+	delete self;
 }
 

@@ -156,7 +156,7 @@ func (this *QSslError) Certificate() *QSslCertificate {
 
 // Delete this object from C++ memory.
 func (this *QSslError) Delete() {
-	C.QSslError_Delete(this.h, C.bool(this.isSubclass))
+	C.QSslError_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

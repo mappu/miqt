@@ -161,13 +161,13 @@ void miqt_exec_callback_QsciScintilla_ScrollContentsBy(void*, intptr_t, int, int
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciScintilla : public virtual QsciScintilla {
+class MiqtVirtualQsciScintilla final : public QsciScintilla {
 public:
 
 	MiqtVirtualQsciScintilla(QWidget* parent): QsciScintilla(parent) {};
 	MiqtVirtualQsciScintilla(): QsciScintilla() {};
 
-	virtual ~MiqtVirtualQsciScintilla() = default;
+	virtual ~MiqtVirtualQsciScintilla() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__ApiContext = 0;
@@ -5176,11 +5176,7 @@ void QsciScintilla_virtualbase_ScrollContentsBy(void* self, int dx, int dy) {
 	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_ScrollContentsBy(dx, dy);
 }
 
-void QsciScintilla_Delete(QsciScintilla* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciScintilla*>( self );
-	} else {
-		delete self;
-	}
+void QsciScintilla_Delete(QsciScintilla* self) {
+	delete self;
 }
 

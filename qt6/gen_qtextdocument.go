@@ -104,7 +104,7 @@ func (this *QAbstractUndoItem) OperatorAssign(param1 *QAbstractUndoItem) {
 
 // Delete this object from C++ memory.
 func (this *QAbstractUndoItem) Delete() {
-	C.QAbstractUndoItem_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractUndoItem_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1223,7 +1223,7 @@ func miqt_exec_callback_QTextDocument_DisconnectNotify(self *C.QTextDocument, cb
 
 // Delete this object from C++ memory.
 func (this *QTextDocument) Delete() {
-	C.QTextDocument_Delete(this.h, C.bool(this.isSubclass))
+	C.QTextDocument_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

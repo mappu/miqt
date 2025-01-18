@@ -21,13 +21,13 @@ bool miqt_exec_callback_QFinalState_Event(void*, intptr_t, QEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQFinalState : public virtual QFinalState {
+class MiqtVirtualQFinalState final : public QFinalState {
 public:
 
 	MiqtVirtualQFinalState(): QFinalState() {};
 	MiqtVirtualQFinalState(QState* parent): QFinalState(parent) {};
 
-	virtual ~MiqtVirtualQFinalState() = default;
+	virtual ~MiqtVirtualQFinalState() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__OnEntry = 0;
@@ -212,11 +212,7 @@ bool QFinalState_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQFinalState*)(self) )->virtualbase_Event(e);
 }
 
-void QFinalState_Delete(QFinalState* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQFinalState*>( self );
-	} else {
-		delete self;
-	}
+void QFinalState_Delete(QFinalState* self) {
+	delete self;
 }
 

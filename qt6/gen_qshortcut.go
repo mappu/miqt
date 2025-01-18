@@ -487,7 +487,7 @@ func miqt_exec_callback_QShortcut_DisconnectNotify(self *C.QShortcut, cb C.intpt
 
 // Delete this object from C++ memory.
 func (this *QShortcut) Delete() {
-	C.QShortcut_Delete(this.h, C.bool(this.isSubclass))
+	C.QShortcut_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

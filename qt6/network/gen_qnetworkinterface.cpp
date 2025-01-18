@@ -110,12 +110,8 @@ bool QNetworkAddressEntry_IsTemporary(const QNetworkAddressEntry* self) {
 	return self->isTemporary();
 }
 
-void QNetworkAddressEntry_Delete(QNetworkAddressEntry* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QNetworkAddressEntry*>( self );
-	} else {
-		delete self;
-	}
+void QNetworkAddressEntry_Delete(QNetworkAddressEntry* self) {
+	delete self;
 }
 
 QNetworkInterface* QNetworkInterface_new() {
@@ -253,11 +249,7 @@ struct miqt_array /* of QHostAddress* */  QNetworkInterface_AllAddresses() {
 	return _out;
 }
 
-void QNetworkInterface_Delete(QNetworkInterface* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QNetworkInterface*>( self );
-	} else {
-		delete self;
-	}
+void QNetworkInterface_Delete(QNetworkInterface* self) {
+	delete self;
 }
 

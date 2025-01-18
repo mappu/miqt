@@ -40,7 +40,7 @@ struct miqt_string QCustomAudioRoleControl_Tr2(const char* s, const char* c);
 struct miqt_string QCustomAudioRoleControl_Tr3(const char* s, const char* c, int n);
 struct miqt_string QCustomAudioRoleControl_TrUtf82(const char* s, const char* c);
 struct miqt_string QCustomAudioRoleControl_TrUtf83(const char* s, const char* c, int n);
-void QCustomAudioRoleControl_Delete(QCustomAudioRoleControl* self, bool isSubclass);
+void QCustomAudioRoleControl_Delete(QCustomAudioRoleControl* self);
 
 #ifdef __cplusplus
 } /* extern C */

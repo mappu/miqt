@@ -236,7 +236,7 @@ func (this *QMatrix) Inverted1(invertible *bool) *QMatrix {
 
 // Delete this object from C++ memory.
 func (this *QMatrix) Delete() {
-	C.QMatrix_Delete(this.h, C.bool(this.isSubclass))
+	C.QMatrix_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -54,7 +54,7 @@ QAccessibleInterface* QAccessibleApplication_Child(const QAccessibleApplication*
 struct miqt_string QAccessibleApplication_Text(const QAccessibleApplication* self, int t);
 int QAccessibleApplication_Role(const QAccessibleApplication* self);
 QAccessible__State* QAccessibleApplication_State(const QAccessibleApplication* self);
-void QAccessibleApplication_Delete(QAccessibleApplication* self, bool isSubclass);
+void QAccessibleApplication_Delete(QAccessibleApplication* self);
 
 #ifdef __cplusplus
 } /* extern C */

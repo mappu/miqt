@@ -60,7 +60,7 @@ void miqt_exec_callback_QDirModel_Revert(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQDirModel : public virtual QDirModel {
+class MiqtVirtualQDirModel final : public QDirModel {
 public:
 
 	MiqtVirtualQDirModel(const QStringList& nameFilters, QDir::Filters filters, QDir::SortFlags sort): QDirModel(nameFilters, filters, sort) {};
@@ -68,7 +68,7 @@ public:
 	MiqtVirtualQDirModel(const QStringList& nameFilters, QDir::Filters filters, QDir::SortFlags sort, QObject* parent): QDirModel(nameFilters, filters, sort, parent) {};
 	MiqtVirtualQDirModel(QObject* parent): QDirModel(parent) {};
 
-	virtual ~MiqtVirtualQDirModel() = default;
+	virtual ~MiqtVirtualQDirModel() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Index = 0;
@@ -1686,11 +1686,7 @@ void QDirModel_virtualbase_Revert(void* self) {
 	( (MiqtVirtualQDirModel*)(self) )->virtualbase_Revert();
 }
 
-void QDirModel_Delete(QDirModel* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQDirModel*>( self );
-	} else {
-		delete self;
-	}
+void QDirModel_Delete(QDirModel* self) {
+	delete self;
 }
 

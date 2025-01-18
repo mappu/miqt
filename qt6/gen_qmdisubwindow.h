@@ -226,7 +226,7 @@ void QMdiSubWindow_override_virtual_InputMethodQuery(void* self, intptr_t slot);
 QVariant* QMdiSubWindow_virtualbase_InputMethodQuery(const void* self, int param1);
 void QMdiSubWindow_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QMdiSubWindow_virtualbase_FocusNextPrevChild(void* self, bool next);
-void QMdiSubWindow_Delete(QMdiSubWindow* self, bool isSubclass);
+void QMdiSubWindow_Delete(QMdiSubWindow* self);
 
 #ifdef __cplusplus
 } /* extern C */

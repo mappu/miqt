@@ -82,7 +82,7 @@ func (this *QJsonParseError) ErrorString() string {
 
 // Delete this object from C++ memory.
 func (this *QJsonParseError) Delete() {
-	C.QJsonParseError_Delete(this.h, C.bool(this.isSubclass))
+	C.QJsonParseError_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -273,7 +273,7 @@ func (this *QJsonDocument) ToJson1(format QJsonDocument__JsonFormat) []byte {
 
 // Delete this object from C++ memory.
 func (this *QJsonDocument) Delete() {
-	C.QJsonDocument_Delete(this.h, C.bool(this.isSubclass))
+	C.QJsonDocument_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

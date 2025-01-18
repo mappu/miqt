@@ -85,13 +85,13 @@ bool miqt_exec_callback_QProgressBar_FocusNextPrevChild(void*, intptr_t, bool);
 } /* extern C */
 #endif
 
-class MiqtVirtualQProgressBar : public virtual QProgressBar {
+class MiqtVirtualQProgressBar final : public QProgressBar {
 public:
 
 	MiqtVirtualQProgressBar(QWidget* parent): QProgressBar(parent) {};
 	MiqtVirtualQProgressBar(): QProgressBar() {};
 
-	virtual ~MiqtVirtualQProgressBar() = default;
+	virtual ~MiqtVirtualQProgressBar() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Text = 0;
@@ -1647,11 +1647,7 @@ bool QProgressBar_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQProgressBar*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QProgressBar_Delete(QProgressBar* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQProgressBar*>( self );
-	} else {
-		delete self;
-	}
+void QProgressBar_Delete(QProgressBar* self) {
+	delete self;
 }
 

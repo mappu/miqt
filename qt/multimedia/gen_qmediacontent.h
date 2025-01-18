@@ -47,7 +47,7 @@ QNetworkRequest* QMediaContent_CanonicalRequest(const QMediaContent* self);
 QMediaResource* QMediaContent_CanonicalResource(const QMediaContent* self);
 struct miqt_array /* of QMediaResource* */  QMediaContent_Resources(const QMediaContent* self);
 QMediaPlaylist* QMediaContent_Playlist(const QMediaContent* self);
-void QMediaContent_Delete(QMediaContent* self, bool isSubclass);
+void QMediaContent_Delete(QMediaContent* self);
 
 #ifdef __cplusplus
 } /* extern C */

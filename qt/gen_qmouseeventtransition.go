@@ -265,7 +265,7 @@ func miqt_exec_callback_QMouseEventTransition_Event(self *C.QMouseEventTransitio
 
 // Delete this object from C++ memory.
 func (this *QMouseEventTransition) Delete() {
-	C.QMouseEventTransition_Delete(this.h, C.bool(this.isSubclass))
+	C.QMouseEventTransition_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

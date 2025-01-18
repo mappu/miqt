@@ -89,7 +89,7 @@ bool miqt_exec_callback_QKeySequenceEdit_FocusNextPrevChild(void*, intptr_t, boo
 } /* extern C */
 #endif
 
-class MiqtVirtualQKeySequenceEdit : public virtual QKeySequenceEdit {
+class MiqtVirtualQKeySequenceEdit final : public QKeySequenceEdit {
 public:
 
 	MiqtVirtualQKeySequenceEdit(QWidget* parent): QKeySequenceEdit(parent) {};
@@ -97,7 +97,7 @@ public:
 	MiqtVirtualQKeySequenceEdit(const QKeySequence& keySequence): QKeySequenceEdit(keySequence) {};
 	MiqtVirtualQKeySequenceEdit(const QKeySequence& keySequence, QWidget* parent): QKeySequenceEdit(keySequence, parent) {};
 
-	virtual ~MiqtVirtualQKeySequenceEdit() = default;
+	virtual ~MiqtVirtualQKeySequenceEdit() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -1541,11 +1541,7 @@ bool QKeySequenceEdit_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QKeySequenceEdit_Delete(QKeySequenceEdit* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQKeySequenceEdit*>( self );
-	} else {
-		delete self;
-	}
+void QKeySequenceEdit_Delete(QKeySequenceEdit* self) {
+	delete self;
 }
 

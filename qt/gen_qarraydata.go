@@ -115,7 +115,7 @@ func QArrayData_ReallocateUnaligned4(data *QArrayData, objectSize uint64, newCap
 
 // Delete this object from C++ memory.
 func (this *QArrayData) Delete() {
-	C.QArrayData_Delete(this.h, C.bool(this.isSubclass))
+	C.QArrayData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

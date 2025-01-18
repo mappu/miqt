@@ -246,7 +246,7 @@ func miqt_exec_callback_QRasterWindow_Event(self *C.QRasterWindow, cb C.intptr_t
 
 // Delete this object from C++ memory.
 func (this *QRasterWindow) Delete() {
-	C.QRasterWindow_Delete(this.h, C.bool(this.isSubclass))
+	C.QRasterWindow_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

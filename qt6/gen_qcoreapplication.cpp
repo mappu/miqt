@@ -37,13 +37,13 @@ void miqt_exec_callback_QCoreApplication_DisconnectNotify(void*, intptr_t, QMeta
 } /* extern C */
 #endif
 
-class MiqtVirtualQCoreApplication : public virtual QCoreApplication {
+class MiqtVirtualQCoreApplication final : public QCoreApplication {
 public:
 
 	MiqtVirtualQCoreApplication(int& argc, char** argv): QCoreApplication(argc, argv) {};
 	MiqtVirtualQCoreApplication(int& argc, char** argv, int param3): QCoreApplication(argc, argv, param3) {};
 
-	virtual ~MiqtVirtualQCoreApplication() = default;
+	virtual ~MiqtVirtualQCoreApplication() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Notify = 0;
@@ -726,11 +726,7 @@ void QCoreApplication_virtualbase_DisconnectNotify(void* self, QMetaMethod* sign
 	( (MiqtVirtualQCoreApplication*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QCoreApplication_Delete(QCoreApplication* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQCoreApplication*>( self );
-	} else {
-		delete self;
-	}
+void QCoreApplication_Delete(QCoreApplication* self) {
+	delete self;
 }
 

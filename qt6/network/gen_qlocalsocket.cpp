@@ -38,13 +38,13 @@ bool miqt_exec_callback_QLocalSocket_Reset(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQLocalSocket : public virtual QLocalSocket {
+class MiqtVirtualQLocalSocket final : public QLocalSocket {
 public:
 
 	MiqtVirtualQLocalSocket(): QLocalSocket() {};
 	MiqtVirtualQLocalSocket(QObject* parent): QLocalSocket(parent) {};
 
-	virtual ~MiqtVirtualQLocalSocket() = default;
+	virtual ~MiqtVirtualQLocalSocket() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__IsSequential = 0;
@@ -837,11 +837,7 @@ bool QLocalSocket_virtualbase_Reset(void* self) {
 	return ( (MiqtVirtualQLocalSocket*)(self) )->virtualbase_Reset();
 }
 
-void QLocalSocket_Delete(QLocalSocket* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQLocalSocket*>( self );
-	} else {
-		delete self;
-	}
+void QLocalSocket_Delete(QLocalSocket* self) {
+	delete self;
 }
 

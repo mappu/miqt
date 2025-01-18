@@ -139,7 +139,7 @@ void QProxyStyle_override_virtual_UnpolishWithApp(void* self, intptr_t slot);
 void QProxyStyle_virtualbase_UnpolishWithApp(void* self, QApplication* app);
 void QProxyStyle_override_virtual_Event(void* self, intptr_t slot);
 bool QProxyStyle_virtualbase_Event(void* self, QEvent* e);
-void QProxyStyle_Delete(QProxyStyle* self, bool isSubclass);
+void QProxyStyle_Delete(QProxyStyle* self);
 
 #ifdef __cplusplus
 } /* extern C */

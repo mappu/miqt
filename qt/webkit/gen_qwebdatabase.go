@@ -103,7 +103,7 @@ func QWebDatabase_RemoveAllDatabases() {
 
 // Delete this object from C++ memory.
 func (this *QWebDatabase) Delete() {
-	C.QWebDatabase_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebDatabase_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

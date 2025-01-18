@@ -41,7 +41,7 @@ void miqt_exec_callback_QMovie_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQMovie : public virtual QMovie {
+class MiqtVirtualQMovie final : public QMovie {
 public:
 
 	MiqtVirtualQMovie(): QMovie() {};
@@ -53,7 +53,7 @@ public:
 	MiqtVirtualQMovie(const QString& fileName, const QByteArray& format): QMovie(fileName, format) {};
 	MiqtVirtualQMovie(const QString& fileName, const QByteArray& format, QObject* parent): QMovie(fileName, format, parent) {};
 
-	virtual ~MiqtVirtualQMovie() = default;
+	virtual ~MiqtVirtualQMovie() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -644,11 +644,7 @@ void QMovie_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMovie*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QMovie_Delete(QMovie* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQMovie*>( self );
-	} else {
-		delete self;
-	}
+void QMovie_Delete(QMovie* self) {
+	delete self;
 }
 

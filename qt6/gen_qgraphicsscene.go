@@ -1585,7 +1585,7 @@ func miqt_exec_callback_QGraphicsScene_DisconnectNotify(self *C.QGraphicsScene, 
 
 // Delete this object from C++ memory.
 func (this *QGraphicsScene) Delete() {
-	C.QGraphicsScene_Delete(this.h, C.bool(this.isSubclass))
+	C.QGraphicsScene_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

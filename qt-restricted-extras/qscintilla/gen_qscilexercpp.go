@@ -1500,7 +1500,7 @@ func miqt_exec_callback_QsciLexerCPP_WriteProperties(self *C.QsciLexerCPP, cb C.
 
 // Delete this object from C++ memory.
 func (this *QsciLexerCPP) Delete() {
-	C.QsciLexerCPP_Delete(this.h, C.bool(this.isSubclass))
+	C.QsciLexerCPP_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

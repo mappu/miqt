@@ -198,7 +198,7 @@ void QMessageBox_override_virtual_ContextMenuEvent(void* self, intptr_t slot);
 void QMessageBox_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* param1);
 void QMessageBox_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QMessageBox_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2);
-void QMessageBox_Delete(QMessageBox* self, bool isSubclass);
+void QMessageBox_Delete(QMessageBox* self);
 
 #ifdef __cplusplus
 } /* extern C */

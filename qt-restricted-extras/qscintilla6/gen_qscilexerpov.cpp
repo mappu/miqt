@@ -55,13 +55,13 @@ bool miqt_exec_callback_QsciLexerPOV_WriteProperties(void*, intptr_t, QSettings*
 } /* extern C */
 #endif
 
-class MiqtVirtualQsciLexerPOV : public virtual QsciLexerPOV {
+class MiqtVirtualQsciLexerPOV final : public QsciLexerPOV {
 public:
 
 	MiqtVirtualQsciLexerPOV(): QsciLexerPOV() {};
 	MiqtVirtualQsciLexerPOV(QObject* parent): QsciLexerPOV(parent) {};
 
-	virtual ~MiqtVirtualQsciLexerPOV() = default;
+	virtual ~MiqtVirtualQsciLexerPOV() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetFoldComments = 0;
@@ -1371,11 +1371,7 @@ bool QsciLexerPOV_virtualbase_WriteProperties(const void* self, QSettings* qs, s
 	return ( (const MiqtVirtualQsciLexerPOV*)(self) )->virtualbase_WriteProperties(qs, prefix);
 }
 
-void QsciLexerPOV_Delete(QsciLexerPOV* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQsciLexerPOV*>( self );
-	} else {
-		delete self;
-	}
+void QsciLexerPOV_Delete(QsciLexerPOV* self) {
+	delete self;
 }
 

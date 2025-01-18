@@ -40,13 +40,13 @@ void miqt_exec_callback_QButtonGroup_DisconnectNotify(void*, intptr_t, QMetaMeth
 } /* extern C */
 #endif
 
-class MiqtVirtualQButtonGroup : public virtual QButtonGroup {
+class MiqtVirtualQButtonGroup final : public QButtonGroup {
 public:
 
 	MiqtVirtualQButtonGroup(): QButtonGroup() {};
 	MiqtVirtualQButtonGroup(QObject* parent): QButtonGroup(parent) {};
 
-	virtual ~MiqtVirtualQButtonGroup() = default;
+	virtual ~MiqtVirtualQButtonGroup() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -551,11 +551,7 @@ void QButtonGroup_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQButtonGroup*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QButtonGroup_Delete(QButtonGroup* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQButtonGroup*>( self );
-	} else {
-		delete self;
-	}
+void QButtonGroup_Delete(QButtonGroup* self) {
+	delete self;
 }
 

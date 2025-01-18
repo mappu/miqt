@@ -104,13 +104,13 @@ void miqt_exec_callback_QGraphicsWebView_UngrabKeyboardEvent(void*, intptr_t, QE
 } /* extern C */
 #endif
 
-class MiqtVirtualQGraphicsWebView : public virtual QGraphicsWebView {
+class MiqtVirtualQGraphicsWebView final : public QGraphicsWebView {
 public:
 
 	MiqtVirtualQGraphicsWebView(): QGraphicsWebView() {};
 	MiqtVirtualQGraphicsWebView(QGraphicsItem* parent): QGraphicsWebView(parent) {};
 
-	virtual ~MiqtVirtualQGraphicsWebView() = default;
+	virtual ~MiqtVirtualQGraphicsWebView() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SetGeometry = 0;
@@ -1992,11 +1992,7 @@ void QGraphicsWebView_virtualbase_UngrabKeyboardEvent(void* self, QEvent* event)
 	( (MiqtVirtualQGraphicsWebView*)(self) )->virtualbase_UngrabKeyboardEvent(event);
 }
 
-void QGraphicsWebView_Delete(QGraphicsWebView* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsWebView*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsWebView_Delete(QGraphicsWebView* self) {
+	delete self;
 }
 

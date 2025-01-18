@@ -653,7 +653,7 @@ func miqt_exec_callback_QPushButton_TimerEvent(self *C.QPushButton, cb C.intptr_
 
 // Delete this object from C++ memory.
 func (this *QPushButton) Delete() {
-	C.QPushButton_Delete(this.h, C.bool(this.isSubclass))
+	C.QPushButton_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

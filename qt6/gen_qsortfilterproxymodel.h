@@ -205,7 +205,7 @@ void QSortFilterProxyModel_override_virtual_SupportedDragActions(void* self, int
 int QSortFilterProxyModel_virtualbase_SupportedDragActions(const void* self);
 void QSortFilterProxyModel_override_virtual_RoleNames(void* self, intptr_t slot);
 struct miqt_map /* of int to struct miqt_string */  QSortFilterProxyModel_virtualbase_RoleNames(const void* self);
-void QSortFilterProxyModel_Delete(QSortFilterProxyModel* self, bool isSubclass);
+void QSortFilterProxyModel_Delete(QSortFilterProxyModel* self);
 
 #ifdef __cplusplus
 } /* extern C */

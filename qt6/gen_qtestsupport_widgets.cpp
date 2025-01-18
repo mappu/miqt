@@ -15,12 +15,12 @@ bool miqt_exec_callback_QTest__QTouchEventWidgetSequence_Commit(void*, intptr_t,
 } /* extern C */
 #endif
 
-class MiqtVirtualQTestQTouchEventWidgetSequence : public virtual QTest::QTouchEventWidgetSequence {
+class MiqtVirtualQTestQTouchEventWidgetSequence final : public QTest::QTouchEventWidgetSequence {
 public:
 
 	MiqtVirtualQTestQTouchEventWidgetSequence(const QTest::QTouchEventWidgetSequence& param1): QTest::QTouchEventWidgetSequence(param1) {};
 
-	virtual ~MiqtVirtualQTestQTouchEventWidgetSequence() = default;
+	virtual ~MiqtVirtualQTestQTouchEventWidgetSequence() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Stationary = 0;
@@ -142,11 +142,7 @@ bool QTest__QTouchEventWidgetSequence_virtualbase_Commit(void* self, bool proces
 	return ( (MiqtVirtualQTestQTouchEventWidgetSequence*)(self) )->virtualbase_Commit(processEvents);
 }
 
-void QTest__QTouchEventWidgetSequence_Delete(QTest__QTouchEventWidgetSequence* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQTestQTouchEventWidgetSequence*>( self );
-	} else {
-		delete self;
-	}
+void QTest__QTouchEventWidgetSequence_Delete(QTest__QTouchEventWidgetSequence* self) {
+	delete self;
 }
 

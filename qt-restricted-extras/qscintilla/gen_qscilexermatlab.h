@@ -119,7 +119,7 @@ void QsciLexerMatlab_override_virtual_ReadProperties(void* self, intptr_t slot);
 bool QsciLexerMatlab_virtualbase_ReadProperties(void* self, QSettings* qs, struct miqt_string prefix);
 void QsciLexerMatlab_override_virtual_WriteProperties(void* self, intptr_t slot);
 bool QsciLexerMatlab_virtualbase_WriteProperties(const void* self, QSettings* qs, struct miqt_string prefix);
-void QsciLexerMatlab_Delete(QsciLexerMatlab* self, bool isSubclass);
+void QsciLexerMatlab_Delete(QsciLexerMatlab* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -240,7 +240,7 @@ func (this *QMediaResource) SetResolution2(width int, height int) {
 
 // Delete this object from C++ memory.
 func (this *QMediaResource) Delete() {
-	C.QMediaResource_Delete(this.h, C.bool(this.isSubclass))
+	C.QMediaResource_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

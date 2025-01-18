@@ -37,7 +37,7 @@ QStringEncoder* QStringEncoder_new4(int encoding, int flags);
 QStringEncoder* QStringEncoder_new5(const char* name, int flags);
 void QStringEncoder_virtbase(QStringEncoder* src, QStringConverter** outptr_QStringConverter);
 ptrdiff_t QStringEncoder_RequiredSpace(const QStringEncoder* self, ptrdiff_t inputLength);
-void QStringEncoder_Delete(QStringEncoder* self, bool isSubclass);
+void QStringEncoder_Delete(QStringEncoder* self);
 
 QStringDecoder* QStringDecoder_new(int encoding);
 QStringDecoder* QStringDecoder_new2();
@@ -48,7 +48,7 @@ void QStringDecoder_virtbase(QStringDecoder* src, QStringConverter** outptr_QStr
 ptrdiff_t QStringDecoder_RequiredSpace(const QStringDecoder* self, ptrdiff_t inputLength);
 QChar* QStringDecoder_AppendToBuffer(QStringDecoder* self, QChar* out, QByteArrayView* ba);
 QStringDecoder* QStringDecoder_DecoderForHtml(QByteArrayView* data);
-void QStringDecoder_Delete(QStringDecoder* self, bool isSubclass);
+void QStringDecoder_Delete(QStringDecoder* self);
 
 #ifdef __cplusplus
 } /* extern C */

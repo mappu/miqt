@@ -88,12 +88,12 @@ bool miqt_exec_callback_QDesktopWidget_FocusNextPrevChild(void*, intptr_t, bool)
 } /* extern C */
 #endif
 
-class MiqtVirtualQDesktopWidget : public virtual QDesktopWidget {
+class MiqtVirtualQDesktopWidget final : public QDesktopWidget {
 public:
 
 	MiqtVirtualQDesktopWidget(): QDesktopWidget() {};
 
-	virtual ~MiqtVirtualQDesktopWidget() = default;
+	virtual ~MiqtVirtualQDesktopWidget() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__ResizeEvent = 0;
@@ -1593,11 +1593,7 @@ bool QDesktopWidget_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QDesktopWidget_Delete(QDesktopWidget* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQDesktopWidget*>( self );
-	} else {
-		delete self;
-	}
+void QDesktopWidget_Delete(QDesktopWidget* self) {
+	delete self;
 }
 

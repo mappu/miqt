@@ -137,7 +137,7 @@ func (this *QScrollerProperties) SetScrollMetric(metric QScrollerProperties__Scr
 
 // Delete this object from C++ memory.
 func (this *QScrollerProperties) Delete() {
-	C.QScrollerProperties_Delete(this.h, C.bool(this.isSubclass))
+	C.QScrollerProperties_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

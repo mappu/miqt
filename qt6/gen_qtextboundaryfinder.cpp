@@ -99,11 +99,7 @@ int QTextBoundaryFinder_BoundaryReasons(const QTextBoundaryFinder* self) {
 	return static_cast<int>(_ret);
 }
 
-void QTextBoundaryFinder_Delete(QTextBoundaryFinder* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextBoundaryFinder*>( self );
-	} else {
-		delete self;
-	}
+void QTextBoundaryFinder_Delete(QTextBoundaryFinder* self) {
+	delete self;
 }
 

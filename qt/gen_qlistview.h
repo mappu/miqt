@@ -279,7 +279,7 @@ void QListView_override_virtual_InputMethodEvent(void* self, intptr_t slot);
 void QListView_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* event);
 void QListView_override_virtual_EventFilter(void* self, intptr_t slot);
 bool QListView_virtualbase_EventFilter(void* self, QObject* object, QEvent* event);
-void QListView_Delete(QListView* self, bool isSubclass);
+void QListView_Delete(QListView* self);
 
 #ifdef __cplusplus
 } /* extern C */

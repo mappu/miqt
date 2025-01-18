@@ -28,13 +28,13 @@ void miqt_exec_callback_QWebHistoryInterface_DisconnectNotify(void*, intptr_t, Q
 } /* extern C */
 #endif
 
-class MiqtVirtualQWebHistoryInterface : public virtual QWebHistoryInterface {
+class MiqtVirtualQWebHistoryInterface final : public QWebHistoryInterface {
 public:
 
 	MiqtVirtualQWebHistoryInterface(): QWebHistoryInterface() {};
 	MiqtVirtualQWebHistoryInterface(QObject* parent): QWebHistoryInterface(parent) {};
 
-	virtual ~MiqtVirtualQWebHistoryInterface() = default;
+	virtual ~MiqtVirtualQWebHistoryInterface() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__HistoryContains = 0;
@@ -423,11 +423,7 @@ void QWebHistoryInterface_virtualbase_DisconnectNotify(void* self, QMetaMethod* 
 	( (MiqtVirtualQWebHistoryInterface*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QWebHistoryInterface_Delete(QWebHistoryInterface* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQWebHistoryInterface*>( self );
-	} else {
-		delete self;
-	}
+void QWebHistoryInterface_Delete(QWebHistoryInterface* self) {
+	delete self;
 }
 

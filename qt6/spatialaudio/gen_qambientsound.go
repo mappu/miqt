@@ -416,7 +416,7 @@ func miqt_exec_callback_QAmbientSound_DisconnectNotify(self *C.QAmbientSound, cb
 
 // Delete this object from C++ memory.
 func (this *QAmbientSound) Delete() {
-	C.QAmbientSound_Delete(this.h, C.bool(this.isSubclass))
+	C.QAmbientSound_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -119,7 +119,7 @@ func (this *QDnsDomainNameRecord) Value() string {
 
 // Delete this object from C++ memory.
 func (this *QDnsDomainNameRecord) Delete() {
-	C.QDnsDomainNameRecord_Delete(this.h, C.bool(this.isSubclass))
+	C.QDnsDomainNameRecord_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -207,7 +207,7 @@ func (this *QDnsHostAddressRecord) Value() *QHostAddress {
 
 // Delete this object from C++ memory.
 func (this *QDnsHostAddressRecord) Delete() {
-	C.QDnsHostAddressRecord_Delete(this.h, C.bool(this.isSubclass))
+	C.QDnsHostAddressRecord_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -300,7 +300,7 @@ func (this *QDnsMailExchangeRecord) TimeToLive() uint {
 
 // Delete this object from C++ memory.
 func (this *QDnsMailExchangeRecord) Delete() {
-	C.QDnsMailExchangeRecord_Delete(this.h, C.bool(this.isSubclass))
+	C.QDnsMailExchangeRecord_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -401,7 +401,7 @@ func (this *QDnsServiceRecord) Weight() uint16 {
 
 // Delete this object from C++ memory.
 func (this *QDnsServiceRecord) Delete() {
-	C.QDnsServiceRecord_Delete(this.h, C.bool(this.isSubclass))
+	C.QDnsServiceRecord_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -496,7 +496,7 @@ func (this *QDnsTextRecord) Values() [][]byte {
 
 // Delete this object from C++ memory.
 func (this *QDnsTextRecord) Delete() {
-	C.QDnsTextRecord_Delete(this.h, C.bool(this.isSubclass))
+	C.QDnsTextRecord_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1095,7 +1095,7 @@ func miqt_exec_callback_QDnsLookup_DisconnectNotify(self *C.QDnsLookup, cb C.int
 
 // Delete this object from C++ memory.
 func (this *QDnsLookup) Delete() {
-	C.QDnsLookup_Delete(this.h, C.bool(this.isSubclass))
+	C.QDnsLookup_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -73,7 +73,7 @@ func (this *QWebEngineFullScreenRequest) Origin() *qt.QUrl {
 
 // Delete this object from C++ memory.
 func (this *QWebEngineFullScreenRequest) Delete() {
-	C.QWebEngineFullScreenRequest_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebEngineFullScreenRequest_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

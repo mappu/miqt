@@ -169,21 +169,17 @@ struct miqt_string QProcessEnvironment_Value2(const QProcessEnvironment* self, s
 	return _ms;
 }
 
-void QProcessEnvironment_Delete(QProcessEnvironment* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QProcessEnvironment*>( self );
-	} else {
-		delete self;
-	}
+void QProcessEnvironment_Delete(QProcessEnvironment* self) {
+	delete self;
 }
 
-class MiqtVirtualQProcess : public virtual QProcess {
+class MiqtVirtualQProcess final : public QProcess {
 public:
 
 	MiqtVirtualQProcess(): QProcess() {};
 	MiqtVirtualQProcess(QObject* parent): QProcess(parent) {};
 
-	virtual ~MiqtVirtualQProcess() = default;
+	virtual ~MiqtVirtualQProcess() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Open = 0;
@@ -1215,11 +1211,7 @@ long long QProcess_virtualbase_SkipData(void* self, long long maxSize) {
 	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_SkipData(maxSize);
 }
 
-void QProcess_Delete(QProcess* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQProcess*>( self );
-	} else {
-		delete self;
-	}
+void QProcess_Delete(QProcess* self) {
+	delete self;
 }
 

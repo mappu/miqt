@@ -384,7 +384,7 @@ func miqt_exec_callback_QCameraViewfinder_PaintEvent(self *C.QCameraViewfinder, 
 
 // Delete this object from C++ memory.
 func (this *QCameraViewfinder) Delete() {
-	C.QCameraViewfinder_Delete(this.h, C.bool(this.isSubclass))
+	C.QCameraViewfinder_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

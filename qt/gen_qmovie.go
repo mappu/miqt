@@ -709,7 +709,7 @@ func miqt_exec_callback_QMovie_DisconnectNotify(self *C.QMovie, cb C.intptr_t, s
 
 // Delete this object from C++ memory.
 func (this *QMovie) Delete() {
-	C.QMovie_Delete(this.h, C.bool(this.isSubclass))
+	C.QMovie_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

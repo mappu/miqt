@@ -27,12 +27,12 @@ QVariant* miqt_exec_callback_QScriptEngineAgent_Extension(void*, intptr_t, int, 
 } /* extern C */
 #endif
 
-class MiqtVirtualQScriptEngineAgent : public virtual QScriptEngineAgent {
+class MiqtVirtualQScriptEngineAgent final : public QScriptEngineAgent {
 public:
 
 	MiqtVirtualQScriptEngineAgent(QScriptEngine* engine): QScriptEngineAgent(engine) {};
 
-	virtual ~MiqtVirtualQScriptEngineAgent() = default;
+	virtual ~MiqtVirtualQScriptEngineAgent() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__ScriptLoad = 0;
@@ -481,11 +481,7 @@ QVariant* QScriptEngineAgent_virtualbase_Extension(void* self, int extension, QV
 	return ( (MiqtVirtualQScriptEngineAgent*)(self) )->virtualbase_Extension(extension, argument);
 }
 
-void QScriptEngineAgent_Delete(QScriptEngineAgent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQScriptEngineAgent*>( self );
-	} else {
-		delete self;
-	}
+void QScriptEngineAgent_Delete(QScriptEngineAgent* self) {
+	delete self;
 }
 

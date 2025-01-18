@@ -413,11 +413,7 @@ bool QSslConfiguration_AddCaCertificates3(QSslConfiguration* self, struct miqt_s
 	return self->addCaCertificates(path_QString, static_cast<QSsl::EncodingFormat>(format), static_cast<QSslCertificate::PatternSyntax>(syntax));
 }
 
-void QSslConfiguration_Delete(QSslConfiguration* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QSslConfiguration*>( self );
-	} else {
-		delete self;
-	}
+void QSslConfiguration_Delete(QSslConfiguration* self) {
+	delete self;
 }
 

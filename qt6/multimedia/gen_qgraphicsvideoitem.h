@@ -83,7 +83,7 @@ void QGraphicsVideoItem_override_virtual_ItemChange(void* self, intptr_t slot);
 QVariant* QGraphicsVideoItem_virtualbase_ItemChange(void* self, int change, QVariant* value);
 void QGraphicsVideoItem_override_virtual_Event(void* self, intptr_t slot);
 bool QGraphicsVideoItem_virtualbase_Event(void* self, QEvent* ev);
-void QGraphicsVideoItem_Delete(QGraphicsVideoItem* self, bool isSubclass);
+void QGraphicsVideoItem_Delete(QGraphicsVideoItem* self);
 
 #ifdef __cplusplus
 } /* extern C */

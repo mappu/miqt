@@ -781,7 +781,7 @@ func (this *QColor) Darker1(f int) *QColor {
 
 // Delete this object from C++ memory.
 func (this *QColor) Delete() {
-	C.QColor_Delete(this.h, C.bool(this.isSubclass))
+	C.QColor_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -142,7 +142,7 @@ void QTransposeProxyModel_override_virtual_SupportedDragActions(void* self, intp
 int QTransposeProxyModel_virtualbase_SupportedDragActions(const void* self);
 void QTransposeProxyModel_override_virtual_SupportedDropActions(void* self, intptr_t slot);
 int QTransposeProxyModel_virtualbase_SupportedDropActions(const void* self);
-void QTransposeProxyModel_Delete(QTransposeProxyModel* self, bool isSubclass);
+void QTransposeProxyModel_Delete(QTransposeProxyModel* self);
 
 #ifdef __cplusplus
 } /* extern C */

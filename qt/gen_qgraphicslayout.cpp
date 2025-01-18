@@ -23,13 +23,13 @@ QSizeF* miqt_exec_callback_QGraphicsLayout_SizeHint(void*, intptr_t, int, QSizeF
 } /* extern C */
 #endif
 
-class MiqtVirtualQGraphicsLayout : public virtual QGraphicsLayout {
+class MiqtVirtualQGraphicsLayout final : public QGraphicsLayout {
 public:
 
 	MiqtVirtualQGraphicsLayout(): QGraphicsLayout() {};
 	MiqtVirtualQGraphicsLayout(QGraphicsLayoutItem* parent): QGraphicsLayout(parent) {};
 
-	virtual ~MiqtVirtualQGraphicsLayout() = default;
+	virtual ~MiqtVirtualQGraphicsLayout() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__GetContentsMargins = 0;
@@ -343,11 +343,7 @@ void QGraphicsLayout_override_virtual_SizeHint(void* self, intptr_t slot) {
 	dynamic_cast<MiqtVirtualQGraphicsLayout*>( (QGraphicsLayout*)(self) )->handle__SizeHint = slot;
 }
 
-void QGraphicsLayout_Delete(QGraphicsLayout* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsLayout*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsLayout_Delete(QGraphicsLayout* self) {
+	delete self;
 }
 

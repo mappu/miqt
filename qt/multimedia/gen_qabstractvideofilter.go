@@ -66,7 +66,7 @@ func (this *QVideoFilterRunnable) OperatorAssign(param1 *QVideoFilterRunnable) {
 
 // Delete this object from C++ memory.
 func (this *QVideoFilterRunnable) Delete() {
-	C.QVideoFilterRunnable_Delete(this.h, C.bool(this.isSubclass))
+	C.QVideoFilterRunnable_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -441,7 +441,7 @@ func miqt_exec_callback_QAbstractVideoFilter_DisconnectNotify(self *C.QAbstractV
 
 // Delete this object from C++ memory.
 func (this *QAbstractVideoFilter) Delete() {
-	C.QAbstractVideoFilter_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractVideoFilter_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

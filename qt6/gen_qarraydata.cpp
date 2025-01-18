@@ -66,11 +66,7 @@ void QArrayData_Deallocate(QArrayData* data, ptrdiff_t objectSize, ptrdiff_t ali
 	QArrayData::deallocate(data, (qsizetype)(objectSize), (qsizetype)(alignment));
 }
 
-void QArrayData_Delete(QArrayData* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QArrayData*>( self );
-	} else {
-		delete self;
-	}
+void QArrayData_Delete(QArrayData* self) {
+	delete self;
 }
 

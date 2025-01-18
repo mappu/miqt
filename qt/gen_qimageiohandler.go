@@ -560,7 +560,7 @@ func miqt_exec_callback_QImageIOHandler_CurrentImageRect(self *C.QImageIOHandler
 
 // Delete this object from C++ memory.
 func (this *QImageIOHandler) Delete() {
-	C.QImageIOHandler_Delete(this.h, C.bool(this.isSubclass))
+	C.QImageIOHandler_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -955,7 +955,7 @@ func miqt_exec_callback_QImageIOPlugin_DisconnectNotify(self *C.QImageIOPlugin, 
 
 // Delete this object from C++ memory.
 func (this *QImageIOPlugin) Delete() {
-	C.QImageIOPlugin_Delete(this.h, C.bool(this.isSubclass))
+	C.QImageIOPlugin_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

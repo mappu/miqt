@@ -100,7 +100,7 @@ void QNetworkSession_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QNetworkSession_virtualbase_ChildEvent(void* self, QChildEvent* event);
 void QNetworkSession_override_virtual_CustomEvent(void* self, intptr_t slot);
 void QNetworkSession_virtualbase_CustomEvent(void* self, QEvent* event);
-void QNetworkSession_Delete(QNetworkSession* self, bool isSubclass);
+void QNetworkSession_Delete(QNetworkSession* self);
 
 #ifdef __cplusplus
 } /* extern C */

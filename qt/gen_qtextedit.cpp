@@ -93,7 +93,7 @@ QSize* miqt_exec_callback_QTextEdit_ViewportSizeHint(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQTextEdit : public virtual QTextEdit {
+class MiqtVirtualQTextEdit final : public QTextEdit {
 public:
 
 	MiqtVirtualQTextEdit(QWidget* parent): QTextEdit(parent) {};
@@ -101,7 +101,7 @@ public:
 	MiqtVirtualQTextEdit(const QString& text): QTextEdit(text) {};
 	MiqtVirtualQTextEdit(const QString& text, QWidget* parent): QTextEdit(text, parent) {};
 
-	virtual ~MiqtVirtualQTextEdit() = default;
+	virtual ~MiqtVirtualQTextEdit() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__LoadResource = 0;
@@ -1881,12 +1881,8 @@ QSize* QTextEdit_virtualbase_ViewportSizeHint(const void* self) {
 	return ( (const MiqtVirtualQTextEdit*)(self) )->virtualbase_ViewportSizeHint();
 }
 
-void QTextEdit_Delete(QTextEdit* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQTextEdit*>( self );
-	} else {
-		delete self;
-	}
+void QTextEdit_Delete(QTextEdit* self) {
+	delete self;
 }
 
 QTextEdit__ExtraSelection* QTextEdit__ExtraSelection_new(QTextEdit__ExtraSelection* param1) {
@@ -1897,11 +1893,7 @@ void QTextEdit__ExtraSelection_OperatorAssign(QTextEdit__ExtraSelection* self, Q
 	self->operator=(*param1);
 }
 
-void QTextEdit__ExtraSelection_Delete(QTextEdit__ExtraSelection* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QTextEdit::ExtraSelection*>( self );
-	} else {
-		delete self;
-	}
+void QTextEdit__ExtraSelection_Delete(QTextEdit__ExtraSelection* self) {
+	delete self;
 }
 

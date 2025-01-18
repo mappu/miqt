@@ -1804,7 +1804,7 @@ func miqt_exec_callback_QTabBar_FocusNextPrevChild(self *C.QTabBar, cb C.intptr_
 
 // Delete this object from C++ memory.
 func (this *QTabBar) Delete() {
-	C.QTabBar_Delete(this.h, C.bool(this.isSubclass))
+	C.QTabBar_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

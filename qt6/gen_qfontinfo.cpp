@@ -111,11 +111,7 @@ bool QFontInfo_ExactMatch(const QFontInfo* self) {
 	return self->exactMatch();
 }
 
-void QFontInfo_Delete(QFontInfo* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QFontInfo*>( self );
-	} else {
-		delete self;
-	}
+void QFontInfo_Delete(QFontInfo* self) {
+	delete self;
 }
 

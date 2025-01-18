@@ -62,13 +62,13 @@ QSize* miqt_exec_callback_QMdiArea_ViewportSizeHint(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQMdiArea : public virtual QMdiArea {
+class MiqtVirtualQMdiArea final : public QMdiArea {
 public:
 
 	MiqtVirtualQMdiArea(QWidget* parent): QMdiArea(parent) {};
 	MiqtVirtualQMdiArea(): QMdiArea() {};
 
-	virtual ~MiqtVirtualQMdiArea() = default;
+	virtual ~MiqtVirtualQMdiArea() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -1059,11 +1059,7 @@ QSize* QMdiArea_virtualbase_ViewportSizeHint(const void* self) {
 	return ( (const MiqtVirtualQMdiArea*)(self) )->virtualbase_ViewportSizeHint();
 }
 
-void QMdiArea_Delete(QMdiArea* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQMdiArea*>( self );
-	} else {
-		delete self;
-	}
+void QMdiArea_Delete(QMdiArea* self) {
+	delete self;
 }
 

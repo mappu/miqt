@@ -29,13 +29,13 @@ void miqt_exec_callback_QTranslator_DisconnectNotify(void*, intptr_t, QMetaMetho
 } /* extern C */
 #endif
 
-class MiqtVirtualQTranslator : public virtual QTranslator {
+class MiqtVirtualQTranslator final : public QTranslator {
 public:
 
 	MiqtVirtualQTranslator(): QTranslator() {};
 	MiqtVirtualQTranslator(QObject* parent): QTranslator(parent) {};
 
-	virtual ~MiqtVirtualQTranslator() = default;
+	virtual ~MiqtVirtualQTranslator() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Translate = 0;
@@ -522,11 +522,7 @@ void QTranslator_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTranslator*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QTranslator_Delete(QTranslator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQTranslator*>( self );
-	} else {
-		delete self;
-	}
+void QTranslator_Delete(QTranslator* self) {
+	delete self;
 }
 

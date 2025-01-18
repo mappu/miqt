@@ -88,7 +88,7 @@ func (this *QAudioSystemFactoryInterface) OperatorAssign(param1 *QAudioSystemFac
 
 // Delete this object from C++ memory.
 func (this *QAudioSystemFactoryInterface) Delete() {
-	C.QAudioSystemFactoryInterface_Delete(this.h, C.bool(this.isSubclass))
+	C.QAudioSystemFactoryInterface_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -559,7 +559,7 @@ func miqt_exec_callback_QAudioSystemPlugin_DisconnectNotify(self *C.QAudioSystem
 
 // Delete this object from C++ memory.
 func (this *QAudioSystemPlugin) Delete() {
-	C.QAudioSystemPlugin_Delete(this.h, C.bool(this.isSubclass))
+	C.QAudioSystemPlugin_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

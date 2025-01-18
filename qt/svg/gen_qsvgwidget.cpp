@@ -84,7 +84,7 @@ bool miqt_exec_callback_QSvgWidget_FocusNextPrevChild(void*, intptr_t, bool);
 } /* extern C */
 #endif
 
-class MiqtVirtualQSvgWidget : public virtual QSvgWidget {
+class MiqtVirtualQSvgWidget final : public QSvgWidget {
 public:
 
 	MiqtVirtualQSvgWidget(QWidget* parent): QSvgWidget(parent) {};
@@ -92,7 +92,7 @@ public:
 	MiqtVirtualQSvgWidget(const QString& file): QSvgWidget(file) {};
 	MiqtVirtualQSvgWidget(const QString& file, QWidget* parent): QSvgWidget(file, parent) {};
 
-	virtual ~MiqtVirtualQSvgWidget() = default;
+	virtual ~MiqtVirtualQSvgWidget() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -1513,11 +1513,7 @@ bool QSvgWidget_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQSvgWidget*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QSvgWidget_Delete(QSvgWidget* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSvgWidget*>( self );
-	} else {
-		delete self;
-	}
+void QSvgWidget_Delete(QSvgWidget* self) {
+	delete self;
 }
 

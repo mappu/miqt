@@ -1700,7 +1700,7 @@ func miqt_exec_callback_QWebEngineView_FocusNextPrevChild(self *C.QWebEngineView
 
 // Delete this object from C++ memory.
 func (this *QWebEngineView) Delete() {
-	C.QWebEngineView_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebEngineView_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

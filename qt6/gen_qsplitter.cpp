@@ -99,7 +99,7 @@ bool miqt_exec_callback_QSplitterHandle_FocusNextPrevChild(void*, intptr_t, bool
 } /* extern C */
 #endif
 
-class MiqtVirtualQSplitter : public virtual QSplitter {
+class MiqtVirtualQSplitter final : public QSplitter {
 public:
 
 	MiqtVirtualQSplitter(QWidget* parent): QSplitter(parent) {};
@@ -107,7 +107,7 @@ public:
 	MiqtVirtualQSplitter(Qt::Orientation param1): QSplitter(param1) {};
 	MiqtVirtualQSplitter(Qt::Orientation param1, QWidget* parent): QSplitter(param1, parent) {};
 
-	virtual ~MiqtVirtualQSplitter() = default;
+	virtual ~MiqtVirtualQSplitter() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -595,20 +595,16 @@ void QSplitter_virtualbase_InitStyleOption(const void* self, QStyleOptionFrame* 
 	( (const MiqtVirtualQSplitter*)(self) )->virtualbase_InitStyleOption(option);
 }
 
-void QSplitter_Delete(QSplitter* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSplitter*>( self );
-	} else {
-		delete self;
-	}
+void QSplitter_Delete(QSplitter* self) {
+	delete self;
 }
 
-class MiqtVirtualQSplitterHandle : public virtual QSplitterHandle {
+class MiqtVirtualQSplitterHandle final : public QSplitterHandle {
 public:
 
 	MiqtVirtualQSplitterHandle(Qt::Orientation o, QSplitter* parent): QSplitterHandle(o, parent) {};
 
-	virtual ~MiqtVirtualQSplitterHandle() = default;
+	virtual ~MiqtVirtualQSplitterHandle() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -1986,11 +1982,7 @@ bool QSplitterHandle_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QSplitterHandle_Delete(QSplitterHandle* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQSplitterHandle*>( self );
-	} else {
-		delete self;
-	}
+void QSplitterHandle_Delete(QSplitterHandle* self) {
+	delete self;
 }
 

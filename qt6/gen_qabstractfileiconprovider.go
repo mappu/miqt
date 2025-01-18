@@ -247,7 +247,7 @@ func miqt_exec_callback_QAbstractFileIconProvider_Options(self *C.QAbstractFileI
 
 // Delete this object from C++ memory.
 func (this *QAbstractFileIconProvider) Delete() {
-	C.QAbstractFileIconProvider_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractFileIconProvider_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

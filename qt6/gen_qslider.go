@@ -511,7 +511,7 @@ func miqt_exec_callback_QSlider_ChangeEvent(self *C.QSlider, cb C.intptr_t, e *C
 
 // Delete this object from C++ memory.
 func (this *QSlider) Delete() {
-	C.QSlider_Delete(this.h, C.bool(this.isSubclass))
+	C.QSlider_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

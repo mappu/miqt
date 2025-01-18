@@ -51,7 +51,7 @@ void QLine_SetLine(QLine* self, int x1, int y1, int x2, int y2);
 bool QLine_OperatorEqual(const QLine* self, QLine* d);
 bool QLine_OperatorNotEqual(const QLine* self, QLine* d);
 QLineF* QLine_ToLineF(const QLine* self);
-void QLine_Delete(QLine* self, bool isSubclass);
+void QLine_Delete(QLine* self);
 
 QLineF* QLineF_new();
 QLineF* QLineF_new2(QPointF* pt1, QPointF* pt2);
@@ -90,7 +90,7 @@ bool QLineF_OperatorEqual(const QLineF* self, QLineF* d);
 bool QLineF_OperatorNotEqual(const QLineF* self, QLineF* d);
 QLine* QLineF_ToLine(const QLineF* self);
 int QLineF_Intersects2(const QLineF* self, QLineF* l, QPointF* intersectionPoint);
-void QLineF_Delete(QLineF* self, bool isSubclass);
+void QLineF_Delete(QLineF* self);
 
 #ifdef __cplusplus
 } /* extern C */

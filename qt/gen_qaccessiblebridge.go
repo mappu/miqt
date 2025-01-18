@@ -61,7 +61,7 @@ func (this *QAccessibleBridge) OperatorAssign(param1 *QAccessibleBridge) {
 
 // Delete this object from C++ memory.
 func (this *QAccessibleBridge) Delete() {
-	C.QAccessibleBridge_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessibleBridge_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -421,7 +421,7 @@ func miqt_exec_callback_QAccessibleBridgePlugin_DisconnectNotify(self *C.QAccess
 
 // Delete this object from C++ memory.
 func (this *QAccessibleBridgePlugin) Delete() {
-	C.QAccessibleBridgePlugin_Delete(this.h, C.bool(this.isSubclass))
+	C.QAccessibleBridgePlugin_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -794,7 +794,7 @@ func QUrl_FromStringList2(uris []string, mode QUrl__ParsingMode) []QUrl {
 
 // Delete this object from C++ memory.
 func (this *QUrl) Delete() {
-	C.QUrl_Delete(this.h, C.bool(this.isSubclass))
+	C.QUrl_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

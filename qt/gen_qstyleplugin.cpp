@@ -28,13 +28,13 @@ void miqt_exec_callback_QStylePlugin_DisconnectNotify(void*, intptr_t, QMetaMeth
 } /* extern C */
 #endif
 
-class MiqtVirtualQStylePlugin : public virtual QStylePlugin {
+class MiqtVirtualQStylePlugin final : public QStylePlugin {
 public:
 
 	MiqtVirtualQStylePlugin(): QStylePlugin() {};
 	MiqtVirtualQStylePlugin(QObject* parent): QStylePlugin(parent) {};
 
-	virtual ~MiqtVirtualQStylePlugin() = default;
+	virtual ~MiqtVirtualQStylePlugin() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Create = 0;
@@ -383,11 +383,7 @@ void QStylePlugin_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) 
 	( (MiqtVirtualQStylePlugin*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QStylePlugin_Delete(QStylePlugin* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQStylePlugin*>( self );
-	} else {
-		delete self;
-	}
+void QStylePlugin_Delete(QStylePlugin* self) {
+	delete self;
 }
 

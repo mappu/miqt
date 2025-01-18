@@ -96,7 +96,7 @@ bool miqt_exec_callback_QToolBar_FocusNextPrevChild(void*, intptr_t, bool);
 } /* extern C */
 #endif
 
-class MiqtVirtualQToolBar : public virtual QToolBar {
+class MiqtVirtualQToolBar final : public QToolBar {
 public:
 
 	MiqtVirtualQToolBar(QWidget* parent): QToolBar(parent) {};
@@ -104,7 +104,7 @@ public:
 	MiqtVirtualQToolBar(): QToolBar() {};
 	MiqtVirtualQToolBar(const QString& title, QWidget* parent): QToolBar(title, parent) {};
 
-	virtual ~MiqtVirtualQToolBar() = default;
+	virtual ~MiqtVirtualQToolBar() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__ActionEvent = 0;
@@ -1699,11 +1699,7 @@ bool QToolBar_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQToolBar*)(self) )->virtualbase_FocusNextPrevChild(next);
 }
 
-void QToolBar_Delete(QToolBar* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQToolBar*>( self );
-	} else {
-		delete self;
-	}
+void QToolBar_Delete(QToolBar* self) {
+	delete self;
 }
 

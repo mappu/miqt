@@ -211,12 +211,8 @@ struct miqt_string QRegularExpression_WildcardToRegularExpression2(struct miqt_s
 	return _ms;
 }
 
-void QRegularExpression_Delete(QRegularExpression* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QRegularExpression*>( self );
-	} else {
-		delete self;
-	}
+void QRegularExpression_Delete(QRegularExpression* self) {
+	delete self;
 }
 
 QRegularExpressionMatch* QRegularExpressionMatch_new() {
@@ -376,12 +372,8 @@ ptrdiff_t QRegularExpressionMatch_CapturedEnd1(const QRegularExpressionMatch* se
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-void QRegularExpressionMatch_Delete(QRegularExpressionMatch* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QRegularExpressionMatch*>( self );
-	} else {
-		delete self;
-	}
+void QRegularExpressionMatch_Delete(QRegularExpressionMatch* self) {
+	delete self;
 }
 
 QRegularExpressionMatchIterator* QRegularExpressionMatchIterator_new() {
@@ -430,11 +422,7 @@ int QRegularExpressionMatchIterator_MatchOptions(const QRegularExpressionMatchIt
 	return static_cast<int>(_ret);
 }
 
-void QRegularExpressionMatchIterator_Delete(QRegularExpressionMatchIterator* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QRegularExpressionMatchIterator*>( self );
-	} else {
-		delete self;
-	}
+void QRegularExpressionMatchIterator_Delete(QRegularExpressionMatchIterator* self) {
+	delete self;
 }
 

@@ -84,11 +84,7 @@ void* QAudioBuffer_Data2(QAudioBuffer* self) {
 	return self->data();
 }
 
-void QAudioBuffer_Delete(QAudioBuffer* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QAudioBuffer*>( self );
-	} else {
-		delete self;
-	}
+void QAudioBuffer_Delete(QAudioBuffer* self) {
+	delete self;
 }
 

@@ -44,13 +44,13 @@ void miqt_exec_callback_QImageCapture_DisconnectNotify(void*, intptr_t, QMetaMet
 } /* extern C */
 #endif
 
-class MiqtVirtualQImageCapture : public virtual QImageCapture {
+class MiqtVirtualQImageCapture final : public QImageCapture {
 public:
 
 	MiqtVirtualQImageCapture(): QImageCapture() {};
 	MiqtVirtualQImageCapture(QObject* parent): QImageCapture(parent) {};
 
-	virtual ~MiqtVirtualQImageCapture() = default;
+	virtual ~MiqtVirtualQImageCapture() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -609,11 +609,7 @@ void QImageCapture_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQImageCapture*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QImageCapture_Delete(QImageCapture* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQImageCapture*>( self );
-	} else {
-		delete self;
-	}
+void QImageCapture_Delete(QImageCapture* self) {
+	delete self;
 }
 

@@ -161,11 +161,7 @@ void QGlyphRun_SetFlag2(QGlyphRun* self, int flag, bool enabled) {
 	self->setFlag(static_cast<QGlyphRun::GlyphRunFlag>(flag), enabled);
 }
 
-void QGlyphRun_Delete(QGlyphRun* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QGlyphRun*>( self );
-	} else {
-		delete self;
-	}
+void QGlyphRun_Delete(QGlyphRun* self) {
+	delete self;
 }
 

@@ -107,7 +107,7 @@ func (this *QWebEngineFileSystemAccessRequest) AccessFlags() QWebEngineFileSyste
 
 // Delete this object from C++ memory.
 func (this *QWebEngineFileSystemAccessRequest) Delete() {
-	C.QWebEngineFileSystemAccessRequest_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebEngineFileSystemAccessRequest_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

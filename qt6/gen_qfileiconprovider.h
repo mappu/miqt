@@ -40,7 +40,7 @@ void QFileIconProvider_override_virtual_SetOptions(void* self, intptr_t slot);
 void QFileIconProvider_virtualbase_SetOptions(void* self, int options);
 void QFileIconProvider_override_virtual_Options(void* self, intptr_t slot);
 int QFileIconProvider_virtualbase_Options(const void* self);
-void QFileIconProvider_Delete(QFileIconProvider* self, bool isSubclass);
+void QFileIconProvider_Delete(QFileIconProvider* self);
 
 #ifdef __cplusplus
 } /* extern C */

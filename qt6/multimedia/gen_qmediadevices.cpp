@@ -32,13 +32,13 @@ void miqt_exec_callback_QMediaDevices_DisconnectNotify(void*, intptr_t, QMetaMet
 } /* extern C */
 #endif
 
-class MiqtVirtualQMediaDevices : public virtual QMediaDevices {
+class MiqtVirtualQMediaDevices final : public QMediaDevices {
 public:
 
 	MiqtVirtualQMediaDevices(): QMediaDevices() {};
 	MiqtVirtualQMediaDevices(QObject* parent): QMediaDevices(parent) {};
 
-	virtual ~MiqtVirtualQMediaDevices() = default;
+	virtual ~MiqtVirtualQMediaDevices() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -403,11 +403,7 @@ void QMediaDevices_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal)
 	( (MiqtVirtualQMediaDevices*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QMediaDevices_Delete(QMediaDevices* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQMediaDevices*>( self );
-	} else {
-		delete self;
-	}
+void QMediaDevices_Delete(QMediaDevices* self) {
+	delete self;
 }
 

@@ -78,7 +78,7 @@ QSize* miqt_exec_callback_QGraphicsView_ViewportSizeHint(void*, intptr_t);
 } /* extern C */
 #endif
 
-class MiqtVirtualQGraphicsView : public virtual QGraphicsView {
+class MiqtVirtualQGraphicsView final : public QGraphicsView {
 public:
 
 	MiqtVirtualQGraphicsView(QWidget* parent): QGraphicsView(parent) {};
@@ -86,7 +86,7 @@ public:
 	MiqtVirtualQGraphicsView(QGraphicsScene* scene): QGraphicsView(scene) {};
 	MiqtVirtualQGraphicsView(QGraphicsScene* scene, QWidget* parent): QGraphicsView(scene, parent) {};
 
-	virtual ~MiqtVirtualQGraphicsView() = default;
+	virtual ~MiqtVirtualQGraphicsView() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -1631,11 +1631,7 @@ QSize* QGraphicsView_virtualbase_ViewportSizeHint(const void* self) {
 	return ( (const MiqtVirtualQGraphicsView*)(self) )->virtualbase_ViewportSizeHint();
 }
 
-void QGraphicsView_Delete(QGraphicsView* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsView*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsView_Delete(QGraphicsView* self) {
+	delete self;
 }
 

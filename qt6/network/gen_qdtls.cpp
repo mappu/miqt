@@ -45,13 +45,13 @@ void miqt_exec_callback_QDtls_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQDtlsClientVerifier : public virtual QDtlsClientVerifier {
+class MiqtVirtualQDtlsClientVerifier final : public QDtlsClientVerifier {
 public:
 
 	MiqtVirtualQDtlsClientVerifier(): QDtlsClientVerifier() {};
 	MiqtVirtualQDtlsClientVerifier(QObject* parent): QDtlsClientVerifier(parent) {};
 
-	virtual ~MiqtVirtualQDtlsClientVerifier() = default;
+	virtual ~MiqtVirtualQDtlsClientVerifier() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -373,21 +373,17 @@ void QDtlsClientVerifier_virtualbase_DisconnectNotify(void* self, QMetaMethod* s
 	( (MiqtVirtualQDtlsClientVerifier*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QDtlsClientVerifier_Delete(QDtlsClientVerifier* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQDtlsClientVerifier*>( self );
-	} else {
-		delete self;
-	}
+void QDtlsClientVerifier_Delete(QDtlsClientVerifier* self) {
+	delete self;
 }
 
-class MiqtVirtualQDtls : public virtual QDtls {
+class MiqtVirtualQDtls final : public QDtls {
 public:
 
 	MiqtVirtualQDtls(QSslSocket::SslMode mode): QDtls(mode) {};
 	MiqtVirtualQDtls(QSslSocket::SslMode mode, QObject* parent): QDtls(mode, parent) {};
 
-	virtual ~MiqtVirtualQDtls() = default;
+	virtual ~MiqtVirtualQDtls() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -854,12 +850,8 @@ void QDtls_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDtls*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QDtls_Delete(QDtls* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQDtls*>( self );
-	} else {
-		delete self;
-	}
+void QDtls_Delete(QDtls* self) {
+	delete self;
 }
 
 QDtlsClientVerifier__GeneratorParameters* QDtlsClientVerifier__GeneratorParameters_new() {
@@ -879,11 +871,7 @@ void QDtlsClientVerifier__GeneratorParameters_OperatorAssign(QDtlsClientVerifier
 	self->operator=(*param1);
 }
 
-void QDtlsClientVerifier__GeneratorParameters_Delete(QDtlsClientVerifier__GeneratorParameters* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QDtlsClientVerifier::GeneratorParameters*>( self );
-	} else {
-		delete self;
-	}
+void QDtlsClientVerifier__GeneratorParameters_Delete(QDtlsClientVerifier__GeneratorParameters* self) {
+	delete self;
 }
 

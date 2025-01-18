@@ -51,11 +51,11 @@ struct miqt_string QWebEngineCookieStore_Tr2(const char* s, const char* c);
 struct miqt_string QWebEngineCookieStore_Tr3(const char* s, const char* c, int n);
 void QWebEngineCookieStore_SetCookie2(QWebEngineCookieStore* self, QNetworkCookie* cookie, QUrl* origin);
 void QWebEngineCookieStore_DeleteCookie2(QWebEngineCookieStore* self, QNetworkCookie* cookie, QUrl* origin);
-void QWebEngineCookieStore_Delete(QWebEngineCookieStore* self, bool isSubclass);
+void QWebEngineCookieStore_Delete(QWebEngineCookieStore* self);
 
 QWebEngineCookieStore__FilterRequest* QWebEngineCookieStore__FilterRequest_new(QWebEngineCookieStore__FilterRequest* param1);
 void QWebEngineCookieStore__FilterRequest_OperatorAssign(QWebEngineCookieStore__FilterRequest* self, QWebEngineCookieStore__FilterRequest* param1);
-void QWebEngineCookieStore__FilterRequest_Delete(QWebEngineCookieStore__FilterRequest* self, bool isSubclass);
+void QWebEngineCookieStore__FilterRequest_Delete(QWebEngineCookieStore__FilterRequest* self);
 
 #ifdef __cplusplus
 } /* extern C */

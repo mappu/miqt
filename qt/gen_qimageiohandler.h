@@ -90,7 +90,7 @@ void QImageIOHandler_override_virtual_CurrentImageNumber(void* self, intptr_t sl
 int QImageIOHandler_virtualbase_CurrentImageNumber(const void* self);
 void QImageIOHandler_override_virtual_CurrentImageRect(void* self, intptr_t slot);
 QRect* QImageIOHandler_virtualbase_CurrentImageRect(const void* self);
-void QImageIOHandler_Delete(QImageIOHandler* self, bool isSubclass);
+void QImageIOHandler_Delete(QImageIOHandler* self);
 
 QImageIOPlugin* QImageIOPlugin_new();
 QImageIOPlugin* QImageIOPlugin_new2(QObject* parent);
@@ -123,7 +123,7 @@ void QImageIOPlugin_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QImageIOPlugin_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QImageIOPlugin_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QImageIOPlugin_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QImageIOPlugin_Delete(QImageIOPlugin* self, bool isSubclass);
+void QImageIOPlugin_Delete(QImageIOPlugin* self);
 
 #ifdef __cplusplus
 } /* extern C */

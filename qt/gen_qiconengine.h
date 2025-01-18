@@ -82,15 +82,15 @@ void QIconEngine_override_virtual_IconName(void* self, intptr_t slot);
 struct miqt_string QIconEngine_virtualbase_IconName(const void* self);
 void QIconEngine_override_virtual_VirtualHook(void* self, intptr_t slot);
 void QIconEngine_virtualbase_VirtualHook(void* self, int id, void* data);
-void QIconEngine_Delete(QIconEngine* self, bool isSubclass);
+void QIconEngine_Delete(QIconEngine* self);
 
 QIconEngine__AvailableSizesArgument* QIconEngine__AvailableSizesArgument_new(QIconEngine__AvailableSizesArgument* param1);
 void QIconEngine__AvailableSizesArgument_OperatorAssign(QIconEngine__AvailableSizesArgument* self, QIconEngine__AvailableSizesArgument* param1);
-void QIconEngine__AvailableSizesArgument_Delete(QIconEngine__AvailableSizesArgument* self, bool isSubclass);
+void QIconEngine__AvailableSizesArgument_Delete(QIconEngine__AvailableSizesArgument* self);
 
 QIconEngine__ScaledPixmapArgument* QIconEngine__ScaledPixmapArgument_new(QIconEngine__ScaledPixmapArgument* param1);
 void QIconEngine__ScaledPixmapArgument_OperatorAssign(QIconEngine__ScaledPixmapArgument* self, QIconEngine__ScaledPixmapArgument* param1);
-void QIconEngine__ScaledPixmapArgument_Delete(QIconEngine__ScaledPixmapArgument* self, bool isSubclass);
+void QIconEngine__ScaledPixmapArgument_Delete(QIconEngine__ScaledPixmapArgument* self);
 
 #ifdef __cplusplus
 } /* extern C */

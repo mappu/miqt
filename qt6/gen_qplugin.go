@@ -52,7 +52,7 @@ func QPluginMetaData_ArchRequirements() byte {
 
 // Delete this object from C++ memory.
 func (this *QPluginMetaData) Delete() {
-	C.QPluginMetaData_Delete(this.h, C.bool(this.isSubclass))
+	C.QPluginMetaData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -105,7 +105,7 @@ func (this *QStaticPlugin) MetaData() *QJsonObject {
 
 // Delete this object from C++ memory.
 func (this *QStaticPlugin) Delete() {
-	C.QStaticPlugin_Delete(this.h, C.bool(this.isSubclass))
+	C.QStaticPlugin_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -160,7 +160,7 @@ func NewQPluginMetaData__Header(param1 *QPluginMetaData__Header) *QPluginMetaDat
 
 // Delete this object from C++ memory.
 func (this *QPluginMetaData__Header) Delete() {
-	C.QPluginMetaData__Header_Delete(this.h, C.bool(this.isSubclass))
+	C.QPluginMetaData__Header_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -215,7 +215,7 @@ func NewQPluginMetaData__MagicHeader() *QPluginMetaData__MagicHeader {
 
 // Delete this object from C++ memory.
 func (this *QPluginMetaData__MagicHeader) Delete() {
-	C.QPluginMetaData__MagicHeader_Delete(this.h, C.bool(this.isSubclass))
+	C.QPluginMetaData__MagicHeader_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -278,7 +278,7 @@ func NewQPluginMetaData__ElfNoteHeader2(param1 *QPluginMetaData__ElfNoteHeader) 
 
 // Delete this object from C++ memory.
 func (this *QPluginMetaData__ElfNoteHeader) Delete() {
-	C.QPluginMetaData__ElfNoteHeader_Delete(this.h, C.bool(this.isSubclass))
+	C.QPluginMetaData__ElfNoteHeader_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

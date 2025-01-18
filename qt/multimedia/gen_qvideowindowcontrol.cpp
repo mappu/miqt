@@ -241,11 +241,7 @@ struct miqt_string QVideoWindowControl_TrUtf83(const char* s, const char* c, int
 	return _ms;
 }
 
-void QVideoWindowControl_Delete(QVideoWindowControl* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QVideoWindowControl*>( self );
-	} else {
-		delete self;
-	}
+void QVideoWindowControl_Delete(QVideoWindowControl* self) {
+	delete self;
 }
 

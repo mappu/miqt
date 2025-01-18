@@ -40,21 +40,17 @@ QMetaObject* QObjectData_DynamicMetaObject(const QObjectData* self) {
 	return self->dynamicMetaObject();
 }
 
-void QObjectData_Delete(QObjectData* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QObjectData*>( self );
-	} else {
-		delete self;
-	}
+void QObjectData_Delete(QObjectData* self) {
+	delete self;
 }
 
-class MiqtVirtualQObject : public virtual QObject {
+class MiqtVirtualQObject final : public QObject {
 public:
 
 	MiqtVirtualQObject(): QObject() {};
 	MiqtVirtualQObject(QObject* parent): QObject(parent) {};
 
-	virtual ~MiqtVirtualQObject() = default;
+	virtual ~MiqtVirtualQObject() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -521,12 +517,8 @@ void QObject_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQObject*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QObject_Delete(QObject* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQObject*>( self );
-	} else {
-		delete self;
-	}
+void QObject_Delete(QObject* self) {
+	delete self;
 }
 
 QSignalBlocker* QSignalBlocker_new(QObject* o) {
@@ -545,11 +537,7 @@ void QSignalBlocker_Unblock(QSignalBlocker* self) {
 	self->unblock();
 }
 
-void QSignalBlocker_Delete(QSignalBlocker* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QSignalBlocker*>( self );
-	} else {
-		delete self;
-	}
+void QSignalBlocker_Delete(QSignalBlocker* self) {
+	delete self;
 }
 

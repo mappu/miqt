@@ -49,13 +49,13 @@ void miqt_exec_callback_QToolButton_FocusOutEvent(void*, intptr_t, QFocusEvent*)
 } /* extern C */
 #endif
 
-class MiqtVirtualQToolButton : public virtual QToolButton {
+class MiqtVirtualQToolButton final : public QToolButton {
 public:
 
 	MiqtVirtualQToolButton(QWidget* parent): QToolButton(parent) {};
 	MiqtVirtualQToolButton(): QToolButton() {};
 
-	virtual ~MiqtVirtualQToolButton() = default;
+	virtual ~MiqtVirtualQToolButton() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__SizeHint = 0;
@@ -821,11 +821,7 @@ void QToolButton_virtualbase_FocusOutEvent(void* self, QFocusEvent* e) {
 	( (MiqtVirtualQToolButton*)(self) )->virtualbase_FocusOutEvent(e);
 }
 
-void QToolButton_Delete(QToolButton* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQToolButton*>( self );
-	} else {
-		delete self;
-	}
+void QToolButton_Delete(QToolButton* self) {
+	delete self;
 }
 

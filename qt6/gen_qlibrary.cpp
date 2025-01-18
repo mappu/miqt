@@ -26,7 +26,7 @@ void miqt_exec_callback_QLibrary_DisconnectNotify(void*, intptr_t, QMetaMethod*)
 } /* extern C */
 #endif
 
-class MiqtVirtualQLibrary : public virtual QLibrary {
+class MiqtVirtualQLibrary final : public QLibrary {
 public:
 
 	MiqtVirtualQLibrary(): QLibrary() {};
@@ -38,7 +38,7 @@ public:
 	MiqtVirtualQLibrary(const QString& fileName, int verNum, QObject* parent): QLibrary(fileName, verNum, parent) {};
 	MiqtVirtualQLibrary(const QString& fileName, const QString& version, QObject* parent): QLibrary(fileName, version, parent) {};
 
-	virtual ~MiqtVirtualQLibrary() = default;
+	virtual ~MiqtVirtualQLibrary() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -418,11 +418,7 @@ void QLibrary_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQLibrary*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QLibrary_Delete(QLibrary* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQLibrary*>( self );
-	} else {
-		delete self;
-	}
+void QLibrary_Delete(QLibrary* self) {
+	delete self;
 }
 

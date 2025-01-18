@@ -75,7 +75,7 @@ void QNetworkDiskCache_override_virtual_Clear(void* self, intptr_t slot);
 void QNetworkDiskCache_virtualbase_Clear(void* self);
 void QNetworkDiskCache_override_virtual_Expire(void* self, intptr_t slot);
 long long QNetworkDiskCache_virtualbase_Expire(void* self);
-void QNetworkDiskCache_Delete(QNetworkDiskCache* self, bool isSubclass);
+void QNetworkDiskCache_Delete(QNetworkDiskCache* self);
 
 #ifdef __cplusplus
 } /* extern C */

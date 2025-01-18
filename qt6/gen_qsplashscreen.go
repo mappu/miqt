@@ -1337,7 +1337,7 @@ func miqt_exec_callback_QSplashScreen_FocusNextPrevChild(self *C.QSplashScreen, 
 
 // Delete this object from C++ memory.
 func (this *QSplashScreen) Delete() {
-	C.QSplashScreen_Delete(this.h, C.bool(this.isSubclass))
+	C.QSplashScreen_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

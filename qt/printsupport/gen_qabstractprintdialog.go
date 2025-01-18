@@ -586,7 +586,7 @@ func miqt_exec_callback_QAbstractPrintDialog_EventFilter(self *C.QAbstractPrintD
 
 // Delete this object from C++ memory.
 func (this *QAbstractPrintDialog) Delete() {
-	C.QAbstractPrintDialog_Delete(this.h, C.bool(this.isSubclass))
+	C.QAbstractPrintDialog_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

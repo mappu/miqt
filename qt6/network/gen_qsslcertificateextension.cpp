@@ -64,11 +64,7 @@ bool QSslCertificateExtension_IsSupported(const QSslCertificateExtension* self) 
 	return self->isSupported();
 }
 
-void QSslCertificateExtension_Delete(QSslCertificateExtension* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QSslCertificateExtension*>( self );
-	} else {
-		delete self;
-	}
+void QSslCertificateExtension_Delete(QSslCertificateExtension* self) {
+	delete self;
 }
 

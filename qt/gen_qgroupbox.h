@@ -201,7 +201,7 @@ void QGroupBox_override_virtual_InputMethodQuery(void* self, intptr_t slot);
 QVariant* QGroupBox_virtualbase_InputMethodQuery(const void* self, int param1);
 void QGroupBox_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QGroupBox_virtualbase_FocusNextPrevChild(void* self, bool next);
-void QGroupBox_Delete(QGroupBox* self, bool isSubclass);
+void QGroupBox_Delete(QGroupBox* self);
 
 #ifdef __cplusplus
 } /* extern C */

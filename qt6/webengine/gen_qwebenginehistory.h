@@ -49,7 +49,7 @@ QDateTime* QWebEngineHistoryItem_LastVisited(const QWebEngineHistoryItem* self);
 QUrl* QWebEngineHistoryItem_IconUrl(const QWebEngineHistoryItem* self);
 bool QWebEngineHistoryItem_IsValid(const QWebEngineHistoryItem* self);
 void QWebEngineHistoryItem_Swap(QWebEngineHistoryItem* self, QWebEngineHistoryItem* other);
-void QWebEngineHistoryItem_Delete(QWebEngineHistoryItem* self, bool isSubclass);
+void QWebEngineHistoryItem_Delete(QWebEngineHistoryItem* self);
 
 void QWebEngineHistoryModel_virtbase(QWebEngineHistoryModel* src, QAbstractListModel** outptr_QAbstractListModel);
 QMetaObject* QWebEngineHistoryModel_MetaObject(const QWebEngineHistoryModel* self);

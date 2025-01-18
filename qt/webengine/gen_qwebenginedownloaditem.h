@@ -71,7 +71,7 @@ struct miqt_string QWebEngineDownloadItem_Tr2(const char* s, const char* c);
 struct miqt_string QWebEngineDownloadItem_Tr3(const char* s, const char* c, int n);
 struct miqt_string QWebEngineDownloadItem_TrUtf82(const char* s, const char* c);
 struct miqt_string QWebEngineDownloadItem_TrUtf83(const char* s, const char* c, int n);
-void QWebEngineDownloadItem_Delete(QWebEngineDownloadItem* self, bool isSubclass);
+void QWebEngineDownloadItem_Delete(QWebEngineDownloadItem* self);
 
 #ifdef __cplusplus
 } /* extern C */

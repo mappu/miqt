@@ -373,13 +373,13 @@ QVariant* miqt_exec_callback_QGraphicsItemGroup_Extension(void*, intptr_t, QVari
 } /* extern C */
 #endif
 
-class MiqtVirtualQGraphicsItem : public virtual QGraphicsItem {
+class MiqtVirtualQGraphicsItem final : public QGraphicsItem {
 public:
 
 	MiqtVirtualQGraphicsItem(): QGraphicsItem() {};
 	MiqtVirtualQGraphicsItem(QGraphicsItem* parent): QGraphicsItem(parent) {};
 
-	virtual ~MiqtVirtualQGraphicsItem() = default;
+	virtual ~MiqtVirtualQGraphicsItem() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Advance = 0;
@@ -2256,21 +2256,17 @@ QVariant* QGraphicsItem_virtualbase_Extension(const void* self, QVariant* varian
 	return ( (const MiqtVirtualQGraphicsItem*)(self) )->virtualbase_Extension(variant);
 }
 
-void QGraphicsItem_Delete(QGraphicsItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsItem*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsItem_Delete(QGraphicsItem* self) {
+	delete self;
 }
 
-class MiqtVirtualQGraphicsObject : public virtual QGraphicsObject {
+class MiqtVirtualQGraphicsObject final : public QGraphicsObject {
 public:
 
 	MiqtVirtualQGraphicsObject(): QGraphicsObject() {};
 	MiqtVirtualQGraphicsObject(QGraphicsItem* parent): QGraphicsObject(parent) {};
 
-	virtual ~MiqtVirtualQGraphicsObject() = default;
+	virtual ~MiqtVirtualQGraphicsObject() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__Event = 0;
@@ -3789,21 +3785,17 @@ QVariant* QGraphicsObject_virtualbase_Extension(const void* self, QVariant* vari
 	return ( (const MiqtVirtualQGraphicsObject*)(self) )->virtualbase_Extension(variant);
 }
 
-void QGraphicsObject_Delete(QGraphicsObject* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsObject*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsObject_Delete(QGraphicsObject* self) {
+	delete self;
 }
 
-class MiqtVirtualQAbstractGraphicsShapeItem : public virtual QAbstractGraphicsShapeItem {
+class MiqtVirtualQAbstractGraphicsShapeItem final : public QAbstractGraphicsShapeItem {
 public:
 
 	MiqtVirtualQAbstractGraphicsShapeItem(): QAbstractGraphicsShapeItem() {};
 	MiqtVirtualQAbstractGraphicsShapeItem(QGraphicsItem* parent): QAbstractGraphicsShapeItem(parent) {};
 
-	virtual ~MiqtVirtualQAbstractGraphicsShapeItem() = default;
+	virtual ~MiqtVirtualQAbstractGraphicsShapeItem() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__IsObscuredBy = 0;
@@ -4945,15 +4937,11 @@ QVariant* QAbstractGraphicsShapeItem_virtualbase_Extension(const void* self, QVa
 	return ( (const MiqtVirtualQAbstractGraphicsShapeItem*)(self) )->virtualbase_Extension(variant);
 }
 
-void QAbstractGraphicsShapeItem_Delete(QAbstractGraphicsShapeItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQAbstractGraphicsShapeItem*>( self );
-	} else {
-		delete self;
-	}
+void QAbstractGraphicsShapeItem_Delete(QAbstractGraphicsShapeItem* self) {
+	delete self;
 }
 
-class MiqtVirtualQGraphicsPathItem : public virtual QGraphicsPathItem {
+class MiqtVirtualQGraphicsPathItem final : public QGraphicsPathItem {
 public:
 
 	MiqtVirtualQGraphicsPathItem(): QGraphicsPathItem() {};
@@ -4961,7 +4949,7 @@ public:
 	MiqtVirtualQGraphicsPathItem(QGraphicsItem* parent): QGraphicsPathItem(parent) {};
 	MiqtVirtualQGraphicsPathItem(const QPainterPath& path, QGraphicsItem* parent): QGraphicsPathItem(path, parent) {};
 
-	virtual ~MiqtVirtualQGraphicsPathItem() = default;
+	virtual ~MiqtVirtualQGraphicsPathItem() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__BoundingRect = 0;
@@ -5340,15 +5328,11 @@ QVariant* QGraphicsPathItem_virtualbase_Extension(const void* self, QVariant* va
 	return ( (const MiqtVirtualQGraphicsPathItem*)(self) )->virtualbase_Extension(variant);
 }
 
-void QGraphicsPathItem_Delete(QGraphicsPathItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsPathItem*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsPathItem_Delete(QGraphicsPathItem* self) {
+	delete self;
 }
 
-class MiqtVirtualQGraphicsRectItem : public virtual QGraphicsRectItem {
+class MiqtVirtualQGraphicsRectItem final : public QGraphicsRectItem {
 public:
 
 	MiqtVirtualQGraphicsRectItem(): QGraphicsRectItem() {};
@@ -5358,7 +5342,7 @@ public:
 	MiqtVirtualQGraphicsRectItem(const QRectF& rect, QGraphicsItem* parent): QGraphicsRectItem(rect, parent) {};
 	MiqtVirtualQGraphicsRectItem(qreal x, qreal y, qreal w, qreal h, QGraphicsItem* parent): QGraphicsRectItem(x, y, w, h, parent) {};
 
-	virtual ~MiqtVirtualQGraphicsRectItem() = default;
+	virtual ~MiqtVirtualQGraphicsRectItem() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__BoundingRect = 0;
@@ -5749,15 +5733,11 @@ QVariant* QGraphicsRectItem_virtualbase_Extension(const void* self, QVariant* va
 	return ( (const MiqtVirtualQGraphicsRectItem*)(self) )->virtualbase_Extension(variant);
 }
 
-void QGraphicsRectItem_Delete(QGraphicsRectItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsRectItem*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsRectItem_Delete(QGraphicsRectItem* self) {
+	delete self;
 }
 
-class MiqtVirtualQGraphicsEllipseItem : public virtual QGraphicsEllipseItem {
+class MiqtVirtualQGraphicsEllipseItem final : public QGraphicsEllipseItem {
 public:
 
 	MiqtVirtualQGraphicsEllipseItem(): QGraphicsEllipseItem() {};
@@ -5767,7 +5747,7 @@ public:
 	MiqtVirtualQGraphicsEllipseItem(const QRectF& rect, QGraphicsItem* parent): QGraphicsEllipseItem(rect, parent) {};
 	MiqtVirtualQGraphicsEllipseItem(qreal x, qreal y, qreal w, qreal h, QGraphicsItem* parent): QGraphicsEllipseItem(x, y, w, h, parent) {};
 
-	virtual ~MiqtVirtualQGraphicsEllipseItem() = default;
+	virtual ~MiqtVirtualQGraphicsEllipseItem() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__BoundingRect = 0;
@@ -6174,21 +6154,17 @@ QVariant* QGraphicsEllipseItem_virtualbase_Extension(const void* self, QVariant*
 	return ( (const MiqtVirtualQGraphicsEllipseItem*)(self) )->virtualbase_Extension(variant);
 }
 
-void QGraphicsEllipseItem_Delete(QGraphicsEllipseItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsEllipseItem*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsEllipseItem_Delete(QGraphicsEllipseItem* self) {
+	delete self;
 }
 
-class MiqtVirtualQGraphicsPolygonItem : public virtual QGraphicsPolygonItem {
+class MiqtVirtualQGraphicsPolygonItem final : public QGraphicsPolygonItem {
 public:
 
 	MiqtVirtualQGraphicsPolygonItem(): QGraphicsPolygonItem() {};
 	MiqtVirtualQGraphicsPolygonItem(QGraphicsItem* parent): QGraphicsPolygonItem(parent) {};
 
-	virtual ~MiqtVirtualQGraphicsPolygonItem() = default;
+	virtual ~MiqtVirtualQGraphicsPolygonItem() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__BoundingRect = 0;
@@ -6560,15 +6536,11 @@ QVariant* QGraphicsPolygonItem_virtualbase_Extension(const void* self, QVariant*
 	return ( (const MiqtVirtualQGraphicsPolygonItem*)(self) )->virtualbase_Extension(variant);
 }
 
-void QGraphicsPolygonItem_Delete(QGraphicsPolygonItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsPolygonItem*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsPolygonItem_Delete(QGraphicsPolygonItem* self) {
+	delete self;
 }
 
-class MiqtVirtualQGraphicsLineItem : public virtual QGraphicsLineItem {
+class MiqtVirtualQGraphicsLineItem final : public QGraphicsLineItem {
 public:
 
 	MiqtVirtualQGraphicsLineItem(): QGraphicsLineItem() {};
@@ -6578,7 +6550,7 @@ public:
 	MiqtVirtualQGraphicsLineItem(const QLineF& line, QGraphicsItem* parent): QGraphicsLineItem(line, parent) {};
 	MiqtVirtualQGraphicsLineItem(qreal x1, qreal y1, qreal x2, qreal y2, QGraphicsItem* parent): QGraphicsLineItem(x1, y1, x2, y2, parent) {};
 
-	virtual ~MiqtVirtualQGraphicsLineItem() = default;
+	virtual ~MiqtVirtualQGraphicsLineItem() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__BoundingRect = 0;
@@ -7783,15 +7755,11 @@ QVariant* QGraphicsLineItem_virtualbase_ItemChange(void* self, int change, QVari
 	return ( (MiqtVirtualQGraphicsLineItem*)(self) )->virtualbase_ItemChange(change, value);
 }
 
-void QGraphicsLineItem_Delete(QGraphicsLineItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsLineItem*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsLineItem_Delete(QGraphicsLineItem* self) {
+	delete self;
 }
 
-class MiqtVirtualQGraphicsPixmapItem : public virtual QGraphicsPixmapItem {
+class MiqtVirtualQGraphicsPixmapItem final : public QGraphicsPixmapItem {
 public:
 
 	MiqtVirtualQGraphicsPixmapItem(): QGraphicsPixmapItem() {};
@@ -7799,7 +7767,7 @@ public:
 	MiqtVirtualQGraphicsPixmapItem(QGraphicsItem* parent): QGraphicsPixmapItem(parent) {};
 	MiqtVirtualQGraphicsPixmapItem(const QPixmap& pixmap, QGraphicsItem* parent): QGraphicsPixmapItem(pixmap, parent) {};
 
-	virtual ~MiqtVirtualQGraphicsPixmapItem() = default;
+	virtual ~MiqtVirtualQGraphicsPixmapItem() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__BoundingRect = 0;
@@ -9014,15 +8982,11 @@ QVariant* QGraphicsPixmapItem_virtualbase_ItemChange(void* self, int change, QVa
 	return ( (MiqtVirtualQGraphicsPixmapItem*)(self) )->virtualbase_ItemChange(change, value);
 }
 
-void QGraphicsPixmapItem_Delete(QGraphicsPixmapItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsPixmapItem*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsPixmapItem_Delete(QGraphicsPixmapItem* self) {
+	delete self;
 }
 
-class MiqtVirtualQGraphicsTextItem : public virtual QGraphicsTextItem {
+class MiqtVirtualQGraphicsTextItem final : public QGraphicsTextItem {
 public:
 
 	MiqtVirtualQGraphicsTextItem(): QGraphicsTextItem() {};
@@ -9030,7 +8994,7 @@ public:
 	MiqtVirtualQGraphicsTextItem(QGraphicsItem* parent): QGraphicsTextItem(parent) {};
 	MiqtVirtualQGraphicsTextItem(const QString& text, QGraphicsItem* parent): QGraphicsTextItem(text, parent) {};
 
-	virtual ~MiqtVirtualQGraphicsTextItem() = default;
+	virtual ~MiqtVirtualQGraphicsTextItem() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__BoundingRect = 0;
@@ -10222,15 +10186,11 @@ bool QGraphicsTextItem_virtualbase_Event(void* self, QEvent* ev) {
 	return ( (MiqtVirtualQGraphicsTextItem*)(self) )->virtualbase_Event(ev);
 }
 
-void QGraphicsTextItem_Delete(QGraphicsTextItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsTextItem*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsTextItem_Delete(QGraphicsTextItem* self) {
+	delete self;
 }
 
-class MiqtVirtualQGraphicsSimpleTextItem : public virtual QGraphicsSimpleTextItem {
+class MiqtVirtualQGraphicsSimpleTextItem final : public QGraphicsSimpleTextItem {
 public:
 
 	MiqtVirtualQGraphicsSimpleTextItem(): QGraphicsSimpleTextItem() {};
@@ -10238,7 +10198,7 @@ public:
 	MiqtVirtualQGraphicsSimpleTextItem(QGraphicsItem* parent): QGraphicsSimpleTextItem(parent) {};
 	MiqtVirtualQGraphicsSimpleTextItem(const QString& text, QGraphicsItem* parent): QGraphicsSimpleTextItem(text, parent) {};
 
-	virtual ~MiqtVirtualQGraphicsSimpleTextItem() = default;
+	virtual ~MiqtVirtualQGraphicsSimpleTextItem() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__BoundingRect = 0;
@@ -10635,21 +10595,17 @@ QVariant* QGraphicsSimpleTextItem_virtualbase_Extension(const void* self, QVaria
 	return ( (const MiqtVirtualQGraphicsSimpleTextItem*)(self) )->virtualbase_Extension(variant);
 }
 
-void QGraphicsSimpleTextItem_Delete(QGraphicsSimpleTextItem* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsSimpleTextItem*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsSimpleTextItem_Delete(QGraphicsSimpleTextItem* self) {
+	delete self;
 }
 
-class MiqtVirtualQGraphicsItemGroup : public virtual QGraphicsItemGroup {
+class MiqtVirtualQGraphicsItemGroup final : public QGraphicsItemGroup {
 public:
 
 	MiqtVirtualQGraphicsItemGroup(): QGraphicsItemGroup() {};
 	MiqtVirtualQGraphicsItemGroup(QGraphicsItem* parent): QGraphicsItemGroup(parent) {};
 
-	virtual ~MiqtVirtualQGraphicsItemGroup() = default;
+	virtual ~MiqtVirtualQGraphicsItemGroup() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__BoundingRect = 0;
@@ -11818,11 +11774,7 @@ QVariant* QGraphicsItemGroup_virtualbase_Extension(const void* self, QVariant* v
 	return ( (const MiqtVirtualQGraphicsItemGroup*)(self) )->virtualbase_Extension(variant);
 }
 
-void QGraphicsItemGroup_Delete(QGraphicsItemGroup* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQGraphicsItemGroup*>( self );
-	} else {
-		delete self;
-	}
+void QGraphicsItemGroup_Delete(QGraphicsItemGroup* self) {
+	delete self;
 }
 

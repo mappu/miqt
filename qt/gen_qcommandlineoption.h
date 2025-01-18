@@ -43,7 +43,7 @@ int QCommandLineOption_Flags(const QCommandLineOption* self);
 void QCommandLineOption_SetFlags(QCommandLineOption* self, int aflags);
 void QCommandLineOption_SetHidden(QCommandLineOption* self, bool hidden);
 bool QCommandLineOption_IsHidden(const QCommandLineOption* self);
-void QCommandLineOption_Delete(QCommandLineOption* self, bool isSubclass);
+void QCommandLineOption_Delete(QCommandLineOption* self);
 
 #ifdef __cplusplus
 } /* extern C */

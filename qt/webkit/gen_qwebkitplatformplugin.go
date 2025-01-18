@@ -156,7 +156,7 @@ func (this *QWebSelectData) OperatorAssign(param1 *QWebSelectData) {
 
 // Delete this object from C++ memory.
 func (this *QWebSelectData) Delete() {
-	C.QWebSelectData_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebSelectData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -336,7 +336,7 @@ func QWebSelectMethod_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QWebSelectMethod) Delete() {
-	C.QWebSelectMethod_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebSelectMethod_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -413,7 +413,7 @@ func (this *QWebNotificationData) OperatorAssign(param1 *QWebNotificationData) {
 
 // Delete this object from C++ memory.
 func (this *QWebNotificationData) Delete() {
-	C.QWebNotificationData_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebNotificationData_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -574,7 +574,7 @@ func QWebNotificationPresenter_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QWebNotificationPresenter) Delete() {
-	C.QWebNotificationPresenter_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebNotificationPresenter_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -705,7 +705,7 @@ func QWebHapticFeedbackPlayer_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QWebHapticFeedbackPlayer) Delete() {
-	C.QWebHapticFeedbackPlayer_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebHapticFeedbackPlayer_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -832,7 +832,7 @@ func QWebTouchModifier_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QWebTouchModifier) Delete() {
-	C.QWebTouchModifier_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebTouchModifier_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1042,7 +1042,7 @@ func QWebSpellChecker_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QWebSpellChecker) Delete() {
-	C.QWebSpellChecker_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebSpellChecker_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1101,7 +1101,7 @@ func (this *QWebKitPlatformPlugin) OperatorAssign(param1 *QWebKitPlatformPlugin)
 
 // Delete this object from C++ memory.
 func (this *QWebKitPlatformPlugin) Delete() {
-	C.QWebKitPlatformPlugin_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebKitPlatformPlugin_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1160,7 +1160,7 @@ func (this *QWebSpellChecker__GrammarDetail) OperatorAssign(param1 *QWebSpellChe
 
 // Delete this object from C++ memory.
 func (this *QWebSpellChecker__GrammarDetail) Delete() {
-	C.QWebSpellChecker__GrammarDetail_Delete(this.h, C.bool(this.isSubclass))
+	C.QWebSpellChecker__GrammarDetail_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -45,7 +45,7 @@ QAbstractAudioInput* QAudioSystemFactoryInterface_CreateInput(QAudioSystemFactor
 QAbstractAudioOutput* QAudioSystemFactoryInterface_CreateOutput(QAudioSystemFactoryInterface* self, struct miqt_string device);
 QAbstractAudioDeviceInfo* QAudioSystemFactoryInterface_CreateDeviceInfo(QAudioSystemFactoryInterface* self, struct miqt_string device, int mode);
 void QAudioSystemFactoryInterface_OperatorAssign(QAudioSystemFactoryInterface* self, QAudioSystemFactoryInterface* param1);
-void QAudioSystemFactoryInterface_Delete(QAudioSystemFactoryInterface* self, bool isSubclass);
+void QAudioSystemFactoryInterface_Delete(QAudioSystemFactoryInterface* self);
 
 QAudioSystemPlugin* QAudioSystemPlugin_new();
 QAudioSystemPlugin* QAudioSystemPlugin_new2(QObject* parent);
@@ -84,7 +84,7 @@ void QAudioSystemPlugin_override_virtual_ConnectNotify(void* self, intptr_t slot
 void QAudioSystemPlugin_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 void QAudioSystemPlugin_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QAudioSystemPlugin_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QAudioSystemPlugin_Delete(QAudioSystemPlugin* self, bool isSubclass);
+void QAudioSystemPlugin_Delete(QAudioSystemPlugin* self);
 
 #ifdef __cplusplus
 } /* extern C */

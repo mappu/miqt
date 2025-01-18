@@ -68,7 +68,7 @@ func (this *QsciDocument) OperatorAssign(param1 *QsciDocument) {
 
 // Delete this object from C++ memory.
 func (this *QsciDocument) Delete() {
-	C.QsciDocument_Delete(this.h, C.bool(this.isSubclass))
+	C.QsciDocument_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

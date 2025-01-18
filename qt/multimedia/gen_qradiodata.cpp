@@ -37,13 +37,13 @@ void miqt_exec_callback_QRadioData_DisconnectNotify(void*, intptr_t, QMetaMethod
 } /* extern C */
 #endif
 
-class MiqtVirtualQRadioData : public virtual QRadioData {
+class MiqtVirtualQRadioData final : public QRadioData {
 public:
 
 	MiqtVirtualQRadioData(QMediaObject* mediaObject): QRadioData(mediaObject) {};
 	MiqtVirtualQRadioData(QMediaObject* mediaObject, QObject* parent): QRadioData(mediaObject, parent) {};
 
-	virtual ~MiqtVirtualQRadioData() = default;
+	virtual ~MiqtVirtualQRadioData() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__MediaObject = 0;
@@ -615,11 +615,7 @@ void QRadioData_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQRadioData*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
-void QRadioData_Delete(QRadioData* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQRadioData*>( self );
-	} else {
-		delete self;
-	}
+void QRadioData_Delete(QRadioData* self) {
+	delete self;
 }
 

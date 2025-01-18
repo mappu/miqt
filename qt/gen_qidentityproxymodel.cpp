@@ -62,13 +62,13 @@ int miqt_exec_callback_QIdentityProxyModel_SupportedDropActions(void*, intptr_t)
 } /* extern C */
 #endif
 
-class MiqtVirtualQIdentityProxyModel : public virtual QIdentityProxyModel {
+class MiqtVirtualQIdentityProxyModel final : public QIdentityProxyModel {
 public:
 
 	MiqtVirtualQIdentityProxyModel(): QIdentityProxyModel() {};
 	MiqtVirtualQIdentityProxyModel(QObject* parent): QIdentityProxyModel(parent) {};
 
-	virtual ~MiqtVirtualQIdentityProxyModel() = default;
+	virtual ~MiqtVirtualQIdentityProxyModel() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__ColumnCount = 0;
@@ -1630,11 +1630,7 @@ int QIdentityProxyModel_virtualbase_SupportedDropActions(const void* self) {
 	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_SupportedDropActions();
 }
 
-void QIdentityProxyModel_Delete(QIdentityProxyModel* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQIdentityProxyModel*>( self );
-	} else {
-		delete self;
-	}
+void QIdentityProxyModel_Delete(QIdentityProxyModel* self) {
+	delete self;
 }
 

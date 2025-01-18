@@ -45,7 +45,7 @@ void QEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QEvent_virtualbase_SetAccepted(void* self, bool accepted);
 void QEvent_override_virtual_Clone(void* self, intptr_t slot);
 QEvent* QEvent_virtualbase_Clone(const void* self);
-void QEvent_Delete(QEvent* self, bool isSubclass);
+void QEvent_Delete(QEvent* self);
 
 QTimerEvent* QTimerEvent_new(int timerId);
 void QTimerEvent_virtbase(QTimerEvent* src, QEvent** outptr_QEvent);
@@ -55,7 +55,7 @@ void QTimerEvent_override_virtual_Clone(void* self, intptr_t slot);
 QTimerEvent* QTimerEvent_virtualbase_Clone(const void* self);
 void QTimerEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QTimerEvent_virtualbase_SetAccepted(void* self, bool accepted);
-void QTimerEvent_Delete(QTimerEvent* self, bool isSubclass);
+void QTimerEvent_Delete(QTimerEvent* self);
 
 QChildEvent* QChildEvent_new(int typeVal, QObject* child);
 void QChildEvent_virtbase(QChildEvent* src, QEvent** outptr_QEvent);
@@ -68,7 +68,7 @@ void QChildEvent_override_virtual_Clone(void* self, intptr_t slot);
 QChildEvent* QChildEvent_virtualbase_Clone(const void* self);
 void QChildEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QChildEvent_virtualbase_SetAccepted(void* self, bool accepted);
-void QChildEvent_Delete(QChildEvent* self, bool isSubclass);
+void QChildEvent_Delete(QChildEvent* self);
 
 QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_new(struct miqt_string name);
 void QDynamicPropertyChangeEvent_virtbase(QDynamicPropertyChangeEvent* src, QEvent** outptr_QEvent);
@@ -78,7 +78,7 @@ void QDynamicPropertyChangeEvent_override_virtual_Clone(void* self, intptr_t slo
 QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_virtualbase_Clone(const void* self);
 void QDynamicPropertyChangeEvent_override_virtual_SetAccepted(void* self, intptr_t slot);
 void QDynamicPropertyChangeEvent_virtualbase_SetAccepted(void* self, bool accepted);
-void QDynamicPropertyChangeEvent_Delete(QDynamicPropertyChangeEvent* self, bool isSubclass);
+void QDynamicPropertyChangeEvent_Delete(QDynamicPropertyChangeEvent* self);
 
 #ifdef __cplusplus
 } /* extern C */

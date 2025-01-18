@@ -378,7 +378,7 @@ func (this *QMatrix4x4) Viewport6(left float32, bottom float32, width float32, h
 
 // Delete this object from C++ memory.
 func (this *QMatrix4x4) Delete() {
-	C.QMatrix4x4_Delete(this.h, C.bool(this.isSubclass))
+	C.QMatrix4x4_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

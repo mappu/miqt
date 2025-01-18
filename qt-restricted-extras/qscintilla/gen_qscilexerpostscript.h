@@ -138,7 +138,7 @@ void QsciLexerPostScript_override_virtual_ReadProperties(void* self, intptr_t sl
 bool QsciLexerPostScript_virtualbase_ReadProperties(void* self, QSettings* qs, struct miqt_string prefix);
 void QsciLexerPostScript_override_virtual_WriteProperties(void* self, intptr_t slot);
 bool QsciLexerPostScript_virtualbase_WriteProperties(const void* self, QSettings* qs, struct miqt_string prefix);
-void QsciLexerPostScript_Delete(QsciLexerPostScript* self, bool isSubclass);
+void QsciLexerPostScript_Delete(QsciLexerPostScript* self);
 
 #ifdef __cplusplus
 } /* extern C */

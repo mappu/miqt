@@ -53,11 +53,7 @@ bool QWebEngineRegisterProtocolHandlerRequest_OperatorNotEqual(const QWebEngineR
 	return (*self != *that);
 }
 
-void QWebEngineRegisterProtocolHandlerRequest_Delete(QWebEngineRegisterProtocolHandlerRequest* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QWebEngineRegisterProtocolHandlerRequest*>( self );
-	} else {
-		delete self;
-	}
+void QWebEngineRegisterProtocolHandlerRequest_Delete(QWebEngineRegisterProtocolHandlerRequest* self) {
+	delete self;
 }
 

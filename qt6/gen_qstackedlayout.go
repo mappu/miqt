@@ -795,7 +795,7 @@ func miqt_exec_callback_QStackedLayout_ChildEvent(self *C.QStackedLayout, cb C.i
 
 // Delete this object from C++ memory.
 func (this *QStackedLayout) Delete() {
-	C.QStackedLayout_Delete(this.h, C.bool(this.isSubclass))
+	C.QStackedLayout_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

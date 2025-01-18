@@ -141,7 +141,7 @@ func (this *QCameraFocusZone) SetStatus(status QCameraFocusZone__FocusZoneStatus
 
 // Delete this object from C++ memory.
 func (this *QCameraFocusZone) Delete() {
-	C.QCameraFocusZone_Delete(this.h, C.bool(this.isSubclass))
+	C.QCameraFocusZone_Delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

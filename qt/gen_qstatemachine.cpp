@@ -32,7 +32,7 @@ bool miqt_exec_callback_QStateMachine_Event(void*, intptr_t, QEvent*);
 } /* extern C */
 #endif
 
-class MiqtVirtualQStateMachine : public virtual QStateMachine {
+class MiqtVirtualQStateMachine final : public QStateMachine {
 public:
 
 	MiqtVirtualQStateMachine(): QStateMachine() {};
@@ -40,7 +40,7 @@ public:
 	MiqtVirtualQStateMachine(QObject* parent): QStateMachine(parent) {};
 	MiqtVirtualQStateMachine(QState::ChildMode childMode, QObject* parent): QStateMachine(childMode, parent) {};
 
-	virtual ~MiqtVirtualQStateMachine() = default;
+	virtual ~MiqtVirtualQStateMachine() override = default;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__EventFilter = 0;
@@ -521,12 +521,8 @@ bool QStateMachine_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQStateMachine*)(self) )->virtualbase_Event(e);
 }
 
-void QStateMachine_Delete(QStateMachine* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<MiqtVirtualQStateMachine*>( self );
-	} else {
-		delete self;
-	}
+void QStateMachine_Delete(QStateMachine* self) {
+	delete self;
 }
 
 QStateMachine__SignalEvent* QStateMachine__SignalEvent_new(QStateMachine__SignalEvent* param1) {
@@ -545,12 +541,8 @@ int QStateMachine__SignalEvent_SignalIndex(const QStateMachine__SignalEvent* sel
 	return self->signalIndex();
 }
 
-void QStateMachine__SignalEvent_Delete(QStateMachine__SignalEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QStateMachine::SignalEvent*>( self );
-	} else {
-		delete self;
-	}
+void QStateMachine__SignalEvent_Delete(QStateMachine__SignalEvent* self) {
+	delete self;
 }
 
 QStateMachine__WrappedEvent* QStateMachine__WrappedEvent_new(QObject* object, QEvent* event) {
@@ -573,11 +565,7 @@ QEvent* QStateMachine__WrappedEvent_Event(const QStateMachine__WrappedEvent* sel
 	return self->event();
 }
 
-void QStateMachine__WrappedEvent_Delete(QStateMachine__WrappedEvent* self, bool isSubclass) {
-	if (isSubclass) {
-		delete dynamic_cast<QStateMachine::WrappedEvent*>( self );
-	} else {
-		delete self;
-	}
+void QStateMachine__WrappedEvent_Delete(QStateMachine__WrappedEvent* self) {
+	delete self;
 }
 
