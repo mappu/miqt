@@ -767,7 +767,6 @@ import "C"
 		ret.WriteString(`
 		type ` + goClassName + ` struct {
 			h *C.` + goClassName + `
-			isSubclass bool
 		`)
 
 		// Embed all inherited types to directly allow calling inherited methods
@@ -886,9 +885,7 @@ import "C"
 			// Call Cgo constructor
 
 			ret.WriteString(`				
-				ret := new` + goClassName + `(C.` + goClassName + `_new` + maybeSuffix(i) + `(` + forwarding + `))
-				ret.isSubclass = true
-				return ret
+				return new` + goClassName + `(C.` + goClassName + `_new` + maybeSuffix(i) + `(` + forwarding + `))
 			}
 			
 			`)
