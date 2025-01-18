@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 2025-01-18 v0.8.0
+
+- Support FreeBSD (#68, #73, #113)
+- Support Windows x86_32 platform (#115)
+- Add `mainthread` subpackage to help running code on the main Qt thread (#76, #111, #70 with @rcalixte, #130)
+- Add support for conversion cast operators (#120)
+- Docker: Add Windows Qt 5 x86_32 container (#115), Windows Qt 6 x86_64 container (#131)
+- Examples: Add `goroutine6` examples (#70 with @rcalixte)
+- Examples: Add `modelview_color6` example (#114 by @st0pli, #120)
+- Remove unnecessary header imports in C ABI (#123 by @arnetheduck)
+- Docs: Add help section for `unsafePointer` widget comparisons to FAQ Q5
+- Generator: Improve reliability of `genbindings` (#119 by @arnetheduck)
+- Generator: Improve logging behaviour (#135 by @arnetheduck)
+- Generator: Add Makefile to regenerate bindings (#126 by @arnetheduck)
+
 ## 2024-12-16 v0.7.1
 
 - Fix an issue with methods returning Qt types having incomplete subclass information (#97, #98, #101, #110)
