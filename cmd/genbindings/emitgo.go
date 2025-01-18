@@ -1074,7 +1074,7 @@ import "C"
 			ret.WriteString(`
 			// Delete this object from C++ memory.
 			func (this *` + goClassName + `) Delete() {
-				C.` + goClassName + `_Delete(this.h, C.bool(this.isSubclass))
+				C.` + goClassName + `_Delete(this.h)
 			}
 				
 			// GoGC adds a Go Finalizer to this pointer, so that it will be deleted

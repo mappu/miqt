@@ -756,7 +756,7 @@ extern "C" {
 
 		// delete
 		if c.CanDelete {
-			ret.WriteString(fmt.Sprintf("void %s_Delete(%s* self, bool isSubclass);\n", methodPrefixName, methodPrefixName))
+			ret.WriteString(fmt.Sprintf("void %s_Delete(%s* self);\n", methodPrefixName, methodPrefixName))
 		}
 
 		ret.WriteString("\n")
@@ -865,7 +865,7 @@ extern "C" {
 
 			overriddenClassName := "MiqtVirtual" + strings.Replace(cppClassName, `::`, ``, -1)
 
-			ret.WriteString("class " + overriddenClassName + " : public virtual " + cppClassName + " {\n" +
+			ret.WriteString("class " + overriddenClassName + " final : public " + cppClassName + " {\n" +
 				"public:\n" +
 				"\n",
 			)
@@ -885,7 +885,7 @@ extern "C" {
 				)
 			} else {
 				ret.WriteString(
-					"\tvirtual ~" + overriddenClassName + "() = default;\n" +
+					"\tvirtual ~" + overriddenClassName + "() override = default;\n" +
 						"\n",
 				)
 			}
@@ -1217,14 +1217,12 @@ extern "C" {
 		}
 
 		// Delete
+		// If we subclassed, our class destructor is always virtual. Therefore
+		// we can delete from the self ptr without any dynamic_cast<>
 		if c.CanDelete {
 			ret.WriteString(
-				"void " + methodPrefixName + "_Delete(" + methodPrefixName + "* self, bool isSubclass) {\n" +
-					"\tif (isSubclass) {\n" +
-					"\t\tdelete dynamic_cast<" + cppClassName + "*>( self );\n" +
-					"\t} else {\n" +
-					"\t\tdelete self;\n" +
-					"\t}\n" +
+				"void " + methodPrefixName + "_Delete(" + methodPrefixName + "* self) {\n" +
+					"\tdelete self;\n" +
 					"}\n" +
 					"\n",
 			)
