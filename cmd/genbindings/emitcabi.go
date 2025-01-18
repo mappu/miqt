@@ -749,7 +749,7 @@ extern "C" {
 		}
 
 		for _, m := range c.VirtualMethods() {
-			ret.WriteString(fmt.Sprintf("void %s_override_virtual_%s(%s* self, intptr_t slot);\n", methodPrefixName, m.SafeMethodName(), "void" /*methodPrefixName*/))
+			ret.WriteString(fmt.Sprintf("bool %s_override_virtual_%s(%s* self, intptr_t slot);\n", methodPrefixName, m.SafeMethodName(), "void" /*methodPrefixName*/))
 
 			ret.WriteString(fmt.Sprintf("%s %s_virtualbase_%s(%s);\n", m.ReturnType.RenderTypeCabi(), methodPrefixName, m.SafeMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+"void" /*methodPrefixName*/ +"*")))
 		}
@@ -1178,8 +1178,14 @@ extern "C" {
 			// upclass it
 
 			ret.WriteString(
-				`void ` + methodPrefixName + `_override_virtual_` + m.SafeMethodName() + `(void* self, intptr_t slot) {` + "\n" +
-					"\tdynamic_cast<" + cppClassName + "*>( (" + cabiClassName(c.ClassName) + "*)(self) )->handle__" + m.SafeMethodName() + " = slot;\n" +
+				`bool ` + methodPrefixName + `_override_virtual_` + m.SafeMethodName() + `(void* self, intptr_t slot) {` + "\n" +
+					"\t" + cppClassName + "* self_cast = dynamic_cast<" + cppClassName + "*>( (" + cabiClassName(c.ClassName) + "*)(self) );\n" +
+					"\tif (self_cast == nullptr) {\n" +
+					"\t\treturn false;\n" +
+					"\t}\n" +
+					"\t\n" +
+					"\tself_cast->handle__" + m.SafeMethodName() + " = slot;\n" +
+					"\treturn true;\n" +
 					"}\n" +
 					"\n",
 			)
