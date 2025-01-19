@@ -449,6 +449,10 @@ func (c *CppClass) VirtualMethods() []CppMethod {
 		retNames[m.CppCallTarget()] = struct{}{}
 	}
 
+	for _, privMethod := range c.PrivateMethods {
+		block[privMethod] = struct{}{}
+	}
+
 	// Go will automatically allow virtual overrides for the base type because
 	// the parent struct is nested, but the resulting functions will not work
 	// because the C ABI dynamic_cast<> will fail for the base type.
@@ -498,7 +502,7 @@ func (c *CppClass) VirtualMethods() []CppMethod {
 
 		// Append this parent's private-virtuals to blocklist so that we
 		// do not consider them for grandparent classes
-		for _, privMethod := range c.PrivateMethods {
+		for _, privMethod := range cinfo.Class.PrivateMethods {
 			block[privMethod] = struct{}{}
 		}
 	}
