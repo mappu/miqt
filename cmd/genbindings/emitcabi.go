@@ -608,9 +608,9 @@ func getReferencedTypes(src *CppParsedHeader) []string {
 			}
 			maybeAddType(vm.ReturnType)
 		}
-		for _, cn := range c.AllInherits() {
+		for _, cn := range c.AllInheritsClassInfo() {
 			maybeAddType(CppParameter{
-				ParameterType: cn,
+				ParameterType: cn.Class.ClassName,
 			})
 		}
 	}

@@ -505,17 +505,17 @@ func (c *CppClass) VirtualMethods() []CppMethod {
 	return ret
 }
 
-// AllInherits recursively finds and lists all the parent classes of this class.
-func (c *CppClass) AllInherits() []string {
-	var ret []string
+// AllInheritsClassInfo recursively finds and lists all the parent classes of this class.
+func (c *CppClass) AllInheritsClassInfo() []lookupResultClass {
+	var ret []lookupResultClass
 
 	// FIXME prevent duplicates arising from diamond inheritance
 
 	for _, baseClassInfo := range c.DirectInheritClassInfo() {
 
-		ret = append(ret, baseClassInfo.Class.ClassName)
+		ret = append(ret, baseClassInfo)
 
-		recurseInfo := baseClassInfo.Class.AllInherits()
+		recurseInfo := baseClassInfo.Class.AllInheritsClassInfo()
 		for _, childClass := range recurseInfo {
 			ret = append(ret, childClass)
 		}
@@ -528,7 +528,7 @@ func (c *CppClass) AllInherits() []string {
 func (c *CppClass) DirectInheritClassInfo() []lookupResultClass {
 	var ret []lookupResultClass
 
-	for _, inh := range c.DirectInherits { // AllInherits() {
+	for _, inh := range c.DirectInherits {
 		cinfo, ok := KnownClassnames[inh]
 		if !ok {
 			if strings.HasPrefix(inh, `QList<`) {
