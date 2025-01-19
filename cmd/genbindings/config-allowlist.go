@@ -195,6 +195,15 @@ func AllowSignal(mm CppMethod) bool {
 	}
 }
 
+func AllowInheritedParent(className string) bool {
+	// QItemSelection extends a QList<>, but we omit that from the inheritance hierarchy
+	if strings.HasPrefix(className, `QList<`) {
+		return false
+	}
+
+	return true
+}
+
 func AllowVirtual(mm CppMethod) bool {
 
 	if mm.MethodName == "metaObject" || mm.MethodName == "qt_metacast" {

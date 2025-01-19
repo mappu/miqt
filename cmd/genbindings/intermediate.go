@@ -532,9 +532,8 @@ func (c *CppClass) DirectInheritClassInfo() []lookupResultClass {
 	for _, inh := range c.DirectInherits {
 		cinfo, ok := KnownClassnames[inh]
 		if !ok {
-			if strings.HasPrefix(inh, `QList<`) {
+			if !AllowInheritedParent(inh) {
 				// OK, allow this one to slip through
-				// e.g. QItemSelection extends a QList<>
 				continue
 			} else {
 				panic("Class " + c.ClassName + " inherits from unknown class " + inh)
