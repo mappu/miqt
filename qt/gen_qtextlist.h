@@ -15,6 +15,9 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QChildEvent;
+class QEvent;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QTextBlock;
@@ -23,7 +26,11 @@ class QTextDocument;
 class QTextList;
 class QTextListFormat;
 class QTextObject;
+class QTimerEvent;
 #else
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QTextBlock QTextBlock;
@@ -32,6 +39,7 @@ typedef struct QTextDocument QTextDocument;
 typedef struct QTextList QTextList;
 typedef struct QTextListFormat QTextListFormat;
 typedef struct QTextObject QTextObject;
+typedef struct QTimerEvent QTimerEvent;
 #endif
 
 QTextList* QTextList_new(QTextDocument* doc);
@@ -60,6 +68,20 @@ bool QTextList_override_virtual_BlockRemoved(void* self, intptr_t slot);
 void QTextList_virtualbase_BlockRemoved(void* self, QTextBlock* block);
 bool QTextList_override_virtual_BlockFormatChanged(void* self, intptr_t slot);
 void QTextList_virtualbase_BlockFormatChanged(void* self, QTextBlock* block);
+bool QTextList_override_virtual_Event(void* self, intptr_t slot);
+bool QTextList_virtualbase_Event(void* self, QEvent* event);
+bool QTextList_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QTextList_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QTextList_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QTextList_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QTextList_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QTextList_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QTextList_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QTextList_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QTextList_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QTextList_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QTextList_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QTextList_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QTextList_Delete(QTextList* self);
 
 #ifdef __cplusplus

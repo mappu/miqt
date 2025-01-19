@@ -1,5 +1,6 @@
 #include <QActionEvent>
 #include <QByteArray>
+#include <QChildEvent>
 #include <QCloseEvent>
 #include <QContextMenuEvent>
 #include <QDragEnterEvent>
@@ -11,6 +12,7 @@
 #include <QHideEvent>
 #include <QInputMethodEvent>
 #include <QKeyEvent>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QMouseEvent>
 #include <QMoveEvent>
@@ -28,6 +30,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QTabletEvent>
+#include <QTimerEvent>
 #include <QVariant>
 #include <QWheelEvent>
 #include <QWidget>
@@ -80,6 +83,12 @@ QPainter* miqt_exec_callback_QStatusBar_SharedPainter(void*, intptr_t);
 void miqt_exec_callback_QStatusBar_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
 QVariant* miqt_exec_callback_QStatusBar_InputMethodQuery(void*, intptr_t, int);
 bool miqt_exec_callback_QStatusBar_FocusNextPrevChild(void*, intptr_t, bool);
+bool miqt_exec_callback_QStatusBar_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QStatusBar_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QStatusBar_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QStatusBar_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QStatusBar_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QStatusBar_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1067,6 +1076,154 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QStatusBar::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QStatusBar_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QStatusBar::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QStatusBar::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QStatusBar_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QStatusBar::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QStatusBar::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QStatusBar_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QStatusBar::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QStatusBar::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QStatusBar_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QStatusBar::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QStatusBar::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QStatusBar_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QStatusBar::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QStatusBar::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QStatusBar_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QStatusBar::disconnectNotify(*signal);
+
+	}
+
 };
 
 QStatusBar* QStatusBar_new(QWidget* parent) {
@@ -1815,6 +1972,90 @@ bool QStatusBar_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
 
 bool QStatusBar_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQStatusBar*)(self) )->virtualbase_FocusNextPrevChild(next);
+}
+
+bool QStatusBar_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
+}
+
+bool QStatusBar_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQStatusBar*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+bool QStatusBar_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QStatusBar_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QStatusBar_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QStatusBar_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QStatusBar_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QStatusBar_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QStatusBar_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QStatusBar_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QStatusBar_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQStatusBar* self_cast = dynamic_cast<MiqtVirtualQStatusBar*>( (QStatusBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QStatusBar_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQStatusBar*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
 void QStatusBar_Delete(QStatusBar* self) {

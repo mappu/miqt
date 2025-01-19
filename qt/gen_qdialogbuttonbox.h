@@ -17,6 +17,7 @@ extern "C" {
 #ifdef __cplusplus
 class QAbstractButton;
 class QActionEvent;
+class QChildEvent;
 class QCloseEvent;
 class QContextMenuEvent;
 class QDialogButtonBox;
@@ -29,6 +30,7 @@ class QFocusEvent;
 class QHideEvent;
 class QInputMethodEvent;
 class QKeyEvent;
+class QMetaMethod;
 class QMetaObject;
 class QMouseEvent;
 class QMoveEvent;
@@ -43,12 +45,14 @@ class QResizeEvent;
 class QShowEvent;
 class QSize;
 class QTabletEvent;
+class QTimerEvent;
 class QVariant;
 class QWheelEvent;
 class QWidget;
 #else
 typedef struct QAbstractButton QAbstractButton;
 typedef struct QActionEvent QActionEvent;
+typedef struct QChildEvent QChildEvent;
 typedef struct QCloseEvent QCloseEvent;
 typedef struct QContextMenuEvent QContextMenuEvent;
 typedef struct QDialogButtonBox QDialogButtonBox;
@@ -61,6 +65,7 @@ typedef struct QFocusEvent QFocusEvent;
 typedef struct QHideEvent QHideEvent;
 typedef struct QInputMethodEvent QInputMethodEvent;
 typedef struct QKeyEvent QKeyEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMouseEvent QMouseEvent;
 typedef struct QMoveEvent QMoveEvent;
@@ -75,6 +80,7 @@ typedef struct QResizeEvent QResizeEvent;
 typedef struct QShowEvent QShowEvent;
 typedef struct QSize QSize;
 typedef struct QTabletEvent QTabletEvent;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
@@ -204,6 +210,18 @@ bool QDialogButtonBox_override_virtual_InputMethodQuery(void* self, intptr_t slo
 QVariant* QDialogButtonBox_virtualbase_InputMethodQuery(const void* self, int param1);
 bool QDialogButtonBox_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QDialogButtonBox_virtualbase_FocusNextPrevChild(void* self, bool next);
+bool QDialogButtonBox_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QDialogButtonBox_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QDialogButtonBox_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QDialogButtonBox_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QDialogButtonBox_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QDialogButtonBox_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QDialogButtonBox_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QDialogButtonBox_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QDialogButtonBox_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QDialogButtonBox_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QDialogButtonBox_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QDialogButtonBox_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QDialogButtonBox_Delete(QDialogButtonBox* self);
 
 #ifdef __cplusplus

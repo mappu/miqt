@@ -1590,6 +1590,136 @@ func miqt_exec_callback_QCalendarWidget_FocusNextPrevChild(self *C.QCalendarWidg
 
 }
 
+func (this *QCalendarWidget) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QCalendarWidget_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QCalendarWidget) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QCalendarWidget_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QCalendarWidget_TimerEvent
+func miqt_exec_callback_QCalendarWidget_TimerEvent(self *C.QCalendarWidget, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQTimerEvent(event)
+
+	gofunc((&QCalendarWidget{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QCalendarWidget) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QCalendarWidget_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QCalendarWidget) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QCalendarWidget_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QCalendarWidget_ChildEvent
+func miqt_exec_callback_QCalendarWidget_ChildEvent(self *C.QCalendarWidget, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQChildEvent(event)
+
+	gofunc((&QCalendarWidget{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QCalendarWidget) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QCalendarWidget_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QCalendarWidget) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QCalendarWidget_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QCalendarWidget_CustomEvent
+func miqt_exec_callback_QCalendarWidget_CustomEvent(self *C.QCalendarWidget, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	gofunc((&QCalendarWidget{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QCalendarWidget) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QCalendarWidget_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QCalendarWidget) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QCalendarWidget_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QCalendarWidget_ConnectNotify
+func miqt_exec_callback_QCalendarWidget_ConnectNotify(self *C.QCalendarWidget, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QCalendarWidget{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QCalendarWidget) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QCalendarWidget_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QCalendarWidget) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QCalendarWidget_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QCalendarWidget_DisconnectNotify
+func miqt_exec_callback_QCalendarWidget_DisconnectNotify(self *C.QCalendarWidget, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QCalendarWidget{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QCalendarWidget) Delete() {
 	C.QCalendarWidget_Delete(this.h)

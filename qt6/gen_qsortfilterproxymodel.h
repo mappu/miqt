@@ -17,26 +17,36 @@ extern "C" {
 #ifdef __cplusplus
 class QAbstractItemModel;
 class QAbstractProxyModel;
+class QChildEvent;
+class QEvent;
 class QItemSelection;
+class QMetaMethod;
 class QMetaObject;
 class QMimeData;
 class QModelIndex;
+class QModelRoleDataSpan;
 class QObject;
 class QRegularExpression;
 class QSize;
 class QSortFilterProxyModel;
+class QTimerEvent;
 class QVariant;
 #else
 typedef struct QAbstractItemModel QAbstractItemModel;
 typedef struct QAbstractProxyModel QAbstractProxyModel;
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QItemSelection QItemSelection;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMimeData QMimeData;
 typedef struct QModelIndex QModelIndex;
+typedef struct QModelRoleDataSpan QModelRoleDataSpan;
 typedef struct QObject QObject;
 typedef struct QRegularExpression QRegularExpression;
 typedef struct QSize QSize;
 typedef struct QSortFilterProxyModel QSortFilterProxyModel;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 #endif
 
@@ -205,6 +215,28 @@ bool QSortFilterProxyModel_override_virtual_SupportedDragActions(void* self, int
 int QSortFilterProxyModel_virtualbase_SupportedDragActions(const void* self);
 bool QSortFilterProxyModel_override_virtual_RoleNames(void* self, intptr_t slot);
 struct miqt_map /* of int to struct miqt_string */  QSortFilterProxyModel_virtualbase_RoleNames(const void* self);
+bool QSortFilterProxyModel_override_virtual_MoveRows(void* self, intptr_t slot);
+bool QSortFilterProxyModel_virtualbase_MoveRows(void* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild);
+bool QSortFilterProxyModel_override_virtual_MoveColumns(void* self, intptr_t slot);
+bool QSortFilterProxyModel_virtualbase_MoveColumns(void* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild);
+bool QSortFilterProxyModel_override_virtual_MultiData(void* self, intptr_t slot);
+void QSortFilterProxyModel_virtualbase_MultiData(const void* self, QModelIndex* index, QModelRoleDataSpan* roleDataSpan);
+bool QSortFilterProxyModel_override_virtual_ResetInternalData(void* self, intptr_t slot);
+void QSortFilterProxyModel_virtualbase_ResetInternalData(void* self);
+bool QSortFilterProxyModel_override_virtual_Event(void* self, intptr_t slot);
+bool QSortFilterProxyModel_virtualbase_Event(void* self, QEvent* event);
+bool QSortFilterProxyModel_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QSortFilterProxyModel_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QSortFilterProxyModel_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QSortFilterProxyModel_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QSortFilterProxyModel_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QSortFilterProxyModel_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QSortFilterProxyModel_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QSortFilterProxyModel_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QSortFilterProxyModel_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QSortFilterProxyModel_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QSortFilterProxyModel_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QSortFilterProxyModel_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QSortFilterProxyModel_Delete(QSortFilterProxyModel* self);
 
 #ifdef __cplusplus

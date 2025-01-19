@@ -1,15 +1,19 @@
 #include <QChildEvent>
+#include <QEvent>
 #include <QFormLayout>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QFormLayout__TakeRowResult
 #include <QLayout>
 #include <QLayoutItem>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QRect>
 #include <QSize>
+#include <QSpacerItem>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QTimerEvent>
 #include <QWidget>
 #include <qformlayout.h>
 #include "gen_qformlayout.h"
@@ -39,6 +43,15 @@ int miqt_exec_callback_QFormLayout_ControlTypes(void*, intptr_t);
 QLayoutItem* miqt_exec_callback_QFormLayout_ReplaceWidget(void*, intptr_t, QWidget*, QWidget*, int);
 QLayout* miqt_exec_callback_QFormLayout_Layout(void*, intptr_t);
 void miqt_exec_callback_QFormLayout_ChildEvent(void*, intptr_t, QChildEvent*);
+bool miqt_exec_callback_QFormLayout_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QFormLayout_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QFormLayout_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QFormLayout_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QFormLayout_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QFormLayout_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+int miqt_exec_callback_QFormLayout_MinimumHeightForWidth(void*, intptr_t, int);
+QWidget* miqt_exec_callback_QFormLayout_Widget(void*, intptr_t);
+QSpacerItem* miqt_exec_callback_QFormLayout_SpacerItem(void*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -531,6 +544,220 @@ public:
 	void virtualbase_ChildEvent(QChildEvent* e) {
 
 		QFormLayout::childEvent(e);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QFormLayout::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QFormLayout_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QFormLayout::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QFormLayout::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QFormLayout_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QFormLayout::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QFormLayout::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QFormLayout_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QFormLayout::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QFormLayout::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QFormLayout_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QFormLayout::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QFormLayout::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QFormLayout_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QFormLayout::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QFormLayout::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QFormLayout_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QFormLayout::disconnectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MinimumHeightForWidth = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int minimumHeightForWidth(int param1) const override {
+		if (handle__MinimumHeightForWidth == 0) {
+			return QFormLayout::minimumHeightForWidth(param1);
+		}
+		
+		int sigval1 = param1;
+
+		int callback_return_value = miqt_exec_callback_QFormLayout_MinimumHeightForWidth(const_cast<MiqtVirtualQFormLayout*>(this), handle__MinimumHeightForWidth, sigval1);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_MinimumHeightForWidth(int param1) const {
+
+		return QFormLayout::minimumHeightForWidth(static_cast<int>(param1));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Widget = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QWidget* widget() const override {
+		if (handle__Widget == 0) {
+			return QFormLayout::widget();
+		}
+		
+
+		QWidget* callback_return_value = miqt_exec_callback_QFormLayout_Widget(const_cast<MiqtVirtualQFormLayout*>(this), handle__Widget);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QWidget* virtualbase_Widget() const {
+
+		return QFormLayout::widget();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SpacerItem = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QSpacerItem* spacerItem() override {
+		if (handle__SpacerItem == 0) {
+			return QFormLayout::spacerItem();
+		}
+		
+
+		QSpacerItem* callback_return_value = miqt_exec_callback_QFormLayout_SpacerItem(this, handle__SpacerItem);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QSpacerItem* virtualbase_SpacerItem() {
+
+		return QFormLayout::spacerItem();
 
 	}
 
@@ -1114,6 +1341,132 @@ bool QFormLayout_override_virtual_ChildEvent(void* self, intptr_t slot) {
 
 void QFormLayout_virtualbase_ChildEvent(void* self, QChildEvent* e) {
 	( (MiqtVirtualQFormLayout*)(self) )->virtualbase_ChildEvent(e);
+}
+
+bool QFormLayout_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQFormLayout* self_cast = dynamic_cast<MiqtVirtualQFormLayout*>( (QFormLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
+}
+
+bool QFormLayout_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQFormLayout*)(self) )->virtualbase_Event(event);
+}
+
+bool QFormLayout_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQFormLayout* self_cast = dynamic_cast<MiqtVirtualQFormLayout*>( (QFormLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
+}
+
+bool QFormLayout_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQFormLayout*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+bool QFormLayout_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFormLayout* self_cast = dynamic_cast<MiqtVirtualQFormLayout*>( (QFormLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QFormLayout_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQFormLayout*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QFormLayout_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQFormLayout* self_cast = dynamic_cast<MiqtVirtualQFormLayout*>( (QFormLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QFormLayout_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQFormLayout*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QFormLayout_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQFormLayout* self_cast = dynamic_cast<MiqtVirtualQFormLayout*>( (QFormLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QFormLayout_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQFormLayout*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QFormLayout_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQFormLayout* self_cast = dynamic_cast<MiqtVirtualQFormLayout*>( (QFormLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QFormLayout_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQFormLayout*)(self) )->virtualbase_DisconnectNotify(signal);
+}
+
+bool QFormLayout_override_virtual_MinimumHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQFormLayout* self_cast = dynamic_cast<MiqtVirtualQFormLayout*>( (QFormLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumHeightForWidth = slot;
+	return true;
+}
+
+int QFormLayout_virtualbase_MinimumHeightForWidth(const void* self, int param1) {
+	return ( (const MiqtVirtualQFormLayout*)(self) )->virtualbase_MinimumHeightForWidth(param1);
+}
+
+bool QFormLayout_override_virtual_Widget(void* self, intptr_t slot) {
+	MiqtVirtualQFormLayout* self_cast = dynamic_cast<MiqtVirtualQFormLayout*>( (QFormLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Widget = slot;
+	return true;
+}
+
+QWidget* QFormLayout_virtualbase_Widget(const void* self) {
+	return ( (const MiqtVirtualQFormLayout*)(self) )->virtualbase_Widget();
+}
+
+bool QFormLayout_override_virtual_SpacerItem(void* self, intptr_t slot) {
+	MiqtVirtualQFormLayout* self_cast = dynamic_cast<MiqtVirtualQFormLayout*>( (QFormLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SpacerItem = slot;
+	return true;
+}
+
+QSpacerItem* QFormLayout_virtualbase_SpacerItem(void* self) {
+	return ( (MiqtVirtualQFormLayout*)(self) )->virtualbase_SpacerItem();
 }
 
 void QFormLayout_Delete(QFormLayout* self) {

@@ -15,6 +15,9 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QChildEvent;
+class QEvent;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QSslConfiguration;
@@ -24,7 +27,11 @@ class QSslServer;
 class QSslSocket;
 class QTcpServer;
 class QTcpSocket;
+class QTimerEvent;
 #else
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QSslConfiguration QSslConfiguration;
@@ -34,6 +41,7 @@ typedef struct QSslServer QSslServer;
 typedef struct QSslSocket QSslSocket;
 typedef struct QTcpServer QTcpServer;
 typedef struct QTcpSocket QTcpSocket;
+typedef struct QTimerEvent QTimerEvent;
 #endif
 
 QSslServer* QSslServer_new();
@@ -71,6 +79,20 @@ bool QSslServer_override_virtual_HasPendingConnections(void* self, intptr_t slot
 bool QSslServer_virtualbase_HasPendingConnections(const void* self);
 bool QSslServer_override_virtual_NextPendingConnection(void* self, intptr_t slot);
 QTcpSocket* QSslServer_virtualbase_NextPendingConnection(void* self);
+bool QSslServer_override_virtual_Event(void* self, intptr_t slot);
+bool QSslServer_virtualbase_Event(void* self, QEvent* event);
+bool QSslServer_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QSslServer_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QSslServer_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QSslServer_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QSslServer_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QSslServer_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QSslServer_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QSslServer_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QSslServer_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QSslServer_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QSslServer_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QSslServer_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QSslServer_Delete(QSslServer* self);
 
 #ifdef __cplusplus

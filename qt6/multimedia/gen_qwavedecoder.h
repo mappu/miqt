@@ -16,17 +16,25 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAudioFormat;
+class QChildEvent;
+class QEvent;
 class QIODevice;
 class QIODeviceBase;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
+class QTimerEvent;
 class QWaveDecoder;
 #else
 typedef struct QAudioFormat QAudioFormat;
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QIODevice QIODevice;
 typedef struct QIODeviceBase QIODeviceBase;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QWaveDecoder QWaveDecoder;
 #endif
 
@@ -85,6 +93,20 @@ bool QWaveDecoder_override_virtual_ReadLineData(void* self, intptr_t slot);
 long long QWaveDecoder_virtualbase_ReadLineData(void* self, char* data, long long maxlen);
 bool QWaveDecoder_override_virtual_SkipData(void* self, intptr_t slot);
 long long QWaveDecoder_virtualbase_SkipData(void* self, long long maxSize);
+bool QWaveDecoder_override_virtual_Event(void* self, intptr_t slot);
+bool QWaveDecoder_virtualbase_Event(void* self, QEvent* event);
+bool QWaveDecoder_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QWaveDecoder_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QWaveDecoder_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QWaveDecoder_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QWaveDecoder_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QWaveDecoder_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QWaveDecoder_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QWaveDecoder_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QWaveDecoder_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QWaveDecoder_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QWaveDecoder_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QWaveDecoder_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QWaveDecoder_Delete(QWaveDecoder* self);
 
 #ifdef __cplusplus

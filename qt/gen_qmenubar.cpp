@@ -1,6 +1,7 @@
 #include <QAction>
 #include <QActionEvent>
 #include <QByteArray>
+#include <QChildEvent>
 #include <QCloseEvent>
 #include <QContextMenuEvent>
 #include <QDragEnterEvent>
@@ -15,6 +16,7 @@
 #include <QKeyEvent>
 #include <QMenu>
 #include <QMenuBar>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QMouseEvent>
 #include <QMoveEvent>
@@ -88,6 +90,10 @@ QPainter* miqt_exec_callback_QMenuBar_SharedPainter(void*, intptr_t);
 void miqt_exec_callback_QMenuBar_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
 QVariant* miqt_exec_callback_QMenuBar_InputMethodQuery(void*, intptr_t, int);
 bool miqt_exec_callback_QMenuBar_FocusNextPrevChild(void*, intptr_t, bool);
+void miqt_exec_callback_QMenuBar_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QMenuBar_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QMenuBar_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QMenuBar_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1123,6 +1129,106 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QMenuBar::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QMenuBar_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QMenuBar::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QMenuBar::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QMenuBar_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QMenuBar::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QMenuBar::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QMenuBar_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QMenuBar::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QMenuBar::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QMenuBar_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QMenuBar::disconnectNotify(*signal);
+
+	}
+
 };
 
 QMenuBar* QMenuBar_new(QWidget* parent) {
@@ -1932,6 +2038,62 @@ bool QMenuBar_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
 
 bool QMenuBar_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQMenuBar*)(self) )->virtualbase_FocusNextPrevChild(next);
+}
+
+bool QMenuBar_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMenuBar* self_cast = dynamic_cast<MiqtVirtualQMenuBar*>( (QMenuBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QMenuBar_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QMenuBar_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMenuBar* self_cast = dynamic_cast<MiqtVirtualQMenuBar*>( (QMenuBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QMenuBar_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QMenuBar_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQMenuBar* self_cast = dynamic_cast<MiqtVirtualQMenuBar*>( (QMenuBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QMenuBar_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QMenuBar_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQMenuBar* self_cast = dynamic_cast<MiqtVirtualQMenuBar*>( (QMenuBar*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QMenuBar_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
 void QMenuBar_Delete(QMenuBar* self) {

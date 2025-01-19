@@ -16,16 +16,22 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAbstractAnimation;
+class QChildEvent;
 class QEvent;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QPauseAnimation;
+class QTimerEvent;
 #else
 typedef struct QAbstractAnimation QAbstractAnimation;
+typedef struct QChildEvent QChildEvent;
 typedef struct QEvent QEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QPauseAnimation QPauseAnimation;
+typedef struct QTimerEvent QTimerEvent;
 #endif
 
 QPauseAnimation* QPauseAnimation_new();
@@ -55,6 +61,18 @@ bool QPauseAnimation_override_virtual_UpdateState(void* self, intptr_t slot);
 void QPauseAnimation_virtualbase_UpdateState(void* self, int newState, int oldState);
 bool QPauseAnimation_override_virtual_UpdateDirection(void* self, intptr_t slot);
 void QPauseAnimation_virtualbase_UpdateDirection(void* self, int direction);
+bool QPauseAnimation_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QPauseAnimation_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QPauseAnimation_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QPauseAnimation_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QPauseAnimation_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QPauseAnimation_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QPauseAnimation_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QPauseAnimation_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QPauseAnimation_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QPauseAnimation_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QPauseAnimation_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QPauseAnimation_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QPauseAnimation_Delete(QPauseAnimation* self);
 
 #ifdef __cplusplus

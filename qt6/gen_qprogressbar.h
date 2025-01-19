@@ -16,6 +16,7 @@ extern "C" {
 
 #ifdef __cplusplus
 class QActionEvent;
+class QChildEvent;
 class QCloseEvent;
 class QContextMenuEvent;
 class QDragEnterEvent;
@@ -28,6 +29,7 @@ class QFocusEvent;
 class QHideEvent;
 class QInputMethodEvent;
 class QKeyEvent;
+class QMetaMethod;
 class QMetaObject;
 class QMouseEvent;
 class QMoveEvent;
@@ -43,11 +45,13 @@ class QShowEvent;
 class QSize;
 class QStyleOptionProgressBar;
 class QTabletEvent;
+class QTimerEvent;
 class QVariant;
 class QWheelEvent;
 class QWidget;
 #else
 typedef struct QActionEvent QActionEvent;
+typedef struct QChildEvent QChildEvent;
 typedef struct QCloseEvent QCloseEvent;
 typedef struct QContextMenuEvent QContextMenuEvent;
 typedef struct QDragEnterEvent QDragEnterEvent;
@@ -60,6 +64,7 @@ typedef struct QFocusEvent QFocusEvent;
 typedef struct QHideEvent QHideEvent;
 typedef struct QInputMethodEvent QInputMethodEvent;
 typedef struct QKeyEvent QKeyEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMouseEvent QMouseEvent;
 typedef struct QMoveEvent QMoveEvent;
@@ -75,6 +80,7 @@ typedef struct QShowEvent QShowEvent;
 typedef struct QSize QSize;
 typedef struct QStyleOptionProgressBar QStyleOptionProgressBar;
 typedef struct QTabletEvent QTabletEvent;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
@@ -203,6 +209,18 @@ bool QProgressBar_override_virtual_InputMethodQuery(void* self, intptr_t slot);
 QVariant* QProgressBar_virtualbase_InputMethodQuery(const void* self, int param1);
 bool QProgressBar_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QProgressBar_virtualbase_FocusNextPrevChild(void* self, bool next);
+bool QProgressBar_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QProgressBar_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QProgressBar_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QProgressBar_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QProgressBar_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QProgressBar_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QProgressBar_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QProgressBar_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QProgressBar_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QProgressBar_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QProgressBar_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QProgressBar_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QProgressBar_Delete(QProgressBar* self);
 
 #ifdef __cplusplus

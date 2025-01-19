@@ -16,10 +16,12 @@ extern "C" {
 
 #ifdef __cplusplus
 class QApplication;
+class QChildEvent;
 class QCommonStyle;
 class QEvent;
 class QFontMetrics;
 class QIcon;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QPainter;
@@ -33,13 +35,16 @@ class QStyle;
 class QStyleHintReturn;
 class QStyleOption;
 class QStyleOptionComplex;
+class QTimerEvent;
 class QWidget;
 #else
 typedef struct QApplication QApplication;
+typedef struct QChildEvent QChildEvent;
 typedef struct QCommonStyle QCommonStyle;
 typedef struct QEvent QEvent;
 typedef struct QFontMetrics QFontMetrics;
 typedef struct QIcon QIcon;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QPainter QPainter;
@@ -53,6 +58,7 @@ typedef struct QStyle QStyle;
 typedef struct QStyleHintReturn QStyleHintReturn;
 typedef struct QStyleOption QStyleOption;
 typedef struct QStyleOptionComplex QStyleOptionComplex;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QWidget QWidget;
 #endif
 
@@ -139,6 +145,18 @@ bool QProxyStyle_override_virtual_UnpolishWithApp(void* self, intptr_t slot);
 void QProxyStyle_virtualbase_UnpolishWithApp(void* self, QApplication* app);
 bool QProxyStyle_override_virtual_Event(void* self, intptr_t slot);
 bool QProxyStyle_virtualbase_Event(void* self, QEvent* e);
+bool QProxyStyle_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QProxyStyle_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QProxyStyle_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QProxyStyle_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QProxyStyle_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QProxyStyle_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QProxyStyle_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QProxyStyle_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QProxyStyle_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QProxyStyle_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QProxyStyle_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QProxyStyle_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QProxyStyle_Delete(QProxyStyle* self);
 
 #ifdef __cplusplus

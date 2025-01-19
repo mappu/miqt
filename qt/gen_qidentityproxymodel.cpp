@@ -1,9 +1,13 @@
 #include <QAbstractItemModel>
 #include <QAbstractProxyModel>
+#include <QByteArray>
+#include <QChildEvent>
+#include <QEvent>
 #include <QIdentityProxyModel>
 #include <QItemSelection>
 #include <QList>
 #include <QMap>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QMimeData>
 #include <QModelIndex>
@@ -12,6 +16,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QTimerEvent>
 #include <QVariant>
 #include <qidentityproxymodel.h>
 #include "gen_qidentityproxymodel.h"
@@ -58,6 +63,14 @@ bool miqt_exec_callback_QIdentityProxyModel_CanDropMimeData(void*, intptr_t, QMi
 struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QIdentityProxyModel_MimeTypes(void*, intptr_t);
 int miqt_exec_callback_QIdentityProxyModel_SupportedDragActions(void*, intptr_t);
 int miqt_exec_callback_QIdentityProxyModel_SupportedDropActions(void*, intptr_t);
+struct miqt_map /* of int to struct miqt_string */  miqt_exec_callback_QIdentityProxyModel_RoleNames(void*, intptr_t);
+bool miqt_exec_callback_QIdentityProxyModel_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QIdentityProxyModel_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QIdentityProxyModel_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QIdentityProxyModel_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QIdentityProxyModel_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QIdentityProxyModel_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QIdentityProxyModel_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1153,6 +1166,226 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__RoleNames = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QHash<int, QByteArray> roleNames() const override {
+		if (handle__RoleNames == 0) {
+			return QIdentityProxyModel::roleNames();
+		}
+		
+
+		struct miqt_map /* of int to struct miqt_string */  callback_return_value = miqt_exec_callback_QIdentityProxyModel_RoleNames(const_cast<MiqtVirtualQIdentityProxyModel*>(this), handle__RoleNames);
+		QHash<int, QByteArray> callback_return_value_QMap;
+		callback_return_value_QMap.reserve(callback_return_value.len);
+		int* callback_return_value_karr = static_cast<int*>(callback_return_value.keys);
+		struct miqt_string* callback_return_value_varr = static_cast<struct miqt_string*>(callback_return_value.values);
+		for(size_t i = 0; i < callback_return_value.len; ++i) {
+			QByteArray callback_return_value_varr_i_QByteArray(callback_return_value_varr[i].data, callback_return_value_varr[i].len);
+			callback_return_value_QMap[static_cast<int>(callback_return_value_karr[i])] = callback_return_value_varr_i_QByteArray;
+		}
+
+		return callback_return_value_QMap;
+	}
+
+	// Wrapper to allow calling protected method
+	struct miqt_map /* of int to struct miqt_string */  virtualbase_RoleNames() const {
+
+		QHash<int, QByteArray> _ret = QIdentityProxyModel::roleNames();
+		// Convert QMap<> from C++ memory to manually-managed C memory
+		int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+		struct miqt_string* _varr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+		int _ctr = 0;
+		for (auto _itr = _ret.keyValueBegin(); _itr != _ret.keyValueEnd(); ++_itr) {
+			_karr[_ctr] = _itr->first;
+			QByteArray _hashval_qb = _itr->second;
+			struct miqt_string _hashval_ms;
+			_hashval_ms.len = _hashval_qb.length();
+			_hashval_ms.data = static_cast<char*>(malloc(_hashval_ms.len));
+			memcpy(_hashval_ms.data, _hashval_qb.data(), _hashval_ms.len);
+			_varr[_ctr] = _hashval_ms;
+			_ctr++;
+		}
+		struct miqt_map _out;
+		_out.len = _ret.size();
+		_out.keys = static_cast<void*>(_karr);
+		_out.values = static_cast<void*>(_varr);
+		return _out;
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QIdentityProxyModel::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QIdentityProxyModel::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QIdentityProxyModel::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QIdentityProxyModel::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QIdentityProxyModel::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QIdentityProxyModel_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QIdentityProxyModel::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QIdentityProxyModel::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QIdentityProxyModel_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QIdentityProxyModel::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QIdentityProxyModel::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QIdentityProxyModel_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QIdentityProxyModel::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QIdentityProxyModel::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QIdentityProxyModel_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QIdentityProxyModel::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QIdentityProxyModel::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QIdentityProxyModel_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QIdentityProxyModel::disconnectNotify(*signal);
+
+	}
+
 };
 
 QIdentityProxyModel* QIdentityProxyModel_new() {
@@ -1856,6 +2089,118 @@ bool QIdentityProxyModel_override_virtual_SupportedDropActions(void* self, intpt
 
 int QIdentityProxyModel_virtualbase_SupportedDropActions(const void* self) {
 	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_SupportedDropActions();
+}
+
+bool QIdentityProxyModel_override_virtual_RoleNames(void* self, intptr_t slot) {
+	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RoleNames = slot;
+	return true;
+}
+
+struct miqt_map /* of int to struct miqt_string */  QIdentityProxyModel_virtualbase_RoleNames(const void* self) {
+	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_RoleNames();
+}
+
+bool QIdentityProxyModel_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
+}
+
+bool QIdentityProxyModel_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_Event(event);
+}
+
+bool QIdentityProxyModel_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
+}
+
+bool QIdentityProxyModel_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+bool QIdentityProxyModel_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QIdentityProxyModel_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QIdentityProxyModel_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QIdentityProxyModel_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QIdentityProxyModel_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QIdentityProxyModel_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QIdentityProxyModel_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QIdentityProxyModel_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QIdentityProxyModel_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QIdentityProxyModel_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
 void QIdentityProxyModel_Delete(QIdentityProxyModel* self) {

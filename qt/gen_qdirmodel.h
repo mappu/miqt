@@ -16,27 +16,35 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAbstractItemModel;
+class QChildEvent;
 class QDirModel;
+class QEvent;
 class QFileIconProvider;
 class QFileInfo;
 class QIcon;
+class QMetaMethod;
 class QMetaObject;
 class QMimeData;
 class QModelIndex;
 class QObject;
 class QSize;
+class QTimerEvent;
 class QVariant;
 #else
 typedef struct QAbstractItemModel QAbstractItemModel;
+typedef struct QChildEvent QChildEvent;
 typedef struct QDirModel QDirModel;
+typedef struct QEvent QEvent;
 typedef struct QFileIconProvider QFileIconProvider;
 typedef struct QFileInfo QFileInfo;
 typedef struct QIcon QIcon;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMimeData QMimeData;
 typedef struct QModelIndex QModelIndex;
 typedef struct QObject QObject;
 typedef struct QSize QSize;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 #endif
 
@@ -161,6 +169,20 @@ bool QDirModel_override_virtual_Submit(void* self, intptr_t slot);
 bool QDirModel_virtualbase_Submit(void* self);
 bool QDirModel_override_virtual_Revert(void* self, intptr_t slot);
 void QDirModel_virtualbase_Revert(void* self);
+bool QDirModel_override_virtual_Event(void* self, intptr_t slot);
+bool QDirModel_virtualbase_Event(void* self, QEvent* event);
+bool QDirModel_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QDirModel_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QDirModel_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QDirModel_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QDirModel_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QDirModel_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QDirModel_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QDirModel_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QDirModel_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QDirModel_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QDirModel_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QDirModel_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QDirModel_Delete(QDirModel* self);
 
 #ifdef __cplusplus

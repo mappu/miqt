@@ -828,6 +828,58 @@ func miqt_exec_callback_QEnterEvent_IsEndEvent(self *C.QEnterEvent, cb C.intptr_
 
 }
 
+func (this *QEnterEvent) callVirtualBase_SetTimestamp(timestamp uint64) {
+
+	C.QEnterEvent_virtualbase_SetTimestamp(unsafe.Pointer(this.h), (C.ulonglong)(timestamp))
+
+}
+func (this *QEnterEvent) OnSetTimestamp(slot func(super func(timestamp uint64), timestamp uint64)) {
+	ok := C.QEnterEvent_override_virtual_SetTimestamp(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QEnterEvent_SetTimestamp
+func miqt_exec_callback_QEnterEvent_SetTimestamp(self *C.QEnterEvent, cb C.intptr_t, timestamp C.ulonglong) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(timestamp uint64), timestamp uint64))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (uint64)(timestamp)
+
+	gofunc((&QEnterEvent{h: self}).callVirtualBase_SetTimestamp, slotval1)
+
+}
+
+func (this *QEnterEvent) callVirtualBase_SetAccepted(accepted bool) {
+
+	C.QEnterEvent_virtualbase_SetAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
+
+}
+func (this *QEnterEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	ok := C.QEnterEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QEnterEvent_SetAccepted
+func miqt_exec_callback_QEnterEvent_SetAccepted(self *C.QEnterEvent, cb C.intptr_t, accepted C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(accepted bool), accepted bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(accepted)
+
+	gofunc((&QEnterEvent{h: self}).callVirtualBase_SetAccepted, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QEnterEvent) Delete() {
 	C.QEnterEvent_Delete(this.h)
@@ -1084,6 +1136,58 @@ func miqt_exec_callback_QMouseEvent_IsEndEvent(self *C.QMouseEvent, cb C.intptr_
 
 }
 
+func (this *QMouseEvent) callVirtualBase_SetTimestamp(timestamp uint64) {
+
+	C.QMouseEvent_virtualbase_SetTimestamp(unsafe.Pointer(this.h), (C.ulonglong)(timestamp))
+
+}
+func (this *QMouseEvent) OnSetTimestamp(slot func(super func(timestamp uint64), timestamp uint64)) {
+	ok := C.QMouseEvent_override_virtual_SetTimestamp(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QMouseEvent_SetTimestamp
+func miqt_exec_callback_QMouseEvent_SetTimestamp(self *C.QMouseEvent, cb C.intptr_t, timestamp C.ulonglong) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(timestamp uint64), timestamp uint64))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (uint64)(timestamp)
+
+	gofunc((&QMouseEvent{h: self}).callVirtualBase_SetTimestamp, slotval1)
+
+}
+
+func (this *QMouseEvent) callVirtualBase_SetAccepted(accepted bool) {
+
+	C.QMouseEvent_virtualbase_SetAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
+
+}
+func (this *QMouseEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	ok := C.QMouseEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QMouseEvent_SetAccepted
+func miqt_exec_callback_QMouseEvent_SetAccepted(self *C.QMouseEvent, cb C.intptr_t, accepted C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(accepted bool), accepted bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(accepted)
+
+	gofunc((&QMouseEvent{h: self}).callVirtualBase_SetAccepted, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QMouseEvent) Delete() {
 	C.QMouseEvent_Delete(this.h)
@@ -1302,6 +1406,58 @@ func miqt_exec_callback_QHoverEvent_IsEndEvent(self *C.QHoverEvent, cb C.intptr_
 
 }
 
+func (this *QHoverEvent) callVirtualBase_SetTimestamp(timestamp uint64) {
+
+	C.QHoverEvent_virtualbase_SetTimestamp(unsafe.Pointer(this.h), (C.ulonglong)(timestamp))
+
+}
+func (this *QHoverEvent) OnSetTimestamp(slot func(super func(timestamp uint64), timestamp uint64)) {
+	ok := C.QHoverEvent_override_virtual_SetTimestamp(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QHoverEvent_SetTimestamp
+func miqt_exec_callback_QHoverEvent_SetTimestamp(self *C.QHoverEvent, cb C.intptr_t, timestamp C.ulonglong) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(timestamp uint64), timestamp uint64))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (uint64)(timestamp)
+
+	gofunc((&QHoverEvent{h: self}).callVirtualBase_SetTimestamp, slotval1)
+
+}
+
+func (this *QHoverEvent) callVirtualBase_SetAccepted(accepted bool) {
+
+	C.QHoverEvent_virtualbase_SetAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
+
+}
+func (this *QHoverEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	ok := C.QHoverEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QHoverEvent_SetAccepted
+func miqt_exec_callback_QHoverEvent_SetAccepted(self *C.QHoverEvent, cb C.intptr_t, accepted C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(accepted bool), accepted bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(accepted)
+
+	gofunc((&QHoverEvent{h: self}).callVirtualBase_SetAccepted, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QHoverEvent) Delete() {
 	C.QHoverEvent_Delete(this.h)
@@ -1515,6 +1671,58 @@ func miqt_exec_callback_QWheelEvent_IsEndEvent(self *C.QWheelEvent, cb C.intptr_
 	virtualReturn := gofunc((&QWheelEvent{h: self}).callVirtualBase_IsEndEvent)
 
 	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QWheelEvent) callVirtualBase_SetTimestamp(timestamp uint64) {
+
+	C.QWheelEvent_virtualbase_SetTimestamp(unsafe.Pointer(this.h), (C.ulonglong)(timestamp))
+
+}
+func (this *QWheelEvent) OnSetTimestamp(slot func(super func(timestamp uint64), timestamp uint64)) {
+	ok := C.QWheelEvent_override_virtual_SetTimestamp(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QWheelEvent_SetTimestamp
+func miqt_exec_callback_QWheelEvent_SetTimestamp(self *C.QWheelEvent, cb C.intptr_t, timestamp C.ulonglong) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(timestamp uint64), timestamp uint64))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (uint64)(timestamp)
+
+	gofunc((&QWheelEvent{h: self}).callVirtualBase_SetTimestamp, slotval1)
+
+}
+
+func (this *QWheelEvent) callVirtualBase_SetAccepted(accepted bool) {
+
+	C.QWheelEvent_virtualbase_SetAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
+
+}
+func (this *QWheelEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	ok := C.QWheelEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QWheelEvent_SetAccepted
+func miqt_exec_callback_QWheelEvent_SetAccepted(self *C.QWheelEvent, cb C.intptr_t, accepted C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(accepted bool), accepted bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(accepted)
+
+	gofunc((&QWheelEvent{h: self}).callVirtualBase_SetAccepted, slotval1)
 
 }
 
@@ -1754,6 +1962,58 @@ func miqt_exec_callback_QTabletEvent_IsEndEvent(self *C.QTabletEvent, cb C.intpt
 
 }
 
+func (this *QTabletEvent) callVirtualBase_SetTimestamp(timestamp uint64) {
+
+	C.QTabletEvent_virtualbase_SetTimestamp(unsafe.Pointer(this.h), (C.ulonglong)(timestamp))
+
+}
+func (this *QTabletEvent) OnSetTimestamp(slot func(super func(timestamp uint64), timestamp uint64)) {
+	ok := C.QTabletEvent_override_virtual_SetTimestamp(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTabletEvent_SetTimestamp
+func miqt_exec_callback_QTabletEvent_SetTimestamp(self *C.QTabletEvent, cb C.intptr_t, timestamp C.ulonglong) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(timestamp uint64), timestamp uint64))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (uint64)(timestamp)
+
+	gofunc((&QTabletEvent{h: self}).callVirtualBase_SetTimestamp, slotval1)
+
+}
+
+func (this *QTabletEvent) callVirtualBase_SetAccepted(accepted bool) {
+
+	C.QTabletEvent_virtualbase_SetAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
+
+}
+func (this *QTabletEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	ok := C.QTabletEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTabletEvent_SetAccepted
+func miqt_exec_callback_QTabletEvent_SetAccepted(self *C.QTabletEvent, cb C.intptr_t, accepted C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(accepted bool), accepted bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(accepted)
+
+	gofunc((&QTabletEvent{h: self}).callVirtualBase_SetAccepted, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QTabletEvent) Delete() {
 	C.QTabletEvent_Delete(this.h)
@@ -1971,6 +2231,58 @@ func miqt_exec_callback_QNativeGestureEvent_IsEndEvent(self *C.QNativeGestureEve
 	virtualReturn := gofunc((&QNativeGestureEvent{h: self}).callVirtualBase_IsEndEvent)
 
 	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QNativeGestureEvent) callVirtualBase_SetTimestamp(timestamp uint64) {
+
+	C.QNativeGestureEvent_virtualbase_SetTimestamp(unsafe.Pointer(this.h), (C.ulonglong)(timestamp))
+
+}
+func (this *QNativeGestureEvent) OnSetTimestamp(slot func(super func(timestamp uint64), timestamp uint64)) {
+	ok := C.QNativeGestureEvent_override_virtual_SetTimestamp(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QNativeGestureEvent_SetTimestamp
+func miqt_exec_callback_QNativeGestureEvent_SetTimestamp(self *C.QNativeGestureEvent, cb C.intptr_t, timestamp C.ulonglong) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(timestamp uint64), timestamp uint64))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (uint64)(timestamp)
+
+	gofunc((&QNativeGestureEvent{h: self}).callVirtualBase_SetTimestamp, slotval1)
+
+}
+
+func (this *QNativeGestureEvent) callVirtualBase_SetAccepted(accepted bool) {
+
+	C.QNativeGestureEvent_virtualbase_SetAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
+
+}
+func (this *QNativeGestureEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	ok := C.QNativeGestureEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QNativeGestureEvent_SetAccepted
+func miqt_exec_callback_QNativeGestureEvent_SetAccepted(self *C.QNativeGestureEvent, cb C.intptr_t, accepted C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(accepted bool), accepted bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(accepted)
+
+	gofunc((&QNativeGestureEvent{h: self}).callVirtualBase_SetAccepted, slotval1)
 
 }
 
@@ -2203,6 +2515,32 @@ func miqt_exec_callback_QKeyEvent_SetTimestamp(self *C.QKeyEvent, cb C.intptr_t,
 	slotval1 := (uint64)(timestamp)
 
 	gofunc((&QKeyEvent{h: self}).callVirtualBase_SetTimestamp, slotval1)
+
+}
+
+func (this *QKeyEvent) callVirtualBase_SetAccepted(accepted bool) {
+
+	C.QKeyEvent_virtualbase_SetAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
+
+}
+func (this *QKeyEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	ok := C.QKeyEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QKeyEvent_SetAccepted
+func miqt_exec_callback_QKeyEvent_SetAccepted(self *C.QKeyEvent, cb C.intptr_t, accepted C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(accepted bool), accepted bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(accepted)
+
+	gofunc((&QKeyEvent{h: self}).callVirtualBase_SetAccepted, slotval1)
 
 }
 
@@ -3523,6 +3861,32 @@ func miqt_exec_callback_QContextMenuEvent_SetTimestamp(self *C.QContextMenuEvent
 
 }
 
+func (this *QContextMenuEvent) callVirtualBase_SetAccepted(accepted bool) {
+
+	C.QContextMenuEvent_virtualbase_SetAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
+
+}
+func (this *QContextMenuEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	ok := C.QContextMenuEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QContextMenuEvent_SetAccepted
+func miqt_exec_callback_QContextMenuEvent_SetAccepted(self *C.QContextMenuEvent, cb C.intptr_t, accepted C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(accepted bool), accepted bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(accepted)
+
+	gofunc((&QContextMenuEvent{h: self}).callVirtualBase_SetAccepted, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QContextMenuEvent) Delete() {
 	C.QContextMenuEvent_Delete(this.h)
@@ -4125,6 +4489,32 @@ func miqt_exec_callback_QDragMoveEvent_Clone(self *C.QDragMoveEvent, cb C.intptr
 
 }
 
+func (this *QDragMoveEvent) callVirtualBase_SetAccepted(accepted bool) {
+
+	C.QDragMoveEvent_virtualbase_SetAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
+
+}
+func (this *QDragMoveEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	ok := C.QDragMoveEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDragMoveEvent_SetAccepted
+func miqt_exec_callback_QDragMoveEvent_SetAccepted(self *C.QDragMoveEvent, cb C.intptr_t, accepted C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(accepted bool), accepted bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(accepted)
+
+	gofunc((&QDragMoveEvent{h: self}).callVirtualBase_SetAccepted, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QDragMoveEvent) Delete() {
 	C.QDragMoveEvent_Delete(this.h)
@@ -4207,6 +4597,32 @@ func miqt_exec_callback_QDragEnterEvent_Clone(self *C.QDragEnterEvent, cb C.intp
 	virtualReturn := gofunc((&QDragEnterEvent{h: self}).callVirtualBase_Clone)
 
 	return virtualReturn.cPointer()
+
+}
+
+func (this *QDragEnterEvent) callVirtualBase_SetAccepted(accepted bool) {
+
+	C.QDragEnterEvent_virtualbase_SetAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
+
+}
+func (this *QDragEnterEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	ok := C.QDragEnterEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDragEnterEvent_SetAccepted
+func miqt_exec_callback_QDragEnterEvent_SetAccepted(self *C.QDragEnterEvent, cb C.intptr_t, accepted C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(accepted bool), accepted bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(accepted)
+
+	gofunc((&QDragEnterEvent{h: self}).callVirtualBase_SetAccepted, slotval1)
 
 }
 

@@ -16,6 +16,7 @@ extern "C" {
 
 #ifdef __cplusplus
 class QActionEvent;
+class QChildEvent;
 class QCloseEvent;
 class QContextMenuEvent;
 class QDragEnterEvent;
@@ -28,6 +29,7 @@ class QFocusEvent;
 class QHideEvent;
 class QInputMethodEvent;
 class QKeyEvent;
+class QMetaMethod;
 class QMetaObject;
 class QMouseEvent;
 class QMoveEvent;
@@ -41,6 +43,7 @@ class QResizeEvent;
 class QShowEvent;
 class QSize;
 class QTabletEvent;
+class QTimerEvent;
 class QVariant;
 class QVideoSink;
 class QVideoWidget;
@@ -48,6 +51,7 @@ class QWheelEvent;
 class QWidget;
 #else
 typedef struct QActionEvent QActionEvent;
+typedef struct QChildEvent QChildEvent;
 typedef struct QCloseEvent QCloseEvent;
 typedef struct QContextMenuEvent QContextMenuEvent;
 typedef struct QDragEnterEvent QDragEnterEvent;
@@ -60,6 +64,7 @@ typedef struct QFocusEvent QFocusEvent;
 typedef struct QHideEvent QHideEvent;
 typedef struct QInputMethodEvent QInputMethodEvent;
 typedef struct QKeyEvent QKeyEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMouseEvent QMouseEvent;
 typedef struct QMoveEvent QMoveEvent;
@@ -73,6 +78,7 @@ typedef struct QResizeEvent QResizeEvent;
 typedef struct QShowEvent QShowEvent;
 typedef struct QSize QSize;
 typedef struct QTabletEvent QTabletEvent;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 typedef struct QVideoSink QVideoSink;
 typedef struct QVideoWidget QVideoWidget;
@@ -184,6 +190,18 @@ bool QVideoWidget_override_virtual_InputMethodQuery(void* self, intptr_t slot);
 QVariant* QVideoWidget_virtualbase_InputMethodQuery(const void* self, int param1);
 bool QVideoWidget_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QVideoWidget_virtualbase_FocusNextPrevChild(void* self, bool next);
+bool QVideoWidget_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QVideoWidget_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QVideoWidget_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QVideoWidget_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QVideoWidget_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QVideoWidget_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QVideoWidget_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QVideoWidget_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QVideoWidget_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QVideoWidget_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QVideoWidget_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QVideoWidget_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QVideoWidget_Delete(QVideoWidget* self);
 
 #ifdef __cplusplus

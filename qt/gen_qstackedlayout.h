@@ -16,23 +16,31 @@ extern "C" {
 
 #ifdef __cplusplus
 class QChildEvent;
+class QEvent;
 class QLayout;
 class QLayoutItem;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QRect;
 class QSize;
+class QSpacerItem;
 class QStackedLayout;
+class QTimerEvent;
 class QWidget;
 #else
 typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QLayout QLayout;
 typedef struct QLayoutItem QLayoutItem;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QRect QRect;
 typedef struct QSize QSize;
+typedef struct QSpacerItem QSpacerItem;
 typedef struct QStackedLayout QStackedLayout;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QWidget QWidget;
 #endif
 
@@ -106,6 +114,24 @@ bool QStackedLayout_override_virtual_Layout(void* self, intptr_t slot);
 QLayout* QStackedLayout_virtualbase_Layout(void* self);
 bool QStackedLayout_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QStackedLayout_virtualbase_ChildEvent(void* self, QChildEvent* e);
+bool QStackedLayout_override_virtual_Event(void* self, intptr_t slot);
+bool QStackedLayout_virtualbase_Event(void* self, QEvent* event);
+bool QStackedLayout_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QStackedLayout_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QStackedLayout_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QStackedLayout_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QStackedLayout_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QStackedLayout_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QStackedLayout_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QStackedLayout_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QStackedLayout_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QStackedLayout_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+bool QStackedLayout_override_virtual_MinimumHeightForWidth(void* self, intptr_t slot);
+int QStackedLayout_virtualbase_MinimumHeightForWidth(const void* self, int param1);
+bool QStackedLayout_override_virtual_Widget(void* self, intptr_t slot);
+QWidget* QStackedLayout_virtualbase_Widget(void* self);
+bool QStackedLayout_override_virtual_SpacerItem(void* self, intptr_t slot);
+QSpacerItem* QStackedLayout_virtualbase_SpacerItem(void* self);
 void QStackedLayout_Delete(QStackedLayout* self);
 
 #ifdef __cplusplus

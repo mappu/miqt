@@ -3,7 +3,9 @@
 #include <QMatrix>
 #include <QPaintDevice>
 #include <QPaintEngine>
+#include <QPainter>
 #include <QPixmap>
+#include <QPoint>
 #include <QSize>
 #include <QString>
 #include <QByteArray>
@@ -20,6 +22,9 @@ extern "C" {
 int miqt_exec_callback_QBitmap_DevType(void*, intptr_t);
 QPaintEngine* miqt_exec_callback_QBitmap_PaintEngine(void*, intptr_t);
 int miqt_exec_callback_QBitmap_Metric(void*, intptr_t, int);
+void miqt_exec_callback_QBitmap_InitPainter(void*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QBitmap_Redirected(void*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QBitmap_SharedPainter(void*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -102,6 +107,75 @@ public:
 	int virtualbase_Metric(int param1) const {
 
 		return QBitmap::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__InitPainter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void initPainter(QPainter* painter) const override {
+		if (handle__InitPainter == 0) {
+			QBitmap::initPainter(painter);
+			return;
+		}
+		
+		QPainter* sigval1 = painter;
+
+		miqt_exec_callback_QBitmap_InitPainter(const_cast<MiqtVirtualQBitmap*>(this), handle__InitPainter, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_InitPainter(QPainter* painter) const {
+
+		QBitmap::initPainter(painter);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Redirected = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPaintDevice* redirected(QPoint* offset) const override {
+		if (handle__Redirected == 0) {
+			return QBitmap::redirected(offset);
+		}
+		
+		QPoint* sigval1 = offset;
+
+		QPaintDevice* callback_return_value = miqt_exec_callback_QBitmap_Redirected(const_cast<MiqtVirtualQBitmap*>(this), handle__Redirected, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPaintDevice* virtualbase_Redirected(QPoint* offset) const {
+
+		return QBitmap::redirected(offset);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SharedPainter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPainter* sharedPainter() const override {
+		if (handle__SharedPainter == 0) {
+			return QBitmap::sharedPainter();
+		}
+		
+
+		QPainter* callback_return_value = miqt_exec_callback_QBitmap_SharedPainter(const_cast<MiqtVirtualQBitmap*>(this), handle__SharedPainter);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPainter* virtualbase_SharedPainter() const {
+
+		return QBitmap::sharedPainter();
 
 	}
 
@@ -225,6 +299,48 @@ bool QBitmap_override_virtual_Metric(void* self, intptr_t slot) {
 
 int QBitmap_virtualbase_Metric(const void* self, int param1) {
 	return ( (const MiqtVirtualQBitmap*)(self) )->virtualbase_Metric(param1);
+}
+
+bool QBitmap_override_virtual_InitPainter(void* self, intptr_t slot) {
+	MiqtVirtualQBitmap* self_cast = dynamic_cast<MiqtVirtualQBitmap*>( (QBitmap*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitPainter = slot;
+	return true;
+}
+
+void QBitmap_virtualbase_InitPainter(const void* self, QPainter* painter) {
+	( (const MiqtVirtualQBitmap*)(self) )->virtualbase_InitPainter(painter);
+}
+
+bool QBitmap_override_virtual_Redirected(void* self, intptr_t slot) {
+	MiqtVirtualQBitmap* self_cast = dynamic_cast<MiqtVirtualQBitmap*>( (QBitmap*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Redirected = slot;
+	return true;
+}
+
+QPaintDevice* QBitmap_virtualbase_Redirected(const void* self, QPoint* offset) {
+	return ( (const MiqtVirtualQBitmap*)(self) )->virtualbase_Redirected(offset);
+}
+
+bool QBitmap_override_virtual_SharedPainter(void* self, intptr_t slot) {
+	MiqtVirtualQBitmap* self_cast = dynamic_cast<MiqtVirtualQBitmap*>( (QBitmap*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SharedPainter = slot;
+	return true;
+}
+
+QPainter* QBitmap_virtualbase_SharedPainter(const void* self) {
+	return ( (const MiqtVirtualQBitmap*)(self) )->virtualbase_SharedPainter();
 }
 
 void QBitmap_Delete(QBitmap* self) {

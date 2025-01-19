@@ -1,12 +1,16 @@
+#include <QChildEvent>
+#include <QEvent>
 #include <QFileDevice>
 #include <QIODevice>
 #include <QIODeviceBase>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QSaveFile>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QTimerEvent>
 #include <qsavefile.h>
 #include "gen_qsavefile.h"
 
@@ -27,6 +31,20 @@ int miqt_exec_callback_QSaveFile_Permissions(void*, intptr_t);
 bool miqt_exec_callback_QSaveFile_SetPermissions(void*, intptr_t, int);
 long long miqt_exec_callback_QSaveFile_ReadData(void*, intptr_t, char*, long long);
 long long miqt_exec_callback_QSaveFile_ReadLineData(void*, intptr_t, char*, long long);
+bool miqt_exec_callback_QSaveFile_Reset(void*, intptr_t);
+long long miqt_exec_callback_QSaveFile_BytesAvailable(void*, intptr_t);
+long long miqt_exec_callback_QSaveFile_BytesToWrite(void*, intptr_t);
+bool miqt_exec_callback_QSaveFile_CanReadLine(void*, intptr_t);
+bool miqt_exec_callback_QSaveFile_WaitForReadyRead(void*, intptr_t, int);
+bool miqt_exec_callback_QSaveFile_WaitForBytesWritten(void*, intptr_t, int);
+long long miqt_exec_callback_QSaveFile_SkipData(void*, intptr_t, long long);
+bool miqt_exec_callback_QSaveFile_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QSaveFile_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QSaveFile_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSaveFile_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QSaveFile_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QSaveFile_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSaveFile_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -358,6 +376,338 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Reset = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool reset() override {
+		if (handle__Reset == 0) {
+			return QSaveFile::reset();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QSaveFile_Reset(this, handle__Reset);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Reset() {
+
+		return QSaveFile::reset();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__BytesAvailable = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual qint64 bytesAvailable() const override {
+		if (handle__BytesAvailable == 0) {
+			return QSaveFile::bytesAvailable();
+		}
+		
+
+		long long callback_return_value = miqt_exec_callback_QSaveFile_BytesAvailable(const_cast<MiqtVirtualQSaveFile*>(this), handle__BytesAvailable);
+
+		return static_cast<qint64>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	long long virtualbase_BytesAvailable() const {
+
+		qint64 _ret = QSaveFile::bytesAvailable();
+		return static_cast<long long>(_ret);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__BytesToWrite = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual qint64 bytesToWrite() const override {
+		if (handle__BytesToWrite == 0) {
+			return QSaveFile::bytesToWrite();
+		}
+		
+
+		long long callback_return_value = miqt_exec_callback_QSaveFile_BytesToWrite(const_cast<MiqtVirtualQSaveFile*>(this), handle__BytesToWrite);
+
+		return static_cast<qint64>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	long long virtualbase_BytesToWrite() const {
+
+		qint64 _ret = QSaveFile::bytesToWrite();
+		return static_cast<long long>(_ret);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CanReadLine = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool canReadLine() const override {
+		if (handle__CanReadLine == 0) {
+			return QSaveFile::canReadLine();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QSaveFile_CanReadLine(const_cast<MiqtVirtualQSaveFile*>(this), handle__CanReadLine);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_CanReadLine() const {
+
+		return QSaveFile::canReadLine();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__WaitForReadyRead = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool waitForReadyRead(int msecs) override {
+		if (handle__WaitForReadyRead == 0) {
+			return QSaveFile::waitForReadyRead(msecs);
+		}
+		
+		int sigval1 = msecs;
+
+		bool callback_return_value = miqt_exec_callback_QSaveFile_WaitForReadyRead(this, handle__WaitForReadyRead, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_WaitForReadyRead(int msecs) {
+
+		return QSaveFile::waitForReadyRead(static_cast<int>(msecs));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__WaitForBytesWritten = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool waitForBytesWritten(int msecs) override {
+		if (handle__WaitForBytesWritten == 0) {
+			return QSaveFile::waitForBytesWritten(msecs);
+		}
+		
+		int sigval1 = msecs;
+
+		bool callback_return_value = miqt_exec_callback_QSaveFile_WaitForBytesWritten(this, handle__WaitForBytesWritten, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_WaitForBytesWritten(int msecs) {
+
+		return QSaveFile::waitForBytesWritten(static_cast<int>(msecs));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SkipData = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual qint64 skipData(qint64 maxSize) override {
+		if (handle__SkipData == 0) {
+			return QSaveFile::skipData(maxSize);
+		}
+		
+		qint64 maxSize_ret = maxSize;
+		long long sigval1 = static_cast<long long>(maxSize_ret);
+
+		long long callback_return_value = miqt_exec_callback_QSaveFile_SkipData(this, handle__SkipData, sigval1);
+
+		return static_cast<qint64>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	long long virtualbase_SkipData(long long maxSize) {
+
+		qint64 _ret = QSaveFile::skipData(static_cast<qint64>(maxSize));
+		return static_cast<long long>(_ret);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QSaveFile::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QSaveFile_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QSaveFile::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QSaveFile::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QSaveFile_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QSaveFile::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QSaveFile::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QSaveFile_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QSaveFile::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QSaveFile::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QSaveFile_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QSaveFile::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QSaveFile::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QSaveFile_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QSaveFile::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QSaveFile::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QSaveFile_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QSaveFile::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QSaveFile::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QSaveFile_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QSaveFile::disconnectNotify(*signal);
+
+	}
+
 };
 
 QSaveFile* QSaveFile_new(struct miqt_string name) {
@@ -639,6 +989,202 @@ bool QSaveFile_override_virtual_ReadLineData(void* self, intptr_t slot) {
 
 long long QSaveFile_virtualbase_ReadLineData(void* self, char* data, long long maxlen) {
 	return ( (MiqtVirtualQSaveFile*)(self) )->virtualbase_ReadLineData(data, maxlen);
+}
+
+bool QSaveFile_override_virtual_Reset(void* self, intptr_t slot) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Reset = slot;
+	return true;
+}
+
+bool QSaveFile_virtualbase_Reset(void* self) {
+	return ( (MiqtVirtualQSaveFile*)(self) )->virtualbase_Reset();
+}
+
+bool QSaveFile_override_virtual_BytesAvailable(void* self, intptr_t slot) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BytesAvailable = slot;
+	return true;
+}
+
+long long QSaveFile_virtualbase_BytesAvailable(const void* self) {
+	return ( (const MiqtVirtualQSaveFile*)(self) )->virtualbase_BytesAvailable();
+}
+
+bool QSaveFile_override_virtual_BytesToWrite(void* self, intptr_t slot) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BytesToWrite = slot;
+	return true;
+}
+
+long long QSaveFile_virtualbase_BytesToWrite(const void* self) {
+	return ( (const MiqtVirtualQSaveFile*)(self) )->virtualbase_BytesToWrite();
+}
+
+bool QSaveFile_override_virtual_CanReadLine(void* self, intptr_t slot) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CanReadLine = slot;
+	return true;
+}
+
+bool QSaveFile_virtualbase_CanReadLine(const void* self) {
+	return ( (const MiqtVirtualQSaveFile*)(self) )->virtualbase_CanReadLine();
+}
+
+bool QSaveFile_override_virtual_WaitForReadyRead(void* self, intptr_t slot) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WaitForReadyRead = slot;
+	return true;
+}
+
+bool QSaveFile_virtualbase_WaitForReadyRead(void* self, int msecs) {
+	return ( (MiqtVirtualQSaveFile*)(self) )->virtualbase_WaitForReadyRead(msecs);
+}
+
+bool QSaveFile_override_virtual_WaitForBytesWritten(void* self, intptr_t slot) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WaitForBytesWritten = slot;
+	return true;
+}
+
+bool QSaveFile_virtualbase_WaitForBytesWritten(void* self, int msecs) {
+	return ( (MiqtVirtualQSaveFile*)(self) )->virtualbase_WaitForBytesWritten(msecs);
+}
+
+bool QSaveFile_override_virtual_SkipData(void* self, intptr_t slot) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SkipData = slot;
+	return true;
+}
+
+long long QSaveFile_virtualbase_SkipData(void* self, long long maxSize) {
+	return ( (MiqtVirtualQSaveFile*)(self) )->virtualbase_SkipData(maxSize);
+}
+
+bool QSaveFile_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
+}
+
+bool QSaveFile_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQSaveFile*)(self) )->virtualbase_Event(event);
+}
+
+bool QSaveFile_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
+}
+
+bool QSaveFile_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQSaveFile*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+bool QSaveFile_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QSaveFile_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQSaveFile*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QSaveFile_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QSaveFile_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQSaveFile*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QSaveFile_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QSaveFile_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQSaveFile*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QSaveFile_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QSaveFile_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQSaveFile*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QSaveFile_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QSaveFile_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQSaveFile*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
 void QSaveFile_Delete(QSaveFile* self) {

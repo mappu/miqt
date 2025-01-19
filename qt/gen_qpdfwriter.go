@@ -587,6 +587,110 @@ func miqt_exec_callback_QPdfWriter_DisconnectNotify(self *C.QPdfWriter, cb C.int
 
 }
 
+func (this *QPdfWriter) callVirtualBase_DevType() int {
+
+	return (int)(C.QPdfWriter_virtualbase_DevType(unsafe.Pointer(this.h)))
+
+}
+func (this *QPdfWriter) OnDevType(slot func(super func() int) int) {
+	ok := C.QPdfWriter_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPdfWriter_DevType
+func miqt_exec_callback_QPdfWriter_DevType(self *C.QPdfWriter, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QPdfWriter{h: self}).callVirtualBase_DevType)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QPdfWriter) callVirtualBase_InitPainter(painter *QPainter) {
+
+	C.QPdfWriter_virtualbase_InitPainter(unsafe.Pointer(this.h), painter.cPointer())
+
+}
+func (this *QPdfWriter) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	ok := C.QPdfWriter_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPdfWriter_InitPainter
+func miqt_exec_callback_QPdfWriter_InitPainter(self *C.QPdfWriter, cb C.intptr_t, painter *C.QPainter) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter), painter *QPainter))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQPainter(painter)
+
+	gofunc((&QPdfWriter{h: self}).callVirtualBase_InitPainter, slotval1)
+
+}
+
+func (this *QPdfWriter) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+
+	return newQPaintDevice(C.QPdfWriter_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+
+}
+func (this *QPdfWriter) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	ok := C.QPdfWriter_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPdfWriter_Redirected
+func miqt_exec_callback_QPdfWriter_Redirected(self *C.QPdfWriter, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQPoint(offset)
+
+	virtualReturn := gofunc((&QPdfWriter{h: self}).callVirtualBase_Redirected, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QPdfWriter) callVirtualBase_SharedPainter() *QPainter {
+
+	return newQPainter(C.QPdfWriter_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+
+}
+func (this *QPdfWriter) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
+	ok := C.QPdfWriter_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPdfWriter_SharedPainter
+func miqt_exec_callback_QPdfWriter_SharedPainter(self *C.QPdfWriter, cb C.intptr_t) *C.QPainter {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPainter) *QPainter)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QPdfWriter{h: self}).callVirtualBase_SharedPainter)
+
+	return virtualReturn.cPointer()
+
+}
+
 // Delete this object from C++ memory.
 func (this *QPdfWriter) Delete() {
 	C.QPdfWriter_Delete(this.h)

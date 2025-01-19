@@ -15,19 +15,27 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QChildEvent;
+class QEvent;
 class QMediaObject;
 class QMediaService;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QRadioData;
 class QRadioTuner;
+class QTimerEvent;
 #else
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QMediaObject QMediaObject;
 typedef struct QMediaService QMediaService;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QRadioData QRadioData;
 typedef struct QRadioTuner QRadioTuner;
+typedef struct QTimerEvent QTimerEvent;
 #endif
 
 QRadioTuner* QRadioTuner_new();
@@ -102,6 +110,20 @@ bool QRadioTuner_override_virtual_Bind(void* self, intptr_t slot);
 bool QRadioTuner_virtualbase_Bind(void* self, QObject* param1);
 bool QRadioTuner_override_virtual_Unbind(void* self, intptr_t slot);
 void QRadioTuner_virtualbase_Unbind(void* self, QObject* param1);
+bool QRadioTuner_override_virtual_Event(void* self, intptr_t slot);
+bool QRadioTuner_virtualbase_Event(void* self, QEvent* event);
+bool QRadioTuner_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QRadioTuner_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QRadioTuner_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QRadioTuner_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QRadioTuner_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QRadioTuner_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QRadioTuner_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QRadioTuner_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QRadioTuner_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QRadioTuner_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QRadioTuner_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QRadioTuner_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QRadioTuner_Delete(QRadioTuner* self);
 
 #ifdef __cplusplus

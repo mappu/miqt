@@ -20,6 +20,7 @@ QSizeF* miqt_exec_callback_QGraphicsGridLayout_SizeHint(void*, intptr_t, int, QS
 void miqt_exec_callback_QGraphicsGridLayout_GetContentsMargins(void*, intptr_t, double*, double*, double*, double*);
 void miqt_exec_callback_QGraphicsGridLayout_UpdateGeometry(void*, intptr_t);
 void miqt_exec_callback_QGraphicsGridLayout_WidgetEvent(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGraphicsGridLayout_IsEmpty(void*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -252,6 +253,28 @@ public:
 	void virtualbase_WidgetEvent(QEvent* e) {
 
 		QGraphicsGridLayout::widgetEvent(e);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__IsEmpty = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool isEmpty() const override {
+		if (handle__IsEmpty == 0) {
+			return QGraphicsGridLayout::isEmpty();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QGraphicsGridLayout_IsEmpty(const_cast<MiqtVirtualQGraphicsGridLayout*>(this), handle__IsEmpty);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_IsEmpty() const {
+
+		return QGraphicsGridLayout::isEmpty();
 
 	}
 
@@ -594,6 +617,20 @@ bool QGraphicsGridLayout_override_virtual_WidgetEvent(void* self, intptr_t slot)
 
 void QGraphicsGridLayout_virtualbase_WidgetEvent(void* self, QEvent* e) {
 	( (MiqtVirtualQGraphicsGridLayout*)(self) )->virtualbase_WidgetEvent(e);
+}
+
+bool QGraphicsGridLayout_override_virtual_IsEmpty(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsGridLayout* self_cast = dynamic_cast<MiqtVirtualQGraphicsGridLayout*>( (QGraphicsGridLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsEmpty = slot;
+	return true;
+}
+
+bool QGraphicsGridLayout_virtualbase_IsEmpty(const void* self) {
+	return ( (const MiqtVirtualQGraphicsGridLayout*)(self) )->virtualbase_IsEmpty();
 }
 
 void QGraphicsGridLayout_Delete(QGraphicsGridLayout* self) {

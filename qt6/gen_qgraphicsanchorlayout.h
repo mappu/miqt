@@ -86,6 +86,8 @@ bool QGraphicsAnchorLayout_override_virtual_UpdateGeometry(void* self, intptr_t 
 void QGraphicsAnchorLayout_virtualbase_UpdateGeometry(void* self);
 bool QGraphicsAnchorLayout_override_virtual_WidgetEvent(void* self, intptr_t slot);
 void QGraphicsAnchorLayout_virtualbase_WidgetEvent(void* self, QEvent* e);
+bool QGraphicsAnchorLayout_override_virtual_IsEmpty(void* self, intptr_t slot);
+bool QGraphicsAnchorLayout_virtualbase_IsEmpty(const void* self);
 void QGraphicsAnchorLayout_Delete(QGraphicsAnchorLayout* self);
 
 #ifdef __cplusplus

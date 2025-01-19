@@ -16,18 +16,24 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAbstractAnimation;
+class QChildEvent;
 class QEvent;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QPropertyAnimation;
+class QTimerEvent;
 class QVariant;
 class QVariantAnimation;
 #else
 typedef struct QAbstractAnimation QAbstractAnimation;
+typedef struct QChildEvent QChildEvent;
 typedef struct QEvent QEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QPropertyAnimation QPropertyAnimation;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 typedef struct QVariantAnimation QVariantAnimation;
 #endif
@@ -64,6 +70,20 @@ bool QPropertyAnimation_override_virtual_UpdateCurrentTime(void* self, intptr_t 
 void QPropertyAnimation_virtualbase_UpdateCurrentTime(void* self, int param1);
 bool QPropertyAnimation_override_virtual_Interpolated(void* self, intptr_t slot);
 QVariant* QPropertyAnimation_virtualbase_Interpolated(const void* self, QVariant* from, QVariant* to, double progress);
+bool QPropertyAnimation_override_virtual_UpdateDirection(void* self, intptr_t slot);
+void QPropertyAnimation_virtualbase_UpdateDirection(void* self, int direction);
+bool QPropertyAnimation_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QPropertyAnimation_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QPropertyAnimation_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QPropertyAnimation_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QPropertyAnimation_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QPropertyAnimation_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QPropertyAnimation_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QPropertyAnimation_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QPropertyAnimation_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QPropertyAnimation_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QPropertyAnimation_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QPropertyAnimation_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QPropertyAnimation_Delete(QPropertyAnimation* self);
 
 #ifdef __cplusplus

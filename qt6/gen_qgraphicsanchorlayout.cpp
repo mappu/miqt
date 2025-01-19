@@ -26,6 +26,7 @@ QSizeF* miqt_exec_callback_QGraphicsAnchorLayout_SizeHint(void*, intptr_t, int, 
 void miqt_exec_callback_QGraphicsAnchorLayout_GetContentsMargins(void*, intptr_t, double*, double*, double*, double*);
 void miqt_exec_callback_QGraphicsAnchorLayout_UpdateGeometry(void*, intptr_t);
 void miqt_exec_callback_QGraphicsAnchorLayout_WidgetEvent(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGraphicsAnchorLayout_IsEmpty(void*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -332,6 +333,28 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__IsEmpty = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool isEmpty() const override {
+		if (handle__IsEmpty == 0) {
+			return QGraphicsAnchorLayout::isEmpty();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QGraphicsAnchorLayout_IsEmpty(const_cast<MiqtVirtualQGraphicsAnchorLayout*>(this), handle__IsEmpty);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_IsEmpty() const {
+
+		return QGraphicsAnchorLayout::isEmpty();
+
+	}
+
 };
 
 QGraphicsAnchorLayout* QGraphicsAnchorLayout_new() {
@@ -532,6 +555,20 @@ bool QGraphicsAnchorLayout_override_virtual_WidgetEvent(void* self, intptr_t slo
 
 void QGraphicsAnchorLayout_virtualbase_WidgetEvent(void* self, QEvent* e) {
 	( (MiqtVirtualQGraphicsAnchorLayout*)(self) )->virtualbase_WidgetEvent(e);
+}
+
+bool QGraphicsAnchorLayout_override_virtual_IsEmpty(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsAnchorLayout* self_cast = dynamic_cast<MiqtVirtualQGraphicsAnchorLayout*>( (QGraphicsAnchorLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsEmpty = slot;
+	return true;
+}
+
+bool QGraphicsAnchorLayout_virtualbase_IsEmpty(const void* self) {
+	return ( (const MiqtVirtualQGraphicsAnchorLayout*)(self) )->virtualbase_IsEmpty();
 }
 
 void QGraphicsAnchorLayout_Delete(QGraphicsAnchorLayout* self) {

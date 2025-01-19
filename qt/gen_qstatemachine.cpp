@@ -1,7 +1,9 @@
 #include <QAbstractAnimation>
 #include <QAbstractState>
+#include <QChildEvent>
 #include <QEvent>
 #include <QList>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QSet>
@@ -12,6 +14,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QTimerEvent>
 #include <qstatemachine.h>
 #include "gen_qstatemachine.h"
 
@@ -28,6 +31,11 @@ void miqt_exec_callback_QStateMachine_EndSelectTransitions(void*, intptr_t, QEve
 void miqt_exec_callback_QStateMachine_BeginMicrostep(void*, intptr_t, QEvent*);
 void miqt_exec_callback_QStateMachine_EndMicrostep(void*, intptr_t, QEvent*);
 bool miqt_exec_callback_QStateMachine_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QStateMachine_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QStateMachine_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QStateMachine_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QStateMachine_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QStateMachine_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -230,6 +238,130 @@ public:
 	bool virtualbase_Event(QEvent* e) {
 
 		return QStateMachine::event(e);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QStateMachine::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QStateMachine_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QStateMachine::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QStateMachine::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QStateMachine_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QStateMachine::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QStateMachine::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QStateMachine_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QStateMachine::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QStateMachine::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QStateMachine_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QStateMachine::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QStateMachine::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QStateMachine_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QStateMachine::disconnectNotify(*signal);
 
 	}
 
@@ -567,6 +699,76 @@ bool QStateMachine_override_virtual_Event(void* self, intptr_t slot) {
 
 bool QStateMachine_virtualbase_Event(void* self, QEvent* e) {
 	return ( (MiqtVirtualQStateMachine*)(self) )->virtualbase_Event(e);
+}
+
+bool QStateMachine_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStateMachine* self_cast = dynamic_cast<MiqtVirtualQStateMachine*>( (QStateMachine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QStateMachine_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQStateMachine*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QStateMachine_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStateMachine* self_cast = dynamic_cast<MiqtVirtualQStateMachine*>( (QStateMachine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QStateMachine_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQStateMachine*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QStateMachine_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQStateMachine* self_cast = dynamic_cast<MiqtVirtualQStateMachine*>( (QStateMachine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QStateMachine_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQStateMachine*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QStateMachine_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQStateMachine* self_cast = dynamic_cast<MiqtVirtualQStateMachine*>( (QStateMachine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QStateMachine_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQStateMachine*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QStateMachine_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQStateMachine* self_cast = dynamic_cast<MiqtVirtualQStateMachine*>( (QStateMachine*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QStateMachine_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQStateMachine*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
 void QStateMachine_Delete(QStateMachine* self) {

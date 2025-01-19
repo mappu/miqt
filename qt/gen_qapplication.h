@@ -16,6 +16,7 @@ extern "C" {
 
 #ifdef __cplusplus
 class QApplication;
+class QChildEvent;
 class QCoreApplication;
 class QDesktopWidget;
 class QEvent;
@@ -23,15 +24,18 @@ class QFont;
 class QFontMetrics;
 class QGuiApplication;
 class QIcon;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QPalette;
 class QPoint;
 class QSize;
 class QStyle;
+class QTimerEvent;
 class QWidget;
 #else
 typedef struct QApplication QApplication;
+typedef struct QChildEvent QChildEvent;
 typedef struct QCoreApplication QCoreApplication;
 typedef struct QDesktopWidget QDesktopWidget;
 typedef struct QEvent QEvent;
@@ -39,12 +43,14 @@ typedef struct QFont QFont;
 typedef struct QFontMetrics QFontMetrics;
 typedef struct QGuiApplication QGuiApplication;
 typedef struct QIcon QIcon;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QPalette QPalette;
 typedef struct QPoint QPoint;
 typedef struct QSize QSize;
 typedef struct QStyle QStyle;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QWidget QWidget;
 #endif
 
@@ -123,6 +129,18 @@ bool QApplication_override_virtual_Notify(void* self, intptr_t slot);
 bool QApplication_virtualbase_Notify(void* self, QObject* param1, QEvent* param2);
 bool QApplication_override_virtual_Event(void* self, intptr_t slot);
 bool QApplication_virtualbase_Event(void* self, QEvent* param1);
+bool QApplication_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QApplication_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QApplication_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QApplication_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QApplication_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QApplication_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QApplication_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QApplication_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QApplication_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QApplication_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QApplication_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QApplication_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QApplication_Delete(QApplication* self);
 
 #ifdef __cplusplus

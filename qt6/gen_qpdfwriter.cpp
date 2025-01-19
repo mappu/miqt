@@ -12,7 +12,9 @@
 #include <QPagedPaintDevice>
 #include <QPaintDevice>
 #include <QPaintEngine>
+#include <QPainter>
 #include <QPdfWriter>
+#include <QPoint>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
@@ -39,6 +41,10 @@ bool miqt_exec_callback_QPdfWriter_SetPageSize(void*, intptr_t, QPageSize*);
 bool miqt_exec_callback_QPdfWriter_SetPageOrientation(void*, intptr_t, int);
 bool miqt_exec_callback_QPdfWriter_SetPageMargins(void*, intptr_t, QMarginsF*, int);
 void miqt_exec_callback_QPdfWriter_SetPageRanges(void*, intptr_t, QPageRanges*);
+int miqt_exec_callback_QPdfWriter_DevType(void*, intptr_t);
+void miqt_exec_callback_QPdfWriter_InitPainter(void*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QPdfWriter_Redirected(void*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QPdfWriter_SharedPainter(void*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -417,6 +423,97 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DevType = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int devType() const override {
+		if (handle__DevType == 0) {
+			return QPdfWriter::devType();
+		}
+		
+
+		int callback_return_value = miqt_exec_callback_QPdfWriter_DevType(const_cast<MiqtVirtualQPdfWriter*>(this), handle__DevType);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_DevType() const {
+
+		return QPdfWriter::devType();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__InitPainter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void initPainter(QPainter* painter) const override {
+		if (handle__InitPainter == 0) {
+			QPdfWriter::initPainter(painter);
+			return;
+		}
+		
+		QPainter* sigval1 = painter;
+
+		miqt_exec_callback_QPdfWriter_InitPainter(const_cast<MiqtVirtualQPdfWriter*>(this), handle__InitPainter, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_InitPainter(QPainter* painter) const {
+
+		QPdfWriter::initPainter(painter);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Redirected = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPaintDevice* redirected(QPoint* offset) const override {
+		if (handle__Redirected == 0) {
+			return QPdfWriter::redirected(offset);
+		}
+		
+		QPoint* sigval1 = offset;
+
+		QPaintDevice* callback_return_value = miqt_exec_callback_QPdfWriter_Redirected(const_cast<MiqtVirtualQPdfWriter*>(this), handle__Redirected, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPaintDevice* virtualbase_Redirected(QPoint* offset) const {
+
+		return QPdfWriter::redirected(offset);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SharedPainter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPainter* sharedPainter() const override {
+		if (handle__SharedPainter == 0) {
+			return QPdfWriter::sharedPainter();
+		}
+		
+
+		QPainter* callback_return_value = miqt_exec_callback_QPdfWriter_SharedPainter(const_cast<MiqtVirtualQPdfWriter*>(this), handle__SharedPainter);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPainter* virtualbase_SharedPainter() const {
+
+		return QPdfWriter::sharedPainter();
+
+	}
+
 };
 
 QPdfWriter* QPdfWriter_new(struct miqt_string filename) {
@@ -762,6 +859,62 @@ bool QPdfWriter_override_virtual_SetPageRanges(void* self, intptr_t slot) {
 
 void QPdfWriter_virtualbase_SetPageRanges(void* self, QPageRanges* ranges) {
 	( (MiqtVirtualQPdfWriter*)(self) )->virtualbase_SetPageRanges(ranges);
+}
+
+bool QPdfWriter_override_virtual_DevType(void* self, intptr_t slot) {
+	MiqtVirtualQPdfWriter* self_cast = dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DevType = slot;
+	return true;
+}
+
+int QPdfWriter_virtualbase_DevType(const void* self) {
+	return ( (const MiqtVirtualQPdfWriter*)(self) )->virtualbase_DevType();
+}
+
+bool QPdfWriter_override_virtual_InitPainter(void* self, intptr_t slot) {
+	MiqtVirtualQPdfWriter* self_cast = dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitPainter = slot;
+	return true;
+}
+
+void QPdfWriter_virtualbase_InitPainter(const void* self, QPainter* painter) {
+	( (const MiqtVirtualQPdfWriter*)(self) )->virtualbase_InitPainter(painter);
+}
+
+bool QPdfWriter_override_virtual_Redirected(void* self, intptr_t slot) {
+	MiqtVirtualQPdfWriter* self_cast = dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Redirected = slot;
+	return true;
+}
+
+QPaintDevice* QPdfWriter_virtualbase_Redirected(const void* self, QPoint* offset) {
+	return ( (const MiqtVirtualQPdfWriter*)(self) )->virtualbase_Redirected(offset);
+}
+
+bool QPdfWriter_override_virtual_SharedPainter(void* self, intptr_t slot) {
+	MiqtVirtualQPdfWriter* self_cast = dynamic_cast<MiqtVirtualQPdfWriter*>( (QPdfWriter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SharedPainter = slot;
+	return true;
+}
+
+QPainter* QPdfWriter_virtualbase_SharedPainter(const void* self) {
+	return ( (const MiqtVirtualQPdfWriter*)(self) )->virtualbase_SharedPainter();
 }
 
 void QPdfWriter_Delete(QPdfWriter* self) {

@@ -17,20 +17,26 @@ extern "C" {
 #ifdef __cplusplus
 class QAbstractState;
 class QAbstractTransition;
+class QChildEvent;
 class QEvent;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QSignalTransition;
 class QState;
+class QTimerEvent;
 class QVariant;
 #else
 typedef struct QAbstractState QAbstractState;
 typedef struct QAbstractTransition QAbstractTransition;
+typedef struct QChildEvent QChildEvent;
 typedef struct QEvent QEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QSignalTransition QSignalTransition;
 typedef struct QState QState;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 #endif
 
@@ -68,6 +74,18 @@ bool QState_override_virtual_OnExit(void* self, intptr_t slot);
 void QState_virtualbase_OnExit(void* self, QEvent* event);
 bool QState_override_virtual_Event(void* self, intptr_t slot);
 bool QState_virtualbase_Event(void* self, QEvent* e);
+bool QState_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QState_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QState_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QState_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QState_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QState_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QState_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QState_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QState_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QState_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QState_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QState_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QState_Delete(QState* self);
 
 #ifdef __cplusplus

@@ -17,22 +17,30 @@ extern "C" {
 #ifdef __cplusplus
 class QAbstractSocket;
 class QAuthenticator;
+class QChildEvent;
+class QEvent;
 class QHostAddress;
 class QIODevice;
 class QIODeviceBase;
+class QMetaMethod;
 class QMetaObject;
 class QNetworkProxy;
 class QObject;
+class QTimerEvent;
 class QVariant;
 #else
 typedef struct QAbstractSocket QAbstractSocket;
 typedef struct QAuthenticator QAuthenticator;
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QHostAddress QHostAddress;
 typedef struct QIODevice QIODevice;
 typedef struct QIODeviceBase QIODeviceBase;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QNetworkProxy QNetworkProxy;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 #endif
 
@@ -155,6 +163,20 @@ bool QAbstractSocket_override_virtual_Reset(void* self, intptr_t slot);
 bool QAbstractSocket_virtualbase_Reset(void* self);
 bool QAbstractSocket_override_virtual_CanReadLine(void* self, intptr_t slot);
 bool QAbstractSocket_virtualbase_CanReadLine(const void* self);
+bool QAbstractSocket_override_virtual_Event(void* self, intptr_t slot);
+bool QAbstractSocket_virtualbase_Event(void* self, QEvent* event);
+bool QAbstractSocket_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QAbstractSocket_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QAbstractSocket_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QAbstractSocket_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QAbstractSocket_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QAbstractSocket_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QAbstractSocket_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QAbstractSocket_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QAbstractSocket_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QAbstractSocket_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QAbstractSocket_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QAbstractSocket_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QAbstractSocket_Delete(QAbstractSocket* self);
 
 #ifdef __cplusplus

@@ -1,24 +1,33 @@
 #include <QAbstractScrollArea>
 #include <QAbstractTextDocumentLayout>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QAbstractTextDocumentLayout__PaintContext
+#include <QActionEvent>
+#include <QByteArray>
+#include <QChildEvent>
+#include <QCloseEvent>
 #include <QContextMenuEvent>
 #include <QDragEnterEvent>
 #include <QDragLeaveEvent>
 #include <QDragMoveEvent>
 #include <QDropEvent>
+#include <QEnterEvent>
 #include <QEvent>
 #include <QFocusEvent>
 #include <QFrame>
+#include <QHideEvent>
 #include <QInputMethodEvent>
 #include <QKeyEvent>
 #include <QList>
 #include <QMenu>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QMimeData>
 #include <QMouseEvent>
+#include <QMoveEvent>
 #include <QObject>
 #include <QPagedPaintDevice>
 #include <QPaintDevice>
+#include <QPaintEngine>
 #include <QPaintEvent>
 #include <QPainter>
 #include <QPlainTextDocumentLayout>
@@ -35,6 +44,8 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QStyleOptionFrame>
+#include <QTabletEvent>
 #include <QTextBlock>
 #include <QTextCharFormat>
 #include <QTextCursor>
@@ -99,6 +110,28 @@ void miqt_exec_callback_QPlainTextEdit_SetupViewport(void*, intptr_t, QWidget*);
 bool miqt_exec_callback_QPlainTextEdit_EventFilter(void*, intptr_t, QObject*, QEvent*);
 bool miqt_exec_callback_QPlainTextEdit_ViewportEvent(void*, intptr_t, QEvent*);
 QSize* miqt_exec_callback_QPlainTextEdit_ViewportSizeHint(void*, intptr_t);
+void miqt_exec_callback_QPlainTextEdit_InitStyleOption(void*, intptr_t, QStyleOptionFrame*);
+int miqt_exec_callback_QPlainTextEdit_DevType(void*, intptr_t);
+void miqt_exec_callback_QPlainTextEdit_SetVisible(void*, intptr_t, bool);
+int miqt_exec_callback_QPlainTextEdit_HeightForWidth(void*, intptr_t, int);
+bool miqt_exec_callback_QPlainTextEdit_HasHeightForWidth(void*, intptr_t);
+QPaintEngine* miqt_exec_callback_QPlainTextEdit_PaintEngine(void*, intptr_t);
+void miqt_exec_callback_QPlainTextEdit_EnterEvent(void*, intptr_t, QEnterEvent*);
+void miqt_exec_callback_QPlainTextEdit_LeaveEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QPlainTextEdit_MoveEvent(void*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QPlainTextEdit_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QPlainTextEdit_TabletEvent(void*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QPlainTextEdit_ActionEvent(void*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QPlainTextEdit_HideEvent(void*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QPlainTextEdit_NativeEvent(void*, intptr_t, struct miqt_string, void*, intptr_t*);
+int miqt_exec_callback_QPlainTextEdit_Metric(void*, intptr_t, int);
+void miqt_exec_callback_QPlainTextEdit_InitPainter(void*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QPlainTextEdit_Redirected(void*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QPlainTextEdit_SharedPainter(void*, intptr_t);
+void miqt_exec_callback_QPlainTextEdit_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QPlainTextEdit_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QPlainTextEdit_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QPlainTextEdit_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QPlainTextDocumentLayout_Draw(void*, intptr_t, QPainter*, QAbstractTextDocumentLayout__PaintContext*);
 int miqt_exec_callback_QPlainTextDocumentLayout_HitTest(void*, intptr_t, QPointF*, int);
 int miqt_exec_callback_QPlainTextDocumentLayout_PageCount(void*, intptr_t);
@@ -109,6 +142,13 @@ void miqt_exec_callback_QPlainTextDocumentLayout_DocumentChanged(void*, intptr_t
 void miqt_exec_callback_QPlainTextDocumentLayout_ResizeInlineObject(void*, intptr_t, QTextInlineObject*, int, QTextFormat*);
 void miqt_exec_callback_QPlainTextDocumentLayout_PositionInlineObject(void*, intptr_t, QTextInlineObject*, int, QTextFormat*);
 void miqt_exec_callback_QPlainTextDocumentLayout_DrawInlineObject(void*, intptr_t, QPainter*, QRectF*, QTextInlineObject*, int, QTextFormat*);
+bool miqt_exec_callback_QPlainTextDocumentLayout_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QPlainTextDocumentLayout_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QPlainTextDocumentLayout_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QPlainTextDocumentLayout_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QPlainTextDocumentLayout_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QPlainTextDocumentLayout_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QPlainTextDocumentLayout_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -953,6 +993,536 @@ public:
 	QSize* virtualbase_ViewportSizeHint() const {
 
 		return new QSize(QPlainTextEdit::viewportSizeHint());
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__InitStyleOption = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void initStyleOption(QStyleOptionFrame* option) const override {
+		if (handle__InitStyleOption == 0) {
+			QPlainTextEdit::initStyleOption(option);
+			return;
+		}
+		
+		QStyleOptionFrame* sigval1 = option;
+
+		miqt_exec_callback_QPlainTextEdit_InitStyleOption(const_cast<MiqtVirtualQPlainTextEdit*>(this), handle__InitStyleOption, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_InitStyleOption(QStyleOptionFrame* option) const {
+
+		QPlainTextEdit::initStyleOption(option);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DevType = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int devType() const override {
+		if (handle__DevType == 0) {
+			return QPlainTextEdit::devType();
+		}
+		
+
+		int callback_return_value = miqt_exec_callback_QPlainTextEdit_DevType(const_cast<MiqtVirtualQPlainTextEdit*>(this), handle__DevType);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_DevType() const {
+
+		return QPlainTextEdit::devType();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetVisible = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setVisible(bool visible) override {
+		if (handle__SetVisible == 0) {
+			QPlainTextEdit::setVisible(visible);
+			return;
+		}
+		
+		bool sigval1 = visible;
+
+		miqt_exec_callback_QPlainTextEdit_SetVisible(this, handle__SetVisible, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetVisible(bool visible) {
+
+		QPlainTextEdit::setVisible(visible);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__HeightForWidth = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int heightForWidth(int param1) const override {
+		if (handle__HeightForWidth == 0) {
+			return QPlainTextEdit::heightForWidth(param1);
+		}
+		
+		int sigval1 = param1;
+
+		int callback_return_value = miqt_exec_callback_QPlainTextEdit_HeightForWidth(const_cast<MiqtVirtualQPlainTextEdit*>(this), handle__HeightForWidth, sigval1);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_HeightForWidth(int param1) const {
+
+		return QPlainTextEdit::heightForWidth(static_cast<int>(param1));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__HasHeightForWidth = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool hasHeightForWidth() const override {
+		if (handle__HasHeightForWidth == 0) {
+			return QPlainTextEdit::hasHeightForWidth();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QPlainTextEdit_HasHeightForWidth(const_cast<MiqtVirtualQPlainTextEdit*>(this), handle__HasHeightForWidth);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_HasHeightForWidth() const {
+
+		return QPlainTextEdit::hasHeightForWidth();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__PaintEngine = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPaintEngine* paintEngine() const override {
+		if (handle__PaintEngine == 0) {
+			return QPlainTextEdit::paintEngine();
+		}
+		
+
+		QPaintEngine* callback_return_value = miqt_exec_callback_QPlainTextEdit_PaintEngine(const_cast<MiqtVirtualQPlainTextEdit*>(this), handle__PaintEngine);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPaintEngine* virtualbase_PaintEngine() const {
+
+		return QPlainTextEdit::paintEngine();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EnterEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void enterEvent(QEnterEvent* event) override {
+		if (handle__EnterEvent == 0) {
+			QPlainTextEdit::enterEvent(event);
+			return;
+		}
+		
+		QEnterEvent* sigval1 = event;
+
+		miqt_exec_callback_QPlainTextEdit_EnterEvent(this, handle__EnterEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_EnterEvent(QEnterEvent* event) {
+
+		QPlainTextEdit::enterEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__LeaveEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void leaveEvent(QEvent* event) override {
+		if (handle__LeaveEvent == 0) {
+			QPlainTextEdit::leaveEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QPlainTextEdit_LeaveEvent(this, handle__LeaveEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_LeaveEvent(QEvent* event) {
+
+		QPlainTextEdit::leaveEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MoveEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void moveEvent(QMoveEvent* event) override {
+		if (handle__MoveEvent == 0) {
+			QPlainTextEdit::moveEvent(event);
+			return;
+		}
+		
+		QMoveEvent* sigval1 = event;
+
+		miqt_exec_callback_QPlainTextEdit_MoveEvent(this, handle__MoveEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_MoveEvent(QMoveEvent* event) {
+
+		QPlainTextEdit::moveEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CloseEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void closeEvent(QCloseEvent* event) override {
+		if (handle__CloseEvent == 0) {
+			QPlainTextEdit::closeEvent(event);
+			return;
+		}
+		
+		QCloseEvent* sigval1 = event;
+
+		miqt_exec_callback_QPlainTextEdit_CloseEvent(this, handle__CloseEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CloseEvent(QCloseEvent* event) {
+
+		QPlainTextEdit::closeEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TabletEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void tabletEvent(QTabletEvent* event) override {
+		if (handle__TabletEvent == 0) {
+			QPlainTextEdit::tabletEvent(event);
+			return;
+		}
+		
+		QTabletEvent* sigval1 = event;
+
+		miqt_exec_callback_QPlainTextEdit_TabletEvent(this, handle__TabletEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TabletEvent(QTabletEvent* event) {
+
+		QPlainTextEdit::tabletEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ActionEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void actionEvent(QActionEvent* event) override {
+		if (handle__ActionEvent == 0) {
+			QPlainTextEdit::actionEvent(event);
+			return;
+		}
+		
+		QActionEvent* sigval1 = event;
+
+		miqt_exec_callback_QPlainTextEdit_ActionEvent(this, handle__ActionEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ActionEvent(QActionEvent* event) {
+
+		QPlainTextEdit::actionEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__HideEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void hideEvent(QHideEvent* event) override {
+		if (handle__HideEvent == 0) {
+			QPlainTextEdit::hideEvent(event);
+			return;
+		}
+		
+		QHideEvent* sigval1 = event;
+
+		miqt_exec_callback_QPlainTextEdit_HideEvent(this, handle__HideEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_HideEvent(QHideEvent* event) {
+
+		QPlainTextEdit::hideEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__NativeEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool nativeEvent(const QByteArray& eventType, void* message, qintptr* result) override {
+		if (handle__NativeEvent == 0) {
+			return QPlainTextEdit::nativeEvent(eventType, message, result);
+		}
+		
+		const QByteArray eventType_qb = eventType;
+		struct miqt_string eventType_ms;
+		eventType_ms.len = eventType_qb.length();
+		eventType_ms.data = static_cast<char*>(malloc(eventType_ms.len));
+		memcpy(eventType_ms.data, eventType_qb.data(), eventType_ms.len);
+		struct miqt_string sigval1 = eventType_ms;
+		void* sigval2 = message;
+		qintptr* result_ret = result;
+		intptr_t* sigval3 = (intptr_t*)(result_ret);
+
+		bool callback_return_value = miqt_exec_callback_QPlainTextEdit_NativeEvent(this, handle__NativeEvent, sigval1, sigval2, sigval3);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_NativeEvent(struct miqt_string eventType, void* message, intptr_t* result) {
+		QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+		return QPlainTextEdit::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Metric = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int metric(QPaintDevice::PaintDeviceMetric param1) const override {
+		if (handle__Metric == 0) {
+			return QPlainTextEdit::metric(param1);
+		}
+		
+		QPaintDevice::PaintDeviceMetric param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+
+		int callback_return_value = miqt_exec_callback_QPlainTextEdit_Metric(const_cast<MiqtVirtualQPlainTextEdit*>(this), handle__Metric, sigval1);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_Metric(int param1) const {
+
+		return QPlainTextEdit::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__InitPainter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void initPainter(QPainter* painter) const override {
+		if (handle__InitPainter == 0) {
+			QPlainTextEdit::initPainter(painter);
+			return;
+		}
+		
+		QPainter* sigval1 = painter;
+
+		miqt_exec_callback_QPlainTextEdit_InitPainter(const_cast<MiqtVirtualQPlainTextEdit*>(this), handle__InitPainter, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_InitPainter(QPainter* painter) const {
+
+		QPlainTextEdit::initPainter(painter);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Redirected = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPaintDevice* redirected(QPoint* offset) const override {
+		if (handle__Redirected == 0) {
+			return QPlainTextEdit::redirected(offset);
+		}
+		
+		QPoint* sigval1 = offset;
+
+		QPaintDevice* callback_return_value = miqt_exec_callback_QPlainTextEdit_Redirected(const_cast<MiqtVirtualQPlainTextEdit*>(this), handle__Redirected, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPaintDevice* virtualbase_Redirected(QPoint* offset) const {
+
+		return QPlainTextEdit::redirected(offset);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SharedPainter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPainter* sharedPainter() const override {
+		if (handle__SharedPainter == 0) {
+			return QPlainTextEdit::sharedPainter();
+		}
+		
+
+		QPainter* callback_return_value = miqt_exec_callback_QPlainTextEdit_SharedPainter(const_cast<MiqtVirtualQPlainTextEdit*>(this), handle__SharedPainter);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPainter* virtualbase_SharedPainter() const {
+
+		return QPlainTextEdit::sharedPainter();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QPlainTextEdit::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QPlainTextEdit_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QPlainTextEdit::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QPlainTextEdit::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QPlainTextEdit_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QPlainTextEdit::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QPlainTextEdit::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QPlainTextEdit_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QPlainTextEdit::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QPlainTextEdit::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QPlainTextEdit_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QPlainTextEdit::disconnectNotify(*signal);
 
 	}
 
@@ -1957,6 +2527,314 @@ QSize* QPlainTextEdit_virtualbase_ViewportSizeHint(const void* self) {
 	return ( (const MiqtVirtualQPlainTextEdit*)(self) )->virtualbase_ViewportSizeHint();
 }
 
+bool QPlainTextEdit_override_virtual_InitStyleOption(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitStyleOption = slot;
+	return true;
+}
+
+void QPlainTextEdit_virtualbase_InitStyleOption(const void* self, QStyleOptionFrame* option) {
+	( (const MiqtVirtualQPlainTextEdit*)(self) )->virtualbase_InitStyleOption(option);
+}
+
+bool QPlainTextEdit_override_virtual_DevType(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DevType = slot;
+	return true;
+}
+
+int QPlainTextEdit_virtualbase_DevType(const void* self) {
+	return ( (const MiqtVirtualQPlainTextEdit*)(self) )->virtualbase_DevType();
+}
+
+bool QPlainTextEdit_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
+}
+
+void QPlainTextEdit_virtualbase_SetVisible(void* self, bool visible) {
+	( (MiqtVirtualQPlainTextEdit*)(self) )->virtualbase_SetVisible(visible);
+}
+
+bool QPlainTextEdit_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeightForWidth = slot;
+	return true;
+}
+
+int QPlainTextEdit_virtualbase_HeightForWidth(const void* self, int param1) {
+	return ( (const MiqtVirtualQPlainTextEdit*)(self) )->virtualbase_HeightForWidth(param1);
+}
+
+bool QPlainTextEdit_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasHeightForWidth = slot;
+	return true;
+}
+
+bool QPlainTextEdit_virtualbase_HasHeightForWidth(const void* self) {
+	return ( (const MiqtVirtualQPlainTextEdit*)(self) )->virtualbase_HasHeightForWidth();
+}
+
+bool QPlainTextEdit_override_virtual_PaintEngine(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEngine = slot;
+	return true;
+}
+
+QPaintEngine* QPlainTextEdit_virtualbase_PaintEngine(const void* self) {
+	return ( (const MiqtVirtualQPlainTextEdit*)(self) )->virtualbase_PaintEngine();
+}
+
+bool QPlainTextEdit_override_virtual_EnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EnterEvent = slot;
+	return true;
+}
+
+void QPlainTextEdit_virtualbase_EnterEvent(void* self, QEnterEvent* event) {
+	( (MiqtVirtualQPlainTextEdit*)(self) )->virtualbase_EnterEvent(event);
+}
+
+bool QPlainTextEdit_override_virtual_LeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__LeaveEvent = slot;
+	return true;
+}
+
+void QPlainTextEdit_virtualbase_LeaveEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQPlainTextEdit*)(self) )->virtualbase_LeaveEvent(event);
+}
+
+bool QPlainTextEdit_override_virtual_MoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveEvent = slot;
+	return true;
+}
+
+void QPlainTextEdit_virtualbase_MoveEvent(void* self, QMoveEvent* event) {
+	( (MiqtVirtualQPlainTextEdit*)(self) )->virtualbase_MoveEvent(event);
+}
+
+bool QPlainTextEdit_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
+}
+
+void QPlainTextEdit_virtualbase_CloseEvent(void* self, QCloseEvent* event) {
+	( (MiqtVirtualQPlainTextEdit*)(self) )->virtualbase_CloseEvent(event);
+}
+
+bool QPlainTextEdit_override_virtual_TabletEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TabletEvent = slot;
+	return true;
+}
+
+void QPlainTextEdit_virtualbase_TabletEvent(void* self, QTabletEvent* event) {
+	( (MiqtVirtualQPlainTextEdit*)(self) )->virtualbase_TabletEvent(event);
+}
+
+bool QPlainTextEdit_override_virtual_ActionEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ActionEvent = slot;
+	return true;
+}
+
+void QPlainTextEdit_virtualbase_ActionEvent(void* self, QActionEvent* event) {
+	( (MiqtVirtualQPlainTextEdit*)(self) )->virtualbase_ActionEvent(event);
+}
+
+bool QPlainTextEdit_override_virtual_HideEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HideEvent = slot;
+	return true;
+}
+
+void QPlainTextEdit_virtualbase_HideEvent(void* self, QHideEvent* event) {
+	( (MiqtVirtualQPlainTextEdit*)(self) )->virtualbase_HideEvent(event);
+}
+
+bool QPlainTextEdit_override_virtual_NativeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NativeEvent = slot;
+	return true;
+}
+
+bool QPlainTextEdit_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
+	return ( (MiqtVirtualQPlainTextEdit*)(self) )->virtualbase_NativeEvent(eventType, message, result);
+}
+
+bool QPlainTextEdit_override_virtual_Metric(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Metric = slot;
+	return true;
+}
+
+int QPlainTextEdit_virtualbase_Metric(const void* self, int param1) {
+	return ( (const MiqtVirtualQPlainTextEdit*)(self) )->virtualbase_Metric(param1);
+}
+
+bool QPlainTextEdit_override_virtual_InitPainter(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitPainter = slot;
+	return true;
+}
+
+void QPlainTextEdit_virtualbase_InitPainter(const void* self, QPainter* painter) {
+	( (const MiqtVirtualQPlainTextEdit*)(self) )->virtualbase_InitPainter(painter);
+}
+
+bool QPlainTextEdit_override_virtual_Redirected(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Redirected = slot;
+	return true;
+}
+
+QPaintDevice* QPlainTextEdit_virtualbase_Redirected(const void* self, QPoint* offset) {
+	return ( (const MiqtVirtualQPlainTextEdit*)(self) )->virtualbase_Redirected(offset);
+}
+
+bool QPlainTextEdit_override_virtual_SharedPainter(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SharedPainter = slot;
+	return true;
+}
+
+QPainter* QPlainTextEdit_virtualbase_SharedPainter(const void* self) {
+	return ( (const MiqtVirtualQPlainTextEdit*)(self) )->virtualbase_SharedPainter();
+}
+
+bool QPlainTextEdit_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QPlainTextEdit_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQPlainTextEdit*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QPlainTextEdit_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QPlainTextEdit_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQPlainTextEdit*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QPlainTextEdit_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QPlainTextEdit_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQPlainTextEdit*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QPlainTextEdit_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextEdit* self_cast = dynamic_cast<MiqtVirtualQPlainTextEdit*>( (QPlainTextEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QPlainTextEdit_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQPlainTextEdit*)(self) )->virtualbase_DisconnectNotify(signal);
+}
+
 void QPlainTextEdit_Delete(QPlainTextEdit* self) {
 	delete self;
 }
@@ -2228,6 +3106,177 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QPlainTextDocumentLayout::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QPlainTextDocumentLayout_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QPlainTextDocumentLayout::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QPlainTextDocumentLayout::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QPlainTextDocumentLayout_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QPlainTextDocumentLayout::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QPlainTextDocumentLayout::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QPlainTextDocumentLayout_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QPlainTextDocumentLayout::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QPlainTextDocumentLayout::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QPlainTextDocumentLayout_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QPlainTextDocumentLayout::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QPlainTextDocumentLayout::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QPlainTextDocumentLayout_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QPlainTextDocumentLayout::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QPlainTextDocumentLayout::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QPlainTextDocumentLayout_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QPlainTextDocumentLayout::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QPlainTextDocumentLayout::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QPlainTextDocumentLayout_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QPlainTextDocumentLayout::disconnectNotify(*signal);
+
+	}
+
 };
 
 QPlainTextDocumentLayout* QPlainTextDocumentLayout_new(QTextDocument* document) {
@@ -2457,6 +3506,104 @@ bool QPlainTextDocumentLayout_override_virtual_DrawInlineObject(void* self, intp
 
 void QPlainTextDocumentLayout_virtualbase_DrawInlineObject(void* self, QPainter* painter, QRectF* rect, QTextInlineObject* object, int posInDocument, QTextFormat* format) {
 	( (MiqtVirtualQPlainTextDocumentLayout*)(self) )->virtualbase_DrawInlineObject(painter, rect, object, posInDocument, format);
+}
+
+bool QPlainTextDocumentLayout_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQPlainTextDocumentLayout*>( (QPlainTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
+}
+
+bool QPlainTextDocumentLayout_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQPlainTextDocumentLayout*)(self) )->virtualbase_Event(event);
+}
+
+bool QPlainTextDocumentLayout_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQPlainTextDocumentLayout*>( (QPlainTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
+}
+
+bool QPlainTextDocumentLayout_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQPlainTextDocumentLayout*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+bool QPlainTextDocumentLayout_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQPlainTextDocumentLayout*>( (QPlainTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QPlainTextDocumentLayout_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQPlainTextDocumentLayout*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QPlainTextDocumentLayout_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQPlainTextDocumentLayout*>( (QPlainTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QPlainTextDocumentLayout_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQPlainTextDocumentLayout*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QPlainTextDocumentLayout_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQPlainTextDocumentLayout*>( (QPlainTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QPlainTextDocumentLayout_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQPlainTextDocumentLayout*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QPlainTextDocumentLayout_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQPlainTextDocumentLayout*>( (QPlainTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QPlainTextDocumentLayout_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQPlainTextDocumentLayout*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QPlainTextDocumentLayout_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQPlainTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQPlainTextDocumentLayout*>( (QPlainTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QPlainTextDocumentLayout_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQPlainTextDocumentLayout*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
 void QPlainTextDocumentLayout_Delete(QPlainTextDocumentLayout* self) {

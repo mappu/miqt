@@ -15,6 +15,7 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QChildEvent;
 class QClipboard;
 class QCoreApplication;
 class QCursor;
@@ -23,6 +24,7 @@ class QFont;
 class QGuiApplication;
 class QIcon;
 class QInputMethod;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QPalette;
@@ -30,8 +32,10 @@ class QPoint;
 class QScreen;
 class QSessionManager;
 class QStyleHints;
+class QTimerEvent;
 class QWindow;
 #else
+typedef struct QChildEvent QChildEvent;
 typedef struct QClipboard QClipboard;
 typedef struct QCoreApplication QCoreApplication;
 typedef struct QCursor QCursor;
@@ -40,6 +44,7 @@ typedef struct QFont QFont;
 typedef struct QGuiApplication QGuiApplication;
 typedef struct QIcon QIcon;
 typedef struct QInputMethod QInputMethod;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QPalette QPalette;
@@ -47,6 +52,7 @@ typedef struct QPoint QPoint;
 typedef struct QScreen QScreen;
 typedef struct QSessionManager QSessionManager;
 typedef struct QStyleHints QStyleHints;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QWindow QWindow;
 #endif
 
@@ -140,6 +146,18 @@ bool QGuiApplication_override_virtual_Notify(void* self, intptr_t slot);
 bool QGuiApplication_virtualbase_Notify(void* self, QObject* param1, QEvent* param2);
 bool QGuiApplication_override_virtual_Event(void* self, intptr_t slot);
 bool QGuiApplication_virtualbase_Event(void* self, QEvent* param1);
+bool QGuiApplication_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QGuiApplication_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QGuiApplication_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QGuiApplication_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QGuiApplication_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QGuiApplication_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QGuiApplication_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QGuiApplication_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QGuiApplication_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QGuiApplication_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QGuiApplication_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QGuiApplication_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QGuiApplication_Delete(QGuiApplication* self);
 
 #ifdef __cplusplus

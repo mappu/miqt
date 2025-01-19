@@ -1,3 +1,6 @@
+#include <QChildEvent>
+#include <QEvent>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>
@@ -12,6 +15,7 @@
 #include <QTextTable>
 #include <QTextTableCell>
 #include <QTextTableFormat>
+#include <QTimerEvent>
 #include <qtexttable.h>
 #include "gen_qtexttable.h"
 
@@ -19,6 +23,13 @@
 extern "C" {
 #endif
 
+bool miqt_exec_callback_QTextTable_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QTextTable_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QTextTable_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QTextTable_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QTextTable_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QTextTable_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QTextTable_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -103,8 +114,188 @@ void QTextTableCell_Delete(QTextTableCell* self) {
 	delete self;
 }
 
+class MiqtVirtualQTextTable final : public QTextTable {
+public:
+
+	MiqtVirtualQTextTable(QTextDocument* doc): QTextTable(doc) {};
+
+	virtual ~MiqtVirtualQTextTable() override = default;
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QTextTable::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QTextTable_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QTextTable::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QTextTable::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QTextTable_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QTextTable::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QTextTable::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QTextTable_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QTextTable::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QTextTable::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QTextTable_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QTextTable::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QTextTable::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QTextTable_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QTextTable::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QTextTable::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QTextTable_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QTextTable::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QTextTable::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QTextTable_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QTextTable::disconnectNotify(*signal);
+
+	}
+
+};
+
 QTextTable* QTextTable_new(QTextDocument* doc) {
-	return new QTextTable(doc);
+	return new MiqtVirtualQTextTable(doc);
 }
 
 void QTextTable_virtbase(QTextTable* src, QTextFrame** outptr_QTextFrame) {
@@ -226,6 +417,104 @@ struct miqt_string QTextTable_Tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+bool QTextTable_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQTextTable* self_cast = dynamic_cast<MiqtVirtualQTextTable*>( (QTextTable*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
+}
+
+bool QTextTable_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQTextTable*)(self) )->virtualbase_Event(event);
+}
+
+bool QTextTable_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQTextTable* self_cast = dynamic_cast<MiqtVirtualQTextTable*>( (QTextTable*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
+}
+
+bool QTextTable_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQTextTable*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+bool QTextTable_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextTable* self_cast = dynamic_cast<MiqtVirtualQTextTable*>( (QTextTable*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QTextTable_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQTextTable*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QTextTable_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextTable* self_cast = dynamic_cast<MiqtVirtualQTextTable*>( (QTextTable*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QTextTable_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQTextTable*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QTextTable_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTextTable* self_cast = dynamic_cast<MiqtVirtualQTextTable*>( (QTextTable*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QTextTable_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQTextTable*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QTextTable_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQTextTable* self_cast = dynamic_cast<MiqtVirtualQTextTable*>( (QTextTable*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QTextTable_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQTextTable*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QTextTable_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQTextTable* self_cast = dynamic_cast<MiqtVirtualQTextTable*>( (QTextTable*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QTextTable_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQTextTable*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
 void QTextTable_Delete(QTextTable* self) {

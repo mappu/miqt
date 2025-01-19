@@ -32,6 +32,7 @@ class QKeyEvent;
 class QMdiArea;
 class QMdiSubWindow;
 class QMenu;
+class QMetaMethod;
 class QMetaObject;
 class QMouseEvent;
 class QMoveEvent;
@@ -67,6 +68,7 @@ typedef struct QKeyEvent QKeyEvent;
 typedef struct QMdiArea QMdiArea;
 typedef struct QMdiSubWindow QMdiSubWindow;
 typedef struct QMenu QMenu;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMouseEvent QMouseEvent;
 typedef struct QMoveEvent QMoveEvent;
@@ -226,6 +228,12 @@ bool QMdiSubWindow_override_virtual_InputMethodQuery(void* self, intptr_t slot);
 QVariant* QMdiSubWindow_virtualbase_InputMethodQuery(const void* self, int param1);
 bool QMdiSubWindow_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QMdiSubWindow_virtualbase_FocusNextPrevChild(void* self, bool next);
+bool QMdiSubWindow_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QMdiSubWindow_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QMdiSubWindow_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QMdiSubWindow_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QMdiSubWindow_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QMdiSubWindow_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QMdiSubWindow_Delete(QMdiSubWindow* self);
 
 #ifdef __cplusplus

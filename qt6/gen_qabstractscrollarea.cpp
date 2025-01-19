@@ -1,25 +1,42 @@
 #include <QAbstractScrollArea>
+#include <QActionEvent>
+#include <QByteArray>
+#include <QChildEvent>
+#include <QCloseEvent>
 #include <QContextMenuEvent>
 #include <QDragEnterEvent>
 #include <QDragLeaveEvent>
 #include <QDragMoveEvent>
 #include <QDropEvent>
+#include <QEnterEvent>
 #include <QEvent>
+#include <QFocusEvent>
 #include <QFrame>
+#include <QHideEvent>
+#include <QInputMethodEvent>
 #include <QKeyEvent>
 #include <QList>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QMouseEvent>
+#include <QMoveEvent>
 #include <QObject>
 #include <QPaintDevice>
+#include <QPaintEngine>
 #include <QPaintEvent>
+#include <QPainter>
+#include <QPoint>
 #include <QResizeEvent>
 #include <QScrollBar>
+#include <QShowEvent>
 #include <QSize>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
 #include <QStyleOptionFrame>
+#include <QTabletEvent>
+#include <QTimerEvent>
+#include <QVariant>
 #include <QWheelEvent>
 #include <QWidget>
 #include <qabstractscrollarea.h>
@@ -52,6 +69,35 @@ void miqt_exec_callback_QAbstractScrollArea_ScrollContentsBy(void*, intptr_t, in
 QSize* miqt_exec_callback_QAbstractScrollArea_ViewportSizeHint(void*, intptr_t);
 void miqt_exec_callback_QAbstractScrollArea_ChangeEvent(void*, intptr_t, QEvent*);
 void miqt_exec_callback_QAbstractScrollArea_InitStyleOption(void*, intptr_t, QStyleOptionFrame*);
+int miqt_exec_callback_QAbstractScrollArea_DevType(void*, intptr_t);
+void miqt_exec_callback_QAbstractScrollArea_SetVisible(void*, intptr_t, bool);
+int miqt_exec_callback_QAbstractScrollArea_HeightForWidth(void*, intptr_t, int);
+bool miqt_exec_callback_QAbstractScrollArea_HasHeightForWidth(void*, intptr_t);
+QPaintEngine* miqt_exec_callback_QAbstractScrollArea_PaintEngine(void*, intptr_t);
+void miqt_exec_callback_QAbstractScrollArea_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QAbstractScrollArea_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QAbstractScrollArea_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QAbstractScrollArea_EnterEvent(void*, intptr_t, QEnterEvent*);
+void miqt_exec_callback_QAbstractScrollArea_LeaveEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractScrollArea_MoveEvent(void*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QAbstractScrollArea_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QAbstractScrollArea_TabletEvent(void*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QAbstractScrollArea_ActionEvent(void*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QAbstractScrollArea_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QAbstractScrollArea_HideEvent(void*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QAbstractScrollArea_NativeEvent(void*, intptr_t, struct miqt_string, void*, intptr_t*);
+int miqt_exec_callback_QAbstractScrollArea_Metric(void*, intptr_t, int);
+void miqt_exec_callback_QAbstractScrollArea_InitPainter(void*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QAbstractScrollArea_Redirected(void*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QAbstractScrollArea_SharedPainter(void*, intptr_t);
+void miqt_exec_callback_QAbstractScrollArea_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QAbstractScrollArea_InputMethodQuery(void*, intptr_t, int);
+bool miqt_exec_callback_QAbstractScrollArea_FocusNextPrevChild(void*, intptr_t, bool);
+void miqt_exec_callback_QAbstractScrollArea_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAbstractScrollArea_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAbstractScrollArea_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractScrollArea_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAbstractScrollArea_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -609,6 +655,703 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DevType = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int devType() const override {
+		if (handle__DevType == 0) {
+			return QAbstractScrollArea::devType();
+		}
+		
+
+		int callback_return_value = miqt_exec_callback_QAbstractScrollArea_DevType(const_cast<MiqtVirtualQAbstractScrollArea*>(this), handle__DevType);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_DevType() const {
+
+		return QAbstractScrollArea::devType();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetVisible = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setVisible(bool visible) override {
+		if (handle__SetVisible == 0) {
+			QAbstractScrollArea::setVisible(visible);
+			return;
+		}
+		
+		bool sigval1 = visible;
+
+		miqt_exec_callback_QAbstractScrollArea_SetVisible(this, handle__SetVisible, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetVisible(bool visible) {
+
+		QAbstractScrollArea::setVisible(visible);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__HeightForWidth = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int heightForWidth(int param1) const override {
+		if (handle__HeightForWidth == 0) {
+			return QAbstractScrollArea::heightForWidth(param1);
+		}
+		
+		int sigval1 = param1;
+
+		int callback_return_value = miqt_exec_callback_QAbstractScrollArea_HeightForWidth(const_cast<MiqtVirtualQAbstractScrollArea*>(this), handle__HeightForWidth, sigval1);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_HeightForWidth(int param1) const {
+
+		return QAbstractScrollArea::heightForWidth(static_cast<int>(param1));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__HasHeightForWidth = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool hasHeightForWidth() const override {
+		if (handle__HasHeightForWidth == 0) {
+			return QAbstractScrollArea::hasHeightForWidth();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QAbstractScrollArea_HasHeightForWidth(const_cast<MiqtVirtualQAbstractScrollArea*>(this), handle__HasHeightForWidth);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_HasHeightForWidth() const {
+
+		return QAbstractScrollArea::hasHeightForWidth();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__PaintEngine = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPaintEngine* paintEngine() const override {
+		if (handle__PaintEngine == 0) {
+			return QAbstractScrollArea::paintEngine();
+		}
+		
+
+		QPaintEngine* callback_return_value = miqt_exec_callback_QAbstractScrollArea_PaintEngine(const_cast<MiqtVirtualQAbstractScrollArea*>(this), handle__PaintEngine);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPaintEngine* virtualbase_PaintEngine() const {
+
+		return QAbstractScrollArea::paintEngine();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__KeyReleaseEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void keyReleaseEvent(QKeyEvent* event) override {
+		if (handle__KeyReleaseEvent == 0) {
+			QAbstractScrollArea::keyReleaseEvent(event);
+			return;
+		}
+		
+		QKeyEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractScrollArea_KeyReleaseEvent(this, handle__KeyReleaseEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_KeyReleaseEvent(QKeyEvent* event) {
+
+		QAbstractScrollArea::keyReleaseEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__FocusInEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void focusInEvent(QFocusEvent* event) override {
+		if (handle__FocusInEvent == 0) {
+			QAbstractScrollArea::focusInEvent(event);
+			return;
+		}
+		
+		QFocusEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractScrollArea_FocusInEvent(this, handle__FocusInEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_FocusInEvent(QFocusEvent* event) {
+
+		QAbstractScrollArea::focusInEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__FocusOutEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void focusOutEvent(QFocusEvent* event) override {
+		if (handle__FocusOutEvent == 0) {
+			QAbstractScrollArea::focusOutEvent(event);
+			return;
+		}
+		
+		QFocusEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractScrollArea_FocusOutEvent(this, handle__FocusOutEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_FocusOutEvent(QFocusEvent* event) {
+
+		QAbstractScrollArea::focusOutEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EnterEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void enterEvent(QEnterEvent* event) override {
+		if (handle__EnterEvent == 0) {
+			QAbstractScrollArea::enterEvent(event);
+			return;
+		}
+		
+		QEnterEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractScrollArea_EnterEvent(this, handle__EnterEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_EnterEvent(QEnterEvent* event) {
+
+		QAbstractScrollArea::enterEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__LeaveEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void leaveEvent(QEvent* event) override {
+		if (handle__LeaveEvent == 0) {
+			QAbstractScrollArea::leaveEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractScrollArea_LeaveEvent(this, handle__LeaveEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_LeaveEvent(QEvent* event) {
+
+		QAbstractScrollArea::leaveEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MoveEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void moveEvent(QMoveEvent* event) override {
+		if (handle__MoveEvent == 0) {
+			QAbstractScrollArea::moveEvent(event);
+			return;
+		}
+		
+		QMoveEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractScrollArea_MoveEvent(this, handle__MoveEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_MoveEvent(QMoveEvent* event) {
+
+		QAbstractScrollArea::moveEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CloseEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void closeEvent(QCloseEvent* event) override {
+		if (handle__CloseEvent == 0) {
+			QAbstractScrollArea::closeEvent(event);
+			return;
+		}
+		
+		QCloseEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractScrollArea_CloseEvent(this, handle__CloseEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CloseEvent(QCloseEvent* event) {
+
+		QAbstractScrollArea::closeEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TabletEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void tabletEvent(QTabletEvent* event) override {
+		if (handle__TabletEvent == 0) {
+			QAbstractScrollArea::tabletEvent(event);
+			return;
+		}
+		
+		QTabletEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractScrollArea_TabletEvent(this, handle__TabletEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TabletEvent(QTabletEvent* event) {
+
+		QAbstractScrollArea::tabletEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ActionEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void actionEvent(QActionEvent* event) override {
+		if (handle__ActionEvent == 0) {
+			QAbstractScrollArea::actionEvent(event);
+			return;
+		}
+		
+		QActionEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractScrollArea_ActionEvent(this, handle__ActionEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ActionEvent(QActionEvent* event) {
+
+		QAbstractScrollArea::actionEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ShowEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void showEvent(QShowEvent* event) override {
+		if (handle__ShowEvent == 0) {
+			QAbstractScrollArea::showEvent(event);
+			return;
+		}
+		
+		QShowEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractScrollArea_ShowEvent(this, handle__ShowEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ShowEvent(QShowEvent* event) {
+
+		QAbstractScrollArea::showEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__HideEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void hideEvent(QHideEvent* event) override {
+		if (handle__HideEvent == 0) {
+			QAbstractScrollArea::hideEvent(event);
+			return;
+		}
+		
+		QHideEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractScrollArea_HideEvent(this, handle__HideEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_HideEvent(QHideEvent* event) {
+
+		QAbstractScrollArea::hideEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__NativeEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool nativeEvent(const QByteArray& eventType, void* message, qintptr* result) override {
+		if (handle__NativeEvent == 0) {
+			return QAbstractScrollArea::nativeEvent(eventType, message, result);
+		}
+		
+		const QByteArray eventType_qb = eventType;
+		struct miqt_string eventType_ms;
+		eventType_ms.len = eventType_qb.length();
+		eventType_ms.data = static_cast<char*>(malloc(eventType_ms.len));
+		memcpy(eventType_ms.data, eventType_qb.data(), eventType_ms.len);
+		struct miqt_string sigval1 = eventType_ms;
+		void* sigval2 = message;
+		qintptr* result_ret = result;
+		intptr_t* sigval3 = (intptr_t*)(result_ret);
+
+		bool callback_return_value = miqt_exec_callback_QAbstractScrollArea_NativeEvent(this, handle__NativeEvent, sigval1, sigval2, sigval3);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_NativeEvent(struct miqt_string eventType, void* message, intptr_t* result) {
+		QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+		return QAbstractScrollArea::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Metric = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int metric(QPaintDevice::PaintDeviceMetric param1) const override {
+		if (handle__Metric == 0) {
+			return QAbstractScrollArea::metric(param1);
+		}
+		
+		QPaintDevice::PaintDeviceMetric param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+
+		int callback_return_value = miqt_exec_callback_QAbstractScrollArea_Metric(const_cast<MiqtVirtualQAbstractScrollArea*>(this), handle__Metric, sigval1);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_Metric(int param1) const {
+
+		return QAbstractScrollArea::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__InitPainter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void initPainter(QPainter* painter) const override {
+		if (handle__InitPainter == 0) {
+			QAbstractScrollArea::initPainter(painter);
+			return;
+		}
+		
+		QPainter* sigval1 = painter;
+
+		miqt_exec_callback_QAbstractScrollArea_InitPainter(const_cast<MiqtVirtualQAbstractScrollArea*>(this), handle__InitPainter, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_InitPainter(QPainter* painter) const {
+
+		QAbstractScrollArea::initPainter(painter);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Redirected = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPaintDevice* redirected(QPoint* offset) const override {
+		if (handle__Redirected == 0) {
+			return QAbstractScrollArea::redirected(offset);
+		}
+		
+		QPoint* sigval1 = offset;
+
+		QPaintDevice* callback_return_value = miqt_exec_callback_QAbstractScrollArea_Redirected(const_cast<MiqtVirtualQAbstractScrollArea*>(this), handle__Redirected, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPaintDevice* virtualbase_Redirected(QPoint* offset) const {
+
+		return QAbstractScrollArea::redirected(offset);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SharedPainter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPainter* sharedPainter() const override {
+		if (handle__SharedPainter == 0) {
+			return QAbstractScrollArea::sharedPainter();
+		}
+		
+
+		QPainter* callback_return_value = miqt_exec_callback_QAbstractScrollArea_SharedPainter(const_cast<MiqtVirtualQAbstractScrollArea*>(this), handle__SharedPainter);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPainter* virtualbase_SharedPainter() const {
+
+		return QAbstractScrollArea::sharedPainter();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__InputMethodEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void inputMethodEvent(QInputMethodEvent* param1) override {
+		if (handle__InputMethodEvent == 0) {
+			QAbstractScrollArea::inputMethodEvent(param1);
+			return;
+		}
+		
+		QInputMethodEvent* sigval1 = param1;
+
+		miqt_exec_callback_QAbstractScrollArea_InputMethodEvent(this, handle__InputMethodEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_InputMethodEvent(QInputMethodEvent* param1) {
+
+		QAbstractScrollArea::inputMethodEvent(param1);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__InputMethodQuery = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QVariant inputMethodQuery(Qt::InputMethodQuery param1) const override {
+		if (handle__InputMethodQuery == 0) {
+			return QAbstractScrollArea::inputMethodQuery(param1);
+		}
+		
+		Qt::InputMethodQuery param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+
+		QVariant* callback_return_value = miqt_exec_callback_QAbstractScrollArea_InputMethodQuery(const_cast<MiqtVirtualQAbstractScrollArea*>(this), handle__InputMethodQuery, sigval1);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QVariant* virtualbase_InputMethodQuery(int param1) const {
+
+		return new QVariant(QAbstractScrollArea::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__FocusNextPrevChild = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool focusNextPrevChild(bool next) override {
+		if (handle__FocusNextPrevChild == 0) {
+			return QAbstractScrollArea::focusNextPrevChild(next);
+		}
+		
+		bool sigval1 = next;
+
+		bool callback_return_value = miqt_exec_callback_QAbstractScrollArea_FocusNextPrevChild(this, handle__FocusNextPrevChild, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_FocusNextPrevChild(bool next) {
+
+		return QAbstractScrollArea::focusNextPrevChild(next);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QAbstractScrollArea::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractScrollArea_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QAbstractScrollArea::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QAbstractScrollArea::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractScrollArea_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QAbstractScrollArea::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QAbstractScrollArea::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractScrollArea_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QAbstractScrollArea::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QAbstractScrollArea::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QAbstractScrollArea_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QAbstractScrollArea::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QAbstractScrollArea::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QAbstractScrollArea_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QAbstractScrollArea::disconnectNotify(*signal);
+
+	}
+
 };
 
 QAbstractScrollArea* QAbstractScrollArea_new(QWidget* parent) {
@@ -1076,6 +1819,412 @@ bool QAbstractScrollArea_override_virtual_InitStyleOption(void* self, intptr_t s
 
 void QAbstractScrollArea_virtualbase_InitStyleOption(const void* self, QStyleOptionFrame* option) {
 	( (const MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_InitStyleOption(option);
+}
+
+bool QAbstractScrollArea_override_virtual_DevType(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DevType = slot;
+	return true;
+}
+
+int QAbstractScrollArea_virtualbase_DevType(const void* self) {
+	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_DevType();
+}
+
+bool QAbstractScrollArea_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
+}
+
+void QAbstractScrollArea_virtualbase_SetVisible(void* self, bool visible) {
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_SetVisible(visible);
+}
+
+bool QAbstractScrollArea_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeightForWidth = slot;
+	return true;
+}
+
+int QAbstractScrollArea_virtualbase_HeightForWidth(const void* self, int param1) {
+	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_HeightForWidth(param1);
+}
+
+bool QAbstractScrollArea_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasHeightForWidth = slot;
+	return true;
+}
+
+bool QAbstractScrollArea_virtualbase_HasHeightForWidth(const void* self) {
+	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_HasHeightForWidth();
+}
+
+bool QAbstractScrollArea_override_virtual_PaintEngine(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEngine = slot;
+	return true;
+}
+
+QPaintEngine* QAbstractScrollArea_virtualbase_PaintEngine(const void* self) {
+	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_PaintEngine();
+}
+
+bool QAbstractScrollArea_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyReleaseEvent = slot;
+	return true;
+}
+
+void QAbstractScrollArea_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* event) {
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_KeyReleaseEvent(event);
+}
+
+bool QAbstractScrollArea_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
+}
+
+void QAbstractScrollArea_virtualbase_FocusInEvent(void* self, QFocusEvent* event) {
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_FocusInEvent(event);
+}
+
+bool QAbstractScrollArea_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
+}
+
+void QAbstractScrollArea_virtualbase_FocusOutEvent(void* self, QFocusEvent* event) {
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_FocusOutEvent(event);
+}
+
+bool QAbstractScrollArea_override_virtual_EnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EnterEvent = slot;
+	return true;
+}
+
+void QAbstractScrollArea_virtualbase_EnterEvent(void* self, QEnterEvent* event) {
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_EnterEvent(event);
+}
+
+bool QAbstractScrollArea_override_virtual_LeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__LeaveEvent = slot;
+	return true;
+}
+
+void QAbstractScrollArea_virtualbase_LeaveEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_LeaveEvent(event);
+}
+
+bool QAbstractScrollArea_override_virtual_MoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveEvent = slot;
+	return true;
+}
+
+void QAbstractScrollArea_virtualbase_MoveEvent(void* self, QMoveEvent* event) {
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_MoveEvent(event);
+}
+
+bool QAbstractScrollArea_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
+}
+
+void QAbstractScrollArea_virtualbase_CloseEvent(void* self, QCloseEvent* event) {
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_CloseEvent(event);
+}
+
+bool QAbstractScrollArea_override_virtual_TabletEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TabletEvent = slot;
+	return true;
+}
+
+void QAbstractScrollArea_virtualbase_TabletEvent(void* self, QTabletEvent* event) {
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_TabletEvent(event);
+}
+
+bool QAbstractScrollArea_override_virtual_ActionEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ActionEvent = slot;
+	return true;
+}
+
+void QAbstractScrollArea_virtualbase_ActionEvent(void* self, QActionEvent* event) {
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_ActionEvent(event);
+}
+
+bool QAbstractScrollArea_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
+}
+
+void QAbstractScrollArea_virtualbase_ShowEvent(void* self, QShowEvent* event) {
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_ShowEvent(event);
+}
+
+bool QAbstractScrollArea_override_virtual_HideEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HideEvent = slot;
+	return true;
+}
+
+void QAbstractScrollArea_virtualbase_HideEvent(void* self, QHideEvent* event) {
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_HideEvent(event);
+}
+
+bool QAbstractScrollArea_override_virtual_NativeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NativeEvent = slot;
+	return true;
+}
+
+bool QAbstractScrollArea_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
+	return ( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_NativeEvent(eventType, message, result);
+}
+
+bool QAbstractScrollArea_override_virtual_Metric(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Metric = slot;
+	return true;
+}
+
+int QAbstractScrollArea_virtualbase_Metric(const void* self, int param1) {
+	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_Metric(param1);
+}
+
+bool QAbstractScrollArea_override_virtual_InitPainter(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitPainter = slot;
+	return true;
+}
+
+void QAbstractScrollArea_virtualbase_InitPainter(const void* self, QPainter* painter) {
+	( (const MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_InitPainter(painter);
+}
+
+bool QAbstractScrollArea_override_virtual_Redirected(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Redirected = slot;
+	return true;
+}
+
+QPaintDevice* QAbstractScrollArea_virtualbase_Redirected(const void* self, QPoint* offset) {
+	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_Redirected(offset);
+}
+
+bool QAbstractScrollArea_override_virtual_SharedPainter(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SharedPainter = slot;
+	return true;
+}
+
+QPainter* QAbstractScrollArea_virtualbase_SharedPainter(const void* self) {
+	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_SharedPainter();
+}
+
+bool QAbstractScrollArea_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodEvent = slot;
+	return true;
+}
+
+void QAbstractScrollArea_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* param1) {
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_InputMethodEvent(param1);
+}
+
+bool QAbstractScrollArea_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodQuery = slot;
+	return true;
+}
+
+QVariant* QAbstractScrollArea_virtualbase_InputMethodQuery(const void* self, int param1) {
+	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_InputMethodQuery(param1);
+}
+
+bool QAbstractScrollArea_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusNextPrevChild = slot;
+	return true;
+}
+
+bool QAbstractScrollArea_virtualbase_FocusNextPrevChild(void* self, bool next) {
+	return ( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_FocusNextPrevChild(next);
+}
+
+bool QAbstractScrollArea_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QAbstractScrollArea_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QAbstractScrollArea_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QAbstractScrollArea_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QAbstractScrollArea_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QAbstractScrollArea_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QAbstractScrollArea_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QAbstractScrollArea_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QAbstractScrollArea_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractScrollArea* self_cast = dynamic_cast<MiqtVirtualQAbstractScrollArea*>( (QAbstractScrollArea*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QAbstractScrollArea_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
 void QAbstractScrollArea_Delete(QAbstractScrollArea* self) {

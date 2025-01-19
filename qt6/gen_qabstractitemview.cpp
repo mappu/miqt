@@ -2,34 +2,47 @@
 #include <QAbstractItemModel>
 #include <QAbstractItemView>
 #include <QAbstractScrollArea>
+#include <QActionEvent>
+#include <QByteArray>
+#include <QChildEvent>
+#include <QCloseEvent>
 #include <QContextMenuEvent>
 #include <QDragEnterEvent>
 #include <QDragLeaveEvent>
 #include <QDragMoveEvent>
 #include <QDropEvent>
+#include <QEnterEvent>
 #include <QEvent>
 #include <QFocusEvent>
 #include <QFrame>
+#include <QHideEvent>
 #include <QInputMethodEvent>
 #include <QItemSelection>
 #include <QItemSelectionModel>
 #include <QKeyEvent>
 #include <QList>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QModelIndex>
 #include <QMouseEvent>
+#include <QMoveEvent>
 #include <QObject>
 #include <QPaintDevice>
+#include <QPaintEngine>
 #include <QPaintEvent>
+#include <QPainter>
 #include <QPoint>
 #include <QRect>
 #include <QRegion>
 #include <QResizeEvent>
+#include <QShowEvent>
 #include <QSize>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QStyleOptionFrame>
 #include <QStyleOptionViewItem>
+#include <QTabletEvent>
 #include <QTimerEvent>
 #include <QVariant>
 #include <QWheelEvent>
@@ -114,6 +127,31 @@ void miqt_exec_callback_QAbstractItemView_PaintEvent(void*, intptr_t, QPaintEven
 void miqt_exec_callback_QAbstractItemView_WheelEvent(void*, intptr_t, QWheelEvent*);
 void miqt_exec_callback_QAbstractItemView_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
 void miqt_exec_callback_QAbstractItemView_ScrollContentsBy(void*, intptr_t, int, int);
+void miqt_exec_callback_QAbstractItemView_ChangeEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractItemView_InitStyleOption(void*, intptr_t, QStyleOptionFrame*);
+int miqt_exec_callback_QAbstractItemView_DevType(void*, intptr_t);
+void miqt_exec_callback_QAbstractItemView_SetVisible(void*, intptr_t, bool);
+int miqt_exec_callback_QAbstractItemView_HeightForWidth(void*, intptr_t, int);
+bool miqt_exec_callback_QAbstractItemView_HasHeightForWidth(void*, intptr_t);
+QPaintEngine* miqt_exec_callback_QAbstractItemView_PaintEngine(void*, intptr_t);
+void miqt_exec_callback_QAbstractItemView_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QAbstractItemView_EnterEvent(void*, intptr_t, QEnterEvent*);
+void miqt_exec_callback_QAbstractItemView_LeaveEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractItemView_MoveEvent(void*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QAbstractItemView_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QAbstractItemView_TabletEvent(void*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QAbstractItemView_ActionEvent(void*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QAbstractItemView_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QAbstractItemView_HideEvent(void*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QAbstractItemView_NativeEvent(void*, intptr_t, struct miqt_string, void*, intptr_t*);
+int miqt_exec_callback_QAbstractItemView_Metric(void*, intptr_t, int);
+void miqt_exec_callback_QAbstractItemView_InitPainter(void*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QAbstractItemView_Redirected(void*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QAbstractItemView_SharedPainter(void*, intptr_t);
+void miqt_exec_callback_QAbstractItemView_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAbstractItemView_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractItemView_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAbstractItemView_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1712,6 +1750,608 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChangeEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void changeEvent(QEvent* param1) override {
+		if (handle__ChangeEvent == 0) {
+			QAbstractItemView::changeEvent(param1);
+			return;
+		}
+		
+		QEvent* sigval1 = param1;
+
+		miqt_exec_callback_QAbstractItemView_ChangeEvent(this, handle__ChangeEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChangeEvent(QEvent* param1) {
+
+		QAbstractItemView::changeEvent(param1);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__InitStyleOption = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void initStyleOption(QStyleOptionFrame* option) const override {
+		if (handle__InitStyleOption == 0) {
+			QAbstractItemView::initStyleOption(option);
+			return;
+		}
+		
+		QStyleOptionFrame* sigval1 = option;
+
+		miqt_exec_callback_QAbstractItemView_InitStyleOption(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__InitStyleOption, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_InitStyleOption(QStyleOptionFrame* option) const {
+
+		QAbstractItemView::initStyleOption(option);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DevType = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int devType() const override {
+		if (handle__DevType == 0) {
+			return QAbstractItemView::devType();
+		}
+		
+
+		int callback_return_value = miqt_exec_callback_QAbstractItemView_DevType(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__DevType);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_DevType() const {
+
+		return QAbstractItemView::devType();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetVisible = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setVisible(bool visible) override {
+		if (handle__SetVisible == 0) {
+			QAbstractItemView::setVisible(visible);
+			return;
+		}
+		
+		bool sigval1 = visible;
+
+		miqt_exec_callback_QAbstractItemView_SetVisible(this, handle__SetVisible, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetVisible(bool visible) {
+
+		QAbstractItemView::setVisible(visible);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__HeightForWidth = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int heightForWidth(int param1) const override {
+		if (handle__HeightForWidth == 0) {
+			return QAbstractItemView::heightForWidth(param1);
+		}
+		
+		int sigval1 = param1;
+
+		int callback_return_value = miqt_exec_callback_QAbstractItemView_HeightForWidth(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__HeightForWidth, sigval1);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_HeightForWidth(int param1) const {
+
+		return QAbstractItemView::heightForWidth(static_cast<int>(param1));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__HasHeightForWidth = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool hasHeightForWidth() const override {
+		if (handle__HasHeightForWidth == 0) {
+			return QAbstractItemView::hasHeightForWidth();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QAbstractItemView_HasHeightForWidth(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__HasHeightForWidth);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_HasHeightForWidth() const {
+
+		return QAbstractItemView::hasHeightForWidth();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__PaintEngine = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPaintEngine* paintEngine() const override {
+		if (handle__PaintEngine == 0) {
+			return QAbstractItemView::paintEngine();
+		}
+		
+
+		QPaintEngine* callback_return_value = miqt_exec_callback_QAbstractItemView_PaintEngine(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__PaintEngine);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPaintEngine* virtualbase_PaintEngine() const {
+
+		return QAbstractItemView::paintEngine();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__KeyReleaseEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void keyReleaseEvent(QKeyEvent* event) override {
+		if (handle__KeyReleaseEvent == 0) {
+			QAbstractItemView::keyReleaseEvent(event);
+			return;
+		}
+		
+		QKeyEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractItemView_KeyReleaseEvent(this, handle__KeyReleaseEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_KeyReleaseEvent(QKeyEvent* event) {
+
+		QAbstractItemView::keyReleaseEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EnterEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void enterEvent(QEnterEvent* event) override {
+		if (handle__EnterEvent == 0) {
+			QAbstractItemView::enterEvent(event);
+			return;
+		}
+		
+		QEnterEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractItemView_EnterEvent(this, handle__EnterEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_EnterEvent(QEnterEvent* event) {
+
+		QAbstractItemView::enterEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__LeaveEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void leaveEvent(QEvent* event) override {
+		if (handle__LeaveEvent == 0) {
+			QAbstractItemView::leaveEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractItemView_LeaveEvent(this, handle__LeaveEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_LeaveEvent(QEvent* event) {
+
+		QAbstractItemView::leaveEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MoveEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void moveEvent(QMoveEvent* event) override {
+		if (handle__MoveEvent == 0) {
+			QAbstractItemView::moveEvent(event);
+			return;
+		}
+		
+		QMoveEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractItemView_MoveEvent(this, handle__MoveEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_MoveEvent(QMoveEvent* event) {
+
+		QAbstractItemView::moveEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CloseEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void closeEvent(QCloseEvent* event) override {
+		if (handle__CloseEvent == 0) {
+			QAbstractItemView::closeEvent(event);
+			return;
+		}
+		
+		QCloseEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractItemView_CloseEvent(this, handle__CloseEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CloseEvent(QCloseEvent* event) {
+
+		QAbstractItemView::closeEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TabletEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void tabletEvent(QTabletEvent* event) override {
+		if (handle__TabletEvent == 0) {
+			QAbstractItemView::tabletEvent(event);
+			return;
+		}
+		
+		QTabletEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractItemView_TabletEvent(this, handle__TabletEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TabletEvent(QTabletEvent* event) {
+
+		QAbstractItemView::tabletEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ActionEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void actionEvent(QActionEvent* event) override {
+		if (handle__ActionEvent == 0) {
+			QAbstractItemView::actionEvent(event);
+			return;
+		}
+		
+		QActionEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractItemView_ActionEvent(this, handle__ActionEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ActionEvent(QActionEvent* event) {
+
+		QAbstractItemView::actionEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ShowEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void showEvent(QShowEvent* event) override {
+		if (handle__ShowEvent == 0) {
+			QAbstractItemView::showEvent(event);
+			return;
+		}
+		
+		QShowEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractItemView_ShowEvent(this, handle__ShowEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ShowEvent(QShowEvent* event) {
+
+		QAbstractItemView::showEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__HideEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void hideEvent(QHideEvent* event) override {
+		if (handle__HideEvent == 0) {
+			QAbstractItemView::hideEvent(event);
+			return;
+		}
+		
+		QHideEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractItemView_HideEvent(this, handle__HideEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_HideEvent(QHideEvent* event) {
+
+		QAbstractItemView::hideEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__NativeEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool nativeEvent(const QByteArray& eventType, void* message, qintptr* result) override {
+		if (handle__NativeEvent == 0) {
+			return QAbstractItemView::nativeEvent(eventType, message, result);
+		}
+		
+		const QByteArray eventType_qb = eventType;
+		struct miqt_string eventType_ms;
+		eventType_ms.len = eventType_qb.length();
+		eventType_ms.data = static_cast<char*>(malloc(eventType_ms.len));
+		memcpy(eventType_ms.data, eventType_qb.data(), eventType_ms.len);
+		struct miqt_string sigval1 = eventType_ms;
+		void* sigval2 = message;
+		qintptr* result_ret = result;
+		intptr_t* sigval3 = (intptr_t*)(result_ret);
+
+		bool callback_return_value = miqt_exec_callback_QAbstractItemView_NativeEvent(this, handle__NativeEvent, sigval1, sigval2, sigval3);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_NativeEvent(struct miqt_string eventType, void* message, intptr_t* result) {
+		QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+		return QAbstractItemView::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Metric = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int metric(QPaintDevice::PaintDeviceMetric param1) const override {
+		if (handle__Metric == 0) {
+			return QAbstractItemView::metric(param1);
+		}
+		
+		QPaintDevice::PaintDeviceMetric param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+
+		int callback_return_value = miqt_exec_callback_QAbstractItemView_Metric(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__Metric, sigval1);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_Metric(int param1) const {
+
+		return QAbstractItemView::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__InitPainter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void initPainter(QPainter* painter) const override {
+		if (handle__InitPainter == 0) {
+			QAbstractItemView::initPainter(painter);
+			return;
+		}
+		
+		QPainter* sigval1 = painter;
+
+		miqt_exec_callback_QAbstractItemView_InitPainter(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__InitPainter, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_InitPainter(QPainter* painter) const {
+
+		QAbstractItemView::initPainter(painter);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Redirected = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPaintDevice* redirected(QPoint* offset) const override {
+		if (handle__Redirected == 0) {
+			return QAbstractItemView::redirected(offset);
+		}
+		
+		QPoint* sigval1 = offset;
+
+		QPaintDevice* callback_return_value = miqt_exec_callback_QAbstractItemView_Redirected(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__Redirected, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPaintDevice* virtualbase_Redirected(QPoint* offset) const {
+
+		return QAbstractItemView::redirected(offset);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SharedPainter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPainter* sharedPainter() const override {
+		if (handle__SharedPainter == 0) {
+			return QAbstractItemView::sharedPainter();
+		}
+		
+
+		QPainter* callback_return_value = miqt_exec_callback_QAbstractItemView_SharedPainter(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__SharedPainter);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPainter* virtualbase_SharedPainter() const {
+
+		return QAbstractItemView::sharedPainter();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QAbstractItemView::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractItemView_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QAbstractItemView::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QAbstractItemView::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractItemView_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QAbstractItemView::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QAbstractItemView::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QAbstractItemView_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QAbstractItemView::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QAbstractItemView::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QAbstractItemView_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QAbstractItemView::disconnectNotify(*signal);
+
+	}
+
 };
 
 QAbstractItemView* QAbstractItemView_new(QWidget* parent) {
@@ -3034,6 +3674,356 @@ bool QAbstractItemView_override_virtual_ScrollContentsBy(void* self, intptr_t sl
 
 void QAbstractItemView_virtualbase_ScrollContentsBy(void* self, int dx, int dy) {
 	( (MiqtVirtualQAbstractItemView*)(self) )->virtualbase_ScrollContentsBy(dx, dy);
+}
+
+bool QAbstractItemView_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemView* self_cast = dynamic_cast<MiqtVirtualQAbstractItemView*>( (QAbstractItemView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
+}
+
+void QAbstractItemView_virtualbase_ChangeEvent(void* self, QEvent* param1) {
+	( (MiqtVirtualQAbstractItemView*)(self) )->virtualbase_ChangeEvent(param1);
+}
+
+bool QAbstractItemView_override_virtual_InitStyleOption(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemView* self_cast = dynamic_cast<MiqtVirtualQAbstractItemView*>( (QAbstractItemView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitStyleOption = slot;
+	return true;
+}
+
+void QAbstractItemView_virtualbase_InitStyleOption(const void* self, QStyleOptionFrame* option) {
+	( (const MiqtVirtualQAbstractItemView*)(self) )->virtualbase_InitStyleOption(option);
+}
+
+bool QAbstractItemView_override_virtual_DevType(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemView* self_cast = dynamic_cast<MiqtVirtualQAbstractItemView*>( (QAbstractItemView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DevType = slot;
+	return true;
+}
+
+int QAbstractItemView_virtualbase_DevType(const void* self) {
+	return ( (const MiqtVirtualQAbstractItemView*)(self) )->virtualbase_DevType();
+}
+
+bool QAbstractItemView_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemView* self_cast = dynamic_cast<MiqtVirtualQAbstractItemView*>( (QAbstractItemView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
+}
+
+void QAbstractItemView_virtualbase_SetVisible(void* self, bool visible) {
+	( (MiqtVirtualQAbstractItemView*)(self) )->virtualbase_SetVisible(visible);
+}
+
+bool QAbstractItemView_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemView* self_cast = dynamic_cast<MiqtVirtualQAbstractItemView*>( (QAbstractItemView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeightForWidth = slot;
+	return true;
+}
+
+int QAbstractItemView_virtualbase_HeightForWidth(const void* self, int param1) {
+	return ( (const MiqtVirtualQAbstractItemView*)(self) )->virtualbase_HeightForWidth(param1);
+}
+
+bool QAbstractItemView_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemView* self_cast = dynamic_cast<MiqtVirtualQAbstractItemView*>( (QAbstractItemView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasHeightForWidth = slot;
+	return true;
+}
+
+bool QAbstractItemView_virtualbase_HasHeightForWidth(const void* self) {
+	return ( (const MiqtVirtualQAbstractItemView*)(self) )->virtualbase_HasHeightForWidth();
+}
+
+bool QAbstractItemView_override_virtual_PaintEngine(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemView* self_cast = dynamic_cast<MiqtVirtualQAbstractItemView*>( (QAbstractItemView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEngine = slot;
+	return true;
+}
+
+QPaintEngine* QAbstractItemView_virtualbase_PaintEngine(const void* self) {
+	return ( (const MiqtVirtualQAbstractItemView*)(self) )->virtualbase_PaintEngine();
+}
+
+bool QAbstractItemView_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemView* self_cast = dynamic_cast<MiqtVirtualQAbstractItemView*>( (QAbstractItemView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyReleaseEvent = slot;
+	return true;
+}
+
+void QAbstractItemView_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* event) {
+	( (MiqtVirtualQAbstractItemView*)(self) )->virtualbase_KeyReleaseEvent(event);
+}
+
+bool QAbstractItemView_override_virtual_EnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemView* self_cast = dynamic_cast<MiqtVirtualQAbstractItemView*>( (QAbstractItemView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EnterEvent = slot;
+	return true;
+}
+
+void QAbstractItemView_virtualbase_EnterEvent(void* self, QEnterEvent* event) {
+	( (MiqtVirtualQAbstractItemView*)(self) )->virtualbase_EnterEvent(event);
+}
+
+bool QAbstractItemView_override_virtual_LeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemView* self_cast = dynamic_cast<MiqtVirtualQAbstractItemView*>( (QAbstractItemView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__LeaveEvent = slot;
+	return true;
+}
+
+void QAbstractItemView_virtualbase_LeaveEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQAbstractItemView*)(self) )->virtualbase_LeaveEvent(event);
+}
+
+bool QAbstractItemView_override_virtual_MoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemView* self_cast = dynamic_cast<MiqtVirtualQAbstractItemView*>( (QAbstractItemView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveEvent = slot;
+	return true;
+}
+
+void QAbstractItemView_virtualbase_MoveEvent(void* self, QMoveEvent* event) {
+	( (MiqtVirtualQAbstractItemView*)(self) )->virtualbase_MoveEvent(event);
+}
+
+bool QAbstractItemView_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemView* self_cast = dynamic_cast<MiqtVirtualQAbstractItemView*>( (QAbstractItemView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
+}
+
+void QAbstractItemView_virtualbase_CloseEvent(void* self, QCloseEvent* event) {
+	( (MiqtVirtualQAbstractItemView*)(self) )->virtualbase_CloseEvent(event);
+}
+
+bool QAbstractItemView_override_virtual_TabletEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemView* self_cast = dynamic_cast<MiqtVirtualQAbstractItemView*>( (QAbstractItemView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TabletEvent = slot;
+	return true;
+}
+
+void QAbstractItemView_virtualbase_TabletEvent(void* self, QTabletEvent* event) {
+	( (MiqtVirtualQAbstractItemView*)(self) )->virtualbase_TabletEvent(event);
+}
+
+bool QAbstractItemView_override_virtual_ActionEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemView* self_cast = dynamic_cast<MiqtVirtualQAbstractItemView*>( (QAbstractItemView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ActionEvent = slot;
+	return true;
+}
+
+void QAbstractItemView_virtualbase_ActionEvent(void* self, QActionEvent* event) {
+	( (MiqtVirtualQAbstractItemView*)(self) )->virtualbase_ActionEvent(event);
+}
+
+bool QAbstractItemView_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemView* self_cast = dynamic_cast<MiqtVirtualQAbstractItemView*>( (QAbstractItemView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
+}
+
+void QAbstractItemView_virtualbase_ShowEvent(void* self, QShowEvent* event) {
+	( (MiqtVirtualQAbstractItemView*)(self) )->virtualbase_ShowEvent(event);
+}
+
+bool QAbstractItemView_override_virtual_HideEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemView* self_cast = dynamic_cast<MiqtVirtualQAbstractItemView*>( (QAbstractItemView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HideEvent = slot;
+	return true;
+}
+
+void QAbstractItemView_virtualbase_HideEvent(void* self, QHideEvent* event) {
+	( (MiqtVirtualQAbstractItemView*)(self) )->virtualbase_HideEvent(event);
+}
+
+bool QAbstractItemView_override_virtual_NativeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemView* self_cast = dynamic_cast<MiqtVirtualQAbstractItemView*>( (QAbstractItemView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NativeEvent = slot;
+	return true;
+}
+
+bool QAbstractItemView_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
+	return ( (MiqtVirtualQAbstractItemView*)(self) )->virtualbase_NativeEvent(eventType, message, result);
+}
+
+bool QAbstractItemView_override_virtual_Metric(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemView* self_cast = dynamic_cast<MiqtVirtualQAbstractItemView*>( (QAbstractItemView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Metric = slot;
+	return true;
+}
+
+int QAbstractItemView_virtualbase_Metric(const void* self, int param1) {
+	return ( (const MiqtVirtualQAbstractItemView*)(self) )->virtualbase_Metric(param1);
+}
+
+bool QAbstractItemView_override_virtual_InitPainter(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemView* self_cast = dynamic_cast<MiqtVirtualQAbstractItemView*>( (QAbstractItemView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitPainter = slot;
+	return true;
+}
+
+void QAbstractItemView_virtualbase_InitPainter(const void* self, QPainter* painter) {
+	( (const MiqtVirtualQAbstractItemView*)(self) )->virtualbase_InitPainter(painter);
+}
+
+bool QAbstractItemView_override_virtual_Redirected(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemView* self_cast = dynamic_cast<MiqtVirtualQAbstractItemView*>( (QAbstractItemView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Redirected = slot;
+	return true;
+}
+
+QPaintDevice* QAbstractItemView_virtualbase_Redirected(const void* self, QPoint* offset) {
+	return ( (const MiqtVirtualQAbstractItemView*)(self) )->virtualbase_Redirected(offset);
+}
+
+bool QAbstractItemView_override_virtual_SharedPainter(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemView* self_cast = dynamic_cast<MiqtVirtualQAbstractItemView*>( (QAbstractItemView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SharedPainter = slot;
+	return true;
+}
+
+QPainter* QAbstractItemView_virtualbase_SharedPainter(const void* self) {
+	return ( (const MiqtVirtualQAbstractItemView*)(self) )->virtualbase_SharedPainter();
+}
+
+bool QAbstractItemView_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemView* self_cast = dynamic_cast<MiqtVirtualQAbstractItemView*>( (QAbstractItemView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QAbstractItemView_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQAbstractItemView*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QAbstractItemView_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemView* self_cast = dynamic_cast<MiqtVirtualQAbstractItemView*>( (QAbstractItemView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QAbstractItemView_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQAbstractItemView*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QAbstractItemView_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemView* self_cast = dynamic_cast<MiqtVirtualQAbstractItemView*>( (QAbstractItemView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QAbstractItemView_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQAbstractItemView*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QAbstractItemView_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemView* self_cast = dynamic_cast<MiqtVirtualQAbstractItemView*>( (QAbstractItemView*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QAbstractItemView_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQAbstractItemView*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
 void QAbstractItemView_Delete(QAbstractItemView* self) {

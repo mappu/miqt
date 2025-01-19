@@ -881,6 +881,218 @@ func miqt_exec_callback_QGridLayout_ChildEvent(self *C.QGridLayout, cb C.intptr_
 
 }
 
+func (this *QGridLayout) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QGridLayout_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QGridLayout) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QGridLayout_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGridLayout_Event
+func miqt_exec_callback_QGridLayout_Event(self *C.QGridLayout, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	virtualReturn := gofunc((&QGridLayout{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QGridLayout) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QGridLayout_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QGridLayout) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QGridLayout_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGridLayout_EventFilter
+func miqt_exec_callback_QGridLayout_EventFilter(self *C.QGridLayout, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
+
+	virtualReturn := gofunc((&QGridLayout{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QGridLayout) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QGridLayout_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGridLayout) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QGridLayout_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGridLayout_TimerEvent
+func miqt_exec_callback_QGridLayout_TimerEvent(self *C.QGridLayout, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQTimerEvent(event)
+
+	gofunc((&QGridLayout{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QGridLayout) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QGridLayout_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QGridLayout) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QGridLayout_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGridLayout_CustomEvent
+func miqt_exec_callback_QGridLayout_CustomEvent(self *C.QGridLayout, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	gofunc((&QGridLayout{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QGridLayout) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QGridLayout_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QGridLayout) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QGridLayout_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGridLayout_ConnectNotify
+func miqt_exec_callback_QGridLayout_ConnectNotify(self *C.QGridLayout, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QGridLayout{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QGridLayout) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QGridLayout_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QGridLayout) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QGridLayout_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGridLayout_DisconnectNotify
+func miqt_exec_callback_QGridLayout_DisconnectNotify(self *C.QGridLayout, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QGridLayout{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
+func (this *QGridLayout) callVirtualBase_Widget() *QWidget {
+
+	return newQWidget(C.QGridLayout_virtualbase_Widget(unsafe.Pointer(this.h)))
+
+}
+func (this *QGridLayout) OnWidget(slot func(super func() *QWidget) *QWidget) {
+	ok := C.QGridLayout_override_virtual_Widget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGridLayout_Widget
+func miqt_exec_callback_QGridLayout_Widget(self *C.QGridLayout, cb C.intptr_t) *C.QWidget {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QWidget) *QWidget)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QGridLayout{h: self}).callVirtualBase_Widget)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QGridLayout) callVirtualBase_SpacerItem() *QSpacerItem {
+
+	return newQSpacerItem(C.QGridLayout_virtualbase_SpacerItem(unsafe.Pointer(this.h)))
+
+}
+func (this *QGridLayout) OnSpacerItem(slot func(super func() *QSpacerItem) *QSpacerItem) {
+	ok := C.QGridLayout_override_virtual_SpacerItem(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGridLayout_SpacerItem
+func miqt_exec_callback_QGridLayout_SpacerItem(self *C.QGridLayout, cb C.intptr_t) *C.QSpacerItem {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSpacerItem) *QSpacerItem)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QGridLayout{h: self}).callVirtualBase_SpacerItem)
+
+	return virtualReturn.cPointer()
+
+}
+
 // Delete this object from C++ memory.
 func (this *QGridLayout) Delete() {
 	C.QGridLayout_Delete(this.h)

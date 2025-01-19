@@ -17,6 +17,7 @@ extern "C" {
 #ifdef __cplusplus
 class QAbstractSpinBox;
 class QActionEvent;
+class QChildEvent;
 class QCloseEvent;
 class QContextMenuEvent;
 class QDragEnterEvent;
@@ -28,6 +29,7 @@ class QFocusEvent;
 class QHideEvent;
 class QInputMethodEvent;
 class QKeyEvent;
+class QMetaMethod;
 class QMetaObject;
 class QMouseEvent;
 class QMoveEvent;
@@ -48,6 +50,7 @@ class QWidget;
 #else
 typedef struct QAbstractSpinBox QAbstractSpinBox;
 typedef struct QActionEvent QActionEvent;
+typedef struct QChildEvent QChildEvent;
 typedef struct QCloseEvent QCloseEvent;
 typedef struct QContextMenuEvent QContextMenuEvent;
 typedef struct QDragEnterEvent QDragEnterEvent;
@@ -59,6 +62,7 @@ typedef struct QFocusEvent QFocusEvent;
 typedef struct QHideEvent QHideEvent;
 typedef struct QInputMethodEvent QInputMethodEvent;
 typedef struct QKeyEvent QKeyEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMouseEvent QMouseEvent;
 typedef struct QMoveEvent QMoveEvent;
@@ -236,6 +240,16 @@ bool QAbstractSpinBox_override_virtual_InputMethodEvent(void* self, intptr_t slo
 void QAbstractSpinBox_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* param1);
 bool QAbstractSpinBox_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QAbstractSpinBox_virtualbase_FocusNextPrevChild(void* self, bool next);
+bool QAbstractSpinBox_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QAbstractSpinBox_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QAbstractSpinBox_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QAbstractSpinBox_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QAbstractSpinBox_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QAbstractSpinBox_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QAbstractSpinBox_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QAbstractSpinBox_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QAbstractSpinBox_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QAbstractSpinBox_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QAbstractSpinBox_Delete(QAbstractSpinBox* self);
 
 #ifdef __cplusplus

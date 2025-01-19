@@ -98,6 +98,8 @@ bool QGraphicsGridLayout_override_virtual_UpdateGeometry(void* self, intptr_t sl
 void QGraphicsGridLayout_virtualbase_UpdateGeometry(void* self);
 bool QGraphicsGridLayout_override_virtual_WidgetEvent(void* self, intptr_t slot);
 void QGraphicsGridLayout_virtualbase_WidgetEvent(void* self, QEvent* e);
+bool QGraphicsGridLayout_override_virtual_IsEmpty(void* self, intptr_t slot);
+bool QGraphicsGridLayout_virtualbase_IsEmpty(const void* self);
 void QGraphicsGridLayout_Delete(QGraphicsGridLayout* self);
 
 #ifdef __cplusplus

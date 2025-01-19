@@ -17,17 +17,23 @@ extern "C" {
 #ifdef __cplusplus
 class QAbstractAnimation;
 class QAnimationGroup;
+class QChildEvent;
 class QEvent;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QParallelAnimationGroup;
+class QTimerEvent;
 #else
 typedef struct QAbstractAnimation QAbstractAnimation;
 typedef struct QAnimationGroup QAnimationGroup;
+typedef struct QChildEvent QChildEvent;
 typedef struct QEvent QEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QParallelAnimationGroup QParallelAnimationGroup;
+typedef struct QTimerEvent QTimerEvent;
 #endif
 
 QParallelAnimationGroup* QParallelAnimationGroup_new();
@@ -53,6 +59,18 @@ bool QParallelAnimationGroup_override_virtual_UpdateState(void* self, intptr_t s
 void QParallelAnimationGroup_virtualbase_UpdateState(void* self, int newState, int oldState);
 bool QParallelAnimationGroup_override_virtual_UpdateDirection(void* self, intptr_t slot);
 void QParallelAnimationGroup_virtualbase_UpdateDirection(void* self, int direction);
+bool QParallelAnimationGroup_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QParallelAnimationGroup_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QParallelAnimationGroup_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QParallelAnimationGroup_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QParallelAnimationGroup_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QParallelAnimationGroup_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QParallelAnimationGroup_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QParallelAnimationGroup_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QParallelAnimationGroup_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QParallelAnimationGroup_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QParallelAnimationGroup_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QParallelAnimationGroup_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QParallelAnimationGroup_Delete(QParallelAnimationGroup* self);
 
 #ifdef __cplusplus

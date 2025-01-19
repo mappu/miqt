@@ -1,13 +1,16 @@
 #include <QAbstractAnimation>
+#include <QChildEvent>
 #include <QEasingCurve>
 #include <QEvent>
 #include <QList>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QPair>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QTimerEvent>
 #include <QVariant>
 #include <QVariantAnimation>
 #include <qvariantanimation.h>
@@ -25,6 +28,12 @@ void miqt_exec_callback_QVariantAnimation_UpdateState(void*, intptr_t, int, int)
 void miqt_exec_callback_QVariantAnimation_UpdateCurrentValue(void*, intptr_t, QVariant*);
 QVariant* miqt_exec_callback_QVariantAnimation_Interpolated(void*, intptr_t, QVariant*, QVariant*, double);
 void miqt_exec_callback_QVariantAnimation_UpdateDirection(void*, intptr_t, int);
+bool miqt_exec_callback_QVariantAnimation_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QVariantAnimation_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QVariantAnimation_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QVariantAnimation_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QVariantAnimation_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QVariantAnimation_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -211,6 +220,154 @@ public:
 	void virtualbase_UpdateDirection(int direction) {
 
 		QVariantAnimation::updateDirection(static_cast<QAbstractAnimation::Direction>(direction));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QVariantAnimation::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QVariantAnimation_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QVariantAnimation::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QVariantAnimation::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QVariantAnimation_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QVariantAnimation::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QVariantAnimation::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QVariantAnimation_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QVariantAnimation::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QVariantAnimation::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QVariantAnimation_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QVariantAnimation::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QVariantAnimation::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QVariantAnimation_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QVariantAnimation::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QVariantAnimation::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QVariantAnimation_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QVariantAnimation::disconnectNotify(*signal);
 
 	}
 
@@ -493,6 +650,90 @@ bool QVariantAnimation_override_virtual_UpdateDirection(void* self, intptr_t slo
 
 void QVariantAnimation_virtualbase_UpdateDirection(void* self, int direction) {
 	( (MiqtVirtualQVariantAnimation*)(self) )->virtualbase_UpdateDirection(direction);
+}
+
+bool QVariantAnimation_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQVariantAnimation* self_cast = dynamic_cast<MiqtVirtualQVariantAnimation*>( (QVariantAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
+}
+
+bool QVariantAnimation_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQVariantAnimation*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+bool QVariantAnimation_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQVariantAnimation* self_cast = dynamic_cast<MiqtVirtualQVariantAnimation*>( (QVariantAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QVariantAnimation_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQVariantAnimation*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QVariantAnimation_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQVariantAnimation* self_cast = dynamic_cast<MiqtVirtualQVariantAnimation*>( (QVariantAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QVariantAnimation_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQVariantAnimation*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QVariantAnimation_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQVariantAnimation* self_cast = dynamic_cast<MiqtVirtualQVariantAnimation*>( (QVariantAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QVariantAnimation_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQVariantAnimation*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QVariantAnimation_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQVariantAnimation* self_cast = dynamic_cast<MiqtVirtualQVariantAnimation*>( (QVariantAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QVariantAnimation_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQVariantAnimation*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QVariantAnimation_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQVariantAnimation* self_cast = dynamic_cast<MiqtVirtualQVariantAnimation*>( (QVariantAnimation*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QVariantAnimation_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQVariantAnimation*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
 void QVariantAnimation_Delete(QVariantAnimation* self) {

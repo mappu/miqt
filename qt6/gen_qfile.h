@@ -15,19 +15,27 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QChildEvent;
+class QEvent;
 class QFile;
 class QFileDevice;
 class QIODevice;
 class QIODeviceBase;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
+class QTimerEvent;
 #else
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QFile QFile;
 typedef struct QFileDevice QFileDevice;
 typedef struct QIODevice QIODevice;
 typedef struct QIODeviceBase QIODeviceBase;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 #endif
 
 QFile* QFile_new();
@@ -98,6 +106,34 @@ bool QFile_override_virtual_WriteData(void* self, intptr_t slot);
 long long QFile_virtualbase_WriteData(void* self, const char* data, long long lenVal);
 bool QFile_override_virtual_ReadLineData(void* self, intptr_t slot);
 long long QFile_virtualbase_ReadLineData(void* self, char* data, long long maxlen);
+bool QFile_override_virtual_Reset(void* self, intptr_t slot);
+bool QFile_virtualbase_Reset(void* self);
+bool QFile_override_virtual_BytesAvailable(void* self, intptr_t slot);
+long long QFile_virtualbase_BytesAvailable(const void* self);
+bool QFile_override_virtual_BytesToWrite(void* self, intptr_t slot);
+long long QFile_virtualbase_BytesToWrite(const void* self);
+bool QFile_override_virtual_CanReadLine(void* self, intptr_t slot);
+bool QFile_virtualbase_CanReadLine(const void* self);
+bool QFile_override_virtual_WaitForReadyRead(void* self, intptr_t slot);
+bool QFile_virtualbase_WaitForReadyRead(void* self, int msecs);
+bool QFile_override_virtual_WaitForBytesWritten(void* self, intptr_t slot);
+bool QFile_virtualbase_WaitForBytesWritten(void* self, int msecs);
+bool QFile_override_virtual_SkipData(void* self, intptr_t slot);
+long long QFile_virtualbase_SkipData(void* self, long long maxSize);
+bool QFile_override_virtual_Event(void* self, intptr_t slot);
+bool QFile_virtualbase_Event(void* self, QEvent* event);
+bool QFile_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QFile_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QFile_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QFile_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QFile_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QFile_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QFile_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QFile_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QFile_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QFile_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QFile_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QFile_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QFile_Delete(QFile* self);
 
 #ifdef __cplusplus

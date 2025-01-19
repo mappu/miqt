@@ -15,16 +15,22 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QChildEvent;
 class QEvent;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
+class QTimerEvent;
 class QsciAPIs;
 class QsciAbstractAPIs;
 class QsciLexer;
 #else
+typedef struct QChildEvent QChildEvent;
 typedef struct QEvent QEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QsciAPIs QsciAPIs;
 typedef struct QsciAbstractAPIs QsciAbstractAPIs;
 typedef struct QsciLexer QsciLexer;
@@ -72,6 +78,18 @@ bool QsciAPIs_override_virtual_CallTips(void* self, intptr_t slot);
 struct miqt_array /* of struct miqt_string */  QsciAPIs_virtualbase_CallTips(void* self, struct miqt_array /* of struct miqt_string */  context, int commas, int style, struct miqt_array /* of int */  shifts);
 bool QsciAPIs_override_virtual_Event(void* self, intptr_t slot);
 bool QsciAPIs_virtualbase_Event(void* self, QEvent* e);
+bool QsciAPIs_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QsciAPIs_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QsciAPIs_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QsciAPIs_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QsciAPIs_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QsciAPIs_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QsciAPIs_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QsciAPIs_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QsciAPIs_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QsciAPIs_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QsciAPIs_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QsciAPIs_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QsciAPIs_Delete(QsciAPIs* self);
 
 #ifdef __cplusplus

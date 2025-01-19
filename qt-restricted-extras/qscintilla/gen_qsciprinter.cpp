@@ -3,6 +3,7 @@
 #include <QPaintDevice>
 #include <QPaintEngine>
 #include <QPainter>
+#include <QPoint>
 #include <QPrinter>
 #include <QRect>
 #include <QSizeF>
@@ -25,6 +26,9 @@ bool miqt_exec_callback_QsciPrinter_NewPage(void*, intptr_t);
 QPaintEngine* miqt_exec_callback_QsciPrinter_PaintEngine(void*, intptr_t);
 void miqt_exec_callback_QsciPrinter_SetMargins(void*, intptr_t, QPagedPaintDevice__Margins*);
 int miqt_exec_callback_QsciPrinter_Metric(void*, intptr_t, int);
+void miqt_exec_callback_QsciPrinter_InitPainter(void*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QsciPrinter_Redirected(void*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QsciPrinter_SharedPainter(void*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -337,6 +341,75 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__InitPainter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void initPainter(QPainter* painter) const override {
+		if (handle__InitPainter == 0) {
+			QsciPrinter::initPainter(painter);
+			return;
+		}
+		
+		QPainter* sigval1 = painter;
+
+		miqt_exec_callback_QsciPrinter_InitPainter(const_cast<MiqtVirtualQsciPrinter*>(this), handle__InitPainter, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_InitPainter(QPainter* painter) const {
+
+		QsciPrinter::initPainter(painter);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Redirected = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPaintDevice* redirected(QPoint* offset) const override {
+		if (handle__Redirected == 0) {
+			return QsciPrinter::redirected(offset);
+		}
+		
+		QPoint* sigval1 = offset;
+
+		QPaintDevice* callback_return_value = miqt_exec_callback_QsciPrinter_Redirected(const_cast<MiqtVirtualQsciPrinter*>(this), handle__Redirected, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPaintDevice* virtualbase_Redirected(QPoint* offset) const {
+
+		return QsciPrinter::redirected(offset);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SharedPainter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPainter* sharedPainter() const override {
+		if (handle__SharedPainter == 0) {
+			return QsciPrinter::sharedPainter();
+		}
+		
+
+		QPainter* callback_return_value = miqt_exec_callback_QsciPrinter_SharedPainter(const_cast<MiqtVirtualQsciPrinter*>(this), handle__SharedPainter);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPainter* virtualbase_SharedPainter() const {
+
+		return QsciPrinter::sharedPainter();
+
+	}
+
 };
 
 QsciPrinter* QsciPrinter_new() {
@@ -546,6 +619,48 @@ bool QsciPrinter_override_virtual_Metric(void* self, intptr_t slot) {
 
 int QsciPrinter_virtualbase_Metric(const void* self, int param1) {
 	return ( (const MiqtVirtualQsciPrinter*)(self) )->virtualbase_Metric(param1);
+}
+
+bool QsciPrinter_override_virtual_InitPainter(void* self, intptr_t slot) {
+	MiqtVirtualQsciPrinter* self_cast = dynamic_cast<MiqtVirtualQsciPrinter*>( (QsciPrinter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitPainter = slot;
+	return true;
+}
+
+void QsciPrinter_virtualbase_InitPainter(const void* self, QPainter* painter) {
+	( (const MiqtVirtualQsciPrinter*)(self) )->virtualbase_InitPainter(painter);
+}
+
+bool QsciPrinter_override_virtual_Redirected(void* self, intptr_t slot) {
+	MiqtVirtualQsciPrinter* self_cast = dynamic_cast<MiqtVirtualQsciPrinter*>( (QsciPrinter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Redirected = slot;
+	return true;
+}
+
+QPaintDevice* QsciPrinter_virtualbase_Redirected(const void* self, QPoint* offset) {
+	return ( (const MiqtVirtualQsciPrinter*)(self) )->virtualbase_Redirected(offset);
+}
+
+bool QsciPrinter_override_virtual_SharedPainter(void* self, intptr_t slot) {
+	MiqtVirtualQsciPrinter* self_cast = dynamic_cast<MiqtVirtualQsciPrinter*>( (QsciPrinter*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SharedPainter = slot;
+	return true;
+}
+
+QPainter* QsciPrinter_virtualbase_SharedPainter(const void* self) {
+	return ( (const MiqtVirtualQsciPrinter*)(self) )->virtualbase_SharedPainter();
 }
 
 void QsciPrinter_Delete(QsciPrinter* self) {

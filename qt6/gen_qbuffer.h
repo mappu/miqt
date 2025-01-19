@@ -16,18 +16,24 @@ extern "C" {
 
 #ifdef __cplusplus
 class QBuffer;
+class QChildEvent;
+class QEvent;
 class QIODevice;
 class QIODeviceBase;
 class QMetaMethod;
 class QMetaObject;
 class QObject;
+class QTimerEvent;
 #else
 typedef struct QBuffer QBuffer;
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QIODevice QIODevice;
 typedef struct QIODeviceBase QIODeviceBase;
 typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 #endif
 
 QBuffer* QBuffer_new();
@@ -92,6 +98,16 @@ bool QBuffer_override_virtual_ReadLineData(void* self, intptr_t slot);
 long long QBuffer_virtualbase_ReadLineData(void* self, char* data, long long maxlen);
 bool QBuffer_override_virtual_SkipData(void* self, intptr_t slot);
 long long QBuffer_virtualbase_SkipData(void* self, long long maxSize);
+bool QBuffer_override_virtual_Event(void* self, intptr_t slot);
+bool QBuffer_virtualbase_Event(void* self, QEvent* event);
+bool QBuffer_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QBuffer_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QBuffer_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QBuffer_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QBuffer_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QBuffer_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QBuffer_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QBuffer_virtualbase_CustomEvent(void* self, QEvent* event);
 void QBuffer_Delete(QBuffer* self);
 
 #ifdef __cplusplus

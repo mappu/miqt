@@ -210,6 +210,14 @@ bool QWidgetItemV2_override_virtual_HasHeightForWidth(void* self, intptr_t slot)
 bool QWidgetItemV2_virtualbase_HasHeightForWidth(const void* self);
 bool QWidgetItemV2_override_virtual_ControlTypes(void* self, intptr_t slot);
 int QWidgetItemV2_virtualbase_ControlTypes(const void* self);
+bool QWidgetItemV2_override_virtual_MinimumHeightForWidth(void* self, intptr_t slot);
+int QWidgetItemV2_virtualbase_MinimumHeightForWidth(const void* self, int param1);
+bool QWidgetItemV2_override_virtual_Invalidate(void* self, intptr_t slot);
+void QWidgetItemV2_virtualbase_Invalidate(void* self);
+bool QWidgetItemV2_override_virtual_Layout(void* self, intptr_t slot);
+QLayout* QWidgetItemV2_virtualbase_Layout(void* self);
+bool QWidgetItemV2_override_virtual_SpacerItem(void* self, intptr_t slot);
+QSpacerItem* QWidgetItemV2_virtualbase_SpacerItem(void* self);
 void QWidgetItemV2_Delete(QWidgetItemV2* self);
 
 #ifdef __cplusplus

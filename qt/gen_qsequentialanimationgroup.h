@@ -17,19 +17,25 @@ extern "C" {
 #ifdef __cplusplus
 class QAbstractAnimation;
 class QAnimationGroup;
+class QChildEvent;
 class QEvent;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QPauseAnimation;
 class QSequentialAnimationGroup;
+class QTimerEvent;
 #else
 typedef struct QAbstractAnimation QAbstractAnimation;
 typedef struct QAnimationGroup QAnimationGroup;
+typedef struct QChildEvent QChildEvent;
 typedef struct QEvent QEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QPauseAnimation QPauseAnimation;
 typedef struct QSequentialAnimationGroup QSequentialAnimationGroup;
+typedef struct QTimerEvent QTimerEvent;
 #endif
 
 QSequentialAnimationGroup* QSequentialAnimationGroup_new();
@@ -63,6 +69,18 @@ bool QSequentialAnimationGroup_override_virtual_UpdateState(void* self, intptr_t
 void QSequentialAnimationGroup_virtualbase_UpdateState(void* self, int newState, int oldState);
 bool QSequentialAnimationGroup_override_virtual_UpdateDirection(void* self, intptr_t slot);
 void QSequentialAnimationGroup_virtualbase_UpdateDirection(void* self, int direction);
+bool QSequentialAnimationGroup_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QSequentialAnimationGroup_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QSequentialAnimationGroup_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QSequentialAnimationGroup_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QSequentialAnimationGroup_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QSequentialAnimationGroup_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QSequentialAnimationGroup_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QSequentialAnimationGroup_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QSequentialAnimationGroup_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QSequentialAnimationGroup_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QSequentialAnimationGroup_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QSequentialAnimationGroup_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QSequentialAnimationGroup_Delete(QSequentialAnimationGroup* self);
 
 #ifdef __cplusplus

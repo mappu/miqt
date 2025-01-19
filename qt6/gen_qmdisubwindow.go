@@ -1408,6 +1408,84 @@ func miqt_exec_callback_QMdiSubWindow_FocusNextPrevChild(self *C.QMdiSubWindow, 
 
 }
 
+func (this *QMdiSubWindow) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QMdiSubWindow_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QMdiSubWindow) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QMdiSubWindow_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QMdiSubWindow_CustomEvent
+func miqt_exec_callback_QMdiSubWindow_CustomEvent(self *C.QMdiSubWindow, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QMdiSubWindow) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QMdiSubWindow_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QMdiSubWindow) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QMdiSubWindow_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QMdiSubWindow_ConnectNotify
+func miqt_exec_callback_QMdiSubWindow_ConnectNotify(self *C.QMdiSubWindow, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QMdiSubWindow) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QMdiSubWindow_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QMdiSubWindow) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QMdiSubWindow_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QMdiSubWindow_DisconnectNotify
+func miqt_exec_callback_QMdiSubWindow_DisconnectNotify(self *C.QMdiSubWindow, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QMdiSubWindow{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QMdiSubWindow) Delete() {
 	C.QMdiSubWindow_Delete(this.h)

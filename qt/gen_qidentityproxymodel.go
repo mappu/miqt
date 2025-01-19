@@ -1484,6 +1484,250 @@ func miqt_exec_callback_QIdentityProxyModel_SupportedDropActions(self *C.QIdenti
 
 }
 
+func (this *QIdentityProxyModel) callVirtualBase_RoleNames() map[int][]byte {
+
+	var _mm C.struct_miqt_map = C.QIdentityProxyModel_virtualbase_RoleNames(unsafe.Pointer(this.h))
+	_ret := make(map[int][]byte, int(_mm.len))
+	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
+	_Values := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.values))
+	for i := 0; i < int(_mm.len); i++ {
+		_entry_Key := (int)(_Keys[i])
+
+		var _hashval_bytearray C.struct_miqt_string = _Values[i]
+		_hashval_ret := C.GoBytes(unsafe.Pointer(_hashval_bytearray.data), C.int(int64(_hashval_bytearray.len)))
+		C.free(unsafe.Pointer(_hashval_bytearray.data))
+		_entry_Value := _hashval_ret
+		_ret[_entry_Key] = _entry_Value
+	}
+	return _ret
+
+}
+func (this *QIdentityProxyModel) OnRoleNames(slot func(super func() map[int][]byte) map[int][]byte) {
+	ok := C.QIdentityProxyModel_override_virtual_RoleNames(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QIdentityProxyModel_RoleNames
+func miqt_exec_callback_QIdentityProxyModel_RoleNames(self *C.QIdentityProxyModel, cb C.intptr_t) C.struct_miqt_map {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() map[int][]byte) map[int][]byte)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_RoleNames)
+	virtualReturn_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	defer C.free(unsafe.Pointer(virtualReturn_Keys_CArray))
+	virtualReturn_Values_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	defer C.free(unsafe.Pointer(virtualReturn_Values_CArray))
+	virtualReturn_ctr := 0
+	for virtualReturn_k, virtualReturn_v := range virtualReturn {
+		virtualReturn_Keys_CArray[virtualReturn_ctr] = (C.int)(virtualReturn_k)
+		virtualReturn_v_alias := C.struct_miqt_string{}
+		virtualReturn_v_alias.data = (*C.char)(unsafe.Pointer(&virtualReturn_v[0]))
+		virtualReturn_v_alias.len = C.size_t(len(virtualReturn_v))
+		virtualReturn_Values_CArray[virtualReturn_ctr] = virtualReturn_v_alias
+		virtualReturn_ctr++
+	}
+	virtualReturn_mm := C.struct_miqt_map{
+		len:    C.size_t(len(virtualReturn)),
+		keys:   unsafe.Pointer(virtualReturn_Keys_CArray),
+		values: unsafe.Pointer(virtualReturn_Values_CArray),
+	}
+
+	return virtualReturn_mm
+
+}
+
+func (this *QIdentityProxyModel) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QIdentityProxyModel_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QIdentityProxyModel) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QIdentityProxyModel_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QIdentityProxyModel_Event
+func miqt_exec_callback_QIdentityProxyModel_Event(self *C.QIdentityProxyModel, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QIdentityProxyModel) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QIdentityProxyModel_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QIdentityProxyModel) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QIdentityProxyModel_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QIdentityProxyModel_EventFilter
+func miqt_exec_callback_QIdentityProxyModel_EventFilter(self *C.QIdentityProxyModel, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
+
+	virtualReturn := gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QIdentityProxyModel) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QIdentityProxyModel_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QIdentityProxyModel) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QIdentityProxyModel_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QIdentityProxyModel_TimerEvent
+func miqt_exec_callback_QIdentityProxyModel_TimerEvent(self *C.QIdentityProxyModel, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQTimerEvent(event)
+
+	gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QIdentityProxyModel) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QIdentityProxyModel_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QIdentityProxyModel) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QIdentityProxyModel_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QIdentityProxyModel_ChildEvent
+func miqt_exec_callback_QIdentityProxyModel_ChildEvent(self *C.QIdentityProxyModel, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQChildEvent(event)
+
+	gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QIdentityProxyModel) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QIdentityProxyModel_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QIdentityProxyModel) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QIdentityProxyModel_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QIdentityProxyModel_CustomEvent
+func miqt_exec_callback_QIdentityProxyModel_CustomEvent(self *C.QIdentityProxyModel, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QIdentityProxyModel) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QIdentityProxyModel_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QIdentityProxyModel) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QIdentityProxyModel_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QIdentityProxyModel_ConnectNotify
+func miqt_exec_callback_QIdentityProxyModel_ConnectNotify(self *C.QIdentityProxyModel, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QIdentityProxyModel) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QIdentityProxyModel_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QIdentityProxyModel) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QIdentityProxyModel_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QIdentityProxyModel_DisconnectNotify
+func miqt_exec_callback_QIdentityProxyModel_DisconnectNotify(self *C.QIdentityProxyModel, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QIdentityProxyModel{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QIdentityProxyModel) Delete() {
 	C.QIdentityProxyModel_Delete(this.h)

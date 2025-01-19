@@ -16,6 +16,7 @@ extern "C" {
 
 #ifdef __cplusplus
 class QActionEvent;
+class QChildEvent;
 class QCloseEvent;
 class QContextMenuEvent;
 class QDragEnterEvent;
@@ -28,6 +29,7 @@ class QFrame;
 class QHideEvent;
 class QInputMethodEvent;
 class QKeyEvent;
+class QMetaMethod;
 class QMetaObject;
 class QMouseEvent;
 class QMoveEvent;
@@ -42,11 +44,13 @@ class QResizeEvent;
 class QShowEvent;
 class QSize;
 class QTabletEvent;
+class QTimerEvent;
 class QVariant;
 class QWheelEvent;
 class QWidget;
 #else
 typedef struct QActionEvent QActionEvent;
+typedef struct QChildEvent QChildEvent;
 typedef struct QCloseEvent QCloseEvent;
 typedef struct QContextMenuEvent QContextMenuEvent;
 typedef struct QDragEnterEvent QDragEnterEvent;
@@ -59,6 +63,7 @@ typedef struct QFrame QFrame;
 typedef struct QHideEvent QHideEvent;
 typedef struct QInputMethodEvent QInputMethodEvent;
 typedef struct QKeyEvent QKeyEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMouseEvent QMouseEvent;
 typedef struct QMoveEvent QMoveEvent;
@@ -73,6 +78,7 @@ typedef struct QResizeEvent QResizeEvent;
 typedef struct QShowEvent QShowEvent;
 typedef struct QSize QSize;
 typedef struct QTabletEvent QTabletEvent;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
@@ -189,6 +195,18 @@ bool QFrame_override_virtual_InputMethodQuery(void* self, intptr_t slot);
 QVariant* QFrame_virtualbase_InputMethodQuery(const void* self, int param1);
 bool QFrame_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QFrame_virtualbase_FocusNextPrevChild(void* self, bool next);
+bool QFrame_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QFrame_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QFrame_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QFrame_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QFrame_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QFrame_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QFrame_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QFrame_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QFrame_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QFrame_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QFrame_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QFrame_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QFrame_Delete(QFrame* self);
 
 #ifdef __cplusplus

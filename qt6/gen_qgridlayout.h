@@ -16,23 +16,31 @@ extern "C" {
 
 #ifdef __cplusplus
 class QChildEvent;
+class QEvent;
 class QGridLayout;
 class QLayout;
 class QLayoutItem;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QRect;
 class QSize;
+class QSpacerItem;
+class QTimerEvent;
 class QWidget;
 #else
 typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QGridLayout QGridLayout;
 typedef struct QLayout QLayout;
 typedef struct QLayoutItem QLayoutItem;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QRect QRect;
 typedef struct QSize QSize;
+typedef struct QSpacerItem QSpacerItem;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QWidget QWidget;
 #endif
 
@@ -136,6 +144,22 @@ bool QGridLayout_override_virtual_Layout(void* self, intptr_t slot);
 QLayout* QGridLayout_virtualbase_Layout(void* self);
 bool QGridLayout_override_virtual_ChildEvent(void* self, intptr_t slot);
 void QGridLayout_virtualbase_ChildEvent(void* self, QChildEvent* e);
+bool QGridLayout_override_virtual_Event(void* self, intptr_t slot);
+bool QGridLayout_virtualbase_Event(void* self, QEvent* event);
+bool QGridLayout_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QGridLayout_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QGridLayout_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QGridLayout_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QGridLayout_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QGridLayout_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QGridLayout_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QGridLayout_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QGridLayout_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QGridLayout_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+bool QGridLayout_override_virtual_Widget(void* self, intptr_t slot);
+QWidget* QGridLayout_virtualbase_Widget(const void* self);
+bool QGridLayout_override_virtual_SpacerItem(void* self, intptr_t slot);
+QSpacerItem* QGridLayout_virtualbase_SpacerItem(void* self);
 void QGridLayout_Delete(QGridLayout* self);
 
 #ifdef __cplusplus

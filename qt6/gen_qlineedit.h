@@ -17,6 +17,7 @@ extern "C" {
 #ifdef __cplusplus
 class QAction;
 class QActionEvent;
+class QChildEvent;
 class QCloseEvent;
 class QCompleter;
 class QContextMenuEvent;
@@ -34,6 +35,7 @@ class QKeyEvent;
 class QLineEdit;
 class QMargins;
 class QMenu;
+class QMetaMethod;
 class QMetaObject;
 class QMouseEvent;
 class QMoveEvent;
@@ -56,6 +58,7 @@ class QWidget;
 #else
 typedef struct QAction QAction;
 typedef struct QActionEvent QActionEvent;
+typedef struct QChildEvent QChildEvent;
 typedef struct QCloseEvent QCloseEvent;
 typedef struct QCompleter QCompleter;
 typedef struct QContextMenuEvent QContextMenuEvent;
@@ -73,6 +76,7 @@ typedef struct QKeyEvent QKeyEvent;
 typedef struct QLineEdit QLineEdit;
 typedef struct QMargins QMargins;
 typedef struct QMenu QMenu;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMouseEvent QMouseEvent;
 typedef struct QMoveEvent QMoveEvent;
@@ -293,6 +297,16 @@ bool QLineEdit_override_virtual_SharedPainter(void* self, intptr_t slot);
 QPainter* QLineEdit_virtualbase_SharedPainter(const void* self);
 bool QLineEdit_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QLineEdit_virtualbase_FocusNextPrevChild(void* self, bool next);
+bool QLineEdit_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QLineEdit_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QLineEdit_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QLineEdit_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QLineEdit_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QLineEdit_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QLineEdit_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QLineEdit_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QLineEdit_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QLineEdit_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QLineEdit_Delete(QLineEdit* self);
 
 #ifdef __cplusplus

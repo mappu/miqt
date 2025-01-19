@@ -1437,6 +1437,194 @@ func miqt_exec_callback_QConcatenateTablesProxyModel_Revert(self *C.QConcatenate
 
 }
 
+func (this *QConcatenateTablesProxyModel) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QConcatenateTablesProxyModel) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QConcatenateTablesProxyModel_Event
+func miqt_exec_callback_QConcatenateTablesProxyModel_Event(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	virtualReturn := gofunc((&QConcatenateTablesProxyModel{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QConcatenateTablesProxyModel) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QConcatenateTablesProxyModel_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QConcatenateTablesProxyModel) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QConcatenateTablesProxyModel_EventFilter
+func miqt_exec_callback_QConcatenateTablesProxyModel_EventFilter(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
+
+	virtualReturn := gofunc((&QConcatenateTablesProxyModel{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QConcatenateTablesProxyModel) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QConcatenateTablesProxyModel_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QConcatenateTablesProxyModel) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QConcatenateTablesProxyModel_TimerEvent
+func miqt_exec_callback_QConcatenateTablesProxyModel_TimerEvent(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQTimerEvent(event)
+
+	gofunc((&QConcatenateTablesProxyModel{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QConcatenateTablesProxyModel) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QConcatenateTablesProxyModel_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QConcatenateTablesProxyModel) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QConcatenateTablesProxyModel_ChildEvent
+func miqt_exec_callback_QConcatenateTablesProxyModel_ChildEvent(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQChildEvent(event)
+
+	gofunc((&QConcatenateTablesProxyModel{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QConcatenateTablesProxyModel) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QConcatenateTablesProxyModel_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QConcatenateTablesProxyModel) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QConcatenateTablesProxyModel_CustomEvent
+func miqt_exec_callback_QConcatenateTablesProxyModel_CustomEvent(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	gofunc((&QConcatenateTablesProxyModel{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QConcatenateTablesProxyModel) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QConcatenateTablesProxyModel_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QConcatenateTablesProxyModel) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QConcatenateTablesProxyModel_ConnectNotify
+func miqt_exec_callback_QConcatenateTablesProxyModel_ConnectNotify(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QConcatenateTablesProxyModel{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QConcatenateTablesProxyModel) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QConcatenateTablesProxyModel_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QConcatenateTablesProxyModel) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QConcatenateTablesProxyModel_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QConcatenateTablesProxyModel_DisconnectNotify
+func miqt_exec_callback_QConcatenateTablesProxyModel_DisconnectNotify(self *C.QConcatenateTablesProxyModel, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QConcatenateTablesProxyModel{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QConcatenateTablesProxyModel) Delete() {
 	C.QConcatenateTablesProxyModel_Delete(this.h)

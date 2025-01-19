@@ -1605,6 +1605,591 @@ func miqt_exec_callback_QPlainTextEdit_ViewportSizeHint(self *C.QPlainTextEdit, 
 
 }
 
+func (this *QPlainTextEdit) callVirtualBase_InitStyleOption(option *QStyleOptionFrame) {
+
+	C.QPlainTextEdit_virtualbase_InitStyleOption(unsafe.Pointer(this.h), option.cPointer())
+
+}
+func (this *QPlainTextEdit) OnInitStyleOption(slot func(super func(option *QStyleOptionFrame), option *QStyleOptionFrame)) {
+	ok := C.QPlainTextEdit_override_virtual_InitStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextEdit_InitStyleOption
+func miqt_exec_callback_QPlainTextEdit_InitStyleOption(self *C.QPlainTextEdit, cb C.intptr_t, option *C.QStyleOptionFrame) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(option *QStyleOptionFrame), option *QStyleOptionFrame))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQStyleOptionFrame(option)
+
+	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_InitStyleOption, slotval1)
+
+}
+
+func (this *QPlainTextEdit) callVirtualBase_DevType() int {
+
+	return (int)(C.QPlainTextEdit_virtualbase_DevType(unsafe.Pointer(this.h)))
+
+}
+func (this *QPlainTextEdit) OnDevType(slot func(super func() int) int) {
+	ok := C.QPlainTextEdit_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextEdit_DevType
+func miqt_exec_callback_QPlainTextEdit_DevType(self *C.QPlainTextEdit, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QPlainTextEdit{h: self}).callVirtualBase_DevType)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QPlainTextEdit) callVirtualBase_SetVisible(visible bool) {
+
+	C.QPlainTextEdit_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+
+}
+func (this *QPlainTextEdit) OnSetVisible(slot func(super func(visible bool), visible bool)) {
+	ok := C.QPlainTextEdit_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextEdit_SetVisible
+func miqt_exec_callback_QPlainTextEdit_SetVisible(self *C.QPlainTextEdit, cb C.intptr_t, visible C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(visible)
+
+	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_SetVisible, slotval1)
+
+}
+
+func (this *QPlainTextEdit) callVirtualBase_HeightForWidth(param1 int) int {
+
+	return (int)(C.QPlainTextEdit_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+
+}
+func (this *QPlainTextEdit) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.QPlainTextEdit_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextEdit_HeightForWidth
+func miqt_exec_callback_QPlainTextEdit_HeightForWidth(self *C.QPlainTextEdit, cb C.intptr_t, param1 C.int) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(param1)
+
+	virtualReturn := gofunc((&QPlainTextEdit{h: self}).callVirtualBase_HeightForWidth, slotval1)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QPlainTextEdit) callVirtualBase_HasHeightForWidth() bool {
+
+	return (bool)(C.QPlainTextEdit_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+
+}
+func (this *QPlainTextEdit) OnHasHeightForWidth(slot func(super func() bool) bool) {
+	ok := C.QPlainTextEdit_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextEdit_HasHeightForWidth
+func miqt_exec_callback_QPlainTextEdit_HasHeightForWidth(self *C.QPlainTextEdit, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QPlainTextEdit{h: self}).callVirtualBase_HasHeightForWidth)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QPlainTextEdit) callVirtualBase_PaintEngine() *QPaintEngine {
+
+	return newQPaintEngine(C.QPlainTextEdit_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+
+}
+func (this *QPlainTextEdit) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+	ok := C.QPlainTextEdit_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextEdit_PaintEngine
+func miqt_exec_callback_QPlainTextEdit_PaintEngine(self *C.QPlainTextEdit, cb C.intptr_t) *C.QPaintEngine {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPaintEngine) *QPaintEngine)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QPlainTextEdit{h: self}).callVirtualBase_PaintEngine)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QPlainTextEdit) callVirtualBase_EnterEvent(event *QEnterEvent) {
+
+	C.QPlainTextEdit_virtualbase_EnterEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QPlainTextEdit) OnEnterEvent(slot func(super func(event *QEnterEvent), event *QEnterEvent)) {
+	ok := C.QPlainTextEdit_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextEdit_EnterEvent
+func miqt_exec_callback_QPlainTextEdit_EnterEvent(self *C.QPlainTextEdit, cb C.intptr_t, event *C.QEnterEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEnterEvent), event *QEnterEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEnterEvent(event)
+
+	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_EnterEvent, slotval1)
+
+}
+
+func (this *QPlainTextEdit) callVirtualBase_LeaveEvent(event *QEvent) {
+
+	C.QPlainTextEdit_virtualbase_LeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QPlainTextEdit) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QPlainTextEdit_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextEdit_LeaveEvent
+func miqt_exec_callback_QPlainTextEdit_LeaveEvent(self *C.QPlainTextEdit, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_LeaveEvent, slotval1)
+
+}
+
+func (this *QPlainTextEdit) callVirtualBase_MoveEvent(event *QMoveEvent) {
+
+	C.QPlainTextEdit_virtualbase_MoveEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QPlainTextEdit) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+	ok := C.QPlainTextEdit_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextEdit_MoveEvent
+func miqt_exec_callback_QPlainTextEdit_MoveEvent(self *C.QPlainTextEdit, cb C.intptr_t, event *C.QMoveEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMoveEvent), event *QMoveEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMoveEvent(event)
+
+	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_MoveEvent, slotval1)
+
+}
+
+func (this *QPlainTextEdit) callVirtualBase_CloseEvent(event *QCloseEvent) {
+
+	C.QPlainTextEdit_virtualbase_CloseEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QPlainTextEdit) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+	ok := C.QPlainTextEdit_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextEdit_CloseEvent
+func miqt_exec_callback_QPlainTextEdit_CloseEvent(self *C.QPlainTextEdit, cb C.intptr_t, event *C.QCloseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QCloseEvent), event *QCloseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQCloseEvent(event)
+
+	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_CloseEvent, slotval1)
+
+}
+
+func (this *QPlainTextEdit) callVirtualBase_TabletEvent(event *QTabletEvent) {
+
+	C.QPlainTextEdit_virtualbase_TabletEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QPlainTextEdit) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+	ok := C.QPlainTextEdit_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextEdit_TabletEvent
+func miqt_exec_callback_QPlainTextEdit_TabletEvent(self *C.QPlainTextEdit, cb C.intptr_t, event *C.QTabletEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTabletEvent), event *QTabletEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQTabletEvent(event)
+
+	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_TabletEvent, slotval1)
+
+}
+
+func (this *QPlainTextEdit) callVirtualBase_ActionEvent(event *QActionEvent) {
+
+	C.QPlainTextEdit_virtualbase_ActionEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QPlainTextEdit) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+	ok := C.QPlainTextEdit_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextEdit_ActionEvent
+func miqt_exec_callback_QPlainTextEdit_ActionEvent(self *C.QPlainTextEdit, cb C.intptr_t, event *C.QActionEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QActionEvent), event *QActionEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQActionEvent(event)
+
+	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_ActionEvent, slotval1)
+
+}
+
+func (this *QPlainTextEdit) callVirtualBase_HideEvent(event *QHideEvent) {
+
+	C.QPlainTextEdit_virtualbase_HideEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QPlainTextEdit) OnHideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
+	ok := C.QPlainTextEdit_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextEdit_HideEvent
+func miqt_exec_callback_QPlainTextEdit_HideEvent(self *C.QPlainTextEdit, cb C.intptr_t, event *C.QHideEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QHideEvent), event *QHideEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQHideEvent(event)
+
+	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_HideEvent, slotval1)
+
+}
+
+func (this *QPlainTextEdit) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
+	eventType_alias := C.struct_miqt_string{}
+	eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	eventType_alias.len = C.size_t(len(eventType))
+
+	return (bool)(C.QPlainTextEdit_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
+
+}
+func (this *QPlainTextEdit) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
+	ok := C.QPlainTextEdit_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextEdit_NativeEvent
+func miqt_exec_callback_QPlainTextEdit_NativeEvent(self *C.QPlainTextEdit, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	var eventType_bytearray C.struct_miqt_string = eventType
+	eventType_ret := C.GoBytes(unsafe.Pointer(eventType_bytearray.data), C.int(int64(eventType_bytearray.len)))
+	C.free(unsafe.Pointer(eventType_bytearray.data))
+	slotval1 := eventType_ret
+	slotval2 := (unsafe.Pointer)(message)
+
+	slotval3 := (*uintptr)(unsafe.Pointer(result))
+
+	virtualReturn := gofunc((&QPlainTextEdit{h: self}).callVirtualBase_NativeEvent, slotval1, slotval2, slotval3)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QPlainTextEdit) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+
+	return (int)(C.QPlainTextEdit_virtualbase_Metric(unsafe.Pointer(this.h), (C.int)(param1)))
+
+}
+func (this *QPlainTextEdit) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+	ok := C.QPlainTextEdit_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextEdit_Metric
+func miqt_exec_callback_QPlainTextEdit_Metric(self *C.QPlainTextEdit, cb C.intptr_t, param1 C.int) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QPaintDevice__PaintDeviceMetric)(param1)
+
+	virtualReturn := gofunc((&QPlainTextEdit{h: self}).callVirtualBase_Metric, slotval1)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QPlainTextEdit) callVirtualBase_InitPainter(painter *QPainter) {
+
+	C.QPlainTextEdit_virtualbase_InitPainter(unsafe.Pointer(this.h), painter.cPointer())
+
+}
+func (this *QPlainTextEdit) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	ok := C.QPlainTextEdit_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextEdit_InitPainter
+func miqt_exec_callback_QPlainTextEdit_InitPainter(self *C.QPlainTextEdit, cb C.intptr_t, painter *C.QPainter) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter), painter *QPainter))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQPainter(painter)
+
+	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_InitPainter, slotval1)
+
+}
+
+func (this *QPlainTextEdit) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+
+	return newQPaintDevice(C.QPlainTextEdit_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+
+}
+func (this *QPlainTextEdit) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	ok := C.QPlainTextEdit_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextEdit_Redirected
+func miqt_exec_callback_QPlainTextEdit_Redirected(self *C.QPlainTextEdit, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQPoint(offset)
+
+	virtualReturn := gofunc((&QPlainTextEdit{h: self}).callVirtualBase_Redirected, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QPlainTextEdit) callVirtualBase_SharedPainter() *QPainter {
+
+	return newQPainter(C.QPlainTextEdit_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+
+}
+func (this *QPlainTextEdit) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
+	ok := C.QPlainTextEdit_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextEdit_SharedPainter
+func miqt_exec_callback_QPlainTextEdit_SharedPainter(self *C.QPlainTextEdit, cb C.intptr_t) *C.QPainter {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPainter) *QPainter)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QPlainTextEdit{h: self}).callVirtualBase_SharedPainter)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QPlainTextEdit) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QPlainTextEdit_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QPlainTextEdit) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QPlainTextEdit_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextEdit_ChildEvent
+func miqt_exec_callback_QPlainTextEdit_ChildEvent(self *C.QPlainTextEdit, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQChildEvent(event)
+
+	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QPlainTextEdit) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QPlainTextEdit_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QPlainTextEdit) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QPlainTextEdit_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextEdit_CustomEvent
+func miqt_exec_callback_QPlainTextEdit_CustomEvent(self *C.QPlainTextEdit, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QPlainTextEdit) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QPlainTextEdit_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QPlainTextEdit) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QPlainTextEdit_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextEdit_ConnectNotify
+func miqt_exec_callback_QPlainTextEdit_ConnectNotify(self *C.QPlainTextEdit, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QPlainTextEdit) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QPlainTextEdit_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QPlainTextEdit) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QPlainTextEdit_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextEdit_DisconnectNotify
+func miqt_exec_callback_QPlainTextEdit_DisconnectNotify(self *C.QPlainTextEdit, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QPlainTextEdit{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QPlainTextEdit) Delete() {
 	C.QPlainTextEdit_Delete(this.h)
@@ -2045,6 +2630,194 @@ func miqt_exec_callback_QPlainTextDocumentLayout_DrawInlineObject(self *C.QPlain
 	slotval5 := newQTextFormat(format)
 
 	gofunc((&QPlainTextDocumentLayout{h: self}).callVirtualBase_DrawInlineObject, slotval1, slotval2, slotval3, slotval4, slotval5)
+
+}
+
+func (this *QPlainTextDocumentLayout) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QPlainTextDocumentLayout_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QPlainTextDocumentLayout) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QPlainTextDocumentLayout_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextDocumentLayout_Event
+func miqt_exec_callback_QPlainTextDocumentLayout_Event(self *C.QPlainTextDocumentLayout, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	virtualReturn := gofunc((&QPlainTextDocumentLayout{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QPlainTextDocumentLayout) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QPlainTextDocumentLayout_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QPlainTextDocumentLayout) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QPlainTextDocumentLayout_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextDocumentLayout_EventFilter
+func miqt_exec_callback_QPlainTextDocumentLayout_EventFilter(self *C.QPlainTextDocumentLayout, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
+
+	virtualReturn := gofunc((&QPlainTextDocumentLayout{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QPlainTextDocumentLayout) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QPlainTextDocumentLayout_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QPlainTextDocumentLayout) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QPlainTextDocumentLayout_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextDocumentLayout_TimerEvent
+func miqt_exec_callback_QPlainTextDocumentLayout_TimerEvent(self *C.QPlainTextDocumentLayout, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQTimerEvent(event)
+
+	gofunc((&QPlainTextDocumentLayout{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QPlainTextDocumentLayout) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QPlainTextDocumentLayout_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QPlainTextDocumentLayout) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QPlainTextDocumentLayout_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextDocumentLayout_ChildEvent
+func miqt_exec_callback_QPlainTextDocumentLayout_ChildEvent(self *C.QPlainTextDocumentLayout, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQChildEvent(event)
+
+	gofunc((&QPlainTextDocumentLayout{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QPlainTextDocumentLayout) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QPlainTextDocumentLayout_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QPlainTextDocumentLayout) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QPlainTextDocumentLayout_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextDocumentLayout_CustomEvent
+func miqt_exec_callback_QPlainTextDocumentLayout_CustomEvent(self *C.QPlainTextDocumentLayout, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	gofunc((&QPlainTextDocumentLayout{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QPlainTextDocumentLayout) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QPlainTextDocumentLayout_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QPlainTextDocumentLayout) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QPlainTextDocumentLayout_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextDocumentLayout_ConnectNotify
+func miqt_exec_callback_QPlainTextDocumentLayout_ConnectNotify(self *C.QPlainTextDocumentLayout, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QPlainTextDocumentLayout{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QPlainTextDocumentLayout) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QPlainTextDocumentLayout_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QPlainTextDocumentLayout) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QPlainTextDocumentLayout_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPlainTextDocumentLayout_DisconnectNotify
+func miqt_exec_callback_QPlainTextDocumentLayout_DisconnectNotify(self *C.QPlainTextDocumentLayout, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QPlainTextDocumentLayout{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 
 }
 

@@ -1,3 +1,4 @@
+#include <QChildEvent>
 #include <QClipboard>
 #include <QCoreApplication>
 #include <QCursor>
@@ -7,6 +8,7 @@
 #include <QIcon>
 #include <QInputMethod>
 #include <QList>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QPalette>
@@ -17,6 +19,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QStyleHints>
+#include <QTimerEvent>
 #include <QWindow>
 #include <qguiapplication.h>
 #include "gen_qguiapplication.h"
@@ -41,6 +44,12 @@ void miqt_exec_callback_QGuiApplication_PaletteChanged(intptr_t, QPalette*);
 void miqt_exec_callback_QGuiApplication_FontChanged(intptr_t, QFont*);
 bool miqt_exec_callback_QGuiApplication_Notify(void*, intptr_t, QObject*, QEvent*);
 bool miqt_exec_callback_QGuiApplication_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGuiApplication_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QGuiApplication_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QGuiApplication_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QGuiApplication_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QGuiApplication_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGuiApplication_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -97,6 +106,154 @@ public:
 	bool virtualbase_Event(QEvent* param1) {
 
 		return QGuiApplication::event(param1);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QGuiApplication::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QGuiApplication_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QGuiApplication::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QGuiApplication::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QGuiApplication_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QGuiApplication::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QGuiApplication::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QGuiApplication_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QGuiApplication::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QGuiApplication::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QGuiApplication_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QGuiApplication::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QGuiApplication::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QGuiApplication_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QGuiApplication::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QGuiApplication::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QGuiApplication_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QGuiApplication::disconnectNotify(*signal);
 
 	}
 
@@ -609,6 +766,90 @@ bool QGuiApplication_override_virtual_Event(void* self, intptr_t slot) {
 
 bool QGuiApplication_virtualbase_Event(void* self, QEvent* param1) {
 	return ( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_Event(param1);
+}
+
+bool QGuiApplication_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQGuiApplication* self_cast = dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
+}
+
+bool QGuiApplication_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+bool QGuiApplication_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGuiApplication* self_cast = dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QGuiApplication_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QGuiApplication_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGuiApplication* self_cast = dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QGuiApplication_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QGuiApplication_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGuiApplication* self_cast = dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QGuiApplication_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QGuiApplication_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQGuiApplication* self_cast = dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QGuiApplication_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QGuiApplication_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQGuiApplication* self_cast = dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QGuiApplication_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
 void QGuiApplication_Delete(QGuiApplication* self) {

@@ -17,6 +17,7 @@ extern "C" {
 #ifdef __cplusplus
 class QAction;
 class QActionEvent;
+class QChildEvent;
 class QCloseEvent;
 class QContextMenuEvent;
 class QDragEnterEvent;
@@ -31,6 +32,7 @@ class QInputMethodEvent;
 class QKeyEvent;
 class QMenu;
 class QMenuBar;
+class QMetaMethod;
 class QMetaObject;
 class QMouseEvent;
 class QMoveEvent;
@@ -52,6 +54,7 @@ class QWidget;
 #else
 typedef struct QAction QAction;
 typedef struct QActionEvent QActionEvent;
+typedef struct QChildEvent QChildEvent;
 typedef struct QCloseEvent QCloseEvent;
 typedef struct QContextMenuEvent QContextMenuEvent;
 typedef struct QDragEnterEvent QDragEnterEvent;
@@ -66,6 +69,7 @@ typedef struct QInputMethodEvent QInputMethodEvent;
 typedef struct QKeyEvent QKeyEvent;
 typedef struct QMenu QMenu;
 typedef struct QMenuBar QMenuBar;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMouseEvent QMouseEvent;
 typedef struct QMoveEvent QMoveEvent;
@@ -225,6 +229,14 @@ bool QMenuBar_override_virtual_InputMethodQuery(void* self, intptr_t slot);
 QVariant* QMenuBar_virtualbase_InputMethodQuery(const void* self, int param1);
 bool QMenuBar_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QMenuBar_virtualbase_FocusNextPrevChild(void* self, bool next);
+bool QMenuBar_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QMenuBar_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QMenuBar_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QMenuBar_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QMenuBar_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QMenuBar_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QMenuBar_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QMenuBar_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QMenuBar_Delete(QMenuBar* self);
 
 #ifdef __cplusplus

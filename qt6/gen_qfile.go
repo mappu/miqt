@@ -728,6 +728,378 @@ func miqt_exec_callback_QFile_ReadLineData(self *C.QFile, cb C.intptr_t, data *C
 
 }
 
+func (this *QFile) callVirtualBase_Reset() bool {
+
+	return (bool)(C.QFile_virtualbase_Reset(unsafe.Pointer(this.h)))
+
+}
+func (this *QFile) OnReset(slot func(super func() bool) bool) {
+	ok := C.QFile_override_virtual_Reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QFile_Reset
+func miqt_exec_callback_QFile_Reset(self *C.QFile, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QFile{h: self}).callVirtualBase_Reset)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QFile) callVirtualBase_BytesAvailable() int64 {
+
+	return (int64)(C.QFile_virtualbase_BytesAvailable(unsafe.Pointer(this.h)))
+
+}
+func (this *QFile) OnBytesAvailable(slot func(super func() int64) int64) {
+	ok := C.QFile_override_virtual_BytesAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QFile_BytesAvailable
+func miqt_exec_callback_QFile_BytesAvailable(self *C.QFile, cb C.intptr_t) C.longlong {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QFile{h: self}).callVirtualBase_BytesAvailable)
+
+	return (C.longlong)(virtualReturn)
+
+}
+
+func (this *QFile) callVirtualBase_BytesToWrite() int64 {
+
+	return (int64)(C.QFile_virtualbase_BytesToWrite(unsafe.Pointer(this.h)))
+
+}
+func (this *QFile) OnBytesToWrite(slot func(super func() int64) int64) {
+	ok := C.QFile_override_virtual_BytesToWrite(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QFile_BytesToWrite
+func miqt_exec_callback_QFile_BytesToWrite(self *C.QFile, cb C.intptr_t) C.longlong {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QFile{h: self}).callVirtualBase_BytesToWrite)
+
+	return (C.longlong)(virtualReturn)
+
+}
+
+func (this *QFile) callVirtualBase_CanReadLine() bool {
+
+	return (bool)(C.QFile_virtualbase_CanReadLine(unsafe.Pointer(this.h)))
+
+}
+func (this *QFile) OnCanReadLine(slot func(super func() bool) bool) {
+	ok := C.QFile_override_virtual_CanReadLine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QFile_CanReadLine
+func miqt_exec_callback_QFile_CanReadLine(self *C.QFile, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QFile{h: self}).callVirtualBase_CanReadLine)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QFile) callVirtualBase_WaitForReadyRead(msecs int) bool {
+
+	return (bool)(C.QFile_virtualbase_WaitForReadyRead(unsafe.Pointer(this.h), (C.int)(msecs)))
+
+}
+func (this *QFile) OnWaitForReadyRead(slot func(super func(msecs int) bool, msecs int) bool) {
+	ok := C.QFile_override_virtual_WaitForReadyRead(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QFile_WaitForReadyRead
+func miqt_exec_callback_QFile_WaitForReadyRead(self *C.QFile, cb C.intptr_t, msecs C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(msecs int) bool, msecs int) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(msecs)
+
+	virtualReturn := gofunc((&QFile{h: self}).callVirtualBase_WaitForReadyRead, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QFile) callVirtualBase_WaitForBytesWritten(msecs int) bool {
+
+	return (bool)(C.QFile_virtualbase_WaitForBytesWritten(unsafe.Pointer(this.h), (C.int)(msecs)))
+
+}
+func (this *QFile) OnWaitForBytesWritten(slot func(super func(msecs int) bool, msecs int) bool) {
+	ok := C.QFile_override_virtual_WaitForBytesWritten(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QFile_WaitForBytesWritten
+func miqt_exec_callback_QFile_WaitForBytesWritten(self *C.QFile, cb C.intptr_t, msecs C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(msecs int) bool, msecs int) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(msecs)
+
+	virtualReturn := gofunc((&QFile{h: self}).callVirtualBase_WaitForBytesWritten, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QFile) callVirtualBase_SkipData(maxSize int64) int64 {
+
+	return (int64)(C.QFile_virtualbase_SkipData(unsafe.Pointer(this.h), (C.longlong)(maxSize)))
+
+}
+func (this *QFile) OnSkipData(slot func(super func(maxSize int64) int64, maxSize int64) int64) {
+	ok := C.QFile_override_virtual_SkipData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QFile_SkipData
+func miqt_exec_callback_QFile_SkipData(self *C.QFile, cb C.intptr_t, maxSize C.longlong) C.longlong {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(maxSize int64) int64, maxSize int64) int64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int64)(maxSize)
+
+	virtualReturn := gofunc((&QFile{h: self}).callVirtualBase_SkipData, slotval1)
+
+	return (C.longlong)(virtualReturn)
+
+}
+
+func (this *QFile) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QFile_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QFile) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QFile_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QFile_Event
+func miqt_exec_callback_QFile_Event(self *C.QFile, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	virtualReturn := gofunc((&QFile{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QFile) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QFile_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QFile) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QFile_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QFile_EventFilter
+func miqt_exec_callback_QFile_EventFilter(self *C.QFile, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
+
+	virtualReturn := gofunc((&QFile{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QFile) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QFile_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QFile) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QFile_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QFile_TimerEvent
+func miqt_exec_callback_QFile_TimerEvent(self *C.QFile, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQTimerEvent(event)
+
+	gofunc((&QFile{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QFile) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QFile_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QFile) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QFile_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QFile_ChildEvent
+func miqt_exec_callback_QFile_ChildEvent(self *C.QFile, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQChildEvent(event)
+
+	gofunc((&QFile{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QFile) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QFile_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QFile) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QFile_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QFile_CustomEvent
+func miqt_exec_callback_QFile_CustomEvent(self *C.QFile, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	gofunc((&QFile{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QFile) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QFile_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QFile) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QFile_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QFile_ConnectNotify
+func miqt_exec_callback_QFile_ConnectNotify(self *C.QFile, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QFile{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QFile) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QFile_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QFile) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QFile_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QFile_DisconnectNotify
+func miqt_exec_callback_QFile_DisconnectNotify(self *C.QFile, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QFile{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QFile) Delete() {
 	C.QFile_Delete(this.h)

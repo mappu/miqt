@@ -1,5 +1,7 @@
 #include <QBuffer>
 #include <QByteArray>
+#include <QChildEvent>
+#include <QEvent>
 #include <QIODevice>
 #include <QIODeviceBase>
 #include <QMetaMethod>
@@ -8,6 +10,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QTimerEvent>
 #include <qbuffer.h>
 #include "gen_qbuffer.h"
 
@@ -34,6 +37,11 @@ bool miqt_exec_callback_QBuffer_WaitForReadyRead(void*, intptr_t, int);
 bool miqt_exec_callback_QBuffer_WaitForBytesWritten(void*, intptr_t, int);
 long long miqt_exec_callback_QBuffer_ReadLineData(void*, intptr_t, char*, long long);
 long long miqt_exec_callback_QBuffer_SkipData(void*, intptr_t, long long);
+bool miqt_exec_callback_QBuffer_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QBuffer_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QBuffer_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QBuffer_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QBuffer_CustomEvent(void*, intptr_t, QEvent*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -498,6 +506,125 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QBuffer::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QBuffer_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QBuffer::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QBuffer::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QBuffer_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QBuffer::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QBuffer::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QBuffer_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QBuffer::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QBuffer::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QBuffer_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QBuffer::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QBuffer::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QBuffer_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QBuffer::customEvent(event);
+
+	}
+
 };
 
 QBuffer* QBuffer_new() {
@@ -883,6 +1010,76 @@ bool QBuffer_override_virtual_SkipData(void* self, intptr_t slot) {
 
 long long QBuffer_virtualbase_SkipData(void* self, long long maxSize) {
 	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_SkipData(maxSize);
+}
+
+bool QBuffer_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
+}
+
+bool QBuffer_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_Event(event);
+}
+
+bool QBuffer_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
+}
+
+bool QBuffer_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+bool QBuffer_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QBuffer_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQBuffer*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QBuffer_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QBuffer_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQBuffer*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QBuffer_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QBuffer_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQBuffer*)(self) )->virtualbase_CustomEvent(event);
 }
 
 void QBuffer_Delete(QBuffer* self) {

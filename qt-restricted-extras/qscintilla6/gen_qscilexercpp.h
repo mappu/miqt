@@ -15,20 +15,28 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QChildEvent;
 class QColor;
+class QEvent;
 class QFont;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QSettings;
+class QTimerEvent;
 class QsciLexer;
 class QsciLexerCPP;
 class QsciScintilla;
 #else
+typedef struct QChildEvent QChildEvent;
 typedef struct QColor QColor;
+typedef struct QEvent QEvent;
 typedef struct QFont QFont;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QSettings QSettings;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QsciLexer QsciLexer;
 typedef struct QsciLexerCPP QsciLexerCPP;
 typedef struct QsciScintilla QsciScintilla;
@@ -161,6 +169,20 @@ bool QsciLexerCPP_override_virtual_ReadProperties(void* self, intptr_t slot);
 bool QsciLexerCPP_virtualbase_ReadProperties(void* self, QSettings* qs, struct miqt_string prefix);
 bool QsciLexerCPP_override_virtual_WriteProperties(void* self, intptr_t slot);
 bool QsciLexerCPP_virtualbase_WriteProperties(const void* self, QSettings* qs, struct miqt_string prefix);
+bool QsciLexerCPP_override_virtual_Event(void* self, intptr_t slot);
+bool QsciLexerCPP_virtualbase_Event(void* self, QEvent* event);
+bool QsciLexerCPP_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QsciLexerCPP_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QsciLexerCPP_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QsciLexerCPP_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QsciLexerCPP_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QsciLexerCPP_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QsciLexerCPP_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QsciLexerCPP_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QsciLexerCPP_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QsciLexerCPP_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QsciLexerCPP_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QsciLexerCPP_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QsciLexerCPP_Delete(QsciLexerCPP* self);
 
 #ifdef __cplusplus

@@ -1289,6 +1289,140 @@ func miqt_exec_callback_QKeySequenceEdit_FocusNextPrevChild(self *C.QKeySequence
 
 }
 
+func (this *QKeySequenceEdit) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QKeySequenceEdit_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QKeySequenceEdit) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QKeySequenceEdit_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QKeySequenceEdit_EventFilter
+func miqt_exec_callback_QKeySequenceEdit_EventFilter(self *C.QKeySequenceEdit, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
+
+	virtualReturn := gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QKeySequenceEdit) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QKeySequenceEdit_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QKeySequenceEdit) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QKeySequenceEdit_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QKeySequenceEdit_ChildEvent
+func miqt_exec_callback_QKeySequenceEdit_ChildEvent(self *C.QKeySequenceEdit, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQChildEvent(event)
+
+	gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QKeySequenceEdit) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QKeySequenceEdit_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QKeySequenceEdit) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QKeySequenceEdit_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QKeySequenceEdit_CustomEvent
+func miqt_exec_callback_QKeySequenceEdit_CustomEvent(self *C.QKeySequenceEdit, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QKeySequenceEdit) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QKeySequenceEdit_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QKeySequenceEdit) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QKeySequenceEdit_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QKeySequenceEdit_ConnectNotify
+func miqt_exec_callback_QKeySequenceEdit_ConnectNotify(self *C.QKeySequenceEdit, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QKeySequenceEdit) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QKeySequenceEdit_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QKeySequenceEdit) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QKeySequenceEdit_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QKeySequenceEdit_DisconnectNotify
+func miqt_exec_callback_QKeySequenceEdit_DisconnectNotify(self *C.QKeySequenceEdit, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QKeySequenceEdit{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QKeySequenceEdit) Delete() {
 	C.QKeySequenceEdit_Delete(this.h)

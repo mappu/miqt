@@ -1,10 +1,13 @@
 #include <QAction>
+#include <QChildEvent>
 #include <QEvent>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QTimerEvent>
 #include <QWidget>
 #include <QWidgetAction>
 #include <qwidgetaction.h>
@@ -18,6 +21,11 @@ bool miqt_exec_callback_QWidgetAction_Event(void*, intptr_t, QEvent*);
 bool miqt_exec_callback_QWidgetAction_EventFilter(void*, intptr_t, QObject*, QEvent*);
 QWidget* miqt_exec_callback_QWidgetAction_CreateWidget(void*, intptr_t, QWidget*);
 void miqt_exec_callback_QWidgetAction_DeleteWidget(void*, intptr_t, QWidget*);
+void miqt_exec_callback_QWidgetAction_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QWidgetAction_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QWidgetAction_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QWidgetAction_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QWidgetAction_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -120,6 +128,130 @@ public:
 	void virtualbase_DeleteWidget(QWidget* widget) {
 
 		QWidgetAction::deleteWidget(widget);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QWidgetAction::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QWidgetAction_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QWidgetAction::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QWidgetAction::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QWidgetAction_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QWidgetAction::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QWidgetAction::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QWidgetAction_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QWidgetAction::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QWidgetAction::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QWidgetAction_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QWidgetAction::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QWidgetAction::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QWidgetAction_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QWidgetAction::disconnectNotify(*signal);
 
 	}
 
@@ -277,6 +409,76 @@ bool QWidgetAction_override_virtual_DeleteWidget(void* self, intptr_t slot) {
 
 void QWidgetAction_virtualbase_DeleteWidget(void* self, QWidget* widget) {
 	( (MiqtVirtualQWidgetAction*)(self) )->virtualbase_DeleteWidget(widget);
+}
+
+bool QWidgetAction_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetAction* self_cast = dynamic_cast<MiqtVirtualQWidgetAction*>( (QWidgetAction*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QWidgetAction_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQWidgetAction*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QWidgetAction_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetAction* self_cast = dynamic_cast<MiqtVirtualQWidgetAction*>( (QWidgetAction*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QWidgetAction_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQWidgetAction*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QWidgetAction_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetAction* self_cast = dynamic_cast<MiqtVirtualQWidgetAction*>( (QWidgetAction*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QWidgetAction_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQWidgetAction*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QWidgetAction_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetAction* self_cast = dynamic_cast<MiqtVirtualQWidgetAction*>( (QWidgetAction*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QWidgetAction_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQWidgetAction*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QWidgetAction_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetAction* self_cast = dynamic_cast<MiqtVirtualQWidgetAction*>( (QWidgetAction*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QWidgetAction_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQWidgetAction*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
 void QWidgetAction_Delete(QWidgetAction* self) {
