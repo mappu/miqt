@@ -449,10 +449,11 @@ func (c *CppClass) VirtualMethods() []CppMethod {
 		retNames[m.CppCallTarget()] = struct{}{}
 	}
 
-	// Only allow virtual overrides for direct inherits, not all inherits -
 	// Go will automatically allow virtual overrides for the base type because
-	// the parent struct is nested
-	for _, cinfo := range c.DirectInheritClassInfo() {
+	// the parent struct is nested, but the resulting functions will not work
+	// because the C ABI dynamic_cast<> will fail for the base type.
+	// Scan all inherited classes
+	for _, cinfo := range c.AllInheritsClassInfo() {
 
 		// If a base class is permanently unprojectable, the child classes
 		// should be too
