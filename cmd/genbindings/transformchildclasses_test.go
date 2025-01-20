@@ -9,17 +9,17 @@ func TestChildClassesExtract(t *testing.T) {
 	src := CppParsedHeader{
 		Classes: []CppClass{
 
-			CppClass{
+			{
 				ClassName: "Parent",
 
 				ChildClassdefs: []CppClass{
 
-					CppClass{
+					{
 						ClassName: "Parent::Child",
 
 						ChildClassdefs: []CppClass{
 
-							CppClass{
+							{
 								ClassName: "Parent::Child::Grandchild",
 							},
 						},

@@ -215,7 +215,6 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
-
 	// Depends on QtCore/Gui/Widgets, QPrintSupport
 	generate(
 		"qt-restricted-extras/qscintilla",
@@ -450,7 +449,6 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
-
 	// Qt 6 PDF
 	generate(
 		"qt6/pdf",
@@ -464,8 +462,6 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
-
-
 
 	// Qt 6 Charts
 	// Depends on QtCore/Gui/Widgets
