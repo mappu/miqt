@@ -493,6 +493,31 @@ func miqt_exec_callback_QGraphicsGridLayout_WidgetEvent(self *C.QGraphicsGridLay
 
 }
 
+func (this *QGraphicsGridLayout) callVirtualBase_IsEmpty() bool {
+
+	return (bool)(C.QGraphicsGridLayout_virtualbase_IsEmpty(unsafe.Pointer(this.h)))
+
+}
+func (this *QGraphicsGridLayout) OnIsEmpty(slot func(super func() bool) bool) {
+	ok := C.QGraphicsGridLayout_override_virtual_IsEmpty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsGridLayout_IsEmpty
+func miqt_exec_callback_QGraphicsGridLayout_IsEmpty(self *C.QGraphicsGridLayout, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QGraphicsGridLayout{h: self}).callVirtualBase_IsEmpty)
+
+	return (C.bool)(virtualReturn)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QGraphicsGridLayout) Delete() {
 	C.QGraphicsGridLayout_Delete(this.h)

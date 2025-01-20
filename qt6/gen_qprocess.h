@@ -15,19 +15,27 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QChildEvent;
+class QEvent;
 class QIODevice;
 class QIODeviceBase;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QProcess;
 class QProcessEnvironment;
+class QTimerEvent;
 #else
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QIODevice QIODevice;
 typedef struct QIODeviceBase QIODeviceBase;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QProcess QProcess;
 typedef struct QProcessEnvironment QProcessEnvironment;
+typedef struct QTimerEvent QTimerEvent;
 #endif
 
 QProcessEnvironment* QProcessEnvironment_new();
@@ -161,6 +169,20 @@ bool QProcess_override_virtual_ReadLineData(void* self, intptr_t slot);
 long long QProcess_virtualbase_ReadLineData(void* self, char* data, long long maxlen);
 bool QProcess_override_virtual_SkipData(void* self, intptr_t slot);
 long long QProcess_virtualbase_SkipData(void* self, long long maxSize);
+bool QProcess_override_virtual_Event(void* self, intptr_t slot);
+bool QProcess_virtualbase_Event(void* self, QEvent* event);
+bool QProcess_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QProcess_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QProcess_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QProcess_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QProcess_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QProcess_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QProcess_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QProcess_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QProcess_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QProcess_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QProcess_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QProcess_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QProcess_Delete(QProcess* self);
 
 #ifdef __cplusplus

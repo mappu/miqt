@@ -1241,6 +1241,194 @@ func miqt_exec_callback_QsciLexerAVS_WriteProperties(self *C.QsciLexerAVS, cb C.
 
 }
 
+func (this *QsciLexerAVS) callVirtualBase_Event(event *qt.QEvent) bool {
+
+	return (bool)(C.QsciLexerAVS_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QsciLexerAVS) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	ok := C.QsciLexerAVS_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciLexerAVS_Event
+func miqt_exec_callback_QsciLexerAVS_Event(self *C.QsciLexerAVS, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QsciLexerAVS{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QsciLexerAVS) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+
+	return (bool)(C.QsciLexerAVS_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QsciLexerAVS) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	ok := C.QsciLexerAVS_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciLexerAVS_EventFilter
+func miqt_exec_callback_QsciLexerAVS_EventFilter(self *C.QsciLexerAVS, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
+	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QsciLexerAVS{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QsciLexerAVS) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+
+	C.QsciLexerAVS_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+
+}
+func (this *QsciLexerAVS) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	ok := C.QsciLexerAVS_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciLexerAVS_TimerEvent
+func miqt_exec_callback_QsciLexerAVS_TimerEvent(self *C.QsciLexerAVS, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
+
+	gofunc((&QsciLexerAVS{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QsciLexerAVS) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+
+	C.QsciLexerAVS_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+
+}
+func (this *QsciLexerAVS) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	ok := C.QsciLexerAVS_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciLexerAVS_ChildEvent
+func miqt_exec_callback_QsciLexerAVS_ChildEvent(self *C.QsciLexerAVS, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
+
+	gofunc((&QsciLexerAVS{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QsciLexerAVS) callVirtualBase_CustomEvent(event *qt.QEvent) {
+
+	C.QsciLexerAVS_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+
+}
+func (this *QsciLexerAVS) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QsciLexerAVS_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciLexerAVS_CustomEvent
+func miqt_exec_callback_QsciLexerAVS_CustomEvent(self *C.QsciLexerAVS, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QsciLexerAVS{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QsciLexerAVS) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+
+	C.QsciLexerAVS_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QsciLexerAVS) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QsciLexerAVS_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciLexerAVS_ConnectNotify
+func miqt_exec_callback_QsciLexerAVS_ConnectNotify(self *C.QsciLexerAVS, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QsciLexerAVS{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QsciLexerAVS) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+
+	C.QsciLexerAVS_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QsciLexerAVS) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QsciLexerAVS_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciLexerAVS_DisconnectNotify
+func miqt_exec_callback_QsciLexerAVS_DisconnectNotify(self *C.QsciLexerAVS, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QsciLexerAVS{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QsciLexerAVS) Delete() {
 	C.QsciLexerAVS_Delete(this.h)

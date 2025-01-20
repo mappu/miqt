@@ -17,23 +17,31 @@ extern "C" {
 #ifdef __cplusplus
 class QAbstractItemModel;
 class QAbstractProxyModel;
+class QChildEvent;
+class QEvent;
 class QItemSelection;
+class QMetaMethod;
 class QMetaObject;
 class QMimeData;
 class QModelIndex;
 class QObject;
 class QSize;
+class QTimerEvent;
 class QTransposeProxyModel;
 class QVariant;
 #else
 typedef struct QAbstractItemModel QAbstractItemModel;
 typedef struct QAbstractProxyModel QAbstractProxyModel;
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QItemSelection QItemSelection;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMimeData QMimeData;
 typedef struct QModelIndex QModelIndex;
 typedef struct QObject QObject;
 typedef struct QSize QSize;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QTransposeProxyModel QTransposeProxyModel;
 typedef struct QVariant QVariant;
 #endif
@@ -142,6 +150,24 @@ bool QTransposeProxyModel_override_virtual_SupportedDragActions(void* self, intp
 int QTransposeProxyModel_virtualbase_SupportedDragActions(const void* self);
 bool QTransposeProxyModel_override_virtual_SupportedDropActions(void* self, intptr_t slot);
 int QTransposeProxyModel_virtualbase_SupportedDropActions(const void* self);
+bool QTransposeProxyModel_override_virtual_Match(void* self, intptr_t slot);
+struct miqt_array /* of QModelIndex* */  QTransposeProxyModel_virtualbase_Match(const void* self, QModelIndex* start, int role, QVariant* value, int hits, int flags);
+bool QTransposeProxyModel_override_virtual_RoleNames(void* self, intptr_t slot);
+struct miqt_map /* of int to struct miqt_string */  QTransposeProxyModel_virtualbase_RoleNames(const void* self);
+bool QTransposeProxyModel_override_virtual_Event(void* self, intptr_t slot);
+bool QTransposeProxyModel_virtualbase_Event(void* self, QEvent* event);
+bool QTransposeProxyModel_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QTransposeProxyModel_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QTransposeProxyModel_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QTransposeProxyModel_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QTransposeProxyModel_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QTransposeProxyModel_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QTransposeProxyModel_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QTransposeProxyModel_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QTransposeProxyModel_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QTransposeProxyModel_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QTransposeProxyModel_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QTransposeProxyModel_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QTransposeProxyModel_Delete(QTransposeProxyModel* self);
 
 #ifdef __cplusplus

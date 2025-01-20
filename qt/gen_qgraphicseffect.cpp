@@ -40,22 +40,50 @@ void miqt_exec_callback_QGraphicsColorizeEffect_StrengthChanged(intptr_t, double
 void miqt_exec_callback_QGraphicsColorizeEffect_Draw(void*, intptr_t, QPainter*);
 QRectF* miqt_exec_callback_QGraphicsColorizeEffect_BoundingRectFor(void*, intptr_t, QRectF*);
 void miqt_exec_callback_QGraphicsColorizeEffect_SourceChanged(void*, intptr_t, int);
+bool miqt_exec_callback_QGraphicsColorizeEffect_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGraphicsColorizeEffect_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QGraphicsColorizeEffect_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QGraphicsColorizeEffect_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QGraphicsColorizeEffect_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsColorizeEffect_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsColorizeEffect_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QGraphicsBlurEffect_BlurRadiusChanged(intptr_t, double);
 void miqt_exec_callback_QGraphicsBlurEffect_BlurHintsChanged(intptr_t, int);
 QRectF* miqt_exec_callback_QGraphicsBlurEffect_BoundingRectFor(void*, intptr_t, QRectF*);
 void miqt_exec_callback_QGraphicsBlurEffect_Draw(void*, intptr_t, QPainter*);
 void miqt_exec_callback_QGraphicsBlurEffect_SourceChanged(void*, intptr_t, int);
+bool miqt_exec_callback_QGraphicsBlurEffect_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGraphicsBlurEffect_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QGraphicsBlurEffect_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QGraphicsBlurEffect_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QGraphicsBlurEffect_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsBlurEffect_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsBlurEffect_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QGraphicsDropShadowEffect_OffsetChanged(intptr_t, QPointF*);
 void miqt_exec_callback_QGraphicsDropShadowEffect_BlurRadiusChanged(intptr_t, double);
 void miqt_exec_callback_QGraphicsDropShadowEffect_ColorChanged(intptr_t, QColor*);
 QRectF* miqt_exec_callback_QGraphicsDropShadowEffect_BoundingRectFor(void*, intptr_t, QRectF*);
 void miqt_exec_callback_QGraphicsDropShadowEffect_Draw(void*, intptr_t, QPainter*);
 void miqt_exec_callback_QGraphicsDropShadowEffect_SourceChanged(void*, intptr_t, int);
+bool miqt_exec_callback_QGraphicsDropShadowEffect_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGraphicsDropShadowEffect_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QGraphicsDropShadowEffect_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QGraphicsDropShadowEffect_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QGraphicsDropShadowEffect_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsDropShadowEffect_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsDropShadowEffect_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QGraphicsOpacityEffect_OpacityChanged(intptr_t, double);
 void miqt_exec_callback_QGraphicsOpacityEffect_OpacityMaskChanged(intptr_t, QBrush*);
 void miqt_exec_callback_QGraphicsOpacityEffect_Draw(void*, intptr_t, QPainter*);
 QRectF* miqt_exec_callback_QGraphicsOpacityEffect_BoundingRectFor(void*, intptr_t, QRectF*);
 void miqt_exec_callback_QGraphicsOpacityEffect_SourceChanged(void*, intptr_t, int);
+bool miqt_exec_callback_QGraphicsOpacityEffect_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGraphicsOpacityEffect_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QGraphicsOpacityEffect_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QGraphicsOpacityEffect_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QGraphicsOpacityEffect_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsOpacityEffect_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsOpacityEffect_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -646,6 +674,177 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QGraphicsColorizeEffect::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QGraphicsColorizeEffect_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QGraphicsColorizeEffect::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QGraphicsColorizeEffect::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QGraphicsColorizeEffect_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QGraphicsColorizeEffect::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QGraphicsColorizeEffect::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QGraphicsColorizeEffect_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QGraphicsColorizeEffect::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QGraphicsColorizeEffect::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QGraphicsColorizeEffect_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QGraphicsColorizeEffect::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QGraphicsColorizeEffect::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QGraphicsColorizeEffect_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QGraphicsColorizeEffect::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QGraphicsColorizeEffect::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QGraphicsColorizeEffect_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QGraphicsColorizeEffect::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QGraphicsColorizeEffect::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QGraphicsColorizeEffect_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QGraphicsColorizeEffect::disconnectNotify(*signal);
+
+	}
+
 };
 
 QGraphicsColorizeEffect* QGraphicsColorizeEffect_new() {
@@ -818,6 +1017,104 @@ void QGraphicsColorizeEffect_virtualbase_SourceChanged(void* self, int flags) {
 	( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->virtualbase_SourceChanged(flags);
 }
 
+bool QGraphicsColorizeEffect_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsColorizeEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
+}
+
+bool QGraphicsColorizeEffect_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->virtualbase_Event(event);
+}
+
+bool QGraphicsColorizeEffect_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsColorizeEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
+}
+
+bool QGraphicsColorizeEffect_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+bool QGraphicsColorizeEffect_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsColorizeEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QGraphicsColorizeEffect_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QGraphicsColorizeEffect_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsColorizeEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QGraphicsColorizeEffect_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QGraphicsColorizeEffect_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsColorizeEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QGraphicsColorizeEffect_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QGraphicsColorizeEffect_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsColorizeEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QGraphicsColorizeEffect_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QGraphicsColorizeEffect_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsColorizeEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsColorizeEffect*>( (QGraphicsColorizeEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QGraphicsColorizeEffect_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->virtualbase_DisconnectNotify(signal);
+}
+
 void QGraphicsColorizeEffect_Delete(QGraphicsColorizeEffect* self) {
 	delete self;
 }
@@ -901,6 +1198,177 @@ public:
 	void virtualbase_SourceChanged(int flags) {
 
 		QGraphicsBlurEffect::sourceChanged(static_cast<QGraphicsEffect::ChangeFlags>(flags));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QGraphicsBlurEffect::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QGraphicsBlurEffect_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QGraphicsBlurEffect::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QGraphicsBlurEffect::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QGraphicsBlurEffect_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QGraphicsBlurEffect::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QGraphicsBlurEffect::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QGraphicsBlurEffect_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QGraphicsBlurEffect::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QGraphicsBlurEffect::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QGraphicsBlurEffect_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QGraphicsBlurEffect::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QGraphicsBlurEffect::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QGraphicsBlurEffect_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QGraphicsBlurEffect::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QGraphicsBlurEffect::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QGraphicsBlurEffect_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QGraphicsBlurEffect::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QGraphicsBlurEffect::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QGraphicsBlurEffect_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QGraphicsBlurEffect::disconnectNotify(*signal);
 
 	}
 
@@ -1080,6 +1548,104 @@ void QGraphicsBlurEffect_virtualbase_SourceChanged(void* self, int flags) {
 	( (MiqtVirtualQGraphicsBlurEffect*)(self) )->virtualbase_SourceChanged(flags);
 }
 
+bool QGraphicsBlurEffect_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsBlurEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
+}
+
+bool QGraphicsBlurEffect_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQGraphicsBlurEffect*)(self) )->virtualbase_Event(event);
+}
+
+bool QGraphicsBlurEffect_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsBlurEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
+}
+
+bool QGraphicsBlurEffect_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQGraphicsBlurEffect*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+bool QGraphicsBlurEffect_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsBlurEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QGraphicsBlurEffect_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQGraphicsBlurEffect*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QGraphicsBlurEffect_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsBlurEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QGraphicsBlurEffect_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQGraphicsBlurEffect*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QGraphicsBlurEffect_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsBlurEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QGraphicsBlurEffect_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQGraphicsBlurEffect*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QGraphicsBlurEffect_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsBlurEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QGraphicsBlurEffect_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQGraphicsBlurEffect*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QGraphicsBlurEffect_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsBlurEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsBlurEffect*>( (QGraphicsBlurEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QGraphicsBlurEffect_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQGraphicsBlurEffect*)(self) )->virtualbase_DisconnectNotify(signal);
+}
+
 void QGraphicsBlurEffect_Delete(QGraphicsBlurEffect* self) {
 	delete self;
 }
@@ -1163,6 +1729,177 @@ public:
 	void virtualbase_SourceChanged(int flags) {
 
 		QGraphicsDropShadowEffect::sourceChanged(static_cast<QGraphicsEffect::ChangeFlags>(flags));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QGraphicsDropShadowEffect::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QGraphicsDropShadowEffect_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QGraphicsDropShadowEffect::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QGraphicsDropShadowEffect::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QGraphicsDropShadowEffect_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QGraphicsDropShadowEffect::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QGraphicsDropShadowEffect::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QGraphicsDropShadowEffect_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QGraphicsDropShadowEffect::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QGraphicsDropShadowEffect::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QGraphicsDropShadowEffect_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QGraphicsDropShadowEffect::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QGraphicsDropShadowEffect::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QGraphicsDropShadowEffect_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QGraphicsDropShadowEffect::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QGraphicsDropShadowEffect::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QGraphicsDropShadowEffect_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QGraphicsDropShadowEffect::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QGraphicsDropShadowEffect::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QGraphicsDropShadowEffect_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QGraphicsDropShadowEffect::disconnectNotify(*signal);
 
 	}
 
@@ -1389,6 +2126,104 @@ void QGraphicsDropShadowEffect_virtualbase_SourceChanged(void* self, int flags) 
 	( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->virtualbase_SourceChanged(flags);
 }
 
+bool QGraphicsDropShadowEffect_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsDropShadowEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
+}
+
+bool QGraphicsDropShadowEffect_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->virtualbase_Event(event);
+}
+
+bool QGraphicsDropShadowEffect_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsDropShadowEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
+}
+
+bool QGraphicsDropShadowEffect_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+bool QGraphicsDropShadowEffect_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsDropShadowEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QGraphicsDropShadowEffect_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QGraphicsDropShadowEffect_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsDropShadowEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QGraphicsDropShadowEffect_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QGraphicsDropShadowEffect_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsDropShadowEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QGraphicsDropShadowEffect_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QGraphicsDropShadowEffect_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsDropShadowEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QGraphicsDropShadowEffect_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QGraphicsDropShadowEffect_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsDropShadowEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsDropShadowEffect*>( (QGraphicsDropShadowEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QGraphicsDropShadowEffect_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->virtualbase_DisconnectNotify(signal);
+}
+
 void QGraphicsDropShadowEffect_Delete(QGraphicsDropShadowEffect* self) {
 	delete self;
 }
@@ -1472,6 +2307,177 @@ public:
 	void virtualbase_SourceChanged(int flags) {
 
 		QGraphicsOpacityEffect::sourceChanged(static_cast<QGraphicsEffect::ChangeFlags>(flags));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QGraphicsOpacityEffect::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QGraphicsOpacityEffect_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QGraphicsOpacityEffect::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QGraphicsOpacityEffect::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QGraphicsOpacityEffect_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QGraphicsOpacityEffect::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QGraphicsOpacityEffect::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QGraphicsOpacityEffect_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QGraphicsOpacityEffect::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QGraphicsOpacityEffect::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QGraphicsOpacityEffect_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QGraphicsOpacityEffect::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QGraphicsOpacityEffect::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QGraphicsOpacityEffect_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QGraphicsOpacityEffect::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QGraphicsOpacityEffect::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QGraphicsOpacityEffect_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QGraphicsOpacityEffect::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QGraphicsOpacityEffect::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QGraphicsOpacityEffect_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QGraphicsOpacityEffect::disconnectNotify(*signal);
 
 	}
 
@@ -1645,6 +2651,104 @@ bool QGraphicsOpacityEffect_override_virtual_SourceChanged(void* self, intptr_t 
 
 void QGraphicsOpacityEffect_virtualbase_SourceChanged(void* self, int flags) {
 	( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->virtualbase_SourceChanged(flags);
+}
+
+bool QGraphicsOpacityEffect_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsOpacityEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
+}
+
+bool QGraphicsOpacityEffect_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->virtualbase_Event(event);
+}
+
+bool QGraphicsOpacityEffect_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsOpacityEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
+}
+
+bool QGraphicsOpacityEffect_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+bool QGraphicsOpacityEffect_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsOpacityEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QGraphicsOpacityEffect_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QGraphicsOpacityEffect_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsOpacityEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QGraphicsOpacityEffect_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QGraphicsOpacityEffect_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsOpacityEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QGraphicsOpacityEffect_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QGraphicsOpacityEffect_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsOpacityEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QGraphicsOpacityEffect_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QGraphicsOpacityEffect_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsOpacityEffect* self_cast = dynamic_cast<MiqtVirtualQGraphicsOpacityEffect*>( (QGraphicsOpacityEffect*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QGraphicsOpacityEffect_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
 void QGraphicsOpacityEffect_Delete(QGraphicsOpacityEffect* self) {

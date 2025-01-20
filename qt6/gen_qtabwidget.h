@@ -16,6 +16,7 @@ extern "C" {
 
 #ifdef __cplusplus
 class QActionEvent;
+class QChildEvent;
 class QCloseEvent;
 class QContextMenuEvent;
 class QDragEnterEvent;
@@ -29,6 +30,7 @@ class QHideEvent;
 class QIcon;
 class QInputMethodEvent;
 class QKeyEvent;
+class QMetaMethod;
 class QMetaObject;
 class QMouseEvent;
 class QMoveEvent;
@@ -45,11 +47,13 @@ class QStyleOptionTabWidgetFrame;
 class QTabBar;
 class QTabWidget;
 class QTabletEvent;
+class QTimerEvent;
 class QVariant;
 class QWheelEvent;
 class QWidget;
 #else
 typedef struct QActionEvent QActionEvent;
+typedef struct QChildEvent QChildEvent;
 typedef struct QCloseEvent QCloseEvent;
 typedef struct QContextMenuEvent QContextMenuEvent;
 typedef struct QDragEnterEvent QDragEnterEvent;
@@ -63,6 +67,7 @@ typedef struct QHideEvent QHideEvent;
 typedef struct QIcon QIcon;
 typedef struct QInputMethodEvent QInputMethodEvent;
 typedef struct QKeyEvent QKeyEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMouseEvent QMouseEvent;
 typedef struct QMoveEvent QMoveEvent;
@@ -79,6 +84,7 @@ typedef struct QStyleOptionTabWidgetFrame QStyleOptionTabWidgetFrame;
 typedef struct QTabBar QTabBar;
 typedef struct QTabWidget QTabWidget;
 typedef struct QTabletEvent QTabletEvent;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
@@ -249,6 +255,18 @@ bool QTabWidget_override_virtual_InputMethodQuery(void* self, intptr_t slot);
 QVariant* QTabWidget_virtualbase_InputMethodQuery(const void* self, int param1);
 bool QTabWidget_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QTabWidget_virtualbase_FocusNextPrevChild(void* self, bool next);
+bool QTabWidget_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QTabWidget_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QTabWidget_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QTabWidget_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QTabWidget_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QTabWidget_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QTabWidget_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QTabWidget_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QTabWidget_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QTabWidget_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QTabWidget_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QTabWidget_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QTabWidget_Delete(QTabWidget* self);
 
 #ifdef __cplusplus

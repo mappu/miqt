@@ -15,6 +15,7 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QChildEvent;
 class QCloseEvent;
 class QEvent;
 class QFocusEvent;
@@ -33,6 +34,7 @@ class QGraphicsWidget;
 class QHideEvent;
 class QInputMethodEvent;
 class QKeyEvent;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QPainter;
@@ -43,9 +45,11 @@ class QShowEvent;
 class QSizeF;
 class QStyleOption;
 class QStyleOptionGraphicsItem;
+class QTimerEvent;
 class QVariant;
 class QWidget;
 #else
+typedef struct QChildEvent QChildEvent;
 typedef struct QCloseEvent QCloseEvent;
 typedef struct QEvent QEvent;
 typedef struct QFocusEvent QFocusEvent;
@@ -64,6 +68,7 @@ typedef struct QGraphicsWidget QGraphicsWidget;
 typedef struct QHideEvent QHideEvent;
 typedef struct QInputMethodEvent QInputMethodEvent;
 typedef struct QKeyEvent QKeyEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QPainter QPainter;
@@ -74,6 +79,7 @@ typedef struct QShowEvent QShowEvent;
 typedef struct QSizeF QSizeF;
 typedef struct QStyleOption QStyleOption;
 typedef struct QStyleOptionGraphicsItem QStyleOptionGraphicsItem;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 typedef struct QWidget QWidget;
 #endif
@@ -222,6 +228,36 @@ bool QGraphicsProxyWidget_override_virtual_GrabKeyboardEvent(void* self, intptr_
 void QGraphicsProxyWidget_virtualbase_GrabKeyboardEvent(void* self, QEvent* event);
 bool QGraphicsProxyWidget_override_virtual_UngrabKeyboardEvent(void* self, intptr_t slot);
 void QGraphicsProxyWidget_virtualbase_UngrabKeyboardEvent(void* self, QEvent* event);
+bool QGraphicsProxyWidget_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QGraphicsProxyWidget_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QGraphicsProxyWidget_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QGraphicsProxyWidget_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QGraphicsProxyWidget_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QGraphicsProxyWidget_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QGraphicsProxyWidget_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QGraphicsProxyWidget_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QGraphicsProxyWidget_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QGraphicsProxyWidget_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+bool QGraphicsProxyWidget_override_virtual_Advance(void* self, intptr_t slot);
+void QGraphicsProxyWidget_virtualbase_Advance(void* self, int phase);
+bool QGraphicsProxyWidget_override_virtual_Contains(void* self, intptr_t slot);
+bool QGraphicsProxyWidget_virtualbase_Contains(const void* self, QPointF* point);
+bool QGraphicsProxyWidget_override_virtual_CollidesWithItem(void* self, intptr_t slot);
+bool QGraphicsProxyWidget_virtualbase_CollidesWithItem(const void* self, QGraphicsItem* other, int mode);
+bool QGraphicsProxyWidget_override_virtual_CollidesWithPath(void* self, intptr_t slot);
+bool QGraphicsProxyWidget_virtualbase_CollidesWithPath(const void* self, QPainterPath* path, int mode);
+bool QGraphicsProxyWidget_override_virtual_IsObscuredBy(void* self, intptr_t slot);
+bool QGraphicsProxyWidget_virtualbase_IsObscuredBy(const void* self, QGraphicsItem* item);
+bool QGraphicsProxyWidget_override_virtual_OpaqueArea(void* self, intptr_t slot);
+QPainterPath* QGraphicsProxyWidget_virtualbase_OpaqueArea(const void* self);
+bool QGraphicsProxyWidget_override_virtual_SceneEventFilter(void* self, intptr_t slot);
+bool QGraphicsProxyWidget_virtualbase_SceneEventFilter(void* self, QGraphicsItem* watched, QEvent* event);
+bool QGraphicsProxyWidget_override_virtual_SupportsExtension(void* self, intptr_t slot);
+bool QGraphicsProxyWidget_virtualbase_SupportsExtension(const void* self, int extension);
+bool QGraphicsProxyWidget_override_virtual_SetExtension(void* self, intptr_t slot);
+void QGraphicsProxyWidget_virtualbase_SetExtension(void* self, int extension, QVariant* variant);
+bool QGraphicsProxyWidget_override_virtual_Extension(void* self, intptr_t slot);
+QVariant* QGraphicsProxyWidget_virtualbase_Extension(const void* self, QVariant* variant);
 void QGraphicsProxyWidget_Delete(QGraphicsProxyWidget* self);
 
 #ifdef __cplusplus

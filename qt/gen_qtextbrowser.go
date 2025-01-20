@@ -1283,6 +1283,730 @@ func miqt_exec_callback_QTextBrowser_DoSetTextCursor(self *C.QTextBrowser, cb C.
 
 }
 
+func (this *QTextBrowser) callVirtualBase_MinimumSizeHint() *QSize {
+
+	_goptr := newQSize(C.QTextBrowser_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QTextBrowser) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QTextBrowser_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTextBrowser_MinimumSizeHint
+func miqt_exec_callback_QTextBrowser_MinimumSizeHint(self *C.QTextBrowser, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTextBrowser{h: self}).callVirtualBase_MinimumSizeHint)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTextBrowser) callVirtualBase_SizeHint() *QSize {
+
+	_goptr := newQSize(C.QTextBrowser_virtualbase_SizeHint(unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QTextBrowser) OnSizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QTextBrowser_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTextBrowser_SizeHint
+func miqt_exec_callback_QTextBrowser_SizeHint(self *C.QTextBrowser, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTextBrowser{h: self}).callVirtualBase_SizeHint)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTextBrowser) callVirtualBase_SetupViewport(viewport *QWidget) {
+
+	C.QTextBrowser_virtualbase_SetupViewport(unsafe.Pointer(this.h), viewport.cPointer())
+
+}
+func (this *QTextBrowser) OnSetupViewport(slot func(super func(viewport *QWidget), viewport *QWidget)) {
+	ok := C.QTextBrowser_override_virtual_SetupViewport(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTextBrowser_SetupViewport
+func miqt_exec_callback_QTextBrowser_SetupViewport(self *C.QTextBrowser, cb C.intptr_t, viewport *C.QWidget) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(viewport *QWidget), viewport *QWidget))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQWidget(viewport)
+
+	gofunc((&QTextBrowser{h: self}).callVirtualBase_SetupViewport, slotval1)
+
+}
+
+func (this *QTextBrowser) callVirtualBase_EventFilter(param1 *QObject, param2 *QEvent) bool {
+
+	return (bool)(C.QTextBrowser_virtualbase_EventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
+
+}
+func (this *QTextBrowser) OnEventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
+	ok := C.QTextBrowser_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTextBrowser_EventFilter
+func miqt_exec_callback_QTextBrowser_EventFilter(self *C.QTextBrowser, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQObject(param1)
+
+	slotval2 := newQEvent(param2)
+
+	virtualReturn := gofunc((&QTextBrowser{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QTextBrowser) callVirtualBase_ViewportEvent(param1 *QEvent) bool {
+
+	return (bool)(C.QTextBrowser_virtualbase_ViewportEvent(unsafe.Pointer(this.h), param1.cPointer()))
+
+}
+func (this *QTextBrowser) OnViewportEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
+	ok := C.QTextBrowser_override_virtual_ViewportEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTextBrowser_ViewportEvent
+func miqt_exec_callback_QTextBrowser_ViewportEvent(self *C.QTextBrowser, cb C.intptr_t, param1 *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QEvent) bool, param1 *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(param1)
+
+	virtualReturn := gofunc((&QTextBrowser{h: self}).callVirtualBase_ViewportEvent, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QTextBrowser) callVirtualBase_ViewportSizeHint() *QSize {
+
+	_goptr := newQSize(C.QTextBrowser_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QTextBrowser) OnViewportSizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QTextBrowser_override_virtual_ViewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTextBrowser_ViewportSizeHint
+func miqt_exec_callback_QTextBrowser_ViewportSizeHint(self *C.QTextBrowser, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTextBrowser{h: self}).callVirtualBase_ViewportSizeHint)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTextBrowser) callVirtualBase_DevType() int {
+
+	return (int)(C.QTextBrowser_virtualbase_DevType(unsafe.Pointer(this.h)))
+
+}
+func (this *QTextBrowser) OnDevType(slot func(super func() int) int) {
+	ok := C.QTextBrowser_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTextBrowser_DevType
+func miqt_exec_callback_QTextBrowser_DevType(self *C.QTextBrowser, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTextBrowser{h: self}).callVirtualBase_DevType)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QTextBrowser) callVirtualBase_SetVisible(visible bool) {
+
+	C.QTextBrowser_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+
+}
+func (this *QTextBrowser) OnSetVisible(slot func(super func(visible bool), visible bool)) {
+	ok := C.QTextBrowser_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTextBrowser_SetVisible
+func miqt_exec_callback_QTextBrowser_SetVisible(self *C.QTextBrowser, cb C.intptr_t, visible C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(visible)
+
+	gofunc((&QTextBrowser{h: self}).callVirtualBase_SetVisible, slotval1)
+
+}
+
+func (this *QTextBrowser) callVirtualBase_HeightForWidth(param1 int) int {
+
+	return (int)(C.QTextBrowser_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+
+}
+func (this *QTextBrowser) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.QTextBrowser_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTextBrowser_HeightForWidth
+func miqt_exec_callback_QTextBrowser_HeightForWidth(self *C.QTextBrowser, cb C.intptr_t, param1 C.int) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(param1)
+
+	virtualReturn := gofunc((&QTextBrowser{h: self}).callVirtualBase_HeightForWidth, slotval1)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QTextBrowser) callVirtualBase_HasHeightForWidth() bool {
+
+	return (bool)(C.QTextBrowser_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+
+}
+func (this *QTextBrowser) OnHasHeightForWidth(slot func(super func() bool) bool) {
+	ok := C.QTextBrowser_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTextBrowser_HasHeightForWidth
+func miqt_exec_callback_QTextBrowser_HasHeightForWidth(self *C.QTextBrowser, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTextBrowser{h: self}).callVirtualBase_HasHeightForWidth)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QTextBrowser) callVirtualBase_PaintEngine() *QPaintEngine {
+
+	return newQPaintEngine(C.QTextBrowser_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+
+}
+func (this *QTextBrowser) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+	ok := C.QTextBrowser_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTextBrowser_PaintEngine
+func miqt_exec_callback_QTextBrowser_PaintEngine(self *C.QTextBrowser, cb C.intptr_t) *C.QPaintEngine {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPaintEngine) *QPaintEngine)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTextBrowser{h: self}).callVirtualBase_PaintEngine)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTextBrowser) callVirtualBase_EnterEvent(event *QEvent) {
+
+	C.QTextBrowser_virtualbase_EnterEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTextBrowser) OnEnterEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QTextBrowser_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTextBrowser_EnterEvent
+func miqt_exec_callback_QTextBrowser_EnterEvent(self *C.QTextBrowser, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	gofunc((&QTextBrowser{h: self}).callVirtualBase_EnterEvent, slotval1)
+
+}
+
+func (this *QTextBrowser) callVirtualBase_LeaveEvent(event *QEvent) {
+
+	C.QTextBrowser_virtualbase_LeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTextBrowser) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QTextBrowser_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTextBrowser_LeaveEvent
+func miqt_exec_callback_QTextBrowser_LeaveEvent(self *C.QTextBrowser, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	gofunc((&QTextBrowser{h: self}).callVirtualBase_LeaveEvent, slotval1)
+
+}
+
+func (this *QTextBrowser) callVirtualBase_MoveEvent(event *QMoveEvent) {
+
+	C.QTextBrowser_virtualbase_MoveEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTextBrowser) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+	ok := C.QTextBrowser_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTextBrowser_MoveEvent
+func miqt_exec_callback_QTextBrowser_MoveEvent(self *C.QTextBrowser, cb C.intptr_t, event *C.QMoveEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMoveEvent), event *QMoveEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMoveEvent(event)
+
+	gofunc((&QTextBrowser{h: self}).callVirtualBase_MoveEvent, slotval1)
+
+}
+
+func (this *QTextBrowser) callVirtualBase_CloseEvent(event *QCloseEvent) {
+
+	C.QTextBrowser_virtualbase_CloseEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTextBrowser) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+	ok := C.QTextBrowser_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTextBrowser_CloseEvent
+func miqt_exec_callback_QTextBrowser_CloseEvent(self *C.QTextBrowser, cb C.intptr_t, event *C.QCloseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QCloseEvent), event *QCloseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQCloseEvent(event)
+
+	gofunc((&QTextBrowser{h: self}).callVirtualBase_CloseEvent, slotval1)
+
+}
+
+func (this *QTextBrowser) callVirtualBase_TabletEvent(event *QTabletEvent) {
+
+	C.QTextBrowser_virtualbase_TabletEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTextBrowser) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+	ok := C.QTextBrowser_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTextBrowser_TabletEvent
+func miqt_exec_callback_QTextBrowser_TabletEvent(self *C.QTextBrowser, cb C.intptr_t, event *C.QTabletEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTabletEvent), event *QTabletEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQTabletEvent(event)
+
+	gofunc((&QTextBrowser{h: self}).callVirtualBase_TabletEvent, slotval1)
+
+}
+
+func (this *QTextBrowser) callVirtualBase_ActionEvent(event *QActionEvent) {
+
+	C.QTextBrowser_virtualbase_ActionEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTextBrowser) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+	ok := C.QTextBrowser_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTextBrowser_ActionEvent
+func miqt_exec_callback_QTextBrowser_ActionEvent(self *C.QTextBrowser, cb C.intptr_t, event *C.QActionEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QActionEvent), event *QActionEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQActionEvent(event)
+
+	gofunc((&QTextBrowser{h: self}).callVirtualBase_ActionEvent, slotval1)
+
+}
+
+func (this *QTextBrowser) callVirtualBase_HideEvent(event *QHideEvent) {
+
+	C.QTextBrowser_virtualbase_HideEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTextBrowser) OnHideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
+	ok := C.QTextBrowser_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTextBrowser_HideEvent
+func miqt_exec_callback_QTextBrowser_HideEvent(self *C.QTextBrowser, cb C.intptr_t, event *C.QHideEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QHideEvent), event *QHideEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQHideEvent(event)
+
+	gofunc((&QTextBrowser{h: self}).callVirtualBase_HideEvent, slotval1)
+
+}
+
+func (this *QTextBrowser) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
+	eventType_alias := C.struct_miqt_string{}
+	eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	eventType_alias.len = C.size_t(len(eventType))
+
+	return (bool)(C.QTextBrowser_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
+
+}
+func (this *QTextBrowser) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
+	ok := C.QTextBrowser_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTextBrowser_NativeEvent
+func miqt_exec_callback_QTextBrowser_NativeEvent(self *C.QTextBrowser, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	var eventType_bytearray C.struct_miqt_string = eventType
+	eventType_ret := C.GoBytes(unsafe.Pointer(eventType_bytearray.data), C.int(int64(eventType_bytearray.len)))
+	C.free(unsafe.Pointer(eventType_bytearray.data))
+	slotval1 := eventType_ret
+	slotval2 := (unsafe.Pointer)(message)
+
+	slotval3 := (*int64)(unsafe.Pointer(result))
+
+	virtualReturn := gofunc((&QTextBrowser{h: self}).callVirtualBase_NativeEvent, slotval1, slotval2, slotval3)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QTextBrowser) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+
+	return (int)(C.QTextBrowser_virtualbase_Metric(unsafe.Pointer(this.h), (C.int)(param1)))
+
+}
+func (this *QTextBrowser) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+	ok := C.QTextBrowser_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTextBrowser_Metric
+func miqt_exec_callback_QTextBrowser_Metric(self *C.QTextBrowser, cb C.intptr_t, param1 C.int) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QPaintDevice__PaintDeviceMetric)(param1)
+
+	virtualReturn := gofunc((&QTextBrowser{h: self}).callVirtualBase_Metric, slotval1)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QTextBrowser) callVirtualBase_InitPainter(painter *QPainter) {
+
+	C.QTextBrowser_virtualbase_InitPainter(unsafe.Pointer(this.h), painter.cPointer())
+
+}
+func (this *QTextBrowser) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	ok := C.QTextBrowser_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTextBrowser_InitPainter
+func miqt_exec_callback_QTextBrowser_InitPainter(self *C.QTextBrowser, cb C.intptr_t, painter *C.QPainter) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter), painter *QPainter))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQPainter(painter)
+
+	gofunc((&QTextBrowser{h: self}).callVirtualBase_InitPainter, slotval1)
+
+}
+
+func (this *QTextBrowser) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+
+	return newQPaintDevice(C.QTextBrowser_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+
+}
+func (this *QTextBrowser) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	ok := C.QTextBrowser_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTextBrowser_Redirected
+func miqt_exec_callback_QTextBrowser_Redirected(self *C.QTextBrowser, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQPoint(offset)
+
+	virtualReturn := gofunc((&QTextBrowser{h: self}).callVirtualBase_Redirected, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTextBrowser) callVirtualBase_SharedPainter() *QPainter {
+
+	return newQPainter(C.QTextBrowser_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+
+}
+func (this *QTextBrowser) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
+	ok := C.QTextBrowser_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTextBrowser_SharedPainter
+func miqt_exec_callback_QTextBrowser_SharedPainter(self *C.QTextBrowser, cb C.intptr_t) *C.QPainter {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPainter) *QPainter)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTextBrowser{h: self}).callVirtualBase_SharedPainter)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTextBrowser) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QTextBrowser_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTextBrowser) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QTextBrowser_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTextBrowser_ChildEvent
+func miqt_exec_callback_QTextBrowser_ChildEvent(self *C.QTextBrowser, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQChildEvent(event)
+
+	gofunc((&QTextBrowser{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QTextBrowser) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QTextBrowser_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTextBrowser) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QTextBrowser_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTextBrowser_CustomEvent
+func miqt_exec_callback_QTextBrowser_CustomEvent(self *C.QTextBrowser, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	gofunc((&QTextBrowser{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QTextBrowser) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QTextBrowser_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QTextBrowser) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QTextBrowser_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTextBrowser_ConnectNotify
+func miqt_exec_callback_QTextBrowser_ConnectNotify(self *C.QTextBrowser, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QTextBrowser{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QTextBrowser) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QTextBrowser_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QTextBrowser) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QTextBrowser_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTextBrowser_DisconnectNotify
+func miqt_exec_callback_QTextBrowser_DisconnectNotify(self *C.QTextBrowser, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QTextBrowser{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QTextBrowser) Delete() {
 	C.QTextBrowser_Delete(this.h)

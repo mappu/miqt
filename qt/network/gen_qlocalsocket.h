@@ -15,15 +15,23 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QChildEvent;
+class QEvent;
 class QIODevice;
 class QLocalSocket;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
+class QTimerEvent;
 #else
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QIODevice QIODevice;
 typedef struct QLocalSocket QLocalSocket;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 #endif
 
 QLocalSocket* QLocalSocket_new();
@@ -112,6 +120,20 @@ bool QLocalSocket_override_virtual_Reset(void* self, intptr_t slot);
 bool QLocalSocket_virtualbase_Reset(void* self);
 bool QLocalSocket_override_virtual_ReadLineData(void* self, intptr_t slot);
 long long QLocalSocket_virtualbase_ReadLineData(void* self, char* data, long long maxlen);
+bool QLocalSocket_override_virtual_Event(void* self, intptr_t slot);
+bool QLocalSocket_virtualbase_Event(void* self, QEvent* event);
+bool QLocalSocket_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QLocalSocket_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QLocalSocket_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QLocalSocket_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QLocalSocket_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QLocalSocket_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QLocalSocket_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QLocalSocket_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QLocalSocket_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QLocalSocket_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QLocalSocket_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QLocalSocket_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QLocalSocket_Delete(QLocalSocket* self);
 
 #ifdef __cplusplus

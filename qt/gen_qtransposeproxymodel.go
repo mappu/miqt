@@ -1450,6 +1450,300 @@ func miqt_exec_callback_QTransposeProxyModel_SupportedDropActions(self *C.QTrans
 
 }
 
+func (this *QTransposeProxyModel) callVirtualBase_Match(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex {
+
+	var _ma C.struct_miqt_array = C.QTransposeProxyModel_virtualbase_Match(unsafe.Pointer(this.h), start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
+	_ret := make([]QModelIndex, int(_ma.len))
+	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_lv_goptr := newQModelIndex(_outCast[i])
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
+	}
+	return _ret
+
+}
+func (this *QTransposeProxyModel) OnMatch(slot func(super func(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex, start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex) {
+	ok := C.QTransposeProxyModel_override_virtual_Match(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTransposeProxyModel_Match
+func miqt_exec_callback_QTransposeProxyModel_Match(self *C.QTransposeProxyModel, cb C.intptr_t, start *C.QModelIndex, role C.int, value *C.QVariant, hits C.int, flags C.int) C.struct_miqt_array {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex, start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQModelIndex(start)
+
+	slotval2 := (int)(role)
+
+	slotval3 := newQVariant(value)
+
+	slotval4 := (int)(hits)
+
+	slotval5 := (MatchFlag)(flags)
+
+	virtualReturn := gofunc((&QTransposeProxyModel{h: self}).callVirtualBase_Match, slotval1, slotval2, slotval3, slotval4, slotval5)
+	virtualReturn_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	defer C.free(unsafe.Pointer(virtualReturn_CArray))
+	for i := range virtualReturn {
+		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
+	}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+
+	return virtualReturn_ma
+
+}
+
+func (this *QTransposeProxyModel) callVirtualBase_RoleNames() map[int][]byte {
+
+	var _mm C.struct_miqt_map = C.QTransposeProxyModel_virtualbase_RoleNames(unsafe.Pointer(this.h))
+	_ret := make(map[int][]byte, int(_mm.len))
+	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
+	_Values := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.values))
+	for i := 0; i < int(_mm.len); i++ {
+		_entry_Key := (int)(_Keys[i])
+
+		var _hashval_bytearray C.struct_miqt_string = _Values[i]
+		_hashval_ret := C.GoBytes(unsafe.Pointer(_hashval_bytearray.data), C.int(int64(_hashval_bytearray.len)))
+		C.free(unsafe.Pointer(_hashval_bytearray.data))
+		_entry_Value := _hashval_ret
+		_ret[_entry_Key] = _entry_Value
+	}
+	return _ret
+
+}
+func (this *QTransposeProxyModel) OnRoleNames(slot func(super func() map[int][]byte) map[int][]byte) {
+	ok := C.QTransposeProxyModel_override_virtual_RoleNames(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTransposeProxyModel_RoleNames
+func miqt_exec_callback_QTransposeProxyModel_RoleNames(self *C.QTransposeProxyModel, cb C.intptr_t) C.struct_miqt_map {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() map[int][]byte) map[int][]byte)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTransposeProxyModel{h: self}).callVirtualBase_RoleNames)
+	virtualReturn_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	defer C.free(unsafe.Pointer(virtualReturn_Keys_CArray))
+	virtualReturn_Values_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	defer C.free(unsafe.Pointer(virtualReturn_Values_CArray))
+	virtualReturn_ctr := 0
+	for virtualReturn_k, virtualReturn_v := range virtualReturn {
+		virtualReturn_Keys_CArray[virtualReturn_ctr] = (C.int)(virtualReturn_k)
+		virtualReturn_v_alias := C.struct_miqt_string{}
+		virtualReturn_v_alias.data = (*C.char)(unsafe.Pointer(&virtualReturn_v[0]))
+		virtualReturn_v_alias.len = C.size_t(len(virtualReturn_v))
+		virtualReturn_Values_CArray[virtualReturn_ctr] = virtualReturn_v_alias
+		virtualReturn_ctr++
+	}
+	virtualReturn_mm := C.struct_miqt_map{
+		len:    C.size_t(len(virtualReturn)),
+		keys:   unsafe.Pointer(virtualReturn_Keys_CArray),
+		values: unsafe.Pointer(virtualReturn_Values_CArray),
+	}
+
+	return virtualReturn_mm
+
+}
+
+func (this *QTransposeProxyModel) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QTransposeProxyModel_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QTransposeProxyModel) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QTransposeProxyModel_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTransposeProxyModel_Event
+func miqt_exec_callback_QTransposeProxyModel_Event(self *C.QTransposeProxyModel, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	virtualReturn := gofunc((&QTransposeProxyModel{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QTransposeProxyModel) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QTransposeProxyModel_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QTransposeProxyModel) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QTransposeProxyModel_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTransposeProxyModel_EventFilter
+func miqt_exec_callback_QTransposeProxyModel_EventFilter(self *C.QTransposeProxyModel, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
+
+	virtualReturn := gofunc((&QTransposeProxyModel{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QTransposeProxyModel) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QTransposeProxyModel_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTransposeProxyModel) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QTransposeProxyModel_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTransposeProxyModel_TimerEvent
+func miqt_exec_callback_QTransposeProxyModel_TimerEvent(self *C.QTransposeProxyModel, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQTimerEvent(event)
+
+	gofunc((&QTransposeProxyModel{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QTransposeProxyModel) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QTransposeProxyModel_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTransposeProxyModel) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QTransposeProxyModel_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTransposeProxyModel_ChildEvent
+func miqt_exec_callback_QTransposeProxyModel_ChildEvent(self *C.QTransposeProxyModel, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQChildEvent(event)
+
+	gofunc((&QTransposeProxyModel{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QTransposeProxyModel) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QTransposeProxyModel_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTransposeProxyModel) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QTransposeProxyModel_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTransposeProxyModel_CustomEvent
+func miqt_exec_callback_QTransposeProxyModel_CustomEvent(self *C.QTransposeProxyModel, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	gofunc((&QTransposeProxyModel{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QTransposeProxyModel) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QTransposeProxyModel_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QTransposeProxyModel) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QTransposeProxyModel_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTransposeProxyModel_ConnectNotify
+func miqt_exec_callback_QTransposeProxyModel_ConnectNotify(self *C.QTransposeProxyModel, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QTransposeProxyModel{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QTransposeProxyModel) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QTransposeProxyModel_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QTransposeProxyModel) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QTransposeProxyModel_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTransposeProxyModel_DisconnectNotify
+func miqt_exec_callback_QTransposeProxyModel_DisconnectNotify(self *C.QTransposeProxyModel, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QTransposeProxyModel{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QTransposeProxyModel) Delete() {
 	C.QTransposeProxyModel_Delete(this.h)

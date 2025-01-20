@@ -1422,6 +1422,110 @@ func miqt_exec_callback_QMenuBar_FocusNextPrevChild(self *C.QMenuBar, cb C.intpt
 
 }
 
+func (this *QMenuBar) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QMenuBar_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QMenuBar) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QMenuBar_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QMenuBar_ChildEvent
+func miqt_exec_callback_QMenuBar_ChildEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQChildEvent(event)
+
+	gofunc((&QMenuBar{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QMenuBar) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QMenuBar_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QMenuBar) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QMenuBar_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QMenuBar_CustomEvent
+func miqt_exec_callback_QMenuBar_CustomEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	gofunc((&QMenuBar{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QMenuBar) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QMenuBar_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QMenuBar) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QMenuBar_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QMenuBar_ConnectNotify
+func miqt_exec_callback_QMenuBar_ConnectNotify(self *C.QMenuBar, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QMenuBar{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QMenuBar) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QMenuBar_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QMenuBar) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QMenuBar_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QMenuBar_DisconnectNotify
+func miqt_exec_callback_QMenuBar_DisconnectNotify(self *C.QMenuBar, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QMenuBar{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QMenuBar) Delete() {
 	C.QMenuBar_Delete(this.h)

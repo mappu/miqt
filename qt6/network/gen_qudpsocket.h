@@ -16,24 +16,32 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAbstractSocket;
+class QChildEvent;
+class QEvent;
 class QHostAddress;
 class QIODevice;
 class QIODeviceBase;
+class QMetaMethod;
 class QMetaObject;
 class QNetworkDatagram;
 class QNetworkInterface;
 class QObject;
+class QTimerEvent;
 class QUdpSocket;
 class QVariant;
 #else
 typedef struct QAbstractSocket QAbstractSocket;
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QHostAddress QHostAddress;
 typedef struct QIODevice QIODevice;
 typedef struct QIODeviceBase QIODeviceBase;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QNetworkDatagram QNetworkDatagram;
 typedef struct QNetworkInterface QNetworkInterface;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QUdpSocket QUdpSocket;
 typedef struct QVariant QVariant;
 #endif
@@ -107,6 +115,34 @@ bool QUdpSocket_override_virtual_SkipData(void* self, intptr_t slot);
 long long QUdpSocket_virtualbase_SkipData(void* self, long long maxSize);
 bool QUdpSocket_override_virtual_WriteData(void* self, intptr_t slot);
 long long QUdpSocket_virtualbase_WriteData(void* self, const char* data, long long lenVal);
+bool QUdpSocket_override_virtual_Open(void* self, intptr_t slot);
+bool QUdpSocket_virtualbase_Open(void* self, int mode);
+bool QUdpSocket_override_virtual_Pos(void* self, intptr_t slot);
+long long QUdpSocket_virtualbase_Pos(const void* self);
+bool QUdpSocket_override_virtual_Size(void* self, intptr_t slot);
+long long QUdpSocket_virtualbase_Size(const void* self);
+bool QUdpSocket_override_virtual_Seek(void* self, intptr_t slot);
+bool QUdpSocket_virtualbase_Seek(void* self, long long pos);
+bool QUdpSocket_override_virtual_AtEnd(void* self, intptr_t slot);
+bool QUdpSocket_virtualbase_AtEnd(const void* self);
+bool QUdpSocket_override_virtual_Reset(void* self, intptr_t slot);
+bool QUdpSocket_virtualbase_Reset(void* self);
+bool QUdpSocket_override_virtual_CanReadLine(void* self, intptr_t slot);
+bool QUdpSocket_virtualbase_CanReadLine(const void* self);
+bool QUdpSocket_override_virtual_Event(void* self, intptr_t slot);
+bool QUdpSocket_virtualbase_Event(void* self, QEvent* event);
+bool QUdpSocket_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QUdpSocket_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QUdpSocket_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QUdpSocket_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QUdpSocket_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QUdpSocket_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QUdpSocket_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QUdpSocket_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QUdpSocket_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QUdpSocket_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QUdpSocket_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QUdpSocket_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QUdpSocket_Delete(QUdpSocket* self);
 
 #ifdef __cplusplus

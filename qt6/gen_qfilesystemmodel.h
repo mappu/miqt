@@ -17,12 +17,14 @@ extern "C" {
 #ifdef __cplusplus
 class QAbstractFileIconProvider;
 class QAbstractItemModel;
+class QChildEvent;
 class QDateTime;
 class QDir;
 class QEvent;
 class QFileInfo;
 class QFileSystemModel;
 class QIcon;
+class QMetaMethod;
 class QMetaObject;
 class QMimeData;
 class QModelIndex;
@@ -34,12 +36,14 @@ class QVariant;
 #else
 typedef struct QAbstractFileIconProvider QAbstractFileIconProvider;
 typedef struct QAbstractItemModel QAbstractItemModel;
+typedef struct QChildEvent QChildEvent;
 typedef struct QDateTime QDateTime;
 typedef struct QDir QDir;
 typedef struct QEvent QEvent;
 typedef struct QFileInfo QFileInfo;
 typedef struct QFileSystemModel QFileSystemModel;
 typedef struct QIcon QIcon;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMimeData QMimeData;
 typedef struct QModelIndex QModelIndex;
@@ -198,6 +202,16 @@ bool QFileSystemModel_override_virtual_Revert(void* self, intptr_t slot);
 void QFileSystemModel_virtualbase_Revert(void* self);
 bool QFileSystemModel_override_virtual_ResetInternalData(void* self, intptr_t slot);
 void QFileSystemModel_virtualbase_ResetInternalData(void* self);
+bool QFileSystemModel_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QFileSystemModel_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QFileSystemModel_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QFileSystemModel_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QFileSystemModel_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QFileSystemModel_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QFileSystemModel_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QFileSystemModel_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QFileSystemModel_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QFileSystemModel_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QFileSystemModel_Delete(QFileSystemModel* self);
 
 #ifdef __cplusplus

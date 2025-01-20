@@ -16,16 +16,22 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAction;
+class QChildEvent;
 class QEvent;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
+class QTimerEvent;
 class QWidget;
 class QWidgetAction;
 #else
 typedef struct QAction QAction;
+typedef struct QChildEvent QChildEvent;
 typedef struct QEvent QEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QWidget QWidget;
 typedef struct QWidgetAction QWidgetAction;
 #endif
@@ -53,6 +59,16 @@ bool QWidgetAction_override_virtual_CreateWidget(void* self, intptr_t slot);
 QWidget* QWidgetAction_virtualbase_CreateWidget(void* self, QWidget* parent);
 bool QWidgetAction_override_virtual_DeleteWidget(void* self, intptr_t slot);
 void QWidgetAction_virtualbase_DeleteWidget(void* self, QWidget* widget);
+bool QWidgetAction_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QWidgetAction_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QWidgetAction_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QWidgetAction_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QWidgetAction_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QWidgetAction_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QWidgetAction_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QWidgetAction_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QWidgetAction_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QWidgetAction_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QWidgetAction_Delete(QWidgetAction* self);
 
 #ifdef __cplusplus

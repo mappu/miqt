@@ -1,4 +1,6 @@
 #include <QAbstractVideoSurface>
+#include <QChildEvent>
+#include <QEvent>
 #include <QGraphicsVideoItem>
 #include <QIODevice>
 #include <QList>
@@ -7,12 +9,14 @@
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
 #include <QMediaService>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QNetworkConfiguration>
 #include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QTimerEvent>
 #include <QVideoWidget>
 #include <qmediaplayer.h>
 #include "gen_qmediaplayer.h"
@@ -43,6 +47,13 @@ bool miqt_exec_callback_QMediaPlayer_Bind(void*, intptr_t, QObject*);
 void miqt_exec_callback_QMediaPlayer_Unbind(void*, intptr_t, QObject*);
 bool miqt_exec_callback_QMediaPlayer_IsAvailable(void*, intptr_t);
 QMediaService* miqt_exec_callback_QMediaPlayer_Service(void*, intptr_t);
+bool miqt_exec_callback_QMediaPlayer_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QMediaPlayer_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QMediaPlayer_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QMediaPlayer_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QMediaPlayer_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QMediaPlayer_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QMediaPlayer_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -167,6 +178,177 @@ public:
 	QMediaService* virtualbase_Service() const {
 
 		return QMediaPlayer::service();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QMediaPlayer::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QMediaPlayer_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QMediaPlayer::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QMediaPlayer::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QMediaPlayer_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QMediaPlayer::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QMediaPlayer::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QMediaPlayer_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QMediaPlayer::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QMediaPlayer::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QMediaPlayer_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QMediaPlayer::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QMediaPlayer::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QMediaPlayer_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QMediaPlayer::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QMediaPlayer::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QMediaPlayer_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QMediaPlayer::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QMediaPlayer::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QMediaPlayer_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QMediaPlayer::disconnectNotify(*signal);
 
 	}
 
@@ -839,6 +1021,104 @@ bool QMediaPlayer_override_virtual_Service(void* self, intptr_t slot) {
 
 QMediaService* QMediaPlayer_virtualbase_Service(const void* self) {
 	return ( (const MiqtVirtualQMediaPlayer*)(self) )->virtualbase_Service();
+}
+
+bool QMediaPlayer_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQMediaPlayer* self_cast = dynamic_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
+}
+
+bool QMediaPlayer_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQMediaPlayer*)(self) )->virtualbase_Event(event);
+}
+
+bool QMediaPlayer_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQMediaPlayer* self_cast = dynamic_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
+}
+
+bool QMediaPlayer_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQMediaPlayer*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+bool QMediaPlayer_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMediaPlayer* self_cast = dynamic_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QMediaPlayer_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQMediaPlayer*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QMediaPlayer_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMediaPlayer* self_cast = dynamic_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QMediaPlayer_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQMediaPlayer*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QMediaPlayer_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMediaPlayer* self_cast = dynamic_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QMediaPlayer_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQMediaPlayer*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QMediaPlayer_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQMediaPlayer* self_cast = dynamic_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QMediaPlayer_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQMediaPlayer*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QMediaPlayer_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQMediaPlayer* self_cast = dynamic_cast<MiqtVirtualQMediaPlayer*>( (QMediaPlayer*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QMediaPlayer_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQMediaPlayer*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
 void QMediaPlayer_Delete(QMediaPlayer* self) {

@@ -17,15 +17,21 @@ extern "C" {
 #ifdef __cplusplus
 class QAbstractAnimation;
 class QAnimationGroup;
+class QChildEvent;
 class QEvent;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
+class QTimerEvent;
 #else
 typedef struct QAbstractAnimation QAbstractAnimation;
 typedef struct QAnimationGroup QAnimationGroup;
+typedef struct QChildEvent QChildEvent;
 typedef struct QEvent QEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 #endif
 
 QAnimationGroup* QAnimationGroup_new();
@@ -55,6 +61,18 @@ bool QAnimationGroup_override_virtual_UpdateState(void* self, intptr_t slot);
 void QAnimationGroup_virtualbase_UpdateState(void* self, int newState, int oldState);
 bool QAnimationGroup_override_virtual_UpdateDirection(void* self, intptr_t slot);
 void QAnimationGroup_virtualbase_UpdateDirection(void* self, int direction);
+bool QAnimationGroup_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QAnimationGroup_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QAnimationGroup_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QAnimationGroup_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QAnimationGroup_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QAnimationGroup_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QAnimationGroup_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QAnimationGroup_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QAnimationGroup_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QAnimationGroup_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QAnimationGroup_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QAnimationGroup_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QAnimationGroup_Delete(QAnimationGroup* self);
 
 #ifdef __cplusplus

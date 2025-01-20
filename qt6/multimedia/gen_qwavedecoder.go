@@ -592,6 +592,194 @@ func miqt_exec_callback_QWaveDecoder_SkipData(self *C.QWaveDecoder, cb C.intptr_
 
 }
 
+func (this *QWaveDecoder) callVirtualBase_Event(event *qt6.QEvent) bool {
+
+	return (bool)(C.QWaveDecoder_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QWaveDecoder) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+	ok := C.QWaveDecoder_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QWaveDecoder_Event
+func miqt_exec_callback_QWaveDecoder_Event(self *C.QWaveDecoder, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QWaveDecoder{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QWaveDecoder) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
+
+	return (bool)(C.QWaveDecoder_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QWaveDecoder) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+	ok := C.QWaveDecoder_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QWaveDecoder_EventFilter
+func miqt_exec_callback_QWaveDecoder_EventFilter(self *C.QWaveDecoder, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQObject(unsafe.Pointer(watched))
+
+	slotval2 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QWaveDecoder{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QWaveDecoder) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
+
+	C.QWaveDecoder_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+
+}
+func (this *QWaveDecoder) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+	ok := C.QWaveDecoder_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QWaveDecoder_TimerEvent
+func miqt_exec_callback_QWaveDecoder_TimerEvent(self *C.QWaveDecoder, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQTimerEvent(unsafe.Pointer(event))
+
+	gofunc((&QWaveDecoder{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QWaveDecoder) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
+
+	C.QWaveDecoder_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+
+}
+func (this *QWaveDecoder) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+	ok := C.QWaveDecoder_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QWaveDecoder_ChildEvent
+func miqt_exec_callback_QWaveDecoder_ChildEvent(self *C.QWaveDecoder, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQChildEvent(unsafe.Pointer(event))
+
+	gofunc((&QWaveDecoder{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QWaveDecoder) callVirtualBase_CustomEvent(event *qt6.QEvent) {
+
+	C.QWaveDecoder_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+
+}
+func (this *QWaveDecoder) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+	ok := C.QWaveDecoder_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QWaveDecoder_CustomEvent
+func miqt_exec_callback_QWaveDecoder_CustomEvent(self *C.QWaveDecoder, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent), event *qt6.QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QWaveDecoder{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QWaveDecoder) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
+
+	C.QWaveDecoder_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QWaveDecoder) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	ok := C.QWaveDecoder_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QWaveDecoder_ConnectNotify
+func miqt_exec_callback_QWaveDecoder_ConnectNotify(self *C.QWaveDecoder, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QWaveDecoder{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QWaveDecoder) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
+
+	C.QWaveDecoder_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QWaveDecoder) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	ok := C.QWaveDecoder_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QWaveDecoder_DisconnectNotify
+func miqt_exec_callback_QWaveDecoder_DisconnectNotify(self *C.QWaveDecoder, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QWaveDecoder{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QWaveDecoder) Delete() {
 	C.QWaveDecoder_Delete(this.h)

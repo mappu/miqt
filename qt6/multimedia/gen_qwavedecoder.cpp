@@ -1,11 +1,15 @@
 #include <QAudioFormat>
+#include <QChildEvent>
+#include <QEvent>
 #include <QIODevice>
 #include <QIODeviceBase>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QTimerEvent>
 #include <QWaveDecoder>
 #include <qwavedecoder.h>
 #include "gen_qwavedecoder.h"
@@ -31,6 +35,13 @@ bool miqt_exec_callback_QWaveDecoder_WaitForReadyRead(void*, intptr_t, int);
 bool miqt_exec_callback_QWaveDecoder_WaitForBytesWritten(void*, intptr_t, int);
 long long miqt_exec_callback_QWaveDecoder_ReadLineData(void*, intptr_t, char*, long long);
 long long miqt_exec_callback_QWaveDecoder_SkipData(void*, intptr_t, long long);
+bool miqt_exec_callback_QWaveDecoder_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QWaveDecoder_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QWaveDecoder_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QWaveDecoder_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QWaveDecoder_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QWaveDecoder_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QWaveDecoder_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -393,6 +404,177 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QWaveDecoder::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QWaveDecoder_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QWaveDecoder::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QWaveDecoder::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QWaveDecoder_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QWaveDecoder::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QWaveDecoder::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QWaveDecoder_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QWaveDecoder::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QWaveDecoder::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QWaveDecoder_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QWaveDecoder::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QWaveDecoder::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QWaveDecoder_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QWaveDecoder::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QWaveDecoder::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QWaveDecoder_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QWaveDecoder::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QWaveDecoder::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QWaveDecoder_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QWaveDecoder::disconnectNotify(*signal);
+
+	}
+
 };
 
 QWaveDecoder* QWaveDecoder_new(QIODevice* device) {
@@ -732,6 +914,104 @@ bool QWaveDecoder_override_virtual_SkipData(void* self, intptr_t slot) {
 
 long long QWaveDecoder_virtualbase_SkipData(void* self, long long maxSize) {
 	return ( (MiqtVirtualQWaveDecoder*)(self) )->virtualbase_SkipData(maxSize);
+}
+
+bool QWaveDecoder_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
+}
+
+bool QWaveDecoder_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQWaveDecoder*)(self) )->virtualbase_Event(event);
+}
+
+bool QWaveDecoder_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
+}
+
+bool QWaveDecoder_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQWaveDecoder*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+bool QWaveDecoder_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QWaveDecoder_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQWaveDecoder*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QWaveDecoder_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QWaveDecoder_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQWaveDecoder*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QWaveDecoder_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QWaveDecoder_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQWaveDecoder*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QWaveDecoder_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QWaveDecoder_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQWaveDecoder*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QWaveDecoder_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QWaveDecoder_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQWaveDecoder*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
 void QWaveDecoder_Delete(QWaveDecoder* self) {

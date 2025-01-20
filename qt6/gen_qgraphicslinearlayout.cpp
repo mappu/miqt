@@ -20,6 +20,7 @@ QSizeF* miqt_exec_callback_QGraphicsLinearLayout_SizeHint(void*, intptr_t, int, 
 void miqt_exec_callback_QGraphicsLinearLayout_GetContentsMargins(void*, intptr_t, double*, double*, double*, double*);
 void miqt_exec_callback_QGraphicsLinearLayout_UpdateGeometry(void*, intptr_t);
 void miqt_exec_callback_QGraphicsLinearLayout_WidgetEvent(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGraphicsLinearLayout_IsEmpty(void*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -254,6 +255,28 @@ public:
 	void virtualbase_WidgetEvent(QEvent* e) {
 
 		QGraphicsLinearLayout::widgetEvent(e);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__IsEmpty = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool isEmpty() const override {
+		if (handle__IsEmpty == 0) {
+			return QGraphicsLinearLayout::isEmpty();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QGraphicsLinearLayout_IsEmpty(const_cast<MiqtVirtualQGraphicsLinearLayout*>(this), handle__IsEmpty);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_IsEmpty() const {
+
+		return QGraphicsLinearLayout::isEmpty();
 
 	}
 
@@ -507,6 +530,20 @@ bool QGraphicsLinearLayout_override_virtual_WidgetEvent(void* self, intptr_t slo
 
 void QGraphicsLinearLayout_virtualbase_WidgetEvent(void* self, QEvent* e) {
 	( (MiqtVirtualQGraphicsLinearLayout*)(self) )->virtualbase_WidgetEvent(e);
+}
+
+bool QGraphicsLinearLayout_override_virtual_IsEmpty(void* self, intptr_t slot) {
+	MiqtVirtualQGraphicsLinearLayout* self_cast = dynamic_cast<MiqtVirtualQGraphicsLinearLayout*>( (QGraphicsLinearLayout*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsEmpty = slot;
+	return true;
+}
+
+bool QGraphicsLinearLayout_virtualbase_IsEmpty(const void* self) {
+	return ( (const MiqtVirtualQGraphicsLinearLayout*)(self) )->virtualbase_IsEmpty();
 }
 
 void QGraphicsLinearLayout_Delete(QGraphicsLinearLayout* self) {

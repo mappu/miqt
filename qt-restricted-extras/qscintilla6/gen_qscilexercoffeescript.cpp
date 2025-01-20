@@ -1,12 +1,16 @@
+#include <QChildEvent>
 #include <QColor>
+#include <QEvent>
 #include <QFont>
 #include <QList>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QSettings>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QTimerEvent>
 #include <qscilexercoffeescript.h>
 #include "gen_qscilexercoffeescript.h"
 
@@ -48,6 +52,13 @@ void miqt_exec_callback_QsciLexerCoffeeScript_SetFont(void*, intptr_t, QFont*, i
 void miqt_exec_callback_QsciLexerCoffeeScript_SetPaper(void*, intptr_t, QColor*, int);
 bool miqt_exec_callback_QsciLexerCoffeeScript_ReadProperties(void*, intptr_t, QSettings*, struct miqt_string);
 bool miqt_exec_callback_QsciLexerCoffeeScript_WriteProperties(void*, intptr_t, QSettings*, struct miqt_string);
+bool miqt_exec_callback_QsciLexerCoffeeScript_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QsciLexerCoffeeScript_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QsciLexerCoffeeScript_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QsciLexerCoffeeScript_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QsciLexerCoffeeScript_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QsciLexerCoffeeScript_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QsciLexerCoffeeScript_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -878,6 +889,177 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QsciLexerCoffeeScript::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QsciLexerCoffeeScript_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QsciLexerCoffeeScript::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QsciLexerCoffeeScript::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QsciLexerCoffeeScript_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QsciLexerCoffeeScript::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QsciLexerCoffeeScript::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QsciLexerCoffeeScript_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QsciLexerCoffeeScript::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QsciLexerCoffeeScript::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QsciLexerCoffeeScript_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QsciLexerCoffeeScript::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QsciLexerCoffeeScript::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QsciLexerCoffeeScript_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QsciLexerCoffeeScript::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QsciLexerCoffeeScript::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QsciLexerCoffeeScript_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QsciLexerCoffeeScript::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QsciLexerCoffeeScript::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QsciLexerCoffeeScript_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QsciLexerCoffeeScript::disconnectNotify(*signal);
+
+	}
+
 };
 
 QsciLexerCoffeeScript* QsciLexerCoffeeScript_new() {
@@ -1526,6 +1708,104 @@ bool QsciLexerCoffeeScript_override_virtual_WriteProperties(void* self, intptr_t
 
 bool QsciLexerCoffeeScript_virtualbase_WriteProperties(const void* self, QSettings* qs, struct miqt_string prefix) {
 	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_WriteProperties(qs, prefix);
+}
+
+bool QsciLexerCoffeeScript_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
+}
+
+bool QsciLexerCoffeeScript_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_Event(event);
+}
+
+bool QsciLexerCoffeeScript_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
+}
+
+bool QsciLexerCoffeeScript_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+bool QsciLexerCoffeeScript_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QsciLexerCoffeeScript_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QsciLexerCoffeeScript_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QsciLexerCoffeeScript_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QsciLexerCoffeeScript_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QsciLexerCoffeeScript_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QsciLexerCoffeeScript_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QsciLexerCoffeeScript_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QsciLexerCoffeeScript_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQsciLexerCoffeeScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerCoffeeScript*>( (QsciLexerCoffeeScript*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QsciLexerCoffeeScript_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
 void QsciLexerCoffeeScript_Delete(QsciLexerCoffeeScript* self) {

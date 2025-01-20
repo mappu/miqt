@@ -240,6 +240,8 @@ void QAccessibleTextSelectionEvent_virtbase(QAccessibleTextSelectionEvent* src, 
 void QAccessibleTextSelectionEvent_SetSelection(QAccessibleTextSelectionEvent* self, int start, int end);
 int QAccessibleTextSelectionEvent_SelectionStart(const QAccessibleTextSelectionEvent* self);
 int QAccessibleTextSelectionEvent_SelectionEnd(const QAccessibleTextSelectionEvent* self);
+bool QAccessibleTextSelectionEvent_override_virtual_AccessibleInterface(void* self, intptr_t slot);
+QAccessibleInterface* QAccessibleTextSelectionEvent_virtualbase_AccessibleInterface(const void* self);
 void QAccessibleTextSelectionEvent_Delete(QAccessibleTextSelectionEvent* self);
 
 QAccessibleTextInsertEvent* QAccessibleTextInsertEvent_new(QObject* obj, int position, struct miqt_string text);
@@ -247,6 +249,8 @@ QAccessibleTextInsertEvent* QAccessibleTextInsertEvent_new2(QAccessibleInterface
 void QAccessibleTextInsertEvent_virtbase(QAccessibleTextInsertEvent* src, QAccessibleTextCursorEvent** outptr_QAccessibleTextCursorEvent);
 struct miqt_string QAccessibleTextInsertEvent_TextInserted(const QAccessibleTextInsertEvent* self);
 int QAccessibleTextInsertEvent_ChangePosition(const QAccessibleTextInsertEvent* self);
+bool QAccessibleTextInsertEvent_override_virtual_AccessibleInterface(void* self, intptr_t slot);
+QAccessibleInterface* QAccessibleTextInsertEvent_virtualbase_AccessibleInterface(const void* self);
 void QAccessibleTextInsertEvent_Delete(QAccessibleTextInsertEvent* self);
 
 QAccessibleTextRemoveEvent* QAccessibleTextRemoveEvent_new(QObject* obj, int position, struct miqt_string text);
@@ -254,6 +258,8 @@ QAccessibleTextRemoveEvent* QAccessibleTextRemoveEvent_new2(QAccessibleInterface
 void QAccessibleTextRemoveEvent_virtbase(QAccessibleTextRemoveEvent* src, QAccessibleTextCursorEvent** outptr_QAccessibleTextCursorEvent);
 struct miqt_string QAccessibleTextRemoveEvent_TextRemoved(const QAccessibleTextRemoveEvent* self);
 int QAccessibleTextRemoveEvent_ChangePosition(const QAccessibleTextRemoveEvent* self);
+bool QAccessibleTextRemoveEvent_override_virtual_AccessibleInterface(void* self, intptr_t slot);
+QAccessibleInterface* QAccessibleTextRemoveEvent_virtualbase_AccessibleInterface(const void* self);
 void QAccessibleTextRemoveEvent_Delete(QAccessibleTextRemoveEvent* self);
 
 QAccessibleTextUpdateEvent* QAccessibleTextUpdateEvent_new(QObject* obj, int position, struct miqt_string oldText, struct miqt_string text);
@@ -262,6 +268,8 @@ void QAccessibleTextUpdateEvent_virtbase(QAccessibleTextUpdateEvent* src, QAcces
 struct miqt_string QAccessibleTextUpdateEvent_TextRemoved(const QAccessibleTextUpdateEvent* self);
 struct miqt_string QAccessibleTextUpdateEvent_TextInserted(const QAccessibleTextUpdateEvent* self);
 int QAccessibleTextUpdateEvent_ChangePosition(const QAccessibleTextUpdateEvent* self);
+bool QAccessibleTextUpdateEvent_override_virtual_AccessibleInterface(void* self, intptr_t slot);
+QAccessibleInterface* QAccessibleTextUpdateEvent_virtualbase_AccessibleInterface(const void* self);
 void QAccessibleTextUpdateEvent_Delete(QAccessibleTextUpdateEvent* self);
 
 QAccessibleValueChangeEvent* QAccessibleValueChangeEvent_new(QObject* obj, QVariant* val);

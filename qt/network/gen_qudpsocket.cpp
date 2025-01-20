@@ -1,7 +1,10 @@
 #include <QAbstractSocket>
 #include <QByteArray>
+#include <QChildEvent>
+#include <QEvent>
 #include <QHostAddress>
 #include <QIODevice>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QNetworkDatagram>
 #include <QNetworkInterface>
@@ -9,6 +12,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QTimerEvent>
 #include <QUdpSocket>
 #include <QVariant>
 #include <qudpsocket.h>
@@ -39,6 +43,18 @@ bool miqt_exec_callback_QUdpSocket_WaitForDisconnected(void*, intptr_t, int);
 long long miqt_exec_callback_QUdpSocket_ReadData(void*, intptr_t, char*, long long);
 long long miqt_exec_callback_QUdpSocket_ReadLineData(void*, intptr_t, char*, long long);
 long long miqt_exec_callback_QUdpSocket_WriteData(void*, intptr_t, const char*, long long);
+bool miqt_exec_callback_QUdpSocket_Open(void*, intptr_t, int);
+long long miqt_exec_callback_QUdpSocket_Pos(void*, intptr_t);
+long long miqt_exec_callback_QUdpSocket_Size(void*, intptr_t);
+bool miqt_exec_callback_QUdpSocket_Seek(void*, intptr_t, long long);
+bool miqt_exec_callback_QUdpSocket_Reset(void*, intptr_t);
+bool miqt_exec_callback_QUdpSocket_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QUdpSocket_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QUdpSocket_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QUdpSocket_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QUdpSocket_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QUdpSocket_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QUdpSocket_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -568,6 +584,293 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Open = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool open(QIODevice::OpenMode mode) override {
+		if (handle__Open == 0) {
+			return QUdpSocket::open(mode);
+		}
+		
+		QIODevice::OpenMode mode_ret = mode;
+		int sigval1 = static_cast<int>(mode_ret);
+
+		bool callback_return_value = miqt_exec_callback_QUdpSocket_Open(this, handle__Open, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Open(int mode) {
+
+		return QUdpSocket::open(static_cast<QIODevice::OpenMode>(mode));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Pos = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual qint64 pos() const override {
+		if (handle__Pos == 0) {
+			return QUdpSocket::pos();
+		}
+		
+
+		long long callback_return_value = miqt_exec_callback_QUdpSocket_Pos(const_cast<MiqtVirtualQUdpSocket*>(this), handle__Pos);
+
+		return static_cast<qint64>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	long long virtualbase_Pos() const {
+
+		qint64 _ret = QUdpSocket::pos();
+		return static_cast<long long>(_ret);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Size = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual qint64 size() const override {
+		if (handle__Size == 0) {
+			return QUdpSocket::size();
+		}
+		
+
+		long long callback_return_value = miqt_exec_callback_QUdpSocket_Size(const_cast<MiqtVirtualQUdpSocket*>(this), handle__Size);
+
+		return static_cast<qint64>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	long long virtualbase_Size() const {
+
+		qint64 _ret = QUdpSocket::size();
+		return static_cast<long long>(_ret);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Seek = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool seek(qint64 pos) override {
+		if (handle__Seek == 0) {
+			return QUdpSocket::seek(pos);
+		}
+		
+		qint64 pos_ret = pos;
+		long long sigval1 = static_cast<long long>(pos_ret);
+
+		bool callback_return_value = miqt_exec_callback_QUdpSocket_Seek(this, handle__Seek, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Seek(long long pos) {
+
+		return QUdpSocket::seek(static_cast<qint64>(pos));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Reset = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool reset() override {
+		if (handle__Reset == 0) {
+			return QUdpSocket::reset();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QUdpSocket_Reset(this, handle__Reset);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Reset() {
+
+		return QUdpSocket::reset();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QUdpSocket::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QUdpSocket_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QUdpSocket::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QUdpSocket::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QUdpSocket_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QUdpSocket::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QUdpSocket::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QUdpSocket_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QUdpSocket::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QUdpSocket::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QUdpSocket_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QUdpSocket::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QUdpSocket::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QUdpSocket_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QUdpSocket::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QUdpSocket::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QUdpSocket_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QUdpSocket::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QUdpSocket::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QUdpSocket_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QUdpSocket::disconnectNotify(*signal);
+
+	}
+
 };
 
 QUdpSocket* QUdpSocket_new() {
@@ -1020,6 +1323,174 @@ bool QUdpSocket_override_virtual_WriteData(void* self, intptr_t slot) {
 
 long long QUdpSocket_virtualbase_WriteData(void* self, const char* data, long long lenVal) {
 	return ( (MiqtVirtualQUdpSocket*)(self) )->virtualbase_WriteData(data, lenVal);
+}
+
+bool QUdpSocket_override_virtual_Open(void* self, intptr_t slot) {
+	MiqtVirtualQUdpSocket* self_cast = dynamic_cast<MiqtVirtualQUdpSocket*>( (QUdpSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Open = slot;
+	return true;
+}
+
+bool QUdpSocket_virtualbase_Open(void* self, int mode) {
+	return ( (MiqtVirtualQUdpSocket*)(self) )->virtualbase_Open(mode);
+}
+
+bool QUdpSocket_override_virtual_Pos(void* self, intptr_t slot) {
+	MiqtVirtualQUdpSocket* self_cast = dynamic_cast<MiqtVirtualQUdpSocket*>( (QUdpSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Pos = slot;
+	return true;
+}
+
+long long QUdpSocket_virtualbase_Pos(const void* self) {
+	return ( (const MiqtVirtualQUdpSocket*)(self) )->virtualbase_Pos();
+}
+
+bool QUdpSocket_override_virtual_Size(void* self, intptr_t slot) {
+	MiqtVirtualQUdpSocket* self_cast = dynamic_cast<MiqtVirtualQUdpSocket*>( (QUdpSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Size = slot;
+	return true;
+}
+
+long long QUdpSocket_virtualbase_Size(const void* self) {
+	return ( (const MiqtVirtualQUdpSocket*)(self) )->virtualbase_Size();
+}
+
+bool QUdpSocket_override_virtual_Seek(void* self, intptr_t slot) {
+	MiqtVirtualQUdpSocket* self_cast = dynamic_cast<MiqtVirtualQUdpSocket*>( (QUdpSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Seek = slot;
+	return true;
+}
+
+bool QUdpSocket_virtualbase_Seek(void* self, long long pos) {
+	return ( (MiqtVirtualQUdpSocket*)(self) )->virtualbase_Seek(pos);
+}
+
+bool QUdpSocket_override_virtual_Reset(void* self, intptr_t slot) {
+	MiqtVirtualQUdpSocket* self_cast = dynamic_cast<MiqtVirtualQUdpSocket*>( (QUdpSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Reset = slot;
+	return true;
+}
+
+bool QUdpSocket_virtualbase_Reset(void* self) {
+	return ( (MiqtVirtualQUdpSocket*)(self) )->virtualbase_Reset();
+}
+
+bool QUdpSocket_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQUdpSocket* self_cast = dynamic_cast<MiqtVirtualQUdpSocket*>( (QUdpSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
+}
+
+bool QUdpSocket_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQUdpSocket*)(self) )->virtualbase_Event(event);
+}
+
+bool QUdpSocket_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQUdpSocket* self_cast = dynamic_cast<MiqtVirtualQUdpSocket*>( (QUdpSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
+}
+
+bool QUdpSocket_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQUdpSocket*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+bool QUdpSocket_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQUdpSocket* self_cast = dynamic_cast<MiqtVirtualQUdpSocket*>( (QUdpSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QUdpSocket_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQUdpSocket*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QUdpSocket_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQUdpSocket* self_cast = dynamic_cast<MiqtVirtualQUdpSocket*>( (QUdpSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QUdpSocket_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQUdpSocket*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QUdpSocket_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQUdpSocket* self_cast = dynamic_cast<MiqtVirtualQUdpSocket*>( (QUdpSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QUdpSocket_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQUdpSocket*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QUdpSocket_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQUdpSocket* self_cast = dynamic_cast<MiqtVirtualQUdpSocket*>( (QUdpSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QUdpSocket_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQUdpSocket*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QUdpSocket_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQUdpSocket* self_cast = dynamic_cast<MiqtVirtualQUdpSocket*>( (QUdpSocket*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QUdpSocket_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQUdpSocket*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
 void QUdpSocket_Delete(QUdpSocket* self) {

@@ -1,12 +1,16 @@
+#include <QChildEvent>
+#include <QEvent>
 #include <QFile>
 #include <QFileDevice>
 #include <QIODevice>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
 #include <QTemporaryFile>
+#include <QTimerEvent>
 #include <qtemporaryfile.h>
 #include "gen_qtemporaryfile.h"
 
@@ -20,6 +24,27 @@ long long miqt_exec_callback_QTemporaryFile_Size(void*, intptr_t);
 bool miqt_exec_callback_QTemporaryFile_Resize(void*, intptr_t, long long);
 int miqt_exec_callback_QTemporaryFile_Permissions(void*, intptr_t);
 bool miqt_exec_callback_QTemporaryFile_SetPermissions(void*, intptr_t, int);
+void miqt_exec_callback_QTemporaryFile_Close(void*, intptr_t);
+bool miqt_exec_callback_QTemporaryFile_IsSequential(void*, intptr_t);
+long long miqt_exec_callback_QTemporaryFile_Pos(void*, intptr_t);
+bool miqt_exec_callback_QTemporaryFile_Seek(void*, intptr_t, long long);
+bool miqt_exec_callback_QTemporaryFile_AtEnd(void*, intptr_t);
+long long miqt_exec_callback_QTemporaryFile_ReadData(void*, intptr_t, char*, long long);
+long long miqt_exec_callback_QTemporaryFile_WriteData(void*, intptr_t, const char*, long long);
+long long miqt_exec_callback_QTemporaryFile_ReadLineData(void*, intptr_t, char*, long long);
+bool miqt_exec_callback_QTemporaryFile_Reset(void*, intptr_t);
+long long miqt_exec_callback_QTemporaryFile_BytesAvailable(void*, intptr_t);
+long long miqt_exec_callback_QTemporaryFile_BytesToWrite(void*, intptr_t);
+bool miqt_exec_callback_QTemporaryFile_CanReadLine(void*, intptr_t);
+bool miqt_exec_callback_QTemporaryFile_WaitForReadyRead(void*, intptr_t, int);
+bool miqt_exec_callback_QTemporaryFile_WaitForBytesWritten(void*, intptr_t, int);
+bool miqt_exec_callback_QTemporaryFile_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QTemporaryFile_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QTemporaryFile_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QTemporaryFile_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QTemporaryFile_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QTemporaryFile_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QTemporaryFile_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -179,6 +204,505 @@ public:
 	bool virtualbase_SetPermissions(int permissionSpec) {
 
 		return QTemporaryFile::setPermissions(static_cast<QFileDevice::Permissions>(permissionSpec));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Close = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void close() override {
+		if (handle__Close == 0) {
+			QTemporaryFile::close();
+			return;
+		}
+		
+
+		miqt_exec_callback_QTemporaryFile_Close(this, handle__Close);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_Close() {
+
+		QTemporaryFile::close();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__IsSequential = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool isSequential() const override {
+		if (handle__IsSequential == 0) {
+			return QTemporaryFile::isSequential();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QTemporaryFile_IsSequential(const_cast<MiqtVirtualQTemporaryFile*>(this), handle__IsSequential);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_IsSequential() const {
+
+		return QTemporaryFile::isSequential();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Pos = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual qint64 pos() const override {
+		if (handle__Pos == 0) {
+			return QTemporaryFile::pos();
+		}
+		
+
+		long long callback_return_value = miqt_exec_callback_QTemporaryFile_Pos(const_cast<MiqtVirtualQTemporaryFile*>(this), handle__Pos);
+
+		return static_cast<qint64>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	long long virtualbase_Pos() const {
+
+		qint64 _ret = QTemporaryFile::pos();
+		return static_cast<long long>(_ret);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Seek = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool seek(qint64 offset) override {
+		if (handle__Seek == 0) {
+			return QTemporaryFile::seek(offset);
+		}
+		
+		qint64 offset_ret = offset;
+		long long sigval1 = static_cast<long long>(offset_ret);
+
+		bool callback_return_value = miqt_exec_callback_QTemporaryFile_Seek(this, handle__Seek, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Seek(long long offset) {
+
+		return QTemporaryFile::seek(static_cast<qint64>(offset));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__AtEnd = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool atEnd() const override {
+		if (handle__AtEnd == 0) {
+			return QTemporaryFile::atEnd();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QTemporaryFile_AtEnd(const_cast<MiqtVirtualQTemporaryFile*>(this), handle__AtEnd);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_AtEnd() const {
+
+		return QTemporaryFile::atEnd();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ReadData = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual qint64 readData(char* data, qint64 maxlen) override {
+		if (handle__ReadData == 0) {
+			return QTemporaryFile::readData(data, maxlen);
+		}
+		
+		char* sigval1 = data;
+		qint64 maxlen_ret = maxlen;
+		long long sigval2 = static_cast<long long>(maxlen_ret);
+
+		long long callback_return_value = miqt_exec_callback_QTemporaryFile_ReadData(this, handle__ReadData, sigval1, sigval2);
+
+		return static_cast<qint64>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	long long virtualbase_ReadData(char* data, long long maxlen) {
+
+		qint64 _ret = QTemporaryFile::readData(data, static_cast<qint64>(maxlen));
+		return static_cast<long long>(_ret);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__WriteData = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual qint64 writeData(const char* data, qint64 lenVal) override {
+		if (handle__WriteData == 0) {
+			return QTemporaryFile::writeData(data, lenVal);
+		}
+		
+		const char* sigval1 = (const char*) data;
+		qint64 lenVal_ret = lenVal;
+		long long sigval2 = static_cast<long long>(lenVal_ret);
+
+		long long callback_return_value = miqt_exec_callback_QTemporaryFile_WriteData(this, handle__WriteData, sigval1, sigval2);
+
+		return static_cast<qint64>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	long long virtualbase_WriteData(const char* data, long long lenVal) {
+
+		qint64 _ret = QTemporaryFile::writeData(data, static_cast<qint64>(lenVal));
+		return static_cast<long long>(_ret);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ReadLineData = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual qint64 readLineData(char* data, qint64 maxlen) override {
+		if (handle__ReadLineData == 0) {
+			return QTemporaryFile::readLineData(data, maxlen);
+		}
+		
+		char* sigval1 = data;
+		qint64 maxlen_ret = maxlen;
+		long long sigval2 = static_cast<long long>(maxlen_ret);
+
+		long long callback_return_value = miqt_exec_callback_QTemporaryFile_ReadLineData(this, handle__ReadLineData, sigval1, sigval2);
+
+		return static_cast<qint64>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	long long virtualbase_ReadLineData(char* data, long long maxlen) {
+
+		qint64 _ret = QTemporaryFile::readLineData(data, static_cast<qint64>(maxlen));
+		return static_cast<long long>(_ret);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Reset = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool reset() override {
+		if (handle__Reset == 0) {
+			return QTemporaryFile::reset();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QTemporaryFile_Reset(this, handle__Reset);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Reset() {
+
+		return QTemporaryFile::reset();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__BytesAvailable = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual qint64 bytesAvailable() const override {
+		if (handle__BytesAvailable == 0) {
+			return QTemporaryFile::bytesAvailable();
+		}
+		
+
+		long long callback_return_value = miqt_exec_callback_QTemporaryFile_BytesAvailable(const_cast<MiqtVirtualQTemporaryFile*>(this), handle__BytesAvailable);
+
+		return static_cast<qint64>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	long long virtualbase_BytesAvailable() const {
+
+		qint64 _ret = QTemporaryFile::bytesAvailable();
+		return static_cast<long long>(_ret);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__BytesToWrite = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual qint64 bytesToWrite() const override {
+		if (handle__BytesToWrite == 0) {
+			return QTemporaryFile::bytesToWrite();
+		}
+		
+
+		long long callback_return_value = miqt_exec_callback_QTemporaryFile_BytesToWrite(const_cast<MiqtVirtualQTemporaryFile*>(this), handle__BytesToWrite);
+
+		return static_cast<qint64>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	long long virtualbase_BytesToWrite() const {
+
+		qint64 _ret = QTemporaryFile::bytesToWrite();
+		return static_cast<long long>(_ret);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CanReadLine = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool canReadLine() const override {
+		if (handle__CanReadLine == 0) {
+			return QTemporaryFile::canReadLine();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QTemporaryFile_CanReadLine(const_cast<MiqtVirtualQTemporaryFile*>(this), handle__CanReadLine);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_CanReadLine() const {
+
+		return QTemporaryFile::canReadLine();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__WaitForReadyRead = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool waitForReadyRead(int msecs) override {
+		if (handle__WaitForReadyRead == 0) {
+			return QTemporaryFile::waitForReadyRead(msecs);
+		}
+		
+		int sigval1 = msecs;
+
+		bool callback_return_value = miqt_exec_callback_QTemporaryFile_WaitForReadyRead(this, handle__WaitForReadyRead, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_WaitForReadyRead(int msecs) {
+
+		return QTemporaryFile::waitForReadyRead(static_cast<int>(msecs));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__WaitForBytesWritten = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool waitForBytesWritten(int msecs) override {
+		if (handle__WaitForBytesWritten == 0) {
+			return QTemporaryFile::waitForBytesWritten(msecs);
+		}
+		
+		int sigval1 = msecs;
+
+		bool callback_return_value = miqt_exec_callback_QTemporaryFile_WaitForBytesWritten(this, handle__WaitForBytesWritten, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_WaitForBytesWritten(int msecs) {
+
+		return QTemporaryFile::waitForBytesWritten(static_cast<int>(msecs));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QTemporaryFile::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QTemporaryFile_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QTemporaryFile::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QTemporaryFile::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QTemporaryFile_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QTemporaryFile::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QTemporaryFile::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QTemporaryFile_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QTemporaryFile::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QTemporaryFile::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QTemporaryFile_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QTemporaryFile::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QTemporaryFile::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QTemporaryFile_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QTemporaryFile::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QTemporaryFile::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QTemporaryFile_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QTemporaryFile::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QTemporaryFile::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QTemporaryFile_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QTemporaryFile::disconnectNotify(*signal);
 
 	}
 
@@ -424,6 +948,300 @@ bool QTemporaryFile_override_virtual_SetPermissions(void* self, intptr_t slot) {
 
 bool QTemporaryFile_virtualbase_SetPermissions(void* self, int permissionSpec) {
 	return ( (MiqtVirtualQTemporaryFile*)(self) )->virtualbase_SetPermissions(permissionSpec);
+}
+
+bool QTemporaryFile_override_virtual_Close(void* self, intptr_t slot) {
+	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Close = slot;
+	return true;
+}
+
+void QTemporaryFile_virtualbase_Close(void* self) {
+	( (MiqtVirtualQTemporaryFile*)(self) )->virtualbase_Close();
+}
+
+bool QTemporaryFile_override_virtual_IsSequential(void* self, intptr_t slot) {
+	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__IsSequential = slot;
+	return true;
+}
+
+bool QTemporaryFile_virtualbase_IsSequential(const void* self) {
+	return ( (const MiqtVirtualQTemporaryFile*)(self) )->virtualbase_IsSequential();
+}
+
+bool QTemporaryFile_override_virtual_Pos(void* self, intptr_t slot) {
+	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Pos = slot;
+	return true;
+}
+
+long long QTemporaryFile_virtualbase_Pos(const void* self) {
+	return ( (const MiqtVirtualQTemporaryFile*)(self) )->virtualbase_Pos();
+}
+
+bool QTemporaryFile_override_virtual_Seek(void* self, intptr_t slot) {
+	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Seek = slot;
+	return true;
+}
+
+bool QTemporaryFile_virtualbase_Seek(void* self, long long offset) {
+	return ( (MiqtVirtualQTemporaryFile*)(self) )->virtualbase_Seek(offset);
+}
+
+bool QTemporaryFile_override_virtual_AtEnd(void* self, intptr_t slot) {
+	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__AtEnd = slot;
+	return true;
+}
+
+bool QTemporaryFile_virtualbase_AtEnd(const void* self) {
+	return ( (const MiqtVirtualQTemporaryFile*)(self) )->virtualbase_AtEnd();
+}
+
+bool QTemporaryFile_override_virtual_ReadData(void* self, intptr_t slot) {
+	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ReadData = slot;
+	return true;
+}
+
+long long QTemporaryFile_virtualbase_ReadData(void* self, char* data, long long maxlen) {
+	return ( (MiqtVirtualQTemporaryFile*)(self) )->virtualbase_ReadData(data, maxlen);
+}
+
+bool QTemporaryFile_override_virtual_WriteData(void* self, intptr_t slot) {
+	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WriteData = slot;
+	return true;
+}
+
+long long QTemporaryFile_virtualbase_WriteData(void* self, const char* data, long long lenVal) {
+	return ( (MiqtVirtualQTemporaryFile*)(self) )->virtualbase_WriteData(data, lenVal);
+}
+
+bool QTemporaryFile_override_virtual_ReadLineData(void* self, intptr_t slot) {
+	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ReadLineData = slot;
+	return true;
+}
+
+long long QTemporaryFile_virtualbase_ReadLineData(void* self, char* data, long long maxlen) {
+	return ( (MiqtVirtualQTemporaryFile*)(self) )->virtualbase_ReadLineData(data, maxlen);
+}
+
+bool QTemporaryFile_override_virtual_Reset(void* self, intptr_t slot) {
+	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Reset = slot;
+	return true;
+}
+
+bool QTemporaryFile_virtualbase_Reset(void* self) {
+	return ( (MiqtVirtualQTemporaryFile*)(self) )->virtualbase_Reset();
+}
+
+bool QTemporaryFile_override_virtual_BytesAvailable(void* self, intptr_t slot) {
+	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BytesAvailable = slot;
+	return true;
+}
+
+long long QTemporaryFile_virtualbase_BytesAvailable(const void* self) {
+	return ( (const MiqtVirtualQTemporaryFile*)(self) )->virtualbase_BytesAvailable();
+}
+
+bool QTemporaryFile_override_virtual_BytesToWrite(void* self, intptr_t slot) {
+	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__BytesToWrite = slot;
+	return true;
+}
+
+long long QTemporaryFile_virtualbase_BytesToWrite(const void* self) {
+	return ( (const MiqtVirtualQTemporaryFile*)(self) )->virtualbase_BytesToWrite();
+}
+
+bool QTemporaryFile_override_virtual_CanReadLine(void* self, intptr_t slot) {
+	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CanReadLine = slot;
+	return true;
+}
+
+bool QTemporaryFile_virtualbase_CanReadLine(const void* self) {
+	return ( (const MiqtVirtualQTemporaryFile*)(self) )->virtualbase_CanReadLine();
+}
+
+bool QTemporaryFile_override_virtual_WaitForReadyRead(void* self, intptr_t slot) {
+	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WaitForReadyRead = slot;
+	return true;
+}
+
+bool QTemporaryFile_virtualbase_WaitForReadyRead(void* self, int msecs) {
+	return ( (MiqtVirtualQTemporaryFile*)(self) )->virtualbase_WaitForReadyRead(msecs);
+}
+
+bool QTemporaryFile_override_virtual_WaitForBytesWritten(void* self, intptr_t slot) {
+	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WaitForBytesWritten = slot;
+	return true;
+}
+
+bool QTemporaryFile_virtualbase_WaitForBytesWritten(void* self, int msecs) {
+	return ( (MiqtVirtualQTemporaryFile*)(self) )->virtualbase_WaitForBytesWritten(msecs);
+}
+
+bool QTemporaryFile_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
+}
+
+bool QTemporaryFile_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQTemporaryFile*)(self) )->virtualbase_Event(event);
+}
+
+bool QTemporaryFile_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
+}
+
+bool QTemporaryFile_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQTemporaryFile*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+bool QTemporaryFile_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QTemporaryFile_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQTemporaryFile*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QTemporaryFile_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QTemporaryFile_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQTemporaryFile*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QTemporaryFile_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QTemporaryFile_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQTemporaryFile*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QTemporaryFile_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QTemporaryFile_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQTemporaryFile*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QTemporaryFile_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQTemporaryFile* self_cast = dynamic_cast<MiqtVirtualQTemporaryFile*>( (QTemporaryFile*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QTemporaryFile_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQTemporaryFile*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
 void QTemporaryFile_Delete(QTemporaryFile* self) {

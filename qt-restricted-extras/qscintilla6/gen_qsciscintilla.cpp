@@ -1,33 +1,47 @@
 #include <QAbstractScrollArea>
+#include <QActionEvent>
 #include <QByteArray>
+#include <QChildEvent>
+#include <QCloseEvent>
 #include <QColor>
 #include <QContextMenuEvent>
 #include <QDragEnterEvent>
 #include <QDragLeaveEvent>
 #include <QDragMoveEvent>
 #include <QDropEvent>
+#include <QEnterEvent>
 #include <QEvent>
 #include <QFocusEvent>
 #include <QFont>
 #include <QFrame>
+#include <QHideEvent>
 #include <QIODevice>
 #include <QImage>
 #include <QInputMethodEvent>
 #include <QKeyEvent>
 #include <QList>
 #include <QMenu>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QMimeData>
 #include <QMouseEvent>
+#include <QMoveEvent>
 #include <QObject>
 #include <QPaintDevice>
+#include <QPaintEngine>
 #include <QPaintEvent>
+#include <QPainter>
 #include <QPixmap>
 #include <QPoint>
 #include <QResizeEvent>
+#include <QShowEvent>
+#include <QSize>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QStyleOptionFrame>
+#include <QTabletEvent>
+#include <QTimerEvent>
 #include <QVariant>
 #include <QWheelEvent>
 #include <QWidget>
@@ -157,6 +171,37 @@ void miqt_exec_callback_QsciScintilla_MouseReleaseEvent(void*, intptr_t, QMouseE
 void miqt_exec_callback_QsciScintilla_PaintEvent(void*, intptr_t, QPaintEvent*);
 void miqt_exec_callback_QsciScintilla_ResizeEvent(void*, intptr_t, QResizeEvent*);
 void miqt_exec_callback_QsciScintilla_ScrollContentsBy(void*, intptr_t, int, int);
+QSize* miqt_exec_callback_QsciScintilla_MinimumSizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QsciScintilla_SizeHint(void*, intptr_t);
+void miqt_exec_callback_QsciScintilla_SetupViewport(void*, intptr_t, QWidget*);
+bool miqt_exec_callback_QsciScintilla_EventFilter(void*, intptr_t, QObject*, QEvent*);
+bool miqt_exec_callback_QsciScintilla_ViewportEvent(void*, intptr_t, QEvent*);
+QSize* miqt_exec_callback_QsciScintilla_ViewportSizeHint(void*, intptr_t);
+void miqt_exec_callback_QsciScintilla_InitStyleOption(void*, intptr_t, QStyleOptionFrame*);
+int miqt_exec_callback_QsciScintilla_DevType(void*, intptr_t);
+void miqt_exec_callback_QsciScintilla_SetVisible(void*, intptr_t, bool);
+int miqt_exec_callback_QsciScintilla_HeightForWidth(void*, intptr_t, int);
+bool miqt_exec_callback_QsciScintilla_HasHeightForWidth(void*, intptr_t);
+QPaintEngine* miqt_exec_callback_QsciScintilla_PaintEngine(void*, intptr_t);
+void miqt_exec_callback_QsciScintilla_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QsciScintilla_EnterEvent(void*, intptr_t, QEnterEvent*);
+void miqt_exec_callback_QsciScintilla_LeaveEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QsciScintilla_MoveEvent(void*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QsciScintilla_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QsciScintilla_TabletEvent(void*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QsciScintilla_ActionEvent(void*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QsciScintilla_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QsciScintilla_HideEvent(void*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QsciScintilla_NativeEvent(void*, intptr_t, struct miqt_string, void*, intptr_t*);
+int miqt_exec_callback_QsciScintilla_Metric(void*, intptr_t, int);
+void miqt_exec_callback_QsciScintilla_InitPainter(void*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QsciScintilla_Redirected(void*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QsciScintilla_SharedPainter(void*, intptr_t);
+void miqt_exec_callback_QsciScintilla_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QsciScintilla_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QsciScintilla_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QsciScintilla_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QsciScintilla_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -2878,6 +2923,745 @@ public:
 	void virtualbase_ScrollContentsBy(int dx, int dy) {
 
 		QsciScintilla::scrollContentsBy(static_cast<int>(dx), static_cast<int>(dy));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MinimumSizeHint = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QSize minimumSizeHint() const override {
+		if (handle__MinimumSizeHint == 0) {
+			return QsciScintilla::minimumSizeHint();
+		}
+		
+
+		QSize* callback_return_value = miqt_exec_callback_QsciScintilla_MinimumSizeHint(const_cast<MiqtVirtualQsciScintilla*>(this), handle__MinimumSizeHint);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QSize* virtualbase_MinimumSizeHint() const {
+
+		return new QSize(QsciScintilla::minimumSizeHint());
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SizeHint = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QSize sizeHint() const override {
+		if (handle__SizeHint == 0) {
+			return QsciScintilla::sizeHint();
+		}
+		
+
+		QSize* callback_return_value = miqt_exec_callback_QsciScintilla_SizeHint(const_cast<MiqtVirtualQsciScintilla*>(this), handle__SizeHint);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QSize* virtualbase_SizeHint() const {
+
+		return new QSize(QsciScintilla::sizeHint());
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetupViewport = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setupViewport(QWidget* viewport) override {
+		if (handle__SetupViewport == 0) {
+			QsciScintilla::setupViewport(viewport);
+			return;
+		}
+		
+		QWidget* sigval1 = viewport;
+
+		miqt_exec_callback_QsciScintilla_SetupViewport(this, handle__SetupViewport, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetupViewport(QWidget* viewport) {
+
+		QsciScintilla::setupViewport(viewport);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* param1, QEvent* param2) override {
+		if (handle__EventFilter == 0) {
+			return QsciScintilla::eventFilter(param1, param2);
+		}
+		
+		QObject* sigval1 = param1;
+		QEvent* sigval2 = param2;
+
+		bool callback_return_value = miqt_exec_callback_QsciScintilla_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* param1, QEvent* param2) {
+
+		return QsciScintilla::eventFilter(param1, param2);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ViewportEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool viewportEvent(QEvent* param1) override {
+		if (handle__ViewportEvent == 0) {
+			return QsciScintilla::viewportEvent(param1);
+		}
+		
+		QEvent* sigval1 = param1;
+
+		bool callback_return_value = miqt_exec_callback_QsciScintilla_ViewportEvent(this, handle__ViewportEvent, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_ViewportEvent(QEvent* param1) {
+
+		return QsciScintilla::viewportEvent(param1);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ViewportSizeHint = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QSize viewportSizeHint() const override {
+		if (handle__ViewportSizeHint == 0) {
+			return QsciScintilla::viewportSizeHint();
+		}
+		
+
+		QSize* callback_return_value = miqt_exec_callback_QsciScintilla_ViewportSizeHint(const_cast<MiqtVirtualQsciScintilla*>(this), handle__ViewportSizeHint);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QSize* virtualbase_ViewportSizeHint() const {
+
+		return new QSize(QsciScintilla::viewportSizeHint());
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__InitStyleOption = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void initStyleOption(QStyleOptionFrame* option) const override {
+		if (handle__InitStyleOption == 0) {
+			QsciScintilla::initStyleOption(option);
+			return;
+		}
+		
+		QStyleOptionFrame* sigval1 = option;
+
+		miqt_exec_callback_QsciScintilla_InitStyleOption(const_cast<MiqtVirtualQsciScintilla*>(this), handle__InitStyleOption, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_InitStyleOption(QStyleOptionFrame* option) const {
+
+		QsciScintilla::initStyleOption(option);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DevType = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int devType() const override {
+		if (handle__DevType == 0) {
+			return QsciScintilla::devType();
+		}
+		
+
+		int callback_return_value = miqt_exec_callback_QsciScintilla_DevType(const_cast<MiqtVirtualQsciScintilla*>(this), handle__DevType);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_DevType() const {
+
+		return QsciScintilla::devType();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetVisible = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setVisible(bool visible) override {
+		if (handle__SetVisible == 0) {
+			QsciScintilla::setVisible(visible);
+			return;
+		}
+		
+		bool sigval1 = visible;
+
+		miqt_exec_callback_QsciScintilla_SetVisible(this, handle__SetVisible, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetVisible(bool visible) {
+
+		QsciScintilla::setVisible(visible);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__HeightForWidth = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int heightForWidth(int param1) const override {
+		if (handle__HeightForWidth == 0) {
+			return QsciScintilla::heightForWidth(param1);
+		}
+		
+		int sigval1 = param1;
+
+		int callback_return_value = miqt_exec_callback_QsciScintilla_HeightForWidth(const_cast<MiqtVirtualQsciScintilla*>(this), handle__HeightForWidth, sigval1);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_HeightForWidth(int param1) const {
+
+		return QsciScintilla::heightForWidth(static_cast<int>(param1));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__HasHeightForWidth = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool hasHeightForWidth() const override {
+		if (handle__HasHeightForWidth == 0) {
+			return QsciScintilla::hasHeightForWidth();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QsciScintilla_HasHeightForWidth(const_cast<MiqtVirtualQsciScintilla*>(this), handle__HasHeightForWidth);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_HasHeightForWidth() const {
+
+		return QsciScintilla::hasHeightForWidth();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__PaintEngine = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPaintEngine* paintEngine() const override {
+		if (handle__PaintEngine == 0) {
+			return QsciScintilla::paintEngine();
+		}
+		
+
+		QPaintEngine* callback_return_value = miqt_exec_callback_QsciScintilla_PaintEngine(const_cast<MiqtVirtualQsciScintilla*>(this), handle__PaintEngine);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPaintEngine* virtualbase_PaintEngine() const {
+
+		return QsciScintilla::paintEngine();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__KeyReleaseEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void keyReleaseEvent(QKeyEvent* event) override {
+		if (handle__KeyReleaseEvent == 0) {
+			QsciScintilla::keyReleaseEvent(event);
+			return;
+		}
+		
+		QKeyEvent* sigval1 = event;
+
+		miqt_exec_callback_QsciScintilla_KeyReleaseEvent(this, handle__KeyReleaseEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_KeyReleaseEvent(QKeyEvent* event) {
+
+		QsciScintilla::keyReleaseEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EnterEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void enterEvent(QEnterEvent* event) override {
+		if (handle__EnterEvent == 0) {
+			QsciScintilla::enterEvent(event);
+			return;
+		}
+		
+		QEnterEvent* sigval1 = event;
+
+		miqt_exec_callback_QsciScintilla_EnterEvent(this, handle__EnterEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_EnterEvent(QEnterEvent* event) {
+
+		QsciScintilla::enterEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__LeaveEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void leaveEvent(QEvent* event) override {
+		if (handle__LeaveEvent == 0) {
+			QsciScintilla::leaveEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QsciScintilla_LeaveEvent(this, handle__LeaveEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_LeaveEvent(QEvent* event) {
+
+		QsciScintilla::leaveEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MoveEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void moveEvent(QMoveEvent* event) override {
+		if (handle__MoveEvent == 0) {
+			QsciScintilla::moveEvent(event);
+			return;
+		}
+		
+		QMoveEvent* sigval1 = event;
+
+		miqt_exec_callback_QsciScintilla_MoveEvent(this, handle__MoveEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_MoveEvent(QMoveEvent* event) {
+
+		QsciScintilla::moveEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CloseEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void closeEvent(QCloseEvent* event) override {
+		if (handle__CloseEvent == 0) {
+			QsciScintilla::closeEvent(event);
+			return;
+		}
+		
+		QCloseEvent* sigval1 = event;
+
+		miqt_exec_callback_QsciScintilla_CloseEvent(this, handle__CloseEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CloseEvent(QCloseEvent* event) {
+
+		QsciScintilla::closeEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TabletEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void tabletEvent(QTabletEvent* event) override {
+		if (handle__TabletEvent == 0) {
+			QsciScintilla::tabletEvent(event);
+			return;
+		}
+		
+		QTabletEvent* sigval1 = event;
+
+		miqt_exec_callback_QsciScintilla_TabletEvent(this, handle__TabletEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TabletEvent(QTabletEvent* event) {
+
+		QsciScintilla::tabletEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ActionEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void actionEvent(QActionEvent* event) override {
+		if (handle__ActionEvent == 0) {
+			QsciScintilla::actionEvent(event);
+			return;
+		}
+		
+		QActionEvent* sigval1 = event;
+
+		miqt_exec_callback_QsciScintilla_ActionEvent(this, handle__ActionEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ActionEvent(QActionEvent* event) {
+
+		QsciScintilla::actionEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ShowEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void showEvent(QShowEvent* event) override {
+		if (handle__ShowEvent == 0) {
+			QsciScintilla::showEvent(event);
+			return;
+		}
+		
+		QShowEvent* sigval1 = event;
+
+		miqt_exec_callback_QsciScintilla_ShowEvent(this, handle__ShowEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ShowEvent(QShowEvent* event) {
+
+		QsciScintilla::showEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__HideEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void hideEvent(QHideEvent* event) override {
+		if (handle__HideEvent == 0) {
+			QsciScintilla::hideEvent(event);
+			return;
+		}
+		
+		QHideEvent* sigval1 = event;
+
+		miqt_exec_callback_QsciScintilla_HideEvent(this, handle__HideEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_HideEvent(QHideEvent* event) {
+
+		QsciScintilla::hideEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__NativeEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool nativeEvent(const QByteArray& eventType, void* message, qintptr* result) override {
+		if (handle__NativeEvent == 0) {
+			return QsciScintilla::nativeEvent(eventType, message, result);
+		}
+		
+		const QByteArray eventType_qb = eventType;
+		struct miqt_string eventType_ms;
+		eventType_ms.len = eventType_qb.length();
+		eventType_ms.data = static_cast<char*>(malloc(eventType_ms.len));
+		memcpy(eventType_ms.data, eventType_qb.data(), eventType_ms.len);
+		struct miqt_string sigval1 = eventType_ms;
+		void* sigval2 = message;
+		qintptr* result_ret = result;
+		intptr_t* sigval3 = (intptr_t*)(result_ret);
+
+		bool callback_return_value = miqt_exec_callback_QsciScintilla_NativeEvent(this, handle__NativeEvent, sigval1, sigval2, sigval3);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_NativeEvent(struct miqt_string eventType, void* message, intptr_t* result) {
+		QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+		return QsciScintilla::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Metric = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int metric(QPaintDevice::PaintDeviceMetric param1) const override {
+		if (handle__Metric == 0) {
+			return QsciScintilla::metric(param1);
+		}
+		
+		QPaintDevice::PaintDeviceMetric param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+
+		int callback_return_value = miqt_exec_callback_QsciScintilla_Metric(const_cast<MiqtVirtualQsciScintilla*>(this), handle__Metric, sigval1);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_Metric(int param1) const {
+
+		return QsciScintilla::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__InitPainter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void initPainter(QPainter* painter) const override {
+		if (handle__InitPainter == 0) {
+			QsciScintilla::initPainter(painter);
+			return;
+		}
+		
+		QPainter* sigval1 = painter;
+
+		miqt_exec_callback_QsciScintilla_InitPainter(const_cast<MiqtVirtualQsciScintilla*>(this), handle__InitPainter, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_InitPainter(QPainter* painter) const {
+
+		QsciScintilla::initPainter(painter);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Redirected = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPaintDevice* redirected(QPoint* offset) const override {
+		if (handle__Redirected == 0) {
+			return QsciScintilla::redirected(offset);
+		}
+		
+		QPoint* sigval1 = offset;
+
+		QPaintDevice* callback_return_value = miqt_exec_callback_QsciScintilla_Redirected(const_cast<MiqtVirtualQsciScintilla*>(this), handle__Redirected, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPaintDevice* virtualbase_Redirected(QPoint* offset) const {
+
+		return QsciScintilla::redirected(offset);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SharedPainter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPainter* sharedPainter() const override {
+		if (handle__SharedPainter == 0) {
+			return QsciScintilla::sharedPainter();
+		}
+		
+
+		QPainter* callback_return_value = miqt_exec_callback_QsciScintilla_SharedPainter(const_cast<MiqtVirtualQsciScintilla*>(this), handle__SharedPainter);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPainter* virtualbase_SharedPainter() const {
+
+		return QsciScintilla::sharedPainter();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QsciScintilla::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QsciScintilla_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QsciScintilla::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QsciScintilla::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QsciScintilla_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QsciScintilla::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QsciScintilla::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QsciScintilla_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QsciScintilla::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QsciScintilla::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QsciScintilla_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QsciScintilla::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QsciScintilla::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QsciScintilla_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QsciScintilla::disconnectNotify(*signal);
 
 	}
 
@@ -5816,6 +6600,440 @@ bool QsciScintilla_override_virtual_ScrollContentsBy(void* self, intptr_t slot) 
 
 void QsciScintilla_virtualbase_ScrollContentsBy(void* self, int dx, int dy) {
 	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_ScrollContentsBy(dx, dy);
+}
+
+bool QsciScintilla_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
+}
+
+QSize* QsciScintilla_virtualbase_MinimumSizeHint(const void* self) {
+	return ( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_MinimumSizeHint();
+}
+
+bool QsciScintilla_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
+}
+
+QSize* QsciScintilla_virtualbase_SizeHint(const void* self) {
+	return ( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_SizeHint();
+}
+
+bool QsciScintilla_override_virtual_SetupViewport(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetupViewport = slot;
+	return true;
+}
+
+void QsciScintilla_virtualbase_SetupViewport(void* self, QWidget* viewport) {
+	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_SetupViewport(viewport);
+}
+
+bool QsciScintilla_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
+}
+
+bool QsciScintilla_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2) {
+	return ( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_EventFilter(param1, param2);
+}
+
+bool QsciScintilla_override_virtual_ViewportEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ViewportEvent = slot;
+	return true;
+}
+
+bool QsciScintilla_virtualbase_ViewportEvent(void* self, QEvent* param1) {
+	return ( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_ViewportEvent(param1);
+}
+
+bool QsciScintilla_override_virtual_ViewportSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ViewportSizeHint = slot;
+	return true;
+}
+
+QSize* QsciScintilla_virtualbase_ViewportSizeHint(const void* self) {
+	return ( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_ViewportSizeHint();
+}
+
+bool QsciScintilla_override_virtual_InitStyleOption(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitStyleOption = slot;
+	return true;
+}
+
+void QsciScintilla_virtualbase_InitStyleOption(const void* self, QStyleOptionFrame* option) {
+	( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_InitStyleOption(option);
+}
+
+bool QsciScintilla_override_virtual_DevType(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DevType = slot;
+	return true;
+}
+
+int QsciScintilla_virtualbase_DevType(const void* self) {
+	return ( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_DevType();
+}
+
+bool QsciScintilla_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
+}
+
+void QsciScintilla_virtualbase_SetVisible(void* self, bool visible) {
+	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_SetVisible(visible);
+}
+
+bool QsciScintilla_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeightForWidth = slot;
+	return true;
+}
+
+int QsciScintilla_virtualbase_HeightForWidth(const void* self, int param1) {
+	return ( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_HeightForWidth(param1);
+}
+
+bool QsciScintilla_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasHeightForWidth = slot;
+	return true;
+}
+
+bool QsciScintilla_virtualbase_HasHeightForWidth(const void* self) {
+	return ( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_HasHeightForWidth();
+}
+
+bool QsciScintilla_override_virtual_PaintEngine(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEngine = slot;
+	return true;
+}
+
+QPaintEngine* QsciScintilla_virtualbase_PaintEngine(const void* self) {
+	return ( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_PaintEngine();
+}
+
+bool QsciScintilla_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyReleaseEvent = slot;
+	return true;
+}
+
+void QsciScintilla_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* event) {
+	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_KeyReleaseEvent(event);
+}
+
+bool QsciScintilla_override_virtual_EnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EnterEvent = slot;
+	return true;
+}
+
+void QsciScintilla_virtualbase_EnterEvent(void* self, QEnterEvent* event) {
+	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_EnterEvent(event);
+}
+
+bool QsciScintilla_override_virtual_LeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__LeaveEvent = slot;
+	return true;
+}
+
+void QsciScintilla_virtualbase_LeaveEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_LeaveEvent(event);
+}
+
+bool QsciScintilla_override_virtual_MoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveEvent = slot;
+	return true;
+}
+
+void QsciScintilla_virtualbase_MoveEvent(void* self, QMoveEvent* event) {
+	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_MoveEvent(event);
+}
+
+bool QsciScintilla_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
+}
+
+void QsciScintilla_virtualbase_CloseEvent(void* self, QCloseEvent* event) {
+	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_CloseEvent(event);
+}
+
+bool QsciScintilla_override_virtual_TabletEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TabletEvent = slot;
+	return true;
+}
+
+void QsciScintilla_virtualbase_TabletEvent(void* self, QTabletEvent* event) {
+	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_TabletEvent(event);
+}
+
+bool QsciScintilla_override_virtual_ActionEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ActionEvent = slot;
+	return true;
+}
+
+void QsciScintilla_virtualbase_ActionEvent(void* self, QActionEvent* event) {
+	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_ActionEvent(event);
+}
+
+bool QsciScintilla_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
+}
+
+void QsciScintilla_virtualbase_ShowEvent(void* self, QShowEvent* event) {
+	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_ShowEvent(event);
+}
+
+bool QsciScintilla_override_virtual_HideEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HideEvent = slot;
+	return true;
+}
+
+void QsciScintilla_virtualbase_HideEvent(void* self, QHideEvent* event) {
+	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_HideEvent(event);
+}
+
+bool QsciScintilla_override_virtual_NativeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NativeEvent = slot;
+	return true;
+}
+
+bool QsciScintilla_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
+	return ( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_NativeEvent(eventType, message, result);
+}
+
+bool QsciScintilla_override_virtual_Metric(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Metric = slot;
+	return true;
+}
+
+int QsciScintilla_virtualbase_Metric(const void* self, int param1) {
+	return ( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_Metric(param1);
+}
+
+bool QsciScintilla_override_virtual_InitPainter(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitPainter = slot;
+	return true;
+}
+
+void QsciScintilla_virtualbase_InitPainter(const void* self, QPainter* painter) {
+	( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_InitPainter(painter);
+}
+
+bool QsciScintilla_override_virtual_Redirected(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Redirected = slot;
+	return true;
+}
+
+QPaintDevice* QsciScintilla_virtualbase_Redirected(const void* self, QPoint* offset) {
+	return ( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_Redirected(offset);
+}
+
+bool QsciScintilla_override_virtual_SharedPainter(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SharedPainter = slot;
+	return true;
+}
+
+QPainter* QsciScintilla_virtualbase_SharedPainter(const void* self) {
+	return ( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_SharedPainter();
+}
+
+bool QsciScintilla_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QsciScintilla_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QsciScintilla_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QsciScintilla_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QsciScintilla_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QsciScintilla_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QsciScintilla_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QsciScintilla_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QsciScintilla_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQsciScintilla* self_cast = dynamic_cast<MiqtVirtualQsciScintilla*>( (QsciScintilla*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QsciScintilla_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
 void QsciScintilla_Delete(QsciScintilla* self) {

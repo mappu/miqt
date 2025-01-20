@@ -16,6 +16,8 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAbstractVideoSurface;
+class QChildEvent;
+class QEvent;
 class QGraphicsVideoItem;
 class QIODevice;
 class QMediaContent;
@@ -23,12 +25,16 @@ class QMediaObject;
 class QMediaPlayer;
 class QMediaPlaylist;
 class QMediaService;
+class QMetaMethod;
 class QMetaObject;
 class QNetworkConfiguration;
 class QObject;
+class QTimerEvent;
 class QVideoWidget;
 #else
 typedef struct QAbstractVideoSurface QAbstractVideoSurface;
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QGraphicsVideoItem QGraphicsVideoItem;
 typedef struct QIODevice QIODevice;
 typedef struct QMediaContent QMediaContent;
@@ -36,9 +42,11 @@ typedef struct QMediaObject QMediaObject;
 typedef struct QMediaPlayer QMediaPlayer;
 typedef struct QMediaPlaylist QMediaPlaylist;
 typedef struct QMediaService QMediaService;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QNetworkConfiguration QNetworkConfiguration;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QVideoWidget QVideoWidget;
 #endif
 
@@ -145,6 +153,20 @@ bool QMediaPlayer_override_virtual_IsAvailable(void* self, intptr_t slot);
 bool QMediaPlayer_virtualbase_IsAvailable(const void* self);
 bool QMediaPlayer_override_virtual_Service(void* self, intptr_t slot);
 QMediaService* QMediaPlayer_virtualbase_Service(const void* self);
+bool QMediaPlayer_override_virtual_Event(void* self, intptr_t slot);
+bool QMediaPlayer_virtualbase_Event(void* self, QEvent* event);
+bool QMediaPlayer_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QMediaPlayer_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QMediaPlayer_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QMediaPlayer_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QMediaPlayer_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QMediaPlayer_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QMediaPlayer_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QMediaPlayer_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QMediaPlayer_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QMediaPlayer_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QMediaPlayer_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QMediaPlayer_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QMediaPlayer_Delete(QMediaPlayer* self);
 
 #ifdef __cplusplus

@@ -1,8 +1,12 @@
 #include <QAbstractItemModel>
 #include <QAbstractProxyModel>
+#include <QByteArray>
+#include <QChildEvent>
+#include <QEvent>
 #include <QItemSelection>
 #include <QList>
 #include <QMap>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QMimeData>
 #include <QModelIndex>
@@ -14,6 +18,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QTimerEvent>
 #include <QVariant>
 #include <qsortfilterproxymodel.h>
 #include "gen_qsortfilterproxymodel.h"
@@ -68,6 +73,16 @@ struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QSortFilterProxyMo
 bool miqt_exec_callback_QSortFilterProxyModel_SetItemData(void*, intptr_t, QModelIndex*, struct miqt_map /* of int to QVariant* */ );
 bool miqt_exec_callback_QSortFilterProxyModel_CanDropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
 int miqt_exec_callback_QSortFilterProxyModel_SupportedDragActions(void*, intptr_t);
+bool miqt_exec_callback_QSortFilterProxyModel_MoveRows(void*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+bool miqt_exec_callback_QSortFilterProxyModel_MoveColumns(void*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+struct miqt_map /* of int to struct miqt_string */  miqt_exec_callback_QSortFilterProxyModel_RoleNames(void*, intptr_t);
+bool miqt_exec_callback_QSortFilterProxyModel_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QSortFilterProxyModel_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QSortFilterProxyModel_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSortFilterProxyModel_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QSortFilterProxyModel_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QSortFilterProxyModel_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSortFilterProxyModel_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1181,6 +1196,288 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MoveRows = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool moveRows(const QModelIndex& sourceParent, int sourceRow, int count, const QModelIndex& destinationParent, int destinationChild) override {
+		if (handle__MoveRows == 0) {
+			return QSortFilterProxyModel::moveRows(sourceParent, sourceRow, count, destinationParent, destinationChild);
+		}
+		
+		const QModelIndex& sourceParent_ret = sourceParent;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&sourceParent_ret);
+		int sigval2 = sourceRow;
+		int sigval3 = count;
+		const QModelIndex& destinationParent_ret = destinationParent;
+		// Cast returned reference into pointer
+		QModelIndex* sigval4 = const_cast<QModelIndex*>(&destinationParent_ret);
+		int sigval5 = destinationChild;
+
+		bool callback_return_value = miqt_exec_callback_QSortFilterProxyModel_MoveRows(this, handle__MoveRows, sigval1, sigval2, sigval3, sigval4, sigval5);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_MoveRows(QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
+
+		return QSortFilterProxyModel::moveRows(*sourceParent, static_cast<int>(sourceRow), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MoveColumns = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool moveColumns(const QModelIndex& sourceParent, int sourceColumn, int count, const QModelIndex& destinationParent, int destinationChild) override {
+		if (handle__MoveColumns == 0) {
+			return QSortFilterProxyModel::moveColumns(sourceParent, sourceColumn, count, destinationParent, destinationChild);
+		}
+		
+		const QModelIndex& sourceParent_ret = sourceParent;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&sourceParent_ret);
+		int sigval2 = sourceColumn;
+		int sigval3 = count;
+		const QModelIndex& destinationParent_ret = destinationParent;
+		// Cast returned reference into pointer
+		QModelIndex* sigval4 = const_cast<QModelIndex*>(&destinationParent_ret);
+		int sigval5 = destinationChild;
+
+		bool callback_return_value = miqt_exec_callback_QSortFilterProxyModel_MoveColumns(this, handle__MoveColumns, sigval1, sigval2, sigval3, sigval4, sigval5);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_MoveColumns(QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
+
+		return QSortFilterProxyModel::moveColumns(*sourceParent, static_cast<int>(sourceColumn), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__RoleNames = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QHash<int, QByteArray> roleNames() const override {
+		if (handle__RoleNames == 0) {
+			return QSortFilterProxyModel::roleNames();
+		}
+		
+
+		struct miqt_map /* of int to struct miqt_string */  callback_return_value = miqt_exec_callback_QSortFilterProxyModel_RoleNames(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__RoleNames);
+		QHash<int, QByteArray> callback_return_value_QMap;
+		callback_return_value_QMap.reserve(callback_return_value.len);
+		int* callback_return_value_karr = static_cast<int*>(callback_return_value.keys);
+		struct miqt_string* callback_return_value_varr = static_cast<struct miqt_string*>(callback_return_value.values);
+		for(size_t i = 0; i < callback_return_value.len; ++i) {
+			QByteArray callback_return_value_varr_i_QByteArray(callback_return_value_varr[i].data, callback_return_value_varr[i].len);
+			callback_return_value_QMap[static_cast<int>(callback_return_value_karr[i])] = callback_return_value_varr_i_QByteArray;
+		}
+
+		return callback_return_value_QMap;
+	}
+
+	// Wrapper to allow calling protected method
+	struct miqt_map /* of int to struct miqt_string */  virtualbase_RoleNames() const {
+
+		QHash<int, QByteArray> _ret = QSortFilterProxyModel::roleNames();
+		// Convert QMap<> from C++ memory to manually-managed C memory
+		int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+		struct miqt_string* _varr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+		int _ctr = 0;
+		for (auto _itr = _ret.keyValueBegin(); _itr != _ret.keyValueEnd(); ++_itr) {
+			_karr[_ctr] = _itr->first;
+			QByteArray _hashval_qb = _itr->second;
+			struct miqt_string _hashval_ms;
+			_hashval_ms.len = _hashval_qb.length();
+			_hashval_ms.data = static_cast<char*>(malloc(_hashval_ms.len));
+			memcpy(_hashval_ms.data, _hashval_qb.data(), _hashval_ms.len);
+			_varr[_ctr] = _hashval_ms;
+			_ctr++;
+		}
+		struct miqt_map _out;
+		_out.len = _ret.size();
+		_out.keys = static_cast<void*>(_karr);
+		_out.values = static_cast<void*>(_varr);
+		return _out;
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QSortFilterProxyModel::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QSortFilterProxyModel_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QSortFilterProxyModel::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QSortFilterProxyModel::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QSortFilterProxyModel_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QSortFilterProxyModel::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QSortFilterProxyModel::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QSortFilterProxyModel_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QSortFilterProxyModel::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QSortFilterProxyModel::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QSortFilterProxyModel_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QSortFilterProxyModel::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QSortFilterProxyModel::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QSortFilterProxyModel_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QSortFilterProxyModel::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QSortFilterProxyModel::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QSortFilterProxyModel_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QSortFilterProxyModel::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QSortFilterProxyModel::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QSortFilterProxyModel_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QSortFilterProxyModel::disconnectNotify(*signal);
+
+	}
+
 };
 
 QSortFilterProxyModel* QSortFilterProxyModel_new() {
@@ -2164,6 +2461,146 @@ bool QSortFilterProxyModel_override_virtual_SupportedDragActions(void* self, int
 
 int QSortFilterProxyModel_virtualbase_SupportedDragActions(const void* self) {
 	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->virtualbase_SupportedDragActions();
+}
+
+bool QSortFilterProxyModel_override_virtual_MoveRows(void* self, intptr_t slot) {
+	MiqtVirtualQSortFilterProxyModel* self_cast = dynamic_cast<MiqtVirtualQSortFilterProxyModel*>( (QSortFilterProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveRows = slot;
+	return true;
+}
+
+bool QSortFilterProxyModel_virtualbase_MoveRows(void* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
+	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->virtualbase_MoveRows(sourceParent, sourceRow, count, destinationParent, destinationChild);
+}
+
+bool QSortFilterProxyModel_override_virtual_MoveColumns(void* self, intptr_t slot) {
+	MiqtVirtualQSortFilterProxyModel* self_cast = dynamic_cast<MiqtVirtualQSortFilterProxyModel*>( (QSortFilterProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveColumns = slot;
+	return true;
+}
+
+bool QSortFilterProxyModel_virtualbase_MoveColumns(void* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
+	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->virtualbase_MoveColumns(sourceParent, sourceColumn, count, destinationParent, destinationChild);
+}
+
+bool QSortFilterProxyModel_override_virtual_RoleNames(void* self, intptr_t slot) {
+	MiqtVirtualQSortFilterProxyModel* self_cast = dynamic_cast<MiqtVirtualQSortFilterProxyModel*>( (QSortFilterProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__RoleNames = slot;
+	return true;
+}
+
+struct miqt_map /* of int to struct miqt_string */  QSortFilterProxyModel_virtualbase_RoleNames(const void* self) {
+	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->virtualbase_RoleNames();
+}
+
+bool QSortFilterProxyModel_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQSortFilterProxyModel* self_cast = dynamic_cast<MiqtVirtualQSortFilterProxyModel*>( (QSortFilterProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
+}
+
+bool QSortFilterProxyModel_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->virtualbase_Event(event);
+}
+
+bool QSortFilterProxyModel_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQSortFilterProxyModel* self_cast = dynamic_cast<MiqtVirtualQSortFilterProxyModel*>( (QSortFilterProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
+}
+
+bool QSortFilterProxyModel_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+bool QSortFilterProxyModel_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSortFilterProxyModel* self_cast = dynamic_cast<MiqtVirtualQSortFilterProxyModel*>( (QSortFilterProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QSortFilterProxyModel_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QSortFilterProxyModel_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSortFilterProxyModel* self_cast = dynamic_cast<MiqtVirtualQSortFilterProxyModel*>( (QSortFilterProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QSortFilterProxyModel_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QSortFilterProxyModel_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQSortFilterProxyModel* self_cast = dynamic_cast<MiqtVirtualQSortFilterProxyModel*>( (QSortFilterProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QSortFilterProxyModel_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QSortFilterProxyModel_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQSortFilterProxyModel* self_cast = dynamic_cast<MiqtVirtualQSortFilterProxyModel*>( (QSortFilterProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QSortFilterProxyModel_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QSortFilterProxyModel_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQSortFilterProxyModel* self_cast = dynamic_cast<MiqtVirtualQSortFilterProxyModel*>( (QSortFilterProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QSortFilterProxyModel_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
 void QSortFilterProxyModel_Delete(QSortFilterProxyModel* self) {

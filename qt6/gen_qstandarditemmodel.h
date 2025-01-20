@@ -17,9 +17,12 @@ extern "C" {
 #ifdef __cplusplus
 class QAbstractItemModel;
 class QBrush;
+class QChildEvent;
 class QDataStream;
+class QEvent;
 class QFont;
 class QIcon;
+class QMetaMethod;
 class QMetaObject;
 class QMimeData;
 class QModelIndex;
@@ -28,13 +31,17 @@ class QObject;
 class QSize;
 class QStandardItem;
 class QStandardItemModel;
+class QTimerEvent;
 class QVariant;
 #else
 typedef struct QAbstractItemModel QAbstractItemModel;
 typedef struct QBrush QBrush;
+typedef struct QChildEvent QChildEvent;
 typedef struct QDataStream QDataStream;
+typedef struct QEvent QEvent;
 typedef struct QFont QFont;
 typedef struct QIcon QIcon;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMimeData QMimeData;
 typedef struct QModelIndex QModelIndex;
@@ -43,6 +50,7 @@ typedef struct QObject QObject;
 typedef struct QSize QSize;
 typedef struct QStandardItem QStandardItem;
 typedef struct QStandardItemModel QStandardItemModel;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 #endif
 
@@ -306,6 +314,20 @@ bool QStandardItemModel_override_virtual_Revert(void* self, intptr_t slot);
 void QStandardItemModel_virtualbase_Revert(void* self);
 bool QStandardItemModel_override_virtual_ResetInternalData(void* self, intptr_t slot);
 void QStandardItemModel_virtualbase_ResetInternalData(void* self);
+bool QStandardItemModel_override_virtual_Event(void* self, intptr_t slot);
+bool QStandardItemModel_virtualbase_Event(void* self, QEvent* event);
+bool QStandardItemModel_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QStandardItemModel_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QStandardItemModel_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QStandardItemModel_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QStandardItemModel_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QStandardItemModel_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QStandardItemModel_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QStandardItemModel_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QStandardItemModel_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QStandardItemModel_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QStandardItemModel_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QStandardItemModel_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QStandardItemModel_Delete(QStandardItemModel* self);
 
 #ifdef __cplusplus

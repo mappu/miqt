@@ -70,6 +70,10 @@ QRect* miqt_exec_callback_QWidgetItemV2_Geometry(void*, intptr_t);
 QWidget* miqt_exec_callback_QWidgetItemV2_Widget(void*, intptr_t);
 bool miqt_exec_callback_QWidgetItemV2_HasHeightForWidth(void*, intptr_t);
 int miqt_exec_callback_QWidgetItemV2_ControlTypes(void*, intptr_t);
+int miqt_exec_callback_QWidgetItemV2_MinimumHeightForWidth(void*, intptr_t, int);
+void miqt_exec_callback_QWidgetItemV2_Invalidate(void*, intptr_t);
+QLayout* miqt_exec_callback_QWidgetItemV2_Layout(void*, intptr_t);
+QSpacerItem* miqt_exec_callback_QWidgetItemV2_SpacerItem(void*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -2148,6 +2152,96 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MinimumHeightForWidth = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int minimumHeightForWidth(int param1) const override {
+		if (handle__MinimumHeightForWidth == 0) {
+			return QWidgetItemV2::minimumHeightForWidth(param1);
+		}
+		
+		int sigval1 = param1;
+
+		int callback_return_value = miqt_exec_callback_QWidgetItemV2_MinimumHeightForWidth(const_cast<MiqtVirtualQWidgetItemV2*>(this), handle__MinimumHeightForWidth, sigval1);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_MinimumHeightForWidth(int param1) const {
+
+		return QWidgetItemV2::minimumHeightForWidth(static_cast<int>(param1));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Invalidate = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void invalidate() override {
+		if (handle__Invalidate == 0) {
+			QWidgetItemV2::invalidate();
+			return;
+		}
+		
+
+		miqt_exec_callback_QWidgetItemV2_Invalidate(this, handle__Invalidate);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_Invalidate() {
+
+		QWidgetItemV2::invalidate();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Layout = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QLayout* layout() override {
+		if (handle__Layout == 0) {
+			return QWidgetItemV2::layout();
+		}
+		
+
+		QLayout* callback_return_value = miqt_exec_callback_QWidgetItemV2_Layout(this, handle__Layout);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QLayout* virtualbase_Layout() {
+
+		return QWidgetItemV2::layout();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SpacerItem = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QSpacerItem* spacerItem() override {
+		if (handle__SpacerItem == 0) {
+			return QWidgetItemV2::spacerItem();
+		}
+		
+
+		QSpacerItem* callback_return_value = miqt_exec_callback_QWidgetItemV2_SpacerItem(this, handle__SpacerItem);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QSpacerItem* virtualbase_SpacerItem() {
+
+		return QWidgetItemV2::spacerItem();
+
+	}
+
 };
 
 QWidgetItemV2* QWidgetItemV2_new(QWidget* widget) {
@@ -2326,6 +2420,62 @@ bool QWidgetItemV2_override_virtual_ControlTypes(void* self, intptr_t slot) {
 
 int QWidgetItemV2_virtualbase_ControlTypes(const void* self) {
 	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_ControlTypes();
+}
+
+bool QWidgetItemV2_override_virtual_MinimumHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItemV2* self_cast = dynamic_cast<MiqtVirtualQWidgetItemV2*>( (QWidgetItemV2*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumHeightForWidth = slot;
+	return true;
+}
+
+int QWidgetItemV2_virtualbase_MinimumHeightForWidth(const void* self, int param1) {
+	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_MinimumHeightForWidth(param1);
+}
+
+bool QWidgetItemV2_override_virtual_Invalidate(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItemV2* self_cast = dynamic_cast<MiqtVirtualQWidgetItemV2*>( (QWidgetItemV2*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Invalidate = slot;
+	return true;
+}
+
+void QWidgetItemV2_virtualbase_Invalidate(void* self) {
+	( (MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_Invalidate();
+}
+
+bool QWidgetItemV2_override_virtual_Layout(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItemV2* self_cast = dynamic_cast<MiqtVirtualQWidgetItemV2*>( (QWidgetItemV2*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Layout = slot;
+	return true;
+}
+
+QLayout* QWidgetItemV2_virtualbase_Layout(void* self) {
+	return ( (MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_Layout();
+}
+
+bool QWidgetItemV2_override_virtual_SpacerItem(void* self, intptr_t slot) {
+	MiqtVirtualQWidgetItemV2* self_cast = dynamic_cast<MiqtVirtualQWidgetItemV2*>( (QWidgetItemV2*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SpacerItem = slot;
+	return true;
+}
+
+QSpacerItem* QWidgetItemV2_virtualbase_SpacerItem(void* self) {
+	return ( (MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_SpacerItem();
 }
 
 void QWidgetItemV2_Delete(QWidgetItemV2* self) {

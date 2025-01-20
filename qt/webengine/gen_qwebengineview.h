@@ -17,6 +17,7 @@ extern "C" {
 #ifdef __cplusplus
 class QAction;
 class QActionEvent;
+class QChildEvent;
 class QCloseEvent;
 class QContextMenuEvent;
 class QDragEnterEvent;
@@ -29,6 +30,7 @@ class QHideEvent;
 class QIcon;
 class QInputMethodEvent;
 class QKeyEvent;
+class QMetaMethod;
 class QMetaObject;
 class QMouseEvent;
 class QMoveEvent;
@@ -42,6 +44,7 @@ class QResizeEvent;
 class QShowEvent;
 class QSize;
 class QTabletEvent;
+class QTimerEvent;
 class QUrl;
 class QVariant;
 class QWebEngineHistory;
@@ -54,6 +57,7 @@ class QWidget;
 #else
 typedef struct QAction QAction;
 typedef struct QActionEvent QActionEvent;
+typedef struct QChildEvent QChildEvent;
 typedef struct QCloseEvent QCloseEvent;
 typedef struct QContextMenuEvent QContextMenuEvent;
 typedef struct QDragEnterEvent QDragEnterEvent;
@@ -66,6 +70,7 @@ typedef struct QHideEvent QHideEvent;
 typedef struct QIcon QIcon;
 typedef struct QInputMethodEvent QInputMethodEvent;
 typedef struct QKeyEvent QKeyEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMouseEvent QMouseEvent;
 typedef struct QMoveEvent QMoveEvent;
@@ -79,6 +84,7 @@ typedef struct QResizeEvent QResizeEvent;
 typedef struct QShowEvent QShowEvent;
 typedef struct QSize QSize;
 typedef struct QTabletEvent QTabletEvent;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QUrl QUrl;
 typedef struct QVariant QVariant;
 typedef struct QWebEngineHistory QWebEngineHistory;
@@ -243,6 +249,18 @@ bool QWebEngineView_override_virtual_InputMethodQuery(void* self, intptr_t slot)
 QVariant* QWebEngineView_virtualbase_InputMethodQuery(const void* self, int param1);
 bool QWebEngineView_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QWebEngineView_virtualbase_FocusNextPrevChild(void* self, bool next);
+bool QWebEngineView_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QWebEngineView_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QWebEngineView_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QWebEngineView_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QWebEngineView_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QWebEngineView_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QWebEngineView_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QWebEngineView_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QWebEngineView_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QWebEngineView_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QWebEngineView_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QWebEngineView_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QWebEngineView_Delete(QWebEngineView* self);
 
 #ifdef __cplusplus

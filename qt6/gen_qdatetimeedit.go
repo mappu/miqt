@@ -1247,6 +1247,699 @@ func miqt_exec_callback_QDateTimeEdit_ShowEvent(self *C.QDateTimeEdit, cb C.intp
 
 }
 
+func (this *QDateTimeEdit) callVirtualBase_DevType() int {
+
+	return (int)(C.QDateTimeEdit_virtualbase_DevType(unsafe.Pointer(this.h)))
+
+}
+func (this *QDateTimeEdit) OnDevType(slot func(super func() int) int) {
+	ok := C.QDateTimeEdit_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateTimeEdit_DevType
+func miqt_exec_callback_QDateTimeEdit_DevType(self *C.QDateTimeEdit, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QDateTimeEdit{h: self}).callVirtualBase_DevType)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QDateTimeEdit) callVirtualBase_SetVisible(visible bool) {
+
+	C.QDateTimeEdit_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+
+}
+func (this *QDateTimeEdit) OnSetVisible(slot func(super func(visible bool), visible bool)) {
+	ok := C.QDateTimeEdit_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateTimeEdit_SetVisible
+func miqt_exec_callback_QDateTimeEdit_SetVisible(self *C.QDateTimeEdit, cb C.intptr_t, visible C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(visible)
+
+	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_SetVisible, slotval1)
+
+}
+
+func (this *QDateTimeEdit) callVirtualBase_HeightForWidth(param1 int) int {
+
+	return (int)(C.QDateTimeEdit_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+
+}
+func (this *QDateTimeEdit) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.QDateTimeEdit_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateTimeEdit_HeightForWidth
+func miqt_exec_callback_QDateTimeEdit_HeightForWidth(self *C.QDateTimeEdit, cb C.intptr_t, param1 C.int) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(param1)
+
+	virtualReturn := gofunc((&QDateTimeEdit{h: self}).callVirtualBase_HeightForWidth, slotval1)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QDateTimeEdit) callVirtualBase_HasHeightForWidth() bool {
+
+	return (bool)(C.QDateTimeEdit_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+
+}
+func (this *QDateTimeEdit) OnHasHeightForWidth(slot func(super func() bool) bool) {
+	ok := C.QDateTimeEdit_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateTimeEdit_HasHeightForWidth
+func miqt_exec_callback_QDateTimeEdit_HasHeightForWidth(self *C.QDateTimeEdit, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QDateTimeEdit{h: self}).callVirtualBase_HasHeightForWidth)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QDateTimeEdit) callVirtualBase_PaintEngine() *QPaintEngine {
+
+	return newQPaintEngine(C.QDateTimeEdit_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+
+}
+func (this *QDateTimeEdit) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+	ok := C.QDateTimeEdit_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateTimeEdit_PaintEngine
+func miqt_exec_callback_QDateTimeEdit_PaintEngine(self *C.QDateTimeEdit, cb C.intptr_t) *C.QPaintEngine {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPaintEngine) *QPaintEngine)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QDateTimeEdit{h: self}).callVirtualBase_PaintEngine)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QDateTimeEdit) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
+
+	C.QDateTimeEdit_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateTimeEdit) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QDateTimeEdit_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateTimeEdit_MouseDoubleClickEvent
+func miqt_exec_callback_QDateTimeEdit_MouseDoubleClickEvent(self *C.QDateTimeEdit, cb C.intptr_t, event *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMouseEvent(event)
+
+	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
+
+}
+
+func (this *QDateTimeEdit) callVirtualBase_EnterEvent(event *QEnterEvent) {
+
+	C.QDateTimeEdit_virtualbase_EnterEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateTimeEdit) OnEnterEvent(slot func(super func(event *QEnterEvent), event *QEnterEvent)) {
+	ok := C.QDateTimeEdit_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateTimeEdit_EnterEvent
+func miqt_exec_callback_QDateTimeEdit_EnterEvent(self *C.QDateTimeEdit, cb C.intptr_t, event *C.QEnterEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEnterEvent), event *QEnterEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEnterEvent(event)
+
+	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_EnterEvent, slotval1)
+
+}
+
+func (this *QDateTimeEdit) callVirtualBase_LeaveEvent(event *QEvent) {
+
+	C.QDateTimeEdit_virtualbase_LeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateTimeEdit) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QDateTimeEdit_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateTimeEdit_LeaveEvent
+func miqt_exec_callback_QDateTimeEdit_LeaveEvent(self *C.QDateTimeEdit, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_LeaveEvent, slotval1)
+
+}
+
+func (this *QDateTimeEdit) callVirtualBase_MoveEvent(event *QMoveEvent) {
+
+	C.QDateTimeEdit_virtualbase_MoveEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateTimeEdit) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+	ok := C.QDateTimeEdit_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateTimeEdit_MoveEvent
+func miqt_exec_callback_QDateTimeEdit_MoveEvent(self *C.QDateTimeEdit, cb C.intptr_t, event *C.QMoveEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMoveEvent), event *QMoveEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMoveEvent(event)
+
+	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_MoveEvent, slotval1)
+
+}
+
+func (this *QDateTimeEdit) callVirtualBase_TabletEvent(event *QTabletEvent) {
+
+	C.QDateTimeEdit_virtualbase_TabletEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateTimeEdit) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+	ok := C.QDateTimeEdit_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateTimeEdit_TabletEvent
+func miqt_exec_callback_QDateTimeEdit_TabletEvent(self *C.QDateTimeEdit, cb C.intptr_t, event *C.QTabletEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTabletEvent), event *QTabletEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQTabletEvent(event)
+
+	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_TabletEvent, slotval1)
+
+}
+
+func (this *QDateTimeEdit) callVirtualBase_ActionEvent(event *QActionEvent) {
+
+	C.QDateTimeEdit_virtualbase_ActionEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateTimeEdit) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+	ok := C.QDateTimeEdit_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateTimeEdit_ActionEvent
+func miqt_exec_callback_QDateTimeEdit_ActionEvent(self *C.QDateTimeEdit, cb C.intptr_t, event *C.QActionEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QActionEvent), event *QActionEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQActionEvent(event)
+
+	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_ActionEvent, slotval1)
+
+}
+
+func (this *QDateTimeEdit) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
+
+	C.QDateTimeEdit_virtualbase_DragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateTimeEdit) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+	ok := C.QDateTimeEdit_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateTimeEdit_DragEnterEvent
+func miqt_exec_callback_QDateTimeEdit_DragEnterEvent(self *C.QDateTimeEdit, cb C.intptr_t, event *C.QDragEnterEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragEnterEvent), event *QDragEnterEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQDragEnterEvent(event)
+
+	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_DragEnterEvent, slotval1)
+
+}
+
+func (this *QDateTimeEdit) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
+
+	C.QDateTimeEdit_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateTimeEdit) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+	ok := C.QDateTimeEdit_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateTimeEdit_DragMoveEvent
+func miqt_exec_callback_QDateTimeEdit_DragMoveEvent(self *C.QDateTimeEdit, cb C.intptr_t, event *C.QDragMoveEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragMoveEvent), event *QDragMoveEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQDragMoveEvent(event)
+
+	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_DragMoveEvent, slotval1)
+
+}
+
+func (this *QDateTimeEdit) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
+
+	C.QDateTimeEdit_virtualbase_DragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateTimeEdit) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
+	ok := C.QDateTimeEdit_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateTimeEdit_DragLeaveEvent
+func miqt_exec_callback_QDateTimeEdit_DragLeaveEvent(self *C.QDateTimeEdit, cb C.intptr_t, event *C.QDragLeaveEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQDragLeaveEvent(event)
+
+	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
+
+}
+
+func (this *QDateTimeEdit) callVirtualBase_DropEvent(event *QDropEvent) {
+
+	C.QDateTimeEdit_virtualbase_DropEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateTimeEdit) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+	ok := C.QDateTimeEdit_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateTimeEdit_DropEvent
+func miqt_exec_callback_QDateTimeEdit_DropEvent(self *C.QDateTimeEdit, cb C.intptr_t, event *C.QDropEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDropEvent), event *QDropEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQDropEvent(event)
+
+	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_DropEvent, slotval1)
+
+}
+
+func (this *QDateTimeEdit) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
+	eventType_alias := C.struct_miqt_string{}
+	eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	eventType_alias.len = C.size_t(len(eventType))
+
+	return (bool)(C.QDateTimeEdit_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
+
+}
+func (this *QDateTimeEdit) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
+	ok := C.QDateTimeEdit_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateTimeEdit_NativeEvent
+func miqt_exec_callback_QDateTimeEdit_NativeEvent(self *C.QDateTimeEdit, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	var eventType_bytearray C.struct_miqt_string = eventType
+	eventType_ret := C.GoBytes(unsafe.Pointer(eventType_bytearray.data), C.int(int64(eventType_bytearray.len)))
+	C.free(unsafe.Pointer(eventType_bytearray.data))
+	slotval1 := eventType_ret
+	slotval2 := (unsafe.Pointer)(message)
+
+	slotval3 := (*uintptr)(unsafe.Pointer(result))
+
+	virtualReturn := gofunc((&QDateTimeEdit{h: self}).callVirtualBase_NativeEvent, slotval1, slotval2, slotval3)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QDateTimeEdit) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+
+	return (int)(C.QDateTimeEdit_virtualbase_Metric(unsafe.Pointer(this.h), (C.int)(param1)))
+
+}
+func (this *QDateTimeEdit) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+	ok := C.QDateTimeEdit_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateTimeEdit_Metric
+func miqt_exec_callback_QDateTimeEdit_Metric(self *C.QDateTimeEdit, cb C.intptr_t, param1 C.int) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QPaintDevice__PaintDeviceMetric)(param1)
+
+	virtualReturn := gofunc((&QDateTimeEdit{h: self}).callVirtualBase_Metric, slotval1)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QDateTimeEdit) callVirtualBase_InitPainter(painter *QPainter) {
+
+	C.QDateTimeEdit_virtualbase_InitPainter(unsafe.Pointer(this.h), painter.cPointer())
+
+}
+func (this *QDateTimeEdit) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	ok := C.QDateTimeEdit_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateTimeEdit_InitPainter
+func miqt_exec_callback_QDateTimeEdit_InitPainter(self *C.QDateTimeEdit, cb C.intptr_t, painter *C.QPainter) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter), painter *QPainter))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQPainter(painter)
+
+	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_InitPainter, slotval1)
+
+}
+
+func (this *QDateTimeEdit) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+
+	return newQPaintDevice(C.QDateTimeEdit_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+
+}
+func (this *QDateTimeEdit) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	ok := C.QDateTimeEdit_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateTimeEdit_Redirected
+func miqt_exec_callback_QDateTimeEdit_Redirected(self *C.QDateTimeEdit, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQPoint(offset)
+
+	virtualReturn := gofunc((&QDateTimeEdit{h: self}).callVirtualBase_Redirected, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QDateTimeEdit) callVirtualBase_SharedPainter() *QPainter {
+
+	return newQPainter(C.QDateTimeEdit_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+
+}
+func (this *QDateTimeEdit) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
+	ok := C.QDateTimeEdit_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateTimeEdit_SharedPainter
+func miqt_exec_callback_QDateTimeEdit_SharedPainter(self *C.QDateTimeEdit, cb C.intptr_t) *C.QPainter {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPainter) *QPainter)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QDateTimeEdit{h: self}).callVirtualBase_SharedPainter)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QDateTimeEdit) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
+
+	C.QDateTimeEdit_virtualbase_InputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QDateTimeEdit) OnInputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
+	ok := C.QDateTimeEdit_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateTimeEdit_InputMethodEvent
+func miqt_exec_callback_QDateTimeEdit_InputMethodEvent(self *C.QDateTimeEdit, cb C.intptr_t, param1 *C.QInputMethodEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQInputMethodEvent(param1)
+
+	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_InputMethodEvent, slotval1)
+
+}
+
+func (this *QDateTimeEdit) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QDateTimeEdit_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QDateTimeEdit) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QDateTimeEdit_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateTimeEdit_EventFilter
+func miqt_exec_callback_QDateTimeEdit_EventFilter(self *C.QDateTimeEdit, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
+
+	virtualReturn := gofunc((&QDateTimeEdit{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QDateTimeEdit) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QDateTimeEdit_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateTimeEdit) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QDateTimeEdit_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateTimeEdit_ChildEvent
+func miqt_exec_callback_QDateTimeEdit_ChildEvent(self *C.QDateTimeEdit, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQChildEvent(event)
+
+	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QDateTimeEdit) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QDateTimeEdit_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateTimeEdit) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QDateTimeEdit_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateTimeEdit_CustomEvent
+func miqt_exec_callback_QDateTimeEdit_CustomEvent(self *C.QDateTimeEdit, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QDateTimeEdit) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QDateTimeEdit_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QDateTimeEdit) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QDateTimeEdit_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateTimeEdit_ConnectNotify
+func miqt_exec_callback_QDateTimeEdit_ConnectNotify(self *C.QDateTimeEdit, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QDateTimeEdit) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QDateTimeEdit_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QDateTimeEdit) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QDateTimeEdit_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateTimeEdit_DisconnectNotify
+func miqt_exec_callback_QDateTimeEdit_DisconnectNotify(self *C.QDateTimeEdit, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QDateTimeEdit{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QDateTimeEdit) Delete() {
 	C.QDateTimeEdit_Delete(this.h)
@@ -1837,6 +2530,1042 @@ func miqt_exec_callback_QTimeEdit_InitStyleOption(self *C.QTimeEdit, cb C.intptr
 
 }
 
+func (this *QTimeEdit) callVirtualBase_MinimumSizeHint() *QSize {
+
+	_goptr := newQSize(C.QTimeEdit_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QTimeEdit) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QTimeEdit_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_MinimumSizeHint
+func miqt_exec_callback_QTimeEdit_MinimumSizeHint(self *C.QTimeEdit, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTimeEdit{h: self}).callVirtualBase_MinimumSizeHint)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTimeEdit) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
+
+	_goptr := newQVariant(C.QTimeEdit_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QTimeEdit) OnInputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
+	ok := C.QTimeEdit_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_InputMethodQuery
+func miqt_exec_callback_QTimeEdit_InputMethodQuery(self *C.QTimeEdit, cb C.intptr_t, param1 C.int) *C.QVariant {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (InputMethodQuery)(param1)
+
+	virtualReturn := gofunc((&QTimeEdit{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTimeEdit) callVirtualBase_ResizeEvent(event *QResizeEvent) {
+
+	C.QTimeEdit_virtualbase_ResizeEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTimeEdit) OnResizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
+	ok := C.QTimeEdit_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_ResizeEvent
+func miqt_exec_callback_QTimeEdit_ResizeEvent(self *C.QTimeEdit, cb C.intptr_t, event *C.QResizeEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QResizeEvent), event *QResizeEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQResizeEvent(event)
+
+	gofunc((&QTimeEdit{h: self}).callVirtualBase_ResizeEvent, slotval1)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
+
+	C.QTimeEdit_virtualbase_KeyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTimeEdit) OnKeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	ok := C.QTimeEdit_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_KeyReleaseEvent
+func miqt_exec_callback_QTimeEdit_KeyReleaseEvent(self *C.QTimeEdit, cb C.intptr_t, event *C.QKeyEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QKeyEvent), event *QKeyEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQKeyEvent(event)
+
+	gofunc((&QTimeEdit{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
+
+	C.QTimeEdit_virtualbase_FocusOutEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTimeEdit) OnFocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	ok := C.QTimeEdit_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_FocusOutEvent
+func miqt_exec_callback_QTimeEdit_FocusOutEvent(self *C.QTimeEdit, cb C.intptr_t, event *C.QFocusEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QFocusEvent), event *QFocusEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQFocusEvent(event)
+
+	gofunc((&QTimeEdit{h: self}).callVirtualBase_FocusOutEvent, slotval1)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
+
+	C.QTimeEdit_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTimeEdit) OnContextMenuEvent(slot func(super func(event *QContextMenuEvent), event *QContextMenuEvent)) {
+	ok := C.QTimeEdit_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_ContextMenuEvent
+func miqt_exec_callback_QTimeEdit_ContextMenuEvent(self *C.QTimeEdit, cb C.intptr_t, event *C.QContextMenuEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QContextMenuEvent), event *QContextMenuEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQContextMenuEvent(event)
+
+	gofunc((&QTimeEdit{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_ChangeEvent(event *QEvent) {
+
+	C.QTimeEdit_virtualbase_ChangeEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTimeEdit) OnChangeEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QTimeEdit_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_ChangeEvent
+func miqt_exec_callback_QTimeEdit_ChangeEvent(self *C.QTimeEdit, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	gofunc((&QTimeEdit{h: self}).callVirtualBase_ChangeEvent, slotval1)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_CloseEvent(event *QCloseEvent) {
+
+	C.QTimeEdit_virtualbase_CloseEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTimeEdit) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+	ok := C.QTimeEdit_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_CloseEvent
+func miqt_exec_callback_QTimeEdit_CloseEvent(self *C.QTimeEdit, cb C.intptr_t, event *C.QCloseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QCloseEvent), event *QCloseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQCloseEvent(event)
+
+	gofunc((&QTimeEdit{h: self}).callVirtualBase_CloseEvent, slotval1)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_HideEvent(event *QHideEvent) {
+
+	C.QTimeEdit_virtualbase_HideEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTimeEdit) OnHideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
+	ok := C.QTimeEdit_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_HideEvent
+func miqt_exec_callback_QTimeEdit_HideEvent(self *C.QTimeEdit, cb C.intptr_t, event *C.QHideEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QHideEvent), event *QHideEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQHideEvent(event)
+
+	gofunc((&QTimeEdit{h: self}).callVirtualBase_HideEvent, slotval1)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
+
+	C.QTimeEdit_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTimeEdit) OnMouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QTimeEdit_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_MouseReleaseEvent
+func miqt_exec_callback_QTimeEdit_MouseReleaseEvent(self *C.QTimeEdit, cb C.intptr_t, event *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMouseEvent(event)
+
+	gofunc((&QTimeEdit{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
+
+	C.QTimeEdit_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTimeEdit) OnMouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QTimeEdit_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_MouseMoveEvent
+func miqt_exec_callback_QTimeEdit_MouseMoveEvent(self *C.QTimeEdit, cb C.intptr_t, event *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMouseEvent(event)
+
+	gofunc((&QTimeEdit{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QTimeEdit_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTimeEdit) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QTimeEdit_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_TimerEvent
+func miqt_exec_callback_QTimeEdit_TimerEvent(self *C.QTimeEdit, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQTimerEvent(event)
+
+	gofunc((&QTimeEdit{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_ShowEvent(event *QShowEvent) {
+
+	C.QTimeEdit_virtualbase_ShowEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTimeEdit) OnShowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
+	ok := C.QTimeEdit_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_ShowEvent
+func miqt_exec_callback_QTimeEdit_ShowEvent(self *C.QTimeEdit, cb C.intptr_t, event *C.QShowEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QShowEvent), event *QShowEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQShowEvent(event)
+
+	gofunc((&QTimeEdit{h: self}).callVirtualBase_ShowEvent, slotval1)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_DevType() int {
+
+	return (int)(C.QTimeEdit_virtualbase_DevType(unsafe.Pointer(this.h)))
+
+}
+func (this *QTimeEdit) OnDevType(slot func(super func() int) int) {
+	ok := C.QTimeEdit_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_DevType
+func miqt_exec_callback_QTimeEdit_DevType(self *C.QTimeEdit, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTimeEdit{h: self}).callVirtualBase_DevType)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_SetVisible(visible bool) {
+
+	C.QTimeEdit_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+
+}
+func (this *QTimeEdit) OnSetVisible(slot func(super func(visible bool), visible bool)) {
+	ok := C.QTimeEdit_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_SetVisible
+func miqt_exec_callback_QTimeEdit_SetVisible(self *C.QTimeEdit, cb C.intptr_t, visible C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(visible)
+
+	gofunc((&QTimeEdit{h: self}).callVirtualBase_SetVisible, slotval1)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_HeightForWidth(param1 int) int {
+
+	return (int)(C.QTimeEdit_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+
+}
+func (this *QTimeEdit) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.QTimeEdit_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_HeightForWidth
+func miqt_exec_callback_QTimeEdit_HeightForWidth(self *C.QTimeEdit, cb C.intptr_t, param1 C.int) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(param1)
+
+	virtualReturn := gofunc((&QTimeEdit{h: self}).callVirtualBase_HeightForWidth, slotval1)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_HasHeightForWidth() bool {
+
+	return (bool)(C.QTimeEdit_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+
+}
+func (this *QTimeEdit) OnHasHeightForWidth(slot func(super func() bool) bool) {
+	ok := C.QTimeEdit_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_HasHeightForWidth
+func miqt_exec_callback_QTimeEdit_HasHeightForWidth(self *C.QTimeEdit, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTimeEdit{h: self}).callVirtualBase_HasHeightForWidth)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_PaintEngine() *QPaintEngine {
+
+	return newQPaintEngine(C.QTimeEdit_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+
+}
+func (this *QTimeEdit) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+	ok := C.QTimeEdit_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_PaintEngine
+func miqt_exec_callback_QTimeEdit_PaintEngine(self *C.QTimeEdit, cb C.intptr_t) *C.QPaintEngine {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPaintEngine) *QPaintEngine)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTimeEdit{h: self}).callVirtualBase_PaintEngine)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTimeEdit) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
+
+	C.QTimeEdit_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTimeEdit) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QTimeEdit_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_MouseDoubleClickEvent
+func miqt_exec_callback_QTimeEdit_MouseDoubleClickEvent(self *C.QTimeEdit, cb C.intptr_t, event *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMouseEvent(event)
+
+	gofunc((&QTimeEdit{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_EnterEvent(event *QEnterEvent) {
+
+	C.QTimeEdit_virtualbase_EnterEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTimeEdit) OnEnterEvent(slot func(super func(event *QEnterEvent), event *QEnterEvent)) {
+	ok := C.QTimeEdit_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_EnterEvent
+func miqt_exec_callback_QTimeEdit_EnterEvent(self *C.QTimeEdit, cb C.intptr_t, event *C.QEnterEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEnterEvent), event *QEnterEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEnterEvent(event)
+
+	gofunc((&QTimeEdit{h: self}).callVirtualBase_EnterEvent, slotval1)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_LeaveEvent(event *QEvent) {
+
+	C.QTimeEdit_virtualbase_LeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTimeEdit) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QTimeEdit_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_LeaveEvent
+func miqt_exec_callback_QTimeEdit_LeaveEvent(self *C.QTimeEdit, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	gofunc((&QTimeEdit{h: self}).callVirtualBase_LeaveEvent, slotval1)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_MoveEvent(event *QMoveEvent) {
+
+	C.QTimeEdit_virtualbase_MoveEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTimeEdit) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+	ok := C.QTimeEdit_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_MoveEvent
+func miqt_exec_callback_QTimeEdit_MoveEvent(self *C.QTimeEdit, cb C.intptr_t, event *C.QMoveEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMoveEvent), event *QMoveEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMoveEvent(event)
+
+	gofunc((&QTimeEdit{h: self}).callVirtualBase_MoveEvent, slotval1)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_TabletEvent(event *QTabletEvent) {
+
+	C.QTimeEdit_virtualbase_TabletEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTimeEdit) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+	ok := C.QTimeEdit_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_TabletEvent
+func miqt_exec_callback_QTimeEdit_TabletEvent(self *C.QTimeEdit, cb C.intptr_t, event *C.QTabletEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTabletEvent), event *QTabletEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQTabletEvent(event)
+
+	gofunc((&QTimeEdit{h: self}).callVirtualBase_TabletEvent, slotval1)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_ActionEvent(event *QActionEvent) {
+
+	C.QTimeEdit_virtualbase_ActionEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTimeEdit) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+	ok := C.QTimeEdit_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_ActionEvent
+func miqt_exec_callback_QTimeEdit_ActionEvent(self *C.QTimeEdit, cb C.intptr_t, event *C.QActionEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QActionEvent), event *QActionEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQActionEvent(event)
+
+	gofunc((&QTimeEdit{h: self}).callVirtualBase_ActionEvent, slotval1)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
+
+	C.QTimeEdit_virtualbase_DragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTimeEdit) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+	ok := C.QTimeEdit_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_DragEnterEvent
+func miqt_exec_callback_QTimeEdit_DragEnterEvent(self *C.QTimeEdit, cb C.intptr_t, event *C.QDragEnterEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragEnterEvent), event *QDragEnterEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQDragEnterEvent(event)
+
+	gofunc((&QTimeEdit{h: self}).callVirtualBase_DragEnterEvent, slotval1)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
+
+	C.QTimeEdit_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTimeEdit) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+	ok := C.QTimeEdit_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_DragMoveEvent
+func miqt_exec_callback_QTimeEdit_DragMoveEvent(self *C.QTimeEdit, cb C.intptr_t, event *C.QDragMoveEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragMoveEvent), event *QDragMoveEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQDragMoveEvent(event)
+
+	gofunc((&QTimeEdit{h: self}).callVirtualBase_DragMoveEvent, slotval1)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
+
+	C.QTimeEdit_virtualbase_DragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTimeEdit) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
+	ok := C.QTimeEdit_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_DragLeaveEvent
+func miqt_exec_callback_QTimeEdit_DragLeaveEvent(self *C.QTimeEdit, cb C.intptr_t, event *C.QDragLeaveEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQDragLeaveEvent(event)
+
+	gofunc((&QTimeEdit{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_DropEvent(event *QDropEvent) {
+
+	C.QTimeEdit_virtualbase_DropEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTimeEdit) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+	ok := C.QTimeEdit_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_DropEvent
+func miqt_exec_callback_QTimeEdit_DropEvent(self *C.QTimeEdit, cb C.intptr_t, event *C.QDropEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDropEvent), event *QDropEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQDropEvent(event)
+
+	gofunc((&QTimeEdit{h: self}).callVirtualBase_DropEvent, slotval1)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
+	eventType_alias := C.struct_miqt_string{}
+	eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	eventType_alias.len = C.size_t(len(eventType))
+
+	return (bool)(C.QTimeEdit_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
+
+}
+func (this *QTimeEdit) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
+	ok := C.QTimeEdit_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_NativeEvent
+func miqt_exec_callback_QTimeEdit_NativeEvent(self *C.QTimeEdit, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	var eventType_bytearray C.struct_miqt_string = eventType
+	eventType_ret := C.GoBytes(unsafe.Pointer(eventType_bytearray.data), C.int(int64(eventType_bytearray.len)))
+	C.free(unsafe.Pointer(eventType_bytearray.data))
+	slotval1 := eventType_ret
+	slotval2 := (unsafe.Pointer)(message)
+
+	slotval3 := (*uintptr)(unsafe.Pointer(result))
+
+	virtualReturn := gofunc((&QTimeEdit{h: self}).callVirtualBase_NativeEvent, slotval1, slotval2, slotval3)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+
+	return (int)(C.QTimeEdit_virtualbase_Metric(unsafe.Pointer(this.h), (C.int)(param1)))
+
+}
+func (this *QTimeEdit) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+	ok := C.QTimeEdit_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_Metric
+func miqt_exec_callback_QTimeEdit_Metric(self *C.QTimeEdit, cb C.intptr_t, param1 C.int) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QPaintDevice__PaintDeviceMetric)(param1)
+
+	virtualReturn := gofunc((&QTimeEdit{h: self}).callVirtualBase_Metric, slotval1)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_InitPainter(painter *QPainter) {
+
+	C.QTimeEdit_virtualbase_InitPainter(unsafe.Pointer(this.h), painter.cPointer())
+
+}
+func (this *QTimeEdit) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	ok := C.QTimeEdit_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_InitPainter
+func miqt_exec_callback_QTimeEdit_InitPainter(self *C.QTimeEdit, cb C.intptr_t, painter *C.QPainter) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter), painter *QPainter))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQPainter(painter)
+
+	gofunc((&QTimeEdit{h: self}).callVirtualBase_InitPainter, slotval1)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+
+	return newQPaintDevice(C.QTimeEdit_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+
+}
+func (this *QTimeEdit) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	ok := C.QTimeEdit_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_Redirected
+func miqt_exec_callback_QTimeEdit_Redirected(self *C.QTimeEdit, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQPoint(offset)
+
+	virtualReturn := gofunc((&QTimeEdit{h: self}).callVirtualBase_Redirected, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTimeEdit) callVirtualBase_SharedPainter() *QPainter {
+
+	return newQPainter(C.QTimeEdit_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+
+}
+func (this *QTimeEdit) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
+	ok := C.QTimeEdit_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_SharedPainter
+func miqt_exec_callback_QTimeEdit_SharedPainter(self *C.QTimeEdit, cb C.intptr_t) *C.QPainter {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPainter) *QPainter)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTimeEdit{h: self}).callVirtualBase_SharedPainter)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QTimeEdit) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
+
+	C.QTimeEdit_virtualbase_InputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QTimeEdit) OnInputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
+	ok := C.QTimeEdit_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_InputMethodEvent
+func miqt_exec_callback_QTimeEdit_InputMethodEvent(self *C.QTimeEdit, cb C.intptr_t, param1 *C.QInputMethodEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQInputMethodEvent(param1)
+
+	gofunc((&QTimeEdit{h: self}).callVirtualBase_InputMethodEvent, slotval1)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QTimeEdit_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QTimeEdit) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QTimeEdit_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_EventFilter
+func miqt_exec_callback_QTimeEdit_EventFilter(self *C.QTimeEdit, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
+
+	virtualReturn := gofunc((&QTimeEdit{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QTimeEdit_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTimeEdit) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QTimeEdit_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_ChildEvent
+func miqt_exec_callback_QTimeEdit_ChildEvent(self *C.QTimeEdit, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQChildEvent(event)
+
+	gofunc((&QTimeEdit{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QTimeEdit_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QTimeEdit) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QTimeEdit_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_CustomEvent
+func miqt_exec_callback_QTimeEdit_CustomEvent(self *C.QTimeEdit, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	gofunc((&QTimeEdit{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QTimeEdit_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QTimeEdit) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QTimeEdit_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_ConnectNotify
+func miqt_exec_callback_QTimeEdit_ConnectNotify(self *C.QTimeEdit, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QTimeEdit{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QTimeEdit) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QTimeEdit_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QTimeEdit) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QTimeEdit_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTimeEdit_DisconnectNotify
+func miqt_exec_callback_QTimeEdit_DisconnectNotify(self *C.QTimeEdit, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QTimeEdit{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QTimeEdit) Delete() {
 	C.QTimeEdit_Delete(this.h)
@@ -2424,6 +4153,1042 @@ func miqt_exec_callback_QDateEdit_InitStyleOption(self *C.QDateEdit, cb C.intptr
 	slotval1 := newQStyleOptionSpinBox(option)
 
 	gofunc((&QDateEdit{h: self}).callVirtualBase_InitStyleOption, slotval1)
+
+}
+
+func (this *QDateEdit) callVirtualBase_MinimumSizeHint() *QSize {
+
+	_goptr := newQSize(C.QDateEdit_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QDateEdit) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QDateEdit_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_MinimumSizeHint
+func miqt_exec_callback_QDateEdit_MinimumSizeHint(self *C.QDateEdit, cb C.intptr_t) *C.QSize {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QDateEdit{h: self}).callVirtualBase_MinimumSizeHint)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QDateEdit) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
+
+	_goptr := newQVariant(C.QDateEdit_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QDateEdit) OnInputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
+	ok := C.QDateEdit_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_InputMethodQuery
+func miqt_exec_callback_QDateEdit_InputMethodQuery(self *C.QDateEdit, cb C.intptr_t, param1 C.int) *C.QVariant {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (InputMethodQuery)(param1)
+
+	virtualReturn := gofunc((&QDateEdit{h: self}).callVirtualBase_InputMethodQuery, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QDateEdit) callVirtualBase_ResizeEvent(event *QResizeEvent) {
+
+	C.QDateEdit_virtualbase_ResizeEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateEdit) OnResizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
+	ok := C.QDateEdit_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_ResizeEvent
+func miqt_exec_callback_QDateEdit_ResizeEvent(self *C.QDateEdit, cb C.intptr_t, event *C.QResizeEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QResizeEvent), event *QResizeEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQResizeEvent(event)
+
+	gofunc((&QDateEdit{h: self}).callVirtualBase_ResizeEvent, slotval1)
+
+}
+
+func (this *QDateEdit) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
+
+	C.QDateEdit_virtualbase_KeyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateEdit) OnKeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	ok := C.QDateEdit_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_KeyReleaseEvent
+func miqt_exec_callback_QDateEdit_KeyReleaseEvent(self *C.QDateEdit, cb C.intptr_t, event *C.QKeyEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QKeyEvent), event *QKeyEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQKeyEvent(event)
+
+	gofunc((&QDateEdit{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
+
+}
+
+func (this *QDateEdit) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
+
+	C.QDateEdit_virtualbase_FocusOutEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateEdit) OnFocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	ok := C.QDateEdit_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_FocusOutEvent
+func miqt_exec_callback_QDateEdit_FocusOutEvent(self *C.QDateEdit, cb C.intptr_t, event *C.QFocusEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QFocusEvent), event *QFocusEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQFocusEvent(event)
+
+	gofunc((&QDateEdit{h: self}).callVirtualBase_FocusOutEvent, slotval1)
+
+}
+
+func (this *QDateEdit) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
+
+	C.QDateEdit_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateEdit) OnContextMenuEvent(slot func(super func(event *QContextMenuEvent), event *QContextMenuEvent)) {
+	ok := C.QDateEdit_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_ContextMenuEvent
+func miqt_exec_callback_QDateEdit_ContextMenuEvent(self *C.QDateEdit, cb C.intptr_t, event *C.QContextMenuEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QContextMenuEvent), event *QContextMenuEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQContextMenuEvent(event)
+
+	gofunc((&QDateEdit{h: self}).callVirtualBase_ContextMenuEvent, slotval1)
+
+}
+
+func (this *QDateEdit) callVirtualBase_ChangeEvent(event *QEvent) {
+
+	C.QDateEdit_virtualbase_ChangeEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateEdit) OnChangeEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QDateEdit_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_ChangeEvent
+func miqt_exec_callback_QDateEdit_ChangeEvent(self *C.QDateEdit, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	gofunc((&QDateEdit{h: self}).callVirtualBase_ChangeEvent, slotval1)
+
+}
+
+func (this *QDateEdit) callVirtualBase_CloseEvent(event *QCloseEvent) {
+
+	C.QDateEdit_virtualbase_CloseEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateEdit) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+	ok := C.QDateEdit_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_CloseEvent
+func miqt_exec_callback_QDateEdit_CloseEvent(self *C.QDateEdit, cb C.intptr_t, event *C.QCloseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QCloseEvent), event *QCloseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQCloseEvent(event)
+
+	gofunc((&QDateEdit{h: self}).callVirtualBase_CloseEvent, slotval1)
+
+}
+
+func (this *QDateEdit) callVirtualBase_HideEvent(event *QHideEvent) {
+
+	C.QDateEdit_virtualbase_HideEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateEdit) OnHideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
+	ok := C.QDateEdit_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_HideEvent
+func miqt_exec_callback_QDateEdit_HideEvent(self *C.QDateEdit, cb C.intptr_t, event *C.QHideEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QHideEvent), event *QHideEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQHideEvent(event)
+
+	gofunc((&QDateEdit{h: self}).callVirtualBase_HideEvent, slotval1)
+
+}
+
+func (this *QDateEdit) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
+
+	C.QDateEdit_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateEdit) OnMouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QDateEdit_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_MouseReleaseEvent
+func miqt_exec_callback_QDateEdit_MouseReleaseEvent(self *C.QDateEdit, cb C.intptr_t, event *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMouseEvent(event)
+
+	gofunc((&QDateEdit{h: self}).callVirtualBase_MouseReleaseEvent, slotval1)
+
+}
+
+func (this *QDateEdit) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
+
+	C.QDateEdit_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateEdit) OnMouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QDateEdit_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_MouseMoveEvent
+func miqt_exec_callback_QDateEdit_MouseMoveEvent(self *C.QDateEdit, cb C.intptr_t, event *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMouseEvent(event)
+
+	gofunc((&QDateEdit{h: self}).callVirtualBase_MouseMoveEvent, slotval1)
+
+}
+
+func (this *QDateEdit) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QDateEdit_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateEdit) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QDateEdit_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_TimerEvent
+func miqt_exec_callback_QDateEdit_TimerEvent(self *C.QDateEdit, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQTimerEvent(event)
+
+	gofunc((&QDateEdit{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QDateEdit) callVirtualBase_ShowEvent(event *QShowEvent) {
+
+	C.QDateEdit_virtualbase_ShowEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateEdit) OnShowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
+	ok := C.QDateEdit_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_ShowEvent
+func miqt_exec_callback_QDateEdit_ShowEvent(self *C.QDateEdit, cb C.intptr_t, event *C.QShowEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QShowEvent), event *QShowEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQShowEvent(event)
+
+	gofunc((&QDateEdit{h: self}).callVirtualBase_ShowEvent, slotval1)
+
+}
+
+func (this *QDateEdit) callVirtualBase_DevType() int {
+
+	return (int)(C.QDateEdit_virtualbase_DevType(unsafe.Pointer(this.h)))
+
+}
+func (this *QDateEdit) OnDevType(slot func(super func() int) int) {
+	ok := C.QDateEdit_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_DevType
+func miqt_exec_callback_QDateEdit_DevType(self *C.QDateEdit, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QDateEdit{h: self}).callVirtualBase_DevType)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QDateEdit) callVirtualBase_SetVisible(visible bool) {
+
+	C.QDateEdit_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+
+}
+func (this *QDateEdit) OnSetVisible(slot func(super func(visible bool), visible bool)) {
+	ok := C.QDateEdit_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_SetVisible
+func miqt_exec_callback_QDateEdit_SetVisible(self *C.QDateEdit, cb C.intptr_t, visible C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(visible)
+
+	gofunc((&QDateEdit{h: self}).callVirtualBase_SetVisible, slotval1)
+
+}
+
+func (this *QDateEdit) callVirtualBase_HeightForWidth(param1 int) int {
+
+	return (int)(C.QDateEdit_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+
+}
+func (this *QDateEdit) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.QDateEdit_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_HeightForWidth
+func miqt_exec_callback_QDateEdit_HeightForWidth(self *C.QDateEdit, cb C.intptr_t, param1 C.int) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(param1)
+
+	virtualReturn := gofunc((&QDateEdit{h: self}).callVirtualBase_HeightForWidth, slotval1)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QDateEdit) callVirtualBase_HasHeightForWidth() bool {
+
+	return (bool)(C.QDateEdit_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+
+}
+func (this *QDateEdit) OnHasHeightForWidth(slot func(super func() bool) bool) {
+	ok := C.QDateEdit_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_HasHeightForWidth
+func miqt_exec_callback_QDateEdit_HasHeightForWidth(self *C.QDateEdit, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QDateEdit{h: self}).callVirtualBase_HasHeightForWidth)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QDateEdit) callVirtualBase_PaintEngine() *QPaintEngine {
+
+	return newQPaintEngine(C.QDateEdit_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+
+}
+func (this *QDateEdit) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+	ok := C.QDateEdit_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_PaintEngine
+func miqt_exec_callback_QDateEdit_PaintEngine(self *C.QDateEdit, cb C.intptr_t) *C.QPaintEngine {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPaintEngine) *QPaintEngine)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QDateEdit{h: self}).callVirtualBase_PaintEngine)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QDateEdit) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
+
+	C.QDateEdit_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateEdit) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QDateEdit_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_MouseDoubleClickEvent
+func miqt_exec_callback_QDateEdit_MouseDoubleClickEvent(self *C.QDateEdit, cb C.intptr_t, event *C.QMouseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMouseEvent(event)
+
+	gofunc((&QDateEdit{h: self}).callVirtualBase_MouseDoubleClickEvent, slotval1)
+
+}
+
+func (this *QDateEdit) callVirtualBase_EnterEvent(event *QEnterEvent) {
+
+	C.QDateEdit_virtualbase_EnterEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateEdit) OnEnterEvent(slot func(super func(event *QEnterEvent), event *QEnterEvent)) {
+	ok := C.QDateEdit_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_EnterEvent
+func miqt_exec_callback_QDateEdit_EnterEvent(self *C.QDateEdit, cb C.intptr_t, event *C.QEnterEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEnterEvent), event *QEnterEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEnterEvent(event)
+
+	gofunc((&QDateEdit{h: self}).callVirtualBase_EnterEvent, slotval1)
+
+}
+
+func (this *QDateEdit) callVirtualBase_LeaveEvent(event *QEvent) {
+
+	C.QDateEdit_virtualbase_LeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateEdit) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QDateEdit_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_LeaveEvent
+func miqt_exec_callback_QDateEdit_LeaveEvent(self *C.QDateEdit, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	gofunc((&QDateEdit{h: self}).callVirtualBase_LeaveEvent, slotval1)
+
+}
+
+func (this *QDateEdit) callVirtualBase_MoveEvent(event *QMoveEvent) {
+
+	C.QDateEdit_virtualbase_MoveEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateEdit) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+	ok := C.QDateEdit_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_MoveEvent
+func miqt_exec_callback_QDateEdit_MoveEvent(self *C.QDateEdit, cb C.intptr_t, event *C.QMoveEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMoveEvent), event *QMoveEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMoveEvent(event)
+
+	gofunc((&QDateEdit{h: self}).callVirtualBase_MoveEvent, slotval1)
+
+}
+
+func (this *QDateEdit) callVirtualBase_TabletEvent(event *QTabletEvent) {
+
+	C.QDateEdit_virtualbase_TabletEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateEdit) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+	ok := C.QDateEdit_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_TabletEvent
+func miqt_exec_callback_QDateEdit_TabletEvent(self *C.QDateEdit, cb C.intptr_t, event *C.QTabletEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTabletEvent), event *QTabletEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQTabletEvent(event)
+
+	gofunc((&QDateEdit{h: self}).callVirtualBase_TabletEvent, slotval1)
+
+}
+
+func (this *QDateEdit) callVirtualBase_ActionEvent(event *QActionEvent) {
+
+	C.QDateEdit_virtualbase_ActionEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateEdit) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+	ok := C.QDateEdit_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_ActionEvent
+func miqt_exec_callback_QDateEdit_ActionEvent(self *C.QDateEdit, cb C.intptr_t, event *C.QActionEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QActionEvent), event *QActionEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQActionEvent(event)
+
+	gofunc((&QDateEdit{h: self}).callVirtualBase_ActionEvent, slotval1)
+
+}
+
+func (this *QDateEdit) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
+
+	C.QDateEdit_virtualbase_DragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateEdit) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+	ok := C.QDateEdit_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_DragEnterEvent
+func miqt_exec_callback_QDateEdit_DragEnterEvent(self *C.QDateEdit, cb C.intptr_t, event *C.QDragEnterEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragEnterEvent), event *QDragEnterEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQDragEnterEvent(event)
+
+	gofunc((&QDateEdit{h: self}).callVirtualBase_DragEnterEvent, slotval1)
+
+}
+
+func (this *QDateEdit) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
+
+	C.QDateEdit_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateEdit) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+	ok := C.QDateEdit_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_DragMoveEvent
+func miqt_exec_callback_QDateEdit_DragMoveEvent(self *C.QDateEdit, cb C.intptr_t, event *C.QDragMoveEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragMoveEvent), event *QDragMoveEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQDragMoveEvent(event)
+
+	gofunc((&QDateEdit{h: self}).callVirtualBase_DragMoveEvent, slotval1)
+
+}
+
+func (this *QDateEdit) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
+
+	C.QDateEdit_virtualbase_DragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateEdit) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
+	ok := C.QDateEdit_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_DragLeaveEvent
+func miqt_exec_callback_QDateEdit_DragLeaveEvent(self *C.QDateEdit, cb C.intptr_t, event *C.QDragLeaveEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQDragLeaveEvent(event)
+
+	gofunc((&QDateEdit{h: self}).callVirtualBase_DragLeaveEvent, slotval1)
+
+}
+
+func (this *QDateEdit) callVirtualBase_DropEvent(event *QDropEvent) {
+
+	C.QDateEdit_virtualbase_DropEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateEdit) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+	ok := C.QDateEdit_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_DropEvent
+func miqt_exec_callback_QDateEdit_DropEvent(self *C.QDateEdit, cb C.intptr_t, event *C.QDropEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDropEvent), event *QDropEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQDropEvent(event)
+
+	gofunc((&QDateEdit{h: self}).callVirtualBase_DropEvent, slotval1)
+
+}
+
+func (this *QDateEdit) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
+	eventType_alias := C.struct_miqt_string{}
+	eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	eventType_alias.len = C.size_t(len(eventType))
+
+	return (bool)(C.QDateEdit_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
+
+}
+func (this *QDateEdit) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
+	ok := C.QDateEdit_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_NativeEvent
+func miqt_exec_callback_QDateEdit_NativeEvent(self *C.QDateEdit, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	var eventType_bytearray C.struct_miqt_string = eventType
+	eventType_ret := C.GoBytes(unsafe.Pointer(eventType_bytearray.data), C.int(int64(eventType_bytearray.len)))
+	C.free(unsafe.Pointer(eventType_bytearray.data))
+	slotval1 := eventType_ret
+	slotval2 := (unsafe.Pointer)(message)
+
+	slotval3 := (*uintptr)(unsafe.Pointer(result))
+
+	virtualReturn := gofunc((&QDateEdit{h: self}).callVirtualBase_NativeEvent, slotval1, slotval2, slotval3)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QDateEdit) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
+
+	return (int)(C.QDateEdit_virtualbase_Metric(unsafe.Pointer(this.h), (C.int)(param1)))
+
+}
+func (this *QDateEdit) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+	ok := C.QDateEdit_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_Metric
+func miqt_exec_callback_QDateEdit_Metric(self *C.QDateEdit, cb C.intptr_t, param1 C.int) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QPaintDevice__PaintDeviceMetric)(param1)
+
+	virtualReturn := gofunc((&QDateEdit{h: self}).callVirtualBase_Metric, slotval1)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QDateEdit) callVirtualBase_InitPainter(painter *QPainter) {
+
+	C.QDateEdit_virtualbase_InitPainter(unsafe.Pointer(this.h), painter.cPointer())
+
+}
+func (this *QDateEdit) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	ok := C.QDateEdit_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_InitPainter
+func miqt_exec_callback_QDateEdit_InitPainter(self *C.QDateEdit, cb C.intptr_t, painter *C.QPainter) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter), painter *QPainter))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQPainter(painter)
+
+	gofunc((&QDateEdit{h: self}).callVirtualBase_InitPainter, slotval1)
+
+}
+
+func (this *QDateEdit) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
+
+	return newQPaintDevice(C.QDateEdit_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+
+}
+func (this *QDateEdit) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	ok := C.QDateEdit_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_Redirected
+func miqt_exec_callback_QDateEdit_Redirected(self *C.QDateEdit, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQPoint(offset)
+
+	virtualReturn := gofunc((&QDateEdit{h: self}).callVirtualBase_Redirected, slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QDateEdit) callVirtualBase_SharedPainter() *QPainter {
+
+	return newQPainter(C.QDateEdit_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+
+}
+func (this *QDateEdit) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
+	ok := C.QDateEdit_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_SharedPainter
+func miqt_exec_callback_QDateEdit_SharedPainter(self *C.QDateEdit, cb C.intptr_t) *C.QPainter {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPainter) *QPainter)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QDateEdit{h: self}).callVirtualBase_SharedPainter)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QDateEdit) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
+
+	C.QDateEdit_virtualbase_InputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
+
+}
+func (this *QDateEdit) OnInputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
+	ok := C.QDateEdit_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_InputMethodEvent
+func miqt_exec_callback_QDateEdit_InputMethodEvent(self *C.QDateEdit, cb C.intptr_t, param1 *C.QInputMethodEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQInputMethodEvent(param1)
+
+	gofunc((&QDateEdit{h: self}).callVirtualBase_InputMethodEvent, slotval1)
+
+}
+
+func (this *QDateEdit) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QDateEdit_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QDateEdit) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QDateEdit_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_EventFilter
+func miqt_exec_callback_QDateEdit_EventFilter(self *C.QDateEdit, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
+
+	virtualReturn := gofunc((&QDateEdit{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QDateEdit) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QDateEdit_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateEdit) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QDateEdit_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_ChildEvent
+func miqt_exec_callback_QDateEdit_ChildEvent(self *C.QDateEdit, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQChildEvent(event)
+
+	gofunc((&QDateEdit{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QDateEdit) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QDateEdit_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QDateEdit) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QDateEdit_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_CustomEvent
+func miqt_exec_callback_QDateEdit_CustomEvent(self *C.QDateEdit, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	gofunc((&QDateEdit{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QDateEdit) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QDateEdit_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QDateEdit) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QDateEdit_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_ConnectNotify
+func miqt_exec_callback_QDateEdit_ConnectNotify(self *C.QDateEdit, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QDateEdit{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QDateEdit) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QDateEdit_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QDateEdit) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QDateEdit_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QDateEdit_DisconnectNotify
+func miqt_exec_callback_QDateEdit_DisconnectNotify(self *C.QDateEdit, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QDateEdit{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 
 }
 

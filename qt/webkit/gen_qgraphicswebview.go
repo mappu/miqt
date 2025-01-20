@@ -1772,6 +1772,477 @@ func miqt_exec_callback_QGraphicsWebView_UngrabKeyboardEvent(self *C.QGraphicsWe
 
 }
 
+func (this *QGraphicsWebView) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+
+	return (bool)(C.QGraphicsWebView_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QGraphicsWebView) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	ok := C.QGraphicsWebView_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsWebView_EventFilter
+func miqt_exec_callback_QGraphicsWebView_EventFilter(self *C.QGraphicsWebView, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
+	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QGraphicsWebView{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QGraphicsWebView) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+
+	C.QGraphicsWebView_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+
+}
+func (this *QGraphicsWebView) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	ok := C.QGraphicsWebView_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsWebView_TimerEvent
+func miqt_exec_callback_QGraphicsWebView_TimerEvent(self *C.QGraphicsWebView, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
+
+	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QGraphicsWebView) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+
+	C.QGraphicsWebView_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+
+}
+func (this *QGraphicsWebView) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	ok := C.QGraphicsWebView_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsWebView_ChildEvent
+func miqt_exec_callback_QGraphicsWebView_ChildEvent(self *C.QGraphicsWebView, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
+
+	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QGraphicsWebView) callVirtualBase_CustomEvent(event *qt.QEvent) {
+
+	C.QGraphicsWebView_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+
+}
+func (this *QGraphicsWebView) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QGraphicsWebView_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsWebView_CustomEvent
+func miqt_exec_callback_QGraphicsWebView_CustomEvent(self *C.QGraphicsWebView, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QGraphicsWebView) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+
+	C.QGraphicsWebView_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QGraphicsWebView) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QGraphicsWebView_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsWebView_ConnectNotify
+func miqt_exec_callback_QGraphicsWebView_ConnectNotify(self *C.QGraphicsWebView, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QGraphicsWebView) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+
+	C.QGraphicsWebView_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QGraphicsWebView) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QGraphicsWebView_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsWebView_DisconnectNotify
+func miqt_exec_callback_QGraphicsWebView_DisconnectNotify(self *C.QGraphicsWebView, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
+func (this *QGraphicsWebView) callVirtualBase_Advance(phase int) {
+
+	C.QGraphicsWebView_virtualbase_Advance(unsafe.Pointer(this.h), (C.int)(phase))
+
+}
+func (this *QGraphicsWebView) OnAdvance(slot func(super func(phase int), phase int)) {
+	ok := C.QGraphicsWebView_override_virtual_Advance(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsWebView_Advance
+func miqt_exec_callback_QGraphicsWebView_Advance(self *C.QGraphicsWebView, cb C.intptr_t, phase C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(phase int), phase int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(phase)
+
+	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_Advance, slotval1)
+
+}
+
+func (this *QGraphicsWebView) callVirtualBase_Contains(point *qt.QPointF) bool {
+
+	return (bool)(C.QGraphicsWebView_virtualbase_Contains(unsafe.Pointer(this.h), (*C.QPointF)(point.UnsafePointer())))
+
+}
+func (this *QGraphicsWebView) OnContains(slot func(super func(point *qt.QPointF) bool, point *qt.QPointF) bool) {
+	ok := C.QGraphicsWebView_override_virtual_Contains(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsWebView_Contains
+func miqt_exec_callback_QGraphicsWebView_Contains(self *C.QGraphicsWebView, cb C.intptr_t, point *C.QPointF) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(point *qt.QPointF) bool, point *qt.QPointF) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQPointF(unsafe.Pointer(point))
+
+	virtualReturn := gofunc((&QGraphicsWebView{h: self}).callVirtualBase_Contains, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QGraphicsWebView) callVirtualBase_CollidesWithItem(other *qt.QGraphicsItem, mode qt.ItemSelectionMode) bool {
+
+	return (bool)(C.QGraphicsWebView_virtualbase_CollidesWithItem(unsafe.Pointer(this.h), (*C.QGraphicsItem)(other.UnsafePointer()), (C.int)(mode)))
+
+}
+func (this *QGraphicsWebView) OnCollidesWithItem(slot func(super func(other *qt.QGraphicsItem, mode qt.ItemSelectionMode) bool, other *qt.QGraphicsItem, mode qt.ItemSelectionMode) bool) {
+	ok := C.QGraphicsWebView_override_virtual_CollidesWithItem(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsWebView_CollidesWithItem
+func miqt_exec_callback_QGraphicsWebView_CollidesWithItem(self *C.QGraphicsWebView, cb C.intptr_t, other *C.QGraphicsItem, mode C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(other *qt.QGraphicsItem, mode qt.ItemSelectionMode) bool, other *qt.QGraphicsItem, mode qt.ItemSelectionMode) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQGraphicsItem(unsafe.Pointer(other))
+
+	slotval2 := (qt.ItemSelectionMode)(mode)
+
+	virtualReturn := gofunc((&QGraphicsWebView{h: self}).callVirtualBase_CollidesWithItem, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QGraphicsWebView) callVirtualBase_CollidesWithPath(path *qt.QPainterPath, mode qt.ItemSelectionMode) bool {
+
+	return (bool)(C.QGraphicsWebView_virtualbase_CollidesWithPath(unsafe.Pointer(this.h), (*C.QPainterPath)(path.UnsafePointer()), (C.int)(mode)))
+
+}
+func (this *QGraphicsWebView) OnCollidesWithPath(slot func(super func(path *qt.QPainterPath, mode qt.ItemSelectionMode) bool, path *qt.QPainterPath, mode qt.ItemSelectionMode) bool) {
+	ok := C.QGraphicsWebView_override_virtual_CollidesWithPath(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsWebView_CollidesWithPath
+func miqt_exec_callback_QGraphicsWebView_CollidesWithPath(self *C.QGraphicsWebView, cb C.intptr_t, path *C.QPainterPath, mode C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(path *qt.QPainterPath, mode qt.ItemSelectionMode) bool, path *qt.QPainterPath, mode qt.ItemSelectionMode) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQPainterPath(unsafe.Pointer(path))
+
+	slotval2 := (qt.ItemSelectionMode)(mode)
+
+	virtualReturn := gofunc((&QGraphicsWebView{h: self}).callVirtualBase_CollidesWithPath, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QGraphicsWebView) callVirtualBase_IsObscuredBy(item *qt.QGraphicsItem) bool {
+
+	return (bool)(C.QGraphicsWebView_virtualbase_IsObscuredBy(unsafe.Pointer(this.h), (*C.QGraphicsItem)(item.UnsafePointer())))
+
+}
+func (this *QGraphicsWebView) OnIsObscuredBy(slot func(super func(item *qt.QGraphicsItem) bool, item *qt.QGraphicsItem) bool) {
+	ok := C.QGraphicsWebView_override_virtual_IsObscuredBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsWebView_IsObscuredBy
+func miqt_exec_callback_QGraphicsWebView_IsObscuredBy(self *C.QGraphicsWebView, cb C.intptr_t, item *C.QGraphicsItem) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(item *qt.QGraphicsItem) bool, item *qt.QGraphicsItem) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQGraphicsItem(unsafe.Pointer(item))
+
+	virtualReturn := gofunc((&QGraphicsWebView{h: self}).callVirtualBase_IsObscuredBy, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QGraphicsWebView) callVirtualBase_OpaqueArea() *qt.QPainterPath {
+
+	_goptr := qt.UnsafeNewQPainterPath(unsafe.Pointer(C.QGraphicsWebView_virtualbase_OpaqueArea(unsafe.Pointer(this.h))))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QGraphicsWebView) OnOpaqueArea(slot func(super func() *qt.QPainterPath) *qt.QPainterPath) {
+	ok := C.QGraphicsWebView_override_virtual_OpaqueArea(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsWebView_OpaqueArea
+func miqt_exec_callback_QGraphicsWebView_OpaqueArea(self *C.QGraphicsWebView, cb C.intptr_t) *C.QPainterPath {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QPainterPath) *qt.QPainterPath)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QGraphicsWebView{h: self}).callVirtualBase_OpaqueArea)
+
+	return (*C.QPainterPath)(virtualReturn.UnsafePointer())
+
+}
+
+func (this *QGraphicsWebView) callVirtualBase_SceneEventFilter(watched *qt.QGraphicsItem, event *qt.QEvent) bool {
+
+	return (bool)(C.QGraphicsWebView_virtualbase_SceneEventFilter(unsafe.Pointer(this.h), (*C.QGraphicsItem)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QGraphicsWebView) OnSceneEventFilter(slot func(super func(watched *qt.QGraphicsItem, event *qt.QEvent) bool, watched *qt.QGraphicsItem, event *qt.QEvent) bool) {
+	ok := C.QGraphicsWebView_override_virtual_SceneEventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsWebView_SceneEventFilter
+func miqt_exec_callback_QGraphicsWebView_SceneEventFilter(self *C.QGraphicsWebView, cb C.intptr_t, watched *C.QGraphicsItem, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt.QGraphicsItem, event *qt.QEvent) bool, watched *qt.QGraphicsItem, event *qt.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQGraphicsItem(unsafe.Pointer(watched))
+
+	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QGraphicsWebView{h: self}).callVirtualBase_SceneEventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QGraphicsWebView) callVirtualBase_HoverEnterEvent(event *qt.QGraphicsSceneHoverEvent) {
+
+	C.QGraphicsWebView_virtualbase_HoverEnterEvent(unsafe.Pointer(this.h), (*C.QGraphicsSceneHoverEvent)(event.UnsafePointer()))
+
+}
+func (this *QGraphicsWebView) OnHoverEnterEvent(slot func(super func(event *qt.QGraphicsSceneHoverEvent), event *qt.QGraphicsSceneHoverEvent)) {
+	ok := C.QGraphicsWebView_override_virtual_HoverEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsWebView_HoverEnterEvent
+func miqt_exec_callback_QGraphicsWebView_HoverEnterEvent(self *C.QGraphicsWebView, cb C.intptr_t, event *C.QGraphicsSceneHoverEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QGraphicsSceneHoverEvent), event *qt.QGraphicsSceneHoverEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQGraphicsSceneHoverEvent(unsafe.Pointer(event))
+
+	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_HoverEnterEvent, slotval1)
+
+}
+
+func (this *QGraphicsWebView) callVirtualBase_SupportsExtension(extension qt.QGraphicsItem__Extension) bool {
+
+	return (bool)(C.QGraphicsWebView_virtualbase_SupportsExtension(unsafe.Pointer(this.h), (C.int)(extension)))
+
+}
+func (this *QGraphicsWebView) OnSupportsExtension(slot func(super func(extension qt.QGraphicsItem__Extension) bool, extension qt.QGraphicsItem__Extension) bool) {
+	ok := C.QGraphicsWebView_override_virtual_SupportsExtension(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsWebView_SupportsExtension
+func miqt_exec_callback_QGraphicsWebView_SupportsExtension(self *C.QGraphicsWebView, cb C.intptr_t, extension C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(extension qt.QGraphicsItem__Extension) bool, extension qt.QGraphicsItem__Extension) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (qt.QGraphicsItem__Extension)(extension)
+
+	virtualReturn := gofunc((&QGraphicsWebView{h: self}).callVirtualBase_SupportsExtension, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QGraphicsWebView) callVirtualBase_SetExtension(extension qt.QGraphicsItem__Extension, variant *qt.QVariant) {
+
+	C.QGraphicsWebView_virtualbase_SetExtension(unsafe.Pointer(this.h), (C.int)(extension), (*C.QVariant)(variant.UnsafePointer()))
+
+}
+func (this *QGraphicsWebView) OnSetExtension(slot func(super func(extension qt.QGraphicsItem__Extension, variant *qt.QVariant), extension qt.QGraphicsItem__Extension, variant *qt.QVariant)) {
+	ok := C.QGraphicsWebView_override_virtual_SetExtension(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsWebView_SetExtension
+func miqt_exec_callback_QGraphicsWebView_SetExtension(self *C.QGraphicsWebView, cb C.intptr_t, extension C.int, variant *C.QVariant) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(extension qt.QGraphicsItem__Extension, variant *qt.QVariant), extension qt.QGraphicsItem__Extension, variant *qt.QVariant))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (qt.QGraphicsItem__Extension)(extension)
+
+	slotval2 := qt.UnsafeNewQVariant(unsafe.Pointer(variant))
+
+	gofunc((&QGraphicsWebView{h: self}).callVirtualBase_SetExtension, slotval1, slotval2)
+
+}
+
+func (this *QGraphicsWebView) callVirtualBase_Extension(variant *qt.QVariant) *qt.QVariant {
+
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QGraphicsWebView_virtualbase_Extension(unsafe.Pointer(this.h), (*C.QVariant)(variant.UnsafePointer()))))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+
+}
+func (this *QGraphicsWebView) OnExtension(slot func(super func(variant *qt.QVariant) *qt.QVariant, variant *qt.QVariant) *qt.QVariant) {
+	ok := C.QGraphicsWebView_override_virtual_Extension(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsWebView_Extension
+func miqt_exec_callback_QGraphicsWebView_Extension(self *C.QGraphicsWebView, cb C.intptr_t, variant *C.QVariant) *C.QVariant {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(variant *qt.QVariant) *qt.QVariant, variant *qt.QVariant) *qt.QVariant)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQVariant(unsafe.Pointer(variant))
+
+	virtualReturn := gofunc((&QGraphicsWebView{h: self}).callVirtualBase_Extension, slotval1)
+
+	return (*C.QVariant)(virtualReturn.UnsafePointer())
+
+}
+
 // Delete this object from C++ memory.
 func (this *QGraphicsWebView) Delete() {
 	C.QGraphicsWebView_Delete(this.h)

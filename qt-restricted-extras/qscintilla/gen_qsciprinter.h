@@ -24,6 +24,7 @@ class QPagedPaintDevice__Margins;
 class QPaintDevice;
 class QPaintEngine;
 class QPainter;
+class QPoint;
 class QPrinter;
 class QRect;
 class QSizeF;
@@ -35,6 +36,7 @@ typedef struct QPagedPaintDevice__Margins QPagedPaintDevice__Margins;
 typedef struct QPaintDevice QPaintDevice;
 typedef struct QPaintEngine QPaintEngine;
 typedef struct QPainter QPainter;
+typedef struct QPoint QPoint;
 typedef struct QPrinter QPrinter;
 typedef struct QRect QRect;
 typedef struct QSizeF QSizeF;
@@ -76,6 +78,12 @@ bool QsciPrinter_override_virtual_SetMargins(void* self, intptr_t slot);
 void QsciPrinter_virtualbase_SetMargins(void* self, QPagedPaintDevice__Margins* m);
 bool QsciPrinter_override_virtual_Metric(void* self, intptr_t slot);
 int QsciPrinter_virtualbase_Metric(const void* self, int param1);
+bool QsciPrinter_override_virtual_InitPainter(void* self, intptr_t slot);
+void QsciPrinter_virtualbase_InitPainter(const void* self, QPainter* painter);
+bool QsciPrinter_override_virtual_Redirected(void* self, intptr_t slot);
+QPaintDevice* QsciPrinter_virtualbase_Redirected(const void* self, QPoint* offset);
+bool QsciPrinter_override_virtual_SharedPainter(void* self, intptr_t slot);
+QPainter* QsciPrinter_virtualbase_SharedPainter(const void* self);
 void QsciPrinter_Delete(QsciPrinter* self);
 
 #ifdef __cplusplus

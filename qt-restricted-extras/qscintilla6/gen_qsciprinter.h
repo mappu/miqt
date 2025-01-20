@@ -15,19 +15,29 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QMarginsF;
+class QPageLayout;
+class QPageRanges;
+class QPageSize;
 class QPagedPaintDevice;
 class QPaintDevice;
 class QPaintEngine;
 class QPainter;
+class QPoint;
 class QPrinter;
 class QRect;
 class QsciPrinter;
 class QsciScintillaBase;
 #else
+typedef struct QMarginsF QMarginsF;
+typedef struct QPageLayout QPageLayout;
+typedef struct QPageRanges QPageRanges;
+typedef struct QPageSize QPageSize;
 typedef struct QPagedPaintDevice QPagedPaintDevice;
 typedef struct QPaintDevice QPaintDevice;
 typedef struct QPaintEngine QPaintEngine;
 typedef struct QPainter QPainter;
+typedef struct QPoint QPoint;
 typedef struct QPrinter QPrinter;
 typedef struct QRect QRect;
 typedef struct QsciPrinter QsciPrinter;
@@ -62,6 +72,22 @@ bool QsciPrinter_override_virtual_PaintEngine(void* self, intptr_t slot);
 QPaintEngine* QsciPrinter_virtualbase_PaintEngine(const void* self);
 bool QsciPrinter_override_virtual_Metric(void* self, intptr_t slot);
 int QsciPrinter_virtualbase_Metric(const void* self, int param1);
+bool QsciPrinter_override_virtual_SetPageLayout(void* self, intptr_t slot);
+bool QsciPrinter_virtualbase_SetPageLayout(void* self, QPageLayout* pageLayout);
+bool QsciPrinter_override_virtual_SetPageSize(void* self, intptr_t slot);
+bool QsciPrinter_virtualbase_SetPageSize(void* self, QPageSize* pageSize);
+bool QsciPrinter_override_virtual_SetPageOrientation(void* self, intptr_t slot);
+bool QsciPrinter_virtualbase_SetPageOrientation(void* self, int orientation);
+bool QsciPrinter_override_virtual_SetPageMargins(void* self, intptr_t slot);
+bool QsciPrinter_virtualbase_SetPageMargins(void* self, QMarginsF* margins, int units);
+bool QsciPrinter_override_virtual_SetPageRanges(void* self, intptr_t slot);
+void QsciPrinter_virtualbase_SetPageRanges(void* self, QPageRanges* ranges);
+bool QsciPrinter_override_virtual_InitPainter(void* self, intptr_t slot);
+void QsciPrinter_virtualbase_InitPainter(const void* self, QPainter* painter);
+bool QsciPrinter_override_virtual_Redirected(void* self, intptr_t slot);
+QPaintDevice* QsciPrinter_virtualbase_Redirected(const void* self, QPoint* offset);
+bool QsciPrinter_override_virtual_SharedPainter(void* self, intptr_t slot);
+QPainter* QsciPrinter_virtualbase_SharedPainter(const void* self);
 void QsciPrinter_Delete(QsciPrinter* self);
 
 #ifdef __cplusplus

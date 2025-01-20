@@ -423,6 +423,85 @@ func miqt_exec_callback_QsciPrinter_Metric(self *C.QsciPrinter, cb C.intptr_t, p
 
 }
 
+func (this *QsciPrinter) callVirtualBase_InitPainter(painter *qt.QPainter) {
+
+	C.QsciPrinter_virtualbase_InitPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
+
+}
+func (this *QsciPrinter) OnInitPainter(slot func(super func(painter *qt.QPainter), painter *qt.QPainter)) {
+	ok := C.QsciPrinter_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciPrinter_InitPainter
+func miqt_exec_callback_QsciPrinter_InitPainter(self *C.QsciPrinter, cb C.intptr_t, painter *C.QPainter) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *qt.QPainter), painter *qt.QPainter))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQPainter(unsafe.Pointer(painter))
+
+	gofunc((&QsciPrinter{h: self}).callVirtualBase_InitPainter, slotval1)
+
+}
+
+func (this *QsciPrinter) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
+
+	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QsciPrinter_virtualbase_Redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
+
+}
+func (this *QsciPrinter) OnRedirected(slot func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice) {
+	ok := C.QsciPrinter_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciPrinter_Redirected
+func miqt_exec_callback_QsciPrinter_Redirected(self *C.QsciPrinter, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQPoint(unsafe.Pointer(offset))
+
+	virtualReturn := gofunc((&QsciPrinter{h: self}).callVirtualBase_Redirected, slotval1)
+
+	return (*C.QPaintDevice)(virtualReturn.UnsafePointer())
+
+}
+
+func (this *QsciPrinter) callVirtualBase_SharedPainter() *qt.QPainter {
+
+	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QsciPrinter_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+
+}
+func (this *QsciPrinter) OnSharedPainter(slot func(super func() *qt.QPainter) *qt.QPainter) {
+	ok := C.QsciPrinter_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciPrinter_SharedPainter
+func miqt_exec_callback_QsciPrinter_SharedPainter(self *C.QsciPrinter, cb C.intptr_t) *C.QPainter {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QPainter) *qt.QPainter)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QsciPrinter{h: self}).callVirtualBase_SharedPainter)
+
+	return (*C.QPainter)(virtualReturn.UnsafePointer())
+
+}
+
 // Delete this object from C++ memory.
 func (this *QsciPrinter) Delete() {
 	C.QsciPrinter_Delete(this.h)

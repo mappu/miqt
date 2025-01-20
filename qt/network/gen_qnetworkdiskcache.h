@@ -16,19 +16,27 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAbstractNetworkCache;
+class QChildEvent;
+class QEvent;
 class QIODevice;
+class QMetaMethod;
 class QMetaObject;
 class QNetworkCacheMetaData;
 class QNetworkDiskCache;
 class QObject;
+class QTimerEvent;
 class QUrl;
 #else
 typedef struct QAbstractNetworkCache QAbstractNetworkCache;
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QIODevice QIODevice;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QNetworkCacheMetaData QNetworkCacheMetaData;
 typedef struct QNetworkDiskCache QNetworkDiskCache;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QUrl QUrl;
 #endif
 
@@ -75,6 +83,20 @@ bool QNetworkDiskCache_override_virtual_Clear(void* self, intptr_t slot);
 void QNetworkDiskCache_virtualbase_Clear(void* self);
 bool QNetworkDiskCache_override_virtual_Expire(void* self, intptr_t slot);
 long long QNetworkDiskCache_virtualbase_Expire(void* self);
+bool QNetworkDiskCache_override_virtual_Event(void* self, intptr_t slot);
+bool QNetworkDiskCache_virtualbase_Event(void* self, QEvent* event);
+bool QNetworkDiskCache_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QNetworkDiskCache_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QNetworkDiskCache_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QNetworkDiskCache_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QNetworkDiskCache_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QNetworkDiskCache_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QNetworkDiskCache_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QNetworkDiskCache_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QNetworkDiskCache_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QNetworkDiskCache_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QNetworkDiskCache_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QNetworkDiskCache_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QNetworkDiskCache_Delete(QNetworkDiskCache* self);
 
 #ifdef __cplusplus

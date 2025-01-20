@@ -82,28 +82,41 @@ QEnterEvent* miqt_exec_callback_QEnterEvent_Clone(void*, intptr_t);
 bool miqt_exec_callback_QEnterEvent_IsBeginEvent(void*, intptr_t);
 bool miqt_exec_callback_QEnterEvent_IsUpdateEvent(void*, intptr_t);
 bool miqt_exec_callback_QEnterEvent_IsEndEvent(void*, intptr_t);
+void miqt_exec_callback_QEnterEvent_SetTimestamp(void*, intptr_t, unsigned long long);
+void miqt_exec_callback_QEnterEvent_SetAccepted(void*, intptr_t, bool);
 QMouseEvent* miqt_exec_callback_QMouseEvent_Clone(void*, intptr_t);
 bool miqt_exec_callback_QMouseEvent_IsBeginEvent(void*, intptr_t);
 bool miqt_exec_callback_QMouseEvent_IsUpdateEvent(void*, intptr_t);
 bool miqt_exec_callback_QMouseEvent_IsEndEvent(void*, intptr_t);
+void miqt_exec_callback_QMouseEvent_SetTimestamp(void*, intptr_t, unsigned long long);
+void miqt_exec_callback_QMouseEvent_SetAccepted(void*, intptr_t, bool);
 QHoverEvent* miqt_exec_callback_QHoverEvent_Clone(void*, intptr_t);
 bool miqt_exec_callback_QHoverEvent_IsUpdateEvent(void*, intptr_t);
 bool miqt_exec_callback_QHoverEvent_IsBeginEvent(void*, intptr_t);
 bool miqt_exec_callback_QHoverEvent_IsEndEvent(void*, intptr_t);
+void miqt_exec_callback_QHoverEvent_SetTimestamp(void*, intptr_t, unsigned long long);
+void miqt_exec_callback_QHoverEvent_SetAccepted(void*, intptr_t, bool);
 QWheelEvent* miqt_exec_callback_QWheelEvent_Clone(void*, intptr_t);
 bool miqt_exec_callback_QWheelEvent_IsBeginEvent(void*, intptr_t);
 bool miqt_exec_callback_QWheelEvent_IsUpdateEvent(void*, intptr_t);
 bool miqt_exec_callback_QWheelEvent_IsEndEvent(void*, intptr_t);
+void miqt_exec_callback_QWheelEvent_SetTimestamp(void*, intptr_t, unsigned long long);
+void miqt_exec_callback_QWheelEvent_SetAccepted(void*, intptr_t, bool);
 QTabletEvent* miqt_exec_callback_QTabletEvent_Clone(void*, intptr_t);
 bool miqt_exec_callback_QTabletEvent_IsBeginEvent(void*, intptr_t);
 bool miqt_exec_callback_QTabletEvent_IsUpdateEvent(void*, intptr_t);
 bool miqt_exec_callback_QTabletEvent_IsEndEvent(void*, intptr_t);
+void miqt_exec_callback_QTabletEvent_SetTimestamp(void*, intptr_t, unsigned long long);
+void miqt_exec_callback_QTabletEvent_SetAccepted(void*, intptr_t, bool);
 QNativeGestureEvent* miqt_exec_callback_QNativeGestureEvent_Clone(void*, intptr_t);
 bool miqt_exec_callback_QNativeGestureEvent_IsBeginEvent(void*, intptr_t);
 bool miqt_exec_callback_QNativeGestureEvent_IsUpdateEvent(void*, intptr_t);
 bool miqt_exec_callback_QNativeGestureEvent_IsEndEvent(void*, intptr_t);
+void miqt_exec_callback_QNativeGestureEvent_SetTimestamp(void*, intptr_t, unsigned long long);
+void miqt_exec_callback_QNativeGestureEvent_SetAccepted(void*, intptr_t, bool);
 QKeyEvent* miqt_exec_callback_QKeyEvent_Clone(void*, intptr_t);
 void miqt_exec_callback_QKeyEvent_SetTimestamp(void*, intptr_t, unsigned long long);
+void miqt_exec_callback_QKeyEvent_SetAccepted(void*, intptr_t, bool);
 QFocusEvent* miqt_exec_callback_QFocusEvent_Clone(void*, intptr_t);
 void miqt_exec_callback_QFocusEvent_SetAccepted(void*, intptr_t, bool);
 QPaintEvent* miqt_exec_callback_QPaintEvent_Clone(void*, intptr_t);
@@ -126,6 +139,7 @@ QHideEvent* miqt_exec_callback_QHideEvent_Clone(void*, intptr_t);
 void miqt_exec_callback_QHideEvent_SetAccepted(void*, intptr_t, bool);
 QContextMenuEvent* miqt_exec_callback_QContextMenuEvent_Clone(void*, intptr_t);
 void miqt_exec_callback_QContextMenuEvent_SetTimestamp(void*, intptr_t, unsigned long long);
+void miqt_exec_callback_QContextMenuEvent_SetAccepted(void*, intptr_t, bool);
 QInputMethodEvent* miqt_exec_callback_QInputMethodEvent_Clone(void*, intptr_t);
 void miqt_exec_callback_QInputMethodEvent_SetAccepted(void*, intptr_t, bool);
 QInputMethodQueryEvent* miqt_exec_callback_QInputMethodQueryEvent_Clone(void*, intptr_t);
@@ -133,7 +147,9 @@ void miqt_exec_callback_QInputMethodQueryEvent_SetAccepted(void*, intptr_t, bool
 QDropEvent* miqt_exec_callback_QDropEvent_Clone(void*, intptr_t);
 void miqt_exec_callback_QDropEvent_SetAccepted(void*, intptr_t, bool);
 QDragMoveEvent* miqt_exec_callback_QDragMoveEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QDragMoveEvent_SetAccepted(void*, intptr_t, bool);
 QDragEnterEvent* miqt_exec_callback_QDragEnterEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QDragEnterEvent_SetAccepted(void*, intptr_t, bool);
 QDragLeaveEvent* miqt_exec_callback_QDragLeaveEvent_Clone(void*, intptr_t);
 void miqt_exec_callback_QDragLeaveEvent_SetAccepted(void*, intptr_t, bool);
 QHelpEvent* miqt_exec_callback_QHelpEvent_Clone(void*, intptr_t);
@@ -837,6 +853,55 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetTimestamp = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setTimestamp(quint64 timestamp) override {
+		if (handle__SetTimestamp == 0) {
+			QEnterEvent::setTimestamp(timestamp);
+			return;
+		}
+		
+		quint64 timestamp_ret = timestamp;
+		unsigned long long sigval1 = static_cast<unsigned long long>(timestamp_ret);
+
+		miqt_exec_callback_QEnterEvent_SetTimestamp(this, handle__SetTimestamp, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetTimestamp(unsigned long long timestamp) {
+
+		QEnterEvent::setTimestamp(static_cast<quint64>(timestamp));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetAccepted = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setAccepted(bool accepted) override {
+		if (handle__SetAccepted == 0) {
+			QEnterEvent::setAccepted(accepted);
+			return;
+		}
+		
+		bool sigval1 = accepted;
+
+		miqt_exec_callback_QEnterEvent_SetAccepted(this, handle__SetAccepted, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetAccepted(bool accepted) {
+
+		QEnterEvent::setAccepted(accepted);
+
+	}
+
 };
 
 QEnterEvent* QEnterEvent_new(QPointF* localPos, QPointF* scenePos, QPointF* globalPos) {
@@ -947,6 +1012,34 @@ bool QEnterEvent_virtualbase_IsEndEvent(const void* self) {
 	return ( (const MiqtVirtualQEnterEvent*)(self) )->virtualbase_IsEndEvent();
 }
 
+bool QEnterEvent_override_virtual_SetTimestamp(void* self, intptr_t slot) {
+	MiqtVirtualQEnterEvent* self_cast = dynamic_cast<MiqtVirtualQEnterEvent*>( (QEnterEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetTimestamp = slot;
+	return true;
+}
+
+void QEnterEvent_virtualbase_SetTimestamp(void* self, unsigned long long timestamp) {
+	( (MiqtVirtualQEnterEvent*)(self) )->virtualbase_SetTimestamp(timestamp);
+}
+
+bool QEnterEvent_override_virtual_SetAccepted(void* self, intptr_t slot) {
+	MiqtVirtualQEnterEvent* self_cast = dynamic_cast<MiqtVirtualQEnterEvent*>( (QEnterEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetAccepted = slot;
+	return true;
+}
+
+void QEnterEvent_virtualbase_SetAccepted(void* self, bool accepted) {
+	( (MiqtVirtualQEnterEvent*)(self) )->virtualbase_SetAccepted(accepted);
+}
+
 void QEnterEvent_Delete(QEnterEvent* self) {
 	delete self;
 }
@@ -1050,6 +1143,55 @@ public:
 	bool virtualbase_IsEndEvent() const {
 
 		return QMouseEvent::isEndEvent();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetTimestamp = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setTimestamp(quint64 timestamp) override {
+		if (handle__SetTimestamp == 0) {
+			QMouseEvent::setTimestamp(timestamp);
+			return;
+		}
+		
+		quint64 timestamp_ret = timestamp;
+		unsigned long long sigval1 = static_cast<unsigned long long>(timestamp_ret);
+
+		miqt_exec_callback_QMouseEvent_SetTimestamp(this, handle__SetTimestamp, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetTimestamp(unsigned long long timestamp) {
+
+		QMouseEvent::setTimestamp(static_cast<quint64>(timestamp));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetAccepted = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setAccepted(bool accepted) override {
+		if (handle__SetAccepted == 0) {
+			QMouseEvent::setAccepted(accepted);
+			return;
+		}
+		
+		bool sigval1 = accepted;
+
+		miqt_exec_callback_QMouseEvent_SetAccepted(this, handle__SetAccepted, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetAccepted(bool accepted) {
+
+		QMouseEvent::setAccepted(accepted);
 
 	}
 
@@ -1197,6 +1339,34 @@ bool QMouseEvent_virtualbase_IsEndEvent(const void* self) {
 	return ( (const MiqtVirtualQMouseEvent*)(self) )->virtualbase_IsEndEvent();
 }
 
+bool QMouseEvent_override_virtual_SetTimestamp(void* self, intptr_t slot) {
+	MiqtVirtualQMouseEvent* self_cast = dynamic_cast<MiqtVirtualQMouseEvent*>( (QMouseEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetTimestamp = slot;
+	return true;
+}
+
+void QMouseEvent_virtualbase_SetTimestamp(void* self, unsigned long long timestamp) {
+	( (MiqtVirtualQMouseEvent*)(self) )->virtualbase_SetTimestamp(timestamp);
+}
+
+bool QMouseEvent_override_virtual_SetAccepted(void* self, intptr_t slot) {
+	MiqtVirtualQMouseEvent* self_cast = dynamic_cast<MiqtVirtualQMouseEvent*>( (QMouseEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetAccepted = slot;
+	return true;
+}
+
+void QMouseEvent_virtualbase_SetAccepted(void* self, bool accepted) {
+	( (MiqtVirtualQMouseEvent*)(self) )->virtualbase_SetAccepted(accepted);
+}
+
 void QMouseEvent_Delete(QMouseEvent* self) {
 	delete self;
 }
@@ -1298,6 +1468,55 @@ public:
 	bool virtualbase_IsEndEvent() const {
 
 		return QHoverEvent::isEndEvent();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetTimestamp = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setTimestamp(quint64 timestamp) override {
+		if (handle__SetTimestamp == 0) {
+			QHoverEvent::setTimestamp(timestamp);
+			return;
+		}
+		
+		quint64 timestamp_ret = timestamp;
+		unsigned long long sigval1 = static_cast<unsigned long long>(timestamp_ret);
+
+		miqt_exec_callback_QHoverEvent_SetTimestamp(this, handle__SetTimestamp, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetTimestamp(unsigned long long timestamp) {
+
+		QHoverEvent::setTimestamp(static_cast<quint64>(timestamp));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetAccepted = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setAccepted(bool accepted) override {
+		if (handle__SetAccepted == 0) {
+			QHoverEvent::setAccepted(accepted);
+			return;
+		}
+		
+		bool sigval1 = accepted;
+
+		miqt_exec_callback_QHoverEvent_SetAccepted(this, handle__SetAccepted, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetAccepted(bool accepted) {
+
+		QHoverEvent::setAccepted(accepted);
 
 	}
 
@@ -1411,6 +1630,34 @@ bool QHoverEvent_virtualbase_IsEndEvent(const void* self) {
 	return ( (const MiqtVirtualQHoverEvent*)(self) )->virtualbase_IsEndEvent();
 }
 
+bool QHoverEvent_override_virtual_SetTimestamp(void* self, intptr_t slot) {
+	MiqtVirtualQHoverEvent* self_cast = dynamic_cast<MiqtVirtualQHoverEvent*>( (QHoverEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetTimestamp = slot;
+	return true;
+}
+
+void QHoverEvent_virtualbase_SetTimestamp(void* self, unsigned long long timestamp) {
+	( (MiqtVirtualQHoverEvent*)(self) )->virtualbase_SetTimestamp(timestamp);
+}
+
+bool QHoverEvent_override_virtual_SetAccepted(void* self, intptr_t slot) {
+	MiqtVirtualQHoverEvent* self_cast = dynamic_cast<MiqtVirtualQHoverEvent*>( (QHoverEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetAccepted = slot;
+	return true;
+}
+
+void QHoverEvent_virtualbase_SetAccepted(void* self, bool accepted) {
+	( (MiqtVirtualQHoverEvent*)(self) )->virtualbase_SetAccepted(accepted);
+}
+
 void QHoverEvent_Delete(QHoverEvent* self) {
 	delete self;
 }
@@ -1509,6 +1756,55 @@ public:
 	bool virtualbase_IsEndEvent() const {
 
 		return QWheelEvent::isEndEvent();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetTimestamp = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setTimestamp(quint64 timestamp) override {
+		if (handle__SetTimestamp == 0) {
+			QWheelEvent::setTimestamp(timestamp);
+			return;
+		}
+		
+		quint64 timestamp_ret = timestamp;
+		unsigned long long sigval1 = static_cast<unsigned long long>(timestamp_ret);
+
+		miqt_exec_callback_QWheelEvent_SetTimestamp(this, handle__SetTimestamp, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetTimestamp(unsigned long long timestamp) {
+
+		QWheelEvent::setTimestamp(static_cast<quint64>(timestamp));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetAccepted = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setAccepted(bool accepted) override {
+		if (handle__SetAccepted == 0) {
+			QWheelEvent::setAccepted(accepted);
+			return;
+		}
+		
+		bool sigval1 = accepted;
+
+		miqt_exec_callback_QWheelEvent_SetAccepted(this, handle__SetAccepted, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetAccepted(bool accepted) {
+
+		QWheelEvent::setAccepted(accepted);
 
 	}
 
@@ -1632,6 +1928,34 @@ bool QWheelEvent_virtualbase_IsEndEvent(const void* self) {
 	return ( (const MiqtVirtualQWheelEvent*)(self) )->virtualbase_IsEndEvent();
 }
 
+bool QWheelEvent_override_virtual_SetTimestamp(void* self, intptr_t slot) {
+	MiqtVirtualQWheelEvent* self_cast = dynamic_cast<MiqtVirtualQWheelEvent*>( (QWheelEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetTimestamp = slot;
+	return true;
+}
+
+void QWheelEvent_virtualbase_SetTimestamp(void* self, unsigned long long timestamp) {
+	( (MiqtVirtualQWheelEvent*)(self) )->virtualbase_SetTimestamp(timestamp);
+}
+
+bool QWheelEvent_override_virtual_SetAccepted(void* self, intptr_t slot) {
+	MiqtVirtualQWheelEvent* self_cast = dynamic_cast<MiqtVirtualQWheelEvent*>( (QWheelEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetAccepted = slot;
+	return true;
+}
+
+void QWheelEvent_virtualbase_SetAccepted(void* self, bool accepted) {
+	( (MiqtVirtualQWheelEvent*)(self) )->virtualbase_SetAccepted(accepted);
+}
+
 void QWheelEvent_Delete(QWheelEvent* self) {
 	delete self;
 }
@@ -1728,6 +2052,55 @@ public:
 	bool virtualbase_IsEndEvent() const {
 
 		return QTabletEvent::isEndEvent();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetTimestamp = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setTimestamp(quint64 timestamp) override {
+		if (handle__SetTimestamp == 0) {
+			QTabletEvent::setTimestamp(timestamp);
+			return;
+		}
+		
+		quint64 timestamp_ret = timestamp;
+		unsigned long long sigval1 = static_cast<unsigned long long>(timestamp_ret);
+
+		miqt_exec_callback_QTabletEvent_SetTimestamp(this, handle__SetTimestamp, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetTimestamp(unsigned long long timestamp) {
+
+		QTabletEvent::setTimestamp(static_cast<quint64>(timestamp));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetAccepted = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setAccepted(bool accepted) override {
+		if (handle__SetAccepted == 0) {
+			QTabletEvent::setAccepted(accepted);
+			return;
+		}
+		
+		bool sigval1 = accepted;
+
+		miqt_exec_callback_QTabletEvent_SetAccepted(this, handle__SetAccepted, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetAccepted(bool accepted) {
+
+		QTabletEvent::setAccepted(accepted);
 
 	}
 
@@ -1878,6 +2251,34 @@ bool QTabletEvent_virtualbase_IsEndEvent(const void* self) {
 	return ( (const MiqtVirtualQTabletEvent*)(self) )->virtualbase_IsEndEvent();
 }
 
+bool QTabletEvent_override_virtual_SetTimestamp(void* self, intptr_t slot) {
+	MiqtVirtualQTabletEvent* self_cast = dynamic_cast<MiqtVirtualQTabletEvent*>( (QTabletEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetTimestamp = slot;
+	return true;
+}
+
+void QTabletEvent_virtualbase_SetTimestamp(void* self, unsigned long long timestamp) {
+	( (MiqtVirtualQTabletEvent*)(self) )->virtualbase_SetTimestamp(timestamp);
+}
+
+bool QTabletEvent_override_virtual_SetAccepted(void* self, intptr_t slot) {
+	MiqtVirtualQTabletEvent* self_cast = dynamic_cast<MiqtVirtualQTabletEvent*>( (QTabletEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetAccepted = slot;
+	return true;
+}
+
+void QTabletEvent_virtualbase_SetAccepted(void* self, bool accepted) {
+	( (MiqtVirtualQTabletEvent*)(self) )->virtualbase_SetAccepted(accepted);
+}
+
 void QTabletEvent_Delete(QTabletEvent* self) {
 	delete self;
 }
@@ -1976,6 +2377,55 @@ public:
 	bool virtualbase_IsEndEvent() const {
 
 		return QNativeGestureEvent::isEndEvent();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetTimestamp = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setTimestamp(quint64 timestamp) override {
+		if (handle__SetTimestamp == 0) {
+			QNativeGestureEvent::setTimestamp(timestamp);
+			return;
+		}
+		
+		quint64 timestamp_ret = timestamp;
+		unsigned long long sigval1 = static_cast<unsigned long long>(timestamp_ret);
+
+		miqt_exec_callback_QNativeGestureEvent_SetTimestamp(this, handle__SetTimestamp, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetTimestamp(unsigned long long timestamp) {
+
+		QNativeGestureEvent::setTimestamp(static_cast<quint64>(timestamp));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetAccepted = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setAccepted(bool accepted) override {
+		if (handle__SetAccepted == 0) {
+			QNativeGestureEvent::setAccepted(accepted);
+			return;
+		}
+		
+		bool sigval1 = accepted;
+
+		miqt_exec_callback_QNativeGestureEvent_SetAccepted(this, handle__SetAccepted, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetAccepted(bool accepted) {
+
+		QNativeGestureEvent::setAccepted(accepted);
 
 	}
 
@@ -2095,6 +2545,34 @@ bool QNativeGestureEvent_virtualbase_IsEndEvent(const void* self) {
 	return ( (const MiqtVirtualQNativeGestureEvent*)(self) )->virtualbase_IsEndEvent();
 }
 
+bool QNativeGestureEvent_override_virtual_SetTimestamp(void* self, intptr_t slot) {
+	MiqtVirtualQNativeGestureEvent* self_cast = dynamic_cast<MiqtVirtualQNativeGestureEvent*>( (QNativeGestureEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetTimestamp = slot;
+	return true;
+}
+
+void QNativeGestureEvent_virtualbase_SetTimestamp(void* self, unsigned long long timestamp) {
+	( (MiqtVirtualQNativeGestureEvent*)(self) )->virtualbase_SetTimestamp(timestamp);
+}
+
+bool QNativeGestureEvent_override_virtual_SetAccepted(void* self, intptr_t slot) {
+	MiqtVirtualQNativeGestureEvent* self_cast = dynamic_cast<MiqtVirtualQNativeGestureEvent*>( (QNativeGestureEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetAccepted = slot;
+	return true;
+}
+
+void QNativeGestureEvent_virtualbase_SetAccepted(void* self, bool accepted) {
+	( (MiqtVirtualQNativeGestureEvent*)(self) )->virtualbase_SetAccepted(accepted);
+}
+
 void QNativeGestureEvent_Delete(QNativeGestureEvent* self) {
 	delete self;
 }
@@ -2158,6 +2636,30 @@ public:
 	void virtualbase_SetTimestamp(unsigned long long timestamp) {
 
 		QKeyEvent::setTimestamp(static_cast<quint64>(timestamp));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetAccepted = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setAccepted(bool accepted) override {
+		if (handle__SetAccepted == 0) {
+			QKeyEvent::setAccepted(accepted);
+			return;
+		}
+		
+		bool sigval1 = accepted;
+
+		miqt_exec_callback_QKeyEvent_SetAccepted(this, handle__SetAccepted, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetAccepted(bool accepted) {
+
+		QKeyEvent::setAccepted(accepted);
 
 	}
 
@@ -2291,6 +2793,20 @@ bool QKeyEvent_override_virtual_SetTimestamp(void* self, intptr_t slot) {
 
 void QKeyEvent_virtualbase_SetTimestamp(void* self, unsigned long long timestamp) {
 	( (MiqtVirtualQKeyEvent*)(self) )->virtualbase_SetTimestamp(timestamp);
+}
+
+bool QKeyEvent_override_virtual_SetAccepted(void* self, intptr_t slot) {
+	MiqtVirtualQKeyEvent* self_cast = dynamic_cast<MiqtVirtualQKeyEvent*>( (QKeyEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetAccepted = slot;
+	return true;
+}
+
+void QKeyEvent_virtualbase_SetAccepted(void* self, bool accepted) {
+	( (MiqtVirtualQKeyEvent*)(self) )->virtualbase_SetAccepted(accepted);
 }
 
 void QKeyEvent_Delete(QKeyEvent* self) {
@@ -3413,6 +3929,30 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetAccepted = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setAccepted(bool accepted) override {
+		if (handle__SetAccepted == 0) {
+			QContextMenuEvent::setAccepted(accepted);
+			return;
+		}
+		
+		bool sigval1 = accepted;
+
+		miqt_exec_callback_QContextMenuEvent_SetAccepted(this, handle__SetAccepted, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetAccepted(bool accepted) {
+
+		QContextMenuEvent::setAccepted(accepted);
+
+	}
+
 };
 
 QContextMenuEvent* QContextMenuEvent_new(int reason, QPoint* pos, QPoint* globalPos) {
@@ -3494,6 +4034,20 @@ bool QContextMenuEvent_override_virtual_SetTimestamp(void* self, intptr_t slot) 
 
 void QContextMenuEvent_virtualbase_SetTimestamp(void* self, unsigned long long timestamp) {
 	( (MiqtVirtualQContextMenuEvent*)(self) )->virtualbase_SetTimestamp(timestamp);
+}
+
+bool QContextMenuEvent_override_virtual_SetAccepted(void* self, intptr_t slot) {
+	MiqtVirtualQContextMenuEvent* self_cast = dynamic_cast<MiqtVirtualQContextMenuEvent*>( (QContextMenuEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetAccepted = slot;
+	return true;
+}
+
+void QContextMenuEvent_virtualbase_SetAccepted(void* self, bool accepted) {
+	( (MiqtVirtualQContextMenuEvent*)(self) )->virtualbase_SetAccepted(accepted);
 }
 
 void QContextMenuEvent_Delete(QContextMenuEvent* self) {
@@ -3978,6 +4532,30 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetAccepted = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setAccepted(bool accepted) override {
+		if (handle__SetAccepted == 0) {
+			QDragMoveEvent::setAccepted(accepted);
+			return;
+		}
+		
+		bool sigval1 = accepted;
+
+		miqt_exec_callback_QDragMoveEvent_SetAccepted(this, handle__SetAccepted, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetAccepted(bool accepted) {
+
+		QDragMoveEvent::setAccepted(accepted);
+
+	}
+
 };
 
 QDragMoveEvent* QDragMoveEvent_new(QPoint* pos, int actions, QMimeData* data, int buttons, int modifiers) {
@@ -4030,6 +4608,20 @@ QDragMoveEvent* QDragMoveEvent_virtualbase_Clone(const void* self) {
 	return ( (const MiqtVirtualQDragMoveEvent*)(self) )->virtualbase_Clone();
 }
 
+bool QDragMoveEvent_override_virtual_SetAccepted(void* self, intptr_t slot) {
+	MiqtVirtualQDragMoveEvent* self_cast = dynamic_cast<MiqtVirtualQDragMoveEvent*>( (QDragMoveEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetAccepted = slot;
+	return true;
+}
+
+void QDragMoveEvent_virtualbase_SetAccepted(void* self, bool accepted) {
+	( (MiqtVirtualQDragMoveEvent*)(self) )->virtualbase_SetAccepted(accepted);
+}
+
 void QDragMoveEvent_Delete(QDragMoveEvent* self) {
 	delete self;
 }
@@ -4063,6 +4655,30 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetAccepted = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setAccepted(bool accepted) override {
+		if (handle__SetAccepted == 0) {
+			QDragEnterEvent::setAccepted(accepted);
+			return;
+		}
+		
+		bool sigval1 = accepted;
+
+		miqt_exec_callback_QDragEnterEvent_SetAccepted(this, handle__SetAccepted, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetAccepted(bool accepted) {
+
+		QDragEnterEvent::setAccepted(accepted);
+
+	}
+
 };
 
 QDragEnterEvent* QDragEnterEvent_new(QPoint* pos, int actions, QMimeData* data, int buttons, int modifiers) {
@@ -4089,6 +4705,20 @@ bool QDragEnterEvent_override_virtual_Clone(void* self, intptr_t slot) {
 
 QDragEnterEvent* QDragEnterEvent_virtualbase_Clone(const void* self) {
 	return ( (const MiqtVirtualQDragEnterEvent*)(self) )->virtualbase_Clone();
+}
+
+bool QDragEnterEvent_override_virtual_SetAccepted(void* self, intptr_t slot) {
+	MiqtVirtualQDragEnterEvent* self_cast = dynamic_cast<MiqtVirtualQDragEnterEvent*>( (QDragEnterEvent*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetAccepted = slot;
+	return true;
+}
+
+void QDragEnterEvent_virtualbase_SetAccepted(void* self, bool accepted) {
+	( (MiqtVirtualQDragEnterEvent*)(self) )->virtualbase_SetAccepted(accepted);
 }
 
 void QDragEnterEvent_Delete(QDragEnterEvent* self) {

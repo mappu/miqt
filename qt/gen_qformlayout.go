@@ -855,6 +855,246 @@ func miqt_exec_callback_QFormLayout_ChildEvent(self *C.QFormLayout, cb C.intptr_
 
 }
 
+func (this *QFormLayout) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QFormLayout_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QFormLayout) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QFormLayout_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QFormLayout_Event
+func miqt_exec_callback_QFormLayout_Event(self *C.QFormLayout, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	virtualReturn := gofunc((&QFormLayout{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QFormLayout) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
+
+	return (bool)(C.QFormLayout_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+
+}
+func (this *QFormLayout) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QFormLayout_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QFormLayout_EventFilter
+func miqt_exec_callback_QFormLayout_EventFilter(self *C.QFormLayout, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQObject(watched)
+
+	slotval2 := newQEvent(event)
+
+	virtualReturn := gofunc((&QFormLayout{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QFormLayout) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QFormLayout_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QFormLayout) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QFormLayout_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QFormLayout_TimerEvent
+func miqt_exec_callback_QFormLayout_TimerEvent(self *C.QFormLayout, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQTimerEvent(event)
+
+	gofunc((&QFormLayout{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QFormLayout) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QFormLayout_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QFormLayout) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QFormLayout_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QFormLayout_CustomEvent
+func miqt_exec_callback_QFormLayout_CustomEvent(self *C.QFormLayout, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	gofunc((&QFormLayout{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QFormLayout) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QFormLayout_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QFormLayout) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QFormLayout_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QFormLayout_ConnectNotify
+func miqt_exec_callback_QFormLayout_ConnectNotify(self *C.QFormLayout, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QFormLayout{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QFormLayout) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QFormLayout_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QFormLayout) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QFormLayout_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QFormLayout_DisconnectNotify
+func miqt_exec_callback_QFormLayout_DisconnectNotify(self *C.QFormLayout, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QFormLayout{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
+func (this *QFormLayout) callVirtualBase_MinimumHeightForWidth(param1 int) int {
+
+	return (int)(C.QFormLayout_virtualbase_MinimumHeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+
+}
+func (this *QFormLayout) OnMinimumHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.QFormLayout_override_virtual_MinimumHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QFormLayout_MinimumHeightForWidth
+func miqt_exec_callback_QFormLayout_MinimumHeightForWidth(self *C.QFormLayout, cb C.intptr_t, param1 C.int) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(param1)
+
+	virtualReturn := gofunc((&QFormLayout{h: self}).callVirtualBase_MinimumHeightForWidth, slotval1)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QFormLayout) callVirtualBase_Widget() *QWidget {
+
+	return newQWidget(C.QFormLayout_virtualbase_Widget(unsafe.Pointer(this.h)))
+
+}
+func (this *QFormLayout) OnWidget(slot func(super func() *QWidget) *QWidget) {
+	ok := C.QFormLayout_override_virtual_Widget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QFormLayout_Widget
+func miqt_exec_callback_QFormLayout_Widget(self *C.QFormLayout, cb C.intptr_t) *C.QWidget {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QWidget) *QWidget)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QFormLayout{h: self}).callVirtualBase_Widget)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QFormLayout) callVirtualBase_SpacerItem() *QSpacerItem {
+
+	return newQSpacerItem(C.QFormLayout_virtualbase_SpacerItem(unsafe.Pointer(this.h)))
+
+}
+func (this *QFormLayout) OnSpacerItem(slot func(super func() *QSpacerItem) *QSpacerItem) {
+	ok := C.QFormLayout_override_virtual_SpacerItem(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QFormLayout_SpacerItem
+func miqt_exec_callback_QFormLayout_SpacerItem(self *C.QFormLayout, cb C.intptr_t) *C.QSpacerItem {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSpacerItem) *QSpacerItem)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QFormLayout{h: self}).callVirtualBase_SpacerItem)
+
+	return virtualReturn.cPointer()
+
+}
+
 // Delete this object from C++ memory.
 func (this *QFormLayout) Delete() {
 	C.QFormLayout_Delete(this.h)

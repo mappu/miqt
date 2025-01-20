@@ -115,6 +115,13 @@ void miqt_exec_callback_QAbstractTableModel_MultiData(void*, intptr_t, QModelInd
 bool miqt_exec_callback_QAbstractTableModel_Submit(void*, intptr_t);
 void miqt_exec_callback_QAbstractTableModel_Revert(void*, intptr_t);
 void miqt_exec_callback_QAbstractTableModel_ResetInternalData(void*, intptr_t);
+bool miqt_exec_callback_QAbstractTableModel_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAbstractTableModel_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAbstractTableModel_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAbstractTableModel_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAbstractTableModel_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractTableModel_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAbstractTableModel_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 QModelIndex* miqt_exec_callback_QAbstractListModel_Index(void*, intptr_t, int, int, QModelIndex*);
 QModelIndex* miqt_exec_callback_QAbstractListModel_Sibling(void*, intptr_t, int, int, QModelIndex*);
 bool miqt_exec_callback_QAbstractListModel_DropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
@@ -149,6 +156,13 @@ void miqt_exec_callback_QAbstractListModel_MultiData(void*, intptr_t, QModelInde
 bool miqt_exec_callback_QAbstractListModel_Submit(void*, intptr_t);
 void miqt_exec_callback_QAbstractListModel_Revert(void*, intptr_t);
 void miqt_exec_callback_QAbstractListModel_ResetInternalData(void*, intptr_t);
+bool miqt_exec_callback_QAbstractListModel_Event(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAbstractListModel_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAbstractListModel_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAbstractListModel_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAbstractListModel_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractListModel_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAbstractListModel_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -3798,6 +3812,177 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QAbstractTableModel::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QAbstractTableModel_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QAbstractTableModel::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QAbstractTableModel::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QAbstractTableModel_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QAbstractTableModel::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QAbstractTableModel::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractTableModel_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QAbstractTableModel::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QAbstractTableModel::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractTableModel_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QAbstractTableModel::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QAbstractTableModel::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractTableModel_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QAbstractTableModel::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QAbstractTableModel::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QAbstractTableModel_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QAbstractTableModel::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QAbstractTableModel::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QAbstractTableModel_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QAbstractTableModel::disconnectNotify(*signal);
+
+	}
+
 };
 
 QAbstractTableModel* QAbstractTableModel_new() {
@@ -4346,6 +4531,104 @@ bool QAbstractTableModel_override_virtual_ResetInternalData(void* self, intptr_t
 
 void QAbstractTableModel_virtualbase_ResetInternalData(void* self) {
 	( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_ResetInternalData();
+}
+
+bool QAbstractTableModel_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTableModel* self_cast = dynamic_cast<MiqtVirtualQAbstractTableModel*>( (QAbstractTableModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
+}
+
+bool QAbstractTableModel_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_Event(event);
+}
+
+bool QAbstractTableModel_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTableModel* self_cast = dynamic_cast<MiqtVirtualQAbstractTableModel*>( (QAbstractTableModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
+}
+
+bool QAbstractTableModel_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+bool QAbstractTableModel_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTableModel* self_cast = dynamic_cast<MiqtVirtualQAbstractTableModel*>( (QAbstractTableModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QAbstractTableModel_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QAbstractTableModel_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTableModel* self_cast = dynamic_cast<MiqtVirtualQAbstractTableModel*>( (QAbstractTableModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QAbstractTableModel_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QAbstractTableModel_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTableModel* self_cast = dynamic_cast<MiqtVirtualQAbstractTableModel*>( (QAbstractTableModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QAbstractTableModel_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QAbstractTableModel_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTableModel* self_cast = dynamic_cast<MiqtVirtualQAbstractTableModel*>( (QAbstractTableModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QAbstractTableModel_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QAbstractTableModel_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTableModel* self_cast = dynamic_cast<MiqtVirtualQAbstractTableModel*>( (QAbstractTableModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QAbstractTableModel_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
 void QAbstractTableModel_Delete(QAbstractTableModel* self) {
@@ -5354,6 +5637,177 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QAbstractListModel::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QAbstractListModel_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QAbstractListModel::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QAbstractListModel::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QAbstractListModel_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QAbstractListModel::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QAbstractListModel::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractListModel_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QAbstractListModel::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QAbstractListModel::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractListModel_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QAbstractListModel::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QAbstractListModel::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QAbstractListModel_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QAbstractListModel::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QAbstractListModel::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QAbstractListModel_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QAbstractListModel::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QAbstractListModel::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QAbstractListModel_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QAbstractListModel::disconnectNotify(*signal);
+
+	}
+
 };
 
 QAbstractListModel* QAbstractListModel_new() {
@@ -5892,6 +6346,104 @@ bool QAbstractListModel_override_virtual_ResetInternalData(void* self, intptr_t 
 
 void QAbstractListModel_virtualbase_ResetInternalData(void* self) {
 	( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_ResetInternalData();
+}
+
+bool QAbstractListModel_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractListModel* self_cast = dynamic_cast<MiqtVirtualQAbstractListModel*>( (QAbstractListModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
+}
+
+bool QAbstractListModel_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_Event(event);
+}
+
+bool QAbstractListModel_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractListModel* self_cast = dynamic_cast<MiqtVirtualQAbstractListModel*>( (QAbstractListModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
+}
+
+bool QAbstractListModel_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+bool QAbstractListModel_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractListModel* self_cast = dynamic_cast<MiqtVirtualQAbstractListModel*>( (QAbstractListModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QAbstractListModel_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QAbstractListModel_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractListModel* self_cast = dynamic_cast<MiqtVirtualQAbstractListModel*>( (QAbstractListModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QAbstractListModel_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QAbstractListModel_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractListModel* self_cast = dynamic_cast<MiqtVirtualQAbstractListModel*>( (QAbstractListModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QAbstractListModel_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QAbstractListModel_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractListModel* self_cast = dynamic_cast<MiqtVirtualQAbstractListModel*>( (QAbstractListModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QAbstractListModel_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QAbstractListModel_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractListModel* self_cast = dynamic_cast<MiqtVirtualQAbstractListModel*>( (QAbstractListModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QAbstractListModel_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
 void QAbstractListModel_Delete(QAbstractListModel* self) {

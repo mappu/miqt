@@ -1712,6 +1712,31 @@ func (this *QAccessibleTextSelectionEvent) SelectionEnd() int {
 	return (int)(C.QAccessibleTextSelectionEvent_SelectionEnd(this.h))
 }
 
+func (this *QAccessibleTextSelectionEvent) callVirtualBase_AccessibleInterface() *QAccessibleInterface {
+
+	return newQAccessibleInterface(C.QAccessibleTextSelectionEvent_virtualbase_AccessibleInterface(unsafe.Pointer(this.h)))
+
+}
+func (this *QAccessibleTextSelectionEvent) OnAccessibleInterface(slot func(super func() *QAccessibleInterface) *QAccessibleInterface) {
+	ok := C.QAccessibleTextSelectionEvent_override_virtual_AccessibleInterface(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QAccessibleTextSelectionEvent_AccessibleInterface
+func miqt_exec_callback_QAccessibleTextSelectionEvent_AccessibleInterface(self *C.QAccessibleTextSelectionEvent, cb C.intptr_t) *C.QAccessibleInterface {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QAccessibleInterface) *QAccessibleInterface)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QAccessibleTextSelectionEvent{h: self}).callVirtualBase_AccessibleInterface)
+
+	return virtualReturn.cPointer()
+
+}
+
 // Delete this object from C++ memory.
 func (this *QAccessibleTextSelectionEvent) Delete() {
 	C.QAccessibleTextSelectionEvent_Delete(this.h)
@@ -1793,6 +1818,31 @@ func (this *QAccessibleTextInsertEvent) ChangePosition() int {
 	return (int)(C.QAccessibleTextInsertEvent_ChangePosition(this.h))
 }
 
+func (this *QAccessibleTextInsertEvent) callVirtualBase_AccessibleInterface() *QAccessibleInterface {
+
+	return newQAccessibleInterface(C.QAccessibleTextInsertEvent_virtualbase_AccessibleInterface(unsafe.Pointer(this.h)))
+
+}
+func (this *QAccessibleTextInsertEvent) OnAccessibleInterface(slot func(super func() *QAccessibleInterface) *QAccessibleInterface) {
+	ok := C.QAccessibleTextInsertEvent_override_virtual_AccessibleInterface(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QAccessibleTextInsertEvent_AccessibleInterface
+func miqt_exec_callback_QAccessibleTextInsertEvent_AccessibleInterface(self *C.QAccessibleTextInsertEvent, cb C.intptr_t) *C.QAccessibleInterface {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QAccessibleInterface) *QAccessibleInterface)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QAccessibleTextInsertEvent{h: self}).callVirtualBase_AccessibleInterface)
+
+	return virtualReturn.cPointer()
+
+}
+
 // Delete this object from C++ memory.
 func (this *QAccessibleTextInsertEvent) Delete() {
 	C.QAccessibleTextInsertEvent_Delete(this.h)
@@ -1872,6 +1922,31 @@ func (this *QAccessibleTextRemoveEvent) TextRemoved() string {
 
 func (this *QAccessibleTextRemoveEvent) ChangePosition() int {
 	return (int)(C.QAccessibleTextRemoveEvent_ChangePosition(this.h))
+}
+
+func (this *QAccessibleTextRemoveEvent) callVirtualBase_AccessibleInterface() *QAccessibleInterface {
+
+	return newQAccessibleInterface(C.QAccessibleTextRemoveEvent_virtualbase_AccessibleInterface(unsafe.Pointer(this.h)))
+
+}
+func (this *QAccessibleTextRemoveEvent) OnAccessibleInterface(slot func(super func() *QAccessibleInterface) *QAccessibleInterface) {
+	ok := C.QAccessibleTextRemoveEvent_override_virtual_AccessibleInterface(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QAccessibleTextRemoveEvent_AccessibleInterface
+func miqt_exec_callback_QAccessibleTextRemoveEvent_AccessibleInterface(self *C.QAccessibleTextRemoveEvent, cb C.intptr_t) *C.QAccessibleInterface {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QAccessibleInterface) *QAccessibleInterface)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QAccessibleTextRemoveEvent{h: self}).callVirtualBase_AccessibleInterface)
+
+	return virtualReturn.cPointer()
+
 }
 
 // Delete this object from C++ memory.
@@ -1968,6 +2043,31 @@ func (this *QAccessibleTextUpdateEvent) TextInserted() string {
 
 func (this *QAccessibleTextUpdateEvent) ChangePosition() int {
 	return (int)(C.QAccessibleTextUpdateEvent_ChangePosition(this.h))
+}
+
+func (this *QAccessibleTextUpdateEvent) callVirtualBase_AccessibleInterface() *QAccessibleInterface {
+
+	return newQAccessibleInterface(C.QAccessibleTextUpdateEvent_virtualbase_AccessibleInterface(unsafe.Pointer(this.h)))
+
+}
+func (this *QAccessibleTextUpdateEvent) OnAccessibleInterface(slot func(super func() *QAccessibleInterface) *QAccessibleInterface) {
+	ok := C.QAccessibleTextUpdateEvent_override_virtual_AccessibleInterface(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QAccessibleTextUpdateEvent_AccessibleInterface
+func miqt_exec_callback_QAccessibleTextUpdateEvent_AccessibleInterface(self *C.QAccessibleTextUpdateEvent, cb C.intptr_t) *C.QAccessibleInterface {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QAccessibleInterface) *QAccessibleInterface)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QAccessibleTextUpdateEvent{h: self}).callVirtualBase_AccessibleInterface)
+
+	return virtualReturn.cPointer()
+
 }
 
 // Delete this object from C++ memory.

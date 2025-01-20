@@ -1891,6 +1891,79 @@ func miqt_exec_callback_QWidgetItemV2_ControlTypes(self *C.QWidgetItemV2, cb C.i
 
 }
 
+func (this *QWidgetItemV2) callVirtualBase_Invalidate() {
+
+	C.QWidgetItemV2_virtualbase_Invalidate(unsafe.Pointer(this.h))
+
+}
+func (this *QWidgetItemV2) OnInvalidate(slot func(super func())) {
+	ok := C.QWidgetItemV2_override_virtual_Invalidate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QWidgetItemV2_Invalidate
+func miqt_exec_callback_QWidgetItemV2_Invalidate(self *C.QWidgetItemV2, cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc((&QWidgetItemV2{h: self}).callVirtualBase_Invalidate)
+
+}
+
+func (this *QWidgetItemV2) callVirtualBase_Layout() *QLayout {
+
+	return newQLayout(C.QWidgetItemV2_virtualbase_Layout(unsafe.Pointer(this.h)))
+
+}
+func (this *QWidgetItemV2) OnLayout(slot func(super func() *QLayout) *QLayout) {
+	ok := C.QWidgetItemV2_override_virtual_Layout(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QWidgetItemV2_Layout
+func miqt_exec_callback_QWidgetItemV2_Layout(self *C.QWidgetItemV2, cb C.intptr_t) *C.QLayout {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QLayout) *QLayout)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QWidgetItemV2{h: self}).callVirtualBase_Layout)
+
+	return virtualReturn.cPointer()
+
+}
+
+func (this *QWidgetItemV2) callVirtualBase_SpacerItem() *QSpacerItem {
+
+	return newQSpacerItem(C.QWidgetItemV2_virtualbase_SpacerItem(unsafe.Pointer(this.h)))
+
+}
+func (this *QWidgetItemV2) OnSpacerItem(slot func(super func() *QSpacerItem) *QSpacerItem) {
+	ok := C.QWidgetItemV2_override_virtual_SpacerItem(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QWidgetItemV2_SpacerItem
+func miqt_exec_callback_QWidgetItemV2_SpacerItem(self *C.QWidgetItemV2, cb C.intptr_t) *C.QSpacerItem {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSpacerItem) *QSpacerItem)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QWidgetItemV2{h: self}).callVirtualBase_SpacerItem)
+
+	return virtualReturn.cPointer()
+
+}
+
 // Delete this object from C++ memory.
 func (this *QWidgetItemV2) Delete() {
 	C.QWidgetItemV2_Delete(this.h)

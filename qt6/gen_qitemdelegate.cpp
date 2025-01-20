@@ -1,11 +1,13 @@
 #include <QAbstractItemDelegate>
 #include <QAbstractItemModel>
 #include <QAbstractItemView>
+#include <QChildEvent>
 #include <QEvent>
 #include <QHelpEvent>
 #include <QItemDelegate>
 #include <QItemEditorFactory>
 #include <QList>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QModelIndex>
 #include <QObject>
@@ -17,6 +19,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QStyleOptionViewItem>
+#include <QTimerEvent>
 #include <QWidget>
 #include <qitemdelegate.h>
 #include "gen_qitemdelegate.h"
@@ -40,6 +43,12 @@ bool miqt_exec_callback_QItemDelegate_EditorEvent(void*, intptr_t, QEvent*, QAbs
 void miqt_exec_callback_QItemDelegate_DestroyEditor(void*, intptr_t, QWidget*, QModelIndex*);
 bool miqt_exec_callback_QItemDelegate_HelpEvent(void*, intptr_t, QHelpEvent*, QAbstractItemView*, QStyleOptionViewItem*, QModelIndex*);
 struct miqt_array /* of int */  miqt_exec_callback_QItemDelegate_PaintingRoles(void*, intptr_t);
+bool miqt_exec_callback_QItemDelegate_Event(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QItemDelegate_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QItemDelegate_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QItemDelegate_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QItemDelegate_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QItemDelegate_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -506,6 +515,153 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Event = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool event(QEvent* event) override {
+		if (handle__Event == 0) {
+			return QItemDelegate::event(event);
+		}
+		
+		QEvent* sigval1 = event;
+
+		bool callback_return_value = miqt_exec_callback_QItemDelegate_Event(this, handle__Event, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Event(QEvent* event) {
+
+		return QItemDelegate::event(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QItemDelegate::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QItemDelegate_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QItemDelegate::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QItemDelegate::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QItemDelegate_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QItemDelegate::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QItemDelegate::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QItemDelegate_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QItemDelegate::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QItemDelegate::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QItemDelegate_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QItemDelegate::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QItemDelegate::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QItemDelegate_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QItemDelegate::disconnectNotify(*signal);
+
+	}
+
 };
 
 QItemDelegate* QItemDelegate_new() {
@@ -809,6 +965,90 @@ bool QItemDelegate_override_virtual_PaintingRoles(void* self, intptr_t slot) {
 
 struct miqt_array /* of int */  QItemDelegate_virtualbase_PaintingRoles(const void* self) {
 	return ( (const MiqtVirtualQItemDelegate*)(self) )->virtualbase_PaintingRoles();
+}
+
+bool QItemDelegate_override_virtual_Event(void* self, intptr_t slot) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Event = slot;
+	return true;
+}
+
+bool QItemDelegate_virtualbase_Event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQItemDelegate*)(self) )->virtualbase_Event(event);
+}
+
+bool QItemDelegate_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QItemDelegate_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQItemDelegate*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QItemDelegate_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QItemDelegate_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQItemDelegate*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QItemDelegate_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QItemDelegate_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQItemDelegate*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QItemDelegate_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QItemDelegate_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQItemDelegate*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QItemDelegate_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QItemDelegate_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQItemDelegate*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
 void QItemDelegate_Delete(QItemDelegate* self) {

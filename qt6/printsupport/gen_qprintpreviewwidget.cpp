@@ -1,5 +1,6 @@
 #include <QActionEvent>
 #include <QByteArray>
+#include <QChildEvent>
 #include <QCloseEvent>
 #include <QContextMenuEvent>
 #include <QDragEnterEvent>
@@ -12,6 +13,7 @@
 #include <QHideEvent>
 #include <QInputMethodEvent>
 #include <QKeyEvent>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QMouseEvent>
 #include <QMoveEvent>
@@ -30,6 +32,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QTabletEvent>
+#include <QTimerEvent>
 #include <QVariant>
 #include <QWheelEvent>
 #include <QWidget>
@@ -83,6 +86,12 @@ QPainter* miqt_exec_callback_QPrintPreviewWidget_SharedPainter(void*, intptr_t);
 void miqt_exec_callback_QPrintPreviewWidget_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
 QVariant* miqt_exec_callback_QPrintPreviewWidget_InputMethodQuery(void*, intptr_t, int);
 bool miqt_exec_callback_QPrintPreviewWidget_FocusNextPrevChild(void*, intptr_t, bool);
+bool miqt_exec_callback_QPrintPreviewWidget_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QPrintPreviewWidget_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1075,6 +1084,154 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QPrintPreviewWidget::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QPrintPreviewWidget_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QPrintPreviewWidget::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QPrintPreviewWidget::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QPrintPreviewWidget_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QPrintPreviewWidget::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QPrintPreviewWidget::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QPrintPreviewWidget_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QPrintPreviewWidget::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QPrintPreviewWidget::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QPrintPreviewWidget_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QPrintPreviewWidget::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QPrintPreviewWidget::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QPrintPreviewWidget_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QPrintPreviewWidget::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QPrintPreviewWidget::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QPrintPreviewWidget_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QPrintPreviewWidget::disconnectNotify(*signal);
+
+	}
+
 };
 
 QPrintPreviewWidget* QPrintPreviewWidget_new(QWidget* parent) {
@@ -1843,6 +2000,90 @@ bool QPrintPreviewWidget_override_virtual_FocusNextPrevChild(void* self, intptr_
 
 bool QPrintPreviewWidget_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQPrintPreviewWidget*)(self) )->virtualbase_FocusNextPrevChild(next);
+}
+
+bool QPrintPreviewWidget_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQPrintPreviewWidget* self_cast = dynamic_cast<MiqtVirtualQPrintPreviewWidget*>( (QPrintPreviewWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
+}
+
+bool QPrintPreviewWidget_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQPrintPreviewWidget*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+bool QPrintPreviewWidget_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPrintPreviewWidget* self_cast = dynamic_cast<MiqtVirtualQPrintPreviewWidget*>( (QPrintPreviewWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QPrintPreviewWidget_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QPrintPreviewWidget_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPrintPreviewWidget* self_cast = dynamic_cast<MiqtVirtualQPrintPreviewWidget*>( (QPrintPreviewWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QPrintPreviewWidget_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QPrintPreviewWidget_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQPrintPreviewWidget* self_cast = dynamic_cast<MiqtVirtualQPrintPreviewWidget*>( (QPrintPreviewWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QPrintPreviewWidget_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QPrintPreviewWidget_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQPrintPreviewWidget* self_cast = dynamic_cast<MiqtVirtualQPrintPreviewWidget*>( (QPrintPreviewWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QPrintPreviewWidget_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QPrintPreviewWidget_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQPrintPreviewWidget* self_cast = dynamic_cast<MiqtVirtualQPrintPreviewWidget*>( (QPrintPreviewWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QPrintPreviewWidget_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
 void QPrintPreviewWidget_Delete(QPrintPreviewWidget* self) {

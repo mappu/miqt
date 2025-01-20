@@ -16,18 +16,26 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAudioRecorder;
+class QChildEvent;
+class QEvent;
 class QMediaBindableInterface;
 class QMediaObject;
 class QMediaRecorder;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
+class QTimerEvent;
 #else
 typedef struct QAudioRecorder QAudioRecorder;
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QMediaBindableInterface QMediaBindableInterface;
 typedef struct QMediaObject QMediaObject;
 typedef struct QMediaRecorder QMediaRecorder;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 #endif
 
 QAudioRecorder* QAudioRecorder_new();
@@ -54,6 +62,20 @@ bool QAudioRecorder_override_virtual_MediaObject(void* self, intptr_t slot);
 QMediaObject* QAudioRecorder_virtualbase_MediaObject(const void* self);
 bool QAudioRecorder_override_virtual_SetMediaObject(void* self, intptr_t slot);
 bool QAudioRecorder_virtualbase_SetMediaObject(void* self, QMediaObject* object);
+bool QAudioRecorder_override_virtual_Event(void* self, intptr_t slot);
+bool QAudioRecorder_virtualbase_Event(void* self, QEvent* event);
+bool QAudioRecorder_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QAudioRecorder_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QAudioRecorder_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QAudioRecorder_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QAudioRecorder_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QAudioRecorder_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QAudioRecorder_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QAudioRecorder_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QAudioRecorder_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QAudioRecorder_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QAudioRecorder_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QAudioRecorder_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QAudioRecorder_Delete(QAudioRecorder* self);
 
 #ifdef __cplusplus

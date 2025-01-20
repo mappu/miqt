@@ -15,21 +15,29 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QChildEvent;
+class QEvent;
 class QEventPoint;
 class QInputDevice;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QPointerEvent;
 class QPointingDevice;
 class QPointingDeviceUniqueId;
+class QTimerEvent;
 #else
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QEventPoint QEventPoint;
 typedef struct QInputDevice QInputDevice;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QPointerEvent QPointerEvent;
 typedef struct QPointingDevice QPointingDevice;
 typedef struct QPointingDeviceUniqueId QPointingDeviceUniqueId;
+typedef struct QTimerEvent QTimerEvent;
 #endif
 
 QPointingDeviceUniqueId* QPointingDeviceUniqueId_new();
@@ -63,6 +71,20 @@ void QPointingDevice_connect_GrabChanged(QPointingDevice* self, intptr_t slot);
 struct miqt_string QPointingDevice_Tr2(const char* s, const char* c);
 struct miqt_string QPointingDevice_Tr3(const char* s, const char* c, int n);
 QPointingDevice* QPointingDevice_PrimaryPointingDevice1(struct miqt_string seatName);
+bool QPointingDevice_override_virtual_Event(void* self, intptr_t slot);
+bool QPointingDevice_virtualbase_Event(void* self, QEvent* event);
+bool QPointingDevice_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QPointingDevice_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QPointingDevice_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QPointingDevice_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QPointingDevice_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QPointingDevice_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QPointingDevice_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QPointingDevice_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QPointingDevice_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QPointingDevice_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QPointingDevice_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QPointingDevice_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QPointingDevice_Delete(QPointingDevice* self);
 
 #ifdef __cplusplus

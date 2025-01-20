@@ -3016,6 +3016,643 @@ func miqt_exec_callback_QsciScintillaBase_ViewportSizeHint(self *C.QsciScintilla
 
 }
 
+func (this *QsciScintillaBase) callVirtualBase_DevType() int {
+
+	return (int)(C.QsciScintillaBase_virtualbase_DevType(unsafe.Pointer(this.h)))
+
+}
+func (this *QsciScintillaBase) OnDevType(slot func(super func() int) int) {
+	ok := C.QsciScintillaBase_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciScintillaBase_DevType
+func miqt_exec_callback_QsciScintillaBase_DevType(self *C.QsciScintillaBase, cb C.intptr_t) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QsciScintillaBase{h: self}).callVirtualBase_DevType)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_SetVisible(visible bool) {
+
+	C.QsciScintillaBase_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+
+}
+func (this *QsciScintillaBase) OnSetVisible(slot func(super func(visible bool), visible bool)) {
+	ok := C.QsciScintillaBase_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciScintillaBase_SetVisible
+func miqt_exec_callback_QsciScintillaBase_SetVisible(self *C.QsciScintillaBase, cb C.intptr_t, visible C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(visible)
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_SetVisible, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_HeightForWidth(param1 int) int {
+
+	return (int)(C.QsciScintillaBase_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+
+}
+func (this *QsciScintillaBase) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.QsciScintillaBase_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciScintillaBase_HeightForWidth
+func miqt_exec_callback_QsciScintillaBase_HeightForWidth(self *C.QsciScintillaBase, cb C.intptr_t, param1 C.int) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int)(param1)
+
+	virtualReturn := gofunc((&QsciScintillaBase{h: self}).callVirtualBase_HeightForWidth, slotval1)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_HasHeightForWidth() bool {
+
+	return (bool)(C.QsciScintillaBase_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+
+}
+func (this *QsciScintillaBase) OnHasHeightForWidth(slot func(super func() bool) bool) {
+	ok := C.QsciScintillaBase_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciScintillaBase_HasHeightForWidth
+func miqt_exec_callback_QsciScintillaBase_HasHeightForWidth(self *C.QsciScintillaBase, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QsciScintillaBase{h: self}).callVirtualBase_HasHeightForWidth)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_PaintEngine() *qt.QPaintEngine {
+
+	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QsciScintillaBase_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+
+}
+func (this *QsciScintillaBase) OnPaintEngine(slot func(super func() *qt.QPaintEngine) *qt.QPaintEngine) {
+	ok := C.QsciScintillaBase_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciScintillaBase_PaintEngine
+func miqt_exec_callback_QsciScintillaBase_PaintEngine(self *C.QsciScintillaBase, cb C.intptr_t) *C.QPaintEngine {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QPaintEngine) *qt.QPaintEngine)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QsciScintillaBase{h: self}).callVirtualBase_PaintEngine)
+
+	return (*C.QPaintEngine)(virtualReturn.UnsafePointer())
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_KeyReleaseEvent(event *qt.QKeyEvent) {
+
+	C.QsciScintillaBase_virtualbase_KeyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnKeyReleaseEvent(slot func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent)) {
+	ok := C.QsciScintillaBase_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciScintillaBase_KeyReleaseEvent
+func miqt_exec_callback_QsciScintillaBase_KeyReleaseEvent(self *C.QsciScintillaBase, cb C.intptr_t, event *C.QKeyEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQKeyEvent(unsafe.Pointer(event))
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_KeyReleaseEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_EnterEvent(event *qt.QEvent) {
+
+	C.QsciScintillaBase_virtualbase_EnterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnEnterEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QsciScintillaBase_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciScintillaBase_EnterEvent
+func miqt_exec_callback_QsciScintillaBase_EnterEvent(self *C.QsciScintillaBase, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_EnterEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_LeaveEvent(event *qt.QEvent) {
+
+	C.QsciScintillaBase_virtualbase_LeaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnLeaveEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QsciScintillaBase_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciScintillaBase_LeaveEvent
+func miqt_exec_callback_QsciScintillaBase_LeaveEvent(self *C.QsciScintillaBase, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_LeaveEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
+
+	C.QsciScintillaBase_virtualbase_MoveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnMoveEvent(slot func(super func(event *qt.QMoveEvent), event *qt.QMoveEvent)) {
+	ok := C.QsciScintillaBase_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciScintillaBase_MoveEvent
+func miqt_exec_callback_QsciScintillaBase_MoveEvent(self *C.QsciScintillaBase, cb C.intptr_t, event *C.QMoveEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMoveEvent), event *qt.QMoveEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMoveEvent(unsafe.Pointer(event))
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_MoveEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_CloseEvent(event *qt.QCloseEvent) {
+
+	C.QsciScintillaBase_virtualbase_CloseEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnCloseEvent(slot func(super func(event *qt.QCloseEvent), event *qt.QCloseEvent)) {
+	ok := C.QsciScintillaBase_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciScintillaBase_CloseEvent
+func miqt_exec_callback_QsciScintillaBase_CloseEvent(self *C.QsciScintillaBase, cb C.intptr_t, event *C.QCloseEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QCloseEvent), event *qt.QCloseEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQCloseEvent(unsafe.Pointer(event))
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_CloseEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
+
+	C.QsciScintillaBase_virtualbase_TabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnTabletEvent(slot func(super func(event *qt.QTabletEvent), event *qt.QTabletEvent)) {
+	ok := C.QsciScintillaBase_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciScintillaBase_TabletEvent
+func miqt_exec_callback_QsciScintillaBase_TabletEvent(self *C.QsciScintillaBase, cb C.intptr_t, event *C.QTabletEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTabletEvent), event *qt.QTabletEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQTabletEvent(unsafe.Pointer(event))
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_TabletEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
+
+	C.QsciScintillaBase_virtualbase_ActionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnActionEvent(slot func(super func(event *qt.QActionEvent), event *qt.QActionEvent)) {
+	ok := C.QsciScintillaBase_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciScintillaBase_ActionEvent
+func miqt_exec_callback_QsciScintillaBase_ActionEvent(self *C.QsciScintillaBase, cb C.intptr_t, event *C.QActionEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QActionEvent), event *qt.QActionEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQActionEvent(unsafe.Pointer(event))
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_ActionEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
+
+	C.QsciScintillaBase_virtualbase_ShowEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnShowEvent(slot func(super func(event *qt.QShowEvent), event *qt.QShowEvent)) {
+	ok := C.QsciScintillaBase_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciScintillaBase_ShowEvent
+func miqt_exec_callback_QsciScintillaBase_ShowEvent(self *C.QsciScintillaBase, cb C.intptr_t, event *C.QShowEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QShowEvent), event *qt.QShowEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQShowEvent(unsafe.Pointer(event))
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_ShowEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_HideEvent(event *qt.QHideEvent) {
+
+	C.QsciScintillaBase_virtualbase_HideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnHideEvent(slot func(super func(event *qt.QHideEvent), event *qt.QHideEvent)) {
+	ok := C.QsciScintillaBase_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciScintillaBase_HideEvent
+func miqt_exec_callback_QsciScintillaBase_HideEvent(self *C.QsciScintillaBase, cb C.intptr_t, event *C.QHideEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QHideEvent), event *qt.QHideEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQHideEvent(unsafe.Pointer(event))
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_HideEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
+	eventType_alias := C.struct_miqt_string{}
+	eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	eventType_alias.len = C.size_t(len(eventType))
+
+	return (bool)(C.QsciScintillaBase_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
+
+}
+func (this *QsciScintillaBase) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
+	ok := C.QsciScintillaBase_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciScintillaBase_NativeEvent
+func miqt_exec_callback_QsciScintillaBase_NativeEvent(self *C.QsciScintillaBase, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	var eventType_bytearray C.struct_miqt_string = eventType
+	eventType_ret := C.GoBytes(unsafe.Pointer(eventType_bytearray.data), C.int(int64(eventType_bytearray.len)))
+	C.free(unsafe.Pointer(eventType_bytearray.data))
+	slotval1 := eventType_ret
+	slotval2 := (unsafe.Pointer)(message)
+
+	slotval3 := (*int64)(unsafe.Pointer(result))
+
+	virtualReturn := gofunc((&QsciScintillaBase{h: self}).callVirtualBase_NativeEvent, slotval1, slotval2, slotval3)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
+
+	return (int)(C.QsciScintillaBase_virtualbase_Metric(unsafe.Pointer(this.h), (C.int)(param1)))
+
+}
+func (this *QsciScintillaBase) OnMetric(slot func(super func(param1 qt.QPaintDevice__PaintDeviceMetric) int, param1 qt.QPaintDevice__PaintDeviceMetric) int) {
+	ok := C.QsciScintillaBase_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciScintillaBase_Metric
+func miqt_exec_callback_QsciScintillaBase_Metric(self *C.QsciScintillaBase, cb C.intptr_t, param1 C.int) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QPaintDevice__PaintDeviceMetric) int, param1 qt.QPaintDevice__PaintDeviceMetric) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (qt.QPaintDevice__PaintDeviceMetric)(param1)
+
+	virtualReturn := gofunc((&QsciScintillaBase{h: self}).callVirtualBase_Metric, slotval1)
+
+	return (C.int)(virtualReturn)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_InitPainter(painter *qt.QPainter) {
+
+	C.QsciScintillaBase_virtualbase_InitPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnInitPainter(slot func(super func(painter *qt.QPainter), painter *qt.QPainter)) {
+	ok := C.QsciScintillaBase_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciScintillaBase_InitPainter
+func miqt_exec_callback_QsciScintillaBase_InitPainter(self *C.QsciScintillaBase, cb C.intptr_t, painter *C.QPainter) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *qt.QPainter), painter *qt.QPainter))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQPainter(unsafe.Pointer(painter))
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_InitPainter, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
+
+	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QsciScintillaBase_virtualbase_Redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
+
+}
+func (this *QsciScintillaBase) OnRedirected(slot func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice) {
+	ok := C.QsciScintillaBase_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciScintillaBase_Redirected
+func miqt_exec_callback_QsciScintillaBase_Redirected(self *C.QsciScintillaBase, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQPoint(unsafe.Pointer(offset))
+
+	virtualReturn := gofunc((&QsciScintillaBase{h: self}).callVirtualBase_Redirected, slotval1)
+
+	return (*C.QPaintDevice)(virtualReturn.UnsafePointer())
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_SharedPainter() *qt.QPainter {
+
+	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QsciScintillaBase_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+
+}
+func (this *QsciScintillaBase) OnSharedPainter(slot func(super func() *qt.QPainter) *qt.QPainter) {
+	ok := C.QsciScintillaBase_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciScintillaBase_SharedPainter
+func miqt_exec_callback_QsciScintillaBase_SharedPainter(self *C.QsciScintillaBase, cb C.intptr_t) *C.QPainter {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QPainter) *qt.QPainter)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QsciScintillaBase{h: self}).callVirtualBase_SharedPainter)
+
+	return (*C.QPainter)(virtualReturn.UnsafePointer())
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+
+	C.QsciScintillaBase_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	ok := C.QsciScintillaBase_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciScintillaBase_TimerEvent
+func miqt_exec_callback_QsciScintillaBase_TimerEvent(self *C.QsciScintillaBase, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+
+	C.QsciScintillaBase_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	ok := C.QsciScintillaBase_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciScintillaBase_ChildEvent
+func miqt_exec_callback_QsciScintillaBase_ChildEvent(self *C.QsciScintillaBase, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_CustomEvent(event *qt.QEvent) {
+
+	C.QsciScintillaBase_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QsciScintillaBase_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciScintillaBase_CustomEvent
+func miqt_exec_callback_QsciScintillaBase_CustomEvent(self *C.QsciScintillaBase, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+
+	C.QsciScintillaBase_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QsciScintillaBase_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciScintillaBase_ConnectNotify
+func miqt_exec_callback_QsciScintillaBase_ConnectNotify(self *C.QsciScintillaBase, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QsciScintillaBase) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+
+	C.QsciScintillaBase_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QsciScintillaBase) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QsciScintillaBase_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QsciScintillaBase_DisconnectNotify
+func miqt_exec_callback_QsciScintillaBase_DisconnectNotify(self *C.QsciScintillaBase, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QsciScintillaBase{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QsciScintillaBase) Delete() {
 	C.QsciScintillaBase_Delete(this.h)

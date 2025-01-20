@@ -225,6 +225,136 @@ func miqt_exec_callback_QWidgetAction_DeleteWidget(self *C.QWidgetAction, cb C.i
 
 }
 
+func (this *QWidgetAction) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QWidgetAction_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QWidgetAction) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QWidgetAction_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QWidgetAction_TimerEvent
+func miqt_exec_callback_QWidgetAction_TimerEvent(self *C.QWidgetAction, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQTimerEvent(event)
+
+	gofunc((&QWidgetAction{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QWidgetAction) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QWidgetAction_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QWidgetAction) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QWidgetAction_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QWidgetAction_ChildEvent
+func miqt_exec_callback_QWidgetAction_ChildEvent(self *C.QWidgetAction, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQChildEvent(event)
+
+	gofunc((&QWidgetAction{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QWidgetAction) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QWidgetAction_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QWidgetAction) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QWidgetAction_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QWidgetAction_CustomEvent
+func miqt_exec_callback_QWidgetAction_CustomEvent(self *C.QWidgetAction, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	gofunc((&QWidgetAction{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QWidgetAction) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QWidgetAction_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QWidgetAction) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QWidgetAction_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QWidgetAction_ConnectNotify
+func miqt_exec_callback_QWidgetAction_ConnectNotify(self *C.QWidgetAction, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QWidgetAction{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QWidgetAction) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QWidgetAction_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QWidgetAction) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QWidgetAction_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QWidgetAction_DisconnectNotify
+func miqt_exec_callback_QWidgetAction_DisconnectNotify(self *C.QWidgetAction, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QWidgetAction{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QWidgetAction) Delete() {
 	C.QWidgetAction_Delete(this.h)

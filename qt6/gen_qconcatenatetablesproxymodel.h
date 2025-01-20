@@ -16,23 +16,31 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAbstractItemModel;
+class QChildEvent;
 class QConcatenateTablesProxyModel;
+class QEvent;
+class QMetaMethod;
 class QMetaObject;
 class QMimeData;
 class QModelIndex;
 class QModelRoleDataSpan;
 class QObject;
 class QSize;
+class QTimerEvent;
 class QVariant;
 #else
 typedef struct QAbstractItemModel QAbstractItemModel;
+typedef struct QChildEvent QChildEvent;
 typedef struct QConcatenateTablesProxyModel QConcatenateTablesProxyModel;
+typedef struct QEvent QEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMimeData QMimeData;
 typedef struct QModelIndex QModelIndex;
 typedef struct QModelRoleDataSpan QModelRoleDataSpan;
 typedef struct QObject QObject;
 typedef struct QSize QSize;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 #endif
 
@@ -138,6 +146,20 @@ bool QConcatenateTablesProxyModel_override_virtual_Revert(void* self, intptr_t s
 void QConcatenateTablesProxyModel_virtualbase_Revert(void* self);
 bool QConcatenateTablesProxyModel_override_virtual_ResetInternalData(void* self, intptr_t slot);
 void QConcatenateTablesProxyModel_virtualbase_ResetInternalData(void* self);
+bool QConcatenateTablesProxyModel_override_virtual_Event(void* self, intptr_t slot);
+bool QConcatenateTablesProxyModel_virtualbase_Event(void* self, QEvent* event);
+bool QConcatenateTablesProxyModel_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QConcatenateTablesProxyModel_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QConcatenateTablesProxyModel_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QConcatenateTablesProxyModel_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QConcatenateTablesProxyModel_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QConcatenateTablesProxyModel_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QConcatenateTablesProxyModel_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QConcatenateTablesProxyModel_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QConcatenateTablesProxyModel_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QConcatenateTablesProxyModel_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QConcatenateTablesProxyModel_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QConcatenateTablesProxyModel_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QConcatenateTablesProxyModel_Delete(QConcatenateTablesProxyModel* self);
 
 #ifdef __cplusplus

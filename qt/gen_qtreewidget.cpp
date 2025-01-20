@@ -1,39 +1,56 @@
 #include <QAbstractItemView>
 #include <QAbstractScrollArea>
+#include <QActionEvent>
 #include <QBrush>
+#include <QByteArray>
+#include <QChildEvent>
+#include <QCloseEvent>
 #include <QColor>
+#include <QContextMenuEvent>
 #include <QDataStream>
+#include <QDragEnterEvent>
+#include <QDragLeaveEvent>
 #include <QDragMoveEvent>
 #include <QDropEvent>
 #include <QEvent>
+#include <QFocusEvent>
 #include <QFont>
 #include <QFrame>
+#include <QHideEvent>
 #include <QIcon>
+#include <QInputMethodEvent>
 #include <QItemSelection>
 #include <QItemSelectionModel>
 #include <QKeyEvent>
 #include <QList>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QMimeData>
 #include <QModelIndex>
 #include <QMouseEvent>
+#include <QMoveEvent>
 #include <QObject>
 #include <QPaintDevice>
+#include <QPaintEngine>
 #include <QPaintEvent>
 #include <QPainter>
 #include <QPoint>
 #include <QRect>
 #include <QRegion>
+#include <QResizeEvent>
+#include <QShowEvent>
 #include <QSize>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
 #include <QStyleOptionViewItem>
+#include <QTabletEvent>
 #include <QTimerEvent>
 #include <QTreeView>
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
 #include <QVariant>
+#include <QWheelEvent>
 #include <QWidget>
 #include <qtreewidget.h>
 #include "gen_qtreewidget.h"
@@ -102,6 +119,56 @@ void miqt_exec_callback_QTreeWidget_HorizontalScrollbarAction(void*, intptr_t, i
 bool miqt_exec_callback_QTreeWidget_IsIndexHidden(void*, intptr_t, QModelIndex*);
 void miqt_exec_callback_QTreeWidget_SelectionChanged(void*, intptr_t, QItemSelection*, QItemSelection*);
 void miqt_exec_callback_QTreeWidget_CurrentChanged(void*, intptr_t, QModelIndex*, QModelIndex*);
+int miqt_exec_callback_QTreeWidget_SizeHintForRow(void*, intptr_t, int);
+QVariant* miqt_exec_callback_QTreeWidget_InputMethodQuery(void*, intptr_t, int);
+void miqt_exec_callback_QTreeWidget_UpdateEditorData(void*, intptr_t);
+void miqt_exec_callback_QTreeWidget_UpdateEditorGeometries(void*, intptr_t);
+void miqt_exec_callback_QTreeWidget_VerticalScrollbarAction(void*, intptr_t, int);
+void miqt_exec_callback_QTreeWidget_HorizontalScrollbarValueChanged(void*, intptr_t, int);
+void miqt_exec_callback_QTreeWidget_CloseEditor(void*, intptr_t, QWidget*, int);
+void miqt_exec_callback_QTreeWidget_CommitData(void*, intptr_t, QWidget*);
+void miqt_exec_callback_QTreeWidget_EditorDestroyed(void*, intptr_t, QObject*);
+bool miqt_exec_callback_QTreeWidget_Edit2(void*, intptr_t, QModelIndex*, int, QEvent*);
+int miqt_exec_callback_QTreeWidget_SelectionCommand(void*, intptr_t, QModelIndex*, QEvent*);
+void miqt_exec_callback_QTreeWidget_StartDrag(void*, intptr_t, int);
+QStyleOptionViewItem* miqt_exec_callback_QTreeWidget_ViewOptions(void*, intptr_t);
+bool miqt_exec_callback_QTreeWidget_FocusNextPrevChild(void*, intptr_t, bool);
+void miqt_exec_callback_QTreeWidget_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QTreeWidget_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QTreeWidget_FocusInEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QTreeWidget_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QTreeWidget_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QTreeWidget_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
+bool miqt_exec_callback_QTreeWidget_EventFilter(void*, intptr_t, QObject*, QEvent*);
+QSize* miqt_exec_callback_QTreeWidget_MinimumSizeHint(void*, intptr_t);
+QSize* miqt_exec_callback_QTreeWidget_SizeHint(void*, intptr_t);
+void miqt_exec_callback_QTreeWidget_SetupViewport(void*, intptr_t, QWidget*);
+void miqt_exec_callback_QTreeWidget_WheelEvent(void*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QTreeWidget_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QTreeWidget_ChangeEvent(void*, intptr_t, QEvent*);
+int miqt_exec_callback_QTreeWidget_DevType(void*, intptr_t);
+void miqt_exec_callback_QTreeWidget_SetVisible(void*, intptr_t, bool);
+int miqt_exec_callback_QTreeWidget_HeightForWidth(void*, intptr_t, int);
+bool miqt_exec_callback_QTreeWidget_HasHeightForWidth(void*, intptr_t);
+QPaintEngine* miqt_exec_callback_QTreeWidget_PaintEngine(void*, intptr_t);
+void miqt_exec_callback_QTreeWidget_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QTreeWidget_EnterEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QTreeWidget_LeaveEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QTreeWidget_MoveEvent(void*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QTreeWidget_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QTreeWidget_TabletEvent(void*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QTreeWidget_ActionEvent(void*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QTreeWidget_ShowEvent(void*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QTreeWidget_HideEvent(void*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QTreeWidget_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
+int miqt_exec_callback_QTreeWidget_Metric(void*, intptr_t, int);
+void miqt_exec_callback_QTreeWidget_InitPainter(void*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QTreeWidget_Redirected(void*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QTreeWidget_SharedPainter(void*, intptr_t);
+void miqt_exec_callback_QTreeWidget_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QTreeWidget_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QTreeWidget_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QTreeWidget_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1961,6 +2028,1207 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SizeHintForRow = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int sizeHintForRow(int row) const override {
+		if (handle__SizeHintForRow == 0) {
+			return QTreeWidget::sizeHintForRow(row);
+		}
+		
+		int sigval1 = row;
+
+		int callback_return_value = miqt_exec_callback_QTreeWidget_SizeHintForRow(const_cast<MiqtVirtualQTreeWidget*>(this), handle__SizeHintForRow, sigval1);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_SizeHintForRow(int row) const {
+
+		return QTreeWidget::sizeHintForRow(static_cast<int>(row));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__InputMethodQuery = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QVariant inputMethodQuery(Qt::InputMethodQuery query) const override {
+		if (handle__InputMethodQuery == 0) {
+			return QTreeWidget::inputMethodQuery(query);
+		}
+		
+		Qt::InputMethodQuery query_ret = query;
+		int sigval1 = static_cast<int>(query_ret);
+
+		QVariant* callback_return_value = miqt_exec_callback_QTreeWidget_InputMethodQuery(const_cast<MiqtVirtualQTreeWidget*>(this), handle__InputMethodQuery, sigval1);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QVariant* virtualbase_InputMethodQuery(int query) const {
+
+		return new QVariant(QTreeWidget::inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__UpdateEditorData = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void updateEditorData() override {
+		if (handle__UpdateEditorData == 0) {
+			QTreeWidget::updateEditorData();
+			return;
+		}
+		
+
+		miqt_exec_callback_QTreeWidget_UpdateEditorData(this, handle__UpdateEditorData);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_UpdateEditorData() {
+
+		QTreeWidget::updateEditorData();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__UpdateEditorGeometries = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void updateEditorGeometries() override {
+		if (handle__UpdateEditorGeometries == 0) {
+			QTreeWidget::updateEditorGeometries();
+			return;
+		}
+		
+
+		miqt_exec_callback_QTreeWidget_UpdateEditorGeometries(this, handle__UpdateEditorGeometries);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_UpdateEditorGeometries() {
+
+		QTreeWidget::updateEditorGeometries();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__VerticalScrollbarAction = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void verticalScrollbarAction(int action) override {
+		if (handle__VerticalScrollbarAction == 0) {
+			QTreeWidget::verticalScrollbarAction(action);
+			return;
+		}
+		
+		int sigval1 = action;
+
+		miqt_exec_callback_QTreeWidget_VerticalScrollbarAction(this, handle__VerticalScrollbarAction, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_VerticalScrollbarAction(int action) {
+
+		QTreeWidget::verticalScrollbarAction(static_cast<int>(action));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__HorizontalScrollbarValueChanged = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void horizontalScrollbarValueChanged(int value) override {
+		if (handle__HorizontalScrollbarValueChanged == 0) {
+			QTreeWidget::horizontalScrollbarValueChanged(value);
+			return;
+		}
+		
+		int sigval1 = value;
+
+		miqt_exec_callback_QTreeWidget_HorizontalScrollbarValueChanged(this, handle__HorizontalScrollbarValueChanged, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_HorizontalScrollbarValueChanged(int value) {
+
+		QTreeWidget::horizontalScrollbarValueChanged(static_cast<int>(value));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CloseEditor = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void closeEditor(QWidget* editor, QAbstractItemDelegate::EndEditHint hint) override {
+		if (handle__CloseEditor == 0) {
+			QTreeWidget::closeEditor(editor, hint);
+			return;
+		}
+		
+		QWidget* sigval1 = editor;
+		QAbstractItemDelegate::EndEditHint hint_ret = hint;
+		int sigval2 = static_cast<int>(hint_ret);
+
+		miqt_exec_callback_QTreeWidget_CloseEditor(this, handle__CloseEditor, sigval1, sigval2);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CloseEditor(QWidget* editor, int hint) {
+
+		QTreeWidget::closeEditor(editor, static_cast<QAbstractItemDelegate::EndEditHint>(hint));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CommitData = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void commitData(QWidget* editor) override {
+		if (handle__CommitData == 0) {
+			QTreeWidget::commitData(editor);
+			return;
+		}
+		
+		QWidget* sigval1 = editor;
+
+		miqt_exec_callback_QTreeWidget_CommitData(this, handle__CommitData, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CommitData(QWidget* editor) {
+
+		QTreeWidget::commitData(editor);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EditorDestroyed = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void editorDestroyed(QObject* editor) override {
+		if (handle__EditorDestroyed == 0) {
+			QTreeWidget::editorDestroyed(editor);
+			return;
+		}
+		
+		QObject* sigval1 = editor;
+
+		miqt_exec_callback_QTreeWidget_EditorDestroyed(this, handle__EditorDestroyed, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_EditorDestroyed(QObject* editor) {
+
+		QTreeWidget::editorDestroyed(editor);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Edit2 = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool edit(const QModelIndex& index, QAbstractItemView::EditTrigger trigger, QEvent* event) override {
+		if (handle__Edit2 == 0) {
+			return QTreeWidget::edit(index, trigger, event);
+		}
+		
+		const QModelIndex& index_ret = index;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		QAbstractItemView::EditTrigger trigger_ret = trigger;
+		int sigval2 = static_cast<int>(trigger_ret);
+		QEvent* sigval3 = event;
+
+		bool callback_return_value = miqt_exec_callback_QTreeWidget_Edit2(this, handle__Edit2, sigval1, sigval2, sigval3);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_Edit2(QModelIndex* index, int trigger, QEvent* event) {
+
+		return QTreeWidget::edit(*index, static_cast<QAbstractItemView::EditTrigger>(trigger), event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SelectionCommand = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QItemSelectionModel::SelectionFlags selectionCommand(const QModelIndex& index, const QEvent* event) const override {
+		if (handle__SelectionCommand == 0) {
+			return QTreeWidget::selectionCommand(index, event);
+		}
+		
+		const QModelIndex& index_ret = index;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
+		QEvent* sigval2 = (QEvent*) event;
+
+		int callback_return_value = miqt_exec_callback_QTreeWidget_SelectionCommand(const_cast<MiqtVirtualQTreeWidget*>(this), handle__SelectionCommand, sigval1, sigval2);
+
+		return static_cast<QItemSelectionModel::SelectionFlags>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_SelectionCommand(QModelIndex* index, QEvent* event) const {
+
+		QItemSelectionModel::SelectionFlags _ret = QTreeWidget::selectionCommand(*index, event);
+		return static_cast<int>(_ret);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__StartDrag = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void startDrag(Qt::DropActions supportedActions) override {
+		if (handle__StartDrag == 0) {
+			QTreeWidget::startDrag(supportedActions);
+			return;
+		}
+		
+		Qt::DropActions supportedActions_ret = supportedActions;
+		int sigval1 = static_cast<int>(supportedActions_ret);
+
+		miqt_exec_callback_QTreeWidget_StartDrag(this, handle__StartDrag, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_StartDrag(int supportedActions) {
+
+		QTreeWidget::startDrag(static_cast<Qt::DropActions>(supportedActions));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ViewOptions = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QStyleOptionViewItem viewOptions() const override {
+		if (handle__ViewOptions == 0) {
+			return QTreeWidget::viewOptions();
+		}
+		
+
+		QStyleOptionViewItem* callback_return_value = miqt_exec_callback_QTreeWidget_ViewOptions(const_cast<MiqtVirtualQTreeWidget*>(this), handle__ViewOptions);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QStyleOptionViewItem* virtualbase_ViewOptions() const {
+
+		return new QStyleOptionViewItem(QTreeWidget::viewOptions());
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__FocusNextPrevChild = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool focusNextPrevChild(bool next) override {
+		if (handle__FocusNextPrevChild == 0) {
+			return QTreeWidget::focusNextPrevChild(next);
+		}
+		
+		bool sigval1 = next;
+
+		bool callback_return_value = miqt_exec_callback_QTreeWidget_FocusNextPrevChild(this, handle__FocusNextPrevChild, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_FocusNextPrevChild(bool next) {
+
+		return QTreeWidget::focusNextPrevChild(next);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DragEnterEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void dragEnterEvent(QDragEnterEvent* event) override {
+		if (handle__DragEnterEvent == 0) {
+			QTreeWidget::dragEnterEvent(event);
+			return;
+		}
+		
+		QDragEnterEvent* sigval1 = event;
+
+		miqt_exec_callback_QTreeWidget_DragEnterEvent(this, handle__DragEnterEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DragEnterEvent(QDragEnterEvent* event) {
+
+		QTreeWidget::dragEnterEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DragLeaveEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void dragLeaveEvent(QDragLeaveEvent* event) override {
+		if (handle__DragLeaveEvent == 0) {
+			QTreeWidget::dragLeaveEvent(event);
+			return;
+		}
+		
+		QDragLeaveEvent* sigval1 = event;
+
+		miqt_exec_callback_QTreeWidget_DragLeaveEvent(this, handle__DragLeaveEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DragLeaveEvent(QDragLeaveEvent* event) {
+
+		QTreeWidget::dragLeaveEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__FocusInEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void focusInEvent(QFocusEvent* event) override {
+		if (handle__FocusInEvent == 0) {
+			QTreeWidget::focusInEvent(event);
+			return;
+		}
+		
+		QFocusEvent* sigval1 = event;
+
+		miqt_exec_callback_QTreeWidget_FocusInEvent(this, handle__FocusInEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_FocusInEvent(QFocusEvent* event) {
+
+		QTreeWidget::focusInEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__FocusOutEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void focusOutEvent(QFocusEvent* event) override {
+		if (handle__FocusOutEvent == 0) {
+			QTreeWidget::focusOutEvent(event);
+			return;
+		}
+		
+		QFocusEvent* sigval1 = event;
+
+		miqt_exec_callback_QTreeWidget_FocusOutEvent(this, handle__FocusOutEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_FocusOutEvent(QFocusEvent* event) {
+
+		QTreeWidget::focusOutEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ResizeEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void resizeEvent(QResizeEvent* event) override {
+		if (handle__ResizeEvent == 0) {
+			QTreeWidget::resizeEvent(event);
+			return;
+		}
+		
+		QResizeEvent* sigval1 = event;
+
+		miqt_exec_callback_QTreeWidget_ResizeEvent(this, handle__ResizeEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ResizeEvent(QResizeEvent* event) {
+
+		QTreeWidget::resizeEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__InputMethodEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void inputMethodEvent(QInputMethodEvent* event) override {
+		if (handle__InputMethodEvent == 0) {
+			QTreeWidget::inputMethodEvent(event);
+			return;
+		}
+		
+		QInputMethodEvent* sigval1 = event;
+
+		miqt_exec_callback_QTreeWidget_InputMethodEvent(this, handle__InputMethodEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_InputMethodEvent(QInputMethodEvent* event) {
+
+		QTreeWidget::inputMethodEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* object, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QTreeWidget::eventFilter(object, event);
+		}
+		
+		QObject* sigval1 = object;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QTreeWidget_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* object, QEvent* event) {
+
+		return QTreeWidget::eventFilter(object, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MinimumSizeHint = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QSize minimumSizeHint() const override {
+		if (handle__MinimumSizeHint == 0) {
+			return QTreeWidget::minimumSizeHint();
+		}
+		
+
+		QSize* callback_return_value = miqt_exec_callback_QTreeWidget_MinimumSizeHint(const_cast<MiqtVirtualQTreeWidget*>(this), handle__MinimumSizeHint);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QSize* virtualbase_MinimumSizeHint() const {
+
+		return new QSize(QTreeWidget::minimumSizeHint());
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SizeHint = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QSize sizeHint() const override {
+		if (handle__SizeHint == 0) {
+			return QTreeWidget::sizeHint();
+		}
+		
+
+		QSize* callback_return_value = miqt_exec_callback_QTreeWidget_SizeHint(const_cast<MiqtVirtualQTreeWidget*>(this), handle__SizeHint);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QSize* virtualbase_SizeHint() const {
+
+		return new QSize(QTreeWidget::sizeHint());
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetupViewport = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setupViewport(QWidget* viewport) override {
+		if (handle__SetupViewport == 0) {
+			QTreeWidget::setupViewport(viewport);
+			return;
+		}
+		
+		QWidget* sigval1 = viewport;
+
+		miqt_exec_callback_QTreeWidget_SetupViewport(this, handle__SetupViewport, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetupViewport(QWidget* viewport) {
+
+		QTreeWidget::setupViewport(viewport);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__WheelEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void wheelEvent(QWheelEvent* param1) override {
+		if (handle__WheelEvent == 0) {
+			QTreeWidget::wheelEvent(param1);
+			return;
+		}
+		
+		QWheelEvent* sigval1 = param1;
+
+		miqt_exec_callback_QTreeWidget_WheelEvent(this, handle__WheelEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_WheelEvent(QWheelEvent* param1) {
+
+		QTreeWidget::wheelEvent(param1);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ContextMenuEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void contextMenuEvent(QContextMenuEvent* param1) override {
+		if (handle__ContextMenuEvent == 0) {
+			QTreeWidget::contextMenuEvent(param1);
+			return;
+		}
+		
+		QContextMenuEvent* sigval1 = param1;
+
+		miqt_exec_callback_QTreeWidget_ContextMenuEvent(this, handle__ContextMenuEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ContextMenuEvent(QContextMenuEvent* param1) {
+
+		QTreeWidget::contextMenuEvent(param1);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChangeEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void changeEvent(QEvent* param1) override {
+		if (handle__ChangeEvent == 0) {
+			QTreeWidget::changeEvent(param1);
+			return;
+		}
+		
+		QEvent* sigval1 = param1;
+
+		miqt_exec_callback_QTreeWidget_ChangeEvent(this, handle__ChangeEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChangeEvent(QEvent* param1) {
+
+		QTreeWidget::changeEvent(param1);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DevType = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int devType() const override {
+		if (handle__DevType == 0) {
+			return QTreeWidget::devType();
+		}
+		
+
+		int callback_return_value = miqt_exec_callback_QTreeWidget_DevType(const_cast<MiqtVirtualQTreeWidget*>(this), handle__DevType);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_DevType() const {
+
+		return QTreeWidget::devType();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetVisible = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setVisible(bool visible) override {
+		if (handle__SetVisible == 0) {
+			QTreeWidget::setVisible(visible);
+			return;
+		}
+		
+		bool sigval1 = visible;
+
+		miqt_exec_callback_QTreeWidget_SetVisible(this, handle__SetVisible, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetVisible(bool visible) {
+
+		QTreeWidget::setVisible(visible);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__HeightForWidth = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int heightForWidth(int param1) const override {
+		if (handle__HeightForWidth == 0) {
+			return QTreeWidget::heightForWidth(param1);
+		}
+		
+		int sigval1 = param1;
+
+		int callback_return_value = miqt_exec_callback_QTreeWidget_HeightForWidth(const_cast<MiqtVirtualQTreeWidget*>(this), handle__HeightForWidth, sigval1);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_HeightForWidth(int param1) const {
+
+		return QTreeWidget::heightForWidth(static_cast<int>(param1));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__HasHeightForWidth = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool hasHeightForWidth() const override {
+		if (handle__HasHeightForWidth == 0) {
+			return QTreeWidget::hasHeightForWidth();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QTreeWidget_HasHeightForWidth(const_cast<MiqtVirtualQTreeWidget*>(this), handle__HasHeightForWidth);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_HasHeightForWidth() const {
+
+		return QTreeWidget::hasHeightForWidth();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__PaintEngine = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPaintEngine* paintEngine() const override {
+		if (handle__PaintEngine == 0) {
+			return QTreeWidget::paintEngine();
+		}
+		
+
+		QPaintEngine* callback_return_value = miqt_exec_callback_QTreeWidget_PaintEngine(const_cast<MiqtVirtualQTreeWidget*>(this), handle__PaintEngine);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPaintEngine* virtualbase_PaintEngine() const {
+
+		return QTreeWidget::paintEngine();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__KeyReleaseEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void keyReleaseEvent(QKeyEvent* event) override {
+		if (handle__KeyReleaseEvent == 0) {
+			QTreeWidget::keyReleaseEvent(event);
+			return;
+		}
+		
+		QKeyEvent* sigval1 = event;
+
+		miqt_exec_callback_QTreeWidget_KeyReleaseEvent(this, handle__KeyReleaseEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_KeyReleaseEvent(QKeyEvent* event) {
+
+		QTreeWidget::keyReleaseEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EnterEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void enterEvent(QEvent* event) override {
+		if (handle__EnterEvent == 0) {
+			QTreeWidget::enterEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QTreeWidget_EnterEvent(this, handle__EnterEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_EnterEvent(QEvent* event) {
+
+		QTreeWidget::enterEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__LeaveEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void leaveEvent(QEvent* event) override {
+		if (handle__LeaveEvent == 0) {
+			QTreeWidget::leaveEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QTreeWidget_LeaveEvent(this, handle__LeaveEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_LeaveEvent(QEvent* event) {
+
+		QTreeWidget::leaveEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MoveEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void moveEvent(QMoveEvent* event) override {
+		if (handle__MoveEvent == 0) {
+			QTreeWidget::moveEvent(event);
+			return;
+		}
+		
+		QMoveEvent* sigval1 = event;
+
+		miqt_exec_callback_QTreeWidget_MoveEvent(this, handle__MoveEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_MoveEvent(QMoveEvent* event) {
+
+		QTreeWidget::moveEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CloseEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void closeEvent(QCloseEvent* event) override {
+		if (handle__CloseEvent == 0) {
+			QTreeWidget::closeEvent(event);
+			return;
+		}
+		
+		QCloseEvent* sigval1 = event;
+
+		miqt_exec_callback_QTreeWidget_CloseEvent(this, handle__CloseEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CloseEvent(QCloseEvent* event) {
+
+		QTreeWidget::closeEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TabletEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void tabletEvent(QTabletEvent* event) override {
+		if (handle__TabletEvent == 0) {
+			QTreeWidget::tabletEvent(event);
+			return;
+		}
+		
+		QTabletEvent* sigval1 = event;
+
+		miqt_exec_callback_QTreeWidget_TabletEvent(this, handle__TabletEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TabletEvent(QTabletEvent* event) {
+
+		QTreeWidget::tabletEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ActionEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void actionEvent(QActionEvent* event) override {
+		if (handle__ActionEvent == 0) {
+			QTreeWidget::actionEvent(event);
+			return;
+		}
+		
+		QActionEvent* sigval1 = event;
+
+		miqt_exec_callback_QTreeWidget_ActionEvent(this, handle__ActionEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ActionEvent(QActionEvent* event) {
+
+		QTreeWidget::actionEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ShowEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void showEvent(QShowEvent* event) override {
+		if (handle__ShowEvent == 0) {
+			QTreeWidget::showEvent(event);
+			return;
+		}
+		
+		QShowEvent* sigval1 = event;
+
+		miqt_exec_callback_QTreeWidget_ShowEvent(this, handle__ShowEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ShowEvent(QShowEvent* event) {
+
+		QTreeWidget::showEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__HideEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void hideEvent(QHideEvent* event) override {
+		if (handle__HideEvent == 0) {
+			QTreeWidget::hideEvent(event);
+			return;
+		}
+		
+		QHideEvent* sigval1 = event;
+
+		miqt_exec_callback_QTreeWidget_HideEvent(this, handle__HideEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_HideEvent(QHideEvent* event) {
+
+		QTreeWidget::hideEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__NativeEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool nativeEvent(const QByteArray& eventType, void* message, long* result) override {
+		if (handle__NativeEvent == 0) {
+			return QTreeWidget::nativeEvent(eventType, message, result);
+		}
+		
+		const QByteArray eventType_qb = eventType;
+		struct miqt_string eventType_ms;
+		eventType_ms.len = eventType_qb.length();
+		eventType_ms.data = static_cast<char*>(malloc(eventType_ms.len));
+		memcpy(eventType_ms.data, eventType_qb.data(), eventType_ms.len);
+		struct miqt_string sigval1 = eventType_ms;
+		void* sigval2 = message;
+		long* sigval3 = result;
+
+		bool callback_return_value = miqt_exec_callback_QTreeWidget_NativeEvent(this, handle__NativeEvent, sigval1, sigval2, sigval3);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_NativeEvent(struct miqt_string eventType, void* message, long* result) {
+		QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+		return QTreeWidget::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Metric = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int metric(QPaintDevice::PaintDeviceMetric param1) const override {
+		if (handle__Metric == 0) {
+			return QTreeWidget::metric(param1);
+		}
+		
+		QPaintDevice::PaintDeviceMetric param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+
+		int callback_return_value = miqt_exec_callback_QTreeWidget_Metric(const_cast<MiqtVirtualQTreeWidget*>(this), handle__Metric, sigval1);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_Metric(int param1) const {
+
+		return QTreeWidget::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__InitPainter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void initPainter(QPainter* painter) const override {
+		if (handle__InitPainter == 0) {
+			QTreeWidget::initPainter(painter);
+			return;
+		}
+		
+		QPainter* sigval1 = painter;
+
+		miqt_exec_callback_QTreeWidget_InitPainter(const_cast<MiqtVirtualQTreeWidget*>(this), handle__InitPainter, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_InitPainter(QPainter* painter) const {
+
+		QTreeWidget::initPainter(painter);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Redirected = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPaintDevice* redirected(QPoint* offset) const override {
+		if (handle__Redirected == 0) {
+			return QTreeWidget::redirected(offset);
+		}
+		
+		QPoint* sigval1 = offset;
+
+		QPaintDevice* callback_return_value = miqt_exec_callback_QTreeWidget_Redirected(const_cast<MiqtVirtualQTreeWidget*>(this), handle__Redirected, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPaintDevice* virtualbase_Redirected(QPoint* offset) const {
+
+		return QTreeWidget::redirected(offset);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SharedPainter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPainter* sharedPainter() const override {
+		if (handle__SharedPainter == 0) {
+			return QTreeWidget::sharedPainter();
+		}
+		
+
+		QPainter* callback_return_value = miqt_exec_callback_QTreeWidget_SharedPainter(const_cast<MiqtVirtualQTreeWidget*>(this), handle__SharedPainter);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPainter* virtualbase_SharedPainter() const {
+
+		return QTreeWidget::sharedPainter();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QTreeWidget::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QTreeWidget_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QTreeWidget::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QTreeWidget::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QTreeWidget_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QTreeWidget::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QTreeWidget::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QTreeWidget_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QTreeWidget::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QTreeWidget::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QTreeWidget_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QTreeWidget::disconnectNotify(*signal);
+
+	}
+
 };
 
 QTreeWidget* QTreeWidget_new(QWidget* parent) {
@@ -3048,6 +4316,706 @@ bool QTreeWidget_override_virtual_CurrentChanged(void* self, intptr_t slot) {
 
 void QTreeWidget_virtualbase_CurrentChanged(void* self, QModelIndex* current, QModelIndex* previous) {
 	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_CurrentChanged(current, previous);
+}
+
+bool QTreeWidget_override_virtual_SizeHintForRow(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHintForRow = slot;
+	return true;
+}
+
+int QTreeWidget_virtualbase_SizeHintForRow(const void* self, int row) {
+	return ( (const MiqtVirtualQTreeWidget*)(self) )->virtualbase_SizeHintForRow(row);
+}
+
+bool QTreeWidget_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodQuery = slot;
+	return true;
+}
+
+QVariant* QTreeWidget_virtualbase_InputMethodQuery(const void* self, int query) {
+	return ( (const MiqtVirtualQTreeWidget*)(self) )->virtualbase_InputMethodQuery(query);
+}
+
+bool QTreeWidget_override_virtual_UpdateEditorData(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateEditorData = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_UpdateEditorData(void* self) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_UpdateEditorData();
+}
+
+bool QTreeWidget_override_virtual_UpdateEditorGeometries(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__UpdateEditorGeometries = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_UpdateEditorGeometries(void* self) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_UpdateEditorGeometries();
+}
+
+bool QTreeWidget_override_virtual_VerticalScrollbarAction(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__VerticalScrollbarAction = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_VerticalScrollbarAction(void* self, int action) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_VerticalScrollbarAction(action);
+}
+
+bool QTreeWidget_override_virtual_HorizontalScrollbarValueChanged(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HorizontalScrollbarValueChanged = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_HorizontalScrollbarValueChanged(void* self, int value) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_HorizontalScrollbarValueChanged(value);
+}
+
+bool QTreeWidget_override_virtual_CloseEditor(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEditor = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_CloseEditor(void* self, QWidget* editor, int hint) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_CloseEditor(editor, hint);
+}
+
+bool QTreeWidget_override_virtual_CommitData(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CommitData = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_CommitData(void* self, QWidget* editor) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_CommitData(editor);
+}
+
+bool QTreeWidget_override_virtual_EditorDestroyed(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EditorDestroyed = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_EditorDestroyed(void* self, QObject* editor) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_EditorDestroyed(editor);
+}
+
+bool QTreeWidget_override_virtual_Edit2(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Edit2 = slot;
+	return true;
+}
+
+bool QTreeWidget_virtualbase_Edit2(void* self, QModelIndex* index, int trigger, QEvent* event) {
+	return ( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_Edit2(index, trigger, event);
+}
+
+bool QTreeWidget_override_virtual_SelectionCommand(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SelectionCommand = slot;
+	return true;
+}
+
+int QTreeWidget_virtualbase_SelectionCommand(const void* self, QModelIndex* index, QEvent* event) {
+	return ( (const MiqtVirtualQTreeWidget*)(self) )->virtualbase_SelectionCommand(index, event);
+}
+
+bool QTreeWidget_override_virtual_StartDrag(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__StartDrag = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_StartDrag(void* self, int supportedActions) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_StartDrag(supportedActions);
+}
+
+bool QTreeWidget_override_virtual_ViewOptions(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ViewOptions = slot;
+	return true;
+}
+
+QStyleOptionViewItem* QTreeWidget_virtualbase_ViewOptions(const void* self) {
+	return ( (const MiqtVirtualQTreeWidget*)(self) )->virtualbase_ViewOptions();
+}
+
+bool QTreeWidget_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusNextPrevChild = slot;
+	return true;
+}
+
+bool QTreeWidget_virtualbase_FocusNextPrevChild(void* self, bool next) {
+	return ( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_FocusNextPrevChild(next);
+}
+
+bool QTreeWidget_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragEnterEvent = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_DragEnterEvent(void* self, QDragEnterEvent* event) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_DragEnterEvent(event);
+}
+
+bool QTreeWidget_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragLeaveEvent = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* event) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_DragLeaveEvent(event);
+}
+
+bool QTreeWidget_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusInEvent = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_FocusInEvent(void* self, QFocusEvent* event) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_FocusInEvent(event);
+}
+
+bool QTreeWidget_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_FocusOutEvent(void* self, QFocusEvent* event) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_FocusOutEvent(event);
+}
+
+bool QTreeWidget_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_ResizeEvent(void* self, QResizeEvent* event) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_ResizeEvent(event);
+}
+
+bool QTreeWidget_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodEvent = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* event) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_InputMethodEvent(event);
+}
+
+bool QTreeWidget_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
+}
+
+bool QTreeWidget_virtualbase_EventFilter(void* self, QObject* object, QEvent* event) {
+	return ( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_EventFilter(object, event);
+}
+
+bool QTreeWidget_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
+}
+
+QSize* QTreeWidget_virtualbase_MinimumSizeHint(const void* self) {
+	return ( (const MiqtVirtualQTreeWidget*)(self) )->virtualbase_MinimumSizeHint();
+}
+
+bool QTreeWidget_override_virtual_SizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SizeHint = slot;
+	return true;
+}
+
+QSize* QTreeWidget_virtualbase_SizeHint(const void* self) {
+	return ( (const MiqtVirtualQTreeWidget*)(self) )->virtualbase_SizeHint();
+}
+
+bool QTreeWidget_override_virtual_SetupViewport(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetupViewport = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_SetupViewport(void* self, QWidget* viewport) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_SetupViewport(viewport);
+}
+
+bool QTreeWidget_override_virtual_WheelEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__WheelEvent = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_WheelEvent(void* self, QWheelEvent* param1) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_WheelEvent(param1);
+}
+
+bool QTreeWidget_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* param1) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_ContextMenuEvent(param1);
+}
+
+bool QTreeWidget_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_ChangeEvent(void* self, QEvent* param1) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_ChangeEvent(param1);
+}
+
+bool QTreeWidget_override_virtual_DevType(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DevType = slot;
+	return true;
+}
+
+int QTreeWidget_virtualbase_DevType(const void* self) {
+	return ( (const MiqtVirtualQTreeWidget*)(self) )->virtualbase_DevType();
+}
+
+bool QTreeWidget_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_SetVisible(void* self, bool visible) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_SetVisible(visible);
+}
+
+bool QTreeWidget_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeightForWidth = slot;
+	return true;
+}
+
+int QTreeWidget_virtualbase_HeightForWidth(const void* self, int param1) {
+	return ( (const MiqtVirtualQTreeWidget*)(self) )->virtualbase_HeightForWidth(param1);
+}
+
+bool QTreeWidget_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasHeightForWidth = slot;
+	return true;
+}
+
+bool QTreeWidget_virtualbase_HasHeightForWidth(const void* self) {
+	return ( (const MiqtVirtualQTreeWidget*)(self) )->virtualbase_HasHeightForWidth();
+}
+
+bool QTreeWidget_override_virtual_PaintEngine(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEngine = slot;
+	return true;
+}
+
+QPaintEngine* QTreeWidget_virtualbase_PaintEngine(const void* self) {
+	return ( (const MiqtVirtualQTreeWidget*)(self) )->virtualbase_PaintEngine();
+}
+
+bool QTreeWidget_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyReleaseEvent = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* event) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_KeyReleaseEvent(event);
+}
+
+bool QTreeWidget_override_virtual_EnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EnterEvent = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_EnterEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_EnterEvent(event);
+}
+
+bool QTreeWidget_override_virtual_LeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__LeaveEvent = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_LeaveEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_LeaveEvent(event);
+}
+
+bool QTreeWidget_override_virtual_MoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveEvent = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_MoveEvent(void* self, QMoveEvent* event) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_MoveEvent(event);
+}
+
+bool QTreeWidget_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_CloseEvent(void* self, QCloseEvent* event) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_CloseEvent(event);
+}
+
+bool QTreeWidget_override_virtual_TabletEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TabletEvent = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_TabletEvent(void* self, QTabletEvent* event) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_TabletEvent(event);
+}
+
+bool QTreeWidget_override_virtual_ActionEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ActionEvent = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_ActionEvent(void* self, QActionEvent* event) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_ActionEvent(event);
+}
+
+bool QTreeWidget_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_ShowEvent(void* self, QShowEvent* event) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_ShowEvent(event);
+}
+
+bool QTreeWidget_override_virtual_HideEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HideEvent = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_HideEvent(void* self, QHideEvent* event) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_HideEvent(event);
+}
+
+bool QTreeWidget_override_virtual_NativeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NativeEvent = slot;
+	return true;
+}
+
+bool QTreeWidget_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
+	return ( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_NativeEvent(eventType, message, result);
+}
+
+bool QTreeWidget_override_virtual_Metric(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Metric = slot;
+	return true;
+}
+
+int QTreeWidget_virtualbase_Metric(const void* self, int param1) {
+	return ( (const MiqtVirtualQTreeWidget*)(self) )->virtualbase_Metric(param1);
+}
+
+bool QTreeWidget_override_virtual_InitPainter(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitPainter = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_InitPainter(const void* self, QPainter* painter) {
+	( (const MiqtVirtualQTreeWidget*)(self) )->virtualbase_InitPainter(painter);
+}
+
+bool QTreeWidget_override_virtual_Redirected(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Redirected = slot;
+	return true;
+}
+
+QPaintDevice* QTreeWidget_virtualbase_Redirected(const void* self, QPoint* offset) {
+	return ( (const MiqtVirtualQTreeWidget*)(self) )->virtualbase_Redirected(offset);
+}
+
+bool QTreeWidget_override_virtual_SharedPainter(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SharedPainter = slot;
+	return true;
+}
+
+QPainter* QTreeWidget_virtualbase_SharedPainter(const void* self) {
+	return ( (const MiqtVirtualQTreeWidget*)(self) )->virtualbase_SharedPainter();
+}
+
+bool QTreeWidget_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QTreeWidget_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QTreeWidget_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QTreeWidget_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QTreeWidget_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQTreeWidget*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
 void QTreeWidget_Delete(QTreeWidget* self) {

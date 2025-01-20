@@ -16,7 +16,10 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAbstractSocket;
+class QChildEvent;
+class QEvent;
 class QIODevice;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QOcspResponse;
@@ -28,10 +31,14 @@ class QSslKey;
 class QSslPreSharedKeyAuthenticator;
 class QSslSocket;
 class QTcpSocket;
+class QTimerEvent;
 class QVariant;
 #else
 typedef struct QAbstractSocket QAbstractSocket;
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QIODevice QIODevice;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QOcspResponse QOcspResponse;
@@ -43,6 +50,7 @@ typedef struct QSslKey QSslKey;
 typedef struct QSslPreSharedKeyAuthenticator QSslPreSharedKeyAuthenticator;
 typedef struct QSslSocket QSslSocket;
 typedef struct QTcpSocket QTcpSocket;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 #endif
 
@@ -198,6 +206,36 @@ bool QSslSocket_override_virtual_ReadData(void* self, intptr_t slot);
 long long QSslSocket_virtualbase_ReadData(void* self, char* data, long long maxlen);
 bool QSslSocket_override_virtual_WriteData(void* self, intptr_t slot);
 long long QSslSocket_virtualbase_WriteData(void* self, const char* data, long long lenVal);
+bool QSslSocket_override_virtual_SocketDescriptor(void* self, intptr_t slot);
+intptr_t QSslSocket_virtualbase_SocketDescriptor(const void* self);
+bool QSslSocket_override_virtual_IsSequential(void* self, intptr_t slot);
+bool QSslSocket_virtualbase_IsSequential(const void* self);
+bool QSslSocket_override_virtual_ReadLineData(void* self, intptr_t slot);
+long long QSslSocket_virtualbase_ReadLineData(void* self, char* data, long long maxlen);
+bool QSslSocket_override_virtual_Open(void* self, intptr_t slot);
+bool QSslSocket_virtualbase_Open(void* self, int mode);
+bool QSslSocket_override_virtual_Pos(void* self, intptr_t slot);
+long long QSslSocket_virtualbase_Pos(const void* self);
+bool QSslSocket_override_virtual_Size(void* self, intptr_t slot);
+long long QSslSocket_virtualbase_Size(const void* self);
+bool QSslSocket_override_virtual_Seek(void* self, intptr_t slot);
+bool QSslSocket_virtualbase_Seek(void* self, long long pos);
+bool QSslSocket_override_virtual_Reset(void* self, intptr_t slot);
+bool QSslSocket_virtualbase_Reset(void* self);
+bool QSslSocket_override_virtual_Event(void* self, intptr_t slot);
+bool QSslSocket_virtualbase_Event(void* self, QEvent* event);
+bool QSslSocket_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QSslSocket_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QSslSocket_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QSslSocket_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QSslSocket_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QSslSocket_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QSslSocket_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QSslSocket_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QSslSocket_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QSslSocket_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QSslSocket_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QSslSocket_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QSslSocket_Delete(QSslSocket* self);
 
 #ifdef __cplusplus

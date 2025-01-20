@@ -17,24 +17,34 @@ extern "C" {
 #ifdef __cplusplus
 class QAbstractItemModel;
 class QAbstractProxyModel;
+class QChildEvent;
+class QEvent;
 class QIdentityProxyModel;
 class QItemSelection;
+class QMetaMethod;
 class QMetaObject;
 class QMimeData;
 class QModelIndex;
+class QModelRoleDataSpan;
 class QObject;
 class QSize;
+class QTimerEvent;
 class QVariant;
 #else
 typedef struct QAbstractItemModel QAbstractItemModel;
 typedef struct QAbstractProxyModel QAbstractProxyModel;
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QIdentityProxyModel QIdentityProxyModel;
 typedef struct QItemSelection QItemSelection;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMimeData QMimeData;
 typedef struct QModelIndex QModelIndex;
+typedef struct QModelRoleDataSpan QModelRoleDataSpan;
 typedef struct QObject QObject;
 typedef struct QSize QSize;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 #endif
 
@@ -145,6 +155,24 @@ bool QIdentityProxyModel_override_virtual_SupportedDropActions(void* self, intpt
 int QIdentityProxyModel_virtualbase_SupportedDropActions(const void* self);
 bool QIdentityProxyModel_override_virtual_RoleNames(void* self, intptr_t slot);
 struct miqt_map /* of int to struct miqt_string */  QIdentityProxyModel_virtualbase_RoleNames(const void* self);
+bool QIdentityProxyModel_override_virtual_MultiData(void* self, intptr_t slot);
+void QIdentityProxyModel_virtualbase_MultiData(const void* self, QModelIndex* index, QModelRoleDataSpan* roleDataSpan);
+bool QIdentityProxyModel_override_virtual_ResetInternalData(void* self, intptr_t slot);
+void QIdentityProxyModel_virtualbase_ResetInternalData(void* self);
+bool QIdentityProxyModel_override_virtual_Event(void* self, intptr_t slot);
+bool QIdentityProxyModel_virtualbase_Event(void* self, QEvent* event);
+bool QIdentityProxyModel_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QIdentityProxyModel_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QIdentityProxyModel_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QIdentityProxyModel_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QIdentityProxyModel_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QIdentityProxyModel_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QIdentityProxyModel_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QIdentityProxyModel_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QIdentityProxyModel_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QIdentityProxyModel_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QIdentityProxyModel_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QIdentityProxyModel_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QIdentityProxyModel_Delete(QIdentityProxyModel* self);
 
 #ifdef __cplusplus

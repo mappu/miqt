@@ -16,6 +16,7 @@
 #include <QMdiArea>
 #include <QMdiSubWindow>
 #include <QMenu>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QMouseEvent>
 #include <QMoveEvent>
@@ -89,6 +90,9 @@ QPainter* miqt_exec_callback_QMdiSubWindow_SharedPainter(void*, intptr_t);
 void miqt_exec_callback_QMdiSubWindow_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
 QVariant* miqt_exec_callback_QMdiSubWindow_InputMethodQuery(void*, intptr_t, int);
 bool miqt_exec_callback_QMdiSubWindow_FocusNextPrevChild(void*, intptr_t, bool);
+void miqt_exec_callback_QMdiSubWindow_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QMdiSubWindow_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QMdiSubWindow_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1150,6 +1154,82 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QMdiSubWindow::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QMdiSubWindow_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QMdiSubWindow::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QMdiSubWindow::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QMdiSubWindow_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QMdiSubWindow::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QMdiSubWindow::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QMdiSubWindow_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QMdiSubWindow::disconnectNotify(*signal);
+
+	}
+
 };
 
 QMdiSubWindow* QMdiSubWindow_new(QWidget* parent) {
@@ -1923,6 +2003,48 @@ bool QMdiSubWindow_override_virtual_FocusNextPrevChild(void* self, intptr_t slot
 
 bool QMdiSubWindow_virtualbase_FocusNextPrevChild(void* self, bool next) {
 	return ( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_FocusNextPrevChild(next);
+}
+
+bool QMdiSubWindow_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QMdiSubWindow_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QMdiSubWindow_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QMdiSubWindow_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QMdiSubWindow_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQMdiSubWindow* self_cast = dynamic_cast<MiqtVirtualQMdiSubWindow*>( (QMdiSubWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QMdiSubWindow_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
 void QMdiSubWindow_Delete(QMdiSubWindow* self) {

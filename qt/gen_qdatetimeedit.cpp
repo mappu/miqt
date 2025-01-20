@@ -1,27 +1,41 @@
 #include <QAbstractSpinBox>
+#include <QActionEvent>
+#include <QByteArray>
 #include <QCalendar>
 #include <QCalendarWidget>
+#include <QChildEvent>
 #include <QCloseEvent>
 #include <QContextMenuEvent>
 #include <QDate>
 #include <QDateEdit>
 #include <QDateTime>
 #include <QDateTimeEdit>
+#include <QDragEnterEvent>
+#include <QDragLeaveEvent>
+#include <QDragMoveEvent>
+#include <QDropEvent>
 #include <QEvent>
 #include <QFocusEvent>
 #include <QHideEvent>
+#include <QInputMethodEvent>
 #include <QKeyEvent>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QMouseEvent>
+#include <QMoveEvent>
 #include <QObject>
 #include <QPaintDevice>
+#include <QPaintEngine>
 #include <QPaintEvent>
+#include <QPainter>
+#include <QPoint>
 #include <QResizeEvent>
 #include <QShowEvent>
 #include <QSize>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QTabletEvent>
 #include <QTime>
 #include <QTimeEdit>
 #include <QTimerEvent>
@@ -66,6 +80,32 @@ void miqt_exec_callback_QDateTimeEdit_MouseReleaseEvent(void*, intptr_t, QMouseE
 void miqt_exec_callback_QDateTimeEdit_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
 void miqt_exec_callback_QDateTimeEdit_TimerEvent(void*, intptr_t, QTimerEvent*);
 void miqt_exec_callback_QDateTimeEdit_ShowEvent(void*, intptr_t, QShowEvent*);
+int miqt_exec_callback_QDateTimeEdit_DevType(void*, intptr_t);
+void miqt_exec_callback_QDateTimeEdit_SetVisible(void*, intptr_t, bool);
+int miqt_exec_callback_QDateTimeEdit_HeightForWidth(void*, intptr_t, int);
+bool miqt_exec_callback_QDateTimeEdit_HasHeightForWidth(void*, intptr_t);
+QPaintEngine* miqt_exec_callback_QDateTimeEdit_PaintEngine(void*, intptr_t);
+void miqt_exec_callback_QDateTimeEdit_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDateTimeEdit_EnterEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QDateTimeEdit_LeaveEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QDateTimeEdit_MoveEvent(void*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QDateTimeEdit_TabletEvent(void*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QDateTimeEdit_ActionEvent(void*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QDateTimeEdit_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QDateTimeEdit_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QDateTimeEdit_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QDateTimeEdit_DropEvent(void*, intptr_t, QDropEvent*);
+bool miqt_exec_callback_QDateTimeEdit_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
+int miqt_exec_callback_QDateTimeEdit_Metric(void*, intptr_t, int);
+void miqt_exec_callback_QDateTimeEdit_InitPainter(void*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QDateTimeEdit_Redirected(void*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QDateTimeEdit_SharedPainter(void*, intptr_t);
+void miqt_exec_callback_QDateTimeEdit_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
+bool miqt_exec_callback_QDateTimeEdit_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QDateTimeEdit_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QDateTimeEdit_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QDateTimeEdit_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QDateTimeEdit_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QTimeEdit_UserTimeChanged(intptr_t, QTime*);
 QSize* miqt_exec_callback_QTimeEdit_SizeHint(void*, intptr_t);
 void miqt_exec_callback_QTimeEdit_Clear(void*, intptr_t);
@@ -82,6 +122,45 @@ struct miqt_string miqt_exec_callback_QTimeEdit_TextFromDateTime(void*, intptr_t
 int miqt_exec_callback_QTimeEdit_StepEnabled(void*, intptr_t);
 void miqt_exec_callback_QTimeEdit_MousePressEvent(void*, intptr_t, QMouseEvent*);
 void miqt_exec_callback_QTimeEdit_PaintEvent(void*, intptr_t, QPaintEvent*);
+QSize* miqt_exec_callback_QTimeEdit_MinimumSizeHint(void*, intptr_t);
+QVariant* miqt_exec_callback_QTimeEdit_InputMethodQuery(void*, intptr_t, int);
+void miqt_exec_callback_QTimeEdit_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QTimeEdit_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QTimeEdit_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QTimeEdit_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QTimeEdit_ChangeEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QTimeEdit_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QTimeEdit_HideEvent(void*, intptr_t, QHideEvent*);
+void miqt_exec_callback_QTimeEdit_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTimeEdit_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTimeEdit_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QTimeEdit_ShowEvent(void*, intptr_t, QShowEvent*);
+int miqt_exec_callback_QTimeEdit_DevType(void*, intptr_t);
+void miqt_exec_callback_QTimeEdit_SetVisible(void*, intptr_t, bool);
+int miqt_exec_callback_QTimeEdit_HeightForWidth(void*, intptr_t, int);
+bool miqt_exec_callback_QTimeEdit_HasHeightForWidth(void*, intptr_t);
+QPaintEngine* miqt_exec_callback_QTimeEdit_PaintEngine(void*, intptr_t);
+void miqt_exec_callback_QTimeEdit_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTimeEdit_EnterEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QTimeEdit_LeaveEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QTimeEdit_MoveEvent(void*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QTimeEdit_TabletEvent(void*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QTimeEdit_ActionEvent(void*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QTimeEdit_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QTimeEdit_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QTimeEdit_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QTimeEdit_DropEvent(void*, intptr_t, QDropEvent*);
+bool miqt_exec_callback_QTimeEdit_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
+int miqt_exec_callback_QTimeEdit_Metric(void*, intptr_t, int);
+void miqt_exec_callback_QTimeEdit_InitPainter(void*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QTimeEdit_Redirected(void*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QTimeEdit_SharedPainter(void*, intptr_t);
+void miqt_exec_callback_QTimeEdit_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
+bool miqt_exec_callback_QTimeEdit_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QTimeEdit_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QTimeEdit_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QTimeEdit_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QTimeEdit_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QDateEdit_UserDateChanged(intptr_t, QDate*);
 QSize* miqt_exec_callback_QDateEdit_SizeHint(void*, intptr_t);
 void miqt_exec_callback_QDateEdit_Clear(void*, intptr_t);
@@ -98,6 +177,45 @@ struct miqt_string miqt_exec_callback_QDateEdit_TextFromDateTime(void*, intptr_t
 int miqt_exec_callback_QDateEdit_StepEnabled(void*, intptr_t);
 void miqt_exec_callback_QDateEdit_MousePressEvent(void*, intptr_t, QMouseEvent*);
 void miqt_exec_callback_QDateEdit_PaintEvent(void*, intptr_t, QPaintEvent*);
+QSize* miqt_exec_callback_QDateEdit_MinimumSizeHint(void*, intptr_t);
+QVariant* miqt_exec_callback_QDateEdit_InputMethodQuery(void*, intptr_t, int);
+void miqt_exec_callback_QDateEdit_ResizeEvent(void*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QDateEdit_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QDateEdit_FocusOutEvent(void*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QDateEdit_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QDateEdit_ChangeEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QDateEdit_CloseEvent(void*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QDateEdit_HideEvent(void*, intptr_t, QHideEvent*);
+void miqt_exec_callback_QDateEdit_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDateEdit_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDateEdit_TimerEvent(void*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QDateEdit_ShowEvent(void*, intptr_t, QShowEvent*);
+int miqt_exec_callback_QDateEdit_DevType(void*, intptr_t);
+void miqt_exec_callback_QDateEdit_SetVisible(void*, intptr_t, bool);
+int miqt_exec_callback_QDateEdit_HeightForWidth(void*, intptr_t, int);
+bool miqt_exec_callback_QDateEdit_HasHeightForWidth(void*, intptr_t);
+QPaintEngine* miqt_exec_callback_QDateEdit_PaintEngine(void*, intptr_t);
+void miqt_exec_callback_QDateEdit_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDateEdit_EnterEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QDateEdit_LeaveEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QDateEdit_MoveEvent(void*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QDateEdit_TabletEvent(void*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QDateEdit_ActionEvent(void*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QDateEdit_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QDateEdit_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QDateEdit_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QDateEdit_DropEvent(void*, intptr_t, QDropEvent*);
+bool miqt_exec_callback_QDateEdit_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
+int miqt_exec_callback_QDateEdit_Metric(void*, intptr_t, int);
+void miqt_exec_callback_QDateEdit_InitPainter(void*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QDateEdit_Redirected(void*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QDateEdit_SharedPainter(void*, intptr_t);
+void miqt_exec_callback_QDateEdit_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
+bool miqt_exec_callback_QDateEdit_EventFilter(void*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QDateEdit_ChildEvent(void*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QDateEdit_CustomEvent(void*, intptr_t, QEvent*);
+void miqt_exec_callback_QDateEdit_ConnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QDateEdit_DisconnectNotify(void*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -810,6 +928,631 @@ public:
 	void virtualbase_ShowEvent(QShowEvent* event) {
 
 		QDateTimeEdit::showEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DevType = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int devType() const override {
+		if (handle__DevType == 0) {
+			return QDateTimeEdit::devType();
+		}
+		
+
+		int callback_return_value = miqt_exec_callback_QDateTimeEdit_DevType(const_cast<MiqtVirtualQDateTimeEdit*>(this), handle__DevType);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_DevType() const {
+
+		return QDateTimeEdit::devType();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetVisible = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setVisible(bool visible) override {
+		if (handle__SetVisible == 0) {
+			QDateTimeEdit::setVisible(visible);
+			return;
+		}
+		
+		bool sigval1 = visible;
+
+		miqt_exec_callback_QDateTimeEdit_SetVisible(this, handle__SetVisible, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetVisible(bool visible) {
+
+		QDateTimeEdit::setVisible(visible);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__HeightForWidth = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int heightForWidth(int param1) const override {
+		if (handle__HeightForWidth == 0) {
+			return QDateTimeEdit::heightForWidth(param1);
+		}
+		
+		int sigval1 = param1;
+
+		int callback_return_value = miqt_exec_callback_QDateTimeEdit_HeightForWidth(const_cast<MiqtVirtualQDateTimeEdit*>(this), handle__HeightForWidth, sigval1);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_HeightForWidth(int param1) const {
+
+		return QDateTimeEdit::heightForWidth(static_cast<int>(param1));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__HasHeightForWidth = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool hasHeightForWidth() const override {
+		if (handle__HasHeightForWidth == 0) {
+			return QDateTimeEdit::hasHeightForWidth();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QDateTimeEdit_HasHeightForWidth(const_cast<MiqtVirtualQDateTimeEdit*>(this), handle__HasHeightForWidth);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_HasHeightForWidth() const {
+
+		return QDateTimeEdit::hasHeightForWidth();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__PaintEngine = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPaintEngine* paintEngine() const override {
+		if (handle__PaintEngine == 0) {
+			return QDateTimeEdit::paintEngine();
+		}
+		
+
+		QPaintEngine* callback_return_value = miqt_exec_callback_QDateTimeEdit_PaintEngine(const_cast<MiqtVirtualQDateTimeEdit*>(this), handle__PaintEngine);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPaintEngine* virtualbase_PaintEngine() const {
+
+		return QDateTimeEdit::paintEngine();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MouseDoubleClickEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void mouseDoubleClickEvent(QMouseEvent* event) override {
+		if (handle__MouseDoubleClickEvent == 0) {
+			QDateTimeEdit::mouseDoubleClickEvent(event);
+			return;
+		}
+		
+		QMouseEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateTimeEdit_MouseDoubleClickEvent(this, handle__MouseDoubleClickEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_MouseDoubleClickEvent(QMouseEvent* event) {
+
+		QDateTimeEdit::mouseDoubleClickEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EnterEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void enterEvent(QEvent* event) override {
+		if (handle__EnterEvent == 0) {
+			QDateTimeEdit::enterEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateTimeEdit_EnterEvent(this, handle__EnterEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_EnterEvent(QEvent* event) {
+
+		QDateTimeEdit::enterEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__LeaveEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void leaveEvent(QEvent* event) override {
+		if (handle__LeaveEvent == 0) {
+			QDateTimeEdit::leaveEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateTimeEdit_LeaveEvent(this, handle__LeaveEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_LeaveEvent(QEvent* event) {
+
+		QDateTimeEdit::leaveEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MoveEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void moveEvent(QMoveEvent* event) override {
+		if (handle__MoveEvent == 0) {
+			QDateTimeEdit::moveEvent(event);
+			return;
+		}
+		
+		QMoveEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateTimeEdit_MoveEvent(this, handle__MoveEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_MoveEvent(QMoveEvent* event) {
+
+		QDateTimeEdit::moveEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TabletEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void tabletEvent(QTabletEvent* event) override {
+		if (handle__TabletEvent == 0) {
+			QDateTimeEdit::tabletEvent(event);
+			return;
+		}
+		
+		QTabletEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateTimeEdit_TabletEvent(this, handle__TabletEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TabletEvent(QTabletEvent* event) {
+
+		QDateTimeEdit::tabletEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ActionEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void actionEvent(QActionEvent* event) override {
+		if (handle__ActionEvent == 0) {
+			QDateTimeEdit::actionEvent(event);
+			return;
+		}
+		
+		QActionEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateTimeEdit_ActionEvent(this, handle__ActionEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ActionEvent(QActionEvent* event) {
+
+		QDateTimeEdit::actionEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DragEnterEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void dragEnterEvent(QDragEnterEvent* event) override {
+		if (handle__DragEnterEvent == 0) {
+			QDateTimeEdit::dragEnterEvent(event);
+			return;
+		}
+		
+		QDragEnterEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateTimeEdit_DragEnterEvent(this, handle__DragEnterEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DragEnterEvent(QDragEnterEvent* event) {
+
+		QDateTimeEdit::dragEnterEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DragMoveEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void dragMoveEvent(QDragMoveEvent* event) override {
+		if (handle__DragMoveEvent == 0) {
+			QDateTimeEdit::dragMoveEvent(event);
+			return;
+		}
+		
+		QDragMoveEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateTimeEdit_DragMoveEvent(this, handle__DragMoveEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DragMoveEvent(QDragMoveEvent* event) {
+
+		QDateTimeEdit::dragMoveEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DragLeaveEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void dragLeaveEvent(QDragLeaveEvent* event) override {
+		if (handle__DragLeaveEvent == 0) {
+			QDateTimeEdit::dragLeaveEvent(event);
+			return;
+		}
+		
+		QDragLeaveEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateTimeEdit_DragLeaveEvent(this, handle__DragLeaveEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DragLeaveEvent(QDragLeaveEvent* event) {
+
+		QDateTimeEdit::dragLeaveEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DropEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void dropEvent(QDropEvent* event) override {
+		if (handle__DropEvent == 0) {
+			QDateTimeEdit::dropEvent(event);
+			return;
+		}
+		
+		QDropEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateTimeEdit_DropEvent(this, handle__DropEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DropEvent(QDropEvent* event) {
+
+		QDateTimeEdit::dropEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__NativeEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool nativeEvent(const QByteArray& eventType, void* message, long* result) override {
+		if (handle__NativeEvent == 0) {
+			return QDateTimeEdit::nativeEvent(eventType, message, result);
+		}
+		
+		const QByteArray eventType_qb = eventType;
+		struct miqt_string eventType_ms;
+		eventType_ms.len = eventType_qb.length();
+		eventType_ms.data = static_cast<char*>(malloc(eventType_ms.len));
+		memcpy(eventType_ms.data, eventType_qb.data(), eventType_ms.len);
+		struct miqt_string sigval1 = eventType_ms;
+		void* sigval2 = message;
+		long* sigval3 = result;
+
+		bool callback_return_value = miqt_exec_callback_QDateTimeEdit_NativeEvent(this, handle__NativeEvent, sigval1, sigval2, sigval3);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_NativeEvent(struct miqt_string eventType, void* message, long* result) {
+		QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+		return QDateTimeEdit::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Metric = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int metric(QPaintDevice::PaintDeviceMetric param1) const override {
+		if (handle__Metric == 0) {
+			return QDateTimeEdit::metric(param1);
+		}
+		
+		QPaintDevice::PaintDeviceMetric param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+
+		int callback_return_value = miqt_exec_callback_QDateTimeEdit_Metric(const_cast<MiqtVirtualQDateTimeEdit*>(this), handle__Metric, sigval1);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_Metric(int param1) const {
+
+		return QDateTimeEdit::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__InitPainter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void initPainter(QPainter* painter) const override {
+		if (handle__InitPainter == 0) {
+			QDateTimeEdit::initPainter(painter);
+			return;
+		}
+		
+		QPainter* sigval1 = painter;
+
+		miqt_exec_callback_QDateTimeEdit_InitPainter(const_cast<MiqtVirtualQDateTimeEdit*>(this), handle__InitPainter, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_InitPainter(QPainter* painter) const {
+
+		QDateTimeEdit::initPainter(painter);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Redirected = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPaintDevice* redirected(QPoint* offset) const override {
+		if (handle__Redirected == 0) {
+			return QDateTimeEdit::redirected(offset);
+		}
+		
+		QPoint* sigval1 = offset;
+
+		QPaintDevice* callback_return_value = miqt_exec_callback_QDateTimeEdit_Redirected(const_cast<MiqtVirtualQDateTimeEdit*>(this), handle__Redirected, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPaintDevice* virtualbase_Redirected(QPoint* offset) const {
+
+		return QDateTimeEdit::redirected(offset);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SharedPainter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPainter* sharedPainter() const override {
+		if (handle__SharedPainter == 0) {
+			return QDateTimeEdit::sharedPainter();
+		}
+		
+
+		QPainter* callback_return_value = miqt_exec_callback_QDateTimeEdit_SharedPainter(const_cast<MiqtVirtualQDateTimeEdit*>(this), handle__SharedPainter);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPainter* virtualbase_SharedPainter() const {
+
+		return QDateTimeEdit::sharedPainter();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__InputMethodEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void inputMethodEvent(QInputMethodEvent* param1) override {
+		if (handle__InputMethodEvent == 0) {
+			QDateTimeEdit::inputMethodEvent(param1);
+			return;
+		}
+		
+		QInputMethodEvent* sigval1 = param1;
+
+		miqt_exec_callback_QDateTimeEdit_InputMethodEvent(this, handle__InputMethodEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_InputMethodEvent(QInputMethodEvent* param1) {
+
+		QDateTimeEdit::inputMethodEvent(param1);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QDateTimeEdit::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QDateTimeEdit_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QDateTimeEdit::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QDateTimeEdit::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateTimeEdit_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QDateTimeEdit::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QDateTimeEdit::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateTimeEdit_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QDateTimeEdit::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QDateTimeEdit::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QDateTimeEdit_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QDateTimeEdit::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QDateTimeEdit::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QDateTimeEdit_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QDateTimeEdit::disconnectNotify(*signal);
 
 	}
 
@@ -1575,6 +2318,370 @@ void QDateTimeEdit_virtualbase_ShowEvent(void* self, QShowEvent* event) {
 	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_ShowEvent(event);
 }
 
+bool QDateTimeEdit_override_virtual_DevType(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DevType = slot;
+	return true;
+}
+
+int QDateTimeEdit_virtualbase_DevType(const void* self) {
+	return ( (const MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_DevType();
+}
+
+bool QDateTimeEdit_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
+}
+
+void QDateTimeEdit_virtualbase_SetVisible(void* self, bool visible) {
+	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_SetVisible(visible);
+}
+
+bool QDateTimeEdit_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeightForWidth = slot;
+	return true;
+}
+
+int QDateTimeEdit_virtualbase_HeightForWidth(const void* self, int param1) {
+	return ( (const MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_HeightForWidth(param1);
+}
+
+bool QDateTimeEdit_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasHeightForWidth = slot;
+	return true;
+}
+
+bool QDateTimeEdit_virtualbase_HasHeightForWidth(const void* self) {
+	return ( (const MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_HasHeightForWidth();
+}
+
+bool QDateTimeEdit_override_virtual_PaintEngine(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEngine = slot;
+	return true;
+}
+
+QPaintEngine* QDateTimeEdit_virtualbase_PaintEngine(const void* self) {
+	return ( (const MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_PaintEngine();
+}
+
+bool QDateTimeEdit_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseDoubleClickEvent = slot;
+	return true;
+}
+
+void QDateTimeEdit_virtualbase_MouseDoubleClickEvent(void* self, QMouseEvent* event) {
+	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_MouseDoubleClickEvent(event);
+}
+
+bool QDateTimeEdit_override_virtual_EnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EnterEvent = slot;
+	return true;
+}
+
+void QDateTimeEdit_virtualbase_EnterEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_EnterEvent(event);
+}
+
+bool QDateTimeEdit_override_virtual_LeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__LeaveEvent = slot;
+	return true;
+}
+
+void QDateTimeEdit_virtualbase_LeaveEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_LeaveEvent(event);
+}
+
+bool QDateTimeEdit_override_virtual_MoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveEvent = slot;
+	return true;
+}
+
+void QDateTimeEdit_virtualbase_MoveEvent(void* self, QMoveEvent* event) {
+	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_MoveEvent(event);
+}
+
+bool QDateTimeEdit_override_virtual_TabletEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TabletEvent = slot;
+	return true;
+}
+
+void QDateTimeEdit_virtualbase_TabletEvent(void* self, QTabletEvent* event) {
+	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_TabletEvent(event);
+}
+
+bool QDateTimeEdit_override_virtual_ActionEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ActionEvent = slot;
+	return true;
+}
+
+void QDateTimeEdit_virtualbase_ActionEvent(void* self, QActionEvent* event) {
+	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_ActionEvent(event);
+}
+
+bool QDateTimeEdit_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragEnterEvent = slot;
+	return true;
+}
+
+void QDateTimeEdit_virtualbase_DragEnterEvent(void* self, QDragEnterEvent* event) {
+	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_DragEnterEvent(event);
+}
+
+bool QDateTimeEdit_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragMoveEvent = slot;
+	return true;
+}
+
+void QDateTimeEdit_virtualbase_DragMoveEvent(void* self, QDragMoveEvent* event) {
+	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_DragMoveEvent(event);
+}
+
+bool QDateTimeEdit_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragLeaveEvent = slot;
+	return true;
+}
+
+void QDateTimeEdit_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* event) {
+	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_DragLeaveEvent(event);
+}
+
+bool QDateTimeEdit_override_virtual_DropEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropEvent = slot;
+	return true;
+}
+
+void QDateTimeEdit_virtualbase_DropEvent(void* self, QDropEvent* event) {
+	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_DropEvent(event);
+}
+
+bool QDateTimeEdit_override_virtual_NativeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NativeEvent = slot;
+	return true;
+}
+
+bool QDateTimeEdit_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
+	return ( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_NativeEvent(eventType, message, result);
+}
+
+bool QDateTimeEdit_override_virtual_Metric(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Metric = slot;
+	return true;
+}
+
+int QDateTimeEdit_virtualbase_Metric(const void* self, int param1) {
+	return ( (const MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_Metric(param1);
+}
+
+bool QDateTimeEdit_override_virtual_InitPainter(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitPainter = slot;
+	return true;
+}
+
+void QDateTimeEdit_virtualbase_InitPainter(const void* self, QPainter* painter) {
+	( (const MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_InitPainter(painter);
+}
+
+bool QDateTimeEdit_override_virtual_Redirected(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Redirected = slot;
+	return true;
+}
+
+QPaintDevice* QDateTimeEdit_virtualbase_Redirected(const void* self, QPoint* offset) {
+	return ( (const MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_Redirected(offset);
+}
+
+bool QDateTimeEdit_override_virtual_SharedPainter(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SharedPainter = slot;
+	return true;
+}
+
+QPainter* QDateTimeEdit_virtualbase_SharedPainter(const void* self) {
+	return ( (const MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_SharedPainter();
+}
+
+bool QDateTimeEdit_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodEvent = slot;
+	return true;
+}
+
+void QDateTimeEdit_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* param1) {
+	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_InputMethodEvent(param1);
+}
+
+bool QDateTimeEdit_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
+}
+
+bool QDateTimeEdit_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+bool QDateTimeEdit_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QDateTimeEdit_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QDateTimeEdit_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QDateTimeEdit_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QDateTimeEdit_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QDateTimeEdit_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QDateTimeEdit_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQDateTimeEdit* self_cast = dynamic_cast<MiqtVirtualQDateTimeEdit*>( (QDateTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QDateTimeEdit_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQDateTimeEdit*)(self) )->virtualbase_DisconnectNotify(signal);
+}
+
 void QDateTimeEdit_Delete(QDateTimeEdit* self) {
 	delete self;
 }
@@ -1976,6 +3083,941 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MinimumSizeHint = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QSize minimumSizeHint() const override {
+		if (handle__MinimumSizeHint == 0) {
+			return QTimeEdit::minimumSizeHint();
+		}
+		
+
+		QSize* callback_return_value = miqt_exec_callback_QTimeEdit_MinimumSizeHint(const_cast<MiqtVirtualQTimeEdit*>(this), handle__MinimumSizeHint);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QSize* virtualbase_MinimumSizeHint() const {
+
+		return new QSize(QTimeEdit::minimumSizeHint());
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__InputMethodQuery = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QVariant inputMethodQuery(Qt::InputMethodQuery param1) const override {
+		if (handle__InputMethodQuery == 0) {
+			return QTimeEdit::inputMethodQuery(param1);
+		}
+		
+		Qt::InputMethodQuery param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+
+		QVariant* callback_return_value = miqt_exec_callback_QTimeEdit_InputMethodQuery(const_cast<MiqtVirtualQTimeEdit*>(this), handle__InputMethodQuery, sigval1);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QVariant* virtualbase_InputMethodQuery(int param1) const {
+
+		return new QVariant(QTimeEdit::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ResizeEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void resizeEvent(QResizeEvent* event) override {
+		if (handle__ResizeEvent == 0) {
+			QTimeEdit::resizeEvent(event);
+			return;
+		}
+		
+		QResizeEvent* sigval1 = event;
+
+		miqt_exec_callback_QTimeEdit_ResizeEvent(this, handle__ResizeEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ResizeEvent(QResizeEvent* event) {
+
+		QTimeEdit::resizeEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__KeyReleaseEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void keyReleaseEvent(QKeyEvent* event) override {
+		if (handle__KeyReleaseEvent == 0) {
+			QTimeEdit::keyReleaseEvent(event);
+			return;
+		}
+		
+		QKeyEvent* sigval1 = event;
+
+		miqt_exec_callback_QTimeEdit_KeyReleaseEvent(this, handle__KeyReleaseEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_KeyReleaseEvent(QKeyEvent* event) {
+
+		QTimeEdit::keyReleaseEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__FocusOutEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void focusOutEvent(QFocusEvent* event) override {
+		if (handle__FocusOutEvent == 0) {
+			QTimeEdit::focusOutEvent(event);
+			return;
+		}
+		
+		QFocusEvent* sigval1 = event;
+
+		miqt_exec_callback_QTimeEdit_FocusOutEvent(this, handle__FocusOutEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_FocusOutEvent(QFocusEvent* event) {
+
+		QTimeEdit::focusOutEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ContextMenuEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void contextMenuEvent(QContextMenuEvent* event) override {
+		if (handle__ContextMenuEvent == 0) {
+			QTimeEdit::contextMenuEvent(event);
+			return;
+		}
+		
+		QContextMenuEvent* sigval1 = event;
+
+		miqt_exec_callback_QTimeEdit_ContextMenuEvent(this, handle__ContextMenuEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ContextMenuEvent(QContextMenuEvent* event) {
+
+		QTimeEdit::contextMenuEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChangeEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void changeEvent(QEvent* event) override {
+		if (handle__ChangeEvent == 0) {
+			QTimeEdit::changeEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QTimeEdit_ChangeEvent(this, handle__ChangeEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChangeEvent(QEvent* event) {
+
+		QTimeEdit::changeEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CloseEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void closeEvent(QCloseEvent* event) override {
+		if (handle__CloseEvent == 0) {
+			QTimeEdit::closeEvent(event);
+			return;
+		}
+		
+		QCloseEvent* sigval1 = event;
+
+		miqt_exec_callback_QTimeEdit_CloseEvent(this, handle__CloseEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CloseEvent(QCloseEvent* event) {
+
+		QTimeEdit::closeEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__HideEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void hideEvent(QHideEvent* event) override {
+		if (handle__HideEvent == 0) {
+			QTimeEdit::hideEvent(event);
+			return;
+		}
+		
+		QHideEvent* sigval1 = event;
+
+		miqt_exec_callback_QTimeEdit_HideEvent(this, handle__HideEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_HideEvent(QHideEvent* event) {
+
+		QTimeEdit::hideEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MouseReleaseEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void mouseReleaseEvent(QMouseEvent* event) override {
+		if (handle__MouseReleaseEvent == 0) {
+			QTimeEdit::mouseReleaseEvent(event);
+			return;
+		}
+		
+		QMouseEvent* sigval1 = event;
+
+		miqt_exec_callback_QTimeEdit_MouseReleaseEvent(this, handle__MouseReleaseEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_MouseReleaseEvent(QMouseEvent* event) {
+
+		QTimeEdit::mouseReleaseEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MouseMoveEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void mouseMoveEvent(QMouseEvent* event) override {
+		if (handle__MouseMoveEvent == 0) {
+			QTimeEdit::mouseMoveEvent(event);
+			return;
+		}
+		
+		QMouseEvent* sigval1 = event;
+
+		miqt_exec_callback_QTimeEdit_MouseMoveEvent(this, handle__MouseMoveEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_MouseMoveEvent(QMouseEvent* event) {
+
+		QTimeEdit::mouseMoveEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QTimeEdit::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QTimeEdit_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QTimeEdit::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ShowEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void showEvent(QShowEvent* event) override {
+		if (handle__ShowEvent == 0) {
+			QTimeEdit::showEvent(event);
+			return;
+		}
+		
+		QShowEvent* sigval1 = event;
+
+		miqt_exec_callback_QTimeEdit_ShowEvent(this, handle__ShowEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ShowEvent(QShowEvent* event) {
+
+		QTimeEdit::showEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DevType = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int devType() const override {
+		if (handle__DevType == 0) {
+			return QTimeEdit::devType();
+		}
+		
+
+		int callback_return_value = miqt_exec_callback_QTimeEdit_DevType(const_cast<MiqtVirtualQTimeEdit*>(this), handle__DevType);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_DevType() const {
+
+		return QTimeEdit::devType();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetVisible = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setVisible(bool visible) override {
+		if (handle__SetVisible == 0) {
+			QTimeEdit::setVisible(visible);
+			return;
+		}
+		
+		bool sigval1 = visible;
+
+		miqt_exec_callback_QTimeEdit_SetVisible(this, handle__SetVisible, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetVisible(bool visible) {
+
+		QTimeEdit::setVisible(visible);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__HeightForWidth = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int heightForWidth(int param1) const override {
+		if (handle__HeightForWidth == 0) {
+			return QTimeEdit::heightForWidth(param1);
+		}
+		
+		int sigval1 = param1;
+
+		int callback_return_value = miqt_exec_callback_QTimeEdit_HeightForWidth(const_cast<MiqtVirtualQTimeEdit*>(this), handle__HeightForWidth, sigval1);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_HeightForWidth(int param1) const {
+
+		return QTimeEdit::heightForWidth(static_cast<int>(param1));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__HasHeightForWidth = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool hasHeightForWidth() const override {
+		if (handle__HasHeightForWidth == 0) {
+			return QTimeEdit::hasHeightForWidth();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QTimeEdit_HasHeightForWidth(const_cast<MiqtVirtualQTimeEdit*>(this), handle__HasHeightForWidth);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_HasHeightForWidth() const {
+
+		return QTimeEdit::hasHeightForWidth();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__PaintEngine = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPaintEngine* paintEngine() const override {
+		if (handle__PaintEngine == 0) {
+			return QTimeEdit::paintEngine();
+		}
+		
+
+		QPaintEngine* callback_return_value = miqt_exec_callback_QTimeEdit_PaintEngine(const_cast<MiqtVirtualQTimeEdit*>(this), handle__PaintEngine);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPaintEngine* virtualbase_PaintEngine() const {
+
+		return QTimeEdit::paintEngine();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MouseDoubleClickEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void mouseDoubleClickEvent(QMouseEvent* event) override {
+		if (handle__MouseDoubleClickEvent == 0) {
+			QTimeEdit::mouseDoubleClickEvent(event);
+			return;
+		}
+		
+		QMouseEvent* sigval1 = event;
+
+		miqt_exec_callback_QTimeEdit_MouseDoubleClickEvent(this, handle__MouseDoubleClickEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_MouseDoubleClickEvent(QMouseEvent* event) {
+
+		QTimeEdit::mouseDoubleClickEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EnterEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void enterEvent(QEvent* event) override {
+		if (handle__EnterEvent == 0) {
+			QTimeEdit::enterEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QTimeEdit_EnterEvent(this, handle__EnterEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_EnterEvent(QEvent* event) {
+
+		QTimeEdit::enterEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__LeaveEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void leaveEvent(QEvent* event) override {
+		if (handle__LeaveEvent == 0) {
+			QTimeEdit::leaveEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QTimeEdit_LeaveEvent(this, handle__LeaveEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_LeaveEvent(QEvent* event) {
+
+		QTimeEdit::leaveEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MoveEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void moveEvent(QMoveEvent* event) override {
+		if (handle__MoveEvent == 0) {
+			QTimeEdit::moveEvent(event);
+			return;
+		}
+		
+		QMoveEvent* sigval1 = event;
+
+		miqt_exec_callback_QTimeEdit_MoveEvent(this, handle__MoveEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_MoveEvent(QMoveEvent* event) {
+
+		QTimeEdit::moveEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TabletEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void tabletEvent(QTabletEvent* event) override {
+		if (handle__TabletEvent == 0) {
+			QTimeEdit::tabletEvent(event);
+			return;
+		}
+		
+		QTabletEvent* sigval1 = event;
+
+		miqt_exec_callback_QTimeEdit_TabletEvent(this, handle__TabletEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TabletEvent(QTabletEvent* event) {
+
+		QTimeEdit::tabletEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ActionEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void actionEvent(QActionEvent* event) override {
+		if (handle__ActionEvent == 0) {
+			QTimeEdit::actionEvent(event);
+			return;
+		}
+		
+		QActionEvent* sigval1 = event;
+
+		miqt_exec_callback_QTimeEdit_ActionEvent(this, handle__ActionEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ActionEvent(QActionEvent* event) {
+
+		QTimeEdit::actionEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DragEnterEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void dragEnterEvent(QDragEnterEvent* event) override {
+		if (handle__DragEnterEvent == 0) {
+			QTimeEdit::dragEnterEvent(event);
+			return;
+		}
+		
+		QDragEnterEvent* sigval1 = event;
+
+		miqt_exec_callback_QTimeEdit_DragEnterEvent(this, handle__DragEnterEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DragEnterEvent(QDragEnterEvent* event) {
+
+		QTimeEdit::dragEnterEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DragMoveEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void dragMoveEvent(QDragMoveEvent* event) override {
+		if (handle__DragMoveEvent == 0) {
+			QTimeEdit::dragMoveEvent(event);
+			return;
+		}
+		
+		QDragMoveEvent* sigval1 = event;
+
+		miqt_exec_callback_QTimeEdit_DragMoveEvent(this, handle__DragMoveEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DragMoveEvent(QDragMoveEvent* event) {
+
+		QTimeEdit::dragMoveEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DragLeaveEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void dragLeaveEvent(QDragLeaveEvent* event) override {
+		if (handle__DragLeaveEvent == 0) {
+			QTimeEdit::dragLeaveEvent(event);
+			return;
+		}
+		
+		QDragLeaveEvent* sigval1 = event;
+
+		miqt_exec_callback_QTimeEdit_DragLeaveEvent(this, handle__DragLeaveEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DragLeaveEvent(QDragLeaveEvent* event) {
+
+		QTimeEdit::dragLeaveEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DropEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void dropEvent(QDropEvent* event) override {
+		if (handle__DropEvent == 0) {
+			QTimeEdit::dropEvent(event);
+			return;
+		}
+		
+		QDropEvent* sigval1 = event;
+
+		miqt_exec_callback_QTimeEdit_DropEvent(this, handle__DropEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DropEvent(QDropEvent* event) {
+
+		QTimeEdit::dropEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__NativeEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool nativeEvent(const QByteArray& eventType, void* message, long* result) override {
+		if (handle__NativeEvent == 0) {
+			return QTimeEdit::nativeEvent(eventType, message, result);
+		}
+		
+		const QByteArray eventType_qb = eventType;
+		struct miqt_string eventType_ms;
+		eventType_ms.len = eventType_qb.length();
+		eventType_ms.data = static_cast<char*>(malloc(eventType_ms.len));
+		memcpy(eventType_ms.data, eventType_qb.data(), eventType_ms.len);
+		struct miqt_string sigval1 = eventType_ms;
+		void* sigval2 = message;
+		long* sigval3 = result;
+
+		bool callback_return_value = miqt_exec_callback_QTimeEdit_NativeEvent(this, handle__NativeEvent, sigval1, sigval2, sigval3);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_NativeEvent(struct miqt_string eventType, void* message, long* result) {
+		QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+		return QTimeEdit::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Metric = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int metric(QPaintDevice::PaintDeviceMetric param1) const override {
+		if (handle__Metric == 0) {
+			return QTimeEdit::metric(param1);
+		}
+		
+		QPaintDevice::PaintDeviceMetric param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+
+		int callback_return_value = miqt_exec_callback_QTimeEdit_Metric(const_cast<MiqtVirtualQTimeEdit*>(this), handle__Metric, sigval1);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_Metric(int param1) const {
+
+		return QTimeEdit::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__InitPainter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void initPainter(QPainter* painter) const override {
+		if (handle__InitPainter == 0) {
+			QTimeEdit::initPainter(painter);
+			return;
+		}
+		
+		QPainter* sigval1 = painter;
+
+		miqt_exec_callback_QTimeEdit_InitPainter(const_cast<MiqtVirtualQTimeEdit*>(this), handle__InitPainter, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_InitPainter(QPainter* painter) const {
+
+		QTimeEdit::initPainter(painter);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Redirected = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPaintDevice* redirected(QPoint* offset) const override {
+		if (handle__Redirected == 0) {
+			return QTimeEdit::redirected(offset);
+		}
+		
+		QPoint* sigval1 = offset;
+
+		QPaintDevice* callback_return_value = miqt_exec_callback_QTimeEdit_Redirected(const_cast<MiqtVirtualQTimeEdit*>(this), handle__Redirected, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPaintDevice* virtualbase_Redirected(QPoint* offset) const {
+
+		return QTimeEdit::redirected(offset);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SharedPainter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPainter* sharedPainter() const override {
+		if (handle__SharedPainter == 0) {
+			return QTimeEdit::sharedPainter();
+		}
+		
+
+		QPainter* callback_return_value = miqt_exec_callback_QTimeEdit_SharedPainter(const_cast<MiqtVirtualQTimeEdit*>(this), handle__SharedPainter);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPainter* virtualbase_SharedPainter() const {
+
+		return QTimeEdit::sharedPainter();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__InputMethodEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void inputMethodEvent(QInputMethodEvent* param1) override {
+		if (handle__InputMethodEvent == 0) {
+			QTimeEdit::inputMethodEvent(param1);
+			return;
+		}
+		
+		QInputMethodEvent* sigval1 = param1;
+
+		miqt_exec_callback_QTimeEdit_InputMethodEvent(this, handle__InputMethodEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_InputMethodEvent(QInputMethodEvent* param1) {
+
+		QTimeEdit::inputMethodEvent(param1);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QTimeEdit::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QTimeEdit_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QTimeEdit::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QTimeEdit::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QTimeEdit_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QTimeEdit::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QTimeEdit::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QTimeEdit_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QTimeEdit::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QTimeEdit::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QTimeEdit_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QTimeEdit::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QTimeEdit::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QTimeEdit_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QTimeEdit::disconnectNotify(*signal);
+
+	}
+
 };
 
 QTimeEdit* QTimeEdit_new(QWidget* parent) {
@@ -2293,6 +4335,552 @@ bool QTimeEdit_override_virtual_PaintEvent(void* self, intptr_t slot) {
 
 void QTimeEdit_virtualbase_PaintEvent(void* self, QPaintEvent* event) {
 	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_PaintEvent(event);
+}
+
+bool QTimeEdit_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
+}
+
+QSize* QTimeEdit_virtualbase_MinimumSizeHint(const void* self) {
+	return ( (const MiqtVirtualQTimeEdit*)(self) )->virtualbase_MinimumSizeHint();
+}
+
+bool QTimeEdit_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodQuery = slot;
+	return true;
+}
+
+QVariant* QTimeEdit_virtualbase_InputMethodQuery(const void* self, int param1) {
+	return ( (const MiqtVirtualQTimeEdit*)(self) )->virtualbase_InputMethodQuery(param1);
+}
+
+bool QTimeEdit_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
+}
+
+void QTimeEdit_virtualbase_ResizeEvent(void* self, QResizeEvent* event) {
+	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_ResizeEvent(event);
+}
+
+bool QTimeEdit_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyReleaseEvent = slot;
+	return true;
+}
+
+void QTimeEdit_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* event) {
+	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_KeyReleaseEvent(event);
+}
+
+bool QTimeEdit_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
+}
+
+void QTimeEdit_virtualbase_FocusOutEvent(void* self, QFocusEvent* event) {
+	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_FocusOutEvent(event);
+}
+
+bool QTimeEdit_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
+}
+
+void QTimeEdit_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* event) {
+	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_ContextMenuEvent(event);
+}
+
+bool QTimeEdit_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
+}
+
+void QTimeEdit_virtualbase_ChangeEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_ChangeEvent(event);
+}
+
+bool QTimeEdit_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
+}
+
+void QTimeEdit_virtualbase_CloseEvent(void* self, QCloseEvent* event) {
+	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_CloseEvent(event);
+}
+
+bool QTimeEdit_override_virtual_HideEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HideEvent = slot;
+	return true;
+}
+
+void QTimeEdit_virtualbase_HideEvent(void* self, QHideEvent* event) {
+	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_HideEvent(event);
+}
+
+bool QTimeEdit_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
+}
+
+void QTimeEdit_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* event) {
+	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_MouseReleaseEvent(event);
+}
+
+bool QTimeEdit_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
+}
+
+void QTimeEdit_virtualbase_MouseMoveEvent(void* self, QMouseEvent* event) {
+	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_MouseMoveEvent(event);
+}
+
+bool QTimeEdit_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QTimeEdit_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QTimeEdit_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
+}
+
+void QTimeEdit_virtualbase_ShowEvent(void* self, QShowEvent* event) {
+	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_ShowEvent(event);
+}
+
+bool QTimeEdit_override_virtual_DevType(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DevType = slot;
+	return true;
+}
+
+int QTimeEdit_virtualbase_DevType(const void* self) {
+	return ( (const MiqtVirtualQTimeEdit*)(self) )->virtualbase_DevType();
+}
+
+bool QTimeEdit_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
+}
+
+void QTimeEdit_virtualbase_SetVisible(void* self, bool visible) {
+	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_SetVisible(visible);
+}
+
+bool QTimeEdit_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeightForWidth = slot;
+	return true;
+}
+
+int QTimeEdit_virtualbase_HeightForWidth(const void* self, int param1) {
+	return ( (const MiqtVirtualQTimeEdit*)(self) )->virtualbase_HeightForWidth(param1);
+}
+
+bool QTimeEdit_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasHeightForWidth = slot;
+	return true;
+}
+
+bool QTimeEdit_virtualbase_HasHeightForWidth(const void* self) {
+	return ( (const MiqtVirtualQTimeEdit*)(self) )->virtualbase_HasHeightForWidth();
+}
+
+bool QTimeEdit_override_virtual_PaintEngine(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEngine = slot;
+	return true;
+}
+
+QPaintEngine* QTimeEdit_virtualbase_PaintEngine(const void* self) {
+	return ( (const MiqtVirtualQTimeEdit*)(self) )->virtualbase_PaintEngine();
+}
+
+bool QTimeEdit_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseDoubleClickEvent = slot;
+	return true;
+}
+
+void QTimeEdit_virtualbase_MouseDoubleClickEvent(void* self, QMouseEvent* event) {
+	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_MouseDoubleClickEvent(event);
+}
+
+bool QTimeEdit_override_virtual_EnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EnterEvent = slot;
+	return true;
+}
+
+void QTimeEdit_virtualbase_EnterEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_EnterEvent(event);
+}
+
+bool QTimeEdit_override_virtual_LeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__LeaveEvent = slot;
+	return true;
+}
+
+void QTimeEdit_virtualbase_LeaveEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_LeaveEvent(event);
+}
+
+bool QTimeEdit_override_virtual_MoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveEvent = slot;
+	return true;
+}
+
+void QTimeEdit_virtualbase_MoveEvent(void* self, QMoveEvent* event) {
+	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_MoveEvent(event);
+}
+
+bool QTimeEdit_override_virtual_TabletEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TabletEvent = slot;
+	return true;
+}
+
+void QTimeEdit_virtualbase_TabletEvent(void* self, QTabletEvent* event) {
+	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_TabletEvent(event);
+}
+
+bool QTimeEdit_override_virtual_ActionEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ActionEvent = slot;
+	return true;
+}
+
+void QTimeEdit_virtualbase_ActionEvent(void* self, QActionEvent* event) {
+	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_ActionEvent(event);
+}
+
+bool QTimeEdit_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragEnterEvent = slot;
+	return true;
+}
+
+void QTimeEdit_virtualbase_DragEnterEvent(void* self, QDragEnterEvent* event) {
+	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_DragEnterEvent(event);
+}
+
+bool QTimeEdit_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragMoveEvent = slot;
+	return true;
+}
+
+void QTimeEdit_virtualbase_DragMoveEvent(void* self, QDragMoveEvent* event) {
+	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_DragMoveEvent(event);
+}
+
+bool QTimeEdit_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragLeaveEvent = slot;
+	return true;
+}
+
+void QTimeEdit_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* event) {
+	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_DragLeaveEvent(event);
+}
+
+bool QTimeEdit_override_virtual_DropEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropEvent = slot;
+	return true;
+}
+
+void QTimeEdit_virtualbase_DropEvent(void* self, QDropEvent* event) {
+	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_DropEvent(event);
+}
+
+bool QTimeEdit_override_virtual_NativeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NativeEvent = slot;
+	return true;
+}
+
+bool QTimeEdit_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
+	return ( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_NativeEvent(eventType, message, result);
+}
+
+bool QTimeEdit_override_virtual_Metric(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Metric = slot;
+	return true;
+}
+
+int QTimeEdit_virtualbase_Metric(const void* self, int param1) {
+	return ( (const MiqtVirtualQTimeEdit*)(self) )->virtualbase_Metric(param1);
+}
+
+bool QTimeEdit_override_virtual_InitPainter(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitPainter = slot;
+	return true;
+}
+
+void QTimeEdit_virtualbase_InitPainter(const void* self, QPainter* painter) {
+	( (const MiqtVirtualQTimeEdit*)(self) )->virtualbase_InitPainter(painter);
+}
+
+bool QTimeEdit_override_virtual_Redirected(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Redirected = slot;
+	return true;
+}
+
+QPaintDevice* QTimeEdit_virtualbase_Redirected(const void* self, QPoint* offset) {
+	return ( (const MiqtVirtualQTimeEdit*)(self) )->virtualbase_Redirected(offset);
+}
+
+bool QTimeEdit_override_virtual_SharedPainter(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SharedPainter = slot;
+	return true;
+}
+
+QPainter* QTimeEdit_virtualbase_SharedPainter(const void* self) {
+	return ( (const MiqtVirtualQTimeEdit*)(self) )->virtualbase_SharedPainter();
+}
+
+bool QTimeEdit_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodEvent = slot;
+	return true;
+}
+
+void QTimeEdit_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* param1) {
+	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_InputMethodEvent(param1);
+}
+
+bool QTimeEdit_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
+}
+
+bool QTimeEdit_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+bool QTimeEdit_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QTimeEdit_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QTimeEdit_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QTimeEdit_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QTimeEdit_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QTimeEdit_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QTimeEdit_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQTimeEdit* self_cast = dynamic_cast<MiqtVirtualQTimeEdit*>( (QTimeEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QTimeEdit_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQTimeEdit*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
 void QTimeEdit_Delete(QTimeEdit* self) {
@@ -2696,6 +5284,941 @@ public:
 
 	}
 
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MinimumSizeHint = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QSize minimumSizeHint() const override {
+		if (handle__MinimumSizeHint == 0) {
+			return QDateEdit::minimumSizeHint();
+		}
+		
+
+		QSize* callback_return_value = miqt_exec_callback_QDateEdit_MinimumSizeHint(const_cast<MiqtVirtualQDateEdit*>(this), handle__MinimumSizeHint);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QSize* virtualbase_MinimumSizeHint() const {
+
+		return new QSize(QDateEdit::minimumSizeHint());
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__InputMethodQuery = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QVariant inputMethodQuery(Qt::InputMethodQuery param1) const override {
+		if (handle__InputMethodQuery == 0) {
+			return QDateEdit::inputMethodQuery(param1);
+		}
+		
+		Qt::InputMethodQuery param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+
+		QVariant* callback_return_value = miqt_exec_callback_QDateEdit_InputMethodQuery(const_cast<MiqtVirtualQDateEdit*>(this), handle__InputMethodQuery, sigval1);
+
+		return *callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QVariant* virtualbase_InputMethodQuery(int param1) const {
+
+		return new QVariant(QDateEdit::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ResizeEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void resizeEvent(QResizeEvent* event) override {
+		if (handle__ResizeEvent == 0) {
+			QDateEdit::resizeEvent(event);
+			return;
+		}
+		
+		QResizeEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateEdit_ResizeEvent(this, handle__ResizeEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ResizeEvent(QResizeEvent* event) {
+
+		QDateEdit::resizeEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__KeyReleaseEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void keyReleaseEvent(QKeyEvent* event) override {
+		if (handle__KeyReleaseEvent == 0) {
+			QDateEdit::keyReleaseEvent(event);
+			return;
+		}
+		
+		QKeyEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateEdit_KeyReleaseEvent(this, handle__KeyReleaseEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_KeyReleaseEvent(QKeyEvent* event) {
+
+		QDateEdit::keyReleaseEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__FocusOutEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void focusOutEvent(QFocusEvent* event) override {
+		if (handle__FocusOutEvent == 0) {
+			QDateEdit::focusOutEvent(event);
+			return;
+		}
+		
+		QFocusEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateEdit_FocusOutEvent(this, handle__FocusOutEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_FocusOutEvent(QFocusEvent* event) {
+
+		QDateEdit::focusOutEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ContextMenuEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void contextMenuEvent(QContextMenuEvent* event) override {
+		if (handle__ContextMenuEvent == 0) {
+			QDateEdit::contextMenuEvent(event);
+			return;
+		}
+		
+		QContextMenuEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateEdit_ContextMenuEvent(this, handle__ContextMenuEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ContextMenuEvent(QContextMenuEvent* event) {
+
+		QDateEdit::contextMenuEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChangeEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void changeEvent(QEvent* event) override {
+		if (handle__ChangeEvent == 0) {
+			QDateEdit::changeEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateEdit_ChangeEvent(this, handle__ChangeEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChangeEvent(QEvent* event) {
+
+		QDateEdit::changeEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CloseEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void closeEvent(QCloseEvent* event) override {
+		if (handle__CloseEvent == 0) {
+			QDateEdit::closeEvent(event);
+			return;
+		}
+		
+		QCloseEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateEdit_CloseEvent(this, handle__CloseEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CloseEvent(QCloseEvent* event) {
+
+		QDateEdit::closeEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__HideEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void hideEvent(QHideEvent* event) override {
+		if (handle__HideEvent == 0) {
+			QDateEdit::hideEvent(event);
+			return;
+		}
+		
+		QHideEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateEdit_HideEvent(this, handle__HideEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_HideEvent(QHideEvent* event) {
+
+		QDateEdit::hideEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MouseReleaseEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void mouseReleaseEvent(QMouseEvent* event) override {
+		if (handle__MouseReleaseEvent == 0) {
+			QDateEdit::mouseReleaseEvent(event);
+			return;
+		}
+		
+		QMouseEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateEdit_MouseReleaseEvent(this, handle__MouseReleaseEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_MouseReleaseEvent(QMouseEvent* event) {
+
+		QDateEdit::mouseReleaseEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MouseMoveEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void mouseMoveEvent(QMouseEvent* event) override {
+		if (handle__MouseMoveEvent == 0) {
+			QDateEdit::mouseMoveEvent(event);
+			return;
+		}
+		
+		QMouseEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateEdit_MouseMoveEvent(this, handle__MouseMoveEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_MouseMoveEvent(QMouseEvent* event) {
+
+		QDateEdit::mouseMoveEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TimerEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void timerEvent(QTimerEvent* event) override {
+		if (handle__TimerEvent == 0) {
+			QDateEdit::timerEvent(event);
+			return;
+		}
+		
+		QTimerEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateEdit_TimerEvent(this, handle__TimerEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TimerEvent(QTimerEvent* event) {
+
+		QDateEdit::timerEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ShowEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void showEvent(QShowEvent* event) override {
+		if (handle__ShowEvent == 0) {
+			QDateEdit::showEvent(event);
+			return;
+		}
+		
+		QShowEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateEdit_ShowEvent(this, handle__ShowEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ShowEvent(QShowEvent* event) {
+
+		QDateEdit::showEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DevType = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int devType() const override {
+		if (handle__DevType == 0) {
+			return QDateEdit::devType();
+		}
+		
+
+		int callback_return_value = miqt_exec_callback_QDateEdit_DevType(const_cast<MiqtVirtualQDateEdit*>(this), handle__DevType);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_DevType() const {
+
+		return QDateEdit::devType();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SetVisible = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void setVisible(bool visible) override {
+		if (handle__SetVisible == 0) {
+			QDateEdit::setVisible(visible);
+			return;
+		}
+		
+		bool sigval1 = visible;
+
+		miqt_exec_callback_QDateEdit_SetVisible(this, handle__SetVisible, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_SetVisible(bool visible) {
+
+		QDateEdit::setVisible(visible);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__HeightForWidth = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int heightForWidth(int param1) const override {
+		if (handle__HeightForWidth == 0) {
+			return QDateEdit::heightForWidth(param1);
+		}
+		
+		int sigval1 = param1;
+
+		int callback_return_value = miqt_exec_callback_QDateEdit_HeightForWidth(const_cast<MiqtVirtualQDateEdit*>(this), handle__HeightForWidth, sigval1);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_HeightForWidth(int param1) const {
+
+		return QDateEdit::heightForWidth(static_cast<int>(param1));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__HasHeightForWidth = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool hasHeightForWidth() const override {
+		if (handle__HasHeightForWidth == 0) {
+			return QDateEdit::hasHeightForWidth();
+		}
+		
+
+		bool callback_return_value = miqt_exec_callback_QDateEdit_HasHeightForWidth(const_cast<MiqtVirtualQDateEdit*>(this), handle__HasHeightForWidth);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_HasHeightForWidth() const {
+
+		return QDateEdit::hasHeightForWidth();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__PaintEngine = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPaintEngine* paintEngine() const override {
+		if (handle__PaintEngine == 0) {
+			return QDateEdit::paintEngine();
+		}
+		
+
+		QPaintEngine* callback_return_value = miqt_exec_callback_QDateEdit_PaintEngine(const_cast<MiqtVirtualQDateEdit*>(this), handle__PaintEngine);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPaintEngine* virtualbase_PaintEngine() const {
+
+		return QDateEdit::paintEngine();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MouseDoubleClickEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void mouseDoubleClickEvent(QMouseEvent* event) override {
+		if (handle__MouseDoubleClickEvent == 0) {
+			QDateEdit::mouseDoubleClickEvent(event);
+			return;
+		}
+		
+		QMouseEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateEdit_MouseDoubleClickEvent(this, handle__MouseDoubleClickEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_MouseDoubleClickEvent(QMouseEvent* event) {
+
+		QDateEdit::mouseDoubleClickEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EnterEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void enterEvent(QEvent* event) override {
+		if (handle__EnterEvent == 0) {
+			QDateEdit::enterEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateEdit_EnterEvent(this, handle__EnterEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_EnterEvent(QEvent* event) {
+
+		QDateEdit::enterEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__LeaveEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void leaveEvent(QEvent* event) override {
+		if (handle__LeaveEvent == 0) {
+			QDateEdit::leaveEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateEdit_LeaveEvent(this, handle__LeaveEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_LeaveEvent(QEvent* event) {
+
+		QDateEdit::leaveEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__MoveEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void moveEvent(QMoveEvent* event) override {
+		if (handle__MoveEvent == 0) {
+			QDateEdit::moveEvent(event);
+			return;
+		}
+		
+		QMoveEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateEdit_MoveEvent(this, handle__MoveEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_MoveEvent(QMoveEvent* event) {
+
+		QDateEdit::moveEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__TabletEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void tabletEvent(QTabletEvent* event) override {
+		if (handle__TabletEvent == 0) {
+			QDateEdit::tabletEvent(event);
+			return;
+		}
+		
+		QTabletEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateEdit_TabletEvent(this, handle__TabletEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_TabletEvent(QTabletEvent* event) {
+
+		QDateEdit::tabletEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ActionEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void actionEvent(QActionEvent* event) override {
+		if (handle__ActionEvent == 0) {
+			QDateEdit::actionEvent(event);
+			return;
+		}
+		
+		QActionEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateEdit_ActionEvent(this, handle__ActionEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ActionEvent(QActionEvent* event) {
+
+		QDateEdit::actionEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DragEnterEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void dragEnterEvent(QDragEnterEvent* event) override {
+		if (handle__DragEnterEvent == 0) {
+			QDateEdit::dragEnterEvent(event);
+			return;
+		}
+		
+		QDragEnterEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateEdit_DragEnterEvent(this, handle__DragEnterEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DragEnterEvent(QDragEnterEvent* event) {
+
+		QDateEdit::dragEnterEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DragMoveEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void dragMoveEvent(QDragMoveEvent* event) override {
+		if (handle__DragMoveEvent == 0) {
+			QDateEdit::dragMoveEvent(event);
+			return;
+		}
+		
+		QDragMoveEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateEdit_DragMoveEvent(this, handle__DragMoveEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DragMoveEvent(QDragMoveEvent* event) {
+
+		QDateEdit::dragMoveEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DragLeaveEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void dragLeaveEvent(QDragLeaveEvent* event) override {
+		if (handle__DragLeaveEvent == 0) {
+			QDateEdit::dragLeaveEvent(event);
+			return;
+		}
+		
+		QDragLeaveEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateEdit_DragLeaveEvent(this, handle__DragLeaveEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DragLeaveEvent(QDragLeaveEvent* event) {
+
+		QDateEdit::dragLeaveEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DropEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void dropEvent(QDropEvent* event) override {
+		if (handle__DropEvent == 0) {
+			QDateEdit::dropEvent(event);
+			return;
+		}
+		
+		QDropEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateEdit_DropEvent(this, handle__DropEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DropEvent(QDropEvent* event) {
+
+		QDateEdit::dropEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__NativeEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool nativeEvent(const QByteArray& eventType, void* message, long* result) override {
+		if (handle__NativeEvent == 0) {
+			return QDateEdit::nativeEvent(eventType, message, result);
+		}
+		
+		const QByteArray eventType_qb = eventType;
+		struct miqt_string eventType_ms;
+		eventType_ms.len = eventType_qb.length();
+		eventType_ms.data = static_cast<char*>(malloc(eventType_ms.len));
+		memcpy(eventType_ms.data, eventType_qb.data(), eventType_ms.len);
+		struct miqt_string sigval1 = eventType_ms;
+		void* sigval2 = message;
+		long* sigval3 = result;
+
+		bool callback_return_value = miqt_exec_callback_QDateEdit_NativeEvent(this, handle__NativeEvent, sigval1, sigval2, sigval3);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_NativeEvent(struct miqt_string eventType, void* message, long* result) {
+		QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+		return QDateEdit::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Metric = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int metric(QPaintDevice::PaintDeviceMetric param1) const override {
+		if (handle__Metric == 0) {
+			return QDateEdit::metric(param1);
+		}
+		
+		QPaintDevice::PaintDeviceMetric param1_ret = param1;
+		int sigval1 = static_cast<int>(param1_ret);
+
+		int callback_return_value = miqt_exec_callback_QDateEdit_Metric(const_cast<MiqtVirtualQDateEdit*>(this), handle__Metric, sigval1);
+
+		return static_cast<int>(callback_return_value);
+	}
+
+	// Wrapper to allow calling protected method
+	int virtualbase_Metric(int param1) const {
+
+		return QDateEdit::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__InitPainter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void initPainter(QPainter* painter) const override {
+		if (handle__InitPainter == 0) {
+			QDateEdit::initPainter(painter);
+			return;
+		}
+		
+		QPainter* sigval1 = painter;
+
+		miqt_exec_callback_QDateEdit_InitPainter(const_cast<MiqtVirtualQDateEdit*>(this), handle__InitPainter, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_InitPainter(QPainter* painter) const {
+
+		QDateEdit::initPainter(painter);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__Redirected = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPaintDevice* redirected(QPoint* offset) const override {
+		if (handle__Redirected == 0) {
+			return QDateEdit::redirected(offset);
+		}
+		
+		QPoint* sigval1 = offset;
+
+		QPaintDevice* callback_return_value = miqt_exec_callback_QDateEdit_Redirected(const_cast<MiqtVirtualQDateEdit*>(this), handle__Redirected, sigval1);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPaintDevice* virtualbase_Redirected(QPoint* offset) const {
+
+		return QDateEdit::redirected(offset);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__SharedPainter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPainter* sharedPainter() const override {
+		if (handle__SharedPainter == 0) {
+			return QDateEdit::sharedPainter();
+		}
+		
+
+		QPainter* callback_return_value = miqt_exec_callback_QDateEdit_SharedPainter(const_cast<MiqtVirtualQDateEdit*>(this), handle__SharedPainter);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	QPainter* virtualbase_SharedPainter() const {
+
+		return QDateEdit::sharedPainter();
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__InputMethodEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void inputMethodEvent(QInputMethodEvent* param1) override {
+		if (handle__InputMethodEvent == 0) {
+			QDateEdit::inputMethodEvent(param1);
+			return;
+		}
+		
+		QInputMethodEvent* sigval1 = param1;
+
+		miqt_exec_callback_QDateEdit_InputMethodEvent(this, handle__InputMethodEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_InputMethodEvent(QInputMethodEvent* param1) {
+
+		QDateEdit::inputMethodEvent(param1);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__EventFilter = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual bool eventFilter(QObject* watched, QEvent* event) override {
+		if (handle__EventFilter == 0) {
+			return QDateEdit::eventFilter(watched, event);
+		}
+		
+		QObject* sigval1 = watched;
+		QEvent* sigval2 = event;
+
+		bool callback_return_value = miqt_exec_callback_QDateEdit_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+
+		return callback_return_value;
+	}
+
+	// Wrapper to allow calling protected method
+	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+
+		return QDateEdit::eventFilter(watched, event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ChildEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void childEvent(QChildEvent* event) override {
+		if (handle__ChildEvent == 0) {
+			QDateEdit::childEvent(event);
+			return;
+		}
+		
+		QChildEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateEdit_ChildEvent(this, handle__ChildEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ChildEvent(QChildEvent* event) {
+
+		QDateEdit::childEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__CustomEvent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void customEvent(QEvent* event) override {
+		if (handle__CustomEvent == 0) {
+			QDateEdit::customEvent(event);
+			return;
+		}
+		
+		QEvent* sigval1 = event;
+
+		miqt_exec_callback_QDateEdit_CustomEvent(this, handle__CustomEvent, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_CustomEvent(QEvent* event) {
+
+		QDateEdit::customEvent(event);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__ConnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void connectNotify(const QMetaMethod& signal) override {
+		if (handle__ConnectNotify == 0) {
+			QDateEdit::connectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QDateEdit_ConnectNotify(this, handle__ConnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+
+		QDateEdit::connectNotify(*signal);
+
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__DisconnectNotify = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual void disconnectNotify(const QMetaMethod& signal) override {
+		if (handle__DisconnectNotify == 0) {
+			QDateEdit::disconnectNotify(signal);
+			return;
+		}
+		
+		const QMetaMethod& signal_ret = signal;
+		// Cast returned reference into pointer
+		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
+
+		miqt_exec_callback_QDateEdit_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+
+		
+	}
+
+	// Wrapper to allow calling protected method
+	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+
+		QDateEdit::disconnectNotify(*signal);
+
+	}
+
 };
 
 QDateEdit* QDateEdit_new(QWidget* parent) {
@@ -3013,6 +6536,552 @@ bool QDateEdit_override_virtual_PaintEvent(void* self, intptr_t slot) {
 
 void QDateEdit_virtualbase_PaintEvent(void* self, QPaintEvent* event) {
 	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_PaintEvent(event);
+}
+
+bool QDateEdit_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MinimumSizeHint = slot;
+	return true;
+}
+
+QSize* QDateEdit_virtualbase_MinimumSizeHint(const void* self) {
+	return ( (const MiqtVirtualQDateEdit*)(self) )->virtualbase_MinimumSizeHint();
+}
+
+bool QDateEdit_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodQuery = slot;
+	return true;
+}
+
+QVariant* QDateEdit_virtualbase_InputMethodQuery(const void* self, int param1) {
+	return ( (const MiqtVirtualQDateEdit*)(self) )->virtualbase_InputMethodQuery(param1);
+}
+
+bool QDateEdit_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ResizeEvent = slot;
+	return true;
+}
+
+void QDateEdit_virtualbase_ResizeEvent(void* self, QResizeEvent* event) {
+	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_ResizeEvent(event);
+}
+
+bool QDateEdit_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__KeyReleaseEvent = slot;
+	return true;
+}
+
+void QDateEdit_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* event) {
+	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_KeyReleaseEvent(event);
+}
+
+bool QDateEdit_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__FocusOutEvent = slot;
+	return true;
+}
+
+void QDateEdit_virtualbase_FocusOutEvent(void* self, QFocusEvent* event) {
+	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_FocusOutEvent(event);
+}
+
+bool QDateEdit_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ContextMenuEvent = slot;
+	return true;
+}
+
+void QDateEdit_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* event) {
+	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_ContextMenuEvent(event);
+}
+
+bool QDateEdit_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChangeEvent = slot;
+	return true;
+}
+
+void QDateEdit_virtualbase_ChangeEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_ChangeEvent(event);
+}
+
+bool QDateEdit_override_virtual_CloseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CloseEvent = slot;
+	return true;
+}
+
+void QDateEdit_virtualbase_CloseEvent(void* self, QCloseEvent* event) {
+	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_CloseEvent(event);
+}
+
+bool QDateEdit_override_virtual_HideEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HideEvent = slot;
+	return true;
+}
+
+void QDateEdit_virtualbase_HideEvent(void* self, QHideEvent* event) {
+	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_HideEvent(event);
+}
+
+bool QDateEdit_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseReleaseEvent = slot;
+	return true;
+}
+
+void QDateEdit_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* event) {
+	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_MouseReleaseEvent(event);
+}
+
+bool QDateEdit_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseMoveEvent = slot;
+	return true;
+}
+
+void QDateEdit_virtualbase_MouseMoveEvent(void* self, QMouseEvent* event) {
+	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_MouseMoveEvent(event);
+}
+
+bool QDateEdit_override_virtual_TimerEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TimerEvent = slot;
+	return true;
+}
+
+void QDateEdit_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_TimerEvent(event);
+}
+
+bool QDateEdit_override_virtual_ShowEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ShowEvent = slot;
+	return true;
+}
+
+void QDateEdit_virtualbase_ShowEvent(void* self, QShowEvent* event) {
+	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_ShowEvent(event);
+}
+
+bool QDateEdit_override_virtual_DevType(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DevType = slot;
+	return true;
+}
+
+int QDateEdit_virtualbase_DevType(const void* self) {
+	return ( (const MiqtVirtualQDateEdit*)(self) )->virtualbase_DevType();
+}
+
+bool QDateEdit_override_virtual_SetVisible(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SetVisible = slot;
+	return true;
+}
+
+void QDateEdit_virtualbase_SetVisible(void* self, bool visible) {
+	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_SetVisible(visible);
+}
+
+bool QDateEdit_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HeightForWidth = slot;
+	return true;
+}
+
+int QDateEdit_virtualbase_HeightForWidth(const void* self, int param1) {
+	return ( (const MiqtVirtualQDateEdit*)(self) )->virtualbase_HeightForWidth(param1);
+}
+
+bool QDateEdit_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__HasHeightForWidth = slot;
+	return true;
+}
+
+bool QDateEdit_virtualbase_HasHeightForWidth(const void* self) {
+	return ( (const MiqtVirtualQDateEdit*)(self) )->virtualbase_HasHeightForWidth();
+}
+
+bool QDateEdit_override_virtual_PaintEngine(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__PaintEngine = slot;
+	return true;
+}
+
+QPaintEngine* QDateEdit_virtualbase_PaintEngine(const void* self) {
+	return ( (const MiqtVirtualQDateEdit*)(self) )->virtualbase_PaintEngine();
+}
+
+bool QDateEdit_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MouseDoubleClickEvent = slot;
+	return true;
+}
+
+void QDateEdit_virtualbase_MouseDoubleClickEvent(void* self, QMouseEvent* event) {
+	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_MouseDoubleClickEvent(event);
+}
+
+bool QDateEdit_override_virtual_EnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EnterEvent = slot;
+	return true;
+}
+
+void QDateEdit_virtualbase_EnterEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_EnterEvent(event);
+}
+
+bool QDateEdit_override_virtual_LeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__LeaveEvent = slot;
+	return true;
+}
+
+void QDateEdit_virtualbase_LeaveEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_LeaveEvent(event);
+}
+
+bool QDateEdit_override_virtual_MoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__MoveEvent = slot;
+	return true;
+}
+
+void QDateEdit_virtualbase_MoveEvent(void* self, QMoveEvent* event) {
+	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_MoveEvent(event);
+}
+
+bool QDateEdit_override_virtual_TabletEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__TabletEvent = slot;
+	return true;
+}
+
+void QDateEdit_virtualbase_TabletEvent(void* self, QTabletEvent* event) {
+	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_TabletEvent(event);
+}
+
+bool QDateEdit_override_virtual_ActionEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ActionEvent = slot;
+	return true;
+}
+
+void QDateEdit_virtualbase_ActionEvent(void* self, QActionEvent* event) {
+	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_ActionEvent(event);
+}
+
+bool QDateEdit_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragEnterEvent = slot;
+	return true;
+}
+
+void QDateEdit_virtualbase_DragEnterEvent(void* self, QDragEnterEvent* event) {
+	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_DragEnterEvent(event);
+}
+
+bool QDateEdit_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragMoveEvent = slot;
+	return true;
+}
+
+void QDateEdit_virtualbase_DragMoveEvent(void* self, QDragMoveEvent* event) {
+	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_DragMoveEvent(event);
+}
+
+bool QDateEdit_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DragLeaveEvent = slot;
+	return true;
+}
+
+void QDateEdit_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* event) {
+	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_DragLeaveEvent(event);
+}
+
+bool QDateEdit_override_virtual_DropEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DropEvent = slot;
+	return true;
+}
+
+void QDateEdit_virtualbase_DropEvent(void* self, QDropEvent* event) {
+	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_DropEvent(event);
+}
+
+bool QDateEdit_override_virtual_NativeEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__NativeEvent = slot;
+	return true;
+}
+
+bool QDateEdit_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
+	return ( (MiqtVirtualQDateEdit*)(self) )->virtualbase_NativeEvent(eventType, message, result);
+}
+
+bool QDateEdit_override_virtual_Metric(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Metric = slot;
+	return true;
+}
+
+int QDateEdit_virtualbase_Metric(const void* self, int param1) {
+	return ( (const MiqtVirtualQDateEdit*)(self) )->virtualbase_Metric(param1);
+}
+
+bool QDateEdit_override_virtual_InitPainter(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InitPainter = slot;
+	return true;
+}
+
+void QDateEdit_virtualbase_InitPainter(const void* self, QPainter* painter) {
+	( (const MiqtVirtualQDateEdit*)(self) )->virtualbase_InitPainter(painter);
+}
+
+bool QDateEdit_override_virtual_Redirected(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__Redirected = slot;
+	return true;
+}
+
+QPaintDevice* QDateEdit_virtualbase_Redirected(const void* self, QPoint* offset) {
+	return ( (const MiqtVirtualQDateEdit*)(self) )->virtualbase_Redirected(offset);
+}
+
+bool QDateEdit_override_virtual_SharedPainter(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__SharedPainter = slot;
+	return true;
+}
+
+QPainter* QDateEdit_virtualbase_SharedPainter(const void* self) {
+	return ( (const MiqtVirtualQDateEdit*)(self) )->virtualbase_SharedPainter();
+}
+
+bool QDateEdit_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__InputMethodEvent = slot;
+	return true;
+}
+
+void QDateEdit_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* param1) {
+	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_InputMethodEvent(param1);
+}
+
+bool QDateEdit_override_virtual_EventFilter(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__EventFilter = slot;
+	return true;
+}
+
+bool QDateEdit_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQDateEdit*)(self) )->virtualbase_EventFilter(watched, event);
+}
+
+bool QDateEdit_override_virtual_ChildEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ChildEvent = slot;
+	return true;
+}
+
+void QDateEdit_virtualbase_ChildEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_ChildEvent(event);
+}
+
+bool QDateEdit_override_virtual_CustomEvent(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__CustomEvent = slot;
+	return true;
+}
+
+void QDateEdit_virtualbase_CustomEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_CustomEvent(event);
+}
+
+bool QDateEdit_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__ConnectNotify = slot;
+	return true;
+}
+
+void QDateEdit_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_ConnectNotify(signal);
+}
+
+bool QDateEdit_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+	MiqtVirtualQDateEdit* self_cast = dynamic_cast<MiqtVirtualQDateEdit*>( (QDateEdit*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+	
+	self_cast->handle__DisconnectNotify = slot;
+	return true;
+}
+
+void QDateEdit_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQDateEdit*)(self) )->virtualbase_DisconnectNotify(signal);
 }
 
 void QDateEdit_Delete(QDateEdit* self) {

@@ -17,7 +17,9 @@ extern "C" {
 #ifdef __cplusplus
 class QAbstractAnimation;
 class QAbstractState;
+class QChildEvent;
 class QEvent;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QState;
@@ -32,16 +34,20 @@ typedef QStateMachine::WrappedEvent QStateMachine__WrappedEvent;
 #else
 class QStateMachine__WrappedEvent;
 #endif
+class QTimerEvent;
 #else
 typedef struct QAbstractAnimation QAbstractAnimation;
 typedef struct QAbstractState QAbstractState;
+typedef struct QChildEvent QChildEvent;
 typedef struct QEvent QEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QState QState;
 typedef struct QStateMachine QStateMachine;
 typedef struct QStateMachine__SignalEvent QStateMachine__SignalEvent;
 typedef struct QStateMachine__WrappedEvent QStateMachine__WrappedEvent;
+typedef struct QTimerEvent QTimerEvent;
 #endif
 
 QStateMachine* QStateMachine_new();
@@ -104,6 +110,16 @@ bool QStateMachine_override_virtual_EndMicrostep(void* self, intptr_t slot);
 void QStateMachine_virtualbase_EndMicrostep(void* self, QEvent* event);
 bool QStateMachine_override_virtual_Event(void* self, intptr_t slot);
 bool QStateMachine_virtualbase_Event(void* self, QEvent* e);
+bool QStateMachine_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QStateMachine_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QStateMachine_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QStateMachine_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QStateMachine_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QStateMachine_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QStateMachine_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QStateMachine_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QStateMachine_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QStateMachine_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QStateMachine_Delete(QStateMachine* self);
 
 QStateMachine__SignalEvent* QStateMachine__SignalEvent_new(QStateMachine__SignalEvent* param1);

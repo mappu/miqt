@@ -16,22 +16,28 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAbstractTransition;
+class QChildEvent;
 class QEvent;
 class QEventTransition;
+class QMetaMethod;
 class QMetaObject;
 class QMouseEventTransition;
 class QObject;
 class QPainterPath;
 class QState;
+class QTimerEvent;
 #else
 typedef struct QAbstractTransition QAbstractTransition;
+typedef struct QChildEvent QChildEvent;
 typedef struct QEvent QEvent;
 typedef struct QEventTransition QEventTransition;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMouseEventTransition QMouseEventTransition;
 typedef struct QObject QObject;
 typedef struct QPainterPath QPainterPath;
 typedef struct QState QState;
+typedef struct QTimerEvent QTimerEvent;
 #endif
 
 QMouseEventTransition* QMouseEventTransition_new();
@@ -61,6 +67,18 @@ bool QMouseEventTransition_override_virtual_EventTest(void* self, intptr_t slot)
 bool QMouseEventTransition_virtualbase_EventTest(void* self, QEvent* event);
 bool QMouseEventTransition_override_virtual_Event(void* self, intptr_t slot);
 bool QMouseEventTransition_virtualbase_Event(void* self, QEvent* e);
+bool QMouseEventTransition_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QMouseEventTransition_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QMouseEventTransition_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QMouseEventTransition_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QMouseEventTransition_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QMouseEventTransition_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QMouseEventTransition_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QMouseEventTransition_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QMouseEventTransition_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QMouseEventTransition_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QMouseEventTransition_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QMouseEventTransition_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QMouseEventTransition_Delete(QMouseEventTransition* self);
 
 #ifdef __cplusplus

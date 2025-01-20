@@ -18,10 +18,12 @@ extern "C" {
 class QAbstractItemDelegate;
 class QAbstractItemModel;
 class QAbstractItemView;
+class QChildEvent;
 class QEvent;
 class QHelpEvent;
 class QItemDelegate;
 class QItemEditorFactory;
+class QMetaMethod;
 class QMetaObject;
 class QModelIndex;
 class QObject;
@@ -30,15 +32,18 @@ class QPixmap;
 class QRect;
 class QSize;
 class QStyleOptionViewItem;
+class QTimerEvent;
 class QWidget;
 #else
 typedef struct QAbstractItemDelegate QAbstractItemDelegate;
 typedef struct QAbstractItemModel QAbstractItemModel;
 typedef struct QAbstractItemView QAbstractItemView;
+typedef struct QChildEvent QChildEvent;
 typedef struct QEvent QEvent;
 typedef struct QHelpEvent QHelpEvent;
 typedef struct QItemDelegate QItemDelegate;
 typedef struct QItemEditorFactory QItemEditorFactory;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QModelIndex QModelIndex;
 typedef struct QObject QObject;
@@ -47,6 +52,7 @@ typedef struct QPixmap QPixmap;
 typedef struct QRect QRect;
 typedef struct QSize QSize;
 typedef struct QStyleOptionViewItem QStyleOptionViewItem;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QWidget QWidget;
 #endif
 
@@ -104,6 +110,18 @@ bool QItemDelegate_override_virtual_HelpEvent(void* self, intptr_t slot);
 bool QItemDelegate_virtualbase_HelpEvent(void* self, QHelpEvent* event, QAbstractItemView* view, QStyleOptionViewItem* option, QModelIndex* index);
 bool QItemDelegate_override_virtual_PaintingRoles(void* self, intptr_t slot);
 struct miqt_array /* of int */  QItemDelegate_virtualbase_PaintingRoles(const void* self);
+bool QItemDelegate_override_virtual_Event(void* self, intptr_t slot);
+bool QItemDelegate_virtualbase_Event(void* self, QEvent* event);
+bool QItemDelegate_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QItemDelegate_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QItemDelegate_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QItemDelegate_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QItemDelegate_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QItemDelegate_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QItemDelegate_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QItemDelegate_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QItemDelegate_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QItemDelegate_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QItemDelegate_Delete(QItemDelegate* self);
 
 #ifdef __cplusplus

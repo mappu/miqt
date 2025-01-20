@@ -16,18 +16,24 @@ extern "C" {
 
 #ifdef __cplusplus
 class QAbstractAnimation;
+class QChildEvent;
 class QEasingCurve;
 class QEvent;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
+class QTimerEvent;
 class QVariant;
 class QVariantAnimation;
 #else
 typedef struct QAbstractAnimation QAbstractAnimation;
+typedef struct QChildEvent QChildEvent;
 typedef struct QEasingCurve QEasingCurve;
 typedef struct QEvent QEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 typedef struct QVariantAnimation QVariantAnimation;
 #endif
@@ -74,6 +80,18 @@ bool QVariantAnimation_override_virtual_Interpolated(void* self, intptr_t slot);
 QVariant* QVariantAnimation_virtualbase_Interpolated(const void* self, QVariant* from, QVariant* to, double progress);
 bool QVariantAnimation_override_virtual_UpdateDirection(void* self, intptr_t slot);
 void QVariantAnimation_virtualbase_UpdateDirection(void* self, int direction);
+bool QVariantAnimation_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QVariantAnimation_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QVariantAnimation_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QVariantAnimation_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QVariantAnimation_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QVariantAnimation_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QVariantAnimation_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QVariantAnimation_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QVariantAnimation_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QVariantAnimation_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QVariantAnimation_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QVariantAnimation_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QVariantAnimation_Delete(QVariantAnimation* self);
 
 #ifdef __cplusplus

@@ -16,6 +16,7 @@ extern "C" {
 
 #ifdef __cplusplus
 class QActionEvent;
+class QChildEvent;
 class QCloseEvent;
 class QContextMenuEvent;
 class QDragEnterEvent;
@@ -30,6 +31,7 @@ class QInputMethodEvent;
 class QKeyEvent;
 class QKeySequence;
 class QKeySequenceEdit;
+class QMetaMethod;
 class QMetaObject;
 class QMouseEvent;
 class QMoveEvent;
@@ -49,6 +51,7 @@ class QWheelEvent;
 class QWidget;
 #else
 typedef struct QActionEvent QActionEvent;
+typedef struct QChildEvent QChildEvent;
 typedef struct QCloseEvent QCloseEvent;
 typedef struct QContextMenuEvent QContextMenuEvent;
 typedef struct QDragEnterEvent QDragEnterEvent;
@@ -63,6 +66,7 @@ typedef struct QInputMethodEvent QInputMethodEvent;
 typedef struct QKeyEvent QKeyEvent;
 typedef struct QKeySequence QKeySequence;
 typedef struct QKeySequenceEdit QKeySequenceEdit;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMouseEvent QMouseEvent;
 typedef struct QMoveEvent QMoveEvent;
@@ -190,6 +194,16 @@ bool QKeySequenceEdit_override_virtual_InputMethodQuery(void* self, intptr_t slo
 QVariant* QKeySequenceEdit_virtualbase_InputMethodQuery(const void* self, int param1);
 bool QKeySequenceEdit_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QKeySequenceEdit_virtualbase_FocusNextPrevChild(void* self, bool next);
+bool QKeySequenceEdit_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QKeySequenceEdit_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QKeySequenceEdit_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QKeySequenceEdit_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QKeySequenceEdit_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QKeySequenceEdit_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QKeySequenceEdit_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QKeySequenceEdit_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QKeySequenceEdit_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QKeySequenceEdit_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QKeySequenceEdit_Delete(QKeySequenceEdit* self);
 
 #ifdef __cplusplus

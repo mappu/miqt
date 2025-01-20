@@ -323,6 +323,57 @@ func (this *QGraphicsSceneMouseEvent) SetFlags(flags MouseEventFlag) {
 	C.QGraphicsSceneMouseEvent_SetFlags(this.h, (C.int)(flags))
 }
 
+func (this *QGraphicsSceneMouseEvent) callVirtualBase_SetAccepted(accepted bool) {
+
+	C.QGraphicsSceneMouseEvent_virtualbase_SetAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
+
+}
+func (this *QGraphicsSceneMouseEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	ok := C.QGraphicsSceneMouseEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsSceneMouseEvent_SetAccepted
+func miqt_exec_callback_QGraphicsSceneMouseEvent_SetAccepted(self *C.QGraphicsSceneMouseEvent, cb C.intptr_t, accepted C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(accepted bool), accepted bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(accepted)
+
+	gofunc((&QGraphicsSceneMouseEvent{h: self}).callVirtualBase_SetAccepted, slotval1)
+
+}
+
+func (this *QGraphicsSceneMouseEvent) callVirtualBase_Clone() *QEvent {
+
+	return newQEvent(C.QGraphicsSceneMouseEvent_virtualbase_Clone(unsafe.Pointer(this.h)))
+
+}
+func (this *QGraphicsSceneMouseEvent) OnClone(slot func(super func() *QEvent) *QEvent) {
+	ok := C.QGraphicsSceneMouseEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsSceneMouseEvent_Clone
+func miqt_exec_callback_QGraphicsSceneMouseEvent_Clone(self *C.QGraphicsSceneMouseEvent, cb C.intptr_t) *C.QEvent {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QEvent) *QEvent)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QGraphicsSceneMouseEvent{h: self}).callVirtualBase_Clone)
+
+	return virtualReturn.cPointer()
+
+}
+
 // Delete this object from C++ memory.
 func (this *QGraphicsSceneMouseEvent) Delete() {
 	C.QGraphicsSceneMouseEvent_Delete(this.h)
@@ -473,6 +524,57 @@ func (this *QGraphicsSceneWheelEvent) SetInverted(inverted bool) {
 	C.QGraphicsSceneWheelEvent_SetInverted(this.h, (C.bool)(inverted))
 }
 
+func (this *QGraphicsSceneWheelEvent) callVirtualBase_SetAccepted(accepted bool) {
+
+	C.QGraphicsSceneWheelEvent_virtualbase_SetAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
+
+}
+func (this *QGraphicsSceneWheelEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	ok := C.QGraphicsSceneWheelEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsSceneWheelEvent_SetAccepted
+func miqt_exec_callback_QGraphicsSceneWheelEvent_SetAccepted(self *C.QGraphicsSceneWheelEvent, cb C.intptr_t, accepted C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(accepted bool), accepted bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(accepted)
+
+	gofunc((&QGraphicsSceneWheelEvent{h: self}).callVirtualBase_SetAccepted, slotval1)
+
+}
+
+func (this *QGraphicsSceneWheelEvent) callVirtualBase_Clone() *QEvent {
+
+	return newQEvent(C.QGraphicsSceneWheelEvent_virtualbase_Clone(unsafe.Pointer(this.h)))
+
+}
+func (this *QGraphicsSceneWheelEvent) OnClone(slot func(super func() *QEvent) *QEvent) {
+	ok := C.QGraphicsSceneWheelEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsSceneWheelEvent_Clone
+func miqt_exec_callback_QGraphicsSceneWheelEvent_Clone(self *C.QGraphicsSceneWheelEvent, cb C.intptr_t) *C.QEvent {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QEvent) *QEvent)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QGraphicsSceneWheelEvent{h: self}).callVirtualBase_Clone)
+
+	return virtualReturn.cPointer()
+
+}
+
 // Delete this object from C++ memory.
 func (this *QGraphicsSceneWheelEvent) Delete() {
 	C.QGraphicsSceneWheelEvent_Delete(this.h)
@@ -579,6 +681,57 @@ func (this *QGraphicsSceneContextMenuEvent) Reason() QGraphicsSceneContextMenuEv
 
 func (this *QGraphicsSceneContextMenuEvent) SetReason(reason QGraphicsSceneContextMenuEvent__Reason) {
 	C.QGraphicsSceneContextMenuEvent_SetReason(this.h, (C.int)(reason))
+}
+
+func (this *QGraphicsSceneContextMenuEvent) callVirtualBase_SetAccepted(accepted bool) {
+
+	C.QGraphicsSceneContextMenuEvent_virtualbase_SetAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
+
+}
+func (this *QGraphicsSceneContextMenuEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	ok := C.QGraphicsSceneContextMenuEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsSceneContextMenuEvent_SetAccepted
+func miqt_exec_callback_QGraphicsSceneContextMenuEvent_SetAccepted(self *C.QGraphicsSceneContextMenuEvent, cb C.intptr_t, accepted C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(accepted bool), accepted bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(accepted)
+
+	gofunc((&QGraphicsSceneContextMenuEvent{h: self}).callVirtualBase_SetAccepted, slotval1)
+
+}
+
+func (this *QGraphicsSceneContextMenuEvent) callVirtualBase_Clone() *QEvent {
+
+	return newQEvent(C.QGraphicsSceneContextMenuEvent_virtualbase_Clone(unsafe.Pointer(this.h)))
+
+}
+func (this *QGraphicsSceneContextMenuEvent) OnClone(slot func(super func() *QEvent) *QEvent) {
+	ok := C.QGraphicsSceneContextMenuEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsSceneContextMenuEvent_Clone
+func miqt_exec_callback_QGraphicsSceneContextMenuEvent_Clone(self *C.QGraphicsSceneContextMenuEvent, cb C.intptr_t) *C.QEvent {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QEvent) *QEvent)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QGraphicsSceneContextMenuEvent{h: self}).callVirtualBase_Clone)
+
+	return virtualReturn.cPointer()
+
 }
 
 // Delete this object from C++ memory.
@@ -711,6 +864,57 @@ func (this *QGraphicsSceneHoverEvent) SetModifiers(modifiers KeyboardModifier) {
 	C.QGraphicsSceneHoverEvent_SetModifiers(this.h, (C.int)(modifiers))
 }
 
+func (this *QGraphicsSceneHoverEvent) callVirtualBase_SetAccepted(accepted bool) {
+
+	C.QGraphicsSceneHoverEvent_virtualbase_SetAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
+
+}
+func (this *QGraphicsSceneHoverEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	ok := C.QGraphicsSceneHoverEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsSceneHoverEvent_SetAccepted
+func miqt_exec_callback_QGraphicsSceneHoverEvent_SetAccepted(self *C.QGraphicsSceneHoverEvent, cb C.intptr_t, accepted C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(accepted bool), accepted bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(accepted)
+
+	gofunc((&QGraphicsSceneHoverEvent{h: self}).callVirtualBase_SetAccepted, slotval1)
+
+}
+
+func (this *QGraphicsSceneHoverEvent) callVirtualBase_Clone() *QEvent {
+
+	return newQEvent(C.QGraphicsSceneHoverEvent_virtualbase_Clone(unsafe.Pointer(this.h)))
+
+}
+func (this *QGraphicsSceneHoverEvent) OnClone(slot func(super func() *QEvent) *QEvent) {
+	ok := C.QGraphicsSceneHoverEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsSceneHoverEvent_Clone
+func miqt_exec_callback_QGraphicsSceneHoverEvent_Clone(self *C.QGraphicsSceneHoverEvent, cb C.intptr_t) *C.QEvent {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QEvent) *QEvent)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QGraphicsSceneHoverEvent{h: self}).callVirtualBase_Clone)
+
+	return virtualReturn.cPointer()
+
+}
+
 // Delete this object from C++ memory.
 func (this *QGraphicsSceneHoverEvent) Delete() {
 	C.QGraphicsSceneHoverEvent_Delete(this.h)
@@ -791,6 +995,57 @@ func (this *QGraphicsSceneHelpEvent) ScreenPos() *QPoint {
 
 func (this *QGraphicsSceneHelpEvent) SetScreenPos(pos *QPoint) {
 	C.QGraphicsSceneHelpEvent_SetScreenPos(this.h, pos.cPointer())
+}
+
+func (this *QGraphicsSceneHelpEvent) callVirtualBase_SetAccepted(accepted bool) {
+
+	C.QGraphicsSceneHelpEvent_virtualbase_SetAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
+
+}
+func (this *QGraphicsSceneHelpEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	ok := C.QGraphicsSceneHelpEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsSceneHelpEvent_SetAccepted
+func miqt_exec_callback_QGraphicsSceneHelpEvent_SetAccepted(self *C.QGraphicsSceneHelpEvent, cb C.intptr_t, accepted C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(accepted bool), accepted bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(accepted)
+
+	gofunc((&QGraphicsSceneHelpEvent{h: self}).callVirtualBase_SetAccepted, slotval1)
+
+}
+
+func (this *QGraphicsSceneHelpEvent) callVirtualBase_Clone() *QEvent {
+
+	return newQEvent(C.QGraphicsSceneHelpEvent_virtualbase_Clone(unsafe.Pointer(this.h)))
+
+}
+func (this *QGraphicsSceneHelpEvent) OnClone(slot func(super func() *QEvent) *QEvent) {
+	ok := C.QGraphicsSceneHelpEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsSceneHelpEvent_Clone
+func miqt_exec_callback_QGraphicsSceneHelpEvent_Clone(self *C.QGraphicsSceneHelpEvent, cb C.intptr_t) *C.QEvent {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QEvent) *QEvent)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QGraphicsSceneHelpEvent{h: self}).callVirtualBase_Clone)
+
+	return virtualReturn.cPointer()
+
 }
 
 // Delete this object from C++ memory.
@@ -945,6 +1200,57 @@ func (this *QGraphicsSceneDragDropEvent) SetMimeData(data *QMimeData) {
 	C.QGraphicsSceneDragDropEvent_SetMimeData(this.h, data.cPointer())
 }
 
+func (this *QGraphicsSceneDragDropEvent) callVirtualBase_SetAccepted(accepted bool) {
+
+	C.QGraphicsSceneDragDropEvent_virtualbase_SetAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
+
+}
+func (this *QGraphicsSceneDragDropEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	ok := C.QGraphicsSceneDragDropEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsSceneDragDropEvent_SetAccepted
+func miqt_exec_callback_QGraphicsSceneDragDropEvent_SetAccepted(self *C.QGraphicsSceneDragDropEvent, cb C.intptr_t, accepted C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(accepted bool), accepted bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(accepted)
+
+	gofunc((&QGraphicsSceneDragDropEvent{h: self}).callVirtualBase_SetAccepted, slotval1)
+
+}
+
+func (this *QGraphicsSceneDragDropEvent) callVirtualBase_Clone() *QEvent {
+
+	return newQEvent(C.QGraphicsSceneDragDropEvent_virtualbase_Clone(unsafe.Pointer(this.h)))
+
+}
+func (this *QGraphicsSceneDragDropEvent) OnClone(slot func(super func() *QEvent) *QEvent) {
+	ok := C.QGraphicsSceneDragDropEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsSceneDragDropEvent_Clone
+func miqt_exec_callback_QGraphicsSceneDragDropEvent_Clone(self *C.QGraphicsSceneDragDropEvent, cb C.intptr_t) *C.QEvent {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QEvent) *QEvent)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QGraphicsSceneDragDropEvent{h: self}).callVirtualBase_Clone)
+
+	return virtualReturn.cPointer()
+
+}
+
 // Delete this object from C++ memory.
 func (this *QGraphicsSceneDragDropEvent) Delete() {
 	C.QGraphicsSceneDragDropEvent_Delete(this.h)
@@ -1021,6 +1327,57 @@ func (this *QGraphicsSceneResizeEvent) SetNewSize(size *QSizeF) {
 	C.QGraphicsSceneResizeEvent_SetNewSize(this.h, size.cPointer())
 }
 
+func (this *QGraphicsSceneResizeEvent) callVirtualBase_SetAccepted(accepted bool) {
+
+	C.QGraphicsSceneResizeEvent_virtualbase_SetAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
+
+}
+func (this *QGraphicsSceneResizeEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	ok := C.QGraphicsSceneResizeEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsSceneResizeEvent_SetAccepted
+func miqt_exec_callback_QGraphicsSceneResizeEvent_SetAccepted(self *C.QGraphicsSceneResizeEvent, cb C.intptr_t, accepted C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(accepted bool), accepted bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(accepted)
+
+	gofunc((&QGraphicsSceneResizeEvent{h: self}).callVirtualBase_SetAccepted, slotval1)
+
+}
+
+func (this *QGraphicsSceneResizeEvent) callVirtualBase_Clone() *QEvent {
+
+	return newQEvent(C.QGraphicsSceneResizeEvent_virtualbase_Clone(unsafe.Pointer(this.h)))
+
+}
+func (this *QGraphicsSceneResizeEvent) OnClone(slot func(super func() *QEvent) *QEvent) {
+	ok := C.QGraphicsSceneResizeEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsSceneResizeEvent_Clone
+func miqt_exec_callback_QGraphicsSceneResizeEvent_Clone(self *C.QGraphicsSceneResizeEvent, cb C.intptr_t) *C.QEvent {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QEvent) *QEvent)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QGraphicsSceneResizeEvent{h: self}).callVirtualBase_Clone)
+
+	return virtualReturn.cPointer()
+
+}
+
 // Delete this object from C++ memory.
 func (this *QGraphicsSceneResizeEvent) Delete() {
 	C.QGraphicsSceneResizeEvent_Delete(this.h)
@@ -1095,6 +1452,57 @@ func (this *QGraphicsSceneMoveEvent) NewPos() *QPointF {
 
 func (this *QGraphicsSceneMoveEvent) SetNewPos(pos *QPointF) {
 	C.QGraphicsSceneMoveEvent_SetNewPos(this.h, pos.cPointer())
+}
+
+func (this *QGraphicsSceneMoveEvent) callVirtualBase_SetAccepted(accepted bool) {
+
+	C.QGraphicsSceneMoveEvent_virtualbase_SetAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))
+
+}
+func (this *QGraphicsSceneMoveEvent) OnSetAccepted(slot func(super func(accepted bool), accepted bool)) {
+	ok := C.QGraphicsSceneMoveEvent_override_virtual_SetAccepted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsSceneMoveEvent_SetAccepted
+func miqt_exec_callback_QGraphicsSceneMoveEvent_SetAccepted(self *C.QGraphicsSceneMoveEvent, cb C.intptr_t, accepted C.bool) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(accepted bool), accepted bool))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (bool)(accepted)
+
+	gofunc((&QGraphicsSceneMoveEvent{h: self}).callVirtualBase_SetAccepted, slotval1)
+
+}
+
+func (this *QGraphicsSceneMoveEvent) callVirtualBase_Clone() *QEvent {
+
+	return newQEvent(C.QGraphicsSceneMoveEvent_virtualbase_Clone(unsafe.Pointer(this.h)))
+
+}
+func (this *QGraphicsSceneMoveEvent) OnClone(slot func(super func() *QEvent) *QEvent) {
+	ok := C.QGraphicsSceneMoveEvent_override_virtual_Clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsSceneMoveEvent_Clone
+func miqt_exec_callback_QGraphicsSceneMoveEvent_Clone(self *C.QGraphicsSceneMoveEvent, cb C.intptr_t) *C.QEvent {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QEvent) *QEvent)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QGraphicsSceneMoveEvent{h: self}).callVirtualBase_Clone)
+
+	return virtualReturn.cPointer()
+
 }
 
 // Delete this object from C++ memory.

@@ -719,6 +719,325 @@ func miqt_exec_callback_QTcpSocket_WriteData(self *C.QTcpSocket, cb C.intptr_t, 
 
 }
 
+func (this *QTcpSocket) callVirtualBase_Open(mode qt.QIODevice__OpenModeFlag) bool {
+
+	return (bool)(C.QTcpSocket_virtualbase_Open(unsafe.Pointer(this.h), (C.int)(mode)))
+
+}
+func (this *QTcpSocket) OnOpen(slot func(super func(mode qt.QIODevice__OpenModeFlag) bool, mode qt.QIODevice__OpenModeFlag) bool) {
+	ok := C.QTcpSocket_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTcpSocket_Open
+func miqt_exec_callback_QTcpSocket_Open(self *C.QTcpSocket, cb C.intptr_t, mode C.int) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(mode qt.QIODevice__OpenModeFlag) bool, mode qt.QIODevice__OpenModeFlag) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (qt.QIODevice__OpenModeFlag)(mode)
+
+	virtualReturn := gofunc((&QTcpSocket{h: self}).callVirtualBase_Open, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QTcpSocket) callVirtualBase_Pos() int64 {
+
+	return (int64)(C.QTcpSocket_virtualbase_Pos(unsafe.Pointer(this.h)))
+
+}
+func (this *QTcpSocket) OnPos(slot func(super func() int64) int64) {
+	ok := C.QTcpSocket_override_virtual_Pos(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTcpSocket_Pos
+func miqt_exec_callback_QTcpSocket_Pos(self *C.QTcpSocket, cb C.intptr_t) C.longlong {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTcpSocket{h: self}).callVirtualBase_Pos)
+
+	return (C.longlong)(virtualReturn)
+
+}
+
+func (this *QTcpSocket) callVirtualBase_Size() int64 {
+
+	return (int64)(C.QTcpSocket_virtualbase_Size(unsafe.Pointer(this.h)))
+
+}
+func (this *QTcpSocket) OnSize(slot func(super func() int64) int64) {
+	ok := C.QTcpSocket_override_virtual_Size(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTcpSocket_Size
+func miqt_exec_callback_QTcpSocket_Size(self *C.QTcpSocket, cb C.intptr_t) C.longlong {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTcpSocket{h: self}).callVirtualBase_Size)
+
+	return (C.longlong)(virtualReturn)
+
+}
+
+func (this *QTcpSocket) callVirtualBase_Seek(pos int64) bool {
+
+	return (bool)(C.QTcpSocket_virtualbase_Seek(unsafe.Pointer(this.h), (C.longlong)(pos)))
+
+}
+func (this *QTcpSocket) OnSeek(slot func(super func(pos int64) bool, pos int64) bool) {
+	ok := C.QTcpSocket_override_virtual_Seek(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTcpSocket_Seek
+func miqt_exec_callback_QTcpSocket_Seek(self *C.QTcpSocket, cb C.intptr_t, pos C.longlong) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(pos int64) bool, pos int64) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (int64)(pos)
+
+	virtualReturn := gofunc((&QTcpSocket{h: self}).callVirtualBase_Seek, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QTcpSocket) callVirtualBase_Reset() bool {
+
+	return (bool)(C.QTcpSocket_virtualbase_Reset(unsafe.Pointer(this.h)))
+
+}
+func (this *QTcpSocket) OnReset(slot func(super func() bool) bool) {
+	ok := C.QTcpSocket_override_virtual_Reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTcpSocket_Reset
+func miqt_exec_callback_QTcpSocket_Reset(self *C.QTcpSocket, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QTcpSocket{h: self}).callVirtualBase_Reset)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QTcpSocket) callVirtualBase_Event(event *qt.QEvent) bool {
+
+	return (bool)(C.QTcpSocket_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QTcpSocket) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	ok := C.QTcpSocket_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTcpSocket_Event
+func miqt_exec_callback_QTcpSocket_Event(self *C.QTcpSocket, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QTcpSocket{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QTcpSocket) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
+
+	return (bool)(C.QTcpSocket_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+
+}
+func (this *QTcpSocket) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	ok := C.QTcpSocket_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTcpSocket_EventFilter
+func miqt_exec_callback_QTcpSocket_EventFilter(self *C.QTcpSocket, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQObject(unsafe.Pointer(watched))
+
+	slotval2 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	virtualReturn := gofunc((&QTcpSocket{h: self}).callVirtualBase_EventFilter, slotval1, slotval2)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QTcpSocket) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
+
+	C.QTcpSocket_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+
+}
+func (this *QTcpSocket) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	ok := C.QTcpSocket_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTcpSocket_TimerEvent
+func miqt_exec_callback_QTcpSocket_TimerEvent(self *C.QTcpSocket, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQTimerEvent(unsafe.Pointer(event))
+
+	gofunc((&QTcpSocket{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QTcpSocket) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
+
+	C.QTcpSocket_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+
+}
+func (this *QTcpSocket) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	ok := C.QTcpSocket_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTcpSocket_ChildEvent
+func miqt_exec_callback_QTcpSocket_ChildEvent(self *C.QTcpSocket, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQChildEvent(unsafe.Pointer(event))
+
+	gofunc((&QTcpSocket{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QTcpSocket) callVirtualBase_CustomEvent(event *qt.QEvent) {
+
+	C.QTcpSocket_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+
+}
+func (this *QTcpSocket) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QTcpSocket_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTcpSocket_CustomEvent
+func miqt_exec_callback_QTcpSocket_CustomEvent(self *C.QTcpSocket, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQEvent(unsafe.Pointer(event))
+
+	gofunc((&QTcpSocket{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QTcpSocket) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
+
+	C.QTcpSocket_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QTcpSocket) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QTcpSocket_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTcpSocket_ConnectNotify
+func miqt_exec_callback_QTcpSocket_ConnectNotify(self *C.QTcpSocket, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QTcpSocket{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QTcpSocket) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
+
+	C.QTcpSocket_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+
+}
+func (this *QTcpSocket) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QTcpSocket_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QTcpSocket_DisconnectNotify
+func miqt_exec_callback_QTcpSocket_DisconnectNotify(self *C.QTcpSocket, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt.UnsafeNewQMetaMethod(unsafe.Pointer(signal))
+
+	gofunc((&QTcpSocket{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QTcpSocket) Delete() {
 	C.QTcpSocket_Delete(this.h)

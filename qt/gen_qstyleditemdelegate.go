@@ -584,6 +584,164 @@ func miqt_exec_callback_QStyledItemDelegate_PaintingRoles(self *C.QStyledItemDel
 
 }
 
+func (this *QStyledItemDelegate) callVirtualBase_Event(event *QEvent) bool {
+
+	return (bool)(C.QStyledItemDelegate_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+
+}
+func (this *QStyledItemDelegate) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QStyledItemDelegate_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QStyledItemDelegate_Event
+func miqt_exec_callback_QStyledItemDelegate_Event(self *C.QStyledItemDelegate, cb C.intptr_t, event *C.QEvent) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	virtualReturn := gofunc((&QStyledItemDelegate{h: self}).callVirtualBase_Event, slotval1)
+
+	return (C.bool)(virtualReturn)
+
+}
+
+func (this *QStyledItemDelegate) callVirtualBase_TimerEvent(event *QTimerEvent) {
+
+	C.QStyledItemDelegate_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QStyledItemDelegate) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QStyledItemDelegate_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QStyledItemDelegate_TimerEvent
+func miqt_exec_callback_QStyledItemDelegate_TimerEvent(self *C.QStyledItemDelegate, cb C.intptr_t, event *C.QTimerEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQTimerEvent(event)
+
+	gofunc((&QStyledItemDelegate{h: self}).callVirtualBase_TimerEvent, slotval1)
+
+}
+
+func (this *QStyledItemDelegate) callVirtualBase_ChildEvent(event *QChildEvent) {
+
+	C.QStyledItemDelegate_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QStyledItemDelegate) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QStyledItemDelegate_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QStyledItemDelegate_ChildEvent
+func miqt_exec_callback_QStyledItemDelegate_ChildEvent(self *C.QStyledItemDelegate, cb C.intptr_t, event *C.QChildEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQChildEvent(event)
+
+	gofunc((&QStyledItemDelegate{h: self}).callVirtualBase_ChildEvent, slotval1)
+
+}
+
+func (this *QStyledItemDelegate) callVirtualBase_CustomEvent(event *QEvent) {
+
+	C.QStyledItemDelegate_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+
+}
+func (this *QStyledItemDelegate) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QStyledItemDelegate_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QStyledItemDelegate_CustomEvent
+func miqt_exec_callback_QStyledItemDelegate_CustomEvent(self *C.QStyledItemDelegate, cb C.intptr_t, event *C.QEvent) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQEvent(event)
+
+	gofunc((&QStyledItemDelegate{h: self}).callVirtualBase_CustomEvent, slotval1)
+
+}
+
+func (this *QStyledItemDelegate) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
+
+	C.QStyledItemDelegate_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QStyledItemDelegate) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QStyledItemDelegate_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QStyledItemDelegate_ConnectNotify
+func miqt_exec_callback_QStyledItemDelegate_ConnectNotify(self *C.QStyledItemDelegate, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QStyledItemDelegate{h: self}).callVirtualBase_ConnectNotify, slotval1)
+
+}
+
+func (this *QStyledItemDelegate) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
+
+	C.QStyledItemDelegate_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+
+}
+func (this *QStyledItemDelegate) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QStyledItemDelegate_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QStyledItemDelegate_DisconnectNotify
+func miqt_exec_callback_QStyledItemDelegate_DisconnectNotify(self *C.QStyledItemDelegate, cb C.intptr_t, signal *C.QMetaMethod) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQMetaMethod(signal)
+
+	gofunc((&QStyledItemDelegate{h: self}).callVirtualBase_DisconnectNotify, slotval1)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QStyledItemDelegate) Delete() {
 	C.QStyledItemDelegate_Delete(this.h)

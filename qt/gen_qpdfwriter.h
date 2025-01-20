@@ -29,7 +29,9 @@ class QPagedPaintDevice__Margins;
 #endif
 class QPaintDevice;
 class QPaintEngine;
+class QPainter;
 class QPdfWriter;
+class QPoint;
 class QSizeF;
 class QTimerEvent;
 #else
@@ -43,7 +45,9 @@ typedef struct QPagedPaintDevice QPagedPaintDevice;
 typedef struct QPagedPaintDevice__Margins QPagedPaintDevice__Margins;
 typedef struct QPaintDevice QPaintDevice;
 typedef struct QPaintEngine QPaintEngine;
+typedef struct QPainter QPainter;
 typedef struct QPdfWriter QPdfWriter;
+typedef struct QPoint QPoint;
 typedef struct QSizeF QSizeF;
 typedef struct QTimerEvent QTimerEvent;
 #endif
@@ -103,6 +107,14 @@ bool QPdfWriter_override_virtual_ConnectNotify(void* self, intptr_t slot);
 void QPdfWriter_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
 bool QPdfWriter_override_virtual_DisconnectNotify(void* self, intptr_t slot);
 void QPdfWriter_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
+bool QPdfWriter_override_virtual_DevType(void* self, intptr_t slot);
+int QPdfWriter_virtualbase_DevType(const void* self);
+bool QPdfWriter_override_virtual_InitPainter(void* self, intptr_t slot);
+void QPdfWriter_virtualbase_InitPainter(const void* self, QPainter* painter);
+bool QPdfWriter_override_virtual_Redirected(void* self, intptr_t slot);
+QPaintDevice* QPdfWriter_virtualbase_Redirected(const void* self, QPoint* offset);
+bool QPdfWriter_override_virtual_SharedPainter(void* self, intptr_t slot);
+QPainter* QPdfWriter_virtualbase_SharedPainter(const void* self);
 void QPdfWriter_Delete(QPdfWriter* self);
 
 #ifdef __cplusplus

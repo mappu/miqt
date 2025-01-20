@@ -474,6 +474,31 @@ func miqt_exec_callback_QGraphicsAnchorLayout_WidgetEvent(self *C.QGraphicsAncho
 
 }
 
+func (this *QGraphicsAnchorLayout) callVirtualBase_IsEmpty() bool {
+
+	return (bool)(C.QGraphicsAnchorLayout_virtualbase_IsEmpty(unsafe.Pointer(this.h)))
+
+}
+func (this *QGraphicsAnchorLayout) OnIsEmpty(slot func(super func() bool) bool) {
+	ok := C.QGraphicsAnchorLayout_override_virtual_IsEmpty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QGraphicsAnchorLayout_IsEmpty
+func miqt_exec_callback_QGraphicsAnchorLayout_IsEmpty(self *C.QGraphicsAnchorLayout, cb C.intptr_t) C.bool {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc((&QGraphicsAnchorLayout{h: self}).callVirtualBase_IsEmpty)
+
+	return (C.bool)(virtualReturn)
+
+}
+
 // Delete this object from C++ memory.
 func (this *QGraphicsAnchorLayout) Delete() {
 	C.QGraphicsAnchorLayout_Delete(this.h)

@@ -18,20 +18,28 @@ extern "C" {
 class QAudioBuffer;
 class QAudioDecoder;
 class QAudioFormat;
+class QChildEvent;
+class QEvent;
 class QIODevice;
 class QMediaObject;
 class QMediaService;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
+class QTimerEvent;
 #else
 typedef struct QAudioBuffer QAudioBuffer;
 typedef struct QAudioDecoder QAudioDecoder;
 typedef struct QAudioFormat QAudioFormat;
+typedef struct QChildEvent QChildEvent;
+typedef struct QEvent QEvent;
 typedef struct QIODevice QIODevice;
 typedef struct QMediaObject QMediaObject;
 typedef struct QMediaService QMediaService;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
+typedef struct QTimerEvent QTimerEvent;
 #endif
 
 QAudioDecoder* QAudioDecoder_new();
@@ -92,6 +100,20 @@ bool QAudioDecoder_override_virtual_Availability(void* self, intptr_t slot);
 int QAudioDecoder_virtualbase_Availability(const void* self);
 bool QAudioDecoder_override_virtual_Service(void* self, intptr_t slot);
 QMediaService* QAudioDecoder_virtualbase_Service(const void* self);
+bool QAudioDecoder_override_virtual_Event(void* self, intptr_t slot);
+bool QAudioDecoder_virtualbase_Event(void* self, QEvent* event);
+bool QAudioDecoder_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QAudioDecoder_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QAudioDecoder_override_virtual_TimerEvent(void* self, intptr_t slot);
+void QAudioDecoder_virtualbase_TimerEvent(void* self, QTimerEvent* event);
+bool QAudioDecoder_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QAudioDecoder_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QAudioDecoder_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QAudioDecoder_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QAudioDecoder_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QAudioDecoder_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QAudioDecoder_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QAudioDecoder_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QAudioDecoder_Delete(QAudioDecoder* self);
 
 #ifdef __cplusplus

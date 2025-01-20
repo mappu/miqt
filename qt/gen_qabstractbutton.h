@@ -18,6 +18,7 @@ extern "C" {
 class QAbstractButton;
 class QActionEvent;
 class QButtonGroup;
+class QChildEvent;
 class QCloseEvent;
 class QContextMenuEvent;
 class QDragEnterEvent;
@@ -31,6 +32,7 @@ class QIcon;
 class QInputMethodEvent;
 class QKeyEvent;
 class QKeySequence;
+class QMetaMethod;
 class QMetaObject;
 class QMouseEvent;
 class QMoveEvent;
@@ -52,6 +54,7 @@ class QWidget;
 typedef struct QAbstractButton QAbstractButton;
 typedef struct QActionEvent QActionEvent;
 typedef struct QButtonGroup QButtonGroup;
+typedef struct QChildEvent QChildEvent;
 typedef struct QCloseEvent QCloseEvent;
 typedef struct QContextMenuEvent QContextMenuEvent;
 typedef struct QDragEnterEvent QDragEnterEvent;
@@ -65,6 +68,7 @@ typedef struct QIcon QIcon;
 typedef struct QInputMethodEvent QInputMethodEvent;
 typedef struct QKeyEvent QKeyEvent;
 typedef struct QKeySequence QKeySequence;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMouseEvent QMouseEvent;
 typedef struct QMoveEvent QMoveEvent;
@@ -236,6 +240,16 @@ bool QAbstractButton_override_virtual_InputMethodQuery(void* self, intptr_t slot
 QVariant* QAbstractButton_virtualbase_InputMethodQuery(const void* self, int param1);
 bool QAbstractButton_override_virtual_FocusNextPrevChild(void* self, intptr_t slot);
 bool QAbstractButton_virtualbase_FocusNextPrevChild(void* self, bool next);
+bool QAbstractButton_override_virtual_EventFilter(void* self, intptr_t slot);
+bool QAbstractButton_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
+bool QAbstractButton_override_virtual_ChildEvent(void* self, intptr_t slot);
+void QAbstractButton_virtualbase_ChildEvent(void* self, QChildEvent* event);
+bool QAbstractButton_override_virtual_CustomEvent(void* self, intptr_t slot);
+void QAbstractButton_virtualbase_CustomEvent(void* self, QEvent* event);
+bool QAbstractButton_override_virtual_ConnectNotify(void* self, intptr_t slot);
+void QAbstractButton_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
+bool QAbstractButton_override_virtual_DisconnectNotify(void* self, intptr_t slot);
+void QAbstractButton_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
 void QAbstractButton_Delete(QAbstractButton* self);
 
 #ifdef __cplusplus
