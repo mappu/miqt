@@ -90,17 +90,29 @@ func (this *QHttpPart) SetHeader(header QNetworkRequest__KnownHeaders, value *qt
 
 func (this *QHttpPart) SetRawHeader(headerName []byte, headerValue []byte) {
 	headerName_alias := C.struct_miqt_string{}
-	headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
+	if len(headerName) > 0 {
+		headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
+	} else {
+		headerName_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	headerName_alias.len = C.size_t(len(headerName))
 	headerValue_alias := C.struct_miqt_string{}
-	headerValue_alias.data = (*C.char)(unsafe.Pointer(&headerValue[0]))
+	if len(headerValue) > 0 {
+		headerValue_alias.data = (*C.char)(unsafe.Pointer(&headerValue[0]))
+	} else {
+		headerValue_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	headerValue_alias.len = C.size_t(len(headerValue))
 	C.QHttpPart_SetRawHeader(this.h, headerName_alias, headerValue_alias)
 }
 
 func (this *QHttpPart) SetBody(body []byte) {
 	body_alias := C.struct_miqt_string{}
-	body_alias.data = (*C.char)(unsafe.Pointer(&body[0]))
+	if len(body) > 0 {
+		body_alias.data = (*C.char)(unsafe.Pointer(&body[0]))
+	} else {
+		body_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	body_alias.len = C.size_t(len(body))
 	C.QHttpPart_SetBody(this.h, body_alias)
 }
@@ -228,7 +240,11 @@ func (this *QHttpMultiPart) Boundary() []byte {
 
 func (this *QHttpMultiPart) SetBoundary(boundary []byte) {
 	boundary_alias := C.struct_miqt_string{}
-	boundary_alias.data = (*C.char)(unsafe.Pointer(&boundary[0]))
+	if len(boundary) > 0 {
+		boundary_alias.data = (*C.char)(unsafe.Pointer(&boundary[0]))
+	} else {
+		boundary_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	boundary_alias.len = C.size_t(len(boundary))
 	C.QHttpMultiPart_SetBoundary(this.h, boundary_alias)
 }

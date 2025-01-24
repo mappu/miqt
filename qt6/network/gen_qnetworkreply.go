@@ -165,7 +165,11 @@ func (this *QNetworkReply) Header(header QNetworkRequest__KnownHeaders) *qt6.QVa
 
 func (this *QNetworkReply) HasRawHeader(headerName []byte) bool {
 	headerName_alias := C.struct_miqt_string{}
-	headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
+	if len(headerName) > 0 {
+		headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
+	} else {
+		headerName_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	headerName_alias.len = C.size_t(len(headerName))
 	return (bool)(C.QNetworkReply_HasRawHeader(this.h, headerName_alias))
 }
@@ -185,7 +189,11 @@ func (this *QNetworkReply) RawHeaderList() [][]byte {
 
 func (this *QNetworkReply) RawHeader(headerName []byte) []byte {
 	headerName_alias := C.struct_miqt_string{}
-	headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
+	if len(headerName) > 0 {
+		headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
+	} else {
+		headerName_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	headerName_alias.len = C.size_t(len(headerName))
 	var _bytearray C.struct_miqt_string = C.QNetworkReply_RawHeader(this.h, headerName_alias)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))

@@ -74,7 +74,11 @@ func (this *QCborStreamWriter) AppendWithQCborNegativeInteger(n QCborNegativeInt
 
 func (this *QCborStreamWriter) AppendWithBa(ba []byte) {
 	ba_alias := C.struct_miqt_string{}
-	ba_alias.data = (*C.char)(unsafe.Pointer(&ba[0]))
+	if len(ba) > 0 {
+		ba_alias.data = (*C.char)(unsafe.Pointer(&ba[0]))
+	} else {
+		ba_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	ba_alias.len = C.size_t(len(ba))
 	C.QCborStreamWriter_AppendWithBa(this.h, ba_alias)
 }

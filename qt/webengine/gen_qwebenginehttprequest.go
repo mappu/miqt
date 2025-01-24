@@ -149,14 +149,22 @@ func (this *QWebEngineHttpRequest) PostData() []byte {
 
 func (this *QWebEngineHttpRequest) SetPostData(postData []byte) {
 	postData_alias := C.struct_miqt_string{}
-	postData_alias.data = (*C.char)(unsafe.Pointer(&postData[0]))
+	if len(postData) > 0 {
+		postData_alias.data = (*C.char)(unsafe.Pointer(&postData[0]))
+	} else {
+		postData_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	postData_alias.len = C.size_t(len(postData))
 	C.QWebEngineHttpRequest_SetPostData(this.h, postData_alias)
 }
 
 func (this *QWebEngineHttpRequest) HasHeader(headerName []byte) bool {
 	headerName_alias := C.struct_miqt_string{}
-	headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
+	if len(headerName) > 0 {
+		headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
+	} else {
+		headerName_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	headerName_alias.len = C.size_t(len(headerName))
 	return (bool)(C.QWebEngineHttpRequest_HasHeader(this.h, headerName_alias))
 }
@@ -176,7 +184,11 @@ func (this *QWebEngineHttpRequest) Headers() [][]byte {
 
 func (this *QWebEngineHttpRequest) Header(headerName []byte) []byte {
 	headerName_alias := C.struct_miqt_string{}
-	headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
+	if len(headerName) > 0 {
+		headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
+	} else {
+		headerName_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	headerName_alias.len = C.size_t(len(headerName))
 	var _bytearray C.struct_miqt_string = C.QWebEngineHttpRequest_Header(this.h, headerName_alias)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
@@ -186,17 +198,29 @@ func (this *QWebEngineHttpRequest) Header(headerName []byte) []byte {
 
 func (this *QWebEngineHttpRequest) SetHeader(headerName []byte, value []byte) {
 	headerName_alias := C.struct_miqt_string{}
-	headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
+	if len(headerName) > 0 {
+		headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
+	} else {
+		headerName_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	headerName_alias.len = C.size_t(len(headerName))
 	value_alias := C.struct_miqt_string{}
-	value_alias.data = (*C.char)(unsafe.Pointer(&value[0]))
+	if len(value) > 0 {
+		value_alias.data = (*C.char)(unsafe.Pointer(&value[0]))
+	} else {
+		value_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	value_alias.len = C.size_t(len(value))
 	C.QWebEngineHttpRequest_SetHeader(this.h, headerName_alias, value_alias)
 }
 
 func (this *QWebEngineHttpRequest) UnsetHeader(headerName []byte) {
 	headerName_alias := C.struct_miqt_string{}
-	headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
+	if len(headerName) > 0 {
+		headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
+	} else {
+		headerName_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	headerName_alias.len = C.size_t(len(headerName))
 	C.QWebEngineHttpRequest_UnsetHeader(this.h, headerName_alias)
 }

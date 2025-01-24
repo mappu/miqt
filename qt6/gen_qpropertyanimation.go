@@ -59,7 +59,11 @@ func NewQPropertyAnimation() *QPropertyAnimation {
 // NewQPropertyAnimation2 constructs a new QPropertyAnimation object.
 func NewQPropertyAnimation2(target *QObject, propertyName []byte) *QPropertyAnimation {
 	propertyName_alias := C.struct_miqt_string{}
-	propertyName_alias.data = (*C.char)(unsafe.Pointer(&propertyName[0]))
+	if len(propertyName) > 0 {
+		propertyName_alias.data = (*C.char)(unsafe.Pointer(&propertyName[0]))
+	} else {
+		propertyName_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	propertyName_alias.len = C.size_t(len(propertyName))
 
 	return newQPropertyAnimation(C.QPropertyAnimation_new2(target.cPointer(), propertyName_alias))
@@ -74,7 +78,11 @@ func NewQPropertyAnimation3(parent *QObject) *QPropertyAnimation {
 // NewQPropertyAnimation4 constructs a new QPropertyAnimation object.
 func NewQPropertyAnimation4(target *QObject, propertyName []byte, parent *QObject) *QPropertyAnimation {
 	propertyName_alias := C.struct_miqt_string{}
-	propertyName_alias.data = (*C.char)(unsafe.Pointer(&propertyName[0]))
+	if len(propertyName) > 0 {
+		propertyName_alias.data = (*C.char)(unsafe.Pointer(&propertyName[0]))
+	} else {
+		propertyName_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	propertyName_alias.len = C.size_t(len(propertyName))
 
 	return newQPropertyAnimation(C.QPropertyAnimation_new4(target.cPointer(), propertyName_alias, parent.cPointer()))
@@ -116,7 +124,11 @@ func (this *QPropertyAnimation) PropertyName() []byte {
 
 func (this *QPropertyAnimation) SetPropertyName(propertyName []byte) {
 	propertyName_alias := C.struct_miqt_string{}
-	propertyName_alias.data = (*C.char)(unsafe.Pointer(&propertyName[0]))
+	if len(propertyName) > 0 {
+		propertyName_alias.data = (*C.char)(unsafe.Pointer(&propertyName[0]))
+	} else {
+		propertyName_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	propertyName_alias.len = C.size_t(len(propertyName))
 	C.QPropertyAnimation_SetPropertyName(this.h, propertyName_alias)
 }

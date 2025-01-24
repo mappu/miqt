@@ -119,7 +119,11 @@ func (this *QWebView) SetHtml(html string) {
 
 func (this *QWebView) SetContent(data []byte) {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	C.QWebView_SetContent(this.h, data_alias)
 }
@@ -492,7 +496,11 @@ func (this *QWebView) Load2(request *network.QNetworkRequest, operation network.
 
 func (this *QWebView) Load3(request *network.QNetworkRequest, operation network.QNetworkAccessManager__Operation, body []byte) {
 	body_alias := C.struct_miqt_string{}
-	body_alias.data = (*C.char)(unsafe.Pointer(&body[0]))
+	if len(body) > 0 {
+		body_alias.data = (*C.char)(unsafe.Pointer(&body[0]))
+	} else {
+		body_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	body_alias.len = C.size_t(len(body))
 	C.QWebView_Load3(this.h, (*C.QNetworkRequest)(request.UnsafePointer()), (C.int)(operation), body_alias)
 }
@@ -507,7 +515,11 @@ func (this *QWebView) SetHtml2(html string, baseUrl *qt.QUrl) {
 
 func (this *QWebView) SetContent2(data []byte, mimeType string) {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	mimeType_ms := C.struct_miqt_string{}
 	mimeType_ms.data = C.CString(mimeType)
@@ -518,7 +530,11 @@ func (this *QWebView) SetContent2(data []byte, mimeType string) {
 
 func (this *QWebView) SetContent3(data []byte, mimeType string, baseUrl *qt.QUrl) {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	mimeType_ms := C.struct_miqt_string{}
 	mimeType_ms.data = C.CString(mimeType)
@@ -1518,7 +1534,11 @@ func miqt_exec_callback_QWebView_HideEvent(self *C.QWebView, cb C.intptr_t, even
 
 func (this *QWebView) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
 	eventType_alias := C.struct_miqt_string{}
-	eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	if len(eventType) > 0 {
+		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	} else {
+		eventType_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	eventType_alias.len = C.size_t(len(eventType))
 
 	return (bool)(C.QWebView_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))

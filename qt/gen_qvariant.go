@@ -200,7 +200,11 @@ func NewQVariant14(str string) *QVariant {
 // NewQVariant15 constructs a new QVariant object.
 func NewQVariant15(bytearray []byte) *QVariant {
 	bytearray_alias := C.struct_miqt_string{}
-	bytearray_alias.data = (*C.char)(unsafe.Pointer(&bytearray[0]))
+	if len(bytearray) > 0 {
+		bytearray_alias.data = (*C.char)(unsafe.Pointer(&bytearray[0]))
+	} else {
+		bytearray_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	bytearray_alias.len = C.size_t(len(bytearray))
 
 	return newQVariant(C.QVariant_new15(bytearray_alias))

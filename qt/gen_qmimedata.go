@@ -193,7 +193,11 @@ func (this *QMimeData) SetData(mimetype string, data []byte) {
 	mimetype_ms.len = C.size_t(len(mimetype))
 	defer C.free(unsafe.Pointer(mimetype_ms.data))
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	C.QMimeData_SetData(this.h, mimetype_ms, data_alias)
 }

@@ -94,7 +94,11 @@ func NewQMediaServiceProviderHint2(mimeType string, codecs []string) *QMediaServ
 // NewQMediaServiceProviderHint3 constructs a new QMediaServiceProviderHint object.
 func NewQMediaServiceProviderHint3(device []byte) *QMediaServiceProviderHint {
 	device_alias := C.struct_miqt_string{}
-	device_alias.data = (*C.char)(unsafe.Pointer(&device[0]))
+	if len(device) > 0 {
+		device_alias.data = (*C.char)(unsafe.Pointer(&device[0]))
+	} else {
+		device_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	device_alias.len = C.size_t(len(device))
 
 	return newQMediaServiceProviderHint(C.QMediaServiceProviderHint_new3(device_alias))
@@ -364,7 +368,11 @@ func UnsafeNewQMediaServiceSupportedDevicesInterface(h unsafe.Pointer) *QMediaSe
 
 func (this *QMediaServiceSupportedDevicesInterface) Devices(service []byte) [][]byte {
 	service_alias := C.struct_miqt_string{}
-	service_alias.data = (*C.char)(unsafe.Pointer(&service[0]))
+	if len(service) > 0 {
+		service_alias.data = (*C.char)(unsafe.Pointer(&service[0]))
+	} else {
+		service_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	service_alias.len = C.size_t(len(service))
 	var _ma C.struct_miqt_array = C.QMediaServiceSupportedDevicesInterface_Devices(this.h, service_alias)
 	_ret := make([][]byte, int(_ma.len))
@@ -380,10 +388,18 @@ func (this *QMediaServiceSupportedDevicesInterface) Devices(service []byte) [][]
 
 func (this *QMediaServiceSupportedDevicesInterface) DeviceDescription(service []byte, device []byte) string {
 	service_alias := C.struct_miqt_string{}
-	service_alias.data = (*C.char)(unsafe.Pointer(&service[0]))
+	if len(service) > 0 {
+		service_alias.data = (*C.char)(unsafe.Pointer(&service[0]))
+	} else {
+		service_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	service_alias.len = C.size_t(len(service))
 	device_alias := C.struct_miqt_string{}
-	device_alias.data = (*C.char)(unsafe.Pointer(&device[0]))
+	if len(device) > 0 {
+		device_alias.data = (*C.char)(unsafe.Pointer(&device[0]))
+	} else {
+		device_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	device_alias.len = C.size_t(len(device))
 	var _ms C.struct_miqt_string = C.QMediaServiceSupportedDevicesInterface_DeviceDescription(this.h, service_alias, device_alias)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
@@ -443,7 +459,11 @@ func UnsafeNewQMediaServiceDefaultDeviceInterface(h unsafe.Pointer) *QMediaServi
 
 func (this *QMediaServiceDefaultDeviceInterface) DefaultDevice(service []byte) []byte {
 	service_alias := C.struct_miqt_string{}
-	service_alias.data = (*C.char)(unsafe.Pointer(&service[0]))
+	if len(service) > 0 {
+		service_alias.data = (*C.char)(unsafe.Pointer(&service[0]))
+	} else {
+		service_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	service_alias.len = C.size_t(len(service))
 	var _bytearray C.struct_miqt_string = C.QMediaServiceDefaultDeviceInterface_DefaultDevice(this.h, service_alias)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
@@ -503,14 +523,22 @@ func UnsafeNewQMediaServiceCameraInfoInterface(h unsafe.Pointer) *QMediaServiceC
 
 func (this *QMediaServiceCameraInfoInterface) CameraPosition(device []byte) QCamera__Position {
 	device_alias := C.struct_miqt_string{}
-	device_alias.data = (*C.char)(unsafe.Pointer(&device[0]))
+	if len(device) > 0 {
+		device_alias.data = (*C.char)(unsafe.Pointer(&device[0]))
+	} else {
+		device_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	device_alias.len = C.size_t(len(device))
 	return (QCamera__Position)(C.QMediaServiceCameraInfoInterface_CameraPosition(this.h, device_alias))
 }
 
 func (this *QMediaServiceCameraInfoInterface) CameraOrientation(device []byte) int {
 	device_alias := C.struct_miqt_string{}
-	device_alias.data = (*C.char)(unsafe.Pointer(&device[0]))
+	if len(device) > 0 {
+		device_alias.data = (*C.char)(unsafe.Pointer(&device[0]))
+	} else {
+		device_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	device_alias.len = C.size_t(len(device))
 	return (int)(C.QMediaServiceCameraInfoInterface_CameraOrientation(this.h, device_alias))
 }
@@ -567,7 +595,11 @@ func UnsafeNewQMediaServiceFeaturesInterface(h unsafe.Pointer) *QMediaServiceFea
 
 func (this *QMediaServiceFeaturesInterface) SupportedFeatures(service []byte) QMediaServiceProviderHint__Feature {
 	service_alias := C.struct_miqt_string{}
-	service_alias.data = (*C.char)(unsafe.Pointer(&service[0]))
+	if len(service) > 0 {
+		service_alias.data = (*C.char)(unsafe.Pointer(&service[0]))
+	} else {
+		service_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	service_alias.len = C.size_t(len(service))
 	return (QMediaServiceProviderHint__Feature)(C.QMediaServiceFeaturesInterface_SupportedFeatures(this.h, service_alias))
 }

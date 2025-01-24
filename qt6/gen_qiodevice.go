@@ -239,7 +239,11 @@ func (this *QIODevice) WriteWithData(data string) int64 {
 
 func (this *QIODevice) Write2(data []byte) int64 {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	return (int64)(C.QIODevice_Write2(this.h, data_alias))
 }

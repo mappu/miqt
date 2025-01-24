@@ -107,14 +107,22 @@ func (this *QImageIOHandler) Device() *QIODevice {
 
 func (this *QImageIOHandler) SetFormat(format []byte) {
 	format_alias := C.struct_miqt_string{}
-	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	if len(format) > 0 {
+		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	} else {
+		format_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	format_alias.len = C.size_t(len(format))
 	C.QImageIOHandler_SetFormat(this.h, format_alias)
 }
 
 func (this *QImageIOHandler) SetFormatWithFormat(format []byte) {
 	format_alias := C.struct_miqt_string{}
-	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	if len(format) > 0 {
+		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	} else {
+		format_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	format_alias.len = C.size_t(len(format))
 	C.QImageIOHandler_SetFormatWithFormat(this.h, format_alias)
 }
@@ -604,14 +612,22 @@ func QImageIOPlugin_Tr(s string) string {
 
 func (this *QImageIOPlugin) Capabilities(device *QIODevice, format []byte) QImageIOPlugin__Capability {
 	format_alias := C.struct_miqt_string{}
-	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	if len(format) > 0 {
+		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	} else {
+		format_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	format_alias.len = C.size_t(len(format))
 	return (QImageIOPlugin__Capability)(C.QImageIOPlugin_Capabilities(this.h, device.cPointer(), format_alias))
 }
 
 func (this *QImageIOPlugin) Create(device *QIODevice, format []byte) *QImageIOHandler {
 	format_alias := C.struct_miqt_string{}
-	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	if len(format) > 0 {
+		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	} else {
+		format_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	format_alias.len = C.size_t(len(format))
 	return newQImageIOHandler(C.QImageIOPlugin_Create(this.h, device.cPointer(), format_alias))
 }

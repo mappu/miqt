@@ -194,7 +194,11 @@ func (this *QNetworkRequest) SetHeader(header QNetworkRequest__KnownHeaders, val
 
 func (this *QNetworkRequest) HasRawHeader(headerName []byte) bool {
 	headerName_alias := C.struct_miqt_string{}
-	headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
+	if len(headerName) > 0 {
+		headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
+	} else {
+		headerName_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	headerName_alias.len = C.size_t(len(headerName))
 	return (bool)(C.QNetworkRequest_HasRawHeader(this.h, headerName_alias))
 }
@@ -214,7 +218,11 @@ func (this *QNetworkRequest) RawHeaderList() [][]byte {
 
 func (this *QNetworkRequest) RawHeader(headerName []byte) []byte {
 	headerName_alias := C.struct_miqt_string{}
-	headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
+	if len(headerName) > 0 {
+		headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
+	} else {
+		headerName_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	headerName_alias.len = C.size_t(len(headerName))
 	var _bytearray C.struct_miqt_string = C.QNetworkRequest_RawHeader(this.h, headerName_alias)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
@@ -224,10 +232,18 @@ func (this *QNetworkRequest) RawHeader(headerName []byte) []byte {
 
 func (this *QNetworkRequest) SetRawHeader(headerName []byte, value []byte) {
 	headerName_alias := C.struct_miqt_string{}
-	headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
+	if len(headerName) > 0 {
+		headerName_alias.data = (*C.char)(unsafe.Pointer(&headerName[0]))
+	} else {
+		headerName_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	headerName_alias.len = C.size_t(len(headerName))
 	value_alias := C.struct_miqt_string{}
-	value_alias.data = (*C.char)(unsafe.Pointer(&value[0]))
+	if len(value) > 0 {
+		value_alias.data = (*C.char)(unsafe.Pointer(&value[0]))
+	} else {
+		value_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	value_alias.len = C.size_t(len(value))
 	C.QNetworkRequest_SetRawHeader(this.h, headerName_alias, value_alias)
 }

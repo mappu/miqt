@@ -101,7 +101,11 @@ func (this *QWebEngineUrlRequestJob) Initiator() *qt6.QUrl {
 
 func (this *QWebEngineUrlRequestJob) Reply(contentType []byte, device *qt6.QIODevice) {
 	contentType_alias := C.struct_miqt_string{}
-	contentType_alias.data = (*C.char)(unsafe.Pointer(&contentType[0]))
+	if len(contentType) > 0 {
+		contentType_alias.data = (*C.char)(unsafe.Pointer(&contentType[0]))
+	} else {
+		contentType_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	contentType_alias.len = C.size_t(len(contentType))
 	C.QWebEngineUrlRequestJob_Reply(this.h, contentType_alias, (*C.QIODevice)(device.UnsafePointer()))
 }

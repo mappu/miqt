@@ -79,7 +79,11 @@ func NewQRawFont2(fileName string, pixelSize float64) *QRawFont {
 // NewQRawFont3 constructs a new QRawFont object.
 func NewQRawFont3(fontData []byte, pixelSize float64) *QRawFont {
 	fontData_alias := C.struct_miqt_string{}
-	fontData_alias.data = (*C.char)(unsafe.Pointer(&fontData[0]))
+	if len(fontData) > 0 {
+		fontData_alias.data = (*C.char)(unsafe.Pointer(&fontData[0]))
+	} else {
+		fontData_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	fontData_alias.len = C.size_t(len(fontData))
 
 	return newQRawFont(C.QRawFont_new3(fontData_alias, (C.double)(pixelSize)))
@@ -104,7 +108,11 @@ func NewQRawFont5(fileName string, pixelSize float64, hintingPreference QFont__H
 // NewQRawFont6 constructs a new QRawFont object.
 func NewQRawFont6(fontData []byte, pixelSize float64, hintingPreference QFont__HintingPreference) *QRawFont {
 	fontData_alias := C.struct_miqt_string{}
-	fontData_alias.data = (*C.char)(unsafe.Pointer(&fontData[0]))
+	if len(fontData) > 0 {
+		fontData_alias.data = (*C.char)(unsafe.Pointer(&fontData[0]))
+	} else {
+		fontData_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	fontData_alias.len = C.size_t(len(fontData))
 
 	return newQRawFont(C.QRawFont_new6(fontData_alias, (C.double)(pixelSize), (C.int)(hintingPreference)))
@@ -294,7 +302,11 @@ func (this *QRawFont) LoadFromFile(fileName string, pixelSize float64, hintingPr
 
 func (this *QRawFont) LoadFromData(fontData []byte, pixelSize float64, hintingPreference QFont__HintingPreference) {
 	fontData_alias := C.struct_miqt_string{}
-	fontData_alias.data = (*C.char)(unsafe.Pointer(&fontData[0]))
+	if len(fontData) > 0 {
+		fontData_alias.data = (*C.char)(unsafe.Pointer(&fontData[0]))
+	} else {
+		fontData_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	fontData_alias.len = C.size_t(len(fontData))
 	C.QRawFont_LoadFromData(this.h, fontData_alias, (C.double)(pixelSize), (C.int)(hintingPreference))
 }

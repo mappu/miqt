@@ -333,7 +333,11 @@ func QFontDatabase_AddApplicationFont(fileName string) int {
 
 func QFontDatabase_AddApplicationFontFromData(fontData []byte) int {
 	fontData_alias := C.struct_miqt_string{}
-	fontData_alias.data = (*C.char)(unsafe.Pointer(&fontData[0]))
+	if len(fontData) > 0 {
+		fontData_alias.data = (*C.char)(unsafe.Pointer(&fontData[0]))
+	} else {
+		fontData_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	fontData_alias.len = C.size_t(len(fontData))
 	return (int)(C.QFontDatabase_AddApplicationFontFromData(fontData_alias))
 }

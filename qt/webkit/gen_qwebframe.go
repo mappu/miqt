@@ -290,7 +290,11 @@ func (this *QWebFrame) SetHtml(html string) {
 
 func (this *QWebFrame) SetContent(data []byte) {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	C.QWebFrame_SetContent(this.h, data_alias)
 }
@@ -776,7 +780,11 @@ func (this *QWebFrame) Load2(request *network.QNetworkRequest, operation network
 
 func (this *QWebFrame) Load3(request *network.QNetworkRequest, operation network.QNetworkAccessManager__Operation, body []byte) {
 	body_alias := C.struct_miqt_string{}
-	body_alias.data = (*C.char)(unsafe.Pointer(&body[0]))
+	if len(body) > 0 {
+		body_alias.data = (*C.char)(unsafe.Pointer(&body[0]))
+	} else {
+		body_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	body_alias.len = C.size_t(len(body))
 	C.QWebFrame_Load3(this.h, (*C.QNetworkRequest)(request.UnsafePointer()), (C.int)(operation), body_alias)
 }
@@ -791,7 +799,11 @@ func (this *QWebFrame) SetHtml2(html string, baseUrl *qt.QUrl) {
 
 func (this *QWebFrame) SetContent2(data []byte, mimeType string) {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	mimeType_ms := C.struct_miqt_string{}
 	mimeType_ms.data = C.CString(mimeType)
@@ -802,7 +814,11 @@ func (this *QWebFrame) SetContent2(data []byte, mimeType string) {
 
 func (this *QWebFrame) SetContent3(data []byte, mimeType string, baseUrl *qt.QUrl) {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	mimeType_ms := C.struct_miqt_string{}
 	mimeType_ms.data = C.CString(mimeType)

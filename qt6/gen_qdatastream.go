@@ -130,7 +130,11 @@ func NewQDataStream2(param1 *QIODevice) *QDataStream {
 // NewQDataStream3 constructs a new QDataStream object.
 func NewQDataStream3(param1 []byte) *QDataStream {
 	param1_alias := C.struct_miqt_string{}
-	param1_alias.data = (*C.char)(unsafe.Pointer(&param1[0]))
+	if len(param1) > 0 {
+		param1_alias.data = (*C.char)(unsafe.Pointer(&param1[0]))
+	} else {
+		param1_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	param1_alias.len = C.size_t(len(param1))
 
 	return newQDataStream(C.QDataStream_new3(param1_alias))

@@ -333,7 +333,11 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 
 		gfs.imports["unsafe"] = struct{}{}
 		preamble += nameprefix + "_alias := C.struct_miqt_string{}\n"
+		preamble += "if len(" + p.ParameterName + ") > 0 {\n"
 		preamble += nameprefix + "_alias.data = (*C.char)(unsafe.Pointer(&" + p.ParameterName + "[0]))\n"
+		preamble += "} else {\n"
+		preamble += nameprefix + "_alias.data = (*C.char)(unsafe.Pointer(nil))\n"
+		preamble += "}\n"
 		preamble += nameprefix + "_alias.len = C.size_t(len(" + p.ParameterName + "))\n"
 
 		rvalue = nameprefix + "_alias"

@@ -130,11 +130,19 @@ func (this *QNetworkCacheMetaData) SetRawHeaders(headers []struct {
 		headers_i_Second_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})))))
 		defer C.free(unsafe.Pointer(headers_i_Second_CArray))
 		headers_i_First_alias := C.struct_miqt_string{}
-		headers_i_First_alias.data = (*C.char)(unsafe.Pointer(&headers[i].First[0]))
+		if len(headers[i].First) > 0 {
+			headers_i_First_alias.data = (*C.char)(unsafe.Pointer(&headers[i].First[0]))
+		} else {
+			headers_i_First_alias.data = (*C.char)(unsafe.Pointer(nil))
+		}
 		headers_i_First_alias.len = C.size_t(len(headers[i].First))
 		headers_i_First_CArray[0] = headers_i_First_alias
 		headers_i_Second_alias := C.struct_miqt_string{}
-		headers_i_Second_alias.data = (*C.char)(unsafe.Pointer(&headers[i].Second[0]))
+		if len(headers[i].Second) > 0 {
+			headers_i_Second_alias.data = (*C.char)(unsafe.Pointer(&headers[i].Second[0]))
+		} else {
+			headers_i_Second_alias.data = (*C.char)(unsafe.Pointer(nil))
+		}
 		headers_i_Second_alias.len = C.size_t(len(headers[i].Second))
 		headers_i_Second_CArray[0] = headers_i_Second_alias
 		headers_i_pair := C.struct_miqt_map{

@@ -861,7 +861,11 @@ func (this *QStandardItemModel) SetItemRoleNames(roleNames map[int][]byte) {
 	for roleNames_k, roleNames_v := range roleNames {
 		roleNames_Keys_CArray[roleNames_ctr] = (C.int)(roleNames_k)
 		roleNames_v_alias := C.struct_miqt_string{}
-		roleNames_v_alias.data = (*C.char)(unsafe.Pointer(&roleNames_v[0]))
+		if len(roleNames_v) > 0 {
+			roleNames_v_alias.data = (*C.char)(unsafe.Pointer(&roleNames_v[0]))
+		} else {
+			roleNames_v_alias.data = (*C.char)(unsafe.Pointer(nil))
+		}
 		roleNames_v_alias.len = C.size_t(len(roleNames_v))
 		roleNames_Values_CArray[roleNames_ctr] = roleNames_v_alias
 		roleNames_ctr++
@@ -1361,7 +1365,11 @@ func miqt_exec_callback_QStandardItemModel_RoleNames(self *C.QStandardItemModel,
 	for virtualReturn_k, virtualReturn_v := range virtualReturn {
 		virtualReturn_Keys_CArray[virtualReturn_ctr] = (C.int)(virtualReturn_k)
 		virtualReturn_v_alias := C.struct_miqt_string{}
-		virtualReturn_v_alias.data = (*C.char)(unsafe.Pointer(&virtualReturn_v[0]))
+		if len(virtualReturn_v) > 0 {
+			virtualReturn_v_alias.data = (*C.char)(unsafe.Pointer(&virtualReturn_v[0]))
+		} else {
+			virtualReturn_v_alias.data = (*C.char)(unsafe.Pointer(nil))
+		}
 		virtualReturn_v_alias.len = C.size_t(len(virtualReturn_v))
 		virtualReturn_Values_CArray[virtualReturn_ctr] = virtualReturn_v_alias
 		virtualReturn_ctr++

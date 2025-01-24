@@ -123,7 +123,11 @@ func (this *QSignalTransition) Signal() []byte {
 
 func (this *QSignalTransition) SetSignal(signal []byte) {
 	signal_alias := C.struct_miqt_string{}
-	signal_alias.data = (*C.char)(unsafe.Pointer(&signal[0]))
+	if len(signal) > 0 {
+		signal_alias.data = (*C.char)(unsafe.Pointer(&signal[0]))
+	} else {
+		signal_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	signal_alias.len = C.size_t(len(signal))
 	C.QSignalTransition_SetSignal(this.h, signal_alias)
 }

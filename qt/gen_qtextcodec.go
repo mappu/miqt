@@ -55,7 +55,11 @@ func UnsafeNewQTextCodec(h unsafe.Pointer) *QTextCodec {
 
 func QTextCodec_CodecForName(name []byte) *QTextCodec {
 	name_alias := C.struct_miqt_string{}
-	name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
+	if len(name) > 0 {
+		name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
+	} else {
+		name_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	name_alias.len = C.size_t(len(name))
 	return newQTextCodec(C.QTextCodec_CodecForName(name_alias))
 }
@@ -103,28 +107,44 @@ func QTextCodec_SetCodecForLocale(c *QTextCodec) {
 
 func QTextCodec_CodecForHtml(ba []byte) *QTextCodec {
 	ba_alias := C.struct_miqt_string{}
-	ba_alias.data = (*C.char)(unsafe.Pointer(&ba[0]))
+	if len(ba) > 0 {
+		ba_alias.data = (*C.char)(unsafe.Pointer(&ba[0]))
+	} else {
+		ba_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	ba_alias.len = C.size_t(len(ba))
 	return newQTextCodec(C.QTextCodec_CodecForHtml(ba_alias))
 }
 
 func QTextCodec_CodecForHtml2(ba []byte, defaultCodec *QTextCodec) *QTextCodec {
 	ba_alias := C.struct_miqt_string{}
-	ba_alias.data = (*C.char)(unsafe.Pointer(&ba[0]))
+	if len(ba) > 0 {
+		ba_alias.data = (*C.char)(unsafe.Pointer(&ba[0]))
+	} else {
+		ba_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	ba_alias.len = C.size_t(len(ba))
 	return newQTextCodec(C.QTextCodec_CodecForHtml2(ba_alias, defaultCodec.cPointer()))
 }
 
 func QTextCodec_CodecForUtfText(ba []byte) *QTextCodec {
 	ba_alias := C.struct_miqt_string{}
-	ba_alias.data = (*C.char)(unsafe.Pointer(&ba[0]))
+	if len(ba) > 0 {
+		ba_alias.data = (*C.char)(unsafe.Pointer(&ba[0]))
+	} else {
+		ba_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	ba_alias.len = C.size_t(len(ba))
 	return newQTextCodec(C.QTextCodec_CodecForUtfText(ba_alias))
 }
 
 func QTextCodec_CodecForUtfText2(ba []byte, defaultCodec *QTextCodec) *QTextCodec {
 	ba_alias := C.struct_miqt_string{}
-	ba_alias.data = (*C.char)(unsafe.Pointer(&ba[0]))
+	if len(ba) > 0 {
+		ba_alias.data = (*C.char)(unsafe.Pointer(&ba[0]))
+	} else {
+		ba_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	ba_alias.len = C.size_t(len(ba))
 	return newQTextCodec(C.QTextCodec_CodecForUtfText2(ba_alias, defaultCodec.cPointer()))
 }
@@ -143,7 +163,11 @@ func (this *QTextCodec) CanEncodeWithQString(param1 string) bool {
 
 func (this *QTextCodec) ToUnicode(param1 []byte) string {
 	param1_alias := C.struct_miqt_string{}
-	param1_alias.data = (*C.char)(unsafe.Pointer(&param1[0]))
+	if len(param1) > 0 {
+		param1_alias.data = (*C.char)(unsafe.Pointer(&param1[0]))
+	} else {
+		param1_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	param1_alias.len = C.size_t(len(param1))
 	var _ms C.struct_miqt_string = C.QTextCodec_ToUnicode(this.h, param1_alias)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
@@ -378,7 +402,11 @@ func (this *QTextDecoder) ToUnicode(chars string, lenVal int) string {
 
 func (this *QTextDecoder) ToUnicodeWithBa(ba []byte) string {
 	ba_alias := C.struct_miqt_string{}
-	ba_alias.data = (*C.char)(unsafe.Pointer(&ba[0]))
+	if len(ba) > 0 {
+		ba_alias.data = (*C.char)(unsafe.Pointer(&ba[0]))
+	} else {
+		ba_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	ba_alias.len = C.size_t(len(ba))
 	var _ms C.struct_miqt_string = C.QTextDecoder_ToUnicodeWithBa(this.h, ba_alias)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))

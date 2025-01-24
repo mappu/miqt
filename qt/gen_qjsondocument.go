@@ -179,7 +179,11 @@ func (this *QJsonDocument) RawData(size *int) string {
 
 func QJsonDocument_FromBinaryData(data []byte) *QJsonDocument {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	_goptr := newQJsonDocument(C.QJsonDocument_FromBinaryData(data_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -207,7 +211,11 @@ func (this *QJsonDocument) ToVariant() *QVariant {
 
 func QJsonDocument_FromJson(json []byte) *QJsonDocument {
 	json_alias := C.struct_miqt_string{}
-	json_alias.data = (*C.char)(unsafe.Pointer(&json[0]))
+	if len(json) > 0 {
+		json_alias.data = (*C.char)(unsafe.Pointer(&json[0]))
+	} else {
+		json_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	json_alias.len = C.size_t(len(json))
 	_goptr := newQJsonDocument(C.QJsonDocument_FromJson(json_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -298,7 +306,11 @@ func QJsonDocument_FromRawData3(data string, size int, validation QJsonDocument_
 
 func QJsonDocument_FromBinaryData2(data []byte, validation QJsonDocument__DataValidation) *QJsonDocument {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	_goptr := newQJsonDocument(C.QJsonDocument_FromBinaryData2(data_alias, (C.int)(validation)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -307,7 +319,11 @@ func QJsonDocument_FromBinaryData2(data []byte, validation QJsonDocument__DataVa
 
 func QJsonDocument_FromJson2(json []byte, error *QJsonParseError) *QJsonDocument {
 	json_alias := C.struct_miqt_string{}
-	json_alias.data = (*C.char)(unsafe.Pointer(&json[0]))
+	if len(json) > 0 {
+		json_alias.data = (*C.char)(unsafe.Pointer(&json[0]))
+	} else {
+		json_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	json_alias.len = C.size_t(len(json))
 	_goptr := newQJsonDocument(C.QJsonDocument_FromJson2(json_alias, error.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

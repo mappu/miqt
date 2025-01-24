@@ -87,7 +87,11 @@ func (this *QCryptographicHash) AddData(data string, length int) {
 
 func (this *QCryptographicHash) AddDataWithData(data []byte) {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	C.QCryptographicHash_AddDataWithData(this.h, data_alias)
 }
@@ -105,7 +109,11 @@ func (this *QCryptographicHash) Result() []byte {
 
 func QCryptographicHash_Hash(data []byte, method QCryptographicHash__Algorithm) []byte {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	var _bytearray C.struct_miqt_string = C.QCryptographicHash_Hash(data_alias, (C.int)(method))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))

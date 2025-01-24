@@ -96,7 +96,11 @@ func NewQMovie4(parent *QObject) *QMovie {
 // NewQMovie5 constructs a new QMovie object.
 func NewQMovie5(device *QIODevice, format []byte) *QMovie {
 	format_alias := C.struct_miqt_string{}
-	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	if len(format) > 0 {
+		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	} else {
+		format_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	format_alias.len = C.size_t(len(format))
 
 	return newQMovie(C.QMovie_new5(device.cPointer(), format_alias))
@@ -105,7 +109,11 @@ func NewQMovie5(device *QIODevice, format []byte) *QMovie {
 // NewQMovie6 constructs a new QMovie object.
 func NewQMovie6(device *QIODevice, format []byte, parent *QObject) *QMovie {
 	format_alias := C.struct_miqt_string{}
-	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	if len(format) > 0 {
+		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	} else {
+		format_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	format_alias.len = C.size_t(len(format))
 
 	return newQMovie(C.QMovie_new6(device.cPointer(), format_alias, parent.cPointer()))
@@ -118,7 +126,11 @@ func NewQMovie7(fileName string, format []byte) *QMovie {
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_alias := C.struct_miqt_string{}
-	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	if len(format) > 0 {
+		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	} else {
+		format_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	format_alias.len = C.size_t(len(format))
 
 	return newQMovie(C.QMovie_new7(fileName_ms, format_alias))
@@ -131,7 +143,11 @@ func NewQMovie8(fileName string, format []byte, parent *QObject) *QMovie {
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_alias := C.struct_miqt_string{}
-	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	if len(format) > 0 {
+		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	} else {
+		format_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	format_alias.len = C.size_t(len(format))
 
 	return newQMovie(C.QMovie_new8(fileName_ms, format_alias, parent.cPointer()))
@@ -203,7 +219,11 @@ func (this *QMovie) FileName() string {
 
 func (this *QMovie) SetFormat(format []byte) {
 	format_alias := C.struct_miqt_string{}
-	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	if len(format) > 0 {
+		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	} else {
+		format_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	format_alias.len = C.size_t(len(format))
 	C.QMovie_SetFormat(this.h, format_alias)
 }

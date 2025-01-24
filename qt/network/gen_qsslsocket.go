@@ -871,7 +871,11 @@ func (this *QSslSocket) SetPrivateKey4(fileName string, algorithm QSsl__KeyAlgor
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 	passPhrase_alias := C.struct_miqt_string{}
-	passPhrase_alias.data = (*C.char)(unsafe.Pointer(&passPhrase[0]))
+	if len(passPhrase) > 0 {
+		passPhrase_alias.data = (*C.char)(unsafe.Pointer(&passPhrase[0]))
+	} else {
+		passPhrase_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	passPhrase_alias.len = C.size_t(len(passPhrase))
 	C.QSslSocket_SetPrivateKey4(this.h, fileName_ms, (C.int)(algorithm), (C.int)(format), passPhrase_alias)
 }

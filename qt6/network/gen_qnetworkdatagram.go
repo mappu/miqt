@@ -54,7 +54,11 @@ func NewQNetworkDatagram() *QNetworkDatagram {
 // NewQNetworkDatagram2 constructs a new QNetworkDatagram object.
 func NewQNetworkDatagram2(data []byte) *QNetworkDatagram {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 
 	return newQNetworkDatagram(C.QNetworkDatagram_new2(data_alias))
@@ -69,7 +73,11 @@ func NewQNetworkDatagram3(other *QNetworkDatagram) *QNetworkDatagram {
 // NewQNetworkDatagram4 constructs a new QNetworkDatagram object.
 func NewQNetworkDatagram4(data []byte, destinationAddress *QHostAddress) *QNetworkDatagram {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 
 	return newQNetworkDatagram(C.QNetworkDatagram_new4(data_alias, destinationAddress.cPointer()))
@@ -78,7 +86,11 @@ func NewQNetworkDatagram4(data []byte, destinationAddress *QHostAddress) *QNetwo
 // NewQNetworkDatagram5 constructs a new QNetworkDatagram object.
 func NewQNetworkDatagram5(data []byte, destinationAddress *QHostAddress, port uint16) *QNetworkDatagram {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 
 	return newQNetworkDatagram(C.QNetworkDatagram_new5(data_alias, destinationAddress.cPointer(), (C.uint16_t)(port)))
@@ -157,14 +169,22 @@ func (this *QNetworkDatagram) Data() []byte {
 
 func (this *QNetworkDatagram) SetData(data []byte) {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	C.QNetworkDatagram_SetData(this.h, data_alias)
 }
 
 func (this *QNetworkDatagram) MakeReply(payload []byte) *QNetworkDatagram {
 	payload_alias := C.struct_miqt_string{}
-	payload_alias.data = (*C.char)(unsafe.Pointer(&payload[0]))
+	if len(payload) > 0 {
+		payload_alias.data = (*C.char)(unsafe.Pointer(&payload[0]))
+	} else {
+		payload_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	payload_alias.len = C.size_t(len(payload))
 	_goptr := newQNetworkDatagram(C.QNetworkDatagram_MakeReply(this.h, payload_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

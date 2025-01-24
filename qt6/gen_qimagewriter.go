@@ -63,7 +63,11 @@ func NewQImageWriter() *QImageWriter {
 // NewQImageWriter2 constructs a new QImageWriter object.
 func NewQImageWriter2(device *QIODevice, format []byte) *QImageWriter {
 	format_alias := C.struct_miqt_string{}
-	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	if len(format) > 0 {
+		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	} else {
+		format_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	format_alias.len = C.size_t(len(format))
 
 	return newQImageWriter(C.QImageWriter_new2(device.cPointer(), format_alias))
@@ -86,7 +90,11 @@ func NewQImageWriter4(fileName string, format []byte) *QImageWriter {
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_alias := C.struct_miqt_string{}
-	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	if len(format) > 0 {
+		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	} else {
+		format_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	format_alias.len = C.size_t(len(format))
 
 	return newQImageWriter(C.QImageWriter_new4(fileName_ms, format_alias))
@@ -103,7 +111,11 @@ func QImageWriter_Tr(sourceText string) string {
 
 func (this *QImageWriter) SetFormat(format []byte) {
 	format_alias := C.struct_miqt_string{}
-	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	if len(format) > 0 {
+		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	} else {
+		format_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	format_alias.len = C.size_t(len(format))
 	C.QImageWriter_SetFormat(this.h, format_alias)
 }
@@ -156,7 +168,11 @@ func (this *QImageWriter) Compression() int {
 
 func (this *QImageWriter) SetSubType(typeVal []byte) {
 	typeVal_alias := C.struct_miqt_string{}
-	typeVal_alias.data = (*C.char)(unsafe.Pointer(&typeVal[0]))
+	if len(typeVal) > 0 {
+		typeVal_alias.data = (*C.char)(unsafe.Pointer(&typeVal[0]))
+	} else {
+		typeVal_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	typeVal_alias.len = C.size_t(len(typeVal))
 	C.QImageWriter_SetSubType(this.h, typeVal_alias)
 }
@@ -268,7 +284,11 @@ func QImageWriter_SupportedMimeTypes() [][]byte {
 
 func QImageWriter_ImageFormatsForMimeType(mimeType []byte) [][]byte {
 	mimeType_alias := C.struct_miqt_string{}
-	mimeType_alias.data = (*C.char)(unsafe.Pointer(&mimeType[0]))
+	if len(mimeType) > 0 {
+		mimeType_alias.data = (*C.char)(unsafe.Pointer(&mimeType[0]))
+	} else {
+		mimeType_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	mimeType_alias.len = C.size_t(len(mimeType))
 	var _ma C.struct_miqt_array = C.QImageWriter_ImageFormatsForMimeType(mimeType_alias)
 	_ret := make([][]byte, int(_ma.len))

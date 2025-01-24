@@ -106,6 +106,17 @@ func testMarshalling(t *testing.T) {
 		}
 	})
 
+	t.Run("QByteArray of zero length", func(t *testing.T) {
+
+		input := ""
+		ba := qt.QFile_EncodeName(input)
+		got := qt.QFile_DecodeName(ba)
+
+		if input != got {
+			t.Fatalf("QByteArray: expected %q, got %q", input, got)
+		}
+	})
+
 	// QMap
 	t.Run("QMap", func(t *testing.T) {
 		input := make(map[string]qt.QVariant)

@@ -70,7 +70,11 @@ func NewQSvgRenderer2(filename string) *QSvgRenderer {
 // NewQSvgRenderer3 constructs a new QSvgRenderer object.
 func NewQSvgRenderer3(contents []byte) *QSvgRenderer {
 	contents_alias := C.struct_miqt_string{}
-	contents_alias.data = (*C.char)(unsafe.Pointer(&contents[0]))
+	if len(contents) > 0 {
+		contents_alias.data = (*C.char)(unsafe.Pointer(&contents[0]))
+	} else {
+		contents_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	contents_alias.len = C.size_t(len(contents))
 
 	return newQSvgRenderer(C.QSvgRenderer_new3(contents_alias))
@@ -101,7 +105,11 @@ func NewQSvgRenderer6(filename string, parent *qt.QObject) *QSvgRenderer {
 // NewQSvgRenderer7 constructs a new QSvgRenderer object.
 func NewQSvgRenderer7(contents []byte, parent *qt.QObject) *QSvgRenderer {
 	contents_alias := C.struct_miqt_string{}
-	contents_alias.data = (*C.char)(unsafe.Pointer(&contents[0]))
+	if len(contents) > 0 {
+		contents_alias.data = (*C.char)(unsafe.Pointer(&contents[0]))
+	} else {
+		contents_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	contents_alias.len = C.size_t(len(contents))
 
 	return newQSvgRenderer(C.QSvgRenderer_new7(contents_alias, (*C.QObject)(parent.UnsafePointer())))
@@ -251,7 +259,11 @@ func (this *QSvgRenderer) Load(filename string) bool {
 
 func (this *QSvgRenderer) LoadWithContents(contents []byte) bool {
 	contents_alias := C.struct_miqt_string{}
-	contents_alias.data = (*C.char)(unsafe.Pointer(&contents[0]))
+	if len(contents) > 0 {
+		contents_alias.data = (*C.char)(unsafe.Pointer(&contents[0]))
+	} else {
+		contents_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	contents_alias.len = C.size_t(len(contents))
 	return (bool)(C.QSvgRenderer_LoadWithContents(this.h, contents_alias))
 }

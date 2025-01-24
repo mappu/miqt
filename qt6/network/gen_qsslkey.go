@@ -55,7 +55,11 @@ func NewQSslKey() *QSslKey {
 // NewQSslKey2 constructs a new QSslKey object.
 func NewQSslKey2(encoded []byte, algorithm QSsl__KeyAlgorithm) *QSslKey {
 	encoded_alias := C.struct_miqt_string{}
-	encoded_alias.data = (*C.char)(unsafe.Pointer(&encoded[0]))
+	if len(encoded) > 0 {
+		encoded_alias.data = (*C.char)(unsafe.Pointer(&encoded[0]))
+	} else {
+		encoded_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	encoded_alias.len = C.size_t(len(encoded))
 
 	return newQSslKey(C.QSslKey_new2(encoded_alias, (C.int)(algorithm)))
@@ -82,7 +86,11 @@ func NewQSslKey5(other *QSslKey) *QSslKey {
 // NewQSslKey6 constructs a new QSslKey object.
 func NewQSslKey6(encoded []byte, algorithm QSsl__KeyAlgorithm, format QSsl__EncodingFormat) *QSslKey {
 	encoded_alias := C.struct_miqt_string{}
-	encoded_alias.data = (*C.char)(unsafe.Pointer(&encoded[0]))
+	if len(encoded) > 0 {
+		encoded_alias.data = (*C.char)(unsafe.Pointer(&encoded[0]))
+	} else {
+		encoded_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	encoded_alias.len = C.size_t(len(encoded))
 
 	return newQSslKey(C.QSslKey_new6(encoded_alias, (C.int)(algorithm), (C.int)(format)))
@@ -91,7 +99,11 @@ func NewQSslKey6(encoded []byte, algorithm QSsl__KeyAlgorithm, format QSsl__Enco
 // NewQSslKey7 constructs a new QSslKey object.
 func NewQSslKey7(encoded []byte, algorithm QSsl__KeyAlgorithm, format QSsl__EncodingFormat, typeVal QSsl__KeyType) *QSslKey {
 	encoded_alias := C.struct_miqt_string{}
-	encoded_alias.data = (*C.char)(unsafe.Pointer(&encoded[0]))
+	if len(encoded) > 0 {
+		encoded_alias.data = (*C.char)(unsafe.Pointer(&encoded[0]))
+	} else {
+		encoded_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	encoded_alias.len = C.size_t(len(encoded))
 
 	return newQSslKey(C.QSslKey_new7(encoded_alias, (C.int)(algorithm), (C.int)(format), (C.int)(typeVal)))
@@ -100,10 +112,18 @@ func NewQSslKey7(encoded []byte, algorithm QSsl__KeyAlgorithm, format QSsl__Enco
 // NewQSslKey8 constructs a new QSslKey object.
 func NewQSslKey8(encoded []byte, algorithm QSsl__KeyAlgorithm, format QSsl__EncodingFormat, typeVal QSsl__KeyType, passPhrase []byte) *QSslKey {
 	encoded_alias := C.struct_miqt_string{}
-	encoded_alias.data = (*C.char)(unsafe.Pointer(&encoded[0]))
+	if len(encoded) > 0 {
+		encoded_alias.data = (*C.char)(unsafe.Pointer(&encoded[0]))
+	} else {
+		encoded_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	encoded_alias.len = C.size_t(len(encoded))
 	passPhrase_alias := C.struct_miqt_string{}
-	passPhrase_alias.data = (*C.char)(unsafe.Pointer(&passPhrase[0]))
+	if len(passPhrase) > 0 {
+		passPhrase_alias.data = (*C.char)(unsafe.Pointer(&passPhrase[0]))
+	} else {
+		passPhrase_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	passPhrase_alias.len = C.size_t(len(passPhrase))
 
 	return newQSslKey(C.QSslKey_new8(encoded_alias, (C.int)(algorithm), (C.int)(format), (C.int)(typeVal), passPhrase_alias))
@@ -124,7 +144,11 @@ func NewQSslKey10(device *qt6.QIODevice, algorithm QSsl__KeyAlgorithm, format QS
 // NewQSslKey11 constructs a new QSslKey object.
 func NewQSslKey11(device *qt6.QIODevice, algorithm QSsl__KeyAlgorithm, format QSsl__EncodingFormat, typeVal QSsl__KeyType, passPhrase []byte) *QSslKey {
 	passPhrase_alias := C.struct_miqt_string{}
-	passPhrase_alias.data = (*C.char)(unsafe.Pointer(&passPhrase[0]))
+	if len(passPhrase) > 0 {
+		passPhrase_alias.data = (*C.char)(unsafe.Pointer(&passPhrase[0]))
+	} else {
+		passPhrase_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	passPhrase_alias.len = C.size_t(len(passPhrase))
 
 	return newQSslKey(C.QSslKey_new11((*C.QIODevice)(device.UnsafePointer()), (C.int)(algorithm), (C.int)(format), (C.int)(typeVal), passPhrase_alias))
@@ -192,7 +216,11 @@ func (this *QSslKey) OperatorNotEqual(key *QSslKey) bool {
 
 func (this *QSslKey) ToPem1(passPhrase []byte) []byte {
 	passPhrase_alias := C.struct_miqt_string{}
-	passPhrase_alias.data = (*C.char)(unsafe.Pointer(&passPhrase[0]))
+	if len(passPhrase) > 0 {
+		passPhrase_alias.data = (*C.char)(unsafe.Pointer(&passPhrase[0]))
+	} else {
+		passPhrase_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	passPhrase_alias.len = C.size_t(len(passPhrase))
 	var _bytearray C.struct_miqt_string = C.QSslKey_ToPem1(this.h, passPhrase_alias)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
@@ -202,7 +230,11 @@ func (this *QSslKey) ToPem1(passPhrase []byte) []byte {
 
 func (this *QSslKey) ToDer1(passPhrase []byte) []byte {
 	passPhrase_alias := C.struct_miqt_string{}
-	passPhrase_alias.data = (*C.char)(unsafe.Pointer(&passPhrase[0]))
+	if len(passPhrase) > 0 {
+		passPhrase_alias.data = (*C.char)(unsafe.Pointer(&passPhrase[0]))
+	} else {
+		passPhrase_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	passPhrase_alias.len = C.size_t(len(passPhrase))
 	var _bytearray C.struct_miqt_string = C.QSslKey_ToDer1(this.h, passPhrase_alias)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))

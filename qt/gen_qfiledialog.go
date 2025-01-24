@@ -429,7 +429,11 @@ func (this *QFileDialog) SaveState() []byte {
 
 func (this *QFileDialog) RestoreState(state []byte) bool {
 	state_alias := C.struct_miqt_string{}
-	state_alias.data = (*C.char)(unsafe.Pointer(&state[0]))
+	if len(state) > 0 {
+		state_alias.data = (*C.char)(unsafe.Pointer(&state[0]))
+	} else {
+		state_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	state_alias.len = C.size_t(len(state))
 	return (bool)(C.QFileDialog_RestoreState(this.h, state_alias))
 }
@@ -877,7 +881,11 @@ func QFileDialog_GetOpenFileUrls() []QUrl {
 
 func QFileDialog_SaveFileContent(fileContent []byte, fileNameHint string) {
 	fileContent_alias := C.struct_miqt_string{}
-	fileContent_alias.data = (*C.char)(unsafe.Pointer(&fileContent[0]))
+	if len(fileContent) > 0 {
+		fileContent_alias.data = (*C.char)(unsafe.Pointer(&fileContent[0]))
+	} else {
+		fileContent_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	fileContent_alias.len = C.size_t(len(fileContent))
 	fileNameHint_ms := C.struct_miqt_string{}
 	fileNameHint_ms.data = C.CString(fileNameHint)
@@ -2375,7 +2383,11 @@ func miqt_exec_callback_QFileDialog_HideEvent(self *C.QFileDialog, cb C.intptr_t
 
 func (this *QFileDialog) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
 	eventType_alias := C.struct_miqt_string{}
-	eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	if len(eventType) > 0 {
+		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	} else {
+		eventType_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	eventType_alias.len = C.size_t(len(eventType))
 
 	return (bool)(C.QFileDialog_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))

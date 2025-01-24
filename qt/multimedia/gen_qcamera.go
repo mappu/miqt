@@ -135,7 +135,11 @@ func NewQCamera() *QCamera {
 // NewQCamera2 constructs a new QCamera object.
 func NewQCamera2(deviceName []byte) *QCamera {
 	deviceName_alias := C.struct_miqt_string{}
-	deviceName_alias.data = (*C.char)(unsafe.Pointer(&deviceName[0]))
+	if len(deviceName) > 0 {
+		deviceName_alias.data = (*C.char)(unsafe.Pointer(&deviceName[0]))
+	} else {
+		deviceName_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	deviceName_alias.len = C.size_t(len(deviceName))
 
 	return newQCamera(C.QCamera_new2(deviceName_alias))
@@ -162,7 +166,11 @@ func NewQCamera5(parent *qt.QObject) *QCamera {
 // NewQCamera6 constructs a new QCamera object.
 func NewQCamera6(deviceName []byte, parent *qt.QObject) *QCamera {
 	deviceName_alias := C.struct_miqt_string{}
-	deviceName_alias.data = (*C.char)(unsafe.Pointer(&deviceName[0]))
+	if len(deviceName) > 0 {
+		deviceName_alias.data = (*C.char)(unsafe.Pointer(&deviceName[0]))
+	} else {
+		deviceName_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	deviceName_alias.len = C.size_t(len(deviceName))
 
 	return newQCamera(C.QCamera_new6(deviceName_alias, (*C.QObject)(parent.UnsafePointer())))
@@ -223,7 +231,11 @@ func QCamera_AvailableDevices() [][]byte {
 
 func QCamera_DeviceDescription(device []byte) string {
 	device_alias := C.struct_miqt_string{}
-	device_alias.data = (*C.char)(unsafe.Pointer(&device[0]))
+	if len(device) > 0 {
+		device_alias.data = (*C.char)(unsafe.Pointer(&device[0]))
+	} else {
+		device_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	device_alias.len = C.size_t(len(device))
 	var _ms C.struct_miqt_string = C.QCamera_DeviceDescription(device_alias)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))

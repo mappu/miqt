@@ -140,7 +140,11 @@ func (this *QPdfWriter) Resolution() int {
 
 func (this *QPdfWriter) SetDocumentXmpMetadata(xmpMetadata []byte) {
 	xmpMetadata_alias := C.struct_miqt_string{}
-	xmpMetadata_alias.data = (*C.char)(unsafe.Pointer(&xmpMetadata[0]))
+	if len(xmpMetadata) > 0 {
+		xmpMetadata_alias.data = (*C.char)(unsafe.Pointer(&xmpMetadata[0]))
+	} else {
+		xmpMetadata_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	xmpMetadata_alias.len = C.size_t(len(xmpMetadata))
 	C.QPdfWriter_SetDocumentXmpMetadata(this.h, xmpMetadata_alias)
 }
@@ -158,7 +162,11 @@ func (this *QPdfWriter) AddFileAttachment(fileName string, data []byte) {
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	C.QPdfWriter_AddFileAttachment(this.h, fileName_ms, data_alias)
 }
@@ -191,7 +199,11 @@ func (this *QPdfWriter) AddFileAttachment3(fileName string, data []byte, mimeTyp
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	mimeType_ms := C.struct_miqt_string{}
 	mimeType_ms.data = C.CString(mimeType)

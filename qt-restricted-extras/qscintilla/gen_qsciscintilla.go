@@ -4248,7 +4248,11 @@ func miqt_exec_callback_QsciScintilla_FromMimeData(self *C.QsciScintilla, cb C.i
 
 	virtualReturn := gofunc((&QsciScintilla{h: self}).callVirtualBase_FromMimeData, slotval1, slotval2)
 	virtualReturn_alias := C.struct_miqt_string{}
-	virtualReturn_alias.data = (*C.char)(unsafe.Pointer(&virtualReturn[0]))
+	if len(virtualReturn) > 0 {
+		virtualReturn_alias.data = (*C.char)(unsafe.Pointer(&virtualReturn[0]))
+	} else {
+		virtualReturn_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	virtualReturn_alias.len = C.size_t(len(virtualReturn))
 
 	return virtualReturn_alias
@@ -4257,7 +4261,11 @@ func miqt_exec_callback_QsciScintilla_FromMimeData(self *C.QsciScintilla, cb C.i
 
 func (this *QsciScintilla) callVirtualBase_ToMimeData(text []byte, rectangular bool) *qt.QMimeData {
 	text_alias := C.struct_miqt_string{}
-	text_alias.data = (*C.char)(unsafe.Pointer(&text[0]))
+	if len(text) > 0 {
+		text_alias.data = (*C.char)(unsafe.Pointer(&text[0]))
+	} else {
+		text_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	text_alias.len = C.size_t(len(text))
 
 	return qt.UnsafeNewQMimeData(unsafe.Pointer(C.QsciScintilla_virtualbase_ToMimeData(unsafe.Pointer(this.h), text_alias, (C.bool)(rectangular))))
@@ -5270,7 +5278,11 @@ func miqt_exec_callback_QsciScintilla_HideEvent(self *C.QsciScintilla, cb C.intp
 
 func (this *QsciScintilla) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
 	eventType_alias := C.struct_miqt_string{}
-	eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	if len(eventType) > 0 {
+		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	} else {
+		eventType_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	eventType_alias.len = C.size_t(len(eventType))
 
 	return (bool)(C.QsciScintilla_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))

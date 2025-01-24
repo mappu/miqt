@@ -136,7 +136,11 @@ func (this *QDataWidgetMapper) AddMapping(widget *QWidget, section int) {
 
 func (this *QDataWidgetMapper) AddMapping2(widget *QWidget, section int, propertyName []byte) {
 	propertyName_alias := C.struct_miqt_string{}
-	propertyName_alias.data = (*C.char)(unsafe.Pointer(&propertyName[0]))
+	if len(propertyName) > 0 {
+		propertyName_alias.data = (*C.char)(unsafe.Pointer(&propertyName[0]))
+	} else {
+		propertyName_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	propertyName_alias.len = C.size_t(len(propertyName))
 	C.QDataWidgetMapper_AddMapping2(this.h, widget.cPointer(), (C.int)(section), propertyName_alias)
 }

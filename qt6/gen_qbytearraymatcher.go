@@ -54,7 +54,11 @@ func NewQByteArrayMatcher() *QByteArrayMatcher {
 // NewQByteArrayMatcher2 constructs a new QByteArrayMatcher object.
 func NewQByteArrayMatcher2(pattern []byte) *QByteArrayMatcher {
 	pattern_alias := C.struct_miqt_string{}
-	pattern_alias.data = (*C.char)(unsafe.Pointer(&pattern[0]))
+	if len(pattern) > 0 {
+		pattern_alias.data = (*C.char)(unsafe.Pointer(&pattern[0]))
+	} else {
+		pattern_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	pattern_alias.len = C.size_t(len(pattern))
 
 	return newQByteArrayMatcher(C.QByteArrayMatcher_new2(pattern_alias))
@@ -94,7 +98,11 @@ func (this *QByteArrayMatcher) OperatorAssign(other *QByteArrayMatcher) {
 
 func (this *QByteArrayMatcher) SetPattern(pattern []byte) {
 	pattern_alias := C.struct_miqt_string{}
-	pattern_alias.data = (*C.char)(unsafe.Pointer(&pattern[0]))
+	if len(pattern) > 0 {
+		pattern_alias.data = (*C.char)(unsafe.Pointer(&pattern[0]))
+	} else {
+		pattern_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	pattern_alias.len = C.size_t(len(pattern))
 	C.QByteArrayMatcher_SetPattern(this.h, pattern_alias)
 }

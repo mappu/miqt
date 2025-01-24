@@ -60,7 +60,11 @@ func NewQAudioBuffer2(other *QAudioBuffer) *QAudioBuffer {
 // NewQAudioBuffer3 constructs a new QAudioBuffer object.
 func NewQAudioBuffer3(data []byte, format *QAudioFormat) *QAudioBuffer {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 
 	return newQAudioBuffer(C.QAudioBuffer_new3(data_alias, format.cPointer()))
@@ -75,7 +79,11 @@ func NewQAudioBuffer4(numFrames int, format *QAudioFormat) *QAudioBuffer {
 // NewQAudioBuffer5 constructs a new QAudioBuffer object.
 func NewQAudioBuffer5(data []byte, format *QAudioFormat, startTime int64) *QAudioBuffer {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 
 	return newQAudioBuffer(C.QAudioBuffer_new5(data_alias, format.cPointer(), (C.longlong)(startTime)))
