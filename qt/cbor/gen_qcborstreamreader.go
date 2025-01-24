@@ -97,7 +97,11 @@ func NewQCborStreamReader3(data *byte, lenVal int64) *QCborStreamReader {
 // NewQCborStreamReader4 constructs a new QCborStreamReader object.
 func NewQCborStreamReader4(data []byte) *QCborStreamReader {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 
 	return newQCborStreamReader(C.QCborStreamReader_new4(data_alias))
@@ -119,7 +123,11 @@ func (this *QCborStreamReader) Device() *qt.QIODevice {
 
 func (this *QCborStreamReader) AddData(data []byte) {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	C.QCborStreamReader_AddData(this.h, data_alias)
 }

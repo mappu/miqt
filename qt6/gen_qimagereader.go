@@ -80,7 +80,11 @@ func NewQImageReader3(fileName string) *QImageReader {
 // NewQImageReader4 constructs a new QImageReader object.
 func NewQImageReader4(device *QIODevice, format []byte) *QImageReader {
 	format_alias := C.struct_miqt_string{}
-	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	if len(format) > 0 {
+		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	} else {
+		format_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	format_alias.len = C.size_t(len(format))
 
 	return newQImageReader(C.QImageReader_new4(device.cPointer(), format_alias))
@@ -93,7 +97,11 @@ func NewQImageReader5(fileName string, format []byte) *QImageReader {
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_alias := C.struct_miqt_string{}
-	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	if len(format) > 0 {
+		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	} else {
+		format_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	format_alias.len = C.size_t(len(format))
 
 	return newQImageReader(C.QImageReader_new5(fileName_ms, format_alias))
@@ -110,7 +118,11 @@ func QImageReader_Tr(sourceText string) string {
 
 func (this *QImageReader) SetFormat(format []byte) {
 	format_alias := C.struct_miqt_string{}
-	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	if len(format) > 0 {
+		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	} else {
+		format_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	format_alias.len = C.size_t(len(format))
 	C.QImageReader_SetFormat(this.h, format_alias)
 }
@@ -384,7 +396,11 @@ func QImageReader_SupportedMimeTypes() [][]byte {
 
 func QImageReader_ImageFormatsForMimeType(mimeType []byte) [][]byte {
 	mimeType_alias := C.struct_miqt_string{}
-	mimeType_alias.data = (*C.char)(unsafe.Pointer(&mimeType[0]))
+	if len(mimeType) > 0 {
+		mimeType_alias.data = (*C.char)(unsafe.Pointer(&mimeType[0]))
+	} else {
+		mimeType_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	mimeType_alias.len = C.size_t(len(mimeType))
 	var _ma C.struct_miqt_array = C.QImageReader_ImageFormatsForMimeType(mimeType_alias)
 	_ret := make([][]byte, int(_ma.len))

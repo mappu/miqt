@@ -1188,7 +1188,11 @@ func miqt_exec_callback_QDockWidget_HideEvent(self *C.QDockWidget, cb C.intptr_t
 
 func (this *QDockWidget) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
 	eventType_alias := C.struct_miqt_string{}
-	eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	if len(eventType) > 0 {
+		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	} else {
+		eventType_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	eventType_alias.len = C.size_t(len(eventType))
 
 	return (bool)(C.QDockWidget_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))

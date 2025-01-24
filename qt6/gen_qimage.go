@@ -577,7 +577,11 @@ func (this *QImage) LoadFromData2(buf *byte, lenVal int) bool {
 
 func (this *QImage) LoadFromDataWithData(data []byte) bool {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	return (bool)(C.QImage_LoadFromDataWithData(this.h, data_alias))
 }
@@ -608,7 +612,11 @@ func QImage_FromData2(data *byte, size int) *QImage {
 
 func QImage_FromDataWithData(data []byte) *QImage {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	_goptr := newQImage(C.QImage_FromDataWithData(data_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -839,7 +847,11 @@ func (this *QImage) LoadFromData3(buf *byte, lenVal int, format string) bool {
 
 func (this *QImage) LoadFromData23(data []byte, format string) bool {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
@@ -896,7 +908,11 @@ func QImage_FromData3(data *byte, size int, format string) *QImage {
 
 func QImage_FromData23(data []byte, format string) *QImage {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))

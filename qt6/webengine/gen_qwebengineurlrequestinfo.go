@@ -132,10 +132,18 @@ func (this *QWebEngineUrlRequestInfo) Redirect(url *qt6.QUrl) {
 
 func (this *QWebEngineUrlRequestInfo) SetHttpHeader(name []byte, value []byte) {
 	name_alias := C.struct_miqt_string{}
-	name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
+	if len(name) > 0 {
+		name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
+	} else {
+		name_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	name_alias.len = C.size_t(len(name))
 	value_alias := C.struct_miqt_string{}
-	value_alias.data = (*C.char)(unsafe.Pointer(&value[0]))
+	if len(value) > 0 {
+		value_alias.data = (*C.char)(unsafe.Pointer(&value[0]))
+	} else {
+		value_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	value_alias.len = C.size_t(len(value))
 	C.QWebEngineUrlRequestInfo_SetHttpHeader(this.h, name_alias, value_alias)
 }

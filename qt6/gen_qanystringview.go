@@ -54,7 +54,11 @@ func NewQAnyStringView() *QAnyStringView {
 // NewQAnyStringView2 constructs a new QAnyStringView object.
 func NewQAnyStringView2(str []byte) *QAnyStringView {
 	str_alias := C.struct_miqt_string{}
-	str_alias.data = (*C.char)(unsafe.Pointer(&str[0]))
+	if len(str) > 0 {
+		str_alias.data = (*C.char)(unsafe.Pointer(&str[0]))
+	} else {
+		str_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	str_alias.len = C.size_t(len(str))
 
 	return newQAnyStringView(C.QAnyStringView_new2(str_alias))

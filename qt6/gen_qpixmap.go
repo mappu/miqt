@@ -274,7 +274,11 @@ func (this *QPixmap) LoadFromData(buf *byte, lenVal uint) bool {
 
 func (this *QPixmap) LoadFromDataWithData(data []byte) bool {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	return (bool)(C.QPixmap_LoadFromDataWithData(this.h, data_alias))
 }
@@ -443,7 +447,11 @@ func (this *QPixmap) LoadFromData4(buf *byte, lenVal uint, format string, flags 
 
 func (this *QPixmap) LoadFromData2(data []byte, format string) bool {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
@@ -452,7 +460,11 @@ func (this *QPixmap) LoadFromData2(data []byte, format string) bool {
 
 func (this *QPixmap) LoadFromData32(data []byte, format string, flags ImageConversionFlag) bool {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))

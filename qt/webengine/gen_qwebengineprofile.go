@@ -262,21 +262,33 @@ func (this *QWebEngineProfile) Scripts() *QWebEngineScriptCollection {
 
 func (this *QWebEngineProfile) UrlSchemeHandler(param1 []byte) *QWebEngineUrlSchemeHandler {
 	param1_alias := C.struct_miqt_string{}
-	param1_alias.data = (*C.char)(unsafe.Pointer(&param1[0]))
+	if len(param1) > 0 {
+		param1_alias.data = (*C.char)(unsafe.Pointer(&param1[0]))
+	} else {
+		param1_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	param1_alias.len = C.size_t(len(param1))
 	return newQWebEngineUrlSchemeHandler(C.QWebEngineProfile_UrlSchemeHandler(this.h, param1_alias))
 }
 
 func (this *QWebEngineProfile) InstallUrlSchemeHandler(scheme []byte, param2 *QWebEngineUrlSchemeHandler) {
 	scheme_alias := C.struct_miqt_string{}
-	scheme_alias.data = (*C.char)(unsafe.Pointer(&scheme[0]))
+	if len(scheme) > 0 {
+		scheme_alias.data = (*C.char)(unsafe.Pointer(&scheme[0]))
+	} else {
+		scheme_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	scheme_alias.len = C.size_t(len(scheme))
 	C.QWebEngineProfile_InstallUrlSchemeHandler(this.h, scheme_alias, param2.cPointer())
 }
 
 func (this *QWebEngineProfile) RemoveUrlScheme(scheme []byte) {
 	scheme_alias := C.struct_miqt_string{}
-	scheme_alias.data = (*C.char)(unsafe.Pointer(&scheme[0]))
+	if len(scheme) > 0 {
+		scheme_alias.data = (*C.char)(unsafe.Pointer(&scheme[0]))
+	} else {
+		scheme_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	scheme_alias.len = C.size_t(len(scheme))
 	C.QWebEngineProfile_RemoveUrlScheme(this.h, scheme_alias)
 }

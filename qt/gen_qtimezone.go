@@ -78,7 +78,11 @@ func NewQTimeZone() *QTimeZone {
 // NewQTimeZone2 constructs a new QTimeZone object.
 func NewQTimeZone2(ianaId []byte) *QTimeZone {
 	ianaId_alias := C.struct_miqt_string{}
-	ianaId_alias.data = (*C.char)(unsafe.Pointer(&ianaId[0]))
+	if len(ianaId) > 0 {
+		ianaId_alias.data = (*C.char)(unsafe.Pointer(&ianaId[0]))
+	} else {
+		ianaId_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	ianaId_alias.len = C.size_t(len(ianaId))
 
 	return newQTimeZone(C.QTimeZone_new2(ianaId_alias))
@@ -93,7 +97,11 @@ func NewQTimeZone3(offsetSeconds int) *QTimeZone {
 // NewQTimeZone4 constructs a new QTimeZone object.
 func NewQTimeZone4(zoneId []byte, offsetSeconds int, name string, abbreviation string) *QTimeZone {
 	zoneId_alias := C.struct_miqt_string{}
-	zoneId_alias.data = (*C.char)(unsafe.Pointer(&zoneId[0]))
+	if len(zoneId) > 0 {
+		zoneId_alias.data = (*C.char)(unsafe.Pointer(&zoneId[0]))
+	} else {
+		zoneId_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	zoneId_alias.len = C.size_t(len(zoneId))
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
@@ -116,7 +124,11 @@ func NewQTimeZone5(other *QTimeZone) *QTimeZone {
 // NewQTimeZone6 constructs a new QTimeZone object.
 func NewQTimeZone6(zoneId []byte, offsetSeconds int, name string, abbreviation string, country QLocale__Country) *QTimeZone {
 	zoneId_alias := C.struct_miqt_string{}
-	zoneId_alias.data = (*C.char)(unsafe.Pointer(&zoneId[0]))
+	if len(zoneId) > 0 {
+		zoneId_alias.data = (*C.char)(unsafe.Pointer(&zoneId[0]))
+	} else {
+		zoneId_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	zoneId_alias.len = C.size_t(len(zoneId))
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
@@ -133,7 +145,11 @@ func NewQTimeZone6(zoneId []byte, offsetSeconds int, name string, abbreviation s
 // NewQTimeZone7 constructs a new QTimeZone object.
 func NewQTimeZone7(zoneId []byte, offsetSeconds int, name string, abbreviation string, country QLocale__Country, comment string) *QTimeZone {
 	zoneId_alias := C.struct_miqt_string{}
-	zoneId_alias.data = (*C.char)(unsafe.Pointer(&zoneId[0]))
+	if len(zoneId) > 0 {
+		zoneId_alias.data = (*C.char)(unsafe.Pointer(&zoneId[0]))
+	} else {
+		zoneId_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	zoneId_alias.len = C.size_t(len(zoneId))
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
@@ -277,7 +293,11 @@ func QTimeZone_Utc() *QTimeZone {
 
 func QTimeZone_IsTimeZoneIdAvailable(ianaId []byte) bool {
 	ianaId_alias := C.struct_miqt_string{}
-	ianaId_alias.data = (*C.char)(unsafe.Pointer(&ianaId[0]))
+	if len(ianaId) > 0 {
+		ianaId_alias.data = (*C.char)(unsafe.Pointer(&ianaId[0]))
+	} else {
+		ianaId_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	ianaId_alias.len = C.size_t(len(ianaId))
 	return (bool)(C.QTimeZone_IsTimeZoneIdAvailable(ianaId_alias))
 }
@@ -323,7 +343,11 @@ func QTimeZone_AvailableTimeZoneIdsWithOffsetSeconds(offsetSeconds int) [][]byte
 
 func QTimeZone_IanaIdToWindowsId(ianaId []byte) []byte {
 	ianaId_alias := C.struct_miqt_string{}
-	ianaId_alias.data = (*C.char)(unsafe.Pointer(&ianaId[0]))
+	if len(ianaId) > 0 {
+		ianaId_alias.data = (*C.char)(unsafe.Pointer(&ianaId[0]))
+	} else {
+		ianaId_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	ianaId_alias.len = C.size_t(len(ianaId))
 	var _bytearray C.struct_miqt_string = C.QTimeZone_IanaIdToWindowsId(ianaId_alias)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
@@ -333,7 +357,11 @@ func QTimeZone_IanaIdToWindowsId(ianaId []byte) []byte {
 
 func QTimeZone_WindowsIdToDefaultIanaId(windowsId []byte) []byte {
 	windowsId_alias := C.struct_miqt_string{}
-	windowsId_alias.data = (*C.char)(unsafe.Pointer(&windowsId[0]))
+	if len(windowsId) > 0 {
+		windowsId_alias.data = (*C.char)(unsafe.Pointer(&windowsId[0]))
+	} else {
+		windowsId_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	windowsId_alias.len = C.size_t(len(windowsId))
 	var _bytearray C.struct_miqt_string = C.QTimeZone_WindowsIdToDefaultIanaId(windowsId_alias)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
@@ -343,7 +371,11 @@ func QTimeZone_WindowsIdToDefaultIanaId(windowsId []byte) []byte {
 
 func QTimeZone_WindowsIdToDefaultIanaId2(windowsId []byte, country QLocale__Country) []byte {
 	windowsId_alias := C.struct_miqt_string{}
-	windowsId_alias.data = (*C.char)(unsafe.Pointer(&windowsId[0]))
+	if len(windowsId) > 0 {
+		windowsId_alias.data = (*C.char)(unsafe.Pointer(&windowsId[0]))
+	} else {
+		windowsId_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	windowsId_alias.len = C.size_t(len(windowsId))
 	var _bytearray C.struct_miqt_string = C.QTimeZone_WindowsIdToDefaultIanaId2(windowsId_alias, (C.int)(country))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
@@ -353,7 +385,11 @@ func QTimeZone_WindowsIdToDefaultIanaId2(windowsId []byte, country QLocale__Coun
 
 func QTimeZone_WindowsIdToIanaIds(windowsId []byte) [][]byte {
 	windowsId_alias := C.struct_miqt_string{}
-	windowsId_alias.data = (*C.char)(unsafe.Pointer(&windowsId[0]))
+	if len(windowsId) > 0 {
+		windowsId_alias.data = (*C.char)(unsafe.Pointer(&windowsId[0]))
+	} else {
+		windowsId_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	windowsId_alias.len = C.size_t(len(windowsId))
 	var _ma C.struct_miqt_array = C.QTimeZone_WindowsIdToIanaIds(windowsId_alias)
 	_ret := make([][]byte, int(_ma.len))
@@ -369,7 +405,11 @@ func QTimeZone_WindowsIdToIanaIds(windowsId []byte) [][]byte {
 
 func QTimeZone_WindowsIdToIanaIds2(windowsId []byte, country QLocale__Country) [][]byte {
 	windowsId_alias := C.struct_miqt_string{}
-	windowsId_alias.data = (*C.char)(unsafe.Pointer(&windowsId[0]))
+	if len(windowsId) > 0 {
+		windowsId_alias.data = (*C.char)(unsafe.Pointer(&windowsId[0]))
+	} else {
+		windowsId_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	windowsId_alias.len = C.size_t(len(windowsId))
 	var _ma C.struct_miqt_array = C.QTimeZone_WindowsIdToIanaIds2(windowsId_alias, (C.int)(country))
 	_ret := make([][]byte, int(_ma.len))

@@ -183,7 +183,11 @@ func NewQMetaType3(param1 *QMetaType) *QMetaType {
 
 func QMetaType_RegisterNormalizedTypedef(normalizedTypeName []byte, typeVal QMetaType) {
 	normalizedTypeName_alias := C.struct_miqt_string{}
-	normalizedTypeName_alias.data = (*C.char)(unsafe.Pointer(&normalizedTypeName[0]))
+	if len(normalizedTypeName) > 0 {
+		normalizedTypeName_alias.data = (*C.char)(unsafe.Pointer(&normalizedTypeName[0]))
+	} else {
+		normalizedTypeName_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	normalizedTypeName_alias.len = C.size_t(len(normalizedTypeName))
 	C.QMetaType_RegisterNormalizedTypedef(normalizedTypeName_alias, typeVal.cPointer())
 }
@@ -196,7 +200,11 @@ func QMetaType_Type(typeName string) int {
 
 func QMetaType_TypeWithTypeName(typeName []byte) int {
 	typeName_alias := C.struct_miqt_string{}
-	typeName_alias.data = (*C.char)(unsafe.Pointer(&typeName[0]))
+	if len(typeName) > 0 {
+		typeName_alias.data = (*C.char)(unsafe.Pointer(&typeName[0]))
+	} else {
+		typeName_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	typeName_alias.len = C.size_t(len(typeName))
 	return (int)(C.QMetaType_TypeWithTypeName(typeName_alias))
 }

@@ -315,7 +315,11 @@ func (this *QMainWindow) SaveState() []byte {
 
 func (this *QMainWindow) RestoreState(state []byte) bool {
 	state_alias := C.struct_miqt_string{}
-	state_alias.data = (*C.char)(unsafe.Pointer(&state[0]))
+	if len(state) > 0 {
+		state_alias.data = (*C.char)(unsafe.Pointer(&state[0]))
+	} else {
+		state_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	state_alias.len = C.size_t(len(state))
 	return (bool)(C.QMainWindow_RestoreState(this.h, state_alias))
 }
@@ -431,7 +435,11 @@ func (this *QMainWindow) SaveState1(version int) []byte {
 
 func (this *QMainWindow) RestoreState2(state []byte, version int) bool {
 	state_alias := C.struct_miqt_string{}
-	state_alias.data = (*C.char)(unsafe.Pointer(&state[0]))
+	if len(state) > 0 {
+		state_alias.data = (*C.char)(unsafe.Pointer(&state[0]))
+	} else {
+		state_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	state_alias.len = C.size_t(len(state))
 	return (bool)(C.QMainWindow_RestoreState2(this.h, state_alias, (C.int)(version)))
 }
@@ -1298,7 +1306,11 @@ func miqt_exec_callback_QMainWindow_HideEvent(self *C.QMainWindow, cb C.intptr_t
 
 func (this *QMainWindow) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
 	eventType_alias := C.struct_miqt_string{}
-	eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	if len(eventType) > 0 {
+		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	} else {
+		eventType_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	eventType_alias.len = C.size_t(len(eventType))
 
 	return (bool)(C.QMainWindow_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))

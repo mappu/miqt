@@ -82,7 +82,11 @@ func NewQWebEngineUrlScheme() *QWebEngineUrlScheme {
 // NewQWebEngineUrlScheme2 constructs a new QWebEngineUrlScheme object.
 func NewQWebEngineUrlScheme2(name []byte) *QWebEngineUrlScheme {
 	name_alias := C.struct_miqt_string{}
-	name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
+	if len(name) > 0 {
+		name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
+	} else {
+		name_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	name_alias.len = C.size_t(len(name))
 
 	return newQWebEngineUrlScheme(C.QWebEngineUrlScheme_new2(name_alias))
@@ -115,7 +119,11 @@ func (this *QWebEngineUrlScheme) Name() []byte {
 
 func (this *QWebEngineUrlScheme) SetName(newValue []byte) {
 	newValue_alias := C.struct_miqt_string{}
-	newValue_alias.data = (*C.char)(unsafe.Pointer(&newValue[0]))
+	if len(newValue) > 0 {
+		newValue_alias.data = (*C.char)(unsafe.Pointer(&newValue[0]))
+	} else {
+		newValue_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	newValue_alias.len = C.size_t(len(newValue))
 	C.QWebEngineUrlScheme_SetName(this.h, newValue_alias)
 }
@@ -150,7 +158,11 @@ func QWebEngineUrlScheme_RegisterScheme(scheme *QWebEngineUrlScheme) {
 
 func QWebEngineUrlScheme_SchemeByName(name []byte) *QWebEngineUrlScheme {
 	name_alias := C.struct_miqt_string{}
-	name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
+	if len(name) > 0 {
+		name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
+	} else {
+		name_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	name_alias.len = C.size_t(len(name))
 	_goptr := newQWebEngineUrlScheme(C.QWebEngineUrlScheme_SchemeByName(name_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

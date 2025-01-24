@@ -129,7 +129,11 @@ func QFile_EncodeName(fileName string) []byte {
 
 func QFile_DecodeName(localFileName []byte) string {
 	localFileName_alias := C.struct_miqt_string{}
-	localFileName_alias.data = (*C.char)(unsafe.Pointer(&localFileName[0]))
+	if len(localFileName) > 0 {
+		localFileName_alias.data = (*C.char)(unsafe.Pointer(&localFileName[0]))
+	} else {
+		localFileName_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	localFileName_alias.len = C.size_t(len(localFileName))
 	var _ms C.struct_miqt_string = C.QFile_DecodeName(localFileName_alias)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))

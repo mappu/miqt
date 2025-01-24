@@ -198,7 +198,11 @@ func miqt_exec_callback_QItemEditorFactory_ValuePropertyName(self *C.QItemEditor
 
 	virtualReturn := gofunc((&QItemEditorFactory{h: self}).callVirtualBase_ValuePropertyName, slotval1)
 	virtualReturn_alias := C.struct_miqt_string{}
-	virtualReturn_alias.data = (*C.char)(unsafe.Pointer(&virtualReturn[0]))
+	if len(virtualReturn) > 0 {
+		virtualReturn_alias.data = (*C.char)(unsafe.Pointer(&virtualReturn[0]))
+	} else {
+		virtualReturn_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	virtualReturn_alias.len = C.size_t(len(virtualReturn))
 
 	return virtualReturn_alias

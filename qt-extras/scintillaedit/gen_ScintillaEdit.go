@@ -6022,7 +6022,11 @@ func miqt_exec_callback_ScintillaEditBase_UpdateUi(cb C.intptr_t, updated C.int)
 
 func (this *ScintillaEditBase) Modified(typeVal Scintilla__ModificationFlags, position uintptr, length uintptr, linesAdded uintptr, text []byte, line uintptr, foldNow Scintilla__FoldLevel, foldPrev Scintilla__FoldLevel) {
 	text_alias := C.struct_miqt_string{}
-	text_alias.data = (*C.char)(unsafe.Pointer(&text[0]))
+	if len(text) > 0 {
+		text_alias.data = (*C.char)(unsafe.Pointer(&text[0]))
+	} else {
+		text_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	text_alias.len = C.size_t(len(text))
 	C.ScintillaEditBase_Modified(this.h, (C.int)(typeVal), (C.intptr_t)(position), (C.intptr_t)(length), (C.intptr_t)(linesAdded), text_alias, (C.intptr_t)(line), (C.int)(foldNow), (C.int)(foldPrev))
 }
@@ -7691,7 +7695,11 @@ func miqt_exec_callback_ScintillaEditBase_HideEvent(self *C.ScintillaEditBase, c
 
 func (this *ScintillaEditBase) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
 	eventType_alias := C.struct_miqt_string{}
-	eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	if len(eventType) > 0 {
+		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	} else {
+		eventType_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	eventType_alias.len = C.size_t(len(eventType))
 
 	return (bool)(C.ScintillaEditBase_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
@@ -8157,7 +8165,11 @@ func (this *ScintillaDocument) IsReadOnly() bool {
 
 func (this *ScintillaDocument) InsertString(position int, str []byte) {
 	str_alias := C.struct_miqt_string{}
-	str_alias.data = (*C.char)(unsafe.Pointer(&str[0]))
+	if len(str) > 0 {
+		str_alias.data = (*C.char)(unsafe.Pointer(&str[0]))
+	} else {
+		str_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	str_alias.len = C.size_t(len(str))
 	C.ScintillaDocument_InsertString(this.h, (C.int)(position), str_alias)
 }
@@ -8292,7 +8304,11 @@ func miqt_exec_callback_ScintillaDocument_SavePoint(cb C.intptr_t, atSavePoint C
 
 func (this *ScintillaDocument) Modified(position int, modification_type int, text []byte, length int, linesAdded int, line int, foldLevelNow int, foldLevelPrev int) {
 	text_alias := C.struct_miqt_string{}
-	text_alias.data = (*C.char)(unsafe.Pointer(&text[0]))
+	if len(text) > 0 {
+		text_alias.data = (*C.char)(unsafe.Pointer(&text[0]))
+	} else {
+		text_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	text_alias.len = C.size_t(len(text))
 	C.ScintillaDocument_Modified(this.h, (C.int)(position), (C.int)(modification_type), text_alias, (C.int)(length), (C.int)(linesAdded), (C.int)(line), (C.int)(foldLevelNow), (C.int)(foldLevelPrev))
 }
@@ -13361,7 +13377,11 @@ func miqt_exec_callback_ScintillaEdit_HideEvent(self *C.ScintillaEdit, cb C.intp
 
 func (this *ScintillaEdit) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
 	eventType_alias := C.struct_miqt_string{}
-	eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	if len(eventType) > 0 {
+		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	} else {
+		eventType_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	eventType_alias.len = C.size_t(len(eventType))
 
 	return (bool)(C.ScintillaEdit_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))

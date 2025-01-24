@@ -1016,7 +1016,11 @@ func (this *QWidget) SaveGeometry() []byte {
 
 func (this *QWidget) RestoreGeometry(geometry []byte) bool {
 	geometry_alias := C.struct_miqt_string{}
-	geometry_alias.data = (*C.char)(unsafe.Pointer(&geometry[0]))
+	if len(geometry) > 0 {
+		geometry_alias.data = (*C.char)(unsafe.Pointer(&geometry[0]))
+	} else {
+		geometry_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	geometry_alias.len = C.size_t(len(geometry))
 	return (bool)(C.QWidget_RestoreGeometry(this.h, geometry_alias))
 }
@@ -2346,7 +2350,11 @@ func miqt_exec_callback_QWidget_HideEvent(self *C.QWidget, cb C.intptr_t, event 
 
 func (this *QWidget) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *int64) bool {
 	eventType_alias := C.struct_miqt_string{}
-	eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	if len(eventType) > 0 {
+		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	} else {
+		eventType_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	eventType_alias.len = C.size_t(len(eventType))
 
 	return (bool)(C.QWidget_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))

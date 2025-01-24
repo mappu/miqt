@@ -82,7 +82,11 @@ func (this *QSslDiffieHellmanParameters) Swap(other *QSslDiffieHellmanParameters
 
 func QSslDiffieHellmanParameters_FromEncoded(encoded []byte) *QSslDiffieHellmanParameters {
 	encoded_alias := C.struct_miqt_string{}
-	encoded_alias.data = (*C.char)(unsafe.Pointer(&encoded[0]))
+	if len(encoded) > 0 {
+		encoded_alias.data = (*C.char)(unsafe.Pointer(&encoded[0]))
+	} else {
+		encoded_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	encoded_alias.len = C.size_t(len(encoded))
 	_goptr := newQSslDiffieHellmanParameters(C.QSslDiffieHellmanParameters_FromEncoded(encoded_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -116,7 +120,11 @@ func (this *QSslDiffieHellmanParameters) ErrorString() string {
 
 func QSslDiffieHellmanParameters_FromEncoded2(encoded []byte, format QSsl__EncodingFormat) *QSslDiffieHellmanParameters {
 	encoded_alias := C.struct_miqt_string{}
-	encoded_alias.data = (*C.char)(unsafe.Pointer(&encoded[0]))
+	if len(encoded) > 0 {
+		encoded_alias.data = (*C.char)(unsafe.Pointer(&encoded[0]))
+	} else {
+		encoded_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	encoded_alias.len = C.size_t(len(encoded))
 	_goptr := newQSslDiffieHellmanParameters(C.QSslDiffieHellmanParameters_FromEncoded2(encoded_alias, (C.int)(format)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

@@ -1638,7 +1638,11 @@ func miqt_exec_callback_QDateTimeEdit_DropEvent(self *C.QDateTimeEdit, cb C.intp
 
 func (this *QDateTimeEdit) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
 	eventType_alias := C.struct_miqt_string{}
-	eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	if len(eventType) > 0 {
+		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	} else {
+		eventType_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	eventType_alias.len = C.size_t(len(eventType))
 
 	return (bool)(C.QDateTimeEdit_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
@@ -3264,7 +3268,11 @@ func miqt_exec_callback_QTimeEdit_DropEvent(self *C.QTimeEdit, cb C.intptr_t, ev
 
 func (this *QTimeEdit) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
 	eventType_alias := C.struct_miqt_string{}
-	eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	if len(eventType) > 0 {
+		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	} else {
+		eventType_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	eventType_alias.len = C.size_t(len(eventType))
 
 	return (bool)(C.QTimeEdit_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
@@ -4890,7 +4898,11 @@ func miqt_exec_callback_QDateEdit_DropEvent(self *C.QDateEdit, cb C.intptr_t, ev
 
 func (this *QDateEdit) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
 	eventType_alias := C.struct_miqt_string{}
-	eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	if len(eventType) > 0 {
+		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	} else {
+		eventType_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	eventType_alias.len = C.size_t(len(eventType))
 
 	return (bool)(C.QDateEdit_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))

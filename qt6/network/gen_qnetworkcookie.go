@@ -77,7 +77,11 @@ func NewQNetworkCookie2(other *QNetworkCookie) *QNetworkCookie {
 // NewQNetworkCookie3 constructs a new QNetworkCookie object.
 func NewQNetworkCookie3(name []byte) *QNetworkCookie {
 	name_alias := C.struct_miqt_string{}
-	name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
+	if len(name) > 0 {
+		name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
+	} else {
+		name_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	name_alias.len = C.size_t(len(name))
 
 	return newQNetworkCookie(C.QNetworkCookie_new3(name_alias))
@@ -86,10 +90,18 @@ func NewQNetworkCookie3(name []byte) *QNetworkCookie {
 // NewQNetworkCookie4 constructs a new QNetworkCookie object.
 func NewQNetworkCookie4(name []byte, value []byte) *QNetworkCookie {
 	name_alias := C.struct_miqt_string{}
-	name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
+	if len(name) > 0 {
+		name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
+	} else {
+		name_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	name_alias.len = C.size_t(len(name))
 	value_alias := C.struct_miqt_string{}
-	value_alias.data = (*C.char)(unsafe.Pointer(&value[0]))
+	if len(value) > 0 {
+		value_alias.data = (*C.char)(unsafe.Pointer(&value[0]))
+	} else {
+		value_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	value_alias.len = C.size_t(len(value))
 
 	return newQNetworkCookie(C.QNetworkCookie_new4(name_alias, value_alias))
@@ -188,7 +200,11 @@ func (this *QNetworkCookie) Name() []byte {
 
 func (this *QNetworkCookie) SetName(cookieName []byte) {
 	cookieName_alias := C.struct_miqt_string{}
-	cookieName_alias.data = (*C.char)(unsafe.Pointer(&cookieName[0]))
+	if len(cookieName) > 0 {
+		cookieName_alias.data = (*C.char)(unsafe.Pointer(&cookieName[0]))
+	} else {
+		cookieName_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	cookieName_alias.len = C.size_t(len(cookieName))
 	C.QNetworkCookie_SetName(this.h, cookieName_alias)
 }
@@ -202,7 +218,11 @@ func (this *QNetworkCookie) Value() []byte {
 
 func (this *QNetworkCookie) SetValue(value []byte) {
 	value_alias := C.struct_miqt_string{}
-	value_alias.data = (*C.char)(unsafe.Pointer(&value[0]))
+	if len(value) > 0 {
+		value_alias.data = (*C.char)(unsafe.Pointer(&value[0]))
+	} else {
+		value_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	value_alias.len = C.size_t(len(value))
 	C.QNetworkCookie_SetValue(this.h, value_alias)
 }
@@ -224,7 +244,11 @@ func (this *QNetworkCookie) Normalize(url *qt6.QUrl) {
 
 func QNetworkCookie_ParseCookies(cookieString []byte) []QNetworkCookie {
 	cookieString_alias := C.struct_miqt_string{}
-	cookieString_alias.data = (*C.char)(unsafe.Pointer(&cookieString[0]))
+	if len(cookieString) > 0 {
+		cookieString_alias.data = (*C.char)(unsafe.Pointer(&cookieString[0]))
+	} else {
+		cookieString_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	cookieString_alias.len = C.size_t(len(cookieString))
 	var _ma C.struct_miqt_array = C.QNetworkCookie_ParseCookies(cookieString_alias)
 	_ret := make([]QNetworkCookie, int(_ma.len))

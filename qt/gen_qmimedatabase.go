@@ -103,7 +103,11 @@ func (this *QMimeDatabase) MimeTypesForFileName(fileName string) []QMimeType {
 
 func (this *QMimeDatabase) MimeTypeForData(data []byte) *QMimeType {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	_goptr := newQMimeType(C.QMimeDatabase_MimeTypeForData(this.h, data_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -138,7 +142,11 @@ func (this *QMimeDatabase) MimeTypeForFileNameAndData2(fileName string, data []b
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	_goptr := newQMimeType(C.QMimeDatabase_MimeTypeForFileNameAndData2(this.h, fileName_ms, data_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

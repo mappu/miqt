@@ -95,7 +95,11 @@ func NewQSslCertificate4(device *qt.QIODevice, format QSsl__EncodingFormat) *QSs
 // NewQSslCertificate5 constructs a new QSslCertificate object.
 func NewQSslCertificate5(data []byte) *QSslCertificate {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 
 	return newQSslCertificate(C.QSslCertificate_new5(data_alias))
@@ -104,7 +108,11 @@ func NewQSslCertificate5(data []byte) *QSslCertificate {
 // NewQSslCertificate6 constructs a new QSslCertificate object.
 func NewQSslCertificate6(data []byte, format QSsl__EncodingFormat) *QSslCertificate {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 
 	return newQSslCertificate(C.QSslCertificate_new6(data_alias, (C.int)(format)))
@@ -178,7 +186,11 @@ func (this *QSslCertificate) IssuerInfo(info QSslCertificate__SubjectInfo) []str
 
 func (this *QSslCertificate) IssuerInfoWithAttribute(attribute []byte) []string {
 	attribute_alias := C.struct_miqt_string{}
-	attribute_alias.data = (*C.char)(unsafe.Pointer(&attribute[0]))
+	if len(attribute) > 0 {
+		attribute_alias.data = (*C.char)(unsafe.Pointer(&attribute[0]))
+	} else {
+		attribute_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	attribute_alias.len = C.size_t(len(attribute))
 	var _ma C.struct_miqt_array = C.QSslCertificate_IssuerInfoWithAttribute(this.h, attribute_alias)
 	_ret := make([]string, int(_ma.len))
@@ -207,7 +219,11 @@ func (this *QSslCertificate) SubjectInfo(info QSslCertificate__SubjectInfo) []st
 
 func (this *QSslCertificate) SubjectInfoWithAttribute(attribute []byte) []string {
 	attribute_alias := C.struct_miqt_string{}
-	attribute_alias.data = (*C.char)(unsafe.Pointer(&attribute[0]))
+	if len(attribute) > 0 {
+		attribute_alias.data = (*C.char)(unsafe.Pointer(&attribute[0]))
+	} else {
+		attribute_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	attribute_alias.len = C.size_t(len(attribute))
 	var _ma C.struct_miqt_array = C.QSslCertificate_SubjectInfoWithAttribute(this.h, attribute_alias)
 	_ret := make([]string, int(_ma.len))
@@ -358,7 +374,11 @@ func QSslCertificate_FromDevice(device *qt.QIODevice) []QSslCertificate {
 
 func QSslCertificate_FromData(data []byte) []QSslCertificate {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	var _ma C.struct_miqt_array = C.QSslCertificate_FromData(data_alias)
 	_ret := make([]QSslCertificate, int(_ma.len))
@@ -450,7 +470,11 @@ func QSslCertificate_FromDevice2(device *qt.QIODevice, format QSsl__EncodingForm
 
 func QSslCertificate_FromData2(data []byte, format QSsl__EncodingFormat) []QSslCertificate {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	var _ma C.struct_miqt_array = C.QSslCertificate_FromData2(data_alias, (C.int)(format))
 	_ret := make([]QSslCertificate, int(_ma.len))
@@ -503,7 +527,11 @@ func QSslCertificate_ImportPkcs125(device *qt.QIODevice, key *QSslKey, cert *QSs
 	}
 	caCertificates_ma := C.struct_miqt_array{len: C.size_t(len(caCertificates)), data: unsafe.Pointer(caCertificates_CArray)}
 	passPhrase_alias := C.struct_miqt_string{}
-	passPhrase_alias.data = (*C.char)(unsafe.Pointer(&passPhrase[0]))
+	if len(passPhrase) > 0 {
+		passPhrase_alias.data = (*C.char)(unsafe.Pointer(&passPhrase[0]))
+	} else {
+		passPhrase_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	passPhrase_alias.len = C.size_t(len(passPhrase))
 	return (bool)(C.QSslCertificate_ImportPkcs125((*C.QIODevice)(device.UnsafePointer()), key.cPointer(), cert.cPointer(), caCertificates_ma, passPhrase_alias))
 }

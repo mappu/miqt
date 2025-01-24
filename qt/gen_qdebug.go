@@ -189,7 +189,11 @@ func (this *QDebug) OperatorShiftLeftWithQString(t string) *QDebug {
 
 func (this *QDebug) OperatorShiftLeftWithQByteArray(t []byte) *QDebug {
 	t_alias := C.struct_miqt_string{}
-	t_alias.data = (*C.char)(unsafe.Pointer(&t[0]))
+	if len(t) > 0 {
+		t_alias.data = (*C.char)(unsafe.Pointer(&t[0]))
+	} else {
+		t_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	t_alias.len = C.size_t(len(t))
 	return newQDebug(C.QDebug_OperatorShiftLeftWithQByteArray(this.h, t_alias))
 }

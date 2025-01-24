@@ -137,7 +137,11 @@ func (this *QWebEngineView) SetHtml(html string) {
 
 func (this *QWebEngineView) SetContent(data []byte) {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	C.QWebEngineView_SetContent(this.h, data_alias)
 }
@@ -528,7 +532,11 @@ func (this *QWebEngineView) SetHtml2(html string, baseUrl *qt6.QUrl) {
 
 func (this *QWebEngineView) SetContent2(data []byte, mimeType string) {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	mimeType_ms := C.struct_miqt_string{}
 	mimeType_ms.data = C.CString(mimeType)
@@ -539,7 +547,11 @@ func (this *QWebEngineView) SetContent2(data []byte, mimeType string) {
 
 func (this *QWebEngineView) SetContent3(data []byte, mimeType string, baseUrl *qt6.QUrl) {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	mimeType_ms := C.struct_miqt_string{}
 	mimeType_ms.data = C.CString(mimeType)
@@ -1433,7 +1445,11 @@ func miqt_exec_callback_QWebEngineView_ActionEvent(self *C.QWebEngineView, cb C.
 
 func (this *QWebEngineView) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
 	eventType_alias := C.struct_miqt_string{}
-	eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	if len(eventType) > 0 {
+		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	} else {
+		eventType_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	eventType_alias.len = C.size_t(len(eventType))
 
 	return (bool)(C.QWebEngineView_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))

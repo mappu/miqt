@@ -74,7 +74,11 @@ func (this *QSslPreSharedKeyAuthenticator) IdentityHint() []byte {
 
 func (this *QSslPreSharedKeyAuthenticator) SetIdentity(identity []byte) {
 	identity_alias := C.struct_miqt_string{}
-	identity_alias.data = (*C.char)(unsafe.Pointer(&identity[0]))
+	if len(identity) > 0 {
+		identity_alias.data = (*C.char)(unsafe.Pointer(&identity[0]))
+	} else {
+		identity_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	identity_alias.len = C.size_t(len(identity))
 	C.QSslPreSharedKeyAuthenticator_SetIdentity(this.h, identity_alias)
 }
@@ -92,7 +96,11 @@ func (this *QSslPreSharedKeyAuthenticator) MaximumIdentityLength() int {
 
 func (this *QSslPreSharedKeyAuthenticator) SetPreSharedKey(preSharedKey []byte) {
 	preSharedKey_alias := C.struct_miqt_string{}
-	preSharedKey_alias.data = (*C.char)(unsafe.Pointer(&preSharedKey[0]))
+	if len(preSharedKey) > 0 {
+		preSharedKey_alias.data = (*C.char)(unsafe.Pointer(&preSharedKey[0]))
+	} else {
+		preSharedKey_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	preSharedKey_alias.len = C.size_t(len(preSharedKey))
 	C.QSslPreSharedKeyAuthenticator_SetPreSharedKey(this.h, preSharedKey_alias)
 }

@@ -96,7 +96,11 @@ func NewQTextStream2(device *QIODevice) *QTextStream {
 // NewQTextStream3 constructs a new QTextStream object.
 func NewQTextStream3(array []byte) *QTextStream {
 	array_alias := C.struct_miqt_string{}
-	array_alias.data = (*C.char)(unsafe.Pointer(&array[0]))
+	if len(array) > 0 {
+		array_alias.data = (*C.char)(unsafe.Pointer(&array[0]))
+	} else {
+		array_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	array_alias.len = C.size_t(len(array))
 
 	return newQTextStream(C.QTextStream_new3(array_alias))
@@ -105,7 +109,11 @@ func NewQTextStream3(array []byte) *QTextStream {
 // NewQTextStream4 constructs a new QTextStream object.
 func NewQTextStream4(array []byte, openMode QIODevice__OpenModeFlag) *QTextStream {
 	array_alias := C.struct_miqt_string{}
-	array_alias.data = (*C.char)(unsafe.Pointer(&array[0]))
+	if len(array) > 0 {
+		array_alias.data = (*C.char)(unsafe.Pointer(&array[0]))
+	} else {
+		array_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	array_alias.len = C.size_t(len(array))
 
 	return newQTextStream(C.QTextStream_new4(array_alias, (C.int)(openMode)))
@@ -339,7 +347,11 @@ func (this *QTextStream) OperatorShiftRightWithQString(s string) *QTextStream {
 
 func (this *QTextStream) OperatorShiftRightWithArray(array []byte) *QTextStream {
 	array_alias := C.struct_miqt_string{}
-	array_alias.data = (*C.char)(unsafe.Pointer(&array[0]))
+	if len(array) > 0 {
+		array_alias.data = (*C.char)(unsafe.Pointer(&array[0]))
+	} else {
+		array_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	array_alias.len = C.size_t(len(array))
 	return newQTextStream(C.QTextStream_OperatorShiftRightWithArray(this.h, array_alias))
 }
@@ -408,7 +420,11 @@ func (this *QTextStream) OperatorShiftLeftWithQString(s string) *QTextStream {
 
 func (this *QTextStream) OperatorShiftLeftWithArray(array []byte) *QTextStream {
 	array_alias := C.struct_miqt_string{}
-	array_alias.data = (*C.char)(unsafe.Pointer(&array[0]))
+	if len(array) > 0 {
+		array_alias.data = (*C.char)(unsafe.Pointer(&array[0]))
+	} else {
+		array_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	array_alias.len = C.size_t(len(array))
 	return newQTextStream(C.QTextStream_OperatorShiftLeftWithArray(this.h, array_alias))
 }

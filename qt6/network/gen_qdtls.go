@@ -117,7 +117,11 @@ func (this *QDtlsClientVerifier) CookieGeneratorParameters() *QDtlsClientVerifie
 
 func (this *QDtlsClientVerifier) VerifyClient(socket *QUdpSocket, dgram []byte, address *QHostAddress, port uint16) bool {
 	dgram_alias := C.struct_miqt_string{}
-	dgram_alias.data = (*C.char)(unsafe.Pointer(&dgram[0]))
+	if len(dgram) > 0 {
+		dgram_alias.data = (*C.char)(unsafe.Pointer(&dgram[0]))
+	} else {
+		dgram_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	dgram_alias.len = C.size_t(len(dgram))
 	return (bool)(C.QDtlsClientVerifier_VerifyClient(this.h, socket.cPointer(), dgram_alias, address.cPointer(), (C.uint16_t)(port)))
 }
@@ -532,14 +536,22 @@ func (this *QDtls) SessionProtocol() QSsl__SslProtocol {
 
 func (this *QDtls) WriteDatagramEncrypted(socket *QUdpSocket, dgram []byte) int64 {
 	dgram_alias := C.struct_miqt_string{}
-	dgram_alias.data = (*C.char)(unsafe.Pointer(&dgram[0]))
+	if len(dgram) > 0 {
+		dgram_alias.data = (*C.char)(unsafe.Pointer(&dgram[0]))
+	} else {
+		dgram_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	dgram_alias.len = C.size_t(len(dgram))
 	return (int64)(C.QDtls_WriteDatagramEncrypted(this.h, socket.cPointer(), dgram_alias))
 }
 
 func (this *QDtls) DecryptDatagram(socket *QUdpSocket, dgram []byte) []byte {
 	dgram_alias := C.struct_miqt_string{}
-	dgram_alias.data = (*C.char)(unsafe.Pointer(&dgram[0]))
+	if len(dgram) > 0 {
+		dgram_alias.data = (*C.char)(unsafe.Pointer(&dgram[0]))
+	} else {
+		dgram_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	dgram_alias.len = C.size_t(len(dgram))
 	var _bytearray C.struct_miqt_string = C.QDtls_DecryptDatagram(this.h, socket.cPointer(), dgram_alias)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
@@ -649,7 +661,11 @@ func (this *QDtls) SetPeer3(address *QHostAddress, port uint16, verificationName
 
 func (this *QDtls) DoHandshake2(socket *QUdpSocket, dgram []byte) bool {
 	dgram_alias := C.struct_miqt_string{}
-	dgram_alias.data = (*C.char)(unsafe.Pointer(&dgram[0]))
+	if len(dgram) > 0 {
+		dgram_alias.data = (*C.char)(unsafe.Pointer(&dgram[0]))
+	} else {
+		dgram_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	dgram_alias.len = C.size_t(len(dgram))
 	return (bool)(C.QDtls_DoHandshake2(this.h, socket.cPointer(), dgram_alias))
 }
@@ -897,7 +913,11 @@ func NewQDtlsClientVerifier__GeneratorParameters() *QDtlsClientVerifier__Generat
 // NewQDtlsClientVerifier__GeneratorParameters2 constructs a new QDtlsClientVerifier::GeneratorParameters object.
 func NewQDtlsClientVerifier__GeneratorParameters2(a qt6.QCryptographicHash__Algorithm, s []byte) *QDtlsClientVerifier__GeneratorParameters {
 	s_alias := C.struct_miqt_string{}
-	s_alias.data = (*C.char)(unsafe.Pointer(&s[0]))
+	if len(s) > 0 {
+		s_alias.data = (*C.char)(unsafe.Pointer(&s[0]))
+	} else {
+		s_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	s_alias.len = C.size_t(len(s))
 
 	return newQDtlsClientVerifier__GeneratorParameters(C.QDtlsClientVerifier__GeneratorParameters_new2((C.int)(a), s_alias))

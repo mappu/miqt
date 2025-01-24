@@ -144,7 +144,11 @@ func (this *QUdpSocket) WriteDatagram2(data string, lenVal int64, host *QHostAdd
 
 func (this *QUdpSocket) WriteDatagram3(datagram []byte, host *QHostAddress, port uint16) int64 {
 	datagram_alias := C.struct_miqt_string{}
-	datagram_alias.data = (*C.char)(unsafe.Pointer(&datagram[0]))
+	if len(datagram) > 0 {
+		datagram_alias.data = (*C.char)(unsafe.Pointer(&datagram[0]))
+	} else {
+		datagram_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	datagram_alias.len = C.size_t(len(datagram))
 	return (int64)(C.QUdpSocket_WriteDatagram3(this.h, datagram_alias, host.cPointer(), (C.uint16_t)(port)))
 }

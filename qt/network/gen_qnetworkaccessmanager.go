@@ -218,7 +218,11 @@ func (this *QNetworkAccessManager) Post(request *QNetworkRequest, data *qt.QIODe
 
 func (this *QNetworkAccessManager) Post2(request *QNetworkRequest, data []byte) *QNetworkReply {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	return newQNetworkReply(C.QNetworkAccessManager_Post2(this.h, request.cPointer(), data_alias))
 }
@@ -229,7 +233,11 @@ func (this *QNetworkAccessManager) Put(request *QNetworkRequest, data *qt.QIODev
 
 func (this *QNetworkAccessManager) Put2(request *QNetworkRequest, data []byte) *QNetworkReply {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	return newQNetworkReply(C.QNetworkAccessManager_Put2(this.h, request.cPointer(), data_alias))
 }
@@ -240,17 +248,29 @@ func (this *QNetworkAccessManager) DeleteResource(request *QNetworkRequest) *QNe
 
 func (this *QNetworkAccessManager) SendCustomRequest(request *QNetworkRequest, verb []byte) *QNetworkReply {
 	verb_alias := C.struct_miqt_string{}
-	verb_alias.data = (*C.char)(unsafe.Pointer(&verb[0]))
+	if len(verb) > 0 {
+		verb_alias.data = (*C.char)(unsafe.Pointer(&verb[0]))
+	} else {
+		verb_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	verb_alias.len = C.size_t(len(verb))
 	return newQNetworkReply(C.QNetworkAccessManager_SendCustomRequest(this.h, request.cPointer(), verb_alias))
 }
 
 func (this *QNetworkAccessManager) SendCustomRequest2(request *QNetworkRequest, verb []byte, data []byte) *QNetworkReply {
 	verb_alias := C.struct_miqt_string{}
-	verb_alias.data = (*C.char)(unsafe.Pointer(&verb[0]))
+	if len(verb) > 0 {
+		verb_alias.data = (*C.char)(unsafe.Pointer(&verb[0]))
+	} else {
+		verb_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	verb_alias.len = C.size_t(len(verb))
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	return newQNetworkReply(C.QNetworkAccessManager_SendCustomRequest2(this.h, request.cPointer(), verb_alias, data_alias))
 }
@@ -265,7 +285,11 @@ func (this *QNetworkAccessManager) Put3(request *QNetworkRequest, multiPart *QHt
 
 func (this *QNetworkAccessManager) SendCustomRequest3(request *QNetworkRequest, verb []byte, multiPart *QHttpMultiPart) *QNetworkReply {
 	verb_alias := C.struct_miqt_string{}
-	verb_alias.data = (*C.char)(unsafe.Pointer(&verb[0]))
+	if len(verb) > 0 {
+		verb_alias.data = (*C.char)(unsafe.Pointer(&verb[0]))
+	} else {
+		verb_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	verb_alias.len = C.size_t(len(verb))
 	return newQNetworkReply(C.QNetworkAccessManager_SendCustomRequest3(this.h, request.cPointer(), verb_alias, multiPart.cPointer()))
 }
@@ -579,7 +603,11 @@ func (this *QNetworkAccessManager) EnableStrictTransportSecurityStore2(enabled b
 
 func (this *QNetworkAccessManager) SendCustomRequest32(request *QNetworkRequest, verb []byte, data *qt.QIODevice) *QNetworkReply {
 	verb_alias := C.struct_miqt_string{}
-	verb_alias.data = (*C.char)(unsafe.Pointer(&verb[0]))
+	if len(verb) > 0 {
+		verb_alias.data = (*C.char)(unsafe.Pointer(&verb[0]))
+	} else {
+		verb_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	verb_alias.len = C.size_t(len(verb))
 	return newQNetworkReply(C.QNetworkAccessManager_SendCustomRequest32(this.h, request.cPointer(), verb_alias, (*C.QIODevice)(data.UnsafePointer())))
 }

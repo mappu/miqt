@@ -466,7 +466,11 @@ func NewQXmlStreamReader2(device *QIODevice) *QXmlStreamReader {
 // NewQXmlStreamReader3 constructs a new QXmlStreamReader object.
 func NewQXmlStreamReader3(data []byte) *QXmlStreamReader {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 
 	return newQXmlStreamReader(C.QXmlStreamReader_new3(data_alias))
@@ -500,7 +504,11 @@ func (this *QXmlStreamReader) Device() *QIODevice {
 
 func (this *QXmlStreamReader) AddData(data []byte) {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	C.QXmlStreamReader_AddData(this.h, data_alias)
 }

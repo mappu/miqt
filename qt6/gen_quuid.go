@@ -160,7 +160,11 @@ func QUuid_CreateUuid() *QUuid {
 
 func QUuid_CreateUuidV3(ns *QUuid, baseData []byte) *QUuid {
 	baseData_alias := C.struct_miqt_string{}
-	baseData_alias.data = (*C.char)(unsafe.Pointer(&baseData[0]))
+	if len(baseData) > 0 {
+		baseData_alias.data = (*C.char)(unsafe.Pointer(&baseData[0]))
+	} else {
+		baseData_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	baseData_alias.len = C.size_t(len(baseData))
 	_goptr := newQUuid(C.QUuid_CreateUuidV3(ns.cPointer(), baseData_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -169,7 +173,11 @@ func QUuid_CreateUuidV3(ns *QUuid, baseData []byte) *QUuid {
 
 func QUuid_CreateUuidV5(ns *QUuid, baseData []byte) *QUuid {
 	baseData_alias := C.struct_miqt_string{}
-	baseData_alias.data = (*C.char)(unsafe.Pointer(&baseData[0]))
+	if len(baseData) > 0 {
+		baseData_alias.data = (*C.char)(unsafe.Pointer(&baseData[0]))
+	} else {
+		baseData_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	baseData_alias.len = C.size_t(len(baseData))
 	_goptr := newQUuid(C.QUuid_CreateUuidV5(ns.cPointer(), baseData_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

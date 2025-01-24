@@ -182,7 +182,11 @@ func (this *QSplitter) SaveState() []byte {
 
 func (this *QSplitter) RestoreState(state []byte) bool {
 	state_alias := C.struct_miqt_string{}
-	state_alias.data = (*C.char)(unsafe.Pointer(&state[0]))
+	if len(state) > 0 {
+		state_alias.data = (*C.char)(unsafe.Pointer(&state[0]))
+	} else {
+		state_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	state_alias.len = C.size_t(len(state))
 	return (bool)(C.QSplitter_RestoreState(this.h, state_alias))
 }
@@ -1207,7 +1211,11 @@ func miqt_exec_callback_QSplitter_HideEvent(self *C.QSplitter, cb C.intptr_t, ev
 
 func (this *QSplitter) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
 	eventType_alias := C.struct_miqt_string{}
-	eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	if len(eventType) > 0 {
+		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	} else {
+		eventType_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	eventType_alias.len = C.size_t(len(eventType))
 
 	return (bool)(C.QSplitter_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
@@ -2523,7 +2531,11 @@ func miqt_exec_callback_QSplitterHandle_HideEvent(self *C.QSplitterHandle, cb C.
 
 func (this *QSplitterHandle) callVirtualBase_NativeEvent(eventType []byte, message unsafe.Pointer, result *uintptr) bool {
 	eventType_alias := C.struct_miqt_string{}
-	eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	if len(eventType) > 0 {
+		eventType_alias.data = (*C.char)(unsafe.Pointer(&eventType[0]))
+	} else {
+		eventType_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	eventType_alias.len = C.size_t(len(eventType))
 
 	return (bool)(C.QSplitterHandle_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))

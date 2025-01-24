@@ -177,7 +177,11 @@ func (this *QUrl) ToEncoded() []byte {
 
 func QUrl_FromEncoded(url []byte) *QUrl {
 	url_alias := C.struct_miqt_string{}
-	url_alias.data = (*C.char)(unsafe.Pointer(&url[0]))
+	if len(url) > 0 {
+		url_alias.data = (*C.char)(unsafe.Pointer(&url[0]))
+	} else {
+		url_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	url_alias.len = C.size_t(len(url))
 	_goptr := newQUrl(C.QUrl_FromEncoded(url_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -453,7 +457,11 @@ func (this *QUrl) OperatorNotEqual(url *QUrl) bool {
 
 func QUrl_FromPercentEncoding(param1 []byte) string {
 	param1_alias := C.struct_miqt_string{}
-	param1_alias.data = (*C.char)(unsafe.Pointer(&param1[0]))
+	if len(param1) > 0 {
+		param1_alias.data = (*C.char)(unsafe.Pointer(&param1[0]))
+	} else {
+		param1_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	param1_alias.len = C.size_t(len(param1))
 	var _ms C.struct_miqt_string = C.QUrl_FromPercentEncoding(param1_alias)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
@@ -474,7 +482,11 @@ func QUrl_ToPercentEncoding(param1 string) []byte {
 
 func QUrl_FromAce(param1 []byte) string {
 	param1_alias := C.struct_miqt_string{}
-	param1_alias.data = (*C.char)(unsafe.Pointer(&param1[0]))
+	if len(param1) > 0 {
+		param1_alias.data = (*C.char)(unsafe.Pointer(&param1[0]))
+	} else {
+		param1_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	param1_alias.len = C.size_t(len(param1))
 	var _ms C.struct_miqt_string = C.QUrl_FromAce(param1_alias)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
@@ -571,7 +583,11 @@ func (this *QUrl) SetUrl2(url string, mode QUrl__ParsingMode) {
 
 func QUrl_FromEncoded2(url []byte, mode QUrl__ParsingMode) *QUrl {
 	url_alias := C.struct_miqt_string{}
-	url_alias.data = (*C.char)(unsafe.Pointer(&url[0]))
+	if len(url) > 0 {
+		url_alias.data = (*C.char)(unsafe.Pointer(&url[0]))
+	} else {
+		url_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	url_alias.len = C.size_t(len(url))
 	_goptr := newQUrl(C.QUrl_FromEncoded2(url_alias, (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -736,7 +752,11 @@ func QUrl_ToPercentEncoding2(param1 string, exclude []byte) []byte {
 	param1_ms.len = C.size_t(len(param1))
 	defer C.free(unsafe.Pointer(param1_ms.data))
 	exclude_alias := C.struct_miqt_string{}
-	exclude_alias.data = (*C.char)(unsafe.Pointer(&exclude[0]))
+	if len(exclude) > 0 {
+		exclude_alias.data = (*C.char)(unsafe.Pointer(&exclude[0]))
+	} else {
+		exclude_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	exclude_alias.len = C.size_t(len(exclude))
 	var _bytearray C.struct_miqt_string = C.QUrl_ToPercentEncoding2(param1_ms, exclude_alias)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
@@ -750,10 +770,18 @@ func QUrl_ToPercentEncoding3(param1 string, exclude []byte, include []byte) []by
 	param1_ms.len = C.size_t(len(param1))
 	defer C.free(unsafe.Pointer(param1_ms.data))
 	exclude_alias := C.struct_miqt_string{}
-	exclude_alias.data = (*C.char)(unsafe.Pointer(&exclude[0]))
+	if len(exclude) > 0 {
+		exclude_alias.data = (*C.char)(unsafe.Pointer(&exclude[0]))
+	} else {
+		exclude_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	exclude_alias.len = C.size_t(len(exclude))
 	include_alias := C.struct_miqt_string{}
-	include_alias.data = (*C.char)(unsafe.Pointer(&include[0]))
+	if len(include) > 0 {
+		include_alias.data = (*C.char)(unsafe.Pointer(&include[0]))
+	} else {
+		include_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	include_alias.len = C.size_t(len(include))
 	var _bytearray C.struct_miqt_string = C.QUrl_ToPercentEncoding3(param1_ms, exclude_alias, include_alias)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))

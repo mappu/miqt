@@ -54,7 +54,11 @@ func NewQMessageAuthenticationCode(method QCryptographicHash__Algorithm) *QMessa
 // NewQMessageAuthenticationCode2 constructs a new QMessageAuthenticationCode object.
 func NewQMessageAuthenticationCode2(method QCryptographicHash__Algorithm, key []byte) *QMessageAuthenticationCode {
 	key_alias := C.struct_miqt_string{}
-	key_alias.data = (*C.char)(unsafe.Pointer(&key[0]))
+	if len(key) > 0 {
+		key_alias.data = (*C.char)(unsafe.Pointer(&key[0]))
+	} else {
+		key_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	key_alias.len = C.size_t(len(key))
 
 	return newQMessageAuthenticationCode(C.QMessageAuthenticationCode_new2((C.int)(method), key_alias))
@@ -66,7 +70,11 @@ func (this *QMessageAuthenticationCode) Reset() {
 
 func (this *QMessageAuthenticationCode) SetKey(key []byte) {
 	key_alias := C.struct_miqt_string{}
-	key_alias.data = (*C.char)(unsafe.Pointer(&key[0]))
+	if len(key) > 0 {
+		key_alias.data = (*C.char)(unsafe.Pointer(&key[0]))
+	} else {
+		key_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	key_alias.len = C.size_t(len(key))
 	C.QMessageAuthenticationCode_SetKey(this.h, key_alias)
 }
@@ -79,7 +87,11 @@ func (this *QMessageAuthenticationCode) AddData(data string, length int64) {
 
 func (this *QMessageAuthenticationCode) AddDataWithData(data []byte) {
 	data_alias := C.struct_miqt_string{}
-	data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	data_alias.len = C.size_t(len(data))
 	C.QMessageAuthenticationCode_AddDataWithData(this.h, data_alias)
 }
@@ -97,10 +109,18 @@ func (this *QMessageAuthenticationCode) Result() []byte {
 
 func QMessageAuthenticationCode_Hash(message []byte, key []byte, method QCryptographicHash__Algorithm) []byte {
 	message_alias := C.struct_miqt_string{}
-	message_alias.data = (*C.char)(unsafe.Pointer(&message[0]))
+	if len(message) > 0 {
+		message_alias.data = (*C.char)(unsafe.Pointer(&message[0]))
+	} else {
+		message_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	message_alias.len = C.size_t(len(message))
 	key_alias := C.struct_miqt_string{}
-	key_alias.data = (*C.char)(unsafe.Pointer(&key[0]))
+	if len(key) > 0 {
+		key_alias.data = (*C.char)(unsafe.Pointer(&key[0]))
+	} else {
+		key_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	key_alias.len = C.size_t(len(key))
 	var _bytearray C.struct_miqt_string = C.QMessageAuthenticationCode_Hash(message_alias, key_alias, (C.int)(method))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))

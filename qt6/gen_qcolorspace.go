@@ -302,7 +302,11 @@ func (this *QColorSpace) IsValid() bool {
 
 func QColorSpace_FromIccProfile(iccProfile []byte) *QColorSpace {
 	iccProfile_alias := C.struct_miqt_string{}
-	iccProfile_alias.data = (*C.char)(unsafe.Pointer(&iccProfile[0]))
+	if len(iccProfile) > 0 {
+		iccProfile_alias.data = (*C.char)(unsafe.Pointer(&iccProfile[0]))
+	} else {
+		iccProfile_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	iccProfile_alias.len = C.size_t(len(iccProfile))
 	_goptr := newQColorSpace(C.QColorSpace_FromIccProfile(iccProfile_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

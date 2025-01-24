@@ -287,7 +287,11 @@ func (this *QSslConfiguration) SessionTicket() []byte {
 
 func (this *QSslConfiguration) SetSessionTicket(sessionTicket []byte) {
 	sessionTicket_alias := C.struct_miqt_string{}
-	sessionTicket_alias.data = (*C.char)(unsafe.Pointer(&sessionTicket[0]))
+	if len(sessionTicket) > 0 {
+		sessionTicket_alias.data = (*C.char)(unsafe.Pointer(&sessionTicket[0]))
+	} else {
+		sessionTicket_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	sessionTicket_alias.len = C.size_t(len(sessionTicket))
 	C.QSslConfiguration_SetSessionTicket(this.h, sessionTicket_alias)
 }
@@ -345,7 +349,11 @@ func (this *QSslConfiguration) PreSharedKeyIdentityHint() []byte {
 
 func (this *QSslConfiguration) SetPreSharedKeyIdentityHint(hint []byte) {
 	hint_alias := C.struct_miqt_string{}
-	hint_alias.data = (*C.char)(unsafe.Pointer(&hint[0]))
+	if len(hint) > 0 {
+		hint_alias.data = (*C.char)(unsafe.Pointer(&hint[0]))
+	} else {
+		hint_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	hint_alias.len = C.size_t(len(hint))
 	C.QSslConfiguration_SetPreSharedKeyIdentityHint(this.h, hint_alias)
 }
@@ -362,7 +370,11 @@ func (this *QSslConfiguration) SetDiffieHellmanParameters(dhparams *QSslDiffieHe
 
 func (this *QSslConfiguration) SetBackendConfigurationOption(name []byte, value *qt.QVariant) {
 	name_alias := C.struct_miqt_string{}
-	name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
+	if len(name) > 0 {
+		name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
+	} else {
+		name_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	name_alias.len = C.size_t(len(name))
 	C.QSslConfiguration_SetBackendConfigurationOption(this.h, name_alias, (*C.QVariant)(value.UnsafePointer()))
 }
@@ -412,7 +424,11 @@ func (this *QSslConfiguration) SetAllowedNextProtocols(protocols [][]byte) {
 	defer C.free(unsafe.Pointer(protocols_CArray))
 	for i := range protocols {
 		protocols_i_alias := C.struct_miqt_string{}
-		protocols_i_alias.data = (*C.char)(unsafe.Pointer(&protocols[i][0]))
+		if len(protocols[i]) > 0 {
+			protocols_i_alias.data = (*C.char)(unsafe.Pointer(&protocols[i][0]))
+		} else {
+			protocols_i_alias.data = (*C.char)(unsafe.Pointer(nil))
+		}
 		protocols_i_alias.len = C.size_t(len(protocols[i]))
 		protocols_CArray[i] = protocols_i_alias
 	}

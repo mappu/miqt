@@ -54,7 +54,11 @@ func NewQTextDocumentWriter() *QTextDocumentWriter {
 // NewQTextDocumentWriter2 constructs a new QTextDocumentWriter object.
 func NewQTextDocumentWriter2(device *QIODevice, format []byte) *QTextDocumentWriter {
 	format_alias := C.struct_miqt_string{}
-	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	if len(format) > 0 {
+		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	} else {
+		format_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	format_alias.len = C.size_t(len(format))
 
 	return newQTextDocumentWriter(C.QTextDocumentWriter_new2(device.cPointer(), format_alias))
@@ -77,7 +81,11 @@ func NewQTextDocumentWriter4(fileName string, format []byte) *QTextDocumentWrite
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_alias := C.struct_miqt_string{}
-	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	if len(format) > 0 {
+		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	} else {
+		format_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	format_alias.len = C.size_t(len(format))
 
 	return newQTextDocumentWriter(C.QTextDocumentWriter_new4(fileName_ms, format_alias))
@@ -85,7 +93,11 @@ func NewQTextDocumentWriter4(fileName string, format []byte) *QTextDocumentWrite
 
 func (this *QTextDocumentWriter) SetFormat(format []byte) {
 	format_alias := C.struct_miqt_string{}
-	format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	if len(format) > 0 {
+		format_alias.data = (*C.char)(unsafe.Pointer(&format[0]))
+	} else {
+		format_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
 	format_alias.len = C.size_t(len(format))
 	C.QTextDocumentWriter_SetFormat(this.h, format_alias)
 }
