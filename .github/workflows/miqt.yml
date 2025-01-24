@@ -139,3 +139,34 @@ jobs:
     
     - name: Win64 bindings compile
       run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src miqt/win64:qt68 /bin/bash -c 'cd qt6 && go build'
+
+  miqt_android_qt5:
+    runs-on: ubuntu-24.04
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Android armv8a docker build
+      run: docker build -t miqt/android:qt5 -f docker/android-armv8a-go1.23-qt5.15-dynamic.Dockerfile .
+
+    - name: Cache GOCACHE
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/go-build
+        key: android-armv8a-gocache
+
+    - name: Android compile app as c-shared my_go_app.so
+      run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src/examples/android miqt/android:qt5 go build -buildmode c-shared -ldflags "-s -w -extldflags -Wl,-soname,my_go_app.so" -o android-build/libs/arm64-v8a/my_go_app.so
+
+    - name: Android generate libRealAppName.so linking stub
+      run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src/examples/android miqt/android:qt5 android-stub-gen.sh my_go_app.so AndroidMain android-build/libs/arm64-v8a/libRealAppName_arm64-v8a.so
+
+    - name: Android generate json packaging metadata
+      run: docker run --rm -v $(pwd):/src -w /src/examples/android miqt/android:qt5 android-mktemplate.sh RealAppName deployment-settings.json
+
+    - name: Android build APK package
+      run: docker run --rm -v $(pwd):/src -w /src/examples/android miqt/android:qt5 androiddeployqt --input ./deployment-settings.json --output ./android-build/
+
+    - name: Verify that package exists
+      run: test -f examples/android/android-build/build/outputs/apk/debug/android-build-debug.apk
