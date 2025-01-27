@@ -24,50 +24,50 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QGesture_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QGesture_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QGesture_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QGesture_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QGesture_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QGesture_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QGesture_DisconnectNotify(void*, intptr_t, QMetaMethod*);
-bool miqt_exec_callback_QPanGesture_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QPanGesture_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QPanGesture_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QPanGesture_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QPanGesture_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QPanGesture_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QPanGesture_DisconnectNotify(void*, intptr_t, QMetaMethod*);
-bool miqt_exec_callback_QPinchGesture_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QPinchGesture_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QPinchGesture_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QPinchGesture_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QPinchGesture_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QPinchGesture_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QPinchGesture_DisconnectNotify(void*, intptr_t, QMetaMethod*);
-bool miqt_exec_callback_QSwipeGesture_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QSwipeGesture_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QSwipeGesture_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QSwipeGesture_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QSwipeGesture_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSwipeGesture_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QSwipeGesture_DisconnectNotify(void*, intptr_t, QMetaMethod*);
-bool miqt_exec_callback_QTapGesture_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QTapGesture_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QTapGesture_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QTapGesture_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QTapGesture_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QTapGesture_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QTapGesture_DisconnectNotify(void*, intptr_t, QMetaMethod*);
-bool miqt_exec_callback_QTapAndHoldGesture_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QTapAndHoldGesture_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QTapAndHoldGesture_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QTapAndHoldGesture_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QTapAndHoldGesture_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QTapAndHoldGesture_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QTapAndHoldGesture_DisconnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QGestureEvent_SetAccepted(void*, intptr_t, bool);
-QEvent* miqt_exec_callback_QGestureEvent_Clone(void*, intptr_t);
+bool miqt_exec_callback_QGesture_Event(QGesture*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGesture_EventFilter(QGesture*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QGesture_TimerEvent(QGesture*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QGesture_ChildEvent(QGesture*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QGesture_CustomEvent(QGesture*, intptr_t, QEvent*);
+void miqt_exec_callback_QGesture_ConnectNotify(QGesture*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGesture_DisconnectNotify(QGesture*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QPanGesture_Event(QPanGesture*, intptr_t, QEvent*);
+bool miqt_exec_callback_QPanGesture_EventFilter(QPanGesture*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QPanGesture_TimerEvent(QPanGesture*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QPanGesture_ChildEvent(QPanGesture*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QPanGesture_CustomEvent(QPanGesture*, intptr_t, QEvent*);
+void miqt_exec_callback_QPanGesture_ConnectNotify(QPanGesture*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QPanGesture_DisconnectNotify(QPanGesture*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QPinchGesture_Event(QPinchGesture*, intptr_t, QEvent*);
+bool miqt_exec_callback_QPinchGesture_EventFilter(QPinchGesture*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QPinchGesture_TimerEvent(QPinchGesture*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QPinchGesture_ChildEvent(QPinchGesture*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QPinchGesture_CustomEvent(QPinchGesture*, intptr_t, QEvent*);
+void miqt_exec_callback_QPinchGesture_ConnectNotify(QPinchGesture*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QPinchGesture_DisconnectNotify(QPinchGesture*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QSwipeGesture_Event(QSwipeGesture*, intptr_t, QEvent*);
+bool miqt_exec_callback_QSwipeGesture_EventFilter(QSwipeGesture*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QSwipeGesture_TimerEvent(QSwipeGesture*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSwipeGesture_ChildEvent(QSwipeGesture*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QSwipeGesture_CustomEvent(QSwipeGesture*, intptr_t, QEvent*);
+void miqt_exec_callback_QSwipeGesture_ConnectNotify(QSwipeGesture*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSwipeGesture_DisconnectNotify(QSwipeGesture*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QTapGesture_Event(QTapGesture*, intptr_t, QEvent*);
+bool miqt_exec_callback_QTapGesture_EventFilter(QTapGesture*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QTapGesture_TimerEvent(QTapGesture*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QTapGesture_ChildEvent(QTapGesture*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QTapGesture_CustomEvent(QTapGesture*, intptr_t, QEvent*);
+void miqt_exec_callback_QTapGesture_ConnectNotify(QTapGesture*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QTapGesture_DisconnectNotify(QTapGesture*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QTapAndHoldGesture_Event(QTapAndHoldGesture*, intptr_t, QEvent*);
+bool miqt_exec_callback_QTapAndHoldGesture_EventFilter(QTapAndHoldGesture*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QTapAndHoldGesture_TimerEvent(QTapAndHoldGesture*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QTapAndHoldGesture_ChildEvent(QTapAndHoldGesture*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QTapAndHoldGesture_CustomEvent(QTapAndHoldGesture*, intptr_t, QEvent*);
+void miqt_exec_callback_QTapAndHoldGesture_ConnectNotify(QTapAndHoldGesture*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QTapAndHoldGesture_DisconnectNotify(QTapAndHoldGesture*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGestureEvent_SetAccepted(QGestureEvent*, intptr_t, bool);
+QEvent* miqt_exec_callback_QGestureEvent_Clone(const QGestureEvent*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -2333,7 +2333,7 @@ public:
 		}
 		
 
-		QEvent* callback_return_value = miqt_exec_callback_QGestureEvent_Clone(const_cast<MiqtVirtualQGestureEvent*>(this), handle__Clone);
+		QEvent* callback_return_value = miqt_exec_callback_QGestureEvent_Clone(this, handle__Clone);
 
 		return callback_return_value;
 	}

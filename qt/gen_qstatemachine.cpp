@@ -23,19 +23,19 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QStateMachine_RunningChanged(intptr_t, bool);
-bool miqt_exec_callback_QStateMachine_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QStateMachine_OnEntry(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QStateMachine_OnExit(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QStateMachine_BeginSelectTransitions(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QStateMachine_EndSelectTransitions(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QStateMachine_BeginMicrostep(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QStateMachine_EndMicrostep(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QStateMachine_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QStateMachine_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QStateMachine_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QStateMachine_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QStateMachine_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QStateMachine_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QStateMachine_EventFilter(QStateMachine*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QStateMachine_OnEntry(QStateMachine*, intptr_t, QEvent*);
+void miqt_exec_callback_QStateMachine_OnExit(QStateMachine*, intptr_t, QEvent*);
+void miqt_exec_callback_QStateMachine_BeginSelectTransitions(QStateMachine*, intptr_t, QEvent*);
+void miqt_exec_callback_QStateMachine_EndSelectTransitions(QStateMachine*, intptr_t, QEvent*);
+void miqt_exec_callback_QStateMachine_BeginMicrostep(QStateMachine*, intptr_t, QEvent*);
+void miqt_exec_callback_QStateMachine_EndMicrostep(QStateMachine*, intptr_t, QEvent*);
+bool miqt_exec_callback_QStateMachine_Event(QStateMachine*, intptr_t, QEvent*);
+void miqt_exec_callback_QStateMachine_TimerEvent(QStateMachine*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QStateMachine_ChildEvent(QStateMachine*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QStateMachine_CustomEvent(QStateMachine*, intptr_t, QEvent*);
+void miqt_exec_callback_QStateMachine_ConnectNotify(QStateMachine*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QStateMachine_DisconnectNotify(QStateMachine*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

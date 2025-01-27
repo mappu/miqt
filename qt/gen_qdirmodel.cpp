@@ -26,47 +26,47 @@
 extern "C" {
 #endif
 
-QModelIndex* miqt_exec_callback_QDirModel_Index(void*, intptr_t, int, int, QModelIndex*);
-QModelIndex* miqt_exec_callback_QDirModel_Parent(void*, intptr_t, QModelIndex*);
-int miqt_exec_callback_QDirModel_RowCount(void*, intptr_t, QModelIndex*);
-int miqt_exec_callback_QDirModel_ColumnCount(void*, intptr_t, QModelIndex*);
-QVariant* miqt_exec_callback_QDirModel_Data(void*, intptr_t, QModelIndex*, int);
-bool miqt_exec_callback_QDirModel_SetData(void*, intptr_t, QModelIndex*, QVariant*, int);
-QVariant* miqt_exec_callback_QDirModel_HeaderData(void*, intptr_t, int, int, int);
-bool miqt_exec_callback_QDirModel_HasChildren(void*, intptr_t, QModelIndex*);
-int miqt_exec_callback_QDirModel_Flags(void*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QDirModel_Sort(void*, intptr_t, int, int);
-struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QDirModel_MimeTypes(void*, intptr_t);
-QMimeData* miqt_exec_callback_QDirModel_MimeData(void*, intptr_t, struct miqt_array /* of QModelIndex* */ );
-bool miqt_exec_callback_QDirModel_DropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
-int miqt_exec_callback_QDirModel_SupportedDropActions(void*, intptr_t);
-QModelIndex* miqt_exec_callback_QDirModel_Sibling(void*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QDirModel_SetHeaderData(void*, intptr_t, int, int, QVariant*, int);
-struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QDirModel_ItemData(void*, intptr_t, QModelIndex*);
-bool miqt_exec_callback_QDirModel_SetItemData(void*, intptr_t, QModelIndex*, struct miqt_map /* of int to QVariant* */ );
-bool miqt_exec_callback_QDirModel_CanDropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
-int miqt_exec_callback_QDirModel_SupportedDragActions(void*, intptr_t);
-bool miqt_exec_callback_QDirModel_InsertRows(void*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QDirModel_InsertColumns(void*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QDirModel_RemoveRows(void*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QDirModel_RemoveColumns(void*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QDirModel_MoveRows(void*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
-bool miqt_exec_callback_QDirModel_MoveColumns(void*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
-void miqt_exec_callback_QDirModel_FetchMore(void*, intptr_t, QModelIndex*);
-bool miqt_exec_callback_QDirModel_CanFetchMore(void*, intptr_t, QModelIndex*);
-QModelIndex* miqt_exec_callback_QDirModel_Buddy(void*, intptr_t, QModelIndex*);
-struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QDirModel_Match(void*, intptr_t, QModelIndex*, int, QVariant*, int, int);
-QSize* miqt_exec_callback_QDirModel_Span(void*, intptr_t, QModelIndex*);
-struct miqt_map /* of int to struct miqt_string */  miqt_exec_callback_QDirModel_RoleNames(void*, intptr_t);
-bool miqt_exec_callback_QDirModel_Submit(void*, intptr_t);
-void miqt_exec_callback_QDirModel_Revert(void*, intptr_t);
-bool miqt_exec_callback_QDirModel_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QDirModel_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QDirModel_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QDirModel_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QDirModel_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QDirModel_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QDirModel_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QModelIndex* miqt_exec_callback_QDirModel_Index(const QDirModel*, intptr_t, int, int, QModelIndex*);
+QModelIndex* miqt_exec_callback_QDirModel_Parent(const QDirModel*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QDirModel_RowCount(const QDirModel*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QDirModel_ColumnCount(const QDirModel*, intptr_t, QModelIndex*);
+QVariant* miqt_exec_callback_QDirModel_Data(const QDirModel*, intptr_t, QModelIndex*, int);
+bool miqt_exec_callback_QDirModel_SetData(QDirModel*, intptr_t, QModelIndex*, QVariant*, int);
+QVariant* miqt_exec_callback_QDirModel_HeaderData(const QDirModel*, intptr_t, int, int, int);
+bool miqt_exec_callback_QDirModel_HasChildren(const QDirModel*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QDirModel_Flags(const QDirModel*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QDirModel_Sort(QDirModel*, intptr_t, int, int);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QDirModel_MimeTypes(const QDirModel*, intptr_t);
+QMimeData* miqt_exec_callback_QDirModel_MimeData(const QDirModel*, intptr_t, struct miqt_array /* of QModelIndex* */ );
+bool miqt_exec_callback_QDirModel_DropMimeData(QDirModel*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+int miqt_exec_callback_QDirModel_SupportedDropActions(const QDirModel*, intptr_t);
+QModelIndex* miqt_exec_callback_QDirModel_Sibling(const QDirModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QDirModel_SetHeaderData(QDirModel*, intptr_t, int, int, QVariant*, int);
+struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QDirModel_ItemData(const QDirModel*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QDirModel_SetItemData(QDirModel*, intptr_t, QModelIndex*, struct miqt_map /* of int to QVariant* */ );
+bool miqt_exec_callback_QDirModel_CanDropMimeData(const QDirModel*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+int miqt_exec_callback_QDirModel_SupportedDragActions(const QDirModel*, intptr_t);
+bool miqt_exec_callback_QDirModel_InsertRows(QDirModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QDirModel_InsertColumns(QDirModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QDirModel_RemoveRows(QDirModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QDirModel_RemoveColumns(QDirModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QDirModel_MoveRows(QDirModel*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+bool miqt_exec_callback_QDirModel_MoveColumns(QDirModel*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+void miqt_exec_callback_QDirModel_FetchMore(QDirModel*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QDirModel_CanFetchMore(const QDirModel*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QDirModel_Buddy(const QDirModel*, intptr_t, QModelIndex*);
+struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QDirModel_Match(const QDirModel*, intptr_t, QModelIndex*, int, QVariant*, int, int);
+QSize* miqt_exec_callback_QDirModel_Span(const QDirModel*, intptr_t, QModelIndex*);
+struct miqt_map /* of int to struct miqt_string */  miqt_exec_callback_QDirModel_RoleNames(const QDirModel*, intptr_t);
+bool miqt_exec_callback_QDirModel_Submit(QDirModel*, intptr_t);
+void miqt_exec_callback_QDirModel_Revert(QDirModel*, intptr_t);
+bool miqt_exec_callback_QDirModel_Event(QDirModel*, intptr_t, QEvent*);
+bool miqt_exec_callback_QDirModel_EventFilter(QDirModel*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QDirModel_TimerEvent(QDirModel*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QDirModel_ChildEvent(QDirModel*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QDirModel_CustomEvent(QDirModel*, intptr_t, QEvent*);
+void miqt_exec_callback_QDirModel_ConnectNotify(QDirModel*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QDirModel_DisconnectNotify(QDirModel*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -96,7 +96,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QDirModel_Index(const_cast<MiqtVirtualQDirModel*>(this), handle__Index, sigval1, sigval2, sigval3);
+		QModelIndex* callback_return_value = miqt_exec_callback_QDirModel_Index(this, handle__Index, sigval1, sigval2, sigval3);
 
 		return *callback_return_value;
 	}
@@ -121,7 +121,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&child_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QDirModel_Parent(const_cast<MiqtVirtualQDirModel*>(this), handle__Parent, sigval1);
+		QModelIndex* callback_return_value = miqt_exec_callback_QDirModel_Parent(this, handle__Parent, sigval1);
 
 		return *callback_return_value;
 	}
@@ -146,7 +146,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 
-		int callback_return_value = miqt_exec_callback_QDirModel_RowCount(const_cast<MiqtVirtualQDirModel*>(this), handle__RowCount, sigval1);
+		int callback_return_value = miqt_exec_callback_QDirModel_RowCount(this, handle__RowCount, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -171,7 +171,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 
-		int callback_return_value = miqt_exec_callback_QDirModel_ColumnCount(const_cast<MiqtVirtualQDirModel*>(this), handle__ColumnCount, sigval1);
+		int callback_return_value = miqt_exec_callback_QDirModel_ColumnCount(this, handle__ColumnCount, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -197,7 +197,7 @@ public:
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		int sigval2 = role;
 
-		QVariant* callback_return_value = miqt_exec_callback_QDirModel_Data(const_cast<MiqtVirtualQDirModel*>(this), handle__Data, sigval1, sigval2);
+		QVariant* callback_return_value = miqt_exec_callback_QDirModel_Data(this, handle__Data, sigval1, sigval2);
 
 		return *callback_return_value;
 	}
@@ -252,7 +252,7 @@ public:
 		int sigval2 = static_cast<int>(orientation_ret);
 		int sigval3 = role;
 
-		QVariant* callback_return_value = miqt_exec_callback_QDirModel_HeaderData(const_cast<MiqtVirtualQDirModel*>(this), handle__HeaderData, sigval1, sigval2, sigval3);
+		QVariant* callback_return_value = miqt_exec_callback_QDirModel_HeaderData(this, handle__HeaderData, sigval1, sigval2, sigval3);
 
 		return *callback_return_value;
 	}
@@ -277,7 +277,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		bool callback_return_value = miqt_exec_callback_QDirModel_HasChildren(const_cast<MiqtVirtualQDirModel*>(this), handle__HasChildren, sigval1);
+		bool callback_return_value = miqt_exec_callback_QDirModel_HasChildren(this, handle__HasChildren, sigval1);
 
 		return callback_return_value;
 	}
@@ -302,7 +302,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		int callback_return_value = miqt_exec_callback_QDirModel_Flags(const_cast<MiqtVirtualQDirModel*>(this), handle__Flags, sigval1);
+		int callback_return_value = miqt_exec_callback_QDirModel_Flags(this, handle__Flags, sigval1);
 
 		return static_cast<Qt::ItemFlags>(callback_return_value);
 	}
@@ -351,7 +351,7 @@ public:
 		}
 		
 
-		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QDirModel_MimeTypes(const_cast<MiqtVirtualQDirModel*>(this), handle__MimeTypes);
+		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QDirModel_MimeTypes(this, handle__MimeTypes);
 		QStringList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		struct miqt_string* callback_return_value_arr = static_cast<struct miqt_string*>(callback_return_value.data);
@@ -406,7 +406,7 @@ public:
 		indexes_out.data = static_cast<void*>(indexes_arr);
 		struct miqt_array /* of QModelIndex* */  sigval1 = indexes_out;
 
-		QMimeData* callback_return_value = miqt_exec_callback_QDirModel_MimeData(const_cast<MiqtVirtualQDirModel*>(this), handle__MimeData, sigval1);
+		QMimeData* callback_return_value = miqt_exec_callback_QDirModel_MimeData(this, handle__MimeData, sigval1);
 
 		return callback_return_value;
 	}
@@ -464,7 +464,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QDirModel_SupportedDropActions(const_cast<MiqtVirtualQDirModel*>(this), handle__SupportedDropActions);
+		int callback_return_value = miqt_exec_callback_QDirModel_SupportedDropActions(this, handle__SupportedDropActions);
 
 		return static_cast<Qt::DropActions>(callback_return_value);
 	}
@@ -492,7 +492,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&idx_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QDirModel_Sibling(const_cast<MiqtVirtualQDirModel*>(this), handle__Sibling, sigval1, sigval2, sigval3);
+		QModelIndex* callback_return_value = miqt_exec_callback_QDirModel_Sibling(this, handle__Sibling, sigval1, sigval2, sigval3);
 
 		return *callback_return_value;
 	}
@@ -546,7 +546,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		struct miqt_map /* of int to QVariant* */  callback_return_value = miqt_exec_callback_QDirModel_ItemData(const_cast<MiqtVirtualQDirModel*>(this), handle__ItemData, sigval1);
+		struct miqt_map /* of int to QVariant* */  callback_return_value = miqt_exec_callback_QDirModel_ItemData(this, handle__ItemData, sigval1);
 		QMap<int, QVariant> callback_return_value_QMap;
 		int* callback_return_value_karr = static_cast<int*>(callback_return_value.keys);
 		QVariant** callback_return_value_varr = static_cast<QVariant**>(callback_return_value.values);
@@ -642,7 +642,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval5 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QDirModel_CanDropMimeData(const_cast<MiqtVirtualQDirModel*>(this), handle__CanDropMimeData, sigval1, sigval2, sigval3, sigval4, sigval5);
+		bool callback_return_value = miqt_exec_callback_QDirModel_CanDropMimeData(this, handle__CanDropMimeData, sigval1, sigval2, sigval3, sigval4, sigval5);
 
 		return callback_return_value;
 	}
@@ -664,7 +664,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QDirModel_SupportedDragActions(const_cast<MiqtVirtualQDirModel*>(this), handle__SupportedDragActions);
+		int callback_return_value = miqt_exec_callback_QDirModel_SupportedDragActions(this, handle__SupportedDragActions);
 
 		return static_cast<Qt::DropActions>(callback_return_value);
 	}
@@ -886,7 +886,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QDirModel_CanFetchMore(const_cast<MiqtVirtualQDirModel*>(this), handle__CanFetchMore, sigval1);
+		bool callback_return_value = miqt_exec_callback_QDirModel_CanFetchMore(this, handle__CanFetchMore, sigval1);
 
 		return callback_return_value;
 	}
@@ -911,7 +911,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QDirModel_Buddy(const_cast<MiqtVirtualQDirModel*>(this), handle__Buddy, sigval1);
+		QModelIndex* callback_return_value = miqt_exec_callback_QDirModel_Buddy(this, handle__Buddy, sigval1);
 
 		return *callback_return_value;
 	}
@@ -943,7 +943,7 @@ public:
 		Qt::MatchFlags flags_ret = flags;
 		int sigval5 = static_cast<int>(flags_ret);
 
-		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QDirModel_Match(const_cast<MiqtVirtualQDirModel*>(this), handle__Match, sigval1, sigval2, sigval3, sigval4, sigval5);
+		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QDirModel_Match(this, handle__Match, sigval1, sigval2, sigval3, sigval4, sigval5);
 		QModelIndexList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		QModelIndex** callback_return_value_arr = static_cast<QModelIndex**>(callback_return_value.data);
@@ -983,7 +983,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		QSize* callback_return_value = miqt_exec_callback_QDirModel_Span(const_cast<MiqtVirtualQDirModel*>(this), handle__Span, sigval1);
+		QSize* callback_return_value = miqt_exec_callback_QDirModel_Span(this, handle__Span, sigval1);
 
 		return *callback_return_value;
 	}
@@ -1005,7 +1005,7 @@ public:
 		}
 		
 
-		struct miqt_map /* of int to struct miqt_string */  callback_return_value = miqt_exec_callback_QDirModel_RoleNames(const_cast<MiqtVirtualQDirModel*>(this), handle__RoleNames);
+		struct miqt_map /* of int to struct miqt_string */  callback_return_value = miqt_exec_callback_QDirModel_RoleNames(this, handle__RoleNames);
 		QHash<int, QByteArray> callback_return_value_QMap;
 		callback_return_value_QMap.reserve(callback_return_value.len);
 		int* callback_return_value_karr = static_cast<int*>(callback_return_value.keys);

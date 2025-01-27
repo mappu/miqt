@@ -47,13 +47,13 @@ void miqt_exec_callback_QCamera_BrightnessChanged(intptr_t);
 void miqt_exec_callback_QCamera_ContrastChanged(intptr_t);
 void miqt_exec_callback_QCamera_SaturationChanged(intptr_t);
 void miqt_exec_callback_QCamera_HueChanged(intptr_t);
-bool miqt_exec_callback_QCamera_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QCamera_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QCamera_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QCamera_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QCamera_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QCamera_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QCamera_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QCamera_Event(QCamera*, intptr_t, QEvent*);
+bool miqt_exec_callback_QCamera_EventFilter(QCamera*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QCamera_TimerEvent(QCamera*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QCamera_ChildEvent(QCamera*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QCamera_CustomEvent(QCamera*, intptr_t, QEvent*);
+void miqt_exec_callback_QCamera_ConnectNotify(QCamera*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QCamera_DisconnectNotify(QCamera*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

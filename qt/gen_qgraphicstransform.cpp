@@ -19,38 +19,38 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QGraphicsTransform_ApplyTo(void*, intptr_t, QMatrix4x4*);
-bool miqt_exec_callback_QGraphicsTransform_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QGraphicsTransform_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QGraphicsTransform_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QGraphicsTransform_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QGraphicsTransform_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QGraphicsTransform_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QGraphicsTransform_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsTransform_ApplyTo(const QGraphicsTransform*, intptr_t, QMatrix4x4*);
+bool miqt_exec_callback_QGraphicsTransform_Event(QGraphicsTransform*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGraphicsTransform_EventFilter(QGraphicsTransform*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QGraphicsTransform_TimerEvent(QGraphicsTransform*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QGraphicsTransform_ChildEvent(QGraphicsTransform*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QGraphicsTransform_CustomEvent(QGraphicsTransform*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsTransform_ConnectNotify(QGraphicsTransform*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsTransform_DisconnectNotify(QGraphicsTransform*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QGraphicsScale_OriginChanged(intptr_t);
 void miqt_exec_callback_QGraphicsScale_XScaleChanged(intptr_t);
 void miqt_exec_callback_QGraphicsScale_YScaleChanged(intptr_t);
 void miqt_exec_callback_QGraphicsScale_ZScaleChanged(intptr_t);
 void miqt_exec_callback_QGraphicsScale_ScaleChanged(intptr_t);
-void miqt_exec_callback_QGraphicsScale_ApplyTo(void*, intptr_t, QMatrix4x4*);
-bool miqt_exec_callback_QGraphicsScale_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QGraphicsScale_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QGraphicsScale_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QGraphicsScale_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QGraphicsScale_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QGraphicsScale_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QGraphicsScale_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsScale_ApplyTo(const QGraphicsScale*, intptr_t, QMatrix4x4*);
+bool miqt_exec_callback_QGraphicsScale_Event(QGraphicsScale*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGraphicsScale_EventFilter(QGraphicsScale*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QGraphicsScale_TimerEvent(QGraphicsScale*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QGraphicsScale_ChildEvent(QGraphicsScale*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QGraphicsScale_CustomEvent(QGraphicsScale*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsScale_ConnectNotify(QGraphicsScale*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsScale_DisconnectNotify(QGraphicsScale*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QGraphicsRotation_OriginChanged(intptr_t);
 void miqt_exec_callback_QGraphicsRotation_AngleChanged(intptr_t);
 void miqt_exec_callback_QGraphicsRotation_AxisChanged(intptr_t);
-void miqt_exec_callback_QGraphicsRotation_ApplyTo(void*, intptr_t, QMatrix4x4*);
-bool miqt_exec_callback_QGraphicsRotation_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QGraphicsRotation_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QGraphicsRotation_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QGraphicsRotation_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QGraphicsRotation_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QGraphicsRotation_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QGraphicsRotation_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsRotation_ApplyTo(const QGraphicsRotation*, intptr_t, QMatrix4x4*);
+bool miqt_exec_callback_QGraphicsRotation_Event(QGraphicsRotation*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGraphicsRotation_EventFilter(QGraphicsRotation*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QGraphicsRotation_TimerEvent(QGraphicsRotation*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QGraphicsRotation_ChildEvent(QGraphicsRotation*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QGraphicsRotation_CustomEvent(QGraphicsRotation*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsRotation_ConnectNotify(QGraphicsRotation*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsRotation_DisconnectNotify(QGraphicsRotation*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -74,7 +74,7 @@ public:
 		
 		QMatrix4x4* sigval1 = matrix;
 
-		miqt_exec_callback_QGraphicsTransform_ApplyTo(const_cast<MiqtVirtualQGraphicsTransform*>(this), handle__ApplyTo, sigval1);
+		miqt_exec_callback_QGraphicsTransform_ApplyTo(this, handle__ApplyTo, sigval1);
 
 		
 	}
@@ -474,7 +474,7 @@ public:
 		
 		QMatrix4x4* sigval1 = matrix;
 
-		miqt_exec_callback_QGraphicsScale_ApplyTo(const_cast<MiqtVirtualQGraphicsScale*>(this), handle__ApplyTo, sigval1);
+		miqt_exec_callback_QGraphicsScale_ApplyTo(this, handle__ApplyTo, sigval1);
 
 		
 	}
@@ -970,7 +970,7 @@ public:
 		
 		QMatrix4x4* sigval1 = matrix;
 
-		miqt_exec_callback_QGraphicsRotation_ApplyTo(const_cast<MiqtVirtualQGraphicsRotation*>(this), handle__ApplyTo, sigval1);
+		miqt_exec_callback_QGraphicsRotation_ApplyTo(this, handle__ApplyTo, sigval1);
 
 		
 	}

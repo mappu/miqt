@@ -45,53 +45,53 @@ extern "C" {
 
 void miqt_exec_callback_QPrintPreviewWidget_PaintRequested(intptr_t, QPrinter*);
 void miqt_exec_callback_QPrintPreviewWidget_PreviewChanged(intptr_t);
-void miqt_exec_callback_QPrintPreviewWidget_SetVisible(void*, intptr_t, bool);
-int miqt_exec_callback_QPrintPreviewWidget_DevType(void*, intptr_t);
-QSize* miqt_exec_callback_QPrintPreviewWidget_SizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QPrintPreviewWidget_MinimumSizeHint(void*, intptr_t);
-int miqt_exec_callback_QPrintPreviewWidget_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QPrintPreviewWidget_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QPrintPreviewWidget_PaintEngine(void*, intptr_t);
-bool miqt_exec_callback_QPrintPreviewWidget_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QPrintPreviewWidget_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QPrintPreviewWidget_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QPrintPreviewWidget_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QPrintPreviewWidget_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QPrintPreviewWidget_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QPrintPreviewWidget_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QPrintPreviewWidget_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QPrintPreviewWidget_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QPrintPreviewWidget_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QPrintPreviewWidget_EnterEvent(void*, intptr_t, QEnterEvent*);
-void miqt_exec_callback_QPrintPreviewWidget_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QPrintPreviewWidget_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QPrintPreviewWidget_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QPrintPreviewWidget_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QPrintPreviewWidget_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QPrintPreviewWidget_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QPrintPreviewWidget_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QPrintPreviewWidget_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QPrintPreviewWidget_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QPrintPreviewWidget_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QPrintPreviewWidget_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QPrintPreviewWidget_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QPrintPreviewWidget_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QPrintPreviewWidget_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QPrintPreviewWidget_NativeEvent(void*, intptr_t, struct miqt_string, void*, intptr_t*);
-void miqt_exec_callback_QPrintPreviewWidget_ChangeEvent(void*, intptr_t, QEvent*);
-int miqt_exec_callback_QPrintPreviewWidget_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QPrintPreviewWidget_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QPrintPreviewWidget_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QPrintPreviewWidget_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QPrintPreviewWidget_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QPrintPreviewWidget_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QPrintPreviewWidget_FocusNextPrevChild(void*, intptr_t, bool);
-bool miqt_exec_callback_QPrintPreviewWidget_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QPrintPreviewWidget_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QPrintPreviewWidget_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QPrintPreviewWidget_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QPrintPreviewWidget_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QPrintPreviewWidget_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QPrintPreviewWidget_SetVisible(QPrintPreviewWidget*, intptr_t, bool);
+int miqt_exec_callback_QPrintPreviewWidget_DevType(const QPrintPreviewWidget*, intptr_t);
+QSize* miqt_exec_callback_QPrintPreviewWidget_SizeHint(const QPrintPreviewWidget*, intptr_t);
+QSize* miqt_exec_callback_QPrintPreviewWidget_MinimumSizeHint(const QPrintPreviewWidget*, intptr_t);
+int miqt_exec_callback_QPrintPreviewWidget_HeightForWidth(const QPrintPreviewWidget*, intptr_t, int);
+bool miqt_exec_callback_QPrintPreviewWidget_HasHeightForWidth(const QPrintPreviewWidget*, intptr_t);
+QPaintEngine* miqt_exec_callback_QPrintPreviewWidget_PaintEngine(const QPrintPreviewWidget*, intptr_t);
+bool miqt_exec_callback_QPrintPreviewWidget_Event(QPrintPreviewWidget*, intptr_t, QEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_MousePressEvent(QPrintPreviewWidget*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_MouseReleaseEvent(QPrintPreviewWidget*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_MouseDoubleClickEvent(QPrintPreviewWidget*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_MouseMoveEvent(QPrintPreviewWidget*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_WheelEvent(QPrintPreviewWidget*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_KeyPressEvent(QPrintPreviewWidget*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_KeyReleaseEvent(QPrintPreviewWidget*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_FocusInEvent(QPrintPreviewWidget*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_FocusOutEvent(QPrintPreviewWidget*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_EnterEvent(QPrintPreviewWidget*, intptr_t, QEnterEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_LeaveEvent(QPrintPreviewWidget*, intptr_t, QEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_PaintEvent(QPrintPreviewWidget*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_MoveEvent(QPrintPreviewWidget*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_ResizeEvent(QPrintPreviewWidget*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_CloseEvent(QPrintPreviewWidget*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_ContextMenuEvent(QPrintPreviewWidget*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_TabletEvent(QPrintPreviewWidget*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_ActionEvent(QPrintPreviewWidget*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_DragEnterEvent(QPrintPreviewWidget*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_DragMoveEvent(QPrintPreviewWidget*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_DragLeaveEvent(QPrintPreviewWidget*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_DropEvent(QPrintPreviewWidget*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_ShowEvent(QPrintPreviewWidget*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_HideEvent(QPrintPreviewWidget*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QPrintPreviewWidget_NativeEvent(QPrintPreviewWidget*, intptr_t, struct miqt_string, void*, intptr_t*);
+void miqt_exec_callback_QPrintPreviewWidget_ChangeEvent(QPrintPreviewWidget*, intptr_t, QEvent*);
+int miqt_exec_callback_QPrintPreviewWidget_Metric(const QPrintPreviewWidget*, intptr_t, int);
+void miqt_exec_callback_QPrintPreviewWidget_InitPainter(const QPrintPreviewWidget*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QPrintPreviewWidget_Redirected(const QPrintPreviewWidget*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QPrintPreviewWidget_SharedPainter(const QPrintPreviewWidget*, intptr_t);
+void miqt_exec_callback_QPrintPreviewWidget_InputMethodEvent(QPrintPreviewWidget*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QPrintPreviewWidget_InputMethodQuery(const QPrintPreviewWidget*, intptr_t, int);
+bool miqt_exec_callback_QPrintPreviewWidget_FocusNextPrevChild(QPrintPreviewWidget*, intptr_t, bool);
+bool miqt_exec_callback_QPrintPreviewWidget_EventFilter(QPrintPreviewWidget*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_TimerEvent(QPrintPreviewWidget*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_ChildEvent(QPrintPreviewWidget*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_CustomEvent(QPrintPreviewWidget*, intptr_t, QEvent*);
+void miqt_exec_callback_QPrintPreviewWidget_ConnectNotify(QPrintPreviewWidget*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QPrintPreviewWidget_DisconnectNotify(QPrintPreviewWidget*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -142,7 +142,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QPrintPreviewWidget_DevType(const_cast<MiqtVirtualQPrintPreviewWidget*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QPrintPreviewWidget_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -164,7 +164,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QPrintPreviewWidget_SizeHint(const_cast<MiqtVirtualQPrintPreviewWidget*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QPrintPreviewWidget_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -186,7 +186,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QPrintPreviewWidget_MinimumSizeHint(const_cast<MiqtVirtualQPrintPreviewWidget*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QPrintPreviewWidget_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -209,7 +209,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QPrintPreviewWidget_HeightForWidth(const_cast<MiqtVirtualQPrintPreviewWidget*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QPrintPreviewWidget_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -231,7 +231,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QPrintPreviewWidget_HasHeightForWidth(const_cast<MiqtVirtualQPrintPreviewWidget*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QPrintPreviewWidget_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -253,7 +253,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QPrintPreviewWidget_PaintEngine(const_cast<MiqtVirtualQPrintPreviewWidget*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QPrintPreviewWidget_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -932,7 +932,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QPrintPreviewWidget_Metric(const_cast<MiqtVirtualQPrintPreviewWidget*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QPrintPreviewWidget_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -956,7 +956,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QPrintPreviewWidget_InitPainter(const_cast<MiqtVirtualQPrintPreviewWidget*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QPrintPreviewWidget_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -979,7 +979,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QPrintPreviewWidget_Redirected(const_cast<MiqtVirtualQPrintPreviewWidget*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QPrintPreviewWidget_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1001,7 +1001,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QPrintPreviewWidget_SharedPainter(const_cast<MiqtVirtualQPrintPreviewWidget*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QPrintPreviewWidget_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -1049,7 +1049,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QPrintPreviewWidget_InputMethodQuery(const_cast<MiqtVirtualQPrintPreviewWidget*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QPrintPreviewWidget_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}

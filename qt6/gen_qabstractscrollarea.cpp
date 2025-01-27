@@ -46,58 +46,58 @@
 extern "C" {
 #endif
 
-QSize* miqt_exec_callback_QAbstractScrollArea_MinimumSizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QAbstractScrollArea_SizeHint(void*, intptr_t);
-void miqt_exec_callback_QAbstractScrollArea_SetupViewport(void*, intptr_t, QWidget*);
-bool miqt_exec_callback_QAbstractScrollArea_EventFilter(void*, intptr_t, QObject*, QEvent*);
-bool miqt_exec_callback_QAbstractScrollArea_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QAbstractScrollArea_ViewportEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QAbstractScrollArea_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QAbstractScrollArea_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QAbstractScrollArea_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QAbstractScrollArea_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QAbstractScrollArea_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QAbstractScrollArea_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QAbstractScrollArea_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QAbstractScrollArea_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QAbstractScrollArea_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QAbstractScrollArea_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QAbstractScrollArea_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QAbstractScrollArea_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QAbstractScrollArea_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QAbstractScrollArea_ScrollContentsBy(void*, intptr_t, int, int);
-QSize* miqt_exec_callback_QAbstractScrollArea_ViewportSizeHint(void*, intptr_t);
-void miqt_exec_callback_QAbstractScrollArea_ChangeEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QAbstractScrollArea_InitStyleOption(void*, intptr_t, QStyleOptionFrame*);
-int miqt_exec_callback_QAbstractScrollArea_DevType(void*, intptr_t);
-void miqt_exec_callback_QAbstractScrollArea_SetVisible(void*, intptr_t, bool);
-int miqt_exec_callback_QAbstractScrollArea_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QAbstractScrollArea_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QAbstractScrollArea_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QAbstractScrollArea_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QAbstractScrollArea_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QAbstractScrollArea_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QAbstractScrollArea_EnterEvent(void*, intptr_t, QEnterEvent*);
-void miqt_exec_callback_QAbstractScrollArea_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QAbstractScrollArea_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QAbstractScrollArea_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QAbstractScrollArea_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QAbstractScrollArea_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QAbstractScrollArea_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QAbstractScrollArea_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QAbstractScrollArea_NativeEvent(void*, intptr_t, struct miqt_string, void*, intptr_t*);
-int miqt_exec_callback_QAbstractScrollArea_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QAbstractScrollArea_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QAbstractScrollArea_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QAbstractScrollArea_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QAbstractScrollArea_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QAbstractScrollArea_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QAbstractScrollArea_FocusNextPrevChild(void*, intptr_t, bool);
-void miqt_exec_callback_QAbstractScrollArea_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QAbstractScrollArea_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QAbstractScrollArea_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QAbstractScrollArea_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QAbstractScrollArea_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QSize* miqt_exec_callback_QAbstractScrollArea_MinimumSizeHint(const QAbstractScrollArea*, intptr_t);
+QSize* miqt_exec_callback_QAbstractScrollArea_SizeHint(const QAbstractScrollArea*, intptr_t);
+void miqt_exec_callback_QAbstractScrollArea_SetupViewport(QAbstractScrollArea*, intptr_t, QWidget*);
+bool miqt_exec_callback_QAbstractScrollArea_EventFilter(QAbstractScrollArea*, intptr_t, QObject*, QEvent*);
+bool miqt_exec_callback_QAbstractScrollArea_Event(QAbstractScrollArea*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAbstractScrollArea_ViewportEvent(QAbstractScrollArea*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractScrollArea_ResizeEvent(QAbstractScrollArea*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QAbstractScrollArea_PaintEvent(QAbstractScrollArea*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QAbstractScrollArea_MousePressEvent(QAbstractScrollArea*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QAbstractScrollArea_MouseReleaseEvent(QAbstractScrollArea*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QAbstractScrollArea_MouseDoubleClickEvent(QAbstractScrollArea*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QAbstractScrollArea_MouseMoveEvent(QAbstractScrollArea*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QAbstractScrollArea_WheelEvent(QAbstractScrollArea*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QAbstractScrollArea_ContextMenuEvent(QAbstractScrollArea*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QAbstractScrollArea_DragEnterEvent(QAbstractScrollArea*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QAbstractScrollArea_DragMoveEvent(QAbstractScrollArea*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QAbstractScrollArea_DragLeaveEvent(QAbstractScrollArea*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QAbstractScrollArea_DropEvent(QAbstractScrollArea*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QAbstractScrollArea_KeyPressEvent(QAbstractScrollArea*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QAbstractScrollArea_ScrollContentsBy(QAbstractScrollArea*, intptr_t, int, int);
+QSize* miqt_exec_callback_QAbstractScrollArea_ViewportSizeHint(const QAbstractScrollArea*, intptr_t);
+void miqt_exec_callback_QAbstractScrollArea_ChangeEvent(QAbstractScrollArea*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractScrollArea_InitStyleOption(const QAbstractScrollArea*, intptr_t, QStyleOptionFrame*);
+int miqt_exec_callback_QAbstractScrollArea_DevType(const QAbstractScrollArea*, intptr_t);
+void miqt_exec_callback_QAbstractScrollArea_SetVisible(QAbstractScrollArea*, intptr_t, bool);
+int miqt_exec_callback_QAbstractScrollArea_HeightForWidth(const QAbstractScrollArea*, intptr_t, int);
+bool miqt_exec_callback_QAbstractScrollArea_HasHeightForWidth(const QAbstractScrollArea*, intptr_t);
+QPaintEngine* miqt_exec_callback_QAbstractScrollArea_PaintEngine(const QAbstractScrollArea*, intptr_t);
+void miqt_exec_callback_QAbstractScrollArea_KeyReleaseEvent(QAbstractScrollArea*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QAbstractScrollArea_FocusInEvent(QAbstractScrollArea*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QAbstractScrollArea_FocusOutEvent(QAbstractScrollArea*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QAbstractScrollArea_EnterEvent(QAbstractScrollArea*, intptr_t, QEnterEvent*);
+void miqt_exec_callback_QAbstractScrollArea_LeaveEvent(QAbstractScrollArea*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractScrollArea_MoveEvent(QAbstractScrollArea*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QAbstractScrollArea_CloseEvent(QAbstractScrollArea*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QAbstractScrollArea_TabletEvent(QAbstractScrollArea*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QAbstractScrollArea_ActionEvent(QAbstractScrollArea*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QAbstractScrollArea_ShowEvent(QAbstractScrollArea*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QAbstractScrollArea_HideEvent(QAbstractScrollArea*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QAbstractScrollArea_NativeEvent(QAbstractScrollArea*, intptr_t, struct miqt_string, void*, intptr_t*);
+int miqt_exec_callback_QAbstractScrollArea_Metric(const QAbstractScrollArea*, intptr_t, int);
+void miqt_exec_callback_QAbstractScrollArea_InitPainter(const QAbstractScrollArea*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QAbstractScrollArea_Redirected(const QAbstractScrollArea*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QAbstractScrollArea_SharedPainter(const QAbstractScrollArea*, intptr_t);
+void miqt_exec_callback_QAbstractScrollArea_InputMethodEvent(QAbstractScrollArea*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QAbstractScrollArea_InputMethodQuery(const QAbstractScrollArea*, intptr_t, int);
+bool miqt_exec_callback_QAbstractScrollArea_FocusNextPrevChild(QAbstractScrollArea*, intptr_t, bool);
+void miqt_exec_callback_QAbstractScrollArea_TimerEvent(QAbstractScrollArea*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAbstractScrollArea_ChildEvent(QAbstractScrollArea*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAbstractScrollArea_CustomEvent(QAbstractScrollArea*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractScrollArea_ConnectNotify(QAbstractScrollArea*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAbstractScrollArea_DisconnectNotify(QAbstractScrollArea*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -120,7 +120,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QAbstractScrollArea_MinimumSizeHint(const_cast<MiqtVirtualQAbstractScrollArea*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QAbstractScrollArea_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -142,7 +142,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QAbstractScrollArea_SizeHint(const_cast<MiqtVirtualQAbstractScrollArea*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QAbstractScrollArea_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -595,7 +595,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QAbstractScrollArea_ViewportSizeHint(const_cast<MiqtVirtualQAbstractScrollArea*>(this), handle__ViewportSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QAbstractScrollArea_ViewportSizeHint(this, handle__ViewportSizeHint);
 
 		return *callback_return_value;
 	}
@@ -643,7 +643,7 @@ public:
 		
 		QStyleOptionFrame* sigval1 = option;
 
-		miqt_exec_callback_QAbstractScrollArea_InitStyleOption(const_cast<MiqtVirtualQAbstractScrollArea*>(this), handle__InitStyleOption, sigval1);
+		miqt_exec_callback_QAbstractScrollArea_InitStyleOption(this, handle__InitStyleOption, sigval1);
 
 		
 	}
@@ -665,7 +665,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QAbstractScrollArea_DevType(const_cast<MiqtVirtualQAbstractScrollArea*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QAbstractScrollArea_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -712,7 +712,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QAbstractScrollArea_HeightForWidth(const_cast<MiqtVirtualQAbstractScrollArea*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QAbstractScrollArea_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -734,7 +734,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QAbstractScrollArea_HasHeightForWidth(const_cast<MiqtVirtualQAbstractScrollArea*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QAbstractScrollArea_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -756,7 +756,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QAbstractScrollArea_PaintEngine(const_cast<MiqtVirtualQAbstractScrollArea*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QAbstractScrollArea_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -1076,7 +1076,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QAbstractScrollArea_Metric(const_cast<MiqtVirtualQAbstractScrollArea*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QAbstractScrollArea_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1100,7 +1100,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QAbstractScrollArea_InitPainter(const_cast<MiqtVirtualQAbstractScrollArea*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QAbstractScrollArea_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -1123,7 +1123,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QAbstractScrollArea_Redirected(const_cast<MiqtVirtualQAbstractScrollArea*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QAbstractScrollArea_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1145,7 +1145,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QAbstractScrollArea_SharedPainter(const_cast<MiqtVirtualQAbstractScrollArea*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QAbstractScrollArea_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -1193,7 +1193,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QAbstractScrollArea_InputMethodQuery(const_cast<MiqtVirtualQAbstractScrollArea*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QAbstractScrollArea_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}

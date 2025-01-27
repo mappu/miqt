@@ -15,7 +15,7 @@
 extern "C" {
 #endif
 
-struct miqt_array /* of QNetworkProxy* */  miqt_exec_callback_QNetworkProxyFactory_QueryProxy(void*, intptr_t, QNetworkProxyQuery*);
+struct miqt_array /* of QNetworkProxy* */  miqt_exec_callback_QNetworkProxyFactory_QueryProxy(QNetworkProxyFactory*, intptr_t, QNetworkProxyQuery*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

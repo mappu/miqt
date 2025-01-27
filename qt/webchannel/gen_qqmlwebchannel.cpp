@@ -18,13 +18,13 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QQmlWebChannel_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QQmlWebChannel_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QQmlWebChannel_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QQmlWebChannel_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QQmlWebChannel_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QQmlWebChannel_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QQmlWebChannel_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QQmlWebChannel_Event(QQmlWebChannel*, intptr_t, QEvent*);
+bool miqt_exec_callback_QQmlWebChannel_EventFilter(QQmlWebChannel*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QQmlWebChannel_TimerEvent(QQmlWebChannel*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QQmlWebChannel_ChildEvent(QQmlWebChannel*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QQmlWebChannel_CustomEvent(QQmlWebChannel*, intptr_t, QEvent*);
+void miqt_exec_callback_QQmlWebChannel_ConnectNotify(QQmlWebChannel*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QQmlWebChannel_DisconnectNotify(QQmlWebChannel*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

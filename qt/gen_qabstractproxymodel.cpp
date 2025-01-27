@@ -24,52 +24,52 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QAbstractProxyModel_SetSourceModel(void*, intptr_t, QAbstractItemModel*);
-QModelIndex* miqt_exec_callback_QAbstractProxyModel_MapToSource(void*, intptr_t, QModelIndex*);
-QModelIndex* miqt_exec_callback_QAbstractProxyModel_MapFromSource(void*, intptr_t, QModelIndex*);
-QItemSelection* miqt_exec_callback_QAbstractProxyModel_MapSelectionToSource(void*, intptr_t, QItemSelection*);
-QItemSelection* miqt_exec_callback_QAbstractProxyModel_MapSelectionFromSource(void*, intptr_t, QItemSelection*);
-bool miqt_exec_callback_QAbstractProxyModel_Submit(void*, intptr_t);
-void miqt_exec_callback_QAbstractProxyModel_Revert(void*, intptr_t);
-QVariant* miqt_exec_callback_QAbstractProxyModel_Data(void*, intptr_t, QModelIndex*, int);
-QVariant* miqt_exec_callback_QAbstractProxyModel_HeaderData(void*, intptr_t, int, int, int);
-struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QAbstractProxyModel_ItemData(void*, intptr_t, QModelIndex*);
-int miqt_exec_callback_QAbstractProxyModel_Flags(void*, intptr_t, QModelIndex*);
-bool miqt_exec_callback_QAbstractProxyModel_SetData(void*, intptr_t, QModelIndex*, QVariant*, int);
-bool miqt_exec_callback_QAbstractProxyModel_SetItemData(void*, intptr_t, QModelIndex*, struct miqt_map /* of int to QVariant* */ );
-bool miqt_exec_callback_QAbstractProxyModel_SetHeaderData(void*, intptr_t, int, int, QVariant*, int);
-QModelIndex* miqt_exec_callback_QAbstractProxyModel_Buddy(void*, intptr_t, QModelIndex*);
-bool miqt_exec_callback_QAbstractProxyModel_CanFetchMore(void*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QAbstractProxyModel_FetchMore(void*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QAbstractProxyModel_Sort(void*, intptr_t, int, int);
-QSize* miqt_exec_callback_QAbstractProxyModel_Span(void*, intptr_t, QModelIndex*);
-bool miqt_exec_callback_QAbstractProxyModel_HasChildren(void*, intptr_t, QModelIndex*);
-QModelIndex* miqt_exec_callback_QAbstractProxyModel_Sibling(void*, intptr_t, int, int, QModelIndex*);
-QMimeData* miqt_exec_callback_QAbstractProxyModel_MimeData(void*, intptr_t, struct miqt_array /* of QModelIndex* */ );
-bool miqt_exec_callback_QAbstractProxyModel_CanDropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
-bool miqt_exec_callback_QAbstractProxyModel_DropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
-struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QAbstractProxyModel_MimeTypes(void*, intptr_t);
-int miqt_exec_callback_QAbstractProxyModel_SupportedDragActions(void*, intptr_t);
-int miqt_exec_callback_QAbstractProxyModel_SupportedDropActions(void*, intptr_t);
-QModelIndex* miqt_exec_callback_QAbstractProxyModel_Index(void*, intptr_t, int, int, QModelIndex*);
-QModelIndex* miqt_exec_callback_QAbstractProxyModel_Parent(void*, intptr_t, QModelIndex*);
-int miqt_exec_callback_QAbstractProxyModel_RowCount(void*, intptr_t, QModelIndex*);
-int miqt_exec_callback_QAbstractProxyModel_ColumnCount(void*, intptr_t, QModelIndex*);
-bool miqt_exec_callback_QAbstractProxyModel_InsertRows(void*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QAbstractProxyModel_InsertColumns(void*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QAbstractProxyModel_RemoveRows(void*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QAbstractProxyModel_RemoveColumns(void*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QAbstractProxyModel_MoveRows(void*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
-bool miqt_exec_callback_QAbstractProxyModel_MoveColumns(void*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
-struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QAbstractProxyModel_Match(void*, intptr_t, QModelIndex*, int, QVariant*, int, int);
-struct miqt_map /* of int to struct miqt_string */  miqt_exec_callback_QAbstractProxyModel_RoleNames(void*, intptr_t);
-bool miqt_exec_callback_QAbstractProxyModel_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QAbstractProxyModel_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QAbstractProxyModel_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QAbstractProxyModel_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QAbstractProxyModel_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QAbstractProxyModel_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QAbstractProxyModel_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAbstractProxyModel_SetSourceModel(QAbstractProxyModel*, intptr_t, QAbstractItemModel*);
+QModelIndex* miqt_exec_callback_QAbstractProxyModel_MapToSource(const QAbstractProxyModel*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QAbstractProxyModel_MapFromSource(const QAbstractProxyModel*, intptr_t, QModelIndex*);
+QItemSelection* miqt_exec_callback_QAbstractProxyModel_MapSelectionToSource(const QAbstractProxyModel*, intptr_t, QItemSelection*);
+QItemSelection* miqt_exec_callback_QAbstractProxyModel_MapSelectionFromSource(const QAbstractProxyModel*, intptr_t, QItemSelection*);
+bool miqt_exec_callback_QAbstractProxyModel_Submit(QAbstractProxyModel*, intptr_t);
+void miqt_exec_callback_QAbstractProxyModel_Revert(QAbstractProxyModel*, intptr_t);
+QVariant* miqt_exec_callback_QAbstractProxyModel_Data(const QAbstractProxyModel*, intptr_t, QModelIndex*, int);
+QVariant* miqt_exec_callback_QAbstractProxyModel_HeaderData(const QAbstractProxyModel*, intptr_t, int, int, int);
+struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QAbstractProxyModel_ItemData(const QAbstractProxyModel*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QAbstractProxyModel_Flags(const QAbstractProxyModel*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QAbstractProxyModel_SetData(QAbstractProxyModel*, intptr_t, QModelIndex*, QVariant*, int);
+bool miqt_exec_callback_QAbstractProxyModel_SetItemData(QAbstractProxyModel*, intptr_t, QModelIndex*, struct miqt_map /* of int to QVariant* */ );
+bool miqt_exec_callback_QAbstractProxyModel_SetHeaderData(QAbstractProxyModel*, intptr_t, int, int, QVariant*, int);
+QModelIndex* miqt_exec_callback_QAbstractProxyModel_Buddy(const QAbstractProxyModel*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QAbstractProxyModel_CanFetchMore(const QAbstractProxyModel*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QAbstractProxyModel_FetchMore(QAbstractProxyModel*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QAbstractProxyModel_Sort(QAbstractProxyModel*, intptr_t, int, int);
+QSize* miqt_exec_callback_QAbstractProxyModel_Span(const QAbstractProxyModel*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QAbstractProxyModel_HasChildren(const QAbstractProxyModel*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QAbstractProxyModel_Sibling(const QAbstractProxyModel*, intptr_t, int, int, QModelIndex*);
+QMimeData* miqt_exec_callback_QAbstractProxyModel_MimeData(const QAbstractProxyModel*, intptr_t, struct miqt_array /* of QModelIndex* */ );
+bool miqt_exec_callback_QAbstractProxyModel_CanDropMimeData(const QAbstractProxyModel*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+bool miqt_exec_callback_QAbstractProxyModel_DropMimeData(QAbstractProxyModel*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QAbstractProxyModel_MimeTypes(const QAbstractProxyModel*, intptr_t);
+int miqt_exec_callback_QAbstractProxyModel_SupportedDragActions(const QAbstractProxyModel*, intptr_t);
+int miqt_exec_callback_QAbstractProxyModel_SupportedDropActions(const QAbstractProxyModel*, intptr_t);
+QModelIndex* miqt_exec_callback_QAbstractProxyModel_Index(const QAbstractProxyModel*, intptr_t, int, int, QModelIndex*);
+QModelIndex* miqt_exec_callback_QAbstractProxyModel_Parent(const QAbstractProxyModel*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QAbstractProxyModel_RowCount(const QAbstractProxyModel*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QAbstractProxyModel_ColumnCount(const QAbstractProxyModel*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QAbstractProxyModel_InsertRows(QAbstractProxyModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QAbstractProxyModel_InsertColumns(QAbstractProxyModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QAbstractProxyModel_RemoveRows(QAbstractProxyModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QAbstractProxyModel_RemoveColumns(QAbstractProxyModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QAbstractProxyModel_MoveRows(QAbstractProxyModel*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+bool miqt_exec_callback_QAbstractProxyModel_MoveColumns(QAbstractProxyModel*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QAbstractProxyModel_Match(const QAbstractProxyModel*, intptr_t, QModelIndex*, int, QVariant*, int, int);
+struct miqt_map /* of int to struct miqt_string */  miqt_exec_callback_QAbstractProxyModel_RoleNames(const QAbstractProxyModel*, intptr_t);
+bool miqt_exec_callback_QAbstractProxyModel_Event(QAbstractProxyModel*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAbstractProxyModel_EventFilter(QAbstractProxyModel*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAbstractProxyModel_TimerEvent(QAbstractProxyModel*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAbstractProxyModel_ChildEvent(QAbstractProxyModel*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAbstractProxyModel_CustomEvent(QAbstractProxyModel*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractProxyModel_ConnectNotify(QAbstractProxyModel*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAbstractProxyModel_DisconnectNotify(QAbstractProxyModel*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -119,7 +119,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&proxyIndex_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QAbstractProxyModel_MapToSource(const_cast<MiqtVirtualQAbstractProxyModel*>(this), handle__MapToSource, sigval1);
+		QModelIndex* callback_return_value = miqt_exec_callback_QAbstractProxyModel_MapToSource(this, handle__MapToSource, sigval1);
 
 		return *callback_return_value;
 	}
@@ -137,7 +137,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&sourceIndex_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QAbstractProxyModel_MapFromSource(const_cast<MiqtVirtualQAbstractProxyModel*>(this), handle__MapFromSource, sigval1);
+		QModelIndex* callback_return_value = miqt_exec_callback_QAbstractProxyModel_MapFromSource(this, handle__MapFromSource, sigval1);
 
 		return *callback_return_value;
 	}
@@ -155,7 +155,7 @@ public:
 		// Cast returned reference into pointer
 		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selection_ret);
 
-		QItemSelection* callback_return_value = miqt_exec_callback_QAbstractProxyModel_MapSelectionToSource(const_cast<MiqtVirtualQAbstractProxyModel*>(this), handle__MapSelectionToSource, sigval1);
+		QItemSelection* callback_return_value = miqt_exec_callback_QAbstractProxyModel_MapSelectionToSource(this, handle__MapSelectionToSource, sigval1);
 
 		return *callback_return_value;
 	}
@@ -180,7 +180,7 @@ public:
 		// Cast returned reference into pointer
 		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selection_ret);
 
-		QItemSelection* callback_return_value = miqt_exec_callback_QAbstractProxyModel_MapSelectionFromSource(const_cast<MiqtVirtualQAbstractProxyModel*>(this), handle__MapSelectionFromSource, sigval1);
+		QItemSelection* callback_return_value = miqt_exec_callback_QAbstractProxyModel_MapSelectionFromSource(this, handle__MapSelectionFromSource, sigval1);
 
 		return *callback_return_value;
 	}
@@ -251,7 +251,7 @@ public:
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&proxyIndex_ret);
 		int sigval2 = role;
 
-		QVariant* callback_return_value = miqt_exec_callback_QAbstractProxyModel_Data(const_cast<MiqtVirtualQAbstractProxyModel*>(this), handle__Data, sigval1, sigval2);
+		QVariant* callback_return_value = miqt_exec_callback_QAbstractProxyModel_Data(this, handle__Data, sigval1, sigval2);
 
 		return *callback_return_value;
 	}
@@ -277,7 +277,7 @@ public:
 		int sigval2 = static_cast<int>(orientation_ret);
 		int sigval3 = role;
 
-		QVariant* callback_return_value = miqt_exec_callback_QAbstractProxyModel_HeaderData(const_cast<MiqtVirtualQAbstractProxyModel*>(this), handle__HeaderData, sigval1, sigval2, sigval3);
+		QVariant* callback_return_value = miqt_exec_callback_QAbstractProxyModel_HeaderData(this, handle__HeaderData, sigval1, sigval2, sigval3);
 
 		return *callback_return_value;
 	}
@@ -302,7 +302,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		struct miqt_map /* of int to QVariant* */  callback_return_value = miqt_exec_callback_QAbstractProxyModel_ItemData(const_cast<MiqtVirtualQAbstractProxyModel*>(this), handle__ItemData, sigval1);
+		struct miqt_map /* of int to QVariant* */  callback_return_value = miqt_exec_callback_QAbstractProxyModel_ItemData(this, handle__ItemData, sigval1);
 		QMap<int, QVariant> callback_return_value_QMap;
 		int* callback_return_value_karr = static_cast<int*>(callback_return_value.keys);
 		QVariant** callback_return_value_varr = static_cast<QVariant**>(callback_return_value.values);
@@ -347,7 +347,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		int callback_return_value = miqt_exec_callback_QAbstractProxyModel_Flags(const_cast<MiqtVirtualQAbstractProxyModel*>(this), handle__Flags, sigval1);
+		int callback_return_value = miqt_exec_callback_QAbstractProxyModel_Flags(this, handle__Flags, sigval1);
 
 		return static_cast<Qt::ItemFlags>(callback_return_value);
 	}
@@ -477,7 +477,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QAbstractProxyModel_Buddy(const_cast<MiqtVirtualQAbstractProxyModel*>(this), handle__Buddy, sigval1);
+		QModelIndex* callback_return_value = miqt_exec_callback_QAbstractProxyModel_Buddy(this, handle__Buddy, sigval1);
 
 		return *callback_return_value;
 	}
@@ -502,7 +502,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QAbstractProxyModel_CanFetchMore(const_cast<MiqtVirtualQAbstractProxyModel*>(this), handle__CanFetchMore, sigval1);
+		bool callback_return_value = miqt_exec_callback_QAbstractProxyModel_CanFetchMore(this, handle__CanFetchMore, sigval1);
 
 		return callback_return_value;
 	}
@@ -579,7 +579,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		QSize* callback_return_value = miqt_exec_callback_QAbstractProxyModel_Span(const_cast<MiqtVirtualQAbstractProxyModel*>(this), handle__Span, sigval1);
+		QSize* callback_return_value = miqt_exec_callback_QAbstractProxyModel_Span(this, handle__Span, sigval1);
 
 		return *callback_return_value;
 	}
@@ -604,7 +604,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QAbstractProxyModel_HasChildren(const_cast<MiqtVirtualQAbstractProxyModel*>(this), handle__HasChildren, sigval1);
+		bool callback_return_value = miqt_exec_callback_QAbstractProxyModel_HasChildren(this, handle__HasChildren, sigval1);
 
 		return callback_return_value;
 	}
@@ -631,7 +631,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&idx_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QAbstractProxyModel_Sibling(const_cast<MiqtVirtualQAbstractProxyModel*>(this), handle__Sibling, sigval1, sigval2, sigval3);
+		QModelIndex* callback_return_value = miqt_exec_callback_QAbstractProxyModel_Sibling(this, handle__Sibling, sigval1, sigval2, sigval3);
 
 		return *callback_return_value;
 	}
@@ -663,7 +663,7 @@ public:
 		indexes_out.data = static_cast<void*>(indexes_arr);
 		struct miqt_array /* of QModelIndex* */  sigval1 = indexes_out;
 
-		QMimeData* callback_return_value = miqt_exec_callback_QAbstractProxyModel_MimeData(const_cast<MiqtVirtualQAbstractProxyModel*>(this), handle__MimeData, sigval1);
+		QMimeData* callback_return_value = miqt_exec_callback_QAbstractProxyModel_MimeData(this, handle__MimeData, sigval1);
 
 		return callback_return_value;
 	}
@@ -699,7 +699,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval5 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QAbstractProxyModel_CanDropMimeData(const_cast<MiqtVirtualQAbstractProxyModel*>(this), handle__CanDropMimeData, sigval1, sigval2, sigval3, sigval4, sigval5);
+		bool callback_return_value = miqt_exec_callback_QAbstractProxyModel_CanDropMimeData(this, handle__CanDropMimeData, sigval1, sigval2, sigval3, sigval4, sigval5);
 
 		return callback_return_value;
 	}
@@ -751,7 +751,7 @@ public:
 		}
 		
 
-		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QAbstractProxyModel_MimeTypes(const_cast<MiqtVirtualQAbstractProxyModel*>(this), handle__MimeTypes);
+		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QAbstractProxyModel_MimeTypes(this, handle__MimeTypes);
 		QStringList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		struct miqt_string* callback_return_value_arr = static_cast<struct miqt_string*>(callback_return_value.data);
@@ -796,7 +796,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QAbstractProxyModel_SupportedDragActions(const_cast<MiqtVirtualQAbstractProxyModel*>(this), handle__SupportedDragActions);
+		int callback_return_value = miqt_exec_callback_QAbstractProxyModel_SupportedDragActions(this, handle__SupportedDragActions);
 
 		return static_cast<Qt::DropActions>(callback_return_value);
 	}
@@ -819,7 +819,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QAbstractProxyModel_SupportedDropActions(const_cast<MiqtVirtualQAbstractProxyModel*>(this), handle__SupportedDropActions);
+		int callback_return_value = miqt_exec_callback_QAbstractProxyModel_SupportedDropActions(this, handle__SupportedDropActions);
 
 		return static_cast<Qt::DropActions>(callback_return_value);
 	}
@@ -847,7 +847,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QAbstractProxyModel_Index(const_cast<MiqtVirtualQAbstractProxyModel*>(this), handle__Index, sigval1, sigval2, sigval3);
+		QModelIndex* callback_return_value = miqt_exec_callback_QAbstractProxyModel_Index(this, handle__Index, sigval1, sigval2, sigval3);
 
 		return *callback_return_value;
 	}
@@ -865,7 +865,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&child_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QAbstractProxyModel_Parent(const_cast<MiqtVirtualQAbstractProxyModel*>(this), handle__Parent, sigval1);
+		QModelIndex* callback_return_value = miqt_exec_callback_QAbstractProxyModel_Parent(this, handle__Parent, sigval1);
 
 		return *callback_return_value;
 	}
@@ -883,7 +883,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 
-		int callback_return_value = miqt_exec_callback_QAbstractProxyModel_RowCount(const_cast<MiqtVirtualQAbstractProxyModel*>(this), handle__RowCount, sigval1);
+		int callback_return_value = miqt_exec_callback_QAbstractProxyModel_RowCount(this, handle__RowCount, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -901,7 +901,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 
-		int callback_return_value = miqt_exec_callback_QAbstractProxyModel_ColumnCount(const_cast<MiqtVirtualQAbstractProxyModel*>(this), handle__ColumnCount, sigval1);
+		int callback_return_value = miqt_exec_callback_QAbstractProxyModel_ColumnCount(this, handle__ColumnCount, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1096,7 +1096,7 @@ public:
 		Qt::MatchFlags flags_ret = flags;
 		int sigval5 = static_cast<int>(flags_ret);
 
-		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QAbstractProxyModel_Match(const_cast<MiqtVirtualQAbstractProxyModel*>(this), handle__Match, sigval1, sigval2, sigval3, sigval4, sigval5);
+		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QAbstractProxyModel_Match(this, handle__Match, sigval1, sigval2, sigval3, sigval4, sigval5);
 		QModelIndexList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		QModelIndex** callback_return_value_arr = static_cast<QModelIndex**>(callback_return_value.data);
@@ -1133,7 +1133,7 @@ public:
 		}
 		
 
-		struct miqt_map /* of int to struct miqt_string */  callback_return_value = miqt_exec_callback_QAbstractProxyModel_RoleNames(const_cast<MiqtVirtualQAbstractProxyModel*>(this), handle__RoleNames);
+		struct miqt_map /* of int to struct miqt_string */  callback_return_value = miqt_exec_callback_QAbstractProxyModel_RoleNames(this, handle__RoleNames);
 		QHash<int, QByteArray> callback_return_value_QMap;
 		callback_return_value_QMap.reserve(callback_return_value.len);
 		int* callback_return_value_karr = static_cast<int*>(callback_return_value.keys);

@@ -43,56 +43,56 @@
 extern "C" {
 #endif
 
-QSize* miqt_exec_callback_QCommandLinkButton_SizeHint(void*, intptr_t);
-int miqt_exec_callback_QCommandLinkButton_HeightForWidth(void*, intptr_t, int);
-QSize* miqt_exec_callback_QCommandLinkButton_MinimumSizeHint(void*, intptr_t);
-bool miqt_exec_callback_QCommandLinkButton_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QCommandLinkButton_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QCommandLinkButton_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QCommandLinkButton_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QCommandLinkButton_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-bool miqt_exec_callback_QCommandLinkButton_HitButton(void*, intptr_t, QPoint*);
-void miqt_exec_callback_QCommandLinkButton_CheckStateSet(void*, intptr_t);
-void miqt_exec_callback_QCommandLinkButton_NextCheckState(void*, intptr_t);
-void miqt_exec_callback_QCommandLinkButton_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QCommandLinkButton_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QCommandLinkButton_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QCommandLinkButton_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QCommandLinkButton_ChangeEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QCommandLinkButton_TimerEvent(void*, intptr_t, QTimerEvent*);
-int miqt_exec_callback_QCommandLinkButton_DevType(void*, intptr_t);
-void miqt_exec_callback_QCommandLinkButton_SetVisible(void*, intptr_t, bool);
-bool miqt_exec_callback_QCommandLinkButton_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QCommandLinkButton_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QCommandLinkButton_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QCommandLinkButton_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QCommandLinkButton_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QCommandLinkButton_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QCommandLinkButton_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QCommandLinkButton_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QCommandLinkButton_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QCommandLinkButton_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QCommandLinkButton_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QCommandLinkButton_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QCommandLinkButton_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QCommandLinkButton_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QCommandLinkButton_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QCommandLinkButton_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QCommandLinkButton_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QCommandLinkButton_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QCommandLinkButton_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-int miqt_exec_callback_QCommandLinkButton_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QCommandLinkButton_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QCommandLinkButton_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QCommandLinkButton_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QCommandLinkButton_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QCommandLinkButton_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QCommandLinkButton_FocusNextPrevChild(void*, intptr_t, bool);
-bool miqt_exec_callback_QCommandLinkButton_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QCommandLinkButton_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QCommandLinkButton_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QCommandLinkButton_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QCommandLinkButton_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QSize* miqt_exec_callback_QCommandLinkButton_SizeHint(const QCommandLinkButton*, intptr_t);
+int miqt_exec_callback_QCommandLinkButton_HeightForWidth(const QCommandLinkButton*, intptr_t, int);
+QSize* miqt_exec_callback_QCommandLinkButton_MinimumSizeHint(const QCommandLinkButton*, intptr_t);
+bool miqt_exec_callback_QCommandLinkButton_Event(QCommandLinkButton*, intptr_t, QEvent*);
+void miqt_exec_callback_QCommandLinkButton_PaintEvent(QCommandLinkButton*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QCommandLinkButton_KeyPressEvent(QCommandLinkButton*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QCommandLinkButton_FocusInEvent(QCommandLinkButton*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QCommandLinkButton_FocusOutEvent(QCommandLinkButton*, intptr_t, QFocusEvent*);
+bool miqt_exec_callback_QCommandLinkButton_HitButton(const QCommandLinkButton*, intptr_t, QPoint*);
+void miqt_exec_callback_QCommandLinkButton_CheckStateSet(QCommandLinkButton*, intptr_t);
+void miqt_exec_callback_QCommandLinkButton_NextCheckState(QCommandLinkButton*, intptr_t);
+void miqt_exec_callback_QCommandLinkButton_KeyReleaseEvent(QCommandLinkButton*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QCommandLinkButton_MousePressEvent(QCommandLinkButton*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QCommandLinkButton_MouseReleaseEvent(QCommandLinkButton*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QCommandLinkButton_MouseMoveEvent(QCommandLinkButton*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QCommandLinkButton_ChangeEvent(QCommandLinkButton*, intptr_t, QEvent*);
+void miqt_exec_callback_QCommandLinkButton_TimerEvent(QCommandLinkButton*, intptr_t, QTimerEvent*);
+int miqt_exec_callback_QCommandLinkButton_DevType(const QCommandLinkButton*, intptr_t);
+void miqt_exec_callback_QCommandLinkButton_SetVisible(QCommandLinkButton*, intptr_t, bool);
+bool miqt_exec_callback_QCommandLinkButton_HasHeightForWidth(const QCommandLinkButton*, intptr_t);
+QPaintEngine* miqt_exec_callback_QCommandLinkButton_PaintEngine(const QCommandLinkButton*, intptr_t);
+void miqt_exec_callback_QCommandLinkButton_MouseDoubleClickEvent(QCommandLinkButton*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QCommandLinkButton_WheelEvent(QCommandLinkButton*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QCommandLinkButton_EnterEvent(QCommandLinkButton*, intptr_t, QEvent*);
+void miqt_exec_callback_QCommandLinkButton_LeaveEvent(QCommandLinkButton*, intptr_t, QEvent*);
+void miqt_exec_callback_QCommandLinkButton_MoveEvent(QCommandLinkButton*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QCommandLinkButton_ResizeEvent(QCommandLinkButton*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QCommandLinkButton_CloseEvent(QCommandLinkButton*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QCommandLinkButton_ContextMenuEvent(QCommandLinkButton*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QCommandLinkButton_TabletEvent(QCommandLinkButton*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QCommandLinkButton_ActionEvent(QCommandLinkButton*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QCommandLinkButton_DragEnterEvent(QCommandLinkButton*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QCommandLinkButton_DragMoveEvent(QCommandLinkButton*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QCommandLinkButton_DragLeaveEvent(QCommandLinkButton*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QCommandLinkButton_DropEvent(QCommandLinkButton*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QCommandLinkButton_ShowEvent(QCommandLinkButton*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QCommandLinkButton_HideEvent(QCommandLinkButton*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QCommandLinkButton_NativeEvent(QCommandLinkButton*, intptr_t, struct miqt_string, void*, long*);
+int miqt_exec_callback_QCommandLinkButton_Metric(const QCommandLinkButton*, intptr_t, int);
+void miqt_exec_callback_QCommandLinkButton_InitPainter(const QCommandLinkButton*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QCommandLinkButton_Redirected(const QCommandLinkButton*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QCommandLinkButton_SharedPainter(const QCommandLinkButton*, intptr_t);
+void miqt_exec_callback_QCommandLinkButton_InputMethodEvent(QCommandLinkButton*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QCommandLinkButton_InputMethodQuery(const QCommandLinkButton*, intptr_t, int);
+bool miqt_exec_callback_QCommandLinkButton_FocusNextPrevChild(QCommandLinkButton*, intptr_t, bool);
+bool miqt_exec_callback_QCommandLinkButton_EventFilter(QCommandLinkButton*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QCommandLinkButton_ChildEvent(QCommandLinkButton*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QCommandLinkButton_CustomEvent(QCommandLinkButton*, intptr_t, QEvent*);
+void miqt_exec_callback_QCommandLinkButton_ConnectNotify(QCommandLinkButton*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QCommandLinkButton_DisconnectNotify(QCommandLinkButton*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -119,7 +119,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QCommandLinkButton_SizeHint(const_cast<MiqtVirtualQCommandLinkButton*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QCommandLinkButton_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -142,7 +142,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QCommandLinkButton_HeightForWidth(const_cast<MiqtVirtualQCommandLinkButton*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QCommandLinkButton_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -164,7 +164,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QCommandLinkButton_MinimumSizeHint(const_cast<MiqtVirtualQCommandLinkButton*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QCommandLinkButton_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -308,7 +308,7 @@ public:
 		// Cast returned reference into pointer
 		QPoint* sigval1 = const_cast<QPoint*>(&pos_ret);
 
-		bool callback_return_value = miqt_exec_callback_QCommandLinkButton_HitButton(const_cast<MiqtVirtualQCommandLinkButton*>(this), handle__HitButton, sigval1);
+		bool callback_return_value = miqt_exec_callback_QCommandLinkButton_HitButton(this, handle__HitButton, sigval1);
 
 		return callback_return_value;
 	}
@@ -520,7 +520,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QCommandLinkButton_DevType(const_cast<MiqtVirtualQCommandLinkButton*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QCommandLinkButton_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -566,7 +566,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QCommandLinkButton_HasHeightForWidth(const_cast<MiqtVirtualQCommandLinkButton*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QCommandLinkButton_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -588,7 +588,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QCommandLinkButton_PaintEngine(const_cast<MiqtVirtualQCommandLinkButton*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QCommandLinkButton_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -1027,7 +1027,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QCommandLinkButton_Metric(const_cast<MiqtVirtualQCommandLinkButton*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QCommandLinkButton_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1051,7 +1051,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QCommandLinkButton_InitPainter(const_cast<MiqtVirtualQCommandLinkButton*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QCommandLinkButton_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -1074,7 +1074,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QCommandLinkButton_Redirected(const_cast<MiqtVirtualQCommandLinkButton*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QCommandLinkButton_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1096,7 +1096,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QCommandLinkButton_SharedPainter(const_cast<MiqtVirtualQCommandLinkButton*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QCommandLinkButton_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -1144,7 +1144,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QCommandLinkButton_InputMethodQuery(const_cast<MiqtVirtualQCommandLinkButton*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QCommandLinkButton_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}

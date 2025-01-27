@@ -21,29 +21,29 @@ void miqt_exec_callback_QLocalSocket_Disconnected(intptr_t);
 void miqt_exec_callback_QLocalSocket_ErrorWithSocketError(intptr_t, int);
 void miqt_exec_callback_QLocalSocket_ErrorOccurred(intptr_t, int);
 void miqt_exec_callback_QLocalSocket_StateChanged(intptr_t, int);
-bool miqt_exec_callback_QLocalSocket_IsSequential(void*, intptr_t);
-long long miqt_exec_callback_QLocalSocket_BytesAvailable(void*, intptr_t);
-long long miqt_exec_callback_QLocalSocket_BytesToWrite(void*, intptr_t);
-bool miqt_exec_callback_QLocalSocket_CanReadLine(void*, intptr_t);
-bool miqt_exec_callback_QLocalSocket_Open(void*, intptr_t, int);
-void miqt_exec_callback_QLocalSocket_Close(void*, intptr_t);
-bool miqt_exec_callback_QLocalSocket_WaitForBytesWritten(void*, intptr_t, int);
-bool miqt_exec_callback_QLocalSocket_WaitForReadyRead(void*, intptr_t, int);
-long long miqt_exec_callback_QLocalSocket_ReadData(void*, intptr_t, char*, long long);
-long long miqt_exec_callback_QLocalSocket_WriteData(void*, intptr_t, const char*, long long);
-long long miqt_exec_callback_QLocalSocket_Pos(void*, intptr_t);
-long long miqt_exec_callback_QLocalSocket_Size(void*, intptr_t);
-bool miqt_exec_callback_QLocalSocket_Seek(void*, intptr_t, long long);
-bool miqt_exec_callback_QLocalSocket_AtEnd(void*, intptr_t);
-bool miqt_exec_callback_QLocalSocket_Reset(void*, intptr_t);
-long long miqt_exec_callback_QLocalSocket_ReadLineData(void*, intptr_t, char*, long long);
-bool miqt_exec_callback_QLocalSocket_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QLocalSocket_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QLocalSocket_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QLocalSocket_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QLocalSocket_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QLocalSocket_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QLocalSocket_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QLocalSocket_IsSequential(const QLocalSocket*, intptr_t);
+long long miqt_exec_callback_QLocalSocket_BytesAvailable(const QLocalSocket*, intptr_t);
+long long miqt_exec_callback_QLocalSocket_BytesToWrite(const QLocalSocket*, intptr_t);
+bool miqt_exec_callback_QLocalSocket_CanReadLine(const QLocalSocket*, intptr_t);
+bool miqt_exec_callback_QLocalSocket_Open(QLocalSocket*, intptr_t, int);
+void miqt_exec_callback_QLocalSocket_Close(QLocalSocket*, intptr_t);
+bool miqt_exec_callback_QLocalSocket_WaitForBytesWritten(QLocalSocket*, intptr_t, int);
+bool miqt_exec_callback_QLocalSocket_WaitForReadyRead(QLocalSocket*, intptr_t, int);
+long long miqt_exec_callback_QLocalSocket_ReadData(QLocalSocket*, intptr_t, char*, long long);
+long long miqt_exec_callback_QLocalSocket_WriteData(QLocalSocket*, intptr_t, const char*, long long);
+long long miqt_exec_callback_QLocalSocket_Pos(const QLocalSocket*, intptr_t);
+long long miqt_exec_callback_QLocalSocket_Size(const QLocalSocket*, intptr_t);
+bool miqt_exec_callback_QLocalSocket_Seek(QLocalSocket*, intptr_t, long long);
+bool miqt_exec_callback_QLocalSocket_AtEnd(const QLocalSocket*, intptr_t);
+bool miqt_exec_callback_QLocalSocket_Reset(QLocalSocket*, intptr_t);
+long long miqt_exec_callback_QLocalSocket_ReadLineData(QLocalSocket*, intptr_t, char*, long long);
+bool miqt_exec_callback_QLocalSocket_Event(QLocalSocket*, intptr_t, QEvent*);
+bool miqt_exec_callback_QLocalSocket_EventFilter(QLocalSocket*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QLocalSocket_TimerEvent(QLocalSocket*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QLocalSocket_ChildEvent(QLocalSocket*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QLocalSocket_CustomEvent(QLocalSocket*, intptr_t, QEvent*);
+void miqt_exec_callback_QLocalSocket_ConnectNotify(QLocalSocket*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QLocalSocket_DisconnectNotify(QLocalSocket*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -66,7 +66,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QLocalSocket_IsSequential(const_cast<MiqtVirtualQLocalSocket*>(this), handle__IsSequential);
+		bool callback_return_value = miqt_exec_callback_QLocalSocket_IsSequential(this, handle__IsSequential);
 
 		return callback_return_value;
 	}
@@ -88,7 +88,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QLocalSocket_BytesAvailable(const_cast<MiqtVirtualQLocalSocket*>(this), handle__BytesAvailable);
+		long long callback_return_value = miqt_exec_callback_QLocalSocket_BytesAvailable(this, handle__BytesAvailable);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -111,7 +111,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QLocalSocket_BytesToWrite(const_cast<MiqtVirtualQLocalSocket*>(this), handle__BytesToWrite);
+		long long callback_return_value = miqt_exec_callback_QLocalSocket_BytesToWrite(this, handle__BytesToWrite);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -134,7 +134,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QLocalSocket_CanReadLine(const_cast<MiqtVirtualQLocalSocket*>(this), handle__CanReadLine);
+		bool callback_return_value = miqt_exec_callback_QLocalSocket_CanReadLine(this, handle__CanReadLine);
 
 		return callback_return_value;
 	}
@@ -301,7 +301,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QLocalSocket_Pos(const_cast<MiqtVirtualQLocalSocket*>(this), handle__Pos);
+		long long callback_return_value = miqt_exec_callback_QLocalSocket_Pos(this, handle__Pos);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -324,7 +324,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QLocalSocket_Size(const_cast<MiqtVirtualQLocalSocket*>(this), handle__Size);
+		long long callback_return_value = miqt_exec_callback_QLocalSocket_Size(this, handle__Size);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -371,7 +371,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QLocalSocket_AtEnd(const_cast<MiqtVirtualQLocalSocket*>(this), handle__AtEnd);
+		bool callback_return_value = miqt_exec_callback_QLocalSocket_AtEnd(this, handle__AtEnd);
 
 		return callback_return_value;
 	}

@@ -15,13 +15,13 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QSharedMemory_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QSharedMemory_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QSharedMemory_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QSharedMemory_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QSharedMemory_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSharedMemory_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QSharedMemory_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QSharedMemory_Event(QSharedMemory*, intptr_t, QEvent*);
+bool miqt_exec_callback_QSharedMemory_EventFilter(QSharedMemory*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QSharedMemory_TimerEvent(QSharedMemory*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSharedMemory_ChildEvent(QSharedMemory*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QSharedMemory_CustomEvent(QSharedMemory*, intptr_t, QEvent*);
+void miqt_exec_callback_QSharedMemory_ConnectNotify(QSharedMemory*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSharedMemory_DisconnectNotify(QSharedMemory*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

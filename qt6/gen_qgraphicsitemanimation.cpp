@@ -21,15 +21,15 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QGraphicsItemAnimation_BeforeAnimationStep(void*, intptr_t, double);
-void miqt_exec_callback_QGraphicsItemAnimation_AfterAnimationStep(void*, intptr_t, double);
-bool miqt_exec_callback_QGraphicsItemAnimation_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QGraphicsItemAnimation_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QGraphicsItemAnimation_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QGraphicsItemAnimation_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QGraphicsItemAnimation_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QGraphicsItemAnimation_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QGraphicsItemAnimation_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsItemAnimation_BeforeAnimationStep(QGraphicsItemAnimation*, intptr_t, double);
+void miqt_exec_callback_QGraphicsItemAnimation_AfterAnimationStep(QGraphicsItemAnimation*, intptr_t, double);
+bool miqt_exec_callback_QGraphicsItemAnimation_Event(QGraphicsItemAnimation*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGraphicsItemAnimation_EventFilter(QGraphicsItemAnimation*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QGraphicsItemAnimation_TimerEvent(QGraphicsItemAnimation*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QGraphicsItemAnimation_ChildEvent(QGraphicsItemAnimation*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QGraphicsItemAnimation_CustomEvent(QGraphicsItemAnimation*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsItemAnimation_ConnectNotify(QGraphicsItemAnimation*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsItemAnimation_DisconnectNotify(QGraphicsItemAnimation*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

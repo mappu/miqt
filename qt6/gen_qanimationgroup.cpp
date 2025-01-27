@@ -16,17 +16,17 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QAnimationGroup_Event(void*, intptr_t, QEvent*);
-int miqt_exec_callback_QAnimationGroup_Duration(void*, intptr_t);
-void miqt_exec_callback_QAnimationGroup_UpdateCurrentTime(void*, intptr_t, int);
-void miqt_exec_callback_QAnimationGroup_UpdateState(void*, intptr_t, int, int);
-void miqt_exec_callback_QAnimationGroup_UpdateDirection(void*, intptr_t, int);
-bool miqt_exec_callback_QAnimationGroup_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QAnimationGroup_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QAnimationGroup_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QAnimationGroup_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QAnimationGroup_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QAnimationGroup_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QAnimationGroup_Event(QAnimationGroup*, intptr_t, QEvent*);
+int miqt_exec_callback_QAnimationGroup_Duration(const QAnimationGroup*, intptr_t);
+void miqt_exec_callback_QAnimationGroup_UpdateCurrentTime(QAnimationGroup*, intptr_t, int);
+void miqt_exec_callback_QAnimationGroup_UpdateState(QAnimationGroup*, intptr_t, int, int);
+void miqt_exec_callback_QAnimationGroup_UpdateDirection(QAnimationGroup*, intptr_t, int);
+bool miqt_exec_callback_QAnimationGroup_EventFilter(QAnimationGroup*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAnimationGroup_TimerEvent(QAnimationGroup*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAnimationGroup_ChildEvent(QAnimationGroup*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAnimationGroup_CustomEvent(QAnimationGroup*, intptr_t, QEvent*);
+void miqt_exec_callback_QAnimationGroup_ConnectNotify(QAnimationGroup*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAnimationGroup_DisconnectNotify(QAnimationGroup*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -72,7 +72,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QAnimationGroup_Duration(const_cast<MiqtVirtualQAnimationGroup*>(this), handle__Duration);
+		int callback_return_value = miqt_exec_callback_QAnimationGroup_Duration(this, handle__Duration);
 
 		return static_cast<int>(callback_return_value);
 	}

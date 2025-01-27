@@ -21,15 +21,15 @@ extern "C" {
 
 void miqt_exec_callback_QAudioRecorder_AudioInputChanged(intptr_t, struct miqt_string);
 void miqt_exec_callback_QAudioRecorder_AvailableAudioInputsChanged(intptr_t);
-QMediaObject* miqt_exec_callback_QAudioRecorder_MediaObject(void*, intptr_t);
-bool miqt_exec_callback_QAudioRecorder_SetMediaObject(void*, intptr_t, QMediaObject*);
-bool miqt_exec_callback_QAudioRecorder_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QAudioRecorder_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QAudioRecorder_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QAudioRecorder_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QAudioRecorder_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QAudioRecorder_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QAudioRecorder_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QMediaObject* miqt_exec_callback_QAudioRecorder_MediaObject(const QAudioRecorder*, intptr_t);
+bool miqt_exec_callback_QAudioRecorder_SetMediaObject(QAudioRecorder*, intptr_t, QMediaObject*);
+bool miqt_exec_callback_QAudioRecorder_Event(QAudioRecorder*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAudioRecorder_EventFilter(QAudioRecorder*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAudioRecorder_TimerEvent(QAudioRecorder*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAudioRecorder_ChildEvent(QAudioRecorder*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAudioRecorder_CustomEvent(QAudioRecorder*, intptr_t, QEvent*);
+void miqt_exec_callback_QAudioRecorder_ConnectNotify(QAudioRecorder*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAudioRecorder_DisconnectNotify(QAudioRecorder*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -52,7 +52,7 @@ public:
 		}
 		
 
-		QMediaObject* callback_return_value = miqt_exec_callback_QAudioRecorder_MediaObject(const_cast<MiqtVirtualQAudioRecorder*>(this), handle__MediaObject);
+		QMediaObject* callback_return_value = miqt_exec_callback_QAudioRecorder_MediaObject(this, handle__MediaObject);
 
 		return callback_return_value;
 	}

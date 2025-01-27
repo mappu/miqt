@@ -17,13 +17,13 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QFileSelector_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QFileSelector_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QFileSelector_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QFileSelector_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QFileSelector_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QFileSelector_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QFileSelector_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QFileSelector_Event(QFileSelector*, intptr_t, QEvent*);
+bool miqt_exec_callback_QFileSelector_EventFilter(QFileSelector*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QFileSelector_TimerEvent(QFileSelector*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QFileSelector_ChildEvent(QFileSelector*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QFileSelector_CustomEvent(QFileSelector*, intptr_t, QEvent*);
+void miqt_exec_callback_QFileSelector_ConnectNotify(QFileSelector*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QFileSelector_DisconnectNotify(QFileSelector*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

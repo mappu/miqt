@@ -19,15 +19,15 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QMouseEventTransition_OnTransition(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QMouseEventTransition_EventTest(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QMouseEventTransition_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QMouseEventTransition_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QMouseEventTransition_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QMouseEventTransition_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QMouseEventTransition_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QMouseEventTransition_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QMouseEventTransition_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QMouseEventTransition_OnTransition(QMouseEventTransition*, intptr_t, QEvent*);
+bool miqt_exec_callback_QMouseEventTransition_EventTest(QMouseEventTransition*, intptr_t, QEvent*);
+bool miqt_exec_callback_QMouseEventTransition_Event(QMouseEventTransition*, intptr_t, QEvent*);
+bool miqt_exec_callback_QMouseEventTransition_EventFilter(QMouseEventTransition*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QMouseEventTransition_TimerEvent(QMouseEventTransition*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QMouseEventTransition_ChildEvent(QMouseEventTransition*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QMouseEventTransition_CustomEvent(QMouseEventTransition*, intptr_t, QEvent*);
+void miqt_exec_callback_QMouseEventTransition_ConnectNotify(QMouseEventTransition*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QMouseEventTransition_DisconnectNotify(QMouseEventTransition*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

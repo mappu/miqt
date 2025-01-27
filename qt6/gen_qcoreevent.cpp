@@ -11,14 +11,14 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QEvent_SetAccepted(void*, intptr_t, bool);
-QEvent* miqt_exec_callback_QEvent_Clone(void*, intptr_t);
-QTimerEvent* miqt_exec_callback_QTimerEvent_Clone(void*, intptr_t);
-void miqt_exec_callback_QTimerEvent_SetAccepted(void*, intptr_t, bool);
-QChildEvent* miqt_exec_callback_QChildEvent_Clone(void*, intptr_t);
-void miqt_exec_callback_QChildEvent_SetAccepted(void*, intptr_t, bool);
-QDynamicPropertyChangeEvent* miqt_exec_callback_QDynamicPropertyChangeEvent_Clone(void*, intptr_t);
-void miqt_exec_callback_QDynamicPropertyChangeEvent_SetAccepted(void*, intptr_t, bool);
+void miqt_exec_callback_QEvent_SetAccepted(QEvent*, intptr_t, bool);
+QEvent* miqt_exec_callback_QEvent_Clone(const QEvent*, intptr_t);
+QTimerEvent* miqt_exec_callback_QTimerEvent_Clone(const QTimerEvent*, intptr_t);
+void miqt_exec_callback_QTimerEvent_SetAccepted(QTimerEvent*, intptr_t, bool);
+QChildEvent* miqt_exec_callback_QChildEvent_Clone(const QChildEvent*, intptr_t);
+void miqt_exec_callback_QChildEvent_SetAccepted(QChildEvent*, intptr_t, bool);
+QDynamicPropertyChangeEvent* miqt_exec_callback_QDynamicPropertyChangeEvent_Clone(const QDynamicPropertyChangeEvent*, intptr_t);
+void miqt_exec_callback_QDynamicPropertyChangeEvent_SetAccepted(QDynamicPropertyChangeEvent*, intptr_t, bool);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -64,7 +64,7 @@ public:
 		}
 		
 
-		QEvent* callback_return_value = miqt_exec_callback_QEvent_Clone(const_cast<MiqtVirtualQEvent*>(this), handle__Clone);
+		QEvent* callback_return_value = miqt_exec_callback_QEvent_Clone(this, handle__Clone);
 
 		return callback_return_value;
 	}
@@ -180,7 +180,7 @@ public:
 		}
 		
 
-		QTimerEvent* callback_return_value = miqt_exec_callback_QTimerEvent_Clone(const_cast<MiqtVirtualQTimerEvent*>(this), handle__Clone);
+		QTimerEvent* callback_return_value = miqt_exec_callback_QTimerEvent_Clone(this, handle__Clone);
 
 		return callback_return_value;
 	}
@@ -283,7 +283,7 @@ public:
 		}
 		
 
-		QChildEvent* callback_return_value = miqt_exec_callback_QChildEvent_Clone(const_cast<MiqtVirtualQChildEvent*>(this), handle__Clone);
+		QChildEvent* callback_return_value = miqt_exec_callback_QChildEvent_Clone(this, handle__Clone);
 
 		return callback_return_value;
 	}
@@ -398,7 +398,7 @@ public:
 		}
 		
 
-		QDynamicPropertyChangeEvent* callback_return_value = miqt_exec_callback_QDynamicPropertyChangeEvent_Clone(const_cast<MiqtVirtualQDynamicPropertyChangeEvent*>(this), handle__Clone);
+		QDynamicPropertyChangeEvent* callback_return_value = miqt_exec_callback_QDynamicPropertyChangeEvent_Clone(this, handle__Clone);
 
 		return callback_return_value;
 	}

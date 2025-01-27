@@ -838,7 +838,7 @@ extern "C" {
 		}
 
 		for _, m := range c.VirtualMethods() {
-			callback := m.ReturnType.RenderTypeCabi() + " " + cabiCallbackName(c, m) + "(void*, intptr_t"
+			callback := m.ReturnType.RenderTypeCabi() + " " + cabiCallbackName(c, m) + "(" + ifv(m.IsConst, "const ", "") + cabiClassName(c.ClassName) + "*, intptr_t"
 
 			for _, p := range m.Parameters {
 				callback += ", " + p.RenderTypeCabi()
@@ -937,15 +937,7 @@ extern "C" {
 					ret.WriteString("\t\t}\n")
 
 					paramArgs := []string{}
-					if m.IsConst {
-						// We're calling a Cgo-exported function, but Cgo can't
-						// describe a const pointer to a custom class, unless
-						// it's a primitive or wrapped in a typedef.
-						// Just strip the const_cast away
-						paramArgs = append(paramArgs, "const_cast<"+overriddenClassName+"*>(this)")
-					} else {
-						paramArgs = append(paramArgs, "this")
-					}
+					paramArgs = append(paramArgs, "this")
 					paramArgs = append(paramArgs, handleVarname)
 
 					var signalCode string

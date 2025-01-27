@@ -52,53 +52,53 @@ void miqt_exec_callback_QToolBar_IconSizeChanged(intptr_t, QSize*);
 void miqt_exec_callback_QToolBar_ToolButtonStyleChanged(intptr_t, int);
 void miqt_exec_callback_QToolBar_TopLevelChanged(intptr_t, bool);
 void miqt_exec_callback_QToolBar_VisibilityChanged(intptr_t, bool);
-void miqt_exec_callback_QToolBar_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QToolBar_ChangeEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QToolBar_PaintEvent(void*, intptr_t, QPaintEvent*);
-bool miqt_exec_callback_QToolBar_Event(void*, intptr_t, QEvent*);
-int miqt_exec_callback_QToolBar_DevType(void*, intptr_t);
-void miqt_exec_callback_QToolBar_SetVisible(void*, intptr_t, bool);
-QSize* miqt_exec_callback_QToolBar_SizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QToolBar_MinimumSizeHint(void*, intptr_t);
-int miqt_exec_callback_QToolBar_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QToolBar_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QToolBar_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QToolBar_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QToolBar_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QToolBar_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QToolBar_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QToolBar_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QToolBar_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QToolBar_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QToolBar_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QToolBar_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QToolBar_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QToolBar_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QToolBar_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QToolBar_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QToolBar_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QToolBar_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QToolBar_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QToolBar_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QToolBar_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QToolBar_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QToolBar_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QToolBar_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QToolBar_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QToolBar_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-int miqt_exec_callback_QToolBar_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QToolBar_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QToolBar_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QToolBar_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QToolBar_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QToolBar_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QToolBar_FocusNextPrevChild(void*, intptr_t, bool);
-bool miqt_exec_callback_QToolBar_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QToolBar_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QToolBar_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QToolBar_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QToolBar_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QToolBar_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QToolBar_ActionEvent(QToolBar*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QToolBar_ChangeEvent(QToolBar*, intptr_t, QEvent*);
+void miqt_exec_callback_QToolBar_PaintEvent(QToolBar*, intptr_t, QPaintEvent*);
+bool miqt_exec_callback_QToolBar_Event(QToolBar*, intptr_t, QEvent*);
+int miqt_exec_callback_QToolBar_DevType(const QToolBar*, intptr_t);
+void miqt_exec_callback_QToolBar_SetVisible(QToolBar*, intptr_t, bool);
+QSize* miqt_exec_callback_QToolBar_SizeHint(const QToolBar*, intptr_t);
+QSize* miqt_exec_callback_QToolBar_MinimumSizeHint(const QToolBar*, intptr_t);
+int miqt_exec_callback_QToolBar_HeightForWidth(const QToolBar*, intptr_t, int);
+bool miqt_exec_callback_QToolBar_HasHeightForWidth(const QToolBar*, intptr_t);
+QPaintEngine* miqt_exec_callback_QToolBar_PaintEngine(const QToolBar*, intptr_t);
+void miqt_exec_callback_QToolBar_MousePressEvent(QToolBar*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QToolBar_MouseReleaseEvent(QToolBar*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QToolBar_MouseDoubleClickEvent(QToolBar*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QToolBar_MouseMoveEvent(QToolBar*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QToolBar_WheelEvent(QToolBar*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QToolBar_KeyPressEvent(QToolBar*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QToolBar_KeyReleaseEvent(QToolBar*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QToolBar_FocusInEvent(QToolBar*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QToolBar_FocusOutEvent(QToolBar*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QToolBar_EnterEvent(QToolBar*, intptr_t, QEvent*);
+void miqt_exec_callback_QToolBar_LeaveEvent(QToolBar*, intptr_t, QEvent*);
+void miqt_exec_callback_QToolBar_MoveEvent(QToolBar*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QToolBar_ResizeEvent(QToolBar*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QToolBar_CloseEvent(QToolBar*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QToolBar_ContextMenuEvent(QToolBar*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QToolBar_TabletEvent(QToolBar*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QToolBar_DragEnterEvent(QToolBar*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QToolBar_DragMoveEvent(QToolBar*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QToolBar_DragLeaveEvent(QToolBar*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QToolBar_DropEvent(QToolBar*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QToolBar_ShowEvent(QToolBar*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QToolBar_HideEvent(QToolBar*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QToolBar_NativeEvent(QToolBar*, intptr_t, struct miqt_string, void*, long*);
+int miqt_exec_callback_QToolBar_Metric(const QToolBar*, intptr_t, int);
+void miqt_exec_callback_QToolBar_InitPainter(const QToolBar*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QToolBar_Redirected(const QToolBar*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QToolBar_SharedPainter(const QToolBar*, intptr_t);
+void miqt_exec_callback_QToolBar_InputMethodEvent(QToolBar*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QToolBar_InputMethodQuery(const QToolBar*, intptr_t, int);
+bool miqt_exec_callback_QToolBar_FocusNextPrevChild(QToolBar*, intptr_t, bool);
+bool miqt_exec_callback_QToolBar_EventFilter(QToolBar*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QToolBar_TimerEvent(QToolBar*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QToolBar_ChildEvent(QToolBar*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QToolBar_CustomEvent(QToolBar*, intptr_t, QEvent*);
+void miqt_exec_callback_QToolBar_ConnectNotify(QToolBar*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QToolBar_DisconnectNotify(QToolBar*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -218,7 +218,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QToolBar_DevType(const_cast<MiqtVirtualQToolBar*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QToolBar_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -264,7 +264,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QToolBar_SizeHint(const_cast<MiqtVirtualQToolBar*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QToolBar_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -286,7 +286,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QToolBar_MinimumSizeHint(const_cast<MiqtVirtualQToolBar*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QToolBar_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -309,7 +309,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QToolBar_HeightForWidth(const_cast<MiqtVirtualQToolBar*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QToolBar_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -331,7 +331,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QToolBar_HasHeightForWidth(const_cast<MiqtVirtualQToolBar*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QToolBar_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -353,7 +353,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QToolBar_PaintEngine(const_cast<MiqtVirtualQToolBar*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QToolBar_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -936,7 +936,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QToolBar_Metric(const_cast<MiqtVirtualQToolBar*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QToolBar_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -960,7 +960,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QToolBar_InitPainter(const_cast<MiqtVirtualQToolBar*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QToolBar_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -983,7 +983,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QToolBar_Redirected(const_cast<MiqtVirtualQToolBar*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QToolBar_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1005,7 +1005,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QToolBar_SharedPainter(const_cast<MiqtVirtualQToolBar*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QToolBar_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -1053,7 +1053,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QToolBar_InputMethodQuery(const_cast<MiqtVirtualQToolBar*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QToolBar_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}

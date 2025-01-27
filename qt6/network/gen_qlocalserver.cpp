@@ -17,16 +17,16 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QLocalServer_NewConnection(intptr_t);
-bool miqt_exec_callback_QLocalServer_HasPendingConnections(void*, intptr_t);
-QLocalSocket* miqt_exec_callback_QLocalServer_NextPendingConnection(void*, intptr_t);
-void miqt_exec_callback_QLocalServer_IncomingConnection(void*, intptr_t, uintptr_t);
-bool miqt_exec_callback_QLocalServer_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QLocalServer_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QLocalServer_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QLocalServer_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QLocalServer_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QLocalServer_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QLocalServer_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QLocalServer_HasPendingConnections(const QLocalServer*, intptr_t);
+QLocalSocket* miqt_exec_callback_QLocalServer_NextPendingConnection(QLocalServer*, intptr_t);
+void miqt_exec_callback_QLocalServer_IncomingConnection(QLocalServer*, intptr_t, uintptr_t);
+bool miqt_exec_callback_QLocalServer_Event(QLocalServer*, intptr_t, QEvent*);
+bool miqt_exec_callback_QLocalServer_EventFilter(QLocalServer*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QLocalServer_TimerEvent(QLocalServer*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QLocalServer_ChildEvent(QLocalServer*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QLocalServer_CustomEvent(QLocalServer*, intptr_t, QEvent*);
+void miqt_exec_callback_QLocalServer_ConnectNotify(QLocalServer*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QLocalServer_DisconnectNotify(QLocalServer*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -49,7 +49,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QLocalServer_HasPendingConnections(const_cast<MiqtVirtualQLocalServer*>(this), handle__HasPendingConnections);
+		bool callback_return_value = miqt_exec_callback_QLocalServer_HasPendingConnections(this, handle__HasPendingConnections);
 
 		return callback_return_value;
 	}

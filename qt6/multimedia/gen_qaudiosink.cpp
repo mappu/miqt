@@ -19,13 +19,13 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QAudioSink_StateChanged(intptr_t, int);
-bool miqt_exec_callback_QAudioSink_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QAudioSink_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QAudioSink_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QAudioSink_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QAudioSink_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QAudioSink_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QAudioSink_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QAudioSink_Event(QAudioSink*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAudioSink_EventFilter(QAudioSink*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAudioSink_TimerEvent(QAudioSink*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAudioSink_ChildEvent(QAudioSink*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAudioSink_CustomEvent(QAudioSink*, intptr_t, QEvent*);
+void miqt_exec_callback_QAudioSink_ConnectNotify(QAudioSink*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAudioSink_DisconnectNotify(QAudioSink*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

@@ -12,17 +12,17 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QScriptEngineAgent_ScriptLoad(void*, intptr_t, long long, struct miqt_string, struct miqt_string, int);
-void miqt_exec_callback_QScriptEngineAgent_ScriptUnload(void*, intptr_t, long long);
-void miqt_exec_callback_QScriptEngineAgent_ContextPush(void*, intptr_t);
-void miqt_exec_callback_QScriptEngineAgent_ContextPop(void*, intptr_t);
-void miqt_exec_callback_QScriptEngineAgent_FunctionEntry(void*, intptr_t, long long);
-void miqt_exec_callback_QScriptEngineAgent_FunctionExit(void*, intptr_t, long long, QScriptValue*);
-void miqt_exec_callback_QScriptEngineAgent_PositionChange(void*, intptr_t, long long, int, int);
-void miqt_exec_callback_QScriptEngineAgent_ExceptionThrow(void*, intptr_t, long long, QScriptValue*, bool);
-void miqt_exec_callback_QScriptEngineAgent_ExceptionCatch(void*, intptr_t, long long, QScriptValue*);
-bool miqt_exec_callback_QScriptEngineAgent_SupportsExtension(void*, intptr_t, int);
-QVariant* miqt_exec_callback_QScriptEngineAgent_Extension(void*, intptr_t, int, QVariant*);
+void miqt_exec_callback_QScriptEngineAgent_ScriptLoad(QScriptEngineAgent*, intptr_t, long long, struct miqt_string, struct miqt_string, int);
+void miqt_exec_callback_QScriptEngineAgent_ScriptUnload(QScriptEngineAgent*, intptr_t, long long);
+void miqt_exec_callback_QScriptEngineAgent_ContextPush(QScriptEngineAgent*, intptr_t);
+void miqt_exec_callback_QScriptEngineAgent_ContextPop(QScriptEngineAgent*, intptr_t);
+void miqt_exec_callback_QScriptEngineAgent_FunctionEntry(QScriptEngineAgent*, intptr_t, long long);
+void miqt_exec_callback_QScriptEngineAgent_FunctionExit(QScriptEngineAgent*, intptr_t, long long, QScriptValue*);
+void miqt_exec_callback_QScriptEngineAgent_PositionChange(QScriptEngineAgent*, intptr_t, long long, int, int);
+void miqt_exec_callback_QScriptEngineAgent_ExceptionThrow(QScriptEngineAgent*, intptr_t, long long, QScriptValue*, bool);
+void miqt_exec_callback_QScriptEngineAgent_ExceptionCatch(QScriptEngineAgent*, intptr_t, long long, QScriptValue*);
+bool miqt_exec_callback_QScriptEngineAgent_SupportsExtension(const QScriptEngineAgent*, intptr_t, int);
+QVariant* miqt_exec_callback_QScriptEngineAgent_Extension(QScriptEngineAgent*, intptr_t, int, QVariant*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -298,7 +298,7 @@ public:
 		QScriptEngineAgent::Extension extension_ret = extension;
 		int sigval1 = static_cast<int>(extension_ret);
 
-		bool callback_return_value = miqt_exec_callback_QScriptEngineAgent_SupportsExtension(const_cast<MiqtVirtualQScriptEngineAgent*>(this), handle__SupportsExtension, sigval1);
+		bool callback_return_value = miqt_exec_callback_QScriptEngineAgent_SupportsExtension(this, handle__SupportsExtension, sigval1);
 
 		return callback_return_value;
 	}

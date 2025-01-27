@@ -44,54 +44,54 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QRubberBand_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QRubberBand_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QRubberBand_ChangeEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QRubberBand_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QRubberBand_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QRubberBand_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QRubberBand_InitStyleOption(void*, intptr_t, QStyleOptionRubberBand*);
-int miqt_exec_callback_QRubberBand_DevType(void*, intptr_t);
-void miqt_exec_callback_QRubberBand_SetVisible(void*, intptr_t, bool);
-QSize* miqt_exec_callback_QRubberBand_SizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QRubberBand_MinimumSizeHint(void*, intptr_t);
-int miqt_exec_callback_QRubberBand_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QRubberBand_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QRubberBand_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QRubberBand_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QRubberBand_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QRubberBand_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QRubberBand_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QRubberBand_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QRubberBand_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QRubberBand_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QRubberBand_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QRubberBand_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QRubberBand_EnterEvent(void*, intptr_t, QEnterEvent*);
-void miqt_exec_callback_QRubberBand_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QRubberBand_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QRubberBand_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QRubberBand_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QRubberBand_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QRubberBand_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QRubberBand_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QRubberBand_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QRubberBand_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QRubberBand_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QRubberBand_NativeEvent(void*, intptr_t, struct miqt_string, void*, intptr_t*);
-int miqt_exec_callback_QRubberBand_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QRubberBand_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QRubberBand_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QRubberBand_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QRubberBand_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QRubberBand_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QRubberBand_FocusNextPrevChild(void*, intptr_t, bool);
-bool miqt_exec_callback_QRubberBand_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QRubberBand_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QRubberBand_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QRubberBand_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QRubberBand_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QRubberBand_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QRubberBand_Event(QRubberBand*, intptr_t, QEvent*);
+void miqt_exec_callback_QRubberBand_PaintEvent(QRubberBand*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QRubberBand_ChangeEvent(QRubberBand*, intptr_t, QEvent*);
+void miqt_exec_callback_QRubberBand_ShowEvent(QRubberBand*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QRubberBand_ResizeEvent(QRubberBand*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QRubberBand_MoveEvent(QRubberBand*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QRubberBand_InitStyleOption(const QRubberBand*, intptr_t, QStyleOptionRubberBand*);
+int miqt_exec_callback_QRubberBand_DevType(const QRubberBand*, intptr_t);
+void miqt_exec_callback_QRubberBand_SetVisible(QRubberBand*, intptr_t, bool);
+QSize* miqt_exec_callback_QRubberBand_SizeHint(const QRubberBand*, intptr_t);
+QSize* miqt_exec_callback_QRubberBand_MinimumSizeHint(const QRubberBand*, intptr_t);
+int miqt_exec_callback_QRubberBand_HeightForWidth(const QRubberBand*, intptr_t, int);
+bool miqt_exec_callback_QRubberBand_HasHeightForWidth(const QRubberBand*, intptr_t);
+QPaintEngine* miqt_exec_callback_QRubberBand_PaintEngine(const QRubberBand*, intptr_t);
+void miqt_exec_callback_QRubberBand_MousePressEvent(QRubberBand*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QRubberBand_MouseReleaseEvent(QRubberBand*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QRubberBand_MouseDoubleClickEvent(QRubberBand*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QRubberBand_MouseMoveEvent(QRubberBand*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QRubberBand_WheelEvent(QRubberBand*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QRubberBand_KeyPressEvent(QRubberBand*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QRubberBand_KeyReleaseEvent(QRubberBand*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QRubberBand_FocusInEvent(QRubberBand*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QRubberBand_FocusOutEvent(QRubberBand*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QRubberBand_EnterEvent(QRubberBand*, intptr_t, QEnterEvent*);
+void miqt_exec_callback_QRubberBand_LeaveEvent(QRubberBand*, intptr_t, QEvent*);
+void miqt_exec_callback_QRubberBand_CloseEvent(QRubberBand*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QRubberBand_ContextMenuEvent(QRubberBand*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QRubberBand_TabletEvent(QRubberBand*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QRubberBand_ActionEvent(QRubberBand*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QRubberBand_DragEnterEvent(QRubberBand*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QRubberBand_DragMoveEvent(QRubberBand*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QRubberBand_DragLeaveEvent(QRubberBand*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QRubberBand_DropEvent(QRubberBand*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QRubberBand_HideEvent(QRubberBand*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QRubberBand_NativeEvent(QRubberBand*, intptr_t, struct miqt_string, void*, intptr_t*);
+int miqt_exec_callback_QRubberBand_Metric(const QRubberBand*, intptr_t, int);
+void miqt_exec_callback_QRubberBand_InitPainter(const QRubberBand*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QRubberBand_Redirected(const QRubberBand*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QRubberBand_SharedPainter(const QRubberBand*, intptr_t);
+void miqt_exec_callback_QRubberBand_InputMethodEvent(QRubberBand*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QRubberBand_InputMethodQuery(const QRubberBand*, intptr_t, int);
+bool miqt_exec_callback_QRubberBand_FocusNextPrevChild(QRubberBand*, intptr_t, bool);
+bool miqt_exec_callback_QRubberBand_EventFilter(QRubberBand*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QRubberBand_TimerEvent(QRubberBand*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QRubberBand_ChildEvent(QRubberBand*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QRubberBand_CustomEvent(QRubberBand*, intptr_t, QEvent*);
+void miqt_exec_callback_QRubberBand_ConnectNotify(QRubberBand*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QRubberBand_DisconnectNotify(QRubberBand*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -259,7 +259,7 @@ public:
 		
 		QStyleOptionRubberBand* sigval1 = option;
 
-		miqt_exec_callback_QRubberBand_InitStyleOption(const_cast<MiqtVirtualQRubberBand*>(this), handle__InitStyleOption, sigval1);
+		miqt_exec_callback_QRubberBand_InitStyleOption(this, handle__InitStyleOption, sigval1);
 
 		
 	}
@@ -281,7 +281,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QRubberBand_DevType(const_cast<MiqtVirtualQRubberBand*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QRubberBand_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -327,7 +327,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QRubberBand_SizeHint(const_cast<MiqtVirtualQRubberBand*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QRubberBand_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -349,7 +349,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QRubberBand_MinimumSizeHint(const_cast<MiqtVirtualQRubberBand*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QRubberBand_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -372,7 +372,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QRubberBand_HeightForWidth(const_cast<MiqtVirtualQRubberBand*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QRubberBand_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -394,7 +394,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QRubberBand_HasHeightForWidth(const_cast<MiqtVirtualQRubberBand*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QRubberBand_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -416,7 +416,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QRubberBand_PaintEngine(const_cast<MiqtVirtualQRubberBand*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QRubberBand_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -952,7 +952,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QRubberBand_Metric(const_cast<MiqtVirtualQRubberBand*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QRubberBand_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -976,7 +976,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QRubberBand_InitPainter(const_cast<MiqtVirtualQRubberBand*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QRubberBand_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -999,7 +999,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QRubberBand_Redirected(const_cast<MiqtVirtualQRubberBand*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QRubberBand_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1021,7 +1021,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QRubberBand_SharedPainter(const_cast<MiqtVirtualQRubberBand*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QRubberBand_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -1069,7 +1069,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QRubberBand_InputMethodQuery(const_cast<MiqtVirtualQRubberBand*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QRubberBand_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}

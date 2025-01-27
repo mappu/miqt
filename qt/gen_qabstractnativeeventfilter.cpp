@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QAbstractNativeEventFilter_NativeEventFilter(void*, intptr_t, struct miqt_string, void*, long*);
+bool miqt_exec_callback_QAbstractNativeEventFilter_NativeEventFilter(QAbstractNativeEventFilter*, intptr_t, struct miqt_string, void*, long*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

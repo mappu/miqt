@@ -15,13 +15,13 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QObjectCleanupHandler_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QObjectCleanupHandler_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QObjectCleanupHandler_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QObjectCleanupHandler_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QObjectCleanupHandler_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QObjectCleanupHandler_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QObjectCleanupHandler_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QObjectCleanupHandler_Event(QObjectCleanupHandler*, intptr_t, QEvent*);
+bool miqt_exec_callback_QObjectCleanupHandler_EventFilter(QObjectCleanupHandler*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QObjectCleanupHandler_TimerEvent(QObjectCleanupHandler*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QObjectCleanupHandler_ChildEvent(QObjectCleanupHandler*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QObjectCleanupHandler_CustomEvent(QObjectCleanupHandler*, intptr_t, QEvent*);
+void miqt_exec_callback_QObjectCleanupHandler_ConnectNotify(QObjectCleanupHandler*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QObjectCleanupHandler_DisconnectNotify(QObjectCleanupHandler*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

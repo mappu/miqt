@@ -23,36 +23,36 @@ extern "C" {
 
 void miqt_exec_callback_QStackedLayout_WidgetRemoved(intptr_t, int);
 void miqt_exec_callback_QStackedLayout_CurrentChanged(intptr_t, int);
-int miqt_exec_callback_QStackedLayout_Count(void*, intptr_t);
-void miqt_exec_callback_QStackedLayout_AddItem(void*, intptr_t, QLayoutItem*);
-QSize* miqt_exec_callback_QStackedLayout_SizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QStackedLayout_MinimumSize(void*, intptr_t);
-QLayoutItem* miqt_exec_callback_QStackedLayout_ItemAt(void*, intptr_t, int);
-QLayoutItem* miqt_exec_callback_QStackedLayout_TakeAt(void*, intptr_t, int);
-void miqt_exec_callback_QStackedLayout_SetGeometry(void*, intptr_t, QRect*);
-bool miqt_exec_callback_QStackedLayout_HasHeightForWidth(void*, intptr_t);
-int miqt_exec_callback_QStackedLayout_HeightForWidth(void*, intptr_t, int);
-int miqt_exec_callback_QStackedLayout_Spacing(void*, intptr_t);
-void miqt_exec_callback_QStackedLayout_SetSpacing(void*, intptr_t, int);
-void miqt_exec_callback_QStackedLayout_Invalidate(void*, intptr_t);
-QRect* miqt_exec_callback_QStackedLayout_Geometry(void*, intptr_t);
-int miqt_exec_callback_QStackedLayout_ExpandingDirections(void*, intptr_t);
-QSize* miqt_exec_callback_QStackedLayout_MaximumSize(void*, intptr_t);
-int miqt_exec_callback_QStackedLayout_IndexOf(void*, intptr_t, QWidget*);
-bool miqt_exec_callback_QStackedLayout_IsEmpty(void*, intptr_t);
-int miqt_exec_callback_QStackedLayout_ControlTypes(void*, intptr_t);
-QLayoutItem* miqt_exec_callback_QStackedLayout_ReplaceWidget(void*, intptr_t, QWidget*, QWidget*, int);
-QLayout* miqt_exec_callback_QStackedLayout_Layout(void*, intptr_t);
-void miqt_exec_callback_QStackedLayout_ChildEvent(void*, intptr_t, QChildEvent*);
-bool miqt_exec_callback_QStackedLayout_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QStackedLayout_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QStackedLayout_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QStackedLayout_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QStackedLayout_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QStackedLayout_DisconnectNotify(void*, intptr_t, QMetaMethod*);
-int miqt_exec_callback_QStackedLayout_MinimumHeightForWidth(void*, intptr_t, int);
-QWidget* miqt_exec_callback_QStackedLayout_Widget(void*, intptr_t);
-QSpacerItem* miqt_exec_callback_QStackedLayout_SpacerItem(void*, intptr_t);
+int miqt_exec_callback_QStackedLayout_Count(const QStackedLayout*, intptr_t);
+void miqt_exec_callback_QStackedLayout_AddItem(QStackedLayout*, intptr_t, QLayoutItem*);
+QSize* miqt_exec_callback_QStackedLayout_SizeHint(const QStackedLayout*, intptr_t);
+QSize* miqt_exec_callback_QStackedLayout_MinimumSize(const QStackedLayout*, intptr_t);
+QLayoutItem* miqt_exec_callback_QStackedLayout_ItemAt(const QStackedLayout*, intptr_t, int);
+QLayoutItem* miqt_exec_callback_QStackedLayout_TakeAt(QStackedLayout*, intptr_t, int);
+void miqt_exec_callback_QStackedLayout_SetGeometry(QStackedLayout*, intptr_t, QRect*);
+bool miqt_exec_callback_QStackedLayout_HasHeightForWidth(const QStackedLayout*, intptr_t);
+int miqt_exec_callback_QStackedLayout_HeightForWidth(const QStackedLayout*, intptr_t, int);
+int miqt_exec_callback_QStackedLayout_Spacing(const QStackedLayout*, intptr_t);
+void miqt_exec_callback_QStackedLayout_SetSpacing(QStackedLayout*, intptr_t, int);
+void miqt_exec_callback_QStackedLayout_Invalidate(QStackedLayout*, intptr_t);
+QRect* miqt_exec_callback_QStackedLayout_Geometry(const QStackedLayout*, intptr_t);
+int miqt_exec_callback_QStackedLayout_ExpandingDirections(const QStackedLayout*, intptr_t);
+QSize* miqt_exec_callback_QStackedLayout_MaximumSize(const QStackedLayout*, intptr_t);
+int miqt_exec_callback_QStackedLayout_IndexOf(const QStackedLayout*, intptr_t, QWidget*);
+bool miqt_exec_callback_QStackedLayout_IsEmpty(const QStackedLayout*, intptr_t);
+int miqt_exec_callback_QStackedLayout_ControlTypes(const QStackedLayout*, intptr_t);
+QLayoutItem* miqt_exec_callback_QStackedLayout_ReplaceWidget(QStackedLayout*, intptr_t, QWidget*, QWidget*, int);
+QLayout* miqt_exec_callback_QStackedLayout_Layout(QStackedLayout*, intptr_t);
+void miqt_exec_callback_QStackedLayout_ChildEvent(QStackedLayout*, intptr_t, QChildEvent*);
+bool miqt_exec_callback_QStackedLayout_Event(QStackedLayout*, intptr_t, QEvent*);
+bool miqt_exec_callback_QStackedLayout_EventFilter(QStackedLayout*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QStackedLayout_TimerEvent(QStackedLayout*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QStackedLayout_CustomEvent(QStackedLayout*, intptr_t, QEvent*);
+void miqt_exec_callback_QStackedLayout_ConnectNotify(QStackedLayout*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QStackedLayout_DisconnectNotify(QStackedLayout*, intptr_t, QMetaMethod*);
+int miqt_exec_callback_QStackedLayout_MinimumHeightForWidth(const QStackedLayout*, intptr_t, int);
+QWidget* miqt_exec_callback_QStackedLayout_Widget(const QStackedLayout*, intptr_t);
+QSpacerItem* miqt_exec_callback_QStackedLayout_SpacerItem(QStackedLayout*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -76,7 +76,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QStackedLayout_Count(const_cast<MiqtVirtualQStackedLayout*>(this), handle__Count);
+		int callback_return_value = miqt_exec_callback_QStackedLayout_Count(this, handle__Count);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -122,7 +122,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QStackedLayout_SizeHint(const_cast<MiqtVirtualQStackedLayout*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QStackedLayout_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -144,7 +144,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QStackedLayout_MinimumSize(const_cast<MiqtVirtualQStackedLayout*>(this), handle__MinimumSize);
+		QSize* callback_return_value = miqt_exec_callback_QStackedLayout_MinimumSize(this, handle__MinimumSize);
 
 		return *callback_return_value;
 	}
@@ -167,7 +167,7 @@ public:
 		
 		int sigval1 = param1;
 
-		QLayoutItem* callback_return_value = miqt_exec_callback_QStackedLayout_ItemAt(const_cast<MiqtVirtualQStackedLayout*>(this), handle__ItemAt, sigval1);
+		QLayoutItem* callback_return_value = miqt_exec_callback_QStackedLayout_ItemAt(this, handle__ItemAt, sigval1);
 
 		return callback_return_value;
 	}
@@ -238,7 +238,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QStackedLayout_HasHeightForWidth(const_cast<MiqtVirtualQStackedLayout*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QStackedLayout_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -261,7 +261,7 @@ public:
 		
 		int sigval1 = width;
 
-		int callback_return_value = miqt_exec_callback_QStackedLayout_HeightForWidth(const_cast<MiqtVirtualQStackedLayout*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QStackedLayout_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -283,7 +283,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QStackedLayout_Spacing(const_cast<MiqtVirtualQStackedLayout*>(this), handle__Spacing);
+		int callback_return_value = miqt_exec_callback_QStackedLayout_Spacing(this, handle__Spacing);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -352,7 +352,7 @@ public:
 		}
 		
 
-		QRect* callback_return_value = miqt_exec_callback_QStackedLayout_Geometry(const_cast<MiqtVirtualQStackedLayout*>(this), handle__Geometry);
+		QRect* callback_return_value = miqt_exec_callback_QStackedLayout_Geometry(this, handle__Geometry);
 
 		return *callback_return_value;
 	}
@@ -374,7 +374,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QStackedLayout_ExpandingDirections(const_cast<MiqtVirtualQStackedLayout*>(this), handle__ExpandingDirections);
+		int callback_return_value = miqt_exec_callback_QStackedLayout_ExpandingDirections(this, handle__ExpandingDirections);
 
 		return static_cast<Qt::Orientations>(callback_return_value);
 	}
@@ -397,7 +397,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QStackedLayout_MaximumSize(const_cast<MiqtVirtualQStackedLayout*>(this), handle__MaximumSize);
+		QSize* callback_return_value = miqt_exec_callback_QStackedLayout_MaximumSize(this, handle__MaximumSize);
 
 		return *callback_return_value;
 	}
@@ -420,7 +420,7 @@ public:
 		
 		QWidget* sigval1 = (QWidget*) param1;
 
-		int callback_return_value = miqt_exec_callback_QStackedLayout_IndexOf(const_cast<MiqtVirtualQStackedLayout*>(this), handle__IndexOf, sigval1);
+		int callback_return_value = miqt_exec_callback_QStackedLayout_IndexOf(this, handle__IndexOf, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -442,7 +442,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QStackedLayout_IsEmpty(const_cast<MiqtVirtualQStackedLayout*>(this), handle__IsEmpty);
+		bool callback_return_value = miqt_exec_callback_QStackedLayout_IsEmpty(this, handle__IsEmpty);
 
 		return callback_return_value;
 	}
@@ -464,7 +464,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QStackedLayout_ControlTypes(const_cast<MiqtVirtualQStackedLayout*>(this), handle__ControlTypes);
+		int callback_return_value = miqt_exec_callback_QStackedLayout_ControlTypes(this, handle__ControlTypes);
 
 		return static_cast<QSizePolicy::ControlTypes>(callback_return_value);
 	}
@@ -707,7 +707,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QStackedLayout_MinimumHeightForWidth(const_cast<MiqtVirtualQStackedLayout*>(this), handle__MinimumHeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QStackedLayout_MinimumHeightForWidth(this, handle__MinimumHeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -729,7 +729,7 @@ public:
 		}
 		
 
-		QWidget* callback_return_value = miqt_exec_callback_QStackedLayout_Widget(const_cast<MiqtVirtualQStackedLayout*>(this), handle__Widget);
+		QWidget* callback_return_value = miqt_exec_callback_QStackedLayout_Widget(this, handle__Widget);
 
 		return callback_return_value;
 	}

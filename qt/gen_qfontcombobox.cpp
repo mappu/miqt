@@ -44,55 +44,55 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QFontComboBox_CurrentFontChanged(intptr_t, QFont*);
-QSize* miqt_exec_callback_QFontComboBox_SizeHint(void*, intptr_t);
-bool miqt_exec_callback_QFontComboBox_Event(void*, intptr_t, QEvent*);
-QSize* miqt_exec_callback_QFontComboBox_MinimumSizeHint(void*, intptr_t);
-void miqt_exec_callback_QFontComboBox_ShowPopup(void*, intptr_t);
-void miqt_exec_callback_QFontComboBox_HidePopup(void*, intptr_t);
-QVariant* miqt_exec_callback_QFontComboBox_InputMethodQuery(void*, intptr_t, int);
-void miqt_exec_callback_QFontComboBox_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QFontComboBox_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QFontComboBox_ChangeEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QFontComboBox_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QFontComboBox_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QFontComboBox_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QFontComboBox_HideEvent(void*, intptr_t, QHideEvent*);
-void miqt_exec_callback_QFontComboBox_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QFontComboBox_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QFontComboBox_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QFontComboBox_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QFontComboBox_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QFontComboBox_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QFontComboBox_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-int miqt_exec_callback_QFontComboBox_DevType(void*, intptr_t);
-void miqt_exec_callback_QFontComboBox_SetVisible(void*, intptr_t, bool);
-int miqt_exec_callback_QFontComboBox_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QFontComboBox_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QFontComboBox_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QFontComboBox_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QFontComboBox_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QFontComboBox_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QFontComboBox_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QFontComboBox_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QFontComboBox_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QFontComboBox_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QFontComboBox_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QFontComboBox_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QFontComboBox_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QFontComboBox_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QFontComboBox_DropEvent(void*, intptr_t, QDropEvent*);
-bool miqt_exec_callback_QFontComboBox_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-int miqt_exec_callback_QFontComboBox_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QFontComboBox_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QFontComboBox_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QFontComboBox_SharedPainter(void*, intptr_t);
-bool miqt_exec_callback_QFontComboBox_FocusNextPrevChild(void*, intptr_t, bool);
-bool miqt_exec_callback_QFontComboBox_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QFontComboBox_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QFontComboBox_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QFontComboBox_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QFontComboBox_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QFontComboBox_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QSize* miqt_exec_callback_QFontComboBox_SizeHint(const QFontComboBox*, intptr_t);
+bool miqt_exec_callback_QFontComboBox_Event(QFontComboBox*, intptr_t, QEvent*);
+QSize* miqt_exec_callback_QFontComboBox_MinimumSizeHint(const QFontComboBox*, intptr_t);
+void miqt_exec_callback_QFontComboBox_ShowPopup(QFontComboBox*, intptr_t);
+void miqt_exec_callback_QFontComboBox_HidePopup(QFontComboBox*, intptr_t);
+QVariant* miqt_exec_callback_QFontComboBox_InputMethodQuery(const QFontComboBox*, intptr_t, int);
+void miqt_exec_callback_QFontComboBox_FocusInEvent(QFontComboBox*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QFontComboBox_FocusOutEvent(QFontComboBox*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QFontComboBox_ChangeEvent(QFontComboBox*, intptr_t, QEvent*);
+void miqt_exec_callback_QFontComboBox_ResizeEvent(QFontComboBox*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QFontComboBox_PaintEvent(QFontComboBox*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QFontComboBox_ShowEvent(QFontComboBox*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QFontComboBox_HideEvent(QFontComboBox*, intptr_t, QHideEvent*);
+void miqt_exec_callback_QFontComboBox_MousePressEvent(QFontComboBox*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QFontComboBox_MouseReleaseEvent(QFontComboBox*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QFontComboBox_KeyPressEvent(QFontComboBox*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QFontComboBox_KeyReleaseEvent(QFontComboBox*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QFontComboBox_WheelEvent(QFontComboBox*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QFontComboBox_ContextMenuEvent(QFontComboBox*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QFontComboBox_InputMethodEvent(QFontComboBox*, intptr_t, QInputMethodEvent*);
+int miqt_exec_callback_QFontComboBox_DevType(const QFontComboBox*, intptr_t);
+void miqt_exec_callback_QFontComboBox_SetVisible(QFontComboBox*, intptr_t, bool);
+int miqt_exec_callback_QFontComboBox_HeightForWidth(const QFontComboBox*, intptr_t, int);
+bool miqt_exec_callback_QFontComboBox_HasHeightForWidth(const QFontComboBox*, intptr_t);
+QPaintEngine* miqt_exec_callback_QFontComboBox_PaintEngine(const QFontComboBox*, intptr_t);
+void miqt_exec_callback_QFontComboBox_MouseDoubleClickEvent(QFontComboBox*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QFontComboBox_MouseMoveEvent(QFontComboBox*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QFontComboBox_EnterEvent(QFontComboBox*, intptr_t, QEvent*);
+void miqt_exec_callback_QFontComboBox_LeaveEvent(QFontComboBox*, intptr_t, QEvent*);
+void miqt_exec_callback_QFontComboBox_MoveEvent(QFontComboBox*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QFontComboBox_CloseEvent(QFontComboBox*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QFontComboBox_TabletEvent(QFontComboBox*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QFontComboBox_ActionEvent(QFontComboBox*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QFontComboBox_DragEnterEvent(QFontComboBox*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QFontComboBox_DragMoveEvent(QFontComboBox*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QFontComboBox_DragLeaveEvent(QFontComboBox*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QFontComboBox_DropEvent(QFontComboBox*, intptr_t, QDropEvent*);
+bool miqt_exec_callback_QFontComboBox_NativeEvent(QFontComboBox*, intptr_t, struct miqt_string, void*, long*);
+int miqt_exec_callback_QFontComboBox_Metric(const QFontComboBox*, intptr_t, int);
+void miqt_exec_callback_QFontComboBox_InitPainter(const QFontComboBox*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QFontComboBox_Redirected(const QFontComboBox*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QFontComboBox_SharedPainter(const QFontComboBox*, intptr_t);
+bool miqt_exec_callback_QFontComboBox_FocusNextPrevChild(QFontComboBox*, intptr_t, bool);
+bool miqt_exec_callback_QFontComboBox_EventFilter(QFontComboBox*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QFontComboBox_TimerEvent(QFontComboBox*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QFontComboBox_ChildEvent(QFontComboBox*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QFontComboBox_CustomEvent(QFontComboBox*, intptr_t, QEvent*);
+void miqt_exec_callback_QFontComboBox_ConnectNotify(QFontComboBox*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QFontComboBox_DisconnectNotify(QFontComboBox*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -115,7 +115,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QFontComboBox_SizeHint(const_cast<MiqtVirtualQFontComboBox*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QFontComboBox_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -160,7 +160,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QFontComboBox_MinimumSizeHint(const_cast<MiqtVirtualQFontComboBox*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QFontComboBox_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -230,7 +230,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QFontComboBox_InputMethodQuery(const_cast<MiqtVirtualQFontComboBox*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QFontComboBox_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}
@@ -588,7 +588,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QFontComboBox_DevType(const_cast<MiqtVirtualQFontComboBox*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QFontComboBox_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -635,7 +635,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QFontComboBox_HeightForWidth(const_cast<MiqtVirtualQFontComboBox*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QFontComboBox_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -657,7 +657,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QFontComboBox_HasHeightForWidth(const_cast<MiqtVirtualQFontComboBox*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QFontComboBox_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -679,7 +679,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QFontComboBox_PaintEngine(const_cast<MiqtVirtualQFontComboBox*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QFontComboBox_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -1022,7 +1022,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QFontComboBox_Metric(const_cast<MiqtVirtualQFontComboBox*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QFontComboBox_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1046,7 +1046,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QFontComboBox_InitPainter(const_cast<MiqtVirtualQFontComboBox*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QFontComboBox_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -1069,7 +1069,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QFontComboBox_Redirected(const_cast<MiqtVirtualQFontComboBox*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QFontComboBox_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1091,7 +1091,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QFontComboBox_SharedPainter(const_cast<MiqtVirtualQFontComboBox*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QFontComboBox_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}

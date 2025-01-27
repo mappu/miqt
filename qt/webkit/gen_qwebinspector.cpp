@@ -42,53 +42,53 @@
 extern "C" {
 #endif
 
-QSize* miqt_exec_callback_QWebInspector_SizeHint(void*, intptr_t);
-bool miqt_exec_callback_QWebInspector_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QWebInspector_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QWebInspector_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QWebInspector_HideEvent(void*, intptr_t, QHideEvent*);
-void miqt_exec_callback_QWebInspector_CloseEvent(void*, intptr_t, QCloseEvent*);
-int miqt_exec_callback_QWebInspector_DevType(void*, intptr_t);
-void miqt_exec_callback_QWebInspector_SetVisible(void*, intptr_t, bool);
-QSize* miqt_exec_callback_QWebInspector_MinimumSizeHint(void*, intptr_t);
-int miqt_exec_callback_QWebInspector_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QWebInspector_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QWebInspector_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QWebInspector_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QWebInspector_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QWebInspector_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QWebInspector_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QWebInspector_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QWebInspector_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QWebInspector_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QWebInspector_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QWebInspector_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QWebInspector_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QWebInspector_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QWebInspector_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QWebInspector_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QWebInspector_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QWebInspector_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QWebInspector_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QWebInspector_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QWebInspector_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QWebInspector_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QWebInspector_DropEvent(void*, intptr_t, QDropEvent*);
-bool miqt_exec_callback_QWebInspector_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-void miqt_exec_callback_QWebInspector_ChangeEvent(void*, intptr_t, QEvent*);
-int miqt_exec_callback_QWebInspector_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QWebInspector_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QWebInspector_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QWebInspector_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QWebInspector_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QWebInspector_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QWebInspector_FocusNextPrevChild(void*, intptr_t, bool);
-bool miqt_exec_callback_QWebInspector_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QWebInspector_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QWebInspector_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QWebInspector_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QWebInspector_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QWebInspector_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QSize* miqt_exec_callback_QWebInspector_SizeHint(const QWebInspector*, intptr_t);
+bool miqt_exec_callback_QWebInspector_Event(QWebInspector*, intptr_t, QEvent*);
+void miqt_exec_callback_QWebInspector_ResizeEvent(QWebInspector*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QWebInspector_ShowEvent(QWebInspector*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QWebInspector_HideEvent(QWebInspector*, intptr_t, QHideEvent*);
+void miqt_exec_callback_QWebInspector_CloseEvent(QWebInspector*, intptr_t, QCloseEvent*);
+int miqt_exec_callback_QWebInspector_DevType(const QWebInspector*, intptr_t);
+void miqt_exec_callback_QWebInspector_SetVisible(QWebInspector*, intptr_t, bool);
+QSize* miqt_exec_callback_QWebInspector_MinimumSizeHint(const QWebInspector*, intptr_t);
+int miqt_exec_callback_QWebInspector_HeightForWidth(const QWebInspector*, intptr_t, int);
+bool miqt_exec_callback_QWebInspector_HasHeightForWidth(const QWebInspector*, intptr_t);
+QPaintEngine* miqt_exec_callback_QWebInspector_PaintEngine(const QWebInspector*, intptr_t);
+void miqt_exec_callback_QWebInspector_MousePressEvent(QWebInspector*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QWebInspector_MouseReleaseEvent(QWebInspector*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QWebInspector_MouseDoubleClickEvent(QWebInspector*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QWebInspector_MouseMoveEvent(QWebInspector*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QWebInspector_WheelEvent(QWebInspector*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QWebInspector_KeyPressEvent(QWebInspector*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QWebInspector_KeyReleaseEvent(QWebInspector*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QWebInspector_FocusInEvent(QWebInspector*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QWebInspector_FocusOutEvent(QWebInspector*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QWebInspector_EnterEvent(QWebInspector*, intptr_t, QEvent*);
+void miqt_exec_callback_QWebInspector_LeaveEvent(QWebInspector*, intptr_t, QEvent*);
+void miqt_exec_callback_QWebInspector_PaintEvent(QWebInspector*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QWebInspector_MoveEvent(QWebInspector*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QWebInspector_ContextMenuEvent(QWebInspector*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QWebInspector_TabletEvent(QWebInspector*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QWebInspector_ActionEvent(QWebInspector*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QWebInspector_DragEnterEvent(QWebInspector*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QWebInspector_DragMoveEvent(QWebInspector*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QWebInspector_DragLeaveEvent(QWebInspector*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QWebInspector_DropEvent(QWebInspector*, intptr_t, QDropEvent*);
+bool miqt_exec_callback_QWebInspector_NativeEvent(QWebInspector*, intptr_t, struct miqt_string, void*, long*);
+void miqt_exec_callback_QWebInspector_ChangeEvent(QWebInspector*, intptr_t, QEvent*);
+int miqt_exec_callback_QWebInspector_Metric(const QWebInspector*, intptr_t, int);
+void miqt_exec_callback_QWebInspector_InitPainter(const QWebInspector*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QWebInspector_Redirected(const QWebInspector*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QWebInspector_SharedPainter(const QWebInspector*, intptr_t);
+void miqt_exec_callback_QWebInspector_InputMethodEvent(QWebInspector*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QWebInspector_InputMethodQuery(const QWebInspector*, intptr_t, int);
+bool miqt_exec_callback_QWebInspector_FocusNextPrevChild(QWebInspector*, intptr_t, bool);
+bool miqt_exec_callback_QWebInspector_EventFilter(QWebInspector*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QWebInspector_TimerEvent(QWebInspector*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QWebInspector_ChildEvent(QWebInspector*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QWebInspector_CustomEvent(QWebInspector*, intptr_t, QEvent*);
+void miqt_exec_callback_QWebInspector_ConnectNotify(QWebInspector*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QWebInspector_DisconnectNotify(QWebInspector*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -111,7 +111,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QWebInspector_SizeHint(const_cast<MiqtVirtualQWebInspector*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QWebInspector_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -252,7 +252,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QWebInspector_DevType(const_cast<MiqtVirtualQWebInspector*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QWebInspector_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -298,7 +298,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QWebInspector_MinimumSizeHint(const_cast<MiqtVirtualQWebInspector*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QWebInspector_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -321,7 +321,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QWebInspector_HeightForWidth(const_cast<MiqtVirtualQWebInspector*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QWebInspector_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -343,7 +343,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QWebInspector_HasHeightForWidth(const_cast<MiqtVirtualQWebInspector*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QWebInspector_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -365,7 +365,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QWebInspector_PaintEngine(const_cast<MiqtVirtualQWebInspector*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QWebInspector_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -924,7 +924,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QWebInspector_Metric(const_cast<MiqtVirtualQWebInspector*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QWebInspector_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -948,7 +948,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QWebInspector_InitPainter(const_cast<MiqtVirtualQWebInspector*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QWebInspector_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -971,7 +971,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QWebInspector_Redirected(const_cast<MiqtVirtualQWebInspector*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QWebInspector_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -993,7 +993,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QWebInspector_SharedPainter(const_cast<MiqtVirtualQWebInspector*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QWebInspector_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -1041,7 +1041,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QWebInspector_InputMethodQuery(const_cast<MiqtVirtualQWebInspector*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QWebInspector_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}

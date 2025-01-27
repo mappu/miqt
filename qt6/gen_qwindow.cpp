@@ -60,37 +60,37 @@ void miqt_exec_callback_QWindow_ContentOrientationChanged(intptr_t, int);
 void miqt_exec_callback_QWindow_FocusObjectChanged(intptr_t, QObject*);
 void miqt_exec_callback_QWindow_OpacityChanged(intptr_t, double);
 void miqt_exec_callback_QWindow_TransientParentChanged(intptr_t, QWindow*);
-int miqt_exec_callback_QWindow_SurfaceType(void*, intptr_t);
-QSurfaceFormat* miqt_exec_callback_QWindow_Format(void*, intptr_t);
-QSize* miqt_exec_callback_QWindow_Size(void*, intptr_t);
-QAccessibleInterface* miqt_exec_callback_QWindow_AccessibleRoot(void*, intptr_t);
-QObject* miqt_exec_callback_QWindow_FocusObject(void*, intptr_t);
-void miqt_exec_callback_QWindow_ExposeEvent(void*, intptr_t, QExposeEvent*);
-void miqt_exec_callback_QWindow_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QWindow_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QWindow_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QWindow_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QWindow_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QWindow_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QWindow_HideEvent(void*, intptr_t, QHideEvent*);
-void miqt_exec_callback_QWindow_CloseEvent(void*, intptr_t, QCloseEvent*);
-bool miqt_exec_callback_QWindow_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QWindow_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QWindow_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QWindow_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QWindow_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QWindow_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QWindow_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QWindow_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QWindow_TouchEvent(void*, intptr_t, QTouchEvent*);
-void miqt_exec_callback_QWindow_TabletEvent(void*, intptr_t, QTabletEvent*);
-bool miqt_exec_callback_QWindow_NativeEvent(void*, intptr_t, struct miqt_string, void*, intptr_t*);
-bool miqt_exec_callback_QWindow_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QWindow_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QWindow_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QWindow_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QWindow_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QWindow_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+int miqt_exec_callback_QWindow_SurfaceType(const QWindow*, intptr_t);
+QSurfaceFormat* miqt_exec_callback_QWindow_Format(const QWindow*, intptr_t);
+QSize* miqt_exec_callback_QWindow_Size(const QWindow*, intptr_t);
+QAccessibleInterface* miqt_exec_callback_QWindow_AccessibleRoot(const QWindow*, intptr_t);
+QObject* miqt_exec_callback_QWindow_FocusObject(const QWindow*, intptr_t);
+void miqt_exec_callback_QWindow_ExposeEvent(QWindow*, intptr_t, QExposeEvent*);
+void miqt_exec_callback_QWindow_ResizeEvent(QWindow*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QWindow_PaintEvent(QWindow*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QWindow_MoveEvent(QWindow*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QWindow_FocusInEvent(QWindow*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QWindow_FocusOutEvent(QWindow*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QWindow_ShowEvent(QWindow*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QWindow_HideEvent(QWindow*, intptr_t, QHideEvent*);
+void miqt_exec_callback_QWindow_CloseEvent(QWindow*, intptr_t, QCloseEvent*);
+bool miqt_exec_callback_QWindow_Event(QWindow*, intptr_t, QEvent*);
+void miqt_exec_callback_QWindow_KeyPressEvent(QWindow*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QWindow_KeyReleaseEvent(QWindow*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QWindow_MousePressEvent(QWindow*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QWindow_MouseReleaseEvent(QWindow*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QWindow_MouseDoubleClickEvent(QWindow*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QWindow_MouseMoveEvent(QWindow*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QWindow_WheelEvent(QWindow*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QWindow_TouchEvent(QWindow*, intptr_t, QTouchEvent*);
+void miqt_exec_callback_QWindow_TabletEvent(QWindow*, intptr_t, QTabletEvent*);
+bool miqt_exec_callback_QWindow_NativeEvent(QWindow*, intptr_t, struct miqt_string, void*, intptr_t*);
+bool miqt_exec_callback_QWindow_EventFilter(QWindow*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QWindow_TimerEvent(QWindow*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QWindow_ChildEvent(QWindow*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QWindow_CustomEvent(QWindow*, intptr_t, QEvent*);
+void miqt_exec_callback_QWindow_ConnectNotify(QWindow*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QWindow_DisconnectNotify(QWindow*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -114,7 +114,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QWindow_SurfaceType(const_cast<MiqtVirtualQWindow*>(this), handle__SurfaceType);
+		int callback_return_value = miqt_exec_callback_QWindow_SurfaceType(this, handle__SurfaceType);
 
 		return static_cast<QSurface::SurfaceType>(callback_return_value);
 	}
@@ -137,7 +137,7 @@ public:
 		}
 		
 
-		QSurfaceFormat* callback_return_value = miqt_exec_callback_QWindow_Format(const_cast<MiqtVirtualQWindow*>(this), handle__Format);
+		QSurfaceFormat* callback_return_value = miqt_exec_callback_QWindow_Format(this, handle__Format);
 
 		return *callback_return_value;
 	}
@@ -159,7 +159,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QWindow_Size(const_cast<MiqtVirtualQWindow*>(this), handle__Size);
+		QSize* callback_return_value = miqt_exec_callback_QWindow_Size(this, handle__Size);
 
 		return *callback_return_value;
 	}
@@ -181,7 +181,7 @@ public:
 		}
 		
 
-		QAccessibleInterface* callback_return_value = miqt_exec_callback_QWindow_AccessibleRoot(const_cast<MiqtVirtualQWindow*>(this), handle__AccessibleRoot);
+		QAccessibleInterface* callback_return_value = miqt_exec_callback_QWindow_AccessibleRoot(this, handle__AccessibleRoot);
 
 		return callback_return_value;
 	}
@@ -203,7 +203,7 @@ public:
 		}
 		
 
-		QObject* callback_return_value = miqt_exec_callback_QWindow_FocusObject(const_cast<MiqtVirtualQWindow*>(this), handle__FocusObject);
+		QObject* callback_return_value = miqt_exec_callback_QWindow_FocusObject(this, handle__FocusObject);
 
 		return callback_return_value;
 	}

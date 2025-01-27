@@ -19,17 +19,17 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QSequentialAnimationGroup_CurrentAnimationChanged(intptr_t, QAbstractAnimation*);
-int miqt_exec_callback_QSequentialAnimationGroup_Duration(void*, intptr_t);
-bool miqt_exec_callback_QSequentialAnimationGroup_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSequentialAnimationGroup_UpdateCurrentTime(void*, intptr_t, int);
-void miqt_exec_callback_QSequentialAnimationGroup_UpdateState(void*, intptr_t, int, int);
-void miqt_exec_callback_QSequentialAnimationGroup_UpdateDirection(void*, intptr_t, int);
-bool miqt_exec_callback_QSequentialAnimationGroup_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QSequentialAnimationGroup_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QSequentialAnimationGroup_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QSequentialAnimationGroup_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSequentialAnimationGroup_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QSequentialAnimationGroup_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+int miqt_exec_callback_QSequentialAnimationGroup_Duration(const QSequentialAnimationGroup*, intptr_t);
+bool miqt_exec_callback_QSequentialAnimationGroup_Event(QSequentialAnimationGroup*, intptr_t, QEvent*);
+void miqt_exec_callback_QSequentialAnimationGroup_UpdateCurrentTime(QSequentialAnimationGroup*, intptr_t, int);
+void miqt_exec_callback_QSequentialAnimationGroup_UpdateState(QSequentialAnimationGroup*, intptr_t, int, int);
+void miqt_exec_callback_QSequentialAnimationGroup_UpdateDirection(QSequentialAnimationGroup*, intptr_t, int);
+bool miqt_exec_callback_QSequentialAnimationGroup_EventFilter(QSequentialAnimationGroup*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QSequentialAnimationGroup_TimerEvent(QSequentialAnimationGroup*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSequentialAnimationGroup_ChildEvent(QSequentialAnimationGroup*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QSequentialAnimationGroup_CustomEvent(QSequentialAnimationGroup*, intptr_t, QEvent*);
+void miqt_exec_callback_QSequentialAnimationGroup_ConnectNotify(QSequentialAnimationGroup*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSequentialAnimationGroup_DisconnectNotify(QSequentialAnimationGroup*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -52,7 +52,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QSequentialAnimationGroup_Duration(const_cast<MiqtVirtualQSequentialAnimationGroup*>(this), handle__Duration);
+		int callback_return_value = miqt_exec_callback_QSequentialAnimationGroup_Duration(this, handle__Duration);
 
 		return static_cast<int>(callback_return_value);
 	}

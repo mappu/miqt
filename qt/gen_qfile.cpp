@@ -18,33 +18,33 @@
 extern "C" {
 #endif
 
-struct miqt_string miqt_exec_callback_QFile_FileName(void*, intptr_t);
-bool miqt_exec_callback_QFile_Open(void*, intptr_t, int);
-long long miqt_exec_callback_QFile_Size(void*, intptr_t);
-bool miqt_exec_callback_QFile_Resize(void*, intptr_t, long long);
-int miqt_exec_callback_QFile_Permissions(void*, intptr_t);
-bool miqt_exec_callback_QFile_SetPermissions(void*, intptr_t, int);
-void miqt_exec_callback_QFile_Close(void*, intptr_t);
-bool miqt_exec_callback_QFile_IsSequential(void*, intptr_t);
-long long miqt_exec_callback_QFile_Pos(void*, intptr_t);
-bool miqt_exec_callback_QFile_Seek(void*, intptr_t, long long);
-bool miqt_exec_callback_QFile_AtEnd(void*, intptr_t);
-long long miqt_exec_callback_QFile_ReadData(void*, intptr_t, char*, long long);
-long long miqt_exec_callback_QFile_WriteData(void*, intptr_t, const char*, long long);
-long long miqt_exec_callback_QFile_ReadLineData(void*, intptr_t, char*, long long);
-bool miqt_exec_callback_QFile_Reset(void*, intptr_t);
-long long miqt_exec_callback_QFile_BytesAvailable(void*, intptr_t);
-long long miqt_exec_callback_QFile_BytesToWrite(void*, intptr_t);
-bool miqt_exec_callback_QFile_CanReadLine(void*, intptr_t);
-bool miqt_exec_callback_QFile_WaitForReadyRead(void*, intptr_t, int);
-bool miqt_exec_callback_QFile_WaitForBytesWritten(void*, intptr_t, int);
-bool miqt_exec_callback_QFile_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QFile_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QFile_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QFile_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QFile_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QFile_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QFile_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+struct miqt_string miqt_exec_callback_QFile_FileName(const QFile*, intptr_t);
+bool miqt_exec_callback_QFile_Open(QFile*, intptr_t, int);
+long long miqt_exec_callback_QFile_Size(const QFile*, intptr_t);
+bool miqt_exec_callback_QFile_Resize(QFile*, intptr_t, long long);
+int miqt_exec_callback_QFile_Permissions(const QFile*, intptr_t);
+bool miqt_exec_callback_QFile_SetPermissions(QFile*, intptr_t, int);
+void miqt_exec_callback_QFile_Close(QFile*, intptr_t);
+bool miqt_exec_callback_QFile_IsSequential(const QFile*, intptr_t);
+long long miqt_exec_callback_QFile_Pos(const QFile*, intptr_t);
+bool miqt_exec_callback_QFile_Seek(QFile*, intptr_t, long long);
+bool miqt_exec_callback_QFile_AtEnd(const QFile*, intptr_t);
+long long miqt_exec_callback_QFile_ReadData(QFile*, intptr_t, char*, long long);
+long long miqt_exec_callback_QFile_WriteData(QFile*, intptr_t, const char*, long long);
+long long miqt_exec_callback_QFile_ReadLineData(QFile*, intptr_t, char*, long long);
+bool miqt_exec_callback_QFile_Reset(QFile*, intptr_t);
+long long miqt_exec_callback_QFile_BytesAvailable(const QFile*, intptr_t);
+long long miqt_exec_callback_QFile_BytesToWrite(const QFile*, intptr_t);
+bool miqt_exec_callback_QFile_CanReadLine(const QFile*, intptr_t);
+bool miqt_exec_callback_QFile_WaitForReadyRead(QFile*, intptr_t, int);
+bool miqt_exec_callback_QFile_WaitForBytesWritten(QFile*, intptr_t, int);
+bool miqt_exec_callback_QFile_Event(QFile*, intptr_t, QEvent*);
+bool miqt_exec_callback_QFile_EventFilter(QFile*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QFile_TimerEvent(QFile*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QFile_ChildEvent(QFile*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QFile_CustomEvent(QFile*, intptr_t, QEvent*);
+void miqt_exec_callback_QFile_ConnectNotify(QFile*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QFile_DisconnectNotify(QFile*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -69,7 +69,7 @@ public:
 		}
 		
 
-		struct miqt_string callback_return_value = miqt_exec_callback_QFile_FileName(const_cast<MiqtVirtualQFile*>(this), handle__FileName);
+		struct miqt_string callback_return_value = miqt_exec_callback_QFile_FileName(this, handle__FileName);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
 
 		return callback_return_value_QString;
@@ -123,7 +123,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QFile_Size(const_cast<MiqtVirtualQFile*>(this), handle__Size);
+		long long callback_return_value = miqt_exec_callback_QFile_Size(this, handle__Size);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -170,7 +170,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QFile_Permissions(const_cast<MiqtVirtualQFile*>(this), handle__Permissions);
+		int callback_return_value = miqt_exec_callback_QFile_Permissions(this, handle__Permissions);
 
 		return static_cast<QFileDevice::Permissions>(callback_return_value);
 	}
@@ -240,7 +240,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QFile_IsSequential(const_cast<MiqtVirtualQFile*>(this), handle__IsSequential);
+		bool callback_return_value = miqt_exec_callback_QFile_IsSequential(this, handle__IsSequential);
 
 		return callback_return_value;
 	}
@@ -262,7 +262,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QFile_Pos(const_cast<MiqtVirtualQFile*>(this), handle__Pos);
+		long long callback_return_value = miqt_exec_callback_QFile_Pos(this, handle__Pos);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -309,7 +309,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QFile_AtEnd(const_cast<MiqtVirtualQFile*>(this), handle__AtEnd);
+		bool callback_return_value = miqt_exec_callback_QFile_AtEnd(this, handle__AtEnd);
 
 		return callback_return_value;
 	}
@@ -431,7 +431,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QFile_BytesAvailable(const_cast<MiqtVirtualQFile*>(this), handle__BytesAvailable);
+		long long callback_return_value = miqt_exec_callback_QFile_BytesAvailable(this, handle__BytesAvailable);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -454,7 +454,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QFile_BytesToWrite(const_cast<MiqtVirtualQFile*>(this), handle__BytesToWrite);
+		long long callback_return_value = miqt_exec_callback_QFile_BytesToWrite(this, handle__BytesToWrite);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -477,7 +477,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QFile_CanReadLine(const_cast<MiqtVirtualQFile*>(this), handle__CanReadLine);
+		bool callback_return_value = miqt_exec_callback_QFile_CanReadLine(this, handle__CanReadLine);
 
 		return callback_return_value;
 	}

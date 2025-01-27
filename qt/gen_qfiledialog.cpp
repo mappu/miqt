@@ -57,58 +57,58 @@ void miqt_exec_callback_QFileDialog_UrlsSelected(intptr_t, struct miqt_array /* 
 void miqt_exec_callback_QFileDialog_CurrentUrlChanged(intptr_t, QUrl*);
 void miqt_exec_callback_QFileDialog_DirectoryUrlEntered(intptr_t, QUrl*);
 void miqt_exec_callback_QFileDialog_FilterSelected(intptr_t, struct miqt_string);
-void miqt_exec_callback_QFileDialog_SetVisible(void*, intptr_t, bool);
-void miqt_exec_callback_QFileDialog_Done(void*, intptr_t, int);
-void miqt_exec_callback_QFileDialog_Accept(void*, intptr_t);
-void miqt_exec_callback_QFileDialog_ChangeEvent(void*, intptr_t, QEvent*);
-QSize* miqt_exec_callback_QFileDialog_SizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QFileDialog_MinimumSizeHint(void*, intptr_t);
-void miqt_exec_callback_QFileDialog_Open(void*, intptr_t);
-int miqt_exec_callback_QFileDialog_Exec(void*, intptr_t);
-void miqt_exec_callback_QFileDialog_Reject(void*, intptr_t);
-void miqt_exec_callback_QFileDialog_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QFileDialog_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QFileDialog_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QFileDialog_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QFileDialog_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-bool miqt_exec_callback_QFileDialog_EventFilter(void*, intptr_t, QObject*, QEvent*);
-int miqt_exec_callback_QFileDialog_DevType(void*, intptr_t);
-int miqt_exec_callback_QFileDialog_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QFileDialog_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QFileDialog_PaintEngine(void*, intptr_t);
-bool miqt_exec_callback_QFileDialog_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QFileDialog_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QFileDialog_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QFileDialog_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QFileDialog_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QFileDialog_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QFileDialog_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QFileDialog_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QFileDialog_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QFileDialog_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QFileDialog_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QFileDialog_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QFileDialog_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QFileDialog_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QFileDialog_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QFileDialog_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QFileDialog_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QFileDialog_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QFileDialog_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QFileDialog_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QFileDialog_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-int miqt_exec_callback_QFileDialog_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QFileDialog_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QFileDialog_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QFileDialog_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QFileDialog_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QFileDialog_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QFileDialog_FocusNextPrevChild(void*, intptr_t, bool);
-void miqt_exec_callback_QFileDialog_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QFileDialog_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QFileDialog_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QFileDialog_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QFileDialog_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QFileDialog_SetVisible(QFileDialog*, intptr_t, bool);
+void miqt_exec_callback_QFileDialog_Done(QFileDialog*, intptr_t, int);
+void miqt_exec_callback_QFileDialog_Accept(QFileDialog*, intptr_t);
+void miqt_exec_callback_QFileDialog_ChangeEvent(QFileDialog*, intptr_t, QEvent*);
+QSize* miqt_exec_callback_QFileDialog_SizeHint(const QFileDialog*, intptr_t);
+QSize* miqt_exec_callback_QFileDialog_MinimumSizeHint(const QFileDialog*, intptr_t);
+void miqt_exec_callback_QFileDialog_Open(QFileDialog*, intptr_t);
+int miqt_exec_callback_QFileDialog_Exec(QFileDialog*, intptr_t);
+void miqt_exec_callback_QFileDialog_Reject(QFileDialog*, intptr_t);
+void miqt_exec_callback_QFileDialog_KeyPressEvent(QFileDialog*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QFileDialog_CloseEvent(QFileDialog*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QFileDialog_ShowEvent(QFileDialog*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QFileDialog_ResizeEvent(QFileDialog*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QFileDialog_ContextMenuEvent(QFileDialog*, intptr_t, QContextMenuEvent*);
+bool miqt_exec_callback_QFileDialog_EventFilter(QFileDialog*, intptr_t, QObject*, QEvent*);
+int miqt_exec_callback_QFileDialog_DevType(const QFileDialog*, intptr_t);
+int miqt_exec_callback_QFileDialog_HeightForWidth(const QFileDialog*, intptr_t, int);
+bool miqt_exec_callback_QFileDialog_HasHeightForWidth(const QFileDialog*, intptr_t);
+QPaintEngine* miqt_exec_callback_QFileDialog_PaintEngine(const QFileDialog*, intptr_t);
+bool miqt_exec_callback_QFileDialog_Event(QFileDialog*, intptr_t, QEvent*);
+void miqt_exec_callback_QFileDialog_MousePressEvent(QFileDialog*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QFileDialog_MouseReleaseEvent(QFileDialog*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QFileDialog_MouseDoubleClickEvent(QFileDialog*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QFileDialog_MouseMoveEvent(QFileDialog*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QFileDialog_WheelEvent(QFileDialog*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QFileDialog_KeyReleaseEvent(QFileDialog*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QFileDialog_FocusInEvent(QFileDialog*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QFileDialog_FocusOutEvent(QFileDialog*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QFileDialog_EnterEvent(QFileDialog*, intptr_t, QEvent*);
+void miqt_exec_callback_QFileDialog_LeaveEvent(QFileDialog*, intptr_t, QEvent*);
+void miqt_exec_callback_QFileDialog_PaintEvent(QFileDialog*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QFileDialog_MoveEvent(QFileDialog*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QFileDialog_TabletEvent(QFileDialog*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QFileDialog_ActionEvent(QFileDialog*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QFileDialog_DragEnterEvent(QFileDialog*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QFileDialog_DragMoveEvent(QFileDialog*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QFileDialog_DragLeaveEvent(QFileDialog*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QFileDialog_DropEvent(QFileDialog*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QFileDialog_HideEvent(QFileDialog*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QFileDialog_NativeEvent(QFileDialog*, intptr_t, struct miqt_string, void*, long*);
+int miqt_exec_callback_QFileDialog_Metric(const QFileDialog*, intptr_t, int);
+void miqt_exec_callback_QFileDialog_InitPainter(const QFileDialog*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QFileDialog_Redirected(const QFileDialog*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QFileDialog_SharedPainter(const QFileDialog*, intptr_t);
+void miqt_exec_callback_QFileDialog_InputMethodEvent(QFileDialog*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QFileDialog_InputMethodQuery(const QFileDialog*, intptr_t, int);
+bool miqt_exec_callback_QFileDialog_FocusNextPrevChild(QFileDialog*, intptr_t, bool);
+void miqt_exec_callback_QFileDialog_TimerEvent(QFileDialog*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QFileDialog_ChildEvent(QFileDialog*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QFileDialog_CustomEvent(QFileDialog*, intptr_t, QEvent*);
+void miqt_exec_callback_QFileDialog_ConnectNotify(QFileDialog*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QFileDialog_DisconnectNotify(QFileDialog*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -230,7 +230,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QFileDialog_SizeHint(const_cast<MiqtVirtualQFileDialog*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QFileDialog_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -252,7 +252,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QFileDialog_MinimumSizeHint(const_cast<MiqtVirtualQFileDialog*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QFileDialog_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -486,7 +486,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QFileDialog_DevType(const_cast<MiqtVirtualQFileDialog*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QFileDialog_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -509,7 +509,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QFileDialog_HeightForWidth(const_cast<MiqtVirtualQFileDialog*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QFileDialog_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -531,7 +531,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QFileDialog_HasHeightForWidth(const_cast<MiqtVirtualQFileDialog*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QFileDialog_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -553,7 +553,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QFileDialog_PaintEngine(const_cast<MiqtVirtualQFileDialog*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QFileDialog_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -1087,7 +1087,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QFileDialog_Metric(const_cast<MiqtVirtualQFileDialog*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QFileDialog_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1111,7 +1111,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QFileDialog_InitPainter(const_cast<MiqtVirtualQFileDialog*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QFileDialog_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -1134,7 +1134,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QFileDialog_Redirected(const_cast<MiqtVirtualQFileDialog*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QFileDialog_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1156,7 +1156,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QFileDialog_SharedPainter(const_cast<MiqtVirtualQFileDialog*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QFileDialog_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -1204,7 +1204,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QFileDialog_InputMethodQuery(const_cast<MiqtVirtualQFileDialog*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QFileDialog_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}

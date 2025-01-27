@@ -16,17 +16,17 @@
 extern "C" {
 #endif
 
-int miqt_exec_callback_QPauseAnimation_Duration(void*, intptr_t);
-bool miqt_exec_callback_QPauseAnimation_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QPauseAnimation_UpdateCurrentTime(void*, intptr_t, int);
-void miqt_exec_callback_QPauseAnimation_UpdateState(void*, intptr_t, int, int);
-void miqt_exec_callback_QPauseAnimation_UpdateDirection(void*, intptr_t, int);
-bool miqt_exec_callback_QPauseAnimation_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QPauseAnimation_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QPauseAnimation_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QPauseAnimation_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QPauseAnimation_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QPauseAnimation_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+int miqt_exec_callback_QPauseAnimation_Duration(const QPauseAnimation*, intptr_t);
+bool miqt_exec_callback_QPauseAnimation_Event(QPauseAnimation*, intptr_t, QEvent*);
+void miqt_exec_callback_QPauseAnimation_UpdateCurrentTime(QPauseAnimation*, intptr_t, int);
+void miqt_exec_callback_QPauseAnimation_UpdateState(QPauseAnimation*, intptr_t, int, int);
+void miqt_exec_callback_QPauseAnimation_UpdateDirection(QPauseAnimation*, intptr_t, int);
+bool miqt_exec_callback_QPauseAnimation_EventFilter(QPauseAnimation*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QPauseAnimation_TimerEvent(QPauseAnimation*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QPauseAnimation_ChildEvent(QPauseAnimation*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QPauseAnimation_CustomEvent(QPauseAnimation*, intptr_t, QEvent*);
+void miqt_exec_callback_QPauseAnimation_ConnectNotify(QPauseAnimation*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QPauseAnimation_DisconnectNotify(QPauseAnimation*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -51,7 +51,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QPauseAnimation_Duration(const_cast<MiqtVirtualQPauseAnimation*>(this), handle__Duration);
+		int callback_return_value = miqt_exec_callback_QPauseAnimation_Duration(this, handle__Duration);
 
 		return static_cast<int>(callback_return_value);
 	}

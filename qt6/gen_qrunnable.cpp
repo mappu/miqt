@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QRunnable_Run(void*, intptr_t);
+void miqt_exec_callback_QRunnable_Run(QRunnable*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif

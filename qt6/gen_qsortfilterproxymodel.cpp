@@ -35,58 +35,58 @@ void miqt_exec_callback_QSortFilterProxyModel_SortRoleChanged(intptr_t, int);
 void miqt_exec_callback_QSortFilterProxyModel_FilterRoleChanged(intptr_t, int);
 void miqt_exec_callback_QSortFilterProxyModel_RecursiveFilteringEnabledChanged(intptr_t, bool);
 void miqt_exec_callback_QSortFilterProxyModel_AutoAcceptChildRowsChanged(intptr_t, bool);
-void miqt_exec_callback_QSortFilterProxyModel_SetSourceModel(void*, intptr_t, QAbstractItemModel*);
-QModelIndex* miqt_exec_callback_QSortFilterProxyModel_MapToSource(void*, intptr_t, QModelIndex*);
-QModelIndex* miqt_exec_callback_QSortFilterProxyModel_MapFromSource(void*, intptr_t, QModelIndex*);
-QItemSelection* miqt_exec_callback_QSortFilterProxyModel_MapSelectionToSource(void*, intptr_t, QItemSelection*);
-QItemSelection* miqt_exec_callback_QSortFilterProxyModel_MapSelectionFromSource(void*, intptr_t, QItemSelection*);
-bool miqt_exec_callback_QSortFilterProxyModel_FilterAcceptsRow(void*, intptr_t, int, QModelIndex*);
-bool miqt_exec_callback_QSortFilterProxyModel_FilterAcceptsColumn(void*, intptr_t, int, QModelIndex*);
-bool miqt_exec_callback_QSortFilterProxyModel_LessThan(void*, intptr_t, QModelIndex*, QModelIndex*);
-QModelIndex* miqt_exec_callback_QSortFilterProxyModel_Index(void*, intptr_t, int, int, QModelIndex*);
-QModelIndex* miqt_exec_callback_QSortFilterProxyModel_Parent(void*, intptr_t, QModelIndex*);
-QModelIndex* miqt_exec_callback_QSortFilterProxyModel_Sibling(void*, intptr_t, int, int, QModelIndex*);
-int miqt_exec_callback_QSortFilterProxyModel_RowCount(void*, intptr_t, QModelIndex*);
-int miqt_exec_callback_QSortFilterProxyModel_ColumnCount(void*, intptr_t, QModelIndex*);
-bool miqt_exec_callback_QSortFilterProxyModel_HasChildren(void*, intptr_t, QModelIndex*);
-QVariant* miqt_exec_callback_QSortFilterProxyModel_Data(void*, intptr_t, QModelIndex*, int);
-bool miqt_exec_callback_QSortFilterProxyModel_SetData(void*, intptr_t, QModelIndex*, QVariant*, int);
-QVariant* miqt_exec_callback_QSortFilterProxyModel_HeaderData(void*, intptr_t, int, int, int);
-bool miqt_exec_callback_QSortFilterProxyModel_SetHeaderData(void*, intptr_t, int, int, QVariant*, int);
-QMimeData* miqt_exec_callback_QSortFilterProxyModel_MimeData(void*, intptr_t, struct miqt_array /* of QModelIndex* */ );
-bool miqt_exec_callback_QSortFilterProxyModel_DropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
-bool miqt_exec_callback_QSortFilterProxyModel_InsertRows(void*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QSortFilterProxyModel_InsertColumns(void*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QSortFilterProxyModel_RemoveRows(void*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QSortFilterProxyModel_RemoveColumns(void*, intptr_t, int, int, QModelIndex*);
-void miqt_exec_callback_QSortFilterProxyModel_FetchMore(void*, intptr_t, QModelIndex*);
-bool miqt_exec_callback_QSortFilterProxyModel_CanFetchMore(void*, intptr_t, QModelIndex*);
-int miqt_exec_callback_QSortFilterProxyModel_Flags(void*, intptr_t, QModelIndex*);
-QModelIndex* miqt_exec_callback_QSortFilterProxyModel_Buddy(void*, intptr_t, QModelIndex*);
-struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QSortFilterProxyModel_Match(void*, intptr_t, QModelIndex*, int, QVariant*, int, int);
-QSize* miqt_exec_callback_QSortFilterProxyModel_Span(void*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QSortFilterProxyModel_Sort(void*, intptr_t, int, int);
-struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QSortFilterProxyModel_MimeTypes(void*, intptr_t);
-int miqt_exec_callback_QSortFilterProxyModel_SupportedDropActions(void*, intptr_t);
-bool miqt_exec_callback_QSortFilterProxyModel_Submit(void*, intptr_t);
-void miqt_exec_callback_QSortFilterProxyModel_Revert(void*, intptr_t);
-struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QSortFilterProxyModel_ItemData(void*, intptr_t, QModelIndex*);
-bool miqt_exec_callback_QSortFilterProxyModel_SetItemData(void*, intptr_t, QModelIndex*, struct miqt_map /* of int to QVariant* */ );
-bool miqt_exec_callback_QSortFilterProxyModel_ClearItemData(void*, intptr_t, QModelIndex*);
-bool miqt_exec_callback_QSortFilterProxyModel_CanDropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
-int miqt_exec_callback_QSortFilterProxyModel_SupportedDragActions(void*, intptr_t);
-struct miqt_map /* of int to struct miqt_string */  miqt_exec_callback_QSortFilterProxyModel_RoleNames(void*, intptr_t);
-bool miqt_exec_callback_QSortFilterProxyModel_MoveRows(void*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
-bool miqt_exec_callback_QSortFilterProxyModel_MoveColumns(void*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
-void miqt_exec_callback_QSortFilterProxyModel_MultiData(void*, intptr_t, QModelIndex*, QModelRoleDataSpan*);
-void miqt_exec_callback_QSortFilterProxyModel_ResetInternalData(void*, intptr_t);
-bool miqt_exec_callback_QSortFilterProxyModel_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QSortFilterProxyModel_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QSortFilterProxyModel_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QSortFilterProxyModel_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QSortFilterProxyModel_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSortFilterProxyModel_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QSortFilterProxyModel_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSortFilterProxyModel_SetSourceModel(QSortFilterProxyModel*, intptr_t, QAbstractItemModel*);
+QModelIndex* miqt_exec_callback_QSortFilterProxyModel_MapToSource(const QSortFilterProxyModel*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QSortFilterProxyModel_MapFromSource(const QSortFilterProxyModel*, intptr_t, QModelIndex*);
+QItemSelection* miqt_exec_callback_QSortFilterProxyModel_MapSelectionToSource(const QSortFilterProxyModel*, intptr_t, QItemSelection*);
+QItemSelection* miqt_exec_callback_QSortFilterProxyModel_MapSelectionFromSource(const QSortFilterProxyModel*, intptr_t, QItemSelection*);
+bool miqt_exec_callback_QSortFilterProxyModel_FilterAcceptsRow(const QSortFilterProxyModel*, intptr_t, int, QModelIndex*);
+bool miqt_exec_callback_QSortFilterProxyModel_FilterAcceptsColumn(const QSortFilterProxyModel*, intptr_t, int, QModelIndex*);
+bool miqt_exec_callback_QSortFilterProxyModel_LessThan(const QSortFilterProxyModel*, intptr_t, QModelIndex*, QModelIndex*);
+QModelIndex* miqt_exec_callback_QSortFilterProxyModel_Index(const QSortFilterProxyModel*, intptr_t, int, int, QModelIndex*);
+QModelIndex* miqt_exec_callback_QSortFilterProxyModel_Parent(const QSortFilterProxyModel*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QSortFilterProxyModel_Sibling(const QSortFilterProxyModel*, intptr_t, int, int, QModelIndex*);
+int miqt_exec_callback_QSortFilterProxyModel_RowCount(const QSortFilterProxyModel*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QSortFilterProxyModel_ColumnCount(const QSortFilterProxyModel*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QSortFilterProxyModel_HasChildren(const QSortFilterProxyModel*, intptr_t, QModelIndex*);
+QVariant* miqt_exec_callback_QSortFilterProxyModel_Data(const QSortFilterProxyModel*, intptr_t, QModelIndex*, int);
+bool miqt_exec_callback_QSortFilterProxyModel_SetData(QSortFilterProxyModel*, intptr_t, QModelIndex*, QVariant*, int);
+QVariant* miqt_exec_callback_QSortFilterProxyModel_HeaderData(const QSortFilterProxyModel*, intptr_t, int, int, int);
+bool miqt_exec_callback_QSortFilterProxyModel_SetHeaderData(QSortFilterProxyModel*, intptr_t, int, int, QVariant*, int);
+QMimeData* miqt_exec_callback_QSortFilterProxyModel_MimeData(const QSortFilterProxyModel*, intptr_t, struct miqt_array /* of QModelIndex* */ );
+bool miqt_exec_callback_QSortFilterProxyModel_DropMimeData(QSortFilterProxyModel*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+bool miqt_exec_callback_QSortFilterProxyModel_InsertRows(QSortFilterProxyModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QSortFilterProxyModel_InsertColumns(QSortFilterProxyModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QSortFilterProxyModel_RemoveRows(QSortFilterProxyModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QSortFilterProxyModel_RemoveColumns(QSortFilterProxyModel*, intptr_t, int, int, QModelIndex*);
+void miqt_exec_callback_QSortFilterProxyModel_FetchMore(QSortFilterProxyModel*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QSortFilterProxyModel_CanFetchMore(const QSortFilterProxyModel*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QSortFilterProxyModel_Flags(const QSortFilterProxyModel*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QSortFilterProxyModel_Buddy(const QSortFilterProxyModel*, intptr_t, QModelIndex*);
+struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QSortFilterProxyModel_Match(const QSortFilterProxyModel*, intptr_t, QModelIndex*, int, QVariant*, int, int);
+QSize* miqt_exec_callback_QSortFilterProxyModel_Span(const QSortFilterProxyModel*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QSortFilterProxyModel_Sort(QSortFilterProxyModel*, intptr_t, int, int);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QSortFilterProxyModel_MimeTypes(const QSortFilterProxyModel*, intptr_t);
+int miqt_exec_callback_QSortFilterProxyModel_SupportedDropActions(const QSortFilterProxyModel*, intptr_t);
+bool miqt_exec_callback_QSortFilterProxyModel_Submit(QSortFilterProxyModel*, intptr_t);
+void miqt_exec_callback_QSortFilterProxyModel_Revert(QSortFilterProxyModel*, intptr_t);
+struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QSortFilterProxyModel_ItemData(const QSortFilterProxyModel*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QSortFilterProxyModel_SetItemData(QSortFilterProxyModel*, intptr_t, QModelIndex*, struct miqt_map /* of int to QVariant* */ );
+bool miqt_exec_callback_QSortFilterProxyModel_ClearItemData(QSortFilterProxyModel*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QSortFilterProxyModel_CanDropMimeData(const QSortFilterProxyModel*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+int miqt_exec_callback_QSortFilterProxyModel_SupportedDragActions(const QSortFilterProxyModel*, intptr_t);
+struct miqt_map /* of int to struct miqt_string */  miqt_exec_callback_QSortFilterProxyModel_RoleNames(const QSortFilterProxyModel*, intptr_t);
+bool miqt_exec_callback_QSortFilterProxyModel_MoveRows(QSortFilterProxyModel*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+bool miqt_exec_callback_QSortFilterProxyModel_MoveColumns(QSortFilterProxyModel*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+void miqt_exec_callback_QSortFilterProxyModel_MultiData(const QSortFilterProxyModel*, intptr_t, QModelIndex*, QModelRoleDataSpan*);
+void miqt_exec_callback_QSortFilterProxyModel_ResetInternalData(QSortFilterProxyModel*, intptr_t);
+bool miqt_exec_callback_QSortFilterProxyModel_Event(QSortFilterProxyModel*, intptr_t, QEvent*);
+bool miqt_exec_callback_QSortFilterProxyModel_EventFilter(QSortFilterProxyModel*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QSortFilterProxyModel_TimerEvent(QSortFilterProxyModel*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSortFilterProxyModel_ChildEvent(QSortFilterProxyModel*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QSortFilterProxyModel_CustomEvent(QSortFilterProxyModel*, intptr_t, QEvent*);
+void miqt_exec_callback_QSortFilterProxyModel_ConnectNotify(QSortFilterProxyModel*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSortFilterProxyModel_DisconnectNotify(QSortFilterProxyModel*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -136,7 +136,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&proxyIndex_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QSortFilterProxyModel_MapToSource(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__MapToSource, sigval1);
+		QModelIndex* callback_return_value = miqt_exec_callback_QSortFilterProxyModel_MapToSource(this, handle__MapToSource, sigval1);
 
 		return *callback_return_value;
 	}
@@ -161,7 +161,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&sourceIndex_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QSortFilterProxyModel_MapFromSource(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__MapFromSource, sigval1);
+		QModelIndex* callback_return_value = miqt_exec_callback_QSortFilterProxyModel_MapFromSource(this, handle__MapFromSource, sigval1);
 
 		return *callback_return_value;
 	}
@@ -186,7 +186,7 @@ public:
 		// Cast returned reference into pointer
 		QItemSelection* sigval1 = const_cast<QItemSelection*>(&proxySelection_ret);
 
-		QItemSelection* callback_return_value = miqt_exec_callback_QSortFilterProxyModel_MapSelectionToSource(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__MapSelectionToSource, sigval1);
+		QItemSelection* callback_return_value = miqt_exec_callback_QSortFilterProxyModel_MapSelectionToSource(this, handle__MapSelectionToSource, sigval1);
 
 		return *callback_return_value;
 	}
@@ -211,7 +211,7 @@ public:
 		// Cast returned reference into pointer
 		QItemSelection* sigval1 = const_cast<QItemSelection*>(&sourceSelection_ret);
 
-		QItemSelection* callback_return_value = miqt_exec_callback_QSortFilterProxyModel_MapSelectionFromSource(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__MapSelectionFromSource, sigval1);
+		QItemSelection* callback_return_value = miqt_exec_callback_QSortFilterProxyModel_MapSelectionFromSource(this, handle__MapSelectionFromSource, sigval1);
 
 		return *callback_return_value;
 	}
@@ -237,7 +237,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval2 = const_cast<QModelIndex*>(&source_parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QSortFilterProxyModel_FilterAcceptsRow(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__FilterAcceptsRow, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QSortFilterProxyModel_FilterAcceptsRow(this, handle__FilterAcceptsRow, sigval1, sigval2);
 
 		return callback_return_value;
 	}
@@ -263,7 +263,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval2 = const_cast<QModelIndex*>(&source_parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QSortFilterProxyModel_FilterAcceptsColumn(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__FilterAcceptsColumn, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QSortFilterProxyModel_FilterAcceptsColumn(this, handle__FilterAcceptsColumn, sigval1, sigval2);
 
 		return callback_return_value;
 	}
@@ -291,7 +291,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval2 = const_cast<QModelIndex*>(&source_right_ret);
 
-		bool callback_return_value = miqt_exec_callback_QSortFilterProxyModel_LessThan(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__LessThan, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QSortFilterProxyModel_LessThan(this, handle__LessThan, sigval1, sigval2);
 
 		return callback_return_value;
 	}
@@ -318,7 +318,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QSortFilterProxyModel_Index(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__Index, sigval1, sigval2, sigval3);
+		QModelIndex* callback_return_value = miqt_exec_callback_QSortFilterProxyModel_Index(this, handle__Index, sigval1, sigval2, sigval3);
 
 		return *callback_return_value;
 	}
@@ -343,7 +343,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&child_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QSortFilterProxyModel_Parent(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__Parent, sigval1);
+		QModelIndex* callback_return_value = miqt_exec_callback_QSortFilterProxyModel_Parent(this, handle__Parent, sigval1);
 
 		return *callback_return_value;
 	}
@@ -370,7 +370,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&idx_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QSortFilterProxyModel_Sibling(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__Sibling, sigval1, sigval2, sigval3);
+		QModelIndex* callback_return_value = miqt_exec_callback_QSortFilterProxyModel_Sibling(this, handle__Sibling, sigval1, sigval2, sigval3);
 
 		return *callback_return_value;
 	}
@@ -395,7 +395,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 
-		int callback_return_value = miqt_exec_callback_QSortFilterProxyModel_RowCount(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__RowCount, sigval1);
+		int callback_return_value = miqt_exec_callback_QSortFilterProxyModel_RowCount(this, handle__RowCount, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -420,7 +420,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 
-		int callback_return_value = miqt_exec_callback_QSortFilterProxyModel_ColumnCount(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__ColumnCount, sigval1);
+		int callback_return_value = miqt_exec_callback_QSortFilterProxyModel_ColumnCount(this, handle__ColumnCount, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -445,7 +445,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QSortFilterProxyModel_HasChildren(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__HasChildren, sigval1);
+		bool callback_return_value = miqt_exec_callback_QSortFilterProxyModel_HasChildren(this, handle__HasChildren, sigval1);
 
 		return callback_return_value;
 	}
@@ -471,7 +471,7 @@ public:
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		int sigval2 = role;
 
-		QVariant* callback_return_value = miqt_exec_callback_QSortFilterProxyModel_Data(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__Data, sigval1, sigval2);
+		QVariant* callback_return_value = miqt_exec_callback_QSortFilterProxyModel_Data(this, handle__Data, sigval1, sigval2);
 
 		return *callback_return_value;
 	}
@@ -526,7 +526,7 @@ public:
 		int sigval2 = static_cast<int>(orientation_ret);
 		int sigval3 = role;
 
-		QVariant* callback_return_value = miqt_exec_callback_QSortFilterProxyModel_HeaderData(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__HeaderData, sigval1, sigval2, sigval3);
+		QVariant* callback_return_value = miqt_exec_callback_QSortFilterProxyModel_HeaderData(this, handle__HeaderData, sigval1, sigval2, sigval3);
 
 		return *callback_return_value;
 	}
@@ -587,7 +587,7 @@ public:
 		indexes_out.data = static_cast<void*>(indexes_arr);
 		struct miqt_array /* of QModelIndex* */  sigval1 = indexes_out;
 
-		QMimeData* callback_return_value = miqt_exec_callback_QSortFilterProxyModel_MimeData(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__MimeData, sigval1);
+		QMimeData* callback_return_value = miqt_exec_callback_QSortFilterProxyModel_MimeData(this, handle__MimeData, sigval1);
 
 		return callback_return_value;
 	}
@@ -782,7 +782,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QSortFilterProxyModel_CanFetchMore(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__CanFetchMore, sigval1);
+		bool callback_return_value = miqt_exec_callback_QSortFilterProxyModel_CanFetchMore(this, handle__CanFetchMore, sigval1);
 
 		return callback_return_value;
 	}
@@ -807,7 +807,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		int callback_return_value = miqt_exec_callback_QSortFilterProxyModel_Flags(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__Flags, sigval1);
+		int callback_return_value = miqt_exec_callback_QSortFilterProxyModel_Flags(this, handle__Flags, sigval1);
 
 		return static_cast<Qt::ItemFlags>(callback_return_value);
 	}
@@ -833,7 +833,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QSortFilterProxyModel_Buddy(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__Buddy, sigval1);
+		QModelIndex* callback_return_value = miqt_exec_callback_QSortFilterProxyModel_Buddy(this, handle__Buddy, sigval1);
 
 		return *callback_return_value;
 	}
@@ -865,7 +865,7 @@ public:
 		Qt::MatchFlags flags_ret = flags;
 		int sigval5 = static_cast<int>(flags_ret);
 
-		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QSortFilterProxyModel_Match(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__Match, sigval1, sigval2, sigval3, sigval4, sigval5);
+		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QSortFilterProxyModel_Match(this, handle__Match, sigval1, sigval2, sigval3, sigval4, sigval5);
 		QModelIndexList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		QModelIndex** callback_return_value_arr = static_cast<QModelIndex**>(callback_return_value.data);
@@ -905,7 +905,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		QSize* callback_return_value = miqt_exec_callback_QSortFilterProxyModel_Span(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__Span, sigval1);
+		QSize* callback_return_value = miqt_exec_callback_QSortFilterProxyModel_Span(this, handle__Span, sigval1);
 
 		return *callback_return_value;
 	}
@@ -953,7 +953,7 @@ public:
 		}
 		
 
-		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QSortFilterProxyModel_MimeTypes(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__MimeTypes);
+		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QSortFilterProxyModel_MimeTypes(this, handle__MimeTypes);
 		QStringList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		struct miqt_string* callback_return_value_arr = static_cast<struct miqt_string*>(callback_return_value.data);
@@ -998,7 +998,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QSortFilterProxyModel_SupportedDropActions(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__SupportedDropActions);
+		int callback_return_value = miqt_exec_callback_QSortFilterProxyModel_SupportedDropActions(this, handle__SupportedDropActions);
 
 		return static_cast<Qt::DropActions>(callback_return_value);
 	}
@@ -1069,7 +1069,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		struct miqt_map /* of int to QVariant* */  callback_return_value = miqt_exec_callback_QSortFilterProxyModel_ItemData(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__ItemData, sigval1);
+		struct miqt_map /* of int to QVariant* */  callback_return_value = miqt_exec_callback_QSortFilterProxyModel_ItemData(this, handle__ItemData, sigval1);
 		QMap<int, QVariant> callback_return_value_QMap;
 		int* callback_return_value_karr = static_cast<int*>(callback_return_value.keys);
 		QVariant** callback_return_value_varr = static_cast<QVariant**>(callback_return_value.values);
@@ -1190,7 +1190,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval5 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QSortFilterProxyModel_CanDropMimeData(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__CanDropMimeData, sigval1, sigval2, sigval3, sigval4, sigval5);
+		bool callback_return_value = miqt_exec_callback_QSortFilterProxyModel_CanDropMimeData(this, handle__CanDropMimeData, sigval1, sigval2, sigval3, sigval4, sigval5);
 
 		return callback_return_value;
 	}
@@ -1212,7 +1212,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QSortFilterProxyModel_SupportedDragActions(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__SupportedDragActions);
+		int callback_return_value = miqt_exec_callback_QSortFilterProxyModel_SupportedDragActions(this, handle__SupportedDragActions);
 
 		return static_cast<Qt::DropActions>(callback_return_value);
 	}
@@ -1235,7 +1235,7 @@ public:
 		}
 		
 
-		struct miqt_map /* of int to struct miqt_string */  callback_return_value = miqt_exec_callback_QSortFilterProxyModel_RoleNames(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__RoleNames);
+		struct miqt_map /* of int to struct miqt_string */  callback_return_value = miqt_exec_callback_QSortFilterProxyModel_RoleNames(this, handle__RoleNames);
 		QHash<int, QByteArray> callback_return_value_QMap;
 		callback_return_value_QMap.reserve(callback_return_value.len);
 		int* callback_return_value_karr = static_cast<int*>(callback_return_value.keys);
@@ -1351,7 +1351,7 @@ public:
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		QModelRoleDataSpan* sigval2 = new QModelRoleDataSpan(roleDataSpan);
 
-		miqt_exec_callback_QSortFilterProxyModel_MultiData(const_cast<MiqtVirtualQSortFilterProxyModel*>(this), handle__MultiData, sigval1, sigval2);
+		miqt_exec_callback_QSortFilterProxyModel_MultiData(this, handle__MultiData, sigval1, sigval2);
 
 		
 	}

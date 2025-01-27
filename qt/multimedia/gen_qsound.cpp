@@ -15,13 +15,13 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QSound_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QSound_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QSound_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QSound_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QSound_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSound_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QSound_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QSound_Event(QSound*, intptr_t, QEvent*);
+bool miqt_exec_callback_QSound_EventFilter(QSound*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QSound_TimerEvent(QSound*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSound_ChildEvent(QSound*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QSound_CustomEvent(QSound*, intptr_t, QEvent*);
+void miqt_exec_callback_QSound_ConnectNotify(QSound*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSound_DisconnectNotify(QSound*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

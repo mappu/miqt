@@ -21,30 +21,30 @@ void miqt_exec_callback_QAbstractAnimation_Finished(intptr_t);
 void miqt_exec_callback_QAbstractAnimation_StateChanged(intptr_t, int, int);
 void miqt_exec_callback_QAbstractAnimation_CurrentLoopChanged(intptr_t, int);
 void miqt_exec_callback_QAbstractAnimation_DirectionChanged(intptr_t, int);
-int miqt_exec_callback_QAbstractAnimation_Duration(void*, intptr_t);
-bool miqt_exec_callback_QAbstractAnimation_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QAbstractAnimation_UpdateCurrentTime(void*, intptr_t, int);
-void miqt_exec_callback_QAbstractAnimation_UpdateState(void*, intptr_t, int, int);
-void miqt_exec_callback_QAbstractAnimation_UpdateDirection(void*, intptr_t, int);
-bool miqt_exec_callback_QAbstractAnimation_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QAbstractAnimation_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QAbstractAnimation_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QAbstractAnimation_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QAbstractAnimation_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QAbstractAnimation_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+int miqt_exec_callback_QAbstractAnimation_Duration(const QAbstractAnimation*, intptr_t);
+bool miqt_exec_callback_QAbstractAnimation_Event(QAbstractAnimation*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractAnimation_UpdateCurrentTime(QAbstractAnimation*, intptr_t, int);
+void miqt_exec_callback_QAbstractAnimation_UpdateState(QAbstractAnimation*, intptr_t, int, int);
+void miqt_exec_callback_QAbstractAnimation_UpdateDirection(QAbstractAnimation*, intptr_t, int);
+bool miqt_exec_callback_QAbstractAnimation_EventFilter(QAbstractAnimation*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAbstractAnimation_TimerEvent(QAbstractAnimation*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAbstractAnimation_ChildEvent(QAbstractAnimation*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAbstractAnimation_CustomEvent(QAbstractAnimation*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractAnimation_ConnectNotify(QAbstractAnimation*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAbstractAnimation_DisconnectNotify(QAbstractAnimation*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QAnimationDriver_Started(intptr_t);
 void miqt_exec_callback_QAnimationDriver_Stopped(intptr_t);
-void miqt_exec_callback_QAnimationDriver_Advance(void*, intptr_t);
-long long miqt_exec_callback_QAnimationDriver_Elapsed(void*, intptr_t);
-void miqt_exec_callback_QAnimationDriver_Start(void*, intptr_t);
-void miqt_exec_callback_QAnimationDriver_Stop(void*, intptr_t);
-bool miqt_exec_callback_QAnimationDriver_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QAnimationDriver_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QAnimationDriver_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QAnimationDriver_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QAnimationDriver_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QAnimationDriver_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QAnimationDriver_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAnimationDriver_Advance(QAnimationDriver*, intptr_t);
+long long miqt_exec_callback_QAnimationDriver_Elapsed(const QAnimationDriver*, intptr_t);
+void miqt_exec_callback_QAnimationDriver_Start(QAnimationDriver*, intptr_t);
+void miqt_exec_callback_QAnimationDriver_Stop(QAnimationDriver*, intptr_t);
+bool miqt_exec_callback_QAnimationDriver_Event(QAnimationDriver*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAnimationDriver_EventFilter(QAnimationDriver*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAnimationDriver_TimerEvent(QAnimationDriver*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAnimationDriver_ChildEvent(QAnimationDriver*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAnimationDriver_CustomEvent(QAnimationDriver*, intptr_t, QEvent*);
+void miqt_exec_callback_QAnimationDriver_ConnectNotify(QAnimationDriver*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAnimationDriver_DisconnectNotify(QAnimationDriver*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -67,7 +67,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QAbstractAnimation_Duration(const_cast<MiqtVirtualQAbstractAnimation*>(this), handle__Duration);
+		int callback_return_value = miqt_exec_callback_QAbstractAnimation_Duration(this, handle__Duration);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -711,7 +711,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QAnimationDriver_Elapsed(const_cast<MiqtVirtualQAnimationDriver*>(this), handle__Elapsed);
+		long long callback_return_value = miqt_exec_callback_QAnimationDriver_Elapsed(this, handle__Elapsed);
 
 		return static_cast<qint64>(callback_return_value);
 	}

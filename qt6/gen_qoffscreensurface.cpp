@@ -20,16 +20,16 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QOffscreenSurface_ScreenChanged(intptr_t, QScreen*);
-int miqt_exec_callback_QOffscreenSurface_SurfaceType(void*, intptr_t);
-QSurfaceFormat* miqt_exec_callback_QOffscreenSurface_Format(void*, intptr_t);
-QSize* miqt_exec_callback_QOffscreenSurface_Size(void*, intptr_t);
-bool miqt_exec_callback_QOffscreenSurface_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QOffscreenSurface_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QOffscreenSurface_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QOffscreenSurface_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QOffscreenSurface_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QOffscreenSurface_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QOffscreenSurface_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+int miqt_exec_callback_QOffscreenSurface_SurfaceType(const QOffscreenSurface*, intptr_t);
+QSurfaceFormat* miqt_exec_callback_QOffscreenSurface_Format(const QOffscreenSurface*, intptr_t);
+QSize* miqt_exec_callback_QOffscreenSurface_Size(const QOffscreenSurface*, intptr_t);
+bool miqt_exec_callback_QOffscreenSurface_Event(QOffscreenSurface*, intptr_t, QEvent*);
+bool miqt_exec_callback_QOffscreenSurface_EventFilter(QOffscreenSurface*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QOffscreenSurface_TimerEvent(QOffscreenSurface*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QOffscreenSurface_ChildEvent(QOffscreenSurface*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QOffscreenSurface_CustomEvent(QOffscreenSurface*, intptr_t, QEvent*);
+void miqt_exec_callback_QOffscreenSurface_ConnectNotify(QOffscreenSurface*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QOffscreenSurface_DisconnectNotify(QOffscreenSurface*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -53,7 +53,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QOffscreenSurface_SurfaceType(const_cast<MiqtVirtualQOffscreenSurface*>(this), handle__SurfaceType);
+		int callback_return_value = miqt_exec_callback_QOffscreenSurface_SurfaceType(this, handle__SurfaceType);
 
 		return static_cast<QSurface::SurfaceType>(callback_return_value);
 	}
@@ -76,7 +76,7 @@ public:
 		}
 		
 
-		QSurfaceFormat* callback_return_value = miqt_exec_callback_QOffscreenSurface_Format(const_cast<MiqtVirtualQOffscreenSurface*>(this), handle__Format);
+		QSurfaceFormat* callback_return_value = miqt_exec_callback_QOffscreenSurface_Format(this, handle__Format);
 
 		return *callback_return_value;
 	}
@@ -98,7 +98,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QOffscreenSurface_Size(const_cast<MiqtVirtualQOffscreenSurface*>(this), handle__Size);
+		QSize* callback_return_value = miqt_exec_callback_QOffscreenSurface_Size(this, handle__Size);
 
 		return *callback_return_value;
 	}

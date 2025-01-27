@@ -10,11 +10,11 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QGraphicsLayoutItem_SetGeometry(void*, intptr_t, QRectF*);
-void miqt_exec_callback_QGraphicsLayoutItem_GetContentsMargins(void*, intptr_t, double*, double*, double*, double*);
-void miqt_exec_callback_QGraphicsLayoutItem_UpdateGeometry(void*, intptr_t);
-bool miqt_exec_callback_QGraphicsLayoutItem_IsEmpty(void*, intptr_t);
-QSizeF* miqt_exec_callback_QGraphicsLayoutItem_SizeHint(void*, intptr_t, int, QSizeF*);
+void miqt_exec_callback_QGraphicsLayoutItem_SetGeometry(QGraphicsLayoutItem*, intptr_t, QRectF*);
+void miqt_exec_callback_QGraphicsLayoutItem_GetContentsMargins(const QGraphicsLayoutItem*, intptr_t, double*, double*, double*, double*);
+void miqt_exec_callback_QGraphicsLayoutItem_UpdateGeometry(QGraphicsLayoutItem*, intptr_t);
+bool miqt_exec_callback_QGraphicsLayoutItem_IsEmpty(const QGraphicsLayoutItem*, intptr_t);
+QSizeF* miqt_exec_callback_QGraphicsLayoutItem_SizeHint(const QGraphicsLayoutItem*, intptr_t, int, QSizeF*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -73,7 +73,7 @@ public:
 		qreal* bottom_ret = bottom;
 		double* sigval4 = static_cast<double*>(bottom_ret);
 
-		miqt_exec_callback_QGraphicsLayoutItem_GetContentsMargins(const_cast<MiqtVirtualQGraphicsLayoutItem*>(this), handle__GetContentsMargins, sigval1, sigval2, sigval3, sigval4);
+		miqt_exec_callback_QGraphicsLayoutItem_GetContentsMargins(this, handle__GetContentsMargins, sigval1, sigval2, sigval3, sigval4);
 
 		
 	}
@@ -118,7 +118,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QGraphicsLayoutItem_IsEmpty(const_cast<MiqtVirtualQGraphicsLayoutItem*>(this), handle__IsEmpty);
+		bool callback_return_value = miqt_exec_callback_QGraphicsLayoutItem_IsEmpty(this, handle__IsEmpty);
 
 		return callback_return_value;
 	}
@@ -145,7 +145,7 @@ public:
 		// Cast returned reference into pointer
 		QSizeF* sigval2 = const_cast<QSizeF*>(&constraint_ret);
 
-		QSizeF* callback_return_value = miqt_exec_callback_QGraphicsLayoutItem_SizeHint(const_cast<MiqtVirtualQGraphicsLayoutItem*>(this), handle__SizeHint, sigval1, sigval2);
+		QSizeF* callback_return_value = miqt_exec_callback_QGraphicsLayoutItem_SizeHint(this, handle__SizeHint, sigval1, sigval2);
 
 		return *callback_return_value;
 	}

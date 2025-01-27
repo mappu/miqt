@@ -32,15 +32,15 @@ void miqt_exec_callback_QMediaPlaylist_MediaRemoved(intptr_t, int, int);
 void miqt_exec_callback_QMediaPlaylist_MediaChanged(intptr_t, int, int);
 void miqt_exec_callback_QMediaPlaylist_Loaded(intptr_t);
 void miqt_exec_callback_QMediaPlaylist_LoadFailed(intptr_t);
-QMediaObject* miqt_exec_callback_QMediaPlaylist_MediaObject(void*, intptr_t);
-bool miqt_exec_callback_QMediaPlaylist_SetMediaObject(void*, intptr_t, QMediaObject*);
-bool miqt_exec_callback_QMediaPlaylist_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QMediaPlaylist_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QMediaPlaylist_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QMediaPlaylist_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QMediaPlaylist_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QMediaPlaylist_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QMediaPlaylist_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QMediaObject* miqt_exec_callback_QMediaPlaylist_MediaObject(const QMediaPlaylist*, intptr_t);
+bool miqt_exec_callback_QMediaPlaylist_SetMediaObject(QMediaPlaylist*, intptr_t, QMediaObject*);
+bool miqt_exec_callback_QMediaPlaylist_Event(QMediaPlaylist*, intptr_t, QEvent*);
+bool miqt_exec_callback_QMediaPlaylist_EventFilter(QMediaPlaylist*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QMediaPlaylist_TimerEvent(QMediaPlaylist*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QMediaPlaylist_ChildEvent(QMediaPlaylist*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QMediaPlaylist_CustomEvent(QMediaPlaylist*, intptr_t, QEvent*);
+void miqt_exec_callback_QMediaPlaylist_ConnectNotify(QMediaPlaylist*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QMediaPlaylist_DisconnectNotify(QMediaPlaylist*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -63,7 +63,7 @@ public:
 		}
 		
 
-		QMediaObject* callback_return_value = miqt_exec_callback_QMediaPlaylist_MediaObject(const_cast<MiqtVirtualQMediaPlaylist*>(this), handle__MediaObject);
+		QMediaObject* callback_return_value = miqt_exec_callback_QMediaPlaylist_MediaObject(this, handle__MediaObject);
 
 		return callback_return_value;
 	}

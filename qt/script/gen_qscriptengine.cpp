@@ -27,13 +27,13 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QScriptEngine_SignalHandlerException(intptr_t, QScriptValue*);
-bool miqt_exec_callback_QScriptEngine_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QScriptEngine_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QScriptEngine_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QScriptEngine_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QScriptEngine_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QScriptEngine_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QScriptEngine_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QScriptEngine_Event(QScriptEngine*, intptr_t, QEvent*);
+bool miqt_exec_callback_QScriptEngine_EventFilter(QScriptEngine*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QScriptEngine_TimerEvent(QScriptEngine*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QScriptEngine_ChildEvent(QScriptEngine*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QScriptEngine_CustomEvent(QScriptEngine*, intptr_t, QEvent*);
+void miqt_exec_callback_QScriptEngine_ConnectNotify(QScriptEngine*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QScriptEngine_DisconnectNotify(QScriptEngine*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

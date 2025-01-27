@@ -15,15 +15,15 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QWebHistoryInterface_HistoryContains(void*, intptr_t, struct miqt_string);
-void miqt_exec_callback_QWebHistoryInterface_AddHistoryEntry(void*, intptr_t, struct miqt_string);
-bool miqt_exec_callback_QWebHistoryInterface_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QWebHistoryInterface_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QWebHistoryInterface_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QWebHistoryInterface_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QWebHistoryInterface_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QWebHistoryInterface_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QWebHistoryInterface_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QWebHistoryInterface_HistoryContains(const QWebHistoryInterface*, intptr_t, struct miqt_string);
+void miqt_exec_callback_QWebHistoryInterface_AddHistoryEntry(QWebHistoryInterface*, intptr_t, struct miqt_string);
+bool miqt_exec_callback_QWebHistoryInterface_Event(QWebHistoryInterface*, intptr_t, QEvent*);
+bool miqt_exec_callback_QWebHistoryInterface_EventFilter(QWebHistoryInterface*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QWebHistoryInterface_TimerEvent(QWebHistoryInterface*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QWebHistoryInterface_ChildEvent(QWebHistoryInterface*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QWebHistoryInterface_CustomEvent(QWebHistoryInterface*, intptr_t, QEvent*);
+void miqt_exec_callback_QWebHistoryInterface_ConnectNotify(QWebHistoryInterface*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QWebHistoryInterface_DisconnectNotify(QWebHistoryInterface*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -54,7 +54,7 @@ public:
 		memcpy(url_ms.data, url_b.data(), url_ms.len);
 		struct miqt_string sigval1 = url_ms;
 
-		bool callback_return_value = miqt_exec_callback_QWebHistoryInterface_HistoryContains(const_cast<MiqtVirtualQWebHistoryInterface*>(this), handle__HistoryContains, sigval1);
+		bool callback_return_value = miqt_exec_callback_QWebHistoryInterface_HistoryContains(this, handle__HistoryContains, sigval1);
 
 		return callback_return_value;
 	}

@@ -36,13 +36,13 @@ void miqt_exec_callback_QMediaRecorder_VideoBitRateChanged(intptr_t);
 void miqt_exec_callback_QMediaRecorder_AudioBitRateChanged(intptr_t);
 void miqt_exec_callback_QMediaRecorder_AudioChannelCountChanged(intptr_t);
 void miqt_exec_callback_QMediaRecorder_AudioSampleRateChanged(intptr_t);
-bool miqt_exec_callback_QMediaRecorder_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QMediaRecorder_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QMediaRecorder_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QMediaRecorder_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QMediaRecorder_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QMediaRecorder_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QMediaRecorder_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QMediaRecorder_Event(QMediaRecorder*, intptr_t, QEvent*);
+bool miqt_exec_callback_QMediaRecorder_EventFilter(QMediaRecorder*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QMediaRecorder_TimerEvent(QMediaRecorder*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QMediaRecorder_ChildEvent(QMediaRecorder*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QMediaRecorder_CustomEvent(QMediaRecorder*, intptr_t, QEvent*);
+void miqt_exec_callback_QMediaRecorder_ConnectNotify(QMediaRecorder*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QMediaRecorder_DisconnectNotify(QMediaRecorder*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

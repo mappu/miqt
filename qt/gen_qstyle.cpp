@@ -28,36 +28,36 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QStyle_Polish(void*, intptr_t, QWidget*);
-void miqt_exec_callback_QStyle_Unpolish(void*, intptr_t, QWidget*);
-void miqt_exec_callback_QStyle_PolishWithApplication(void*, intptr_t, QApplication*);
-void miqt_exec_callback_QStyle_UnpolishWithApplication(void*, intptr_t, QApplication*);
-void miqt_exec_callback_QStyle_PolishWithPalette(void*, intptr_t, QPalette*);
-QRect* miqt_exec_callback_QStyle_ItemTextRect(void*, intptr_t, QFontMetrics*, QRect*, int, bool, struct miqt_string);
-QRect* miqt_exec_callback_QStyle_ItemPixmapRect(void*, intptr_t, QRect*, int, QPixmap*);
-void miqt_exec_callback_QStyle_DrawItemText(void*, intptr_t, QPainter*, QRect*, int, QPalette*, bool, struct miqt_string, int);
-void miqt_exec_callback_QStyle_DrawItemPixmap(void*, intptr_t, QPainter*, QRect*, int, QPixmap*);
-QPalette* miqt_exec_callback_QStyle_StandardPalette(void*, intptr_t);
-void miqt_exec_callback_QStyle_DrawPrimitive(void*, intptr_t, int, QStyleOption*, QPainter*, QWidget*);
-void miqt_exec_callback_QStyle_DrawControl(void*, intptr_t, int, QStyleOption*, QPainter*, QWidget*);
-QRect* miqt_exec_callback_QStyle_SubElementRect(void*, intptr_t, int, QStyleOption*, QWidget*);
-void miqt_exec_callback_QStyle_DrawComplexControl(void*, intptr_t, int, QStyleOptionComplex*, QPainter*, QWidget*);
-int miqt_exec_callback_QStyle_HitTestComplexControl(void*, intptr_t, int, QStyleOptionComplex*, QPoint*, QWidget*);
-QRect* miqt_exec_callback_QStyle_SubControlRect(void*, intptr_t, int, QStyleOptionComplex*, int, QWidget*);
-int miqt_exec_callback_QStyle_PixelMetric(void*, intptr_t, int, QStyleOption*, QWidget*);
-QSize* miqt_exec_callback_QStyle_SizeFromContents(void*, intptr_t, int, QStyleOption*, QSize*, QWidget*);
-int miqt_exec_callback_QStyle_StyleHint(void*, intptr_t, int, QStyleOption*, QWidget*, QStyleHintReturn*);
-QPixmap* miqt_exec_callback_QStyle_StandardPixmap(void*, intptr_t, int, QStyleOption*, QWidget*);
-QIcon* miqt_exec_callback_QStyle_StandardIcon(void*, intptr_t, int, QStyleOption*, QWidget*);
-QPixmap* miqt_exec_callback_QStyle_GeneratedIconPixmap(void*, intptr_t, int, QPixmap*, QStyleOption*);
-int miqt_exec_callback_QStyle_LayoutSpacing(void*, intptr_t, int, int, int, QStyleOption*, QWidget*);
-bool miqt_exec_callback_QStyle_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QStyle_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QStyle_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QStyle_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QStyle_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QStyle_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QStyle_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QStyle_Polish(QStyle*, intptr_t, QWidget*);
+void miqt_exec_callback_QStyle_Unpolish(QStyle*, intptr_t, QWidget*);
+void miqt_exec_callback_QStyle_PolishWithApplication(QStyle*, intptr_t, QApplication*);
+void miqt_exec_callback_QStyle_UnpolishWithApplication(QStyle*, intptr_t, QApplication*);
+void miqt_exec_callback_QStyle_PolishWithPalette(QStyle*, intptr_t, QPalette*);
+QRect* miqt_exec_callback_QStyle_ItemTextRect(const QStyle*, intptr_t, QFontMetrics*, QRect*, int, bool, struct miqt_string);
+QRect* miqt_exec_callback_QStyle_ItemPixmapRect(const QStyle*, intptr_t, QRect*, int, QPixmap*);
+void miqt_exec_callback_QStyle_DrawItemText(const QStyle*, intptr_t, QPainter*, QRect*, int, QPalette*, bool, struct miqt_string, int);
+void miqt_exec_callback_QStyle_DrawItemPixmap(const QStyle*, intptr_t, QPainter*, QRect*, int, QPixmap*);
+QPalette* miqt_exec_callback_QStyle_StandardPalette(const QStyle*, intptr_t);
+void miqt_exec_callback_QStyle_DrawPrimitive(const QStyle*, intptr_t, int, QStyleOption*, QPainter*, QWidget*);
+void miqt_exec_callback_QStyle_DrawControl(const QStyle*, intptr_t, int, QStyleOption*, QPainter*, QWidget*);
+QRect* miqt_exec_callback_QStyle_SubElementRect(const QStyle*, intptr_t, int, QStyleOption*, QWidget*);
+void miqt_exec_callback_QStyle_DrawComplexControl(const QStyle*, intptr_t, int, QStyleOptionComplex*, QPainter*, QWidget*);
+int miqt_exec_callback_QStyle_HitTestComplexControl(const QStyle*, intptr_t, int, QStyleOptionComplex*, QPoint*, QWidget*);
+QRect* miqt_exec_callback_QStyle_SubControlRect(const QStyle*, intptr_t, int, QStyleOptionComplex*, int, QWidget*);
+int miqt_exec_callback_QStyle_PixelMetric(const QStyle*, intptr_t, int, QStyleOption*, QWidget*);
+QSize* miqt_exec_callback_QStyle_SizeFromContents(const QStyle*, intptr_t, int, QStyleOption*, QSize*, QWidget*);
+int miqt_exec_callback_QStyle_StyleHint(const QStyle*, intptr_t, int, QStyleOption*, QWidget*, QStyleHintReturn*);
+QPixmap* miqt_exec_callback_QStyle_StandardPixmap(const QStyle*, intptr_t, int, QStyleOption*, QWidget*);
+QIcon* miqt_exec_callback_QStyle_StandardIcon(const QStyle*, intptr_t, int, QStyleOption*, QWidget*);
+QPixmap* miqt_exec_callback_QStyle_GeneratedIconPixmap(const QStyle*, intptr_t, int, QPixmap*, QStyleOption*);
+int miqt_exec_callback_QStyle_LayoutSpacing(const QStyle*, intptr_t, int, int, int, QStyleOption*, QWidget*);
+bool miqt_exec_callback_QStyle_Event(QStyle*, intptr_t, QEvent*);
+bool miqt_exec_callback_QStyle_EventFilter(QStyle*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QStyle_TimerEvent(QStyle*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QStyle_ChildEvent(QStyle*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QStyle_CustomEvent(QStyle*, intptr_t, QEvent*);
+void miqt_exec_callback_QStyle_ConnectNotify(QStyle*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QStyle_DisconnectNotify(QStyle*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -217,7 +217,7 @@ public:
 		memcpy(text_ms.data, text_b.data(), text_ms.len);
 		struct miqt_string sigval5 = text_ms;
 
-		QRect* callback_return_value = miqt_exec_callback_QStyle_ItemTextRect(const_cast<MiqtVirtualQStyle*>(this), handle__ItemTextRect, sigval1, sigval2, sigval3, sigval4, sigval5);
+		QRect* callback_return_value = miqt_exec_callback_QStyle_ItemTextRect(this, handle__ItemTextRect, sigval1, sigval2, sigval3, sigval4, sigval5);
 
 		return *callback_return_value;
 	}
@@ -247,7 +247,7 @@ public:
 		// Cast returned reference into pointer
 		QPixmap* sigval3 = const_cast<QPixmap*>(&pixmap_ret);
 
-		QRect* callback_return_value = miqt_exec_callback_QStyle_ItemPixmapRect(const_cast<MiqtVirtualQStyle*>(this), handle__ItemPixmapRect, sigval1, sigval2, sigval3);
+		QRect* callback_return_value = miqt_exec_callback_QStyle_ItemPixmapRect(this, handle__ItemPixmapRect, sigval1, sigval2, sigval3);
 
 		return *callback_return_value;
 	}
@@ -289,7 +289,7 @@ public:
 		QPalette::ColorRole textRole_ret = textRole;
 		int sigval7 = static_cast<int>(textRole_ret);
 
-		miqt_exec_callback_QStyle_DrawItemText(const_cast<MiqtVirtualQStyle*>(this), handle__DrawItemText, sigval1, sigval2, sigval3, sigval4, sigval5, sigval6, sigval7);
+		miqt_exec_callback_QStyle_DrawItemText(this, handle__DrawItemText, sigval1, sigval2, sigval3, sigval4, sigval5, sigval6, sigval7);
 
 		
 	}
@@ -321,7 +321,7 @@ public:
 		// Cast returned reference into pointer
 		QPixmap* sigval4 = const_cast<QPixmap*>(&pixmap_ret);
 
-		miqt_exec_callback_QStyle_DrawItemPixmap(const_cast<MiqtVirtualQStyle*>(this), handle__DrawItemPixmap, sigval1, sigval2, sigval3, sigval4);
+		miqt_exec_callback_QStyle_DrawItemPixmap(this, handle__DrawItemPixmap, sigval1, sigval2, sigval3, sigval4);
 
 		
 	}
@@ -343,7 +343,7 @@ public:
 		}
 		
 
-		QPalette* callback_return_value = miqt_exec_callback_QStyle_StandardPalette(const_cast<MiqtVirtualQStyle*>(this), handle__StandardPalette);
+		QPalette* callback_return_value = miqt_exec_callback_QStyle_StandardPalette(this, handle__StandardPalette);
 
 		return *callback_return_value;
 	}
@@ -370,7 +370,7 @@ public:
 		QPainter* sigval3 = p;
 		QWidget* sigval4 = (QWidget*) w;
 
-		miqt_exec_callback_QStyle_DrawPrimitive(const_cast<MiqtVirtualQStyle*>(this), handle__DrawPrimitive, sigval1, sigval2, sigval3, sigval4);
+		miqt_exec_callback_QStyle_DrawPrimitive(this, handle__DrawPrimitive, sigval1, sigval2, sigval3, sigval4);
 
 		
 	}
@@ -390,7 +390,7 @@ public:
 		QPainter* sigval3 = p;
 		QWidget* sigval4 = (QWidget*) w;
 
-		miqt_exec_callback_QStyle_DrawControl(const_cast<MiqtVirtualQStyle*>(this), handle__DrawControl, sigval1, sigval2, sigval3, sigval4);
+		miqt_exec_callback_QStyle_DrawControl(this, handle__DrawControl, sigval1, sigval2, sigval3, sigval4);
 
 		
 	}
@@ -409,7 +409,7 @@ public:
 		QStyleOption* sigval2 = (QStyleOption*) option;
 		QWidget* sigval3 = (QWidget*) widget;
 
-		QRect* callback_return_value = miqt_exec_callback_QStyle_SubElementRect(const_cast<MiqtVirtualQStyle*>(this), handle__SubElementRect, sigval1, sigval2, sigval3);
+		QRect* callback_return_value = miqt_exec_callback_QStyle_SubElementRect(this, handle__SubElementRect, sigval1, sigval2, sigval3);
 
 		return *callback_return_value;
 	}
@@ -429,7 +429,7 @@ public:
 		QPainter* sigval3 = p;
 		QWidget* sigval4 = (QWidget*) widget;
 
-		miqt_exec_callback_QStyle_DrawComplexControl(const_cast<MiqtVirtualQStyle*>(this), handle__DrawComplexControl, sigval1, sigval2, sigval3, sigval4);
+		miqt_exec_callback_QStyle_DrawComplexControl(this, handle__DrawComplexControl, sigval1, sigval2, sigval3, sigval4);
 
 		
 	}
@@ -451,7 +451,7 @@ public:
 		QPoint* sigval3 = const_cast<QPoint*>(&pt_ret);
 		QWidget* sigval4 = (QWidget*) widget;
 
-		int callback_return_value = miqt_exec_callback_QStyle_HitTestComplexControl(const_cast<MiqtVirtualQStyle*>(this), handle__HitTestComplexControl, sigval1, sigval2, sigval3, sigval4);
+		int callback_return_value = miqt_exec_callback_QStyle_HitTestComplexControl(this, handle__HitTestComplexControl, sigval1, sigval2, sigval3, sigval4);
 
 		return static_cast<QStyle::SubControl>(callback_return_value);
 	}
@@ -472,7 +472,7 @@ public:
 		int sigval3 = static_cast<int>(sc_ret);
 		QWidget* sigval4 = (QWidget*) widget;
 
-		QRect* callback_return_value = miqt_exec_callback_QStyle_SubControlRect(const_cast<MiqtVirtualQStyle*>(this), handle__SubControlRect, sigval1, sigval2, sigval3, sigval4);
+		QRect* callback_return_value = miqt_exec_callback_QStyle_SubControlRect(this, handle__SubControlRect, sigval1, sigval2, sigval3, sigval4);
 
 		return *callback_return_value;
 	}
@@ -491,7 +491,7 @@ public:
 		QStyleOption* sigval2 = (QStyleOption*) option;
 		QWidget* sigval3 = (QWidget*) widget;
 
-		int callback_return_value = miqt_exec_callback_QStyle_PixelMetric(const_cast<MiqtVirtualQStyle*>(this), handle__PixelMetric, sigval1, sigval2, sigval3);
+		int callback_return_value = miqt_exec_callback_QStyle_PixelMetric(this, handle__PixelMetric, sigval1, sigval2, sigval3);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -513,7 +513,7 @@ public:
 		QSize* sigval3 = const_cast<QSize*>(&contentsSize_ret);
 		QWidget* sigval4 = (QWidget*) w;
 
-		QSize* callback_return_value = miqt_exec_callback_QStyle_SizeFromContents(const_cast<MiqtVirtualQStyle*>(this), handle__SizeFromContents, sigval1, sigval2, sigval3, sigval4);
+		QSize* callback_return_value = miqt_exec_callback_QStyle_SizeFromContents(this, handle__SizeFromContents, sigval1, sigval2, sigval3, sigval4);
 
 		return *callback_return_value;
 	}
@@ -533,7 +533,7 @@ public:
 		QWidget* sigval3 = (QWidget*) widget;
 		QStyleHintReturn* sigval4 = returnData;
 
-		int callback_return_value = miqt_exec_callback_QStyle_StyleHint(const_cast<MiqtVirtualQStyle*>(this), handle__StyleHint, sigval1, sigval2, sigval3, sigval4);
+		int callback_return_value = miqt_exec_callback_QStyle_StyleHint(this, handle__StyleHint, sigval1, sigval2, sigval3, sigval4);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -552,7 +552,7 @@ public:
 		QStyleOption* sigval2 = (QStyleOption*) opt;
 		QWidget* sigval3 = (QWidget*) widget;
 
-		QPixmap* callback_return_value = miqt_exec_callback_QStyle_StandardPixmap(const_cast<MiqtVirtualQStyle*>(this), handle__StandardPixmap, sigval1, sigval2, sigval3);
+		QPixmap* callback_return_value = miqt_exec_callback_QStyle_StandardPixmap(this, handle__StandardPixmap, sigval1, sigval2, sigval3);
 
 		return *callback_return_value;
 	}
@@ -571,7 +571,7 @@ public:
 		QStyleOption* sigval2 = (QStyleOption*) option;
 		QWidget* sigval3 = (QWidget*) widget;
 
-		QIcon* callback_return_value = miqt_exec_callback_QStyle_StandardIcon(const_cast<MiqtVirtualQStyle*>(this), handle__StandardIcon, sigval1, sigval2, sigval3);
+		QIcon* callback_return_value = miqt_exec_callback_QStyle_StandardIcon(this, handle__StandardIcon, sigval1, sigval2, sigval3);
 
 		return *callback_return_value;
 	}
@@ -592,7 +592,7 @@ public:
 		QPixmap* sigval2 = const_cast<QPixmap*>(&pixmap_ret);
 		QStyleOption* sigval3 = (QStyleOption*) opt;
 
-		QPixmap* callback_return_value = miqt_exec_callback_QStyle_GeneratedIconPixmap(const_cast<MiqtVirtualQStyle*>(this), handle__GeneratedIconPixmap, sigval1, sigval2, sigval3);
+		QPixmap* callback_return_value = miqt_exec_callback_QStyle_GeneratedIconPixmap(this, handle__GeneratedIconPixmap, sigval1, sigval2, sigval3);
 
 		return *callback_return_value;
 	}
@@ -615,7 +615,7 @@ public:
 		QStyleOption* sigval4 = (QStyleOption*) option;
 		QWidget* sigval5 = (QWidget*) widget;
 
-		int callback_return_value = miqt_exec_callback_QStyle_LayoutSpacing(const_cast<MiqtVirtualQStyle*>(this), handle__LayoutSpacing, sigval1, sigval2, sigval3, sigval4, sigval5);
+		int callback_return_value = miqt_exec_callback_QStyle_LayoutSpacing(this, handle__LayoutSpacing, sigval1, sigval2, sigval3, sigval4, sigval5);
 
 		return static_cast<int>(callback_return_value);
 	}

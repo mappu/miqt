@@ -34,13 +34,13 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QTextFrame_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QTextFrame_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QTextFrame_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QTextFrame_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QTextFrame_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QTextFrame_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QTextFrame_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QTextFrame_Event(QTextFrame*, intptr_t, QEvent*);
+bool miqt_exec_callback_QTextFrame_EventFilter(QTextFrame*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QTextFrame_TimerEvent(QTextFrame*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QTextFrame_ChildEvent(QTextFrame*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QTextFrame_CustomEvent(QTextFrame*, intptr_t, QEvent*);
+void miqt_exec_callback_QTextFrame_ConnectNotify(QTextFrame*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QTextFrame_DisconnectNotify(QTextFrame*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

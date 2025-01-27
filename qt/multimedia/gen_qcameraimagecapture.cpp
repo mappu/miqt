@@ -32,15 +32,15 @@ void miqt_exec_callback_QCameraImageCapture_ImageCaptured(intptr_t, int, QImage*
 void miqt_exec_callback_QCameraImageCapture_ImageMetadataAvailable(intptr_t, int, struct miqt_string, QVariant*);
 void miqt_exec_callback_QCameraImageCapture_ImageAvailable(intptr_t, int, QVideoFrame*);
 void miqt_exec_callback_QCameraImageCapture_ImageSaved(intptr_t, int, struct miqt_string);
-QMediaObject* miqt_exec_callback_QCameraImageCapture_MediaObject(void*, intptr_t);
-bool miqt_exec_callback_QCameraImageCapture_SetMediaObject(void*, intptr_t, QMediaObject*);
-bool miqt_exec_callback_QCameraImageCapture_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QCameraImageCapture_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QCameraImageCapture_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QCameraImageCapture_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QCameraImageCapture_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QCameraImageCapture_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QCameraImageCapture_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QMediaObject* miqt_exec_callback_QCameraImageCapture_MediaObject(const QCameraImageCapture*, intptr_t);
+bool miqt_exec_callback_QCameraImageCapture_SetMediaObject(QCameraImageCapture*, intptr_t, QMediaObject*);
+bool miqt_exec_callback_QCameraImageCapture_Event(QCameraImageCapture*, intptr_t, QEvent*);
+bool miqt_exec_callback_QCameraImageCapture_EventFilter(QCameraImageCapture*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QCameraImageCapture_TimerEvent(QCameraImageCapture*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QCameraImageCapture_ChildEvent(QCameraImageCapture*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QCameraImageCapture_CustomEvent(QCameraImageCapture*, intptr_t, QEvent*);
+void miqt_exec_callback_QCameraImageCapture_ConnectNotify(QCameraImageCapture*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QCameraImageCapture_DisconnectNotify(QCameraImageCapture*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -63,7 +63,7 @@ public:
 		}
 		
 
-		QMediaObject* callback_return_value = miqt_exec_callback_QCameraImageCapture_MediaObject(const_cast<MiqtVirtualQCameraImageCapture*>(this), handle__MediaObject);
+		QMediaObject* callback_return_value = miqt_exec_callback_QCameraImageCapture_MediaObject(this, handle__MediaObject);
 
 		return callback_return_value;
 	}

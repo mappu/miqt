@@ -17,13 +17,13 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QEventLoop_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QEventLoop_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QEventLoop_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QEventLoop_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QEventLoop_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QEventLoop_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QEventLoop_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QEventLoop_Event(QEventLoop*, intptr_t, QEvent*);
+bool miqt_exec_callback_QEventLoop_EventFilter(QEventLoop*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QEventLoop_TimerEvent(QEventLoop*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QEventLoop_ChildEvent(QEventLoop*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QEventLoop_CustomEvent(QEventLoop*, intptr_t, QEvent*);
+void miqt_exec_callback_QEventLoop_ConnectNotify(QEventLoop*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QEventLoop_DisconnectNotify(QEventLoop*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

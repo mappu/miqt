@@ -20,16 +20,16 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QMimeData_HasFormat(void*, intptr_t, struct miqt_string);
-struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QMimeData_Formats(void*, intptr_t);
-QVariant* miqt_exec_callback_QMimeData_RetrieveData(void*, intptr_t, struct miqt_string, QMetaType*);
-bool miqt_exec_callback_QMimeData_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QMimeData_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QMimeData_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QMimeData_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QMimeData_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QMimeData_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QMimeData_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QMimeData_HasFormat(const QMimeData*, intptr_t, struct miqt_string);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QMimeData_Formats(const QMimeData*, intptr_t);
+QVariant* miqt_exec_callback_QMimeData_RetrieveData(const QMimeData*, intptr_t, struct miqt_string, QMetaType*);
+bool miqt_exec_callback_QMimeData_Event(QMimeData*, intptr_t, QEvent*);
+bool miqt_exec_callback_QMimeData_EventFilter(QMimeData*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QMimeData_TimerEvent(QMimeData*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QMimeData_ChildEvent(QMimeData*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QMimeData_CustomEvent(QMimeData*, intptr_t, QEvent*);
+void miqt_exec_callback_QMimeData_ConnectNotify(QMimeData*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QMimeData_DisconnectNotify(QMimeData*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -59,7 +59,7 @@ public:
 		memcpy(mimetype_ms.data, mimetype_b.data(), mimetype_ms.len);
 		struct miqt_string sigval1 = mimetype_ms;
 
-		bool callback_return_value = miqt_exec_callback_QMimeData_HasFormat(const_cast<MiqtVirtualQMimeData*>(this), handle__HasFormat, sigval1);
+		bool callback_return_value = miqt_exec_callback_QMimeData_HasFormat(this, handle__HasFormat, sigval1);
 
 		return callback_return_value;
 	}
@@ -82,7 +82,7 @@ public:
 		}
 		
 
-		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QMimeData_Formats(const_cast<MiqtVirtualQMimeData*>(this), handle__Formats);
+		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QMimeData_Formats(this, handle__Formats);
 		QStringList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		struct miqt_string* callback_return_value_arr = static_cast<struct miqt_string*>(callback_return_value.data);
@@ -136,7 +136,7 @@ public:
 		struct miqt_string sigval1 = mimetype_ms;
 		QMetaType* sigval2 = new QMetaType(preferredType);
 
-		QVariant* callback_return_value = miqt_exec_callback_QMimeData_RetrieveData(const_cast<MiqtVirtualQMimeData*>(this), handle__RetrieveData, sigval1, sigval2);
+		QVariant* callback_return_value = miqt_exec_callback_QMimeData_RetrieveData(this, handle__RetrieveData, sigval1, sigval2);
 
 		return *callback_return_value;
 	}

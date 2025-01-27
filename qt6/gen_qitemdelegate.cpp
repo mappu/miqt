@@ -28,27 +28,27 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QItemDelegate_Paint(void*, intptr_t, QPainter*, QStyleOptionViewItem*, QModelIndex*);
-QSize* miqt_exec_callback_QItemDelegate_SizeHint(void*, intptr_t, QStyleOptionViewItem*, QModelIndex*);
-QWidget* miqt_exec_callback_QItemDelegate_CreateEditor(void*, intptr_t, QWidget*, QStyleOptionViewItem*, QModelIndex*);
-void miqt_exec_callback_QItemDelegate_SetEditorData(void*, intptr_t, QWidget*, QModelIndex*);
-void miqt_exec_callback_QItemDelegate_SetModelData(void*, intptr_t, QWidget*, QAbstractItemModel*, QModelIndex*);
-void miqt_exec_callback_QItemDelegate_UpdateEditorGeometry(void*, intptr_t, QWidget*, QStyleOptionViewItem*, QModelIndex*);
-void miqt_exec_callback_QItemDelegate_DrawDisplay(void*, intptr_t, QPainter*, QStyleOptionViewItem*, QRect*, struct miqt_string);
-void miqt_exec_callback_QItemDelegate_DrawDecoration(void*, intptr_t, QPainter*, QStyleOptionViewItem*, QRect*, QPixmap*);
-void miqt_exec_callback_QItemDelegate_DrawFocus(void*, intptr_t, QPainter*, QStyleOptionViewItem*, QRect*);
-void miqt_exec_callback_QItemDelegate_DrawCheck(void*, intptr_t, QPainter*, QStyleOptionViewItem*, QRect*, int);
-bool miqt_exec_callback_QItemDelegate_EventFilter(void*, intptr_t, QObject*, QEvent*);
-bool miqt_exec_callback_QItemDelegate_EditorEvent(void*, intptr_t, QEvent*, QAbstractItemModel*, QStyleOptionViewItem*, QModelIndex*);
-void miqt_exec_callback_QItemDelegate_DestroyEditor(void*, intptr_t, QWidget*, QModelIndex*);
-bool miqt_exec_callback_QItemDelegate_HelpEvent(void*, intptr_t, QHelpEvent*, QAbstractItemView*, QStyleOptionViewItem*, QModelIndex*);
-struct miqt_array /* of int */  miqt_exec_callback_QItemDelegate_PaintingRoles(void*, intptr_t);
-bool miqt_exec_callback_QItemDelegate_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QItemDelegate_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QItemDelegate_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QItemDelegate_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QItemDelegate_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QItemDelegate_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QItemDelegate_Paint(const QItemDelegate*, intptr_t, QPainter*, QStyleOptionViewItem*, QModelIndex*);
+QSize* miqt_exec_callback_QItemDelegate_SizeHint(const QItemDelegate*, intptr_t, QStyleOptionViewItem*, QModelIndex*);
+QWidget* miqt_exec_callback_QItemDelegate_CreateEditor(const QItemDelegate*, intptr_t, QWidget*, QStyleOptionViewItem*, QModelIndex*);
+void miqt_exec_callback_QItemDelegate_SetEditorData(const QItemDelegate*, intptr_t, QWidget*, QModelIndex*);
+void miqt_exec_callback_QItemDelegate_SetModelData(const QItemDelegate*, intptr_t, QWidget*, QAbstractItemModel*, QModelIndex*);
+void miqt_exec_callback_QItemDelegate_UpdateEditorGeometry(const QItemDelegate*, intptr_t, QWidget*, QStyleOptionViewItem*, QModelIndex*);
+void miqt_exec_callback_QItemDelegate_DrawDisplay(const QItemDelegate*, intptr_t, QPainter*, QStyleOptionViewItem*, QRect*, struct miqt_string);
+void miqt_exec_callback_QItemDelegate_DrawDecoration(const QItemDelegate*, intptr_t, QPainter*, QStyleOptionViewItem*, QRect*, QPixmap*);
+void miqt_exec_callback_QItemDelegate_DrawFocus(const QItemDelegate*, intptr_t, QPainter*, QStyleOptionViewItem*, QRect*);
+void miqt_exec_callback_QItemDelegate_DrawCheck(const QItemDelegate*, intptr_t, QPainter*, QStyleOptionViewItem*, QRect*, int);
+bool miqt_exec_callback_QItemDelegate_EventFilter(QItemDelegate*, intptr_t, QObject*, QEvent*);
+bool miqt_exec_callback_QItemDelegate_EditorEvent(QItemDelegate*, intptr_t, QEvent*, QAbstractItemModel*, QStyleOptionViewItem*, QModelIndex*);
+void miqt_exec_callback_QItemDelegate_DestroyEditor(const QItemDelegate*, intptr_t, QWidget*, QModelIndex*);
+bool miqt_exec_callback_QItemDelegate_HelpEvent(QItemDelegate*, intptr_t, QHelpEvent*, QAbstractItemView*, QStyleOptionViewItem*, QModelIndex*);
+struct miqt_array /* of int */  miqt_exec_callback_QItemDelegate_PaintingRoles(const QItemDelegate*, intptr_t);
+bool miqt_exec_callback_QItemDelegate_Event(QItemDelegate*, intptr_t, QEvent*);
+void miqt_exec_callback_QItemDelegate_TimerEvent(QItemDelegate*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QItemDelegate_ChildEvent(QItemDelegate*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QItemDelegate_CustomEvent(QItemDelegate*, intptr_t, QEvent*);
+void miqt_exec_callback_QItemDelegate_ConnectNotify(QItemDelegate*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QItemDelegate_DisconnectNotify(QItemDelegate*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -79,7 +79,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&index_ret);
 
-		miqt_exec_callback_QItemDelegate_Paint(const_cast<MiqtVirtualQItemDelegate*>(this), handle__Paint, sigval1, sigval2, sigval3);
+		miqt_exec_callback_QItemDelegate_Paint(this, handle__Paint, sigval1, sigval2, sigval3);
 
 		
 	}
@@ -107,7 +107,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval2 = const_cast<QModelIndex*>(&index_ret);
 
-		QSize* callback_return_value = miqt_exec_callback_QItemDelegate_SizeHint(const_cast<MiqtVirtualQItemDelegate*>(this), handle__SizeHint, sigval1, sigval2);
+		QSize* callback_return_value = miqt_exec_callback_QItemDelegate_SizeHint(this, handle__SizeHint, sigval1, sigval2);
 
 		return *callback_return_value;
 	}
@@ -136,7 +136,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&index_ret);
 
-		QWidget* callback_return_value = miqt_exec_callback_QItemDelegate_CreateEditor(const_cast<MiqtVirtualQItemDelegate*>(this), handle__CreateEditor, sigval1, sigval2, sigval3);
+		QWidget* callback_return_value = miqt_exec_callback_QItemDelegate_CreateEditor(this, handle__CreateEditor, sigval1, sigval2, sigval3);
 
 		return callback_return_value;
 	}
@@ -163,7 +163,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval2 = const_cast<QModelIndex*>(&index_ret);
 
-		miqt_exec_callback_QItemDelegate_SetEditorData(const_cast<MiqtVirtualQItemDelegate*>(this), handle__SetEditorData, sigval1, sigval2);
+		miqt_exec_callback_QItemDelegate_SetEditorData(this, handle__SetEditorData, sigval1, sigval2);
 
 		
 	}
@@ -191,7 +191,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&index_ret);
 
-		miqt_exec_callback_QItemDelegate_SetModelData(const_cast<MiqtVirtualQItemDelegate*>(this), handle__SetModelData, sigval1, sigval2, sigval3);
+		miqt_exec_callback_QItemDelegate_SetModelData(this, handle__SetModelData, sigval1, sigval2, sigval3);
 
 		
 	}
@@ -221,7 +221,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&index_ret);
 
-		miqt_exec_callback_QItemDelegate_UpdateEditorGeometry(const_cast<MiqtVirtualQItemDelegate*>(this), handle__UpdateEditorGeometry, sigval1, sigval2, sigval3);
+		miqt_exec_callback_QItemDelegate_UpdateEditorGeometry(this, handle__UpdateEditorGeometry, sigval1, sigval2, sigval3);
 
 		
 	}
@@ -259,7 +259,7 @@ public:
 		memcpy(text_ms.data, text_b.data(), text_ms.len);
 		struct miqt_string sigval4 = text_ms;
 
-		miqt_exec_callback_QItemDelegate_DrawDisplay(const_cast<MiqtVirtualQItemDelegate*>(this), handle__DrawDisplay, sigval1, sigval2, sigval3, sigval4);
+		miqt_exec_callback_QItemDelegate_DrawDisplay(this, handle__DrawDisplay, sigval1, sigval2, sigval3, sigval4);
 
 		
 	}
@@ -293,7 +293,7 @@ public:
 		// Cast returned reference into pointer
 		QPixmap* sigval4 = const_cast<QPixmap*>(&pixmap_ret);
 
-		miqt_exec_callback_QItemDelegate_DrawDecoration(const_cast<MiqtVirtualQItemDelegate*>(this), handle__DrawDecoration, sigval1, sigval2, sigval3, sigval4);
+		miqt_exec_callback_QItemDelegate_DrawDecoration(this, handle__DrawDecoration, sigval1, sigval2, sigval3, sigval4);
 
 		
 	}
@@ -323,7 +323,7 @@ public:
 		// Cast returned reference into pointer
 		QRect* sigval3 = const_cast<QRect*>(&rect_ret);
 
-		miqt_exec_callback_QItemDelegate_DrawFocus(const_cast<MiqtVirtualQItemDelegate*>(this), handle__DrawFocus, sigval1, sigval2, sigval3);
+		miqt_exec_callback_QItemDelegate_DrawFocus(this, handle__DrawFocus, sigval1, sigval2, sigval3);
 
 		
 	}
@@ -355,7 +355,7 @@ public:
 		Qt::CheckState state_ret = state;
 		int sigval4 = static_cast<int>(state_ret);
 
-		miqt_exec_callback_QItemDelegate_DrawCheck(const_cast<MiqtVirtualQItemDelegate*>(this), handle__DrawCheck, sigval1, sigval2, sigval3, sigval4);
+		miqt_exec_callback_QItemDelegate_DrawCheck(this, handle__DrawCheck, sigval1, sigval2, sigval3, sigval4);
 
 		
 	}
@@ -436,7 +436,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval2 = const_cast<QModelIndex*>(&index_ret);
 
-		miqt_exec_callback_QItemDelegate_DestroyEditor(const_cast<MiqtVirtualQItemDelegate*>(this), handle__DestroyEditor, sigval1, sigval2);
+		miqt_exec_callback_QItemDelegate_DestroyEditor(this, handle__DestroyEditor, sigval1, sigval2);
 
 		
 	}
@@ -488,7 +488,7 @@ public:
 		}
 		
 
-		struct miqt_array /* of int */  callback_return_value = miqt_exec_callback_QItemDelegate_PaintingRoles(const_cast<MiqtVirtualQItemDelegate*>(this), handle__PaintingRoles);
+		struct miqt_array /* of int */  callback_return_value = miqt_exec_callback_QItemDelegate_PaintingRoles(this, handle__PaintingRoles);
 		QList<int> callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		int* callback_return_value_arr = static_cast<int*>(callback_return_value.data);

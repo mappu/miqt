@@ -36,15 +36,15 @@ void miqt_exec_callback_QNetworkAccessManager_Finished(intptr_t, QNetworkReply*)
 void miqt_exec_callback_QNetworkAccessManager_Encrypted(intptr_t, QNetworkReply*);
 void miqt_exec_callback_QNetworkAccessManager_SslErrors(intptr_t, QNetworkReply*, struct miqt_array /* of QSslError* */ );
 void miqt_exec_callback_QNetworkAccessManager_PreSharedKeyAuthenticationRequired(intptr_t, QNetworkReply*, QSslPreSharedKeyAuthenticator*);
-struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QNetworkAccessManager_SupportedSchemes(void*, intptr_t);
-QNetworkReply* miqt_exec_callback_QNetworkAccessManager_CreateRequest(void*, intptr_t, int, QNetworkRequest*, QIODevice*);
-bool miqt_exec_callback_QNetworkAccessManager_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QNetworkAccessManager_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QNetworkAccessManager_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QNetworkAccessManager_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QNetworkAccessManager_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QNetworkAccessManager_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QNetworkAccessManager_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QNetworkAccessManager_SupportedSchemes(const QNetworkAccessManager*, intptr_t);
+QNetworkReply* miqt_exec_callback_QNetworkAccessManager_CreateRequest(QNetworkAccessManager*, intptr_t, int, QNetworkRequest*, QIODevice*);
+bool miqt_exec_callback_QNetworkAccessManager_Event(QNetworkAccessManager*, intptr_t, QEvent*);
+bool miqt_exec_callback_QNetworkAccessManager_EventFilter(QNetworkAccessManager*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QNetworkAccessManager_TimerEvent(QNetworkAccessManager*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QNetworkAccessManager_ChildEvent(QNetworkAccessManager*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QNetworkAccessManager_CustomEvent(QNetworkAccessManager*, intptr_t, QEvent*);
+void miqt_exec_callback_QNetworkAccessManager_ConnectNotify(QNetworkAccessManager*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QNetworkAccessManager_DisconnectNotify(QNetworkAccessManager*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -67,7 +67,7 @@ public:
 		}
 		
 
-		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QNetworkAccessManager_SupportedSchemes(const_cast<MiqtVirtualQNetworkAccessManager*>(this), handle__SupportedSchemes);
+		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QNetworkAccessManager_SupportedSchemes(this, handle__SupportedSchemes);
 		QStringList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		struct miqt_string* callback_return_value_arr = static_cast<struct miqt_string*>(callback_return_value.data);

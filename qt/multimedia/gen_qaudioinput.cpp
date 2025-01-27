@@ -20,13 +20,13 @@ extern "C" {
 
 void miqt_exec_callback_QAudioInput_StateChanged(intptr_t, int);
 void miqt_exec_callback_QAudioInput_Notify(intptr_t);
-bool miqt_exec_callback_QAudioInput_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QAudioInput_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QAudioInput_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QAudioInput_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QAudioInput_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QAudioInput_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QAudioInput_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QAudioInput_Event(QAudioInput*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAudioInput_EventFilter(QAudioInput*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAudioInput_TimerEvent(QAudioInput*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAudioInput_ChildEvent(QAudioInput*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAudioInput_CustomEvent(QAudioInput*, intptr_t, QEvent*);
+void miqt_exec_callback_QAudioInput_ConnectNotify(QAudioInput*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAudioInput_DisconnectNotify(QAudioInput*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

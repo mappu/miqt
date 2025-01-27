@@ -33,13 +33,13 @@ void miqt_exec_callback_QSpatialSound_OcclusionIntensityChanged(intptr_t);
 void miqt_exec_callback_QSpatialSound_DirectivityChanged(intptr_t);
 void miqt_exec_callback_QSpatialSound_DirectivityOrderChanged(intptr_t);
 void miqt_exec_callback_QSpatialSound_NearFieldGainChanged(intptr_t);
-bool miqt_exec_callback_QSpatialSound_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QSpatialSound_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QSpatialSound_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QSpatialSound_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QSpatialSound_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSpatialSound_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QSpatialSound_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QSpatialSound_Event(QSpatialSound*, intptr_t, QEvent*);
+bool miqt_exec_callback_QSpatialSound_EventFilter(QSpatialSound*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QSpatialSound_TimerEvent(QSpatialSound*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSpatialSound_ChildEvent(QSpatialSound*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QSpatialSound_CustomEvent(QSpatialSound*, intptr_t, QEvent*);
+void miqt_exec_callback_QSpatialSound_ConnectNotify(QSpatialSound*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSpatialSound_DisconnectNotify(QSpatialSound*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

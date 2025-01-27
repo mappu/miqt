@@ -19,13 +19,13 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QAudioSource_StateChanged(intptr_t, int);
-bool miqt_exec_callback_QAudioSource_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QAudioSource_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QAudioSource_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QAudioSource_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QAudioSource_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QAudioSource_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QAudioSource_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QAudioSource_Event(QAudioSource*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAudioSource_EventFilter(QAudioSource*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAudioSource_TimerEvent(QAudioSource*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAudioSource_ChildEvent(QAudioSource*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAudioSource_CustomEvent(QAudioSource*, intptr_t, QEvent*);
+void miqt_exec_callback_QAudioSource_ConnectNotify(QAudioSource*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAudioSource_DisconnectNotify(QAudioSource*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

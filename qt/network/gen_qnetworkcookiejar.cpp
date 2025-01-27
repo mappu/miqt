@@ -18,19 +18,19 @@
 extern "C" {
 #endif
 
-struct miqt_array /* of QNetworkCookie* */  miqt_exec_callback_QNetworkCookieJar_CookiesForUrl(void*, intptr_t, QUrl*);
-bool miqt_exec_callback_QNetworkCookieJar_SetCookiesFromUrl(void*, intptr_t, struct miqt_array /* of QNetworkCookie* */ , QUrl*);
-bool miqt_exec_callback_QNetworkCookieJar_InsertCookie(void*, intptr_t, QNetworkCookie*);
-bool miqt_exec_callback_QNetworkCookieJar_UpdateCookie(void*, intptr_t, QNetworkCookie*);
-bool miqt_exec_callback_QNetworkCookieJar_DeleteCookie(void*, intptr_t, QNetworkCookie*);
-bool miqt_exec_callback_QNetworkCookieJar_ValidateCookie(void*, intptr_t, QNetworkCookie*, QUrl*);
-bool miqt_exec_callback_QNetworkCookieJar_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QNetworkCookieJar_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QNetworkCookieJar_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QNetworkCookieJar_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QNetworkCookieJar_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QNetworkCookieJar_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QNetworkCookieJar_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+struct miqt_array /* of QNetworkCookie* */  miqt_exec_callback_QNetworkCookieJar_CookiesForUrl(const QNetworkCookieJar*, intptr_t, QUrl*);
+bool miqt_exec_callback_QNetworkCookieJar_SetCookiesFromUrl(QNetworkCookieJar*, intptr_t, struct miqt_array /* of QNetworkCookie* */ , QUrl*);
+bool miqt_exec_callback_QNetworkCookieJar_InsertCookie(QNetworkCookieJar*, intptr_t, QNetworkCookie*);
+bool miqt_exec_callback_QNetworkCookieJar_UpdateCookie(QNetworkCookieJar*, intptr_t, QNetworkCookie*);
+bool miqt_exec_callback_QNetworkCookieJar_DeleteCookie(QNetworkCookieJar*, intptr_t, QNetworkCookie*);
+bool miqt_exec_callback_QNetworkCookieJar_ValidateCookie(const QNetworkCookieJar*, intptr_t, QNetworkCookie*, QUrl*);
+bool miqt_exec_callback_QNetworkCookieJar_Event(QNetworkCookieJar*, intptr_t, QEvent*);
+bool miqt_exec_callback_QNetworkCookieJar_EventFilter(QNetworkCookieJar*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QNetworkCookieJar_TimerEvent(QNetworkCookieJar*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QNetworkCookieJar_ChildEvent(QNetworkCookieJar*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QNetworkCookieJar_CustomEvent(QNetworkCookieJar*, intptr_t, QEvent*);
+void miqt_exec_callback_QNetworkCookieJar_ConnectNotify(QNetworkCookieJar*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QNetworkCookieJar_DisconnectNotify(QNetworkCookieJar*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -56,7 +56,7 @@ public:
 		// Cast returned reference into pointer
 		QUrl* sigval1 = const_cast<QUrl*>(&url_ret);
 
-		struct miqt_array /* of QNetworkCookie* */  callback_return_value = miqt_exec_callback_QNetworkCookieJar_CookiesForUrl(const_cast<MiqtVirtualQNetworkCookieJar*>(this), handle__CookiesForUrl, sigval1);
+		struct miqt_array /* of QNetworkCookie* */  callback_return_value = miqt_exec_callback_QNetworkCookieJar_CookiesForUrl(this, handle__CookiesForUrl, sigval1);
 		QList<QNetworkCookie> callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		QNetworkCookie** callback_return_value_arr = static_cast<QNetworkCookie**>(callback_return_value.data);
@@ -215,7 +215,7 @@ public:
 		// Cast returned reference into pointer
 		QUrl* sigval2 = const_cast<QUrl*>(&url_ret);
 
-		bool callback_return_value = miqt_exec_callback_QNetworkCookieJar_ValidateCookie(const_cast<MiqtVirtualQNetworkCookieJar*>(this), handle__ValidateCookie, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QNetworkCookieJar_ValidateCookie(this, handle__ValidateCookie, sigval1, sigval2);
 
 		return callback_return_value;
 	}

@@ -56,98 +56,98 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QColumnView_UpdatePreviewWidget(intptr_t, QModelIndex*);
-QModelIndex* miqt_exec_callback_QColumnView_IndexAt(void*, intptr_t, QPoint*);
-void miqt_exec_callback_QColumnView_ScrollTo(void*, intptr_t, QModelIndex*, int);
-QSize* miqt_exec_callback_QColumnView_SizeHint(void*, intptr_t);
-QRect* miqt_exec_callback_QColumnView_VisualRect(void*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QColumnView_SetModel(void*, intptr_t, QAbstractItemModel*);
-void miqt_exec_callback_QColumnView_SetSelectionModel(void*, intptr_t, QItemSelectionModel*);
-void miqt_exec_callback_QColumnView_SetRootIndex(void*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QColumnView_SelectAll(void*, intptr_t);
-bool miqt_exec_callback_QColumnView_IsIndexHidden(void*, intptr_t, QModelIndex*);
-QModelIndex* miqt_exec_callback_QColumnView_MoveCursor(void*, intptr_t, int, int);
-void miqt_exec_callback_QColumnView_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QColumnView_SetSelection(void*, intptr_t, QRect*, int);
-QRegion* miqt_exec_callback_QColumnView_VisualRegionForSelection(void*, intptr_t, QItemSelection*);
-int miqt_exec_callback_QColumnView_HorizontalOffset(void*, intptr_t);
-int miqt_exec_callback_QColumnView_VerticalOffset(void*, intptr_t);
-void miqt_exec_callback_QColumnView_RowsInserted(void*, intptr_t, QModelIndex*, int, int);
-void miqt_exec_callback_QColumnView_CurrentChanged(void*, intptr_t, QModelIndex*, QModelIndex*);
-void miqt_exec_callback_QColumnView_ScrollContentsBy(void*, intptr_t, int, int);
-QAbstractItemView* miqt_exec_callback_QColumnView_CreateColumn(void*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QColumnView_KeyboardSearch(void*, intptr_t, struct miqt_string);
-int miqt_exec_callback_QColumnView_SizeHintForRow(void*, intptr_t, int);
-int miqt_exec_callback_QColumnView_SizeHintForColumn(void*, intptr_t, int);
-QAbstractItemDelegate* miqt_exec_callback_QColumnView_ItemDelegateForIndex(void*, intptr_t, QModelIndex*);
-QVariant* miqt_exec_callback_QColumnView_InputMethodQuery(void*, intptr_t, int);
-void miqt_exec_callback_QColumnView_Reset(void*, intptr_t);
-void miqt_exec_callback_QColumnView_DoItemsLayout(void*, intptr_t);
-void miqt_exec_callback_QColumnView_DataChanged(void*, intptr_t, QModelIndex*, QModelIndex*, struct miqt_array /* of int */ );
-void miqt_exec_callback_QColumnView_RowsAboutToBeRemoved(void*, intptr_t, QModelIndex*, int, int);
-void miqt_exec_callback_QColumnView_SelectionChanged(void*, intptr_t, QItemSelection*, QItemSelection*);
-void miqt_exec_callback_QColumnView_UpdateEditorData(void*, intptr_t);
-void miqt_exec_callback_QColumnView_UpdateEditorGeometries(void*, intptr_t);
-void miqt_exec_callback_QColumnView_UpdateGeometries(void*, intptr_t);
-void miqt_exec_callback_QColumnView_VerticalScrollbarAction(void*, intptr_t, int);
-void miqt_exec_callback_QColumnView_HorizontalScrollbarAction(void*, intptr_t, int);
-void miqt_exec_callback_QColumnView_VerticalScrollbarValueChanged(void*, intptr_t, int);
-void miqt_exec_callback_QColumnView_HorizontalScrollbarValueChanged(void*, intptr_t, int);
-void miqt_exec_callback_QColumnView_CloseEditor(void*, intptr_t, QWidget*, int);
-void miqt_exec_callback_QColumnView_CommitData(void*, intptr_t, QWidget*);
-void miqt_exec_callback_QColumnView_EditorDestroyed(void*, intptr_t, QObject*);
-struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QColumnView_SelectedIndexes(void*, intptr_t);
-bool miqt_exec_callback_QColumnView_Edit2(void*, intptr_t, QModelIndex*, int, QEvent*);
-int miqt_exec_callback_QColumnView_SelectionCommand(void*, intptr_t, QModelIndex*, QEvent*);
-void miqt_exec_callback_QColumnView_StartDrag(void*, intptr_t, int);
-void miqt_exec_callback_QColumnView_InitViewItemOption(void*, intptr_t, QStyleOptionViewItem*);
-bool miqt_exec_callback_QColumnView_FocusNextPrevChild(void*, intptr_t, bool);
-bool miqt_exec_callback_QColumnView_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QColumnView_ViewportEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QColumnView_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QColumnView_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QColumnView_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QColumnView_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QColumnView_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QColumnView_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QColumnView_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QColumnView_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QColumnView_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QColumnView_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QColumnView_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QColumnView_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QColumnView_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-bool miqt_exec_callback_QColumnView_EventFilter(void*, intptr_t, QObject*, QEvent*);
-QSize* miqt_exec_callback_QColumnView_ViewportSizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QColumnView_MinimumSizeHint(void*, intptr_t);
-void miqt_exec_callback_QColumnView_SetupViewport(void*, intptr_t, QWidget*);
-void miqt_exec_callback_QColumnView_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QColumnView_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QColumnView_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QColumnView_ChangeEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QColumnView_InitStyleOption(void*, intptr_t, QStyleOptionFrame*);
-int miqt_exec_callback_QColumnView_DevType(void*, intptr_t);
-void miqt_exec_callback_QColumnView_SetVisible(void*, intptr_t, bool);
-int miqt_exec_callback_QColumnView_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QColumnView_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QColumnView_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QColumnView_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QColumnView_EnterEvent(void*, intptr_t, QEnterEvent*);
-void miqt_exec_callback_QColumnView_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QColumnView_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QColumnView_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QColumnView_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QColumnView_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QColumnView_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QColumnView_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QColumnView_NativeEvent(void*, intptr_t, struct miqt_string, void*, intptr_t*);
-int miqt_exec_callback_QColumnView_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QColumnView_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QColumnView_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QColumnView_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QColumnView_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QColumnView_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QColumnView_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QColumnView_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QModelIndex* miqt_exec_callback_QColumnView_IndexAt(const QColumnView*, intptr_t, QPoint*);
+void miqt_exec_callback_QColumnView_ScrollTo(QColumnView*, intptr_t, QModelIndex*, int);
+QSize* miqt_exec_callback_QColumnView_SizeHint(const QColumnView*, intptr_t);
+QRect* miqt_exec_callback_QColumnView_VisualRect(const QColumnView*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QColumnView_SetModel(QColumnView*, intptr_t, QAbstractItemModel*);
+void miqt_exec_callback_QColumnView_SetSelectionModel(QColumnView*, intptr_t, QItemSelectionModel*);
+void miqt_exec_callback_QColumnView_SetRootIndex(QColumnView*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QColumnView_SelectAll(QColumnView*, intptr_t);
+bool miqt_exec_callback_QColumnView_IsIndexHidden(const QColumnView*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QColumnView_MoveCursor(QColumnView*, intptr_t, int, int);
+void miqt_exec_callback_QColumnView_ResizeEvent(QColumnView*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QColumnView_SetSelection(QColumnView*, intptr_t, QRect*, int);
+QRegion* miqt_exec_callback_QColumnView_VisualRegionForSelection(const QColumnView*, intptr_t, QItemSelection*);
+int miqt_exec_callback_QColumnView_HorizontalOffset(const QColumnView*, intptr_t);
+int miqt_exec_callback_QColumnView_VerticalOffset(const QColumnView*, intptr_t);
+void miqt_exec_callback_QColumnView_RowsInserted(QColumnView*, intptr_t, QModelIndex*, int, int);
+void miqt_exec_callback_QColumnView_CurrentChanged(QColumnView*, intptr_t, QModelIndex*, QModelIndex*);
+void miqt_exec_callback_QColumnView_ScrollContentsBy(QColumnView*, intptr_t, int, int);
+QAbstractItemView* miqt_exec_callback_QColumnView_CreateColumn(QColumnView*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QColumnView_KeyboardSearch(QColumnView*, intptr_t, struct miqt_string);
+int miqt_exec_callback_QColumnView_SizeHintForRow(const QColumnView*, intptr_t, int);
+int miqt_exec_callback_QColumnView_SizeHintForColumn(const QColumnView*, intptr_t, int);
+QAbstractItemDelegate* miqt_exec_callback_QColumnView_ItemDelegateForIndex(const QColumnView*, intptr_t, QModelIndex*);
+QVariant* miqt_exec_callback_QColumnView_InputMethodQuery(const QColumnView*, intptr_t, int);
+void miqt_exec_callback_QColumnView_Reset(QColumnView*, intptr_t);
+void miqt_exec_callback_QColumnView_DoItemsLayout(QColumnView*, intptr_t);
+void miqt_exec_callback_QColumnView_DataChanged(QColumnView*, intptr_t, QModelIndex*, QModelIndex*, struct miqt_array /* of int */ );
+void miqt_exec_callback_QColumnView_RowsAboutToBeRemoved(QColumnView*, intptr_t, QModelIndex*, int, int);
+void miqt_exec_callback_QColumnView_SelectionChanged(QColumnView*, intptr_t, QItemSelection*, QItemSelection*);
+void miqt_exec_callback_QColumnView_UpdateEditorData(QColumnView*, intptr_t);
+void miqt_exec_callback_QColumnView_UpdateEditorGeometries(QColumnView*, intptr_t);
+void miqt_exec_callback_QColumnView_UpdateGeometries(QColumnView*, intptr_t);
+void miqt_exec_callback_QColumnView_VerticalScrollbarAction(QColumnView*, intptr_t, int);
+void miqt_exec_callback_QColumnView_HorizontalScrollbarAction(QColumnView*, intptr_t, int);
+void miqt_exec_callback_QColumnView_VerticalScrollbarValueChanged(QColumnView*, intptr_t, int);
+void miqt_exec_callback_QColumnView_HorizontalScrollbarValueChanged(QColumnView*, intptr_t, int);
+void miqt_exec_callback_QColumnView_CloseEditor(QColumnView*, intptr_t, QWidget*, int);
+void miqt_exec_callback_QColumnView_CommitData(QColumnView*, intptr_t, QWidget*);
+void miqt_exec_callback_QColumnView_EditorDestroyed(QColumnView*, intptr_t, QObject*);
+struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QColumnView_SelectedIndexes(const QColumnView*, intptr_t);
+bool miqt_exec_callback_QColumnView_Edit2(QColumnView*, intptr_t, QModelIndex*, int, QEvent*);
+int miqt_exec_callback_QColumnView_SelectionCommand(const QColumnView*, intptr_t, QModelIndex*, QEvent*);
+void miqt_exec_callback_QColumnView_StartDrag(QColumnView*, intptr_t, int);
+void miqt_exec_callback_QColumnView_InitViewItemOption(const QColumnView*, intptr_t, QStyleOptionViewItem*);
+bool miqt_exec_callback_QColumnView_FocusNextPrevChild(QColumnView*, intptr_t, bool);
+bool miqt_exec_callback_QColumnView_Event(QColumnView*, intptr_t, QEvent*);
+bool miqt_exec_callback_QColumnView_ViewportEvent(QColumnView*, intptr_t, QEvent*);
+void miqt_exec_callback_QColumnView_MousePressEvent(QColumnView*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QColumnView_MouseMoveEvent(QColumnView*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QColumnView_MouseReleaseEvent(QColumnView*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QColumnView_MouseDoubleClickEvent(QColumnView*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QColumnView_DragEnterEvent(QColumnView*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QColumnView_DragMoveEvent(QColumnView*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QColumnView_DragLeaveEvent(QColumnView*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QColumnView_DropEvent(QColumnView*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QColumnView_FocusInEvent(QColumnView*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QColumnView_FocusOutEvent(QColumnView*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QColumnView_KeyPressEvent(QColumnView*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QColumnView_TimerEvent(QColumnView*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QColumnView_InputMethodEvent(QColumnView*, intptr_t, QInputMethodEvent*);
+bool miqt_exec_callback_QColumnView_EventFilter(QColumnView*, intptr_t, QObject*, QEvent*);
+QSize* miqt_exec_callback_QColumnView_ViewportSizeHint(const QColumnView*, intptr_t);
+QSize* miqt_exec_callback_QColumnView_MinimumSizeHint(const QColumnView*, intptr_t);
+void miqt_exec_callback_QColumnView_SetupViewport(QColumnView*, intptr_t, QWidget*);
+void miqt_exec_callback_QColumnView_PaintEvent(QColumnView*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QColumnView_WheelEvent(QColumnView*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QColumnView_ContextMenuEvent(QColumnView*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QColumnView_ChangeEvent(QColumnView*, intptr_t, QEvent*);
+void miqt_exec_callback_QColumnView_InitStyleOption(const QColumnView*, intptr_t, QStyleOptionFrame*);
+int miqt_exec_callback_QColumnView_DevType(const QColumnView*, intptr_t);
+void miqt_exec_callback_QColumnView_SetVisible(QColumnView*, intptr_t, bool);
+int miqt_exec_callback_QColumnView_HeightForWidth(const QColumnView*, intptr_t, int);
+bool miqt_exec_callback_QColumnView_HasHeightForWidth(const QColumnView*, intptr_t);
+QPaintEngine* miqt_exec_callback_QColumnView_PaintEngine(const QColumnView*, intptr_t);
+void miqt_exec_callback_QColumnView_KeyReleaseEvent(QColumnView*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QColumnView_EnterEvent(QColumnView*, intptr_t, QEnterEvent*);
+void miqt_exec_callback_QColumnView_LeaveEvent(QColumnView*, intptr_t, QEvent*);
+void miqt_exec_callback_QColumnView_MoveEvent(QColumnView*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QColumnView_CloseEvent(QColumnView*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QColumnView_TabletEvent(QColumnView*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QColumnView_ActionEvent(QColumnView*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QColumnView_ShowEvent(QColumnView*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QColumnView_HideEvent(QColumnView*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QColumnView_NativeEvent(QColumnView*, intptr_t, struct miqt_string, void*, intptr_t*);
+int miqt_exec_callback_QColumnView_Metric(const QColumnView*, intptr_t, int);
+void miqt_exec_callback_QColumnView_InitPainter(const QColumnView*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QColumnView_Redirected(const QColumnView*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QColumnView_SharedPainter(const QColumnView*, intptr_t);
+void miqt_exec_callback_QColumnView_ChildEvent(QColumnView*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QColumnView_CustomEvent(QColumnView*, intptr_t, QEvent*);
+void miqt_exec_callback_QColumnView_ConnectNotify(QColumnView*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QColumnView_DisconnectNotify(QColumnView*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -173,7 +173,7 @@ public:
 		// Cast returned reference into pointer
 		QPoint* sigval1 = const_cast<QPoint*>(&point_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QColumnView_IndexAt(const_cast<MiqtVirtualQColumnView*>(this), handle__IndexAt, sigval1);
+		QModelIndex* callback_return_value = miqt_exec_callback_QColumnView_IndexAt(this, handle__IndexAt, sigval1);
 
 		return *callback_return_value;
 	}
@@ -223,7 +223,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QColumnView_SizeHint(const_cast<MiqtVirtualQColumnView*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QColumnView_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -248,7 +248,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		QRect* callback_return_value = miqt_exec_callback_QColumnView_VisualRect(const_cast<MiqtVirtualQColumnView*>(this), handle__VisualRect, sigval1);
+		QRect* callback_return_value = miqt_exec_callback_QColumnView_VisualRect(this, handle__VisualRect, sigval1);
 
 		return *callback_return_value;
 	}
@@ -370,7 +370,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		bool callback_return_value = miqt_exec_callback_QColumnView_IsIndexHidden(const_cast<MiqtVirtualQColumnView*>(this), handle__IsIndexHidden, sigval1);
+		bool callback_return_value = miqt_exec_callback_QColumnView_IsIndexHidden(this, handle__IsIndexHidden, sigval1);
 
 		return callback_return_value;
 	}
@@ -473,7 +473,7 @@ public:
 		// Cast returned reference into pointer
 		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selection_ret);
 
-		QRegion* callback_return_value = miqt_exec_callback_QColumnView_VisualRegionForSelection(const_cast<MiqtVirtualQColumnView*>(this), handle__VisualRegionForSelection, sigval1);
+		QRegion* callback_return_value = miqt_exec_callback_QColumnView_VisualRegionForSelection(this, handle__VisualRegionForSelection, sigval1);
 
 		return *callback_return_value;
 	}
@@ -495,7 +495,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QColumnView_HorizontalOffset(const_cast<MiqtVirtualQColumnView*>(this), handle__HorizontalOffset);
+		int callback_return_value = miqt_exec_callback_QColumnView_HorizontalOffset(this, handle__HorizontalOffset);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -517,7 +517,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QColumnView_VerticalOffset(const_cast<MiqtVirtualQColumnView*>(this), handle__VerticalOffset);
+		int callback_return_value = miqt_exec_callback_QColumnView_VerticalOffset(this, handle__VerticalOffset);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -679,7 +679,7 @@ public:
 		
 		int sigval1 = row;
 
-		int callback_return_value = miqt_exec_callback_QColumnView_SizeHintForRow(const_cast<MiqtVirtualQColumnView*>(this), handle__SizeHintForRow, sigval1);
+		int callback_return_value = miqt_exec_callback_QColumnView_SizeHintForRow(this, handle__SizeHintForRow, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -702,7 +702,7 @@ public:
 		
 		int sigval1 = column;
 
-		int callback_return_value = miqt_exec_callback_QColumnView_SizeHintForColumn(const_cast<MiqtVirtualQColumnView*>(this), handle__SizeHintForColumn, sigval1);
+		int callback_return_value = miqt_exec_callback_QColumnView_SizeHintForColumn(this, handle__SizeHintForColumn, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -727,7 +727,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		QAbstractItemDelegate* callback_return_value = miqt_exec_callback_QColumnView_ItemDelegateForIndex(const_cast<MiqtVirtualQColumnView*>(this), handle__ItemDelegateForIndex, sigval1);
+		QAbstractItemDelegate* callback_return_value = miqt_exec_callback_QColumnView_ItemDelegateForIndex(this, handle__ItemDelegateForIndex, sigval1);
 
 		return callback_return_value;
 	}
@@ -751,7 +751,7 @@ public:
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QColumnView_InputMethodQuery(const_cast<MiqtVirtualQColumnView*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QColumnView_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}
@@ -1160,7 +1160,7 @@ public:
 		}
 		
 
-		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QColumnView_SelectedIndexes(const_cast<MiqtVirtualQColumnView*>(this), handle__SelectedIndexes);
+		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QColumnView_SelectedIndexes(this, handle__SelectedIndexes);
 		QModelIndexList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		QModelIndex** callback_return_value_arr = static_cast<QModelIndex**>(callback_return_value.data);
@@ -1229,7 +1229,7 @@ public:
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		QEvent* sigval2 = (QEvent*) event;
 
-		int callback_return_value = miqt_exec_callback_QColumnView_SelectionCommand(const_cast<MiqtVirtualQColumnView*>(this), handle__SelectionCommand, sigval1, sigval2);
+		int callback_return_value = miqt_exec_callback_QColumnView_SelectionCommand(this, handle__SelectionCommand, sigval1, sigval2);
 
 		return static_cast<QItemSelectionModel::SelectionFlags>(callback_return_value);
 	}
@@ -1279,7 +1279,7 @@ public:
 		
 		QStyleOptionViewItem* sigval1 = option;
 
-		miqt_exec_callback_QColumnView_InitViewItemOption(const_cast<MiqtVirtualQColumnView*>(this), handle__InitViewItemOption, sigval1);
+		miqt_exec_callback_QColumnView_InitViewItemOption(this, handle__InitViewItemOption, sigval1);
 
 		
 	}
@@ -1706,7 +1706,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QColumnView_ViewportSizeHint(const_cast<MiqtVirtualQColumnView*>(this), handle__ViewportSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QColumnView_ViewportSizeHint(this, handle__ViewportSizeHint);
 
 		return *callback_return_value;
 	}
@@ -1728,7 +1728,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QColumnView_MinimumSizeHint(const_cast<MiqtVirtualQColumnView*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QColumnView_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -1872,7 +1872,7 @@ public:
 		
 		QStyleOptionFrame* sigval1 = option;
 
-		miqt_exec_callback_QColumnView_InitStyleOption(const_cast<MiqtVirtualQColumnView*>(this), handle__InitStyleOption, sigval1);
+		miqt_exec_callback_QColumnView_InitStyleOption(this, handle__InitStyleOption, sigval1);
 
 		
 	}
@@ -1894,7 +1894,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QColumnView_DevType(const_cast<MiqtVirtualQColumnView*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QColumnView_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1941,7 +1941,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QColumnView_HeightForWidth(const_cast<MiqtVirtualQColumnView*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QColumnView_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1963,7 +1963,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QColumnView_HasHeightForWidth(const_cast<MiqtVirtualQColumnView*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QColumnView_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -1985,7 +1985,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QColumnView_PaintEngine(const_cast<MiqtVirtualQColumnView*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QColumnView_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -2257,7 +2257,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QColumnView_Metric(const_cast<MiqtVirtualQColumnView*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QColumnView_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -2281,7 +2281,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QColumnView_InitPainter(const_cast<MiqtVirtualQColumnView*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QColumnView_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -2304,7 +2304,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QColumnView_Redirected(const_cast<MiqtVirtualQColumnView*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QColumnView_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -2326,7 +2326,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QColumnView_SharedPainter(const_cast<MiqtVirtualQColumnView*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QColumnView_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}

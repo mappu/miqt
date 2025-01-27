@@ -26,25 +26,25 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QPdfWriter_NewPage(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QPdfWriter_PaintEngine(void*, intptr_t);
-int miqt_exec_callback_QPdfWriter_Metric(void*, intptr_t, int);
-bool miqt_exec_callback_QPdfWriter_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QPdfWriter_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QPdfWriter_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QPdfWriter_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QPdfWriter_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QPdfWriter_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QPdfWriter_DisconnectNotify(void*, intptr_t, QMetaMethod*);
-bool miqt_exec_callback_QPdfWriter_SetPageLayout(void*, intptr_t, QPageLayout*);
-bool miqt_exec_callback_QPdfWriter_SetPageSize(void*, intptr_t, QPageSize*);
-bool miqt_exec_callback_QPdfWriter_SetPageOrientation(void*, intptr_t, int);
-bool miqt_exec_callback_QPdfWriter_SetPageMargins(void*, intptr_t, QMarginsF*, int);
-void miqt_exec_callback_QPdfWriter_SetPageRanges(void*, intptr_t, QPageRanges*);
-int miqt_exec_callback_QPdfWriter_DevType(void*, intptr_t);
-void miqt_exec_callback_QPdfWriter_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QPdfWriter_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QPdfWriter_SharedPainter(void*, intptr_t);
+bool miqt_exec_callback_QPdfWriter_NewPage(QPdfWriter*, intptr_t);
+QPaintEngine* miqt_exec_callback_QPdfWriter_PaintEngine(const QPdfWriter*, intptr_t);
+int miqt_exec_callback_QPdfWriter_Metric(const QPdfWriter*, intptr_t, int);
+bool miqt_exec_callback_QPdfWriter_Event(QPdfWriter*, intptr_t, QEvent*);
+bool miqt_exec_callback_QPdfWriter_EventFilter(QPdfWriter*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QPdfWriter_TimerEvent(QPdfWriter*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QPdfWriter_ChildEvent(QPdfWriter*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QPdfWriter_CustomEvent(QPdfWriter*, intptr_t, QEvent*);
+void miqt_exec_callback_QPdfWriter_ConnectNotify(QPdfWriter*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QPdfWriter_DisconnectNotify(QPdfWriter*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QPdfWriter_SetPageLayout(QPdfWriter*, intptr_t, QPageLayout*);
+bool miqt_exec_callback_QPdfWriter_SetPageSize(QPdfWriter*, intptr_t, QPageSize*);
+bool miqt_exec_callback_QPdfWriter_SetPageOrientation(QPdfWriter*, intptr_t, int);
+bool miqt_exec_callback_QPdfWriter_SetPageMargins(QPdfWriter*, intptr_t, QMarginsF*, int);
+void miqt_exec_callback_QPdfWriter_SetPageRanges(QPdfWriter*, intptr_t, QPageRanges*);
+int miqt_exec_callback_QPdfWriter_DevType(const QPdfWriter*, intptr_t);
+void miqt_exec_callback_QPdfWriter_InitPainter(const QPdfWriter*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QPdfWriter_Redirected(const QPdfWriter*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QPdfWriter_SharedPainter(const QPdfWriter*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -89,7 +89,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QPdfWriter_PaintEngine(const_cast<MiqtVirtualQPdfWriter*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QPdfWriter_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -113,7 +113,7 @@ public:
 		QPaintDevice::PaintDeviceMetric id_ret = id;
 		int sigval1 = static_cast<int>(id_ret);
 
-		int callback_return_value = miqt_exec_callback_QPdfWriter_Metric(const_cast<MiqtVirtualQPdfWriter*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QPdfWriter_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -433,7 +433,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QPdfWriter_DevType(const_cast<MiqtVirtualQPdfWriter*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QPdfWriter_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -457,7 +457,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QPdfWriter_InitPainter(const_cast<MiqtVirtualQPdfWriter*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QPdfWriter_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -480,7 +480,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QPdfWriter_Redirected(const_cast<MiqtVirtualQPdfWriter*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QPdfWriter_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -502,7 +502,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QPdfWriter_SharedPainter(const_cast<MiqtVirtualQPdfWriter*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QPdfWriter_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}

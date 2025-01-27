@@ -59,95 +59,95 @@ void miqt_exec_callback_QAbstractItemView_Activated(intptr_t, QModelIndex*);
 void miqt_exec_callback_QAbstractItemView_Entered(intptr_t, QModelIndex*);
 void miqt_exec_callback_QAbstractItemView_ViewportEntered(intptr_t);
 void miqt_exec_callback_QAbstractItemView_IconSizeChanged(intptr_t, QSize*);
-void miqt_exec_callback_QAbstractItemView_SetModel(void*, intptr_t, QAbstractItemModel*);
-void miqt_exec_callback_QAbstractItemView_SetSelectionModel(void*, intptr_t, QItemSelectionModel*);
-void miqt_exec_callback_QAbstractItemView_KeyboardSearch(void*, intptr_t, struct miqt_string);
-QRect* miqt_exec_callback_QAbstractItemView_VisualRect(void*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QAbstractItemView_ScrollTo(void*, intptr_t, QModelIndex*, int);
-QModelIndex* miqt_exec_callback_QAbstractItemView_IndexAt(void*, intptr_t, QPoint*);
-int miqt_exec_callback_QAbstractItemView_SizeHintForRow(void*, intptr_t, int);
-int miqt_exec_callback_QAbstractItemView_SizeHintForColumn(void*, intptr_t, int);
-QVariant* miqt_exec_callback_QAbstractItemView_InputMethodQuery(void*, intptr_t, int);
-void miqt_exec_callback_QAbstractItemView_Reset(void*, intptr_t);
-void miqt_exec_callback_QAbstractItemView_SetRootIndex(void*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QAbstractItemView_DoItemsLayout(void*, intptr_t);
-void miqt_exec_callback_QAbstractItemView_SelectAll(void*, intptr_t);
-void miqt_exec_callback_QAbstractItemView_DataChanged(void*, intptr_t, QModelIndex*, QModelIndex*, struct miqt_array /* of int */ );
-void miqt_exec_callback_QAbstractItemView_RowsInserted(void*, intptr_t, QModelIndex*, int, int);
-void miqt_exec_callback_QAbstractItemView_RowsAboutToBeRemoved(void*, intptr_t, QModelIndex*, int, int);
-void miqt_exec_callback_QAbstractItemView_SelectionChanged(void*, intptr_t, QItemSelection*, QItemSelection*);
-void miqt_exec_callback_QAbstractItemView_CurrentChanged(void*, intptr_t, QModelIndex*, QModelIndex*);
-void miqt_exec_callback_QAbstractItemView_UpdateEditorData(void*, intptr_t);
-void miqt_exec_callback_QAbstractItemView_UpdateEditorGeometries(void*, intptr_t);
-void miqt_exec_callback_QAbstractItemView_UpdateGeometries(void*, intptr_t);
-void miqt_exec_callback_QAbstractItemView_VerticalScrollbarAction(void*, intptr_t, int);
-void miqt_exec_callback_QAbstractItemView_HorizontalScrollbarAction(void*, intptr_t, int);
-void miqt_exec_callback_QAbstractItemView_VerticalScrollbarValueChanged(void*, intptr_t, int);
-void miqt_exec_callback_QAbstractItemView_HorizontalScrollbarValueChanged(void*, intptr_t, int);
-void miqt_exec_callback_QAbstractItemView_CloseEditor(void*, intptr_t, QWidget*, int);
-void miqt_exec_callback_QAbstractItemView_CommitData(void*, intptr_t, QWidget*);
-void miqt_exec_callback_QAbstractItemView_EditorDestroyed(void*, intptr_t, QObject*);
-QModelIndex* miqt_exec_callback_QAbstractItemView_MoveCursor(void*, intptr_t, int, int);
-int miqt_exec_callback_QAbstractItemView_HorizontalOffset(void*, intptr_t);
-int miqt_exec_callback_QAbstractItemView_VerticalOffset(void*, intptr_t);
-bool miqt_exec_callback_QAbstractItemView_IsIndexHidden(void*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QAbstractItemView_SetSelection(void*, intptr_t, QRect*, int);
-QRegion* miqt_exec_callback_QAbstractItemView_VisualRegionForSelection(void*, intptr_t, QItemSelection*);
-struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QAbstractItemView_SelectedIndexes(void*, intptr_t);
-bool miqt_exec_callback_QAbstractItemView_Edit2(void*, intptr_t, QModelIndex*, int, QEvent*);
-int miqt_exec_callback_QAbstractItemView_SelectionCommand(void*, intptr_t, QModelIndex*, QEvent*);
-void miqt_exec_callback_QAbstractItemView_StartDrag(void*, intptr_t, int);
-QStyleOptionViewItem* miqt_exec_callback_QAbstractItemView_ViewOptions(void*, intptr_t);
-bool miqt_exec_callback_QAbstractItemView_FocusNextPrevChild(void*, intptr_t, bool);
-bool miqt_exec_callback_QAbstractItemView_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QAbstractItemView_ViewportEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QAbstractItemView_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QAbstractItemView_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QAbstractItemView_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QAbstractItemView_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QAbstractItemView_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QAbstractItemView_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QAbstractItemView_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QAbstractItemView_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QAbstractItemView_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QAbstractItemView_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QAbstractItemView_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QAbstractItemView_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QAbstractItemView_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QAbstractItemView_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-bool miqt_exec_callback_QAbstractItemView_EventFilter(void*, intptr_t, QObject*, QEvent*);
-QSize* miqt_exec_callback_QAbstractItemView_ViewportSizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QAbstractItemView_MinimumSizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QAbstractItemView_SizeHint(void*, intptr_t);
-void miqt_exec_callback_QAbstractItemView_SetupViewport(void*, intptr_t, QWidget*);
-void miqt_exec_callback_QAbstractItemView_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QAbstractItemView_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QAbstractItemView_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QAbstractItemView_ScrollContentsBy(void*, intptr_t, int, int);
-void miqt_exec_callback_QAbstractItemView_ChangeEvent(void*, intptr_t, QEvent*);
-int miqt_exec_callback_QAbstractItemView_DevType(void*, intptr_t);
-void miqt_exec_callback_QAbstractItemView_SetVisible(void*, intptr_t, bool);
-int miqt_exec_callback_QAbstractItemView_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QAbstractItemView_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QAbstractItemView_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QAbstractItemView_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QAbstractItemView_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QAbstractItemView_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QAbstractItemView_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QAbstractItemView_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QAbstractItemView_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QAbstractItemView_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QAbstractItemView_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QAbstractItemView_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QAbstractItemView_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-int miqt_exec_callback_QAbstractItemView_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QAbstractItemView_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QAbstractItemView_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QAbstractItemView_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QAbstractItemView_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QAbstractItemView_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QAbstractItemView_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QAbstractItemView_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAbstractItemView_SetModel(QAbstractItemView*, intptr_t, QAbstractItemModel*);
+void miqt_exec_callback_QAbstractItemView_SetSelectionModel(QAbstractItemView*, intptr_t, QItemSelectionModel*);
+void miqt_exec_callback_QAbstractItemView_KeyboardSearch(QAbstractItemView*, intptr_t, struct miqt_string);
+QRect* miqt_exec_callback_QAbstractItemView_VisualRect(const QAbstractItemView*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QAbstractItemView_ScrollTo(QAbstractItemView*, intptr_t, QModelIndex*, int);
+QModelIndex* miqt_exec_callback_QAbstractItemView_IndexAt(const QAbstractItemView*, intptr_t, QPoint*);
+int miqt_exec_callback_QAbstractItemView_SizeHintForRow(const QAbstractItemView*, intptr_t, int);
+int miqt_exec_callback_QAbstractItemView_SizeHintForColumn(const QAbstractItemView*, intptr_t, int);
+QVariant* miqt_exec_callback_QAbstractItemView_InputMethodQuery(const QAbstractItemView*, intptr_t, int);
+void miqt_exec_callback_QAbstractItemView_Reset(QAbstractItemView*, intptr_t);
+void miqt_exec_callback_QAbstractItemView_SetRootIndex(QAbstractItemView*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QAbstractItemView_DoItemsLayout(QAbstractItemView*, intptr_t);
+void miqt_exec_callback_QAbstractItemView_SelectAll(QAbstractItemView*, intptr_t);
+void miqt_exec_callback_QAbstractItemView_DataChanged(QAbstractItemView*, intptr_t, QModelIndex*, QModelIndex*, struct miqt_array /* of int */ );
+void miqt_exec_callback_QAbstractItemView_RowsInserted(QAbstractItemView*, intptr_t, QModelIndex*, int, int);
+void miqt_exec_callback_QAbstractItemView_RowsAboutToBeRemoved(QAbstractItemView*, intptr_t, QModelIndex*, int, int);
+void miqt_exec_callback_QAbstractItemView_SelectionChanged(QAbstractItemView*, intptr_t, QItemSelection*, QItemSelection*);
+void miqt_exec_callback_QAbstractItemView_CurrentChanged(QAbstractItemView*, intptr_t, QModelIndex*, QModelIndex*);
+void miqt_exec_callback_QAbstractItemView_UpdateEditorData(QAbstractItemView*, intptr_t);
+void miqt_exec_callback_QAbstractItemView_UpdateEditorGeometries(QAbstractItemView*, intptr_t);
+void miqt_exec_callback_QAbstractItemView_UpdateGeometries(QAbstractItemView*, intptr_t);
+void miqt_exec_callback_QAbstractItemView_VerticalScrollbarAction(QAbstractItemView*, intptr_t, int);
+void miqt_exec_callback_QAbstractItemView_HorizontalScrollbarAction(QAbstractItemView*, intptr_t, int);
+void miqt_exec_callback_QAbstractItemView_VerticalScrollbarValueChanged(QAbstractItemView*, intptr_t, int);
+void miqt_exec_callback_QAbstractItemView_HorizontalScrollbarValueChanged(QAbstractItemView*, intptr_t, int);
+void miqt_exec_callback_QAbstractItemView_CloseEditor(QAbstractItemView*, intptr_t, QWidget*, int);
+void miqt_exec_callback_QAbstractItemView_CommitData(QAbstractItemView*, intptr_t, QWidget*);
+void miqt_exec_callback_QAbstractItemView_EditorDestroyed(QAbstractItemView*, intptr_t, QObject*);
+QModelIndex* miqt_exec_callback_QAbstractItemView_MoveCursor(QAbstractItemView*, intptr_t, int, int);
+int miqt_exec_callback_QAbstractItemView_HorizontalOffset(const QAbstractItemView*, intptr_t);
+int miqt_exec_callback_QAbstractItemView_VerticalOffset(const QAbstractItemView*, intptr_t);
+bool miqt_exec_callback_QAbstractItemView_IsIndexHidden(const QAbstractItemView*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QAbstractItemView_SetSelection(QAbstractItemView*, intptr_t, QRect*, int);
+QRegion* miqt_exec_callback_QAbstractItemView_VisualRegionForSelection(const QAbstractItemView*, intptr_t, QItemSelection*);
+struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QAbstractItemView_SelectedIndexes(const QAbstractItemView*, intptr_t);
+bool miqt_exec_callback_QAbstractItemView_Edit2(QAbstractItemView*, intptr_t, QModelIndex*, int, QEvent*);
+int miqt_exec_callback_QAbstractItemView_SelectionCommand(const QAbstractItemView*, intptr_t, QModelIndex*, QEvent*);
+void miqt_exec_callback_QAbstractItemView_StartDrag(QAbstractItemView*, intptr_t, int);
+QStyleOptionViewItem* miqt_exec_callback_QAbstractItemView_ViewOptions(const QAbstractItemView*, intptr_t);
+bool miqt_exec_callback_QAbstractItemView_FocusNextPrevChild(QAbstractItemView*, intptr_t, bool);
+bool miqt_exec_callback_QAbstractItemView_Event(QAbstractItemView*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAbstractItemView_ViewportEvent(QAbstractItemView*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractItemView_MousePressEvent(QAbstractItemView*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QAbstractItemView_MouseMoveEvent(QAbstractItemView*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QAbstractItemView_MouseReleaseEvent(QAbstractItemView*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QAbstractItemView_MouseDoubleClickEvent(QAbstractItemView*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QAbstractItemView_DragEnterEvent(QAbstractItemView*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QAbstractItemView_DragMoveEvent(QAbstractItemView*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QAbstractItemView_DragLeaveEvent(QAbstractItemView*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QAbstractItemView_DropEvent(QAbstractItemView*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QAbstractItemView_FocusInEvent(QAbstractItemView*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QAbstractItemView_FocusOutEvent(QAbstractItemView*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QAbstractItemView_KeyPressEvent(QAbstractItemView*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QAbstractItemView_ResizeEvent(QAbstractItemView*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QAbstractItemView_TimerEvent(QAbstractItemView*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAbstractItemView_InputMethodEvent(QAbstractItemView*, intptr_t, QInputMethodEvent*);
+bool miqt_exec_callback_QAbstractItemView_EventFilter(QAbstractItemView*, intptr_t, QObject*, QEvent*);
+QSize* miqt_exec_callback_QAbstractItemView_ViewportSizeHint(const QAbstractItemView*, intptr_t);
+QSize* miqt_exec_callback_QAbstractItemView_MinimumSizeHint(const QAbstractItemView*, intptr_t);
+QSize* miqt_exec_callback_QAbstractItemView_SizeHint(const QAbstractItemView*, intptr_t);
+void miqt_exec_callback_QAbstractItemView_SetupViewport(QAbstractItemView*, intptr_t, QWidget*);
+void miqt_exec_callback_QAbstractItemView_PaintEvent(QAbstractItemView*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QAbstractItemView_WheelEvent(QAbstractItemView*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QAbstractItemView_ContextMenuEvent(QAbstractItemView*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QAbstractItemView_ScrollContentsBy(QAbstractItemView*, intptr_t, int, int);
+void miqt_exec_callback_QAbstractItemView_ChangeEvent(QAbstractItemView*, intptr_t, QEvent*);
+int miqt_exec_callback_QAbstractItemView_DevType(const QAbstractItemView*, intptr_t);
+void miqt_exec_callback_QAbstractItemView_SetVisible(QAbstractItemView*, intptr_t, bool);
+int miqt_exec_callback_QAbstractItemView_HeightForWidth(const QAbstractItemView*, intptr_t, int);
+bool miqt_exec_callback_QAbstractItemView_HasHeightForWidth(const QAbstractItemView*, intptr_t);
+QPaintEngine* miqt_exec_callback_QAbstractItemView_PaintEngine(const QAbstractItemView*, intptr_t);
+void miqt_exec_callback_QAbstractItemView_KeyReleaseEvent(QAbstractItemView*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QAbstractItemView_EnterEvent(QAbstractItemView*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractItemView_LeaveEvent(QAbstractItemView*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractItemView_MoveEvent(QAbstractItemView*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QAbstractItemView_CloseEvent(QAbstractItemView*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QAbstractItemView_TabletEvent(QAbstractItemView*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QAbstractItemView_ActionEvent(QAbstractItemView*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QAbstractItemView_ShowEvent(QAbstractItemView*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QAbstractItemView_HideEvent(QAbstractItemView*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QAbstractItemView_NativeEvent(QAbstractItemView*, intptr_t, struct miqt_string, void*, long*);
+int miqt_exec_callback_QAbstractItemView_Metric(const QAbstractItemView*, intptr_t, int);
+void miqt_exec_callback_QAbstractItemView_InitPainter(const QAbstractItemView*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QAbstractItemView_Redirected(const QAbstractItemView*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QAbstractItemView_SharedPainter(const QAbstractItemView*, intptr_t);
+void miqt_exec_callback_QAbstractItemView_ChildEvent(QAbstractItemView*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAbstractItemView_CustomEvent(QAbstractItemView*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractItemView_ConnectNotify(QAbstractItemView*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAbstractItemView_DisconnectNotify(QAbstractItemView*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -253,7 +253,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		QRect* callback_return_value = miqt_exec_callback_QAbstractItemView_VisualRect(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__VisualRect, sigval1);
+		QRect* callback_return_value = miqt_exec_callback_QAbstractItemView_VisualRect(this, handle__VisualRect, sigval1);
 
 		return *callback_return_value;
 	}
@@ -291,7 +291,7 @@ public:
 		// Cast returned reference into pointer
 		QPoint* sigval1 = const_cast<QPoint*>(&point_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QAbstractItemView_IndexAt(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__IndexAt, sigval1);
+		QModelIndex* callback_return_value = miqt_exec_callback_QAbstractItemView_IndexAt(this, handle__IndexAt, sigval1);
 
 		return *callback_return_value;
 	}
@@ -307,7 +307,7 @@ public:
 		
 		int sigval1 = row;
 
-		int callback_return_value = miqt_exec_callback_QAbstractItemView_SizeHintForRow(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__SizeHintForRow, sigval1);
+		int callback_return_value = miqt_exec_callback_QAbstractItemView_SizeHintForRow(this, handle__SizeHintForRow, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -330,7 +330,7 @@ public:
 		
 		int sigval1 = column;
 
-		int callback_return_value = miqt_exec_callback_QAbstractItemView_SizeHintForColumn(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__SizeHintForColumn, sigval1);
+		int callback_return_value = miqt_exec_callback_QAbstractItemView_SizeHintForColumn(this, handle__SizeHintForColumn, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -354,7 +354,7 @@ public:
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QAbstractItemView_InputMethodQuery(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QAbstractItemView_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}
@@ -888,7 +888,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QAbstractItemView_HorizontalOffset(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__HorizontalOffset);
+		int callback_return_value = miqt_exec_callback_QAbstractItemView_HorizontalOffset(this, handle__HorizontalOffset);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -903,7 +903,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QAbstractItemView_VerticalOffset(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__VerticalOffset);
+		int callback_return_value = miqt_exec_callback_QAbstractItemView_VerticalOffset(this, handle__VerticalOffset);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -921,7 +921,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		bool callback_return_value = miqt_exec_callback_QAbstractItemView_IsIndexHidden(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__IsIndexHidden, sigval1);
+		bool callback_return_value = miqt_exec_callback_QAbstractItemView_IsIndexHidden(this, handle__IsIndexHidden, sigval1);
 
 		return callback_return_value;
 	}
@@ -959,7 +959,7 @@ public:
 		// Cast returned reference into pointer
 		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selection_ret);
 
-		QRegion* callback_return_value = miqt_exec_callback_QAbstractItemView_VisualRegionForSelection(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__VisualRegionForSelection, sigval1);
+		QRegion* callback_return_value = miqt_exec_callback_QAbstractItemView_VisualRegionForSelection(this, handle__VisualRegionForSelection, sigval1);
 
 		return *callback_return_value;
 	}
@@ -974,7 +974,7 @@ public:
 		}
 		
 
-		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QAbstractItemView_SelectedIndexes(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__SelectedIndexes);
+		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QAbstractItemView_SelectedIndexes(this, handle__SelectedIndexes);
 		QModelIndexList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		QModelIndex** callback_return_value_arr = static_cast<QModelIndex**>(callback_return_value.data);
@@ -1043,7 +1043,7 @@ public:
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		QEvent* sigval2 = (QEvent*) event;
 
-		int callback_return_value = miqt_exec_callback_QAbstractItemView_SelectionCommand(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__SelectionCommand, sigval1, sigval2);
+		int callback_return_value = miqt_exec_callback_QAbstractItemView_SelectionCommand(this, handle__SelectionCommand, sigval1, sigval2);
 
 		return static_cast<QItemSelectionModel::SelectionFlags>(callback_return_value);
 	}
@@ -1091,7 +1091,7 @@ public:
 		}
 		
 
-		QStyleOptionViewItem* callback_return_value = miqt_exec_callback_QAbstractItemView_ViewOptions(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__ViewOptions);
+		QStyleOptionViewItem* callback_return_value = miqt_exec_callback_QAbstractItemView_ViewOptions(this, handle__ViewOptions);
 
 		return *callback_return_value;
 	}
@@ -1542,7 +1542,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QAbstractItemView_ViewportSizeHint(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__ViewportSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QAbstractItemView_ViewportSizeHint(this, handle__ViewportSizeHint);
 
 		return *callback_return_value;
 	}
@@ -1564,7 +1564,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QAbstractItemView_MinimumSizeHint(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QAbstractItemView_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -1586,7 +1586,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QAbstractItemView_SizeHint(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QAbstractItemView_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -1753,7 +1753,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QAbstractItemView_DevType(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QAbstractItemView_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1800,7 +1800,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QAbstractItemView_HeightForWidth(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QAbstractItemView_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1822,7 +1822,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QAbstractItemView_HasHeightForWidth(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QAbstractItemView_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -1844,7 +1844,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QAbstractItemView_PaintEngine(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QAbstractItemView_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -2115,7 +2115,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QAbstractItemView_Metric(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QAbstractItemView_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -2139,7 +2139,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QAbstractItemView_InitPainter(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QAbstractItemView_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -2162,7 +2162,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QAbstractItemView_Redirected(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QAbstractItemView_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -2184,7 +2184,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QAbstractItemView_SharedPainter(const_cast<MiqtVirtualQAbstractItemView*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QAbstractItemView_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}

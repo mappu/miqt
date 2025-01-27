@@ -49,54 +49,54 @@ extern "C" {
 
 void miqt_exec_callback_QLabel_LinkActivated(intptr_t, struct miqt_string);
 void miqt_exec_callback_QLabel_LinkHovered(intptr_t, struct miqt_string);
-QSize* miqt_exec_callback_QLabel_SizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QLabel_MinimumSizeHint(void*, intptr_t);
-int miqt_exec_callback_QLabel_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QLabel_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QLabel_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QLabel_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QLabel_ChangeEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QLabel_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QLabel_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QLabel_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QLabel_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QLabel_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QLabel_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-bool miqt_exec_callback_QLabel_FocusNextPrevChild(void*, intptr_t, bool);
-void miqt_exec_callback_QLabel_InitStyleOption(void*, intptr_t, QStyleOptionFrame*);
-int miqt_exec_callback_QLabel_DevType(void*, intptr_t);
-void miqt_exec_callback_QLabel_SetVisible(void*, intptr_t, bool);
-bool miqt_exec_callback_QLabel_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QLabel_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QLabel_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QLabel_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QLabel_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QLabel_EnterEvent(void*, intptr_t, QEnterEvent*);
-void miqt_exec_callback_QLabel_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QLabel_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QLabel_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QLabel_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QLabel_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QLabel_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QLabel_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QLabel_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QLabel_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QLabel_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QLabel_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QLabel_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QLabel_NativeEvent(void*, intptr_t, struct miqt_string, void*, intptr_t*);
-int miqt_exec_callback_QLabel_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QLabel_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QLabel_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QLabel_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QLabel_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QLabel_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QLabel_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QLabel_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QLabel_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QLabel_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QLabel_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QLabel_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QSize* miqt_exec_callback_QLabel_SizeHint(const QLabel*, intptr_t);
+QSize* miqt_exec_callback_QLabel_MinimumSizeHint(const QLabel*, intptr_t);
+int miqt_exec_callback_QLabel_HeightForWidth(const QLabel*, intptr_t, int);
+bool miqt_exec_callback_QLabel_Event(QLabel*, intptr_t, QEvent*);
+void miqt_exec_callback_QLabel_KeyPressEvent(QLabel*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QLabel_PaintEvent(QLabel*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QLabel_ChangeEvent(QLabel*, intptr_t, QEvent*);
+void miqt_exec_callback_QLabel_MousePressEvent(QLabel*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QLabel_MouseMoveEvent(QLabel*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QLabel_MouseReleaseEvent(QLabel*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QLabel_ContextMenuEvent(QLabel*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QLabel_FocusInEvent(QLabel*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QLabel_FocusOutEvent(QLabel*, intptr_t, QFocusEvent*);
+bool miqt_exec_callback_QLabel_FocusNextPrevChild(QLabel*, intptr_t, bool);
+void miqt_exec_callback_QLabel_InitStyleOption(const QLabel*, intptr_t, QStyleOptionFrame*);
+int miqt_exec_callback_QLabel_DevType(const QLabel*, intptr_t);
+void miqt_exec_callback_QLabel_SetVisible(QLabel*, intptr_t, bool);
+bool miqt_exec_callback_QLabel_HasHeightForWidth(const QLabel*, intptr_t);
+QPaintEngine* miqt_exec_callback_QLabel_PaintEngine(const QLabel*, intptr_t);
+void miqt_exec_callback_QLabel_MouseDoubleClickEvent(QLabel*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QLabel_WheelEvent(QLabel*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QLabel_KeyReleaseEvent(QLabel*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QLabel_EnterEvent(QLabel*, intptr_t, QEnterEvent*);
+void miqt_exec_callback_QLabel_LeaveEvent(QLabel*, intptr_t, QEvent*);
+void miqt_exec_callback_QLabel_MoveEvent(QLabel*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QLabel_ResizeEvent(QLabel*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QLabel_CloseEvent(QLabel*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QLabel_TabletEvent(QLabel*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QLabel_ActionEvent(QLabel*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QLabel_DragEnterEvent(QLabel*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QLabel_DragMoveEvent(QLabel*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QLabel_DragLeaveEvent(QLabel*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QLabel_DropEvent(QLabel*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QLabel_ShowEvent(QLabel*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QLabel_HideEvent(QLabel*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QLabel_NativeEvent(QLabel*, intptr_t, struct miqt_string, void*, intptr_t*);
+int miqt_exec_callback_QLabel_Metric(const QLabel*, intptr_t, int);
+void miqt_exec_callback_QLabel_InitPainter(const QLabel*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QLabel_Redirected(const QLabel*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QLabel_SharedPainter(const QLabel*, intptr_t);
+void miqt_exec_callback_QLabel_InputMethodEvent(QLabel*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QLabel_InputMethodQuery(const QLabel*, intptr_t, int);
+bool miqt_exec_callback_QLabel_EventFilter(QLabel*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QLabel_TimerEvent(QLabel*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QLabel_ChildEvent(QLabel*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QLabel_CustomEvent(QLabel*, intptr_t, QEvent*);
+void miqt_exec_callback_QLabel_ConnectNotify(QLabel*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QLabel_DisconnectNotify(QLabel*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -123,7 +123,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QLabel_SizeHint(const_cast<MiqtVirtualQLabel*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QLabel_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -145,7 +145,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QLabel_MinimumSizeHint(const_cast<MiqtVirtualQLabel*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QLabel_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -168,7 +168,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QLabel_HeightForWidth(const_cast<MiqtVirtualQLabel*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QLabel_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -454,7 +454,7 @@ public:
 		
 		QStyleOptionFrame* sigval1 = option;
 
-		miqt_exec_callback_QLabel_InitStyleOption(const_cast<MiqtVirtualQLabel*>(this), handle__InitStyleOption, sigval1);
+		miqt_exec_callback_QLabel_InitStyleOption(this, handle__InitStyleOption, sigval1);
 
 		
 	}
@@ -476,7 +476,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QLabel_DevType(const_cast<MiqtVirtualQLabel*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QLabel_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -522,7 +522,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QLabel_HasHeightForWidth(const_cast<MiqtVirtualQLabel*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QLabel_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -544,7 +544,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QLabel_PaintEngine(const_cast<MiqtVirtualQLabel*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QLabel_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -984,7 +984,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QLabel_Metric(const_cast<MiqtVirtualQLabel*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QLabel_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1008,7 +1008,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QLabel_InitPainter(const_cast<MiqtVirtualQLabel*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QLabel_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -1031,7 +1031,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QLabel_Redirected(const_cast<MiqtVirtualQLabel*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QLabel_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1053,7 +1053,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QLabel_SharedPainter(const_cast<MiqtVirtualQLabel*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QLabel_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -1101,7 +1101,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QLabel_InputMethodQuery(const_cast<MiqtVirtualQLabel*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QLabel_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}

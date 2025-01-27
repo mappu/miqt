@@ -40,41 +40,41 @@ void miqt_exec_callback_QSslSocket_NewSessionTicketReceived(intptr_t);
 void miqt_exec_callback_QSslSocket_AlertSent(intptr_t, int, int, struct miqt_string);
 void miqt_exec_callback_QSslSocket_AlertReceived(intptr_t, int, int, struct miqt_string);
 void miqt_exec_callback_QSslSocket_HandshakeInterruptedOnError(intptr_t, QSslError*);
-void miqt_exec_callback_QSslSocket_Resume(void*, intptr_t);
-bool miqt_exec_callback_QSslSocket_SetSocketDescriptor(void*, intptr_t, intptr_t, int, int);
-void miqt_exec_callback_QSslSocket_ConnectToHost(void*, intptr_t, struct miqt_string, uint16_t, int, int);
-void miqt_exec_callback_QSslSocket_DisconnectFromHost(void*, intptr_t);
-void miqt_exec_callback_QSslSocket_SetSocketOption(void*, intptr_t, int, QVariant*);
-QVariant* miqt_exec_callback_QSslSocket_SocketOption(void*, intptr_t, int);
-long long miqt_exec_callback_QSslSocket_BytesAvailable(void*, intptr_t);
-long long miqt_exec_callback_QSslSocket_BytesToWrite(void*, intptr_t);
-bool miqt_exec_callback_QSslSocket_CanReadLine(void*, intptr_t);
-void miqt_exec_callback_QSslSocket_Close(void*, intptr_t);
-bool miqt_exec_callback_QSslSocket_AtEnd(void*, intptr_t);
-void miqt_exec_callback_QSslSocket_SetReadBufferSize(void*, intptr_t, long long);
-bool miqt_exec_callback_QSslSocket_WaitForConnected(void*, intptr_t, int);
-bool miqt_exec_callback_QSslSocket_WaitForReadyRead(void*, intptr_t, int);
-bool miqt_exec_callback_QSslSocket_WaitForBytesWritten(void*, intptr_t, int);
-bool miqt_exec_callback_QSslSocket_WaitForDisconnected(void*, intptr_t, int);
-long long miqt_exec_callback_QSslSocket_ReadData(void*, intptr_t, char*, long long);
-long long miqt_exec_callback_QSslSocket_SkipData(void*, intptr_t, long long);
-long long miqt_exec_callback_QSslSocket_WriteData(void*, intptr_t, const char*, long long);
-bool miqt_exec_callback_QSslSocket_Bind(void*, intptr_t, QHostAddress*, uint16_t, int);
-intptr_t miqt_exec_callback_QSslSocket_SocketDescriptor(void*, intptr_t);
-bool miqt_exec_callback_QSslSocket_IsSequential(void*, intptr_t);
-long long miqt_exec_callback_QSslSocket_ReadLineData(void*, intptr_t, char*, long long);
-bool miqt_exec_callback_QSslSocket_Open(void*, intptr_t, int);
-long long miqt_exec_callback_QSslSocket_Pos(void*, intptr_t);
-long long miqt_exec_callback_QSslSocket_Size(void*, intptr_t);
-bool miqt_exec_callback_QSslSocket_Seek(void*, intptr_t, long long);
-bool miqt_exec_callback_QSslSocket_Reset(void*, intptr_t);
-bool miqt_exec_callback_QSslSocket_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QSslSocket_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QSslSocket_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QSslSocket_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QSslSocket_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSslSocket_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QSslSocket_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSslSocket_Resume(QSslSocket*, intptr_t);
+bool miqt_exec_callback_QSslSocket_SetSocketDescriptor(QSslSocket*, intptr_t, intptr_t, int, int);
+void miqt_exec_callback_QSslSocket_ConnectToHost(QSslSocket*, intptr_t, struct miqt_string, uint16_t, int, int);
+void miqt_exec_callback_QSslSocket_DisconnectFromHost(QSslSocket*, intptr_t);
+void miqt_exec_callback_QSslSocket_SetSocketOption(QSslSocket*, intptr_t, int, QVariant*);
+QVariant* miqt_exec_callback_QSslSocket_SocketOption(QSslSocket*, intptr_t, int);
+long long miqt_exec_callback_QSslSocket_BytesAvailable(const QSslSocket*, intptr_t);
+long long miqt_exec_callback_QSslSocket_BytesToWrite(const QSslSocket*, intptr_t);
+bool miqt_exec_callback_QSslSocket_CanReadLine(const QSslSocket*, intptr_t);
+void miqt_exec_callback_QSslSocket_Close(QSslSocket*, intptr_t);
+bool miqt_exec_callback_QSslSocket_AtEnd(const QSslSocket*, intptr_t);
+void miqt_exec_callback_QSslSocket_SetReadBufferSize(QSslSocket*, intptr_t, long long);
+bool miqt_exec_callback_QSslSocket_WaitForConnected(QSslSocket*, intptr_t, int);
+bool miqt_exec_callback_QSslSocket_WaitForReadyRead(QSslSocket*, intptr_t, int);
+bool miqt_exec_callback_QSslSocket_WaitForBytesWritten(QSslSocket*, intptr_t, int);
+bool miqt_exec_callback_QSslSocket_WaitForDisconnected(QSslSocket*, intptr_t, int);
+long long miqt_exec_callback_QSslSocket_ReadData(QSslSocket*, intptr_t, char*, long long);
+long long miqt_exec_callback_QSslSocket_SkipData(QSslSocket*, intptr_t, long long);
+long long miqt_exec_callback_QSslSocket_WriteData(QSslSocket*, intptr_t, const char*, long long);
+bool miqt_exec_callback_QSslSocket_Bind(QSslSocket*, intptr_t, QHostAddress*, uint16_t, int);
+intptr_t miqt_exec_callback_QSslSocket_SocketDescriptor(const QSslSocket*, intptr_t);
+bool miqt_exec_callback_QSslSocket_IsSequential(const QSslSocket*, intptr_t);
+long long miqt_exec_callback_QSslSocket_ReadLineData(QSslSocket*, intptr_t, char*, long long);
+bool miqt_exec_callback_QSslSocket_Open(QSslSocket*, intptr_t, int);
+long long miqt_exec_callback_QSslSocket_Pos(const QSslSocket*, intptr_t);
+long long miqt_exec_callback_QSslSocket_Size(const QSslSocket*, intptr_t);
+bool miqt_exec_callback_QSslSocket_Seek(QSslSocket*, intptr_t, long long);
+bool miqt_exec_callback_QSslSocket_Reset(QSslSocket*, intptr_t);
+bool miqt_exec_callback_QSslSocket_Event(QSslSocket*, intptr_t, QEvent*);
+bool miqt_exec_callback_QSslSocket_EventFilter(QSslSocket*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QSslSocket_TimerEvent(QSslSocket*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSslSocket_ChildEvent(QSslSocket*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QSslSocket_CustomEvent(QSslSocket*, intptr_t, QEvent*);
+void miqt_exec_callback_QSslSocket_ConnectNotify(QSslSocket*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSslSocket_DisconnectNotify(QSslSocket*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -261,7 +261,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QSslSocket_BytesAvailable(const_cast<MiqtVirtualQSslSocket*>(this), handle__BytesAvailable);
+		long long callback_return_value = miqt_exec_callback_QSslSocket_BytesAvailable(this, handle__BytesAvailable);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -284,7 +284,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QSslSocket_BytesToWrite(const_cast<MiqtVirtualQSslSocket*>(this), handle__BytesToWrite);
+		long long callback_return_value = miqt_exec_callback_QSslSocket_BytesToWrite(this, handle__BytesToWrite);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -307,7 +307,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QSslSocket_CanReadLine(const_cast<MiqtVirtualQSslSocket*>(this), handle__CanReadLine);
+		bool callback_return_value = miqt_exec_callback_QSslSocket_CanReadLine(this, handle__CanReadLine);
 
 		return callback_return_value;
 	}
@@ -352,7 +352,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QSslSocket_AtEnd(const_cast<MiqtVirtualQSslSocket*>(this), handle__AtEnd);
+		bool callback_return_value = miqt_exec_callback_QSslSocket_AtEnd(this, handle__AtEnd);
 
 		return callback_return_value;
 	}
@@ -597,7 +597,7 @@ public:
 		}
 		
 
-		intptr_t callback_return_value = miqt_exec_callback_QSslSocket_SocketDescriptor(const_cast<MiqtVirtualQSslSocket*>(this), handle__SocketDescriptor);
+		intptr_t callback_return_value = miqt_exec_callback_QSslSocket_SocketDescriptor(this, handle__SocketDescriptor);
 
 		return (qintptr)(callback_return_value);
 	}
@@ -620,7 +620,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QSslSocket_IsSequential(const_cast<MiqtVirtualQSslSocket*>(this), handle__IsSequential);
+		bool callback_return_value = miqt_exec_callback_QSslSocket_IsSequential(this, handle__IsSequential);
 
 		return callback_return_value;
 	}
@@ -692,7 +692,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QSslSocket_Pos(const_cast<MiqtVirtualQSslSocket*>(this), handle__Pos);
+		long long callback_return_value = miqt_exec_callback_QSslSocket_Pos(this, handle__Pos);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -715,7 +715,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QSslSocket_Size(const_cast<MiqtVirtualQSslSocket*>(this), handle__Size);
+		long long callback_return_value = miqt_exec_callback_QSslSocket_Size(this, handle__Size);
 
 		return static_cast<qint64>(callback_return_value);
 	}

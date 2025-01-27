@@ -23,19 +23,19 @@ void miqt_exec_callback_QAbstractVideoSurface_ActiveChanged(intptr_t, bool);
 void miqt_exec_callback_QAbstractVideoSurface_SurfaceFormatChanged(intptr_t, QVideoSurfaceFormat*);
 void miqt_exec_callback_QAbstractVideoSurface_SupportedFormatsChanged(intptr_t);
 void miqt_exec_callback_QAbstractVideoSurface_NativeResolutionChanged(intptr_t, QSize*);
-struct miqt_array /* of int */  miqt_exec_callback_QAbstractVideoSurface_SupportedPixelFormats(void*, intptr_t, int);
-bool miqt_exec_callback_QAbstractVideoSurface_IsFormatSupported(void*, intptr_t, QVideoSurfaceFormat*);
-QVideoSurfaceFormat* miqt_exec_callback_QAbstractVideoSurface_NearestFormat(void*, intptr_t, QVideoSurfaceFormat*);
-bool miqt_exec_callback_QAbstractVideoSurface_Start(void*, intptr_t, QVideoSurfaceFormat*);
-void miqt_exec_callback_QAbstractVideoSurface_Stop(void*, intptr_t);
-bool miqt_exec_callback_QAbstractVideoSurface_Present(void*, intptr_t, QVideoFrame*);
-bool miqt_exec_callback_QAbstractVideoSurface_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QAbstractVideoSurface_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QAbstractVideoSurface_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QAbstractVideoSurface_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QAbstractVideoSurface_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QAbstractVideoSurface_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QAbstractVideoSurface_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+struct miqt_array /* of int */  miqt_exec_callback_QAbstractVideoSurface_SupportedPixelFormats(const QAbstractVideoSurface*, intptr_t, int);
+bool miqt_exec_callback_QAbstractVideoSurface_IsFormatSupported(const QAbstractVideoSurface*, intptr_t, QVideoSurfaceFormat*);
+QVideoSurfaceFormat* miqt_exec_callback_QAbstractVideoSurface_NearestFormat(const QAbstractVideoSurface*, intptr_t, QVideoSurfaceFormat*);
+bool miqt_exec_callback_QAbstractVideoSurface_Start(QAbstractVideoSurface*, intptr_t, QVideoSurfaceFormat*);
+void miqt_exec_callback_QAbstractVideoSurface_Stop(QAbstractVideoSurface*, intptr_t);
+bool miqt_exec_callback_QAbstractVideoSurface_Present(QAbstractVideoSurface*, intptr_t, QVideoFrame*);
+bool miqt_exec_callback_QAbstractVideoSurface_Event(QAbstractVideoSurface*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAbstractVideoSurface_EventFilter(QAbstractVideoSurface*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAbstractVideoSurface_TimerEvent(QAbstractVideoSurface*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAbstractVideoSurface_ChildEvent(QAbstractVideoSurface*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAbstractVideoSurface_CustomEvent(QAbstractVideoSurface*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractVideoSurface_ConnectNotify(QAbstractVideoSurface*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAbstractVideoSurface_DisconnectNotify(QAbstractVideoSurface*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -60,7 +60,7 @@ public:
 		QAbstractVideoBuffer::HandleType typeVal_ret = typeVal;
 		int sigval1 = static_cast<int>(typeVal_ret);
 
-		struct miqt_array /* of int */  callback_return_value = miqt_exec_callback_QAbstractVideoSurface_SupportedPixelFormats(const_cast<MiqtVirtualQAbstractVideoSurface*>(this), handle__SupportedPixelFormats, sigval1);
+		struct miqt_array /* of int */  callback_return_value = miqt_exec_callback_QAbstractVideoSurface_SupportedPixelFormats(this, handle__SupportedPixelFormats, sigval1);
 		QList<QVideoFrame::PixelFormat> callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		int* callback_return_value_arr = static_cast<int*>(callback_return_value.data);
@@ -84,7 +84,7 @@ public:
 		// Cast returned reference into pointer
 		QVideoSurfaceFormat* sigval1 = const_cast<QVideoSurfaceFormat*>(&format_ret);
 
-		bool callback_return_value = miqt_exec_callback_QAbstractVideoSurface_IsFormatSupported(const_cast<MiqtVirtualQAbstractVideoSurface*>(this), handle__IsFormatSupported, sigval1);
+		bool callback_return_value = miqt_exec_callback_QAbstractVideoSurface_IsFormatSupported(this, handle__IsFormatSupported, sigval1);
 
 		return callback_return_value;
 	}
@@ -109,7 +109,7 @@ public:
 		// Cast returned reference into pointer
 		QVideoSurfaceFormat* sigval1 = const_cast<QVideoSurfaceFormat*>(&format_ret);
 
-		QVideoSurfaceFormat* callback_return_value = miqt_exec_callback_QAbstractVideoSurface_NearestFormat(const_cast<MiqtVirtualQAbstractVideoSurface*>(this), handle__NearestFormat, sigval1);
+		QVideoSurfaceFormat* callback_return_value = miqt_exec_callback_QAbstractVideoSurface_NearestFormat(this, handle__NearestFormat, sigval1);
 
 		return *callback_return_value;
 	}

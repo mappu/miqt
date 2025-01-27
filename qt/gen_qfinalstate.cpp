@@ -17,15 +17,15 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QFinalState_OnEntry(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QFinalState_OnExit(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QFinalState_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QFinalState_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QFinalState_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QFinalState_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QFinalState_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QFinalState_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QFinalState_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QFinalState_OnEntry(QFinalState*, intptr_t, QEvent*);
+void miqt_exec_callback_QFinalState_OnExit(QFinalState*, intptr_t, QEvent*);
+bool miqt_exec_callback_QFinalState_Event(QFinalState*, intptr_t, QEvent*);
+bool miqt_exec_callback_QFinalState_EventFilter(QFinalState*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QFinalState_TimerEvent(QFinalState*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QFinalState_ChildEvent(QFinalState*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QFinalState_CustomEvent(QFinalState*, intptr_t, QEvent*);
+void miqt_exec_callback_QFinalState_ConnectNotify(QFinalState*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QFinalState_DisconnectNotify(QFinalState*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

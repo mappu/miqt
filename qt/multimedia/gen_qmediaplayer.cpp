@@ -42,18 +42,18 @@ void miqt_exec_callback_QMediaPlayer_AudioRoleChanged(intptr_t, int);
 void miqt_exec_callback_QMediaPlayer_CustomAudioRoleChanged(intptr_t, struct miqt_string);
 void miqt_exec_callback_QMediaPlayer_ErrorWithError(intptr_t, int);
 void miqt_exec_callback_QMediaPlayer_NetworkConfigurationChanged(intptr_t, QNetworkConfiguration*);
-int miqt_exec_callback_QMediaPlayer_Availability(void*, intptr_t);
-bool miqt_exec_callback_QMediaPlayer_Bind(void*, intptr_t, QObject*);
-void miqt_exec_callback_QMediaPlayer_Unbind(void*, intptr_t, QObject*);
-bool miqt_exec_callback_QMediaPlayer_IsAvailable(void*, intptr_t);
-QMediaService* miqt_exec_callback_QMediaPlayer_Service(void*, intptr_t);
-bool miqt_exec_callback_QMediaPlayer_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QMediaPlayer_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QMediaPlayer_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QMediaPlayer_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QMediaPlayer_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QMediaPlayer_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QMediaPlayer_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+int miqt_exec_callback_QMediaPlayer_Availability(const QMediaPlayer*, intptr_t);
+bool miqt_exec_callback_QMediaPlayer_Bind(QMediaPlayer*, intptr_t, QObject*);
+void miqt_exec_callback_QMediaPlayer_Unbind(QMediaPlayer*, intptr_t, QObject*);
+bool miqt_exec_callback_QMediaPlayer_IsAvailable(const QMediaPlayer*, intptr_t);
+QMediaService* miqt_exec_callback_QMediaPlayer_Service(const QMediaPlayer*, intptr_t);
+bool miqt_exec_callback_QMediaPlayer_Event(QMediaPlayer*, intptr_t, QEvent*);
+bool miqt_exec_callback_QMediaPlayer_EventFilter(QMediaPlayer*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QMediaPlayer_TimerEvent(QMediaPlayer*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QMediaPlayer_ChildEvent(QMediaPlayer*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QMediaPlayer_CustomEvent(QMediaPlayer*, intptr_t, QEvent*);
+void miqt_exec_callback_QMediaPlayer_ConnectNotify(QMediaPlayer*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QMediaPlayer_DisconnectNotify(QMediaPlayer*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -77,7 +77,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QMediaPlayer_Availability(const_cast<MiqtVirtualQMediaPlayer*>(this), handle__Availability);
+		int callback_return_value = miqt_exec_callback_QMediaPlayer_Availability(this, handle__Availability);
 
 		return static_cast<QMultimedia::AvailabilityStatus>(callback_return_value);
 	}
@@ -147,7 +147,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QMediaPlayer_IsAvailable(const_cast<MiqtVirtualQMediaPlayer*>(this), handle__IsAvailable);
+		bool callback_return_value = miqt_exec_callback_QMediaPlayer_IsAvailable(this, handle__IsAvailable);
 
 		return callback_return_value;
 	}
@@ -169,7 +169,7 @@ public:
 		}
 		
 
-		QMediaService* callback_return_value = miqt_exec_callback_QMediaPlayer_Service(const_cast<MiqtVirtualQMediaPlayer*>(this), handle__Service);
+		QMediaService* callback_return_value = miqt_exec_callback_QMediaPlayer_Service(this, handle__Service);
 
 		return callback_return_value;
 	}

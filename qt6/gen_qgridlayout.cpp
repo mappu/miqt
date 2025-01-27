@@ -21,36 +21,36 @@
 extern "C" {
 #endif
 
-QSize* miqt_exec_callback_QGridLayout_SizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QGridLayout_MinimumSize(void*, intptr_t);
-QSize* miqt_exec_callback_QGridLayout_MaximumSize(void*, intptr_t);
-void miqt_exec_callback_QGridLayout_SetSpacing(void*, intptr_t, int);
-int miqt_exec_callback_QGridLayout_Spacing(void*, intptr_t);
-bool miqt_exec_callback_QGridLayout_HasHeightForWidth(void*, intptr_t);
-int miqt_exec_callback_QGridLayout_HeightForWidth(void*, intptr_t, int);
-int miqt_exec_callback_QGridLayout_MinimumHeightForWidth(void*, intptr_t, int);
-int miqt_exec_callback_QGridLayout_ExpandingDirections(void*, intptr_t);
-void miqt_exec_callback_QGridLayout_Invalidate(void*, intptr_t);
-QLayoutItem* miqt_exec_callback_QGridLayout_ItemAt(void*, intptr_t, int);
-QLayoutItem* miqt_exec_callback_QGridLayout_TakeAt(void*, intptr_t, int);
-int miqt_exec_callback_QGridLayout_Count(void*, intptr_t);
-void miqt_exec_callback_QGridLayout_SetGeometry(void*, intptr_t, QRect*);
-void miqt_exec_callback_QGridLayout_AddItemWithQLayoutItem(void*, intptr_t, QLayoutItem*);
-QRect* miqt_exec_callback_QGridLayout_Geometry(void*, intptr_t);
-int miqt_exec_callback_QGridLayout_IndexOf(void*, intptr_t, QWidget*);
-bool miqt_exec_callback_QGridLayout_IsEmpty(void*, intptr_t);
-int miqt_exec_callback_QGridLayout_ControlTypes(void*, intptr_t);
-QLayoutItem* miqt_exec_callback_QGridLayout_ReplaceWidget(void*, intptr_t, QWidget*, QWidget*, int);
-QLayout* miqt_exec_callback_QGridLayout_Layout(void*, intptr_t);
-void miqt_exec_callback_QGridLayout_ChildEvent(void*, intptr_t, QChildEvent*);
-bool miqt_exec_callback_QGridLayout_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QGridLayout_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QGridLayout_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QGridLayout_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QGridLayout_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QGridLayout_DisconnectNotify(void*, intptr_t, QMetaMethod*);
-QWidget* miqt_exec_callback_QGridLayout_Widget(void*, intptr_t);
-QSpacerItem* miqt_exec_callback_QGridLayout_SpacerItem(void*, intptr_t);
+QSize* miqt_exec_callback_QGridLayout_SizeHint(const QGridLayout*, intptr_t);
+QSize* miqt_exec_callback_QGridLayout_MinimumSize(const QGridLayout*, intptr_t);
+QSize* miqt_exec_callback_QGridLayout_MaximumSize(const QGridLayout*, intptr_t);
+void miqt_exec_callback_QGridLayout_SetSpacing(QGridLayout*, intptr_t, int);
+int miqt_exec_callback_QGridLayout_Spacing(const QGridLayout*, intptr_t);
+bool miqt_exec_callback_QGridLayout_HasHeightForWidth(const QGridLayout*, intptr_t);
+int miqt_exec_callback_QGridLayout_HeightForWidth(const QGridLayout*, intptr_t, int);
+int miqt_exec_callback_QGridLayout_MinimumHeightForWidth(const QGridLayout*, intptr_t, int);
+int miqt_exec_callback_QGridLayout_ExpandingDirections(const QGridLayout*, intptr_t);
+void miqt_exec_callback_QGridLayout_Invalidate(QGridLayout*, intptr_t);
+QLayoutItem* miqt_exec_callback_QGridLayout_ItemAt(const QGridLayout*, intptr_t, int);
+QLayoutItem* miqt_exec_callback_QGridLayout_TakeAt(QGridLayout*, intptr_t, int);
+int miqt_exec_callback_QGridLayout_Count(const QGridLayout*, intptr_t);
+void miqt_exec_callback_QGridLayout_SetGeometry(QGridLayout*, intptr_t, QRect*);
+void miqt_exec_callback_QGridLayout_AddItemWithQLayoutItem(QGridLayout*, intptr_t, QLayoutItem*);
+QRect* miqt_exec_callback_QGridLayout_Geometry(const QGridLayout*, intptr_t);
+int miqt_exec_callback_QGridLayout_IndexOf(const QGridLayout*, intptr_t, QWidget*);
+bool miqt_exec_callback_QGridLayout_IsEmpty(const QGridLayout*, intptr_t);
+int miqt_exec_callback_QGridLayout_ControlTypes(const QGridLayout*, intptr_t);
+QLayoutItem* miqt_exec_callback_QGridLayout_ReplaceWidget(QGridLayout*, intptr_t, QWidget*, QWidget*, int);
+QLayout* miqt_exec_callback_QGridLayout_Layout(QGridLayout*, intptr_t);
+void miqt_exec_callback_QGridLayout_ChildEvent(QGridLayout*, intptr_t, QChildEvent*);
+bool miqt_exec_callback_QGridLayout_Event(QGridLayout*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGridLayout_EventFilter(QGridLayout*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QGridLayout_TimerEvent(QGridLayout*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QGridLayout_CustomEvent(QGridLayout*, intptr_t, QEvent*);
+void miqt_exec_callback_QGridLayout_ConnectNotify(QGridLayout*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGridLayout_DisconnectNotify(QGridLayout*, intptr_t, QMetaMethod*);
+QWidget* miqt_exec_callback_QGridLayout_Widget(const QGridLayout*, intptr_t);
+QSpacerItem* miqt_exec_callback_QGridLayout_SpacerItem(QGridLayout*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -73,7 +73,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QGridLayout_SizeHint(const_cast<MiqtVirtualQGridLayout*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QGridLayout_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -95,7 +95,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QGridLayout_MinimumSize(const_cast<MiqtVirtualQGridLayout*>(this), handle__MinimumSize);
+		QSize* callback_return_value = miqt_exec_callback_QGridLayout_MinimumSize(this, handle__MinimumSize);
 
 		return *callback_return_value;
 	}
@@ -117,7 +117,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QGridLayout_MaximumSize(const_cast<MiqtVirtualQGridLayout*>(this), handle__MaximumSize);
+		QSize* callback_return_value = miqt_exec_callback_QGridLayout_MaximumSize(this, handle__MaximumSize);
 
 		return *callback_return_value;
 	}
@@ -163,7 +163,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QGridLayout_Spacing(const_cast<MiqtVirtualQGridLayout*>(this), handle__Spacing);
+		int callback_return_value = miqt_exec_callback_QGridLayout_Spacing(this, handle__Spacing);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -185,7 +185,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QGridLayout_HasHeightForWidth(const_cast<MiqtVirtualQGridLayout*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QGridLayout_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -208,7 +208,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QGridLayout_HeightForWidth(const_cast<MiqtVirtualQGridLayout*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QGridLayout_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -231,7 +231,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QGridLayout_MinimumHeightForWidth(const_cast<MiqtVirtualQGridLayout*>(this), handle__MinimumHeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QGridLayout_MinimumHeightForWidth(this, handle__MinimumHeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -253,7 +253,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QGridLayout_ExpandingDirections(const_cast<MiqtVirtualQGridLayout*>(this), handle__ExpandingDirections);
+		int callback_return_value = miqt_exec_callback_QGridLayout_ExpandingDirections(this, handle__ExpandingDirections);
 
 		return static_cast<Qt::Orientations>(callback_return_value);
 	}
@@ -300,7 +300,7 @@ public:
 		
 		int sigval1 = index;
 
-		QLayoutItem* callback_return_value = miqt_exec_callback_QGridLayout_ItemAt(const_cast<MiqtVirtualQGridLayout*>(this), handle__ItemAt, sigval1);
+		QLayoutItem* callback_return_value = miqt_exec_callback_QGridLayout_ItemAt(this, handle__ItemAt, sigval1);
 
 		return callback_return_value;
 	}
@@ -345,7 +345,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QGridLayout_Count(const_cast<MiqtVirtualQGridLayout*>(this), handle__Count);
+		int callback_return_value = miqt_exec_callback_QGridLayout_Count(this, handle__Count);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -417,7 +417,7 @@ public:
 		}
 		
 
-		QRect* callback_return_value = miqt_exec_callback_QGridLayout_Geometry(const_cast<MiqtVirtualQGridLayout*>(this), handle__Geometry);
+		QRect* callback_return_value = miqt_exec_callback_QGridLayout_Geometry(this, handle__Geometry);
 
 		return *callback_return_value;
 	}
@@ -440,7 +440,7 @@ public:
 		
 		QWidget* sigval1 = (QWidget*) param1;
 
-		int callback_return_value = miqt_exec_callback_QGridLayout_IndexOf(const_cast<MiqtVirtualQGridLayout*>(this), handle__IndexOf, sigval1);
+		int callback_return_value = miqt_exec_callback_QGridLayout_IndexOf(this, handle__IndexOf, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -462,7 +462,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QGridLayout_IsEmpty(const_cast<MiqtVirtualQGridLayout*>(this), handle__IsEmpty);
+		bool callback_return_value = miqt_exec_callback_QGridLayout_IsEmpty(this, handle__IsEmpty);
 
 		return callback_return_value;
 	}
@@ -484,7 +484,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QGridLayout_ControlTypes(const_cast<MiqtVirtualQGridLayout*>(this), handle__ControlTypes);
+		int callback_return_value = miqt_exec_callback_QGridLayout_ControlTypes(this, handle__ControlTypes);
 
 		return static_cast<QSizePolicy::ControlTypes>(callback_return_value);
 	}
@@ -726,7 +726,7 @@ public:
 		}
 		
 
-		QWidget* callback_return_value = miqt_exec_callback_QGridLayout_Widget(const_cast<MiqtVirtualQGridLayout*>(this), handle__Widget);
+		QWidget* callback_return_value = miqt_exec_callback_QGridLayout_Widget(this, handle__Widget);
 
 		return callback_return_value;
 	}

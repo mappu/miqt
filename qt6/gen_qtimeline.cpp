@@ -16,14 +16,14 @@
 extern "C" {
 #endif
 
-double miqt_exec_callback_QTimeLine_ValueForTime(void*, intptr_t, int);
-void miqt_exec_callback_QTimeLine_TimerEvent(void*, intptr_t, QTimerEvent*);
-bool miqt_exec_callback_QTimeLine_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QTimeLine_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QTimeLine_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QTimeLine_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QTimeLine_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QTimeLine_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+double miqt_exec_callback_QTimeLine_ValueForTime(const QTimeLine*, intptr_t, int);
+void miqt_exec_callback_QTimeLine_TimerEvent(QTimeLine*, intptr_t, QTimerEvent*);
+bool miqt_exec_callback_QTimeLine_Event(QTimeLine*, intptr_t, QEvent*);
+bool miqt_exec_callback_QTimeLine_EventFilter(QTimeLine*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QTimeLine_ChildEvent(QTimeLine*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QTimeLine_CustomEvent(QTimeLine*, intptr_t, QEvent*);
+void miqt_exec_callback_QTimeLine_ConnectNotify(QTimeLine*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QTimeLine_DisconnectNotify(QTimeLine*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -48,7 +48,7 @@ public:
 		
 		int sigval1 = msec;
 
-		double callback_return_value = miqt_exec_callback_QTimeLine_ValueForTime(const_cast<MiqtVirtualQTimeLine*>(this), handle__ValueForTime, sigval1);
+		double callback_return_value = miqt_exec_callback_QTimeLine_ValueForTime(this, handle__ValueForTime, sigval1);
 
 		return static_cast<qreal>(callback_return_value);
 	}

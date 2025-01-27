@@ -19,22 +19,22 @@
 extern "C" {
 #endif
 
-long long miqt_exec_callback_QNetworkDiskCache_CacheSize(void*, intptr_t);
-QNetworkCacheMetaData* miqt_exec_callback_QNetworkDiskCache_MetaData(void*, intptr_t, QUrl*);
-void miqt_exec_callback_QNetworkDiskCache_UpdateMetaData(void*, intptr_t, QNetworkCacheMetaData*);
-QIODevice* miqt_exec_callback_QNetworkDiskCache_Data(void*, intptr_t, QUrl*);
-bool miqt_exec_callback_QNetworkDiskCache_Remove(void*, intptr_t, QUrl*);
-QIODevice* miqt_exec_callback_QNetworkDiskCache_Prepare(void*, intptr_t, QNetworkCacheMetaData*);
-void miqt_exec_callback_QNetworkDiskCache_Insert(void*, intptr_t, QIODevice*);
-void miqt_exec_callback_QNetworkDiskCache_Clear(void*, intptr_t);
-long long miqt_exec_callback_QNetworkDiskCache_Expire(void*, intptr_t);
-bool miqt_exec_callback_QNetworkDiskCache_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QNetworkDiskCache_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QNetworkDiskCache_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QNetworkDiskCache_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QNetworkDiskCache_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QNetworkDiskCache_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QNetworkDiskCache_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+long long miqt_exec_callback_QNetworkDiskCache_CacheSize(const QNetworkDiskCache*, intptr_t);
+QNetworkCacheMetaData* miqt_exec_callback_QNetworkDiskCache_MetaData(QNetworkDiskCache*, intptr_t, QUrl*);
+void miqt_exec_callback_QNetworkDiskCache_UpdateMetaData(QNetworkDiskCache*, intptr_t, QNetworkCacheMetaData*);
+QIODevice* miqt_exec_callback_QNetworkDiskCache_Data(QNetworkDiskCache*, intptr_t, QUrl*);
+bool miqt_exec_callback_QNetworkDiskCache_Remove(QNetworkDiskCache*, intptr_t, QUrl*);
+QIODevice* miqt_exec_callback_QNetworkDiskCache_Prepare(QNetworkDiskCache*, intptr_t, QNetworkCacheMetaData*);
+void miqt_exec_callback_QNetworkDiskCache_Insert(QNetworkDiskCache*, intptr_t, QIODevice*);
+void miqt_exec_callback_QNetworkDiskCache_Clear(QNetworkDiskCache*, intptr_t);
+long long miqt_exec_callback_QNetworkDiskCache_Expire(QNetworkDiskCache*, intptr_t);
+bool miqt_exec_callback_QNetworkDiskCache_Event(QNetworkDiskCache*, intptr_t, QEvent*);
+bool miqt_exec_callback_QNetworkDiskCache_EventFilter(QNetworkDiskCache*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QNetworkDiskCache_TimerEvent(QNetworkDiskCache*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QNetworkDiskCache_ChildEvent(QNetworkDiskCache*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QNetworkDiskCache_CustomEvent(QNetworkDiskCache*, intptr_t, QEvent*);
+void miqt_exec_callback_QNetworkDiskCache_ConnectNotify(QNetworkDiskCache*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QNetworkDiskCache_DisconnectNotify(QNetworkDiskCache*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -57,7 +57,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QNetworkDiskCache_CacheSize(const_cast<MiqtVirtualQNetworkDiskCache*>(this), handle__CacheSize);
+		long long callback_return_value = miqt_exec_callback_QNetworkDiskCache_CacheSize(this, handle__CacheSize);
 
 		return static_cast<qint64>(callback_return_value);
 	}

@@ -25,13 +25,13 @@ void miqt_exec_callback_QButtonGroup_IdClicked(intptr_t, int);
 void miqt_exec_callback_QButtonGroup_IdPressed(intptr_t, int);
 void miqt_exec_callback_QButtonGroup_IdReleased(intptr_t, int);
 void miqt_exec_callback_QButtonGroup_IdToggled(intptr_t, int, bool);
-bool miqt_exec_callback_QButtonGroup_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QButtonGroup_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QButtonGroup_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QButtonGroup_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QButtonGroup_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QButtonGroup_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QButtonGroup_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QButtonGroup_Event(QButtonGroup*, intptr_t, QEvent*);
+bool miqt_exec_callback_QButtonGroup_EventFilter(QButtonGroup*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QButtonGroup_TimerEvent(QButtonGroup*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QButtonGroup_ChildEvent(QButtonGroup*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QButtonGroup_CustomEvent(QButtonGroup*, intptr_t, QEvent*);
+void miqt_exec_callback_QButtonGroup_ConnectNotify(QButtonGroup*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QButtonGroup_DisconnectNotify(QButtonGroup*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

@@ -17,18 +17,18 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QIconEngine_Paint(void*, intptr_t, QPainter*, QRect*, int, int);
-QSize* miqt_exec_callback_QIconEngine_ActualSize(void*, intptr_t, QSize*, int, int);
-QPixmap* miqt_exec_callback_QIconEngine_Pixmap(void*, intptr_t, QSize*, int, int);
-void miqt_exec_callback_QIconEngine_AddPixmap(void*, intptr_t, QPixmap*, int, int);
-void miqt_exec_callback_QIconEngine_AddFile(void*, intptr_t, struct miqt_string, QSize*, int, int);
-struct miqt_string miqt_exec_callback_QIconEngine_Key(void*, intptr_t);
-QIconEngine* miqt_exec_callback_QIconEngine_Clone(void*, intptr_t);
-bool miqt_exec_callback_QIconEngine_Read(void*, intptr_t, QDataStream*);
-bool miqt_exec_callback_QIconEngine_Write(void*, intptr_t, QDataStream*);
-struct miqt_array /* of QSize* */  miqt_exec_callback_QIconEngine_AvailableSizes(void*, intptr_t, int, int);
-struct miqt_string miqt_exec_callback_QIconEngine_IconName(void*, intptr_t);
-void miqt_exec_callback_QIconEngine_VirtualHook(void*, intptr_t, int, void*);
+void miqt_exec_callback_QIconEngine_Paint(QIconEngine*, intptr_t, QPainter*, QRect*, int, int);
+QSize* miqt_exec_callback_QIconEngine_ActualSize(QIconEngine*, intptr_t, QSize*, int, int);
+QPixmap* miqt_exec_callback_QIconEngine_Pixmap(QIconEngine*, intptr_t, QSize*, int, int);
+void miqt_exec_callback_QIconEngine_AddPixmap(QIconEngine*, intptr_t, QPixmap*, int, int);
+void miqt_exec_callback_QIconEngine_AddFile(QIconEngine*, intptr_t, struct miqt_string, QSize*, int, int);
+struct miqt_string miqt_exec_callback_QIconEngine_Key(const QIconEngine*, intptr_t);
+QIconEngine* miqt_exec_callback_QIconEngine_Clone(const QIconEngine*, intptr_t);
+bool miqt_exec_callback_QIconEngine_Read(QIconEngine*, intptr_t, QDataStream*);
+bool miqt_exec_callback_QIconEngine_Write(const QIconEngine*, intptr_t, QDataStream*);
+struct miqt_array /* of QSize* */  miqt_exec_callback_QIconEngine_AvailableSizes(const QIconEngine*, intptr_t, int, int);
+struct miqt_string miqt_exec_callback_QIconEngine_IconName(const QIconEngine*, intptr_t);
+void miqt_exec_callback_QIconEngine_VirtualHook(QIconEngine*, intptr_t, int, void*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -201,7 +201,7 @@ public:
 		}
 		
 
-		struct miqt_string callback_return_value = miqt_exec_callback_QIconEngine_Key(const_cast<MiqtVirtualQIconEngine*>(this), handle__Key);
+		struct miqt_string callback_return_value = miqt_exec_callback_QIconEngine_Key(this, handle__Key);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
 
 		return callback_return_value_QString;
@@ -231,7 +231,7 @@ public:
 		}
 		
 
-		QIconEngine* callback_return_value = miqt_exec_callback_QIconEngine_Clone(const_cast<MiqtVirtualQIconEngine*>(this), handle__Clone);
+		QIconEngine* callback_return_value = miqt_exec_callback_QIconEngine_Clone(this, handle__Clone);
 
 		return callback_return_value;
 	}
@@ -274,7 +274,7 @@ public:
 		// Cast returned reference into pointer
 		QDataStream* sigval1 = &out_ret;
 
-		bool callback_return_value = miqt_exec_callback_QIconEngine_Write(const_cast<MiqtVirtualQIconEngine*>(this), handle__Write, sigval1);
+		bool callback_return_value = miqt_exec_callback_QIconEngine_Write(this, handle__Write, sigval1);
 
 		return callback_return_value;
 	}
@@ -300,7 +300,7 @@ public:
 		QIcon::State state_ret = state;
 		int sigval2 = static_cast<int>(state_ret);
 
-		struct miqt_array /* of QSize* */  callback_return_value = miqt_exec_callback_QIconEngine_AvailableSizes(const_cast<MiqtVirtualQIconEngine*>(this), handle__AvailableSizes, sigval1, sigval2);
+		struct miqt_array /* of QSize* */  callback_return_value = miqt_exec_callback_QIconEngine_AvailableSizes(this, handle__AvailableSizes, sigval1, sigval2);
 		QList<QSize> callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		QSize** callback_return_value_arr = static_cast<QSize**>(callback_return_value.data);
@@ -337,7 +337,7 @@ public:
 		}
 		
 
-		struct miqt_string callback_return_value = miqt_exec_callback_QIconEngine_IconName(const_cast<MiqtVirtualQIconEngine*>(this), handle__IconName);
+		struct miqt_string callback_return_value = miqt_exec_callback_QIconEngine_IconName(this, handle__IconName);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
 
 		return callback_return_value_QString;

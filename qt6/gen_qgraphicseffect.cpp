@@ -25,65 +25,65 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QGraphicsEffect_EnabledChanged(intptr_t, bool);
-QRectF* miqt_exec_callback_QGraphicsEffect_BoundingRectFor(void*, intptr_t, QRectF*);
-void miqt_exec_callback_QGraphicsEffect_Draw(void*, intptr_t, QPainter*);
-void miqt_exec_callback_QGraphicsEffect_SourceChanged(void*, intptr_t, int);
-bool miqt_exec_callback_QGraphicsEffect_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QGraphicsEffect_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QGraphicsEffect_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QGraphicsEffect_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QGraphicsEffect_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QGraphicsEffect_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QGraphicsEffect_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QRectF* miqt_exec_callback_QGraphicsEffect_BoundingRectFor(const QGraphicsEffect*, intptr_t, QRectF*);
+void miqt_exec_callback_QGraphicsEffect_Draw(QGraphicsEffect*, intptr_t, QPainter*);
+void miqt_exec_callback_QGraphicsEffect_SourceChanged(QGraphicsEffect*, intptr_t, int);
+bool miqt_exec_callback_QGraphicsEffect_Event(QGraphicsEffect*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGraphicsEffect_EventFilter(QGraphicsEffect*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QGraphicsEffect_TimerEvent(QGraphicsEffect*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QGraphicsEffect_ChildEvent(QGraphicsEffect*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QGraphicsEffect_CustomEvent(QGraphicsEffect*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsEffect_ConnectNotify(QGraphicsEffect*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsEffect_DisconnectNotify(QGraphicsEffect*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QGraphicsColorizeEffect_ColorChanged(intptr_t, QColor*);
 void miqt_exec_callback_QGraphicsColorizeEffect_StrengthChanged(intptr_t, double);
-void miqt_exec_callback_QGraphicsColorizeEffect_Draw(void*, intptr_t, QPainter*);
-QRectF* miqt_exec_callback_QGraphicsColorizeEffect_BoundingRectFor(void*, intptr_t, QRectF*);
-void miqt_exec_callback_QGraphicsColorizeEffect_SourceChanged(void*, intptr_t, int);
-bool miqt_exec_callback_QGraphicsColorizeEffect_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QGraphicsColorizeEffect_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QGraphicsColorizeEffect_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QGraphicsColorizeEffect_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QGraphicsColorizeEffect_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QGraphicsColorizeEffect_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QGraphicsColorizeEffect_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsColorizeEffect_Draw(QGraphicsColorizeEffect*, intptr_t, QPainter*);
+QRectF* miqt_exec_callback_QGraphicsColorizeEffect_BoundingRectFor(const QGraphicsColorizeEffect*, intptr_t, QRectF*);
+void miqt_exec_callback_QGraphicsColorizeEffect_SourceChanged(QGraphicsColorizeEffect*, intptr_t, int);
+bool miqt_exec_callback_QGraphicsColorizeEffect_Event(QGraphicsColorizeEffect*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGraphicsColorizeEffect_EventFilter(QGraphicsColorizeEffect*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QGraphicsColorizeEffect_TimerEvent(QGraphicsColorizeEffect*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QGraphicsColorizeEffect_ChildEvent(QGraphicsColorizeEffect*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QGraphicsColorizeEffect_CustomEvent(QGraphicsColorizeEffect*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsColorizeEffect_ConnectNotify(QGraphicsColorizeEffect*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsColorizeEffect_DisconnectNotify(QGraphicsColorizeEffect*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QGraphicsBlurEffect_BlurRadiusChanged(intptr_t, double);
 void miqt_exec_callback_QGraphicsBlurEffect_BlurHintsChanged(intptr_t, int);
-QRectF* miqt_exec_callback_QGraphicsBlurEffect_BoundingRectFor(void*, intptr_t, QRectF*);
-void miqt_exec_callback_QGraphicsBlurEffect_Draw(void*, intptr_t, QPainter*);
-void miqt_exec_callback_QGraphicsBlurEffect_SourceChanged(void*, intptr_t, int);
-bool miqt_exec_callback_QGraphicsBlurEffect_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QGraphicsBlurEffect_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QGraphicsBlurEffect_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QGraphicsBlurEffect_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QGraphicsBlurEffect_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QGraphicsBlurEffect_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QGraphicsBlurEffect_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QRectF* miqt_exec_callback_QGraphicsBlurEffect_BoundingRectFor(const QGraphicsBlurEffect*, intptr_t, QRectF*);
+void miqt_exec_callback_QGraphicsBlurEffect_Draw(QGraphicsBlurEffect*, intptr_t, QPainter*);
+void miqt_exec_callback_QGraphicsBlurEffect_SourceChanged(QGraphicsBlurEffect*, intptr_t, int);
+bool miqt_exec_callback_QGraphicsBlurEffect_Event(QGraphicsBlurEffect*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGraphicsBlurEffect_EventFilter(QGraphicsBlurEffect*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QGraphicsBlurEffect_TimerEvent(QGraphicsBlurEffect*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QGraphicsBlurEffect_ChildEvent(QGraphicsBlurEffect*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QGraphicsBlurEffect_CustomEvent(QGraphicsBlurEffect*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsBlurEffect_ConnectNotify(QGraphicsBlurEffect*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsBlurEffect_DisconnectNotify(QGraphicsBlurEffect*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QGraphicsDropShadowEffect_OffsetChanged(intptr_t, QPointF*);
 void miqt_exec_callback_QGraphicsDropShadowEffect_BlurRadiusChanged(intptr_t, double);
 void miqt_exec_callback_QGraphicsDropShadowEffect_ColorChanged(intptr_t, QColor*);
-QRectF* miqt_exec_callback_QGraphicsDropShadowEffect_BoundingRectFor(void*, intptr_t, QRectF*);
-void miqt_exec_callback_QGraphicsDropShadowEffect_Draw(void*, intptr_t, QPainter*);
-void miqt_exec_callback_QGraphicsDropShadowEffect_SourceChanged(void*, intptr_t, int);
-bool miqt_exec_callback_QGraphicsDropShadowEffect_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QGraphicsDropShadowEffect_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QGraphicsDropShadowEffect_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QGraphicsDropShadowEffect_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QGraphicsDropShadowEffect_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QGraphicsDropShadowEffect_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QGraphicsDropShadowEffect_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QRectF* miqt_exec_callback_QGraphicsDropShadowEffect_BoundingRectFor(const QGraphicsDropShadowEffect*, intptr_t, QRectF*);
+void miqt_exec_callback_QGraphicsDropShadowEffect_Draw(QGraphicsDropShadowEffect*, intptr_t, QPainter*);
+void miqt_exec_callback_QGraphicsDropShadowEffect_SourceChanged(QGraphicsDropShadowEffect*, intptr_t, int);
+bool miqt_exec_callback_QGraphicsDropShadowEffect_Event(QGraphicsDropShadowEffect*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGraphicsDropShadowEffect_EventFilter(QGraphicsDropShadowEffect*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QGraphicsDropShadowEffect_TimerEvent(QGraphicsDropShadowEffect*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QGraphicsDropShadowEffect_ChildEvent(QGraphicsDropShadowEffect*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QGraphicsDropShadowEffect_CustomEvent(QGraphicsDropShadowEffect*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsDropShadowEffect_ConnectNotify(QGraphicsDropShadowEffect*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsDropShadowEffect_DisconnectNotify(QGraphicsDropShadowEffect*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QGraphicsOpacityEffect_OpacityChanged(intptr_t, double);
 void miqt_exec_callback_QGraphicsOpacityEffect_OpacityMaskChanged(intptr_t, QBrush*);
-void miqt_exec_callback_QGraphicsOpacityEffect_Draw(void*, intptr_t, QPainter*);
-QRectF* miqt_exec_callback_QGraphicsOpacityEffect_BoundingRectFor(void*, intptr_t, QRectF*);
-void miqt_exec_callback_QGraphicsOpacityEffect_SourceChanged(void*, intptr_t, int);
-bool miqt_exec_callback_QGraphicsOpacityEffect_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QGraphicsOpacityEffect_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QGraphicsOpacityEffect_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QGraphicsOpacityEffect_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QGraphicsOpacityEffect_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QGraphicsOpacityEffect_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QGraphicsOpacityEffect_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsOpacityEffect_Draw(QGraphicsOpacityEffect*, intptr_t, QPainter*);
+QRectF* miqt_exec_callback_QGraphicsOpacityEffect_BoundingRectFor(const QGraphicsOpacityEffect*, intptr_t, QRectF*);
+void miqt_exec_callback_QGraphicsOpacityEffect_SourceChanged(QGraphicsOpacityEffect*, intptr_t, int);
+bool miqt_exec_callback_QGraphicsOpacityEffect_Event(QGraphicsOpacityEffect*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGraphicsOpacityEffect_EventFilter(QGraphicsOpacityEffect*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QGraphicsOpacityEffect_TimerEvent(QGraphicsOpacityEffect*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QGraphicsOpacityEffect_ChildEvent(QGraphicsOpacityEffect*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QGraphicsOpacityEffect_CustomEvent(QGraphicsOpacityEffect*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsOpacityEffect_ConnectNotify(QGraphicsOpacityEffect*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsOpacityEffect_DisconnectNotify(QGraphicsOpacityEffect*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -109,7 +109,7 @@ public:
 		// Cast returned reference into pointer
 		QRectF* sigval1 = const_cast<QRectF*>(&sourceRect_ret);
 
-		QRectF* callback_return_value = miqt_exec_callback_QGraphicsEffect_BoundingRectFor(const_cast<MiqtVirtualQGraphicsEffect*>(this), handle__BoundingRectFor, sigval1);
+		QRectF* callback_return_value = miqt_exec_callback_QGraphicsEffect_BoundingRectFor(this, handle__BoundingRectFor, sigval1);
 
 		return *callback_return_value;
 	}
@@ -604,7 +604,7 @@ public:
 		// Cast returned reference into pointer
 		QRectF* sigval1 = const_cast<QRectF*>(&sourceRect_ret);
 
-		QRectF* callback_return_value = miqt_exec_callback_QGraphicsColorizeEffect_BoundingRectFor(const_cast<MiqtVirtualQGraphicsColorizeEffect*>(this), handle__BoundingRectFor, sigval1);
+		QRectF* callback_return_value = miqt_exec_callback_QGraphicsColorizeEffect_BoundingRectFor(this, handle__BoundingRectFor, sigval1);
 
 		return *callback_return_value;
 	}
@@ -1074,7 +1074,7 @@ public:
 		// Cast returned reference into pointer
 		QRectF* sigval1 = const_cast<QRectF*>(&rect_ret);
 
-		QRectF* callback_return_value = miqt_exec_callback_QGraphicsBlurEffect_BoundingRectFor(const_cast<MiqtVirtualQGraphicsBlurEffect*>(this), handle__BoundingRectFor, sigval1);
+		QRectF* callback_return_value = miqt_exec_callback_QGraphicsBlurEffect_BoundingRectFor(this, handle__BoundingRectFor, sigval1);
 
 		return *callback_return_value;
 	}
@@ -1572,7 +1572,7 @@ public:
 		// Cast returned reference into pointer
 		QRectF* sigval1 = const_cast<QRectF*>(&rect_ret);
 
-		QRectF* callback_return_value = miqt_exec_callback_QGraphicsDropShadowEffect_BoundingRectFor(const_cast<MiqtVirtualQGraphicsDropShadowEffect*>(this), handle__BoundingRectFor, sigval1);
+		QRectF* callback_return_value = miqt_exec_callback_QGraphicsDropShadowEffect_BoundingRectFor(this, handle__BoundingRectFor, sigval1);
 
 		return *callback_return_value;
 	}
@@ -2141,7 +2141,7 @@ public:
 		// Cast returned reference into pointer
 		QRectF* sigval1 = const_cast<QRectF*>(&sourceRect_ret);
 
-		QRectF* callback_return_value = miqt_exec_callback_QGraphicsOpacityEffect_BoundingRectFor(const_cast<MiqtVirtualQGraphicsOpacityEffect*>(this), handle__BoundingRectFor, sigval1);
+		QRectF* callback_return_value = miqt_exec_callback_QGraphicsOpacityEffect_BoundingRectFor(this, handle__BoundingRectFor, sigval1);
 
 		return *callback_return_value;
 	}

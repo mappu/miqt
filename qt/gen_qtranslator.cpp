@@ -16,15 +16,15 @@
 extern "C" {
 #endif
 
-struct miqt_string miqt_exec_callback_QTranslator_Translate(void*, intptr_t, const char*, const char*, const char*, int);
-bool miqt_exec_callback_QTranslator_IsEmpty(void*, intptr_t);
-bool miqt_exec_callback_QTranslator_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QTranslator_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QTranslator_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QTranslator_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QTranslator_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QTranslator_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QTranslator_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+struct miqt_string miqt_exec_callback_QTranslator_Translate(const QTranslator*, intptr_t, const char*, const char*, const char*, int);
+bool miqt_exec_callback_QTranslator_IsEmpty(const QTranslator*, intptr_t);
+bool miqt_exec_callback_QTranslator_Event(QTranslator*, intptr_t, QEvent*);
+bool miqt_exec_callback_QTranslator_EventFilter(QTranslator*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QTranslator_TimerEvent(QTranslator*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QTranslator_ChildEvent(QTranslator*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QTranslator_CustomEvent(QTranslator*, intptr_t, QEvent*);
+void miqt_exec_callback_QTranslator_ConnectNotify(QTranslator*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QTranslator_DisconnectNotify(QTranslator*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -51,7 +51,7 @@ public:
 		const char* sigval3 = (const char*) disambiguation;
 		int sigval4 = n;
 
-		struct miqt_string callback_return_value = miqt_exec_callback_QTranslator_Translate(const_cast<MiqtVirtualQTranslator*>(this), handle__Translate, sigval1, sigval2, sigval3, sigval4);
+		struct miqt_string callback_return_value = miqt_exec_callback_QTranslator_Translate(this, handle__Translate, sigval1, sigval2, sigval3, sigval4);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
 
 		return callback_return_value_QString;
@@ -81,7 +81,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QTranslator_IsEmpty(const_cast<MiqtVirtualQTranslator*>(this), handle__IsEmpty);
+		bool callback_return_value = miqt_exec_callback_QTranslator_IsEmpty(this, handle__IsEmpty);
 
 		return callback_return_value;
 	}

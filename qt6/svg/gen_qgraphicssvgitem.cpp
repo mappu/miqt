@@ -34,48 +34,48 @@
 extern "C" {
 #endif
 
-QRectF* miqt_exec_callback_QGraphicsSvgItem_BoundingRect(void*, intptr_t);
-void miqt_exec_callback_QGraphicsSvgItem_Paint(void*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
-int miqt_exec_callback_QGraphicsSvgItem_Type(void*, intptr_t);
-bool miqt_exec_callback_QGraphicsSvgItem_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QGraphicsSvgItem_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QGraphicsSvgItem_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QGraphicsSvgItem_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QGraphicsSvgItem_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QGraphicsSvgItem_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QGraphicsSvgItem_DisconnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QGraphicsSvgItem_Advance(void*, intptr_t, int);
-QPainterPath* miqt_exec_callback_QGraphicsSvgItem_Shape(void*, intptr_t);
-bool miqt_exec_callback_QGraphicsSvgItem_Contains(void*, intptr_t, QPointF*);
-bool miqt_exec_callback_QGraphicsSvgItem_CollidesWithItem(void*, intptr_t, QGraphicsItem*, int);
-bool miqt_exec_callback_QGraphicsSvgItem_CollidesWithPath(void*, intptr_t, QPainterPath*, int);
-bool miqt_exec_callback_QGraphicsSvgItem_IsObscuredBy(void*, intptr_t, QGraphicsItem*);
-QPainterPath* miqt_exec_callback_QGraphicsSvgItem_OpaqueArea(void*, intptr_t);
-bool miqt_exec_callback_QGraphicsSvgItem_SceneEventFilter(void*, intptr_t, QGraphicsItem*, QEvent*);
-bool miqt_exec_callback_QGraphicsSvgItem_SceneEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QGraphicsSvgItem_ContextMenuEvent(void*, intptr_t, QGraphicsSceneContextMenuEvent*);
-void miqt_exec_callback_QGraphicsSvgItem_DragEnterEvent(void*, intptr_t, QGraphicsSceneDragDropEvent*);
-void miqt_exec_callback_QGraphicsSvgItem_DragLeaveEvent(void*, intptr_t, QGraphicsSceneDragDropEvent*);
-void miqt_exec_callback_QGraphicsSvgItem_DragMoveEvent(void*, intptr_t, QGraphicsSceneDragDropEvent*);
-void miqt_exec_callback_QGraphicsSvgItem_DropEvent(void*, intptr_t, QGraphicsSceneDragDropEvent*);
-void miqt_exec_callback_QGraphicsSvgItem_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QGraphicsSvgItem_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QGraphicsSvgItem_HoverEnterEvent(void*, intptr_t, QGraphicsSceneHoverEvent*);
-void miqt_exec_callback_QGraphicsSvgItem_HoverMoveEvent(void*, intptr_t, QGraphicsSceneHoverEvent*);
-void miqt_exec_callback_QGraphicsSvgItem_HoverLeaveEvent(void*, intptr_t, QGraphicsSceneHoverEvent*);
-void miqt_exec_callback_QGraphicsSvgItem_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QGraphicsSvgItem_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QGraphicsSvgItem_MousePressEvent(void*, intptr_t, QGraphicsSceneMouseEvent*);
-void miqt_exec_callback_QGraphicsSvgItem_MouseMoveEvent(void*, intptr_t, QGraphicsSceneMouseEvent*);
-void miqt_exec_callback_QGraphicsSvgItem_MouseReleaseEvent(void*, intptr_t, QGraphicsSceneMouseEvent*);
-void miqt_exec_callback_QGraphicsSvgItem_MouseDoubleClickEvent(void*, intptr_t, QGraphicsSceneMouseEvent*);
-void miqt_exec_callback_QGraphicsSvgItem_WheelEvent(void*, intptr_t, QGraphicsSceneWheelEvent*);
-void miqt_exec_callback_QGraphicsSvgItem_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QGraphicsSvgItem_InputMethodQuery(void*, intptr_t, int);
-QVariant* miqt_exec_callback_QGraphicsSvgItem_ItemChange(void*, intptr_t, int, QVariant*);
-bool miqt_exec_callback_QGraphicsSvgItem_SupportsExtension(void*, intptr_t, int);
-void miqt_exec_callback_QGraphicsSvgItem_SetExtension(void*, intptr_t, int, QVariant*);
-QVariant* miqt_exec_callback_QGraphicsSvgItem_Extension(void*, intptr_t, QVariant*);
+QRectF* miqt_exec_callback_QGraphicsSvgItem_BoundingRect(const QGraphicsSvgItem*, intptr_t);
+void miqt_exec_callback_QGraphicsSvgItem_Paint(QGraphicsSvgItem*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
+int miqt_exec_callback_QGraphicsSvgItem_Type(const QGraphicsSvgItem*, intptr_t);
+bool miqt_exec_callback_QGraphicsSvgItem_Event(QGraphicsSvgItem*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGraphicsSvgItem_EventFilter(QGraphicsSvgItem*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QGraphicsSvgItem_TimerEvent(QGraphicsSvgItem*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QGraphicsSvgItem_ChildEvent(QGraphicsSvgItem*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QGraphicsSvgItem_CustomEvent(QGraphicsSvgItem*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsSvgItem_ConnectNotify(QGraphicsSvgItem*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsSvgItem_DisconnectNotify(QGraphicsSvgItem*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsSvgItem_Advance(QGraphicsSvgItem*, intptr_t, int);
+QPainterPath* miqt_exec_callback_QGraphicsSvgItem_Shape(const QGraphicsSvgItem*, intptr_t);
+bool miqt_exec_callback_QGraphicsSvgItem_Contains(const QGraphicsSvgItem*, intptr_t, QPointF*);
+bool miqt_exec_callback_QGraphicsSvgItem_CollidesWithItem(const QGraphicsSvgItem*, intptr_t, QGraphicsItem*, int);
+bool miqt_exec_callback_QGraphicsSvgItem_CollidesWithPath(const QGraphicsSvgItem*, intptr_t, QPainterPath*, int);
+bool miqt_exec_callback_QGraphicsSvgItem_IsObscuredBy(const QGraphicsSvgItem*, intptr_t, QGraphicsItem*);
+QPainterPath* miqt_exec_callback_QGraphicsSvgItem_OpaqueArea(const QGraphicsSvgItem*, intptr_t);
+bool miqt_exec_callback_QGraphicsSvgItem_SceneEventFilter(QGraphicsSvgItem*, intptr_t, QGraphicsItem*, QEvent*);
+bool miqt_exec_callback_QGraphicsSvgItem_SceneEvent(QGraphicsSvgItem*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsSvgItem_ContextMenuEvent(QGraphicsSvgItem*, intptr_t, QGraphicsSceneContextMenuEvent*);
+void miqt_exec_callback_QGraphicsSvgItem_DragEnterEvent(QGraphicsSvgItem*, intptr_t, QGraphicsSceneDragDropEvent*);
+void miqt_exec_callback_QGraphicsSvgItem_DragLeaveEvent(QGraphicsSvgItem*, intptr_t, QGraphicsSceneDragDropEvent*);
+void miqt_exec_callback_QGraphicsSvgItem_DragMoveEvent(QGraphicsSvgItem*, intptr_t, QGraphicsSceneDragDropEvent*);
+void miqt_exec_callback_QGraphicsSvgItem_DropEvent(QGraphicsSvgItem*, intptr_t, QGraphicsSceneDragDropEvent*);
+void miqt_exec_callback_QGraphicsSvgItem_FocusInEvent(QGraphicsSvgItem*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QGraphicsSvgItem_FocusOutEvent(QGraphicsSvgItem*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QGraphicsSvgItem_HoverEnterEvent(QGraphicsSvgItem*, intptr_t, QGraphicsSceneHoverEvent*);
+void miqt_exec_callback_QGraphicsSvgItem_HoverMoveEvent(QGraphicsSvgItem*, intptr_t, QGraphicsSceneHoverEvent*);
+void miqt_exec_callback_QGraphicsSvgItem_HoverLeaveEvent(QGraphicsSvgItem*, intptr_t, QGraphicsSceneHoverEvent*);
+void miqt_exec_callback_QGraphicsSvgItem_KeyPressEvent(QGraphicsSvgItem*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QGraphicsSvgItem_KeyReleaseEvent(QGraphicsSvgItem*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QGraphicsSvgItem_MousePressEvent(QGraphicsSvgItem*, intptr_t, QGraphicsSceneMouseEvent*);
+void miqt_exec_callback_QGraphicsSvgItem_MouseMoveEvent(QGraphicsSvgItem*, intptr_t, QGraphicsSceneMouseEvent*);
+void miqt_exec_callback_QGraphicsSvgItem_MouseReleaseEvent(QGraphicsSvgItem*, intptr_t, QGraphicsSceneMouseEvent*);
+void miqt_exec_callback_QGraphicsSvgItem_MouseDoubleClickEvent(QGraphicsSvgItem*, intptr_t, QGraphicsSceneMouseEvent*);
+void miqt_exec_callback_QGraphicsSvgItem_WheelEvent(QGraphicsSvgItem*, intptr_t, QGraphicsSceneWheelEvent*);
+void miqt_exec_callback_QGraphicsSvgItem_InputMethodEvent(QGraphicsSvgItem*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QGraphicsSvgItem_InputMethodQuery(const QGraphicsSvgItem*, intptr_t, int);
+QVariant* miqt_exec_callback_QGraphicsSvgItem_ItemChange(QGraphicsSvgItem*, intptr_t, int, QVariant*);
+bool miqt_exec_callback_QGraphicsSvgItem_SupportsExtension(const QGraphicsSvgItem*, intptr_t, int);
+void miqt_exec_callback_QGraphicsSvgItem_SetExtension(QGraphicsSvgItem*, intptr_t, int, QVariant*);
+QVariant* miqt_exec_callback_QGraphicsSvgItem_Extension(const QGraphicsSvgItem*, intptr_t, QVariant*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -100,7 +100,7 @@ public:
 		}
 		
 
-		QRectF* callback_return_value = miqt_exec_callback_QGraphicsSvgItem_BoundingRect(const_cast<MiqtVirtualQGraphicsSvgItem*>(this), handle__BoundingRect);
+		QRectF* callback_return_value = miqt_exec_callback_QGraphicsSvgItem_BoundingRect(this, handle__BoundingRect);
 
 		return *callback_return_value;
 	}
@@ -148,7 +148,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QGraphicsSvgItem_Type(const_cast<MiqtVirtualQGraphicsSvgItem*>(this), handle__Type);
+		int callback_return_value = miqt_exec_callback_QGraphicsSvgItem_Type(this, handle__Type);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -365,7 +365,7 @@ public:
 		}
 		
 
-		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsSvgItem_Shape(const_cast<MiqtVirtualQGraphicsSvgItem*>(this), handle__Shape);
+		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsSvgItem_Shape(this, handle__Shape);
 
 		return *callback_return_value;
 	}
@@ -390,7 +390,7 @@ public:
 		// Cast returned reference into pointer
 		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
 
-		bool callback_return_value = miqt_exec_callback_QGraphicsSvgItem_Contains(const_cast<MiqtVirtualQGraphicsSvgItem*>(this), handle__Contains, sigval1);
+		bool callback_return_value = miqt_exec_callback_QGraphicsSvgItem_Contains(this, handle__Contains, sigval1);
 
 		return callback_return_value;
 	}
@@ -415,7 +415,7 @@ public:
 		Qt::ItemSelectionMode mode_ret = mode;
 		int sigval2 = static_cast<int>(mode_ret);
 
-		bool callback_return_value = miqt_exec_callback_QGraphicsSvgItem_CollidesWithItem(const_cast<MiqtVirtualQGraphicsSvgItem*>(this), handle__CollidesWithItem, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QGraphicsSvgItem_CollidesWithItem(this, handle__CollidesWithItem, sigval1, sigval2);
 
 		return callback_return_value;
 	}
@@ -442,7 +442,7 @@ public:
 		Qt::ItemSelectionMode mode_ret = mode;
 		int sigval2 = static_cast<int>(mode_ret);
 
-		bool callback_return_value = miqt_exec_callback_QGraphicsSvgItem_CollidesWithPath(const_cast<MiqtVirtualQGraphicsSvgItem*>(this), handle__CollidesWithPath, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QGraphicsSvgItem_CollidesWithPath(this, handle__CollidesWithPath, sigval1, sigval2);
 
 		return callback_return_value;
 	}
@@ -465,7 +465,7 @@ public:
 		
 		QGraphicsItem* sigval1 = (QGraphicsItem*) item;
 
-		bool callback_return_value = miqt_exec_callback_QGraphicsSvgItem_IsObscuredBy(const_cast<MiqtVirtualQGraphicsSvgItem*>(this), handle__IsObscuredBy, sigval1);
+		bool callback_return_value = miqt_exec_callback_QGraphicsSvgItem_IsObscuredBy(this, handle__IsObscuredBy, sigval1);
 
 		return callback_return_value;
 	}
@@ -487,7 +487,7 @@ public:
 		}
 		
 
-		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsSvgItem_OpaqueArea(const_cast<MiqtVirtualQGraphicsSvgItem*>(this), handle__OpaqueArea);
+		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsSvgItem_OpaqueArea(this, handle__OpaqueArea);
 
 		return *callback_return_value;
 	}
@@ -990,7 +990,7 @@ public:
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QGraphicsSvgItem_InputMethodQuery(const_cast<MiqtVirtualQGraphicsSvgItem*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QGraphicsSvgItem_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}
@@ -1041,7 +1041,7 @@ public:
 		QGraphicsItem::Extension extension_ret = extension;
 		int sigval1 = static_cast<int>(extension_ret);
 
-		bool callback_return_value = miqt_exec_callback_QGraphicsSvgItem_SupportsExtension(const_cast<MiqtVirtualQGraphicsSvgItem*>(this), handle__SupportsExtension, sigval1);
+		bool callback_return_value = miqt_exec_callback_QGraphicsSvgItem_SupportsExtension(this, handle__SupportsExtension, sigval1);
 
 		return callback_return_value;
 	}
@@ -1094,7 +1094,7 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval1 = const_cast<QVariant*>(&variant_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QGraphicsSvgItem_Extension(const_cast<MiqtVirtualQGraphicsSvgItem*>(this), handle__Extension, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QGraphicsSvgItem_Extension(this, handle__Extension, sigval1);
 
 		return *callback_return_value;
 	}

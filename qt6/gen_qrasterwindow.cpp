@@ -38,42 +38,42 @@
 extern "C" {
 #endif
 
-int miqt_exec_callback_QRasterWindow_Metric(void*, intptr_t, int);
-QPaintDevice* miqt_exec_callback_QRasterWindow_Redirected(void*, intptr_t, QPoint*);
-void miqt_exec_callback_QRasterWindow_ExposeEvent(void*, intptr_t, QExposeEvent*);
-void miqt_exec_callback_QRasterWindow_PaintEvent(void*, intptr_t, QPaintEvent*);
-bool miqt_exec_callback_QRasterWindow_Event(void*, intptr_t, QEvent*);
-int miqt_exec_callback_QRasterWindow_SurfaceType(void*, intptr_t);
-QSurfaceFormat* miqt_exec_callback_QRasterWindow_Format(void*, intptr_t);
-QSize* miqt_exec_callback_QRasterWindow_Size(void*, intptr_t);
-QAccessibleInterface* miqt_exec_callback_QRasterWindow_AccessibleRoot(void*, intptr_t);
-QObject* miqt_exec_callback_QRasterWindow_FocusObject(void*, intptr_t);
-void miqt_exec_callback_QRasterWindow_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QRasterWindow_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QRasterWindow_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QRasterWindow_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QRasterWindow_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QRasterWindow_HideEvent(void*, intptr_t, QHideEvent*);
-void miqt_exec_callback_QRasterWindow_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QRasterWindow_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QRasterWindow_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QRasterWindow_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QRasterWindow_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QRasterWindow_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QRasterWindow_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QRasterWindow_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QRasterWindow_TouchEvent(void*, intptr_t, QTouchEvent*);
-void miqt_exec_callback_QRasterWindow_TabletEvent(void*, intptr_t, QTabletEvent*);
-bool miqt_exec_callback_QRasterWindow_NativeEvent(void*, intptr_t, struct miqt_string, void*, intptr_t*);
-bool miqt_exec_callback_QRasterWindow_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QRasterWindow_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QRasterWindow_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QRasterWindow_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QRasterWindow_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QRasterWindow_DisconnectNotify(void*, intptr_t, QMetaMethod*);
-int miqt_exec_callback_QRasterWindow_DevType(void*, intptr_t);
-void miqt_exec_callback_QRasterWindow_InitPainter(void*, intptr_t, QPainter*);
-QPainter* miqt_exec_callback_QRasterWindow_SharedPainter(void*, intptr_t);
+int miqt_exec_callback_QRasterWindow_Metric(const QRasterWindow*, intptr_t, int);
+QPaintDevice* miqt_exec_callback_QRasterWindow_Redirected(const QRasterWindow*, intptr_t, QPoint*);
+void miqt_exec_callback_QRasterWindow_ExposeEvent(QRasterWindow*, intptr_t, QExposeEvent*);
+void miqt_exec_callback_QRasterWindow_PaintEvent(QRasterWindow*, intptr_t, QPaintEvent*);
+bool miqt_exec_callback_QRasterWindow_Event(QRasterWindow*, intptr_t, QEvent*);
+int miqt_exec_callback_QRasterWindow_SurfaceType(const QRasterWindow*, intptr_t);
+QSurfaceFormat* miqt_exec_callback_QRasterWindow_Format(const QRasterWindow*, intptr_t);
+QSize* miqt_exec_callback_QRasterWindow_Size(const QRasterWindow*, intptr_t);
+QAccessibleInterface* miqt_exec_callback_QRasterWindow_AccessibleRoot(const QRasterWindow*, intptr_t);
+QObject* miqt_exec_callback_QRasterWindow_FocusObject(const QRasterWindow*, intptr_t);
+void miqt_exec_callback_QRasterWindow_ResizeEvent(QRasterWindow*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QRasterWindow_MoveEvent(QRasterWindow*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QRasterWindow_FocusInEvent(QRasterWindow*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QRasterWindow_FocusOutEvent(QRasterWindow*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QRasterWindow_ShowEvent(QRasterWindow*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QRasterWindow_HideEvent(QRasterWindow*, intptr_t, QHideEvent*);
+void miqt_exec_callback_QRasterWindow_CloseEvent(QRasterWindow*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QRasterWindow_KeyPressEvent(QRasterWindow*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QRasterWindow_KeyReleaseEvent(QRasterWindow*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QRasterWindow_MousePressEvent(QRasterWindow*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QRasterWindow_MouseReleaseEvent(QRasterWindow*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QRasterWindow_MouseDoubleClickEvent(QRasterWindow*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QRasterWindow_MouseMoveEvent(QRasterWindow*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QRasterWindow_WheelEvent(QRasterWindow*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QRasterWindow_TouchEvent(QRasterWindow*, intptr_t, QTouchEvent*);
+void miqt_exec_callback_QRasterWindow_TabletEvent(QRasterWindow*, intptr_t, QTabletEvent*);
+bool miqt_exec_callback_QRasterWindow_NativeEvent(QRasterWindow*, intptr_t, struct miqt_string, void*, intptr_t*);
+bool miqt_exec_callback_QRasterWindow_EventFilter(QRasterWindow*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QRasterWindow_TimerEvent(QRasterWindow*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QRasterWindow_ChildEvent(QRasterWindow*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QRasterWindow_CustomEvent(QRasterWindow*, intptr_t, QEvent*);
+void miqt_exec_callback_QRasterWindow_ConnectNotify(QRasterWindow*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QRasterWindow_DisconnectNotify(QRasterWindow*, intptr_t, QMetaMethod*);
+int miqt_exec_callback_QRasterWindow_DevType(const QRasterWindow*, intptr_t);
+void miqt_exec_callback_QRasterWindow_InitPainter(const QRasterWindow*, intptr_t, QPainter*);
+QPainter* miqt_exec_callback_QRasterWindow_SharedPainter(const QRasterWindow*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -98,7 +98,7 @@ public:
 		QPaintDevice::PaintDeviceMetric metric_ret = metric;
 		int sigval1 = static_cast<int>(metric_ret);
 
-		int callback_return_value = miqt_exec_callback_QRasterWindow_Metric(const_cast<MiqtVirtualQRasterWindow*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QRasterWindow_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -121,7 +121,7 @@ public:
 		
 		QPoint* sigval1 = param1;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QRasterWindow_Redirected(const_cast<MiqtVirtualQRasterWindow*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QRasterWindow_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -214,7 +214,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QRasterWindow_SurfaceType(const_cast<MiqtVirtualQRasterWindow*>(this), handle__SurfaceType);
+		int callback_return_value = miqt_exec_callback_QRasterWindow_SurfaceType(this, handle__SurfaceType);
 
 		return static_cast<QSurface::SurfaceType>(callback_return_value);
 	}
@@ -237,7 +237,7 @@ public:
 		}
 		
 
-		QSurfaceFormat* callback_return_value = miqt_exec_callback_QRasterWindow_Format(const_cast<MiqtVirtualQRasterWindow*>(this), handle__Format);
+		QSurfaceFormat* callback_return_value = miqt_exec_callback_QRasterWindow_Format(this, handle__Format);
 
 		return *callback_return_value;
 	}
@@ -259,7 +259,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QRasterWindow_Size(const_cast<MiqtVirtualQRasterWindow*>(this), handle__Size);
+		QSize* callback_return_value = miqt_exec_callback_QRasterWindow_Size(this, handle__Size);
 
 		return *callback_return_value;
 	}
@@ -281,7 +281,7 @@ public:
 		}
 		
 
-		QAccessibleInterface* callback_return_value = miqt_exec_callback_QRasterWindow_AccessibleRoot(const_cast<MiqtVirtualQRasterWindow*>(this), handle__AccessibleRoot);
+		QAccessibleInterface* callback_return_value = miqt_exec_callback_QRasterWindow_AccessibleRoot(this, handle__AccessibleRoot);
 
 		return callback_return_value;
 	}
@@ -303,7 +303,7 @@ public:
 		}
 		
 
-		QObject* callback_return_value = miqt_exec_callback_QRasterWindow_FocusObject(const_cast<MiqtVirtualQRasterWindow*>(this), handle__FocusObject);
+		QObject* callback_return_value = miqt_exec_callback_QRasterWindow_FocusObject(this, handle__FocusObject);
 
 		return callback_return_value;
 	}
@@ -889,7 +889,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QRasterWindow_DevType(const_cast<MiqtVirtualQRasterWindow*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QRasterWindow_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -913,7 +913,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QRasterWindow_InitPainter(const_cast<MiqtVirtualQRasterWindow*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QRasterWindow_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -935,7 +935,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QRasterWindow_SharedPainter(const_cast<MiqtVirtualQRasterWindow*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QRasterWindow_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}

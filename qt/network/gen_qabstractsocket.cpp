@@ -27,40 +27,40 @@ void miqt_exec_callback_QAbstractSocket_StateChanged(intptr_t, int);
 void miqt_exec_callback_QAbstractSocket_ErrorWithQAbstractSocketSocketError(intptr_t, int);
 void miqt_exec_callback_QAbstractSocket_ErrorOccurred(intptr_t, int);
 void miqt_exec_callback_QAbstractSocket_ProxyAuthenticationRequired(intptr_t, QNetworkProxy*, QAuthenticator*);
-void miqt_exec_callback_QAbstractSocket_Resume(void*, intptr_t);
-void miqt_exec_callback_QAbstractSocket_ConnectToHost(void*, intptr_t, struct miqt_string, uint16_t, int, int);
-void miqt_exec_callback_QAbstractSocket_ConnectToHost2(void*, intptr_t, QHostAddress*, uint16_t, int);
-void miqt_exec_callback_QAbstractSocket_DisconnectFromHost(void*, intptr_t);
-long long miqt_exec_callback_QAbstractSocket_BytesAvailable(void*, intptr_t);
-long long miqt_exec_callback_QAbstractSocket_BytesToWrite(void*, intptr_t);
-bool miqt_exec_callback_QAbstractSocket_CanReadLine(void*, intptr_t);
-void miqt_exec_callback_QAbstractSocket_SetReadBufferSize(void*, intptr_t, long long);
-intptr_t miqt_exec_callback_QAbstractSocket_SocketDescriptor(void*, intptr_t);
-bool miqt_exec_callback_QAbstractSocket_SetSocketDescriptor(void*, intptr_t, intptr_t, int, int);
-void miqt_exec_callback_QAbstractSocket_SetSocketOption(void*, intptr_t, int, QVariant*);
-QVariant* miqt_exec_callback_QAbstractSocket_SocketOption(void*, intptr_t, int);
-void miqt_exec_callback_QAbstractSocket_Close(void*, intptr_t);
-bool miqt_exec_callback_QAbstractSocket_IsSequential(void*, intptr_t);
-bool miqt_exec_callback_QAbstractSocket_AtEnd(void*, intptr_t);
-bool miqt_exec_callback_QAbstractSocket_WaitForConnected(void*, intptr_t, int);
-bool miqt_exec_callback_QAbstractSocket_WaitForReadyRead(void*, intptr_t, int);
-bool miqt_exec_callback_QAbstractSocket_WaitForBytesWritten(void*, intptr_t, int);
-bool miqt_exec_callback_QAbstractSocket_WaitForDisconnected(void*, intptr_t, int);
-long long miqt_exec_callback_QAbstractSocket_ReadData(void*, intptr_t, char*, long long);
-long long miqt_exec_callback_QAbstractSocket_ReadLineData(void*, intptr_t, char*, long long);
-long long miqt_exec_callback_QAbstractSocket_WriteData(void*, intptr_t, const char*, long long);
-bool miqt_exec_callback_QAbstractSocket_Open(void*, intptr_t, int);
-long long miqt_exec_callback_QAbstractSocket_Pos(void*, intptr_t);
-long long miqt_exec_callback_QAbstractSocket_Size(void*, intptr_t);
-bool miqt_exec_callback_QAbstractSocket_Seek(void*, intptr_t, long long);
-bool miqt_exec_callback_QAbstractSocket_Reset(void*, intptr_t);
-bool miqt_exec_callback_QAbstractSocket_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QAbstractSocket_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QAbstractSocket_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QAbstractSocket_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QAbstractSocket_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QAbstractSocket_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QAbstractSocket_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAbstractSocket_Resume(QAbstractSocket*, intptr_t);
+void miqt_exec_callback_QAbstractSocket_ConnectToHost(QAbstractSocket*, intptr_t, struct miqt_string, uint16_t, int, int);
+void miqt_exec_callback_QAbstractSocket_ConnectToHost2(QAbstractSocket*, intptr_t, QHostAddress*, uint16_t, int);
+void miqt_exec_callback_QAbstractSocket_DisconnectFromHost(QAbstractSocket*, intptr_t);
+long long miqt_exec_callback_QAbstractSocket_BytesAvailable(const QAbstractSocket*, intptr_t);
+long long miqt_exec_callback_QAbstractSocket_BytesToWrite(const QAbstractSocket*, intptr_t);
+bool miqt_exec_callback_QAbstractSocket_CanReadLine(const QAbstractSocket*, intptr_t);
+void miqt_exec_callback_QAbstractSocket_SetReadBufferSize(QAbstractSocket*, intptr_t, long long);
+intptr_t miqt_exec_callback_QAbstractSocket_SocketDescriptor(const QAbstractSocket*, intptr_t);
+bool miqt_exec_callback_QAbstractSocket_SetSocketDescriptor(QAbstractSocket*, intptr_t, intptr_t, int, int);
+void miqt_exec_callback_QAbstractSocket_SetSocketOption(QAbstractSocket*, intptr_t, int, QVariant*);
+QVariant* miqt_exec_callback_QAbstractSocket_SocketOption(QAbstractSocket*, intptr_t, int);
+void miqt_exec_callback_QAbstractSocket_Close(QAbstractSocket*, intptr_t);
+bool miqt_exec_callback_QAbstractSocket_IsSequential(const QAbstractSocket*, intptr_t);
+bool miqt_exec_callback_QAbstractSocket_AtEnd(const QAbstractSocket*, intptr_t);
+bool miqt_exec_callback_QAbstractSocket_WaitForConnected(QAbstractSocket*, intptr_t, int);
+bool miqt_exec_callback_QAbstractSocket_WaitForReadyRead(QAbstractSocket*, intptr_t, int);
+bool miqt_exec_callback_QAbstractSocket_WaitForBytesWritten(QAbstractSocket*, intptr_t, int);
+bool miqt_exec_callback_QAbstractSocket_WaitForDisconnected(QAbstractSocket*, intptr_t, int);
+long long miqt_exec_callback_QAbstractSocket_ReadData(QAbstractSocket*, intptr_t, char*, long long);
+long long miqt_exec_callback_QAbstractSocket_ReadLineData(QAbstractSocket*, intptr_t, char*, long long);
+long long miqt_exec_callback_QAbstractSocket_WriteData(QAbstractSocket*, intptr_t, const char*, long long);
+bool miqt_exec_callback_QAbstractSocket_Open(QAbstractSocket*, intptr_t, int);
+long long miqt_exec_callback_QAbstractSocket_Pos(const QAbstractSocket*, intptr_t);
+long long miqt_exec_callback_QAbstractSocket_Size(const QAbstractSocket*, intptr_t);
+bool miqt_exec_callback_QAbstractSocket_Seek(QAbstractSocket*, intptr_t, long long);
+bool miqt_exec_callback_QAbstractSocket_Reset(QAbstractSocket*, intptr_t);
+bool miqt_exec_callback_QAbstractSocket_Event(QAbstractSocket*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAbstractSocket_EventFilter(QAbstractSocket*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAbstractSocket_TimerEvent(QAbstractSocket*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAbstractSocket_ChildEvent(QAbstractSocket*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAbstractSocket_CustomEvent(QAbstractSocket*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractSocket_ConnectNotify(QAbstractSocket*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAbstractSocket_DisconnectNotify(QAbstractSocket*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -196,7 +196,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QAbstractSocket_BytesAvailable(const_cast<MiqtVirtualQAbstractSocket*>(this), handle__BytesAvailable);
+		long long callback_return_value = miqt_exec_callback_QAbstractSocket_BytesAvailable(this, handle__BytesAvailable);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -219,7 +219,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QAbstractSocket_BytesToWrite(const_cast<MiqtVirtualQAbstractSocket*>(this), handle__BytesToWrite);
+		long long callback_return_value = miqt_exec_callback_QAbstractSocket_BytesToWrite(this, handle__BytesToWrite);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -242,7 +242,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QAbstractSocket_CanReadLine(const_cast<MiqtVirtualQAbstractSocket*>(this), handle__CanReadLine);
+		bool callback_return_value = miqt_exec_callback_QAbstractSocket_CanReadLine(this, handle__CanReadLine);
 
 		return callback_return_value;
 	}
@@ -289,7 +289,7 @@ public:
 		}
 		
 
-		intptr_t callback_return_value = miqt_exec_callback_QAbstractSocket_SocketDescriptor(const_cast<MiqtVirtualQAbstractSocket*>(this), handle__SocketDescriptor);
+		intptr_t callback_return_value = miqt_exec_callback_QAbstractSocket_SocketDescriptor(this, handle__SocketDescriptor);
 
 		return (qintptr)(callback_return_value);
 	}
@@ -415,7 +415,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QAbstractSocket_IsSequential(const_cast<MiqtVirtualQAbstractSocket*>(this), handle__IsSequential);
+		bool callback_return_value = miqt_exec_callback_QAbstractSocket_IsSequential(this, handle__IsSequential);
 
 		return callback_return_value;
 	}
@@ -437,7 +437,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QAbstractSocket_AtEnd(const_cast<MiqtVirtualQAbstractSocket*>(this), handle__AtEnd);
+		bool callback_return_value = miqt_exec_callback_QAbstractSocket_AtEnd(this, handle__AtEnd);
 
 		return callback_return_value;
 	}
@@ -653,7 +653,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QAbstractSocket_Pos(const_cast<MiqtVirtualQAbstractSocket*>(this), handle__Pos);
+		long long callback_return_value = miqt_exec_callback_QAbstractSocket_Pos(this, handle__Pos);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -676,7 +676,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QAbstractSocket_Size(const_cast<MiqtVirtualQAbstractSocket*>(this), handle__Size);
+		long long callback_return_value = miqt_exec_callback_QAbstractSocket_Size(this, handle__Size);
 
 		return static_cast<qint64>(callback_return_value);
 	}

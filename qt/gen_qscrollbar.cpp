@@ -42,54 +42,54 @@
 extern "C" {
 #endif
 
-QSize* miqt_exec_callback_QScrollBar_SizeHint(void*, intptr_t);
-bool miqt_exec_callback_QScrollBar_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QScrollBar_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QScrollBar_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QScrollBar_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QScrollBar_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QScrollBar_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QScrollBar_HideEvent(void*, intptr_t, QHideEvent*);
-void miqt_exec_callback_QScrollBar_SliderChange(void*, intptr_t, int);
-void miqt_exec_callback_QScrollBar_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QScrollBar_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QScrollBar_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QScrollBar_ChangeEvent(void*, intptr_t, QEvent*);
-int miqt_exec_callback_QScrollBar_DevType(void*, intptr_t);
-void miqt_exec_callback_QScrollBar_SetVisible(void*, intptr_t, bool);
-QSize* miqt_exec_callback_QScrollBar_MinimumSizeHint(void*, intptr_t);
-int miqt_exec_callback_QScrollBar_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QScrollBar_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QScrollBar_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QScrollBar_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QScrollBar_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QScrollBar_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QScrollBar_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QScrollBar_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QScrollBar_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QScrollBar_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QScrollBar_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QScrollBar_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QScrollBar_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QScrollBar_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QScrollBar_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QScrollBar_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QScrollBar_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QScrollBar_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QScrollBar_ShowEvent(void*, intptr_t, QShowEvent*);
-bool miqt_exec_callback_QScrollBar_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-int miqt_exec_callback_QScrollBar_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QScrollBar_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QScrollBar_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QScrollBar_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QScrollBar_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QScrollBar_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QScrollBar_FocusNextPrevChild(void*, intptr_t, bool);
-bool miqt_exec_callback_QScrollBar_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QScrollBar_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QScrollBar_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QScrollBar_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QScrollBar_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QSize* miqt_exec_callback_QScrollBar_SizeHint(const QScrollBar*, intptr_t);
+bool miqt_exec_callback_QScrollBar_Event(QScrollBar*, intptr_t, QEvent*);
+void miqt_exec_callback_QScrollBar_WheelEvent(QScrollBar*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QScrollBar_PaintEvent(QScrollBar*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QScrollBar_MousePressEvent(QScrollBar*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QScrollBar_MouseReleaseEvent(QScrollBar*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QScrollBar_MouseMoveEvent(QScrollBar*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QScrollBar_HideEvent(QScrollBar*, intptr_t, QHideEvent*);
+void miqt_exec_callback_QScrollBar_SliderChange(QScrollBar*, intptr_t, int);
+void miqt_exec_callback_QScrollBar_ContextMenuEvent(QScrollBar*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QScrollBar_KeyPressEvent(QScrollBar*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QScrollBar_TimerEvent(QScrollBar*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QScrollBar_ChangeEvent(QScrollBar*, intptr_t, QEvent*);
+int miqt_exec_callback_QScrollBar_DevType(const QScrollBar*, intptr_t);
+void miqt_exec_callback_QScrollBar_SetVisible(QScrollBar*, intptr_t, bool);
+QSize* miqt_exec_callback_QScrollBar_MinimumSizeHint(const QScrollBar*, intptr_t);
+int miqt_exec_callback_QScrollBar_HeightForWidth(const QScrollBar*, intptr_t, int);
+bool miqt_exec_callback_QScrollBar_HasHeightForWidth(const QScrollBar*, intptr_t);
+QPaintEngine* miqt_exec_callback_QScrollBar_PaintEngine(const QScrollBar*, intptr_t);
+void miqt_exec_callback_QScrollBar_MouseDoubleClickEvent(QScrollBar*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QScrollBar_KeyReleaseEvent(QScrollBar*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QScrollBar_FocusInEvent(QScrollBar*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QScrollBar_FocusOutEvent(QScrollBar*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QScrollBar_EnterEvent(QScrollBar*, intptr_t, QEvent*);
+void miqt_exec_callback_QScrollBar_LeaveEvent(QScrollBar*, intptr_t, QEvent*);
+void miqt_exec_callback_QScrollBar_MoveEvent(QScrollBar*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QScrollBar_ResizeEvent(QScrollBar*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QScrollBar_CloseEvent(QScrollBar*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QScrollBar_TabletEvent(QScrollBar*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QScrollBar_ActionEvent(QScrollBar*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QScrollBar_DragEnterEvent(QScrollBar*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QScrollBar_DragMoveEvent(QScrollBar*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QScrollBar_DragLeaveEvent(QScrollBar*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QScrollBar_DropEvent(QScrollBar*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QScrollBar_ShowEvent(QScrollBar*, intptr_t, QShowEvent*);
+bool miqt_exec_callback_QScrollBar_NativeEvent(QScrollBar*, intptr_t, struct miqt_string, void*, long*);
+int miqt_exec_callback_QScrollBar_Metric(const QScrollBar*, intptr_t, int);
+void miqt_exec_callback_QScrollBar_InitPainter(const QScrollBar*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QScrollBar_Redirected(const QScrollBar*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QScrollBar_SharedPainter(const QScrollBar*, intptr_t);
+void miqt_exec_callback_QScrollBar_InputMethodEvent(QScrollBar*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QScrollBar_InputMethodQuery(const QScrollBar*, intptr_t, int);
+bool miqt_exec_callback_QScrollBar_FocusNextPrevChild(QScrollBar*, intptr_t, bool);
+bool miqt_exec_callback_QScrollBar_EventFilter(QScrollBar*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QScrollBar_ChildEvent(QScrollBar*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QScrollBar_CustomEvent(QScrollBar*, intptr_t, QEvent*);
+void miqt_exec_callback_QScrollBar_ConnectNotify(QScrollBar*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QScrollBar_DisconnectNotify(QScrollBar*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -114,7 +114,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QScrollBar_SizeHint(const_cast<MiqtVirtualQScrollBar*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QScrollBar_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -424,7 +424,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QScrollBar_DevType(const_cast<MiqtVirtualQScrollBar*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QScrollBar_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -470,7 +470,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QScrollBar_MinimumSizeHint(const_cast<MiqtVirtualQScrollBar*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QScrollBar_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -493,7 +493,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QScrollBar_HeightForWidth(const_cast<MiqtVirtualQScrollBar*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QScrollBar_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -515,7 +515,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QScrollBar_HasHeightForWidth(const_cast<MiqtVirtualQScrollBar*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QScrollBar_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -537,7 +537,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QScrollBar_PaintEngine(const_cast<MiqtVirtualQScrollBar*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QScrollBar_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -976,7 +976,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QScrollBar_Metric(const_cast<MiqtVirtualQScrollBar*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QScrollBar_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1000,7 +1000,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QScrollBar_InitPainter(const_cast<MiqtVirtualQScrollBar*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QScrollBar_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -1023,7 +1023,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QScrollBar_Redirected(const_cast<MiqtVirtualQScrollBar*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QScrollBar_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1045,7 +1045,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QScrollBar_SharedPainter(const_cast<MiqtVirtualQScrollBar*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QScrollBar_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -1093,7 +1093,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QScrollBar_InputMethodQuery(const_cast<MiqtVirtualQScrollBar*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QScrollBar_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}

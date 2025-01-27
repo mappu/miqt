@@ -9,8 +9,8 @@
 extern "C" {
 #endif
 
-QWidget* miqt_exec_callback_QItemEditorFactory_CreateEditor(void*, intptr_t, int, QWidget*);
-struct miqt_string miqt_exec_callback_QItemEditorFactory_ValuePropertyName(void*, intptr_t, int);
+QWidget* miqt_exec_callback_QItemEditorFactory_CreateEditor(const QItemEditorFactory*, intptr_t, int, QWidget*);
+struct miqt_string miqt_exec_callback_QItemEditorFactory_ValuePropertyName(const QItemEditorFactory*, intptr_t, int);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -56,7 +56,7 @@ public:
 		int sigval1 = userType;
 		QWidget* sigval2 = parent;
 
-		QWidget* callback_return_value = miqt_exec_callback_QItemEditorFactory_CreateEditor(const_cast<MiqtVirtualQItemEditorFactory*>(this), handle__CreateEditor, sigval1, sigval2);
+		QWidget* callback_return_value = miqt_exec_callback_QItemEditorFactory_CreateEditor(this, handle__CreateEditor, sigval1, sigval2);
 
 		return callback_return_value;
 	}
@@ -79,7 +79,7 @@ public:
 		
 		int sigval1 = userType;
 
-		struct miqt_string callback_return_value = miqt_exec_callback_QItemEditorFactory_ValuePropertyName(const_cast<MiqtVirtualQItemEditorFactory*>(this), handle__ValuePropertyName, sigval1);
+		struct miqt_string callback_return_value = miqt_exec_callback_QItemEditorFactory_ValuePropertyName(this, handle__ValuePropertyName, sigval1);
 		QByteArray callback_return_value_QByteArray(callback_return_value.data, callback_return_value.len);
 
 		return callback_return_value_QByteArray;

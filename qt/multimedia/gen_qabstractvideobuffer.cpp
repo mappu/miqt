@@ -8,16 +8,16 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QAbstractVideoBuffer_Release(void*, intptr_t);
-int miqt_exec_callback_QAbstractVideoBuffer_MapMode(void*, intptr_t);
-unsigned char* miqt_exec_callback_QAbstractVideoBuffer_Map(void*, intptr_t, int, int*, int*);
-void miqt_exec_callback_QAbstractVideoBuffer_Unmap(void*, intptr_t);
-QVariant* miqt_exec_callback_QAbstractVideoBuffer_Handle(void*, intptr_t);
-unsigned char* miqt_exec_callback_QAbstractPlanarVideoBuffer_Map(void*, intptr_t, int, int*, int*);
-void miqt_exec_callback_QAbstractPlanarVideoBuffer_Release(void*, intptr_t);
-int miqt_exec_callback_QAbstractPlanarVideoBuffer_MapMode(void*, intptr_t);
-void miqt_exec_callback_QAbstractPlanarVideoBuffer_Unmap(void*, intptr_t);
-QVariant* miqt_exec_callback_QAbstractPlanarVideoBuffer_Handle(void*, intptr_t);
+void miqt_exec_callback_QAbstractVideoBuffer_Release(QAbstractVideoBuffer*, intptr_t);
+int miqt_exec_callback_QAbstractVideoBuffer_MapMode(const QAbstractVideoBuffer*, intptr_t);
+unsigned char* miqt_exec_callback_QAbstractVideoBuffer_Map(QAbstractVideoBuffer*, intptr_t, int, int*, int*);
+void miqt_exec_callback_QAbstractVideoBuffer_Unmap(QAbstractVideoBuffer*, intptr_t);
+QVariant* miqt_exec_callback_QAbstractVideoBuffer_Handle(const QAbstractVideoBuffer*, intptr_t);
+unsigned char* miqt_exec_callback_QAbstractPlanarVideoBuffer_Map(QAbstractPlanarVideoBuffer*, intptr_t, int, int*, int*);
+void miqt_exec_callback_QAbstractPlanarVideoBuffer_Release(QAbstractPlanarVideoBuffer*, intptr_t);
+int miqt_exec_callback_QAbstractPlanarVideoBuffer_MapMode(const QAbstractPlanarVideoBuffer*, intptr_t);
+void miqt_exec_callback_QAbstractPlanarVideoBuffer_Unmap(QAbstractPlanarVideoBuffer*, intptr_t);
+QVariant* miqt_exec_callback_QAbstractPlanarVideoBuffer_Handle(const QAbstractPlanarVideoBuffer*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -62,7 +62,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QAbstractVideoBuffer_MapMode(const_cast<MiqtVirtualQAbstractVideoBuffer*>(this), handle__MapMode);
+		int callback_return_value = miqt_exec_callback_QAbstractVideoBuffer_MapMode(this, handle__MapMode);
 
 		return static_cast<QAbstractVideoBuffer::MapMode>(callback_return_value);
 	}
@@ -111,7 +111,7 @@ public:
 		}
 		
 
-		QVariant* callback_return_value = miqt_exec_callback_QAbstractVideoBuffer_Handle(const_cast<MiqtVirtualQAbstractVideoBuffer*>(this), handle__Handle);
+		QVariant* callback_return_value = miqt_exec_callback_QAbstractVideoBuffer_Handle(this, handle__Handle);
 
 		return *callback_return_value;
 	}
@@ -285,7 +285,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QAbstractPlanarVideoBuffer_MapMode(const_cast<MiqtVirtualQAbstractPlanarVideoBuffer*>(this), handle__MapMode);
+		int callback_return_value = miqt_exec_callback_QAbstractPlanarVideoBuffer_MapMode(this, handle__MapMode);
 
 		return static_cast<QAbstractVideoBuffer::MapMode>(callback_return_value);
 	}
@@ -315,7 +315,7 @@ public:
 		}
 		
 
-		QVariant* callback_return_value = miqt_exec_callback_QAbstractPlanarVideoBuffer_Handle(const_cast<MiqtVirtualQAbstractPlanarVideoBuffer*>(this), handle__Handle);
+		QVariant* callback_return_value = miqt_exec_callback_QAbstractPlanarVideoBuffer_Handle(this, handle__Handle);
 
 		return *callback_return_value;
 	}

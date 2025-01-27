@@ -49,55 +49,55 @@ void miqt_exec_callback_QVideoWidget_BrightnessChanged(intptr_t, int);
 void miqt_exec_callback_QVideoWidget_ContrastChanged(intptr_t, int);
 void miqt_exec_callback_QVideoWidget_HueChanged(intptr_t, int);
 void miqt_exec_callback_QVideoWidget_SaturationChanged(intptr_t, int);
-QMediaObject* miqt_exec_callback_QVideoWidget_MediaObject(void*, intptr_t);
-QSize* miqt_exec_callback_QVideoWidget_SizeHint(void*, intptr_t);
-bool miqt_exec_callback_QVideoWidget_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QVideoWidget_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QVideoWidget_HideEvent(void*, intptr_t, QHideEvent*);
-void miqt_exec_callback_QVideoWidget_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QVideoWidget_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QVideoWidget_PaintEvent(void*, intptr_t, QPaintEvent*);
-bool miqt_exec_callback_QVideoWidget_SetMediaObject(void*, intptr_t, QMediaObject*);
-int miqt_exec_callback_QVideoWidget_DevType(void*, intptr_t);
-void miqt_exec_callback_QVideoWidget_SetVisible(void*, intptr_t, bool);
-QSize* miqt_exec_callback_QVideoWidget_MinimumSizeHint(void*, intptr_t);
-int miqt_exec_callback_QVideoWidget_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QVideoWidget_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QVideoWidget_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QVideoWidget_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QVideoWidget_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QVideoWidget_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QVideoWidget_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QVideoWidget_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QVideoWidget_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QVideoWidget_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QVideoWidget_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QVideoWidget_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QVideoWidget_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QVideoWidget_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QVideoWidget_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QVideoWidget_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QVideoWidget_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QVideoWidget_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QVideoWidget_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QVideoWidget_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QVideoWidget_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QVideoWidget_DropEvent(void*, intptr_t, QDropEvent*);
-bool miqt_exec_callback_QVideoWidget_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-void miqt_exec_callback_QVideoWidget_ChangeEvent(void*, intptr_t, QEvent*);
-int miqt_exec_callback_QVideoWidget_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QVideoWidget_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QVideoWidget_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QVideoWidget_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QVideoWidget_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QVideoWidget_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QVideoWidget_FocusNextPrevChild(void*, intptr_t, bool);
-bool miqt_exec_callback_QVideoWidget_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QVideoWidget_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QVideoWidget_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QVideoWidget_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QVideoWidget_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QVideoWidget_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QMediaObject* miqt_exec_callback_QVideoWidget_MediaObject(const QVideoWidget*, intptr_t);
+QSize* miqt_exec_callback_QVideoWidget_SizeHint(const QVideoWidget*, intptr_t);
+bool miqt_exec_callback_QVideoWidget_Event(QVideoWidget*, intptr_t, QEvent*);
+void miqt_exec_callback_QVideoWidget_ShowEvent(QVideoWidget*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QVideoWidget_HideEvent(QVideoWidget*, intptr_t, QHideEvent*);
+void miqt_exec_callback_QVideoWidget_ResizeEvent(QVideoWidget*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QVideoWidget_MoveEvent(QVideoWidget*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QVideoWidget_PaintEvent(QVideoWidget*, intptr_t, QPaintEvent*);
+bool miqt_exec_callback_QVideoWidget_SetMediaObject(QVideoWidget*, intptr_t, QMediaObject*);
+int miqt_exec_callback_QVideoWidget_DevType(const QVideoWidget*, intptr_t);
+void miqt_exec_callback_QVideoWidget_SetVisible(QVideoWidget*, intptr_t, bool);
+QSize* miqt_exec_callback_QVideoWidget_MinimumSizeHint(const QVideoWidget*, intptr_t);
+int miqt_exec_callback_QVideoWidget_HeightForWidth(const QVideoWidget*, intptr_t, int);
+bool miqt_exec_callback_QVideoWidget_HasHeightForWidth(const QVideoWidget*, intptr_t);
+QPaintEngine* miqt_exec_callback_QVideoWidget_PaintEngine(const QVideoWidget*, intptr_t);
+void miqt_exec_callback_QVideoWidget_MousePressEvent(QVideoWidget*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QVideoWidget_MouseReleaseEvent(QVideoWidget*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QVideoWidget_MouseDoubleClickEvent(QVideoWidget*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QVideoWidget_MouseMoveEvent(QVideoWidget*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QVideoWidget_WheelEvent(QVideoWidget*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QVideoWidget_KeyPressEvent(QVideoWidget*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QVideoWidget_KeyReleaseEvent(QVideoWidget*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QVideoWidget_FocusInEvent(QVideoWidget*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QVideoWidget_FocusOutEvent(QVideoWidget*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QVideoWidget_EnterEvent(QVideoWidget*, intptr_t, QEvent*);
+void miqt_exec_callback_QVideoWidget_LeaveEvent(QVideoWidget*, intptr_t, QEvent*);
+void miqt_exec_callback_QVideoWidget_CloseEvent(QVideoWidget*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QVideoWidget_ContextMenuEvent(QVideoWidget*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QVideoWidget_TabletEvent(QVideoWidget*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QVideoWidget_ActionEvent(QVideoWidget*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QVideoWidget_DragEnterEvent(QVideoWidget*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QVideoWidget_DragMoveEvent(QVideoWidget*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QVideoWidget_DragLeaveEvent(QVideoWidget*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QVideoWidget_DropEvent(QVideoWidget*, intptr_t, QDropEvent*);
+bool miqt_exec_callback_QVideoWidget_NativeEvent(QVideoWidget*, intptr_t, struct miqt_string, void*, long*);
+void miqt_exec_callback_QVideoWidget_ChangeEvent(QVideoWidget*, intptr_t, QEvent*);
+int miqt_exec_callback_QVideoWidget_Metric(const QVideoWidget*, intptr_t, int);
+void miqt_exec_callback_QVideoWidget_InitPainter(const QVideoWidget*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QVideoWidget_Redirected(const QVideoWidget*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QVideoWidget_SharedPainter(const QVideoWidget*, intptr_t);
+void miqt_exec_callback_QVideoWidget_InputMethodEvent(QVideoWidget*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QVideoWidget_InputMethodQuery(const QVideoWidget*, intptr_t, int);
+bool miqt_exec_callback_QVideoWidget_FocusNextPrevChild(QVideoWidget*, intptr_t, bool);
+bool miqt_exec_callback_QVideoWidget_EventFilter(QVideoWidget*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QVideoWidget_TimerEvent(QVideoWidget*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QVideoWidget_ChildEvent(QVideoWidget*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QVideoWidget_CustomEvent(QVideoWidget*, intptr_t, QEvent*);
+void miqt_exec_callback_QVideoWidget_ConnectNotify(QVideoWidget*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QVideoWidget_DisconnectNotify(QVideoWidget*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -120,7 +120,7 @@ public:
 		}
 		
 
-		QMediaObject* callback_return_value = miqt_exec_callback_QVideoWidget_MediaObject(const_cast<MiqtVirtualQVideoWidget*>(this), handle__MediaObject);
+		QMediaObject* callback_return_value = miqt_exec_callback_QVideoWidget_MediaObject(this, handle__MediaObject);
 
 		return callback_return_value;
 	}
@@ -142,7 +142,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QVideoWidget_SizeHint(const_cast<MiqtVirtualQVideoWidget*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QVideoWidget_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -330,7 +330,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QVideoWidget_DevType(const_cast<MiqtVirtualQVideoWidget*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QVideoWidget_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -376,7 +376,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QVideoWidget_MinimumSizeHint(const_cast<MiqtVirtualQVideoWidget*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QVideoWidget_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -399,7 +399,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QVideoWidget_HeightForWidth(const_cast<MiqtVirtualQVideoWidget*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QVideoWidget_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -421,7 +421,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QVideoWidget_HasHeightForWidth(const_cast<MiqtVirtualQVideoWidget*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QVideoWidget_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -443,7 +443,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QVideoWidget_PaintEngine(const_cast<MiqtVirtualQVideoWidget*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QVideoWidget_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -978,7 +978,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QVideoWidget_Metric(const_cast<MiqtVirtualQVideoWidget*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QVideoWidget_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1002,7 +1002,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QVideoWidget_InitPainter(const_cast<MiqtVirtualQVideoWidget*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QVideoWidget_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -1025,7 +1025,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QVideoWidget_Redirected(const_cast<MiqtVirtualQVideoWidget*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QVideoWidget_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1047,7 +1047,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QVideoWidget_SharedPainter(const_cast<MiqtVirtualQVideoWidget*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QVideoWidget_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -1095,7 +1095,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QVideoWidget_InputMethodQuery(const_cast<MiqtVirtualQVideoWidget*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QVideoWidget_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}

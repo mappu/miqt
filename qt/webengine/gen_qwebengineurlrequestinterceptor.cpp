@@ -16,14 +16,14 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QWebEngineUrlRequestInterceptor_InterceptRequest(void*, intptr_t, QWebEngineUrlRequestInfo*);
-bool miqt_exec_callback_QWebEngineUrlRequestInterceptor_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QWebEngineUrlRequestInterceptor_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QWebEngineUrlRequestInterceptor_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QWebEngineUrlRequestInterceptor_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QWebEngineUrlRequestInterceptor_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QWebEngineUrlRequestInterceptor_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QWebEngineUrlRequestInterceptor_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QWebEngineUrlRequestInterceptor_InterceptRequest(QWebEngineUrlRequestInterceptor*, intptr_t, QWebEngineUrlRequestInfo*);
+bool miqt_exec_callback_QWebEngineUrlRequestInterceptor_Event(QWebEngineUrlRequestInterceptor*, intptr_t, QEvent*);
+bool miqt_exec_callback_QWebEngineUrlRequestInterceptor_EventFilter(QWebEngineUrlRequestInterceptor*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QWebEngineUrlRequestInterceptor_TimerEvent(QWebEngineUrlRequestInterceptor*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QWebEngineUrlRequestInterceptor_ChildEvent(QWebEngineUrlRequestInterceptor*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QWebEngineUrlRequestInterceptor_CustomEvent(QWebEngineUrlRequestInterceptor*, intptr_t, QEvent*);
+void miqt_exec_callback_QWebEngineUrlRequestInterceptor_ConnectNotify(QWebEngineUrlRequestInterceptor*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QWebEngineUrlRequestInterceptor_DisconnectNotify(QWebEngineUrlRequestInterceptor*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

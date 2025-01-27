@@ -58,99 +58,99 @@ extern "C" {
 
 void miqt_exec_callback_QTreeView_Expanded(intptr_t, QModelIndex*);
 void miqt_exec_callback_QTreeView_Collapsed(intptr_t, QModelIndex*);
-void miqt_exec_callback_QTreeView_SetModel(void*, intptr_t, QAbstractItemModel*);
-void miqt_exec_callback_QTreeView_SetRootIndex(void*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QTreeView_SetSelectionModel(void*, intptr_t, QItemSelectionModel*);
-void miqt_exec_callback_QTreeView_KeyboardSearch(void*, intptr_t, struct miqt_string);
-QRect* miqt_exec_callback_QTreeView_VisualRect(void*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QTreeView_ScrollTo(void*, intptr_t, QModelIndex*, int);
-QModelIndex* miqt_exec_callback_QTreeView_IndexAt(void*, intptr_t, QPoint*);
-void miqt_exec_callback_QTreeView_DoItemsLayout(void*, intptr_t);
-void miqt_exec_callback_QTreeView_Reset(void*, intptr_t);
-void miqt_exec_callback_QTreeView_DataChanged(void*, intptr_t, QModelIndex*, QModelIndex*, struct miqt_array /* of int */ );
-void miqt_exec_callback_QTreeView_SelectAll(void*, intptr_t);
-void miqt_exec_callback_QTreeView_VerticalScrollbarValueChanged(void*, intptr_t, int);
-void miqt_exec_callback_QTreeView_ScrollContentsBy(void*, intptr_t, int, int);
-void miqt_exec_callback_QTreeView_RowsInserted(void*, intptr_t, QModelIndex*, int, int);
-void miqt_exec_callback_QTreeView_RowsAboutToBeRemoved(void*, intptr_t, QModelIndex*, int, int);
-QModelIndex* miqt_exec_callback_QTreeView_MoveCursor(void*, intptr_t, int, int);
-int miqt_exec_callback_QTreeView_HorizontalOffset(void*, intptr_t);
-int miqt_exec_callback_QTreeView_VerticalOffset(void*, intptr_t);
-void miqt_exec_callback_QTreeView_SetSelection(void*, intptr_t, QRect*, int);
-QRegion* miqt_exec_callback_QTreeView_VisualRegionForSelection(void*, intptr_t, QItemSelection*);
-struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QTreeView_SelectedIndexes(void*, intptr_t);
-void miqt_exec_callback_QTreeView_ChangeEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QTreeView_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QTreeView_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QTreeView_DrawRow(void*, intptr_t, QPainter*, QStyleOptionViewItem*, QModelIndex*);
-void miqt_exec_callback_QTreeView_DrawBranches(void*, intptr_t, QPainter*, QRect*, QModelIndex*);
-void miqt_exec_callback_QTreeView_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QTreeView_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QTreeView_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QTreeView_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QTreeView_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QTreeView_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-bool miqt_exec_callback_QTreeView_ViewportEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QTreeView_UpdateGeometries(void*, intptr_t);
-QSize* miqt_exec_callback_QTreeView_ViewportSizeHint(void*, intptr_t);
-int miqt_exec_callback_QTreeView_SizeHintForColumn(void*, intptr_t, int);
-void miqt_exec_callback_QTreeView_HorizontalScrollbarAction(void*, intptr_t, int);
-bool miqt_exec_callback_QTreeView_IsIndexHidden(void*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QTreeView_SelectionChanged(void*, intptr_t, QItemSelection*, QItemSelection*);
-void miqt_exec_callback_QTreeView_CurrentChanged(void*, intptr_t, QModelIndex*, QModelIndex*);
-int miqt_exec_callback_QTreeView_SizeHintForRow(void*, intptr_t, int);
-QAbstractItemDelegate* miqt_exec_callback_QTreeView_ItemDelegateForIndex(void*, intptr_t, QModelIndex*);
-QVariant* miqt_exec_callback_QTreeView_InputMethodQuery(void*, intptr_t, int);
-void miqt_exec_callback_QTreeView_UpdateEditorData(void*, intptr_t);
-void miqt_exec_callback_QTreeView_UpdateEditorGeometries(void*, intptr_t);
-void miqt_exec_callback_QTreeView_VerticalScrollbarAction(void*, intptr_t, int);
-void miqt_exec_callback_QTreeView_HorizontalScrollbarValueChanged(void*, intptr_t, int);
-void miqt_exec_callback_QTreeView_CloseEditor(void*, intptr_t, QWidget*, int);
-void miqt_exec_callback_QTreeView_CommitData(void*, intptr_t, QWidget*);
-void miqt_exec_callback_QTreeView_EditorDestroyed(void*, intptr_t, QObject*);
-bool miqt_exec_callback_QTreeView_Edit2(void*, intptr_t, QModelIndex*, int, QEvent*);
-int miqt_exec_callback_QTreeView_SelectionCommand(void*, intptr_t, QModelIndex*, QEvent*);
-void miqt_exec_callback_QTreeView_StartDrag(void*, intptr_t, int);
-void miqt_exec_callback_QTreeView_InitViewItemOption(void*, intptr_t, QStyleOptionViewItem*);
-bool miqt_exec_callback_QTreeView_FocusNextPrevChild(void*, intptr_t, bool);
-bool miqt_exec_callback_QTreeView_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QTreeView_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QTreeView_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QTreeView_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QTreeView_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QTreeView_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QTreeView_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QTreeView_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-bool miqt_exec_callback_QTreeView_EventFilter(void*, intptr_t, QObject*, QEvent*);
-QSize* miqt_exec_callback_QTreeView_MinimumSizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QTreeView_SizeHint(void*, intptr_t);
-void miqt_exec_callback_QTreeView_SetupViewport(void*, intptr_t, QWidget*);
-void miqt_exec_callback_QTreeView_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QTreeView_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QTreeView_InitStyleOption(void*, intptr_t, QStyleOptionFrame*);
-int miqt_exec_callback_QTreeView_DevType(void*, intptr_t);
-void miqt_exec_callback_QTreeView_SetVisible(void*, intptr_t, bool);
-int miqt_exec_callback_QTreeView_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QTreeView_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QTreeView_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QTreeView_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QTreeView_EnterEvent(void*, intptr_t, QEnterEvent*);
-void miqt_exec_callback_QTreeView_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QTreeView_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QTreeView_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QTreeView_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QTreeView_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QTreeView_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QTreeView_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QTreeView_NativeEvent(void*, intptr_t, struct miqt_string, void*, intptr_t*);
-int miqt_exec_callback_QTreeView_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QTreeView_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QTreeView_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QTreeView_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QTreeView_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QTreeView_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QTreeView_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QTreeView_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QTreeView_SetModel(QTreeView*, intptr_t, QAbstractItemModel*);
+void miqt_exec_callback_QTreeView_SetRootIndex(QTreeView*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QTreeView_SetSelectionModel(QTreeView*, intptr_t, QItemSelectionModel*);
+void miqt_exec_callback_QTreeView_KeyboardSearch(QTreeView*, intptr_t, struct miqt_string);
+QRect* miqt_exec_callback_QTreeView_VisualRect(const QTreeView*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QTreeView_ScrollTo(QTreeView*, intptr_t, QModelIndex*, int);
+QModelIndex* miqt_exec_callback_QTreeView_IndexAt(const QTreeView*, intptr_t, QPoint*);
+void miqt_exec_callback_QTreeView_DoItemsLayout(QTreeView*, intptr_t);
+void miqt_exec_callback_QTreeView_Reset(QTreeView*, intptr_t);
+void miqt_exec_callback_QTreeView_DataChanged(QTreeView*, intptr_t, QModelIndex*, QModelIndex*, struct miqt_array /* of int */ );
+void miqt_exec_callback_QTreeView_SelectAll(QTreeView*, intptr_t);
+void miqt_exec_callback_QTreeView_VerticalScrollbarValueChanged(QTreeView*, intptr_t, int);
+void miqt_exec_callback_QTreeView_ScrollContentsBy(QTreeView*, intptr_t, int, int);
+void miqt_exec_callback_QTreeView_RowsInserted(QTreeView*, intptr_t, QModelIndex*, int, int);
+void miqt_exec_callback_QTreeView_RowsAboutToBeRemoved(QTreeView*, intptr_t, QModelIndex*, int, int);
+QModelIndex* miqt_exec_callback_QTreeView_MoveCursor(QTreeView*, intptr_t, int, int);
+int miqt_exec_callback_QTreeView_HorizontalOffset(const QTreeView*, intptr_t);
+int miqt_exec_callback_QTreeView_VerticalOffset(const QTreeView*, intptr_t);
+void miqt_exec_callback_QTreeView_SetSelection(QTreeView*, intptr_t, QRect*, int);
+QRegion* miqt_exec_callback_QTreeView_VisualRegionForSelection(const QTreeView*, intptr_t, QItemSelection*);
+struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QTreeView_SelectedIndexes(const QTreeView*, intptr_t);
+void miqt_exec_callback_QTreeView_ChangeEvent(QTreeView*, intptr_t, QEvent*);
+void miqt_exec_callback_QTreeView_TimerEvent(QTreeView*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QTreeView_PaintEvent(QTreeView*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QTreeView_DrawRow(const QTreeView*, intptr_t, QPainter*, QStyleOptionViewItem*, QModelIndex*);
+void miqt_exec_callback_QTreeView_DrawBranches(const QTreeView*, intptr_t, QPainter*, QRect*, QModelIndex*);
+void miqt_exec_callback_QTreeView_MousePressEvent(QTreeView*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTreeView_MouseReleaseEvent(QTreeView*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTreeView_MouseDoubleClickEvent(QTreeView*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTreeView_MouseMoveEvent(QTreeView*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTreeView_KeyPressEvent(QTreeView*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QTreeView_DragMoveEvent(QTreeView*, intptr_t, QDragMoveEvent*);
+bool miqt_exec_callback_QTreeView_ViewportEvent(QTreeView*, intptr_t, QEvent*);
+void miqt_exec_callback_QTreeView_UpdateGeometries(QTreeView*, intptr_t);
+QSize* miqt_exec_callback_QTreeView_ViewportSizeHint(const QTreeView*, intptr_t);
+int miqt_exec_callback_QTreeView_SizeHintForColumn(const QTreeView*, intptr_t, int);
+void miqt_exec_callback_QTreeView_HorizontalScrollbarAction(QTreeView*, intptr_t, int);
+bool miqt_exec_callback_QTreeView_IsIndexHidden(const QTreeView*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QTreeView_SelectionChanged(QTreeView*, intptr_t, QItemSelection*, QItemSelection*);
+void miqt_exec_callback_QTreeView_CurrentChanged(QTreeView*, intptr_t, QModelIndex*, QModelIndex*);
+int miqt_exec_callback_QTreeView_SizeHintForRow(const QTreeView*, intptr_t, int);
+QAbstractItemDelegate* miqt_exec_callback_QTreeView_ItemDelegateForIndex(const QTreeView*, intptr_t, QModelIndex*);
+QVariant* miqt_exec_callback_QTreeView_InputMethodQuery(const QTreeView*, intptr_t, int);
+void miqt_exec_callback_QTreeView_UpdateEditorData(QTreeView*, intptr_t);
+void miqt_exec_callback_QTreeView_UpdateEditorGeometries(QTreeView*, intptr_t);
+void miqt_exec_callback_QTreeView_VerticalScrollbarAction(QTreeView*, intptr_t, int);
+void miqt_exec_callback_QTreeView_HorizontalScrollbarValueChanged(QTreeView*, intptr_t, int);
+void miqt_exec_callback_QTreeView_CloseEditor(QTreeView*, intptr_t, QWidget*, int);
+void miqt_exec_callback_QTreeView_CommitData(QTreeView*, intptr_t, QWidget*);
+void miqt_exec_callback_QTreeView_EditorDestroyed(QTreeView*, intptr_t, QObject*);
+bool miqt_exec_callback_QTreeView_Edit2(QTreeView*, intptr_t, QModelIndex*, int, QEvent*);
+int miqt_exec_callback_QTreeView_SelectionCommand(const QTreeView*, intptr_t, QModelIndex*, QEvent*);
+void miqt_exec_callback_QTreeView_StartDrag(QTreeView*, intptr_t, int);
+void miqt_exec_callback_QTreeView_InitViewItemOption(const QTreeView*, intptr_t, QStyleOptionViewItem*);
+bool miqt_exec_callback_QTreeView_FocusNextPrevChild(QTreeView*, intptr_t, bool);
+bool miqt_exec_callback_QTreeView_Event(QTreeView*, intptr_t, QEvent*);
+void miqt_exec_callback_QTreeView_DragEnterEvent(QTreeView*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QTreeView_DragLeaveEvent(QTreeView*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QTreeView_DropEvent(QTreeView*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QTreeView_FocusInEvent(QTreeView*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QTreeView_FocusOutEvent(QTreeView*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QTreeView_ResizeEvent(QTreeView*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QTreeView_InputMethodEvent(QTreeView*, intptr_t, QInputMethodEvent*);
+bool miqt_exec_callback_QTreeView_EventFilter(QTreeView*, intptr_t, QObject*, QEvent*);
+QSize* miqt_exec_callback_QTreeView_MinimumSizeHint(const QTreeView*, intptr_t);
+QSize* miqt_exec_callback_QTreeView_SizeHint(const QTreeView*, intptr_t);
+void miqt_exec_callback_QTreeView_SetupViewport(QTreeView*, intptr_t, QWidget*);
+void miqt_exec_callback_QTreeView_WheelEvent(QTreeView*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QTreeView_ContextMenuEvent(QTreeView*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QTreeView_InitStyleOption(const QTreeView*, intptr_t, QStyleOptionFrame*);
+int miqt_exec_callback_QTreeView_DevType(const QTreeView*, intptr_t);
+void miqt_exec_callback_QTreeView_SetVisible(QTreeView*, intptr_t, bool);
+int miqt_exec_callback_QTreeView_HeightForWidth(const QTreeView*, intptr_t, int);
+bool miqt_exec_callback_QTreeView_HasHeightForWidth(const QTreeView*, intptr_t);
+QPaintEngine* miqt_exec_callback_QTreeView_PaintEngine(const QTreeView*, intptr_t);
+void miqt_exec_callback_QTreeView_KeyReleaseEvent(QTreeView*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QTreeView_EnterEvent(QTreeView*, intptr_t, QEnterEvent*);
+void miqt_exec_callback_QTreeView_LeaveEvent(QTreeView*, intptr_t, QEvent*);
+void miqt_exec_callback_QTreeView_MoveEvent(QTreeView*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QTreeView_CloseEvent(QTreeView*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QTreeView_TabletEvent(QTreeView*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QTreeView_ActionEvent(QTreeView*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QTreeView_ShowEvent(QTreeView*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QTreeView_HideEvent(QTreeView*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QTreeView_NativeEvent(QTreeView*, intptr_t, struct miqt_string, void*, intptr_t*);
+int miqt_exec_callback_QTreeView_Metric(const QTreeView*, intptr_t, int);
+void miqt_exec_callback_QTreeView_InitPainter(const QTreeView*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QTreeView_Redirected(const QTreeView*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QTreeView_SharedPainter(const QTreeView*, intptr_t);
+void miqt_exec_callback_QTreeView_ChildEvent(QTreeView*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QTreeView_CustomEvent(QTreeView*, intptr_t, QEvent*);
+void miqt_exec_callback_QTreeView_ConnectNotify(QTreeView*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QTreeView_DisconnectNotify(QTreeView*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -282,7 +282,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		QRect* callback_return_value = miqt_exec_callback_QTreeView_VisualRect(const_cast<MiqtVirtualQTreeView*>(this), handle__VisualRect, sigval1);
+		QRect* callback_return_value = miqt_exec_callback_QTreeView_VisualRect(this, handle__VisualRect, sigval1);
 
 		return *callback_return_value;
 	}
@@ -335,7 +335,7 @@ public:
 		// Cast returned reference into pointer
 		QPoint* sigval1 = const_cast<QPoint*>(&p_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QTreeView_IndexAt(const_cast<MiqtVirtualQTreeView*>(this), handle__IndexAt, sigval1);
+		QModelIndex* callback_return_value = miqt_exec_callback_QTreeView_IndexAt(this, handle__IndexAt, sigval1);
 
 		return *callback_return_value;
 	}
@@ -602,7 +602,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QTreeView_HorizontalOffset(const_cast<MiqtVirtualQTreeView*>(this), handle__HorizontalOffset);
+		int callback_return_value = miqt_exec_callback_QTreeView_HorizontalOffset(this, handle__HorizontalOffset);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -624,7 +624,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QTreeView_VerticalOffset(const_cast<MiqtVirtualQTreeView*>(this), handle__VerticalOffset);
+		int callback_return_value = miqt_exec_callback_QTreeView_VerticalOffset(this, handle__VerticalOffset);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -677,7 +677,7 @@ public:
 		// Cast returned reference into pointer
 		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selection_ret);
 
-		QRegion* callback_return_value = miqt_exec_callback_QTreeView_VisualRegionForSelection(const_cast<MiqtVirtualQTreeView*>(this), handle__VisualRegionForSelection, sigval1);
+		QRegion* callback_return_value = miqt_exec_callback_QTreeView_VisualRegionForSelection(this, handle__VisualRegionForSelection, sigval1);
 
 		return *callback_return_value;
 	}
@@ -699,7 +699,7 @@ public:
 		}
 		
 
-		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QTreeView_SelectedIndexes(const_cast<MiqtVirtualQTreeView*>(this), handle__SelectedIndexes);
+		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QTreeView_SelectedIndexes(this, handle__SelectedIndexes);
 		QModelIndexList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		QModelIndex** callback_return_value_arr = static_cast<QModelIndex**>(callback_return_value.data);
@@ -816,7 +816,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&index_ret);
 
-		miqt_exec_callback_QTreeView_DrawRow(const_cast<MiqtVirtualQTreeView*>(this), handle__DrawRow, sigval1, sigval2, sigval3);
+		miqt_exec_callback_QTreeView_DrawRow(this, handle__DrawRow, sigval1, sigval2, sigval3);
 
 		
 	}
@@ -846,7 +846,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&index_ret);
 
-		miqt_exec_callback_QTreeView_DrawBranches(const_cast<MiqtVirtualQTreeView*>(this), handle__DrawBranches, sigval1, sigval2, sigval3);
+		miqt_exec_callback_QTreeView_DrawBranches(this, handle__DrawBranches, sigval1, sigval2, sigval3);
 
 		
 	}
@@ -1058,7 +1058,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QTreeView_ViewportSizeHint(const_cast<MiqtVirtualQTreeView*>(this), handle__ViewportSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QTreeView_ViewportSizeHint(this, handle__ViewportSizeHint);
 
 		return *callback_return_value;
 	}
@@ -1081,7 +1081,7 @@ public:
 		
 		int sigval1 = column;
 
-		int callback_return_value = miqt_exec_callback_QTreeView_SizeHintForColumn(const_cast<MiqtVirtualQTreeView*>(this), handle__SizeHintForColumn, sigval1);
+		int callback_return_value = miqt_exec_callback_QTreeView_SizeHintForColumn(this, handle__SizeHintForColumn, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1130,7 +1130,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		bool callback_return_value = miqt_exec_callback_QTreeView_IsIndexHidden(const_cast<MiqtVirtualQTreeView*>(this), handle__IsIndexHidden, sigval1);
+		bool callback_return_value = miqt_exec_callback_QTreeView_IsIndexHidden(this, handle__IsIndexHidden, sigval1);
 
 		return callback_return_value;
 	}
@@ -1211,7 +1211,7 @@ public:
 		
 		int sigval1 = row;
 
-		int callback_return_value = miqt_exec_callback_QTreeView_SizeHintForRow(const_cast<MiqtVirtualQTreeView*>(this), handle__SizeHintForRow, sigval1);
+		int callback_return_value = miqt_exec_callback_QTreeView_SizeHintForRow(this, handle__SizeHintForRow, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1236,7 +1236,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		QAbstractItemDelegate* callback_return_value = miqt_exec_callback_QTreeView_ItemDelegateForIndex(const_cast<MiqtVirtualQTreeView*>(this), handle__ItemDelegateForIndex, sigval1);
+		QAbstractItemDelegate* callback_return_value = miqt_exec_callback_QTreeView_ItemDelegateForIndex(this, handle__ItemDelegateForIndex, sigval1);
 
 		return callback_return_value;
 	}
@@ -1260,7 +1260,7 @@ public:
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QTreeView_InputMethodQuery(const_cast<MiqtVirtualQTreeView*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QTreeView_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}
@@ -1482,7 +1482,7 @@ public:
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		QEvent* sigval2 = (QEvent*) event;
 
-		int callback_return_value = miqt_exec_callback_QTreeView_SelectionCommand(const_cast<MiqtVirtualQTreeView*>(this), handle__SelectionCommand, sigval1, sigval2);
+		int callback_return_value = miqt_exec_callback_QTreeView_SelectionCommand(this, handle__SelectionCommand, sigval1, sigval2);
 
 		return static_cast<QItemSelectionModel::SelectionFlags>(callback_return_value);
 	}
@@ -1532,7 +1532,7 @@ public:
 		
 		QStyleOptionViewItem* sigval1 = option;
 
-		miqt_exec_callback_QTreeView_InitViewItemOption(const_cast<MiqtVirtualQTreeView*>(this), handle__InitViewItemOption, sigval1);
+		miqt_exec_callback_QTreeView_InitViewItemOption(this, handle__InitViewItemOption, sigval1);
 
 		
 	}
@@ -1792,7 +1792,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QTreeView_MinimumSizeHint(const_cast<MiqtVirtualQTreeView*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QTreeView_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -1814,7 +1814,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QTreeView_SizeHint(const_cast<MiqtVirtualQTreeView*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QTreeView_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -1910,7 +1910,7 @@ public:
 		
 		QStyleOptionFrame* sigval1 = option;
 
-		miqt_exec_callback_QTreeView_InitStyleOption(const_cast<MiqtVirtualQTreeView*>(this), handle__InitStyleOption, sigval1);
+		miqt_exec_callback_QTreeView_InitStyleOption(this, handle__InitStyleOption, sigval1);
 
 		
 	}
@@ -1932,7 +1932,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QTreeView_DevType(const_cast<MiqtVirtualQTreeView*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QTreeView_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1979,7 +1979,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QTreeView_HeightForWidth(const_cast<MiqtVirtualQTreeView*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QTreeView_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -2001,7 +2001,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QTreeView_HasHeightForWidth(const_cast<MiqtVirtualQTreeView*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QTreeView_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -2023,7 +2023,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QTreeView_PaintEngine(const_cast<MiqtVirtualQTreeView*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QTreeView_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -2295,7 +2295,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QTreeView_Metric(const_cast<MiqtVirtualQTreeView*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QTreeView_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -2319,7 +2319,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QTreeView_InitPainter(const_cast<MiqtVirtualQTreeView*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QTreeView_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -2342,7 +2342,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QTreeView_Redirected(const_cast<MiqtVirtualQTreeView*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QTreeView_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -2364,7 +2364,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QTreeView_SharedPainter(const_cast<MiqtVirtualQTreeView*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QTreeView_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}

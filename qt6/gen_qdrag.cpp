@@ -20,13 +20,13 @@ extern "C" {
 
 void miqt_exec_callback_QDrag_ActionChanged(intptr_t, int);
 void miqt_exec_callback_QDrag_TargetChanged(intptr_t, QObject*);
-bool miqt_exec_callback_QDrag_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QDrag_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QDrag_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QDrag_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QDrag_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QDrag_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QDrag_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QDrag_Event(QDrag*, intptr_t, QEvent*);
+bool miqt_exec_callback_QDrag_EventFilter(QDrag*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QDrag_TimerEvent(QDrag*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QDrag_ChildEvent(QDrag*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QDrag_CustomEvent(QDrag*, intptr_t, QEvent*);
+void miqt_exec_callback_QDrag_ConnectNotify(QDrag*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QDrag_DisconnectNotify(QDrag*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

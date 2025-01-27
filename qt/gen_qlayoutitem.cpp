@@ -14,66 +14,66 @@
 extern "C" {
 #endif
 
-QSize* miqt_exec_callback_QLayoutItem_SizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QLayoutItem_MinimumSize(void*, intptr_t);
-QSize* miqt_exec_callback_QLayoutItem_MaximumSize(void*, intptr_t);
-int miqt_exec_callback_QLayoutItem_ExpandingDirections(void*, intptr_t);
-void miqt_exec_callback_QLayoutItem_SetGeometry(void*, intptr_t, QRect*);
-QRect* miqt_exec_callback_QLayoutItem_Geometry(void*, intptr_t);
-bool miqt_exec_callback_QLayoutItem_IsEmpty(void*, intptr_t);
-bool miqt_exec_callback_QLayoutItem_HasHeightForWidth(void*, intptr_t);
-int miqt_exec_callback_QLayoutItem_HeightForWidth(void*, intptr_t, int);
-int miqt_exec_callback_QLayoutItem_MinimumHeightForWidth(void*, intptr_t, int);
-void miqt_exec_callback_QLayoutItem_Invalidate(void*, intptr_t);
-QWidget* miqt_exec_callback_QLayoutItem_Widget(void*, intptr_t);
-QLayout* miqt_exec_callback_QLayoutItem_Layout(void*, intptr_t);
-QSpacerItem* miqt_exec_callback_QLayoutItem_SpacerItem(void*, intptr_t);
-int miqt_exec_callback_QLayoutItem_ControlTypes(void*, intptr_t);
-QSize* miqt_exec_callback_QSpacerItem_SizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QSpacerItem_MinimumSize(void*, intptr_t);
-QSize* miqt_exec_callback_QSpacerItem_MaximumSize(void*, intptr_t);
-int miqt_exec_callback_QSpacerItem_ExpandingDirections(void*, intptr_t);
-bool miqt_exec_callback_QSpacerItem_IsEmpty(void*, intptr_t);
-void miqt_exec_callback_QSpacerItem_SetGeometry(void*, intptr_t, QRect*);
-QRect* miqt_exec_callback_QSpacerItem_Geometry(void*, intptr_t);
-QSpacerItem* miqt_exec_callback_QSpacerItem_SpacerItem(void*, intptr_t);
-bool miqt_exec_callback_QSpacerItem_HasHeightForWidth(void*, intptr_t);
-int miqt_exec_callback_QSpacerItem_HeightForWidth(void*, intptr_t, int);
-int miqt_exec_callback_QSpacerItem_MinimumHeightForWidth(void*, intptr_t, int);
-void miqt_exec_callback_QSpacerItem_Invalidate(void*, intptr_t);
-QWidget* miqt_exec_callback_QSpacerItem_Widget(void*, intptr_t);
-QLayout* miqt_exec_callback_QSpacerItem_Layout(void*, intptr_t);
-int miqt_exec_callback_QSpacerItem_ControlTypes(void*, intptr_t);
-QSize* miqt_exec_callback_QWidgetItem_SizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QWidgetItem_MinimumSize(void*, intptr_t);
-QSize* miqt_exec_callback_QWidgetItem_MaximumSize(void*, intptr_t);
-int miqt_exec_callback_QWidgetItem_ExpandingDirections(void*, intptr_t);
-bool miqt_exec_callback_QWidgetItem_IsEmpty(void*, intptr_t);
-void miqt_exec_callback_QWidgetItem_SetGeometry(void*, intptr_t, QRect*);
-QRect* miqt_exec_callback_QWidgetItem_Geometry(void*, intptr_t);
-QWidget* miqt_exec_callback_QWidgetItem_Widget(void*, intptr_t);
-bool miqt_exec_callback_QWidgetItem_HasHeightForWidth(void*, intptr_t);
-int miqt_exec_callback_QWidgetItem_HeightForWidth(void*, intptr_t, int);
-int miqt_exec_callback_QWidgetItem_ControlTypes(void*, intptr_t);
-int miqt_exec_callback_QWidgetItem_MinimumHeightForWidth(void*, intptr_t, int);
-void miqt_exec_callback_QWidgetItem_Invalidate(void*, intptr_t);
-QLayout* miqt_exec_callback_QWidgetItem_Layout(void*, intptr_t);
-QSpacerItem* miqt_exec_callback_QWidgetItem_SpacerItem(void*, intptr_t);
-QSize* miqt_exec_callback_QWidgetItemV2_SizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QWidgetItemV2_MinimumSize(void*, intptr_t);
-QSize* miqt_exec_callback_QWidgetItemV2_MaximumSize(void*, intptr_t);
-int miqt_exec_callback_QWidgetItemV2_HeightForWidth(void*, intptr_t, int);
-int miqt_exec_callback_QWidgetItemV2_ExpandingDirections(void*, intptr_t);
-bool miqt_exec_callback_QWidgetItemV2_IsEmpty(void*, intptr_t);
-void miqt_exec_callback_QWidgetItemV2_SetGeometry(void*, intptr_t, QRect*);
-QRect* miqt_exec_callback_QWidgetItemV2_Geometry(void*, intptr_t);
-QWidget* miqt_exec_callback_QWidgetItemV2_Widget(void*, intptr_t);
-bool miqt_exec_callback_QWidgetItemV2_HasHeightForWidth(void*, intptr_t);
-int miqt_exec_callback_QWidgetItemV2_ControlTypes(void*, intptr_t);
-int miqt_exec_callback_QWidgetItemV2_MinimumHeightForWidth(void*, intptr_t, int);
-void miqt_exec_callback_QWidgetItemV2_Invalidate(void*, intptr_t);
-QLayout* miqt_exec_callback_QWidgetItemV2_Layout(void*, intptr_t);
-QSpacerItem* miqt_exec_callback_QWidgetItemV2_SpacerItem(void*, intptr_t);
+QSize* miqt_exec_callback_QLayoutItem_SizeHint(const QLayoutItem*, intptr_t);
+QSize* miqt_exec_callback_QLayoutItem_MinimumSize(const QLayoutItem*, intptr_t);
+QSize* miqt_exec_callback_QLayoutItem_MaximumSize(const QLayoutItem*, intptr_t);
+int miqt_exec_callback_QLayoutItem_ExpandingDirections(const QLayoutItem*, intptr_t);
+void miqt_exec_callback_QLayoutItem_SetGeometry(QLayoutItem*, intptr_t, QRect*);
+QRect* miqt_exec_callback_QLayoutItem_Geometry(const QLayoutItem*, intptr_t);
+bool miqt_exec_callback_QLayoutItem_IsEmpty(const QLayoutItem*, intptr_t);
+bool miqt_exec_callback_QLayoutItem_HasHeightForWidth(const QLayoutItem*, intptr_t);
+int miqt_exec_callback_QLayoutItem_HeightForWidth(const QLayoutItem*, intptr_t, int);
+int miqt_exec_callback_QLayoutItem_MinimumHeightForWidth(const QLayoutItem*, intptr_t, int);
+void miqt_exec_callback_QLayoutItem_Invalidate(QLayoutItem*, intptr_t);
+QWidget* miqt_exec_callback_QLayoutItem_Widget(QLayoutItem*, intptr_t);
+QLayout* miqt_exec_callback_QLayoutItem_Layout(QLayoutItem*, intptr_t);
+QSpacerItem* miqt_exec_callback_QLayoutItem_SpacerItem(QLayoutItem*, intptr_t);
+int miqt_exec_callback_QLayoutItem_ControlTypes(const QLayoutItem*, intptr_t);
+QSize* miqt_exec_callback_QSpacerItem_SizeHint(const QSpacerItem*, intptr_t);
+QSize* miqt_exec_callback_QSpacerItem_MinimumSize(const QSpacerItem*, intptr_t);
+QSize* miqt_exec_callback_QSpacerItem_MaximumSize(const QSpacerItem*, intptr_t);
+int miqt_exec_callback_QSpacerItem_ExpandingDirections(const QSpacerItem*, intptr_t);
+bool miqt_exec_callback_QSpacerItem_IsEmpty(const QSpacerItem*, intptr_t);
+void miqt_exec_callback_QSpacerItem_SetGeometry(QSpacerItem*, intptr_t, QRect*);
+QRect* miqt_exec_callback_QSpacerItem_Geometry(const QSpacerItem*, intptr_t);
+QSpacerItem* miqt_exec_callback_QSpacerItem_SpacerItem(QSpacerItem*, intptr_t);
+bool miqt_exec_callback_QSpacerItem_HasHeightForWidth(const QSpacerItem*, intptr_t);
+int miqt_exec_callback_QSpacerItem_HeightForWidth(const QSpacerItem*, intptr_t, int);
+int miqt_exec_callback_QSpacerItem_MinimumHeightForWidth(const QSpacerItem*, intptr_t, int);
+void miqt_exec_callback_QSpacerItem_Invalidate(QSpacerItem*, intptr_t);
+QWidget* miqt_exec_callback_QSpacerItem_Widget(QSpacerItem*, intptr_t);
+QLayout* miqt_exec_callback_QSpacerItem_Layout(QSpacerItem*, intptr_t);
+int miqt_exec_callback_QSpacerItem_ControlTypes(const QSpacerItem*, intptr_t);
+QSize* miqt_exec_callback_QWidgetItem_SizeHint(const QWidgetItem*, intptr_t);
+QSize* miqt_exec_callback_QWidgetItem_MinimumSize(const QWidgetItem*, intptr_t);
+QSize* miqt_exec_callback_QWidgetItem_MaximumSize(const QWidgetItem*, intptr_t);
+int miqt_exec_callback_QWidgetItem_ExpandingDirections(const QWidgetItem*, intptr_t);
+bool miqt_exec_callback_QWidgetItem_IsEmpty(const QWidgetItem*, intptr_t);
+void miqt_exec_callback_QWidgetItem_SetGeometry(QWidgetItem*, intptr_t, QRect*);
+QRect* miqt_exec_callback_QWidgetItem_Geometry(const QWidgetItem*, intptr_t);
+QWidget* miqt_exec_callback_QWidgetItem_Widget(QWidgetItem*, intptr_t);
+bool miqt_exec_callback_QWidgetItem_HasHeightForWidth(const QWidgetItem*, intptr_t);
+int miqt_exec_callback_QWidgetItem_HeightForWidth(const QWidgetItem*, intptr_t, int);
+int miqt_exec_callback_QWidgetItem_ControlTypes(const QWidgetItem*, intptr_t);
+int miqt_exec_callback_QWidgetItem_MinimumHeightForWidth(const QWidgetItem*, intptr_t, int);
+void miqt_exec_callback_QWidgetItem_Invalidate(QWidgetItem*, intptr_t);
+QLayout* miqt_exec_callback_QWidgetItem_Layout(QWidgetItem*, intptr_t);
+QSpacerItem* miqt_exec_callback_QWidgetItem_SpacerItem(QWidgetItem*, intptr_t);
+QSize* miqt_exec_callback_QWidgetItemV2_SizeHint(const QWidgetItemV2*, intptr_t);
+QSize* miqt_exec_callback_QWidgetItemV2_MinimumSize(const QWidgetItemV2*, intptr_t);
+QSize* miqt_exec_callback_QWidgetItemV2_MaximumSize(const QWidgetItemV2*, intptr_t);
+int miqt_exec_callback_QWidgetItemV2_HeightForWidth(const QWidgetItemV2*, intptr_t, int);
+int miqt_exec_callback_QWidgetItemV2_ExpandingDirections(const QWidgetItemV2*, intptr_t);
+bool miqt_exec_callback_QWidgetItemV2_IsEmpty(const QWidgetItemV2*, intptr_t);
+void miqt_exec_callback_QWidgetItemV2_SetGeometry(QWidgetItemV2*, intptr_t, QRect*);
+QRect* miqt_exec_callback_QWidgetItemV2_Geometry(const QWidgetItemV2*, intptr_t);
+QWidget* miqt_exec_callback_QWidgetItemV2_Widget(QWidgetItemV2*, intptr_t);
+bool miqt_exec_callback_QWidgetItemV2_HasHeightForWidth(const QWidgetItemV2*, intptr_t);
+int miqt_exec_callback_QWidgetItemV2_ControlTypes(const QWidgetItemV2*, intptr_t);
+int miqt_exec_callback_QWidgetItemV2_MinimumHeightForWidth(const QWidgetItemV2*, intptr_t, int);
+void miqt_exec_callback_QWidgetItemV2_Invalidate(QWidgetItemV2*, intptr_t);
+QLayout* miqt_exec_callback_QWidgetItemV2_Layout(QWidgetItemV2*, intptr_t);
+QSpacerItem* miqt_exec_callback_QWidgetItemV2_SpacerItem(QWidgetItemV2*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -97,7 +97,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QLayoutItem_SizeHint(const_cast<MiqtVirtualQLayoutItem*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QLayoutItem_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -112,7 +112,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QLayoutItem_MinimumSize(const_cast<MiqtVirtualQLayoutItem*>(this), handle__MinimumSize);
+		QSize* callback_return_value = miqt_exec_callback_QLayoutItem_MinimumSize(this, handle__MinimumSize);
 
 		return *callback_return_value;
 	}
@@ -127,7 +127,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QLayoutItem_MaximumSize(const_cast<MiqtVirtualQLayoutItem*>(this), handle__MaximumSize);
+		QSize* callback_return_value = miqt_exec_callback_QLayoutItem_MaximumSize(this, handle__MaximumSize);
 
 		return *callback_return_value;
 	}
@@ -142,7 +142,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QLayoutItem_ExpandingDirections(const_cast<MiqtVirtualQLayoutItem*>(this), handle__ExpandingDirections);
+		int callback_return_value = miqt_exec_callback_QLayoutItem_ExpandingDirections(this, handle__ExpandingDirections);
 
 		return static_cast<Qt::Orientations>(callback_return_value);
 	}
@@ -175,7 +175,7 @@ public:
 		}
 		
 
-		QRect* callback_return_value = miqt_exec_callback_QLayoutItem_Geometry(const_cast<MiqtVirtualQLayoutItem*>(this), handle__Geometry);
+		QRect* callback_return_value = miqt_exec_callback_QLayoutItem_Geometry(this, handle__Geometry);
 
 		return *callback_return_value;
 	}
@@ -190,7 +190,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QLayoutItem_IsEmpty(const_cast<MiqtVirtualQLayoutItem*>(this), handle__IsEmpty);
+		bool callback_return_value = miqt_exec_callback_QLayoutItem_IsEmpty(this, handle__IsEmpty);
 
 		return callback_return_value;
 	}
@@ -205,7 +205,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QLayoutItem_HasHeightForWidth(const_cast<MiqtVirtualQLayoutItem*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QLayoutItem_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -228,7 +228,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QLayoutItem_HeightForWidth(const_cast<MiqtVirtualQLayoutItem*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QLayoutItem_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -251,7 +251,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QLayoutItem_MinimumHeightForWidth(const_cast<MiqtVirtualQLayoutItem*>(this), handle__MinimumHeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QLayoutItem_MinimumHeightForWidth(this, handle__MinimumHeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -362,7 +362,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QLayoutItem_ControlTypes(const_cast<MiqtVirtualQLayoutItem*>(this), handle__ControlTypes);
+		int callback_return_value = miqt_exec_callback_QLayoutItem_ControlTypes(this, handle__ControlTypes);
 
 		return static_cast<QSizePolicy::ControlTypes>(callback_return_value);
 	}
@@ -666,7 +666,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QSpacerItem_SizeHint(const_cast<MiqtVirtualQSpacerItem*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QSpacerItem_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -688,7 +688,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QSpacerItem_MinimumSize(const_cast<MiqtVirtualQSpacerItem*>(this), handle__MinimumSize);
+		QSize* callback_return_value = miqt_exec_callback_QSpacerItem_MinimumSize(this, handle__MinimumSize);
 
 		return *callback_return_value;
 	}
@@ -710,7 +710,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QSpacerItem_MaximumSize(const_cast<MiqtVirtualQSpacerItem*>(this), handle__MaximumSize);
+		QSize* callback_return_value = miqt_exec_callback_QSpacerItem_MaximumSize(this, handle__MaximumSize);
 
 		return *callback_return_value;
 	}
@@ -732,7 +732,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QSpacerItem_ExpandingDirections(const_cast<MiqtVirtualQSpacerItem*>(this), handle__ExpandingDirections);
+		int callback_return_value = miqt_exec_callback_QSpacerItem_ExpandingDirections(this, handle__ExpandingDirections);
 
 		return static_cast<Qt::Orientations>(callback_return_value);
 	}
@@ -755,7 +755,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QSpacerItem_IsEmpty(const_cast<MiqtVirtualQSpacerItem*>(this), handle__IsEmpty);
+		bool callback_return_value = miqt_exec_callback_QSpacerItem_IsEmpty(this, handle__IsEmpty);
 
 		return callback_return_value;
 	}
@@ -803,7 +803,7 @@ public:
 		}
 		
 
-		QRect* callback_return_value = miqt_exec_callback_QSpacerItem_Geometry(const_cast<MiqtVirtualQSpacerItem*>(this), handle__Geometry);
+		QRect* callback_return_value = miqt_exec_callback_QSpacerItem_Geometry(this, handle__Geometry);
 
 		return *callback_return_value;
 	}
@@ -847,7 +847,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QSpacerItem_HasHeightForWidth(const_cast<MiqtVirtualQSpacerItem*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QSpacerItem_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -870,7 +870,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QSpacerItem_HeightForWidth(const_cast<MiqtVirtualQSpacerItem*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QSpacerItem_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -893,7 +893,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QSpacerItem_MinimumHeightForWidth(const_cast<MiqtVirtualQSpacerItem*>(this), handle__MinimumHeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QSpacerItem_MinimumHeightForWidth(this, handle__MinimumHeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -982,7 +982,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QSpacerItem_ControlTypes(const_cast<MiqtVirtualQSpacerItem*>(this), handle__ControlTypes);
+		int callback_return_value = miqt_exec_callback_QSpacerItem_ControlTypes(this, handle__ControlTypes);
 
 		return static_cast<QSizePolicy::ControlTypes>(callback_return_value);
 	}
@@ -1297,7 +1297,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QWidgetItem_SizeHint(const_cast<MiqtVirtualQWidgetItem*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QWidgetItem_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -1319,7 +1319,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QWidgetItem_MinimumSize(const_cast<MiqtVirtualQWidgetItem*>(this), handle__MinimumSize);
+		QSize* callback_return_value = miqt_exec_callback_QWidgetItem_MinimumSize(this, handle__MinimumSize);
 
 		return *callback_return_value;
 	}
@@ -1341,7 +1341,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QWidgetItem_MaximumSize(const_cast<MiqtVirtualQWidgetItem*>(this), handle__MaximumSize);
+		QSize* callback_return_value = miqt_exec_callback_QWidgetItem_MaximumSize(this, handle__MaximumSize);
 
 		return *callback_return_value;
 	}
@@ -1363,7 +1363,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QWidgetItem_ExpandingDirections(const_cast<MiqtVirtualQWidgetItem*>(this), handle__ExpandingDirections);
+		int callback_return_value = miqt_exec_callback_QWidgetItem_ExpandingDirections(this, handle__ExpandingDirections);
 
 		return static_cast<Qt::Orientations>(callback_return_value);
 	}
@@ -1386,7 +1386,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QWidgetItem_IsEmpty(const_cast<MiqtVirtualQWidgetItem*>(this), handle__IsEmpty);
+		bool callback_return_value = miqt_exec_callback_QWidgetItem_IsEmpty(this, handle__IsEmpty);
 
 		return callback_return_value;
 	}
@@ -1434,7 +1434,7 @@ public:
 		}
 		
 
-		QRect* callback_return_value = miqt_exec_callback_QWidgetItem_Geometry(const_cast<MiqtVirtualQWidgetItem*>(this), handle__Geometry);
+		QRect* callback_return_value = miqt_exec_callback_QWidgetItem_Geometry(this, handle__Geometry);
 
 		return *callback_return_value;
 	}
@@ -1478,7 +1478,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QWidgetItem_HasHeightForWidth(const_cast<MiqtVirtualQWidgetItem*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QWidgetItem_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -1501,7 +1501,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QWidgetItem_HeightForWidth(const_cast<MiqtVirtualQWidgetItem*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QWidgetItem_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1523,7 +1523,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QWidgetItem_ControlTypes(const_cast<MiqtVirtualQWidgetItem*>(this), handle__ControlTypes);
+		int callback_return_value = miqt_exec_callback_QWidgetItem_ControlTypes(this, handle__ControlTypes);
 
 		return static_cast<QSizePolicy::ControlTypes>(callback_return_value);
 	}
@@ -1547,7 +1547,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QWidgetItem_MinimumHeightForWidth(const_cast<MiqtVirtualQWidgetItem*>(this), handle__MinimumHeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QWidgetItem_MinimumHeightForWidth(this, handle__MinimumHeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1913,7 +1913,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QWidgetItemV2_SizeHint(const_cast<MiqtVirtualQWidgetItemV2*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QWidgetItemV2_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -1935,7 +1935,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QWidgetItemV2_MinimumSize(const_cast<MiqtVirtualQWidgetItemV2*>(this), handle__MinimumSize);
+		QSize* callback_return_value = miqt_exec_callback_QWidgetItemV2_MinimumSize(this, handle__MinimumSize);
 
 		return *callback_return_value;
 	}
@@ -1957,7 +1957,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QWidgetItemV2_MaximumSize(const_cast<MiqtVirtualQWidgetItemV2*>(this), handle__MaximumSize);
+		QSize* callback_return_value = miqt_exec_callback_QWidgetItemV2_MaximumSize(this, handle__MaximumSize);
 
 		return *callback_return_value;
 	}
@@ -1980,7 +1980,7 @@ public:
 		
 		int sigval1 = width;
 
-		int callback_return_value = miqt_exec_callback_QWidgetItemV2_HeightForWidth(const_cast<MiqtVirtualQWidgetItemV2*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QWidgetItemV2_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -2002,7 +2002,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QWidgetItemV2_ExpandingDirections(const_cast<MiqtVirtualQWidgetItemV2*>(this), handle__ExpandingDirections);
+		int callback_return_value = miqt_exec_callback_QWidgetItemV2_ExpandingDirections(this, handle__ExpandingDirections);
 
 		return static_cast<Qt::Orientations>(callback_return_value);
 	}
@@ -2025,7 +2025,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QWidgetItemV2_IsEmpty(const_cast<MiqtVirtualQWidgetItemV2*>(this), handle__IsEmpty);
+		bool callback_return_value = miqt_exec_callback_QWidgetItemV2_IsEmpty(this, handle__IsEmpty);
 
 		return callback_return_value;
 	}
@@ -2073,7 +2073,7 @@ public:
 		}
 		
 
-		QRect* callback_return_value = miqt_exec_callback_QWidgetItemV2_Geometry(const_cast<MiqtVirtualQWidgetItemV2*>(this), handle__Geometry);
+		QRect* callback_return_value = miqt_exec_callback_QWidgetItemV2_Geometry(this, handle__Geometry);
 
 		return *callback_return_value;
 	}
@@ -2117,7 +2117,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QWidgetItemV2_HasHeightForWidth(const_cast<MiqtVirtualQWidgetItemV2*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QWidgetItemV2_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -2139,7 +2139,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QWidgetItemV2_ControlTypes(const_cast<MiqtVirtualQWidgetItemV2*>(this), handle__ControlTypes);
+		int callback_return_value = miqt_exec_callback_QWidgetItemV2_ControlTypes(this, handle__ControlTypes);
 
 		return static_cast<QSizePolicy::ControlTypes>(callback_return_value);
 	}
@@ -2163,7 +2163,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QWidgetItemV2_MinimumHeightForWidth(const_cast<MiqtVirtualQWidgetItemV2*>(this), handle__MinimumHeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QWidgetItemV2_MinimumHeightForWidth(this, handle__MinimumHeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}

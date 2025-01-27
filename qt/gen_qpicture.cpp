@@ -18,13 +18,13 @@
 extern "C" {
 #endif
 
-int miqt_exec_callback_QPicture_DevType(void*, intptr_t);
-void miqt_exec_callback_QPicture_SetData(void*, intptr_t, const char*, unsigned int);
-QPaintEngine* miqt_exec_callback_QPicture_PaintEngine(void*, intptr_t);
-int miqt_exec_callback_QPicture_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QPicture_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QPicture_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QPicture_SharedPainter(void*, intptr_t);
+int miqt_exec_callback_QPicture_DevType(const QPicture*, intptr_t);
+void miqt_exec_callback_QPicture_SetData(QPicture*, intptr_t, const char*, unsigned int);
+QPaintEngine* miqt_exec_callback_QPicture_PaintEngine(const QPicture*, intptr_t);
+int miqt_exec_callback_QPicture_Metric(const QPicture*, intptr_t, int);
+void miqt_exec_callback_QPicture_InitPainter(const QPicture*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QPicture_Redirected(const QPicture*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QPicture_SharedPainter(const QPicture*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -48,7 +48,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QPicture_DevType(const_cast<MiqtVirtualQPicture*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QPicture_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -96,7 +96,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QPicture_PaintEngine(const_cast<MiqtVirtualQPicture*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QPicture_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -120,7 +120,7 @@ public:
 		QPaintDevice::PaintDeviceMetric m_ret = m;
 		int sigval1 = static_cast<int>(m_ret);
 
-		int callback_return_value = miqt_exec_callback_QPicture_Metric(const_cast<MiqtVirtualQPicture*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QPicture_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -144,7 +144,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QPicture_InitPainter(const_cast<MiqtVirtualQPicture*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QPicture_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -167,7 +167,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QPicture_Redirected(const_cast<MiqtVirtualQPicture*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QPicture_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -189,7 +189,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QPicture_SharedPainter(const_cast<MiqtVirtualQPicture*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QPicture_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}

@@ -23,61 +23,61 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QValidator_Changed(intptr_t);
-int miqt_exec_callback_QValidator_Validate(void*, intptr_t, struct miqt_string, int*);
-void miqt_exec_callback_QValidator_Fixup(void*, intptr_t, struct miqt_string);
-bool miqt_exec_callback_QValidator_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QValidator_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QValidator_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QValidator_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QValidator_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QValidator_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QValidator_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+int miqt_exec_callback_QValidator_Validate(const QValidator*, intptr_t, struct miqt_string, int*);
+void miqt_exec_callback_QValidator_Fixup(const QValidator*, intptr_t, struct miqt_string);
+bool miqt_exec_callback_QValidator_Event(QValidator*, intptr_t, QEvent*);
+bool miqt_exec_callback_QValidator_EventFilter(QValidator*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QValidator_TimerEvent(QValidator*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QValidator_ChildEvent(QValidator*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QValidator_CustomEvent(QValidator*, intptr_t, QEvent*);
+void miqt_exec_callback_QValidator_ConnectNotify(QValidator*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QValidator_DisconnectNotify(QValidator*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QIntValidator_BottomChanged(intptr_t, int);
 void miqt_exec_callback_QIntValidator_TopChanged(intptr_t, int);
-int miqt_exec_callback_QIntValidator_Validate(void*, intptr_t, struct miqt_string, int*);
-void miqt_exec_callback_QIntValidator_Fixup(void*, intptr_t, struct miqt_string);
-void miqt_exec_callback_QIntValidator_SetRange(void*, intptr_t, int, int);
-bool miqt_exec_callback_QIntValidator_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QIntValidator_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QIntValidator_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QIntValidator_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QIntValidator_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QIntValidator_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QIntValidator_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+int miqt_exec_callback_QIntValidator_Validate(const QIntValidator*, intptr_t, struct miqt_string, int*);
+void miqt_exec_callback_QIntValidator_Fixup(const QIntValidator*, intptr_t, struct miqt_string);
+void miqt_exec_callback_QIntValidator_SetRange(QIntValidator*, intptr_t, int, int);
+bool miqt_exec_callback_QIntValidator_Event(QIntValidator*, intptr_t, QEvent*);
+bool miqt_exec_callback_QIntValidator_EventFilter(QIntValidator*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QIntValidator_TimerEvent(QIntValidator*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QIntValidator_ChildEvent(QIntValidator*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QIntValidator_CustomEvent(QIntValidator*, intptr_t, QEvent*);
+void miqt_exec_callback_QIntValidator_ConnectNotify(QIntValidator*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QIntValidator_DisconnectNotify(QIntValidator*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QDoubleValidator_BottomChanged(intptr_t, double);
 void miqt_exec_callback_QDoubleValidator_TopChanged(intptr_t, double);
 void miqt_exec_callback_QDoubleValidator_DecimalsChanged(intptr_t, int);
 void miqt_exec_callback_QDoubleValidator_NotationChanged(intptr_t, int);
-int miqt_exec_callback_QDoubleValidator_Validate(void*, intptr_t, struct miqt_string, int*);
-void miqt_exec_callback_QDoubleValidator_SetRange(void*, intptr_t, double, double, int);
-void miqt_exec_callback_QDoubleValidator_Fixup(void*, intptr_t, struct miqt_string);
-bool miqt_exec_callback_QDoubleValidator_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QDoubleValidator_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QDoubleValidator_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QDoubleValidator_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QDoubleValidator_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QDoubleValidator_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QDoubleValidator_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+int miqt_exec_callback_QDoubleValidator_Validate(const QDoubleValidator*, intptr_t, struct miqt_string, int*);
+void miqt_exec_callback_QDoubleValidator_SetRange(QDoubleValidator*, intptr_t, double, double, int);
+void miqt_exec_callback_QDoubleValidator_Fixup(const QDoubleValidator*, intptr_t, struct miqt_string);
+bool miqt_exec_callback_QDoubleValidator_Event(QDoubleValidator*, intptr_t, QEvent*);
+bool miqt_exec_callback_QDoubleValidator_EventFilter(QDoubleValidator*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QDoubleValidator_TimerEvent(QDoubleValidator*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QDoubleValidator_ChildEvent(QDoubleValidator*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QDoubleValidator_CustomEvent(QDoubleValidator*, intptr_t, QEvent*);
+void miqt_exec_callback_QDoubleValidator_ConnectNotify(QDoubleValidator*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QDoubleValidator_DisconnectNotify(QDoubleValidator*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QRegExpValidator_RegExpChanged(intptr_t, QRegExp*);
-int miqt_exec_callback_QRegExpValidator_Validate(void*, intptr_t, struct miqt_string, int*);
-void miqt_exec_callback_QRegExpValidator_Fixup(void*, intptr_t, struct miqt_string);
-bool miqt_exec_callback_QRegExpValidator_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QRegExpValidator_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QRegExpValidator_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QRegExpValidator_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QRegExpValidator_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QRegExpValidator_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QRegExpValidator_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+int miqt_exec_callback_QRegExpValidator_Validate(const QRegExpValidator*, intptr_t, struct miqt_string, int*);
+void miqt_exec_callback_QRegExpValidator_Fixup(const QRegExpValidator*, intptr_t, struct miqt_string);
+bool miqt_exec_callback_QRegExpValidator_Event(QRegExpValidator*, intptr_t, QEvent*);
+bool miqt_exec_callback_QRegExpValidator_EventFilter(QRegExpValidator*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QRegExpValidator_TimerEvent(QRegExpValidator*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QRegExpValidator_ChildEvent(QRegExpValidator*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QRegExpValidator_CustomEvent(QRegExpValidator*, intptr_t, QEvent*);
+void miqt_exec_callback_QRegExpValidator_ConnectNotify(QRegExpValidator*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QRegExpValidator_DisconnectNotify(QRegExpValidator*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QRegularExpressionValidator_RegularExpressionChanged(intptr_t, QRegularExpression*);
-int miqt_exec_callback_QRegularExpressionValidator_Validate(void*, intptr_t, struct miqt_string, int*);
-void miqt_exec_callback_QRegularExpressionValidator_Fixup(void*, intptr_t, struct miqt_string);
-bool miqt_exec_callback_QRegularExpressionValidator_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QRegularExpressionValidator_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QRegularExpressionValidator_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QRegularExpressionValidator_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QRegularExpressionValidator_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QRegularExpressionValidator_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QRegularExpressionValidator_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+int miqt_exec_callback_QRegularExpressionValidator_Validate(const QRegularExpressionValidator*, intptr_t, struct miqt_string, int*);
+void miqt_exec_callback_QRegularExpressionValidator_Fixup(const QRegularExpressionValidator*, intptr_t, struct miqt_string);
+bool miqt_exec_callback_QRegularExpressionValidator_Event(QRegularExpressionValidator*, intptr_t, QEvent*);
+bool miqt_exec_callback_QRegularExpressionValidator_EventFilter(QRegularExpressionValidator*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QRegularExpressionValidator_TimerEvent(QRegularExpressionValidator*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QRegularExpressionValidator_ChildEvent(QRegularExpressionValidator*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QRegularExpressionValidator_CustomEvent(QRegularExpressionValidator*, intptr_t, QEvent*);
+void miqt_exec_callback_QRegularExpressionValidator_ConnectNotify(QRegularExpressionValidator*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QRegularExpressionValidator_DisconnectNotify(QRegularExpressionValidator*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -109,7 +109,7 @@ public:
 		struct miqt_string sigval1 = param1_ms;
 		int* sigval2 = &param2;
 
-		int callback_return_value = miqt_exec_callback_QValidator_Validate(const_cast<MiqtVirtualQValidator*>(this), handle__Validate, sigval1, sigval2);
+		int callback_return_value = miqt_exec_callback_QValidator_Validate(this, handle__Validate, sigval1, sigval2);
 
 		return static_cast<QValidator::State>(callback_return_value);
 	}
@@ -133,7 +133,7 @@ public:
 		memcpy(param1_ms.data, param1_b.data(), param1_ms.len);
 		struct miqt_string sigval1 = param1_ms;
 
-		miqt_exec_callback_QValidator_Fixup(const_cast<MiqtVirtualQValidator*>(this), handle__Fixup, sigval1);
+		miqt_exec_callback_QValidator_Fixup(this, handle__Fixup, sigval1);
 
 		
 	}
@@ -589,7 +589,7 @@ public:
 		struct miqt_string sigval1 = param1_ms;
 		int* sigval2 = &param2;
 
-		int callback_return_value = miqt_exec_callback_QIntValidator_Validate(const_cast<MiqtVirtualQIntValidator*>(this), handle__Validate, sigval1, sigval2);
+		int callback_return_value = miqt_exec_callback_QIntValidator_Validate(this, handle__Validate, sigval1, sigval2);
 
 		return static_cast<QValidator::State>(callback_return_value);
 	}
@@ -622,7 +622,7 @@ public:
 		memcpy(input_ms.data, input_b.data(), input_ms.len);
 		struct miqt_string sigval1 = input_ms;
 
-		miqt_exec_callback_QIntValidator_Fixup(const_cast<MiqtVirtualQIntValidator*>(this), handle__Fixup, sigval1);
+		miqt_exec_callback_QIntValidator_Fixup(this, handle__Fixup, sigval1);
 
 		
 	}
@@ -1153,7 +1153,7 @@ public:
 		struct miqt_string sigval1 = param1_ms;
 		int* sigval2 = &param2;
 
-		int callback_return_value = miqt_exec_callback_QDoubleValidator_Validate(const_cast<MiqtVirtualQDoubleValidator*>(this), handle__Validate, sigval1, sigval2);
+		int callback_return_value = miqt_exec_callback_QDoubleValidator_Validate(this, handle__Validate, sigval1, sigval2);
 
 		return static_cast<QValidator::State>(callback_return_value);
 	}
@@ -1212,7 +1212,7 @@ public:
 		memcpy(param1_ms.data, param1_b.data(), param1_ms.len);
 		struct miqt_string sigval1 = param1_ms;
 
-		miqt_exec_callback_QDoubleValidator_Fixup(const_cast<MiqtVirtualQDoubleValidator*>(this), handle__Fixup, sigval1);
+		miqt_exec_callback_QDoubleValidator_Fixup(this, handle__Fixup, sigval1);
 
 		
 	}
@@ -1753,7 +1753,7 @@ public:
 		struct miqt_string sigval1 = input_ms;
 		int* sigval2 = &pos;
 
-		int callback_return_value = miqt_exec_callback_QRegExpValidator_Validate(const_cast<MiqtVirtualQRegExpValidator*>(this), handle__Validate, sigval1, sigval2);
+		int callback_return_value = miqt_exec_callback_QRegExpValidator_Validate(this, handle__Validate, sigval1, sigval2);
 
 		return static_cast<QValidator::State>(callback_return_value);
 	}
@@ -1786,7 +1786,7 @@ public:
 		memcpy(param1_ms.data, param1_b.data(), param1_ms.len);
 		struct miqt_string sigval1 = param1_ms;
 
-		miqt_exec_callback_QRegExpValidator_Fixup(const_cast<MiqtVirtualQRegExpValidator*>(this), handle__Fixup, sigval1);
+		miqt_exec_callback_QRegExpValidator_Fixup(this, handle__Fixup, sigval1);
 
 		
 	}
@@ -2254,7 +2254,7 @@ public:
 		struct miqt_string sigval1 = input_ms;
 		int* sigval2 = &pos;
 
-		int callback_return_value = miqt_exec_callback_QRegularExpressionValidator_Validate(const_cast<MiqtVirtualQRegularExpressionValidator*>(this), handle__Validate, sigval1, sigval2);
+		int callback_return_value = miqt_exec_callback_QRegularExpressionValidator_Validate(this, handle__Validate, sigval1, sigval2);
 
 		return static_cast<QValidator::State>(callback_return_value);
 	}
@@ -2287,7 +2287,7 @@ public:
 		memcpy(param1_ms.data, param1_b.data(), param1_ms.len);
 		struct miqt_string sigval1 = param1_ms;
 
-		miqt_exec_callback_QRegularExpressionValidator_Fixup(const_cast<MiqtVirtualQRegularExpressionValidator*>(this), handle__Fixup, sigval1);
+		miqt_exec_callback_QRegularExpressionValidator_Fixup(this, handle__Fixup, sigval1);
 
 		
 	}

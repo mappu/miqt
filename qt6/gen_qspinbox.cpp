@@ -47,118 +47,118 @@ extern "C" {
 
 void miqt_exec_callback_QSpinBox_ValueChanged(intptr_t, int);
 void miqt_exec_callback_QSpinBox_TextChanged(intptr_t, struct miqt_string);
-bool miqt_exec_callback_QSpinBox_Event(void*, intptr_t, QEvent*);
-int miqt_exec_callback_QSpinBox_Validate(void*, intptr_t, struct miqt_string, int*);
-int miqt_exec_callback_QSpinBox_ValueFromText(void*, intptr_t, struct miqt_string);
-struct miqt_string miqt_exec_callback_QSpinBox_TextFromValue(void*, intptr_t, int);
-void miqt_exec_callback_QSpinBox_Fixup(void*, intptr_t, struct miqt_string);
-QSize* miqt_exec_callback_QSpinBox_SizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QSpinBox_MinimumSizeHint(void*, intptr_t);
-QVariant* miqt_exec_callback_QSpinBox_InputMethodQuery(void*, intptr_t, int);
-void miqt_exec_callback_QSpinBox_StepBy(void*, intptr_t, int);
-void miqt_exec_callback_QSpinBox_Clear(void*, intptr_t);
-void miqt_exec_callback_QSpinBox_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QSpinBox_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QSpinBox_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QSpinBox_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QSpinBox_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QSpinBox_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QSpinBox_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QSpinBox_ChangeEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSpinBox_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QSpinBox_HideEvent(void*, intptr_t, QHideEvent*);
-void miqt_exec_callback_QSpinBox_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QSpinBox_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QSpinBox_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QSpinBox_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QSpinBox_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QSpinBox_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QSpinBox_InitStyleOption(void*, intptr_t, QStyleOptionSpinBox*);
-int miqt_exec_callback_QSpinBox_StepEnabled(void*, intptr_t);
-int miqt_exec_callback_QSpinBox_DevType(void*, intptr_t);
-void miqt_exec_callback_QSpinBox_SetVisible(void*, intptr_t, bool);
-int miqt_exec_callback_QSpinBox_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QSpinBox_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QSpinBox_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QSpinBox_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QSpinBox_EnterEvent(void*, intptr_t, QEnterEvent*);
-void miqt_exec_callback_QSpinBox_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSpinBox_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QSpinBox_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QSpinBox_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QSpinBox_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QSpinBox_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QSpinBox_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QSpinBox_DropEvent(void*, intptr_t, QDropEvent*);
-bool miqt_exec_callback_QSpinBox_NativeEvent(void*, intptr_t, struct miqt_string, void*, intptr_t*);
-int miqt_exec_callback_QSpinBox_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QSpinBox_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QSpinBox_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QSpinBox_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QSpinBox_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-bool miqt_exec_callback_QSpinBox_FocusNextPrevChild(void*, intptr_t, bool);
-bool miqt_exec_callback_QSpinBox_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QSpinBox_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QSpinBox_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSpinBox_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QSpinBox_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QSpinBox_Event(QSpinBox*, intptr_t, QEvent*);
+int miqt_exec_callback_QSpinBox_Validate(const QSpinBox*, intptr_t, struct miqt_string, int*);
+int miqt_exec_callback_QSpinBox_ValueFromText(const QSpinBox*, intptr_t, struct miqt_string);
+struct miqt_string miqt_exec_callback_QSpinBox_TextFromValue(const QSpinBox*, intptr_t, int);
+void miqt_exec_callback_QSpinBox_Fixup(const QSpinBox*, intptr_t, struct miqt_string);
+QSize* miqt_exec_callback_QSpinBox_SizeHint(const QSpinBox*, intptr_t);
+QSize* miqt_exec_callback_QSpinBox_MinimumSizeHint(const QSpinBox*, intptr_t);
+QVariant* miqt_exec_callback_QSpinBox_InputMethodQuery(const QSpinBox*, intptr_t, int);
+void miqt_exec_callback_QSpinBox_StepBy(QSpinBox*, intptr_t, int);
+void miqt_exec_callback_QSpinBox_Clear(QSpinBox*, intptr_t);
+void miqt_exec_callback_QSpinBox_ResizeEvent(QSpinBox*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QSpinBox_KeyPressEvent(QSpinBox*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QSpinBox_KeyReleaseEvent(QSpinBox*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QSpinBox_WheelEvent(QSpinBox*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QSpinBox_FocusInEvent(QSpinBox*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QSpinBox_FocusOutEvent(QSpinBox*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QSpinBox_ContextMenuEvent(QSpinBox*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QSpinBox_ChangeEvent(QSpinBox*, intptr_t, QEvent*);
+void miqt_exec_callback_QSpinBox_CloseEvent(QSpinBox*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QSpinBox_HideEvent(QSpinBox*, intptr_t, QHideEvent*);
+void miqt_exec_callback_QSpinBox_MousePressEvent(QSpinBox*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSpinBox_MouseReleaseEvent(QSpinBox*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSpinBox_MouseMoveEvent(QSpinBox*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSpinBox_TimerEvent(QSpinBox*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSpinBox_PaintEvent(QSpinBox*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QSpinBox_ShowEvent(QSpinBox*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QSpinBox_InitStyleOption(const QSpinBox*, intptr_t, QStyleOptionSpinBox*);
+int miqt_exec_callback_QSpinBox_StepEnabled(const QSpinBox*, intptr_t);
+int miqt_exec_callback_QSpinBox_DevType(const QSpinBox*, intptr_t);
+void miqt_exec_callback_QSpinBox_SetVisible(QSpinBox*, intptr_t, bool);
+int miqt_exec_callback_QSpinBox_HeightForWidth(const QSpinBox*, intptr_t, int);
+bool miqt_exec_callback_QSpinBox_HasHeightForWidth(const QSpinBox*, intptr_t);
+QPaintEngine* miqt_exec_callback_QSpinBox_PaintEngine(const QSpinBox*, intptr_t);
+void miqt_exec_callback_QSpinBox_MouseDoubleClickEvent(QSpinBox*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSpinBox_EnterEvent(QSpinBox*, intptr_t, QEnterEvent*);
+void miqt_exec_callback_QSpinBox_LeaveEvent(QSpinBox*, intptr_t, QEvent*);
+void miqt_exec_callback_QSpinBox_MoveEvent(QSpinBox*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QSpinBox_TabletEvent(QSpinBox*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QSpinBox_ActionEvent(QSpinBox*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QSpinBox_DragEnterEvent(QSpinBox*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QSpinBox_DragMoveEvent(QSpinBox*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QSpinBox_DragLeaveEvent(QSpinBox*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QSpinBox_DropEvent(QSpinBox*, intptr_t, QDropEvent*);
+bool miqt_exec_callback_QSpinBox_NativeEvent(QSpinBox*, intptr_t, struct miqt_string, void*, intptr_t*);
+int miqt_exec_callback_QSpinBox_Metric(const QSpinBox*, intptr_t, int);
+void miqt_exec_callback_QSpinBox_InitPainter(const QSpinBox*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QSpinBox_Redirected(const QSpinBox*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QSpinBox_SharedPainter(const QSpinBox*, intptr_t);
+void miqt_exec_callback_QSpinBox_InputMethodEvent(QSpinBox*, intptr_t, QInputMethodEvent*);
+bool miqt_exec_callback_QSpinBox_FocusNextPrevChild(QSpinBox*, intptr_t, bool);
+bool miqt_exec_callback_QSpinBox_EventFilter(QSpinBox*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QSpinBox_ChildEvent(QSpinBox*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QSpinBox_CustomEvent(QSpinBox*, intptr_t, QEvent*);
+void miqt_exec_callback_QSpinBox_ConnectNotify(QSpinBox*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSpinBox_DisconnectNotify(QSpinBox*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QDoubleSpinBox_ValueChanged(intptr_t, double);
 void miqt_exec_callback_QDoubleSpinBox_TextChanged(intptr_t, struct miqt_string);
-int miqt_exec_callback_QDoubleSpinBox_Validate(void*, intptr_t, struct miqt_string, int*);
-double miqt_exec_callback_QDoubleSpinBox_ValueFromText(void*, intptr_t, struct miqt_string);
-struct miqt_string miqt_exec_callback_QDoubleSpinBox_TextFromValue(void*, intptr_t, double);
-void miqt_exec_callback_QDoubleSpinBox_Fixup(void*, intptr_t, struct miqt_string);
-QSize* miqt_exec_callback_QDoubleSpinBox_SizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QDoubleSpinBox_MinimumSizeHint(void*, intptr_t);
-bool miqt_exec_callback_QDoubleSpinBox_Event(void*, intptr_t, QEvent*);
-QVariant* miqt_exec_callback_QDoubleSpinBox_InputMethodQuery(void*, intptr_t, int);
-void miqt_exec_callback_QDoubleSpinBox_StepBy(void*, intptr_t, int);
-void miqt_exec_callback_QDoubleSpinBox_Clear(void*, intptr_t);
-void miqt_exec_callback_QDoubleSpinBox_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QDoubleSpinBox_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QDoubleSpinBox_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QDoubleSpinBox_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QDoubleSpinBox_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QDoubleSpinBox_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QDoubleSpinBox_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QDoubleSpinBox_ChangeEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QDoubleSpinBox_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QDoubleSpinBox_HideEvent(void*, intptr_t, QHideEvent*);
-void miqt_exec_callback_QDoubleSpinBox_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QDoubleSpinBox_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QDoubleSpinBox_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QDoubleSpinBox_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QDoubleSpinBox_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QDoubleSpinBox_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QDoubleSpinBox_InitStyleOption(void*, intptr_t, QStyleOptionSpinBox*);
-int miqt_exec_callback_QDoubleSpinBox_StepEnabled(void*, intptr_t);
-int miqt_exec_callback_QDoubleSpinBox_DevType(void*, intptr_t);
-void miqt_exec_callback_QDoubleSpinBox_SetVisible(void*, intptr_t, bool);
-int miqt_exec_callback_QDoubleSpinBox_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QDoubleSpinBox_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QDoubleSpinBox_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QDoubleSpinBox_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QDoubleSpinBox_EnterEvent(void*, intptr_t, QEnterEvent*);
-void miqt_exec_callback_QDoubleSpinBox_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QDoubleSpinBox_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QDoubleSpinBox_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QDoubleSpinBox_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QDoubleSpinBox_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QDoubleSpinBox_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QDoubleSpinBox_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QDoubleSpinBox_DropEvent(void*, intptr_t, QDropEvent*);
-bool miqt_exec_callback_QDoubleSpinBox_NativeEvent(void*, intptr_t, struct miqt_string, void*, intptr_t*);
-int miqt_exec_callback_QDoubleSpinBox_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QDoubleSpinBox_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QDoubleSpinBox_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QDoubleSpinBox_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QDoubleSpinBox_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-bool miqt_exec_callback_QDoubleSpinBox_FocusNextPrevChild(void*, intptr_t, bool);
-bool miqt_exec_callback_QDoubleSpinBox_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QDoubleSpinBox_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QDoubleSpinBox_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QDoubleSpinBox_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QDoubleSpinBox_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+int miqt_exec_callback_QDoubleSpinBox_Validate(const QDoubleSpinBox*, intptr_t, struct miqt_string, int*);
+double miqt_exec_callback_QDoubleSpinBox_ValueFromText(const QDoubleSpinBox*, intptr_t, struct miqt_string);
+struct miqt_string miqt_exec_callback_QDoubleSpinBox_TextFromValue(const QDoubleSpinBox*, intptr_t, double);
+void miqt_exec_callback_QDoubleSpinBox_Fixup(const QDoubleSpinBox*, intptr_t, struct miqt_string);
+QSize* miqt_exec_callback_QDoubleSpinBox_SizeHint(const QDoubleSpinBox*, intptr_t);
+QSize* miqt_exec_callback_QDoubleSpinBox_MinimumSizeHint(const QDoubleSpinBox*, intptr_t);
+bool miqt_exec_callback_QDoubleSpinBox_Event(QDoubleSpinBox*, intptr_t, QEvent*);
+QVariant* miqt_exec_callback_QDoubleSpinBox_InputMethodQuery(const QDoubleSpinBox*, intptr_t, int);
+void miqt_exec_callback_QDoubleSpinBox_StepBy(QDoubleSpinBox*, intptr_t, int);
+void miqt_exec_callback_QDoubleSpinBox_Clear(QDoubleSpinBox*, intptr_t);
+void miqt_exec_callback_QDoubleSpinBox_ResizeEvent(QDoubleSpinBox*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QDoubleSpinBox_KeyPressEvent(QDoubleSpinBox*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QDoubleSpinBox_KeyReleaseEvent(QDoubleSpinBox*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QDoubleSpinBox_WheelEvent(QDoubleSpinBox*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QDoubleSpinBox_FocusInEvent(QDoubleSpinBox*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QDoubleSpinBox_FocusOutEvent(QDoubleSpinBox*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QDoubleSpinBox_ContextMenuEvent(QDoubleSpinBox*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QDoubleSpinBox_ChangeEvent(QDoubleSpinBox*, intptr_t, QEvent*);
+void miqt_exec_callback_QDoubleSpinBox_CloseEvent(QDoubleSpinBox*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QDoubleSpinBox_HideEvent(QDoubleSpinBox*, intptr_t, QHideEvent*);
+void miqt_exec_callback_QDoubleSpinBox_MousePressEvent(QDoubleSpinBox*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDoubleSpinBox_MouseReleaseEvent(QDoubleSpinBox*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDoubleSpinBox_MouseMoveEvent(QDoubleSpinBox*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDoubleSpinBox_TimerEvent(QDoubleSpinBox*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QDoubleSpinBox_PaintEvent(QDoubleSpinBox*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QDoubleSpinBox_ShowEvent(QDoubleSpinBox*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QDoubleSpinBox_InitStyleOption(const QDoubleSpinBox*, intptr_t, QStyleOptionSpinBox*);
+int miqt_exec_callback_QDoubleSpinBox_StepEnabled(const QDoubleSpinBox*, intptr_t);
+int miqt_exec_callback_QDoubleSpinBox_DevType(const QDoubleSpinBox*, intptr_t);
+void miqt_exec_callback_QDoubleSpinBox_SetVisible(QDoubleSpinBox*, intptr_t, bool);
+int miqt_exec_callback_QDoubleSpinBox_HeightForWidth(const QDoubleSpinBox*, intptr_t, int);
+bool miqt_exec_callback_QDoubleSpinBox_HasHeightForWidth(const QDoubleSpinBox*, intptr_t);
+QPaintEngine* miqt_exec_callback_QDoubleSpinBox_PaintEngine(const QDoubleSpinBox*, intptr_t);
+void miqt_exec_callback_QDoubleSpinBox_MouseDoubleClickEvent(QDoubleSpinBox*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDoubleSpinBox_EnterEvent(QDoubleSpinBox*, intptr_t, QEnterEvent*);
+void miqt_exec_callback_QDoubleSpinBox_LeaveEvent(QDoubleSpinBox*, intptr_t, QEvent*);
+void miqt_exec_callback_QDoubleSpinBox_MoveEvent(QDoubleSpinBox*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QDoubleSpinBox_TabletEvent(QDoubleSpinBox*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QDoubleSpinBox_ActionEvent(QDoubleSpinBox*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QDoubleSpinBox_DragEnterEvent(QDoubleSpinBox*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QDoubleSpinBox_DragMoveEvent(QDoubleSpinBox*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QDoubleSpinBox_DragLeaveEvent(QDoubleSpinBox*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QDoubleSpinBox_DropEvent(QDoubleSpinBox*, intptr_t, QDropEvent*);
+bool miqt_exec_callback_QDoubleSpinBox_NativeEvent(QDoubleSpinBox*, intptr_t, struct miqt_string, void*, intptr_t*);
+int miqt_exec_callback_QDoubleSpinBox_Metric(const QDoubleSpinBox*, intptr_t, int);
+void miqt_exec_callback_QDoubleSpinBox_InitPainter(const QDoubleSpinBox*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QDoubleSpinBox_Redirected(const QDoubleSpinBox*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QDoubleSpinBox_SharedPainter(const QDoubleSpinBox*, intptr_t);
+void miqt_exec_callback_QDoubleSpinBox_InputMethodEvent(QDoubleSpinBox*, intptr_t, QInputMethodEvent*);
+bool miqt_exec_callback_QDoubleSpinBox_FocusNextPrevChild(QDoubleSpinBox*, intptr_t, bool);
+bool miqt_exec_callback_QDoubleSpinBox_EventFilter(QDoubleSpinBox*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QDoubleSpinBox_ChildEvent(QDoubleSpinBox*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QDoubleSpinBox_CustomEvent(QDoubleSpinBox*, intptr_t, QEvent*);
+void miqt_exec_callback_QDoubleSpinBox_ConnectNotify(QDoubleSpinBox*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QDoubleSpinBox_DisconnectNotify(QDoubleSpinBox*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -213,7 +213,7 @@ public:
 		struct miqt_string sigval1 = input_ms;
 		int* sigval2 = &pos;
 
-		int callback_return_value = miqt_exec_callback_QSpinBox_Validate(const_cast<MiqtVirtualQSpinBox*>(this), handle__Validate, sigval1, sigval2);
+		int callback_return_value = miqt_exec_callback_QSpinBox_Validate(this, handle__Validate, sigval1, sigval2);
 
 		return static_cast<QValidator::State>(callback_return_value);
 	}
@@ -245,7 +245,7 @@ public:
 		memcpy(text_ms.data, text_b.data(), text_ms.len);
 		struct miqt_string sigval1 = text_ms;
 
-		int callback_return_value = miqt_exec_callback_QSpinBox_ValueFromText(const_cast<MiqtVirtualQSpinBox*>(this), handle__ValueFromText, sigval1);
+		int callback_return_value = miqt_exec_callback_QSpinBox_ValueFromText(this, handle__ValueFromText, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -269,7 +269,7 @@ public:
 		
 		int sigval1 = val;
 
-		struct miqt_string callback_return_value = miqt_exec_callback_QSpinBox_TextFromValue(const_cast<MiqtVirtualQSpinBox*>(this), handle__TextFromValue, sigval1);
+		struct miqt_string callback_return_value = miqt_exec_callback_QSpinBox_TextFromValue(this, handle__TextFromValue, sigval1);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
 
 		return callback_return_value_QString;
@@ -308,7 +308,7 @@ public:
 		memcpy(str_ms.data, str_b.data(), str_ms.len);
 		struct miqt_string sigval1 = str_ms;
 
-		miqt_exec_callback_QSpinBox_Fixup(const_cast<MiqtVirtualQSpinBox*>(this), handle__Fixup, sigval1);
+		miqt_exec_callback_QSpinBox_Fixup(this, handle__Fixup, sigval1);
 
 		
 	}
@@ -331,7 +331,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QSpinBox_SizeHint(const_cast<MiqtVirtualQSpinBox*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QSpinBox_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -353,7 +353,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QSpinBox_MinimumSizeHint(const_cast<MiqtVirtualQSpinBox*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QSpinBox_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -377,7 +377,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QSpinBox_InputMethodQuery(const_cast<MiqtVirtualQSpinBox*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QSpinBox_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}
@@ -832,7 +832,7 @@ public:
 		
 		QStyleOptionSpinBox* sigval1 = option;
 
-		miqt_exec_callback_QSpinBox_InitStyleOption(const_cast<MiqtVirtualQSpinBox*>(this), handle__InitStyleOption, sigval1);
+		miqt_exec_callback_QSpinBox_InitStyleOption(this, handle__InitStyleOption, sigval1);
 
 		
 	}
@@ -854,7 +854,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QSpinBox_StepEnabled(const_cast<MiqtVirtualQSpinBox*>(this), handle__StepEnabled);
+		int callback_return_value = miqt_exec_callback_QSpinBox_StepEnabled(this, handle__StepEnabled);
 
 		return static_cast<QAbstractSpinBox::StepEnabled>(callback_return_value);
 	}
@@ -877,7 +877,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QSpinBox_DevType(const_cast<MiqtVirtualQSpinBox*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QSpinBox_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -924,7 +924,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QSpinBox_HeightForWidth(const_cast<MiqtVirtualQSpinBox*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QSpinBox_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -946,7 +946,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QSpinBox_HasHeightForWidth(const_cast<MiqtVirtualQSpinBox*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QSpinBox_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -968,7 +968,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QSpinBox_PaintEngine(const_cast<MiqtVirtualQSpinBox*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QSpinBox_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -1264,7 +1264,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QSpinBox_Metric(const_cast<MiqtVirtualQSpinBox*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QSpinBox_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1288,7 +1288,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QSpinBox_InitPainter(const_cast<MiqtVirtualQSpinBox*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QSpinBox_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -1311,7 +1311,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QSpinBox_Redirected(const_cast<MiqtVirtualQSpinBox*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QSpinBox_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1333,7 +1333,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QSpinBox_SharedPainter(const_cast<MiqtVirtualQSpinBox*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QSpinBox_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -2498,7 +2498,7 @@ public:
 		struct miqt_string sigval1 = input_ms;
 		int* sigval2 = &pos;
 
-		int callback_return_value = miqt_exec_callback_QDoubleSpinBox_Validate(const_cast<MiqtVirtualQDoubleSpinBox*>(this), handle__Validate, sigval1, sigval2);
+		int callback_return_value = miqt_exec_callback_QDoubleSpinBox_Validate(this, handle__Validate, sigval1, sigval2);
 
 		return static_cast<QValidator::State>(callback_return_value);
 	}
@@ -2530,7 +2530,7 @@ public:
 		memcpy(text_ms.data, text_b.data(), text_ms.len);
 		struct miqt_string sigval1 = text_ms;
 
-		double callback_return_value = miqt_exec_callback_QDoubleSpinBox_ValueFromText(const_cast<MiqtVirtualQDoubleSpinBox*>(this), handle__ValueFromText, sigval1);
+		double callback_return_value = miqt_exec_callback_QDoubleSpinBox_ValueFromText(this, handle__ValueFromText, sigval1);
 
 		return static_cast<double>(callback_return_value);
 	}
@@ -2554,7 +2554,7 @@ public:
 		
 		double sigval1 = val;
 
-		struct miqt_string callback_return_value = miqt_exec_callback_QDoubleSpinBox_TextFromValue(const_cast<MiqtVirtualQDoubleSpinBox*>(this), handle__TextFromValue, sigval1);
+		struct miqt_string callback_return_value = miqt_exec_callback_QDoubleSpinBox_TextFromValue(this, handle__TextFromValue, sigval1);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
 
 		return callback_return_value_QString;
@@ -2593,7 +2593,7 @@ public:
 		memcpy(str_ms.data, str_b.data(), str_ms.len);
 		struct miqt_string sigval1 = str_ms;
 
-		miqt_exec_callback_QDoubleSpinBox_Fixup(const_cast<MiqtVirtualQDoubleSpinBox*>(this), handle__Fixup, sigval1);
+		miqt_exec_callback_QDoubleSpinBox_Fixup(this, handle__Fixup, sigval1);
 
 		
 	}
@@ -2616,7 +2616,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QDoubleSpinBox_SizeHint(const_cast<MiqtVirtualQDoubleSpinBox*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QDoubleSpinBox_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -2638,7 +2638,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QDoubleSpinBox_MinimumSizeHint(const_cast<MiqtVirtualQDoubleSpinBox*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QDoubleSpinBox_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -2685,7 +2685,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QDoubleSpinBox_InputMethodQuery(const_cast<MiqtVirtualQDoubleSpinBox*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QDoubleSpinBox_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}
@@ -3140,7 +3140,7 @@ public:
 		
 		QStyleOptionSpinBox* sigval1 = option;
 
-		miqt_exec_callback_QDoubleSpinBox_InitStyleOption(const_cast<MiqtVirtualQDoubleSpinBox*>(this), handle__InitStyleOption, sigval1);
+		miqt_exec_callback_QDoubleSpinBox_InitStyleOption(this, handle__InitStyleOption, sigval1);
 
 		
 	}
@@ -3162,7 +3162,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QDoubleSpinBox_StepEnabled(const_cast<MiqtVirtualQDoubleSpinBox*>(this), handle__StepEnabled);
+		int callback_return_value = miqt_exec_callback_QDoubleSpinBox_StepEnabled(this, handle__StepEnabled);
 
 		return static_cast<QAbstractSpinBox::StepEnabled>(callback_return_value);
 	}
@@ -3185,7 +3185,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QDoubleSpinBox_DevType(const_cast<MiqtVirtualQDoubleSpinBox*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QDoubleSpinBox_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -3232,7 +3232,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QDoubleSpinBox_HeightForWidth(const_cast<MiqtVirtualQDoubleSpinBox*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QDoubleSpinBox_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -3254,7 +3254,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QDoubleSpinBox_HasHeightForWidth(const_cast<MiqtVirtualQDoubleSpinBox*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QDoubleSpinBox_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -3276,7 +3276,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QDoubleSpinBox_PaintEngine(const_cast<MiqtVirtualQDoubleSpinBox*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QDoubleSpinBox_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -3572,7 +3572,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QDoubleSpinBox_Metric(const_cast<MiqtVirtualQDoubleSpinBox*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QDoubleSpinBox_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -3596,7 +3596,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QDoubleSpinBox_InitPainter(const_cast<MiqtVirtualQDoubleSpinBox*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QDoubleSpinBox_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -3619,7 +3619,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QDoubleSpinBox_Redirected(const_cast<MiqtVirtualQDoubleSpinBox*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QDoubleSpinBox_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -3641,7 +3641,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QDoubleSpinBox_SharedPainter(const_cast<MiqtVirtualQDoubleSpinBox*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QDoubleSpinBox_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
