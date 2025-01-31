@@ -11,8 +11,11 @@ clean:
 	$(DOCKER) image rm -f miqt/genbindings:latest
 	rm -f $(BUILDSTAMPS)
 
+clean-cache:
+	rm -f cmd/genbindings/cachedir/*.json
+
 genbindings: $(BUILDSTAMPS)
 	mkdir -p ~/.cache/go-build
 	$(DOCKER) run --user $$(id -u):$$(id -g) -v ~/.cache/go-build:/.cache/go-build -v $$PWD:/src -w /src miqt/genbindings:latest /bin/bash -c 'cd cmd/genbindings && go build && ./genbindings'
 
-.PHONY : all clean genbindings
+.PHONY : all clean clean-cache genbindings
