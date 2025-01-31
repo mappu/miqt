@@ -79,7 +79,15 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		[]string{
 			"/usr/include/x86_64-linux-gnu/qt5/QtNetwork",
 		},
-		AllowAllHeaders,
+		func(fullpath string) bool {
+			baseName := filepath.Base(fullpath)
+			if baseName == "qdtls.h" {
+				// Qt 5 as distributed by Brew removes all the DTLS functionality.
+				// @ref
+				return false
+			}
+			return true
+		},
 		clangBin,
 		pkgConfigCflags("Qt5Network"),
 		outDir,
