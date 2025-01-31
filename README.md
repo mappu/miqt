@@ -36,6 +36,7 @@ You must also meet your Qt license obligations.
 
 These apps are listed in alphabetical order. Raise an issue or PR to have your app listed here!
 
+- [annie-miqt](https://code.ivysaur.me/annie-miqt), a GUI application for downloading videos.
 - [jqview](https://github.com/rcalixte/jqview), The simplest possible native GUI for inspecting JSON objects with jq
 - [mdoutliner](https://github.com/mappu/miqt/tree/master/examples/mdoutliner), Markdown Outliner sample application
 - [qbolt](https://code.ivysaur.me/qbolt), a graphical database manager for BoltDB
