@@ -5,8 +5,8 @@ import (
 	"strings"
 )
 
-const Qt5Root = "/opt/Qt/5.15.2/gcc_64/"
-const Qt6Root = "/opt/Qt/6.2.4/gcc_64/"
+const Qt5Root = "/opt/Qt/5.15.2/gcc_64/include/"
+const Qt6Root = "/opt/Qt/6.2.4/gcc_64/include/"
 
 func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 
