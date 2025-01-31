@@ -5,6 +5,9 @@ import (
 	"strings"
 )
 
+const Qt5Root = "/opt/Qt/5.15.2/gcc_64/"
+const Qt6Root = "/opt/Qt/6.2.4/gcc_64/"
+
 func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 
 	AllowAllHeaders := func(string) bool { return true }
@@ -15,9 +18,10 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 	generate(
 		"qt",
 		[]string{
-			"/usr/include/x86_64-linux-gnu/qt5/QtCore",
-			"/usr/include/x86_64-linux-gnu/qt5/QtGui",
-			"/usr/include/x86_64-linux-gnu/qt5/QtWidgets",
+			Qt5Root + "QtCore",
+			Qt5Root + "QtCore",
+			Qt5Root + "QtGui",
+			Qt5Root + "QtWidgets",
 		},
 		func(fullpath string) bool {
 			// Block cbor and generate it separately
@@ -37,7 +41,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 	generate(
 		"qt/cbor",
 		[]string{
-			"/usr/include/x86_64-linux-gnu/qt5/QtCore",
+			Qt5Root + "QtCore",
 		},
 		func(fullpath string) bool {
 			// Only include the same json, xml, cbor files excluded above
@@ -53,7 +57,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 	generate(
 		"qt/printsupport",
 		[]string{
-			"/usr/include/x86_64-linux-gnu/qt5/QtPrintSupport",
+			Qt5Root + "QtPrintSupport",
 		},
 		AllowAllHeaders,
 		clangBin,
@@ -65,7 +69,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 	generate(
 		"qt/svg",
 		[]string{
-			"/usr/include/x86_64-linux-gnu/qt5/QtSvg",
+			Qt5Root + "QtSvg",
 		},
 		AllowAllHeaders,
 		clangBin,
@@ -77,7 +81,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 	generate(
 		"qt/network",
 		[]string{
-			"/usr/include/x86_64-linux-gnu/qt5/QtNetwork",
+			Qt5Root + "QtNetwork",
 		},
 		AllowAllHeaders,
 		clangBin,
@@ -92,8 +96,8 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 			// Theoretically, QtMultimediaWidgets and QtMultimedia are different
 			// packages, but QtMultimedia qcamera.h has a dependency on qvideowidget.
 			// Bind them together since our base /qt/ package is Widgets anyway.
-			"/usr/include/x86_64-linux-gnu/qt5/QtMultimedia",
-			"/usr/include/x86_64-linux-gnu/qt5/QtMultimediaWidgets",
+			Qt5Root + "QtMultimedia",
+			Qt5Root + "QtMultimediaWidgets",
 		},
 		AllowAllHeaders,
 		clangBin,
@@ -105,7 +109,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 	generate(
 		"qt/script",
 		[]string{
-			"/usr/include/x86_64-linux-gnu/qt5/QtScript",
+			Qt5Root + "QtScript",
 		},
 		AllowAllHeaders,
 		clangBin,
@@ -119,8 +123,8 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 	generate(
 		"qt/webkit",
 		[]string{
-			"/usr/include/x86_64-linux-gnu/qt5/QtWebKit",
-			"/usr/include/x86_64-linux-gnu/qt5/QtWebKitWidgets",
+			Qt5Root + "QtWebKit",
+			Qt5Root + "QtWebKitWidgets",
 		},
 		AllowAllHeaders,
 		clangBin,
@@ -133,7 +137,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 	generate(
 		"qt/webchannel",
 		[]string{
-			"/usr/include/x86_64-linux-gnu/qt5/QtWebChannel",
+			Qt5Root + "QtWebChannel",
 		},
 		AllowAllHeaders,
 		clangBin,
@@ -146,9 +150,9 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 	generate(
 		"qt/webengine",
 		[]string{
-			"/usr/include/x86_64-linux-gnu/qt5/QtWebEngine",
-			"/usr/include/x86_64-linux-gnu/qt5/QtWebEngineCore",
-			"/usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets",
+			Qt5Root + "QtWebEngine",
+			Qt5Root + "QtWebEngineCore",
+			Qt5Root + "QtWebEngineWidgets",
 		},
 
 		func(fullpath string) bool {
@@ -168,7 +172,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 	generate(
 		"qt-restricted-extras/qscintilla",
 		[]string{
-			"/usr/include/x86_64-linux-gnu/qt5/Qsci",
+			Qt5Root + "Qsci",
 		},
 		AllowAllHeaders,
 		clangBin,
@@ -199,9 +203,9 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 	generate(
 		"qt6",
 		[]string{
-			"/usr/include/x86_64-linux-gnu/qt6/QtCore",
-			"/usr/include/x86_64-linux-gnu/qt6/QtGui",
-			"/usr/include/x86_64-linux-gnu/qt6/QtWidgets",
+			Qt6Root + "QtCore",
+			Qt6Root + "QtGui",
+			Qt6Root + "QtWidgets",
 		},
 		func(fullpath string) bool {
 			// Block cbor and generate it separately
@@ -221,7 +225,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 	generate(
 		"qt6/cbor",
 		[]string{
-			"/usr/include/x86_64-linux-gnu/qt6/QtCore",
+			Qt6Root + "QtCore",
 		},
 		func(fullpath string) bool {
 			// Only include the same json, xml, cbor files excluded above
@@ -238,7 +242,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 	generate(
 		"qt6/printsupport",
 		[]string{
-			"/usr/include/x86_64-linux-gnu/qt6/QtPrintSupport",
+			Qt6Root + "QtPrintSupport",
 		},
 		AllowAllHeaders,
 		clangBin,
@@ -251,8 +255,8 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 	generate(
 		"qt6/svg",
 		[]string{
-			"/usr/include/x86_64-linux-gnu/qt6/QtSvg",
-			"/usr/include/x86_64-linux-gnu/qt6/QtSvgWidgets",
+			Qt6Root + "QtSvg",
+			Qt6Root + "QtSvgWidgets",
 		},
 		AllowAllHeaders,
 		clangBin,
@@ -265,7 +269,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 	generate(
 		"qt6/network",
 		[]string{
-			"/usr/include/x86_64-linux-gnu/qt6/QtNetwork",
+			Qt6Root + "QtNetwork",
 		},
 		func(fullpath string) bool {
 			fname := filepath.Base(fullpath)
@@ -281,8 +285,8 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 	generate(
 		"qt6/multimedia",
 		[]string{
-			"/usr/include/x86_64-linux-gnu/qt6/QtMultimedia",
-			"/usr/include/x86_64-linux-gnu/qt6/QtMultimediaWidgets",
+			Qt6Root + "QtMultimedia",
+			Qt6Root + "QtMultimediaWidgets",
 		},
 		AllowAllHeaders,
 		clangBin,
@@ -295,7 +299,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 	generate(
 		"qt6/spatialaudio",
 		[]string{
-			"/usr/include/x86_64-linux-gnu/qt6/QtSpatialAudio",
+			Qt6Root + "QtSpatialAudio",
 		},
 		AllowAllHeaders,
 		clangBin,
@@ -308,7 +312,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 	generate(
 		"qt6/webchannel",
 		[]string{
-			"/usr/include/x86_64-linux-gnu/qt6/QtWebChannel",
+			Qt6Root + "QtWebChannel",
 		},
 		AllowAllHeaders,
 		clangBin,
@@ -321,8 +325,8 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 	generate(
 		"qt6/webengine",
 		[]string{
-			"/usr/include/x86_64-linux-gnu/qt6/QtWebEngineCore",
-			"/usr/include/x86_64-linux-gnu/qt6/QtWebEngineWidgets",
+			Qt6Root + "QtWebEngineCore",
+			Qt6Root + "QtWebEngineWidgets",
 		},
 		func(fullpath string) bool {
 			baseName := filepath.Base(fullpath)
@@ -342,7 +346,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 	generate(
 		"qt-restricted-extras/qscintilla6",
 		[]string{
-			"/usr/include/x86_64-linux-gnu/qt6/Qsci",
+			Qt6Root + "Qsci",
 		},
 		AllowAllHeaders,
 		clangBin,
