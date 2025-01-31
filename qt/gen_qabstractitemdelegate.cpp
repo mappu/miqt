@@ -29,23 +29,23 @@ void miqt_exec_callback_QAbstractItemDelegate_CommitData(intptr_t, QWidget*);
 void miqt_exec_callback_QAbstractItemDelegate_CloseEditor(intptr_t, QWidget*);
 void miqt_exec_callback_QAbstractItemDelegate_SizeHintChanged(intptr_t, QModelIndex*);
 void miqt_exec_callback_QAbstractItemDelegate_CloseEditor2(intptr_t, QWidget*, int);
-void miqt_exec_callback_QAbstractItemDelegate_Paint(void*, intptr_t, QPainter*, QStyleOptionViewItem*, QModelIndex*);
-QSize* miqt_exec_callback_QAbstractItemDelegate_SizeHint(void*, intptr_t, QStyleOptionViewItem*, QModelIndex*);
-QWidget* miqt_exec_callback_QAbstractItemDelegate_CreateEditor(void*, intptr_t, QWidget*, QStyleOptionViewItem*, QModelIndex*);
-void miqt_exec_callback_QAbstractItemDelegate_DestroyEditor(void*, intptr_t, QWidget*, QModelIndex*);
-void miqt_exec_callback_QAbstractItemDelegate_SetEditorData(void*, intptr_t, QWidget*, QModelIndex*);
-void miqt_exec_callback_QAbstractItemDelegate_SetModelData(void*, intptr_t, QWidget*, QAbstractItemModel*, QModelIndex*);
-void miqt_exec_callback_QAbstractItemDelegate_UpdateEditorGeometry(void*, intptr_t, QWidget*, QStyleOptionViewItem*, QModelIndex*);
-bool miqt_exec_callback_QAbstractItemDelegate_EditorEvent(void*, intptr_t, QEvent*, QAbstractItemModel*, QStyleOptionViewItem*, QModelIndex*);
-bool miqt_exec_callback_QAbstractItemDelegate_HelpEvent(void*, intptr_t, QHelpEvent*, QAbstractItemView*, QStyleOptionViewItem*, QModelIndex*);
-struct miqt_array /* of int */  miqt_exec_callback_QAbstractItemDelegate_PaintingRoles(void*, intptr_t);
-bool miqt_exec_callback_QAbstractItemDelegate_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QAbstractItemDelegate_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QAbstractItemDelegate_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QAbstractItemDelegate_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QAbstractItemDelegate_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QAbstractItemDelegate_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QAbstractItemDelegate_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAbstractItemDelegate_Paint(const QAbstractItemDelegate*, intptr_t, QPainter*, QStyleOptionViewItem*, QModelIndex*);
+QSize* miqt_exec_callback_QAbstractItemDelegate_SizeHint(const QAbstractItemDelegate*, intptr_t, QStyleOptionViewItem*, QModelIndex*);
+QWidget* miqt_exec_callback_QAbstractItemDelegate_CreateEditor(const QAbstractItemDelegate*, intptr_t, QWidget*, QStyleOptionViewItem*, QModelIndex*);
+void miqt_exec_callback_QAbstractItemDelegate_DestroyEditor(const QAbstractItemDelegate*, intptr_t, QWidget*, QModelIndex*);
+void miqt_exec_callback_QAbstractItemDelegate_SetEditorData(const QAbstractItemDelegate*, intptr_t, QWidget*, QModelIndex*);
+void miqt_exec_callback_QAbstractItemDelegate_SetModelData(const QAbstractItemDelegate*, intptr_t, QWidget*, QAbstractItemModel*, QModelIndex*);
+void miqt_exec_callback_QAbstractItemDelegate_UpdateEditorGeometry(const QAbstractItemDelegate*, intptr_t, QWidget*, QStyleOptionViewItem*, QModelIndex*);
+bool miqt_exec_callback_QAbstractItemDelegate_EditorEvent(QAbstractItemDelegate*, intptr_t, QEvent*, QAbstractItemModel*, QStyleOptionViewItem*, QModelIndex*);
+bool miqt_exec_callback_QAbstractItemDelegate_HelpEvent(QAbstractItemDelegate*, intptr_t, QHelpEvent*, QAbstractItemView*, QStyleOptionViewItem*, QModelIndex*);
+struct miqt_array /* of int */  miqt_exec_callback_QAbstractItemDelegate_PaintingRoles(const QAbstractItemDelegate*, intptr_t);
+bool miqt_exec_callback_QAbstractItemDelegate_Event(QAbstractItemDelegate*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAbstractItemDelegate_EventFilter(QAbstractItemDelegate*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAbstractItemDelegate_TimerEvent(QAbstractItemDelegate*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAbstractItemDelegate_ChildEvent(QAbstractItemDelegate*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAbstractItemDelegate_CustomEvent(QAbstractItemDelegate*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractItemDelegate_ConnectNotify(QAbstractItemDelegate*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAbstractItemDelegate_DisconnectNotify(QAbstractItemDelegate*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -75,7 +75,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&index_ret);
 
-		miqt_exec_callback_QAbstractItemDelegate_Paint(const_cast<MiqtVirtualQAbstractItemDelegate*>(this), handle__Paint, sigval1, sigval2, sigval3);
+		miqt_exec_callback_QAbstractItemDelegate_Paint(this, handle__Paint, sigval1, sigval2, sigval3);
 
 		
 	}
@@ -96,7 +96,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval2 = const_cast<QModelIndex*>(&index_ret);
 
-		QSize* callback_return_value = miqt_exec_callback_QAbstractItemDelegate_SizeHint(const_cast<MiqtVirtualQAbstractItemDelegate*>(this), handle__SizeHint, sigval1, sigval2);
+		QSize* callback_return_value = miqt_exec_callback_QAbstractItemDelegate_SizeHint(this, handle__SizeHint, sigval1, sigval2);
 
 		return *callback_return_value;
 	}
@@ -118,7 +118,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&index_ret);
 
-		QWidget* callback_return_value = miqt_exec_callback_QAbstractItemDelegate_CreateEditor(const_cast<MiqtVirtualQAbstractItemDelegate*>(this), handle__CreateEditor, sigval1, sigval2, sigval3);
+		QWidget* callback_return_value = miqt_exec_callback_QAbstractItemDelegate_CreateEditor(this, handle__CreateEditor, sigval1, sigval2, sigval3);
 
 		return callback_return_value;
 	}
@@ -145,7 +145,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval2 = const_cast<QModelIndex*>(&index_ret);
 
-		miqt_exec_callback_QAbstractItemDelegate_DestroyEditor(const_cast<MiqtVirtualQAbstractItemDelegate*>(this), handle__DestroyEditor, sigval1, sigval2);
+		miqt_exec_callback_QAbstractItemDelegate_DestroyEditor(this, handle__DestroyEditor, sigval1, sigval2);
 
 		
 	}
@@ -172,7 +172,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval2 = const_cast<QModelIndex*>(&index_ret);
 
-		miqt_exec_callback_QAbstractItemDelegate_SetEditorData(const_cast<MiqtVirtualQAbstractItemDelegate*>(this), handle__SetEditorData, sigval1, sigval2);
+		miqt_exec_callback_QAbstractItemDelegate_SetEditorData(this, handle__SetEditorData, sigval1, sigval2);
 
 		
 	}
@@ -200,7 +200,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&index_ret);
 
-		miqt_exec_callback_QAbstractItemDelegate_SetModelData(const_cast<MiqtVirtualQAbstractItemDelegate*>(this), handle__SetModelData, sigval1, sigval2, sigval3);
+		miqt_exec_callback_QAbstractItemDelegate_SetModelData(this, handle__SetModelData, sigval1, sigval2, sigval3);
 
 		
 	}
@@ -230,7 +230,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&index_ret);
 
-		miqt_exec_callback_QAbstractItemDelegate_UpdateEditorGeometry(const_cast<MiqtVirtualQAbstractItemDelegate*>(this), handle__UpdateEditorGeometry, sigval1, sigval2, sigval3);
+		miqt_exec_callback_QAbstractItemDelegate_UpdateEditorGeometry(this, handle__UpdateEditorGeometry, sigval1, sigval2, sigval3);
 
 		
 	}
@@ -312,7 +312,7 @@ public:
 		}
 		
 
-		struct miqt_array /* of int */  callback_return_value = miqt_exec_callback_QAbstractItemDelegate_PaintingRoles(const_cast<MiqtVirtualQAbstractItemDelegate*>(this), handle__PaintingRoles);
+		struct miqt_array /* of int */  callback_return_value = miqt_exec_callback_QAbstractItemDelegate_PaintingRoles(this, handle__PaintingRoles);
 		QVector<int> callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		int* callback_return_value_arr = static_cast<int*>(callback_return_value.data);

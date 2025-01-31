@@ -46,53 +46,53 @@ void miqt_exec_callback_QDesktopWidget_Resized(intptr_t, int);
 void miqt_exec_callback_QDesktopWidget_WorkAreaResized(intptr_t, int);
 void miqt_exec_callback_QDesktopWidget_ScreenCountChanged(intptr_t, int);
 void miqt_exec_callback_QDesktopWidget_PrimaryScreenChanged(intptr_t);
-void miqt_exec_callback_QDesktopWidget_ResizeEvent(void*, intptr_t, QResizeEvent*);
-int miqt_exec_callback_QDesktopWidget_DevType(void*, intptr_t);
-void miqt_exec_callback_QDesktopWidget_SetVisible(void*, intptr_t, bool);
-QSize* miqt_exec_callback_QDesktopWidget_SizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QDesktopWidget_MinimumSizeHint(void*, intptr_t);
-int miqt_exec_callback_QDesktopWidget_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QDesktopWidget_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QDesktopWidget_PaintEngine(void*, intptr_t);
-bool miqt_exec_callback_QDesktopWidget_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QDesktopWidget_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QDesktopWidget_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QDesktopWidget_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QDesktopWidget_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QDesktopWidget_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QDesktopWidget_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QDesktopWidget_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QDesktopWidget_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QDesktopWidget_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QDesktopWidget_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QDesktopWidget_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QDesktopWidget_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QDesktopWidget_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QDesktopWidget_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QDesktopWidget_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QDesktopWidget_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QDesktopWidget_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QDesktopWidget_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QDesktopWidget_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QDesktopWidget_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QDesktopWidget_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QDesktopWidget_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QDesktopWidget_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QDesktopWidget_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-void miqt_exec_callback_QDesktopWidget_ChangeEvent(void*, intptr_t, QEvent*);
-int miqt_exec_callback_QDesktopWidget_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QDesktopWidget_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QDesktopWidget_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QDesktopWidget_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QDesktopWidget_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QDesktopWidget_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QDesktopWidget_FocusNextPrevChild(void*, intptr_t, bool);
-bool miqt_exec_callback_QDesktopWidget_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QDesktopWidget_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QDesktopWidget_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QDesktopWidget_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QDesktopWidget_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QDesktopWidget_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QDesktopWidget_ResizeEvent(QDesktopWidget*, intptr_t, QResizeEvent*);
+int miqt_exec_callback_QDesktopWidget_DevType(const QDesktopWidget*, intptr_t);
+void miqt_exec_callback_QDesktopWidget_SetVisible(QDesktopWidget*, intptr_t, bool);
+QSize* miqt_exec_callback_QDesktopWidget_SizeHint(const QDesktopWidget*, intptr_t);
+QSize* miqt_exec_callback_QDesktopWidget_MinimumSizeHint(const QDesktopWidget*, intptr_t);
+int miqt_exec_callback_QDesktopWidget_HeightForWidth(const QDesktopWidget*, intptr_t, int);
+bool miqt_exec_callback_QDesktopWidget_HasHeightForWidth(const QDesktopWidget*, intptr_t);
+QPaintEngine* miqt_exec_callback_QDesktopWidget_PaintEngine(const QDesktopWidget*, intptr_t);
+bool miqt_exec_callback_QDesktopWidget_Event(QDesktopWidget*, intptr_t, QEvent*);
+void miqt_exec_callback_QDesktopWidget_MousePressEvent(QDesktopWidget*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDesktopWidget_MouseReleaseEvent(QDesktopWidget*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDesktopWidget_MouseDoubleClickEvent(QDesktopWidget*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDesktopWidget_MouseMoveEvent(QDesktopWidget*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDesktopWidget_WheelEvent(QDesktopWidget*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QDesktopWidget_KeyPressEvent(QDesktopWidget*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QDesktopWidget_KeyReleaseEvent(QDesktopWidget*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QDesktopWidget_FocusInEvent(QDesktopWidget*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QDesktopWidget_FocusOutEvent(QDesktopWidget*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QDesktopWidget_EnterEvent(QDesktopWidget*, intptr_t, QEvent*);
+void miqt_exec_callback_QDesktopWidget_LeaveEvent(QDesktopWidget*, intptr_t, QEvent*);
+void miqt_exec_callback_QDesktopWidget_PaintEvent(QDesktopWidget*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QDesktopWidget_MoveEvent(QDesktopWidget*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QDesktopWidget_CloseEvent(QDesktopWidget*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QDesktopWidget_ContextMenuEvent(QDesktopWidget*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QDesktopWidget_TabletEvent(QDesktopWidget*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QDesktopWidget_ActionEvent(QDesktopWidget*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QDesktopWidget_DragEnterEvent(QDesktopWidget*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QDesktopWidget_DragMoveEvent(QDesktopWidget*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QDesktopWidget_DragLeaveEvent(QDesktopWidget*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QDesktopWidget_DropEvent(QDesktopWidget*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QDesktopWidget_ShowEvent(QDesktopWidget*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QDesktopWidget_HideEvent(QDesktopWidget*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QDesktopWidget_NativeEvent(QDesktopWidget*, intptr_t, struct miqt_string, void*, long*);
+void miqt_exec_callback_QDesktopWidget_ChangeEvent(QDesktopWidget*, intptr_t, QEvent*);
+int miqt_exec_callback_QDesktopWidget_Metric(const QDesktopWidget*, intptr_t, int);
+void miqt_exec_callback_QDesktopWidget_InitPainter(const QDesktopWidget*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QDesktopWidget_Redirected(const QDesktopWidget*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QDesktopWidget_SharedPainter(const QDesktopWidget*, intptr_t);
+void miqt_exec_callback_QDesktopWidget_InputMethodEvent(QDesktopWidget*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QDesktopWidget_InputMethodQuery(const QDesktopWidget*, intptr_t, int);
+bool miqt_exec_callback_QDesktopWidget_FocusNextPrevChild(QDesktopWidget*, intptr_t, bool);
+bool miqt_exec_callback_QDesktopWidget_EventFilter(QDesktopWidget*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QDesktopWidget_TimerEvent(QDesktopWidget*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QDesktopWidget_ChildEvent(QDesktopWidget*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QDesktopWidget_CustomEvent(QDesktopWidget*, intptr_t, QEvent*);
+void miqt_exec_callback_QDesktopWidget_ConnectNotify(QDesktopWidget*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QDesktopWidget_DisconnectNotify(QDesktopWidget*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -138,7 +138,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QDesktopWidget_DevType(const_cast<MiqtVirtualQDesktopWidget*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QDesktopWidget_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -184,7 +184,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QDesktopWidget_SizeHint(const_cast<MiqtVirtualQDesktopWidget*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QDesktopWidget_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -206,7 +206,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QDesktopWidget_MinimumSizeHint(const_cast<MiqtVirtualQDesktopWidget*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QDesktopWidget_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -229,7 +229,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QDesktopWidget_HeightForWidth(const_cast<MiqtVirtualQDesktopWidget*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QDesktopWidget_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -251,7 +251,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QDesktopWidget_HasHeightForWidth(const_cast<MiqtVirtualQDesktopWidget*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QDesktopWidget_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -273,7 +273,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QDesktopWidget_PaintEngine(const_cast<MiqtVirtualQDesktopWidget*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QDesktopWidget_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -927,7 +927,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QDesktopWidget_Metric(const_cast<MiqtVirtualQDesktopWidget*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QDesktopWidget_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -951,7 +951,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QDesktopWidget_InitPainter(const_cast<MiqtVirtualQDesktopWidget*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QDesktopWidget_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -974,7 +974,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QDesktopWidget_Redirected(const_cast<MiqtVirtualQDesktopWidget*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QDesktopWidget_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -996,7 +996,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QDesktopWidget_SharedPainter(const_cast<MiqtVirtualQDesktopWidget*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QDesktopWidget_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -1044,7 +1044,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QDesktopWidget_InputMethodQuery(const_cast<MiqtVirtualQDesktopWidget*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QDesktopWidget_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}

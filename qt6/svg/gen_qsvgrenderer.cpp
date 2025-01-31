@@ -23,13 +23,13 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QSvgRenderer_RepaintNeeded(intptr_t);
-bool miqt_exec_callback_QSvgRenderer_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QSvgRenderer_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QSvgRenderer_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QSvgRenderer_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QSvgRenderer_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSvgRenderer_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QSvgRenderer_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QSvgRenderer_Event(QSvgRenderer*, intptr_t, QEvent*);
+bool miqt_exec_callback_QSvgRenderer_EventFilter(QSvgRenderer*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QSvgRenderer_TimerEvent(QSvgRenderer*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSvgRenderer_ChildEvent(QSvgRenderer*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QSvgRenderer_CustomEvent(QSvgRenderer*, intptr_t, QEvent*);
+void miqt_exec_callback_QSvgRenderer_ConnectNotify(QSvgRenderer*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSvgRenderer_DisconnectNotify(QSvgRenderer*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

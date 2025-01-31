@@ -45,58 +45,58 @@ extern "C" {
 
 void miqt_exec_callback_QColorDialog_CurrentColorChanged(intptr_t, QColor*);
 void miqt_exec_callback_QColorDialog_ColorSelected(intptr_t, QColor*);
-void miqt_exec_callback_QColorDialog_SetVisible(void*, intptr_t, bool);
-void miqt_exec_callback_QColorDialog_ChangeEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QColorDialog_Done(void*, intptr_t, int);
-QSize* miqt_exec_callback_QColorDialog_SizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QColorDialog_MinimumSizeHint(void*, intptr_t);
-void miqt_exec_callback_QColorDialog_Open(void*, intptr_t);
-int miqt_exec_callback_QColorDialog_Exec(void*, intptr_t);
-void miqt_exec_callback_QColorDialog_Accept(void*, intptr_t);
-void miqt_exec_callback_QColorDialog_Reject(void*, intptr_t);
-void miqt_exec_callback_QColorDialog_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QColorDialog_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QColorDialog_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QColorDialog_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QColorDialog_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-bool miqt_exec_callback_QColorDialog_EventFilter(void*, intptr_t, QObject*, QEvent*);
-int miqt_exec_callback_QColorDialog_DevType(void*, intptr_t);
-int miqt_exec_callback_QColorDialog_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QColorDialog_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QColorDialog_PaintEngine(void*, intptr_t);
-bool miqt_exec_callback_QColorDialog_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QColorDialog_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QColorDialog_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QColorDialog_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QColorDialog_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QColorDialog_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QColorDialog_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QColorDialog_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QColorDialog_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QColorDialog_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QColorDialog_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QColorDialog_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QColorDialog_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QColorDialog_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QColorDialog_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QColorDialog_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QColorDialog_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QColorDialog_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QColorDialog_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QColorDialog_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QColorDialog_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-int miqt_exec_callback_QColorDialog_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QColorDialog_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QColorDialog_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QColorDialog_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QColorDialog_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QColorDialog_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QColorDialog_FocusNextPrevChild(void*, intptr_t, bool);
-void miqt_exec_callback_QColorDialog_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QColorDialog_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QColorDialog_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QColorDialog_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QColorDialog_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QColorDialog_SetVisible(QColorDialog*, intptr_t, bool);
+void miqt_exec_callback_QColorDialog_ChangeEvent(QColorDialog*, intptr_t, QEvent*);
+void miqt_exec_callback_QColorDialog_Done(QColorDialog*, intptr_t, int);
+QSize* miqt_exec_callback_QColorDialog_SizeHint(const QColorDialog*, intptr_t);
+QSize* miqt_exec_callback_QColorDialog_MinimumSizeHint(const QColorDialog*, intptr_t);
+void miqt_exec_callback_QColorDialog_Open(QColorDialog*, intptr_t);
+int miqt_exec_callback_QColorDialog_Exec(QColorDialog*, intptr_t);
+void miqt_exec_callback_QColorDialog_Accept(QColorDialog*, intptr_t);
+void miqt_exec_callback_QColorDialog_Reject(QColorDialog*, intptr_t);
+void miqt_exec_callback_QColorDialog_KeyPressEvent(QColorDialog*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QColorDialog_CloseEvent(QColorDialog*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QColorDialog_ShowEvent(QColorDialog*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QColorDialog_ResizeEvent(QColorDialog*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QColorDialog_ContextMenuEvent(QColorDialog*, intptr_t, QContextMenuEvent*);
+bool miqt_exec_callback_QColorDialog_EventFilter(QColorDialog*, intptr_t, QObject*, QEvent*);
+int miqt_exec_callback_QColorDialog_DevType(const QColorDialog*, intptr_t);
+int miqt_exec_callback_QColorDialog_HeightForWidth(const QColorDialog*, intptr_t, int);
+bool miqt_exec_callback_QColorDialog_HasHeightForWidth(const QColorDialog*, intptr_t);
+QPaintEngine* miqt_exec_callback_QColorDialog_PaintEngine(const QColorDialog*, intptr_t);
+bool miqt_exec_callback_QColorDialog_Event(QColorDialog*, intptr_t, QEvent*);
+void miqt_exec_callback_QColorDialog_MousePressEvent(QColorDialog*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QColorDialog_MouseReleaseEvent(QColorDialog*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QColorDialog_MouseDoubleClickEvent(QColorDialog*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QColorDialog_MouseMoveEvent(QColorDialog*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QColorDialog_WheelEvent(QColorDialog*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QColorDialog_KeyReleaseEvent(QColorDialog*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QColorDialog_FocusInEvent(QColorDialog*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QColorDialog_FocusOutEvent(QColorDialog*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QColorDialog_EnterEvent(QColorDialog*, intptr_t, QEvent*);
+void miqt_exec_callback_QColorDialog_LeaveEvent(QColorDialog*, intptr_t, QEvent*);
+void miqt_exec_callback_QColorDialog_PaintEvent(QColorDialog*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QColorDialog_MoveEvent(QColorDialog*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QColorDialog_TabletEvent(QColorDialog*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QColorDialog_ActionEvent(QColorDialog*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QColorDialog_DragEnterEvent(QColorDialog*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QColorDialog_DragMoveEvent(QColorDialog*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QColorDialog_DragLeaveEvent(QColorDialog*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QColorDialog_DropEvent(QColorDialog*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QColorDialog_HideEvent(QColorDialog*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QColorDialog_NativeEvent(QColorDialog*, intptr_t, struct miqt_string, void*, long*);
+int miqt_exec_callback_QColorDialog_Metric(const QColorDialog*, intptr_t, int);
+void miqt_exec_callback_QColorDialog_InitPainter(const QColorDialog*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QColorDialog_Redirected(const QColorDialog*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QColorDialog_SharedPainter(const QColorDialog*, intptr_t);
+void miqt_exec_callback_QColorDialog_InputMethodEvent(QColorDialog*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QColorDialog_InputMethodQuery(const QColorDialog*, intptr_t, int);
+bool miqt_exec_callback_QColorDialog_FocusNextPrevChild(QColorDialog*, intptr_t, bool);
+void miqt_exec_callback_QColorDialog_TimerEvent(QColorDialog*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QColorDialog_ChildEvent(QColorDialog*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QColorDialog_CustomEvent(QColorDialog*, intptr_t, QEvent*);
+void miqt_exec_callback_QColorDialog_ConnectNotify(QColorDialog*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QColorDialog_DisconnectNotify(QColorDialog*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -193,7 +193,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QColorDialog_SizeHint(const_cast<MiqtVirtualQColorDialog*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QColorDialog_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -215,7 +215,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QColorDialog_MinimumSizeHint(const_cast<MiqtVirtualQColorDialog*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QColorDialog_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -472,7 +472,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QColorDialog_DevType(const_cast<MiqtVirtualQColorDialog*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QColorDialog_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -495,7 +495,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QColorDialog_HeightForWidth(const_cast<MiqtVirtualQColorDialog*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QColorDialog_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -517,7 +517,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QColorDialog_HasHeightForWidth(const_cast<MiqtVirtualQColorDialog*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QColorDialog_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -539,7 +539,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QColorDialog_PaintEngine(const_cast<MiqtVirtualQColorDialog*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QColorDialog_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -1073,7 +1073,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QColorDialog_Metric(const_cast<MiqtVirtualQColorDialog*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QColorDialog_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1097,7 +1097,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QColorDialog_InitPainter(const_cast<MiqtVirtualQColorDialog*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QColorDialog_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -1120,7 +1120,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QColorDialog_Redirected(const_cast<MiqtVirtualQColorDialog*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QColorDialog_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1142,7 +1142,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QColorDialog_SharedPainter(const_cast<MiqtVirtualQColorDialog*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QColorDialog_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -1190,7 +1190,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QColorDialog_InputMethodQuery(const_cast<MiqtVirtualQColorDialog*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QColorDialog_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}

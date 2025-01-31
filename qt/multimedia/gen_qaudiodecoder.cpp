@@ -30,18 +30,18 @@ void miqt_exec_callback_QAudioDecoder_ErrorWithError(intptr_t, int);
 void miqt_exec_callback_QAudioDecoder_SourceChanged(intptr_t);
 void miqt_exec_callback_QAudioDecoder_PositionChanged(intptr_t, long long);
 void miqt_exec_callback_QAudioDecoder_DurationChanged(intptr_t, long long);
-bool miqt_exec_callback_QAudioDecoder_Bind(void*, intptr_t, QObject*);
-void miqt_exec_callback_QAudioDecoder_Unbind(void*, intptr_t, QObject*);
-bool miqt_exec_callback_QAudioDecoder_IsAvailable(void*, intptr_t);
-int miqt_exec_callback_QAudioDecoder_Availability(void*, intptr_t);
-QMediaService* miqt_exec_callback_QAudioDecoder_Service(void*, intptr_t);
-bool miqt_exec_callback_QAudioDecoder_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QAudioDecoder_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QAudioDecoder_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QAudioDecoder_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QAudioDecoder_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QAudioDecoder_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QAudioDecoder_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QAudioDecoder_Bind(QAudioDecoder*, intptr_t, QObject*);
+void miqt_exec_callback_QAudioDecoder_Unbind(QAudioDecoder*, intptr_t, QObject*);
+bool miqt_exec_callback_QAudioDecoder_IsAvailable(const QAudioDecoder*, intptr_t);
+int miqt_exec_callback_QAudioDecoder_Availability(const QAudioDecoder*, intptr_t);
+QMediaService* miqt_exec_callback_QAudioDecoder_Service(const QAudioDecoder*, intptr_t);
+bool miqt_exec_callback_QAudioDecoder_Event(QAudioDecoder*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAudioDecoder_EventFilter(QAudioDecoder*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAudioDecoder_TimerEvent(QAudioDecoder*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAudioDecoder_ChildEvent(QAudioDecoder*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAudioDecoder_CustomEvent(QAudioDecoder*, intptr_t, QEvent*);
+void miqt_exec_callback_QAudioDecoder_ConnectNotify(QAudioDecoder*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAudioDecoder_DisconnectNotify(QAudioDecoder*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -111,7 +111,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QAudioDecoder_IsAvailable(const_cast<MiqtVirtualQAudioDecoder*>(this), handle__IsAvailable);
+		bool callback_return_value = miqt_exec_callback_QAudioDecoder_IsAvailable(this, handle__IsAvailable);
 
 		return callback_return_value;
 	}
@@ -133,7 +133,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QAudioDecoder_Availability(const_cast<MiqtVirtualQAudioDecoder*>(this), handle__Availability);
+		int callback_return_value = miqt_exec_callback_QAudioDecoder_Availability(this, handle__Availability);
 
 		return static_cast<QMultimedia::AvailabilityStatus>(callback_return_value);
 	}
@@ -156,7 +156,7 @@ public:
 		}
 		
 
-		QMediaService* callback_return_value = miqt_exec_callback_QAudioDecoder_Service(const_cast<MiqtVirtualQAudioDecoder*>(this), handle__Service);
+		QMediaService* callback_return_value = miqt_exec_callback_QAudioDecoder_Service(this, handle__Service);
 
 		return callback_return_value;
 	}

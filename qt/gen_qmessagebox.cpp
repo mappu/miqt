@@ -48,58 +48,58 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QMessageBox_ButtonClicked(intptr_t, QAbstractButton*);
-bool miqt_exec_callback_QMessageBox_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QMessageBox_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QMessageBox_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QMessageBox_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QMessageBox_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QMessageBox_ChangeEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QMessageBox_SetVisible(void*, intptr_t, bool);
-QSize* miqt_exec_callback_QMessageBox_SizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QMessageBox_MinimumSizeHint(void*, intptr_t);
-void miqt_exec_callback_QMessageBox_Open(void*, intptr_t);
-int miqt_exec_callback_QMessageBox_Exec(void*, intptr_t);
-void miqt_exec_callback_QMessageBox_Done(void*, intptr_t, int);
-void miqt_exec_callback_QMessageBox_Accept(void*, intptr_t);
-void miqt_exec_callback_QMessageBox_Reject(void*, intptr_t);
-void miqt_exec_callback_QMessageBox_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-bool miqt_exec_callback_QMessageBox_EventFilter(void*, intptr_t, QObject*, QEvent*);
-int miqt_exec_callback_QMessageBox_DevType(void*, intptr_t);
-int miqt_exec_callback_QMessageBox_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QMessageBox_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QMessageBox_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QMessageBox_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QMessageBox_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QMessageBox_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QMessageBox_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QMessageBox_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QMessageBox_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QMessageBox_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QMessageBox_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QMessageBox_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QMessageBox_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QMessageBox_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QMessageBox_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QMessageBox_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QMessageBox_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QMessageBox_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QMessageBox_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QMessageBox_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QMessageBox_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QMessageBox_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QMessageBox_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-int miqt_exec_callback_QMessageBox_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QMessageBox_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QMessageBox_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QMessageBox_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QMessageBox_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QMessageBox_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QMessageBox_FocusNextPrevChild(void*, intptr_t, bool);
-void miqt_exec_callback_QMessageBox_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QMessageBox_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QMessageBox_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QMessageBox_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QMessageBox_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QMessageBox_Event(QMessageBox*, intptr_t, QEvent*);
+void miqt_exec_callback_QMessageBox_ResizeEvent(QMessageBox*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QMessageBox_ShowEvent(QMessageBox*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QMessageBox_CloseEvent(QMessageBox*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QMessageBox_KeyPressEvent(QMessageBox*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QMessageBox_ChangeEvent(QMessageBox*, intptr_t, QEvent*);
+void miqt_exec_callback_QMessageBox_SetVisible(QMessageBox*, intptr_t, bool);
+QSize* miqt_exec_callback_QMessageBox_SizeHint(const QMessageBox*, intptr_t);
+QSize* miqt_exec_callback_QMessageBox_MinimumSizeHint(const QMessageBox*, intptr_t);
+void miqt_exec_callback_QMessageBox_Open(QMessageBox*, intptr_t);
+int miqt_exec_callback_QMessageBox_Exec(QMessageBox*, intptr_t);
+void miqt_exec_callback_QMessageBox_Done(QMessageBox*, intptr_t, int);
+void miqt_exec_callback_QMessageBox_Accept(QMessageBox*, intptr_t);
+void miqt_exec_callback_QMessageBox_Reject(QMessageBox*, intptr_t);
+void miqt_exec_callback_QMessageBox_ContextMenuEvent(QMessageBox*, intptr_t, QContextMenuEvent*);
+bool miqt_exec_callback_QMessageBox_EventFilter(QMessageBox*, intptr_t, QObject*, QEvent*);
+int miqt_exec_callback_QMessageBox_DevType(const QMessageBox*, intptr_t);
+int miqt_exec_callback_QMessageBox_HeightForWidth(const QMessageBox*, intptr_t, int);
+bool miqt_exec_callback_QMessageBox_HasHeightForWidth(const QMessageBox*, intptr_t);
+QPaintEngine* miqt_exec_callback_QMessageBox_PaintEngine(const QMessageBox*, intptr_t);
+void miqt_exec_callback_QMessageBox_MousePressEvent(QMessageBox*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QMessageBox_MouseReleaseEvent(QMessageBox*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QMessageBox_MouseDoubleClickEvent(QMessageBox*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QMessageBox_MouseMoveEvent(QMessageBox*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QMessageBox_WheelEvent(QMessageBox*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QMessageBox_KeyReleaseEvent(QMessageBox*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QMessageBox_FocusInEvent(QMessageBox*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QMessageBox_FocusOutEvent(QMessageBox*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QMessageBox_EnterEvent(QMessageBox*, intptr_t, QEvent*);
+void miqt_exec_callback_QMessageBox_LeaveEvent(QMessageBox*, intptr_t, QEvent*);
+void miqt_exec_callback_QMessageBox_PaintEvent(QMessageBox*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QMessageBox_MoveEvent(QMessageBox*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QMessageBox_TabletEvent(QMessageBox*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QMessageBox_ActionEvent(QMessageBox*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QMessageBox_DragEnterEvent(QMessageBox*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QMessageBox_DragMoveEvent(QMessageBox*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QMessageBox_DragLeaveEvent(QMessageBox*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QMessageBox_DropEvent(QMessageBox*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QMessageBox_HideEvent(QMessageBox*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QMessageBox_NativeEvent(QMessageBox*, intptr_t, struct miqt_string, void*, long*);
+int miqt_exec_callback_QMessageBox_Metric(const QMessageBox*, intptr_t, int);
+void miqt_exec_callback_QMessageBox_InitPainter(const QMessageBox*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QMessageBox_Redirected(const QMessageBox*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QMessageBox_SharedPainter(const QMessageBox*, intptr_t);
+void miqt_exec_callback_QMessageBox_InputMethodEvent(QMessageBox*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QMessageBox_InputMethodQuery(const QMessageBox*, intptr_t, int);
+bool miqt_exec_callback_QMessageBox_FocusNextPrevChild(QMessageBox*, intptr_t, bool);
+void miqt_exec_callback_QMessageBox_TimerEvent(QMessageBox*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QMessageBox_ChildEvent(QMessageBox*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QMessageBox_CustomEvent(QMessageBox*, intptr_t, QEvent*);
+void miqt_exec_callback_QMessageBox_ConnectNotify(QMessageBox*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QMessageBox_DisconnectNotify(QMessageBox*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -296,7 +296,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QMessageBox_SizeHint(const_cast<MiqtVirtualQMessageBox*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QMessageBox_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -318,7 +318,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QMessageBox_MinimumSizeHint(const_cast<MiqtVirtualQMessageBox*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QMessageBox_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -503,7 +503,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QMessageBox_DevType(const_cast<MiqtVirtualQMessageBox*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QMessageBox_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -526,7 +526,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QMessageBox_HeightForWidth(const_cast<MiqtVirtualQMessageBox*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QMessageBox_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -548,7 +548,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QMessageBox_HasHeightForWidth(const_cast<MiqtVirtualQMessageBox*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QMessageBox_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -570,7 +570,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QMessageBox_PaintEngine(const_cast<MiqtVirtualQMessageBox*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QMessageBox_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -1081,7 +1081,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QMessageBox_Metric(const_cast<MiqtVirtualQMessageBox*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QMessageBox_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1105,7 +1105,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QMessageBox_InitPainter(const_cast<MiqtVirtualQMessageBox*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QMessageBox_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -1128,7 +1128,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QMessageBox_Redirected(const_cast<MiqtVirtualQMessageBox*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QMessageBox_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1150,7 +1150,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QMessageBox_SharedPainter(const_cast<MiqtVirtualQMessageBox*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QMessageBox_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -1198,7 +1198,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QMessageBox_InputMethodQuery(const_cast<MiqtVirtualQMessageBox*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QMessageBox_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}

@@ -26,13 +26,13 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QWebEngineProfile_DownloadRequested(intptr_t, QWebEngineDownloadItem*);
-bool miqt_exec_callback_QWebEngineProfile_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QWebEngineProfile_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QWebEngineProfile_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QWebEngineProfile_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QWebEngineProfile_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QWebEngineProfile_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QWebEngineProfile_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QWebEngineProfile_Event(QWebEngineProfile*, intptr_t, QEvent*);
+bool miqt_exec_callback_QWebEngineProfile_EventFilter(QWebEngineProfile*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QWebEngineProfile_TimerEvent(QWebEngineProfile*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QWebEngineProfile_ChildEvent(QWebEngineProfile*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QWebEngineProfile_CustomEvent(QWebEngineProfile*, intptr_t, QEvent*);
+void miqt_exec_callback_QWebEngineProfile_ConnectNotify(QWebEngineProfile*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QWebEngineProfile_DisconnectNotify(QWebEngineProfile*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

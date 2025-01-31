@@ -18,14 +18,14 @@
 extern "C" {
 #endif
 
-QAccessibleBridge* miqt_exec_callback_QAccessibleBridgePlugin_Create(void*, intptr_t, struct miqt_string);
-bool miqt_exec_callback_QAccessibleBridgePlugin_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QAccessibleBridgePlugin_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QAccessibleBridgePlugin_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QAccessibleBridgePlugin_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QAccessibleBridgePlugin_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QAccessibleBridgePlugin_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QAccessibleBridgePlugin_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QAccessibleBridge* miqt_exec_callback_QAccessibleBridgePlugin_Create(QAccessibleBridgePlugin*, intptr_t, struct miqt_string);
+bool miqt_exec_callback_QAccessibleBridgePlugin_Event(QAccessibleBridgePlugin*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAccessibleBridgePlugin_EventFilter(QAccessibleBridgePlugin*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAccessibleBridgePlugin_TimerEvent(QAccessibleBridgePlugin*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAccessibleBridgePlugin_ChildEvent(QAccessibleBridgePlugin*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAccessibleBridgePlugin_CustomEvent(QAccessibleBridgePlugin*, intptr_t, QEvent*);
+void miqt_exec_callback_QAccessibleBridgePlugin_ConnectNotify(QAccessibleBridgePlugin*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAccessibleBridgePlugin_DisconnectNotify(QAccessibleBridgePlugin*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

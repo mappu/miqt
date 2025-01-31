@@ -27,13 +27,13 @@ void miqt_exec_callback_QSoundEffect_LoadedChanged(intptr_t);
 void miqt_exec_callback_QSoundEffect_PlayingChanged(intptr_t);
 void miqt_exec_callback_QSoundEffect_StatusChanged(intptr_t);
 void miqt_exec_callback_QSoundEffect_AudioDeviceChanged(intptr_t);
-bool miqt_exec_callback_QSoundEffect_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QSoundEffect_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QSoundEffect_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QSoundEffect_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QSoundEffect_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSoundEffect_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QSoundEffect_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QSoundEffect_Event(QSoundEffect*, intptr_t, QEvent*);
+bool miqt_exec_callback_QSoundEffect_EventFilter(QSoundEffect*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QSoundEffect_TimerEvent(QSoundEffect*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSoundEffect_ChildEvent(QSoundEffect*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QSoundEffect_CustomEvent(QSoundEffect*, intptr_t, QEvent*);
+void miqt_exec_callback_QSoundEffect_ConnectNotify(QSoundEffect*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSoundEffect_DisconnectNotify(QSoundEffect*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

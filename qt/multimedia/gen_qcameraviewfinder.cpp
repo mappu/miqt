@@ -44,55 +44,55 @@
 extern "C" {
 #endif
 
-QMediaObject* miqt_exec_callback_QCameraViewfinder_MediaObject(void*, intptr_t);
-bool miqt_exec_callback_QCameraViewfinder_SetMediaObject(void*, intptr_t, QMediaObject*);
-QSize* miqt_exec_callback_QCameraViewfinder_SizeHint(void*, intptr_t);
-bool miqt_exec_callback_QCameraViewfinder_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QCameraViewfinder_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QCameraViewfinder_HideEvent(void*, intptr_t, QHideEvent*);
-void miqt_exec_callback_QCameraViewfinder_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QCameraViewfinder_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QCameraViewfinder_PaintEvent(void*, intptr_t, QPaintEvent*);
-int miqt_exec_callback_QCameraViewfinder_DevType(void*, intptr_t);
-void miqt_exec_callback_QCameraViewfinder_SetVisible(void*, intptr_t, bool);
-QSize* miqt_exec_callback_QCameraViewfinder_MinimumSizeHint(void*, intptr_t);
-int miqt_exec_callback_QCameraViewfinder_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QCameraViewfinder_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QCameraViewfinder_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QCameraViewfinder_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QCameraViewfinder_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QCameraViewfinder_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QCameraViewfinder_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QCameraViewfinder_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QCameraViewfinder_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QCameraViewfinder_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QCameraViewfinder_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QCameraViewfinder_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QCameraViewfinder_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QCameraViewfinder_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QCameraViewfinder_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QCameraViewfinder_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QCameraViewfinder_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QCameraViewfinder_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QCameraViewfinder_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QCameraViewfinder_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QCameraViewfinder_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QCameraViewfinder_DropEvent(void*, intptr_t, QDropEvent*);
-bool miqt_exec_callback_QCameraViewfinder_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-void miqt_exec_callback_QCameraViewfinder_ChangeEvent(void*, intptr_t, QEvent*);
-int miqt_exec_callback_QCameraViewfinder_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QCameraViewfinder_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QCameraViewfinder_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QCameraViewfinder_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QCameraViewfinder_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QCameraViewfinder_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QCameraViewfinder_FocusNextPrevChild(void*, intptr_t, bool);
-bool miqt_exec_callback_QCameraViewfinder_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QCameraViewfinder_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QCameraViewfinder_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QCameraViewfinder_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QCameraViewfinder_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QCameraViewfinder_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QMediaObject* miqt_exec_callback_QCameraViewfinder_MediaObject(const QCameraViewfinder*, intptr_t);
+bool miqt_exec_callback_QCameraViewfinder_SetMediaObject(QCameraViewfinder*, intptr_t, QMediaObject*);
+QSize* miqt_exec_callback_QCameraViewfinder_SizeHint(const QCameraViewfinder*, intptr_t);
+bool miqt_exec_callback_QCameraViewfinder_Event(QCameraViewfinder*, intptr_t, QEvent*);
+void miqt_exec_callback_QCameraViewfinder_ShowEvent(QCameraViewfinder*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QCameraViewfinder_HideEvent(QCameraViewfinder*, intptr_t, QHideEvent*);
+void miqt_exec_callback_QCameraViewfinder_ResizeEvent(QCameraViewfinder*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QCameraViewfinder_MoveEvent(QCameraViewfinder*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QCameraViewfinder_PaintEvent(QCameraViewfinder*, intptr_t, QPaintEvent*);
+int miqt_exec_callback_QCameraViewfinder_DevType(const QCameraViewfinder*, intptr_t);
+void miqt_exec_callback_QCameraViewfinder_SetVisible(QCameraViewfinder*, intptr_t, bool);
+QSize* miqt_exec_callback_QCameraViewfinder_MinimumSizeHint(const QCameraViewfinder*, intptr_t);
+int miqt_exec_callback_QCameraViewfinder_HeightForWidth(const QCameraViewfinder*, intptr_t, int);
+bool miqt_exec_callback_QCameraViewfinder_HasHeightForWidth(const QCameraViewfinder*, intptr_t);
+QPaintEngine* miqt_exec_callback_QCameraViewfinder_PaintEngine(const QCameraViewfinder*, intptr_t);
+void miqt_exec_callback_QCameraViewfinder_MousePressEvent(QCameraViewfinder*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QCameraViewfinder_MouseReleaseEvent(QCameraViewfinder*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QCameraViewfinder_MouseDoubleClickEvent(QCameraViewfinder*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QCameraViewfinder_MouseMoveEvent(QCameraViewfinder*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QCameraViewfinder_WheelEvent(QCameraViewfinder*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QCameraViewfinder_KeyPressEvent(QCameraViewfinder*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QCameraViewfinder_KeyReleaseEvent(QCameraViewfinder*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QCameraViewfinder_FocusInEvent(QCameraViewfinder*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QCameraViewfinder_FocusOutEvent(QCameraViewfinder*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QCameraViewfinder_EnterEvent(QCameraViewfinder*, intptr_t, QEvent*);
+void miqt_exec_callback_QCameraViewfinder_LeaveEvent(QCameraViewfinder*, intptr_t, QEvent*);
+void miqt_exec_callback_QCameraViewfinder_CloseEvent(QCameraViewfinder*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QCameraViewfinder_ContextMenuEvent(QCameraViewfinder*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QCameraViewfinder_TabletEvent(QCameraViewfinder*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QCameraViewfinder_ActionEvent(QCameraViewfinder*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QCameraViewfinder_DragEnterEvent(QCameraViewfinder*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QCameraViewfinder_DragMoveEvent(QCameraViewfinder*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QCameraViewfinder_DragLeaveEvent(QCameraViewfinder*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QCameraViewfinder_DropEvent(QCameraViewfinder*, intptr_t, QDropEvent*);
+bool miqt_exec_callback_QCameraViewfinder_NativeEvent(QCameraViewfinder*, intptr_t, struct miqt_string, void*, long*);
+void miqt_exec_callback_QCameraViewfinder_ChangeEvent(QCameraViewfinder*, intptr_t, QEvent*);
+int miqt_exec_callback_QCameraViewfinder_Metric(const QCameraViewfinder*, intptr_t, int);
+void miqt_exec_callback_QCameraViewfinder_InitPainter(const QCameraViewfinder*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QCameraViewfinder_Redirected(const QCameraViewfinder*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QCameraViewfinder_SharedPainter(const QCameraViewfinder*, intptr_t);
+void miqt_exec_callback_QCameraViewfinder_InputMethodEvent(QCameraViewfinder*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QCameraViewfinder_InputMethodQuery(const QCameraViewfinder*, intptr_t, int);
+bool miqt_exec_callback_QCameraViewfinder_FocusNextPrevChild(QCameraViewfinder*, intptr_t, bool);
+bool miqt_exec_callback_QCameraViewfinder_EventFilter(QCameraViewfinder*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QCameraViewfinder_TimerEvent(QCameraViewfinder*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QCameraViewfinder_ChildEvent(QCameraViewfinder*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QCameraViewfinder_CustomEvent(QCameraViewfinder*, intptr_t, QEvent*);
+void miqt_exec_callback_QCameraViewfinder_ConnectNotify(QCameraViewfinder*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QCameraViewfinder_DisconnectNotify(QCameraViewfinder*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -115,7 +115,7 @@ public:
 		}
 		
 
-		QMediaObject* callback_return_value = miqt_exec_callback_QCameraViewfinder_MediaObject(const_cast<MiqtVirtualQCameraViewfinder*>(this), handle__MediaObject);
+		QMediaObject* callback_return_value = miqt_exec_callback_QCameraViewfinder_MediaObject(this, handle__MediaObject);
 
 		return callback_return_value;
 	}
@@ -160,7 +160,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QCameraViewfinder_SizeHint(const_cast<MiqtVirtualQCameraViewfinder*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QCameraViewfinder_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -325,7 +325,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QCameraViewfinder_DevType(const_cast<MiqtVirtualQCameraViewfinder*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QCameraViewfinder_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -371,7 +371,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QCameraViewfinder_MinimumSizeHint(const_cast<MiqtVirtualQCameraViewfinder*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QCameraViewfinder_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -394,7 +394,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QCameraViewfinder_HeightForWidth(const_cast<MiqtVirtualQCameraViewfinder*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QCameraViewfinder_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -416,7 +416,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QCameraViewfinder_HasHeightForWidth(const_cast<MiqtVirtualQCameraViewfinder*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QCameraViewfinder_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -438,7 +438,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QCameraViewfinder_PaintEngine(const_cast<MiqtVirtualQCameraViewfinder*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QCameraViewfinder_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -973,7 +973,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QCameraViewfinder_Metric(const_cast<MiqtVirtualQCameraViewfinder*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QCameraViewfinder_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -997,7 +997,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QCameraViewfinder_InitPainter(const_cast<MiqtVirtualQCameraViewfinder*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QCameraViewfinder_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -1020,7 +1020,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QCameraViewfinder_Redirected(const_cast<MiqtVirtualQCameraViewfinder*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QCameraViewfinder_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1042,7 +1042,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QCameraViewfinder_SharedPainter(const_cast<MiqtVirtualQCameraViewfinder*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QCameraViewfinder_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -1090,7 +1090,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QCameraViewfinder_InputMethodQuery(const_cast<MiqtVirtualQCameraViewfinder*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QCameraViewfinder_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}

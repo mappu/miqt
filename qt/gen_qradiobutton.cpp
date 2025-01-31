@@ -42,56 +42,56 @@
 extern "C" {
 #endif
 
-QSize* miqt_exec_callback_QRadioButton_SizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QRadioButton_MinimumSizeHint(void*, intptr_t);
-bool miqt_exec_callback_QRadioButton_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QRadioButton_HitButton(void*, intptr_t, QPoint*);
-void miqt_exec_callback_QRadioButton_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QRadioButton_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QRadioButton_CheckStateSet(void*, intptr_t);
-void miqt_exec_callback_QRadioButton_NextCheckState(void*, intptr_t);
-void miqt_exec_callback_QRadioButton_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QRadioButton_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QRadioButton_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QRadioButton_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QRadioButton_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QRadioButton_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QRadioButton_ChangeEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QRadioButton_TimerEvent(void*, intptr_t, QTimerEvent*);
-int miqt_exec_callback_QRadioButton_DevType(void*, intptr_t);
-void miqt_exec_callback_QRadioButton_SetVisible(void*, intptr_t, bool);
-int miqt_exec_callback_QRadioButton_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QRadioButton_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QRadioButton_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QRadioButton_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QRadioButton_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QRadioButton_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QRadioButton_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QRadioButton_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QRadioButton_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QRadioButton_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QRadioButton_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QRadioButton_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QRadioButton_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QRadioButton_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QRadioButton_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QRadioButton_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QRadioButton_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QRadioButton_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QRadioButton_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QRadioButton_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-int miqt_exec_callback_QRadioButton_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QRadioButton_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QRadioButton_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QRadioButton_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QRadioButton_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QRadioButton_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QRadioButton_FocusNextPrevChild(void*, intptr_t, bool);
-bool miqt_exec_callback_QRadioButton_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QRadioButton_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QRadioButton_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QRadioButton_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QRadioButton_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QSize* miqt_exec_callback_QRadioButton_SizeHint(const QRadioButton*, intptr_t);
+QSize* miqt_exec_callback_QRadioButton_MinimumSizeHint(const QRadioButton*, intptr_t);
+bool miqt_exec_callback_QRadioButton_Event(QRadioButton*, intptr_t, QEvent*);
+bool miqt_exec_callback_QRadioButton_HitButton(const QRadioButton*, intptr_t, QPoint*);
+void miqt_exec_callback_QRadioButton_PaintEvent(QRadioButton*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QRadioButton_MouseMoveEvent(QRadioButton*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QRadioButton_CheckStateSet(QRadioButton*, intptr_t);
+void miqt_exec_callback_QRadioButton_NextCheckState(QRadioButton*, intptr_t);
+void miqt_exec_callback_QRadioButton_KeyPressEvent(QRadioButton*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QRadioButton_KeyReleaseEvent(QRadioButton*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QRadioButton_MousePressEvent(QRadioButton*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QRadioButton_MouseReleaseEvent(QRadioButton*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QRadioButton_FocusInEvent(QRadioButton*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QRadioButton_FocusOutEvent(QRadioButton*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QRadioButton_ChangeEvent(QRadioButton*, intptr_t, QEvent*);
+void miqt_exec_callback_QRadioButton_TimerEvent(QRadioButton*, intptr_t, QTimerEvent*);
+int miqt_exec_callback_QRadioButton_DevType(const QRadioButton*, intptr_t);
+void miqt_exec_callback_QRadioButton_SetVisible(QRadioButton*, intptr_t, bool);
+int miqt_exec_callback_QRadioButton_HeightForWidth(const QRadioButton*, intptr_t, int);
+bool miqt_exec_callback_QRadioButton_HasHeightForWidth(const QRadioButton*, intptr_t);
+QPaintEngine* miqt_exec_callback_QRadioButton_PaintEngine(const QRadioButton*, intptr_t);
+void miqt_exec_callback_QRadioButton_MouseDoubleClickEvent(QRadioButton*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QRadioButton_WheelEvent(QRadioButton*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QRadioButton_EnterEvent(QRadioButton*, intptr_t, QEvent*);
+void miqt_exec_callback_QRadioButton_LeaveEvent(QRadioButton*, intptr_t, QEvent*);
+void miqt_exec_callback_QRadioButton_MoveEvent(QRadioButton*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QRadioButton_ResizeEvent(QRadioButton*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QRadioButton_CloseEvent(QRadioButton*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QRadioButton_ContextMenuEvent(QRadioButton*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QRadioButton_TabletEvent(QRadioButton*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QRadioButton_ActionEvent(QRadioButton*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QRadioButton_DragEnterEvent(QRadioButton*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QRadioButton_DragMoveEvent(QRadioButton*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QRadioButton_DragLeaveEvent(QRadioButton*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QRadioButton_DropEvent(QRadioButton*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QRadioButton_ShowEvent(QRadioButton*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QRadioButton_HideEvent(QRadioButton*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QRadioButton_NativeEvent(QRadioButton*, intptr_t, struct miqt_string, void*, long*);
+int miqt_exec_callback_QRadioButton_Metric(const QRadioButton*, intptr_t, int);
+void miqt_exec_callback_QRadioButton_InitPainter(const QRadioButton*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QRadioButton_Redirected(const QRadioButton*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QRadioButton_SharedPainter(const QRadioButton*, intptr_t);
+void miqt_exec_callback_QRadioButton_InputMethodEvent(QRadioButton*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QRadioButton_InputMethodQuery(const QRadioButton*, intptr_t, int);
+bool miqt_exec_callback_QRadioButton_FocusNextPrevChild(QRadioButton*, intptr_t, bool);
+bool miqt_exec_callback_QRadioButton_EventFilter(QRadioButton*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QRadioButton_ChildEvent(QRadioButton*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QRadioButton_CustomEvent(QRadioButton*, intptr_t, QEvent*);
+void miqt_exec_callback_QRadioButton_ConnectNotify(QRadioButton*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QRadioButton_DisconnectNotify(QRadioButton*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -116,7 +116,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QRadioButton_SizeHint(const_cast<MiqtVirtualQRadioButton*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QRadioButton_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -138,7 +138,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QRadioButton_MinimumSizeHint(const_cast<MiqtVirtualQRadioButton*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QRadioButton_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -186,7 +186,7 @@ public:
 		// Cast returned reference into pointer
 		QPoint* sigval1 = const_cast<QPoint*>(&param1_ret);
 
-		bool callback_return_value = miqt_exec_callback_QRadioButton_HitButton(const_cast<MiqtVirtualQRadioButton*>(this), handle__HitButton, sigval1);
+		bool callback_return_value = miqt_exec_callback_QRadioButton_HitButton(this, handle__HitButton, sigval1);
 
 		return callback_return_value;
 	}
@@ -494,7 +494,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QRadioButton_DevType(const_cast<MiqtVirtualQRadioButton*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QRadioButton_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -541,7 +541,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QRadioButton_HeightForWidth(const_cast<MiqtVirtualQRadioButton*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QRadioButton_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -563,7 +563,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QRadioButton_HasHeightForWidth(const_cast<MiqtVirtualQRadioButton*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QRadioButton_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -585,7 +585,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QRadioButton_PaintEngine(const_cast<MiqtVirtualQRadioButton*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QRadioButton_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -1024,7 +1024,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QRadioButton_Metric(const_cast<MiqtVirtualQRadioButton*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QRadioButton_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1048,7 +1048,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QRadioButton_InitPainter(const_cast<MiqtVirtualQRadioButton*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QRadioButton_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -1071,7 +1071,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QRadioButton_Redirected(const_cast<MiqtVirtualQRadioButton*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QRadioButton_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1093,7 +1093,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QRadioButton_SharedPainter(const_cast<MiqtVirtualQRadioButton*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QRadioButton_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -1141,7 +1141,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QRadioButton_InputMethodQuery(const_cast<MiqtVirtualQRadioButton*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QRadioButton_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}

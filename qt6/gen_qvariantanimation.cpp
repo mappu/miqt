@@ -21,19 +21,19 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QVariantAnimation_ValueChanged(intptr_t, QVariant*);
-int miqt_exec_callback_QVariantAnimation_Duration(void*, intptr_t);
-bool miqt_exec_callback_QVariantAnimation_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QVariantAnimation_UpdateCurrentTime(void*, intptr_t, int);
-void miqt_exec_callback_QVariantAnimation_UpdateState(void*, intptr_t, int, int);
-void miqt_exec_callback_QVariantAnimation_UpdateCurrentValue(void*, intptr_t, QVariant*);
-QVariant* miqt_exec_callback_QVariantAnimation_Interpolated(void*, intptr_t, QVariant*, QVariant*, double);
-void miqt_exec_callback_QVariantAnimation_UpdateDirection(void*, intptr_t, int);
-bool miqt_exec_callback_QVariantAnimation_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QVariantAnimation_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QVariantAnimation_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QVariantAnimation_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QVariantAnimation_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QVariantAnimation_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+int miqt_exec_callback_QVariantAnimation_Duration(const QVariantAnimation*, intptr_t);
+bool miqt_exec_callback_QVariantAnimation_Event(QVariantAnimation*, intptr_t, QEvent*);
+void miqt_exec_callback_QVariantAnimation_UpdateCurrentTime(QVariantAnimation*, intptr_t, int);
+void miqt_exec_callback_QVariantAnimation_UpdateState(QVariantAnimation*, intptr_t, int, int);
+void miqt_exec_callback_QVariantAnimation_UpdateCurrentValue(QVariantAnimation*, intptr_t, QVariant*);
+QVariant* miqt_exec_callback_QVariantAnimation_Interpolated(const QVariantAnimation*, intptr_t, QVariant*, QVariant*, double);
+void miqt_exec_callback_QVariantAnimation_UpdateDirection(QVariantAnimation*, intptr_t, int);
+bool miqt_exec_callback_QVariantAnimation_EventFilter(QVariantAnimation*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QVariantAnimation_TimerEvent(QVariantAnimation*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QVariantAnimation_ChildEvent(QVariantAnimation*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QVariantAnimation_CustomEvent(QVariantAnimation*, intptr_t, QEvent*);
+void miqt_exec_callback_QVariantAnimation_ConnectNotify(QVariantAnimation*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QVariantAnimation_DisconnectNotify(QVariantAnimation*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -56,7 +56,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QVariantAnimation_Duration(const_cast<MiqtVirtualQVariantAnimation*>(this), handle__Duration);
+		int callback_return_value = miqt_exec_callback_QVariantAnimation_Duration(this, handle__Duration);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -186,7 +186,7 @@ public:
 		qreal progress_ret = progress;
 		double sigval3 = static_cast<double>(progress_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QVariantAnimation_Interpolated(const_cast<MiqtVirtualQVariantAnimation*>(this), handle__Interpolated, sigval1, sigval2, sigval3);
+		QVariant* callback_return_value = miqt_exec_callback_QVariantAnimation_Interpolated(this, handle__Interpolated, sigval1, sigval2, sigval3);
 
 		return *callback_return_value;
 	}

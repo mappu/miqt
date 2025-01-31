@@ -19,19 +19,19 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QPropertyAnimation_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QPropertyAnimation_UpdateCurrentValue(void*, intptr_t, QVariant*);
-void miqt_exec_callback_QPropertyAnimation_UpdateState(void*, intptr_t, int, int);
-int miqt_exec_callback_QPropertyAnimation_Duration(void*, intptr_t);
-void miqt_exec_callback_QPropertyAnimation_UpdateCurrentTime(void*, intptr_t, int);
-QVariant* miqt_exec_callback_QPropertyAnimation_Interpolated(void*, intptr_t, QVariant*, QVariant*, double);
-void miqt_exec_callback_QPropertyAnimation_UpdateDirection(void*, intptr_t, int);
-bool miqt_exec_callback_QPropertyAnimation_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QPropertyAnimation_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QPropertyAnimation_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QPropertyAnimation_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QPropertyAnimation_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QPropertyAnimation_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QPropertyAnimation_Event(QPropertyAnimation*, intptr_t, QEvent*);
+void miqt_exec_callback_QPropertyAnimation_UpdateCurrentValue(QPropertyAnimation*, intptr_t, QVariant*);
+void miqt_exec_callback_QPropertyAnimation_UpdateState(QPropertyAnimation*, intptr_t, int, int);
+int miqt_exec_callback_QPropertyAnimation_Duration(const QPropertyAnimation*, intptr_t);
+void miqt_exec_callback_QPropertyAnimation_UpdateCurrentTime(QPropertyAnimation*, intptr_t, int);
+QVariant* miqt_exec_callback_QPropertyAnimation_Interpolated(const QPropertyAnimation*, intptr_t, QVariant*, QVariant*, double);
+void miqt_exec_callback_QPropertyAnimation_UpdateDirection(QPropertyAnimation*, intptr_t, int);
+bool miqt_exec_callback_QPropertyAnimation_EventFilter(QPropertyAnimation*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QPropertyAnimation_TimerEvent(QPropertyAnimation*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QPropertyAnimation_ChildEvent(QPropertyAnimation*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QPropertyAnimation_CustomEvent(QPropertyAnimation*, intptr_t, QEvent*);
+void miqt_exec_callback_QPropertyAnimation_ConnectNotify(QPropertyAnimation*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QPropertyAnimation_DisconnectNotify(QPropertyAnimation*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -132,7 +132,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QPropertyAnimation_Duration(const_cast<MiqtVirtualQPropertyAnimation*>(this), handle__Duration);
+		int callback_return_value = miqt_exec_callback_QPropertyAnimation_Duration(this, handle__Duration);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -186,7 +186,7 @@ public:
 		qreal progress_ret = progress;
 		double sigval3 = static_cast<double>(progress_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QPropertyAnimation_Interpolated(const_cast<MiqtVirtualQPropertyAnimation*>(this), handle__Interpolated, sigval1, sigval2, sigval3);
+		QVariant* callback_return_value = miqt_exec_callback_QPropertyAnimation_Interpolated(this, handle__Interpolated, sigval1, sigval2, sigval3);
 
 		return *callback_return_value;
 	}

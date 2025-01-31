@@ -9,9 +9,9 @@
 extern "C" {
 #endif
 
-QGesture* miqt_exec_callback_QGestureRecognizer_Create(void*, intptr_t, QObject*);
-int miqt_exec_callback_QGestureRecognizer_Recognize(void*, intptr_t, QGesture*, QObject*, QEvent*);
-void miqt_exec_callback_QGestureRecognizer_Reset(void*, intptr_t, QGesture*);
+QGesture* miqt_exec_callback_QGestureRecognizer_Create(QGestureRecognizer*, intptr_t, QObject*);
+int miqt_exec_callback_QGestureRecognizer_Recognize(QGestureRecognizer*, intptr_t, QGesture*, QObject*, QEvent*);
+void miqt_exec_callback_QGestureRecognizer_Reset(QGestureRecognizer*, intptr_t, QGesture*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

@@ -45,54 +45,54 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QSplashScreen_MessageChanged(intptr_t, struct miqt_string);
-bool miqt_exec_callback_QSplashScreen_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSplashScreen_DrawContents(void*, intptr_t, QPainter*);
-void miqt_exec_callback_QSplashScreen_MousePressEvent(void*, intptr_t, QMouseEvent*);
-int miqt_exec_callback_QSplashScreen_DevType(void*, intptr_t);
-void miqt_exec_callback_QSplashScreen_SetVisible(void*, intptr_t, bool);
-QSize* miqt_exec_callback_QSplashScreen_SizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QSplashScreen_MinimumSizeHint(void*, intptr_t);
-int miqt_exec_callback_QSplashScreen_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QSplashScreen_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QSplashScreen_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QSplashScreen_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QSplashScreen_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QSplashScreen_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QSplashScreen_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QSplashScreen_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QSplashScreen_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QSplashScreen_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QSplashScreen_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QSplashScreen_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSplashScreen_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSplashScreen_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QSplashScreen_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QSplashScreen_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QSplashScreen_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QSplashScreen_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QSplashScreen_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QSplashScreen_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QSplashScreen_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QSplashScreen_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QSplashScreen_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QSplashScreen_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QSplashScreen_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QSplashScreen_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QSplashScreen_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-void miqt_exec_callback_QSplashScreen_ChangeEvent(void*, intptr_t, QEvent*);
-int miqt_exec_callback_QSplashScreen_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QSplashScreen_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QSplashScreen_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QSplashScreen_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QSplashScreen_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QSplashScreen_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QSplashScreen_FocusNextPrevChild(void*, intptr_t, bool);
-bool miqt_exec_callback_QSplashScreen_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QSplashScreen_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QSplashScreen_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QSplashScreen_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSplashScreen_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QSplashScreen_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QSplashScreen_Event(QSplashScreen*, intptr_t, QEvent*);
+void miqt_exec_callback_QSplashScreen_DrawContents(QSplashScreen*, intptr_t, QPainter*);
+void miqt_exec_callback_QSplashScreen_MousePressEvent(QSplashScreen*, intptr_t, QMouseEvent*);
+int miqt_exec_callback_QSplashScreen_DevType(const QSplashScreen*, intptr_t);
+void miqt_exec_callback_QSplashScreen_SetVisible(QSplashScreen*, intptr_t, bool);
+QSize* miqt_exec_callback_QSplashScreen_SizeHint(const QSplashScreen*, intptr_t);
+QSize* miqt_exec_callback_QSplashScreen_MinimumSizeHint(const QSplashScreen*, intptr_t);
+int miqt_exec_callback_QSplashScreen_HeightForWidth(const QSplashScreen*, intptr_t, int);
+bool miqt_exec_callback_QSplashScreen_HasHeightForWidth(const QSplashScreen*, intptr_t);
+QPaintEngine* miqt_exec_callback_QSplashScreen_PaintEngine(const QSplashScreen*, intptr_t);
+void miqt_exec_callback_QSplashScreen_MouseReleaseEvent(QSplashScreen*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSplashScreen_MouseDoubleClickEvent(QSplashScreen*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSplashScreen_MouseMoveEvent(QSplashScreen*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSplashScreen_WheelEvent(QSplashScreen*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QSplashScreen_KeyPressEvent(QSplashScreen*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QSplashScreen_KeyReleaseEvent(QSplashScreen*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QSplashScreen_FocusInEvent(QSplashScreen*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QSplashScreen_FocusOutEvent(QSplashScreen*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QSplashScreen_EnterEvent(QSplashScreen*, intptr_t, QEvent*);
+void miqt_exec_callback_QSplashScreen_LeaveEvent(QSplashScreen*, intptr_t, QEvent*);
+void miqt_exec_callback_QSplashScreen_PaintEvent(QSplashScreen*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QSplashScreen_MoveEvent(QSplashScreen*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QSplashScreen_ResizeEvent(QSplashScreen*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QSplashScreen_CloseEvent(QSplashScreen*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QSplashScreen_ContextMenuEvent(QSplashScreen*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QSplashScreen_TabletEvent(QSplashScreen*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QSplashScreen_ActionEvent(QSplashScreen*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QSplashScreen_DragEnterEvent(QSplashScreen*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QSplashScreen_DragMoveEvent(QSplashScreen*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QSplashScreen_DragLeaveEvent(QSplashScreen*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QSplashScreen_DropEvent(QSplashScreen*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QSplashScreen_ShowEvent(QSplashScreen*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QSplashScreen_HideEvent(QSplashScreen*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QSplashScreen_NativeEvent(QSplashScreen*, intptr_t, struct miqt_string, void*, long*);
+void miqt_exec_callback_QSplashScreen_ChangeEvent(QSplashScreen*, intptr_t, QEvent*);
+int miqt_exec_callback_QSplashScreen_Metric(const QSplashScreen*, intptr_t, int);
+void miqt_exec_callback_QSplashScreen_InitPainter(const QSplashScreen*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QSplashScreen_Redirected(const QSplashScreen*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QSplashScreen_SharedPainter(const QSplashScreen*, intptr_t);
+void miqt_exec_callback_QSplashScreen_InputMethodEvent(QSplashScreen*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QSplashScreen_InputMethodQuery(const QSplashScreen*, intptr_t, int);
+bool miqt_exec_callback_QSplashScreen_FocusNextPrevChild(QSplashScreen*, intptr_t, bool);
+bool miqt_exec_callback_QSplashScreen_EventFilter(QSplashScreen*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QSplashScreen_TimerEvent(QSplashScreen*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSplashScreen_ChildEvent(QSplashScreen*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QSplashScreen_CustomEvent(QSplashScreen*, intptr_t, QEvent*);
+void miqt_exec_callback_QSplashScreen_ConnectNotify(QSplashScreen*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSplashScreen_DisconnectNotify(QSplashScreen*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -193,7 +193,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QSplashScreen_DevType(const_cast<MiqtVirtualQSplashScreen*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QSplashScreen_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -239,7 +239,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QSplashScreen_SizeHint(const_cast<MiqtVirtualQSplashScreen*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QSplashScreen_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -261,7 +261,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QSplashScreen_MinimumSizeHint(const_cast<MiqtVirtualQSplashScreen*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QSplashScreen_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -284,7 +284,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QSplashScreen_HeightForWidth(const_cast<MiqtVirtualQSplashScreen*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QSplashScreen_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -306,7 +306,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QSplashScreen_HasHeightForWidth(const_cast<MiqtVirtualQSplashScreen*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QSplashScreen_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -328,7 +328,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QSplashScreen_PaintEngine(const_cast<MiqtVirtualQSplashScreen*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QSplashScreen_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -959,7 +959,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QSplashScreen_Metric(const_cast<MiqtVirtualQSplashScreen*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QSplashScreen_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -983,7 +983,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QSplashScreen_InitPainter(const_cast<MiqtVirtualQSplashScreen*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QSplashScreen_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -1006,7 +1006,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QSplashScreen_Redirected(const_cast<MiqtVirtualQSplashScreen*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QSplashScreen_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1028,7 +1028,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QSplashScreen_SharedPainter(const_cast<MiqtVirtualQSplashScreen*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QSplashScreen_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -1076,7 +1076,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QSplashScreen_InputMethodQuery(const_cast<MiqtVirtualQSplashScreen*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QSplashScreen_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}

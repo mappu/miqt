@@ -18,50 +18,50 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QsciLexerXML_SetFoldCompact(void*, intptr_t, bool);
-void miqt_exec_callback_QsciLexerXML_SetFoldPreprocessor(void*, intptr_t, bool);
-void miqt_exec_callback_QsciLexerXML_SetCaseSensitiveTags(void*, intptr_t, bool);
-const char* miqt_exec_callback_QsciLexerXML_Language(void*, intptr_t);
-const char* miqt_exec_callback_QsciLexerXML_Lexer(void*, intptr_t);
-int miqt_exec_callback_QsciLexerXML_LexerId(void*, intptr_t);
-const char* miqt_exec_callback_QsciLexerXML_AutoCompletionFillups(void*, intptr_t);
-struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QsciLexerXML_AutoCompletionWordSeparators(void*, intptr_t);
-const char* miqt_exec_callback_QsciLexerXML_BlockEnd(void*, intptr_t, int*);
-int miqt_exec_callback_QsciLexerXML_BlockLookback(void*, intptr_t);
-const char* miqt_exec_callback_QsciLexerXML_BlockStart(void*, intptr_t, int*);
-const char* miqt_exec_callback_QsciLexerXML_BlockStartKeyword(void*, intptr_t, int*);
-int miqt_exec_callback_QsciLexerXML_BraceStyle(void*, intptr_t);
-bool miqt_exec_callback_QsciLexerXML_CaseSensitive(void*, intptr_t);
-QColor* miqt_exec_callback_QsciLexerXML_Color(void*, intptr_t, int);
-bool miqt_exec_callback_QsciLexerXML_EolFill(void*, intptr_t, int);
-QFont* miqt_exec_callback_QsciLexerXML_Font(void*, intptr_t, int);
-int miqt_exec_callback_QsciLexerXML_IndentationGuideView(void*, intptr_t);
-const char* miqt_exec_callback_QsciLexerXML_Keywords(void*, intptr_t, int);
-int miqt_exec_callback_QsciLexerXML_DefaultStyle(void*, intptr_t);
-struct miqt_string miqt_exec_callback_QsciLexerXML_Description(void*, intptr_t, int);
-QColor* miqt_exec_callback_QsciLexerXML_Paper(void*, intptr_t, int);
-QColor* miqt_exec_callback_QsciLexerXML_DefaultColorWithStyle(void*, intptr_t, int);
-bool miqt_exec_callback_QsciLexerXML_DefaultEolFill(void*, intptr_t, int);
-QFont* miqt_exec_callback_QsciLexerXML_DefaultFontWithStyle(void*, intptr_t, int);
-QColor* miqt_exec_callback_QsciLexerXML_DefaultPaperWithStyle(void*, intptr_t, int);
-void miqt_exec_callback_QsciLexerXML_SetEditor(void*, intptr_t, QsciScintilla*);
-void miqt_exec_callback_QsciLexerXML_RefreshProperties(void*, intptr_t);
-int miqt_exec_callback_QsciLexerXML_StyleBitsNeeded(void*, intptr_t);
-const char* miqt_exec_callback_QsciLexerXML_WordCharacters(void*, intptr_t);
-void miqt_exec_callback_QsciLexerXML_SetAutoIndentStyle(void*, intptr_t, int);
-void miqt_exec_callback_QsciLexerXML_SetColor(void*, intptr_t, QColor*, int);
-void miqt_exec_callback_QsciLexerXML_SetEolFill(void*, intptr_t, bool, int);
-void miqt_exec_callback_QsciLexerXML_SetFont(void*, intptr_t, QFont*, int);
-void miqt_exec_callback_QsciLexerXML_SetPaper(void*, intptr_t, QColor*, int);
-bool miqt_exec_callback_QsciLexerXML_ReadProperties(void*, intptr_t, QSettings*, struct miqt_string);
-bool miqt_exec_callback_QsciLexerXML_WriteProperties(void*, intptr_t, QSettings*, struct miqt_string);
-bool miqt_exec_callback_QsciLexerXML_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QsciLexerXML_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QsciLexerXML_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QsciLexerXML_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QsciLexerXML_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QsciLexerXML_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QsciLexerXML_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QsciLexerXML_SetFoldCompact(QsciLexerXML*, intptr_t, bool);
+void miqt_exec_callback_QsciLexerXML_SetFoldPreprocessor(QsciLexerXML*, intptr_t, bool);
+void miqt_exec_callback_QsciLexerXML_SetCaseSensitiveTags(QsciLexerXML*, intptr_t, bool);
+const char* miqt_exec_callback_QsciLexerXML_Language(const QsciLexerXML*, intptr_t);
+const char* miqt_exec_callback_QsciLexerXML_Lexer(const QsciLexerXML*, intptr_t);
+int miqt_exec_callback_QsciLexerXML_LexerId(const QsciLexerXML*, intptr_t);
+const char* miqt_exec_callback_QsciLexerXML_AutoCompletionFillups(const QsciLexerXML*, intptr_t);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QsciLexerXML_AutoCompletionWordSeparators(const QsciLexerXML*, intptr_t);
+const char* miqt_exec_callback_QsciLexerXML_BlockEnd(const QsciLexerXML*, intptr_t, int*);
+int miqt_exec_callback_QsciLexerXML_BlockLookback(const QsciLexerXML*, intptr_t);
+const char* miqt_exec_callback_QsciLexerXML_BlockStart(const QsciLexerXML*, intptr_t, int*);
+const char* miqt_exec_callback_QsciLexerXML_BlockStartKeyword(const QsciLexerXML*, intptr_t, int*);
+int miqt_exec_callback_QsciLexerXML_BraceStyle(const QsciLexerXML*, intptr_t);
+bool miqt_exec_callback_QsciLexerXML_CaseSensitive(const QsciLexerXML*, intptr_t);
+QColor* miqt_exec_callback_QsciLexerXML_Color(const QsciLexerXML*, intptr_t, int);
+bool miqt_exec_callback_QsciLexerXML_EolFill(const QsciLexerXML*, intptr_t, int);
+QFont* miqt_exec_callback_QsciLexerXML_Font(const QsciLexerXML*, intptr_t, int);
+int miqt_exec_callback_QsciLexerXML_IndentationGuideView(const QsciLexerXML*, intptr_t);
+const char* miqt_exec_callback_QsciLexerXML_Keywords(const QsciLexerXML*, intptr_t, int);
+int miqt_exec_callback_QsciLexerXML_DefaultStyle(const QsciLexerXML*, intptr_t);
+struct miqt_string miqt_exec_callback_QsciLexerXML_Description(const QsciLexerXML*, intptr_t, int);
+QColor* miqt_exec_callback_QsciLexerXML_Paper(const QsciLexerXML*, intptr_t, int);
+QColor* miqt_exec_callback_QsciLexerXML_DefaultColorWithStyle(const QsciLexerXML*, intptr_t, int);
+bool miqt_exec_callback_QsciLexerXML_DefaultEolFill(const QsciLexerXML*, intptr_t, int);
+QFont* miqt_exec_callback_QsciLexerXML_DefaultFontWithStyle(const QsciLexerXML*, intptr_t, int);
+QColor* miqt_exec_callback_QsciLexerXML_DefaultPaperWithStyle(const QsciLexerXML*, intptr_t, int);
+void miqt_exec_callback_QsciLexerXML_SetEditor(QsciLexerXML*, intptr_t, QsciScintilla*);
+void miqt_exec_callback_QsciLexerXML_RefreshProperties(QsciLexerXML*, intptr_t);
+int miqt_exec_callback_QsciLexerXML_StyleBitsNeeded(const QsciLexerXML*, intptr_t);
+const char* miqt_exec_callback_QsciLexerXML_WordCharacters(const QsciLexerXML*, intptr_t);
+void miqt_exec_callback_QsciLexerXML_SetAutoIndentStyle(QsciLexerXML*, intptr_t, int);
+void miqt_exec_callback_QsciLexerXML_SetColor(QsciLexerXML*, intptr_t, QColor*, int);
+void miqt_exec_callback_QsciLexerXML_SetEolFill(QsciLexerXML*, intptr_t, bool, int);
+void miqt_exec_callback_QsciLexerXML_SetFont(QsciLexerXML*, intptr_t, QFont*, int);
+void miqt_exec_callback_QsciLexerXML_SetPaper(QsciLexerXML*, intptr_t, QColor*, int);
+bool miqt_exec_callback_QsciLexerXML_ReadProperties(QsciLexerXML*, intptr_t, QSettings*, struct miqt_string);
+bool miqt_exec_callback_QsciLexerXML_WriteProperties(const QsciLexerXML*, intptr_t, QSettings*, struct miqt_string);
+bool miqt_exec_callback_QsciLexerXML_Event(QsciLexerXML*, intptr_t, QEvent*);
+bool miqt_exec_callback_QsciLexerXML_EventFilter(QsciLexerXML*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QsciLexerXML_TimerEvent(QsciLexerXML*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QsciLexerXML_ChildEvent(QsciLexerXML*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QsciLexerXML_CustomEvent(QsciLexerXML*, intptr_t, QEvent*);
+void miqt_exec_callback_QsciLexerXML_ConnectNotify(QsciLexerXML*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QsciLexerXML_DisconnectNotify(QsciLexerXML*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -156,7 +156,7 @@ public:
 		}
 		
 
-		const char* callback_return_value = miqt_exec_callback_QsciLexerXML_Language(const_cast<MiqtVirtualQsciLexerXML*>(this), handle__Language);
+		const char* callback_return_value = miqt_exec_callback_QsciLexerXML_Language(this, handle__Language);
 
 		return callback_return_value;
 	}
@@ -171,7 +171,7 @@ public:
 		}
 		
 
-		const char* callback_return_value = miqt_exec_callback_QsciLexerXML_Lexer(const_cast<MiqtVirtualQsciLexerXML*>(this), handle__Lexer);
+		const char* callback_return_value = miqt_exec_callback_QsciLexerXML_Lexer(this, handle__Lexer);
 
 		return callback_return_value;
 	}
@@ -193,7 +193,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QsciLexerXML_LexerId(const_cast<MiqtVirtualQsciLexerXML*>(this), handle__LexerId);
+		int callback_return_value = miqt_exec_callback_QsciLexerXML_LexerId(this, handle__LexerId);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -215,7 +215,7 @@ public:
 		}
 		
 
-		const char* callback_return_value = miqt_exec_callback_QsciLexerXML_AutoCompletionFillups(const_cast<MiqtVirtualQsciLexerXML*>(this), handle__AutoCompletionFillups);
+		const char* callback_return_value = miqt_exec_callback_QsciLexerXML_AutoCompletionFillups(this, handle__AutoCompletionFillups);
 
 		return callback_return_value;
 	}
@@ -237,7 +237,7 @@ public:
 		}
 		
 
-		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QsciLexerXML_AutoCompletionWordSeparators(const_cast<MiqtVirtualQsciLexerXML*>(this), handle__AutoCompletionWordSeparators);
+		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QsciLexerXML_AutoCompletionWordSeparators(this, handle__AutoCompletionWordSeparators);
 		QStringList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		struct miqt_string* callback_return_value_arr = static_cast<struct miqt_string*>(callback_return_value.data);
@@ -283,7 +283,7 @@ public:
 		
 		int* sigval1 = style;
 
-		const char* callback_return_value = miqt_exec_callback_QsciLexerXML_BlockEnd(const_cast<MiqtVirtualQsciLexerXML*>(this), handle__BlockEnd, sigval1);
+		const char* callback_return_value = miqt_exec_callback_QsciLexerXML_BlockEnd(this, handle__BlockEnd, sigval1);
 
 		return callback_return_value;
 	}
@@ -305,7 +305,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QsciLexerXML_BlockLookback(const_cast<MiqtVirtualQsciLexerXML*>(this), handle__BlockLookback);
+		int callback_return_value = miqt_exec_callback_QsciLexerXML_BlockLookback(this, handle__BlockLookback);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -328,7 +328,7 @@ public:
 		
 		int* sigval1 = style;
 
-		const char* callback_return_value = miqt_exec_callback_QsciLexerXML_BlockStart(const_cast<MiqtVirtualQsciLexerXML*>(this), handle__BlockStart, sigval1);
+		const char* callback_return_value = miqt_exec_callback_QsciLexerXML_BlockStart(this, handle__BlockStart, sigval1);
 
 		return callback_return_value;
 	}
@@ -351,7 +351,7 @@ public:
 		
 		int* sigval1 = style;
 
-		const char* callback_return_value = miqt_exec_callback_QsciLexerXML_BlockStartKeyword(const_cast<MiqtVirtualQsciLexerXML*>(this), handle__BlockStartKeyword, sigval1);
+		const char* callback_return_value = miqt_exec_callback_QsciLexerXML_BlockStartKeyword(this, handle__BlockStartKeyword, sigval1);
 
 		return callback_return_value;
 	}
@@ -373,7 +373,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QsciLexerXML_BraceStyle(const_cast<MiqtVirtualQsciLexerXML*>(this), handle__BraceStyle);
+		int callback_return_value = miqt_exec_callback_QsciLexerXML_BraceStyle(this, handle__BraceStyle);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -395,7 +395,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QsciLexerXML_CaseSensitive(const_cast<MiqtVirtualQsciLexerXML*>(this), handle__CaseSensitive);
+		bool callback_return_value = miqt_exec_callback_QsciLexerXML_CaseSensitive(this, handle__CaseSensitive);
 
 		return callback_return_value;
 	}
@@ -418,7 +418,7 @@ public:
 		
 		int sigval1 = style;
 
-		QColor* callback_return_value = miqt_exec_callback_QsciLexerXML_Color(const_cast<MiqtVirtualQsciLexerXML*>(this), handle__Color, sigval1);
+		QColor* callback_return_value = miqt_exec_callback_QsciLexerXML_Color(this, handle__Color, sigval1);
 
 		return *callback_return_value;
 	}
@@ -441,7 +441,7 @@ public:
 		
 		int sigval1 = style;
 
-		bool callback_return_value = miqt_exec_callback_QsciLexerXML_EolFill(const_cast<MiqtVirtualQsciLexerXML*>(this), handle__EolFill, sigval1);
+		bool callback_return_value = miqt_exec_callback_QsciLexerXML_EolFill(this, handle__EolFill, sigval1);
 
 		return callback_return_value;
 	}
@@ -464,7 +464,7 @@ public:
 		
 		int sigval1 = style;
 
-		QFont* callback_return_value = miqt_exec_callback_QsciLexerXML_Font(const_cast<MiqtVirtualQsciLexerXML*>(this), handle__Font, sigval1);
+		QFont* callback_return_value = miqt_exec_callback_QsciLexerXML_Font(this, handle__Font, sigval1);
 
 		return *callback_return_value;
 	}
@@ -486,7 +486,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QsciLexerXML_IndentationGuideView(const_cast<MiqtVirtualQsciLexerXML*>(this), handle__IndentationGuideView);
+		int callback_return_value = miqt_exec_callback_QsciLexerXML_IndentationGuideView(this, handle__IndentationGuideView);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -509,7 +509,7 @@ public:
 		
 		int sigval1 = set;
 
-		const char* callback_return_value = miqt_exec_callback_QsciLexerXML_Keywords(const_cast<MiqtVirtualQsciLexerXML*>(this), handle__Keywords, sigval1);
+		const char* callback_return_value = miqt_exec_callback_QsciLexerXML_Keywords(this, handle__Keywords, sigval1);
 
 		return callback_return_value;
 	}
@@ -531,7 +531,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QsciLexerXML_DefaultStyle(const_cast<MiqtVirtualQsciLexerXML*>(this), handle__DefaultStyle);
+		int callback_return_value = miqt_exec_callback_QsciLexerXML_DefaultStyle(this, handle__DefaultStyle);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -554,7 +554,7 @@ public:
 		
 		int sigval1 = style;
 
-		struct miqt_string callback_return_value = miqt_exec_callback_QsciLexerXML_Description(const_cast<MiqtVirtualQsciLexerXML*>(this), handle__Description, sigval1);
+		struct miqt_string callback_return_value = miqt_exec_callback_QsciLexerXML_Description(this, handle__Description, sigval1);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
 
 		return callback_return_value_QString;
@@ -571,7 +571,7 @@ public:
 		
 		int sigval1 = style;
 
-		QColor* callback_return_value = miqt_exec_callback_QsciLexerXML_Paper(const_cast<MiqtVirtualQsciLexerXML*>(this), handle__Paper, sigval1);
+		QColor* callback_return_value = miqt_exec_callback_QsciLexerXML_Paper(this, handle__Paper, sigval1);
 
 		return *callback_return_value;
 	}
@@ -594,7 +594,7 @@ public:
 		
 		int sigval1 = style;
 
-		QColor* callback_return_value = miqt_exec_callback_QsciLexerXML_DefaultColorWithStyle(const_cast<MiqtVirtualQsciLexerXML*>(this), handle__DefaultColorWithStyle, sigval1);
+		QColor* callback_return_value = miqt_exec_callback_QsciLexerXML_DefaultColorWithStyle(this, handle__DefaultColorWithStyle, sigval1);
 
 		return *callback_return_value;
 	}
@@ -617,7 +617,7 @@ public:
 		
 		int sigval1 = style;
 
-		bool callback_return_value = miqt_exec_callback_QsciLexerXML_DefaultEolFill(const_cast<MiqtVirtualQsciLexerXML*>(this), handle__DefaultEolFill, sigval1);
+		bool callback_return_value = miqt_exec_callback_QsciLexerXML_DefaultEolFill(this, handle__DefaultEolFill, sigval1);
 
 		return callback_return_value;
 	}
@@ -640,7 +640,7 @@ public:
 		
 		int sigval1 = style;
 
-		QFont* callback_return_value = miqt_exec_callback_QsciLexerXML_DefaultFontWithStyle(const_cast<MiqtVirtualQsciLexerXML*>(this), handle__DefaultFontWithStyle, sigval1);
+		QFont* callback_return_value = miqt_exec_callback_QsciLexerXML_DefaultFontWithStyle(this, handle__DefaultFontWithStyle, sigval1);
 
 		return *callback_return_value;
 	}
@@ -663,7 +663,7 @@ public:
 		
 		int sigval1 = style;
 
-		QColor* callback_return_value = miqt_exec_callback_QsciLexerXML_DefaultPaperWithStyle(const_cast<MiqtVirtualQsciLexerXML*>(this), handle__DefaultPaperWithStyle, sigval1);
+		QColor* callback_return_value = miqt_exec_callback_QsciLexerXML_DefaultPaperWithStyle(this, handle__DefaultPaperWithStyle, sigval1);
 
 		return *callback_return_value;
 	}
@@ -732,7 +732,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QsciLexerXML_StyleBitsNeeded(const_cast<MiqtVirtualQsciLexerXML*>(this), handle__StyleBitsNeeded);
+		int callback_return_value = miqt_exec_callback_QsciLexerXML_StyleBitsNeeded(this, handle__StyleBitsNeeded);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -754,7 +754,7 @@ public:
 		}
 		
 
-		const char* callback_return_value = miqt_exec_callback_QsciLexerXML_WordCharacters(const_cast<MiqtVirtualQsciLexerXML*>(this), handle__WordCharacters);
+		const char* callback_return_value = miqt_exec_callback_QsciLexerXML_WordCharacters(this, handle__WordCharacters);
 
 		return callback_return_value;
 	}
@@ -951,7 +951,7 @@ public:
 		memcpy(prefix_ms.data, prefix_b.data(), prefix_ms.len);
 		struct miqt_string sigval2 = prefix_ms;
 
-		bool callback_return_value = miqt_exec_callback_QsciLexerXML_WriteProperties(const_cast<MiqtVirtualQsciLexerXML*>(this), handle__WriteProperties, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QsciLexerXML_WriteProperties(this, handle__WriteProperties, sigval1, sigval2);
 
 		return callback_return_value;
 	}

@@ -20,16 +20,16 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QTextList_BlockInserted(void*, intptr_t, QTextBlock*);
-void miqt_exec_callback_QTextList_BlockRemoved(void*, intptr_t, QTextBlock*);
-void miqt_exec_callback_QTextList_BlockFormatChanged(void*, intptr_t, QTextBlock*);
-bool miqt_exec_callback_QTextList_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QTextList_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QTextList_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QTextList_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QTextList_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QTextList_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QTextList_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QTextList_BlockInserted(QTextList*, intptr_t, QTextBlock*);
+void miqt_exec_callback_QTextList_BlockRemoved(QTextList*, intptr_t, QTextBlock*);
+void miqt_exec_callback_QTextList_BlockFormatChanged(QTextList*, intptr_t, QTextBlock*);
+bool miqt_exec_callback_QTextList_Event(QTextList*, intptr_t, QEvent*);
+bool miqt_exec_callback_QTextList_EventFilter(QTextList*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QTextList_TimerEvent(QTextList*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QTextList_ChildEvent(QTextList*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QTextList_CustomEvent(QTextList*, intptr_t, QEvent*);
+void miqt_exec_callback_QTextList_ConnectNotify(QTextList*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QTextList_DisconnectNotify(QTextList*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

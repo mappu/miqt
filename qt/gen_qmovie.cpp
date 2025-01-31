@@ -30,13 +30,13 @@ void miqt_exec_callback_QMovie_StateChanged(intptr_t, int);
 void miqt_exec_callback_QMovie_Error(intptr_t, int);
 void miqt_exec_callback_QMovie_Finished(intptr_t);
 void miqt_exec_callback_QMovie_FrameChanged(intptr_t, int);
-bool miqt_exec_callback_QMovie_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QMovie_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QMovie_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QMovie_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QMovie_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QMovie_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QMovie_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QMovie_Event(QMovie*, intptr_t, QEvent*);
+bool miqt_exec_callback_QMovie_EventFilter(QMovie*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QMovie_TimerEvent(QMovie*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QMovie_ChildEvent(QMovie*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QMovie_CustomEvent(QMovie*, intptr_t, QEvent*);
+void miqt_exec_callback_QMovie_ConnectNotify(QMovie*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QMovie_DisconnectNotify(QMovie*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

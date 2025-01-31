@@ -30,18 +30,18 @@ void miqt_exec_callback_QRadioTuner_MutedChanged(intptr_t, bool);
 void miqt_exec_callback_QRadioTuner_StationFound(intptr_t, int, struct miqt_string);
 void miqt_exec_callback_QRadioTuner_AntennaConnectedChanged(intptr_t, bool);
 void miqt_exec_callback_QRadioTuner_ErrorWithError(intptr_t, int);
-int miqt_exec_callback_QRadioTuner_Availability(void*, intptr_t);
-bool miqt_exec_callback_QRadioTuner_IsAvailable(void*, intptr_t);
-QMediaService* miqt_exec_callback_QRadioTuner_Service(void*, intptr_t);
-bool miqt_exec_callback_QRadioTuner_Bind(void*, intptr_t, QObject*);
-void miqt_exec_callback_QRadioTuner_Unbind(void*, intptr_t, QObject*);
-bool miqt_exec_callback_QRadioTuner_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QRadioTuner_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QRadioTuner_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QRadioTuner_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QRadioTuner_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QRadioTuner_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QRadioTuner_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+int miqt_exec_callback_QRadioTuner_Availability(const QRadioTuner*, intptr_t);
+bool miqt_exec_callback_QRadioTuner_IsAvailable(const QRadioTuner*, intptr_t);
+QMediaService* miqt_exec_callback_QRadioTuner_Service(const QRadioTuner*, intptr_t);
+bool miqt_exec_callback_QRadioTuner_Bind(QRadioTuner*, intptr_t, QObject*);
+void miqt_exec_callback_QRadioTuner_Unbind(QRadioTuner*, intptr_t, QObject*);
+bool miqt_exec_callback_QRadioTuner_Event(QRadioTuner*, intptr_t, QEvent*);
+bool miqt_exec_callback_QRadioTuner_EventFilter(QRadioTuner*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QRadioTuner_TimerEvent(QRadioTuner*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QRadioTuner_ChildEvent(QRadioTuner*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QRadioTuner_CustomEvent(QRadioTuner*, intptr_t, QEvent*);
+void miqt_exec_callback_QRadioTuner_ConnectNotify(QRadioTuner*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QRadioTuner_DisconnectNotify(QRadioTuner*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -64,7 +64,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QRadioTuner_Availability(const_cast<MiqtVirtualQRadioTuner*>(this), handle__Availability);
+		int callback_return_value = miqt_exec_callback_QRadioTuner_Availability(this, handle__Availability);
 
 		return static_cast<QMultimedia::AvailabilityStatus>(callback_return_value);
 	}
@@ -87,7 +87,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QRadioTuner_IsAvailable(const_cast<MiqtVirtualQRadioTuner*>(this), handle__IsAvailable);
+		bool callback_return_value = miqt_exec_callback_QRadioTuner_IsAvailable(this, handle__IsAvailable);
 
 		return callback_return_value;
 	}
@@ -109,7 +109,7 @@ public:
 		}
 		
 
-		QMediaService* callback_return_value = miqt_exec_callback_QRadioTuner_Service(const_cast<MiqtVirtualQRadioTuner*>(this), handle__Service);
+		QMediaService* callback_return_value = miqt_exec_callback_QRadioTuner_Service(this, handle__Service);
 
 		return callback_return_value;
 	}

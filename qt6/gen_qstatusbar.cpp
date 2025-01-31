@@ -43,53 +43,53 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QStatusBar_MessageChanged(intptr_t, struct miqt_string);
-void miqt_exec_callback_QStatusBar_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QStatusBar_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QStatusBar_ResizeEvent(void*, intptr_t, QResizeEvent*);
-bool miqt_exec_callback_QStatusBar_Event(void*, intptr_t, QEvent*);
-int miqt_exec_callback_QStatusBar_DevType(void*, intptr_t);
-void miqt_exec_callback_QStatusBar_SetVisible(void*, intptr_t, bool);
-QSize* miqt_exec_callback_QStatusBar_SizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QStatusBar_MinimumSizeHint(void*, intptr_t);
-int miqt_exec_callback_QStatusBar_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QStatusBar_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QStatusBar_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QStatusBar_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QStatusBar_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QStatusBar_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QStatusBar_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QStatusBar_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QStatusBar_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QStatusBar_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QStatusBar_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QStatusBar_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QStatusBar_EnterEvent(void*, intptr_t, QEnterEvent*);
-void miqt_exec_callback_QStatusBar_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QStatusBar_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QStatusBar_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QStatusBar_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QStatusBar_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QStatusBar_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QStatusBar_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QStatusBar_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QStatusBar_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QStatusBar_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QStatusBar_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QStatusBar_NativeEvent(void*, intptr_t, struct miqt_string, void*, intptr_t*);
-void miqt_exec_callback_QStatusBar_ChangeEvent(void*, intptr_t, QEvent*);
-int miqt_exec_callback_QStatusBar_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QStatusBar_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QStatusBar_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QStatusBar_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QStatusBar_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QStatusBar_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QStatusBar_FocusNextPrevChild(void*, intptr_t, bool);
-bool miqt_exec_callback_QStatusBar_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QStatusBar_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QStatusBar_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QStatusBar_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QStatusBar_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QStatusBar_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QStatusBar_ShowEvent(QStatusBar*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QStatusBar_PaintEvent(QStatusBar*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QStatusBar_ResizeEvent(QStatusBar*, intptr_t, QResizeEvent*);
+bool miqt_exec_callback_QStatusBar_Event(QStatusBar*, intptr_t, QEvent*);
+int miqt_exec_callback_QStatusBar_DevType(const QStatusBar*, intptr_t);
+void miqt_exec_callback_QStatusBar_SetVisible(QStatusBar*, intptr_t, bool);
+QSize* miqt_exec_callback_QStatusBar_SizeHint(const QStatusBar*, intptr_t);
+QSize* miqt_exec_callback_QStatusBar_MinimumSizeHint(const QStatusBar*, intptr_t);
+int miqt_exec_callback_QStatusBar_HeightForWidth(const QStatusBar*, intptr_t, int);
+bool miqt_exec_callback_QStatusBar_HasHeightForWidth(const QStatusBar*, intptr_t);
+QPaintEngine* miqt_exec_callback_QStatusBar_PaintEngine(const QStatusBar*, intptr_t);
+void miqt_exec_callback_QStatusBar_MousePressEvent(QStatusBar*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QStatusBar_MouseReleaseEvent(QStatusBar*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QStatusBar_MouseDoubleClickEvent(QStatusBar*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QStatusBar_MouseMoveEvent(QStatusBar*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QStatusBar_WheelEvent(QStatusBar*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QStatusBar_KeyPressEvent(QStatusBar*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QStatusBar_KeyReleaseEvent(QStatusBar*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QStatusBar_FocusInEvent(QStatusBar*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QStatusBar_FocusOutEvent(QStatusBar*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QStatusBar_EnterEvent(QStatusBar*, intptr_t, QEnterEvent*);
+void miqt_exec_callback_QStatusBar_LeaveEvent(QStatusBar*, intptr_t, QEvent*);
+void miqt_exec_callback_QStatusBar_MoveEvent(QStatusBar*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QStatusBar_CloseEvent(QStatusBar*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QStatusBar_ContextMenuEvent(QStatusBar*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QStatusBar_TabletEvent(QStatusBar*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QStatusBar_ActionEvent(QStatusBar*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QStatusBar_DragEnterEvent(QStatusBar*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QStatusBar_DragMoveEvent(QStatusBar*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QStatusBar_DragLeaveEvent(QStatusBar*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QStatusBar_DropEvent(QStatusBar*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QStatusBar_HideEvent(QStatusBar*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QStatusBar_NativeEvent(QStatusBar*, intptr_t, struct miqt_string, void*, intptr_t*);
+void miqt_exec_callback_QStatusBar_ChangeEvent(QStatusBar*, intptr_t, QEvent*);
+int miqt_exec_callback_QStatusBar_Metric(const QStatusBar*, intptr_t, int);
+void miqt_exec_callback_QStatusBar_InitPainter(const QStatusBar*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QStatusBar_Redirected(const QStatusBar*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QStatusBar_SharedPainter(const QStatusBar*, intptr_t);
+void miqt_exec_callback_QStatusBar_InputMethodEvent(QStatusBar*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QStatusBar_InputMethodQuery(const QStatusBar*, intptr_t, int);
+bool miqt_exec_callback_QStatusBar_FocusNextPrevChild(QStatusBar*, intptr_t, bool);
+bool miqt_exec_callback_QStatusBar_EventFilter(QStatusBar*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QStatusBar_TimerEvent(QStatusBar*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QStatusBar_ChildEvent(QStatusBar*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QStatusBar_CustomEvent(QStatusBar*, intptr_t, QEvent*);
+void miqt_exec_callback_QStatusBar_ConnectNotify(QStatusBar*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QStatusBar_DisconnectNotify(QStatusBar*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -207,7 +207,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QStatusBar_DevType(const_cast<MiqtVirtualQStatusBar*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QStatusBar_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -253,7 +253,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QStatusBar_SizeHint(const_cast<MiqtVirtualQStatusBar*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QStatusBar_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -275,7 +275,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QStatusBar_MinimumSizeHint(const_cast<MiqtVirtualQStatusBar*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QStatusBar_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -298,7 +298,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QStatusBar_HeightForWidth(const_cast<MiqtVirtualQStatusBar*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QStatusBar_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -320,7 +320,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QStatusBar_HasHeightForWidth(const_cast<MiqtVirtualQStatusBar*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QStatusBar_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -342,7 +342,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QStatusBar_PaintEngine(const_cast<MiqtVirtualQStatusBar*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QStatusBar_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -926,7 +926,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QStatusBar_Metric(const_cast<MiqtVirtualQStatusBar*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QStatusBar_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -950,7 +950,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QStatusBar_InitPainter(const_cast<MiqtVirtualQStatusBar*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QStatusBar_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -973,7 +973,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QStatusBar_Redirected(const_cast<MiqtVirtualQStatusBar*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QStatusBar_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -995,7 +995,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QStatusBar_SharedPainter(const_cast<MiqtVirtualQStatusBar*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QStatusBar_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -1043,7 +1043,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QStatusBar_InputMethodQuery(const_cast<MiqtVirtualQStatusBar*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QStatusBar_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}

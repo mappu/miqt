@@ -17,17 +17,17 @@
 extern "C" {
 #endif
 
-int miqt_exec_callback_QParallelAnimationGroup_Duration(void*, intptr_t);
-bool miqt_exec_callback_QParallelAnimationGroup_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QParallelAnimationGroup_UpdateCurrentTime(void*, intptr_t, int);
-void miqt_exec_callback_QParallelAnimationGroup_UpdateState(void*, intptr_t, int, int);
-void miqt_exec_callback_QParallelAnimationGroup_UpdateDirection(void*, intptr_t, int);
-bool miqt_exec_callback_QParallelAnimationGroup_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QParallelAnimationGroup_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QParallelAnimationGroup_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QParallelAnimationGroup_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QParallelAnimationGroup_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QParallelAnimationGroup_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+int miqt_exec_callback_QParallelAnimationGroup_Duration(const QParallelAnimationGroup*, intptr_t);
+bool miqt_exec_callback_QParallelAnimationGroup_Event(QParallelAnimationGroup*, intptr_t, QEvent*);
+void miqt_exec_callback_QParallelAnimationGroup_UpdateCurrentTime(QParallelAnimationGroup*, intptr_t, int);
+void miqt_exec_callback_QParallelAnimationGroup_UpdateState(QParallelAnimationGroup*, intptr_t, int, int);
+void miqt_exec_callback_QParallelAnimationGroup_UpdateDirection(QParallelAnimationGroup*, intptr_t, int);
+bool miqt_exec_callback_QParallelAnimationGroup_EventFilter(QParallelAnimationGroup*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QParallelAnimationGroup_TimerEvent(QParallelAnimationGroup*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QParallelAnimationGroup_ChildEvent(QParallelAnimationGroup*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QParallelAnimationGroup_CustomEvent(QParallelAnimationGroup*, intptr_t, QEvent*);
+void miqt_exec_callback_QParallelAnimationGroup_ConnectNotify(QParallelAnimationGroup*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QParallelAnimationGroup_DisconnectNotify(QParallelAnimationGroup*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -50,7 +50,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QParallelAnimationGroup_Duration(const_cast<MiqtVirtualQParallelAnimationGroup*>(this), handle__Duration);
+		int callback_return_value = miqt_exec_callback_QParallelAnimationGroup_Duration(this, handle__Duration);
 
 		return static_cast<int>(callback_return_value);
 	}

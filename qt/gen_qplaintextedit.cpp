@@ -74,79 +74,79 @@ void miqt_exec_callback_QPlainTextEdit_CursorPositionChanged(intptr_t);
 void miqt_exec_callback_QPlainTextEdit_UpdateRequest(intptr_t, QRect*, int);
 void miqt_exec_callback_QPlainTextEdit_BlockCountChanged(intptr_t, int);
 void miqt_exec_callback_QPlainTextEdit_ModificationChanged(intptr_t, bool);
-QVariant* miqt_exec_callback_QPlainTextEdit_LoadResource(void*, intptr_t, int, QUrl*);
-QVariant* miqt_exec_callback_QPlainTextEdit_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QPlainTextEdit_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QPlainTextEdit_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QPlainTextEdit_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QPlainTextEdit_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QPlainTextEdit_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QPlainTextEdit_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QPlainTextEdit_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QPlainTextEdit_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QPlainTextEdit_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QPlainTextEdit_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-bool miqt_exec_callback_QPlainTextEdit_FocusNextPrevChild(void*, intptr_t, bool);
-void miqt_exec_callback_QPlainTextEdit_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QPlainTextEdit_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QPlainTextEdit_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QPlainTextEdit_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QPlainTextEdit_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QPlainTextEdit_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QPlainTextEdit_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QPlainTextEdit_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QPlainTextEdit_ChangeEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QPlainTextEdit_WheelEvent(void*, intptr_t, QWheelEvent*);
-QMimeData* miqt_exec_callback_QPlainTextEdit_CreateMimeDataFromSelection(void*, intptr_t);
-bool miqt_exec_callback_QPlainTextEdit_CanInsertFromMimeData(void*, intptr_t, QMimeData*);
-void miqt_exec_callback_QPlainTextEdit_InsertFromMimeData(void*, intptr_t, QMimeData*);
-void miqt_exec_callback_QPlainTextEdit_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-void miqt_exec_callback_QPlainTextEdit_ScrollContentsBy(void*, intptr_t, int, int);
-void miqt_exec_callback_QPlainTextEdit_DoSetTextCursor(void*, intptr_t, QTextCursor*);
-QSize* miqt_exec_callback_QPlainTextEdit_MinimumSizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QPlainTextEdit_SizeHint(void*, intptr_t);
-void miqt_exec_callback_QPlainTextEdit_SetupViewport(void*, intptr_t, QWidget*);
-bool miqt_exec_callback_QPlainTextEdit_EventFilter(void*, intptr_t, QObject*, QEvent*);
-bool miqt_exec_callback_QPlainTextEdit_ViewportEvent(void*, intptr_t, QEvent*);
-QSize* miqt_exec_callback_QPlainTextEdit_ViewportSizeHint(void*, intptr_t);
-int miqt_exec_callback_QPlainTextEdit_DevType(void*, intptr_t);
-void miqt_exec_callback_QPlainTextEdit_SetVisible(void*, intptr_t, bool);
-int miqt_exec_callback_QPlainTextEdit_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QPlainTextEdit_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QPlainTextEdit_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QPlainTextEdit_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QPlainTextEdit_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QPlainTextEdit_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QPlainTextEdit_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QPlainTextEdit_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QPlainTextEdit_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QPlainTextEdit_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QPlainTextEdit_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-int miqt_exec_callback_QPlainTextEdit_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QPlainTextEdit_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QPlainTextEdit_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QPlainTextEdit_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QPlainTextEdit_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QPlainTextEdit_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QPlainTextEdit_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QPlainTextEdit_DisconnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QPlainTextDocumentLayout_Draw(void*, intptr_t, QPainter*, QAbstractTextDocumentLayout__PaintContext*);
-int miqt_exec_callback_QPlainTextDocumentLayout_HitTest(void*, intptr_t, QPointF*, int);
-int miqt_exec_callback_QPlainTextDocumentLayout_PageCount(void*, intptr_t);
-QSizeF* miqt_exec_callback_QPlainTextDocumentLayout_DocumentSize(void*, intptr_t);
-QRectF* miqt_exec_callback_QPlainTextDocumentLayout_FrameBoundingRect(void*, intptr_t, QTextFrame*);
-QRectF* miqt_exec_callback_QPlainTextDocumentLayout_BlockBoundingRect(void*, intptr_t, QTextBlock*);
-void miqt_exec_callback_QPlainTextDocumentLayout_DocumentChanged(void*, intptr_t, int, int, int);
-void miqt_exec_callback_QPlainTextDocumentLayout_ResizeInlineObject(void*, intptr_t, QTextInlineObject*, int, QTextFormat*);
-void miqt_exec_callback_QPlainTextDocumentLayout_PositionInlineObject(void*, intptr_t, QTextInlineObject*, int, QTextFormat*);
-void miqt_exec_callback_QPlainTextDocumentLayout_DrawInlineObject(void*, intptr_t, QPainter*, QRectF*, QTextInlineObject*, int, QTextFormat*);
-bool miqt_exec_callback_QPlainTextDocumentLayout_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QPlainTextDocumentLayout_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QPlainTextDocumentLayout_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QPlainTextDocumentLayout_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QPlainTextDocumentLayout_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QPlainTextDocumentLayout_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QPlainTextDocumentLayout_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QVariant* miqt_exec_callback_QPlainTextEdit_LoadResource(QPlainTextEdit*, intptr_t, int, QUrl*);
+QVariant* miqt_exec_callback_QPlainTextEdit_InputMethodQuery(const QPlainTextEdit*, intptr_t, int);
+bool miqt_exec_callback_QPlainTextEdit_Event(QPlainTextEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_QPlainTextEdit_TimerEvent(QPlainTextEdit*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QPlainTextEdit_KeyPressEvent(QPlainTextEdit*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QPlainTextEdit_KeyReleaseEvent(QPlainTextEdit*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QPlainTextEdit_ResizeEvent(QPlainTextEdit*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QPlainTextEdit_PaintEvent(QPlainTextEdit*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QPlainTextEdit_MousePressEvent(QPlainTextEdit*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QPlainTextEdit_MouseMoveEvent(QPlainTextEdit*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QPlainTextEdit_MouseReleaseEvent(QPlainTextEdit*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QPlainTextEdit_MouseDoubleClickEvent(QPlainTextEdit*, intptr_t, QMouseEvent*);
+bool miqt_exec_callback_QPlainTextEdit_FocusNextPrevChild(QPlainTextEdit*, intptr_t, bool);
+void miqt_exec_callback_QPlainTextEdit_ContextMenuEvent(QPlainTextEdit*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QPlainTextEdit_DragEnterEvent(QPlainTextEdit*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QPlainTextEdit_DragLeaveEvent(QPlainTextEdit*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QPlainTextEdit_DragMoveEvent(QPlainTextEdit*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QPlainTextEdit_DropEvent(QPlainTextEdit*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QPlainTextEdit_FocusInEvent(QPlainTextEdit*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QPlainTextEdit_FocusOutEvent(QPlainTextEdit*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QPlainTextEdit_ShowEvent(QPlainTextEdit*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QPlainTextEdit_ChangeEvent(QPlainTextEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_QPlainTextEdit_WheelEvent(QPlainTextEdit*, intptr_t, QWheelEvent*);
+QMimeData* miqt_exec_callback_QPlainTextEdit_CreateMimeDataFromSelection(const QPlainTextEdit*, intptr_t);
+bool miqt_exec_callback_QPlainTextEdit_CanInsertFromMimeData(const QPlainTextEdit*, intptr_t, QMimeData*);
+void miqt_exec_callback_QPlainTextEdit_InsertFromMimeData(QPlainTextEdit*, intptr_t, QMimeData*);
+void miqt_exec_callback_QPlainTextEdit_InputMethodEvent(QPlainTextEdit*, intptr_t, QInputMethodEvent*);
+void miqt_exec_callback_QPlainTextEdit_ScrollContentsBy(QPlainTextEdit*, intptr_t, int, int);
+void miqt_exec_callback_QPlainTextEdit_DoSetTextCursor(QPlainTextEdit*, intptr_t, QTextCursor*);
+QSize* miqt_exec_callback_QPlainTextEdit_MinimumSizeHint(const QPlainTextEdit*, intptr_t);
+QSize* miqt_exec_callback_QPlainTextEdit_SizeHint(const QPlainTextEdit*, intptr_t);
+void miqt_exec_callback_QPlainTextEdit_SetupViewport(QPlainTextEdit*, intptr_t, QWidget*);
+bool miqt_exec_callback_QPlainTextEdit_EventFilter(QPlainTextEdit*, intptr_t, QObject*, QEvent*);
+bool miqt_exec_callback_QPlainTextEdit_ViewportEvent(QPlainTextEdit*, intptr_t, QEvent*);
+QSize* miqt_exec_callback_QPlainTextEdit_ViewportSizeHint(const QPlainTextEdit*, intptr_t);
+int miqt_exec_callback_QPlainTextEdit_DevType(const QPlainTextEdit*, intptr_t);
+void miqt_exec_callback_QPlainTextEdit_SetVisible(QPlainTextEdit*, intptr_t, bool);
+int miqt_exec_callback_QPlainTextEdit_HeightForWidth(const QPlainTextEdit*, intptr_t, int);
+bool miqt_exec_callback_QPlainTextEdit_HasHeightForWidth(const QPlainTextEdit*, intptr_t);
+QPaintEngine* miqt_exec_callback_QPlainTextEdit_PaintEngine(const QPlainTextEdit*, intptr_t);
+void miqt_exec_callback_QPlainTextEdit_EnterEvent(QPlainTextEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_QPlainTextEdit_LeaveEvent(QPlainTextEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_QPlainTextEdit_MoveEvent(QPlainTextEdit*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QPlainTextEdit_CloseEvent(QPlainTextEdit*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QPlainTextEdit_TabletEvent(QPlainTextEdit*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QPlainTextEdit_ActionEvent(QPlainTextEdit*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QPlainTextEdit_HideEvent(QPlainTextEdit*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QPlainTextEdit_NativeEvent(QPlainTextEdit*, intptr_t, struct miqt_string, void*, long*);
+int miqt_exec_callback_QPlainTextEdit_Metric(const QPlainTextEdit*, intptr_t, int);
+void miqt_exec_callback_QPlainTextEdit_InitPainter(const QPlainTextEdit*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QPlainTextEdit_Redirected(const QPlainTextEdit*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QPlainTextEdit_SharedPainter(const QPlainTextEdit*, intptr_t);
+void miqt_exec_callback_QPlainTextEdit_ChildEvent(QPlainTextEdit*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QPlainTextEdit_CustomEvent(QPlainTextEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_QPlainTextEdit_ConnectNotify(QPlainTextEdit*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QPlainTextEdit_DisconnectNotify(QPlainTextEdit*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QPlainTextDocumentLayout_Draw(QPlainTextDocumentLayout*, intptr_t, QPainter*, QAbstractTextDocumentLayout__PaintContext*);
+int miqt_exec_callback_QPlainTextDocumentLayout_HitTest(const QPlainTextDocumentLayout*, intptr_t, QPointF*, int);
+int miqt_exec_callback_QPlainTextDocumentLayout_PageCount(const QPlainTextDocumentLayout*, intptr_t);
+QSizeF* miqt_exec_callback_QPlainTextDocumentLayout_DocumentSize(const QPlainTextDocumentLayout*, intptr_t);
+QRectF* miqt_exec_callback_QPlainTextDocumentLayout_FrameBoundingRect(const QPlainTextDocumentLayout*, intptr_t, QTextFrame*);
+QRectF* miqt_exec_callback_QPlainTextDocumentLayout_BlockBoundingRect(const QPlainTextDocumentLayout*, intptr_t, QTextBlock*);
+void miqt_exec_callback_QPlainTextDocumentLayout_DocumentChanged(QPlainTextDocumentLayout*, intptr_t, int, int, int);
+void miqt_exec_callback_QPlainTextDocumentLayout_ResizeInlineObject(QPlainTextDocumentLayout*, intptr_t, QTextInlineObject*, int, QTextFormat*);
+void miqt_exec_callback_QPlainTextDocumentLayout_PositionInlineObject(QPlainTextDocumentLayout*, intptr_t, QTextInlineObject*, int, QTextFormat*);
+void miqt_exec_callback_QPlainTextDocumentLayout_DrawInlineObject(QPlainTextDocumentLayout*, intptr_t, QPainter*, QRectF*, QTextInlineObject*, int, QTextFormat*);
+bool miqt_exec_callback_QPlainTextDocumentLayout_Event(QPlainTextDocumentLayout*, intptr_t, QEvent*);
+bool miqt_exec_callback_QPlainTextDocumentLayout_EventFilter(QPlainTextDocumentLayout*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QPlainTextDocumentLayout_TimerEvent(QPlainTextDocumentLayout*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QPlainTextDocumentLayout_ChildEvent(QPlainTextDocumentLayout*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QPlainTextDocumentLayout_CustomEvent(QPlainTextDocumentLayout*, intptr_t, QEvent*);
+void miqt_exec_callback_QPlainTextDocumentLayout_ConnectNotify(QPlainTextDocumentLayout*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QPlainTextDocumentLayout_DisconnectNotify(QPlainTextDocumentLayout*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -199,7 +199,7 @@ public:
 		Qt::InputMethodQuery property_ret = property;
 		int sigval1 = static_cast<int>(property_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QPlainTextEdit_InputMethodQuery(const_cast<MiqtVirtualQPlainTextEdit*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QPlainTextEdit_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}
@@ -723,7 +723,7 @@ public:
 		}
 		
 
-		QMimeData* callback_return_value = miqt_exec_callback_QPlainTextEdit_CreateMimeDataFromSelection(const_cast<MiqtVirtualQPlainTextEdit*>(this), handle__CreateMimeDataFromSelection);
+		QMimeData* callback_return_value = miqt_exec_callback_QPlainTextEdit_CreateMimeDataFromSelection(this, handle__CreateMimeDataFromSelection);
 
 		return callback_return_value;
 	}
@@ -746,7 +746,7 @@ public:
 		
 		QMimeData* sigval1 = (QMimeData*) source;
 
-		bool callback_return_value = miqt_exec_callback_QPlainTextEdit_CanInsertFromMimeData(const_cast<MiqtVirtualQPlainTextEdit*>(this), handle__CanInsertFromMimeData, sigval1);
+		bool callback_return_value = miqt_exec_callback_QPlainTextEdit_CanInsertFromMimeData(this, handle__CanInsertFromMimeData, sigval1);
 
 		return callback_return_value;
 	}
@@ -867,7 +867,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QPlainTextEdit_MinimumSizeHint(const_cast<MiqtVirtualQPlainTextEdit*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QPlainTextEdit_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -889,7 +889,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QPlainTextEdit_SizeHint(const_cast<MiqtVirtualQPlainTextEdit*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QPlainTextEdit_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -982,7 +982,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QPlainTextEdit_ViewportSizeHint(const_cast<MiqtVirtualQPlainTextEdit*>(this), handle__ViewportSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QPlainTextEdit_ViewportSizeHint(this, handle__ViewportSizeHint);
 
 		return *callback_return_value;
 	}
@@ -1004,7 +1004,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QPlainTextEdit_DevType(const_cast<MiqtVirtualQPlainTextEdit*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QPlainTextEdit_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1051,7 +1051,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QPlainTextEdit_HeightForWidth(const_cast<MiqtVirtualQPlainTextEdit*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QPlainTextEdit_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1073,7 +1073,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QPlainTextEdit_HasHeightForWidth(const_cast<MiqtVirtualQPlainTextEdit*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QPlainTextEdit_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -1095,7 +1095,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QPlainTextEdit_PaintEngine(const_cast<MiqtVirtualQPlainTextEdit*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QPlainTextEdit_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -1318,7 +1318,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QPlainTextEdit_Metric(const_cast<MiqtVirtualQPlainTextEdit*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QPlainTextEdit_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1342,7 +1342,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QPlainTextEdit_InitPainter(const_cast<MiqtVirtualQPlainTextEdit*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QPlainTextEdit_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -1365,7 +1365,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QPlainTextEdit_Redirected(const_cast<MiqtVirtualQPlainTextEdit*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QPlainTextEdit_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1387,7 +1387,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QPlainTextEdit_SharedPainter(const_cast<MiqtVirtualQPlainTextEdit*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QPlainTextEdit_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -2896,7 +2896,7 @@ public:
 		Qt::HitTestAccuracy param2_ret = param2;
 		int sigval2 = static_cast<int>(param2_ret);
 
-		int callback_return_value = miqt_exec_callback_QPlainTextDocumentLayout_HitTest(const_cast<MiqtVirtualQPlainTextDocumentLayout*>(this), handle__HitTest, sigval1, sigval2);
+		int callback_return_value = miqt_exec_callback_QPlainTextDocumentLayout_HitTest(this, handle__HitTest, sigval1, sigval2);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -2918,7 +2918,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QPlainTextDocumentLayout_PageCount(const_cast<MiqtVirtualQPlainTextDocumentLayout*>(this), handle__PageCount);
+		int callback_return_value = miqt_exec_callback_QPlainTextDocumentLayout_PageCount(this, handle__PageCount);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -2940,7 +2940,7 @@ public:
 		}
 		
 
-		QSizeF* callback_return_value = miqt_exec_callback_QPlainTextDocumentLayout_DocumentSize(const_cast<MiqtVirtualQPlainTextDocumentLayout*>(this), handle__DocumentSize);
+		QSizeF* callback_return_value = miqt_exec_callback_QPlainTextDocumentLayout_DocumentSize(this, handle__DocumentSize);
 
 		return *callback_return_value;
 	}
@@ -2963,7 +2963,7 @@ public:
 		
 		QTextFrame* sigval1 = param1;
 
-		QRectF* callback_return_value = miqt_exec_callback_QPlainTextDocumentLayout_FrameBoundingRect(const_cast<MiqtVirtualQPlainTextDocumentLayout*>(this), handle__FrameBoundingRect, sigval1);
+		QRectF* callback_return_value = miqt_exec_callback_QPlainTextDocumentLayout_FrameBoundingRect(this, handle__FrameBoundingRect, sigval1);
 
 		return *callback_return_value;
 	}
@@ -2988,7 +2988,7 @@ public:
 		// Cast returned reference into pointer
 		QTextBlock* sigval1 = const_cast<QTextBlock*>(&block_ret);
 
-		QRectF* callback_return_value = miqt_exec_callback_QPlainTextDocumentLayout_BlockBoundingRect(const_cast<MiqtVirtualQPlainTextDocumentLayout*>(this), handle__BlockBoundingRect, sigval1);
+		QRectF* callback_return_value = miqt_exec_callback_QPlainTextDocumentLayout_BlockBoundingRect(this, handle__BlockBoundingRect, sigval1);
 
 		return *callback_return_value;
 	}

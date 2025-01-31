@@ -18,15 +18,15 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QKeyEventTransition_OnTransition(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QKeyEventTransition_EventTest(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QKeyEventTransition_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QKeyEventTransition_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QKeyEventTransition_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QKeyEventTransition_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QKeyEventTransition_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QKeyEventTransition_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QKeyEventTransition_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QKeyEventTransition_OnTransition(QKeyEventTransition*, intptr_t, QEvent*);
+bool miqt_exec_callback_QKeyEventTransition_EventTest(QKeyEventTransition*, intptr_t, QEvent*);
+bool miqt_exec_callback_QKeyEventTransition_Event(QKeyEventTransition*, intptr_t, QEvent*);
+bool miqt_exec_callback_QKeyEventTransition_EventFilter(QKeyEventTransition*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QKeyEventTransition_TimerEvent(QKeyEventTransition*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QKeyEventTransition_ChildEvent(QKeyEventTransition*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QKeyEventTransition_CustomEvent(QKeyEventTransition*, intptr_t, QEvent*);
+void miqt_exec_callback_QKeyEventTransition_ConnectNotify(QKeyEventTransition*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QKeyEventTransition_DisconnectNotify(QKeyEventTransition*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

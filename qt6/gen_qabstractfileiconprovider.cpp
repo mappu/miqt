@@ -11,11 +11,11 @@
 extern "C" {
 #endif
 
-QIcon* miqt_exec_callback_QAbstractFileIconProvider_Icon(void*, intptr_t, int);
-QIcon* miqt_exec_callback_QAbstractFileIconProvider_IconWithQFileInfo(void*, intptr_t, QFileInfo*);
-struct miqt_string miqt_exec_callback_QAbstractFileIconProvider_Type(void*, intptr_t, QFileInfo*);
-void miqt_exec_callback_QAbstractFileIconProvider_SetOptions(void*, intptr_t, int);
-int miqt_exec_callback_QAbstractFileIconProvider_Options(void*, intptr_t);
+QIcon* miqt_exec_callback_QAbstractFileIconProvider_Icon(const QAbstractFileIconProvider*, intptr_t, int);
+QIcon* miqt_exec_callback_QAbstractFileIconProvider_IconWithQFileInfo(const QAbstractFileIconProvider*, intptr_t, QFileInfo*);
+struct miqt_string miqt_exec_callback_QAbstractFileIconProvider_Type(const QAbstractFileIconProvider*, intptr_t, QFileInfo*);
+void miqt_exec_callback_QAbstractFileIconProvider_SetOptions(QAbstractFileIconProvider*, intptr_t, int);
+int miqt_exec_callback_QAbstractFileIconProvider_Options(const QAbstractFileIconProvider*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -39,7 +39,7 @@ public:
 		QAbstractFileIconProvider::IconType param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QIcon* callback_return_value = miqt_exec_callback_QAbstractFileIconProvider_Icon(const_cast<MiqtVirtualQAbstractFileIconProvider*>(this), handle__Icon, sigval1);
+		QIcon* callback_return_value = miqt_exec_callback_QAbstractFileIconProvider_Icon(this, handle__Icon, sigval1);
 
 		return *callback_return_value;
 	}
@@ -64,7 +64,7 @@ public:
 		// Cast returned reference into pointer
 		QFileInfo* sigval1 = const_cast<QFileInfo*>(&param1_ret);
 
-		QIcon* callback_return_value = miqt_exec_callback_QAbstractFileIconProvider_IconWithQFileInfo(const_cast<MiqtVirtualQAbstractFileIconProvider*>(this), handle__IconWithQFileInfo, sigval1);
+		QIcon* callback_return_value = miqt_exec_callback_QAbstractFileIconProvider_IconWithQFileInfo(this, handle__IconWithQFileInfo, sigval1);
 
 		return *callback_return_value;
 	}
@@ -89,7 +89,7 @@ public:
 		// Cast returned reference into pointer
 		QFileInfo* sigval1 = const_cast<QFileInfo*>(&param1_ret);
 
-		struct miqt_string callback_return_value = miqt_exec_callback_QAbstractFileIconProvider_Type(const_cast<MiqtVirtualQAbstractFileIconProvider*>(this), handle__Type, sigval1);
+		struct miqt_string callback_return_value = miqt_exec_callback_QAbstractFileIconProvider_Type(this, handle__Type, sigval1);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
 
 		return callback_return_value_QString;
@@ -144,7 +144,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QAbstractFileIconProvider_Options(const_cast<MiqtVirtualQAbstractFileIconProvider*>(this), handle__Options);
+		int callback_return_value = miqt_exec_callback_QAbstractFileIconProvider_Options(this, handle__Options);
 
 		return static_cast<QAbstractFileIconProvider::Options>(callback_return_value);
 	}

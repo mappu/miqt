@@ -11,16 +11,16 @@
 extern "C" {
 #endif
 
-int miqt_exec_callback_QGraphicsGridLayout_Count(void*, intptr_t);
-QGraphicsLayoutItem* miqt_exec_callback_QGraphicsGridLayout_ItemAtWithIndex(void*, intptr_t, int);
-void miqt_exec_callback_QGraphicsGridLayout_RemoveAt(void*, intptr_t, int);
-void miqt_exec_callback_QGraphicsGridLayout_Invalidate(void*, intptr_t);
-void miqt_exec_callback_QGraphicsGridLayout_SetGeometry(void*, intptr_t, QRectF*);
-QSizeF* miqt_exec_callback_QGraphicsGridLayout_SizeHint(void*, intptr_t, int, QSizeF*);
-void miqt_exec_callback_QGraphicsGridLayout_GetContentsMargins(void*, intptr_t, double*, double*, double*, double*);
-void miqt_exec_callback_QGraphicsGridLayout_UpdateGeometry(void*, intptr_t);
-void miqt_exec_callback_QGraphicsGridLayout_WidgetEvent(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QGraphicsGridLayout_IsEmpty(void*, intptr_t);
+int miqt_exec_callback_QGraphicsGridLayout_Count(const QGraphicsGridLayout*, intptr_t);
+QGraphicsLayoutItem* miqt_exec_callback_QGraphicsGridLayout_ItemAtWithIndex(const QGraphicsGridLayout*, intptr_t, int);
+void miqt_exec_callback_QGraphicsGridLayout_RemoveAt(QGraphicsGridLayout*, intptr_t, int);
+void miqt_exec_callback_QGraphicsGridLayout_Invalidate(QGraphicsGridLayout*, intptr_t);
+void miqt_exec_callback_QGraphicsGridLayout_SetGeometry(QGraphicsGridLayout*, intptr_t, QRectF*);
+QSizeF* miqt_exec_callback_QGraphicsGridLayout_SizeHint(const QGraphicsGridLayout*, intptr_t, int, QSizeF*);
+void miqt_exec_callback_QGraphicsGridLayout_GetContentsMargins(const QGraphicsGridLayout*, intptr_t, double*, double*, double*, double*);
+void miqt_exec_callback_QGraphicsGridLayout_UpdateGeometry(QGraphicsGridLayout*, intptr_t);
+void miqt_exec_callback_QGraphicsGridLayout_WidgetEvent(QGraphicsGridLayout*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGraphicsGridLayout_IsEmpty(const QGraphicsGridLayout*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -43,7 +43,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QGraphicsGridLayout_Count(const_cast<MiqtVirtualQGraphicsGridLayout*>(this), handle__Count);
+		int callback_return_value = miqt_exec_callback_QGraphicsGridLayout_Count(this, handle__Count);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -66,7 +66,7 @@ public:
 		
 		int sigval1 = index;
 
-		QGraphicsLayoutItem* callback_return_value = miqt_exec_callback_QGraphicsGridLayout_ItemAtWithIndex(const_cast<MiqtVirtualQGraphicsGridLayout*>(this), handle__ItemAtWithIndex, sigval1);
+		QGraphicsLayoutItem* callback_return_value = miqt_exec_callback_QGraphicsGridLayout_ItemAtWithIndex(this, handle__ItemAtWithIndex, sigval1);
 
 		return callback_return_value;
 	}
@@ -166,7 +166,7 @@ public:
 		// Cast returned reference into pointer
 		QSizeF* sigval2 = const_cast<QSizeF*>(&constraint_ret);
 
-		QSizeF* callback_return_value = miqt_exec_callback_QGraphicsGridLayout_SizeHint(const_cast<MiqtVirtualQGraphicsGridLayout*>(this), handle__SizeHint, sigval1, sigval2);
+		QSizeF* callback_return_value = miqt_exec_callback_QGraphicsGridLayout_SizeHint(this, handle__SizeHint, sigval1, sigval2);
 
 		return *callback_return_value;
 	}
@@ -197,7 +197,7 @@ public:
 		qreal* bottom_ret = bottom;
 		double* sigval4 = static_cast<double*>(bottom_ret);
 
-		miqt_exec_callback_QGraphicsGridLayout_GetContentsMargins(const_cast<MiqtVirtualQGraphicsGridLayout*>(this), handle__GetContentsMargins, sigval1, sigval2, sigval3, sigval4);
+		miqt_exec_callback_QGraphicsGridLayout_GetContentsMargins(this, handle__GetContentsMargins, sigval1, sigval2, sigval3, sigval4);
 
 		
 	}
@@ -266,7 +266,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QGraphicsGridLayout_IsEmpty(const_cast<MiqtVirtualQGraphicsGridLayout*>(this), handle__IsEmpty);
+		bool callback_return_value = miqt_exec_callback_QGraphicsGridLayout_IsEmpty(this, handle__IsEmpty);
 
 		return callback_return_value;
 	}

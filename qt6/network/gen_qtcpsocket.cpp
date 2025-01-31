@@ -20,41 +20,41 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QTcpSocket_Resume(void*, intptr_t);
-bool miqt_exec_callback_QTcpSocket_Bind(void*, intptr_t, QHostAddress*, uint16_t, int);
-void miqt_exec_callback_QTcpSocket_ConnectToHost(void*, intptr_t, struct miqt_string, uint16_t, int, int);
-void miqt_exec_callback_QTcpSocket_DisconnectFromHost(void*, intptr_t);
-long long miqt_exec_callback_QTcpSocket_BytesAvailable(void*, intptr_t);
-long long miqt_exec_callback_QTcpSocket_BytesToWrite(void*, intptr_t);
-void miqt_exec_callback_QTcpSocket_SetReadBufferSize(void*, intptr_t, long long);
-intptr_t miqt_exec_callback_QTcpSocket_SocketDescriptor(void*, intptr_t);
-bool miqt_exec_callback_QTcpSocket_SetSocketDescriptor(void*, intptr_t, intptr_t, int, int);
-void miqt_exec_callback_QTcpSocket_SetSocketOption(void*, intptr_t, int, QVariant*);
-QVariant* miqt_exec_callback_QTcpSocket_SocketOption(void*, intptr_t, int);
-void miqt_exec_callback_QTcpSocket_Close(void*, intptr_t);
-bool miqt_exec_callback_QTcpSocket_IsSequential(void*, intptr_t);
-bool miqt_exec_callback_QTcpSocket_WaitForConnected(void*, intptr_t, int);
-bool miqt_exec_callback_QTcpSocket_WaitForReadyRead(void*, intptr_t, int);
-bool miqt_exec_callback_QTcpSocket_WaitForBytesWritten(void*, intptr_t, int);
-bool miqt_exec_callback_QTcpSocket_WaitForDisconnected(void*, intptr_t, int);
-long long miqt_exec_callback_QTcpSocket_ReadData(void*, intptr_t, char*, long long);
-long long miqt_exec_callback_QTcpSocket_ReadLineData(void*, intptr_t, char*, long long);
-long long miqt_exec_callback_QTcpSocket_SkipData(void*, intptr_t, long long);
-long long miqt_exec_callback_QTcpSocket_WriteData(void*, intptr_t, const char*, long long);
-bool miqt_exec_callback_QTcpSocket_Open(void*, intptr_t, int);
-long long miqt_exec_callback_QTcpSocket_Pos(void*, intptr_t);
-long long miqt_exec_callback_QTcpSocket_Size(void*, intptr_t);
-bool miqt_exec_callback_QTcpSocket_Seek(void*, intptr_t, long long);
-bool miqt_exec_callback_QTcpSocket_AtEnd(void*, intptr_t);
-bool miqt_exec_callback_QTcpSocket_Reset(void*, intptr_t);
-bool miqt_exec_callback_QTcpSocket_CanReadLine(void*, intptr_t);
-bool miqt_exec_callback_QTcpSocket_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QTcpSocket_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QTcpSocket_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QTcpSocket_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QTcpSocket_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QTcpSocket_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QTcpSocket_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QTcpSocket_Resume(QTcpSocket*, intptr_t);
+bool miqt_exec_callback_QTcpSocket_Bind(QTcpSocket*, intptr_t, QHostAddress*, uint16_t, int);
+void miqt_exec_callback_QTcpSocket_ConnectToHost(QTcpSocket*, intptr_t, struct miqt_string, uint16_t, int, int);
+void miqt_exec_callback_QTcpSocket_DisconnectFromHost(QTcpSocket*, intptr_t);
+long long miqt_exec_callback_QTcpSocket_BytesAvailable(const QTcpSocket*, intptr_t);
+long long miqt_exec_callback_QTcpSocket_BytesToWrite(const QTcpSocket*, intptr_t);
+void miqt_exec_callback_QTcpSocket_SetReadBufferSize(QTcpSocket*, intptr_t, long long);
+intptr_t miqt_exec_callback_QTcpSocket_SocketDescriptor(const QTcpSocket*, intptr_t);
+bool miqt_exec_callback_QTcpSocket_SetSocketDescriptor(QTcpSocket*, intptr_t, intptr_t, int, int);
+void miqt_exec_callback_QTcpSocket_SetSocketOption(QTcpSocket*, intptr_t, int, QVariant*);
+QVariant* miqt_exec_callback_QTcpSocket_SocketOption(QTcpSocket*, intptr_t, int);
+void miqt_exec_callback_QTcpSocket_Close(QTcpSocket*, intptr_t);
+bool miqt_exec_callback_QTcpSocket_IsSequential(const QTcpSocket*, intptr_t);
+bool miqt_exec_callback_QTcpSocket_WaitForConnected(QTcpSocket*, intptr_t, int);
+bool miqt_exec_callback_QTcpSocket_WaitForReadyRead(QTcpSocket*, intptr_t, int);
+bool miqt_exec_callback_QTcpSocket_WaitForBytesWritten(QTcpSocket*, intptr_t, int);
+bool miqt_exec_callback_QTcpSocket_WaitForDisconnected(QTcpSocket*, intptr_t, int);
+long long miqt_exec_callback_QTcpSocket_ReadData(QTcpSocket*, intptr_t, char*, long long);
+long long miqt_exec_callback_QTcpSocket_ReadLineData(QTcpSocket*, intptr_t, char*, long long);
+long long miqt_exec_callback_QTcpSocket_SkipData(QTcpSocket*, intptr_t, long long);
+long long miqt_exec_callback_QTcpSocket_WriteData(QTcpSocket*, intptr_t, const char*, long long);
+bool miqt_exec_callback_QTcpSocket_Open(QTcpSocket*, intptr_t, int);
+long long miqt_exec_callback_QTcpSocket_Pos(const QTcpSocket*, intptr_t);
+long long miqt_exec_callback_QTcpSocket_Size(const QTcpSocket*, intptr_t);
+bool miqt_exec_callback_QTcpSocket_Seek(QTcpSocket*, intptr_t, long long);
+bool miqt_exec_callback_QTcpSocket_AtEnd(const QTcpSocket*, intptr_t);
+bool miqt_exec_callback_QTcpSocket_Reset(QTcpSocket*, intptr_t);
+bool miqt_exec_callback_QTcpSocket_CanReadLine(const QTcpSocket*, intptr_t);
+bool miqt_exec_callback_QTcpSocket_Event(QTcpSocket*, intptr_t, QEvent*);
+bool miqt_exec_callback_QTcpSocket_EventFilter(QTcpSocket*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QTcpSocket_TimerEvent(QTcpSocket*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QTcpSocket_ChildEvent(QTcpSocket*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QTcpSocket_CustomEvent(QTcpSocket*, intptr_t, QEvent*);
+void miqt_exec_callback_QTcpSocket_ConnectNotify(QTcpSocket*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QTcpSocket_DisconnectNotify(QTcpSocket*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -190,7 +190,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QTcpSocket_BytesAvailable(const_cast<MiqtVirtualQTcpSocket*>(this), handle__BytesAvailable);
+		long long callback_return_value = miqt_exec_callback_QTcpSocket_BytesAvailable(this, handle__BytesAvailable);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -213,7 +213,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QTcpSocket_BytesToWrite(const_cast<MiqtVirtualQTcpSocket*>(this), handle__BytesToWrite);
+		long long callback_return_value = miqt_exec_callback_QTcpSocket_BytesToWrite(this, handle__BytesToWrite);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -261,7 +261,7 @@ public:
 		}
 		
 
-		intptr_t callback_return_value = miqt_exec_callback_QTcpSocket_SocketDescriptor(const_cast<MiqtVirtualQTcpSocket*>(this), handle__SocketDescriptor);
+		intptr_t callback_return_value = miqt_exec_callback_QTcpSocket_SocketDescriptor(this, handle__SocketDescriptor);
 
 		return (qintptr)(callback_return_value);
 	}
@@ -387,7 +387,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QTcpSocket_IsSequential(const_cast<MiqtVirtualQTcpSocket*>(this), handle__IsSequential);
+		bool callback_return_value = miqt_exec_callback_QTcpSocket_IsSequential(this, handle__IsSequential);
 
 		return callback_return_value;
 	}
@@ -628,7 +628,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QTcpSocket_Pos(const_cast<MiqtVirtualQTcpSocket*>(this), handle__Pos);
+		long long callback_return_value = miqt_exec_callback_QTcpSocket_Pos(this, handle__Pos);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -651,7 +651,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QTcpSocket_Size(const_cast<MiqtVirtualQTcpSocket*>(this), handle__Size);
+		long long callback_return_value = miqt_exec_callback_QTcpSocket_Size(this, handle__Size);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -698,7 +698,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QTcpSocket_AtEnd(const_cast<MiqtVirtualQTcpSocket*>(this), handle__AtEnd);
+		bool callback_return_value = miqt_exec_callback_QTcpSocket_AtEnd(this, handle__AtEnd);
 
 		return callback_return_value;
 	}
@@ -742,7 +742,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QTcpSocket_CanReadLine(const_cast<MiqtVirtualQTcpSocket*>(this), handle__CanReadLine);
+		bool callback_return_value = miqt_exec_callback_QTcpSocket_CanReadLine(this, handle__CanReadLine);
 
 		return callback_return_value;
 	}

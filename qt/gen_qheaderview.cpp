@@ -62,97 +62,97 @@ void miqt_exec_callback_QHeaderView_SectionCountChanged(intptr_t, int, int);
 void miqt_exec_callback_QHeaderView_SectionHandleDoubleClicked(intptr_t, int);
 void miqt_exec_callback_QHeaderView_GeometriesChanged(intptr_t);
 void miqt_exec_callback_QHeaderView_SortIndicatorChanged(intptr_t, int, int);
-void miqt_exec_callback_QHeaderView_SetModel(void*, intptr_t, QAbstractItemModel*);
-QSize* miqt_exec_callback_QHeaderView_SizeHint(void*, intptr_t);
-void miqt_exec_callback_QHeaderView_SetVisible(void*, intptr_t, bool);
-void miqt_exec_callback_QHeaderView_DoItemsLayout(void*, intptr_t);
-void miqt_exec_callback_QHeaderView_Reset(void*, intptr_t);
-void miqt_exec_callback_QHeaderView_CurrentChanged(void*, intptr_t, QModelIndex*, QModelIndex*);
-bool miqt_exec_callback_QHeaderView_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QHeaderView_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QHeaderView_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QHeaderView_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QHeaderView_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QHeaderView_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-bool miqt_exec_callback_QHeaderView_ViewportEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QHeaderView_PaintSection(void*, intptr_t, QPainter*, QRect*, int);
-QSize* miqt_exec_callback_QHeaderView_SectionSizeFromContents(void*, intptr_t, int);
-int miqt_exec_callback_QHeaderView_HorizontalOffset(void*, intptr_t);
-int miqt_exec_callback_QHeaderView_VerticalOffset(void*, intptr_t);
-void miqt_exec_callback_QHeaderView_UpdateGeometries(void*, intptr_t);
-void miqt_exec_callback_QHeaderView_ScrollContentsBy(void*, intptr_t, int, int);
-void miqt_exec_callback_QHeaderView_DataChanged(void*, intptr_t, QModelIndex*, QModelIndex*, struct miqt_array /* of int */ );
-void miqt_exec_callback_QHeaderView_RowsInserted(void*, intptr_t, QModelIndex*, int, int);
-QRect* miqt_exec_callback_QHeaderView_VisualRect(void*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QHeaderView_ScrollTo(void*, intptr_t, QModelIndex*, int);
-QModelIndex* miqt_exec_callback_QHeaderView_IndexAt(void*, intptr_t, QPoint*);
-bool miqt_exec_callback_QHeaderView_IsIndexHidden(void*, intptr_t, QModelIndex*);
-QModelIndex* miqt_exec_callback_QHeaderView_MoveCursor(void*, intptr_t, int, int);
-void miqt_exec_callback_QHeaderView_SetSelection(void*, intptr_t, QRect*, int);
-QRegion* miqt_exec_callback_QHeaderView_VisualRegionForSelection(void*, intptr_t, QItemSelection*);
-void miqt_exec_callback_QHeaderView_SetSelectionModel(void*, intptr_t, QItemSelectionModel*);
-void miqt_exec_callback_QHeaderView_KeyboardSearch(void*, intptr_t, struct miqt_string);
-int miqt_exec_callback_QHeaderView_SizeHintForRow(void*, intptr_t, int);
-int miqt_exec_callback_QHeaderView_SizeHintForColumn(void*, intptr_t, int);
-QVariant* miqt_exec_callback_QHeaderView_InputMethodQuery(void*, intptr_t, int);
-void miqt_exec_callback_QHeaderView_SetRootIndex(void*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QHeaderView_SelectAll(void*, intptr_t);
-void miqt_exec_callback_QHeaderView_RowsAboutToBeRemoved(void*, intptr_t, QModelIndex*, int, int);
-void miqt_exec_callback_QHeaderView_SelectionChanged(void*, intptr_t, QItemSelection*, QItemSelection*);
-void miqt_exec_callback_QHeaderView_UpdateEditorData(void*, intptr_t);
-void miqt_exec_callback_QHeaderView_UpdateEditorGeometries(void*, intptr_t);
-void miqt_exec_callback_QHeaderView_VerticalScrollbarAction(void*, intptr_t, int);
-void miqt_exec_callback_QHeaderView_HorizontalScrollbarAction(void*, intptr_t, int);
-void miqt_exec_callback_QHeaderView_VerticalScrollbarValueChanged(void*, intptr_t, int);
-void miqt_exec_callback_QHeaderView_HorizontalScrollbarValueChanged(void*, intptr_t, int);
-void miqt_exec_callback_QHeaderView_CloseEditor(void*, intptr_t, QWidget*, int);
-void miqt_exec_callback_QHeaderView_CommitData(void*, intptr_t, QWidget*);
-void miqt_exec_callback_QHeaderView_EditorDestroyed(void*, intptr_t, QObject*);
-struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QHeaderView_SelectedIndexes(void*, intptr_t);
-bool miqt_exec_callback_QHeaderView_Edit2(void*, intptr_t, QModelIndex*, int, QEvent*);
-int miqt_exec_callback_QHeaderView_SelectionCommand(void*, intptr_t, QModelIndex*, QEvent*);
-void miqt_exec_callback_QHeaderView_StartDrag(void*, intptr_t, int);
-QStyleOptionViewItem* miqt_exec_callback_QHeaderView_ViewOptions(void*, intptr_t);
-bool miqt_exec_callback_QHeaderView_FocusNextPrevChild(void*, intptr_t, bool);
-void miqt_exec_callback_QHeaderView_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QHeaderView_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QHeaderView_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QHeaderView_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QHeaderView_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QHeaderView_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QHeaderView_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QHeaderView_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QHeaderView_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QHeaderView_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-bool miqt_exec_callback_QHeaderView_EventFilter(void*, intptr_t, QObject*, QEvent*);
-QSize* miqt_exec_callback_QHeaderView_ViewportSizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QHeaderView_MinimumSizeHint(void*, intptr_t);
-void miqt_exec_callback_QHeaderView_SetupViewport(void*, intptr_t, QWidget*);
-void miqt_exec_callback_QHeaderView_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QHeaderView_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QHeaderView_ChangeEvent(void*, intptr_t, QEvent*);
-int miqt_exec_callback_QHeaderView_DevType(void*, intptr_t);
-int miqt_exec_callback_QHeaderView_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QHeaderView_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QHeaderView_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QHeaderView_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QHeaderView_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QHeaderView_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QHeaderView_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QHeaderView_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QHeaderView_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QHeaderView_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QHeaderView_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QHeaderView_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QHeaderView_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-int miqt_exec_callback_QHeaderView_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QHeaderView_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QHeaderView_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QHeaderView_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QHeaderView_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QHeaderView_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QHeaderView_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QHeaderView_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QHeaderView_SetModel(QHeaderView*, intptr_t, QAbstractItemModel*);
+QSize* miqt_exec_callback_QHeaderView_SizeHint(const QHeaderView*, intptr_t);
+void miqt_exec_callback_QHeaderView_SetVisible(QHeaderView*, intptr_t, bool);
+void miqt_exec_callback_QHeaderView_DoItemsLayout(QHeaderView*, intptr_t);
+void miqt_exec_callback_QHeaderView_Reset(QHeaderView*, intptr_t);
+void miqt_exec_callback_QHeaderView_CurrentChanged(QHeaderView*, intptr_t, QModelIndex*, QModelIndex*);
+bool miqt_exec_callback_QHeaderView_Event(QHeaderView*, intptr_t, QEvent*);
+void miqt_exec_callback_QHeaderView_PaintEvent(QHeaderView*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QHeaderView_MousePressEvent(QHeaderView*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QHeaderView_MouseMoveEvent(QHeaderView*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QHeaderView_MouseReleaseEvent(QHeaderView*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QHeaderView_MouseDoubleClickEvent(QHeaderView*, intptr_t, QMouseEvent*);
+bool miqt_exec_callback_QHeaderView_ViewportEvent(QHeaderView*, intptr_t, QEvent*);
+void miqt_exec_callback_QHeaderView_PaintSection(const QHeaderView*, intptr_t, QPainter*, QRect*, int);
+QSize* miqt_exec_callback_QHeaderView_SectionSizeFromContents(const QHeaderView*, intptr_t, int);
+int miqt_exec_callback_QHeaderView_HorizontalOffset(const QHeaderView*, intptr_t);
+int miqt_exec_callback_QHeaderView_VerticalOffset(const QHeaderView*, intptr_t);
+void miqt_exec_callback_QHeaderView_UpdateGeometries(QHeaderView*, intptr_t);
+void miqt_exec_callback_QHeaderView_ScrollContentsBy(QHeaderView*, intptr_t, int, int);
+void miqt_exec_callback_QHeaderView_DataChanged(QHeaderView*, intptr_t, QModelIndex*, QModelIndex*, struct miqt_array /* of int */ );
+void miqt_exec_callback_QHeaderView_RowsInserted(QHeaderView*, intptr_t, QModelIndex*, int, int);
+QRect* miqt_exec_callback_QHeaderView_VisualRect(const QHeaderView*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QHeaderView_ScrollTo(QHeaderView*, intptr_t, QModelIndex*, int);
+QModelIndex* miqt_exec_callback_QHeaderView_IndexAt(const QHeaderView*, intptr_t, QPoint*);
+bool miqt_exec_callback_QHeaderView_IsIndexHidden(const QHeaderView*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QHeaderView_MoveCursor(QHeaderView*, intptr_t, int, int);
+void miqt_exec_callback_QHeaderView_SetSelection(QHeaderView*, intptr_t, QRect*, int);
+QRegion* miqt_exec_callback_QHeaderView_VisualRegionForSelection(const QHeaderView*, intptr_t, QItemSelection*);
+void miqt_exec_callback_QHeaderView_SetSelectionModel(QHeaderView*, intptr_t, QItemSelectionModel*);
+void miqt_exec_callback_QHeaderView_KeyboardSearch(QHeaderView*, intptr_t, struct miqt_string);
+int miqt_exec_callback_QHeaderView_SizeHintForRow(const QHeaderView*, intptr_t, int);
+int miqt_exec_callback_QHeaderView_SizeHintForColumn(const QHeaderView*, intptr_t, int);
+QVariant* miqt_exec_callback_QHeaderView_InputMethodQuery(const QHeaderView*, intptr_t, int);
+void miqt_exec_callback_QHeaderView_SetRootIndex(QHeaderView*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QHeaderView_SelectAll(QHeaderView*, intptr_t);
+void miqt_exec_callback_QHeaderView_RowsAboutToBeRemoved(QHeaderView*, intptr_t, QModelIndex*, int, int);
+void miqt_exec_callback_QHeaderView_SelectionChanged(QHeaderView*, intptr_t, QItemSelection*, QItemSelection*);
+void miqt_exec_callback_QHeaderView_UpdateEditorData(QHeaderView*, intptr_t);
+void miqt_exec_callback_QHeaderView_UpdateEditorGeometries(QHeaderView*, intptr_t);
+void miqt_exec_callback_QHeaderView_VerticalScrollbarAction(QHeaderView*, intptr_t, int);
+void miqt_exec_callback_QHeaderView_HorizontalScrollbarAction(QHeaderView*, intptr_t, int);
+void miqt_exec_callback_QHeaderView_VerticalScrollbarValueChanged(QHeaderView*, intptr_t, int);
+void miqt_exec_callback_QHeaderView_HorizontalScrollbarValueChanged(QHeaderView*, intptr_t, int);
+void miqt_exec_callback_QHeaderView_CloseEditor(QHeaderView*, intptr_t, QWidget*, int);
+void miqt_exec_callback_QHeaderView_CommitData(QHeaderView*, intptr_t, QWidget*);
+void miqt_exec_callback_QHeaderView_EditorDestroyed(QHeaderView*, intptr_t, QObject*);
+struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QHeaderView_SelectedIndexes(const QHeaderView*, intptr_t);
+bool miqt_exec_callback_QHeaderView_Edit2(QHeaderView*, intptr_t, QModelIndex*, int, QEvent*);
+int miqt_exec_callback_QHeaderView_SelectionCommand(const QHeaderView*, intptr_t, QModelIndex*, QEvent*);
+void miqt_exec_callback_QHeaderView_StartDrag(QHeaderView*, intptr_t, int);
+QStyleOptionViewItem* miqt_exec_callback_QHeaderView_ViewOptions(const QHeaderView*, intptr_t);
+bool miqt_exec_callback_QHeaderView_FocusNextPrevChild(QHeaderView*, intptr_t, bool);
+void miqt_exec_callback_QHeaderView_DragEnterEvent(QHeaderView*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QHeaderView_DragMoveEvent(QHeaderView*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QHeaderView_DragLeaveEvent(QHeaderView*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QHeaderView_DropEvent(QHeaderView*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QHeaderView_FocusInEvent(QHeaderView*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QHeaderView_FocusOutEvent(QHeaderView*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QHeaderView_KeyPressEvent(QHeaderView*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QHeaderView_ResizeEvent(QHeaderView*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QHeaderView_TimerEvent(QHeaderView*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QHeaderView_InputMethodEvent(QHeaderView*, intptr_t, QInputMethodEvent*);
+bool miqt_exec_callback_QHeaderView_EventFilter(QHeaderView*, intptr_t, QObject*, QEvent*);
+QSize* miqt_exec_callback_QHeaderView_ViewportSizeHint(const QHeaderView*, intptr_t);
+QSize* miqt_exec_callback_QHeaderView_MinimumSizeHint(const QHeaderView*, intptr_t);
+void miqt_exec_callback_QHeaderView_SetupViewport(QHeaderView*, intptr_t, QWidget*);
+void miqt_exec_callback_QHeaderView_WheelEvent(QHeaderView*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QHeaderView_ContextMenuEvent(QHeaderView*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QHeaderView_ChangeEvent(QHeaderView*, intptr_t, QEvent*);
+int miqt_exec_callback_QHeaderView_DevType(const QHeaderView*, intptr_t);
+int miqt_exec_callback_QHeaderView_HeightForWidth(const QHeaderView*, intptr_t, int);
+bool miqt_exec_callback_QHeaderView_HasHeightForWidth(const QHeaderView*, intptr_t);
+QPaintEngine* miqt_exec_callback_QHeaderView_PaintEngine(const QHeaderView*, intptr_t);
+void miqt_exec_callback_QHeaderView_KeyReleaseEvent(QHeaderView*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QHeaderView_EnterEvent(QHeaderView*, intptr_t, QEvent*);
+void miqt_exec_callback_QHeaderView_LeaveEvent(QHeaderView*, intptr_t, QEvent*);
+void miqt_exec_callback_QHeaderView_MoveEvent(QHeaderView*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QHeaderView_CloseEvent(QHeaderView*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QHeaderView_TabletEvent(QHeaderView*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QHeaderView_ActionEvent(QHeaderView*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QHeaderView_ShowEvent(QHeaderView*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QHeaderView_HideEvent(QHeaderView*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QHeaderView_NativeEvent(QHeaderView*, intptr_t, struct miqt_string, void*, long*);
+int miqt_exec_callback_QHeaderView_Metric(const QHeaderView*, intptr_t, int);
+void miqt_exec_callback_QHeaderView_InitPainter(const QHeaderView*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QHeaderView_Redirected(const QHeaderView*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QHeaderView_SharedPainter(const QHeaderView*, intptr_t);
+void miqt_exec_callback_QHeaderView_ChildEvent(QHeaderView*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QHeaderView_CustomEvent(QHeaderView*, intptr_t, QEvent*);
+void miqt_exec_callback_QHeaderView_ConnectNotify(QHeaderView*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QHeaderView_DisconnectNotify(QHeaderView*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -199,7 +199,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QHeaderView_SizeHint(const_cast<MiqtVirtualQHeaderView*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QHeaderView_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -492,7 +492,7 @@ public:
 		QRect* sigval2 = const_cast<QRect*>(&rect_ret);
 		int sigval3 = logicalIndex;
 
-		miqt_exec_callback_QHeaderView_PaintSection(const_cast<MiqtVirtualQHeaderView*>(this), handle__PaintSection, sigval1, sigval2, sigval3);
+		miqt_exec_callback_QHeaderView_PaintSection(this, handle__PaintSection, sigval1, sigval2, sigval3);
 
 		
 	}
@@ -515,7 +515,7 @@ public:
 		
 		int sigval1 = logicalIndex;
 
-		QSize* callback_return_value = miqt_exec_callback_QHeaderView_SectionSizeFromContents(const_cast<MiqtVirtualQHeaderView*>(this), handle__SectionSizeFromContents, sigval1);
+		QSize* callback_return_value = miqt_exec_callback_QHeaderView_SectionSizeFromContents(this, handle__SectionSizeFromContents, sigval1);
 
 		return *callback_return_value;
 	}
@@ -537,7 +537,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QHeaderView_HorizontalOffset(const_cast<MiqtVirtualQHeaderView*>(this), handle__HorizontalOffset);
+		int callback_return_value = miqt_exec_callback_QHeaderView_HorizontalOffset(this, handle__HorizontalOffset);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -559,7 +559,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QHeaderView_VerticalOffset(const_cast<MiqtVirtualQHeaderView*>(this), handle__VerticalOffset);
+		int callback_return_value = miqt_exec_callback_QHeaderView_VerticalOffset(this, handle__VerticalOffset);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -705,7 +705,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		QRect* callback_return_value = miqt_exec_callback_QHeaderView_VisualRect(const_cast<MiqtVirtualQHeaderView*>(this), handle__VisualRect, sigval1);
+		QRect* callback_return_value = miqt_exec_callback_QHeaderView_VisualRect(this, handle__VisualRect, sigval1);
 
 		return *callback_return_value;
 	}
@@ -758,7 +758,7 @@ public:
 		// Cast returned reference into pointer
 		QPoint* sigval1 = const_cast<QPoint*>(&p_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QHeaderView_IndexAt(const_cast<MiqtVirtualQHeaderView*>(this), handle__IndexAt, sigval1);
+		QModelIndex* callback_return_value = miqt_exec_callback_QHeaderView_IndexAt(this, handle__IndexAt, sigval1);
 
 		return *callback_return_value;
 	}
@@ -783,7 +783,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		bool callback_return_value = miqt_exec_callback_QHeaderView_IsIndexHidden(const_cast<MiqtVirtualQHeaderView*>(this), handle__IsIndexHidden, sigval1);
+		bool callback_return_value = miqt_exec_callback_QHeaderView_IsIndexHidden(this, handle__IsIndexHidden, sigval1);
 
 		return callback_return_value;
 	}
@@ -862,7 +862,7 @@ public:
 		// Cast returned reference into pointer
 		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selection_ret);
 
-		QRegion* callback_return_value = miqt_exec_callback_QHeaderView_VisualRegionForSelection(const_cast<MiqtVirtualQHeaderView*>(this), handle__VisualRegionForSelection, sigval1);
+		QRegion* callback_return_value = miqt_exec_callback_QHeaderView_VisualRegionForSelection(this, handle__VisualRegionForSelection, sigval1);
 
 		return *callback_return_value;
 	}
@@ -941,7 +941,7 @@ public:
 		
 		int sigval1 = row;
 
-		int callback_return_value = miqt_exec_callback_QHeaderView_SizeHintForRow(const_cast<MiqtVirtualQHeaderView*>(this), handle__SizeHintForRow, sigval1);
+		int callback_return_value = miqt_exec_callback_QHeaderView_SizeHintForRow(this, handle__SizeHintForRow, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -964,7 +964,7 @@ public:
 		
 		int sigval1 = column;
 
-		int callback_return_value = miqt_exec_callback_QHeaderView_SizeHintForColumn(const_cast<MiqtVirtualQHeaderView*>(this), handle__SizeHintForColumn, sigval1);
+		int callback_return_value = miqt_exec_callback_QHeaderView_SizeHintForColumn(this, handle__SizeHintForColumn, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -988,7 +988,7 @@ public:
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QHeaderView_InputMethodQuery(const_cast<MiqtVirtualQHeaderView*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QHeaderView_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}
@@ -1332,7 +1332,7 @@ public:
 		}
 		
 
-		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QHeaderView_SelectedIndexes(const_cast<MiqtVirtualQHeaderView*>(this), handle__SelectedIndexes);
+		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QHeaderView_SelectedIndexes(this, handle__SelectedIndexes);
 		QModelIndexList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		QModelIndex** callback_return_value_arr = static_cast<QModelIndex**>(callback_return_value.data);
@@ -1401,7 +1401,7 @@ public:
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		QEvent* sigval2 = (QEvent*) event;
 
-		int callback_return_value = miqt_exec_callback_QHeaderView_SelectionCommand(const_cast<MiqtVirtualQHeaderView*>(this), handle__SelectionCommand, sigval1, sigval2);
+		int callback_return_value = miqt_exec_callback_QHeaderView_SelectionCommand(this, handle__SelectionCommand, sigval1, sigval2);
 
 		return static_cast<QItemSelectionModel::SelectionFlags>(callback_return_value);
 	}
@@ -1449,7 +1449,7 @@ public:
 		}
 		
 
-		QStyleOptionViewItem* callback_return_value = miqt_exec_callback_QHeaderView_ViewOptions(const_cast<MiqtVirtualQHeaderView*>(this), handle__ViewOptions);
+		QStyleOptionViewItem* callback_return_value = miqt_exec_callback_QHeaderView_ViewOptions(this, handle__ViewOptions);
 
 		return *callback_return_value;
 	}
@@ -1758,7 +1758,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QHeaderView_ViewportSizeHint(const_cast<MiqtVirtualQHeaderView*>(this), handle__ViewportSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QHeaderView_ViewportSizeHint(this, handle__ViewportSizeHint);
 
 		return *callback_return_value;
 	}
@@ -1780,7 +1780,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QHeaderView_MinimumSizeHint(const_cast<MiqtVirtualQHeaderView*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QHeaderView_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -1898,7 +1898,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QHeaderView_DevType(const_cast<MiqtVirtualQHeaderView*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QHeaderView_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1921,7 +1921,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QHeaderView_HeightForWidth(const_cast<MiqtVirtualQHeaderView*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QHeaderView_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1943,7 +1943,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QHeaderView_HasHeightForWidth(const_cast<MiqtVirtualQHeaderView*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QHeaderView_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -1965,7 +1965,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QHeaderView_PaintEngine(const_cast<MiqtVirtualQHeaderView*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QHeaderView_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -2236,7 +2236,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QHeaderView_Metric(const_cast<MiqtVirtualQHeaderView*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QHeaderView_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -2260,7 +2260,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QHeaderView_InitPainter(const_cast<MiqtVirtualQHeaderView*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QHeaderView_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -2283,7 +2283,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QHeaderView_Redirected(const_cast<MiqtVirtualQHeaderView*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QHeaderView_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -2305,7 +2305,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QHeaderView_SharedPainter(const_cast<MiqtVirtualQHeaderView*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QHeaderView_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}

@@ -16,14 +16,14 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QWebEngineUrlSchemeHandler_RequestStarted(void*, intptr_t, QWebEngineUrlRequestJob*);
-bool miqt_exec_callback_QWebEngineUrlSchemeHandler_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QWebEngineUrlSchemeHandler_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QWebEngineUrlSchemeHandler_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QWebEngineUrlSchemeHandler_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QWebEngineUrlSchemeHandler_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QWebEngineUrlSchemeHandler_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QWebEngineUrlSchemeHandler_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QWebEngineUrlSchemeHandler_RequestStarted(QWebEngineUrlSchemeHandler*, intptr_t, QWebEngineUrlRequestJob*);
+bool miqt_exec_callback_QWebEngineUrlSchemeHandler_Event(QWebEngineUrlSchemeHandler*, intptr_t, QEvent*);
+bool miqt_exec_callback_QWebEngineUrlSchemeHandler_EventFilter(QWebEngineUrlSchemeHandler*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QWebEngineUrlSchemeHandler_TimerEvent(QWebEngineUrlSchemeHandler*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QWebEngineUrlSchemeHandler_ChildEvent(QWebEngineUrlSchemeHandler*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QWebEngineUrlSchemeHandler_CustomEvent(QWebEngineUrlSchemeHandler*, intptr_t, QEvent*);
+void miqt_exec_callback_QWebEngineUrlSchemeHandler_ConnectNotify(QWebEngineUrlSchemeHandler*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QWebEngineUrlSchemeHandler_DisconnectNotify(QWebEngineUrlSchemeHandler*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

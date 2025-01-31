@@ -41,53 +41,53 @@
 extern "C" {
 #endif
 
-QSize* miqt_exec_callback_QSizeGrip_SizeHint(void*, intptr_t);
-void miqt_exec_callback_QSizeGrip_SetVisible(void*, intptr_t, bool);
-void miqt_exec_callback_QSizeGrip_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QSizeGrip_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QSizeGrip_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QSizeGrip_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QSizeGrip_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QSizeGrip_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QSizeGrip_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QSizeGrip_EventFilter(void*, intptr_t, QObject*, QEvent*);
-bool miqt_exec_callback_QSizeGrip_Event(void*, intptr_t, QEvent*);
-int miqt_exec_callback_QSizeGrip_DevType(void*, intptr_t);
-QSize* miqt_exec_callback_QSizeGrip_MinimumSizeHint(void*, intptr_t);
-int miqt_exec_callback_QSizeGrip_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QSizeGrip_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QSizeGrip_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QSizeGrip_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QSizeGrip_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QSizeGrip_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QSizeGrip_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QSizeGrip_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QSizeGrip_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QSizeGrip_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSizeGrip_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSizeGrip_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QSizeGrip_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QSizeGrip_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QSizeGrip_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QSizeGrip_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QSizeGrip_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QSizeGrip_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QSizeGrip_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QSizeGrip_DropEvent(void*, intptr_t, QDropEvent*);
-bool miqt_exec_callback_QSizeGrip_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-void miqt_exec_callback_QSizeGrip_ChangeEvent(void*, intptr_t, QEvent*);
-int miqt_exec_callback_QSizeGrip_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QSizeGrip_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QSizeGrip_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QSizeGrip_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QSizeGrip_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QSizeGrip_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QSizeGrip_FocusNextPrevChild(void*, intptr_t, bool);
-void miqt_exec_callback_QSizeGrip_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QSizeGrip_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QSizeGrip_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSizeGrip_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QSizeGrip_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QSize* miqt_exec_callback_QSizeGrip_SizeHint(const QSizeGrip*, intptr_t);
+void miqt_exec_callback_QSizeGrip_SetVisible(QSizeGrip*, intptr_t, bool);
+void miqt_exec_callback_QSizeGrip_PaintEvent(QSizeGrip*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QSizeGrip_MousePressEvent(QSizeGrip*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSizeGrip_MouseMoveEvent(QSizeGrip*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSizeGrip_MouseReleaseEvent(QSizeGrip*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSizeGrip_MoveEvent(QSizeGrip*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QSizeGrip_ShowEvent(QSizeGrip*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QSizeGrip_HideEvent(QSizeGrip*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QSizeGrip_EventFilter(QSizeGrip*, intptr_t, QObject*, QEvent*);
+bool miqt_exec_callback_QSizeGrip_Event(QSizeGrip*, intptr_t, QEvent*);
+int miqt_exec_callback_QSizeGrip_DevType(const QSizeGrip*, intptr_t);
+QSize* miqt_exec_callback_QSizeGrip_MinimumSizeHint(const QSizeGrip*, intptr_t);
+int miqt_exec_callback_QSizeGrip_HeightForWidth(const QSizeGrip*, intptr_t, int);
+bool miqt_exec_callback_QSizeGrip_HasHeightForWidth(const QSizeGrip*, intptr_t);
+QPaintEngine* miqt_exec_callback_QSizeGrip_PaintEngine(const QSizeGrip*, intptr_t);
+void miqt_exec_callback_QSizeGrip_MouseDoubleClickEvent(QSizeGrip*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSizeGrip_WheelEvent(QSizeGrip*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QSizeGrip_KeyPressEvent(QSizeGrip*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QSizeGrip_KeyReleaseEvent(QSizeGrip*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QSizeGrip_FocusInEvent(QSizeGrip*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QSizeGrip_FocusOutEvent(QSizeGrip*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QSizeGrip_EnterEvent(QSizeGrip*, intptr_t, QEvent*);
+void miqt_exec_callback_QSizeGrip_LeaveEvent(QSizeGrip*, intptr_t, QEvent*);
+void miqt_exec_callback_QSizeGrip_ResizeEvent(QSizeGrip*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QSizeGrip_CloseEvent(QSizeGrip*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QSizeGrip_ContextMenuEvent(QSizeGrip*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QSizeGrip_TabletEvent(QSizeGrip*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QSizeGrip_ActionEvent(QSizeGrip*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QSizeGrip_DragEnterEvent(QSizeGrip*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QSizeGrip_DragMoveEvent(QSizeGrip*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QSizeGrip_DragLeaveEvent(QSizeGrip*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QSizeGrip_DropEvent(QSizeGrip*, intptr_t, QDropEvent*);
+bool miqt_exec_callback_QSizeGrip_NativeEvent(QSizeGrip*, intptr_t, struct miqt_string, void*, long*);
+void miqt_exec_callback_QSizeGrip_ChangeEvent(QSizeGrip*, intptr_t, QEvent*);
+int miqt_exec_callback_QSizeGrip_Metric(const QSizeGrip*, intptr_t, int);
+void miqt_exec_callback_QSizeGrip_InitPainter(const QSizeGrip*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QSizeGrip_Redirected(const QSizeGrip*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QSizeGrip_SharedPainter(const QSizeGrip*, intptr_t);
+void miqt_exec_callback_QSizeGrip_InputMethodEvent(QSizeGrip*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QSizeGrip_InputMethodQuery(const QSizeGrip*, intptr_t, int);
+bool miqt_exec_callback_QSizeGrip_FocusNextPrevChild(QSizeGrip*, intptr_t, bool);
+void miqt_exec_callback_QSizeGrip_TimerEvent(QSizeGrip*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSizeGrip_ChildEvent(QSizeGrip*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QSizeGrip_CustomEvent(QSizeGrip*, intptr_t, QEvent*);
+void miqt_exec_callback_QSizeGrip_ConnectNotify(QSizeGrip*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSizeGrip_DisconnectNotify(QSizeGrip*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -109,7 +109,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QSizeGrip_SizeHint(const_cast<MiqtVirtualQSizeGrip*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QSizeGrip_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -370,7 +370,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QSizeGrip_DevType(const_cast<MiqtVirtualQSizeGrip*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QSizeGrip_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -392,7 +392,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QSizeGrip_MinimumSizeHint(const_cast<MiqtVirtualQSizeGrip*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QSizeGrip_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -415,7 +415,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QSizeGrip_HeightForWidth(const_cast<MiqtVirtualQSizeGrip*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QSizeGrip_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -437,7 +437,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QSizeGrip_HasHeightForWidth(const_cast<MiqtVirtualQSizeGrip*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QSizeGrip_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -459,7 +459,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QSizeGrip_PaintEngine(const_cast<MiqtVirtualQSizeGrip*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QSizeGrip_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -946,7 +946,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QSizeGrip_Metric(const_cast<MiqtVirtualQSizeGrip*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QSizeGrip_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -970,7 +970,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QSizeGrip_InitPainter(const_cast<MiqtVirtualQSizeGrip*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QSizeGrip_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -993,7 +993,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QSizeGrip_Redirected(const_cast<MiqtVirtualQSizeGrip*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QSizeGrip_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1015,7 +1015,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QSizeGrip_SharedPainter(const_cast<MiqtVirtualQSizeGrip*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QSizeGrip_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -1063,7 +1063,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QSizeGrip_InputMethodQuery(const_cast<MiqtVirtualQSizeGrip*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QSizeGrip_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}

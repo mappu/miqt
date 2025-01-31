@@ -14,16 +14,16 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QsciMacro_Play(void*, intptr_t);
-void miqt_exec_callback_QsciMacro_StartRecording(void*, intptr_t);
-void miqt_exec_callback_QsciMacro_EndRecording(void*, intptr_t);
-bool miqt_exec_callback_QsciMacro_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QsciMacro_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QsciMacro_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QsciMacro_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QsciMacro_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QsciMacro_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QsciMacro_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QsciMacro_Play(QsciMacro*, intptr_t);
+void miqt_exec_callback_QsciMacro_StartRecording(QsciMacro*, intptr_t);
+void miqt_exec_callback_QsciMacro_EndRecording(QsciMacro*, intptr_t);
+bool miqt_exec_callback_QsciMacro_Event(QsciMacro*, intptr_t, QEvent*);
+bool miqt_exec_callback_QsciMacro_EventFilter(QsciMacro*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QsciMacro_TimerEvent(QsciMacro*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QsciMacro_ChildEvent(QsciMacro*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QsciMacro_CustomEvent(QsciMacro*, intptr_t, QEvent*);
+void miqt_exec_callback_QsciMacro_ConnectNotify(QsciMacro*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QsciMacro_DisconnectNotify(QsciMacro*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

@@ -10,15 +10,15 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QGraphicsLayout_GetContentsMargins(void*, intptr_t, double*, double*, double*, double*);
-void miqt_exec_callback_QGraphicsLayout_Invalidate(void*, intptr_t);
-void miqt_exec_callback_QGraphicsLayout_UpdateGeometry(void*, intptr_t);
-void miqt_exec_callback_QGraphicsLayout_WidgetEvent(void*, intptr_t, QEvent*);
-int miqt_exec_callback_QGraphicsLayout_Count(void*, intptr_t);
-QGraphicsLayoutItem* miqt_exec_callback_QGraphicsLayout_ItemAt(void*, intptr_t, int);
-void miqt_exec_callback_QGraphicsLayout_RemoveAt(void*, intptr_t, int);
-void miqt_exec_callback_QGraphicsLayout_SetGeometry(void*, intptr_t, QRectF*);
-QSizeF* miqt_exec_callback_QGraphicsLayout_SizeHint(void*, intptr_t, int, QSizeF*);
+void miqt_exec_callback_QGraphicsLayout_GetContentsMargins(const QGraphicsLayout*, intptr_t, double*, double*, double*, double*);
+void miqt_exec_callback_QGraphicsLayout_Invalidate(QGraphicsLayout*, intptr_t);
+void miqt_exec_callback_QGraphicsLayout_UpdateGeometry(QGraphicsLayout*, intptr_t);
+void miqt_exec_callback_QGraphicsLayout_WidgetEvent(QGraphicsLayout*, intptr_t, QEvent*);
+int miqt_exec_callback_QGraphicsLayout_Count(const QGraphicsLayout*, intptr_t);
+QGraphicsLayoutItem* miqt_exec_callback_QGraphicsLayout_ItemAt(const QGraphicsLayout*, intptr_t, int);
+void miqt_exec_callback_QGraphicsLayout_RemoveAt(QGraphicsLayout*, intptr_t, int);
+void miqt_exec_callback_QGraphicsLayout_SetGeometry(QGraphicsLayout*, intptr_t, QRectF*);
+QSizeF* miqt_exec_callback_QGraphicsLayout_SizeHint(const QGraphicsLayout*, intptr_t, int, QSizeF*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -50,7 +50,7 @@ public:
 		qreal* bottom_ret = bottom;
 		double* sigval4 = static_cast<double*>(bottom_ret);
 
-		miqt_exec_callback_QGraphicsLayout_GetContentsMargins(const_cast<MiqtVirtualQGraphicsLayout*>(this), handle__GetContentsMargins, sigval1, sigval2, sigval3, sigval4);
+		miqt_exec_callback_QGraphicsLayout_GetContentsMargins(this, handle__GetContentsMargins, sigval1, sigval2, sigval3, sigval4);
 
 		
 	}
@@ -142,7 +142,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QGraphicsLayout_Count(const_cast<MiqtVirtualQGraphicsLayout*>(this), handle__Count);
+		int callback_return_value = miqt_exec_callback_QGraphicsLayout_Count(this, handle__Count);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -158,7 +158,7 @@ public:
 		
 		int sigval1 = i;
 
-		QGraphicsLayoutItem* callback_return_value = miqt_exec_callback_QGraphicsLayout_ItemAt(const_cast<MiqtVirtualQGraphicsLayout*>(this), handle__ItemAt, sigval1);
+		QGraphicsLayoutItem* callback_return_value = miqt_exec_callback_QGraphicsLayout_ItemAt(this, handle__ItemAt, sigval1);
 
 		return callback_return_value;
 	}
@@ -220,7 +220,7 @@ public:
 		// Cast returned reference into pointer
 		QSizeF* sigval2 = const_cast<QSizeF*>(&constraint_ret);
 
-		QSizeF* callback_return_value = miqt_exec_callback_QGraphicsLayout_SizeHint(const_cast<MiqtVirtualQGraphicsLayout*>(this), handle__SizeHint, sigval1, sigval2);
+		QSizeF* callback_return_value = miqt_exec_callback_QGraphicsLayout_SizeHint(this, handle__SizeHint, sigval1, sigval2);
 
 		return *callback_return_value;
 	}

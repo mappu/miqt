@@ -14,15 +14,15 @@
 extern "C" {
 #endif
 
-int miqt_exec_callback_QScriptClass_QueryProperty(void*, intptr_t, QScriptValue*, QScriptString*, int, unsigned int*);
-QScriptValue* miqt_exec_callback_QScriptClass_Property(void*, intptr_t, QScriptValue*, QScriptString*, unsigned int);
-void miqt_exec_callback_QScriptClass_SetProperty(void*, intptr_t, QScriptValue*, QScriptString*, unsigned int, QScriptValue*);
-int miqt_exec_callback_QScriptClass_PropertyFlags(void*, intptr_t, QScriptValue*, QScriptString*, unsigned int);
-QScriptClassPropertyIterator* miqt_exec_callback_QScriptClass_NewIterator(void*, intptr_t, QScriptValue*);
-QScriptValue* miqt_exec_callback_QScriptClass_Prototype(void*, intptr_t);
-struct miqt_string miqt_exec_callback_QScriptClass_Name(void*, intptr_t);
-bool miqt_exec_callback_QScriptClass_SupportsExtension(void*, intptr_t, int);
-QVariant* miqt_exec_callback_QScriptClass_Extension(void*, intptr_t, int, QVariant*);
+int miqt_exec_callback_QScriptClass_QueryProperty(QScriptClass*, intptr_t, QScriptValue*, QScriptString*, int, unsigned int*);
+QScriptValue* miqt_exec_callback_QScriptClass_Property(QScriptClass*, intptr_t, QScriptValue*, QScriptString*, unsigned int);
+void miqt_exec_callback_QScriptClass_SetProperty(QScriptClass*, intptr_t, QScriptValue*, QScriptString*, unsigned int, QScriptValue*);
+int miqt_exec_callback_QScriptClass_PropertyFlags(QScriptClass*, intptr_t, QScriptValue*, QScriptString*, unsigned int);
+QScriptClassPropertyIterator* miqt_exec_callback_QScriptClass_NewIterator(QScriptClass*, intptr_t, QScriptValue*);
+QScriptValue* miqt_exec_callback_QScriptClass_Prototype(const QScriptClass*, intptr_t);
+struct miqt_string miqt_exec_callback_QScriptClass_Name(const QScriptClass*, intptr_t);
+bool miqt_exec_callback_QScriptClass_SupportsExtension(const QScriptClass*, intptr_t, int);
+QVariant* miqt_exec_callback_QScriptClass_Extension(QScriptClass*, intptr_t, int, QVariant*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -197,7 +197,7 @@ public:
 		}
 		
 
-		QScriptValue* callback_return_value = miqt_exec_callback_QScriptClass_Prototype(const_cast<MiqtVirtualQScriptClass*>(this), handle__Prototype);
+		QScriptValue* callback_return_value = miqt_exec_callback_QScriptClass_Prototype(this, handle__Prototype);
 
 		return *callback_return_value;
 	}
@@ -219,7 +219,7 @@ public:
 		}
 		
 
-		struct miqt_string callback_return_value = miqt_exec_callback_QScriptClass_Name(const_cast<MiqtVirtualQScriptClass*>(this), handle__Name);
+		struct miqt_string callback_return_value = miqt_exec_callback_QScriptClass_Name(this, handle__Name);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
 
 		return callback_return_value_QString;
@@ -251,7 +251,7 @@ public:
 		QScriptClass::Extension extension_ret = extension;
 		int sigval1 = static_cast<int>(extension_ret);
 
-		bool callback_return_value = miqt_exec_callback_QScriptClass_SupportsExtension(const_cast<MiqtVirtualQScriptClass*>(this), handle__SupportsExtension, sigval1);
+		bool callback_return_value = miqt_exec_callback_QScriptClass_SupportsExtension(this, handle__SupportsExtension, sigval1);
 
 		return callback_return_value;
 	}

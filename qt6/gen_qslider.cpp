@@ -44,55 +44,55 @@
 extern "C" {
 #endif
 
-QSize* miqt_exec_callback_QSlider_SizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QSlider_MinimumSizeHint(void*, intptr_t);
-bool miqt_exec_callback_QSlider_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSlider_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QSlider_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QSlider_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QSlider_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QSlider_InitStyleOption(void*, intptr_t, QStyleOptionSlider*);
-void miqt_exec_callback_QSlider_SliderChange(void*, intptr_t, int);
-void miqt_exec_callback_QSlider_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QSlider_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QSlider_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QSlider_ChangeEvent(void*, intptr_t, QEvent*);
-int miqt_exec_callback_QSlider_DevType(void*, intptr_t);
-void miqt_exec_callback_QSlider_SetVisible(void*, intptr_t, bool);
-int miqt_exec_callback_QSlider_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QSlider_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QSlider_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QSlider_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QSlider_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QSlider_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QSlider_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QSlider_EnterEvent(void*, intptr_t, QEnterEvent*);
-void miqt_exec_callback_QSlider_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSlider_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QSlider_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QSlider_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QSlider_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QSlider_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QSlider_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QSlider_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QSlider_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QSlider_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QSlider_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QSlider_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QSlider_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QSlider_NativeEvent(void*, intptr_t, struct miqt_string, void*, intptr_t*);
-int miqt_exec_callback_QSlider_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QSlider_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QSlider_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QSlider_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QSlider_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QSlider_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QSlider_FocusNextPrevChild(void*, intptr_t, bool);
-bool miqt_exec_callback_QSlider_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QSlider_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QSlider_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSlider_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QSlider_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QSize* miqt_exec_callback_QSlider_SizeHint(const QSlider*, intptr_t);
+QSize* miqt_exec_callback_QSlider_MinimumSizeHint(const QSlider*, intptr_t);
+bool miqt_exec_callback_QSlider_Event(QSlider*, intptr_t, QEvent*);
+void miqt_exec_callback_QSlider_PaintEvent(QSlider*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QSlider_MousePressEvent(QSlider*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSlider_MouseReleaseEvent(QSlider*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSlider_MouseMoveEvent(QSlider*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSlider_InitStyleOption(const QSlider*, intptr_t, QStyleOptionSlider*);
+void miqt_exec_callback_QSlider_SliderChange(QSlider*, intptr_t, int);
+void miqt_exec_callback_QSlider_KeyPressEvent(QSlider*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QSlider_TimerEvent(QSlider*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSlider_WheelEvent(QSlider*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QSlider_ChangeEvent(QSlider*, intptr_t, QEvent*);
+int miqt_exec_callback_QSlider_DevType(const QSlider*, intptr_t);
+void miqt_exec_callback_QSlider_SetVisible(QSlider*, intptr_t, bool);
+int miqt_exec_callback_QSlider_HeightForWidth(const QSlider*, intptr_t, int);
+bool miqt_exec_callback_QSlider_HasHeightForWidth(const QSlider*, intptr_t);
+QPaintEngine* miqt_exec_callback_QSlider_PaintEngine(const QSlider*, intptr_t);
+void miqt_exec_callback_QSlider_MouseDoubleClickEvent(QSlider*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSlider_KeyReleaseEvent(QSlider*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QSlider_FocusInEvent(QSlider*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QSlider_FocusOutEvent(QSlider*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QSlider_EnterEvent(QSlider*, intptr_t, QEnterEvent*);
+void miqt_exec_callback_QSlider_LeaveEvent(QSlider*, intptr_t, QEvent*);
+void miqt_exec_callback_QSlider_MoveEvent(QSlider*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QSlider_ResizeEvent(QSlider*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QSlider_CloseEvent(QSlider*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QSlider_ContextMenuEvent(QSlider*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QSlider_TabletEvent(QSlider*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QSlider_ActionEvent(QSlider*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QSlider_DragEnterEvent(QSlider*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QSlider_DragMoveEvent(QSlider*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QSlider_DragLeaveEvent(QSlider*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QSlider_DropEvent(QSlider*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QSlider_ShowEvent(QSlider*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QSlider_HideEvent(QSlider*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QSlider_NativeEvent(QSlider*, intptr_t, struct miqt_string, void*, intptr_t*);
+int miqt_exec_callback_QSlider_Metric(const QSlider*, intptr_t, int);
+void miqt_exec_callback_QSlider_InitPainter(const QSlider*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QSlider_Redirected(const QSlider*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QSlider_SharedPainter(const QSlider*, intptr_t);
+void miqt_exec_callback_QSlider_InputMethodEvent(QSlider*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QSlider_InputMethodQuery(const QSlider*, intptr_t, int);
+bool miqt_exec_callback_QSlider_FocusNextPrevChild(QSlider*, intptr_t, bool);
+bool miqt_exec_callback_QSlider_EventFilter(QSlider*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QSlider_ChildEvent(QSlider*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QSlider_CustomEvent(QSlider*, intptr_t, QEvent*);
+void miqt_exec_callback_QSlider_ConnectNotify(QSlider*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSlider_DisconnectNotify(QSlider*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -117,7 +117,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QSlider_SizeHint(const_cast<MiqtVirtualQSlider*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QSlider_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -139,7 +139,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QSlider_MinimumSizeHint(const_cast<MiqtVirtualQSlider*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QSlider_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -282,7 +282,7 @@ public:
 		
 		QStyleOptionSlider* sigval1 = option;
 
-		miqt_exec_callback_QSlider_InitStyleOption(const_cast<MiqtVirtualQSlider*>(this), handle__InitStyleOption, sigval1);
+		miqt_exec_callback_QSlider_InitStyleOption(this, handle__InitStyleOption, sigval1);
 
 		
 	}
@@ -425,7 +425,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QSlider_DevType(const_cast<MiqtVirtualQSlider*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QSlider_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -472,7 +472,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QSlider_HeightForWidth(const_cast<MiqtVirtualQSlider*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QSlider_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -494,7 +494,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QSlider_HasHeightForWidth(const_cast<MiqtVirtualQSlider*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QSlider_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -516,7 +516,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QSlider_PaintEngine(const_cast<MiqtVirtualQSlider*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QSlider_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -1004,7 +1004,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QSlider_Metric(const_cast<MiqtVirtualQSlider*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QSlider_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1028,7 +1028,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QSlider_InitPainter(const_cast<MiqtVirtualQSlider*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QSlider_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -1051,7 +1051,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QSlider_Redirected(const_cast<MiqtVirtualQSlider*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QSlider_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1073,7 +1073,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QSlider_SharedPainter(const_cast<MiqtVirtualQSlider*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QSlider_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -1121,7 +1121,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QSlider_InputMethodQuery(const_cast<MiqtVirtualQSlider*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QSlider_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}

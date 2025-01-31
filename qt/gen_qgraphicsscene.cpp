@@ -54,32 +54,32 @@ void miqt_exec_callback_QGraphicsScene_Changed(intptr_t, struct miqt_array /* of
 void miqt_exec_callback_QGraphicsScene_SceneRectChanged(intptr_t, QRectF*);
 void miqt_exec_callback_QGraphicsScene_SelectionChanged(intptr_t);
 void miqt_exec_callback_QGraphicsScene_FocusItemChanged(intptr_t, QGraphicsItem*, QGraphicsItem*, int);
-QVariant* miqt_exec_callback_QGraphicsScene_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QGraphicsScene_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QGraphicsScene_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QGraphicsScene_ContextMenuEvent(void*, intptr_t, QGraphicsSceneContextMenuEvent*);
-void miqt_exec_callback_QGraphicsScene_DragEnterEvent(void*, intptr_t, QGraphicsSceneDragDropEvent*);
-void miqt_exec_callback_QGraphicsScene_DragMoveEvent(void*, intptr_t, QGraphicsSceneDragDropEvent*);
-void miqt_exec_callback_QGraphicsScene_DragLeaveEvent(void*, intptr_t, QGraphicsSceneDragDropEvent*);
-void miqt_exec_callback_QGraphicsScene_DropEvent(void*, intptr_t, QGraphicsSceneDragDropEvent*);
-void miqt_exec_callback_QGraphicsScene_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QGraphicsScene_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QGraphicsScene_HelpEvent(void*, intptr_t, QGraphicsSceneHelpEvent*);
-void miqt_exec_callback_QGraphicsScene_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QGraphicsScene_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QGraphicsScene_MousePressEvent(void*, intptr_t, QGraphicsSceneMouseEvent*);
-void miqt_exec_callback_QGraphicsScene_MouseMoveEvent(void*, intptr_t, QGraphicsSceneMouseEvent*);
-void miqt_exec_callback_QGraphicsScene_MouseReleaseEvent(void*, intptr_t, QGraphicsSceneMouseEvent*);
-void miqt_exec_callback_QGraphicsScene_MouseDoubleClickEvent(void*, intptr_t, QGraphicsSceneMouseEvent*);
-void miqt_exec_callback_QGraphicsScene_WheelEvent(void*, intptr_t, QGraphicsSceneWheelEvent*);
-void miqt_exec_callback_QGraphicsScene_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-void miqt_exec_callback_QGraphicsScene_DrawBackground(void*, intptr_t, QPainter*, QRectF*);
-void miqt_exec_callback_QGraphicsScene_DrawForeground(void*, intptr_t, QPainter*, QRectF*);
-void miqt_exec_callback_QGraphicsScene_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QGraphicsScene_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QGraphicsScene_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QGraphicsScene_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QGraphicsScene_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QVariant* miqt_exec_callback_QGraphicsScene_InputMethodQuery(const QGraphicsScene*, intptr_t, int);
+bool miqt_exec_callback_QGraphicsScene_Event(QGraphicsScene*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGraphicsScene_EventFilter(QGraphicsScene*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QGraphicsScene_ContextMenuEvent(QGraphicsScene*, intptr_t, QGraphicsSceneContextMenuEvent*);
+void miqt_exec_callback_QGraphicsScene_DragEnterEvent(QGraphicsScene*, intptr_t, QGraphicsSceneDragDropEvent*);
+void miqt_exec_callback_QGraphicsScene_DragMoveEvent(QGraphicsScene*, intptr_t, QGraphicsSceneDragDropEvent*);
+void miqt_exec_callback_QGraphicsScene_DragLeaveEvent(QGraphicsScene*, intptr_t, QGraphicsSceneDragDropEvent*);
+void miqt_exec_callback_QGraphicsScene_DropEvent(QGraphicsScene*, intptr_t, QGraphicsSceneDragDropEvent*);
+void miqt_exec_callback_QGraphicsScene_FocusInEvent(QGraphicsScene*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QGraphicsScene_FocusOutEvent(QGraphicsScene*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QGraphicsScene_HelpEvent(QGraphicsScene*, intptr_t, QGraphicsSceneHelpEvent*);
+void miqt_exec_callback_QGraphicsScene_KeyPressEvent(QGraphicsScene*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QGraphicsScene_KeyReleaseEvent(QGraphicsScene*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QGraphicsScene_MousePressEvent(QGraphicsScene*, intptr_t, QGraphicsSceneMouseEvent*);
+void miqt_exec_callback_QGraphicsScene_MouseMoveEvent(QGraphicsScene*, intptr_t, QGraphicsSceneMouseEvent*);
+void miqt_exec_callback_QGraphicsScene_MouseReleaseEvent(QGraphicsScene*, intptr_t, QGraphicsSceneMouseEvent*);
+void miqt_exec_callback_QGraphicsScene_MouseDoubleClickEvent(QGraphicsScene*, intptr_t, QGraphicsSceneMouseEvent*);
+void miqt_exec_callback_QGraphicsScene_WheelEvent(QGraphicsScene*, intptr_t, QGraphicsSceneWheelEvent*);
+void miqt_exec_callback_QGraphicsScene_InputMethodEvent(QGraphicsScene*, intptr_t, QInputMethodEvent*);
+void miqt_exec_callback_QGraphicsScene_DrawBackground(QGraphicsScene*, intptr_t, QPainter*, QRectF*);
+void miqt_exec_callback_QGraphicsScene_DrawForeground(QGraphicsScene*, intptr_t, QPainter*, QRectF*);
+void miqt_exec_callback_QGraphicsScene_TimerEvent(QGraphicsScene*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QGraphicsScene_ChildEvent(QGraphicsScene*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QGraphicsScene_CustomEvent(QGraphicsScene*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsScene_ConnectNotify(QGraphicsScene*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsScene_DisconnectNotify(QGraphicsScene*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -108,7 +108,7 @@ public:
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QGraphicsScene_InputMethodQuery(const_cast<MiqtVirtualQGraphicsScene*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QGraphicsScene_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}

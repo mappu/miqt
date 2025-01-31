@@ -42,14 +42,14 @@ void miqt_exec_callback_QGuiApplication_SaveStateRequest(intptr_t, QSessionManag
 void miqt_exec_callback_QGuiApplication_ApplicationDisplayNameChanged(intptr_t);
 void miqt_exec_callback_QGuiApplication_PaletteChanged(intptr_t, QPalette*);
 void miqt_exec_callback_QGuiApplication_FontChanged(intptr_t, QFont*);
-bool miqt_exec_callback_QGuiApplication_Notify(void*, intptr_t, QObject*, QEvent*);
-bool miqt_exec_callback_QGuiApplication_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QGuiApplication_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QGuiApplication_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QGuiApplication_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QGuiApplication_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QGuiApplication_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QGuiApplication_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QGuiApplication_Notify(QGuiApplication*, intptr_t, QObject*, QEvent*);
+bool miqt_exec_callback_QGuiApplication_Event(QGuiApplication*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGuiApplication_EventFilter(QGuiApplication*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QGuiApplication_TimerEvent(QGuiApplication*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QGuiApplication_ChildEvent(QGuiApplication*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QGuiApplication_CustomEvent(QGuiApplication*, intptr_t, QEvent*);
+void miqt_exec_callback_QGuiApplication_ConnectNotify(QGuiApplication*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGuiApplication_DisconnectNotify(QGuiApplication*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

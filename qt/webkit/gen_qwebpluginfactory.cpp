@@ -21,18 +21,18 @@
 extern "C" {
 #endif
 
-struct miqt_array /* of QWebPluginFactory__Plugin* */  miqt_exec_callback_QWebPluginFactory_Plugins(void*, intptr_t);
-void miqt_exec_callback_QWebPluginFactory_RefreshPlugins(void*, intptr_t);
-QObject* miqt_exec_callback_QWebPluginFactory_Create(void*, intptr_t, struct miqt_string, QUrl*, struct miqt_array /* of struct miqt_string */ , struct miqt_array /* of struct miqt_string */ );
-bool miqt_exec_callback_QWebPluginFactory_Extension(void*, intptr_t, int, QWebPluginFactory__ExtensionOption*, QWebPluginFactory__ExtensionReturn*);
-bool miqt_exec_callback_QWebPluginFactory_SupportsExtension(void*, intptr_t, int);
-bool miqt_exec_callback_QWebPluginFactory_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QWebPluginFactory_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QWebPluginFactory_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QWebPluginFactory_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QWebPluginFactory_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QWebPluginFactory_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QWebPluginFactory_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+struct miqt_array /* of QWebPluginFactory__Plugin* */  miqt_exec_callback_QWebPluginFactory_Plugins(const QWebPluginFactory*, intptr_t);
+void miqt_exec_callback_QWebPluginFactory_RefreshPlugins(QWebPluginFactory*, intptr_t);
+QObject* miqt_exec_callback_QWebPluginFactory_Create(const QWebPluginFactory*, intptr_t, struct miqt_string, QUrl*, struct miqt_array /* of struct miqt_string */ , struct miqt_array /* of struct miqt_string */ );
+bool miqt_exec_callback_QWebPluginFactory_Extension(QWebPluginFactory*, intptr_t, int, QWebPluginFactory__ExtensionOption*, QWebPluginFactory__ExtensionReturn*);
+bool miqt_exec_callback_QWebPluginFactory_SupportsExtension(const QWebPluginFactory*, intptr_t, int);
+bool miqt_exec_callback_QWebPluginFactory_Event(QWebPluginFactory*, intptr_t, QEvent*);
+bool miqt_exec_callback_QWebPluginFactory_EventFilter(QWebPluginFactory*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QWebPluginFactory_TimerEvent(QWebPluginFactory*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QWebPluginFactory_ChildEvent(QWebPluginFactory*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QWebPluginFactory_CustomEvent(QWebPluginFactory*, intptr_t, QEvent*);
+void miqt_exec_callback_QWebPluginFactory_ConnectNotify(QWebPluginFactory*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QWebPluginFactory_DisconnectNotify(QWebPluginFactory*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -55,7 +55,7 @@ public:
 		}
 		
 
-		struct miqt_array /* of QWebPluginFactory__Plugin* */  callback_return_value = miqt_exec_callback_QWebPluginFactory_Plugins(const_cast<MiqtVirtualQWebPluginFactory*>(this), handle__Plugins);
+		struct miqt_array /* of QWebPluginFactory__Plugin* */  callback_return_value = miqt_exec_callback_QWebPluginFactory_Plugins(this, handle__Plugins);
 		QList<QWebPluginFactory::Plugin> callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		QWebPluginFactory__Plugin** callback_return_value_arr = static_cast<QWebPluginFactory__Plugin**>(callback_return_value.data);
@@ -144,7 +144,7 @@ public:
 		argumentValues_out.data = static_cast<void*>(argumentValues_arr);
 		struct miqt_array /* of struct miqt_string */  sigval4 = argumentValues_out;
 
-		QObject* callback_return_value = miqt_exec_callback_QWebPluginFactory_Create(const_cast<MiqtVirtualQWebPluginFactory*>(this), handle__Create, sigval1, sigval2, sigval3, sigval4);
+		QObject* callback_return_value = miqt_exec_callback_QWebPluginFactory_Create(this, handle__Create, sigval1, sigval2, sigval3, sigval4);
 
 		return callback_return_value;
 	}
@@ -187,7 +187,7 @@ public:
 		QWebPluginFactory::Extension extension_ret = extension;
 		int sigval1 = static_cast<int>(extension_ret);
 
-		bool callback_return_value = miqt_exec_callback_QWebPluginFactory_SupportsExtension(const_cast<MiqtVirtualQWebPluginFactory*>(this), handle__SupportsExtension, sigval1);
+		bool callback_return_value = miqt_exec_callback_QWebPluginFactory_SupportsExtension(this, handle__SupportsExtension, sigval1);
 
 		return callback_return_value;
 	}

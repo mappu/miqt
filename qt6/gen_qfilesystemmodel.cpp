@@ -32,50 +32,50 @@ extern "C" {
 void miqt_exec_callback_QFileSystemModel_RootPathChanged(intptr_t, struct miqt_string);
 void miqt_exec_callback_QFileSystemModel_FileRenamed(intptr_t, struct miqt_string, struct miqt_string, struct miqt_string);
 void miqt_exec_callback_QFileSystemModel_DirectoryLoaded(intptr_t, struct miqt_string);
-QModelIndex* miqt_exec_callback_QFileSystemModel_Index(void*, intptr_t, int, int, QModelIndex*);
-QModelIndex* miqt_exec_callback_QFileSystemModel_Parent(void*, intptr_t, QModelIndex*);
-QModelIndex* miqt_exec_callback_QFileSystemModel_Sibling(void*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QFileSystemModel_HasChildren(void*, intptr_t, QModelIndex*);
-bool miqt_exec_callback_QFileSystemModel_CanFetchMore(void*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QFileSystemModel_FetchMore(void*, intptr_t, QModelIndex*);
-int miqt_exec_callback_QFileSystemModel_RowCount(void*, intptr_t, QModelIndex*);
-int miqt_exec_callback_QFileSystemModel_ColumnCount(void*, intptr_t, QModelIndex*);
-QVariant* miqt_exec_callback_QFileSystemModel_Data(void*, intptr_t, QModelIndex*, int);
-bool miqt_exec_callback_QFileSystemModel_SetData(void*, intptr_t, QModelIndex*, QVariant*, int);
-QVariant* miqt_exec_callback_QFileSystemModel_HeaderData(void*, intptr_t, int, int, int);
-int miqt_exec_callback_QFileSystemModel_Flags(void*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QFileSystemModel_Sort(void*, intptr_t, int, int);
-struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QFileSystemModel_MimeTypes(void*, intptr_t);
-QMimeData* miqt_exec_callback_QFileSystemModel_MimeData(void*, intptr_t, struct miqt_array /* of QModelIndex* */ );
-bool miqt_exec_callback_QFileSystemModel_DropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
-int miqt_exec_callback_QFileSystemModel_SupportedDropActions(void*, intptr_t);
-struct miqt_map /* of int to struct miqt_string */  miqt_exec_callback_QFileSystemModel_RoleNames(void*, intptr_t);
-void miqt_exec_callback_QFileSystemModel_TimerEvent(void*, intptr_t, QTimerEvent*);
-bool miqt_exec_callback_QFileSystemModel_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QFileSystemModel_SetHeaderData(void*, intptr_t, int, int, QVariant*, int);
-struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QFileSystemModel_ItemData(void*, intptr_t, QModelIndex*);
-bool miqt_exec_callback_QFileSystemModel_SetItemData(void*, intptr_t, QModelIndex*, struct miqt_map /* of int to QVariant* */ );
-bool miqt_exec_callback_QFileSystemModel_ClearItemData(void*, intptr_t, QModelIndex*);
-bool miqt_exec_callback_QFileSystemModel_CanDropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
-int miqt_exec_callback_QFileSystemModel_SupportedDragActions(void*, intptr_t);
-bool miqt_exec_callback_QFileSystemModel_InsertRows(void*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QFileSystemModel_InsertColumns(void*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QFileSystemModel_RemoveRows(void*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QFileSystemModel_RemoveColumns(void*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QFileSystemModel_MoveRows(void*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
-bool miqt_exec_callback_QFileSystemModel_MoveColumns(void*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
-QModelIndex* miqt_exec_callback_QFileSystemModel_Buddy(void*, intptr_t, QModelIndex*);
-struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QFileSystemModel_Match(void*, intptr_t, QModelIndex*, int, QVariant*, int, int);
-QSize* miqt_exec_callback_QFileSystemModel_Span(void*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QFileSystemModel_MultiData(void*, intptr_t, QModelIndex*, QModelRoleDataSpan*);
-bool miqt_exec_callback_QFileSystemModel_Submit(void*, intptr_t);
-void miqt_exec_callback_QFileSystemModel_Revert(void*, intptr_t);
-void miqt_exec_callback_QFileSystemModel_ResetInternalData(void*, intptr_t);
-bool miqt_exec_callback_QFileSystemModel_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QFileSystemModel_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QFileSystemModel_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QFileSystemModel_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QFileSystemModel_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QModelIndex* miqt_exec_callback_QFileSystemModel_Index(const QFileSystemModel*, intptr_t, int, int, QModelIndex*);
+QModelIndex* miqt_exec_callback_QFileSystemModel_Parent(const QFileSystemModel*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QFileSystemModel_Sibling(const QFileSystemModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QFileSystemModel_HasChildren(const QFileSystemModel*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QFileSystemModel_CanFetchMore(const QFileSystemModel*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QFileSystemModel_FetchMore(QFileSystemModel*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QFileSystemModel_RowCount(const QFileSystemModel*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QFileSystemModel_ColumnCount(const QFileSystemModel*, intptr_t, QModelIndex*);
+QVariant* miqt_exec_callback_QFileSystemModel_Data(const QFileSystemModel*, intptr_t, QModelIndex*, int);
+bool miqt_exec_callback_QFileSystemModel_SetData(QFileSystemModel*, intptr_t, QModelIndex*, QVariant*, int);
+QVariant* miqt_exec_callback_QFileSystemModel_HeaderData(const QFileSystemModel*, intptr_t, int, int, int);
+int miqt_exec_callback_QFileSystemModel_Flags(const QFileSystemModel*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QFileSystemModel_Sort(QFileSystemModel*, intptr_t, int, int);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QFileSystemModel_MimeTypes(const QFileSystemModel*, intptr_t);
+QMimeData* miqt_exec_callback_QFileSystemModel_MimeData(const QFileSystemModel*, intptr_t, struct miqt_array /* of QModelIndex* */ );
+bool miqt_exec_callback_QFileSystemModel_DropMimeData(QFileSystemModel*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+int miqt_exec_callback_QFileSystemModel_SupportedDropActions(const QFileSystemModel*, intptr_t);
+struct miqt_map /* of int to struct miqt_string */  miqt_exec_callback_QFileSystemModel_RoleNames(const QFileSystemModel*, intptr_t);
+void miqt_exec_callback_QFileSystemModel_TimerEvent(QFileSystemModel*, intptr_t, QTimerEvent*);
+bool miqt_exec_callback_QFileSystemModel_Event(QFileSystemModel*, intptr_t, QEvent*);
+bool miqt_exec_callback_QFileSystemModel_SetHeaderData(QFileSystemModel*, intptr_t, int, int, QVariant*, int);
+struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QFileSystemModel_ItemData(const QFileSystemModel*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QFileSystemModel_SetItemData(QFileSystemModel*, intptr_t, QModelIndex*, struct miqt_map /* of int to QVariant* */ );
+bool miqt_exec_callback_QFileSystemModel_ClearItemData(QFileSystemModel*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QFileSystemModel_CanDropMimeData(const QFileSystemModel*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+int miqt_exec_callback_QFileSystemModel_SupportedDragActions(const QFileSystemModel*, intptr_t);
+bool miqt_exec_callback_QFileSystemModel_InsertRows(QFileSystemModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QFileSystemModel_InsertColumns(QFileSystemModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QFileSystemModel_RemoveRows(QFileSystemModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QFileSystemModel_RemoveColumns(QFileSystemModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QFileSystemModel_MoveRows(QFileSystemModel*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+bool miqt_exec_callback_QFileSystemModel_MoveColumns(QFileSystemModel*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+QModelIndex* miqt_exec_callback_QFileSystemModel_Buddy(const QFileSystemModel*, intptr_t, QModelIndex*);
+struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QFileSystemModel_Match(const QFileSystemModel*, intptr_t, QModelIndex*, int, QVariant*, int, int);
+QSize* miqt_exec_callback_QFileSystemModel_Span(const QFileSystemModel*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QFileSystemModel_MultiData(const QFileSystemModel*, intptr_t, QModelIndex*, QModelRoleDataSpan*);
+bool miqt_exec_callback_QFileSystemModel_Submit(QFileSystemModel*, intptr_t);
+void miqt_exec_callback_QFileSystemModel_Revert(QFileSystemModel*, intptr_t);
+void miqt_exec_callback_QFileSystemModel_ResetInternalData(QFileSystemModel*, intptr_t);
+bool miqt_exec_callback_QFileSystemModel_EventFilter(QFileSystemModel*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QFileSystemModel_ChildEvent(QFileSystemModel*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QFileSystemModel_CustomEvent(QFileSystemModel*, intptr_t, QEvent*);
+void miqt_exec_callback_QFileSystemModel_ConnectNotify(QFileSystemModel*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QFileSystemModel_DisconnectNotify(QFileSystemModel*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -103,7 +103,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QFileSystemModel_Index(const_cast<MiqtVirtualQFileSystemModel*>(this), handle__Index, sigval1, sigval2, sigval3);
+		QModelIndex* callback_return_value = miqt_exec_callback_QFileSystemModel_Index(this, handle__Index, sigval1, sigval2, sigval3);
 
 		return *callback_return_value;
 	}
@@ -128,7 +128,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&child_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QFileSystemModel_Parent(const_cast<MiqtVirtualQFileSystemModel*>(this), handle__Parent, sigval1);
+		QModelIndex* callback_return_value = miqt_exec_callback_QFileSystemModel_Parent(this, handle__Parent, sigval1);
 
 		return *callback_return_value;
 	}
@@ -155,7 +155,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&idx_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QFileSystemModel_Sibling(const_cast<MiqtVirtualQFileSystemModel*>(this), handle__Sibling, sigval1, sigval2, sigval3);
+		QModelIndex* callback_return_value = miqt_exec_callback_QFileSystemModel_Sibling(this, handle__Sibling, sigval1, sigval2, sigval3);
 
 		return *callback_return_value;
 	}
@@ -180,7 +180,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QFileSystemModel_HasChildren(const_cast<MiqtVirtualQFileSystemModel*>(this), handle__HasChildren, sigval1);
+		bool callback_return_value = miqt_exec_callback_QFileSystemModel_HasChildren(this, handle__HasChildren, sigval1);
 
 		return callback_return_value;
 	}
@@ -205,7 +205,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QFileSystemModel_CanFetchMore(const_cast<MiqtVirtualQFileSystemModel*>(this), handle__CanFetchMore, sigval1);
+		bool callback_return_value = miqt_exec_callback_QFileSystemModel_CanFetchMore(this, handle__CanFetchMore, sigval1);
 
 		return callback_return_value;
 	}
@@ -256,7 +256,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 
-		int callback_return_value = miqt_exec_callback_QFileSystemModel_RowCount(const_cast<MiqtVirtualQFileSystemModel*>(this), handle__RowCount, sigval1);
+		int callback_return_value = miqt_exec_callback_QFileSystemModel_RowCount(this, handle__RowCount, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -281,7 +281,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 
-		int callback_return_value = miqt_exec_callback_QFileSystemModel_ColumnCount(const_cast<MiqtVirtualQFileSystemModel*>(this), handle__ColumnCount, sigval1);
+		int callback_return_value = miqt_exec_callback_QFileSystemModel_ColumnCount(this, handle__ColumnCount, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -307,7 +307,7 @@ public:
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		int sigval2 = role;
 
-		QVariant* callback_return_value = miqt_exec_callback_QFileSystemModel_Data(const_cast<MiqtVirtualQFileSystemModel*>(this), handle__Data, sigval1, sigval2);
+		QVariant* callback_return_value = miqt_exec_callback_QFileSystemModel_Data(this, handle__Data, sigval1, sigval2);
 
 		return *callback_return_value;
 	}
@@ -362,7 +362,7 @@ public:
 		int sigval2 = static_cast<int>(orientation_ret);
 		int sigval3 = role;
 
-		QVariant* callback_return_value = miqt_exec_callback_QFileSystemModel_HeaderData(const_cast<MiqtVirtualQFileSystemModel*>(this), handle__HeaderData, sigval1, sigval2, sigval3);
+		QVariant* callback_return_value = miqt_exec_callback_QFileSystemModel_HeaderData(this, handle__HeaderData, sigval1, sigval2, sigval3);
 
 		return *callback_return_value;
 	}
@@ -387,7 +387,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		int callback_return_value = miqt_exec_callback_QFileSystemModel_Flags(const_cast<MiqtVirtualQFileSystemModel*>(this), handle__Flags, sigval1);
+		int callback_return_value = miqt_exec_callback_QFileSystemModel_Flags(this, handle__Flags, sigval1);
 
 		return static_cast<Qt::ItemFlags>(callback_return_value);
 	}
@@ -436,7 +436,7 @@ public:
 		}
 		
 
-		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QFileSystemModel_MimeTypes(const_cast<MiqtVirtualQFileSystemModel*>(this), handle__MimeTypes);
+		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QFileSystemModel_MimeTypes(this, handle__MimeTypes);
 		QStringList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		struct miqt_string* callback_return_value_arr = static_cast<struct miqt_string*>(callback_return_value.data);
@@ -491,7 +491,7 @@ public:
 		indexes_out.data = static_cast<void*>(indexes_arr);
 		struct miqt_array /* of QModelIndex* */  sigval1 = indexes_out;
 
-		QMimeData* callback_return_value = miqt_exec_callback_QFileSystemModel_MimeData(const_cast<MiqtVirtualQFileSystemModel*>(this), handle__MimeData, sigval1);
+		QMimeData* callback_return_value = miqt_exec_callback_QFileSystemModel_MimeData(this, handle__MimeData, sigval1);
 
 		return callback_return_value;
 	}
@@ -549,7 +549,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QFileSystemModel_SupportedDropActions(const_cast<MiqtVirtualQFileSystemModel*>(this), handle__SupportedDropActions);
+		int callback_return_value = miqt_exec_callback_QFileSystemModel_SupportedDropActions(this, handle__SupportedDropActions);
 
 		return static_cast<Qt::DropActions>(callback_return_value);
 	}
@@ -572,7 +572,7 @@ public:
 		}
 		
 
-		struct miqt_map /* of int to struct miqt_string */  callback_return_value = miqt_exec_callback_QFileSystemModel_RoleNames(const_cast<MiqtVirtualQFileSystemModel*>(this), handle__RoleNames);
+		struct miqt_map /* of int to struct miqt_string */  callback_return_value = miqt_exec_callback_QFileSystemModel_RoleNames(this, handle__RoleNames);
 		QHash<int, QByteArray> callback_return_value_QMap;
 		callback_return_value_QMap.reserve(callback_return_value.len);
 		int* callback_return_value_karr = static_cast<int*>(callback_return_value.keys);
@@ -700,7 +700,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		struct miqt_map /* of int to QVariant* */  callback_return_value = miqt_exec_callback_QFileSystemModel_ItemData(const_cast<MiqtVirtualQFileSystemModel*>(this), handle__ItemData, sigval1);
+		struct miqt_map /* of int to QVariant* */  callback_return_value = miqt_exec_callback_QFileSystemModel_ItemData(this, handle__ItemData, sigval1);
 		QMap<int, QVariant> callback_return_value_QMap;
 		int* callback_return_value_karr = static_cast<int*>(callback_return_value.keys);
 		QVariant** callback_return_value_varr = static_cast<QVariant**>(callback_return_value.values);
@@ -821,7 +821,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval5 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QFileSystemModel_CanDropMimeData(const_cast<MiqtVirtualQFileSystemModel*>(this), handle__CanDropMimeData, sigval1, sigval2, sigval3, sigval4, sigval5);
+		bool callback_return_value = miqt_exec_callback_QFileSystemModel_CanDropMimeData(this, handle__CanDropMimeData, sigval1, sigval2, sigval3, sigval4, sigval5);
 
 		return callback_return_value;
 	}
@@ -843,7 +843,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QFileSystemModel_SupportedDragActions(const_cast<MiqtVirtualQFileSystemModel*>(this), handle__SupportedDragActions);
+		int callback_return_value = miqt_exec_callback_QFileSystemModel_SupportedDragActions(this, handle__SupportedDragActions);
 
 		return static_cast<Qt::DropActions>(callback_return_value);
 	}
@@ -1039,7 +1039,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QFileSystemModel_Buddy(const_cast<MiqtVirtualQFileSystemModel*>(this), handle__Buddy, sigval1);
+		QModelIndex* callback_return_value = miqt_exec_callback_QFileSystemModel_Buddy(this, handle__Buddy, sigval1);
 
 		return *callback_return_value;
 	}
@@ -1071,7 +1071,7 @@ public:
 		Qt::MatchFlags flags_ret = flags;
 		int sigval5 = static_cast<int>(flags_ret);
 
-		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QFileSystemModel_Match(const_cast<MiqtVirtualQFileSystemModel*>(this), handle__Match, sigval1, sigval2, sigval3, sigval4, sigval5);
+		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QFileSystemModel_Match(this, handle__Match, sigval1, sigval2, sigval3, sigval4, sigval5);
 		QModelIndexList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		QModelIndex** callback_return_value_arr = static_cast<QModelIndex**>(callback_return_value.data);
@@ -1111,7 +1111,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		QSize* callback_return_value = miqt_exec_callback_QFileSystemModel_Span(const_cast<MiqtVirtualQFileSystemModel*>(this), handle__Span, sigval1);
+		QSize* callback_return_value = miqt_exec_callback_QFileSystemModel_Span(this, handle__Span, sigval1);
 
 		return *callback_return_value;
 	}
@@ -1138,7 +1138,7 @@ public:
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		QModelRoleDataSpan* sigval2 = new QModelRoleDataSpan(roleDataSpan);
 
-		miqt_exec_callback_QFileSystemModel_MultiData(const_cast<MiqtVirtualQFileSystemModel*>(this), handle__MultiData, sigval1, sigval2);
+		miqt_exec_callback_QFileSystemModel_MultiData(this, handle__MultiData, sigval1, sigval2);
 
 		
 	}

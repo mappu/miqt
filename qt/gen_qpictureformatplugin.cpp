@@ -16,16 +16,16 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QPictureFormatPlugin_LoadPicture(void*, intptr_t, struct miqt_string, struct miqt_string, QPicture*);
-bool miqt_exec_callback_QPictureFormatPlugin_SavePicture(void*, intptr_t, struct miqt_string, struct miqt_string, QPicture*);
-bool miqt_exec_callback_QPictureFormatPlugin_InstallIOHandler(void*, intptr_t, struct miqt_string);
-bool miqt_exec_callback_QPictureFormatPlugin_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QPictureFormatPlugin_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QPictureFormatPlugin_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QPictureFormatPlugin_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QPictureFormatPlugin_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QPictureFormatPlugin_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QPictureFormatPlugin_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QPictureFormatPlugin_LoadPicture(QPictureFormatPlugin*, intptr_t, struct miqt_string, struct miqt_string, QPicture*);
+bool miqt_exec_callback_QPictureFormatPlugin_SavePicture(QPictureFormatPlugin*, intptr_t, struct miqt_string, struct miqt_string, QPicture*);
+bool miqt_exec_callback_QPictureFormatPlugin_InstallIOHandler(QPictureFormatPlugin*, intptr_t, struct miqt_string);
+bool miqt_exec_callback_QPictureFormatPlugin_Event(QPictureFormatPlugin*, intptr_t, QEvent*);
+bool miqt_exec_callback_QPictureFormatPlugin_EventFilter(QPictureFormatPlugin*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QPictureFormatPlugin_TimerEvent(QPictureFormatPlugin*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QPictureFormatPlugin_ChildEvent(QPictureFormatPlugin*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QPictureFormatPlugin_CustomEvent(QPictureFormatPlugin*, intptr_t, QEvent*);
+void miqt_exec_callback_QPictureFormatPlugin_ConnectNotify(QPictureFormatPlugin*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QPictureFormatPlugin_DisconnectNotify(QPictureFormatPlugin*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

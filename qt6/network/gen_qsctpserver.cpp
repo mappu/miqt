@@ -18,16 +18,16 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QSctpServer_IncomingConnection(void*, intptr_t, intptr_t);
-bool miqt_exec_callback_QSctpServer_HasPendingConnections(void*, intptr_t);
-QTcpSocket* miqt_exec_callback_QSctpServer_NextPendingConnection(void*, intptr_t);
-bool miqt_exec_callback_QSctpServer_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QSctpServer_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QSctpServer_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QSctpServer_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QSctpServer_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSctpServer_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QSctpServer_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSctpServer_IncomingConnection(QSctpServer*, intptr_t, intptr_t);
+bool miqt_exec_callback_QSctpServer_HasPendingConnections(const QSctpServer*, intptr_t);
+QTcpSocket* miqt_exec_callback_QSctpServer_NextPendingConnection(QSctpServer*, intptr_t);
+bool miqt_exec_callback_QSctpServer_Event(QSctpServer*, intptr_t, QEvent*);
+bool miqt_exec_callback_QSctpServer_EventFilter(QSctpServer*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QSctpServer_TimerEvent(QSctpServer*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSctpServer_ChildEvent(QSctpServer*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QSctpServer_CustomEvent(QSctpServer*, intptr_t, QEvent*);
+void miqt_exec_callback_QSctpServer_ConnectNotify(QSctpServer*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSctpServer_DisconnectNotify(QSctpServer*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -75,7 +75,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QSctpServer_HasPendingConnections(const_cast<MiqtVirtualQSctpServer*>(this), handle__HasPendingConnections);
+		bool callback_return_value = miqt_exec_callback_QSctpServer_HasPendingConnections(this, handle__HasPendingConnections);
 
 		return callback_return_value;
 	}

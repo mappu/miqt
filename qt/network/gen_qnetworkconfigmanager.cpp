@@ -22,13 +22,13 @@ void miqt_exec_callback_QNetworkConfigurationManager_ConfigurationRemoved(intptr
 void miqt_exec_callback_QNetworkConfigurationManager_ConfigurationChanged(intptr_t, QNetworkConfiguration*);
 void miqt_exec_callback_QNetworkConfigurationManager_OnlineStateChanged(intptr_t, bool);
 void miqt_exec_callback_QNetworkConfigurationManager_UpdateCompleted(intptr_t);
-bool miqt_exec_callback_QNetworkConfigurationManager_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QNetworkConfigurationManager_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QNetworkConfigurationManager_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QNetworkConfigurationManager_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QNetworkConfigurationManager_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QNetworkConfigurationManager_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QNetworkConfigurationManager_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QNetworkConfigurationManager_Event(QNetworkConfigurationManager*, intptr_t, QEvent*);
+bool miqt_exec_callback_QNetworkConfigurationManager_EventFilter(QNetworkConfigurationManager*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QNetworkConfigurationManager_TimerEvent(QNetworkConfigurationManager*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QNetworkConfigurationManager_ChildEvent(QNetworkConfigurationManager*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QNetworkConfigurationManager_CustomEvent(QNetworkConfigurationManager*, intptr_t, QEvent*);
+void miqt_exec_callback_QNetworkConfigurationManager_ConnectNotify(QNetworkConfigurationManager*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QNetworkConfigurationManager_DisconnectNotify(QNetworkConfigurationManager*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

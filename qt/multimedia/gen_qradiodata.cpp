@@ -24,15 +24,15 @@ void miqt_exec_callback_QRadioData_StationNameChanged(intptr_t, struct miqt_stri
 void miqt_exec_callback_QRadioData_RadioTextChanged(intptr_t, struct miqt_string);
 void miqt_exec_callback_QRadioData_AlternativeFrequenciesEnabledChanged(intptr_t, bool);
 void miqt_exec_callback_QRadioData_ErrorWithError(intptr_t, int);
-QMediaObject* miqt_exec_callback_QRadioData_MediaObject(void*, intptr_t);
-bool miqt_exec_callback_QRadioData_SetMediaObject(void*, intptr_t, QMediaObject*);
-bool miqt_exec_callback_QRadioData_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QRadioData_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QRadioData_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QRadioData_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QRadioData_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QRadioData_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QRadioData_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QMediaObject* miqt_exec_callback_QRadioData_MediaObject(const QRadioData*, intptr_t);
+bool miqt_exec_callback_QRadioData_SetMediaObject(QRadioData*, intptr_t, QMediaObject*);
+bool miqt_exec_callback_QRadioData_Event(QRadioData*, intptr_t, QEvent*);
+bool miqt_exec_callback_QRadioData_EventFilter(QRadioData*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QRadioData_TimerEvent(QRadioData*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QRadioData_ChildEvent(QRadioData*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QRadioData_CustomEvent(QRadioData*, intptr_t, QEvent*);
+void miqt_exec_callback_QRadioData_ConnectNotify(QRadioData*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QRadioData_DisconnectNotify(QRadioData*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -55,7 +55,7 @@ public:
 		}
 		
 
-		QMediaObject* callback_return_value = miqt_exec_callback_QRadioData_MediaObject(const_cast<MiqtVirtualQRadioData*>(this), handle__MediaObject);
+		QMediaObject* callback_return_value = miqt_exec_callback_QRadioData_MediaObject(this, handle__MediaObject);
 
 		return callback_return_value;
 	}

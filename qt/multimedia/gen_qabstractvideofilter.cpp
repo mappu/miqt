@@ -19,14 +19,14 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QAbstractVideoFilter_ActiveChanged(intptr_t);
-QVideoFilterRunnable* miqt_exec_callback_QAbstractVideoFilter_CreateFilterRunnable(void*, intptr_t);
-bool miqt_exec_callback_QAbstractVideoFilter_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QAbstractVideoFilter_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QAbstractVideoFilter_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QAbstractVideoFilter_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QAbstractVideoFilter_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QAbstractVideoFilter_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QAbstractVideoFilter_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QVideoFilterRunnable* miqt_exec_callback_QAbstractVideoFilter_CreateFilterRunnable(QAbstractVideoFilter*, intptr_t);
+bool miqt_exec_callback_QAbstractVideoFilter_Event(QAbstractVideoFilter*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAbstractVideoFilter_EventFilter(QAbstractVideoFilter*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAbstractVideoFilter_TimerEvent(QAbstractVideoFilter*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAbstractVideoFilter_ChildEvent(QAbstractVideoFilter*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAbstractVideoFilter_CustomEvent(QAbstractVideoFilter*, intptr_t, QEvent*);
+void miqt_exec_callback_QAbstractVideoFilter_ConnectNotify(QAbstractVideoFilter*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAbstractVideoFilter_DisconnectNotify(QAbstractVideoFilter*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

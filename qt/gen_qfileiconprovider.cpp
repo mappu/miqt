@@ -11,9 +11,9 @@
 extern "C" {
 #endif
 
-QIcon* miqt_exec_callback_QFileIconProvider_Icon(void*, intptr_t, int);
-QIcon* miqt_exec_callback_QFileIconProvider_IconWithInfo(void*, intptr_t, QFileInfo*);
-struct miqt_string miqt_exec_callback_QFileIconProvider_Type(void*, intptr_t, QFileInfo*);
+QIcon* miqt_exec_callback_QFileIconProvider_Icon(const QFileIconProvider*, intptr_t, int);
+QIcon* miqt_exec_callback_QFileIconProvider_IconWithInfo(const QFileIconProvider*, intptr_t, QFileInfo*);
+struct miqt_string miqt_exec_callback_QFileIconProvider_Type(const QFileIconProvider*, intptr_t, QFileInfo*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -37,7 +37,7 @@ public:
 		QFileIconProvider::IconType typeVal_ret = typeVal;
 		int sigval1 = static_cast<int>(typeVal_ret);
 
-		QIcon* callback_return_value = miqt_exec_callback_QFileIconProvider_Icon(const_cast<MiqtVirtualQFileIconProvider*>(this), handle__Icon, sigval1);
+		QIcon* callback_return_value = miqt_exec_callback_QFileIconProvider_Icon(this, handle__Icon, sigval1);
 
 		return *callback_return_value;
 	}
@@ -62,7 +62,7 @@ public:
 		// Cast returned reference into pointer
 		QFileInfo* sigval1 = const_cast<QFileInfo*>(&info_ret);
 
-		QIcon* callback_return_value = miqt_exec_callback_QFileIconProvider_IconWithInfo(const_cast<MiqtVirtualQFileIconProvider*>(this), handle__IconWithInfo, sigval1);
+		QIcon* callback_return_value = miqt_exec_callback_QFileIconProvider_IconWithInfo(this, handle__IconWithInfo, sigval1);
 
 		return *callback_return_value;
 	}
@@ -87,7 +87,7 @@ public:
 		// Cast returned reference into pointer
 		QFileInfo* sigval1 = const_cast<QFileInfo*>(&info_ret);
 
-		struct miqt_string callback_return_value = miqt_exec_callback_QFileIconProvider_Type(const_cast<MiqtVirtualQFileIconProvider*>(this), handle__Type, sigval1);
+		struct miqt_string callback_return_value = miqt_exec_callback_QFileIconProvider_Type(this, handle__Type, sigval1);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
 
 		return callback_return_value_QString;

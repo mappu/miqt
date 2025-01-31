@@ -16,13 +16,13 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QFileSystemWatcher_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QFileSystemWatcher_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QFileSystemWatcher_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QFileSystemWatcher_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QFileSystemWatcher_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QFileSystemWatcher_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QFileSystemWatcher_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QFileSystemWatcher_Event(QFileSystemWatcher*, intptr_t, QEvent*);
+bool miqt_exec_callback_QFileSystemWatcher_EventFilter(QFileSystemWatcher*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QFileSystemWatcher_TimerEvent(QFileSystemWatcher*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QFileSystemWatcher_ChildEvent(QFileSystemWatcher*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QFileSystemWatcher_CustomEvent(QFileSystemWatcher*, intptr_t, QEvent*);
+void miqt_exec_callback_QFileSystemWatcher_ConnectNotify(QFileSystemWatcher*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QFileSystemWatcher_DisconnectNotify(QFileSystemWatcher*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

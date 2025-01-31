@@ -29,59 +29,59 @@
 extern "C" {
 #endif
 
-QVariant* miqt_exec_callback_QStandardItem_Data(void*, intptr_t, int);
-void miqt_exec_callback_QStandardItem_MultiData(void*, intptr_t, QModelRoleDataSpan*);
-void miqt_exec_callback_QStandardItem_SetData(void*, intptr_t, QVariant*, int);
-QStandardItem* miqt_exec_callback_QStandardItem_Clone(void*, intptr_t);
-int miqt_exec_callback_QStandardItem_Type(void*, intptr_t);
-void miqt_exec_callback_QStandardItem_Read(void*, intptr_t, QDataStream*);
-void miqt_exec_callback_QStandardItem_Write(void*, intptr_t, QDataStream*);
-bool miqt_exec_callback_QStandardItem_OperatorLesser(void*, intptr_t, QStandardItem*);
+QVariant* miqt_exec_callback_QStandardItem_Data(const QStandardItem*, intptr_t, int);
+void miqt_exec_callback_QStandardItem_MultiData(const QStandardItem*, intptr_t, QModelRoleDataSpan*);
+void miqt_exec_callback_QStandardItem_SetData(QStandardItem*, intptr_t, QVariant*, int);
+QStandardItem* miqt_exec_callback_QStandardItem_Clone(const QStandardItem*, intptr_t);
+int miqt_exec_callback_QStandardItem_Type(const QStandardItem*, intptr_t);
+void miqt_exec_callback_QStandardItem_Read(QStandardItem*, intptr_t, QDataStream*);
+void miqt_exec_callback_QStandardItem_Write(const QStandardItem*, intptr_t, QDataStream*);
+bool miqt_exec_callback_QStandardItem_OperatorLesser(const QStandardItem*, intptr_t, QStandardItem*);
 void miqt_exec_callback_QStandardItemModel_ItemChanged(intptr_t, QStandardItem*);
-struct miqt_map /* of int to struct miqt_string */  miqt_exec_callback_QStandardItemModel_RoleNames(void*, intptr_t);
-QModelIndex* miqt_exec_callback_QStandardItemModel_Index(void*, intptr_t, int, int, QModelIndex*);
-QModelIndex* miqt_exec_callback_QStandardItemModel_Parent(void*, intptr_t, QModelIndex*);
-int miqt_exec_callback_QStandardItemModel_RowCount(void*, intptr_t, QModelIndex*);
-int miqt_exec_callback_QStandardItemModel_ColumnCount(void*, intptr_t, QModelIndex*);
-bool miqt_exec_callback_QStandardItemModel_HasChildren(void*, intptr_t, QModelIndex*);
-QVariant* miqt_exec_callback_QStandardItemModel_Data(void*, intptr_t, QModelIndex*, int);
-void miqt_exec_callback_QStandardItemModel_MultiData(void*, intptr_t, QModelIndex*, QModelRoleDataSpan*);
-bool miqt_exec_callback_QStandardItemModel_SetData(void*, intptr_t, QModelIndex*, QVariant*, int);
-bool miqt_exec_callback_QStandardItemModel_ClearItemData(void*, intptr_t, QModelIndex*);
-QVariant* miqt_exec_callback_QStandardItemModel_HeaderData(void*, intptr_t, int, int, int);
-bool miqt_exec_callback_QStandardItemModel_SetHeaderData(void*, intptr_t, int, int, QVariant*, int);
-bool miqt_exec_callback_QStandardItemModel_InsertRows(void*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QStandardItemModel_InsertColumns(void*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QStandardItemModel_RemoveRows(void*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QStandardItemModel_RemoveColumns(void*, intptr_t, int, int, QModelIndex*);
-int miqt_exec_callback_QStandardItemModel_Flags(void*, intptr_t, QModelIndex*);
-int miqt_exec_callback_QStandardItemModel_SupportedDropActions(void*, intptr_t);
-struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QStandardItemModel_ItemData(void*, intptr_t, QModelIndex*);
-bool miqt_exec_callback_QStandardItemModel_SetItemData(void*, intptr_t, QModelIndex*, struct miqt_map /* of int to QVariant* */ );
-void miqt_exec_callback_QStandardItemModel_Sort(void*, intptr_t, int, int);
-struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QStandardItemModel_MimeTypes(void*, intptr_t);
-QMimeData* miqt_exec_callback_QStandardItemModel_MimeData(void*, intptr_t, struct miqt_array /* of QModelIndex* */ );
-bool miqt_exec_callback_QStandardItemModel_DropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
-QModelIndex* miqt_exec_callback_QStandardItemModel_Sibling(void*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QStandardItemModel_CanDropMimeData(void*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
-int miqt_exec_callback_QStandardItemModel_SupportedDragActions(void*, intptr_t);
-bool miqt_exec_callback_QStandardItemModel_MoveRows(void*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
-bool miqt_exec_callback_QStandardItemModel_MoveColumns(void*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
-void miqt_exec_callback_QStandardItemModel_FetchMore(void*, intptr_t, QModelIndex*);
-bool miqt_exec_callback_QStandardItemModel_CanFetchMore(void*, intptr_t, QModelIndex*);
-QModelIndex* miqt_exec_callback_QStandardItemModel_Buddy(void*, intptr_t, QModelIndex*);
-struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QStandardItemModel_Match(void*, intptr_t, QModelIndex*, int, QVariant*, int, int);
-QSize* miqt_exec_callback_QStandardItemModel_Span(void*, intptr_t, QModelIndex*);
-bool miqt_exec_callback_QStandardItemModel_Submit(void*, intptr_t);
-void miqt_exec_callback_QStandardItemModel_Revert(void*, intptr_t);
-void miqt_exec_callback_QStandardItemModel_ResetInternalData(void*, intptr_t);
-bool miqt_exec_callback_QStandardItemModel_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QStandardItemModel_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QStandardItemModel_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QStandardItemModel_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QStandardItemModel_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QStandardItemModel_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QStandardItemModel_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+struct miqt_map /* of int to struct miqt_string */  miqt_exec_callback_QStandardItemModel_RoleNames(const QStandardItemModel*, intptr_t);
+QModelIndex* miqt_exec_callback_QStandardItemModel_Index(const QStandardItemModel*, intptr_t, int, int, QModelIndex*);
+QModelIndex* miqt_exec_callback_QStandardItemModel_Parent(const QStandardItemModel*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QStandardItemModel_RowCount(const QStandardItemModel*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QStandardItemModel_ColumnCount(const QStandardItemModel*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QStandardItemModel_HasChildren(const QStandardItemModel*, intptr_t, QModelIndex*);
+QVariant* miqt_exec_callback_QStandardItemModel_Data(const QStandardItemModel*, intptr_t, QModelIndex*, int);
+void miqt_exec_callback_QStandardItemModel_MultiData(const QStandardItemModel*, intptr_t, QModelIndex*, QModelRoleDataSpan*);
+bool miqt_exec_callback_QStandardItemModel_SetData(QStandardItemModel*, intptr_t, QModelIndex*, QVariant*, int);
+bool miqt_exec_callback_QStandardItemModel_ClearItemData(QStandardItemModel*, intptr_t, QModelIndex*);
+QVariant* miqt_exec_callback_QStandardItemModel_HeaderData(const QStandardItemModel*, intptr_t, int, int, int);
+bool miqt_exec_callback_QStandardItemModel_SetHeaderData(QStandardItemModel*, intptr_t, int, int, QVariant*, int);
+bool miqt_exec_callback_QStandardItemModel_InsertRows(QStandardItemModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QStandardItemModel_InsertColumns(QStandardItemModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QStandardItemModel_RemoveRows(QStandardItemModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QStandardItemModel_RemoveColumns(QStandardItemModel*, intptr_t, int, int, QModelIndex*);
+int miqt_exec_callback_QStandardItemModel_Flags(const QStandardItemModel*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QStandardItemModel_SupportedDropActions(const QStandardItemModel*, intptr_t);
+struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QStandardItemModel_ItemData(const QStandardItemModel*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QStandardItemModel_SetItemData(QStandardItemModel*, intptr_t, QModelIndex*, struct miqt_map /* of int to QVariant* */ );
+void miqt_exec_callback_QStandardItemModel_Sort(QStandardItemModel*, intptr_t, int, int);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QStandardItemModel_MimeTypes(const QStandardItemModel*, intptr_t);
+QMimeData* miqt_exec_callback_QStandardItemModel_MimeData(const QStandardItemModel*, intptr_t, struct miqt_array /* of QModelIndex* */ );
+bool miqt_exec_callback_QStandardItemModel_DropMimeData(QStandardItemModel*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+QModelIndex* miqt_exec_callback_QStandardItemModel_Sibling(const QStandardItemModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QStandardItemModel_CanDropMimeData(const QStandardItemModel*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+int miqt_exec_callback_QStandardItemModel_SupportedDragActions(const QStandardItemModel*, intptr_t);
+bool miqt_exec_callback_QStandardItemModel_MoveRows(QStandardItemModel*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+bool miqt_exec_callback_QStandardItemModel_MoveColumns(QStandardItemModel*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+void miqt_exec_callback_QStandardItemModel_FetchMore(QStandardItemModel*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QStandardItemModel_CanFetchMore(const QStandardItemModel*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QStandardItemModel_Buddy(const QStandardItemModel*, intptr_t, QModelIndex*);
+struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QStandardItemModel_Match(const QStandardItemModel*, intptr_t, QModelIndex*, int, QVariant*, int, int);
+QSize* miqt_exec_callback_QStandardItemModel_Span(const QStandardItemModel*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QStandardItemModel_Submit(QStandardItemModel*, intptr_t);
+void miqt_exec_callback_QStandardItemModel_Revert(QStandardItemModel*, intptr_t);
+void miqt_exec_callback_QStandardItemModel_ResetInternalData(QStandardItemModel*, intptr_t);
+bool miqt_exec_callback_QStandardItemModel_Event(QStandardItemModel*, intptr_t, QEvent*);
+bool miqt_exec_callback_QStandardItemModel_EventFilter(QStandardItemModel*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QStandardItemModel_TimerEvent(QStandardItemModel*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QStandardItemModel_ChildEvent(QStandardItemModel*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QStandardItemModel_CustomEvent(QStandardItemModel*, intptr_t, QEvent*);
+void miqt_exec_callback_QStandardItemModel_ConnectNotify(QStandardItemModel*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QStandardItemModel_DisconnectNotify(QStandardItemModel*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -108,7 +108,7 @@ public:
 		
 		int sigval1 = role;
 
-		QVariant* callback_return_value = miqt_exec_callback_QStandardItem_Data(const_cast<MiqtVirtualQStandardItem*>(this), handle__Data, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QStandardItem_Data(this, handle__Data, sigval1);
 
 		return *callback_return_value;
 	}
@@ -132,7 +132,7 @@ public:
 		
 		QModelRoleDataSpan* sigval1 = new QModelRoleDataSpan(roleDataSpan);
 
-		miqt_exec_callback_QStandardItem_MultiData(const_cast<MiqtVirtualQStandardItem*>(this), handle__MultiData, sigval1);
+		miqt_exec_callback_QStandardItem_MultiData(this, handle__MultiData, sigval1);
 
 		
 	}
@@ -181,7 +181,7 @@ public:
 		}
 		
 
-		QStandardItem* callback_return_value = miqt_exec_callback_QStandardItem_Clone(const_cast<MiqtVirtualQStandardItem*>(this), handle__Clone);
+		QStandardItem* callback_return_value = miqt_exec_callback_QStandardItem_Clone(this, handle__Clone);
 
 		return callback_return_value;
 	}
@@ -203,7 +203,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QStandardItem_Type(const_cast<MiqtVirtualQStandardItem*>(this), handle__Type);
+		int callback_return_value = miqt_exec_callback_QStandardItem_Type(this, handle__Type);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -255,7 +255,7 @@ public:
 		// Cast returned reference into pointer
 		QDataStream* sigval1 = &out_ret;
 
-		miqt_exec_callback_QStandardItem_Write(const_cast<MiqtVirtualQStandardItem*>(this), handle__Write, sigval1);
+		miqt_exec_callback_QStandardItem_Write(this, handle__Write, sigval1);
 
 		
 	}
@@ -280,7 +280,7 @@ public:
 		// Cast returned reference into pointer
 		QStandardItem* sigval1 = const_cast<QStandardItem*>(&other_ret);
 
-		bool callback_return_value = miqt_exec_callback_QStandardItem_OperatorLesser(const_cast<MiqtVirtualQStandardItem*>(this), handle__OperatorLesser, sigval1);
+		bool callback_return_value = miqt_exec_callback_QStandardItem_OperatorLesser(this, handle__OperatorLesser, sigval1);
 
 		return callback_return_value;
 	}
@@ -905,7 +905,7 @@ public:
 		}
 		
 
-		struct miqt_map /* of int to struct miqt_string */  callback_return_value = miqt_exec_callback_QStandardItemModel_RoleNames(const_cast<MiqtVirtualQStandardItemModel*>(this), handle__RoleNames);
+		struct miqt_map /* of int to struct miqt_string */  callback_return_value = miqt_exec_callback_QStandardItemModel_RoleNames(this, handle__RoleNames);
 		QHash<int, QByteArray> callback_return_value_QMap;
 		callback_return_value_QMap.reserve(callback_return_value.len);
 		int* callback_return_value_karr = static_cast<int*>(callback_return_value.keys);
@@ -959,7 +959,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QStandardItemModel_Index(const_cast<MiqtVirtualQStandardItemModel*>(this), handle__Index, sigval1, sigval2, sigval3);
+		QModelIndex* callback_return_value = miqt_exec_callback_QStandardItemModel_Index(this, handle__Index, sigval1, sigval2, sigval3);
 
 		return *callback_return_value;
 	}
@@ -984,7 +984,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&child_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QStandardItemModel_Parent(const_cast<MiqtVirtualQStandardItemModel*>(this), handle__Parent, sigval1);
+		QModelIndex* callback_return_value = miqt_exec_callback_QStandardItemModel_Parent(this, handle__Parent, sigval1);
 
 		return *callback_return_value;
 	}
@@ -1009,7 +1009,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 
-		int callback_return_value = miqt_exec_callback_QStandardItemModel_RowCount(const_cast<MiqtVirtualQStandardItemModel*>(this), handle__RowCount, sigval1);
+		int callback_return_value = miqt_exec_callback_QStandardItemModel_RowCount(this, handle__RowCount, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1034,7 +1034,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 
-		int callback_return_value = miqt_exec_callback_QStandardItemModel_ColumnCount(const_cast<MiqtVirtualQStandardItemModel*>(this), handle__ColumnCount, sigval1);
+		int callback_return_value = miqt_exec_callback_QStandardItemModel_ColumnCount(this, handle__ColumnCount, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1059,7 +1059,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QStandardItemModel_HasChildren(const_cast<MiqtVirtualQStandardItemModel*>(this), handle__HasChildren, sigval1);
+		bool callback_return_value = miqt_exec_callback_QStandardItemModel_HasChildren(this, handle__HasChildren, sigval1);
 
 		return callback_return_value;
 	}
@@ -1085,7 +1085,7 @@ public:
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		int sigval2 = role;
 
-		QVariant* callback_return_value = miqt_exec_callback_QStandardItemModel_Data(const_cast<MiqtVirtualQStandardItemModel*>(this), handle__Data, sigval1, sigval2);
+		QVariant* callback_return_value = miqt_exec_callback_QStandardItemModel_Data(this, handle__Data, sigval1, sigval2);
 
 		return *callback_return_value;
 	}
@@ -1112,7 +1112,7 @@ public:
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		QModelRoleDataSpan* sigval2 = new QModelRoleDataSpan(roleDataSpan);
 
-		miqt_exec_callback_QStandardItemModel_MultiData(const_cast<MiqtVirtualQStandardItemModel*>(this), handle__MultiData, sigval1, sigval2);
+		miqt_exec_callback_QStandardItemModel_MultiData(this, handle__MultiData, sigval1, sigval2);
 
 		
 	}
@@ -1192,7 +1192,7 @@ public:
 		int sigval2 = static_cast<int>(orientation_ret);
 		int sigval3 = role;
 
-		QVariant* callback_return_value = miqt_exec_callback_QStandardItemModel_HeaderData(const_cast<MiqtVirtualQStandardItemModel*>(this), handle__HeaderData, sigval1, sigval2, sigval3);
+		QVariant* callback_return_value = miqt_exec_callback_QStandardItemModel_HeaderData(this, handle__HeaderData, sigval1, sigval2, sigval3);
 
 		return *callback_return_value;
 	}
@@ -1354,7 +1354,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		int callback_return_value = miqt_exec_callback_QStandardItemModel_Flags(const_cast<MiqtVirtualQStandardItemModel*>(this), handle__Flags, sigval1);
+		int callback_return_value = miqt_exec_callback_QStandardItemModel_Flags(this, handle__Flags, sigval1);
 
 		return static_cast<Qt::ItemFlags>(callback_return_value);
 	}
@@ -1377,7 +1377,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QStandardItemModel_SupportedDropActions(const_cast<MiqtVirtualQStandardItemModel*>(this), handle__SupportedDropActions);
+		int callback_return_value = miqt_exec_callback_QStandardItemModel_SupportedDropActions(this, handle__SupportedDropActions);
 
 		return static_cast<Qt::DropActions>(callback_return_value);
 	}
@@ -1403,7 +1403,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		struct miqt_map /* of int to QVariant* */  callback_return_value = miqt_exec_callback_QStandardItemModel_ItemData(const_cast<MiqtVirtualQStandardItemModel*>(this), handle__ItemData, sigval1);
+		struct miqt_map /* of int to QVariant* */  callback_return_value = miqt_exec_callback_QStandardItemModel_ItemData(this, handle__ItemData, sigval1);
 		QMap<int, QVariant> callback_return_value_QMap;
 		int* callback_return_value_karr = static_cast<int*>(callback_return_value.keys);
 		QVariant** callback_return_value_varr = static_cast<QVariant**>(callback_return_value.values);
@@ -1517,7 +1517,7 @@ public:
 		}
 		
 
-		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QStandardItemModel_MimeTypes(const_cast<MiqtVirtualQStandardItemModel*>(this), handle__MimeTypes);
+		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QStandardItemModel_MimeTypes(this, handle__MimeTypes);
 		QStringList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		struct miqt_string* callback_return_value_arr = static_cast<struct miqt_string*>(callback_return_value.data);
@@ -1572,7 +1572,7 @@ public:
 		indexes_out.data = static_cast<void*>(indexes_arr);
 		struct miqt_array /* of QModelIndex* */  sigval1 = indexes_out;
 
-		QMimeData* callback_return_value = miqt_exec_callback_QStandardItemModel_MimeData(const_cast<MiqtVirtualQStandardItemModel*>(this), handle__MimeData, sigval1);
+		QMimeData* callback_return_value = miqt_exec_callback_QStandardItemModel_MimeData(this, handle__MimeData, sigval1);
 
 		return callback_return_value;
 	}
@@ -1635,7 +1635,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&idx_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QStandardItemModel_Sibling(const_cast<MiqtVirtualQStandardItemModel*>(this), handle__Sibling, sigval1, sigval2, sigval3);
+		QModelIndex* callback_return_value = miqt_exec_callback_QStandardItemModel_Sibling(this, handle__Sibling, sigval1, sigval2, sigval3);
 
 		return *callback_return_value;
 	}
@@ -1665,7 +1665,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval5 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QStandardItemModel_CanDropMimeData(const_cast<MiqtVirtualQStandardItemModel*>(this), handle__CanDropMimeData, sigval1, sigval2, sigval3, sigval4, sigval5);
+		bool callback_return_value = miqt_exec_callback_QStandardItemModel_CanDropMimeData(this, handle__CanDropMimeData, sigval1, sigval2, sigval3, sigval4, sigval5);
 
 		return callback_return_value;
 	}
@@ -1687,7 +1687,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QStandardItemModel_SupportedDragActions(const_cast<MiqtVirtualQStandardItemModel*>(this), handle__SupportedDragActions);
+		int callback_return_value = miqt_exec_callback_QStandardItemModel_SupportedDragActions(this, handle__SupportedDragActions);
 
 		return static_cast<Qt::DropActions>(callback_return_value);
 	}
@@ -1801,7 +1801,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QStandardItemModel_CanFetchMore(const_cast<MiqtVirtualQStandardItemModel*>(this), handle__CanFetchMore, sigval1);
+		bool callback_return_value = miqt_exec_callback_QStandardItemModel_CanFetchMore(this, handle__CanFetchMore, sigval1);
 
 		return callback_return_value;
 	}
@@ -1826,7 +1826,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QStandardItemModel_Buddy(const_cast<MiqtVirtualQStandardItemModel*>(this), handle__Buddy, sigval1);
+		QModelIndex* callback_return_value = miqt_exec_callback_QStandardItemModel_Buddy(this, handle__Buddy, sigval1);
 
 		return *callback_return_value;
 	}
@@ -1858,7 +1858,7 @@ public:
 		Qt::MatchFlags flags_ret = flags;
 		int sigval5 = static_cast<int>(flags_ret);
 
-		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QStandardItemModel_Match(const_cast<MiqtVirtualQStandardItemModel*>(this), handle__Match, sigval1, sigval2, sigval3, sigval4, sigval5);
+		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QStandardItemModel_Match(this, handle__Match, sigval1, sigval2, sigval3, sigval4, sigval5);
 		QModelIndexList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		QModelIndex** callback_return_value_arr = static_cast<QModelIndex**>(callback_return_value.data);
@@ -1898,7 +1898,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		QSize* callback_return_value = miqt_exec_callback_QStandardItemModel_Span(const_cast<MiqtVirtualQStandardItemModel*>(this), handle__Span, sigval1);
+		QSize* callback_return_value = miqt_exec_callback_QStandardItemModel_Span(this, handle__Span, sigval1);
 
 		return *callback_return_value;
 	}

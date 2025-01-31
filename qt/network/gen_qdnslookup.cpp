@@ -27,13 +27,13 @@ void miqt_exec_callback_QDnsLookup_Finished(intptr_t);
 void miqt_exec_callback_QDnsLookup_NameChanged(intptr_t, struct miqt_string);
 void miqt_exec_callback_QDnsLookup_TypeChanged(intptr_t, int);
 void miqt_exec_callback_QDnsLookup_NameserverChanged(intptr_t, QHostAddress*);
-bool miqt_exec_callback_QDnsLookup_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QDnsLookup_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QDnsLookup_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QDnsLookup_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QDnsLookup_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QDnsLookup_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QDnsLookup_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QDnsLookup_Event(QDnsLookup*, intptr_t, QEvent*);
+bool miqt_exec_callback_QDnsLookup_EventFilter(QDnsLookup*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QDnsLookup_TimerEvent(QDnsLookup*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QDnsLookup_ChildEvent(QDnsLookup*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QDnsLookup_CustomEvent(QDnsLookup*, intptr_t, QEvent*);
+void miqt_exec_callback_QDnsLookup_ConnectNotify(QDnsLookup*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QDnsLookup_DisconnectNotify(QDnsLookup*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

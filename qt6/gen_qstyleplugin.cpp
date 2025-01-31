@@ -16,14 +16,14 @@
 extern "C" {
 #endif
 
-QStyle* miqt_exec_callback_QStylePlugin_Create(void*, intptr_t, struct miqt_string);
-bool miqt_exec_callback_QStylePlugin_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QStylePlugin_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QStylePlugin_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QStylePlugin_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QStylePlugin_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QStylePlugin_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QStylePlugin_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QStyle* miqt_exec_callback_QStylePlugin_Create(QStylePlugin*, intptr_t, struct miqt_string);
+bool miqt_exec_callback_QStylePlugin_Event(QStylePlugin*, intptr_t, QEvent*);
+bool miqt_exec_callback_QStylePlugin_EventFilter(QStylePlugin*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QStylePlugin_TimerEvent(QStylePlugin*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QStylePlugin_ChildEvent(QStylePlugin*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QStylePlugin_CustomEvent(QStylePlugin*, intptr_t, QEvent*);
+void miqt_exec_callback_QStylePlugin_ConnectNotify(QStylePlugin*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QStylePlugin_DisconnectNotify(QStylePlugin*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

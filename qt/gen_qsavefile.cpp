@@ -17,32 +17,32 @@
 extern "C" {
 #endif
 
-struct miqt_string miqt_exec_callback_QSaveFile_FileName(void*, intptr_t);
-bool miqt_exec_callback_QSaveFile_Open(void*, intptr_t, int);
-long long miqt_exec_callback_QSaveFile_WriteData(void*, intptr_t, const char*, long long);
-bool miqt_exec_callback_QSaveFile_IsSequential(void*, intptr_t);
-long long miqt_exec_callback_QSaveFile_Pos(void*, intptr_t);
-bool miqt_exec_callback_QSaveFile_Seek(void*, intptr_t, long long);
-bool miqt_exec_callback_QSaveFile_AtEnd(void*, intptr_t);
-long long miqt_exec_callback_QSaveFile_Size(void*, intptr_t);
-bool miqt_exec_callback_QSaveFile_Resize(void*, intptr_t, long long);
-int miqt_exec_callback_QSaveFile_Permissions(void*, intptr_t);
-bool miqt_exec_callback_QSaveFile_SetPermissions(void*, intptr_t, int);
-long long miqt_exec_callback_QSaveFile_ReadData(void*, intptr_t, char*, long long);
-long long miqt_exec_callback_QSaveFile_ReadLineData(void*, intptr_t, char*, long long);
-bool miqt_exec_callback_QSaveFile_Reset(void*, intptr_t);
-long long miqt_exec_callback_QSaveFile_BytesAvailable(void*, intptr_t);
-long long miqt_exec_callback_QSaveFile_BytesToWrite(void*, intptr_t);
-bool miqt_exec_callback_QSaveFile_CanReadLine(void*, intptr_t);
-bool miqt_exec_callback_QSaveFile_WaitForReadyRead(void*, intptr_t, int);
-bool miqt_exec_callback_QSaveFile_WaitForBytesWritten(void*, intptr_t, int);
-bool miqt_exec_callback_QSaveFile_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QSaveFile_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QSaveFile_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QSaveFile_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QSaveFile_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSaveFile_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QSaveFile_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+struct miqt_string miqt_exec_callback_QSaveFile_FileName(const QSaveFile*, intptr_t);
+bool miqt_exec_callback_QSaveFile_Open(QSaveFile*, intptr_t, int);
+long long miqt_exec_callback_QSaveFile_WriteData(QSaveFile*, intptr_t, const char*, long long);
+bool miqt_exec_callback_QSaveFile_IsSequential(const QSaveFile*, intptr_t);
+long long miqt_exec_callback_QSaveFile_Pos(const QSaveFile*, intptr_t);
+bool miqt_exec_callback_QSaveFile_Seek(QSaveFile*, intptr_t, long long);
+bool miqt_exec_callback_QSaveFile_AtEnd(const QSaveFile*, intptr_t);
+long long miqt_exec_callback_QSaveFile_Size(const QSaveFile*, intptr_t);
+bool miqt_exec_callback_QSaveFile_Resize(QSaveFile*, intptr_t, long long);
+int miqt_exec_callback_QSaveFile_Permissions(const QSaveFile*, intptr_t);
+bool miqt_exec_callback_QSaveFile_SetPermissions(QSaveFile*, intptr_t, int);
+long long miqt_exec_callback_QSaveFile_ReadData(QSaveFile*, intptr_t, char*, long long);
+long long miqt_exec_callback_QSaveFile_ReadLineData(QSaveFile*, intptr_t, char*, long long);
+bool miqt_exec_callback_QSaveFile_Reset(QSaveFile*, intptr_t);
+long long miqt_exec_callback_QSaveFile_BytesAvailable(const QSaveFile*, intptr_t);
+long long miqt_exec_callback_QSaveFile_BytesToWrite(const QSaveFile*, intptr_t);
+bool miqt_exec_callback_QSaveFile_CanReadLine(const QSaveFile*, intptr_t);
+bool miqt_exec_callback_QSaveFile_WaitForReadyRead(QSaveFile*, intptr_t, int);
+bool miqt_exec_callback_QSaveFile_WaitForBytesWritten(QSaveFile*, intptr_t, int);
+bool miqt_exec_callback_QSaveFile_Event(QSaveFile*, intptr_t, QEvent*);
+bool miqt_exec_callback_QSaveFile_EventFilter(QSaveFile*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QSaveFile_TimerEvent(QSaveFile*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSaveFile_ChildEvent(QSaveFile*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QSaveFile_CustomEvent(QSaveFile*, intptr_t, QEvent*);
+void miqt_exec_callback_QSaveFile_ConnectNotify(QSaveFile*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSaveFile_DisconnectNotify(QSaveFile*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -67,7 +67,7 @@ public:
 		}
 		
 
-		struct miqt_string callback_return_value = miqt_exec_callback_QSaveFile_FileName(const_cast<MiqtVirtualQSaveFile*>(this), handle__FileName);
+		struct miqt_string callback_return_value = miqt_exec_callback_QSaveFile_FileName(this, handle__FileName);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
 
 		return callback_return_value_QString;
@@ -147,7 +147,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QSaveFile_IsSequential(const_cast<MiqtVirtualQSaveFile*>(this), handle__IsSequential);
+		bool callback_return_value = miqt_exec_callback_QSaveFile_IsSequential(this, handle__IsSequential);
 
 		return callback_return_value;
 	}
@@ -169,7 +169,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QSaveFile_Pos(const_cast<MiqtVirtualQSaveFile*>(this), handle__Pos);
+		long long callback_return_value = miqt_exec_callback_QSaveFile_Pos(this, handle__Pos);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -216,7 +216,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QSaveFile_AtEnd(const_cast<MiqtVirtualQSaveFile*>(this), handle__AtEnd);
+		bool callback_return_value = miqt_exec_callback_QSaveFile_AtEnd(this, handle__AtEnd);
 
 		return callback_return_value;
 	}
@@ -238,7 +238,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QSaveFile_Size(const_cast<MiqtVirtualQSaveFile*>(this), handle__Size);
+		long long callback_return_value = miqt_exec_callback_QSaveFile_Size(this, handle__Size);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -285,7 +285,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QSaveFile_Permissions(const_cast<MiqtVirtualQSaveFile*>(this), handle__Permissions);
+		int callback_return_value = miqt_exec_callback_QSaveFile_Permissions(this, handle__Permissions);
 
 		return static_cast<QFileDevice::Permissions>(callback_return_value);
 	}
@@ -406,7 +406,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QSaveFile_BytesAvailable(const_cast<MiqtVirtualQSaveFile*>(this), handle__BytesAvailable);
+		long long callback_return_value = miqt_exec_callback_QSaveFile_BytesAvailable(this, handle__BytesAvailable);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -429,7 +429,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QSaveFile_BytesToWrite(const_cast<MiqtVirtualQSaveFile*>(this), handle__BytesToWrite);
+		long long callback_return_value = miqt_exec_callback_QSaveFile_BytesToWrite(this, handle__BytesToWrite);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -452,7 +452,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QSaveFile_CanReadLine(const_cast<MiqtVirtualQSaveFile*>(this), handle__CanReadLine);
+		bool callback_return_value = miqt_exec_callback_QSaveFile_CanReadLine(this, handle__CanReadLine);
 
 		return callback_return_value;
 	}

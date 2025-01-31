@@ -23,30 +23,30 @@ void miqt_exec_callback_QIODevice_BytesWritten(intptr_t, long long);
 void miqt_exec_callback_QIODevice_ChannelBytesWritten(intptr_t, int, long long);
 void miqt_exec_callback_QIODevice_AboutToClose(intptr_t);
 void miqt_exec_callback_QIODevice_ReadChannelFinished(intptr_t);
-bool miqt_exec_callback_QIODevice_IsSequential(void*, intptr_t);
-bool miqt_exec_callback_QIODevice_Open(void*, intptr_t, int);
-void miqt_exec_callback_QIODevice_Close(void*, intptr_t);
-long long miqt_exec_callback_QIODevice_Pos(void*, intptr_t);
-long long miqt_exec_callback_QIODevice_Size(void*, intptr_t);
-bool miqt_exec_callback_QIODevice_Seek(void*, intptr_t, long long);
-bool miqt_exec_callback_QIODevice_AtEnd(void*, intptr_t);
-bool miqt_exec_callback_QIODevice_Reset(void*, intptr_t);
-long long miqt_exec_callback_QIODevice_BytesAvailable(void*, intptr_t);
-long long miqt_exec_callback_QIODevice_BytesToWrite(void*, intptr_t);
-bool miqt_exec_callback_QIODevice_CanReadLine(void*, intptr_t);
-bool miqt_exec_callback_QIODevice_WaitForReadyRead(void*, intptr_t, int);
-bool miqt_exec_callback_QIODevice_WaitForBytesWritten(void*, intptr_t, int);
-long long miqt_exec_callback_QIODevice_ReadData(void*, intptr_t, char*, long long);
-long long miqt_exec_callback_QIODevice_ReadLineData(void*, intptr_t, char*, long long);
-long long miqt_exec_callback_QIODevice_SkipData(void*, intptr_t, long long);
-long long miqt_exec_callback_QIODevice_WriteData(void*, intptr_t, const char*, long long);
-bool miqt_exec_callback_QIODevice_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QIODevice_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QIODevice_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QIODevice_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QIODevice_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QIODevice_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QIODevice_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QIODevice_IsSequential(const QIODevice*, intptr_t);
+bool miqt_exec_callback_QIODevice_Open(QIODevice*, intptr_t, int);
+void miqt_exec_callback_QIODevice_Close(QIODevice*, intptr_t);
+long long miqt_exec_callback_QIODevice_Pos(const QIODevice*, intptr_t);
+long long miqt_exec_callback_QIODevice_Size(const QIODevice*, intptr_t);
+bool miqt_exec_callback_QIODevice_Seek(QIODevice*, intptr_t, long long);
+bool miqt_exec_callback_QIODevice_AtEnd(const QIODevice*, intptr_t);
+bool miqt_exec_callback_QIODevice_Reset(QIODevice*, intptr_t);
+long long miqt_exec_callback_QIODevice_BytesAvailable(const QIODevice*, intptr_t);
+long long miqt_exec_callback_QIODevice_BytesToWrite(const QIODevice*, intptr_t);
+bool miqt_exec_callback_QIODevice_CanReadLine(const QIODevice*, intptr_t);
+bool miqt_exec_callback_QIODevice_WaitForReadyRead(QIODevice*, intptr_t, int);
+bool miqt_exec_callback_QIODevice_WaitForBytesWritten(QIODevice*, intptr_t, int);
+long long miqt_exec_callback_QIODevice_ReadData(QIODevice*, intptr_t, char*, long long);
+long long miqt_exec_callback_QIODevice_ReadLineData(QIODevice*, intptr_t, char*, long long);
+long long miqt_exec_callback_QIODevice_SkipData(QIODevice*, intptr_t, long long);
+long long miqt_exec_callback_QIODevice_WriteData(QIODevice*, intptr_t, const char*, long long);
+bool miqt_exec_callback_QIODevice_Event(QIODevice*, intptr_t, QEvent*);
+bool miqt_exec_callback_QIODevice_EventFilter(QIODevice*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QIODevice_TimerEvent(QIODevice*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QIODevice_ChildEvent(QIODevice*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QIODevice_CustomEvent(QIODevice*, intptr_t, QEvent*);
+void miqt_exec_callback_QIODevice_ConnectNotify(QIODevice*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QIODevice_DisconnectNotify(QIODevice*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -69,7 +69,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QIODevice_IsSequential(const_cast<MiqtVirtualQIODevice*>(this), handle__IsSequential);
+		bool callback_return_value = miqt_exec_callback_QIODevice_IsSequential(this, handle__IsSequential);
 
 		return callback_return_value;
 	}
@@ -138,7 +138,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QIODevice_Pos(const_cast<MiqtVirtualQIODevice*>(this), handle__Pos);
+		long long callback_return_value = miqt_exec_callback_QIODevice_Pos(this, handle__Pos);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -161,7 +161,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QIODevice_Size(const_cast<MiqtVirtualQIODevice*>(this), handle__Size);
+		long long callback_return_value = miqt_exec_callback_QIODevice_Size(this, handle__Size);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -208,7 +208,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QIODevice_AtEnd(const_cast<MiqtVirtualQIODevice*>(this), handle__AtEnd);
+		bool callback_return_value = miqt_exec_callback_QIODevice_AtEnd(this, handle__AtEnd);
 
 		return callback_return_value;
 	}
@@ -252,7 +252,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QIODevice_BytesAvailable(const_cast<MiqtVirtualQIODevice*>(this), handle__BytesAvailable);
+		long long callback_return_value = miqt_exec_callback_QIODevice_BytesAvailable(this, handle__BytesAvailable);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -275,7 +275,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QIODevice_BytesToWrite(const_cast<MiqtVirtualQIODevice*>(this), handle__BytesToWrite);
+		long long callback_return_value = miqt_exec_callback_QIODevice_BytesToWrite(this, handle__BytesToWrite);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -298,7 +298,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QIODevice_CanReadLine(const_cast<MiqtVirtualQIODevice*>(this), handle__CanReadLine);
+		bool callback_return_value = miqt_exec_callback_QIODevice_CanReadLine(this, handle__CanReadLine);
 
 		return callback_return_value;
 	}

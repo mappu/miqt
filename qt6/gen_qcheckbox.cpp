@@ -45,57 +45,57 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QCheckBox_StateChanged(intptr_t, int);
-QSize* miqt_exec_callback_QCheckBox_SizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QCheckBox_MinimumSizeHint(void*, intptr_t);
-bool miqt_exec_callback_QCheckBox_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QCheckBox_HitButton(void*, intptr_t, QPoint*);
-void miqt_exec_callback_QCheckBox_CheckStateSet(void*, intptr_t);
-void miqt_exec_callback_QCheckBox_NextCheckState(void*, intptr_t);
-void miqt_exec_callback_QCheckBox_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QCheckBox_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QCheckBox_InitStyleOption(void*, intptr_t, QStyleOptionButton*);
-void miqt_exec_callback_QCheckBox_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QCheckBox_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QCheckBox_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QCheckBox_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QCheckBox_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QCheckBox_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QCheckBox_ChangeEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QCheckBox_TimerEvent(void*, intptr_t, QTimerEvent*);
-int miqt_exec_callback_QCheckBox_DevType(void*, intptr_t);
-void miqt_exec_callback_QCheckBox_SetVisible(void*, intptr_t, bool);
-int miqt_exec_callback_QCheckBox_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QCheckBox_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QCheckBox_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QCheckBox_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QCheckBox_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QCheckBox_EnterEvent(void*, intptr_t, QEnterEvent*);
-void miqt_exec_callback_QCheckBox_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QCheckBox_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QCheckBox_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QCheckBox_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QCheckBox_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QCheckBox_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QCheckBox_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QCheckBox_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QCheckBox_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QCheckBox_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QCheckBox_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QCheckBox_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QCheckBox_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QCheckBox_NativeEvent(void*, intptr_t, struct miqt_string, void*, intptr_t*);
-int miqt_exec_callback_QCheckBox_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QCheckBox_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QCheckBox_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QCheckBox_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QCheckBox_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QCheckBox_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QCheckBox_FocusNextPrevChild(void*, intptr_t, bool);
-bool miqt_exec_callback_QCheckBox_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QCheckBox_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QCheckBox_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QCheckBox_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QCheckBox_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QSize* miqt_exec_callback_QCheckBox_SizeHint(const QCheckBox*, intptr_t);
+QSize* miqt_exec_callback_QCheckBox_MinimumSizeHint(const QCheckBox*, intptr_t);
+bool miqt_exec_callback_QCheckBox_Event(QCheckBox*, intptr_t, QEvent*);
+bool miqt_exec_callback_QCheckBox_HitButton(const QCheckBox*, intptr_t, QPoint*);
+void miqt_exec_callback_QCheckBox_CheckStateSet(QCheckBox*, intptr_t);
+void miqt_exec_callback_QCheckBox_NextCheckState(QCheckBox*, intptr_t);
+void miqt_exec_callback_QCheckBox_PaintEvent(QCheckBox*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QCheckBox_MouseMoveEvent(QCheckBox*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QCheckBox_InitStyleOption(const QCheckBox*, intptr_t, QStyleOptionButton*);
+void miqt_exec_callback_QCheckBox_KeyPressEvent(QCheckBox*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QCheckBox_KeyReleaseEvent(QCheckBox*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QCheckBox_MousePressEvent(QCheckBox*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QCheckBox_MouseReleaseEvent(QCheckBox*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QCheckBox_FocusInEvent(QCheckBox*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QCheckBox_FocusOutEvent(QCheckBox*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QCheckBox_ChangeEvent(QCheckBox*, intptr_t, QEvent*);
+void miqt_exec_callback_QCheckBox_TimerEvent(QCheckBox*, intptr_t, QTimerEvent*);
+int miqt_exec_callback_QCheckBox_DevType(const QCheckBox*, intptr_t);
+void miqt_exec_callback_QCheckBox_SetVisible(QCheckBox*, intptr_t, bool);
+int miqt_exec_callback_QCheckBox_HeightForWidth(const QCheckBox*, intptr_t, int);
+bool miqt_exec_callback_QCheckBox_HasHeightForWidth(const QCheckBox*, intptr_t);
+QPaintEngine* miqt_exec_callback_QCheckBox_PaintEngine(const QCheckBox*, intptr_t);
+void miqt_exec_callback_QCheckBox_MouseDoubleClickEvent(QCheckBox*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QCheckBox_WheelEvent(QCheckBox*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QCheckBox_EnterEvent(QCheckBox*, intptr_t, QEnterEvent*);
+void miqt_exec_callback_QCheckBox_LeaveEvent(QCheckBox*, intptr_t, QEvent*);
+void miqt_exec_callback_QCheckBox_MoveEvent(QCheckBox*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QCheckBox_ResizeEvent(QCheckBox*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QCheckBox_CloseEvent(QCheckBox*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QCheckBox_ContextMenuEvent(QCheckBox*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QCheckBox_TabletEvent(QCheckBox*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QCheckBox_ActionEvent(QCheckBox*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QCheckBox_DragEnterEvent(QCheckBox*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QCheckBox_DragMoveEvent(QCheckBox*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QCheckBox_DragLeaveEvent(QCheckBox*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QCheckBox_DropEvent(QCheckBox*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QCheckBox_ShowEvent(QCheckBox*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QCheckBox_HideEvent(QCheckBox*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QCheckBox_NativeEvent(QCheckBox*, intptr_t, struct miqt_string, void*, intptr_t*);
+int miqt_exec_callback_QCheckBox_Metric(const QCheckBox*, intptr_t, int);
+void miqt_exec_callback_QCheckBox_InitPainter(const QCheckBox*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QCheckBox_Redirected(const QCheckBox*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QCheckBox_SharedPainter(const QCheckBox*, intptr_t);
+void miqt_exec_callback_QCheckBox_InputMethodEvent(QCheckBox*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QCheckBox_InputMethodQuery(const QCheckBox*, intptr_t, int);
+bool miqt_exec_callback_QCheckBox_FocusNextPrevChild(QCheckBox*, intptr_t, bool);
+bool miqt_exec_callback_QCheckBox_EventFilter(QCheckBox*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QCheckBox_ChildEvent(QCheckBox*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QCheckBox_CustomEvent(QCheckBox*, intptr_t, QEvent*);
+void miqt_exec_callback_QCheckBox_ConnectNotify(QCheckBox*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QCheckBox_DisconnectNotify(QCheckBox*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -120,7 +120,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QCheckBox_SizeHint(const_cast<MiqtVirtualQCheckBox*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QCheckBox_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -142,7 +142,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QCheckBox_MinimumSizeHint(const_cast<MiqtVirtualQCheckBox*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QCheckBox_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -190,7 +190,7 @@ public:
 		// Cast returned reference into pointer
 		QPoint* sigval1 = const_cast<QPoint*>(&pos_ret);
 
-		bool callback_return_value = miqt_exec_callback_QCheckBox_HitButton(const_cast<MiqtVirtualQCheckBox*>(this), handle__HitButton, sigval1);
+		bool callback_return_value = miqt_exec_callback_QCheckBox_HitButton(this, handle__HitButton, sigval1);
 
 		return callback_return_value;
 	}
@@ -308,7 +308,7 @@ public:
 		
 		QStyleOptionButton* sigval1 = option;
 
-		miqt_exec_callback_QCheckBox_InitStyleOption(const_cast<MiqtVirtualQCheckBox*>(this), handle__InitStyleOption, sigval1);
+		miqt_exec_callback_QCheckBox_InitStyleOption(this, handle__InitStyleOption, sigval1);
 
 		
 	}
@@ -522,7 +522,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QCheckBox_DevType(const_cast<MiqtVirtualQCheckBox*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QCheckBox_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -569,7 +569,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QCheckBox_HeightForWidth(const_cast<MiqtVirtualQCheckBox*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QCheckBox_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -591,7 +591,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QCheckBox_HasHeightForWidth(const_cast<MiqtVirtualQCheckBox*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QCheckBox_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -613,7 +613,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QCheckBox_PaintEngine(const_cast<MiqtVirtualQCheckBox*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QCheckBox_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -1053,7 +1053,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QCheckBox_Metric(const_cast<MiqtVirtualQCheckBox*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QCheckBox_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1077,7 +1077,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QCheckBox_InitPainter(const_cast<MiqtVirtualQCheckBox*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QCheckBox_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -1100,7 +1100,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QCheckBox_Redirected(const_cast<MiqtVirtualQCheckBox*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QCheckBox_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1122,7 +1122,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QCheckBox_SharedPainter(const_cast<MiqtVirtualQCheckBox*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QCheckBox_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -1170,7 +1170,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QCheckBox_InputMethodQuery(const_cast<MiqtVirtualQCheckBox*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QCheckBox_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}

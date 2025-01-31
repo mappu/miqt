@@ -39,14 +39,14 @@ void miqt_exec_callback_QNetworkAccessManager_SslErrors(intptr_t, QNetworkReply*
 void miqt_exec_callback_QNetworkAccessManager_PreSharedKeyAuthenticationRequired(intptr_t, QNetworkReply*, QSslPreSharedKeyAuthenticator*);
 void miqt_exec_callback_QNetworkAccessManager_NetworkSessionConnected(intptr_t);
 void miqt_exec_callback_QNetworkAccessManager_NetworkAccessibleChanged(intptr_t, int);
-QNetworkReply* miqt_exec_callback_QNetworkAccessManager_CreateRequest(void*, intptr_t, int, QNetworkRequest*, QIODevice*);
-bool miqt_exec_callback_QNetworkAccessManager_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QNetworkAccessManager_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QNetworkAccessManager_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QNetworkAccessManager_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QNetworkAccessManager_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QNetworkAccessManager_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QNetworkAccessManager_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QNetworkReply* miqt_exec_callback_QNetworkAccessManager_CreateRequest(QNetworkAccessManager*, intptr_t, int, QNetworkRequest*, QIODevice*);
+bool miqt_exec_callback_QNetworkAccessManager_Event(QNetworkAccessManager*, intptr_t, QEvent*);
+bool miqt_exec_callback_QNetworkAccessManager_EventFilter(QNetworkAccessManager*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QNetworkAccessManager_TimerEvent(QNetworkAccessManager*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QNetworkAccessManager_ChildEvent(QNetworkAccessManager*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QNetworkAccessManager_CustomEvent(QNetworkAccessManager*, intptr_t, QEvent*);
+void miqt_exec_callback_QNetworkAccessManager_ConnectNotify(QNetworkAccessManager*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QNetworkAccessManager_DisconnectNotify(QNetworkAccessManager*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

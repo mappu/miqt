@@ -54,53 +54,53 @@ void miqt_exec_callback_QLineEdit_ReturnPressed(intptr_t);
 void miqt_exec_callback_QLineEdit_EditingFinished(intptr_t);
 void miqt_exec_callback_QLineEdit_SelectionChanged(intptr_t);
 void miqt_exec_callback_QLineEdit_InputRejected(intptr_t);
-QSize* miqt_exec_callback_QLineEdit_SizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QLineEdit_MinimumSizeHint(void*, intptr_t);
-void miqt_exec_callback_QLineEdit_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QLineEdit_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QLineEdit_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QLineEdit_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QLineEdit_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QLineEdit_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QLineEdit_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QLineEdit_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QLineEdit_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QLineEdit_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QLineEdit_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QLineEdit_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QLineEdit_ChangeEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QLineEdit_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QLineEdit_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QLineEdit_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QLineEdit_Event(void*, intptr_t, QEvent*);
-int miqt_exec_callback_QLineEdit_DevType(void*, intptr_t);
-void miqt_exec_callback_QLineEdit_SetVisible(void*, intptr_t, bool);
-int miqt_exec_callback_QLineEdit_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QLineEdit_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QLineEdit_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QLineEdit_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QLineEdit_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QLineEdit_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QLineEdit_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QLineEdit_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QLineEdit_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QLineEdit_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QLineEdit_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QLineEdit_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QLineEdit_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QLineEdit_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QLineEdit_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-int miqt_exec_callback_QLineEdit_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QLineEdit_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QLineEdit_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QLineEdit_SharedPainter(void*, intptr_t);
-bool miqt_exec_callback_QLineEdit_FocusNextPrevChild(void*, intptr_t, bool);
-bool miqt_exec_callback_QLineEdit_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QLineEdit_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QLineEdit_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QLineEdit_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QLineEdit_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QLineEdit_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QSize* miqt_exec_callback_QLineEdit_SizeHint(const QLineEdit*, intptr_t);
+QSize* miqt_exec_callback_QLineEdit_MinimumSizeHint(const QLineEdit*, intptr_t);
+void miqt_exec_callback_QLineEdit_MousePressEvent(QLineEdit*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QLineEdit_MouseMoveEvent(QLineEdit*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QLineEdit_MouseReleaseEvent(QLineEdit*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QLineEdit_MouseDoubleClickEvent(QLineEdit*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QLineEdit_KeyPressEvent(QLineEdit*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QLineEdit_FocusInEvent(QLineEdit*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QLineEdit_FocusOutEvent(QLineEdit*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QLineEdit_PaintEvent(QLineEdit*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QLineEdit_DragEnterEvent(QLineEdit*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QLineEdit_DragMoveEvent(QLineEdit*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QLineEdit_DragLeaveEvent(QLineEdit*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QLineEdit_DropEvent(QLineEdit*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QLineEdit_ChangeEvent(QLineEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_QLineEdit_ContextMenuEvent(QLineEdit*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QLineEdit_InputMethodEvent(QLineEdit*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QLineEdit_InputMethodQuery(const QLineEdit*, intptr_t, int);
+bool miqt_exec_callback_QLineEdit_Event(QLineEdit*, intptr_t, QEvent*);
+int miqt_exec_callback_QLineEdit_DevType(const QLineEdit*, intptr_t);
+void miqt_exec_callback_QLineEdit_SetVisible(QLineEdit*, intptr_t, bool);
+int miqt_exec_callback_QLineEdit_HeightForWidth(const QLineEdit*, intptr_t, int);
+bool miqt_exec_callback_QLineEdit_HasHeightForWidth(const QLineEdit*, intptr_t);
+QPaintEngine* miqt_exec_callback_QLineEdit_PaintEngine(const QLineEdit*, intptr_t);
+void miqt_exec_callback_QLineEdit_WheelEvent(QLineEdit*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QLineEdit_KeyReleaseEvent(QLineEdit*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QLineEdit_EnterEvent(QLineEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_QLineEdit_LeaveEvent(QLineEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_QLineEdit_MoveEvent(QLineEdit*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QLineEdit_ResizeEvent(QLineEdit*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QLineEdit_CloseEvent(QLineEdit*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QLineEdit_TabletEvent(QLineEdit*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QLineEdit_ActionEvent(QLineEdit*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QLineEdit_ShowEvent(QLineEdit*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QLineEdit_HideEvent(QLineEdit*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QLineEdit_NativeEvent(QLineEdit*, intptr_t, struct miqt_string, void*, long*);
+int miqt_exec_callback_QLineEdit_Metric(const QLineEdit*, intptr_t, int);
+void miqt_exec_callback_QLineEdit_InitPainter(const QLineEdit*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QLineEdit_Redirected(const QLineEdit*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QLineEdit_SharedPainter(const QLineEdit*, intptr_t);
+bool miqt_exec_callback_QLineEdit_FocusNextPrevChild(QLineEdit*, intptr_t, bool);
+bool miqt_exec_callback_QLineEdit_EventFilter(QLineEdit*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QLineEdit_TimerEvent(QLineEdit*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QLineEdit_ChildEvent(QLineEdit*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QLineEdit_CustomEvent(QLineEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_QLineEdit_ConnectNotify(QLineEdit*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QLineEdit_DisconnectNotify(QLineEdit*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -125,7 +125,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QLineEdit_SizeHint(const_cast<MiqtVirtualQLineEdit*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QLineEdit_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -147,7 +147,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QLineEdit_MinimumSizeHint(const_cast<MiqtVirtualQLineEdit*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QLineEdit_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -531,7 +531,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QLineEdit_InputMethodQuery(const_cast<MiqtVirtualQLineEdit*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QLineEdit_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}
@@ -576,7 +576,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QLineEdit_DevType(const_cast<MiqtVirtualQLineEdit*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QLineEdit_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -623,7 +623,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QLineEdit_HeightForWidth(const_cast<MiqtVirtualQLineEdit*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QLineEdit_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -645,7 +645,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QLineEdit_HasHeightForWidth(const_cast<MiqtVirtualQLineEdit*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QLineEdit_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -667,7 +667,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QLineEdit_PaintEngine(const_cast<MiqtVirtualQLineEdit*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QLineEdit_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -986,7 +986,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QLineEdit_Metric(const_cast<MiqtVirtualQLineEdit*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QLineEdit_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1010,7 +1010,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QLineEdit_InitPainter(const_cast<MiqtVirtualQLineEdit*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QLineEdit_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -1033,7 +1033,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QLineEdit_Redirected(const_cast<MiqtVirtualQLineEdit*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QLineEdit_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1055,7 +1055,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QLineEdit_SharedPainter(const_cast<MiqtVirtualQLineEdit*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QLineEdit_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}

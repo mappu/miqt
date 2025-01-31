@@ -45,101 +45,101 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QSplitter_SplitterMoved(intptr_t, int, int);
-QSize* miqt_exec_callback_QSplitter_SizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QSplitter_MinimumSizeHint(void*, intptr_t);
-QSplitterHandle* miqt_exec_callback_QSplitter_CreateHandle(void*, intptr_t);
-void miqt_exec_callback_QSplitter_ChildEvent(void*, intptr_t, QChildEvent*);
-bool miqt_exec_callback_QSplitter_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSplitter_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QSplitter_ChangeEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSplitter_PaintEvent(void*, intptr_t, QPaintEvent*);
-int miqt_exec_callback_QSplitter_DevType(void*, intptr_t);
-void miqt_exec_callback_QSplitter_SetVisible(void*, intptr_t, bool);
-int miqt_exec_callback_QSplitter_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QSplitter_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QSplitter_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QSplitter_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QSplitter_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QSplitter_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QSplitter_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QSplitter_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QSplitter_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QSplitter_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QSplitter_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QSplitter_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QSplitter_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSplitter_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSplitter_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QSplitter_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QSplitter_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QSplitter_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QSplitter_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QSplitter_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QSplitter_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QSplitter_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QSplitter_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QSplitter_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QSplitter_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QSplitter_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-int miqt_exec_callback_QSplitter_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QSplitter_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QSplitter_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QSplitter_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QSplitter_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QSplitter_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QSplitter_FocusNextPrevChild(void*, intptr_t, bool);
-bool miqt_exec_callback_QSplitter_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QSplitter_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QSplitter_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSplitter_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QSplitter_DisconnectNotify(void*, intptr_t, QMetaMethod*);
-QSize* miqt_exec_callback_QSplitterHandle_SizeHint(void*, intptr_t);
-void miqt_exec_callback_QSplitterHandle_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QSplitterHandle_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QSplitterHandle_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QSplitterHandle_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QSplitterHandle_ResizeEvent(void*, intptr_t, QResizeEvent*);
-bool miqt_exec_callback_QSplitterHandle_Event(void*, intptr_t, QEvent*);
-int miqt_exec_callback_QSplitterHandle_DevType(void*, intptr_t);
-void miqt_exec_callback_QSplitterHandle_SetVisible(void*, intptr_t, bool);
-QSize* miqt_exec_callback_QSplitterHandle_MinimumSizeHint(void*, intptr_t);
-int miqt_exec_callback_QSplitterHandle_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QSplitterHandle_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QSplitterHandle_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QSplitterHandle_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QSplitterHandle_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QSplitterHandle_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QSplitterHandle_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QSplitterHandle_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QSplitterHandle_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QSplitterHandle_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSplitterHandle_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSplitterHandle_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QSplitterHandle_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QSplitterHandle_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QSplitterHandle_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QSplitterHandle_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QSplitterHandle_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QSplitterHandle_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QSplitterHandle_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QSplitterHandle_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QSplitterHandle_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QSplitterHandle_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QSplitterHandle_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-void miqt_exec_callback_QSplitterHandle_ChangeEvent(void*, intptr_t, QEvent*);
-int miqt_exec_callback_QSplitterHandle_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QSplitterHandle_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QSplitterHandle_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QSplitterHandle_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QSplitterHandle_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QSplitterHandle_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QSplitterHandle_FocusNextPrevChild(void*, intptr_t, bool);
-bool miqt_exec_callback_QSplitterHandle_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QSplitterHandle_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QSplitterHandle_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QSplitterHandle_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSplitterHandle_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QSplitterHandle_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QSize* miqt_exec_callback_QSplitter_SizeHint(const QSplitter*, intptr_t);
+QSize* miqt_exec_callback_QSplitter_MinimumSizeHint(const QSplitter*, intptr_t);
+QSplitterHandle* miqt_exec_callback_QSplitter_CreateHandle(QSplitter*, intptr_t);
+void miqt_exec_callback_QSplitter_ChildEvent(QSplitter*, intptr_t, QChildEvent*);
+bool miqt_exec_callback_QSplitter_Event(QSplitter*, intptr_t, QEvent*);
+void miqt_exec_callback_QSplitter_ResizeEvent(QSplitter*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QSplitter_ChangeEvent(QSplitter*, intptr_t, QEvent*);
+void miqt_exec_callback_QSplitter_PaintEvent(QSplitter*, intptr_t, QPaintEvent*);
+int miqt_exec_callback_QSplitter_DevType(const QSplitter*, intptr_t);
+void miqt_exec_callback_QSplitter_SetVisible(QSplitter*, intptr_t, bool);
+int miqt_exec_callback_QSplitter_HeightForWidth(const QSplitter*, intptr_t, int);
+bool miqt_exec_callback_QSplitter_HasHeightForWidth(const QSplitter*, intptr_t);
+QPaintEngine* miqt_exec_callback_QSplitter_PaintEngine(const QSplitter*, intptr_t);
+void miqt_exec_callback_QSplitter_MousePressEvent(QSplitter*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSplitter_MouseReleaseEvent(QSplitter*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSplitter_MouseDoubleClickEvent(QSplitter*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSplitter_MouseMoveEvent(QSplitter*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSplitter_WheelEvent(QSplitter*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QSplitter_KeyPressEvent(QSplitter*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QSplitter_KeyReleaseEvent(QSplitter*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QSplitter_FocusInEvent(QSplitter*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QSplitter_FocusOutEvent(QSplitter*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QSplitter_EnterEvent(QSplitter*, intptr_t, QEvent*);
+void miqt_exec_callback_QSplitter_LeaveEvent(QSplitter*, intptr_t, QEvent*);
+void miqt_exec_callback_QSplitter_MoveEvent(QSplitter*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QSplitter_CloseEvent(QSplitter*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QSplitter_ContextMenuEvent(QSplitter*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QSplitter_TabletEvent(QSplitter*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QSplitter_ActionEvent(QSplitter*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QSplitter_DragEnterEvent(QSplitter*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QSplitter_DragMoveEvent(QSplitter*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QSplitter_DragLeaveEvent(QSplitter*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QSplitter_DropEvent(QSplitter*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QSplitter_ShowEvent(QSplitter*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QSplitter_HideEvent(QSplitter*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QSplitter_NativeEvent(QSplitter*, intptr_t, struct miqt_string, void*, long*);
+int miqt_exec_callback_QSplitter_Metric(const QSplitter*, intptr_t, int);
+void miqt_exec_callback_QSplitter_InitPainter(const QSplitter*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QSplitter_Redirected(const QSplitter*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QSplitter_SharedPainter(const QSplitter*, intptr_t);
+void miqt_exec_callback_QSplitter_InputMethodEvent(QSplitter*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QSplitter_InputMethodQuery(const QSplitter*, intptr_t, int);
+bool miqt_exec_callback_QSplitter_FocusNextPrevChild(QSplitter*, intptr_t, bool);
+bool miqt_exec_callback_QSplitter_EventFilter(QSplitter*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QSplitter_TimerEvent(QSplitter*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSplitter_CustomEvent(QSplitter*, intptr_t, QEvent*);
+void miqt_exec_callback_QSplitter_ConnectNotify(QSplitter*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSplitter_DisconnectNotify(QSplitter*, intptr_t, QMetaMethod*);
+QSize* miqt_exec_callback_QSplitterHandle_SizeHint(const QSplitterHandle*, intptr_t);
+void miqt_exec_callback_QSplitterHandle_PaintEvent(QSplitterHandle*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QSplitterHandle_MouseMoveEvent(QSplitterHandle*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSplitterHandle_MousePressEvent(QSplitterHandle*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSplitterHandle_MouseReleaseEvent(QSplitterHandle*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSplitterHandle_ResizeEvent(QSplitterHandle*, intptr_t, QResizeEvent*);
+bool miqt_exec_callback_QSplitterHandle_Event(QSplitterHandle*, intptr_t, QEvent*);
+int miqt_exec_callback_QSplitterHandle_DevType(const QSplitterHandle*, intptr_t);
+void miqt_exec_callback_QSplitterHandle_SetVisible(QSplitterHandle*, intptr_t, bool);
+QSize* miqt_exec_callback_QSplitterHandle_MinimumSizeHint(const QSplitterHandle*, intptr_t);
+int miqt_exec_callback_QSplitterHandle_HeightForWidth(const QSplitterHandle*, intptr_t, int);
+bool miqt_exec_callback_QSplitterHandle_HasHeightForWidth(const QSplitterHandle*, intptr_t);
+QPaintEngine* miqt_exec_callback_QSplitterHandle_PaintEngine(const QSplitterHandle*, intptr_t);
+void miqt_exec_callback_QSplitterHandle_MouseDoubleClickEvent(QSplitterHandle*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QSplitterHandle_WheelEvent(QSplitterHandle*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QSplitterHandle_KeyPressEvent(QSplitterHandle*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QSplitterHandle_KeyReleaseEvent(QSplitterHandle*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QSplitterHandle_FocusInEvent(QSplitterHandle*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QSplitterHandle_FocusOutEvent(QSplitterHandle*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QSplitterHandle_EnterEvent(QSplitterHandle*, intptr_t, QEvent*);
+void miqt_exec_callback_QSplitterHandle_LeaveEvent(QSplitterHandle*, intptr_t, QEvent*);
+void miqt_exec_callback_QSplitterHandle_MoveEvent(QSplitterHandle*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QSplitterHandle_CloseEvent(QSplitterHandle*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QSplitterHandle_ContextMenuEvent(QSplitterHandle*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QSplitterHandle_TabletEvent(QSplitterHandle*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QSplitterHandle_ActionEvent(QSplitterHandle*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QSplitterHandle_DragEnterEvent(QSplitterHandle*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QSplitterHandle_DragMoveEvent(QSplitterHandle*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QSplitterHandle_DragLeaveEvent(QSplitterHandle*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QSplitterHandle_DropEvent(QSplitterHandle*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QSplitterHandle_ShowEvent(QSplitterHandle*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QSplitterHandle_HideEvent(QSplitterHandle*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QSplitterHandle_NativeEvent(QSplitterHandle*, intptr_t, struct miqt_string, void*, long*);
+void miqt_exec_callback_QSplitterHandle_ChangeEvent(QSplitterHandle*, intptr_t, QEvent*);
+int miqt_exec_callback_QSplitterHandle_Metric(const QSplitterHandle*, intptr_t, int);
+void miqt_exec_callback_QSplitterHandle_InitPainter(const QSplitterHandle*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QSplitterHandle_Redirected(const QSplitterHandle*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QSplitterHandle_SharedPainter(const QSplitterHandle*, intptr_t);
+void miqt_exec_callback_QSplitterHandle_InputMethodEvent(QSplitterHandle*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QSplitterHandle_InputMethodQuery(const QSplitterHandle*, intptr_t, int);
+bool miqt_exec_callback_QSplitterHandle_FocusNextPrevChild(QSplitterHandle*, intptr_t, bool);
+bool miqt_exec_callback_QSplitterHandle_EventFilter(QSplitterHandle*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QSplitterHandle_TimerEvent(QSplitterHandle*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSplitterHandle_ChildEvent(QSplitterHandle*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QSplitterHandle_CustomEvent(QSplitterHandle*, intptr_t, QEvent*);
+void miqt_exec_callback_QSplitterHandle_ConnectNotify(QSplitterHandle*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSplitterHandle_DisconnectNotify(QSplitterHandle*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -164,7 +164,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QSplitter_SizeHint(const_cast<MiqtVirtualQSplitter*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QSplitter_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -186,7 +186,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QSplitter_MinimumSizeHint(const_cast<MiqtVirtualQSplitter*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QSplitter_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -349,7 +349,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QSplitter_DevType(const_cast<MiqtVirtualQSplitter*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QSplitter_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -396,7 +396,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QSplitter_HeightForWidth(const_cast<MiqtVirtualQSplitter*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QSplitter_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -418,7 +418,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QSplitter_HasHeightForWidth(const_cast<MiqtVirtualQSplitter*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QSplitter_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -440,7 +440,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QSplitter_PaintEngine(const_cast<MiqtVirtualQSplitter*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QSplitter_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -1023,7 +1023,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QSplitter_Metric(const_cast<MiqtVirtualQSplitter*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QSplitter_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1047,7 +1047,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QSplitter_InitPainter(const_cast<MiqtVirtualQSplitter*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QSplitter_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -1070,7 +1070,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QSplitter_Redirected(const_cast<MiqtVirtualQSplitter*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QSplitter_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1092,7 +1092,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QSplitter_SharedPainter(const_cast<MiqtVirtualQSplitter*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QSplitter_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -1140,7 +1140,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QSplitter_InputMethodQuery(const_cast<MiqtVirtualQSplitter*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QSplitter_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}
@@ -2230,7 +2230,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QSplitterHandle_SizeHint(const_cast<MiqtVirtualQSplitterHandle*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QSplitterHandle_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -2395,7 +2395,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QSplitterHandle_DevType(const_cast<MiqtVirtualQSplitterHandle*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QSplitterHandle_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -2441,7 +2441,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QSplitterHandle_MinimumSizeHint(const_cast<MiqtVirtualQSplitterHandle*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QSplitterHandle_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -2464,7 +2464,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QSplitterHandle_HeightForWidth(const_cast<MiqtVirtualQSplitterHandle*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QSplitterHandle_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -2486,7 +2486,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QSplitterHandle_HasHeightForWidth(const_cast<MiqtVirtualQSplitterHandle*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QSplitterHandle_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -2508,7 +2508,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QSplitterHandle_PaintEngine(const_cast<MiqtVirtualQSplitterHandle*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QSplitterHandle_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -3043,7 +3043,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QSplitterHandle_Metric(const_cast<MiqtVirtualQSplitterHandle*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QSplitterHandle_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -3067,7 +3067,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QSplitterHandle_InitPainter(const_cast<MiqtVirtualQSplitterHandle*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QSplitterHandle_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -3090,7 +3090,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QSplitterHandle_Redirected(const_cast<MiqtVirtualQSplitterHandle*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QSplitterHandle_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -3112,7 +3112,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QSplitterHandle_SharedPainter(const_cast<MiqtVirtualQSplitterHandle*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QSplitterHandle_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -3160,7 +3160,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QSplitterHandle_InputMethodQuery(const_cast<MiqtVirtualQSplitterHandle*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QSplitterHandle_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}

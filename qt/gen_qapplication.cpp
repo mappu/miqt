@@ -28,14 +28,14 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QApplication_FocusChanged(intptr_t, QWidget*, QWidget*);
-bool miqt_exec_callback_QApplication_Notify(void*, intptr_t, QObject*, QEvent*);
-bool miqt_exec_callback_QApplication_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QApplication_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QApplication_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QApplication_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QApplication_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QApplication_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QApplication_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QApplication_Notify(QApplication*, intptr_t, QObject*, QEvent*);
+bool miqt_exec_callback_QApplication_Event(QApplication*, intptr_t, QEvent*);
+bool miqt_exec_callback_QApplication_EventFilter(QApplication*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QApplication_TimerEvent(QApplication*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QApplication_ChildEvent(QApplication*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QApplication_CustomEvent(QApplication*, intptr_t, QEvent*);
+void miqt_exec_callback_QApplication_ConnectNotify(QApplication*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QApplication_DisconnectNotify(QApplication*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

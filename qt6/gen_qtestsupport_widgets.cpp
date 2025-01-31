@@ -9,8 +9,8 @@
 extern "C" {
 #endif
 
-QTest__QTouchEventWidgetSequence* miqt_exec_callback_QTest__QTouchEventWidgetSequence_Stationary(void*, intptr_t, int);
-bool miqt_exec_callback_QTest__QTouchEventWidgetSequence_Commit(void*, intptr_t, bool);
+QTest__QTouchEventWidgetSequence* miqt_exec_callback_QTest__QTouchEventWidgetSequence_Stationary(QTest__QTouchEventWidgetSequence*, intptr_t, int);
+bool miqt_exec_callback_QTest__QTouchEventWidgetSequence_Commit(QTest__QTouchEventWidgetSequence*, intptr_t, bool);
 #ifdef __cplusplus
 } /* extern C */
 #endif

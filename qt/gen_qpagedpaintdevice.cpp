@@ -15,16 +15,16 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QPagedPaintDevice_NewPage(void*, intptr_t);
-void miqt_exec_callback_QPagedPaintDevice_SetPageSizeWithSize(void*, intptr_t, int);
-void miqt_exec_callback_QPagedPaintDevice_SetPageSizeMM(void*, intptr_t, QSizeF*);
-void miqt_exec_callback_QPagedPaintDevice_SetMargins(void*, intptr_t, QPagedPaintDevice__Margins*);
-int miqt_exec_callback_QPagedPaintDevice_DevType(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QPagedPaintDevice_PaintEngine(void*, intptr_t);
-int miqt_exec_callback_QPagedPaintDevice_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QPagedPaintDevice_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QPagedPaintDevice_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QPagedPaintDevice_SharedPainter(void*, intptr_t);
+bool miqt_exec_callback_QPagedPaintDevice_NewPage(QPagedPaintDevice*, intptr_t);
+void miqt_exec_callback_QPagedPaintDevice_SetPageSizeWithSize(QPagedPaintDevice*, intptr_t, int);
+void miqt_exec_callback_QPagedPaintDevice_SetPageSizeMM(QPagedPaintDevice*, intptr_t, QSizeF*);
+void miqt_exec_callback_QPagedPaintDevice_SetMargins(QPagedPaintDevice*, intptr_t, QPagedPaintDevice__Margins*);
+int miqt_exec_callback_QPagedPaintDevice_DevType(const QPagedPaintDevice*, intptr_t);
+QPaintEngine* miqt_exec_callback_QPagedPaintDevice_PaintEngine(const QPagedPaintDevice*, intptr_t);
+int miqt_exec_callback_QPagedPaintDevice_Metric(const QPagedPaintDevice*, intptr_t, int);
+void miqt_exec_callback_QPagedPaintDevice_InitPainter(const QPagedPaintDevice*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QPagedPaintDevice_Redirected(const QPagedPaintDevice*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QPagedPaintDevice_SharedPainter(const QPagedPaintDevice*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -138,7 +138,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QPagedPaintDevice_DevType(const_cast<MiqtVirtualQPagedPaintDevice*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QPagedPaintDevice_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -160,7 +160,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QPagedPaintDevice_PaintEngine(const_cast<MiqtVirtualQPagedPaintDevice*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QPagedPaintDevice_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -177,7 +177,7 @@ public:
 		QPaintDevice::PaintDeviceMetric metric_ret = metric;
 		int sigval1 = static_cast<int>(metric_ret);
 
-		int callback_return_value = miqt_exec_callback_QPagedPaintDevice_Metric(const_cast<MiqtVirtualQPagedPaintDevice*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QPagedPaintDevice_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -201,7 +201,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QPagedPaintDevice_InitPainter(const_cast<MiqtVirtualQPagedPaintDevice*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QPagedPaintDevice_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -224,7 +224,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QPagedPaintDevice_Redirected(const_cast<MiqtVirtualQPagedPaintDevice*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QPagedPaintDevice_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -246,7 +246,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QPagedPaintDevice_SharedPainter(const_cast<MiqtVirtualQPagedPaintDevice*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QPagedPaintDevice_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}

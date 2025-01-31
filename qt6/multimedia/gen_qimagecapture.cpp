@@ -33,13 +33,13 @@ void miqt_exec_callback_QImageCapture_ImageCaptured(intptr_t, int, QImage*);
 void miqt_exec_callback_QImageCapture_ImageMetadataAvailable(intptr_t, int, QMediaMetaData*);
 void miqt_exec_callback_QImageCapture_ImageAvailable(intptr_t, int, QVideoFrame*);
 void miqt_exec_callback_QImageCapture_ImageSaved(intptr_t, int, struct miqt_string);
-bool miqt_exec_callback_QImageCapture_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QImageCapture_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QImageCapture_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QImageCapture_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QImageCapture_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QImageCapture_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QImageCapture_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QImageCapture_Event(QImageCapture*, intptr_t, QEvent*);
+bool miqt_exec_callback_QImageCapture_EventFilter(QImageCapture*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QImageCapture_TimerEvent(QImageCapture*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QImageCapture_ChildEvent(QImageCapture*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QImageCapture_CustomEvent(QImageCapture*, intptr_t, QEvent*);
+void miqt_exec_callback_QImageCapture_ConnectNotify(QImageCapture*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QImageCapture_DisconnectNotify(QImageCapture*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

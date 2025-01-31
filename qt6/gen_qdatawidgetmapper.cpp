@@ -21,14 +21,14 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QDataWidgetMapper_CurrentIndexChanged(intptr_t, int);
-void miqt_exec_callback_QDataWidgetMapper_SetCurrentIndex(void*, intptr_t, int);
-bool miqt_exec_callback_QDataWidgetMapper_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QDataWidgetMapper_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QDataWidgetMapper_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QDataWidgetMapper_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QDataWidgetMapper_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QDataWidgetMapper_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QDataWidgetMapper_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QDataWidgetMapper_SetCurrentIndex(QDataWidgetMapper*, intptr_t, int);
+bool miqt_exec_callback_QDataWidgetMapper_Event(QDataWidgetMapper*, intptr_t, QEvent*);
+bool miqt_exec_callback_QDataWidgetMapper_EventFilter(QDataWidgetMapper*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QDataWidgetMapper_TimerEvent(QDataWidgetMapper*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QDataWidgetMapper_ChildEvent(QDataWidgetMapper*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QDataWidgetMapper_CustomEvent(QDataWidgetMapper*, intptr_t, QEvent*);
+void miqt_exec_callback_QDataWidgetMapper_ConnectNotify(QDataWidgetMapper*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QDataWidgetMapper_DisconnectNotify(QDataWidgetMapper*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

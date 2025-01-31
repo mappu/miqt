@@ -20,13 +20,13 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QPointingDevice_GrabChanged(intptr_t, QObject*, int, QPointerEvent*, QEventPoint*);
-bool miqt_exec_callback_QPointingDevice_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QPointingDevice_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QPointingDevice_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QPointingDevice_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QPointingDevice_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QPointingDevice_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QPointingDevice_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QPointingDevice_Event(QPointingDevice*, intptr_t, QEvent*);
+bool miqt_exec_callback_QPointingDevice_EventFilter(QPointingDevice*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QPointingDevice_TimerEvent(QPointingDevice*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QPointingDevice_ChildEvent(QPointingDevice*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QPointingDevice_CustomEvent(QPointingDevice*, intptr_t, QEvent*);
+void miqt_exec_callback_QPointingDevice_ConnectNotify(QPointingDevice*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QPointingDevice_DisconnectNotify(QPointingDevice*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

@@ -12,8 +12,8 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QScriptExtensionInterface_Initialize(void*, intptr_t, struct miqt_string, QScriptEngine*);
-struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QScriptExtensionInterface_Keys(void*, intptr_t);
+void miqt_exec_callback_QScriptExtensionInterface_Initialize(QScriptExtensionInterface*, intptr_t, struct miqt_string, QScriptEngine*);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QScriptExtensionInterface_Keys(const QScriptExtensionInterface*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -59,7 +59,7 @@ public:
 		}
 		
 
-		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QScriptExtensionInterface_Keys(const_cast<MiqtVirtualQScriptExtensionInterface*>(this), handle__Keys);
+		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QScriptExtensionInterface_Keys(this, handle__Keys);
 		QStringList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		struct miqt_string* callback_return_value_arr = static_cast<struct miqt_string*>(callback_return_value.data);

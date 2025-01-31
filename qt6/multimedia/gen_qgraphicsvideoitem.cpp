@@ -35,48 +35,48 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QGraphicsVideoItem_NativeSizeChanged(intptr_t, QSizeF*);
-QRectF* miqt_exec_callback_QGraphicsVideoItem_BoundingRect(void*, intptr_t);
-void miqt_exec_callback_QGraphicsVideoItem_Paint(void*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
-int miqt_exec_callback_QGraphicsVideoItem_Type(void*, intptr_t);
-void miqt_exec_callback_QGraphicsVideoItem_TimerEvent(void*, intptr_t, QTimerEvent*);
-QVariant* miqt_exec_callback_QGraphicsVideoItem_ItemChange(void*, intptr_t, int, QVariant*);
-bool miqt_exec_callback_QGraphicsVideoItem_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QGraphicsVideoItem_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QGraphicsVideoItem_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QGraphicsVideoItem_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QGraphicsVideoItem_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QGraphicsVideoItem_DisconnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QGraphicsVideoItem_Advance(void*, intptr_t, int);
-QPainterPath* miqt_exec_callback_QGraphicsVideoItem_Shape(void*, intptr_t);
-bool miqt_exec_callback_QGraphicsVideoItem_Contains(void*, intptr_t, QPointF*);
-bool miqt_exec_callback_QGraphicsVideoItem_CollidesWithItem(void*, intptr_t, QGraphicsItem*, int);
-bool miqt_exec_callback_QGraphicsVideoItem_CollidesWithPath(void*, intptr_t, QPainterPath*, int);
-bool miqt_exec_callback_QGraphicsVideoItem_IsObscuredBy(void*, intptr_t, QGraphicsItem*);
-QPainterPath* miqt_exec_callback_QGraphicsVideoItem_OpaqueArea(void*, intptr_t);
-bool miqt_exec_callback_QGraphicsVideoItem_SceneEventFilter(void*, intptr_t, QGraphicsItem*, QEvent*);
-bool miqt_exec_callback_QGraphicsVideoItem_SceneEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QGraphicsVideoItem_ContextMenuEvent(void*, intptr_t, QGraphicsSceneContextMenuEvent*);
-void miqt_exec_callback_QGraphicsVideoItem_DragEnterEvent(void*, intptr_t, QGraphicsSceneDragDropEvent*);
-void miqt_exec_callback_QGraphicsVideoItem_DragLeaveEvent(void*, intptr_t, QGraphicsSceneDragDropEvent*);
-void miqt_exec_callback_QGraphicsVideoItem_DragMoveEvent(void*, intptr_t, QGraphicsSceneDragDropEvent*);
-void miqt_exec_callback_QGraphicsVideoItem_DropEvent(void*, intptr_t, QGraphicsSceneDragDropEvent*);
-void miqt_exec_callback_QGraphicsVideoItem_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QGraphicsVideoItem_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QGraphicsVideoItem_HoverEnterEvent(void*, intptr_t, QGraphicsSceneHoverEvent*);
-void miqt_exec_callback_QGraphicsVideoItem_HoverMoveEvent(void*, intptr_t, QGraphicsSceneHoverEvent*);
-void miqt_exec_callback_QGraphicsVideoItem_HoverLeaveEvent(void*, intptr_t, QGraphicsSceneHoverEvent*);
-void miqt_exec_callback_QGraphicsVideoItem_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QGraphicsVideoItem_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QGraphicsVideoItem_MousePressEvent(void*, intptr_t, QGraphicsSceneMouseEvent*);
-void miqt_exec_callback_QGraphicsVideoItem_MouseMoveEvent(void*, intptr_t, QGraphicsSceneMouseEvent*);
-void miqt_exec_callback_QGraphicsVideoItem_MouseReleaseEvent(void*, intptr_t, QGraphicsSceneMouseEvent*);
-void miqt_exec_callback_QGraphicsVideoItem_MouseDoubleClickEvent(void*, intptr_t, QGraphicsSceneMouseEvent*);
-void miqt_exec_callback_QGraphicsVideoItem_WheelEvent(void*, intptr_t, QGraphicsSceneWheelEvent*);
-void miqt_exec_callback_QGraphicsVideoItem_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QGraphicsVideoItem_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QGraphicsVideoItem_SupportsExtension(void*, intptr_t, int);
-void miqt_exec_callback_QGraphicsVideoItem_SetExtension(void*, intptr_t, int, QVariant*);
-QVariant* miqt_exec_callback_QGraphicsVideoItem_Extension(void*, intptr_t, QVariant*);
+QRectF* miqt_exec_callback_QGraphicsVideoItem_BoundingRect(const QGraphicsVideoItem*, intptr_t);
+void miqt_exec_callback_QGraphicsVideoItem_Paint(QGraphicsVideoItem*, intptr_t, QPainter*, QStyleOptionGraphicsItem*, QWidget*);
+int miqt_exec_callback_QGraphicsVideoItem_Type(const QGraphicsVideoItem*, intptr_t);
+void miqt_exec_callback_QGraphicsVideoItem_TimerEvent(QGraphicsVideoItem*, intptr_t, QTimerEvent*);
+QVariant* miqt_exec_callback_QGraphicsVideoItem_ItemChange(QGraphicsVideoItem*, intptr_t, int, QVariant*);
+bool miqt_exec_callback_QGraphicsVideoItem_Event(QGraphicsVideoItem*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGraphicsVideoItem_EventFilter(QGraphicsVideoItem*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QGraphicsVideoItem_ChildEvent(QGraphicsVideoItem*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QGraphicsVideoItem_CustomEvent(QGraphicsVideoItem*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsVideoItem_ConnectNotify(QGraphicsVideoItem*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsVideoItem_DisconnectNotify(QGraphicsVideoItem*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsVideoItem_Advance(QGraphicsVideoItem*, intptr_t, int);
+QPainterPath* miqt_exec_callback_QGraphicsVideoItem_Shape(const QGraphicsVideoItem*, intptr_t);
+bool miqt_exec_callback_QGraphicsVideoItem_Contains(const QGraphicsVideoItem*, intptr_t, QPointF*);
+bool miqt_exec_callback_QGraphicsVideoItem_CollidesWithItem(const QGraphicsVideoItem*, intptr_t, QGraphicsItem*, int);
+bool miqt_exec_callback_QGraphicsVideoItem_CollidesWithPath(const QGraphicsVideoItem*, intptr_t, QPainterPath*, int);
+bool miqt_exec_callback_QGraphicsVideoItem_IsObscuredBy(const QGraphicsVideoItem*, intptr_t, QGraphicsItem*);
+QPainterPath* miqt_exec_callback_QGraphicsVideoItem_OpaqueArea(const QGraphicsVideoItem*, intptr_t);
+bool miqt_exec_callback_QGraphicsVideoItem_SceneEventFilter(QGraphicsVideoItem*, intptr_t, QGraphicsItem*, QEvent*);
+bool miqt_exec_callback_QGraphicsVideoItem_SceneEvent(QGraphicsVideoItem*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsVideoItem_ContextMenuEvent(QGraphicsVideoItem*, intptr_t, QGraphicsSceneContextMenuEvent*);
+void miqt_exec_callback_QGraphicsVideoItem_DragEnterEvent(QGraphicsVideoItem*, intptr_t, QGraphicsSceneDragDropEvent*);
+void miqt_exec_callback_QGraphicsVideoItem_DragLeaveEvent(QGraphicsVideoItem*, intptr_t, QGraphicsSceneDragDropEvent*);
+void miqt_exec_callback_QGraphicsVideoItem_DragMoveEvent(QGraphicsVideoItem*, intptr_t, QGraphicsSceneDragDropEvent*);
+void miqt_exec_callback_QGraphicsVideoItem_DropEvent(QGraphicsVideoItem*, intptr_t, QGraphicsSceneDragDropEvent*);
+void miqt_exec_callback_QGraphicsVideoItem_FocusInEvent(QGraphicsVideoItem*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QGraphicsVideoItem_FocusOutEvent(QGraphicsVideoItem*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QGraphicsVideoItem_HoverEnterEvent(QGraphicsVideoItem*, intptr_t, QGraphicsSceneHoverEvent*);
+void miqt_exec_callback_QGraphicsVideoItem_HoverMoveEvent(QGraphicsVideoItem*, intptr_t, QGraphicsSceneHoverEvent*);
+void miqt_exec_callback_QGraphicsVideoItem_HoverLeaveEvent(QGraphicsVideoItem*, intptr_t, QGraphicsSceneHoverEvent*);
+void miqt_exec_callback_QGraphicsVideoItem_KeyPressEvent(QGraphicsVideoItem*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QGraphicsVideoItem_KeyReleaseEvent(QGraphicsVideoItem*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QGraphicsVideoItem_MousePressEvent(QGraphicsVideoItem*, intptr_t, QGraphicsSceneMouseEvent*);
+void miqt_exec_callback_QGraphicsVideoItem_MouseMoveEvent(QGraphicsVideoItem*, intptr_t, QGraphicsSceneMouseEvent*);
+void miqt_exec_callback_QGraphicsVideoItem_MouseReleaseEvent(QGraphicsVideoItem*, intptr_t, QGraphicsSceneMouseEvent*);
+void miqt_exec_callback_QGraphicsVideoItem_MouseDoubleClickEvent(QGraphicsVideoItem*, intptr_t, QGraphicsSceneMouseEvent*);
+void miqt_exec_callback_QGraphicsVideoItem_WheelEvent(QGraphicsVideoItem*, intptr_t, QGraphicsSceneWheelEvent*);
+void miqt_exec_callback_QGraphicsVideoItem_InputMethodEvent(QGraphicsVideoItem*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QGraphicsVideoItem_InputMethodQuery(const QGraphicsVideoItem*, intptr_t, int);
+bool miqt_exec_callback_QGraphicsVideoItem_SupportsExtension(const QGraphicsVideoItem*, intptr_t, int);
+void miqt_exec_callback_QGraphicsVideoItem_SetExtension(QGraphicsVideoItem*, intptr_t, int, QVariant*);
+QVariant* miqt_exec_callback_QGraphicsVideoItem_Extension(const QGraphicsVideoItem*, intptr_t, QVariant*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -99,7 +99,7 @@ public:
 		}
 		
 
-		QRectF* callback_return_value = miqt_exec_callback_QGraphicsVideoItem_BoundingRect(const_cast<MiqtVirtualQGraphicsVideoItem*>(this), handle__BoundingRect);
+		QRectF* callback_return_value = miqt_exec_callback_QGraphicsVideoItem_BoundingRect(this, handle__BoundingRect);
 
 		return *callback_return_value;
 	}
@@ -147,7 +147,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QGraphicsVideoItem_Type(const_cast<MiqtVirtualQGraphicsVideoItem*>(this), handle__Type);
+		int callback_return_value = miqt_exec_callback_QGraphicsVideoItem_Type(this, handle__Type);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -391,7 +391,7 @@ public:
 		}
 		
 
-		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsVideoItem_Shape(const_cast<MiqtVirtualQGraphicsVideoItem*>(this), handle__Shape);
+		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsVideoItem_Shape(this, handle__Shape);
 
 		return *callback_return_value;
 	}
@@ -416,7 +416,7 @@ public:
 		// Cast returned reference into pointer
 		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
 
-		bool callback_return_value = miqt_exec_callback_QGraphicsVideoItem_Contains(const_cast<MiqtVirtualQGraphicsVideoItem*>(this), handle__Contains, sigval1);
+		bool callback_return_value = miqt_exec_callback_QGraphicsVideoItem_Contains(this, handle__Contains, sigval1);
 
 		return callback_return_value;
 	}
@@ -441,7 +441,7 @@ public:
 		Qt::ItemSelectionMode mode_ret = mode;
 		int sigval2 = static_cast<int>(mode_ret);
 
-		bool callback_return_value = miqt_exec_callback_QGraphicsVideoItem_CollidesWithItem(const_cast<MiqtVirtualQGraphicsVideoItem*>(this), handle__CollidesWithItem, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QGraphicsVideoItem_CollidesWithItem(this, handle__CollidesWithItem, sigval1, sigval2);
 
 		return callback_return_value;
 	}
@@ -468,7 +468,7 @@ public:
 		Qt::ItemSelectionMode mode_ret = mode;
 		int sigval2 = static_cast<int>(mode_ret);
 
-		bool callback_return_value = miqt_exec_callback_QGraphicsVideoItem_CollidesWithPath(const_cast<MiqtVirtualQGraphicsVideoItem*>(this), handle__CollidesWithPath, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QGraphicsVideoItem_CollidesWithPath(this, handle__CollidesWithPath, sigval1, sigval2);
 
 		return callback_return_value;
 	}
@@ -491,7 +491,7 @@ public:
 		
 		QGraphicsItem* sigval1 = (QGraphicsItem*) item;
 
-		bool callback_return_value = miqt_exec_callback_QGraphicsVideoItem_IsObscuredBy(const_cast<MiqtVirtualQGraphicsVideoItem*>(this), handle__IsObscuredBy, sigval1);
+		bool callback_return_value = miqt_exec_callback_QGraphicsVideoItem_IsObscuredBy(this, handle__IsObscuredBy, sigval1);
 
 		return callback_return_value;
 	}
@@ -513,7 +513,7 @@ public:
 		}
 		
 
-		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsVideoItem_OpaqueArea(const_cast<MiqtVirtualQGraphicsVideoItem*>(this), handle__OpaqueArea);
+		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsVideoItem_OpaqueArea(this, handle__OpaqueArea);
 
 		return *callback_return_value;
 	}
@@ -1016,7 +1016,7 @@ public:
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QGraphicsVideoItem_InputMethodQuery(const_cast<MiqtVirtualQGraphicsVideoItem*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QGraphicsVideoItem_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}
@@ -1040,7 +1040,7 @@ public:
 		QGraphicsItem::Extension extension_ret = extension;
 		int sigval1 = static_cast<int>(extension_ret);
 
-		bool callback_return_value = miqt_exec_callback_QGraphicsVideoItem_SupportsExtension(const_cast<MiqtVirtualQGraphicsVideoItem*>(this), handle__SupportsExtension, sigval1);
+		bool callback_return_value = miqt_exec_callback_QGraphicsVideoItem_SupportsExtension(this, handle__SupportsExtension, sigval1);
 
 		return callback_return_value;
 	}
@@ -1093,7 +1093,7 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval1 = const_cast<QVariant*>(&variant_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QGraphicsVideoItem_Extension(const_cast<MiqtVirtualQGraphicsVideoItem*>(this), handle__Extension, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QGraphicsVideoItem_Extension(this, handle__Extension, sigval1);
 
 		return *callback_return_value;
 	}

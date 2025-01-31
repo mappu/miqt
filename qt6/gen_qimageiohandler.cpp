@@ -22,28 +22,28 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QImageIOHandler_CanRead(void*, intptr_t);
-bool miqt_exec_callback_QImageIOHandler_Read(void*, intptr_t, QImage*);
-bool miqt_exec_callback_QImageIOHandler_Write(void*, intptr_t, QImage*);
-QVariant* miqt_exec_callback_QImageIOHandler_Option(void*, intptr_t, int);
-void miqt_exec_callback_QImageIOHandler_SetOption(void*, intptr_t, int, QVariant*);
-bool miqt_exec_callback_QImageIOHandler_SupportsOption(void*, intptr_t, int);
-bool miqt_exec_callback_QImageIOHandler_JumpToNextImage(void*, intptr_t);
-bool miqt_exec_callback_QImageIOHandler_JumpToImage(void*, intptr_t, int);
-int miqt_exec_callback_QImageIOHandler_LoopCount(void*, intptr_t);
-int miqt_exec_callback_QImageIOHandler_ImageCount(void*, intptr_t);
-int miqt_exec_callback_QImageIOHandler_NextImageDelay(void*, intptr_t);
-int miqt_exec_callback_QImageIOHandler_CurrentImageNumber(void*, intptr_t);
-QRect* miqt_exec_callback_QImageIOHandler_CurrentImageRect(void*, intptr_t);
-int miqt_exec_callback_QImageIOPlugin_Capabilities(void*, intptr_t, QIODevice*, struct miqt_string);
-QImageIOHandler* miqt_exec_callback_QImageIOPlugin_Create(void*, intptr_t, QIODevice*, struct miqt_string);
-bool miqt_exec_callback_QImageIOPlugin_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QImageIOPlugin_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QImageIOPlugin_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QImageIOPlugin_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QImageIOPlugin_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QImageIOPlugin_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QImageIOPlugin_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QImageIOHandler_CanRead(const QImageIOHandler*, intptr_t);
+bool miqt_exec_callback_QImageIOHandler_Read(QImageIOHandler*, intptr_t, QImage*);
+bool miqt_exec_callback_QImageIOHandler_Write(QImageIOHandler*, intptr_t, QImage*);
+QVariant* miqt_exec_callback_QImageIOHandler_Option(const QImageIOHandler*, intptr_t, int);
+void miqt_exec_callback_QImageIOHandler_SetOption(QImageIOHandler*, intptr_t, int, QVariant*);
+bool miqt_exec_callback_QImageIOHandler_SupportsOption(const QImageIOHandler*, intptr_t, int);
+bool miqt_exec_callback_QImageIOHandler_JumpToNextImage(QImageIOHandler*, intptr_t);
+bool miqt_exec_callback_QImageIOHandler_JumpToImage(QImageIOHandler*, intptr_t, int);
+int miqt_exec_callback_QImageIOHandler_LoopCount(const QImageIOHandler*, intptr_t);
+int miqt_exec_callback_QImageIOHandler_ImageCount(const QImageIOHandler*, intptr_t);
+int miqt_exec_callback_QImageIOHandler_NextImageDelay(const QImageIOHandler*, intptr_t);
+int miqt_exec_callback_QImageIOHandler_CurrentImageNumber(const QImageIOHandler*, intptr_t);
+QRect* miqt_exec_callback_QImageIOHandler_CurrentImageRect(const QImageIOHandler*, intptr_t);
+int miqt_exec_callback_QImageIOPlugin_Capabilities(const QImageIOPlugin*, intptr_t, QIODevice*, struct miqt_string);
+QImageIOHandler* miqt_exec_callback_QImageIOPlugin_Create(const QImageIOPlugin*, intptr_t, QIODevice*, struct miqt_string);
+bool miqt_exec_callback_QImageIOPlugin_Event(QImageIOPlugin*, intptr_t, QEvent*);
+bool miqt_exec_callback_QImageIOPlugin_EventFilter(QImageIOPlugin*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QImageIOPlugin_TimerEvent(QImageIOPlugin*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QImageIOPlugin_ChildEvent(QImageIOPlugin*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QImageIOPlugin_CustomEvent(QImageIOPlugin*, intptr_t, QEvent*);
+void miqt_exec_callback_QImageIOPlugin_ConnectNotify(QImageIOPlugin*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QImageIOPlugin_DisconnectNotify(QImageIOPlugin*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -65,7 +65,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QImageIOHandler_CanRead(const_cast<MiqtVirtualQImageIOHandler*>(this), handle__CanRead);
+		bool callback_return_value = miqt_exec_callback_QImageIOHandler_CanRead(this, handle__CanRead);
 
 		return callback_return_value;
 	}
@@ -123,7 +123,7 @@ public:
 		QImageIOHandler::ImageOption option_ret = option;
 		int sigval1 = static_cast<int>(option_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QImageIOHandler_Option(const_cast<MiqtVirtualQImageIOHandler*>(this), handle__Option, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QImageIOHandler_Option(this, handle__Option, sigval1);
 
 		return *callback_return_value;
 	}
@@ -175,7 +175,7 @@ public:
 		QImageIOHandler::ImageOption option_ret = option;
 		int sigval1 = static_cast<int>(option_ret);
 
-		bool callback_return_value = miqt_exec_callback_QImageIOHandler_SupportsOption(const_cast<MiqtVirtualQImageIOHandler*>(this), handle__SupportsOption, sigval1);
+		bool callback_return_value = miqt_exec_callback_QImageIOHandler_SupportsOption(this, handle__SupportsOption, sigval1);
 
 		return callback_return_value;
 	}
@@ -242,7 +242,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QImageIOHandler_LoopCount(const_cast<MiqtVirtualQImageIOHandler*>(this), handle__LoopCount);
+		int callback_return_value = miqt_exec_callback_QImageIOHandler_LoopCount(this, handle__LoopCount);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -264,7 +264,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QImageIOHandler_ImageCount(const_cast<MiqtVirtualQImageIOHandler*>(this), handle__ImageCount);
+		int callback_return_value = miqt_exec_callback_QImageIOHandler_ImageCount(this, handle__ImageCount);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -286,7 +286,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QImageIOHandler_NextImageDelay(const_cast<MiqtVirtualQImageIOHandler*>(this), handle__NextImageDelay);
+		int callback_return_value = miqt_exec_callback_QImageIOHandler_NextImageDelay(this, handle__NextImageDelay);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -308,7 +308,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QImageIOHandler_CurrentImageNumber(const_cast<MiqtVirtualQImageIOHandler*>(this), handle__CurrentImageNumber);
+		int callback_return_value = miqt_exec_callback_QImageIOHandler_CurrentImageNumber(this, handle__CurrentImageNumber);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -330,7 +330,7 @@ public:
 		}
 		
 
-		QRect* callback_return_value = miqt_exec_callback_QImageIOHandler_CurrentImageRect(const_cast<MiqtVirtualQImageIOHandler*>(this), handle__CurrentImageRect);
+		QRect* callback_return_value = miqt_exec_callback_QImageIOHandler_CurrentImageRect(this, handle__CurrentImageRect);
 
 		return *callback_return_value;
 	}
@@ -634,7 +634,7 @@ public:
 		memcpy(format_ms.data, format_qb.data(), format_ms.len);
 		struct miqt_string sigval2 = format_ms;
 
-		int callback_return_value = miqt_exec_callback_QImageIOPlugin_Capabilities(const_cast<MiqtVirtualQImageIOPlugin*>(this), handle__Capabilities, sigval1, sigval2);
+		int callback_return_value = miqt_exec_callback_QImageIOPlugin_Capabilities(this, handle__Capabilities, sigval1, sigval2);
 
 		return static_cast<QImageIOPlugin::Capabilities>(callback_return_value);
 	}
@@ -656,7 +656,7 @@ public:
 		memcpy(format_ms.data, format_qb.data(), format_ms.len);
 		struct miqt_string sigval2 = format_ms;
 
-		QImageIOHandler* callback_return_value = miqt_exec_callback_QImageIOPlugin_Create(const_cast<MiqtVirtualQImageIOPlugin*>(this), handle__Create, sigval1, sigval2);
+		QImageIOHandler* callback_return_value = miqt_exec_callback_QImageIOPlugin_Create(this, handle__Create, sigval1, sigval2);
 
 		return callback_return_value;
 	}

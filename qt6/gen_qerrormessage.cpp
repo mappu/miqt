@@ -43,58 +43,58 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QErrorMessage_Done(void*, intptr_t, int);
-void miqt_exec_callback_QErrorMessage_ChangeEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QErrorMessage_SetVisible(void*, intptr_t, bool);
-QSize* miqt_exec_callback_QErrorMessage_SizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QErrorMessage_MinimumSizeHint(void*, intptr_t);
-void miqt_exec_callback_QErrorMessage_Open(void*, intptr_t);
-int miqt_exec_callback_QErrorMessage_Exec(void*, intptr_t);
-void miqt_exec_callback_QErrorMessage_Accept(void*, intptr_t);
-void miqt_exec_callback_QErrorMessage_Reject(void*, intptr_t);
-void miqt_exec_callback_QErrorMessage_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QErrorMessage_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QErrorMessage_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QErrorMessage_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QErrorMessage_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-bool miqt_exec_callback_QErrorMessage_EventFilter(void*, intptr_t, QObject*, QEvent*);
-int miqt_exec_callback_QErrorMessage_DevType(void*, intptr_t);
-int miqt_exec_callback_QErrorMessage_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QErrorMessage_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QErrorMessage_PaintEngine(void*, intptr_t);
-bool miqt_exec_callback_QErrorMessage_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QErrorMessage_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QErrorMessage_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QErrorMessage_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QErrorMessage_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QErrorMessage_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QErrorMessage_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QErrorMessage_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QErrorMessage_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QErrorMessage_EnterEvent(void*, intptr_t, QEnterEvent*);
-void miqt_exec_callback_QErrorMessage_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QErrorMessage_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QErrorMessage_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QErrorMessage_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QErrorMessage_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QErrorMessage_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QErrorMessage_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QErrorMessage_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QErrorMessage_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QErrorMessage_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QErrorMessage_NativeEvent(void*, intptr_t, struct miqt_string, void*, intptr_t*);
-int miqt_exec_callback_QErrorMessage_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QErrorMessage_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QErrorMessage_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QErrorMessage_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QErrorMessage_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QErrorMessage_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QErrorMessage_FocusNextPrevChild(void*, intptr_t, bool);
-void miqt_exec_callback_QErrorMessage_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QErrorMessage_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QErrorMessage_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QErrorMessage_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QErrorMessage_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QErrorMessage_Done(QErrorMessage*, intptr_t, int);
+void miqt_exec_callback_QErrorMessage_ChangeEvent(QErrorMessage*, intptr_t, QEvent*);
+void miqt_exec_callback_QErrorMessage_SetVisible(QErrorMessage*, intptr_t, bool);
+QSize* miqt_exec_callback_QErrorMessage_SizeHint(const QErrorMessage*, intptr_t);
+QSize* miqt_exec_callback_QErrorMessage_MinimumSizeHint(const QErrorMessage*, intptr_t);
+void miqt_exec_callback_QErrorMessage_Open(QErrorMessage*, intptr_t);
+int miqt_exec_callback_QErrorMessage_Exec(QErrorMessage*, intptr_t);
+void miqt_exec_callback_QErrorMessage_Accept(QErrorMessage*, intptr_t);
+void miqt_exec_callback_QErrorMessage_Reject(QErrorMessage*, intptr_t);
+void miqt_exec_callback_QErrorMessage_KeyPressEvent(QErrorMessage*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QErrorMessage_CloseEvent(QErrorMessage*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QErrorMessage_ShowEvent(QErrorMessage*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QErrorMessage_ResizeEvent(QErrorMessage*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QErrorMessage_ContextMenuEvent(QErrorMessage*, intptr_t, QContextMenuEvent*);
+bool miqt_exec_callback_QErrorMessage_EventFilter(QErrorMessage*, intptr_t, QObject*, QEvent*);
+int miqt_exec_callback_QErrorMessage_DevType(const QErrorMessage*, intptr_t);
+int miqt_exec_callback_QErrorMessage_HeightForWidth(const QErrorMessage*, intptr_t, int);
+bool miqt_exec_callback_QErrorMessage_HasHeightForWidth(const QErrorMessage*, intptr_t);
+QPaintEngine* miqt_exec_callback_QErrorMessage_PaintEngine(const QErrorMessage*, intptr_t);
+bool miqt_exec_callback_QErrorMessage_Event(QErrorMessage*, intptr_t, QEvent*);
+void miqt_exec_callback_QErrorMessage_MousePressEvent(QErrorMessage*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QErrorMessage_MouseReleaseEvent(QErrorMessage*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QErrorMessage_MouseDoubleClickEvent(QErrorMessage*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QErrorMessage_MouseMoveEvent(QErrorMessage*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QErrorMessage_WheelEvent(QErrorMessage*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QErrorMessage_KeyReleaseEvent(QErrorMessage*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QErrorMessage_FocusInEvent(QErrorMessage*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QErrorMessage_FocusOutEvent(QErrorMessage*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QErrorMessage_EnterEvent(QErrorMessage*, intptr_t, QEnterEvent*);
+void miqt_exec_callback_QErrorMessage_LeaveEvent(QErrorMessage*, intptr_t, QEvent*);
+void miqt_exec_callback_QErrorMessage_PaintEvent(QErrorMessage*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QErrorMessage_MoveEvent(QErrorMessage*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QErrorMessage_TabletEvent(QErrorMessage*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QErrorMessage_ActionEvent(QErrorMessage*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QErrorMessage_DragEnterEvent(QErrorMessage*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QErrorMessage_DragMoveEvent(QErrorMessage*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QErrorMessage_DragLeaveEvent(QErrorMessage*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QErrorMessage_DropEvent(QErrorMessage*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QErrorMessage_HideEvent(QErrorMessage*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QErrorMessage_NativeEvent(QErrorMessage*, intptr_t, struct miqt_string, void*, intptr_t*);
+int miqt_exec_callback_QErrorMessage_Metric(const QErrorMessage*, intptr_t, int);
+void miqt_exec_callback_QErrorMessage_InitPainter(const QErrorMessage*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QErrorMessage_Redirected(const QErrorMessage*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QErrorMessage_SharedPainter(const QErrorMessage*, intptr_t);
+void miqt_exec_callback_QErrorMessage_InputMethodEvent(QErrorMessage*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QErrorMessage_InputMethodQuery(const QErrorMessage*, intptr_t, int);
+bool miqt_exec_callback_QErrorMessage_FocusNextPrevChild(QErrorMessage*, intptr_t, bool);
+void miqt_exec_callback_QErrorMessage_TimerEvent(QErrorMessage*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QErrorMessage_ChildEvent(QErrorMessage*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QErrorMessage_CustomEvent(QErrorMessage*, intptr_t, QEvent*);
+void miqt_exec_callback_QErrorMessage_ConnectNotify(QErrorMessage*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QErrorMessage_DisconnectNotify(QErrorMessage*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -189,7 +189,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QErrorMessage_SizeHint(const_cast<MiqtVirtualQErrorMessage*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QErrorMessage_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -211,7 +211,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QErrorMessage_MinimumSizeHint(const_cast<MiqtVirtualQErrorMessage*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QErrorMessage_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -468,7 +468,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QErrorMessage_DevType(const_cast<MiqtVirtualQErrorMessage*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QErrorMessage_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -491,7 +491,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QErrorMessage_HeightForWidth(const_cast<MiqtVirtualQErrorMessage*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QErrorMessage_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -513,7 +513,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QErrorMessage_HasHeightForWidth(const_cast<MiqtVirtualQErrorMessage*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QErrorMessage_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -535,7 +535,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QErrorMessage_PaintEngine(const_cast<MiqtVirtualQErrorMessage*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QErrorMessage_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -1070,7 +1070,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QErrorMessage_Metric(const_cast<MiqtVirtualQErrorMessage*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QErrorMessage_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1094,7 +1094,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QErrorMessage_InitPainter(const_cast<MiqtVirtualQErrorMessage*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QErrorMessage_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -1117,7 +1117,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QErrorMessage_Redirected(const_cast<MiqtVirtualQErrorMessage*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QErrorMessage_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1139,7 +1139,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QErrorMessage_SharedPainter(const_cast<MiqtVirtualQErrorMessage*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QErrorMessage_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -1187,7 +1187,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QErrorMessage_InputMethodQuery(const_cast<MiqtVirtualQErrorMessage*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QErrorMessage_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}

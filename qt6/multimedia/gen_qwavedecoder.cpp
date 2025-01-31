@@ -20,28 +20,28 @@ extern "C" {
 
 void miqt_exec_callback_QWaveDecoder_FormatKnown(intptr_t);
 void miqt_exec_callback_QWaveDecoder_ParsingError(intptr_t);
-bool miqt_exec_callback_QWaveDecoder_Open(void*, intptr_t, int);
-void miqt_exec_callback_QWaveDecoder_Close(void*, intptr_t);
-bool miqt_exec_callback_QWaveDecoder_Seek(void*, intptr_t, long long);
-long long miqt_exec_callback_QWaveDecoder_Pos(void*, intptr_t);
-long long miqt_exec_callback_QWaveDecoder_Size(void*, intptr_t);
-bool miqt_exec_callback_QWaveDecoder_IsSequential(void*, intptr_t);
-long long miqt_exec_callback_QWaveDecoder_BytesAvailable(void*, intptr_t);
-bool miqt_exec_callback_QWaveDecoder_AtEnd(void*, intptr_t);
-bool miqt_exec_callback_QWaveDecoder_Reset(void*, intptr_t);
-long long miqt_exec_callback_QWaveDecoder_BytesToWrite(void*, intptr_t);
-bool miqt_exec_callback_QWaveDecoder_CanReadLine(void*, intptr_t);
-bool miqt_exec_callback_QWaveDecoder_WaitForReadyRead(void*, intptr_t, int);
-bool miqt_exec_callback_QWaveDecoder_WaitForBytesWritten(void*, intptr_t, int);
-long long miqt_exec_callback_QWaveDecoder_ReadLineData(void*, intptr_t, char*, long long);
-long long miqt_exec_callback_QWaveDecoder_SkipData(void*, intptr_t, long long);
-bool miqt_exec_callback_QWaveDecoder_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QWaveDecoder_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QWaveDecoder_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QWaveDecoder_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QWaveDecoder_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QWaveDecoder_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QWaveDecoder_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QWaveDecoder_Open(QWaveDecoder*, intptr_t, int);
+void miqt_exec_callback_QWaveDecoder_Close(QWaveDecoder*, intptr_t);
+bool miqt_exec_callback_QWaveDecoder_Seek(QWaveDecoder*, intptr_t, long long);
+long long miqt_exec_callback_QWaveDecoder_Pos(const QWaveDecoder*, intptr_t);
+long long miqt_exec_callback_QWaveDecoder_Size(const QWaveDecoder*, intptr_t);
+bool miqt_exec_callback_QWaveDecoder_IsSequential(const QWaveDecoder*, intptr_t);
+long long miqt_exec_callback_QWaveDecoder_BytesAvailable(const QWaveDecoder*, intptr_t);
+bool miqt_exec_callback_QWaveDecoder_AtEnd(const QWaveDecoder*, intptr_t);
+bool miqt_exec_callback_QWaveDecoder_Reset(QWaveDecoder*, intptr_t);
+long long miqt_exec_callback_QWaveDecoder_BytesToWrite(const QWaveDecoder*, intptr_t);
+bool miqt_exec_callback_QWaveDecoder_CanReadLine(const QWaveDecoder*, intptr_t);
+bool miqt_exec_callback_QWaveDecoder_WaitForReadyRead(QWaveDecoder*, intptr_t, int);
+bool miqt_exec_callback_QWaveDecoder_WaitForBytesWritten(QWaveDecoder*, intptr_t, int);
+long long miqt_exec_callback_QWaveDecoder_ReadLineData(QWaveDecoder*, intptr_t, char*, long long);
+long long miqt_exec_callback_QWaveDecoder_SkipData(QWaveDecoder*, intptr_t, long long);
+bool miqt_exec_callback_QWaveDecoder_Event(QWaveDecoder*, intptr_t, QEvent*);
+bool miqt_exec_callback_QWaveDecoder_EventFilter(QWaveDecoder*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QWaveDecoder_TimerEvent(QWaveDecoder*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QWaveDecoder_ChildEvent(QWaveDecoder*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QWaveDecoder_CustomEvent(QWaveDecoder*, intptr_t, QEvent*);
+void miqt_exec_callback_QWaveDecoder_ConnectNotify(QWaveDecoder*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QWaveDecoder_DisconnectNotify(QWaveDecoder*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -137,7 +137,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QWaveDecoder_Pos(const_cast<MiqtVirtualQWaveDecoder*>(this), handle__Pos);
+		long long callback_return_value = miqt_exec_callback_QWaveDecoder_Pos(this, handle__Pos);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -160,7 +160,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QWaveDecoder_Size(const_cast<MiqtVirtualQWaveDecoder*>(this), handle__Size);
+		long long callback_return_value = miqt_exec_callback_QWaveDecoder_Size(this, handle__Size);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -183,7 +183,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QWaveDecoder_IsSequential(const_cast<MiqtVirtualQWaveDecoder*>(this), handle__IsSequential);
+		bool callback_return_value = miqt_exec_callback_QWaveDecoder_IsSequential(this, handle__IsSequential);
 
 		return callback_return_value;
 	}
@@ -205,7 +205,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QWaveDecoder_BytesAvailable(const_cast<MiqtVirtualQWaveDecoder*>(this), handle__BytesAvailable);
+		long long callback_return_value = miqt_exec_callback_QWaveDecoder_BytesAvailable(this, handle__BytesAvailable);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -228,7 +228,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QWaveDecoder_AtEnd(const_cast<MiqtVirtualQWaveDecoder*>(this), handle__AtEnd);
+		bool callback_return_value = miqt_exec_callback_QWaveDecoder_AtEnd(this, handle__AtEnd);
 
 		return callback_return_value;
 	}
@@ -272,7 +272,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QWaveDecoder_BytesToWrite(const_cast<MiqtVirtualQWaveDecoder*>(this), handle__BytesToWrite);
+		long long callback_return_value = miqt_exec_callback_QWaveDecoder_BytesToWrite(this, handle__BytesToWrite);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -295,7 +295,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QWaveDecoder_CanReadLine(const_cast<MiqtVirtualQWaveDecoder*>(this), handle__CanReadLine);
+		bool callback_return_value = miqt_exec_callback_QWaveDecoder_CanReadLine(this, handle__CanReadLine);
 
 		return callback_return_value;
 	}

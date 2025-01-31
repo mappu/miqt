@@ -17,15 +17,15 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QWidgetAction_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QWidgetAction_EventFilter(void*, intptr_t, QObject*, QEvent*);
-QWidget* miqt_exec_callback_QWidgetAction_CreateWidget(void*, intptr_t, QWidget*);
-void miqt_exec_callback_QWidgetAction_DeleteWidget(void*, intptr_t, QWidget*);
-void miqt_exec_callback_QWidgetAction_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QWidgetAction_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QWidgetAction_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QWidgetAction_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QWidgetAction_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QWidgetAction_Event(QWidgetAction*, intptr_t, QEvent*);
+bool miqt_exec_callback_QWidgetAction_EventFilter(QWidgetAction*, intptr_t, QObject*, QEvent*);
+QWidget* miqt_exec_callback_QWidgetAction_CreateWidget(QWidgetAction*, intptr_t, QWidget*);
+void miqt_exec_callback_QWidgetAction_DeleteWidget(QWidgetAction*, intptr_t, QWidget*);
+void miqt_exec_callback_QWidgetAction_TimerEvent(QWidgetAction*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QWidgetAction_ChildEvent(QWidgetAction*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QWidgetAction_CustomEvent(QWidgetAction*, intptr_t, QEvent*);
+void miqt_exec_callback_QWidgetAction_ConnectNotify(QWidgetAction*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QWidgetAction_DisconnectNotify(QWidgetAction*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

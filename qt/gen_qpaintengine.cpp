@@ -28,26 +28,26 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QPaintEngine_Begin(void*, intptr_t, QPaintDevice*);
-bool miqt_exec_callback_QPaintEngine_End(void*, intptr_t);
-void miqt_exec_callback_QPaintEngine_UpdateState(void*, intptr_t, QPaintEngineState*);
-void miqt_exec_callback_QPaintEngine_DrawRects(void*, intptr_t, QRect*, int);
-void miqt_exec_callback_QPaintEngine_DrawRects2(void*, intptr_t, QRectF*, int);
-void miqt_exec_callback_QPaintEngine_DrawLines(void*, intptr_t, QLine*, int);
-void miqt_exec_callback_QPaintEngine_DrawLines2(void*, intptr_t, QLineF*, int);
-void miqt_exec_callback_QPaintEngine_DrawEllipse(void*, intptr_t, QRectF*);
-void miqt_exec_callback_QPaintEngine_DrawEllipseWithQRect(void*, intptr_t, QRect*);
-void miqt_exec_callback_QPaintEngine_DrawPath(void*, intptr_t, QPainterPath*);
-void miqt_exec_callback_QPaintEngine_DrawPoints(void*, intptr_t, QPointF*, int);
-void miqt_exec_callback_QPaintEngine_DrawPoints2(void*, intptr_t, QPoint*, int);
-void miqt_exec_callback_QPaintEngine_DrawPolygon(void*, intptr_t, QPointF*, int, int);
-void miqt_exec_callback_QPaintEngine_DrawPolygon2(void*, intptr_t, QPoint*, int, int);
-void miqt_exec_callback_QPaintEngine_DrawPixmap(void*, intptr_t, QRectF*, QPixmap*, QRectF*);
-void miqt_exec_callback_QPaintEngine_DrawTextItem(void*, intptr_t, QPointF*, QTextItem*);
-void miqt_exec_callback_QPaintEngine_DrawTiledPixmap(void*, intptr_t, QRectF*, QPixmap*, QPointF*);
-void miqt_exec_callback_QPaintEngine_DrawImage(void*, intptr_t, QRectF*, QImage*, QRectF*, int);
-QPoint* miqt_exec_callback_QPaintEngine_CoordinateOffset(void*, intptr_t);
-int miqt_exec_callback_QPaintEngine_Type(void*, intptr_t);
+bool miqt_exec_callback_QPaintEngine_Begin(QPaintEngine*, intptr_t, QPaintDevice*);
+bool miqt_exec_callback_QPaintEngine_End(QPaintEngine*, intptr_t);
+void miqt_exec_callback_QPaintEngine_UpdateState(QPaintEngine*, intptr_t, QPaintEngineState*);
+void miqt_exec_callback_QPaintEngine_DrawRects(QPaintEngine*, intptr_t, QRect*, int);
+void miqt_exec_callback_QPaintEngine_DrawRects2(QPaintEngine*, intptr_t, QRectF*, int);
+void miqt_exec_callback_QPaintEngine_DrawLines(QPaintEngine*, intptr_t, QLine*, int);
+void miqt_exec_callback_QPaintEngine_DrawLines2(QPaintEngine*, intptr_t, QLineF*, int);
+void miqt_exec_callback_QPaintEngine_DrawEllipse(QPaintEngine*, intptr_t, QRectF*);
+void miqt_exec_callback_QPaintEngine_DrawEllipseWithQRect(QPaintEngine*, intptr_t, QRect*);
+void miqt_exec_callback_QPaintEngine_DrawPath(QPaintEngine*, intptr_t, QPainterPath*);
+void miqt_exec_callback_QPaintEngine_DrawPoints(QPaintEngine*, intptr_t, QPointF*, int);
+void miqt_exec_callback_QPaintEngine_DrawPoints2(QPaintEngine*, intptr_t, QPoint*, int);
+void miqt_exec_callback_QPaintEngine_DrawPolygon(QPaintEngine*, intptr_t, QPointF*, int, int);
+void miqt_exec_callback_QPaintEngine_DrawPolygon2(QPaintEngine*, intptr_t, QPoint*, int, int);
+void miqt_exec_callback_QPaintEngine_DrawPixmap(QPaintEngine*, intptr_t, QRectF*, QPixmap*, QRectF*);
+void miqt_exec_callback_QPaintEngine_DrawTextItem(QPaintEngine*, intptr_t, QPointF*, QTextItem*);
+void miqt_exec_callback_QPaintEngine_DrawTiledPixmap(QPaintEngine*, intptr_t, QRectF*, QPixmap*, QPointF*);
+void miqt_exec_callback_QPaintEngine_DrawImage(QPaintEngine*, intptr_t, QRectF*, QImage*, QRectF*, int);
+QPoint* miqt_exec_callback_QPaintEngine_CoordinateOffset(const QPaintEngine*, intptr_t);
+int miqt_exec_callback_QPaintEngine_Type(const QPaintEngine*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -559,7 +559,7 @@ public:
 		}
 		
 
-		QPoint* callback_return_value = miqt_exec_callback_QPaintEngine_CoordinateOffset(const_cast<MiqtVirtualQPaintEngine*>(this), handle__CoordinateOffset);
+		QPoint* callback_return_value = miqt_exec_callback_QPaintEngine_CoordinateOffset(this, handle__CoordinateOffset);
 
 		return *callback_return_value;
 	}
@@ -581,7 +581,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QPaintEngine_Type(const_cast<MiqtVirtualQPaintEngine*>(this), handle__Type);
+		int callback_return_value = miqt_exec_callback_QPaintEngine_Type(this, handle__Type);
 
 		return static_cast<QPaintEngine::Type>(callback_return_value);
 	}

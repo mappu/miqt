@@ -16,14 +16,14 @@
 extern "C" {
 #endif
 
-QAccessibleInterface* miqt_exec_callback_QAccessiblePlugin_Create(void*, intptr_t, struct miqt_string, QObject*);
-bool miqt_exec_callback_QAccessiblePlugin_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QAccessiblePlugin_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QAccessiblePlugin_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QAccessiblePlugin_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QAccessiblePlugin_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QAccessiblePlugin_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QAccessiblePlugin_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QAccessibleInterface* miqt_exec_callback_QAccessiblePlugin_Create(QAccessiblePlugin*, intptr_t, struct miqt_string, QObject*);
+bool miqt_exec_callback_QAccessiblePlugin_Event(QAccessiblePlugin*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAccessiblePlugin_EventFilter(QAccessiblePlugin*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAccessiblePlugin_TimerEvent(QAccessiblePlugin*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAccessiblePlugin_ChildEvent(QAccessiblePlugin*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAccessiblePlugin_CustomEvent(QAccessiblePlugin*, intptr_t, QEvent*);
+void miqt_exec_callback_QAccessiblePlugin_ConnectNotify(QAccessiblePlugin*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAccessiblePlugin_DisconnectNotify(QAccessiblePlugin*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

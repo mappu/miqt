@@ -18,13 +18,13 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QPluginLoader_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QPluginLoader_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QPluginLoader_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QPluginLoader_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QPluginLoader_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QPluginLoader_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QPluginLoader_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QPluginLoader_Event(QPluginLoader*, intptr_t, QEvent*);
+bool miqt_exec_callback_QPluginLoader_EventFilter(QPluginLoader*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QPluginLoader_TimerEvent(QPluginLoader*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QPluginLoader_ChildEvent(QPluginLoader*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QPluginLoader_CustomEvent(QPluginLoader*, intptr_t, QEvent*);
+void miqt_exec_callback_QPluginLoader_ConnectNotify(QPluginLoader*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QPluginLoader_DisconnectNotify(QPluginLoader*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

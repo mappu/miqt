@@ -25,15 +25,15 @@ void miqt_exec_callback_QCompleter_Activated(intptr_t, struct miqt_string);
 void miqt_exec_callback_QCompleter_ActivatedWithIndex(intptr_t, QModelIndex*);
 void miqt_exec_callback_QCompleter_Highlighted(intptr_t, struct miqt_string);
 void miqt_exec_callback_QCompleter_HighlightedWithIndex(intptr_t, QModelIndex*);
-struct miqt_string miqt_exec_callback_QCompleter_PathFromIndex(void*, intptr_t, QModelIndex*);
-struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QCompleter_SplitPath(void*, intptr_t, struct miqt_string);
-bool miqt_exec_callback_QCompleter_EventFilter(void*, intptr_t, QObject*, QEvent*);
-bool miqt_exec_callback_QCompleter_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QCompleter_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QCompleter_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QCompleter_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QCompleter_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QCompleter_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+struct miqt_string miqt_exec_callback_QCompleter_PathFromIndex(const QCompleter*, intptr_t, QModelIndex*);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QCompleter_SplitPath(const QCompleter*, intptr_t, struct miqt_string);
+bool miqt_exec_callback_QCompleter_EventFilter(QCompleter*, intptr_t, QObject*, QEvent*);
+bool miqt_exec_callback_QCompleter_Event(QCompleter*, intptr_t, QEvent*);
+void miqt_exec_callback_QCompleter_TimerEvent(QCompleter*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QCompleter_ChildEvent(QCompleter*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QCompleter_CustomEvent(QCompleter*, intptr_t, QEvent*);
+void miqt_exec_callback_QCompleter_ConnectNotify(QCompleter*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QCompleter_DisconnectNotify(QCompleter*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -63,7 +63,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		struct miqt_string callback_return_value = miqt_exec_callback_QCompleter_PathFromIndex(const_cast<MiqtVirtualQCompleter*>(this), handle__PathFromIndex, sigval1);
+		struct miqt_string callback_return_value = miqt_exec_callback_QCompleter_PathFromIndex(this, handle__PathFromIndex, sigval1);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
 
 		return callback_return_value_QString;
@@ -101,7 +101,7 @@ public:
 		memcpy(path_ms.data, path_b.data(), path_ms.len);
 		struct miqt_string sigval1 = path_ms;
 
-		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QCompleter_SplitPath(const_cast<MiqtVirtualQCompleter*>(this), handle__SplitPath, sigval1);
+		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QCompleter_SplitPath(this, handle__SplitPath, sigval1);
 		QStringList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		struct miqt_string* callback_return_value_arr = static_cast<struct miqt_string*>(callback_return_value.data);

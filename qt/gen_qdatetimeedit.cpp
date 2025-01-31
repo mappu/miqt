@@ -52,170 +52,170 @@ extern "C" {
 void miqt_exec_callback_QDateTimeEdit_DateTimeChanged(intptr_t, QDateTime*);
 void miqt_exec_callback_QDateTimeEdit_TimeChanged(intptr_t, QTime*);
 void miqt_exec_callback_QDateTimeEdit_DateChanged(intptr_t, QDate*);
-QSize* miqt_exec_callback_QDateTimeEdit_SizeHint(void*, intptr_t);
-void miqt_exec_callback_QDateTimeEdit_Clear(void*, intptr_t);
-void miqt_exec_callback_QDateTimeEdit_StepBy(void*, intptr_t, int);
-bool miqt_exec_callback_QDateTimeEdit_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QDateTimeEdit_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QDateTimeEdit_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QDateTimeEdit_FocusInEvent(void*, intptr_t, QFocusEvent*);
-bool miqt_exec_callback_QDateTimeEdit_FocusNextPrevChild(void*, intptr_t, bool);
-int miqt_exec_callback_QDateTimeEdit_Validate(void*, intptr_t, struct miqt_string, int*);
-void miqt_exec_callback_QDateTimeEdit_Fixup(void*, intptr_t, struct miqt_string);
-QDateTime* miqt_exec_callback_QDateTimeEdit_DateTimeFromText(void*, intptr_t, struct miqt_string);
-struct miqt_string miqt_exec_callback_QDateTimeEdit_TextFromDateTime(void*, intptr_t, QDateTime*);
-int miqt_exec_callback_QDateTimeEdit_StepEnabled(void*, intptr_t);
-void miqt_exec_callback_QDateTimeEdit_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QDateTimeEdit_PaintEvent(void*, intptr_t, QPaintEvent*);
-QSize* miqt_exec_callback_QDateTimeEdit_MinimumSizeHint(void*, intptr_t);
-QVariant* miqt_exec_callback_QDateTimeEdit_InputMethodQuery(void*, intptr_t, int);
-void miqt_exec_callback_QDateTimeEdit_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QDateTimeEdit_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QDateTimeEdit_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QDateTimeEdit_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QDateTimeEdit_ChangeEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QDateTimeEdit_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QDateTimeEdit_HideEvent(void*, intptr_t, QHideEvent*);
-void miqt_exec_callback_QDateTimeEdit_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QDateTimeEdit_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QDateTimeEdit_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QDateTimeEdit_ShowEvent(void*, intptr_t, QShowEvent*);
-int miqt_exec_callback_QDateTimeEdit_DevType(void*, intptr_t);
-void miqt_exec_callback_QDateTimeEdit_SetVisible(void*, intptr_t, bool);
-int miqt_exec_callback_QDateTimeEdit_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QDateTimeEdit_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QDateTimeEdit_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QDateTimeEdit_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QDateTimeEdit_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QDateTimeEdit_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QDateTimeEdit_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QDateTimeEdit_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QDateTimeEdit_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QDateTimeEdit_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QDateTimeEdit_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QDateTimeEdit_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QDateTimeEdit_DropEvent(void*, intptr_t, QDropEvent*);
-bool miqt_exec_callback_QDateTimeEdit_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-int miqt_exec_callback_QDateTimeEdit_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QDateTimeEdit_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QDateTimeEdit_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QDateTimeEdit_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QDateTimeEdit_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-bool miqt_exec_callback_QDateTimeEdit_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QDateTimeEdit_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QDateTimeEdit_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QDateTimeEdit_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QDateTimeEdit_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QSize* miqt_exec_callback_QDateTimeEdit_SizeHint(const QDateTimeEdit*, intptr_t);
+void miqt_exec_callback_QDateTimeEdit_Clear(QDateTimeEdit*, intptr_t);
+void miqt_exec_callback_QDateTimeEdit_StepBy(QDateTimeEdit*, intptr_t, int);
+bool miqt_exec_callback_QDateTimeEdit_Event(QDateTimeEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_QDateTimeEdit_KeyPressEvent(QDateTimeEdit*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QDateTimeEdit_WheelEvent(QDateTimeEdit*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QDateTimeEdit_FocusInEvent(QDateTimeEdit*, intptr_t, QFocusEvent*);
+bool miqt_exec_callback_QDateTimeEdit_FocusNextPrevChild(QDateTimeEdit*, intptr_t, bool);
+int miqt_exec_callback_QDateTimeEdit_Validate(const QDateTimeEdit*, intptr_t, struct miqt_string, int*);
+void miqt_exec_callback_QDateTimeEdit_Fixup(const QDateTimeEdit*, intptr_t, struct miqt_string);
+QDateTime* miqt_exec_callback_QDateTimeEdit_DateTimeFromText(const QDateTimeEdit*, intptr_t, struct miqt_string);
+struct miqt_string miqt_exec_callback_QDateTimeEdit_TextFromDateTime(const QDateTimeEdit*, intptr_t, QDateTime*);
+int miqt_exec_callback_QDateTimeEdit_StepEnabled(const QDateTimeEdit*, intptr_t);
+void miqt_exec_callback_QDateTimeEdit_MousePressEvent(QDateTimeEdit*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDateTimeEdit_PaintEvent(QDateTimeEdit*, intptr_t, QPaintEvent*);
+QSize* miqt_exec_callback_QDateTimeEdit_MinimumSizeHint(const QDateTimeEdit*, intptr_t);
+QVariant* miqt_exec_callback_QDateTimeEdit_InputMethodQuery(const QDateTimeEdit*, intptr_t, int);
+void miqt_exec_callback_QDateTimeEdit_ResizeEvent(QDateTimeEdit*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QDateTimeEdit_KeyReleaseEvent(QDateTimeEdit*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QDateTimeEdit_FocusOutEvent(QDateTimeEdit*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QDateTimeEdit_ContextMenuEvent(QDateTimeEdit*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QDateTimeEdit_ChangeEvent(QDateTimeEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_QDateTimeEdit_CloseEvent(QDateTimeEdit*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QDateTimeEdit_HideEvent(QDateTimeEdit*, intptr_t, QHideEvent*);
+void miqt_exec_callback_QDateTimeEdit_MouseReleaseEvent(QDateTimeEdit*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDateTimeEdit_MouseMoveEvent(QDateTimeEdit*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDateTimeEdit_TimerEvent(QDateTimeEdit*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QDateTimeEdit_ShowEvent(QDateTimeEdit*, intptr_t, QShowEvent*);
+int miqt_exec_callback_QDateTimeEdit_DevType(const QDateTimeEdit*, intptr_t);
+void miqt_exec_callback_QDateTimeEdit_SetVisible(QDateTimeEdit*, intptr_t, bool);
+int miqt_exec_callback_QDateTimeEdit_HeightForWidth(const QDateTimeEdit*, intptr_t, int);
+bool miqt_exec_callback_QDateTimeEdit_HasHeightForWidth(const QDateTimeEdit*, intptr_t);
+QPaintEngine* miqt_exec_callback_QDateTimeEdit_PaintEngine(const QDateTimeEdit*, intptr_t);
+void miqt_exec_callback_QDateTimeEdit_MouseDoubleClickEvent(QDateTimeEdit*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDateTimeEdit_EnterEvent(QDateTimeEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_QDateTimeEdit_LeaveEvent(QDateTimeEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_QDateTimeEdit_MoveEvent(QDateTimeEdit*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QDateTimeEdit_TabletEvent(QDateTimeEdit*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QDateTimeEdit_ActionEvent(QDateTimeEdit*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QDateTimeEdit_DragEnterEvent(QDateTimeEdit*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QDateTimeEdit_DragMoveEvent(QDateTimeEdit*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QDateTimeEdit_DragLeaveEvent(QDateTimeEdit*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QDateTimeEdit_DropEvent(QDateTimeEdit*, intptr_t, QDropEvent*);
+bool miqt_exec_callback_QDateTimeEdit_NativeEvent(QDateTimeEdit*, intptr_t, struct miqt_string, void*, long*);
+int miqt_exec_callback_QDateTimeEdit_Metric(const QDateTimeEdit*, intptr_t, int);
+void miqt_exec_callback_QDateTimeEdit_InitPainter(const QDateTimeEdit*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QDateTimeEdit_Redirected(const QDateTimeEdit*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QDateTimeEdit_SharedPainter(const QDateTimeEdit*, intptr_t);
+void miqt_exec_callback_QDateTimeEdit_InputMethodEvent(QDateTimeEdit*, intptr_t, QInputMethodEvent*);
+bool miqt_exec_callback_QDateTimeEdit_EventFilter(QDateTimeEdit*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QDateTimeEdit_ChildEvent(QDateTimeEdit*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QDateTimeEdit_CustomEvent(QDateTimeEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_QDateTimeEdit_ConnectNotify(QDateTimeEdit*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QDateTimeEdit_DisconnectNotify(QDateTimeEdit*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QTimeEdit_UserTimeChanged(intptr_t, QTime*);
-QSize* miqt_exec_callback_QTimeEdit_SizeHint(void*, intptr_t);
-void miqt_exec_callback_QTimeEdit_Clear(void*, intptr_t);
-void miqt_exec_callback_QTimeEdit_StepBy(void*, intptr_t, int);
-bool miqt_exec_callback_QTimeEdit_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QTimeEdit_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QTimeEdit_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QTimeEdit_FocusInEvent(void*, intptr_t, QFocusEvent*);
-bool miqt_exec_callback_QTimeEdit_FocusNextPrevChild(void*, intptr_t, bool);
-int miqt_exec_callback_QTimeEdit_Validate(void*, intptr_t, struct miqt_string, int*);
-void miqt_exec_callback_QTimeEdit_Fixup(void*, intptr_t, struct miqt_string);
-QDateTime* miqt_exec_callback_QTimeEdit_DateTimeFromText(void*, intptr_t, struct miqt_string);
-struct miqt_string miqt_exec_callback_QTimeEdit_TextFromDateTime(void*, intptr_t, QDateTime*);
-int miqt_exec_callback_QTimeEdit_StepEnabled(void*, intptr_t);
-void miqt_exec_callback_QTimeEdit_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QTimeEdit_PaintEvent(void*, intptr_t, QPaintEvent*);
-QSize* miqt_exec_callback_QTimeEdit_MinimumSizeHint(void*, intptr_t);
-QVariant* miqt_exec_callback_QTimeEdit_InputMethodQuery(void*, intptr_t, int);
-void miqt_exec_callback_QTimeEdit_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QTimeEdit_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QTimeEdit_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QTimeEdit_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QTimeEdit_ChangeEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QTimeEdit_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QTimeEdit_HideEvent(void*, intptr_t, QHideEvent*);
-void miqt_exec_callback_QTimeEdit_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QTimeEdit_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QTimeEdit_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QTimeEdit_ShowEvent(void*, intptr_t, QShowEvent*);
-int miqt_exec_callback_QTimeEdit_DevType(void*, intptr_t);
-void miqt_exec_callback_QTimeEdit_SetVisible(void*, intptr_t, bool);
-int miqt_exec_callback_QTimeEdit_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QTimeEdit_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QTimeEdit_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QTimeEdit_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QTimeEdit_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QTimeEdit_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QTimeEdit_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QTimeEdit_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QTimeEdit_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QTimeEdit_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QTimeEdit_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QTimeEdit_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QTimeEdit_DropEvent(void*, intptr_t, QDropEvent*);
-bool miqt_exec_callback_QTimeEdit_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-int miqt_exec_callback_QTimeEdit_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QTimeEdit_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QTimeEdit_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QTimeEdit_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QTimeEdit_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-bool miqt_exec_callback_QTimeEdit_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QTimeEdit_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QTimeEdit_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QTimeEdit_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QTimeEdit_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QSize* miqt_exec_callback_QTimeEdit_SizeHint(const QTimeEdit*, intptr_t);
+void miqt_exec_callback_QTimeEdit_Clear(QTimeEdit*, intptr_t);
+void miqt_exec_callback_QTimeEdit_StepBy(QTimeEdit*, intptr_t, int);
+bool miqt_exec_callback_QTimeEdit_Event(QTimeEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_QTimeEdit_KeyPressEvent(QTimeEdit*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QTimeEdit_WheelEvent(QTimeEdit*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QTimeEdit_FocusInEvent(QTimeEdit*, intptr_t, QFocusEvent*);
+bool miqt_exec_callback_QTimeEdit_FocusNextPrevChild(QTimeEdit*, intptr_t, bool);
+int miqt_exec_callback_QTimeEdit_Validate(const QTimeEdit*, intptr_t, struct miqt_string, int*);
+void miqt_exec_callback_QTimeEdit_Fixup(const QTimeEdit*, intptr_t, struct miqt_string);
+QDateTime* miqt_exec_callback_QTimeEdit_DateTimeFromText(const QTimeEdit*, intptr_t, struct miqt_string);
+struct miqt_string miqt_exec_callback_QTimeEdit_TextFromDateTime(const QTimeEdit*, intptr_t, QDateTime*);
+int miqt_exec_callback_QTimeEdit_StepEnabled(const QTimeEdit*, intptr_t);
+void miqt_exec_callback_QTimeEdit_MousePressEvent(QTimeEdit*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTimeEdit_PaintEvent(QTimeEdit*, intptr_t, QPaintEvent*);
+QSize* miqt_exec_callback_QTimeEdit_MinimumSizeHint(const QTimeEdit*, intptr_t);
+QVariant* miqt_exec_callback_QTimeEdit_InputMethodQuery(const QTimeEdit*, intptr_t, int);
+void miqt_exec_callback_QTimeEdit_ResizeEvent(QTimeEdit*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QTimeEdit_KeyReleaseEvent(QTimeEdit*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QTimeEdit_FocusOutEvent(QTimeEdit*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QTimeEdit_ContextMenuEvent(QTimeEdit*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QTimeEdit_ChangeEvent(QTimeEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_QTimeEdit_CloseEvent(QTimeEdit*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QTimeEdit_HideEvent(QTimeEdit*, intptr_t, QHideEvent*);
+void miqt_exec_callback_QTimeEdit_MouseReleaseEvent(QTimeEdit*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTimeEdit_MouseMoveEvent(QTimeEdit*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTimeEdit_TimerEvent(QTimeEdit*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QTimeEdit_ShowEvent(QTimeEdit*, intptr_t, QShowEvent*);
+int miqt_exec_callback_QTimeEdit_DevType(const QTimeEdit*, intptr_t);
+void miqt_exec_callback_QTimeEdit_SetVisible(QTimeEdit*, intptr_t, bool);
+int miqt_exec_callback_QTimeEdit_HeightForWidth(const QTimeEdit*, intptr_t, int);
+bool miqt_exec_callback_QTimeEdit_HasHeightForWidth(const QTimeEdit*, intptr_t);
+QPaintEngine* miqt_exec_callback_QTimeEdit_PaintEngine(const QTimeEdit*, intptr_t);
+void miqt_exec_callback_QTimeEdit_MouseDoubleClickEvent(QTimeEdit*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTimeEdit_EnterEvent(QTimeEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_QTimeEdit_LeaveEvent(QTimeEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_QTimeEdit_MoveEvent(QTimeEdit*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QTimeEdit_TabletEvent(QTimeEdit*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QTimeEdit_ActionEvent(QTimeEdit*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QTimeEdit_DragEnterEvent(QTimeEdit*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QTimeEdit_DragMoveEvent(QTimeEdit*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QTimeEdit_DragLeaveEvent(QTimeEdit*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QTimeEdit_DropEvent(QTimeEdit*, intptr_t, QDropEvent*);
+bool miqt_exec_callback_QTimeEdit_NativeEvent(QTimeEdit*, intptr_t, struct miqt_string, void*, long*);
+int miqt_exec_callback_QTimeEdit_Metric(const QTimeEdit*, intptr_t, int);
+void miqt_exec_callback_QTimeEdit_InitPainter(const QTimeEdit*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QTimeEdit_Redirected(const QTimeEdit*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QTimeEdit_SharedPainter(const QTimeEdit*, intptr_t);
+void miqt_exec_callback_QTimeEdit_InputMethodEvent(QTimeEdit*, intptr_t, QInputMethodEvent*);
+bool miqt_exec_callback_QTimeEdit_EventFilter(QTimeEdit*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QTimeEdit_ChildEvent(QTimeEdit*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QTimeEdit_CustomEvent(QTimeEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_QTimeEdit_ConnectNotify(QTimeEdit*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QTimeEdit_DisconnectNotify(QTimeEdit*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QDateEdit_UserDateChanged(intptr_t, QDate*);
-QSize* miqt_exec_callback_QDateEdit_SizeHint(void*, intptr_t);
-void miqt_exec_callback_QDateEdit_Clear(void*, intptr_t);
-void miqt_exec_callback_QDateEdit_StepBy(void*, intptr_t, int);
-bool miqt_exec_callback_QDateEdit_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QDateEdit_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QDateEdit_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QDateEdit_FocusInEvent(void*, intptr_t, QFocusEvent*);
-bool miqt_exec_callback_QDateEdit_FocusNextPrevChild(void*, intptr_t, bool);
-int miqt_exec_callback_QDateEdit_Validate(void*, intptr_t, struct miqt_string, int*);
-void miqt_exec_callback_QDateEdit_Fixup(void*, intptr_t, struct miqt_string);
-QDateTime* miqt_exec_callback_QDateEdit_DateTimeFromText(void*, intptr_t, struct miqt_string);
-struct miqt_string miqt_exec_callback_QDateEdit_TextFromDateTime(void*, intptr_t, QDateTime*);
-int miqt_exec_callback_QDateEdit_StepEnabled(void*, intptr_t);
-void miqt_exec_callback_QDateEdit_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QDateEdit_PaintEvent(void*, intptr_t, QPaintEvent*);
-QSize* miqt_exec_callback_QDateEdit_MinimumSizeHint(void*, intptr_t);
-QVariant* miqt_exec_callback_QDateEdit_InputMethodQuery(void*, intptr_t, int);
-void miqt_exec_callback_QDateEdit_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QDateEdit_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QDateEdit_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QDateEdit_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QDateEdit_ChangeEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QDateEdit_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QDateEdit_HideEvent(void*, intptr_t, QHideEvent*);
-void miqt_exec_callback_QDateEdit_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QDateEdit_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QDateEdit_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QDateEdit_ShowEvent(void*, intptr_t, QShowEvent*);
-int miqt_exec_callback_QDateEdit_DevType(void*, intptr_t);
-void miqt_exec_callback_QDateEdit_SetVisible(void*, intptr_t, bool);
-int miqt_exec_callback_QDateEdit_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QDateEdit_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QDateEdit_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QDateEdit_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QDateEdit_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QDateEdit_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QDateEdit_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QDateEdit_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QDateEdit_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QDateEdit_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QDateEdit_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QDateEdit_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QDateEdit_DropEvent(void*, intptr_t, QDropEvent*);
-bool miqt_exec_callback_QDateEdit_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-int miqt_exec_callback_QDateEdit_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QDateEdit_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QDateEdit_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QDateEdit_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QDateEdit_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-bool miqt_exec_callback_QDateEdit_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QDateEdit_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QDateEdit_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QDateEdit_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QDateEdit_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QSize* miqt_exec_callback_QDateEdit_SizeHint(const QDateEdit*, intptr_t);
+void miqt_exec_callback_QDateEdit_Clear(QDateEdit*, intptr_t);
+void miqt_exec_callback_QDateEdit_StepBy(QDateEdit*, intptr_t, int);
+bool miqt_exec_callback_QDateEdit_Event(QDateEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_QDateEdit_KeyPressEvent(QDateEdit*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QDateEdit_WheelEvent(QDateEdit*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QDateEdit_FocusInEvent(QDateEdit*, intptr_t, QFocusEvent*);
+bool miqt_exec_callback_QDateEdit_FocusNextPrevChild(QDateEdit*, intptr_t, bool);
+int miqt_exec_callback_QDateEdit_Validate(const QDateEdit*, intptr_t, struct miqt_string, int*);
+void miqt_exec_callback_QDateEdit_Fixup(const QDateEdit*, intptr_t, struct miqt_string);
+QDateTime* miqt_exec_callback_QDateEdit_DateTimeFromText(const QDateEdit*, intptr_t, struct miqt_string);
+struct miqt_string miqt_exec_callback_QDateEdit_TextFromDateTime(const QDateEdit*, intptr_t, QDateTime*);
+int miqt_exec_callback_QDateEdit_StepEnabled(const QDateEdit*, intptr_t);
+void miqt_exec_callback_QDateEdit_MousePressEvent(QDateEdit*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDateEdit_PaintEvent(QDateEdit*, intptr_t, QPaintEvent*);
+QSize* miqt_exec_callback_QDateEdit_MinimumSizeHint(const QDateEdit*, intptr_t);
+QVariant* miqt_exec_callback_QDateEdit_InputMethodQuery(const QDateEdit*, intptr_t, int);
+void miqt_exec_callback_QDateEdit_ResizeEvent(QDateEdit*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QDateEdit_KeyReleaseEvent(QDateEdit*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QDateEdit_FocusOutEvent(QDateEdit*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QDateEdit_ContextMenuEvent(QDateEdit*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QDateEdit_ChangeEvent(QDateEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_QDateEdit_CloseEvent(QDateEdit*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QDateEdit_HideEvent(QDateEdit*, intptr_t, QHideEvent*);
+void miqt_exec_callback_QDateEdit_MouseReleaseEvent(QDateEdit*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDateEdit_MouseMoveEvent(QDateEdit*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDateEdit_TimerEvent(QDateEdit*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QDateEdit_ShowEvent(QDateEdit*, intptr_t, QShowEvent*);
+int miqt_exec_callback_QDateEdit_DevType(const QDateEdit*, intptr_t);
+void miqt_exec_callback_QDateEdit_SetVisible(QDateEdit*, intptr_t, bool);
+int miqt_exec_callback_QDateEdit_HeightForWidth(const QDateEdit*, intptr_t, int);
+bool miqt_exec_callback_QDateEdit_HasHeightForWidth(const QDateEdit*, intptr_t);
+QPaintEngine* miqt_exec_callback_QDateEdit_PaintEngine(const QDateEdit*, intptr_t);
+void miqt_exec_callback_QDateEdit_MouseDoubleClickEvent(QDateEdit*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QDateEdit_EnterEvent(QDateEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_QDateEdit_LeaveEvent(QDateEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_QDateEdit_MoveEvent(QDateEdit*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QDateEdit_TabletEvent(QDateEdit*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QDateEdit_ActionEvent(QDateEdit*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QDateEdit_DragEnterEvent(QDateEdit*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QDateEdit_DragMoveEvent(QDateEdit*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QDateEdit_DragLeaveEvent(QDateEdit*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QDateEdit_DropEvent(QDateEdit*, intptr_t, QDropEvent*);
+bool miqt_exec_callback_QDateEdit_NativeEvent(QDateEdit*, intptr_t, struct miqt_string, void*, long*);
+int miqt_exec_callback_QDateEdit_Metric(const QDateEdit*, intptr_t, int);
+void miqt_exec_callback_QDateEdit_InitPainter(const QDateEdit*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QDateEdit_Redirected(const QDateEdit*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QDateEdit_SharedPainter(const QDateEdit*, intptr_t);
+void miqt_exec_callback_QDateEdit_InputMethodEvent(QDateEdit*, intptr_t, QInputMethodEvent*);
+bool miqt_exec_callback_QDateEdit_EventFilter(QDateEdit*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QDateEdit_ChildEvent(QDateEdit*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QDateEdit_CustomEvent(QDateEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_QDateEdit_ConnectNotify(QDateEdit*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QDateEdit_DisconnectNotify(QDateEdit*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -244,7 +244,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QDateTimeEdit_SizeHint(const_cast<MiqtVirtualQDateTimeEdit*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QDateTimeEdit_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -440,7 +440,7 @@ public:
 		struct miqt_string sigval1 = input_ms;
 		int* sigval2 = &pos;
 
-		int callback_return_value = miqt_exec_callback_QDateTimeEdit_Validate(const_cast<MiqtVirtualQDateTimeEdit*>(this), handle__Validate, sigval1, sigval2);
+		int callback_return_value = miqt_exec_callback_QDateTimeEdit_Validate(this, handle__Validate, sigval1, sigval2);
 
 		return static_cast<QValidator::State>(callback_return_value);
 	}
@@ -473,7 +473,7 @@ public:
 		memcpy(input_ms.data, input_b.data(), input_ms.len);
 		struct miqt_string sigval1 = input_ms;
 
-		miqt_exec_callback_QDateTimeEdit_Fixup(const_cast<MiqtVirtualQDateTimeEdit*>(this), handle__Fixup, sigval1);
+		miqt_exec_callback_QDateTimeEdit_Fixup(this, handle__Fixup, sigval1);
 
 		
 	}
@@ -504,7 +504,7 @@ public:
 		memcpy(text_ms.data, text_b.data(), text_ms.len);
 		struct miqt_string sigval1 = text_ms;
 
-		QDateTime* callback_return_value = miqt_exec_callback_QDateTimeEdit_DateTimeFromText(const_cast<MiqtVirtualQDateTimeEdit*>(this), handle__DateTimeFromText, sigval1);
+		QDateTime* callback_return_value = miqt_exec_callback_QDateTimeEdit_DateTimeFromText(this, handle__DateTimeFromText, sigval1);
 
 		return *callback_return_value;
 	}
@@ -530,7 +530,7 @@ public:
 		// Cast returned reference into pointer
 		QDateTime* sigval1 = const_cast<QDateTime*>(&dt_ret);
 
-		struct miqt_string callback_return_value = miqt_exec_callback_QDateTimeEdit_TextFromDateTime(const_cast<MiqtVirtualQDateTimeEdit*>(this), handle__TextFromDateTime, sigval1);
+		struct miqt_string callback_return_value = miqt_exec_callback_QDateTimeEdit_TextFromDateTime(this, handle__TextFromDateTime, sigval1);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
 
 		return callback_return_value_QString;
@@ -560,7 +560,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QDateTimeEdit_StepEnabled(const_cast<MiqtVirtualQDateTimeEdit*>(this), handle__StepEnabled);
+		int callback_return_value = miqt_exec_callback_QDateTimeEdit_StepEnabled(this, handle__StepEnabled);
 
 		return static_cast<QAbstractSpinBox::StepEnabled>(callback_return_value);
 	}
@@ -631,7 +631,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QDateTimeEdit_MinimumSizeHint(const_cast<MiqtVirtualQDateTimeEdit*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QDateTimeEdit_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -655,7 +655,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QDateTimeEdit_InputMethodQuery(const_cast<MiqtVirtualQDateTimeEdit*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QDateTimeEdit_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}
@@ -941,7 +941,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QDateTimeEdit_DevType(const_cast<MiqtVirtualQDateTimeEdit*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QDateTimeEdit_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -988,7 +988,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QDateTimeEdit_HeightForWidth(const_cast<MiqtVirtualQDateTimeEdit*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QDateTimeEdit_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1010,7 +1010,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QDateTimeEdit_HasHeightForWidth(const_cast<MiqtVirtualQDateTimeEdit*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QDateTimeEdit_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -1032,7 +1032,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QDateTimeEdit_PaintEngine(const_cast<MiqtVirtualQDateTimeEdit*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QDateTimeEdit_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -1327,7 +1327,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QDateTimeEdit_Metric(const_cast<MiqtVirtualQDateTimeEdit*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QDateTimeEdit_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1351,7 +1351,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QDateTimeEdit_InitPainter(const_cast<MiqtVirtualQDateTimeEdit*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QDateTimeEdit_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -1374,7 +1374,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QDateTimeEdit_Redirected(const_cast<MiqtVirtualQDateTimeEdit*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QDateTimeEdit_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1396,7 +1396,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QDateTimeEdit_SharedPainter(const_cast<MiqtVirtualQDateTimeEdit*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QDateTimeEdit_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -2706,7 +2706,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QTimeEdit_SizeHint(const_cast<MiqtVirtualQTimeEdit*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QTimeEdit_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -2902,7 +2902,7 @@ public:
 		struct miqt_string sigval1 = input_ms;
 		int* sigval2 = &pos;
 
-		int callback_return_value = miqt_exec_callback_QTimeEdit_Validate(const_cast<MiqtVirtualQTimeEdit*>(this), handle__Validate, sigval1, sigval2);
+		int callback_return_value = miqt_exec_callback_QTimeEdit_Validate(this, handle__Validate, sigval1, sigval2);
 
 		return static_cast<QValidator::State>(callback_return_value);
 	}
@@ -2935,7 +2935,7 @@ public:
 		memcpy(input_ms.data, input_b.data(), input_ms.len);
 		struct miqt_string sigval1 = input_ms;
 
-		miqt_exec_callback_QTimeEdit_Fixup(const_cast<MiqtVirtualQTimeEdit*>(this), handle__Fixup, sigval1);
+		miqt_exec_callback_QTimeEdit_Fixup(this, handle__Fixup, sigval1);
 
 		
 	}
@@ -2966,7 +2966,7 @@ public:
 		memcpy(text_ms.data, text_b.data(), text_ms.len);
 		struct miqt_string sigval1 = text_ms;
 
-		QDateTime* callback_return_value = miqt_exec_callback_QTimeEdit_DateTimeFromText(const_cast<MiqtVirtualQTimeEdit*>(this), handle__DateTimeFromText, sigval1);
+		QDateTime* callback_return_value = miqt_exec_callback_QTimeEdit_DateTimeFromText(this, handle__DateTimeFromText, sigval1);
 
 		return *callback_return_value;
 	}
@@ -2992,7 +2992,7 @@ public:
 		// Cast returned reference into pointer
 		QDateTime* sigval1 = const_cast<QDateTime*>(&dt_ret);
 
-		struct miqt_string callback_return_value = miqt_exec_callback_QTimeEdit_TextFromDateTime(const_cast<MiqtVirtualQTimeEdit*>(this), handle__TextFromDateTime, sigval1);
+		struct miqt_string callback_return_value = miqt_exec_callback_QTimeEdit_TextFromDateTime(this, handle__TextFromDateTime, sigval1);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
 
 		return callback_return_value_QString;
@@ -3022,7 +3022,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QTimeEdit_StepEnabled(const_cast<MiqtVirtualQTimeEdit*>(this), handle__StepEnabled);
+		int callback_return_value = miqt_exec_callback_QTimeEdit_StepEnabled(this, handle__StepEnabled);
 
 		return static_cast<QAbstractSpinBox::StepEnabled>(callback_return_value);
 	}
@@ -3093,7 +3093,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QTimeEdit_MinimumSizeHint(const_cast<MiqtVirtualQTimeEdit*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QTimeEdit_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -3117,7 +3117,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QTimeEdit_InputMethodQuery(const_cast<MiqtVirtualQTimeEdit*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QTimeEdit_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}
@@ -3403,7 +3403,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QTimeEdit_DevType(const_cast<MiqtVirtualQTimeEdit*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QTimeEdit_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -3450,7 +3450,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QTimeEdit_HeightForWidth(const_cast<MiqtVirtualQTimeEdit*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QTimeEdit_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -3472,7 +3472,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QTimeEdit_HasHeightForWidth(const_cast<MiqtVirtualQTimeEdit*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QTimeEdit_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -3494,7 +3494,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QTimeEdit_PaintEngine(const_cast<MiqtVirtualQTimeEdit*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QTimeEdit_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -3789,7 +3789,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QTimeEdit_Metric(const_cast<MiqtVirtualQTimeEdit*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QTimeEdit_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -3813,7 +3813,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QTimeEdit_InitPainter(const_cast<MiqtVirtualQTimeEdit*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QTimeEdit_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -3836,7 +3836,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QTimeEdit_Redirected(const_cast<MiqtVirtualQTimeEdit*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QTimeEdit_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -3858,7 +3858,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QTimeEdit_SharedPainter(const_cast<MiqtVirtualQTimeEdit*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QTimeEdit_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -4907,7 +4907,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QDateEdit_SizeHint(const_cast<MiqtVirtualQDateEdit*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QDateEdit_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -5103,7 +5103,7 @@ public:
 		struct miqt_string sigval1 = input_ms;
 		int* sigval2 = &pos;
 
-		int callback_return_value = miqt_exec_callback_QDateEdit_Validate(const_cast<MiqtVirtualQDateEdit*>(this), handle__Validate, sigval1, sigval2);
+		int callback_return_value = miqt_exec_callback_QDateEdit_Validate(this, handle__Validate, sigval1, sigval2);
 
 		return static_cast<QValidator::State>(callback_return_value);
 	}
@@ -5136,7 +5136,7 @@ public:
 		memcpy(input_ms.data, input_b.data(), input_ms.len);
 		struct miqt_string sigval1 = input_ms;
 
-		miqt_exec_callback_QDateEdit_Fixup(const_cast<MiqtVirtualQDateEdit*>(this), handle__Fixup, sigval1);
+		miqt_exec_callback_QDateEdit_Fixup(this, handle__Fixup, sigval1);
 
 		
 	}
@@ -5167,7 +5167,7 @@ public:
 		memcpy(text_ms.data, text_b.data(), text_ms.len);
 		struct miqt_string sigval1 = text_ms;
 
-		QDateTime* callback_return_value = miqt_exec_callback_QDateEdit_DateTimeFromText(const_cast<MiqtVirtualQDateEdit*>(this), handle__DateTimeFromText, sigval1);
+		QDateTime* callback_return_value = miqt_exec_callback_QDateEdit_DateTimeFromText(this, handle__DateTimeFromText, sigval1);
 
 		return *callback_return_value;
 	}
@@ -5193,7 +5193,7 @@ public:
 		// Cast returned reference into pointer
 		QDateTime* sigval1 = const_cast<QDateTime*>(&dt_ret);
 
-		struct miqt_string callback_return_value = miqt_exec_callback_QDateEdit_TextFromDateTime(const_cast<MiqtVirtualQDateEdit*>(this), handle__TextFromDateTime, sigval1);
+		struct miqt_string callback_return_value = miqt_exec_callback_QDateEdit_TextFromDateTime(this, handle__TextFromDateTime, sigval1);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
 
 		return callback_return_value_QString;
@@ -5223,7 +5223,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QDateEdit_StepEnabled(const_cast<MiqtVirtualQDateEdit*>(this), handle__StepEnabled);
+		int callback_return_value = miqt_exec_callback_QDateEdit_StepEnabled(this, handle__StepEnabled);
 
 		return static_cast<QAbstractSpinBox::StepEnabled>(callback_return_value);
 	}
@@ -5294,7 +5294,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QDateEdit_MinimumSizeHint(const_cast<MiqtVirtualQDateEdit*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QDateEdit_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -5318,7 +5318,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QDateEdit_InputMethodQuery(const_cast<MiqtVirtualQDateEdit*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QDateEdit_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}
@@ -5604,7 +5604,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QDateEdit_DevType(const_cast<MiqtVirtualQDateEdit*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QDateEdit_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -5651,7 +5651,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QDateEdit_HeightForWidth(const_cast<MiqtVirtualQDateEdit*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QDateEdit_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -5673,7 +5673,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QDateEdit_HasHeightForWidth(const_cast<MiqtVirtualQDateEdit*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QDateEdit_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -5695,7 +5695,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QDateEdit_PaintEngine(const_cast<MiqtVirtualQDateEdit*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QDateEdit_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -5990,7 +5990,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QDateEdit_Metric(const_cast<MiqtVirtualQDateEdit*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QDateEdit_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -6014,7 +6014,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QDateEdit_InitPainter(const_cast<MiqtVirtualQDateEdit*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QDateEdit_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -6037,7 +6037,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QDateEdit_Redirected(const_cast<MiqtVirtualQDateEdit*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QDateEdit_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -6059,7 +6059,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QDateEdit_SharedPainter(const_cast<MiqtVirtualQDateEdit*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QDateEdit_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}

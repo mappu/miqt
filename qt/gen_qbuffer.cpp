@@ -17,29 +17,29 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QBuffer_Open(void*, intptr_t, int);
-void miqt_exec_callback_QBuffer_Close(void*, intptr_t);
-long long miqt_exec_callback_QBuffer_Size(void*, intptr_t);
-long long miqt_exec_callback_QBuffer_Pos(void*, intptr_t);
-bool miqt_exec_callback_QBuffer_Seek(void*, intptr_t, long long);
-bool miqt_exec_callback_QBuffer_AtEnd(void*, intptr_t);
-bool miqt_exec_callback_QBuffer_CanReadLine(void*, intptr_t);
-void miqt_exec_callback_QBuffer_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QBuffer_DisconnectNotify(void*, intptr_t, QMetaMethod*);
-long long miqt_exec_callback_QBuffer_ReadData(void*, intptr_t, char*, long long);
-long long miqt_exec_callback_QBuffer_WriteData(void*, intptr_t, const char*, long long);
-bool miqt_exec_callback_QBuffer_IsSequential(void*, intptr_t);
-bool miqt_exec_callback_QBuffer_Reset(void*, intptr_t);
-long long miqt_exec_callback_QBuffer_BytesAvailable(void*, intptr_t);
-long long miqt_exec_callback_QBuffer_BytesToWrite(void*, intptr_t);
-bool miqt_exec_callback_QBuffer_WaitForReadyRead(void*, intptr_t, int);
-bool miqt_exec_callback_QBuffer_WaitForBytesWritten(void*, intptr_t, int);
-long long miqt_exec_callback_QBuffer_ReadLineData(void*, intptr_t, char*, long long);
-bool miqt_exec_callback_QBuffer_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QBuffer_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QBuffer_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QBuffer_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QBuffer_CustomEvent(void*, intptr_t, QEvent*);
+bool miqt_exec_callback_QBuffer_Open(QBuffer*, intptr_t, int);
+void miqt_exec_callback_QBuffer_Close(QBuffer*, intptr_t);
+long long miqt_exec_callback_QBuffer_Size(const QBuffer*, intptr_t);
+long long miqt_exec_callback_QBuffer_Pos(const QBuffer*, intptr_t);
+bool miqt_exec_callback_QBuffer_Seek(QBuffer*, intptr_t, long long);
+bool miqt_exec_callback_QBuffer_AtEnd(const QBuffer*, intptr_t);
+bool miqt_exec_callback_QBuffer_CanReadLine(const QBuffer*, intptr_t);
+void miqt_exec_callback_QBuffer_ConnectNotify(QBuffer*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QBuffer_DisconnectNotify(QBuffer*, intptr_t, QMetaMethod*);
+long long miqt_exec_callback_QBuffer_ReadData(QBuffer*, intptr_t, char*, long long);
+long long miqt_exec_callback_QBuffer_WriteData(QBuffer*, intptr_t, const char*, long long);
+bool miqt_exec_callback_QBuffer_IsSequential(const QBuffer*, intptr_t);
+bool miqt_exec_callback_QBuffer_Reset(QBuffer*, intptr_t);
+long long miqt_exec_callback_QBuffer_BytesAvailable(const QBuffer*, intptr_t);
+long long miqt_exec_callback_QBuffer_BytesToWrite(const QBuffer*, intptr_t);
+bool miqt_exec_callback_QBuffer_WaitForReadyRead(QBuffer*, intptr_t, int);
+bool miqt_exec_callback_QBuffer_WaitForBytesWritten(QBuffer*, intptr_t, int);
+long long miqt_exec_callback_QBuffer_ReadLineData(QBuffer*, intptr_t, char*, long long);
+bool miqt_exec_callback_QBuffer_Event(QBuffer*, intptr_t, QEvent*);
+bool miqt_exec_callback_QBuffer_EventFilter(QBuffer*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QBuffer_TimerEvent(QBuffer*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QBuffer_ChildEvent(QBuffer*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QBuffer_CustomEvent(QBuffer*, intptr_t, QEvent*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -109,7 +109,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QBuffer_Size(const_cast<MiqtVirtualQBuffer*>(this), handle__Size);
+		long long callback_return_value = miqt_exec_callback_QBuffer_Size(this, handle__Size);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -132,7 +132,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QBuffer_Pos(const_cast<MiqtVirtualQBuffer*>(this), handle__Pos);
+		long long callback_return_value = miqt_exec_callback_QBuffer_Pos(this, handle__Pos);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -179,7 +179,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QBuffer_AtEnd(const_cast<MiqtVirtualQBuffer*>(this), handle__AtEnd);
+		bool callback_return_value = miqt_exec_callback_QBuffer_AtEnd(this, handle__AtEnd);
 
 		return callback_return_value;
 	}
@@ -201,7 +201,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QBuffer_CanReadLine(const_cast<MiqtVirtualQBuffer*>(this), handle__CanReadLine);
+		bool callback_return_value = miqt_exec_callback_QBuffer_CanReadLine(this, handle__CanReadLine);
 
 		return callback_return_value;
 	}
@@ -327,7 +327,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QBuffer_IsSequential(const_cast<MiqtVirtualQBuffer*>(this), handle__IsSequential);
+		bool callback_return_value = miqt_exec_callback_QBuffer_IsSequential(this, handle__IsSequential);
 
 		return callback_return_value;
 	}
@@ -371,7 +371,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QBuffer_BytesAvailable(const_cast<MiqtVirtualQBuffer*>(this), handle__BytesAvailable);
+		long long callback_return_value = miqt_exec_callback_QBuffer_BytesAvailable(this, handle__BytesAvailable);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -394,7 +394,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QBuffer_BytesToWrite(const_cast<MiqtVirtualQBuffer*>(this), handle__BytesToWrite);
+		long long callback_return_value = miqt_exec_callback_QBuffer_BytesToWrite(this, handle__BytesToWrite);
 
 		return static_cast<qint64>(callback_return_value);
 	}

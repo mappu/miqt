@@ -15,13 +15,13 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QTimer_TimerEvent(void*, intptr_t, QTimerEvent*);
-bool miqt_exec_callback_QTimer_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QTimer_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QTimer_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QTimer_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QTimer_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QTimer_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QTimer_TimerEvent(QTimer*, intptr_t, QTimerEvent*);
+bool miqt_exec_callback_QTimer_Event(QTimer*, intptr_t, QEvent*);
+bool miqt_exec_callback_QTimer_EventFilter(QTimer*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QTimer_ChildEvent(QTimer*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QTimer_CustomEvent(QTimer*, intptr_t, QEvent*);
+void miqt_exec_callback_QTimer_ConnectNotify(QTimer*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QTimer_DisconnectNotify(QTimer*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

@@ -23,13 +23,13 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QTextTable_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QTextTable_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QTextTable_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QTextTable_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QTextTable_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QTextTable_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QTextTable_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QTextTable_Event(QTextTable*, intptr_t, QEvent*);
+bool miqt_exec_callback_QTextTable_EventFilter(QTextTable*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QTextTable_TimerEvent(QTextTable*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QTextTable_ChildEvent(QTextTable*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QTextTable_CustomEvent(QTextTable*, intptr_t, QEvent*);
+void miqt_exec_callback_QTextTable_ConnectNotify(QTextTable*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QTextTable_DisconnectNotify(QTextTable*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

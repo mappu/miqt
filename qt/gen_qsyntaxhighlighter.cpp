@@ -17,14 +17,14 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QSyntaxHighlighter_HighlightBlock(void*, intptr_t, struct miqt_string);
-bool miqt_exec_callback_QSyntaxHighlighter_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QSyntaxHighlighter_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QSyntaxHighlighter_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QSyntaxHighlighter_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QSyntaxHighlighter_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSyntaxHighlighter_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QSyntaxHighlighter_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSyntaxHighlighter_HighlightBlock(QSyntaxHighlighter*, intptr_t, struct miqt_string);
+bool miqt_exec_callback_QSyntaxHighlighter_Event(QSyntaxHighlighter*, intptr_t, QEvent*);
+bool miqt_exec_callback_QSyntaxHighlighter_EventFilter(QSyntaxHighlighter*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QSyntaxHighlighter_TimerEvent(QSyntaxHighlighter*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSyntaxHighlighter_ChildEvent(QSyntaxHighlighter*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QSyntaxHighlighter_CustomEvent(QSyntaxHighlighter*, intptr_t, QEvent*);
+void miqt_exec_callback_QSyntaxHighlighter_ConnectNotify(QSyntaxHighlighter*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSyntaxHighlighter_DisconnectNotify(QSyntaxHighlighter*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

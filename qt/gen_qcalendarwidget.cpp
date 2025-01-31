@@ -50,54 +50,54 @@ void miqt_exec_callback_QCalendarWidget_SelectionChanged(intptr_t);
 void miqt_exec_callback_QCalendarWidget_Clicked(intptr_t, QDate*);
 void miqt_exec_callback_QCalendarWidget_Activated(intptr_t, QDate*);
 void miqt_exec_callback_QCalendarWidget_CurrentPageChanged(intptr_t, int, int);
-QSize* miqt_exec_callback_QCalendarWidget_SizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QCalendarWidget_MinimumSizeHint(void*, intptr_t);
-bool miqt_exec_callback_QCalendarWidget_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QCalendarWidget_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QCalendarWidget_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QCalendarWidget_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QCalendarWidget_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QCalendarWidget_PaintCell(void*, intptr_t, QPainter*, QRect*, QDate*);
-int miqt_exec_callback_QCalendarWidget_DevType(void*, intptr_t);
-void miqt_exec_callback_QCalendarWidget_SetVisible(void*, intptr_t, bool);
-int miqt_exec_callback_QCalendarWidget_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QCalendarWidget_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QCalendarWidget_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QCalendarWidget_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QCalendarWidget_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QCalendarWidget_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QCalendarWidget_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QCalendarWidget_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QCalendarWidget_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QCalendarWidget_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QCalendarWidget_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QCalendarWidget_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QCalendarWidget_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QCalendarWidget_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QCalendarWidget_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QCalendarWidget_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QCalendarWidget_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QCalendarWidget_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QCalendarWidget_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QCalendarWidget_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QCalendarWidget_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QCalendarWidget_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QCalendarWidget_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QCalendarWidget_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QCalendarWidget_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-void miqt_exec_callback_QCalendarWidget_ChangeEvent(void*, intptr_t, QEvent*);
-int miqt_exec_callback_QCalendarWidget_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QCalendarWidget_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QCalendarWidget_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QCalendarWidget_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QCalendarWidget_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QCalendarWidget_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QCalendarWidget_FocusNextPrevChild(void*, intptr_t, bool);
-void miqt_exec_callback_QCalendarWidget_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QCalendarWidget_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QCalendarWidget_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QCalendarWidget_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QCalendarWidget_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QSize* miqt_exec_callback_QCalendarWidget_SizeHint(const QCalendarWidget*, intptr_t);
+QSize* miqt_exec_callback_QCalendarWidget_MinimumSizeHint(const QCalendarWidget*, intptr_t);
+bool miqt_exec_callback_QCalendarWidget_Event(QCalendarWidget*, intptr_t, QEvent*);
+bool miqt_exec_callback_QCalendarWidget_EventFilter(QCalendarWidget*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QCalendarWidget_MousePressEvent(QCalendarWidget*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QCalendarWidget_ResizeEvent(QCalendarWidget*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QCalendarWidget_KeyPressEvent(QCalendarWidget*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QCalendarWidget_PaintCell(const QCalendarWidget*, intptr_t, QPainter*, QRect*, QDate*);
+int miqt_exec_callback_QCalendarWidget_DevType(const QCalendarWidget*, intptr_t);
+void miqt_exec_callback_QCalendarWidget_SetVisible(QCalendarWidget*, intptr_t, bool);
+int miqt_exec_callback_QCalendarWidget_HeightForWidth(const QCalendarWidget*, intptr_t, int);
+bool miqt_exec_callback_QCalendarWidget_HasHeightForWidth(const QCalendarWidget*, intptr_t);
+QPaintEngine* miqt_exec_callback_QCalendarWidget_PaintEngine(const QCalendarWidget*, intptr_t);
+void miqt_exec_callback_QCalendarWidget_MouseReleaseEvent(QCalendarWidget*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QCalendarWidget_MouseDoubleClickEvent(QCalendarWidget*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QCalendarWidget_MouseMoveEvent(QCalendarWidget*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QCalendarWidget_WheelEvent(QCalendarWidget*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QCalendarWidget_KeyReleaseEvent(QCalendarWidget*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QCalendarWidget_FocusInEvent(QCalendarWidget*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QCalendarWidget_FocusOutEvent(QCalendarWidget*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QCalendarWidget_EnterEvent(QCalendarWidget*, intptr_t, QEvent*);
+void miqt_exec_callback_QCalendarWidget_LeaveEvent(QCalendarWidget*, intptr_t, QEvent*);
+void miqt_exec_callback_QCalendarWidget_PaintEvent(QCalendarWidget*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QCalendarWidget_MoveEvent(QCalendarWidget*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QCalendarWidget_CloseEvent(QCalendarWidget*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QCalendarWidget_ContextMenuEvent(QCalendarWidget*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QCalendarWidget_TabletEvent(QCalendarWidget*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QCalendarWidget_ActionEvent(QCalendarWidget*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QCalendarWidget_DragEnterEvent(QCalendarWidget*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QCalendarWidget_DragMoveEvent(QCalendarWidget*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QCalendarWidget_DragLeaveEvent(QCalendarWidget*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QCalendarWidget_DropEvent(QCalendarWidget*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QCalendarWidget_ShowEvent(QCalendarWidget*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QCalendarWidget_HideEvent(QCalendarWidget*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QCalendarWidget_NativeEvent(QCalendarWidget*, intptr_t, struct miqt_string, void*, long*);
+void miqt_exec_callback_QCalendarWidget_ChangeEvent(QCalendarWidget*, intptr_t, QEvent*);
+int miqt_exec_callback_QCalendarWidget_Metric(const QCalendarWidget*, intptr_t, int);
+void miqt_exec_callback_QCalendarWidget_InitPainter(const QCalendarWidget*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QCalendarWidget_Redirected(const QCalendarWidget*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QCalendarWidget_SharedPainter(const QCalendarWidget*, intptr_t);
+void miqt_exec_callback_QCalendarWidget_InputMethodEvent(QCalendarWidget*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QCalendarWidget_InputMethodQuery(const QCalendarWidget*, intptr_t, int);
+bool miqt_exec_callback_QCalendarWidget_FocusNextPrevChild(QCalendarWidget*, intptr_t, bool);
+void miqt_exec_callback_QCalendarWidget_TimerEvent(QCalendarWidget*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QCalendarWidget_ChildEvent(QCalendarWidget*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QCalendarWidget_CustomEvent(QCalendarWidget*, intptr_t, QEvent*);
+void miqt_exec_callback_QCalendarWidget_ConnectNotify(QCalendarWidget*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QCalendarWidget_DisconnectNotify(QCalendarWidget*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -120,7 +120,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QCalendarWidget_SizeHint(const_cast<MiqtVirtualQCalendarWidget*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QCalendarWidget_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -142,7 +142,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QCalendarWidget_MinimumSizeHint(const_cast<MiqtVirtualQCalendarWidget*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QCalendarWidget_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -291,7 +291,7 @@ public:
 		// Cast returned reference into pointer
 		QDate* sigval3 = const_cast<QDate*>(&date_ret);
 
-		miqt_exec_callback_QCalendarWidget_PaintCell(const_cast<MiqtVirtualQCalendarWidget*>(this), handle__PaintCell, sigval1, sigval2, sigval3);
+		miqt_exec_callback_QCalendarWidget_PaintCell(this, handle__PaintCell, sigval1, sigval2, sigval3);
 
 		
 	}
@@ -313,7 +313,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QCalendarWidget_DevType(const_cast<MiqtVirtualQCalendarWidget*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QCalendarWidget_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -360,7 +360,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QCalendarWidget_HeightForWidth(const_cast<MiqtVirtualQCalendarWidget*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QCalendarWidget_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -382,7 +382,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QCalendarWidget_HasHeightForWidth(const_cast<MiqtVirtualQCalendarWidget*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QCalendarWidget_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -404,7 +404,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QCalendarWidget_PaintEngine(const_cast<MiqtVirtualQCalendarWidget*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QCalendarWidget_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -987,7 +987,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QCalendarWidget_Metric(const_cast<MiqtVirtualQCalendarWidget*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QCalendarWidget_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1011,7 +1011,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QCalendarWidget_InitPainter(const_cast<MiqtVirtualQCalendarWidget*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QCalendarWidget_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -1034,7 +1034,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QCalendarWidget_Redirected(const_cast<MiqtVirtualQCalendarWidget*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QCalendarWidget_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1056,7 +1056,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QCalendarWidget_SharedPainter(const_cast<MiqtVirtualQCalendarWidget*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QCalendarWidget_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -1104,7 +1104,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QCalendarWidget_InputMethodQuery(const_cast<MiqtVirtualQCalendarWidget*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QCalendarWidget_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}

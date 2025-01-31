@@ -54,59 +54,59 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QGraphicsView_RubberBandChanged(intptr_t, QRect*, QPointF*, QPointF*);
-QSize* miqt_exec_callback_QGraphicsView_SizeHint(void*, intptr_t);
-QVariant* miqt_exec_callback_QGraphicsView_InputMethodQuery(void*, intptr_t, int);
-void miqt_exec_callback_QGraphicsView_SetupViewport(void*, intptr_t, QWidget*);
-bool miqt_exec_callback_QGraphicsView_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QGraphicsView_ViewportEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QGraphicsView_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QGraphicsView_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QGraphicsView_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QGraphicsView_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QGraphicsView_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QGraphicsView_FocusInEvent(void*, intptr_t, QFocusEvent*);
-bool miqt_exec_callback_QGraphicsView_FocusNextPrevChild(void*, intptr_t, bool);
-void miqt_exec_callback_QGraphicsView_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QGraphicsView_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QGraphicsView_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QGraphicsView_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QGraphicsView_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QGraphicsView_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QGraphicsView_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QGraphicsView_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QGraphicsView_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QGraphicsView_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QGraphicsView_ScrollContentsBy(void*, intptr_t, int, int);
-void miqt_exec_callback_QGraphicsView_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QGraphicsView_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-void miqt_exec_callback_QGraphicsView_DrawBackground(void*, intptr_t, QPainter*, QRectF*);
-void miqt_exec_callback_QGraphicsView_DrawForeground(void*, intptr_t, QPainter*, QRectF*);
-QSize* miqt_exec_callback_QGraphicsView_MinimumSizeHint(void*, intptr_t);
-bool miqt_exec_callback_QGraphicsView_EventFilter(void*, intptr_t, QObject*, QEvent*);
-QSize* miqt_exec_callback_QGraphicsView_ViewportSizeHint(void*, intptr_t);
-void miqt_exec_callback_QGraphicsView_ChangeEvent(void*, intptr_t, QEvent*);
-int miqt_exec_callback_QGraphicsView_DevType(void*, intptr_t);
-void miqt_exec_callback_QGraphicsView_SetVisible(void*, intptr_t, bool);
-int miqt_exec_callback_QGraphicsView_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QGraphicsView_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QGraphicsView_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QGraphicsView_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QGraphicsView_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QGraphicsView_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QGraphicsView_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QGraphicsView_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QGraphicsView_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QGraphicsView_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QGraphicsView_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-int miqt_exec_callback_QGraphicsView_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QGraphicsView_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QGraphicsView_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QGraphicsView_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QGraphicsView_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QGraphicsView_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QGraphicsView_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QGraphicsView_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QGraphicsView_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QSize* miqt_exec_callback_QGraphicsView_SizeHint(const QGraphicsView*, intptr_t);
+QVariant* miqt_exec_callback_QGraphicsView_InputMethodQuery(const QGraphicsView*, intptr_t, int);
+void miqt_exec_callback_QGraphicsView_SetupViewport(QGraphicsView*, intptr_t, QWidget*);
+bool miqt_exec_callback_QGraphicsView_Event(QGraphicsView*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGraphicsView_ViewportEvent(QGraphicsView*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsView_ContextMenuEvent(QGraphicsView*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QGraphicsView_DragEnterEvent(QGraphicsView*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QGraphicsView_DragLeaveEvent(QGraphicsView*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QGraphicsView_DragMoveEvent(QGraphicsView*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QGraphicsView_DropEvent(QGraphicsView*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QGraphicsView_FocusInEvent(QGraphicsView*, intptr_t, QFocusEvent*);
+bool miqt_exec_callback_QGraphicsView_FocusNextPrevChild(QGraphicsView*, intptr_t, bool);
+void miqt_exec_callback_QGraphicsView_FocusOutEvent(QGraphicsView*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QGraphicsView_KeyPressEvent(QGraphicsView*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QGraphicsView_KeyReleaseEvent(QGraphicsView*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QGraphicsView_MouseDoubleClickEvent(QGraphicsView*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QGraphicsView_MousePressEvent(QGraphicsView*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QGraphicsView_MouseMoveEvent(QGraphicsView*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QGraphicsView_MouseReleaseEvent(QGraphicsView*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QGraphicsView_WheelEvent(QGraphicsView*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QGraphicsView_PaintEvent(QGraphicsView*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QGraphicsView_ResizeEvent(QGraphicsView*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QGraphicsView_ScrollContentsBy(QGraphicsView*, intptr_t, int, int);
+void miqt_exec_callback_QGraphicsView_ShowEvent(QGraphicsView*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QGraphicsView_InputMethodEvent(QGraphicsView*, intptr_t, QInputMethodEvent*);
+void miqt_exec_callback_QGraphicsView_DrawBackground(QGraphicsView*, intptr_t, QPainter*, QRectF*);
+void miqt_exec_callback_QGraphicsView_DrawForeground(QGraphicsView*, intptr_t, QPainter*, QRectF*);
+QSize* miqt_exec_callback_QGraphicsView_MinimumSizeHint(const QGraphicsView*, intptr_t);
+bool miqt_exec_callback_QGraphicsView_EventFilter(QGraphicsView*, intptr_t, QObject*, QEvent*);
+QSize* miqt_exec_callback_QGraphicsView_ViewportSizeHint(const QGraphicsView*, intptr_t);
+void miqt_exec_callback_QGraphicsView_ChangeEvent(QGraphicsView*, intptr_t, QEvent*);
+int miqt_exec_callback_QGraphicsView_DevType(const QGraphicsView*, intptr_t);
+void miqt_exec_callback_QGraphicsView_SetVisible(QGraphicsView*, intptr_t, bool);
+int miqt_exec_callback_QGraphicsView_HeightForWidth(const QGraphicsView*, intptr_t, int);
+bool miqt_exec_callback_QGraphicsView_HasHeightForWidth(const QGraphicsView*, intptr_t);
+QPaintEngine* miqt_exec_callback_QGraphicsView_PaintEngine(const QGraphicsView*, intptr_t);
+void miqt_exec_callback_QGraphicsView_EnterEvent(QGraphicsView*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsView_LeaveEvent(QGraphicsView*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsView_MoveEvent(QGraphicsView*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QGraphicsView_CloseEvent(QGraphicsView*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QGraphicsView_TabletEvent(QGraphicsView*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QGraphicsView_ActionEvent(QGraphicsView*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QGraphicsView_HideEvent(QGraphicsView*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QGraphicsView_NativeEvent(QGraphicsView*, intptr_t, struct miqt_string, void*, long*);
+int miqt_exec_callback_QGraphicsView_Metric(const QGraphicsView*, intptr_t, int);
+void miqt_exec_callback_QGraphicsView_InitPainter(const QGraphicsView*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QGraphicsView_Redirected(const QGraphicsView*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QGraphicsView_SharedPainter(const QGraphicsView*, intptr_t);
+void miqt_exec_callback_QGraphicsView_TimerEvent(QGraphicsView*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QGraphicsView_ChildEvent(QGraphicsView*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QGraphicsView_CustomEvent(QGraphicsView*, intptr_t, QEvent*);
+void miqt_exec_callback_QGraphicsView_ConnectNotify(QGraphicsView*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGraphicsView_DisconnectNotify(QGraphicsView*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -131,7 +131,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QGraphicsView_SizeHint(const_cast<MiqtVirtualQGraphicsView*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QGraphicsView_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -155,7 +155,7 @@ public:
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QGraphicsView_InputMethodQuery(const_cast<MiqtVirtualQGraphicsView*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QGraphicsView_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}
@@ -781,7 +781,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QGraphicsView_MinimumSizeHint(const_cast<MiqtVirtualQGraphicsView*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QGraphicsView_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -827,7 +827,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QGraphicsView_ViewportSizeHint(const_cast<MiqtVirtualQGraphicsView*>(this), handle__ViewportSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QGraphicsView_ViewportSizeHint(this, handle__ViewportSizeHint);
 
 		return *callback_return_value;
 	}
@@ -873,7 +873,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QGraphicsView_DevType(const_cast<MiqtVirtualQGraphicsView*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QGraphicsView_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -920,7 +920,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QGraphicsView_HeightForWidth(const_cast<MiqtVirtualQGraphicsView*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QGraphicsView_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -942,7 +942,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QGraphicsView_HasHeightForWidth(const_cast<MiqtVirtualQGraphicsView*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QGraphicsView_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -964,7 +964,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QGraphicsView_PaintEngine(const_cast<MiqtVirtualQGraphicsView*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QGraphicsView_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -1187,7 +1187,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QGraphicsView_Metric(const_cast<MiqtVirtualQGraphicsView*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QGraphicsView_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1211,7 +1211,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QGraphicsView_InitPainter(const_cast<MiqtVirtualQGraphicsView*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QGraphicsView_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -1234,7 +1234,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QGraphicsView_Redirected(const_cast<MiqtVirtualQGraphicsView*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QGraphicsView_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1256,7 +1256,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QGraphicsView_SharedPainter(const_cast<MiqtVirtualQGraphicsView*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QGraphicsView_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}

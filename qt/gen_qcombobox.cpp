@@ -60,55 +60,55 @@ void miqt_exec_callback_QComboBox_CurrentIndexChangedWithQString(intptr_t, struc
 void miqt_exec_callback_QComboBox_CurrentTextChanged(intptr_t, struct miqt_string);
 void miqt_exec_callback_QComboBox_ActivatedWithQString(intptr_t, struct miqt_string);
 void miqt_exec_callback_QComboBox_HighlightedWithQString(intptr_t, struct miqt_string);
-QSize* miqt_exec_callback_QComboBox_SizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QComboBox_MinimumSizeHint(void*, intptr_t);
-void miqt_exec_callback_QComboBox_ShowPopup(void*, intptr_t);
-void miqt_exec_callback_QComboBox_HidePopup(void*, intptr_t);
-bool miqt_exec_callback_QComboBox_Event(void*, intptr_t, QEvent*);
-QVariant* miqt_exec_callback_QComboBox_InputMethodQuery(void*, intptr_t, int);
-void miqt_exec_callback_QComboBox_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QComboBox_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QComboBox_ChangeEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QComboBox_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QComboBox_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QComboBox_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QComboBox_HideEvent(void*, intptr_t, QHideEvent*);
-void miqt_exec_callback_QComboBox_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QComboBox_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QComboBox_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QComboBox_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QComboBox_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QComboBox_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QComboBox_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-int miqt_exec_callback_QComboBox_DevType(void*, intptr_t);
-void miqt_exec_callback_QComboBox_SetVisible(void*, intptr_t, bool);
-int miqt_exec_callback_QComboBox_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QComboBox_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QComboBox_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QComboBox_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QComboBox_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QComboBox_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QComboBox_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QComboBox_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QComboBox_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QComboBox_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QComboBox_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QComboBox_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QComboBox_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QComboBox_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QComboBox_DropEvent(void*, intptr_t, QDropEvent*);
-bool miqt_exec_callback_QComboBox_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-int miqt_exec_callback_QComboBox_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QComboBox_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QComboBox_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QComboBox_SharedPainter(void*, intptr_t);
-bool miqt_exec_callback_QComboBox_FocusNextPrevChild(void*, intptr_t, bool);
-bool miqt_exec_callback_QComboBox_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QComboBox_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QComboBox_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QComboBox_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QComboBox_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QComboBox_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QSize* miqt_exec_callback_QComboBox_SizeHint(const QComboBox*, intptr_t);
+QSize* miqt_exec_callback_QComboBox_MinimumSizeHint(const QComboBox*, intptr_t);
+void miqt_exec_callback_QComboBox_ShowPopup(QComboBox*, intptr_t);
+void miqt_exec_callback_QComboBox_HidePopup(QComboBox*, intptr_t);
+bool miqt_exec_callback_QComboBox_Event(QComboBox*, intptr_t, QEvent*);
+QVariant* miqt_exec_callback_QComboBox_InputMethodQuery(const QComboBox*, intptr_t, int);
+void miqt_exec_callback_QComboBox_FocusInEvent(QComboBox*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QComboBox_FocusOutEvent(QComboBox*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QComboBox_ChangeEvent(QComboBox*, intptr_t, QEvent*);
+void miqt_exec_callback_QComboBox_ResizeEvent(QComboBox*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QComboBox_PaintEvent(QComboBox*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QComboBox_ShowEvent(QComboBox*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QComboBox_HideEvent(QComboBox*, intptr_t, QHideEvent*);
+void miqt_exec_callback_QComboBox_MousePressEvent(QComboBox*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QComboBox_MouseReleaseEvent(QComboBox*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QComboBox_KeyPressEvent(QComboBox*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QComboBox_KeyReleaseEvent(QComboBox*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QComboBox_WheelEvent(QComboBox*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QComboBox_ContextMenuEvent(QComboBox*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QComboBox_InputMethodEvent(QComboBox*, intptr_t, QInputMethodEvent*);
+int miqt_exec_callback_QComboBox_DevType(const QComboBox*, intptr_t);
+void miqt_exec_callback_QComboBox_SetVisible(QComboBox*, intptr_t, bool);
+int miqt_exec_callback_QComboBox_HeightForWidth(const QComboBox*, intptr_t, int);
+bool miqt_exec_callback_QComboBox_HasHeightForWidth(const QComboBox*, intptr_t);
+QPaintEngine* miqt_exec_callback_QComboBox_PaintEngine(const QComboBox*, intptr_t);
+void miqt_exec_callback_QComboBox_MouseDoubleClickEvent(QComboBox*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QComboBox_MouseMoveEvent(QComboBox*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QComboBox_EnterEvent(QComboBox*, intptr_t, QEvent*);
+void miqt_exec_callback_QComboBox_LeaveEvent(QComboBox*, intptr_t, QEvent*);
+void miqt_exec_callback_QComboBox_MoveEvent(QComboBox*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QComboBox_CloseEvent(QComboBox*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QComboBox_TabletEvent(QComboBox*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QComboBox_ActionEvent(QComboBox*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QComboBox_DragEnterEvent(QComboBox*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QComboBox_DragMoveEvent(QComboBox*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QComboBox_DragLeaveEvent(QComboBox*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QComboBox_DropEvent(QComboBox*, intptr_t, QDropEvent*);
+bool miqt_exec_callback_QComboBox_NativeEvent(QComboBox*, intptr_t, struct miqt_string, void*, long*);
+int miqt_exec_callback_QComboBox_Metric(const QComboBox*, intptr_t, int);
+void miqt_exec_callback_QComboBox_InitPainter(const QComboBox*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QComboBox_Redirected(const QComboBox*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QComboBox_SharedPainter(const QComboBox*, intptr_t);
+bool miqt_exec_callback_QComboBox_FocusNextPrevChild(QComboBox*, intptr_t, bool);
+bool miqt_exec_callback_QComboBox_EventFilter(QComboBox*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QComboBox_TimerEvent(QComboBox*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QComboBox_ChildEvent(QComboBox*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QComboBox_CustomEvent(QComboBox*, intptr_t, QEvent*);
+void miqt_exec_callback_QComboBox_ConnectNotify(QComboBox*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QComboBox_DisconnectNotify(QComboBox*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -131,7 +131,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QComboBox_SizeHint(const_cast<MiqtVirtualQComboBox*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QComboBox_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -153,7 +153,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QComboBox_MinimumSizeHint(const_cast<MiqtVirtualQComboBox*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QComboBox_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -246,7 +246,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QComboBox_InputMethodQuery(const_cast<MiqtVirtualQComboBox*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QComboBox_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}
@@ -604,7 +604,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QComboBox_DevType(const_cast<MiqtVirtualQComboBox*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QComboBox_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -651,7 +651,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QComboBox_HeightForWidth(const_cast<MiqtVirtualQComboBox*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QComboBox_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -673,7 +673,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QComboBox_HasHeightForWidth(const_cast<MiqtVirtualQComboBox*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QComboBox_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -695,7 +695,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QComboBox_PaintEngine(const_cast<MiqtVirtualQComboBox*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QComboBox_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -1038,7 +1038,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QComboBox_Metric(const_cast<MiqtVirtualQComboBox*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QComboBox_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1062,7 +1062,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QComboBox_InitPainter(const_cast<MiqtVirtualQComboBox*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QComboBox_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -1085,7 +1085,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QComboBox_Redirected(const_cast<MiqtVirtualQComboBox*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QComboBox_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1107,7 +1107,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QComboBox_SharedPainter(const_cast<MiqtVirtualQComboBox*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QComboBox_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}

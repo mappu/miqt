@@ -81,20 +81,20 @@ void miqt_exec_callback_QWebEnginePage_LifecycleStateChanged(intptr_t, int);
 void miqt_exec_callback_QWebEnginePage_RecommendedStateChanged(intptr_t, int);
 void miqt_exec_callback_QWebEnginePage_FindTextFinished(intptr_t, QWebEngineFindTextResult*);
 void miqt_exec_callback_QWebEnginePage_QAboutToDelete(intptr_t);
-void miqt_exec_callback_QWebEnginePage_TriggerAction(void*, intptr_t, int, bool);
-bool miqt_exec_callback_QWebEnginePage_Event(void*, intptr_t, QEvent*);
-QWebEnginePage* miqt_exec_callback_QWebEnginePage_CreateWindow(void*, intptr_t, int);
-struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QWebEnginePage_ChooseFiles(void*, intptr_t, int, struct miqt_array /* of struct miqt_string */ , struct miqt_array /* of struct miqt_string */ );
-void miqt_exec_callback_QWebEnginePage_JavaScriptAlert(void*, intptr_t, QUrl*, struct miqt_string);
-bool miqt_exec_callback_QWebEnginePage_JavaScriptConfirm(void*, intptr_t, QUrl*, struct miqt_string);
-void miqt_exec_callback_QWebEnginePage_JavaScriptConsoleMessage(void*, intptr_t, int, struct miqt_string, int, struct miqt_string);
-bool miqt_exec_callback_QWebEnginePage_AcceptNavigationRequest(void*, intptr_t, QUrl*, int, bool);
-bool miqt_exec_callback_QWebEnginePage_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QWebEnginePage_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QWebEnginePage_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QWebEnginePage_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QWebEnginePage_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QWebEnginePage_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QWebEnginePage_TriggerAction(QWebEnginePage*, intptr_t, int, bool);
+bool miqt_exec_callback_QWebEnginePage_Event(QWebEnginePage*, intptr_t, QEvent*);
+QWebEnginePage* miqt_exec_callback_QWebEnginePage_CreateWindow(QWebEnginePage*, intptr_t, int);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QWebEnginePage_ChooseFiles(QWebEnginePage*, intptr_t, int, struct miqt_array /* of struct miqt_string */ , struct miqt_array /* of struct miqt_string */ );
+void miqt_exec_callback_QWebEnginePage_JavaScriptAlert(QWebEnginePage*, intptr_t, QUrl*, struct miqt_string);
+bool miqt_exec_callback_QWebEnginePage_JavaScriptConfirm(QWebEnginePage*, intptr_t, QUrl*, struct miqt_string);
+void miqt_exec_callback_QWebEnginePage_JavaScriptConsoleMessage(QWebEnginePage*, intptr_t, int, struct miqt_string, int, struct miqt_string);
+bool miqt_exec_callback_QWebEnginePage_AcceptNavigationRequest(QWebEnginePage*, intptr_t, QUrl*, int, bool);
+bool miqt_exec_callback_QWebEnginePage_EventFilter(QWebEnginePage*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QWebEnginePage_TimerEvent(QWebEnginePage*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QWebEnginePage_ChildEvent(QWebEnginePage*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QWebEnginePage_CustomEvent(QWebEnginePage*, intptr_t, QEvent*);
+void miqt_exec_callback_QWebEnginePage_ConnectNotify(QWebEnginePage*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QWebEnginePage_DisconnectNotify(QWebEnginePage*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

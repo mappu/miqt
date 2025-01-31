@@ -16,14 +16,14 @@
 extern "C" {
 #endif
 
-QIconEngine* miqt_exec_callback_QIconEnginePlugin_Create(void*, intptr_t, struct miqt_string);
-bool miqt_exec_callback_QIconEnginePlugin_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QIconEnginePlugin_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QIconEnginePlugin_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QIconEnginePlugin_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QIconEnginePlugin_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QIconEnginePlugin_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QIconEnginePlugin_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QIconEngine* miqt_exec_callback_QIconEnginePlugin_Create(QIconEnginePlugin*, intptr_t, struct miqt_string);
+bool miqt_exec_callback_QIconEnginePlugin_Event(QIconEnginePlugin*, intptr_t, QEvent*);
+bool miqt_exec_callback_QIconEnginePlugin_EventFilter(QIconEnginePlugin*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QIconEnginePlugin_TimerEvent(QIconEnginePlugin*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QIconEnginePlugin_ChildEvent(QIconEnginePlugin*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QIconEnginePlugin_CustomEvent(QIconEnginePlugin*, intptr_t, QEvent*);
+void miqt_exec_callback_QIconEnginePlugin_ConnectNotify(QIconEnginePlugin*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QIconEnginePlugin_DisconnectNotify(QIconEnginePlugin*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

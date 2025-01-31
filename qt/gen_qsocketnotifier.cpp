@@ -16,13 +16,13 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QSocketNotifier_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QSocketNotifier_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QSocketNotifier_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QSocketNotifier_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QSocketNotifier_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSocketNotifier_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QSocketNotifier_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QSocketNotifier_Event(QSocketNotifier*, intptr_t, QEvent*);
+bool miqt_exec_callback_QSocketNotifier_EventFilter(QSocketNotifier*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QSocketNotifier_TimerEvent(QSocketNotifier*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSocketNotifier_ChildEvent(QSocketNotifier*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QSocketNotifier_CustomEvent(QSocketNotifier*, intptr_t, QEvent*);
+void miqt_exec_callback_QSocketNotifier_ConnectNotify(QSocketNotifier*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSocketNotifier_DisconnectNotify(QSocketNotifier*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

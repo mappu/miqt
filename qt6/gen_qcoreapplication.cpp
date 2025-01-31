@@ -25,14 +25,14 @@ void miqt_exec_callback_QCoreApplication_OrganizationNameChanged(intptr_t);
 void miqt_exec_callback_QCoreApplication_OrganizationDomainChanged(intptr_t);
 void miqt_exec_callback_QCoreApplication_ApplicationNameChanged(intptr_t);
 void miqt_exec_callback_QCoreApplication_ApplicationVersionChanged(intptr_t);
-bool miqt_exec_callback_QCoreApplication_Notify(void*, intptr_t, QObject*, QEvent*);
-bool miqt_exec_callback_QCoreApplication_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QCoreApplication_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QCoreApplication_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QCoreApplication_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QCoreApplication_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QCoreApplication_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QCoreApplication_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QCoreApplication_Notify(QCoreApplication*, intptr_t, QObject*, QEvent*);
+bool miqt_exec_callback_QCoreApplication_Event(QCoreApplication*, intptr_t, QEvent*);
+bool miqt_exec_callback_QCoreApplication_EventFilter(QCoreApplication*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QCoreApplication_TimerEvent(QCoreApplication*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QCoreApplication_ChildEvent(QCoreApplication*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QCoreApplication_CustomEvent(QCoreApplication*, intptr_t, QEvent*);
+void miqt_exec_callback_QCoreApplication_ConnectNotify(QCoreApplication*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QCoreApplication_DisconnectNotify(QCoreApplication*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

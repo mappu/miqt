@@ -55,67 +55,67 @@ void miqt_exec_callback_QTextBrowser_SourceChanged(intptr_t, QUrl*);
 void miqt_exec_callback_QTextBrowser_Highlighted(intptr_t, QUrl*);
 void miqt_exec_callback_QTextBrowser_HighlightedWithQString(intptr_t, struct miqt_string);
 void miqt_exec_callback_QTextBrowser_AnchorClicked(intptr_t, QUrl*);
-QVariant* miqt_exec_callback_QTextBrowser_LoadResource(void*, intptr_t, int, QUrl*);
-void miqt_exec_callback_QTextBrowser_SetSource(void*, intptr_t, QUrl*);
-void miqt_exec_callback_QTextBrowser_Backward(void*, intptr_t);
-void miqt_exec_callback_QTextBrowser_Forward(void*, intptr_t);
-void miqt_exec_callback_QTextBrowser_Home(void*, intptr_t);
-void miqt_exec_callback_QTextBrowser_Reload(void*, intptr_t);
-bool miqt_exec_callback_QTextBrowser_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QTextBrowser_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QTextBrowser_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QTextBrowser_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QTextBrowser_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QTextBrowser_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-bool miqt_exec_callback_QTextBrowser_FocusNextPrevChild(void*, intptr_t, bool);
-void miqt_exec_callback_QTextBrowser_PaintEvent(void*, intptr_t, QPaintEvent*);
-QVariant* miqt_exec_callback_QTextBrowser_InputMethodQuery(void*, intptr_t, int);
-void miqt_exec_callback_QTextBrowser_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QTextBrowser_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QTextBrowser_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QTextBrowser_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QTextBrowser_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QTextBrowser_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QTextBrowser_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QTextBrowser_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QTextBrowser_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QTextBrowser_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QTextBrowser_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QTextBrowser_ChangeEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QTextBrowser_WheelEvent(void*, intptr_t, QWheelEvent*);
-QMimeData* miqt_exec_callback_QTextBrowser_CreateMimeDataFromSelection(void*, intptr_t);
-bool miqt_exec_callback_QTextBrowser_CanInsertFromMimeData(void*, intptr_t, QMimeData*);
-void miqt_exec_callback_QTextBrowser_InsertFromMimeData(void*, intptr_t, QMimeData*);
-void miqt_exec_callback_QTextBrowser_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-void miqt_exec_callback_QTextBrowser_ScrollContentsBy(void*, intptr_t, int, int);
-void miqt_exec_callback_QTextBrowser_DoSetTextCursor(void*, intptr_t, QTextCursor*);
-QSize* miqt_exec_callback_QTextBrowser_MinimumSizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_QTextBrowser_SizeHint(void*, intptr_t);
-void miqt_exec_callback_QTextBrowser_SetupViewport(void*, intptr_t, QWidget*);
-bool miqt_exec_callback_QTextBrowser_EventFilter(void*, intptr_t, QObject*, QEvent*);
-bool miqt_exec_callback_QTextBrowser_ViewportEvent(void*, intptr_t, QEvent*);
-QSize* miqt_exec_callback_QTextBrowser_ViewportSizeHint(void*, intptr_t);
-int miqt_exec_callback_QTextBrowser_DevType(void*, intptr_t);
-void miqt_exec_callback_QTextBrowser_SetVisible(void*, intptr_t, bool);
-int miqt_exec_callback_QTextBrowser_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QTextBrowser_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QTextBrowser_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_QTextBrowser_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QTextBrowser_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QTextBrowser_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QTextBrowser_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QTextBrowser_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QTextBrowser_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QTextBrowser_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QTextBrowser_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-int miqt_exec_callback_QTextBrowser_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QTextBrowser_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QTextBrowser_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QTextBrowser_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QTextBrowser_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QTextBrowser_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QTextBrowser_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QTextBrowser_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QVariant* miqt_exec_callback_QTextBrowser_LoadResource(QTextBrowser*, intptr_t, int, QUrl*);
+void miqt_exec_callback_QTextBrowser_SetSource(QTextBrowser*, intptr_t, QUrl*);
+void miqt_exec_callback_QTextBrowser_Backward(QTextBrowser*, intptr_t);
+void miqt_exec_callback_QTextBrowser_Forward(QTextBrowser*, intptr_t);
+void miqt_exec_callback_QTextBrowser_Home(QTextBrowser*, intptr_t);
+void miqt_exec_callback_QTextBrowser_Reload(QTextBrowser*, intptr_t);
+bool miqt_exec_callback_QTextBrowser_Event(QTextBrowser*, intptr_t, QEvent*);
+void miqt_exec_callback_QTextBrowser_KeyPressEvent(QTextBrowser*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QTextBrowser_MouseMoveEvent(QTextBrowser*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTextBrowser_MousePressEvent(QTextBrowser*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTextBrowser_MouseReleaseEvent(QTextBrowser*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTextBrowser_FocusOutEvent(QTextBrowser*, intptr_t, QFocusEvent*);
+bool miqt_exec_callback_QTextBrowser_FocusNextPrevChild(QTextBrowser*, intptr_t, bool);
+void miqt_exec_callback_QTextBrowser_PaintEvent(QTextBrowser*, intptr_t, QPaintEvent*);
+QVariant* miqt_exec_callback_QTextBrowser_InputMethodQuery(const QTextBrowser*, intptr_t, int);
+void miqt_exec_callback_QTextBrowser_TimerEvent(QTextBrowser*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QTextBrowser_KeyReleaseEvent(QTextBrowser*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QTextBrowser_ResizeEvent(QTextBrowser*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QTextBrowser_MouseDoubleClickEvent(QTextBrowser*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTextBrowser_ContextMenuEvent(QTextBrowser*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QTextBrowser_DragEnterEvent(QTextBrowser*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QTextBrowser_DragLeaveEvent(QTextBrowser*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QTextBrowser_DragMoveEvent(QTextBrowser*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QTextBrowser_DropEvent(QTextBrowser*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QTextBrowser_FocusInEvent(QTextBrowser*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QTextBrowser_ShowEvent(QTextBrowser*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QTextBrowser_ChangeEvent(QTextBrowser*, intptr_t, QEvent*);
+void miqt_exec_callback_QTextBrowser_WheelEvent(QTextBrowser*, intptr_t, QWheelEvent*);
+QMimeData* miqt_exec_callback_QTextBrowser_CreateMimeDataFromSelection(const QTextBrowser*, intptr_t);
+bool miqt_exec_callback_QTextBrowser_CanInsertFromMimeData(const QTextBrowser*, intptr_t, QMimeData*);
+void miqt_exec_callback_QTextBrowser_InsertFromMimeData(QTextBrowser*, intptr_t, QMimeData*);
+void miqt_exec_callback_QTextBrowser_InputMethodEvent(QTextBrowser*, intptr_t, QInputMethodEvent*);
+void miqt_exec_callback_QTextBrowser_ScrollContentsBy(QTextBrowser*, intptr_t, int, int);
+void miqt_exec_callback_QTextBrowser_DoSetTextCursor(QTextBrowser*, intptr_t, QTextCursor*);
+QSize* miqt_exec_callback_QTextBrowser_MinimumSizeHint(const QTextBrowser*, intptr_t);
+QSize* miqt_exec_callback_QTextBrowser_SizeHint(const QTextBrowser*, intptr_t);
+void miqt_exec_callback_QTextBrowser_SetupViewport(QTextBrowser*, intptr_t, QWidget*);
+bool miqt_exec_callback_QTextBrowser_EventFilter(QTextBrowser*, intptr_t, QObject*, QEvent*);
+bool miqt_exec_callback_QTextBrowser_ViewportEvent(QTextBrowser*, intptr_t, QEvent*);
+QSize* miqt_exec_callback_QTextBrowser_ViewportSizeHint(const QTextBrowser*, intptr_t);
+int miqt_exec_callback_QTextBrowser_DevType(const QTextBrowser*, intptr_t);
+void miqt_exec_callback_QTextBrowser_SetVisible(QTextBrowser*, intptr_t, bool);
+int miqt_exec_callback_QTextBrowser_HeightForWidth(const QTextBrowser*, intptr_t, int);
+bool miqt_exec_callback_QTextBrowser_HasHeightForWidth(const QTextBrowser*, intptr_t);
+QPaintEngine* miqt_exec_callback_QTextBrowser_PaintEngine(const QTextBrowser*, intptr_t);
+void miqt_exec_callback_QTextBrowser_EnterEvent(QTextBrowser*, intptr_t, QEvent*);
+void miqt_exec_callback_QTextBrowser_LeaveEvent(QTextBrowser*, intptr_t, QEvent*);
+void miqt_exec_callback_QTextBrowser_MoveEvent(QTextBrowser*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QTextBrowser_CloseEvent(QTextBrowser*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QTextBrowser_TabletEvent(QTextBrowser*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QTextBrowser_ActionEvent(QTextBrowser*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QTextBrowser_HideEvent(QTextBrowser*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QTextBrowser_NativeEvent(QTextBrowser*, intptr_t, struct miqt_string, void*, long*);
+int miqt_exec_callback_QTextBrowser_Metric(const QTextBrowser*, intptr_t, int);
+void miqt_exec_callback_QTextBrowser_InitPainter(const QTextBrowser*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QTextBrowser_Redirected(const QTextBrowser*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QTextBrowser_SharedPainter(const QTextBrowser*, intptr_t);
+void miqt_exec_callback_QTextBrowser_ChildEvent(QTextBrowser*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QTextBrowser_CustomEvent(QTextBrowser*, intptr_t, QEvent*);
+void miqt_exec_callback_QTextBrowser_ConnectNotify(QTextBrowser*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QTextBrowser_DisconnectNotify(QTextBrowser*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -474,7 +474,7 @@ public:
 		Qt::InputMethodQuery property_ret = property;
 		int sigval1 = static_cast<int>(property_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QTextBrowser_InputMethodQuery(const_cast<MiqtVirtualQTextBrowser*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QTextBrowser_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}
@@ -808,7 +808,7 @@ public:
 		}
 		
 
-		QMimeData* callback_return_value = miqt_exec_callback_QTextBrowser_CreateMimeDataFromSelection(const_cast<MiqtVirtualQTextBrowser*>(this), handle__CreateMimeDataFromSelection);
+		QMimeData* callback_return_value = miqt_exec_callback_QTextBrowser_CreateMimeDataFromSelection(this, handle__CreateMimeDataFromSelection);
 
 		return callback_return_value;
 	}
@@ -831,7 +831,7 @@ public:
 		
 		QMimeData* sigval1 = (QMimeData*) source;
 
-		bool callback_return_value = miqt_exec_callback_QTextBrowser_CanInsertFromMimeData(const_cast<MiqtVirtualQTextBrowser*>(this), handle__CanInsertFromMimeData, sigval1);
+		bool callback_return_value = miqt_exec_callback_QTextBrowser_CanInsertFromMimeData(this, handle__CanInsertFromMimeData, sigval1);
 
 		return callback_return_value;
 	}
@@ -952,7 +952,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QTextBrowser_MinimumSizeHint(const_cast<MiqtVirtualQTextBrowser*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QTextBrowser_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -974,7 +974,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QTextBrowser_SizeHint(const_cast<MiqtVirtualQTextBrowser*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QTextBrowser_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -1067,7 +1067,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QTextBrowser_ViewportSizeHint(const_cast<MiqtVirtualQTextBrowser*>(this), handle__ViewportSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QTextBrowser_ViewportSizeHint(this, handle__ViewportSizeHint);
 
 		return *callback_return_value;
 	}
@@ -1089,7 +1089,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QTextBrowser_DevType(const_cast<MiqtVirtualQTextBrowser*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QTextBrowser_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1136,7 +1136,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QTextBrowser_HeightForWidth(const_cast<MiqtVirtualQTextBrowser*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QTextBrowser_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1158,7 +1158,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QTextBrowser_HasHeightForWidth(const_cast<MiqtVirtualQTextBrowser*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QTextBrowser_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -1180,7 +1180,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QTextBrowser_PaintEngine(const_cast<MiqtVirtualQTextBrowser*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QTextBrowser_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -1403,7 +1403,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QTextBrowser_Metric(const_cast<MiqtVirtualQTextBrowser*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QTextBrowser_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1427,7 +1427,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QTextBrowser_InitPainter(const_cast<MiqtVirtualQTextBrowser*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QTextBrowser_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -1450,7 +1450,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QTextBrowser_Redirected(const_cast<MiqtVirtualQTextBrowser*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QTextBrowser_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1472,7 +1472,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QTextBrowser_SharedPainter(const_cast<MiqtVirtualQTextBrowser*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QTextBrowser_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}

@@ -26,13 +26,13 @@ void miqt_exec_callback_QAudioRoom_ReflectionGainChanged(intptr_t);
 void miqt_exec_callback_QAudioRoom_ReverbGainChanged(intptr_t);
 void miqt_exec_callback_QAudioRoom_ReverbTimeChanged(intptr_t);
 void miqt_exec_callback_QAudioRoom_ReverbBrightnessChanged(intptr_t);
-bool miqt_exec_callback_QAudioRoom_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QAudioRoom_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QAudioRoom_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QAudioRoom_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QAudioRoom_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QAudioRoom_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QAudioRoom_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QAudioRoom_Event(QAudioRoom*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAudioRoom_EventFilter(QAudioRoom*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAudioRoom_TimerEvent(QAudioRoom*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAudioRoom_ChildEvent(QAudioRoom*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAudioRoom_CustomEvent(QAudioRoom*, intptr_t, QEvent*);
+void miqt_exec_callback_QAudioRoom_ConnectNotify(QAudioRoom*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAudioRoom_DisconnectNotify(QAudioRoom*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif

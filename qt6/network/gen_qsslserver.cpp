@@ -30,16 +30,16 @@ void miqt_exec_callback_QSslServer_AlertSent(intptr_t, QSslSocket*, int, int, st
 void miqt_exec_callback_QSslServer_AlertReceived(intptr_t, QSslSocket*, int, int, struct miqt_string);
 void miqt_exec_callback_QSslServer_HandshakeInterruptedOnError(intptr_t, QSslSocket*, QSslError*);
 void miqt_exec_callback_QSslServer_StartedEncryptionHandshake(intptr_t, QSslSocket*);
-void miqt_exec_callback_QSslServer_IncomingConnection(void*, intptr_t, intptr_t);
-bool miqt_exec_callback_QSslServer_HasPendingConnections(void*, intptr_t);
-QTcpSocket* miqt_exec_callback_QSslServer_NextPendingConnection(void*, intptr_t);
-bool miqt_exec_callback_QSslServer_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QSslServer_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QSslServer_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QSslServer_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QSslServer_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QSslServer_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QSslServer_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSslServer_IncomingConnection(QSslServer*, intptr_t, intptr_t);
+bool miqt_exec_callback_QSslServer_HasPendingConnections(const QSslServer*, intptr_t);
+QTcpSocket* miqt_exec_callback_QSslServer_NextPendingConnection(QSslServer*, intptr_t);
+bool miqt_exec_callback_QSslServer_Event(QSslServer*, intptr_t, QEvent*);
+bool miqt_exec_callback_QSslServer_EventFilter(QSslServer*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QSslServer_TimerEvent(QSslServer*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSslServer_ChildEvent(QSslServer*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QSslServer_CustomEvent(QSslServer*, intptr_t, QEvent*);
+void miqt_exec_callback_QSslServer_ConnectNotify(QSslServer*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSslServer_DisconnectNotify(QSslServer*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -87,7 +87,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QSslServer_HasPendingConnections(const_cast<MiqtVirtualQSslServer*>(this), handle__HasPendingConnections);
+		bool callback_return_value = miqt_exec_callback_QSslServer_HasPendingConnections(this, handle__HasPendingConnections);
 
 		return callback_return_value;
 	}

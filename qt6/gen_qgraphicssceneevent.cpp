@@ -20,24 +20,24 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QGraphicsSceneEvent_SetAccepted(void*, intptr_t, bool);
-QEvent* miqt_exec_callback_QGraphicsSceneEvent_Clone(void*, intptr_t);
-void miqt_exec_callback_QGraphicsSceneMouseEvent_SetAccepted(void*, intptr_t, bool);
-QEvent* miqt_exec_callback_QGraphicsSceneMouseEvent_Clone(void*, intptr_t);
-void miqt_exec_callback_QGraphicsSceneWheelEvent_SetAccepted(void*, intptr_t, bool);
-QEvent* miqt_exec_callback_QGraphicsSceneWheelEvent_Clone(void*, intptr_t);
-void miqt_exec_callback_QGraphicsSceneContextMenuEvent_SetAccepted(void*, intptr_t, bool);
-QEvent* miqt_exec_callback_QGraphicsSceneContextMenuEvent_Clone(void*, intptr_t);
-void miqt_exec_callback_QGraphicsSceneHoverEvent_SetAccepted(void*, intptr_t, bool);
-QEvent* miqt_exec_callback_QGraphicsSceneHoverEvent_Clone(void*, intptr_t);
-void miqt_exec_callback_QGraphicsSceneHelpEvent_SetAccepted(void*, intptr_t, bool);
-QEvent* miqt_exec_callback_QGraphicsSceneHelpEvent_Clone(void*, intptr_t);
-void miqt_exec_callback_QGraphicsSceneDragDropEvent_SetAccepted(void*, intptr_t, bool);
-QEvent* miqt_exec_callback_QGraphicsSceneDragDropEvent_Clone(void*, intptr_t);
-void miqt_exec_callback_QGraphicsSceneResizeEvent_SetAccepted(void*, intptr_t, bool);
-QEvent* miqt_exec_callback_QGraphicsSceneResizeEvent_Clone(void*, intptr_t);
-void miqt_exec_callback_QGraphicsSceneMoveEvent_SetAccepted(void*, intptr_t, bool);
-QEvent* miqt_exec_callback_QGraphicsSceneMoveEvent_Clone(void*, intptr_t);
+void miqt_exec_callback_QGraphicsSceneEvent_SetAccepted(QGraphicsSceneEvent*, intptr_t, bool);
+QEvent* miqt_exec_callback_QGraphicsSceneEvent_Clone(const QGraphicsSceneEvent*, intptr_t);
+void miqt_exec_callback_QGraphicsSceneMouseEvent_SetAccepted(QGraphicsSceneMouseEvent*, intptr_t, bool);
+QEvent* miqt_exec_callback_QGraphicsSceneMouseEvent_Clone(const QGraphicsSceneMouseEvent*, intptr_t);
+void miqt_exec_callback_QGraphicsSceneWheelEvent_SetAccepted(QGraphicsSceneWheelEvent*, intptr_t, bool);
+QEvent* miqt_exec_callback_QGraphicsSceneWheelEvent_Clone(const QGraphicsSceneWheelEvent*, intptr_t);
+void miqt_exec_callback_QGraphicsSceneContextMenuEvent_SetAccepted(QGraphicsSceneContextMenuEvent*, intptr_t, bool);
+QEvent* miqt_exec_callback_QGraphicsSceneContextMenuEvent_Clone(const QGraphicsSceneContextMenuEvent*, intptr_t);
+void miqt_exec_callback_QGraphicsSceneHoverEvent_SetAccepted(QGraphicsSceneHoverEvent*, intptr_t, bool);
+QEvent* miqt_exec_callback_QGraphicsSceneHoverEvent_Clone(const QGraphicsSceneHoverEvent*, intptr_t);
+void miqt_exec_callback_QGraphicsSceneHelpEvent_SetAccepted(QGraphicsSceneHelpEvent*, intptr_t, bool);
+QEvent* miqt_exec_callback_QGraphicsSceneHelpEvent_Clone(const QGraphicsSceneHelpEvent*, intptr_t);
+void miqt_exec_callback_QGraphicsSceneDragDropEvent_SetAccepted(QGraphicsSceneDragDropEvent*, intptr_t, bool);
+QEvent* miqt_exec_callback_QGraphicsSceneDragDropEvent_Clone(const QGraphicsSceneDragDropEvent*, intptr_t);
+void miqt_exec_callback_QGraphicsSceneResizeEvent_SetAccepted(QGraphicsSceneResizeEvent*, intptr_t, bool);
+QEvent* miqt_exec_callback_QGraphicsSceneResizeEvent_Clone(const QGraphicsSceneResizeEvent*, intptr_t);
+void miqt_exec_callback_QGraphicsSceneMoveEvent_SetAccepted(QGraphicsSceneMoveEvent*, intptr_t, bool);
+QEvent* miqt_exec_callback_QGraphicsSceneMoveEvent_Clone(const QGraphicsSceneMoveEvent*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -83,7 +83,7 @@ public:
 		}
 		
 
-		QEvent* callback_return_value = miqt_exec_callback_QGraphicsSceneEvent_Clone(const_cast<MiqtVirtualQGraphicsSceneEvent*>(this), handle__Clone);
+		QEvent* callback_return_value = miqt_exec_callback_QGraphicsSceneEvent_Clone(this, handle__Clone);
 
 		return callback_return_value;
 	}
@@ -196,7 +196,7 @@ public:
 		}
 		
 
-		QEvent* callback_return_value = miqt_exec_callback_QGraphicsSceneMouseEvent_Clone(const_cast<MiqtVirtualQGraphicsSceneMouseEvent*>(this), handle__Clone);
+		QEvent* callback_return_value = miqt_exec_callback_QGraphicsSceneMouseEvent_Clone(this, handle__Clone);
 
 		return callback_return_value;
 	}
@@ -413,7 +413,7 @@ public:
 		}
 		
 
-		QEvent* callback_return_value = miqt_exec_callback_QGraphicsSceneWheelEvent_Clone(const_cast<MiqtVirtualQGraphicsSceneWheelEvent*>(this), handle__Clone);
+		QEvent* callback_return_value = miqt_exec_callback_QGraphicsSceneWheelEvent_Clone(this, handle__Clone);
 
 		return callback_return_value;
 	}
@@ -597,7 +597,7 @@ public:
 		}
 		
 
-		QEvent* callback_return_value = miqt_exec_callback_QGraphicsSceneContextMenuEvent_Clone(const_cast<MiqtVirtualQGraphicsSceneContextMenuEvent*>(this), handle__Clone);
+		QEvent* callback_return_value = miqt_exec_callback_QGraphicsSceneContextMenuEvent_Clone(this, handle__Clone);
 
 		return callback_return_value;
 	}
@@ -739,7 +739,7 @@ public:
 		}
 		
 
-		QEvent* callback_return_value = miqt_exec_callback_QGraphicsSceneHoverEvent_Clone(const_cast<MiqtVirtualQGraphicsSceneHoverEvent*>(this), handle__Clone);
+		QEvent* callback_return_value = miqt_exec_callback_QGraphicsSceneHoverEvent_Clone(this, handle__Clone);
 
 		return callback_return_value;
 	}
@@ -896,7 +896,7 @@ public:
 		}
 		
 
-		QEvent* callback_return_value = miqt_exec_callback_QGraphicsSceneHelpEvent_Clone(const_cast<MiqtVirtualQGraphicsSceneHelpEvent*>(this), handle__Clone);
+		QEvent* callback_return_value = miqt_exec_callback_QGraphicsSceneHelpEvent_Clone(this, handle__Clone);
 
 		return callback_return_value;
 	}
@@ -1012,7 +1012,7 @@ public:
 		}
 		
 
-		QEvent* callback_return_value = miqt_exec_callback_QGraphicsSceneDragDropEvent_Clone(const_cast<MiqtVirtualQGraphicsSceneDragDropEvent*>(this), handle__Clone);
+		QEvent* callback_return_value = miqt_exec_callback_QGraphicsSceneDragDropEvent_Clone(this, handle__Clone);
 
 		return callback_return_value;
 	}
@@ -1200,7 +1200,7 @@ public:
 		}
 		
 
-		QEvent* callback_return_value = miqt_exec_callback_QGraphicsSceneResizeEvent_Clone(const_cast<MiqtVirtualQGraphicsSceneResizeEvent*>(this), handle__Clone);
+		QEvent* callback_return_value = miqt_exec_callback_QGraphicsSceneResizeEvent_Clone(this, handle__Clone);
 
 		return callback_return_value;
 	}
@@ -1311,7 +1311,7 @@ public:
 		}
 		
 
-		QEvent* callback_return_value = miqt_exec_callback_QGraphicsSceneMoveEvent_Clone(const_cast<MiqtVirtualQGraphicsSceneMoveEvent*>(this), handle__Clone);
+		QEvent* callback_return_value = miqt_exec_callback_QGraphicsSceneMoveEvent_Clone(this, handle__Clone);
 
 		return callback_return_value;
 	}

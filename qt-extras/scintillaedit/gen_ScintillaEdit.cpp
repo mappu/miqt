@@ -76,57 +76,57 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_Scintilla__Internal__Surface_Init(void*, intptr_t, void*);
-void miqt_exec_callback_Scintilla__Internal__Surface_Init2(void*, intptr_t, void*, void*);
-void miqt_exec_callback_Scintilla__Internal__Surface_SetMode(void*, intptr_t, Scintilla__Internal__SurfaceMode*);
-void miqt_exec_callback_Scintilla__Internal__Surface_Release(void*, intptr_t);
-int miqt_exec_callback_Scintilla__Internal__Surface_SupportsFeature(void*, intptr_t, int);
-bool miqt_exec_callback_Scintilla__Internal__Surface_Initialised(void*, intptr_t);
-int miqt_exec_callback_Scintilla__Internal__Surface_LogPixelsY(void*, intptr_t);
-int miqt_exec_callback_Scintilla__Internal__Surface_PixelDivisions(void*, intptr_t);
-int miqt_exec_callback_Scintilla__Internal__Surface_DeviceHeightFont(void*, intptr_t, int);
-void miqt_exec_callback_Scintilla__Internal__Surface_LineDraw(void*, intptr_t, Scintilla__Internal__Point*, Scintilla__Internal__Point*, Scintilla__Internal__Stroke*);
-void miqt_exec_callback_Scintilla__Internal__Surface_PolyLine(void*, intptr_t, Scintilla__Internal__Point*, size_t, Scintilla__Internal__Stroke*);
-void miqt_exec_callback_Scintilla__Internal__Surface_Polygon(void*, intptr_t, Scintilla__Internal__Point*, size_t, Scintilla__Internal__FillStroke*);
-void miqt_exec_callback_Scintilla__Internal__Surface_RectangleDraw(void*, intptr_t, Scintilla__Internal__PRectangle*, Scintilla__Internal__FillStroke*);
-void miqt_exec_callback_Scintilla__Internal__Surface_RectangleFrame(void*, intptr_t, Scintilla__Internal__PRectangle*, Scintilla__Internal__Stroke*);
-void miqt_exec_callback_Scintilla__Internal__Surface_FillRectangle(void*, intptr_t, Scintilla__Internal__PRectangle*, Scintilla__Internal__Fill*);
-void miqt_exec_callback_Scintilla__Internal__Surface_FillRectangleAligned(void*, intptr_t, Scintilla__Internal__PRectangle*, Scintilla__Internal__Fill*);
-void miqt_exec_callback_Scintilla__Internal__Surface_FillRectangle2(void*, intptr_t, Scintilla__Internal__PRectangle*, Scintilla__Internal__Surface*);
-void miqt_exec_callback_Scintilla__Internal__Surface_RoundedRectangle(void*, intptr_t, Scintilla__Internal__PRectangle*, Scintilla__Internal__FillStroke*);
-void miqt_exec_callback_Scintilla__Internal__Surface_AlphaRectangle(void*, intptr_t, Scintilla__Internal__PRectangle*, double, Scintilla__Internal__FillStroke*);
-void miqt_exec_callback_Scintilla__Internal__Surface_DrawRGBAImage(void*, intptr_t, Scintilla__Internal__PRectangle*, int, int, const unsigned char*);
-void miqt_exec_callback_Scintilla__Internal__Surface_Ellipse(void*, intptr_t, Scintilla__Internal__PRectangle*, Scintilla__Internal__FillStroke*);
-void miqt_exec_callback_Scintilla__Internal__Surface_Stadium(void*, intptr_t, Scintilla__Internal__PRectangle*, Scintilla__Internal__FillStroke*, int);
-void miqt_exec_callback_Scintilla__Internal__Surface_Copy(void*, intptr_t, Scintilla__Internal__PRectangle*, Scintilla__Internal__Point*, Scintilla__Internal__Surface*);
-double miqt_exec_callback_Scintilla__Internal__Surface_Ascent(void*, intptr_t, Scintilla__Internal__Font*);
-double miqt_exec_callback_Scintilla__Internal__Surface_Descent(void*, intptr_t, Scintilla__Internal__Font*);
-double miqt_exec_callback_Scintilla__Internal__Surface_InternalLeading(void*, intptr_t, Scintilla__Internal__Font*);
-double miqt_exec_callback_Scintilla__Internal__Surface_Height(void*, intptr_t, Scintilla__Internal__Font*);
-double miqt_exec_callback_Scintilla__Internal__Surface_AverageCharWidth(void*, intptr_t, Scintilla__Internal__Font*);
-void miqt_exec_callback_Scintilla__Internal__Surface_SetClip(void*, intptr_t, Scintilla__Internal__PRectangle*);
-void miqt_exec_callback_Scintilla__Internal__Surface_PopClip(void*, intptr_t);
-void miqt_exec_callback_Scintilla__Internal__Surface_FlushCachedState(void*, intptr_t);
-void miqt_exec_callback_Scintilla__Internal__Surface_FlushDrawing(void*, intptr_t);
-void miqt_exec_callback_Scintilla__Internal__ListBox_SetFont(void*, intptr_t, Scintilla__Internal__Font*);
-void miqt_exec_callback_Scintilla__Internal__ListBox_Create(void*, intptr_t, Scintilla__Internal__Window*, int, Scintilla__Internal__Point*, int, bool, int);
-void miqt_exec_callback_Scintilla__Internal__ListBox_SetAverageCharWidth(void*, intptr_t, int);
-void miqt_exec_callback_Scintilla__Internal__ListBox_SetVisibleRows(void*, intptr_t, int);
-int miqt_exec_callback_Scintilla__Internal__ListBox_GetVisibleRows(void*, intptr_t);
-Scintilla__Internal__PRectangle* miqt_exec_callback_Scintilla__Internal__ListBox_GetDesiredRect(void*, intptr_t);
-int miqt_exec_callback_Scintilla__Internal__ListBox_CaretFromEdge(void*, intptr_t);
-void miqt_exec_callback_Scintilla__Internal__ListBox_Clear(void*, intptr_t);
-void miqt_exec_callback_Scintilla__Internal__ListBox_Append(void*, intptr_t, char*, int);
-int miqt_exec_callback_Scintilla__Internal__ListBox_Length(void*, intptr_t);
-void miqt_exec_callback_Scintilla__Internal__ListBox_Select(void*, intptr_t, int);
-int miqt_exec_callback_Scintilla__Internal__ListBox_GetSelection(void*, intptr_t);
-int miqt_exec_callback_Scintilla__Internal__ListBox_Find(void*, intptr_t, const char*);
-void miqt_exec_callback_Scintilla__Internal__ListBox_RegisterImage(void*, intptr_t, int, const char*);
-void miqt_exec_callback_Scintilla__Internal__ListBox_RegisterRGBAImage(void*, intptr_t, int, int, int, const unsigned char*);
-void miqt_exec_callback_Scintilla__Internal__ListBox_ClearRegisteredImages(void*, intptr_t);
-void miqt_exec_callback_Scintilla__Internal__ListBox_SetDelegate(void*, intptr_t, Scintilla__Internal__IListBoxDelegate*);
-void miqt_exec_callback_Scintilla__Internal__ListBox_SetList(void*, intptr_t, const char*, char, char);
-void miqt_exec_callback_Scintilla__Internal__ListBox_SetOptions(void*, intptr_t, Scintilla__Internal__ListOptions*);
+void miqt_exec_callback_Scintilla__Internal__Surface_Init(Scintilla__Internal__Surface*, intptr_t, void*);
+void miqt_exec_callback_Scintilla__Internal__Surface_Init2(Scintilla__Internal__Surface*, intptr_t, void*, void*);
+void miqt_exec_callback_Scintilla__Internal__Surface_SetMode(Scintilla__Internal__Surface*, intptr_t, Scintilla__Internal__SurfaceMode*);
+void miqt_exec_callback_Scintilla__Internal__Surface_Release(Scintilla__Internal__Surface*, intptr_t);
+int miqt_exec_callback_Scintilla__Internal__Surface_SupportsFeature(Scintilla__Internal__Surface*, intptr_t, int);
+bool miqt_exec_callback_Scintilla__Internal__Surface_Initialised(Scintilla__Internal__Surface*, intptr_t);
+int miqt_exec_callback_Scintilla__Internal__Surface_LogPixelsY(Scintilla__Internal__Surface*, intptr_t);
+int miqt_exec_callback_Scintilla__Internal__Surface_PixelDivisions(Scintilla__Internal__Surface*, intptr_t);
+int miqt_exec_callback_Scintilla__Internal__Surface_DeviceHeightFont(Scintilla__Internal__Surface*, intptr_t, int);
+void miqt_exec_callback_Scintilla__Internal__Surface_LineDraw(Scintilla__Internal__Surface*, intptr_t, Scintilla__Internal__Point*, Scintilla__Internal__Point*, Scintilla__Internal__Stroke*);
+void miqt_exec_callback_Scintilla__Internal__Surface_PolyLine(Scintilla__Internal__Surface*, intptr_t, Scintilla__Internal__Point*, size_t, Scintilla__Internal__Stroke*);
+void miqt_exec_callback_Scintilla__Internal__Surface_Polygon(Scintilla__Internal__Surface*, intptr_t, Scintilla__Internal__Point*, size_t, Scintilla__Internal__FillStroke*);
+void miqt_exec_callback_Scintilla__Internal__Surface_RectangleDraw(Scintilla__Internal__Surface*, intptr_t, Scintilla__Internal__PRectangle*, Scintilla__Internal__FillStroke*);
+void miqt_exec_callback_Scintilla__Internal__Surface_RectangleFrame(Scintilla__Internal__Surface*, intptr_t, Scintilla__Internal__PRectangle*, Scintilla__Internal__Stroke*);
+void miqt_exec_callback_Scintilla__Internal__Surface_FillRectangle(Scintilla__Internal__Surface*, intptr_t, Scintilla__Internal__PRectangle*, Scintilla__Internal__Fill*);
+void miqt_exec_callback_Scintilla__Internal__Surface_FillRectangleAligned(Scintilla__Internal__Surface*, intptr_t, Scintilla__Internal__PRectangle*, Scintilla__Internal__Fill*);
+void miqt_exec_callback_Scintilla__Internal__Surface_FillRectangle2(Scintilla__Internal__Surface*, intptr_t, Scintilla__Internal__PRectangle*, Scintilla__Internal__Surface*);
+void miqt_exec_callback_Scintilla__Internal__Surface_RoundedRectangle(Scintilla__Internal__Surface*, intptr_t, Scintilla__Internal__PRectangle*, Scintilla__Internal__FillStroke*);
+void miqt_exec_callback_Scintilla__Internal__Surface_AlphaRectangle(Scintilla__Internal__Surface*, intptr_t, Scintilla__Internal__PRectangle*, double, Scintilla__Internal__FillStroke*);
+void miqt_exec_callback_Scintilla__Internal__Surface_DrawRGBAImage(Scintilla__Internal__Surface*, intptr_t, Scintilla__Internal__PRectangle*, int, int, const unsigned char*);
+void miqt_exec_callback_Scintilla__Internal__Surface_Ellipse(Scintilla__Internal__Surface*, intptr_t, Scintilla__Internal__PRectangle*, Scintilla__Internal__FillStroke*);
+void miqt_exec_callback_Scintilla__Internal__Surface_Stadium(Scintilla__Internal__Surface*, intptr_t, Scintilla__Internal__PRectangle*, Scintilla__Internal__FillStroke*, int);
+void miqt_exec_callback_Scintilla__Internal__Surface_Copy(Scintilla__Internal__Surface*, intptr_t, Scintilla__Internal__PRectangle*, Scintilla__Internal__Point*, Scintilla__Internal__Surface*);
+double miqt_exec_callback_Scintilla__Internal__Surface_Ascent(Scintilla__Internal__Surface*, intptr_t, Scintilla__Internal__Font*);
+double miqt_exec_callback_Scintilla__Internal__Surface_Descent(Scintilla__Internal__Surface*, intptr_t, Scintilla__Internal__Font*);
+double miqt_exec_callback_Scintilla__Internal__Surface_InternalLeading(Scintilla__Internal__Surface*, intptr_t, Scintilla__Internal__Font*);
+double miqt_exec_callback_Scintilla__Internal__Surface_Height(Scintilla__Internal__Surface*, intptr_t, Scintilla__Internal__Font*);
+double miqt_exec_callback_Scintilla__Internal__Surface_AverageCharWidth(Scintilla__Internal__Surface*, intptr_t, Scintilla__Internal__Font*);
+void miqt_exec_callback_Scintilla__Internal__Surface_SetClip(Scintilla__Internal__Surface*, intptr_t, Scintilla__Internal__PRectangle*);
+void miqt_exec_callback_Scintilla__Internal__Surface_PopClip(Scintilla__Internal__Surface*, intptr_t);
+void miqt_exec_callback_Scintilla__Internal__Surface_FlushCachedState(Scintilla__Internal__Surface*, intptr_t);
+void miqt_exec_callback_Scintilla__Internal__Surface_FlushDrawing(Scintilla__Internal__Surface*, intptr_t);
+void miqt_exec_callback_Scintilla__Internal__ListBox_SetFont(Scintilla__Internal__ListBox*, intptr_t, Scintilla__Internal__Font*);
+void miqt_exec_callback_Scintilla__Internal__ListBox_Create(Scintilla__Internal__ListBox*, intptr_t, Scintilla__Internal__Window*, int, Scintilla__Internal__Point*, int, bool, int);
+void miqt_exec_callback_Scintilla__Internal__ListBox_SetAverageCharWidth(Scintilla__Internal__ListBox*, intptr_t, int);
+void miqt_exec_callback_Scintilla__Internal__ListBox_SetVisibleRows(Scintilla__Internal__ListBox*, intptr_t, int);
+int miqt_exec_callback_Scintilla__Internal__ListBox_GetVisibleRows(const Scintilla__Internal__ListBox*, intptr_t);
+Scintilla__Internal__PRectangle* miqt_exec_callback_Scintilla__Internal__ListBox_GetDesiredRect(Scintilla__Internal__ListBox*, intptr_t);
+int miqt_exec_callback_Scintilla__Internal__ListBox_CaretFromEdge(Scintilla__Internal__ListBox*, intptr_t);
+void miqt_exec_callback_Scintilla__Internal__ListBox_Clear(Scintilla__Internal__ListBox*, intptr_t);
+void miqt_exec_callback_Scintilla__Internal__ListBox_Append(Scintilla__Internal__ListBox*, intptr_t, char*, int);
+int miqt_exec_callback_Scintilla__Internal__ListBox_Length(Scintilla__Internal__ListBox*, intptr_t);
+void miqt_exec_callback_Scintilla__Internal__ListBox_Select(Scintilla__Internal__ListBox*, intptr_t, int);
+int miqt_exec_callback_Scintilla__Internal__ListBox_GetSelection(Scintilla__Internal__ListBox*, intptr_t);
+int miqt_exec_callback_Scintilla__Internal__ListBox_Find(Scintilla__Internal__ListBox*, intptr_t, const char*);
+void miqt_exec_callback_Scintilla__Internal__ListBox_RegisterImage(Scintilla__Internal__ListBox*, intptr_t, int, const char*);
+void miqt_exec_callback_Scintilla__Internal__ListBox_RegisterRGBAImage(Scintilla__Internal__ListBox*, intptr_t, int, int, int, const unsigned char*);
+void miqt_exec_callback_Scintilla__Internal__ListBox_ClearRegisteredImages(Scintilla__Internal__ListBox*, intptr_t);
+void miqt_exec_callback_Scintilla__Internal__ListBox_SetDelegate(Scintilla__Internal__ListBox*, intptr_t, Scintilla__Internal__IListBoxDelegate*);
+void miqt_exec_callback_Scintilla__Internal__ListBox_SetList(Scintilla__Internal__ListBox*, intptr_t, const char*, char, char);
+void miqt_exec_callback_Scintilla__Internal__ListBox_SetOptions(Scintilla__Internal__ListBox*, intptr_t, Scintilla__Internal__ListOptions*);
 void miqt_exec_callback_ScintillaEditBase_HorizontalScrolled(intptr_t, int);
 void miqt_exec_callback_ScintillaEditBase_VerticalScrolled(intptr_t, int);
 void miqt_exec_callback_ScintillaEditBase_HorizontalRangeChanged(intptr_t, int, int);
@@ -164,124 +164,124 @@ void miqt_exec_callback_ScintillaEditBase_ButtonPressed(intptr_t, QMouseEvent*);
 void miqt_exec_callback_ScintillaEditBase_ButtonReleased(intptr_t, QMouseEvent*);
 void miqt_exec_callback_ScintillaEditBase_KeyPressed(intptr_t, QKeyEvent*);
 void miqt_exec_callback_ScintillaEditBase_Resized(intptr_t);
-intptr_t miqt_exec_callback_ScintillaEditBase_Send(void*, intptr_t, unsigned int, uintptr_t, intptr_t);
-intptr_t miqt_exec_callback_ScintillaEditBase_Sends(void*, intptr_t, unsigned int, uintptr_t, const char*);
-bool miqt_exec_callback_ScintillaEditBase_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_ScintillaEditBase_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_ScintillaEditBase_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_ScintillaEditBase_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_ScintillaEditBase_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_ScintillaEditBase_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_ScintillaEditBase_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_ScintillaEditBase_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_ScintillaEditBase_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_ScintillaEditBase_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_ScintillaEditBase_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_ScintillaEditBase_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_ScintillaEditBase_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_ScintillaEditBase_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_ScintillaEditBase_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_ScintillaEditBase_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_ScintillaEditBase_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_ScintillaEditBase_InputMethodQuery(void*, intptr_t, int);
-void miqt_exec_callback_ScintillaEditBase_ScrollContentsBy(void*, intptr_t, int, int);
-QSize* miqt_exec_callback_ScintillaEditBase_MinimumSizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_ScintillaEditBase_SizeHint(void*, intptr_t);
-void miqt_exec_callback_ScintillaEditBase_SetupViewport(void*, intptr_t, QWidget*);
-bool miqt_exec_callback_ScintillaEditBase_EventFilter(void*, intptr_t, QObject*, QEvent*);
-bool miqt_exec_callback_ScintillaEditBase_ViewportEvent(void*, intptr_t, QEvent*);
-QSize* miqt_exec_callback_ScintillaEditBase_ViewportSizeHint(void*, intptr_t);
-void miqt_exec_callback_ScintillaEditBase_ChangeEvent(void*, intptr_t, QEvent*);
-int miqt_exec_callback_ScintillaEditBase_DevType(void*, intptr_t);
-void miqt_exec_callback_ScintillaEditBase_SetVisible(void*, intptr_t, bool);
-int miqt_exec_callback_ScintillaEditBase_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_ScintillaEditBase_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_ScintillaEditBase_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_ScintillaEditBase_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_ScintillaEditBase_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_ScintillaEditBase_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_ScintillaEditBase_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_ScintillaEditBase_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_ScintillaEditBase_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_ScintillaEditBase_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_ScintillaEditBase_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_ScintillaEditBase_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_ScintillaEditBase_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-int miqt_exec_callback_ScintillaEditBase_Metric(void*, intptr_t, int);
-void miqt_exec_callback_ScintillaEditBase_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_ScintillaEditBase_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_ScintillaEditBase_SharedPainter(void*, intptr_t);
-bool miqt_exec_callback_ScintillaEditBase_FocusNextPrevChild(void*, intptr_t, bool);
-void miqt_exec_callback_ScintillaEditBase_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_ScintillaEditBase_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_ScintillaEditBase_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_ScintillaEditBase_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_ScintillaEditBase_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+intptr_t miqt_exec_callback_ScintillaEditBase_Send(const ScintillaEditBase*, intptr_t, unsigned int, uintptr_t, intptr_t);
+intptr_t miqt_exec_callback_ScintillaEditBase_Sends(const ScintillaEditBase*, intptr_t, unsigned int, uintptr_t, const char*);
+bool miqt_exec_callback_ScintillaEditBase_Event(ScintillaEditBase*, intptr_t, QEvent*);
+void miqt_exec_callback_ScintillaEditBase_PaintEvent(ScintillaEditBase*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_ScintillaEditBase_WheelEvent(ScintillaEditBase*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_ScintillaEditBase_FocusInEvent(ScintillaEditBase*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_ScintillaEditBase_FocusOutEvent(ScintillaEditBase*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_ScintillaEditBase_ResizeEvent(ScintillaEditBase*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_ScintillaEditBase_KeyPressEvent(ScintillaEditBase*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_ScintillaEditBase_MousePressEvent(ScintillaEditBase*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_ScintillaEditBase_MouseReleaseEvent(ScintillaEditBase*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_ScintillaEditBase_MouseDoubleClickEvent(ScintillaEditBase*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_ScintillaEditBase_MouseMoveEvent(ScintillaEditBase*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_ScintillaEditBase_ContextMenuEvent(ScintillaEditBase*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_ScintillaEditBase_DragEnterEvent(ScintillaEditBase*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_ScintillaEditBase_DragLeaveEvent(ScintillaEditBase*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_ScintillaEditBase_DragMoveEvent(ScintillaEditBase*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_ScintillaEditBase_DropEvent(ScintillaEditBase*, intptr_t, QDropEvent*);
+void miqt_exec_callback_ScintillaEditBase_InputMethodEvent(ScintillaEditBase*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_ScintillaEditBase_InputMethodQuery(const ScintillaEditBase*, intptr_t, int);
+void miqt_exec_callback_ScintillaEditBase_ScrollContentsBy(ScintillaEditBase*, intptr_t, int, int);
+QSize* miqt_exec_callback_ScintillaEditBase_MinimumSizeHint(const ScintillaEditBase*, intptr_t);
+QSize* miqt_exec_callback_ScintillaEditBase_SizeHint(const ScintillaEditBase*, intptr_t);
+void miqt_exec_callback_ScintillaEditBase_SetupViewport(ScintillaEditBase*, intptr_t, QWidget*);
+bool miqt_exec_callback_ScintillaEditBase_EventFilter(ScintillaEditBase*, intptr_t, QObject*, QEvent*);
+bool miqt_exec_callback_ScintillaEditBase_ViewportEvent(ScintillaEditBase*, intptr_t, QEvent*);
+QSize* miqt_exec_callback_ScintillaEditBase_ViewportSizeHint(const ScintillaEditBase*, intptr_t);
+void miqt_exec_callback_ScintillaEditBase_ChangeEvent(ScintillaEditBase*, intptr_t, QEvent*);
+int miqt_exec_callback_ScintillaEditBase_DevType(const ScintillaEditBase*, intptr_t);
+void miqt_exec_callback_ScintillaEditBase_SetVisible(ScintillaEditBase*, intptr_t, bool);
+int miqt_exec_callback_ScintillaEditBase_HeightForWidth(const ScintillaEditBase*, intptr_t, int);
+bool miqt_exec_callback_ScintillaEditBase_HasHeightForWidth(const ScintillaEditBase*, intptr_t);
+QPaintEngine* miqt_exec_callback_ScintillaEditBase_PaintEngine(const ScintillaEditBase*, intptr_t);
+void miqt_exec_callback_ScintillaEditBase_KeyReleaseEvent(ScintillaEditBase*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_ScintillaEditBase_EnterEvent(ScintillaEditBase*, intptr_t, QEvent*);
+void miqt_exec_callback_ScintillaEditBase_LeaveEvent(ScintillaEditBase*, intptr_t, QEvent*);
+void miqt_exec_callback_ScintillaEditBase_MoveEvent(ScintillaEditBase*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_ScintillaEditBase_CloseEvent(ScintillaEditBase*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_ScintillaEditBase_TabletEvent(ScintillaEditBase*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_ScintillaEditBase_ActionEvent(ScintillaEditBase*, intptr_t, QActionEvent*);
+void miqt_exec_callback_ScintillaEditBase_ShowEvent(ScintillaEditBase*, intptr_t, QShowEvent*);
+void miqt_exec_callback_ScintillaEditBase_HideEvent(ScintillaEditBase*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_ScintillaEditBase_NativeEvent(ScintillaEditBase*, intptr_t, struct miqt_string, void*, long*);
+int miqt_exec_callback_ScintillaEditBase_Metric(const ScintillaEditBase*, intptr_t, int);
+void miqt_exec_callback_ScintillaEditBase_InitPainter(const ScintillaEditBase*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_ScintillaEditBase_Redirected(const ScintillaEditBase*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_ScintillaEditBase_SharedPainter(const ScintillaEditBase*, intptr_t);
+bool miqt_exec_callback_ScintillaEditBase_FocusNextPrevChild(ScintillaEditBase*, intptr_t, bool);
+void miqt_exec_callback_ScintillaEditBase_TimerEvent(ScintillaEditBase*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_ScintillaEditBase_ChildEvent(ScintillaEditBase*, intptr_t, QChildEvent*);
+void miqt_exec_callback_ScintillaEditBase_CustomEvent(ScintillaEditBase*, intptr_t, QEvent*);
+void miqt_exec_callback_ScintillaEditBase_ConnectNotify(ScintillaEditBase*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_ScintillaEditBase_DisconnectNotify(ScintillaEditBase*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_ScintillaDocument_ModifyAttempt(intptr_t);
 void miqt_exec_callback_ScintillaDocument_SavePoint(intptr_t, bool);
 void miqt_exec_callback_ScintillaDocument_Modified(intptr_t, int, int, struct miqt_string, int, int, int, int, int);
 void miqt_exec_callback_ScintillaDocument_StyleNeeded(intptr_t, int);
 void miqt_exec_callback_ScintillaDocument_ErrorOccurred(intptr_t, int);
-bool miqt_exec_callback_ScintillaDocument_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_ScintillaDocument_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_ScintillaDocument_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_ScintillaDocument_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_ScintillaDocument_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_ScintillaDocument_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_ScintillaDocument_DisconnectNotify(void*, intptr_t, QMetaMethod*);
-intptr_t miqt_exec_callback_ScintillaEdit_Send(void*, intptr_t, unsigned int, uintptr_t, intptr_t);
-intptr_t miqt_exec_callback_ScintillaEdit_Sends(void*, intptr_t, unsigned int, uintptr_t, const char*);
-bool miqt_exec_callback_ScintillaEdit_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_ScintillaEdit_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_ScintillaEdit_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_ScintillaEdit_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_ScintillaEdit_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_ScintillaEdit_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_ScintillaEdit_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_ScintillaEdit_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_ScintillaEdit_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_ScintillaEdit_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_ScintillaEdit_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_ScintillaEdit_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_ScintillaEdit_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_ScintillaEdit_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_ScintillaEdit_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_ScintillaEdit_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_ScintillaEdit_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_ScintillaEdit_InputMethodQuery(void*, intptr_t, int);
-void miqt_exec_callback_ScintillaEdit_ScrollContentsBy(void*, intptr_t, int, int);
-QSize* miqt_exec_callback_ScintillaEdit_MinimumSizeHint(void*, intptr_t);
-QSize* miqt_exec_callback_ScintillaEdit_SizeHint(void*, intptr_t);
-void miqt_exec_callback_ScintillaEdit_SetupViewport(void*, intptr_t, QWidget*);
-bool miqt_exec_callback_ScintillaEdit_EventFilter(void*, intptr_t, QObject*, QEvent*);
-bool miqt_exec_callback_ScintillaEdit_ViewportEvent(void*, intptr_t, QEvent*);
-QSize* miqt_exec_callback_ScintillaEdit_ViewportSizeHint(void*, intptr_t);
-void miqt_exec_callback_ScintillaEdit_ChangeEvent(void*, intptr_t, QEvent*);
-int miqt_exec_callback_ScintillaEdit_DevType(void*, intptr_t);
-void miqt_exec_callback_ScintillaEdit_SetVisible(void*, intptr_t, bool);
-int miqt_exec_callback_ScintillaEdit_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_ScintillaEdit_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_ScintillaEdit_PaintEngine(void*, intptr_t);
-void miqt_exec_callback_ScintillaEdit_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_ScintillaEdit_EnterEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_ScintillaEdit_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_ScintillaEdit_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_ScintillaEdit_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_ScintillaEdit_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_ScintillaEdit_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_ScintillaEdit_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_ScintillaEdit_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_ScintillaEdit_NativeEvent(void*, intptr_t, struct miqt_string, void*, long*);
-int miqt_exec_callback_ScintillaEdit_Metric(void*, intptr_t, int);
-void miqt_exec_callback_ScintillaEdit_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_ScintillaEdit_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_ScintillaEdit_SharedPainter(void*, intptr_t);
-bool miqt_exec_callback_ScintillaEdit_FocusNextPrevChild(void*, intptr_t, bool);
-void miqt_exec_callback_ScintillaEdit_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_ScintillaEdit_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_ScintillaEdit_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_ScintillaEdit_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_ScintillaEdit_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_ScintillaDocument_Event(ScintillaDocument*, intptr_t, QEvent*);
+bool miqt_exec_callback_ScintillaDocument_EventFilter(ScintillaDocument*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_ScintillaDocument_TimerEvent(ScintillaDocument*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_ScintillaDocument_ChildEvent(ScintillaDocument*, intptr_t, QChildEvent*);
+void miqt_exec_callback_ScintillaDocument_CustomEvent(ScintillaDocument*, intptr_t, QEvent*);
+void miqt_exec_callback_ScintillaDocument_ConnectNotify(ScintillaDocument*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_ScintillaDocument_DisconnectNotify(ScintillaDocument*, intptr_t, QMetaMethod*);
+intptr_t miqt_exec_callback_ScintillaEdit_Send(const ScintillaEdit*, intptr_t, unsigned int, uintptr_t, intptr_t);
+intptr_t miqt_exec_callback_ScintillaEdit_Sends(const ScintillaEdit*, intptr_t, unsigned int, uintptr_t, const char*);
+bool miqt_exec_callback_ScintillaEdit_Event(ScintillaEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_ScintillaEdit_PaintEvent(ScintillaEdit*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_ScintillaEdit_WheelEvent(ScintillaEdit*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_ScintillaEdit_FocusInEvent(ScintillaEdit*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_ScintillaEdit_FocusOutEvent(ScintillaEdit*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_ScintillaEdit_ResizeEvent(ScintillaEdit*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_ScintillaEdit_KeyPressEvent(ScintillaEdit*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_ScintillaEdit_MousePressEvent(ScintillaEdit*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_ScintillaEdit_MouseReleaseEvent(ScintillaEdit*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_ScintillaEdit_MouseDoubleClickEvent(ScintillaEdit*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_ScintillaEdit_MouseMoveEvent(ScintillaEdit*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_ScintillaEdit_ContextMenuEvent(ScintillaEdit*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_ScintillaEdit_DragEnterEvent(ScintillaEdit*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_ScintillaEdit_DragLeaveEvent(ScintillaEdit*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_ScintillaEdit_DragMoveEvent(ScintillaEdit*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_ScintillaEdit_DropEvent(ScintillaEdit*, intptr_t, QDropEvent*);
+void miqt_exec_callback_ScintillaEdit_InputMethodEvent(ScintillaEdit*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_ScintillaEdit_InputMethodQuery(const ScintillaEdit*, intptr_t, int);
+void miqt_exec_callback_ScintillaEdit_ScrollContentsBy(ScintillaEdit*, intptr_t, int, int);
+QSize* miqt_exec_callback_ScintillaEdit_MinimumSizeHint(const ScintillaEdit*, intptr_t);
+QSize* miqt_exec_callback_ScintillaEdit_SizeHint(const ScintillaEdit*, intptr_t);
+void miqt_exec_callback_ScintillaEdit_SetupViewport(ScintillaEdit*, intptr_t, QWidget*);
+bool miqt_exec_callback_ScintillaEdit_EventFilter(ScintillaEdit*, intptr_t, QObject*, QEvent*);
+bool miqt_exec_callback_ScintillaEdit_ViewportEvent(ScintillaEdit*, intptr_t, QEvent*);
+QSize* miqt_exec_callback_ScintillaEdit_ViewportSizeHint(const ScintillaEdit*, intptr_t);
+void miqt_exec_callback_ScintillaEdit_ChangeEvent(ScintillaEdit*, intptr_t, QEvent*);
+int miqt_exec_callback_ScintillaEdit_DevType(const ScintillaEdit*, intptr_t);
+void miqt_exec_callback_ScintillaEdit_SetVisible(ScintillaEdit*, intptr_t, bool);
+int miqt_exec_callback_ScintillaEdit_HeightForWidth(const ScintillaEdit*, intptr_t, int);
+bool miqt_exec_callback_ScintillaEdit_HasHeightForWidth(const ScintillaEdit*, intptr_t);
+QPaintEngine* miqt_exec_callback_ScintillaEdit_PaintEngine(const ScintillaEdit*, intptr_t);
+void miqt_exec_callback_ScintillaEdit_KeyReleaseEvent(ScintillaEdit*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_ScintillaEdit_EnterEvent(ScintillaEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_ScintillaEdit_LeaveEvent(ScintillaEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_ScintillaEdit_MoveEvent(ScintillaEdit*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_ScintillaEdit_CloseEvent(ScintillaEdit*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_ScintillaEdit_TabletEvent(ScintillaEdit*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_ScintillaEdit_ActionEvent(ScintillaEdit*, intptr_t, QActionEvent*);
+void miqt_exec_callback_ScintillaEdit_ShowEvent(ScintillaEdit*, intptr_t, QShowEvent*);
+void miqt_exec_callback_ScintillaEdit_HideEvent(ScintillaEdit*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_ScintillaEdit_NativeEvent(ScintillaEdit*, intptr_t, struct miqt_string, void*, long*);
+int miqt_exec_callback_ScintillaEdit_Metric(const ScintillaEdit*, intptr_t, int);
+void miqt_exec_callback_ScintillaEdit_InitPainter(const ScintillaEdit*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_ScintillaEdit_Redirected(const ScintillaEdit*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_ScintillaEdit_SharedPainter(const ScintillaEdit*, intptr_t);
+bool miqt_exec_callback_ScintillaEdit_FocusNextPrevChild(ScintillaEdit*, intptr_t, bool);
+void miqt_exec_callback_ScintillaEdit_TimerEvent(ScintillaEdit*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_ScintillaEdit_ChildEvent(ScintillaEdit*, intptr_t, QChildEvent*);
+void miqt_exec_callback_ScintillaEdit_CustomEvent(ScintillaEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_ScintillaEdit_ConnectNotify(ScintillaEdit*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_ScintillaEdit_DisconnectNotify(ScintillaEdit*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -1970,7 +1970,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_Scintilla__Internal__ListBox_GetVisibleRows(const_cast<MiqtVirtualScintillaInternalListBox*>(this), handle__GetVisibleRows);
+		int callback_return_value = miqt_exec_callback_Scintilla__Internal__ListBox_GetVisibleRows(this, handle__GetVisibleRows);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -2572,7 +2572,7 @@ public:
 		sptr_t lParam_ret = lParam;
 		intptr_t sigval3 = static_cast<intptr_t>(lParam_ret);
 
-		intptr_t callback_return_value = miqt_exec_callback_ScintillaEditBase_Send(const_cast<MiqtVirtualScintillaEditBase*>(this), handle__Send, sigval1, sigval2, sigval3);
+		intptr_t callback_return_value = miqt_exec_callback_ScintillaEditBase_Send(this, handle__Send, sigval1, sigval2, sigval3);
 
 		return static_cast<sptr_t>(callback_return_value);
 	}
@@ -2599,7 +2599,7 @@ public:
 		uintptr_t sigval2 = static_cast<uintptr_t>(wParam_ret);
 		const char* sigval3 = (const char*) s;
 
-		intptr_t callback_return_value = miqt_exec_callback_ScintillaEditBase_Sends(const_cast<MiqtVirtualScintillaEditBase*>(this), handle__Sends, sigval1, sigval2, sigval3);
+		intptr_t callback_return_value = miqt_exec_callback_ScintillaEditBase_Sends(this, handle__Sends, sigval1, sigval2, sigval3);
 
 		return static_cast<sptr_t>(callback_return_value);
 	}
@@ -3031,7 +3031,7 @@ public:
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_ScintillaEditBase_InputMethodQuery(const_cast<MiqtVirtualScintillaEditBase*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_ScintillaEditBase_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}
@@ -3078,7 +3078,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_ScintillaEditBase_MinimumSizeHint(const_cast<MiqtVirtualScintillaEditBase*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_ScintillaEditBase_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -3100,7 +3100,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_ScintillaEditBase_SizeHint(const_cast<MiqtVirtualScintillaEditBase*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_ScintillaEditBase_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -3193,7 +3193,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_ScintillaEditBase_ViewportSizeHint(const_cast<MiqtVirtualScintillaEditBase*>(this), handle__ViewportSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_ScintillaEditBase_ViewportSizeHint(this, handle__ViewportSizeHint);
 
 		return *callback_return_value;
 	}
@@ -3239,7 +3239,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_ScintillaEditBase_DevType(const_cast<MiqtVirtualScintillaEditBase*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_ScintillaEditBase_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -3286,7 +3286,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_ScintillaEditBase_HeightForWidth(const_cast<MiqtVirtualScintillaEditBase*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_ScintillaEditBase_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -3308,7 +3308,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_ScintillaEditBase_HasHeightForWidth(const_cast<MiqtVirtualScintillaEditBase*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_ScintillaEditBase_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -3330,7 +3330,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_ScintillaEditBase_PaintEngine(const_cast<MiqtVirtualScintillaEditBase*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_ScintillaEditBase_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -3601,7 +3601,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_ScintillaEditBase_Metric(const_cast<MiqtVirtualScintillaEditBase*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_ScintillaEditBase_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -3625,7 +3625,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_ScintillaEditBase_InitPainter(const_cast<MiqtVirtualScintillaEditBase*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_ScintillaEditBase_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -3648,7 +3648,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_ScintillaEditBase_Redirected(const_cast<MiqtVirtualScintillaEditBase*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_ScintillaEditBase_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -3670,7 +3670,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_ScintillaEditBase_SharedPainter(const_cast<MiqtVirtualScintillaEditBase*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_ScintillaEditBase_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -5794,7 +5794,7 @@ public:
 		sptr_t lParam_ret = lParam;
 		intptr_t sigval3 = static_cast<intptr_t>(lParam_ret);
 
-		intptr_t callback_return_value = miqt_exec_callback_ScintillaEdit_Send(const_cast<MiqtVirtualScintillaEdit*>(this), handle__Send, sigval1, sigval2, sigval3);
+		intptr_t callback_return_value = miqt_exec_callback_ScintillaEdit_Send(this, handle__Send, sigval1, sigval2, sigval3);
 
 		return static_cast<sptr_t>(callback_return_value);
 	}
@@ -5821,7 +5821,7 @@ public:
 		uintptr_t sigval2 = static_cast<uintptr_t>(wParam_ret);
 		const char* sigval3 = (const char*) s;
 
-		intptr_t callback_return_value = miqt_exec_callback_ScintillaEdit_Sends(const_cast<MiqtVirtualScintillaEdit*>(this), handle__Sends, sigval1, sigval2, sigval3);
+		intptr_t callback_return_value = miqt_exec_callback_ScintillaEdit_Sends(this, handle__Sends, sigval1, sigval2, sigval3);
 
 		return static_cast<sptr_t>(callback_return_value);
 	}
@@ -6253,7 +6253,7 @@ public:
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_ScintillaEdit_InputMethodQuery(const_cast<MiqtVirtualScintillaEdit*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_ScintillaEdit_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}
@@ -6300,7 +6300,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_ScintillaEdit_MinimumSizeHint(const_cast<MiqtVirtualScintillaEdit*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_ScintillaEdit_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -6322,7 +6322,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_ScintillaEdit_SizeHint(const_cast<MiqtVirtualScintillaEdit*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_ScintillaEdit_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -6415,7 +6415,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_ScintillaEdit_ViewportSizeHint(const_cast<MiqtVirtualScintillaEdit*>(this), handle__ViewportSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_ScintillaEdit_ViewportSizeHint(this, handle__ViewportSizeHint);
 
 		return *callback_return_value;
 	}
@@ -6461,7 +6461,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_ScintillaEdit_DevType(const_cast<MiqtVirtualScintillaEdit*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_ScintillaEdit_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -6508,7 +6508,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_ScintillaEdit_HeightForWidth(const_cast<MiqtVirtualScintillaEdit*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_ScintillaEdit_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -6530,7 +6530,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_ScintillaEdit_HasHeightForWidth(const_cast<MiqtVirtualScintillaEdit*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_ScintillaEdit_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -6552,7 +6552,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_ScintillaEdit_PaintEngine(const_cast<MiqtVirtualScintillaEdit*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_ScintillaEdit_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -6823,7 +6823,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_ScintillaEdit_Metric(const_cast<MiqtVirtualScintillaEdit*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_ScintillaEdit_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -6847,7 +6847,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_ScintillaEdit_InitPainter(const_cast<MiqtVirtualScintillaEdit*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_ScintillaEdit_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -6870,7 +6870,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_ScintillaEdit_Redirected(const_cast<MiqtVirtualScintillaEdit*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_ScintillaEdit_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -6892,7 +6892,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_ScintillaEdit_SharedPainter(const_cast<MiqtVirtualScintillaEdit*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_ScintillaEdit_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}

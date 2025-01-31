@@ -77,25 +77,25 @@ void miqt_exec_callback_QWebPage_FeaturePermissionRequestCanceled(intptr_t, QWeb
 void miqt_exec_callback_QWebPage_FullScreenRequested(intptr_t, QWebFullScreenRequest*);
 void miqt_exec_callback_QWebPage_ConsoleMessageReceived(intptr_t, int, int, struct miqt_string, int, struct miqt_string);
 void miqt_exec_callback_QWebPage_RecentlyAudibleChanged(intptr_t, bool);
-void miqt_exec_callback_QWebPage_TriggerAction(void*, intptr_t, int, bool);
-bool miqt_exec_callback_QWebPage_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QWebPage_Extension(void*, intptr_t, int, QWebPage__ExtensionOption*, QWebPage__ExtensionReturn*);
-bool miqt_exec_callback_QWebPage_SupportsExtension(void*, intptr_t, int);
-bool miqt_exec_callback_QWebPage_ShouldInterruptJavaScript(void*, intptr_t);
-QWebPage* miqt_exec_callback_QWebPage_CreateWindow(void*, intptr_t, int);
-QObject* miqt_exec_callback_QWebPage_CreatePlugin(void*, intptr_t, struct miqt_string, QUrl*, struct miqt_array /* of struct miqt_string */ , struct miqt_array /* of struct miqt_string */ );
-bool miqt_exec_callback_QWebPage_AcceptNavigationRequest(void*, intptr_t, QWebFrame*, QNetworkRequest*, int);
-struct miqt_string miqt_exec_callback_QWebPage_ChooseFile(void*, intptr_t, QWebFrame*, struct miqt_string);
-void miqt_exec_callback_QWebPage_JavaScriptAlert(void*, intptr_t, QWebFrame*, struct miqt_string);
-bool miqt_exec_callback_QWebPage_JavaScriptConfirm(void*, intptr_t, QWebFrame*, struct miqt_string);
-void miqt_exec_callback_QWebPage_JavaScriptConsoleMessage(void*, intptr_t, struct miqt_string, int, struct miqt_string);
-struct miqt_string miqt_exec_callback_QWebPage_UserAgentForUrl(void*, intptr_t, QUrl*);
-bool miqt_exec_callback_QWebPage_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QWebPage_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QWebPage_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QWebPage_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QWebPage_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QWebPage_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QWebPage_TriggerAction(QWebPage*, intptr_t, int, bool);
+bool miqt_exec_callback_QWebPage_Event(QWebPage*, intptr_t, QEvent*);
+bool miqt_exec_callback_QWebPage_Extension(QWebPage*, intptr_t, int, QWebPage__ExtensionOption*, QWebPage__ExtensionReturn*);
+bool miqt_exec_callback_QWebPage_SupportsExtension(const QWebPage*, intptr_t, int);
+bool miqt_exec_callback_QWebPage_ShouldInterruptJavaScript(QWebPage*, intptr_t);
+QWebPage* miqt_exec_callback_QWebPage_CreateWindow(QWebPage*, intptr_t, int);
+QObject* miqt_exec_callback_QWebPage_CreatePlugin(QWebPage*, intptr_t, struct miqt_string, QUrl*, struct miqt_array /* of struct miqt_string */ , struct miqt_array /* of struct miqt_string */ );
+bool miqt_exec_callback_QWebPage_AcceptNavigationRequest(QWebPage*, intptr_t, QWebFrame*, QNetworkRequest*, int);
+struct miqt_string miqt_exec_callback_QWebPage_ChooseFile(QWebPage*, intptr_t, QWebFrame*, struct miqt_string);
+void miqt_exec_callback_QWebPage_JavaScriptAlert(QWebPage*, intptr_t, QWebFrame*, struct miqt_string);
+bool miqt_exec_callback_QWebPage_JavaScriptConfirm(QWebPage*, intptr_t, QWebFrame*, struct miqt_string);
+void miqt_exec_callback_QWebPage_JavaScriptConsoleMessage(QWebPage*, intptr_t, struct miqt_string, int, struct miqt_string);
+struct miqt_string miqt_exec_callback_QWebPage_UserAgentForUrl(const QWebPage*, intptr_t, QUrl*);
+bool miqt_exec_callback_QWebPage_EventFilter(QWebPage*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QWebPage_TimerEvent(QWebPage*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QWebPage_ChildEvent(QWebPage*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QWebPage_CustomEvent(QWebPage*, intptr_t, QEvent*);
+void miqt_exec_callback_QWebPage_ConnectNotify(QWebPage*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QWebPage_DisconnectNotify(QWebPage*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -195,7 +195,7 @@ public:
 		QWebPage::Extension extension_ret = extension;
 		int sigval1 = static_cast<int>(extension_ret);
 
-		bool callback_return_value = miqt_exec_callback_QWebPage_SupportsExtension(const_cast<MiqtVirtualQWebPage*>(this), handle__SupportsExtension, sigval1);
+		bool callback_return_value = miqt_exec_callback_QWebPage_SupportsExtension(this, handle__SupportsExtension, sigval1);
 
 		return callback_return_value;
 	}
@@ -523,7 +523,7 @@ public:
 		// Cast returned reference into pointer
 		QUrl* sigval1 = const_cast<QUrl*>(&url_ret);
 
-		struct miqt_string callback_return_value = miqt_exec_callback_QWebPage_UserAgentForUrl(const_cast<MiqtVirtualQWebPage*>(this), handle__UserAgentForUrl, sigval1);
+		struct miqt_string callback_return_value = miqt_exec_callback_QWebPage_UserAgentForUrl(this, handle__UserAgentForUrl, sigval1);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
 
 		return callback_return_value_QString;

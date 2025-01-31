@@ -23,30 +23,30 @@ void miqt_exec_callback_QProcess_Finished(intptr_t, int);
 void miqt_exec_callback_QProcess_Finished2(intptr_t, int, int);
 void miqt_exec_callback_QProcess_ErrorWithError(intptr_t, int);
 void miqt_exec_callback_QProcess_ErrorOccurred(intptr_t, int);
-bool miqt_exec_callback_QProcess_Open(void*, intptr_t, int);
-bool miqt_exec_callback_QProcess_WaitForReadyRead(void*, intptr_t, int);
-bool miqt_exec_callback_QProcess_WaitForBytesWritten(void*, intptr_t, int);
-long long miqt_exec_callback_QProcess_BytesAvailable(void*, intptr_t);
-long long miqt_exec_callback_QProcess_BytesToWrite(void*, intptr_t);
-bool miqt_exec_callback_QProcess_IsSequential(void*, intptr_t);
-bool miqt_exec_callback_QProcess_CanReadLine(void*, intptr_t);
-void miqt_exec_callback_QProcess_Close(void*, intptr_t);
-bool miqt_exec_callback_QProcess_AtEnd(void*, intptr_t);
-void miqt_exec_callback_QProcess_SetupChildProcess(void*, intptr_t);
-long long miqt_exec_callback_QProcess_ReadData(void*, intptr_t, char*, long long);
-long long miqt_exec_callback_QProcess_WriteData(void*, intptr_t, const char*, long long);
-long long miqt_exec_callback_QProcess_Pos(void*, intptr_t);
-long long miqt_exec_callback_QProcess_Size(void*, intptr_t);
-bool miqt_exec_callback_QProcess_Seek(void*, intptr_t, long long);
-bool miqt_exec_callback_QProcess_Reset(void*, intptr_t);
-long long miqt_exec_callback_QProcess_ReadLineData(void*, intptr_t, char*, long long);
-bool miqt_exec_callback_QProcess_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QProcess_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QProcess_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QProcess_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QProcess_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QProcess_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QProcess_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QProcess_Open(QProcess*, intptr_t, int);
+bool miqt_exec_callback_QProcess_WaitForReadyRead(QProcess*, intptr_t, int);
+bool miqt_exec_callback_QProcess_WaitForBytesWritten(QProcess*, intptr_t, int);
+long long miqt_exec_callback_QProcess_BytesAvailable(const QProcess*, intptr_t);
+long long miqt_exec_callback_QProcess_BytesToWrite(const QProcess*, intptr_t);
+bool miqt_exec_callback_QProcess_IsSequential(const QProcess*, intptr_t);
+bool miqt_exec_callback_QProcess_CanReadLine(const QProcess*, intptr_t);
+void miqt_exec_callback_QProcess_Close(QProcess*, intptr_t);
+bool miqt_exec_callback_QProcess_AtEnd(const QProcess*, intptr_t);
+void miqt_exec_callback_QProcess_SetupChildProcess(QProcess*, intptr_t);
+long long miqt_exec_callback_QProcess_ReadData(QProcess*, intptr_t, char*, long long);
+long long miqt_exec_callback_QProcess_WriteData(QProcess*, intptr_t, const char*, long long);
+long long miqt_exec_callback_QProcess_Pos(const QProcess*, intptr_t);
+long long miqt_exec_callback_QProcess_Size(const QProcess*, intptr_t);
+bool miqt_exec_callback_QProcess_Seek(QProcess*, intptr_t, long long);
+bool miqt_exec_callback_QProcess_Reset(QProcess*, intptr_t);
+long long miqt_exec_callback_QProcess_ReadLineData(QProcess*, intptr_t, char*, long long);
+bool miqt_exec_callback_QProcess_Event(QProcess*, intptr_t, QEvent*);
+bool miqt_exec_callback_QProcess_EventFilter(QProcess*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QProcess_TimerEvent(QProcess*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QProcess_ChildEvent(QProcess*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QProcess_CustomEvent(QProcess*, intptr_t, QEvent*);
+void miqt_exec_callback_QProcess_ConnectNotify(QProcess*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QProcess_DisconnectNotify(QProcess*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -264,7 +264,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QProcess_BytesAvailable(const_cast<MiqtVirtualQProcess*>(this), handle__BytesAvailable);
+		long long callback_return_value = miqt_exec_callback_QProcess_BytesAvailable(this, handle__BytesAvailable);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -287,7 +287,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QProcess_BytesToWrite(const_cast<MiqtVirtualQProcess*>(this), handle__BytesToWrite);
+		long long callback_return_value = miqt_exec_callback_QProcess_BytesToWrite(this, handle__BytesToWrite);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -310,7 +310,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QProcess_IsSequential(const_cast<MiqtVirtualQProcess*>(this), handle__IsSequential);
+		bool callback_return_value = miqt_exec_callback_QProcess_IsSequential(this, handle__IsSequential);
 
 		return callback_return_value;
 	}
@@ -332,7 +332,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QProcess_CanReadLine(const_cast<MiqtVirtualQProcess*>(this), handle__CanReadLine);
+		bool callback_return_value = miqt_exec_callback_QProcess_CanReadLine(this, handle__CanReadLine);
 
 		return callback_return_value;
 	}
@@ -377,7 +377,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QProcess_AtEnd(const_cast<MiqtVirtualQProcess*>(this), handle__AtEnd);
+		bool callback_return_value = miqt_exec_callback_QProcess_AtEnd(this, handle__AtEnd);
 
 		return callback_return_value;
 	}
@@ -474,7 +474,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QProcess_Pos(const_cast<MiqtVirtualQProcess*>(this), handle__Pos);
+		long long callback_return_value = miqt_exec_callback_QProcess_Pos(this, handle__Pos);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -497,7 +497,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QProcess_Size(const_cast<MiqtVirtualQProcess*>(this), handle__Size);
+		long long callback_return_value = miqt_exec_callback_QProcess_Size(this, handle__Size);
 
 		return static_cast<qint64>(callback_return_value);
 	}

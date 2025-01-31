@@ -47,58 +47,58 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QProgressDialog_Canceled(intptr_t);
-QSize* miqt_exec_callback_QProgressDialog_SizeHint(void*, intptr_t);
-void miqt_exec_callback_QProgressDialog_ResizeEvent(void*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QProgressDialog_CloseEvent(void*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QProgressDialog_ChangeEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QProgressDialog_ShowEvent(void*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QProgressDialog_SetVisible(void*, intptr_t, bool);
-QSize* miqt_exec_callback_QProgressDialog_MinimumSizeHint(void*, intptr_t);
-void miqt_exec_callback_QProgressDialog_Open(void*, intptr_t);
-int miqt_exec_callback_QProgressDialog_Exec(void*, intptr_t);
-void miqt_exec_callback_QProgressDialog_Done(void*, intptr_t, int);
-void miqt_exec_callback_QProgressDialog_Accept(void*, intptr_t);
-void miqt_exec_callback_QProgressDialog_Reject(void*, intptr_t);
-void miqt_exec_callback_QProgressDialog_KeyPressEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QProgressDialog_ContextMenuEvent(void*, intptr_t, QContextMenuEvent*);
-bool miqt_exec_callback_QProgressDialog_EventFilter(void*, intptr_t, QObject*, QEvent*);
-int miqt_exec_callback_QProgressDialog_DevType(void*, intptr_t);
-int miqt_exec_callback_QProgressDialog_HeightForWidth(void*, intptr_t, int);
-bool miqt_exec_callback_QProgressDialog_HasHeightForWidth(void*, intptr_t);
-QPaintEngine* miqt_exec_callback_QProgressDialog_PaintEngine(void*, intptr_t);
-bool miqt_exec_callback_QProgressDialog_Event(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QProgressDialog_MousePressEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QProgressDialog_MouseReleaseEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QProgressDialog_MouseDoubleClickEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QProgressDialog_MouseMoveEvent(void*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QProgressDialog_WheelEvent(void*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QProgressDialog_KeyReleaseEvent(void*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QProgressDialog_FocusInEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QProgressDialog_FocusOutEvent(void*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QProgressDialog_EnterEvent(void*, intptr_t, QEnterEvent*);
-void miqt_exec_callback_QProgressDialog_LeaveEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QProgressDialog_PaintEvent(void*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QProgressDialog_MoveEvent(void*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QProgressDialog_TabletEvent(void*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QProgressDialog_ActionEvent(void*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QProgressDialog_DragEnterEvent(void*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QProgressDialog_DragMoveEvent(void*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QProgressDialog_DragLeaveEvent(void*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QProgressDialog_DropEvent(void*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QProgressDialog_HideEvent(void*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QProgressDialog_NativeEvent(void*, intptr_t, struct miqt_string, void*, intptr_t*);
-int miqt_exec_callback_QProgressDialog_Metric(void*, intptr_t, int);
-void miqt_exec_callback_QProgressDialog_InitPainter(void*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QProgressDialog_Redirected(void*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QProgressDialog_SharedPainter(void*, intptr_t);
-void miqt_exec_callback_QProgressDialog_InputMethodEvent(void*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_QProgressDialog_InputMethodQuery(void*, intptr_t, int);
-bool miqt_exec_callback_QProgressDialog_FocusNextPrevChild(void*, intptr_t, bool);
-void miqt_exec_callback_QProgressDialog_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QProgressDialog_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QProgressDialog_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QProgressDialog_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QProgressDialog_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+QSize* miqt_exec_callback_QProgressDialog_SizeHint(const QProgressDialog*, intptr_t);
+void miqt_exec_callback_QProgressDialog_ResizeEvent(QProgressDialog*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QProgressDialog_CloseEvent(QProgressDialog*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QProgressDialog_ChangeEvent(QProgressDialog*, intptr_t, QEvent*);
+void miqt_exec_callback_QProgressDialog_ShowEvent(QProgressDialog*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QProgressDialog_SetVisible(QProgressDialog*, intptr_t, bool);
+QSize* miqt_exec_callback_QProgressDialog_MinimumSizeHint(const QProgressDialog*, intptr_t);
+void miqt_exec_callback_QProgressDialog_Open(QProgressDialog*, intptr_t);
+int miqt_exec_callback_QProgressDialog_Exec(QProgressDialog*, intptr_t);
+void miqt_exec_callback_QProgressDialog_Done(QProgressDialog*, intptr_t, int);
+void miqt_exec_callback_QProgressDialog_Accept(QProgressDialog*, intptr_t);
+void miqt_exec_callback_QProgressDialog_Reject(QProgressDialog*, intptr_t);
+void miqt_exec_callback_QProgressDialog_KeyPressEvent(QProgressDialog*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QProgressDialog_ContextMenuEvent(QProgressDialog*, intptr_t, QContextMenuEvent*);
+bool miqt_exec_callback_QProgressDialog_EventFilter(QProgressDialog*, intptr_t, QObject*, QEvent*);
+int miqt_exec_callback_QProgressDialog_DevType(const QProgressDialog*, intptr_t);
+int miqt_exec_callback_QProgressDialog_HeightForWidth(const QProgressDialog*, intptr_t, int);
+bool miqt_exec_callback_QProgressDialog_HasHeightForWidth(const QProgressDialog*, intptr_t);
+QPaintEngine* miqt_exec_callback_QProgressDialog_PaintEngine(const QProgressDialog*, intptr_t);
+bool miqt_exec_callback_QProgressDialog_Event(QProgressDialog*, intptr_t, QEvent*);
+void miqt_exec_callback_QProgressDialog_MousePressEvent(QProgressDialog*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QProgressDialog_MouseReleaseEvent(QProgressDialog*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QProgressDialog_MouseDoubleClickEvent(QProgressDialog*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QProgressDialog_MouseMoveEvent(QProgressDialog*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QProgressDialog_WheelEvent(QProgressDialog*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QProgressDialog_KeyReleaseEvent(QProgressDialog*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QProgressDialog_FocusInEvent(QProgressDialog*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QProgressDialog_FocusOutEvent(QProgressDialog*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QProgressDialog_EnterEvent(QProgressDialog*, intptr_t, QEnterEvent*);
+void miqt_exec_callback_QProgressDialog_LeaveEvent(QProgressDialog*, intptr_t, QEvent*);
+void miqt_exec_callback_QProgressDialog_PaintEvent(QProgressDialog*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QProgressDialog_MoveEvent(QProgressDialog*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QProgressDialog_TabletEvent(QProgressDialog*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QProgressDialog_ActionEvent(QProgressDialog*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QProgressDialog_DragEnterEvent(QProgressDialog*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QProgressDialog_DragMoveEvent(QProgressDialog*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QProgressDialog_DragLeaveEvent(QProgressDialog*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QProgressDialog_DropEvent(QProgressDialog*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QProgressDialog_HideEvent(QProgressDialog*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QProgressDialog_NativeEvent(QProgressDialog*, intptr_t, struct miqt_string, void*, intptr_t*);
+int miqt_exec_callback_QProgressDialog_Metric(const QProgressDialog*, intptr_t, int);
+void miqt_exec_callback_QProgressDialog_InitPainter(const QProgressDialog*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QProgressDialog_Redirected(const QProgressDialog*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QProgressDialog_SharedPainter(const QProgressDialog*, intptr_t);
+void miqt_exec_callback_QProgressDialog_InputMethodEvent(QProgressDialog*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_QProgressDialog_InputMethodQuery(const QProgressDialog*, intptr_t, int);
+bool miqt_exec_callback_QProgressDialog_FocusNextPrevChild(QProgressDialog*, intptr_t, bool);
+void miqt_exec_callback_QProgressDialog_TimerEvent(QProgressDialog*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QProgressDialog_ChildEvent(QProgressDialog*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QProgressDialog_CustomEvent(QProgressDialog*, intptr_t, QEvent*);
+void miqt_exec_callback_QProgressDialog_ConnectNotify(QProgressDialog*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QProgressDialog_DisconnectNotify(QProgressDialog*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -125,7 +125,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QProgressDialog_SizeHint(const_cast<MiqtVirtualQProgressDialog*>(this), handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QProgressDialog_SizeHint(this, handle__SizeHint);
 
 		return *callback_return_value;
 	}
@@ -267,7 +267,7 @@ public:
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QProgressDialog_MinimumSizeHint(const_cast<MiqtVirtualQProgressDialog*>(this), handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QProgressDialog_MinimumSizeHint(this, handle__MinimumSizeHint);
 
 		return *callback_return_value;
 	}
@@ -476,7 +476,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QProgressDialog_DevType(const_cast<MiqtVirtualQProgressDialog*>(this), handle__DevType);
+		int callback_return_value = miqt_exec_callback_QProgressDialog_DevType(this, handle__DevType);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -499,7 +499,7 @@ public:
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QProgressDialog_HeightForWidth(const_cast<MiqtVirtualQProgressDialog*>(this), handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QProgressDialog_HeightForWidth(this, handle__HeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -521,7 +521,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QProgressDialog_HasHeightForWidth(const_cast<MiqtVirtualQProgressDialog*>(this), handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QProgressDialog_HasHeightForWidth(this, handle__HasHeightForWidth);
 
 		return callback_return_value;
 	}
@@ -543,7 +543,7 @@ public:
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QProgressDialog_PaintEngine(const_cast<MiqtVirtualQProgressDialog*>(this), handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QProgressDialog_PaintEngine(this, handle__PaintEngine);
 
 		return callback_return_value;
 	}
@@ -1078,7 +1078,7 @@ public:
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QProgressDialog_Metric(const_cast<MiqtVirtualQProgressDialog*>(this), handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QProgressDialog_Metric(this, handle__Metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
@@ -1102,7 +1102,7 @@ public:
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QProgressDialog_InitPainter(const_cast<MiqtVirtualQProgressDialog*>(this), handle__InitPainter, sigval1);
+		miqt_exec_callback_QProgressDialog_InitPainter(this, handle__InitPainter, sigval1);
 
 		
 	}
@@ -1125,7 +1125,7 @@ public:
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QProgressDialog_Redirected(const_cast<MiqtVirtualQProgressDialog*>(this), handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QProgressDialog_Redirected(this, handle__Redirected, sigval1);
 
 		return callback_return_value;
 	}
@@ -1147,7 +1147,7 @@ public:
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QProgressDialog_SharedPainter(const_cast<MiqtVirtualQProgressDialog*>(this), handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QProgressDialog_SharedPainter(this, handle__SharedPainter);
 
 		return callback_return_value;
 	}
@@ -1195,7 +1195,7 @@ public:
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QProgressDialog_InputMethodQuery(const_cast<MiqtVirtualQProgressDialog*>(this), handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QProgressDialog_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}

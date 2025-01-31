@@ -18,33 +18,33 @@
 extern "C" {
 #endif
 
-struct miqt_string miqt_exec_callback_QTemporaryFile_FileName(void*, intptr_t);
-bool miqt_exec_callback_QTemporaryFile_OpenWithFlags(void*, intptr_t, int);
-long long miqt_exec_callback_QTemporaryFile_Size(void*, intptr_t);
-bool miqt_exec_callback_QTemporaryFile_Resize(void*, intptr_t, long long);
-int miqt_exec_callback_QTemporaryFile_Permissions(void*, intptr_t);
-bool miqt_exec_callback_QTemporaryFile_SetPermissions(void*, intptr_t, int);
-void miqt_exec_callback_QTemporaryFile_Close(void*, intptr_t);
-bool miqt_exec_callback_QTemporaryFile_IsSequential(void*, intptr_t);
-long long miqt_exec_callback_QTemporaryFile_Pos(void*, intptr_t);
-bool miqt_exec_callback_QTemporaryFile_Seek(void*, intptr_t, long long);
-bool miqt_exec_callback_QTemporaryFile_AtEnd(void*, intptr_t);
-long long miqt_exec_callback_QTemporaryFile_ReadData(void*, intptr_t, char*, long long);
-long long miqt_exec_callback_QTemporaryFile_WriteData(void*, intptr_t, const char*, long long);
-long long miqt_exec_callback_QTemporaryFile_ReadLineData(void*, intptr_t, char*, long long);
-bool miqt_exec_callback_QTemporaryFile_Reset(void*, intptr_t);
-long long miqt_exec_callback_QTemporaryFile_BytesAvailable(void*, intptr_t);
-long long miqt_exec_callback_QTemporaryFile_BytesToWrite(void*, intptr_t);
-bool miqt_exec_callback_QTemporaryFile_CanReadLine(void*, intptr_t);
-bool miqt_exec_callback_QTemporaryFile_WaitForReadyRead(void*, intptr_t, int);
-bool miqt_exec_callback_QTemporaryFile_WaitForBytesWritten(void*, intptr_t, int);
-bool miqt_exec_callback_QTemporaryFile_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QTemporaryFile_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QTemporaryFile_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QTemporaryFile_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QTemporaryFile_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QTemporaryFile_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QTemporaryFile_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+struct miqt_string miqt_exec_callback_QTemporaryFile_FileName(const QTemporaryFile*, intptr_t);
+bool miqt_exec_callback_QTemporaryFile_OpenWithFlags(QTemporaryFile*, intptr_t, int);
+long long miqt_exec_callback_QTemporaryFile_Size(const QTemporaryFile*, intptr_t);
+bool miqt_exec_callback_QTemporaryFile_Resize(QTemporaryFile*, intptr_t, long long);
+int miqt_exec_callback_QTemporaryFile_Permissions(const QTemporaryFile*, intptr_t);
+bool miqt_exec_callback_QTemporaryFile_SetPermissions(QTemporaryFile*, intptr_t, int);
+void miqt_exec_callback_QTemporaryFile_Close(QTemporaryFile*, intptr_t);
+bool miqt_exec_callback_QTemporaryFile_IsSequential(const QTemporaryFile*, intptr_t);
+long long miqt_exec_callback_QTemporaryFile_Pos(const QTemporaryFile*, intptr_t);
+bool miqt_exec_callback_QTemporaryFile_Seek(QTemporaryFile*, intptr_t, long long);
+bool miqt_exec_callback_QTemporaryFile_AtEnd(const QTemporaryFile*, intptr_t);
+long long miqt_exec_callback_QTemporaryFile_ReadData(QTemporaryFile*, intptr_t, char*, long long);
+long long miqt_exec_callback_QTemporaryFile_WriteData(QTemporaryFile*, intptr_t, const char*, long long);
+long long miqt_exec_callback_QTemporaryFile_ReadLineData(QTemporaryFile*, intptr_t, char*, long long);
+bool miqt_exec_callback_QTemporaryFile_Reset(QTemporaryFile*, intptr_t);
+long long miqt_exec_callback_QTemporaryFile_BytesAvailable(const QTemporaryFile*, intptr_t);
+long long miqt_exec_callback_QTemporaryFile_BytesToWrite(const QTemporaryFile*, intptr_t);
+bool miqt_exec_callback_QTemporaryFile_CanReadLine(const QTemporaryFile*, intptr_t);
+bool miqt_exec_callback_QTemporaryFile_WaitForReadyRead(QTemporaryFile*, intptr_t, int);
+bool miqt_exec_callback_QTemporaryFile_WaitForBytesWritten(QTemporaryFile*, intptr_t, int);
+bool miqt_exec_callback_QTemporaryFile_Event(QTemporaryFile*, intptr_t, QEvent*);
+bool miqt_exec_callback_QTemporaryFile_EventFilter(QTemporaryFile*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QTemporaryFile_TimerEvent(QTemporaryFile*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QTemporaryFile_ChildEvent(QTemporaryFile*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QTemporaryFile_CustomEvent(QTemporaryFile*, intptr_t, QEvent*);
+void miqt_exec_callback_QTemporaryFile_ConnectNotify(QTemporaryFile*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QTemporaryFile_DisconnectNotify(QTemporaryFile*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -69,7 +69,7 @@ public:
 		}
 		
 
-		struct miqt_string callback_return_value = miqt_exec_callback_QTemporaryFile_FileName(const_cast<MiqtVirtualQTemporaryFile*>(this), handle__FileName);
+		struct miqt_string callback_return_value = miqt_exec_callback_QTemporaryFile_FileName(this, handle__FileName);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
 
 		return callback_return_value_QString;
@@ -123,7 +123,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QTemporaryFile_Size(const_cast<MiqtVirtualQTemporaryFile*>(this), handle__Size);
+		long long callback_return_value = miqt_exec_callback_QTemporaryFile_Size(this, handle__Size);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -170,7 +170,7 @@ public:
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QTemporaryFile_Permissions(const_cast<MiqtVirtualQTemporaryFile*>(this), handle__Permissions);
+		int callback_return_value = miqt_exec_callback_QTemporaryFile_Permissions(this, handle__Permissions);
 
 		return static_cast<QFileDevice::Permissions>(callback_return_value);
 	}
@@ -240,7 +240,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QTemporaryFile_IsSequential(const_cast<MiqtVirtualQTemporaryFile*>(this), handle__IsSequential);
+		bool callback_return_value = miqt_exec_callback_QTemporaryFile_IsSequential(this, handle__IsSequential);
 
 		return callback_return_value;
 	}
@@ -262,7 +262,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QTemporaryFile_Pos(const_cast<MiqtVirtualQTemporaryFile*>(this), handle__Pos);
+		long long callback_return_value = miqt_exec_callback_QTemporaryFile_Pos(this, handle__Pos);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -309,7 +309,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QTemporaryFile_AtEnd(const_cast<MiqtVirtualQTemporaryFile*>(this), handle__AtEnd);
+		bool callback_return_value = miqt_exec_callback_QTemporaryFile_AtEnd(this, handle__AtEnd);
 
 		return callback_return_value;
 	}
@@ -431,7 +431,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QTemporaryFile_BytesAvailable(const_cast<MiqtVirtualQTemporaryFile*>(this), handle__BytesAvailable);
+		long long callback_return_value = miqt_exec_callback_QTemporaryFile_BytesAvailable(this, handle__BytesAvailable);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -454,7 +454,7 @@ public:
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QTemporaryFile_BytesToWrite(const_cast<MiqtVirtualQTemporaryFile*>(this), handle__BytesToWrite);
+		long long callback_return_value = miqt_exec_callback_QTemporaryFile_BytesToWrite(this, handle__BytesToWrite);
 
 		return static_cast<qint64>(callback_return_value);
 	}
@@ -477,7 +477,7 @@ public:
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QTemporaryFile_CanReadLine(const_cast<MiqtVirtualQTemporaryFile*>(this), handle__CanReadLine);
+		bool callback_return_value = miqt_exec_callback_QTemporaryFile_CanReadLine(this, handle__CanReadLine);
 
 		return callback_return_value;
 	}

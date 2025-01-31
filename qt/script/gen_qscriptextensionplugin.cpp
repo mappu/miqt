@@ -20,15 +20,15 @@
 extern "C" {
 #endif
 
-struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QScriptExtensionPlugin_Keys(void*, intptr_t);
-void miqt_exec_callback_QScriptExtensionPlugin_Initialize(void*, intptr_t, struct miqt_string, QScriptEngine*);
-bool miqt_exec_callback_QScriptExtensionPlugin_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QScriptExtensionPlugin_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QScriptExtensionPlugin_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QScriptExtensionPlugin_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QScriptExtensionPlugin_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QScriptExtensionPlugin_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QScriptExtensionPlugin_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QScriptExtensionPlugin_Keys(const QScriptExtensionPlugin*, intptr_t);
+void miqt_exec_callback_QScriptExtensionPlugin_Initialize(QScriptExtensionPlugin*, intptr_t, struct miqt_string, QScriptEngine*);
+bool miqt_exec_callback_QScriptExtensionPlugin_Event(QScriptExtensionPlugin*, intptr_t, QEvent*);
+bool miqt_exec_callback_QScriptExtensionPlugin_EventFilter(QScriptExtensionPlugin*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QScriptExtensionPlugin_TimerEvent(QScriptExtensionPlugin*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QScriptExtensionPlugin_ChildEvent(QScriptExtensionPlugin*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QScriptExtensionPlugin_CustomEvent(QScriptExtensionPlugin*, intptr_t, QEvent*);
+void miqt_exec_callback_QScriptExtensionPlugin_ConnectNotify(QScriptExtensionPlugin*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QScriptExtensionPlugin_DisconnectNotify(QScriptExtensionPlugin*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -51,7 +51,7 @@ public:
 		}
 		
 
-		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QScriptExtensionPlugin_Keys(const_cast<MiqtVirtualQScriptExtensionPlugin*>(this), handle__Keys);
+		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QScriptExtensionPlugin_Keys(this, handle__Keys);
 		QStringList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		struct miqt_string* callback_return_value_arr = static_cast<struct miqt_string*>(callback_return_value.data);

@@ -36,15 +36,15 @@
 extern "C" {
 #endif
 
-QAccessibleInterface* miqt_exec_callback_QAccessibleEvent_AccessibleInterface(void*, intptr_t);
-QAccessibleInterface* miqt_exec_callback_QAccessibleStateChangeEvent_AccessibleInterface(void*, intptr_t);
-QAccessibleInterface* miqt_exec_callback_QAccessibleTextCursorEvent_AccessibleInterface(void*, intptr_t);
-QAccessibleInterface* miqt_exec_callback_QAccessibleTextSelectionEvent_AccessibleInterface(void*, intptr_t);
-QAccessibleInterface* miqt_exec_callback_QAccessibleTextInsertEvent_AccessibleInterface(void*, intptr_t);
-QAccessibleInterface* miqt_exec_callback_QAccessibleTextRemoveEvent_AccessibleInterface(void*, intptr_t);
-QAccessibleInterface* miqt_exec_callback_QAccessibleTextUpdateEvent_AccessibleInterface(void*, intptr_t);
-QAccessibleInterface* miqt_exec_callback_QAccessibleValueChangeEvent_AccessibleInterface(void*, intptr_t);
-QAccessibleInterface* miqt_exec_callback_QAccessibleTableModelChangeEvent_AccessibleInterface(void*, intptr_t);
+QAccessibleInterface* miqt_exec_callback_QAccessibleEvent_AccessibleInterface(const QAccessibleEvent*, intptr_t);
+QAccessibleInterface* miqt_exec_callback_QAccessibleStateChangeEvent_AccessibleInterface(const QAccessibleStateChangeEvent*, intptr_t);
+QAccessibleInterface* miqt_exec_callback_QAccessibleTextCursorEvent_AccessibleInterface(const QAccessibleTextCursorEvent*, intptr_t);
+QAccessibleInterface* miqt_exec_callback_QAccessibleTextSelectionEvent_AccessibleInterface(const QAccessibleTextSelectionEvent*, intptr_t);
+QAccessibleInterface* miqt_exec_callback_QAccessibleTextInsertEvent_AccessibleInterface(const QAccessibleTextInsertEvent*, intptr_t);
+QAccessibleInterface* miqt_exec_callback_QAccessibleTextRemoveEvent_AccessibleInterface(const QAccessibleTextRemoveEvent*, intptr_t);
+QAccessibleInterface* miqt_exec_callback_QAccessibleTextUpdateEvent_AccessibleInterface(const QAccessibleTextUpdateEvent*, intptr_t);
+QAccessibleInterface* miqt_exec_callback_QAccessibleValueChangeEvent_AccessibleInterface(const QAccessibleValueChangeEvent*, intptr_t);
+QAccessibleInterface* miqt_exec_callback_QAccessibleTableModelChangeEvent_AccessibleInterface(const QAccessibleTableModelChangeEvent*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -856,7 +856,7 @@ public:
 		}
 		
 
-		QAccessibleInterface* callback_return_value = miqt_exec_callback_QAccessibleEvent_AccessibleInterface(const_cast<MiqtVirtualQAccessibleEvent*>(this), handle__AccessibleInterface);
+		QAccessibleInterface* callback_return_value = miqt_exec_callback_QAccessibleEvent_AccessibleInterface(this, handle__AccessibleInterface);
 
 		return callback_return_value;
 	}
@@ -940,7 +940,7 @@ public:
 		}
 		
 
-		QAccessibleInterface* callback_return_value = miqt_exec_callback_QAccessibleStateChangeEvent_AccessibleInterface(const_cast<MiqtVirtualQAccessibleStateChangeEvent*>(this), handle__AccessibleInterface);
+		QAccessibleInterface* callback_return_value = miqt_exec_callback_QAccessibleStateChangeEvent_AccessibleInterface(this, handle__AccessibleInterface);
 
 		return callback_return_value;
 	}
@@ -1006,7 +1006,7 @@ public:
 		}
 		
 
-		QAccessibleInterface* callback_return_value = miqt_exec_callback_QAccessibleTextCursorEvent_AccessibleInterface(const_cast<MiqtVirtualQAccessibleTextCursorEvent*>(this), handle__AccessibleInterface);
+		QAccessibleInterface* callback_return_value = miqt_exec_callback_QAccessibleTextCursorEvent_AccessibleInterface(this, handle__AccessibleInterface);
 
 		return callback_return_value;
 	}
@@ -1076,7 +1076,7 @@ public:
 		}
 		
 
-		QAccessibleInterface* callback_return_value = miqt_exec_callback_QAccessibleTextSelectionEvent_AccessibleInterface(const_cast<MiqtVirtualQAccessibleTextSelectionEvent*>(this), handle__AccessibleInterface);
+		QAccessibleInterface* callback_return_value = miqt_exec_callback_QAccessibleTextSelectionEvent_AccessibleInterface(this, handle__AccessibleInterface);
 
 		return callback_return_value;
 	}
@@ -1150,7 +1150,7 @@ public:
 		}
 		
 
-		QAccessibleInterface* callback_return_value = miqt_exec_callback_QAccessibleTextInsertEvent_AccessibleInterface(const_cast<MiqtVirtualQAccessibleTextInsertEvent*>(this), handle__AccessibleInterface);
+		QAccessibleInterface* callback_return_value = miqt_exec_callback_QAccessibleTextInsertEvent_AccessibleInterface(this, handle__AccessibleInterface);
 
 		return callback_return_value;
 	}
@@ -1229,7 +1229,7 @@ public:
 		}
 		
 
-		QAccessibleInterface* callback_return_value = miqt_exec_callback_QAccessibleTextRemoveEvent_AccessibleInterface(const_cast<MiqtVirtualQAccessibleTextRemoveEvent*>(this), handle__AccessibleInterface);
+		QAccessibleInterface* callback_return_value = miqt_exec_callback_QAccessibleTextRemoveEvent_AccessibleInterface(this, handle__AccessibleInterface);
 
 		return callback_return_value;
 	}
@@ -1308,7 +1308,7 @@ public:
 		}
 		
 
-		QAccessibleInterface* callback_return_value = miqt_exec_callback_QAccessibleTextUpdateEvent_AccessibleInterface(const_cast<MiqtVirtualQAccessibleTextUpdateEvent*>(this), handle__AccessibleInterface);
+		QAccessibleInterface* callback_return_value = miqt_exec_callback_QAccessibleTextUpdateEvent_AccessibleInterface(this, handle__AccessibleInterface);
 
 		return callback_return_value;
 	}
@@ -1400,7 +1400,7 @@ public:
 		}
 		
 
-		QAccessibleInterface* callback_return_value = miqt_exec_callback_QAccessibleValueChangeEvent_AccessibleInterface(const_cast<MiqtVirtualQAccessibleValueChangeEvent*>(this), handle__AccessibleInterface);
+		QAccessibleInterface* callback_return_value = miqt_exec_callback_QAccessibleValueChangeEvent_AccessibleInterface(this, handle__AccessibleInterface);
 
 		return callback_return_value;
 	}
@@ -1470,7 +1470,7 @@ public:
 		}
 		
 
-		QAccessibleInterface* callback_return_value = miqt_exec_callback_QAccessibleTableModelChangeEvent_AccessibleInterface(const_cast<MiqtVirtualQAccessibleTableModelChangeEvent*>(this), handle__AccessibleInterface);
+		QAccessibleInterface* callback_return_value = miqt_exec_callback_QAccessibleTableModelChangeEvent_AccessibleInterface(this, handle__AccessibleInterface);
 
 		return callback_return_value;
 	}

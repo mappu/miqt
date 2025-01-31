@@ -18,16 +18,16 @@ extern "C" {
 void miqt_exec_callback_QsciAPIs_ApiPreparationCancelled(intptr_t);
 void miqt_exec_callback_QsciAPIs_ApiPreparationStarted(intptr_t);
 void miqt_exec_callback_QsciAPIs_ApiPreparationFinished(intptr_t);
-void miqt_exec_callback_QsciAPIs_UpdateAutoCompletionList(void*, intptr_t, struct miqt_array /* of struct miqt_string */ , struct miqt_array /* of struct miqt_string */ );
-void miqt_exec_callback_QsciAPIs_AutoCompletionSelected(void*, intptr_t, struct miqt_string);
-struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QsciAPIs_CallTips(void*, intptr_t, struct miqt_array /* of struct miqt_string */ , int, int, struct miqt_array /* of int */ );
-bool miqt_exec_callback_QsciAPIs_Event(void*, intptr_t, QEvent*);
-bool miqt_exec_callback_QsciAPIs_EventFilter(void*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QsciAPIs_TimerEvent(void*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QsciAPIs_ChildEvent(void*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QsciAPIs_CustomEvent(void*, intptr_t, QEvent*);
-void miqt_exec_callback_QsciAPIs_ConnectNotify(void*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QsciAPIs_DisconnectNotify(void*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QsciAPIs_UpdateAutoCompletionList(QsciAPIs*, intptr_t, struct miqt_array /* of struct miqt_string */ , struct miqt_array /* of struct miqt_string */ );
+void miqt_exec_callback_QsciAPIs_AutoCompletionSelected(QsciAPIs*, intptr_t, struct miqt_string);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QsciAPIs_CallTips(QsciAPIs*, intptr_t, struct miqt_array /* of struct miqt_string */ , int, int, struct miqt_array /* of int */ );
+bool miqt_exec_callback_QsciAPIs_Event(QsciAPIs*, intptr_t, QEvent*);
+bool miqt_exec_callback_QsciAPIs_EventFilter(QsciAPIs*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QsciAPIs_TimerEvent(QsciAPIs*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QsciAPIs_ChildEvent(QsciAPIs*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QsciAPIs_CustomEvent(QsciAPIs*, intptr_t, QEvent*);
+void miqt_exec_callback_QsciAPIs_ConnectNotify(QsciAPIs*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QsciAPIs_DisconnectNotify(QsciAPIs*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
